@@ -1,0 +1,395 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * IDate.js - Represent a date in any calendar. This class is subclassed for each
+<span class='line'>  3</span>  * calendar and includes some shared functionality.
+<span class='line'>  4</span>  *
+<span class='line'>  5</span>  * Copyright © 2012-2015, 2018, JEDLSoft
+<span class='line'>  6</span>  *
+<span class='line'>  7</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  8</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  9</span>  * You may obtain a copy of the License at
+<span class='line'> 10</span>  *
+<span class='line'> 11</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 12</span>  *
+<span class='line'> 13</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 14</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 15</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 16</span>  *
+<span class='line'> 17</span>  * See the License for the specific language governing permissions and
+<span class='line'> 18</span>  * limitations under the License.
+<span class='line'> 19</span>  */</span><span class="WHIT">
+<span class='line'> 20</span> 
+<span class='line'> 21</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">LocaleInfo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./LocaleInfo.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 22</span> 
+<span class='line'> 23</span> </span><span class="COMM">/**
+<span class='line'> 24</span>  * @class
+<span class='line'> 25</span>  * Superclass for all the calendar date classes that contains shared
+<span class='line'> 26</span>  * functionality. This class is never instantiated on its own. Instead,
+<span class='line'> 27</span>  * you should use the {@link DateFactory} function to manufacture a new
+<span class='line'> 28</span>  * instance of a subclass of IDate. This class is called IDate for "ilib
+<span class='line'> 29</span>  * date" so that it does not conflict with the built-in Javascript Date
+<span class='line'> 30</span>  * class.
+<span class='line'> 31</span>  *
+<span class='line'> 32</span>  * @private
+<span class='line'> 33</span>  * @constructor
+<span class='line'> 34</span>  * @param {Object=} options The date components to initialize this date with
+<span class='line'> 35</span>  */</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">IDate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 38</span> 
+<span class='line'> 39</span> </span><span class="COMM">/* place for the subclasses to put their constructors so that the factory method
+<span class='line'> 40</span>  * can find them. Do this to add your date after it's defined:
+<span class='line'> 41</span>  * IDate._constructors["mytype"] = IDate.MyTypeConstructor;
+<span class='line'> 42</span>  */</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="NAME">IDate._constructors</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> 
+<span class='line'> 45</span> </span><span class="NAME">IDate.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">    </span><span class="NAME">getType</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"date"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 49</span> 
+<span class='line'> 50</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 51</span>      * Return the unix time equivalent to this date instance. Unix time is
+<span class='line'> 52</span>      * the number of milliseconds since midnight on Jan 1, 1970 UTC (Gregorian). This
+<span class='line'> 53</span>      * method only returns a valid number for dates between midnight,
+<span class='line'> 54</span>      * Jan 1, 1970 UTC (Gregorian) and Jan 19, 2038 at 3:14:07am UTC (Gregorian) when
+<span class='line'> 55</span>      * the unix time runs out. If this instance encodes a date outside of that range,
+<span class='line'> 56</span>      * this method will return -1. For date types that are not Gregorian, the point
+<span class='line'> 57</span>      * in time represented by this date object will only give a return value if it
+<span class='line'> 58</span>      * is in the correct range in the Gregorian calendar as given previously.
+<span class='line'> 59</span>      *
+<span class='line'> 60</span>      * @return {number} a number giving the unix time, or -1 if the date is outside the
+<span class='line'> 61</span>      * valid unix time range
+<span class='line'> 62</span>      */</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">    </span><span class="NAME">getTime</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.rd.getTime</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 66</span> 
+<span class='line'> 67</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 68</span>      * Return the extended unix time equivalent to this Gregorian date instance. Unix time is
+<span class='line'> 69</span>      * the number of milliseconds since midnight on Jan 1, 1970 UTC. Traditionally unix time
+<span class='line'> 70</span>      * (or the type "time_t" in C/C++) is only encoded with an unsigned 32 bit integer, and thus
+<span class='line'> 71</span>      * runs out on Jan 19, 2038. However, most Javascript engines encode numbers well above
+<span class='line'> 72</span>      * 32 bits and the Date object allows you to encode up to 100 million days worth of time
+<span class='line'> 73</span>      * after Jan 1, 1970, and even more interestingly, 100 million days worth of time before
+<span class='line'> 74</span>      * Jan 1, 1970 as well. This method returns the number of milliseconds in that extended
+<span class='line'> 75</span>      * range. If this instance encodes a date outside of that range, this method will return
+<span class='line'> 76</span>      * NaN.
+<span class='line'> 77</span>      *
+<span class='line'> 78</span>      * @return {number} a number giving the extended unix time, or Nan if the date is outside
+<span class='line'> 79</span>      * the valid extended unix time range
+<span class='line'> 80</span>      */</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">    </span><span class="NAME">getTimeExtended</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.rd.getTimeExtended</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 84</span> 
+<span class='line'> 85</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 86</span>      * Set the time of this instance according to the given unix time. Unix time is
+<span class='line'> 87</span>      * the number of milliseconds since midnight on Jan 1, 1970.
+<span class='line'> 88</span>      *
+<span class='line'> 89</span>      * @param {number} millis the unix time to set this date to in milliseconds
+<span class='line'> 90</span>      */</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">    </span><span class="NAME">setTime</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">millis</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">        </span><span class="NAME">this.rd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.newRd</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">            </span><span class="NAME">unixtime</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">millis</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">            </span><span class="NAME">cal</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.cal</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">        </span><span class="NAME">this._calcDateComponents</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 98</span> 
+<span class='line'> 99</span> </span><span class="WHIT">    </span><span class="NAME">getDays</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.day</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">    </span><span class="NAME">getMonths</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.month</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">    </span><span class="NAME">getYears</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.year</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">    </span><span class="NAME">getHours</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.hour</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">    </span><span class="NAME">getMinutes</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.minute</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="WHIT">    </span><span class="NAME">getSeconds</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.second</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">    </span><span class="NAME">getMilliseconds</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.millisecond</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">    </span><span class="NAME">getEra</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.year</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>123</span> 
+<span class='line'>124</span> </span><span class="WHIT">    </span><span class="NAME">setDays</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">day</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">        </span><span class="NAME">this.day</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">day</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">        </span><span class="NAME">this.rd._setDateComponents</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">    </span><span class="NAME">setMonths</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">month</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">        </span><span class="NAME">this.month</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">month</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">        </span><span class="NAME">this.rd._setDateComponents</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">    </span><span class="NAME">setYears</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">        </span><span class="NAME">this.year</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">        </span><span class="NAME">this.rd._setDateComponents</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>136</span> 
+<span class='line'>137</span> </span><span class="WHIT">    </span><span class="NAME">setHours</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">hour</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">        </span><span class="NAME">this.hour</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">hour</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">        </span><span class="NAME">this.rd._setDateComponents</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">    </span><span class="NAME">setMinutes</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">minute</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">        </span><span class="NAME">this.minute</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">minute</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">        </span><span class="NAME">this.rd._setDateComponents</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">    </span><span class="NAME">setSeconds</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">second</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">        </span><span class="NAME">this.second</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">second</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">        </span><span class="NAME">this.rd._setDateComponents</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">    </span><span class="NAME">setMilliseconds</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">milli</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">        </span><span class="NAME">this.millisecond</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">milli</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">        </span><span class="NAME">this.rd._setDateComponents</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>153</span> 
+<span class='line'>154</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>155</span>      * Return a new date instance in the current calendar that represents the first instance
+<span class='line'>156</span>      * of the given day of the week before the current date. The day of the week is encoded
+<span class='line'>157</span>      * as a number where 0 = Sunday, 1 = Monday, etc.
+<span class='line'>158</span>      *
+<span class='line'>159</span>      * @param {number} dow the day of the week before the current date that is being sought
+<span class='line'>160</span>      * @return {IDate} the date being sought
+<span class='line'>161</span>      */</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">    </span><span class="NAME">before</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">dow</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">this.constructor</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">            </span><span class="NAME">rd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.rd.before</span><span class="PUNC">(</span><span class="NAME">dow</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.offset</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">            </span><span class="NAME">timezone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.timezone</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>168</span> 
+<span class='line'>169</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>170</span>      * Return a new date instance in the current calendar that represents the first instance
+<span class='line'>171</span>      * of the given day of the week after the current date. The day of the week is encoded
+<span class='line'>172</span>      * as a number where 0 = Sunday, 1 = Monday, etc.
+<span class='line'>173</span>      *
+<span class='line'>174</span>      * @param {number} dow the day of the week after the current date that is being sought
+<span class='line'>175</span>      * @return {IDate} the date being sought
+<span class='line'>176</span>      */</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">    </span><span class="NAME">after</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">dow</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">this.constructor</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">            </span><span class="NAME">rd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.rd.after</span><span class="PUNC">(</span><span class="NAME">dow</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.offset</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">            </span><span class="NAME">timezone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.timezone</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>183</span> 
+<span class='line'>184</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>185</span>      * Return a new Gregorian date instance that represents the first instance of the
+<span class='line'>186</span>      * given day of the week on or before the current date. The day of the week is encoded
+<span class='line'>187</span>      * as a number where 0 = Sunday, 1 = Monday, etc.
+<span class='line'>188</span>      *
+<span class='line'>189</span>      * @param {number} dow the day of the week on or before the current date that is being sought
+<span class='line'>190</span>      * @return {IDate} the date being sought
+<span class='line'>191</span>      */</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">    </span><span class="NAME">onOrBefore</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">dow</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">this.constructor</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">            </span><span class="NAME">rd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.rd.onOrBefore</span><span class="PUNC">(</span><span class="NAME">dow</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.offset</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="WHIT">            </span><span class="NAME">timezone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.timezone</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>198</span> 
+<span class='line'>199</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>200</span>      * Return a new Gregorian date instance that represents the first instance of the
+<span class='line'>201</span>      * given day of the week on or after the current date. The day of the week is encoded
+<span class='line'>202</span>      * as a number where 0 = Sunday, 1 = Monday, etc.
+<span class='line'>203</span>      *
+<span class='line'>204</span>      * @param {number} dow the day of the week on or after the current date that is being sought
+<span class='line'>205</span>      * @return {IDate} the date being sought
+<span class='line'>206</span>      */</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="WHIT">    </span><span class="NAME">onOrAfter</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">dow</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">this.constructor</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">            </span><span class="NAME">rd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.rd.onOrAfter</span><span class="PUNC">(</span><span class="NAME">dow</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.offset</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">            </span><span class="NAME">timezone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.timezone</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>213</span> 
+<span class='line'>214</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>215</span>      * Return a Javascript Date object that is equivalent to this date
+<span class='line'>216</span>      * object.
+<span class='line'>217</span>      *
+<span class='line'>218</span>      * @return {Date|undefined} a javascript Date object
+<span class='line'>219</span>      */</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="WHIT">    </span><span class="NAME">getJSDate</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>221</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">unix</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.rd.getTimeExtended</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">isNaN</span><span class="PUNC">(</span><span class="NAME">unix</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="NAME">unix</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>223</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>224</span> 
+<span class='line'>225</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>226</span>      * Return the Rata Die (fixed day) number of this date.
+<span class='line'>227</span>      *
+<span class='line'>228</span>      * @protected
+<span class='line'>229</span>      * @return {number} the rd date as a number
+<span class='line'>230</span>      */</span><span class="WHIT">
+<span class='line'>231</span> </span><span class="WHIT">    </span><span class="NAME">getRataDie</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>232</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.rd.getRataDie</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>234</span> 
+<span class='line'>235</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>236</span>      * Set the date components of this instance based on the given rd.
+<span class='line'>237</span>      * @protected
+<span class='line'>238</span>      * @param {number} rd the rata die date to set
+<span class='line'>239</span>      */</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">    </span><span class="NAME">setRd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">rd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">        </span><span class="NAME">this.rd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.newRd</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>242</span> </span><span class="WHIT">            </span><span class="NAME">rd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">rd</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>243</span> </span><span class="WHIT">            </span><span class="NAME">cal</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.cal</span><span class="WHIT">
+<span class='line'>244</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>245</span> </span><span class="WHIT">        </span><span class="NAME">this._calcDateComponents</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>246</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>247</span> 
+<span class='line'>248</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>249</span>      * Return the Julian Day equivalent to this calendar date as a number.
+<span class='line'>250</span>      *
+<span class='line'>251</span>      * @return {number} the julian date equivalent of this date
+<span class='line'>252</span>      */</span><span class="WHIT">
+<span class='line'>253</span> </span><span class="WHIT">    </span><span class="NAME">getJulianDay</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>254</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.rd.getJulianDay</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>255</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>256</span> 
+<span class='line'>257</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>258</span>      * Set the date of this instance using a Julian Day.
+<span class='line'>259</span>      * @param {number|JulianDay} date the Julian Day to use to set this date
+<span class='line'>260</span>      */</span><span class="WHIT">
+<span class='line'>261</span> </span><span class="WHIT">    </span><span class="NAME">setJulianDay</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">date</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>262</span> </span><span class="WHIT">        </span><span class="NAME">this.rd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.newRd</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>263</span> </span><span class="WHIT">            </span><span class="NAME">julianday</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">date</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">date.getDate</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">date</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>264</span> </span><span class="WHIT">            </span><span class="NAME">cal</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.cal</span><span class="WHIT">
+<span class='line'>265</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>266</span> </span><span class="WHIT">        </span><span class="NAME">this._calcDateComponents</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>267</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>268</span> 
+<span class='line'>269</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>270</span>      * Return the time zone associated with this date, or
+<span class='line'>271</span>      * undefined if none was specified in the constructor.
+<span class='line'>272</span>      *
+<span class='line'>273</span>      * @return {string|undefined} the name of the time zone for this date instance
+<span class='line'>274</span>      */</span><span class="WHIT">
+<span class='line'>275</span> </span><span class="WHIT">    </span><span class="NAME">getTimeZone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>276</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.timezone</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"local"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>278</span> 
+<span class='line'>279</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>280</span>      * Set the time zone associated with this date.
+<span class='line'>281</span>      * @param {string=} tzName the name of the time zone to set into this date instance,
+<span class='line'>282</span>      * or "undefined" to unset the time zone
+<span class='line'>283</span>      */</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">    </span><span class="NAME">setTimeZone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">tzName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>285</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">tzName</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">tzName</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>286</span> </span><span class="WHIT">            </span><span class="COMM">// same as undefining it</span><span class="WHIT">
+<span class='line'>287</span> </span><span class="WHIT">            </span><span class="NAME">this.timezone</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>288</span> </span><span class="WHIT">            </span><span class="NAME">this.tz</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>289</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">tzName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>290</span> </span><span class="WHIT">            </span><span class="NAME">this.timezone</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">tzName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>291</span> </span><span class="WHIT">            </span><span class="NAME">this.tz</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>292</span> </span><span class="WHIT">            </span><span class="COMM">// assuming the same UTC time, but a new time zone, now we have to</span><span class="WHIT">
+<span class='line'>293</span> </span><span class="WHIT">            </span><span class="COMM">// recalculate what the date components are</span><span class="WHIT">
+<span class='line'>294</span> </span><span class="WHIT">            </span><span class="NAME">this._calcDateComponents</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>295</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>297</span> 
+<span class='line'>298</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>299</span>      * Return the rd number of the first Sunday of the given ISO year.
+<span class='line'>300</span>      * @protected
+<span class='line'>301</span>      * @param {number} year the year for which the first Sunday is being sought
+<span class='line'>302</span>      * @return {number} the rd of the first Sunday of the ISO year
+<span class='line'>303</span>      */</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="WHIT">    </span><span class="NAME">firstSunday</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>305</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">firstDay</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.newRd</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="WHIT">            </span><span class="NAME">year</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">year</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">            </span><span class="NAME">month</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>308</span> </span><span class="WHIT">            </span><span class="NAME">day</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="WHIT">            </span><span class="NAME">hour</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>310</span> </span><span class="WHIT">            </span><span class="NAME">minute</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>311</span> </span><span class="WHIT">            </span><span class="NAME">second</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="WHIT">            </span><span class="NAME">millisecond</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>313</span> </span><span class="WHIT">            </span><span class="NAME">cal</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.cal</span><span class="WHIT">
+<span class='line'>314</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">firstThu</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.newRd</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">            </span><span class="NAME">rd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">firstDay.onOrAfter</span><span class="PUNC">(</span><span class="NUMB">4</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">            </span><span class="NAME">cal</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.cal</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">firstThu.before</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>320</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>321</span> 
+<span class='line'>322</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>323</span>      * Return the ISO 8601 week number in the current year for the current date. The week
+<span class='line'>324</span>      * number ranges from 0 to 55, as some years have 55 weeks assigned to them in some
+<span class='line'>325</span>      * calendars.
+<span class='line'>326</span>      *
+<span class='line'>327</span>      * @return {number} the week number for the current date
+<span class='line'>328</span>      */</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">    </span><span class="NAME">getWeekOfYear</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>330</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">rd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="NAME">this.rd.getRataDie</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>331</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">year</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._calcYear</span><span class="PUNC">(</span><span class="NAME">rd</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.offset</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>332</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">yearStart</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.firstSunday</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>333</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">nextYear</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>334</span> 
+<span class='line'>335</span> </span><span class="WHIT">        </span><span class="COMM">// if we have a January date, it may be in this ISO year or the previous year</span><span class="WHIT">
+<span class='line'>336</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">rd</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">yearStart</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>337</span> </span><span class="WHIT">            </span><span class="NAME">yearStart</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.firstSunday</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>338</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>339</span> </span><span class="WHIT">            </span><span class="COMM">// if we have a late December date, it may be in this ISO year, or the next year</span><span class="WHIT">
+<span class='line'>340</span> </span><span class="WHIT">            </span><span class="NAME">nextYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.firstSunday</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>341</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">rd</span><span class="WHIT"> </span><span class="PUNC">>=</span><span class="WHIT"> </span><span class="NAME">nextYear</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>342</span> </span><span class="WHIT">                </span><span class="NAME">yearStart</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">nextYear</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>343</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>344</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>345</span> 
+<span class='line'>346</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">rd</span><span class="PUNC">-</span><span class="NAME">yearStart</span><span class="PUNC">)</span><span class="PUNC">/</span><span class="NUMB">7</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>347</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>348</span> 
+<span class='line'>349</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>350</span>      * Return the ordinal number of the week within the month. The first week of a month is
+<span class='line'>351</span>      * the first one that contains 4 or more days in that month. If any days precede this
+<span class='line'>352</span>      * first week, they are marked as being in week 0. This function returns values from 0
+<span class='line'>353</span>      * through 6.&lt;p>
+<span class='line'>354</span>      *
+<span class='line'>355</span>      * The locale is a required parameter because different locales that use the same
+<span class='line'>356</span>      * Gregorian calendar consider different days of the week to be the beginning of
+<span class='line'>357</span>      * the week. This can affect the week of the month in which some days are located.
+<span class='line'>358</span>      *
+<span class='line'>359</span>      * @param {Locale|string} locale the locale or locale spec to use when figuring out
+<span class='line'>360</span>      * the first day of the week
+<span class='line'>361</span>      * @return {number} the ordinal number of the week within the current month
+<span class='line'>362</span>      */</span><span class="WHIT">
+<span class='line'>363</span> </span><span class="WHIT">    </span><span class="NAME">getWeekOfMonth</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>364</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">li</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">LocaleInfo</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>365</span> 
+<span class='line'>366</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">first</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.newRd</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>367</span> </span><span class="WHIT">            </span><span class="NAME">year</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this._calcYear</span><span class="PUNC">(</span><span class="NAME">this.rd.getRataDie</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="NAME">this.offset</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>368</span> </span><span class="WHIT">            </span><span class="NAME">month</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.getMonths</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>369</span> </span><span class="WHIT">            </span><span class="NAME">day</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>370</span> </span><span class="WHIT">            </span><span class="NAME">hour</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>371</span> </span><span class="WHIT">            </span><span class="NAME">minute</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>372</span> </span><span class="WHIT">            </span><span class="NAME">second</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>373</span> </span><span class="WHIT">            </span><span class="NAME">millisecond</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>374</span> </span><span class="WHIT">            </span><span class="NAME">cal</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.cal</span><span class="WHIT">
+<span class='line'>375</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>376</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">weekStart</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">first.onOrAfter</span><span class="PUNC">(</span><span class="NAME">li.getFirstDayOfWeek</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>377</span> 
+<span class='line'>378</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">weekStart</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">first.getRataDie</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">3</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>379</span> </span><span class="WHIT">            </span><span class="COMM">// if the first week has 4 or more days in it of the current month, then consider</span><span class="WHIT">
+<span class='line'>380</span> </span><span class="WHIT">            </span><span class="COMM">// that week 1. Otherwise, it is week 0. To make it week 1, move the week start</span><span class="WHIT">
+<span class='line'>381</span> </span><span class="WHIT">            </span><span class="COMM">// one week earlier.</span><span class="WHIT">
+<span class='line'>382</span> </span><span class="WHIT">            </span><span class="NAME">weekStart</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">7</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>383</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>384</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">this.rd.getRataDie</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">weekStart</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">7</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>385</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>386</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>387</span> 
+<span class='line'>388</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">IDate</span><span class="PUNC">;</span></pre></body></html>

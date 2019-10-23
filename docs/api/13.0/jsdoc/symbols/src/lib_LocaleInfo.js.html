@@ -1,0 +1,572 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * LocaleInfo.js - Encode locale-specific defaults
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * Copyright © 2012-2015, 2018, JEDLSoft
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  7</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  8</span>  * You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 13</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 14</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 15</span>  *
+<span class='line'> 16</span>  * See the License for the specific language governing permissions and
+<span class='line'> 17</span>  * limitations under the License.
+<span class='line'> 18</span>  */</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="COMM">// !data localeinfo</span><span class="WHIT">
+<span class='line'> 21</span> 
+<span class='line'> 22</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./ilib.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Utils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Utils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Locale.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 25</span> 
+<span class='line'> 26</span> </span><span class="COMM">/**
+<span class='line'> 27</span>  * @class
+<span class='line'> 28</span>  * Create a new locale info instance. Locale info instances give information about
+<span class='line'> 29</span>  * the default settings for a particular locale. These settings may be overridden
+<span class='line'> 30</span>  * by various parts of the code, and should be used as a fall-back setting of last
+<span class='line'> 31</span>  * resort. &lt;p>
+<span class='line'> 32</span>  *
+<span class='line'> 33</span>  * The optional options object holds extra parameters if they are necessary. The
+<span class='line'> 34</span>  * current list of supported options are:
+<span class='line'> 35</span>  *
+<span class='line'> 36</span>  * &lt;ul>
+<span class='line'> 37</span>  * &lt;li>&lt;i>onLoad&lt;/i> - a callback function to call when the locale info object is fully
+<span class='line'> 38</span>  * loaded. When the onLoad option is given, the localeinfo object will attempt to
+<span class='line'> 39</span>  * load any missing locale data using the ilib loader callback.
+<span class='line'> 40</span>  * When the constructor is done (even if the data is already preassembled), the
+<span class='line'> 41</span>  * onLoad function is called with the current instance as a parameter, so this
+<span class='line'> 42</span>  * callback can be used with preassembled or dynamic loading or a mix of the two.
+<span class='line'> 43</span>  *
+<span class='line'> 44</span>  * &lt;li>&lt;i>sync&lt;/i> - tell whether to load any missing locale data synchronously or
+<span class='line'> 45</span>  * asynchronously. If this option is given as "false", then the "onLoad"
+<span class='line'> 46</span>  * callback must be given, as the instance returned from this constructor will
+<span class='line'> 47</span>  * not be usable for a while.
+<span class='line'> 48</span>  *
+<span class='line'> 49</span>  * &lt;li>&lt;i>loadParams&lt;/i> - an object containing parameters to pass to the
+<span class='line'> 50</span>  * loader callback function when locale data is missing. The parameters are not
+<span class='line'> 51</span>  * interpretted or modified in any way. They are simply passed along. The object
+<span class='line'> 52</span>  * may contain any property/value pairs as long as the calling code is in
+<span class='line'> 53</span>  * agreement with the loader callback function as to what those parameters mean.
+<span class='line'> 54</span>  * &lt;/ul>
+<span class='line'> 55</span>  *
+<span class='line'> 56</span>  * If this copy of ilib is pre-assembled and all the data is already available,
+<span class='line'> 57</span>  * or if the data was already previously loaded, then this constructor will call
+<span class='line'> 58</span>  * the onLoad callback immediately when the initialization is done.
+<span class='line'> 59</span>  * If the onLoad option is not given, this class will only attempt to load any
+<span class='line'> 60</span>  * missing locale data synchronously.
+<span class='line'> 61</span>  *
+<span class='line'> 62</span>  *
+<span class='line'> 63</span>  * @constructor
+<span class='line'> 64</span>  * @see {ilib.setLoaderCallback} for information about registering a loader callback
+<span class='line'> 65</span>  * function
+<span class='line'> 66</span>  * @param {Locale|string=} locale the locale for which the info is sought, or undefined for
+<span class='line'> 67</span>  * @param {Object=} options the locale for which the info is sought, or undefined for
+<span class='line'> 68</span>  * the current locale
+<span class='line'> 69</span>  */</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">LocaleInfo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">        </span><span class="NAME">loadParams</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 73</span> 
+<span class='line'> 74</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 75</span>       @private
+<span class='line'> 76</span>       @type {{
+<span class='line'> 77</span>         calendar:string,
+<span class='line'> 78</span>         clock:string,
+<span class='line'> 79</span>         currency:string,
+<span class='line'> 80</span>         delimiter: {quotationStart:string,quotationEnd:string,alternateQuotationStart:string,alternateQuotationEnd:string},
+<span class='line'> 81</span>         firstDayOfWeek:number,
+<span class='line'> 82</span>         meridiems:string,
+<span class='line'> 83</span>         numfmt:{
+<span class='line'> 84</span>             currencyFormats:{common:string,commonNegative:string,iso:string,isoNegative:string},
+<span class='line'> 85</span>             decimalChar:string,
+<span class='line'> 86</span>             exponential:string,
+<span class='line'> 87</span>             groupChar:string,
+<span class='line'> 88</span>             negativenumFmt:string,
+<span class='line'> 89</span>             negativepctFmt:string,
+<span class='line'> 90</span>             pctChar:string,
+<span class='line'> 91</span>             pctFmt:string,
+<span class='line'> 92</span>             prigroupSize:number,
+<span class='line'> 93</span>             roundingMode:string,
+<span class='line'> 94</span>             script:string,
+<span class='line'> 95</span>             secgroupSize:number,
+<span class='line'> 96</span>             useNative:boolean
+<span class='line'> 97</span>         },
+<span class='line'> 98</span>         timezone:string,
+<span class='line'> 99</span>         units:string,
+<span class='line'>100</span>         weekendEnd:number,
+<span class='line'>101</span>         weekendStart:number,
+<span class='line'>102</span>         paperSizes:{regular:string}
+<span class='line'>103</span>       }}
+<span class='line'>104</span>     */</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">    </span><span class="NAME">this.info</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">LocaleInfo.defaultInfo</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>106</span> 
+<span class='line'>107</span> </span><span class="WHIT">    </span><span class="KEYW">switch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">        </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"string"</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">            </span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">            </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">        </span><span class="KEYW">default</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">        </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"undefined"</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">            </span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="WHIT">            </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">        </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"object"</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">            </span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">            </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>119</span> 
+<span class='line'>120</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.sync</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">            </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="PUNC">!</span><span class="NAME">options.sync</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>124</span> 
+<span class='line'>125</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.loadParams</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">            </span><span class="NAME">loadParams</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.loadParams</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>129</span> 
+<span class='line'>130</span> </span><span class="WHIT">    </span><span class="NAME">Utils.loadData</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">        </span><span class="NAME">object</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"LocaleInfo"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">        </span><span class="NAME">locale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">        </span><span class="NAME">name</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"localeinfo.json"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">        </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">        </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">        </span><span class="NAME">callback</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">info</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">            </span><span class="NAME">this.info</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">info</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">LocaleInfo.defaultInfo</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">                </span><span class="NAME">options.onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>144</span> 
+<span class='line'>145</span> </span><span class="NAME">LocaleInfo.defaultInfo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib.data.localeinfo</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="NAME">LocaleInfo.defaultInfo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">LocaleInfo.defaultInfo</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">    </span><span class="STRN">"calendar"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"gregorian"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">    </span><span class="STRN">"clock"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"24"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">    </span><span class="STRN">"currency"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"USD"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">    </span><span class="STRN">"delimiter"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">        </span><span class="STRN">"quotationStart"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"“"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">        </span><span class="STRN">"quotationEnd"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"”"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">        </span><span class="STRN">"alternateQuotationStart"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"‘"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">        </span><span class="STRN">"alternateQuotationEnd"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"’"</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">    </span><span class="STRN">"firstDayOfWeek"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">    </span><span class="STRN">"meridiems"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"gregorian"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">    </span><span class="STRN">"numfmt"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>159</span> </span><span class="WHIT">        </span><span class="STRN">"script"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"Latn"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">        </span><span class="STRN">"decimalChar"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"."</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">        </span><span class="STRN">"groupChar"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">","</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">        </span><span class="STRN">"pctChar"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"%"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">        </span><span class="STRN">"exponential"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"E"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">        </span><span class="STRN">"prigroupSize"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">3</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">        </span><span class="STRN">"currencyFormats"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">            </span><span class="STRN">"common"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"{s} {n}"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">            </span><span class="STRN">"commonNegative"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"-{s} {n}"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">            </span><span class="STRN">"iso"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"{s} {n}"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">            </span><span class="STRN">"isoNegative"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"({s} {n})"</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">        </span><span class="STRN">"negativenumFmt"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"-{n}"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">        </span><span class="STRN">"pctFmt"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"{n}%"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="WHIT">        </span><span class="STRN">"negativepctFmt"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"-{n}%"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="WHIT">        </span><span class="STRN">"roundingMode"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"halfdown"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">        </span><span class="STRN">"secGroupSize"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">        </span><span class="STRN">"useNative"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">    </span><span class="STRN">"paperSizes"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">        </span><span class="STRN">"regular"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"A4"</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">    </span><span class="STRN">"timezone"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"Etc/UTC"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">    </span><span class="STRN">"units"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"metric"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">    </span><span class="STRN">"weekendEnd"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">    </span><span class="STRN">"weekendStart"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">6</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>186</span> 
+<span class='line'>187</span> </span><span class="NAME">LocaleInfo.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>189</span>      * Return the name of the locale's language in English.
+<span class='line'>190</span>      * @returns {string} the name of the locale's language in English
+<span class='line'>191</span>      */</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">    </span><span class="NAME">getLanguageName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info</span><span class="PUNC">[</span><span class="STRN">"language.name"</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>195</span> 
+<span class='line'>196</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>197</span>      * Return the name of the locale's region in English. If the locale
+<span class='line'>198</span>      * has no region, this returns undefined.
+<span class='line'>199</span>      *
+<span class='line'>200</span>      * @returns {string|undefined} the name of the locale's region in English
+<span class='line'>201</span>      */</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">    </span><span class="NAME">getRegionName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info</span><span class="PUNC">[</span><span class="STRN">"region.name"</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>205</span> 
+<span class='line'>206</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>207</span>      * Return whether this locale commonly uses the 12- or the 24-hour clock.
+<span class='line'>208</span>      *
+<span class='line'>209</span>      * @returns {string} "12" if the locale commonly uses a 12-hour clock, or "24"
+<span class='line'>210</span>      * if the locale commonly uses a 24-hour clock.
+<span class='line'>211</span>      */</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">    </span><span class="NAME">getClock</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.clock</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>215</span> 
+<span class='line'>216</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>217</span>      * Return the locale that this info object was created with.
+<span class='line'>218</span>      * @returns {Locale} The locale spec of the locale used to construct this info instance
+<span class='line'>219</span>      */</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="WHIT">    </span><span class="NAME">getLocale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>221</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>223</span> 
+<span class='line'>224</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>225</span>      * Return the name of the measuring system that is commonly used in the given locale.
+<span class='line'>226</span>      * Valid values are "uscustomary", "imperial", and "metric".
+<span class='line'>227</span>      *
+<span class='line'>228</span>      * @returns {string} The name of the measuring system commonly used in the locale
+<span class='line'>229</span>      */</span><span class="WHIT">
+<span class='line'>230</span> </span><span class="WHIT">    </span><span class="NAME">getUnits</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>231</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.units</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>232</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>233</span> 
+<span class='line'>234</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>235</span>      * Return the name of the calendar that is commonly used in the given locale.
+<span class='line'>236</span>      *
+<span class='line'>237</span>      * @returns {string} The name of the calendar commonly used in the locale
+<span class='line'>238</span>      */</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">    </span><span class="NAME">getCalendar</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.calendar</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>242</span> 
+<span class='line'>243</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>244</span>      * Return the day of week that starts weeks in the current locale. Days are still
+<span class='line'>245</span>      * numbered the standard way with 0 for Sunday through 6 for Saturday, but calendars
+<span class='line'>246</span>      * should be displayed and weeks calculated with the day of week returned from this
+<span class='line'>247</span>      * function as the first day of the week.
+<span class='line'>248</span>      *
+<span class='line'>249</span>      * @returns {number} the day of the week that starts weeks in the current locale.
+<span class='line'>250</span>      */</span><span class="WHIT">
+<span class='line'>251</span> </span><span class="WHIT">    </span><span class="NAME">getFirstDayOfWeek</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>252</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.firstDayOfWeek</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>253</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>254</span> 
+<span class='line'>255</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>256</span>      * Return the day of week that starts weekend in the current locale. Days are still
+<span class='line'>257</span>      * numbered the standard way with 0 for Sunday through 6 for Saturday.
+<span class='line'>258</span>      *
+<span class='line'>259</span>      * @returns {number} the day of the week that starts weeks in the current locale.
+<span class='line'>260</span>      */</span><span class="WHIT">
+<span class='line'>261</span> </span><span class="WHIT">    </span><span class="NAME">getWeekEndStart</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>262</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.weekendStart</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>263</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>264</span> 
+<span class='line'>265</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>266</span>      * Return the day of week that starts weekend in the current locale. Days are still
+<span class='line'>267</span>      * numbered the standard way with 0 for Sunday through 6 for Saturday.
+<span class='line'>268</span>      *
+<span class='line'>269</span>      * @returns {number} the day of the week that starts weeks in the current locale.
+<span class='line'>270</span>      */</span><span class="WHIT">
+<span class='line'>271</span> </span><span class="WHIT">    </span><span class="NAME">getWeekEndEnd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>272</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.weekendEnd</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>273</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>274</span> 
+<span class='line'>275</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>276</span>      * Return the default time zone for this locale. Many locales span across multiple
+<span class='line'>277</span>      * time zones. In this case, the time zone with the largest population is chosen
+<span class='line'>278</span>      * to represent the locale. This is obviously not that accurate, but then again,
+<span class='line'>279</span>      * this method's return value should only be used as a default anyways.
+<span class='line'>280</span>      * @returns {string} the default time zone for this locale.
+<span class='line'>281</span>      */</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="WHIT">    </span><span class="NAME">getTimeZone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.timezone</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>285</span> 
+<span class='line'>286</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>287</span>      * Return the decimal separator for formatted numbers in this locale.
+<span class='line'>288</span>      * @returns {string} the decimal separator char
+<span class='line'>289</span>      */</span><span class="WHIT">
+<span class='line'>290</span> </span><span class="WHIT">    </span><span class="NAME">getDecimalSeparator</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>291</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.decimalChar</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>292</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>293</span> 
+<span class='line'>294</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>295</span>      * Return the decimal separator for formatted numbers in this locale for native script.
+<span class='line'>296</span>      * @returns {string} the decimal separator char
+<span class='line'>297</span>      */</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">    </span><span class="NAME">getNativeDecimalSeparator</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.info.native_numfmt</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.info.native_numfmt.decimalChar</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.decimalChar</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>301</span> 
+<span class='line'>302</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>303</span>      * Return the separator character used to separate groups of digits on the
+<span class='line'>304</span>      * integer side of the decimal character.
+<span class='line'>305</span>      * @returns {string} the grouping separator char
+<span class='line'>306</span>      */</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">    </span><span class="NAME">getGroupingSeparator</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>308</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.groupChar</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>310</span> 
+<span class='line'>311</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>312</span>      * Return the separator character used to separate groups of digits on the
+<span class='line'>313</span>      * integer side of the decimal character for the native script if present other than the default script.
+<span class='line'>314</span>      * @returns {string} the grouping separator char
+<span class='line'>315</span>      */</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">    </span><span class="NAME">getNativeGroupingSeparator</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.info.native_numfmt</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.info.native_numfmt.groupChar</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.groupChar</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>319</span> 
+<span class='line'>320</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>321</span>      * Return the minimum number of digits grouped together on the integer side
+<span class='line'>322</span>      * for the first (primary) group.
+<span class='line'>323</span>      * In western European cultures, groupings are in 1000s, so the number of digits
+<span class='line'>324</span>      * is 3.
+<span class='line'>325</span>      * @returns {number} the number of digits in a primary grouping, or 0 for no grouping
+<span class='line'>326</span>      */</span><span class="WHIT">
+<span class='line'>327</span> </span><span class="WHIT">    </span><span class="NAME">getPrimaryGroupingDigits</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>328</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.info.numfmt.prigroupSize</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.prigroupSize</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>330</span> 
+<span class='line'>331</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>332</span>      * Return the minimum number of digits grouped together on the integer side
+<span class='line'>333</span>      * for the second or more (secondary) group.&lt;p>
+<span class='line'>334</span>      *
+<span class='line'>335</span>      * In western European cultures, all groupings are by 1000s, so the secondary
+<span class='line'>336</span>      * size should be 0 because there is no secondary size. In general, if this
+<span class='line'>337</span>      * method returns 0, then all groupings are of the primary size.&lt;p>
+<span class='line'>338</span>      *
+<span class='line'>339</span>      * For some other cultures, the first grouping (primary)
+<span class='line'>340</span>      * is 3 and any subsequent groupings (secondary) are two. So, 100000 would be
+<span class='line'>341</span>      * written as: "1,00,000".
+<span class='line'>342</span>      *
+<span class='line'>343</span>      * @returns {number} the number of digits in a secondary grouping, or 0 for no
+<span class='line'>344</span>      * secondary grouping.
+<span class='line'>345</span>      */</span><span class="WHIT">
+<span class='line'>346</span> </span><span class="WHIT">    </span><span class="NAME">getSecondaryGroupingDigits</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>347</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.secgroupSize</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>348</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>349</span> 
+<span class='line'>350</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>351</span>      * Return the format template used to format percentages in this locale.
+<span class='line'>352</span>      * @returns {string} the format template for formatting percentages
+<span class='line'>353</span>      */</span><span class="WHIT">
+<span class='line'>354</span> </span><span class="WHIT">    </span><span class="NAME">getPercentageFormat</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>355</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.pctFmt</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>356</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>357</span> 
+<span class='line'>358</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>359</span>      * Return the format template used to format percentages in this locale
+<span class='line'>360</span>      * with negative amounts.
+<span class='line'>361</span>      * @returns {string} the format template for formatting percentages
+<span class='line'>362</span>      */</span><span class="WHIT">
+<span class='line'>363</span> </span><span class="WHIT">    </span><span class="NAME">getNegativePercentageFormat</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>364</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.negativepctFmt</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>365</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>366</span> 
+<span class='line'>367</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>368</span>      * Return the symbol used for percentages in this locale.
+<span class='line'>369</span>      * @returns {string} the symbol used for percentages in this locale
+<span class='line'>370</span>      */</span><span class="WHIT">
+<span class='line'>371</span> </span><span class="WHIT">    </span><span class="NAME">getPercentageSymbol</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>372</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.pctChar</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"%"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>373</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>374</span> 
+<span class='line'>375</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>376</span>      * Return the symbol used for exponential in this locale.
+<span class='line'>377</span>      * @returns {string} the symbol used for exponential in this locale
+<span class='line'>378</span>      */</span><span class="WHIT">
+<span class='line'>379</span> </span><span class="WHIT">    </span><span class="NAME">getExponential</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>380</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.exponential</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>381</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>382</span> 
+<span class='line'>383</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>384</span>      * Return the symbol used for exponential in this locale for native script.
+<span class='line'>385</span>      * @returns {string} the symbol used for exponential in this locale for native script
+<span class='line'>386</span>      */</span><span class="WHIT">
+<span class='line'>387</span> </span><span class="WHIT">    </span><span class="NAME">getNativeExponential</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>388</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.info.native_numfmt</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.info.native_numfmt.exponential</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.exponential</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>389</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>390</span> 
+<span class='line'>391</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>392</span>      * Return the symbol used for percentages in this locale for native script.
+<span class='line'>393</span>      * @returns {string} the symbol used for percentages in this locale for native script
+<span class='line'>394</span>      */</span><span class="WHIT">
+<span class='line'>395</span> </span><span class="WHIT">    </span><span class="NAME">getNativePercentageSymbol</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>396</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.info.native_numfmt</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.info.native_numfmt.pctChar</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.pctChar</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"%"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>397</span> 
+<span class='line'>398</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>399</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>400</span>      * Return the format template used to format negative numbers in this locale.
+<span class='line'>401</span>      * @returns {string} the format template for formatting negative numbers
+<span class='line'>402</span>      */</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="WHIT">    </span><span class="NAME">getNegativeNumberFormat</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>404</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.negativenumFmt</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>405</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>406</span> 
+<span class='line'>407</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>408</span>      * Return an object containing the format templates for formatting currencies
+<span class='line'>409</span>      * in this locale. The object has a number of properties in it that each are
+<span class='line'>410</span>      * a particular style of format. Normally, this contains a "common" and an "iso"
+<span class='line'>411</span>      * style, but may contain others in the future.
+<span class='line'>412</span>      * @returns {Object} an object containing the format templates for currencies
+<span class='line'>413</span>      */</span><span class="WHIT">
+<span class='line'>414</span> </span><span class="WHIT">    </span><span class="NAME">getCurrencyFormats</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>415</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.currencyFormats</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>416</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>417</span> 
+<span class='line'>418</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>419</span>      * Return the currency that is legal in the locale, or which is most commonly
+<span class='line'>420</span>      * used in regular commerce.
+<span class='line'>421</span>      * @returns {string} the ISO 4217 code for the currency of this locale
+<span class='line'>422</span>      */</span><span class="WHIT">
+<span class='line'>423</span> </span><span class="WHIT">    </span><span class="NAME">getCurrency</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>424</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.currency</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>425</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>426</span> 
+<span class='line'>427</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>428</span>      * Return a string that describes the style of digits used by this locale.
+<span class='line'>429</span>      * Possible return values are:
+<span class='line'>430</span>      * &lt;ul>
+<span class='line'>431</span>      * &lt;li>&lt;i>western&lt;/i> - uses the regular western 10-based digits 0 through 9
+<span class='line'>432</span>      * &lt;li>&lt;i>optional&lt;/i> - native 10-based digits exist, but in modern usage,
+<span class='line'>433</span>      * this locale most often uses western digits
+<span class='line'>434</span>      * &lt;li>&lt;i>native&lt;/i> - native 10-based native digits exist and are used
+<span class='line'>435</span>      * regularly by this locale
+<span class='line'>436</span>      * &lt;li>&lt;i>custom&lt;/i> - uses native digits by default that are not 10-based
+<span class='line'>437</span>      * &lt;/ul>
+<span class='line'>438</span>      * @returns {string} string that describes the style of digits used in this locale
+<span class='line'>439</span>      */</span><span class="WHIT">
+<span class='line'>440</span> </span><span class="WHIT">    </span><span class="NAME">getDigitsStyle</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>441</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.info.numfmt</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.useNative</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>442</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"native"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>443</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>444</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.info.native_numfmt</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>445</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"optional"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>446</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>447</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"western"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>448</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>449</span> 
+<span class='line'>450</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>451</span>      * Return the digits of the default script if they are defined.
+<span class='line'>452</span>      * If not defined, the default should be the regular "Arabic numerals"
+<span class='line'>453</span>      * used in the Latin script. (0-9)
+<span class='line'>454</span>      * @returns {string|undefined} the digits used in the default script
+<span class='line'>455</span>      */</span><span class="WHIT">
+<span class='line'>456</span> </span><span class="WHIT">    </span><span class="NAME">getDigits</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>457</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.digits</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>458</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>459</span> 
+<span class='line'>460</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>461</span>      * Return the digits of the native script if they are defined.
+<span class='line'>462</span>      * @returns {string|undefined} the digits used in the default script
+<span class='line'>463</span>      */</span><span class="WHIT">
+<span class='line'>464</span> </span><span class="WHIT">    </span><span class="NAME">getNativeDigits</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>465</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.info.numfmt.useNative</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.digits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.info.native_numfmt</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.info.native_numfmt.digits</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>466</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>467</span> 
+<span class='line'>468</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>469</span>      * If this locale typically uses a different type of rounding for numeric
+<span class='line'>470</span>      * formatting other than halfdown, especially for currency, then it can be
+<span class='line'>471</span>      * specified in the localeinfo. If the locale uses the default, then this
+<span class='line'>472</span>      * method returns undefined. The locale's rounding method overrides the
+<span class='line'>473</span>      * rounding method for the currency itself, which can sometimes shared
+<span class='line'>474</span>      * between various locales so it is less specific.
+<span class='line'>475</span>      * @returns {string} the name of the rounding mode typically used in this
+<span class='line'>476</span>      * locale, or "halfdown" if the locale does not override the default
+<span class='line'>477</span>      */</span><span class="WHIT">
+<span class='line'>478</span> </span><span class="WHIT">    </span><span class="NAME">getRoundingMode</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>479</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.numfmt.roundingMode</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>480</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>481</span> 
+<span class='line'>482</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>483</span>      * Return the default script used to write text in the language of this
+<span class='line'>484</span>      * locale. Text for most languages is written in only one script, but there
+<span class='line'>485</span>      * are some languages where the text can be written in a number of scripts,
+<span class='line'>486</span>      * depending on a variety of things such as the region, ethnicity, religion,
+<span class='line'>487</span>      * etc. of the author. This method returns the default script for the
+<span class='line'>488</span>      * locale, in which the language is most commonly written.&lt;p>
+<span class='line'>489</span>      *
+<span class='line'>490</span>      * The script is returned as an ISO 15924 4-letter code.
+<span class='line'>491</span>      *
+<span class='line'>492</span>      * @returns {string} the ISO 15924 code for the default script used to write
+<span class='line'>493</span>      * text in this locale
+<span class='line'>494</span>      */</span><span class="WHIT">
+<span class='line'>495</span> </span><span class="WHIT">    </span><span class="NAME">getDefaultScript</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>496</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.info.scripts</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">this.info.scripts</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"Latn"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>497</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>498</span> 
+<span class='line'>499</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>500</span>      * Return the script used for the current locale. If the current locale
+<span class='line'>501</span>      * explicitly defines a script, then this script is returned. If not, then
+<span class='line'>502</span>      * the default script for the locale is returned.
+<span class='line'>503</span>      *
+<span class='line'>504</span>      * @see LocaleInfo.getDefaultScript
+<span class='line'>505</span>      * @returns {string} the ISO 15924 code for the script used to write
+<span class='line'>506</span>      * text in this locale
+<span class='line'>507</span>      */</span><span class="WHIT">
+<span class='line'>508</span> </span><span class="WHIT">    </span><span class="NAME">getScript</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>509</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.locale.getScript</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.getDefaultScript</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>510</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>511</span> 
+<span class='line'>512</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>513</span>      * Return an array of script codes which are used to write text in the current
+<span class='line'>514</span>      * language. Text for most languages is written in only one script, but there
+<span class='line'>515</span>      * are some languages where the text can be written in a number of scripts,
+<span class='line'>516</span>      * depending on a variety of things such as the region, ethnicity, religion,
+<span class='line'>517</span>      * etc. of the author. This method returns an array of script codes in which
+<span class='line'>518</span>      * the language is commonly written.
+<span class='line'>519</span>      *
+<span class='line'>520</span>      * @returns {Array.&lt;string>} an array of ISO 15924 codes for the scripts used
+<span class='line'>521</span>      * to write text in this language
+<span class='line'>522</span>      */</span><span class="WHIT">
+<span class='line'>523</span> </span><span class="WHIT">    </span><span class="NAME">getAllScripts</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>524</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.scripts</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="STRN">"Latn"</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>525</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>526</span> 
+<span class='line'>527</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>528</span>      * Return the default style of meridiems used in this locale. Meridiems are
+<span class='line'>529</span>      * times of day like AM/PM. In a few locales with some calendars, for example
+<span class='line'>530</span>      * Amharic/Ethiopia using the Ethiopic calendar, the times of day may be
+<span class='line'>531</span>      * split into different segments than simple AM/PM as in the Gregorian
+<span class='line'>532</span>      * calendar. Only a few locales are like that. For most locales, formatting
+<span class='line'>533</span>      * a Gregorian date will use the regular Gregorian AM/PM meridiems.
+<span class='line'>534</span>      *
+<span class='line'>535</span>      * @returns {string} the default meridiems style used in this locale. Possible
+<span class='line'>536</span>      * values are "gregorian", "chinese", and "ethiopic"
+<span class='line'>537</span>      */</span><span class="WHIT">
+<span class='line'>538</span> </span><span class="WHIT">    </span><span class="NAME">getMeridiemsStyle</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>539</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.meridiems</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"gregorian"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>540</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>541</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>542</span>      * Return the default PaperSize information in this locale.
+<span class='line'>543</span>      * @returns {string} default PaperSize in this locale
+<span class='line'>544</span>      */</span><span class="WHIT">
+<span class='line'>545</span> </span><span class="WHIT">    </span><span class="NAME">getPaperSize</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>546</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.paperSizes.regular</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>547</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>548</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>549</span>      * Return the default Delimiter QuotationStart information in this locale.
+<span class='line'>550</span>      * @returns {string} default QuotationStart in this locale
+<span class='line'>551</span>      */</span><span class="WHIT">
+<span class='line'>552</span> </span><span class="WHIT">    </span><span class="NAME">getDelimiterQuotationStart</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>553</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.delimiter.quotationStart</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>554</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>555</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>556</span>      * Return the default Delimiter QuotationEnd information in this locale.
+<span class='line'>557</span>      * @returns {string} default QuotationEnd in this locale
+<span class='line'>558</span>      */</span><span class="WHIT">
+<span class='line'>559</span> </span><span class="WHIT">    </span><span class="NAME">getDelimiterQuotationEnd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>560</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.info.delimiter.quotationEnd</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>561</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>562</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>563</span> 
+<span class='line'>564</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">LocaleInfo</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>565</span> </span></pre></body></html>

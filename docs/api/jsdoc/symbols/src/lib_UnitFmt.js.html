@@ -1,0 +1,537 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * UnitFmt.js - Unit formatter class
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * Copyright © 2014-2015, 2018 JEDLSoft
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  7</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  8</span>  * You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 13</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 14</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 15</span>  *
+<span class='line'> 16</span>  * See the License for the specific language governing permissions and
+<span class='line'> 17</span>  * limitations under the License.
+<span class='line'> 18</span>  */</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="COMM">/*
+<span class='line'> 21</span> !depends
+<span class='line'> 22</span> ilib.js
+<span class='line'> 23</span> Locale.js
+<span class='line'> 24</span> IString.js
+<span class='line'> 25</span> NumFmt.js
+<span class='line'> 26</span> Utils.js
+<span class='line'> 27</span> ListFmt.js
+<span class='line'> 28</span> Measurement.js
+<span class='line'> 29</span> */</span><span class="WHIT">
+<span class='line'> 30</span> 
+<span class='line'> 31</span> </span><span class="COMM">// !data unitfmt</span><span class="WHIT">
+<span class='line'> 32</span> 
+<span class='line'> 33</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"../index.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Utils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Utils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 35</span> 
+<span class='line'> 36</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Locale.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./IString.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">NumFmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./NumFmt.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ListFmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./ListFmt.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Measurement</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Measurement.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 41</span> 
+<span class='line'> 42</span> </span><span class="COMM">// for converting ilib lengths to the ones that are supported in cldr</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">lenMap</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">  </span><span class="STRN">"full"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"long"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">  </span><span class="STRN">"long"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"long"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">  </span><span class="STRN">"medium"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"short"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">  </span><span class="STRN">"short"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"short"</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 49</span> 
+<span class='line'> 50</span> </span><span class="COMM">/**
+<span class='line'> 51</span>  * @class
+<span class='line'> 52</span>  * Create a new unit formatter instance. The unit formatter is immutable once
+<span class='line'> 53</span>  * it is created, but can format as many different strings with different values
+<span class='line'> 54</span>  * as needed with the same options. Create different unit formatter instances
+<span class='line'> 55</span>  * for different purposes and then keep them cached for use later if you have
+<span class='line'> 56</span>  * more than one unit string to format.&lt;p>
+<span class='line'> 57</span>  *
+<span class='line'> 58</span>  * The options may contain any of the following properties:
+<span class='line'> 59</span>  *
+<span class='line'> 60</span>  * &lt;ul>
+<span class='line'> 61</span>  * &lt;li>&lt;i>locale&lt;/i> - locale to use when formatting the units. The locale also
+<span class='line'> 62</span>  * controls the translation of the names of the units. If the locale is
+<span class='line'> 63</span>  * not specified, then the default locale of the app or web page will be used.
+<span class='line'> 64</span>  *
+<span class='line'> 65</span>  * &lt;li>&lt;i>autoScale&lt;/i> - when true, automatically scale the amount to get the smallest
+<span class='line'> 66</span>  * number greater than 1, where possible, possibly by converting units within the locale's
+<span class='line'> 67</span>  * measurement system. For example, if the current locale is "en-US", and we have
+<span class='line'> 68</span>  * a measurement containing 278 fluid ounces, then the number "278" can be scaled down
+<span class='line'> 69</span>  * by converting the units to a larger one such as gallons. The scaled size would be
+<span class='line'> 70</span>  * 2.17188 gallons. Since iLib does not have a US customary measure larger than gallons,
+<span class='line'> 71</span>  * it cannot scale it down any further. If the amount is less than the smallest measure
+<span class='line'> 72</span>  * already, it cannot be scaled down any further and no autoscaling will be applied.
+<span class='line'> 73</span>  * Default for the autoScale property is "true", so it only needs to be specified when
+<span class='line'> 74</span>  * you want to turn off autoscaling.
+<span class='line'> 75</span>  *
+<span class='line'> 76</span>  * &lt;li>&lt;i>autoConvert&lt;/i> - automatically convert the units to the nearest appropriate
+<span class='line'> 77</span>  * measure of the same type in the measurement system used by the locale. For example,
+<span class='line'> 78</span>  * if a measurement of length is given in meters, but the current locale is "en-US"
+<span class='line'> 79</span>  * which uses the US Customary system, then the nearest appropriate measure would be
+<span class='line'> 80</span>  * "yards", and the amount would be converted from meters to yards automatically before
+<span class='line'> 81</span>  * being formatted. Default for the autoConvert property is "true", so it only needs to
+<span class='line'> 82</span>  * be specified when you want to turn off autoconversion.
+<span class='line'> 83</span>  *
+<span class='line'> 84</span>  * &lt;li>&lt;i>usage&lt;/i> - describe the reason for the measure. For example, the usage of
+<span class='line'> 85</span>  * a formatter may be for a "person height", which implies that certain customary units
+<span class='line'> 86</span>  * should be used, even though other measures in the same system may be more efficient.
+<span class='line'> 87</span>  * In US Customary measures, a person's height is traditionally given in feet and inches,
+<span class='line'> 88</span>  * even though yards, feet and inches would be more efficient and logical.&lt;p>
+<span class='line'> 89</span>  *
+<span class='line'> 90</span>  * Specifying a usage implies that the
+<span class='line'> 91</span>  * autoScale is turned on so that the measure can be scaled to the level required for
+<span class='line'> 92</span>  * the customary measures for the usage. Setting the usage can also implicitly set
+<span class='line'> 93</span>  * the style, the max- and minFractionDigits, roundingMode, length, etc. if those
+<span class='line'> 94</span>  * options are not explicitly given in this options object. If they are given, the
+<span class='line'> 95</span>  * explicit settings override the defaults of the usage.&lt;p>
+<span class='line'> 96</span>  *
+<span class='line'> 97</span>  * Usages imply that the formatter should be used with a specific type of measurement.
+<span class='line'> 98</span>  * If the format method is called on a measurement that is of the wrong type for the
+<span class='line'> 99</span>  * usage, it will be formatted as a regular measurement with default options.&lt;p>
+<span class='line'>100</span>  *
+<span class='line'>101</span>  * List of usages currently supported:
+<span class='line'>102</span>  *   &lt;ul>
+<span class='line'>103</span>  *   &lt;li>&lt;i>general&lt;/i> no specific usage with no preselected measures. (Default which does not
+<span class='line'>104</span>  *   restrict the units used for any type of measurement.)
+<span class='line'>105</span>  *   &lt;li>&lt;i>floorSpace&lt;/i> area of the floor of a house or building
+<span class='line'>106</span>  *   &lt;li>&lt;i>landArea&lt;/i> area of a piece of plot of land
+<span class='line'>107</span>  *   &lt;li>&lt;i>networkingSpeed&lt;/i> speed of transfer of data over a network
+<span class='line'>108</span>  *   &lt;li>&lt;i>audioSpeed&lt;/i> speed of transfer of audio data
+<span class='line'>109</span>  *   &lt;li>&lt;i>interfaceSpeed&lt;/i> speed of transfer of data over a computer interface such as a USB or SATA bus
+<span class='line'>110</span>  *   &lt;li>&lt;i>foodEnergy&lt;/i> amount of energy contains in food
+<span class='line'>111</span>  *   &lt;li>&lt;i>electricalEnergy&lt;/i> amount of energy in electricity
+<span class='line'>112</span>  *   &lt;li>&lt;i>heatingEnergy&lt;/i> amount of energy required to heat things such as water or home interiors
+<span class='line'>113</span>  *   &lt;li>&lt;i>babyHeight&lt;/i> length of a baby
+<span class='line'>114</span>  *   &lt;li>&lt;i>personHeight&lt;/i> height of an adult or child (not a baby)
+<span class='line'>115</span>  *   &lt;li>&lt;i>vehicleDistance&lt;/i> distance traveled by a vehicle or aircraft (except a boat)
+<span class='line'>116</span>  *   &lt;li>&lt;i>nauticalDistance&lt;/i> distance traveled by a boat
+<span class='line'>117</span>  *   &lt;li>&lt;i>personWeight&lt;/i> weight/mass of an adult human or larger child
+<span class='line'>118</span>  *   &lt;li>&lt;i>babyWeight&lt;/i> weight/mass of a baby or of small animals such as cats and dogs
+<span class='line'>119</span>  *   &lt;li>&lt;i>vehicleWeight&lt;/i> weight/mass of a vehicle (including a boat)
+<span class='line'>120</span>  *   &lt;li>&lt;i>drugWeight&lt;/i> weight/mass of a medicinal drug
+<span class='line'>121</span>  *   &lt;li>&lt;i>vehicleSpeed&lt;/i> speed of travel of a vehicle or aircraft (except a boat)
+<span class='line'>122</span>  *   &lt;li>&lt;i>nauticalSpeed&lt;/i> speed of travel of a boat
+<span class='line'>123</span>  *   &lt;li>&lt;i>dryFoodVolume&lt;/i> volume of a dry food substance in a recipe such as flour
+<span class='line'>124</span>  *   &lt;li>&lt;i>liquidFoodVolume&lt;/i> volume of a liquid food substance in a recipe such as milk
+<span class='line'>125</span>  *   &lt;li>&lt;i>drinkVolume&lt;/i> volume of a drink
+<span class='line'>126</span>  *   &lt;li>&lt;i>fuelVolume&lt;/i> volume of a vehicular fuel
+<span class='line'>127</span>  *   &lt;li>&lt;i>engineVolume&lt;/i> volume of an engine's combustion space
+<span class='line'>128</span>  *   &lt;li>&lt;i>storageVolume&lt;/i> volume of a mass storage tank
+<span class='line'>129</span>  *   &lt;li>&lt;i>gasVolume&lt;/i> volume of a gas such as natural gas used in a home
+<span class='line'>130</span>  *   &lt;/ul>
+<span class='line'>131</span>  *
+<span class='line'>132</span>  * &lt;li>&lt;i>style&lt;/i> - give the style of this formatter. This is used to
+<span class='line'>133</span>  * decide how to format the number and units when the number is not whole, or becomes
+<span class='line'>134</span>  * not whole after auto conversion and scaling. There are two basic styles
+<span class='line'>135</span>  * supported so far:
+<span class='line'>136</span>  *
+<span class='line'>137</span>  *   &lt;ul>
+<span class='line'>138</span>  *   &lt;li>&lt;i>numeric&lt;/i> - only the largest unit is used and the number is given as
+<span class='line'>139</span>  *   decimals. Example: "5.25 lbs"
+<span class='line'>140</span>  *   &lt;li>&lt;i>list&lt;/i> - display the measure with a list of successively smaller-sized
+<span class='line'>141</span>  *   units. Example: "5 lbs 4 oz"
+<span class='line'>142</span>  *   &lt;/ul>
+<span class='line'>143</span>  *
+<span class='line'>144</span>  * The style is most useful for units which are not powers of 10 greater than the
+<span class='line'>145</span>  * smaller units as in the metric system, though it can be useful for metric measures
+<span class='line'>146</span>  * as well. Example: "2kg 381g".&lt;p>
+<span class='line'>147</span>  *
+<span class='line'>148</span>  * The style may be set implicitly when you set the usage. For example, if the usage is
+<span class='line'>149</span>  * "personWeight", the style will be "numeric" and the maxFractionDigits will be 0. That
+<span class='line'>150</span>  * is, weight of adults and children are most often given in whole pounds. (eg. "172 lbs").
+<span class='line'>151</span>  * If the usage is "babyWeight", the style will be "list", and the measures will be pounds
+<span class='line'>152</span>  * and ounces. (eg. "7 lbs 2 oz").
+<span class='line'>153</span>  *
+<span class='line'>154</span>  * &lt;li>&lt;i>length&lt;/i> - the length of the units text. This can be either "short" or "long"
+<span class='line'>155</span>  * with the default being "long". Example: a short units text might be "kph" and the
+<span class='line'>156</span>  * corresponding long units text would be "kilometers per hour". Typically, it is the
+<span class='line'>157</span>  * long units text that is translated per locale, though the short one may be as well.
+<span class='line'>158</span>  * Plurals are taken care of properly per locale as well.
+<span class='line'>159</span>  *
+<span class='line'>160</span>  * &lt;li>&lt;i>maxFractionDigits&lt;/i> - the maximum number of digits that should appear in the
+<span class='line'>161</span>  * formatted output after the decimal. A value of -1 means unlimited, and 0 means only print
+<span class='line'>162</span>  * the integral part of the number.
+<span class='line'>163</span>  *
+<span class='line'>164</span>  * &lt;li>&lt;i>minFractionDigits&lt;/i> - the minimum number of fractional digits that should
+<span class='line'>165</span>  * appear in the formatted output. If the number does not have enough fractional digits
+<span class='line'>166</span>  * to reach this minimum, the number will be zero-padded at the end to get to the limit.
+<span class='line'>167</span>  *
+<span class='line'>168</span>  * &lt;li>&lt;i>significantDigits&lt;/i> - the number of significant digits that should appear
+<span class='line'>169</span>  * in the formatted output. If the given number is less than 1, this option will be ignored.
+<span class='line'>170</span>  *
+<span class='line'>171</span>  * &lt;li>&lt;i>roundingMode&lt;/i> - When the maxFractionDigits or maxIntegerDigits is specified,
+<span class='line'>172</span>  * this property governs how the least significant digits are rounded to conform to that
+<span class='line'>173</span>  * maximum. The value of this property is a string with one of the following values:
+<span class='line'>174</span>  * &lt;ul>
+<span class='line'>175</span>  *   &lt;li>&lt;i>up&lt;/i> - round away from zero
+<span class='line'>176</span>  *   &lt;li>&lt;i>down&lt;/i> - round towards zero. This has the effect of truncating the number
+<span class='line'>177</span>  *   &lt;li>&lt;i>ceiling&lt;/i> - round towards positive infinity
+<span class='line'>178</span>  *   &lt;li>&lt;i>floor&lt;/i> - round towards negative infinity
+<span class='line'>179</span>  *   &lt;li>&lt;i>halfup&lt;/i> - round towards nearest neighbour. If equidistant, round up.
+<span class='line'>180</span>  *   &lt;li>&lt;i>halfdown&lt;/i> - round towards nearest neighbour. If equidistant, round down.
+<span class='line'>181</span>  *   &lt;li>&lt;i>halfeven&lt;/i> - round towards nearest neighbour. If equidistant, round towards the even neighbour
+<span class='line'>182</span>  *   &lt;li>&lt;i>halfodd&lt;/i> - round towards nearest neighbour. If equidistant, round towards the odd neighbour
+<span class='line'>183</span>  * &lt;/ul>
+<span class='line'>184</span>  * Default if this is not specified is "halfup".
+<span class='line'>185</span>  *
+<span class='line'>186</span>  * &lt;li>&lt;i>onLoad&lt;/i> - a callback function to call when the date format object is fully
+<span class='line'>187</span>  * loaded. When the onLoad option is given, the UnitFmt object will attempt to
+<span class='line'>188</span>  * load any missing locale data using the ilib loader callback.
+<span class='line'>189</span>  * When the constructor is done (even if the data is already preassembled), the
+<span class='line'>190</span>  * onLoad function is called with the current instance as a parameter, so this
+<span class='line'>191</span>  * callback can be used with preassembled or dynamic loading or a mix of the two.
+<span class='line'>192</span>  *
+<span class='line'>193</span>  * &lt;li>&lt;i>sync&lt;/i> - tell whether to load any missing locale data synchronously or
+<span class='line'>194</span>  * asynchronously. If this option is given as "false", then the "onLoad"
+<span class='line'>195</span>  * callback must be given, as the instance returned from this constructor will
+<span class='line'>196</span>  * not be usable for a while.
+<span class='line'>197</span>  *
+<span class='line'>198</span>  * &lt;li>&lt;i>loadParams&lt;/i> - an object containing parameters to pass to the
+<span class='line'>199</span>  * loader callback function when locale data is missing. The parameters are not
+<span class='line'>200</span>  * interpretted or modified in any way. They are simply passed along. The object
+<span class='line'>201</span>  * may contain any property/value pairs as long as the calling code is in
+<span class='line'>202</span>  * agreement with the loader callback function as to what those parameters mean.
+<span class='line'>203</span>  * &lt;/ul>
+<span class='line'>204</span>  *
+<span class='line'>205</span>  * Here is an example of how you might use the unit formatter to format a string with
+<span class='line'>206</span>  * the correct units.&lt;p>
+<span class='line'>207</span>  *
+<span class='line'>208</span>  *
+<span class='line'>209</span>  * @constructor
+<span class='line'>210</span>  * @param {Object} options options governing the way this date formatter instance works
+<span class='line'>211</span>  */</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">UnitFmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">        </span><span class="NAME">loadParams</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>215</span> 
+<span class='line'>216</span> </span><span class="WHIT">    </span><span class="NAME">this.length</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"long"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="WHIT">    </span><span class="NAME">this.scale</span><span class="WHIT">  </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="WHIT">    </span><span class="NAME">this.measurementType</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="WHIT">    </span><span class="NAME">this.convert</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="WHIT">    </span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>221</span> 
+<span class='line'>222</span> </span><span class="WHIT">    </span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>223</span> 
+<span class='line'>224</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="WHIT">        </span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="NAME">options.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">options.locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>227</span> 
+<span class='line'>228</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.sync</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'boolean'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="WHIT">        </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.sync</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>230</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>231</span> 
+<span class='line'>232</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.loadParams</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="WHIT">        </span><span class="NAME">loadParams</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.loadParams</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>234</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>235</span> 
+<span class='line'>236</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>237</span> </span><span class="WHIT">        </span><span class="NAME">this.length</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">lenMap</span><span class="PUNC">[</span><span class="NAME">options.length</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"long"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>239</span> 
+<span class='line'>240</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.autoScale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'boolean'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">        </span><span class="NAME">this.scale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.autoScale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>242</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>243</span> 
+<span class='line'>244</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.style</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>245</span> </span><span class="WHIT">        </span><span class="NAME">this.style</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.style</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>246</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>247</span> 
+<span class='line'>248</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.usage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>249</span> </span><span class="WHIT">        </span><span class="NAME">this.usage</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.usage</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>250</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>251</span> 
+<span class='line'>252</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.autoConvert</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'boolean'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>253</span> </span><span class="WHIT">        </span><span class="NAME">this.convert</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.autoConvert</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>254</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>255</span> 
+<span class='line'>256</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.useNative</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'boolean'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>257</span> </span><span class="WHIT">        </span><span class="NAME">this.useNative</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.useNative</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>258</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>259</span> 
+<span class='line'>260</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.measurementSystem</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>261</span> </span><span class="WHIT">        </span><span class="NAME">this.measurementSystem</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.measurementSystem</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>262</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>263</span> 
+<span class='line'>264</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.maxFractionDigits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>265</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>266</span>          * @private
+<span class='line'>267</span>          * @type {number|undefined}
+<span class='line'>268</span>          */</span><span class="WHIT">
+<span class='line'>269</span> </span><span class="WHIT">        </span><span class="NAME">this.maxFractionDigits</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">(</span><span class="NAME">options.maxFractionDigits</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>270</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>271</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.minFractionDigits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>272</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>273</span>          * @private
+<span class='line'>274</span>          * @type {number|undefined}
+<span class='line'>275</span>          */</span><span class="WHIT">
+<span class='line'>276</span> </span><span class="WHIT">        </span><span class="NAME">this.minFractionDigits</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">(</span><span class="NAME">options.minFractionDigits</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>278</span> 
+<span class='line'>279</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.significantDigits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>281</span>          * @private
+<span class='line'>282</span>          * @type {number|undefined}
+<span class='line'>283</span>          */</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">        </span><span class="NAME">this.significantDigits</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">(</span><span class="NAME">options.significantDigits</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>285</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>286</span> 
+<span class='line'>287</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>288</span>      * @private
+<span class='line'>289</span>      * @type {string}
+<span class='line'>290</span>      */</span><span class="WHIT">
+<span class='line'>291</span> </span><span class="WHIT">    </span><span class="NAME">this.roundingMode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.roundingMode</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"halfup"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>292</span> 
+<span class='line'>293</span> </span><span class="WHIT">    </span><span class="COMM">// ensure that the plural rules are loaded before we proceed</span><span class="WHIT">
+<span class='line'>294</span> </span><span class="WHIT">    </span><span class="NAME">IString.loadPlurals</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>295</span> </span><span class="WHIT">        </span><span class="NAME">Utils.loadData</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="WHIT">            </span><span class="NAME">object</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"UnitFmt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">            </span><span class="NAME">locale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">            </span><span class="NAME">name</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"unitfmt.json"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="WHIT">            </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="WHIT">            </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="WHIT">            </span><span class="NAME">callback</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">format</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="WHIT">                </span><span class="NAME">this.template</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">format</span><span class="PUNC">[</span><span class="STRN">"unitfmt"</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NAME">this.length</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>303</span> 
+<span class='line'>304</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.usage</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">format.usages</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">format.usages</span><span class="PUNC">[</span><span class="NAME">this.usage</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>305</span> </span><span class="WHIT">                    </span><span class="COMM">// if usage is not recognized, usageInfo will be undefined, which we will use to indicate unknown usage</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="WHIT">                    </span><span class="NAME">this.usageInfo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">format.usages</span><span class="PUNC">[</span><span class="NAME">this.usage</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>307</span> 
+<span class='line'>308</span> </span><span class="WHIT">                    </span><span class="COMM">// default settings for this usage, but don't override the options that were passed in</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.maxFractionDigits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'number'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.usageInfo.maxFractionDigits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'number'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>310</span> </span><span class="WHIT">                        </span><span class="NAME">this.maxFractionDigits</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.maxFractionDigits</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>311</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.minFractionDigits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'number'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.usageInfo.minFractionDigits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'number'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>313</span> </span><span class="WHIT">                        </span><span class="NAME">this.minFractionDigits</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.minFractionDigits</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>314</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.significantDigits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'number'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.usageInfo.significantDigits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'number'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">                        </span><span class="NAME">this.significantDigits</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.significantDigits</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.measurementSystem</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.system</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="WHIT">                        </span><span class="NAME">this.measurementSystem</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.system</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>320</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>321</span> </span><span class="WHIT">                    </span><span class="NAME">this.units</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.units</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>322</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.style</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.style</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>323</span> </span><span class="WHIT">                        </span><span class="NAME">this.style</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.style</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>324</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>325</span> 
+<span class='line'>326</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.usageInfo.systems</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>327</span> </span><span class="WHIT">                        </span><span class="NAME">this.units</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>328</span> </span><span class="WHIT">                            </span><span class="NAME">metric</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.systems.metric.units</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">                            </span><span class="NAME">uscustomary</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.systems.uscustomary.units</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>330</span> </span><span class="WHIT">                            </span><span class="NAME">imperial</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.systems.imperial.units</span><span class="WHIT">
+<span class='line'>331</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>332</span> </span><span class="WHIT">                        </span><span class="NAME">this.numFmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>333</span> </span><span class="WHIT">                        </span><span class="NAME">this._initNumFmt</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.systems.metric</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">numfmt</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>334</span> </span><span class="WHIT">                            </span><span class="NAME">this.numFmt.metric</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">numfmt</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>335</span> </span><span class="WHIT">                            </span><span class="NAME">this._initNumFmt</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.systems.uscustomary</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">numfmt</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>336</span> </span><span class="WHIT">                                </span><span class="NAME">this.numFmt.uscustomary</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">numfmt</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>337</span> </span><span class="WHIT">                                </span><span class="NAME">this._initNumFmt</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.systems.imperial</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">numfmt</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>338</span> </span><span class="WHIT">                                    </span><span class="NAME">this.numFmt.imperial</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">numfmt</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>339</span> </span><span class="WHIT">                                    </span><span class="NAME">this._init</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>340</span> </span><span class="WHIT">                                        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>341</span> </span><span class="WHIT">                                            </span><span class="NAME">options.onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>342</span> </span><span class="WHIT">                                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>343</span> </span><span class="WHIT">                                    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>344</span> </span><span class="WHIT">                                </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>345</span> </span><span class="WHIT">                            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>346</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>347</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>348</span> </span><span class="WHIT">                        </span><span class="NAME">this._initFormatters</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>349</span> </span><span class="WHIT">                            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>350</span> </span><span class="WHIT">                                </span><span class="NAME">options.onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>351</span> </span><span class="WHIT">                            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>352</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>353</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>354</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>355</span> </span><span class="WHIT">                    </span><span class="NAME">this._initFormatters</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>356</span> </span><span class="WHIT">                        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>357</span> </span><span class="WHIT">                            </span><span class="NAME">options.onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>358</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>359</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>360</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>361</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>362</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>363</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>364</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>365</span> 
+<span class='line'>366</span> </span><span class="NAME">UnitFmt.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>367</span> </span><span class="WHIT">    </span><span class="COMM">/** @private */</span><span class="WHIT">
+<span class='line'>368</span> </span><span class="WHIT">    </span><span class="NAME">_initNumFmt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>369</span> </span><span class="WHIT">        </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">NumFmt</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>370</span> </span><span class="WHIT">            </span><span class="NAME">locale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>371</span> </span><span class="WHIT">            </span><span class="NAME">useNative</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.useNative</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>372</span> </span><span class="WHIT">            </span><span class="NAME">maxFractionDigits</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.maxFractionDigits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">this.maxFractionDigits</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">options.maxFractionDigits</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>373</span> </span><span class="WHIT">            </span><span class="NAME">minFractionDigits</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.minFractionDigits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">this.minFractionDigits</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">options.minFractionDigits</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>374</span> </span><span class="WHIT">            </span><span class="NAME">significantDigits</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.significantDigits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">this.significantDigits</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">options.significantDigits</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>375</span> </span><span class="WHIT">            </span><span class="NAME">roundingMode</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.roundingMode</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">options.roundingMode</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>376</span> </span><span class="WHIT">            </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>377</span> </span><span class="WHIT">            </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>378</span> </span><span class="WHIT">            </span><span class="NAME">onLoad</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">numfmt</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>379</span> </span><span class="WHIT">                </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="NAME">numfmt</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>380</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>381</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>382</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>383</span> 
+<span class='line'>384</span> </span><span class="WHIT">    </span><span class="NAME">_initFormatters</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>385</span> </span><span class="WHIT">        </span><span class="NAME">this._initNumFmt</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">numfmt</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>386</span> </span><span class="WHIT">            </span><span class="NAME">this.numFmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>387</span> </span><span class="WHIT">                </span><span class="NAME">metric</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">numfmt</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>388</span> </span><span class="WHIT">                </span><span class="NAME">uscustomary</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">numfmt</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>389</span> </span><span class="WHIT">                </span><span class="NAME">imperial</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">numfmt</span><span class="WHIT">
+<span class='line'>390</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>391</span> 
+<span class='line'>392</span> </span><span class="WHIT">            </span><span class="NAME">this._init</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>393</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>394</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>395</span> 
+<span class='line'>396</span> </span><span class="WHIT">    </span><span class="COMM">/** @private */</span><span class="WHIT">
+<span class='line'>397</span> </span><span class="WHIT">    </span><span class="NAME">_init</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>398</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.style</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"list"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.usageInfo</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.systems</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>399</span> </span><span class="WHIT">                </span><span class="PUNC">(</span><span class="NAME">this.usageInfo.systems.metric.style</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"list"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'>400</span> </span><span class="WHIT">                </span><span class="NAME">this.usageInfo.systems.uscustomary.style</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"list"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'>401</span> </span><span class="WHIT">                </span><span class="NAME">this.usageInfo.systems.imperial.style</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"list"</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="WHIT">            </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ListFmt</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="WHIT">                </span><span class="NAME">locale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>404</span> </span><span class="WHIT">                </span><span class="NAME">style</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"unit"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>405</span> </span><span class="WHIT">                </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>406</span> </span><span class="WHIT">                </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>407</span> </span><span class="WHIT">                </span><span class="NAME">onLoad</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">listFmt</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>408</span> </span><span class="WHIT">                    </span><span class="NAME">this.listFmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">listFmt</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>409</span> </span><span class="WHIT">                    </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>411</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>412</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>413</span> </span><span class="WHIT">            </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>414</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>415</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>416</span> 
+<span class='line'>417</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>418</span>      * Return the locale used with this formatter instance.
+<span class='line'>419</span>      * @return {Locale} the Locale instance for this formatter
+<span class='line'>420</span>      */</span><span class="WHIT">
+<span class='line'>421</span> </span><span class="WHIT">    </span><span class="NAME">getLocale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>422</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>423</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>424</span> 
+<span class='line'>425</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>426</span>      * Return the template string that is used to format date/times for this
+<span class='line'>427</span>      * formatter instance. This will work, even when the template property is not explicitly
+<span class='line'>428</span>      * given in the options to the constructor. Without the template option, the constructor
+<span class='line'>429</span>      * will build the appropriate template according to the options and use that template
+<span class='line'>430</span>      * in the format method.
+<span class='line'>431</span>      *
+<span class='line'>432</span>      * @return {string} the format template for this formatter
+<span class='line'>433</span>      */</span><span class="WHIT">
+<span class='line'>434</span> </span><span class="WHIT">    </span><span class="NAME">getTemplate</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>435</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.template</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>436</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>437</span> 
+<span class='line'>438</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>439</span>      * Convert this formatter to a string representation by returning the
+<span class='line'>440</span>      * format template. This method delegates to getTemplate.
+<span class='line'>441</span>      *
+<span class='line'>442</span>      * @return {string} the format template
+<span class='line'>443</span>      */</span><span class="WHIT">
+<span class='line'>444</span> </span><span class="WHIT">    </span><span class="NAME">toString</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>445</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.getTemplate</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>446</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>447</span> 
+<span class='line'>448</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>449</span>      * Return whether or not this formatter will auto-scale the units while formatting.
+<span class='line'>450</span>      * @returns {boolean} true if auto-scaling is turned on
+<span class='line'>451</span>      */</span><span class="WHIT">
+<span class='line'>452</span> </span><span class="WHIT">    </span><span class="NAME">getScale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>453</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.scale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>454</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>455</span> 
+<span class='line'>456</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>457</span>      * Return the measurement system that is used for this formatter.
+<span class='line'>458</span>      * @returns {string} the measurement system used in this formatter
+<span class='line'>459</span>      */</span><span class="WHIT">
+<span class='line'>460</span> </span><span class="WHIT">    </span><span class="NAME">getMeasurementSystem</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>461</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.measurementSystem</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>462</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>463</span> 
+<span class='line'>464</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>465</span>      * @private
+<span class='line'>466</span>      */</span><span class="WHIT">
+<span class='line'>467</span> </span><span class="WHIT">    </span><span class="NAME">_format</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">u</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">system</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>468</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">unit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">u.getUnit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"long-ton"</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="STRN">"ton"</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">u.getUnit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>469</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">formatted</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">this.template</span><span class="PUNC">[</span><span class="NAME">unit</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>470</span> </span><span class="WHIT">        </span><span class="COMM">// make sure to use the right plural rules</span><span class="WHIT">
+<span class='line'>471</span> </span><span class="WHIT">        </span><span class="NAME">formatted.setLocale</span><span class="PUNC">(</span><span class="NAME">this.locale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>472</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">rounded</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.numFmt</span><span class="PUNC">[</span><span class="NAME">system</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">constrain</span><span class="PUNC">(</span><span class="NAME">u.amount</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>473</span> </span><span class="WHIT">        </span><span class="NAME">formatted</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">formatted.formatChoice</span><span class="PUNC">(</span><span class="NAME">rounded</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="NAME">n</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.numFmt</span><span class="PUNC">[</span><span class="NAME">system</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">format</span><span class="PUNC">(</span><span class="NAME">u.amount</span><span class="PUNC">)</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>474</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">formatted.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">formatted</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">rounded</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">" "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">u.unit</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>475</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>476</span> 
+<span class='line'>477</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>478</span>      * Format a particular unit instance according to the settings of this
+<span class='line'>479</span>      * formatter object.
+<span class='line'>480</span>      *
+<span class='line'>481</span>      * @param {Measurement} measurement measurement to format
+<span class='line'>482</span>      * @return {string} the formatted version of the given date instance
+<span class='line'>483</span>      */</span><span class="WHIT">
+<span class='line'>484</span> </span><span class="WHIT">    </span><span class="NAME">format</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">measurement</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>485</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">u</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">measurement</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">system</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">listStyle</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>486</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">doScale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.scale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>487</span> 
+<span class='line'>488</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.convert</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>489</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.measurementSystem</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>490</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.measurementSystem</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NAME">measurement.getMeasurementSystem</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>491</span> </span><span class="WHIT">                    </span><span class="NAME">u</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">u.convertSystem</span><span class="PUNC">(</span><span class="NAME">this.measurementSystem</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>492</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>493</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.usageInfo</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">Measurement.getMeasurementSystemForLocale</span><span class="PUNC">(</span><span class="NAME">this.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NAME">u.getMeasurementSystem</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>494</span> </span><span class="WHIT">                </span><span class="NAME">u</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">measurement.localize</span><span class="PUNC">(</span><span class="NAME">this.locale</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>495</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>496</span> 
+<span class='line'>497</span> </span><span class="WHIT">            </span><span class="NAME">doScale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.usageInfo</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">measurement.getMeasurementSystem</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NAME">u.getMeasurementSystem</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.scale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>498</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>499</span> 
+<span class='line'>500</span> </span><span class="WHIT">        </span><span class="NAME">system</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">u.getMeasurementSystem</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.getMeasurementSystem</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"metric"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>501</span> </span><span class="WHIT">        </span><span class="NAME">listStyle</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.style</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"list"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.usageInfo</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.systems</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.systems</span><span class="PUNC">[</span><span class="NAME">system</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">style</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"list"</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>502</span> 
+<span class='line'>503</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">doScale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>504</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.usageInfo</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">measurement.getMeasure</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">this.usageInfo.type</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">listStyle</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>505</span> </span><span class="WHIT">                </span><span class="COMM">// scaling with a restricted set of units</span><span class="WHIT">
+<span class='line'>506</span> </span><span class="WHIT">                </span><span class="NAME">u</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">u.scale</span><span class="PUNC">(</span><span class="NAME">system</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.units</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>507</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>508</span> </span><span class="WHIT">                </span><span class="NAME">u</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">u.scale</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// scale within the current system</span><span class="WHIT">
+<span class='line'>509</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>510</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>511</span> 
+<span class='line'>512</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">listStyle</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>513</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">numFmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.numFmt</span><span class="PUNC">[</span><span class="NAME">system</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>514</span> </span><span class="WHIT">            </span><span class="NAME">u</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">u.expand</span><span class="PUNC">(</span><span class="NAME">undefined</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.units</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="NAME">numFmt</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">numFmt.constrain</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.scale</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>515</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">formatted</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">u.map</span><span class="PUNC">(</span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>516</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this._format</span><span class="PUNC">(</span><span class="NAME">unit</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">system</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>517</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>518</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.listFmt</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">formatted.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>519</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.listFmt.format</span><span class="PUNC">(</span><span class="NAME">formatted</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>520</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>521</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">formatted.join</span><span class="PUNC">(</span><span class="STRN">' '</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>522</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>523</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>524</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this._format</span><span class="PUNC">(</span><span class="NAME">u</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">system</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>525</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>526</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>527</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>528</span> 
+<span class='line'>529</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">UnitFmt</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>530</span> </span></pre></body></html>

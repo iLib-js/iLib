@@ -1,0 +1,270 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * DateFactory.js - Factory class to create the right subclasses of a date for any
+<span class='line'>  3</span>  * calendar or locale.
+<span class='line'>  4</span>  *
+<span class='line'>  5</span>  * Copyright © 2012-2015, 2018, JEDLSoft
+<span class='line'>  6</span>  *
+<span class='line'>  7</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  8</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  9</span>  * You may obtain a copy of the License at
+<span class='line'> 10</span>  *
+<span class='line'> 11</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 12</span>  *
+<span class='line'> 13</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 14</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 15</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 16</span>  *
+<span class='line'> 17</span>  * See the License for the specific language governing permissions and
+<span class='line'> 18</span>  * limitations under the License.
+<span class='line'> 19</span>  */</span><span class="WHIT">
+<span class='line'> 20</span> 
+<span class='line'> 21</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"../index.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">JSUtils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./JSUtils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> 
+<span class='line'> 24</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Locale.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 25</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">LocaleInfo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./LocaleInfo.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">JulianDay</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./JulianDay.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">CalendarFactory</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./CalendarFactory.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 28</span> 
+<span class='line'> 29</span> </span><span class="COMM">// Statically depend on these even though we don't use them</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="COMM">// to guarantee they are loaded into the cache already.</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">IDate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./IDate.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 32</span> 
+<span class='line'> 33</span> </span><span class="COMM">/**
+<span class='line'> 34</span>  * Factory method to create a new instance of a date subclass.&lt;p>
+<span class='line'> 35</span>  *
+<span class='line'> 36</span>  * The options parameter can be an object that contains the following
+<span class='line'> 37</span>  * properties:
+<span class='line'> 38</span>  *
+<span class='line'> 39</span>  * &lt;ul>
+<span class='line'> 40</span>  * &lt;li>&lt;i>type&lt;/i> - specify the type/calendar of the date desired. The
+<span class='line'> 41</span>  * list of valid values changes depending on which calendars are
+<span class='line'> 42</span>  * defined. When assembling your iliball.js, include those date type
+<span class='line'> 43</span>  * you wish to use in your program or web page, and they will register
+<span class='line'> 44</span>  * themselves with this factory method. The "gregorian",
+<span class='line'> 45</span>  * and "julian" calendars are all included by default, as they are the
+<span class='line'> 46</span>  * standard calendars for much of the world. If not specified, the type
+<span class='line'> 47</span>  * of the date returned is the one that is appropriate for the locale.
+<span class='line'> 48</span>  * This property may also be given as "calendar" instead of "type".
+<span class='line'> 49</span>  *
+<span class='line'> 50</span>  * &lt;li>&lt;i>onLoad&lt;/i> - a callback function to call when the date object is fully
+<span class='line'> 51</span>  * loaded. When the onLoad option is given, the date factory will attempt to
+<span class='line'> 52</span>  * load any missing locale data using the ilib loader callback.
+<span class='line'> 53</span>  * When the constructor is done (even if the data is already preassembled), the
+<span class='line'> 54</span>  * onLoad function is called with the current instance as a parameter, so this
+<span class='line'> 55</span>  * callback can be used with preassembled or dynamic loading or a mix of the two.
+<span class='line'> 56</span>  *
+<span class='line'> 57</span>  * &lt;li>&lt;i>sync&lt;/i> - tell whether to load any missing locale data synchronously or
+<span class='line'> 58</span>  * asynchronously. If this option is given as "false", then the "onLoad"
+<span class='line'> 59</span>  * callback must be given, as the instance returned from this constructor will
+<span class='line'> 60</span>  * not be usable for a while.
+<span class='line'> 61</span>  *
+<span class='line'> 62</span>  * &lt;li>&lt;i>loadParams&lt;/i> - an object containing parameters to pass to the
+<span class='line'> 63</span>  * loader callback function when locale data is missing. The parameters are not
+<span class='line'> 64</span>  * interpretted or modified in any way. They are simply passed along. The object
+<span class='line'> 65</span>  * may contain any property/value pairs as long as the calling code is in
+<span class='line'> 66</span>  * agreement with the loader callback function as to what those parameters mean.
+<span class='line'> 67</span>  * &lt;/ul>
+<span class='line'> 68</span>  *
+<span class='line'> 69</span>  * The options object is also passed down to the date constructor, and
+<span class='line'> 70</span>  * thus can contain the the properties as the date object being instantiated.
+<span class='line'> 71</span>  * See the documentation for {@link GregorianDate}, and other
+<span class='line'> 72</span>  * subclasses for more details on other parameter that may be passed in.&lt;p>
+<span class='line'> 73</span>  *
+<span class='line'> 74</span>  * Please note that if you do not give the type parameter, this factory
+<span class='line'> 75</span>  * method will create a date object that is appropriate for the calendar
+<span class='line'> 76</span>  * that is most commonly used in the specified or current ilib locale.
+<span class='line'> 77</span>  * For example, in Thailand, the most common calendar is the Thai solar
+<span class='line'> 78</span>  * calendar. If the current locale is "th-TH" (Thai for Thailand) and you
+<span class='line'> 79</span>  * use this factory method to construct a new date without specifying the
+<span class='line'> 80</span>  * type, it will automatically give you back an instance of
+<span class='line'> 81</span>  * {@link ThaiSolarDate}. This is convenient because you do not
+<span class='line'> 82</span>  * need to know which locales use which types of dates. In fact, you
+<span class='line'> 83</span>  * should always use this factory method to make new date instances unless
+<span class='line'> 84</span>  * you know that you specifically need a date in a particular calendar.&lt;p>
+<span class='line'> 85</span>  *
+<span class='line'> 86</span>  * Also note that when you pass in the date components such as year, month,
+<span class='line'> 87</span>  * day, etc., these components should be appropriate for the given date
+<span class='line'> 88</span>  * being instantiated. That is, in our Thai example in the previous
+<span class='line'> 89</span>  * paragraph, the year and such should be given as a Thai solar year, not
+<span class='line'> 90</span>  * the Gregorian year that you get from the Javascript Date class. In
+<span class='line'> 91</span>  * order to initialize a date instance when you don't know what subclass
+<span class='line'> 92</span>  * will be instantiated for the locale, use a parameter such as "unixtime"
+<span class='line'> 93</span>  * or "julianday" which are unambiguous and based on UTC time, instead of
+<span class='line'> 94</span>  * the year/month/date date components. The date components for that UTC
+<span class='line'> 95</span>  * time will be calculated and the time zone offset will be automatically
+<span class='line'> 96</span>  * factored in.
+<span class='line'> 97</span>  *
+<span class='line'> 98</span>  * @static
+<span class='line'> 99</span>  * @param {Object=} options options controlling the construction of this instance, or
+<span class='line'>100</span>  * undefined to use the default options
+<span class='line'>101</span>  * @return {IDate} an instance of a calendar object of the appropriate type
+<span class='line'>102</span>  */</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">DateFactory</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">locale</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">        </span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">        </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">        </span><span class="NAME">obj</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>108</span> 
+<span class='line'>109</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">            </span><span class="NAME">locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="NAME">options.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">options.locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>113</span> 
+<span class='line'>114</span> </span><span class="WHIT">        </span><span class="NAME">type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.type</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">options.calendar</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>115</span> 
+<span class='line'>116</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.sync</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'boolean'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">            </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.sync</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>120</span> 
+<span class='line'>121</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">        </span><span class="NAME">locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">    </span><span class="COMM">// default locale</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>124</span> 
+<span class='line'>125</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">type</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">        </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">LocaleInfo</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">            </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">            </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">options.loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">            </span><span class="NAME">onLoad</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">info</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">                </span><span class="NAME">type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">info.getCalendar</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>131</span> 
+<span class='line'>132</span> </span><span class="WHIT">                </span><span class="NAME">obj</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">DateFactory._init</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">        </span><span class="NAME">obj</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">DateFactory._init</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>138</span> 
+<span class='line'>139</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">obj</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>141</span> 
+<span class='line'>142</span> </span><span class="COMM">/**
+<span class='line'>143</span>  * Map calendar names to classes to initialize in the dynamic code model.
+<span class='line'>144</span>  * TODO: Need to figure out some way that this doesn't have to be updated by hand.
+<span class='line'>145</span>  * @private
+<span class='line'>146</span>  */</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="NAME">DateFactory._dynMap</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">    </span><span class="STRN">"coptic"</span><span class="PUNC">:</span><span class="WHIT">       </span><span class="STRN">"Coptic"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">    </span><span class="STRN">"ethiopic"</span><span class="PUNC">:</span><span class="WHIT">     </span><span class="STRN">"Ethiopic"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">    </span><span class="STRN">"gregorian"</span><span class="PUNC">:</span><span class="WHIT">    </span><span class="STRN">"Gregorian"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">    </span><span class="STRN">"han"</span><span class="PUNC">:</span><span class="WHIT">          </span><span class="STRN">"Han"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">    </span><span class="STRN">"hebrew"</span><span class="PUNC">:</span><span class="WHIT">       </span><span class="STRN">"Hebrew"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">    </span><span class="STRN">"islamic"</span><span class="PUNC">:</span><span class="WHIT">      </span><span class="STRN">"Islamic"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">    </span><span class="STRN">"julian"</span><span class="PUNC">:</span><span class="WHIT">       </span><span class="STRN">"Julian"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">    </span><span class="STRN">"persian"</span><span class="PUNC">:</span><span class="WHIT">      </span><span class="STRN">"Persian"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">    </span><span class="STRN">"persian-algo"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"PersianAlgo"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">    </span><span class="STRN">"thaisolar"</span><span class="PUNC">:</span><span class="WHIT">    </span><span class="STRN">"ThaiSolar"</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>159</span> 
+<span class='line'>160</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">circumventWebPackDate</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"./"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">x</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"Date.js"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>163</span> 
+<span class='line'>164</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">circumventWebPackCal</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"./"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">x</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"Cal.js"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>167</span> 
+<span class='line'>168</span> </span><span class="COMM">/**
+<span class='line'>169</span>  * Dynamically load the code for a calendar and calendar class if necessary.
+<span class='line'>170</span>  * @protected
+<span class='line'>171</span>  */</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="NAME">DateFactory._dynLoadDate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fnc</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">IDate._constructors</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">entry</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">DateFactory._dynMap</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">entry</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">            </span><span class="COMM">// eslint-disable-next-line</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">            </span><span class="NAME">IDate._constructors</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="NAME">fnc</span><span class="PUNC">(</span><span class="NAME">entry</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">IDate._constructors</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>182</span> 
+<span class='line'>183</span> </span><span class="COMM">/**
+<span class='line'>184</span>  * @protected
+<span class='line'>185</span>  * @static
+<span class='line'>186</span>  */</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="NAME">DateFactory._init</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">cons</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>189</span> 
+<span class='line'>190</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ilib.isDynCode</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>191</span> </span><span class="WHIT">        </span><span class="NAME">DateFactory._dynLoadDate</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">circumventWebPackDate</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">        </span><span class="NAME">CalendarFactory._dynLoadCalendar</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">circumventWebPackCal</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>194</span> 
+<span class='line'>195</span> </span><span class="WHIT">    </span><span class="NAME">cons</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">IDate._constructors</span><span class="PUNC">[</span><span class="NAME">type</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>196</span> 
+<span class='line'>197</span> </span><span class="WHIT">    </span><span class="COMM">// pass the same options through to the constructor so the subclass</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">    </span><span class="COMM">// has the ability to do something with if it needs to</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">cons</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"function"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">        </span><span class="NAME">options.onLoad</span><span class="PUNC">(</span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">cons</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">cons</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>204</span> 
+<span class='line'>205</span> </span><span class="COMM">/**
+<span class='line'>206</span>  * Convert JavaScript Date objects and other types into native Dates. This accepts any
+<span class='line'>207</span>  * string or number that can be translated by the JavaScript Date class,
+<span class='line'>208</span>  * (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)
+<span class='line'>209</span>  * any JavaScript Date classed object, any IDate subclass, an JulianDay object, an object
+<span class='line'>210</span>  * containing the normal options to initialize an IDate instance, or null (will
+<span class='line'>211</span>  * return null or undefined if input is null or undefined). Normal output is
+<span class='line'>212</span>  * a standard native subclass of the IDate object as appropriate for the locale.
+<span class='line'>213</span>  *
+<span class='line'>214</span>  * @static
+<span class='line'>215</span>  * @protected
+<span class='line'>216</span>  * @param {IDate|Object|JulianDay|Date|string|number=} inDate The input date object, string or Number.
+<span class='line'>217</span>  * @param {IString|string=} timezone timezone to use if a new date object is created
+<span class='line'>218</span>  * @param {Locale|string=} locale locale to use when constructing an IDate
+<span class='line'>219</span>  * @return {IDate|null|undefined} an IDate subclass equivalent to the given inDate
+<span class='line'>220</span>  */</span><span class="WHIT">
+<span class='line'>221</span> </span><span class="NAME">DateFactory._dateToIlib</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">inDate</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">timezone</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">inDate</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">inDate</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>223</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">inDate</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>224</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">inDate</span><span class="WHIT"> </span><span class="KEYW">instanceof</span><span class="WHIT"> </span><span class="NAME">IDate</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">inDate</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">inDate</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'number'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">DateFactory</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>230</span> </span><span class="WHIT">            </span><span class="NAME">unixtime</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">inDate</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>231</span> </span><span class="WHIT">            </span><span class="NAME">timezone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">timezone</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>232</span> </span><span class="WHIT">            </span><span class="NAME">locale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">locale</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>234</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>235</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">inDate</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>236</span> </span><span class="WHIT">        </span><span class="NAME">inDate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="NAME">inDate</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>237</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">JSUtils.isDate</span><span class="PUNC">(</span><span class="NAME">inDate</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">DateFactory</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">            </span><span class="NAME">unixtime</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">inDate.getTime</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">            </span><span class="NAME">timezone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">timezone</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>242</span> </span><span class="WHIT">            </span><span class="NAME">locale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">locale</span><span class="WHIT">
+<span class='line'>243</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>244</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>245</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">inDate</span><span class="WHIT"> </span><span class="KEYW">instanceof</span><span class="WHIT"> </span><span class="NAME">JulianDay</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>246</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">DateFactory</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>247</span> </span><span class="WHIT">            </span><span class="NAME">jd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">inDate</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>248</span> </span><span class="WHIT">            </span><span class="NAME">timezone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">timezone</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>249</span> </span><span class="WHIT">            </span><span class="NAME">locale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">locale</span><span class="WHIT">
+<span class='line'>250</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>251</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>252</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">inDate</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>253</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">DateFactory</span><span class="PUNC">(</span><span class="NAME">inDate</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>254</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>255</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">DateFactory</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>256</span> </span><span class="WHIT">        </span><span class="NAME">unixtime</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">inDate.getTime</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>257</span> </span><span class="WHIT">        </span><span class="NAME">timezone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">timezone</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>258</span> </span><span class="WHIT">        </span><span class="NAME">locale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">locale</span><span class="WHIT">
+<span class='line'>259</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>260</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>261</span> 
+<span class='line'>262</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">DateFactory</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>263</span> </span></pre></body></html>

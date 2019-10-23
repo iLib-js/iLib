@@ -1,0 +1,446 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * GlyphString.js - ilib string subclass that allows you to access
+<span class='line'>  3</span>  * whole glyphs at a time
+<span class='line'>  4</span>  *
+<span class='line'>  5</span>  * Copyright © 2015-2018, JEDLSoft
+<span class='line'>  6</span>  *
+<span class='line'>  7</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  8</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  9</span>  * You may obtain a copy of the License at
+<span class='line'> 10</span>  *
+<span class='line'> 11</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 12</span>  *
+<span class='line'> 13</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 14</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 15</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 16</span>  *
+<span class='line'> 17</span>  * See the License for the specific language governing permissions and
+<span class='line'> 18</span>  * limitations under the License.
+<span class='line'> 19</span>  */</span><span class="WHIT">
+<span class='line'> 20</span> 
+<span class='line'> 21</span> </span><span class="COMM">// !data ccc nfc ctype_m</span><span class="WHIT">
+<span class='line'> 22</span> 
+<span class='line'> 23</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./ilib.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Utils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Utils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 25</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">JSUtils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./JSUtils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 26</span> 
+<span class='line'> 27</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./IString.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">CType</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./CType.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 29</span> 
+<span class='line'> 30</span> </span><span class="COMM">/**
+<span class='line'> 31</span>  * @class
+<span class='line'> 32</span>  * Create a new glyph string instance. This string inherits from
+<span class='line'> 33</span>  * the IString class, and adds methods that allow you to access
+<span class='line'> 34</span>  * whole glyphs at a time. &lt;p>
+<span class='line'> 35</span>  *
+<span class='line'> 36</span>  * In Unicode, various accented characters can be created by using
+<span class='line'> 37</span>  * a base character and one or more combining characters following
+<span class='line'> 38</span>  * it. These appear on the screen to the user as a single glyph.
+<span class='line'> 39</span>  * For example, the Latin character "a" (U+0061) followed by the
+<span class='line'> 40</span>  * combining diaresis character "¨" (U+0308) combine together to
+<span class='line'> 41</span>  * form the "a with diaresis" glyph "ä", which looks like a single
+<span class='line'> 42</span>  * character on the screen.&lt;p>
+<span class='line'> 43</span>  *
+<span class='line'> 44</span>  * The big problem with combining characters for web developers is
+<span class='line'> 45</span>  * that many CSS engines do not ellipsize text between glyphs. They
+<span class='line'> 46</span>  * only deal with single Unicode characters. So if a particular space
+<span class='line'> 47</span>  * only allows for 4 characters, the CSS engine will truncate a
+<span class='line'> 48</span>  * string at 4 Unicode characters and then add the ellipsis (...)
+<span class='line'> 49</span>  * character. What if the fourth Unicode character is the "a" and
+<span class='line'> 50</span>  * the fifth one is the diaresis? Then a string like "xxxäxxx" that
+<span class='line'> 51</span>  * is ellipsized at 4 characters will appear as "xxxa..." on the
+<span class='line'> 52</span>  * screen instead of "xxxä...".&lt;p>
+<span class='line'> 53</span>  *
+<span class='line'> 54</span>  * In the Latin script as it is commonly used, it is not so common
+<span class='line'> 55</span>  * to form accented characters using combining accents, so the above
+<span class='line'> 56</span>  * example is mostly for illustrative purposes. It is not unheard of
+<span class='line'> 57</span>  * however. The situation is much, much worse in scripts such as Thai and
+<span class='line'> 58</span>  * Devanagari that normally make very heavy use of combining characters.
+<span class='line'> 59</span>  * These scripts do so because Unicode does not include pre-composed
+<span class='line'> 60</span>  * versions of the accented characters like it does for Latin, so
+<span class='line'> 61</span>  * combining accents are the only way to create these accented and
+<span class='line'> 62</span>  * combined versions of the characters.&lt;p>
+<span class='line'> 63</span>  *
+<span class='line'> 64</span>  * The solution to this problem is not to use the the CSS property
+<span class='line'> 65</span>  * "text-overflow: ellipsis" in your web site, ever. Instead, use
+<span class='line'> 66</span>  * a glyph string to truncate text between glyphs dynamically,
+<span class='line'> 67</span>  * rather than truncating between Unicode characters using CSS.&lt;p>
+<span class='line'> 68</span>  *
+<span class='line'> 69</span>  * Glyph strings are also useful for truncation, hyphenation, and
+<span class='line'> 70</span>  * line wrapping, as all of these should be done between glyphs instead
+<span class='line'> 71</span>  * of between characters.&lt;p>
+<span class='line'> 72</span>  *
+<span class='line'> 73</span>  * The options parameter is optional, and may contain any combination
+<span class='line'> 74</span>  * of the following properties:&lt;p>
+<span class='line'> 75</span>  *
+<span class='line'> 76</span>  * &lt;ul>
+<span class='line'> 77</span>  * &lt;li>&lt;i>onLoad&lt;/i> - a callback function to call when the locale data are
+<span class='line'> 78</span>  * fully loaded. When the onLoad option is given, this object will attempt to
+<span class='line'> 79</span>  * load any missing locale data using the ilib loader callback.
+<span class='line'> 80</span>  * When the constructor is done (even if the data is already preassembled), the
+<span class='line'> 81</span>  * onLoad function is called with the current instance as a parameter, so this
+<span class='line'> 82</span>  * callback can be used with preassembled or dynamic loading or a mix of the two.
+<span class='line'> 83</span>  *
+<span class='line'> 84</span>  * &lt;li>&lt;i>sync&lt;/i> - tell whether to load any missing locale data synchronously or
+<span class='line'> 85</span>  * asynchronously. If this option is given as "false", then the "onLoad"
+<span class='line'> 86</span>  * callback must be given, as the instance returned from this constructor will
+<span class='line'> 87</span>  * not be usable for a while.
+<span class='line'> 88</span>  *
+<span class='line'> 89</span>  * &lt;li>&lt;i>loadParams&lt;/i> - an object containing parameters to pass to the
+<span class='line'> 90</span>  * loader callback function when locale data is missing. The parameters are not
+<span class='line'> 91</span>  * interpretted or modified in any way. They are simply passed along. The object
+<span class='line'> 92</span>  * may contain any property/value pairs as long as the calling code is in
+<span class='line'> 93</span>  * agreement with the loader callback function as to what those parameters mean.
+<span class='line'> 94</span>  * &lt;/ul>
+<span class='line'> 95</span>  *
+<span class='line'> 96</span>  * @constructor
+<span class='line'> 97</span>  * @extends IString
+<span class='line'> 98</span>  * @param {string|IString=} str initialize this instance with this string
+<span class='line'> 99</span>  * @param {Object=} options options governing the way this instance works
+<span class='line'>100</span>  */</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">GlyphString</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">options.noinstance</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>105</span> 
+<span class='line'>106</span> </span><span class="WHIT">    </span><span class="NAME">IString.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">str</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>107</span> 
+<span class='line'>108</span> </span><span class="WHIT">    </span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>109</span> 
+<span class='line'>110</span> </span><span class="WHIT">    </span><span class="NAME">CType._load</span><span class="PUNC">(</span><span class="STRN">"ctype_m"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options.sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options.loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">ilib.data.ccc</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">JSUtils.isEmpty</span><span class="PUNC">(</span><span class="NAME">ilib.data.ccc</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">            </span><span class="NAME">Utils.loadData</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">                </span><span class="NAME">object</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"GlyphString"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="WHIT">                </span><span class="NAME">locale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"-"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">                </span><span class="NAME">name</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"ccc.json"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">                </span><span class="NAME">nonlocale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">                </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">options.sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">                </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">options.loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">                </span><span class="NAME">callback</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">norm</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">                    </span><span class="NAME">ilib.data.ccc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">norm</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">ilib.data.norm.nfc</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">JSUtils.isEmpty</span><span class="PUNC">(</span><span class="NAME">ilib.data.norm.nfc</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">                        </span><span class="NAME">Utils.loadData</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">                            </span><span class="NAME">object</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"GlyphString"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">                            </span><span class="NAME">locale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"-"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">                            </span><span class="NAME">name</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"nfc/all.json"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">                            </span><span class="NAME">nonlocale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">                            </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">options.sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">                            </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">options.loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">                            </span><span class="NAME">callback</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">norm</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">                                </span><span class="NAME">ilib.data.norm.nfc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">norm</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">                                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">                                    </span><span class="NAME">options.onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">                                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">                            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">                        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">                            </span><span class="NAME">options.onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">                </span><span class="NAME">options.onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>150</span> 
+<span class='line'>151</span> </span><span class="NAME">GlyphString.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="NAME">GlyphString.prototype.parent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="NAME">GlyphString.prototype.constructor</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">GlyphString</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>154</span> 
+<span class='line'>155</span> </span><span class="COMM">/**
+<span class='line'>156</span>  * Return true if the given character is a leading Jamo (Choseong) character.
+<span class='line'>157</span>  *
+<span class='line'>158</span>  * @private
+<span class='line'>159</span>  * @static
+<span class='line'>160</span>  * @param {number} n code point to check
+<span class='line'>161</span>  * @return {boolean} true if the character is a leading Jamo character,
+<span class='line'>162</span>  * false otherwise
+<span class='line'>163</span>  */</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="NAME">GlyphString._isJamoL</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">n</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">n</span><span class="WHIT"> </span><span class="PUNC">>=</span><span class="WHIT"> </span><span class="NUMB">0x1100</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">n</span><span class="WHIT"> </span><span class="PUNC">&lt;=</span><span class="WHIT"> </span><span class="NUMB">0x1112</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>167</span> 
+<span class='line'>168</span> </span><span class="COMM">/**
+<span class='line'>169</span>  * Return true if the given character is a vowel Jamo (Jungseong) character.
+<span class='line'>170</span>  *
+<span class='line'>171</span>  * @private
+<span class='line'>172</span>  * @static
+<span class='line'>173</span>  * @param {number} n code point to check
+<span class='line'>174</span>  * @return {boolean} true if the character is a vowel Jamo character,
+<span class='line'>175</span>  * false otherwise
+<span class='line'>176</span>  */</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="NAME">GlyphString._isJamoV</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">n</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">n</span><span class="WHIT"> </span><span class="PUNC">>=</span><span class="WHIT"> </span><span class="NUMB">0x1161</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">n</span><span class="WHIT"> </span><span class="PUNC">&lt;=</span><span class="WHIT"> </span><span class="NUMB">0x1175</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>180</span> 
+<span class='line'>181</span> </span><span class="COMM">/**
+<span class='line'>182</span>  * Return true if the given character is a trailing Jamo (Jongseong) character.
+<span class='line'>183</span>  *
+<span class='line'>184</span>  * @private
+<span class='line'>185</span>  * @static
+<span class='line'>186</span>  * @param {number} n code point to check
+<span class='line'>187</span>  * @return {boolean} true if the character is a trailing Jamo character,
+<span class='line'>188</span>  * false otherwise
+<span class='line'>189</span>  */</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="NAME">GlyphString._isJamoT</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">n</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>191</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">n</span><span class="WHIT"> </span><span class="PUNC">>=</span><span class="WHIT"> </span><span class="NUMB">0x11A8</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">n</span><span class="WHIT"> </span><span class="PUNC">&lt;=</span><span class="WHIT"> </span><span class="NUMB">0x11C2</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>193</span> 
+<span class='line'>194</span> </span><span class="COMM">/**
+<span class='line'>195</span>  * Return true if the given character is a LV Jamo character.
+<span class='line'>196</span>  * LV Jamo character is a precomposed Hangul character with LV sequence.
+<span class='line'>197</span>  *
+<span class='line'>198</span>  * @private
+<span class='line'>199</span>  * @static
+<span class='line'>200</span>  * @param {number} n code point to check
+<span class='line'>201</span>  * @return {boolean} true if the character is a LV Jamo character,
+<span class='line'>202</span>  * false otherwise
+<span class='line'>203</span>  */</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="NAME">GlyphString._isJamoLV</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">n</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">syllableBase</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0xAC00</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">leadingJamoCount</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">19</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">vowelJamoCount</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">21</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">trailingJamoCount</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">28</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">syllableCount</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">leadingJamoCount</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">vowelJamoCount</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">trailingJamoCount</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">syllableIndex</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">n</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">syllableBase</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">    </span><span class="COMM">// Check if n is a precomposed Hangul</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NUMB">0</span><span class="WHIT"> </span><span class="PUNC">&lt;=</span><span class="WHIT"> </span><span class="NAME">syllableIndex</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">syllableIndex</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">syllableCount</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">    </span><span class="COMM">// Check if n is a LV Jamo character</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">syllableIndex</span><span class="WHIT"> </span><span class="PUNC">%</span><span class="WHIT"> </span><span class="NAME">trailingJamoCount</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>220</span> 
+<span class='line'>221</span> </span><span class="COMM">/**
+<span class='line'>222</span>  * Return true if the given character is a precomposed Hangul character.
+<span class='line'>223</span>  * The precomposed Hangul character may be a LV Jamo character or a LVT Jamo Character.
+<span class='line'>224</span>  *
+<span class='line'>225</span>  * @private
+<span class='line'>226</span>  * @static
+<span class='line'>227</span>  * @param {number} n code point to check
+<span class='line'>228</span>  * @return {boolean} true if the character is a precomposed Hangul character,
+<span class='line'>229</span>  * false otherwise
+<span class='line'>230</span>  */</span><span class="WHIT">
+<span class='line'>231</span> </span><span class="NAME">GlyphString._isHangul</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">n</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>232</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">n</span><span class="WHIT"> </span><span class="PUNC">>=</span><span class="WHIT"> </span><span class="NUMB">0xAC00</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">n</span><span class="WHIT"> </span><span class="PUNC">&lt;=</span><span class="WHIT"> </span><span class="NUMB">0xD7A3</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>234</span> 
+<span class='line'>235</span> </span><span class="COMM">/**
+<span class='line'>236</span>  * Algorithmically compose an L and a V combining Jamo characters into
+<span class='line'>237</span>  * a precomposed Korean syllabic Hangul character. Both should already
+<span class='line'>238</span>  * be in the proper ranges for L and V characters.
+<span class='line'>239</span>  *
+<span class='line'>240</span>  * @private
+<span class='line'>241</span>  * @static
+<span class='line'>242</span>  * @param {number} lead the code point of the lead Jamo character to compose
+<span class='line'>243</span>  * @param {number} trail the code point of the trailing Jamo character to compose
+<span class='line'>244</span>  * @return {string} the composed Hangul character
+<span class='line'>245</span>  */</span><span class="WHIT">
+<span class='line'>246</span> </span><span class="NAME">GlyphString._composeJamoLV</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">lead</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">trail</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>247</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">lindex</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">lead</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">0x1100</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>248</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">vindex</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">trail</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">0x1161</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>249</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">IString.fromCodePoint</span><span class="PUNC">(</span><span class="NUMB">0xAC00</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">lindex</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">21</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">vindex</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">28</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>250</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>251</span> 
+<span class='line'>252</span> </span><span class="COMM">/**
+<span class='line'>253</span>  * Algorithmically compose a Hangul LV and a combining Jamo T character
+<span class='line'>254</span>  * into a precomposed Korean syllabic Hangul character.
+<span class='line'>255</span>  *
+<span class='line'>256</span>  * @private
+<span class='line'>257</span>  * @static
+<span class='line'>258</span>  * @param {number} lead the code point of the lead Hangul character to compose
+<span class='line'>259</span>  * @param {number} trail the code point of the trailing Jamo T character to compose
+<span class='line'>260</span>  * @return {string} the composed Hangul character
+<span class='line'>261</span>  */</span><span class="WHIT">
+<span class='line'>262</span> </span><span class="NAME">GlyphString._composeJamoLVT</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">lead</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">trail</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>263</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">IString.fromCodePoint</span><span class="PUNC">(</span><span class="NAME">lead</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">trail</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">0x11A7</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>264</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>265</span> 
+<span class='line'>266</span> </span><span class="COMM">/**
+<span class='line'>267</span>  * Compose one character out of a leading character and a
+<span class='line'>268</span>  * trailing character. If the characters are Korean Jamo, they
+<span class='line'>269</span>  * will be composed algorithmically. If they are any other
+<span class='line'>270</span>  * characters, they will be looked up in the nfc tables.
+<span class='line'>271</span>  *
+<span class='line'>272</span>  * @private
+<span class='line'>273</span>  * @static
+<span class='line'>274</span>  * @param {string} lead leading character to compose
+<span class='line'>275</span>  * @param {string} trail the trailing character to compose
+<span class='line'>276</span>  * @return {string|null} the fully composed character, or undefined if
+<span class='line'>277</span>  * there is no composition for those two characters
+<span class='line'>278</span>  */</span><span class="WHIT">
+<span class='line'>279</span> </span><span class="NAME">GlyphString._compose</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">lead</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">trail</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">first</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">lead.charCodeAt</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">last</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">trail.charCodeAt</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">GlyphString._isJamoLV</span><span class="PUNC">(</span><span class="NAME">first</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">GlyphString._isJamoT</span><span class="PUNC">(</span><span class="NAME">last</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">GlyphString._composeJamoLVT</span><span class="PUNC">(</span><span class="NAME">first</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">last</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">GlyphString._isJamoL</span><span class="PUNC">(</span><span class="NAME">first</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">GlyphString._isJamoV</span><span class="PUNC">(</span><span class="NAME">last</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>285</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">GlyphString._composeJamoLV</span><span class="PUNC">(</span><span class="NAME">first</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">last</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>286</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>287</span> 
+<span class='line'>288</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">c</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">lead</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">trail</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>289</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ilib.data.norm.nfc</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">ilib.data.norm.nfc</span><span class="PUNC">[</span><span class="NAME">c</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>290</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>291</span> 
+<span class='line'>292</span> </span><span class="COMM">/**
+<span class='line'>293</span>  * Return an iterator that will step through all of the characters
+<span class='line'>294</span>  * in the string one at a time, taking care to step through decomposed
+<span class='line'>295</span>  * characters and through surrogate pairs in the UTF-16 encoding
+<span class='line'>296</span>  * as single characters. &lt;p>
+<span class='line'>297</span>  *
+<span class='line'>298</span>  * The GlyphString class will return decomposed Unicode characters
+<span class='line'>299</span>  * as a single unit that a user might see on the screen as a single
+<span class='line'>300</span>  * glyph. If the
+<span class='line'>301</span>  * next character in the iteration is a base character and it is
+<span class='line'>302</span>  * followed by combining characters, the base and all its following
+<span class='line'>303</span>  * combining characters are returned as a single unit.&lt;p>
+<span class='line'>304</span>  *
+<span class='line'>305</span>  * The standard Javascript String's charAt() method only
+<span class='line'>306</span>  * returns information about a particular 16-bit character in the
+<span class='line'>307</span>  * UTF-16 encoding scheme.
+<span class='line'>308</span>  * If the index is pointing to a low- or high-surrogate character,
+<span class='line'>309</span>  * it will return that surrogate character rather
+<span class='line'>310</span>  * than the surrogate pair which represents a character
+<span class='line'>311</span>  * in the supplementary planes.&lt;p>
+<span class='line'>312</span>  *
+<span class='line'>313</span>  * The iterator instance returned has two methods, hasNext() which
+<span class='line'>314</span>  * returns true if the iterator has more characters to iterate through,
+<span class='line'>315</span>  * and next() which returns the next character.&lt;p>
+<span class='line'>316</span>  *
+<span class='line'>317</span>  * @override
+<span class='line'>318</span>  * @return {Object} an iterator
+<span class='line'>319</span>  * that iterates through all the characters in the string
+<span class='line'>320</span>  */</span><span class="WHIT">
+<span class='line'>321</span> </span><span class="NAME">GlyphString.prototype.charIterator</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>322</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">it</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">IString.prototype.charIterator.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>323</span> 
+<span class='line'>324</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>325</span>      * @constructor
+<span class='line'>326</span>      */</span><span class="WHIT">
+<span class='line'>327</span> </span><span class="WHIT">    </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">_chiterator</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">istring</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>328</span> </span><span class="WHIT">        </span><span class="NAME">this.index</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">        </span><span class="NAME">this.spacingCombining</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>330</span> </span><span class="WHIT">        </span><span class="NAME">this.hasNext</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>331</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="PUNC">!</span><span class="NAME">this.nextChar</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">it.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>332</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>333</span> </span><span class="WHIT">        </span><span class="NAME">this.next</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>334</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.nextChar</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">it.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>335</span> </span><span class="WHIT">                </span><span class="NAME">prevCcc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib.data.ccc</span><span class="PUNC">[</span><span class="NAME">ch</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>336</span> </span><span class="WHIT">                </span><span class="NAME">nextCcc</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>337</span> </span><span class="WHIT">                </span><span class="NAME">composed</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>338</span> 
+<span class='line'>339</span> </span><span class="WHIT">            </span><span class="NAME">this.nextChar</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>340</span> </span><span class="WHIT">            </span><span class="NAME">this.spacingCombining</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>341</span> 
+<span class='line'>342</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ilib.data.ccc</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>343</span> </span><span class="WHIT">                    </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">ilib.data.ccc</span><span class="PUNC">[</span><span class="NAME">ch</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">ilib.data.ccc</span><span class="PUNC">[</span><span class="NAME">ch</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>344</span> </span><span class="WHIT">                </span><span class="COMM">// found a starter... find all the non-starters until the next starter. Must include</span><span class="WHIT">
+<span class='line'>345</span> </span><span class="WHIT">                </span><span class="COMM">// the next starter because under some odd circumstances, two starters sometimes recompose</span><span class="WHIT">
+<span class='line'>346</span> </span><span class="WHIT">                </span><span class="COMM">// together to form another character</span><span class="WHIT">
+<span class='line'>347</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">notdone</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>348</span> </span><span class="WHIT">                </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">it.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">notdone</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>349</span> </span><span class="WHIT">                    </span><span class="NAME">this.nextChar</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">it.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>350</span> </span><span class="WHIT">                    </span><span class="NAME">nextCcc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib.data.ccc</span><span class="PUNC">[</span><span class="NAME">this.nextChar</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>351</span> </span><span class="WHIT">                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">codePoint</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">IString.toCodePoint</span><span class="PUNC">(</span><span class="NAME">this.nextChar</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>352</span> </span><span class="WHIT">                    </span><span class="COMM">// Mn characters are Marks that are non-spacing. These do not take more room than an accent, so they should be</span><span class="WHIT">
+<span class='line'>353</span> </span><span class="WHIT">                    </span><span class="COMM">// considered part of the on-screen glyph, even if they are non-combining. Mc are marks that are spacing</span><span class="WHIT">
+<span class='line'>354</span> </span><span class="WHIT">                    </span><span class="COMM">// and combining, which means they are part of the glyph, but they cause the glyph to use up more space than</span><span class="WHIT">
+<span class='line'>355</span> </span><span class="WHIT">                    </span><span class="COMM">// just the base character alone.</span><span class="WHIT">
+<span class='line'>356</span> </span><span class="WHIT">                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isMn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">CType._inRange</span><span class="PUNC">(</span><span class="NAME">codePoint</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"Mn"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ilib.data.ctype_m</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>357</span> </span><span class="WHIT">                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isMc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">CType._inRange</span><span class="PUNC">(</span><span class="NAME">codePoint</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"Mc"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ilib.data.ctype_m</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>358</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">isMn</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">isMc</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">nextCcc</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">nextCcc</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>359</span> </span><span class="WHIT">                        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">isMc</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>360</span> </span><span class="WHIT">                            </span><span class="NAME">this.spacingCombining</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>361</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>362</span> </span><span class="WHIT">                        </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.nextChar</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>363</span> </span><span class="WHIT">                        </span><span class="NAME">this.nextChar</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>364</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>365</span> </span><span class="WHIT">                        </span><span class="COMM">// found the next starter. See if this can be composed with the previous starter</span><span class="WHIT">
+<span class='line'>366</span> </span><span class="WHIT">                        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">testChar</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">GlyphString._compose</span><span class="PUNC">(</span><span class="NAME">composed</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.nextChar</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>367</span> </span><span class="WHIT">                        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">prevCcc</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">testChar</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>368</span> </span><span class="WHIT">                            </span><span class="COMM">// not blocked and there is a mapping</span><span class="WHIT">
+<span class='line'>369</span> </span><span class="WHIT">                            </span><span class="NAME">composed</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">testChar</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>370</span> </span><span class="WHIT">                            </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.nextChar</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>371</span> </span><span class="WHIT">                            </span><span class="NAME">this.nextChar</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>372</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>373</span> </span><span class="WHIT">                            </span><span class="COMM">// finished iterating, leave this.nextChar for the next next() call</span><span class="WHIT">
+<span class='line'>374</span> </span><span class="WHIT">                            </span><span class="NAME">notdone</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>375</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>376</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>377</span> </span><span class="WHIT">                    </span><span class="NAME">prevCcc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">nextCcc</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>378</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>379</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>380</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>381</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>382</span> </span><span class="WHIT">        </span><span class="COMM">// Returns true if the last character returned by the "next" method included</span><span class="WHIT">
+<span class='line'>383</span> </span><span class="WHIT">        </span><span class="COMM">// spacing combining characters. If it does, then the character was wider than</span><span class="WHIT">
+<span class='line'>384</span> </span><span class="WHIT">        </span><span class="COMM">// just the base character alone, and the truncation code will not add it.</span><span class="WHIT">
+<span class='line'>385</span> </span><span class="WHIT">        </span><span class="NAME">this.wasSpacingCombining</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>386</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.spacingCombining</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>387</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>388</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>389</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">_chiterator</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>390</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>391</span> 
+<span class='line'>392</span> </span><span class="COMM">/**
+<span class='line'>393</span>  * Truncate the current string at the given number of whole glyphs and return
+<span class='line'>394</span>  * the resulting string.
+<span class='line'>395</span>  *
+<span class='line'>396</span>  * @param {number} length the number of whole glyphs to keep in the string
+<span class='line'>397</span>  * @return {string} a string truncated to the requested number of glyphs
+<span class='line'>398</span>  */</span><span class="WHIT">
+<span class='line'>399</span> </span><span class="NAME">GlyphString.prototype.truncate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>400</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">it</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.charIterator</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>401</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">tr</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">it.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="WHIT">        </span><span class="NAME">tr</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">it.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>404</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>405</span> 
+<span class='line'>406</span> </span><span class="WHIT">    </span><span class="COMM">/*
+<span class='line'>407</span>      * handle the last character separately. If it contains spacing combining
+<span class='line'>408</span>      * accents, then we must assume that it uses up more horizontal space on
+<span class='line'>409</span>      * the screen than just the base character by itself, and therefore this
+<span class='line'>410</span>      * method will not truncate enough characters to fit in the given length.
+<span class='line'>411</span>      * In this case, we have to chop off not only the combining characters,
+<span class='line'>412</span>      * but also the base character as well because the base without the
+<span class='line'>413</span>      * combining accents is considered a different character.
+<span class='line'>414</span>      */</span><span class="WHIT">
+<span class='line'>415</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">length</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">it.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>416</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">c</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">it.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>417</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">it.wasSpacingCombining</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>418</span> </span><span class="WHIT">            </span><span class="NAME">tr</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">c</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>419</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>420</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>421</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">tr</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>422</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>423</span> 
+<span class='line'>424</span> </span><span class="COMM">/**
+<span class='line'>425</span>  * Truncate the current string at the given number of glyphs and add an ellipsis
+<span class='line'>426</span>  * to indicate that is more to the string. The ellipsis forms the last character
+<span class='line'>427</span>  * in the string, so the string is actually truncated at length-1 glyphs.
+<span class='line'>428</span>  *
+<span class='line'>429</span>  * @param {number} length the number of whole glyphs to keep in the string
+<span class='line'>430</span>  * including the ellipsis
+<span class='line'>431</span>  * @return {string} a string truncated to the requested number of glyphs
+<span class='line'>432</span>  * with an ellipsis
+<span class='line'>433</span>  */</span><span class="WHIT">
+<span class='line'>434</span> </span><span class="NAME">GlyphString.prototype.ellipsize</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>435</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.truncate</span><span class="PUNC">(</span><span class="NAME">length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"…"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>436</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>437</span> 
+<span class='line'>438</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">GlyphString</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>439</span> </span></pre></body></html>

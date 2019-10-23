@@ -1,0 +1,554 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * HanDate.js - Represent a date in the Han algorithmic calendar
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * Copyright © 2014-2015, 2018, JEDLSoft
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  7</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  8</span>  * You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 13</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 14</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 15</span>  *
+<span class='line'> 16</span>  * See the License for the specific language governing permissions and
+<span class='line'> 17</span>  * limitations under the License.
+<span class='line'> 18</span>  */</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./ilib.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">JSUtils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./JSUtils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">MathUtils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./MathUtils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> 
+<span class='line'> 24</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Locale.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 25</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">LocaleInfo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./LocaleInfo.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">IDate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./IDate.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">TimeZone</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./TimeZone.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 28</span> 
+<span class='line'> 29</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Astro</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Astro.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">HanCal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./HanCal.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">GregorianDate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./GregorianDate.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">HanRataDie</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./HanRataDie.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">RataDie</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./RataDie.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 34</span> 
+<span class='line'> 35</span> </span><span class="COMM">/**
+<span class='line'> 36</span>  * @class
+<span class='line'> 37</span>  *
+<span class='line'> 38</span>  * Construct a new Han date object. The constructor parameters can
+<span class='line'> 39</span>  * contain any of the following properties:
+<span class='line'> 40</span>  *
+<span class='line'> 41</span>  * &lt;ul>
+<span class='line'> 42</span>  * &lt;li>&lt;i>unixtime&lt;i> - sets the time of this instance according to the given
+<span class='line'> 43</span>  * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970, Gregorian
+<span class='line'> 44</span>  *
+<span class='line'> 45</span>  * &lt;li>&lt;i>julianday&lt;/i> - sets the time of this instance according to the given
+<span class='line'> 46</span>  * Julian Day instance or the Julian Day given as a float
+<span class='line'> 47</span>  *
+<span class='line'> 48</span>  * &lt;li>&lt;i>cycle&lt;/i> - any integer giving the number of 60-year cycle in which the date is located.
+<span class='line'> 49</span>  * If the cycle is not given but the year is, it is assumed that the year parameter is a fictitious
+<span class='line'> 50</span>  * linear count of years since the beginning of the epoch, much like other calendars. This linear
+<span class='line'> 51</span>  * count is never used. If both the cycle and year are given, the year is wrapped to the range 0
+<span class='line'> 52</span>  * to 60 and treated as if it were a year in the regular 60-year cycle.
+<span class='line'> 53</span>  *
+<span class='line'> 54</span>  * &lt;li>&lt;i>year&lt;/i> - any integer, including 0
+<span class='line'> 55</span>  *
+<span class='line'> 56</span>  * &lt;li>&lt;i>month&lt;/i> - 1 to 12, where 1 means Farvardin, 2 means Ordibehesht, etc.
+<span class='line'> 57</span>  *
+<span class='line'> 58</span>  * &lt;li>&lt;i>day&lt;/i> - 1 to 31
+<span class='line'> 59</span>  *
+<span class='line'> 60</span>  * &lt;li>&lt;i>hour&lt;/i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation
+<span class='line'> 61</span>  * is always done with an unambiguous 24 hour representation
+<span class='line'> 62</span>  *
+<span class='line'> 63</span>  * &lt;li>&lt;i>minute&lt;/i> - 0 to 59
+<span class='line'> 64</span>  *
+<span class='line'> 65</span>  * &lt;li>&lt;i>second&lt;/i> - 0 to 59
+<span class='line'> 66</span>  *
+<span class='line'> 67</span>  * &lt;li>&lt;i>millisecond&lt;/i> - 0 to 999
+<span class='line'> 68</span>  *
+<span class='line'> 69</span>  * &lt;li>&lt;i>timezone&lt;/i> - the TimeZone instance or time zone name as a string
+<span class='line'> 70</span>  * of this han date. The date/time is kept in the local time. The time zone
+<span class='line'> 71</span>  * is used later if this date is formatted according to a different time zone and
+<span class='line'> 72</span>  * the difference has to be calculated, or when the date format has a time zone
+<span class='line'> 73</span>  * component in it.
+<span class='line'> 74</span>  *
+<span class='line'> 75</span>  * &lt;li>&lt;i>locale&lt;/i> - locale for this han date. If the time zone is not
+<span class='line'> 76</span>  * given, it can be inferred from this locale. For locales that span multiple
+<span class='line'> 77</span>  * time zones, the one with the largest population is chosen as the one that
+<span class='line'> 78</span>  * represents the locale.
+<span class='line'> 79</span>  *
+<span class='line'> 80</span>  * &lt;li>&lt;i>date&lt;/i> - use the given intrinsic Javascript date to initialize this one.
+<span class='line'> 81</span>  * &lt;/ul>
+<span class='line'> 82</span>  *
+<span class='line'> 83</span>  * If the constructor is called with another Han date instance instead of
+<span class='line'> 84</span>  * a parameter block, the other instance acts as a parameter block and its
+<span class='line'> 85</span>  * settings are copied into the current instance.&lt;p>
+<span class='line'> 86</span>  *
+<span class='line'> 87</span>  * If the constructor is called with no arguments at all or if none of the
+<span class='line'> 88</span>  * properties listed above
+<span class='line'> 89</span>  * from &lt;i>unixtime&lt;/i> through &lt;i>millisecond&lt;/i> are present, then the date
+<span class='line'> 90</span>  * components are
+<span class='line'> 91</span>  * filled in with the current date at the time of instantiation. Note that if
+<span class='line'> 92</span>  * you do not give the time zone when defaulting to the current time and the
+<span class='line'> 93</span>  * time zone for all of ilib was not set with &lt;i>ilib.setTimeZone()&lt;/i>, then the
+<span class='line'> 94</span>  * time zone will default to UTC ("Universal Time, Coordinated" or "Greenwich
+<span class='line'> 95</span>  * Mean Time").&lt;p>
+<span class='line'> 96</span>  *
+<span class='line'> 97</span>  * If any of the properties from &lt;i>year&lt;/i> through &lt;i>millisecond&lt;/i> are not
+<span class='line'> 98</span>  * specified in the params, it is assumed that they have the smallest possible
+<span class='line'> 99</span>  * value in the range for the property (zero or one).&lt;p>
+<span class='line'>100</span>  *
+<span class='line'>101</span>  *
+<span class='line'>102</span>  * @constructor
+<span class='line'>103</span>  * @extends Date
+<span class='line'>104</span>  * @param {Object=} params parameters that govern the settings and behaviour of this Han date
+<span class='line'>105</span>  */</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">HanDate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">    </span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">params.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">        </span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">params.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="NAME">params.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">params.locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">params.timezone</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">        </span><span class="NAME">this.timezone</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">params.timezone</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>114</span> 
+<span class='line'>115</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.timezone</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">            </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">LocaleInfo</span><span class="PUNC">(</span><span class="NAME">this.locale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">                </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">params.sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">                </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">params.loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">                </span><span class="NAME">onLoad</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">li</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">                    </span><span class="NAME">this.li</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">li</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">                    </span><span class="NAME">this.timezone</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">li.getTimeZone</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">                    </span><span class="NAME">this._init</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">            </span><span class="NAME">this.timezone</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"local"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">            </span><span class="NAME">this._init</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">        </span><span class="NAME">this._init</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>134</span> 
+<span class='line'>135</span> </span><span class="NAME">HanDate.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IDate</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="NAME">noinstance</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="NAME">HanDate.prototype.parent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">IDate</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="NAME">HanDate.prototype.constructor</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanDate</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>138</span> 
+<span class='line'>139</span> </span><span class="COMM">/**
+<span class='line'>140</span>  * Initialize the han date
+<span class='line'>141</span>  * @private
+<span class='line'>142</span>  */</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="NAME">HanDate.prototype._init</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">    </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">HanCal</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">        </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">params.sync</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'boolean'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">params.sync</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">        </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">params.loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">        </span><span class="NAME">onLoad</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">cal</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">            </span><span class="NAME">this.cal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cal</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>149</span> 
+<span class='line'>150</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">params.year</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">params.month</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">params.day</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">params.hour</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">                </span><span class="NAME">params.minute</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">params.second</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">params.millisecond</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">params.cycle</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">params.cycleYear</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">params.cycle</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">                    </span><span class="COMM">/**
+<span class='line'>154</span>                      * Cycle number in the Han calendar.
+<span class='line'>155</span>                      * @type number
+<span class='line'>156</span>                      */</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">                    </span><span class="NAME">this.cycle</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">params.cycle</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>158</span> 
+<span class='line'>159</span> </span><span class="WHIT">                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">year</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">params.year</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">params.year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">params.cycleYear</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>160</span> 
+<span class='line'>161</span> </span><span class="WHIT">                    </span><span class="COMM">/**
+<span class='line'>162</span>                      * Year in the Han calendar.
+<span class='line'>163</span>                      * @type number
+<span class='line'>164</span>                      */</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">                    </span><span class="NAME">this.year</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._getElapsedYear</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.cycle</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">params.year</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">                        </span><span class="NAME">this.year</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">params.year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">                        </span><span class="NAME">this.cycle</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">this.year</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">60</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">                        </span><span class="NAME">this.year</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.cycle</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>174</span> 
+<span class='line'>175</span> </span><span class="WHIT">                </span><span class="COMM">/**
+<span class='line'>176</span>                  * The month number, ranging from 1 to 13
+<span class='line'>177</span>                  * @type number
+<span class='line'>178</span>                  */</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">                </span><span class="NAME">this.month</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">params.month</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>180</span> 
+<span class='line'>181</span> </span><span class="WHIT">                </span><span class="COMM">/**
+<span class='line'>182</span>                  * The day of the month. This ranges from 1 to 30.
+<span class='line'>183</span>                  * @type number
+<span class='line'>184</span>                  */</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">                </span><span class="NAME">this.day</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">params.day</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>186</span> 
+<span class='line'>187</span> </span><span class="WHIT">                </span><span class="COMM">/**
+<span class='line'>188</span>                  * The hour of the day. This can be a number from 0 to 23, as times are
+<span class='line'>189</span>                  * stored unambiguously in the 24-hour clock.
+<span class='line'>190</span>                  * @type number
+<span class='line'>191</span>                  */</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">                </span><span class="NAME">this.hour</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">params.hour</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>193</span> 
+<span class='line'>194</span> </span><span class="WHIT">                </span><span class="COMM">/**
+<span class='line'>195</span>                  * The minute of the hours. Ranges from 0 to 59.
+<span class='line'>196</span>                  * @type number
+<span class='line'>197</span>                  */</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">                </span><span class="NAME">this.minute</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">params.minute</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>199</span> 
+<span class='line'>200</span> </span><span class="WHIT">                </span><span class="COMM">/**
+<span class='line'>201</span>                  * The second of the minute. Ranges from 0 to 59.
+<span class='line'>202</span>                  * @type number
+<span class='line'>203</span>                  */</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">                </span><span class="NAME">this.second</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">params.second</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>205</span> 
+<span class='line'>206</span> </span><span class="WHIT">                </span><span class="COMM">/**
+<span class='line'>207</span>                  * The millisecond of the second. Ranges from 0 to 999.
+<span class='line'>208</span>                  * @type number
+<span class='line'>209</span>                  */</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">                </span><span class="NAME">this.millisecond</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">params.millisecond</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>211</span> 
+<span class='line'>212</span> </span><span class="WHIT">                </span><span class="COMM">// derived properties</span><span class="WHIT">
+<span class='line'>213</span> 
+<span class='line'>214</span> </span><span class="WHIT">                </span><span class="COMM">/**
+<span class='line'>215</span>                  * Year in the cycle of the Han calendar
+<span class='line'>216</span>                  * @type number
+<span class='line'>217</span>                  */</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="WHIT">                </span><span class="NAME">this.cycleYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">MathUtils.amod</span><span class="PUNC">(</span><span class="NAME">this.year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">60</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>219</span> 
+<span class='line'>220</span> </span><span class="WHIT">                </span><span class="COMM">/**
+<span class='line'>221</span>                  * The day of the year. Ranges from 1 to 384.
+<span class='line'>222</span>                  * @type number
+<span class='line'>223</span>                  */</span><span class="WHIT">
+<span class='line'>224</span> </span><span class="WHIT">                </span><span class="NAME">this.dayOfYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">params.dayOfYear</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>225</span> 
+<span class='line'>226</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">params.dst</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'boolean'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="WHIT">                    </span><span class="NAME">this.dst</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">params.dst</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>229</span> 
+<span class='line'>230</span> </span><span class="WHIT">                </span><span class="NAME">this.newRd</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>231</span> </span><span class="WHIT">                    </span><span class="NAME">cal</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.cal</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>232</span> </span><span class="WHIT">                    </span><span class="NAME">cycle</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.cycle</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="WHIT">                    </span><span class="NAME">year</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.year</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>234</span> </span><span class="WHIT">                    </span><span class="NAME">month</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.month</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>235</span> </span><span class="WHIT">                    </span><span class="NAME">day</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.day</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>236</span> </span><span class="WHIT">                    </span><span class="NAME">hour</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.hour</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>237</span> </span><span class="WHIT">                    </span><span class="NAME">minute</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.minute</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="WHIT">                    </span><span class="NAME">second</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.second</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">                    </span><span class="NAME">millisecond</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.millisecond</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">                    </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">params.sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">                    </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">params.loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>242</span> </span><span class="WHIT">                    </span><span class="NAME">callback</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">rd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>243</span> </span><span class="WHIT">                        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">rd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>244</span> </span><span class="WHIT">                            </span><span class="NAME">this.rd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">rd</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>245</span> 
+<span class='line'>246</span> </span><span class="WHIT">                            </span><span class="COMM">// add the time zone offset to the rd to convert to UTC</span><span class="WHIT">
+<span class='line'>247</span> </span><span class="WHIT">                            </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">TimeZone</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>248</span> </span><span class="WHIT">                                </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.timezone</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>249</span> </span><span class="WHIT">                                </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">params.sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>250</span> </span><span class="WHIT">                                </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">params.loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>251</span> </span><span class="WHIT">                                </span><span class="NAME">onLoad</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">tz</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>252</span> </span><span class="WHIT">                                    </span><span class="NAME">this.tz</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">tz</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>253</span> </span><span class="WHIT">                                    </span><span class="COMM">// getOffsetMillis requires that this.year, this.rd, and this.dst</span><span class="WHIT">
+<span class='line'>254</span> </span><span class="WHIT">                                    </span><span class="COMM">// are set in order to figure out which time zone rules apply and</span><span class="WHIT">
+<span class='line'>255</span> </span><span class="WHIT">                                    </span><span class="COMM">// what the offset is at that point in the year</span><span class="WHIT">
+<span class='line'>256</span> </span><span class="WHIT">                                    </span><span class="NAME">this.offset</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.tz._getOffsetMillisWallTime</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">86400000</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>257</span> </span><span class="WHIT">                                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.offset</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>258</span> </span><span class="WHIT">                                        </span><span class="COMM">// this newRd can be called synchronously because we already called</span><span class="WHIT">
+<span class='line'>259</span> </span><span class="WHIT">                                        </span><span class="COMM">// it asynchronously above, so all of the astro data should</span><span class="WHIT">
+<span class='line'>260</span> </span><span class="WHIT">                                        </span><span class="COMM">// already be loaded.</span><span class="WHIT">
+<span class='line'>261</span> </span><span class="WHIT">                                        </span><span class="NAME">this.rd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.newRd</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>262</span> </span><span class="WHIT">                                            </span><span class="NAME">cal</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.cal</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>263</span> </span><span class="WHIT">                                            </span><span class="NAME">rd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.rd.getRataDie</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">this.offset</span><span class="WHIT">
+<span class='line'>264</span> </span><span class="WHIT">                                        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>265</span> </span><span class="WHIT">                                        </span><span class="NAME">this._calcLeap</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>266</span> </span><span class="WHIT">                                    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>267</span> </span><span class="WHIT">                                        </span><span class="COMM">// re-use the derived properties from the RD calculations</span><span class="WHIT">
+<span class='line'>268</span> </span><span class="WHIT">                                        </span><span class="NAME">this.leapMonth</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.rd.leapMonth</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>269</span> </span><span class="WHIT">                                        </span><span class="NAME">this.priorLeapMonth</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.rd.priorLeapMonth</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>270</span> </span><span class="WHIT">                                        </span><span class="NAME">this.leapYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.rd.leapYear</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>271</span> </span><span class="WHIT">                                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>272</span> 
+<span class='line'>273</span> </span><span class="WHIT">                                    </span><span class="NAME">this._init2</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>274</span> </span><span class="WHIT">                                </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>275</span> </span><span class="WHIT">                            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>276</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">                            </span><span class="NAME">this._init2</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>278</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>279</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="WHIT">                </span><span class="NAME">this._init2</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>285</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>286</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>287</span> 
+<span class='line'>288</span> </span><span class="COMM">/**
+<span class='line'>289</span>  * Finish the initialization for the han date.
+<span class='line'>290</span>  * @private
+<span class='line'>291</span>  */</span><span class="WHIT">
+<span class='line'>292</span> </span><span class="NAME">HanDate.prototype._init2</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>293</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.rd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>294</span> </span><span class="WHIT">        </span><span class="COMM">// init2() may be called without newRd having been called before,</span><span class="WHIT">
+<span class='line'>295</span> </span><span class="WHIT">        </span><span class="COMM">// so we cannot guarantee that the astro data is already loaded.</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="WHIT">        </span><span class="COMM">// That means, we have to treat this as a possibly asynchronous</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">        </span><span class="COMM">// call.</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">        </span><span class="NAME">this.newRd</span><span class="PUNC">(</span><span class="NAME">JSUtils.merge</span><span class="PUNC">(</span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="WHIT">            </span><span class="NAME">cal</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.cal</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="WHIT">            </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">params.sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="WHIT">            </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">params.loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="WHIT">            </span><span class="NAME">callback</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">rd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>303</span> </span><span class="WHIT">                </span><span class="NAME">this.rd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">rd</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="WHIT">                </span><span class="NAME">this._calcDateComponents</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>305</span> 
+<span class='line'>306</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">params.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">                    </span><span class="NAME">params.onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>308</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>310</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>311</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">params.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>313</span> </span><span class="WHIT">            </span><span class="NAME">params.onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>314</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>317</span> 
+<span class='line'>318</span> </span><span class="COMM">/**
+<span class='line'>319</span>  * Return a new RD for this date type using the given params.
+<span class='line'>320</span>  * @protected
+<span class='line'>321</span>  * @param {Object=} params the parameters used to create this rata die instance
+<span class='line'>322</span>  * @returns {RataDie} the new RD instance for the given params
+<span class='line'>323</span>  */</span><span class="WHIT">
+<span class='line'>324</span> </span><span class="NAME">HanDate.prototype.newRd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>325</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">HanRataDie</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>326</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>327</span> 
+<span class='line'>328</span> </span><span class="COMM">/**
+<span class='line'>329</span>  * Return the year for the given RD
+<span class='line'>330</span>  * @protected
+<span class='line'>331</span>  * @param {number} rd RD to calculate from
+<span class='line'>332</span>  * @returns {number} the year for the RD
+<span class='line'>333</span>  */</span><span class="WHIT">
+<span class='line'>334</span> </span><span class="NAME">HanDate.prototype._calcYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">rd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>335</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">gregdate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">GregorianDate</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>336</span> </span><span class="WHIT">        </span><span class="NAME">rd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">rd</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>337</span> </span><span class="WHIT">        </span><span class="NAME">timezone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.timezone</span><span class="WHIT">
+<span class='line'>338</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>339</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">hanyear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">gregdate.year</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">2697</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>340</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">newYears</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.cal.newYears</span><span class="PUNC">(</span><span class="NAME">hanyear</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>341</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">hanyear</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">rd</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">RataDie.gregorianEpoch</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">newYears</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>342</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>343</span> 
+<span class='line'>344</span> </span><span class="COMM">/**
+<span class='line'>345</span>  * @private
+<span class='line'>346</span>  * Calculate the leap year and months from the RD.
+<span class='line'>347</span>  */</span><span class="WHIT">
+<span class='line'>348</span> </span><span class="NAME">HanDate.prototype._calcLeap</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>349</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">jd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.rd.getRataDie</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">RataDie.gregorianEpoch</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>350</span> 
+<span class='line'>351</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">calc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._leapYearCalc</span><span class="PUNC">(</span><span class="NAME">this.year</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>352</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">m2</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._newMoonOnOrAfter</span><span class="PUNC">(</span><span class="NAME">calc.m1</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>353</span> </span><span class="WHIT">    </span><span class="NAME">this.leapYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.round</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">calc.m2</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">calc.m1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">29.530588853000001</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">12</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>354</span> 
+<span class='line'>355</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">newYears</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.leapYear</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>356</span> </span><span class="WHIT">        </span><span class="PUNC">(</span><span class="NAME">HanCal._noMajorST</span><span class="PUNC">(</span><span class="NAME">calc.m1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">HanCal._noMajorST</span><span class="PUNC">(</span><span class="NAME">m2</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT">
+<span class='line'>357</span> </span><span class="WHIT">                </span><span class="NAME">HanCal._newMoonOnOrAfter</span><span class="PUNC">(</span><span class="NAME">m2</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">m2</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>358</span> 
+<span class='line'>359</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._newMoonBefore</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>360</span> </span><span class="WHIT">    </span><span class="NAME">this.priorLeapMonth</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanRataDie._priorLeapMonth</span><span class="PUNC">(</span><span class="NAME">newYears</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">HanCal._newMoonBefore</span><span class="PUNC">(</span><span class="NAME">m</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>361</span> </span><span class="WHIT">    </span><span class="NAME">this.leapMonth</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.leapYear</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">HanCal._noMajorST</span><span class="PUNC">(</span><span class="NAME">m</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">this.priorLeapMonth</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>362</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>363</span> 
+<span class='line'>364</span> </span><span class="COMM">/**
+<span class='line'>365</span>  * @private
+<span class='line'>366</span>  * Calculate date components for the given RD date.
+<span class='line'>367</span>  */</span><span class="WHIT">
+<span class='line'>368</span> </span><span class="NAME">HanDate.prototype._calcDateComponents</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>369</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">remainder</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>370</span> </span><span class="WHIT">        </span><span class="NAME">jd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.rd.getRataDie</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">RataDie.gregorianEpoch</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>371</span> 
+<span class='line'>372</span> </span><span class="WHIT">    </span><span class="COMM">// console.log("HanDate._calcDateComponents: calculating for jd " + jd);</span><span class="WHIT">
+<span class='line'>373</span> 
+<span class='line'>374</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.offset</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"undefined"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>375</span> </span><span class="WHIT">        </span><span class="COMM">// now offset the jd by the time zone, then recalculate in case we were</span><span class="WHIT">
+<span class='line'>376</span> </span><span class="WHIT">        </span><span class="COMM">// near the year boundary</span><span class="WHIT">
+<span class='line'>377</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.tz</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>378</span> </span><span class="WHIT">            </span><span class="NAME">this.tz</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">TimeZone</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.timezone</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>379</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>380</span> </span><span class="WHIT">        </span><span class="NAME">this.offset</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.tz.getOffsetMillis</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">86400000</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>381</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>382</span> 
+<span class='line'>383</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.offset</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>384</span> </span><span class="WHIT">        </span><span class="NAME">jd</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.offset</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>385</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>386</span> 
+<span class='line'>387</span> </span><span class="WHIT">    </span><span class="COMM">// use the Gregorian calendar objects as a convenient way to short-cut some</span><span class="WHIT">
+<span class='line'>388</span> </span><span class="WHIT">    </span><span class="COMM">// of the date calculations</span><span class="WHIT">
+<span class='line'>389</span> 
+<span class='line'>390</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">gregyear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">GregorianDate._calcYear</span><span class="PUNC">(</span><span class="NAME">this.rd.getRataDie</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>391</span> </span><span class="WHIT">    </span><span class="NAME">this.year</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">gregyear</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">2697</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>392</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">calc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._leapYearCalc</span><span class="PUNC">(</span><span class="NAME">this.year</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>393</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">m2</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._newMoonOnOrAfter</span><span class="PUNC">(</span><span class="NAME">calc.m1</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>394</span> </span><span class="WHIT">    </span><span class="NAME">this.leapYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.round</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">calc.m2</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">calc.m1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">29.530588853000001</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">12</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>395</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">newYears</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.leapYear</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>396</span> </span><span class="WHIT">        </span><span class="PUNC">(</span><span class="NAME">HanCal._noMajorST</span><span class="PUNC">(</span><span class="NAME">calc.m1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">HanCal._noMajorST</span><span class="PUNC">(</span><span class="NAME">m2</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT">
+<span class='line'>397</span> </span><span class="WHIT">                </span><span class="NAME">HanCal._newMoonOnOrAfter</span><span class="PUNC">(</span><span class="NAME">m2</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">m2</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>398</span> 
+<span class='line'>399</span> </span><span class="WHIT">    </span><span class="COMM">// See if it's between Jan 1 and the Chinese new years of that Gregorian year. If</span><span class="WHIT">
+<span class='line'>400</span> </span><span class="WHIT">    </span><span class="COMM">// so, then the Han year is actually the previous one</span><span class="WHIT">
+<span class='line'>401</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">jd</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">newYears</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="WHIT">        </span><span class="NAME">this.year</span><span class="PUNC">--</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="WHIT">        </span><span class="NAME">calc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._leapYearCalc</span><span class="PUNC">(</span><span class="NAME">this.year</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>404</span> </span><span class="WHIT">        </span><span class="NAME">m2</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._newMoonOnOrAfter</span><span class="PUNC">(</span><span class="NAME">calc.m1</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>405</span> </span><span class="WHIT">        </span><span class="NAME">this.leapYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.round</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">calc.m2</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">calc.m1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">29.530588853000001</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">12</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>406</span> </span><span class="WHIT">        </span><span class="NAME">newYears</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.leapYear</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>407</span> </span><span class="WHIT">            </span><span class="PUNC">(</span><span class="NAME">HanCal._noMajorST</span><span class="PUNC">(</span><span class="NAME">calc.m1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">HanCal._noMajorST</span><span class="PUNC">(</span><span class="NAME">m2</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT">
+<span class='line'>408</span> </span><span class="WHIT">                    </span><span class="NAME">HanCal._newMoonOnOrAfter</span><span class="PUNC">(</span><span class="NAME">m2</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">m2</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>409</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="WHIT">    </span><span class="COMM">// month is elapsed month, not the month number + leap month boolean</span><span class="WHIT">
+<span class='line'>411</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._newMoonBefore</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>412</span> </span><span class="WHIT">    </span><span class="NAME">this.month</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.round</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">calc.m1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">29.530588853000001</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>413</span> 
+<span class='line'>414</span> </span><span class="WHIT">    </span><span class="NAME">this.priorLeapMonth</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanRataDie._priorLeapMonth</span><span class="PUNC">(</span><span class="NAME">newYears</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">HanCal._newMoonBefore</span><span class="PUNC">(</span><span class="NAME">m</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>415</span> </span><span class="WHIT">    </span><span class="NAME">this.leapMonth</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.leapYear</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">HanCal._noMajorST</span><span class="PUNC">(</span><span class="NAME">m</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">this.priorLeapMonth</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>416</span> 
+<span class='line'>417</span> </span><span class="WHIT">    </span><span class="NAME">this.cycle</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">this.year</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">60</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>418</span> </span><span class="WHIT">    </span><span class="NAME">this.cycleYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">MathUtils.amod</span><span class="PUNC">(</span><span class="NAME">this.year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">60</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>419</span> </span><span class="WHIT">    </span><span class="NAME">this.day</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Astro._floorToJD</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>420</span> 
+<span class='line'>421</span> </span><span class="WHIT">    </span><span class="COMM">/*
+<span class='line'>422</span>     console.log("HanDate._calcDateComponents: year is " + this.year);
+<span class='line'>423</span>     console.log("HanDate._calcDateComponents: isLeapYear is " + this.leapYear);
+<span class='line'>424</span>     console.log("HanDate._calcDateComponents: cycle is " + this.cycle);
+<span class='line'>425</span>     console.log("HanDate._calcDateComponents: cycleYear is " + this.cycleYear);
+<span class='line'>426</span>     console.log("HanDate._calcDateComponents: month is " + this.month);
+<span class='line'>427</span>     console.log("HanDate._calcDateComponents: isLeapMonth is " + this.leapMonth);
+<span class='line'>428</span>     console.log("HanDate._calcDateComponents: day is " + this.day);
+<span class='line'>429</span>     */</span><span class="WHIT">
+<span class='line'>430</span> 
+<span class='line'>431</span> </span><span class="WHIT">    </span><span class="COMM">// floor to the start of the julian day</span><span class="WHIT">
+<span class='line'>432</span> </span><span class="WHIT">    </span><span class="NAME">remainder</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">jd</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">Astro._floorToJD</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>433</span> 
+<span class='line'>434</span> </span><span class="WHIT">    </span><span class="COMM">// console.log("HanDate._calcDateComponents: time remainder is " + remainder);</span><span class="WHIT">
+<span class='line'>435</span> 
+<span class='line'>436</span> </span><span class="WHIT">    </span><span class="COMM">// now convert to milliseconds for the rest of the calculation</span><span class="WHIT">
+<span class='line'>437</span> </span><span class="WHIT">    </span><span class="NAME">remainder</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.round</span><span class="PUNC">(</span><span class="NAME">remainder</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">86400000</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>438</span> 
+<span class='line'>439</span> </span><span class="WHIT">    </span><span class="NAME">this.hour</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="NAME">remainder</span><span class="PUNC">/</span><span class="NUMB">3600000</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>440</span> </span><span class="WHIT">    </span><span class="NAME">remainder</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.hour</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">3600000</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>441</span> 
+<span class='line'>442</span> </span><span class="WHIT">    </span><span class="NAME">this.minute</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="NAME">remainder</span><span class="PUNC">/</span><span class="NUMB">60000</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>443</span> </span><span class="WHIT">    </span><span class="NAME">remainder</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.minute</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">60000</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>444</span> 
+<span class='line'>445</span> </span><span class="WHIT">    </span><span class="NAME">this.second</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="NAME">remainder</span><span class="PUNC">/</span><span class="NUMB">1000</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>446</span> </span><span class="WHIT">    </span><span class="NAME">remainder</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.second</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">1000</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>447</span> 
+<span class='line'>448</span> </span><span class="WHIT">    </span><span class="NAME">this.millisecond</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">remainder</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>449</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>450</span> 
+<span class='line'>451</span> </span><span class="COMM">/**
+<span class='line'>452</span>  * Return the year within the Chinese cycle of this date. Cycles are 60
+<span class='line'>453</span>  * years long, and the value returned from this method is the number of the year
+<span class='line'>454</span>  * within this cycle. The year returned from getYear() is the total elapsed
+<span class='line'>455</span>  * years since the beginning of the Chinese epoch and does not include
+<span class='line'>456</span>  * the cycles.
+<span class='line'>457</span>  *
+<span class='line'>458</span>  * @return {number} the year within the current Chinese cycle
+<span class='line'>459</span>  */</span><span class="WHIT">
+<span class='line'>460</span> </span><span class="NAME">HanDate.prototype.getCycleYears</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>461</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.cycleYear</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>462</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>463</span> 
+<span class='line'>464</span> </span><span class="COMM">/**
+<span class='line'>465</span>  * Return the Chinese cycle number of this date. Cycles are 60 years long,
+<span class='line'>466</span>  * and the value returned from getCycleYear() is the number of the year
+<span class='line'>467</span>  * within this cycle. The year returned from getYear() is the total elapsed
+<span class='line'>468</span>  * years since the beginning of the Chinese epoch and does not include
+<span class='line'>469</span>  * the cycles.
+<span class='line'>470</span>  *
+<span class='line'>471</span>  * @return {number} the current Chinese cycle
+<span class='line'>472</span>  */</span><span class="WHIT">
+<span class='line'>473</span> </span><span class="NAME">HanDate.prototype.getCycles</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>474</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.cycle</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>475</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>476</span> 
+<span class='line'>477</span> </span><span class="COMM">/**
+<span class='line'>478</span>  * Return whether the year of this date is a leap year in the Chinese Han
+<span class='line'>479</span>  * calendar.
+<span class='line'>480</span>  *
+<span class='line'>481</span>  * @return {boolean} true if the year of this date is a leap year in the
+<span class='line'>482</span>  * Chinese Han calendar.
+<span class='line'>483</span>  */</span><span class="WHIT">
+<span class='line'>484</span> </span><span class="NAME">HanDate.prototype.isLeapYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>485</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.leapYear</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>486</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>487</span> 
+<span class='line'>488</span> </span><span class="COMM">/**
+<span class='line'>489</span>  * Return whether the month of this date is a leap month in the Chinese Han
+<span class='line'>490</span>  * calendar.
+<span class='line'>491</span>  *
+<span class='line'>492</span>  * @return {boolean} true if the month of this date is a leap month in the
+<span class='line'>493</span>  * Chinese Han calendar.
+<span class='line'>494</span>  */</span><span class="WHIT">
+<span class='line'>495</span> </span><span class="NAME">HanDate.prototype.isLeapMonth</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>496</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.leapMonth</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>497</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>498</span> 
+<span class='line'>499</span> </span><span class="COMM">/**
+<span class='line'>500</span>  * Return the day of the week of this date. The day of the week is encoded
+<span class='line'>501</span>  * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
+<span class='line'>502</span>  *
+<span class='line'>503</span>  * @return {number} the day of the week
+<span class='line'>504</span>  */</span><span class="WHIT">
+<span class='line'>505</span> </span><span class="NAME">HanDate.prototype.getDayOfWeek</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>506</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">rd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="NAME">this.rd.getRataDie</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.offset</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>507</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">MathUtils.mod</span><span class="PUNC">(</span><span class="NAME">rd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">7</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>508</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>509</span> 
+<span class='line'>510</span> </span><span class="COMM">/**
+<span class='line'>511</span>  * Return the ordinal day of the year. Days are counted from 1 and proceed linearly up to
+<span class='line'>512</span>  * 365, regardless of months or weeks, etc. That is, Farvardin 1st is day 1, and
+<span class='line'>513</span>  * December 31st is 365 in regular years, or 366 in leap years.
+<span class='line'>514</span>  * @return {number} the ordinal day of the year
+<span class='line'>515</span>  */</span><span class="WHIT">
+<span class='line'>516</span> </span><span class="NAME">HanDate.prototype.getDayOfYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>517</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">newYears</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.cal.newYears</span><span class="PUNC">(</span><span class="NAME">this.year</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>518</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">priorNewMoon</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._newMoonOnOrAfter</span><span class="PUNC">(</span><span class="NAME">newYears</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.month</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">29</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>519</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">priorNewMoon</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">newYears</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.day</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>520</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>521</span> 
+<span class='line'>522</span> </span><span class="COMM">/**
+<span class='line'>523</span>  * Return the era for this date as a number. The value for the era for Han
+<span class='line'>524</span>  * calendars is -1 for "before the han era" (BP) and 1 for "the han era" (anno
+<span class='line'>525</span>  * persico or AP).
+<span class='line'>526</span>  * BP dates are any date before Farvardin 1, 1 AP. In the proleptic Han calendar,
+<span class='line'>527</span>  * there is a year 0, so any years that are negative or zero are BP.
+<span class='line'>528</span>  * @return {number} 1 if this date is in the common era, -1 if it is before the
+<span class='line'>529</span>  * common era
+<span class='line'>530</span>  */</span><span class="WHIT">
+<span class='line'>531</span> </span><span class="NAME">HanDate.prototype.getEra</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>532</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.year</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>533</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>534</span> 
+<span class='line'>535</span> </span><span class="COMM">/**
+<span class='line'>536</span>  * Return the name of the calendar that governs this date.
+<span class='line'>537</span>  *
+<span class='line'>538</span>  * @return {string} a string giving the name of the calendar
+<span class='line'>539</span>  */</span><span class="WHIT">
+<span class='line'>540</span> </span><span class="NAME">HanDate.prototype.getCalendar</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>541</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"han"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>542</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>543</span> 
+<span class='line'>544</span> </span><span class="COMM">// register with the factory method</span><span class="WHIT">
+<span class='line'>545</span> </span><span class="NAME">IDate._constructors</span><span class="PUNC">[</span><span class="STRN">"han"</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanDate</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>546</span> 
+<span class='line'>547</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanDate</span><span class="PUNC">;</span></pre></body></html>

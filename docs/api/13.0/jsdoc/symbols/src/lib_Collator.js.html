@@ -1,0 +1,801 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * Collator.js - Collation routines
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * Copyright © 2013-2015, 2018, JEDLSoft
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  7</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  8</span>  * You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 13</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 14</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 15</span>  *
+<span class='line'> 16</span>  * See the License for the specific language governing permissions and
+<span class='line'> 17</span>  * limitations under the License.
+<span class='line'> 18</span>  */</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="COMM">// !data collation</span><span class="WHIT">
+<span class='line'> 21</span> 
+<span class='line'> 22</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./ilib.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Utils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Utils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">JSUtils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./JSUtils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 25</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Locale.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">INumber</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./INumber.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isPunct</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./isPunct.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">NormString</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./NormString.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">CodePointSource</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./CodePointSource.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ElementIterator</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./ElementIterator.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">GlyphString</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./GlyphString.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 32</span> 
+<span class='line'> 33</span> </span><span class="COMM">/**
+<span class='line'> 34</span>  * @class
+<span class='line'> 35</span>  * A class that implements a locale-sensitive comparator function
+<span class='line'> 36</span>  * for use with sorting function. The comparator function
+<span class='line'> 37</span>  * assumes that the strings it is comparing contain Unicode characters
+<span class='line'> 38</span>  * encoded in UTF-16.&lt;p>
+<span class='line'> 39</span>  *
+<span class='line'> 40</span>  * Collations usually depend only on the language, because most collation orders
+<span class='line'> 41</span>  * are shared between locales that speak the same language. There are, however, a
+<span class='line'> 42</span>  * number of instances where a locale collates differently than other locales
+<span class='line'> 43</span>  * that share the same language. There are also a number of instances where a
+<span class='line'> 44</span>  * locale collates differently based on the script used. This object can handle
+<span class='line'> 45</span>  * these cases automatically if a full locale is specified in the options rather
+<span class='line'> 46</span>  * than just a language code.&lt;p>
+<span class='line'> 47</span>  *
+<span class='line'> 48</span>  * &lt;h2>Options&lt;/h2>
+<span class='line'> 49</span>  *
+<span class='line'> 50</span>  * The options parameter can contain any of the following properties:
+<span class='line'> 51</span>  *
+<span class='line'> 52</span>  * &lt;ul>
+<span class='line'> 53</span>  * &lt;li>&lt;i>locale&lt;/i> - String|Locale. The locale which the comparator function
+<span class='line'> 54</span>  * will collate with. Default: the current iLib locale.
+<span class='line'> 55</span>  *
+<span class='line'> 56</span>  * &lt;li>&lt;i>sensitivity&lt;/i> - String. Sensitivity or strength of collator. This is one of
+<span class='line'> 57</span>  * "primary", "base", "secondary", "accent", "tertiary", "case", "quaternary", or
+<span class='line'> 58</span>  * "variant". Default: "primary"
+<span class='line'> 59</span>  *   &lt;ol>
+<span class='line'> 60</span>  *   &lt;li>base or primary - Only the primary distinctions between characters are significant.
+<span class='line'> 61</span>  *   Another way of saying that is that the collator will be case-, accent-, and
+<span class='line'> 62</span>  *   variation-insensitive, and only distinguish between the base characters
+<span class='line'> 63</span>  *   &lt;li>case or secondary - Both the primary and secondary distinctions between characters
+<span class='line'> 64</span>  *   are significant. That is, the collator will be accent- and variation-insensitive
+<span class='line'> 65</span>  *   and will distinguish between base characters and character case.
+<span class='line'> 66</span>  *   &lt;li>accent or tertiary - The primary, secondary, and tertiary distinctions between
+<span class='line'> 67</span>  *   characters are all significant. That is, the collator will be
+<span class='line'> 68</span>  *   variation-insensitive, but accent-, case-, and base-character-sensitive.
+<span class='line'> 69</span>  *   &lt;li>variant or quaternary - All distinctions between characters are significant. That is,
+<span class='line'> 70</span>  *   the algorithm is base character-, case-, accent-, and variation-sensitive.
+<span class='line'> 71</span>  *   &lt;/ol>
+<span class='line'> 72</span>  *
+<span class='line'> 73</span>  * &lt;li>&lt;i>upperFirst&lt;/i> - boolean. When collating case-sensitively in a script that
+<span class='line'> 74</span>  * has the concept of case, put upper-case
+<span class='line'> 75</span>  * characters first, otherwise lower-case will come first. Warning: some browsers do
+<span class='line'> 76</span>  * not implement this feature or at least do not implement it properly, so if you are
+<span class='line'> 77</span>  * using the native collator with this option, you may get different results in different
+<span class='line'> 78</span>  * browsers. To guarantee the same results, set useNative to false to use the ilib
+<span class='line'> 79</span>  * collator implementation. This of course will be somewhat slower, but more
+<span class='line'> 80</span>  * predictable. Default: true
+<span class='line'> 81</span>  *
+<span class='line'> 82</span>  * &lt;li>&lt;i>reverse&lt;/i> - boolean. Return the list sorted in reverse order. When the
+<span class='line'> 83</span>  * upperFirst option is also set to true, upper-case characters would then come at
+<span class='line'> 84</span>  * the end of the list. Default: false.
+<span class='line'> 85</span>  *
+<span class='line'> 86</span>  * &lt;li>&lt;i>scriptOrder&lt;/i> - string. When collating strings in multiple scripts,
+<span class='line'> 87</span>  * this property specifies what order those scripts should be sorted. The default
+<span class='line'> 88</span>  * Unicode Collation Algorithm (UCA) already has a default order for scripts, but
+<span class='line'> 89</span>  * this can be tailored via this property. The value of this option is a
+<span class='line'> 90</span>  * space-separated list of ISO 15924 scripts codes. If a code is specified in this
+<span class='line'> 91</span>  * property, its default data must be included using the JS assembly tool. If the
+<span class='line'> 92</span>  * data is not included, the ordering for the script will be ignored. Default:
+<span class='line'> 93</span>  * the default order defined by the UCA.
+<span class='line'> 94</span>  *
+<span class='line'> 95</span>  * &lt;li>&lt;i>style&lt;/i> - The value of the style parameter is dependent on the locale.
+<span class='line'> 96</span>  * For some locales, there are different styles of collating strings depending
+<span class='line'> 97</span>  * on what kind of strings are being collated or what the preference of the user
+<span class='line'> 98</span>  * is. For example, in German, there is a phonebook order and a dictionary ordering
+<span class='line'> 99</span>  * that sort the same array of strings slightly differently.
+<span class='line'>100</span>  * The static method {@link Collator#getAvailableStyles} will return a list of styles that ilib
+<span class='line'>101</span>  * currently knows about for any given locale. If the value of the style option is
+<span class='line'>102</span>  * not recognized for a locale, it will be ignored. Default style is "standard".&lt;p>
+<span class='line'>103</span>  *
+<span class='line'>104</span>  * &lt;li>&lt;i>usage&lt;/i> - Whether this collator will be used for searching or sorting.
+<span class='line'>105</span>  * Valid values are simply the strings "sort" or "search". When used for sorting,
+<span class='line'>106</span>  * it is good idea if a collator produces a stable sort. That is, the order of the
+<span class='line'>107</span>  * sorted array of strings should not depend on the order of the strings in the
+<span class='line'>108</span>  * input array. As such, when a collator is supposed to act case insensitively,
+<span class='line'>109</span>  * it nonetheless still distinguishes between case after all other criteria
+<span class='line'>110</span>  * are satisfied so that strings that are distinguished only by case do not sort
+<span class='line'>111</span>  * randomly. For searching, we would like to match two strings that different only
+<span class='line'>112</span>  * by case, so the collator must return equals in that situation instead of
+<span class='line'>113</span>  * further distinguishing by case. Default is "sort".
+<span class='line'>114</span>  *
+<span class='line'>115</span>  * &lt;li>&lt;i>numeric&lt;/i> - Treat the left and right strings as if they started with
+<span class='line'>116</span>  * numbers and sort them numerically rather than lexically.
+<span class='line'>117</span>  *
+<span class='line'>118</span>  * &lt;li>&lt;i>ignorePunctuation&lt;/i> - Skip punctuation characters when comparing the
+<span class='line'>119</span>  * strings.
+<span class='line'>120</span>  *
+<span class='line'>121</span>  * &lt;li>onLoad - a callback function to call when the collator object is fully
+<span class='line'>122</span>  * loaded. When the onLoad option is given, the collator object will attempt to
+<span class='line'>123</span>  * load any missing locale data using the ilib loader callback.
+<span class='line'>124</span>  * When the constructor is done (even if the data is already preassembled), the
+<span class='line'>125</span>  * onLoad function is called with the current instance as a parameter, so this
+<span class='line'>126</span>  * callback can be used with preassembled or dynamic loading or a mix of the two.
+<span class='line'>127</span>  *
+<span class='line'>128</span>  * &lt;li>sync - tell whether to load any missing locale data synchronously or
+<span class='line'>129</span>  * asynchronously. If this option is given as "false", then the "onLoad"
+<span class='line'>130</span>  * callback must be given, as the instance returned from this constructor will
+<span class='line'>131</span>  * not be usable for a while.
+<span class='line'>132</span>  *
+<span class='line'>133</span>  * &lt;li>&lt;i>loadParams&lt;/i> - an object containing parameters to pass to the
+<span class='line'>134</span>  * loader callback function when locale data is missing. The parameters are not
+<span class='line'>135</span>  * interpretted or modified in any way. They are simply passed along. The object
+<span class='line'>136</span>  * may contain any property/value pairs as long as the calling code is in
+<span class='line'>137</span>  * agreement with the loader callback function as to what those parameters mean.
+<span class='line'>138</span>  *
+<span class='line'>139</span>  * &lt;li>&lt;i>useNative&lt;/i> - when this option is true, use the native Intl object
+<span class='line'>140</span>  * provided by the Javascript engine, if it exists, to implement this class. If
+<span class='line'>141</span>  * it doesn't exist, or if this parameter is false, then this class uses a pure
+<span class='line'>142</span>  * Javascript implementation, which is slower and uses a lot more memory, but
+<span class='line'>143</span>  * works everywhere that ilib works. Default is "true".
+<span class='line'>144</span>  * &lt;/ul>
+<span class='line'>145</span>  *
+<span class='line'>146</span>  * &lt;h2>Operation&lt;/h2>
+<span class='line'>147</span>  *
+<span class='line'>148</span>  * The Collator constructor returns a collator object tailored with the above
+<span class='line'>149</span>  * options. The object contains an internal compare() method which compares two
+<span class='line'>150</span>  * strings according to those options. This can be used directly to compare
+<span class='line'>151</span>  * two strings, but is not useful for passing to the javascript sort function
+<span class='line'>152</span>  * because then it will not have its collation data available. Instead, use the
+<span class='line'>153</span>  * getComparator() method to retrieve a function that is bound to the collator
+<span class='line'>154</span>  * object. (You could also bind it yourself using ilib.bind()). The bound function
+<span class='line'>155</span>  * can be used with the standard Javascript array sorting algorithm, or as a
+<span class='line'>156</span>  * comparator with your own sorting algorithm.&lt;p>
+<span class='line'>157</span>  *
+<span class='line'>158</span>  * Example using the standard Javascript array sorting call with the bound
+<span class='line'>159</span>  * function:&lt;p>
+<span class='line'>160</span>  *
+<span class='line'>161</span>  * &lt;code>
+<span class='line'>162</span>  * &lt;pre>
+<span class='line'>163</span>  * var arr = ["ö", "oe", "ü", "o", "a", "ae", "u", "ß", "ä"];
+<span class='line'>164</span>  * var collator = new Collator({locale: 'de-DE', style: "dictionary"});
+<span class='line'>165</span>  * arr.sort(collator.getComparator());
+<span class='line'>166</span>  * console.log(JSON.stringify(arr));
+<span class='line'>167</span>  * &lt;/pre>
+<span class='line'>168</span>  * &lt;/code>
+<span class='line'>169</span>  * &lt;p>
+<span class='line'>170</span>  *
+<span class='line'>171</span>  * Would give the output:&lt;p>
+<span class='line'>172</span>  *
+<span class='line'>173</span>  * &lt;code>
+<span class='line'>174</span>  * &lt;pre>
+<span class='line'>175</span>  * ["a", "ae", "ä", "o", "oe", "ö", "ß", "u", "ü"]
+<span class='line'>176</span>  * &lt;/pre>
+<span class='line'>177</span>  * &lt;/code>
+<span class='line'>178</span>  *
+<span class='line'>179</span>  * When sorting an array of Javascript objects according to one of the
+<span class='line'>180</span>  * string properties of the objects, wrap the collator's compare function
+<span class='line'>181</span>  * in your own comparator function that knows the structure of the objects
+<span class='line'>182</span>  * being sorted:&lt;p>
+<span class='line'>183</span>  *
+<span class='line'>184</span>  * &lt;code>
+<span class='line'>185</span>  * &lt;pre>
+<span class='line'>186</span>  * var collator = new Collator({locale: 'de-DE'});
+<span class='line'>187</span>  * var myComparator = function (collator) {
+<span class='line'>188</span>  *   var comparator = collator.getComparator();
+<span class='line'>189</span>  *   // left and right are your own objects
+<span class='line'>190</span>  *   return function (left, right) {
+<span class='line'>191</span>  *       return comparator(left.x.y.textProperty, right.x.y.textProperty);
+<span class='line'>192</span>  *   };
+<span class='line'>193</span>  * };
+<span class='line'>194</span>  * arr.sort(myComparator(collator));
+<span class='line'>195</span>  * &lt;/pre>
+<span class='line'>196</span>  * &lt;/code>
+<span class='line'>197</span>  * &lt;p>
+<span class='line'>198</span>  *
+<span class='line'>199</span>  * &lt;h2>Sort Keys&lt;/h2>
+<span class='line'>200</span>  *
+<span class='line'>201</span>  * The collator class also has a method to retrieve the sort key for a
+<span class='line'>202</span>  * string. The sort key is an array of values that represent how each
+<span class='line'>203</span>  * character in the string should be collated according to the characteristics
+<span class='line'>204</span>  * of the collation algorithm and the given options. Thus, sort keys can be
+<span class='line'>205</span>  * compared directly value-for-value with other sort keys that were generated
+<span class='line'>206</span>  * by the same collator, and the resulting ordering is guaranteed to be the
+<span class='line'>207</span>  * same as if the original strings were compared by the collator.
+<span class='line'>208</span>  * Sort keys generated by different collators are not guaranteed to give
+<span class='line'>209</span>  * any reasonable results when compared together unless the two collators
+<span class='line'>210</span>  * were constructed with
+<span class='line'>211</span>  * exactly the same options and therefore end up representing the exact same
+<span class='line'>212</span>  * collation sequence.&lt;p>
+<span class='line'>213</span>  *
+<span class='line'>214</span>  * A good rule of thumb is that you would use a sort key if you had 10 or more
+<span class='line'>215</span>  * items to sort or if your array might be resorted arbitrarily. For example, if your
+<span class='line'>216</span>  * user interface was displaying a table with 100 rows in it, and each row had
+<span class='line'>217</span>  * 4 sortable text columns which could be sorted in acending or descending order,
+<span class='line'>218</span>  * the recommended practice would be to generate a sort key for each of the 4
+<span class='line'>219</span>  * sortable fields in each row and store that in the Javascript representation of the
+<span class='line'>220</span>  * table data. Then, when the user clicks on a column header to resort the
+<span class='line'>221</span>  * table according to that column, the resorting would be relatively quick
+<span class='line'>222</span>  * because it would only be comparing arrays of values, and not recalculating
+<span class='line'>223</span>  * the collation values for each character in each string for every comparison.&lt;p>
+<span class='line'>224</span>  *
+<span class='line'>225</span>  * For tables that are large, it is usually a better idea to do the sorting
+<span class='line'>226</span>  * on the server side, especially if the table is the result of a database
+<span class='line'>227</span>  * query. In this case, the table is usually a view of the cursor of a large
+<span class='line'>228</span>  * results set, and only a few entries are sent to the front end at a time.
+<span class='line'>229</span>  * In order to sort the set efficiently, it should be done on the database
+<span class='line'>230</span>  * level instead.
+<span class='line'>231</span>  *
+<span class='line'>232</span>  * &lt;h2>Data&lt;/h2>
+<span class='line'>233</span>  *
+<span class='line'>234</span>  * Doing correct collation entails a huge amount of mapping data, much of which is
+<span class='line'>235</span>  * not necessary when collating in one language with one script, which is the most
+<span class='line'>236</span>  * common case. Thus, ilib implements a number of ways to include the data you
+<span class='line'>237</span>  * need or leave out the data you don't need using the JS assembly tool:
+<span class='line'>238</span>  *
+<span class='line'>239</span>  * &lt;ol>
+<span class='line'>240</span>  * &lt;li>Full multilingual data - if you are sorting multilingual data and need to collate
+<span class='line'>241</span>  * text written in multiple scripts, you can use the directive "!data collation/ducet" to
+<span class='line'>242</span>  * load in the full collation data.  This allows the collator to perform the entire
+<span class='line'>243</span>  * Unicode Collation Algorithm (UCA) based on the Default Unicode Collation Element
+<span class='line'>244</span>  * Table (DUCET). The data is very large, on the order of multiple megabytes, but
+<span class='line'>245</span>  * sometimes it is necessary.
+<span class='line'>246</span>  * &lt;li>A few scripts - if you are sorting text written in only a few scripts, you may
+<span class='line'>247</span>  * want to include only the data for those scripts. Each ISO 15924 script code has its
+<span class='line'>248</span>  * own data available in a separate file, so you can use the data directive to include
+<span class='line'>249</span>  * only the data for the scripts you need. For example, use
+<span class='line'>250</span>  * "!data collation/Latn" to retrieve the collation information for the Latin script.
+<span class='line'>251</span>  * Because the "ducet" table mentioned in the previous point is a superset of the
+<span class='line'>252</span>  * tables for all other scripts, you do not need to include explicitly the data for
+<span class='line'>253</span>  * any particular script when using "ducet". That is, you either include "ducet" or
+<span class='line'>254</span>  * you include a specific list of scripts.
+<span class='line'>255</span>  * &lt;li>Only one script - if you are sorting text written only in one script, you can
+<span class='line'>256</span>  * either include the data directly as in the previous point, or you can rely on the
+<span class='line'>257</span>  * locale to include the correct data for you. In this case, you can use the directive
+<span class='line'>258</span>  * "!data collate" to load in the locale's collation data for its most common script.
+<span class='line'>259</span>  * &lt;/ol>
+<span class='line'>260</span>  *
+<span class='line'>261</span>  * With any of the above ways of including the data, the collator will only perform the
+<span class='line'>262</span>  * correct language-sensitive sorting for the given locale. All other scripts will be
+<span class='line'>263</span>  * sorted in the default manner according to the UCA. For example, if you include the
+<span class='line'>264</span>  * "ducet" data and pass in "de-DE" (German for Germany) as the locale spec, then
+<span class='line'>265</span>  * only the Latin script (the default script for German) will be sorted according to
+<span class='line'>266</span>  * German rules. All other scripts in the DUCET, such as Japanese or Arabic, will use
+<span class='line'>267</span>  * the default UCA collation rules.&lt;p>
+<span class='line'>268</span>  *
+<span class='line'>269</span>  * If this collator encounters a character for which it has no collation data, it will
+<span class='line'>270</span>  * sort those characters by pure Unicode value after all characters for which it does have
+<span class='line'>271</span>  * collation data. For example, if you only loaded in the German collation data (ie. the
+<span class='line'>272</span>  * data for the Latin script tailored to German) to sort a list of person names, but that
+<span class='line'>273</span>  * list happens to include the names of a few Japanese people written in Japanese
+<span class='line'>274</span>  * characters, the Japanese names will sort at the end of the list after all German names,
+<span class='line'>275</span>  * and will sort according to the Unicode values of the characters.
+<span class='line'>276</span>  *
+<span class='line'>277</span>  * @constructor
+<span class='line'>278</span>  * @param {Object} options options governing how the resulting comparator
+<span class='line'>279</span>  * function will operate
+<span class='line'>280</span>  */</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Collator</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">        </span><span class="NAME">loadParams</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">        </span><span class="NAME">useNative</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>285</span> 
+<span class='line'>286</span> </span><span class="WHIT">    </span><span class="COMM">// defaults</span><span class="WHIT">
+<span class='line'>287</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>288</span>      * @private
+<span class='line'>289</span>      * @type {Locale}
+<span class='line'>290</span>      */</span><span class="WHIT">
+<span class='line'>291</span> </span><span class="WHIT">    </span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="NAME">ilib.getLocale</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>292</span> 
+<span class='line'>293</span> </span><span class="WHIT">    </span><span class="COMM">/** @private */</span><span class="WHIT">
+<span class='line'>294</span> </span><span class="WHIT">    </span><span class="NAME">this.caseFirst</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"upper"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>295</span> </span><span class="WHIT">    </span><span class="COMM">/** @private */</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="WHIT">    </span><span class="NAME">this.sensitivity</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"variant"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">    </span><span class="COMM">/** @private */</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">    </span><span class="NAME">this.level</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="WHIT">    </span><span class="COMM">/** @private */</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="WHIT">    </span><span class="NAME">this.usage</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"sort"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="WHIT">    </span><span class="COMM">/** @private */</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="WHIT">    </span><span class="NAME">this.reverse</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>303</span> </span><span class="WHIT">    </span><span class="COMM">/** @private */</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="WHIT">    </span><span class="NAME">this.numeric</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>305</span> </span><span class="WHIT">    </span><span class="COMM">/** @private */</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="WHIT">    </span><span class="NAME">this.style</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"default"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">    </span><span class="COMM">/** @private */</span><span class="WHIT">
+<span class='line'>308</span> </span><span class="WHIT">    </span><span class="NAME">this.ignorePunctuation</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>309</span> 
+<span class='line'>310</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>311</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="WHIT">            </span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="NAME">options.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">options.locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>313</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>314</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.sensitivity</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="WHIT">            </span><span class="KEYW">switch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.sensitivity</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">                </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'primary'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">                </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'base'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">                    </span><span class="NAME">this.sensitivity</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"base"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="WHIT">                    </span><span class="NAME">this.level</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>320</span> </span><span class="WHIT">                    </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>321</span> </span><span class="WHIT">                </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'secondary'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>322</span> </span><span class="WHIT">                </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'accent'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>323</span> </span><span class="WHIT">                    </span><span class="NAME">this.sensitivity</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"accent"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>324</span> </span><span class="WHIT">                    </span><span class="NAME">this.level</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>325</span> </span><span class="WHIT">                    </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>326</span> </span><span class="WHIT">                </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'tertiary'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>327</span> </span><span class="WHIT">                </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'case'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>328</span> </span><span class="WHIT">                    </span><span class="NAME">this.sensitivity</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"case"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">                    </span><span class="NAME">this.level</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">3</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>330</span> </span><span class="WHIT">                    </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>331</span> </span><span class="WHIT">                </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'quaternary'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>332</span> </span><span class="WHIT">                </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'variant'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>333</span> </span><span class="WHIT">                    </span><span class="NAME">this.sensitivity</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"variant"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>334</span> </span><span class="WHIT">                    </span><span class="NAME">this.level</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>335</span> </span><span class="WHIT">                    </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>336</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>337</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>338</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.upperFirst</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>339</span> </span><span class="WHIT">            </span><span class="NAME">this.caseFirst</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.upperFirst</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="STRN">"upper"</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"lower"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>340</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>341</span> 
+<span class='line'>342</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.ignorePunctuation</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>343</span> </span><span class="WHIT">            </span><span class="NAME">this.ignorePunctuation</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.ignorePunctuation</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>344</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>345</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.sync</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>346</span> </span><span class="WHIT">            </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="PUNC">!</span><span class="NAME">options.sync</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>347</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>348</span> 
+<span class='line'>349</span> </span><span class="WHIT">        </span><span class="NAME">loadParams</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.loadParams</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>350</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.useNative</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>351</span> </span><span class="WHIT">            </span><span class="NAME">useNative</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.useNative</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>352</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>353</span> 
+<span class='line'>354</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.usage</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"sort"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">options.usage</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"search"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>355</span> </span><span class="WHIT">            </span><span class="NAME">this.usage</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.usage</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>356</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>357</span> 
+<span class='line'>358</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.reverse</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'boolean'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>359</span> </span><span class="WHIT">            </span><span class="NAME">this.reverse</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.reverse</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>360</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>361</span> 
+<span class='line'>362</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.numeric</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'boolean'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>363</span> </span><span class="WHIT">            </span><span class="NAME">this.numeric</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.numeric</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>364</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>365</span> 
+<span class='line'>366</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.style</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>367</span> </span><span class="WHIT">            </span><span class="NAME">this.style</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.style</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>368</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>369</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>370</span> </span><span class="WHIT">        </span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>371</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>372</span> 
+<span class='line'>373</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.usage</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"sort"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>374</span> </span><span class="WHIT">        </span><span class="COMM">// produces a stable sort</span><span class="WHIT">
+<span class='line'>375</span> </span><span class="WHIT">        </span><span class="NAME">this.level</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>376</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>377</span> 
+<span class='line'>378</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">useNative</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">Intl</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">Intl</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>379</span> </span><span class="WHIT">        </span><span class="COMM">// this engine is modern and supports the new Intl object!</span><span class="WHIT">
+<span class='line'>380</span> </span><span class="WHIT">        </span><span class="COMM">//console.log("implemented natively");</span><span class="WHIT">
+<span class='line'>381</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>382</span>          * @private
+<span class='line'>383</span>          * @type {{compare:function(string,string)}}
+<span class='line'>384</span>          */</span><span class="WHIT">
+<span class='line'>385</span> </span><span class="WHIT">        </span><span class="NAME">this.collator</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Intl.Collator</span><span class="PUNC">(</span><span class="NAME">this.locale.getSpec</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>386</span> </span><span class="WHIT">            </span><span class="NAME">sensitivity</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.sensitivity</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>387</span> </span><span class="WHIT">            </span><span class="NAME">caseFirst</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.caseFirst</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>388</span> </span><span class="WHIT">            </span><span class="NAME">ignorePunctuation</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.ignorePunctuation</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>389</span> </span><span class="WHIT">            </span><span class="NAME">numeric</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.numeric</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>390</span> </span><span class="WHIT">            </span><span class="NAME">usage</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.usage</span><span class="WHIT">
+<span class='line'>391</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>392</span> 
+<span class='line'>393</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>394</span> </span><span class="WHIT">            </span><span class="NAME">options.onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>395</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>396</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>397</span> </span><span class="WHIT">        </span><span class="COMM">//console.log("implemented in pure JS");</span><span class="WHIT">
+<span class='line'>398</span> 
+<span class='line'>399</span> </span><span class="WHIT">        </span><span class="COMM">// else implement in pure Javascript</span><span class="WHIT">
+<span class='line'>400</span> </span><span class="WHIT">        </span><span class="NAME">Utils.loadData</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>401</span> </span><span class="WHIT">            </span><span class="NAME">object</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"Collator"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="WHIT">            </span><span class="NAME">locale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="WHIT">            </span><span class="NAME">name</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"collation.json"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>404</span> </span><span class="WHIT">            </span><span class="NAME">replace</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>405</span> </span><span class="WHIT">            </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>406</span> </span><span class="WHIT">            </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>407</span> </span><span class="WHIT">            </span><span class="NAME">callback</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">collation</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>408</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">collation</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>409</span> </span><span class="WHIT">                    </span><span class="NAME">collation</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib.data.collation</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>411</span> </span><span class="WHIT">                </span><span class="NAME">this._initCollation</span><span class="PUNC">(</span><span class="NAME">collation</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>412</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.ignorePunctuation</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>413</span> </span><span class="WHIT">                    </span><span class="NAME">isPunct._init</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>414</span> </span><span class="WHIT">                        </span><span class="NAME">this._init</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>415</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>416</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>417</span> </span><span class="WHIT">                    </span><span class="NAME">this._init</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>418</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>419</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>420</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>421</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>422</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>423</span> 
+<span class='line'>424</span> </span><span class="NAME">Collator.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>425</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>426</span>      * @private
+<span class='line'>427</span>      */</span><span class="WHIT">
+<span class='line'>428</span> </span><span class="WHIT">    </span><span class="NAME">_init</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>429</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.numeric</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>430</span> </span><span class="WHIT">            </span><span class="COMM">// Create a fake INumber instance now to guarantee that the locale data</span><span class="WHIT">
+<span class='line'>431</span> </span><span class="WHIT">            </span><span class="COMM">// is loaded so we can create sync INumber instances later, even in async mode</span><span class="WHIT">
+<span class='line'>432</span> </span><span class="WHIT">            </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">INumber</span><span class="PUNC">(</span><span class="STRN">"1"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>433</span> </span><span class="WHIT">                </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">options.sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>434</span> </span><span class="WHIT">                </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">options.loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>435</span> </span><span class="WHIT">                </span><span class="NAME">onLoad</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">n</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>436</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>437</span> </span><span class="WHIT">                        </span><span class="NAME">options.onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>438</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>439</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>440</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>441</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>442</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>443</span> </span><span class="WHIT">                </span><span class="NAME">options.onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>444</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>445</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>446</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>447</span> 
+<span class='line'>448</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>449</span>      * @private
+<span class='line'>450</span>      * Bit pack an array of values into a single number
+<span class='line'>451</span>      * @param {number|null|Array.&lt;number>} arr array of values to bit pack
+<span class='line'>452</span>      * @param {number} offset offset for the start of this map
+<span class='line'>453</span>      */</span><span class="WHIT">
+<span class='line'>454</span> </span><span class="WHIT">    </span><span class="NAME">_pack</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">arr</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">offset</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>455</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>456</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">arr</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>457</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">arr</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'number'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>458</span> </span><span class="WHIT">                </span><span class="NAME">arr</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT"> </span><span class="NAME">arr</span><span class="WHIT"> </span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>459</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>460</span> </span><span class="WHIT">            </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">this.level</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>461</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">thisLevel</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">arr</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">"undefined"</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">arr</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>462</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>463</span> </span><span class="WHIT">                    </span><span class="NAME">thisLevel</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">offset</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>464</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>465</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>466</span> </span><span class="WHIT">                    </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">&lt;&lt;</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.collation.bits</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>467</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>468</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.caseFirst</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"lower"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>469</span> </span><span class="WHIT">                    </span><span class="COMM">// sort the lower case first instead of upper</span><span class="WHIT">
+<span class='line'>470</span> </span><span class="WHIT">                    </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">|</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">thisLevel</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>471</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>472</span> </span><span class="WHIT">                    </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="PUNC">|</span><span class="WHIT"> </span><span class="NAME">thisLevel</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>473</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>474</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>475</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>476</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">value</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>477</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>478</span> 
+<span class='line'>479</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>480</span>      * @private
+<span class='line'>481</span>      * Return the rule packed into an array of collation elements.
+<span class='line'>482</span>      * @param {Array.&lt;number|null|Array.&lt;number>>} rule
+<span class='line'>483</span>      * @param {number} offset
+<span class='line'>484</span>      * @return {Array.&lt;number>} a bit-packed array of numbers
+<span class='line'>485</span>      */</span><span class="WHIT">
+<span class='line'>486</span> </span><span class="WHIT">    </span><span class="NAME">_packRule</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">rule</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">offset</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>487</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ilib.isArray</span><span class="PUNC">(</span><span class="NAME">rule</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>488</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>489</span> </span><span class="WHIT">            </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">rule.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>490</span> </span><span class="WHIT">                </span><span class="NAME">ret.push</span><span class="PUNC">(</span><span class="NAME">this._pack</span><span class="PUNC">(</span><span class="NAME">rule</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">offset</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>491</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>492</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>493</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>494</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT"> </span><span class="NAME">this._pack</span><span class="PUNC">(</span><span class="NAME">rule</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">offset</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>495</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>496</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>497</span> 
+<span class='line'>498</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>499</span>      * @private
+<span class='line'>500</span>      */</span><span class="WHIT">
+<span class='line'>501</span> </span><span class="WHIT">    </span><span class="NAME">_addChars</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">offset</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>502</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">gs</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">GlyphString</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>503</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">it</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">gs.charIterator</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>504</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">c</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>505</span> 
+<span class='line'>506</span> </span><span class="WHIT">        </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">it.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>507</span> </span><span class="WHIT">            </span><span class="NAME">c</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">it.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>508</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">c</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"'"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>509</span> </span><span class="WHIT">                </span><span class="COMM">// escape a sequence of chars as one collation element</span><span class="WHIT">
+<span class='line'>510</span> </span><span class="WHIT">                </span><span class="NAME">c</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>511</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">x</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>512</span> </span><span class="WHIT">                </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">it.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">x</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">"'"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>513</span> </span><span class="WHIT">                    </span><span class="NAME">c</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">x</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>514</span> </span><span class="WHIT">                    </span><span class="NAME">x</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">it.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>515</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>516</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>517</span> </span><span class="WHIT">            </span><span class="NAME">this.lastMap</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>518</span> </span><span class="WHIT">            </span><span class="NAME">this.map</span><span class="PUNC">[</span><span class="NAME">c</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._packRule</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="NAME">this.lastMap</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">offset</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>519</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>520</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>521</span> 
+<span class='line'>522</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>523</span>      * @private
+<span class='line'>524</span>      */</span><span class="WHIT">
+<span class='line'>525</span> </span><span class="WHIT">    </span><span class="NAME">_addRules</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">rules</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">start</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>526</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">p</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>527</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">r</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">rules.map</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>528</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">r</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>529</span> </span><span class="WHIT">                </span><span class="NAME">this.map</span><span class="PUNC">[</span><span class="NAME">r</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._packRule</span><span class="PUNC">(</span><span class="NAME">rules.map</span><span class="PUNC">[</span><span class="NAME">r</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">start</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>530</span> </span><span class="WHIT">                </span><span class="NAME">p</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">rules.map</span><span class="PUNC">[</span><span class="NAME">r</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'number'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">rules.map</span><span class="PUNC">[</span><span class="NAME">r</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">rules.map</span><span class="PUNC">[</span><span class="NAME">r</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>531</span> </span><span class="WHIT">                </span><span class="NAME">this.lastMap</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.max</span><span class="PUNC">(</span><span class="NAME">p</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">start</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.lastMap</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>532</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>533</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>534</span> 
+<span class='line'>535</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">rules.ranges</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>536</span> </span><span class="WHIT">            </span><span class="COMM">// for each range, everything in the range goes in primary sequence from the start</span><span class="WHIT">
+<span class='line'>537</span> </span><span class="WHIT">            </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">rules.ranges.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>538</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">range</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">rules.ranges</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>539</span> 
+<span class='line'>540</span> </span><span class="WHIT">                </span><span class="NAME">this.lastMap</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">range.start</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>541</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">range.chars</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"string"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>542</span> </span><span class="WHIT">                    </span><span class="NAME">this._addChars</span><span class="PUNC">(</span><span class="NAME">range.chars</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">start</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>543</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>544</span> </span><span class="WHIT">                    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">k</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">range.chars.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">k</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>545</span> </span><span class="WHIT">                        </span><span class="NAME">this._addChars</span><span class="PUNC">(</span><span class="NAME">range.chars</span><span class="PUNC">[</span><span class="NAME">k</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">start</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>546</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>547</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>548</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>549</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>550</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>551</span> 
+<span class='line'>552</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>553</span>      * @private
+<span class='line'>554</span>      */</span><span class="WHIT">
+<span class='line'>555</span> </span><span class="WHIT">    </span><span class="NAME">_initCollation</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">rules</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>556</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">rule</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.style</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>557</span> </span><span class="WHIT">        </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">rule</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>558</span> </span><span class="WHIT">            </span><span class="NAME">rule</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">rules</span><span class="PUNC">[</span><span class="NAME">rule</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>559</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>560</span> 
+<span class='line'>561</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">rule</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>562</span> </span><span class="WHIT">            </span><span class="NAME">rule</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"default"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>563</span> 
+<span class='line'>564</span> </span><span class="WHIT">            </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">rule</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>565</span> </span><span class="WHIT">                </span><span class="NAME">rule</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">rules</span><span class="PUNC">[</span><span class="NAME">rule</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>566</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>567</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>568</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">rule</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>569</span> </span><span class="WHIT">            </span><span class="NAME">this.map</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>570</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>571</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>572</span> 
+<span class='line'>573</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>574</span>          * @private
+<span class='line'>575</span>          * @type {{scripts:Array.&lt;string>,bits:Array.&lt;number>,maxes:Array.&lt;number>,bases:Array.&lt;number>,map:Object.&lt;string,Array.&lt;number|null|Array.&lt;number>>>}}
+<span class='line'>576</span>          */</span><span class="WHIT">
+<span class='line'>577</span> </span><span class="WHIT">        </span><span class="NAME">this.collation</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">rule</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>578</span> </span><span class="WHIT">        </span><span class="NAME">this.map</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>579</span> </span><span class="WHIT">        </span><span class="NAME">this.lastMap</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>580</span> </span><span class="WHIT">        </span><span class="NAME">this.keysize</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.collation.keysize</span><span class="PUNC">[</span><span class="NAME">this.level</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>581</span> </span><span class="WHIT">        </span><span class="NAME">this.defaultRule</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">rules</span><span class="PUNC">[</span><span class="STRN">"default"</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>582</span> 
+<span class='line'>583</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.collation.inherit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>584</span> </span><span class="WHIT">            </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">this.collation.inherit.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>585</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.collation.inherit</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'this'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>586</span> </span><span class="WHIT">                    </span><span class="KEYW">continue</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>587</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>588</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">col</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.collation.inherit</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>589</span> </span><span class="WHIT">                </span><span class="NAME">rule</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">col</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">col.name</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">col</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>590</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">rules</span><span class="PUNC">[</span><span class="NAME">rule</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>591</span> </span><span class="WHIT">                    </span><span class="NAME">this._addRules</span><span class="PUNC">(</span><span class="NAME">rules</span><span class="PUNC">[</span><span class="NAME">rule</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">col.start</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.lastMap</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>592</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>593</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>594</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>595</span> </span><span class="WHIT">        </span><span class="NAME">this._addRules</span><span class="PUNC">(</span><span class="NAME">this.collation</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.lastMap</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>596</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>597</span> 
+<span class='line'>598</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>599</span>      * @private
+<span class='line'>600</span>      */</span><span class="WHIT">
+<span class='line'>601</span> </span><span class="WHIT">    </span><span class="NAME">_basicCompare</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">left</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">right</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>602</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">l</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">left</span><span class="WHIT"> </span><span class="KEYW">instanceof</span><span class="WHIT"> </span><span class="NAME">NormString</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">left</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">NormString</span><span class="PUNC">(</span><span class="NAME">left</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>603</span> </span><span class="WHIT">            </span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">right</span><span class="WHIT"> </span><span class="KEYW">instanceof</span><span class="WHIT"> </span><span class="NAME">NormString</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">right</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">NormString</span><span class="PUNC">(</span><span class="NAME">right</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>604</span> </span><span class="WHIT">            </span><span class="NAME">lelements</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>605</span> </span><span class="WHIT">            </span><span class="NAME">relements</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>606</span> </span><span class="WHIT">            </span><span class="NAME">diff</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>607</span> 
+<span class='line'>608</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.numeric</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>609</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">lvalue</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">INumber</span><span class="PUNC">(</span><span class="NAME">left</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="NAME">locale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>610</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">rvalue</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">INumber</span><span class="PUNC">(</span><span class="NAME">right</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="NAME">locale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>611</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">isNaN</span><span class="PUNC">(</span><span class="NAME">lvalue.valueOf</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">isNaN</span><span class="PUNC">(</span><span class="NAME">rvalue.valueOf</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>612</span> </span><span class="WHIT">                </span><span class="NAME">diff</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">lvalue.valueOf</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">rvalue.valueOf</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>613</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">diff</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>614</span> </span><span class="WHIT">                    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">diff</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>615</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>616</span> </span><span class="WHIT">                    </span><span class="COMM">// skip the numeric part and compare the rest lexically</span><span class="WHIT">
+<span class='line'>617</span> </span><span class="WHIT">                    </span><span class="NAME">l</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">NormString</span><span class="PUNC">(</span><span class="NAME">left.substring</span><span class="PUNC">(</span><span class="NAME">lvalue.parsed.length</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>618</span> </span><span class="WHIT">                    </span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">NormString</span><span class="PUNC">(</span><span class="NAME">right.substring</span><span class="PUNC">(</span><span class="NAME">rvalue.parsed.length</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>619</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>620</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>621</span> </span><span class="WHIT">            </span><span class="COMM">// else if they aren't both numbers, then let the code below take care of the lexical comparison instead</span><span class="WHIT">
+<span class='line'>622</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>623</span> 
+<span class='line'>624</span> </span><span class="WHIT">        </span><span class="NAME">lelements</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ElementIterator</span><span class="PUNC">(</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">CodePointSource</span><span class="PUNC">(</span><span class="NAME">l</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.ignorePunctuation</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.map</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.keysize</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>625</span> </span><span class="WHIT">        </span><span class="NAME">relements</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ElementIterator</span><span class="PUNC">(</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">CodePointSource</span><span class="PUNC">(</span><span class="NAME">r</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.ignorePunctuation</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.map</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.keysize</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>626</span> 
+<span class='line'>627</span> </span><span class="WHIT">        </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">lelements.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">relements.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>628</span> </span><span class="WHIT">            </span><span class="NAME">diff</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">lelements.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">relements.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>629</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">diff</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>630</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">diff</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>631</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>632</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>633</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">lelements.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">relements.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>634</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>635</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">lelements.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>636</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>637</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>638</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>639</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>640</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>641</span> 
+<span class='line'>642</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>643</span>      * Compare two strings together according to the rules of this
+<span class='line'>644</span>      * collator instance. Do not use this function directly with
+<span class='line'>645</span>      * Array.sort, as it will not have its collation data available
+<span class='line'>646</span>      * and therefore will not function properly. Use the function
+<span class='line'>647</span>      * returned by getComparator() instead.
+<span class='line'>648</span>      *
+<span class='line'>649</span>      * @param {string} left the left string to compare
+<span class='line'>650</span>      * @param {string} right the right string to compare
+<span class='line'>651</span>      * @return {number} a negative number if left comes before right, a
+<span class='line'>652</span>      * positive number if right comes before left, and zero if left and
+<span class='line'>653</span>      * right are equivalent according to this collator
+<span class='line'>654</span>      */</span><span class="WHIT">
+<span class='line'>655</span> </span><span class="WHIT">    </span><span class="NAME">compare</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">left</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">right</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>656</span> </span><span class="WHIT">        </span><span class="COMM">// last resort: use the "C" locale</span><span class="WHIT">
+<span class='line'>657</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.collator</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>658</span> </span><span class="WHIT">            </span><span class="COMM">// implemented by the core engine</span><span class="WHIT">
+<span class='line'>659</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.collator.compare</span><span class="PUNC">(</span><span class="NAME">left</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">right</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>660</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>661</span> 
+<span class='line'>662</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._basicCompare</span><span class="PUNC">(</span><span class="NAME">left</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">right</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>663</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.reverse</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>664</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>665</span> 
+<span class='line'>666</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>667</span>      * Return a comparator function that can compare two strings together
+<span class='line'>668</span>      * according to the rules of this collator instance. The function
+<span class='line'>669</span>      * returns a negative number if the left
+<span class='line'>670</span>      * string comes before right, a positive number if the right string comes
+<span class='line'>671</span>      * before the left, and zero if left and right are equivalent. If the
+<span class='line'>672</span>      * reverse property was given as true to the collator constructor, this
+<span class='line'>673</span>      * function will
+<span class='line'>674</span>      * switch the sign of those values to cause sorting to happen in the
+<span class='line'>675</span>      * reverse order.
+<span class='line'>676</span>      *
+<span class='line'>677</span>      * @return {function(...)|undefined} a comparator function that
+<span class='line'>678</span>      * can compare two strings together according to the rules of this
+<span class='line'>679</span>      * collator instance
+<span class='line'>680</span>      */</span><span class="WHIT">
+<span class='line'>681</span> </span><span class="WHIT">    </span><span class="NAME">getComparator</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>682</span> </span><span class="WHIT">        </span><span class="COMM">// bind the function to this instance so that we have the collation</span><span class="WHIT">
+<span class='line'>683</span> </span><span class="WHIT">        </span><span class="COMM">// rules available to do the work</span><span class="WHIT">
+<span class='line'>684</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.collator</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>685</span> </span><span class="WHIT">            </span><span class="COMM">// implemented by the core engine</span><span class="WHIT">
+<span class='line'>686</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.collator.compare</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>687</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>688</span> 
+<span class='line'>689</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.compare</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>690</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>691</span> 
+<span class='line'>692</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>693</span>      * Return a sort key string for the given string. The sort key
+<span class='line'>694</span>      * string is a list of values that represent each character
+<span class='line'>695</span>      * in the original string. The sort key
+<span class='line'>696</span>      * values for any particular character consists of 3 numbers that
+<span class='line'>697</span>      * encode the primary, secondary, and tertiary characteristics
+<span class='line'>698</span>      * of that character. The values of each characteristic are
+<span class='line'>699</span>      * modified according to the strength of this collator instance
+<span class='line'>700</span>      * to give the correct collation order. The idea is that this
+<span class='line'>701</span>      * sort key string is directly comparable byte-for-byte to
+<span class='line'>702</span>      * other sort key strings generated by this collator without
+<span class='line'>703</span>      * any further knowledge of the collation rules for the locale.
+<span class='line'>704</span>      * More formally, if a &lt; b according to the rules of this collation,
+<span class='line'>705</span>      * then it is guaranteed that sortkey(a) &lt; sortkey(b) when compared
+<span class='line'>706</span>      * byte-for-byte. The sort key string can therefore be used
+<span class='line'>707</span>      * without the collator to sort an array of strings efficiently
+<span class='line'>708</span>      * because the work of determining the applicability of various
+<span class='line'>709</span>      * collation rules is done once up-front when generating
+<span class='line'>710</span>      * the sort key.&lt;p>
+<span class='line'>711</span>      *
+<span class='line'>712</span>      * The sort key string can be treated as a regular, albeit somewhat
+<span class='line'>713</span>      * odd-looking, string. That is, it can be pass to regular
+<span class='line'>714</span>      * Javascript functions without problems.
+<span class='line'>715</span>      *
+<span class='line'>716</span>      * @param {string} str the original string to generate the sort key for
+<span class='line'>717</span>      * @return {string} a sort key string for the given string
+<span class='line'>718</span>      */</span><span class="WHIT">
+<span class='line'>719</span> </span><span class="WHIT">    </span><span class="NAME">sortKey</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>720</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>721</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>722</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>723</span> 
+<span class='line'>724</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.collator</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>725</span> </span><span class="WHIT">            </span><span class="COMM">// native, no sort keys available</span><span class="WHIT">
+<span class='line'>726</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">str</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>727</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>728</span> 
+<span class='line'>729</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.numeric</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>730</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">v</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">INumber</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="NAME">locale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>731</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">isNaN</span><span class="PUNC">(</span><span class="NAME">v.valueOf</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="STRN">""</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">v.valueOf</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">toString</span><span class="PUNC">(</span><span class="NUMB">16</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>732</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">JSUtils.pad</span><span class="PUNC">(</span><span class="NAME">s</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">16</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>733</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>734</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">n</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"string"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">NormString</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">str</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>735</span> </span><span class="WHIT">                </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>736</span> </span><span class="WHIT">                </span><span class="NAME">lelements</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ElementIterator</span><span class="PUNC">(</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">CodePointSource</span><span class="PUNC">(</span><span class="NAME">n</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.ignorePunctuation</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.map</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.keysize</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>737</span> </span><span class="WHIT">                </span><span class="NAME">element</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>738</span> 
+<span class='line'>739</span> </span><span class="WHIT">            </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">lelements.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>740</span> </span><span class="WHIT">                </span><span class="NAME">element</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">lelements.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>741</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.reverse</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>742</span> </span><span class="WHIT">                    </span><span class="COMM">// for reverse, take the bitwise inverse</span><span class="WHIT">
+<span class='line'>743</span> </span><span class="WHIT">                    </span><span class="NAME">element</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">&lt;&lt;</span><span class="WHIT"> </span><span class="NAME">this.keysize</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">element</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>744</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>745</span> </span><span class="WHIT">                </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">JSUtils.pad</span><span class="PUNC">(</span><span class="NAME">element.toString</span><span class="PUNC">(</span><span class="NUMB">16</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.keysize</span><span class="PUNC">/</span><span class="NUMB">4</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>746</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>747</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>748</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>749</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>750</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>751</span> 
+<span class='line'>752</span> </span><span class="COMM">/**
+<span class='line'>753</span>  * Retrieve the list of collation style names that are available for the
+<span class='line'>754</span>  * given locale. This list varies depending on the locale, and depending
+<span class='line'>755</span>  * on whether or not the data for that locale was assembled into this copy
+<span class='line'>756</span>  * of ilib.
+<span class='line'>757</span>  *
+<span class='line'>758</span>  * @param {Locale|string=} locale The locale for which the available
+<span class='line'>759</span>  * styles are being sought
+<span class='line'>760</span>  * @return Array.&lt;string> an array of style names that are available for
+<span class='line'>761</span>  * the given locale
+<span class='line'>762</span>  */</span><span class="WHIT">
+<span class='line'>763</span> </span><span class="NAME">Collator.getAvailableStyles</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>764</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT"> </span><span class="STRN">"standard"</span><span class="WHIT"> </span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>765</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>766</span> 
+<span class='line'>767</span> </span><span class="COMM">/**
+<span class='line'>768</span>  * Retrieve the list of ISO 15924 script codes that are available in this
+<span class='line'>769</span>  * copy of ilib. This list varies depending on whether or not the data for
+<span class='line'>770</span>  * various scripts was assembled into this copy of ilib. If the "ducet"
+<span class='line'>771</span>  * data is assembled into this copy of ilib, this method will report the
+<span class='line'>772</span>  * entire list of scripts as being available. If a collator instance is
+<span class='line'>773</span>  * instantiated with a script code that is not on the list returned by this
+<span class='line'>774</span>  * function, it will be ignored and text in that script will be sorted by
+<span class='line'>775</span>  * numeric Unicode values of the characters.
+<span class='line'>776</span>  *
+<span class='line'>777</span>  * @return Array.&lt;string> an array of ISO 15924 script codes that are
+<span class='line'>778</span>  * available
+<span class='line'>779</span>  */</span><span class="WHIT">
+<span class='line'>780</span> </span><span class="NAME">Collator.getAvailableScripts</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>781</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT"> </span><span class="STRN">"Latn"</span><span class="WHIT"> </span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>782</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>783</span> 
+<span class='line'>784</span> 
+<span class='line'>785</span> </span><span class="COMM">/**
+<span class='line'>786</span>  * Return a default collation style
+<span class='line'>787</span>  *
+<span class='line'>788</span>  * @returns {string} default collation style such as 'latin', 'korean' etc */</span><span class="WHIT">
+<span class='line'>789</span> </span><span class="NAME">Collator.prototype.getDefaultCollatorStyle</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>790</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.defaultRule</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>791</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>792</span> 
+<span class='line'>793</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Collator</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>794</span> </span></pre></body></html>

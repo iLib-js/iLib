@@ -1,0 +1,779 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * ilib.js - define the ilib name space
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * Copyright © 2012-2018, JEDLSoft
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  7</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  8</span>  * You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 13</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 14</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 15</span>  *
+<span class='line'> 16</span>  * See the License for the specific language governing permissions and
+<span class='line'> 17</span>  * limitations under the License.
+<span class='line'> 18</span>  */</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="COMM">/**
+<span class='line'> 21</span>  * @namespace The global namespace that contains general ilib functions useful
+<span class='line'> 22</span>  * to all of ilib
+<span class='line'> 23</span>  *
+<span class='line'> 24</span>  * @version // !macro ilibVersion
+<span class='line'> 25</span>  */</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> 
+<span class='line'> 28</span> </span><span class="COMM">/** @private */</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="NAME">ilib._ver</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="COMM">// !macro ilibVersion</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">    </span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 33</span> 
+<span class='line'> 34</span> </span><span class="COMM">/**
+<span class='line'> 35</span>  * Return the current version of ilib.
+<span class='line'> 36</span>  *
+<span class='line'> 37</span>  * @static
+<span class='line'> 38</span>  * @return {string} a version string for this instance of ilib
+<span class='line'> 39</span>  */</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="NAME">ilib.getVersion</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ilib._dyncode</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">        </span><span class="KEYW">try</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">pkg</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">            </span><span class="NAME">pkg</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"../package.json"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pkg.version</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">catch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">            </span><span class="COMM">// ignore</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ilib._ver</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"14.0"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> 
+<span class='line'> 53</span> </span><span class="COMM">/**
+<span class='line'> 54</span>  * Place where resources and such are eventually assigned.
+<span class='line'> 55</span>  */</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="NAME">ilib.data</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">    </span><span class="COMM">/** @type {{ccc:Object.&lt;string,number>,nfd:Object.&lt;string,string>,nfc:Object.&lt;string,string>,nfkd:Object.&lt;string,string>,nfkc:Object.&lt;string,string>}} */</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">    </span><span class="NAME">norm</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">        </span><span class="NAME">ccc</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">        </span><span class="NAME">nfd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">        </span><span class="NAME">nfc</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">        </span><span class="NAME">nfkd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">        </span><span class="NAME">nfkc</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">    </span><span class="NAME">zoneinfo</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">        </span><span class="STRN">"Etc/UTC"</span><span class="PUNC">:</span><span class="PUNC">{</span><span class="STRN">"o"</span><span class="PUNC">:</span><span class="STRN">"0:0"</span><span class="PUNC">,</span><span class="STRN">"f"</span><span class="PUNC">:</span><span class="STRN">"UTC"</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">        </span><span class="STRN">"local"</span><span class="PUNC">:</span><span class="PUNC">{</span><span class="STRN">"f"</span><span class="PUNC">:</span><span class="STRN">"local"</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">    </span><span class="COMM">/** @type {Object.&lt;string,{to:Object.&lt;string,string>,from:Object.&lt;string,number>}>} */</span><span class="WHIT"> </span><span class="NAME">charmaps</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">    </span><span class="COMM">/** @type {null|Object.&lt;string,Array.&lt;Array.&lt;number>>>} */</span><span class="WHIT"> </span><span class="NAME">ctype</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">    </span><span class="COMM">/** @type {null|Object.&lt;string,Array.&lt;Array.&lt;number>>>} */</span><span class="WHIT"> </span><span class="NAME">ctype_c</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">    </span><span class="COMM">/** @type {null|Object.&lt;string,Array.&lt;Array.&lt;number>>>} */</span><span class="WHIT"> </span><span class="NAME">ctype_l</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">    </span><span class="COMM">/** @type {null|Object.&lt;string,Array.&lt;Array.&lt;number>>>} */</span><span class="WHIT"> </span><span class="NAME">ctype_m</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">    </span><span class="COMM">/** @type {null|Object.&lt;string,Array.&lt;Array.&lt;number>>>} */</span><span class="WHIT"> </span><span class="NAME">ctype_p</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">    </span><span class="COMM">/** @type {null|Object.&lt;string,Array.&lt;Array.&lt;number>>>} */</span><span class="WHIT"> </span><span class="NAME">ctype_z</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">    </span><span class="COMM">/** @type {null|Object.&lt;string,Array.&lt;Array.&lt;number>>>} */</span><span class="WHIT"> </span><span class="NAME">scriptToRange</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">    </span><span class="COMM">/** @type {null|Object.&lt;string,string|Object.&lt;string|Object.&lt;string,string>>>} */</span><span class="WHIT"> </span><span class="NAME">dateformats</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">    </span><span class="COMM">/** @type {null|Array.&lt;string>} */</span><span class="WHIT"> </span><span class="NAME">timezones</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">    </span><span class="NAME">cache</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 81</span> 
+<span class='line'> 82</span> </span><span class="COMM">/*
+<span class='line'> 83</span> if (typeof(window) !== 'undefined') {
+<span class='line'> 84</span>     window["ilib"] = ilib;
+<span class='line'> 85</span> }
+<span class='line'> 86</span> */</span><span class="WHIT">
+<span class='line'> 87</span> 
+<span class='line'> 88</span> </span><span class="COMM">// export ilib for use as a module in nodejs</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">module</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">    </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">    </span><span class="NAME">module.exports.ilib</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="PUNC">;</span><span class="WHIT">  </span><span class="COMM">// for backwards compatibility with older versions of ilib</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 93</span> 
+<span class='line'> 94</span> </span><span class="COMM">/**
+<span class='line'> 95</span>  * Sets the pseudo locale. Pseudolocalization (or pseudo-localization) is used for testing
+<span class='line'> 96</span>  * internationalization aspects of software. Instead of translating the text of the software
+<span class='line'> 97</span>  * into a foreign language, as in the process of localization, the textual elements of an application
+<span class='line'> 98</span>  * are replaced with an altered version of the original language.These specific alterations make
+<span class='line'> 99</span>  * the original words appear readable, but include the most problematic characteristics of
+<span class='line'>100</span>  * the world's languages: varying length of text or characters, language direction, and so on.
+<span class='line'>101</span>  * Regular Latin pseudo locale: eu-ES and RTL pseudo locale: ps-AF
+<span class='line'>102</span>  *
+<span class='line'>103</span>  * @param {string|undefined|null} localename the locale specifier for the pseudo locale
+<span class='line'>104</span>  */</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="NAME">ilib.setAsPseudoLocale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">localename</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">   </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">localename</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">       </span><span class="NAME">ilib.pseudoLocales.push</span><span class="PUNC">(</span><span class="NAME">localename</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">   </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>110</span> 
+<span class='line'>111</span> </span><span class="COMM">/**
+<span class='line'>112</span>  * Reset the list of pseudo locales back to the default single locale of zxx-XX.
+<span class='line'>113</span>  * @static
+<span class='line'>114</span>  */</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="NAME">ilib.clearPseudoLocales</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">    </span><span class="NAME">ilib.pseudoLocales</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">        </span><span class="STRN">"zxx-XX"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">        </span><span class="STRN">"zxx-Cyrl-XX"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">        </span><span class="STRN">"zxx-Hans-XX"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">        </span><span class="STRN">"zxx-Hebr-XX"</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">    </span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>123</span> 
+<span class='line'>124</span> </span><span class="NAME">ilib.clearPseudoLocales</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>125</span> 
+<span class='line'>126</span> </span><span class="COMM">/**
+<span class='line'>127</span>  * Return the name of the platform
+<span class='line'>128</span>  * @private
+<span class='line'>129</span>  * @static
+<span class='line'>130</span>  * @return {string} string naming the platform
+<span class='line'>131</span>  */</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="NAME">ilib._getPlatform</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">ilib._platform</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">        </span><span class="KEYW">try</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">java.lang.Object</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">                </span><span class="NAME">ilib._platform</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">process</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="STRN">"trireme"</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"rhino"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ilib._platform</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">catch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>140</span> 
+<span class='line'>141</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">global</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">global.process</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">global.process.versions</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">global.process.versions.node</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">module</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">            </span><span class="NAME">ilib._platform</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"nodejs"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">Qt</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">            </span><span class="NAME">ilib._platform</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"qt"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">window</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">            </span><span class="NAME">ilib._platform</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">PalmSystem</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="STRN">"webos"</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"browser"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">            </span><span class="NAME">ilib._platform</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"unknown"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ilib._platform</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>153</span> 
+<span class='line'>154</span> </span><span class="COMM">/**
+<span class='line'>155</span>  * If this ilib is running in a browser, return the name of that browser.
+<span class='line'>156</span>  * @private
+<span class='line'>157</span>  * @static
+<span class='line'>158</span>  * @return {string|undefined} the name of the browser that this is running in ("firefox", "chrome", "ie",
+<span class='line'>159</span>  * "safari", or "opera"), or undefined if this is not running in a browser or if
+<span class='line'>160</span>  * the browser name could not be determined
+<span class='line'>161</span>  */</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="NAME">ilib._getBrowser</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">browser</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ilib._getPlatform</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"browser"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">navigator</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">navigator.userAgent</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">navigator.userAgent.indexOf</span><span class="PUNC">(</span><span class="STRN">"Firefox"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">                </span><span class="NAME">browser</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"firefox"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">navigator.userAgent.search</span><span class="PUNC">(</span><span class="REGX">/Opera|OPR/</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">                </span><span class="NAME">browser</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"opera"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">navigator.userAgent.indexOf</span><span class="PUNC">(</span><span class="STRN">"Chrome"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="WHIT">                </span><span class="NAME">browser</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"chrome"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">navigator.userAgent.indexOf</span><span class="PUNC">(</span><span class="STRN">" .NET"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">                </span><span class="NAME">browser</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"ie"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">navigator.userAgent.indexOf</span><span class="PUNC">(</span><span class="STRN">"Safari"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">                </span><span class="COMM">// chrome also has the string Safari in its userAgent, but the chrome case is</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">                </span><span class="COMM">// already taken care of above</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">                </span><span class="NAME">browser</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"safari"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">navigator.userAgent.indexOf</span><span class="PUNC">(</span><span class="STRN">"Edge"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">                </span><span class="NAME">browser</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"Edge"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">navigator.userAgent.search</span><span class="PUNC">(</span><span class="REGX">/iPad|iPhone|iPod/</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">                </span><span class="COMM">// Due to constraints of the iOS platform,</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">                </span><span class="COMM">// all browser must be built on top of the WebKit rendering engine</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="WHIT">                </span><span class="NAME">browser</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"iOS"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>191</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">browser</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>195</span> 
+<span class='line'>196</span> </span><span class="COMM">/**
+<span class='line'>197</span>  * Return the value of the top object in the system. This could be global
+<span class='line'>198</span>  * for node, or window for browsers, etc.
+<span class='line'>199</span>  * @private
+<span class='line'>200</span>  * @static
+<span class='line'>201</span>  * @return {Object|undefined} the top variable, or undefined if there is none on this
+<span class='line'>202</span>  * platform
+<span class='line'>203</span>  */</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="NAME">ilib._top</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.top</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="WHIT">        </span><span class="NAME">this.top</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="WHIT">        </span><span class="KEYW">switch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ilib._getPlatform</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"rhino"</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">                </span><span class="NAME">this.top</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">                  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">global</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">global</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"nodejs"</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"trireme"</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="WHIT">                </span><span class="NAME">this.top</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">global</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">global</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">                </span><span class="COMM">//console.log("ilib._top: top is " + (typeof(global) !== 'undefined' ? "global" : "this"));</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="WHIT">                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="WHIT">            </span><span class="KEYW">default</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="WHIT">                </span><span class="NAME">this.top</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">window</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="WHIT">                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>221</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>223</span> 
+<span class='line'>224</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.top</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>226</span> 
+<span class='line'>227</span> </span><span class="COMM">/**
+<span class='line'>228</span>  * Return the value of a global variable given its name in a way that works
+<span class='line'>229</span>  * correctly for the current platform.
+<span class='line'>230</span>  * @private
+<span class='line'>231</span>  * @static
+<span class='line'>232</span>  * @param {string} name the name of the variable to return
+<span class='line'>233</span>  * @return {*} the global variable, or undefined if it does not exist
+<span class='line'>234</span>  */</span><span class="WHIT">
+<span class='line'>235</span> </span><span class="NAME">ilib._global</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>236</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">top</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._top</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>237</span> </span><span class="WHIT">    </span><span class="KEYW">try</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">top</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">catch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>242</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>243</span> 
+<span class='line'>244</span> </span><span class="COMM">/**
+<span class='line'>245</span>  * Return true if the global variable is defined on this platform.
+<span class='line'>246</span>  * @private
+<span class='line'>247</span>  * @static
+<span class='line'>248</span>  * @param {string} name the name of the variable to check
+<span class='line'>249</span>  * @return {boolean} true if the global variable is defined on this platform, false otherwise
+<span class='line'>250</span>  */</span><span class="WHIT">
+<span class='line'>251</span> </span><span class="NAME">ilib._isGlobal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>252</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">ilib._global</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>253</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>254</span> 
+<span class='line'>255</span> </span><span class="COMM">/**
+<span class='line'>256</span>  * Clear the file load cache. This is mainly used by the unit tests,
+<span class='line'>257</span>  * but could be used by regular callers if you want to free up memory
+<span class='line'>258</span>  * for garbage collecting.
+<span class='line'>259</span>  */</span><span class="WHIT">
+<span class='line'>260</span> </span><span class="NAME">ilib.clearCache</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>261</span> </span><span class="WHIT">    </span><span class="NAME">ilib.data.cache</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>262</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>263</span> 
+<span class='line'>264</span> </span><span class="COMM">/**
+<span class='line'>265</span>  * Sets the default locale for all of ilib. This locale will be used
+<span class='line'>266</span>  * when no explicit locale is passed to any ilib class. If the default
+<span class='line'>267</span>  * locale is not set, ilib will attempt to use the locale of the
+<span class='line'>268</span>  * environment it is running in, if it can find that. If not, it will
+<span class='line'>269</span>  * default to the locale "en-US". If a type of parameter is string,
+<span class='line'>270</span>  * ilib will take only well-formed BCP-47 tag  &lt;p>
+<span class='line'>271</span>  *
+<span class='line'>272</span>  *
+<span class='line'>273</span>  * @static
+<span class='line'>274</span>  * @param {string|undefined|null} spec the locale specifier for the default locale
+<span class='line'>275</span>  */</span><span class="WHIT">
+<span class='line'>276</span> </span><span class="NAME">ilib.setLocale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">spec</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">spec</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">spec</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>278</span> </span><span class="WHIT">        </span><span class="NAME">ilib.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">spec</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>279</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">    </span><span class="COMM">// else ignore other data types, as we don't have the dependencies</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="WHIT">    </span><span class="COMM">// to look into them to find a locale</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>283</span> 
+<span class='line'>284</span> </span><span class="COMM">/**
+<span class='line'>285</span>  * Return the default locale for all of ilib if one has been set. This
+<span class='line'>286</span>  * locale will be used when no explicit locale is passed to any ilib
+<span class='line'>287</span>  * class. If the default
+<span class='line'>288</span>  * locale is not set, ilib will attempt to use the locale of the
+<span class='line'>289</span>  * environment it is running in, if it can find that. If not, it will
+<span class='line'>290</span>  * default to the locale "en-US".&lt;p>
+<span class='line'>291</span>  *
+<span class='line'>292</span>  *
+<span class='line'>293</span>  * @static
+<span class='line'>294</span>  * @return {string} the locale specifier for the default locale
+<span class='line'>295</span>  */</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="NAME">ilib.getLocale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">ilib.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">plat</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib._getPlatform</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="WHIT">        </span><span class="KEYW">switch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">plat</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="WHIT">            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'browser'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="WHIT">                </span><span class="COMM">// running in a browser</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">navigator.language</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>303</span> </span><span class="WHIT">                    </span><span class="NAME">ilib.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">navigator.language.substring</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="NUMB">3</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">navigator.language.substring</span><span class="PUNC">(</span><span class="NUMB">3</span><span class="PUNC">,</span><span class="NUMB">5</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">toUpperCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">  </span><span class="COMM">// FF/Opera/Chrome/Webkit</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>305</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">ilib.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="WHIT">                    </span><span class="COMM">// IE on Windows</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">                    </span><span class="NAME">lang</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">navigator.browserLanguage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT">
+<span class='line'>308</span> </span><span class="WHIT">                        </span><span class="NAME">navigator.browserLanguage</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="WHIT">                            </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">navigator.userLanguage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT">
+<span class='line'>310</span> </span><span class="WHIT">                                </span><span class="NAME">navigator.userLanguage</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>311</span> </span><span class="WHIT">                                    </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">navigator.systemLanguage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="WHIT">                                        </span><span class="NAME">navigator.systemLanguage</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>313</span> </span><span class="WHIT">                                            </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>314</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">lang</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">lang</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="WHIT">                        </span><span class="COMM">// for some reason, MS uses lower case region tags</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">                        </span><span class="NAME">ilib.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">lang.substring</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="NUMB">3</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">lang.substring</span><span class="PUNC">(</span><span class="NUMB">3</span><span class="PUNC">,</span><span class="NUMB">5</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">toUpperCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="WHIT">                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>320</span> </span><span class="WHIT">            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'webos'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>321</span> </span><span class="WHIT">                </span><span class="COMM">// webOS</span><span class="WHIT">
+<span class='line'>322</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">PalmSystem.locales</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>323</span> </span><span class="WHIT">                    </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">PalmSystem.locales.UI</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>324</span> </span><span class="WHIT">                    </span><span class="NAME">PalmSystem.locales.UI.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>325</span> </span><span class="WHIT">                    </span><span class="NAME">ilib.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">PalmSystem.locales.UI</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>326</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">PalmSystem.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>327</span> </span><span class="WHIT">                    </span><span class="NAME">ilib.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">PalmSystem.locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>328</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>330</span> </span><span class="WHIT">            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'rhino'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>331</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">environment</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">environment.user</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">environment.user.language</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">environment.user.language.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>332</span> </span><span class="WHIT">                    </span><span class="COMM">// running under plain rhino</span><span class="WHIT">
+<span class='line'>333</span> </span><span class="WHIT">                    </span><span class="NAME">ilib.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">environment.user.language</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>334</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">environment.user.country</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">environment.user.country.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>335</span> </span><span class="WHIT">                        </span><span class="NAME">ilib.locale</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'-'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">environment.user.country</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>336</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>337</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>338</span> </span><span class="WHIT">                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>339</span> </span><span class="WHIT">            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">"trireme"</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>340</span> </span><span class="WHIT">                </span><span class="COMM">// under trireme on rhino emulating nodejs</span><span class="WHIT">
+<span class='line'>341</span> </span><span class="WHIT">                </span><span class="NAME">lang</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">process.env.LANG</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">process.env.LANGUAGE</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">process.env.LC_ALL</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>342</span> </span><span class="WHIT">                </span><span class="COMM">// the LANG variable on unix is in the form "lang_REGION.CHARSET"</span><span class="WHIT">
+<span class='line'>343</span> </span><span class="WHIT">                </span><span class="COMM">// where language and region are the correct ISO codes separated by</span><span class="WHIT">
+<span class='line'>344</span> </span><span class="WHIT">                </span><span class="COMM">// an underscore. This translate it back to the BCP-47 form.</span><span class="WHIT">
+<span class='line'>345</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">lang</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">lang</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>346</span> </span><span class="WHIT">                    </span><span class="NAME">ilib.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">lang.substring</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="NUMB">2</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">toLowerCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'-'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">lang.substring</span><span class="PUNC">(</span><span class="NUMB">3</span><span class="PUNC">,</span><span class="NUMB">5</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">toUpperCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>347</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>348</span> </span><span class="WHIT">                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>349</span> </span><span class="WHIT">            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'nodejs'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>350</span> </span><span class="WHIT">                </span><span class="COMM">// running under nodejs</span><span class="WHIT">
+<span class='line'>351</span> </span><span class="WHIT">                </span><span class="NAME">lang</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">global.process.env.LANG</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">global.process.env.LC_ALL</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>352</span> </span><span class="WHIT">                </span><span class="COMM">// the LANG variable on unix is in the form "lang_REGION.CHARSET"</span><span class="WHIT">
+<span class='line'>353</span> </span><span class="WHIT">                </span><span class="COMM">// where language and region are the correct ISO codes separated by</span><span class="WHIT">
+<span class='line'>354</span> </span><span class="WHIT">                </span><span class="COMM">// an underscore. This translate it back to the BCP-47 form.</span><span class="WHIT">
+<span class='line'>355</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">lang</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">lang</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>356</span> </span><span class="WHIT">                    </span><span class="NAME">ilib.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">lang.substring</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="NUMB">2</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">toLowerCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'-'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">lang.substring</span><span class="PUNC">(</span><span class="NUMB">3</span><span class="PUNC">,</span><span class="NUMB">5</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">toUpperCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>357</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>358</span> </span><span class="WHIT">                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>359</span> </span><span class="WHIT">            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'qt'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>360</span> </span><span class="WHIT">                </span><span class="COMM">// running in the Javascript engine under Qt/QML</span><span class="WHIT">
+<span class='line'>361</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">locobj</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Qt.locale</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>362</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">lang</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">locobj.name</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">locobj.name.replace</span><span class="PUNC">(</span><span class="STRN">"_"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"-"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"en-US"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>363</span> </span><span class="WHIT">                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>364</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>365</span> </span><span class="WHIT">        </span><span class="NAME">ilib.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">ilib.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">ilib.locale</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">ilib.locale</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'en-US'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>366</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ilib.locale</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"en"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>367</span> </span><span class="WHIT">            </span><span class="NAME">ilib.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"en-US"</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// hack to get various platforms working correctly</span><span class="WHIT">
+<span class='line'>368</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>369</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>370</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ilib.locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>371</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>372</span> 
+<span class='line'>373</span> </span><span class="COMM">/**
+<span class='line'>374</span>  * Sets the default time zone for all of ilib. This time zone will be used when
+<span class='line'>375</span>  * no explicit time zone is passed to any ilib class. If the default time zone
+<span class='line'>376</span>  * is not set, ilib will attempt to use the time zone of the
+<span class='line'>377</span>  * environment it is running in, if it can find that. If not, it will
+<span class='line'>378</span>  * default to the the UTC zone "Etc/UTC".&lt;p>
+<span class='line'>379</span>  *
+<span class='line'>380</span>  *
+<span class='line'>381</span>  * @static
+<span class='line'>382</span>  * @param {string} tz the name of the time zone to set as the default time zone
+<span class='line'>383</span>  */</span><span class="WHIT">
+<span class='line'>384</span> </span><span class="NAME">ilib.setTimeZone</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">tz</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>385</span> </span><span class="WHIT">    </span><span class="NAME">ilib.tz</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">tz</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">ilib.tz</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>386</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>387</span> 
+<span class='line'>388</span> </span><span class="COMM">/**
+<span class='line'>389</span>  * Return the default time zone for all of ilib if one has been set. This
+<span class='line'>390</span>  * time zone will be used when no explicit time zone is passed to any ilib
+<span class='line'>391</span>  * class. If the default time zone
+<span class='line'>392</span>  * is not set, ilib will attempt to use the locale of the
+<span class='line'>393</span>  * environment it is running in, if it can find that. If not, it will
+<span class='line'>394</span>  * default to the the zone "local".&lt;p>
+<span class='line'>395</span>  *
+<span class='line'>396</span>  *
+<span class='line'>397</span>  * @static
+<span class='line'>398</span>  * @return {string} the default time zone for ilib
+<span class='line'>399</span>  */</span><span class="WHIT">
+<span class='line'>400</span> </span><span class="NAME">ilib.getTimeZone</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>401</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">ilib.tz</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">Intl</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">Intl.DateTimeFormat</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ro</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Intl.DateTimeFormat</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">resolvedOptions</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>404</span> </span><span class="WHIT">            </span><span class="NAME">ilib.tz</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ro</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">ro.timeZone</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>405</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>406</span> 
+<span class='line'>407</span> </span><span class="WHIT">        </span><span class="KEYW">switch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ilib._getPlatform</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>408</span> </span><span class="WHIT">            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'browser'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>409</span> </span><span class="WHIT">                </span><span class="COMM">// running in a browser</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">navigator.timezone</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">navigator.timezone.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>411</span> </span><span class="WHIT">                    </span><span class="NAME">ilib.tz</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">navigator.timezone</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>412</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>413</span> </span><span class="WHIT">                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>414</span> </span><span class="WHIT">            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'webos'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>415</span> </span><span class="WHIT">                </span><span class="COMM">// running in webkit on webOS</span><span class="WHIT">
+<span class='line'>416</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">PalmSystem.timezone</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">PalmSystem.timezone.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>417</span> </span><span class="WHIT">                    </span><span class="NAME">ilib.tz</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">PalmSystem.timezone</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>418</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>419</span> </span><span class="WHIT">                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>420</span> </span><span class="WHIT">            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'rhino'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>421</span> </span><span class="WHIT">                </span><span class="COMM">// running under rhino</span><span class="WHIT">
+<span class='line'>422</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">environment.user.timezone</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">environment.user.timezone.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>423</span> </span><span class="WHIT">                    </span><span class="NAME">ilib.tz</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">environment.user.timezone</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>424</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>425</span> </span><span class="WHIT">                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>426</span> </span><span class="WHIT">            </span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'nodejs'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>427</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">global.process.env</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">global.process.env.TZ</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">"undefined"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>428</span> </span><span class="WHIT">                    </span><span class="NAME">ilib.tz</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">global.process.env.TZ</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>429</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>430</span> </span><span class="WHIT">                </span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>431</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>432</span> 
+<span class='line'>433</span> </span><span class="WHIT">        </span><span class="NAME">ilib.tz</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib.tz</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"local"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>434</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>435</span> 
+<span class='line'>436</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ilib.tz</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>437</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>438</span> 
+<span class='line'>439</span> </span><span class="COMM">/**
+<span class='line'>440</span>  * @class
+<span class='line'>441</span>  * Defines the interface for the loader class for ilib. The main method of the
+<span class='line'>442</span>  * loader object is loadFiles(), which loads a set of requested locale data files
+<span class='line'>443</span>  * from where-ever it is stored.
+<span class='line'>444</span>  * @interface
+<span class='line'>445</span>  */</span><span class="WHIT">
+<span class='line'>446</span> </span><span class="NAME">ilib.Loader</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>447</span> 
+<span class='line'>448</span> </span><span class="COMM">/**
+<span class='line'>449</span>  * Load a set of files from where-ever it is stored.&lt;p>
+<span class='line'>450</span>  *
+<span class='line'>451</span>  * This is the main function define a callback function for loading missing locale
+<span class='line'>452</span>  * data or resources.
+<span class='line'>453</span>  * If this copy of ilib is assembled without including the required locale data
+<span class='line'>454</span>  * or resources, then that data can be lazy loaded dynamically when it is
+<span class='line'>455</span>  * needed by calling this method. Each ilib class will first
+<span class='line'>456</span>  * check for the existence of data under ilib.data, and if it is not there,
+<span class='line'>457</span>  * it will attempt to load it by calling this method of the laoder, and then place
+<span class='line'>458</span>  * it there.&lt;p>
+<span class='line'>459</span>  *
+<span class='line'>460</span>  * Suggested implementations of this method might load files
+<span class='line'>461</span>  * directly from disk under nodejs or rhino, or within web pages, to load
+<span class='line'>462</span>  * files from the server with XHR calls.&lt;p>
+<span class='line'>463</span>  *
+<span class='line'>464</span>  * The first parameter to this method, paths, is an array of relative paths within
+<span class='line'>465</span>  * the ilib dir structure for the
+<span class='line'>466</span>  * requested data. These paths will already have the locale spec integrated
+<span class='line'>467</span>  * into them, so no further tweaking needs to happen to load the data. Simply
+<span class='line'>468</span>  * load the named files. The second
+<span class='line'>469</span>  * parameter tells the loader whether to load the files synchronously or asynchronously.
+<span class='line'>470</span>  * If the sync parameters is false, then the onLoad function must also be specified.
+<span class='line'>471</span>  * The third parameter gives extra parameters to the loader passed from the calling
+<span class='line'>472</span>  * code. This may contain any property/value pairs.  The last parameter, callback,
+<span class='line'>473</span>  * is a callback function to call when all of the data is finishing loading. Make
+<span class='line'>474</span>  * sure to call the callback with the context of "this" so that the caller has their
+<span class='line'>475</span>  * context back again.&lt;p>
+<span class='line'>476</span>  *
+<span class='line'>477</span>  * The loader function must be able to operate either synchronously or asychronously.
+<span class='line'>478</span>  * If the loader function is called with an undefined callback function, it is
+<span class='line'>479</span>  * expected to load the data synchronously, convert it to javascript
+<span class='line'>480</span>  * objects, and return the array of json objects as the return value of the
+<span class='line'>481</span>  * function. If the loader
+<span class='line'>482</span>  * function is called with a callback function, it may load the data
+<span class='line'>483</span>  * synchronously or asynchronously (doesn't matter which) as long as it calls
+<span class='line'>484</span>  * the callback function with the data converted to a javascript objects
+<span class='line'>485</span>  * when it becomes available. If a particular file could not be loaded, the
+<span class='line'>486</span>  * loader function should put undefined into the corresponding entry in the
+<span class='line'>487</span>  * results array.
+<span class='line'>488</span>  * Note that it is important that all the data is loaded before the callback
+<span class='line'>489</span>  * is called.&lt;p>
+<span class='line'>490</span>  *
+<span class='line'>491</span>  * An example implementation for nodejs might be:
+<span class='line'>492</span>  *
+<span class='line'>493</span>  * &lt;pre>
+<span class='line'>494</span>  * var fs = require("fs");
+<span class='line'>495</span>  *
+<span class='line'>496</span>  * var myLoader = function() {};
+<span class='line'>497</span>  * myLoader.prototype = new Loader();
+<span class='line'>498</span>  * myLoader.prototype.constructor = myLoader;
+<span class='line'>499</span>  * myLoader.prototype.loadFiles = function(paths, sync, params, callback) {
+<span class='line'>500</span>  *    if (sync) {
+<span class='line'>501</span>  *        var ret = [];
+<span class='line'>502</span>  *        // synchronous load -- just return the result
+<span class='line'>503</span>  *        paths.forEach(function (path) {
+<span class='line'>504</span>  *            var json = fs.readFileSync(path, "utf-8");
+<span class='line'>505</span>  *            ret.push(json ? JSON.parse(json) : undefined);
+<span class='line'>506</span>  *        });
+<span class='line'>507</span>  *
+<span class='line'>508</span>  *        return ret;
+<span class='line'>509</span>  *    }
+<span class='line'>510</span>  *    this.callback = callback;
+<span class='line'>511</span>  *
+<span class='line'>512</span>  *    // asynchronous
+<span class='line'>513</span>  *    this.results = [];
+<span class='line'>514</span>  *    this._loadFilesAsync(paths);
+<span class='line'>515</span>  * }
+<span class='line'>516</span>  * myLoader.prototype._loadFilesAsync = function (paths) {
+<span class='line'>517</span>  *    if (paths.length > 0) {
+<span class='line'>518</span>  *        var file = paths.shift();
+<span class='line'>519</span>  *        fs.readFile(file, "utf-8", function(err, json) {
+<span class='line'>520</span>  *            this.results.push(err ? undefined : JSON.parse(json));
+<span class='line'>521</span>  *            // call self recursively so that the callback is only called at the end
+<span class='line'>522</span>  *            // when all the files are loaded sequentially
+<span class='line'>523</span>  *            if (paths.length > 0) {
+<span class='line'>524</span>  *                this._loadFilesAsync(paths);
+<span class='line'>525</span>  *            } else {
+<span class='line'>526</span>  *                this.callback(this.results);
+<span class='line'>527</span>  *            }
+<span class='line'>528</span>  *        });
+<span class='line'>529</span>  *     }
+<span class='line'>530</span>  * }
+<span class='line'>531</span>  *
+<span class='line'>532</span>  * // bind to "this" so that "this" is relative to your own instance
+<span class='line'>533</span>  * ilib.setLoaderCallback(new myLoader());
+<span class='line'>534</span>  * &lt;/pre>
+<span class='line'>535</span> 
+<span class='line'>536</span>  * @param {Array.&lt;string>} paths An array of paths to load from wherever the files are stored
+<span class='line'>537</span>  * @param {Boolean} sync if true, load the files synchronously, and false means asynchronously
+<span class='line'>538</span>  * @param {Object} params an object with any extra parameters for the loader. These can be
+<span class='line'>539</span>  * anything. The caller of the ilib class passes these parameters in. Presumably, the code that
+<span class='line'>540</span>  * calls ilib and the code that provides the loader are together and can have a private
+<span class='line'>541</span>  * agreement between them about what the parameters should contain.
+<span class='line'>542</span>  * @param {function(Object)} callback function to call when the files are all loaded. The
+<span class='line'>543</span>  * parameter of the callback function is the contents of the files.
+<span class='line'>544</span>  */</span><span class="WHIT">
+<span class='line'>545</span> </span><span class="NAME">ilib.Loader.prototype.loadFiles</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">paths</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">params</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>546</span> 
+<span class='line'>547</span> </span><span class="COMM">/**
+<span class='line'>548</span>  * Return all files available for loading using this loader instance.
+<span class='line'>549</span>  * This method returns an object where the properties are the paths to
+<span class='line'>550</span>  * directories where files are loaded from and the values are an array
+<span class='line'>551</span>  * of strings containing the relative paths under the directory of each
+<span class='line'>552</span>  * file that can be loaded.&lt;p>
+<span class='line'>553</span>  *
+<span class='line'>554</span>  * Example:
+<span class='line'>555</span>  *  &lt;pre>
+<span class='line'>556</span>  *  {
+<span class='line'>557</span>  *      "/usr/share/javascript/ilib/locale": [
+<span class='line'>558</span>  *          "dateformats.json",
+<span class='line'>559</span>  *          "aa/dateformats.json",
+<span class='line'>560</span>  *          "af/dateformats.json",
+<span class='line'>561</span>  *          "agq/dateformats.json",
+<span class='line'>562</span>  *          "ak/dateformats.json",
+<span class='line'>563</span>  *          ...
+<span class='line'>564</span>  *          "zxx/dateformats.json"
+<span class='line'>565</span>  *      ]
+<span class='line'>566</span>  *  }
+<span class='line'>567</span>  *  &lt;/pre>
+<span class='line'>568</span>  * @returns {Object} a hash containing directory names and
+<span class='line'>569</span>  * paths to file that can be loaded by this loader
+<span class='line'>570</span>  */</span><span class="WHIT">
+<span class='line'>571</span> </span><span class="NAME">ilib.Loader.prototype.listAvailableFiles</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>572</span> 
+<span class='line'>573</span> </span><span class="COMM">/**
+<span class='line'>574</span>  * Return true if the file in the named path is available for loading using
+<span class='line'>575</span>  * this loader. The path may be given as an absolute path, in which case
+<span class='line'>576</span>  * only that file is checked, or as a relative path, in which case, the
+<span class='line'>577</span>  * relative path may appear underneath any of the directories that the loader
+<span class='line'>578</span>  * knows about.
+<span class='line'>579</span>  * @returns {boolean} true if the file in the named path is available for loading, and
+<span class='line'>580</span>  * false otherwise
+<span class='line'>581</span>  */</span><span class="WHIT">
+<span class='line'>582</span> </span><span class="NAME">ilib.Loader.prototype.isAvailable</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>583</span> 
+<span class='line'>584</span> </span><span class="COMM">/**
+<span class='line'>585</span>  * Set the custom loader used to load ilib's locale data in your environment.
+<span class='line'>586</span>  * The instance passed in must implement the Loader interface. See the
+<span class='line'>587</span>  * Loader class documentation for more information about loaders.
+<span class='line'>588</span>  *
+<span class='line'>589</span>  * @static
+<span class='line'>590</span>  * @param {ilib.Loader} loader class to call to access the requested data.
+<span class='line'>591</span>  * @return {boolean} true if the loader was installed correctly, or false
+<span class='line'>592</span>  * if not
+<span class='line'>593</span>  */</span><span class="WHIT">
+<span class='line'>594</span> </span><span class="NAME">ilib.setLoaderCallback</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">loader</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>595</span> </span><span class="WHIT">    </span><span class="COMM">// only a basic check</span><span class="WHIT">
+<span class='line'>596</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">loader</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">loader.loadFiles</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'>597</span> </span><span class="WHIT">            </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">loader</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">loader</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>598</span> </span><span class="WHIT">        </span><span class="COMM">//console.log("setting callback loader to " + (loader ? loader.name : "undefined"));</span><span class="WHIT">
+<span class='line'>599</span> </span><span class="WHIT">        </span><span class="NAME">ilib._load</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">loader</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>600</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>601</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>602</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>603</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>604</span> 
+<span class='line'>605</span> </span><span class="COMM">/**
+<span class='line'>606</span>  * Return the custom Loader instance currently in use with this instance
+<span class='line'>607</span>  * of ilib. If there is no loader, this method returns undefined.
+<span class='line'>608</span>  *
+<span class='line'>609</span>  * @protected
+<span class='line'>610</span>  * @static
+<span class='line'>611</span>  * @return {ilib.Loader|undefined} the loader instance currently in use, or
+<span class='line'>612</span>  * undefined if there is no such loader
+<span class='line'>613</span>  */</span><span class="WHIT">
+<span class='line'>614</span> </span><span class="NAME">ilib.getLoader</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>615</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ilib._load</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>616</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>617</span> 
+<span class='line'>618</span> </span><span class="COMM">/**
+<span class='line'>619</span>  * Test whether an object is an javascript array.
+<span class='line'>620</span>  *
+<span class='line'>621</span>  * @static
+<span class='line'>622</span>  * @param {*} object The object to test
+<span class='line'>623</span>  * @return {boolean} return true if the object is an array
+<span class='line'>624</span>  * and false otherwise
+<span class='line'>625</span>  */</span><span class="WHIT">
+<span class='line'>626</span> </span><span class="NAME">ilib.isArray</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">object</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>627</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">object</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>628</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Object.prototype.toString.call</span><span class="PUNC">(</span><span class="NAME">object</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'[object Array]'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>629</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>630</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>631</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>632</span> 
+<span class='line'>633</span> </span><span class="COMM">/**
+<span class='line'>634</span>  * Extend object1 by mixing in everything from object2 into it. The objects
+<span class='line'>635</span>  * are deeply extended, meaning that this method recursively descends the
+<span class='line'>636</span>  * tree in the objects and mixes them in at each level. Arrays are extended
+<span class='line'>637</span>  * by concatenating the elements of object2 onto those of object1.
+<span class='line'>638</span>  *
+<span class='line'>639</span>  * @static
+<span class='line'>640</span>  * @param {Object} object1 the target object to extend
+<span class='line'>641</span>  * @param {Object=} object2 the object to mix in to object1
+<span class='line'>642</span>  * @return {Object} returns object1
+<span class='line'>643</span>  */</span><span class="WHIT">
+<span class='line'>644</span> </span><span class="NAME">ilib.extend</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">object1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">object2</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>645</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">prop</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>646</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">object2</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>647</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">prop</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">object2</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>648</span> </span><span class="WHIT">            </span><span class="COMM">// don't extend object with undefined or functions</span><span class="WHIT">
+<span class='line'>649</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">prop</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">object2</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">object2</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">"function"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>650</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ilib.isArray</span><span class="PUNC">(</span><span class="NAME">object1</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">ilib.isArray</span><span class="PUNC">(</span><span class="NAME">object2</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>651</span> </span><span class="WHIT">                    </span><span class="COMM">//console.log("Merging array prop " + prop);</span><span class="WHIT">
+<span class='line'>652</span> </span><span class="WHIT">                    </span><span class="NAME">object1</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">object1</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">concat</span><span class="PUNC">(</span><span class="NAME">object2</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>653</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">object1</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">object2</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>654</span> </span><span class="WHIT">                    </span><span class="COMM">//console.log("Merging object prop " + prop);</span><span class="WHIT">
+<span class='line'>655</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">prop</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">"ilib"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>656</span> </span><span class="WHIT">                        </span><span class="NAME">object1</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib.extend</span><span class="PUNC">(</span><span class="NAME">object1</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">object2</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>657</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>658</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>659</span> </span><span class="WHIT">                    </span><span class="COMM">//console.log("Copying prop " + prop);</span><span class="WHIT">
+<span class='line'>660</span> </span><span class="WHIT">                    </span><span class="COMM">// for debugging. Used to determine whether or not json files are overriding their parents unnecessarily</span><span class="WHIT">
+<span class='line'>661</span> </span><span class="WHIT">                    </span><span class="NAME">object1</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">object2</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>662</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>663</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>664</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>665</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>666</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">object1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>667</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>668</span> 
+<span class='line'>669</span> </span><span class="NAME">ilib.extend2</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">object1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">object2</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>670</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">prop</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>671</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">object2</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>672</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">prop</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">object2</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>673</span> </span><span class="WHIT">            </span><span class="COMM">// don't extend object with undefined or functions</span><span class="WHIT">
+<span class='line'>674</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">prop</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">object2</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>675</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ilib.isArray</span><span class="PUNC">(</span><span class="NAME">object1</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">ilib.isArray</span><span class="PUNC">(</span><span class="NAME">object2</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>676</span> </span><span class="WHIT">                    </span><span class="COMM">//console.log("Merging array prop " + prop);</span><span class="WHIT">
+<span class='line'>677</span> </span><span class="WHIT">                    </span><span class="NAME">object1</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">object1</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">concat</span><span class="PUNC">(</span><span class="NAME">object2</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>678</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">object1</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">object2</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>679</span> </span><span class="WHIT">                    </span><span class="COMM">//console.log("Merging object prop " + prop);</span><span class="WHIT">
+<span class='line'>680</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">prop</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">"ilib"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>681</span> </span><span class="WHIT">                        </span><span class="NAME">object1</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib.extend2</span><span class="PUNC">(</span><span class="NAME">object1</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">object2</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>682</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>683</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>684</span> </span><span class="WHIT">                    </span><span class="COMM">//console.log("Copying prop " + prop);</span><span class="WHIT">
+<span class='line'>685</span> </span><span class="WHIT">                    </span><span class="COMM">// for debugging. Used to determine whether or not json files are overriding their parents unnecessarily</span><span class="WHIT">
+<span class='line'>686</span> </span><span class="WHIT">                    </span><span class="NAME">object1</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">object2</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>687</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>688</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>689</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>690</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>691</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">object1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>692</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>693</span> 
+<span class='line'>694</span> </span><span class="COMM">/**
+<span class='line'>695</span>  * If Function.prototype.bind does not exist in this JS engine, this
+<span class='line'>696</span>  * function reimplements it in terms of older JS functions.
+<span class='line'>697</span>  * bind() doesn't exist in many older browsers.
+<span class='line'>698</span>  *
+<span class='line'>699</span>  * @static
+<span class='line'>700</span>  * @param {Object} scope object that the method should operate on
+<span class='line'>701</span>  * @param {function(...)} method method to call
+<span class='line'>702</span>  * @return {function(...)|undefined} function that calls the given method
+<span class='line'>703</span>  * in the given scope with all of its arguments properly attached, or
+<span class='line'>704</span>  * undefined if there was a problem with the arguments
+<span class='line'>705</span>  */</span><span class="WHIT">
+<span class='line'>706</span> </span><span class="NAME">ilib.bind</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">scope</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">method</span><span class="COMM">/*, bound arguments*/</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>707</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">scope</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">method</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>708</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>709</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>710</span> 
+<span class='line'>711</span> </span><span class="WHIT">    </span><span class="COMM">/** @protected
+<span class='line'>712</span>      * @param {Arguments} inArrayLike
+<span class='line'>713</span>      * @param {number=} inOffset
+<span class='line'>714</span>      */</span><span class="WHIT">
+<span class='line'>715</span> </span><span class="WHIT">    </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">cloneArray</span><span class="PUNC">(</span><span class="NAME">inArrayLike</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">inOffset</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>716</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">arr</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>717</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">inOffset</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">l</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">inArrayLike.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">&lt;</span><span class="NAME">l</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>718</span> </span><span class="WHIT">            </span><span class="NAME">arr.push</span><span class="PUNC">(</span><span class="NAME">inArrayLike</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>719</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>720</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">arr</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>721</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>722</span> 
+<span class='line'>723</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">method</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>724</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">func</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">args</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cloneArray</span><span class="PUNC">(</span><span class="NAME">arguments</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>725</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">method.bind</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>726</span> </span><span class="WHIT">            </span><span class="NAME">func</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">method.bind.apply</span><span class="PUNC">(</span><span class="NAME">method</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="NAME">scope</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">concat</span><span class="PUNC">(</span><span class="NAME">args</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>727</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>728</span> </span><span class="WHIT">            </span><span class="NAME">func</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>729</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">nargs</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cloneArray</span><span class="PUNC">(</span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>730</span> </span><span class="WHIT">                </span><span class="COMM">// invoke with collected args</span><span class="WHIT">
+<span class='line'>731</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">method.apply</span><span class="PUNC">(</span><span class="NAME">scope</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">args.concat</span><span class="PUNC">(</span><span class="NAME">nargs</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>732</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>733</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>734</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">func</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>735</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>736</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>737</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>738</span> 
+<span class='line'>739</span> </span><span class="COMM">/**
+<span class='line'>740</span>  * @private
+<span class='line'>741</span>  */</span><span class="WHIT">
+<span class='line'>742</span> </span><span class="NAME">ilib._dyncode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>743</span> 
+<span class='line'>744</span> </span><span class="COMM">/**
+<span class='line'>745</span>  * Return true if this copy of ilib is using dynamically loaded code. It returns
+<span class='line'>746</span>  * false for pre-assembled code.
+<span class='line'>747</span>  *
+<span class='line'>748</span>  * @static
+<span class='line'>749</span>  * @return {boolean} true if this ilib uses dynamically loaded code, and false otherwise
+<span class='line'>750</span>  */</span><span class="WHIT">
+<span class='line'>751</span> </span><span class="NAME">ilib.isDynCode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>752</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ilib._dyncode</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>753</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>754</span> 
+<span class='line'>755</span> </span><span class="COMM">/**
+<span class='line'>756</span>  * @private
+<span class='line'>757</span>  */</span><span class="WHIT">
+<span class='line'>758</span> </span><span class="NAME">ilib._dyndata</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>759</span> 
+<span class='line'>760</span> </span><span class="COMM">/**
+<span class='line'>761</span>  * Return true if this copy of ilib is using dynamically loaded locale data. It returns
+<span class='line'>762</span>  * false for pre-assembled data.
+<span class='line'>763</span>  *
+<span class='line'>764</span>  * @static
+<span class='line'>765</span>  * @return {boolean} true if this ilib uses dynamically loaded locale data, and false otherwise
+<span class='line'>766</span>  */</span><span class="WHIT">
+<span class='line'>767</span> </span><span class="NAME">ilib.isDynData</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>768</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ilib._dyndata</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>769</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>770</span> 
+<span class='line'>771</span> </span><span class="NAME">ilib._loadtime</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">getTime</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>772</span> </span></pre></body></html>

@@ -1,0 +1,387 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * DateRngFmt.js - Date formatter definition
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * Copyright © 2012-2015, 2018, JEDLSoft
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  7</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  8</span>  * You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 13</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 14</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 15</span>  *
+<span class='line'> 16</span>  * See the License for the specific language governing permissions and
+<span class='line'> 17</span>  * limitations under the License.
+<span class='line'> 18</span>  */</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="COMM">// !data dateformats sysres</span><span class="WHIT">
+<span class='line'> 21</span> 
+<span class='line'> 22</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./ilib.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">JSUtils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./JSUtils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> 
+<span class='line'> 25</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Locale.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 26</span> 
+<span class='line'> 27</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">CalendarFactory</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./CalendarFactory.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 28</span> 
+<span class='line'> 29</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">DateFmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./DateFmt.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./IString.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">GregorianCal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./GregorianCal.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 32</span> 
+<span class='line'> 33</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">DateFactory</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./DateFactory.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 34</span> 
+<span class='line'> 35</span> </span><span class="COMM">/**
+<span class='line'> 36</span>  * @class
+<span class='line'> 37</span>  * Create a new date range formatter instance. The date range formatter is immutable once
+<span class='line'> 38</span>  * it is created, but can format as many different date ranges as needed with the same
+<span class='line'> 39</span>  * options. Create different date range formatter instances for different purposes
+<span class='line'> 40</span>  * and then keep them cached for use later if you have more than one range to
+<span class='line'> 41</span>  * format.&lt;p>
+<span class='line'> 42</span>  *
+<span class='line'> 43</span>  * The options may contain any of the following properties:
+<span class='line'> 44</span>  *
+<span class='line'> 45</span>  * &lt;ul>
+<span class='line'> 46</span>  * &lt;li>&lt;i>locale&lt;/i> - locale to use when formatting the date/times in the range. If the
+<span class='line'> 47</span>  * locale is not specified, then the default locale of the app or web page will be used.
+<span class='line'> 48</span>  *
+<span class='line'> 49</span>  * &lt;li>&lt;i>calendar&lt;/i> - the type of calendar to use for this format. The value should
+<span class='line'> 50</span>  * be a sting containing the name of the calendar. Currently, the supported
+<span class='line'> 51</span>  * types are "gregorian", "julian", "arabic", "hebrew", or "chinese". If the
+<span class='line'> 52</span>  * calendar is not specified, then the default calendar for the locale is used. When the
+<span class='line'> 53</span>  * calendar type is specified, then the format method must be called with an instance of
+<span class='line'> 54</span>  * the appropriate date type. (eg. Gregorian calendar means that the format method must
+<span class='line'> 55</span>  * be called with a GregDate instance.)
+<span class='line'> 56</span>  *
+<span class='line'> 57</span>  * &lt;li>&lt;i>timezone&lt;/i> - time zone to use when formatting times. This may be a time zone
+<span class='line'> 58</span>  * instance or a time zone specifier string in RFC 822 format. If not specified, the
+<span class='line'> 59</span>  * default time zone for the locale is used.
+<span class='line'> 60</span>  *
+<span class='line'> 61</span>  * &lt;li>&lt;i>length&lt;/i> - Specify the length of the format to use as a string. The length
+<span class='line'> 62</span>  * is the approximate size of the formatted string.
+<span class='line'> 63</span>  *
+<span class='line'> 64</span>  * &lt;ul>
+<span class='line'> 65</span>  * &lt;li>&lt;i>short&lt;/i> - use a short representation of the time. This is the most compact format possible for the locale.
+<span class='line'> 66</span>  * &lt;li>&lt;i>medium&lt;/i> - use a medium length representation of the time. This is a slightly longer format.
+<span class='line'> 67</span>  * &lt;li>&lt;i>long&lt;/i> - use a long representation of the time. This is a fully specified format, but some of the textual
+<span class='line'> 68</span>  * components may still be abbreviated. (eg. "Tue" instead of "Tuesday")
+<span class='line'> 69</span>  * &lt;li>&lt;i>full&lt;/i> - use a full representation of the time. This is a fully specified format where all the textual
+<span class='line'> 70</span>  * components are spelled out completely.
+<span class='line'> 71</span>  * &lt;/ul>
+<span class='line'> 72</span>  *
+<span class='line'> 73</span>  * eg. The "short" format for an en_US range may be "MM/yy - MM/yy", whereas the long format might be
+<span class='line'> 74</span>  * "MMM, yyyy - MMM, yyyy". In the long format, the month name is textual instead of numeric
+<span class='line'> 75</span>  * and is longer, the year is 4 digits instead of 2, and the format contains slightly more
+<span class='line'> 76</span>  * spaces and formatting characters.&lt;p>
+<span class='line'> 77</span>  *
+<span class='line'> 78</span>  * Note that the length parameter does not specify which components are to be formatted. The
+<span class='line'> 79</span>  * components that are formatted depend on the length of time in the range.
+<span class='line'> 80</span>  *
+<span class='line'> 81</span>  * &lt;li>&lt;i>clock&lt;/i> - specify that formatted times should use a 12 or 24 hour clock if the
+<span class='line'> 82</span>  * format happens to include times. Valid values are "12" and "24".&lt;p>
+<span class='line'> 83</span>  *
+<span class='line'> 84</span>  * In some locales, both clocks are used. For example, in en_US, the general populace uses
+<span class='line'> 85</span>  * a 12 hour clock with am/pm, but in the US military or in nautical or aeronautical or
+<span class='line'> 86</span>  * scientific writing, it is more common to use a 24 hour clock. This property allows you to
+<span class='line'> 87</span>  * construct a formatter that overrides the default for the locale.&lt;p>
+<span class='line'> 88</span>  *
+<span class='line'> 89</span>  * If this property is not specified, the default is to use the most widely used convention
+<span class='line'> 90</span>  * for the locale.
+<span class='line'> 91</span>  * &lt;li>onLoad - a callback function to call when the date range format object is fully
+<span class='line'> 92</span>  * loaded. When the onLoad option is given, the DateRngFmt object will attempt to
+<span class='line'> 93</span>  * load any missing locale data using the ilib loader callback.
+<span class='line'> 94</span>  * When the constructor is done (even if the data is already preassembled), the
+<span class='line'> 95</span>  * onLoad function is called with the current instance as a parameter, so this
+<span class='line'> 96</span>  * callback can be used with preassembled or dynamic loading or a mix of the two.
+<span class='line'> 97</span>  *
+<span class='line'> 98</span>  * &lt;li>sync - tell whether to load any missing locale data synchronously or
+<span class='line'> 99</span>  * asynchronously. If this option is given as "false", then the "onLoad"
+<span class='line'>100</span>  * callback must be given, as the instance returned from this constructor will
+<span class='line'>101</span>  * not be usable for a while.
+<span class='line'>102</span>  *
+<span class='line'>103</span>  * &lt;li>&lt;i>loadParams&lt;/i> - an object containing parameters to pass to the
+<span class='line'>104</span>  * loader callback function when locale data is missing. The parameters are not
+<span class='line'>105</span>  * interpretted or modified in any way. They are simply passed along. The object
+<span class='line'>106</span>  * may contain any property/value pairs as long as the calling code is in
+<span class='line'>107</span>  * agreement with the loader callback function as to what those parameters mean.
+<span class='line'>108</span>  * &lt;/ul>
+<span class='line'>109</span>  * &lt;p>
+<span class='line'>110</span>  *
+<span class='line'>111</span>  *
+<span class='line'>112</span>  * @constructor
+<span class='line'>113</span>  * @param {Object} options options governing the way this date range formatter instance works
+<span class='line'>114</span>  */</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">DateRngFmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">    </span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">    </span><span class="NAME">this.length</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"s"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>120</span> 
+<span class='line'>121</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">            </span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="NAME">options.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">options.locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>125</span> 
+<span class='line'>126</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.calendar</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">            </span><span class="NAME">this.calName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.calendar</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>129</span> 
+<span class='line'>130</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.length</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'short'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">                </span><span class="NAME">options.length</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'medium'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">                </span><span class="NAME">options.length</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'long'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">                </span><span class="NAME">options.length</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'full'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">                </span><span class="COMM">// only use the first char to save space in the json files</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">                </span><span class="NAME">this.length</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.length.charAt</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.sync</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">            </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="PUNC">!</span><span class="NAME">options.sync</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>142</span> 
+<span class='line'>143</span> </span><span class="WHIT">        </span><span class="NAME">loadParams</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.loadParams</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>145</span> 
+<span class='line'>146</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">opts</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">    </span><span class="NAME">JSUtils.shallowCopy</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">opts</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">    </span><span class="NAME">opts.sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">    </span><span class="NAME">opts.loadParams</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>150</span> 
+<span class='line'>151</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>152</span>      * @private
+<span class='line'>153</span>      */</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">    </span><span class="NAME">opts.onLoad</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">fmt</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">        </span><span class="NAME">this.dateFmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">fmt</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">fmt</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">            </span><span class="NAME">this.locinfo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.dateFmt.locinfo</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>158</span> 
+<span class='line'>159</span> </span><span class="WHIT">            </span><span class="COMM">// get the default calendar name from the locale, and if the locale doesn't define</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">            </span><span class="COMM">// one, use the hard-coded gregorian as the last resort</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">            </span><span class="NAME">this.calName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.calName</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.locinfo.getCalendar</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"gregorian"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">            </span><span class="NAME">CalendarFactory</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">                </span><span class="NAME">type</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.calName</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">                </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">                </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">                </span><span class="NAME">onLoad</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">cal</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">                    </span><span class="NAME">this.cal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cal</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>168</span> 
+<span class='line'>169</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.cal</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">                        </span><span class="COMM">// always synchronous</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">                        </span><span class="NAME">this.cal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">GregorianCal</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>173</span> 
+<span class='line'>174</span> </span><span class="WHIT">                    </span><span class="NAME">this.timeTemplate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.dateFmt._getFormat</span><span class="PUNC">(</span><span class="NAME">this.dateFmt.formats.time</span><span class="PUNC">[</span><span class="NAME">this.dateFmt.clock</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.dateFmt.timeComponents</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"hh:mm"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">                    </span><span class="NAME">this.timeTemplateArr</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.dateFmt._tokenize</span><span class="PUNC">(</span><span class="NAME">this.timeTemplate</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>176</span> 
+<span class='line'>177</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">                        </span><span class="NAME">options.onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.sync</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"boolean"</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">options.sync</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">                </span><span class="NAME">options.onLoad</span><span class="PUNC">(</span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">                </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="STRN">"No formats available for calendar "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.calName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">" in locale "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.locale.getSpec</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>190</span> 
+<span class='line'>191</span> </span><span class="WHIT">    </span><span class="COMM">// delegate a bunch of the formatting to this formatter</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">    </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">DateFmt</span><span class="PUNC">(</span><span class="NAME">opts</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>194</span> 
+<span class='line'>195</span> </span><span class="NAME">DateRngFmt.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>197</span>      * Return the locale used with this formatter instance.
+<span class='line'>198</span>      * @return {Locale} the Locale instance for this formatter
+<span class='line'>199</span>      */</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">    </span><span class="NAME">getLocale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>203</span> 
+<span class='line'>204</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>205</span>      * Return the name of the calendar used to format date/times for this
+<span class='line'>206</span>      * formatter instance.
+<span class='line'>207</span>      * @return {string} the name of the calendar used by this formatter
+<span class='line'>208</span>      */</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">    </span><span class="NAME">getCalendar</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.dateFmt.getCalendar</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>212</span> 
+<span class='line'>213</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>214</span>      * Return the length used to format date/times in this formatter. This is either the
+<span class='line'>215</span>      * value of the length option to the constructor, or the default value.
+<span class='line'>216</span>      *
+<span class='line'>217</span>      * @return {string} the length of formats this formatter returns
+<span class='line'>218</span>      */</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="WHIT">    </span><span class="NAME">getLength</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">DateFmt.lenmap</span><span class="PUNC">[</span><span class="NAME">this.length</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>221</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>222</span> 
+<span class='line'>223</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>224</span>      * Return the time zone used to format date/times for this formatter
+<span class='line'>225</span>      * instance.
+<span class='line'>226</span>      * @return {TimeZone} a string naming the time zone
+<span class='line'>227</span>      */</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="WHIT">    </span><span class="NAME">getTimeZone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.dateFmt.getTimeZone</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>230</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>231</span> 
+<span class='line'>232</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>233</span>      * Return the clock option set in the constructor. If the clock option was
+<span class='line'>234</span>      * not given, the default from the locale is returned instead.
+<span class='line'>235</span>      * @return {string} "12" or "24" depending on whether this formatter uses
+<span class='line'>236</span>      * the 12-hour or 24-hour clock
+<span class='line'>237</span>      */</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="WHIT">    </span><span class="NAME">getClock</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.dateFmt.getClock</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>241</span> 
+<span class='line'>242</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>243</span>      * Format a date/time range according to the settings of the current
+<span class='line'>244</span>      * formatter. The range is specified as being from the "start" date until
+<span class='line'>245</span>      * the "end" date. &lt;p>
+<span class='line'>246</span>      *
+<span class='line'>247</span>      * The template that the date/time range uses depends on the
+<span class='line'>248</span>      * length of time between the dates, on the premise that a long date range
+<span class='line'>249</span>      * which is too specific is not useful. For example, when giving
+<span class='line'>250</span>      * the dates of the 100 Years War, in most situations it would be more
+<span class='line'>251</span>      * appropriate to format the range as "1337 - 1453" than to format it as
+<span class='line'>252</span>      * "10:37am November 9, 1337 - 4:37pm July 17, 1453", as the latter format
+<span class='line'>253</span>      * is much too specific given the length of time that the range represents.
+<span class='line'>254</span>      * If a very specific, but long, date range really is needed, the caller
+<span class='line'>255</span>      * should format two specific dates separately and put them
+<span class='line'>256</span>      * together as you might with other normal strings.&lt;p>
+<span class='line'>257</span>      *
+<span class='line'>258</span>      * The format used for a date range contains the following date components,
+<span class='line'>259</span>      * where the order of those components is rearranged and the component values
+<span class='line'>260</span>      * are translated according to each locale:
+<span class='line'>261</span>      *
+<span class='line'>262</span>      * &lt;ul>
+<span class='line'>263</span>      * &lt;li>within 3 days: the times of day, dates, months, and years
+<span class='line'>264</span>      * &lt;li>within 730 days (2 years): the dates, months, and years
+<span class='line'>265</span>      * &lt;li>within 3650 days (10 years): the months and years
+<span class='line'>266</span>      * &lt;li>longer than 10 years: the years only
+<span class='line'>267</span>      * &lt;/ul>
+<span class='line'>268</span>      *
+<span class='line'>269</span>      * In general, if any of the date components share a value between the
+<span class='line'>270</span>      * start and end date, that component is only given once. For example,
+<span class='line'>271</span>      * if the range is from November 15, 2011 to November 26, 2011, the
+<span class='line'>272</span>      * start and end dates both share the same month and year. The
+<span class='line'>273</span>      * range would then be formatted as "November 15-26, 2011". &lt;p>
+<span class='line'>274</span>      *
+<span class='line'>275</span>      * If you want to format a length of time instead of a particular range of
+<span class='line'>276</span>      * time (for example, the length of an event rather than the specific start time
+<span class='line'>277</span>      * and end time of that event), then use a duration formatter instance
+<span class='line'>278</span>      * (DurationFmt) instead. The formatRange method will make sure that each component
+<span class='line'>279</span>      * of the date/time is within the normal range for that component. For example,
+<span class='line'>280</span>      * the minutes will always be between 0 and 59, no matter what is specified in
+<span class='line'>281</span>      * the date to format, because that is the normal range for minutes. A duration
+<span class='line'>282</span>      * format will allow the number of minutes to exceed 59. For example, if you
+<span class='line'>283</span>      * were displaying the length of a movie that is 198 minutes long, the minutes
+<span class='line'>284</span>      * component of a duration could be 198.&lt;p>
+<span class='line'>285</span>      *
+<span class='line'>286</span>      * @param {IDate|Date|number|string} startDateLike the starting date/time of the range. The
+<span class='line'>287</span>      * date may be given as an ilib IDate object, a javascript intrinsic Date object, a
+<span class='line'>288</span>      * unix time, or a date string parsable by the javscript Date.
+<span class='line'>289</span>      * @param {IDate|Date|number|string} endDateLike the ending date/time of the range. The
+<span class='line'>290</span>      * date may be given as an ilib IDate object, a javascript intrinsic Date object, a
+<span class='line'>291</span>      * unix time, or a date string parsable by the javscript Date.
+<span class='line'>292</span>      * @throws "Wrong calendar type" when the start or end dates are not the same
+<span class='line'>293</span>      * calendar type as the formatter itself
+<span class='line'>294</span>      * @return {string} a date range formatted for the locale
+<span class='line'>295</span>      */</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="WHIT">    </span><span class="NAME">format</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">startDateLike</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">endDateLike</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">startRd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">endRd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">yearTemplate</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">monthTemplate</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">dayTemplate</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">formats</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">thisZoneName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.dateFmt.tz</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.dateFmt.tz.getId</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"local"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>299</span> 
+<span class='line'>300</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">start</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">DateFactory._dateToIlib</span><span class="PUNC">(</span><span class="NAME">startDateLike</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">thisZoneName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">end</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">DateFactory._dateToIlib</span><span class="PUNC">(</span><span class="NAME">endDateLike</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">thisZoneName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>302</span> 
+<span class='line'>303</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">start</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">start.getCalendar</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">start.getCalendar</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NAME">this.calName</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="WHIT">            </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">end</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">end.getCalendar</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">end.getCalendar</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NAME">this.calName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>305</span> </span><span class="WHIT">            </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="STRN">"Wrong calendar type"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>307</span> 
+<span class='line'>308</span> </span><span class="WHIT">        </span><span class="NAME">startRd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">start.getRataDie</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="WHIT">        </span><span class="NAME">endRd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">end.getRataDie</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>310</span> 
+<span class='line'>311</span> </span><span class="WHIT">        </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="WHIT">        </span><span class="COMM">// legend:</span><span class="WHIT">
+<span class='line'>313</span> </span><span class="WHIT">        </span><span class="COMM">// c00 - difference is less than 3 days. Year, month, and date are same, but time is different</span><span class="WHIT">
+<span class='line'>314</span> </span><span class="WHIT">        </span><span class="COMM">// c01 - difference is less than 3 days. Year and month are same but date and time are different</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="WHIT">        </span><span class="COMM">// c02 - difference is less than 3 days. Year is same but month, date, and time are different. (ie. it straddles a month boundary)</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">        </span><span class="COMM">// c03 - difference is less than 3 days. Year, month, date, and time are all different. (ie. it straddles a year boundary)</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">        </span><span class="COMM">// c10 - difference is less than 2 years. Year and month are the same, but date is different.</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">        </span><span class="COMM">// c11 - difference is less than 2 years. Year is the same, but month, date, and time are different.</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="WHIT">        </span><span class="COMM">// c12 - difference is less than 2 years. All fields are different. (ie. straddles a year boundary)</span><span class="WHIT">
+<span class='line'>320</span> </span><span class="WHIT">        </span><span class="COMM">// c20 - difference is less than 10 years. All fields are different.</span><span class="WHIT">
+<span class='line'>321</span> </span><span class="WHIT">        </span><span class="COMM">// c30 - difference is more than 10 years. All fields are different.</span><span class="WHIT">
+<span class='line'>322</span> </span><span class="WHIT">        </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>323</span> 
+<span class='line'>324</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">endRd</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">startRd</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">3</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>325</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">start.year</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">end.year</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>326</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">start.month</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">end.month</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>327</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">start.day</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">end.day</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>328</span> </span><span class="WHIT">                        </span><span class="NAME">fmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">this.dateFmt._getFormat</span><span class="PUNC">(</span><span class="NAME">this.dateFmt.formats.range</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"c00"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>330</span> </span><span class="WHIT">                        </span><span class="NAME">fmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">this.dateFmt._getFormat</span><span class="PUNC">(</span><span class="NAME">this.dateFmt.formats.range</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"c01"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>331</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>332</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>333</span> </span><span class="WHIT">                    </span><span class="NAME">fmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">this.dateFmt._getFormat</span><span class="PUNC">(</span><span class="NAME">this.dateFmt.formats.range</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"c02"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>334</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>335</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>336</span> </span><span class="WHIT">                </span><span class="NAME">fmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">this.dateFmt._getFormat</span><span class="PUNC">(</span><span class="NAME">this.dateFmt.formats.range</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"c03"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>337</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>338</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">endRd</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">startRd</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">730</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>339</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">start.year</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">end.year</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>340</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">start.month</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">end.month</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>341</span> </span><span class="WHIT">                    </span><span class="NAME">fmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">this.dateFmt._getFormat</span><span class="PUNC">(</span><span class="NAME">this.dateFmt.formats.range</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"c10"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>342</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>343</span> </span><span class="WHIT">                    </span><span class="NAME">fmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">this.dateFmt._getFormat</span><span class="PUNC">(</span><span class="NAME">this.dateFmt.formats.range</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"c11"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>344</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>345</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>346</span> </span><span class="WHIT">                </span><span class="NAME">fmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">this.dateFmt._getFormat</span><span class="PUNC">(</span><span class="NAME">this.dateFmt.formats.range</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"c12"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>347</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>348</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">endRd</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">startRd</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">3650</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>349</span> </span><span class="WHIT">            </span><span class="NAME">fmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">this.dateFmt._getFormat</span><span class="PUNC">(</span><span class="NAME">this.dateFmt.formats.range</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"c20"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>350</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>351</span> </span><span class="WHIT">            </span><span class="NAME">fmt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">this.dateFmt._getFormat</span><span class="PUNC">(</span><span class="NAME">this.dateFmt.formats.range</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"c30"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>352</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>353</span> 
+<span class='line'>354</span> </span><span class="WHIT">        </span><span class="NAME">formats</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.dateFmt.formats.date</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>355</span> </span><span class="WHIT">        </span><span class="NAME">yearTemplate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.dateFmt._tokenize</span><span class="PUNC">(</span><span class="NAME">this.dateFmt._getFormatInternal</span><span class="PUNC">(</span><span class="NAME">formats</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"y"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"yyyy"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>356</span> </span><span class="WHIT">        </span><span class="NAME">monthTemplate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.dateFmt._tokenize</span><span class="PUNC">(</span><span class="NAME">this.dateFmt._getFormatInternal</span><span class="PUNC">(</span><span class="NAME">formats</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"m"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"MM"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>357</span> </span><span class="WHIT">        </span><span class="NAME">dayTemplate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.dateFmt._tokenize</span><span class="PUNC">(</span><span class="NAME">this.dateFmt._getFormatInternal</span><span class="PUNC">(</span><span class="NAME">formats</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"d"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"dd"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>358</span> 
+<span class='line'>359</span> </span><span class="WHIT">        </span><span class="COMM">/*
+<span class='line'>360</span>         console.log("fmt is " + fmt.toString());
+<span class='line'>361</span>         console.log("year template is " + yearTemplate);
+<span class='line'>362</span>         console.log("month template is " + monthTemplate);
+<span class='line'>363</span>         console.log("day template is " + dayTemplate);
+<span class='line'>364</span>         */</span><span class="WHIT">
+<span class='line'>365</span> 
+<span class='line'>366</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">fmt.format</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>367</span> </span><span class="WHIT">            </span><span class="NAME">sy</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.dateFmt._formatTemplate</span><span class="PUNC">(</span><span class="NAME">start</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">yearTemplate</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>368</span> </span><span class="WHIT">            </span><span class="NAME">sm</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.dateFmt._formatTemplate</span><span class="PUNC">(</span><span class="NAME">start</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">monthTemplate</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>369</span> </span><span class="WHIT">            </span><span class="NAME">sd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.dateFmt._formatTemplate</span><span class="PUNC">(</span><span class="NAME">start</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">dayTemplate</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>370</span> </span><span class="WHIT">            </span><span class="NAME">st</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.dateFmt._formatTemplate</span><span class="PUNC">(</span><span class="NAME">start</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.timeTemplateArr</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>371</span> </span><span class="WHIT">            </span><span class="NAME">ey</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.dateFmt._formatTemplate</span><span class="PUNC">(</span><span class="NAME">end</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">yearTemplate</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>372</span> </span><span class="WHIT">            </span><span class="NAME">em</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.dateFmt._formatTemplate</span><span class="PUNC">(</span><span class="NAME">end</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">monthTemplate</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>373</span> </span><span class="WHIT">            </span><span class="NAME">ed</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.dateFmt._formatTemplate</span><span class="PUNC">(</span><span class="NAME">end</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">dayTemplate</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>374</span> </span><span class="WHIT">            </span><span class="NAME">et</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.dateFmt._formatTemplate</span><span class="PUNC">(</span><span class="NAME">end</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.timeTemplateArr</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>375</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>376</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>377</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>378</span> 
+<span class='line'>379</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">DateRngFmt</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>380</span> </span></pre></body></html>

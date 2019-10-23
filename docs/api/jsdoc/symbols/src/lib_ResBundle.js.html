@@ -1,0 +1,685 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * ResBundle.js - Resource bundle definition
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * Copyright © 2012-2016, 2018-2019, JEDLSoft
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  7</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  8</span>  * You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 13</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 14</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 15</span>  *
+<span class='line'> 16</span>  * See the License for the specific language governing permissions and
+<span class='line'> 17</span>  * limitations under the License.
+<span class='line'> 18</span>  */</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="COMM">// !data pseudomap</span><span class="WHIT">
+<span class='line'> 21</span> 
+<span class='line'> 22</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"../index.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Utils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Utils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">JSUtils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./JSUtils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 25</span> 
+<span class='line'> 26</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Locale.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">LocaleInfo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./LocaleInfo.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 28</span> 
+<span class='line'> 29</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./IString.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 30</span> 
+<span class='line'> 31</span> </span><span class="COMM">/**
+<span class='line'> 32</span>  * @class
+<span class='line'> 33</span>  * Create a new resource bundle instance. The resource bundle loads strings
+<span class='line'> 34</span>  * appropriate for a particular locale and provides them via the getString
+<span class='line'> 35</span>  * method.&lt;p>
+<span class='line'> 36</span>  *
+<span class='line'> 37</span>  * The options object may contain any (or none) of the following properties:
+<span class='line'> 38</span>  *
+<span class='line'> 39</span>  * &lt;ul>
+<span class='line'> 40</span>  * &lt;li>&lt;i>locale&lt;/i> - The locale of the strings to load. If not specified, the default
+<span class='line'> 41</span>  * locale is the the default for the web page or app in which the bundle is
+<span class='line'> 42</span>  * being loaded.
+<span class='line'> 43</span>  *
+<span class='line'> 44</span>  * &lt;li>&lt;i>name&lt;/i> - Base name of the resource bundle to load. If not specified the default
+<span class='line'> 45</span>  * base name is "resources".
+<span class='line'> 46</span>  *
+<span class='line'> 47</span>  * &lt;li>&lt;i>type&lt;/i> - Name the type of strings this bundle contains. Valid values are
+<span class='line'> 48</span>  * "xml", "html", "text", "c", or "raw". The default is "text". If the type is "xml" or "html",
+<span class='line'> 49</span>  * then XML/HTML entities and tags are not pseudo-translated. During a real translation,
+<span class='line'> 50</span>  * HTML character entities are translated to their corresponding characters in a source
+<span class='line'> 51</span>  * string before looking that string up in the translations. Also, the characters "&lt;", ">",
+<span class='line'> 52</span>  * and "&" are converted to entities again in the output, but characters are left as they
+<span class='line'> 53</span>  * are. If the type is "xml", "html", or "text" types, then the replacement parameter names
+<span class='line'> 54</span>  * are not pseudo-translated as well so that the output can be used for formatting with
+<span class='line'> 55</span>  * the IString class. If the type is "c" then all C language style printf replacement
+<span class='line'> 56</span>  * parameters (eg. "%s" and "%d") are skipped automatically. If the type is raw, all characters
+<span class='line'> 57</span>  * are pseudo-translated, including replacement parameters as well as XML/HTML tags and entities.
+<span class='line'> 58</span>  *
+<span class='line'> 59</span>  * &lt;li>&lt;i>lengthen&lt;/i> - when pseudo-translating the string, tell whether or not to
+<span class='line'> 60</span>  * automatically lengthen the string to simulate "long" languages such as German
+<span class='line'> 61</span>  * or French. This is a boolean value. Default is false.
+<span class='line'> 62</span>  *
+<span class='line'> 63</span>  * &lt;li>&lt;i>missing&lt;/i> - what to do when a resource is missing. The choices are:
+<span class='line'> 64</span>  * &lt;ul>
+<span class='line'> 65</span>  *   &lt;li>&lt;i>source&lt;/i> - return the source string unchanged
+<span class='line'> 66</span>  *   &lt;li>&lt;i>pseudo&lt;/i> - return the pseudo-translated source string, translated to the
+<span class='line'> 67</span>  *   script of the locale if the mapping is available, or just the default Latin
+<span class='line'> 68</span>  *   pseudo-translation if not
+<span class='line'> 69</span>  *   &lt;li>&lt;i>empty&lt;/i> - return the empty string
+<span class='line'> 70</span>  * &lt;/ul>
+<span class='line'> 71</span>  * The default behaviour is the same as before, which is to return the source string
+<span class='line'> 72</span>  * unchanged.
+<span class='line'> 73</span>  *
+<span class='line'> 74</span>  * &lt;li>&lt;i>basePath&lt;/i> - look in the given path for the resource bundle files. This can be
+<span class='line'> 75</span>  * an absolute path or a relative path that is relative to the application's root.
+<span class='line'> 76</span>  * Default if this is not specified is to look in the standard path (ie. in the root
+<span class='line'> 77</span>  * of the app).
+<span class='line'> 78</span>  *
+<span class='line'> 79</span>  * &lt;li>&lt;i>onLoad&lt;/i> - a callback function to call when the resources are fully
+<span class='line'> 80</span>  * loaded. When the onLoad option is given, this class will attempt to
+<span class='line'> 81</span>  * load any missing locale data using the ilib loader callback.
+<span class='line'> 82</span>  * When the constructor is done (even if the data is already preassembled), the
+<span class='line'> 83</span>  * onLoad function is called with the current instance as a parameter, so this
+<span class='line'> 84</span>  * callback can be used with preassembled or dynamic loading or a mix of the two.
+<span class='line'> 85</span>  *
+<span class='line'> 86</span>  * &lt;li>sync - tell whether to load any missing locale data synchronously or
+<span class='line'> 87</span>  * asynchronously. If this option is given as "false", then the "onLoad"
+<span class='line'> 88</span>  * callback must be given, as the instance returned from this constructor will
+<span class='line'> 89</span>  * not be usable for a while.
+<span class='line'> 90</span>  *
+<span class='line'> 91</span>  * &lt;li>&lt;i>loadParams&lt;/i> - an object containing parameters to pass to the
+<span class='line'> 92</span>  * loader callback function when locale data is missing. The parameters are not
+<span class='line'> 93</span>  * interpretted or modified in any way. They are simply passed along. The object
+<span class='line'> 94</span>  * may contain any property/value pairs as long as the calling code is in
+<span class='line'> 95</span>  * agreement with the loader callback function as to what those parameters mean.
+<span class='line'> 96</span>  * &lt;/ul>
+<span class='line'> 97</span>  *
+<span class='line'> 98</span>  * The locale option may be given as a locale spec string or as an
+<span class='line'> 99</span>  * Locale object. If the locale option is not specified, then strings for
+<span class='line'>100</span>  * the default locale will be loaded.&lt;p>
+<span class='line'>101</span>  *
+<span class='line'>102</span>  * The name option can be used to put groups of strings together in a
+<span class='line'>103</span>  * single bundle. The strings will then appear together in a JS object in
+<span class='line'>104</span>  * a JS file that can be included before the ilib.&lt;p>
+<span class='line'>105</span>  *
+<span class='line'>106</span>  * A resource bundle with a particular name is actually a set of bundles
+<span class='line'>107</span>  * that are each specific to a language, a language plus a region, etc.
+<span class='line'>108</span>  * All bundles with the same base name should
+<span class='line'>109</span>  * contain the same set of source strings, but with different translations for
+<span class='line'>110</span>  * the given locale. The user of the bundle does not need to be aware of
+<span class='line'>111</span>  * the locale of the bundle, as long as it contains values for the strings
+<span class='line'>112</span>  * it needs.&lt;p>
+<span class='line'>113</span>  *
+<span class='line'>114</span>  * Strings in bundles for a particular locale are inherited from parent bundles
+<span class='line'>115</span>  * that are more generic. In general, the hierarchy is as follows (from
+<span class='line'>116</span>  * least locale-specific to most locale-specific):
+<span class='line'>117</span>  *
+<span class='line'>118</span>  * &lt;ol>
+<span class='line'>119</span>  * &lt;li> language
+<span class='line'>120</span>  * &lt;li> region
+<span class='line'>121</span>  * &lt;li> language_script
+<span class='line'>122</span>  * &lt;li> language_region
+<span class='line'>123</span>  * &lt;li> region_variant
+<span class='line'>124</span>  * &lt;li> language_script_region
+<span class='line'>125</span>  * &lt;li> language_region_variant
+<span class='line'>126</span>  * &lt;li> language_script_region_variant
+<span class='line'>127</span>  * &lt;/ol>
+<span class='line'>128</span>  *
+<span class='line'>129</span>  * That is, if the translation for a string does not exist in the current
+<span class='line'>130</span>  * locale, the more-generic parent locale is searched for the string. In the
+<span class='line'>131</span>  * worst case scenario, the string is not found in the base locale's strings.
+<span class='line'>132</span>  * In this case, the missing option guides this class on what to do. If
+<span class='line'>133</span>  * the missing option is "source", then the original source is returned as
+<span class='line'>134</span>  * the translation. If it is "empty", the empty string is returned. If it
+<span class='line'>135</span>  * is "pseudo", then the pseudo-translated string that is appropriate for
+<span class='line'>136</span>  * the default script of the locale is returned.&lt;p>
+<span class='line'>137</span>  *
+<span class='line'>138</span>  * This allows developers to create code with new or changed strings in it and check in that
+<span class='line'>139</span>  * code without waiting for the translations to be done first. The translated
+<span class='line'>140</span>  * version of the app or web site will still function properly, but will show
+<span class='line'>141</span>  * a spurious untranslated string here and there until the translations are
+<span class='line'>142</span>  * done and also checked in.&lt;p>
+<span class='line'>143</span>  *
+<span class='line'>144</span>  * The base is whatever language your developers use to code in. For
+<span class='line'>145</span>  * a German web site, strings in the source code may be written in German
+<span class='line'>146</span>  * for example. Often this base is English, as many web sites are coded in
+<span class='line'>147</span>  * English, but that is not required.&lt;p>
+<span class='line'>148</span>  *
+<span class='line'>149</span>  * The strings can be extracted with the ilib localization tool (which will be
+<span class='line'>150</span>  * shipped at some future time.) Once the strings
+<span class='line'>151</span>  * have been translated, the set of translated files can be generated with the
+<span class='line'>152</span>  * same tool. The output from the tool can be used as input to the ResBundle
+<span class='line'>153</span>  * object. It is up to the web page or app to make sure the JS file that defines
+<span class='line'>154</span>  * the bundle is included before creating the ResBundle instance.&lt;p>
+<span class='line'>155</span>  *
+<span class='line'>156</span>  * A special locale "zxx-XX" is used as the pseudo-translation locale because
+<span class='line'>157</span>  * zxx means "no linguistic information" in the ISO 639 standard, and the region
+<span class='line'>158</span>  * code XX is defined to be user-defined in the ISO 3166 standard.
+<span class='line'>159</span>  * Pseudo-translation is a locale where the translations are generated on
+<span class='line'>160</span>  * the fly based on the contents of the source string. Characters in the source
+<span class='line'>161</span>  * string are replaced with other characters and returned.
+<span class='line'>162</span>  *
+<span class='line'>163</span>  * Example. If the source string is:
+<span class='line'>164</span>  *
+<span class='line'>165</span>  * &lt;pre>
+<span class='line'>166</span>  * "This is a string"
+<span class='line'>167</span>  * &lt;/pre>
+<span class='line'>168</span>  *
+<span class='line'>169</span>  * then the pseudo-translated version might look something like this:
+<span class='line'>170</span>  *
+<span class='line'>171</span>  * &lt;pre>
+<span class='line'>172</span>  * "Ţħïş ïş á şţřïñĝ"
+<span class='line'>173</span>  * &lt;/pre>
+<span class='line'>174</span>  * &lt;p>
+<span class='line'>175</span>  *
+<span class='line'>176</span>  * Pseudo-translation can be used to test that your app or web site is translatable
+<span class='line'>177</span>  * before an actual translation has happened. These bugs can then be fixed
+<span class='line'>178</span>  * before the translation starts, avoiding an explosion of bugs later when
+<span class='line'>179</span>  * each language's tester registers the same bug complaining that the same
+<span class='line'>180</span>  * string is not translated. When pseudo-localizing with
+<span class='line'>181</span>  * the Latin script, this allows the strings to be readable in the UI in the
+<span class='line'>182</span>  * source language (if somewhat funky-looking),
+<span class='line'>183</span>  * so that a tester can easily verify that the string is properly externalized
+<span class='line'>184</span>  * and loaded from a resource bundle without the need to be able to read a
+<span class='line'>185</span>  * foreign language.&lt;p>
+<span class='line'>186</span>  *
+<span class='line'>187</span>  * If one of a list of script tags is given in the pseudo-locale specifier, then the
+<span class='line'>188</span>  * pseudo-localization can map characters to very rough transliterations of
+<span class='line'>189</span>  * characters in the given script. For example, zxx-Hebr-XX maps strings to
+<span class='line'>190</span>  * Hebrew characters, which can be used to test your UI in a right-to-left
+<span class='line'>191</span>  * language to catch bidi bugs before a translation is done. Currently, the
+<span class='line'>192</span>  * list of target scripts includes Hebrew (Hebr), Chinese Simplified Han (Hans),
+<span class='line'>193</span>  * and Cyrillic (Cyrl) with more to be added later. If no script is explicitly
+<span class='line'>194</span>  * specified in the locale spec, or if the script is not supported,
+<span class='line'>195</span>  * then the default mapping maps Latin base characters to accented versions of
+<span class='line'>196</span>  * those Latin characters as in the example above.
+<span class='line'>197</span>  *
+<span class='line'>198</span>  * When the "lengthen" property is set to true in the options, the
+<span class='line'>199</span>  * pseudotranslation code will add digits to the end of the string to simulate
+<span class='line'>200</span>  * the lengthening that occurs when translating to other languages. The above
+<span class='line'>201</span>  * example will come out like this:
+<span class='line'>202</span>  *
+<span class='line'>203</span>  * &lt;pre>
+<span class='line'>204</span>  * "Ţħïş ïş á şţřïñĝ76543210"
+<span class='line'>205</span>  * &lt;/pre>
+<span class='line'>206</span>  *
+<span class='line'>207</span>  * The string is lengthened according to the length of the source string. If
+<span class='line'>208</span>  * the source string is less than 20 characters long, the string is lengthened
+<span class='line'>209</span>  * by 50%. If the source string is 20-40
+<span class='line'>210</span>  * characters long, the string is lengthened by 33%. If te string is greater
+<span class='line'>211</span>  * than 40 characters long, the string is lengthened by 20%.&lt;p>
+<span class='line'>212</span>  *
+<span class='line'>213</span>  * The pseudotranslation always ends a string with the digit "0". If you do
+<span class='line'>214</span>  * not see the digit "0" in the UI for your app, you know that truncation
+<span class='line'>215</span>  * has occurred, and the number you see at the end of the string tells you
+<span class='line'>216</span>  * how many characters were truncated.&lt;p>
+<span class='line'>217</span>  *
+<span class='line'>218</span>  *
+<span class='line'>219</span>  * @constructor
+<span class='line'>220</span>  * @param {?Object} options Options controlling how the bundle is created
+<span class='line'>221</span>  */</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ResBundle</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>223</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">lookupLocale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">spec</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>224</span> 
+<span class='line'>225</span> </span><span class="WHIT">    </span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">    </span><span class="COMM">// use the default locale</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="WHIT">    </span><span class="NAME">this.baseName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"strings"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="WHIT">    </span><span class="NAME">this.type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"text"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="WHIT">    </span><span class="NAME">this.loadParams</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="WHIT">    </span><span class="NAME">this.missing</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"source"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>230</span> </span><span class="WHIT">    </span><span class="NAME">this.sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>231</span> 
+<span class='line'>232</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>234</span> </span><span class="WHIT">            </span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT">
+<span class='line'>235</span> </span><span class="WHIT">                    </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="NAME">options.locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>236</span> </span><span class="WHIT">                    </span><span class="NAME">options.locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>237</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.name</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">            </span><span class="NAME">this.baseName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.name</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.type</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>242</span> </span><span class="WHIT">            </span><span class="NAME">this.type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.type</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>243</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>244</span> </span><span class="WHIT">        </span><span class="NAME">this.lengthen</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.lengthen</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>245</span> </span><span class="WHIT">        </span><span class="NAME">this.path</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.basePath</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>246</span> 
+<span class='line'>247</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.sync</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>248</span> </span><span class="WHIT">            </span><span class="NAME">this.sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="PUNC">!</span><span class="NAME">options.sync</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>249</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>250</span> 
+<span class='line'>251</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.loadParams</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>252</span> </span><span class="WHIT">            </span><span class="NAME">this.loadParams</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.loadParams</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>253</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.loadParams.root</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>254</span> </span><span class="WHIT">                </span><span class="NAME">this.path</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.loadParams.root</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>255</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>256</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>257</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.missing</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>258</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.missing</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"pseudo"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">options.missing</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"empty"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>259</span> </span><span class="WHIT">                </span><span class="NAME">this.missing</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.missing</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>260</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>261</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>262</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>263</span> </span><span class="WHIT">        </span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>264</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>265</span> 
+<span class='line'>266</span> </span><span class="WHIT">    </span><span class="NAME">this.map</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>267</span> 
+<span class='line'>268</span> </span><span class="WHIT">    </span><span class="NAME">lookupLocale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.locale.isPseudo</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="STRN">"en-US"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>269</span> 
+<span class='line'>270</span> </span><span class="WHIT">    </span><span class="NAME">Utils.loadData</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>271</span> </span><span class="WHIT">        </span><span class="NAME">locale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">lookupLocale</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>272</span> </span><span class="WHIT">        </span><span class="NAME">name</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.baseName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">".json"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>273</span> </span><span class="WHIT">        </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>274</span> </span><span class="WHIT">        </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>275</span> </span><span class="WHIT">        </span><span class="NAME">root</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.path</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>276</span> </span><span class="WHIT">        </span><span class="NAME">callback</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">map</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">map</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>278</span> </span><span class="WHIT">                </span><span class="NAME">map</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib.data</span><span class="PUNC">[</span><span class="NAME">this.baseName</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>279</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">            </span><span class="NAME">this.map</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">map</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.locale.isPseudo</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="WHIT">                </span><span class="NAME">this._loadPseudo</span><span class="PUNC">(</span><span class="NAME">this.locale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.missing</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"pseudo"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">                </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">LocaleInfo</span><span class="PUNC">(</span><span class="NAME">this.locale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>285</span> </span><span class="WHIT">                    </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>286</span> </span><span class="WHIT">                    </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>287</span> </span><span class="WHIT">                    </span><span class="NAME">onLoad</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">li</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>288</span> </span><span class="WHIT">                        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">pseudoLocale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="STRN">"zxx"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"XX"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">li.getDefaultScript</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>289</span> </span><span class="WHIT">                        </span><span class="NAME">this._loadPseudo</span><span class="PUNC">(</span><span class="NAME">pseudoLocale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>290</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>291</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>292</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>293</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>294</span> </span><span class="WHIT">                    </span><span class="NAME">options.onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>295</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>299</span> 
+<span class='line'>300</span> </span><span class="WHIT">    </span><span class="COMM">// console.log("Merged resources " + this.locale.toString() + " are: " + JSON.stringify(this.map));</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="WHIT">    </span><span class="COMM">//if (!this.locale.isPseudo() && JSUtils.isEmpty(this.map)) {</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="WHIT">    </span><span class="COMM">//    console.log("Resources for bundle " + this.baseName + " locale " + this.locale.toString() + " are not available.");</span><span class="WHIT">
+<span class='line'>303</span> </span><span class="WHIT">    </span><span class="COMM">//}</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>305</span> 
+<span class='line'>306</span> </span><span class="NAME">ResBundle.defaultPseudo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib.data.pseudomap</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">    </span><span class="STRN">"a"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"à"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>308</span> </span><span class="WHIT">    </span><span class="STRN">"e"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"ë"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="WHIT">    </span><span class="STRN">"i"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"í"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>310</span> </span><span class="WHIT">    </span><span class="STRN">"o"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"õ"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>311</span> </span><span class="WHIT">    </span><span class="STRN">"u"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"ü"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="WHIT">    </span><span class="STRN">"y"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"ÿ"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>313</span> </span><span class="WHIT">    </span><span class="STRN">"A"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"Ã"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>314</span> </span><span class="WHIT">    </span><span class="STRN">"E"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"Ë"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="WHIT">    </span><span class="STRN">"I"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"Ï"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">    </span><span class="STRN">"O"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"Ø"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">    </span><span class="STRN">"U"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"Ú"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">    </span><span class="STRN">"Y"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"Ŷ"</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>320</span> 
+<span class='line'>321</span> </span><span class="NAME">ResBundle.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>322</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>323</span>      * @protected
+<span class='line'>324</span>      */</span><span class="WHIT">
+<span class='line'>325</span> </span><span class="WHIT">    </span><span class="NAME">_loadPseudo</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">pseudoLocale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>326</span> </span><span class="WHIT">        </span><span class="NAME">Utils.loadData</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>327</span> </span><span class="WHIT">            </span><span class="NAME">object</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"ResBundle"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>328</span> </span><span class="WHIT">            </span><span class="NAME">locale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">pseudoLocale</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">            </span><span class="NAME">name</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"pseudomap.json"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>330</span> </span><span class="WHIT">            </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>331</span> </span><span class="WHIT">            </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>332</span> </span><span class="WHIT">            </span><span class="NAME">callback</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">map</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>333</span> </span><span class="WHIT">                </span><span class="NAME">this.pseudomap</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">map</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">JSUtils.isEmpty</span><span class="PUNC">(</span><span class="NAME">map</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">ResBundle.defaultPseudo</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">map</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>334</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>335</span> </span><span class="WHIT">                    </span><span class="NAME">onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>336</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>337</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>338</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>339</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>340</span> 
+<span class='line'>341</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>342</span>      * Return the locale of this resource bundle.
+<span class='line'>343</span>      * @return {Locale} the locale of this resource bundle object
+<span class='line'>344</span>      */</span><span class="WHIT">
+<span class='line'>345</span> </span><span class="WHIT">    </span><span class="NAME">getLocale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>346</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>347</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>348</span> 
+<span class='line'>349</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>350</span>      * Return the name of this resource bundle. This corresponds to the name option
+<span class='line'>351</span>      * given to the constructor.
+<span class='line'>352</span>      * @return {string} name of the the current instance
+<span class='line'>353</span>      */</span><span class="WHIT">
+<span class='line'>354</span> </span><span class="WHIT">    </span><span class="NAME">getName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>355</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.baseName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>356</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>357</span> 
+<span class='line'>358</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>359</span>      * Return the type of this resource bundle. This corresponds to the type option
+<span class='line'>360</span>      * given to the constructor.
+<span class='line'>361</span>      * @return {string} type of the the current instance
+<span class='line'>362</span>      */</span><span class="WHIT">
+<span class='line'>363</span> </span><span class="WHIT">    </span><span class="NAME">getType</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>364</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.type</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>365</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>366</span> 
+<span class='line'>367</span> </span><span class="WHIT">    </span><span class="NAME">percentRE</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">RegExp</span><span class="PUNC">(</span><span class="STRN">"%(\\d+\\$)?([\\-#\\+ 0,\\(])?(\\d+)?(\\.\\d+)?[bBhHsScCdoxXeEfgGaAtT%n]"</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>368</span> 
+<span class='line'>369</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>370</span>      * @private
+<span class='line'>371</span>      * Pseudo-translate a string
+<span class='line'>372</span>      */</span><span class="WHIT">
+<span class='line'>373</span> </span><span class="WHIT">    </span><span class="NAME">_pseudo</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>374</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>375</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>376</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>377</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>378</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>379</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.type</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">"raw"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>380</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.type</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"html"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.type</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"xml"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>381</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'&lt;'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>382</span> </span><span class="WHIT">                        </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>383</span> </span><span class="WHIT">                        </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'>'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>384</span> </span><span class="WHIT">                            </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>385</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>386</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'&'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>387</span> </span><span class="WHIT">                        </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>388</span> </span><span class="WHIT">                        </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">';'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">' '</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>389</span> </span><span class="WHIT">                            </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>390</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>391</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'\\'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"u"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>392</span> </span><span class="WHIT">                        </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.substring</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">+</span><span class="NUMB">6</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>393</span> </span><span class="WHIT">                        </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">6</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>394</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>395</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.type</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"c"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>396</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"%"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>397</span> </span><span class="WHIT">                        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.percentRE.exec</span><span class="PUNC">(</span><span class="NAME">str.substring</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>398</span> </span><span class="WHIT">                        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">m.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>399</span> </span><span class="WHIT">                            </span><span class="COMM">// console.log("Match found: " + JSON.stringify(m[0].replace("%", "%%")));</span><span class="WHIT">
+<span class='line'>400</span> </span><span class="WHIT">                            </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">m</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>401</span> </span><span class="WHIT">                            </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">m</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">length</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>404</span> 
+<span class='line'>405</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>406</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>407</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'{'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>408</span> </span><span class="WHIT">                        </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>409</span> </span><span class="WHIT">                        </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'}'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="WHIT">                            </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>411</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>412</span> </span><span class="WHIT">                        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>413</span> </span><span class="WHIT">                            </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>414</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>415</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>416</span> </span><span class="WHIT">                        </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.pseudomap</span><span class="PUNC">[</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>417</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>418</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>419</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>420</span> </span><span class="WHIT">                </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.pseudomap</span><span class="PUNC">[</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>421</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>422</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>423</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.lengthen</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>424</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">add</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>425</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ret.length</span><span class="WHIT"> </span><span class="PUNC">&lt;=</span><span class="WHIT"> </span><span class="NUMB">20</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>426</span> </span><span class="WHIT">                </span><span class="NAME">add</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.round</span><span class="PUNC">(</span><span class="NAME">ret.length</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>427</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ret.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">20</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">ret.length</span><span class="WHIT"> </span><span class="PUNC">&lt;=</span><span class="WHIT"> </span><span class="NUMB">40</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>428</span> </span><span class="WHIT">                </span><span class="NAME">add</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.round</span><span class="PUNC">(</span><span class="NAME">ret.length</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">3</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>429</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>430</span> </span><span class="WHIT">                </span><span class="NAME">add</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.round</span><span class="PUNC">(</span><span class="NAME">ret.length</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">5</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>431</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>432</span> </span><span class="WHIT">            </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">add</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">>=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">--</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>433</span> </span><span class="WHIT">                </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">%</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>434</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>435</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>436</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.locale.getScript</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"Hans"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.locale.getScript</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"Hant"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'>437</span> </span><span class="WHIT">                </span><span class="NAME">this.locale.getScript</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"Hani"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'>438</span> </span><span class="WHIT">                </span><span class="NAME">this.locale.getScript</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"Hrkt"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.locale.getScript</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"Jpan"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'>439</span> </span><span class="WHIT">                </span><span class="NAME">this.locale.getScript</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"Hira"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.locale.getScript</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"Kana"</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>440</span> </span><span class="WHIT">            </span><span class="COMM">// simulate Asian languages by getting rid of all the spaces</span><span class="WHIT">
+<span class='line'>441</span> </span><span class="WHIT">            </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ret.replace</span><span class="PUNC">(</span><span class="REGX">/ /g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>442</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>443</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>444</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>445</span> 
+<span class='line'>446</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>447</span>      * @private
+<span class='line'>448</span>      * Escape html characters in the output.
+<span class='line'>449</span>      */</span><span class="WHIT">
+<span class='line'>450</span> </span><span class="WHIT">    </span><span class="NAME">_escapeXml</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>451</span> </span><span class="WHIT">        </span><span class="NAME">str</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.replace</span><span class="PUNC">(</span><span class="REGX">/&/g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'&amp;'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>452</span> </span><span class="WHIT">        </span><span class="NAME">str</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.replace</span><span class="PUNC">(</span><span class="REGX">/&lt;/g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'&lt;'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>453</span> </span><span class="WHIT">        </span><span class="NAME">str</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.replace</span><span class="PUNC">(</span><span class="REGX">/>/g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'&gt;'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>454</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">str</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>455</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>456</span> 
+<span class='line'>457</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>458</span>      * @private
+<span class='line'>459</span>      * @param {string} str the string to unescape
+<span class='line'>460</span>      */</span><span class="WHIT">
+<span class='line'>461</span> </span><span class="WHIT">    </span><span class="NAME">_unescapeXml</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>462</span> </span><span class="WHIT">        </span><span class="NAME">str</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.replace</span><span class="PUNC">(</span><span class="REGX">/&amp;/g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'&'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>463</span> </span><span class="WHIT">        </span><span class="NAME">str</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.replace</span><span class="PUNC">(</span><span class="REGX">/&lt;/g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'&lt;'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>464</span> </span><span class="WHIT">        </span><span class="NAME">str</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.replace</span><span class="PUNC">(</span><span class="REGX">/&gt;/g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'>'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>465</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">str</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>466</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>467</span> 
+<span class='line'>468</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>469</span>      * @private
+<span class='line'>470</span>      * Create a key name out of a source string. All this does so far is
+<span class='line'>471</span>      * compress sequences of white space into a single space on the assumption
+<span class='line'>472</span>      * that this doesn't really change the meaning of the string, and therefore
+<span class='line'>473</span>      * all such strings that compress to the same thing should share the same
+<span class='line'>474</span>      * translation.
+<span class='line'>475</span>      * @param {null|string=} source the source string to make a key out of
+<span class='line'>476</span>      */</span><span class="WHIT">
+<span class='line'>477</span> </span><span class="WHIT">    </span><span class="NAME">_makeKey</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>478</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">source</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>479</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">key</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">source.replace</span><span class="PUNC">(</span><span class="REGX">/\s+/gm</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">' '</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>480</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.type</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"xml"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.type</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"html"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">this._unescapeXml</span><span class="PUNC">(</span><span class="NAME">key</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>481</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>482</span> 
+<span class='line'>483</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>484</span>      * @private
+<span class='line'>485</span>      */</span><span class="WHIT">
+<span class='line'>486</span> </span><span class="WHIT">    </span><span class="NAME">_getStringSingle</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">escapeMode</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>487</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">source</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">key</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="STRN">""</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>488</span> 
+<span class='line'>489</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">trans</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>490</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.locale.isPseudo</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>491</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">str</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">source</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">source</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.map</span><span class="PUNC">[</span><span class="NAME">key</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>492</span> </span><span class="WHIT">            </span><span class="NAME">trans</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._pseudo</span><span class="PUNC">(</span><span class="NAME">str</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>493</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>494</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">keyName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">key</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this._makeKey</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>495</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.map</span><span class="PUNC">[</span><span class="NAME">keyName</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>496</span> </span><span class="WHIT">                </span><span class="NAME">trans</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.map</span><span class="PUNC">[</span><span class="NAME">keyName</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>497</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.missing</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"pseudo"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>498</span> </span><span class="WHIT">                </span><span class="NAME">trans</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._pseudo</span><span class="PUNC">(</span><span class="NAME">source</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>499</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.missing</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"empty"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>500</span> </span><span class="WHIT">                </span><span class="NAME">trans</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>501</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>502</span> </span><span class="WHIT">                </span><span class="NAME">trans</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">source</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>503</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>504</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>505</span> 
+<span class='line'>506</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">escapeMode</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">escapeMode</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">"none"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>507</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">escapeMode</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">"default"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>508</span> </span><span class="WHIT">                </span><span class="NAME">escapeMode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.type</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>509</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>510</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">escapeMode</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"xml"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">escapeMode</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"html"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>511</span> </span><span class="WHIT">                </span><span class="NAME">trans</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._escapeXml</span><span class="PUNC">(</span><span class="NAME">trans</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>512</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">escapeMode</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">"js"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">escapeMode</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"attribute"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>513</span> </span><span class="WHIT">                </span><span class="NAME">trans</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">trans.replace</span><span class="PUNC">(</span><span class="REGX">/'/g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"\\\'"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">replace</span><span class="PUNC">(</span><span class="REGX">/"/g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"\\\""</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>514</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>515</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>516</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">trans</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>517</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>518</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>519</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">trans</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>520</span> </span><span class="WHIT">            </span><span class="NAME">ret.setLocale</span><span class="PUNC">(</span><span class="NAME">this.locale.getSpec</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.loadParams</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// no callback</span><span class="WHIT">
+<span class='line'>521</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>522</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>523</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>524</span> 
+<span class='line'>525</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>526</span>      * Return a localized string, array, or object. This method can localize individual
+<span class='line'>527</span>      * strings or arrays of strings.&lt;p>
+<span class='line'>528</span>      *
+<span class='line'>529</span>      * If the source parameter is a string, the translation of that string is looked
+<span class='line'>530</span>      * up and returned. If the source parameter is an array of strings, then the translation
+<span class='line'>531</span>      * of each of the elements of that array is looked up, and an array of translated strings
+<span class='line'>532</span>      * is returned. &lt;p>
+<span class='line'>533</span>      *
+<span class='line'>534</span>      * If any string is not found in the loaded set of
+<span class='line'>535</span>      * resources, the original source string is returned. If the key is not given,
+<span class='line'>536</span>      * then the source string itself is used as the key. In the case where the
+<span class='line'>537</span>      * source string is used as the key, the whitespace is compressed down to 1 space
+<span class='line'>538</span>      * each, and the whitespace at the beginning and end of the string is trimmed.&lt;p>
+<span class='line'>539</span>      *
+<span class='line'>540</span>      * The escape mode specifies what type of output you are escaping the returned
+<span class='line'>541</span>      * string for. Modes are similar to the types:
+<span class='line'>542</span>      *
+<span class='line'>543</span>      * &lt;ul>
+<span class='line'>544</span>      * &lt;li>"html" -- prevents HTML injection by escaping the characters &lt &gt; and &amp;
+<span class='line'>545</span>      * &lt;li>"xml" -- currently same as "html" mode
+<span class='line'>546</span>      * &lt;li>"js" -- prevents breaking Javascript syntax by backslash escaping all quote and
+<span class='line'>547</span>      * double-quote characters
+<span class='line'>548</span>      * &lt;li>"attribute" -- meant for HTML attribute values. Currently this is the same as
+<span class='line'>549</span>      * "js" escape mode.
+<span class='line'>550</span>      * &lt;li>"default" -- use the type parameter from the constructor as the escape mode as well
+<span class='line'>551</span>      * &lt;li>"none" or undefined -- no escaping at all.
+<span class='line'>552</span>      * &lt;/ul>
+<span class='line'>553</span>      *
+<span class='line'>554</span>      * The type parameter of the constructor specifies what type of strings this bundle
+<span class='line'>555</span>      * is operating upon. This allows pseudo-translation and automatic key generation
+<span class='line'>556</span>      * to happen properly by telling this class how to parse the string. The escape mode
+<span class='line'>557</span>      * for this method is different in that it specifies how this string will be used in
+<span class='line'>558</span>      * the calling code and therefore how to escape it properly.&lt;p>
+<span class='line'>559</span>      *
+<span class='line'>560</span>      * For example, a section of Javascript code may be constructing an HTML snippet in a
+<span class='line'>561</span>      * string to add to the web page. In this case, the type parameter in the constructor should
+<span class='line'>562</span>      * be "html" so that the source string can be parsed properly, but the escape mode should
+<span class='line'>563</span>      * be "js" so that the output string can be used in Javascript without causing syntax
+<span class='line'>564</span>      * errors.
+<span class='line'>565</span>      *
+<span class='line'>566</span>      * @param {?string|Array.&lt;string>=} source the source string or strings to translate
+<span class='line'>567</span>      * @param {?string|Array.&lt;string>=} key optional name of the key, if any
+<span class='line'>568</span>      * @param {?string=} escapeMode escape mode, if any
+<span class='line'>569</span>      * @return {IString|Array.&lt;IString>|undefined} the translation of the given source/key or undefined
+<span class='line'>570</span>      * if the translation is not found and the source is undefined
+<span class='line'>571</span>      */</span><span class="WHIT">
+<span class='line'>572</span> </span><span class="WHIT">    </span><span class="NAME">getString</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">escapeMode</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>573</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">source</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">key</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="STRN">""</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>574</span> 
+<span class='line'>575</span> </span><span class="WHIT">        </span><span class="COMM">//if (typeof(source) === "object") {</span><span class="WHIT">
+<span class='line'>576</span> </span><span class="WHIT">            </span><span class="COMM">// TODO localize objects</span><span class="WHIT">
+<span class='line'>577</span> </span><span class="WHIT">        </span><span class="COMM">//} else</span><span class="WHIT">
+<span class='line'>578</span> 
+<span class='line'>579</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ilib.isArray</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>580</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">source.map</span><span class="PUNC">(</span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>581</span> </span><span class="WHIT">               </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"string"</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">this._getStringSingle</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">escapeMode</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">str</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>582</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>583</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>584</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this._getStringSingle</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">escapeMode</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>585</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>586</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>587</span> 
+<span class='line'>588</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>589</span>      * Return a localized string as an intrinsic Javascript String object. This does the same thing as
+<span class='line'>590</span>      * the getString() method, but it returns a regular Javascript string instead of
+<span class='line'>591</span>      * and IString instance. This means it cannot be formatted with the format()
+<span class='line'>592</span>      * method without being wrapped in an IString instance first.
+<span class='line'>593</span>      *
+<span class='line'>594</span>      * @param {?string|Array.&lt;string>=} source the source string to translate
+<span class='line'>595</span>      * @param {?string|Array.&lt;string>=} key optional name of the key, if any
+<span class='line'>596</span>      * @param {?string=} escapeMode escape mode, if any
+<span class='line'>597</span>      * @return {string|Array.&lt;string>|undefined} the translation of the given source/key or undefined
+<span class='line'>598</span>      * if the translation is not found and the source is undefined
+<span class='line'>599</span>      */</span><span class="WHIT">
+<span class='line'>600</span> </span><span class="WHIT">    </span><span class="NAME">getStringJS</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">escapeMode</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>601</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">key</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>602</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>603</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>604</span> </span><span class="WHIT">        </span><span class="COMM">//if (typeof(source) === "object") {</span><span class="WHIT">
+<span class='line'>605</span> </span><span class="WHIT">            </span><span class="COMM">// TODO localize objects</span><span class="WHIT">
+<span class='line'>606</span> </span><span class="WHIT">        </span><span class="COMM">//} else</span><span class="WHIT">
+<span class='line'>607</span> 
+<span class='line'>608</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ilib.isArray</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>609</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.getString</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">escapeMode</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">map</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>610</span> </span><span class="WHIT">               </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">str</span><span class="WHIT"> </span><span class="KEYW">instanceof</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">str.toString</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">str</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>611</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>612</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>613</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.getString</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">escapeMode</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>614</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">s.toString</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>615</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>616</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>617</span> 
+<span class='line'>618</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>619</span>      * Return true if the current bundle contains a translation for the given key and
+<span class='line'>620</span>      * source. The
+<span class='line'>621</span>      * getString method will always return a string for any given key and source
+<span class='line'>622</span>      * combination, so it cannot be used to tell if a translation exists. Either one
+<span class='line'>623</span>      * or both of the source and key must be specified. If both are not specified,
+<span class='line'>624</span>      * this method will return false.
+<span class='line'>625</span>      *
+<span class='line'>626</span>      * @param {?string=} source source string to look up
+<span class='line'>627</span>      * @param {?string=} key key to look up
+<span class='line'>628</span>      * @return {boolean} true if this bundle contains a translation for the key, and
+<span class='line'>629</span>      * false otherwise
+<span class='line'>630</span>      */</span><span class="WHIT">
+<span class='line'>631</span> </span><span class="WHIT">    </span><span class="NAME">containsKey</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>632</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">key</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>633</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>634</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>635</span> 
+<span class='line'>636</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">keyName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">key</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this._makeKey</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>637</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.map</span><span class="PUNC">[</span><span class="NAME">keyName</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>638</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>639</span> 
+<span class='line'>640</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>641</span>      * Return the merged resources as an entire object. When loading resources for a
+<span class='line'>642</span>      * locale that are not just a set of translated strings, but instead an entire
+<span class='line'>643</span>      * structured javascript object, you can gain access to that object via this call. This method
+<span class='line'>644</span>      * will ensure that all the of the parts of the object are correct for the locale.&lt;p>
+<span class='line'>645</span>      *
+<span class='line'>646</span>      * For pre-assembled data, it starts by loading &lt;i>ilib.data[name]&lt;/i>, where
+<span class='line'>647</span>      * &lt;i>name&lt;/i> is the base name for this set of resources. Then, it successively
+<span class='line'>648</span>      * merges objects in the base data using progressively more locale-specific data.
+<span class='line'>649</span>      * It loads it in this order from &lt;i>ilib.data&lt;/i>:
+<span class='line'>650</span>      *
+<span class='line'>651</span>      * &lt;ol>
+<span class='line'>652</span>      * &lt;li> language
+<span class='line'>653</span>      * &lt;li> region
+<span class='line'>654</span>      * &lt;li> language_script
+<span class='line'>655</span>      * &lt;li> language_region
+<span class='line'>656</span>      * &lt;li> region_variant
+<span class='line'>657</span>      * &lt;li> language_script_region
+<span class='line'>658</span>      * &lt;li> language_region_variant
+<span class='line'>659</span>      * &lt;li> language_script_region_variant
+<span class='line'>660</span>      * &lt;/ol>
+<span class='line'>661</span>      *
+<span class='line'>662</span>      * For dynamically loaded data, the code attempts to load the same sequence as
+<span class='line'>663</span>      * above, but with slash path separators instead of underscores.&lt;p>
+<span class='line'>664</span>      *
+<span class='line'>665</span>      * Loading the resources this way allows the program to share resources between all
+<span class='line'>666</span>      * locales that share a common language, region, or script. As a
+<span class='line'>667</span>      * general rule-of-thumb, resources should be as generic as possible in order to
+<span class='line'>668</span>      * cover as many locales as possible.
+<span class='line'>669</span>      *
+<span class='line'>670</span>      * @return {Object} returns the object that is the basis for this resources instance
+<span class='line'>671</span>      */</span><span class="WHIT">
+<span class='line'>672</span> </span><span class="WHIT">    </span><span class="NAME">getResObj</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>673</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.map</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>674</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>675</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>676</span> 
+<span class='line'>677</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ResBundle</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>678</span> </span></pre></body></html>

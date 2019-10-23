@@ -1,0 +1,241 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * ThaiSolarDate.js - Represent a date in the ThaiSolar calendar
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * Copyright © 2013-2015, 2018, JEDLSoft
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  7</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  8</span>  * You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 13</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 14</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 15</span>  *
+<span class='line'> 16</span>  * See the License for the specific language governing permissions and
+<span class='line'> 17</span>  * limitations under the License.
+<span class='line'> 18</span>  */</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./ilib.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">JSUtils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./JSUtils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 22</span> 
+<span class='line'> 23</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">IDate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./IDate.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> 
+<span class='line'> 25</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ThaiSolarCal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./ThaiSolarCal.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">GregorianDate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./GregorianDate.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> 
+<span class='line'> 28</span> </span><span class="COMM">/**
+<span class='line'> 29</span>  * @class
+<span class='line'> 30</span>  * Construct a new Thai solar date object. The constructor parameters can
+<span class='line'> 31</span>  * contain any of the following properties:
+<span class='line'> 32</span>  *
+<span class='line'> 33</span>  * &lt;ul>
+<span class='line'> 34</span>  * &lt;li>&lt;i>unixtime&lt;i> - sets the time of this instance according to the given
+<span class='line'> 35</span>  * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970.
+<span class='line'> 36</span>  *
+<span class='line'> 37</span>  * &lt;li>&lt;i>julianday&lt;/i> - sets the time of this instance according to the given
+<span class='line'> 38</span>  * Julian Day instance or the Julian Day given as a float
+<span class='line'> 39</span>  *
+<span class='line'> 40</span>  * &lt;li>&lt;i>year&lt;/i> - any integer, including 0
+<span class='line'> 41</span>  *
+<span class='line'> 42</span>  * &lt;li>&lt;i>month&lt;/i> - 1 to 12, where 1 means January, 2 means February, etc.
+<span class='line'> 43</span>  *
+<span class='line'> 44</span>  * &lt;li>&lt;i>day&lt;/i> - 1 to 31
+<span class='line'> 45</span>  *
+<span class='line'> 46</span>  * &lt;li>&lt;i>hour&lt;/i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation
+<span class='line'> 47</span>  * is always done with an unambiguous 24 hour representation
+<span class='line'> 48</span>  *
+<span class='line'> 49</span>  * &lt;li>&lt;i>minute&lt;/i> - 0 to 59
+<span class='line'> 50</span>  *
+<span class='line'> 51</span>  * &lt;li>&lt;i>second&lt;/i> - 0 to 59
+<span class='line'> 52</span>  *
+<span class='line'> 53</span>  * &lt;li>&lt;i>millisecond&lt;/i> - 0 to 999
+<span class='line'> 54</span>  *
+<span class='line'> 55</span>  * &lt;li>&lt;i>timezone&lt;/i> - the TimeZone instance or time zone name as a string
+<span class='line'> 56</span>  * of this Thai solar date. The date/time is kept in the local time. The time zone
+<span class='line'> 57</span>  * is used later if this date is formatted according to a different time zone and
+<span class='line'> 58</span>  * the difference has to be calculated, or when the date format has a time zone
+<span class='line'> 59</span>  * component in it.
+<span class='line'> 60</span>  *
+<span class='line'> 61</span>  * &lt;li>&lt;i>locale&lt;/i> - locale for this Thai solar date. If the time zone is not
+<span class='line'> 62</span>  * given, it can be inferred from this locale. For locales that span multiple
+<span class='line'> 63</span>  * time zones, the one with the largest population is chosen as the one that
+<span class='line'> 64</span>  * represents the locale.
+<span class='line'> 65</span>  * &lt;/ul>
+<span class='line'> 66</span>  *
+<span class='line'> 67</span>  * If the constructor is called with another Thai solar date instance instead of
+<span class='line'> 68</span>  * a parameter block, the other instance acts as a parameter block and its
+<span class='line'> 69</span>  * settings are copied into the current instance.&lt;p>
+<span class='line'> 70</span>  *
+<span class='line'> 71</span>  * If the constructor is called with no arguments at all or if none of the
+<span class='line'> 72</span>  * properties listed above
+<span class='line'> 73</span>  * from &lt;i>unixtime&lt;/i> through &lt;i>millisecond&lt;/i> are present, then the date
+<span class='line'> 74</span>  * components are
+<span class='line'> 75</span>  * filled in with the current date at the time of instantiation. Note that if
+<span class='line'> 76</span>  * you do not give the time zone when defaulting to the current time and the
+<span class='line'> 77</span>  * time zone for all of ilib was not set with &lt;i>ilib.setTimeZone()&lt;/i>, then the
+<span class='line'> 78</span>  * time zone will default to UTC ("Universal Time, Coordinated" or "Greenwich
+<span class='line'> 79</span>  * Mean Time").&lt;p>
+<span class='line'> 80</span>  *
+<span class='line'> 81</span>  * If any of the properties from &lt;i>year&lt;/i> through &lt;i>millisecond&lt;/i> are not
+<span class='line'> 82</span>  * specified in the params, it is assumed that they have the smallest possible
+<span class='line'> 83</span>  * value in the range for the property (zero or one).&lt;p>
+<span class='line'> 84</span>  *
+<span class='line'> 85</span>  *
+<span class='line'> 86</span>  * @constructor
+<span class='line'> 87</span>  * @extends GregorianDate
+<span class='line'> 88</span>  * @param {Object=} params parameters that govern the settings and behaviour of this Thai solar date
+<span class='line'> 89</span>  */</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ThaiSolarDate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">p</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 92</span> 
+<span class='line'> 93</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">        </span><span class="NAME">JSUtils.shallowCopy</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">p</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 95</span> 
+<span class='line'> 96</span> </span><span class="WHIT">        </span><span class="COMM">// there is 198327 days difference between the Thai solar and</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">        </span><span class="COMM">// Gregorian epochs which is equivalent to 543 years</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">p.year</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">            </span><span class="NAME">p.year</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">543</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">p.rd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">            </span><span class="NAME">p.rd</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">198327</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">    </span><span class="NAME">this.rd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// clear these out so that the GregorianDate constructor can set it</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">    </span><span class="NAME">this.offset</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">    </span><span class="COMM">//console.log("ThaiSolarDate.constructor: date is " + JSON.stringify(this) + " parent is " + JSON.stringify(this.parent) + " and parent.parent is " + JSON.stringify(this.parent.parent));</span><span class="WHIT">
+<span class='line'>108</span> 
+<span class='line'>109</span> </span><span class="WHIT">    </span><span class="NAME">p.onLoad</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">gd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">        </span><span class="NAME">this.cal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ThaiSolarCal</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>111</span> 
+<span class='line'>112</span> </span><span class="WHIT">        </span><span class="COMM">// make sure the year is set correctly from the original params</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">params.year</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="WHIT">            </span><span class="NAME">this.year</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">params.year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>116</span> 
+<span class='line'>117</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">params.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"function"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">            </span><span class="NAME">params.onLoad</span><span class="PUNC">(</span><span class="NAME">gd</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>121</span> 
+<span class='line'>122</span> </span><span class="WHIT">    </span><span class="NAME">GregorianDate.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">p</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>124</span> 
+<span class='line'>125</span> </span><span class="NAME">ThaiSolarDate.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">GregorianDate</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="NAME">noinstance</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="NAME">ThaiSolarDate.prototype.parent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">GregorianDate.prototype</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="NAME">ThaiSolarDate.prototype.constructor</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ThaiSolarDate</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>128</span> 
+<span class='line'>129</span> </span><span class="COMM">/**
+<span class='line'>130</span>  * the difference between a zero Julian day and the zero Thai Solar date.
+<span class='line'>131</span>  * This is some 543 years before the start of the Gregorian epoch.
+<span class='line'>132</span>  * @private
+<span class='line'>133</span>  * @type number
+<span class='line'>134</span>  */</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="NAME">ThaiSolarDate.epoch</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1523097.5</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>136</span> 
+<span class='line'>137</span> </span><span class="COMM">/**
+<span class='line'>138</span>  * Calculate the date components for the current time zone
+<span class='line'>139</span>  * @protected
+<span class='line'>140</span>  */</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="NAME">ThaiSolarDate.prototype._calcDateComponents</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">    </span><span class="COMM">// there is 198327 days difference between the Thai solar and</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">    </span><span class="COMM">// Gregorian epochs which is equivalent to 543 years</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">    </span><span class="COMM">// console.log("ThaiSolarDate._calcDateComponents: date is " + JSON.stringify(this) + " parent is " + JSON.stringify(this.parent) + " and parent.parent is " + JSON.stringify(this.parent.parent));</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">    </span><span class="NAME">this.parent._calcDateComponents.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">    </span><span class="NAME">this.year</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">543</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>148</span> 
+<span class='line'>149</span> </span><span class="COMM">/**
+<span class='line'>150</span>  * Return the Rata Die (fixed day) number of this date.
+<span class='line'>151</span>  *
+<span class='line'>152</span>  * @protected
+<span class='line'>153</span>  * @return {number} the rd date as a number
+<span class='line'>154</span>  */</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="NAME">ThaiSolarDate.prototype.getRataDie</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">    </span><span class="COMM">// there is 198327 days difference between the Thai solar and</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">    </span><span class="COMM">// Gregorian epochs which is equivalent to 543 years</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.rd.getRataDie</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">198327</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>159</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>160</span> 
+<span class='line'>161</span> </span><span class="COMM">/**
+<span class='line'>162</span>  * Return a new Gregorian date instance that represents the first instance of the
+<span class='line'>163</span>  * given day of the week before the current date. The day of the week is encoded
+<span class='line'>164</span>  * as a number where 0 = Sunday, 1 = Monday, etc.
+<span class='line'>165</span>  *
+<span class='line'>166</span>  * @param {number} dow the day of the week before the current date that is being sought
+<span class='line'>167</span>  * @return {IDate} the date being sought
+<span class='line'>168</span>  */</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="NAME">ThaiSolarDate.prototype.before</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">dow</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ThaiSolarDate</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">        </span><span class="NAME">rd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.rd.before</span><span class="PUNC">(</span><span class="NAME">dow</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.offset</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">198327</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">        </span><span class="NAME">timezone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.timezone</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>175</span> 
+<span class='line'>176</span> </span><span class="COMM">/**
+<span class='line'>177</span>  * Return a new Gregorian date instance that represents the first instance of the
+<span class='line'>178</span>  * given day of the week after the current date. The day of the week is encoded
+<span class='line'>179</span>  * as a number where 0 = Sunday, 1 = Monday, etc.
+<span class='line'>180</span>  *
+<span class='line'>181</span>  * @param {number} dow the day of the week after the current date that is being sought
+<span class='line'>182</span>  * @return {IDate} the date being sought
+<span class='line'>183</span>  */</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="NAME">ThaiSolarDate.prototype.after</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">dow</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ThaiSolarDate</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">        </span><span class="NAME">rd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.rd.after</span><span class="PUNC">(</span><span class="NAME">dow</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.offset</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">198327</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">        </span><span class="NAME">timezone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.timezone</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>190</span> 
+<span class='line'>191</span> </span><span class="COMM">/**
+<span class='line'>192</span>  * Return a new Gregorian date instance that represents the first instance of the
+<span class='line'>193</span>  * given day of the week on or before the current date. The day of the week is encoded
+<span class='line'>194</span>  * as a number where 0 = Sunday, 1 = Monday, etc.
+<span class='line'>195</span>  *
+<span class='line'>196</span>  * @param {number} dow the day of the week on or before the current date that is being sought
+<span class='line'>197</span>  * @return {IDate} the date being sought
+<span class='line'>198</span>  */</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="NAME">ThaiSolarDate.prototype.onOrBefore</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">dow</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ThaiSolarDate</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">        </span><span class="NAME">rd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.rd.onOrBefore</span><span class="PUNC">(</span><span class="NAME">dow</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.offset</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">198327</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">        </span><span class="NAME">timezone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.timezone</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>205</span> 
+<span class='line'>206</span> </span><span class="COMM">/**
+<span class='line'>207</span>  * Return a new Gregorian date instance that represents the first instance of the
+<span class='line'>208</span>  * given day of the week on or after the current date. The day of the week is encoded
+<span class='line'>209</span>  * as a number where 0 = Sunday, 1 = Monday, etc.
+<span class='line'>210</span>  *
+<span class='line'>211</span>  * @param {number} dow the day of the week on or after the current date that is being sought
+<span class='line'>212</span>  * @return {IDate} the date being sought
+<span class='line'>213</span>  */</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="NAME">ThaiSolarDate.prototype.onOrAfter</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">dow</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ThaiSolarDate</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">        </span><span class="NAME">rd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.rd.onOrAfter</span><span class="PUNC">(</span><span class="NAME">dow</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.offset</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">198327</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="WHIT">        </span><span class="NAME">timezone</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.timezone</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>220</span> 
+<span class='line'>221</span> </span><span class="COMM">/**
+<span class='line'>222</span>  * Return the name of the calendar that governs this date.
+<span class='line'>223</span>  *
+<span class='line'>224</span>  * @return {string} a string giving the name of the calendar
+<span class='line'>225</span>  */</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="NAME">ThaiSolarDate.prototype.getCalendar</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"thaisolar"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>229</span> 
+<span class='line'>230</span> </span><span class="COMM">//register with the factory method</span><span class="WHIT">
+<span class='line'>231</span> </span><span class="NAME">IDate._constructors</span><span class="PUNC">[</span><span class="STRN">"thaisolar"</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ThaiSolarDate</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>232</span> 
+<span class='line'>233</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ThaiSolarDate</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>234</span> </span></pre></body></html>

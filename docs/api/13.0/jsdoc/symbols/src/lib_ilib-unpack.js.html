@@ -1,0 +1,165 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * ilib-unpack.js - Unpack a set of ilib routines webpacked into a
+<span class='line'>  3</span>  * single file back into the global scope.
+<span class='line'>  4</span>  *
+<span class='line'>  5</span>  * @license
+<span class='line'>  6</span>  * Copyright © 2018, JEDLSoft
+<span class='line'>  7</span>  *
+<span class='line'>  8</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  9</span>  * you may not use this file except in compliance with the License.
+<span class='line'> 10</span>  * You may obtain a copy of the License at
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 13</span>  *
+<span class='line'> 14</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 15</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 16</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 17</span>  *
+<span class='line'> 18</span>  * See the License for the specific language governing permissions and
+<span class='line'> 19</span>  * limitations under the License.
+<span class='line'> 20</span>  */</span><span class="WHIT">
+<span class='line'> 21</span> 
+<span class='line'> 22</span> </span><span class="COMM">// WARNING: this assumes you have already included ilib-*.js into your html</span><span class="WHIT">
+<span class='line'> 23</span> 
+<span class='line'> 24</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./ilib.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 25</span> 
+<span class='line'> 26</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">top</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib._top</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> 
+<span class='line'> 28</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">exportClassesPublic</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="WHIT">    </span><span class="STRN">"DateRngFmt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">    </span><span class="STRN">"IDate"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">    </span><span class="STRN">"DateFactory"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">    </span><span class="STRN">"HebrewDate"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">    </span><span class="STRN">"HebrewCal"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">    </span><span class="STRN">"IslamicCal"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">    </span><span class="STRN">"IslamicDate"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">    </span><span class="STRN">"JulianCal"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">    </span><span class="STRN">"JulianDate"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">    </span><span class="STRN">"GregorianCal"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">    </span><span class="STRN">"GregorianDate"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">    </span><span class="STRN">"ThaiSolarCal"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">    </span><span class="STRN">"ThaiSolarDate"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">    </span><span class="STRN">"PersianCal"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">    </span><span class="STRN">"PersianDate"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">    </span><span class="STRN">"PersianAlgoCal"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">    </span><span class="STRN">"PersianAlgoDate"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">    </span><span class="STRN">"HanCal"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">    </span><span class="STRN">"HanDate"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">    </span><span class="STRN">"EthiopicCal"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">    </span><span class="STRN">"EthiopicDate"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">    </span><span class="STRN">"CopticCal"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">    </span><span class="STRN">"CopticDate"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">    </span><span class="STRN">"INumber"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">    </span><span class="STRN">"NumFmt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">    </span><span class="STRN">"JulianDay"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">    </span><span class="STRN">"DateFmt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">    </span><span class="STRN">"Calendar"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">    </span><span class="STRN">"CalendarFactory"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">    </span><span class="STRN">"Utils"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">    </span><span class="STRN">"Locale"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">    </span><span class="STRN">"IString"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">    </span><span class="STRN">"DurationFmt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">    </span><span class="STRN">"ResBundle"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">    </span><span class="STRN">"CType"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">    </span><span class="STRN">"LocaleInfo"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">    </span><span class="STRN">"DateRngFmt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">    </span><span class="STRN">"isAlnum"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">    </span><span class="STRN">"isAlpha"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">    </span><span class="STRN">"isAscii"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">    </span><span class="STRN">"isBlank"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">    </span><span class="STRN">"isCntrl"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">    </span><span class="STRN">"isDigit"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">    </span><span class="STRN">"isGraph"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">    </span><span class="STRN">"isIdeo"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">    </span><span class="STRN">"isLower"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">    </span><span class="STRN">"isPrint"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">    </span><span class="STRN">"isPunct"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">    </span><span class="STRN">"isSpace"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">    </span><span class="STRN">"isUpper"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">    </span><span class="STRN">"isXdigit"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">    </span><span class="STRN">"isScript"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">    </span><span class="STRN">"ScriptInfo"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">    </span><span class="STRN">"Name"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">    </span><span class="STRN">"NameFmt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="WHIT">    </span><span class="STRN">"Address"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT">    </span><span class="STRN">"AddressFmt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 86</span> </span><span class="WHIT">    </span><span class="STRN">"Collator"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="WHIT">    </span><span class="STRN">"LocaleMatcher"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">    </span><span class="STRN">"NormString"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">    </span><span class="STRN">"CaseMapper"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">    </span><span class="STRN">"GlyphString"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">    </span><span class="STRN">"PhoneFmt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">    </span><span class="STRN">"PhoneGeoLocator"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">    </span><span class="STRN">"PhoneNumber"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">    </span><span class="STRN">"Measurement"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">    </span><span class="STRN">"MeasurementFactory"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">    </span><span class="STRN">"UnitFmt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">    </span><span class="STRN">"LengthUnit"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">    </span><span class="STRN">"VelocityUnit"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">    </span><span class="STRN">"DigitalStorageUnit"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">    </span><span class="STRN">"TemperatureUnit"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">    </span><span class="STRN">"UnknownUnit"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">    </span><span class="STRN">"TimeUnit"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">    </span><span class="STRN">"MassUnit"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">    </span><span class="STRN">"AreaUnit"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">    </span><span class="STRN">"FuelConsumptionUnit"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">    </span><span class="STRN">"VolumeUnit"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">    </span><span class="STRN">"EnergyUnit"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">    </span><span class="STRN">"Charset"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">    </span><span class="STRN">"Charmap"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">    </span><span class="STRN">"CharmapFactory"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">    </span><span class="STRN">"CharmapTable"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">    </span><span class="STRN">"UTF8"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">    </span><span class="STRN">"UTF16BE"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="WHIT">    </span><span class="STRN">"UTF16LE"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">    </span><span class="STRN">"Country"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">    </span><span class="STRN">"ListFmt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">    </span><span class="STRN">"AlphabeticIndex"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">    </span><span class="STRN">"TimeZone"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">    </span><span class="STRN">"Currency"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">    </span><span class="STRN">"DigitalSpeedUnit"</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>122</span> 
+<span class='line'>123</span> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">top</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">    </span><span class="COMM">// these are the private classes that the unit tests may need</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">exportClasses</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">exportClassesPublic.concat</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">        </span><span class="STRN">"ISet"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">        </span><span class="STRN">"SearchUtils"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">        </span><span class="STRN">"MathUtils"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">        </span><span class="STRN">"JSUtils"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">        </span><span class="STRN">"Path"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">        </span><span class="STRN">"Astro"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">        </span><span class="STRN">"Utils"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">        </span><span class="STRN">"CodePointSource"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">        </span><span class="STRN">"CopticRataDie"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">        </span><span class="STRN">"ElementIterator"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">        </span><span class="STRN">"EthiopicRataDie"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">        </span><span class="STRN">"GregRataDie"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">        </span><span class="STRN">"HanRataDie"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">        </span><span class="STRN">"NumberingPlan"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">        </span><span class="STRN">"PersAlgoRataDie"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">        </span><span class="STRN">"PersRataDie"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">        </span><span class="STRN">"PhoneHandlerFactory"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">        </span><span class="STRN">"PhoneLocale"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">        </span><span class="STRN">"RataDie"</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">    </span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>146</span> 
+<span class='line'>147</span> </span><span class="WHIT">    </span><span class="NAME">exportClasses.forEach</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">className</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">        </span><span class="COMM">// console.log("Defining " + className);</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">ilib</span><span class="PUNC">[</span><span class="NAME">className</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">            </span><span class="NAME">top</span><span class="PUNC">[</span><span class="NAME">className</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="PUNC">[</span><span class="NAME">className</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">    </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="STRN">"No global scope on this platform. You cannot use ilib-unpack here to unpack ilib into the global scope because it does not exist."</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>156</span> 
+<span class='line'>157</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">exportClassesPublic</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>158</span> </span></pre></body></html>

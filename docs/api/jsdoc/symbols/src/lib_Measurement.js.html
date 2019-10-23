@@ -1,0 +1,568 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * Measurement.js - Measurement unit superclass
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * Copyright © 2014-2015, 2018 JEDLSoft
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  7</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  8</span>  * You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 13</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 14</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 15</span>  *
+<span class='line'> 16</span>  * See the License for the specific language governing permissions and
+<span class='line'> 17</span>  * limitations under the License.
+<span class='line'> 18</span>  */</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="COMM">// !depends JSUtils.js MathUtils.js Locale.js</span><span class="WHIT">
+<span class='line'> 21</span> 
+<span class='line'> 22</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">JSUtils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./JSUtils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">MathUtils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./MathUtils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Locale.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 25</span> 
+<span class='line'> 26</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">round</span><span class="PUNC">(</span><span class="NAME">number</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">precision</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">factor</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.pow</span><span class="PUNC">(</span><span class="NUMB">10</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">precision</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">MathUtils.halfdown</span><span class="PUNC">(</span><span class="NAME">number</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">factor</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NAME">factor</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 30</span> 
+<span class='line'> 31</span> </span><span class="COMM">/**
+<span class='line'> 32</span>  * @class
+<span class='line'> 33</span>  * Superclass for measurement instances that contains shared functionality
+<span class='line'> 34</span>  * and defines the interface. &lt;p>
+<span class='line'> 35</span>  *
+<span class='line'> 36</span>  * This class is never instantiated on its own. Instead, measurements should
+<span class='line'> 37</span>  * be created using the {@link MeasurementFactory} function, which creates the
+<span class='line'> 38</span>  * correct subclass based on the given parameters.&lt;p>
+<span class='line'> 39</span>  *
+<span class='line'> 40</span>  * @param {Object=} options options controlling the construction of this instance
+<span class='line'> 41</span>  * @private
+<span class='line'> 42</span>  * @constructor
+<span class='line'> 43</span>  */</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Measurement</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">            </span><span class="NAME">this.originalUnit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.unit</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">            </span><span class="NAME">this.unit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.normalizeUnits</span><span class="PUNC">(</span><span class="NAME">options.unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">options.unit</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 50</span> 
+<span class='line'> 51</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.amount</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options.amount.getMeasure</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">this.getMeasure</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">                </span><span class="NAME">this.amount</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.amount.convert</span><span class="PUNC">(</span><span class="NAME">this.unit</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">                </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="STRN">"Cannot convert unit "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">options.amount.unit</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">" to a "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.getMeasure</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.amount</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">            </span><span class="NAME">this.amount</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Number</span><span class="PUNC">(</span><span class="NAME">options.amount</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 60</span> 
+<span class='line'> 61</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.ratios</span><span class="PUNC">[</span><span class="NAME">this.unit</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">            </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="STRN">"Unknown unit: "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">options.unit</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 66</span> 
+<span class='line'> 67</span> </span><span class="COMM">/**
+<span class='line'> 68</span>  * @private
+<span class='line'> 69</span>  */</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="NAME">Measurement._constructors</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 71</span> 
+<span class='line'> 72</span> </span><span class="NAME">Measurement.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 74</span>      * Return the normalized name of the given units. If the units are
+<span class='line'> 75</span>      * not recognized, this method returns its parameter unmodified.&lt;p>
+<span class='line'> 76</span>      *
+<span class='line'> 77</span>      * Examples:
+<span class='line'> 78</span>      *
+<span class='line'> 79</span>      * &lt;ui>
+<span class='line'> 80</span>      * &lt;li>"metres" gets normalized to "meter"&lt;br>
+<span class='line'> 81</span>      * &lt;li>"ml" gets normalized to "milliliter"&lt;br>
+<span class='line'> 82</span>      * &lt;li>"foobar" gets normalized to "foobar" (no change because it is not recognized)
+<span class='line'> 83</span>      * &lt;/ul>
+<span class='line'> 84</span>      *
+<span class='line'> 85</span>      * @param {string} name name of the units to normalize.
+<span class='line'> 86</span>      * @returns {string} normalized name of the units
+<span class='line'> 87</span>      */</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">    </span><span class="NAME">normalizeUnits</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.constructor</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">Measurement.getUnitId</span><span class="PUNC">(</span><span class="NAME">this.constructor</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">            </span><span class="NAME">Measurement.getUnitIdCaseInsensitive</span><span class="PUNC">(</span><span class="NAME">this.constructor</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">            </span><span class="NAME">name</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 93</span> 
+<span class='line'> 94</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 95</span>      * Return the normalized units used in this measurement.
+<span class='line'> 96</span>      * @return {string} name of the unit of measurement
+<span class='line'> 97</span>      */</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">    </span><span class="NAME">getUnit</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.unit</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>101</span> 
+<span class='line'>102</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>103</span>      * Return the units originally used to construct this measurement
+<span class='line'>104</span>      * before it was normalized.
+<span class='line'>105</span>      * @return {string} name of the unit of measurement
+<span class='line'>106</span>      */</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">    </span><span class="NAME">getOriginalUnit</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.originalUnit</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>110</span> 
+<span class='line'>111</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>112</span>      * Return the numeric amount of this measurement.
+<span class='line'>113</span>      * @return {number} the numeric amount of this measurement
+<span class='line'>114</span>      */</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">    </span><span class="NAME">getAmount</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.amount</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>118</span> 
+<span class='line'>119</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>120</span>      * Return the type of this measurement. Examples are "mass",
+<span class='line'>121</span>      * "length", "speed", etc. Measurements can only be converted
+<span class='line'>122</span>      * to measurements of the same type.&lt;p>
+<span class='line'>123</span>      *
+<span class='line'>124</span>      * The type of the units is determined automatically from the
+<span class='line'>125</span>      * units. For example, the unit "grams" is type "mass". Use the
+<span class='line'>126</span>      * static call {@link Measurement.getAvailableUnits}
+<span class='line'>127</span>      * to find out what units this version of ilib supports.
+<span class='line'>128</span>      *
+<span class='line'>129</span>      * @return {string} the name of the type of this measurement
+<span class='line'>130</span>      */</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">    </span><span class="NAME">getMeasure</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>132</span> 
+<span class='line'>133</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>134</span>      * Return an array of all units that this measurement types supports.
+<span class='line'>135</span>      *
+<span class='line'>136</span>      * @return {Array.&lt;string>} an array of all units that this measurement
+<span class='line'>137</span>      * types supports
+<span class='line'>138</span>      */</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">    </span><span class="NAME">getMeasures</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Object.keys</span><span class="PUNC">(</span><span class="NAME">this.ratios</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>142</span> 
+<span class='line'>143</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>144</span>      * Return the name of the measurement system that the current
+<span class='line'>145</span>      * unit is a part of.
+<span class='line'>146</span>      *
+<span class='line'>147</span>      * @returns {string} the name of the measurement system for
+<span class='line'>148</span>      * the units of this measurement
+<span class='line'>149</span>      */</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">    </span><span class="NAME">getMeasurementSystem</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">JSUtils.indexOf</span><span class="PUNC">(</span><span class="NAME">this.systems.uscustomary</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"uscustomary"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>155</span> 
+<span class='line'>156</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">JSUtils.indexOf</span><span class="PUNC">(</span><span class="NAME">this.systems.imperial</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"imperial"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>159</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"metric"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>162</span> 
+<span class='line'>163</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>164</span>      * Localize the measurement to the commonly used measurement in that locale. For example
+<span class='line'>165</span>      * If a user's locale is "en-US" and the measurement is given as "60 kmh",
+<span class='line'>166</span>      * the formatted number should be automatically converted to the most appropriate
+<span class='line'>167</span>      * measure in the other system, in this case, mph. The formatted result should
+<span class='line'>168</span>      * appear as "37.3 mph".
+<span class='line'>169</span>      *
+<span class='line'>170</span>      * @param {string} locale current locale string
+<span class='line'>171</span>      * @returns {Measurement} a new instance that is converted to locale
+<span class='line'>172</span>      */</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="WHIT">    </span><span class="NAME">localize</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">to</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">toSystem</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Measurement.getMeasurementSystemForLocale</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">fromSystem</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.getMeasurementSystem</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">toSystem</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">fromSystem</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// already there</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">        </span><span class="NAME">to</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.systems.conversions</span><span class="PUNC">[</span><span class="NAME">fromSystem</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">            </span><span class="NAME">this.systems.conversions</span><span class="PUNC">[</span><span class="NAME">fromSystem</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NAME">toSystem</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">            </span><span class="NAME">this.systems.conversions</span><span class="PUNC">[</span><span class="NAME">fromSystem</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NAME">toSystem</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NAME">this.unit</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>181</span> 
+<span class='line'>182</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">to</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">this.newUnit</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">            </span><span class="NAME">unit</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">to</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">            </span><span class="NAME">amount</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.convert</span><span class="PUNC">(</span><span class="NAME">to</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>187</span> 
+<span class='line'>188</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>189</span>      * Return the amount of the current measurement when converted to the
+<span class='line'>190</span>      * given measurement unit. Measurements can only be converted
+<span class='line'>191</span>      * to other measurements of the same type.&lt;p>
+<span class='line'>192</span>      *
+<span class='line'>193</span>      * @param {string} to the name of the units to convert this measurement to
+<span class='line'>194</span>      * @return {number|undefined} the amount corresponding to the requested unit
+<span class='line'>195</span>      */</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">    </span><span class="NAME">convert</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">to</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">to</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.ratios</span><span class="PUNC">[</span><span class="NAME">this.normalizeUnits</span><span class="PUNC">(</span><span class="NAME">to</span><span class="PUNC">)</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>200</span> 
+<span class='line'>201</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">from</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.getUnitIdCaseInsensitive</span><span class="PUNC">(</span><span class="NAME">this.unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.unit</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">        </span><span class="NAME">to</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.getUnitIdCaseInsensitive</span><span class="PUNC">(</span><span class="NAME">to</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">to</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">from</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">to</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>206</span> 
+<span class='line'>207</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">fromRow</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.ratios</span><span class="PUNC">[</span><span class="NAME">from</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">toRow</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.ratios</span><span class="PUNC">[</span><span class="NAME">to</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.amount</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">fromRow</span><span class="PUNC">[</span><span class="NAME">toRow</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>211</span> 
+<span class='line'>212</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>213</span>      * Return a new measurement instance that is converted to a different
+<span class='line'>214</span>      * measurement system. Measurements can only be converted
+<span class='line'>215</span>      * to other measurements of the same type.&lt;p>
+<span class='line'>216</span>      *
+<span class='line'>217</span>      * @param {string} measurementSystem the name of the system to convert to
+<span class='line'>218</span>      * @return {Measurement} a new measurement in the given system, or the
+<span class='line'>219</span>      * current measurement if it is already in the given system or could not
+<span class='line'>220</span>      * be converted
+<span class='line'>221</span>      */</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="WHIT">    </span><span class="NAME">convertSystem</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">measurementSystem</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>223</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">measurementSystem</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">measurementSystem</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">this.getMeasurementSystem</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>224</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">map</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.systems.conversions</span><span class="PUNC">[</span><span class="NAME">this.getMeasurementSystem</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NAME">measurementSystem</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">newunit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">map</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">map</span><span class="PUNC">[</span><span class="NAME">this.unit</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">newunit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>229</span> 
+<span class='line'>230</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.newUnit</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>231</span> </span><span class="WHIT">            </span><span class="NAME">unit</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">newunit</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>232</span> </span><span class="WHIT">            </span><span class="NAME">amount</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.convert</span><span class="PUNC">(</span><span class="NAME">newunit</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>234</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>235</span> 
+<span class='line'>236</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>237</span>      * Scale the measurement unit to an acceptable level. The scaling
+<span class='line'>238</span>      * happens so that the integer part of the amount is as small as
+<span class='line'>239</span>      * possible without being below zero. This will result in the
+<span class='line'>240</span>      * largest units that can represent this measurement without
+<span class='line'>241</span>      * fractions. Measurements can only be scaled to other measurements
+<span class='line'>242</span>      * of the same type.
+<span class='line'>243</span>      *
+<span class='line'>244</span>      * @param {string=} measurementsystem the name of the system to scale to
+<span class='line'>245</span>      * @param {Object=} units mapping from the measurement system to the units to use
+<span class='line'>246</span>      * for this scaling. If this is not defined, this measurement type will use the
+<span class='line'>247</span>      * set of units that it knows about for the given measurement system
+<span class='line'>248</span>      * @return {Measurement} a new instance that is scaled to the
+<span class='line'>249</span>      * right level
+<span class='line'>250</span>      */</span><span class="WHIT">
+<span class='line'>251</span> </span><span class="WHIT">    </span><span class="NAME">scale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">measurementsystem</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">units</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>252</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">systemName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.getMeasurementSystem</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>253</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">mSystem</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>254</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">units</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>255</span> </span><span class="WHIT">            </span><span class="NAME">mSystem</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">units</span><span class="PUNC">[</span><span class="NAME">measurementsystem</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">JSUtils.indexOf</span><span class="PUNC">(</span><span class="NAME">units</span><span class="PUNC">[</span><span class="NAME">measurementsystem</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT">
+<span class='line'>256</span> </span><span class="WHIT">                </span><span class="NAME">units</span><span class="PUNC">[</span><span class="NAME">measurementsystem</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">units</span><span class="PUNC">[</span><span class="NAME">systemName</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>257</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>258</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">mSystem</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>259</span> </span><span class="WHIT">            </span><span class="NAME">mSystem</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.systems</span><span class="PUNC">[</span><span class="NAME">measurementsystem</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">JSUtils.indexOf</span><span class="PUNC">(</span><span class="NAME">this.systems</span><span class="PUNC">[</span><span class="NAME">measurementsystem</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT">
+<span class='line'>260</span> </span><span class="WHIT">                </span><span class="NAME">this.systems</span><span class="PUNC">[</span><span class="NAME">measurementsystem</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.systems</span><span class="PUNC">[</span><span class="NAME">systemName</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>261</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>262</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">mSystem</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>263</span> </span><span class="WHIT">            </span><span class="COMM">// cannot find the system to scale within... just return the measurement as is</span><span class="WHIT">
+<span class='line'>264</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>265</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>266</span> 
+<span class='line'>267</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.newUnit</span><span class="PUNC">(</span><span class="NAME">this.scaleUnits</span><span class="PUNC">(</span><span class="NAME">mSystem</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>268</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>269</span> 
+<span class='line'>270</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>271</span>      * Expand the current measurement such that any fractions of the current unit
+<span class='line'>272</span>      * are represented in terms of smaller units in the same system instead of fractions
+<span class='line'>273</span>      * of the current unit. For example, "6.25 feet" may be represented as
+<span class='line'>274</span>      * "6 feet 4 inches" instead. The return value is an array of measurements which
+<span class='line'>275</span>      * are progressively smaller until the smallest unit in the system is reached
+<span class='line'>276</span>      * or until there is a whole number of any unit along the way.
+<span class='line'>277</span>      *
+<span class='line'>278</span>      * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
+<span class='line'>279</span>      * or undefined if the system can be inferred from the current measure
+<span class='line'>280</span>      * @param {Array.&lt;string>=} units object containing a mapping between the measurement system
+<span class='line'>281</span>      * and an array of units to use to restrict the expansion to
+<span class='line'>282</span>      * @param {function(number):number=} constrain a function that constrains
+<span class='line'>283</span>      * a number according to the display options
+<span class='line'>284</span>      * @param {boolean=} scale if true, rescale all of the units so that the
+<span class='line'>285</span>      * largest unit is the largest one with a non-fractional number. If false, then
+<span class='line'>286</span>      * the current unit stays the largest unit.
+<span class='line'>287</span>      * @return {Array.&lt;Measurement>} an array of new measurements in order from
+<span class='line'>288</span>      * the current units to the smallest units in the system which together are the
+<span class='line'>289</span>      * same measurement as this one
+<span class='line'>290</span>      */</span><span class="WHIT">
+<span class='line'>291</span> </span><span class="WHIT">    </span><span class="NAME">expand</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">measurementsystem</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">units</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">constrain</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>292</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">systemName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.getMeasurementSystem</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>293</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">mSystem</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">units</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">units</span><span class="PUNC">[</span><span class="NAME">systemName</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">units</span><span class="PUNC">[</span><span class="NAME">systemName</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.systems</span><span class="PUNC">[</span><span class="NAME">systemName</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">this.systems.metric</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>294</span> 
+<span class='line'>295</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.list</span><span class="PUNC">(</span><span class="NAME">mSystem</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.ratios</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">constrain</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">map</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.newUnit</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">.</span><span class="NAME">bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>299</span> 
+<span class='line'>300</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>301</span>      * Convert the current measurement to a list of measures
+<span class='line'>302</span>      * and amounts. This method will autoScale the current measurement
+<span class='line'>303</span>      * to the largest measure in the given measures list such that the
+<span class='line'>304</span>      * amount of that measure is still greater than or equal to 1. From
+<span class='line'>305</span>      * there, it will truncate that measure to a whole
+<span class='line'>306</span>      * number and then it will calculate the remainder in terms of
+<span class='line'>307</span>      * each of the smaller measures in the given list.&lt;p>
+<span class='line'>308</span>      *
+<span class='line'>309</span>      * For example, if a person's height is given as 70.5 inches, and
+<span class='line'>310</span>      * the list of measures is ["mile", "foot", "inch"], then it will
+<span class='line'>311</span>      * scale the amount to 5 feet, 10.5 inches. The amount is not big
+<span class='line'>312</span>      * enough to have any whole miles, so that measure is not used.
+<span class='line'>313</span>      * The first measure will be "foot" because it is the first one
+<span class='line'>314</span>      * in the measure list where the there is an amount of them that
+<span class='line'>315</span>      * is greater than or equal to 1. The return value in this example
+<span class='line'>316</span>      * would be:
+<span class='line'>317</span>      *
+<span class='line'>318</span>      * &lt;pre>
+<span class='line'>319</span>      * [
+<span class='line'>320</span>      *   {
+<span class='line'>321</span>      *     "unit": "foot",
+<span class='line'>322</span>      *     "amount": 5
+<span class='line'>323</span>      *   },
+<span class='line'>324</span>      *   {
+<span class='line'>325</span>      *     "unit": "inch",
+<span class='line'>326</span>      *     "amount": 10.5
+<span class='line'>327</span>      *   }
+<span class='line'>328</span>      * ]
+<span class='line'>329</span>      * &lt;/pre>
+<span class='line'>330</span>      *
+<span class='line'>331</span>      * Note that all measures except the smallest will be returned
+<span class='line'>332</span>      * as whole numbers. The smallest measure will contain any possible
+<span class='line'>333</span>      * fractional remainder.
+<span class='line'>334</span>      *
+<span class='line'>335</span>      * @param {Array.&lt;string>|undefined} measures array of measure names to
+<span class='line'>336</span>      * convert this measure to
+<span class='line'>337</span>      * @param {Object} ratios the conversion ratios
+<span class='line'>338</span>      * table for the measurement type
+<span class='line'>339</span>      * @param {function (number): number=} constrain a function that constrains
+<span class='line'>340</span>      * a number according to the display options
+<span class='line'>341</span>      * @param {boolean=} scale if true, rescale all of the units so that the
+<span class='line'>342</span>      * largest unit is the largest one with a non-fractional number. If false, then
+<span class='line'>343</span>      * the current unit stays the largest unit.
+<span class='line'>344</span>      * @returns {Array.&lt;{unit: String, amount: Number}>} the conversion
+<span class='line'>345</span>      * of the current measurement into an array of unit names and
+<span class='line'>346</span>      * their amounts
+<span class='line'>347</span>      */</span><span class="WHIT">
+<span class='line'>348</span> </span><span class="WHIT">    </span><span class="NAME">list</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">measures</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ratios</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">constrain</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">scale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>349</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">row</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ratios</span><span class="PUNC">[</span><span class="NAME">this.unit</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>350</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>351</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">scaled</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>352</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">unit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.unit</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>353</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">amount</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.amount</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>354</span> </span><span class="WHIT">        </span><span class="NAME">constrain</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">constrain</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">round</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>355</span> 
+<span class='line'>356</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">start</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">JSUtils.indexOf</span><span class="PUNC">(</span><span class="NAME">measures</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.unit</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>357</span> 
+<span class='line'>358</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">scale</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">start</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>359</span> </span><span class="WHIT">            </span><span class="NAME">start</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">measures.length</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>360</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>361</span> 
+<span class='line'>362</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.unit</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NAME">measures</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>363</span> </span><span class="WHIT">            </span><span class="COMM">// if this unit is not the smallest measure in the system, we have to convert</span><span class="WHIT">
+<span class='line'>364</span> </span><span class="WHIT">            </span><span class="NAME">unit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">measures</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>365</span> </span><span class="WHIT">            </span><span class="NAME">amount</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.amount</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">row</span><span class="PUNC">[</span><span class="NAME">ratios</span><span class="PUNC">[</span><span class="NAME">unit</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>366</span> </span><span class="WHIT">            </span><span class="NAME">row</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ratios</span><span class="PUNC">[</span><span class="NAME">unit</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>367</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>368</span> 
+<span class='line'>369</span> </span><span class="WHIT">        </span><span class="COMM">// convert to smallest measure</span><span class="WHIT">
+<span class='line'>370</span> </span><span class="WHIT">        </span><span class="NAME">amount</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">constrain</span><span class="PUNC">(</span><span class="NAME">amount</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>371</span> </span><span class="WHIT">        </span><span class="COMM">// go backwards so we get from the largest to the smallest units in order</span><span class="WHIT">
+<span class='line'>372</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">start</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">j</span><span class="PUNC">--</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>373</span> </span><span class="WHIT">            </span><span class="NAME">unit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">measures</span><span class="PUNC">[</span><span class="NAME">j</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>374</span> </span><span class="WHIT">            </span><span class="NAME">scaled</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">amount</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">row</span><span class="PUNC">[</span><span class="NAME">ratios</span><span class="PUNC">[</span><span class="NAME">unit</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>375</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">xf</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="NAME">scaled</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>376</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">xf</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>377</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">item</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>378</span> </span><span class="WHIT">                    </span><span class="NAME">unit</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">unit</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>379</span> </span><span class="WHIT">                    </span><span class="NAME">amount</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">xf</span><span class="WHIT">
+<span class='line'>380</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>381</span> </span><span class="WHIT">                </span><span class="NAME">ret.push</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>382</span> 
+<span class='line'>383</span> </span><span class="WHIT">                </span><span class="NAME">amount</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">xf</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">ratios</span><span class="PUNC">[</span><span class="NAME">unit</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NAME">ratios</span><span class="PUNC">[</span><span class="NAME">measures</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>384</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>385</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>386</span> 
+<span class='line'>387</span> </span><span class="WHIT">        </span><span class="COMM">// last measure is rounded/constrained, not truncated</span><span class="WHIT">
+<span class='line'>388</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">amount</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>389</span> </span><span class="WHIT">            </span><span class="NAME">ret.push</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>390</span> </span><span class="WHIT">                </span><span class="NAME">unit</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">measures</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>391</span> </span><span class="WHIT">                </span><span class="NAME">amount</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">constrain</span><span class="PUNC">(</span><span class="NAME">amount</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>392</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>393</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>394</span> 
+<span class='line'>395</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>396</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>397</span> 
+<span class='line'>398</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>399</span>      * @private
+<span class='line'>400</span>      */</span><span class="WHIT">
+<span class='line'>401</span> </span><span class="WHIT">    </span><span class="NAME">scaleUnits</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">mSystem</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">tmp</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">munit</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">amount</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">18446744073709551999</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">fromRow</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.ratios</span><span class="PUNC">[</span><span class="NAME">this.unit</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>404</span> 
+<span class='line'>405</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">mSystem.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">m</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>406</span> </span><span class="WHIT">            </span><span class="NAME">tmp</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.amount</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">fromRow</span><span class="PUNC">[</span><span class="NAME">this.ratios</span><span class="PUNC">[</span><span class="NAME">mSystem</span><span class="PUNC">[</span><span class="NAME">m</span><span class="PUNC">]</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>407</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">tmp</span><span class="WHIT"> </span><span class="PUNC">>=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">tmp</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">amount</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">amount</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">18446744073709551999</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>408</span> </span><span class="WHIT">                </span><span class="NAME">amount</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">tmp</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>409</span> </span><span class="WHIT">                </span><span class="NAME">munit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">mSystem</span><span class="PUNC">[</span><span class="NAME">m</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>411</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>412</span> 
+<span class='line'>413</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>414</span> </span><span class="WHIT">            </span><span class="NAME">unit</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">munit</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>415</span> </span><span class="WHIT">            </span><span class="NAME">amount</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">amount</span><span class="WHIT">
+<span class='line'>416</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>417</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>418</span> 
+<span class='line'>419</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>420</span>      * @private
+<span class='line'>421</span>      *
+<span class='line'>422</span>      * Return the normalized units identifier for the given unit. This looks up the units
+<span class='line'>423</span>      * in the aliases list and returns the normalized unit id.
+<span class='line'>424</span>      *
+<span class='line'>425</span>      * @param {string} unit the unit to find
+<span class='line'>426</span>      * @returns {string|undefined} the normalized identifier for the given unit, or
+<span class='line'>427</span>      * undefined if there is no such unit in this type of measurement
+<span class='line'>428</span>      */</span><span class="WHIT">
+<span class='line'>429</span> </span><span class="WHIT">    </span><span class="NAME">getUnitId</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>430</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>431</span> 
+<span class='line'>432</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.aliases</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.aliases</span><span class="PUNC">[</span><span class="NAME">unit</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>433</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.aliases</span><span class="PUNC">[</span><span class="NAME">unit</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>434</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>435</span> 
+<span class='line'>436</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.ratios</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.ratios</span><span class="PUNC">[</span><span class="NAME">unit</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>437</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">unit</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>438</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>439</span> 
+<span class='line'>440</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>441</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>442</span> 
+<span class='line'>443</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>444</span>      * Return the normalized units identifier for the given unit, searching case-insensitively.
+<span class='line'>445</span>      * This has the risk that things may match erroneously because many short form unit strings
+<span class='line'>446</span>      * are case-sensitive. This should method be used as a last resort if no case-sensitive match
+<span class='line'>447</span>      * is found amongst all the different types of measurements.
+<span class='line'>448</span>      *
+<span class='line'>449</span>      * @param {string} unit the unit to find
+<span class='line'>450</span>      * @returns {string|undefined} the normalized identifier for the given unit, or
+<span class='line'>451</span>      * undefined if there is no such unit in this type of measurement
+<span class='line'>452</span>      */</span><span class="WHIT">
+<span class='line'>453</span> </span><span class="WHIT">    </span><span class="NAME">getUnitIdCaseInsensitive</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>454</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>455</span> 
+<span class='line'>456</span> </span><span class="WHIT">        </span><span class="COMM">// try with the original case first, just in case that works</span><span class="WHIT">
+<span class='line'>457</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.getUnitId</span><span class="PUNC">(</span><span class="NAME">unit</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>458</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ret</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>459</span> 
+<span class='line'>460</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">u</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">unit.toLowerCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>461</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.aliasesLower</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">this.aliasesLower</span><span class="PUNC">[</span><span class="NAME">u</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>462</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.aliasesLower</span><span class="PUNC">[</span><span class="NAME">u</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>463</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>464</span> 
+<span class='line'>465</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>466</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>467</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>468</span> 
+<span class='line'>469</span> </span><span class="COMM">/**
+<span class='line'>470</span>  * Return the normalized units identifier for the given unit. This looks up the units
+<span class='line'>471</span>  * in the aliases list and returns the normalized unit id.
+<span class='line'>472</span>  *
+<span class='line'>473</span>  * @static
+<span class='line'>474</span>  * @param {function(...)} measurement name of the the class of measure being searched
+<span class='line'>475</span>  * @param {string} unit the unit to find
+<span class='line'>476</span>  * @returns {string|undefined} the normalized identifier for the given unit, or
+<span class='line'>477</span>  * undefined if there is no such unit in this type of measurement
+<span class='line'>478</span>  */</span><span class="WHIT">
+<span class='line'>479</span> </span><span class="NAME">Measurement.getUnitId</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">measurement</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>480</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>481</span> 
+<span class='line'>482</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">measurement.aliases</span><span class="PUNC">[</span><span class="NAME">unit</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>483</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">measurement.aliases</span><span class="PUNC">[</span><span class="NAME">unit</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>484</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>485</span> 
+<span class='line'>486</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">measurement.ratios</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">measurement.ratios</span><span class="PUNC">[</span><span class="NAME">unit</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>487</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">unit</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>488</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>489</span> 
+<span class='line'>490</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>491</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>492</span> 
+<span class='line'>493</span> </span><span class="COMM">/**
+<span class='line'>494</span>  * Return the normalized units identifier for the given unit, searching case-insensitively.
+<span class='line'>495</span>  * This has the risk that things may match erroneously because many short form unit strings
+<span class='line'>496</span>  * are case-sensitive. This should method be used as a last resort if no case-sensitive match
+<span class='line'>497</span>  * is found amongst all the different types of measurements.
+<span class='line'>498</span>  *
+<span class='line'>499</span>  * @static
+<span class='line'>500</span>  * @param {function(...)} measurement name of the class of measure being searched
+<span class='line'>501</span>  * @param {string} unit the unit to find
+<span class='line'>502</span>  * @returns {string|undefined} the normalized identifier for the given unit, or
+<span class='line'>503</span>  * undefined if there is no such unit in this type of measurement
+<span class='line'>504</span>  */</span><span class="WHIT">
+<span class='line'>505</span> </span><span class="NAME">Measurement.getUnitIdCaseInsensitive</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">measurement</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>506</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">unit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>507</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">u</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">unit.toLowerCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>508</span> 
+<span class='line'>509</span> </span><span class="WHIT">    </span><span class="COMM">// try this first, just in case</span><span class="WHIT">
+<span class='line'>510</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Measurement.getUnitId</span><span class="PUNC">(</span><span class="NAME">measurement</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">unit</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>511</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ret</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>512</span> 
+<span class='line'>513</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">measurement.aliases</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">measurement.aliasesLower</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>514</span> </span><span class="WHIT">        </span><span class="NAME">measurement.aliasesLower</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>515</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">a</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">measurement.aliases</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>516</span> </span><span class="WHIT">            </span><span class="NAME">measurement.aliasesLower</span><span class="PUNC">[</span><span class="NAME">a.toLowerCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">measurement.aliases</span><span class="PUNC">[</span><span class="NAME">a</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>517</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>518</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>519</span> 
+<span class='line'>520</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">measurement.aliasesLower</span><span class="PUNC">[</span><span class="NAME">u</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>521</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">measurement.aliasesLower</span><span class="PUNC">[</span><span class="NAME">u</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>522</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>523</span> 
+<span class='line'>524</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>525</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>526</span> 
+<span class='line'>527</span> </span><span class="COMM">// Hard-code these because CLDR has incorrect data, plus this is small so we don't</span><span class="WHIT">
+<span class='line'>528</span> </span><span class="COMM">// want to do an async load just to get it.</span><span class="WHIT">
+<span class='line'>529</span> </span><span class="COMM">// Source: https://en.wikipedia.org/wiki/Metrication#Overview</span><span class="WHIT">
+<span class='line'>530</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">systems</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>531</span> </span><span class="WHIT">    </span><span class="STRN">"uscustomary"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="STRN">"US"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"FM"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"MH"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"LR"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"PR"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"PW"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"GU"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"WS"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"AS"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"VI"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"MP"</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>532</span> </span><span class="WHIT">    </span><span class="STRN">"imperial"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="STRN">"GB"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"MM"</span><span class="PUNC">]</span><span class="WHIT">
+<span class='line'>533</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>534</span> 
+<span class='line'>535</span> </span><span class="COMM">// every other country in the world is metric. Myanmar (MM) is adopting metric by 2019</span><span class="WHIT">
+<span class='line'>536</span> </span><span class="COMM">// supposedly, and Liberia is as well</span><span class="WHIT">
+<span class='line'>537</span> 
+<span class='line'>538</span> </span><span class="COMM">/**
+<span class='line'>539</span> * Return the name of the measurement system in use in the given locale.
+<span class='line'>540</span> *
+<span class='line'>541</span> * @param {string|Locale} locale the locale spec or Locale instance of the
+<span class='line'>542</span> *
+<span class='line'>543</span> * @returns {string} the name of the measurement system
+<span class='line'>544</span> */</span><span class="WHIT">
+<span class='line'>545</span> </span><span class="NAME">Measurement.getMeasurementSystemForLocale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>546</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">l</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"object"</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">locale</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>547</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">region</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">l.getRegion</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>548</span> 
+<span class='line'>549</span> </span><span class="WHIT">  </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">region</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>550</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">JSUtils.indexOf</span><span class="PUNC">(</span><span class="NAME">systems.uscustomary</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">region</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>551</span> </span><span class="WHIT">          </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"uscustomary"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>552</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">JSUtils.indexOf</span><span class="PUNC">(</span><span class="NAME">systems.imperial</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">region</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>553</span> </span><span class="WHIT">          </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"imperial"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>554</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>555</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>556</span> 
+<span class='line'>557</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"metric"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>558</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>559</span> 
+<span class='line'>560</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Measurement</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>561</span> </span></pre></body></html>

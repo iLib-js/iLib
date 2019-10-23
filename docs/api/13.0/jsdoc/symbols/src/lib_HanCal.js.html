@@ -1,0 +1,335 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * HanCal.js - Represent a Han Chinese Lunar calendar object.
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * Copyright © 2014-2017, 2018, JEDLSoft
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  7</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  8</span>  * You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 13</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 14</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 15</span>  *
+<span class='line'> 16</span>  * See the License for the specific language governing permissions and
+<span class='line'> 17</span>  * limitations under the License.
+<span class='line'> 18</span>  */</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./ilib.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">MathUtils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./MathUtils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 22</span> 
+<span class='line'> 23</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Calendar</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Calendar.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> 
+<span class='line'> 25</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Astro</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Astro.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">RataDie</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./RataDie.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">GregorianDate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./GregorianDate.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">GregRataDie</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./GregRataDie.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 29</span> 
+<span class='line'> 30</span> </span><span class="COMM">/**
+<span class='line'> 31</span>  * @class
+<span class='line'> 32</span>  * Construct a new Han algorithmic calendar object. This class encodes information about
+<span class='line'> 33</span>  * a Han algorithmic calendar.&lt;p>
+<span class='line'> 34</span>  *
+<span class='line'> 35</span>  *
+<span class='line'> 36</span>  * @constructor
+<span class='line'> 37</span>  * @param {Object=} params optional parameters to load the calendrical data
+<span class='line'> 38</span>  * @extends Calendar
+<span class='line'> 39</span>  */</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">HanCal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">    </span><span class="NAME">this.type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"han"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">params.sync</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'boolean'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">params.sync</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 43</span> 
+<span class='line'> 44</span> </span><span class="WHIT">    </span><span class="NAME">Astro.initAstro</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">params.loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ilib.bind</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">params.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">            </span><span class="NAME">params.onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 50</span> 
+<span class='line'> 51</span> </span><span class="COMM">/**
+<span class='line'> 52</span>  * @protected
+<span class='line'> 53</span>  * @static
+<span class='line'> 54</span>  * @param {number} year
+<span class='line'> 55</span>  * @param {number=} cycle
+<span class='line'> 56</span>  * @return {number}
+<span class='line'> 57</span>  */</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="NAME">HanCal._getElapsedYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cycle</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">elapsedYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">year</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">year</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">61</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">cycle</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">        </span><span class="NAME">elapsedYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">60</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">cycle</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">year</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">elapsedYear</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 65</span> 
+<span class='line'> 66</span> </span><span class="COMM">/**
+<span class='line'> 67</span>  * @protected
+<span class='line'> 68</span>  * @static
+<span class='line'> 69</span>  * @param {number} jd julian day to calculate from
+<span class='line'> 70</span>  * @param {number} longitude longitude to seek
+<span class='line'> 71</span>  * @returns {number} the julian day of the next time that the solar longitude
+<span class='line'> 72</span>  * is a multiple of the given longitude
+<span class='line'> 73</span>  */</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="NAME">HanCal._hanNextSolarLongitude</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">longitude</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">tz</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._chineseTZ</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">uni</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Astro._universalFromLocal</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">tz</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sol</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Astro._nextSolarLongitude</span><span class="PUNC">(</span><span class="NAME">uni</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">longitude</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Astro._localFromUniversal</span><span class="PUNC">(</span><span class="NAME">sol</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">tz</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 80</span> 
+<span class='line'> 81</span> </span><span class="COMM">/**
+<span class='line'> 82</span>  * @protected
+<span class='line'> 83</span>  * @static
+<span class='line'> 84</span>  * @param {number} jd julian day to calculate from
+<span class='line'> 85</span>  * @returns {number} the major solar term for the julian day
+<span class='line'> 86</span>  */</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="NAME">HanCal._majorSTOnOrAfter</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">tz</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._chineseTZ</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">uni</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Astro._universalFromLocal</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">tz</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">next</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Astro._fixangle</span><span class="PUNC">(</span><span class="NUMB">30</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">Math.ceil</span><span class="PUNC">(</span><span class="NAME">Astro._solarLongitude</span><span class="PUNC">(</span><span class="NAME">uni</span><span class="PUNC">)</span><span class="PUNC">/</span><span class="NUMB">30</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">HanCal._hanNextSolarLongitude</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">next</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 93</span> 
+<span class='line'> 94</span> </span><span class="COMM">/**
+<span class='line'> 95</span>  * @protected
+<span class='line'> 96</span>  * @static
+<span class='line'> 97</span>  * @param {number} year the year for which the leap year information is being sought
+<span class='line'> 98</span>  * @param {number=} cycle if the given year &lt; 60, this can specify the cycle. If the
+<span class='line'> 99</span>  * cycle is not given, then the year should be given as elapsed years since the beginning
+<span class='line'>100</span>  * of the epoch
+<span class='line'>101</span>  */</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="NAME">HanCal._solsticeBefore</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cycle</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">elapsedYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._getElapsedYear</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cycle</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">gregyear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">elapsedYear</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">2697</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">rd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">GregRataDie</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">        </span><span class="NAME">year</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">gregyear</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">        </span><span class="NAME">month</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">12</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">        </span><span class="NAME">day</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">15</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">        </span><span class="NAME">hour</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">        </span><span class="NAME">minute</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">        </span><span class="NAME">second</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">        </span><span class="NAME">millisecond</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">HanCal._majorSTOnOrAfter</span><span class="PUNC">(</span><span class="NAME">rd.getRataDie</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">RataDie.gregorianEpoch</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>116</span> 
+<span class='line'>117</span> </span><span class="COMM">/**
+<span class='line'>118</span>  * @protected
+<span class='line'>119</span>  * @static
+<span class='line'>120</span>  * @param {number} jd julian day to calculate from
+<span class='line'>121</span>  * @returns {number} the current major solar term
+<span class='line'>122</span>  */</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="NAME">HanCal._chineseTZ</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">year</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">GregorianDate._calcYear</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">RataDie.gregorianEpoch</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">year</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">1929</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NUMB">465.6666666666666666</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">480</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>127</span> 
+<span class='line'>128</span> </span><span class="COMM">/**
+<span class='line'>129</span>  * @protected
+<span class='line'>130</span>  * @static
+<span class='line'>131</span>  * @param {number} jd julian day to calculate from
+<span class='line'>132</span>  * @returns {number} the julian day of next new moon on or after the given julian day date
+<span class='line'>133</span>  */</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="NAME">HanCal._newMoonOnOrAfter</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">tz</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._chineseTZ</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">uni</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Astro._universalFromLocal</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">tz</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">moon</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Astro._newMoonAtOrAfter</span><span class="PUNC">(</span><span class="NAME">uni</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">    </span><span class="COMM">// floor to the start of the julian day</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Astro._floorToJD</span><span class="PUNC">(</span><span class="NAME">Astro._localFromUniversal</span><span class="PUNC">(</span><span class="NAME">moon</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">tz</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>141</span> 
+<span class='line'>142</span> </span><span class="COMM">/**
+<span class='line'>143</span>  * @protected
+<span class='line'>144</span>  * @static
+<span class='line'>145</span>  * @param {number} jd julian day to calculate from
+<span class='line'>146</span>  * @returns {number} the julian day of previous new moon before the given julian day date
+<span class='line'>147</span>  */</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="NAME">HanCal._newMoonBefore</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">tz</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._chineseTZ</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">uni</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Astro._universalFromLocal</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">tz</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">moon</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Astro._newMoonBefore</span><span class="PUNC">(</span><span class="NAME">uni</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">    </span><span class="COMM">// floor to the start of the julian day</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Astro._floorToJD</span><span class="PUNC">(</span><span class="NAME">Astro._localFromUniversal</span><span class="PUNC">(</span><span class="NAME">moon</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">tz</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>155</span> 
+<span class='line'>156</span> </span><span class="COMM">/**
+<span class='line'>157</span>  * @static
+<span class='line'>158</span>  * @protected
+<span class='line'>159</span>  * @param {number} year the year for which the leap year information is being sought
+<span class='line'>160</span>  * @param {number=} cycle if the given year &lt; 60, this can specify the cycle. If the
+<span class='line'>161</span>  * cycle is not given, then the year should be given as elapsed years since the beginning
+<span class='line'>162</span>  * of the epoch
+<span class='line'>163</span>  */</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="NAME">HanCal._leapYearCalc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cycle</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">        </span><span class="NAME">elapsedYear</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">HanCal._getElapsedYear</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cycle</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">    </span><span class="NAME">ret.solstice1</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._solsticeBefore</span><span class="PUNC">(</span><span class="NAME">ret.elapsedYear</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">    </span><span class="NAME">ret.solstice2</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._solsticeBefore</span><span class="PUNC">(</span><span class="NAME">ret.elapsedYear</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">    </span><span class="COMM">// ceil to the end of the julian day</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">    </span><span class="NAME">ret.m1</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._newMoonOnOrAfter</span><span class="PUNC">(</span><span class="NAME">Astro._ceilToJD</span><span class="PUNC">(</span><span class="NAME">ret.solstice1</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">    </span><span class="NAME">ret.m2</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._newMoonBefore</span><span class="PUNC">(</span><span class="NAME">Astro._ceilToJD</span><span class="PUNC">(</span><span class="NAME">ret.solstice2</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>173</span> 
+<span class='line'>174</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ret</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>176</span> 
+<span class='line'>177</span> </span><span class="COMM">/**
+<span class='line'>178</span>  * @protected
+<span class='line'>179</span>  * @static
+<span class='line'>180</span>  * @param {number} jd julian day to calculate from
+<span class='line'>181</span>  * @returns {number} the current major solar term
+<span class='line'>182</span>  */</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="NAME">HanCal._currentMajorST</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Astro._solarLongitude</span><span class="PUNC">(</span><span class="NAME">Astro._universalFromLocal</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">HanCal._chineseTZ</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">MathUtils.amod</span><span class="PUNC">(</span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="NAME">s</span><span class="PUNC">/</span><span class="NUMB">30</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">12</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>187</span> 
+<span class='line'>188</span> </span><span class="COMM">/**
+<span class='line'>189</span>  * @protected
+<span class='line'>190</span>  * @static
+<span class='line'>191</span>  * @param {number} jd julian day to calculate from
+<span class='line'>192</span>  * @returns {boolean} true if there is no major solar term in the same year
+<span class='line'>193</span>  */</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="NAME">HanCal._noMajorST</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">HanCal._currentMajorST</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">HanCal._currentMajorST</span><span class="PUNC">(</span><span class="NAME">HanCal._newMoonOnOrAfter</span><span class="PUNC">(</span><span class="NAME">jd</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>197</span> 
+<span class='line'>198</span> </span><span class="COMM">/**
+<span class='line'>199</span>  * Return the number of months in the given year. The number of months in a year varies
+<span class='line'>200</span>  * for some luni-solar calendars because in some years, an extra month is needed to extend the
+<span class='line'>201</span>  * days in a year to an entire solar year. The month is represented as a 1-based number
+<span class='line'>202</span>  * where 1=first month, 2=second month, etc.
+<span class='line'>203</span>  *
+<span class='line'>204</span>  * @param {number} year a year for which the number of months is sought
+<span class='line'>205</span>  * @param {number=} cycle if the given year &lt; 60, this can specify the cycle. If the
+<span class='line'>206</span>  * cycle is not given, then the year should be given as elapsed years since the beginning
+<span class='line'>207</span>  * of the epoch
+<span class='line'>208</span>  * @return {number} The number of months in the given year
+<span class='line'>209</span>  */</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="NAME">HanCal.prototype.getNumMonths</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cycle</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.isLeapYear</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cycle</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NUMB">13</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">12</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>213</span> 
+<span class='line'>214</span> </span><span class="COMM">/**
+<span class='line'>215</span>  * Return the number of days in a particular month in a particular year. This function
+<span class='line'>216</span>  * can return a different number for a month depending on the year because of things
+<span class='line'>217</span>  * like leap years.
+<span class='line'>218</span>  *
+<span class='line'>219</span>  * @param {number} month the elapsed month for which the length is sought
+<span class='line'>220</span>  * @param {number} year the elapsed year within which that month can be found
+<span class='line'>221</span>  * @return {number} the number of days within the given month in the given year
+<span class='line'>222</span>  */</span><span class="WHIT">
+<span class='line'>223</span> </span><span class="NAME">HanCal.prototype.getMonLength</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">month</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">year</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>224</span> </span><span class="WHIT">    </span><span class="COMM">// distance between two new moons in Nanjing China</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">calc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._leapYearCalc</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">priorNewMoon</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._newMoonOnOrAfter</span><span class="PUNC">(</span><span class="NAME">calc.m1</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">month</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">29</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">postNewMoon</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._newMoonOnOrAfter</span><span class="PUNC">(</span><span class="NAME">priorNewMoon</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">postNewMoon</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">priorNewMoon</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>230</span> 
+<span class='line'>231</span> </span><span class="COMM">/**
+<span class='line'>232</span>  * Return the equivalent year in the 2820 year cycle that begins on
+<span class='line'>233</span>  * Far 1, 474. This particular cycle obeys the cycle-of-years formula
+<span class='line'>234</span>  * whereas the others do not specifically. This cycle can be used as
+<span class='line'>235</span>  * a proxy for other years outside of the cycle by shifting them into
+<span class='line'>236</span>  * the cycle.
+<span class='line'>237</span>  * @param {number} year year to find the equivalent cycle year for
+<span class='line'>238</span>  * @returns {number} the equivalent cycle year
+<span class='line'>239</span>  */</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="NAME">HanCal.prototype.equivalentCycleYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">y</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">year</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">year</span><span class="WHIT"> </span><span class="PUNC">>=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NUMB">474</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">473</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>242</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">MathUtils.mod</span><span class="PUNC">(</span><span class="NAME">y</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">2820</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">474</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>243</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>244</span> 
+<span class='line'>245</span> </span><span class="COMM">/**
+<span class='line'>246</span>  * Return true if the given year is a leap year in the Han calendar.
+<span class='line'>247</span>  * If the year is given as a year/cycle combination, then the year should be in the
+<span class='line'>248</span>  * range [1,60] and the given cycle is the cycle in which the year is located. If
+<span class='line'>249</span>  * the year is greater than 60, then
+<span class='line'>250</span>  * it represents the total number of years elapsed in the proleptic calendar since
+<span class='line'>251</span>  * the beginning of the Chinese epoch in on 15 Feb, -2636 (Gregorian). In this
+<span class='line'>252</span>  * case, the cycle parameter is ignored.
+<span class='line'>253</span>  *
+<span class='line'>254</span>  * @param {number} year the year for which the leap year information is being sought
+<span class='line'>255</span>  * @param {number=} cycle if the given year &lt; 60, this can specify the cycle. If the
+<span class='line'>256</span>  * cycle is not given, then the year should be given as elapsed years since the beginning
+<span class='line'>257</span>  * of the epoch
+<span class='line'>258</span>  * @return {boolean} true if the given year is a leap year
+<span class='line'>259</span>  */</span><span class="WHIT">
+<span class='line'>260</span> </span><span class="NAME">HanCal.prototype.isLeapYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cycle</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>261</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">calc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._leapYearCalc</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cycle</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>262</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Math.round</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">calc.m2</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">calc.m1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">29.530588853000001</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">12</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>263</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>264</span> 
+<span class='line'>265</span> </span><span class="COMM">/**
+<span class='line'>266</span>  * Return the month of the year that is the leap month. If the given year is
+<span class='line'>267</span>  * not a leap year, then this method will return -1.
+<span class='line'>268</span>  *
+<span class='line'>269</span>  * @param {number} year the year for which the leap year information is being sought
+<span class='line'>270</span>  * @param {number=} cycle if the given year &lt; 60, this can specify the cycle. If the
+<span class='line'>271</span>  * cycle is not given, then the year should be given as elapsed years since the beginning
+<span class='line'>272</span>  * of the epoch
+<span class='line'>273</span>  * @return {number} the number of the month that is doubled in this leap year, or -1
+<span class='line'>274</span>  * if this is not a leap year
+<span class='line'>275</span>  */</span><span class="WHIT">
+<span class='line'>276</span> </span><span class="NAME">HanCal.prototype.getLeapMonth</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cycle</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">calc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._leapYearCalc</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cycle</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>278</span> 
+<span class='line'>279</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">Math.round</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">calc.m2</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">calc.m1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">29.530588853000001</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NUMB">12</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// no leap month</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>282</span> 
+<span class='line'>283</span> </span><span class="WHIT">    </span><span class="COMM">// search between rd1 and rd2 for the first month with no major solar term. That is our leap month.</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">month</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>285</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._newMoonOnOrAfter</span><span class="PUNC">(</span><span class="NAME">calc.m1</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>286</span> </span><span class="WHIT">    </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">HanCal._noMajorST</span><span class="PUNC">(</span><span class="NAME">m</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>287</span> </span><span class="WHIT">        </span><span class="NAME">month</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>288</span> </span><span class="WHIT">        </span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._newMoonOnOrAfter</span><span class="PUNC">(</span><span class="NAME">m</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>289</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>290</span> 
+<span class='line'>291</span> </span><span class="WHIT">    </span><span class="COMM">// return the number of the month that is doubled</span><span class="WHIT">
+<span class='line'>292</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">month</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>293</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>294</span> 
+<span class='line'>295</span> </span><span class="COMM">/**
+<span class='line'>296</span>  * Return the date of Chinese New Years in the given calendar year.
+<span class='line'>297</span>  *
+<span class='line'>298</span>  * @param {number} year the Chinese year for which the new year information is being sought
+<span class='line'>299</span>  * @param {number=} cycle if the given year &lt; 60, this can specify the cycle. If the
+<span class='line'>300</span>  * cycle is not given, then the year should be given as elapsed years since the beginning
+<span class='line'>301</span>  * of the epoch
+<span class='line'>302</span>  * @return {number} the julian day of the beginning of the given year
+<span class='line'>303</span>  */</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="NAME">HanCal.prototype.newYears</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cycle</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>305</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">calc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._leapYearCalc</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cycle</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">m2</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal._newMoonOnOrAfter</span><span class="PUNC">(</span><span class="NAME">calc.m1</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">Math.round</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">calc.m2</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">calc.m1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">29.530588853000001</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">12</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>308</span> </span><span class="WHIT">            </span><span class="PUNC">(</span><span class="NAME">HanCal._noMajorST</span><span class="PUNC">(</span><span class="NAME">calc.m1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">HanCal._noMajorST</span><span class="PUNC">(</span><span class="NAME">m2</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">HanCal._newMoonOnOrAfter</span><span class="PUNC">(</span><span class="NAME">m2</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>310</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>311</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">m2</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>313</span> 
+<span class='line'>314</span> </span><span class="COMM">/**
+<span class='line'>315</span>  * Return the type of this calendar.
+<span class='line'>316</span>  *
+<span class='line'>317</span>  * @return {string} the name of the type of this calendar
+<span class='line'>318</span>  */</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="NAME">HanCal.prototype.getType</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>320</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.type</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>321</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>322</span> 
+<span class='line'>323</span> 
+<span class='line'>324</span> </span><span class="COMM">/* register this calendar for the factory method */</span><span class="WHIT">
+<span class='line'>325</span> </span><span class="NAME">Calendar._constructors</span><span class="PUNC">[</span><span class="STRN">"han"</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>326</span> 
+<span class='line'>327</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">HanCal</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>328</span> </span></pre></body></html>

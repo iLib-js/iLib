@@ -1,0 +1,178 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * UnknownUnit.js - Dummy unit conversions for unknown types
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * Copyright © 2014-2015, 2018, JEDLSoft
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  7</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  8</span>  * You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 13</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 14</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 15</span>  *
+<span class='line'> 16</span>  * See the License for the specific language governing permissions and
+<span class='line'> 17</span>  * limitations under the License.
+<span class='line'> 18</span>  */</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="COMM">// !depends Measurement.js</span><span class="WHIT">
+<span class='line'> 21</span> 
+<span class='line'> 22</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Measurement</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Measurement.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> 
+<span class='line'> 24</span> </span><span class="COMM">/**
+<span class='line'> 25</span>  * @class
+<span class='line'> 26</span>  * Create a new unknown measurement instance.
+<span class='line'> 27</span>  *
+<span class='line'> 28</span>  * @constructor
+<span class='line'> 29</span>  * @extends Measurement
+<span class='line'> 30</span>  * @param options {{unit:string,amount:number|string|undefined}} Options controlling
+<span class='line'> 31</span>  * the construction of this instance
+<span class='line'> 32</span>  */</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">UnknownUnit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 34</span> 
+<span class='line'> 35</span> </span><span class="WHIT">    </span><span class="NAME">this.ratios</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">    </span><span class="NAME">this.aliases</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">UnknownUnit.aliases</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">    </span><span class="NAME">this.aliasesLower</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">UnknownUnit.aliases</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">    </span><span class="NAME">this.systems</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">UnknownUnit.systems</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 39</span> 
+<span class='line'> 40</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">        </span><span class="NAME">this.unit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.unit</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">        </span><span class="NAME">this.amount</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.amount</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 45</span> 
+<span class='line'> 46</span> </span><span class="NAME">UnknownUnit.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Measurement</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="NAME">UnknownUnit.prototype.parent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Measurement</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="NAME">UnknownUnit.prototype.constructor</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">UnknownUnit</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 49</span> 
+<span class='line'> 50</span> </span><span class="NAME">UnknownUnit.systems</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">    </span><span class="STRN">"metric"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">    </span><span class="STRN">"uscustomary"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">    </span><span class="STRN">"imperial"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">    </span><span class="STRN">"conversions"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">        </span><span class="STRN">"metric"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">        </span><span class="STRN">"uscustomary"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">        </span><span class="STRN">"imperial"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> 
+<span class='line'> 61</span> </span><span class="NAME">UnknownUnit.aliases</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">    </span><span class="STRN">"unknown"</span><span class="PUNC">:</span><span class="STRN">"unknown"</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 64</span> 
+<span class='line'> 65</span> </span><span class="COMM">/**
+<span class='line'> 66</span>  * Return the type of this measurement. Examples are "mass",
+<span class='line'> 67</span>  * "length", "speed", etc. Measurements can only be converted
+<span class='line'> 68</span>  * to measurements of the same type.&lt;p>
+<span class='line'> 69</span>  *
+<span class='line'> 70</span>  * The type of the units is determined automatically from the
+<span class='line'> 71</span>  * units. For example, the unit "grams" is type "mass". Use the
+<span class='line'> 72</span>  * static call {@link Measurement.getAvailableUnits}
+<span class='line'> 73</span>  * to find out what units this version of ilib supports.
+<span class='line'> 74</span>  *
+<span class='line'> 75</span>  * @return {string} the name of the type of this measurement
+<span class='line'> 76</span>  */</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="NAME">UnknownUnit.prototype.getMeasure</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"unknown"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 80</span> 
+<span class='line'> 81</span> </span><span class="COMM">/**
+<span class='line'> 82</span>  * Return a new measurement instance that is converted to a new
+<span class='line'> 83</span>  * measurement unit. Measurements can only be converted
+<span class='line'> 84</span>  * to measurements of the same type.&lt;p>
+<span class='line'> 85</span>  *
+<span class='line'> 86</span>  * @param {string} to The name of the units to convert to
+<span class='line'> 87</span>  * @return {number|undefined} the converted measurement
+<span class='line'> 88</span>  * or undefined if the requested units are for a different
+<span class='line'> 89</span>  * measurement type
+<span class='line'> 90</span>  */</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="NAME">UnknownUnit.prototype.convert</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">to</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 94</span> 
+<span class='line'> 95</span> </span><span class="COMM">/**
+<span class='line'> 96</span>  * Convert a unknown to another measure.
+<span class='line'> 97</span>  * @static
+<span class='line'> 98</span>  * @param {string} to unit to convert to
+<span class='line'> 99</span>  * @param {string} from unit to convert from
+<span class='line'>100</span>  * @param {number} unknown amount to be convert
+<span class='line'>101</span>  * @returns {number|undefined} the converted amount
+<span class='line'>102</span>  */</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="NAME">UnknownUnit.convert</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">to</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">from</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">unknown</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">undefined</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>106</span> 
+<span class='line'>107</span> </span><span class="COMM">/**
+<span class='line'>108</span>  * Localize the measurement to the commonly used measurement in that locale. For example
+<span class='line'>109</span>  * If a user's locale is "en-US" and the measurement is given as "60 kmh",
+<span class='line'>110</span>  * the formatted number should be automatically converted to the most appropriate
+<span class='line'>111</span>  * measure in the other system, in this case, mph. The formatted result should
+<span class='line'>112</span>  * appear as "37.3 mph".
+<span class='line'>113</span>  *
+<span class='line'>114</span>  * @param {string} locale current locale string
+<span class='line'>115</span>  * @returns {Measurement} a new instance that is converted to locale
+<span class='line'>116</span>  */</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="NAME">UnknownUnit.prototype.localize</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">UnknownUnit</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">        </span><span class="NAME">unit</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.unit</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">        </span><span class="NAME">amount</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.amount</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>123</span> 
+<span class='line'>124</span> </span><span class="COMM">/**
+<span class='line'>125</span>  * Scale the measurement unit to an acceptable level. The scaling
+<span class='line'>126</span>  * happens so that the integer part of the amount is as small as
+<span class='line'>127</span>  * possible without being below zero. This will result in the
+<span class='line'>128</span>  * largest units that can represent this measurement without
+<span class='line'>129</span>  * fractions. Measurements can only be scaled to other measurements
+<span class='line'>130</span>  * of the same type.
+<span class='line'>131</span>  *
+<span class='line'>132</span>  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
+<span class='line'>133</span>  * or undefined if the system can be inferred from the current measure
+<span class='line'>134</span>  * @return {Measurement} a new instance that is scaled to the
+<span class='line'>135</span>  * right level
+<span class='line'>136</span>  */</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="NAME">UnknownUnit.prototype.scale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">measurementsystem</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">UnknownUnit</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">        </span><span class="NAME">unit</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.unit</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">        </span><span class="NAME">amount</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.amount</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>143</span> 
+<span class='line'>144</span> </span><span class="COMM">/**
+<span class='line'>145</span>  * Expand the current measurement such that any fractions of the current unit
+<span class='line'>146</span>  * are represented in terms of smaller units in the same system instead of fractions
+<span class='line'>147</span>  * of the current unit. For example, "6.25 feet" may be represented as
+<span class='line'>148</span>  * "6 feet 4 inches" instead. The return value is an array of measurements which
+<span class='line'>149</span>  * are progressively smaller until the smallest unit in the system is reached
+<span class='line'>150</span>  * or until there is a whole number of any unit along the way.
+<span class='line'>151</span>  *
+<span class='line'>152</span>  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
+<span class='line'>153</span>  * or undefined if the system can be inferred from the current measure
+<span class='line'>154</span>  * @return {Array.&lt;Measurement>} an array of new measurements in order from
+<span class='line'>155</span>  * the current units to the smallest units in the system which together are the
+<span class='line'>156</span>  * same measurement as this one
+<span class='line'>157</span>  */</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="NAME">UnknownUnit.prototype.expand</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">measurementsystem</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>159</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="KEYW">this</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// nothing to expand</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>161</span> 
+<span class='line'>162</span> </span><span class="COMM">/**
+<span class='line'>163</span>  * @private
+<span class='line'>164</span>  * @static
+<span class='line'>165</span>  */</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="NAME">UnknownUnit.getMeasures</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>169</span> 
+<span class='line'>170</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">UnknownUnit</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>171</span> </span></pre></body></html>

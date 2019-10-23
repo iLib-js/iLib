@@ -1,0 +1,128 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * GregorianCal.js - Represent a Gregorian calendar object.
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * Copyright © 2012-2018, JEDLSoft
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  7</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  8</span>  * You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 13</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 14</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 15</span>  *
+<span class='line'> 16</span>  * See the License for the specific language governing permissions and
+<span class='line'> 17</span>  * limitations under the License.
+<span class='line'> 18</span>  */</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> 
+<span class='line'> 21</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Utils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Utils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">MathUtils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./MathUtils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Calendar</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Calendar.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> 
+<span class='line'> 25</span> </span><span class="COMM">/**
+<span class='line'> 26</span>  * @class
+<span class='line'> 27</span>  * Construct a new Gregorian calendar object. This class encodes information about
+<span class='line'> 28</span>  * a Gregorian calendar.&lt;p>
+<span class='line'> 29</span>  *
+<span class='line'> 30</span>  *
+<span class='line'> 31</span>  * @constructor
+<span class='line'> 32</span>  * @param {{noinstance:boolean}=} options
+<span class='line'> 33</span>  * @extends Calendar
+<span class='line'> 34</span>  */</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">GregorianCal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">options.noinstance</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">        </span><span class="NAME">this.type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"gregorian"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 39</span> 
+<span class='line'> 40</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"function"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">        </span><span class="NAME">options.onLoad</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> 
+<span class='line'> 45</span> </span><span class="COMM">/**
+<span class='line'> 46</span>  * the lengths of each month
+<span class='line'> 47</span>  * @private
+<span class='line'> 48</span>  * @const
+<span class='line'> 49</span>  * @type Array.&lt;number>
+<span class='line'> 50</span>  */</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="NAME">GregorianCal.monthLengths</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">    </span><span class="NUMB">31</span><span class="PUNC">,</span><span class="WHIT">  </span><span class="COMM">/* Jan */</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">    </span><span class="NUMB">28</span><span class="PUNC">,</span><span class="WHIT">  </span><span class="COMM">/* Feb */</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">    </span><span class="NUMB">31</span><span class="PUNC">,</span><span class="WHIT">  </span><span class="COMM">/* Mar */</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">    </span><span class="NUMB">30</span><span class="PUNC">,</span><span class="WHIT">  </span><span class="COMM">/* Apr */</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">    </span><span class="NUMB">31</span><span class="PUNC">,</span><span class="WHIT">  </span><span class="COMM">/* May */</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">    </span><span class="NUMB">30</span><span class="PUNC">,</span><span class="WHIT">  </span><span class="COMM">/* Jun */</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">    </span><span class="NUMB">31</span><span class="PUNC">,</span><span class="WHIT">  </span><span class="COMM">/* Jul */</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">    </span><span class="NUMB">31</span><span class="PUNC">,</span><span class="WHIT">  </span><span class="COMM">/* Aug */</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">    </span><span class="NUMB">30</span><span class="PUNC">,</span><span class="WHIT">  </span><span class="COMM">/* Sep */</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">    </span><span class="NUMB">31</span><span class="PUNC">,</span><span class="WHIT">  </span><span class="COMM">/* Oct */</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">    </span><span class="NUMB">30</span><span class="PUNC">,</span><span class="WHIT">  </span><span class="COMM">/* Nov */</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">    </span><span class="NUMB">31</span><span class="WHIT">   </span><span class="COMM">/* Dec */</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 65</span> 
+<span class='line'> 66</span> </span><span class="COMM">/**
+<span class='line'> 67</span>  * Return the number of months in the given year. The number of months in a year varies
+<span class='line'> 68</span>  * for some luni-solar calendars because in some years, an extra month is needed to extend the
+<span class='line'> 69</span>  * days in a year to an entire solar year. The month is represented as a 1-based number
+<span class='line'> 70</span>  * where 1=first month, 2=second month, etc.
+<span class='line'> 71</span>  *
+<span class='line'> 72</span>  * @param {number} year a year for which the number of months is sought
+<span class='line'> 73</span>  * @return {number} The number of months in the given year
+<span class='line'> 74</span>  */</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="NAME">GregorianCal.prototype.getNumMonths</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NUMB">12</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 78</span> 
+<span class='line'> 79</span> </span><span class="COMM">/**
+<span class='line'> 80</span>  * Return the number of days in a particular month in a particular year. This function
+<span class='line'> 81</span>  * can return a different number for a month depending on the year because of things
+<span class='line'> 82</span>  * like leap years.
+<span class='line'> 83</span>  *
+<span class='line'> 84</span>  * @param {number} month the month for which the length is sought
+<span class='line'> 85</span>  * @param {number} year the year within which that month can be found
+<span class='line'> 86</span>  * @return {number} the number of days within the given month in the given year
+<span class='line'> 87</span>  */</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="NAME">GregorianCal.prototype.getMonLength</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">month</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">year</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">month</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">this.isLeapYear</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">GregorianCal.monthLengths</span><span class="PUNC">[</span><span class="NAME">month</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NUMB">29</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 95</span> 
+<span class='line'> 96</span> </span><span class="COMM">/**
+<span class='line'> 97</span>  * Return true if the given year is a leap year in the Gregorian calendar.
+<span class='line'> 98</span>  * The year parameter may be given as a number, or as a GregDate object.
+<span class='line'> 99</span>  * @param {number|GregorianDate} year the year for which the leap year information is being sought
+<span class='line'>100</span>  * @return {boolean} true if the given year is a leap year
+<span class='line'>101</span>  */</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="NAME">GregorianCal.prototype.isLeapYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">y</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'number'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">year</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">year.getYears</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">centuries</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">MathUtils.mod</span><span class="PUNC">(</span><span class="NAME">y</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">400</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">MathUtils.mod</span><span class="PUNC">(</span><span class="NAME">y</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">centuries</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NUMB">100</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">centuries</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NUMB">200</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">centuries</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NUMB">300</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>107</span> 
+<span class='line'>108</span> </span><span class="COMM">/**
+<span class='line'>109</span>  * Return the type of this calendar.
+<span class='line'>110</span>  *
+<span class='line'>111</span>  * @return {string} the name of the type of this calendar
+<span class='line'>112</span>  */</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="NAME">GregorianCal.prototype.getType</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.type</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>116</span> 
+<span class='line'>117</span> </span><span class="COMM">/* register this calendar for the factory method */</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="NAME">Calendar._constructors</span><span class="PUNC">[</span><span class="STRN">"gregorian"</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">GregorianCal</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>119</span> 
+<span class='line'>120</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">GregorianCal</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>121</span> </span></pre></body></html>

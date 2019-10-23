@@ -1,0 +1,126 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * JulianDate.js - Represent a date in the Julian calendar
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * Copyright © 2012-2015, 2018, JEDLSoft
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  7</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  8</span>  * You may obtain a copy of the License at
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 13</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 14</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 15</span>  *
+<span class='line'> 16</span>  * See the License for the specific language governing permissions and
+<span class='line'> 17</span>  * limitations under the License.
+<span class='line'> 18</span>  */</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">RataDie</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./RataDie.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">JulianCal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./JulianCal.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 22</span> 
+<span class='line'> 23</span> </span><span class="COMM">/**
+<span class='line'> 24</span>  * @class
+<span class='line'> 25</span>  * Construct a new Julian RD date number object. The constructor parameters can
+<span class='line'> 26</span>  * contain any of the following properties:
+<span class='line'> 27</span>  *
+<span class='line'> 28</span>  * &lt;ul>
+<span class='line'> 29</span>  * &lt;li>&lt;i>unixtime&lt;i> - sets the time of this instance according to the given
+<span class='line'> 30</span>  * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970.
+<span class='line'> 31</span>  *
+<span class='line'> 32</span>  * &lt;li>&lt;i>julianday&lt;/i> - sets the time of this instance according to the given
+<span class='line'> 33</span>  * Julian Day instance or the Julian Day given as a float
+<span class='line'> 34</span>  *
+<span class='line'> 35</span>  * &lt;li>&lt;i>year&lt;/i> - any integer, including 0
+<span class='line'> 36</span>  *
+<span class='line'> 37</span>  * &lt;li>&lt;i>month&lt;/i> - 1 to 12, where 1 means January, 2 means February, etc.
+<span class='line'> 38</span>  *
+<span class='line'> 39</span>  * &lt;li>&lt;i>day&lt;/i> - 1 to 31
+<span class='line'> 40</span>  *
+<span class='line'> 41</span>  * &lt;li>&lt;i>hour&lt;/i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation
+<span class='line'> 42</span>  * is always done with an unambiguous 24 hour representation
+<span class='line'> 43</span>  *
+<span class='line'> 44</span>  * &lt;li>&lt;i>minute&lt;/i> - 0 to 59
+<span class='line'> 45</span>  *
+<span class='line'> 46</span>  * &lt;li>&lt;i>second&lt;/i> - 0 to 59
+<span class='line'> 47</span>  *
+<span class='line'> 48</span>  * &lt;li>&lt;i>millisecond&lt;/i> - 0 to 999
+<span class='line'> 49</span>  *
+<span class='line'> 50</span>  * &lt;li>&lt;i>date&lt;/i> - use the given intrinsic Javascript date to initialize this one.
+<span class='line'> 51</span>  * &lt;/ul>
+<span class='line'> 52</span>  *
+<span class='line'> 53</span>  * If the constructor is called with another Julian date instance instead of
+<span class='line'> 54</span>  * a parameter block, the other instance acts as a parameter block and its
+<span class='line'> 55</span>  * settings are copied into the current instance.&lt;p>
+<span class='line'> 56</span>  *
+<span class='line'> 57</span>  * If the constructor is called with no arguments at all or if none of the
+<span class='line'> 58</span>  * properties listed above are present, then the RD is calculate based on
+<span class='line'> 59</span>  * the current date at the time of instantiation. &lt;p>
+<span class='line'> 60</span>  *
+<span class='line'> 61</span>  * If any of the properties from &lt;i>year&lt;/i> through &lt;i>millisecond&lt;/i> are not
+<span class='line'> 62</span>  * specified in the params, it is assumed that they have the smallest possible
+<span class='line'> 63</span>  * value in the range for the property (zero or one).&lt;p>
+<span class='line'> 64</span>  *
+<span class='line'> 65</span>  *
+<span class='line'> 66</span>  * @private
+<span class='line'> 67</span>  * @constructor
+<span class='line'> 68</span>  * @extends RataDie
+<span class='line'> 69</span>  * @param {Object=} params parameters that govern the settings and behaviour of this Julian RD date
+<span class='line'> 70</span>  */</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">JulianRataDie</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">params</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">    </span><span class="NAME">this.cal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">params</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">params.cal</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">JulianCal</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">    </span><span class="NAME">this.rd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">NaN</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">    </span><span class="NAME">RataDie.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">params</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 76</span> 
+<span class='line'> 77</span> </span><span class="NAME">JulianRataDie.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">RataDie</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="NAME">JulianRataDie.prototype.parent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">RataDie</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="NAME">JulianRataDie.prototype.constructor</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">JulianRataDie</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 80</span> 
+<span class='line'> 81</span> </span><span class="COMM">/**
+<span class='line'> 82</span>  * The difference between a zero Julian day and the first Julian date
+<span class='line'> 83</span>  * of Friday, July 16, 622 CE Julian.
+<span class='line'> 84</span>  * @private
+<span class='line'> 85</span>  * @type number
+<span class='line'> 86</span>  */</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="NAME">JulianRataDie.prototype.epoch</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1721422.5</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 88</span> 
+<span class='line'> 89</span> </span><span class="COMM">/**
+<span class='line'> 90</span>  * Calculate the Rata Die (fixed day) number of the given date from the
+<span class='line'> 91</span>  * date components.
+<span class='line'> 92</span>  *
+<span class='line'> 93</span>  * @protected
+<span class='line'> 94</span>  * @param {Object} date the date components to calculate the RD from
+<span class='line'> 95</span>  */</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="NAME">JulianRataDie.prototype._setDateComponents</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">date</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">year</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">date.year</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">date.year</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">years</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">365</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">year</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">year</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">/</span><span class="NUMB">4</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dayInYear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">date.month</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">JulianCal.cumMonthLengths</span><span class="PUNC">[</span><span class="NAME">date.month</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">        </span><span class="NAME">date.day</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">        </span><span class="PUNC">(</span><span class="NAME">this.cal.isLeapYear</span><span class="PUNC">(</span><span class="NAME">date.year</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">date.month</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">rdtime</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">date.hour</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">3600000</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">        </span><span class="NAME">date.minute</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">60000</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">        </span><span class="NAME">date.second</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NUMB">1000</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">        </span><span class="NAME">date.millisecond</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">        </span><span class="NUMB">86400000</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>107</span> 
+<span class='line'>108</span> </span><span class="WHIT">    </span><span class="COMM">/*
+<span class='line'>109</span>     console.log("calcRataDie: converting " +  JSON.stringify(parts));
+<span class='line'>110</span>     console.log("getRataDie: year is " +  years);
+<span class='line'>111</span>     console.log("getRataDie: day in year is " +  dayInYear);
+<span class='line'>112</span>     console.log("getRataDie: rdtime is " +  rdtime);
+<span class='line'>113</span>     console.log("getRataDie: rd is " +  (years + dayInYear + rdtime));
+<span class='line'>114</span>     */</span><span class="WHIT">
+<span class='line'>115</span> 
+<span class='line'>116</span> </span><span class="WHIT">    </span><span class="NAME">this.rd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">years</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">dayInYear</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">rdtime</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>118</span> 
+<span class='line'>119</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">JulianRataDie</span><span class="PUNC">;</span></pre></body></html>

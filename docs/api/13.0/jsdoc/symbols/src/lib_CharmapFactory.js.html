@@ -1,0 +1,208 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * CharmapFactory.js - Factory class to create the right subclasses of a charmap for any
+<span class='line'>  3</span>  * given chararacter set.
+<span class='line'>  4</span>  *
+<span class='line'>  5</span>  * Copyright © 2015, 2018, JEDLSoft
+<span class='line'>  6</span>  *
+<span class='line'>  7</span>  * Licensed under the Apache License, Version 2.0 (the "License");
+<span class='line'>  8</span>  * you may not use this file except in compliance with the License.
+<span class='line'>  9</span>  * You may obtain a copy of the License at
+<span class='line'> 10</span>  *
+<span class='line'> 11</span>  *     http://www.apache.org/licenses/LICENSE-2.0
+<span class='line'> 12</span>  *
+<span class='line'> 13</span>  * Unless required by applicable law or agreed to in writing, software
+<span class='line'> 14</span>  * distributed under the License is distributed on an "AS IS" BASIS,
+<span class='line'> 15</span>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<span class='line'> 16</span>  *
+<span class='line'> 17</span>  * See the License for the specific language governing permissions and
+<span class='line'> 18</span>  * limitations under the License.
+<span class='line'> 19</span>  */</span><span class="WHIT">
+<span class='line'> 20</span> 
+<span class='line'> 21</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./ilib.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">JSUtils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./JSUtils.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> 
+<span class='line'> 24</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Charset</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Charset.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 25</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Charmap</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Charmap.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 26</span> 
+<span class='line'> 27</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">circumventWebpackCharmap</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"./"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">x</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">".js"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 30</span> 
+<span class='line'> 31</span> </span><span class="COMM">/**
+<span class='line'> 32</span>  * Factory method to create a new instance of a character set mapping (charmap)
+<span class='line'> 33</span>  * subclass that is appropriate for the requested charset. Charmap instances map strings to
+<span class='line'> 34</span>  * other character sets. The charsets can be of any type, single-byte, multi-byte,
+<span class='line'> 35</span>  * shifting, etc. &lt;p>
+<span class='line'> 36</span>  *
+<span class='line'> 37</span>  * All mappings are done to or from Unicode in the UTF-16 encoding, which is the base
+<span class='line'> 38</span>  * character set and encoding used by Javascript itself. In order to convert
+<span class='line'> 39</span>  * between two non-Unicode character sets, you must chain two charmap instances together
+<span class='line'> 40</span>  * to first map to Unicode and then back to the second charset. &lt;p>
+<span class='line'> 41</span>  *
+<span class='line'> 42</span>  * The options parameter controls which mapping is constructed and its behaviours. The
+<span class='line'> 43</span>  * current list of supported options are:
+<span class='line'> 44</span>  *
+<span class='line'> 45</span>  * &lt;ul>
+<span class='line'> 46</span>  * &lt;li>&lt;i>name&lt;/i> - the name of the native charset to map to or from. This can be
+<span class='line'> 47</span>  * given as an {@link Charset} instance or as a string that contains any commonly used name
+<span class='line'> 48</span>  * for the character set, which is normalized to a standard IANA name.
+<span class='line'> 49</span>  * If a name is not given, this class will default to the Western European character
+<span class='line'> 50</span>  * set called ISO-8859-15.
+<span class='line'> 51</span>  *
+<span class='line'> 52</span>  * &lt;li>&lt;i>missing&lt;/i> - specify what to do if a mapping is missing for a particular
+<span class='line'> 53</span>  * character. For example, if you are mapping Unicode characters to a particular native
+<span class='line'> 54</span>  * character set that does not support particular Unicode characters, the mapper will
+<span class='line'> 55</span>  * follow the behaviour specified in this property. Valid values are:
+<span class='line'> 56</span>  * &lt;ul>
+<span class='line'> 57</span>  * &lt;li>&lt;i>skip&lt;/i> - skip any characters that do not exist in the target charset
+<span class='line'> 58</span>  * &lt;li>&lt;i>placeholder&lt;/i> - put a static placeholder character in the output string
+<span class='line'> 59</span>  * wherever there is an unknown character in the input string. Use the &lt;i>placeholder&lt;/i>
+<span class='line'> 60</span>  * parameter to specify which character to use in this case
+<span class='line'> 61</span>  * &lt;li>&lt;i>escape&lt;/i> - use an escape sequence to represent the unknown character
+<span class='line'> 62</span>  * &lt;/ul>
+<span class='line'> 63</span>  * The default value for the missing property if not otherwise specified is "escape"
+<span class='line'> 64</span>  * so that information is not lost.
+<span class='line'> 65</span>  *
+<span class='line'> 66</span>  * &lt;li>&lt;i>placeholder&lt;/i> - specify the placeholder character to use when the
+<span class='line'> 67</span>  * mapper cannot map a particular input character to the output string. If this
+<span class='line'> 68</span>  * option is not specified, then the '?' (question mark) character is used where
+<span class='line'> 69</span>  * possible.
+<span class='line'> 70</span>  *
+<span class='line'> 71</span>  * &lt;li>&lt;i>escapeStyle&lt;/i> - what style of escape sequences should be used to
+<span class='line'> 72</span>  * escape unknown characters in the input when mapping to native, and what
+<span class='line'> 73</span>  * style of espcae sequences should be parsed when mapping to Unicode. Valid
+<span class='line'> 74</span>  * values are:
+<span class='line'> 75</span>  * &lt;ul>
+<span class='line'> 76</span>  * &lt;li>&lt;i>html&lt;/i> - Escape the characters as HTML entities. This would use
+<span class='line'> 77</span>  * the standard HTML 5.0 (or later) entity names where possible, and numeric
+<span class='line'> 78</span>  * entities in all other cases. Eg. an "e" with an acute accent would be
+<span class='line'> 79</span>  * "&#x00E9;"
+<span class='line'> 80</span>  * &lt;li>&lt;i>js&lt;/i> - Use the Javascript escape style. Eg. an "e" with an acute
+<span class='line'> 81</span>  * accent would be "\u00E9". This can also be specified as "c#" as
+<span class='line'> 82</span>  * it uses a similar escape syntax.
+<span class='line'> 83</span>  * &lt;li>&lt;i>c&lt;/i> - Use the C/C++ escape style, which is similar to the the
+<span class='line'> 84</span>  * Javascript style, but uses an "x" in place of the "u". Eg. an "e" with an
+<span class='line'> 85</span>  * acute accent would be "\x00E9". This can also be specified as "c++".
+<span class='line'> 86</span>  * &lt;li>&lt;i>java&lt;/i> - Use the Java escape style. This is very similar to the
+<span class='line'> 87</span>  * the Javascript style, but the backslash has to be escaped twice. Eg. an
+<span class='line'> 88</span>  * "e" with an acute accent would be "\\u00E9". This can also be specified
+<span class='line'> 89</span>  * as "ruby", as Ruby uses a similar escape syntax with double backslashes.
+<span class='line'> 90</span>  * &lt;li>&lt;i>perl&lt;/i> - Use the Perl escape style. Eg. an "e" with an acute
+<span class='line'> 91</span>  * accent would be "\N{U+00E9}"
+<span class='line'> 92</span>  * &lt;/ul>
+<span class='line'> 93</span>  * The default if this style is not specified is "js" for Javascript.
+<span class='line'> 94</span>  *
+<span class='line'> 95</span>  * &lt;li>&lt;i>onLoad&lt;/i> - a callback function to call when this object is fully
+<span class='line'> 96</span>  * loaded. When the onLoad option is given, this class will attempt to
+<span class='line'> 97</span>  * load any missing data using the ilib loader callback.
+<span class='line'> 98</span>  * When the constructor is done (even if the data is already preassembled), the
+<span class='line'> 99</span>  * onLoad function is called with the current instance as a parameter, so this
+<span class='line'>100</span>  * callback can be used with preassembled or dynamic loading or a mix of the two.
+<span class='line'>101</span>  *
+<span class='line'>102</span>  * &lt;li>&lt;i>sync&lt;/i> - tell whether to load any missing data synchronously or
+<span class='line'>103</span>  * asynchronously. If this option is given as "false", then the "onLoad"
+<span class='line'>104</span>  * callback must be given, because the instance returned from this constructor will
+<span class='line'>105</span>  * not be usable for a while.
+<span class='line'>106</span>  *
+<span class='line'>107</span>  * &lt;li>&lt;i>loadParams&lt;/i> - an object containing parameters to pass to the
+<span class='line'>108</span>  * loader callback function when data is missing. The parameters are not
+<span class='line'>109</span>  * interpretted or modified in any way. They are simply passed along. The object
+<span class='line'>110</span>  * may contain any property/value pairs as long as the calling code is in
+<span class='line'>111</span>  * agreement with the loader callback function as to what those parameters mean.
+<span class='line'>112</span>  * &lt;/ul>
+<span class='line'>113</span>  *
+<span class='line'>114</span>  * If this copy of ilib is pre-assembled and all the data is already available,
+<span class='line'>115</span>  * or if the data was already previously loaded, then this constructor will call
+<span class='line'>116</span>  * the onLoad callback immediately when the initialization is done.
+<span class='line'>117</span>  * If the onLoad option is not given, this class will only attempt to load any
+<span class='line'>118</span>  * missing data synchronously.
+<span class='line'>119</span>  *
+<span class='line'>120</span>  * @static
+<span class='line'>121</span>  * @param {Object=} options options controlling the construction of this instance, or
+<span class='line'>122</span>  * undefined to use the default options
+<span class='line'>123</span>  * @return {Charmap|undefined} an instance of a character set mapping class appropriate for
+<span class='line'>124</span>  * the requested charset, or undefined if no mapper could be found that supports the
+<span class='line'>125</span>  * requested charset
+<span class='line'>126</span>  */</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">CharmapFactory</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">charsetName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">options.name</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"ISO-8859-15"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>130</span> 
+<span class='line'>131</span> </span><span class="WHIT">    </span><span class="COMM">// console.log("CharmapFactory: called with options: " + JSON.stringify(options));</span><span class="WHIT">
+<span class='line'>132</span> 
+<span class='line'>133</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">options.sync</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'boolean'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">            </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options.sync</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">        </span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>140</span> 
+<span class='line'>141</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">instance</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>142</span> 
+<span class='line'>143</span> </span><span class="WHIT">    </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Charset</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">        </span><span class="NAME">name</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">charsetName</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">        </span><span class="NAME">sync</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">        </span><span class="NAME">loadParams</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">options.loadParams</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">        </span><span class="NAME">onLoad</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">charset</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">            </span><span class="COMM">// name will be normalized already</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">cons</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">name</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">charset.getName</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>150</span> 
+<span class='line'>151</span> </span><span class="WHIT">            </span><span class="COMM">// console.log("CharmapFactory: normalized charset name: " + name);</span><span class="WHIT">
+<span class='line'>152</span> 
+<span class='line'>153</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">Charmap._algorithms</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">ilib.isDynCode</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">                </span><span class="COMM">// console.log("CharmapFactory: isDynCode. Doing require");</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">entry</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">CharmapFactory._dynMap</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">"CharmapTable"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">                </span><span class="NAME">cons</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Charmap._algorithms</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="NAME">circumventWebpackCharmap</span><span class="PUNC">(</span><span class="NAME">entry</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>158</span> 
+<span class='line'>159</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">cons</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">                </span><span class="NAME">cons</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Charmap._algorithms</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">Charmap._algorithms</span><span class="PUNC">[</span><span class="STRN">"CharmapTable"</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>162</span> 
+<span class='line'>163</span> </span><span class="WHIT">            </span><span class="COMM">// console.log("CharmapFactory: cons is "); console.dir(cons);</span><span class="WHIT">
+<span class='line'>164</span> 
+<span class='line'>165</span> </span><span class="WHIT">            </span><span class="COMM">// Pass the same options through to the constructor so the subclass</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">            </span><span class="COMM">// has the ability to do something with if it needs to. It should also call</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">            </span><span class="COMM">// the onLoad callback when it is done.</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">            </span><span class="NAME">instance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cons</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">cons</span><span class="PUNC">(</span><span class="NAME">JSUtils.merge</span><span class="PUNC">(</span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="NAME">charset</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">charset</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>171</span> 
+<span class='line'>172</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">instance</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>174</span> 
+<span class='line'>175</span> 
+<span class='line'>176</span> </span><span class="COMM">/**
+<span class='line'>177</span>  * Map standardized charset names to classes to initialize in the dynamic code model.
+<span class='line'>178</span>  * These classes implement algorithmic mappings instead of table-based ones.
+<span class='line'>179</span>  * TODO: Need to figure out some way that this doesn't have to be updated by hand.
+<span class='line'>180</span>  * @private
+<span class='line'>181</span>  */</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="NAME">CharmapFactory._dynMap</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">    </span><span class="STRN">"UTF-8"</span><span class="PUNC">:</span><span class="WHIT">      </span><span class="STRN">"UTF8"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">    </span><span class="STRN">"UTF-16"</span><span class="PUNC">:</span><span class="WHIT">     </span><span class="STRN">"UTF16LE"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">    </span><span class="STRN">"UTF-16LE"</span><span class="PUNC">:</span><span class="WHIT">   </span><span class="STRN">"UTF16LE"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">    </span><span class="STRN">"UTF-16BE"</span><span class="PUNC">:</span><span class="WHIT">   </span><span class="STRN">"UTF16BE"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">    </span><span class="STRN">"US-ASCII"</span><span class="PUNC">:</span><span class="WHIT">   </span><span class="STRN">"Charmap"</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">    </span><span class="COMM">/*
+<span class='line'>189</span>     not implemented yet
+<span class='line'>190</span>     "ISO-2022-JP": "ISO2022",
+<span class='line'>191</span>     "ISO-2022-JP-1": "ISO2022",
+<span class='line'>192</span>     "ISO-2022-JP-2": "ISO2022",
+<span class='line'>193</span>     "ISO-2022-JP-3": "ISO2022",
+<span class='line'>194</span>     "ISO-2022-JP-2004": "ISO2022",
+<span class='line'>195</span>     "ISO-2022-CN": "ISO2022",
+<span class='line'>196</span>     "ISO-2022-CN-EXT": "ISO2022",
+<span class='line'>197</span>     "ISO-2022-KR": "ISO2022"
+<span class='line'>198</span>     */</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>200</span> 
+<span class='line'>201</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">CharmapFactory</span><span class="PUNC">;</span></pre></body></html>
