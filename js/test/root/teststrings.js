@@ -1043,6 +1043,52 @@ module.exports.teststrings = {
         test.done();
     },
 
+    testStringDelegateMatchAll: function(test) {
+        if (typeof("".matchAll) === 'function') {
+            test.expect(15);
+            var str = new IString("abc bd bc ab ef bc");
+
+            test.ok(str !== null);
+
+            var it = str.matchAll(/bc/g);
+            
+            test.ok(it);
+            
+            test.ok(it.hasNext());
+
+            var match = it.next();
+            test.ok(match);
+            
+            test.equal(match[1], "bc");
+
+            test.ok(it.hasNext());
+
+            match = it.next();
+            test.ok(match);
+            
+            test.equal(match[1], "bc");
+
+            test.ok(it.hasNext());
+
+            match = it.next();
+            test.ok(match);
+            
+            test.equal(match[1], "bc");
+
+            test.ok(it.hasNext());
+
+            match = it.next();
+            test.ok(match);
+            
+            test.equal(match[1], "bc");
+
+            test.ok(!it.hasNext());
+        } else {
+            console.log("This version of the JS engine does not support String.matchAll()");
+        }
+        test.done();
+    },
+
     testStringDelegateToLocaleLowerCase: function(test) {
         if (typeof("".toLocaleLowerCase) === 'function') {
             test.expect(2);
