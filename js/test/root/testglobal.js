@@ -74,7 +74,7 @@ module.exports.testglobal = {
             return;
         }
         test.expect(1);
-        test.equal(ilib.getVersion().substring(0,4), "14.4");
+        test.equal(ilib.getVersion().substring(0,4), "14.5");
         test.done();
     },
     
