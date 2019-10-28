@@ -957,6 +957,15 @@ IString.prototype = {
     },
 
     /**
+     * Same as String.matchAll()
+     * @param {string} regexp the regular expression to match
+     * @return {iterator} an iterator of the matches
+     */
+    matchAll: function(regexp) {
+        return this.str.matchAll(regexp);
+    },
+
+    /**
      * Same as String.replace()
      * @param {string} searchValue a regular expression to search for
      * @param {string} newValue the string to replace the matches with
@@ -1051,6 +1060,138 @@ IString.prototype = {
      */
     toUpperCase: function() {
         return this.str.toUpperCase();
+    },
+
+    /**
+     * Same as String.endsWith().
+     * @return {boolean} true if the given characters are found at
+     * the end of the string, and false otherwise
+     */
+    endsWith: function(searchString, length) {
+        return this.str.endsWith(searchString, length);
+    },
+
+    /**
+     * Same as String.startsWith().
+     * @return {boolean} true if the given characters are found at
+     * the beginning of the string, and false otherwise
+     */
+    startsWith: function(searchString, length) {
+        return this.str.startsWith(searchString, length);
+    },
+
+    /**
+     * Same as String.includes().
+     * @return {boolean} true if the search string is found anywhere
+     * with the given string, and false otherwise
+     */
+    includes: function(searchString, position) {
+        return this.str.includes(searchString, position);
+    },
+
+    /**
+     * Same as String.normalize(). If this JS engine does not support
+     * this method, then you can use the NormString class of ilib
+     * to the same thing (albeit a little slower).
+     *
+     * @return {string} the string in normalized form
+     */
+    normalize: function(form) {
+        return this.str.normalize(form);
+    },
+
+    /**
+     * Same as String.padEnd().
+     * @return {string} a string of the specified length with the
+     * pad string applied at the end of the current string
+     */
+    padEnd: function(targetLength, padString) {
+        return this.str.padEnd(targetLength, padString);
+    },
+
+    /**
+     * Same as String.padStart().
+     * @return {string} a string of the specified length with the
+     * pad string applied at the end of the current string
+     */
+    padStart: function(targetLength, padString) {
+        return this.str.padStart(targetLength, padString);
+    },
+
+    /**
+     * Same as String.repeat().
+     * @return {string} a new string containing the specified number
+     * of copies of the given string
+     */
+    repeat: function(count) {
+        return this.str.repeat(count);
+    },
+
+    /**
+     * Same as String.toLocaleLowerCase(). If the JS engine does not support this
+     * method, you can use the ilib CaseMapper class instead.
+     * @return {string} a new string representing the calling string
+     * converted to lower case, according to any locale-sensitive
+     * case mappings
+     */
+    toLocaleLowerCase: function(locale) {
+        return this.str.toLocaleLowerCase(locale);
+    },
+
+    /**
+     * Same as String.toLocaleUpperCase(). If the JS engine does not support this
+     * method, you can use the ilib CaseMapper class instead.
+     * @return {string} a new string representing the calling string
+     * converted to upper case, according to any locale-sensitive
+     * case mappings
+     */
+    toLocaleUpperCase: function(locale) {
+        return this.str.toLocaleUpperCase(locale);
+    },
+
+    /**
+     * Same as String.trim().
+     * @return {string} a new string representing the calling string stripped
+     * of whitespace from both ends.
+     */
+    trim: function() {
+        return this.str.trim();
+    },
+
+    /**
+     * Same as String.trimEnd().
+     * @return {string} a new string representing the calling string stripped
+     * of whitespace from its (right) end.
+     */
+    trimEnd: function() {
+        return this.str.trimEnd();
+    },
+
+    /**
+     * Same as String.trimRight().
+     * @return {string} a new string representing the calling string stripped
+     * of whitespace from its (right) end.
+     */
+    trimRight: function() {
+        return this.str.trimRight();
+    },
+
+    /**
+     * Same as String.trimStart().
+     * @return {string} A new string representing the calling string stripped
+     * of whitespace from its beginning (left end).
+     */
+    trimStart: function() {
+        return this.str.trimStart();
+    },
+
+    /**
+     * Same as String.trimLeft().
+     * @return {string} A new string representing the calling string stripped
+     * of whitespace from its beginning (left end).
+     */
+    trimLeft: function() {
+        return this.str.trimLeft();
     },
 
     /**
@@ -1296,5 +1437,11 @@ IString.prototype = {
         return this.cpLength;
     }
 };
+
+Object.defineProperty(IString, 'length', {
+    get: function() {
+        return this._length();
+    }
+});
 
 module.exports = IString;
