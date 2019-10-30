@@ -116,6 +116,11 @@ limitations under the License.
 	<target name="prepare" depends="update.package.json" description="Prepare all directories that are needed before the project can be built">
 		<mkdir dir="${build.output.js}"/>
 		<mkdir dir="${build.output.dyncode}"/>
+		<mkdir dir="${build.output.dyncode}/charmaps"/>
+		<mkdir dir="${build.output.dyncode}/nfc"/>
+		<mkdir dir="${build.output.dyncode}/nfd"/>
+		<mkdir dir="${build.output.dyncode}/nfkc"/>
+		<mkdir dir="${build.output.dyncode}/nfkd"/>
 		<mkdir dir="${build.output.test}"/>
 		
 	</target>
@@ -341,6 +346,11 @@ limitations under the License.
 			<arg value="-v"/>
             <fileset dir="${build.lib}">
                 <include name="*.js"/>
+                <include name="charmaps/*.js"/>
+                <include name="nfc/*.js"/>
+                <include name="nfd*/.js"/>
+                <include name="nfkc/*.js"/>
+                <include name="nfkd/*.js"/>
                 <exclude name="ilib.js"/>
                 <exclude name="ilib-*.js"/>
                 <exclude name="externs.js"/>
@@ -490,6 +500,24 @@ limitations under the License.
                 <include name="env.js"/>
             </fileset>
 		</copy>
+        <mkdir dir="${build.export}/package/src" description="Dir to contain all the exported source files"/>
+        <copy todir="${build.export}/package/src">
+            <fileset dir="${build.base}/lib">
+                <include name="**/*.js"/>
+                <exclude name="metafiles/*"/>
+                <exclude name="ilib-qt.js"/>
+                <exclude name="ilib-rhino.js"/>
+                <exclude name="ilib-ringo.js"/>
+                <exclude name="ilib-web.js"/>
+                <exclude name="*Loader.js"/>
+            </fileset>
+            <fileset dir="${build.base}/lib">
+                <include name="Loader.js"/>
+                <include name="RhinoLoader.js"/>
+                <include name="WebpackLoader.js"/>
+                <include name="NodeLoader.js"/>
+            </fileset>
+        </copy>
 		<copy todir="${build.export}/package/locale">
 			<fileset dir="${build.locale}">
 				<include name="**/*.json"/>

@@ -42,6 +42,7 @@
     "files": [
         "lib",
         "locale",
+        "src",
         "index.js",
         "README.md",
         "LICENSE"
