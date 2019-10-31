@@ -475,6 +475,7 @@ limitations under the License.
 		<copy todir="${build.export}/package/lib">
 			<fileset dir="${build.export}/js/dyncode">
 				<include name="**/*"/>
+				<exclude name="externs.js"/>
 				<exclude name="*Loader.js"/>
 				<exclude name="ilib-web.js"/>
 				<exclude name="ilib-qt.js"/>
@@ -504,6 +505,7 @@ limitations under the License.
         <copy todir="${build.export}/package/src">
             <fileset dir="${build.base}/lib">
                 <include name="**/*.js"/>
+                <exclude name="externs.js"/>
                 <exclude name="metafiles/*"/>
                 <exclude name="ilib-qt.js"/>
                 <exclude name="ilib-rhino.js"/>
