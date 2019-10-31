@@ -49,7 +49,7 @@ var IString = function (string) {
             this.str = string.toString();
         }
     } else if (typeof(string) === 'string') {
-        this.str = new String(string);
+        this.str = String(string); // copy it
     } else {
         this.str = "";
     }
