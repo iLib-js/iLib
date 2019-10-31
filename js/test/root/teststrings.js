@@ -1045,7 +1045,7 @@ module.exports.teststrings = {
 
     testStringDelegateMatchAll: function(test) {
         if (typeof("".matchAll) === 'function') {
-            test.expect(15);
+            test.expect(13);
             var str = new IString("abc bd bc ab ef bc");
 
             test.ok(str !== null);
@@ -1054,35 +1054,24 @@ module.exports.teststrings = {
             
             test.ok(it);
             
-            test.ok(it.hasNext());
-
             var match = it.next();
             test.ok(match);
-            
-            test.equal(match[1], "bc");
-
-            test.ok(it.hasNext());
+            test.ok(!match.done);
+            test.equal(match.value[0], "bc");
 
             match = it.next();
             test.ok(match);
-            
-            test.equal(match[1], "bc");
-
-            test.ok(it.hasNext());
+            test.ok(!match.done);
+            test.equal(match.value[0], "bc");
 
             match = it.next();
             test.ok(match);
-            
-            test.equal(match[1], "bc");
-
-            test.ok(it.hasNext());
+            test.ok(!match.done);
+            test.equal(match.value[0], "bc");
 
             match = it.next();
             test.ok(match);
-            
-            test.equal(match[1], "bc");
-
-            test.ok(!it.hasNext());
+            test.ok(match.done);
         } else {
             console.log("This version of the JS engine does not support String.matchAll()");
         }
