@@ -1115,7 +1115,7 @@ module.exports.teststrings = {
 
             test.ok(str !== null);
 
-            test.ok(str.toString().endsWith("def"));
+            test.ok(str.endsWith("def"));
         } else {
             console.log("This version of the JS engine does not support String.endsWith()");
         }
@@ -1130,7 +1130,7 @@ module.exports.teststrings = {
 
             test.ok(str !== null);
 
-            test.ok(!str.toString().endsWith("de"));
+            test.ok(!str.endsWith("de"));
         } else {
             console.log("This version of the JS engine does not support String.endsWith()");
         }
