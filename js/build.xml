@@ -344,8 +344,32 @@ limitations under the License.
 		</exec>
 
 		<!-- then do all the rest of them -->
-		<mkdir dir="${build.output}/src"/>
-		<apply osfamily="unix" executable="uglifyjs2" dir="${build.lib}" dest="${build.output.dyncode}" parallel="false" relative="yes">
+		<mkdir dir="${build.output}/src/lib"/>
+        <copy todir="${build.output}/src/lib">
+            <fileset dir="${build.lib}">
+                <include name="**/*.js"/>
+                <exclude name="**/ilib-*.js"/>
+                <exclude name="**/externs.js"/>
+                <exclude name="**/datefmtstr.js"/>
+            </fileset>
+            <fileset dir="${build.lib}">
+                <include name="**/ilib-node*"/>
+                <include name="**/ilib-qt*"/>
+                <include name="**/ilib-webpack*"/>
+                <include name="**/ilib-unpack.js"/>
+                <include name="**/ilib-web.js"/>
+            </fileset>
+        </copy>
+        <copy file="${build.base}/index.js" toFile="${build.output}/src/index.js" verbose="true"/>
+        <replace token="// !macro ilibVersion" value='"${version}"' preserveLastModified="true">
+            <fileset dir="${build.output}/src/lib" includes="ilib.js"/>
+        </replace>
+        <copy todir="${build.output.dyncode}">
+            <fileset dir="${build.output}/src">
+                <include name="**/*.js"/>
+            </fileset>
+        </copy>
+		<apply osfamily="unix" executable="uglifyjs2" dir="${build.output.dyncode}" dest="${build.output.dyncode}" parallel="false" relative="yes">
 			<srcfile/>
 			<arg value="--comments"/>
 			<arg value="${keep.these.comments}"/>
@@ -361,27 +385,13 @@ limitations under the License.
 	            <mergemapper to="-o"/>
 				<globmapper from="*.js" to="*.js"/>
                 <mergemapper to="--source-map"/>
-                <globmapper from="*.js" to="../src/*.js.map"/>
+                <globmapper from="*.js" to="*.js.map"/>
                 <mergemapper to="--source-map-root"/>
-                <globmapper from="*.js" to="*.js"/>
+                <globmapper from="*.js" to="../src/*.js"/>
 			</compositemapper>
 
-			<fileset dir="${build.lib}">
-                <include name="*.js"/>
-                <exclude name="ilib.js"/>
-                <exclude name="ilib-*.js"/>
-                <exclude name="externs.js"/>
-                <exclude name="datefmtstr.js"/>
-            </fileset>
-            <fileset dir="${build.lib}">
-                <include name="ilib-node*"/>
-                <include name="ilib-qt*"/>
-                <include name="ilib-webpack*"/>
-                <include name="ilib-unpack.js"/>
-                <include name="ilib-web.js"/>
-            </fileset>
-            <fileset dir="${build.base}">
-                <include name="index.js"/>
+			<fileset dir="${build.output.dyncode}">
+                <include name="**/*.js"/>
             </fileset>
         </apply>
         <apply osfamily="windows" executable="uglifyjs.bat" dest="${build.output.dyncode}" parallel="false">
