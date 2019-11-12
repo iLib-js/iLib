@@ -1068,6 +1068,12 @@ IString.prototype = {
      * the end of the string, and false otherwise
      */
     endsWith: function(searchString, length) {
+        /* (note)length is optional. If it is omitted the default value is the length of string.
+        *  But If length is omitted, it returns false on QT. (tested on QT 5.12)
+        */
+        if (typeof length === "undefined") {
+            length = this.str.length;
+        }
         return this.str.endsWith(searchString, length);
     },
 
