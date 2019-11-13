@@ -116,8 +116,8 @@ limitations under the License.
 	<target name="prepare" depends="update.package.json" description="Prepare all directories that are needed before the project can be built">
 		<mkdir dir="${build.output.js}"/>
 		<mkdir dir="${build.output.dyncode}"/>
+		<mkdir dir="${build.output}/package/lib"/>
 		<mkdir dir="${build.output.test}"/>
-		
 	</target>
 	<!-- =================================================================== -->
 	<!-- Create the core jar file                                            -->
@@ -289,146 +289,38 @@ limitations under the License.
 	<target name="assemble.demo" depends="assemble.demo.assembled,assemble.demo.dyndata"/>
 
 	<target name="assemble.dynamic" depends="prepare,gen.manifest.locale" description="compresses/minifies the dynamic load code files">
-		<!-- handle ilib.js as a special case so we can replace the version number in it -->
-		<copy file="${build.lib}/ilib.js" toFile="${build.output.js}/ilib.js" verbose="true"/>
-		<replace token="// !macro ilibVersion" value='"${version}"' preserveLastModified="true">
-		    <fileset dir="${build.output.js}" includes="ilib.js"/>
-		</replace>
-        <exec osfamily="unix" executable="uglifyjs" dir="${build.base}" failifexecutionfails="true">
-            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-            <arg value="${build.output.js}/ilib.js"/>
-            <arg value="--comments"/>
-            <arg value="${keep.these.comments}"/>
-            <arg value="-o"/>
-            <arg value="${build.output.dyncode}/ilib.js"/>
-            <arg value="--no-mangle-functions"/>
-            <arg value="--keep-fnames"/>
-            <arg value="-c"/>
-            <arg value="-v"/>
-            <arg value="--name-cache"/>
-            <arg value="names.json"/>
-            <arg value="--source-map"/>
-        	<arg value="base='${build.output.dyncode}'"/>
-            <arg value="--source-map"/>
-            <arg value="filename='ilib.js'"/>
+        <exec osfamily="unix" executable="grunt" dir="${build.base}" failifexecutionfails="true" failonerror="true">
+            <arg value="uglifypkg"/>
         </exec>
-        <exec osfamily="windows" executable="uglifyjs" dir="${build.base}" failifexecutionfails="true">
-            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-            <arg value="${build.output.js}/ilib.js"/>
-            <arg value="--comments"/>
-            <arg value="${keep.these.comments}"/>
-            <arg value="-o"/>
-            <arg value="${build.output.dyncode}/ilib.js"/>
-            <arg value="--no-mangle-functions"/>
-            <arg value="--keep-fnames"/>
-            <arg value="-c"/>
-            <arg value="-v"/>
-            <arg value="--name-cache"/>
-            <arg value="names.json"/>
-            <arg value="--source-map"/>
-            <arg value="base='${build.output.dyncode}'"/>
-            <arg value="--source-map"/>
-            <arg value="filename='ilib.js'"/>
+        <exec osfamily="windows" executable="grunt.bat" dir="${build.base}" failifexecutionfails="true"  failonerror="true">
+            <arg value="uglifypkg"/>
         </exec>
-		<exec osfamily="unix" executable="node" dir="${build.base}" failifexecutionfails="true">
-            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
-			<arg value="${build.output.dyncode}/ilib.js"/>
-			<arg value="${build.output.dyncode}/ilib.js"/>
-		</exec>
-		<exec osfamily="windows" executable="node.exe" dir="${build.base}" failifexecutionfails="true">
-            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
-			<arg value="${build.output.dyncode}/ilib.js"/>
-			<arg value="${build.output.dyncode}/ilib.js"/>
-		</exec>
 
-		<!-- then do all the rest of them -->
-		<mkdir dir="${build.output}/src/lib"/>
-        <copy todir="${build.output}/src/lib">
-            <fileset dir="${build.lib}">
-                <include name="**/*.js"/>
-                <exclude name="**/ilib-*.js"/>
-                <exclude name="**/externs.js"/>
-                <exclude name="**/datefmtstr.js"/>
-            </fileset>
-            <fileset dir="${build.lib}">
-                <include name="**/ilib-node*"/>
-                <include name="**/ilib-qt*"/>
-                <include name="**/ilib-webpack*"/>
-                <include name="**/ilib-unpack.js"/>
-                <include name="**/ilib-web.js"/>
-            </fileset>
-        </copy>
-        <copy file="${build.base}/index.js" toFile="${build.output}/src/index.js" verbose="true"/>
-        <replace token="// !macro ilibVersion" value='"${version}"' preserveLastModified="true">
-            <fileset dir="${build.output}/src/lib" includes="ilib.js"/>
-        </replace>
-        <copy todir="${build.output.dyncode}">
-            <fileset dir="${build.output}/src">
-                <include name="**/*.js"/>
-            </fileset>
-        </copy>
-		<apply osfamily="unix" executable="uglifyjs2" dir="${build.output.dyncode}" dest="${build.output.dyncode}" parallel="false" relative="yes">
-			<srcfile/>
-			<arg value="--comments"/>
-			<arg value="${keep.these.comments}"/>
-            <targetfile/>
-            <arg value="--no-mangle-functions"/>
-            <arg value="--keep-fnames"/>
-            <arg value="-c"/>
-            <arg value="-v"/>
-            <arg value="--name-cache"/>
-            <arg value="names.json"/>
-			
-			<compositemapper>
-	            <mergemapper to="-o"/>
-				<globmapper from="*.js" to="*.js"/>
-                <mergemapper to="--source-map"/>
-                <globmapper from="*.js" to="*.js.map"/>
-                <mergemapper to="--source-map-root"/>
-                <globmapper from="*.js" to="../src/*.js"/>
-			</compositemapper>
-
+		<copy todir="${build.output}/package">
+			<dirset dir="${build.output.dyncode}" includes="**"/>
 			<fileset dir="${build.output.dyncode}">
-                <include name="**/*.js"/>
+                <include name="**/*.map"/>
+				<include name="lib/ilib.js"/>
+				<include name="src/**/*.js"/>
             </fileset>
-        </apply>
-        <apply osfamily="windows" executable="uglifyjs.bat" dest="${build.output.dyncode}" parallel="false">
-            <srcfile/>
-            <arg value="--comments"/>
-            <arg value="${keep.these.comments}"/>
-            <arg value="-o"/>
-            <targetfile/>
-            <arg value="--no-mangle-functions"/>
-            <arg value="--keep-fnames"/>
-            <arg value="-c"/>
-            <arg value="-v"/>
-            <arg value="--name-cache"/>
-            <arg value="names.json"/>
-            <arg value="--source-map"/>
-            <arg value="base='${build.output.dyncode}'"/>
-            <arg value="--source-map"/>
-            <arg value="filename="/>
-            <srcfile/>
-            <fileset dir="${build.lib}" includes="*.js"  excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
-            <fileset dir="${build.lib}" includes="ilib-node*.js,ilib-webpack.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
-            <mapper type="glob" from="*.js" to="*.js"/>
-        </apply>
-		<apply osfamily="unix" executable="node" dest="${build.output.dyncode}" parallel="false" force="true">
+		</copy>
+
+		<apply osfamily="unix" executable="node" dest="${build.output}/package" parallel="false" force="true">
 			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
 			<srcfile/>
 			<targetfile/>
-			<fileset dir="${build.output.dyncode}" includes="*.js" excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
-			<fileset dir="${build.output.dyncode}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+            <fileset dir="${build.output.dyncode}">
+                <include name="index.js"/>
+                <include name="lib/**/*.js"/>
+                <exclude name="lib/ilib.js"/>
+			</fileset>
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
-		<apply osfamily="windows" executable="node.exe" dest="${build.output.dyncode}" parallel="false" force="true">
+		<apply osfamily="windows" executable="node.exe" dest="${build.output}/package" parallel="false" force="true">
 			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
 			<srcfile/>
 			<targetfile/>
-			<fileset dir="${build.output.dyncode}" includes="*.js" excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
-			<fileset dir="${build.output.dyncode}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+			<fileset dir="${build.output.dyncode}" includes="**/*.js" excludes="ilib.js"/>
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
 	</target>
