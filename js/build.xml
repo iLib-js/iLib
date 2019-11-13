@@ -24,7 +24,7 @@ limitations under the License.
 	<property file="../build.properties"/>
 	<property file="build.properties"/>
 	<property environment="env"/>
-	
+
 	<!-- Properties that can be overridden -->
 	<!-- directories -->
 	<property name="build.base"						value="${basedir}"/>
@@ -117,7 +117,7 @@ limitations under the License.
 		<mkdir dir="${build.output.js}"/>
 		<mkdir dir="${build.output.dyncode}"/>
 		<mkdir dir="${build.output.test}"/>
-		
+
 	</target>
 	<!-- =================================================================== -->
 	<!-- Create the core jar file                                            -->
@@ -464,9 +464,8 @@ limitations under the License.
 		</copy>
 		<mkdir dir="${build.export}/js/dyncode"/>
 		<copy todir="${build.export}/js/dyncode">
-			<fileset dir="${build.output.dyncode}">
-				<include name="**/*.js"/>
-				<include name="**/*.js.map"/>
+			<fileset dir="${build.output}/package">
+				<include name="**"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/doc/jsdoc"/>
@@ -498,38 +497,23 @@ limitations under the License.
 				<include name="../README.md"/>
 			</fileset>
 		</copy>
-		<mkdir dir="${build.export}/package/lib"/>
-		<copy todir="${build.export}/package/lib">
+		<copy todir="${build.export}/package">
 			<fileset dir="${build.export}/js/dyncode">
 				<include name="**/*"/>
-				<exclude name="*Loader.js"/>
-				<exclude name="ilib-web.js"/>
-				<exclude name="ilib-qt.js"/>
-				<exclude name="ilib-rhino.js"/>
-				<exclude name="ilib-enyo.js"/>
-				<exclude name="index.js"/>
-            </fileset>
-            <fileset dir="${build.export}/js/dyncode">
-                <include name="Loader.js"/>
-                <include name="RhinoLoader.js"/>
-                <include name="WebpackLoader.js"/>
-                <include name="NodeLoader.js"/>
             </fileset>
 			<fileset dir="${build.export}/js/assembled">
 				<include name="ilib-full-dyn.js"/>
 				<include name="ilib-full-dyn-compiled.js"/>
 			</fileset>
 		</copy>
-		<copy todir="${build.export}/package">
-            <fileset dir="${build.export}/js/dyncode">
-                <include name="index.js*"/>
-            </fileset>
-		</copy>
 		<copy todir="${build.export}/package/locale">
 			<fileset dir="${build.locale}">
 				<include name="**/*.json"/>
 			</fileset>
 		</copy>
+        <copy todir="${build.export}/package/src">
+            <fileset dir="${build.output}/src" includes="**"/>
+        </copy>
 	</target>
     <target name="test.demo.built" description="test whether or not the ilib demo files needs to be rebuilt">
         <uptodate property="demo.already.built" targetfile="${build.demo}/ilib.js">
