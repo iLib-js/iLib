@@ -1122,6 +1122,36 @@ module.exports.teststrings = {
         test.done();
     },
 
+    testStringDelegateEndsWithTrueWithLength1: function(test) {
+        if (typeof("".endsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.endsWith("def", str.length));
+        } else {
+            console.log("This version of the JS engine does not support String.endsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateEndsWithTrueWithLength2: function(test) {
+        if (typeof("".endsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.endsWith("def", undefined));
+        } else {
+            console.log("This version of the JS engine does not support String.endsWith()");
+        }
+        test.done();
+    },
+
     testStringDelegateEndsWithFalse: function(test) {
         if (typeof("".endsWith) === 'function') {
 
@@ -1131,6 +1161,21 @@ module.exports.teststrings = {
             test.ok(str !== null);
 
             test.ok(!str.endsWith("de"));
+        } else {
+            console.log("This version of the JS engine does not support String.endsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateEndsWithFalse2: function(test) {
+        if (typeof("".endsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(!str.endsWith("def", 3));
         } else {
             console.log("This version of the JS engine does not support String.endsWith()");
         }
@@ -1152,6 +1197,36 @@ module.exports.teststrings = {
         test.done();
     },
 
+    testStringDelegateStartsWithLength1: function(test) {
+        if (typeof("".startsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.startsWith("abc", 0));
+        } else {
+            console.log("This version of the JS engine does not support String.startsWith()");
+        }
+        test.done();
+    },
+    testStringDelegateStartsWithLength2: function(test) {
+        if (typeof("".startsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.startsWith("abc", undefined));
+        } else {
+            console.log("This version of the JS engine does not support String.startsWith()");
+        }
+        test.done();
+    },
+
+
     testStringDelegateStartsWithFalse: function(test) {
         if (typeof("".startsWith) === 'function') {
 
@@ -1161,6 +1236,21 @@ module.exports.teststrings = {
             test.ok(str !== null);
 
             test.ok(!str.startsWith("bc"));
+        } else {
+            console.log("This version of the JS engine does not support String.startsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateStartsWithFalse2: function(test) {
+        if (typeof("".startsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(!str.startsWith("ab", 4));
         } else {
             console.log("This version of the JS engine does not support String.startsWith()");
         }

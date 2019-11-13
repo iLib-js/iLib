@@ -1069,7 +1069,7 @@ IString.prototype = {
      */
     endsWith: function(searchString, length) {
         /* (note)length is optional. If it is omitted the default value is the length of string.
-        *  But If length is omitted, it returns false on QT. (tested on QT 5.12)
+        *  But If length is omitted, it returns false on QT. (tested on QT 5.12.4 and 5.13.0)
         */
         if (typeof length === "undefined") {
             length = this.str.length;
