@@ -403,9 +403,6 @@ limitations under the License.
 				<include name="**/*.json"/>
 			</fileset>
 		</copy>
-        <copy todir="${build.export}/package/src">
-            <fileset dir="${build.output}/src" includes="**"/>
-        </copy>
 	</target>
     <target name="test.demo.built" description="test whether or not the ilib demo files needs to be rebuilt">
         <uptodate property="demo.already.built" targetfile="${build.demo}/ilib.js">
