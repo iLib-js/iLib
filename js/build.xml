@@ -24,7 +24,7 @@ limitations under the License.
 	<property file="../build.properties"/>
 	<property file="build.properties"/>
 	<property environment="env"/>
-	
+
 	<!-- Properties that can be overridden -->
 	<!-- directories -->
 	<property name="build.base"						value="${basedir}"/>
