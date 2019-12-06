@@ -1,4 +1,7 @@
 {
+    "components": {
+        "familiar": "pf"
+    },
     "prefixes": [
         "baron",
         "baronne",

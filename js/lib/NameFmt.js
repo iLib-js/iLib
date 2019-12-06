@@ -185,6 +185,10 @@ var NameFmt = function(options) {
         case "formal_long":
             this.style = "formal_long";
             break;
+        case "fam":
+        case "familiar":
+            this.style = "familiar";
+            break;
     }
 
     this.locale = this.locale || new Locale();

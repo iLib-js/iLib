@@ -1,7 +1,7 @@
 /*
  * testnamefmt.js - test the name formatter object
  * 
- * Copyright © 2013-2015,2017, JEDLSoft
+ * Copyright © 2013-2015,2017,2019 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -859,7 +859,7 @@ module.exports.testnamefmt = {
             locale: "ko-KR"
         });
 
-        test.equal(fmt.format(name), "박은성");
+        test.equal(fmt.format(name), "닥터 박은성");
         test.done();
     },
 

@@ -4,7 +4,8 @@
         "long": "gmfs",
         "full": "pgmfs",
         "formal_short": "gfs",
-		"formal_long": "pgfs"
+		"formal_long": "pgfs",
+        "familiar": "gfs"
 	},
 	"useSpaces": false,
 	"format": "{prefix} {familyName}{middleName}{givenName} {suffix}",
