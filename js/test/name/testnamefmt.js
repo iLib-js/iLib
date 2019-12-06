@@ -165,7 +165,24 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Mr. John Kevin Smith Phd.");
         test.done();
     },
-    
+
+    testNameFmtENFamiliar: function(test) {
+        test.expect(1);
+        var name = new Name({
+            prefix: "Mr.",
+            givenName: "John",
+            middleName: "Kevin",
+            familyName: "Smith",
+            suffix: "Phd."
+        });
+        var fmt = new NameFmt({
+            style: "familiar"
+        });
+
+        test.equal(fmt.format(name), "John");
+        test.done();
+    },
+
     testNameFmtENWithCommaInSuffix: function(test) {
         test.expect(1);
         var name = new Name({
@@ -383,7 +400,27 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Hr. Andreas Helmut Schmidt MdB");
         test.done();
     },
-    
+
+    testNameFmtDEFamiliar: function(test) {
+        test.expect(1);
+        var name = new Name({
+            prefix: "Hr.",
+            givenName: "Andreas",
+            middleName: "Helmut",
+            familyName: "Schmidt",
+            suffix: "MdB"
+        }, {
+            locale: "de-DE"
+        });
+        var fmt = new NameFmt({
+            style: "familiar",
+            locale: "de-DE"
+        });
+
+        test.equal(fmt.format(name), "Hr. Schmidt");
+        test.done();
+    },
+
     testNameFmtDEWithCommaInSuffix: function(test) {
         test.expect(1);
         var name = new Name({
@@ -771,7 +808,7 @@ module.exports.testnamefmt = {
         test.done();
     },
 
-    testNameFmtZHFormalLong: function(test) {
+    testNameFmtKOFormalLong: function(test) {
         test.expect(1);
         var name = new Name({
             honorific: "닥터",
@@ -807,7 +844,25 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "닥터 박은성 님");
         test.done();
     },
-    
+
+    testNameFmtKOFormalLong: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "닥터",
+            givenName: "은성",
+            familyName: "박"
+        }, {
+            locale: "ko-KR"
+        });
+        var fmt = new NameFmt({
+            style: "familiar",
+            locale: "ko-KR"
+        });
+
+        test.equal(fmt.format(name), "박은성");
+        test.done();
+    },
+
     testNameFmtENWithImplicitConversionOfArgToName: function(test) {
         test.expect(1);
         var fmt = new NameFmt({
