@@ -808,7 +808,7 @@ module.exports.testnamefmt = {
         test.done();
     },
 
-    testNameFmtKOFormalLong: function(test) {
+    testNameFmtKOFamiliar: function(test) {
         test.expect(1);
         var name = new Name({
             honorific: "닥터",
@@ -860,6 +860,42 @@ module.exports.testnamefmt = {
         });
 
         test.equal(fmt.format(name), "닥터 박은성");
+        test.done();
+    },
+
+    testNameFmtCSFamiliar: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "Pan",
+            givenName: "Jan",
+            familyName: "Novák"
+        }, {
+            locale: "cs-CZ"
+        });
+        var fmt = new NameFmt({
+            style: "familiar",
+            locale: "cs-CZ"
+        });
+
+        test.equal(fmt.format(name), "Pan Novák");
+        test.done();
+    },
+
+    testNameFmtSKFamiliar: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "Pani",
+            givenName: "Mária",
+            familyName: "Obecny"
+        }, {
+            locale: "sk-SK"
+        });
+        var fmt = new NameFmt({
+            style: "familiar",
+            locale: "sk-SK"
+        });
+
+        test.equal(fmt.format(name), "Pani Obecny");
         test.done();
     },
 
