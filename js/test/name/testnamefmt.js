@@ -850,6 +850,23 @@ module.exports.testnamefmt = {
         var name = new Name({
             honorific: "닥터",
             givenName: "은성",
+            familyName: "박",
+            suffix: "님"
+        }, {
+            locale: "ko-KR"
+        });
+        var fmt = new NameFmt({
+            style: "familiar",
+            locale: "ko-KR"
+        });
+
+        test.equal(fmt.format(name), "박은성 님");
+        test.done();
+    },
+    /*testNameFmtKOFamiliar2: function(test) {
+        test.expect(1);
+        var name = new Name({
+            givenName: "은성",
             familyName: "박"
         }, {
             locale: "ko-KR"
@@ -859,9 +876,9 @@ module.exports.testnamefmt = {
             locale: "ko-KR"
         });
 
-        test.equal(fmt.format(name), "닥터 박은성");
+        test.equal(fmt.format(name), "박은성 님");
         test.done();
-    },
+    },*/
 
     testNameFmtCSFamiliar: function(test) {
         test.expect(1);
