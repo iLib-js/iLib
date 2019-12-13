@@ -696,6 +696,81 @@ module.exports.testnamefmt = {
         test.done();
     },
 
+    testNameFmtKOShort: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "닥터",
+            givenName: "은성",
+            familyName: "박",
+            suffix: "님"
+        }, {
+            locale: "ko-KR"
+        });
+        var fmt = new NameFmt({
+            locale: "ko-KR",
+            style: "short"
+        });
+        test.equal(fmt.format(name), "박은성");
+        test.done();
+    },
+
+    testNameFmtKOMedium: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "닥터",
+            givenName: "은성",
+            familyName: "박",
+            suffix: "님"
+        }, {
+            locale: "ko-KR"
+        });
+        var fmt = new NameFmt({
+            locale: "ko-KR",
+            style: "medium"
+        });
+
+        test.equal(fmt.format(name), "박은성");
+        test.done();
+    },
+
+    testNameFmtKOLong: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "닥터",
+            givenName: "은성",
+            familyName: "박",
+            suffix: "님"
+        }, {
+            locale: "ko-KR"
+        });
+        var fmt = new NameFmt({
+            locale: "ko-KR",
+            style: "long"
+        });
+
+        test.equal(fmt.format(name), "박은성 님");
+        test.done();
+    },
+
+    testNameFmtKOFull: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "닥터",
+            givenName: "은성",
+            familyName: "박",
+            suffix: "님"
+        }, {
+            locale: "ko-KR"
+        });
+        var fmt = new NameFmt({
+            locale: "ko-KR",
+            style: "full"
+        });
+
+        test.equal(fmt.format(name), "닥터 박은성 님");
+        test.done();
+    },
+
     testNameFmtZHFormalLong: function(test) {
         test.expect(1);
         var name = new Name({

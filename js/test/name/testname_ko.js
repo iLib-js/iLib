@@ -426,7 +426,7 @@ module.exports.testname_ko = {
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
         
-        var expected = "미스터 김동경";
+        var expected = "김동경 , 박사";
         
         test.equal(formatted, expected);
         test.done();
@@ -501,7 +501,7 @@ module.exports.testname_ko = {
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
         
-        var expected = "미스터 남궁동경";
+        var expected = "남궁동경 씨";
         
         test.equal(formatted, expected);
         test.done();

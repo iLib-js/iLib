@@ -1,6 +1,9 @@
 {
 	"components": {
-		"formal_short": "gfs",
+		"medium": "gmf",
+        "long": "gmfs",
+        "full": "pgmfs",
+        "formal_short": "gfs",
 		"formal_long": "pgfs"
 	},
 	"useSpaces": false,
