@@ -672,7 +672,27 @@ module.exports.testnamefmt = {
         
         // use the full name, even in formal_short
         // honorifics are prefixes in Korean
-        test.equal(fmt.format(name), "닥터 박은성");
+        test.equal(fmt.format(name), "박은성");
+        test.done();
+    },
+    testNameFmtKOFormalShort2: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "닥터",
+            givenName: "은성",
+            familyName: "박",
+            suffix: "님"
+        }, {
+            locale: "ko-KR"
+        });
+        var fmt = new NameFmt({
+            style: "formal_short",
+            locale: "ko-KR"
+        });
+
+        // use the full name, even in formal_short
+        // honorifics are prefixes in Korean
+        test.equal(fmt.format(name), "박은성 님");
         test.done();
     },
 
@@ -691,6 +711,25 @@ module.exports.testnamefmt = {
         });
         
         test.equal(fmt.format(name), "닥터 박은성");
+        test.done();
+    },
+
+    testNameFmtZHFormalLong2: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "닥터",
+            givenName: "은성",
+            familyName: "박",
+            suffix: "님"
+        }, {
+            locale: "ko-KR"
+        });
+        var fmt = new NameFmt({
+            style: "formal_long",
+            locale: "ko-KR"
+        });
+
+        test.equal(fmt.format(name), "닥터 박은성 님");
         test.done();
     },
     

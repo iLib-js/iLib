@@ -1,7 +1,7 @@
 {
 	"components": {
-		"formal_short": "pgf",
-		"formal_long": "pgf"
+		"formal_short": "gfs",
+		"formal_long": "pgfs"
 	},
 	"useSpaces": false,
 	"format": "{prefix} {familyName}{middleName}{givenName} {suffix}",
