@@ -18,6 +18,7 @@ New Features:
 
 Bug Fixes:
 * Updated to IANA time zone data 2019c
+* Updated the Korean Name Formatting component per style. Including 'suffix' is more natural than having a 'prefix' or 'honorific'.
 
 Build 007
 -------
