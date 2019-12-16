@@ -1,7 +1,8 @@
 {
 	"order": "fgm",
 	"components": {
-		"formal_long": "pgfm"
+		"formal_long": "pgfm",
+		"familiar": "gf"
 	},
 	"useSpaces": true,
 	"format": "{prefix} {familyName} {givenName} {middleName}{suffix}",

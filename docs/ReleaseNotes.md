@@ -15,6 +15,9 @@ New Features:
     * Defined the "length" property so that it returns the string's length like the intrinsic strings do
     * Added unit tests that only test the new methods if the underlying string class implements each new
     method.
+* Added a "familiar" style to the name formatter
+    * This is as familiar as you can get and yet not be rude to a stranger for each locale. For example, in
+      English, you would use someone's given name, but in Japan, you would use the full name with honorific.
 
 Bug Fixes:
 * Updated to IANA time zone data 2019c
