@@ -1028,6 +1028,18 @@ module.exports.testlocalematch = {
         test.done();
     },
 
+    testLocaleMatcherGetLikelyLocaleByLocaleCode59: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "Latn-ME"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "hr-Latn-ME");
+        test.done();
+    },
+
     testLocaleMatcherMatchExactFullLocale: function(test) {
         test.expect(2);
         var lm = new LocaleMatcher({
