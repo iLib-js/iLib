@@ -1015,6 +1015,19 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ur-Arab-PK");
         test.done();
     },
+
+    testLocaleMatcherGetLikelyLocaleByLocaleCode58: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "hr-ME"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "hr-Latn-ME");
+        test.done();
+    },
+
     testLocaleMatcherMatchExactFullLocale: function(test) {
         test.expect(2);
         var lm = new LocaleMatcher({
