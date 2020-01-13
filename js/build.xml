@@ -355,6 +355,7 @@ limitations under the License.
             </fileset>
             <fileset dir="${build.base}">
                 <include name="index.js"/>
+                <include name="env.js"/>
             </fileset>
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
@@ -435,6 +436,7 @@ limitations under the License.
 			<fileset dir="${build.base}">
 				<include name="lib/**"/>
 				<include name="index.js"/>
+                <include name="env.js"/>
 				<include name="build.xml"/>
 				<include name="build.properties"/>
 				<include name="data/locale/**/*.json"/>
@@ -463,6 +465,7 @@ limitations under the License.
 				<exclude name="ilib-rhino.js"/>
 				<exclude name="ilib-enyo.js"/>
 				<exclude name="index.js"/>
+                <include name="env.js"/>
             </fileset>
             <fileset dir="${build.export}/js/dyncode">
                 <include name="Loader.js"/>
@@ -478,6 +481,7 @@ limitations under the License.
 		<copy todir="${build.export}/package">
             <fileset dir="${build.export}/js/dyncode">
                 <include name="index.js"/>
+                <include name="env.js"/>
             </fileset>
 		</copy>
 		<copy todir="${build.export}/package/locale">
