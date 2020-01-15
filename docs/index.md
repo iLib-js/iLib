@@ -22,6 +22,7 @@ Hello, and welcome to the iLib project!
     * [CommonJS Modularization Support](tutorial/modules.md) as of 11.0
     * [Updating the time zone information](tutorial/timezone.md)
     * [Running unit test on QT/QML](QtTest.md)
+    * [Production and Development Modes](Mode.md)
 * API Reference: 
     * [10.0](https://ilib-js.github.io/iLib/docs/api/10.0/jsdoc/index.html)
     * [11.0](https://ilib-js.github.io/iLib/docs/api/11.0/jsdoc/index.html)
