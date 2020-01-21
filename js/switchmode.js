@@ -21,8 +21,6 @@ var fs = require("fs");
 
 var args = process.argv;
 
-console.log("args is " + JSON.stringify(args));
-
 if (args[2] === "-h" || args[2] === "--help") {
     console.log("Usage: switchmode.sh '(production|development)'");
     console.log("Switch ilib to the compressed/production mode or the uncompressed/development mode.");
