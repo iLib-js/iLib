@@ -72,7 +72,7 @@ if (process.argv.length > 5) {
 }
 
 console.log("genscripts - generate scripts data.\n" +
-		"Copyright (c) 2012 - 2016 JEDLSoft");
+		"Copyright (c) 2012 - 2017, 2020 JEDLSoft");
 
 // TODO: these should call fs.existsSync instead
 fs.exists(iso15924FileName, function (exists) {
