@@ -10,7 +10,9 @@ When you checkout iLib sources, Default values in `qt/build.properties` is  `QTB
 
 ##### Additional Information
 If your machine still doesn't point QT where you want, Please modify `default.conf` following way.
+
 [qtchooser](https://www.systutorials.com/docs/linux/man/1-qtchooser/): - a wrapper used to select between Qt development binary versions
+
 a. Check current system status first by qtchooser command
 ~~~~~
 > qtchooser –print-env
