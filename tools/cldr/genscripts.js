@@ -1,7 +1,7 @@
 /*
  * genscripts.js - ilib tool to generate the json data about ISO 15924 scripts
  * 
- * Copyright © 2013 - 2017, JEDLSoft
+ * Copyright © 2013 - 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,10 +35,12 @@ function usage() {
 			"ISO-15924-file.txt\n" +
 			"  the Unicode script code definition file downloaded from the Unicode site at\n" +
 			"  https://unicode.org/iso15924/iso15924-text.html\n" +
+			"scriptMetadata.txt\n" +
+			"  path to the scriptMetadata.txt file downloaded from the Unicode site\n" +
+			"  i.e) http://unicode.org/Public/cldr/36/ --> common/properties/scriptMetadata.txt\n" +
 			"UCD-dir\n" +
 			"  path to the Unicode Character Database files downloaded from the Unicode site\n" +
-			"CLDR-dir\n" +
-			"  path to the json CLDR files downloaded from the Unicode site\n" +
+			"  i.e) https://unicode.org/Public/13.0.0/ucd/ \n" +
 			"toDir\n" +
 			"  directory to output the normalization json files. Default: current dir.\n");
 	process.exit(1);
@@ -48,7 +50,6 @@ var iso15924FileName;
 var scriptFileName;
 var scriptMetaDataFileName;
 var ucdDir;
-var cldrDir;
 var toDir = ".";
 
 process.argv.forEach(function (val, index, array) {
