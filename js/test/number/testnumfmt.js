@@ -4073,7 +4073,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "ƒ 100.110,57");
+        test.equal(fmt.format(100110.57), "ANG 100.110,57");
         test.done();
     },
     testNumFmtPercentageFormatRegular_nl_NL: function(test) {
@@ -4285,7 +4285,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "١٠٠٬١١٠٫٥٧ ر.س");
+        test.equal(fmt.format(100110.57), '١٠٠٬١١٠٫٥٧ SAR');
         test.done();
     },
     testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_ar_SA: function(test) {
@@ -4298,7 +4298,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-100110.57), "؜-١٠٠٬١١٠٫٥٧ ر.س");
+        test.equal(fmt.format(-100110.57), '؜-١٠٠٬١١٠٫٥٧ SAR');
         test.done();
     },
     testNumFmtPercentageFormatRegular_ar_SA: function(test) {
@@ -4350,7 +4350,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "100 110,57 лв");
+        test.equal(fmt.format(100110.57), '100 110,57 BGN');
         test.done();
     },
     testNumFmtPercentageFormatRegular_bg_BG: function(test) {
@@ -4557,7 +4557,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "‎﷼۱۰۰٬۱۱۱");
+        test.equal(fmt.format(100110.57), '‎IRR۱۰۰٬۱۱۱');
         test.done();
     },
     testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_fa_IR: function(test) {
@@ -4570,7 +4570,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-100110.57), "‎−‎﷼۱۰۰٬۱۱۱");
+        test.equal(fmt.format(-100110.57), '‎−‎IRR۱۰۰٬۱۱۱');
         test.done();
     },
     testNumFmtPercentageFormatRegular_fa_IR: function(test) {
@@ -4922,7 +4922,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "100.110,57 ден");
+        test.equal(fmt.format(100110.57), '100.110,57 MKD');
         test.done();
     },
     testNumFmtPercentageFormatRegular_mk_MK: function(test) {
@@ -5115,7 +5115,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-100110.57), "ƒ -100.110,57");
+        test.equal(fmt.format(-100110.57), "ANG -100.110,57");
         test.done();
     },
     
@@ -5243,7 +5243,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "Le100,111");
+        test.equal(fmt.format(100110.57), "SLL100,111");
         test.done();
     },
     testNumFmtPercentageFormatRegular_en_SL: function(test) {
@@ -5269,7 +5269,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-100110.57), "-Le100,111");
+        test.equal(fmt.format(-100110.57), "-SLL100,111");
         test.done();
     },
     
@@ -5901,7 +5901,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "£100,110.57");
+        test.equal(fmt.format(100110.57), "SDG100,110.57");
         test.done();
     },
     testNumFmtPercentageFormatRegular_en_SD: function(test) {
@@ -5922,12 +5922,12 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-SD",
-        currency: "SDG"
+            currency: "SDG"
         });
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-100110.57), "-£100,110.57");
+        test.equal(fmt.format(-100110.57), "-SDG100,110.57");
         test.done();
     },
     
@@ -5956,7 +5956,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "Sh100,110.57");
+        test.equal(fmt.format(100110.57), "TZS100,110.57");
         test.done();
     },
     testNumFmtPercentageFormatRegular_en_TZ: function(test) {
@@ -5977,12 +5977,12 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-TZ",
-        currency: "TZS"
+            currency: "TZS"
         });
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-100110.57), "-Sh100,110.57");
+        test.equal(fmt.format(-100110.57), "-TZS100,110.57");
         test.done();
     },
     
@@ -6177,7 +6177,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "Fr100.111");
+        test.equal(fmt.format(100110.57), "FCFA100.111");
         test.done();
     },
     testNumFmtPercentageFormatRegular_es_GQ: function(test) {
@@ -6203,7 +6203,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-100110.57), "-Fr100.111");
+        test.equal(fmt.format(-100110.57), "-FCFA100.111");
         test.done();
     },
     //test cases for es-GT
@@ -6561,7 +6561,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "Sh 100,110.57");
+        test.equal(fmt.format(100110.57), "KES 100,110.57");
         test.done();
     },
     testNumFmtPercentageFormatRegular_sw_KE: function(test) {
@@ -6587,7 +6587,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-100110.57), "-Sh 100,110.57");
+        test.equal(fmt.format(-100110.57), "-KES 100,110.57");
         test.done();
     },
     

@@ -32,7 +32,7 @@
     "KES": {
         "name": "Kenyan Shilling",
         "decimals": 2,
-        "sign": "Sh"
+        "sign": "KES"
     },
     "GBP": {
         "name": "British Pound",
@@ -42,32 +42,32 @@
     "CHF": {
         "name": "Swiss Franc",
         "decimals": 2,
-        "sign": "Fr"
+        "sign": "CHF"
     },
     "AED": {
         "name": "United Arab Emirates Dirham",
         "decimals": 2,
-        "sign": "د.إ"
+        "sign": "AED"
     },
     "AFN": {
         "name": "Afghan Afghani",
         "decimals": 0,
-        "sign": "؋"
+        "sign": "AFN"
     },
     "ALL": {
         "name": "Albanian Lek",
         "decimals": 0,
-        "sign": "L"
+        "sign": "ALL"
     },
     "AMD": {
         "name": "Armenian Dram",
         "decimals": 2,
-        "sign": "դր."
+        "sign": "AMD"
     },
     "ANG": {
         "name": "Netherlands Antillean Guilder",
         "decimals": 2,
-        "sign": "ƒ"
+        "sign": "ANG"
     },
     "AOA": {
         "name": "Angolan Kwanza",
@@ -87,7 +87,7 @@
     "AWG": {
         "name": "Aruban Florin",
         "decimals": 2,
-        "sign": "ƒ"
+        "sign": "AWG"
     },
     "AZN": {
         "name": "Azerbaijani Manat",
@@ -112,17 +112,17 @@
     "BGN": {
         "name": "Bulgarian Lev",
         "decimals": 2,
-        "sign": "лв"
+        "sign": "BGN"
     },
     "BHD": {
         "name": "Bahraini Dinar",
         "decimals": 3,
-        "sign": ".د.ب"
+        "sign": "BHD"
     },
     "BIF": {
         "name": "Burundian Franc",
         "decimals": 0,
-        "sign": "Fr"
+        "sign": "BIF"
     },
     "BMD": {
         "name": "Bermudan Dollar",
@@ -152,7 +152,7 @@
     "BTN": {
         "name": "Bhutanese Ngultrum",
         "decimals": 2,
-        "sign": "Nu."
+        "sign": "BTN"
     },
     "BWP": {
         "name": "Botswanan Pula",
@@ -177,17 +177,12 @@
     "CDF": {
         "name": "Congolese Franc",
         "decimals": 2,
-        "sign": "Fr"
+        "sign": "CDF"
     },
     "CLP": {
         "name": "Chilean Peso",
         "decimals": 0,
         "sign": "$"
-    },
-    "CNH": {
-        "name": "Chinese Yuan (offshore)",
-        "decimals": 2,
-        "sign": "CNH"
     },
     "CNY": {
         "name": "Chinese Yuan",
@@ -217,7 +212,7 @@
     "CVE": {
         "name": "Cape Verdean Escudo",
         "decimals": 2,
-        "sign": "$"
+        "sign": "CVE"
     },
     "CZK": {
         "name": "Czech Koruna",
@@ -227,7 +222,7 @@
     "DJF": {
         "name": "Djiboutian Franc",
         "decimals": 0,
-        "sign": "Fr"
+        "sign": "DJF"
     },
     "DKK": {
         "name": "Danish Krone",
@@ -242,7 +237,7 @@
     "DZD": {
         "name": "Algerian Dinar",
         "decimals": 2,
-        "sign": "د.ج"
+        "sign": "DZD"
     },
     "EGP": {
         "name": "Egyptian Pound",
@@ -252,12 +247,12 @@
     "ERN": {
         "name": "Eritrean Nakfa",
         "decimals": 2,
-        "sign": "Nfk"
+        "sign": "ERN"
     },
     "ETB": {
         "name": "Ethiopian Birr",
         "decimals": 2,
-        "sign": "Br"
+        "sign": "ETB"
     },
     "EUR": {
         "name": "Euro",
@@ -282,7 +277,7 @@
     "GHS": {
         "name": "Ghanaian Cedi",
         "decimals": 2,
-        "sign": "₵"
+        "sign": "GHS"
     },
     "GIP": {
         "name": "Gibraltar Pound",
@@ -292,7 +287,7 @@
     "GMD": {
         "name": "Gambian Dalasi",
         "decimals": 2,
-        "sign": "D"
+        "sign": "GMD"
     },
     "GNF": {
         "name": "Guinean Franc",
@@ -327,7 +322,7 @@
     "HTG": {
         "name": "Haitian Gourde",
         "decimals": 2,
-        "sign": "G"
+        "sign": "HTG"
     },
     "HUF": {
         "name": "Hungarian Forint",
@@ -352,12 +347,12 @@
     "IQD": {
         "name": "Iraqi Dinar",
         "decimals": 0,
-        "sign": "ﺩ.ﻉ."
+        "sign": "IQD"
     },
     "IRR": {
         "name": "Iranian Rial",
         "decimals": 0,
-        "sign": "﷼"
+        "sign": "IRR"
     },
     "ISK": {
         "name": "Icelandic Króna",
@@ -372,7 +367,7 @@
     "JOD": {
         "name": "Jordanian Dinar",
         "decimals": 3,
-        "sign": "د.ا"
+        "sign": "JOD"
     },
     "JPY": {
         "name": "Japanese Yen",
@@ -382,7 +377,7 @@
     "KGS": {
         "name": "Kyrgystani Som",
         "decimals": 2,
-        "sign": "лв"
+        "sign": "KGS"
     },
     "KHR": {
         "name": "Cambodian Riel",
@@ -402,7 +397,7 @@
     "KWD": {
         "name": "Kuwaiti Dinar",
         "decimals": 3,
-        "sign": "د.ك"
+        "sign": "KWD"
     },
     "KYD": {
         "name": "Cayman Islands Dollar",
@@ -437,22 +432,22 @@
     "LSL": {
         "name": "Lesotho Loti",
         "decimals": 2,
-        "sign": "L"
+        "sign": "LSL"
     },
     "LYD": {
         "name": "Libyan Dinar",
         "decimals": 3,
-        "sign": "ل.د"
+        "sign": "LYD"
     },
     "MAD": {
         "name": "Moroccan Dirham",
         "decimals": 2,
-        "sign": "د.م."
+        "sign": "MAD"
     },
     "MDL": {
         "name": "Moldovan Leu",
         "decimals": 2,
-        "sign": "L"
+        "sign": "MDL"
     },
     "MGA": {
         "name": "Malagasy Ariary",
@@ -462,7 +457,7 @@
     "MKD": {
         "name": "Macedonian Denar",
         "decimals": 2,
-        "sign": "ден"
+        "sign": "MKD"
     },
     "MMK": {
         "name": "Myanmar Kyat",
@@ -477,7 +472,7 @@
     "MOP": {
         "name": "Macanese Pataca",
         "decimals": 2,
-        "sign": "P"
+        "sign": "MOP"
     },
     "MRU": {
         "name": "Mauritanian Ouguiya",
@@ -492,12 +487,12 @@
     "MVR": {
         "name": "Maldivian Rufiyaa",
         "decimals": 2,
-        "sign": ".ރ"
+        "sign": "MVR"
     },
     "MWK": {
         "name": "Malawian Kwacha",
         "decimals": 2,
-        "sign": "MK"
+        "sign": "MWK"
     },
     "MXN": {
         "name": "Mexican Peso",
@@ -512,7 +507,7 @@
     "MZN": {
         "name": "Mozambican Metical",
         "decimals": 2,
-        "sign": "MT"
+        "sign": "MZN"
     },
     "NAD": {
         "name": "Namibian Dollar",
@@ -547,22 +542,22 @@
     "OMR": {
         "name": "Omani Rial",
         "decimals": 3,
-        "sign": "ر.ع."
+        "sign": "OMR"
     },
     "PAB": {
         "name": "Panamanian Balboa",
         "decimals": 2,
-        "sign": "B/."
+        "sign": "PAB"
     },
     "PEN": {
         "name": "Peruvian Sol",
         "decimals": 2,
-        "sign": "S/."
+        "sign": "PEN"
     },
     "PGK": {
         "name": "Papua New Guinean Kina",
         "decimals": 2,
-        "sign": "K"
+        "sign": "PGK"
     },
     "PHP": {
         "name": "Philippine Piso",
@@ -582,12 +577,12 @@
     "QAR": {
         "name": "Qatari Rial",
         "decimals": 2,
-        "sign": "ر.ق"
+        "sign": "QAR"
     },
     "RSD": {
         "name": "Serbian Dinar",
         "decimals": 0,
-        "sign": "дин."
+        "sign": "RSD"
     },
     "RWF": {
         "name": "Rwandan Franc",
@@ -597,7 +592,7 @@
     "SAR": {
         "name": "Saudi Riyal",
         "decimals": 2,
-        "sign": "ر.س"
+        "sign": "SAR"
     },
     "SBD": {
         "name": "Solomon Islands Dollar",
@@ -607,12 +602,12 @@
     "SCR": {
         "name": "Seychellois Rupee",
         "decimals": 2,
-        "sign": "₨"
+        "sign": "SCR"
     },
     "SDG": {
         "name": "Sudanese Pound",
         "decimals": 2,
-        "sign": "£"
+        "sign": "SDG"
     },
     "SGD": {
         "name": "Singapore Dollar",
@@ -627,12 +622,12 @@
     "SLL": {
         "name": "Sierra Leonean Leone",
         "decimals": 0,
-        "sign": "Le"
+        "sign": "SLL"
     },
     "SOS": {
         "name": "Somali Shilling",
         "decimals": 0,
-        "sign": "Sh"
+        "sign": "SOS"
     },
     "SRD": {
         "name": "Surinamese Dollar",
@@ -657,7 +652,7 @@
     "SZL": {
         "name": "Swazi Lilangeni",
         "decimals": 2,
-        "sign": "L"
+        "sign": "SZL"
     },
     "THB": {
         "name": "Thai Baht",
@@ -667,17 +662,17 @@
     "TJS": {
         "name": "Tajikistani Somoni",
         "decimals": 2,
-        "sign": "ЅМ"
+        "sign": "TJS"
     },
     "TMT": {
         "name": "Turkmenistani Manat",
         "decimals": 2,
-        "sign": "m"
+        "sign": "TMT"
     },
     "TND": {
         "name": "Tunisian Dinar",
         "decimals": 3,
-        "sign": "د.ت"
+        "sign": "TND"
     },
     "TOP": {
         "name": "Tongan Paʻanga",
@@ -702,7 +697,7 @@
     "TZS": {
         "name": "Tanzanian Shilling",
         "decimals": 2,
-        "sign": "Sh"
+        "sign": "TZS"
     },
     "UAH": {
         "name": "Ukrainian Hryvnia",
@@ -712,7 +707,7 @@
     "UGX": {
         "name": "Ugandan Shilling",
         "decimals": 0,
-        "sign": "Sh"
+        "sign": "UGX"
     },
     "UYU": {
         "name": "Uruguayan Peso",
@@ -722,7 +717,7 @@
     "UZS": {
         "name": "Uzbekistani Som",
         "decimals": 2,
-        "sign": "лв"
+        "sign": "UZS"
     },
     "VES": {
         "name": "Venezuelan Bolívar",
@@ -737,17 +732,17 @@
     "VUV": {
         "name": "Vanuatu Vatu",
         "decimals": 0,
-        "sign": "Vt"
+        "sign": "VUV"
     },
     "WST": {
         "name": "Samoan Tala",
         "decimals": 2,
-        "sign": "T"
+        "sign": "WST"
     },
     "XAF": {
         "name": "Central African CFA Franc",
         "decimals": 0,
-        "sign": "Fr"
+        "sign": "FCFA"
     },
     "XCD": {
         "name": "East Caribbean Dollar",
@@ -757,17 +752,17 @@
     "XOF": {
         "name": "West African CFA Franc",
         "decimals": 0,
-        "sign": "Fr"
+        "sign": "CFA"
     },
     "XPF": {
         "name": "CFP Franc",
         "decimals": 0,
-        "sign": "Fr"
+        "sign": "CFPF"
     },
     "YER": {
         "name": "Yemeni Rial",
         "decimals": 0,
-        "sign": "﷼"
+        "sign": "YER"
     },
     "ZAR": {
         "name": "South African Rand",
