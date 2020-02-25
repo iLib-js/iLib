@@ -425,7 +425,7 @@ module.exports.testweekdata = {
         test.ok(info !== null);
 
         test.equal(info.getFirstDayOfWeek(), 1);
-        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndStart(), 0);
         test.equal(info.getWeekEndEnd(), 0);
         test.done();
     },
@@ -454,7 +454,7 @@ module.exports.testweekdata = {
         var info = new LocaleInfo("es-AR");
         test.ok(info !== null);
 
-        test.equal(info.getFirstDayOfWeek(), 0);
+        test.equal(info.getFirstDayOfWeek(), 1);
         test.equal(info.getWeekEndStart(), 6);
         test.equal(info.getWeekEndEnd(), 0);
         test.done();
