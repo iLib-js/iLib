@@ -4243,7 +4243,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "₹ 1,00,110.57");
+        test.equal(fmt.format(100110.57), "₹1,00,110.57");
         test.done();
     },
     
@@ -4934,7 +4934,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(57.8), "57,8%");
+        test.equal(fmt.format(57.8), '57,8 %');
         test.done();
     },
     //test cases for ms-MY
