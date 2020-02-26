@@ -581,7 +581,7 @@ module.exports.testnumfmt_am = {
         
         test.ok(fmt !== null);
         
-        test.equal(fmt.format(-57), "-ETB57.00");
+        test.equal(fmt.format(-57), "-Br57.00");
         test.done();
     },
     
@@ -595,7 +595,7 @@ module.exports.testnumfmt_am = {
         
         test.ok(fmt !== null);
         
-        test.equal(fmt.format(123456788), "ETB123,456,788.00");
+        test.equal(fmt.format(123456788), "Br123,456,788.00");
         test.done();
     }
     

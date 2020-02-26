@@ -151,7 +151,7 @@ module.exports.testcurrency = {
 
         test.equal(cur.getCode(), "IQD");
         test.equal(cur.getFractionDigits(), 0);
-        test.equal(cur.getSign(), "IQD");
+        test.equal(cur.getSign(), 'ﺩ.ﻉ.');
         test.equal(cur.getName(), "Iraqi Dinar");
         var locale = cur.getLocale();
         test.equal(locale.toString(), "ar-IQ");
