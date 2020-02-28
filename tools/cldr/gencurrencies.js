@@ -2,7 +2,7 @@
  * gencurrencies.js - ilib tool to generate the json data about currency
  * the CLDR data files
  *
- * Copyright © 2016, 2018-2019, JEDLSoft
+ * Copyright © 2016, 2018-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,10 +31,12 @@ var mkdirs = common.makeDirs;
 var path = require("path");
 
 function usage() {
-    console.log("Usage: gencurrency [-h] [toDir]\n" +
+    console.log("Usage: gencurrency [-h] [iLib locale Dir] [toDir]\n" +
         "Generate the currency.jf files for each country.\n\n" +
         "-h or --help\n" +
         "  this help\n" +
+        "iLibDataDir\n" +
+    "  Current ilib locale directory in order to refer the current currency info.\n" +
         "toDir\n" +
     "  directory to output the currency.jf json files. Default: current dir.\n");
     process.exit(1);
@@ -96,7 +98,7 @@ function getNameAndSign(currency, cldrData, ilibData) {
 }
 
 var currencyDataFileName;
-var toDir = "tmp";
+var toDir = "./tmp";
 
 process.argv.forEach(function (val, index, array) {
     if (val === "-h" || val === "--help") {
@@ -110,13 +112,17 @@ if (process.argv.length < 2) {
 }
 
 if (process.argv.length > 2) {
-    toDir = process.argv[2];
+    ilibDir = process.argv[2];
 }
 
-console.log("gencurrency - generate currency information files.\n" + "Copyright (c) 2016 LGE\n");
+if (process.argv.length > 3) {
+    toDir = process.argv[3];
+}
+
+console.log("gencurrency - generate currency information files.\n" + "Copyright © 2016, 2018-2020, JEDLSoft\n");
 console.log("output dir: " + toDir + "\n");
 
-var ilibDataFileName = path.join(toDir, "currency.json");
+var ilibDataFileName = path.join(ilibDir, "currency.json");
 
 if (!fs.existsSync(toDir)) {
     common.makeDirs(toDir);
@@ -135,13 +141,19 @@ var currencyObj = {}; // for saving currency.jf in each directory
 var currencyInfoObj = {}; // currency information object for currency.json
 var filename, nameAndSign = [], cur = [];
 
+var rootCurrency = {"currency": "USD"}
+fs.writeFileSync(path.join(toDir, "currency.jf"), JSON.stringify(rootCurrency, true, 4), "utf-8");
+
+var zxxPath = path.join(toDir, "zxx");
+if (!fs.existsSync(zxxPath)) {
+    mkdirs(zxxPath);
+}
+fs.writeFileSync(path.join(zxxPath, "currency.jf"), JSON.stringify(rootCurrency, true, 4), "utf-8");
+
 for (var region in currencyData.region) {
     if (region && currencyData.region[region]) {
-        if (region == "150") { // 150 code: europe
-            continue;
-        } else {
-            filename = path.join(toDir, 'und', region);
-        }
+        filename = path.join(toDir, 'und', region);
+
         if (!fs.existsSync(filename)) {
             mkdirs(filename);
         }
