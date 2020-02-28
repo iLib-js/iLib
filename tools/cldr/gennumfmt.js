@@ -2,7 +2,7 @@
  * gennumfmt.js - ilib tool to generate the  number json fragments from
  * the CLDR data files
  *
- * Copyright © 2013-2018, LGE
+ * Copyright © 2013-2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,16 +34,16 @@ var makeDirs = common.makeDirs;
 var isEmpty = common.isEmpty;
 
 function usage() {
-    console.log("Usage: gennumfmts [-h] [locale_data_dir]\n" +
+    console.log("Usage: gennumfmts [-h] [toDir]\n" +
         "Generate number formats information files.\n\n" +
         "-h or --help\n" +
         "  this help\n" +
-        "locale_data_dir\n" +
-        "  the top level of the ilib locale data directory\n");
+        "toDir\n" +
+        "  directory to output the currency.jf json files. Default: current dir.\n");
     process.exit(1);
 }
 
-var localeDirName;
+var toDir;
 
 process.argv.forEach(function (val, index, array) {
     if (val === "-h" || val === "--help") {
@@ -51,22 +51,27 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-localeDirName = process.argv[2] || ".";
+if (process.argv.length <= 2) {
+    console.error('Error: not enough arguments.\n');
+    usage();
+} else {
+    toDir = process.argv[2];
+}
 
 console.log("gennumfmts - generate number formats information files.\n" +
-    "Copyright (c) 2013-2018 LGE\n");
+    "Copyright (c) 2013-2018, 2020 JEDLSoft\n");
 
-console.log("locale dir: " + localeDirName + "\n");
+console.log("Output dir: " + toDir + "\n");
 
-if (!fs.existsSync(localeDirName)) {
-    util.error("Could not access locale data directory " + localeDirName);
+if (!fs.existsSync(toDir)) {
+    util.error("Could not access Output directory " + toDir);
     usage();
 }
 
 var filename, root, json, suppData, languageData, digitsData, scripts = {};
 
 function calcLocalePath(language, script, region, filename) {
-    var pathName = localeDirName;
+    var pathName = toDir;
     if (language) {
         pathName = path.join(pathName, language);
     }
