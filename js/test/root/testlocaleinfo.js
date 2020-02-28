@@ -7281,7 +7281,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("nl-BE");
         test.ok(info !== null);
     
-        test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
+        test.equal(info.getCurrencyFormats().commonNegative, "{s} -{n}");
         test.done();
     },
     

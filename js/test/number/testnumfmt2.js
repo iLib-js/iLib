@@ -1869,8 +1869,8 @@ module.exports.testnumfmt2 = {
         test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "nl-BE", type: "currency", useNative:false, currency:li.getCurrency()});
-        test.equal(li.getCurrencyFormats().common, "{s} {n}"); // CLDR 34 change
-        test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}"); // CLDR 34 change
+        test.equal(li.getCurrencyFormats().common, "{s} {n}");
+        test.equal(li.getCurrencyFormats().commonNegative, "{s} -{n}");
         test.equal(curfmt.format(57.05), "€ 57,05"); //EUR
         test.done();
     },
