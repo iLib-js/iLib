@@ -6789,7 +6789,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("mk-MK");
         test.ok(info !== null);
     
-        test.equal(info.getPercentageFormat(), "{n}%");
+        test.equal(info.getPercentageFormat(), "{n} %");
         test.done();
     },
     
@@ -6816,7 +6816,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("mk-MK");
         test.ok(info !== null);
     
-        test.equal(info.getNegativePercentageFormat(), "-{n}%");
+        test.equal(info.getNegativePercentageFormat(), "-{n} %");
         test.done();
     },
     

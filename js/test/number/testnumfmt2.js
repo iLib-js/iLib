@@ -505,9 +505,9 @@ module.exports.testnumfmt2 = {
         test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "en-IN", type: "currency", useNative:false, currency:li.getCurrency()});
-        test.equal(li.getCurrencyFormats().common, "{s} {n}");
-        test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}");
-        test.equal(curfmt.format(57.05), "₹ 57.05"); //INR
+        test.equal(li.getCurrencyFormats().common, "{s}{n}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
+        test.equal(curfmt.format(57.05), "₹57.05"); //INR
         test.done();
     },
     testNumFmt_en_IS: function(test) {
@@ -1098,9 +1098,9 @@ module.exports.testnumfmt2 = {
         test.equal(pctfmt.format(34), "34 %");
 
         var curfmt = new NumFmt({locale: "es-PE", type: "currency", useNative:false, currency:li.getCurrency()});
-        test.equal(li.getCurrencyFormats().common, "{s}{n}");
-        test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
-        test.equal(curfmt.format(57.05), "S/.57.05"); //PEN
+        test.equal(li.getCurrencyFormats().common, "{s} {n}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}");
+        test.equal(curfmt.format(57.05), "S/. 57.05"); //PEN
         
         test.done();
     },
@@ -1769,9 +1769,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123.456.789,45");
 
         var pctfmt = new NumFmt({locale:"mk-MK", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n}%");
-        test.equal(li.getNegativePercentageFormat(), "-{n}%");
-        test.equal(pctfmt.format(34), "34%");
+        test.equal(li.getPercentageFormat(), "{n} %");
+        test.equal(li.getNegativePercentageFormat(), "-{n} %");
+        test.equal(pctfmt.format(34), "34 %");
 
         var curfmt = new NumFmt({locale: "mk-MK", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
