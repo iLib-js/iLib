@@ -17,7 +17,6 @@
  * limitations under the License.
  */
 
-
 if (typeof(GregorianDate) === "undefined") {
     var GregorianDate = require("../../lib/GregorianDate.js");
 }
