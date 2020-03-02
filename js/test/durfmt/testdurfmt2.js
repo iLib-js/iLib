@@ -1,7 +1,7 @@
 /*
  * testdurfmt2.js - test the duration formatter object
  *
- * Copyright © 2019, JEDLSoft
+ * Copyright © 2019-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -8993,6 +8993,47 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_15[1], '15小时15分钟15秒');
         test.equal(clockformatted_15[2], '15小时15分钟15秒');
         test.equal(clockformatted_15[3], '15小时15分钟15秒')
+
+        test.done();
+    },
+    testDurFmt_ka_GE: function(test) {
+        test.expect(16);
+        // 1 18
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_18 = [];
+        var clockformatted_1 = [],clockformatted_18 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "ka-GE", style:"text", length:length[i]});
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_18.push(textfmt.format({year: 18,month: 18,week: 18,day: 18}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_18.push(textfmt.format({hour: 18,minute: 18,second: 18}).toString());
+        }
+
+        test.equal(textformatted_1[0], '1 წელი, 1 თვე, 1 კვირა, 1 დღე');
+        test.equal(textformatted_1[1], '1 წ, 1 თვე, 1 კვრ, 1 დღე');
+        test.equal(textformatted_1[2], '1 წ, 1 თვე, 1 კვრ, 1 დღე');
+        test.equal(textformatted_1[3], '1 წ, 1 თვე, 1 კვრ, 1 დღე');
+
+        test.equal(textformatted_18[0], '18 წელი, 18 თვე, 18 კვირა, 18 დღე');
+        test.equal(textformatted_18[1], '18 წ, 18 თვე, 18 კვრ, 18 დღე');
+        test.equal(textformatted_18[2], '18 წ, 18 თვე, 18 კვრ, 18 დღე');
+        test.equal(textformatted_18[3], '18 წ, 18 თვე, 18 კვრ, 18 დღე');
+
+        test.equal(clockformatted_1[0], '1 საათი, 1 წუთი, 1 წამი');
+        test.equal(clockformatted_1[1], '1 სთ, 1 წთ, 1 წმ');
+        test.equal(clockformatted_1[2], '1სთ, 1წთ, 1წმ');
+        test.equal(clockformatted_1[3], '1სთ, 1წთ, 1წმ');
+
+        test.equal(clockformatted_18[0], '18 საათი, 18 წუთი, 18 წამი');
+        test.equal(clockformatted_18[1], '18 სთ, 18 წთ, 18 წმ');
+        test.equal(clockformatted_18[2], '18სთ, 18წთ, 18წმ');
+        test.equal(clockformatted_18[3], '18სთ, 18წთ, 18წმ');
 
         test.done();
     }

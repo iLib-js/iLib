@@ -1,7 +1,7 @@
 /*
  * teststrings.js - test the String object
  *
- * Copyright © 2012-2019, JEDLSoft
+ * Copyright © 2012-2019-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3087,18 +3087,58 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(1), "There items are one");
         test.done();
     },
+    testStringFormatChoiceCharClasses16: function(test) {
+        test.expect(2);
+        var str = new IString("one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(0), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses17: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(0), "There are no items.");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses18: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses19: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(15), "Default items");
+        test.done();
+    },
     
     testStringFormatChoiceCharClassesComplex1: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
-    
+
         test.ok(str !== null);
-    
+
         test.equal(str.formatChoice(1), "There items are one");
         test.done();
     },
-    
+
     testStringFormatChoiceCharClassesComplex2: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
@@ -3208,14 +3248,36 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(10), "Default items");
         test.done();
     },
+
+    testStringFormatChoiceCharClassesComplex12: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(10), "Default items");
+        test.done();
+    },
+
+    testStringFormatChoiceCharClassesComplex12: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
     
     testStringFormatChoiceDecimal1: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ar-EG");
-    
+
         test.ok(str !== null);
-    
+
         test.equal(str.formatChoice(8.0), "The items are few");
         test.done();
     },
@@ -3224,13 +3286,13 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("hy-AM");
-    
+
         test.ok(str !== null);
-    
+
         test.equal(str.formatChoice(3.5), "Default items");
         test.done();
     },
-    
+
     testStringFormatChoiceDecimal3: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
@@ -3363,7 +3425,6 @@ module.exports.teststrings = {
         test.done();
     },
     
-    
     testStringFormatChoiceDecimal15: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
@@ -3373,6 +3434,35 @@ module.exports.teststrings = {
     
         test.equal(str.formatChoice(1.5), "Default items");
         test.done();
+    },
+    testStringFormatChoiceDecimal16: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.5), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal17: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal18: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(0.0), "There are no items.");
+        test.done();
     }
-    
 };
