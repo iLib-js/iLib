@@ -1,7 +1,7 @@
  /*
  * datetimefmt.js
  *
- * Copyright © 2019, JEDLSoft
+ * Copyright © 2019-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5055,6 +5055,32 @@ module.exports.testdatetimeformat = {
 
         result1 = new DateFmt({locale:"zh-Hans-MY", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
         test.equal(result1,  "z ah:mm:ss");
+
+        test.done();
+    },
+    testDateTimeFormat_ka_GE: function(test) {
+        test.expect(7);
+
+        var result1, result2, result3, result4;
+
+        result1 = new DateFmt({locale:"ka-GE", type:"date", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"ka-GE", type:"date", date:"dmwy", length: "long", useNative:false, timezone:"local"}).template;
+        result3 = new DateFmt({locale:"ka-GE", type:"date", date:"dmwy", length: "medium", useNative:false, timezone:"local"}).template;
+        result4 = new DateFmt({locale:"ka-GE", type:"date", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "EEEE, dd MMMM, yyyy");
+        test.equal(result2, "EEE, d MMMM, yyyy");
+        test.equal(result3, "EE, d MMM. yyyy");
+        test.equal(result4, "E, dd.MM.yy");
+
+        result1 = new DateFmt({locale:"ka-GE", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"ka-GE", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "EEEE, dd MMMM, yyyy, HH:mm");
+        test.equal(result2, "E, dd.MM.yy, HH:mm");
+
+        result1 = new DateFmt({locale:"ka-GE", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
+        test.equal(result1,  "HH:mm:ss z");
 
         test.done();
     }

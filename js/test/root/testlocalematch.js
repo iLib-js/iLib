@@ -1,7 +1,7 @@
 /*
  * testlocalematch.js - test the locale matcher object
  *
- * Copyright © 2012-2015,2017,2019 JEDLSoft
+ * Copyright © 2012-2015,2017,2019-2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1037,6 +1037,41 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "hr-Latn-ME");
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleByLocaleCode60: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ka-GE"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ka-Geor-GE");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode61: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "GE"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ka-Geor-GE");
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleByLocaleCode61: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ka"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ka-Geor-GE");
         test.done();
     },
 
