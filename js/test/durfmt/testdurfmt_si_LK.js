@@ -1,7 +1,7 @@
 /*
  * testdurfmt_si-LK.js - test the duration formatter object
  *
- * Copyright © 2017,2017, JEDLSoft
+ * Copyright © 2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ module.exports.testdurfmt_si_LK = {
             length: "short"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -50,7 +50,6 @@ module.exports.testdurfmt_si_LK = {
         test.equal(duration.toString(), 'ව 1, මා 1, ස 1, දි 1, පැය 1, මි 1, ත 1');
         test.done();
     },
-    
     testDurFmtLKFormatShortText: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -59,7 +58,7 @@ module.exports.testdurfmt_si_LK = {
             style: "text"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -72,7 +71,6 @@ module.exports.testdurfmt_si_LK = {
         test.equal(duration.toString(), 'ව 1, මා 1, ස 1, දි 1, පැය 1, මි 1, ත 1');
         test.done();
     },
-    
     testDurFmtLKFormatShortClock: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -81,7 +79,7 @@ module.exports.testdurfmt_si_LK = {
             style: "clock"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -94,7 +92,6 @@ module.exports.testdurfmt_si_LK = {
         test.equal(duration.toString(), "ව 1, මා 1, ස 1, දි 1, 01.01.01");
         test.done();
     },
-    
     testDurFmtLKFormatMedium: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -102,7 +99,7 @@ module.exports.testdurfmt_si_LK = {
             length: "medium"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -115,7 +112,6 @@ module.exports.testdurfmt_si_LK = {
         test.equal(duration.toString(), 'ව 1, මා 1, ස 1, දි 1, පැය 1, මි 1, ත 1');
         test.done();
     },
-    
     testDurFmtLKFormatLong: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -123,7 +119,7 @@ module.exports.testdurfmt_si_LK = {
             length: "long"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -136,7 +132,6 @@ module.exports.testdurfmt_si_LK = {
         test.equal(duration.toString(), "වසර 1, මාස 1, සති 1, දින 1, පැය 1, මිනි 1, තත් 1");
         test.done();
     },
-    
     testDurFmtLKFormatFull: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -144,7 +139,7 @@ module.exports.testdurfmt_si_LK = {
             length: "full"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -157,8 +152,6 @@ module.exports.testdurfmt_si_LK = {
         test.equal(duration.toString(), "වසර 1, මාස 1, සති 1, දින 1, පැය 1, මිනිත්තු 1, සහ තත්පර 1");
         test.done();
     },
-    
-    
     testDurFmtLKAsyncWithLocale: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -167,7 +160,7 @@ module.exports.testdurfmt_si_LK = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-    
+
                 var duration = fmt.format({
                     year: 2,
                     month: 2,
@@ -182,7 +175,6 @@ module.exports.testdurfmt_si_LK = {
             }
         });
     },
-    
     testDurFmtLKFormatShortClockAsync: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -192,7 +184,7 @@ module.exports.testdurfmt_si_LK = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-    
+
                 var duration = fmt.format({
                     year: 1,
                     month: 1,
@@ -207,5 +199,4 @@ module.exports.testdurfmt_si_LK = {
             }
         });
     }
-    
 };

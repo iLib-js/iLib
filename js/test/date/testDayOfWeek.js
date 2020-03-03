@@ -1,5 +1,5 @@
  /*
- * testWeekDate.js
+ * testWeekDate.js - test the weekdata information
  *
  * Copyright © 2019, JEDLSoft
  *

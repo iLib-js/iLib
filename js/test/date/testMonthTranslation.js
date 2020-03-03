@@ -1,5 +1,5 @@
 /*
- * testMonthTranslation.js
+ * testMonthTranslation.js - test the month's translation
  *
  * Copyright © 2019, JEDLSoft
  *
