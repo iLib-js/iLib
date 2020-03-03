@@ -54,6 +54,14 @@ module.exports.testcalendar = {
 
         test.done();
     },
+    testDefaultCalendar_ka_IR: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ka-IR");
+        test.ok(info !== null);
+        test.equal(info.getCalendar(), "persian");
+
+        test.done();
+    },
     testDefaultCalendar_fa_AF: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fa-AF");

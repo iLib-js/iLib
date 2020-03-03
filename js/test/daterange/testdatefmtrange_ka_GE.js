@@ -3,18 +3,18 @@
  * 
  * Copyright © 2020, JEDLSoft
  *
- * Licensed unenr the Apache License, Version 2.0 (the "License");
- * you may not use tens file except in compliance with the License.
- * You may obtaiN a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed unenr the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KinD, either express or implied.
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *
  * See the License for the specific language governing permissions and
- * limitations unenr the License.
+ * limitations under the License.
  */
 
 if (typeof(GregorianDate) === "undefined") {
@@ -28,17 +28,17 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
-module.exports.testdatefmtrange_en_GB = {
+module.exports.testdatefmtrange_ka_GE = {
     setUp: function(callback) {
         ilib.clearCache();
         callback();
     },
 
-    testDateRngFmtGBRangeInDayShort: function(test) {
+    testDateRngFmtkaGERangeInDayShort: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "short"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -57,14 +57,14 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/2011, 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31.12.11, 13:45 – 14:30");
         test.done();
     },
-    testDateRngFmtGBRangeInDayMedium: function(test) {
+    testDateRngFmtkaGERangeInDayMedium: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "medium"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -83,14 +83,14 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Dec 2011, 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 დეკ. 2011, 13:45 – 14:30");
         test.done();
     },
-    testDateRngFmtGBRangeInDayLong: function(test) {
+    testDateRngFmtkaGERangeInDayLong: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "long"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -109,14 +109,14 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 December 2011 at 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 დეკემბერი, 2011, 13:45 – 14:30");
         test.done();
     },
-    testDateRngFmtGBRangeInDayFull: function(test) {
+    testDateRngFmtkaGERangeInDayFull: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "full"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -135,15 +135,15 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 December 2011 at 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 დეკემბერი, 2011, 13:45 – 14:30");
         test.done();
     },
     
-    testDateRngFmtGBRangeNextDayShort: function(test) {
+    testDateRngFmtkaGERangeNextDayShort: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "short"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -162,14 +162,14 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/2011, 13:45 – 31/12/2011, 14:30");
+        test.equal(fmt.format(start, end), "30.12.11, 13:45 – 31.12.11, 14:30");
         test.done();
     },
-    testDateRngFmtGBRangeNextDayMedium: function(test) {
+    testDateRngFmtkaGERangeNextDayMedium: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "medium"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -188,14 +188,14 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Dec 2011, 13:45 – 31 Dec 2011, 14:30");
+        test.equal(fmt.format(start, end), "30 დეკ. 2011, 13:45 – 31 დეკ. 2011, 14:30");
         test.done();
     },
-    testDateRngFmtGBRangeNextDayLong: function(test) {
+    testDateRngFmtkaGERangeNextDayLong: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "long"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -214,14 +214,14 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 December 2011 at 13:45 – 31 December 2011 at 14:30");
+        test.equal(fmt.format(start, end), "30 დეკემბერი, 2011, 13:45 – 31 დეკემბერი, 2011, 14:30");
         test.done();
     },
-    testDateRngFmtGBRangeNextDayFull: function(test) {
+    testDateRngFmtkaGERangeNextDayFull: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "full"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -240,15 +240,15 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 December 2011 at 13:45 – 31 December 2011 at 14:30");
+        test.equal(fmt.format(start, end), "30 დეკემბერი, 2011, 13:45 – 31 დეკემბერი, 2011, 14:30");
         test.done();
     },
     
-    testDateRngFmtGBRangeMultiDayShort: function(test) {
+    testDateRngFmtkaGERangeMultiDayShort: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "short"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -267,14 +267,14 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31/12/2011");
+        test.equal(fmt.format(start, end), "20 – 31.12.11");
         test.done();
     },
-    testDateRngFmtGBRangeMultiDayMedium: function(test) {
+    testDateRngFmtkaGERangeMultiDayMedium: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "medium"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -293,14 +293,14 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31 Dec 2011");
+        test.equal(fmt.format(start, end), "20 – 31 დეკ. 2011");
         test.done();
     },
-    testDateRngFmtGBRangeMultiDayLong: function(test) {
+    testDateRngFmtkaGERangeMultiDayLong: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "long"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -319,14 +319,14 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31 December 2011");
+        test.equal(fmt.format(start, end), "20 – 31 დეკემბერი, 2011");
         test.done();
     },
-    testDateRngFmtGBRangeMultiDayFull: function(test) {
+    testDateRngFmtkaGERangeMultiDayFull: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "full"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -345,120 +345,120 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31 December 2011");
-        test.done();
-    },
-    
-    testDateRngFmtGBRangeNextMonthShort: function(test) {
-        test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "short"});
-        test.ok(fmt !== null);
-        
-        var start = new GregorianDate({
-            year: 2011,
-            month: 11,
-            day: 20,
-            hour: 13,
-            minute: 45,
-            second: 0,
-            millisecond: 0
-        });
-        var end = new GregorianDate({
-            year: 2011,
-            month: 12,
-            day: 31,
-            hour: 14,
-            minute: 30,
-            second: 0,
-            millisecond: 0
-        });
-        test.equal(fmt.format(start, end), "20/11 – 31/12/2011");
-        test.done();
-    },
-    testDateRngFmtGBRangeNextMonthMedium: function(test) {
-        test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "medium"});
-        test.ok(fmt !== null);
-        
-        var start = new GregorianDate({
-            year: 2011,
-            month: 11,
-            day: 20,
-            hour: 13,
-            minute: 45,
-            second: 0,
-            millisecond: 0
-        });
-        var end = new GregorianDate({
-            year: 2011,
-            month: 12,
-            day: 31,
-            hour: 14,
-            minute: 30,
-            second: 0,
-            millisecond: 0
-        });
-        test.equal(fmt.format(start, end), "20 Nov – 31 Dec 2011");
-        test.done();
-    },
-    testDateRngFmtGBRangeNextMonthLong: function(test) {
-        test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "long"});
-        test.ok(fmt !== null);
-        
-        var start = new GregorianDate({
-            year: 2011,
-            month: 11,
-            day: 20,
-            hour: 13,
-            minute: 45,
-            second: 0,
-            millisecond: 0
-        });
-        var end = new GregorianDate({
-            year: 2011,
-            month: 12,
-            day: 31,
-            hour: 14,
-            minute: 30,
-            second: 0,
-            millisecond: 0
-        });
-        test.equal(fmt.format(start, end), "20 November – 31 December 2011");
-        test.done();
-    },
-    testDateRngFmtGBRangeNextMonthFull: function(test) {
-        test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "full"});
-        test.ok(fmt !== null);
-        
-        var start = new GregorianDate({
-            year: 2011,
-            month: 11,
-            day: 20,
-            hour: 13,
-            minute: 45,
-            second: 0,
-            millisecond: 0
-        });
-        var end = new GregorianDate({
-            year: 2011,
-            month: 12,
-            day: 31,
-            hour: 14,
-            minute: 30,
-            second: 0,
-            millisecond: 0
-        });
-        test.equal(fmt.format(start, end), "20 November – 31 December 2011");
+        test.equal(fmt.format(start, end), "20 – 31 დეკემბერი, 2011");
         test.done();
     },
     
-    testDateRngFmtGBRangeNextYearShort: function(test) {
+    testDateRngFmtkaGERangeNextMonthShort: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "short"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "short"});
         test.ok(fmt !== null);
-        
+
+        var start = new GregorianDate({
+            year: 2011,
+            month: 11,
+            day: 20,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        var end = new GregorianDate({
+            year: 2011,
+            month: 12,
+            day: 31,
+            hour: 14,
+            minute: 30,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(start, end), "20.11 – 31.12.11");
+        test.done();
+    },
+    testDateRngFmtkaGERangeNextMonthMedium: function(test) {
+        test.expect(2);
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "medium"});
+        test.ok(fmt !== null);
+
+        var start = new GregorianDate({
+            year: 2011,
+            month: 11,
+            day: 20,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        var end = new GregorianDate({
+            year: 2011,
+            month: 12,
+            day: 31,
+            hour: 14,
+            minute: 30,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(start, end), "20 ნოე – 31 დეკ. 2011");
+        test.done();
+    },
+    testDateRngFmtkaGERangeNextMonthLong: function(test) {
+        test.expect(2);
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "long"});
+        test.ok(fmt !== null);
+
+        var start = new GregorianDate({
+            year: 2011,
+            month: 11,
+            day: 20,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        var end = new GregorianDate({
+            year: 2011,
+            month: 12,
+            day: 31,
+            hour: 14,
+            minute: 30,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(start, end), "20 ნოემბერი – 31 დეკემბერი, 2011");
+        test.done();
+    },
+    testDateRngFmtkaGERangeNextMonthFull: function(test) {
+        test.expect(2);
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "full"});
+        test.ok(fmt !== null);
+
+        var start = new GregorianDate({
+            year: 2011,
+            month: 11,
+            day: 20,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        var end = new GregorianDate({
+            year: 2011,
+            month: 12,
+            day: 31,
+            hour: 14,
+            minute: 30,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(start, end), "20 ნოემბერი – 31 დეკემბერი, 2011");
+        test.done();
+    },
+    
+    testDateRngFmtkaGERangeNextYearShort: function(test) {
+        test.expect(2);
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "short"});
+        test.ok(fmt !== null);
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -477,14 +477,14 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20/11/2011 – 31/01/2012");
+        test.equal(fmt.format(start, end), "20.11.11 – 31.01.12");
         test.done();
     },
-    testDateRngFmtGBRangeNextYearMedium: function(test) {
+    testDateRngFmtkaGERangeNextYearMedium: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "medium"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -503,14 +503,14 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 Nov 2011 – 31 Jan 2012");
+        test.equal(fmt.format(start, end), "20 ნოე. 2011 – 31 იან. 2012");
         test.done();
     },
-    testDateRngFmtGBRangeNextYearLong: function(test) {
+    testDateRngFmtkaGERangeNextYearLong: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "long"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -529,14 +529,14 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 November 2011 – 31 January 2012");
+        test.equal(fmt.format(start, end), "20 ნოემბერი, 2011 – 31 იანვარი, 2012");
         test.done();
     },
-    testDateRngFmtGBRangeNextYearFull: function(test) {
+    testDateRngFmtkaGERangeNextYearFull: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "full"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -555,15 +555,15 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 November 2011 – 31 January 2012");
+        test.equal(fmt.format(start, end), "20 ნოემბერი, 2011 – 31 იანვარი, 2012");
         test.done();
     },
     
-    testDateRngFmtGBRangeMultiYearShort: function(test) {
+    testDateRngFmtkaGERangeMultiYearShort: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "short"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -582,14 +582,14 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11/2011 – 01/2014");
+        test.equal(fmt.format(start, end), "11.11 – 01.14");
         test.done();
     },
-    testDateRngFmtGBRangeMultiYearMedium: function(test) {
+    testDateRngFmtkaGERangeMultiYearMedium: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "medium"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -608,14 +608,14 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "Nov 2011 – Jan 2014");
+        test.equal(fmt.format(start, end), "ნოე. 2011 – იან. 2014");
         test.done();
     },
-    testDateRngFmtGBRangeMultiYearLong: function(test) {
+    testDateRngFmtkaGERangeMultiYearLong: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "long"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -634,14 +634,14 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "November 2011 – January 2014");
+        test.equal(fmt.format(start, end), "ნოემბერი, 2011 – იანვარი, 2014");
         test.done();
     },
-    testDateRngFmtGBRangeMultiYearFull: function(test) {
+    testDateRngFmtkaGERangeMultiYearFull: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "full"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -660,14 +660,14 @@ module.exports.testdatefmtrange_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "November 2011 – January 2014");
+        test.equal(fmt.format(start, end), "ნოემბერი, 2011 – იანვარი, 2014");
         test.done();
     },
-    testDateRngFmtGBManyYearsFull: function(test) {
+    testDateRngFmtkaGEManyYearsFull: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "en-GB", length: "full"});
+        var fmt = new DateRngFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -689,5 +689,4 @@ module.exports.testdatefmtrange_en_GB = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-    
 };

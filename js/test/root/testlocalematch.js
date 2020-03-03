@@ -1063,7 +1063,7 @@ module.exports.testlocalematch = {
         test.done();
     },
 
-    testLocaleMatcherGetLikelyLocaleByLocaleCode61: function(test) {
+    testLocaleMatcherGetLikelyLocaleByLocaleCode62: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
             locale: "ka"
