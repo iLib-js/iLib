@@ -1,5 +1,5 @@
  /*
- * testMeridiems.js
+ * testMeridiems.js - test the meridiems data
  *
  * Copyright © 2019, JEDLSoft
  *

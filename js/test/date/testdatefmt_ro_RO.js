@@ -17,9 +17,6 @@
  * limitations under the License.
  */
 
-
-
-
 if (typeof(JulianDate) === "undefined") {
     var JulianDate = require("../../lib/JulianDate.js");
 }

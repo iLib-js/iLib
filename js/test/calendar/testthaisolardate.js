@@ -1,7 +1,7 @@
 /*
  * testthaisolardate.js - test the Thai solar date object
  * 
- * Copyright © 2556, JEDLSoft
+ * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

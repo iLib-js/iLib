@@ -1,5 +1,5 @@
  /*
- * datetimefmt.js
+ * datetimefmt.js - test the date formatter template
  *
  * Copyright © 2019, JEDLSoft
  *
