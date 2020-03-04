@@ -177,9 +177,13 @@ HebrewCal.prototype.lastDayOfMonth = function(month, year) {
  * where 1=first month, 2=second month, etc.
  *
  * @param {number} year a year for which the number of months is sought
+ * @param {boolean} leap if the number of months is explicitly needed for a leap year,
+ * set this parameter to true. The year will be ignored in this case.
+ * @returns {number} the number of months in the given year or type of year
  */
-HebrewCal.prototype.getNumMonths = function(year) {
-    return this.isLeapYear(year) ? 13 : 12;
+HebrewCal.prototype.getNumMonths = function(year, leap) {
+    var isLeap = typeof(leap) === "boolean" ? leap : this.isLeapYear(year);
+    return isLeap ? 13 : 12;
 };
 
 /**

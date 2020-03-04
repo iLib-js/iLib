@@ -1,0 +1,21 @@
+{
+    "AM/PM": "Subbaahi/Zaarikay banda",
+    "Day": "Zaari",
+    "Era": "Zaman",
+    "Hour": "Guuru",
+    "Minute": "Miniti",
+    "Month": "Handu",
+    "Second": "Miti",
+    "Time Zone": "Leerazuu",
+    "Week": "Hebu",
+    "Year": "Jiiri",
+    "D": "Z",
+    "DD": "ZZ",
+    "YY": "JJ",
+    "YYYY": "JJJJ",
+    "M": "H",
+    "MM": "HH",
+    "H": "G",
+    "HH": "GG",
+    "ss": "mm"
+}

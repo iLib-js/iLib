@@ -1,0 +1,18 @@
+{
+    "AM/PM": "beaivi ráidodássi",
+    "Day": "beaivi",
+    "Era": "éra",
+    "Hour": "diibmu",
+    "Minute": "minuhtta",
+    "Month": "mánnu",
+    "Second": "sekunda",
+    "Time Zone": "áigeavádat",
+    "Week": "váhkku",
+    "Year": "jáhki",
+    "D": "B",
+    "DD": "BB",
+    "YY": "JJ",
+    "YYYY": "JJJJ",
+    "H": "D",
+    "HH": "DD"
+}

@@ -1,0 +1,19 @@
+{
+    "AM/PM": "Dayperiod",
+    "Day": "Mũthenya",
+    "Era": "Kĩhinda",
+    "Hour": "Ithaa",
+    "Minute": "Ndagĩka",
+    "Month": "Mweri",
+    "Second": "Sekunde",
+    "Time Zone": "Mũcooro wa mathaa",
+    "Week": "Kiumia",
+    "Year": "Mwaka",
+    "D": "M",
+    "DD": "MM",
+    "YY": "MM",
+    "YYYY": "MMMM",
+    "H": "I",
+    "HH": "II",
+    "mm": "nn"
+}

@@ -1,0 +1,20 @@
+{
+    "AM/PM": "Marango athiku",
+    "Day": "Thiku",
+    "Era": "Edhi",
+    "Hour": "Thaa",
+    "Minute": "Dakika",
+    "Month": "Mweji",
+    "Second": "Thekunde",
+    "Time Zone": "Majira Athaa",
+    "Week": "Ndisha",
+    "Year": "Mwaka",
+    "D": "T",
+    "DD": "TT",
+    "YY": "MM",
+    "YYYY": "MMMM",
+    "H": "T",
+    "HH": "TT",
+    "mm": "dd",
+    "ss": "tt"
+}

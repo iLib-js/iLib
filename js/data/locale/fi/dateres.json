@@ -1,0 +1,22 @@
+{
+    "AM/PM": "vuorokaudenaika",
+    "Day": "päivä",
+    "Day of Year": "vuodenpäivä",
+    "Era": "aikakausi",
+    "Hour": "tunti",
+    "Minute": "minuutti",
+    "Month": "kuukausi",
+    "Second": "sekunti",
+    "Time Zone": "aikavyöhyke",
+    "Week": "viikko",
+    "Week of Month": "kuukauden viikko",
+    "Year": "vuosi",
+    "D": "P",
+    "DD": "PP",
+    "YY": "VV",
+    "YYYY": "VVVV",
+    "M": "K",
+    "MM": "KK",
+    "H": "T",
+    "HH": "TT"
+}

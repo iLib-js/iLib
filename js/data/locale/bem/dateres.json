@@ -1,0 +1,20 @@
+{
+    "AM/PM": "Akasuba",
+    "Day": "Ubushiku",
+    "Era": "Inkulo",
+    "Hour": "Insa",
+    "Minute": "Mineti",
+    "Month": "Umweshi",
+    "Second": "Sekondi",
+    "Time Zone": "Zone",
+    "Week": "Umulungu",
+    "Year": "Umwaka",
+    "D": "U",
+    "DD": "UU",
+    "YY": "UU",
+    "YYYY": "UUUU",
+    "M": "U",
+    "MM": "UU",
+    "H": "I",
+    "HH": "II"
+}

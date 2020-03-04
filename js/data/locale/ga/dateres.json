@@ -1,0 +1,23 @@
+{
+    "AM/PM": "a.m./p.m.",
+    "Day": "Lá",
+    "Day of Year": "Lá den bhliain",
+    "Era": "Ré",
+    "Hour": "Uair",
+    "Minute": "Nóiméad",
+    "Month": "Mí",
+    "Second": "Soicind",
+    "Time Zone": "Crios Ama",
+    "Week": "Seachtain",
+    "Week of Month": "Seachtain den mhí",
+    "Year": "Bliain",
+    "D": "LÁ",
+    "DD": "LÁ",
+    "YY": "BB",
+    "YYYY": "BBBB",
+    "M": "MÍ",
+    "MM": "MÍ",
+    "H": "U",
+    "HH": "UU",
+    "mm": "nn"
+}

@@ -1,0 +1,21 @@
+{
+    "AM/PM": "Dayperiod",
+    "Day": "Ilanga",
+    "Hour": "Ihola",
+    "Minute": "Umuzuzu",
+    "Month": "Inyangacale",
+    "Second": "Isekendi",
+    "Time Zone": "Isikhathi",
+    "Week": "Iviki",
+    "Year": "Umnyaka",
+    "D": "I",
+    "DD": "II",
+    "YY": "UU",
+    "YYYY": "UUUU",
+    "M": "I",
+    "MM": "II",
+    "H": "I",
+    "HH": "II",
+    "mm": "uu",
+    "ss": "ii"
+}

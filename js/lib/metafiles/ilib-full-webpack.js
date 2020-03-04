@@ -47,6 +47,7 @@ ilib.INumber = require("../INumber.js");
 ilib.NumFmt = require("../NumFmt.js");
 ilib.JulianDay = require("../JulianDay.js");
 ilib.DateFmt = require("../DateFmt.js");
+ilib.DateFmtInfo = require("../DateFmtInfo.js");
 ilib.Calendar = require("../Calendar.js");
 ilib.CalendarFactory = require("../CalendarFactory.js");
 ilib.Utils = require("../Utils.js");

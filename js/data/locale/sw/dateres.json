@@ -1,0 +1,20 @@
+{
+    "Day": "siku",
+    "Day of Year": "siku ya mwaka",
+    "Era": "enzi",
+    "Hour": "saa",
+    "Minute": "dakika",
+    "Month": "mwezi",
+    "Second": "sekunde",
+    "Time Zone": "saa za eneo",
+    "Week": "wiki",
+    "Week of Month": "wiki ya mwezi",
+    "Year": "mwaka",
+    "D": "S",
+    "DD": "SS",
+    "YY": "MM",
+    "YYYY": "MMMM",
+    "H": "S",
+    "HH": "SS",
+    "mm": "dd"
+}

@@ -1,0 +1,21 @@
+{
+    "AM/PM": "Namshii",
+    "Day": "Siku",
+    "Era": "Mishi",
+    "Hour": "Saa",
+    "Minute": "Dakika",
+    "Month": "Ng’ezi",
+    "Second": "Sekunde",
+    "Time Zone": "Majila",
+    "Week": "Niki",
+    "Year": "Ng’waka",
+    "D": "S",
+    "DD": "SS",
+    "YY": "NN",
+    "YYYY": "NNNN",
+    "M": "N",
+    "MM": "NN",
+    "H": "S",
+    "HH": "SS",
+    "mm": "dd"
+}

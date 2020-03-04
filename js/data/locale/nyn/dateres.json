@@ -1,0 +1,22 @@
+{
+    "AM/PM": "Nyomushana/nyekiro",
+    "Day": "Eizooba",
+    "Era": "Obunaku",
+    "Hour": "Shaaha",
+    "Minute": "Edakiika",
+    "Month": "Omwezi",
+    "Second": "Obucweka/Esekendi",
+    "Time Zone": "Eshaaha za",
+    "Week": "Esande",
+    "Year": "Omwaka",
+    "D": "E",
+    "DD": "EE",
+    "YY": "OO",
+    "YYYY": "OOOO",
+    "M": "O",
+    "MM": "OO",
+    "H": "S",
+    "HH": "SS",
+    "mm": "ee",
+    "ss": "oo"
+}

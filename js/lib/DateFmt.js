@@ -1,7 +1,7 @@
 /*
  * DateFmt.js - Date formatter definition
  *
- * Copyright © 2012-2015, 2018, JEDLSoft
+ * Copyright © 2012-2015, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -579,6 +579,7 @@ DateFmt.weekDayLenMap = {
  *
  * @static
  * @public
+ * @deprecated Use DateFmtInfo.getMeridiemsRange() non-static method instead
  * @param {Object} options options governing the way this date formatter instance works for getting meridiems range
  * @return {Array.<{name:string,start:string,end:string}>}
  */
@@ -802,17 +803,7 @@ DateFmt.prototype = {
             while (i < template.length) {
                 ch = template.charAt(i);
                 start = i;
-                if (ch === "'") {
-                    // console.log("found quoted string");
-                    i++;
-                    // escaped string - push as-is, then dequote later
-                    while (i < template.length && template.charAt(i) !== "'") {
-                        i++;
-                    }
-                    if (i < template.length) {
-                        i++;    // grab the other quote too
-                    }
-                } else if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+                if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
                     letter = template.charAt(i);
                     // console.log("found letters " + letter);
                     while (i < template.length && ch === letter) {
@@ -820,7 +811,15 @@ DateFmt.prototype = {
                     }
                 } else {
                     // console.log("found other");
-                    while (i < template.length && ch !== "'" && (ch < 'a' || ch > 'z') && (ch < 'A' || ch > 'Z')) {
+                    while (i < template.length && (ch < 'a' || ch > 'z') && (ch < 'A' || ch > 'Z')) {
+                        if (ch === "'") {
+                            // console.log("found quoted string");
+                            i++;
+                            // escaped string - push as-is, then dequote later
+                            while (i < template.length && template.charAt(i) !== "'") {
+                                i++;
+                            }
+                        }
                         ch = template.charAt(++i);
                     }
                 }
@@ -930,6 +929,7 @@ DateFmt.prototype = {
      * CLDR frequently, and possible orderings cannot be predicted. Your code should
      * support all 6 possibilities, just in case.
      *
+     * @deprecated Use DateFmtInfo.getDateComponentOrder() instead
      * @return {string} a string giving the date component order
      */
     getDateComponentOrder: function() {
@@ -1013,12 +1013,13 @@ DateFmt.prototype = {
 
     /**
      * Return the meridiems range in current locale.
+     * @deprecated Use DateFmtInfo.getMeridiemsRange() instead
      * @return {Array.<{name:string,start:string,end:string}>} the range of available meridiems
      */
     getMeridiemsRange: function () {
         var result;
         var _getSysString = function (key) {
-            return (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key)).toString();
+            return (this.sysres.getStringJS(undefined, key + "-" + this.calName) || this.sysres.getStringJS(undefined, key)).toString();
         };
 
         switch (this.meridiems) {
@@ -1133,6 +1134,7 @@ DateFmt.prototype = {
      * the months have different names depending if that year is a leap year or not.
      * </ul>
      *
+     * @deprecated Use DateFmtInfo.getMonthsOfYear() instead
      * @param  {Object=} options an object-literal that contains any of the above properties
      * @return {Array} an array of the names of all of the months of the year in the current calendar
      */
@@ -1161,7 +1163,7 @@ DateFmt.prototype = {
 
         monthCount = this.cal.getNumMonths(date.getYears());
         for (var i = 1; i <= monthCount; i++) {
-            months[i] = this.sysres.getString(this._getTemplate(template + i, this.cal.getType())).toString();
+            months[i] = this.sysres.getStringJS(this._getTemplate(template + i, this.cal.getType())).toString();
         }
         return months;
     },
@@ -1176,6 +1178,8 @@ DateFmt.prototype = {
      * <li><i>length</i> - length of the names of the months being sought. This may be one of
      * "short", "medium", "long", or "full"
      * </ul>
+     *
+     * @deprecated Use DateFmtInfo.getDaysOfWeek() instead
      * @param  {Object=} options an object-literal that contains one key
      *                   "length" with the standard length strings
      * @return {Array} an array of all of the names of the days of the week
@@ -1185,7 +1189,7 @@ DateFmt.prototype = {
             template = DateFmt.weekDayLenMap[length],
             days = [];
         for (var i = 0; i < 7; i++) {
-            days[i] = this.sysres.getString(this._getTemplate(template + i, this.cal.getType())).toString();
+            days[i] = this.sysres.getStringJS(this._getTemplate(template + i, this.cal.getType())).toString();
         }
         return days;
     },
@@ -1306,7 +1310,10 @@ DateFmt.prototype = {
                 case 'LLL':
                 case 'LLLL':
                     key = templateArr[i] + (date.month || 1);
-                    str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                    isLeap = date.cal.isLeapYear(date.year);
+                    str += (isLeap ? this.sysres.getStringJS(undefined, key + "-leap" + "-" + this.calName) : false) ||
+                        this.sysres.getStringJS(undefined, key + "-" + this.calName) ||
+                        this.sysres.getStringJS(undefined, key);
                     break;
 
                 case 'E':
@@ -1318,8 +1325,11 @@ DateFmt.prototype = {
                 case 'ccc':
                 case 'cccc':
                     key = templateArr[i] + date.getDayOfWeek();
+                    isLeap = date.cal.isLeapYear(date.year);
                     //console.log("finding " + key + " in the resources");
-                    str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                    str += (isLeap ? this.sysres.getStringJS(undefined, key + "-leap" + "-" + this.calName) : false) ||
+                        this.sysres.getStringJS(undefined, key + "-" + this.calName) ||
+                        this.sysres.getStringJS(undefined, key);
                     break;
 
                 case 'a':
@@ -1359,7 +1369,7 @@ DateFmt.prototype = {
                         break;
                     }
                     //console.log("finding " + key + " in the resources");
-                    str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                    str += (this.sysres.getStringJS(undefined, key + "-" + this.calName) || this.sysres.getStringJS(undefined, key));
                     break;
 
                 case 'w':
@@ -1384,7 +1394,7 @@ DateFmt.prototype = {
 
                 case 'G':
                     key = "G" + date.getEra();
-                    str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                    str += (this.sysres.getStringJS(undefined, key + "-" + this.calName) || this.sysres.getStringJS(undefined, key));
                     break;
 
                 case 'O':

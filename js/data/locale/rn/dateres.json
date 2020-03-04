@@ -1,0 +1,22 @@
+{
+    "AM/PM": "M.s/N.s",
+    "Day": "Umusi",
+    "Era": "Igihe",
+    "Hour": "Isaha",
+    "Minute": "Umunota",
+    "Month": "Ukwezi",
+    "Second": "Isegonda",
+    "Time Zone": "Isaha yo mukarere",
+    "Week": "Indwi, Iyinga",
+    "Year": "Umwaka",
+    "D": "U",
+    "DD": "UU",
+    "YY": "UU",
+    "YYYY": "UUUU",
+    "M": "U",
+    "MM": "UU",
+    "H": "I",
+    "HH": "II",
+    "mm": "uu",
+    "ss": "ii"
+}

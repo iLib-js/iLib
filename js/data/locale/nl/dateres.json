@@ -1,0 +1,18 @@
+{
+    "AM/PM": "a.m./p.m.",
+    "Day": "dag",
+    "Day of Year": "dag van het jaar",
+    "Era": "tijdperk",
+    "Hour": "uur",
+    "Minute": "minuut",
+    "Month": "maand",
+    "Second": "seconde",
+    "Time Zone": "tijdzone",
+    "Week": "week",
+    "Week of Month": "week van de maand",
+    "Year": "jaar",
+    "YY": "JJ",
+    "YYYY": "JJJJ",
+    "H": "U",
+    "HH": "UU"
+}

@@ -1,0 +1,19 @@
+{
+    "AM/PM": "Muhi/Chilo",
+    "Day": "Lihiku",
+    "Era": "Mahiku",
+    "Hour": "Saa",
+    "Minute": "Dakika",
+    "Month": "Mwedi",
+    "Second": "Sekunde",
+    "Time Zone": "Npanda wa muda",
+    "Week": "Lijuma",
+    "Year": "Mwaka",
+    "D": "L",
+    "DD": "LL",
+    "YY": "MM",
+    "YYYY": "MMMM",
+    "H": "S",
+    "HH": "SS",
+    "mm": "dd"
+}

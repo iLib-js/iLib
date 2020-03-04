@@ -1,0 +1,19 @@
+{
+    "AM/PM": "Nkwaya",
+    "Day": "Mfiri",
+    "Era": "Kacha",
+    "Hour": "Isaa",
+    "Minute": "Dakika",
+    "Month": "Mweri",
+    "Second": "Sekunde",
+    "Time Zone": "Mfiri o saa",
+    "Week": "Iwiki",
+    "Year": "Muaka",
+    "D": "M",
+    "DD": "MM",
+    "YY": "MM",
+    "YYYY": "MMMM",
+    "H": "I",
+    "HH": "II",
+    "mm": "dd"
+}

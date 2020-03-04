@@ -1,0 +1,18 @@
+{
+    "AM/PM": "dop/pop",
+    "Day": "dan",
+    "Day of Year": "dan leta",
+    "Era": "doba",
+    "Hour": "ura",
+    "Minute": "minuta",
+    "Month": "mesec",
+    "Second": "sekunda",
+    "Time Zone": "časovni pas",
+    "Week": "teden",
+    "Week of Month": "teden meseca",
+    "Year": "leto",
+    "YY": "LL",
+    "YYYY": "LLLL",
+    "H": "U",
+    "HH": "UU"
+}

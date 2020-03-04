@@ -1,0 +1,18 @@
+{
+    "AM/PM": "Dayperiod",
+    "Day": "nihuku",
+    "Era": "kal’lai",
+    "Hour": "isaa",
+    "Minute": "idakika",
+    "Month": "mweri",
+    "Second": "isekunde",
+    "Time Zone": "Zone",
+    "Week": "iwiki mocha",
+    "Year": "yaka",
+    "D": "N",
+    "DD": "NN",
+    "H": "I",
+    "HH": "II",
+    "mm": "ii",
+    "ss": "ii"
+}

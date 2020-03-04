@@ -1,0 +1,22 @@
+{
+    "AM/PM": "Na lâ",
+    "Day": "Lâ",
+    "Era": "Kùotângo",
+    "Hour": "Ngbonga",
+    "Minute": "Ndurü ngbonga",
+    "Month": "Nze",
+    "Second": "Nzîna ngbonga",
+    "Time Zone": "Zukangbonga",
+    "Week": "Dimâsi",
+    "Year": "Ngû",
+    "D": "LÂ",
+    "DD": "LÂ",
+    "YY": "NN",
+    "YYYY": "NGÛ",
+    "M": "N",
+    "MM": "NN",
+    "H": "N",
+    "HH": "NN",
+    "mm": "nn",
+    "ss": "nn"
+}

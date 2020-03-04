@@ -370,7 +370,7 @@ function invertAndFilter(object) {
  *     // like "City" and "Postal Code" translated to. In this example, we
  *     // are showing an input form for Dutch addresses, but the labels are
  *     // written in US English.
- *     fmt.getAddressFormatInfo("en-US", true, ilib.bind(this, function(rows) {
+ *     fmt.getFormatInfo("en-US", true, ilib.bind(this, function(rows) {
  *       // iterate through the rows array and dynamically create the input
  *       // elements with the given labels
  *     }));
