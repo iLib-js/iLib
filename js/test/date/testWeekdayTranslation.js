@@ -11153,11 +11153,9 @@ module.exports.testWeekdayTranslation = {
         
         test.done();
     },
-    testWeekdayTranslation_ka_GE: function(test) {
-        // full -> wide, long -> abbreviate
-        // medium -> short
-        // short: narrow
-        test.expect(28);
+    testWeekdayTranslationFull_ka_GE: function(test) {
+        // full -> wide
+        test.expect(7);
         var fmt, value = [], i;
         fmt = new DateFmt({locale:"ka-GE", date:"w", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -11170,7 +11168,12 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "ხუთშაბათი");
         test.equal(value[5], "პარასკევი");
         test.equal(value[6], "შაბათი");
-
+        test.done();
+    },
+    testWeekdayTranslationLong_ka_GE: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
         fmt = new DateFmt({locale:"ka-GE", date:"w", length: "long", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
@@ -11183,6 +11186,12 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[5], "პარ");
         test.equal(value[6], "შაბ");
 
+        test.done();
+    },
+    testWeekdayTranslationMedium_ka_GE: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
         fmt = new DateFmt({locale:"ka-GE", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
@@ -11195,6 +11204,12 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[5], "პრ");
         test.equal(value[6], "შბ");
 
+        test.done();
+    },
+    testWeekdayTranslationShort_ka_GE: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
         fmt = new DateFmt({locale:"ka-GE", date:"w", length: "short", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
