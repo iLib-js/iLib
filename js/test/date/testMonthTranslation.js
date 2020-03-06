@@ -1,7 +1,7 @@
 /*
  * testMonthTranslation.js - test the month's translation
  *
- * Copyright © 2019, JEDLSoft
+ * Copyright © 2019-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -7270,6 +7270,51 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "11月");
         test.equal(value[11], "12月");
         
+        test.done();
+    },
+    testMonthTranslate_ka_GE: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ka-GE", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "იანვარი");
+        test.equal(value[1], "თებერვალი");
+        test.equal(value[2], "მარტი");
+        test.equal(value[3], "აპრილი");
+        test.equal(value[4], "მაისი");
+        test.equal(value[5], "ივნისი");
+        test.equal(value[6], "ივლისი");
+        test.equal(value[7], "აგვისტო");
+        test.equal(value[8], "სექტემბერი");
+        test.equal(value[9], "ოქტომბერი");
+        test.equal(value[10], "ნოემბერი");
+        test.equal(value[11], "დეკემბერი");
+
+        var fmt = new DateFmt({locale:"ka-GE", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+
+        test.equal(value[0], "იან");
+        test.equal(value[1], "თებ");
+        test.equal(value[2], "მარ");
+        test.equal(value[3], "აპრ");
+        test.equal(value[4], "მაი");
+        test.equal(value[5], "ივნ");
+        test.equal(value[6], "ივლ");
+        test.equal(value[7], "აგვ");
+        test.equal(value[8], "სექ");
+        test.equal(value[9], "ოქტ");
+        test.equal(value[10], "ნოე");
+        test.equal(value[11], "დეკ");
+
         test.done();
     }
 }

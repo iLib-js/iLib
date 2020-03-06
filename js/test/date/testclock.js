@@ -1,7 +1,7 @@
  /*
  * testclock.js - test the 12/24 hour support amongst various locales
  *
- * Copyright © 2019, JEDLSoft
+ * Copyright © 2019-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1764,6 +1764,15 @@ module.exports.testclock = {
 
         test.equal(info.getClock(), 12);
         
+        test.done();
+    },
+    testClock_ka_GE: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ka-GE");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
         test.done();
     }
 }
