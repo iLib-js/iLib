@@ -895,7 +895,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "L, 29/9");
+        test.equal(fmt.format(date), 'L 29/9');
         test.done();
     },
 
@@ -914,7 +914,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "L, 29/9/54");
+        test.equal(fmt.format(date), 'L 29/9/54');
         test.done();
     },
 
@@ -1048,7 +1048,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Alhamis, 19 Faburairu");
+        test.equal(fmt.format(date), 'Alhamis 19 Faburairu');
         test.done();
     },
 
@@ -1067,7 +1067,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Alhamis, 19 Faburairu, 2015");
+        test.equal(fmt.format(date), 'Alhamis 19 Faburairu, 2015');
         test.done();
     },
 
@@ -1201,7 +1201,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 PM");
+        test.equal(fmt.format(date), '1:45 Yamma');
         test.done();
     },
 
@@ -1266,7 +1266,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 PM");
+        test.equal(fmt.format(date), '1:45:37 Yamma');
         test.done();
     },
 
@@ -1446,7 +1446,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 PM");
+        test.equal(fmt.format(date), '1:45 Yamma');
         test.done();
     },
 
@@ -1513,7 +1513,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 PM");
+        test.equal(fmt.format(date), '1:45:37 Yamma');
         test.done();
     },
 
@@ -1614,7 +1614,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+30 s");
+        test.equal(fmt.formatRelative(reference, date), 'cikin 30 dakika');
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteBefore_ha_Latn: function(test) {
@@ -1642,7 +1642,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "-30 s");
+        test.equal(fmt.formatRelative(reference, date), '30 dakika da ya gabata');
         test.done();
     },
     testDateFmtFormatRelativeWithinHourAfter_ha_Latn: function(test) {
@@ -1670,7 +1670,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+10 min");
+        test.equal(fmt.formatRelative(reference, date), 'cikin 10 minti');
         test.done();
     },
     testDateFmtFormatRelativeWithinHourBefore_ha_Latn: function(test) {
@@ -1698,7 +1698,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "-10 min");
+        test.equal(fmt.formatRelative(reference, date), '10 minti da ya gabata');
         test.done();
     },
     testDateFmtFormatRelativeWithinDayAfter_ha_Latn: function(test) {
@@ -1726,7 +1726,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+4 h");
+        test.equal(fmt.formatRelative(reference, date), 'cikin 4 awa');
         test.done();
     },
     testDateFmtFormatRelativeWithinDayBefore_ha_Latn: function(test) {
@@ -1754,7 +1754,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "-4 h");
+        test.equal(fmt.formatRelative(reference, date), '4 awa da ya gabata');
         test.done();
     },
 

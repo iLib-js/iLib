@@ -59,7 +59,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "11-09-29");
+        test.equal(fmt.format(date), '2011-09-29');
         test.done();
     },
 
@@ -211,7 +211,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "11-09-29 13 h 45");
+        test.equal(fmt.format(date), '2011-09-29 13 h 45');
         test.done();
     },
 
@@ -479,7 +479,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "11-09-29");
+        test.equal(fmt.format(date), '2011-09-29');
         test.done();
     },
 
@@ -517,7 +517,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "11-09-29 13 h 45");
+        test.equal(fmt.format(date), '2011-09-29 13 h 45');
         test.done();
     },
 
@@ -537,7 +537,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "11");
+        test.equal(fmt.format(date), '2011');
         test.done();
     },
 
@@ -632,7 +632,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "11-09");
+        test.equal(fmt.format(date), '2011-09');
         test.done();
     },
 
@@ -651,7 +651,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "11-09-29");
+        test.equal(fmt.format(date), '2011-09-29');
         test.done();
     },
 
@@ -689,7 +689,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "J 11-09-29");
+        test.equal(fmt.format(date), 'J 2011-09-29');
         test.done();
     },
 
@@ -919,7 +919,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "45 min 37 s");
+        test.equal(fmt.format(date), '45 min 37');
         test.done();
     },
 
@@ -1172,7 +1172,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "45 min 37 s");
+        test.equal(fmt.format(date), '45 min 37');
         test.done();
     },
 
@@ -1748,7 +1748,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "Dans 14 ans");
+        test.equal(fmt.formatRelative(reference, date), 'dans 14 ans');
         test.done();
     },
     testDateFmtFormatRelativeYearsBefore_fr_CA: function(test) {
@@ -1776,7 +1776,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "Il y a 21 ans");
+        test.equal(fmt.formatRelative(reference, date), 'il y a 21 ans');
         test.done();
     }
 };

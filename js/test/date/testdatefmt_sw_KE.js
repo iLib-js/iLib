@@ -213,7 +213,7 @@ module.exports.testdatefmt_sw_KE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011, 13:45");
+        test.equal(fmt.format(date), '29/09/2011 13:45');
         test.done();
     },
 
@@ -232,7 +232,7 @@ module.exports.testdatefmt_sw_KE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Sep 2011, 13:45");
+        test.equal(fmt.format(date), '29 Sep 2011 13:45');
         test.done();
     },
 
@@ -252,7 +252,7 @@ module.exports.testdatefmt_sw_KE = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "29 Septemba 2011 saa 13:45");
+        test.equal(fmt.format(date), '29 Septemba 2011 13:45');
         test.done();
     },
 
@@ -271,7 +271,7 @@ module.exports.testdatefmt_sw_KE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Septemba 2011 saa 13:45");
+        test.equal(fmt.format(date), '29 Septemba 2011 13:45');
         test.done();
     },
 
@@ -503,7 +503,7 @@ module.exports.testdatefmt_sw_KE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011, 13:45");
+        test.equal(fmt.format(date), '29/09/2011 13:45');
         test.done();
     },
 
