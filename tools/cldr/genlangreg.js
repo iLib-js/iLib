@@ -2,7 +2,7 @@
  * genlangreg.js - ilib tool to generate the langname and regionname json fragments from the CLDR
  * data files
  *
- * Copyright © 2013-2018, JEDLSoft
+ * Copyright © 2013-2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,21 +23,21 @@
 var fs = require('fs');
 var common = require("./common");
 var cldr = require("cldr-data");
-
+var path = require("path");
 var Locale = common.Locale;
 var mkdirs = common.makeDirs;
 
 function usage() {
-    console.log("Usage: genlangreg [-h] [ locale_data_dir ]\n" +
+    console.log("Usage: genlangreg [-h] [ toDir ]\n" +
         "Generate the langname.jf and regionname.jf files for each locale.\n" +
         "-h or --help\n" +
         "  this help\n" +
-        "locale_data_dir\n" +
-    "  the top level of the ilib locale data directory\n");
+        "toDir\n" +
+    "  directory where generated files will be located\n");
     process.exit(1);
 }
 
-var localeDirName;
+var toDir;
 
 process.argv.forEach(function (val, index, array) {
     if (val === "-h" || val === "--help") {
@@ -45,15 +45,15 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-localeDirName = process.argv[2] || "tmp";
+toDir = process.argv[2] || "tmp";
 
 console.log("genlangreg - generate language and region name data.\n" +
-    "Copyright (c) 2013-2018 JEDLSoft");
+    "Copyright (c) 2013-2018, 2020 JEDLSoft");
 
-console.log("locale dir: " + localeDirName);
+console.log("locale dir: " + toDir);
 
-if (!fs.existsSync(localeDirName)) {
-    common.makeDirs(localeDirName);
+if (!fs.existsSync(toDir)) {
+    common.makeDirs(toDir);
 }
 
 var languagesData, regionData;
@@ -79,13 +79,12 @@ console.log("Generating language name data");
 
 for (var lang in languages) {
     if (lang.search(/[_-]/) === -1) {
-        var langdir = localeDirName + "/" + lang;
-        var filename = langdir + "/langname.jf";
-        console.log(filename + ": " + languages[lang]);
+        var langdir = path.join(toDir,lang);
+        console.log(langdir + ": " + languages[lang]);
         mkdirs(langdir);
         language_name["language.name"] = languages[lang];
         language_name.generated = true;
-        fs.writeFileSync(filename, JSON.stringify(language_name, true, 4), "utf-8");
+        fs.writeFileSync(path.join(langdir, "langname.jf"), JSON.stringify(language_name, true, 4), "utf-8");
     }
 }
 
@@ -99,12 +98,18 @@ regions = regionsData.main.en.localeDisplayNames.territories;
 
 for (region in regions) {
     if (region.search(/[_\-0123456789]/) === -1) {
-        var regdir = localeDirName + "/und/" + region;
-        var filename = regdir + "/regionname.jf";
-        console.log(filename + ": " + regions[region]);
+        var regdir = path.join(toDir, "und", region);
+        console.log(regdir + ": " + regions[region]);
         mkdirs(regdir);
         region_name["region.name"] = regions[region];
         region_name.generated = true;
-        fs.writeFileSync(filename, JSON.stringify(region_name, true, 4), "utf-8");
+        fs.writeFileSync(path.join(regdir, "regionname.jf"), JSON.stringify(region_name, true, 4), "utf-8");
     }
 }
+var xxRegion = {"region.name": "Unknown"};
+var xxPath = path.join(toDir, "und", "XX");
+
+if (!fs.existsSync(xxPath)) {
+    mkdirs(xxPath);
+}
+fs.writeFileSync(path.join(xxPath, "regionname.jf"), JSON.stringify(xxRegion, true, 4), "utf-8");
