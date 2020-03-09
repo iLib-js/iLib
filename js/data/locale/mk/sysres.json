@@ -78,7 +78,7 @@
     "a0": "претпладне",
     "a1": "попладне",
     "G-1": "п.н.е.",
-    "G1": "CE",
+    "G1": "н.е.",
     "1#1 millisecond|#{num} milliseconds": "one#{num} милисекунда|#{num} милисекунди",
     "1#1 second|#{num} seconds": "one#{num} секунда|#{num} секунди",
     "1#1 minute|#{num} minutes": "one#{num} минута|#{num} минути",

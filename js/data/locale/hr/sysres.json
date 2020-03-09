@@ -232,9 +232,9 @@
     "separatorFull": ", ",
     "finalSeparatorFull": " i ",
     "separatorLong": ", ",
-    "finalSeparatorLong": ", ",
+    "finalSeparatorLong": " i ",
     "separatorMedium": ", ",
-    "finalSeparatorMedium": ", ",
+    "finalSeparatorMedium": " i ",
     "separatorShort": " ",
     "finalSeparatorShort": " "
 }

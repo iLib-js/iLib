@@ -77,6 +77,8 @@
     "E6": "s",
     "a0": "pre podne",
     "a1": "po podne",
+    "G-1": "p. n. e.",
+    "G1": "n. e.",
     "1#1 millisecond|#{num} milliseconds": "one#{num} milisekunda|few#{num} milisekunde|#{num} milisekundi",
     "1#1 second|#{num} seconds": "one#{num} sekunda|few#{num} sekunde|#{num} sekundi",
     "1#1 minute|#{num} minutes": "one#{num} minut|few#{num} minuta|#{num} minuta",

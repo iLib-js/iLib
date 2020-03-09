@@ -149,7 +149,7 @@
     "#{num}s ago": "one#‏{num} سیکنڈ پہلے|#‏{num} سیکنڈ پہلے",
     "#{num}mi ago": "one#‏{num} منٹ پہلے|#‏{num} منٹ پہلے",
     "#{num}h ago": "one#‏{num} گھنٹے پہلے|#‏{num} گھنٹے پہلے",
-    "#{num}d ago": "one#‏{num} دن پہلے|#‏{num} دنوں پہلے",
+    "#{num}d ago": "one#‏{num} دن پہلے|#‏{num} دن پہلے",
     "#{num}w ago": "one#‏{num} ہفتے پہلے|#‏{num} ہفتے پہلے",
     "#{num}mo ago": "one#‏{num} ماہ قبل|#‏{num} ماہ قبل",
     "#{num}y ago": "one#‏{num} سال پہلے|#‏{num} سال پہلے",

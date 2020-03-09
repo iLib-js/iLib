@@ -155,7 +155,7 @@
     "a1": "f",
     "G-1": "BCE",
     "G1": "CE",
-    "1#1 millisecond|#{num} milliseconds": "one#{num} mhille-dhiog|two#{num} mhille-dhiog|few#{num} mille-dhiogan|#{num} mille-dhiog",
+    "1#1 millisecond|#{num} milliseconds": "one#{num} mhili-diog|two#{num} mhili-diog|few#{num} mili-diogan|#{num} mili-diog",
     "1#1 second|#{num} seconds": "one#{num} diog|two#{num} dhiog|few#{num} diogan|#{num} diog",
     "1#1 minute|#{num} minutes": "one#{num} mhionaid|two#{num} mhionaid|few#{num} mionaidean|#{num} mionaid",
     "1#1 hour|#{num} hours": "one#{num} uair a thìde|two#{num} uair a thìde|few#{num} uairean a thìde|#{num} uair a thìde",
