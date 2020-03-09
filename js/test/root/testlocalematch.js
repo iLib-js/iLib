@@ -86,7 +86,6 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ia-Latn-001");
         test.done();
     },
-
     testLocaleMatcherGetLikelyLocaleByLanguage5: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -96,6 +95,28 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "sd-Arab-PK");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLanguage6: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "adp"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "adp-Tibt-BT");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLanguage7: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "an"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "an-Latn-ES");
         test.done();
     },
 
@@ -132,6 +153,17 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "fa-Aran-IR");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByScript3: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "Elym"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "arc-Elym-IR");
         test.done();
     },
 
