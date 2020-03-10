@@ -28,16 +28,16 @@ var Locale = common.Locale;
 var mkdirs = common.makeDirs;
 
 function usage() {
-    console.log("Usage: genlangreg [-h] [ toDir ]\n" +
+    console.log("Usage: genlangreg [-h] [ locale_data_dir ]\n" +
         "Generate the langname.jf and regionname.jf files for each locale.\n" +
         "-h or --help\n" +
         "  this help\n" +
-        "toDir\n" +
-    "  directory where generated files will be located\n");
+        "localeDirName\n" +
+    "  the top level of the ilib locale data directory\n");
     process.exit(1);
 }
 
-var toDir;
+var localeDirName;
 
 process.argv.forEach(function (val, index, array) {
     if (val === "-h" || val === "--help") {
@@ -45,15 +45,15 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-toDir = process.argv[2] || "tmp";
+localeDirName = process.argv[2] || "tmp";
 
 console.log("genlangreg - generate language and region name data.\n" +
     "Copyright (c) 2013-2018, 2020 JEDLSoft");
 
-console.log("locale dir: " + toDir);
+console.log("locale dir: " + localeDirName);
 
-if (!fs.existsSync(toDir)) {
-    common.makeDirs(toDir);
+if (!fs.existsSync(localeDirName)) {
+    common.makeDirs(localeDirName);
 }
 
 var languagesData, regionData;
@@ -79,7 +79,7 @@ console.log("Generating language name data");
 
 for (var lang in languages) {
     if (lang.search(/[_-]/) === -1) {
-        var langdir = path.join(toDir,lang);
+        var langdir = path.join(localeDirName,lang);
         console.log(langdir + ": " + languages[lang]);
         mkdirs(langdir);
         language_name["language.name"] = languages[lang];
@@ -98,7 +98,7 @@ regions = regionsData.main.en.localeDisplayNames.territories;
 
 for (region in regions) {
     if (region.search(/[_\-0123456789]/) === -1) {
-        var regdir = path.join(toDir, "und", region);
+        var regdir = path.join(localeDirName, "und", region);
         console.log(regdir + ": " + regions[region]);
         mkdirs(regdir);
         region_name["region.name"] = regions[region];
@@ -107,7 +107,7 @@ for (region in regions) {
     }
 }
 var xxRegion = {"region.name": "Unknown"};
-var xxPath = path.join(toDir, "und", "XX");
+var xxPath = path.join(localeDirName, "und", "XX");
 
 if (!fs.existsSync(xxPath)) {
     mkdirs(xxPath);
