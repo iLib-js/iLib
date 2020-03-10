@@ -930,7 +930,7 @@ module.exports.testaddress = {
     },
 
     testAddressFmtGetFormatInfoENCountriesRightSortOrder: function(test) {
-        test.expect(260);
+        test.expect(262);
         var formatter = new AddressFmt({locale: 'en-US'});
 
         var info = formatter.getFormatInfo();
@@ -1012,6 +1012,7 @@ module.exports.testaddress = {
             "Equatorial Guinea",
             "Eritrea",
             "Estonia",
+            "Eswatini",
             "Ethiopia",
             "Falkland Islands",
             "Faroe Islands",
@@ -1070,8 +1071,7 @@ module.exports.testaddress = {
             "Liechtenstein",
             "Lithuania",
             "Luxembourg",
-            "Macau SAR China",
-            "Macedonia",
+            "Macao SAR China",
             "Madagascar",
             "Malawi",
             "Malaysia",
@@ -1105,6 +1105,7 @@ module.exports.testaddress = {
             "Niue",
             "Norfolk Island",
             "North Korea",
+            "North Macedonia",
             "Northern Mariana Islands",
             "Norway",
             "Oman",
@@ -1120,6 +1121,8 @@ module.exports.testaddress = {
             "Pitcairn Islands",
             "Poland",
             "Portugal",
+            "Pseudo-Accents",
+            "Pseudo-Bidi",
             "Puerto Rico",
             "Qatar",
             "Réunion",
@@ -1156,7 +1159,6 @@ module.exports.testaddress = {
             "Sudan",
             "Suriname",
             "Svalbard & Jan Mayen",
-            "Swaziland",
             "Sweden",
             "Switzerland",
             "Syria",
@@ -1207,7 +1209,7 @@ module.exports.testaddress = {
     },
 
     testAddressFmtGetFormatInfoESCountriesRightSortOrder: function(test) {
-        test.expect(260);
+        test.expect(262);
         var formatter = new AddressFmt({locale: 'en-US'});
 
         var info = formatter.getFormatInfo("es");
@@ -1239,7 +1241,7 @@ module.exports.testaddress = {
             "Bermudas",
             "Bielorrusia",
             "Bolivia",
-            "Bosnia-Herzegovina",
+            "Bosnia y Herzegovina",
             "Botsuana",
             "Brasil",
             "Brunéi",
@@ -1282,6 +1284,7 @@ module.exports.testaddress = {
             "España",
             "Estados Unidos",
             "Estonia",
+            "Esuatini",
             "Etiopía",
             "Filipinas",
             "Finlandia",
@@ -1357,7 +1360,7 @@ module.exports.testaddress = {
             "Liechtenstein",
             "Lituania",
             "Luxemburgo",
-            "Macedonia",
+            "Macedonia del Norte",
             "Madagascar",
             "Malasia",
             "Malaui",
@@ -1399,6 +1402,8 @@ module.exports.testaddress = {
             "Polinesia Francesa",
             "Polonia",
             "Portugal",
+            "Pseudoacentos",
+            "Pseudobidi",
             "Puerto Rico",
             "RAE de Hong Kong (China)",
             "RAE de Macao (China)",
@@ -1432,7 +1437,6 @@ module.exports.testaddress = {
             "Siria",
             "Somalia",
             "Sri Lanka",
-            "Suazilandia",
             "Sudáfrica",
             "Sudán",
             "Sudán del Sur",
@@ -1453,7 +1457,7 @@ module.exports.testaddress = {
             "Tokelau",
             "Tonga",
             "Trinidad y Tobago",
-            "Tristán da Cunha",
+            "Tristán de Acuña",
             "Túnez",
             "Turkmenistán",
             "Turquía",
