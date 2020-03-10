@@ -643,6 +643,12 @@
             "name": "Tucumán"
         }
     ],
+    "AS": [
+        {
+            "code": "",
+            "name": "American Samoa"
+        }
+    ],
     "AT": [
         {
             "code": "1",
@@ -713,6 +719,18 @@
         {
             "code": "WA",
             "name": "Western Australia"
+        }
+    ],
+    "AW": [
+        {
+            "code": "",
+            "name": "Aruba"
+        }
+    ],
+    "AX": [
+        {
+            "code": "",
+            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1967,6 +1985,12 @@
             "name": "Zou"
         }
     ],
+    "BL": [
+        {
+            "code": "",
+            "name": "St. Barthélemy"
+        }
+    ],
     "BN": [
         {
             "code": "BE",
@@ -2227,6 +2251,10 @@
         {
             "code": "MI",
             "name": "Moore’s Island"
+        },
+        {
+            "code": "NP",
+            "name": "New Providence"
         },
         {
             "code": "NO",
@@ -3063,6 +3091,10 @@
             "name": "Maule"
         },
         {
+            "code": "NB",
+            "name": "Ñuble"
+        },
+        {
             "code": "RM",
             "name": "Santiago Metropolitan"
         },
@@ -3119,140 +3151,152 @@
     ],
     "CN": [
         {
-            "code": "11",
-            "name": "Beijing"
-        },
-        {
-            "code": "12",
-            "name": "Tianjin"
-        },
-        {
-            "code": "13",
-            "name": "Hebei"
-        },
-        {
-            "code": "14",
-            "name": "Shanxi"
-        },
-        {
-            "code": "15",
-            "name": "Inner Mongolia"
-        },
-        {
-            "code": "21",
-            "name": "Liaoning"
-        },
-        {
-            "code": "22",
-            "name": "Jilin"
-        },
-        {
-            "code": "23",
-            "name": "Heilongjiang"
-        },
-        {
-            "code": "31",
-            "name": "Shanghai"
-        },
-        {
-            "code": "32",
-            "name": "Jiangsu"
-        },
-        {
-            "code": "33",
-            "name": "Zhejiang"
-        },
-        {
-            "code": "34",
+            "code": "AH",
             "name": "Anhui"
         },
         {
-            "code": "35",
-            "name": "Fujian"
+            "code": "BJ",
+            "name": "Beijing"
         },
         {
-            "code": "36",
-            "name": "Jiangxi"
-        },
-        {
-            "code": "37",
-            "name": "Shandong"
-        },
-        {
-            "code": "41",
-            "name": "Henan"
-        },
-        {
-            "code": "42",
-            "name": "Hubei"
-        },
-        {
-            "code": "43",
-            "name": "Hunan"
-        },
-        {
-            "code": "44",
-            "name": "Guangdong"
-        },
-        {
-            "code": "45",
-            "name": "Guangxi"
-        },
-        {
-            "code": "46",
-            "name": "Hainan"
-        },
-        {
-            "code": "50",
+            "code": "CQ",
             "name": "Chongqing"
         },
         {
-            "code": "51",
-            "name": "Sichuan"
+            "code": "FJ",
+            "name": "Fujian"
         },
         {
-            "code": "52",
-            "name": "Guizhou"
-        },
-        {
-            "code": "53",
-            "name": "Yunnan"
-        },
-        {
-            "code": "54",
-            "name": "Tibet"
-        },
-        {
-            "code": "61",
-            "name": "Shaanxi"
-        },
-        {
-            "code": "62",
+            "code": "GS",
             "name": "Gansu"
         },
         {
-            "code": "63",
-            "name": "Qinghai"
+            "code": "GD",
+            "name": "Guangdong"
         },
         {
-            "code": "64",
-            "name": "Ningxia"
+            "code": "GX",
+            "name": "Guangxi"
         },
         {
-            "code": "65",
-            "name": "Xinjiang"
+            "code": "GZ",
+            "name": "Guizhou"
         },
         {
-            "code": "71",
-            "name": "Taiwan"
+            "code": "HI",
+            "name": "Hainan"
+        },
+        {
+            "code": "HE",
+            "name": "Hebei"
+        },
+        {
+            "code": "HL",
+            "name": "Heilongjiang"
+        },
+        {
+            "code": "HA",
+            "name": "Henan"
+        },
+        {
+            "code": "HK",
+            "name": "Hong Kong"
         },
         {
             "code": "91",
             "name": "Hong Kong SAR China"
         },
         {
+            "code": "HB",
+            "name": "Hubei"
+        },
+        {
+            "code": "HN",
+            "name": "Hunan"
+        },
+        {
+            "code": "NM",
+            "name": "Inner Mongolia"
+        },
+        {
+            "code": "JS",
+            "name": "Jiangsu"
+        },
+        {
+            "code": "JX",
+            "name": "Jiangxi"
+        },
+        {
+            "code": "JL",
+            "name": "Jilin"
+        },
+        {
+            "code": "LN",
+            "name": "Liaoning"
+        },
+        {
             "code": "92",
-            "name": "Macau SAR China"
+            "name": "Macao SAR China"
+        },
+        {
+            "code": "MO",
+            "name": "Macau"
+        },
+        {
+            "code": "NX",
+            "name": "Ningxia"
+        },
+        {
+            "code": "QH",
+            "name": "Qinghai"
+        },
+        {
+            "code": "SN",
+            "name": "Shaanxi"
+        },
+        {
+            "code": "SD",
+            "name": "Shandong"
+        },
+        {
+            "code": "SH",
+            "name": "Shanghai"
+        },
+        {
+            "code": "SX",
+            "name": "Shanxi"
+        },
+        {
+            "code": "SC",
+            "name": "Sichuan"
+        },
+        {
+            "code": "71",
+            "name": "Taiwan"
+        },
+        {
+            "code": "TW",
+            "name": "Taiwan"
+        },
+        {
+            "code": "TJ",
+            "name": "Tianjin"
+        },
+        {
+            "code": "XZ",
+            "name": "Tibet"
+        },
+        {
+            "code": "XJ",
+            "name": "Xinjiang"
+        },
+        {
+            "code": "YN",
+            "name": "Yunnan"
+        },
+        {
+            "code": "ZJ",
+            "name": "Zhejiang"
         }
     ],
     "CO": [
@@ -3387,6 +3431,12 @@
         {
             "code": "VID",
             "name": "Vichada"
+        }
+    ],
+    "CP": [
+        {
+            "code": "",
+            "name": "Clipperton Island"
         }
     ],
     "CR": [
@@ -3581,6 +3631,12 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
+        }
+    ],
+    "CW": [
+        {
+            "code": "",
+            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -5435,10 +5491,6 @@
             "name": "Brittany"
         },
         {
-            "code": "E",
-            "name": "Brittany"
-        },
-        {
             "code": "BFC",
             "name": "Burgundy-Franche-Comté"
         },
@@ -5480,10 +5532,6 @@
         },
         {
             "code": "COR",
-            "name": "Corsica"
-        },
-        {
-            "code": "H",
             "name": "Corsica"
         },
         {
@@ -5559,12 +5607,12 @@
             "name": "Grand-Est"
         },
         {
-            "code": "GUA",
+            "code": "GP",
             "name": "Guadeloupe"
         },
         {
-            "code": "GP",
-            "name": "Guadeloupe²"
+            "code": "GUA",
+            "name": "Guadeloupe"
         },
         {
             "code": "68",
@@ -5704,7 +5752,7 @@
         },
         {
             "code": "YT",
-            "name": "Mayotte²"
+            "name": "Mayotte"
         },
         {
             "code": "54",
@@ -6999,6 +7047,12 @@
             "name": "Tbilisi"
         }
     ],
+    "GF": [
+        {
+            "code": "",
+            "name": "French Guiana"
+        }
+    ],
     "GH": [
         {
             "code": "AH",
@@ -7042,6 +7096,14 @@
         }
     ],
     "GL": [
+        {
+            "code": "AV",
+            "name": "Avannaata Kommunia"
+        },
+        {
+            "code": "QT",
+            "name": "Kommune Qeqertalik"
+        },
         {
             "code": "KU",
             "name": "Kujalleq"
@@ -7249,6 +7311,12 @@
         {
             "code": "YO",
             "name": "Yomou"
+        }
+    ],
+    "GP": [
+        {
+            "code": "",
+            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -7641,6 +7709,12 @@
             "name": "Zacapa"
         }
     ],
+    "GU": [
+        {
+            "code": "",
+            "name": "Guam"
+        }
+    ],
     "GW": [
         {
             "code": "BA",
@@ -7731,6 +7805,12 @@
         {
             "code": "UT",
             "name": "Upper Takutu-Upper Essequibo"
+        }
+    ],
+    "HK": [
+        {
+            "code": "",
+            "name": "Hong Kong SAR China"
         }
     ],
     "HN": [
@@ -8107,6 +8187,12 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
+        }
+    ],
+    "IC": [
+        {
+            "code": "",
+            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -9241,6 +9327,10 @@
             "name": "South Tyrol"
         },
         {
+            "code": "SD",
+            "name": "Sud Sardegna"
+        },
+        {
             "code": "SR",
             "name": "Syracuse"
         },
@@ -10259,6 +10349,10 @@
             "name": "Pavlodar"
         },
         {
+            "code": "SHY",
+            "name": "Shymkent"
+        },
+        {
             "code": "YUZ",
             "name": "South Kazakhstan"
         },
@@ -11001,10 +11095,6 @@
             "name": "Diekirch"
         },
         {
-            "code": "D",
-            "name": "Diekirch²"
-        },
-        {
             "code": "EC",
             "name": "Echternach"
         },
@@ -11017,16 +11107,8 @@
             "name": "Grevenmacher"
         },
         {
-            "code": "G",
-            "name": "Grevenmacher²"
-        },
-        {
             "code": "LU",
             "name": "Luxembourg"
-        },
-        {
-            "code": "L",
-            "name": "Luxembourg²"
         },
         {
             "code": "ME",
@@ -11655,6 +11737,10 @@
             "name": "Berkane"
         },
         {
+            "code": "BRR",
+            "name": "Berrechid"
+        },
+        {
             "code": "BOD",
             "name": "Boujdour"
         },
@@ -11685,6 +11771,10 @@
         {
             "code": "10",
             "name": "Doukkala-Abda"
+        },
+        {
+            "code": "DRI",
+            "name": "Driouch"
         },
         {
             "code": "HAJ",
@@ -11723,6 +11813,10 @@
             "name": "Figuig"
         },
         {
+            "code": "FQH",
+            "name": "Fquih Ben Salah"
+        },
+        {
             "code": "02",
             "name": "Gharb-Chrarda-Béni Hssen"
         },
@@ -11737,6 +11831,10 @@
         {
             "code": "14",
             "name": "Guelmim-Es Semara"
+        },
+        {
+            "code": "GUF",
+            "name": "Guercif"
         },
         {
             "code": "IFR",
@@ -11783,6 +11881,14 @@
             "name": "Larache"
         },
         {
+            "code": "MDF",
+            "name": "M’diq-Fnideq"
+        },
+        {
+            "code": "MAR",
+            "name": "Marrakech"
+        },
+        {
             "code": "MMD",
             "name": "Marrakech-Medina"
         },
@@ -11805,6 +11911,10 @@
         {
             "code": "06",
             "name": "Meknès-Tafilalet"
+        },
+        {
+            "code": "MID",
+            "name": "Midelt"
         },
         {
             "code": "MOH",
@@ -11839,6 +11949,10 @@
             "name": "Oued Ed-Dahab-Lagouira"
         },
         {
+            "code": "OUZ",
+            "name": "Ouezzane"
+        },
+        {
             "code": "OUJ",
             "name": "Oujda-Angad"
         },
@@ -11849,6 +11963,10 @@
         {
             "code": "07",
             "name": "Rabat-Salé-Zemmour-Zaer"
+        },
+        {
+            "code": "REH",
+            "name": "Rehamna"
         },
         {
             "code": "SAF",
@@ -11867,8 +11985,20 @@
             "name": "Settat"
         },
         {
+            "code": "SIB",
+            "name": "Sidi Bennour"
+        },
+        {
+            "code": "SIF",
+            "name": "Sidi Ifni"
+        },
+        {
             "code": "SIK",
             "name": "Sidi Kacem"
+        },
+        {
+            "code": "SIL",
+            "name": "Sidi Slimane"
         },
         {
             "code": "SYB",
@@ -11907,6 +12037,10 @@
             "name": "Taourirt"
         },
         {
+            "code": "TAF",
+            "name": "Tarfaya (EH-partial)"
+        },
+        {
             "code": "TAR",
             "name": "Taroudant"
         },
@@ -11927,8 +12061,16 @@
             "name": "Tétouan"
         },
         {
+            "code": "TIN",
+            "name": "Tinghir"
+        },
+        {
             "code": "TIZ",
             "name": "Tiznit"
+        },
+        {
+            "code": "YUS",
+            "name": "Youssoufia"
         },
         {
             "code": "ZAG",
@@ -12247,6 +12389,12 @@
         {
             "code": "23",
             "name": "Petnjica"
+        }
+    ],
+    "MF": [
+        {
+            "code": "",
+            "name": "St. Martin"
         }
     ],
     "MG": [
@@ -12921,31 +13069,25 @@
             "name": "Arkhangai"
         }
     ],
+    "MO": [
+        {
+            "code": "",
+            "name": "Macao SAR China"
+        }
+    ],
+    "MP": [
+        {
+            "code": "",
+            "name": "Northern Mariana Islands"
+        }
+    ],
+    "MQ": [
+        {
+            "code": "",
+            "name": "Martinique"
+        }
+    ],
     "MR": [
-        {
-            "code": "07",
-            "name": "Adrar"
-        },
-        {
-            "code": "03",
-            "name": "Assaba"
-        },
-        {
-            "code": "05",
-            "name": "Brakna"
-        },
-        {
-            "code": "08",
-            "name": "Dakhlet Nouadhibou"
-        },
-        {
-            "code": "04",
-            "name": "Gorgol"
-        },
-        {
-            "code": "10",
-            "name": "Guidimaka"
-        },
         {
             "code": "01",
             "name": "Hodh Ech Chargui"
@@ -12955,36 +13097,56 @@
             "name": "Hodh El Gharbi"
         },
         {
-            "code": "12",
-            "name": "Inchiri"
+            "code": "03",
+            "name": "Assaba"
         },
         {
-            "code": "NKC",
-            "name": "Nouakchott"
+            "code": "04",
+            "name": "Gorgol"
         },
         {
-            "code": "14",
-            "name": "Nouakchott Nord"
+            "code": "05",
+            "name": "Brakna"
         },
         {
-            "code": "13",
-            "name": "Nouakchott Ouest"
+            "code": "06",
+            "name": "Trarza"
         },
         {
-            "code": "15",
-            "name": "Nouakchott Sud"
+            "code": "07",
+            "name": "Adrar"
+        },
+        {
+            "code": "08",
+            "name": "Dakhlet Nouadhibou"
         },
         {
             "code": "09",
             "name": "Tagant"
         },
         {
+            "code": "10",
+            "name": "Guidimaka"
+        },
+        {
             "code": "11",
             "name": "Tiris Zemmour"
         },
         {
-            "code": "06",
-            "name": "Trarza"
+            "code": "12",
+            "name": "Inchiri"
+        },
+        {
+            "code": "13",
+            "name": "Nouakchott Ouest"
+        },
+        {
+            "code": "14",
+            "name": "Nouakchott Nord"
+        },
+        {
+            "code": "15",
+            "name": "Nouakchott Sud"
         }
     ],
     "MT": [
@@ -13875,6 +14037,12 @@
             "name": "Zambezi"
         }
     ],
+    "NC": [
+        {
+            "code": "",
+            "name": "New Caledonia"
+        }
+    ],
     "NE": [
         {
             "code": "1",
@@ -14287,6 +14455,14 @@
         {
             "code": "22",
             "name": "Jan Mayen"
+        },
+        {
+            "code": "23",
+            "name": "Trøndelag"
+        },
+        {
+            "code": "50",
+            "name": "Trøndelag"
         }
     ],
     "NP": [
@@ -14311,12 +14487,20 @@
             "name": "Gandaki"
         },
         {
+            "code": "P4",
+            "name": "Gandaki²"
+        },
+        {
             "code": "JA",
             "name": "Janakpur"
         },
         {
             "code": "KA",
             "name": "Karnali"
+        },
+        {
+            "code": "P6",
+            "name": "Karnali²"
         },
         {
             "code": "KO",
@@ -14341,6 +14525,26 @@
         {
             "code": "NA",
             "name": "Narayani"
+        },
+        {
+            "code": "P1",
+            "name": "Province 1"
+        },
+        {
+            "code": "P2",
+            "name": "Province 2"
+        },
+        {
+            "code": "P3",
+            "name": "Province 3"
+        },
+        {
+            "code": "P5",
+            "name": "Province 5"
+        },
+        {
+            "code": "P7",
+            "name": "Province 7"
         },
         {
             "code": "4",
@@ -14463,20 +14667,12 @@
             "name": "Nelson"
         },
         {
-            "code": "N",
-            "name": "North Island"
-        },
-        {
             "code": "NTL",
             "name": "Northland"
         },
         {
             "code": "OTA",
             "name": "Otago"
-        },
-        {
-            "code": "S",
-            "name": "South Island"
         },
         {
             "code": "STL",
@@ -14513,20 +14709,12 @@
             "name": "Ad Dhahirah"
         },
         {
-            "code": "BA",
-            "name": "Al Batinah"
-        },
-        {
             "code": "BU",
             "name": "Al Buraimi"
         },
         {
             "code": "WU",
             "name": "Al Wusta"
-        },
-        {
-            "code": "SH",
-            "name": "Ash Sharqiyah"
         },
         {
             "code": "ZU",
@@ -14715,6 +14903,12 @@
         {
             "code": "UCA",
             "name": "Ucayali"
+        }
+    ],
+    "PF": [
+        {
+            "code": "",
+            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -15237,68 +15431,80 @@
     ],
     "PL": [
         {
-            "code": "PM",
-            "name": "Federal Capital Territory"
+            "code": "02",
+            "name": "Lower Silesia"
         },
         {
-            "code": "WP",
-            "name": "Greater Poland"
+            "code": "04",
+            "name": "Kuyavia-Pomerania"
         },
         {
-            "code": "KP",
-            "name": "Kuyavian-Pomerania"
-        },
-        {
-            "code": "MA",
-            "name": "Lesser Poland"
-        },
-        {
-            "code": "LD",
-            "name": "Łódź"
-        },
-        {
-            "code": "DS",
-            "name": "Lower Silesian"
-        },
-        {
-            "code": "LU",
+            "code": "06",
             "name": "Lublin"
         },
         {
-            "code": "LB",
+            "code": "08",
             "name": "Lubusz"
         },
         {
-            "code": "MZ",
+            "code": "10",
+            "name": "Łódź"
+        },
+        {
+            "code": "12",
+            "name": "Lesser Poland"
+        },
+        {
+            "code": "14",
             "name": "Mazovia"
         },
         {
-            "code": "OP",
+            "code": "16",
             "name": "Opole"
         },
         {
-            "code": "PD",
-            "name": "Podlaskie"
-        },
-        {
-            "code": "SL",
-            "name": "Silesia"
-        },
-        {
-            "code": "PK",
+            "code": "18",
             "name": "Subcarpathia"
         },
         {
-            "code": "SK",
-            "name": "Świętokrzyskie"
+            "code": "20",
+            "name": "Podlachia"
         },
         {
-            "code": "WN",
-            "name": "Warmian-Masuria"
+            "code": "22",
+            "name": "Pomerania"
         },
         {
-            "code": "ZP",
+            "code": "24",
+            "name": "Silesia"
+        },
+        {
+            "code": "26",
+            "name": "Holy Cross"
+        },
+        {
+            "code": "28",
+            "name": "Warmia-Masuria"
+        },
+        {
+            "code": "30",
+            "name": "Greater Poland"
+        },
+        {
+            "code": "32",
             "name": "West Pomerania"
+        }
+    ],
+    "PM": [
+        {
+            "code": "",
+            "name": "St. Pierre & Miquelon"
+        }
+    ],
+    "PR": [
+        {
+            "code": "",
+            "name": "Puerto Rico"
         }
     ],
     "PS": [
@@ -15621,6 +15827,12 @@
         {
             "code": "US",
             "name": "Umm Salal"
+        }
+    ],
+    "RE": [
+        {
+            "code": "",
+            "name": "Réunion"
         }
     ],
     "RO": [
@@ -17563,6 +17775,10 @@
             "name": "Eastern"
         },
         {
+            "code": "NW",
+            "name": "North Western"
+        },
+        {
             "code": "N",
             "name": "Northern"
         },
@@ -17897,6 +18113,12 @@
             "name": "Usulután"
         }
     ],
+    "SX": [
+        {
+            "code": "",
+            "name": "Sint Maarten"
+        }
+    ],
     "SY": [
         {
             "code": "HA",
@@ -17971,6 +18193,12 @@
         {
             "code": "SH",
             "name": "Shiselweni"
+        }
+    ],
+    "TA": [
+        {
+            "code": "",
+            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -18065,6 +18293,12 @@
         {
             "code": "WF",
             "name": "Wadi Fira"
+        }
+    ],
+    "TF": [
+        {
+            "code": "",
+            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -19125,6 +19359,10 @@
             "name": "Taitung"
         },
         {
+            "code": "",
+            "name": "Taiwan"
+        },
+        {
             "code": "TAO",
             "name": "Taoyuan"
         },
@@ -19257,6 +19495,10 @@
         {
             "code": "30",
             "name": "Simiyu"
+        },
+        {
+            "code": "31",
+            "name": "Songwe"
         }
     ],
     "UA": [
@@ -19423,6 +19665,10 @@
             "name": "Bugiri"
         },
         {
+            "code": "235",
+            "name": "Bugweri"
+        },
+        {
             "code": "420",
             "name": "Buhweju"
         },
@@ -19583,6 +19829,14 @@
             "name": "Kapchorwa"
         },
         {
+            "code": "236",
+            "name": "Kapelebyong"
+        },
+        {
+            "code": "126",
+            "name": "Kasanda"
+        },
+        {
             "code": "406",
             "name": "Kasese"
         },
@@ -19605,6 +19859,10 @@
         {
             "code": "227",
             "name": "Kibuku"
+        },
+        {
+            "code": "432",
+            "name": "Kikuube"
         },
         {
             "code": "419",
@@ -19637,6 +19895,10 @@
         {
             "code": "208",
             "name": "Kumi"
+        },
+        {
+            "code": "333",
+            "name": "Kwania"
         },
         {
             "code": "228",
@@ -19737,6 +19999,10 @@
         {
             "code": "108",
             "name": "Mukono"
+        },
+        {
+            "code": "334",
+            "name": "Nabilatuk"
         },
         {
             "code": "311",
@@ -19876,6 +20142,10 @@
         }
     ],
     "UM": [
+        {
+            "code": "",
+            "name": "U.S. Outlying Islands"
+        },
         {
             "code": "67",
             "name": "Johnston Atoll"
@@ -20407,6 +20677,12 @@
             "name": "Zulia"
         }
     ],
+    "VI": [
+        {
+            "code": "",
+            "name": "U.S. Virgin Islands"
+        }
+    ],
     "VN": [
         {
             "code": "44",
@@ -20699,6 +20975,10 @@
         {
             "code": "UV",
             "name": "Uvea"
+        },
+        {
+            "code": "",
+            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -20835,6 +21115,12 @@
         {
             "code": "TA",
             "name": "Taiz"
+        }
+    ],
+    "YT": [
+        {
+            "code": "",
+            "name": "Mayotte"
         }
     ],
     "ZA": [

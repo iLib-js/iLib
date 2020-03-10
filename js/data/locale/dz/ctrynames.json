@@ -1,6 +1,9 @@
 {
     "Eurozone": "EZ",
     "Kosovo": "XK",
+    "North Macedonia": "MK",
+    "Pseudo-Accents": "XA",
+    "Pseudo-Bidi": "XB",
     "Sub-Saharan Africa": "202",
     "United Nations": "UN",
     "ཀ་ཊར": "QA",
@@ -143,7 +146,6 @@
     "མ་དཱ་གེས་ཀར": "MG",
     "མ་ལ་ཝི": "MW",
     "མ་ལེ་ཤི་ཡ": "MY",
-    "མ་སེ་ཌོ་ནི་ཡ": "MK",
     "མཀ་ཨའུ་ཅཱའི་ན": "MO",
     "མའི་ཀྲོ་ནི་ཤི་ཡ": "FM",
     "མར་ཤེལ་གླིང་ཚོམ": "MH",
