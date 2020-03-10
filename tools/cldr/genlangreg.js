@@ -32,7 +32,7 @@ function usage() {
         "Generate the langname.jf and regionname.jf files for each locale.\n" +
         "-h or --help\n" +
         "  this help\n" +
-        "localeDirName\n" +
+        "locale_data_dir\n" +
     "  the top level of the ilib locale data directory\n");
     process.exit(1);
 }
