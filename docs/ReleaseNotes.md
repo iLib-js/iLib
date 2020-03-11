@@ -1,6 +1,29 @@
 Release Notes for Version 14
 ============================
 
+Build 008
+-------
+Published as version 14.5.0
+
+New Features:
+* Added missing methods to the IString classes to echo all the methods on the intrinsic string class
+    * Added methods that have been added in the last few years which some engines define and others do not
+    * Delegates to the string class. Does not offer a polyfill yet.
+    * Methods added are: matchAll, endsWith, startsWith, includes, normalize, padEnd,
+      padStart, repeat, toLocaleLowerCase, toLocaleUpperCase, trim, trimEnd, trimRight,
+      trimStart, trimLeft.
+    * Defined the "length" property so that it returns the string's length like the intrinsic strings do
+    * Added unit tests that only test the new methods if the underlying string class implements each new
+    method.
+* Added a "familiar" style to the name formatter
+    * This is as familiar as you can get and yet not be rude to a stranger for each locale. For example, in
+      English, you would use someone's given name, but in Japan, you would use the full name with honorific.
+
+Bug Fixes:
+* Updated to IANA time zone data 2019c
+* Updated the Korean Name Formatting component per style. Including 'suffix' is more natural than having a 'prefix' or 'honorific'.
+* Added missing likelylocale for `hr-ME`.
+
 Build 007
 -------
 Published as version 14.4.0

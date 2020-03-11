@@ -1,5 +1,8 @@
 {
     "format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
+    "components": {
+        "familiar": "pf"
+    },
     "sortByHeadWord": false,
     "nameStyle": "western",
     "conjunctions": {

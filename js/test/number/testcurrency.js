@@ -1894,5 +1894,14 @@ module.exports.testcurrency = {
         test.equal(info.getCurrency(), "MYR");
         
         test.done();
+    },
+    testCurrency_ka_GE: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ka-GE");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "GEL");
+
+        test.done();
     }
 };

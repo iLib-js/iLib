@@ -1,7 +1,7 @@
 /*
  * testnamefmt.js - test the name formatter object
  * 
- * Copyright © 2013-2015,2017, JEDLSoft
+ * Copyright © 2013-2015,2017,2019 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -165,7 +165,24 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Mr. John Kevin Smith Phd.");
         test.done();
     },
-    
+
+    testNameFmtENFamiliar: function(test) {
+        test.expect(1);
+        var name = new Name({
+            prefix: "Mr.",
+            givenName: "John",
+            middleName: "Kevin",
+            familyName: "Smith",
+            suffix: "Phd."
+        });
+        var fmt = new NameFmt({
+            style: "familiar"
+        });
+
+        test.equal(fmt.format(name), "John");
+        test.done();
+    },
+
     testNameFmtENWithCommaInSuffix: function(test) {
         test.expect(1);
         var name = new Name({
@@ -383,7 +400,27 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Hr. Andreas Helmut Schmidt MdB");
         test.done();
     },
-    
+
+    testNameFmtDEFamiliar: function(test) {
+        test.expect(1);
+        var name = new Name({
+            prefix: "Hr.",
+            givenName: "Andreas",
+            middleName: "Helmut",
+            familyName: "Schmidt",
+            suffix: "MdB"
+        }, {
+            locale: "de-DE"
+        });
+        var fmt = new NameFmt({
+            style: "familiar",
+            locale: "de-DE"
+        });
+
+        test.equal(fmt.format(name), "Hr. Schmidt");
+        test.done();
+    },
+
     testNameFmtDEWithCommaInSuffix: function(test) {
         test.expect(1);
         var name = new Name({
@@ -672,11 +709,106 @@ module.exports.testnamefmt = {
         
         // use the full name, even in formal_short
         // honorifics are prefixes in Korean
-        test.equal(fmt.format(name), "닥터 박은성");
+        test.equal(fmt.format(name), "박은성");
+        test.done();
+    },
+    testNameFmtKOFormalShort2: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "닥터",
+            givenName: "은성",
+            familyName: "박",
+            suffix: "님"
+        }, {
+            locale: "ko-KR"
+        });
+        var fmt = new NameFmt({
+            style: "formal_short",
+            locale: "ko-KR"
+        });
+
+        // use the full name, even in formal_short
+        // honorifics are prefixes in Korean
+        test.equal(fmt.format(name), "박은성 님");
         test.done();
     },
 
-    testNameFmtZHFormalLong: function(test) {
+    testNameFmtKOShort: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "닥터",
+            givenName: "은성",
+            familyName: "박",
+            suffix: "님"
+        }, {
+            locale: "ko-KR"
+        });
+        var fmt = new NameFmt({
+            locale: "ko-KR",
+            style: "short"
+        });
+        test.equal(fmt.format(name), "박은성");
+        test.done();
+    },
+
+    testNameFmtKOMedium: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "닥터",
+            givenName: "은성",
+            familyName: "박",
+            suffix: "님"
+        }, {
+            locale: "ko-KR"
+        });
+        var fmt = new NameFmt({
+            locale: "ko-KR",
+            style: "medium"
+        });
+
+        test.equal(fmt.format(name), "박은성");
+        test.done();
+    },
+
+    testNameFmtKOLong: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "닥터",
+            givenName: "은성",
+            familyName: "박",
+            suffix: "님"
+        }, {
+            locale: "ko-KR"
+        });
+        var fmt = new NameFmt({
+            locale: "ko-KR",
+            style: "long"
+        });
+
+        test.equal(fmt.format(name), "박은성 님");
+        test.done();
+    },
+
+    testNameFmtKOFull: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "닥터",
+            givenName: "은성",
+            familyName: "박",
+            suffix: "님"
+        }, {
+            locale: "ko-KR"
+        });
+        var fmt = new NameFmt({
+            locale: "ko-KR",
+            style: "full"
+        });
+
+        test.equal(fmt.format(name), "닥터 박은성 님");
+        test.done();
+    },
+
+    testNameFmtKOFamiliar: function(test) {
         test.expect(1);
         var name = new Name({
             honorific: "닥터",
@@ -693,7 +825,97 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "닥터 박은성");
         test.done();
     },
-    
+
+    testNameFmtZHFormalLong2: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "닥터",
+            givenName: "은성",
+            familyName: "박",
+            suffix: "님"
+        }, {
+            locale: "ko-KR"
+        });
+        var fmt = new NameFmt({
+            style: "formal_long",
+            locale: "ko-KR"
+        });
+
+        test.equal(fmt.format(name), "닥터 박은성 님");
+        test.done();
+    },
+
+    testNameFmtKOFormalLong: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "닥터",
+            givenName: "은성",
+            familyName: "박",
+            suffix: "님"
+        }, {
+            locale: "ko-KR"
+        });
+        var fmt = new NameFmt({
+            style: "familiar",
+            locale: "ko-KR"
+        });
+
+        test.equal(fmt.format(name), "박은성 님");
+        test.done();
+    },
+    /*testNameFmtKOFamiliar2: function(test) {
+        test.expect(1);
+        var name = new Name({
+            givenName: "은성",
+            familyName: "박"
+        }, {
+            locale: "ko-KR"
+        });
+        var fmt = new NameFmt({
+            style: "familiar",
+            locale: "ko-KR"
+        });
+
+        test.equal(fmt.format(name), "박은성 님");
+        test.done();
+    },*/
+
+    testNameFmtCSFamiliar: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "Pan",
+            givenName: "Jan",
+            familyName: "Novák"
+        }, {
+            locale: "cs-CZ"
+        });
+        var fmt = new NameFmt({
+            style: "familiar",
+            locale: "cs-CZ"
+        });
+
+        test.equal(fmt.format(name), "Pan Novák");
+        test.done();
+    },
+
+    testNameFmtSKFamiliar: function(test) {
+        test.expect(1);
+        var name = new Name({
+            honorific: "Pani",
+            givenName: "Mária",
+            familyName: "Obecny"
+        }, {
+            locale: "sk-SK"
+        });
+        var fmt = new NameFmt({
+            style: "familiar",
+            locale: "sk-SK"
+        });
+
+        test.equal(fmt.format(name), "Pani Obecny");
+        test.done();
+    },
+
     testNameFmtENWithImplicitConversionOfArgToName: function(test) {
         test.expect(1);
         var fmt = new NameFmt({

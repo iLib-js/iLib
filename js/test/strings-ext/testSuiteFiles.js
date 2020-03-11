@@ -36,6 +36,7 @@ module.exports.files = [
     "testlistfmt_hr.js",
     "testlistfmt_it.js",
     "testlistfmt_ja_JP.js",
+    "testlistfmt_ka_GE.js",
     "testlistfmt_kn_IN.js",
     "testlistfmt_ml_IN.js",
     "testlistfmt_mr_IN.js",

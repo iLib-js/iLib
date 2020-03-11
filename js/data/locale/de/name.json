@@ -1,11 +1,14 @@
 {
-	"sortByHeadWord": true,
-	"conjunctions": {
-		"and1": "und",
-		"and2": "und",
-		"or1": "oder",
-		"or2": "oder"
-	},
+    "sortByHeadWord": true,
+    "components": {
+        "familiar": "pf"
+    },
+    "conjunctions": {
+        "and1": "und",
+        "and2": "und",
+        "or1": "oder",
+        "or2": "oder"
+    },
     "auxillaries": {
         "von": 1,
         "van": 1,
@@ -269,14 +272,14 @@
         "hochwohlgeborene",
         "hochwohlgeborener",
         "heiliger",
-        
-		"der",
-		"die",
-		"das",
-		"dem",
-		"den",
-		"und",
-		"oder"
+
+        "der",
+        "die",
+        "das",
+        "dem",
+        "den",
+        "und",
+        "oder"
     ],
     "suffixes": [
         "junior",
@@ -297,6 +300,6 @@
         "im ruhestand",
         "ba",
         "ma",
-        "phd" 
-    ] 
+        "phd"
+    ]
 }

@@ -1,7 +1,7 @@
 /*
  * teststrings.js - test the String object
  *
- * Copyright © 2012-2018, JEDLSoft
+ * Copyright © 2012-2019-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1023,7 +1023,7 @@ module.exports.teststrings = {
         test.done();
     },
     
-    testStringDelegateToLowerCase: function(test) {
+    testStringDelegateToUpperCase: function(test) {
         test.expect(2);
         var str = new IString("abcdef");
     
@@ -1032,7 +1032,396 @@ module.exports.teststrings = {
         test.equal(str.toUpperCase(), "ABCDEF");
         test.done();
     },
+
+    testStringDelegateLength: function(test) {
+        test.expect(2);
+        var str = new IString("abcdef");
     
+        test.ok(str !== null);
+    
+        test.equal(str.length, 6);
+        test.done();
+    },
+
+    testStringDelegateMatchAll: function(test) {
+        if (typeof("".matchAll) === 'function') {
+            test.expect(13);
+            var str = new IString("abc bd bc ab ef bc");
+
+            test.ok(str !== null);
+
+            var it = str.matchAll(/bc/g);
+            
+            test.ok(it);
+            
+            var match = it.next();
+            test.ok(match);
+            test.ok(!match.done);
+            test.equal(match.value[0], "bc");
+
+            match = it.next();
+            test.ok(match);
+            test.ok(!match.done);
+            test.equal(match.value[0], "bc");
+
+            match = it.next();
+            test.ok(match);
+            test.ok(!match.done);
+            test.equal(match.value[0], "bc");
+
+            match = it.next();
+            test.ok(match);
+            test.ok(match.done);
+        } else {
+            console.log("This version of the JS engine does not support String.matchAll()");
+        }
+        test.done();
+    },
+
+    testStringDelegateToLocaleLowerCase: function(test) {
+        if (typeof("".toLocaleLowerCase) === 'function') {
+            test.expect(2);
+            var str = new IString("ABCDEF");
+
+            test.ok(str !== null);
+
+            test.equal(str.toLocaleLowerCase(), "abcdef");
+        } else {
+            console.log("This version of the JS engine does not support String.toLocaleLowerCase()");
+        }
+        test.done();
+    },
+    
+    testStringDelegateToLocaleUpperCase: function(test) {
+        if (typeof("".toLocaleUpperCase) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.equal(str.toLocaleUpperCase(), "ABCDEF");
+        } else {
+            console.log("This version of the JS engine does not support String.toLocaleUpperCase()");
+        }
+        test.done();
+    },
+
+    testStringDelegateEndsWithTrue: function(test) {
+        if (typeof("".endsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.endsWith("def"));
+        } else {
+            console.log("This version of the JS engine does not support String.endsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateEndsWithTrueWithLength1: function(test) {
+        if (typeof("".endsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.endsWith("def", str.length));
+        } else {
+            console.log("This version of the JS engine does not support String.endsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateEndsWithTrueWithLength2: function(test) {
+        if (typeof("".endsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.endsWith("def", undefined));
+        } else {
+            console.log("This version of the JS engine does not support String.endsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateEndsWithFalse: function(test) {
+        if (typeof("".endsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(!str.endsWith("de"));
+        } else {
+            console.log("This version of the JS engine does not support String.endsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateEndsWithFalse2: function(test) {
+        if (typeof("".endsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(!str.endsWith("def", 3));
+        } else {
+            console.log("This version of the JS engine does not support String.endsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateStartsWithTrue: function(test) {
+        if (typeof("".startsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.startsWith("abc"));
+        } else {
+            console.log("This version of the JS engine does not support String.startsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateStartsWithLength1: function(test) {
+        if (typeof("".startsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.startsWith("abc", 0));
+        } else {
+            console.log("This version of the JS engine does not support String.startsWith()");
+        }
+        test.done();
+    },
+    testStringDelegateStartsWithLength2: function(test) {
+        if (typeof("".startsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.startsWith("abc", undefined));
+        } else {
+            console.log("This version of the JS engine does not support String.startsWith()");
+        }
+        test.done();
+    },
+
+
+    testStringDelegateStartsWithFalse: function(test) {
+        if (typeof("".startsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(!str.startsWith("bc"));
+        } else {
+            console.log("This version of the JS engine does not support String.startsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateStartsWithFalse2: function(test) {
+        if (typeof("".startsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(!str.startsWith("ab", 4));
+        } else {
+            console.log("This version of the JS engine does not support String.startsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateIncludesTrue: function(test) {
+        if (typeof("".includes) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.includes("bcd"));
+        } else {
+            console.log("This version of the JS engine does not support String.includes()");
+        }
+        test.done();
+    },
+
+    testStringDelegateIncludesFalse: function(test) {
+        if (typeof("".includes) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(!str.includes("bcf"));
+        } else {
+            console.log("This version of the JS engine does not support String.includes()");
+        }
+        test.done();
+    },
+
+    testStringDelegateNormalize: function(test) {
+        if (typeof("".normalize) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.equal(str.normalize("NFKC"), "abcdef");
+        } else {
+            console.log("This version of the JS engine does not support String.normalize()");
+        }
+        test.done();
+    },
+
+    testStringDelegatePadEnd: function(test) {
+        if (typeof("".padEnd) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.equal(str.padEnd(12, "x"), "abcdefxxxxxx");
+        } else {
+            console.log("This version of the JS engine does not support String.padEnd()");
+        }
+        test.done();
+    },
+
+    testStringDelegatePadStart: function(test) {
+        if (typeof("".padStart) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.equal(str.padStart(11, "x"), "xxxxxabcdef");
+        } else {
+            console.log("This version of the JS engine does not support String.padStart()");
+        }
+        test.done();
+    },
+
+    testStringDelegateRepeat: function(test) {
+        if (typeof("".repeat) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.equal(str.repeat(3), "abcdefabcdefabcdef");
+        } else {
+            console.log("This version of the JS engine does not support String.repeat()");
+        }
+        test.done();
+    },
+
+    testStringDelegateTrim: function(test) {
+        if (typeof("".trim) === 'function') {
+
+            test.expect(2);
+            var str = new IString("  \r  \n abcdef    \t \t");
+
+            test.ok(str !== null);
+
+            test.equal(str.trim(), "abcdef");
+        } else {
+            console.log("This version of the JS engine does not support String.trim()");
+        }
+        test.done();
+    },
+
+    testStringDelegateTrimEnd: function(test) {
+        if (typeof("".trimEnd) === 'function') {
+
+            test.expect(2);
+            var str = new IString("  \r  \n abcdef    \t \t");
+
+            test.ok(str !== null);
+
+            test.equal(str.trimEnd(), "  \r  \n abcdef");
+        } else {
+            console.log("This version of the JS engine does not support String.trimEnd()");
+        }
+        test.done();
+    },
+
+    testStringDelegateTrimRight: function(test) {
+        if (typeof("".trimRight) === 'function') {
+
+            test.expect(2);
+            var str = new IString("  \r  \n abcdef    \t \t");
+
+            test.ok(str !== null);
+
+            test.equal(str.trimRight(), "  \r  \n abcdef");
+        } else {
+            console.log("This version of the JS engine does not support String.trimRight()");
+        }
+        test.done();
+    },
+
+    testStringDelegateTrimStart: function(test) {
+        if (typeof("".trimStart) === 'function') {
+
+            test.expect(2);
+            var str = new IString("  \r  \n abcdef    \t \t");
+
+            test.ok(str !== null);
+
+            test.equal(str.trimStart(), "abcdef    \t \t");
+        } else {
+            console.log("This version of the JS engine does not support String.trimStart()");
+        }
+        test.done();
+    },
+
+    testStringDelegateTrimLeft: function(test) {
+        if (typeof("".trimLeft) === 'function') {
+
+            test.expect(2);
+            var str = new IString("  \r  \n abcdef    \t \t");
+
+            test.ok(str !== null);
+
+            test.equal(str.trimLeft(), "abcdef    \t \t");
+        } else {
+            console.log("This version of the JS engine does not support String.trimLeft()");
+        }
+        test.done();
+    },
+
     testCodePointToUTF: function(test) {
         test.expect(3);
         var str = IString.fromCodePoint(0x10302);
@@ -2698,18 +3087,58 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(1), "There items are one");
         test.done();
     },
+    testStringFormatChoiceCharClasses16: function(test) {
+        test.expect(2);
+        var str = new IString("one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(0), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses17: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(0), "There are no items.");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses18: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses19: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(15), "Default items");
+        test.done();
+    },
     
     testStringFormatChoiceCharClassesComplex1: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
-    
+
         test.ok(str !== null);
-    
+
         test.equal(str.formatChoice(1), "There items are one");
         test.done();
     },
-    
+
     testStringFormatChoiceCharClassesComplex2: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
@@ -2819,14 +3248,36 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(10), "Default items");
         test.done();
     },
+
+    testStringFormatChoiceCharClassesComplex12: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(10), "Default items");
+        test.done();
+    },
+
+    testStringFormatChoiceCharClassesComplex12: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
     
     testStringFormatChoiceDecimal1: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ar-EG");
-    
+
         test.ok(str !== null);
-    
+
         test.equal(str.formatChoice(8.0), "The items are few");
         test.done();
     },
@@ -2835,13 +3286,13 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("hy-AM");
-    
+
         test.ok(str !== null);
-    
+
         test.equal(str.formatChoice(3.5), "Default items");
         test.done();
     },
-    
+
     testStringFormatChoiceDecimal3: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
@@ -2974,7 +3425,6 @@ module.exports.teststrings = {
         test.done();
     },
     
-    
     testStringFormatChoiceDecimal15: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
@@ -2984,6 +3434,35 @@ module.exports.teststrings = {
     
         test.equal(str.formatChoice(1.5), "Default items");
         test.done();
+    },
+    testStringFormatChoiceDecimal16: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.5), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal17: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal18: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(0.0), "There are no items.");
+        test.done();
     }
-    
 };
