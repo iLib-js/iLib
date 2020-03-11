@@ -1,7 +1,7 @@
 /*
- * testdatefmt_cop_EG.js - test the date formatter object in Coptic
- *
- * Copyright © 2015,2017-2018, JEDLSoft
+ * testdatefmt_ka_GE.js - test the date formatter object in Georgian
+ * 
+ * Copyright © 2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,38 +20,37 @@
 if (typeof(JulianDate) === "undefined") {
     var JulianDate = require("../../lib/JulianDate.js");
 }
+if (typeof(GregorianDate) === "undefined") {
+    var GregorianDate = require("../../lib/GregorianDate.js");
+}
 if (typeof(DateFmt) === "undefined") {
     var DateFmt = require("../../lib/DateFmt.js");
-}
-if (typeof(CopticDate) === "undefined") {
-    var CopticDate = require("../../lib/CopticDate.js");
 }
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
-module.exports.testdatefmt_cop_EG = {
+module.exports.testdatefmt_ka_GE = {
     setUp: function(callback) {
         ilib.clearCache();
         callback();
     },
 
-    testDateFmtConstructorEmpty_cop_EG: function(test) {
+    testDateFmtConstructorEmpty_ka_GE: function(test) {
         test.expect(1);
-        var fmt = new DateFmt({locale: "cop-EG"});
-
+        var fmt = new DateFmt({locale: "ka-GE"});
+        
         test.ok(fmt !== null);
         test.done();
     },
 
-
-    testDateFmtSimpleShort_cop_EG: function(test) {
+    testDateFmtSimpleShort_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "short"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "short"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -60,17 +59,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29/09/2011");
+        test.equal(fmt.format(date), "29.09.11");
         test.done();
     },
 
-    testDateFmtSimpleMedium_cop_EG: function(test) {
+    testDateFmtSimpleMedium_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "medium"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "medium"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -79,17 +78,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29 بشنس 2011");
+        test.equal(fmt.format(date), "29 სექ. 2011");
         test.done();
     },
 
-    testDateFmtSimpleLong_cop_EG: function(test) {
+    testDateFmtSimpleLong_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "long"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "long"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -98,17 +97,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29 بشنس، 2011");
+        test.equal(fmt.format(date), "29 სექტემბერი, 2011");
         test.done();
     },
 
-    testDateFmtSimpleFull_cop_EG: function(test) {
+    testDateFmtSimpleFull_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "full"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -117,17 +116,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29 بشنس، 2011");
+        test.equal(fmt.format(date), '29 სექტემბერი, 2011');
         test.done();
     },
 
-    testDateFmtSimpleTimeShort_cop_EG: function(test) {
+    testDateFmtSimpleTimeShort_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "short", type: "time"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "short", type: "time"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -136,17 +135,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 م");
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
 
-    testDateFmtSimpleTimeMedium_cop_EG: function(test) {
+    testDateFmtSimpleTimeMedium_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "medium", type: "time"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "medium", type: "time"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -155,17 +154,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 م");
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
 
-    testDateFmtSimpleTimeLong_cop_EG: function(test) {
+    testDateFmtSimpleTimeLong_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "ka-GE", timelength: "long", type: "time"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -174,17 +173,36 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 م");
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
 
-    testDateFmtSimpleTimeFull_cop_EG: function(test) {
+    testDateFmtSimpleTimeFull_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "full", type: "time"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "full", type: "time"});
         test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 1,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), '01:45');
+        test.done();
+    },
 
-        var date = new CopticDate({
-            locale: "cop-EG",
+    testDateFmtDateTimeSimpleShort_ka_GE: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ka-GE", length: "short", type: "datetime"});
+        test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -193,17 +211,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 م");
+        test.equal(fmt.format(date), '29.09.11, 13:45');
         test.done();
     },
 
-    testDateFmtDateTimeSimpleShort_cop_EG: function(test) {
+    testDateFmtDateTimeSimpleMedium_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "short", type: "datetime"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "medium", type: "datetime"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -212,17 +230,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 م ‏29/09/2011");
+        test.equal(fmt.format(date), '29 სექ. 2011, 13:45');
         test.done();
     },
 
-    testDateFmtDateTimeSimpleMedium_cop_EG: function(test) {
+    testDateFmtDateTimeSimpleLong_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "medium", type: "datetime"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "long", type: "datetime"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -231,17 +249,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 م ‏29 بشنس 2011");
+        test.equal(fmt.format(date), '29 სექტემბერი, 2011, 13:45');
         test.done();
     },
 
-    testDateFmtDateTimeSimpleLong_cop_EG: function(test) {
+    testDateFmtDateTimeSimpleFull_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "long", type: "datetime"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "full", type: "datetime"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -250,36 +268,18 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 م ‏29 بشنس، 2011");
+        test.equal(fmt.format(date), '29 სექტემბერი, 2011, 13:45');
         test.done();
     },
 
-    testDateFmtDateTimeSimpleFull_cop_EG: function(test) {
+    
+    testDateFmtTemplateCalendar_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "full", type: "datetime"});
+        var fmt = new DateFmt({locale: "ka-GE", calendar: "julian", template: "yyyy-MM-dd"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
-            year: 2011,
-            month: 9,
-            day: 29,
-            hour: 13,
-            minute: 45,
-            second: 0,
-            millisecond: 0
-        });
-        test.equal(fmt.format(date), "1:45 م ‏29 بشنس، 2011");
-        test.done();
-    },
-
-    testDateFmtTemplateCalendar_cop_EG: function(test) {
-        test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", calendar: "julian", template: "yyyy-MM-dd"});
-        test.ok(fmt !== null);
-
+        
         var date = new JulianDate({
-            locale: "cop-EG",
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -292,15 +292,14 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-
-    testDateFmtTemplateCalendarIncompatibleDateType_cop_EG: function(test) {
+    testDateFmtTemplateCalendarIncompatibleDateType_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
+        var fmt = new DateFmt({locale: "ka-GE", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
-            year: 1731,
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
+            year: 2011,
             month: 9,
             day: 29,
             hour: 13,
@@ -309,17 +308,17 @@ module.exports.testdatefmt_cop_EG = {
             millisecond: 0
         });
         // convert automatically to a Julian calendar date
-        test.equal(fmt.format(date), "2015-05-24 13:45");
+        test.equal(fmt.format(date), "2011-09-16 13:45");
         test.done();
     },
 
-    testDateFmtTemplateClock12SwitchHH_cop_EG: function(test) {
+    testDateFmtTemplateClock12SwitchHH_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", clock: "12", template: "HH:mm"});
+        var fmt = new DateFmt({locale: "ka-GE", clock: "12", template: "HH:mm"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -332,13 +331,13 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-    testDateFmtTemplateClock12Switchkk_cop_EG: function(test) {
+    testDateFmtTemplateClock12Switchkk_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", clock: "12", template: "kk:mm"});
+        var fmt = new DateFmt({locale: "ka-GE", clock: "12", template: "kk:mm"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -351,13 +350,13 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-    testDateFmtTemplateClock24Switchhh_cop_EG: function(test) {
+    testDateFmtTemplateClock24Switchhh_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", clock: "24", template: "hh:mm"});
+        var fmt = new DateFmt({locale: "ka-GE", clock: "24", template: "hh:mm"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -370,13 +369,13 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-    testDateFmtTemplateClock24SwitchKK_cop_EG: function(test) {
+    testDateFmtTemplateClock24SwitchKK: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", clock: "24", template: "KK:mm"});
+        var fmt = new DateFmt({locale: "ka-GE", clock: "24", template: "KK:mm"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -389,13 +388,13 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-    testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_cop_EG: function(test) {
+    testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", template: "hh:mm"});
+        var fmt = new DateFmt({locale: "ka-GE", template: "hh:mm"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -408,13 +407,13 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-    testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_cop_EG: function(test) {
+    testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", template: "KK:mm"});
+        var fmt = new DateFmt({locale: "ka-GE", template: "KK:mm"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -427,13 +426,13 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-    testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_cop_EG: function(test) {
+    testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", template: "HH:mm"});
+        var fmt = new DateFmt({locale: "ka-GE", template: "HH:mm"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -446,13 +445,13 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-    testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_cop_EG: function(test) {
+    testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", template: "kk:mm"});
+        var fmt = new DateFmt({locale: "ka-GE", template: "kk:mm"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -465,14 +464,14 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-
-    testDateFmtTypeDate_cop_EG: function(test) {
+    
+    testDateFmtTypeDate_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "date"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "date"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -481,17 +480,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29/09/2011");
+        test.equal(fmt.format(date), '29.09.11');
         test.done();
     },
 
-    testDateFmtTypeTime_cop_EG: function(test) {
+    testDateFmtTypeTime_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "time"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -500,17 +499,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 م");
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
 
-    testDateFmtTypeDateTime_cop_EG: function(test) {
+    testDateFmtTypeDateTime_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "datetime"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "datetime"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -519,18 +518,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 م ‏29/09/2011");
+        test.equal(fmt.format(date), '29.09.11, 13:45');
         test.done();
     },
 
-
-    testDateFmtShortDateComponentsY_cop_EG: function(test) {
+    testDateFmtShortDateComponentsY_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", date: "y"});
+        var fmt = new DateFmt({locale: "ka-GE", date: "y"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -539,17 +537,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011");
+        test.equal(fmt.format(date), "11");
         test.done();
     },
 
-    testDateFmtShortDateComponentsM_cop_EG: function(test) {
+    testDateFmtShortDateComponentsM_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", date: "m"});
+        var fmt = new DateFmt({locale: "ka-GE", date: "m"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -562,13 +560,13 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-    testDateFmtShortDateComponentsN_cop_EG: function(test) {
+    testDateFmtShortDateComponentsN_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", date: "n"});
+        var fmt = new DateFmt({locale: "ka-GE", date: "n"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -577,17 +575,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "9");
+        test.equal(fmt.format(date), 'ს');
         test.done();
     },
 
-    testDateFmtShortDateComponentsD_cop_EG: function(test) {
+    testDateFmtShortDateComponentsD_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", date: "d"});
+        var fmt = new DateFmt({locale: "ka-GE", date: "d"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -596,17 +594,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29");
+        test.equal(fmt.format(date), "29");
         test.done();
     },
 
-    testDateFmtShortDateComponentsDM_cop_EG: function(test) {
+    testDateFmtShortDateComponentsDM_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", date: "dm"});
+        var fmt = new DateFmt({locale: "ka-GE", date: "dm"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -615,17 +613,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29/09");
+        test.equal(fmt.format(date), '29.09');
         test.done();
     },
 
-    testDateFmtShortDateComponentsMY_cop_EG: function(test) {
+    testDateFmtShortDateComponentsMY_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", date: "my"});
+        var fmt = new DateFmt({locale: "ka-GE", date: "my"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -634,17 +632,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏09/2011");
+        test.equal(fmt.format(date), '09.11');
         test.done();
     },
 
-    testDateFmtShortDateComponentsDMY_cop_EG: function(test) {
+    testDateFmtShortDateComponentsDMY_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", date: "dmy"});
+        var fmt = new DateFmt({locale: "ka-GE", date: "dmy"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -653,17 +651,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29/09/2011");
+        test.equal(fmt.format(date), '29.09.11');
         test.done();
     },
 
-    testDateFmtShortDateComponentsWDM_cop_EG: function(test) {
+    testDateFmtShortDateComponentsWDM_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", date: "wdm"});
+        var fmt = new DateFmt({locale: "ka-GE", date: "wdm"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -672,17 +670,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "س، 29/09");
+        test.equal(fmt.format(date), 'ხ, 29.09');
         test.done();
     },
 
-    testDateFmtShortDateComponentsWDMY_cop_EG: function(test) {
+    testDateFmtShortDateComponentsWDMY_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", date: "wdmy"});
+        var fmt = new DateFmt({locale: "ka-GE", date: "wdmy"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -691,18 +689,36 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "س، 29/09/2011");
+        test.equal(fmt.format(date), 'ხ, 29.09.11' );
         test.done();
     },
 
-
-    testDateFmtFullDateComponentsY_cop_EG: function(test) {
+    testDateFmtLongDateComponentsWDM_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "y"});
+        var fmt = new DateFmt({locale: "ka-GE", date: "wdm", length: "long"});
         test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), 'ხუთ, 29 სექტემბერი');
+        test.done();
+    },
 
-        var date = new CopticDate({
-            locale: "cop-EG",
+    testDateFmtFullDateComponentsY_ka_GE: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "y"});
+        test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -715,13 +731,13 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-    testDateFmtFullDateComponentsM_cop_EG: function(test) {
+    testDateFmtFullDateComponentsM_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "m"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "m"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -730,17 +746,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "بشنس");
+        test.equal(fmt.format(date), "სექტემბერი");
         test.done();
     },
 
-    testDateFmtFullDateComponentsD_cop_EG: function(test) {
+    testDateFmtFullDateComponentsD_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "d"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "d"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -749,17 +765,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29");
+        test.equal(fmt.format(date), "29");
         test.done();
     },
 
-    testDateFmtFullDateComponentsDM_cop_EG: function(test) {
+    testDateFmtFullDateComponentsDM_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "dm"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "dm"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -768,17 +784,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29 بشنس");
+        test.equal(fmt.format(date), '29 სექტემბერი');
         test.done();
     },
 
-    testDateFmtFullDateComponentsMY_cop_EG: function(test) {
+    testDateFmtFullDateComponentsMY_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "my"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "my"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -787,17 +803,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "بشنس، 2011");
+        test.equal(fmt.format(date), 'სექტემბერი, 2011');
         test.done();
     },
 
-    testDateFmtFullDateComponentsDMY_cop_EG: function(test) {
+    testDateFmtFullDateComponentsDMY_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "dmy"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "dmy"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -806,17 +822,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29 بشنس، 2011");
+        test.equal(fmt.format(date), '29 სექტემბერი, 2011');
         test.done();
     },
 
-    testDateFmtFullDateComponentsWDM_cop_EG: function(test) {
+    testDateFmtFullDateComponentsWDM_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "wdm"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "wdm"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -825,17 +841,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "السبت، 29 بشنس");
+        test.equal(fmt.format(date), 'ხუთშაბათი, 29 სექტემბერი');
         test.done();
     },
 
-    testDateFmtFullDateComponentsWDMY_cop_EG: function(test) {
+    testDateFmtFullDateComponentsWDMY_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "wdmy"});
+        var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "wdmy"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -844,18 +860,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "السبت، 29 بشنس، 2011");
+        test.equal(fmt.format(date), 'ხუთშაბათი, 29 სექტემბერი, 2011');
         test.done();
     },
 
-
-    testDateFmtShortTimeComponentsS_cop_EG: function(test) {
+    testDateFmtShortTimeComponentsS_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "s"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "s"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -868,13 +883,13 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-    testDateFmtShortTimeComponentsM_cop_EG: function(test) {
+    testDateFmtShortTimeComponentsM_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "m"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "m"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -887,13 +902,13 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-    testDateFmtShortTimeComponentsH_cop_EG: function(test) {
+    testDateFmtShortTimeComponentsH_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "h"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "h"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -902,17 +917,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1");
+        test.equal(fmt.format(date), "13");
         test.done();
     },
 
-    testDateFmtShortTimeComponentsMS_cop_EG: function(test) {
+    testDateFmtShortTimeComponentsMS_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "ms"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "ms"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -925,13 +940,13 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-    testDateFmtShortTimeComponentsHM_cop_EG: function(test) {
+    testDateFmtShortTimeComponentsHM_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "hm"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "hm"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -940,17 +955,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
 
-    testDateFmtShortTimeComponentsHMS_cop_EG: function(test) {
+    testDateFmtShortTimeComponentsHMS_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "hms"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "hms"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -959,17 +974,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37");
+        test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
 
-    testDateFmtShortTimeComponentsHMA_cop_EG: function(test) {
+    testDateFmtShortTimeComponentsHMA_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "hma"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "hma"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -978,22 +993,22 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 م");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
 
-    testDateFmtShortTimeComponentsHMZ_cop_EG: function(test) {
+    testDateFmtShortTimeComponentsHMZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "cop-EG",
-            type: "time",
-            time: "hmz",
-            timezone: "Africa/Cairo"
+            locale: "ka-GE", 
+            type: "time", 
+            time: "hmz", 
+            timezone: "Asia/Tbilisi"
         });
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -1002,22 +1017,22 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 EEST");
+        test.equal(fmt.format(date), "13:45 +04");
         test.done();
     },
 
-    testDateFmtShortTimeComponentsHMAZ_cop_EG: function(test) {
+    testDateFmtShortTimeComponentsHMAZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "cop-EG",
-            type: "time",
-            time: "hmaz",
-            timezone: "Africa/Cairo"
+            locale: "ka-GE", 
+            type: "time", 
+            time: "hmaz", 
+            timezone: "Asia/Tbilisi"
         });
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -1026,17 +1041,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 م EEST");
+        test.equal(fmt.format(date), "13:45 +04");
         test.done();
     },
 
-    testDateFmtShortTimeComponentsHMSA_cop_EG: function(test) {
+    testDateFmtShortTimeComponentsHMSA_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "hmsa"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "hmsa"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -1045,46 +1060,22 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 م");
+        test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
 
-    testDateFmtShortTimeComponentsHMSZ_cop_EG: function(test) {
-        test.expect(2);
-        var fmt = new DateFmt({
-            locale: "cop-EG",
-            type: "time",
-            time: "hmsz",
-            timezone: "Africa/Cairo"
-        });
-        test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
-            year: 2011,
-            month: 9,
-            day: 29,
-            hour: 13,
-            minute: 45,
-            second: 37,
-            millisecond: 0
-        });
-        test.equal(fmt.format(date), "1:45:37 EEST");
-        test.done();
-    },
-
-    testDateFmtShortTimeComponentsHMSAZ_cop_EG: function(test) {
+    testDateFmtShortTimeComponentsHMSZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "cop-EG",
-            type: "time",
-            time: "hmsaz",
-            timezone: "Africa/Cairo"
+            locale: "ka-GE", 
+            type: "time", 
+            time: "hmsz", 
+            timezone: "Asia/Tbilisi"
         });
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -1093,18 +1084,41 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 م EEST");
+        test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
 
-
-    testDateFmtFullTimeComponentsS_cop_EG: function(test) {
+    testDateFmtShortTimeComponentsHMSAZ_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "s"});
+        var fmt = new DateFmt({
+            locale: "ka-GE", 
+            type: "time", 
+            time: "hmsaz", 
+            timezone: "Asia/Tbilisi"
+        });
         test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "13:45:37 +04");
+        test.done();
+    },
 
-        var date = new CopticDate({
-            locale: "cop-EG",
+    testDateFmtFullTimeComponentsS_ka_GE: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "s"});
+        test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -1117,13 +1131,13 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-    testDateFmtFullTimeComponentsM_cop_EG: function(test) {
+    testDateFmtFullTimeComponentsM_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "m"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "m"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -1136,13 +1150,13 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-    testDateFmtFullTimeComponentsH_cop_EG: function(test) {
+    testDateFmtFullTimeComponentsH_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "h"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "h"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -1151,17 +1165,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1");
+        test.equal(fmt.format(date), "13");
         test.done();
     },
 
-    testDateFmtFullTimeComponentsMS_cop_EG: function(test) {
+    testDateFmtFullTimeComponentsMS_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "ms"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "ms"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -1174,13 +1188,13 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
 
-    testDateFmtFullTimeComponentsHM_cop_EG: function(test) {
+    testDateFmtFullTimeComponentsHM_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "hm"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "hm"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -1189,17 +1203,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
 
-    testDateFmtFullTimeComponentsHMS_cop_EG: function(test) {
+    testDateFmtFullTimeComponentsHMS_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "hms"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "hms"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -1208,17 +1222,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37");
+        test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
 
-    testDateFmtFullTimeComponentsHMA_cop_EG: function(test) {
+    testDateFmtFullTimeComponentsHMA_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "hma"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "hma"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -1227,23 +1241,23 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 م");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
 
-    testDateFmtFullTimeComponentsHMZ_cop_EG: function(test) {
+    testDateFmtFullTimeComponentsHMZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "cop-EG",
-            type: "time",
-            length: "full",
-            time: "hmz",
-            timezone: "Africa/Cairo"
+            locale: "ka-GE", 
+            type: "time", 
+            length: "full", 
+            time: "hmz", 
+            timezone: "Asia/Tbilisi"
         });
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -1252,23 +1266,23 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 EEST");
+        test.equal(fmt.format(date), "13:45 +04");
         test.done();
     },
 
-    testDateFmtFullTimeComponentsHMAZ_cop_EG: function(test) {
+    testDateFmtFullTimeComponentsHMAZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "cop-EG",
-            type: "time",
-            length: "full",
-            time: "hmaz",
-            timezone: "Africa/Cairo"
+            locale: "ka-GE", 
+            type: "time", 
+            length: "full", 
+            time: "hmaz", 
+            timezone: "Asia/Tbilisi"
         });
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -1277,17 +1291,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 م EEST");
+        test.equal(fmt.format(date), "13:45 +04");
         test.done();
     },
 
-    testDateFmtFullTimeComponentsHMSA_cop_EG: function(test) {
+    testDateFmtFullTimeComponentsHMSA_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "hmsa"});
+        var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "hmsa"});
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -1296,48 +1310,23 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 م");
+        test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
 
-    testDateFmtFullTimeComponentsHMSZ_cop_EG: function(test) {
-        test.expect(2);
-        var fmt = new DateFmt({
-            locale: "cop-EG",
-            type: "time",
-            length: "full",
-            time: "hmsz",
-            timezone: "Africa/Cairo"
-        });
-        test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
-            year: 2011,
-            month: 9,
-            day: 29,
-            hour: 13,
-            minute: 45,
-            second: 37,
-            millisecond: 0
-        });
-        test.equal(fmt.format(date), "1:45:37 EEST");
-        test.done();
-    },
-
-    testDateFmtFullTimeComponentsHMSAZ_cop_EG: function(test) {
+    testDateFmtFullTimeComponentsHMSZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "cop-EG",
-            type: "time",
-            length: "full",
-            time: "hmsaz",
-            timezone: "Africa/Cairo"
+            locale: "ka-GE", 
+            type: "time", 
+            length: "full", 
+            time: "hmsz", 
+            timezone: "Asia/Tbilisi"
         });
         test.ok(fmt !== null);
-
-        var date = new CopticDate({
-            locale: "cop-EG",
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 29,
@@ -1346,23 +1335,48 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 م EEST");
+        test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
 
-    testDateFmtWithTimeZoneAndNoDST_cop_EG: function(test) {
+    testDateFmtFullTimeComponentsHMSAZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "cop-EG",
-            type: "time",
-            length: "full",
-            time: "hmsz",
-            timezone: "Africa/Cairo"
+            locale: "ka-GE", 
+            type: "time", 
+            length: "full", 
+            time: "hmsaz", 
+            timezone: "Asia/Tbilisi"
         });
         test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "13:45:37 +04");
+        test.done();
+    },
 
-        var date = new CopticDate({
-            locale: "cop-EG",
+    testDateFmtWithTimeZoneAndNoDST_ka_GE: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({
+            locale: "ka-GE", 
+            type: "time", 
+            length: "full", 
+            time: "hmsz", 
+            timezone: "Asia/Tbilisi"
+        });
+        test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 12,
             day: 29,
@@ -1371,21 +1385,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 37,
             millisecond: 0
         });
-        // does not observe DST, so no difference in the TZ spec
-        test.equal(fmt.format(date), "1:45:37 EEST");
+        test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
 
-    testDateFmtFormatRelativeWithinMinuteAfter_cop_EG: function(test) {
+    testDateFmtFormatRelativeWithinMinuteAfter_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({
-            locale: "cop-EG",
-            length: "full"
-        });
+        var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-
-        var reference = new CopticDate({
-            locale: "cop-EG",
+        
+        var reference = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 20,
@@ -1394,8 +1404,8 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        var date = new CopticDate({
-            locale: "cop-EG",
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 20,
@@ -1404,19 +1414,16 @@ module.exports.testdatefmt_cop_EG = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "‏خلال 30 ثانية");
+        test.equal(fmt.formatRelative(reference, date), "30 წამში");
         test.done();
     },
-    testDateFmtFormatRelativeWithinMinuteBefore_cop_EG: function(test) {
+testDateFmtFormatRelativeWithinMinuteBefore_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({
-            locale: "cop-EG",
-            length: "full"
-        });
+        var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-
-        var reference = new CopticDate({
-            locale: "cop-EG",
+        
+        var reference = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 20,
@@ -1425,8 +1432,8 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        var date = new CopticDate({
-            locale: "cop-EG",
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 20,
@@ -1435,19 +1442,16 @@ module.exports.testdatefmt_cop_EG = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "‏قبل 30 ثانية");
+        test.equal(fmt.formatRelative(reference, date), "30 წამის წინ");
         test.done();
     },
-    testDateFmtFormatRelativeWithinHourAfter_cop_EG: function(test) {
+testDateFmtFormatRelativeWithinHourAfter_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({
-            locale: "cop-EG",
-            length: "full"
-        });
+        var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-
-        var reference = new CopticDate({
-            locale: "cop-EG",
+        
+        var reference = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 20,
@@ -1456,8 +1460,8 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        var date = new CopticDate({
-            locale: "cop-EG",
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 20,
@@ -1466,19 +1470,16 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "‏خلال 10 دقائق");
+        test.equal(fmt.formatRelative(reference, date), "10 წუთში");
         test.done();
     },
-    testDateFmtFormatRelativeWithinHourBefore_cop_EG: function(test) {
+testDateFmtFormatRelativeWithinHourBefore_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({
-            locale: "cop-EG",
-            length: "full"
-        });
+        var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-
-        var reference = new CopticDate({
-            locale: "cop-EG",
+        
+        var reference = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 20,
@@ -1487,8 +1488,8 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        var date = new CopticDate({
-            locale: "cop-EG",
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 20,
@@ -1497,19 +1498,16 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "‏قبل 10 دقائق");
+        test.equal(fmt.formatRelative(reference, date), '10 წუთის წინ');
         test.done();
     },
-    testDateFmtFormatRelativeWithinDayAfter_cop_EG: function(test) {
+testDateFmtFormatRelativeWithinDayAfter_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({
-            locale: "cop-EG",
-            length: "full"
-        });
+        var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-
-        var reference = new CopticDate({
-            locale: "cop-EG",
+        
+        var reference = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 20,
@@ -1518,8 +1516,8 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        var date = new CopticDate({
-            locale: "cop-EG",
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 20,
@@ -1528,19 +1526,16 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "‏خلال 4 ساعات");
+        test.equal(fmt.formatRelative(reference, date), '4 საათში');
         test.done();
     },
-    testDateFmtFormatRelativeWithinDayBefore_cop_EG: function(test) {
+testDateFmtFormatRelativeWithinDayBefore_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({
-            locale: "cop-EG",
-            length: "full"
-        });
+        var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-
-        var reference = new CopticDate({
-            locale: "cop-EG",
+        
+        var reference = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 20,
@@ -1549,8 +1544,8 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        var date = new CopticDate({
-            locale: "cop-EG",
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 20,
@@ -1559,20 +1554,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "‏قبل 4 ساعات");
+        test.equal(fmt.formatRelative(reference, date), '4 საათის წინ');
         test.done();
     },
 
-    testDateFmtFormatRelativeWithinFortnightAfter_cop_EG: function(test) {
+    testDateFmtFormatRelativeWithinFortnightAfter_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({
-            locale: "cop-EG",
-            length: "full"
-        });
+        var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-
-        var reference = new CopticDate({
-            locale: "cop-EG",
+        
+        var reference = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 20,
@@ -1581,8 +1573,8 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        var date = new CopticDate({
-            locale: "cop-EG",
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 24,
@@ -1591,19 +1583,16 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "‏خلال 4 أيام");
+        test.equal(fmt.formatRelative(reference, date), '4 დღეში');
         test.done();
     },
-    testDateFmtFormatRelativeWithinFortnightBefore_cop_EG: function(test) {
+testDateFmtFormatRelativeWithinFortnightBefore_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({
-            locale: "cop-EG",
-            length: "full"
-        });
+        var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-
-        var reference = new CopticDate({
-            locale: "cop-EG",
+        
+        var reference = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 20,
@@ -1612,8 +1601,8 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        var date = new CopticDate({
-            locale: "cop-EG",
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 16,
@@ -1622,20 +1611,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "‏قبل 4 أيام");
+        test.equal(fmt.formatRelative(reference, date),  '4 დღის წინ');
         test.done();
     },
 
-    testDateFmtFormatRelativeWithinQuarterAfter_cop_EG: function(test) {
+    testDateFmtFormatRelativeWithinQuarterAfter_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({
-            locale: "cop-EG",
-            length: "full"
-        });
+        var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-
-        var reference = new CopticDate({
-            locale: "cop-EG",
+        
+        var reference = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 20,
@@ -1644,8 +1630,8 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        var date = new CopticDate({
-            locale: "cop-EG",
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 11,
             day: 24,
@@ -1654,19 +1640,16 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "‏خلال 9 أسابيع");
+        test.equal(fmt.formatRelative(reference, date), '9 კვირაში');
         test.done();
     },
-    testDateFmtFormatRelativeWithinQuarterBefore_cop_EG: function(test) {
+testDateFmtFormatRelativeWithinQuarterBefore_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({
-            locale: "cop-EG",
-            length: "full"
-        });
+        var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-
-        var reference = new CopticDate({
-            locale: "cop-EG",
+        
+        var reference = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 20,
@@ -1675,8 +1658,8 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        var date = new CopticDate({
-            locale: "cop-EG",
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 7,
             day: 18,
@@ -1685,20 +1668,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "‏قبل 9 أسابيع");
+        test.equal(fmt.formatRelative(reference, date), '9 კვირის წინ');
         test.done();
     },
 
-    testDateFmtFormatRelativeWithinTwoYearsAfter_cop_EG: function(test) {
+    testDateFmtFormatRelativeWithinTwoYearsAfter_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({
-            locale: "cop-EG",
-            length: "full"
-        });
+        var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-
-        var reference = new CopticDate({
-            locale: "cop-EG",
+        
+        var reference = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 20,
@@ -1707,8 +1687,8 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        var date = new CopticDate({
-            locale: "cop-EG",
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2013,
             month: 1,
             day: 24,
@@ -1717,19 +1697,16 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "‏خلال 16 شهرًا");
+        test.equal(fmt.formatRelative(reference, date), '16 თვეში');
         test.done();
     },
-    testDateFmtFormatRelativeWithinTwoYearsBefore_cop_EG: function(test) {
+testDateFmtFormatRelativeWithinTwoYearsBefore_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({
-            locale: "cop-EG",
-            length: "full"
-        });
+        var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-
-        var reference = new CopticDate({
-            locale: "cop-EG",
+        
+        var reference = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 20,
@@ -1738,8 +1715,8 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        var date = new CopticDate({
-            locale: "cop-EG",
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2010,
             month: 7,
             day: 18,
@@ -1748,20 +1725,17 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "‏قبل 14 شهرًا");
+        test.equal(fmt.formatRelative(reference, date), '14 თვის წინ');
         test.done();
     },
 
-    testDateFmtFormatRelativeYearsAfter_cop_EG: function(test) {
+    testDateFmtFormatRelativeYearsAfter_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({
-            locale: "cop-EG",
-            length: "full"
-        });
+        var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-
-        var reference = new CopticDate({
-            locale: "cop-EG",
+        
+        var reference = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 20,
@@ -1770,8 +1744,8 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        var date = new CopticDate({
-            locale: "cop-EG",
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 2025,
             month: 10,
             day: 24,
@@ -1780,19 +1754,16 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "‏خلال 14 سنة");
+        test.equal(fmt.formatRelative(reference, date), '14 წელიწადში');
         test.done();
     },
-    testDateFmtFormatRelativeYearsBefore_cop_EG: function(test) {
+testDateFmtFormatRelativeYearsBefore_ka_GE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({
-            locale: "cop-EG",
-            length: "full"
-        });
+        var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-
-        var reference = new CopticDate({
-            locale: "cop-EG",
+        
+        var reference = new GregorianDate({
+            locale: "ka-GE",
             year: 2011,
             month: 9,
             day: 20,
@@ -1801,8 +1772,8 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        var date = new CopticDate({
-            locale: "cop-EG",
+        var date = new GregorianDate({
+            locale: "ka-GE",
             year: 1990,
             month: 7,
             day: 18,
@@ -1811,7 +1782,7 @@ module.exports.testdatefmt_cop_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "‏قبل 21 سنة");
+        test.equal(fmt.formatRelative(reference, date), '21 წლის წინ');
         test.done();
-    }
+    }    
 };
