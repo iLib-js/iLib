@@ -643,6 +643,12 @@
             "code": "Z"
         }
     ],
+    "AS": [
+        {
+            "code": "",
+            "name": "American Samoa"
+        }
+    ],
     "AT": [
         {
             "name": "बुर्गेनलैंड",
@@ -713,6 +719,18 @@
         {
             "name": "विक्टोरिया",
             "code": "VIC"
+        }
+    ],
+    "AW": [
+        {
+            "code": "",
+            "name": "Aruba"
+        }
+    ],
+    "AX": [
+        {
+            "code": "",
+            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1131,14 +1149,6 @@
     ],
     "BD": [
         {
-            "name": "Naogaon",
-            "code": "48"
-        },
-        {
-            "name": "Pirojpur",
-            "code": "50"
-        },
-        {
             "name": "किशोरगंज जिला",
             "code": "26"
         },
@@ -1271,6 +1281,10 @@
             "code": "47"
         },
         {
+            "name": "नौगाँव जिला",
+            "code": "48"
+        },
+        {
             "name": "पंचगढ़ जिला",
             "code": "52"
         },
@@ -1281,6 +1295,10 @@
         {
             "name": "पबना जिला",
             "code": "49"
+        },
+        {
+            "name": "पीरोजपुर जिला",
+            "code": "50"
         },
         {
             "name": "फरीदपुर जिला",
@@ -1421,10 +1439,6 @@
     ],
     "BE": [
         {
-            "name": "Wallonia",
-            "code": "WAL"
-        },
-        {
             "name": "एंटवर्प (प्रांत )",
             "code": "VAN"
         },
@@ -1463,6 +1477,10 @@
         {
             "name": "वालून ब्रबैंट",
             "code": "WBR"
+        },
+        {
+            "name": "वालोनिया",
+            "code": "WAL"
         },
         {
             "name": "वेस्ट फ्लैंडर्स",
@@ -1967,6 +1985,12 @@
             "code": "LI"
         }
     ],
+    "BL": [
+        {
+            "code": "",
+            "name": "St. Barthélemy"
+        }
+    ],
     "BN": [
         {
             "name": "टूटोंग जिला",
@@ -2038,10 +2062,6 @@
         }
     ],
     "BR": [
-        {
-            "name": "Rio de Janeiro",
-            "code": "RJ"
-        },
         {
             "name": "अमापा",
             "code": "AP"
@@ -2123,6 +2143,10 @@
             "code": "RS"
         },
         {
+            "name": "रियो डि जेनेरो, प्रांत",
+            "code": "RJ"
+        },
+        {
             "name": "रोन्डोनिया",
             "code": "RO"
         },
@@ -2148,6 +2172,10 @@
         }
     ],
     "BS": [
+        {
+            "name": "New Providence",
+            "code": "NP"
+        },
         {
             "name": "इनागुआ",
             "code": "IN"
@@ -2985,12 +3013,12 @@
             "code": "08"
         },
         {
-            "name": "Zanzan²",
-            "code": "ZZ"
-        },
-        {
             "name": "आबिडजान",
             "code": "AB"
+        },
+        {
+            "name": "ज़नजान प्रदेश",
+            "code": "ZZ"
         },
         {
             "name": "डेंगुएले जिला",
@@ -3021,6 +3049,10 @@
         {
             "name": "Bío Bío",
             "code": "BI"
+        },
+        {
+            "name": "Ñuble",
+            "code": "NB"
         },
         {
             "name": "अराऊकेनिया प्रदेश",
@@ -3119,140 +3151,152 @@
     ],
     "CN": [
         {
-            "name": "बीजिंग",
-            "code": "11"
+            "name": "Hong Kong SAR China",
+            "code": "91"
         },
         {
-            "name": "तिआंजिन",
-            "code": "12"
+            "name": "Macao SAR China",
+            "code": "92"
         },
         {
-            "name": "हेबेई",
-            "code": "13"
-        },
-        {
-            "name": "शन्शी",
-            "code": "14"
-        },
-        {
-            "name": "भीतरी मंगोलिया",
-            "code": "15"
-        },
-        {
-            "name": "लियाओनिंग",
-            "code": "21"
-        },
-        {
-            "name": "जीलिन",
-            "code": "22"
-        },
-        {
-            "name": "हेइलोंगजियांग",
-            "code": "23"
-        },
-        {
-            "name": "शंघाई",
-            "code": "31"
-        },
-        {
-            "name": "जिआंगसू",
-            "code": "32"
-        },
-        {
-            "name": "झेजियांग",
-            "code": "33"
-        },
-        {
-            "name": "अनहुइ",
-            "code": "34"
-        },
-        {
-            "name": "फ़ूज्यान",
-            "code": "35"
-        },
-        {
-            "name": "जिआंगशी",
-            "code": "36"
-        },
-        {
-            "name": "शानदोंग",
-            "code": "37"
-        },
-        {
-            "name": "हेनान",
-            "code": "41"
-        },
-        {
-            "name": "हूबेई",
-            "code": "42"
-        },
-        {
-            "name": "हूनान",
-            "code": "43"
-        },
-        {
-            "name": "गुआंगदोंग",
-            "code": "44"
-        },
-        {
-            "name": "गुआंगशी",
-            "code": "45"
-        },
-        {
-            "name": "हाइनान",
-            "code": "46"
-        },
-        {
-            "name": "चोंग्किंग",
-            "code": "50"
-        },
-        {
-            "name": "सिचुआन",
-            "code": "51"
-        },
-        {
-            "name": "गुइझोऊ",
-            "code": "52"
-        },
-        {
-            "name": "युन्नान",
-            "code": "53"
-        },
-        {
-            "name": "बोड स्वायत्त क्षेत्र",
-            "code": "54"
-        },
-        {
-            "name": "शान्शी",
-            "code": "61"
-        },
-        {
-            "name": "गांसू",
-            "code": "62"
-        },
-        {
-            "name": "चिंगहई",
-            "code": "63"
-        },
-        {
-            "name": "निंगशिया",
-            "code": "64"
-        },
-        {
-            "name": "शिंजियांग",
-            "code": "65"
+            "name": "Taiwan",
+            "code": "TW"
         },
         {
             "name": "Taiwan",
             "code": "71"
         },
         {
-            "name": "Hong Kong SAR China",
-            "code": "91"
+            "name": "अनहुइ",
+            "code": "AH"
         },
         {
-            "name": "Macau SAR China",
-            "code": "92"
+            "name": "गांसू",
+            "code": "GS"
+        },
+        {
+            "name": "गुआंगदोंग",
+            "code": "GD"
+        },
+        {
+            "name": "गुआंगशी",
+            "code": "GX"
+        },
+        {
+            "name": "गुइझोऊ",
+            "code": "GZ"
+        },
+        {
+            "name": "चिंगहई",
+            "code": "QH"
+        },
+        {
+            "name": "चोंग्किंग",
+            "code": "CQ"
+        },
+        {
+            "name": "जिआंगशी",
+            "code": "JX"
+        },
+        {
+            "name": "जिआंगसू",
+            "code": "JS"
+        },
+        {
+            "name": "जीलिन",
+            "code": "JL"
+        },
+        {
+            "name": "झेजियांग",
+            "code": "ZJ"
+        },
+        {
+            "name": "तिआंजिन",
+            "code": "TJ"
+        },
+        {
+            "name": "निंगशिया",
+            "code": "NX"
+        },
+        {
+            "name": "फ़ूज्यान",
+            "code": "FJ"
+        },
+        {
+            "name": "बीजिंग",
+            "code": "BJ"
+        },
+        {
+            "name": "बोड स्वायत्त क्षेत्र",
+            "code": "XZ"
+        },
+        {
+            "name": "भीतरी मंगोलिया",
+            "code": "NM"
+        },
+        {
+            "name": "मकाउ",
+            "code": "MO"
+        },
+        {
+            "name": "युन्नान",
+            "code": "YN"
+        },
+        {
+            "name": "लियाओनिंग",
+            "code": "LN"
+        },
+        {
+            "name": "शंघाई",
+            "code": "SH"
+        },
+        {
+            "name": "शन्शी",
+            "code": "SX"
+        },
+        {
+            "name": "शानदोंग",
+            "code": "SD"
+        },
+        {
+            "name": "शान्शी",
+            "code": "SN"
+        },
+        {
+            "name": "शिंजियांग",
+            "code": "XJ"
+        },
+        {
+            "name": "सिचुआन",
+            "code": "SC"
+        },
+        {
+            "name": "हाइनान",
+            "code": "HI"
+        },
+        {
+            "name": "हांगकांग",
+            "code": "HK"
+        },
+        {
+            "name": "हूनान",
+            "code": "HN"
+        },
+        {
+            "name": "हूबेई",
+            "code": "HB"
+        },
+        {
+            "name": "हेइलोंगजियांग",
+            "code": "HL"
+        },
+        {
+            "name": "हेनान",
+            "code": "HA"
+        },
+        {
+            "name": "हेबेई",
+            "code": "HE"
         }
     ],
     "CO": [
@@ -3387,6 +3431,12 @@
         {
             "name": "हुइला विभाग",
             "code": "HUI"
+        }
+    ],
+    "CP": [
+        {
+            "code": "",
+            "name": "Clipperton Island"
         }
     ],
     "CR": [
@@ -3581,6 +3631,12 @@
         {
             "name": "सैंटा कैटरीना डो फोगो",
             "code": "CF"
+        }
+    ],
+    "CW": [
+        {
+            "code": "",
+            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -4881,24 +4937,8 @@
             "code": "O"
         },
         {
-            "name": "Balears Province",
-            "code": "PM"
-        },
-        {
             "name": "Canary Islands",
             "code": "CN"
-        },
-        {
-            "name": "Cantabria Province",
-            "code": "S"
-        },
-        {
-            "name": "Castile and León",
-            "code": "CL"
-        },
-        {
-            "name": "Extremadura",
-            "code": "EX"
         },
         {
             "name": "Madrid Autonomous Community",
@@ -4915,10 +4955,6 @@
         {
             "name": "Murcia",
             "code": "MU"
-        },
-        {
-            "name": "Navarra",
-            "code": "NA"
         },
         {
             "name": "Segovia",
@@ -4953,6 +4989,10 @@
             "code": "AS"
         },
         {
+            "name": "एक्सत्रेमेद्युरा",
+            "code": "EX"
+        },
+        {
             "name": "एलिसाण्ट प्रान्त",
             "code": "A"
         },
@@ -4967,6 +5007,10 @@
         {
             "name": "कंटैब्रिया",
             "code": "CB"
+        },
+        {
+            "name": "कंटैब्रिया²",
+            "code": "S"
         },
         {
             "name": "कातालोन्या",
@@ -4991,6 +5035,10 @@
         {
             "name": "कैडीज़ प्रांत",
             "code": "CA"
+        },
+        {
+            "name": "कैस्टिले और लेओन",
+            "code": "CL"
         },
         {
             "name": "कोर्डोबा प्रांत",
@@ -5041,6 +5089,10 @@
             "code": "NC"
         },
         {
+            "name": "नावारा²",
+            "code": "NA"
+        },
+        {
             "name": "पैलेन्सिया प्रांत",
             "code": "P"
         },
@@ -5071,6 +5123,10 @@
         {
             "name": "बैलेरिक द्वीपसमूह",
             "code": "IB"
+        },
+        {
+            "name": "बैलेरिक द्वीपसमूह²",
+            "code": "PM"
         },
         {
             "name": "मर्सिया",
@@ -5375,32 +5431,12 @@
     ],
     "FR": [
         {
-            "name": "Auvergne-Rhône-Alpes",
-            "code": "ARA"
-        },
-        {
-            "name": "Brittany",
-            "code": "E"
-        },
-        {
             "name": "Brittany",
             "code": "BRE"
         },
         {
-            "name": "Burgundy-Franche-Comté",
-            "code": "BFC"
-        },
-        {
-            "name": "Centre-Val de Loire",
-            "code": "CVL"
-        },
-        {
             "name": "Clipperton Island",
             "code": "CP"
-        },
-        {
-            "name": "Corsica",
-            "code": "H"
         },
         {
             "name": "French Guiana",
@@ -5415,20 +5451,12 @@
             "code": "TF"
         },
         {
-            "name": "Grand-Est",
-            "code": "GES"
-        },
-        {
             "name": "Guadeloupe",
             "code": "GUA"
         },
         {
-            "name": "Guadeloupe²",
+            "name": "Guadeloupe",
             "code": "GP"
-        },
-        {
-            "name": "Hauts-de-France",
-            "code": "HDF"
         },
         {
             "name": "La Réunion",
@@ -5443,32 +5471,12 @@
             "code": "MAY"
         },
         {
-            "name": "Mayotte²",
+            "name": "Mayotte",
             "code": "YT"
         },
         {
             "name": "New Caledonia",
             "code": "NC"
-        },
-        {
-            "name": "Normandie",
-            "code": "NOR"
-        },
-        {
-            "name": "Nouvelle-Aquitaine",
-            "code": "NAQ"
-        },
-        {
-            "name": "Occitanie",
-            "code": "OCC"
-        },
-        {
-            "name": "Pays-de-la-Loire",
-            "code": "PDL"
-        },
-        {
-            "name": "Provence-Alpes-Côte-d’Azur",
-            "code": "PAC"
         },
         {
             "name": "Réunion",
@@ -5555,6 +5563,10 @@
             "code": "10"
         },
         {
+            "name": "ऑवेरगन-रोन-एल्प्स",
+            "code": "ARA"
+        },
+        {
             "name": "ओइस",
             "code": "60"
         },
@@ -5607,6 +5619,10 @@
             "code": "61"
         },
         {
+            "name": "ओसीटानिया",
+            "code": "OCC"
+        },
+        {
             "name": "कैंटाल",
             "code": "15"
         },
@@ -5645,6 +5661,10 @@
         {
             "name": "गेर्स",
             "code": "32"
+        },
+        {
+            "name": "ग्रांड एस्ट",
+            "code": "GES"
         },
         {
             "name": "चेर",
@@ -5695,8 +5715,16 @@
             "code": "58"
         },
         {
+            "name": "नॉवेले एक्विटाइन",
+            "code": "NAQ"
+        },
+        {
             "name": "नोर्ड",
             "code": "59"
+        },
+        {
+            "name": "नोर्मंडी",
+            "code": "NOR"
         },
         {
             "name": "पायरेनीज़-अटलांटिकेस",
@@ -5715,8 +5743,16 @@
             "code": "63"
         },
         {
+            "name": "पेस़ दे ला लोइर",
+            "code": "PDL"
+        },
+        {
             "name": "पैरिस",
             "code": "75"
+        },
+        {
+            "name": "प्रोवेंस-एल्पस-कोट डी‘आज़ुर",
+            "code": "PAC"
         },
         {
             "name": "फिनिस्तेर",
@@ -5729,6 +5765,10 @@
         {
             "name": "बोचेस-डु-रोन",
             "code": "13"
+        },
+        {
+            "name": "बोरगोग्न-फ़्रेन्च-कोम्टे",
+            "code": "BFC"
         },
         {
             "name": "माउर्थे-एट-मोसेल",
@@ -5867,12 +5907,20 @@
             "code": "93"
         },
         {
+            "name": "सेंटर-वैल दे लोयर",
+            "code": "CVL"
+        },
+        {
             "name": "सेल्वाडोस",
             "code": "14"
         },
         {
             "name": "सोमे",
             "code": "80"
+        },
+        {
+            "name": "हाउत्स-दे-फ्रांस",
+            "code": "HDF"
         },
         {
             "name": "हेरौल्ट",
@@ -5922,10 +5970,6 @@
         }
     ],
     "GB": [
-        {
-            "name": "Anglesey",
-            "code": "AGY"
-        },
         {
             "name": "Angus",
             "code": "ANS"
@@ -6315,10 +6359,6 @@
             "code": "OMH"
         },
         {
-            "name": "Orkney Islands",
-            "code": "ORK"
-        },
-        {
             "name": "Outer Hebrides",
             "code": "ELS"
         },
@@ -6397,10 +6437,6 @@
         {
             "name": "South Gloucestershire",
             "code": "SGC"
-        },
-        {
-            "name": "South Lanarkshire",
-            "code": "SLK"
         },
         {
             "name": "South Tyneside",
@@ -6535,6 +6571,10 @@
             "code": "NIR"
         },
         {
+            "name": "एंग्लेसी",
+            "code": "AGY"
+        },
+        {
             "name": "एडिनबरा",
             "code": "EDH"
         },
@@ -6557,6 +6597,10 @@
         {
             "name": "ऑक्सफ़र्डशायर",
             "code": "OXF"
+        },
+        {
+            "name": "ओर्कने",
+            "code": "ORK"
         },
         {
             "name": "कम्ब्रिया",
@@ -6645,6 +6689,10 @@
         {
             "name": "डॉर्सेट",
             "code": "DOR"
+        },
+        {
+            "name": "दक्षिण लैनार्कशायर",
+            "code": "SLK"
         },
         {
             "name": "नॉटिंघम",
@@ -6999,6 +7047,12 @@
             "code": "SJ"
         }
     ],
+    "GF": [
+        {
+            "code": "",
+            "name": "French Guiana"
+        }
+    ],
     "GH": [
         {
             "name": "अश्ंती क्षेत्र",
@@ -7042,6 +7096,14 @@
         }
     ],
     "GL": [
+        {
+            "name": "Avannaata Kommunia",
+            "code": "AV"
+        },
+        {
+            "name": "Kommune Qeqertalik",
+            "code": "QT"
+        },
         {
             "name": "काझवित्सप",
             "code": "QA"
@@ -7251,6 +7313,12 @@
             "code": "SI"
         }
     ],
+    "GP": [
+        {
+            "code": "",
+            "name": "Guadeloupe"
+        }
+    ],
     "GQ": [
         {
             "name": "Insular",
@@ -7317,10 +7385,6 @@
         {
             "name": "Boeotia",
             "code": "03"
-        },
-        {
-            "name": "Central Greece",
-            "code": "H"
         },
         {
             "name": "Chalkidiki",
@@ -7451,10 +7515,6 @@
             "code": "17"
         },
         {
-            "name": "Mount Athos",
-            "code": "69"
-        },
-        {
             "name": "Pella",
             "code": "59"
         },
@@ -7519,6 +7579,10 @@
             "code": "K"
         },
         {
+            "name": "एथोस पर्वत",
+            "code": "69"
+        },
+        {
             "name": "एपिरस क्षेत्र",
             "code": "D"
         },
@@ -7549,6 +7613,10 @@
         {
             "name": "पेलोपोनीज़ प्रदेश",
             "code": "J"
+        },
+        {
+            "name": "मध्य ग्रीस क्षेत्र",
+            "code": "H"
         }
     ],
     "GT": [
@@ -7641,6 +7709,12 @@
             "code": "HU"
         }
     ],
+    "GU": [
+        {
+            "code": "",
+            "name": "Guam"
+        }
+    ],
     "GW": [
         {
             "name": "Leste",
@@ -7731,6 +7805,12 @@
         {
             "name": "बरीमा-वैनी",
             "code": "BA"
+        }
+    ],
+    "HK": [
+        {
+            "code": "",
+            "name": "Hong Kong SAR China"
         }
     ],
     "HN": [
@@ -7937,10 +8017,6 @@
     ],
     "HU": [
         {
-            "name": "Baranya",
-            "code": "BA"
-        },
-        {
             "name": "Dunaújváros",
             "code": "DU"
         },
@@ -8041,6 +8117,10 @@
             "code": "FE"
         },
         {
+            "name": "बरानिया काउंटी",
+            "code": "BA"
+        },
+        {
             "name": "बुडापेस्ट",
             "code": "BU"
         },
@@ -8107,6 +8187,12 @@
         {
             "name": "हेवेस काउंटी",
             "code": "HE"
+        }
+    ],
+    "IC": [
+        {
+            "code": "",
+            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -8809,14 +8895,6 @@
     ],
     "IT": [
         {
-            "name": "Bari",
-            "code": "BA"
-        },
-        {
-            "name": "Bologna",
-            "code": "BO"
-        },
-        {
             "name": "Catanzaro",
             "code": "CZ"
         },
@@ -8831,14 +8909,6 @@
         {
             "name": "Grosseto",
             "code": "GR"
-        },
-        {
-            "name": "Lombardy",
-            "code": "25"
-        },
-        {
-            "name": "Marche",
-            "code": "57"
         },
         {
             "name": "Matera",
@@ -8861,16 +8931,12 @@
             "code": "PC"
         },
         {
-            "name": "Piedmont",
-            "code": "21"
-        },
-        {
-            "name": "Rome",
-            "code": "RM"
-        },
-        {
             "name": "South Tyrol",
             "code": "BZ"
+        },
+        {
+            "name": "Sud Sardegna",
+            "code": "SD"
         },
         {
             "name": "Trentino",
@@ -8881,16 +8947,8 @@
             "code": "32"
         },
         {
-            "name": "Tuscany",
-            "code": "52"
-        },
-        {
             "name": "Umbria",
             "code": "55"
-        },
-        {
-            "name": "Veneto",
-            "code": "34"
         },
         {
             "name": "अरेजो प्रांत",
@@ -9021,6 +9079,10 @@
             "code": "TR"
         },
         {
+            "name": "टस्कनी",
+            "code": "52"
+        },
+        {
             "name": "टारंटो प्रांत",
             "code": "TA"
         },
@@ -9063,6 +9125,10 @@
         {
             "name": "पाविया प्रांत",
             "code": "PV"
+        },
+        {
+            "name": "पिडमांट",
+            "code": "21"
         },
         {
             "name": "पिस्टोआ प्रांत",
@@ -9137,6 +9203,10 @@
             "code": "BT"
         },
         {
+            "name": "बारी प्रांत",
+            "code": "BA"
+        },
+        {
             "name": "बिएला प्रांत",
             "code": "BI"
         },
@@ -9149,6 +9219,10 @@
             "code": "BL"
         },
         {
+            "name": "बोलोना मेट्रोपोलिटन शहर",
+            "code": "BO"
+        },
+        {
             "name": "ब्रिंदीसी प्रांत",
             "code": "BR"
         },
@@ -9159,6 +9233,10 @@
         {
             "name": "मान्टुआ प्रांत",
             "code": "MN"
+        },
+        {
+            "name": "मार्श",
+            "code": "57"
         },
         {
             "name": "मासा एवं करारा प्रांत",
@@ -9217,6 +9295,10 @@
             "code": "RC"
         },
         {
+            "name": "रोम प्रांत",
+            "code": "RM"
+        },
+        {
             "name": "रोविगो प्रांत",
             "code": "RO"
         },
@@ -9261,6 +9343,10 @@
             "code": "LO"
         },
         {
+            "name": "लोम्बार्डी",
+            "code": "25"
+        },
+        {
             "name": "वर्से प्रांत",
             "code": "VA"
         },
@@ -9291,6 +9377,10 @@
         {
             "name": "वेर्सेली प्रांत",
             "code": "VC"
+        },
+        {
+            "name": "वैनेतो",
+            "code": "34"
         },
         {
             "name": "सवोना प्रांत",
@@ -9959,16 +10049,16 @@
     ],
     "KI": [
         {
-            "code": "G",
-            "name": "Gilbert Islands"
+            "name": "Line Islands",
+            "code": "L"
         },
         {
-            "code": "L",
-            "name": "Line Islands"
+            "name": "Phoenix Islands",
+            "code": "P"
         },
         {
-            "code": "P",
-            "name": "Phoenix Islands"
+            "name": "गिल्बर्ट द्वीप समूह",
+            "code": "G"
         }
     ],
     "KM": [
@@ -10205,6 +10295,10 @@
         {
             "name": "Mangystau",
             "code": "MAN"
+        },
+        {
+            "name": "Shymkent",
+            "code": "SHY"
         },
         {
             "name": "अकतोबे प्रांत",
@@ -10513,7 +10607,7 @@
             "code": "13"
         },
         {
-            "name": "Kandy",
+            "name": "कैंडी जिला",
             "code": "21"
         },
         {
@@ -11001,10 +11095,6 @@
             "name": "Diekirch"
         },
         {
-            "code": "D",
-            "name": "Diekirch²"
-        },
-        {
             "code": "EC",
             "name": "Echternach"
         },
@@ -11017,16 +11107,8 @@
             "name": "Grevenmacher"
         },
         {
-            "code": "G",
-            "name": "Grevenmacher²"
-        },
-        {
             "code": "LU",
             "name": "Luxembourg"
-        },
-        {
-            "code": "L",
-            "name": "Luxembourg²"
         },
         {
             "code": "ME",
@@ -11651,6 +11733,10 @@
             "code": "BER"
         },
         {
+            "name": "Berrechid",
+            "code": "BRR"
+        },
+        {
             "name": "Boujdour",
             "code": "BOD"
         },
@@ -11669,6 +11755,10 @@
         {
             "name": "Chtouka Aït Baha",
             "code": "CHT"
+        },
+        {
+            "name": "Driouch",
+            "code": "DRI"
         },
         {
             "name": "El Hajeb",
@@ -11695,12 +11785,16 @@
             "code": "FAH"
         },
         {
-            "name": "Fès-Dar-Dbibegh",
-            "code": "FES"
-        },
-        {
             "name": "Figuig",
             "code": "FIG"
+        },
+        {
+            "name": "Fquih Ben Salah",
+            "code": "FQH"
+        },
+        {
+            "name": "Guercif",
+            "code": "GUF"
         },
         {
             "name": "Ifrane",
@@ -11743,8 +11837,20 @@
             "code": "LAR"
         },
         {
+            "name": "M’diq-Fnideq",
+            "code": "MDF"
+        },
+        {
+            "name": "Marrakech",
+            "code": "MAR"
+        },
+        {
             "name": "Médiouna",
             "code": "MED"
+        },
+        {
+            "name": "Midelt",
+            "code": "MID"
         },
         {
             "name": "Moulay Yacoub",
@@ -11767,6 +11873,14 @@
             "code": "16"
         },
         {
+            "name": "Ouezzane",
+            "code": "OUZ"
+        },
+        {
+            "name": "Rehamna",
+            "code": "REH"
+        },
+        {
             "name": "Safi",
             "code": "SAF"
         },
@@ -11779,8 +11893,20 @@
             "code": "SET"
         },
         {
+            "name": "Sidi Bennour",
+            "code": "SIB"
+        },
+        {
+            "name": "Sidi Ifni",
+            "code": "SIF"
+        },
+        {
             "name": "Sidi Kacem",
             "code": "SIK"
+        },
+        {
+            "name": "Sidi Slimane",
+            "code": "SIL"
         },
         {
             "name": "Tan-Tan",
@@ -11793,6 +11919,10 @@
         {
             "name": "Taourirt",
             "code": "TAI"
+        },
+        {
+            "name": "Tarfaya (EH-partial)",
+            "code": "TAF"
         },
         {
             "name": "Taroudant",
@@ -11811,8 +11941,16 @@
             "code": "TET"
         },
         {
+            "name": "Tinghir",
+            "code": "TIN"
+        },
+        {
             "name": "Tiznit",
             "code": "TIZ"
+        },
+        {
+            "name": "Youssoufia",
+            "code": "YUS"
         },
         {
             "name": "Zagora",
@@ -11881,6 +12019,10 @@
         {
             "name": "तैमारा",
             "code": "SKH"
+        },
+        {
+            "name": "फेज़",
+            "code": "FES"
         },
         {
             "name": "फ़ेश-बुलमेन",
@@ -12247,6 +12389,12 @@
         {
             "name": "Petnjica",
             "code": "23"
+        }
+    ],
+    "MF": [
+        {
+            "code": "",
+            "name": "St. Martin"
         }
     ],
     "MG": [
@@ -12921,63 +13069,25 @@
             "code": "073"
         }
     ],
+    "MO": [
+        {
+            "code": "",
+            "name": "Macao SAR China"
+        }
+    ],
+    "MP": [
+        {
+            "code": "",
+            "name": "Northern Mariana Islands"
+        }
+    ],
+    "MQ": [
+        {
+            "code": "",
+            "name": "Martinique"
+        }
+    ],
     "MR": [
-        {
-            "name": "Nouakchott",
-            "code": "NKC"
-        },
-        {
-            "name": "Nouakchott Nord",
-            "code": "14"
-        },
-        {
-            "name": "Nouakchott Ouest",
-            "code": "13"
-        },
-        {
-            "name": "Nouakchott Sud",
-            "code": "15"
-        },
-        {
-            "name": "अदरार प्रदेश",
-            "code": "07"
-        },
-        {
-            "name": "आसाबा क्षेत्र",
-            "code": "03"
-        },
-        {
-            "name": "इन्कीरी प्रदेश",
-            "code": "12"
-        },
-        {
-            "name": "गिडीमाका क्षेत्र",
-            "code": "10"
-        },
-        {
-            "name": "गोर्गोल प्रदेश",
-            "code": "04"
-        },
-        {
-            "name": "टैगैंट क्षेत्र",
-            "code": "09"
-        },
-        {
-            "name": "तिरीस ज़मौर क्षेत्र",
-            "code": "11"
-        },
-        {
-            "name": "त्रार्ज़ा प्रदेश",
-            "code": "06"
-        },
-        {
-            "name": "दख्लेट नुआधीबू",
-            "code": "08"
-        },
-        {
-            "name": "ब्रकना प्रदेश",
-            "code": "05"
-        },
         {
             "name": "होड एच चार्गुई प्रदेश",
             "code": "01"
@@ -12985,6 +13095,58 @@
         {
             "name": "होद एल घर्बी क्षेत्र",
             "code": "02"
+        },
+        {
+            "name": "आसाबा क्षेत्र",
+            "code": "03"
+        },
+        {
+            "name": "गोर्गोल प्रदेश",
+            "code": "04"
+        },
+        {
+            "name": "ब्रकना प्रदेश",
+            "code": "05"
+        },
+        {
+            "name": "त्रार्ज़ा प्रदेश",
+            "code": "06"
+        },
+        {
+            "name": "अदरार प्रदेश",
+            "code": "07"
+        },
+        {
+            "name": "दख्लेट नुआधीबू",
+            "code": "08"
+        },
+        {
+            "name": "टैगैंट क्षेत्र",
+            "code": "09"
+        },
+        {
+            "name": "गिडीमाका क्षेत्र",
+            "code": "10"
+        },
+        {
+            "name": "तिरीस ज़मौर क्षेत्र",
+            "code": "11"
+        },
+        {
+            "name": "इन्कीरी प्रदेश",
+            "code": "12"
+        },
+        {
+            "name": "Nouakchott Ouest",
+            "code": "13"
+        },
+        {
+            "name": "Nouakchott Nord",
+            "code": "14"
+        },
+        {
+            "name": "Nouakchott Sud",
+            "code": "15"
         }
     ],
     "MT": [
@@ -13875,6 +14037,12 @@
             "code": "HA"
         }
     ],
+    "NC": [
+        {
+            "code": "",
+            "name": "New Caledonia"
+        }
+    ],
     "NE": [
         {
             "name": "अगाडेज़ क्षेत्र",
@@ -14233,7 +14401,7 @@
             "code": "07"
         },
         {
-            "name": "Telemark",
+            "name": "टेलीमार्क",
             "code": "08"
         },
         {
@@ -14257,7 +14425,7 @@
             "code": "14"
         },
         {
-            "name": "Møre og Romsdal",
+            "name": "मोर ओग रोंस्डल",
             "code": "15"
         },
         {
@@ -14277,7 +14445,7 @@
             "code": "19"
         },
         {
-            "name": "Finnmark",
+            "name": "फ़िनमार्क",
             "code": "20"
         },
         {
@@ -14287,12 +14455,48 @@
         {
             "name": "यान मायेन",
             "code": "22"
+        },
+        {
+            "name": "Trøndelag",
+            "code": "23"
+        },
+        {
+            "name": "Trøndelag",
+            "code": "50"
         }
     ],
     "NP": [
         {
+            "name": "Gandaki²",
+            "code": "P4"
+        },
+        {
+            "name": "Karnali²",
+            "code": "P6"
+        },
+        {
             "name": "Lumbini",
             "code": "LU"
+        },
+        {
+            "name": "Province 1",
+            "code": "P1"
+        },
+        {
+            "name": "Province 2",
+            "code": "P2"
+        },
+        {
+            "name": "Province 3",
+            "code": "P3"
+        },
+        {
+            "name": "Province 5",
+            "code": "P5"
+        },
+        {
+            "name": "Province 7",
+            "code": "P7"
         },
         {
             "name": "कर्णाली अंचल",
@@ -14427,14 +14631,6 @@
     ],
     "NZ": [
         {
-            "name": "North Island",
-            "code": "N"
-        },
-        {
-            "name": "South Island",
-            "code": "S"
-        },
-        {
             "name": "ऑकलैंड क्षेत्र",
             "code": "AUK"
         },
@@ -14504,14 +14700,6 @@
         }
     ],
     "OM": [
-        {
-            "name": "Al Batinah",
-            "code": "BA"
-        },
-        {
-            "name": "Ash Sharqiyah",
-            "code": "SH"
-        },
         {
             "name": "Shamal al Batinah",
             "code": "BS"
@@ -14715,6 +14903,12 @@
         {
             "name": "हुआनुको क्षेत्र",
             "code": "HUC"
+        }
+    ],
+    "PF": [
+        {
+            "code": "",
+            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -15237,68 +15431,80 @@
     ],
     "PL": [
         {
-            "name": "ऑपोल",
-            "code": "OP"
+            "name": "निचला सिलेसियन वोइवोडीशिप",
+            "code": "02"
         },
         {
             "name": "कुआवियन-पोमरेनियन वोईवोडशिप",
-            "code": "KP"
-        },
-        {
-            "name": "निचला सिलेसियन वोइवोडीशिप",
-            "code": "DS"
-        },
-        {
-            "name": "पश्चिम पोमेररेनियन वोइवोडीशिप",
-            "code": "ZP"
-        },
-        {
-            "name": "पॉडकारपैकी वोइवोडीशिप",
-            "code": "PK"
-        },
-        {
-            "name": "पॉडलास्की वोईवोडीशिप",
-            "code": "PD"
-        },
-        {
-            "name": "पोमरेनियन वोइवोडीशिप",
-            "code": "PM"
-        },
-        {
-            "name": "बृहत्तर पोलैंड वोईवोडीशिप",
-            "code": "WP"
-        },
-        {
-            "name": "मासोवियन वोईवोडीशिप",
-            "code": "MZ"
-        },
-        {
-            "name": "लघुतर पोलैंड वोइवोडीशिप",
-            "code": "MA"
-        },
-        {
-            "name": "लुबुस वोइवोडीशिप",
-            "code": "LB"
+            "code": "04"
         },
         {
             "name": "लुब्लिन",
-            "code": "LU"
+            "code": "06"
+        },
+        {
+            "name": "लुबुस वोइवोडीशिप",
+            "code": "08"
         },
         {
             "name": "लौड्ज़ वोईवोडीशिप",
-            "code": "LD"
+            "code": "10"
         },
         {
-            "name": "वार्मियन-मसुरियन वाइवोडीशिप",
-            "code": "WN"
+            "name": "लघुतर पोलैंड वोइवोडीशिप",
+            "code": "12"
+        },
+        {
+            "name": "मासोवियन वोईवोडीशिप",
+            "code": "14"
+        },
+        {
+            "name": "ऑपोल",
+            "code": "16"
+        },
+        {
+            "name": "पॉडकारपैकी वोइवोडीशिप",
+            "code": "18"
+        },
+        {
+            "name": "पॉडलास्की वोईवोडीशिप",
+            "code": "20"
+        },
+        {
+            "name": "पोमरेनियन वोइवोडीशिप",
+            "code": "22"
         },
         {
             "name": "सिलेसियन वोईवोडीशिप",
-            "code": "SL"
+            "code": "24"
         },
         {
             "name": "स्वेतोक्रझिस्की वोइवोडीशिप",
-            "code": "SK"
+            "code": "26"
+        },
+        {
+            "name": "वार्मियन-मसुरियन वाइवोडीशिप",
+            "code": "28"
+        },
+        {
+            "name": "बृहत्तर पोलैंड वोईवोडीशिप",
+            "code": "30"
+        },
+        {
+            "name": "पश्चिम पोमेररेनियन वोइवोडीशिप",
+            "code": "32"
+        }
+    ],
+    "PM": [
+        {
+            "code": "",
+            "name": "St. Pierre & Miquelon"
+        }
+    ],
+    "PR": [
+        {
+            "code": "",
+            "name": "Puerto Rico"
         }
     ],
     "PS": [
@@ -15623,14 +15829,16 @@
             "code": "MS"
         }
     ],
+    "RE": [
+        {
+            "code": "",
+            "name": "Réunion"
+        }
+    ],
     "RO": [
         {
             "name": "Bacău",
             "code": "BC"
-        },
-        {
-            "name": "Maramureş",
-            "code": "MM"
         },
         {
             "name": "अराद काउंटी",
@@ -15747,6 +15955,10 @@
         {
             "name": "महेदिंती काउंटी",
             "code": "MH"
+        },
+        {
+            "name": "मारमुरेस काउंटी",
+            "code": "MM"
         },
         {
             "name": "म्यूरेस काउंटी",
@@ -17559,6 +17771,10 @@
     ],
     "SL": [
         {
+            "name": "North Western",
+            "code": "NW"
+        },
+        {
             "name": "उत्तरी प्रांत",
             "code": "N"
         },
@@ -17897,6 +18113,12 @@
             "code": "SO"
         }
     ],
+    "SX": [
+        {
+            "code": "",
+            "name": "Sint Maarten"
+        }
+    ],
     "SY": [
         {
             "name": "Ar-Raqqah",
@@ -17971,6 +18193,12 @@
         {
             "name": "होहो जिला",
             "code": "HH"
+        }
+    ],
+    "TA": [
+        {
+            "code": "",
+            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -18065,6 +18293,12 @@
         {
             "name": "हद्जर-लामिस क्षेत्र",
             "code": "HL"
+        }
+    ],
+    "TF": [
+        {
+            "code": "",
+            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -18631,7 +18865,7 @@
             "code": "01"
         },
         {
-            "name": "Adıyaman",
+            "name": "आदियामान प्रांत",
             "code": "02"
         },
         {
@@ -18699,7 +18933,7 @@
             "code": "18"
         },
         {
-            "name": "Çorum",
+            "name": "कॉरम प्रांत",
             "code": "19"
         },
         {
@@ -18759,7 +18993,7 @@
             "code": "33"
         },
         {
-            "name": "Istanbul",
+            "name": "इस्तांबुल प्रांत",
             "code": "34"
         },
         {
@@ -18767,7 +19001,7 @@
             "code": "35"
         },
         {
-            "name": "Kars",
+            "name": "कार्स प्रांत",
             "code": "36"
         },
         {
@@ -19015,36 +19249,36 @@
     ],
     "TV": [
         {
-            "code": "FUN",
-            "name": "Funafuti"
+            "name": "Nanumanga",
+            "code": "NMG"
         },
         {
-            "code": "NMG",
-            "name": "Nanumanga"
+            "name": "Nanumea",
+            "code": "NMA"
         },
         {
-            "code": "NMA",
-            "name": "Nanumea"
+            "name": "Niutao",
+            "code": "NIT"
         },
         {
-            "code": "NIT",
-            "name": "Niutao"
+            "name": "Nui",
+            "code": "NUI"
         },
         {
-            "code": "NUI",
-            "name": "Nui"
+            "name": "Nukufetau",
+            "code": "NKF"
         },
         {
-            "code": "NKF",
-            "name": "Nukufetau"
+            "name": "Nukulaelae",
+            "code": "NKL"
         },
         {
-            "code": "NKL",
-            "name": "Nukulaelae"
+            "name": "Vaitupu",
+            "code": "VAI"
         },
         {
-            "code": "VAI",
-            "name": "Vaitupu"
+            "name": "फुनाफुति",
+            "code": "FUN"
         }
     ],
     "TW": [
@@ -19059,6 +19293,10 @@
         {
             "name": "Penghu",
             "code": "PEN"
+        },
+        {
+            "name": "Taiwan",
+            "code": ""
         },
         {
             "name": "काऊशुंग सिटी",
@@ -19257,6 +19495,10 @@
         {
             "name": "सिमिऊ प्रदेश",
             "code": "30"
+        },
+        {
+            "name": "Songwe",
+            "code": "31"
         }
     ],
     "UA": [
@@ -19375,6 +19617,10 @@
             "code": "201"
         },
         {
+            "name": "Bugweri",
+            "code": "235"
+        },
+        {
             "name": "Bunyangabu",
             "code": "430"
         },
@@ -19399,12 +19645,32 @@
             "code": "428"
         },
         {
+            "name": "Kapelebyong",
+            "code": "236"
+        },
+        {
+            "name": "Kasanda",
+            "code": "126"
+        },
+        {
+            "name": "Kikuube",
+            "code": "432"
+        },
+        {
             "name": "Kisoro",
             "code": "408"
         },
         {
+            "name": "Kwania",
+            "code": "333"
+        },
+        {
             "name": "Kyotera",
             "code": "125"
+        },
+        {
+            "name": "Nabilatuk",
+            "code": "334"
         },
         {
             "name": "Namisindwa",
@@ -19876,6 +20142,10 @@
         }
     ],
     "UM": [
+        {
+            "name": "U.S. Outlying Islands",
+            "code": ""
+        },
         {
             "name": "जॉनस्टन एटोल",
             "code": "67"
@@ -20407,19 +20677,13 @@
             "code": "R"
         }
     ],
+    "VI": [
+        {
+            "code": "",
+            "name": "U.S. Virgin Islands"
+        }
+    ],
     "VN": [
-        {
-            "name": "Bắc Kạn",
-            "code": "53"
-        },
-        {
-            "name": "Đồng Nai",
-            "code": "39"
-        },
-        {
-            "name": "Hưng Yên",
-            "code": "66"
-        },
         {
             "name": "एन गियांग",
             "code": "44"
@@ -20483,6 +20747,10 @@
         {
             "name": "डाक लाक",
             "code": "33"
+        },
+        {
+            "name": "डौंग नाय प्रान्त",
+            "code": "39"
         },
         {
             "name": "ताय निन्ह",
@@ -20555,6 +20823,10 @@
         {
             "name": "बा रिया-वुंग तौ",
             "code": "43"
+        },
+        {
+            "name": "बाक कैन प्रान्त",
+            "code": "53"
         },
         {
             "name": "बिन्ह ड्यूओंग",
@@ -20649,6 +20921,10 @@
             "code": "73"
         },
         {
+            "name": "हुंग येन प्रान्त",
+            "code": "66"
+        },
+        {
             "name": "हे तिन्ह",
             "code": "23"
         },
@@ -20688,6 +20964,10 @@
         }
     ],
     "WF": [
+        {
+            "name": "Wallis & Futuna",
+            "code": ""
+        },
         {
             "name": "एलो",
             "code": "AL"
@@ -20835,6 +21115,12 @@
         {
             "name": "हदरामौत प्रान्त",
             "code": "HD"
+        }
+    ],
+    "YT": [
+        {
+            "code": "",
+            "name": "Mayotte"
         }
     ],
     "ZA": [

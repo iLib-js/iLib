@@ -1,6 +1,7 @@
 {
     "Afghanistan": "AF",
     "Africa": "002",
+    "Åland Islands": "AX",
     "Albania": "AL",
     "Algeria": "DZ",
     "American Samoa": "AS",
@@ -84,6 +85,7 @@
     "Equatorial Guinea": "GQ",
     "Eritrea": "ER",
     "Estonia": "EE",
+    "Eswatini": "SZ",
     "Ethiopia": "ET",
     "Europe": "150",
     "European Union": "EU",
@@ -146,8 +148,7 @@
     "Liechtenstein": "LI",
     "Lithuania": "LT",
     "Luxembourg": "LU",
-    "Macau SAR China": "MO",
-    "Macedonia": "MK",
+    "Macao SAR China": "MO",
     "Madagascar": "MG",
     "Malawi": "MW",
     "Malaysia": "MY",
@@ -185,6 +186,7 @@
     "Norfolk Island": "NF",
     "North America": "003",
     "North Korea": "KP",
+    "North Macedonia": "MK",
     "Northern Africa": "015",
     "Northern America": "021",
     "Northern Europe": "154",
@@ -205,6 +207,8 @@
     "Poland": "PL",
     "Polynesia": "061",
     "Portugal": "PT",
+    "Pseudo-Accents": "XA",
+    "Pseudo-Bidi": "XB",
     "Puerto Rico": "PR",
     "Qatar": "QA",
     "Réunion": "RE",
@@ -247,7 +251,6 @@
     "Sudan": "SD",
     "Suriname": "SR",
     "Svalbard & Jan Mayen": "SJ",
-    "Swaziland": "SZ",
     "Sweden": "SE",
     "Switzerland": "CH",
     "Syria": "SY",
@@ -289,6 +292,5 @@
     "World": "001",
     "Yemen": "YE",
     "Zambia": "ZM",
-    "Zimbabwe": "ZW",
-    "Åland Islands": "AX"
+    "Zimbabwe": "ZW"
 }

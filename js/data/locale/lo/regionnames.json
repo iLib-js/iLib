@@ -643,6 +643,12 @@
             "name": "Tucumán"
         }
     ],
+    "AS": [
+        {
+            "code": "",
+            "name": "American Samoa"
+        }
+    ],
     "AT": [
         {
             "code": "1",
@@ -713,6 +719,18 @@
         {
             "code": "WA",
             "name": "Western Australia"
+        }
+    ],
+    "AW": [
+        {
+            "code": "",
+            "name": "Aruba"
+        }
+    ],
+    "AX": [
+        {
+            "code": "",
+            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1967,6 +1985,12 @@
             "name": "Zou"
         }
     ],
+    "BL": [
+        {
+            "code": "",
+            "name": "St. Barthélemy"
+        }
+    ],
     "BN": [
         {
             "code": "BE",
@@ -2227,6 +2251,10 @@
         {
             "code": "MI",
             "name": "Moore’s Island"
+        },
+        {
+            "code": "NP",
+            "name": "New Providence"
         },
         {
             "code": "NO",
@@ -3063,6 +3091,10 @@
             "name": "Maule"
         },
         {
+            "code": "NB",
+            "name": "Ñuble"
+        },
+        {
             "code": "RM",
             "name": "Santiago Metropolitan"
         },
@@ -3119,140 +3151,152 @@
     ],
     "CN": [
         {
-            "name": "ປັກກິ່ງ",
-            "code": "11"
-        },
-        {
-            "name": "Tianjin",
-            "code": "12"
-        },
-        {
-            "name": "Hebei",
-            "code": "13"
-        },
-        {
-            "name": "Shanxi",
-            "code": "14"
-        },
-        {
-            "name": "Inner Mongolia",
-            "code": "15"
-        },
-        {
-            "name": "Liaoning",
-            "code": "21"
-        },
-        {
-            "name": "Jilin",
-            "code": "22"
-        },
-        {
-            "name": "Heilongjiang",
-            "code": "23"
-        },
-        {
-            "name": "ຊຽງໄຮ້",
-            "code": "31"
-        },
-        {
-            "name": "Jiangsu",
-            "code": "32"
-        },
-        {
-            "name": "Zhejiang",
-            "code": "33"
-        },
-        {
             "name": "Anhui",
-            "code": "34"
-        },
-        {
-            "name": "Fujian",
-            "code": "35"
-        },
-        {
-            "name": "Jiangxi",
-            "code": "36"
-        },
-        {
-            "name": "Shandong",
-            "code": "37"
-        },
-        {
-            "name": "Henan",
-            "code": "41"
-        },
-        {
-            "name": "Hubei",
-            "code": "42"
-        },
-        {
-            "name": "Hunan",
-            "code": "43"
-        },
-        {
-            "name": "Guangdong",
-            "code": "44"
-        },
-        {
-            "name": "Guangxi",
-            "code": "45"
-        },
-        {
-            "name": "Hainan",
-            "code": "46"
+            "code": "AH"
         },
         {
             "name": "Chongqing",
-            "code": "50"
+            "code": "CQ"
         },
         {
-            "name": "Sichuan",
-            "code": "51"
-        },
-        {
-            "name": "Guizhou",
-            "code": "52"
-        },
-        {
-            "name": "Yunnan",
-            "code": "53"
-        },
-        {
-            "name": "Tibet",
-            "code": "54"
-        },
-        {
-            "name": "Shaanxi",
-            "code": "61"
+            "name": "Fujian",
+            "code": "FJ"
         },
         {
             "name": "Gansu",
-            "code": "62"
+            "code": "GS"
         },
         {
-            "name": "Qinghai",
-            "code": "63"
+            "name": "Guangdong",
+            "code": "GD"
         },
         {
-            "name": "Ningxia",
-            "code": "64"
+            "name": "Guangxi",
+            "code": "GX"
         },
         {
-            "name": "Xinjiang",
-            "code": "65"
+            "name": "Guizhou",
+            "code": "GZ"
         },
         {
-            "name": "Taiwan",
-            "code": "71"
+            "name": "Hainan",
+            "code": "HI"
+        },
+        {
+            "name": "Hebei",
+            "code": "HE"
+        },
+        {
+            "name": "Heilongjiang",
+            "code": "HL"
+        },
+        {
+            "name": "Henan",
+            "code": "HA"
         },
         {
             "name": "Hong Kong SAR China",
             "code": "91"
         },
         {
-            "name": "Macau SAR China",
+            "name": "Hubei",
+            "code": "HB"
+        },
+        {
+            "name": "Hunan",
+            "code": "HN"
+        },
+        {
+            "name": "Inner Mongolia",
+            "code": "NM"
+        },
+        {
+            "name": "Jiangsu",
+            "code": "JS"
+        },
+        {
+            "name": "Jiangxi",
+            "code": "JX"
+        },
+        {
+            "name": "Jilin",
+            "code": "JL"
+        },
+        {
+            "name": "Liaoning",
+            "code": "LN"
+        },
+        {
+            "name": "Macao SAR China",
             "code": "92"
+        },
+        {
+            "name": "Macau",
+            "code": "MO"
+        },
+        {
+            "name": "Ningxia",
+            "code": "NX"
+        },
+        {
+            "name": "Qinghai",
+            "code": "QH"
+        },
+        {
+            "name": "Shaanxi",
+            "code": "SN"
+        },
+        {
+            "name": "Shandong",
+            "code": "SD"
+        },
+        {
+            "name": "Shanxi",
+            "code": "SX"
+        },
+        {
+            "name": "Sichuan",
+            "code": "SC"
+        },
+        {
+            "name": "Taiwan",
+            "code": "71"
+        },
+        {
+            "name": "Taiwan",
+            "code": "TW"
+        },
+        {
+            "name": "Tianjin",
+            "code": "TJ"
+        },
+        {
+            "name": "Tibet",
+            "code": "XZ"
+        },
+        {
+            "name": "Xinjiang",
+            "code": "XJ"
+        },
+        {
+            "name": "Yunnan",
+            "code": "YN"
+        },
+        {
+            "name": "Zhejiang",
+            "code": "ZJ"
+        },
+        {
+            "name": "ຊຽງໄຮ້",
+            "code": "SH"
+        },
+        {
+            "name": "ປັກກິ່ງ",
+            "code": "BJ"
+        },
+        {
+            "name": "ຮົງກົງ",
+            "code": "HK"
         }
     ],
     "CO": [
@@ -3387,6 +3431,12 @@
         {
             "code": "VID",
             "name": "Vichada"
+        }
+    ],
+    "CP": [
+        {
+            "code": "",
+            "name": "Clipperton Island"
         }
     ],
     "CR": [
@@ -3583,6 +3633,12 @@
             "name": "Tarrafal de São Nicolau"
         }
     ],
+    "CW": [
+        {
+            "code": "",
+            "name": "Curaçao"
+        }
+    ],
     "CY": [
         {
             "code": "01",
@@ -3611,452 +3667,452 @@
     ],
     "CZ": [
         {
-            "code": "201",
-            "name": "Benešov"
+            "name": "Benešov",
+            "code": "201"
         },
         {
-            "code": "202",
-            "name": "Beroun"
+            "name": "Beroun",
+            "code": "202"
         },
         {
-            "code": "641",
-            "name": "Blansko"
+            "name": "Blansko",
+            "code": "641"
         },
         {
-            "code": "644",
-            "name": "Břeclav"
+            "name": "Břeclav",
+            "code": "644"
         },
         {
-            "code": "642",
-            "name": "Brno-město"
+            "name": "Brno-město",
+            "code": "642"
         },
         {
-            "code": "643",
-            "name": "Brno-venkov"
+            "name": "Brno-venkov",
+            "code": "643"
         },
         {
-            "code": "801",
-            "name": "Bruntál"
+            "name": "Bruntál",
+            "code": "801"
         },
         {
-            "code": "511",
-            "name": "Česká Lípa"
+            "name": "Česká Lípa",
+            "code": "511"
         },
         {
-            "code": "311",
-            "name": "České Budějovice"
+            "name": "České Budějovice",
+            "code": "311"
         },
         {
-            "code": "312",
-            "name": "Český Krumlov"
+            "name": "Český Krumlov",
+            "code": "312"
         },
         {
-            "code": "411",
-            "name": "Cheb"
+            "name": "Cheb",
+            "code": "411"
         },
         {
-            "code": "422",
-            "name": "Chomutov"
+            "name": "Chomutov",
+            "code": "422"
         },
         {
-            "code": "531",
-            "name": "Chrudim"
+            "name": "Chrudim",
+            "code": "531"
         },
         {
-            "code": "421",
-            "name": "Děčín"
+            "name": "Děčín",
+            "code": "421"
         },
         {
-            "code": "321",
-            "name": "Domažlice"
+            "name": "Domažlice",
+            "code": "321"
         },
         {
-            "code": "802",
-            "name": "Frýdek-Místek"
+            "name": "Frýdek-Místek",
+            "code": "802"
         },
         {
-            "code": "631",
-            "name": "Havlíčkův Brod"
+            "name": "Havlíčkův Brod",
+            "code": "631"
         },
         {
-            "code": "645",
-            "name": "Hodonín"
+            "name": "Hodonín",
+            "code": "645"
         },
         {
-            "code": "521",
-            "name": "Hradec Králové"
+            "name": "Hradec Králové",
+            "code": "521"
         },
         {
-            "code": "512",
-            "name": "Jablonec nad Nisou"
+            "name": "Jablonec nad Nisou",
+            "code": "512"
         },
         {
-            "code": "711",
-            "name": "Jeseník"
+            "name": "Jeseník",
+            "code": "711"
         },
         {
-            "code": "522",
-            "name": "Jičín"
+            "name": "Jičín",
+            "code": "522"
         },
         {
-            "code": "632",
-            "name": "Jihlava"
+            "name": "Jihlava",
+            "code": "632"
         },
         {
-            "code": "31",
-            "name": "Jihočeský"
+            "name": "Jihočeský",
+            "code": "31"
         },
         {
-            "code": "64",
-            "name": "Jihomoravský"
+            "name": "Jihomoravský",
+            "code": "64"
         },
         {
-            "code": "313",
-            "name": "Jindřichův Hradec"
+            "name": "Jindřichův Hradec",
+            "code": "313"
         },
         {
-            "code": "41",
-            "name": "Karlovarský"
+            "name": "Karlovarský",
+            "code": "41"
         },
         {
-            "code": "412",
-            "name": "Karlovy Vary"
+            "name": "Karlovy Vary",
+            "code": "412"
         },
         {
-            "code": "803",
-            "name": "Karviná"
+            "name": "Karviná",
+            "code": "803"
         },
         {
-            "code": "203",
-            "name": "Kladno"
+            "name": "Kladno",
+            "code": "203"
         },
         {
-            "code": "322",
-            "name": "Klatovy"
+            "name": "Klatovy",
+            "code": "322"
         },
         {
-            "code": "204",
-            "name": "Kolín"
+            "name": "Kolín",
+            "code": "204"
         },
         {
-            "code": "52",
-            "name": "Královéhradecký"
+            "name": "Královéhradecký",
+            "code": "52"
         },
         {
-            "code": "721",
-            "name": "Kroměříž"
+            "name": "Kroměříž",
+            "code": "721"
         },
         {
-            "code": "205",
-            "name": "Kutná Hora"
+            "name": "Kutná Hora",
+            "code": "205"
         },
         {
-            "code": "513",
-            "name": "Liberec"
+            "name": "Liberec",
+            "code": "513"
         },
         {
-            "code": "51",
-            "name": "Liberecký"
+            "name": "Liberecký",
+            "code": "51"
         },
         {
-            "code": "423",
-            "name": "Litoměřice"
+            "name": "Litoměřice",
+            "code": "423"
         },
         {
-            "code": "424",
-            "name": "Louny"
+            "name": "Louny",
+            "code": "424"
         },
         {
-            "code": "206",
-            "name": "Mělník"
+            "name": "Mělník",
+            "code": "206"
         },
         {
-            "code": "207",
-            "name": "Mladá Boleslav"
+            "name": "Mladá Boleslav",
+            "code": "207"
         },
         {
-            "code": "80",
-            "name": "Moravskoslezský"
+            "name": "Moravskoslezský",
+            "code": "80"
         },
         {
-            "code": "425",
-            "name": "Most"
+            "name": "Most",
+            "code": "425"
         },
         {
-            "code": "523",
-            "name": "Náchod"
+            "name": "Náchod",
+            "code": "523"
         },
         {
-            "code": "804",
-            "name": "Nový Jičín"
+            "name": "Nový Jičín",
+            "code": "804"
         },
         {
-            "code": "208",
-            "name": "Nymburk"
+            "name": "Nymburk",
+            "code": "208"
         },
         {
-            "code": "712",
-            "name": "Olomouc"
+            "name": "Olomouc",
+            "code": "712"
         },
         {
-            "code": "71",
-            "name": "Olomoucký"
+            "name": "Olomoucký",
+            "code": "71"
         },
         {
-            "code": "805",
-            "name": "Opava"
+            "name": "Opava",
+            "code": "805"
         },
         {
-            "code": "806",
-            "name": "Ostrava"
+            "name": "Ostrava",
+            "code": "806"
         },
         {
-            "code": "532",
-            "name": "Pardubice"
+            "name": "Pardubice",
+            "code": "532"
         },
         {
-            "code": "53",
-            "name": "Pardubický"
+            "name": "Pardubický",
+            "code": "53"
         },
         {
-            "code": "633",
-            "name": "Pelhřimov"
+            "name": "Pelhřimov",
+            "code": "633"
         },
         {
-            "code": "314",
-            "name": "Písek"
+            "name": "Písek",
+            "code": "314"
         },
         {
-            "code": "323",
-            "name": "Plzeň"
+            "name": "Plzeň",
+            "code": "323"
         },
         {
-            "code": "325",
-            "name": "Plzeň-North"
+            "name": "Plzeň-North",
+            "code": "325"
         },
         {
-            "code": "324",
-            "name": "Plzeň-South"
+            "name": "Plzeň-South",
+            "code": "324"
         },
         {
-            "code": "32",
-            "name": "Plzeňský"
+            "name": "Plzeňský",
+            "code": "32"
         },
         {
-            "code": "315",
-            "name": "Prachatice"
+            "name": "Prachatice",
+            "code": "315"
         },
         {
-            "code": "101",
-            "name": "Prague 1"
+            "name": "Prague 1",
+            "code": "101"
         },
         {
-            "code": "110",
-            "name": "Prague 10"
+            "name": "Prague 10",
+            "code": "110"
         },
         {
-            "code": "111",
-            "name": "Prague 11"
+            "name": "Prague 11",
+            "code": "111"
         },
         {
-            "code": "112",
-            "name": "Prague 12"
+            "name": "Prague 12",
+            "code": "112"
         },
         {
-            "code": "113",
-            "name": "Prague 13"
+            "name": "Prague 13",
+            "code": "113"
         },
         {
-            "code": "114",
-            "name": "Prague 14"
+            "name": "Prague 14",
+            "code": "114"
         },
         {
-            "code": "115",
-            "name": "Prague 15"
+            "name": "Prague 15",
+            "code": "115"
         },
         {
-            "code": "116",
-            "name": "Prague 16"
+            "name": "Prague 16",
+            "code": "116"
         },
         {
-            "code": "117",
-            "name": "Prague 17"
+            "name": "Prague 17",
+            "code": "117"
         },
         {
-            "code": "118",
-            "name": "Prague 18"
+            "name": "Prague 18",
+            "code": "118"
         },
         {
-            "code": "119",
-            "name": "Prague 19"
+            "name": "Prague 19",
+            "code": "119"
         },
         {
-            "code": "102",
-            "name": "Prague 2"
+            "name": "Prague 2",
+            "code": "102"
         },
         {
-            "code": "120",
-            "name": "Prague 20"
+            "name": "Prague 20",
+            "code": "120"
         },
         {
-            "code": "121",
-            "name": "Prague 21"
+            "name": "Prague 21",
+            "code": "121"
         },
         {
-            "code": "122",
-            "name": "Prague 22"
+            "name": "Prague 22",
+            "code": "122"
         },
         {
-            "code": "103",
-            "name": "Prague 3"
+            "name": "Prague 3",
+            "code": "103"
         },
         {
-            "code": "104",
-            "name": "Prague 4"
+            "name": "Prague 4",
+            "code": "104"
         },
         {
-            "code": "105",
-            "name": "Prague 5"
+            "name": "Prague 5",
+            "code": "105"
         },
         {
-            "code": "106",
-            "name": "Prague 6"
+            "name": "Prague 6",
+            "code": "106"
         },
         {
-            "code": "107",
-            "name": "Prague 7"
+            "name": "Prague 7",
+            "code": "107"
         },
         {
-            "code": "108",
-            "name": "Prague 8"
+            "name": "Prague 8",
+            "code": "108"
         },
         {
-            "code": "109",
-            "name": "Prague 9"
+            "name": "Prague 9",
+            "code": "109"
         },
         {
-            "code": "209",
-            "name": "Prague-East"
+            "name": "Prague-East",
+            "code": "209"
         },
         {
-            "code": "20A",
-            "name": "Prague-West"
+            "name": "Prague-West",
+            "code": "20A"
         },
         {
-            "code": "10",
-            "name": "Prague, Hlavní mešto"
+            "name": "Přerov",
+            "code": "714"
         },
         {
-            "code": "714",
-            "name": "Přerov"
+            "name": "Příbram",
+            "code": "20B"
         },
         {
-            "code": "20B",
-            "name": "Příbram"
+            "name": "Prostějov",
+            "code": "713"
         },
         {
-            "code": "713",
-            "name": "Prostějov"
+            "name": "Rakovník",
+            "code": "20C"
         },
         {
-            "code": "20C",
-            "name": "Rakovník"
+            "name": "Rokycany",
+            "code": "326"
         },
         {
-            "code": "326",
-            "name": "Rokycany"
+            "name": "Rychnov nad Kněžnou",
+            "code": "524"
         },
         {
-            "code": "524",
-            "name": "Rychnov nad Kněžnou"
+            "name": "Semily",
+            "code": "514"
         },
         {
-            "code": "514",
-            "name": "Semily"
+            "name": "Sokolov",
+            "code": "413"
         },
         {
-            "code": "413",
-            "name": "Sokolov"
+            "name": "Strakonice",
+            "code": "316"
         },
         {
-            "code": "316",
-            "name": "Strakonice"
+            "name": "Středočeský",
+            "code": "20"
         },
         {
-            "code": "20",
-            "name": "Středočeský"
+            "name": "Šumperk",
+            "code": "715"
         },
         {
-            "code": "715",
-            "name": "Šumperk"
+            "name": "Svitavy",
+            "code": "533"
         },
         {
-            "code": "533",
-            "name": "Svitavy"
+            "name": "Tábor",
+            "code": "317"
         },
         {
-            "code": "317",
-            "name": "Tábor"
+            "name": "Tachov",
+            "code": "327"
         },
         {
-            "code": "327",
-            "name": "Tachov"
+            "name": "Teplice",
+            "code": "426"
         },
         {
-            "code": "426",
-            "name": "Teplice"
+            "name": "Třebíč",
+            "code": "634"
         },
         {
-            "code": "634",
-            "name": "Třebíč"
+            "name": "Trutnov",
+            "code": "525"
         },
         {
-            "code": "525",
-            "name": "Trutnov"
+            "name": "Uherské Hradiště",
+            "code": "722"
         },
         {
-            "code": "722",
-            "name": "Uherské Hradiště"
+            "name": "Ústecký",
+            "code": "42"
         },
         {
-            "code": "42",
-            "name": "Ústecký"
+            "name": "Ústí nad Labem",
+            "code": "427"
         },
         {
-            "code": "427",
-            "name": "Ústí nad Labem"
+            "name": "Ústí nad Orlicí",
+            "code": "534"
         },
         {
-            "code": "534",
-            "name": "Ústí nad Orlicí"
+            "name": "Vsetín",
+            "code": "723"
         },
         {
-            "code": "723",
-            "name": "Vsetín"
+            "name": "Vyškov",
+            "code": "646"
         },
         {
-            "code": "646",
-            "name": "Vyškov"
+            "name": "Vysočina",
+            "code": "63"
         },
         {
-            "code": "63",
-            "name": "Vysočina"
+            "name": "Žďár nad Sázavou",
+            "code": "635"
         },
         {
-            "code": "635",
-            "name": "Žďár nad Sázavou"
+            "name": "Zlín",
+            "code": "724"
         },
         {
-            "code": "724",
-            "name": "Zlín"
+            "name": "Zlínský",
+            "code": "72"
         },
         {
-            "code": "72",
-            "name": "Zlínský"
+            "name": "Znojmo",
+            "code": "647"
         },
         {
-            "code": "647",
-            "name": "Znojmo"
+            "name": "ປຣາກ",
+            "code": "10"
         }
     ],
     "DE": [
@@ -5435,10 +5491,6 @@
             "code": "BRE"
         },
         {
-            "name": "Brittany",
-            "code": "E"
-        },
-        {
             "name": "Burgundy-Franche-Comté",
             "code": "BFC"
         },
@@ -5477,10 +5529,6 @@
         {
             "name": "Corse-du-Sud",
             "code": "2A"
-        },
-        {
-            "name": "Corsica",
-            "code": "H"
         },
         {
             "name": "Corsica",
@@ -5560,11 +5608,11 @@
         },
         {
             "name": "Guadeloupe",
-            "code": "GUA"
+            "code": "GP"
         },
         {
-            "name": "Guadeloupe²",
-            "code": "GP"
+            "name": "Guadeloupe",
+            "code": "GUA"
         },
         {
             "name": "Haut-Rhin",
@@ -5703,7 +5751,7 @@
             "code": "MAY"
         },
         {
-            "name": "Mayotte²",
+            "name": "Mayotte",
             "code": "YT"
         },
         {
@@ -6439,10 +6487,6 @@
             "code": "LIV"
         },
         {
-            "name": "London",
-            "code": "LND"
-        },
-        {
             "name": "Luton",
             "code": "LUT"
         },
@@ -6907,6 +6951,10 @@
             "code": "UKM"
         },
         {
+            "name": "ລອນດອນ",
+            "code": "LND"
+        },
+        {
             "name": "ເວລສ໌",
             "code": "WLS"
         },
@@ -6999,6 +7047,12 @@
             "name": "Tbilisi"
         }
     ],
+    "GF": [
+        {
+            "code": "",
+            "name": "French Guiana"
+        }
+    ],
     "GH": [
         {
             "code": "AH",
@@ -7042,6 +7096,14 @@
         }
     ],
     "GL": [
+        {
+            "code": "AV",
+            "name": "Avannaata Kommunia"
+        },
+        {
+            "code": "QT",
+            "name": "Kommune Qeqertalik"
+        },
         {
             "code": "KU",
             "name": "Kujalleq"
@@ -7249,6 +7311,12 @@
         {
             "code": "YO",
             "name": "Yomou"
+        }
+    ],
+    "GP": [
+        {
+            "code": "",
+            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -7641,6 +7709,12 @@
             "name": "Zacapa"
         }
     ],
+    "GU": [
+        {
+            "code": "",
+            "name": "Guam"
+        }
+    ],
     "GW": [
         {
             "code": "BA",
@@ -7731,6 +7805,12 @@
         {
             "code": "UT",
             "name": "Upper Takutu-Upper Essequibo"
+        }
+    ],
+    "HK": [
+        {
+            "code": "",
+            "name": "Hong Kong SAR China"
         }
     ],
     "HN": [
@@ -8107,6 +8187,12 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
+        }
+    ],
+    "IC": [
+        {
+            "code": "",
+            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -9241,6 +9327,10 @@
             "name": "South Tyrol"
         },
         {
+            "code": "SD",
+            "name": "Sud Sardegna"
+        },
+        {
             "code": "SR",
             "name": "Syracuse"
         },
@@ -10259,6 +10349,10 @@
             "name": "Pavlodar"
         },
         {
+            "code": "SHY",
+            "name": "Shymkent"
+        },
+        {
             "code": "YUZ",
             "name": "South Kazakhstan"
         },
@@ -11001,10 +11095,6 @@
             "name": "Diekirch"
         },
         {
-            "code": "D",
-            "name": "Diekirch²"
-        },
-        {
             "code": "EC",
             "name": "Echternach"
         },
@@ -11017,16 +11107,8 @@
             "name": "Grevenmacher"
         },
         {
-            "code": "G",
-            "name": "Grevenmacher²"
-        },
-        {
             "code": "LU",
             "name": "Luxembourg"
-        },
-        {
-            "code": "L",
-            "name": "Luxembourg²"
         },
         {
             "code": "ME",
@@ -11655,6 +11737,10 @@
             "code": "BER"
         },
         {
+            "name": "Berrechid",
+            "code": "BRR"
+        },
+        {
             "name": "Boujdour",
             "code": "BOD"
         },
@@ -11681,6 +11767,10 @@
         {
             "name": "Doukkala-Abda",
             "code": "10"
+        },
+        {
+            "name": "Driouch",
+            "code": "DRI"
         },
         {
             "name": "El Hajeb",
@@ -11719,6 +11809,10 @@
             "code": "FIG"
         },
         {
+            "name": "Fquih Ben Salah",
+            "code": "FQH"
+        },
+        {
             "name": "Gharb-Chrarda-Béni Hssen",
             "code": "02"
         },
@@ -11733,6 +11827,10 @@
         {
             "name": "Guelmim-Es Semara",
             "code": "14"
+        },
+        {
+            "name": "Guercif",
+            "code": "GUF"
         },
         {
             "name": "Ifrane",
@@ -11779,6 +11877,14 @@
             "code": "LAR"
         },
         {
+            "name": "M’diq-Fnideq",
+            "code": "MDF"
+        },
+        {
+            "name": "Marrakech",
+            "code": "MAR"
+        },
+        {
             "name": "Marrakech-Medina",
             "code": "MMD"
         },
@@ -11801,6 +11907,10 @@
         {
             "name": "Meknès-Tafilalet",
             "code": "06"
+        },
+        {
+            "name": "Midelt",
+            "code": "MID"
         },
         {
             "name": "Mohammedia",
@@ -11835,6 +11945,10 @@
             "code": "16"
         },
         {
+            "name": "Ouezzane",
+            "code": "OUZ"
+        },
+        {
             "name": "Oujda-Angad",
             "code": "OUJ"
         },
@@ -11845,6 +11959,10 @@
         {
             "name": "Rabat-Salé-Zemmour-Zaer",
             "code": "07"
+        },
+        {
+            "name": "Rehamna",
+            "code": "REH"
         },
         {
             "name": "Safi",
@@ -11863,8 +11981,20 @@
             "code": "SET"
         },
         {
+            "name": "Sidi Bennour",
+            "code": "SIB"
+        },
+        {
+            "name": "Sidi Ifni",
+            "code": "SIF"
+        },
+        {
             "name": "Sidi Kacem",
             "code": "SIK"
+        },
+        {
+            "name": "Sidi Slimane",
+            "code": "SIL"
         },
         {
             "name": "Sidi Youssef Ben Ali",
@@ -11903,6 +12033,10 @@
             "code": "TAI"
         },
         {
+            "name": "Tarfaya (EH-partial)",
+            "code": "TAF"
+        },
+        {
             "name": "Taroudant",
             "code": "TAR"
         },
@@ -11923,8 +12057,16 @@
             "code": "TET"
         },
         {
+            "name": "Tinghir",
+            "code": "TIN"
+        },
+        {
             "name": "Tiznit",
             "code": "TIZ"
+        },
+        {
+            "name": "Youssoufia",
+            "code": "YUS"
         },
         {
             "name": "Zagora",
@@ -12247,6 +12389,12 @@
         {
             "code": "23",
             "name": "Petnjica"
+        }
+    ],
+    "MF": [
+        {
+            "code": "",
+            "name": "St. Martin"
         }
     ],
     "MG": [
@@ -12921,31 +13069,25 @@
             "name": "Arkhangai"
         }
     ],
+    "MO": [
+        {
+            "code": "",
+            "name": "Macao SAR China"
+        }
+    ],
+    "MP": [
+        {
+            "code": "",
+            "name": "Northern Mariana Islands"
+        }
+    ],
+    "MQ": [
+        {
+            "code": "",
+            "name": "Martinique"
+        }
+    ],
     "MR": [
-        {
-            "code": "07",
-            "name": "Adrar"
-        },
-        {
-            "code": "03",
-            "name": "Assaba"
-        },
-        {
-            "code": "05",
-            "name": "Brakna"
-        },
-        {
-            "code": "08",
-            "name": "Dakhlet Nouadhibou"
-        },
-        {
-            "code": "04",
-            "name": "Gorgol"
-        },
-        {
-            "code": "10",
-            "name": "Guidimaka"
-        },
         {
             "code": "01",
             "name": "Hodh Ech Chargui"
@@ -12955,36 +13097,56 @@
             "name": "Hodh El Gharbi"
         },
         {
-            "code": "12",
-            "name": "Inchiri"
+            "code": "03",
+            "name": "Assaba"
         },
         {
-            "code": "NKC",
-            "name": "Nouakchott"
+            "code": "04",
+            "name": "Gorgol"
         },
         {
-            "code": "14",
-            "name": "Nouakchott Nord"
+            "code": "05",
+            "name": "Brakna"
         },
         {
-            "code": "13",
-            "name": "Nouakchott Ouest"
+            "code": "06",
+            "name": "Trarza"
         },
         {
-            "code": "15",
-            "name": "Nouakchott Sud"
+            "code": "07",
+            "name": "Adrar"
+        },
+        {
+            "code": "08",
+            "name": "Dakhlet Nouadhibou"
         },
         {
             "code": "09",
             "name": "Tagant"
         },
         {
+            "code": "10",
+            "name": "Guidimaka"
+        },
+        {
             "code": "11",
             "name": "Tiris Zemmour"
         },
         {
-            "code": "06",
-            "name": "Trarza"
+            "code": "12",
+            "name": "Inchiri"
+        },
+        {
+            "code": "13",
+            "name": "Nouakchott Ouest"
+        },
+        {
+            "code": "14",
+            "name": "Nouakchott Nord"
+        },
+        {
+            "code": "15",
+            "name": "Nouakchott Sud"
         }
     ],
     "MT": [
@@ -13875,6 +14037,12 @@
             "name": "Zambezi"
         }
     ],
+    "NC": [
+        {
+            "code": "",
+            "name": "New Caledonia"
+        }
+    ],
     "NE": [
         {
             "code": "1",
@@ -14287,6 +14455,14 @@
         {
             "code": "22",
             "name": "Jan Mayen"
+        },
+        {
+            "code": "23",
+            "name": "Trøndelag"
+        },
+        {
+            "code": "50",
+            "name": "Trøndelag"
         }
     ],
     "NP": [
@@ -14311,12 +14487,20 @@
             "name": "Gandaki"
         },
         {
+            "code": "P4",
+            "name": "Gandaki²"
+        },
+        {
             "code": "JA",
             "name": "Janakpur"
         },
         {
             "code": "KA",
             "name": "Karnali"
+        },
+        {
+            "code": "P6",
+            "name": "Karnali²"
         },
         {
             "code": "KO",
@@ -14341,6 +14525,26 @@
         {
             "code": "NA",
             "name": "Narayani"
+        },
+        {
+            "code": "P1",
+            "name": "Province 1"
+        },
+        {
+            "code": "P2",
+            "name": "Province 2"
+        },
+        {
+            "code": "P3",
+            "name": "Province 3"
+        },
+        {
+            "code": "P5",
+            "name": "Province 5"
+        },
+        {
+            "code": "P7",
+            "name": "Province 7"
         },
         {
             "code": "4",
@@ -14463,20 +14667,12 @@
             "name": "Nelson"
         },
         {
-            "code": "N",
-            "name": "North Island"
-        },
-        {
             "code": "NTL",
             "name": "Northland"
         },
         {
             "code": "OTA",
             "name": "Otago"
-        },
-        {
-            "code": "S",
-            "name": "South Island"
         },
         {
             "code": "STL",
@@ -14513,20 +14709,12 @@
             "name": "Ad Dhahirah"
         },
         {
-            "code": "BA",
-            "name": "Al Batinah"
-        },
-        {
             "code": "BU",
             "name": "Al Buraimi"
         },
         {
             "code": "WU",
             "name": "Al Wusta"
-        },
-        {
-            "code": "SH",
-            "name": "Ash Sharqiyah"
         },
         {
             "code": "ZU",
@@ -14715,6 +14903,12 @@
         {
             "code": "UCA",
             "name": "Ucayali"
+        }
+    ],
+    "PF": [
+        {
+            "code": "",
+            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -15237,68 +15431,80 @@
     ],
     "PL": [
         {
-            "code": "PM",
-            "name": "Federal Capital Territory"
+            "code": "02",
+            "name": "Lower Silesia"
         },
         {
-            "code": "WP",
-            "name": "Greater Poland"
+            "code": "04",
+            "name": "Kuyavia-Pomerania"
         },
         {
-            "code": "KP",
-            "name": "Kuyavian-Pomerania"
-        },
-        {
-            "code": "MA",
-            "name": "Lesser Poland"
-        },
-        {
-            "code": "LD",
-            "name": "Łódź"
-        },
-        {
-            "code": "DS",
-            "name": "Lower Silesian"
-        },
-        {
-            "code": "LU",
+            "code": "06",
             "name": "Lublin"
         },
         {
-            "code": "LB",
+            "code": "08",
             "name": "Lubusz"
         },
         {
-            "code": "MZ",
+            "code": "10",
+            "name": "Łódź"
+        },
+        {
+            "code": "12",
+            "name": "Lesser Poland"
+        },
+        {
+            "code": "14",
             "name": "Mazovia"
         },
         {
-            "code": "OP",
+            "code": "16",
             "name": "Opole"
         },
         {
-            "code": "PD",
-            "name": "Podlaskie"
-        },
-        {
-            "code": "SL",
-            "name": "Silesia"
-        },
-        {
-            "code": "PK",
+            "code": "18",
             "name": "Subcarpathia"
         },
         {
-            "code": "SK",
-            "name": "Świętokrzyskie"
+            "code": "20",
+            "name": "Podlachia"
         },
         {
-            "code": "WN",
-            "name": "Warmian-Masuria"
+            "code": "22",
+            "name": "Pomerania"
         },
         {
-            "code": "ZP",
+            "code": "24",
+            "name": "Silesia"
+        },
+        {
+            "code": "26",
+            "name": "Holy Cross"
+        },
+        {
+            "code": "28",
+            "name": "Warmia-Masuria"
+        },
+        {
+            "code": "30",
+            "name": "Greater Poland"
+        },
+        {
+            "code": "32",
             "name": "West Pomerania"
+        }
+    ],
+    "PM": [
+        {
+            "code": "",
+            "name": "St. Pierre & Miquelon"
+        }
+    ],
+    "PR": [
+        {
+            "code": "",
+            "name": "Puerto Rico"
         }
     ],
     "PS": [
@@ -15621,6 +15827,12 @@
         {
             "code": "US",
             "name": "Umm Salal"
+        }
+    ],
+    "RE": [
+        {
+            "code": "",
+            "name": "Réunion"
         }
     ],
     "RO": [
@@ -17563,6 +17775,10 @@
             "name": "Eastern"
         },
         {
+            "code": "NW",
+            "name": "North Western"
+        },
+        {
             "code": "N",
             "name": "Northern"
         },
@@ -17897,6 +18113,12 @@
             "name": "Usulután"
         }
     ],
+    "SX": [
+        {
+            "code": "",
+            "name": "Sint Maarten"
+        }
+    ],
     "SY": [
         {
             "code": "HA",
@@ -17971,6 +18193,12 @@
         {
             "code": "SH",
             "name": "Shiselweni"
+        }
+    ],
+    "TA": [
+        {
+            "code": "",
+            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -18065,6 +18293,12 @@
         {
             "code": "WF",
             "name": "Wadi Fira"
+        }
+    ],
+    "TF": [
+        {
+            "code": "",
+            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -19125,6 +19359,10 @@
             "name": "Taitung"
         },
         {
+            "code": "",
+            "name": "Taiwan"
+        },
+        {
             "code": "TAO",
             "name": "Taoyuan"
         },
@@ -19257,6 +19495,10 @@
         {
             "code": "30",
             "name": "Simiyu"
+        },
+        {
+            "code": "31",
+            "name": "Songwe"
         }
     ],
     "UA": [
@@ -19423,6 +19665,10 @@
             "name": "Bugiri"
         },
         {
+            "code": "235",
+            "name": "Bugweri"
+        },
+        {
             "code": "420",
             "name": "Buhweju"
         },
@@ -19583,6 +19829,14 @@
             "name": "Kapchorwa"
         },
         {
+            "code": "236",
+            "name": "Kapelebyong"
+        },
+        {
+            "code": "126",
+            "name": "Kasanda"
+        },
+        {
             "code": "406",
             "name": "Kasese"
         },
@@ -19605,6 +19859,10 @@
         {
             "code": "227",
             "name": "Kibuku"
+        },
+        {
+            "code": "432",
+            "name": "Kikuube"
         },
         {
             "code": "419",
@@ -19637,6 +19895,10 @@
         {
             "code": "208",
             "name": "Kumi"
+        },
+        {
+            "code": "333",
+            "name": "Kwania"
         },
         {
             "code": "228",
@@ -19737,6 +19999,10 @@
         {
             "code": "108",
             "name": "Mukono"
+        },
+        {
+            "code": "334",
+            "name": "Nabilatuk"
         },
         {
             "code": "311",
@@ -19876,6 +20142,10 @@
         }
     ],
     "UM": [
+        {
+            "code": "",
+            "name": "U.S. Outlying Islands"
+        },
         {
             "code": "67",
             "name": "Johnston Atoll"
@@ -20407,6 +20677,12 @@
             "name": "Zulia"
         }
     ],
+    "VI": [
+        {
+            "code": "",
+            "name": "U.S. Virgin Islands"
+        }
+    ],
     "VN": [
         {
             "name": "An Giang",
@@ -20511,10 +20787,6 @@
         {
             "name": "Haiphong",
             "code": "HP"
-        },
-        {
-            "name": "Hanoi",
-            "code": "HN"
         },
         {
             "name": "Hậu Giang",
@@ -20659,6 +20931,10 @@
         {
             "name": "ແຂວງກວາງບິນ",
             "code": "24"
+        },
+        {
+            "name": "ຮ່າໂນ້ຍ",
+            "code": "HN"
         }
     ],
     "VU": [
@@ -20699,6 +20975,10 @@
         {
             "code": "UV",
             "name": "Uvea"
+        },
+        {
+            "code": "",
+            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -20835,6 +21115,12 @@
         {
             "code": "TA",
             "name": "Taiz"
+        }
+    ],
+    "YT": [
+        {
+            "code": "",
+            "name": "Mayotte"
         }
     ],
     "ZA": [
