@@ -1,5 +1,8 @@
 {
     "Eurozone": "EZ",
+    "North Macedonia": "MK",
+    "Pseudo-Accents": "XA",
+    "Pseudo-Bidi": "XB",
     "Sub-Saharan Africa": "202",
     "United Nations": "UN",
     "آذربایجون": "AZ",
@@ -248,7 +251,6 @@
     "مرکزی آفریقای جمهوری": "CF",
     "مصر": "EG",
     "مغولستون": "MN",
-    "مقدونیه": "MK",
     "مکزیک": "MX",
     "ملانزی": "054",
     "من ِجزیره": "IM",

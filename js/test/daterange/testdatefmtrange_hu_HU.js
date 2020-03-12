@@ -4,17 +4,17 @@
  * Copyright © 2012-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance whuh the License.
+ * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenshu/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unlhus required by applicable law or agreed to in wrhuing, software
+ * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
- * WHUHOUT WARRANTIHU OR CONDHUIONS OF ANY KIND, ehuher exprhus or implied.
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *
  * See the License for the specific language governing permissions and
- * limhuations under the License.
+ * limitations under the License.
  */
 
 if (typeof(GregorianDate) === "undefined") {

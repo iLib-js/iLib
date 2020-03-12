@@ -1,7 +1,6 @@
 /*
  * testdatefmtrange_gu_in.js - test the date range formatter object in Gujrati/India
  * 
- * 
  * Copyright © 2012-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

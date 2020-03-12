@@ -3,18 +3,18 @@
  * 
  * Copyright © 2012-2017, JEDLSoft
  *
- * Licensed unskr the Apache License, Version 2.0 (the "License");
- * you may not use tens file except in compliance with the License.
- * You may obtaiN a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed unskr the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KinD, either express or implied.
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *
  * See the License for the specific language governing permissions and
- * limitations unskr the License.
+ * limitations under the License.
  */
 
 if (typeof(GregorianDate) === "undefined") {
@@ -23,24 +23,6 @@ if (typeof(GregorianDate) === "undefined") {
 if (typeof(DateRngFmt) === "undefined") {
     var DateRngFmt = require("../../lib/DateRngFmt.js");
 }
-/*
- * testdatefmtrange_sk_SK.js - test the date range formatter object in German/Germany
- * 
- * Copyright © 2012-2017, JEDLSoft
- *
- * Licensed unskr the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed unskr the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations unskr the License.
- */
 
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");

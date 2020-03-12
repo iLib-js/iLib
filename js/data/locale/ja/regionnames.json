@@ -203,7 +203,7 @@
             "code": "03"
         },
         {
-            "name": "Saint John",
+            "name": "セント・ジョン教区",
             "code": "04"
         },
         {
@@ -643,6 +643,12 @@
             "code": "R"
         }
     ],
+    "AS": [
+        {
+            "code": "",
+            "name": "American Samoa"
+        }
+    ],
     "AT": [
         {
             "name": "ブルゲンラント州",
@@ -713,6 +719,18 @@
         {
             "name": "西オーストラリア州",
             "code": "WA"
+        }
+    ],
+    "AW": [
+        {
+            "code": "",
+            "name": "Aruba"
+        }
+    ],
+    "AX": [
+        {
+            "code": "",
+            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1793,7 +1811,7 @@
             "code": "21"
         },
         {
-            "name": "Sofia",
+            "name": "ソフィア市州",
             "code": "22"
         },
         {
@@ -1965,6 +1983,12 @@
         {
             "name": "リトラル県",
             "code": "LI"
+        }
+    ],
+    "BL": [
+        {
+            "code": "",
+            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -2148,6 +2172,10 @@
         }
     ],
     "BS": [
+        {
+            "name": "New Providence",
+            "code": "NP"
+        },
         {
             "name": "アクリンズ",
             "code": "AK"
@@ -2977,10 +3005,6 @@
             "code": "08"
         },
         {
-            "name": "Zanzan²",
-            "code": "ZZ"
-        },
-        {
             "name": "アビジャン",
             "code": "AB"
         },
@@ -2995,6 +3019,10 @@
         {
             "name": "サヴァヌ",
             "code": "SV"
+        },
+        {
+            "name": "ザンザン州",
+            "code": "ZZ"
         },
         {
             "name": "デンゲレ",
@@ -3037,6 +3065,10 @@
         {
             "name": "タラパカ州",
             "code": "TA"
+        },
+        {
+            "name": "ニュブレ州",
+            "code": "NB"
         },
         {
             "name": "バルパライソ州",
@@ -3119,140 +3151,152 @@
     ],
     "CN": [
         {
-            "name": "北京市",
-            "code": "11"
+            "name": "Hong Kong SAR China",
+            "code": "91"
         },
         {
-            "name": "天津市",
-            "code": "12"
-        },
-        {
-            "name": "河北省",
-            "code": "13"
-        },
-        {
-            "name": "山西省",
-            "code": "14"
-        },
-        {
-            "name": "内モンゴル自治区",
-            "code": "15"
-        },
-        {
-            "name": "遼寧省",
-            "code": "21"
-        },
-        {
-            "name": "吉林省",
-            "code": "22"
-        },
-        {
-            "name": "黒竜江省",
-            "code": "23"
-        },
-        {
-            "name": "上海市",
-            "code": "31"
-        },
-        {
-            "name": "江蘇省",
-            "code": "32"
-        },
-        {
-            "name": "浙江省",
-            "code": "33"
-        },
-        {
-            "name": "安徽省",
-            "code": "34"
-        },
-        {
-            "name": "福建省",
-            "code": "35"
-        },
-        {
-            "name": "江西省",
-            "code": "36"
-        },
-        {
-            "name": "山東省",
-            "code": "37"
-        },
-        {
-            "name": "河南省",
-            "code": "41"
-        },
-        {
-            "name": "湖北省",
-            "code": "42"
-        },
-        {
-            "name": "湖南省",
-            "code": "43"
-        },
-        {
-            "name": "広東省",
-            "code": "44"
-        },
-        {
-            "name": "広西チワン族自治区",
-            "code": "45"
-        },
-        {
-            "name": "海南省",
-            "code": "46"
-        },
-        {
-            "name": "重慶市",
-            "code": "50"
-        },
-        {
-            "name": "四川省",
-            "code": "51"
-        },
-        {
-            "name": "貴州省",
-            "code": "52"
-        },
-        {
-            "name": "雲南省",
-            "code": "53"
-        },
-        {
-            "name": "チベット自治区",
-            "code": "54"
-        },
-        {
-            "name": "陝西省",
-            "code": "61"
-        },
-        {
-            "name": "甘粛省",
-            "code": "62"
-        },
-        {
-            "name": "青海省",
-            "code": "63"
-        },
-        {
-            "name": "寧夏回族自治区",
-            "code": "64"
-        },
-        {
-            "name": "新疆ウイグル自治区",
-            "code": "65"
+            "name": "Macao SAR China",
+            "code": "92"
         },
         {
             "name": "Taiwan",
             "code": "71"
         },
         {
-            "name": "Hong Kong SAR China",
-            "code": "91"
+            "name": "チベット自治区",
+            "code": "XZ"
         },
         {
-            "name": "Macau SAR China",
-            "code": "92"
+            "name": "マカオ",
+            "code": "MO"
+        },
+        {
+            "name": "上海市",
+            "code": "SH"
+        },
+        {
+            "name": "内モンゴル自治区",
+            "code": "NM"
+        },
+        {
+            "name": "北京市",
+            "code": "BJ"
+        },
+        {
+            "name": "台湾省",
+            "code": "TW"
+        },
+        {
+            "name": "吉林省",
+            "code": "JL"
+        },
+        {
+            "name": "四川省",
+            "code": "SC"
+        },
+        {
+            "name": "天津市",
+            "code": "TJ"
+        },
+        {
+            "name": "安徽省",
+            "code": "AH"
+        },
+        {
+            "name": "寧夏回族自治区",
+            "code": "NX"
+        },
+        {
+            "name": "山東省",
+            "code": "SD"
+        },
+        {
+            "name": "山西省",
+            "code": "SX"
+        },
+        {
+            "name": "広東省",
+            "code": "GD"
+        },
+        {
+            "name": "広西チワン族自治区",
+            "code": "GX"
+        },
+        {
+            "name": "新疆ウイグル自治区",
+            "code": "XJ"
+        },
+        {
+            "name": "江蘇省",
+            "code": "JS"
+        },
+        {
+            "name": "江西省",
+            "code": "JX"
+        },
+        {
+            "name": "河北省",
+            "code": "HE"
+        },
+        {
+            "name": "河南省",
+            "code": "HA"
+        },
+        {
+            "name": "浙江省",
+            "code": "ZJ"
+        },
+        {
+            "name": "海南省",
+            "code": "HI"
+        },
+        {
+            "name": "湖北省",
+            "code": "HB"
+        },
+        {
+            "name": "湖南省",
+            "code": "HN"
+        },
+        {
+            "name": "甘粛省",
+            "code": "GS"
+        },
+        {
+            "name": "福建省",
+            "code": "FJ"
+        },
+        {
+            "name": "貴州省",
+            "code": "GZ"
+        },
+        {
+            "name": "遼寧省",
+            "code": "LN"
+        },
+        {
+            "name": "重慶市",
+            "code": "CQ"
+        },
+        {
+            "name": "陝西省",
+            "code": "SN"
+        },
+        {
+            "name": "雲南省",
+            "code": "YN"
+        },
+        {
+            "name": "青海省",
+            "code": "QH"
+        },
+        {
+            "name": "香港",
+            "code": "HK"
+        },
+        {
+            "name": "黒竜江省",
+            "code": "HL"
         }
     ],
     "CO": [
@@ -3387,6 +3431,12 @@
         {
             "name": "リサラルダ県",
             "code": "RIS"
+        }
+    ],
+    "CP": [
+        {
+            "code": "",
+            "name": "Clipperton Island"
         }
     ],
     "CR": [
@@ -3583,6 +3633,12 @@
             "code": "RB"
         }
     ],
+    "CW": [
+        {
+            "code": "",
+            "name": "Curaçao"
+        }
+    ],
     "CY": [
         {
             "name": "ニコシア地区",
@@ -3671,10 +3727,6 @@
             "code": "645"
         },
         {
-            "name": "Hradec Králové",
-            "code": "521"
-        },
-        {
             "name": "Jablonec nad Nisou",
             "code": "512"
         },
@@ -3725,10 +3777,6 @@
         {
             "name": "Louny",
             "code": "424"
-        },
-        {
-            "name": "Mělník",
-            "code": "206"
         },
         {
             "name": "Mladá Boleslav",
@@ -3891,10 +3939,6 @@
             "code": "20B"
         },
         {
-            "name": "Prostějov",
-            "code": "713"
-        },
-        {
             "name": "Rakovník",
             "code": "20C"
         },
@@ -3947,10 +3991,6 @@
             "code": "635"
         },
         {
-            "name": "Zlín",
-            "code": "724"
-        },
-        {
             "name": "Znojmo",
             "code": "647"
         },
@@ -3991,6 +4031,10 @@
             "code": "72"
         },
         {
+            "name": "ズリン",
+            "code": "724"
+        },
+        {
             "name": "ソコロフ郡",
             "code": "413"
         },
@@ -4019,6 +4063,10 @@
             "code": "52"
         },
         {
+            "name": "フラデツ・クラーロヴェー郡",
+            "code": "521"
+        },
+        {
             "name": "プラハ",
             "code": "10"
         },
@@ -4031,8 +4079,16 @@
             "code": "32"
         },
         {
+            "name": "プロスチェヨフ郡",
+            "code": "713"
+        },
+        {
             "name": "ベネショフ郡",
             "code": "201"
+        },
+        {
+            "name": "ムニェルニーク地区",
+            "code": "206"
         },
         {
             "name": "モラヴィア・スレスコ州",
@@ -4881,20 +4937,8 @@
             "code": "O"
         },
         {
-            "name": "Balears Province",
-            "code": "PM"
-        },
-        {
             "name": "Canary Islands",
             "code": "CN"
-        },
-        {
-            "name": "Cantabria Province",
-            "code": "S"
-        },
-        {
-            "name": "Navarra",
-            "code": "NA"
         },
         {
             "name": "ア・コルーニャ県",
@@ -4981,6 +5025,10 @@
             "code": "CB"
         },
         {
+            "name": "カンタブリア州²",
+            "code": "S"
+        },
+        {
             "name": "ギプスコア県",
             "code": "SS"
         },
@@ -5057,6 +5105,10 @@
             "code": "NC"
         },
         {
+            "name": "ナバラ州²",
+            "code": "NA"
+        },
+        {
             "name": "ハエン県",
             "code": "J"
         },
@@ -5081,16 +5133,20 @@
             "code": "IB"
         },
         {
+            "name": "バレアレス諸島²",
+            "code": "PM"
+        },
+        {
             "name": "バレンシア州",
             "code": "VC"
         },
         {
-            "name": "パレンシア県",
-            "code": "P"
-        },
-        {
             "name": "バレンシア県",
             "code": "V"
+        },
+        {
+            "name": "パレンシア県",
+            "code": "P"
         },
         {
             "name": "ビスカヤ県",
@@ -5395,10 +5451,6 @@
             "code": "13"
         },
         {
-            "name": "Brittany",
-            "code": "E"
-        },
-        {
             "name": "Burgundy-Franche-Comté",
             "code": "BFC"
         },
@@ -5413,10 +5465,6 @@
         {
             "name": "Corse-du-Sud",
             "code": "2A"
-        },
-        {
-            "name": "Corsica",
-            "code": "H"
         },
         {
             "name": "Côte-d’Or",
@@ -5448,11 +5496,11 @@
         },
         {
             "name": "Guadeloupe",
-            "code": "GUA"
+            "code": "GP"
         },
         {
-            "name": "Guadeloupe²",
-            "code": "GP"
+            "name": "Guadeloupe",
+            "code": "GUA"
         },
         {
             "name": "Haut-Rhin",
@@ -5540,11 +5588,11 @@
         },
         {
             "name": "Mayotte",
-            "code": "MAY"
+            "code": "YT"
         },
         {
-            "name": "Mayotte²",
-            "code": "YT"
+            "name": "Mayotte",
+            "code": "MAY"
         },
         {
             "name": "Meurthe-et-Moselle",
@@ -5759,12 +5807,12 @@
             "code": "CVL"
         },
         {
-            "name": "ジェール県",
-            "code": "32"
-        },
-        {
             "name": "シェール県",
             "code": "18"
+        },
+        {
+            "name": "ジェール県",
+            "code": "32"
         },
         {
             "name": "シャラント県",
@@ -5955,14 +6003,6 @@
             "code": "CSR"
         },
         {
-            "name": "Central Bedfordshire",
-            "code": "CBF"
-        },
-        {
-            "name": "Cheshire West and Chester",
-            "code": "CHW"
-        },
-        {
             "name": "Coleraine",
             "code": "CLR"
         },
@@ -5979,10 +6019,6 @@
             "code": "DRY"
         },
         {
-            "name": "Doncaster",
-            "code": "DNC"
-        },
-        {
             "name": "Down",
             "code": "DOW"
         },
@@ -5993,10 +6029,6 @@
         {
             "name": "Fermanagh",
             "code": "FER"
-        },
-        {
-            "name": "Gateshead",
-            "code": "GAT"
         },
         {
             "name": "Larne",
@@ -6041,14 +6073,6 @@
         {
             "name": "Strabane",
             "code": "STB"
-        },
-        {
-            "name": "Walsall",
-            "code": "WLL"
-        },
-        {
-            "name": "Wokingham",
-            "code": "WOK"
         },
         {
             "name": "アーガイル・アンド・ビュート",
@@ -6173,6 +6197,10 @@
         {
             "name": "ウェスト・ロージアン",
             "code": "WLN"
+        },
+        {
+            "name": "ウォーキンハム",
+            "code": "WOK"
         },
         {
             "name": "ウォリックシャー",
@@ -6479,6 +6507,10 @@
             "code": "CHE"
         },
         {
+            "name": "チェシャーウェスト・アンド・チェスター",
+            "code": "CHW"
+        },
+        {
             "name": "テイムサイド",
             "code": "TAM"
         },
@@ -6731,6 +6763,10 @@
             "code": "BDF"
         },
         {
+            "name": "ベッドフォードシャー中心部",
+            "code": "CBF"
+        },
+        {
             "name": "ベルファスト区",
             "code": "BFS"
         },
@@ -6807,12 +6843,20 @@
             "code": "OLD"
         },
         {
+            "name": "メトロポリタン・バラ・オブ・ゲーツヘッド",
+            "code": "GAT"
+        },
+        {
             "name": "メトロポリタン・バラ・オブ・セフトン",
             "code": "SFT"
         },
         {
             "name": "メトロポリタン・バラ・オブ・ダドリー",
             "code": "DUD"
+        },
+        {
+            "name": "メトロポリタン・バラ・オブ・ドンカスター",
+            "code": "DNC"
         },
         {
             "name": "メトロポリタン・バラ・オブ・バーンズリー",
@@ -6911,6 +6955,10 @@
             "code": "IOW"
         },
         {
+            "name": "ワルサル",
+            "code": "WLL"
+        },
+        {
             "name": "ワンズワース・ロンドン特別区",
             "code": "WND"
         },
@@ -6999,6 +7047,12 @@
             "code": "TB"
         }
     ],
+    "GF": [
+        {
+            "code": "",
+            "name": "French Guiana"
+        }
+    ],
     "GH": [
         {
             "name": "Brong-Ahafo",
@@ -7042,6 +7096,14 @@
         }
     ],
     "GL": [
+        {
+            "name": "Avannaata Kommunia",
+            "code": "AV"
+        },
+        {
+            "name": "Kommune Qeqertalik",
+            "code": "QT"
+        },
         {
             "name": "カースートスップ",
             "code": "QA"
@@ -7249,6 +7311,12 @@
         {
             "name": "ンゼレコレ県",
             "code": "NZ"
+        }
+    ],
+    "GP": [
+        {
+            "code": "",
+            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -7641,6 +7709,12 @@
             "code": "RE"
         }
     ],
+    "GU": [
+        {
+            "code": "",
+            "name": "Guam"
+        }
+    ],
     "GW": [
         {
             "name": "Leste",
@@ -7731,6 +7805,12 @@
         {
             "name": "バリマ・ワイニ州",
             "code": "BA"
+        }
+    ],
+    "HK": [
+        {
+            "code": "",
+            "name": "Hong Kong SAR China"
         }
     ],
     "HN": [
@@ -8109,11 +8189,13 @@
             "code": "JN"
         }
     ],
-    "ID": [
+    "IC": [
         {
-            "name": "Bali",
-            "code": "BA"
-        },
+            "code": "",
+            "name": "Canary Islands"
+        }
+    ],
+    "ID": [
         {
             "name": "アチェ州",
             "code": "AC"
@@ -8157,6 +8239,10 @@
         {
             "name": "パプア州",
             "code": "PA"
+        },
+        {
+            "name": "バリ州",
+            "code": "BA"
         },
         {
             "name": "バンカ・ブリトゥン州",
@@ -8835,6 +8921,10 @@
         {
             "name": "Olbia-Tempio",
             "code": "OT"
+        },
+        {
+            "name": "Sud Sardegna",
+            "code": "SD"
         },
         {
             "name": "Trentino-South Tyrol",
@@ -10097,7 +10187,7 @@
             "code": "13"
         },
         {
-            "name": "Nampho",
+            "name": "南浦特別市",
             "code": "14"
         }
     ],
@@ -10198,6 +10288,10 @@
         }
     ],
     "KZ": [
+        {
+            "name": "Shymkent",
+            "code": "SHY"
+        },
         {
             "name": "アクトベ州",
             "code": "AKT"
@@ -10343,12 +10437,12 @@
     ],
     "LB": [
         {
-            "name": "Akkar",
-            "code": "AK"
-        },
-        {
             "name": "Baalbek-Hermel",
             "code": "BH"
+        },
+        {
+            "name": "アッカール県",
+            "code": "AK"
         },
         {
             "name": "ナバティーエ県",
@@ -10711,10 +10805,6 @@
             "code": "01"
         },
         {
-            "name": "Alytus",
-            "code": "03"
-        },
-        {
             "name": "Alytus Municipality",
             "code": "02"
         },
@@ -10797,10 +10887,6 @@
         {
             "name": "Molėtai",
             "code": "27"
-        },
-        {
-            "name": "Neringa",
-            "code": "28"
         },
         {
             "name": "Pagėgiai",
@@ -10927,6 +11013,10 @@
             "code": "AL"
         },
         {
+            "name": "アリートゥス郡",
+            "code": "03"
+        },
+        {
             "name": "イグナリナ地区自治体",
             "code": "09"
         },
@@ -10967,6 +11057,10 @@
             "code": "TE"
         },
         {
+            "name": "ネリンガ基礎自治体",
+            "code": "28"
+        },
+        {
             "name": "パネヴェジース県",
             "code": "PN"
         },
@@ -10997,24 +11091,12 @@
             "code": "DI"
         },
         {
-            "name": "Diekirch²",
-            "code": "D"
-        },
-        {
             "name": "Esch-sur-Alzette",
             "code": "ES"
         },
         {
             "name": "Grevenmacher",
             "code": "GR"
-        },
-        {
-            "name": "Grevenmacher²",
-            "code": "G"
-        },
-        {
-            "name": "Luxembourg²",
-            "code": "L"
         },
         {
             "name": "Mersch",
@@ -11619,6 +11701,10 @@
     ],
     "MA": [
         {
+            "name": "Berrechid",
+            "code": "BRR"
+        },
+        {
             "name": "Chaouia-Ouardigha",
             "code": "09"
         },
@@ -11627,20 +11713,32 @@
             "code": "10"
         },
         {
-            "name": "Gharb-Chrarda-Béni Hssen",
-            "code": "02"
+            "name": "Driouch",
+            "code": "DRI"
+        },
+        {
+            "name": "Fquih Ben Salah",
+            "code": "FQH"
         },
         {
             "name": "Guelmim-Es Semara",
             "code": "14"
         },
         {
-            "name": "Inezgane-Aït Melloul",
-            "code": "INE"
+            "name": "Guercif",
+            "code": "GUF"
         },
         {
             "name": "Laâyoune-Boujdour-Sakia El Hamra",
             "code": "15"
+        },
+        {
+            "name": "M’diq-Fnideq",
+            "code": "MDF"
+        },
+        {
+            "name": "Marrakech",
+            "code": "MAR"
         },
         {
             "name": "Marrakesh-Tensift-El Haouz",
@@ -11651,6 +11749,10 @@
             "code": "06"
         },
         {
+            "name": "Midelt",
+            "code": "MID"
+        },
+        {
             "name": "Oued Ed-Dahab",
             "code": "OUD"
         },
@@ -11659,8 +11761,28 @@
             "code": "16"
         },
         {
+            "name": "Ouezzane",
+            "code": "OUZ"
+        },
+        {
             "name": "Rabat-Salé-Zemmour-Zaer",
             "code": "07"
+        },
+        {
+            "name": "Rehamna",
+            "code": "REH"
+        },
+        {
+            "name": "Sidi Bennour",
+            "code": "SIB"
+        },
+        {
+            "name": "Sidi Ifni",
+            "code": "SIF"
+        },
+        {
+            "name": "Sidi Slimane",
+            "code": "SIL"
         },
         {
             "name": "Souss-Massa-Drâa",
@@ -11675,8 +11797,20 @@
             "code": "01"
         },
         {
+            "name": "Tarfaya (EH-partial)",
+            "code": "TAF"
+        },
+        {
             "name": "Taza-Al Hoceima-Taounate",
             "code": "03"
+        },
+        {
+            "name": "Tinghir",
+            "code": "TIN"
+        },
+        {
+            "name": "Youssoufia",
+            "code": "YUS"
         },
         {
             "name": "アイウン州",
@@ -11711,6 +11845,10 @@
             "code": "HOC"
         },
         {
+            "name": "イネガーヌ・アイト・メロウル県",
+            "code": "INE"
+        },
+        {
             "name": "イフレン州",
             "code": "IFR"
         },
@@ -11733,6 +11871,10 @@
         {
             "name": "オリアンタル地方",
             "code": "04"
+        },
+        {
+            "name": "オリアンタル地方²",
+            "code": "02"
         },
         {
             "name": "カサブランカ",
@@ -11961,10 +12103,6 @@
             "code": "MU"
         },
         {
-            "name": "Port Hercules",
-            "code": "PH"
-        },
-        {
             "name": "Saint Roman",
             "code": "SR"
         },
@@ -11983,6 +12121,10 @@
         {
             "name": "フォンヴィエイユ",
             "code": "FO"
+        },
+        {
+            "name": "ポートエルキュール",
+            "code": "PH"
         },
         {
             "name": "モナコ・ヴィル",
@@ -12247,6 +12389,12 @@
         {
             "name": "Petnjica",
             "code": "23"
+        }
+    ],
+    "MF": [
+        {
+            "code": "",
+            "name": "St. Martin"
         }
     ],
     "MG": [
@@ -12725,14 +12873,6 @@
     ],
     "ML": [
         {
-            "name": "Ménaka",
-            "code": "9"
-        },
-        {
-            "name": "Taoudénit",
-            "code": "10"
-        },
-        {
             "name": "カイ州",
             "code": "1"
         },
@@ -12757,12 +12897,20 @@
             "code": "4"
         },
         {
+            "name": "タウデニ州",
+            "code": "10"
+        },
+        {
             "name": "トンブクトゥ州",
             "code": "6"
         },
         {
             "name": "バマコ",
             "code": "BKO"
+        },
+        {
+            "name": "メナカ州",
+            "code": "9"
         },
         {
             "name": "モプティ州",
@@ -12921,46 +13069,76 @@
             "code": "073"
         }
     ],
+    "MO": [
+        {
+            "code": "",
+            "name": "Macao SAR China"
+        }
+    ],
+    "MP": [
+        {
+            "code": "",
+            "name": "Northern Mariana Islands"
+        }
+    ],
+    "MQ": [
+        {
+            "code": "",
+            "name": "Martinique"
+        }
+    ],
     "MR": [
         {
-            "name": "Nouakchott",
-            "code": "NKC"
+            "name": "ホズ・エッ・シャルギ州",
+            "code": "01"
+        },
+        {
+            "name": "ホズ・エル・ガルビ州",
+            "code": "02"
         },
         {
             "name": "アサバ州",
             "code": "03"
         },
         {
-            "name": "アドラル州",
-            "code": "07"
-        },
-        {
-            "name": "インシリ州",
-            "code": "12"
-        },
-        {
-            "name": "ギディマカ州",
-            "code": "10"
-        },
-        {
             "name": "ゴルゴル州",
             "code": "04"
         },
         {
-            "name": "タガント州",
-            "code": "09"
+            "name": "ブラクナ州",
+            "code": "05"
+        },
+        {
+            "name": "トラルザ州",
+            "code": "06"
+        },
+        {
+            "name": "アドラル州",
+            "code": "07"
         },
         {
             "name": "ダフレト・ヌアジブ州",
             "code": "08"
         },
         {
+            "name": "タガント州",
+            "code": "09"
+        },
+        {
+            "name": "ギディマカ州",
+            "code": "10"
+        },
+        {
             "name": "ティリス・ゼムール州",
             "code": "11"
         },
         {
-            "name": "トラルザ州",
-            "code": "06"
+            "name": "インシリ州",
+            "code": "12"
+        },
+        {
+            "name": "ヌアクショット西",
+            "code": "13"
         },
         {
             "name": "ヌアクショット北",
@@ -12969,22 +13147,6 @@
         {
             "name": "ヌアクショット南",
             "code": "15"
-        },
-        {
-            "name": "ヌアクショット西",
-            "code": "13"
-        },
-        {
-            "name": "ブラクナ州",
-            "code": "05"
-        },
-        {
-            "name": "ホズ・エッ・シャルギ州",
-            "code": "01"
-        },
-        {
-            "name": "ホズ・エル・ガルビ州",
-            "code": "02"
         }
     ],
     "MT": [
@@ -13447,10 +13609,6 @@
     ],
     "MW": [
         {
-            "name": "Zomba",
-            "code": "ZO"
-        },
-        {
             "name": "カスング",
             "code": "KS"
         },
@@ -13469,6 +13627,10 @@
         {
             "name": "サリマ",
             "code": "SA"
+        },
+        {
+            "name": "ゾンバ県",
+            "code": "ZO"
         },
         {
             "name": "チクワワ",
@@ -13873,6 +14035,12 @@
         {
             "name": "西カバンゴ州",
             "code": "KW"
+        }
+    ],
+    "NC": [
+        {
+            "code": "",
+            "name": "New Caledonia"
         }
     ],
     "NE": [
@@ -14287,9 +14455,45 @@
         {
             "name": "ヤンマイエン島",
             "code": "22"
+        },
+        {
+            "name": "Trøndelag",
+            "code": "23"
+        },
+        {
+            "name": "Trøndelag",
+            "code": "50"
         }
     ],
     "NP": [
+        {
+            "name": "Gandaki²",
+            "code": "P4"
+        },
+        {
+            "name": "Karnali²",
+            "code": "P6"
+        },
+        {
+            "name": "Province 1",
+            "code": "P1"
+        },
+        {
+            "name": "Province 2",
+            "code": "P2"
+        },
+        {
+            "name": "Province 3",
+            "code": "P3"
+        },
+        {
+            "name": "Province 5",
+            "code": "P5"
+        },
+        {
+            "name": "Province 7",
+            "code": "P7"
+        },
         {
             "name": "カルナリ県",
             "code": "KA"
@@ -14427,18 +14631,6 @@
     ],
     "NZ": [
         {
-            "name": "Nelson",
-            "code": "NSN"
-        },
-        {
-            "name": "North Island",
-            "code": "N"
-        },
-        {
-            "name": "South Island",
-            "code": "S"
-        },
-        {
             "name": "ウェスト・コースト地方",
             "code": "WTC"
         },
@@ -14479,6 +14671,10 @@
             "code": "CIT"
         },
         {
+            "name": "ネルソン地方",
+            "code": "NSN"
+        },
+        {
             "name": "ノースランド地方",
             "code": "NTL"
         },
@@ -14504,14 +14700,6 @@
         }
     ],
     "OM": [
-        {
-            "name": "Al Batinah",
-            "code": "BA"
-        },
-        {
-            "name": "Ash Sharqiyah",
-            "code": "SH"
-        },
         {
             "name": "ウスタ行政区",
             "code": "WU"
@@ -14715,6 +14903,12 @@
         {
             "name": "ワンカベリカ県",
             "code": "HUV"
+        }
+    ],
+    "PF": [
+        {
+            "code": "",
+            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -15237,68 +15431,80 @@
     ],
     "PL": [
         {
-            "name": "Kuyavian-Pomerania",
-            "code": "KP"
-        },
-        {
-            "name": "Warmian-Masuria",
-            "code": "WN"
-        },
-        {
-            "name": "ヴィエルコポルスカ県",
-            "code": "WP"
-        },
-        {
-            "name": "ウッチ県",
-            "code": "LD"
-        },
-        {
-            "name": "オポーレ県",
-            "code": "OP"
-        },
-        {
-            "name": "シフィェンティクシシュ県",
-            "code": "SK"
-        },
-        {
-            "name": "シロンスク県",
-            "code": "SL"
-        },
-        {
             "name": "ドルヌィ・シロンスク県",
-            "code": "DS"
+            "code": "02"
         },
         {
-            "name": "ポトカルパチェ県",
-            "code": "PK"
-        },
-        {
-            "name": "ポドラシェ県",
-            "code": "PD"
-        },
-        {
-            "name": "ポモージェ県",
-            "code": "PM"
-        },
-        {
-            "name": "マウォポルスカ県",
-            "code": "MA"
-        },
-        {
-            "name": "マゾフシェ県",
-            "code": "MZ"
-        },
-        {
-            "name": "ルブシュ県",
-            "code": "LB"
+            "name": "Kuyavia-Pomerania",
+            "code": "04"
         },
         {
             "name": "ルブリン県",
-            "code": "LU"
+            "code": "06"
+        },
+        {
+            "name": "ルブシュ県",
+            "code": "08"
+        },
+        {
+            "name": "ウッチ県",
+            "code": "10"
+        },
+        {
+            "name": "マウォポルスカ県",
+            "code": "12"
+        },
+        {
+            "name": "マゾフシェ県",
+            "code": "14"
+        },
+        {
+            "name": "オポーレ県",
+            "code": "16"
+        },
+        {
+            "name": "ポトカルパチェ県",
+            "code": "18"
+        },
+        {
+            "name": "ポドラシェ県",
+            "code": "20"
+        },
+        {
+            "name": "ポモージェ県",
+            "code": "22"
+        },
+        {
+            "name": "シロンスク県",
+            "code": "24"
+        },
+        {
+            "name": "シフィェンティクシシュ県",
+            "code": "26"
+        },
+        {
+            "name": "Warmia-Masuria",
+            "code": "28"
+        },
+        {
+            "name": "ヴィエルコポルスカ県",
+            "code": "30"
         },
         {
             "name": "西ポモージェ県",
-            "code": "ZP"
+            "code": "32"
+        }
+    ],
+    "PM": [
+        {
+            "code": "",
+            "name": "St. Pierre & Miquelon"
+        }
+    ],
+    "PR": [
+        {
+            "code": "",
+            "name": "Puerto Rico"
         }
     ],
     "PS": [
@@ -15603,10 +15809,6 @@
             "code": "WA"
         },
         {
-            "name": "Ash Shīḩānīyah",
-            "code": "SH"
-        },
-        {
             "name": "Madinat ash Shamal",
             "code": "MS"
         },
@@ -15615,12 +15817,22 @@
             "code": "US"
         },
         {
+            "name": "シャハーニーヤ",
+            "code": "SH"
+        },
+        {
             "name": "ドーハ",
             "code": "DA"
         },
         {
             "name": "ライヤーン",
             "code": "RA"
+        }
+    ],
+    "RE": [
+        {
+            "code": "",
+            "name": "Réunion"
         }
     ],
     "RO": [
@@ -17559,6 +17771,10 @@
     ],
     "SL": [
         {
+            "name": "North Western",
+            "code": "NW"
+        },
+        {
             "name": "北部州",
             "code": "N"
         },
@@ -17897,6 +18113,12 @@
             "code": "LI"
         }
     ],
+    "SX": [
+        {
+            "code": "",
+            "name": "Sint Maarten"
+        }
+    ],
     "SY": [
         {
             "name": "アレッポ県",
@@ -17971,6 +18193,12 @@
         {
             "name": "ルボンボ",
             "code": "LU"
+        }
+    ],
+    "TA": [
+        {
+            "code": "",
+            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -18065,6 +18293,12 @@
         {
             "name": "西マヨ・ケッビ州",
             "code": "MO"
+        }
+    ],
+    "TF": [
+        {
+            "code": "",
+            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -19053,6 +19287,10 @@
             "code": "NWT"
         },
         {
+            "name": "Taiwan",
+            "code": ""
+        },
+        {
             "name": "南投県",
             "code": "NAN"
         },
@@ -19257,6 +19495,10 @@
         {
             "name": "シミユ州",
             "code": "30"
+        },
+        {
+            "name": "Songwe",
+            "code": "31"
         }
     ],
     "UA": [
@@ -19371,44 +19613,28 @@
     ],
     "UG": [
         {
-            "name": "Bunyangabu",
-            "code": "430"
+            "name": "Bugweri",
+            "code": "235"
         },
         {
-            "name": "Butebo",
-            "code": "233"
+            "name": "Kapelebyong",
+            "code": "236"
         },
         {
-            "name": "Kagadi",
-            "code": "427"
+            "name": "Kasanda",
+            "code": "126"
         },
         {
-            "name": "Kakumiro",
-            "code": "428"
+            "name": "Kikuube",
+            "code": "432"
         },
         {
-            "name": "Kyotera",
-            "code": "125"
+            "name": "Kwania",
+            "code": "333"
         },
         {
-            "name": "Namisindwa",
-            "code": "234"
-        },
-        {
-            "name": "Pakwach",
-            "code": "332"
-        },
-        {
-            "name": "Rubanda",
-            "code": "429"
-        },
-        {
-            "name": "Rukiga",
-            "code": "431"
-        },
-        {
-            "name": "Zombo",
-            "code": "331"
+            "name": "Nabilatuk",
+            "code": "334"
         },
         {
             "name": "アガゴ県",
@@ -19479,8 +19705,20 @@
             "code": "329"
         },
         {
+            "name": "オモロ県",
+            "code": "331"
+        },
+        {
             "name": "オヤム県",
             "code": "321"
+        },
+        {
+            "name": "カガディ県",
+            "code": "427"
+        },
+        {
+            "name": "カクミロ県",
+            "code": "428"
         },
         {
             "name": "カセセ県",
@@ -19575,6 +19813,10 @@
             "code": "123"
         },
         {
+            "name": "キョテラ県",
+            "code": "125"
+        },
+        {
             "name": "キリャンドンゴ県",
             "code": "421"
         },
@@ -19663,8 +19905,16 @@
             "code": "230"
         },
         {
+            "name": "ナミシンドワ県",
+            "code": "234"
+        },
+        {
             "name": "ネビ県",
             "code": "310"
+        },
+        {
+            "name": "パクワチ県",
+            "code": "332"
         },
         {
             "name": "パデル県",
@@ -19719,8 +19969,16 @@
             "code": "119"
         },
         {
+            "name": "ブテボ県",
+            "code": "233"
+        },
+        {
             "name": "ブドゥダ県",
             "code": "218"
+        },
+        {
+            "name": "ブニャンガブ県",
+            "code": "430"
         },
         {
             "name": "ブフウェジュ県",
@@ -19831,12 +20089,20 @@
             "code": "124"
         },
         {
+            "name": "ルキガ県",
+            "code": "431"
+        },
+        {
             "name": "ルクンギリ県",
             "code": "412"
         },
         {
             "name": "ルッカ県 (ウガンダ)",
             "code": "229"
+        },
+        {
+            "name": "ルバンダ県",
+            "code": "429"
         },
         {
             "name": "ルビリジ県",
@@ -19876,6 +20142,10 @@
         }
     ],
     "UM": [
+        {
+            "name": "U.S. Outlying Islands",
+            "code": ""
+        },
         {
             "name": "ジョンストン島",
             "code": "67"
@@ -20407,6 +20677,12 @@
             "code": "A"
         }
     ],
+    "VI": [
+        {
+            "code": "",
+            "name": "U.S. Virgin Islands"
+        }
+    ],
     "VN": [
         {
             "name": "Bà Rịa–Vũng Tàu",
@@ -20689,6 +20965,10 @@
     ],
     "WF": [
         {
+            "name": "Wallis & Futuna",
+            "code": ""
+        },
+        {
             "name": "アロ首長国",
             "code": "AL"
         },
@@ -20837,6 +21117,12 @@
             "code": "LA"
         }
     ],
+    "YT": [
+        {
+            "code": "",
+            "name": "Mayotte"
+        }
+    ],
     "ZA": [
         {
             "name": "クワズール・ナタール州",
@@ -20923,7 +21209,7 @@
             "code": "BU"
         },
         {
-            "name": "Harare",
+            "name": "ハラレ州",
             "code": "HA"
         },
         {

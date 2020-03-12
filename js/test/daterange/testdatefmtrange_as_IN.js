@@ -1,7 +1,6 @@
 /*
  * testdatefmtrange_as_IN.js - test the date range formatter object in Assamese/india
  * 
- * 
  * Copyright © 2012-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

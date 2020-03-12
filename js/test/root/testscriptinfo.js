@@ -1,7 +1,7 @@
 /*
  * testscriptinfo.js - test the script info object
  * 
- * Copyright © 2013-2017, 2019 JEDLSoft
+ * Copyright © 2013-2017, 2019-2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2173,6 +2173,16 @@ module.exports.testscriptinfo = {
         test.ok(li !== null);
         test.ok(scinfo !== null);
         test.equal(li.getScript(), "Hans");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_ka_GE: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ka-GE");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Geor");
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
     }

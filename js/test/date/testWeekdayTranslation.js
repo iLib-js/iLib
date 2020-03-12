@@ -1,7 +1,7 @@
  /*
  * testWeekdayTranslation.js
  *
- * Copyright © 2019, JEDLSoft
+ * Copyright © 2019-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -11150,6 +11150,77 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "四");
         test.equal(value[5], "五");
         test.equal(value[6], "六");
+
+        test.done();
+    },
+    testWeekdayTranslationFull_ka_GE: function(test) {
+        // full -> wide
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ka-GE", date:"w", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "კვირა");
+        test.equal(value[1], "ორშაბათი");
+        test.equal(value[2], "სამშაბათი");
+        test.equal(value[3], "ოთხშაბათი");
+        test.equal(value[4], "ხუთშაბათი");
+        test.equal(value[5], "პარასკევი");
+        test.equal(value[6], "შაბათი");
+        test.done();
+    },
+    testWeekdayTranslationLong_ka_GE: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ka-GE", date:"w", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "კვი");
+        test.equal(value[1], "ორშ");
+        test.equal(value[2], "სამ");
+        test.equal(value[3], "ოთხ");
+        test.equal(value[4], "ხუთ");
+        test.equal(value[5], "პარ");
+        test.equal(value[6], "შაბ");
+
+        test.done();
+    },
+    testWeekdayTranslationMedium_ka_GE: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ka-GE", date:"w", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "კვ");
+        test.equal(value[1], "ორ");
+        test.equal(value[2], "სმ");
+        test.equal(value[3], "ოთ");
+        test.equal(value[4], "ხთ");
+        test.equal(value[5], "პრ");
+        test.equal(value[6], "შბ");
+
+        test.done();
+    },
+    testWeekdayTranslationShort_ka_GE: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ka-GE", date:"w", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "კ");
+        test.equal(value[1], "ო");
+        test.equal(value[2], "ს");
+        test.equal(value[3], "ო");
+        test.equal(value[4], "ხ");
+        test.equal(value[5], "პ");
+        test.equal(value[6], "შ");
 
         test.done();
     }

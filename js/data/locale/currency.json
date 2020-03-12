@@ -184,11 +184,6 @@
         "decimals": 0,
         "sign": "$"
     },
-    "CNH": {
-        "name": "Chinese Yuan (offshore)",
-        "decimals": 2,
-        "sign": "CNH"
-    },
     "CNY": {
         "name": "Chinese Yuan",
         "decimals": 2,

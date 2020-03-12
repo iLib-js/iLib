@@ -1,7 +1,7 @@
  /*
- * testMeridiems.js
+ * testMeridiems.js - test the meridiems data
  *
- * Copyright © 2019, JEDLSoft
+ * Copyright © 2019-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1961,6 +1961,16 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "上午");
         test.equal(fmt[1].name, "下午");
+
+        test.done();
+    },
+    testMeridiem_ka_GE: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"ka-GE"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
 
         test.done();
     }

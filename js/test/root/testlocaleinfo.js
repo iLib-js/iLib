@@ -1,7 +1,7 @@
 /*
  * testlocaleinfo.js - test the locale info object
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -6789,7 +6789,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("mk-MK");
         test.ok(info !== null);
     
-        test.equal(info.getPercentageFormat(), "{n}%");
+        test.equal(info.getPercentageFormat(), "{n} %");
         test.done();
     },
     
@@ -6816,7 +6816,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("mk-MK");
         test.ok(info !== null);
     
-        test.equal(info.getNegativePercentageFormat(), "-{n}%");
+        test.equal(info.getNegativePercentageFormat(), "-{n} %");
         test.done();
     },
     
@@ -7281,7 +7281,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("nl-BE");
         test.ok(info !== null);
     
-        test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
+        test.equal(info.getCurrencyFormats().commonNegative, "{s} -{n}");
         test.done();
     },
     
@@ -12675,6 +12675,20 @@ module.exports.testlocaleinfo = {
         test.equal(li.getLanguageName(), "Asu");
         test.done();
     },
+    testLocaleInfoGetLanguageName4: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("mus");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getLanguageName(), "Muscogee");
+        test.done();
+    },
+    testLocaleInfoGetLanguageName5: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("cic");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getLanguageName(), "Chickasaw");
+        test.done();
+    },
     
     testLocaleInfoGetRegionName1: function(test) {
         test.expect(2);
@@ -12699,7 +12713,48 @@ module.exports.testlocaleinfo = {
         test.equal(li.getRegionName(), "Tanzania");
         test.done();
     },
-    
+    testLocaleInfoGetRegionName4: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("MK");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getRegionName(), "North Macedonia");
+        test.done();
+    },
+    testLocaleInfoGetRegionName5: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("MO");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getRegionName(), "Macao SAR China");
+        test.done();
+    },
+    testLocaleInfoGetRegionName6: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("SZ");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getRegionName(), "Eswatini");
+        test.done();
+    },
+    testLocaleInfoGetRegionName7: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("XX");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getRegionName(), "Unknown");
+        test.done();
+    },
+    testLocaleInfoGetRegionName8: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("XA");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getRegionName(), "Pseudo-Accents");
+        test.done();
+    },
+    testLocaleInfoGetRegionName9: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("XB");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getRegionName(), "Pseudo-Bidi");
+        test.done();
+    },
     testGetDigitsWestern: function(test) {
         test.expect(2);
         var li = new LocaleInfo("en-US");
@@ -13323,6 +13378,15 @@ module.exports.testlocaleinfo = {
         test.equal(info.getDelimiterQuotationStart(), "„");
         test.equal(info.getDelimiterQuotationEnd(), "“");
         test.done();
+    },
+    testLocaleInfoQuotation_ka_GE: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ka-GE");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "„");
+        test.equal(info.getDelimiterQuotationEnd(), "“");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
     }
-    
 };

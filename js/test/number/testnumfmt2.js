@@ -1,7 +1,7 @@
  /*
  * testnumfmt2.js
  *
- * Copyright © 2019, JEDLSoft
+ * Copyright © 2019-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -505,9 +505,9 @@ module.exports.testnumfmt2 = {
         test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "en-IN", type: "currency", useNative:false, currency:li.getCurrency()});
-        test.equal(li.getCurrencyFormats().common, "{s} {n}");
-        test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}");
-        test.equal(curfmt.format(57.05), "₹ 57.05"); //INR
+        test.equal(li.getCurrencyFormats().common, "{s}{n}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
+        test.equal(curfmt.format(57.05), "₹57.05"); //INR
         test.done();
     },
     testNumFmt_en_IS: function(test) {
@@ -1098,9 +1098,9 @@ module.exports.testnumfmt2 = {
         test.equal(pctfmt.format(34), "34 %");
 
         var curfmt = new NumFmt({locale: "es-PE", type: "currency", useNative:false, currency:li.getCurrency()});
-        test.equal(li.getCurrencyFormats().common, "{s}{n}");
-        test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
-        test.equal(curfmt.format(57.05), "S/.57.05"); //PEN
+        test.equal(li.getCurrencyFormats().common, "{s} {n}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}");
+        test.equal(curfmt.format(57.05), "S/. 57.05"); //PEN
         
         test.done();
     },
@@ -1769,9 +1769,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123.456.789,45");
 
         var pctfmt = new NumFmt({locale:"mk-MK", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n}%");
-        test.equal(li.getNegativePercentageFormat(), "-{n}%");
-        test.equal(pctfmt.format(34), "34%");
+        test.equal(li.getPercentageFormat(), "{n} %");
+        test.equal(li.getNegativePercentageFormat(), "-{n} %");
+        test.equal(pctfmt.format(34), "34 %");
 
         var curfmt = new NumFmt({locale: "mk-MK", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
@@ -1869,8 +1869,8 @@ module.exports.testnumfmt2 = {
         test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "nl-BE", type: "currency", useNative:false, currency:li.getCurrency()});
-        test.equal(li.getCurrencyFormats().common, "{s} {n}"); // CLDR 34 change
-        test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}"); // CLDR 34 change
+        test.equal(li.getCurrencyFormats().common, "{s} {n}");
+        test.equal(li.getCurrencyFormats().commonNegative, "{s} -{n}");
         test.equal(curfmt.format(57.05), "€ 57,05"); //EUR
         test.done();
     },
@@ -3753,6 +3753,25 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "RM57.05"); //MYR
+        test.done();
+    },
+    testNumFmt_ka_GE: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("ka-GE");
+        var fmt = new NumFmt({locale:"ka-GE", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), " ");
+        test.equal(fmt.format(123456789.45), "123 456 789,45");
+
+        var pctfmt = new NumFmt({locale:"ka-GE", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+
+        var curfmt = new NumFmt({locale: "ka-GE", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 ₾"); //GEL
         test.done();
     }
 }
