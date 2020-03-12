@@ -2429,6 +2429,52 @@ module.exports.testdatetimeformat = {
 
         test.done();
     },
+    testDateTimeFormat_ms_BN: function(test) {
+        test.expect(15);
+
+        var result1, result2, result3, result4;
+
+        result1 = new DateFmt({locale:"ms-BN", type:"date", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"ms-BN", type:"date", date:"dmwy", length: "long", useNative:false, timezone:"local"}).template;
+        result3 = new DateFmt({locale:"ms-BN", type:"date", date:"dmwy", length: "medium", useNative:false, timezone:"local"}).template;
+        result4 = new DateFmt({locale:"ms-BN", type:"date", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "EEEE dd MMMM yyyy");
+        test.equal(result2, "EEE d MMMM yyyy");
+        test.equal(result3, "EE d MMM yyyy");
+        test.equal(result4, "E d/MM/yy");
+
+        result1 = new DateFmt({locale:"ms-BN", type:"date", date:"dmw", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"ms-BN", type:"date", date:"dmw", length: "long", useNative:false, timezone:"local"}).template;
+        result3 = new DateFmt({locale:"ms-BN", type:"date", date:"dmw", length: "medium", useNative:false, timezone:"local"}).template;
+        result4 = new DateFmt({locale:"ms-BN", type:"date", date:"dmw", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "EEEE dd MMMM");
+        test.equal(result2, "EEE d MMMM");
+        test.equal(result3, "EE d MMM");
+        test.equal(result4, "E d/MM");
+
+        result1 = new DateFmt({locale:"ms-BN", type:"date", date:"dw", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"ms-BN", type:"date", date:"dw", length: "long", useNative:false, timezone:"local"}).template;
+        result3 = new DateFmt({locale:"ms-BN", type:"date", date:"dw", length: "medium", useNative:false, timezone:"local"}).template;
+        result4 = new DateFmt({locale:"ms-BN", type:"date", date:"dw", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "EEEE dd");
+        test.equal(result2, "EEE d");
+        test.equal(result3, "EE d");
+        test.equal(result4, "E d");
+
+        result1 = new DateFmt({locale:"ms-BN", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"ms-BN", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "EEEE dd MMMM yyyy h:mm a");
+        test.equal(result2, "E d/MM/yy, h:mm a"); //CLDR 34 change.
+
+        result1 = new DateFmt({locale:"ms-BN", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
+        test.equal(result1, "h:mm:ss a z");
+
+        test.done();
+    },
     testDateTimeFormat_nb_NO: function(test) {
         test.expect(8);
 
