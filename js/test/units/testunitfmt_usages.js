@@ -1356,7 +1356,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "18 kph");
+        test.equal(str, "18 km/h");
         test.done();
     },
 
@@ -1373,7 +1373,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "80 kph");
+        test.equal(str, "80 km/h");
         test.done();
     },
 
@@ -1488,7 +1488,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "18 kph");
+        test.equal(str, "18 km/h");
         test.done();
     },
 
@@ -1505,7 +1505,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "93 kph");
+        test.equal(str, "93 km/h");
         test.done();
     },
 
@@ -2539,7 +2539,7 @@ module.exports.testunitfmt_usages = {
             locale: "km-KH"
         });
         var str = uf.format(m1);
-        test.equal(str, "330,2 សង់ទីម៉ែត្រ​គីប");
+        test.equal(str, "330,2 សង់ទីម៉ែត្រគូប");
         test.done();
     },
 
