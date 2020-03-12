@@ -1,6 +1,14 @@
 Release Notes for Version 14
 ============================
 
+Build 009
+-------
+Published as version 14.6.0
+
+New Features:
+* Updated all locale data to CLDR 36 and Unicode Character Database 13.0
+
+
 Build 008
 -------
 Published as version 14.5.0
