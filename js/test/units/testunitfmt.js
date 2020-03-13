@@ -1496,6 +1496,30 @@ module.exports.testunitfmt = {
         test.equal(str, "화씨 1,000도");
         test.done();
     },
+    testUnitFormatTemperatureKR: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "fahrenheit",
+            amount: 1000
+        });
+
+        var uf = new UnitFmt({locale:"ko-KR",autoConvert:true,autoScale:false, length:"short", maxFractionDigits: 2});
+        var str = uf.format(m1);
+        test.equal(str, "537.78°C");
+        test.done();
+    },
+    testUnitFormatTemperatureKR2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "fahrenheit",
+            amount: 1000
+        });
+
+        var uf = new UnitFmt({locale:"ko-KR",autoConvert:true,autoScale:false, length:"long"});
+        var str = uf.format(m1);
+        test.equal(str, "섭씨 537.7777777777778도");
+        test.done();
+    },
 
     testUnitFormatTemperature10: function(test) {
         test.expect(1);
@@ -2251,8 +2275,6 @@ module.exports.testunitfmt = {
         test.done();
     },
 
-
-
     testUnitFormatzhHantHK: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2741,5 +2763,107 @@ module.exports.testunitfmt = {
         var str = uf.format(m1);
         test.equal(str, "1 m, 8 dm, 6 cm und 5 mm");
         test.done();
-    }
+    },
+    testUnitFormatWithNumericStyleShortMY: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 6.2
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "numeric",
+            length: "short",
+            locale: "ms-MY"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "188.9759938 cm");
+        test.done();
+    },
+    testUnitFormatWithNumericStyleLongMY: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 6.2
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "numeric",
+            length: "long",
+            locale: "ms-MY"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "188.9759938 sentimeter");
+        test.done();
+    },
+    testUnitFormatWithNumericStyleShortteIN: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 6.2
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "numeric",
+            length: "short",
+            locale: "te-IN"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "188.9759938 సెం.మీ.");
+        test.done();
+    },
+    testUnitFormatWithNumericStyleLongteIN: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 6.2
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "numeric",
+            length: "long",
+            locale: "te-IN"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "188.9759938 సెంటీమీటర్లు");
+        test.done();
+    },
+    testUnitFormatWithNumericStyleShortamET: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 6.2
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "numeric",
+            length: "short",
+            locale: "am-ET"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "188.9759938 ሴሜ");
+        test.done();
+    },
+    testUnitFormatWithNumericStyleLongamET: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 6.2
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "numeric",
+            length: "long",
+            locale: "am-ET"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "188.9759938 ሴንቲሜትር");
+        test.done();
+    },
 };
