@@ -485,7 +485,8 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 centimètres carrés");
+        test.equal(str, "1 000 centimètres carrés");
+
         test.done();
     },
 
@@ -537,7 +538,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 гектар");
+        test.equal(str, "1 000 гектаров");
         test.done();
     },
 
@@ -563,7 +564,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 yards carrés");
+        test.equal(str, "1 000 yards carrés");
         test.done();
     },
 
@@ -617,7 +618,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 kilooctets");
+        test.equal(str, "1 000 kilooctets");
         test.done();
     },
 
@@ -695,7 +696,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 gigabits");;
+        test.equal(str, "1 000 gigabits");;
         test.done();
     },
 
@@ -761,7 +762,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 joules");
+        test.equal(str, "1 000 joules");
         test.done();
     },
 
@@ -826,7 +827,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true});
         var str = uf.format(m1);
-        test.equal(str, "2 kilojoules");;
+        test.equal(str, "2 kilojoules");;
         test.done();
     },
 
@@ -892,7 +893,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 miles par gallon");
+        test.equal(str, "1 000 miles par gallon");
         test.done();
     },
 
@@ -970,7 +971,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 mètres");
+        test.equal(str, "1 000 mètres");
         test.done();
     },
 
@@ -1048,7 +1049,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 centimètres");
+        test.equal(str, "1 000 centimètres");
         test.done();
     },
 
@@ -1126,7 +1127,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false,length:"short"});
         var str = uf.format(m1);
-        test.equal(str, "2 000 lb");
+        test.equal(str, "2 000 lb");
         test.done();
     },
 
@@ -1165,7 +1166,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "2 st");
+        test.equal(str, "2 стоуна");
         test.done();
     },
 
@@ -1204,7 +1205,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true});
         var str = uf.format(m1);
-        test.equal(str, "1 kilogramme");
+        test.equal(str, "1 kilogramme");
         test.done();
     },
 
@@ -1270,7 +1271,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 miles par heure");
+        test.equal(str, "1 000 miles par heure");
         test.done();
     },
 
@@ -1296,7 +1297,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short"});
         var str = uf.format(m1);
-        test.equal(str, "2 km/s");
+        test.equal(str, "2 km/s");
         test.done();
     },
 
@@ -1322,7 +1323,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
         var str = uf.format(m1);
-        test.equal(str, "1 000 kn");
+        test.equal(str, "1 000 уз");
         test.done();
     },
 
@@ -1348,7 +1349,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short"});
         var str = uf.format(m1);
-        test.equal(str, "447,03924652 m/s");
+        test.equal(str, "447,03924652 m/s");
         test.done();
     },
 
@@ -1413,7 +1414,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"ru-RU",autoConvert:true,length:"long"});
         var str = uf.format(m1);
-        test.equal(str, "1 000градусов Цельсия");
+        test.equal(str, "1 000 градусов Цельсия");
         test.done();
     },
 
@@ -1453,7 +1454,7 @@ module.exports.testunitfmt = {
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short",maxFractionDigits: 9});
         var str = uf.format(m1);
 
-        test.equal(str, "1 093,333333333 °C");
+        test.equal(str, "1 093,333333333 °C");
         test.done();
     },
 
@@ -1466,7 +1467,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
         var str = uf.format(m1);
-        test.equal(str, "2°F");
+        test.equal(str, "2 °F");
         test.done();
     },
 
@@ -1495,6 +1496,30 @@ module.exports.testunitfmt = {
         test.equal(str, "화씨 1,000도");
         test.done();
     },
+    testUnitFormatTemperatureKR: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "fahrenheit",
+            amount: 1000
+        });
+
+        var uf = new UnitFmt({locale:"ko-KR",autoConvert:true,autoScale:false, length:"short", maxFractionDigits: 2});
+        var str = uf.format(m1);
+        test.equal(str, "537.78°C");
+        test.done();
+    },
+    testUnitFormatTemperatureKR2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "fahrenheit",
+            amount: 1000
+        });
+
+        var uf = new UnitFmt({locale:"ko-KR",autoConvert:true,autoScale:false, length:"long"});
+        var str = uf.format(m1);
+        test.equal(str, "섭씨 537.7777777777778도");
+        test.done();
+    },
 
     testUnitFormatTemperature10: function(test) {
         test.expect(1);
@@ -1505,7 +1530,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",length:"long"});
         var str = uf.format(m1);
-        test.equal(str, "1 000 degrés Celsius");
+        test.equal(str, "1 000 degrés Celsius");
         test.done();
     },
 
@@ -1570,7 +1595,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 millisecondes");
+        test.equal(str, "1 000 millisecondes");
         test.done();
     },
 
@@ -1583,7 +1608,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short"});
         var str = uf.format(m1);
-        test.equal(str, "3,83308 decades");
+        test.equal(str, "3,83308 décennies");
         test.done();
     },
 
@@ -1609,7 +1634,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
         var str = uf.format(m1);
-        test.equal(str, "1 000 мин");
+        test.equal(str, "1 000 мин.");
         test.done();
     },
 
@@ -1635,7 +1660,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",length:"long",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 mois");
+        test.equal(str, "1 000 mois");
         test.done();
     },
 
@@ -1700,7 +1725,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 litres");
+        test.equal(str, "1 000 litres");
         test.done();
     },
 
@@ -1713,7 +1738,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short"});
         var str = uf.format(m1);
-        test.equal(str, "2 m³");
+        test.equal(str, "2 m³");
         test.done();
     },
 
@@ -1765,7 +1790,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",length:"long"});
         var str = uf.format(m1);
-        test.equal(str, "28,3168 mètres cubes");
+        test.equal(str, "28,3168 mètres cubes");
         test.done();
     },
 
@@ -1882,7 +1907,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale: "fr-FR",length:"long",autoConvert:false,autoScale: false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 mégaoctets par seconde");
+        test.equal(str, "1 000 mégaoctets par seconde");
         test.done();
     },
 
@@ -1895,7 +1920,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale: "fr-FR",length:"short",autoConvert:false,autoScale: false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 Mo/s");
+        test.equal(str, "1 000 Mo/s");
         test.done();
     },
 
@@ -2249,8 +2274,6 @@ module.exports.testunitfmt = {
         test.equal(str, "1,000厘米");
         test.done();
     },
-
-
 
     testUnitFormatzhHantHK: function(test) {
         test.expect(1);
@@ -2740,5 +2763,107 @@ module.exports.testunitfmt = {
         var str = uf.format(m1);
         test.equal(str, "1 m, 8 dm, 6 cm und 5 mm");
         test.done();
-    }
+    },
+    testUnitFormatWithNumericStyleShortMY: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 6.2
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "numeric",
+            length: "short",
+            locale: "ms-MY"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "188.9759938 cm");
+        test.done();
+    },
+    testUnitFormatWithNumericStyleLongMY: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 6.2
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "numeric",
+            length: "long",
+            locale: "ms-MY"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "188.9759938 sentimeter");
+        test.done();
+    },
+    testUnitFormatWithNumericStyleShortteIN: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 6.2
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "numeric",
+            length: "short",
+            locale: "te-IN"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "188.9759938 సెం.మీ.");
+        test.done();
+    },
+    testUnitFormatWithNumericStyleLongteIN: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 6.2
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "numeric",
+            length: "long",
+            locale: "te-IN"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "188.9759938 సెంటీమీటర్లు");
+        test.done();
+    },
+    testUnitFormatWithNumericStyleShortamET: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 6.2
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "numeric",
+            length: "short",
+            locale: "am-ET"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "188.9759938 ሴሜ");
+        test.done();
+    },
+    testUnitFormatWithNumericStyleLongamET: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 6.2
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "numeric",
+            length: "long",
+            locale: "am-ET"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "188.9759938 ሴንቲሜትር");
+        test.done();
+    },
 };
