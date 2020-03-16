@@ -51,7 +51,7 @@ module.exports.testlistfmt_th_TH = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["หนึ่ง", "สอง"]), "หนึ่ง และ สอง");
+        test.equal(fmt.format(["หนึ่ง", "สอง"]), "หนึ่งและสอง");
         test.done();
     },
     

@@ -43,7 +43,7 @@ module.exports.testlistfmtasync = {
             onLoad: function(fmt) {
                 test.expect(2);
                 test.ok(fmt !== null);
-                test.equal(fmt.format(["true", "false"]), "true and false");
+                test.equal(fmt.format(["true", "false"]), "true, false");
                 test.done();
             }
         });
@@ -56,7 +56,7 @@ module.exports.testlistfmtasync = {
             onLoad: function(fmt) {
                 test.expect(2);
                 test.ok(fmt !== null);
-                test.equal(fmt.format(["এক", "দুই", "তিন", "চার"]), "এক, দুই, তিন এবং চার");
+                test.equal(fmt.format(["এক", "দুই", "তিন", "চার"]), "এক, দুই, তিন, চার");
                 test.done();
             }
         });

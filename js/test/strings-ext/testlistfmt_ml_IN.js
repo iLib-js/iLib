@@ -96,7 +96,7 @@ module.exports.testlistfmt_ml_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ഒന്ന്", "രണ്ട്"]), "ഒന്ന് കൂടാതെ രണ്ട്");
+        test.equal(fmt.format(["ഒന്ന്", "രണ്ട്"]), "ഒന്ന്, രണ്ട്");
         test.done();
     },
     

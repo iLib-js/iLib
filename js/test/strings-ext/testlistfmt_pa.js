@@ -51,7 +51,7 @@ module.exports.testlistfmt_pa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ਇੱਕ", "ਦੋ"]), "ਇੱਕ ਅਤੇ ਦੋ");
+        test.equal(fmt.format(["ਇੱਕ", "ਦੋ"]), "ਇੱਕ, ਦੋ");
         test.done();
     },
     
@@ -62,7 +62,7 @@ module.exports.testlistfmt_pa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ਇੱਕ", "ਦੋ", "ਤਿੰਨ"]), "ਇੱਕ, ਦੋ ਅਤੇ ਤਿੰਨ");
+        test.equal(fmt.format(["ਇੱਕ", "ਦੋ", "ਤਿੰਨ"]), "ਇੱਕ, ਦੋ, ਤਿੰਨ");
         test.done();
     },
     
@@ -73,7 +73,7 @@ module.exports.testlistfmt_pa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ਇੱਕ", "ਦੋ", "ਤਿੰਨ", "ਚਾਰ"]), "ਇੱਕ, ਦੋ, ਤਿੰਨ ਅਤੇ ਚਾਰ");
+        test.equal(fmt.format(["ਇੱਕ", "ਦੋ", "ਤਿੰਨ", "ਚਾਰ"]), "ਇੱਕ, ਦੋ, ਤਿੰਨ, ਚਾਰ");
         test.done();
     },
     testListFmtUnitStylepaGuruINNumberFormatOne: function(test) {
@@ -96,7 +96,7 @@ module.exports.testlistfmt_pa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ਇੱਕ", "ਦੋ"]), "ਇੱਕ, ਦੋ");
+        test.equal(fmt.format(["ਇੱਕ", "ਦੋ"]), "ਇੱਕ ਦੋ");
         test.done();
     },
     
@@ -108,7 +108,7 @@ module.exports.testlistfmt_pa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ਇੱਕ", "ਦੋ", "ਤਿੰਨ"]), "ਇੱਕ, ਦੋ, ਤਿੰਨ");
+        test.equal(fmt.format(["ਇੱਕ", "ਦੋ", "ਤਿੰਨ"]), "ਇੱਕ ਦੋ ਤਿੰਨ");
         test.done();
     },
     
@@ -120,11 +120,9 @@ module.exports.testlistfmt_pa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ਇੱਕ", "ਦੋ", "ਤਿੰਨ", "ਚਾਰ"]), "ਇੱਕ, ਦੋ, ਤਿੰਨ, ਚਾਰ");
+        test.equal(fmt.format(["ਇੱਕ", "ਦੋ", "ਤਿੰਨ", "ਚਾਰ"]), "ਇੱਕ ਦੋ ਤਿੰਨ ਚਾਰ");
         test.done();
     },
-
-
 
     //pa-Arab-PK
     testListFmtpaArabPKNumberFormatOne: function(test) {
@@ -191,7 +189,7 @@ module.exports.testlistfmt_pa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["واحد", "اثنان"]), "واحد, اثنان");
+        test.equal(fmt.format(["واحد", "اثنان"]), "واحد اثنان");
         test.done();
     },
     
@@ -203,7 +201,7 @@ module.exports.testlistfmt_pa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["واحد", "اثنان", "ثلاثة"]), "واحد, اثنان, ثلاثة");
+        test.equal(fmt.format(["واحد", "اثنان", "ثلاثة"]), "واحد اثنان ثلاثة");
         test.done();
     },
     
@@ -215,7 +213,7 @@ module.exports.testlistfmt_pa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["واحد", "اثنان", "ثلاثة", "أربعة"]), "واحد, اثنان, ثلاثة, أربعة");
+        test.equal(fmt.format(["واحد", "اثنان", "ثلاثة", "أربعة"]), "واحد اثنان ثلاثة أربعة");
         test.done();
     }
 };

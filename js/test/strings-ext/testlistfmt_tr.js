@@ -51,7 +51,7 @@ module.exports.testlistfmt_tr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["bir", "два"]), "bir ve два");
+        test.equal(fmt.format(["bir", "два"]), "bir, два");
         test.done();
     },
     
@@ -62,7 +62,7 @@ module.exports.testlistfmt_tr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["bir", "два", "три"]), "bir, два ve три");
+        test.equal(fmt.format(["bir", "два", "три"]), "bir, два, три");
         test.done();
     },
     
@@ -73,7 +73,7 @@ module.exports.testlistfmt_tr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["bir", "два", "три", "четыре"]), "bir, два, три ve четыре");
+        test.equal(fmt.format(["bir", "два", "три", "четыре"]), "bir, два, три, четыре");
         test.done();
     },
     

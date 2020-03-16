@@ -49,7 +49,7 @@ module.exports.testlistfmt_fa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["یکی", "دو"]), "یکی و دو");
+        test.equal(fmt.format(["یکی", "دو"]), "یکی،‏ دو");
         test.done();
     },
     
@@ -60,7 +60,7 @@ module.exports.testlistfmt_fa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["یکی", "دو", "سه"]), "یکی،‏ دو، و سه");
+        test.equal(fmt.format(["یکی", "دو", "سه"]), "یکی،‏ دو،‏ سه");
         test.done();
     },
     
@@ -71,7 +71,7 @@ module.exports.testlistfmt_fa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["یکی", "دو", "سه", "چهار"]), "یکی،‏ دو،‏ سه، و چهار");
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار"]), "یکی،‏ دو،‏ سه،‏ چهار");
         test.done();
     },
     
@@ -82,7 +82,7 @@ module.exports.testlistfmt_fa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["یکی", "دو", "سه", "چهار", "پنج"]), "یکی،‏ دو،‏ سه،‏ چهار، و پنج");
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار", "پنج"]), "یکی،‏ دو،‏ سه،‏ چهار،‏ پنج");
         test.done();
     },
     
@@ -365,7 +365,7 @@ module.exports.testlistfmt_fa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["یکی", "دو"]), "یکی و دو");
+        test.equal(fmt.format(["یکی", "دو"]), "یکی،‏ دو");
         test.done();
     },
     
@@ -376,7 +376,7 @@ module.exports.testlistfmt_fa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["یکی", "دو", "سه"]), "یکی،‏ دو، و سه");
+        test.equal(fmt.format(["یکی", "دو", "سه"]), "یکی،‏ دو،‏ سه");
         test.done();
     },
     
@@ -387,7 +387,7 @@ module.exports.testlistfmt_fa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["یکی", "دو", "سه", "چهار"]), "یکی،‏ دو،‏ سه، و چهار");
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار"]), "یکی،‏ دو،‏ سه،‏ چهار");
         test.done();
     },
     
@@ -398,7 +398,7 @@ module.exports.testlistfmt_fa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["یکی", "دو", "سه", "چهار", "پنج"]), "یکی،‏ دو،‏ سه،‏ چهار، و پنج");
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار", "پنج"]), "یکی،‏ دو،‏ سه،‏ چهار،‏ پنج");
         test.done();
     },
 

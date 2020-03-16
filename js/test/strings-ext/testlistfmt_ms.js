@@ -51,7 +51,7 @@ module.exports.testlistfmt_ms = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["satu", "dua"]), "satu dan dua");
+        test.equal(fmt.format(["satu", "dua"]), "satu, dua");
         test.done();
     },
     
@@ -62,7 +62,7 @@ module.exports.testlistfmt_ms = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["satu", "dua", "bertiga"]), "satu, dua dan bertiga");
+        test.equal(fmt.format(["satu", "dua", "bertiga"]), "satu, dua, bertiga");
         test.done();
     },
     
@@ -73,7 +73,7 @@ module.exports.testlistfmt_ms = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["satu", "dua", "bertiga", "empat"]), "satu, dua, bertiga dan empat");
+        test.equal(fmt.format(["satu", "dua", "bertiga", "empat"]), "satu, dua, bertiga, empat");
         test.done();
     },
     testListFmtUnitStylemsLatnMYNumberFormatOne: function(test) {
@@ -194,7 +194,7 @@ module.exports.testlistfmt_ms = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["satu", "dua"]), "satu dan dua");
+        test.equal(fmt.format(["satu", "dua"]), "satu, dua");
         test.done();
     },
     
@@ -205,7 +205,7 @@ module.exports.testlistfmt_ms = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["satu", "dua", "bertiga"]), "satu, dua dan bertiga");
+        test.equal(fmt.format(["satu", "dua", "bertiga"]), "satu, dua, bertiga");
         test.done();
     },
     
@@ -216,7 +216,7 @@ module.exports.testlistfmt_ms = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["satu", "dua", "bertiga", "empat"]), "satu, dua, bertiga dan empat");
+        test.equal(fmt.format(["satu", "dua", "bertiga", "empat"]), "satu, dua, bertiga, empat");
         test.done();
     },
     testListFmtUnitStylemsLatnSGNumberFormatOne: function(test) {
