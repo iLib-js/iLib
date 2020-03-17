@@ -837,6 +837,17 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["jeden", "dva", "tři", "čtyři"]), "jeden, dva, tři, čtyři");
         test.done();
     },
+    testListFmtcsCZNumberFormatFourLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "cs-CZ",
+            length: "long"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["jeden", "dva", "tři", "čtyři"]), "jeden, dva, tři a čtyři");
+        test.done();
+    },
 
     testListFmtUnitStylecsCZNumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -972,6 +983,29 @@ module.exports.testlistfmt = {
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["en", "to", "tre", "fire"]), "en, to, tre og fire");
+        test.done();
+    },
+    testListFmtdaDKNumberFormatFourDisjunction: function(test) {
+        var fmt = new ListFmt({
+            locale: "da-DK",
+            style: "disjunction"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["en", "to", "tre", "fire"]), "en, to, tre el. fire");
+        test.done();
+    },
+    testListFmtdaDKNumberFormatFourDisjunction: function(test) {
+        var fmt = new ListFmt({
+            locale: "da-DK",
+            style: "disjunction",
+            length: "full"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["en", "to", "tre", "fire"]), "en, to, tre eller fire");
         test.done();
     },
 
@@ -2893,6 +2927,17 @@ module.exports.testlistfmt = {
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["bir", "два", "три", "четыре", "пять"]), "bir, два, три, четыре và пять");
+        test.done();
+    },
+    testListFmtUnitStyleviVNNumberFormatFiveFullDisjunction: function(test) {
+        var fmt = new ListFmt({
+            locale: "vi-VN",
+            style: "disjunction"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["bir", "два", "три", "четыре", "пять"]), "bir, два, три, четыре hoặc пять");
         test.done();
     }
 };

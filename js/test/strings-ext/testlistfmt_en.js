@@ -1151,6 +1151,18 @@ module.exports.testlistfmt_en = {
         test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three and four");
         test.done();
     },
+    testListFmtenMPNumberFormatFourFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "en-MP",
+            length: "full",
+            style: "disjunction"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, or four");
+        test.done();
+    },
     // en-MW
     testListFmtUnitStyleenMWNumberFormatOne: function(test) {
         var fmt = new ListFmt({
