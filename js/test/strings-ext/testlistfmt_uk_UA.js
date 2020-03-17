@@ -51,7 +51,7 @@ module.exports.testlistfmt_uk_UA = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["Один", "Два"]), "Один, Два");
+        test.equal(fmt.format(["Один", "Два"]), "Один і Два");
         test.done();
     },
     
@@ -62,7 +62,7 @@ module.exports.testlistfmt_uk_UA = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["Один", "Два", "Три"]), "Один, Два, Три");
+        test.equal(fmt.format(["Один", "Два", "Три"]), "Один, Два і Три");
         test.done();
     },
     
@@ -73,7 +73,7 @@ module.exports.testlistfmt_uk_UA = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["Один", "Два", "Три", "Чотири"]), "Один, Два, Три, Чотири");
+        test.equal(fmt.format(["Один", "Два", "Три", "Чотири"]), "Один, Два, Три і Чотири");
         test.done();
     },
     testListFmtUnitStyleukUANumberFormatOne: function(test) {

@@ -158,7 +158,7 @@ module.exports.testlistfmt_ja_JP = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["いち", "に"]), "いちに");
+        test.equal(fmt.format(["いち", "に"]), "いち に");
         test.done();
     },
 
@@ -170,7 +170,7 @@ module.exports.testlistfmt_ja_JP = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["いち", "に", "さん"]), "いちにさん");
+        test.equal(fmt.format(["いち", "に", "さん"]), "いち に さん");
         test.done();
     },
 
@@ -182,7 +182,7 @@ module.exports.testlistfmt_ja_JP = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["いち", "に", "さん", "し"]), "いちにさんし");
+        test.equal(fmt.format(["いち", "に", "さん", "し"]), "いち に さん し");
         test.done();
     },
 
@@ -194,7 +194,7 @@ module.exports.testlistfmt_ja_JP = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["いち", "に", "さん", "し", "ご"]), "いちにさんしご");
+        test.equal(fmt.format(["いち", "に", "さん", "し", "ご"]), "いち に さん し ご");
         test.done();
     },
 

@@ -95,7 +95,7 @@ module.exports.testlistfmt_mr_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दोन"]), "एक दोन");
+        test.equal(fmt.format(["एक", "दोन"]), "एक, दोन");
         test.done();
     },
     
@@ -107,7 +107,7 @@ module.exports.testlistfmt_mr_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दोन", "तीन"]), "एक दोन तीन");
+        test.equal(fmt.format(["एक", "दोन", "तीन"]), "एक, दोन, तीन");
         test.done();
     },
     
@@ -119,7 +119,7 @@ module.exports.testlistfmt_mr_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दोन", "तीन", "चार"]), "एक दोन तीन चार");
+        test.equal(fmt.format(["एक", "दोन", "तीन", "चार"]), "एक, दोन, तीन, चार");
         test.done();
     },
     testListFmtUnitStylemrINNumberFormatOneFull: function(test) {

@@ -108,7 +108,7 @@ module.exports.testlistfmt_th_TH = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["หนึ่ง", "สอง", "สาม"]), "หนึ่ง สอง สาม");
+        test.equal(fmt.format(["หนึ่ง", "สอง", "สาม"]), "หนึ่ง สอง และ สาม");
         test.done();
     },
     
@@ -120,7 +120,7 @@ module.exports.testlistfmt_th_TH = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["หนึ่ง", "สอง", "สาม", "สี่"]), "หนึ่ง สอง สาม สี่");
+        test.equal(fmt.format(["หนึ่ง", "สอง", "สาม", "สี่"]), "หนึ่ง สอง สาม และ สี่");
         test.done();
     },
     testListFmtUnitStylethTHNumberFormatOneMedium: function(test) {

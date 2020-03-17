@@ -51,7 +51,7 @@ module.exports.testlistfmt_kn_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ಒಂದು", "ಎರಡು"]), "ಒಂದು, ಎರಡು");
+        test.equal(fmt.format(["ಒಂದು", "ಎರಡು"]), "ಒಂದು ಮತ್ತು ಎರಡು");
         test.done();
     },
     
@@ -62,7 +62,7 @@ module.exports.testlistfmt_kn_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ಒಂದು", "ಎರಡು", "ಮೂರು"]), "ಒಂದು, ಎರಡು, ಮೂರು");
+        test.equal(fmt.format(["ಒಂದು", "ಎರಡು", "ಮೂರು"]), "ಒಂದು, ಎರಡು, ಮತ್ತು ಮೂರು");
         test.done();
     },
     
@@ -73,7 +73,7 @@ module.exports.testlistfmt_kn_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ಒಂದು", "ಎರಡು", "ಮೂರು", "ನಾಲ್ಕು"]), "ಒಂದು, ಎರಡು, ಮೂರು, ನಾಲ್ಕು");
+        test.equal(fmt.format(["ಒಂದು", "ಎರಡು", "ಮೂರು", "ನಾಲ್ಕು"]), "ಒಂದು, ಎರಡು, ಮೂರು, ಮತ್ತು ನಾಲ್ಕು");
         test.done();
     },
     testListFmtUnitStyleknINNumberFormatOne: function(test) {
@@ -96,7 +96,7 @@ module.exports.testlistfmt_kn_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ಒಂದು", "ಎರಡು"]), "ಒಂದು ಎರಡು");
+        test.equal(fmt.format(["ಒಂದು", "ಎರಡು"]), "ಒಂದು, ಎರಡು");
         test.done();
     },
     

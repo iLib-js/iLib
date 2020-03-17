@@ -96,7 +96,7 @@ module.exports.testlistfmt_bs = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ett", "två"]), "ett två");
+        test.equal(fmt.format(["ett", "två"]), "ett, två");
         test.done();
     },
     
@@ -108,7 +108,7 @@ module.exports.testlistfmt_bs = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ett", "två", "tre"]), "ett två tre");
+        test.equal(fmt.format(["ett", "två", "tre"]), "ett, två, tre");
         test.done();
     },
     
@@ -120,7 +120,7 @@ module.exports.testlistfmt_bs = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ett", "två", "tre", "fyra"]), "ett två tre fyra");
+        test.equal(fmt.format(["ett", "två", "tre", "fyra"]), "ett, två, tre, fyra");
         test.done();
     },
     testListFmtUnitStylesvFINumberFormatOneFull: function(test) {
@@ -241,7 +241,7 @@ module.exports.testlistfmt_bs = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ett", "två"]), "ett två");
+        test.equal(fmt.format(["ett", "två"]), "ett, två");
         test.done();
     },
     
@@ -253,7 +253,7 @@ module.exports.testlistfmt_bs = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ett", "två", "tre"]), "ett två tre");
+        test.equal(fmt.format(["ett", "två", "tre"]), "ett, två, tre");
         test.done();
     },
     
@@ -265,7 +265,7 @@ module.exports.testlistfmt_bs = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ett", "två", "tre", "fyra"]), "ett två tre fyra");
+        test.equal(fmt.format(["ett", "två", "tre", "fyra"]), "ett, två, tre, fyra");
         test.done();
     },
     testListFmtUnitStylesvSENumberFormatOneMedium: function(test) {

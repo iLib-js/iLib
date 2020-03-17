@@ -428,7 +428,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二"]), "一二");
+        test.equal(fmt.format(["一", "二"]), "一 二");
         test.done();
     },
     
@@ -440,7 +440,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二", "三"]), "一二三");
+        test.equal(fmt.format(["一", "二", "三"]), "一 二 三");
         test.done();
     },
     
@@ -452,7 +452,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二", "三", "四"]), "一二三四");
+        test.equal(fmt.format(["一", "二", "三", "四"]), "一 二 三 四");
         test.done();
     },
     
@@ -824,7 +824,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二"]), "一二");
+        test.equal(fmt.format(["一", "二"]), "一 二");
         test.done();
     },
     
@@ -836,7 +836,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二", "三"]), "一二三");
+        test.equal(fmt.format(["一", "二", "三"]), "一 二 三");
         test.done();
     },
     
@@ -848,7 +848,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二", "三", "四"]), "一二三四");
+        test.equal(fmt.format(["一", "二", "三", "四"]), "一 二 三 四");
         test.done();
     },
     

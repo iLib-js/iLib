@@ -51,7 +51,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);                  
-        test.equal(fmt.format(["ایک کو", "دو"]), "ایک کو، دو");
+        test.equal(fmt.format(["ایک کو", "دو"]), "ایک کو اور دو");
         test.done();
     },
     
@@ -62,7 +62,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ایک کو", "دو", "تین"]), "ایک کو، دو، تین");
+        test.equal(fmt.format(["ایک کو", "دو", "تین"]), "ایک کو، دو، اور تین");
         test.done();
     },
     
@@ -73,7 +73,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ایک کو", "دو", "تین", "چار"]), "ایک کو، دو، تین، چار");
+        test.equal(fmt.format(["ایک کو", "دو", "تین", "چار"]), "ایک کو، دو، تین، اور چار");
         test.done();
     },
     testListFmtUnitStyleurArabPKNumberFormatOne: function(test) {
@@ -197,7 +197,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);                  
-        test.equal(fmt.format(["ایک کو", "دو"]), "ایک کو، دو");
+        test.equal(fmt.format(["ایک کو", "دو"]), "ایک کو اور دو");
         test.done();
     },
     
@@ -208,7 +208,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ایک کو", "دو", "تین"]), "ایک کو، دو، تین");
+        test.equal(fmt.format(["ایک کو", "دو", "تین"]), "ایک کو، دو، اور تین");
         test.done();
     },
     
@@ -219,7 +219,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ایک کو", "دو", "تین", "چار"]), "ایک کو، دو، تین، چار");
+        test.equal(fmt.format(["ایک کو", "دو", "تین", "چار"]), "ایک کو، دو، تین، اور چار");
         test.done();
     },
     testListFmtUnitStyleurArabINNumberFormatOne: function(test) {
@@ -242,7 +242,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);                    
-        test.equal(fmt.format(["ایک کو", "دو"]), "دو ایک کو");
+        test.equal(fmt.format(["ایک کو", "دو"]), "دو، ایک کو");
         test.done();
     },
     
@@ -254,7 +254,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ایک کو", "دو", "تین"]), "تین دو ایک کو");
+        test.equal(fmt.format(["ایک کو", "دو", "تین"]), "ایک کو، تین، دو");
         test.done();
     },
     
@@ -266,7 +266,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ایک کو", "دو", "تین", "چار"]), "چار تین دو ایک کو");
+        test.equal(fmt.format(["ایک کو", "دو", "تین", "چار"]), "ایک کو، دو، چار، تین");
         test.done();
     },
     testListFmtUnitStyleurArabINNumberFormatOneFull: function(test) {

@@ -679,7 +679,7 @@ module.exports.testlistfmt_es = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["uno", "dos"]), "uno dos");
+        test.equal(fmt.format(["uno", "dos"]), "uno y dos");
         test.done();
     },
     
@@ -691,7 +691,7 @@ module.exports.testlistfmt_es = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["uno", "dos", "tres"]), "uno dos tres");
+        test.equal(fmt.format(["uno", "dos", "tres"]), "uno, dos, tres");
         test.done();
     },
     
@@ -703,7 +703,7 @@ module.exports.testlistfmt_es = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["uno", "dos", "tres", "cuatro"]), "uno dos tres cuatro");
+        test.equal(fmt.format(["uno", "dos", "tres", "cuatro"]), "uno, dos, tres, cuatro");
         test.done();
     },
     // es-GT
@@ -1072,7 +1072,7 @@ module.exports.testlistfmt_es = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["uno", "dos"]), "uno dos");
+        test.equal(fmt.format(["uno", "dos"]), "uno y dos");
         test.done();
     },
     
@@ -1084,7 +1084,7 @@ module.exports.testlistfmt_es = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["uno", "dos", "tres"]), "uno dos tres");
+        test.equal(fmt.format(["uno", "dos", "tres"]), "uno, dos, tres");
         test.done();
     },
     
@@ -1096,7 +1096,7 @@ module.exports.testlistfmt_es = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["uno", "dos", "tres", "cuatro"]), "uno dos tres cuatro");
+        test.equal(fmt.format(["uno", "dos", "tres", "cuatro"]), "uno, dos, tres, cuatro");
         test.done();
     },
     // es-US

@@ -96,7 +96,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva"]), "jedan dva");
+        test.equal(fmt.format(["jedan", "dva"]), "jedan i dva");
         test.done();
     },
     
@@ -108,7 +108,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три"]), "jedan dva три");
+        test.equal(fmt.format(["jedan", "dva", "три"]), "jedan, dva i три");
         test.done();
     },
     
@@ -120,7 +120,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три", "četiri"]), "jedan dva три četiri");
+        test.equal(fmt.format(["jedan", "dva", "три", "četiri"]), "jedan, dva, три i četiri");
         test.done();
     },
     
@@ -132,16 +132,9 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три", "četiri", "пять"]), "jedan dva три četiri пять");
+        test.equal(fmt.format(["jedan", "dva", "три", "četiri", "пять"]), "jedan, dva, три, četiri i пять");
         test.done();
     },
-
-
-
-
-
-
-
 
     // hr-ME
     
@@ -209,7 +202,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva"]), "jedan dva");
+        test.equal(fmt.format(["jedan", "dva"]), "jedan i dva");
         test.done();
     },
     
@@ -221,7 +214,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три"]), "jedan dva три");
+        test.equal(fmt.format(["jedan", "dva", "три"]), "jedan, dva i три");
         test.done();
     },
     
@@ -233,7 +226,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три", "četiri"]), "jedan dva три četiri");
+        test.equal(fmt.format(["jedan", "dva", "три", "četiri"]), "jedan, dva, три i četiri");
         test.done();
     },
     
@@ -245,11 +238,9 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три", "četiri", "пять"]), "jedan dva три četiri пять");
+        test.equal(fmt.format(["jedan", "dva", "три", "četiri", "пять"]), "jedan, dva, три, četiri i пять");
         test.done();
     },
-
-
 
     testListFmtUnitStylehrMENumberFormatOneFull: function(test) {
         var fmt = new ListFmt({

@@ -96,7 +96,7 @@ module.exports.testlistfmt_he_IL = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["אחד", "שתיים"]), "אחד שתיים");
+        test.equal(fmt.format(["אחד", "שתיים"]), "אחד, שתיים");
         test.done();
     },
     
@@ -108,7 +108,7 @@ module.exports.testlistfmt_he_IL = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה"]), "אחד שתיים שְׁלוֹשָׁה");
+        test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה"]), "אחד, שתיים, שְׁלוֹשָׁה");
         test.done();
     },
     
@@ -120,7 +120,7 @@ module.exports.testlistfmt_he_IL = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה", "ארבעה"]), "אחד שתיים שְׁלוֹשָׁה ארבעה");
+        test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה", "ארבעה"]), "אחד, שתיים, שְׁלוֹשָׁה, ארבעה");
         test.done();
     },
     testListFmtUnitStyleheILNumberFormatOneMedium: function(test) {

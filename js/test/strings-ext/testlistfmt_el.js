@@ -51,7 +51,7 @@ module.exports.testlistfmt_el = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ένας", "δυο"]), "ένας, δυο");
+        test.equal(fmt.format(["ένας", "δυο"]), "ένας και δυο");
         test.done();
     },
     
@@ -62,7 +62,7 @@ module.exports.testlistfmt_el = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ένας", "δυο", "τρία"]), "ένας, δυο, τρία");
+        test.equal(fmt.format(["ένας", "δυο", "τρία"]), "ένας, δυο και τρία");
         test.done();
     },
     
@@ -73,7 +73,7 @@ module.exports.testlistfmt_el = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ένας", "δυο", "τρία", "τέσσερα"]), "ένας, δυο, τρία, τέσσερα");
+        test.equal(fmt.format(["ένας", "δυο", "τρία", "τέσσερα"]), "ένας, δυο, τρία και τέσσερα");
         test.done();
     },
     testListFmtUnitStyleelCYNumberFormatOne: function(test) {
@@ -96,7 +96,7 @@ module.exports.testlistfmt_el = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ένας", "δυο"]), "ένας δυο");
+        test.equal(fmt.format(["ένας", "δυο"]), "ένας, δυο");
         test.done();
     },
     
@@ -108,7 +108,7 @@ module.exports.testlistfmt_el = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ένας", "δυο", "τρία"]), "ένας δυο τρία");
+        test.equal(fmt.format(["ένας", "δυο", "τρία"]), "ένας, δυο, τρία");
         test.done();
     },
     
@@ -120,7 +120,7 @@ module.exports.testlistfmt_el = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ένας", "δυο", "τρία", "τέσσερα"]), "ένας δυο τρία τέσσερα");
+        test.equal(fmt.format(["ένας", "δυο", "τρία", "τέσσερα"]), "ένας, δυο, τρία, τέσσερα");
         test.done();
     },
     testListFmtUnitStyleelCYNumberFormatOneMedium: function(test) {
@@ -195,7 +195,7 @@ module.exports.testlistfmt_el = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ένας", "δυο"]), "ένας, δυο");
+        test.equal(fmt.format(["ένας", "δυο"]), "ένας και δυο");
         test.done();
     },
     
@@ -206,7 +206,7 @@ module.exports.testlistfmt_el = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ένας", "δυο", "τρία"]), "ένας, δυο, τρία");
+        test.equal(fmt.format(["ένας", "δυο", "τρία"]), "ένας, δυο και τρία");
         test.done();
     },
     
@@ -217,7 +217,7 @@ module.exports.testlistfmt_el = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ένας", "δυο", "τρία", "τέσσερα"]), "ένας, δυο, τρία, τέσσερα");
+        test.equal(fmt.format(["ένας", "δυο", "τρία", "τέσσερα"]), "ένας, δυο, τρία και τέσσερα");
         test.done();
     },
     testListFmtUnitStyleelGRNumberFormatOneLong: function(test) {

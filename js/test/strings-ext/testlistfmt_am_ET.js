@@ -62,7 +62,7 @@ module.exports.testlistfmt_am_ET = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት"]), "አንድ, ሁለት, እና ሶስት");
+        test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት"]), "አንድ፣ ሁለት, እና ሶስት");
         test.done();
     },
     
@@ -73,7 +73,7 @@ module.exports.testlistfmt_am_ET = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት", "አራት"]), "አንድ, ሁለት፣ ሶስት, እና አራት");
+        test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት", "አራት"]), "አንድ፣ ሁለት፣ ሶስት, እና አራት");
         test.done();
     },
     testListFmtUnitStyleamETNumberFormatOne: function(test) {
@@ -96,7 +96,7 @@ module.exports.testlistfmt_am_ET = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["አንድ", "ሁለት"]), "አንድ ሁለት");
+        test.equal(fmt.format(["አንድ", "ሁለት"]), "አንድ፣ ሁለት");
         test.done();
     },
     
@@ -108,7 +108,7 @@ module.exports.testlistfmt_am_ET = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት"]), "አንድ፣ ሁለት ሶስት");
+        test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት"]), "አንድ፣ ሁለት፣ ሶስት");
         test.done();
     },
     
@@ -120,7 +120,7 @@ module.exports.testlistfmt_am_ET = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት", "አራት"]), "አንድ፣ ሁለት፣ ሶስት አራት");
+        test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት", "አራት"]), "አንድ፣ ሁለት፣ ሶስት፣ አራት");
         test.done();
     }
 };

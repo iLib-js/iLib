@@ -51,7 +51,7 @@ module.exports.testlistfmt_te_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ఒకటి", "రెండు"]), "ఒకటి, రెండు");
+        test.equal(fmt.format(["ఒకటి", "రెండు"]), "ఒకటి మరియు రెండు");
         test.done();
     },
     
@@ -62,7 +62,7 @@ module.exports.testlistfmt_te_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ఒకటి", "రెండు", "మూడు"]), "ఒకటి, రెండు, మూడు");
+        test.equal(fmt.format(["ఒకటి", "రెండు", "మూడు"]), "ఒకటి, రెండు మరియు మూడు");
         test.done();
     },
     
@@ -73,7 +73,7 @@ module.exports.testlistfmt_te_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ఒకటి", "రెండు", "మూడు", "నాలుగు"]), "ఒకటి, రెండు, మూడు, నాలుగు");
+        test.equal(fmt.format(["ఒకటి", "రెండు", "మూడు", "నాలుగు"]), "ఒకటి, రెండు, మూడు మరియు నాలుగు");
         test.done();
     },
     testListFmtUnitStyleteINNumberFormatOne: function(test) {

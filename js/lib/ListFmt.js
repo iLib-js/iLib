@@ -91,7 +91,7 @@ var ListFmt = function(options) {
     this.locale = new Locale();
     this.sync = true;
     this.style = "standard";
-    this.length = "short";
+    this.length = "medium";
     this.loadParams = {};
 
     if (options) {

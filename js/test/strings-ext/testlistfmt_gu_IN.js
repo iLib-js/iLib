@@ -51,7 +51,7 @@ module.exports.testlistfmt_gu_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["એક", "બે"]), "એક, બે");
+        test.equal(fmt.format(["એક", "બે"]), "એક અને બે");
         test.done();
     },
     
@@ -62,7 +62,7 @@ module.exports.testlistfmt_gu_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["એક", "બે", "ત્રણ"]), "એક, બે, ત્રણ");
+        test.equal(fmt.format(["એક", "બે", "ત્રણ"]), "એક, બે અને ત્રણ");
         test.done();
     },
     
@@ -73,7 +73,7 @@ module.exports.testlistfmt_gu_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["એક", "બે", "ત્રણ", "ચાર"]), "એક, બે, ત્રણ, ચાર");
+        test.equal(fmt.format(["એક", "બે", "ત્રણ", "ચાર"]), "એક, બે, ત્રણ અને ચાર");
         test.done();
     },
     testListFmtUnitStyleguINNumberFormatOne: function(test) {

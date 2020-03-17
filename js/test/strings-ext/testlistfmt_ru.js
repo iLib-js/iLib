@@ -50,7 +50,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два"]), "один, два");
+        test.equal(fmt.format(["один", "два"]), "один и два");
         test.done();
     },
     
@@ -61,7 +61,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два", "три"]), "один, два, три");
+        test.equal(fmt.format(["один", "два", "три"]), "один, два и три");
         test.done();
     },
     
@@ -72,7 +72,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два", "три", "четыре"]), "один, два, три, четыре");
+        test.equal(fmt.format(["один", "два", "три", "четыре"]), "один, два, три и четыре");
         test.done();
     },
     
@@ -489,7 +489,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два"]), "один, два");
+        test.equal(fmt.format(["один", "два"]), "один и два");
         test.done();
     },
     
@@ -500,7 +500,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два", "три"]), "один, два, три");
+        test.equal(fmt.format(["один", "два", "три"]), "один, два и три");
         test.done();
     },
     
@@ -511,7 +511,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два", "три", "четыре"]), "один, два, три, четыре");
+        test.equal(fmt.format(["один", "два", "три", "четыре"]), "один, два, три и четыре");
         test.done();
     },
     testListFmtUnitStyleruUANumberFormatOne: function(test) {
