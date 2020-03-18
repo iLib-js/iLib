@@ -25,7 +25,7 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
-module.exports.testlistfmt_bs = {
+module.exports.testlistfmt_sv = {
     setUp: function(callback) {
         ilib.clearCache();
         callback();
