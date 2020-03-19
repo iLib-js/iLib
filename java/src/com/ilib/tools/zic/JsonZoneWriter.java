@@ -1,7 +1,7 @@
 /*
  * JsonZoneWriter.java - 
  *
- * Copyright © 2014 JEDLSoft, All Rights Reserved.
+ * Copyright © 2014, 2020 JEDLSoft, All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,6 +46,11 @@ public class JsonZoneWriter
         this.outputDir = file;
     }
     
+    /**
+     * @param zoneName
+     * @param json
+     * @throws Exception
+     */
     public void writeZone(String zoneName, JSONObject json)
     	throws Exception
     {
@@ -54,9 +59,8 @@ public class JsonZoneWriter
     		return;
     	}
         Writer writer = null;
-        String[] parts = zoneName.split("/");
-        File dir = parts.length > 1 ? new File(outputDir, parts[0]) : outputDir;
-        File file = new File(dir, (parts.length > 1 ? parts[1] : zoneName) + ".json");
+        File file = new File(outputDir, zoneName + ".json");
+        File dir = file.getParentFile();
         try {
         	if ( !dir.exists() ) {
         		logger.trace("Making new dir " + dir.getPath());
