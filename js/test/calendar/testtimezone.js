@@ -257,7 +257,17 @@ module.exports.testtimezone = {
         test.equal(tz.getDisplayName(gd, 'standard'), "PDT");
         test.done();
     },
-    
+
+    testTZDisplayNameDSTStandardStyleNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var gd = new Date(2011, 7, 1);
+        test.equal(tz.getDisplayName(gd, 'standard'), "PDT");
+        test.done();
+    },
+
     testTZDisplayNameDSTDefaultStyle: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "America/Los_Angeles"});
@@ -271,7 +281,17 @@ module.exports.testtimezone = {
         test.equal(tz.getDisplayName(gd), "PDT");
         test.done();
     },
-    
+
+    testTZDisplayNameDSTDefaultStyleNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var gd = new Date(2011, 7, 1);
+        test.equal(tz.getDisplayName(gd), "PDT");
+        test.done();
+    },
+
     testTZDisplayNameDSTStyleRFC: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "America/Los_Angeles"});
@@ -285,7 +305,17 @@ module.exports.testtimezone = {
         test.equal(tz.getDisplayName(gd, 'rfc822'), "UTC-0700");
         test.done();
     },
-    
+
+    testTZDisplayNameDSTStyleRFCNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var gd = new Date(2011, 7, 1);
+        test.equal(tz.getDisplayName(gd, 'rfc822'), "UTC-0700");
+        test.done();
+    },
+
     testTZDisplayNameDSTDaylightStandardStyle: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "America/Los_Angeles"});
@@ -313,7 +343,17 @@ module.exports.testtimezone = {
         test.equal(tz.getDisplayName(gd, 'long'), "Pacific Daylight Time");
         test.done();
     },
-    
+
+    testTZDisplayNameDSTDaylightLongStyleNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var gd = new Date(2011, 7, 1);
+        test.equal(tz.getDisplayName(gd, 'long'), "Pacific Daylight Time");
+        test.done();
+    },
+
     testTZDisplayNameStandardTime: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "America/Los_Angeles"});
@@ -327,7 +367,17 @@ module.exports.testtimezone = {
         test.equal(tz.getDisplayName(gd, 'standard'), "PST");
         test.done();
     },
-    
+
+    testTZDisplayNameStandardTimeNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var gd = new Date(2011, 11, 1);
+        test.equal(tz.getDisplayName(gd, 'standard'), "PST");
+        test.done();
+    },
+
     testTZDisplayNameStandardTimeAmbiguous: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "America/Los_Angeles"});
@@ -393,7 +443,17 @@ module.exports.testtimezone = {
         test.equal(tz.getDisplayName(gd, 'long'), "Pacific Standard Time");
         test.done();
     },
-    
+
+    testTZDisplayNameStandardTimeLongNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var gd = new Date(2011, 11, 1);
+        test.equal(tz.getDisplayName(gd, 'long'), "Pacific Standard Time");
+        test.done();
+    },
+
     testTZDisplayNameStandardTimeESWithNoDST: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "Europe/Madrid"});
@@ -407,6 +467,17 @@ module.exports.testtimezone = {
         test.equal(tz.getDisplayName(gd, 'standard'), "CET");
         test.done();
     },
+
+    testTZDisplayNameStandardTimeESWithNoDSTNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "Europe/Madrid"});
+        test.ok(tz !== null);
+
+        var gd = new Date(2011, 11, 1);
+        test.equal(tz.getDisplayName(gd, 'standard'), "CET");
+        test.done();
+    },
+
     testTZDisplayNameStandardTimeESWithDST: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "Europe/Madrid"});
@@ -420,7 +491,17 @@ module.exports.testtimezone = {
         test.equal(tz.getDisplayName(gd, 'standard'), "CEST");
         test.done();
     },
-    
+
+    testTZDisplayNameStandardTimeESWithDSTNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "Europe/Madrid"});
+        test.ok(tz !== null);
+
+        var gd = new Date(2011, 5, 1);
+        test.equal(tz.getDisplayName(gd, 'standard'), "CEST");
+        test.done();
+    },
+
     testTZDisplayNameNoDST1: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "America/Phoenix"});
@@ -434,11 +515,22 @@ module.exports.testtimezone = {
         test.equal(tz.getDisplayName(gd, 'standard'), "MST");
         test.done();
     },
+
+    testTZDisplayNameNoDST1NonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
+        test.ok(tz !== null);
+
+        var gd = new Date(2011, 7, 1);
+        test.equal(tz.getDisplayName(gd, 'standard'), "MST");
+        test.done();
+    },
+
     testTZDisplayNameNoDST2: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "America/Phoenix"});
         test.ok(tz !== null);
-        
+
         var gd = new GregorianDate({
             year: 2011,
             month: 12,
@@ -447,7 +539,17 @@ module.exports.testtimezone = {
         test.equal(tz.getDisplayName(gd, 'standard'), "MST");
         test.done();
     },
-    
+
+    testTZDisplayNameNoDST2NonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
+        test.ok(tz !== null);
+
+        var gd = new Date(2011, 11, 1);
+        test.equal(tz.getDisplayName(gd, 'standard'), "MST");
+        test.done();
+    },
+
     testTZDisplayNameEasternRFCWithDST: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "Australia/Broken_Hill"});
@@ -505,7 +607,18 @@ module.exports.testtimezone = {
         test.deepEqual(tz.getOffset(gd), {h:-7});
         test.done();
     },
-    
+
+    testTZGetOffsetDSTNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var gd = new Date(2011, 7, 1);
+
+        test.deepEqual(tz.getOffset(gd), {h:-7});
+        test.done();
+    },
+
     testTZGetOffsetRightBeforeDSTStart: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "America/Los_Angeles"});
@@ -519,7 +632,18 @@ module.exports.testtimezone = {
         test.deepEqual(tz.getOffset(date), {h:-8});
         test.done();
     },
-    
+
+    testTZGetOffsetRightBeforeDSTStartNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var date = new Date(1394359140000); // this is 3/9/2014 at 1:59am
+
+        test.deepEqual(tz.getOffset(date), {h:-8});
+        test.done();
+    },
+
     testTZGetOffsetRightAfterDSTStart: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "America/Los_Angeles"});
@@ -534,7 +658,19 @@ module.exports.testtimezone = {
         test.deepEqual(tz.getOffset(date), {h:-7});
         test.done();
     },
-    
+
+    testTZGetOffsetRightAfterDSTStartNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var date = new Date(1394359260000);
+
+        // 2 minutes later
+        test.deepEqual(tz.getOffset(date), {h:-7});
+        test.done();
+    },
+
     testTZGetOffsetRightBeforeDSTEnd: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "America/Los_Angeles"});
@@ -548,7 +684,18 @@ module.exports.testtimezone = {
         test.deepEqual(tz.getOffset(date), {h:-7});
         test.done();
     },
-    
+
+    testTZGetOffsetRightBeforeDSTEndNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var date = new Date(1414918740000); // this is 11/2/2014 at 1:59am
+
+        test.deepEqual(tz.getOffset(date), {h:-7});
+        test.done();
+    },
+
     testTZGetOffsetRightAfterDSTEnd: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "America/Los_Angeles"});
@@ -563,7 +710,19 @@ module.exports.testtimezone = {
         test.deepEqual(tz.getOffset(date), {h:-8});
         test.done();
     },
-    
+
+    testTZGetOffsetRightAfterDSTEnd: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var date = new Date(1414918860000);
+
+        // 2 minutes later
+        test.deepEqual(tz.getOffset(date), {h:-8});
+        test.done();
+    },
+
     testTZGetOffsetRightAfterDST: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "America/Los_Angeles"});
@@ -594,7 +753,17 @@ module.exports.testtimezone = {
         test.equal(tz.getOffsetStr(gd), "-7:0");
         test.done();
     },
-    
+
+    testTZGetOffsetDSTStrNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var gd = new Date(2011, 7, 1);
+        test.equal(tz.getOffsetStr(gd), "-7:0");
+        test.done();
+    },
+
     testTZGetOffsetNoDST: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "America/Los_Angeles"});
@@ -621,7 +790,17 @@ module.exports.testtimezone = {
         test.equal(tz.getOffsetStr(gd), "-8:0");
         test.done();
     },
-    
+
+    testTZGetOffsetNoDSTStrNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var gd = new Date(2011, 11, 1);
+        test.equal(tz.getOffsetStr(gd), "-8:0");
+        test.done();
+    },
+
     testTZGetOffsetNonDSTZone1: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "America/Phoenix"});
@@ -808,7 +987,26 @@ module.exports.testtimezone = {
         test.ok(!tz.inDaylightTime(gd));
         test.done();
     },
-    
+
+    testTZInDaylightTimeTrueNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var d = new Date(2011, 6, 1);
+        test.ok(tz.inDaylightTime(d));
+        test.done();
+    },
+    testTZInDaylightTimeFalseNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var d = new Date(2011, 11, 1);
+        test.ok(!tz.inDaylightTime(d));
+        test.done();
+    },
+
     testTZInDaylightTimeLocalTrue: function(test) {
         var summer = new Date(2014, 6, 1);
         var winter = new Date(2014, 0, 1);
@@ -1336,7 +1534,38 @@ module.exports.testtimezone = {
        test.equal(offset.m, 30);
        test.done();
     },
+
+    testTZOffsetGetOffsetWinterNonIDate: function(test) {
+        test.expect(4);
+       var tz = new TimeZone({offset: 450});
+       test.ok(tz !== null);
+
+       var date = new Date(2012, 0, 1);
+
+       var offset = tz.getOffset(date);
+       test.ok(typeof(offset) !== "undefined");
+
+       test.equal(offset.h, 7);
+       test.equal(offset.m, 30);
+       test.done();
+    },
     
+    testTZOffsetGetOffsetSummerNonIDate: function(test) {
+        test.expect(4);
+       var tz = new TimeZone({offset: 450});
+       test.ok(tz !== null);
+
+       var date = new Date(2012, 5, 1);
+
+       var offset = tz.getOffset(date);
+       test.ok(typeof(offset) !== "undefined");
+
+       // should be the same as winter because we can't determine DST
+       test.equal(offset.h, 7);
+       test.equal(offset.m, 30);
+       test.done();
+    },
+
     testTZOffsetGetDisplayNameStandard: function(test) {
         test.expect(2);
        var tz = new TimeZone({offset: 450});
@@ -1475,7 +1704,17 @@ module.exports.testtimezone = {
         test.equal(tz.getOffsetMillis(gd), -25200000);
         test.done();
     },
-    
+
+    testTZGetOffsetMillisDSTNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var gd = new Date(2011, 7, 1);
+        test.equal(tz.getOffsetMillis(gd), -25200000);
+        test.done();
+    },
+
     testTZGetOffsetMillisNoDST: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "America/Los_Angeles"});
@@ -1489,7 +1728,17 @@ module.exports.testtimezone = {
         test.equal(tz.getOffsetMillis(gd), -28800000);
         test.done();
     },
-    
+
+    testTZGetOffsetMillisNoDSTNonIDate: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
+        test.ok(tz !== null);
+
+        var gd = new Date(2011, 11, 1);
+        test.equal(tz.getOffsetMillis(gd), -28800000);
+        test.done();
+    },
+
     testTZGetOffsetMillisDSTSouthern: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "Australia/Sydney"});

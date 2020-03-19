@@ -30,6 +30,7 @@ var LocaleInfo = require("./LocaleInfo.js");
 var GregRataDie = require("./GregRataDie.js");
 var CalendarFactory = require("./CalendarFactory.js");
 var IString = require("./IString.js");
+var DateFactory = require("./DateFactory.js");
 
 /**
  * @class
@@ -479,7 +480,7 @@ TimeZone.prototype._offsetStringToObj = function (str) {
  * Returns the offset of this time zone from UTC at the given date/time. If daylight saving
  * time is in effect at the given date/time, this method will return the offset value
  * adjusted by the amount of daylight saving.
- * @param {IDate=} date the date for which the offset is needed
+ * @param {IDate|Object|JulianDay|Date|string|number=} date the date for which the offset is needed
  * @return {Object.<{h:number,m:number}>} an object giving the offset for the zone at
  * the given date/time, in hours, minutes, and seconds
  */
@@ -508,7 +509,7 @@ TimeZone.prototype.getOffset = function (date) {
  * adjusted by the amount of daylight saving. Negative numbers indicate offsets west
  * of UTC and conversely, positive numbers indicate offset east of UTC.
  *
- * @param {IDate=} date the date for which the offset is needed, or null for the
+ * @param {IDate|Object|JulianDay|Date|string|number=} date the date for which the offset is needed, or null for the
  * present date
  * @return {number} the number of milliseconds of offset from UTC that the given date is
  */
@@ -777,7 +778,7 @@ TimeZone.prototype._getDSTEndRule = function (year) {
  * next year. This method will correctly calculate the start and end of DST for any
  * location.
  *
- * @param {IDate=} date a date for which the info about daylight time is being sought,
+ * @param {IDate|Object|JulianDay|Date|string|number=} date a date for which the info about daylight time is being sought,
  * or undefined to tell whether we are currently in daylight savings time
  * @param {boolean=} wallTime if true, then the given date is in wall time. If false or
  * undefined, it is in the usual UTC time.
@@ -786,7 +787,10 @@ TimeZone.prototype._getDSTEndRule = function (year) {
  */
 TimeZone.prototype.inDaylightTime = function (date, wallTime) {
     var rd, startRd, endRd, year;
-
+    if (date) {
+        // need an IDate instance, so convert as necessary
+        date = DateFactory._dateToIlib(date, this.id, this.locale);
+    }
     if (this.isLocal) {
         // check if the dst property is defined -- the intrinsic JS Date object doesn't work so
         // well if we are in the overlap time at the end of DST, so we have to work around that
