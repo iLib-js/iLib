@@ -7,7 +7,12 @@ Published as version 14.6.0
 
 New Features:
 * Updated all locale data to CLDR 36 and Unicode Character Database 13.0
-
+* The methods of the TimeZone object that take dates as parameters can now
+  take any date types, such as a unix time number, an intrinsic Javascript
+  Date object, or an ilib IDate instance. Previously, they only took
+  IDate instances.
+    * updated methods are: getDisplayName, getOffset, getOffsetStr, 
+    getOffsetMillis, and inDaylightTime
 
 Build 008
 -------
