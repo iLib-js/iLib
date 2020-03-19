@@ -14,6 +14,11 @@ New Features:
     * updated methods are: getDisplayName, getOffset, getOffsetStr, 
     getOffsetMillis, and inDaylightTime
 
+Bug Fixes:
+* Time zones in Indiana, Kentucky, North Dakota, and Argentina were missing.
+  Fixed the zone info compiler to generate the json data for these missing time
+  zones properly.
+
 Build 008
 -------
 Published as version 14.5.0
