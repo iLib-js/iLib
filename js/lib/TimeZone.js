@@ -382,7 +382,7 @@ TimeZone.prototype.getId = function () {
  * <li>long - returns the long name of the zone in English
  * </ol>
  *
- * @param {IDate=} date a date to determine if it is in daylight time or standard time
+ * @param {IDate|Object|JulianDay|Date|string|number=} date a date to determine if it is in daylight time or standard time
  * @param {string=} style one of "standard" or "rfc822". Default if not specified is "standard"
  * @return {string} the name of the time zone, abbreviated according to the style
  */
@@ -536,7 +536,7 @@ TimeZone.prototype.getOffsetMillis = function (date) {
  * Return the offset in milliseconds when the date has an RD number in wall
  * time rather than in UTC time.
  * @protected
- * @param date the date to check in wall time
+ * @param {IDate|Object|JulianDay|Date|string|number} date the date to check in wall time
  * @returns {number} the number of milliseconds of offset from UTC that the given date is
  */
 TimeZone.prototype._getOffsetMillisWallTime = function (date) {
@@ -555,7 +555,7 @@ TimeZone.prototype._getOffsetMillisWallTime = function (date) {
  * Returns the offset of this time zone from UTC at the given date/time. If daylight saving
  * time is in effect at the given date/time, this method will return the offset value
  * adjusted by the amount of daylight saving.
- * @param {IDate=} date the date for which the offset is needed
+ * @param {IDate|Object|JulianDay|Date|string|number=} date the date for which the offset is needed
  * @return {string} the offset for the zone at the given date/time as a string in the
  * format "h:m:s"
  */
