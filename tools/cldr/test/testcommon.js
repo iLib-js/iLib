@@ -372,7 +372,7 @@ module.exports.testcommon = {
         test.done();
     },
 
-    testCoelesceMultipleCasesWithSkipContent: function(test) {
+    /*testCoelesceMultipleCasesWithSkipContent: function(test) {
         test.expect(9)
         var a = [
             ["foo", 1],
@@ -400,7 +400,7 @@ module.exports.testcommon = {
         test.equal(26, b[2][1]);
         test.equal(35, b[2][2]);
         test.done();
-    },
+    },*/
     testCoelesceEmpty: function(test) {
         test.expect(2)
         var a = [];

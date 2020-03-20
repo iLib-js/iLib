@@ -18,8 +18,8 @@
  */
 
 module.exports.files = [
-    "testcommon.js"
-	/*"testdatefmts.js",
-	"testunifile.js",
-	"testunidata.js"*/
+    "testcommon.js",
+    "testdatefmts.js"
+    "testunifile.js",
+    "testunidata.js",
 ];
