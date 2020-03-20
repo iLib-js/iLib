@@ -14,6 +14,10 @@ New Features:
     * updated methods are: getDisplayName, getOffset, getOffsetStr, 
     getOffsetMillis, and inDaylightTime
 
+Bug Fixes:
+* Changed a default length style to `medium` in List Formatting.
+
+
 Build 008
 -------
 Published as version 14.5.0
