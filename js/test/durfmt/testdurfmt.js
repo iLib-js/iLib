@@ -1,7 +1,7 @@
 /*
  * testdurfmt.js - test the duration formatter object
  *
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -443,7 +443,7 @@ module.exports.testdurfmt = {
             second: 1,
             millisecond: 1
         });
-        test.equal(duration.toString(), "1 J, 1 M, 1 W, 1 T, 1 Std., 1 Min., 1 s, 1 ms");
+        test.equal(duration.toString(), "1 J, 1 M, 1 W, 1 T, 1 Std., 1 Min., 1 Sek., 1 ms");
         test.done();
     },
 
@@ -466,7 +466,7 @@ module.exports.testdurfmt = {
             second: 1,
             millisecond: 1
         });
-        test.equal(duration.toString(), "1 J, 1 M, 1 W, 1 T, 1 Std., 1 Min., 1 s, 1 ms");
+        test.equal(duration.toString(), "1 J, 1 M, 1 W, 1 T, 1 Std., 1 Min., 1 Sek., 1 ms");
         test.done();
     },
 
@@ -511,7 +511,7 @@ module.exports.testdurfmt = {
             second: 1,
             millisecond: 1
         });
-        test.equal(duration.toString(), '1 J, 1 M, 1 W, 1 T, 1 Std., 1 Min., 1 s, 1 ms');
+        test.equal(duration.toString(), '1 J, 1 M, 1 W, 1 T, 1 Std., 1 Min., 1 Sek., 1 ms');
         test.done();
     },
 
@@ -777,7 +777,7 @@ module.exports.testdurfmt = {
             second: 1,
             millisecond: 1
         });
-        test.equal(duration.toString(), '1a 1m. 1sem. 1j 1h 1 min 1s 1ms');
+        test.equal(duration.toString(), '1a 1m. 1sem. 1j 1h 1min 1s 1ms');
         test.done();
     },
 
@@ -800,7 +800,7 @@ module.exports.testdurfmt = {
             second: 1,
             millisecond: 1
         });
-        test.equal(duration.toString(), '1a 1m. 1sem. 1j 1h 1 min 1s 1ms');
+        test.equal(duration.toString(), '1a 1m. 1sem. 1j 1h 1min 1s 1ms');
         test.done();
     },
 
@@ -845,7 +845,7 @@ module.exports.testdurfmt = {
             second: 1,
             millisecond: 1
         });
-        test.equal(duration.toString(), '1a, 1m., 1sem., 1j, 1h, 1 min, 1s, 1ms');
+        test.equal(duration.toString(), '1a, 1m., 1sem., 1j, 1h, 1min, 1s, 1ms');
         test.done();
     },
 
@@ -912,7 +912,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 г, 1 мес., 1 седм., 1 д, 1 ч, 1 мин, 1 с');
+        test.equal(duration.toString(), '1 г., 1 мес., 1 седм., 1 д, 1 ч, 1 мин, 1 с');
         test.done();
     },
 
@@ -934,7 +934,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 г, 1 мес., 1 седм., 1 д, 1 ч, 1 мин, 1 с');
+        test.equal(duration.toString(), '1 г., 1 мес., 1 седм., 1 д, 1 ч, 1 мин, 1 с');
         test.done();
     },
 
@@ -956,7 +956,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 г, 1 мес., 1 седм., 1 д, 1:01:01 ч.');
+        test.equal(duration.toString(), '1 г., 1 мес., 1 седм., 1 д, 1:01:01');
         test.done();
     },
 
@@ -977,7 +977,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 г, 1 мес., 1 седм., 1 д, 1 ч, 1 мин, 1 с');
+        test.equal(duration.toString(), '1 г., 1 мес., 1 седм., 1 д, 1 ч, 1 мин, 1 с');
         test.done();
     },
 
@@ -1390,7 +1390,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 år, 1 md., 1 uge, 1 dag, 1 t, 1 min., 1 sek.");
+        test.equal(duration.toString(), "1 år, 1 md., 1 uge, 1 dag, 1 t., 1 min., 1 sek.");
         test.done();
     },
 
@@ -2174,7 +2174,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 an, 1 m., 1 sem., 1 j, 1 h, 1 min, 1 s');
+        test.equal(duration.toString(), '1 an, 1 m., 1 sem., 1 j, 1 h, 1 min, 1 s');
         test.done();
     },
 
@@ -2195,7 +2195,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 an, 1 mois, 1 semaine, 1 jour, 1 heure, 1 minute et 1 seconde');
+        test.equal(duration.toString(), '1 an, 1 mois, 1 semaine, 1 jour, 1 heure, 1 minute et 1 seconde');
         test.done();
     },
 
@@ -3041,7 +3041,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1ವ, 1ತಿಂ., 1ವಾರ, 1ದಿನ, 1ಗಂ., 1ನಿಮಿ, 1ಸೆಕೆಂ");
+        test.equal(duration.toString(), "1ವ, 1ತಿಂ., 1ವಾ, 1ದಿ, 1ಗಂ., 1ನಿಮಿ, 1ಸೆಕೆಂ");
         test.done();
     },
 
@@ -3063,7 +3063,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1ವ, 1ತಿಂ., 1ವಾರ, 1ದಿನ, 1ಗಂ., 1ನಿಮಿ, 1ಸೆಕೆಂ");
+        test.equal(duration.toString(), "1ವ, 1ತಿಂ., 1ವಾ, 1ದಿ, 1ಗಂ., 1ನಿಮಿ, 1ಸೆಕೆಂ");
         test.done();
     },
 
@@ -3085,7 +3085,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1ವ, 1ತಿಂ., 1ವಾರ, 1ದಿನ, 1:01:01");
+        test.equal(duration.toString(), "1ವ, 1ತಿಂ., 1ವಾ, 1ದಿ, 1:01:01");
         test.done();
     },
 
@@ -3106,7 +3106,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1ವ, 1ತಿಂ., 1ವಾರ, 1ದಿನ, 1ಗಂ., 1ನಿಮಿ, 1ಸೆಕೆಂ");
+        test.equal(duration.toString(), "1ವ, 1ತಿಂ., 1ವಾ, 1ದಿ, 1ಗಂ., 1ನಿಮಿ, 1ಸೆಕೆಂ");
         test.done();
     },
 
@@ -3278,7 +3278,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 ஆண்டு, 1 மாதம், 1 வாரம், 1 நாள், 1 மணிநேரம், 1 நிமிடம், 1 விநாடி");
+        test.equal(duration.toString(), "1 ஆண்டு, 1 மாதம், 1 வாரம், 1 நாள், 1 மணிநேரம், 1 நிமிடம் மற்றும் 1 விநாடி");
         test.done();
     },
 
@@ -3892,7 +3892,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 ਸਾਲ, 1 ਮਹੀਨਾ, 1 ਹਫ਼ਤਾ, 1 ਦਿਨ, 1 ਘੰਟਾ, 1 ਮਿੰਟ, 1 ਸਕਿੰਟ");
+        test.equal(duration.toString(), "1 ਸਾਲ 1 ਮਹੀਨਾ 1 ਹਫ਼ਤਾ 1 ਦਿਨ 1 ਘੰਟਾ 1 ਮਿੰਟ 1 ਸਕਿੰਟ");
         test.done();
     },
 
@@ -3914,7 +3914,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 ਸਾਲ, 1 ਮਹੀਨਾ, 1 ਹਫ਼ਤਾ, 1 ਦਿਨ, 1 ਘੰਟਾ, 1 ਮਿੰਟ, 1 ਸਕਿੰਟ");
+        test.equal(duration.toString(), "1 ਸਾਲ 1 ਮਹੀਨਾ 1 ਹਫ਼ਤਾ 1 ਦਿਨ 1 ਘੰਟਾ 1 ਮਿੰਟ 1 ਸਕਿੰਟ");
         test.done();
     },
 
@@ -3936,7 +3936,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 ਸਾਲ, 1 ਮਹੀਨਾ, 1 ਹਫ਼ਤਾ, 1 ਦਿਨ, 1:01:01");
+        test.equal(duration.toString(), "1 ਸਾਲ 1 ਮਹੀਨਾ 1 ਹਫ਼ਤਾ 1 ਦਿਨ 1:01:01");
         test.done();
     },
 
@@ -3957,7 +3957,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 ਸਾਲ, 1 ਮਹੀਨਾ, 1 ਹਫ਼ਤਾ, 1 ਦਿਨ, 1 ਘੰਟਾ, 1 ਮਿੰਟ, 1 ਸਕਿੰਟ");
+        test.equal(duration.toString(), "1 ਸਾਲ 1 ਮਹੀਨਾ 1 ਹਫ਼ਤਾ 1 ਦਿਨ 1 ਘੰਟਾ 1 ਮਿੰਟ 1 ਸਕਿੰਟ");
         test.done();
     },
 
@@ -5337,7 +5337,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 g. 1 m. 1 n. 1d 1h 1 min 1s');
+        test.equal(duration.toString(), '1 g. 1 m. 1 n. 1 d. 1 h 1 min 1 s');
         test.done();
     },
 
@@ -5359,7 +5359,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 g. 1 m. 1 n. 1d 1h 1 min 1s');
+        test.equal(duration.toString(), '1 g. 1 m. 1 n. 1 d. 1 h 1 min 1 s');
         test.done();
     },
 
@@ -5381,7 +5381,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 g. 1 m. 1 n. 1d 01:01:01');
+        test.equal(duration.toString(), '1 g. 1 m. 1 n. 1 d. 01:01:01');
         test.done();
     },
 
@@ -5402,7 +5402,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 g., 1 m., 1 n., 1d, 1h, 1 min, 1s');
+        test.equal(duration.toString(), '1 g., 1 m., 1 n., 1 d., 1 h, 1 min, 1 s');
         test.done();
     },
 
@@ -5598,7 +5598,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 жил, 1 сар, 1 д/х, 1 өдөр, 1 ц, 1 мин, 1 сек");
+        test.equal(duration.toString(), "1ж 1с 1 д.х 1 хоног 1 ц 1 мин 1 сек");
         test.done();
     },
 
@@ -5620,7 +5620,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 жил, 1 сар, 1 д/х, 1 өдөр, 1 ц, 1 мин, 1 сек");
+        test.equal(duration.toString(), "1ж 1с 1 д.х 1 хоног 1 ц 1 мин 1 сек");
         test.done();
     },
 
@@ -5642,7 +5642,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 жил, 1 сар, 1 д/х, 1 өдөр, 01:01:01");
+        test.equal(duration.toString(), "1ж 1с 1 д.х 1 хоног 01:01:01");
         test.done();
     },
 
@@ -5663,7 +5663,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 жил, 1 сар, 1 д/х, 1 өдөр, 1 ц, 1 мин, 1 сек');
+        test.equal(duration.toString(), '1ж 1с 1 д.х 1 хоног 1 ц 1 мин 1 сек');
         test.done();
     },
 
@@ -5684,7 +5684,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 жил, 1 сар, 1 дол/хон, 1 өдөр, 1 цаг, 1 мин, 1 сек");
+        test.equal(duration.toString(), "1 жил 1 сар 1 д.х 1 хоног 1 цаг 1 мин 1 сек");
         test.done();
     },
 
@@ -5705,7 +5705,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 жил, 1 сар, 1 долоо хоног, 1 өдөр, 1 цаг, 1 минут, 1 секунд");
+        test.equal(duration.toString(), "1 жил 1 сар 1 долоо хоног 1 хоног 1 цаг 1 минут 1 секунд");
         test.done();
     },
 
@@ -6253,7 +6253,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 ano, 1 mês, 1 sem., 1 dia, 1 h, 1 min, 1 s");
+        test.equal(duration.toString(), "1 ano 1 mês 1 sem. 1 dia 1 h 1 min 1 s");
         test.done();
     },
 
@@ -6275,7 +6275,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 ano, 1 mês, 1 sem., 1 dia, 1 h, 1 min, 1 s");
+        test.equal(duration.toString(), "1 ano 1 mês 1 sem. 1 dia 1 h 1 min 1 s");
         test.done();
     },
 
@@ -6297,7 +6297,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 ano, 1 mês, 1 sem., 1 dia, 01:01:01");
+        test.equal(duration.toString(), "1 ano 1 mês 1 sem. 1 dia 01:01:01");
         test.done();
     },
 
@@ -6318,7 +6318,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 ano, 1 mês, 1 sem., 1 dia, 1 h, 1 min, 1 s');
+        test.equal(duration.toString(), "1 ano, 1 mês, 1 sem., 1 dia, 1 h, 1 min, 1 s");
         test.done();
     },
 
@@ -6599,7 +6599,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 г. 1 мес. 1 нед. 1 дн. 1 ч. 1 мин. 1 сек.');
+        test.equal(duration.toString(), '1 г. 1 мес. 1 нед. 1 дн. 1 ч 1 мин. 1 сек.');
         test.done();
     },
 
@@ -7642,7 +7642,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 năm, 1 tháng, 1 tuần, 1 ngày, 1 giờ, 1 phút, 1 giây");
+        test.equal(duration.toString(), "1 năm, 1 tháng, 1 tuần, 1 ngày, 1 giờ, 1 phút và 1 giây");
         test.done();
     },
 
