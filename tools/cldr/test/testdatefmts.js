@@ -4024,23 +4024,23 @@ module.exports.testdatefmts = {
             "G1": "CE"
         };
 
-            aux.mergeFormats(formats, formats, []);
-            //formats.en.US.data = common.merge(formats.en.US.data, enUSdata);
-            //aux.promoteFormats(formats.en);
-            aux.pruneFormats(formats);
+        aux.mergeFormats(formats, formats, []);
+        //formats.en.US.data = common.merge(formats.en.US.data, enUSdata);
+        //aux.promoteFormats(formats.en);
+        aux.pruneFormats(formats);
 
-             // pruned out
-            test.ok(typeof(formats.en.data.a0) === "undefined");
-            test.ok(typeof(formats.en.data["MMM2-persian"]) === "undefined");
-            test.ok(common.isEmpty(formats.en.data));
+         // pruned out
+        test.ok(typeof(formats.en.data.a0) === "undefined");
+        test.ok(typeof(formats.en.data["MMM2-persian"]) === "undefined");
+        test.ok(common.isEmpty(formats.en.data));
 
-            test.ok(typeof(formats.en.US.data.a0) === "undefined");
-            test.ok(typeof(formats.en.US.data["MMM2-persian"]) === "undefined");
+        test.ok(typeof(formats.en.US.data.a0) === "undefined");
+        test.ok(typeof(formats.en.US.data["MMM2-persian"]) === "undefined");
 
-            test.ok(typeof(formats.en.IE.data.a0) !== "undefined");
-            test.ok(typeof(formats.en.IE.data["MMM2-persian"]) ===  "undefined");
+        test.ok(typeof(formats.en.IE.data.a0) !== "undefined");
+        test.ok(typeof(formats.en.IE.data["MMM2-persian"]) ===  "undefined");
 
-            test.ok(common.isEmpty(formats.en.BZ.data));
-            test.done();
+        test.ok(common.isEmpty(formats.en.BZ.data));
+        test.done();
     }
 }

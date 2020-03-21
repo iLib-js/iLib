@@ -19,7 +19,7 @@
 
 module.exports.files = [
     "testcommon.js",
-    "testdatefmts.js"
+    "testdatefmts.js",
     "testunifile.js",
     "testunidata.js",
 ];
