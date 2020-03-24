@@ -64,7 +64,7 @@ module.exports.testunidata = {
         test.ok(row !== null);
         test.done();
     },
-    /*testUDGetRowRightData: function(test) {
+    testUDGetRowRightData: function(test) {
         test.expect(13);
         var ud = new unidata.UnicodeData({string: sampleData});
         test.ok(ud !== null);
@@ -72,20 +72,20 @@ module.exports.testunidata = {
         var row = ud.get(2);
         test.ok(row !== null);
 
-        test.ok("Ä", row.getCharacter());
-        test.ok("LATIN CAPITAL LETTER A WITH DIAERESIS", row.getName());
-        test.ok("Lu", row.getCategory());
-        test.ok(0, row.getCombiningClass());
-        test.ok("L", row.getBidiClass());
-        test.ok("canon", row.getDecompositionType());
-        test.ok("Ä", row.getDecomposition());
-        test.ok(false, row.getBidiMirrored());
-        test.ok("", row.getSimpleUppercase());
-        test.ok("ä", row.getSimpleLowercase());
-        test.ok("", row.getSimpleTitlecase());
+        test.equal("Ä", row.getCharacter());
+        test.equal("LATIN CAPITAL LETTER A WITH DIAERESIS", row.getName());
+        test.equal("Lu", row.getCategory());
+        test.equal(0, row.getCombiningClass());
+        test.equal("L", row.getBidiClass());
+        test.equal("canon", row.getDecompositionType());
+        test.equal("Ä", row.getDecomposition());
+        test.equal(false, row.getBidiMirrored());
+        test.equal("", row.getSimpleUppercase());
+        test.equal("ä", row.getSimpleLowercase());
+        test.equal("", row.getSimpleTitlecase());
         test.done();
-    },*/
-    /*testUDGetRowRightData2: function(test) {
+    },
+    testUDGetRowRightData2: function(test) {
         test.expect(13);
         var ud = new unidata.UnicodeData({string: sampleData});
         test.ok(ud !== null);
@@ -93,25 +93,25 @@ module.exports.testunidata = {
         var row = ud.get(7);
         test.ok(row !== null);
 
-        test.ok("̤", row.getCharacter());
-        test.ok("COMBINING DIAERESIS BELOW", row.getName());
-        test.ok("Mn", row.getCategory());
-        test.ok(220, row.getCombiningClass());
-        test.ok("NSM", row.getBidiClass());
-        test.ok("", row.getDecompositionType());
-        test.ok("̤", row.getDecomposition());
-        test.ok(false, row.getBidiMirrored());
-        test.ok("", row.getSimpleUppercase());
-        test.ok("", row.getSimpleLowercase());
-        test.ok("", row.getSimpleTitlecase());
+        test.equal("̤", row.getCharacter());
+        test.equal("COMBINING DIAERESIS BELOW", row.getName());
+        test.equal("Mn", row.getCategory());
+        test.equal(220, row.getCombiningClass());
+        test.equal("NSM", row.getBidiClass());
+        test.equal("", row.getDecompositionType());
+        test.equal("̤", row.getDecomposition());
+        test.equal(false, row.getBidiMirrored());
+        test.equal("", row.getSimpleUppercase());
+        test.equal("", row.getSimpleLowercase());
+        test.equal("", row.getSimpleTitlecase());
         test.done();
-    },*/
+    },
     testUDGetRowRightNumberOfFields: function(test) {
         test.expect(2);
         var ud = new unidata.UnicodeData({string: sampleData});
         test.ok(ud !== null);
 
-        test.ok(21, ud.length());
+        test.equal(21, ud.length());
         test.done();
     },
     testUDGetOtherDecompType: function(test) {
@@ -122,8 +122,8 @@ module.exports.testunidata = {
         var row = ud.get(4);
         test.ok(row !== null);
 
-        test.ok("compat", row.getDecompositionType());
-        test.ok("dz", row.getDecomposition());
+        test.equal("compat", row.getDecompositionType());
+        test.equal("dz", row.getDecomposition());
         test.done();
     }
 }

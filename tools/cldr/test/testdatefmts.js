@@ -1,5 +1,5 @@
 /*
- * testdatefmts.js -
+ * testdatefmts.js - test auxillary tools used to generate the dateformats.json files
  * 
  * Copyright © 2012, 2020 JEDLSoft
  *
@@ -26,26 +26,25 @@ if (typeof(aux) === "undefined") {
 }
 
 module.exports.testdatefmts = {
-    /*
     testDistanceZeroIntrinsicString: function(test) {
         test.expect(1);
         var left = "foo";
         var right = "foo";
-        test.ok(0, aux.distance(left, right));
+        test.equal(0, aux.distance(left, right));
         test.done();
     },
     testDistanceZeroIntrinsicNumber: function(test) {
         test.expect(1);
         var left = 5.6;
         var right = 5.600;
-        test.ok(0, aux.distance(left, right));
+        test.equal(0, aux.distance(left, right));
         test.done();
     },
     testDistanceZeroIntrinsicBoolean: function(test) {
         test.expect(1);
         var left = false;
         var right = false;
-        test.ok(0, aux.distance(left, right));
+        test.equal(0, aux.distance(left, right));
         test.done();
     },
 
@@ -53,51 +52,51 @@ module.exports.testdatefmts = {
         test.expect(1);
         var left = null;
         var right = null;
-        test.ok(0, aux.distance(left, right));
+        test.equal(0, aux.distance(left, right));
         test.done();
     },
     testDistanceZeroIntrinsicUndefined: function(test) {
         test.expect(1);
         var left = undefined;
         var right = undefined;
-        test.ok(0, aux.distance(left, right));
+        test.equal(0, aux.distance(left, right));
         test.done();
-    },*/
+    },
     testDistanceOneIntrinsicString: function(test) {
         test.expect(1);
         var left = "foo";
         var right = "foobar";
-        test.ok(1, aux.distance(left, right));
+        test.equal(1, aux.distance(left, right));
         test.done();
     },
     testDistanceOneIntrinsicNumber: function(test) {
         test.expect(1);
         var left = 5.6;
         var right = 5.6005;
-        test.ok(1, aux.distance(left, right));
+        test.equal(1, aux.distance(left, right));
         test.done();
     },
     testDistanceOneIntrinsicBoolean: function(test) {
         test.expect(1);
         var left = false;
         var right = true;
-        test.ok(1, aux.distance(left, right));
+        test.equal(1, aux.distance(left, right));
         test.done();
     },
     testDistanceOneIntrinsicNull: function(test) {
         test.expect(1);
         var left = null;
         var right = "foo";
-        test.ok(1, aux.distance(left, right));
+        test.equal(1, aux.distance(left, right));
         test.done();
     },
     testDistanceOneDifferentTypes: function(test) {
         test.expect(1);
         var left = "1";
         var right = 1;
-        test.ok(1, aux.distance(left, right));
+        test.equal(1, aux.distance(left, right));
         test.done();
-    },/*
+    },
     testDistanceZeroSimple: function(test) {
         test.expect(1);
         var left = {
@@ -110,7 +109,7 @@ module.exports.testdatefmts = {
             c: "d",
             e: "f"
         };
-        test.ok(0, aux.distance(left, right));
+        test.equal(0, aux.distance(left, right));
         test.done();
     },
     testDistanceZeroNonStrings: function(test) {
@@ -127,7 +126,7 @@ module.exports.testdatefmts = {
             c: true,
             d: false
         };
-        test.ok(0, aux.distance(left, right));
+        test.equal(0, aux.distance(left, right));
         test.done();
     },
     testDistanceZeroSubObjects: function(test) {
@@ -166,7 +165,7 @@ module.exports.testdatefmts = {
                 }
             }
         };
-        test.ok(0, aux.distance(left, right));
+        test.equal(0, aux.distance(left, right));
         test.done();
     },
     testDistanceZeroArrays: function(test) {
@@ -177,10 +176,10 @@ module.exports.testdatefmts = {
         var right = {
             b: ["a", "b", "c", "d"]
         };
-        test.ok(0, aux.distance(left, right));
+        test.equal(0, aux.distance(left, right));
         test.done();
-    },*/
-    /*testDistanceZeroArraysComplex: function(test) {
+    },
+    testDistanceZeroArraysComplex: function(test) {
         test.expect(1);
         var left = {
             b: [
@@ -214,9 +213,9 @@ module.exports.testdatefmts = {
                 }
             ]
         };
-        test.ok(0, aux.distance(left, right));
+        test.equal(0, aux.distance(left, right));
         test.done();
-    },*/
+    },
     testDistanceOneSimple: function(test) {
         test.expect(1);
         var left = {
@@ -229,7 +228,7 @@ module.exports.testdatefmts = {
             c: "d",
             e: "g"
         };
-        test.ok(1, aux.distance(left, right));
+        test.equal(1, aux.distance(left, right));
         test.done();
     },
     testDistanceOneNonStrings: function(test) {
@@ -246,7 +245,7 @@ module.exports.testdatefmts = {
             c: false,
             d: false
         };
-        test.ok(1, aux.distance(left, right));
+        test.equal(1, aux.distance(left, right));
         test.done();
     },
     testDistanceOneSubObjects: function(test) {
@@ -285,7 +284,7 @@ module.exports.testdatefmts = {
                 }
             }
         };
-        test.ok(1, aux.distance(left, right));
+        test.equal(1, aux.distance(left, right));
         test.done();
     },
     testDistanceOneArrays: function(test) {
@@ -296,7 +295,7 @@ module.exports.testdatefmts = {
         var right = {
             b: ["a", "b", "e", "d"]
         };
-        test.ok(1, aux.distance(left, right));
+        test.equal(1, aux.distance(left, right));
         test.done();
     },
     testDistanceOneArraysComplex: function(test) {
@@ -333,7 +332,7 @@ module.exports.testdatefmts = {
                 }
             ]
         };
-        test.ok(1, aux.distance(left, right));
+        test.equal(1, aux.distance(left, right));
         test.done();
     },
     testDistanceOneMissingLeft: function(test) {
@@ -347,7 +346,7 @@ module.exports.testdatefmts = {
             c: "d",
             e: "f"
         };
-        test.ok(1, aux.distance(left, right));
+        test.equal(1, aux.distance(left, right));
         test.done();
     },
     testDistanceOneMissingRight: function(test) {
@@ -361,7 +360,7 @@ module.exports.testdatefmts = {
             a: "b",
             c: "d"
         };
-        test.ok(1, aux.distance(left, right));
+        test.equal(1, aux.distance(left, right));
         test.done();
     },
     testDistanceAgainstEmptyLeft: function(test) {
@@ -377,7 +376,7 @@ module.exports.testdatefmts = {
                 }
             }
         };
-        test.ok(3, aux.distance(left, {}));
+        test.equal(3, aux.distance(left, {}));
         test.done();
     },
     testDistanceAgainstEmptyRight: function(test) {
@@ -409,7 +408,7 @@ module.exports.testdatefmts = {
         var right = {
             "order": "{date} {time}"
         };
-        test.ok(5, aux.distance(left, right));
+        test.equal(5, aux.distance(left, right));
         test.done();
     },
     testDistanceDifferentComplexTypesWithDifferentTypes2: function(test) {
@@ -425,7 +424,7 @@ module.exports.testdatefmts = {
         var right = {
             "order": null
         };
-        test.ok(4, aux.distance(left, right));
+        test.equal(4, aux.distance(left, right));
         test.done();
     },
     testDistanceDifferentComplexTypesWithDifferentTypes3: function(test) {
@@ -441,7 +440,7 @@ module.exports.testdatefmts = {
         var right = {
             "order": undefined
         };
-        test.ok(4, aux.distance(left, right));
+        test.equal(4, aux.distance(left, right));
         test.done();
     },
     testDistanceDifferentSimpleTypes: function(test) {
@@ -454,7 +453,7 @@ module.exports.testdatefmts = {
             a: true,
             c: true
         };
-        test.ok(2, aux.distance(left, right));
+        test.equal(2, aux.distance(left, right));
         test.done();
     },
     testDistanceDifferentComplexTypes: function(test) {
@@ -471,7 +470,7 @@ module.exports.testdatefmts = {
             a: true,
             c: true
         };
-        test.ok(5, aux.distance(left, right));
+        test.equal(5, aux.distance(left, right));
         test.done();
     },
     testDistanceArraysDifferentLengthsLeft: function(test) {
@@ -482,7 +481,7 @@ module.exports.testdatefmts = {
         var right = {
             b: ["a", "b", "c", "d", "e"]
         };
-        test.ok(2, aux.distance(left, right));
+        test.equal(2, aux.distance(left, right));
         test.done();
     },
     testDistanceArraysDifferentLengthsRight: function(test) {
@@ -493,7 +492,7 @@ module.exports.testdatefmts = {
         var right = {
             b: ["a", "b", "c"]
         };
-        test.ok(2, aux.distance(left, right));
+        test.equal(2, aux.distance(left, right));
         test.done();
     },
     testDistanceArraysDifferentLengthsAndContents: function(test) {
@@ -504,7 +503,7 @@ module.exports.testdatefmts = {
         var right = {
             b: ["a", "x", "c", "d", "e"]
         };
-        test.ok(3, aux.distance(left, right));
+        test.equal(3, aux.distance(left, right));
         test.done();
     },
     testDistanceUndefinedRight: function(test) {
@@ -514,7 +513,7 @@ module.exports.testdatefmts = {
             c: false,
             e: "asdf"
         };
-        test.ok(3, aux.distance(undefined, right));
+        test.equal(3, aux.distance(undefined, right));
         test.done();
     },
     testDistanceUndefinedRightComplex: function(test) {
@@ -532,7 +531,7 @@ module.exports.testdatefmts = {
                 }
             }
         };
-        test.ok(7, aux.distance(undefined, right));
+        test.equal(7, aux.distance(undefined, right));
         test.done();
     },
     testDistanceUndefinedLeft: function(test) {
@@ -542,7 +541,7 @@ module.exports.testdatefmts = {
             c: false,
             e: "asdf"
         };
-        test.ok(3, aux.distance(left, undefined));
+        test.equal(3, aux.distance(left, undefined));
         test.done();
     },
     testDistanceUndefinedLeftComplex: function(test) {
@@ -560,7 +559,7 @@ module.exports.testdatefmts = {
                 }
             }
         };
-        test.ok(7, aux.distance(left, undefined));
+        test.equal(7, aux.distance(left, undefined));
         test.done();
     },
     testPromoteNormal: function(test) {
@@ -648,7 +647,7 @@ module.exports.testdatefmts = {
 
         aux.promoteFormats(group);
 
-        test.ok("en-CA", group.data.locale);
+        test.equal("en-CA", group.data.locale);
         test.done();
     },
     testPromoteNotEnoughChildren: function(test) {
@@ -688,7 +687,7 @@ module.exports.testdatefmts = {
 
         aux.promoteFormats(group);
 
-        test.ok("en", group.data.locale);
+        test.equal("en", group.data.locale);
         test.done();
     },
     testPromoteNoChildren: function(test) {
@@ -712,7 +711,7 @@ module.exports.testdatefmts = {
 
         aux.promoteFormats(group);
 
-        test.ok("en", group.data.locale);
+        test.equal("en", group.data.locale);
         test.done();
     },
     testPromoteNoParentManyChildren: function(test) {
@@ -786,7 +785,7 @@ module.exports.testdatefmts = {
 
         aux.promoteFormats(group);
 
-        test.ok("en-CA", group.data.locale);
+        test.equal("en-CA", group.data.locale);
         test.done();
     },
     testPromoteNoParentOnlyChild: function(test) {
@@ -814,7 +813,7 @@ module.exports.testdatefmts = {
         aux.promoteFormats(group);
 
         test.ok(typeof(group.data) !== "undefined");
-        test.ok("en-US", group.data.locale);
+        test.equal("en-US", group.data.locale);
         test.done();
     },
     testPromoteRecursively: function(test) {
@@ -1022,7 +1021,7 @@ module.exports.testdatefmts = {
 
         aux.promoteFormats(group);
 
-        test.ok("en-Latn-CA", group.data.locale);
+        test.equal("en-Latn-CA", group.data.locale);
         test.done();
     },
     testPromoteRecursivelyBreadthFirst: function(test) {
@@ -1304,7 +1303,7 @@ module.exports.testdatefmts = {
 
         aux.promoteFormats(group);
 
-        test.ok("en-Fooo-CA", group.data.locale);
+        test.equal("en-Fooo-CA", group.data.locale);
         test.done();
     },
     testPruneNormal: function(test) {
@@ -1477,7 +1476,7 @@ module.exports.testdatefmts = {
         };
 
         left = common.merge(left, right);
-        test.ok("string", left.a);
+        test.equal("string", left.a);
         test.done();
     },
     testMergeOverrideArrayWithString: function(test) {
@@ -1490,7 +1489,7 @@ module.exports.testdatefmts = {
         };
 
         left = common.merge(left, right);
-        test.ok("string", left.a);
+        test.equal("string", left.a);
         test.done();
     },
     testMergeFormatsOverrideArrayWithString: function(test) {
@@ -1539,9 +1538,9 @@ module.exports.testdatefmts = {
 
         aux.mergeFormats(formats, formats.zh, ["zh"]);
 
-        test.ok("{date}{time}", formats.zh.Hant.data.order);
-        test.ok("{date} {time}", formats.zh.Hant.TW.data.order);
-        test.ok("d/M/yy", formats.zh.Hant.TW.data.dmy.s);
+        test.equal("{date}{time}", formats.zh.Hant.data.order);
+        test.equal("{date} {time}", formats.zh.Hant.TW.data.order);
+        test.equal("d/M/yy", formats.zh.Hant.TW.data.dmy.s);
         test.done();
     },
     testMergePromote: function(test) {
@@ -1591,9 +1590,9 @@ module.exports.testdatefmts = {
         aux.mergeFormats(formats, formats.zh, ["zh"]);
         aux.promoteFormats(formats.zh);
 
-        test.ok("{date} {time}", formats.zh.Hant.data.order);
-        test.ok("{date} {time}", formats.zh.Hant.TW.data.order);
-        test.ok("d/M/yy", formats.zh.Hant.TW.data.dmy.s);
+        test.equal("{date} {time}", formats.zh.Hant.data.order);
+        test.equal("{date} {time}", formats.zh.Hant.TW.data.order);
+        test.equal("d/M/yy", formats.zh.Hant.TW.data.dmy.s);
         test.done();
     },
     testMergePromoteMerge: function(test) {
@@ -1644,9 +1643,9 @@ module.exports.testdatefmts = {
         aux.promoteFormats(formats.zh);
         aux.mergeFormats(formats, formats.zh, ["zh"]);
 
-        test.ok("{date} {time}", formats.zh.Hant.data.order);
-        test.ok("{date} {time}", formats.zh.Hant.TW.data.order);
-        test.ok("d/M/yy", formats.zh.Hant.TW.data.dmy.s);
+        test.equal("{date} {time}", formats.zh.Hant.data.order);
+        test.equal("{date} {time}", formats.zh.Hant.TW.data.order);
+        test.equal("d/M/yy", formats.zh.Hant.TW.data.dmy.s);
         test.done();
     },
     testMergePromotePrune1: function(test) {
@@ -1699,9 +1698,9 @@ module.exports.testdatefmts = {
 
          // pruned out
         test.ok(typeof(formats.zh.data.order) !== "undefined");
-        test.ok("{date}{time}", formats.zh.data.order.f);
+        test.equal("{date}{time}", formats.zh.data.order.f);
         test.ok(typeof(formats.zh.Hant.data.order) !== "undefined");
-        test.ok("{date} {time}", formats.zh.Hant.data.order);
+        test.equal("{date} {time}", formats.zh.Hant.data.order);
         test.ok(typeof(formats.zh.Hant.TW.data.order) === "undefined");
         test.ok(typeof(formats.zh.Hant.TW.data.dmy) === "undefined");
         test.done();

@@ -59,7 +59,7 @@ module.exports.testunifile = {
         var uf = new unifile.UnicodeFile({string: unifileData});
         test.ok(uf !== null);
 
-        test.ok(5, uf.length());
+        test.equal(5, uf.length());
         test.done()
     },
     testUFGetRow: function(test) {
@@ -78,10 +78,10 @@ module.exports.testunifile = {
 
         var row = uf.get(2);
         test.ok(row !== null);
-        test.ok(15, row.length);
+        test.equal(15, row.length);
         test.done()
     },
-    /*testUFGetRowRightData: function(test) {
+    testUFGetRowRightData: function(test) {
         test.expect(17);
         var uf = new unifile.UnicodeFile({string: unifileData});
         test.ok(uf !== null);
@@ -89,29 +89,29 @@ module.exports.testunifile = {
         var row = uf.get(2);
         test.ok(row !== null);
 
-        test.ok("00C4", row[0]);
-        test.ok("LATIN CAPITAL LETTER A WITH DIAERESIS", row[1]);
-        test.ok("Lu", row[2]);
-        test.ok("0", row[3]);
-        test.ok("L", row[4]);
-        test.ok("0041 0308", row[5]);
-        test.ok("", row[6]);
-        test.ok("", row[7]);
-        test.ok("", row[8]);
-        test.ok("N", row[9]);
-        test.ok("LATIN CAPITAL LETTER A DIAERESIS", row[10]);
-        test.ok("", row[11]);
-        test.ok("", row[12]);
-        test.ok("00E4", row[13]);
-        test.ok("", row[14]);
+        test.equal("00C4", row[0]);
+        test.equal("LATIN CAPITAL LETTER A WITH DIAERESIS", row[1]);
+        test.equal("Lu", row[2]);
+        test.equal("0", row[3]);
+        test.equal("L", row[4]);
+        test.equal("0041 0308", row[5]);
+        test.equal("", row[6]);
+        test.equal("", row[7]);
+        test.equal("", row[8]);
+        test.equal("N", row[9]);
+        test.equal("LATIN CAPITAL LETTER A DIAERESIS", row[10]);
+        test.equal("", row[11]);
+        test.equal("", row[12]);
+        test.equal("00E4", row[13]);
+        test.equal("", row[14]);
         test.done()
-    },*/
+    },
     testUFSkipCommentsAndBlankLines: function(test) {
         test.expect(2);
         var uf = new unifile.UnicodeFile({string: unifileData2});
         test.ok(uf !== null);
 
-        test.ok(5, uf.length());
+        test.equal(5, uf.length());
         test.done()
     },
     testUFSkipTrailingComments: function(test) {
@@ -122,31 +122,31 @@ module.exports.testunifile = {
         var row = uf.get(0);
         test.ok(row !== null);
 
-        test.ok(15, row.length);
+        test.equal(15, row.length);
         test.done()
     },
-    /*testUFSkipCommentsRightData: function(test) {
+    testUFSkipCommentsRightData: function(test) {
         test.expect(17);
         var uf = new unifile.UnicodeFile({string: unifileData2});
         test.ok(uf !== null);
 
         var row = uf.get(2);
         test.ok(row !== null);
-        test.ok("00C4", row[0]);
-        test.ok("LATIN CAPITAL LETTER A WITH DIAERESIS", row[1]);
-        test.ok("Lu", row[2]);
-        test.ok("0", row[3]);
-        test.ok("L", row[4]);
-        test.ok("0041 0308", row[5]);
-        test.ok("", row[6]);
-        test.ok("", row[7]);
-        test.ok("", row[8]);
-        test.ok("N", row[9]);
-        test.ok("LATIN CAPITAL LETTER A DIAERESIS", row[10]);
-        test.ok("", row[11]);
-        test.ok("", row[12]);
-        test.ok("00E4", row[13]);
-        test.ok("", row[14]);
+        test.equal("00C4", row[0]);
+        test.equal("LATIN CAPITAL LETTER A WITH DIAERESIS", row[1]);
+        test.equal("Lu", row[2]);
+        test.equal("0", row[3]);
+        test.equal("L", row[4]);
+        test.equal("0041 0308", row[5]);
+        test.equal("", row[6]);
+        test.equal("", row[7]);
+        test.equal("", row[8]);
+        test.equal("N", row[9]);
+        test.equal("LATIN CAPITAL LETTER A DIAERESIS", row[10]);
+        test.equal("", row[11]);
+        test.equal("", row[12]);
+        test.equal("00E4", row[13]);
+        test.equal("", row[14]);
         test.done()
-    }*/
+    }
 }
