@@ -635,7 +635,7 @@ module.exports.testpersiandateastro = {
 
         test.ok(pd !== null);
 
-        test.equal(pd.getJulianDay(), 2458199.238194444);
+        test.equal(pd.getJulianDay(), 2458199.1965277777);
         test.done();
     },
 
