@@ -1467,7 +1467,7 @@ module.exports.testdatefmts = {
         test.done();
     },
     testMergeOverrideObjectWithString: function(test) {
-        test.expect(1);
+        test.expect(2);
         var left = {
             a: {b: true, c: "tawasvas"}
         };
@@ -1477,9 +1477,10 @@ module.exports.testdatefmts = {
 
         left = common.merge(left, right);
         test.equal("string", left.a);
+        test.notEqual("tawasvas", left.a.c);
         test.done();
     },
-    testMergeOverrideArrayWithString: function(test) {
+    testMergeOverrideObjectWithString2: function(test) {
         test.expect(1);
         var left = {
             a: ["a", "b", "c", "d"]
@@ -1490,6 +1491,97 @@ module.exports.testdatefmts = {
 
         left = common.merge(left, right);
         test.equal("string", left.a);
+        test.done();
+    },
+    testMergeOverrideObjectWithString3: function(test) {
+        test.expect(1);
+        var left = {
+            standard: "stringAll"
+        };
+
+        var right = {
+            standard: {
+                "short": "stringShort",
+                "medium": "stringMedium",
+                "long": "stringLong",
+                "full": "stringFull",
+            }
+        };
+
+        var expected = {
+            standard: {
+                "short": "stringShort",
+                "medium": "stringMedium",
+                "long": "stringLong",
+                "full": "stringFull",
+            }
+        }
+        left = common.merge(left, right);
+        test.deepEqual(expected, left);
+        test.done();
+    },
+    testMergeOverrideObjectWithString4: function(test) {
+        test.expect(1);
+        var left = {
+            standard: {
+                "short": "stringShort",
+                "medium": "stringMedium",
+                "long": "stringLong",
+                "full": "stringFull",
+            }
+        };
+
+        var right = {
+            standard: "stringAll"
+        };
+
+        var expected = {
+            standard: "stringAll"
+        };
+
+        left = common.merge(left, right);
+        test.deepEqual(expected, left);
+        test.done();
+    },
+    testMergeOverrideObjectWithString5: function(test) {
+        test.expect(1);
+        var left = {
+            standard: {
+                2: "test1",
+                end: "test2",
+                medium: "test3",
+                start: "test4"
+            }
+        };
+
+        var right = {
+            standard: {
+                full: {
+                    2: "test5",
+                    end: "test6",
+                    medium: "test7",
+                    start: "test8"
+                }
+            }
+        };
+
+        var expected = {
+            standard: {
+                2: "test1",
+                end: "test2",
+                medium: "test3",
+                start: "test4",
+                full: {
+                    2: "test5",
+                    end: "test6",
+                    medium: "test7",
+                    start: "test8"
+                }
+            }
+        }
+
+        left = common.merge(left, right);
+        test.deepEqual(expected, left);
         test.done();
     },
     testMergeFormatsOverrideArrayWithString: function(test) {
