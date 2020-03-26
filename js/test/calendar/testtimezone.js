@@ -2186,6 +2186,19 @@ module.exports.testtimezone = {
         test.deepEqual(tz.getOffset(jan1), {h:1});
         test.deepEqual(tz.getOffset(jul1), {h:2});
         test.done();
-    }
-    
+    },
+
+    testTZMultiLevelZoneName: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "America/Indiana/Marengo"});
+        test.ok(tz !== null);
+
+        var gd = new GregorianDate({
+            year: 2011,
+            month: 1,
+            day: 1
+        });
+        test.deepEqual(tz.getOffset(gd), {h:-5});
+        test.done();
+    },
 };

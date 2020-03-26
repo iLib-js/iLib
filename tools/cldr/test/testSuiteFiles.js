@@ -1,7 +1,7 @@
 /*
- * testSuite.js - top level test suite
+ * testSuiteFiles.js - list the test files in this directory
  * 
- * Copyright © 2013-2015, JEDLSoft
+ * Copyright © 2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +17,9 @@
  * limitations under the License.
  */
 
-var TestRunner = require("../../js/test/runner.js");
-var TestSuite = require("../../js/test/TestSuiteModule.js");
-
-var runner = new TestRunner("../..");
-
-runner.addSuite(new TestSuite("test/testSuite.js"));
-
-runner.runTests();
+module.exports.files = [
+    "testcommon.js",
+    "testdatefmts.js",
+    "testunifile.js",
+    "testunidata.js",
+];

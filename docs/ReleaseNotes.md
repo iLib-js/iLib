@@ -15,6 +15,9 @@ New Features:
     getOffsetMillis, and inDaylightTime
 
 Bug Fixes:
+* Time zones in Indiana, Kentucky, North Dakota, and Argentina were missing.
+  Fixed the zone info compiler to generate the json data for these missing time
+  zones properly.
 * Changed a default length style to `medium` in List Formatting.
 
 
