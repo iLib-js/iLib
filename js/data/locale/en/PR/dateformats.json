@@ -135,7 +135,7 @@
                 "f": "{sm} {sd} – {em} {ed}, {ey}",
                 "l": "{sm} {sd} – {em} {ed}, {ey}",
                 "m": "{sm} {sd} – {em} {ed}, {ey}",
-                "s": "{sm}/{sd} – {em}/{ed}/{ey}"
+                "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
             },
             "c12": {
                 "f": "{sm} {sd}, {sy} – {em} {ed}, {ey}",
