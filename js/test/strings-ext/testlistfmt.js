@@ -1,7 +1,7 @@
 /*
  * testlistfmt.js - test the list formatter object
  *
- * Copyright © 2017, 2019 JEDLSoft
+ * Copyright © 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -125,7 +125,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["true", "false"]), "true and false");
+        test.equal(fmt.format(["true", "false"]), "true & false");
         test.done();
     },
 
@@ -143,7 +143,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two"]), "one and two");
+        test.equal(fmt.format(["one", "two"]), "one & two");
         test.done();
     },
 
@@ -152,7 +152,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three"]), "one, two, and three");
+        test.equal(fmt.format(["one", "two", "three"]), "one, two, & three");
         test.done();
     },
 
@@ -161,7 +161,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, and four");
+        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, & four");
         test.done();
     },
 
@@ -183,7 +183,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two"]), "one and two");
+        test.equal(fmt.format(["one", "two"]), "one & two");
         test.done();
     },
 
@@ -194,7 +194,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three"]), "one, two, and three");
+        test.equal(fmt.format(["one", "two", "three"]), "one, two, & three");
         test.done();
     },
 
@@ -205,7 +205,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, and four");
+        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, & four");
         test.done();
     },
 
@@ -269,7 +269,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two"]), "one two");
+        test.equal(fmt.format(["one", "two"]), "one, two");
         test.done();
     },
 
@@ -280,7 +280,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three"]), "one two three");
+        test.equal(fmt.format(["one", "two", "three"]), "one, two, three");
         test.done();
     },
 
@@ -291,7 +291,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three", "four"]), "one two three four");
+        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, four");
         test.done();
     },
 
@@ -590,7 +590,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["един", "два"]), "един идва");
+        test.equal(fmt.format(["един", "два"]), "един и два");
         test.done();
     },
     testListFmtbgBGNumberFormatThree: function(test) {
@@ -837,6 +837,17 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["jeden", "dva", "tři", "čtyři"]), "jeden, dva, tři a čtyři");
         test.done();
     },
+    testListFmtcsCZNumberFormatFourLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "cs-CZ",
+            length: "long"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["jeden", "dva", "tři", "čtyři"]), "jeden, dva, tři a čtyři");
+        test.done();
+    },
 
     testListFmtUnitStylecsCZNumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -857,7 +868,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jeden", "dva"]), "jeden dva");
+        test.equal(fmt.format(["jeden", "dva"]), "jeden, dva");
         test.done();
     },
     testListFmtUnitStylecsCZNumberFormatThree: function(test) {
@@ -868,7 +879,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jeden", "dva", "tři"]), "jeden dva tři");
+        test.equal(fmt.format(["jeden", "dva", "tři"]), "jeden, dva a tři");
         test.done();
     },
     testListFmtUnitStylecsCZNumberFormatFour: function(test) {
@@ -879,7 +890,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jeden", "dva", "tři", "čtyři"]), "jeden dva tři čtyři");
+        test.equal(fmt.format(["jeden", "dva", "tři", "čtyři"]), "jeden, dva, tři a čtyři");
         test.done();
     },
 
@@ -972,6 +983,29 @@ module.exports.testlistfmt = {
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["en", "to", "tre", "fire"]), "en, to, tre og fire");
+        test.done();
+    },
+    testListFmtdaDKNumberFormatFourDisjunction: function(test) {
+        var fmt = new ListFmt({
+            locale: "da-DK",
+            style: "disjunction"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["en", "to", "tre", "fire"]), "en, to, tre el. fire");
+        test.done();
+    },
+    testListFmtdaDKNumberFormatFourDisjunction: function(test) {
+        var fmt = new ListFmt({
+            locale: "da-DK",
+            style: "disjunction",
+            length: "full"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["en", "to", "tre", "fire"]), "en, to, tre eller fire");
         test.done();
     },
 
@@ -1081,7 +1115,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["Üks", "Kaks"]), "Üks Kaks");
+        test.equal(fmt.format(["Üks", "Kaks"]), "Üks, Kaks");
         test.done();
     },
     testListFmtUnitStyleetEENumberFormatThree: function(test) {
@@ -1092,7 +1126,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["Üks", "Kaks", "kolm"]), "Üks Kaks kolm");
+        test.equal(fmt.format(["Üks", "Kaks", "kolm"]), "Üks, Kaks, kolm");
         test.done();
     },
     testListFmtUnitStyleetEENumberFormatFour: function(test) {
@@ -1103,7 +1137,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["Üks", "Kaks", "kolm", "Neli"]), "Üks Kaks kolm Neli");
+        test.equal(fmt.format(["Üks", "Kaks", "kolm", "Neli"]), "Üks, Kaks, kolm, Neli");
         test.done();
     },
     testListFmtUnitStyleetEENumberFormatOneFull: function(test) {
@@ -1216,7 +1250,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["yksi", "kaksi"]), "yksi kaksi");
+        test.equal(fmt.format(["yksi", "kaksi"]), "yksi, kaksi");
         test.done();
     },
     testListFmtUnitStylefiFINumberFormatThree: function(test) {
@@ -1227,7 +1261,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["yksi", "kaksi", "kolmikko"]), "yksi kaksi kolmikko");
+        test.equal(fmt.format(["yksi", "kaksi", "kolmikko"]), "yksi, kaksi, kolmikko");
         test.done();
     },
     testListFmtUnitStylefiFINumberFormatFour: function(test) {
@@ -1238,7 +1272,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["yksi", "kaksi", "kolmikko", "neljä"]), "yksi kaksi kolmikko neljä");
+        test.equal(fmt.format(["yksi", "kaksi", "kolmikko", "neljä"]), "yksi, kaksi, kolmikko, neljä");
         test.done();
     },
 
@@ -1304,7 +1338,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ceann", "dhá"]), "ceann dhá");
+        test.equal(fmt.format(["ceann", "dhá"]), "ceann, dhá");
         test.done();
     },
     testListFmtgaIENumberFormatThree: function(test) {
@@ -1315,7 +1349,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ceann", "dhá", "trí"]), "ceann dhá trí");
+        test.equal(fmt.format(["ceann", "dhá", "trí"]), "ceann, dhá, trí");
         test.done();
     },
     testListFmtgaIENumberFormatFour: function(test) {
@@ -1326,7 +1360,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ceann", "dhá", "trí", "ceithre"]), "ceann dhá trí ceithre");
+        test.equal(fmt.format(["ceann", "dhá", "trí", "ceithre"]), "ceann, dhá, trí, ceithre");
         test.done();
     },
 
@@ -1527,7 +1561,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["Vienu", "Divi"]), "Vienu Divi");
+        test.equal(fmt.format(["Vienu", "Divi"]), "Vienu un Divi");
         test.done();
     },
     testListFmtUnitStylelvLVNumberFormatThree: function(test) {
@@ -1538,7 +1572,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["Vienu", "Divi", "Trīs"]), "Vienu Divi Trīs");
+        test.equal(fmt.format(["Vienu", "Divi", "Trīs"]), "Vienu, Divi un Trīs");
         test.done();
     },
     testListFmtUnitStylelvLVNumberFormatFour: function(test) {
@@ -1549,7 +1583,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["Vienu", "Divi", "Trīs", "Četri"]), "Vienu Divi Trīs Četri");
+        test.equal(fmt.format(["Vienu", "Divi", "Trīs", "Četri"]), "Vienu, Divi, Trīs un Četri");
         test.done();
     },
     testListFmtUnitStylelvLVNumberFormatOneLong: function(test) {
@@ -2674,7 +2708,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["Biri", "Ikkita", "Uchta", "To'rtta"]), "Biri, Ikkita, Uchta va To'rtta");
+        test.equal(fmt.format(["Biri", "Ikkita", "Uchta", "To'rtta"]), "Biri, Ikkita, Uchta va To\'rtta");
         test.done();
     },
 
@@ -2756,7 +2790,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["một", "hai", "ba"]), "một, hai và ba");
+        test.equal(fmt.format(["một", "hai", "số ba"]), "một, hai và số ba");
         test.done();
     },
 
@@ -2767,7 +2801,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["một", "hai", "ba", "bốn"]), "một, hai, ba và bốn");
+        test.equal(fmt.format(["một", "hai", "số ba", "bốn"]), "một, hai, số ba và bốn");
         test.done();
     },
 
@@ -2779,7 +2813,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["bir"]), "bir");
+        test.equal(fmt.format(["một"]), "một");
         test.done();
     },
 
@@ -2791,7 +2825,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["bir", "два"]), "bir два");
+        test.equal(fmt.format(["một", "hai"]), "một và hai");
         test.done();
     },
 
@@ -2803,7 +2837,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["bir", "два", "три"]), "bir два три");
+        test.equal(fmt.format(["một", "hai", "số ba"]), "một, hai và số ba");
         test.done();
     },
 
@@ -2815,7 +2849,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["bir", "два", "три", "четыре"]), "bir два три четыре");
+        test.equal(fmt.format(["một", "hai", "số ba", "bốn"]), "một, hai, số ba và bốn");
         test.done();
     },
 
@@ -2827,7 +2861,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["bir", "два", "три", "четыре", "пять"]), "bir два три четыре пять");
+        test.equal(fmt.format(["một", "hai", "số ba", "bốn", "số năm"]), "một, hai, số ba, bốn và số năm");
         test.done();
     },
 
@@ -2840,7 +2874,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["bir"]), "bir");
+        test.equal(fmt.format(["một"]), "một");
         test.done();
     },
 
@@ -2853,7 +2887,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["bir", "два"]), "bir, два");
+        test.equal(fmt.format(["một", "hai"]), "một và hai");
         test.done();
     },
 
@@ -2866,7 +2900,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["bir", "два", "три"]), "bir, два, три");
+        test.equal(fmt.format(["một", "hai", "số ba"]), "một, hai và số ba");
         test.done();
     },
 
@@ -2879,7 +2913,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["bir", "два", "три", "четыре"]), "bir, два, три, четыре");
+        test.equal(fmt.format(["một", "hai", "số ba", "bốn"]), "một, hai, số ba và bốn");
         test.done();
     },
 
@@ -2892,7 +2926,18 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["bir", "два", "три", "четыре", "пять"]), "bir, два, три, четыре, пять");
+        test.equal(fmt.format(["một", "hai", "số ba", "bốn", "số năm"]), "một, hai, số ba, bốn và số năm");
+        test.done();
+    },
+    testListFmtUnitStyleviVNNumberFormatFiveFullDisjunction: function(test) {
+        var fmt = new ListFmt({
+            locale: "vi-VN",
+            style: "disjunction"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["một", "hai", "số ba", "bốn", "số năm"]), "một, hai, số ba, bốn hoặc số năm");
         test.done();
     }
 };

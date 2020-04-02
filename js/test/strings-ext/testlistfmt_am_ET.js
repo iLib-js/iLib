@@ -1,7 +1,7 @@
 /*
  * testlistfmt_am_ET.js - test the list formatter object
  *
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -96,7 +96,7 @@ module.exports.testlistfmt_am_ET = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["አንድ", "ሁለት"]), "አንድ ሁለት");
+        test.equal(fmt.format(["አንድ", "ሁለት"]), "አንድ፣ ሁለት");
         test.done();
     },
     
@@ -108,7 +108,7 @@ module.exports.testlistfmt_am_ET = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት"]), "አንድ፣ ሁለት ሶስት");
+        test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት"]), "አንድ፣ ሁለት፣ ሶስት");
         test.done();
     },
     
@@ -120,7 +120,7 @@ module.exports.testlistfmt_am_ET = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት", "አራት"]), "አንድ፣ ሁለት፣ ሶስት አራት");
+        test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት", "አራት"]), "አንድ፣ ሁለት፣ ሶስት፣ አራት");
         test.done();
     }
 };

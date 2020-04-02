@@ -1,7 +1,7 @@
 /*
  * testlistfmt_sv.js - test the list formatter object
  *
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
-module.exports.testlistfmt_bs = {
+module.exports.testlistfmt_sv = {
     setUp: function(callback) {
         ilib.clearCache();
         callback();
@@ -96,7 +96,7 @@ module.exports.testlistfmt_bs = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ett", "två"]), "ett två");
+        test.equal(fmt.format(["ett", "två"]), "ett, två");
         test.done();
     },
     
@@ -108,7 +108,7 @@ module.exports.testlistfmt_bs = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ett", "två", "tre"]), "ett två tre");
+        test.equal(fmt.format(["ett", "två", "tre"]), "ett, två, tre");
         test.done();
     },
     
@@ -120,7 +120,7 @@ module.exports.testlistfmt_bs = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ett", "två", "tre", "fyra"]), "ett två tre fyra");
+        test.equal(fmt.format(["ett", "två", "tre", "fyra"]), "ett, två, tre, fyra");
         test.done();
     },
     testListFmtUnitStylesvFINumberFormatOneFull: function(test) {
@@ -241,7 +241,7 @@ module.exports.testlistfmt_bs = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ett", "två"]), "ett två");
+        test.equal(fmt.format(["ett", "två"]), "ett, två");
         test.done();
     },
     
@@ -253,7 +253,7 @@ module.exports.testlistfmt_bs = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ett", "två", "tre"]), "ett två tre");
+        test.equal(fmt.format(["ett", "två", "tre"]), "ett, två, tre");
         test.done();
     },
     
@@ -265,7 +265,7 @@ module.exports.testlistfmt_bs = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ett", "två", "tre", "fyra"]), "ett två tre fyra");
+        test.equal(fmt.format(["ett", "två", "tre", "fyra"]), "ett, två, tre, fyra");
         test.done();
     },
     testListFmtUnitStylesvSENumberFormatOneMedium: function(test) {

@@ -1,7 +1,7 @@
 /*
  * genlist.js - ilib tool to generate the ilib format list data from cldr
  *
- * Copyright © 2017-2019, JEDLSoft
+ * Copyright © 2017-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,7 @@ process.argv.forEach(function (val, index, array) {
 toDir = process.argv[2] || "tmp";
 
 console.log("genlist - generate list formatter data.\n" +
-    "Copyright (c) 2017-2018 JEDLSoft\n");
+    "Copyright (c) 2017-2020 JEDLSoft\n");
 
 console.log("output dir: " + toDir);
 
@@ -83,62 +83,51 @@ locales.forEach(function(locale) {
     };
 
     if (cldrPatterns["listPattern-type-standard"]) {
-        if (comparePatterns(cldrPatterns["listPattern-type-standard-short"], cldrPatterns["listPattern-type-standard"]) ||
-            comparePatterns(cldrPatterns["listPattern-type-standard-narrow"], cldrPatterns["listPattern-type-standard"])) {
-            patterns.standard.short = cldrPatterns["listPattern-type-standard"];
-            patterns.standard.medium = cldrPatterns["listPattern-type-standard"];
-            patterns.standard.long = cldrPatterns["listPattern-type-standard"];
-            patterns.standard.full = cldrPatterns["listPattern-type-standard"];
-            if (cldrPatterns["listPattern-type-standard-short"]) {
-                patterns.standard.short = cldrPatterns["listPattern-type-standard-short"];
-                patterns.standard.medium = cldrPatterns["listPattern-type-standard-short"];
-            }
-            if (cldrPatterns["listPattern-type-standard-narrow"]) {
-                patterns.standard.short = cldrPatterns["listPattern-type-standard-narrow"];
-            }
-        } else {
-            patterns.standard = cldrPatterns["listPattern-type-standard"];
+        patterns.standard.short = cldrPatterns["listPattern-type-standard"];
+        patterns.standard.medium = cldrPatterns["listPattern-type-standard"];
+        patterns.standard.long = cldrPatterns["listPattern-type-standard"];
+        patterns.standard.full = cldrPatterns["listPattern-type-standard"];
+
+        if (cldrPatterns["listPattern-type-standard-short"]) {
+            patterns.standard.short = cldrPatterns["listPattern-type-standard-short"];
+            patterns.standard.medium = cldrPatterns["listPattern-type-standard-short"];
+        }
+
+        if (cldrPatterns["listPattern-type-standard-narrow"]) {
+            patterns.standard.short = cldrPatterns["listPattern-type-standard-narrow"];
         }
     }
 
     if (cldrPatterns["listPattern-type-or"]) {
-        if (comparePatterns(cldrPatterns["listPattern-type-or-short"], cldrPatterns["listPattern-type-or"]) ||
-            comparePatterns(cldrPatterns["listPattern-type-or-narrow"], cldrPatterns["listPattern-type-or"])) {
-            patterns.or = {};
-            patterns.or.short = cldrPatterns["listPattern-type-or"];
-            patterns.or.medium = cldrPatterns["listPattern-type-or"];
-            patterns.or.long = cldrPatterns["listPattern-type-or"];
-            patterns.or.full = cldrPatterns["listPattern-type-or"];
-            if (cldrPatterns["listPattern-type-or-short"]) {
-                patterns.or.short = cldrPatterns["listPattern-type-or-short"];
-                patterns.or.medium = cldrPatterns["listPattern-type-or-short"];
-            }
-            if (cldrPatterns["listPattern-type-or-narrow"]) {
-                patterns.or.short = cldrPatterns["listPattern-type-or-narrow"];
-            }
-        } else {
-            patterns.or = cldrPatterns["listPattern-type-or"];
+        patterns.or = {};
+        patterns.or.short = cldrPatterns["listPattern-type-or"];
+        patterns.or.medium = cldrPatterns["listPattern-type-or"];
+        patterns.or.long = cldrPatterns["listPattern-type-or"];
+        patterns.or.full = cldrPatterns["listPattern-type-or"];
+
+        if (cldrPatterns["listPattern-type-or-short"]) {
+            patterns.or.short = cldrPatterns["listPattern-type-or-short"];
+            patterns.or.medium = cldrPatterns["listPattern-type-or-short"];
+        }
+
+        if (cldrPatterns["listPattern-type-or-narrow"]) {
+            patterns.or.short = cldrPatterns["listPattern-type-or-narrow"];
         }
     }
 
     if (cldrPatterns["listPattern-type-unit"]) {
-        if (comparePatterns(cldrPatterns["listPattern-type-unit-short"], cldrPatterns["listPattern-type-unit"]) ||
-            comparePatterns(cldrPatterns["listPattern-type-unit-narrow"], cldrPatterns["listPattern-type-unit"])) {
-            patterns.unit = {};
-            patterns.unit.short = cldrPatterns["listPattern-type-unit"];
-            patterns.unit.medium = cldrPatterns["listPattern-type-unit"];
-            patterns.unit.long = cldrPatterns["listPattern-type-unit"];
-            patterns.unit.full = cldrPatterns["listPattern-type-unit"];
+        patterns.unit = {};
+        patterns.unit.short = cldrPatterns["listPattern-type-unit"];
+        patterns.unit.medium = cldrPatterns["listPattern-type-unit"];
+        patterns.unit.long = cldrPatterns["listPattern-type-unit"];
+        patterns.unit.full = cldrPatterns["listPattern-type-unit"];
 
-            if (cldrPatterns["listPattern-type-unit-short"]) {
-                patterns.unit.short = cldrPatterns["listPattern-type-unit-short"];
-                patterns.unit.medium = cldrPatterns["listPattern-type-unit-short"];
-            }
-            if (cldrPatterns["listPattern-type-unit-narrow"]) {
-                patterns.unit.short = cldrPatterns["listPattern-type-unit-narrow"];
-            }
-        } else {
-            patterns.unit = cldrPatterns["listPattern-type-unit"];
+        if (cldrPatterns["listPattern-type-unit-short"]) {
+            patterns.unit.short = cldrPatterns["listPattern-type-unit-short"];
+            patterns.unit.medium = cldrPatterns["listPattern-type-unit-short"];
+        }
+        if (cldrPatterns["listPattern-type-unit-narrow"]) {
+            patterns.unit.short = cldrPatterns["listPattern-type-unit-narrow"];
         }
     }
 

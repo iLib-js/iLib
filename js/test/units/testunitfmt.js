@@ -2633,7 +2633,7 @@ module.exports.testunitfmt = {
             maxFractionDigits: 4
         });
         var str = uf.format(m1);
-        test.equal(str, "6 feet 2.4 inches");
+        test.equal(str, "6 feet, 2.4 inches");
         test.done();
     },
 
@@ -2671,7 +2671,7 @@ module.exports.testunitfmt = {
             maxFractionDigits: 4
         });
         var str = uf.format(m1);
-        test.equal(str, "6 ft 2.4 in");
+        test.equal(str, "6 ft, 2.4 in");
         test.done();
     },
 
@@ -2689,7 +2689,7 @@ module.exports.testunitfmt = {
             locale: "en-US"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 gallon 1 cup 7 fluid ounces");
+        test.equal(str, "1 gallon, 1 cup, 7 fluid ounces");
         test.done();
     },
 

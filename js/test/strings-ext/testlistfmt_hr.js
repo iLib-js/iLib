@@ -1,7 +1,7 @@
 /*
  * testlistfmt_hr.js - test the list formatter object
  *
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,7 +61,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три"]), "jedan, dva i три");
+        test.equal(fmt.format(["jedan", "dva", "tri"]), "jedan, dva i tri");
         test.done();
     },
     
@@ -96,7 +96,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva"]), "jedan dva");
+        test.equal(fmt.format(["jedan", "dva"]), "jedan i dva");
         test.done();
     },
     
@@ -108,7 +108,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три"]), "jedan dva три");
+        test.equal(fmt.format(["jedan", "dva", "tri"]), "jedan, dva i tri");
         test.done();
     },
     
@@ -120,7 +120,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три", "četiri"]), "jedan dva три četiri");
+        test.equal(fmt.format(["jedan", "dva", "три", "četiri"]), "jedan, dva, три i četiri");
         test.done();
     },
     
@@ -132,16 +132,9 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три", "četiri", "пять"]), "jedan dva три četiri пять");
+        test.equal(fmt.format(["jedan", "dva", "три", "četiri", "pet"]), "jedan, dva, три, četiri i pet");
         test.done();
     },
-
-
-
-
-
-
-
 
     // hr-ME
     
@@ -174,7 +167,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три"]), "jedan, dva i три");
+        test.equal(fmt.format(["jedan", "dva", "tri"]), "jedan, dva i tri");
         test.done();
     },
     
@@ -209,7 +202,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva"]), "jedan dva");
+        test.equal(fmt.format(["jedan", "dva"]), "jedan i dva");
         test.done();
     },
     
@@ -221,7 +214,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три"]), "jedan dva три");
+        test.equal(fmt.format(["jedan", "dva", "tri"]), "jedan, dva i tri");
         test.done();
     },
     
@@ -233,7 +226,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три", "četiri"]), "jedan dva три četiri");
+        test.equal(fmt.format(["jedan", "dva", "tri", "četiri"]), "jedan, dva, tri i četiri");
         test.done();
     },
     
@@ -245,11 +238,9 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три", "četiri", "пять"]), "jedan dva три četiri пять");
+        test.equal(fmt.format(["jedan", "dva", "три", "četiri", "pet"]), "jedan, dva, три, četiri i pet");
         test.done();
     },
-
-
 
     testListFmtUnitStylehrMENumberFormatOneFull: function(test) {
         var fmt = new ListFmt({
@@ -286,7 +277,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три"]), "jedan, dva i три");
+        test.equal(fmt.format(["jedan", "dva", "tri"]), "jedan, dva i tri");
         test.done();
     },
     
@@ -299,7 +290,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три", "četiri"]), "jedan, dva, три i četiri");
+        test.equal(fmt.format(["jedan", "dva", "tri", "četiri"]), "jedan, dva, tri i četiri");
         test.done();
     },
     
@@ -312,7 +303,7 @@ module.exports.testlistfmt_hr = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["jedan", "dva", "три", "četiri", "пять"]), "jedan, dva, три, četiri i пять");
+        test.equal(fmt.format(["jedan", "dva", "tri", "četiri", "pet"]), "jedan, dva, tri, četiri i pet");
         test.done();
     }
 };
