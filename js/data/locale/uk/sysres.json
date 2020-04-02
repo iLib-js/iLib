@@ -153,8 +153,8 @@
     "c6": "С",
     "a0": "дп",
     "a1": "пп",
-    "G-1": "BCE",
-    "G1": "CE",
+    "G-1": "до н. е.",
+    "G1": "н. е.",
     "1#1 millisecond|#{num} milliseconds": "one#{num} мілісекунда|few#{num} мілісекунди|many#{num} мілісекунд|#{num} мілісекунди",
     "1#1 second|#{num} seconds": "one#{num} секунда|few#{num} секунди|many#{num} секунд|#{num} секунди",
     "1#1 minute|#{num} minutes": "one#{num} хвилина|few#{num} хвилини|many#{num} хвилин|#{num} хвилини",
@@ -232,9 +232,9 @@
     "separatorFull": ", ",
     "finalSeparatorFull": " і ",
     "separatorLong": ", ",
-    "finalSeparatorLong": ", ",
+    "finalSeparatorLong": " і ",
     "separatorMedium": ", ",
-    "finalSeparatorMedium": ", ",
+    "finalSeparatorMedium": " і ",
     "separatorShort": ", ",
-    "finalSeparatorShort": ", "
+    "finalSeparatorShort": " і "
 }

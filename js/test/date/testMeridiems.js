@@ -28,7 +28,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ص");
         test.equal(fmt[1].name, "م");
-        
+
         test.done();
     },
     testMeridiem_ar_IQ: function(test) {
@@ -38,7 +38,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ص");
         test.equal(fmt[1].name, "م");
-        
+
         test.done();
     },
     testMeridiem_ar_MA: function(test) {
@@ -48,7 +48,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ص");
         test.equal(fmt[1].name, "م");
-        
+
         test.done();
     },
     testMeridiem_as_IN: function(test) {
@@ -58,7 +58,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "পূৰ্বাহ্ন");
         test.equal(fmt[1].name, "অপৰাহ্ন");
-        
+
         test.done();
     },
     testMeridiem_bg_BG: function(test) {
@@ -68,7 +68,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "пр.об.");
         test.equal(fmt[1].name, "сл.об.");
-        
+
         test.done();
     },
     testMeridiem_bn_IN: function(test) {
@@ -78,7 +78,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_bs_Latn_BA: function(test) {
@@ -88,7 +88,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "prijepodne");
         test.equal(fmt[1].name, "popodne");
-        
+
         test.done();
     },
     testMeridiem_bs_Latn_ME: function(test) {
@@ -98,7 +98,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "prijepodne");
         test.equal(fmt[1].name, "popodne");
-        
+
         test.done();
     },
     testMeridiem_cs_CZ: function(test) {
@@ -108,7 +108,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "dop.");
         test.equal(fmt[1].name, "odp.");
-        
+
         test.done();
     },
     testMeridiem_da_DK: function(test) {
@@ -118,7 +118,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_de_AT: function(test) {
@@ -128,7 +128,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM"); //// CLDR 34 change
         test.equal(fmt[1].name, "PM"); //// CLDR 34 change
-        
+
         test.done();
     },
     testMeridiem_de_CH: function(test) {
@@ -138,7 +138,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_de_DE: function(test) {
@@ -148,7 +148,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_de_LU: function(test) {
@@ -158,7 +158,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_el_CY: function(test) {
@@ -168,7 +168,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "π.μ.");
         test.equal(fmt[1].name, "μ.μ.");
-        
+
         test.done();
     },
     testMeridiem_el_GR: function(test) {
@@ -178,7 +178,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "π.μ.");
         test.equal(fmt[1].name, "μ.μ.");
-        
+
         test.done();
     },
     testMeridiem_en_AM: function(test) {
@@ -188,7 +188,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_en_AU: function(test) {
@@ -198,7 +198,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_AZ: function(test) {
@@ -208,7 +208,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_en_CA: function(test) {
@@ -218,7 +218,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "a.m.");
         test.equal(fmt[1].name, "p.m.");
-        
+
         test.done();
     },
     testMeridiem_en_GB: function(test) {
@@ -228,7 +228,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_GH: function(test) {
@@ -238,7 +238,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_HK: function(test) {
@@ -248,7 +248,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_IE: function(test) {
@@ -258,7 +258,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "a.m.");
         test.equal(fmt[1].name, "p.m.");
-        
+
         test.done();
     },
     testMeridiem_en_IN: function(test) {
@@ -268,7 +268,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_IS: function(test) {
@@ -278,7 +278,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_en_JP: function(test) {
@@ -288,7 +288,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_en_KE: function(test) {
@@ -298,7 +298,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_KR: function(test) {
@@ -308,7 +308,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_en_LK: function(test) {
@@ -318,7 +318,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_en_MM: function(test) {
@@ -328,7 +328,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_en_MW: function(test) {
@@ -338,7 +338,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_MY: function(test) {
@@ -348,7 +348,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_NG: function(test) {
@@ -358,7 +358,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-         
+
         test.done();
     },
     testMeridiem_en_NZ: function(test) {
@@ -368,7 +368,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_PH: function(test) {
@@ -378,7 +378,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_PR: function(test) {
@@ -388,7 +388,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_en_SG: function(test) {
@@ -398,7 +398,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_US: function(test) {
@@ -408,7 +408,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_en_UG: function(test) {
@@ -418,7 +418,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_ZA: function(test) {
@@ -428,7 +428,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_ZM: function(test) {
@@ -438,7 +438,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_es_AR: function(test) {
@@ -446,9 +446,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-AR"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_BO: function(test) {
@@ -456,9 +456,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-BO"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_CL: function(test) {
@@ -466,9 +466,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-CL"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_CO: function(test) {
@@ -476,9 +476,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-CO"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_DO: function(test) {
@@ -486,9 +486,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-DO"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_EC: function(test) {
@@ -496,9 +496,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-EC"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_ES: function(test) {
@@ -506,9 +506,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-ES"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_GT: function(test) {
@@ -516,9 +516,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-GT"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_HN: function(test) {
@@ -526,9 +526,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-HN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_MX: function(test) {
@@ -536,9 +536,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-MX"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_NI: function(test) {
@@ -546,9 +546,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-NI"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_PA: function(test) {
@@ -556,9 +556,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-PA"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_PE: function(test) {
@@ -566,9 +566,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-PE"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_PR: function(test) {
@@ -576,9 +576,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-PR"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_PY: function(test) {
@@ -586,9 +586,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-PY"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_SV: function(test) {
@@ -596,9 +596,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-SV"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_US: function(test) {
@@ -606,9 +606,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-US"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_UY: function(test) {
@@ -616,9 +616,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-UY"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_VE: function(test) {
@@ -626,9 +626,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-VE"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_et_EE: function(test) {
@@ -638,7 +638,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fa_AF: function(test) {
@@ -648,7 +648,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "قبل‌ازظهر");
         test.equal(fmt[1].name, "بعدازظهر");
-        
+
         test.done();
     },
     testMeridiem_fa_IR: function(test) {
@@ -658,7 +658,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "قبل‌ازظهر");
         test.equal(fmt[1].name, "بعدازظهر");
-        
+
         test.done();
     },
     testMeridiem_fi_FI: function(test) {
@@ -668,7 +668,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ap.");
         test.equal(fmt[1].name, "ip.");
-        
+
         test.done();
     },
     testMeridiem_fr_BE: function(test) {
@@ -678,7 +678,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_CA: function(test) {
@@ -688,7 +688,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "a.m.");
         test.equal(fmt[1].name, "p.m.");
-        
+
         test.done();
     },
     testMeridiem_fr_CH: function(test) {
@@ -698,7 +698,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_FR: function(test) {
@@ -708,7 +708,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_LU: function(test) {
@@ -718,7 +718,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_ga_IE: function(test) {
@@ -728,7 +728,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "r.n.");
         test.equal(fmt[1].name, "i.n.");
-        
+
         test.done();
     },
     testMeridiem_gu_IN: function(test) {
@@ -738,7 +738,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_he_IL: function(test) {
@@ -748,16 +748,16 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "לפנה״צ");
         test.equal(fmt[1].name, "אחה״צ");
-        
+
         test.done();
     },
     testMeridiem_hi_IN: function(test) {
         test.expect(3);
         var fmt = DateFmt.getMeridiemsRange({locale:"hi-IN"});
         test.ok(fmt !== null);
-        
-        test.equal(fmt[0].name, "पूर्वाह्न");
-        test.equal(fmt[1].name, "अपराह्न");
+
+        test.equal(fmt[0].name, 'am');
+        test.equal(fmt[1].name, 'pm');
         test.done();
     },
     testMeridiem_hr_HR: function(test) {
@@ -767,7 +767,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_hr_ME: function(test) {
@@ -777,7 +777,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_hr_HU: function(test) {
@@ -787,7 +787,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_id_ID: function(test) {
@@ -797,7 +797,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_is_IS: function(test) {
@@ -807,7 +807,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "f.h.");
         test.equal(fmt[1].name, "e.h.");
-        
+
         test.done();
     },
     testMeridiem_it_CH: function(test) {
@@ -817,7 +817,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_it_IT: function(test) {
@@ -827,7 +827,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_ja_JP: function(test) {
@@ -837,7 +837,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "午前");
         test.equal(fmt[1].name, "午後");
-        
+
         test.done();
     },
     testMeridiem_kk_KZ: function(test) {
@@ -847,14 +847,14 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_kn_IN: function(test) {
         test.expect(3);
         var fmt = DateFmt.getMeridiemsRange({locale:"kn-IN"});
         test.ok(fmt !== null);
-        
+
         test.equal(fmt[0].name, "ಪೂರ್ವಾಹ್ನ");
         test.equal(fmt[1].name, "ಅಪರಾಹ್ನ");
         test.done();
@@ -866,7 +866,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "오전");
         test.equal(fmt[1].name, "오후");
-        
+
         test.done();
     },
     testMeridiem_ku_IQ: function(test) {
@@ -874,9 +874,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"ku-IQ"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "ب.ن");
-        test.equal(fmt[1].name, "د.ن");
-        
+        test.equal(fmt[0].name, 'ب.ن');
+        test.equal(fmt[1].name, 'د.ن');
+
         test.done();
     },
     testMeridiem_lt_LT: function(test) {
@@ -886,7 +886,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "priešpiet");
         test.equal(fmt[1].name, "popiet");
-        
+
         test.done();
     },
     testMeridiem_lv_LV: function(test) {
@@ -896,7 +896,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "priekšpusdienā");
         test.equal(fmt[1].name, "pēcpusdienā");
-        
+
         test.done();
     },
     testMeridiem_mk_MK: function(test) {
@@ -906,7 +906,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "претпладне");
         test.equal(fmt[1].name, "попладне");
-        
+
         test.done();
     },
     testMeridiem_ml_IN: function(test) {
@@ -916,7 +916,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_mr_IN: function(test) {
@@ -926,7 +926,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "म.पू.");
         test.equal(fmt[1].name, "म.उ.");
-        
+
         test.done();
     },
     testMeridiem_ms_MY: function(test) {
@@ -936,7 +936,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "PG");
         test.equal(fmt[1].name, "PTG");
-        
+
         test.done();
     },
     testMeridiem_nb_NO: function(test) {
@@ -946,7 +946,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "a.m.");
         test.equal(fmt[1].name, "p.m.");
-        
+
         test.done();
     },
     testMeridiem_nl_BE: function(test) {
@@ -956,7 +956,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "a.m.");
         test.equal(fmt[1].name, "p.m.");
-        
+
         test.done();
     },
     testMeridiem_nl_NL: function(test) {
@@ -966,7 +966,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "a.m.");
         test.equal(fmt[1].name, "p.m.");
-        
+
         test.done();
     },
     testMeridiem_pa_Guru_IN: function(test) {
@@ -976,7 +976,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ਪੂ.ਦੁ.");
         test.equal(fmt[1].name, "ਬਾ.ਦੁ.");
-        
+
         test.done();
     },
     testMeridiem_pl_PL: function(test) {
@@ -986,7 +986,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_pt_BR: function(test) {
@@ -996,7 +996,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_pt_PT: function(test) {
@@ -1006,7 +1006,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "da manhã");
         test.equal(fmt[1].name, "da tarde");
-        
+
         test.done();
     },
     testMeridiem_ro_RO: function(test) {
@@ -1016,7 +1016,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "a.m.");
         test.equal(fmt[1].name, "p.m.");
-        
+
         test.done();
     },
     testMeridiem_sr_Cyrl_RS: function(test) {
@@ -1026,7 +1026,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "пре подне");
         test.equal(fmt[1].name, "по подне");
-        
+
         test.done();
     },
     testMeridiem_sr_Latn_RS: function(test) {
@@ -1036,7 +1036,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "pre podne");
         test.equal(fmt[1].name, "po podne");
-        
+
         test.done();
     },
     testMeridiem_ru_BY: function(test) {
@@ -1046,7 +1046,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_ru_KG: function(test) {
@@ -1056,7 +1056,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_ru_KZ: function(test) {
@@ -1066,7 +1066,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_ru_GE: function(test) {
@@ -1076,7 +1076,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_ru_RU: function(test) {
@@ -1086,7 +1086,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_ru_UA: function(test) {
@@ -1096,7 +1096,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_sk_SK: function(test) {
@@ -1106,7 +1106,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_sl_SI: function(test) {
@@ -1116,7 +1116,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "dop.");
         test.equal(fmt[1].name, "pop.");
-        
+
         test.done();
     },
     testMeridiem_sq_AL: function(test) {
@@ -1125,7 +1125,7 @@ module.exports.testmeridiems = {
         test.ok(fmt !== null);
         test.equal(fmt[0].name, "e paradites");
         test.equal(fmt[1].name, "e pasdites");
-        
+
         test.done();
     },
     testMeridiem_sq_ME: function(test) {
@@ -1134,7 +1134,7 @@ module.exports.testmeridiems = {
         test.ok(fmt !== null);
         test.equal(fmt[0].name, "e paradites");
         test.equal(fmt[1].name, "e pasdites");
-        
+
         test.done();
     },
     testMeridiem_sv_FI: function(test) {
@@ -1144,7 +1144,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "fm");
         test.equal(fmt[1].name, "em");
-        
+
         test.done();
     },
     testMeridiem_sv_SE: function(test) {
@@ -1154,7 +1154,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "fm");
         test.equal(fmt[1].name, "em");
-        
+
         test.done();
     },
     testMeridiem_ta_IN: function(test) {
@@ -1164,7 +1164,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "முற்பகல்");
         test.equal(fmt[1].name, "பிற்பகல்");
-        
+
         test.done();
     },
     testMeridiem_te_IN: function(test) {
@@ -1174,7 +1174,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_th_TH: function(test) {
@@ -1184,7 +1184,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ก่อนเที่ยง");
         test.equal(fmt[1].name, "หลังเที่ยง");
-        
+
         test.done();
     },
     testMeridiem_tr_AM: function(test) {
@@ -1194,7 +1194,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ÖÖ");
         test.equal(fmt[1].name, "ÖS");
-        
+
         test.done();
     },
     testMeridiem_tr_AZ: function(test) {
@@ -1204,7 +1204,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ÖÖ");
         test.equal(fmt[1].name, "ÖS");
-        
+
         test.done();
     },
     testMeridiem_tr_CY: function(test) {
@@ -1214,7 +1214,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ÖÖ");
         test.equal(fmt[1].name, "ÖS");
-        
+
         test.done();
     },
     testMeridiem_tr_TR: function(test) {
@@ -1224,7 +1224,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ÖÖ");
         test.equal(fmt[1].name, "ÖS");
-        
+
         test.done();
     },
     testMeridiem_uk_UA: function(test) {
@@ -1234,7 +1234,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "дп");
         test.equal(fmt[1].name, "пп");
-        
+
         test.done();
     },
     testMeridiem_ur_IN: function(test) {
@@ -1244,7 +1244,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_uz_Latn_UZ: function(test) {
@@ -1254,7 +1254,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "TO");
         test.equal(fmt[1].name, "TK");
-        
+
         test.done();
     },
     testMeridiem_vi_VN: function(test) {
@@ -1264,7 +1264,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "SA");
         test.equal(fmt[1].name, "CH");
-        
+
         test.done();
     },
     testMeridiem_zh_Hans_CN: function(test) {
@@ -1274,7 +1274,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "上午");
         test.equal(fmt[1].name, "下午");
-        
+
         test.done();
     },
     testMeridiem_zh_Hant_HK: function(test) {
@@ -1284,7 +1284,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "上午");
         test.equal(fmt[1].name, "下午");
-        
+
         test.done();
     },
     testMeridiem_zh_Hant_TW: function(test) {
@@ -1294,7 +1294,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "上午");
         test.equal(fmt[1].name, "下午");
-        
+
         test.done();
     },
     testMeridiem_en_GE: function(test) {
@@ -1304,7 +1304,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_en_CN: function(test) {
@@ -1314,7 +1314,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_en_MX: function(test) {
@@ -1324,7 +1324,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_en_TW: function(test) {
@@ -1334,7 +1334,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_mn_MN: function(test) {
@@ -1344,7 +1344,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ү.ө.");
         test.equal(fmt[1].name, "ү.х.");
-        
+
         test.done();
     },
     testMeridiem_es_CA: function(test) {
@@ -1352,9 +1352,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-CA"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_af_ZA: function(test) {
@@ -1364,7 +1364,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "vm.");
         test.equal(fmt[1].name, "nm.");
-        
+
         test.done();
     },
     testMeridiem_am_ET: function(test) {
@@ -1391,7 +1391,7 @@ module.exports.testmeridiems = {
         test.equal(fmt[4].name, "ከሌሊቱ");
         test.equal(fmt[4].start, "18:00");
         test.equal(fmt[4].end, "23:59");
-        
+
         test.done();
     },
     testMeridiem_ha_Latn_NG: function(test) {
@@ -1399,9 +1399,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"ha-Latn-NG"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "AM");
-        test.equal(fmt[1].name, "PM");
-        
+        test.equal(fmt[0].name, 'Safiya');
+        test.equal(fmt[1].name, 'Yamma');
+
         test.done();
     },
     testMeridiem_or_IN: function(test) {
@@ -1411,7 +1411,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_az_Latn_AZ: function(test) {
@@ -1421,7 +1421,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_km_KH: function(test) {
@@ -1431,7 +1431,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_si_LK: function(test) {
@@ -1441,7 +1441,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "පෙ.ව.");
         test.equal(fmt[1].name, "ප.ව.");
-        
+
         test.done();
     },
     testMeridiem_ar_AE: function(test) {
@@ -1451,7 +1451,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ص");
         test.equal(fmt[1].name, "م");
-        
+
         test.done();
     },
     testMeridiem_ar_BH: function(test) {
@@ -1461,7 +1461,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ص");
         test.equal(fmt[1].name, "م");
-        
+
         test.done();
     },
     testMeridiem_ar_DJ: function(test) {
@@ -1471,7 +1471,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ص");
         test.equal(fmt[1].name, "م");
-        
+
         test.done();
     },
     testMeridiem_ar_DZ: function(test) {
@@ -1481,7 +1481,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ص");
         test.equal(fmt[1].name, "م");
-        
+
         test.done();
     },
     testMeridiem_ar_JO: function(test) {
@@ -1491,7 +1491,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ص");
         test.equal(fmt[1].name, "م");
-        
+
         test.done();
     },
     testMeridiem_ar_KW: function(test) {
@@ -1501,7 +1501,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ص");
         test.equal(fmt[1].name, "م");
-        
+
         test.done();
     },
     testMeridiem_ar_LB: function(test) {
@@ -1511,7 +1511,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ص");
         test.equal(fmt[1].name, "م");
-        
+
         test.done();
     },
     testMeridiem_ar_LY: function(test) {
@@ -1521,7 +1521,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ص");
         test.equal(fmt[1].name, "م");
-        
+
         test.done();
     },
     testMeridiem_ar_MR: function(test) {
@@ -1531,7 +1531,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ص");
         test.equal(fmt[1].name, "م");
-        
+
         test.done();
     },
     testMeridiem_ar_OM: function(test) {
@@ -1541,7 +1541,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ص");
         test.equal(fmt[1].name, "م");
-        
+
         test.done();
     },
     testMeridiem_ar_QA: function(test) {
@@ -1551,7 +1551,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ص");
         test.equal(fmt[1].name, "م");
-        
+
         test.done();
     },
     testMeridiem_ar_SA: function(test) {
@@ -1571,7 +1571,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ص");
         test.equal(fmt[1].name, "م");
-        
+
         test.done();
     },
     testMeridiem_ar_SY: function(test) {
@@ -1581,7 +1581,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "ص");
         test.equal(fmt[1].name, "م");
-        
+
         test.done();
     },
     testMeridiem_ar_TN: function(test) {
@@ -1611,7 +1611,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_en_GM: function(test) {
@@ -1621,7 +1621,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_LR: function(test) {
@@ -1631,7 +1631,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_PK: function(test) {
@@ -1641,7 +1641,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_RW: function(test) {
@@ -1651,7 +1651,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_SD: function(test) {
@@ -1661,7 +1661,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_SL: function(test) {
@@ -1671,7 +1671,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_en_TZ: function(test) {
@@ -1681,7 +1681,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "am");
         test.equal(fmt[1].name, "pm");
-        
+
         test.done();
     },
     testMeridiem_es_CR: function(test) {
@@ -1689,9 +1689,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-CR"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_GQ: function(test) {
@@ -1699,9 +1699,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-GQ"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_es_PH: function(test) {
@@ -1709,9 +1709,9 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-PH"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a. m.");
-        test.equal(fmt[1].name, "p. m.");
-        
+        test.equal(fmt[0].name, 'a. m.');
+        test.equal(fmt[1].name, 'p. m.');
+
         test.done();
     },
     testMeridiem_fr_BF: function(test) {
@@ -1721,7 +1721,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_BJ: function(test) {
@@ -1731,7 +1731,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_CD: function(test) {
@@ -1741,7 +1741,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_CF: function(test) {
@@ -1751,7 +1751,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_CG: function(test) {
@@ -1761,7 +1761,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_CI: function(test) {
@@ -1771,7 +1771,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_CM: function(test) {
@@ -1781,7 +1781,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "matin");
         test.equal(fmt[1].name, "soir");
-        
+
         test.done();
     },
     testMeridiem_fr_GQ: function(test) {
@@ -1791,7 +1791,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_DJ: function(test) {
@@ -1801,7 +1801,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_DZ: function(test) {
@@ -1811,7 +1811,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_GA: function(test) {
@@ -1821,7 +1821,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_GN: function(test) {
@@ -1831,7 +1831,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_LB: function(test) {
@@ -1841,7 +1841,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_ML: function(test) {
@@ -1851,7 +1851,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_RW: function(test) {
@@ -1861,7 +1861,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_SN: function(test) {
@@ -1871,7 +1871,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_fr_TG: function(test) {
@@ -1881,7 +1881,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_ms_SG: function(test) {
@@ -1891,17 +1891,17 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "PG");
         test.equal(fmt[1].name, "PTG");
-        
+
         test.done();
     },
     testMeridiem_pa_Arab_PK: function(test) {
         test.expect(3);
         var fmt = DateFmt.getMeridiemsRange({locale:"pa-Arab-PK"});
         test.ok(fmt !== null);
-        
+
         test.equal(fmt[0].name, 'AM');
         test.equal(fmt[1].name, 'PM');
-        
+
         test.done();
     },
     testMeridiem_pt_AO: function(test) {
@@ -1911,7 +1911,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "da manhã");
         test.equal(fmt[1].name, "da tarde");
-        
+
         test.done();
     },
     testMeridiem_pt_GQ: function(test) {
@@ -1921,7 +1921,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "da manhã");
         test.equal(fmt[1].name, "da tarde");
-        
+
         test.done();
     },
     testMeridiem_pt_CV: function(test) {
@@ -1931,7 +1931,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "da manhã");
         test.equal(fmt[1].name, "da tarde");
-        
+
         test.done();
     },
     testMeridiem_ur_PK: function(test) {
@@ -1941,7 +1941,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "PM");
-        
+
         test.done();
     },
     testMeridiem_zh_Hans_SG: function(test) {
@@ -1951,7 +1951,7 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "上午");
         test.equal(fmt[1].name, "下午");
-        
+
         test.done();
     },
     testMeridiem_zh_Hans_MY: function(test) {

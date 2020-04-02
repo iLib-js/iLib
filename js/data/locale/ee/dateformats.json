@@ -121,15 +121,15 @@
                 "s": "{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}"
             },
             "c10": {
-                "f": "{sm} {sd} – {ed} lia{ey}",
-                "l": "{sm} {sd} – {ed} lia{ey}",
-                "m": "{sm} {sd} – {ed} lia,{ey}",
+                "f": "{sm} {sd} – {ed} lia {ey}",
+                "l": "{sm} {sd} – {ed} lia {ey}",
+                "m": "{sm} {sd} – {ed} lia, {ey}",
                 "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
             },
             "c11": {
-                "f": "{sm} {sd} – {em} {ed} lia{ey}",
-                "l": "{sm} {sd} – {em} {ed} lia{ey}",
-                "m": "{sm} {sd} – {em} {ed} lia,{ey}",
+                "f": "{sm} {sd} – {em} {ed} lia {ey}",
+                "l": "{sm} {sd} – {em} {ed} lia {ey}",
+                "m": "{sm} {sd} – {em} {ed} lia, {ey}",
                 "s": "{sm}/{sd} – {em}/{ed}/{ey}"
             },
             "c12": {

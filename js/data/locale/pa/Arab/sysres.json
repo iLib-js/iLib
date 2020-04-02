@@ -152,5 +152,7 @@
     "#{num}d ago": "#-{num} d",
     "#{num}w ago": "#-{num} w",
     "#{num}mo ago": "#-{num} m",
-    "#{num}y ago": "#-{num} y"
+    "#{num}y ago": "#-{num} y",
+    "separatorShort": ", ",
+    "finalSeparatorShort": ", "
 }

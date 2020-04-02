@@ -1,7 +1,7 @@
 /*
  * testdurfmt_ar_SA.js - test the duration formatter object
  *
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,7 +49,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏١ سنة، ١ شهر، ١ أ، ١ ي، ١ س، ١ د، ١ ث");
+        test.equal(duration.toString(), "‏سنة وشهر و١ أ و١ ي و١ س و١ د و١ ث");
         test.done();
     },
 
@@ -71,7 +71,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏١ سنة، ١ شهر، ١ أ، ١ ي، ١ س، ١ د، ١ ث");
+        test.equal(duration.toString(), "‏سنة وشهر و١ أ و١ ي و١ س و١ د و١ ث");
         test.done();
     },
 
@@ -93,7 +93,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏١ سنة، ١ شهر، ١ أ، ١ ي، ‏١:٠١:٠١");
+        test.equal(duration.toString(), "‏سنة وشهر و١ أ و١ ي و‏١:٠١:٠١");
         test.done();
     },
 
@@ -114,7 +114,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏١ سنة، ١ شهر، ١ أ، ١ ي، ١ س، ١ د، ١ ث");
+        test.equal(duration.toString(), "‏سنة وشهر و١ أ و١ ي و١ س و١ د و١ ث");
         test.done();
     },
 
@@ -135,7 +135,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏سنة واحدة، وشهر، وأسبوع، ويوم، و١ س، و١ د، و١ ث");
+        test.equal(duration.toString(), "‏سنة، وشهر، وأسبوع، ويوم، و١ س، و١ د، و١ ث");
         test.done();
     },
 
@@ -177,7 +177,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 2,
             second: 2
         });
-        test.equal(duration.toString(), "‏٢ سنة، ٢ شهر، ٢ أ، ٢ ي، ٢ س، ٢ د، ٢ ث");
+        test.equal(duration.toString(), "‏سنتان وشهران و٢ أ و٢ ي و٢ س و٢ د و٢ ث");
         test.done();
     },
 
@@ -199,7 +199,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 2,
             second: 2
         });
-        test.equal(duration.toString(), "‏٢ سنة، ٢ شهر، ٢ أ، ٢ ي، ٢ س، ٢ د، ٢ ث");
+        test.equal(duration.toString(), "‏سنتان وشهران و٢ أ و٢ ي و٢ س و٢ د و٢ ث");
         test.done();
     },
 
@@ -221,7 +221,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 2,
             second: 2
         });
-        test.equal(duration.toString(), "‏٢ سنة، ٢ شهر، ٢ أ، ٢ ي، ‏٢:٠٢:٠٢");
+        test.equal(duration.toString(), "‏سنتان وشهران و٢ أ و٢ ي و‏٢:٠٢:٠٢");
         test.done();
     },
 
@@ -242,7 +242,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 2,
             second: 2
         });
-        test.equal(duration.toString(), "‏٢ سنة، ٢ شهر، ٢ أ، ٢ ي، ٢ س، ٢ د، ٢ ث");
+        test.equal(duration.toString(), "‏سنتان وشهران و٢ أ و٢ ي و٢ س و٢ د و٢ ث");
         test.done();
     },
 
@@ -263,7 +263,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 2,
             second: 2
         });
-        test.equal(duration.toString(), "‏سنتان، و٢ شهر، وأسبوعان، ويومان، و٢ س، و٢ د، و٢ ث");
+        test.equal(duration.toString(), "‏سنتان، وشهران، وأسبوعان، ويومان، و٢ س، و٢ د، و٢ ث");
         test.done();
     },
 
@@ -305,7 +305,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 3,
             second: 3
         });
-        test.equal(duration.toString(), "‏٣ سنة، ٣ شهر، ٣ أ، ٣ ي، ٣ س، ٣ د، ٣ ث");
+        test.equal(duration.toString(), "‏٣ سنوات و٣ أشهر و٣ أ و٣ ي و٣ س و٣ د و٣ ث");
         test.done();
     },
 
@@ -327,7 +327,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 3,
             second: 3
         });
-        test.equal(duration.toString(), "‏٣ سنة، ٣ شهر، ٣ أ، ٣ ي، ٣ س، ٣ د، ٣ ث");
+        test.equal(duration.toString(), "‏٣ سنوات و٣ أشهر و٣ أ و٣ ي و٣ س و٣ د و٣ ث");
         test.done();
     },
 
@@ -349,7 +349,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 3,
             second: 3
         });
-        test.equal(duration.toString(), "‏٣ سنة، ٣ شهر، ٣ أ، ٣ ي، ‏٣:٠٣:٠٣");
+        test.equal(duration.toString(), "‏٣ سنوات و٣ أشهر و٣ أ و٣ ي و‏٣:٠٣:٠٣");
         test.done();
     },
 
@@ -370,7 +370,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 3,
             second: 3
         });
-        test.equal(duration.toString(), "‏٣ سنة، ٣ شهر، ٣ أ، ٣ ي، ٣ س، ٣ د، ٣ ث");
+        test.equal(duration.toString(), "‏٣ سنوات و٣ أشهر و٣ أ و٣ ي و٣ س و٣ د و٣ ث");
         test.done();
     },
 
@@ -391,7 +391,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 3,
             second: 3
         });
-        test.equal(duration.toString(), "‏٣ سنة، و٣ شهر، و٣ أسابيع، و٣ يوم، و٣ س، و٣ د، و٣ ث");
+        test.equal(duration.toString(), "‏٣ سنوات، و٣ أشهر، و٣ أسابيع، و٣ أيام، و٣ س، و٣ د، و٣ ث");
         test.done();
     },
 
@@ -412,7 +412,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 3,
             second: 3
         });
-        test.equal(duration.toString(), "‏٣ سنوات، و٣ أشهر، و٣ أسابيع، و٣ أيام، و٣ ساعات، و٣ دقائق، و٣ ثوان");
+        test.equal(duration.toString(), "‏٣ سنوات، و٣ أشهر، و٣ أسابيع، و٣ أيام، و٣ ساعات، و٣ دقائق، و٣ ثوانٍ");
         test.done();
     },
 
@@ -433,7 +433,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 11,
             second: 11
         });
-        test.equal(duration.toString(), "‏١١ سنة، ١١ شهر، ١١ أ، ١١ ي، ١١ س، ١١ د، ١١ ث");
+        test.equal(duration.toString(), "‏١١ سنة و١١ شهرًا و١١ أ و١١ ي و١١ س و١١ د و١١ ث");
         test.done();
     },
 
@@ -455,7 +455,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 11,
             second: 11
         });
-        test.equal(duration.toString(), "‏١١ سنة، ١١ شهر، ١١ أ، ١١ ي، ١١ س، ١١ د، ١١ ث");
+        test.equal(duration.toString(), "‏١١ سنة و١١ شهرًا و١١ أ و١١ ي و١١ س و١١ د و١١ ث");
         test.done();
     },
 
@@ -477,7 +477,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 11,
             second: 11
         });
-        test.equal(duration.toString(), "‏١١ سنة، ١١ شهر، ١١ أ، ١١ ي، ‏١١:١١:١١");
+        test.equal(duration.toString(), "‏١١ سنة و١١ شهرًا و١١ أ و١١ ي و‏١١:١١:١١");
         test.done();
     },
 
@@ -498,7 +498,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 11,
             second: 11
         });
-        test.equal(duration.toString(), "‏١١ سنة، ١١ شهر، ١١ أ، ١١ ي، ١١ س، ١١ د، ١١ ث");
+        test.equal(duration.toString(), "‏١١ سنة و١١ شهرًا و١١ أ و١١ ي و١١ س و١١ د و١١ ث");
         test.done();
     },
 
@@ -519,7 +519,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 11,
             second: 11
         });
-        test.equal(duration.toString(), "‏١١ سنة، و١١ شهر، و١١ أسبوعًا، و١١ يوم، و١١ س، و١١ د، و١١ ث");
+        test.equal(duration.toString(), "‏١١ سنة، و١١ شهرًا، و١١ أسبوعًا، و١١ يومًا، و١١ س، و١١ د، و١١ ث");
         test.done();
     },
 
@@ -658,7 +658,7 @@ module.exports.testdurfmt_ar_SA = {
                     minute: 3,
                     second: 3
                 });
-                test.equal(duration.toString(), "‏٣ سنوات، و٣ أشهر، و٣ أسابيع، و٣ أيام، و٣ ساعات، و٣ دقائق، و٣ ثوان");
+                test.equal(duration.toString(), "‏٣ سنوات، و٣ أشهر، و٣ أسابيع، و٣ أيام، و٣ ساعات، و٣ دقائق، و٣ ثوانٍ");
                 test.done();
             }
         });
@@ -682,7 +682,7 @@ module.exports.testdurfmt_ar_SA = {
                     minute: 3,
                     second: 3
                 });
-                test.equal(duration.toString(), "‏٣ سنوات، و٣ أشهر، و٣ أسابيع، و٣ أيام، و٣ ساعات، و٣ دقائق، و٣ ثوان");
+                test.equal(duration.toString(), "‏٣ سنوات، و٣ أشهر، و٣ أسابيع، و٣ أيام، و٣ ساعات، و٣ دقائق، و٣ ثوانٍ");
                 test.done();
             }
         });
@@ -755,7 +755,7 @@ module.exports.testdurfmt_ar_SA = {
                     minute: 1,
                     second: 1
                 });
-                test.equal(duration.toString(), "‏١ سنة، ١ شهر، ١ أ، ١ ي، ‏١:٠١:٠١");
+                test.equal(duration.toString(), "‏سنة وشهر و١ أ و١ ي و‏١:٠١:٠١");
                 test.done();
             }
         });
@@ -781,7 +781,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏1 سنة، 1 شهر، 1 أ، 1 ي، 1 س، 1 د، 1 ث");
+        test.equal(duration.toString(), "‏سنة وشهر و1 أ و1 ي و1 س و1 د و1 ث");
         test.done();
     },
 
@@ -804,7 +804,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏1 سنة، 1 شهر، 1 أ، 1 ي، 1 س، 1 د، 1 ث");
+        test.equal(duration.toString(), "‏سنة وشهر و1 أ و1 ي و1 س و1 د و1 ث");
         test.done();
     },
 
@@ -827,7 +827,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏1 سنة، 1 شهر، 1 أ، 1 ي، ‏1:01:01");
+        test.equal(duration.toString(), "‏سنة وشهر و1 أ و1 ي و‏1:01:01");
         test.done();
     },
 
@@ -849,7 +849,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏1 سنة، 1 شهر، 1 أ، 1 ي، 1 س، 1 د، 1 ث");
+        test.equal(duration.toString(), "‏سنة وشهر و1 أ و1 ي و1 س و1 د و1 ث");
         test.done();
     },
 
@@ -871,7 +871,7 @@ module.exports.testdurfmt_ar_SA = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏سنة واحدة، وشهر، وأسبوع، ويوم، و1 س، و1 د، و1 ث");
+        test.equal(duration.toString(), "‏سنة، وشهر، وأسبوع، ويوم، و1 س، و1 د، و1 ث");
         test.done();
     },
 
@@ -968,7 +968,7 @@ module.exports.testdurfmt_ar_SA = {
                     minute: 1,
                     second: 1
                 });
-                test.equal(duration.toString(), "‏1 سنة، 1 شهر، 1 أ، 1 ي، ‏1:01:01");
+                test.equal(duration.toString(), "‏سنة وشهر و1 أ و1 ي و‏1:01:01");
                 test.done();
             }
         });
