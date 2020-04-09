@@ -1,5 +1,23 @@
 {
     "generated": true,
+    "native_numfmt": {
+        "script": "Java",
+        "decimalChar": ",",
+        "groupChar": ".",
+        "pctChar": "%",
+        "exponential": "E",
+        "prigroupSize": 3,
+        "currencyFormats": {
+            "common": "{s} {n}",
+            "commonNegative": "-{s} {n}"
+        },
+        "negativenumFmt": "-{n}",
+        "pctFmt": "{n}%",
+        "negativepctFmt": "-{n}%",
+        "roundingMode": "halfdown",
+        "digits": "꧐꧑꧒꧓꧔꧕꧖꧗꧘꧙",
+        "useNative": true
+    },
     "numfmt": {
         "decimalChar": ",",
         "groupChar": "."

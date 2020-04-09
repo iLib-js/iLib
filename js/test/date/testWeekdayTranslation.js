@@ -32,7 +32,7 @@ module.exports.testWeekdayTranslation = {
     },
     testWeekdayTranslation_ar_EG: function(test) {
         test.expect(28);
-        
+
         // full -> wide, long -> abbreviate
         // medium -> short
         // short: narrow
@@ -67,7 +67,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -86,7 +86,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
 
         test.done();
@@ -125,7 +125,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -138,7 +138,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "ح");
         test.equal(value[1], "ن");
         test.equal(value[2], "ث");
@@ -157,7 +157,7 @@ module.exports.testWeekdayTranslation = {
         // short: narrow
         var fmt, value = [], i;
         fmt = new DateFmt({locale:"ar-MA", date:"w", length: "full", useNative:false, timezone:"local"});
-        
+
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
@@ -185,7 +185,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -204,7 +204,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
 
         test.done();
@@ -267,7 +267,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "ব");
         test.equal(value[5], "শ");
         test.equal(value[6], "শ");
-        
+
         test.done();
     },
     testWeekdayTranslation_bg_BG: function(test) {
@@ -377,10 +377,10 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "বৃ");
         test.equal(value[5], "শু");
         test.equal(value[6], "শ");
-        
+
         test.done();
     },
-    
+
     testWeekdayTranslation_bs_Latn_BA: function(test) {
         test.expect(28);
         var fmt, value = [], i;
@@ -434,7 +434,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Č");
         test.equal(value[5], "P");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_bs_Latn_ME: function(test) {
@@ -447,7 +447,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "nedjelja");
         test.equal(value[1], "ponedjeljak");
         test.equal(value[2], "utorak");
@@ -494,7 +494,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Č");
         test.equal(value[5], "P");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_cs_CZ: function(test) {
@@ -551,7 +551,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Č");
         test.equal(value[5], "P");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_da_DK: function(test) {
@@ -604,7 +604,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "S");
         test.equal(value[1], "M");
         test.equal(value[2], "T");
@@ -612,7 +612,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "L");
-        
+
         test.done();
     },
     testWeekdayTranslation_de_AT: function(test) {
@@ -669,7 +669,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "D");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_de_CH: function(test) {
@@ -727,7 +727,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "D");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_de_DE: function(test) {
@@ -841,7 +841,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "D");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_el_CY: function(test) {
@@ -894,7 +894,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Κ");
         test.equal(value[1], "Δ");
         test.equal(value[2], "Τ");
@@ -902,7 +902,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Π");
         test.equal(value[5], "Π");
         test.equal(value[6], "Σ");
-        
+
         test.done();
     },
     testWeekdayTranslation_el_GR: function(test) {
@@ -929,7 +929,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Κυρ");
         test.equal(value[1], "Δευ");
         test.equal(value[2], "Τρί");
@@ -963,7 +963,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Π");
         test.equal(value[5], "Π");
         test.equal(value[6], "Σ");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_AM: function(test) {
@@ -1023,7 +1023,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_AU: function(test) {
@@ -1083,7 +1083,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Th.");
         test.equal(value[5], "F.");
         test.equal(value[6], "Sa.");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_AZ: function(test) {
@@ -1139,7 +1139,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_CA: function(test) {
@@ -1199,7 +1199,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_GB: function(test) {
@@ -1259,7 +1259,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_GH: function(test) {
@@ -1318,7 +1318,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_HK: function(test) {
@@ -1378,7 +1378,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_IE: function(test) {
@@ -1438,7 +1438,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_IN: function(test) {
@@ -1498,7 +1498,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_IS: function(test) {
@@ -1613,7 +1613,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_KE: function(test) {
@@ -1672,7 +1672,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_KR: function(test) {
@@ -1730,7 +1730,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_LK: function(test) {
@@ -1789,7 +1789,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_MM: function(test) {
@@ -1847,7 +1847,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_MW: function(test) {
@@ -1906,7 +1906,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_MY: function(test) {
@@ -1965,7 +1965,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_NG: function(test) {
@@ -2083,7 +2083,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_PH: function(test) {
@@ -2143,7 +2143,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_PR: function(test) {
@@ -2263,7 +2263,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_US: function(test) {
@@ -2322,10 +2322,10 @@ module.exports.testWeekdayTranslation = {
 
         test.done();
     },
-   
+
     testWeekdayTranslation_en_UG: function(test) {
         test.expect(28);
-        
+
         // full -> wide, long -> abbreviate
         // medium: short
         // short: narrow
@@ -2380,7 +2380,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_ZA: function(test) {
@@ -2440,7 +2440,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_ZM: function(test) {
@@ -2500,9 +2500,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
-    }, 
+    },
     testWeekdayTranslation_es_AR: function(test) {
         test.expect(28);
         var fmt, value = [], i;
@@ -2560,10 +2560,10 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
-    
+
     testWeekdayTranslation_es_BO: function(test) {
         test.expect(28);
         var fmt, value = [], i;
@@ -2731,7 +2731,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "D");
         test.equal(value[1], "L");
         test.equal(value[2], "M");
@@ -2739,7 +2739,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_es_DO: function(test) {
@@ -2799,7 +2799,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
 
@@ -2979,7 +2979,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "j");
         test.equal(value[5], "v");
         test.equal(value[6], "s");
-        
+
         test.done();
     },
     testWeekdayTranslation_es_HN: function(test) {
@@ -3039,7 +3039,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "j");
         test.equal(value[5], "v");
         test.equal(value[6], "s");
-        
+
         test.done();
     },
     testWeekdayTranslation_es_MX: function(test) {
@@ -3079,13 +3079,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "do");
-        test.equal(value[1], "lu");
-        test.equal(value[2], "ma");
-        test.equal(value[3], "mi");
-        test.equal(value[4], "ju");
-        test.equal(value[5], "vi");
-        test.equal(value[6], "sá");
+        test.equal(value[0], 'DO');
+        test.equal(value[1], 'LU');
+        test.equal(value[2], 'MA');
+        test.equal(value[3], 'MI');
+        test.equal(value[4], 'JU');
+        test.equal(value[5], 'VI');
+        test.equal(value[6], 'SA');
 
         fmt = new DateFmt({locale:"es-MX", date:"w", length: "short", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
@@ -3099,7 +3099,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_es_NI: function(test) {
@@ -3159,7 +3159,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "j");
         test.equal(value[5], "v");
         test.equal(value[6], "s");
-        
+
         test.done();
     },
     testWeekdayTranslation_es_PA: function(test) {
@@ -3219,7 +3219,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "j");
         test.equal(value[5], "v");
         test.equal(value[6], "s");
-        
+
         test.done();
     },
     testWeekdayTranslation_es_PE: function(test) {
@@ -3279,7 +3279,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_es_PR: function(test) {
@@ -3339,7 +3339,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "j");
         test.equal(value[5], "v");
         test.equal(value[6], "s");
-        
+
         test.done();
     },
     testWeekdayTranslation_es_PY: function(test) {
@@ -3399,7 +3399,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "j");
         test.equal(value[5], "v");
         test.equal(value[6], "s");
-        
+
         test.done();
     },
     testWeekdayTranslation_es_SV: function(test) {
@@ -3459,7 +3459,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "j");
         test.equal(value[5], "v");
         test.equal(value[6], "s");
-        
+
         test.done();
     },
     testWeekdayTranslation_es_US: function(test) {
@@ -3519,7 +3519,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_es_UY: function(test) {
@@ -3578,7 +3578,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_es_VE: function(test) {
@@ -3637,10 +3637,10 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "j");
         test.equal(value[5], "v");
         test.equal(value[6], "s");
-        
+
         test.done();
     },
-    
+
     testWeekdayTranslation_et_EE: function(test) {
         test.expect(28);
         var fmt, value = [], i;
@@ -3698,7 +3698,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "N");
         test.equal(value[5], "R");
         test.equal(value[6], "L");
-        
+
         test.done();
     },
     testWeekdayTranslation_fa_AF: function(test) {
@@ -3766,10 +3766,10 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "پ");
         test.equal(value[5], "ج");
         test.equal(value[6], "ش");
-        
+
         test.done();
     },
-    
+
     testWeekdayTranslation_fa_IR: function(test) {
         test.expect(35);
         var fmt, value = [], i;
@@ -3841,7 +3841,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "پ");
         test.equal(value[5], "ج");
         test.equal(value[6], "ش");
-        
+
         test.done();
     },
     testWeekdayTranslation_fi_FI: function(test) {
@@ -3855,7 +3855,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        //standAlone 
+        //standAlone
         test.equal(value[0], "sunnuntai");
         test.equal(value[1], "maanantai");
         test.equal(value[2], "tiistai");
@@ -3902,7 +3902,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "P");
         test.equal(value[6], "L");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_BE: function(test) {
@@ -3962,7 +3962,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_CA: function(test) {
@@ -4080,7 +4080,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_FR: function(test) {
@@ -4140,7 +4140,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_LU: function(test) {
@@ -4259,7 +4259,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "D");
         test.equal(value[5], "A");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_gu_IN: function(test) {
@@ -4316,7 +4316,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4],  "ગુ");
         test.equal(value[5], "શુ");
         test.equal(value[6], "શ");
-        
+
         test.done();
     },
     testWeekdayTranslation_he_IL: function(test) {
@@ -4373,7 +4373,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "ה׳");
         test.equal(value[5], "ו׳");
         test.equal(value[6], "ש׳");
-        
+
         test.done();
     },
     testWeekdayTranslation_hi_IN: function(test) {
@@ -4430,7 +4430,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "गु");
         test.equal(value[5], "शु");
         test.equal(value[6], "श");
-        
+
         test.done();
     },
     testWeekdayTranslation_hr_HR: function(test) {
@@ -4486,7 +4486,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "č");
         test.equal(value[5], "p");
         test.equal(value[6], "s");
-        
+
         test.done();
     },
     testWeekdayTranslation_hr_ME: function(test) {
@@ -4541,7 +4541,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "č");
         test.equal(value[5], "p");
         test.equal(value[6], "s");
-        
+
         test.done();
     },
     testWeekdayTranslation_hr_HU: function(test) {
@@ -4596,7 +4596,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "č");
         test.equal(value[5], "p");
         test.equal(value[6], "s");
-        
+
         test.done();
     },
     testWeekdayTranslation_id_ID: function(test) {
@@ -4678,7 +4678,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "fimmtudagur");
         test.equal(value[5], "föstudagur");
         test.equal(value[6], "laugardagur");
-        
+
         fmt = new DateFmt({locale:"is-IS", date:"w", length: "long", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
@@ -4714,7 +4714,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "F");
         test.equal(value[5], "F");
         test.equal(value[6], "L");
-        
+
         test.done();
     },
     testWeekdayTranslation_it_CH: function(test) {
@@ -4881,7 +4881,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "木");
         test.equal(value[5], "金");
         test.equal(value[6], "土");
-        
+
         test.done();
     },
     testWeekdayTranslation_kk_KZ: function(test) {
@@ -4938,7 +4938,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Б");
         test.equal(value[5], "Ж");
         test.equal(value[6], "С");
-        
+
         test.done();
     },
     testWeekdayTranslation_kn_IN: function(test) {
@@ -4998,7 +4998,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "ಗು");
         test.equal(value[5], "ಶು");
         test.equal(value[6], "ಶ");
-        
+
         test.done();
     },
     testWeekdayTranslation_ko_KR: function(test) {
@@ -5168,7 +5168,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "K");
         test.equal(value[5], "P");
         test.equal(value[6], "Š");
-        
+
         test.done();
     },
     testWeekdayTranslation_lv_LV: function(test) {
@@ -5224,7 +5224,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "C");
         test.equal(value[5], "P");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_mk_MK: function(test) {
@@ -5281,7 +5281,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "ч");
         test.equal(value[5], "п");
         test.equal(value[6], "с");
-        
+
         test.done();
     },
     testWeekdayTranslation_ml_IN: function(test) {
@@ -5302,7 +5302,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "വ്യാഴാഴ്‌ച");
         test.equal(value[5], "വെള്ളിയാഴ്‌ച");
         test.equal(value[6], "ശനിയാഴ്‌ച");
-        
+
         fmt = new DateFmt({locale:"ml-IN", date:"w", length: "long", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
@@ -5678,7 +5678,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "ਵੀ");
         test.equal(value[5], "ਸ਼ੁੱ");
         test.equal(value[6], "ਸ਼");
-        
+
         test.done();
     },
     testWeekdayTranslation_pl_PL: function(test) {
@@ -5692,7 +5692,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "niedziela");
         test.equal(value[1], "poniedziałek");
         test.equal(value[2], "wtorek");
@@ -5737,7 +5737,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "C");
         test.equal(value[5], "P");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_pt_BR: function(test) {
@@ -5761,25 +5761,25 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "dom");
-        test.equal(value[1], "seg");
-        test.equal(value[2], "ter");
-        test.equal(value[3], "qua");
-        test.equal(value[4], "qui");
-        test.equal(value[5], "sex");
-        test.equal(value[6], "sáb");
+        test.equal(value[0], 'dom.');
+        test.equal(value[1], 'seg.');
+        test.equal(value[2], 'ter.');
+        test.equal(value[3], 'qua.');
+        test.equal(value[4], 'qui.');
+        test.equal(value[5], 'sex.');
+        test.equal(value[6], 'sáb.');
 
         fmt = new DateFmt({locale:"pt-BR", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "dom");
-        test.equal(value[1], "seg");
-        test.equal(value[2], "ter");
-        test.equal(value[3], "qua");
-        test.equal(value[4], "qui");
-        test.equal(value[5], "sex");
-        test.equal(value[6], "sáb");
+        test.equal(value[0], 'dom.');
+        test.equal(value[1], 'seg.');
+        test.equal(value[2], 'ter.');
+        test.equal(value[3], 'qua.');
+        test.equal(value[4], 'qui.');
+        test.equal(value[5], 'sex.');
+        test.equal(value[6], 'sáb.');
 
         fmt = new DateFmt({locale:"pt-BR", date:"w", length: "short", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -5792,7 +5792,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Q");
         test.equal(value[5], "S");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_pt_PT: function(test) {
@@ -5830,13 +5830,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "dom");
-        test.equal(value[1], "seg");
-        test.equal(value[2], "ter");
-        test.equal(value[3], "qua");
-        test.equal(value[4], "qui");
-        test.equal(value[5], "sex");
-        test.equal(value[6], "sáb");
+        test.equal(value[0], 'domingo');
+        test.equal(value[1], 'segunda');
+        test.equal(value[2], 'terça');
+        test.equal(value[3], 'quarta');
+        test.equal(value[4], 'quinta');
+        test.equal(value[5], 'sexta');
+        test.equal(value[6], 'sábado');
 
         fmt = new DateFmt({locale:"pt-PT", date:"w", length: "short", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -5906,7 +5906,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_sr_Cyrl_RS: function(test) {
@@ -6020,7 +6020,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "č");
         test.equal(value[5], "p");
         test.equal(value[6], "s");
-        
+
         test.done();
     },
     testWeekdayTranslation_ru_BY: function(test) {
@@ -6078,7 +6078,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Ч");
         test.equal(value[5], "П");
         test.equal(value[6], "С");
-        
+
         test.done();
     },
     testWeekdayTranslation_ru_KG: function(test) {
@@ -6137,7 +6137,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Ч");
         test.equal(value[5], "П");
         test.equal(value[6], "С");
-        
+
         test.done();
     },
     testWeekdayTranslation_ru_KZ: function(test) {
@@ -6195,7 +6195,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Ч");
         test.equal(value[5], "П");
         test.equal(value[6], "С");
-        
+
         test.done();
     },
     testWeekdayTranslation_ru_GE: function(test) {
@@ -6251,7 +6251,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Ч");
         test.equal(value[5], "П");
         test.equal(value[6], "С");
-        
+
         test.done();
     },
     testWeekdayTranslation_ru_RU: function(test) {
@@ -6309,7 +6309,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Ч");
         test.equal(value[5], "П");
         test.equal(value[6], "С");
-        
+
         test.done();
     },
     testWeekdayTranslation_ru_UA: function(test) {
@@ -6538,7 +6538,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "e");
         test.equal(value[5], "p");
         test.equal(value[6], "sh");
-        
+
         test.done();
     },
     testWeekdayTranslation_sq_ME: function(test) {
@@ -6596,7 +6596,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "e");
         test.equal(value[5], "p");
         test.equal(value[6], "sh");
-        
+
         test.done();
     },
     testWeekdayTranslation_sv_FI: function(test) {
@@ -6653,7 +6653,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "L");
-        
+
         test.done();
     },
     testWeekdayTranslation_sv_SE: function(test) {
@@ -6792,7 +6792,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "ఆది");
         test.equal(value[1], "సోమ");
         test.equal(value[2], "మంగళ");
@@ -6817,7 +6817,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "ఆ");
         test.equal(value[1], "సో");
         test.equal(value[2], "మ");
@@ -6994,7 +6994,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "P");
         test.equal(value[5], "C");
         test.equal(value[6], "C");
-        
+
         test.done();
     },
     testWeekdayTranslation_tr_CY: function(test) {
@@ -7051,7 +7051,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "P");
         test.equal(value[5], "C");
         test.equal(value[6], "C");
-        
+
         test.done();
     },
     testWeekdayTranslation_tr_TR: function(test) {
@@ -7164,7 +7164,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Ч");
         test.equal(value[5], "П");
         test.equal(value[6], "С");
-        
+
         test.done();
     },
     testWeekdayTranslation_ur_IN: function(test) {
@@ -7224,7 +7224,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], 'T');
         test.equal(value[5], 'F');
         test.equal(value[6], 'S');
-       
+
         test.done();
     },
     testWeekdayTranslation_uz_Latn_UZ: function(test) {
@@ -7280,7 +7280,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "P");
         test.equal(value[5], "J");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_vi_VN: function(test) {
@@ -7301,7 +7301,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Thứ Năm");
         test.equal(value[5], "Thứ Sáu");
         test.equal(value[6], "Thứ Bảy");
-        
+
         fmt = new DateFmt({locale:"vi-VN", date:"w", length: "long", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
@@ -7325,7 +7325,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T5");
         test.equal(value[5], "T6");
         test.equal(value[6], "T7");
-        
+
         fmt = new DateFmt({locale:"vi-VN", date:"w", length: "short", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
@@ -7391,7 +7391,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "四");
         test.equal(value[5], "五");
         test.equal(value[6], "六");
-        
+
         test.done();
     },
     testWeekdayTranslation_zh_Hant_HK: function(test) {
@@ -7444,7 +7444,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "四");
         test.equal(value[5], "五");
         test.equal(value[6], "六");
-        
+
         test.done();
     },
     testWeekdayTranslation_zh_Hant_TW: function(test) {
@@ -7497,7 +7497,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "四");
         test.equal(value[5], "五");
         test.equal(value[6], "六");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_GE: function(test) {
@@ -7553,7 +7553,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_CN: function(test) {
@@ -7608,8 +7608,8 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[3], "W");
         test.equal(value[4], "T");
         test.equal(value[5], "F");
-        test.equal(value[6], "S");        
-        
+        test.equal(value[6], "S");
+
         test.done();
     },
     testWeekdayTranslation_en_MX: function(test) {
@@ -7664,8 +7664,8 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[3], "W");
         test.equal(value[4], "T");
         test.equal(value[5], "F");
-        test.equal(value[6], "S");        
-        
+        test.equal(value[6], "S");
+
         test.done();
     },
     testWeekdayTranslation_en_TW: function(test) {
@@ -7720,8 +7720,8 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[3], "W");
         test.equal(value[4], "T");
         test.equal(value[5], "F");
-        test.equal(value[6], "S");        
-        
+        test.equal(value[6], "S");
+
         test.done();
     },
     testWeekdayTranslation_mn_MN: function(test) {
@@ -7778,7 +7778,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Пү");
         test.equal(value[5], "Ба");
         test.equal(value[6], "Бя");
-        
+
         test.done();
     },
     testWeekdayTranslation_es_CA: function(test) {
@@ -7837,7 +7837,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_af_ZA: function(test) {
@@ -7893,7 +7893,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "D");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_am_ET: function(test) {
@@ -7943,7 +7943,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 13; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+7, type:"ethiopic"}));
         }
-        
+
         test.equal(value[0], "እ");
         test.equal(value[1], "ሰ");
         test.equal(value[2], "ማ");
@@ -8009,7 +8009,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[5], "J");
         test.equal(value[6], "A");
 
-        
+
         test.done();
     },
     testWeekdayTranslation_or_IN: function(test) {
@@ -8034,7 +8034,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "ରବି");
         test.equal(value[1], "ସୋମ");
         test.equal(value[2], "ମଙ୍ଗଳ");
@@ -8059,7 +8059,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "ର");
         test.equal(value[1], "ସୋ");
         test.equal(value[2], "ମ");
@@ -8067,7 +8067,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "ଗୁ");
         test.equal(value[5], "ଶୁ");
         test.equal(value[6], "ଶ");
-        
+
         test.done();
     },
     testWeekdayTranslation_az_Latn_AZ: function(test) {
@@ -8124,7 +8124,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "4");
         test.equal(value[5], "5");
         test.equal(value[6], "6");
-        
+
         test.done();
     },
     testWeekdayTranslation_km_KH: function(test) {
@@ -8181,7 +8181,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "ព");
         test.equal(value[5], "ស");
         test.equal(value[6], "ស");
-        
+
         test.done();
     },
     testWeekdayTranslation_si_LK: function(test) {
@@ -8238,7 +8238,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "බ්‍ර");
         test.equal(value[5], "සි");
         test.equal(value[6], "සෙ");
-        
+
         test.done();
     },
     testWeekdayTranslation_ar_AE: function(test) {
@@ -8275,7 +8275,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -8294,9 +8294,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
-        
+
         test.done();
     },
     testWeekdayTranslation_ar_BH: function(test) {
@@ -8334,7 +8334,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -8353,9 +8353,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
-        
+
         test.done();
     },
     testWeekdayTranslation_ar_DJ: function(test) {
@@ -8389,7 +8389,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -8408,9 +8408,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
-        
+
         test.done();
     },
     testWeekdayTranslation_ar_DZ: function(test) {
@@ -8449,7 +8449,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -8468,9 +8468,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
-        
+
         test.done();
     },
     testWeekdayTranslation_ar_JO: function(test) {
@@ -8509,7 +8509,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -8528,7 +8528,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
         test.done();
     },
@@ -8568,7 +8568,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -8587,9 +8587,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
-        
+
         test.done();
     },
     testWeekdayTranslation_ar_LB: function(test) {
@@ -8628,7 +8628,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -8647,9 +8647,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
-        
+
         test.done();
     },
     testWeekdayTranslation_ar_LY: function(test) {
@@ -8687,7 +8687,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -8706,9 +8706,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
-        
+
         test.done();
     },
     testWeekdayTranslation_ar_MR: function(test) {
@@ -8745,7 +8745,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -8764,9 +8764,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
-        
+
         test.done();
     },
     testWeekdayTranslation_ar_OM: function(test) {
@@ -8803,7 +8803,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -8822,7 +8822,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
 
         test.done();
@@ -8862,7 +8862,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -8881,9 +8881,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
-        
+
         test.done();
     },
     testWeekdayTranslation_ar_SA: function(test) {
@@ -8921,7 +8921,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -8940,9 +8940,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
-        
+
         test.done();
     },
     testWeekdayTranslation_ar_SD: function(test) {
@@ -8980,7 +8980,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -8999,9 +8999,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
-        
+
         test.done();
     },
     testWeekdayTranslation_ar_SY: function(test) {
@@ -9039,7 +9039,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -9058,7 +9058,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
 
         test.done();
@@ -9098,7 +9098,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -9117,9 +9117,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
-        
+
         test.done();
     },
     testWeekdayTranslation_ar_YE: function(test) {
@@ -9157,7 +9157,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "أحد");
         test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
@@ -9176,9 +9176,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[2], "ث");
         test.equal(value[3], "ر");
         test.equal(value[4], "خ");
-        test.equal(value[5], "ج"); 
+        test.equal(value[5], "ج");
         test.equal(value[6], "س");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_ET: function(test) {
@@ -9238,7 +9238,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[6], "K");
 
         test.done();
-    }, 
+    },
     testWeekdayTranslation_en_GM: function(test) {
         test.expect(28);
         var fmt, value = [], i;
@@ -9402,7 +9402,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_RW: function(test) {
@@ -9458,7 +9458,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_SD: function(test) {
@@ -9514,7 +9514,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_SL: function(test) {
@@ -9570,7 +9570,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_en_TZ: function(test) {
@@ -9626,7 +9626,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_es_CR: function(test) {
@@ -9686,7 +9686,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "j");
         test.equal(value[5], "v");
         test.equal(value[6], "s");
-        
+
         test.done();
     },
     testWeekdayTranslation_es_GQ: function(test) {
@@ -9742,7 +9742,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_es_PH: function(test) {
@@ -9798,7 +9798,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_BF: function(test) {
@@ -9855,7 +9855,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_BJ: function(test) {
@@ -9961,7 +9961,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_CF: function(test) {
@@ -10067,7 +10067,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_CI: function(test) {
@@ -10120,7 +10120,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_CM: function(test) {
@@ -10173,7 +10173,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_GQ: function(test) {
@@ -10226,7 +10226,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_DJ: function(test) {
@@ -10279,7 +10279,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_DZ: function(test) {
@@ -10332,7 +10332,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_GA: function(test) {
@@ -10385,7 +10385,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_GN: function(test) {
@@ -10438,7 +10438,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_LB: function(test) {
@@ -10491,7 +10491,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_ML: function(test) {
@@ -10544,7 +10544,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_RW: function(test) {
@@ -10597,7 +10597,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_SN: function(test) {
@@ -10650,7 +10650,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_fr_TG: function(test) {
@@ -10703,7 +10703,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "J");
         test.equal(value[5], "V");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_ms_Latn_SG: function(test) {
@@ -10760,7 +10760,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "K");
         test.equal(value[5], "J");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_pa_PK: function(test) {
@@ -10817,7 +10817,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "ਵੀ");
         test.equal(value[5], "ਸ਼ੁੱ");
         test.equal(value[6], "ਸ਼");
-        
+
         test.done();
     },
     testWeekdayTranslation_pt_AO: function(test) {
@@ -10854,13 +10854,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "dom");
-        test.equal(value[1], "seg");
-        test.equal(value[2], "ter");
-        test.equal(value[3], "qua");
-        test.equal(value[4], "qui");
-        test.equal(value[5], "sex");
-        test.equal(value[6], "sáb");
+        test.equal(value[0], 'domingo');
+        test.equal(value[1], 'segunda');
+        test.equal(value[2], 'terça');
+        test.equal(value[3], 'quarta');
+        test.equal(value[4], 'quinta');
+        test.equal(value[5], 'sexta');
+        test.equal(value[6], 'sábado');
 
         fmt = new DateFmt({locale:"pt-AO", date:"w", length: "short", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -10873,7 +10873,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Q");
         test.equal(value[5], "S");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_pt_GQ: function(test) {
@@ -10911,13 +10911,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "dom");
-        test.equal(value[1], "seg");
-        test.equal(value[2], "ter");
-        test.equal(value[3], "qua");
-        test.equal(value[4], "qui");
-        test.equal(value[5], "sex");
-        test.equal(value[6], "sáb");
+        test.equal(value[0], 'domingo');
+        test.equal(value[1], 'segunda');
+        test.equal(value[2], 'terça');
+        test.equal(value[3], 'quarta');
+        test.equal(value[4], 'quinta');
+        test.equal(value[5], 'sexta');
+        test.equal(value[6], 'sábado');
 
         fmt = new DateFmt({locale:"pt-GQ", date:"w", length: "short", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -10930,7 +10930,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Q");
         test.equal(value[5], "S");
         test.equal(value[6], "S");
-        
+
         test.done();
     },
     testWeekdayTranslation_pt_CV: function(test) {
@@ -10968,13 +10968,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "dom");
-        test.equal(value[1], "seg");
-        test.equal(value[2], "ter");
-        test.equal(value[3], "qua");
-        test.equal(value[4], "qui");
-        test.equal(value[5], "sex");
-        test.equal(value[6], "sáb");
+        test.equal(value[0], 'domingo');
+        test.equal(value[1], 'segunda');
+        test.equal(value[2], 'terça');
+        test.equal(value[3], 'quarta');
+        test.equal(value[4], 'quinta');
+        test.equal(value[5], 'sexta');
+        test.equal(value[6], 'sábado');
 
         fmt = new DateFmt({locale:"pt-CV", date:"w", length: "short", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -11044,7 +11044,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], 'T');
         test.equal(value[5], 'F');
         test.equal(value[6], 'S');
-        
+
         test.done();
     },
     testWeekdayTranslation_zh_Hans_SG: function(test) {
@@ -11097,7 +11097,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "四");
         test.equal(value[5], "五");
         test.equal(value[6], "六");
-        
+
         test.done();
     },
     testWeekdayTranslation_zh_Hans_MY: function(test) {
@@ -11150,7 +11150,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "四");
         test.equal(value[5], "五");
         test.equal(value[6], "六");
-        
+
         test.done();
     },
     testWeekdayTranslationFull_ka_GE: function(test) {

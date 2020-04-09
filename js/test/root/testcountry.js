@@ -120,6 +120,58 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "ja-JP");
         test.done();
     },
+    testCountryLocale5: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ko-KR"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("SZ"), "에스와티니");
+        test.equal(ctry.getCode("에스와티니"), "SZ");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ko-KR");
+        test.done();
+    },
+    testCountryLocale6: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "af-NA"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MK"), "Noord-Macedonië");
+        test.equal(ctry.getCode("Noord-Macedonië"), "MK");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "af-NA");
+        test.done();
+    },
+    testCountryLocale7: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "as-IN"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("SG"),"ছিংগাপুৰ" );
+        test.equal(ctry.getCode("ছিংগাপুৰ"), "SG");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "as-IN");
+        test.done();
+    },
+    testCountryLocale8: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "en-AU"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"Macao SAR China" );
+        test.equal(ctry.getCode("Macao SAR China"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "en-AU");
+        test.done();
+    },
     
     testCountryGetByCodeUnknown: function(test) {
         try {

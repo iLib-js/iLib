@@ -1,7 +1,7 @@
 /*
  * testSuite.js - test suite for this directory
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,29 +17,17 @@
  * limitations under the License.
  */
 
-var TestSuite = require('../../js/test/TestSuiteModule.js');
+var nodeunit = require("nodeunit");
 
-function newSuite(path) {
-	var suite = new TestSuite("test/" + path);
-	//suite.include("./common.js");
-	//suite.include("./unifile.js");
-	//suite.include("./uniData.js");
-	return suite;
-};
+var reporter = nodeunit.reporters.minimal;
+var modules = {};
+var suites = require("./testSuiteFiles.js").files;
 
-function suite() {
-    var s = new TestSuite();
-    
-    var suites = [
-        "testdatefmts.js",
-   	    "testcommon.js",
-	    "testunifile.js",
-	    "testunidata.js"
-	];
+suites.forEach(function (path) {
+    var test = require("./" + path);
+    for (var suite in test) {
+        modules[suite] = test[suite];
+    }
+});
 
-    suites.forEach(function (path) {
-    	s.addSuite(newSuite(path));
-    });
-    
-    return s;
-}
+reporter.run(modules);

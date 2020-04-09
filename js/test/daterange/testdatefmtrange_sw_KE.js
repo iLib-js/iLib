@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_sw_KE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/2011, 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31/12/2011 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtKERangeInDayMedium: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_sw_KE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Des 2011, 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 Des 2011 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtKERangeInDayLong: function(test) {
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_sw_KE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Desemba 2011 saa 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 Desemba 2011 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtKERangeInDayFull: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_sw_KE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Desemba 2011 saa 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 Desemba 2011 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtKERangeNextDayShort: function(test) {
@@ -160,7 +160,7 @@ module.exports.testdatefmtrange_sw_KE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/2011, 13:45 – 31/12/2011, 14:30");
+        test.equal(fmt.format(start, end), "30/12/2011 13:45 – 31/12/2011 14:30");
         test.done();
     },
     testDateRngFmtKERangeNextDayMedium: function(test) {
@@ -186,7 +186,7 @@ module.exports.testdatefmtrange_sw_KE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Des 2011, 13:45 – 31 Des 2011, 14:30");
+        test.equal(fmt.format(start, end), "30 Des 2011 13:45 – 31 Des 2011 14:30");
         test.done();
     },
     testDateRngFmtKERangeNextDayLong: function(test) {
@@ -212,7 +212,7 @@ module.exports.testdatefmtrange_sw_KE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Desemba 2011 saa 13:45 – 31 Desemba 2011 saa 14:30");
+        test.equal(fmt.format(start, end), "30 Desemba 2011 13:45 – 31 Desemba 2011 14:30");
         test.done();
     },
     testDateRngFmtKERangeNextDayFull: function(test) {
@@ -238,7 +238,7 @@ module.exports.testdatefmtrange_sw_KE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Desemba 2011 saa 13:45 – 31 Desemba 2011 saa 14:30");
+        test.equal(fmt.format(start, end), "30 Desemba 2011 13:45 – 31 Desemba 2011 14:30");
         test.done();
     },
     testDateRngFmtKERangeMultiDayShort: function(test) {

@@ -144,9 +144,9 @@
                 "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
             },
             "c20": {
-                "f": "{sm} {sy} – {em} {ey}",
-                "l": "{sm} {sy} – {em} {ey}",
-                "m": "{sm} {sy} – {em} {ey}",
+                "f": "{sm}, {sy} – {em}, {ey}",
+                "l": "{sm}, {sy} – {em}, {ey}",
+                "m": "{sm}, {sy} – {em}, {ey}",
                 "s": "{sm}/{sy} – {em}/{ey}"
             },
             "c30": {

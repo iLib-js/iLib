@@ -1,7 +1,7 @@
 /*
  * testlistfmt_el.js - test the list formatter object
  *
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -96,7 +96,7 @@ module.exports.testlistfmt_el = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ένας", "δυο"]), "ένας δυο");
+        test.equal(fmt.format(["ένας", "δυο"]), "ένας, δυο");
         test.done();
     },
     
@@ -108,7 +108,7 @@ module.exports.testlistfmt_el = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ένας", "δυο", "τρία"]), "ένας δυο τρία");
+        test.equal(fmt.format(["ένας", "δυο", "τρία"]), "ένας, δυο, τρία");
         test.done();
     },
     
@@ -120,7 +120,7 @@ module.exports.testlistfmt_el = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ένας", "δυο", "τρία", "τέσσερα"]), "ένας δυο τρία τέσσερα");
+        test.equal(fmt.format(["ένας", "δυο", "τρία", "τέσσερα"]), "ένας, δυο, τρία, τέσσερα");
         test.done();
     },
     testListFmtUnitStyleelCYNumberFormatOneMedium: function(test) {

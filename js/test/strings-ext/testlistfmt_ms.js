@@ -1,7 +1,7 @@
 /*
  * testlistfmt_ms.js - test the list formatter object
  *
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -96,7 +96,7 @@ module.exports.testlistfmt_ms = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["satu", "dua"]), "satu dua");
+        test.equal(fmt.format(["satu", "dua"]), "satu dan dua");
         test.done();
     },
     
@@ -108,7 +108,7 @@ module.exports.testlistfmt_ms = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["satu", "dua", "bertiga"]), "satu dua bertiga");
+        test.equal(fmt.format(["satu", "dua", "bertiga"]), "satu, dua dan bertiga");
         test.done();
     },
     
@@ -120,7 +120,7 @@ module.exports.testlistfmt_ms = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["satu", "dua", "bertiga", "empat"]), "satu dua bertiga empat");
+        test.equal(fmt.format(["satu", "dua", "bertiga", "empat"]), "satu, dua, bertiga dan empat");
         test.done();
     },
     testListFmtUnitStylemsLatnMYNumberFormatOneMedium: function(test) {
@@ -239,7 +239,7 @@ module.exports.testlistfmt_ms = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["satu", "dua"]), "satu dua");
+        test.equal(fmt.format(["satu", "dua"]), "satu dan dua");
         test.done();
     },
     
@@ -251,7 +251,7 @@ module.exports.testlistfmt_ms = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["satu", "dua", "bertiga"]), "satu dua bertiga");
+        test.equal(fmt.format(["satu", "dua", "bertiga"]), "satu, dua dan bertiga");
         test.done();
     },
     
@@ -263,7 +263,7 @@ module.exports.testlistfmt_ms = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["satu", "dua", "bertiga", "empat"]), "satu dua bertiga empat");
+        test.equal(fmt.format(["satu", "dua", "bertiga", "empat"]), "satu, dua, bertiga dan empat");
         test.done();
     },
     testListFmtUnitStylemsLatnSGNumberFormatOneFull: function(test) {

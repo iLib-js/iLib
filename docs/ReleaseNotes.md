@@ -1,6 +1,26 @@
 Release Notes for Version 14
 ============================
 
+Build 009
+-------
+Published as version 14.6.0
+
+New Features:
+* Updated all locale data to CLDR 36 and Unicode Character Database 13.0
+* The methods of the TimeZone object that take dates as parameters can now
+  take any date types, such as a unix time number, an intrinsic Javascript
+  Date object, or an ilib IDate instance. Previously, they only took
+  IDate instances.
+    * updated methods are: getDisplayName, getOffset, getOffsetStr, 
+    getOffsetMillis, and inDaylightTime
+
+Bug Fixes:
+* Time zones in Indiana, Kentucky, North Dakota, and Argentina were missing.
+  Fixed the zone info compiler to generate the json data for these missing time
+  zones properly.
+* Changed a default length style to `medium` in List Formatting.
+
+
 Build 008
 -------
 Published as version 14.5.0

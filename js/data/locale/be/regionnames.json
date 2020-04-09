@@ -277,10 +277,6 @@
             "code": "GJ"
         },
         {
-            "name": "Gjirokastër County",
-            "code": "05"
-        },
-        {
             "name": "Gramsh",
             "code": "GR"
         },
@@ -311,10 +307,6 @@
         {
             "name": "Kukës",
             "code": "KU"
-        },
-        {
-            "name": "Kukës County",
-            "code": "07"
         },
         {
             "name": "Kurbin",
@@ -413,8 +405,16 @@
             "code": "03"
         },
         {
+            "name": "Гіракастра",
+            "code": "05"
+        },
+        {
             "name": "Дурэс",
             "code": "02"
+        },
+        {
+            "name": "Кукес",
+            "code": "07"
         },
         {
             "name": "Лежа",
@@ -643,6 +643,12 @@
             "code": "E"
         }
     ],
+    "AS": [
+        {
+            "code": "",
+            "name": "American Samoa"
+        }
+    ],
     "AT": [
         {
             "name": "Бургенланд",
@@ -713,6 +719,18 @@
         {
             "name": "Штат Паўднёвая Аўстралія",
             "code": "SA"
+        }
+    ],
+    "AW": [
+        {
+            "code": "",
+            "name": "Aruba"
+        }
+    ],
+    "AX": [
+        {
+            "code": "",
+            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -813,10 +831,6 @@
             "code": "CAL"
         },
         {
-            "name": "Julfa",
-            "code": "CUL"
-        },
-        {
             "name": "Kalbajar",
             "code": "KAL"
         },
@@ -861,10 +875,6 @@
             "code": "MAS"
         },
         {
-            "name": "Mingachevir",
-            "code": "MI"
-        },
-        {
             "name": "Naftalan",
             "code": "NA"
         },
@@ -875,10 +885,6 @@
         {
             "name": "Oghuz",
             "code": "OGU"
-        },
-        {
-            "name": "Ordubad",
-            "code": "ORD"
         },
         {
             "name": "Qabala",
@@ -929,10 +935,6 @@
             "code": "SAH"
         },
         {
-            "name": "Shaki",
-            "code": "SA"
-        },
-        {
             "name": "Shaki District",
             "code": "SAK"
         },
@@ -969,14 +971,6 @@
             "code": "YAR"
         },
         {
-            "name": "Yevlakh",
-            "code": "YE"
-        },
-        {
-            "name": "Yevlakh District",
-            "code": "YEV"
-        },
-        {
             "name": "Zangilan",
             "code": "ZAN"
         },
@@ -987,6 +981,10 @@
         {
             "name": "Zardab",
             "code": "ZAR"
+        },
+        {
+            "name": "Ардубадскі раён",
+            "code": "ORD"
         },
         {
             "name": "Баку",
@@ -1009,8 +1007,24 @@
             "code": "GA"
         },
         {
+            "name": "Джульфінскі раён",
+            "code": "CUL"
+        },
+        {
+            "name": "Еўлах",
+            "code": "YE"
+        },
+        {
+            "name": "Еўлахскі раён",
+            "code": "YEV"
+        },
+        {
             "name": "Казахскі раён",
             "code": "QAZ"
+        },
+        {
+            "name": "Мінгечаур",
+            "code": "MI"
         },
         {
             "name": "Нахічэванская Аўтаномная Рэспубліка",
@@ -1027,6 +1041,10 @@
         {
             "name": "Шырван",
             "code": "SR"
+        },
+        {
+            "name": "Шэкі",
+            "code": "SA"
         }
     ],
     "BA": [
@@ -1085,48 +1103,48 @@
     ],
     "BB": [
         {
-            "code": "01",
-            "name": "Christ Church"
+            "name": "Christ Church",
+            "code": "01"
         },
         {
-            "code": "02",
-            "name": "Saint Andrew"
+            "name": "Saint Andrew",
+            "code": "02"
         },
         {
-            "code": "03",
-            "name": "Saint George"
+            "name": "Saint George",
+            "code": "03"
         },
         {
-            "code": "04",
-            "name": "Saint James"
+            "name": "Saint James",
+            "code": "04"
         },
         {
-            "code": "05",
-            "name": "Saint John"
+            "name": "Saint John",
+            "code": "05"
         },
         {
-            "code": "06",
-            "name": "Saint Joseph"
+            "name": "Saint Joseph",
+            "code": "06"
         },
         {
-            "code": "07",
-            "name": "Saint Lucy"
+            "name": "Saint Lucy",
+            "code": "07"
         },
         {
-            "code": "08",
-            "name": "Saint Michael"
+            "name": "Сен-Мішэль",
+            "code": "08"
         },
         {
-            "code": "09",
-            "name": "Saint Peter"
+            "name": "Сент-Пітэр",
+            "code": "09"
         },
         {
-            "code": "10",
-            "name": "Saint Philip"
+            "name": "Saint Philip",
+            "code": "10"
         },
         {
-            "code": "11",
-            "name": "Saint Thomas"
+            "name": "Saint Thomas",
+            "code": "11"
         }
     ],
     "BD": [
@@ -1187,14 +1205,6 @@
             "code": "11"
         },
         {
-            "name": "Dhaka",
-            "code": "13"
-        },
-        {
-            "name": "Dhaka Division",
-            "code": "C"
-        },
-        {
             "name": "Dinajpur",
             "code": "14"
         },
@@ -1213,10 +1223,6 @@
         {
             "name": "Gazipur",
             "code": "18"
-        },
-        {
-            "name": "Gopalganj",
-            "code": "17"
         },
         {
             "name": "Habiganj",
@@ -1411,6 +1417,18 @@
             "code": "64"
         },
         {
+            "name": "Гапалгандж",
+            "code": "17"
+        },
+        {
+            "name": "Дака",
+            "code": "13"
+        },
+        {
+            "name": "Дака²",
+            "code": "C"
+        },
+        {
             "name": "Рангпур",
             "code": "55"
         },
@@ -1475,236 +1493,236 @@
     ],
     "BF": [
         {
-            "code": "BAL",
-            "name": "Balé"
+            "name": "Balé",
+            "code": "BAL"
         },
         {
-            "code": "BAM",
-            "name": "Bam"
+            "name": "Bam",
+            "code": "BAM"
         },
         {
-            "code": "BAN",
-            "name": "Banwa"
+            "name": "Banwa",
+            "code": "BAN"
         },
         {
-            "code": "BAZ",
-            "name": "Bazèga"
+            "name": "Bazèga",
+            "code": "BAZ"
         },
         {
-            "code": "01",
-            "name": "Boucle du Mouhoun"
+            "name": "Boucle du Mouhoun",
+            "code": "01"
         },
         {
-            "code": "BGR",
-            "name": "Bougouriba"
+            "name": "Bougouriba",
+            "code": "BGR"
         },
         {
-            "code": "BLG",
-            "name": "Boulgou"
+            "name": "Boulgou",
+            "code": "BLG"
         },
         {
-            "code": "BLK",
-            "name": "Boulkiemdé"
+            "name": "Boulkiemdé",
+            "code": "BLK"
         },
         {
-            "code": "02",
-            "name": "Cascades"
+            "name": "Cascades",
+            "code": "02"
         },
         {
-            "code": "03",
-            "name": "Centre"
+            "name": "Centre-Est",
+            "code": "04"
         },
         {
-            "code": "04",
-            "name": "Centre-Est"
+            "name": "Centre-Nord",
+            "code": "05"
         },
         {
-            "code": "05",
-            "name": "Centre-Nord"
+            "name": "Centre-Ouest",
+            "code": "06"
         },
         {
-            "code": "06",
-            "name": "Centre-Ouest"
+            "name": "Centre-Sud",
+            "code": "07"
         },
         {
-            "code": "07",
-            "name": "Centre-Sud"
+            "name": "Comoé",
+            "code": "COM"
         },
         {
-            "code": "COM",
-            "name": "Comoé"
+            "name": "Est",
+            "code": "08"
         },
         {
-            "code": "08",
-            "name": "Est"
+            "name": "Ganzourgou",
+            "code": "GAN"
         },
         {
-            "code": "GAN",
-            "name": "Ganzourgou"
+            "name": "Gnagna",
+            "code": "GNA"
         },
         {
-            "code": "GNA",
-            "name": "Gnagna"
+            "name": "Gourma",
+            "code": "GOU"
         },
         {
-            "code": "GOU",
-            "name": "Gourma"
+            "name": "Hauts-Bassins",
+            "code": "09"
         },
         {
-            "code": "09",
-            "name": "Hauts-Bassins"
+            "name": "Houet",
+            "code": "HOU"
         },
         {
-            "code": "HOU",
-            "name": "Houet"
+            "name": "Ioba",
+            "code": "IOB"
         },
         {
-            "code": "IOB",
-            "name": "Ioba"
+            "name": "Kénédougou",
+            "code": "KEN"
         },
         {
-            "code": "KAD",
-            "name": "Kadiogo"
+            "name": "Komondjari",
+            "code": "KMD"
         },
         {
-            "code": "KEN",
-            "name": "Kénédougou"
+            "name": "Kompienga",
+            "code": "KMP"
         },
         {
-            "code": "KMD",
-            "name": "Komondjari"
+            "name": "Kossi",
+            "code": "KOS"
         },
         {
-            "code": "KMP",
-            "name": "Kompienga"
+            "name": "Koulpélogo",
+            "code": "KOP"
         },
         {
-            "code": "KOS",
-            "name": "Kossi"
+            "name": "Kouritenga",
+            "code": "KOT"
         },
         {
-            "code": "KOP",
-            "name": "Koulpélogo"
+            "name": "Kourwéogo",
+            "code": "KOW"
         },
         {
-            "code": "KOT",
-            "name": "Kouritenga"
+            "name": "Léraba",
+            "code": "LER"
         },
         {
-            "code": "KOW",
-            "name": "Kourwéogo"
+            "name": "Loroum",
+            "code": "LOR"
         },
         {
-            "code": "LER",
-            "name": "Léraba"
+            "name": "Mouhoun",
+            "code": "MOU"
         },
         {
-            "code": "LOR",
-            "name": "Loroum"
+            "name": "Nahouri",
+            "code": "NAO"
         },
         {
-            "code": "MOU",
-            "name": "Mouhoun"
+            "name": "Namentenga",
+            "code": "NAM"
         },
         {
-            "code": "NAO",
-            "name": "Nahouri"
+            "name": "Nayala",
+            "code": "NAY"
         },
         {
-            "code": "NAM",
-            "name": "Namentenga"
+            "name": "Noumbiel",
+            "code": "NOU"
         },
         {
-            "code": "NAY",
-            "name": "Nayala"
+            "name": "Oubritenga",
+            "code": "OUB"
         },
         {
-            "code": "10",
-            "name": "Nord"
+            "name": "Oudalan",
+            "code": "OUD"
         },
         {
-            "code": "NOU",
-            "name": "Noumbiel"
+            "name": "Plateau-Central",
+            "code": "11"
         },
         {
-            "code": "OUB",
-            "name": "Oubritenga"
+            "name": "Poni",
+            "code": "PON"
         },
         {
-            "code": "OUD",
-            "name": "Oudalan"
+            "name": "Sahel",
+            "code": "12"
         },
         {
-            "code": "PAS",
-            "name": "Passoré"
+            "name": "Sanguié",
+            "code": "SNG"
         },
         {
-            "code": "11",
-            "name": "Plateau-Central"
+            "name": "Sanmatenga",
+            "code": "SMT"
         },
         {
-            "code": "PON",
-            "name": "Poni"
+            "name": "Séno",
+            "code": "SEN"
         },
         {
-            "code": "12",
-            "name": "Sahel"
+            "name": "Sissili",
+            "code": "SIS"
         },
         {
-            "code": "SNG",
-            "name": "Sanguié"
+            "name": "Soum",
+            "code": "SOM"
         },
         {
-            "code": "SMT",
-            "name": "Sanmatenga"
+            "name": "Sourou",
+            "code": "SOR"
         },
         {
-            "code": "SEN",
-            "name": "Séno"
+            "name": "Sud-Ouest",
+            "code": "13"
         },
         {
-            "code": "SIS",
-            "name": "Sissili"
+            "name": "Tapoa",
+            "code": "TAP"
         },
         {
-            "code": "SOM",
-            "name": "Soum"
+            "name": "Tuy",
+            "code": "TUI"
         },
         {
-            "code": "SOR",
-            "name": "Sourou"
+            "name": "Yagha",
+            "code": "YAG"
         },
         {
-            "code": "13",
-            "name": "Sud-Ouest"
+            "name": "Yatenga",
+            "code": "YAT"
         },
         {
-            "code": "TAP",
-            "name": "Tapoa"
+            "name": "Ziro",
+            "code": "ZIR"
         },
         {
-            "code": "TUI",
-            "name": "Tuy"
+            "name": "Zondoma",
+            "code": "ZON"
         },
         {
-            "code": "YAG",
-            "name": "Yagha"
+            "name": "Zoundwéogo",
+            "code": "ZOU"
         },
         {
-            "code": "YAT",
-            "name": "Yatenga"
+            "name": "Паўночная вобласць",
+            "code": "10"
         },
         {
-            "code": "ZIR",
-            "name": "Ziro"
+            "name": "правінцыя Кадыёга",
+            "code": "KAD"
         },
         {
-            "code": "ZON",
-            "name": "Zondoma"
+            "name": "правінцыя Пасарэ",
+            "code": "PAS"
         },
         {
-            "code": "ZOU",
-            "name": "Zoundwéogo"
+            "name": "Цэнтральная вобласць",
+            "code": "03"
         }
     ],
     "BG": [
@@ -1797,7 +1815,7 @@
             "code": "22"
         },
         {
-            "name": "Sofia District",
+            "name": "Сафійская вобласць",
             "code": "23"
         },
         {
@@ -1965,6 +1983,12 @@
         {
             "code": "ZO",
             "name": "Zou"
+        }
+    ],
+    "BL": [
+        {
+            "code": "",
+            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -2205,10 +2229,6 @@
             "code": "HT"
         },
         {
-            "name": "Inagua",
-            "code": "IN"
-        },
-        {
             "name": "Long Island",
             "code": "LI"
         },
@@ -2223,6 +2243,10 @@
         {
             "name": "Moore’s Island",
             "code": "MI"
+        },
+        {
+            "name": "New Providence",
+            "code": "NP"
         },
         {
             "name": "North Abaco",
@@ -2271,6 +2295,10 @@
         {
             "name": "Востраў Сан-Сальвадор",
             "code": "SS"
+        },
+        {
+            "name": "Інагуа",
+            "code": "IN"
         }
     ],
     "BT": [
@@ -2937,10 +2965,6 @@
             "code": "01"
         },
         {
-            "name": "Lagunes²",
-            "code": "LG"
-        },
-        {
             "name": "Marahoué",
             "code": "12"
         },
@@ -3001,23 +3025,23 @@
             "code": "08"
         },
         {
-            "name": "Zanzan²",
-            "code": "ZZ"
-        },
-        {
             "name": "Абіджан",
             "code": "AB"
         },
         {
             "name": "Горад Ямусукра",
             "code": "YM"
+        },
+        {
+            "name": "раён Лагюн",
+            "code": "LG"
+        },
+        {
+            "name": "Рэгіён Занзан",
+            "code": "ZZ"
         }
     ],
     "CL": [
-        {
-            "name": "Antofagasta",
-            "code": "AN"
-        },
         {
             "name": "Araucanía",
             "code": "AR"
@@ -3035,10 +3059,6 @@
             "code": "AI"
         },
         {
-            "name": "Bío Bío",
-            "code": "BI"
-        },
-        {
             "name": "Libertador General Bernardo O’Higgins",
             "code": "LI"
         },
@@ -3047,8 +3067,8 @@
             "code": "LL"
         },
         {
-            "name": "Magallanes Region",
-            "code": "MA"
+            "name": "Ñuble",
+            "code": "NB"
         },
         {
             "name": "Santiago Metropolitan",
@@ -3057,6 +3077,14 @@
         {
             "name": "Tarapacá",
             "code": "TA"
+        },
+        {
+            "name": "вобласць Антафагаста",
+            "code": "AN"
+        },
+        {
+            "name": "вобласць Біа-Біа",
+            "code": "BI"
         },
         {
             "name": "вобласць Вальпараіса",
@@ -3069,6 +3097,10 @@
         {
             "name": "Лос-Рыяс",
             "code": "LR"
+        },
+        {
+            "name": "Магальянес і Чылійская Антарктыка",
+            "code": "MA"
         },
         {
             "name": "Мауле",
@@ -3119,140 +3151,152 @@
     ],
     "CN": [
         {
-            "name": "Пекін",
-            "code": "11"
+            "name": "Hong Kong SAR China",
+            "code": "91"
         },
         {
-            "name": "Tianjin",
-            "code": "12"
+            "name": "Macao SAR China",
+            "code": "92"
         },
         {
-            "name": "Правінцыя Хэбэй",
-            "code": "13"
-        },
-        {
-            "name": "Правінцыя Шаньсі",
-            "code": "14"
-        },
-        {
-            "name": "Унутраная Манголія",
-            "code": "15"
-        },
-        {
-            "name": "Правінцыя Ляанін",
-            "code": "21"
-        },
-        {
-            "name": "Правінцыя Гірын",
-            "code": "22"
-        },
-        {
-            "name": "Правінцыя Хэйлунцзян",
-            "code": "23"
-        },
-        {
-            "name": "Шанхай",
-            "code": "31"
-        },
-        {
-            "name": "Правінцыя Цзянсу",
-            "code": "32"
-        },
-        {
-            "name": "Правінцыя Чжэцзян",
-            "code": "33"
-        },
-        {
-            "name": "Правінцыя Аньхой",
-            "code": "34"
-        },
-        {
-            "name": "Правінцыя Фуцзянь",
-            "code": "35"
-        },
-        {
-            "name": "Правінцыя Цзянсі",
-            "code": "36"
-        },
-        {
-            "name": "Правінцыя Шаньдун",
-            "code": "37"
-        },
-        {
-            "name": "Правінцыя Хэнань",
-            "code": "41"
-        },
-        {
-            "name": "Правінцыя Хубэй",
-            "code": "42"
-        },
-        {
-            "name": "Правінцыя Хунань",
-            "code": "43"
-        },
-        {
-            "name": "Правінцыя Гуандун",
-            "code": "44"
-        },
-        {
-            "name": "Гуансі-Чжуанскі аўтаномны раён",
-            "code": "45"
-        },
-        {
-            "name": "Правінцыя Хайнань",
-            "code": "46"
-        },
-        {
-            "name": "Горад Чунцын",
-            "code": "50"
-        },
-        {
-            "name": "Правінцыя Сычуань",
-            "code": "51"
-        },
-        {
-            "name": "Правінцыя Гуйчжоу",
-            "code": "52"
-        },
-        {
-            "name": "Правінцыя Юньнань",
-            "code": "53"
-        },
-        {
-            "name": "Тыбецкі аўтаномны раён",
-            "code": "54"
-        },
-        {
-            "name": "Правінцыя Шэньсі",
-            "code": "61"
-        },
-        {
-            "name": "Правінцыя Ганьсу",
-            "code": "62"
-        },
-        {
-            "name": "Правінцыя Цынхай",
-            "code": "63"
-        },
-        {
-            "name": "Нінся-Хуэйскі аўтаномны раён",
-            "code": "64"
-        },
-        {
-            "name": "Сіньцзян-Уйгурскі аўтаномны раён",
-            "code": "65"
+            "name": "Taiwan",
+            "code": "TW"
         },
         {
             "name": "Taiwan",
             "code": "71"
         },
         {
-            "name": "Hong Kong SAR China",
-            "code": "91"
+            "name": "Tianjin",
+            "code": "TJ"
         },
         {
-            "name": "Macau SAR China",
-            "code": "92"
+            "name": "Ганконг",
+            "code": "HK"
+        },
+        {
+            "name": "Горад Чунцын",
+            "code": "CQ"
+        },
+        {
+            "name": "Гуансі-Чжуанскі аўтаномны раён",
+            "code": "GX"
+        },
+        {
+            "name": "Макаа",
+            "code": "MO"
+        },
+        {
+            "name": "Нінся-Хуэйскі аўтаномны раён",
+            "code": "NX"
+        },
+        {
+            "name": "Пекін",
+            "code": "BJ"
+        },
+        {
+            "name": "Правінцыя Аньхой",
+            "code": "AH"
+        },
+        {
+            "name": "Правінцыя Ганьсу",
+            "code": "GS"
+        },
+        {
+            "name": "Правінцыя Гірын",
+            "code": "JL"
+        },
+        {
+            "name": "Правінцыя Гуандун",
+            "code": "GD"
+        },
+        {
+            "name": "Правінцыя Гуйчжоу",
+            "code": "GZ"
+        },
+        {
+            "name": "Правінцыя Ляанін",
+            "code": "LN"
+        },
+        {
+            "name": "Правінцыя Сычуань",
+            "code": "SC"
+        },
+        {
+            "name": "Правінцыя Фуцзянь",
+            "code": "FJ"
+        },
+        {
+            "name": "Правінцыя Хайнань",
+            "code": "HI"
+        },
+        {
+            "name": "Правінцыя Хубэй",
+            "code": "HB"
+        },
+        {
+            "name": "Правінцыя Хунань",
+            "code": "HN"
+        },
+        {
+            "name": "Правінцыя Хэбэй",
+            "code": "HE"
+        },
+        {
+            "name": "Правінцыя Хэйлунцзян",
+            "code": "HL"
+        },
+        {
+            "name": "Правінцыя Хэнань",
+            "code": "HA"
+        },
+        {
+            "name": "Правінцыя Цзянсі",
+            "code": "JX"
+        },
+        {
+            "name": "Правінцыя Цзянсу",
+            "code": "JS"
+        },
+        {
+            "name": "Правінцыя Цынхай",
+            "code": "QH"
+        },
+        {
+            "name": "Правінцыя Чжэцзян",
+            "code": "ZJ"
+        },
+        {
+            "name": "Правінцыя Шаньдун",
+            "code": "SD"
+        },
+        {
+            "name": "Правінцыя Шаньсі",
+            "code": "SX"
+        },
+        {
+            "name": "Правінцыя Шэньсі",
+            "code": "SN"
+        },
+        {
+            "name": "Правінцыя Юньнань",
+            "code": "YN"
+        },
+        {
+            "name": "Сіньцзян-Уйгурскі аўтаномны раён",
+            "code": "XJ"
+        },
+        {
+            "name": "Тыбецкі аўтаномны раён",
+            "code": "XZ"
+        },
+        {
+            "name": "Унутраная Манголія",
+            "code": "NM"
+        },
+        {
+            "name": "Шанхай",
+            "code": "SH"
         }
     ],
     "CO": [
@@ -3313,10 +3357,6 @@
             "code": "LAG"
         },
         {
-            "name": "Magdalena",
-            "code": "MAG"
-        },
-        {
             "name": "Meta",
             "code": "MET"
         },
@@ -3353,10 +3393,6 @@
             "code": "TOL"
         },
         {
-            "name": "Valle del Cauca",
-            "code": "VAC"
-        },
-        {
             "name": "Vaupés",
             "code": "VAU"
         },
@@ -3377,6 +3413,10 @@
             "code": "ATL"
         },
         {
+            "name": "дэпартамент Валье-дэль-Каўка",
+            "code": "VAC"
+        },
+        {
             "name": "дэпартамент Каўка",
             "code": "CAU"
         },
@@ -3387,6 +3427,16 @@
         {
             "name": "дэпартамент Чако",
             "code": "CHO"
+        },
+        {
+            "name": "Магдалена",
+            "code": "MAG"
+        }
+    ],
+    "CP": [
+        {
+            "code": "",
+            "name": "Clipperton Island"
         }
     ],
     "CR": [
@@ -3411,7 +3461,7 @@
             "code": "P"
         },
         {
-            "name": "San José",
+            "name": "правінцыя Сан-Хасэ",
             "code": "SJ"
         },
         {
@@ -3487,100 +3537,106 @@
     ],
     "CV": [
         {
-            "code": "B",
-            "name": "Barlavento Islands"
+            "name": "Boa Vista",
+            "code": "BV"
         },
         {
-            "code": "BV",
-            "name": "Boa Vista"
+            "name": "Brava",
+            "code": "BR"
         },
         {
-            "code": "BR",
-            "name": "Brava"
+            "name": "Maio",
+            "code": "MA"
         },
         {
-            "code": "MA",
-            "name": "Maio"
+            "name": "Mosteiros",
+            "code": "MO"
         },
         {
-            "code": "MO",
-            "name": "Mosteiros"
+            "name": "Paul",
+            "code": "PA"
         },
         {
-            "code": "PA",
-            "name": "Paul"
+            "name": "Porto Novo",
+            "code": "PN"
         },
         {
-            "code": "PN",
-            "name": "Porto Novo"
+            "name": "Ribeira Brava",
+            "code": "RB"
         },
         {
-            "code": "PR",
-            "name": "Praia"
+            "name": "Ribeira Grande",
+            "code": "RG"
         },
         {
-            "code": "RB",
-            "name": "Ribeira Brava"
+            "name": "Ribeira Grande de Santiago",
+            "code": "RS"
         },
         {
-            "code": "RG",
-            "name": "Ribeira Grande"
+            "name": "Sal",
+            "code": "SL"
         },
         {
-            "code": "RS",
-            "name": "Ribeira Grande de Santiago"
+            "name": "Santa Catarina",
+            "code": "CA"
         },
         {
-            "code": "SL",
-            "name": "Sal"
+            "name": "Santa Catarina do Fogo",
+            "code": "CF"
         },
         {
-            "code": "CA",
-            "name": "Santa Catarina"
+            "name": "Santa Cruz",
+            "code": "CR"
         },
         {
-            "code": "CF",
-            "name": "Santa Catarina do Fogo"
+            "name": "São Domingos",
+            "code": "SD"
         },
         {
-            "code": "CR",
-            "name": "Santa Cruz"
+            "name": "São Filipe",
+            "code": "SF"
         },
         {
-            "code": "SD",
-            "name": "São Domingos"
+            "name": "São Lourenço dos Órgãos",
+            "code": "SO"
         },
         {
-            "code": "SF",
-            "name": "São Filipe"
+            "name": "São Miguel",
+            "code": "SM"
         },
         {
-            "code": "SO",
-            "name": "São Lourenço dos Órgãos"
+            "name": "São Salvador do Mundo",
+            "code": "SS"
         },
         {
-            "code": "SM",
-            "name": "São Miguel"
+            "name": "São Vicente",
+            "code": "SV"
         },
         {
-            "code": "SS",
-            "name": "São Salvador do Mundo"
+            "name": "Tarrafal",
+            "code": "TA"
         },
         {
-            "code": "SV",
-            "name": "São Vicente"
+            "name": "Tarrafal de São Nicolau",
+            "code": "TS"
         },
         {
-            "code": "S",
-            "name": "Sotavento Islands"
+            "name": "астравы Барлавенту",
+            "code": "B"
         },
         {
-            "code": "TA",
-            "name": "Tarrafal"
+            "name": "астравы Сатавенту",
+            "code": "S"
         },
         {
-            "code": "TS",
-            "name": "Tarrafal de São Nicolau"
+            "name": "Прая",
+            "code": "PR"
+        }
+    ],
+    "CW": [
+        {
+            "code": "",
+            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -3611,10 +3667,6 @@
     ],
     "CZ": [
         {
-            "name": "Beroun",
-            "code": "202"
-        },
-        {
             "name": "Bruntál",
             "code": "801"
         },
@@ -3623,16 +3675,8 @@
             "code": "511"
         },
         {
-            "name": "Český Krumlov",
-            "code": "312"
-        },
-        {
             "name": "Chomutov",
             "code": "422"
-        },
-        {
-            "name": "Děčín",
-            "code": "421"
         },
         {
             "name": "Domažlice",
@@ -3667,24 +3711,8 @@
             "code": "204"
         },
         {
-            "name": "Kroměříž",
-            "code": "721"
-        },
-        {
-            "name": "Kutná Hora",
-            "code": "205"
-        },
-        {
             "name": "Liberec",
             "code": "513"
-        },
-        {
-            "name": "Liberecký",
-            "code": "51"
-        },
-        {
-            "name": "Mladá Boleslav",
-            "code": "207"
         },
         {
             "name": "Most",
@@ -3695,32 +3723,12 @@
             "code": "523"
         },
         {
-            "name": "Olomouc",
-            "code": "712"
-        },
-        {
-            "name": "Opava",
-            "code": "805"
-        },
-        {
-            "name": "Ostrava",
-            "code": "806"
-        },
-        {
-            "name": "Písek",
-            "code": "314"
-        },
-        {
             "name": "Plzeň-North",
             "code": "325"
         },
         {
             "name": "Plzeň-South",
             "code": "324"
-        },
-        {
-            "name": "Prachatice",
-            "code": "315"
         },
         {
             "name": "Prague 10",
@@ -3799,10 +3807,6 @@
             "code": "109"
         },
         {
-            "name": "Prague-East",
-            "code": "209"
-        },
-        {
             "name": "Prague-West",
             "code": "20A"
         },
@@ -3811,20 +3815,12 @@
             "code": "20B"
         },
         {
-            "name": "Prostějov",
-            "code": "713"
-        },
-        {
             "name": "Rakovník",
             "code": "20C"
         },
         {
             "name": "Rokycany",
             "code": "326"
-        },
-        {
-            "name": "Semily",
-            "code": "514"
         },
         {
             "name": "Sokolov",
@@ -3843,24 +3839,8 @@
             "code": "327"
         },
         {
-            "name": "Třebíč",
-            "code": "634"
-        },
-        {
-            "name": "Trutnov",
-            "code": "525"
-        },
-        {
             "name": "Uherské Hradiště",
             "code": "722"
-        },
-        {
-            "name": "Ústí nad Labem",
-            "code": "427"
-        },
-        {
-            "name": "Ústí nad Orlicí",
-            "code": "534"
         },
         {
             "name": "Žďár nad Sázavou",
@@ -3871,12 +3851,20 @@
             "code": "323"
         },
         {
+            "name": "Бераўн",
+            "code": "202"
+        },
+        {
             "name": "Брно-горад",
             "code": "642"
         },
         {
             "name": "Брно-прыгарад",
             "code": "643"
+        },
+        {
+            "name": "Дзечын",
+            "code": "421"
         },
         {
             "name": "Злін",
@@ -3903,6 +3891,14 @@
             "code": "52"
         },
         {
+            "name": "Кромержыж",
+            "code": "721"
+        },
+        {
+            "name": "Ліберацкі край",
+            "code": "51"
+        },
+        {
             "name": "Літамержыцэ",
             "code": "423"
         },
@@ -3915,12 +3911,24 @@
             "code": "206"
         },
         {
+            "name": "Млада Болеслаў",
+            "code": "207"
+        },
+        {
             "name": "Новы-Йічын",
             "code": "804"
         },
         {
+            "name": "Оламаўц",
+            "code": "712"
+        },
+        {
             "name": "Оламаўцкі край",
             "code": "71"
+        },
+        {
+            "name": "Острава-горад",
+            "code": "806"
         },
         {
             "name": "Пардубіцкі край",
@@ -3937,6 +3945,10 @@
         {
             "name": "Пельгржымаў",
             "code": "633"
+        },
+        {
+            "name": "Пісек",
+            "code": "314"
         },
         {
             "name": "Пльзенскі край",
@@ -3957,6 +3969,18 @@
         {
             "name": "Прага 3",
             "code": "103"
+        },
+        {
+            "name": "Прага-ўсход",
+            "code": "209"
+        },
+        {
+            "name": "Прахаціцы",
+            "code": "315"
+        },
+        {
+            "name": "Просцеёў",
+            "code": "713"
         },
         {
             "name": "раён Бенешаў",
@@ -4003,12 +4027,20 @@
             "code": "322"
         },
         {
+            "name": "раён Кутна-Гора",
+            "code": "205"
+        },
+        {
             "name": "раён Лоўні",
             "code": "424"
         },
         {
             "name": "раён Німбурк",
             "code": "208"
+        },
+        {
+            "name": "раён Опава",
+            "code": "805"
         },
         {
             "name": "раён Пардубіцы",
@@ -4027,12 +4059,28 @@
             "code": "533"
         },
         {
+            "name": "раён Семілі",
+            "code": "514"
+        },
+        {
+            "name": "раён Трутнаў",
+            "code": "525"
+        },
+        {
+            "name": "раён Тршэбіч",
+            "code": "634"
+        },
+        {
             "name": "раён Усецін",
             "code": "723"
         },
         {
             "name": "Раён Чэске-Будзеёвіцы",
             "code": "311"
+        },
+        {
+            "name": "раён Чэскі-Крумлаў",
+            "code": "312"
         },
         {
             "name": "Сярэднячэшскі край",
@@ -4045,6 +4093,14 @@
         {
             "name": "Усцецкі край",
             "code": "42"
+        },
+        {
+            "name": "Усці-над-Лабем",
+            "code": "427"
+        },
+        {
+            "name": "Усці-над-Орліцай",
+            "code": "534"
         },
         {
             "name": "Хеб",
@@ -4769,10 +4825,6 @@
             "code": "MT"
         },
         {
-            "name": "Monufia",
-            "code": "MNF"
-        },
-        {
             "name": "New Valley",
             "code": "WAD"
         },
@@ -4811,6 +4863,10 @@
         {
             "name": "Луксор",
             "code": "LX"
+        },
+        {
+            "name": "Мінуфія",
+            "code": "MNF"
         },
         {
             "name": "Мухафаза Александрыя",
@@ -4877,56 +4933,12 @@
     ],
     "ES": [
         {
-            "name": "Álava",
-            "code": "VI"
-        },
-        {
-            "name": "Asturias Province",
-            "code": "O"
-        },
-        {
-            "name": "Balears Province",
-            "code": "PM"
-        },
-        {
-            "name": "Biscay",
-            "code": "BI"
-        },
-        {
             "name": "Canary Islands",
             "code": "CN"
         },
         {
-            "name": "Cantabria Province",
-            "code": "S"
-        },
-        {
-            "name": "Guadalajara",
-            "code": "GU"
-        },
-        {
-            "name": "Lleida",
-            "code": "L"
-        },
-        {
             "name": "Murcia",
             "code": "MU"
-        },
-        {
-            "name": "Navarra",
-            "code": "NA"
-        },
-        {
-            "name": "Palencia",
-            "code": "P"
-        },
-        {
-            "name": "Santa Cruz de Tenerife",
-            "code": "TF"
-        },
-        {
-            "name": "Tarragona",
-            "code": "T"
         },
         {
             "name": "Андалусія",
@@ -4941,6 +4953,10 @@
             "code": "AS"
         },
         {
+            "name": "Астурыя²",
+            "code": "O"
+        },
+        {
             "name": "аўтаномная супольнасць Валенсія",
             "code": "VC"
         },
@@ -4949,12 +4965,20 @@
             "code": "MD"
         },
         {
+            "name": "аўтаномная супольнасць Навара",
+            "code": "NA"
+        },
+        {
             "name": "Бадахас",
             "code": "BA"
         },
         {
             "name": "Балеарскія астравы",
             "code": "IB"
+        },
+        {
+            "name": "Балеарскія астравы²",
+            "code": "PM"
         },
         {
             "name": "Вальядалід",
@@ -4971,6 +4995,10 @@
         {
             "name": "Кантабрыя",
             "code": "CB"
+        },
+        {
+            "name": "Кантабрыя²",
+            "code": "S"
         },
         {
             "name": "Касерэс",
@@ -5017,6 +5045,10 @@
             "code": "AV"
         },
         {
+            "name": "правінцыя Алава",
+            "code": "VI"
+        },
+        {
             "name": "правінцыя Алікантэ",
             "code": "A"
         },
@@ -5037,12 +5069,20 @@
             "code": "B"
         },
         {
+            "name": "правінцыя Біская",
+            "code": "BI"
+        },
+        {
             "name": "Правінцыя Бургас",
             "code": "BU"
         },
         {
             "name": "Правінцыя Валенсія",
             "code": "V"
+        },
+        {
+            "name": "правінцыя Гвадалахара",
+            "code": "GU"
         },
         {
             "name": "Правінцыя Гранада",
@@ -5073,12 +5113,20 @@
             "code": "LU"
         },
         {
+            "name": "правінцыя Льейда",
+            "code": "L"
+        },
+        {
             "name": "Правінцыя Мадрыд",
             "code": "M"
         },
         {
             "name": "Правінцыя Малага",
             "code": "MA"
+        },
+        {
+            "name": "правінцыя Паленсія",
+            "code": "P"
         },
         {
             "name": "правінцыя Пантэведра",
@@ -5091,6 +5139,10 @@
         {
             "name": "Правінцыя Самора",
             "code": "ZA"
+        },
+        {
+            "name": "правінцыя Санта-Крус-дэ-Тэнэрыфэ",
+            "code": "TF"
         },
         {
             "name": "правінцыя Сарагоса",
@@ -5107,6 +5159,10 @@
         {
             "name": "Правінцыя Таледа",
             "code": "TO"
+        },
+        {
+            "name": "правінцыя Тарагона",
+            "code": "T"
         },
         {
             "name": "Правінцыя Уэльва",
@@ -5175,10 +5231,6 @@
             "code": "HA"
         },
         {
-            "name": "Oromia",
-            "code": "OR"
-        },
-        {
             "name": "Somali",
             "code": "SO"
         },
@@ -5193,6 +5245,10 @@
         {
             "name": "Адыс-Абеба",
             "code": "AA"
+        },
+        {
+            "name": "Аромія",
+            "code": "OR"
         },
         {
             "name": "Горад Дырэ-Дауа",
@@ -5229,11 +5285,11 @@
             "code": "07"
         },
         {
-            "name": "Central Finland",
+            "name": "Цэнтральная Фінляндыя",
             "code": "08"
         },
         {
-            "name": "Kymenlaakso",
+            "name": "Кюменлаакса",
             "code": "09"
         },
         {
@@ -5241,7 +5297,7 @@
             "code": "10"
         },
         {
-            "name": "Pirkanmaa",
+            "name": "Пірканмаа",
             "code": "11"
         },
         {
@@ -5253,7 +5309,7 @@
             "code": "13"
         },
         {
-            "name": "Northern Ostrobothnia",
+            "name": "Паўночная Астработнія",
             "code": "14"
         },
         {
@@ -5265,7 +5321,7 @@
             "code": "16"
         },
         {
-            "name": "Satakunta",
+            "name": "Сатакунта",
             "code": "17"
         },
         {
@@ -5379,20 +5435,12 @@
             "code": "09"
         },
         {
-            "name": "Brittany",
-            "code": "E"
-        },
-        {
             "name": "Burgundy-Franche-Comté",
             "code": "BFC"
         },
         {
             "name": "Clipperton Island",
             "code": "CP"
-        },
-        {
-            "name": "Corsica",
-            "code": "H"
         },
         {
             "name": "Côte-d’Or",
@@ -5415,24 +5463,16 @@
             "code": "TF"
         },
         {
-            "name": "Grand-Est",
-            "code": "GES"
+            "name": "Guadeloupe",
+            "code": "GP"
         },
         {
             "name": "Guadeloupe",
             "code": "GUA"
         },
         {
-            "name": "Guadeloupe²",
-            "code": "GP"
-        },
-        {
             "name": "Haute-Vienne",
             "code": "87"
-        },
-        {
-            "name": "Hauts-de-France",
-            "code": "HDF"
         },
         {
             "name": "La Réunion",
@@ -5444,19 +5484,15 @@
         },
         {
             "name": "Mayotte",
-            "code": "MAY"
+            "code": "YT"
         },
         {
-            "name": "Mayotte²",
-            "code": "YT"
+            "name": "Mayotte",
+            "code": "MAY"
         },
         {
             "name": "New Caledonia",
             "code": "NC"
-        },
-        {
-            "name": "Occitanie",
-            "code": "OCC"
         },
         {
             "name": "Réunion",
@@ -5529,6 +5565,10 @@
         {
             "name": "Гарона Верхняя",
             "code": "31"
+        },
+        {
+            "name": "Гранд Эст",
+            "code": "GES"
         },
         {
             "name": "Дардонь",
@@ -5831,8 +5871,16 @@
             "code": "69"
         },
         {
+            "name": "рэгіён Аксітанія",
+            "code": "OCC"
+        },
+        {
             "name": "Рэгіён Нармандыя",
             "code": "NOR"
+        },
+        {
+            "name": "рэгіён О-дэ-Франс",
+            "code": "HDF"
         },
         {
             "name": "Рэгіён Цэнтр",
@@ -5923,10 +5971,6 @@
     ],
     "GB": [
         {
-            "name": "Aberdeenshire",
-            "code": "ABD"
-        },
-        {
             "name": "Antrim",
             "code": "ANT"
         },
@@ -5967,10 +6011,6 @@
             "code": "BNB"
         },
         {
-            "name": "Barnsley",
-            "code": "BNS"
-        },
-        {
             "name": "Bedford",
             "code": "BDF"
         },
@@ -5983,24 +6023,8 @@
             "code": "BGW"
         },
         {
-            "name": "Bolton",
-            "code": "BOL"
-        },
-        {
             "name": "Bracknell Forest",
             "code": "BRC"
-        },
-        {
-            "name": "Bury",
-            "code": "BUR"
-        },
-        {
-            "name": "Caerphilly",
-            "code": "CAY"
-        },
-        {
-            "name": "Carmarthenshire",
-            "code": "CMN"
         },
         {
             "name": "Carrickfergus",
@@ -6015,16 +6039,8 @@
             "code": "CCG"
         },
         {
-            "name": "Central Bedfordshire",
-            "code": "CBF"
-        },
-        {
             "name": "Ceredigion",
             "code": "CGN"
-        },
-        {
-            "name": "Cheshire West and Chester",
-            "code": "CHW"
         },
         {
             "name": "Clackmannanshire",
@@ -6047,10 +6063,6 @@
             "code": "CGV"
         },
         {
-            "name": "Croydon",
-            "code": "CRY"
-        },
-        {
             "name": "Darlington",
             "code": "DAL"
         },
@@ -6061,10 +6073,6 @@
         {
             "name": "Derry and Strabane",
             "code": "DRS"
-        },
-        {
-            "name": "Dorset",
-            "code": "DOR"
         },
         {
             "name": "Down",
@@ -6087,10 +6095,6 @@
             "code": "ERW"
         },
         {
-            "name": "East Riding of Yorkshire",
-            "code": "ERY"
-        },
-        {
             "name": "England and Wales",
             "code": "EAW"
         },
@@ -6111,24 +6115,8 @@
             "code": "GAT"
         },
         {
-            "name": "Halton",
-            "code": "HAL"
-        },
-        {
-            "name": "Hammersmith and Fulham",
-            "code": "HMF"
-        },
-        {
             "name": "Haringey",
             "code": "HRY"
-        },
-        {
-            "name": "Hartlepool",
-            "code": "HPL"
-        },
-        {
-            "name": "Highland",
-            "code": "HLD"
         },
         {
             "name": "Hillingdon",
@@ -6139,24 +6127,12 @@
             "code": "HNS"
         },
         {
-            "name": "Islington",
-            "code": "ISL"
-        },
-        {
             "name": "Kirklees",
             "code": "KIR"
         },
         {
-            "name": "Lancashire",
-            "code": "LAN"
-        },
-        {
             "name": "Larne",
             "code": "LRN"
-        },
-        {
-            "name": "Lewisham",
-            "code": "LEW"
         },
         {
             "name": "Limavady",
@@ -6187,20 +6163,12 @@
             "code": "MTY"
         },
         {
-            "name": "Merton",
-            "code": "MRT"
-        },
-        {
             "name": "Mid and East Antrim",
             "code": "MEA"
         },
         {
             "name": "Mid Ulster",
             "code": "MUL"
-        },
-        {
-            "name": "Midlothian",
-            "code": "MLN"
         },
         {
             "name": "Milton Keynes",
@@ -6223,10 +6191,6 @@
             "code": "NWM"
         },
         {
-            "name": "Newport",
-            "code": "NWP"
-        },
-        {
             "name": "Newry and Mourne",
             "code": "NYM"
         },
@@ -6243,10 +6207,6 @@
             "code": "NDN"
         },
         {
-            "name": "North East Lincolnshire",
-            "code": "NEL"
-        },
-        {
             "name": "North Lanarkshire",
             "code": "NLK"
         },
@@ -6255,32 +6215,12 @@
             "code": "NLN"
         },
         {
-            "name": "North Somerset",
-            "code": "NSM"
-        },
-        {
             "name": "North Tyneside",
             "code": "NTY"
         },
         {
-            "name": "North Yorkshire",
-            "code": "NYK"
-        },
-        {
-            "name": "Oldham",
-            "code": "OLD"
-        },
-        {
             "name": "Omagh",
             "code": "OMH"
-        },
-        {
-            "name": "Pembrokeshire",
-            "code": "PEM"
-        },
-        {
-            "name": "Perth and Kinross",
-            "code": "PKN"
         },
         {
             "name": "Peter",
@@ -6311,36 +6251,12 @@
             "code": "SHN"
         },
         {
-            "name": "Salford",
-            "code": "SLF"
-        },
-        {
             "name": "Sandwell",
             "code": "SAW"
         },
         {
-            "name": "Scottish Borders",
-            "code": "SCB"
-        },
-        {
-            "name": "Sefton",
-            "code": "SFT"
-        },
-        {
-            "name": "South Lanarkshire",
-            "code": "SLK"
-        },
-        {
             "name": "South Tyneside",
             "code": "STY"
-        },
-        {
-            "name": "Southwark",
-            "code": "SWK"
-        },
-        {
-            "name": "Stockport",
-            "code": "SKP"
         },
         {
             "name": "Stockton-on-Tees",
@@ -6359,10 +6275,6 @@
             "code": "STN"
         },
         {
-            "name": "Swansea",
-            "code": "SWA"
-        },
-        {
             "name": "Swindon",
             "code": "SWD"
         },
@@ -6373,10 +6285,6 @@
         {
             "name": "Thurrock",
             "code": "THR"
-        },
-        {
-            "name": "Torbay",
-            "code": "TOB"
         },
         {
             "name": "Torfaen",
@@ -6391,20 +6299,8 @@
             "code": "VGL"
         },
         {
-            "name": "Wakefield",
-            "code": "WKF"
-        },
-        {
             "name": "Walsall",
             "code": "WLL"
-        },
-        {
-            "name": "Wandsworth",
-            "code": "WND"
-        },
-        {
-            "name": "Warrington",
-            "code": "WRT"
         },
         {
             "name": "Wigan",
@@ -6415,12 +6311,12 @@
             "code": "WOK"
         },
         {
-            "name": "Worcestershire",
-            "code": "WOR"
-        },
-        {
             "name": "Абердзін",
             "code": "ABE"
+        },
+        {
+            "name": "Абердзіншыр",
+            "code": "ABD"
         },
         {
             "name": "акруга Белфаст",
@@ -6463,6 +6359,10 @@
             "code": "BEX"
         },
         {
+            "name": "Беры",
+            "code": "BUR"
+        },
+        {
             "name": "Бірмінгем",
             "code": "BIR"
         },
@@ -6485,6 +6385,10 @@
         {
             "name": "Бора Кенсінгтон і Чэлсі",
             "code": "KEC"
+        },
+        {
+            "name": "бора Кройдан",
+            "code": "CRY"
         },
         {
             "name": "Бора Кэмдэн",
@@ -6607,6 +6511,10 @@
             "code": "STE"
         },
         {
+            "name": "графства Вустэршыр",
+            "code": "WOR"
+        },
+        {
             "name": "Графства Дарэм",
             "code": "DUR"
         },
@@ -6667,6 +6575,10 @@
             "code": "DGY"
         },
         {
+            "name": "Дорсет",
+            "code": "DOR"
+        },
+        {
             "name": "Дэрбі",
             "code": "DER"
         },
@@ -6687,12 +6599,24 @@
             "code": "WSX"
         },
         {
+            "name": "Заходні Чэшыр і Чэстэр",
+            "code": "CHW"
+        },
+        {
             "name": "Знешнія Гебрыдскія астравы",
             "code": "ELS"
         },
         {
+            "name": "Ізлінгтан",
+            "code": "ISL"
+        },
+        {
             "name": "Інверклайд",
             "code": "IVC"
+        },
+        {
+            "name": "Кайрфілі",
+            "code": "CAY"
         },
         {
             "name": "Калдэрдэйл",
@@ -6701,6 +6625,10 @@
         {
             "name": "Камбрыя",
             "code": "CMA"
+        },
+        {
+            "name": "Кармартэншыр",
+            "code": "CMN"
         },
         {
             "name": "Кембрыджшыр",
@@ -6719,6 +6647,10 @@
             "code": "COV"
         },
         {
+            "name": "Ланкашыр",
+            "code": "LAN"
+        },
+        {
             "name": "Лестэр",
             "code": "LCE"
         },
@@ -6731,16 +6663,36 @@
             "code": "LIV"
         },
         {
+            "name": "Луішэм",
+            "code": "LEW"
+        },
+        {
             "name": "Манчэстэр",
             "code": "MAN"
+        },
+        {
+            "name": "Мертан",
+            "code": "MRT"
+        },
+        {
+            "name": "Мідлотыян",
+            "code": "MLN"
         },
         {
             "name": "Монмутшыр",
             "code": "MON"
         },
         {
+            "name": "Муніцыпальны раён Барнслі",
+            "code": "BNS"
+        },
+        {
             "name": "Нартумберленд",
             "code": "NBL"
+        },
+        {
+            "name": "Норт-Ёркшыр",
+            "code": "NYK"
         },
         {
             "name": "Нотынгемшыр",
@@ -6755,8 +6707,16 @@
             "code": "NET"
         },
         {
+            "name": "Ньюпарт",
+            "code": "NWP"
+        },
+        {
             "name": "Оксфардшыр",
             "code": "OXF"
+        },
+        {
+            "name": "Олдэм",
+            "code": "OLD"
         },
         {
             "name": "Паўвостраў Корнуал",
@@ -6771,16 +6731,36 @@
             "code": "SAY"
         },
         {
+            "name": "Паўночна-Усходні Лінкальншыр",
+            "code": "NEL"
+        },
+        {
             "name": "Паўночная Ірландыя",
             "code": "NIR"
+        },
+        {
+            "name": "Паўночны Сомерсет",
+            "code": "NSM"
         },
         {
             "name": "Паўночны Эйршыр",
             "code": "NAY"
         },
         {
+            "name": "Пембрукшыр",
+            "code": "PEM"
+        },
+        {
+            "name": "Перт-энд-Кінрос",
+            "code": "PKN"
+        },
+        {
             "name": "Портсмут",
             "code": "POR"
+        },
+        {
+            "name": "раён Болтан",
+            "code": "BOL"
         },
         {
             "name": "раён Соліхал",
@@ -6815,6 +6795,18 @@
             "code": "RFW"
         },
         {
+            "name": "Саўт-Ланаркшыр",
+            "code": "SLK"
+        },
+        {
+            "name": "Саўтуарк",
+            "code": "SWK"
+        },
+        {
+            "name": "Сефтан",
+            "code": "SFT"
+        },
+        {
             "name": "Сіці",
             "code": "LND"
         },
@@ -6823,8 +6815,16 @@
             "code": "LDS"
         },
         {
+            "name": "Скотыш-Бордэрс",
+            "code": "SCB"
+        },
+        {
             "name": "Слау",
             "code": "SLG"
+        },
+        {
+            "name": "Солфард",
+            "code": "SLF"
         },
         {
             "name": "Сомерсет",
@@ -6835,8 +6835,16 @@
             "code": "STS"
         },
         {
+            "name": "Стокпарт",
+            "code": "SKP"
+        },
+        {
             "name": "Стэрлінг",
             "code": "STG"
+        },
+        {
+            "name": "Суонсі",
+            "code": "SWA"
         },
         {
             "name": "Сурэй",
@@ -6847,6 +6855,10 @@
             "code": "TWH"
         },
         {
+            "name": "Торбэй",
+            "code": "TOB"
+        },
+        {
             "name": "Уілтшыр",
             "code": "WIL"
         },
@@ -6855,8 +6867,20 @@
             "code": "WFT"
         },
         {
+            "name": "Уондсуэрт",
+            "code": "WND"
+        },
+        {
+            "name": "Уорынгтан",
+            "code": "WRT"
+        },
+        {
             "name": "Усходні Лотыян",
             "code": "ELN"
+        },
+        {
+            "name": "Усходні райдынг Ёркшыра",
+            "code": "ERY"
         },
         {
             "name": "Усходні Сусекс",
@@ -6871,6 +6895,10 @@
             "code": "EAY"
         },
         {
+            "name": "Уэйкфілд",
+            "code": "WKF"
+        },
+        {
             "name": "Уэльс",
             "code": "WLS"
         },
@@ -6883,16 +6911,36 @@
             "code": "FLN"
         },
         {
+            "name": "Хайленд",
+            "code": "HLD"
+        },
+        {
             "name": "Хакні",
             "code": "HCK"
+        },
+        {
+            "name": "Халтан",
+            "code": "HAL"
+        },
+        {
+            "name": "Хамерсміт і Фулем",
+            "code": "HMF"
         },
         {
             "name": "Хараў",
             "code": "HRW"
         },
         {
+            "name": "Хартлпул",
+            "code": "HPL"
+        },
+        {
             "name": "Хартфардшыр",
             "code": "HRT"
+        },
+        {
+            "name": "Цэнтральны Бедфардшыр",
+            "code": "CBF"
         },
         {
             "name": "Шатландыя",
@@ -6999,6 +7047,12 @@
             "code": "SK"
         }
     ],
+    "GF": [
+        {
+            "code": "",
+            "name": "French Guiana"
+        }
+    ],
     "GH": [
         {
             "name": "Верхні заходні рэгіён",
@@ -7042,6 +7096,14 @@
         }
     ],
     "GL": [
+        {
+            "name": "Avannaata Kommunia",
+            "code": "AV"
+        },
+        {
+            "name": "Kommune Qeqertalik",
+            "code": "QT"
+        },
         {
             "name": "Qaasuitsup",
             "code": "QA"
@@ -7249,6 +7311,12 @@
         {
             "name": "Рэгіён Фарана",
             "code": "F"
+        }
+    ],
+    "GP": [
+        {
+            "code": "",
+            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -7641,6 +7709,12 @@
             "code": "GU"
         }
     ],
+    "GU": [
+        {
+            "code": "",
+            "name": "Guam"
+        }
+    ],
     "GW": [
         {
             "name": "Bafatá",
@@ -7693,44 +7767,50 @@
     ],
     "GY": [
         {
-            "code": "BA",
-            "name": "Barima-Waini"
+            "name": "Barima-Waini",
+            "code": "BA"
         },
         {
-            "code": "CU",
-            "name": "Cuyuni-Mazaruni"
+            "name": "Cuyuni-Mazaruni",
+            "code": "CU"
         },
         {
-            "code": "DE",
-            "name": "Demerara-Mahaica"
+            "name": "East Berbice-Corentyne",
+            "code": "EB"
         },
         {
-            "code": "EB",
-            "name": "East Berbice-Corentyne"
+            "name": "Essequibo Islands-West Demerara",
+            "code": "ES"
         },
         {
-            "code": "ES",
-            "name": "Essequibo Islands-West Demerara"
+            "name": "Mahaica-Berbice",
+            "code": "MA"
         },
         {
-            "code": "MA",
-            "name": "Mahaica-Berbice"
+            "name": "Pomeroon-Supenaam",
+            "code": "PM"
         },
         {
-            "code": "PM",
-            "name": "Pomeroon-Supenaam"
+            "name": "Potaro-Siparuni",
+            "code": "PT"
         },
         {
-            "code": "PT",
-            "name": "Potaro-Siparuni"
+            "name": "Upper Demerara-Berbice",
+            "code": "UD"
         },
         {
-            "code": "UD",
-            "name": "Upper Demerara-Berbice"
+            "name": "Upper Takutu-Upper Essequibo",
+            "code": "UT"
         },
         {
-            "code": "UT",
-            "name": "Upper Takutu-Upper Essequibo"
+            "name": "Дэмерара-Махайка",
+            "code": "DE"
+        }
+    ],
+    "HK": [
+        {
+            "code": "",
+            "name": "Hong Kong SAR China"
         }
     ],
     "HN": [
@@ -7763,10 +7843,6 @@
             "code": "EP"
         },
         {
-            "name": "Francisco Morazán",
-            "code": "FM"
-        },
-        {
             "name": "Gracias a Dios",
             "code": "GD"
         },
@@ -7795,16 +7871,20 @@
             "code": "SB"
         },
         {
-            "name": "Valle",
-            "code": "VA"
-        },
-        {
             "name": "Yoro",
             "code": "YO"
         },
         {
             "name": "Астравы Іслас-дэ-ла-Баія",
             "code": "IB"
+        },
+        {
+            "name": "Валье",
+            "code": "VA"
+        },
+        {
+            "name": "Франсіска Марасан",
+            "code": "FM"
         }
     ],
     "HR": [
@@ -7821,7 +7901,7 @@
             "code": "03"
         },
         {
-            "name": "Karlovac",
+            "name": "Карлавачка",
             "code": "04"
         },
         {
@@ -7849,7 +7929,7 @@
             "code": "10"
         },
         {
-            "name": "Požega-Slavonia",
+            "name": "Пожажска-Славонская жупанія",
             "code": "11"
         },
         {
@@ -7937,40 +8017,12 @@
     ],
     "HU": [
         {
-            "name": "Békés",
-            "code": "BE"
-        },
-        {
-            "name": "Békéscsaba",
-            "code": "BC"
-        },
-        {
             "name": "Dunaújváros",
             "code": "DU"
         },
         {
-            "name": "Hajdú-Bihar",
-            "code": "HB"
-        },
-        {
-            "name": "Jász-Nagykun-Szolnok",
-            "code": "JN"
-        },
-        {
-            "name": "Nógrád",
-            "code": "NO"
-        },
-        {
             "name": "Salgótarján",
             "code": "ST"
-        },
-        {
-            "name": "Somogy",
-            "code": "SO"
-        },
-        {
-            "name": "Szabolcs-Szatmár-Bereg",
-            "code": "SZ"
         },
         {
             "name": "Zala",
@@ -7983,6 +8035,10 @@
         {
             "name": "Бач-Кішкун",
             "code": "BK"
+        },
+        {
+            "name": "Бекешчаба",
+            "code": "BC"
         },
         {
             "name": "Боршад-Абауй-Земплен",
@@ -8069,12 +8125,24 @@
             "code": "KM"
         },
         {
+            "name": "медзье Бекеш",
+            "code": "BE"
+        },
+        {
             "name": "медзье Тольна",
             "code": "TO"
         },
         {
+            "name": "медзье Шомадзь",
+            "code": "SO"
+        },
+        {
             "name": "Мішкальц",
             "code": "MI"
+        },
+        {
+            "name": "Ноград",
+            "code": "NO"
         },
         {
             "name": "Печ",
@@ -8083,6 +8151,10 @@
         {
             "name": "Пешт",
             "code": "PE"
+        },
+        {
+            "name": "Сабальч-Сатмар-Берэг",
+            "code": "SZ"
         },
         {
             "name": "Сегед",
@@ -8101,12 +8173,26 @@
             "code": "HV"
         },
         {
+            "name": "Хайду-Біхар",
+            "code": "HB"
+        },
+        {
             "name": "Хевеш",
             "code": "HE"
         },
         {
             "name": "Чанград",
             "code": "CS"
+        },
+        {
+            "name": "Яс-Надзькун-Сольнак",
+            "code": "JN"
+        }
+    ],
+    "IC": [
+        {
+            "code": "",
+            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -8137,10 +8223,6 @@
         {
             "name": "Lampung",
             "code": "LA"
-        },
-        {
-            "name": "North Kalimantan",
-            "code": "KU"
         },
         {
             "name": "Papua Islands",
@@ -8211,6 +8293,10 @@
             "code": "MU"
         },
         {
+            "name": "Паўночны Калімантан",
+            "code": "KU"
+        },
+        {
             "name": "Правінцыя Ачэх",
             "code": "AC"
         },
@@ -8277,76 +8363,36 @@
     ],
     "IE": [
         {
-            "name": "Carlow",
-            "code": "CW"
-        },
-        {
-            "name": "Cavan",
-            "code": "CN"
-        },
-        {
-            "name": "Clare",
-            "code": "CE"
-        },
-        {
-            "name": "Galway",
-            "code": "G"
-        },
-        {
             "name": "Kerry",
             "code": "KY"
-        },
-        {
-            "name": "Laois",
-            "code": "LS"
-        },
-        {
-            "name": "Leitrim",
-            "code": "LM"
-        },
-        {
-            "name": "Longford",
-            "code": "LD"
-        },
-        {
-            "name": "Meath",
-            "code": "MH"
         },
         {
             "name": "Monaghan",
             "code": "MN"
         },
         {
-            "name": "Offaly",
-            "code": "OY"
-        },
-        {
-            "name": "Roscommon",
-            "code": "RN"
-        },
-        {
-            "name": "Sligo",
-            "code": "SO"
-        },
-        {
-            "name": "Tipperary",
-            "code": "TA"
-        },
-        {
-            "name": "Westmeath",
-            "code": "WH"
-        },
-        {
-            "name": "Wexford",
-            "code": "WX"
+            "name": "графства Голуэй",
+            "code": "G"
         },
         {
             "name": "графства Донегал",
             "code": "DL"
         },
         {
+            "name": "графства Каван",
+            "code": "CN"
+        },
+        {
+            "name": "графства Карлау",
+            "code": "CW"
+        },
+        {
             "name": "Графства Кілдэр",
             "code": "KE"
+        },
+        {
+            "name": "графства Клэр",
+            "code": "CE"
         },
         {
             "name": "Графства Корк",
@@ -8361,12 +8407,52 @@
             "code": "LK"
         },
         {
+            "name": "графства Літрым",
+            "code": "LM"
+        },
+        {
+            "name": "графства Лонгфард",
+            "code": "LD"
+        },
+        {
+            "name": "графства Міт",
+            "code": "MH"
+        },
+        {
+            "name": "графства Офалі",
+            "code": "OY"
+        },
+        {
+            "name": "графства Раскоман",
+            "code": "RN"
+        },
+        {
+            "name": "графства Слайга",
+            "code": "SO"
+        },
+        {
+            "name": "графства Тыперэры",
+            "code": "TA"
+        },
+        {
             "name": "графства Уіклау",
             "code": "WW"
         },
         {
             "name": "графства Уотэрфард",
             "code": "WD"
+        },
+        {
+            "name": "графства Уэксфард",
+            "code": "WX"
+        },
+        {
+            "name": "графства Уэстміт",
+            "code": "WH"
+        },
+        {
+            "name": "графтсва Лііш",
+            "code": "LS"
         },
         {
             "name": "Дублін",
@@ -8399,11 +8485,7 @@
     ],
     "IL": [
         {
-            "name": "Haifa District",
-            "code": "HA"
-        },
-        {
-            "name": "Jerusalem",
+            "name": "Іерусалімская акруга",
             "code": "JM"
         },
         {
@@ -8417,6 +8499,10 @@
         {
             "name": "Тэль-Авіўская акруга",
             "code": "TA"
+        },
+        {
+            "name": "Хайфская акруга",
+            "code": "HA"
         },
         {
             "name": "Цэнтральная акруга",
@@ -8579,10 +8665,6 @@
             "code": "QA"
         },
         {
-            "name": "Babylon",
-            "code": "BB"
-        },
-        {
             "name": "Dhi Qar",
             "code": "DQ"
         },
@@ -8615,16 +8697,12 @@
             "code": "NA"
         },
         {
-            "name": "Nineveh",
-            "code": "NI"
-        },
-        {
-            "name": "Saladin",
-            "code": "SD"
-        },
-        {
             "name": "Wasit",
             "code": "WA"
+        },
+        {
+            "name": "Бабіль",
+            "code": "BB"
         },
         {
             "name": "Багдад",
@@ -8641,6 +8719,14 @@
         {
             "name": "Мухафаза Сулейманія",
             "code": "SU"
+        },
+        {
+            "name": "Найнава",
+            "code": "NI"
+        },
+        {
+            "name": "правінцыя Салах-эд-Дзін",
+            "code": "SD"
         }
     ],
     "IR": [
@@ -8809,40 +8895,12 @@
     ],
     "IT": [
         {
-            "name": "Agrigento",
-            "code": "AG"
-        },
-        {
             "name": "Aosta",
             "code": "AO"
         },
         {
             "name": "Aosta Valley",
             "code": "23"
-        },
-        {
-            "name": "Arezzo",
-            "code": "AR"
-        },
-        {
-            "name": "Ascoli Piceno",
-            "code": "AP"
-        },
-        {
-            "name": "Asti",
-            "code": "AT"
-        },
-        {
-            "name": "Avellino",
-            "code": "AV"
-        },
-        {
-            "name": "Barletta-Andria-Trani",
-            "code": "BT"
-        },
-        {
-            "name": "Benevento",
-            "code": "BN"
         },
         {
             "name": "Biella",
@@ -8853,36 +8911,12 @@
             "code": "CA"
         },
         {
-            "name": "Caltanissetta",
-            "code": "CL"
-        },
-        {
-            "name": "Campobasso",
-            "code": "CB"
-        },
-        {
             "name": "Carbonia-Iglesias",
             "code": "CI"
         },
         {
-            "name": "Caserta",
-            "code": "CE"
-        },
-        {
-            "name": "Catanzaro",
-            "code": "CZ"
-        },
-        {
             "name": "Chieti",
             "code": "CH"
-        },
-        {
-            "name": "Foggia",
-            "code": "FG"
-        },
-        {
-            "name": "Genoa",
-            "code": "GE"
         },
         {
             "name": "Isernia",
@@ -8893,20 +8927,8 @@
             "code": "AQ"
         },
         {
-            "name": "Lecco",
-            "code": "LC"
-        },
-        {
             "name": "Medio Campidano",
             "code": "VS"
-        },
-        {
-            "name": "Messina",
-            "code": "ME"
-        },
-        {
-            "name": "Novara",
-            "code": "NO"
         },
         {
             "name": "Ogliastra",
@@ -8917,10 +8939,6 @@
             "code": "OT"
         },
         {
-            "name": "Palermo",
-            "code": "PA"
-        },
-        {
             "name": "Piacenza",
             "code": "PC"
         },
@@ -8929,44 +8947,8 @@
             "code": "21"
         },
         {
-            "name": "Rieti",
-            "code": "RI"
-        },
-        {
-            "name": "Rovigo",
-            "code": "RO"
-        },
-        {
-            "name": "Sondrio",
-            "code": "SO"
-        },
-        {
-            "name": "South Tyrol",
-            "code": "BZ"
-        },
-        {
-            "name": "Taranto",
-            "code": "TA"
-        },
-        {
-            "name": "Teramo",
-            "code": "TE"
-        },
-        {
-            "name": "Terni",
-            "code": "TR"
-        },
-        {
-            "name": "Trentino",
-            "code": "TN"
-        },
-        {
-            "name": "Verbano-Cusio-Ossola",
-            "code": "VB"
-        },
-        {
-            "name": "Vibo Valentia",
-            "code": "VV"
+            "name": "Sud Sardegna",
+            "code": "SD"
         },
         {
             "name": "Абруца",
@@ -9053,6 +9035,10 @@
             "code": "57"
         },
         {
+            "name": "метрапольны горад Генуя",
+            "code": "GE"
+        },
+        {
             "name": "Неапаль",
             "code": "NA"
         },
@@ -9069,16 +9055,44 @@
             "code": "PZ"
         },
         {
+            "name": "Паўднёвы Ціроль",
+            "code": "BZ"
+        },
+        {
             "name": "Піза",
             "code": "PI"
+        },
+        {
+            "name": "правінцыя Авеліна",
+            "code": "AV"
+        },
+        {
+            "name": "правінцыя Агрыджэнта",
+            "code": "AG"
         },
         {
             "name": "правінцыя Алесандрыя",
             "code": "AL"
         },
         {
+            "name": "правінцыя Арэца",
+            "code": "AR"
+        },
+        {
+            "name": "правінцыя Асколі-Пічэна",
+            "code": "AP"
+        },
+        {
+            "name": "правінцыя Асці",
+            "code": "AT"
+        },
+        {
             "name": "Правінцыя Балоння",
             "code": "BO"
+        },
+        {
+            "name": "правінцыя Барлета-Андрыя-Трані",
+            "code": "BT"
         },
         {
             "name": "правінцыя Бары",
@@ -9087,6 +9101,10 @@
         {
             "name": "Правінцыя Белуна",
             "code": "BL"
+        },
+        {
+            "name": "правінцыя Беневента",
+            "code": "BN"
         },
         {
             "name": "правінцыя Бергама",
@@ -9105,8 +9123,16 @@
             "code": "VA"
         },
         {
+            "name": "правінцыя Вербана-Кузья-Асола",
+            "code": "VB"
+        },
+        {
             "name": "правінцыя Верчэлі",
             "code": "VC"
+        },
+        {
+            "name": "правінцыя Віба-Валентыя",
+            "code": "VV"
         },
         {
             "name": "правінцыя Вітэрба",
@@ -9129,6 +9155,22 @@
             "code": "CS"
         },
         {
+            "name": "правінцыя Казерта",
+            "code": "CE"
+        },
+        {
+            "name": "правінцыя Кальтанісета",
+            "code": "CL"
+        },
+        {
+            "name": "правінцыя Кампабаса",
+            "code": "CB"
+        },
+        {
+            "name": "правінцыя Катандзара",
+            "code": "CZ"
+        },
+        {
             "name": "правінцыя Кома",
             "code": "CO"
         },
@@ -9139,6 +9181,10 @@
         {
             "name": "правінцыя Лаціна",
             "code": "LT"
+        },
+        {
+            "name": "правінцыя Лека",
+            "code": "LC"
         },
         {
             "name": "правінцыя Лечэ",
@@ -9165,6 +9211,10 @@
             "code": "MC"
         },
         {
+            "name": "правінцыя Месіна",
+            "code": "ME"
+        },
+        {
             "name": "правінцыя Мілан",
             "code": "MI"
         },
@@ -9177,8 +9227,16 @@
             "code": "MB"
         },
         {
+            "name": "правінцыя Навара",
+            "code": "NO"
+        },
+        {
             "name": "правінцыя Нуора",
             "code": "NU"
+        },
+        {
+            "name": "правінцыя Палерма",
+            "code": "PA"
         },
         {
             "name": "правінцыя Пардэнонэ",
@@ -9213,8 +9271,16 @@
             "code": "RA"
         },
         {
+            "name": "правінцыя Равіга",
+            "code": "RO"
+        },
+        {
             "name": "правінцыя Рагуза",
             "code": "RG"
+        },
+        {
+            "name": "правінцыя Рыеці",
+            "code": "RI"
         },
         {
             "name": "правінцыя Рым",
@@ -9245,6 +9311,14 @@
             "code": "SI"
         },
         {
+            "name": "правінцыя Сондрыа",
+            "code": "SO"
+        },
+        {
+            "name": "правінцыя Таранта",
+            "code": "TA"
+        },
+        {
             "name": "правінцыя Трыест",
             "code": "TS"
         },
@@ -9253,8 +9327,20 @@
             "code": "TV"
         },
         {
+            "name": "правінцыя Трэнта",
+            "code": "TN"
+        },
+        {
             "name": "правінцыя Турын",
             "code": "TO"
+        },
+        {
+            "name": "правінцыя Тэрама",
+            "code": "TE"
+        },
+        {
+            "name": "правінцыя Тэрні",
+            "code": "TR"
         },
         {
             "name": "правінцыя Удзінэ",
@@ -9275,6 +9361,10 @@
         {
             "name": "правінцыя Фларэнцыя",
             "code": "FI"
+        },
+        {
+            "name": "правінцыя Фоджа",
+            "code": "FG"
         },
         {
             "name": "правінцыя Фразінонэ",
@@ -9331,110 +9421,110 @@
     ],
     "JM": [
         {
-            "code": "01",
-            "name": "Kingston"
+            "name": "Kingston",
+            "code": "01"
         },
         {
-            "code": "02",
-            "name": "Saint Andrew"
+            "name": "Saint Andrew",
+            "code": "02"
         },
         {
-            "code": "03",
-            "name": "Saint Thomas"
+            "name": "Saint Thomas",
+            "code": "03"
         },
         {
-            "code": "04",
-            "name": "Portland"
+            "name": "Portland",
+            "code": "04"
         },
         {
-            "code": "05",
-            "name": "Saint Mary"
+            "name": "Saint Mary",
+            "code": "05"
         },
         {
-            "code": "06",
-            "name": "Saint Ann"
+            "name": "Прыход Сент-Эн",
+            "code": "06"
         },
         {
-            "code": "07",
-            "name": "Trelawny"
+            "name": "Trelawny",
+            "code": "07"
         },
         {
-            "code": "08",
-            "name": "Saint James"
+            "name": "Saint James",
+            "code": "08"
         },
         {
-            "code": "09",
-            "name": "Hanover"
+            "name": "Hanover",
+            "code": "09"
         },
         {
-            "code": "10",
-            "name": "Westmoreland"
+            "name": "Westmoreland",
+            "code": "10"
         },
         {
-            "code": "11",
-            "name": "Saint Elizabeth"
+            "name": "Saint Elizabeth",
+            "code": "11"
         },
         {
-            "code": "12",
-            "name": "Manchester"
+            "name": "Manchester",
+            "code": "12"
         },
         {
-            "code": "13",
-            "name": "Clarendon"
+            "name": "Clarendon",
+            "code": "13"
         },
         {
-            "code": "14",
-            "name": "Saint Catherine"
+            "name": "Saint Catherine",
+            "code": "14"
         }
     ],
     "JO": [
         {
-            "code": "AJ",
-            "name": "Ajloun"
+            "name": "Ajloun",
+            "code": "AJ"
         },
         {
-            "code": "AM",
-            "name": "Amman"
+            "name": "Aqaba",
+            "code": "AQ"
         },
         {
-            "code": "AQ",
-            "name": "Aqaba"
+            "name": "Balqa",
+            "code": "BA"
         },
         {
-            "code": "BA",
-            "name": "Balqa"
+            "name": "Irbid",
+            "code": "IR"
         },
         {
-            "code": "IR",
-            "name": "Irbid"
+            "name": "Jerash",
+            "code": "JA"
         },
         {
-            "code": "JA",
-            "name": "Jerash"
+            "name": "Karak",
+            "code": "KA"
         },
         {
-            "code": "KA",
-            "name": "Karak"
+            "name": "Ma’an",
+            "code": "MN"
         },
         {
-            "code": "MN",
-            "name": "Ma’an"
+            "name": "Madaba",
+            "code": "MD"
         },
         {
-            "code": "MD",
-            "name": "Madaba"
+            "name": "Mafraq",
+            "code": "MA"
         },
         {
-            "code": "MA",
-            "name": "Mafraq"
+            "name": "Tafilah",
+            "code": "AT"
         },
         {
-            "code": "AT",
-            "name": "Tafilah"
+            "name": "Zarqa",
+            "code": "AZ"
         },
         {
-            "code": "AZ",
-            "name": "Zarqa"
+            "name": "Аман",
+            "code": "AM"
         }
     ],
     "JP": [
@@ -9443,7 +9533,7 @@
             "code": "01"
         },
         {
-            "name": "Aomori",
+            "name": "прэфекрута Аомары",
             "code": "02"
         },
         {
@@ -9451,11 +9541,11 @@
             "code": "03"
         },
         {
-            "name": "Miyagi",
+            "name": "прэфектура Міягі",
             "code": "04"
         },
         {
-            "name": "Akita",
+            "name": "Акіта",
             "code": "05"
         },
         {
@@ -9499,7 +9589,7 @@
             "code": "15"
         },
         {
-            "name": "Toyama",
+            "name": "прэфектура Таяма",
             "code": "16"
         },
         {
@@ -9511,11 +9601,11 @@
             "code": "18"
         },
         {
-            "name": "Yamanashi",
+            "name": "прэфектура Яманасі",
             "code": "19"
         },
         {
-            "name": "Nagano",
+            "name": "прэфектура Нагана",
             "code": "20"
         },
         {
@@ -9551,23 +9641,23 @@
             "code": "28"
         },
         {
-            "name": "Nara",
+            "name": "Нара",
             "code": "29"
         },
         {
-            "name": "Wakayama",
+            "name": "прэфектура Вакаяма",
             "code": "30"
         },
         {
-            "name": "Tottori",
+            "name": "прэфектура Таторы",
             "code": "31"
         },
         {
-            "name": "Shimane",
+            "name": "прэфектура Сіманэ",
             "code": "32"
         },
         {
-            "name": "Okayama",
+            "name": "прэфектура Акаяма",
             "code": "33"
         },
         {
@@ -9587,7 +9677,7 @@
             "code": "37"
         },
         {
-            "name": "Ehime",
+            "name": "прэфектура Эхімэ",
             "code": "38"
         },
         {
@@ -9599,7 +9689,7 @@
             "code": "40"
         },
         {
-            "name": "Saga",
+            "name": "прэфектура Сага",
             "code": "41"
         },
         {
@@ -9737,7 +9827,7 @@
             "code": "27"
         },
         {
-            "name": "Mombasa",
+            "name": "Мамбаса",
             "code": "28"
         },
         {
@@ -9769,7 +9859,7 @@
             "code": "35"
         },
         {
-            "name": "Nyeri",
+            "name": "акруга Ньеры",
             "code": "36"
         },
         {
@@ -9819,28 +9909,24 @@
     ],
     "KG": [
         {
-            "name": "Batken",
+            "name": "Баткенская вобласць",
             "code": "B"
-        },
-        {
-            "name": "Chuy",
-            "code": "C"
-        },
-        {
-            "name": "Issyk-Kul",
-            "code": "Y"
-        },
-        {
-            "name": "Jalal-Abad",
-            "code": "J"
-        },
-        {
-            "name": "Naryn",
-            "code": "N"
         },
         {
             "name": "Горад Бішкек",
             "code": "GB"
+        },
+        {
+            "name": "Джалал-Абадская вобласць",
+            "code": "J"
+        },
+        {
+            "name": "Ісык-Кульская вобласць",
+            "code": "Y"
+        },
+        {
+            "name": "Нарынская вобласць",
+            "code": "N"
         },
         {
             "name": "Ош",
@@ -9853,6 +9939,10 @@
         {
             "name": "Талаская вобласць",
             "code": "T"
+        },
+        {
+            "name": "Чуйская вобласць",
+            "code": "C"
         }
     ],
     "KH": [
@@ -10085,7 +10175,7 @@
             "code": "08"
         },
         {
-            "name": "North Hamgyong",
+            "name": "Хамгён-Пукта",
             "code": "09"
         },
         {
@@ -10135,11 +10225,11 @@
             "code": "41"
         },
         {
-            "name": "Gangwon",
+            "name": "правінцыя Канвандо",
             "code": "42"
         },
         {
-            "name": "North Chungcheong",
+            "name": "Чхунчхон-Пукто",
             "code": "43"
         },
         {
@@ -10155,7 +10245,7 @@
             "code": "46"
         },
         {
-            "name": "North Gyeongsang",
+            "name": "Кёнсан-Пукта",
             "code": "47"
         },
         {
@@ -10199,16 +10289,8 @@
     ],
     "KZ": [
         {
-            "name": "Jambyl",
-            "code": "ZHA"
-        },
-        {
-            "name": "Mangystau",
-            "code": "MAN"
-        },
-        {
-            "name": "West Kazakhstan",
-            "code": "ZAP"
+            "name": "Shymkent",
+            "code": "SHY"
         },
         {
             "name": "Акмалінская вобласць",
@@ -10239,6 +10321,14 @@
             "code": "BAY"
         },
         {
+            "name": "Жамбылская вобласць",
+            "code": "ZHA"
+        },
+        {
+            "name": "Заходне-Казахстанская вобласць",
+            "code": "ZAP"
+        },
+        {
             "name": "Карагандзінская вобласць",
             "code": "KAR"
         },
@@ -10249,6 +10339,10 @@
         {
             "name": "Кызылардзінская вобласць",
             "code": "KZY"
+        },
+        {
+            "name": "Мангістаўская вобласць",
+            "code": "MAN"
         },
         {
             "name": "Паўднёва-Казахстанская вобласць",
@@ -10293,10 +10387,6 @@
             "code": "LM"
         },
         {
-            "name": "Luang Prabang",
-            "code": "LP"
-        },
-        {
             "name": "Oudomxay",
             "code": "OU"
         },
@@ -10311,10 +10401,6 @@
         {
             "name": "Salavan",
             "code": "SL"
-        },
-        {
-            "name": "Savannakhet",
-            "code": "SV"
         },
         {
             "name": "Sekong",
@@ -10339,6 +10425,14 @@
         {
             "name": "Атапы",
             "code": "AT"
+        },
+        {
+            "name": "Луангпхабанг",
+            "code": "LP"
+        },
+        {
+            "name": "Саванакхет",
+            "code": "SV"
         }
     ],
     "LB": [
@@ -10377,44 +10471,44 @@
     ],
     "LC": [
         {
-            "code": "01",
-            "name": "Anse la Raye"
+            "name": "Anse la Raye",
+            "code": "01"
         },
         {
-            "code": "02",
-            "name": "Castries"
+            "name": "Castries",
+            "code": "02"
         },
         {
-            "code": "03",
-            "name": "Choiseul"
+            "name": "Choiseul",
+            "code": "03"
         },
         {
-            "code": "05",
-            "name": "Dennery"
+            "name": "Dennery",
+            "code": "05"
         },
         {
-            "code": "06",
-            "name": "Gros Islet"
+            "name": "Грос-Айлет",
+            "code": "06"
         },
         {
-            "code": "07",
-            "name": "Laborie"
+            "name": "Laborie",
+            "code": "07"
         },
         {
-            "code": "08",
-            "name": "Micoud"
+            "name": "Micoud",
+            "code": "08"
         },
         {
-            "code": "10",
-            "name": "Soufrière"
+            "name": "Soufrière",
+            "code": "10"
         },
         {
-            "code": "11",
-            "name": "Vieux Fort"
+            "name": "Vieux Fort",
+            "code": "11"
         },
         {
-            "code": "12",
-            "name": "Canaries"
+            "name": "Canaries",
+            "code": "12"
         }
     ],
     "LI": [
@@ -10465,140 +10559,140 @@
     ],
     "LK": [
         {
-            "code": "1",
-            "name": "Western"
+            "name": "Заходняя правінцыя",
+            "code": "1"
         },
         {
-            "code": "2",
-            "name": "Central"
+            "name": "Central",
+            "code": "2"
         },
         {
-            "code": "3",
-            "name": "Southern"
+            "name": "Southern",
+            "code": "3"
         },
         {
-            "code": "4",
-            "name": "Northern"
+            "name": "Northern",
+            "code": "4"
         },
         {
-            "code": "5",
-            "name": "Eastern"
+            "name": "Eastern",
+            "code": "5"
         },
         {
-            "code": "6",
-            "name": "North Western"
+            "name": "North Western",
+            "code": "6"
         },
         {
-            "code": "7",
-            "name": "North Central"
+            "name": "North Central",
+            "code": "7"
         },
         {
-            "code": "8",
-            "name": "Uva"
+            "name": "Uva",
+            "code": "8"
         },
         {
-            "code": "9",
-            "name": "Sabaragamuwa"
+            "name": "Sabaragamuwa",
+            "code": "9"
         },
         {
-            "code": "11",
-            "name": "Colombo"
+            "name": "Каломба",
+            "code": "11"
         },
         {
-            "code": "12",
-            "name": "Gampaha"
+            "name": "Gampaha",
+            "code": "12"
         },
         {
-            "code": "13",
-            "name": "Kalutara"
+            "name": "Kalutara",
+            "code": "13"
         },
         {
-            "code": "21",
-            "name": "Kandy"
+            "name": "Kandy",
+            "code": "21"
         },
         {
-            "code": "22",
-            "name": "Matale"
+            "name": "Matale",
+            "code": "22"
         },
         {
-            "code": "23",
-            "name": "Nuwara Eliya"
+            "name": "Nuwara Eliya",
+            "code": "23"
         },
         {
-            "code": "31",
-            "name": "Galle"
+            "name": "Galle",
+            "code": "31"
         },
         {
-            "code": "32",
-            "name": "Matara"
+            "name": "Matara",
+            "code": "32"
         },
         {
-            "code": "33",
-            "name": "Hambantota"
+            "name": "Hambantota",
+            "code": "33"
         },
         {
-            "code": "41",
-            "name": "Jaffna"
+            "name": "Jaffna",
+            "code": "41"
         },
         {
-            "code": "42",
-            "name": "Kilinochchi"
+            "name": "Kilinochchi",
+            "code": "42"
         },
         {
-            "code": "43",
-            "name": "Mannar"
+            "name": "Mannar",
+            "code": "43"
         },
         {
-            "code": "44",
-            "name": "Vavuniya"
+            "name": "Vavuniya",
+            "code": "44"
         },
         {
-            "code": "45",
-            "name": "Mullaitivu"
+            "name": "Mullaitivu",
+            "code": "45"
         },
         {
-            "code": "51",
-            "name": "Batticaloa"
+            "name": "Batticaloa",
+            "code": "51"
         },
         {
-            "code": "52",
-            "name": "Ampara"
+            "name": "Ampara",
+            "code": "52"
         },
         {
-            "code": "53",
-            "name": "Trincomalee"
+            "name": "Trincomalee",
+            "code": "53"
         },
         {
-            "code": "61",
-            "name": "Kurunegala"
+            "name": "Kurunegala",
+            "code": "61"
         },
         {
-            "code": "62",
-            "name": "Puttalam"
+            "name": "Puttalam",
+            "code": "62"
         },
         {
-            "code": "71",
-            "name": "Anuradhapura"
+            "name": "Anuradhapura",
+            "code": "71"
         },
         {
-            "code": "72",
-            "name": "Polonnaruwa"
+            "name": "Polonnaruwa",
+            "code": "72"
         },
         {
-            "code": "81",
-            "name": "Badulla"
+            "name": "Badulla",
+            "code": "81"
         },
         {
-            "code": "82",
-            "name": "Moneragala"
+            "name": "Moneragala",
+            "code": "82"
         },
         {
-            "code": "91",
-            "name": "Ratnapura"
+            "name": "Ratnapura",
+            "code": "91"
         },
         {
-            "code": "92",
-            "name": "Kegalle"
+            "name": "Kegalle",
+            "code": "92"
         }
     ],
     "LR": [
@@ -10715,14 +10809,6 @@
             "code": "05"
         },
         {
-            "name": "Elektrėnai",
-            "code": "08"
-        },
-        {
-            "name": "Joniškis",
-            "code": "11"
-        },
-        {
             "name": "Jurbarkas",
             "code": "12"
         },
@@ -10731,20 +10817,8 @@
             "code": "13"
         },
         {
-            "name": "Kazlų Rūda",
-            "code": "17"
-        },
-        {
             "name": "Klaipėdos Municipality",
             "code": "20"
-        },
-        {
-            "name": "Lazdijai",
-            "code": "24"
-        },
-        {
-            "name": "Molėtai",
-            "code": "27"
         },
         {
             "name": "Neringa",
@@ -10757,18 +10831,6 @@
         {
             "name": "Panevėžio Municipality",
             "code": "32"
-        },
-        {
-            "name": "Plungė",
-            "code": "35"
-        },
-        {
-            "name": "Rietavas",
-            "code": "39"
-        },
-        {
-            "name": "Šakiai",
-            "code": "41"
         },
         {
             "name": "Šalčininkai",
@@ -10785,14 +10847,6 @@
         {
             "name": "Skuodas",
             "code": "48"
-        },
-        {
-            "name": "Utena",
-            "code": "54"
-        },
-        {
-            "name": "Vilkaviškis",
-            "code": "56"
         },
         {
             "name": "Visaginas",
@@ -10823,6 +10877,10 @@
             "code": "55"
         },
         {
+            "name": "Вілкавішкіскі раён",
+            "code": "56"
+        },
+        {
             "name": "Вільнюскае гарадское самакіраванне",
             "code": "57"
         },
@@ -10843,12 +10901,20 @@
             "code": "10"
         },
         {
+            "name": "Ёнішкіскі раён",
+            "code": "11"
+        },
+        {
             "name": "Зарасайскі раён",
             "code": "60"
         },
         {
             "name": "Ігналінскі раён",
             "code": "09"
+        },
+        {
+            "name": "Казлурудскае самакіраванне",
+            "code": "17"
         },
         {
             "name": "Кальварыйскае самакіраванне",
@@ -10891,8 +10957,16 @@
             "code": "19"
         },
         {
+            "name": "Лаздзіяйскі раён",
+            "code": "24"
+        },
+        {
             "name": "Мажэйкейскі раён",
             "code": "26"
+        },
+        {
+            "name": "Малетайскі раён",
+            "code": "27"
         },
         {
             "name": "Марыямпальскае самакіраванне",
@@ -10923,6 +10997,10 @@
             "code": "34"
         },
         {
+            "name": "Плунгскі раён",
+            "code": "35"
+        },
+        {
             "name": "Прэнайскі раён",
             "code": "36"
         },
@@ -10937,6 +11015,10 @@
         {
             "name": "Рокішкіскі раён",
             "code": "40"
+        },
+        {
+            "name": "Рыетаваскае самакіраванне",
+            "code": "39"
         },
         {
             "name": "Свянцянскі раён",
@@ -10963,12 +11045,20 @@
             "code": "UT"
         },
         {
+            "name": "Уцянскі раён",
+            "code": "54"
+        },
+        {
             "name": "Цяльшайскі раён",
             "code": "51"
         },
         {
             "name": "Цяльшэйскі павет",
             "code": "TE"
+        },
+        {
+            "name": "Шакейскі раён",
+            "code": "41"
         },
         {
             "name": "Шаўляйскі павет",
@@ -10985,6 +11075,10 @@
         {
             "name": "Шырвінцкі раён",
             "code": "47"
+        },
+        {
+            "name": "Эляктрэнайскае самакіраванне",
+            "code": "08"
         }
     ],
     "LU": [
@@ -10993,16 +11087,8 @@
             "code": "CA"
         },
         {
-            "name": "Clervaux",
-            "code": "CL"
-        },
-        {
             "name": "Diekirch",
             "code": "DI"
-        },
-        {
-            "name": "Diekirch²",
-            "code": "D"
         },
         {
             "name": "Echternach",
@@ -11015,14 +11101,6 @@
         {
             "name": "Grevenmacher",
             "code": "GR"
-        },
-        {
-            "name": "Grevenmacher²",
-            "code": "G"
-        },
-        {
-            "name": "Luxembourg²",
-            "code": "L"
         },
         {
             "name": "Vianden",
@@ -11041,6 +11119,10 @@
             "code": "RM"
         },
         {
+            "name": "Клерво",
+            "code": "CL"
+        },
+        {
             "name": "Люксембург",
             "code": "LU"
         },
@@ -11051,272 +11133,8 @@
     ],
     "LV": [
         {
-            "name": "Brocēni",
-            "code": "018"
-        },
-        {
-            "name": "Carnikava",
-            "code": "020"
-        },
-        {
-            "name": "Cesvaine",
-            "code": "021"
-        },
-        {
-            "name": "Cibla",
-            "code": "023"
-        },
-        {
-            "name": "Dobele",
-            "code": "026"
-        },
-        {
-            "name": "Dundaga",
-            "code": "027"
-        },
-        {
-            "name": "Garkalne",
-            "code": "031"
-        },
-        {
             "name": "Jaunjelgava",
             "code": "038"
-        },
-        {
-            "name": "Jaunpiebalga",
-            "code": "039"
-        },
-        {
-            "name": "Jēkabpils Municipality",
-            "code": "042"
-        },
-        {
-            "name": "Jelgava Municipality",
-            "code": "041"
-        },
-        {
-            "name": "Kandava",
-            "code": "043"
-        },
-        {
-            "name": "Kārsava",
-            "code": "044"
-        },
-        {
-            "name": "Ķegums",
-            "code": "051"
-        },
-        {
-            "name": "Ķekava",
-            "code": "052"
-        },
-        {
-            "name": "Kocēni",
-            "code": "045"
-        },
-        {
-            "name": "Koknese",
-            "code": "046"
-        },
-        {
-            "name": "Krimulda",
-            "code": "048"
-        },
-        {
-            "name": "Krustpils",
-            "code": "049"
-        },
-        {
-            "name": "Lielvārde",
-            "code": "053"
-        },
-        {
-            "name": "Līgatne",
-            "code": "055"
-        },
-        {
-            "name": "Limbaži",
-            "code": "054"
-        },
-        {
-            "name": "Līvāni",
-            "code": "056"
-        },
-        {
-            "name": "Madona",
-            "code": "059"
-        },
-        {
-            "name": "Mālpils",
-            "code": "061"
-        },
-        {
-            "name": "Mārupe",
-            "code": "062"
-        },
-        {
-            "name": "Mazsalaca",
-            "code": "060"
-        },
-        {
-            "name": "Mērsrags",
-            "code": "063"
-        },
-        {
-            "name": "Naukšēni",
-            "code": "064"
-        },
-        {
-            "name": "Nereta",
-            "code": "065"
-        },
-        {
-            "name": "Nīca",
-            "code": "066"
-        },
-        {
-            "name": "Ogre",
-            "code": "067"
-        },
-        {
-            "name": "Olaine",
-            "code": "068"
-        },
-        {
-            "name": "Ozolnieki",
-            "code": "069"
-        },
-        {
-            "name": "Pārgauja",
-            "code": "070"
-        },
-        {
-            "name": "Pļaviņas",
-            "code": "072"
-        },
-        {
-            "name": "Preiļi",
-            "code": "073"
-        },
-        {
-            "name": "Priekule",
-            "code": "074"
-        },
-        {
-            "name": "Priekuļi",
-            "code": "075"
-        },
-        {
-            "name": "Rauna",
-            "code": "076"
-        },
-        {
-            "name": "Rēzekne Municipality",
-            "code": "077"
-        },
-        {
-            "name": "Riebiņi",
-            "code": "078"
-        },
-        {
-            "name": "Roja",
-            "code": "079"
-        },
-        {
-            "name": "Ropaži",
-            "code": "080"
-        },
-        {
-            "name": "Rucava",
-            "code": "081"
-        },
-        {
-            "name": "Rugāji",
-            "code": "082"
-        },
-        {
-            "name": "Rūjiena",
-            "code": "084"
-        },
-        {
-            "name": "Sala",
-            "code": "085"
-        },
-        {
-            "name": "Salacgrīva",
-            "code": "086"
-        },
-        {
-            "name": "Salaspils",
-            "code": "087"
-        },
-        {
-            "name": "Saldus",
-            "code": "088"
-        },
-        {
-            "name": "Saulkrasti",
-            "code": "089"
-        },
-        {
-            "name": "Sēja",
-            "code": "090"
-        },
-        {
-            "name": "Sigulda",
-            "code": "091"
-        },
-        {
-            "name": "Skrīveri",
-            "code": "092"
-        },
-        {
-            "name": "Skrunda",
-            "code": "093"
-        },
-        {
-            "name": "Smiltene",
-            "code": "094"
-        },
-        {
-            "name": "Stopiņi",
-            "code": "095"
-        },
-        {
-            "name": "Strenči",
-            "code": "096"
-        },
-        {
-            "name": "Talsi",
-            "code": "097"
-        },
-        {
-            "name": "Tērvete",
-            "code": "098"
-        },
-        {
-            "name": "Varakļāni",
-            "code": "102"
-        },
-        {
-            "name": "Vārkava",
-            "code": "103"
-        },
-        {
-            "name": "Vecpiebalga",
-            "code": "104"
-        },
-        {
-            "name": "Vecumnieki",
-            "code": "105"
-        },
-        {
-            "name": "Viesīte",
-            "code": "107"
-        },
-        {
-            "name": "Zilupe",
-            "code": "110"
         },
         {
             "name": "Агланскі край",
@@ -11383,6 +11201,10 @@
             "code": "016"
         },
         {
+            "name": "Броцэнскі край",
+            "code": "018"
+        },
+        {
             "name": "Буртніекскі край",
             "code": "019"
         },
@@ -11403,6 +11225,22 @@
             "code": "101"
         },
         {
+            "name": "Вараклянскі край",
+            "code": "102"
+        },
+        {
+            "name": "Варкаўскі край",
+            "code": "103"
+        },
+        {
+            "name": "Вецпіебалгскі край",
+            "code": "104"
+        },
+        {
+            "name": "Віесіцкі край",
+            "code": "107"
+        },
+        {
             "name": "Вілякскі край",
             "code": "108"
         },
@@ -11413,6 +11251,14 @@
         {
             "name": "Вэнтспілскі край",
             "code": "106"
+        },
+        {
+            "name": "Вэцумніекскі край",
+            "code": "105"
+        },
+        {
+            "name": "Гаркалнскі край",
+            "code": "031"
         },
         {
             "name": "Горад Вэнтспілс",
@@ -11443,6 +11289,14 @@
             "code": "025"
         },
         {
+            "name": "Добэльскі край",
+            "code": "026"
+        },
+        {
+            "name": "Дундагскі край",
+            "code": "027"
+        },
+        {
             "name": "Дурбскі край",
             "code": "028"
         },
@@ -11451,8 +11305,20 @@
             "code": "JKB"
         },
         {
+            "name": "Екабпілскі край",
+            "code": "042"
+        },
+        {
             "name": "Елгава",
             "code": "JEL"
+        },
+        {
+            "name": "Елгаўскі край",
+            "code": "041"
+        },
+        {
+            "name": "Зілупскі край",
+            "code": "110"
         },
         {
             "name": "Іецаўскі край",
@@ -11471,16 +11337,64 @@
             "code": "037"
         },
         {
+            "name": "Кандаўскі край",
+            "code": "043"
+        },
+        {
+            "name": "Карсаўскі край",
+            "code": "044"
+        },
+        {
+            "name": "Кегумскі край",
+            "code": "051"
+        },
+        {
+            "name": "Кекаўскі край",
+            "code": "052"
+        },
+        {
+            "name": "Кокнэскі край",
+            "code": "046"
+        },
+        {
+            "name": "Коцэнскі край",
+            "code": "045"
+        },
+        {
             "name": "Краслаўскі край",
             "code": "047"
+        },
+        {
+            "name": "Крустпілскі край",
+            "code": "049"
+        },
+        {
+            "name": "Крымулдскі край",
+            "code": "048"
         },
         {
             "name": "Кулдыгскі край",
             "code": "050"
         },
         {
+            "name": "Ліванскі край",
+            "code": "056"
+        },
+        {
+            "name": "Лігатнэнскі край",
+            "code": "055"
+        },
+        {
+            "name": "Ліелвардскі край",
+            "code": "053"
+        },
+        {
             "name": "Ліепая",
             "code": "LPX"
+        },
+        {
+            "name": "Лімбажскі край",
+            "code": "054"
         },
         {
             "name": "Лубанскі край",
@@ -11491,20 +11405,184 @@
             "code": "058"
         },
         {
+            "name": "Маданскі край",
+            "code": "059"
+        },
+        {
+            "name": "Мазсалацкі край",
+            "code": "060"
+        },
+        {
+            "name": "Малпілскі край",
+            "code": "061"
+        },
+        {
+            "name": "Марупскі край",
+            "code": "062"
+        },
+        {
+            "name": "Мэрсрагскі край",
+            "code": "063"
+        },
+        {
+            "name": "Наўкшэнскі край",
+            "code": "064"
+        },
+        {
+            "name": "Ніцкі край",
+            "code": "066"
+        },
+        {
+            "name": "Нэрэцкі край",
+            "code": "065"
+        },
+        {
+            "name": "Огрскі край",
+            "code": "067"
+        },
+        {
+            "name": "Озалніекскі край",
+            "code": "069"
+        },
+        {
+            "name": "Олайнскі край",
+            "code": "068"
+        },
+        {
             "name": "Павіласцкі край",
             "code": "071"
+        },
+        {
+            "name": "Паргаўйскі край",
+            "code": "070"
+        },
+        {
+            "name": "Плявіньскі край",
+            "code": "072"
+        },
+        {
+            "name": "Прыекульскі край",
+            "code": "074"
+        },
+        {
+            "name": "Прыекульскі край²",
+            "code": "075"
+        },
+        {
+            "name": "Прэйльскі край",
+            "code": "073"
+        },
+        {
+            "name": "Раўнскі край",
+            "code": "076"
+        },
+        {
+            "name": "Ройскі край",
+            "code": "079"
+        },
+        {
+            "name": "Ропажскі край",
+            "code": "080"
+        },
+        {
+            "name": "Ругайскі край",
+            "code": "082"
+        },
+        {
+            "name": "Руіенскі край",
+            "code": "084"
         },
         {
             "name": "Рундальскі край",
             "code": "083"
         },
         {
+            "name": "Руцаўскі край",
+            "code": "081"
+        },
+        {
             "name": "Рыга",
             "code": "RIX"
         },
         {
+            "name": "Рыебіньскі край",
+            "code": "078"
+        },
+        {
+            "name": "Рэзэкненскі край",
+            "code": "077"
+        },
+        {
+            "name": "Саласпілскі край",
+            "code": "087"
+        },
+        {
+            "name": "Салацгрыўскі край",
+            "code": "086"
+        },
+        {
+            "name": "Салдускі край",
+            "code": "088"
+        },
+        {
+            "name": "Салскі край",
+            "code": "085"
+        },
+        {
+            "name": "Саўлкрасцкі край",
+            "code": "089"
+        },
+        {
+            "name": "Сейскі край",
+            "code": "090"
+        },
+        {
+            "name": "Сігулдскі край",
+            "code": "091"
+        },
+        {
+            "name": "Скрундскі край",
+            "code": "093"
+        },
+        {
+            "name": "Скрывэрскі край",
+            "code": "092"
+        },
+        {
+            "name": "Смілтэнскі край",
+            "code": "094"
+        },
+        {
+            "name": "Стопіньскі край",
+            "code": "095"
+        },
+        {
+            "name": "Стрэнцкі край",
+            "code": "096"
+        },
+        {
+            "name": "Талсінскі край",
+            "code": "097"
+        },
+        {
             "name": "Тукумскі край",
             "code": "099"
+        },
+        {
+            "name": "Тэрвэцкі край",
+            "code": "098"
+        },
+        {
+            "name": "Царнікаўскі край",
+            "code": "020"
+        },
+        {
+            "name": "Цыблскі край",
+            "code": "023"
+        },
+        {
+            "name": "Цэсвайнскі край",
+            "code": "021"
         },
         {
             "name": "Цэсіскі край",
@@ -11523,15 +11601,15 @@
             "code": "JUR"
         },
         {
+            "name": "Яўнпіебалгскі край",
+            "code": "039"
+        },
+        {
             "name": "Яўнпілскі край",
             "code": "040"
         }
     ],
     "LY": [
-        {
-            "name": "Butnan",
-            "code": "BU"
-        },
         {
             "name": "Derna",
             "code": "DR"
@@ -11615,13 +11693,13 @@
         {
             "name": "Муніцыпалітэт Эль-Маргаб",
             "code": "MB"
+        },
+        {
+            "name": "Эль-Бутнан",
+            "code": "BU"
         }
     ],
     "MA": [
-        {
-            "name": "Agadir-Ida Ou Tanane",
-            "code": "AGD"
-        },
         {
             "name": "Al Haouz",
             "code": "HAO"
@@ -11655,6 +11733,10 @@
             "code": "BER"
         },
         {
+            "name": "Berrechid",
+            "code": "BRR"
+        },
+        {
             "name": "Boujdour",
             "code": "BOD"
         },
@@ -11677,6 +11759,10 @@
         {
             "name": "Chtouka Aït Baha",
             "code": "CHT"
+        },
+        {
+            "name": "Driouch",
+            "code": "DRI"
         },
         {
             "name": "El Hajeb",
@@ -11711,12 +11797,20 @@
             "code": "FIG"
         },
         {
+            "name": "Fquih Ben Salah",
+            "code": "FQH"
+        },
+        {
             "name": "Grand Casablanca",
             "code": "08"
         },
         {
             "name": "Guelmim",
             "code": "GUE"
+        },
+        {
+            "name": "Guercif",
+            "code": "GUF"
         },
         {
             "name": "Ifrane",
@@ -11759,8 +11853,12 @@
             "code": "15"
         },
         {
-            "name": "Larache",
-            "code": "LAR"
+            "name": "M’diq-Fnideq",
+            "code": "MDF"
+        },
+        {
+            "name": "Marrakech",
+            "code": "MAR"
         },
         {
             "name": "Marrakesh-Tensift-El Haouz",
@@ -11773,6 +11871,10 @@
         {
             "name": "Meknès-Tafilalet",
             "code": "06"
+        },
+        {
+            "name": "Midelt",
+            "code": "MID"
         },
         {
             "name": "Mohammedia",
@@ -11807,8 +11909,16 @@
             "code": "16"
         },
         {
+            "name": "Ouezzane",
+            "code": "OUZ"
+        },
+        {
             "name": "Rabat-Salé-Zemmour-Zaer",
             "code": "07"
+        },
+        {
+            "name": "Rehamna",
+            "code": "REH"
         },
         {
             "name": "Safi",
@@ -11823,8 +11933,20 @@
             "code": "SET"
         },
         {
+            "name": "Sidi Bennour",
+            "code": "SIB"
+        },
+        {
+            "name": "Sidi Ifni",
+            "code": "SIF"
+        },
+        {
             "name": "Sidi Kacem",
             "code": "SIK"
+        },
+        {
+            "name": "Sidi Slimane",
+            "code": "SIL"
         },
         {
             "name": "Skhirat-Témara",
@@ -11855,6 +11977,10 @@
             "code": "TAI"
         },
         {
+            "name": "Tarfaya (EH-partial)",
+            "code": "TAF"
+        },
+        {
             "name": "Taroudant",
             "code": "TAR"
         },
@@ -11875,12 +12001,24 @@
             "code": "TET"
         },
         {
+            "name": "Tinghir",
+            "code": "TIN"
+        },
+        {
             "name": "Tiznit",
             "code": "TIZ"
         },
         {
+            "name": "Youssoufia",
+            "code": "YUS"
+        },
+        {
             "name": "Zagora",
             "code": "ZAG"
+        },
+        {
+            "name": "Агадыр",
+            "code": "AGD"
         },
         {
             "name": "Вобласць Гарб-Шрарда-Бені-Хсен",
@@ -11917,6 +12055,10 @@
         {
             "name": "Касабланка",
             "code": "CAS"
+        },
+        {
+            "name": "Лараш",
+            "code": "LAR"
         },
         {
             "name": "Маракеш",
@@ -12015,10 +12157,6 @@
             "code": "BS"
         },
         {
-            "name": "Briceni",
-            "code": "BR"
-        },
-        {
             "name": "Cahul",
             "code": "CA"
         },
@@ -12041,10 +12179,6 @@
         {
             "name": "Dondușeni",
             "code": "DO"
-        },
-        {
-            "name": "Drochia",
-            "code": "DR"
         },
         {
             "name": "Dubăsari",
@@ -12111,16 +12245,16 @@
             "code": "SV"
         },
         {
-            "name": "Telenești",
-            "code": "TE"
-        },
-        {
             "name": "Ungheni",
             "code": "UN"
         },
         {
             "name": "Аўтаномнае тэрытарыяльнае ўтварэнне з асаблівым прававым статусам Прыднястроўе",
             "code": "SN"
+        },
+        {
+            "name": "Брычанскі раён",
+            "code": "BR"
         },
         {
             "name": "Гагаузія",
@@ -12133,6 +12267,10 @@
         {
             "name": "Горад Бендэр",
             "code": "BD"
+        },
+        {
+            "name": "Дрокіеўскі раён",
+            "code": "DR"
         },
         {
             "name": "Каларашскі раён",
@@ -12153,126 +12291,136 @@
         {
             "name": "Фларэшцкі раён",
             "code": "FL"
+        },
+        {
+            "name": "Целянешцкі раён",
+            "code": "TE"
         }
     ],
     "ME": [
         {
-            "code": "01",
-            "name": "Andrijevica"
+            "name": "Andrijevica",
+            "code": "01"
         },
         {
-            "code": "02",
-            "name": "Bar"
+            "name": "абшчына Бар",
+            "code": "02"
         },
         {
-            "code": "03",
-            "name": "Berane"
+            "name": "Berane",
+            "code": "03"
         },
         {
-            "code": "04",
-            "name": "Bijelo Polje"
+            "name": "Bijelo Polje",
+            "code": "04"
         },
         {
-            "code": "05",
-            "name": "Budva"
+            "name": "Budva",
+            "code": "05"
         },
         {
-            "code": "06",
-            "name": "Cetinje"
+            "name": "Цэцінэ",
+            "code": "06"
         },
         {
-            "code": "07",
-            "name": "Danilovgrad"
+            "name": "Danilovgrad",
+            "code": "07"
         },
         {
-            "code": "08",
-            "name": "Herceg Novi"
+            "name": "Herceg Novi",
+            "code": "08"
         },
         {
-            "code": "09",
-            "name": "Kolašin"
+            "name": "Kolašin",
+            "code": "09"
         },
         {
-            "code": "10",
-            "name": "Kotor"
+            "name": "Kotor",
+            "code": "10"
         },
         {
-            "code": "11",
-            "name": "Mojkovac"
+            "name": "Mojkovac",
+            "code": "11"
         },
         {
-            "code": "12",
-            "name": "Nikšić"
+            "name": "Nikšić",
+            "code": "12"
         },
         {
-            "code": "13",
-            "name": "Plav"
+            "name": "Plav",
+            "code": "13"
         },
         {
-            "code": "14",
-            "name": "Pljevlja"
+            "name": "Pljevlja",
+            "code": "14"
         },
         {
-            "code": "15",
-            "name": "Plužine"
+            "name": "Plužine",
+            "code": "15"
         },
         {
-            "code": "16",
-            "name": "Podgorica"
+            "name": "Podgorica",
+            "code": "16"
         },
         {
-            "code": "17",
-            "name": "Rožaje"
+            "name": "Rožaje",
+            "code": "17"
         },
         {
-            "code": "18",
-            "name": "Šavnik"
+            "name": "Šavnik",
+            "code": "18"
         },
         {
-            "code": "19",
-            "name": "Tivat"
+            "name": "Tivat",
+            "code": "19"
         },
         {
-            "code": "20",
-            "name": "Ulcinj"
+            "name": "Ulcinj",
+            "code": "20"
         },
         {
-            "code": "21",
-            "name": "Žabljak"
+            "name": "Žabljak",
+            "code": "21"
         },
         {
-            "code": "22",
-            "name": "Gusinje"
+            "name": "Gusinje",
+            "code": "22"
         },
         {
-            "code": "23",
-            "name": "Petnjica"
+            "name": "Petnjica",
+            "code": "23"
+        }
+    ],
+    "MF": [
+        {
+            "code": "",
+            "name": "St. Martin"
         }
     ],
     "MG": [
         {
-            "code": "T",
-            "name": "Antananarivo"
+            "name": "Antsiranana",
+            "code": "D"
         },
         {
-            "code": "D",
-            "name": "Antsiranana"
+            "name": "Fianarantsoa",
+            "code": "F"
         },
         {
-            "code": "F",
-            "name": "Fianarantsoa"
+            "name": "Mahajanga",
+            "code": "M"
         },
         {
-            "code": "M",
-            "name": "Mahajanga"
+            "name": "Toamasina",
+            "code": "A"
         },
         {
-            "code": "A",
-            "name": "Toamasina"
+            "name": "Toliara",
+            "code": "U"
         },
         {
-            "code": "U",
-            "name": "Toliara"
+            "name": "правінцыя Антананарыву",
+            "code": "T"
         }
     ],
     "MH": [
@@ -12567,7 +12715,7 @@
             "code": "46"
         },
         {
-            "name": "Kumanovo",
+            "name": "абшчына Куманава",
             "code": "47"
         },
         {
@@ -12611,7 +12759,7 @@
             "code": "57"
         },
         {
-            "name": "Ohrid",
+            "name": "Охрыд",
             "code": "58"
         },
         {
@@ -12745,10 +12893,6 @@
             "code": "9"
         },
         {
-            "name": "Mopti",
-            "code": "5"
-        },
-        {
             "name": "Ségou",
             "code": "4"
         },
@@ -12763,6 +12907,10 @@
         {
             "name": "Горад Бамако",
             "code": "BKO"
+        },
+        {
+            "name": "Мопці",
+            "code": "5"
         },
         {
             "name": "Сікасо",
@@ -12783,7 +12931,7 @@
             "code": "03"
         },
         {
-            "name": "Mandalay",
+            "name": "Мандалай",
             "code": "04"
         },
         {
@@ -12795,7 +12943,7 @@
             "code": "06"
         },
         {
-            "name": "Ayeyarwady",
+            "name": "Іравадзі",
             "code": "07"
         },
         {
@@ -12857,11 +13005,11 @@
             "code": "043"
         },
         {
-            "name": "Uvs",
+            "name": "Убсунурскі аймак",
             "code": "046"
         },
         {
-            "name": "Töv",
+            "name": "Цэнтральны аймак",
             "code": "047"
         },
         {
@@ -12877,7 +13025,7 @@
             "code": "053"
         },
         {
-            "name": "Övörkhangai",
+            "name": "Увэр-Хангайскі аймак",
             "code": "055"
         },
         {
@@ -12909,7 +13057,7 @@
             "code": "067"
         },
         {
-            "name": "Bayankhongor",
+            "name": "Баян-Хангорскі аймак",
             "code": "069"
         },
         {
@@ -12917,23 +13065,29 @@
             "code": "071"
         },
         {
-            "name": "Arkhangai",
+            "name": "Ара-Хангайскі аймак",
             "code": "073"
         }
     ],
+    "MO": [
+        {
+            "code": "",
+            "name": "Macao SAR China"
+        }
+    ],
+    "MP": [
+        {
+            "code": "",
+            "name": "Northern Mariana Islands"
+        }
+    ],
+    "MQ": [
+        {
+            "code": "",
+            "name": "Martinique"
+        }
+    ],
     "MR": [
-        {
-            "name": "Dakhlet Nouadhibou",
-            "code": "08"
-        },
-        {
-            "name": "Gorgol",
-            "code": "04"
-        },
-        {
-            "name": "Guidimaka",
-            "code": "10"
-        },
         {
             "name": "Hodh Ech Chargui",
             "code": "01"
@@ -12943,28 +13097,16 @@
             "code": "02"
         },
         {
-            "name": "Nouakchott",
-            "code": "NKC"
+            "name": "Вобласць Асаба",
+            "code": "03"
         },
         {
-            "name": "Nouakchott Nord",
-            "code": "14"
+            "name": "Gorgol",
+            "code": "04"
         },
         {
-            "name": "Nouakchott Ouest",
-            "code": "13"
-        },
-        {
-            "name": "Nouakchott Sud",
-            "code": "15"
-        },
-        {
-            "name": "Tagant",
-            "code": "09"
-        },
-        {
-            "name": "Tiris Zemmour",
-            "code": "11"
+            "name": "Вобласць Бракна",
+            "code": "05"
         },
         {
             "name": "Trarza",
@@ -12975,16 +13117,36 @@
             "code": "07"
         },
         {
-            "name": "Вобласць Асаба",
-            "code": "03"
+            "name": "Dakhlet Nouadhibou",
+            "code": "08"
         },
         {
-            "name": "Вобласць Бракна",
-            "code": "05"
+            "name": "Tagant",
+            "code": "09"
+        },
+        {
+            "name": "Guidimaka",
+            "code": "10"
+        },
+        {
+            "name": "Tiris Zemmour",
+            "code": "11"
         },
         {
             "name": "Вобласць Іншыры",
             "code": "12"
+        },
+        {
+            "name": "Nouakchott Ouest",
+            "code": "13"
+        },
+        {
+            "name": "Nouakchott Nord",
+            "code": "14"
+        },
+        {
+            "name": "Nouakchott Sud",
+            "code": "15"
         }
     ],
     "MT": [
@@ -12997,7 +13159,7 @@
             "code": "02"
         },
         {
-            "name": "Birgu",
+            "name": "Біргу",
             "code": "03"
         },
         {
@@ -13089,7 +13251,7 @@
             "code": "25"
         },
         {
-            "name": "Marsa",
+            "name": "Марса",
             "code": "26"
         },
         {
@@ -13157,7 +13319,7 @@
             "code": "42"
         },
         {
-            "name": "Qormi",
+            "name": "Кормі",
             "code": "43"
         },
         {
@@ -13241,7 +13403,7 @@
             "code": "63"
         },
         {
-            "name": "Żabbar",
+            "name": "Забар",
             "code": "64"
         },
         {
@@ -13447,128 +13609,128 @@
     ],
     "MW": [
         {
-            "code": "BA",
-            "name": "Balaka"
+            "name": "Balaka",
+            "code": "BA"
         },
         {
-            "code": "BL",
-            "name": "Blantyre"
+            "name": "Blantyre",
+            "code": "BL"
         },
         {
-            "code": "C",
-            "name": "Central"
+            "name": "Chikwawa",
+            "code": "CK"
         },
         {
-            "code": "CK",
-            "name": "Chikwawa"
+            "name": "Chiradzulu",
+            "code": "CR"
         },
         {
-            "code": "CR",
-            "name": "Chiradzulu"
+            "name": "Chitipa",
+            "code": "CT"
         },
         {
-            "code": "CT",
-            "name": "Chitipa"
+            "name": "Dedza",
+            "code": "DE"
         },
         {
-            "code": "DE",
-            "name": "Dedza"
+            "name": "Dowa",
+            "code": "DO"
         },
         {
-            "code": "DO",
-            "name": "Dowa"
+            "name": "Karonga",
+            "code": "KR"
         },
         {
-            "code": "KR",
-            "name": "Karonga"
+            "name": "Likoma",
+            "code": "LK"
         },
         {
-            "code": "KS",
-            "name": "Kasungu"
+            "name": "Mangochi",
+            "code": "MG"
         },
         {
-            "code": "LK",
-            "name": "Likoma"
+            "name": "Mchinji",
+            "code": "MC"
         },
         {
-            "code": "LI",
-            "name": "Lilongwe"
+            "name": "Mulanje",
+            "code": "MU"
         },
         {
-            "code": "MH",
-            "name": "Machinga"
+            "name": "Mwanza",
+            "code": "MW"
         },
         {
-            "code": "MG",
-            "name": "Mangochi"
+            "name": "Neno",
+            "code": "NE"
         },
         {
-            "code": "MC",
-            "name": "Mchinji"
+            "name": "Nkhata Bay",
+            "code": "NB"
         },
         {
-            "code": "MU",
-            "name": "Mulanje"
+            "name": "Nsanje",
+            "code": "NS"
         },
         {
-            "code": "MW",
-            "name": "Mwanza"
+            "name": "Ntcheu",
+            "code": "NU"
         },
         {
-            "code": "MZ",
-            "name": "Mzimba"
+            "name": "Ntchisi",
+            "code": "NI"
         },
         {
-            "code": "NE",
-            "name": "Neno"
+            "name": "Phalombe",
+            "code": "PH"
         },
         {
-            "code": "NB",
-            "name": "Nkhata Bay"
+            "name": "Rumphi",
+            "code": "RU"
         },
         {
-            "code": "NK",
-            "name": "Nkhotakota"
+            "name": "Salima",
+            "code": "SA"
         },
         {
-            "code": "N",
-            "name": "Northern"
+            "name": "Thyolo",
+            "code": "TH"
         },
         {
-            "code": "NS",
-            "name": "Nsanje"
+            "name": "Паўднёвы рэгіён",
+            "code": "S"
         },
         {
-            "code": "NU",
-            "name": "Ntcheu"
+            "name": "Паўночны рэгіён",
+            "code": "N"
         },
         {
-            "code": "NI",
-            "name": "Ntchisi"
+            "name": "раён Зомба",
+            "code": "ZO"
         },
         {
-            "code": "PH",
-            "name": "Phalombe"
+            "name": "раён Касунгу",
+            "code": "KS"
         },
         {
-            "code": "RU",
-            "name": "Rumphi"
+            "name": "раён Лілонгвэ",
+            "code": "LI"
         },
         {
-            "code": "SA",
-            "name": "Salima"
+            "name": "раён Мачынга",
+            "code": "MH"
         },
         {
-            "code": "S",
-            "name": "Southern"
+            "name": "раён Мзімба",
+            "code": "MZ"
         },
         {
-            "code": "TH",
-            "name": "Thyolo"
+            "name": "раён Нхатакота",
+            "code": "NK"
         },
         {
-            "code": "ZO",
-            "name": "Zomba"
+            "name": "Цэнтральны рэгіён",
+            "code": "C"
         }
     ],
     "MX": [
@@ -13735,7 +13897,7 @@
             "code": "07"
         },
         {
-            "name": "Perak",
+            "name": "Перак",
             "code": "08"
         },
         {
@@ -13743,7 +13905,7 @@
             "code": "09"
         },
         {
-            "name": "Selangor",
+            "name": "Селангор",
             "code": "10"
         },
         {
@@ -13772,10 +13934,6 @@
         }
     ],
     "MZ": [
-        {
-            "name": "Cabo Delgado",
-            "code": "P"
-        },
         {
             "name": "Gaza",
             "code": "G"
@@ -13815,6 +13973,10 @@
         {
             "name": "Горад Мапуту",
             "code": "MPM"
+        },
+        {
+            "name": "Кабу-Дэлгаду",
+            "code": "P"
         }
     ],
     "NA": [
@@ -13873,6 +14035,12 @@
         {
             "code": "CA",
             "name": "Zambezi"
+        }
+    ],
+    "NC": [
+        {
+            "code": "",
+            "name": "New Caledonia"
         }
     ],
     "NE": [
@@ -13955,14 +14123,6 @@
             "code": "EK"
         },
         {
-            "name": "Enugu",
-            "code": "EN"
-        },
-        {
-            "name": "Federal Capital Territory",
-            "code": "FC"
-        },
-        {
             "name": "Gombe",
             "code": "GO"
         },
@@ -13981,10 +14141,6 @@
         {
             "name": "Kano",
             "code": "KN"
-        },
-        {
-            "name": "Katsina",
-            "code": "KT"
         },
         {
             "name": "Kebbi",
@@ -14047,8 +14203,16 @@
             "code": "ZA"
         },
         {
+            "name": "Федэральная сталічная тэрыторыя",
+            "code": "FC"
+        },
+        {
             "name": "штат Дэльта",
             "code": "DE"
+        },
+        {
+            "name": "штат Кацына",
+            "code": "KT"
         },
         {
             "name": "штат Лагас",
@@ -14057,6 +14221,10 @@
         {
             "name": "штат Эда",
             "code": "ED"
+        },
+        {
+            "name": "Энугу",
+            "code": "EN"
         }
     ],
     "NI": [
@@ -14287,6 +14455,14 @@
         {
             "name": "Востраў Ян-Маен",
             "code": "22"
+        },
+        {
+            "name": "Trøndelag",
+            "code": "23"
+        },
+        {
+            "name": "Trøndelag",
+            "code": "50"
         }
     ],
     "NP": [
@@ -14311,12 +14487,20 @@
             "code": "GA"
         },
         {
+            "name": "Gandaki²",
+            "code": "P4"
+        },
+        {
             "name": "Janakpur",
             "code": "JA"
         },
         {
             "name": "Karnali",
             "code": "KA"
+        },
+        {
+            "name": "Karnali²",
+            "code": "P6"
         },
         {
             "name": "Kosi",
@@ -14337,6 +14521,26 @@
         {
             "name": "Narayani",
             "code": "NA"
+        },
+        {
+            "name": "Province 1",
+            "code": "P1"
+        },
+        {
+            "name": "Province 2",
+            "code": "P2"
+        },
+        {
+            "name": "Province 3",
+            "code": "P3"
+        },
+        {
+            "name": "Province 5",
+            "code": "P5"
+        },
+        {
+            "name": "Province 7",
+            "code": "P7"
         },
         {
             "name": "Purwanchal",
@@ -14451,24 +14655,12 @@
             "code": "MBH"
         },
         {
-            "name": "Nelson",
-            "code": "NSN"
-        },
-        {
-            "name": "North Island",
-            "code": "N"
-        },
-        {
             "name": "Northland",
             "code": "NTL"
         },
         {
             "name": "Otago",
             "code": "OTA"
-        },
-        {
-            "name": "South Island",
-            "code": "S"
         },
         {
             "name": "Southland",
@@ -14495,6 +14687,10 @@
             "code": "CIT"
         },
         {
+            "name": "Нельсан",
+            "code": "NSN"
+        },
+        {
             "name": "Окленд",
             "code": "AUK"
         },
@@ -14513,20 +14709,12 @@
             "name": "Ad Dhahirah"
         },
         {
-            "code": "BA",
-            "name": "Al Batinah"
-        },
-        {
             "code": "BU",
             "name": "Al Buraimi"
         },
         {
             "code": "WU",
             "name": "Al Wusta"
-        },
-        {
-            "code": "SH",
-            "name": "Ash Sharqiyah"
         },
         {
             "code": "ZU",
@@ -14567,10 +14755,6 @@
             "code": "2"
         },
         {
-            "name": "Colón",
-            "code": "3"
-        },
-        {
             "name": "Darién",
             "code": "5"
         },
@@ -14595,10 +14779,6 @@
             "code": "NB"
         },
         {
-            "name": "Panamá",
-            "code": "8"
-        },
-        {
             "name": "Veraguas",
             "code": "9"
         },
@@ -14607,8 +14787,16 @@
             "code": "10"
         },
         {
+            "name": "Калон",
+            "code": "3"
+        },
+        {
             "name": "Правінцыя Бокас-дэль-Тора",
             "code": "1"
+        },
+        {
+            "name": "правінцыя Панама",
+            "code": "8"
         }
     ],
     "PE": [
@@ -14715,6 +14903,12 @@
         {
             "name": "Рэгіён Хунін",
             "code": "JUN"
+        }
+    ],
+    "PF": [
+        {
+            "code": "",
+            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -15203,24 +15397,12 @@
     ],
     "PK": [
         {
-            "name": "Federally Administered Tribal Areas",
-            "code": "TA"
-        },
-        {
-            "name": "Gilgit-Baltistan",
-            "code": "GB"
-        },
-        {
-            "name": "Islamabad",
-            "code": "IS"
-        },
-        {
-            "name": "Khyber Pakhtunkhwa",
-            "code": "KP"
-        },
-        {
             "name": "Азад Кашмір",
             "code": "JK"
+        },
+        {
+            "name": "Гілгіт-Балтыстан",
+            "code": "GB"
         },
         {
             "name": "Пенджаб",
@@ -15233,79 +15415,99 @@
         {
             "name": "Правінцыя Сінд",
             "code": "SD"
+        },
+        {
+            "name": "Федэральна кіраваныя племянныя тэрыторыі",
+            "code": "TA"
+        },
+        {
+            "name": "Федэральная сталічная тэрыторыя",
+            "code": "IS"
+        },
+        {
+            "name": "Хайбер-Пахтунхва",
+            "code": "KP"
         }
     ],
     "PL": [
         {
-            "name": "Апольскае ваяводства",
-            "code": "OP"
-        },
-        {
-            "name": "Вармінска-Мазурскае ваяводства",
-            "code": "WN"
-        },
-        {
-            "name": "Велікапольскае ваяводства",
-            "code": "WP"
-        },
-        {
-            "name": "Заходнепаморскае ваяводства",
-            "code": "ZP"
+            "name": "Ніжнесілезскае ваяводства",
+            "code": "02"
         },
         {
             "name": "Куяўска-Паморскае ваяводства",
-            "code": "KP"
-        },
-        {
-            "name": "Лодзьскае ваяводства",
-            "code": "LD"
+            "code": "04"
         },
         {
             "name": "Люблінскае ваяводства",
-            "code": "LU"
+            "code": "06"
         },
         {
             "name": "Любушскае ваяводства",
-            "code": "LB"
+            "code": "08"
         },
         {
-            "name": "Мазавецкае ваяводства",
-            "code": "MZ"
+            "name": "Лодзьскае ваяводства",
+            "code": "10"
         },
         {
             "name": "Малапольскае ваяводства",
-            "code": "MA"
+            "code": "12"
         },
         {
-            "name": "Ніжнесілезскае ваяводства",
-            "code": "DS"
+            "name": "Мазавецкае ваяводства",
+            "code": "14"
+        },
+        {
+            "name": "Апольскае ваяводства",
+            "code": "16"
         },
         {
             "name": "Падкарпацкае ваяводства",
-            "code": "PK"
+            "code": "18"
         },
         {
             "name": "Падляскае ваяводства",
-            "code": "PD"
+            "code": "20"
         },
         {
             "name": "Паморскае ваяводства",
-            "code": "PM"
-        },
-        {
-            "name": "Свентакшыскае ваяводства",
-            "code": "SK"
+            "code": "22"
         },
         {
             "name": "Сілезскае ваяводства",
-            "code": "SL"
+            "code": "24"
+        },
+        {
+            "name": "Свентакшыскае ваяводства",
+            "code": "26"
+        },
+        {
+            "name": "Вармінска-Мазурскае ваяводства",
+            "code": "28"
+        },
+        {
+            "name": "Велікапольскае ваяводства",
+            "code": "30"
+        },
+        {
+            "name": "Заходнепаморскае ваяводства",
+            "code": "32"
+        }
+    ],
+    "PM": [
+        {
+            "code": "",
+            "name": "St. Pierre & Miquelon"
+        }
+    ],
+    "PR": [
+        {
+            "code": "",
+            "name": "Puerto Rico"
         }
     ],
     "PS": [
-        {
-            "name": "Bethlehem",
-            "code": "BTH"
-        },
         {
             "name": "Deir al-Balah",
             "code": "DEB"
@@ -15325,10 +15527,6 @@
         {
             "name": "Jericho",
             "code": "JRH"
-        },
-        {
-            "name": "Jerusalem",
-            "code": "JEM"
         },
         {
             "name": "Khan Yunis",
@@ -15363,13 +15561,21 @@
             "code": "TKM"
         },
         {
+            "name": "Віфлеем",
+            "code": "BTH"
+        },
+        {
+            "name": "Іерусалім",
+            "code": "JEM"
+        },
+        {
             "name": "Наблус",
             "code": "NBS"
         }
     ],
     "PT": [
         {
-            "name": "Aveiro",
+            "name": "акруга Авейру",
             "code": "01"
         },
         {
@@ -15381,11 +15587,11 @@
             "code": "03"
         },
         {
-            "name": "Bragança",
+            "name": "акруга Браганса",
             "code": "04"
         },
         {
-            "name": "Castelo Branco",
+            "name": "акруга Каштэлу-Бранку",
             "code": "05"
         },
         {
@@ -15393,19 +15599,19 @@
             "code": "06"
         },
         {
-            "name": "Évora",
+            "name": "акруга Эвара",
             "code": "07"
         },
         {
-            "name": "Faro",
+            "name": "акруга Фару",
             "code": "08"
         },
         {
-            "name": "Guarda",
+            "name": "акруга Гуарда",
             "code": "09"
         },
         {
-            "name": "Leiria",
+            "name": "акруга Лейрыя",
             "code": "10"
         },
         {
@@ -15413,7 +15619,7 @@
             "code": "11"
         },
         {
-            "name": "Portalegre",
+            "name": "акруга Порталегры",
             "code": "12"
         },
         {
@@ -15421,7 +15627,7 @@
             "code": "13"
         },
         {
-            "name": "Santarém",
+            "name": "акруга Сантарэн",
             "code": "14"
         },
         {
@@ -15433,11 +15639,11 @@
             "code": "16"
         },
         {
-            "name": "Vila Real",
+            "name": "акруга Віла-Рэал",
             "code": "17"
         },
         {
-            "name": "Viseu",
+            "name": "акруга Візеу",
             "code": "18"
         },
         {
@@ -15623,11 +15829,13 @@
             "code": "DA"
         }
     ],
-    "RO": [
+    "RE": [
         {
-            "name": "Alba",
-            "code": "AB"
-        },
+            "code": "",
+            "name": "Réunion"
+        }
+    ],
+    "RO": [
         {
             "name": "Bihor",
             "code": "BH"
@@ -15645,32 +15853,8 @@
             "code": "BZ"
         },
         {
-            "name": "Călărași",
-            "code": "CL"
-        },
-        {
-            "name": "Caraș-Severin",
-            "code": "CS"
-        },
-        {
-            "name": "Constanța",
-            "code": "CT"
-        },
-        {
             "name": "Covasna",
             "code": "CV"
-        },
-        {
-            "name": "Dâmbovița",
-            "code": "DB"
-        },
-        {
-            "name": "Dolj",
-            "code": "DJ"
-        },
-        {
-            "name": "Galați",
-            "code": "GL"
         },
         {
             "name": "Giurgiu",
@@ -15689,36 +15873,8 @@
             "code": "IF"
         },
         {
-            "name": "Mehedinți",
-            "code": "MH"
-        },
-        {
             "name": "Neamţ",
             "code": "NT"
-        },
-        {
-            "name": "Sălaj",
-            "code": "SJ"
-        },
-        {
-            "name": "Satu Mare",
-            "code": "SM"
-        },
-        {
-            "name": "Sibiu",
-            "code": "SB"
-        },
-        {
-            "name": "Teleorman",
-            "code": "TR"
-        },
-        {
-            "name": "Tulcea",
-            "code": "TL"
-        },
-        {
-            "name": "Vâlcea",
-            "code": "VL"
         },
         {
             "name": "Арджэш",
@@ -15745,8 +15901,16 @@
             "code": "VN"
         },
         {
+            "name": "Галац",
+            "code": "GL"
+        },
+        {
             "name": "Горж",
             "code": "GJ"
+        },
+        {
+            "name": "жудзец Алба",
+            "code": "AB"
         },
         {
             "name": "жудзец Арад",
@@ -15757,16 +15921,64 @@
             "code": "BR"
         },
         {
+            "name": "жудзец Вылча",
+            "code": "VL"
+        },
+        {
+            "name": "жудзец Долж",
+            "code": "DJ"
+        },
+        {
+            "name": "жудзец Дымбавіца",
+            "code": "DB"
+        },
+        {
+            "name": "жудзец Караш-Северын",
+            "code": "CS"
+        },
+        {
+            "name": "жудзец Кэлэрашы",
+            "code": "CL"
+        },
+        {
             "name": "жудзец Марамурэш",
             "code": "MM"
+        },
+        {
+            "name": "жудзец Мехедынцы",
+            "code": "MH"
+        },
+        {
+            "name": "жудзец Сату-Марэ",
+            "code": "SM"
+        },
+        {
+            "name": "жудзец Сібіу",
+            "code": "SB"
         },
         {
             "name": "жудзец Сучава",
             "code": "SV"
         },
         {
+            "name": "жудзец Сэлаж",
+            "code": "SJ"
+        },
+        {
+            "name": "жудзец Тулча",
+            "code": "TL"
+        },
+        {
+            "name": "жудзец Тэлеарман",
+            "code": "TR"
+        },
+        {
             "name": "жудзец Хунедаара",
             "code": "HD"
+        },
+        {
+            "name": "Канстанца",
+            "code": "CT"
         },
         {
             "name": "Клуж",
@@ -15815,16 +16027,8 @@
             "code": "28"
         },
         {
-            "name": "North Banat",
-            "code": "03"
-        },
-        {
             "name": "Pčinja",
             "code": "24"
-        },
-        {
-            "name": "Peć",
-            "code": "26"
         },
         {
             "name": "Pirot",
@@ -15843,20 +16047,12 @@
             "code": "27"
         },
         {
-            "name": "Šumadija",
-            "code": "12"
-        },
-        {
             "name": "Toplica",
             "code": "21"
         },
         {
             "name": "Zaječar",
             "code": "15"
-        },
-        {
-            "name": "Zlatibor",
-            "code": "16"
         },
         {
             "name": "аўтаномны край Ваяводзіна",
@@ -15873,6 +16069,10 @@
         {
             "name": "Заходне-Бацкая акруга",
             "code": "05"
+        },
+        {
+            "name": "Злацібарская акруга",
+            "code": "16"
         },
         {
             "name": "Калубарская акруга",
@@ -15903,8 +16103,16 @@
             "code": "06"
         },
         {
+            "name": "Паўночна-Банацкая акруга",
+            "code": "03"
+        },
+        {
             "name": "Паўночна-Бацкая акруга",
             "code": "01"
+        },
+        {
+            "name": "Печская акруга",
+            "code": "26"
         },
         {
             "name": "Расінская акруга",
@@ -15917,6 +16125,10 @@
         {
             "name": "Срэмская акруга",
             "code": "07"
+        },
+        {
+            "name": "Шумадыйская акруга",
+            "code": "12"
         },
         {
             "name": "Ябланіцкая акруга",
@@ -16377,183 +16589,183 @@
     ],
     "SC": [
         {
-            "code": "01",
-            "name": "Anse aux Pins"
+            "name": "Anse aux Pins",
+            "code": "01"
         },
         {
-            "code": "02",
-            "name": "Anse Boileau"
+            "name": "Anse Boileau",
+            "code": "02"
         },
         {
-            "code": "03",
-            "name": "Anse Etoile"
+            "name": "Anse Etoile",
+            "code": "03"
         },
         {
-            "code": "04",
-            "name": "Au Cap"
+            "name": "Au Cap",
+            "code": "04"
         },
         {
-            "code": "05",
-            "name": "Anse Royale"
+            "name": "Anse Royale",
+            "code": "05"
         },
         {
-            "code": "06",
-            "name": "Baie Lazare"
+            "name": "Baie Lazare",
+            "code": "06"
         },
         {
-            "code": "07",
-            "name": "Baie Sainte Anne"
+            "name": "Baie Sainte Anne",
+            "code": "07"
         },
         {
-            "code": "08",
-            "name": "Beau Vallon"
+            "name": "Beau Vallon",
+            "code": "08"
         },
         {
-            "code": "09",
-            "name": "Bel Air"
+            "name": "Bel Air",
+            "code": "09"
         },
         {
-            "code": "10",
-            "name": "Bel Ombre"
+            "name": "Bel Ombre",
+            "code": "10"
         },
         {
-            "code": "11",
-            "name": "Cascade"
+            "name": "Cascade",
+            "code": "11"
         },
         {
-            "code": "12",
-            "name": "Glacis"
+            "name": "Гласіс",
+            "code": "12"
         },
         {
-            "code": "13",
-            "name": "Grand’Anse Mahé"
+            "name": "Grand’Anse Mahé",
+            "code": "13"
         },
         {
-            "code": "14",
-            "name": "Grand’Anse Praslin"
+            "name": "Grand’Anse Praslin",
+            "code": "14"
         },
         {
-            "code": "15",
-            "name": "La Digue"
+            "name": "La Digue",
+            "code": "15"
         },
         {
-            "code": "16",
-            "name": "La Rivière Anglaise"
+            "name": "La Rivière Anglaise",
+            "code": "16"
         },
         {
-            "code": "17",
-            "name": "Mont Buxton"
+            "name": "Mont Buxton",
+            "code": "17"
         },
         {
-            "code": "18",
-            "name": "Mont Fleuri"
+            "name": "Mont Fleuri",
+            "code": "18"
         },
         {
-            "code": "19",
-            "name": "Plaisance"
+            "name": "Plaisance",
+            "code": "19"
         },
         {
-            "code": "20",
-            "name": "Pointe La Rue"
+            "name": "Pointe La Rue",
+            "code": "20"
         },
         {
-            "code": "21",
-            "name": "Port Glaud"
+            "name": "Port Glaud",
+            "code": "21"
         },
         {
-            "code": "22",
-            "name": "Saint Louis"
+            "name": "Saint Louis",
+            "code": "22"
         },
         {
-            "code": "23",
-            "name": "Takamaka"
+            "name": "Takamaka",
+            "code": "23"
         },
         {
-            "code": "24",
-            "name": "Les Mamelles"
+            "name": "Les Mamelles",
+            "code": "24"
         },
         {
-            "code": "25",
-            "name": "Roche Caiman"
+            "name": "Roche Caiman",
+            "code": "25"
         }
     ],
     "SD": [
         {
-            "code": "GZ",
-            "name": "Al Jazirah"
+            "name": "Al Jazirah",
+            "code": "GZ"
         },
         {
-            "code": "GD",
-            "name": "Al Qadarif"
+            "name": "Al Qadarif",
+            "code": "GD"
         },
         {
-            "code": "NB",
-            "name": "Blue Nile"
+            "name": "Blue Nile",
+            "code": "NB"
         },
         {
-            "code": "DC",
-            "name": "Central Darfur"
+            "name": "Central Darfur",
+            "code": "DC"
         },
         {
-            "code": "DE",
-            "name": "East Darfur"
+            "name": "East Darfur",
+            "code": "DE"
         },
         {
-            "code": "KA",
-            "name": "Kassala"
+            "name": "Kassala",
+            "code": "KA"
         },
         {
-            "code": "KH",
-            "name": "Khartoum"
+            "name": "North Darfur",
+            "code": "DN"
         },
         {
-            "code": "DN",
-            "name": "North Darfur"
+            "name": "North Kurdufan",
+            "code": "KN"
         },
         {
-            "code": "KN",
-            "name": "North Kurdufan"
+            "name": "Northern",
+            "code": "NO"
         },
         {
-            "code": "NO",
-            "name": "Northern"
+            "name": "Red Sea",
+            "code": "RS"
         },
         {
-            "code": "RS",
-            "name": "Red Sea"
+            "name": "River Nile",
+            "code": "NR"
         },
         {
-            "code": "NR",
-            "name": "River Nile"
+            "name": "Sennar",
+            "code": "SI"
         },
         {
-            "code": "SI",
-            "name": "Sennar"
+            "name": "South Darfur",
+            "code": "DS"
         },
         {
-            "code": "DS",
-            "name": "South Darfur"
+            "name": "South Kurdufan",
+            "code": "KS"
         },
         {
-            "code": "KS",
-            "name": "South Kurdufan"
+            "name": "West Darfur",
+            "code": "DW"
         },
         {
-            "code": "DW",
-            "name": "West Darfur"
+            "name": "West Kurdufan",
+            "code": "GK"
         },
         {
-            "code": "GK",
-            "name": "West Kurdufan"
+            "name": "White Nile",
+            "code": "NW"
         },
         {
-            "code": "NW",
-            "name": "White Nile"
+            "name": "Хартум",
+            "code": "KH"
         }
     ],
     "SE": [
         {
-            "name": "Блекінгэ",
+            "name": "лен Блекінгэ",
             "code": "K"
         },
         {
@@ -16561,7 +16773,7 @@
             "code": "S"
         },
         {
-            "name": "Лен Вестманланд",
+            "name": "лен Вестманланд",
             "code": "U"
         },
         {
@@ -16569,23 +16781,23 @@
             "code": "O"
         },
         {
-            "name": "Лен Вестэрботэн",
+            "name": "лен Вестэрботэн",
             "code": "AC"
         },
         {
-            "name": "Лен Вестэрнорланд",
+            "name": "лен Вестэрнорланд",
             "code": "Y"
         },
         {
-            "name": "Лен Готланд",
+            "name": "лен Готланд",
             "code": "I"
         },
         {
-            "name": "Лен Даларна",
+            "name": "лен Даларна",
             "code": "W"
         },
         {
-            "name": "Лен Емтланд",
+            "name": "лен Емтланд",
             "code": "Z"
         },
         {
@@ -16597,15 +16809,15 @@
             "code": "X"
         },
         {
-            "name": "Лен Кальмар",
+            "name": "лен Кальмар",
             "code": "H"
         },
         {
-            "name": "Лен Крунуберг",
+            "name": "лен Крунуберг",
             "code": "G"
         },
         {
-            "name": "Лен Норботэн",
+            "name": "лен Норботэн",
             "code": "BD"
         },
         {
@@ -16613,7 +16825,7 @@
             "code": "D"
         },
         {
-            "name": "Лен Сконэ",
+            "name": "лен Сконэ",
             "code": "M"
         },
         {
@@ -16629,7 +16841,7 @@
             "code": "N"
         },
         {
-            "name": "Лен Эрэбру",
+            "name": "лен Эрэбру",
             "code": "T"
         },
         {
@@ -16763,7 +16975,7 @@
             "code": "022"
         },
         {
-            "name": "Domžale",
+            "name": "Дамжале",
             "code": "023"
         },
         {
@@ -16863,7 +17075,7 @@
             "code": "047"
         },
         {
-            "name": "Kočevje",
+            "name": "Качэўе",
             "code": "048"
         },
         {
@@ -16899,7 +17111,7 @@
             "code": "056"
         },
         {
-            "name": "Laško",
+            "name": "Лашка",
             "code": "057"
         },
         {
@@ -17031,7 +17243,7 @@
             "code": "089"
         },
         {
-            "name": "Piran",
+            "name": "Піран",
             "code": "090"
         },
         {
@@ -17559,6 +17771,10 @@
     ],
     "SL": [
         {
+            "name": "North Western",
+            "code": "NW"
+        },
+        {
             "name": "Northern",
             "code": "N"
         },
@@ -17639,20 +17855,12 @@
             "code": "KD"
         },
         {
-            "name": "Louga",
-            "code": "LG"
-        },
-        {
             "name": "Matam",
             "code": "MT"
         },
         {
             "name": "Saint-Louis",
             "code": "SL"
-        },
-        {
-            "name": "Sédhiou",
-            "code": "SE"
         },
         {
             "name": "Tambacounda",
@@ -17669,80 +17877,88 @@
         {
             "name": "вобласць Ціес",
             "code": "TH"
+        },
+        {
+            "name": "Луга",
+            "code": "LG"
+        },
+        {
+            "name": "рэгіён Седзіу",
+            "code": "SE"
         }
     ],
     "SO": [
         {
-            "code": "AW",
-            "name": "Awdal"
+            "name": "Awdal",
+            "code": "AW"
         },
         {
-            "code": "BK",
-            "name": "Bakool"
+            "name": "Bakool",
+            "code": "BK"
         },
         {
-            "code": "BN",
-            "name": "Banaadir"
+            "name": "Banaadir",
+            "code": "BN"
         },
         {
-            "code": "BR",
-            "name": "Bari"
+            "name": "Bari",
+            "code": "BR"
         },
         {
-            "code": "BY",
-            "name": "Bay, Somalia"
+            "name": "Bay, Somalia",
+            "code": "BY"
         },
         {
-            "code": "GA",
-            "name": "Galguduud"
+            "name": "Galguduud",
+            "code": "GA"
         },
         {
-            "code": "GE",
-            "name": "Gedo"
+            "name": "Gedo",
+            "code": "GE"
         },
         {
-            "code": "HI",
-            "name": "Hiran"
+            "name": "Hiran",
+            "code": "HI"
         },
         {
-            "code": "JH",
-            "name": "Lower Juba"
+            "name": "Lower Juba",
+            "code": "JH"
         },
         {
-            "code": "SH",
-            "name": "Lower Shebelle"
+            "name": "Lower Shebelle",
+            "code": "SH"
         },
         {
-            "code": "JD",
-            "name": "Middle Juba"
+            "name": "Middle Juba",
+            "code": "JD"
         },
         {
-            "code": "SD",
-            "name": "Middle Shebelle"
+            "name": "Mudug",
+            "code": "MU"
         },
         {
-            "code": "MU",
-            "name": "Mudug"
+            "name": "Nugal",
+            "code": "NU"
         },
         {
-            "code": "NU",
-            "name": "Nugal"
+            "name": "Sanaag",
+            "code": "SA"
         },
         {
-            "code": "SA",
-            "name": "Sanaag"
+            "name": "Sool",
+            "code": "SO"
         },
         {
-            "code": "SO",
-            "name": "Sool"
+            "name": "Togdheer",
+            "code": "TO"
         },
         {
-            "code": "TO",
-            "name": "Togdheer"
+            "name": "Woqooyi Galbeed",
+            "code": "WO"
         },
         {
-            "code": "WO",
-            "name": "Woqooyi Galbeed"
+            "name": "Сярэдняя Шабеле",
+            "code": "SD"
         }
     ],
     "SR": [
@@ -17789,10 +18005,6 @@
     ],
     "SS": [
         {
-            "name": "Central Equatoria",
-            "code": "EC"
-        },
-        {
             "name": "Eastern Equatoria",
             "code": "EE"
         },
@@ -17817,12 +18029,16 @@
             "code": "WR"
         },
         {
-            "name": "Western Bahr el Ghazal",
+            "name": "Western Equatoria",
+            "code": "EW"
+        },
+        {
+            "name": "Заходні Бахр-эль-Газаль",
             "code": "BW"
         },
         {
-            "name": "Western Equatoria",
-            "code": "EW"
+            "name": "Цэнтральная Экватарыяльная правінцыя",
+            "code": "EC"
         },
         {
             "name": "Штат Верхні Ніл",
@@ -17897,14 +18113,16 @@
             "name": "Usulután"
         }
     ],
+    "SX": [
+        {
+            "code": "",
+            "name": "Sint Maarten"
+        }
+    ],
     "SY": [
         {
             "name": "Al-Hasakah",
             "code": "HA"
-        },
-        {
-            "name": "Aleppo",
-            "code": "HL"
         },
         {
             "name": "Ar-Raqqah",
@@ -17951,6 +18169,10 @@
             "code": "DI"
         },
         {
+            "name": "Халеб",
+            "code": "HL"
+        },
+        {
             "name": "Хомс",
             "code": "HI"
         }
@@ -17971,6 +18193,12 @@
         {
             "code": "SH",
             "name": "Shiselweni"
+        }
+    ],
+    "TA": [
+        {
+            "code": "",
+            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -18065,6 +18293,12 @@
         {
             "name": "Горад Нджамена",
             "code": "ND"
+        }
+    ],
+    "TF": [
+        {
+            "code": "",
+            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -18405,104 +18639,104 @@
     ],
     "TJ": [
         {
-            "name": "Khatlon",
-            "code": "KT"
-        },
-        {
-            "name": "Nohiyahoi Tobei Jumhurí",
-            "code": "RA"
-        },
-        {
-            "name": "Sughd",
-            "code": "SU"
-        },
-        {
             "name": "Горад Душанбэ",
             "code": "DU"
         },
         {
             "name": "Горна-Бадахшанская аўтаномная вобласць",
             "code": "GB"
+        },
+        {
+            "name": "раёны рэспубліканскага падпарадкавання Таджыкістана",
+            "code": "RA"
+        },
+        {
+            "name": "Сагдыйская вобласць",
+            "code": "SU"
+        },
+        {
+            "name": "Хатлонская вобласць",
+            "code": "KT"
         }
     ],
     "TL": [
         {
-            "code": "AL",
-            "name": "Aileu"
+            "name": "Aileu",
+            "code": "AL"
         },
         {
-            "code": "AN",
-            "name": "Ainaro"
+            "name": "Ainaro",
+            "code": "AN"
         },
         {
-            "code": "BA",
-            "name": "Baucau"
+            "name": "Baucau",
+            "code": "BA"
         },
         {
-            "code": "BO",
-            "name": "Bobonaro"
+            "name": "Bobonaro",
+            "code": "BO"
         },
         {
-            "code": "CO",
-            "name": "Cova Lima"
+            "name": "Cova Lima",
+            "code": "CO"
         },
         {
-            "code": "DI",
-            "name": "Dili"
+            "name": "Ermera",
+            "code": "ER"
         },
         {
-            "code": "ER",
-            "name": "Ermera"
+            "name": "Lautém",
+            "code": "LA"
         },
         {
-            "code": "LA",
-            "name": "Lautém"
+            "name": "Liquiçá",
+            "code": "LI"
         },
         {
-            "code": "LI",
-            "name": "Liquiçá"
+            "name": "Manatuto",
+            "code": "MT"
         },
         {
-            "code": "MT",
-            "name": "Manatuto"
+            "name": "Manufahi",
+            "code": "MF"
         },
         {
-            "code": "MF",
-            "name": "Manufahi"
+            "name": "Oecusse",
+            "code": "OE"
         },
         {
-            "code": "OE",
-            "name": "Oecusse"
+            "name": "Viqueque",
+            "code": "VI"
         },
         {
-            "code": "VI",
-            "name": "Viqueque"
+            "name": "Дылі",
+            "code": "DI"
         }
     ],
     "TM": [
-        {
-            "name": "Ahal",
-            "code": "A"
-        },
-        {
-            "name": "Balkan",
-            "code": "B"
-        },
         {
             "name": "Daşoguz",
             "code": "D"
         },
         {
-            "name": "Mary",
-            "code": "M"
+            "name": "Ахалскі велаят",
+            "code": "A"
         },
         {
             "name": "Ашхабад",
             "code": "S"
         },
         {
+            "name": "Балканскі велаят",
+            "code": "B"
+        },
+        {
             "name": "Лябапскі велаят",
             "code": "L"
+        },
+        {
+            "name": "Марыйскі велаят",
+            "code": "M"
         }
     ],
     "TN": [
@@ -19061,10 +19295,6 @@
             "code": "CYI"
         },
         {
-            "name": "Hsinchu",
-            "code": "HSZ"
-        },
-        {
             "name": "Hsinchu County",
             "code": "HSQ"
         },
@@ -19105,16 +19335,16 @@
             "code": "PEN"
         },
         {
-            "name": "Pingtung",
-            "code": "PIF"
-        },
-        {
             "name": "Taichung",
             "code": "TXG"
         },
         {
             "name": "Taitung",
             "code": "TTT"
+        },
+        {
+            "name": "Taiwan",
+            "code": ""
         },
         {
             "name": "Taoyuan",
@@ -19131,6 +19361,14 @@
         {
             "name": "Горад Тайнань",
             "code": "TNN"
+        },
+        {
+            "name": "Піндун",
+            "code": "PIF"
+        },
+        {
+            "name": "Сіньчжу",
+            "code": "HSZ"
         },
         {
             "name": "Тайбэй",
@@ -19257,6 +19495,10 @@
         {
             "name": "Simiyu",
             "code": "30"
+        },
+        {
+            "name": "Songwe",
+            "code": "31"
         }
     ],
     "UA": [
@@ -19419,6 +19661,10 @@
             "code": "201"
         },
         {
+            "name": "Bugweri",
+            "code": "235"
+        },
+        {
             "name": "Buhweju",
             "code": "420"
         },
@@ -19481,10 +19727,6 @@
         {
             "name": "Buyende",
             "code": "226"
-        },
-        {
-            "name": "Central",
-            "code": "C"
         },
         {
             "name": "Dokolo",
@@ -19579,6 +19821,14 @@
             "code": "206"
         },
         {
+            "name": "Kapelebyong",
+            "code": "236"
+        },
+        {
+            "name": "Kasanda",
+            "code": "126"
+        },
+        {
             "name": "Kasese",
             "code": "406"
         },
@@ -19601,6 +19851,10 @@
         {
             "name": "Kibuku",
             "code": "227"
+        },
+        {
+            "name": "Kikuube",
+            "code": "432"
         },
         {
             "name": "Kiruhura",
@@ -19629,6 +19883,10 @@
         {
             "name": "Kumi",
             "code": "208"
+        },
+        {
+            "name": "Kwania",
+            "code": "333"
         },
         {
             "name": "Kween",
@@ -19729,6 +19987,10 @@
         {
             "name": "Mukono",
             "code": "108"
+        },
+        {
+            "name": "Nabilatuk",
+            "code": "334"
         },
         {
             "name": "Nakapiripirit",
@@ -19847,10 +20109,6 @@
             "code": "212"
         },
         {
-            "name": "Wakiso",
-            "code": "113"
-        },
-        {
             "name": "Western",
             "code": "W"
         },
@@ -19867,15 +20125,27 @@
             "code": "330"
         },
         {
+            "name": "акруга Вакісо",
+            "code": "113"
+        },
+        {
             "name": "Кабака",
             "code": "316"
         },
         {
             "name": "Кабака²",
             "code": "319"
+        },
+        {
+            "name": "Цэнтральная вобласць",
+            "code": "C"
         }
     ],
     "UM": [
+        {
+            "name": "U.S. Outlying Islands",
+            "code": ""
+        },
         {
             "name": "Атол Джонстан",
             "code": "67"
@@ -20149,10 +20419,6 @@
             "code": "AR"
         },
         {
-            "name": "Canelones",
-            "code": "CA"
-        },
-        {
             "name": "Cerro Largo",
             "code": "CL"
         },
@@ -20177,20 +20443,12 @@
             "code": "PA"
         },
         {
-            "name": "Río Negro",
-            "code": "RN"
-        },
-        {
             "name": "Rivera",
             "code": "RV"
         },
         {
             "name": "Rocha",
             "code": "RO"
-        },
-        {
-            "name": "Salto",
-            "code": "SA"
         },
         {
             "name": "San José",
@@ -20213,8 +20471,20 @@
             "code": "CO"
         },
         {
+            "name": "дэпартамент Канелонес",
+            "code": "CA"
+        },
+        {
             "name": "Дэпартамент Мальданада",
             "code": "MA"
+        },
+        {
+            "name": "дэпартамент Рыа-Негра",
+            "code": "RN"
+        },
+        {
+            "name": "дэпартамент Сальта",
+            "code": "SA"
         },
         {
             "name": "Мантэвідэа",
@@ -20227,10 +20497,6 @@
             "code": "BU"
         },
         {
-            "name": "Namangan",
-            "code": "NG"
-        },
-        {
             "name": "Qashqadaryo",
             "code": "QA"
         },
@@ -20241,10 +20507,6 @@
         {
             "name": "Surxondaryo",
             "code": "SU"
-        },
-        {
-            "name": "Xorazm",
-            "code": "XO"
         },
         {
             "name": "Андыжанскі вілает",
@@ -20263,6 +20525,10 @@
             "code": "NW"
         },
         {
+            "name": "Наманганскі вілает",
+            "code": "NG"
+        },
+        {
             "name": "Самаркандская вобласць",
             "code": "SA"
         },
@@ -20277,6 +20543,10 @@
         {
             "name": "Ферганскі вілает",
             "code": "FA"
+        },
+        {
+            "name": "Харэзмская вобласць",
+            "code": "XO"
         }
     ],
     "VC": [
@@ -20307,11 +20577,11 @@
     ],
     "VE": [
         {
-            "name": "Capital",
+            "name": "Сталічная акруга Венесуэлы",
             "code": "A"
         },
         {
-            "name": "Federal Dependencies",
+            "name": "Федэральныя ўладанні Венесуэлы",
             "code": "W"
         },
         {
@@ -20407,6 +20677,12 @@
             "code": "U"
         }
     ],
+    "VI": [
+        {
+            "code": "",
+            "name": "U.S. Virgin Islands"
+        }
+    ],
     "VN": [
         {
             "name": "An Giang",
@@ -20455,10 +20731,6 @@
         {
             "name": "Cà Mau",
             "code": "59"
-        },
-        {
-            "name": "Can Tho",
-            "code": "CT"
         },
         {
             "name": "Cao Bằng",
@@ -20577,16 +20849,8 @@
             "code": "27"
         },
         {
-            "name": "Quảng Ngãi",
-            "code": "29"
-        },
-        {
             "name": "Quảng Ninh",
             "code": "13"
-        },
-        {
-            "name": "Quảng Trị",
-            "code": "25"
         },
         {
             "name": "Sóc Trăng",
@@ -20653,8 +20917,20 @@
             "code": "SG"
         },
         {
+            "name": "Кантхо",
+            "code": "CT"
+        },
+        {
             "name": "Куангбінь",
             "code": "24"
+        },
+        {
+            "name": "Куангнгай",
+            "code": "29"
+        },
+        {
+            "name": "Куангчы",
+            "code": "25"
         },
         {
             "name": "Чавінь",
@@ -20699,6 +20975,10 @@
         {
             "code": "UV",
             "name": "Uvea"
+        },
+        {
+            "code": "",
+            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -20765,10 +21045,6 @@
             "code": "HU"
         },
         {
-            "name": "Al Jawf",
-            "code": "JA"
-        },
-        {
             "name": "Al Mahrah",
             "code": "MR"
         },
@@ -20821,10 +21097,6 @@
             "code": "SD"
         },
         {
-            "name": "Sana’a",
-            "code": "SN"
-        },
-        {
             "name": "Shabwah",
             "code": "SH"
         },
@@ -20835,13 +21107,23 @@
         {
             "name": "Горад Сана",
             "code": "SA"
+        },
+        {
+            "name": "Сана",
+            "code": "SN"
+        },
+        {
+            "name": "Эль-Джауф",
+            "code": "JA"
+        }
+    ],
+    "YT": [
+        {
+            "code": "",
+            "name": "Mayotte"
         }
     ],
     "ZA": [
-        {
-            "name": "Free",
-            "code": "FS"
-        },
         {
             "name": "Гаўтэнг",
             "code": "GT"
@@ -20873,6 +21155,10 @@
         {
             "name": "Усходне-Капская правінцыя",
             "code": "EC"
+        },
+        {
+            "name": "Фры-Стэйт",
+            "code": "FS"
         }
     ],
     "ZM": [
@@ -20919,44 +21205,44 @@
     ],
     "ZW": [
         {
-            "code": "BU",
-            "name": "Bulawayo"
+            "name": "Harare",
+            "code": "HA"
         },
         {
-            "code": "HA",
-            "name": "Harare"
+            "name": "Manicaland",
+            "code": "MA"
         },
         {
-            "code": "MA",
-            "name": "Manicaland"
+            "name": "Mashonaland Central",
+            "code": "MC"
         },
         {
-            "code": "MC",
-            "name": "Mashonaland Central"
+            "name": "Mashonaland East",
+            "code": "ME"
         },
         {
-            "code": "ME",
-            "name": "Mashonaland East"
+            "name": "Mashonaland West",
+            "code": "MW"
         },
         {
-            "code": "MW",
-            "name": "Mashonaland West"
+            "name": "Masvingo",
+            "code": "MV"
         },
         {
-            "code": "MV",
-            "name": "Masvingo"
+            "name": "Matabeleland North",
+            "code": "MN"
         },
         {
-            "code": "MN",
-            "name": "Matabeleland North"
+            "name": "Matabeleland South",
+            "code": "MS"
         },
         {
-            "code": "MS",
-            "name": "Matabeleland South"
+            "name": "Midlands",
+            "code": "MI"
         },
         {
-            "code": "MI",
-            "name": "Midlands"
+            "name": "Булавая",
+            "code": "BU"
         }
     ]
 }

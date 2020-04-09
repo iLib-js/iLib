@@ -1,7 +1,7 @@
 /*
  * datefmts.js - auxillary tools used to generate the dateformats.json files
  *
- * Copyright © 2015-2018, JEDLSoft
+ * Copyright © 2015-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -461,7 +461,7 @@ module.exports = {
             m = {},
             y = {};
 
-            for (i = 0; i < lengths.length; i++) {
+            for (var i = 0; i < lengths.length; i++) {
                 var len = lengths[i];
 
                 cldrFormats[len] = getDateFormat(cldrCalendar, len);
@@ -504,8 +504,8 @@ module.exports = {
 
             var w;
 
-            i = scanForChars(cldrFormats["full"], "Ec");
-            if (i > -1 && cldrFormats["full"].charAt(i) === "c") {
+            var weekFormatIndex = scanForChars(cldrFormats["full"], "Ec");
+            if (weekFormatIndex > -1 && cldrFormats["full"].charAt(weekFormatIndex) === "c") {
                 w = {
                     "full": "cccc",
                     "long": "ccc",
@@ -538,8 +538,8 @@ module.exports = {
                 longPlus = longPlus.replace(y["long"], y["full"]);
             }
             // console.log("Search for '" + longPlus + "' in '" + cldrFormats["full"] + "'\n");
-            i = cldrFormats["full"].indexOf(longPlus);
-            if (i > -1) {
+            var longIndex = cldrFormats["full"].indexOf(longPlus);
+            if (longIndex > -1 && weekFormatIndex !== -1) {
                 tmp = cldrFormats["full"].replace(longPlus, "{date}");
                 // console.log("tmp is " + tmp + "\n");
                 wTemplate = tmp;
@@ -560,21 +560,21 @@ module.exports = {
                     // console.log("language " + language + " E found before date. Using wtemplate " + wTemplate + "\n");
                 } else if (scanForChars(full, "E") > max) {
                     // scan backwards to find the last dmy char
-                    i = full.length-1;
+                    var iterator = full.length-1;
                     var skipMode = false;
-                    while (i > -1) {
-                        if (full.charAt(i) === "'") {
+                    while (iterator > -1) {
+                        if (full.charAt(iterator) === "'") {
                             skipMode = !skipMode;
                         } else if (!skipMode) {
-                            var c = full.charAt(i);
+                            var c = full.charAt(iterator);
                             if (c === 'd' || c === 'M' || c === 'y') {
                                 break;
                             }
                         }
-                        i--;
+                        iterator--;
                     }
-                    wTemplate = "{date}" + full.substring(i+1);
-                    longPlus = full.substring(0, i+1);
+                    wTemplate = "{date}" + full.substring(iterator+1);
+                    longPlus = full.substring(0, iterator+1);
                     // console.log("language " + language + " E found after date. Using wtemplate " + wTemplate + " and longPlus is " + longPlus + "\n");
                     //} else {
                     // the w is in the middle of the dmy... not sure what to do about that!
@@ -586,7 +586,10 @@ module.exports = {
             calendar.date.dmwy["f"] = rtlify(correctedYear(cldrFormats["full"]));
             calendar.date.dmy["f"] = rtlify(correctedYear(longPlus));
 
-            for (i = 1; i < lengths.length; i++) {
+            for (var i = 0; i < lengths.length; i++) {
+                if (i == 0 && weekFormatIndex > -1) {
+                    continue;
+                }
                 var len = lengths[i];
                 var lenAbbr = len.charAt(0);
                 tmp = wTemplate.replace(/\{date\}/, cldrFormats[len]);
@@ -599,7 +602,7 @@ module.exports = {
 
             var orders = {};
 
-            for (i = 0; i < lengths.length; i++) {
+            for (var i = 0; i < lengths.length; i++) {
                 var len = lengths[i];
                 var lenAbbr = len.charAt(0);
                 calendar.date.w[lenAbbr] = w[len];
@@ -2041,7 +2044,7 @@ module.exports = {
             // already the minimum, so we don't need to do anything
             return;
         }
-        
+
         console.log("Promoting " + totals[0].name + "/" + filename + " to " + parentName + "\n");
         // promote a child as the new root, dropping the current root
         group.data = group[totals[0].name].data;
@@ -2049,8 +2052,8 @@ module.exports = {
 
     pruneFormatsChild: function(parent, child) {
         console.log(".");
-        
-        // first recursively prune all the grandchildren before pruning the child or else the child 
+
+        // first recursively prune all the grandchildren before pruning the child or else the child
         // will be too sparse to prune the grandchildren
         for (var localebit in child) {
             if (localebit !== "und" && localebit !== "data") {
@@ -2099,7 +2102,7 @@ module.exports = {
         // don't write out empty files!
         if (contents !== "{}") {
             console.log(localeComponents.join("-") + " ");
-            
+
             makeDirs(dir);
             fs.writeFileSync(filename, JSON.stringify(group.data, undefined, 4), 'utf8');
         }

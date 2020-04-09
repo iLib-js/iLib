@@ -211,6 +211,9 @@ for (var zone in timezones) {
 
 var filepath = path.join(toDir, "zoneinfo/zonetab.json");
 console.log("Writing out zone tab file " + filepath + "\n");
+for (var country in countryToZones) {
+    countryToZones[country].sort();
+}
 fs.writeFile(filepath, JSON.stringify(countryToZones, true, 4), function (err) {
 	if (err) {
 		throw err;

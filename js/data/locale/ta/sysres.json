@@ -154,11 +154,11 @@
     "#{num}mo ago": "one#{num} மாத. முன்|#{num} மாத. முன்",
     "#{num}y ago": "one#{num} ஆண்டிற்கு முன்|#{num} ஆண்டுகளுக்கு முன்",
     "separatorFull": ", ",
-    "finalSeparatorFull": ", ",
+    "finalSeparatorFull": " மற்றும் ",
     "separatorLong": ", ",
-    "finalSeparatorLong": ", ",
+    "finalSeparatorLong": " மற்றும் ",
     "separatorMedium": ", ",
-    "finalSeparatorMedium": ", ",
+    "finalSeparatorMedium": " மற்றும் ",
     "separatorShort": " ",
     "finalSeparatorShort": " "
 }

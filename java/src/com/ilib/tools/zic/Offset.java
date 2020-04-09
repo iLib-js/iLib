@@ -245,7 +245,7 @@ public class Offset
         	Calendar cal = Calendar.getInstance();
         	int year = cal.get(Calendar.YEAR);
         	rulesList = rules.getRules();
-            Rule startRule = null, endRule = null;
+            Rule startRule = null, endRule = null, lastRule = rulesList.get(rulesList.size()-1);;
             for ( i = 0; i < rulesList.size(); i++ ) {
             	rule = rulesList.get(i);
             	// check year-1 against the end year to take care of the 
@@ -278,13 +278,16 @@ public class Offset
                 }
                 json.put("e", wallTime.getJson(currentOnly));
             }
-            
-            if ( startRule == null && endRule == null ) {
+
+            if (format.trim().equals("%s")) {
+                json.put("f", lastRule.getCharacter());
+            } else if ( startRule == null && endRule == null ) {
                 // no DST in this time zone, so fix up bogus abbreviations that include the %s when it shouldn't
+                // replace the %s with S for "Standard time"
                 json.put("f", format.replace("%s", "S"));
             }
         }
-        
+
         return json;
     }
 }
