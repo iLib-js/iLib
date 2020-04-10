@@ -30,7 +30,9 @@ limitations under the License.
 	<property name="build.base"						value="${basedir}"/>
 	<property name="build.dist"						value="${build.base}/../dist"/>
 	<property name="build.export"					value="${build.base}/../export"/>
-	<property name="build.demo"						value="${build.base}/../docs/demo"/>
+	<property name="build.docs"                     value="${build.base}/../docs"/>
+	<property name="build.demo"						value="${build.docs}/demo"/>
+	<property name="build.apidocs"                  value="${build.docs}/api"/>
 	<property name="build.tools"					value="${build.base}/../tools"/>
 	<property name="build.tools.qmlizer"			value="${build.base}/../tools/qmlizer"/>
 	<property name="build.tools.build"				value="${build.base}/../tools/build"/>
@@ -850,7 +852,7 @@ limitations under the License.
 	</target>
 	<target name="doc"
             depends="testjsdoc"
-            description="creates jsdoc for all local java files in this project"
+            description="creates jsdoc for all local js files in this project"
             unless="core.jsdoc.not.needed">
 		<delete dir="${build.jsdoc}"/>
 		<mkdir dir="${build.jsdoc}"/>
@@ -868,6 +870,16 @@ limitations under the License.
             </exec>
         </sequential>
 	</target>
+    <target name="apidocs"
+            depends="doc"
+            description="Updates the API docs">
+        <mkdir dir="${build.apidocs}"/>
+        <copy todir="${build.apidocs}">
+            <fileset dir="${build.jsdoc}">
+                <include name="**/*.html"/>
+            </fileset>
+        </copy>
+    </target>
 	<target name="testinfo" description="test whether or not the localeinfo.json files need to rebuilt">
 		<uptodate property="info.not.needed" targetFile="${build.locale.src}/localeinfo.stamp">
 			<srcfiles dir="${build.locale.src}" includes="**/*.jf"/>

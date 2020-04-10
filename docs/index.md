@@ -2,6 +2,8 @@
 
 Hello, and welcome to the iLib project!
 
+View this documentation on [github pages](https://ilib-js.github.io/iLib/docs/)
+
 * [Welcome](Welcome.md)
 * [History](History.md)
 * [License](License.md)
@@ -10,7 +12,7 @@ Hello, and welcome to the iLib project!
 # Documentation #
 
 * [Getting Started](GettingStarted.md)
-* [Old Tutorial](tutorial/iLib1.0JSTutorial.pdf)
+* Tutorials:
     * [Handling Phone Numbers in iLib](tutorial/phone.md)
     * [Name Parsing and Formatting](tutorial/name.md)
     * [Glyphs, Characters, and Character Normalization](tutorial/characters.md)
@@ -20,6 +22,8 @@ Hello, and welcome to the iLib project!
 * Architecture and Process
     * [Overall Architecture](Architecture.md)
     * [CommonJS Modularization Support](tutorial/modules.md) as of 11.0
+        * For ES6-style modules, see the [ilib-es6](https://github.com/ilib-js/ilib-es6/) project
+          which provides wrappers for all ilib classes
     * [Updating the time zone information](tutorial/timezone.md)
     * [Running unit test on QT/QML](QtTest.md)
 * API Reference: 
