@@ -108,6 +108,7 @@ limitations under the License.
 		<delete dir="${build.classes}"/>
 		<delete dir="${build.output}"/>
 		<delete dir="${build.data}"/>
+		<delete dir="${build.apidocs}"/>
 	</target>
 
 	<target name="prepare" description="Prepare all directories that are needed before the project can be built">

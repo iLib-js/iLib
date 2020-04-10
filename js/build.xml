@@ -114,6 +114,7 @@ limitations under the License.
 		<delete file="${build.test}/nodeunit/nodeunit-qml.jsc"/>
 		<delete file="${build.lib}/ilib-qt.jsc"/>
 		<delete dir="${build.locale}"/>
+		<delete dir="${build.apidocs}"/>
 	</target>
 	<target name="prepare" depends="update.package.json" description="Prepare all directories that are needed before the project can be built">
 		<mkdir dir="${build.output.js}"/>
