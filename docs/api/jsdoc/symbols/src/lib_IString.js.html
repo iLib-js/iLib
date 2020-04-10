@@ -56,7 +56,7 @@
 <span class='line'> 49</span> </span><span class="WHIT">            </span><span class="NAME">this.str</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">string.toString</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 50</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'> 51</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">string</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 52</span> </span><span class="WHIT">        </span><span class="NAME">this.str</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">String</span><span class="PUNC">(</span><span class="NAME">string</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">        </span><span class="NAME">this.str</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">String</span><span class="PUNC">(</span><span class="NAME">string</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// copy it</span><span class="WHIT">
 <span class='line'> 53</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'> 54</span> </span><span class="WHIT">        </span><span class="NAME">this.str</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 55</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
@@ -964,345 +964,498 @@
 <span class='line'>957</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>958</span> 
 <span class='line'>959</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>960</span>      * Same as String.replace()
-<span class='line'>961</span>      * @param {string} searchValue a regular expression to search for
-<span class='line'>962</span>      * @param {string} newValue the string to replace the matches with
-<span class='line'>963</span>      * @return {IString} a new string with all the matches replaced
-<span class='line'>964</span>      * with the new value
-<span class='line'>965</span>      */</span><span class="WHIT">
-<span class='line'>966</span> </span><span class="WHIT">    </span><span class="NAME">replace</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">searchValue</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">newValue</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>967</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">this.str.replace</span><span class="PUNC">(</span><span class="NAME">searchValue</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">newValue</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>968</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>969</span> 
-<span class='line'>970</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>971</span>      * Same as String.search()
-<span class='line'>972</span>      * @param {string} regexp the regular expression to search for
-<span class='line'>973</span>      * @return {number} position of the match, or -1 for no match
+<span class='line'>960</span>      * Same as String.matchAll()
+<span class='line'>961</span>      * @param {string} regexp the regular expression to match
+<span class='line'>962</span>      * @return {iterator} an iterator of the matches
+<span class='line'>963</span>      */</span><span class="WHIT">
+<span class='line'>964</span> </span><span class="WHIT">    </span><span class="NAME">matchAll</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">regexp</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>965</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.matchAll</span><span class="PUNC">(</span><span class="NAME">regexp</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>966</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>967</span> 
+<span class='line'>968</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>969</span>      * Same as String.replace()
+<span class='line'>970</span>      * @param {string} searchValue a regular expression to search for
+<span class='line'>971</span>      * @param {string} newValue the string to replace the matches with
+<span class='line'>972</span>      * @return {IString} a new string with all the matches replaced
+<span class='line'>973</span>      * with the new value
 <span class='line'>974</span>      */</span><span class="WHIT">
-<span class='line'>975</span> </span><span class="WHIT">    </span><span class="NAME">search</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">regexp</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>976</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.search</span><span class="PUNC">(</span><span class="NAME">regexp</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>975</span> </span><span class="WHIT">    </span><span class="NAME">replace</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">searchValue</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">newValue</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>976</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">this.str.replace</span><span class="PUNC">(</span><span class="NAME">searchValue</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">newValue</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>977</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>978</span> 
 <span class='line'>979</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>980</span>      * Same as String.slice()
-<span class='line'>981</span>      * @param {number} start first character to include in the string
-<span class='line'>982</span>      * @param {number} end include all characters up to, but not including
-<span class='line'>983</span>      * the end character
-<span class='line'>984</span>      * @return {IString} a slice of the current string
-<span class='line'>985</span>      */</span><span class="WHIT">
-<span class='line'>986</span> </span><span class="WHIT">    </span><span class="NAME">slice</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">start</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">end</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>987</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">this.str.slice</span><span class="PUNC">(</span><span class="NAME">start</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">end</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>988</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>989</span> 
-<span class='line'>990</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>991</span>      * Same as String.split()
-<span class='line'>992</span>      * @param {string} separator regular expression to match to find
-<span class='line'>993</span>      * separations between the parts of the text
-<span class='line'>994</span>      * @param {number} limit maximum number of items in the final
-<span class='line'>995</span>      * output array. Any items beyond that limit will be ignored.
-<span class='line'>996</span>      * @return {Array.&lt;string>} the parts of the current string split
-<span class='line'>997</span>      * by the separator
-<span class='line'>998</span>      */</span><span class="WHIT">
-<span class='line'>999</span> </span><span class="WHIT">    </span><span class="NAME">split</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">separator</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">limit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1000</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.split</span><span class="PUNC">(</span><span class="NAME">separator</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">limit</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1001</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1002</span> 
-<span class='line'>1003</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>1004</span>      * Same as String.substr()
-<span class='line'>1005</span>      * @param {number} start the index of the character that should
-<span class='line'>1006</span>      * begin the returned substring
-<span class='line'>1007</span>      * @param {number} length the number of characters to return after
-<span class='line'>1008</span>      * the start character.
-<span class='line'>1009</span>      * @return {IString} the requested substring
-<span class='line'>1010</span>      */</span><span class="WHIT">
-<span class='line'>1011</span> </span><span class="WHIT">    </span><span class="NAME">substr</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">start</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1012</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">plat</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib._getPlatform</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1013</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">plat</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"qt"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">plat</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"rhino"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">plat</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"trireme"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1014</span> </span><span class="WHIT">            </span><span class="COMM">// qt and rhino have a broken implementation of substr(), so</span><span class="WHIT">
-<span class='line'>1015</span> </span><span class="WHIT">            </span><span class="COMM">// work around it</span><span class="WHIT">
-<span class='line'>1016</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"undefined"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1017</span> </span><span class="WHIT">                </span><span class="NAME">length</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.str.length</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">start</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1018</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1019</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1020</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">this.str.substr</span><span class="PUNC">(</span><span class="NAME">start</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1021</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1022</span> 
-<span class='line'>1023</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>1024</span>      * Same as String.substring()
-<span class='line'>1025</span>      * @param {number} from the index of the character that should
-<span class='line'>1026</span>      * begin the returned substring
-<span class='line'>1027</span>      * @param {number} to the index where to stop the extraction. If
-<span class='line'>1028</span>      * omitted, extracts the rest of the string
-<span class='line'>1029</span>      * @return {IString} the requested substring
-<span class='line'>1030</span>      */</span><span class="WHIT">
-<span class='line'>1031</span> </span><span class="WHIT">    </span><span class="NAME">substring</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">from</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">to</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1032</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.substring</span><span class="PUNC">(</span><span class="NAME">from</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">to</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1033</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1034</span> 
-<span class='line'>1035</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>1036</span>      * Same as String.toLowerCase(). Note that this method is
-<span class='line'>1037</span>      * not locale-sensitive.
-<span class='line'>1038</span>      * @return {IString} a string with the first character
-<span class='line'>1039</span>      * lower-cased
-<span class='line'>1040</span>      */</span><span class="WHIT">
-<span class='line'>1041</span> </span><span class="WHIT">    </span><span class="NAME">toLowerCase</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1042</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.toLowerCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1043</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1044</span> 
-<span class='line'>1045</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>1046</span>      * Same as String.toUpperCase(). Note that this method is
-<span class='line'>1047</span>      * not locale-sensitive. Use toLocaleUpperCase() instead
-<span class='line'>1048</span>      * to get locale-sensitive behaviour.
-<span class='line'>1049</span>      * @return {IString} a string with the first character
-<span class='line'>1050</span>      * upper-cased
-<span class='line'>1051</span>      */</span><span class="WHIT">
-<span class='line'>1052</span> </span><span class="WHIT">    </span><span class="NAME">toUpperCase</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1053</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.toUpperCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1054</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1055</span> 
-<span class='line'>1056</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>1057</span>      * Convert the character or the surrogate pair at the given
-<span class='line'>1058</span>      * index into the string to a Unicode UCS-4 code point.
-<span class='line'>1059</span>      * @protected
-<span class='line'>1060</span>      * @param {number} index index into the string
-<span class='line'>1061</span>      * @return {number} code point of the character at the
-<span class='line'>1062</span>      * given index into the string
-<span class='line'>1063</span>      */</span><span class="WHIT">
-<span class='line'>1064</span> </span><span class="WHIT">    </span><span class="NAME">_toCodePoint</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">index</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1065</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">IString.toCodePoint</span><span class="PUNC">(</span><span class="NAME">this.str</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">index</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1066</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1067</span> 
-<span class='line'>1068</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>1069</span>      * Call the callback with each character in the string one at
-<span class='line'>1070</span>      * a time, taking care to step through the surrogate pairs in
-<span class='line'>1071</span>      * the UTF-16 encoding properly.&lt;p>
-<span class='line'>1072</span>      *
-<span class='line'>1073</span>      * The standard Javascript String's charAt() method only
-<span class='line'>1074</span>      * returns a particular 16-bit character in the
-<span class='line'>1075</span>      * UTF-16 encoding scheme.
-<span class='line'>1076</span>      * If the index to charAt() is pointing to a low- or
-<span class='line'>1077</span>      * high-surrogate character,
-<span class='line'>1078</span>      * it will return the surrogate character rather
-<span class='line'>1079</span>      * than the the character
-<span class='line'>1080</span>      * in the supplementary planes that the two surrogates together
-<span class='line'>1081</span>      * encode. This function will call the callback with the full
-<span class='line'>1082</span>      * character, making sure to join two
-<span class='line'>1083</span>      * surrogates into one character in the supplementary planes
-<span class='line'>1084</span>      * where necessary.&lt;p>
-<span class='line'>1085</span>      *
-<span class='line'>1086</span>      * @param {function(string)} callback a callback function to call with each
-<span class='line'>1087</span>      * full character in the current string
-<span class='line'>1088</span>      */</span><span class="WHIT">
-<span class='line'>1089</span> </span><span class="WHIT">    </span><span class="NAME">forEach</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1090</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1091</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">it</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.charIterator</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1092</span> </span><span class="WHIT">            </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">it.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1093</span> </span><span class="WHIT">                </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="NAME">it.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1094</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1095</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>980</span>      * Same as String.search()
+<span class='line'>981</span>      * @param {string} regexp the regular expression to search for
+<span class='line'>982</span>      * @return {number} position of the match, or -1 for no match
+<span class='line'>983</span>      */</span><span class="WHIT">
+<span class='line'>984</span> </span><span class="WHIT">    </span><span class="NAME">search</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">regexp</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>985</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.search</span><span class="PUNC">(</span><span class="NAME">regexp</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>986</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>987</span> 
+<span class='line'>988</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>989</span>      * Same as String.slice()
+<span class='line'>990</span>      * @param {number} start first character to include in the string
+<span class='line'>991</span>      * @param {number} end include all characters up to, but not including
+<span class='line'>992</span>      * the end character
+<span class='line'>993</span>      * @return {IString} a slice of the current string
+<span class='line'>994</span>      */</span><span class="WHIT">
+<span class='line'>995</span> </span><span class="WHIT">    </span><span class="NAME">slice</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">start</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">end</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>996</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">this.str.slice</span><span class="PUNC">(</span><span class="NAME">start</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">end</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>997</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>998</span> 
+<span class='line'>999</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1000</span>      * Same as String.split()
+<span class='line'>1001</span>      * @param {string} separator regular expression to match to find
+<span class='line'>1002</span>      * separations between the parts of the text
+<span class='line'>1003</span>      * @param {number} limit maximum number of items in the final
+<span class='line'>1004</span>      * output array. Any items beyond that limit will be ignored.
+<span class='line'>1005</span>      * @return {Array.&lt;string>} the parts of the current string split
+<span class='line'>1006</span>      * by the separator
+<span class='line'>1007</span>      */</span><span class="WHIT">
+<span class='line'>1008</span> </span><span class="WHIT">    </span><span class="NAME">split</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">separator</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">limit</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1009</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.split</span><span class="PUNC">(</span><span class="NAME">separator</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">limit</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1010</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1011</span> 
+<span class='line'>1012</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1013</span>      * Same as String.substr()
+<span class='line'>1014</span>      * @param {number} start the index of the character that should
+<span class='line'>1015</span>      * begin the returned substring
+<span class='line'>1016</span>      * @param {number} length the number of characters to return after
+<span class='line'>1017</span>      * the start character.
+<span class='line'>1018</span>      * @return {IString} the requested substring
+<span class='line'>1019</span>      */</span><span class="WHIT">
+<span class='line'>1020</span> </span><span class="WHIT">    </span><span class="NAME">substr</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">start</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1021</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">plat</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ilib._getPlatform</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1022</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">plat</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"qt"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">plat</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"rhino"</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">plat</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"trireme"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1023</span> </span><span class="WHIT">            </span><span class="COMM">// qt and rhino have a broken implementation of substr(), so</span><span class="WHIT">
+<span class='line'>1024</span> </span><span class="WHIT">            </span><span class="COMM">// work around it</span><span class="WHIT">
+<span class='line'>1025</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"undefined"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1026</span> </span><span class="WHIT">                </span><span class="NAME">length</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.str.length</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">start</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1027</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1028</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1029</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">(</span><span class="NAME">this.str.substr</span><span class="PUNC">(</span><span class="NAME">start</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1030</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1031</span> 
+<span class='line'>1032</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1033</span>      * Same as String.substring()
+<span class='line'>1034</span>      * @param {number} from the index of the character that should
+<span class='line'>1035</span>      * begin the returned substring
+<span class='line'>1036</span>      * @param {number} to the index where to stop the extraction. If
+<span class='line'>1037</span>      * omitted, extracts the rest of the string
+<span class='line'>1038</span>      * @return {IString} the requested substring
+<span class='line'>1039</span>      */</span><span class="WHIT">
+<span class='line'>1040</span> </span><span class="WHIT">    </span><span class="NAME">substring</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">from</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">to</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1041</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.substring</span><span class="PUNC">(</span><span class="NAME">from</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">to</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1042</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1043</span> 
+<span class='line'>1044</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1045</span>      * Same as String.toLowerCase(). Note that this method is
+<span class='line'>1046</span>      * not locale-sensitive.
+<span class='line'>1047</span>      * @return {IString} a string with the first character
+<span class='line'>1048</span>      * lower-cased
+<span class='line'>1049</span>      */</span><span class="WHIT">
+<span class='line'>1050</span> </span><span class="WHIT">    </span><span class="NAME">toLowerCase</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1051</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.toLowerCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1052</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1053</span> 
+<span class='line'>1054</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1055</span>      * Same as String.toUpperCase(). Note that this method is
+<span class='line'>1056</span>      * not locale-sensitive. Use toLocaleUpperCase() instead
+<span class='line'>1057</span>      * to get locale-sensitive behaviour.
+<span class='line'>1058</span>      * @return {IString} a string with the first character
+<span class='line'>1059</span>      * upper-cased
+<span class='line'>1060</span>      */</span><span class="WHIT">
+<span class='line'>1061</span> </span><span class="WHIT">    </span><span class="NAME">toUpperCase</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1062</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.toUpperCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1063</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1064</span> 
+<span class='line'>1065</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1066</span>      * Same as String.endsWith().
+<span class='line'>1067</span>      * @return {boolean} true if the given characters are found at
+<span class='line'>1068</span>      * the end of the string, and false otherwise
+<span class='line'>1069</span>      */</span><span class="WHIT">
+<span class='line'>1070</span> </span><span class="WHIT">    </span><span class="NAME">endsWith</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">searchString</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1071</span> </span><span class="WHIT">        </span><span class="COMM">/* (note)length is optional. If it is omitted the default value is the length of string.
+<span class='line'>1072</span>         *  But If length is omitted, it returns false on QT. (tested on QT 5.12.4 and 5.13.0)
+<span class='line'>1073</span>         */</span><span class="WHIT">
+<span class='line'>1074</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">length</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"undefined"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1075</span> </span><span class="WHIT">            </span><span class="NAME">length</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.str.length</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1076</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1077</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.endsWith</span><span class="PUNC">(</span><span class="NAME">searchString</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1078</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1079</span> 
+<span class='line'>1080</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1081</span>      * Same as String.startsWith().
+<span class='line'>1082</span>      * @return {boolean} true if the given characters are found at
+<span class='line'>1083</span>      * the beginning of the string, and false otherwise
+<span class='line'>1084</span>      */</span><span class="WHIT">
+<span class='line'>1085</span> </span><span class="WHIT">    </span><span class="NAME">startsWith</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">searchString</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1086</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.startsWith</span><span class="PUNC">(</span><span class="NAME">searchString</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1087</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1088</span> 
+<span class='line'>1089</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1090</span>      * Same as String.includes().
+<span class='line'>1091</span>      * @return {boolean} true if the search string is found anywhere
+<span class='line'>1092</span>      * with the given string, and false otherwise
+<span class='line'>1093</span>      */</span><span class="WHIT">
+<span class='line'>1094</span> </span><span class="WHIT">    </span><span class="NAME">includes</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">searchString</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">position</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1095</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.includes</span><span class="PUNC">(</span><span class="NAME">searchString</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">position</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>1096</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>1097</span> 
 <span class='line'>1098</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>1099</span>      * Call the callback with each numeric code point in the string one at
-<span class='line'>1100</span>      * a time, taking care to step through the surrogate pairs in
-<span class='line'>1101</span>      * the UTF-16 encoding properly.&lt;p>
+<span class='line'>1099</span>      * Same as String.normalize(). If this JS engine does not support
+<span class='line'>1100</span>      * this method, then you can use the NormString class of ilib
+<span class='line'>1101</span>      * to the same thing (albeit a little slower).
 <span class='line'>1102</span>      *
-<span class='line'>1103</span>      * The standard Javascript String's charCodeAt() method only
-<span class='line'>1104</span>      * returns information about a particular 16-bit character in the
-<span class='line'>1105</span>      * UTF-16 encoding scheme.
-<span class='line'>1106</span>      * If the index to charCodeAt() is pointing to a low- or
-<span class='line'>1107</span>      * high-surrogate character,
-<span class='line'>1108</span>      * it will return the code point of the surrogate character rather
-<span class='line'>1109</span>      * than the code point of the character
-<span class='line'>1110</span>      * in the supplementary planes that the two surrogates together
-<span class='line'>1111</span>      * encode. This function will call the callback with the full
-<span class='line'>1112</span>      * code point of each character, making sure to join two
-<span class='line'>1113</span>      * surrogates into one code point in the supplementary planes.&lt;p>
-<span class='line'>1114</span>      *
-<span class='line'>1115</span>      * @param {function(string)} callback a callback function to call with each
-<span class='line'>1116</span>      * code point in the current string
-<span class='line'>1117</span>      */</span><span class="WHIT">
-<span class='line'>1118</span> </span><span class="WHIT">    </span><span class="NAME">forEachCodePoint</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1119</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1120</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">it</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.iterator</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1121</span> </span><span class="WHIT">            </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">it.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1122</span> </span><span class="WHIT">                </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="NAME">it.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1123</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1124</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1103</span>      * @return {string} the string in normalized form
+<span class='line'>1104</span>      */</span><span class="WHIT">
+<span class='line'>1105</span> </span><span class="WHIT">    </span><span class="NAME">normalize</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">form</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1106</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.normalize</span><span class="PUNC">(</span><span class="NAME">form</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1107</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1108</span> 
+<span class='line'>1109</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1110</span>      * Same as String.padEnd().
+<span class='line'>1111</span>      * @return {string} a string of the specified length with the
+<span class='line'>1112</span>      * pad string applied at the end of the current string
+<span class='line'>1113</span>      */</span><span class="WHIT">
+<span class='line'>1114</span> </span><span class="WHIT">    </span><span class="NAME">padEnd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">targetLength</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">padString</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1115</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.padEnd</span><span class="PUNC">(</span><span class="NAME">targetLength</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">padString</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1116</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1117</span> 
+<span class='line'>1118</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1119</span>      * Same as String.padStart().
+<span class='line'>1120</span>      * @return {string} a string of the specified length with the
+<span class='line'>1121</span>      * pad string applied at the end of the current string
+<span class='line'>1122</span>      */</span><span class="WHIT">
+<span class='line'>1123</span> </span><span class="WHIT">    </span><span class="NAME">padStart</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">targetLength</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">padString</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1124</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.padStart</span><span class="PUNC">(</span><span class="NAME">targetLength</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">padString</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>1125</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>1126</span> 
 <span class='line'>1127</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>1128</span>      * Return an iterator that will step through all of the characters
-<span class='line'>1129</span>      * in the string one at a time and return their code points, taking
-<span class='line'>1130</span>      * care to step through the surrogate pairs in UTF-16 encoding
-<span class='line'>1131</span>      * properly.&lt;p>
-<span class='line'>1132</span>      *
-<span class='line'>1133</span>      * The standard Javascript String's charCodeAt() method only
-<span class='line'>1134</span>      * returns information about a particular 16-bit character in the
-<span class='line'>1135</span>      * UTF-16 encoding scheme.
-<span class='line'>1136</span>      * If the index is pointing to a low- or high-surrogate character,
-<span class='line'>1137</span>      * it will return a code point of the surrogate character rather
-<span class='line'>1138</span>      * than the code point of the character
-<span class='line'>1139</span>      * in the supplementary planes that the two surrogates together
-<span class='line'>1140</span>      * encode.&lt;p>
-<span class='line'>1141</span>      *
-<span class='line'>1142</span>      * The iterator instance returned has two methods, hasNext() which
-<span class='line'>1143</span>      * returns true if the iterator has more code points to iterate through,
-<span class='line'>1144</span>      * and next() which returns the next code point as a number.&lt;p>
-<span class='line'>1145</span>      *
-<span class='line'>1146</span>      * @return {Object} an iterator
-<span class='line'>1147</span>      * that iterates through all the code points in the string
-<span class='line'>1148</span>      */</span><span class="WHIT">
-<span class='line'>1149</span> </span><span class="WHIT">    </span><span class="NAME">iterator</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1150</span> </span><span class="WHIT">        </span><span class="COMM">/**
-<span class='line'>1151</span>          * @constructor
-<span class='line'>1152</span>          */</span><span class="WHIT">
-<span class='line'>1153</span> </span><span class="WHIT">        </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">_iterator</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">istring</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1154</span> </span><span class="WHIT">            </span><span class="NAME">this.index</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1155</span> </span><span class="WHIT">            </span><span class="NAME">this.hasNext</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1156</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.index</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">istring.str.length</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1157</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1158</span> </span><span class="WHIT">            </span><span class="NAME">this.next</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1159</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.index</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">istring.str.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1160</span> </span><span class="WHIT">                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">num</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">istring._toCodePoint</span><span class="PUNC">(</span><span class="NAME">this.index</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1161</span> </span><span class="WHIT">                    </span><span class="NAME">this.index</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">num</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0xFFFF</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1162</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1163</span> </span><span class="WHIT">                    </span><span class="NAME">num</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1164</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1165</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">num</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1166</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1167</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1168</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">_iterator</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1169</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1170</span> 
-<span class='line'>1171</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>1172</span>      * Return an iterator that will step through all of the characters
-<span class='line'>1173</span>      * in the string one at a time, taking
-<span class='line'>1174</span>      * care to step through the surrogate pairs in UTF-16 encoding
-<span class='line'>1175</span>      * properly.&lt;p>
-<span class='line'>1176</span>      *
-<span class='line'>1177</span>      * The standard Javascript String's charAt() method only
-<span class='line'>1178</span>      * returns information about a particular 16-bit character in the
-<span class='line'>1179</span>      * UTF-16 encoding scheme.
-<span class='line'>1180</span>      * If the index is pointing to a low- or high-surrogate character,
-<span class='line'>1181</span>      * it will return that surrogate character rather
-<span class='line'>1182</span>      * than the surrogate pair which represents a character
-<span class='line'>1183</span>      * in the supplementary planes.&lt;p>
-<span class='line'>1184</span>      *
-<span class='line'>1185</span>      * The iterator instance returned has two methods, hasNext() which
-<span class='line'>1186</span>      * returns true if the iterator has more characters to iterate through,
-<span class='line'>1187</span>      * and next() which returns the next character.&lt;p>
-<span class='line'>1188</span>      *
-<span class='line'>1189</span>      * @return {Object} an iterator
-<span class='line'>1190</span>      * that iterates through all the characters in the string
-<span class='line'>1191</span>      */</span><span class="WHIT">
-<span class='line'>1192</span> </span><span class="WHIT">    </span><span class="NAME">charIterator</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1193</span> </span><span class="WHIT">        </span><span class="COMM">/**
-<span class='line'>1194</span>          * @constructor
-<span class='line'>1195</span>          */</span><span class="WHIT">
-<span class='line'>1196</span> </span><span class="WHIT">        </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">_chiterator</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">istring</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1197</span> </span><span class="WHIT">            </span><span class="NAME">this.index</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1198</span> </span><span class="WHIT">            </span><span class="NAME">this.hasNext</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1199</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.index</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">istring.str.length</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1200</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1201</span> </span><span class="WHIT">            </span><span class="NAME">this.next</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1202</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1203</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.index</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">istring.str.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1204</span> </span><span class="WHIT">                    </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">istring.str.charAt</span><span class="PUNC">(</span><span class="NAME">this.index</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1205</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">IString._isSurrogate</span><span class="PUNC">(</span><span class="NAME">ch</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
-<span class='line'>1206</span> </span><span class="WHIT">                            </span><span class="NAME">this.index</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">istring.str.length</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
-<span class='line'>1207</span> </span><span class="WHIT">                            </span><span class="NAME">IString._isSurrogate</span><span class="PUNC">(</span><span class="NAME">istring.str.charAt</span><span class="PUNC">(</span><span class="NAME">this.index</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1208</span> </span><span class="WHIT">                        </span><span class="NAME">this.index</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1209</span> </span><span class="WHIT">                        </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">istring.str.charAt</span><span class="PUNC">(</span><span class="NAME">this.index</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1210</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1211</span> </span><span class="WHIT">                    </span><span class="NAME">this.index</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1212</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1213</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1214</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1215</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1216</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">_chiterator</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1217</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1218</span> 
-<span class='line'>1219</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>1220</span>      * Return the code point at the given index when the string is viewed
-<span class='line'>1221</span>      * as an array of code points. If the index is beyond the end of the
-<span class='line'>1222</span>      * array of code points or if the index is negative, -1 is returned.
-<span class='line'>1223</span>      * @param {number} index index of the code point
-<span class='line'>1224</span>      * @return {number} code point of the character at the given index into
-<span class='line'>1225</span>      * the string
-<span class='line'>1226</span>      */</span><span class="WHIT">
-<span class='line'>1227</span> </span><span class="WHIT">    </span><span class="NAME">codePointAt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">index</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1228</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">index</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1229</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1230</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1231</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">count</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1232</span> </span><span class="WHIT">            </span><span class="NAME">it</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.iterator</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1233</span> </span><span class="WHIT">            </span><span class="NAME">ch</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1234</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">count</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">index</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">count</span><span class="WHIT"> </span><span class="PUNC">>=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">it.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">count</span><span class="PUNC">--</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1235</span> </span><span class="WHIT">            </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">it.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1236</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1237</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">count</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1238</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1239</span> 
-<span class='line'>1240</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>1241</span>      * Set the locale to use when processing choice formats. The locale
-<span class='line'>1242</span>      * affects how number classes are interpretted. In some cultures,
-<span class='line'>1243</span>      * the limit "few" maps to "any integer that ends in the digits 2 to 9" and
-<span class='line'>1244</span>      * in yet others, "few" maps to "any integer that ends in the digits
-<span class='line'>1245</span>      * 3 or 4".
-<span class='line'>1246</span>      * @param {Locale|string} locale locale to use when processing choice
-<span class='line'>1247</span>      * formats with this string
-<span class='line'>1248</span>      * @param {boolean=} sync [optional] whether to load the locale data synchronously
-<span class='line'>1249</span>      * or not
-<span class='line'>1250</span>      * @param {Object=} loadParams [optional] parameters to pass to the loader function
-<span class='line'>1251</span>      * @param {function(*)=} onLoad [optional] function to call when the loading is done
-<span class='line'>1252</span>      */</span><span class="WHIT">
-<span class='line'>1253</span> </span><span class="WHIT">    </span><span class="NAME">setLocale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1254</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1255</span> </span><span class="WHIT">            </span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">locale</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1256</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1257</span> </span><span class="WHIT">            </span><span class="NAME">this.localeSpec</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">locale</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1258</span> </span><span class="WHIT">            </span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1259</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1260</span> 
-<span class='line'>1261</span> </span><span class="WHIT">        </span><span class="NAME">IString.loadPlurals</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">onLoad</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1262</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1263</span> 
-<span class='line'>1264</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>1265</span>      * Return the locale to use when processing choice formats. The locale
-<span class='line'>1266</span>      * affects how number classes are interpretted. In some cultures,
-<span class='line'>1267</span>      * the limit "few" maps to "any integer that ends in the digits 2 to 9" and
-<span class='line'>1268</span>      * in yet others, "few" maps to "any integer that ends in the digits
-<span class='line'>1269</span>      * 3 or 4".
-<span class='line'>1270</span>      * @return {string} localespec to use when processing choice
-<span class='line'>1271</span>      * formats with this string
-<span class='line'>1272</span>      */</span><span class="WHIT">
-<span class='line'>1273</span> </span><span class="WHIT">    </span><span class="NAME">getLocale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1274</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">this.locale.getSpec</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.localeSpec</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">ilib.getLocale</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1275</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1276</span> 
-<span class='line'>1277</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>1278</span>      * Return the number of code points in this string. This may be different
-<span class='line'>1279</span>      * than the number of characters, as the UTF-16 encoding that Javascript
-<span class='line'>1280</span>      * uses for its basis returns surrogate pairs separately. Two 2-byte
-<span class='line'>1281</span>      * surrogate characters together make up one character/code point in
-<span class='line'>1282</span>      * the supplementary character planes. If your string contains no
-<span class='line'>1283</span>      * characters in the supplementary planes, this method will return the
-<span class='line'>1284</span>      * same thing as the length() method.
-<span class='line'>1285</span>      * @return {number} the number of code points in this string
-<span class='line'>1286</span>      */</span><span class="WHIT">
-<span class='line'>1287</span> </span><span class="WHIT">    </span><span class="NAME">codePointLength</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1288</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.cpLength</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1289</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">it</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.iterator</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1290</span> </span><span class="WHIT">            </span><span class="NAME">this.cpLength</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1291</span> </span><span class="WHIT">            </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">it.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1292</span> </span><span class="WHIT">                </span><span class="NAME">this.cpLength</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1293</span> </span><span class="WHIT">                </span><span class="NAME">it.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1294</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1295</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1296</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.cpLength</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1297</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1298</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1299</span> 
-<span class='line'>1300</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1301</span> </span></pre></body></html>
+<span class='line'>1128</span>      * Same as String.repeat().
+<span class='line'>1129</span>      * @return {string} a new string containing the specified number
+<span class='line'>1130</span>      * of copies of the given string
+<span class='line'>1131</span>      */</span><span class="WHIT">
+<span class='line'>1132</span> </span><span class="WHIT">    </span><span class="NAME">repeat</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">count</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1133</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.repeat</span><span class="PUNC">(</span><span class="NAME">count</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1134</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1135</span> 
+<span class='line'>1136</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1137</span>      * Same as String.toLocaleLowerCase(). If the JS engine does not support this
+<span class='line'>1138</span>      * method, you can use the ilib CaseMapper class instead.
+<span class='line'>1139</span>      * @return {string} a new string representing the calling string
+<span class='line'>1140</span>      * converted to lower case, according to any locale-sensitive
+<span class='line'>1141</span>      * case mappings
+<span class='line'>1142</span>      */</span><span class="WHIT">
+<span class='line'>1143</span> </span><span class="WHIT">    </span><span class="NAME">toLocaleLowerCase</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1144</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.toLocaleLowerCase</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1145</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1146</span> 
+<span class='line'>1147</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1148</span>      * Same as String.toLocaleUpperCase(). If the JS engine does not support this
+<span class='line'>1149</span>      * method, you can use the ilib CaseMapper class instead.
+<span class='line'>1150</span>      * @return {string} a new string representing the calling string
+<span class='line'>1151</span>      * converted to upper case, according to any locale-sensitive
+<span class='line'>1152</span>      * case mappings
+<span class='line'>1153</span>      */</span><span class="WHIT">
+<span class='line'>1154</span> </span><span class="WHIT">    </span><span class="NAME">toLocaleUpperCase</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1155</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.toLocaleUpperCase</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1156</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1157</span> 
+<span class='line'>1158</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1159</span>      * Same as String.trim().
+<span class='line'>1160</span>      * @return {string} a new string representing the calling string stripped
+<span class='line'>1161</span>      * of whitespace from both ends.
+<span class='line'>1162</span>      */</span><span class="WHIT">
+<span class='line'>1163</span> </span><span class="WHIT">    </span><span class="NAME">trim</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1164</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.trim</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1165</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1166</span> 
+<span class='line'>1167</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1168</span>      * Same as String.trimEnd().
+<span class='line'>1169</span>      * @return {string} a new string representing the calling string stripped
+<span class='line'>1170</span>      * of whitespace from its (right) end.
+<span class='line'>1171</span>      */</span><span class="WHIT">
+<span class='line'>1172</span> </span><span class="WHIT">    </span><span class="NAME">trimEnd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1173</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.trimEnd</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1174</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1175</span> 
+<span class='line'>1176</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1177</span>      * Same as String.trimRight().
+<span class='line'>1178</span>      * @return {string} a new string representing the calling string stripped
+<span class='line'>1179</span>      * of whitespace from its (right) end.
+<span class='line'>1180</span>      */</span><span class="WHIT">
+<span class='line'>1181</span> </span><span class="WHIT">    </span><span class="NAME">trimRight</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1182</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.trimRight</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1183</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1184</span> 
+<span class='line'>1185</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1186</span>      * Same as String.trimStart().
+<span class='line'>1187</span>      * @return {string} A new string representing the calling string stripped
+<span class='line'>1188</span>      * of whitespace from its beginning (left end).
+<span class='line'>1189</span>      */</span><span class="WHIT">
+<span class='line'>1190</span> </span><span class="WHIT">    </span><span class="NAME">trimStart</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1191</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.trimStart</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1192</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1193</span> 
+<span class='line'>1194</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1195</span>      * Same as String.trimLeft().
+<span class='line'>1196</span>      * @return {string} A new string representing the calling string stripped
+<span class='line'>1197</span>      * of whitespace from its beginning (left end).
+<span class='line'>1198</span>      */</span><span class="WHIT">
+<span class='line'>1199</span> </span><span class="WHIT">    </span><span class="NAME">trimLeft</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1200</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.str.trimLeft</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1201</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1202</span> 
+<span class='line'>1203</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1204</span>      * Convert the character or the surrogate pair at the given
+<span class='line'>1205</span>      * index into the string to a Unicode UCS-4 code point.
+<span class='line'>1206</span>      * @protected
+<span class='line'>1207</span>      * @param {number} index index into the string
+<span class='line'>1208</span>      * @return {number} code point of the character at the
+<span class='line'>1209</span>      * given index into the string
+<span class='line'>1210</span>      */</span><span class="WHIT">
+<span class='line'>1211</span> </span><span class="WHIT">    </span><span class="NAME">_toCodePoint</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">index</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1212</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">IString.toCodePoint</span><span class="PUNC">(</span><span class="NAME">this.str</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">index</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1213</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1214</span> 
+<span class='line'>1215</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1216</span>      * Call the callback with each character in the string one at
+<span class='line'>1217</span>      * a time, taking care to step through the surrogate pairs in
+<span class='line'>1218</span>      * the UTF-16 encoding properly.&lt;p>
+<span class='line'>1219</span>      *
+<span class='line'>1220</span>      * The standard Javascript String's charAt() method only
+<span class='line'>1221</span>      * returns a particular 16-bit character in the
+<span class='line'>1222</span>      * UTF-16 encoding scheme.
+<span class='line'>1223</span>      * If the index to charAt() is pointing to a low- or
+<span class='line'>1224</span>      * high-surrogate character,
+<span class='line'>1225</span>      * it will return the surrogate character rather
+<span class='line'>1226</span>      * than the the character
+<span class='line'>1227</span>      * in the supplementary planes that the two surrogates together
+<span class='line'>1228</span>      * encode. This function will call the callback with the full
+<span class='line'>1229</span>      * character, making sure to join two
+<span class='line'>1230</span>      * surrogates into one character in the supplementary planes
+<span class='line'>1231</span>      * where necessary.&lt;p>
+<span class='line'>1232</span>      *
+<span class='line'>1233</span>      * @param {function(string)} callback a callback function to call with each
+<span class='line'>1234</span>      * full character in the current string
+<span class='line'>1235</span>      */</span><span class="WHIT">
+<span class='line'>1236</span> </span><span class="WHIT">    </span><span class="NAME">forEach</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1237</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1238</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">it</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.charIterator</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1239</span> </span><span class="WHIT">            </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">it.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1240</span> </span><span class="WHIT">                </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="NAME">it.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1241</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1242</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1243</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1244</span> 
+<span class='line'>1245</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1246</span>      * Call the callback with each numeric code point in the string one at
+<span class='line'>1247</span>      * a time, taking care to step through the surrogate pairs in
+<span class='line'>1248</span>      * the UTF-16 encoding properly.&lt;p>
+<span class='line'>1249</span>      *
+<span class='line'>1250</span>      * The standard Javascript String's charCodeAt() method only
+<span class='line'>1251</span>      * returns information about a particular 16-bit character in the
+<span class='line'>1252</span>      * UTF-16 encoding scheme.
+<span class='line'>1253</span>      * If the index to charCodeAt() is pointing to a low- or
+<span class='line'>1254</span>      * high-surrogate character,
+<span class='line'>1255</span>      * it will return the code point of the surrogate character rather
+<span class='line'>1256</span>      * than the code point of the character
+<span class='line'>1257</span>      * in the supplementary planes that the two surrogates together
+<span class='line'>1258</span>      * encode. This function will call the callback with the full
+<span class='line'>1259</span>      * code point of each character, making sure to join two
+<span class='line'>1260</span>      * surrogates into one code point in the supplementary planes.&lt;p>
+<span class='line'>1261</span>      *
+<span class='line'>1262</span>      * @param {function(string)} callback a callback function to call with each
+<span class='line'>1263</span>      * code point in the current string
+<span class='line'>1264</span>      */</span><span class="WHIT">
+<span class='line'>1265</span> </span><span class="WHIT">    </span><span class="NAME">forEachCodePoint</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1266</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1267</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">it</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.iterator</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1268</span> </span><span class="WHIT">            </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">it.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1269</span> </span><span class="WHIT">                </span><span class="NAME">callback</span><span class="PUNC">(</span><span class="NAME">it.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1270</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1271</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1272</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1273</span> 
+<span class='line'>1274</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1275</span>      * Return an iterator that will step through all of the characters
+<span class='line'>1276</span>      * in the string one at a time and return their code points, taking
+<span class='line'>1277</span>      * care to step through the surrogate pairs in UTF-16 encoding
+<span class='line'>1278</span>      * properly.&lt;p>
+<span class='line'>1279</span>      *
+<span class='line'>1280</span>      * The standard Javascript String's charCodeAt() method only
+<span class='line'>1281</span>      * returns information about a particular 16-bit character in the
+<span class='line'>1282</span>      * UTF-16 encoding scheme.
+<span class='line'>1283</span>      * If the index is pointing to a low- or high-surrogate character,
+<span class='line'>1284</span>      * it will return a code point of the surrogate character rather
+<span class='line'>1285</span>      * than the code point of the character
+<span class='line'>1286</span>      * in the supplementary planes that the two surrogates together
+<span class='line'>1287</span>      * encode.&lt;p>
+<span class='line'>1288</span>      *
+<span class='line'>1289</span>      * The iterator instance returned has two methods, hasNext() which
+<span class='line'>1290</span>      * returns true if the iterator has more code points to iterate through,
+<span class='line'>1291</span>      * and next() which returns the next code point as a number.&lt;p>
+<span class='line'>1292</span>      *
+<span class='line'>1293</span>      * @return {Object} an iterator
+<span class='line'>1294</span>      * that iterates through all the code points in the string
+<span class='line'>1295</span>      */</span><span class="WHIT">
+<span class='line'>1296</span> </span><span class="WHIT">    </span><span class="NAME">iterator</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1297</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>1298</span>          * @constructor
+<span class='line'>1299</span>          */</span><span class="WHIT">
+<span class='line'>1300</span> </span><span class="WHIT">        </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">_iterator</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">istring</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1301</span> </span><span class="WHIT">            </span><span class="NAME">this.index</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1302</span> </span><span class="WHIT">            </span><span class="NAME">this.hasNext</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1303</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.index</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">istring.str.length</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1304</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1305</span> </span><span class="WHIT">            </span><span class="NAME">this.next</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1306</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.index</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">istring.str.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1307</span> </span><span class="WHIT">                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">num</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">istring._toCodePoint</span><span class="PUNC">(</span><span class="NAME">this.index</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1308</span> </span><span class="WHIT">                    </span><span class="NAME">this.index</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">num</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0xFFFF</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1309</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1310</span> </span><span class="WHIT">                    </span><span class="NAME">num</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1311</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1312</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">num</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1313</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1314</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1315</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">_iterator</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1316</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1317</span> 
+<span class='line'>1318</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1319</span>      * Return an iterator that will step through all of the characters
+<span class='line'>1320</span>      * in the string one at a time, taking
+<span class='line'>1321</span>      * care to step through the surrogate pairs in UTF-16 encoding
+<span class='line'>1322</span>      * properly.&lt;p>
+<span class='line'>1323</span>      *
+<span class='line'>1324</span>      * The standard Javascript String's charAt() method only
+<span class='line'>1325</span>      * returns information about a particular 16-bit character in the
+<span class='line'>1326</span>      * UTF-16 encoding scheme.
+<span class='line'>1327</span>      * If the index is pointing to a low- or high-surrogate character,
+<span class='line'>1328</span>      * it will return that surrogate character rather
+<span class='line'>1329</span>      * than the surrogate pair which represents a character
+<span class='line'>1330</span>      * in the supplementary planes.&lt;p>
+<span class='line'>1331</span>      *
+<span class='line'>1332</span>      * The iterator instance returned has two methods, hasNext() which
+<span class='line'>1333</span>      * returns true if the iterator has more characters to iterate through,
+<span class='line'>1334</span>      * and next() which returns the next character.&lt;p>
+<span class='line'>1335</span>      *
+<span class='line'>1336</span>      * @return {Object} an iterator
+<span class='line'>1337</span>      * that iterates through all the characters in the string
+<span class='line'>1338</span>      */</span><span class="WHIT">
+<span class='line'>1339</span> </span><span class="WHIT">    </span><span class="NAME">charIterator</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1340</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>1341</span>          * @constructor
+<span class='line'>1342</span>          */</span><span class="WHIT">
+<span class='line'>1343</span> </span><span class="WHIT">        </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">_chiterator</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">istring</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1344</span> </span><span class="WHIT">            </span><span class="NAME">this.index</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1345</span> </span><span class="WHIT">            </span><span class="NAME">this.hasNext</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1346</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.index</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">istring.str.length</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1347</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1348</span> </span><span class="WHIT">            </span><span class="NAME">this.next</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1349</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1350</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.index</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">istring.str.length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1351</span> </span><span class="WHIT">                    </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">istring.str.charAt</span><span class="PUNC">(</span><span class="NAME">this.index</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1352</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">IString._isSurrogate</span><span class="PUNC">(</span><span class="NAME">ch</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>1353</span> </span><span class="WHIT">                            </span><span class="NAME">this.index</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">istring.str.length</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>1354</span> </span><span class="WHIT">                            </span><span class="NAME">IString._isSurrogate</span><span class="PUNC">(</span><span class="NAME">istring.str.charAt</span><span class="PUNC">(</span><span class="NAME">this.index</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1355</span> </span><span class="WHIT">                        </span><span class="NAME">this.index</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1356</span> </span><span class="WHIT">                        </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">istring.str.charAt</span><span class="PUNC">(</span><span class="NAME">this.index</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1357</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1358</span> </span><span class="WHIT">                    </span><span class="NAME">this.index</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1359</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1360</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1361</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1362</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1363</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">_chiterator</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1364</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1365</span> 
+<span class='line'>1366</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1367</span>      * Return the code point at the given index when the string is viewed
+<span class='line'>1368</span>      * as an array of code points. If the index is beyond the end of the
+<span class='line'>1369</span>      * array of code points or if the index is negative, -1 is returned.
+<span class='line'>1370</span>      * @param {number} index index of the code point
+<span class='line'>1371</span>      * @return {number} code point of the character at the given index into
+<span class='line'>1372</span>      * the string
+<span class='line'>1373</span>      */</span><span class="WHIT">
+<span class='line'>1374</span> </span><span class="WHIT">    </span><span class="NAME">codePointAt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">index</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1375</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">index</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1376</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1377</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1378</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">count</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1379</span> </span><span class="WHIT">            </span><span class="NAME">it</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.iterator</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1380</span> </span><span class="WHIT">            </span><span class="NAME">ch</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1381</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">count</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">index</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">count</span><span class="WHIT"> </span><span class="PUNC">>=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">it.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">count</span><span class="PUNC">--</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1382</span> </span><span class="WHIT">            </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">it.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1383</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1384</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">count</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1385</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1386</span> 
+<span class='line'>1387</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1388</span>      * Set the locale to use when processing choice formats. The locale
+<span class='line'>1389</span>      * affects how number classes are interpretted. In some cultures,
+<span class='line'>1390</span>      * the limit "few" maps to "any integer that ends in the digits 2 to 9" and
+<span class='line'>1391</span>      * in yet others, "few" maps to "any integer that ends in the digits
+<span class='line'>1392</span>      * 3 or 4".
+<span class='line'>1393</span>      * @param {Locale|string} locale locale to use when processing choice
+<span class='line'>1394</span>      * formats with this string
+<span class='line'>1395</span>      * @param {boolean=} sync [optional] whether to load the locale data synchronously
+<span class='line'>1396</span>      * or not
+<span class='line'>1397</span>      * @param {Object=} loadParams [optional] parameters to pass to the loader function
+<span class='line'>1398</span>      * @param {function(*)=} onLoad [optional] function to call when the loading is done
+<span class='line'>1399</span>      */</span><span class="WHIT">
+<span class='line'>1400</span> </span><span class="WHIT">    </span><span class="NAME">setLocale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1401</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1402</span> </span><span class="WHIT">            </span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1403</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1404</span> </span><span class="WHIT">            </span><span class="NAME">this.localeSpec</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1405</span> </span><span class="WHIT">            </span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">(</span><span class="NAME">locale</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1406</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1407</span> 
+<span class='line'>1408</span> </span><span class="WHIT">        </span><span class="NAME">IString.loadPlurals</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.locale</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadParams</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">onLoad</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1409</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1410</span> 
+<span class='line'>1411</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1412</span>      * Return the locale to use when processing choice formats. The locale
+<span class='line'>1413</span>      * affects how number classes are interpretted. In some cultures,
+<span class='line'>1414</span>      * the limit "few" maps to "any integer that ends in the digits 2 to 9" and
+<span class='line'>1415</span>      * in yet others, "few" maps to "any integer that ends in the digits
+<span class='line'>1416</span>      * 3 or 4".
+<span class='line'>1417</span>      * @return {string} localespec to use when processing choice
+<span class='line'>1418</span>      * formats with this string
+<span class='line'>1419</span>      */</span><span class="WHIT">
+<span class='line'>1420</span> </span><span class="WHIT">    </span><span class="NAME">getLocale</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1421</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.locale</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">this.locale.getSpec</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.localeSpec</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">ilib.getLocale</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1422</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1423</span> 
+<span class='line'>1424</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1425</span>      * Return the number of code points in this string. This may be different
+<span class='line'>1426</span>      * than the number of characters, as the UTF-16 encoding that Javascript
+<span class='line'>1427</span>      * uses for its basis returns surrogate pairs separately. Two 2-byte
+<span class='line'>1428</span>      * surrogate characters together make up one character/code point in
+<span class='line'>1429</span>      * the supplementary character planes. If your string contains no
+<span class='line'>1430</span>      * characters in the supplementary planes, this method will return the
+<span class='line'>1431</span>      * same thing as the length() method.
+<span class='line'>1432</span>      * @return {number} the number of code points in this string
+<span class='line'>1433</span>      */</span><span class="WHIT">
+<span class='line'>1434</span> </span><span class="WHIT">    </span><span class="NAME">codePointLength</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1435</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.cpLength</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1436</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">it</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.iterator</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1437</span> </span><span class="WHIT">            </span><span class="NAME">this.cpLength</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1438</span> </span><span class="WHIT">            </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">it.hasNext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1439</span> </span><span class="WHIT">                </span><span class="NAME">this.cpLength</span><span class="PUNC">++</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1440</span> </span><span class="WHIT">                </span><span class="NAME">it.next</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1441</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1442</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1443</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.cpLength</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1444</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1445</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1446</span> 
+<span class='line'>1447</span> </span><span class="NAME">Object.defineProperty</span><span class="PUNC">(</span><span class="NAME">IString</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'length'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1448</span> </span><span class="WHIT">    </span><span class="NAME">get</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1449</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this._length</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1450</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1451</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1452</span> 
+<span class='line'>1453</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">IString</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1454</span> </span></pre></body></html>
