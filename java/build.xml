@@ -57,6 +57,8 @@ limitations under the License.
 	<property name="build.javadoc"					value="${build.output}/javadoc"/>
 	<property name="build.config"					value="config"/>
 	<property name="log4j.config.file"				value="${build.config}/log4j.properties"/>
+    <property name="build.docs"                     value="${build.base}/../docs"/>
+    <property name="build.apidocs"                  value="${build.docs}/api/javadoc"/>
 	
 	<property name="jar.ilib"					    value="ilib-${version}-tools.jar"/>
 
@@ -106,6 +108,7 @@ limitations under the License.
 		<delete dir="${build.classes}"/>
 		<delete dir="${build.output}"/>
 		<delete dir="${build.data}"/>
+		<delete dir="${build.apidocs}"/>
 	</target>
 
 	<target name="prepare" description="Prepare all directories that are needed before the project can be built">
@@ -374,4 +377,17 @@ limitations under the License.
 			<link href="http://java.sun.com/j2se/1.4/docs/api/"/>
 		</javadoc>
 	</target>
+
+    <target name="apidocs"
+            depends="doc"
+            description="Updates the API docs">
+        <mkdir dir="${build.apidocs}"/>
+        <copy todir="${build.apidocs}">
+            <fileset dir="${build.javadoc}">
+                <include name="**/package-list"/>
+                <include name="**/*.html"/>
+                <include name="**/*.css"/>
+            </fileset>
+        </copy>
+    </target>
 </project>

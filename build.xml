@@ -130,6 +130,11 @@ limitations under the License.
 		<iterate target="doc"/>
 	</target>
 
+    <target name="apidocs" description="Update the api docs for github pages">
+        <subant target="apidocs" buildpath="java"/>
+        <subant target="apidocs" buildpath="js"/>
+    </target>
+
 	<target name="deps" description="Install dependencies for travis-ci">
 		<!-- nothing yet -->
 	</target>

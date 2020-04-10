@@ -32,7 +32,7 @@ limitations under the License.
 	<property name="build.export"					value="${build.base}/../export"/>
 	<property name="build.docs"                     value="${build.base}/../docs"/>
 	<property name="build.demo"						value="${build.docs}/demo"/>
-	<property name="build.apidocs"                  value="${build.docs}/api"/>
+	<property name="build.apidocs"                  value="${build.docs}/api/jsdoc"/>
 	<property name="build.tools"					value="${build.base}/../tools"/>
 	<property name="build.tools.qmlizer"			value="${build.base}/../tools/qmlizer"/>
 	<property name="build.tools.build"				value="${build.base}/../tools/build"/>
@@ -114,6 +114,7 @@ limitations under the License.
 		<delete file="${build.test}/nodeunit/nodeunit-qml.jsc"/>
 		<delete file="${build.lib}/ilib-qt.jsc"/>
 		<delete dir="${build.locale}"/>
+		<delete dir="${build.apidocs}"/>
 	</target>
 	<target name="prepare" depends="update.package.json" description="Prepare all directories that are needed before the project can be built">
 		<mkdir dir="${build.output.js}"/>
