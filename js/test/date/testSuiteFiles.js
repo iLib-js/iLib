@@ -18,6 +18,7 @@
  */
 
 module.exports.files = [
+    "testdateparser.js",
     "testclock.js",
     "testcalendar.js",
     "testdate.js",
