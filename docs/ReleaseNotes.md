@@ -9,6 +9,7 @@ New Features:
 
 Bug Fixes:
 * Updated to IANA time zone data 2020a
+* Put base option back on ResBundle
 
 Build 009
 -------
