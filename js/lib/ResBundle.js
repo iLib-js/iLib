@@ -250,8 +250,12 @@ var ResBundle = function (options) {
 
         if (typeof(options.loadParams) !== 'undefined') {
             this.loadParams = options.loadParams;
-            if (typeof (options.loadParams.root) !== 'undefined') {
-                this.path = options.loadParams.root;
+            if (!this.path) {
+                if (typeof (options.loadParams.root) !== 'undefined') {
+                    this.path = options.loadParams.root;
+                } else if (typeof (options.loadParams.base) !== 'undefined') {
+                    this.path = options.loadParams.base;
+                }
             }
         }
         if (typeof(options.missing) !== 'undefined') {
