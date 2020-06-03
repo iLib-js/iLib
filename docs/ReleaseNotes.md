@@ -66,6 +66,7 @@ part of the locale specifier if it has a very common/default value
     * For languages that are written in multiple scripts, but where one is dominant, the script is only included when it is not the default/dominant one
     * Most languages are only ever written in one script, so the script is left out
 * Updated the script info to UCD 12.0.0, and the likely locale info to CLDR 35.1
+* Added source maps to the npm package so that you can debug into the original ilib code easily
 
 Bug Fixes:
 * Fixed unit test failures which occur on QT 5.12

@@ -98,6 +98,10 @@ module.exports = function(env, args) {
                     loader: 'ilib-webpack-loader',
                     options: options
                 }
+            },{
+                test: /\.js$/,
+                use: ["source-map-loader"],
+                enforce: "pre"
             }]
         },
         plugins: [
@@ -125,6 +129,7 @@ module.exports = function(env, args) {
         ret.plugins.splice(0, 0, new UglifyJsPlugin({
             cache: true,
             parallel: 4,
+            sourceMap: true,
             uglifyOptions: {
                 compress: true,
                 warnings: true

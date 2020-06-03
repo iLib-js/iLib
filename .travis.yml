@@ -18,7 +18,7 @@ install:
   - rm -rf node_modules
   - npm install
   - export PATH=$PWD/node_modules/.bin:$PATH
-  - export NODE_OPTIONS="--max-old-space-size=3072"
+  - export NODE_OPTIONS="--max-old-space-size=4096"
   - export TZ=America/Los_Angeles
 script:
   # [Error] module QtQuick is not installed

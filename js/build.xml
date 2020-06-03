@@ -24,7 +24,7 @@ limitations under the License.
 	<property file="../build.properties"/>
 	<property file="build.properties"/>
 	<property environment="env"/>
-	
+
 	<!-- Properties that can be overridden -->
 	<!-- directories -->
 	<property name="build.base"						value="${basedir}"/>
@@ -42,6 +42,7 @@ limitations under the License.
 	<property name="build.output.js"				value="${build.output}/js"/>
 	<property name="build.output.dyncode"			value="${build.output}/dyncode"/>
 	<property name="build.output.test"				value="${build.output}/test"/>
+	<property name="build.output.package"           value="${build.output}/package"/>
 	<property name="build.jsdoc"					value="${build.output}/jsdoc"/>
 	<property name="build.data"						value="${build.base}/data"/>
 	<property name="build.test"						value="${build.base}/test"/>
@@ -119,8 +120,8 @@ limitations under the License.
 	<target name="prepare" depends="update.package.json" description="Prepare all directories that are needed before the project can be built">
 		<mkdir dir="${build.output.js}"/>
 		<mkdir dir="${build.output.dyncode}"/>
+		<mkdir dir="${build.output.package}/lib"/>
 		<mkdir dir="${build.output.test}"/>
-		
 	</target>
 	<!-- =================================================================== -->
 	<!-- Create the core jar file                                            -->
@@ -135,7 +136,7 @@ limitations under the License.
 		<sequential>
 		    <echo>executing webpack</echo>
 			<exec osfamily="unix" executable="webpack-cli" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-				<env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
+				<env key="NODE_OPTIONS" value="--max-old-space-size=${webpack.heap.size}"/>
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
 				<arg value="--env.compilation=@{compilation}"/>
@@ -146,7 +147,7 @@ limitations under the License.
                 <arg value="--mode=@{mode}"/>
 			</exec>
 			<exec osfamily="windows" executable="webpack-cli.bat" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
-				<env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
+				<env key="NODE_OPTIONS" value="--max-old-space-size=${webpack.heap.size}"/>
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
 				<arg value="--env.compilation=@{compilation}"/>
@@ -292,102 +293,38 @@ limitations under the License.
 	<target name="assemble.demo" depends="assemble.demo.assembled,assemble.demo.dyndata"/>
 
 	<target name="assemble.dynamic" depends="prepare,gen.manifest.locale" description="compresses/minifies the dynamic load code files">
-		<!-- handle ilib.js as a special case so we can replace the version number in it -->
-		<copy file="${build.lib}/ilib.js" toFile="${build.output.js}/ilib.js" verbose="true"/>
-		<replace token="// !macro ilibVersion" value='"${version}"' preserveLastModified="true">
-		    <fileset dir="${build.output.js}" includes="ilib.js"/>
-		</replace>
-		<exec osfamily="unix" executable="uglifyjs" dir="${build.base}" failifexecutionfails="true">
-            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-			<arg value="${build.output.js}/ilib.js"/>
-            <arg value="--comments"/>
-            <arg value="${keep.these.comments}"/>
-			<arg value="-o"/>
-			<arg value="${build.output.dyncode}/ilib.js"/>
-			<arg value="--no-mangle-functions"/>
-            <arg value="-c"/>
-			<arg value="-v"/>
-		</exec>
-		<exec osfamily="windows" executable="uglifyjs" dir="${build.base}" failifexecutionfails="true">
-            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-			<arg value="${build.output.js}/ilib.js"/>
-            <arg value="--comments"/>
-            <arg value="${keep.these.comments}"/>
-            <arg value="-o"/>
-			<arg value="${build.output.dyncode}/ilib.js"/>
-			<arg value="--no-mangle-functions"/>
-            <arg value="-c"/>
-			<arg value="-v"/>
-		</exec>
-		<exec osfamily="unix" executable="node" dir="${build.base}" failifexecutionfails="true">
-            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
-			<arg value="${build.output.dyncode}/ilib.js"/>
-			<arg value="${build.output.dyncode}/ilib.js"/>
-		</exec>
-		<exec osfamily="windows" executable="node.exe" dir="${build.base}" failifexecutionfails="true">
-            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
-			<arg value="${build.output.dyncode}/ilib.js"/>
-			<arg value="${build.output.dyncode}/ilib.js"/>
-		</exec>
+        <exec osfamily="unix" executable="grunt" dir="${build.base}" failifexecutionfails="true" failonerror="true">
+            <arg value="uglifypkg"/>
+        </exec>
+        <exec osfamily="windows" executable="grunt.bat" dir="${build.base}" failifexecutionfails="true"  failonerror="true">
+            <arg value="uglifypkg"/>
+        </exec>
 
-		<!-- then do all the rest of them -->
-		<apply osfamily="unix" executable="uglifyjs" dest="${build.output.dyncode}" parallel="false">
+		<copy todir="${build.output.package}">
+			<dirset dir="${build.output.dyncode}" includes="**"/>
+			<fileset dir="${build.output.dyncode}">
+                <include name="**/*.map"/>
+				<include name="lib/ilib.js"/>
+				<include name="src/**/*.js"/>
+            </fileset>
+		</copy>
+
+		<apply osfamily="unix" executable="node" dest="${build.output.package}" parallel="false" force="true">
+			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
 			<srcfile/>
-			<arg value="--comments"/>
-			<arg value="${keep.these.comments}"/>
-            <arg value="-o"/>
 			<targetfile/>
-			<arg value="--no-mangle-functions"/>
-            <arg value="-c"/>
-			<arg value="-v"/>
-            <fileset dir="${build.lib}">
-                <include name="*.js"/>
-                <exclude name="ilib.js"/>
-                <exclude name="ilib-*.js"/>
-                <exclude name="externs.js"/>
-                <exclude name="datefmtstr.js"/>
-            </fileset>
-            <fileset dir="${build.lib}">
-                <include name="ilib-node*"/>
-                <include name="ilib-qt*"/>
-                <include name="ilib-webpack*"/>
-                <include name="ilib-unpack.js"/>
-                <include name="ilib-web.js"/>
-            </fileset>
-            <fileset dir="${build.base}">
+            <fileset dir="${build.output.dyncode}">
                 <include name="index.js"/>
-            </fileset>
+                <include name="lib/**/*.js"/>
+                <exclude name="lib/ilib.js"/>
+			</fileset>
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
-		<apply osfamily="windows" executable="uglifyjs.bat" dest="${build.output.dyncode}" parallel="false">
-			<srcfile/>
-            <arg value="--comments"/>
-            <arg value="${keep.these.comments}"/>
-            <arg value="-o"/>
-			<targetfile/>
-			<arg value="--no-mangle-functions"/>
-			<arg value="-c"/>
-			<arg value="-v"/>
-			<fileset dir="${build.lib}" includes="*.js"  excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
-			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-webpack.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
-			<mapper type="glob" from="*.js" to="*.js"/>
-		</apply>
-		<apply osfamily="unix" executable="node" dest="${build.output.dyncode}" parallel="false" force="true">
+		<apply osfamily="windows" executable="node.exe" dest="${build.output.package}" parallel="false" force="true">
 			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
 			<srcfile/>
 			<targetfile/>
-			<fileset dir="${build.output.dyncode}" includes="*.js" excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
-			<fileset dir="${build.output.dyncode}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
-			<mapper type="glob" from="*.js" to="*.js"/>
-		</apply>
-		<apply osfamily="windows" executable="node.exe" dest="${build.output.dyncode}" parallel="false" force="true">
-			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
-			<srcfile/>
-			<targetfile/>
-			<fileset dir="${build.output.dyncode}" includes="*.js" excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
-			<fileset dir="${build.output.dyncode}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+			<fileset dir="${build.output.dyncode}" includes="**/*.js" excludes="ilib.js"/>
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
 	</target>
@@ -406,25 +343,26 @@ limitations under the License.
 	<target name="dist" depends="update.package.json,assemble.core,assemble.standard,assemble.full,assemble.dynamic,doc" description="Create all distribution objects and exports them to the top level dir for packaging">
 		<mkdir dir="${build.export}/js/assembled"/>
 		<copy todir="${build.export}/js/assembled">
-			<fileset dir="${build.output.js}">
-				<include name="core-assembled-uncompiled-web/*.js"/>
-				<include name="core-assembled-compiled-web/*.js"/>
-				<include name="standard-assembled-uncompiled-web/*.js"/>
-				<include name="standard-assembled-compiled-web/*.js"/>
-				<include name="full-assembled-uncompiled-web/*.js"/>
-				<include name="full-assembled-compiled-web/*.js"/>
-				<include name="core-dynamicdata-uncompiled-web/*.js"/>
-				<include name="core-dynamicdata-compiled-web/*.js"/>
-				<include name="standard-dynamicdata-uncompiled-web/*.js"/>
-				<include name="standard-dynamicdata-compiled-web/*.js"/>
-				<include name="full-dynamicdata-uncompiled-web/*.js"/>
-				<include name="full-dynamicdata-compiled-web/*.js"/>
-			</fileset>
+            <fileset dir="${build.output.js}">
+                <include name="core-assembled-uncompiled-web/*.js"/>
+                <include name="core-assembled-compiled-web/*.js"/>
+                <include name="standard-assembled-uncompiled-web/*.js"/>
+                <include name="standard-assembled-compiled-web/*.js"/>
+                <include name="full-assembled-uncompiled-web/*.js"/>
+                <include name="full-assembled-compiled-web/*.js"/>
+                <include name="core-dynamicdata-uncompiled-web/*.js"/>
+                <include name="core-dynamicdata-compiled-web/*.js"/>
+                <include name="standard-dynamicdata-uncompiled-web/*.js"/>
+                <include name="standard-dynamicdata-compiled-web/*.js"/>
+                <include name="full-dynamicdata-uncompiled-web/*.js"/>
+                <include name="full-dynamicdata-compiled-web/*.js"/>
+            </fileset>
 		</copy>
 		<mkdir dir="${build.export}/js/dyncode"/>
 		<copy todir="${build.export}/js/dyncode">
-			<fileset dir="${build.output.dyncode}">
+			<fileset dir="${build.output.package}">
 				<include name="**/*.js"/>
+				<include name="**/*.js.map"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/doc/jsdoc"/>
@@ -437,7 +375,7 @@ limitations under the License.
 		<copy todir="${build.export}/src/js">
 			<fileset dir="${build.base}">
 				<include name="lib/**"/>
-				<include name="index.js"/>
+				<include name="index.js*"/>
 				<include name="build.xml"/>
 				<include name="build.properties"/>
 				<include name="data/locale/**/*.json"/>
@@ -457,31 +395,14 @@ limitations under the License.
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/package/lib"/>
-		<copy todir="${build.export}/package/lib">
+		<copy todir="${build.export}/package">
 			<fileset dir="${build.export}/js/dyncode">
 				<include name="**/*"/>
-				<exclude name="*Loader.js"/>
-				<exclude name="ilib-web.js"/>
-				<exclude name="ilib-qt.js"/>
-				<exclude name="ilib-rhino.js"/>
-				<exclude name="ilib-enyo.js"/>
-				<exclude name="index.js"/>
-            </fileset>
-            <fileset dir="${build.export}/js/dyncode">
-                <include name="Loader.js"/>
-                <include name="RhinoLoader.js"/>
-                <include name="WebpackLoader.js"/>
-                <include name="NodeLoader.js"/>
             </fileset>
 			<fileset dir="${build.export}/js/assembled">
 				<include name="ilib-full-dyn.js"/>
 				<include name="ilib-full-dyn-compiled.js"/>
 			</fileset>
-		</copy>
-		<copy todir="${build.export}/package">
-            <fileset dir="${build.export}/js/dyncode">
-                <include name="index.js"/>
-            </fileset>
 		</copy>
 		<copy todir="${build.export}/package/locale">
 			<fileset dir="${build.locale}">
@@ -529,11 +450,11 @@ limitations under the License.
             <echo>Executing webpack</echo>
             <exec osfamily="unix" executable="webpack-cli" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=${webpack.heap.size}"/>
             </exec>
             <exec osfamily="windows" executable="webpack-cli.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=${webpack.heap.size}"/>
             </exec>
         </sequential>
     </target>
@@ -542,11 +463,11 @@ limitations under the License.
             <echo>Executing webpack</echo>
             <exec osfamily="unix" executable="webpack-cli" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=${webpack.heap.size}"/>
             </exec>
             <exec osfamily="windows" executable="webpack-cli.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=${webpack.heap.size}"/>
             </exec>
         </sequential>
     </target>
