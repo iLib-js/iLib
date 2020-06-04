@@ -33,7 +33,7 @@ function usage() {
         "-h or --help\n" +
         "  this help\n" +
         "locale_data_dir\n" +
-    "  the top level of the ilib locale data directory\n");
+    "  the top level of the ilib locale data directory");
     process.exit(1);
 }
 

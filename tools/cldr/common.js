@@ -732,12 +732,12 @@ exports.mergeAndPrune = function mergeAndPrune(localeData) {
             localeData.merged = localeData.data;
         }
         for (var prop in localeData) {
-            // console.log("merging " + prop + "\n");
+            // console.log("merging " + prop);
             if (prop && typeof(localeData[prop]) !== 'undefined' && prop !== 'data' && prop !== 'merged') {
                 // console.log(prop + " ");
                 localeData[prop].merged = exports.merge(localeData.merged || {}, localeData[prop].data || {});
                 localeData[prop].data = exports.prune(localeData.merged || {}, localeData[prop].data || {});
-                // console.log("recursing\n");
+                // console.log("recursing");
                 exports.mergeAndPrune(localeData[prop]);
             }
         }
@@ -930,7 +930,7 @@ exports.Trie = function () {
  * @param {Object} to
  */
 exports.Trie.prototype.add = function(from, to) {
-    //console.log("from length is " + from.length + "\n");
+    //console.log("from length is " + from.length);
     var trienode = this.nodes;
     var dest = new TrieNode(to);
 
@@ -938,7 +938,7 @@ exports.Trie.prototype.add = function(from, to) {
         switch (typeof(trienode[from[j]])) {
             case 'number':
             case 'string':
-                //console.log("existing leaf node " + from[j] + "\n");
+                //console.log("existing leaf node " + from[j]);
                 // context-sensitive?
                 var temp = {
                     "__leaf": trienode[from[j]]
@@ -948,7 +948,7 @@ exports.Trie.prototype.add = function(from, to) {
 
             case 'object':
                 if (trienode[from[j]] instanceof TrieNode) {
-                    //console.log("existing leaf node " + from[j] + "\n");
+                    //console.log("existing leaf node " + from[j]);
                     // context-sensitive? We have more to add, but
                     // there is a leaf here already. Push it down as
                     // a leaf and go on.
@@ -960,7 +960,7 @@ exports.Trie.prototype.add = function(from, to) {
                 break;
 
             case 'undefined':
-                //console.log("new node " + from[j] + "\n");
+                //console.log("new node " + from[j]);
                 trienode[from[j]] = {};
                 break;
         }
@@ -968,13 +968,13 @@ exports.Trie.prototype.add = function(from, to) {
         trienode = trienode[from[j]];
     }
 
-    //console.log("setting node " + from[j] + " to " + to + "\n");
+    //console.log("setting node " + from[j] + " to " + to);
     if (!exports.isEmpty(trienode[from[j]])) {
-        //console.log("Add existing node leaf " + from[j] + "\n");
+        //console.log("Add existing node leaf " + from[j]);
         // context-sensitive?
         trienode[from[j]].__leaf = dest;
     } else {
-        //console.log("Adding new node " + from[j] + "\n");
+        //console.log("Adding new node " + from[j]);
         trienode[from[j]] = dest;
     }
 };

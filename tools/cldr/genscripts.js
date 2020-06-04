@@ -42,7 +42,7 @@ function usage() {
 			"  path to the Unicode Character Database files downloaded from the Unicode site\n" +
 			"  i.e) https://unicode.org/Public/13.0.0/ucd/ \n" +
 			"toDir\n" +
-			"  directory to output the normalization json files. Default: current dir.\n");
+			"  directory to output the normalization json files. Default: current dir.");
 	process.exit(1);
 }
 

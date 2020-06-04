@@ -2,7 +2,7 @@
  * reversectry.js - ilib tool to generate the ctryreverse.json from 
  * ctrynames.json files for LG specific country data
  *
- * Copyright © 2017, LGE
+ * Copyright © 2017, 2020 LGE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ function usage() {
 		"-h or --help\n" +
 		"  this help\n" +
 		"source_dir\n" +
-		'  Where to find json files to compress. Default "."\n');
+		'  Where to find json files to compress. Default "."');
 	process.exit(1);
 }
 
@@ -46,12 +46,12 @@ if (process.argv.length > 2) {
 
 fs.exists(sourcedir, function (exists) {
 	if (!exists) {
-		console.log("Could not access source directory " + sourcedir + "\n");
+		console.log("Could not access source directory " + sourcedir );
 		usage();
 	}
 });
 
-console.log("source dir: " + sourcedir + "\n");
+console.log("source dir: " + sourcedir );
 
 function walk(root, dir) {
 	var reverse = {};
@@ -81,7 +81,7 @@ function walk(root, dir) {
 						}
 					} catch (err) {
 						console.log("File " + sourcePath + " is not readable or does not contain valid JSON.\n");
-						console.log(err + "\n");
+						console.log(err );
 						process.exit(2);
 					}
 				}

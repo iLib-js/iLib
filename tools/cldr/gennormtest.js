@@ -2,7 +2,7 @@
  * gennormtest.js - ilib tool to generate the UNA normalization test data from the Unicode 
  * data files
  * 
- * Copyright © 2012 - 2015, JEDLSoft
+ * Copyright © 2012-2015, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,21 +23,20 @@
  */
 
 var fs = require('fs');
-var util = require('util');
 var unifile = require('./unifile.js');
 var UnicodeFile = unifile.UnicodeFile;
 var common = require('./common.js');
 var fromCodePoint = common.codePointToUTF16;
 
 function usage() {
-	util.print("Usage: gennormtest [-h] NormalizationTest.txt [toDir]\n" +
+	console.log("Usage: gennormtest [-h] NormalizationTest.txt [toDir]\n" +
 			"Generate the normalization test data.\n\n" +
 			"-h or --help\n" +
 			"  this help\n" +
 			"NormalizationTest.txt\n" +
 			"  the normalization test data from the Unicode character database\n" +
 			"toDir\n" +
-			"  directory to output the output files. Default: current dir.\n");
+			"  directory to output the output files. Default: current dir.");
 	process.exit(1);
 }
 
@@ -60,7 +59,7 @@ process.argv.forEach(function (val, index, array) {
 });
 
 if (process.argv.length < 3) {
-	util.error('Error: not enough arguments');
+	console.error('Error: not enough arguments');
 	usage();
 }
 
@@ -69,19 +68,19 @@ if (process.argv.length > 3) {
 	toDir = process.argv[3];
 }
 
-util.print("gennorm - generate normalization test data.\n" +
-		"Copyright (c) 2013 JEDLSoft\n");
+console.log("gennorm - generate normalization test data.\n" +
+		"Copyright (c) 2013 JEDLSoft");
 
 fs.exists(unicodeFileName, function (exists) {
 	if (!exists) {
-		util.error("Could not access file " + unicodeFileName);
+		console.error("Could not access file " + unicodeFileName);
 		usage();
 	}
 });
 
 fs.exists(toDir, function (exists) {
 	if (!exists) {
-		util.error("Could not access target directory " + toDir);
+		console.error("Could not access target directory " + toDir);
 		usage();
 	}
 });

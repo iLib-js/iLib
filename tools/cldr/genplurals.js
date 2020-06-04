@@ -36,7 +36,7 @@ function usage() {
         "-h or --help\n" +
         "  this help\n" +
         "toDir\n" +
-        "  directory to output the plurals.json files\n");
+        "  directory to output the plurals.json files");
     process.exit(1);
 }
 

@@ -1,7 +1,7 @@
 /* 
  * mkmf.js - ilib tool to create the manifest file for locale data
  *
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,12 +25,12 @@ var common = require('../cldr/common');
 var path = require('../../js/lib/Path.js');
 
 function usage() {
-	util.print("Usage: mkmf.js [-h] source_dir\n" +
+	console.log("Usage: mkmf.js [-h] source_dir\n" +
 		"Create an ilibmanifest.json file out of the existing locale data.\n\n" +
 		"-h or --help\n" +
 		"  this help\n" +
 		"source_dir\n" +
-		'  Dir to scan. Default "."\n');
+		'  Dir to scan. Default "."');
 	process.exit(1);
 }
 
@@ -46,12 +46,12 @@ if (process.argv.length > 2) {
 
 fs.exists(sourcedir, function (exists) {
 	if (!exists) {
-		util.print("Could not access directory " + sourcedir + "\n");
+		console.log("Could not access directory " + sourcedir);
 		usage();
 	}
 });
 
-util.print("source dir: " + sourcedir + "\n");
+console.log("source dir: " + sourcedir);
 
 var manifest = {
 	files: []
@@ -77,9 +77,9 @@ walk(sourcedir, "");
 
 try {
 	var targetPath = path.join(sourcedir, "ilibmanifest.json");
-	util.print("Writing " + targetPath + "\n");
+	console.log("Writing " + targetPath);
 	fs.writeFileSync(targetPath, JSON.stringify(manifest), 'utf8');
 } catch (err) {
-	util.print("Could not write target manifest file: " + targetPath + "\n");
-	util.print(err + "\n");
+	console.log("Could not write target manifest file: " + targetPath);
+	console.log(err);
 }

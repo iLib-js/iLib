@@ -1,7 +1,7 @@
 /*
  * genDayofWeek.js - ilib tool to generate the json data about day of the week
  *
- * Copyright © 2013-2018, JEDLSoft
+ * Copyright © 2013-2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,11 +64,11 @@ if (!fs.existsSync(toDir)) {
 var dayProperties = {"sun":0, "mon":1, "tue":2, "wed":3, "thu":4, "fri":5, "sat":6};
 var firstDayOfWeekData = supplementalData.supplemental.weekData.firstDay;
 var fstOfWeek = {};
-//util.print("data is "+ JSON.stringify(firstDayOfWeekData));
+//console.log("data is "+ JSON.stringify(firstDayOfWeekData));
 for (var locale in firstDayOfWeekData) {
 	var filename;
-	//util.print("day of the week is :"+locale+"\n");
-	//util.print("firstDayOfWeekData  is "+firstDayOfWeekData[locale]);
+	//console.log("day of the week is :"+locale);
+	//console.log("firstDayOfWeekData  is "+firstDayOfWeekData[locale]);
 	if (locale && firstDayOfWeekData[locale]) {
 		if (locale.length < 9) {
 			if (locale == "001") {

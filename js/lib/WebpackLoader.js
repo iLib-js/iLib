@@ -1,7 +1,7 @@
 /*
  * WebpackLoader.js - Loader implementation for webpack'ed ilib on the web
  *
- * Copyright © 2018, JEDLSoft
+ * Copyright © 2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,7 +54,7 @@ function loadLocaleData(ilib, locale, callback) {
  */
 module.exports = function (ilib) {
     var WebpackLoader = function (ilib) {
-        // util.print("new common WebpackLoader instance\n");
+        // console.log("new common WebpackLoader instance");
 
         this.parent.call(this, ilib);
         this.ilib = ilib;

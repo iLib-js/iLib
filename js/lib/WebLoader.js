@@ -31,7 +31,7 @@ var Locale = require("./Locale.js");
  * @private
  */
 var WebLoader = function(ilib, sync, onLoad) {
-    //console.log("new WebLoader instance\n");
+    //console.log("new WebLoader instance");
 
     this.parent.call(this, ilib);
 

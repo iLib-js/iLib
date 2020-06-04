@@ -41,7 +41,7 @@ function usage() {
         "UCD_dir\n" +
         "  path to the Unicode Character Database files \n" +
         "toDir\n" +
-        "  directory to output the normalization json files. Default: current dir.\n");
+        "  directory to output the normalization json files. Default: current dir.");
     process.exit(1);
 }
 
@@ -72,7 +72,7 @@ if (process.argv.length > 3) {
 }
 
 console.log("genctype - generate ctype data.\n" +
-    "Copyright (c) 2012 - 2015, 2018 JEDLSoft\n");
+    "Copyright (c) 2012 - 2015, 2018 JEDLSoft");
 
 if (!fs.existsSync(unicodeFileName)) {
     console.error("Could not access file " + unicodeFileName);
