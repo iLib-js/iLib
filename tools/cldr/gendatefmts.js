@@ -1371,7 +1371,7 @@ function getDateFormats(language, script, region, data) {
             // if ((key["s"].split(/y/g).length - 1 != 2) && (key["s"].split(/y/g).length - 1 != 4)) {
             // if (key["m"].split(/y/g).length - 1 == 2) {
             //  key["s"] = key["s"].replace(/[y]+/g, "yy");
-            //} 
+            //}
             //
 
             key["s"] = key["s"].replace(/[y]+/g, "yy");
@@ -1404,7 +1404,7 @@ function getDateFormats(language, script, region, data) {
 
     //dates["gregorian"]=gregorian;
     //}
-    //console.log("gregorian date formats are :"+JSON.stringify(gregorian)+"++++++++++++++++++++++++++++++++++++++++++++");    
+    //console.log("gregorian date formats are :"+JSON.stringify(gregorian)+"++++++++++++++++++++++++++++++++++++++++++++");
     //code to map Time Formats
     var time_24 = {};
     var time_12 = {};
@@ -1901,7 +1901,7 @@ function getDateFormats(language, script, region, data) {
     //console.log("interval codes are "+JSON.stringify(range)+"++++++++++++++++++++++++++++++++++++++++++++");
     gregorian["range"] = range;
     dates[default_calendar] = gregorian;
-    //console.log("gregorian date formats are :"+JSON.stringify(gregorian)+"++++++++++++++++++++++++++++++++++++++++++++");    
+    //console.log("gregorian date formats are :"+JSON.stringify(gregorian)+"++++++++++++++++++++++++++++++++++++++++++++");
     return dates;
 }
 //console.log("\nMerging and pruning resources...");
@@ -1915,8 +1915,8 @@ function writeDateFormats(language, script, region, data) {
             } else {
                 def_calendar = "buddhist";
             }
-            //console.log("date formats are :"+JSON.stringify(data)+"++++++++++++++++++++++++++++++++++++++++++++");  
-            // console.log("default calendar is :"+def_calendar+"++++++++++++++++++++++++++++++++++++++++++++");  
+            //console.log("date formats are :"+JSON.stringify(data)+"++++++++++++++++++++++++++++++++++++++++++++");
+            // console.log("default calendar is :"+def_calendar+"++++++++++++++++++++++++++++++++++++++++++++");
 
             var empty_data = data[def_calendar]["date"];
             //var empty_data_time = data["gregorian"]["time"];
