@@ -10,6 +10,7 @@ New Features:
 Bug Fixes:
 * Updated to IANA time zone data 2020a
 * Put base option back on ResBundle
+* Fixed a few tools and dependencies so that ilib works on node v14
 
 Build 009
 -------

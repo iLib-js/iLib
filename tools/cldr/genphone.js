@@ -2,7 +2,7 @@
  * genphone.js - ilib tool to generate the json data for parsing and
  * formatting phone numbers
  *
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@
  * This code is intended to be run under node.js
  */
 var fs = require("fs");
-var util = require('util');
 var path = require('path');
 var common = require('./common.js');
 var unifile = require("./unifile.js");
@@ -29,14 +28,14 @@ var mkdirs = common.makeDirs;
 var UnicodeFile = unifile.UnicodeFile;
 
 function usage() {
-	util.print("Usage: genphone [-h] phone_data_dir [toDir]\n" +
+	console.log("Usage: genphone [-h] phone_data_dir [toDir]\n" +
 		"Generate the locale data for phone numbers.\n\n" +
 		"-h or --help\n" +
 		"  this help\n" +
 		"phone_data_dir\n" +
 		"  directory with raw phone number source files\n" +
 		"toDir\n" +
-		"  directory to output the json files. Default: current dir.\n");
+		"  directory to output the json files. Default: current dir.");
 	process.exit(1);
 }
 
@@ -50,7 +49,7 @@ process.argv.forEach(function (val, index, array) {
 });
 
 if (process.argv.length < 3) {
-	util.error('Error: not enough arguments');
+	console.error('Error: not enough arguments');
 	usage();
 }
 
@@ -59,19 +58,19 @@ if (process.argv.length > 3) {
 	toDir = process.argv[3];
 }
 
-util.print("genphone - generate the phone parsing/geolocation data files.\n" +
-	"Copyright (c) 2014 JEDLSoft\n");
+console.log("genphone - generate the phone parsing/geolocation data files.\n" +
+	"Copyright (c) 2014 JEDLSoft");
 
-util.print("Phone data dir: " + phoneDir + "\n");
-util.print("output dir: " + toDir + "\n");
+console.log("Phone data dir: " + phoneDir);
+console.log("output dir: " + toDir);
 
 if (!fs.existsSync(phoneDir)) {
-	util.error("Could not access phone data directory " + phoneDir);
+	console.error("Could not access phone data directory " + phoneDir);
 	usage();
 }
 
 if (!fs.existsSync(toDir)) {
-	util.error("Could not access target directory " + toDir);
+	console.error("Could not access target directory " + toDir);
 	usage();
 }
 
@@ -170,21 +169,21 @@ function processFile(file) {
 	var area = {};
 	var ch;
 	
-	util.print("processing file " + file + "\n");
+	console.log("processing file " + file);
 	for (var i = 0; i < f.length(); i++) {
 		var fields = f.get(i);
 		if (fields.length > 1) {
 			var digits = fields[0];
 			var state = states.indexOf(fields[1]);
 			if (state === -1) {
-				util.print("Error: could not get type in line " + i + ": " + f.getLine(i) + "\n");
+				console.log("Error: could not get type in line " + i + ": " + f.getLine(i));
 			} else {
 				current = trie;
-				//util.print("Encoding " + digits + " in state " + state + "(" + fields[1] + ")\n");
+				//console.log("Encoding " + digits + " in state " + state + "(" + fields[1] + ")");
 				for (var j = 0; j < digits.length-1; j++) {
 					ch = getCharacterCode(digits.charAt(j));
 					if (ch >= 0) {
-						// util.print("doing " + ch + "\n");
+						// console.log("doing " + ch);
 						if (typeof(current.s) === 'undefined') {
 							current.s = [];
 						}
@@ -206,7 +205,7 @@ function processFile(file) {
 					}
 				}
 				// if (!current) {
-				// 	util.print("current is undefined. trie is\n" + JSON.stringify(trie, undefined, 4) + "\n");
+				// 	console.log("current is undefined. trie is\n" + JSON.stringify(trie, undefined, 4));
 				// }
 				// now we have reached the final state
 				ch = getCharacterCode(digits.charAt(digits.length - 1));
@@ -233,7 +232,7 @@ function processFile(file) {
 	}
 
 	function deNullify(arr) {
-		// util.print("denullifying an object\n");
+		// console.log("denullifying an object");
 		var node = {};
 		if (typeof(arr.digits) !== 'undefined') {
 			node.digits = arr.digits;
@@ -242,11 +241,11 @@ function processFile(file) {
 			node.l = arr.l;
 		}
 		if (typeof(arr.s) !== 'undefined') {
-			// util.print("denullifying an array\n");
+			// console.log("denullifying an array");
 			node.s = [];
 			for (var i = 0; i < arr.s.length; i++) {
 				var value = arr.s[i];
-				// util.print("value " + i + " is " + value + "\n");
+				// console.log("value " + i + " is " + value);
 				if (value === null || typeof(value) === 'undefined') {
 					node.s.push(0);
 				} else if (typeof(value) === 'number') {

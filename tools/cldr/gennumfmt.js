@@ -22,12 +22,10 @@
  */
 var fs = require('fs');
 var path = require('path');
-var util = require('util');
 var cldr = require("cldr-data");
 var numberingSystemsData = require("cldr-data/supplemental/numberingSystems.json");
 
 var common = require('./common');
-var merge = common.merge;
 var Locale = common.Locale;
 var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
@@ -39,7 +37,7 @@ function usage() {
         "-h or --help\n" +
         "  this help\n" +
         "toDir\n" +
-        "  directory to output the currency.jf json files. Default: current dir.\n");
+        "  directory to output the currency.jf json files. Default: current dir.");
     process.exit(1);
 }
 
@@ -59,12 +57,12 @@ if (process.argv.length <= 2) {
 }
 
 console.log("gennumfmts - generate number formats information files.\n" +
-    "Copyright (c) 2013-2018, 2020 JEDLSoft\n");
+    "Copyright (c) 2013-2018, 2020 JEDLSoft");
 
-console.log("Output dir: " + toDir + "\n");
+console.log("Output dir: " + toDir );
 
 if (!fs.existsSync(toDir)) {
-    util.error("Could not access Output directory " + toDir);
+    console.error("Could not access Output directory " + toDir);
     usage();
 }
 
@@ -137,9 +135,9 @@ function getLocaleData(dirname, locale) {
             localeData.data = numData;
         }
 
-        //console.log("dirname: " + dirname + "  data: ", numData + "\n");
+        //console.log("dirname: " + dirname + "  data: ", numData );
     } catch (e) {
-        console.log("Error: Could not load file " + e + "\n");
+        console.log("Error: Could not load file " + e );
     }
 
     return numData;
@@ -160,19 +158,19 @@ function anyProperties(data) {
 
 function writeNumberFormats(language, script, region, data) {
     var path = calcLocalePath(language, script, region, "");
-    //console.log("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data)+"\n");
+    //console.log("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data));
     if (data.generated) {
         if (anyProperties(data)) {
-            console.log("Writing " + path + "\n");
+            console.log("Writing " + path );
 
             var empty_data_default = data["numfmt"];
             var empty_data_native = data["native_numfmt"];
             if (isEmpty(empty_data_default) && isEmpty(empty_data_native)) {
-                //console.log("no need to create the file " + "\n");
+                //console.log("no need to create the file " );
                 return;
             }
 
-            //console.log("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(numfmt)+"\n"); */
+            //console.log("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(numfmt)); */
             if (!isEmpty(data)) {
                 data.generated = true;
                 makeDirs(path);
@@ -185,10 +183,10 @@ function writeNumberFormats(language, script, region, data) {
             }*/
             //fs.writeFileSync(path + "/numfmt.jf",JSON.stringify(data), "utf-8");
         } else {
-            console.log("Skipping empty " + path + "\n");
+            console.log("Skipping empty " + path );
         }
     } else {
-        console.log("Skipping existing " + path + "\n");
+        console.log("Skipping existing " + path );
     }
 }
 function getNumberFormats(language, script, region, data) {
@@ -228,7 +226,7 @@ function getNumberFormats_num_system(def_num_system, data) {
     var percentage_number_system = percentage.concat(def_num_system);
     var currency_number_system = currency.concat(def_num_system);
 
-    //console.log("the symbol numbering system " + symbol_number_system + "\n");
+    //console.log("the symbol numbering system " + symbol_number_system );
     var symbol_format = data.numbers[symbol_number_system];
     var decimal_format = data.numbers[decimal_number_system]["standard"];
     var percent_format = data.numbers[percentage_number_system]["standard"];
@@ -299,7 +297,7 @@ function getNumberFormats_num_system(def_num_system, data) {
     if (currency_format.indexOf(";") != -1) {
         index_of_semi_colon = currency_format.indexOf(";");
         var cur_fmt = currency_format.substring(0, index_of_semi_colon);
-        //console.log("cur_fmt      is  ...................." + cur_fmt + "===================" + "\n");
+        //console.log("cur_fmt      is  ...................." + cur_fmt + "===================" );
         var curFmt = cur_fmt.replace(/[0#,\.]+/, "{n}");
         curFmt = curFmt.replace(/¤/g, "{s}");
         symbol_format_data.currencyFormats.common = curFmt.trim();
@@ -381,22 +379,22 @@ function getNumberFormats_num_system(def_num_system, data) {
 function getNativeDigits(script) {
     //var digits=[];
 
-    //console.log("script for native digits " + script + "\n");
+    //console.log("script for native digits " + script );
 
     digitsData = numberingSystemsData.supplemental["numberingSystems"]
     digits_script = digitsData[script];
 
-    //console.log("digits for script are:" + JSON.stringify(digits_script) + "\n");
+    //console.log("digits for script are:" + JSON.stringify(digits_script) );
     if (typeof (digits_script) != 'undefined' && digits_script !== "latn") {
         if (digits_script["_type"] == "numeric") {
             var digits = digits_script["_digits"];
-            //console.log("digits for script are:" + JSON.stringify(digits) + "\n");
+            //console.log("digits for script are:" + JSON.stringify(digits) );
             return digits;
         }
     }
 }
 
-console.log("Reading locale data into memory...\n");
+console.log("Reading locale data into memory...");
 
 var list = cldr.availableLocales;
 
@@ -413,11 +411,11 @@ list.forEach(function(loc) {
     }
 });
 
-console.log("\n");
-console.log("Merging and pruning locale data...\n");
+console.log("");
+console.log("Merging and pruning locale data...");
 
 mergeAndPrune(localeData);
-console.log("Extracting number formats...\n");
+console.log("Extracting number formats...");
 
 var resources = {};
 resources.data = getNumberFormats(undefined, undefined, undefined, localeData.data);
@@ -445,11 +443,11 @@ for (language in localeData) {
     }
 }
 
-console.log("\nMerging and pruning formats...\n");
+console.log("\nMerging and pruning formats...");
 
 mergeAndPrune(resources);
 
-console.log("\nWriting formats...\n");
+console.log("\nWriting formats...");
 
 for (language in resources) {
     if (language && resources[language] && language !== 'data' && language !== 'merged') {

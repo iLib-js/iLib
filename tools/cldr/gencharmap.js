@@ -2,7 +2,7 @@
  * genccharmap.js - ilib tool to generate the charset mappings from the Unicode 
  * data files
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,16 +23,12 @@
  */
 
 var fs = require('fs');
-var util = require('util');
-var unifile = require('./unifile.js');
 var common = require('./common.js');
 var CharmapFile = require('./charmapfile.js').CharmapFile;
 var path = require('path');
-var charIterator = common.charIterator;
-var isMember = common.isMember;
 
 function usage() {
-	util.print("Usage: gencharmap [-h] path_to_linux_charmaps path_to_UCD_mappings charsetaliases.json [toDir]\n" +
+	console.log("Usage: gencharmap [-h] path_to_linux_charmaps path_to_UCD_mappings charsetaliases.json [toDir]\n" +
 			"Generate the character type data.\n\n" +
 			"-h or --help\n" +
 			"  this help\n" +
@@ -43,7 +39,7 @@ function usage() {
 			"charsetaliases.json\n" +
 			"  path to json file with the mappings to standard IANA charset names\n" +
 			"toDir\n" +
-			"  directory to output the normalization json files. Default: <currentdir>/charmaps.\n");
+			"  directory to output the normalization json files. Default: <currentdir>/charmaps.");
 	process.exit(1);
 }
 
@@ -58,7 +54,7 @@ process.argv.forEach(function (val, index, array) {
 });
 
 if (process.argv.length < 4) {
-	util.error('Error: not enough arguments');
+	console.error('Error: not enough arguments');
 	usage();
 }
 
@@ -72,27 +68,27 @@ if (process.argv.length > 5) {
 
 toDir = path.join(toDir, "charmaps");
 
-util.print("gencharmap - generate charmap mapping data.\n" +
+console.log("gencharmap - generate charmap mapping data.\n" +
 		"Copyright (c) 2014 JEDLSoft\n");
 
 if (!fs.existsSync(charmapDir)) {
-	util.error("Could not access dir " + charmapDir);
+	console.error("Could not access dir " + charmapDir);
 	usage();
 }
 
 if (!fs.existsSync(ucdDir)) {
-	util.error("Could not access UCD mappings dir " + ucdDir);
+	console.error("Could not access UCD mappings dir " + ucdDir);
 	usage();
 }
 
 if (!fs.existsSync(aliasesFile)) {
-	util.error("Could not access aliases file " + aliasesFile);
+	console.error("Could not access aliases file " + aliasesFile);
 	usage();
 }
 
 if (!fs.existsSync(toDir)) {
 	if (!common.makeDirs(toDir)) {
-		util.error("Could not access target directory " + toDir);
+		console.error("Could not access target directory " + toDir);
 		usage();
 	}
 }
@@ -221,17 +217,17 @@ function walk(dir) {
 	var list = fs.readdirSync(dir);
 	list.forEach(function (file) {
 		var fullpath = dir + '/' + file;
-		// util.print("fullpath is " + fullpath + "\n");
+		// console.log("fullpath is " + fullpath);
 		var stat = fs.statSync(fullpath);
 		if (stat && stat.isDirectory()) {
 			walk(fullpath);
 		} else {
 			//if (fullpath.match(/.gz$/)) {
-				util.print("found charmap file " + fullpath + "\n");
+				console.log("found charmap file " + fullpath);
 				try {
 					var fileName = aliases[file.replace(/[-_:\+\.\(\)]/g, '').toUpperCase()] || file;
 					var toFileName = path.join(toDir, fileName + ".json");
-					// util.print("Writing results to file " + toFileName + "\n");
+					// console.log("Writing results to file " + toFileName);
 					var map = {
 						to: new common.Trie(),
 						from: new common.Trie()
@@ -246,7 +242,7 @@ function walk(dir) {
 					// 3 column mode = true
 					var three = thirdColumnRE.test(uf.get(0)[2]);
 					
-					// util.print("len is " + len + "\n");
+					// console.log("len is " + len);
 					for (var i = 0; i < len; i++) {
 						row = uf.get(i);
 
@@ -254,9 +250,9 @@ function walk(dir) {
 						unicode = [];
 						reversible = true;
 						
-						//util.print("row is " + JSON.stringify(row) + "\n");
+						//console.log("row is " + JSON.stringify(row));
 						if (three) {
-							//util.print("3 column mode\n");
+							//console.log("3 column mode");
 							
 							// 3 column mode <symbolicname> <native> <unicode>
 							var nativeByteStrings = row[1].split(/\/x/g);
@@ -265,17 +261,17 @@ function walk(dir) {
 									native.push(parseInt(nativeByteStrings[j], 16));
 								}
 							}
-							//util.print("native is " + JSON.stringify(native) + "\n");
+							//console.log("native is " + JSON.stringify(native));
 							
 							if (native[0] === 0) {
 								var symbolicName = row[0].substring(1, row[0].length-1);
-								//util.print("native is the PCS symbolic name " + symbolicName + "\n");
+								//console.log("native is the PCS symbolic name " + symbolicName);
 								
 								if (typeof(portable_charset[symbolicName]) !== 'undefined') {
 									native = [ portable_charset[symbolicName].charCodeAt(0) ];
-									//util.print("maps to: " + native[native.length-1] + "\n");
+									//console.log("maps to: " + native[native.length-1]);
 								//} else {
-									//util.print("Unknown symbolic name: " + row[0] + "\n");
+									//console.log("Unknown symbolic name: " + row[0]);
 								}
 							}
 							
@@ -293,9 +289,9 @@ function walk(dir) {
 									}
 								}
 							}
-							//util.print("3 column unicode is " + JSON.stringify(unicode) + " and uniChars is " + JSON.stringify(uniChars) + "\n");
+							//console.log("3 column unicode is " + JSON.stringify(unicode) + " and uniChars is " + JSON.stringify(uniChars));
 						} else {
-							//util.print("2 column mode\n");
+							//console.log("2 column mode");
 							// two column mode <unicode> <native>
 							var uniResult = firstColumnRE.exec(row[0]);
 							if (uniResult !== null) {
@@ -306,7 +302,7 @@ function walk(dir) {
 										native.push(parseInt(nativeByteStrings[j], 16));
 									}
 								}
-								//util.print("uniResult[2] is " + uniResult[2] + "\n");
+								//console.log("uniResult[2] is " + uniResult[2]);
 								var uniChars = uniResult[2].split(/<U/g);
 								for (var j = 0; j < uniChars.length; j++) {
 									if (uniChars[j].length) {
@@ -320,25 +316,25 @@ function walk(dir) {
 										}
 									}
 								}
-								//util.print("unicode is " + JSON.stringify(unicode) + "\n");
-								//util.print("2 column unicode is " + JSON.stringify(unicode) + " and uniChars is " + JSON.stringify(uniChars) + "\n");
+								//console.log("unicode is " + JSON.stringify(unicode));
+								//console.log("2 column unicode is " + JSON.stringify(unicode) + " and uniChars is " + JSON.stringify(uniChars));
 							//} else {
-								//util.print("no match\n");
+								//console.log("no match");
 							}
 						}
 						
 						if (native.length <= 0) {
-							util.print("native length\n");
+							console.log("native length");
 						}
 						if (native[0] === 0) {
-							util.print("native null\n");
+							console.log("native null");
 						}
 						if (!unicode) {
-							util.print("not unicode\n");
+							console.log("not unicode");
 						} else if (unicode.length <= 0) {
-							util.print("unicode zero length\n");
+							console.log("unicode zero length");
 						} else if (unicode[0] === '\u0000') {
-							util.print("unicode zero first char. Array is: " + JSON.stringify(unicode) + "\n");
+							console.log("unicode zero first char. Array is: " + JSON.stringify(unicode));
 						}
 						if (native.length > 0 && native[0] !== 0 && 
 							unicode && unicode.length > 0 && unicode[0] !== "\u0000") {
@@ -349,12 +345,12 @@ function walk(dir) {
 								map.from.add(unicode, native);
 							}
 						} else {
-							util.print("skipping bad mapping from " + row[0] + " to " + row[1] + "\n");
+							console.log("skipping bad mapping from " + row[0] + " to " + row[1]);
 						}
 						//} else {
-							//util.print("row " + row + " did not pass the test\n");
-							//util.print("uniRE.exec(row[0]) was " + JSON.stringify(uniRE.exec(row[0])) + "\n");
-							//util.print("mapRE.test(row[1]) was " + mapRE.test(row[1]) + "\n");
+							//console.log("row " + row + " did not pass the test");
+							//console.log("uniRE.exec(row[0]) was " + JSON.stringify(uniRE.exec(row[0])));
+							//console.log("mapRE.test(row[1]) was " + mapRE.test(row[1]));
 					    //}
 					}
 					
@@ -365,14 +361,14 @@ function walk(dir) {
 						};
 						
 						if (fs.writeFileSync(toFileName, JSON.stringify(m, undefined, 4), "utf-8") < 0) {
-							util.print("Could not write to output file " + toFileName + "\n");
+							console.log("Could not write to output file " + toFileName);
 						}
 					} else {
-						util.print("No data to write for charmap " + toFileName + ". Skipping...\n");
+						console.log("No data to write for charmap " + toFileName + ". Skipping...");
 					}
 				} catch (err) {
-					util.print("File " + fullpath + " is not readable or does not contain valid unicode mapping data.\n");
-					util.print(err + "\n");
+					console.log("File " + fullpath + " is not readable or does not contain valid unicode mapping data.");
+					console.log(err);
 				}
 			//}
 		}
@@ -383,18 +379,18 @@ function ucdWalk(dir) {
 	var list = fs.readdirSync(dir);
 	list.forEach(function (file) {
 		var fullpath = dir + '/' + file;
-		// util.print("fullpath is " + fullpath + "\n");
+		// console.log("fullpath is " + fullpath);
 		var stat = fs.statSync(fullpath);
 		if (stat && stat.isDirectory()) {
 			ucdWalk(fullpath);
 		} else {
 			if (fullpath.match(/.TXT$/)) {
-				util.print("found charmap file " + fullpath + "\n");
+				console.log("found charmap file " + fullpath);
 				try {
 					var baseName = file.replace(/.TXT$/, '');
 					var fileName = aliases[baseName.replace(/[-_,:\+\.\(\)]/g, '').toUpperCase()] || baseName;
 					var toFileName = path.join(toDir, fileName + ".json");
-					util.print("Output file is " + toFileName + "\n");
+					console.log("Output file is " + toFileName);
 					
 					// don't override files written out by the other walker
 					if (!fs.existsSync(toFileName)) {
@@ -423,14 +419,14 @@ function ucdWalk(dir) {
 									// three column file
 									nativeColumn = 1;
 									unicodeColumn = 2;
-									util.print("3 column mode\n");
+									console.log("3 column mode");
 								}
 							}
 						} 
 
 						columnRE.lastIndex = 0;
 						
-						// util.print("len is " + len + "\n");
+						// console.log("len is " + len);
 						for (var i = 0; i < len; i++) {
 							row = uf.get(i);
 	
@@ -451,13 +447,13 @@ function ucdWalk(dir) {
 									native.push(bytes[j]);
 								}
 								
-								// util.print("native is " + JSON.stringify(native) + "\n");
+								// console.log("native is " + JSON.stringify(native));
 								
 								var uniResult;
 								columnRE.lastIndex = 0;
-								// util.print("row[nativeColumn] is " + row[nativeColumn] + " and columnRE.exec is " + columnRE.exec(row[unicodeColumn]) + "\n");
+								// console.log("row[nativeColumn] is " + row[nativeColumn] + " and columnRE.exec is " + columnRE.exec(row[unicodeColumn]));
 								while ((uniResult = columnRE.exec(row[unicodeColumn])) !== null) {
-									// util.print("found uni char " + uniResult[0] + "\n");
+									// console.log("found uni char " + uniResult[0]);
 									var u = parseInt(uniResult[0], 16);
 									var uniStr = common.codePointToUTF16(u);
 									// push each surrogate separately so that we can
@@ -468,22 +464,22 @@ function ucdWalk(dir) {
 									}
 								}
 								
-								// util.print("unicode is " + JSON.stringify(unicode) + "\n");
+								// console.log("unicode is " + JSON.stringify(unicode));
 							}
 							
 							/*
 							if (native.length <= 0) {
-								util.print("native length\n");
+								console.log("native length");
 							}
 							if (native[0] === 0) {
-								util.print("native null\n");
+								console.log("native null");
 							}
 							if (!unicode) {
-								util.print("not unicode\n");
+								console.log("not unicode");
 							} else if (unicode.length <= 0) {
-								util.print("unicode zero length\n");
+								console.log("unicode zero length");
 							} else if (unicode[0] === '\u0000') {
-								util.print("unicode zero first char. Array is: " + JSON.stringify(unicode) + "\n");
+								console.log("unicode zero first char. Array is: " + JSON.stringify(unicode));
 							}
 							*/
 							if (native.length > 0 && native[0] !== 0 && 
@@ -492,12 +488,12 @@ function ucdWalk(dir) {
 								map.to.add(native, unicode);
 								map.from.add(unicode, native);
 							} else {
-								util.print("skipping bad mapping from " + row[nativeColumn] + " to " + row[unicodeColumn] + "\n");
+								console.log("skipping bad mapping from " + row[nativeColumn] + " to " + row[unicodeColumn]);
 							}
 							//} else {
-								//util.print("row " + row + " did not pass the test\n");
-								//util.print("uniRE.exec(row[nativeColumn]) was " + JSON.stringify(uniRE.exec(row[nativeColumn])) + "\n");
-								//util.print("mapRE.test(row[unicodeColumn]) was " + mapRE.test(row[unicodeColumn]) + "\n");
+								//console.log("row " + row + " did not pass the test");
+								//console.log("uniRE.exec(row[nativeColumn]) was " + JSON.stringify(uniRE.exec(row[nativeColumn])));
+								//console.log("mapRE.test(row[unicodeColumn]) was " + mapRE.test(row[unicodeColumn]));
 						    //}
 						}
 						
@@ -508,17 +504,17 @@ function ucdWalk(dir) {
 							};
 							
 							if (fs.writeFileSync(toFileName, JSON.stringify(m, undefined, 4), "utf-8") < 0) {
-								util.print("Could not write to output file " + toFileName + "\n");
+								console.log("Could not write to output file " + toFileName);
 							}
 						} else {
-							util.print("No data to write for charmap " + toFileName + ". Skipping...\n");
+							console.log("No data to write for charmap " + toFileName + ". Skipping...");
 						}
 					} else {
-						util.print("Output file " + toFileName + " already exists. Will not overwrite.\n");
+						console.log("Output file " + toFileName + " already exists. Will not overwrite.");
 					}
 				} catch (err) {
-					util.print("File " + fullpath + " is not readable or does not contain valid unicode mapping data.\n");
-					util.print(err + "\n");
+					console.log("File " + fullpath + " is not readable or does not contain valid unicode mapping data.");
+					console.log(err);
 				}
 			}
 		}

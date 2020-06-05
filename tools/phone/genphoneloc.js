@@ -1,7 +1,7 @@
 /*
  * genphoneloc.js - ilib tool to generate the json phoneloc information
  *
- * Copyright © 2019 JEDLSoft
+ * Copyright © 2019-2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -367,7 +367,7 @@ if (process.argv.length > 2) {
 
 function usage() {
     console.log("Usage: genphoneloc.js [-h] [ output_dir ]\n" +
-            "-h or --help\n" + "  this help\n");
+            "-h or --help\n" + "  this help");
     process.exit(1);
 }
 
@@ -377,7 +377,7 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-console.log("genphoneloc.js - generate the phoneloc.json file.\n");
+console.log("genphoneloc.js - generate the phoneloc.json file.");
 var metadata = require("./libphonenumber-js/metadata.json");
 var countryData = metadata.countries;
 var callingCode = metadata.country_calling_codes;

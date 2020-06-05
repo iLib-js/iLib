@@ -1,7 +1,7 @@
 /*
  * geniddarea.js - ilib tool to generate the json numplan information from the libphonenumber-js library
  *
- * Copyright © 2019 JEDLSoft
+ * Copyright © 2019-2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ if (process.argv.length > 2) {
 
 function usage() {
     console.log("Usage: geniddarea.js [-h] [ output_dir ]\n" +
-            "-h or --help\n" + "  this help\n");
+            "-h or --help\n" + "  this help");
     process.exit(1);
 }
 
@@ -46,7 +46,7 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-console.log("geniddarea.js - generate the iddarea.json file.\n");
+console.log("geniddarea.js - generate the iddarea.json file.");
 
 var metadata = require("./libphonenumber-js/metadata.json");
 var countries = require("../../js/data/locale/ctryreverse.json");

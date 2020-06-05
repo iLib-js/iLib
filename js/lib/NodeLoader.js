@@ -1,7 +1,7 @@
 /*
  * NodeLoader.js - Loader implementation for nodejs
  *
- * Copyright © 2015, JEDLSoft
+ * Copyright © 2015, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ module.exports = function (ilib) {
         Loader = require("./Loader.js");
 
     var NodeLoader = function (ilib) {
-        // util.print("new common NodeLoader instance\n");
+        // console.log("new common NodeLoader instance");
 
         this.parent.call(this, ilib);
 
@@ -43,8 +43,8 @@ module.exports = function (ilib) {
                 path.join(path.dirname(module.filename), "..") :
                 this.root;
 
-        //console.log("module.filename is " + module.filename + "\n");
-        //console.log("base is defined as " + this.base + "\n");
+        //console.log("module.filename is " + module.filename);
+        //console.log("base is defined as " + this.base);
 
         // this.includePath.push(path.join(this.root, "resources"));     // always check the application's resources dir first
         this._exists(this.root, "resources"); // always check the application's resources dir first

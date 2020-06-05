@@ -98,7 +98,7 @@ Loader.prototype.loadFiles = function(paths, sync, params, callback, root) {
         return;
     }
 
-    //console.log("generic loader: attempting to load these files: " + JSON.stringify(paths) + "\n");
+    //console.log("generic loader: attempting to load these files: " + JSON.stringify(paths));
     if (sync) {
         var ret = [];
 

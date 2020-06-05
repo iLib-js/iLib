@@ -37,7 +37,7 @@ function usage() {
         "-h or --help\n" +
         "  this help\n" +
         "toDir\n" +
-        "  directory to output the normalization json files. Default: current dir.\n");
+        "  directory to output the normalization json files. Default: current dir.");
     process.exit(1);
 }
 
@@ -52,7 +52,7 @@ process.argv.forEach(function (val, index, array) {
 toDir = process.argv[2] || "tmp";
 
 console.log("genlist - generate list formatter data.\n" +
-    "Copyright (c) 2017-2020 JEDLSoft\n");
+    "Copyright (c) 2017-2020 JEDLSoft");
 
 console.log("output dir: " + toDir);
 
@@ -148,11 +148,11 @@ locales.forEach(function(locale) {
     position.data = patterns;
 });
 
-console.log("\n\nMerging formats forward ...\n");
+console.log("\n\nMerging formats forward ...");
 
 aux.mergeFormats(localePatterns, localePatterns, []);
 
-console.log("\n\nPromoting sublocales ...\n");
+console.log("\n\nPromoting sublocales ...");
 
 for (var language in localePatterns) {
     if (language !== "und" && language !== "data") {
@@ -160,7 +160,7 @@ for (var language in localePatterns) {
     }
 }
 
-console.log("\n\nPruning duplicated formats ...\n");
+console.log("\n\nPruning duplicated formats ...");
 
 //Don't prune the root. Iterate through the first level so we can
 //skip the root and only prune the "language" level of the locale
@@ -168,6 +168,6 @@ console.log("\n\nPruning duplicated formats ...\n");
 
 aux.pruneFormats(localePatterns);
 
-console.log("\n");
+console.log("");
 
 aux.writeFormats(toDir, "list.json", localePatterns, []);

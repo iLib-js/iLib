@@ -1,7 +1,7 @@
 /*
  * genpapersizes.js - ilib tool to generate the json data about paper sizes
  *
- * Copyright © 2013 - 2018, JEDLSoft
+ * Copyright © 2013-2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ function usage() {
         "-h or --help\n" +
         "  this help\n" +
         "toDir\n" +
-        "  directory to output the papersize.jf json files. Default: current dir.\n");
+        "  directory to output the papersize.jf json files. Default: current dir.");
     process.exit(1);
 }
 
@@ -78,12 +78,12 @@ for (var territories in paperSizeData) {
     if (paperSizeData[territories] === "US-Letter") {
         directory = path.join(toDir, 'und', territories);
         filename = path.join(directory, "papersizes.jf");
-        //console.log(filename + "\n");
+        //console.log(filename );
         paperSizes["regular"] = "8x11";
 
         if (!fs.existsSync(directory)) {
             mkdirs(directory);
-            //console.log(territories + "\n");
+            //console.log(territories );
         }
         papersize["paperSizes"] = paperSizes;
         papersize.generated = true;

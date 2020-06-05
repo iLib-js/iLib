@@ -1,7 +1,7 @@
 /*
  * charmapfile.js - read and parse a Linux charmap file
  * 
- * Copyright © 2014-2015, JEDLSoft
+ * Copyright © 2014-2015, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -71,11 +71,11 @@ exports.CharmapFile = function (options) {
 	}
 	
 	if (!data) {
-		util.print("could not read data\n");
+		console.log("could not read data");
 		return undefined;
 	}
 	
-	// util.print("read data\n");
+	// console.log("read data");
 	
 	var string = new String(data, "utf-8");
 	string = (string.charAt(string.length-1) === '\n') ? string.substring(0, string.length-1): string; 
@@ -117,12 +117,12 @@ exports.CharmapFile = function (options) {
 		row = (commentStart === -1) ? rows[i] : rows[i].substring(0, commentStart);
 		row = row.trim();
 		if (row.length > 0) {
-			// util.print("pushing row " + JSON.stringify(row.split(this.splitChar)) + "\n");
+			// console.log("pushing row " + JSON.stringify(row.split(this.splitChar)));
 			this.rows.push(row.split(this.splitChar));
 		}
 		i++;
 	}
-	util.print("found " + this.rows.length + " rows\n");
+	console.log("found " + this.rows.length + " rows");
 };
 
 exports.CharmapFile.prototype = {

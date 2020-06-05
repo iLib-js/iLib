@@ -2,7 +2,7 @@
  * gencoll.js - ilib tool to generate the json UCA data from the Unicode 
  * data files
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@
  */
 
 var fs = require('fs');
-var util = require('util');
 var path = require('path');
 var uniData = require('./uniData.js');
 var unifile = require('./unifile.js');
@@ -44,7 +43,7 @@ var coelesce = common.coelesce;
 var hexStringUTF16String = common.hexStringUTF16String;
 
 function usage() {
-	util.print("Usage: gencoll [-h] ISO-15924-file.txt UCD-dir CLDR-dir [toDir]\n" +
+	console.log("Usage: gencoll [-h] ISO-15924-file.txt UCD-dir CLDR-dir [toDir]\n" +
 			"Generate the collation data.\n\n" +
 			"-h or --help\n" +
 			"  this help\n" +
@@ -55,7 +54,7 @@ function usage() {
 			"CLDR-dir\n" +
 			"  path to the json CLDR files downloaded from the Unicode site\n" +
 			"toDir\n" +
-			"  directory to output the normalization json files. Default: current dir.\n");
+			"  directory to output the normalization json files. Default: current dir.");
 	process.exit(1);
 }
 
@@ -74,7 +73,7 @@ process.argv.forEach(function (val, index, array) {
 });
 
 if (process.argv.length < 4) {
-	util.error('Error: not enough arguments');
+	console.error('Error: not enough arguments');
 	usage();
 }
 
@@ -85,31 +84,31 @@ if (process.argv.length > 5) {
 	toDir = process.argv[5];
 }
 
-util.print("gencoll - generate collation data.\n" +
+console.log("gencoll - generate collation data.\n" +
 	"Copyright (c) 2014 JEDLSoft\n");
 
 fs.exists(iso15924FileName, function (exists) {
 	if (!exists) {
-		util.error("Could not access file " + iso15924FileName);
+		console.error("Could not access file " + iso15924FileName);
 		usage();
 	}
 });
 fs.exists(ucdDir, function (exists) {
 	if (!exists) {
-		util.error("Could not access UCD directory " + ucdDir);
+		console.error("Could not access UCD directory " + ucdDir);
 		usage();
 	}
 });
 fs.exists(cldrDir, function (exists) {
 	if (!exists) {
-		util.error("Could not access CLDR directory " + cldrDir);
+		console.error("Could not access CLDR directory " + cldrDir);
 		usage();
 	}
 });
 
 fs.exists(toDir, function (exists) {
 	if (!exists) {
-		util.error("Could not access target directory " + toDir);
+		console.error("Could not access target directory " + toDir);
 		usage();
 	}
 });
@@ -118,7 +117,7 @@ scriptFileName = ucdDir + "/Scripts.txt";
 
 fs.exists(scriptFileName, function (exists) {
 	if (!exists) {
-		util.error("Could not access file " + scriptFileName);
+		console.error("Could not access file " + scriptFileName);
 		usage();
 	}
 });
@@ -127,7 +126,7 @@ ducetFileName = cldrDir + "/common/uca/allkeys_DUCET.txt";
 
 fs.exists(ducetFileName, function (exists) {
 	if (!exists) {
-		util.error("Could not access file " + ducetFileName);
+		console.error("Could not access file " + ducetFileName);
 		usage();
 	}
 });
@@ -150,7 +149,7 @@ for (var i = 0; i < len; i++ ) {
 	
 	if (longCode.length > 0) {
 		fullToShortMap[longCode.toLowerCase()] = code;
-		// util.print("Mapping " + longCode.toLowerCase() + " to " + code + "\n");
+		// console.log("Mapping " + longCode.toLowerCase() + " to " + code);
 	}
 }
 
@@ -169,10 +168,10 @@ for (var i = 0; i < scriptsFile.length(); i++) {
 	if (rangeEnd && rangeEnd.length > 0) {
 		rangeEnd = parseInt(rangeEnd[0].substring(2), 16);
 		ranges.push([rangeStart, rangeEnd, scriptName]);
-		// util.print("pushing range [" + rangeStart + "," + rangeEnd + "," + scriptName + "]\n");
+		// console.log("pushing range [" + rangeStart + "," + rangeEnd + "," + scriptName + "]");
 	} else {
 		ranges.push([rangeStart, rangeStart, scriptName]);
-		// util.print("pushing range [" + rangeStart + "," + rangeStart + "," + scriptName + "]\n");
+		// console.log("pushing range [" + rangeStart + "," + rangeStart + "," + scriptName + "]");
 	}
 }
 
@@ -184,8 +183,8 @@ ranges.sort(compareByStart);
 // rangeToScript = coelesce(ranges, 0);
 rangeToScript = ranges;
 
-// util.print("Sorted and coelesced ranges are:\n");
-// util.print(JSON.stringify(rangeToScript));
+// console.log("Sorted and coelesced ranges are:");
+// console.log(JSON.stringify(rangeToScript));
 
 /**
  * Create a new weight vector instance.
@@ -273,22 +272,22 @@ WeightVector.prototype = {
 };
 
 function parseWeightLine(weightLine) {
-	//util.print("parsing weight line: " + weightLine + "\n");
+	//console.log("parsing weight line: " + weightLine);
 	var chars = weightLine.trim().split(/\]\[/g);
 	var weights = [];
-	//util.print("chars is: " + JSON.stringify(chars) + "\n");
+	//console.log("chars is: " + JSON.stringify(chars));
 	for (var j = 0; j < chars.length; j++) {
 		var str = chars[j].trim();
 		if (str.length > 0) {
 			weights.push(new WeightVector(str));
 		}
 	}
-	//util.print("weights: " + JSON.stringify(weights) + "\n");
+	//console.log("weights: " + JSON.stringify(weights));
 	
 	return weights;
 }
 
-util.print("Reading DUCET code points and weights\n");
+console.log("Reading DUCET code points and weights");
 
 var ducet = {};
 
@@ -305,7 +304,7 @@ for (var i = 0; i < len; i++ ) {
 	};
 }
 
-util.print("Attaching script codes to DUCET code points\n");
+console.log("Attaching script codes to DUCET code points");
 
 var elementsByScript = {};
 var range;
@@ -322,11 +321,11 @@ for (var name in ducet) {
 		// about expansions or contractions, because the first char gives the script anyways
 		ch = common.UTF16ToCodePoint(name);
 		
-		// util.print("Checking char " + ch + ": ");
+		// console.log("Checking char " + ch + ": ");
 		range = common.findMember(rangeToScript, ch);
 		if (typeof(range) !== 'undefined' && range !== -1) {
 			scriptName = rangeToScript[range][2];
-			// util.print(scriptName);
+			// console.log(scriptName);
 			if (typeof(elementsByScript[scriptName]) === 'undefined') {
 				elementsByScript[scriptName] = [];
 			}
@@ -341,7 +340,7 @@ for (var name in ducet) {
 				}
 			}
 		}
-		//util.print("\n");
+		//console.log("");
 		ducet[name].script = scriptName;
 	}
 }
@@ -358,7 +357,7 @@ function compareByWeights(left, right) {
 
 // elements.sort(compareByWeights);
 
-util.print("Ducet table for " + scriptName + " is: " + JSON.stringify(elements) + "\n");
+console.log("Ducet table for " + scriptName + " is: " + JSON.stringify(elements));
 
 var i = 0;
 var lastChar;
@@ -375,14 +374,14 @@ for (i = 0; i < elements.length; i++) {
 	if (ch && ch.length > 0) {
 		var row = ducet[ch];
 		if (!row) {
-			util.print("Not sure how this happened, but there is a char not in the ducet: " + ch + "\n");
+			console.log("Not sure how this happened, but there is a char not in the ducet: " + ch);
 		} else {
 			if (lastChar) {
-				util.print("comparing " + JSON.stringify(lastChar) + " and " + JSON.stringify(row.weights[0]) + "\n");
+				console.log("comparing " + JSON.stringify(lastChar) + " and " + JSON.stringify(row.weights[0]));
 				var diff = lastChar.compare(row.weights[0]);
-				util.print(operators[diff] + " " + ch + "\n");
+				console.log(operators[diff] + " " + ch);
 			} else {
-				util.print(ch + "\n");
+				console.log(ch);
 			}
 			lastChar = row.weights[0];
 		}
@@ -391,13 +390,13 @@ for (i = 0; i < elements.length; i++) {
 
 process.exit(0);
 
-util.print("Ducet table is: \n");
+console.log("Ducet table is: ");
 
 var i = 0;
 for (ch in ducet) {
 	if (ch && ch.length > 0) {
 		var row = ducet[ch];
-		util.print(i + ": " + ch + " " + JSON.stringify(row) + "\n");
+		console.log(i + ": " + ch + " " + JSON.stringify(row));
 		i++;
 	}
 }
@@ -415,7 +414,7 @@ function compareWeightArray(left, right) {
 	return 0;
 }
 
-/* util.print("Ducet table for Hani is: " + JSON.stringify(elementsByScript["Hani"]) + "\n");
+/* console.log("Ducet table for Hani is: " + JSON.stringify(elementsByScript["Hani"]));
 var hani = elementsByScript["Hani"];
 var previousRow;
 for (var i = 0; i < hani.length; i++) {
@@ -432,7 +431,7 @@ for (var i = 0; i < hani.length; i++) {
 
 // first get ducet data
 
-//util.print("Ducet table for Hani is: " + JSON.stringify(elementsByScript["Hani"]) + "\n");
+//console.log("Ducet table for Hani is: " + JSON.stringify(elementsByScript["Hani"]));
 var collPinyin = [];
 var hani = elementsByScript["Hani"];
 var previousRow;
@@ -456,7 +455,7 @@ for (var i = 0; i < hani.length; i++) {
 				follows: []
 			});
 			
-			// util.print("DUCET char " + ch + " has " + thisElement + "\n");
+			// console.log("DUCET char " + ch + " has " + thisElement);
 		}
 		lastElement = thisElement;
 		previousRow = row;
@@ -482,7 +481,7 @@ var collPinyinName = collationsDir + "zh/coll.pinyin.txt";
 
 fs.exists(collPinyinName, function (exists) {
 	if (!exists) {
-		util.error("Could not access file " + collPinyinName);
+		console.error("Could not access file " + collPinyinName);
 		usage();
 	}
 });
@@ -525,7 +524,7 @@ while (i < data.length) {
 			mode = "separate";
 			i++;
 		}
-		util.print("found op level " + op + "\n");
+		console.log("found op level " + op);
 	} else if (ch === '#') {
 		// skip comments
 		while (i < data.length && data.charAt(i) !== '\n') {
@@ -542,21 +541,21 @@ while (i < data.length) {
 			}
 			ch = data.charAt(++i);
 		}
-		util.print("Searching for string " + value + "\n");
+		console.log("Searching for string " + value);
 		for (var j = 0; j < collPinyin.length; j++) {
 			if (collPinyin[j].char === value.charAt(0)) {
 				current = j;
-				util.print("Found reference to string " + value + " at position " + j + "\n");
+				console.log("Found reference to string " + value + " at position " + j);
 			}
 		}
 	} else {
 		var f = collPinyin[current].follows;
 		
 		if (f.length > 0) {
-			util.print("Adding collation element " + ch + " at position " + current + "[" + (f.length-1) + "] level " + op + "\n");
+			console.log("Adding collation element " + ch + " at position " + current + "[" + (f.length-1) + "] level " + op);
 			vector = f[f.length-1].weights.clone();
 		} else {
-			util.print("Adding collation element " + ch + " at position " + (current+1) + " level " + op + "\n");
+			console.log("Adding collation element " + ch + " at position " + (current+1) + " level " + op);
 			vector = collPinyin[current].weights.clone();
 		}
 		
@@ -572,17 +571,17 @@ while (i < data.length) {
 	}
 }
 
-util.print("Pinyin collation is: \n");
+console.log("Pinyin collation is: ");
 
 var collation = {};
 
 for (var i = 0; i < collPinyin.length; i++) {
 	element = collPinyin[i];
-	util.print('"' + element.char + '": ' + element.weights.toString() + "\n");
+	console.log('"' + element.char + '": ' + element.weights.toString());
 	collation[element.char] = element.weights;
 	var follows = element.follows;
 	for (var j = 0; j < follows.length; j++) {
-		util.print('  "' + follows[j].char + '": ' + follows[j].weights.toString() + "\n");
+		console.log('  "' + follows[j].char + '": ' + follows[j].weights.toString());
 		collation[follows[j].char] = follows[j].weights;
 	}
 }
@@ -590,7 +589,7 @@ for (var i = 0; i < collPinyin.length; i++) {
 var outputFileName = path.join(toDir, "collation.json");
 fs.writeFileSync(outputFileName, JSON.stringify(collation, undefined, 4), "utf-8");
 
-util.print("Output written to " + outputFileName + ".\nDone\n");
+console.log("Output written to " + outputFileName + ".\nDone");
 
 /*
  å         [1,0,0]

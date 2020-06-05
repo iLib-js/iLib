@@ -1,7 +1,7 @@
 /*
  * gentzinfo.js - ilib tool to generate the tzinfo about time zones in a locale
  * 
- * Copyright © 2013-2015, 2018, JEDLSoft
+ * Copyright © 2013-2015, 2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,12 +22,10 @@
  */
 
 var fs = require('fs');
-var util = require('util');
 var path = require('path');
 var unifile = require('./unifile.js');
 var common = require('./common.js');
 var UnicodeFile = unifile.UnicodeFile;
-var coelesce = common.coelesce;
 var windowsZones = require("cldr-data/supplemental/windowsZones.json");
 
 function usage() {
@@ -38,7 +36,7 @@ function usage() {
 			"tzdata-dir\n" +
 			"  path to the tzdata dir downloaded from the IANA site.\n" +
 			"toDir\n" +
-			"  directory to output the normalized json files. Default: current-dir.\n");
+			"  directory to output the normalized json files. Default: current-dir.");
 	process.exit(1);
 }
 
@@ -63,7 +61,7 @@ process.argv.forEach(function (val, index, array) {
 });
 
 if (process.argv.length < 2) {
-	util.error('Error: not enough arguments');
+	console.error('Error: not enough arguments');
 	usage();
 }
 
@@ -74,15 +72,15 @@ if (process.argv.length > 3) {
 
 console.log("gentzinfo - generate time zone info data.\n" +
 		"Copyright (c) 2013, 2018 JEDLSoft\n");
-console.log("To dir: " + toDir + "\n");
+console.log("To dir: " + toDir );
 
 if (!fs.existsSync(tzDataDir)) {
-	util.error("Could not access tzdata directory " + tzDataDir);
+	console.error("Could not access tzdata directory " + tzDataDir);
 	usage();
 }
 
 if (!fs.existsSync(toDir)) {
-	util.error("Could not access target directory " + toDir);
+	console.error("Could not access target directory " + toDir);
 	usage();
 }
 
@@ -106,7 +104,7 @@ var backwardsMap = {};
 for (var i = 0; i < backwardsFile.length(); i++) {
 	var row = backwardsFile.get(i);
 	backwardsMap[row[2].trim()] = row[1].trim();
-	console.log("mapped old id " + row[2] + " to modern " + row[1] + "\n");
+	console.log("mapped old id " + row[2] + " to modern " + row[1] );
 }
 
 function isDirectory(dir) {
@@ -120,7 +118,7 @@ function scanDir(rootDir, dirName, zones) {
 	dirpath = path.join(rootDir, dirName);
 	files = fs.readdirSync(dirpath);
 
-	console.log("Scanning dir " + dirpath + "\n");
+	console.log("Scanning dir " + dirpath );
 
 	for (var i = 0; i < files.length; i++) {
 		file = files[i];
@@ -131,14 +129,14 @@ function scanDir(rootDir, dirName, zones) {
 			var ext = filepath.search(".json");
 		
 			if (ext !== -1) {
-				console.log("Found file " + filepath + "\n");
+				console.log("Found file " + filepath );
 				zones[filepath.substring(0, ext).replace(/^zoneinfo\//, "")] = loadFile(path.join(rootDir, filepath)) || {};
 			}
 		}
 	}
 }
 
-console.log("\n");
+console.log("");
 
 var timezones = {};
 scanDir(toDir, "", timezones);
@@ -148,7 +146,7 @@ var countryToZones = {};
 
 for (var i = 0; i < zoneTab.length(); i++) {
 	var row = zoneTab.get(i);
-	console.log("map " + row[2] + " to " + row[0] + "\n");
+	console.log("map " + row[2] + " to " + row[0] );
 	countries[row[2]] = row[0];
 	if (!countryToZones[row[0]]) {
 		countryToZones[row[0]] = [];
@@ -160,12 +158,12 @@ for (var zone in timezones) {
 	var zoneDef = timezones[zone];
 	if (typeof(countries[zone]) !== 'undefined') {
 		zoneDef.c = countries[zone];
-		console.log("zone " + zone + " country " + zoneDef.c + "\n");
+		console.log("zone " + zone + " country " + zoneDef.c );
 	} else if (typeof(countries[backwardsMap[zone]]) !== 'undefined') {
 		zoneDef.c = countries[backwardsMap[zone]];
-		console.log("zone (old) " + zone + " country " + zoneDef.c + "\n");
+		console.log("zone (old) " + zone + " country " + zoneDef.c );
 	} else {
-		console.log("zone " + zone + " has no country.\n");
+		console.log("zone " + zone + " has no country.");
 	}
 }
 
@@ -188,9 +186,9 @@ for (var zone = 0; zone < windowsZones.windowsZones.mapTimezones.length; zone++)
 		if (timezones[name]) {
 			var other = mapZone["@other"] || mapZone["_other"];
 			timezones[name].n = other.replace(/[Ss]tandard/, "{c}");
-			console.log("zone " + name + " long name is " + timezones[name].n + "\n");
+			console.log("zone " + name + " long name is " + timezones[name].n );
 		} else {
-			console.log("zone " + name + " long name is missing\n");
+			console.log("zone " + name + " long name is missing");
 		}
 	}
 }
@@ -201,7 +199,7 @@ if (!fs.existsSync(path.join(toDir, "zoneinfo"))) {
 
 for (var zone in timezones) {
 	var filepath = path.join(toDir, "zoneinfo", zone + ".json");
-	console.log("Writing out zone info file " + filepath + "\n");
+	console.log("Writing out zone info file " + filepath );
 	fs.writeFile(filepath, JSON.stringify(timezones[zone], true, 4), function (err) {
 		if (err) {
 			throw err;
@@ -210,7 +208,7 @@ for (var zone in timezones) {
 }
 
 var filepath = path.join(toDir, "zoneinfo/zonetab.json");
-console.log("Writing out zone tab file " + filepath + "\n");
+console.log("Writing out zone tab file " + filepath );
 for (var country in countryToZones) {
     countryToZones[country].sort();
 }
@@ -220,4 +218,4 @@ fs.writeFile(filepath, JSON.stringify(countryToZones, true, 4), function (err) {
 	}
 });
 
-console.log("Done\n");
+console.log("Done");

@@ -1,7 +1,7 @@
 /* 
  * mkstubs.js - ilib tool to extract stubs for 
  *
- * Copyright © 2015, JEDLSoft
+ * Copyright © 2015, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,14 +26,14 @@ var common = require('../cldr/common');
 var path = require('../../js/lib/Path.js');
 
 function usage() {
-	util.print("Usage: mkstubs.js [-h] [assembled_source_file [output_file]]\n"
+	console.log("Usage: mkstubs.js [-h] [assembled_source_file [output_file]]\n"
 			+ "Create an dynamic-load stub file out of the existing assembled source file.\n\n"
 			+ "-h or --help\n"
 			+ "  this help\n"
 			+ "assembled_source_file\n"
 			+ '  File to scan. Default: "ilib-dyn.js"\n'
 			+ "output_file\n"
-			+ '  File to put output. Default: "ilib-stubs.js"\n');
+			+ '  File to put output. Default: "ilib-stubs.js"');
 	process.exit(1);
 }
 
@@ -53,12 +53,12 @@ if (process.argv.length > 2) {
 }
 
 if (!fs.existsSync(sourcefile)) {
-	util.print("Could not access source file " + sourcefile + "\n");
+	console.log("Could not access source file " + sourcefile);
 	usage();
 }
 
-util.print("mkstubs - make a dynamic-load stubs file\n");
-util.print("source file: " + sourcefile + "\n");
+console.log("mkstubs - make a dynamic-load stubs file");
+console.log("source file: " + sourcefile);
 
 var legacyMapping = {
 	"AddressFmt" : "ilib.AddressFmt",
@@ -315,9 +315,9 @@ for (i = 0; i < lines.length; i++) {
 outputDyn += "module.exports = ilib;\n";
 
 fs.writeFileSync(outputDynFile, outputDyn, "utf-8");
-util.print("Output written to " + outputDynFile + "\n");
+console.log("Output written to " + outputDynFile);
 
 output += "\n";
 
 fs.writeFileSync(outputFile, output, "utf-8");
-util.print("Output written to " + outputFile + "\n");
+console.log("Output written to " + outputFile);
