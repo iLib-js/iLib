@@ -3773,5 +3773,24 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.equal(curfmt.format(57.05), "57,05 ₾"); //GEL
         test.done();
+    },
+    testNumFmt_be_BY: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("be-BY");
+        var fmt = new NumFmt({locale:"be-BY", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), " ");
+        test.equal(fmt.format(123456789.45), "123 456 789,45");
+
+        var pctfmt = new NumFmt({locale:"be-BY", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n} %");
+        test.equal(li.getNegativePercentageFormat(), "-{n} %");
+        test.equal(pctfmt.format(34), "34 %");
+
+        var curfmt = new NumFmt({locale: "be-BY", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 р."); //BYN
+        test.done();
     }
 }

@@ -1903,5 +1903,14 @@ module.exports.testcurrency = {
         test.equal(info.getCurrency(), "GEL");
 
         test.done();
+    },
+    testCurrency_be_BY: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("be-BY");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "BYN");
+
+        test.done();
     }
 };

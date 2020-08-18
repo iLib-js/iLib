@@ -9036,5 +9036,58 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_18[3], '18სთ, 18წთ, 18წმ');
 
         test.done();
+    },
+    testDurFmt_be_BY: function(test) {
+        test.expect(24);
+        // 1 3 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [], textformatted_3 = [], textformatted_100 = [];
+        var clockformatted_1 = [], clockformatted_3 = [], clockformatted_100 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "be-BY", style:"text", length:length[i]});
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
+        }
+
+        test.equal(textformatted_1[0], '1 год 1 месяц 1 тыдзень 1 суткі');
+        test.equal(textformatted_1[1], '1 г. 1 мес. 1 тыдз. 1 сут');
+        test.equal(textformatted_1[2], '1 г. 1 мес. 1 тыдз. 1 сут');
+        test.equal(textformatted_1[3], '1 г. 1 мес. 1 тыдз. 1 сут');
+
+        test.equal(textformatted_3[0], '3 гады 3 месяца 3 тыдні 3 сутак');
+        test.equal(textformatted_3[1], '3 г. 3 мес. 3 тыдз. 3 сут');
+        test.equal(textformatted_3[2], '3 г. 3 мес. 3 тыдз. 3 сут');
+        test.equal(textformatted_3[3], '3 г. 3 мес. 3 тыдз. 3 сут');
+
+        test.equal(textformatted_100[0], '100 гадоў 100 месяцаў 100 тыдняў 100 сутак');
+        test.equal(textformatted_100[1], '100 г. 100 мес. 100 тыдз. 100 сут');
+        test.equal(textformatted_100[2], '100 г. 100 мес. 100 тыдз. 100 сут');
+        test.equal(textformatted_100[3], '100 г. 100 мес. 100 тыдз. 100 сут');
+
+        test.equal(clockformatted_1[0], '1 гадзіна 1 хвіліна 1 секунда');
+        test.equal(clockformatted_1[1], '1 гадз 1 хв 1 с');
+        test.equal(clockformatted_1[2], '1 гадз 1 хв 1 с');
+        test.equal(clockformatted_1[3], '1 гадз 1 хв 1 с');
+
+        test.equal(clockformatted_3[0], '3 гадзіны 3 хвіліны 3 секунды');
+        test.equal(clockformatted_3[1], '3 гадз 3 хв 3 с');
+        test.equal(clockformatted_3[2], '3 гадз 3 хв 3 с');
+        test.equal(clockformatted_3[3], '3 гадз 3 хв 3 с');
+
+        test.equal(clockformatted_100[0], '100 гадзін 100 хвілін 100 секунд');
+        test.equal(clockformatted_100[1], '100 гадз 100 хв 100 с');
+        test.equal(clockformatted_100[2], '100 гадз 100 хв 100 с');
+        test.equal(clockformatted_100[3], '100 гадз 100 хв 100 с');
+
+        test.done();
     }
 }

@@ -1106,6 +1106,38 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ka-Geor-GE");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode63: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "be-BY"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "be-Cyrl-BY");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode64: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "be"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "be-Cyrl-BY");
+        test.done();
+    },testLocaleMatcherGetLikelyLocaleByLocaleCode65: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "BY"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "be-Cyrl-BY");
+        test.done();
+    },
 
     testLocaleMatcherMatchExactFullLocale: function(test) {
         test.expect(2);
@@ -1571,6 +1603,17 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "ka-GE");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalByLanguage4: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "be"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "be-BY");
         test.done();
     },
 
