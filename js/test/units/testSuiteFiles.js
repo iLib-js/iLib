@@ -31,6 +31,7 @@ module.exports.files = [
     "testtemp.js",
     "testtime.js",
     "testunitfmt.js",
+    "testunitfmt_be_BY.js",
     "testunits.js",
     "testunitfmtasync.js",
     "testdigitalspeed.js",
