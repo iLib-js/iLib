@@ -3303,6 +3303,16 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(100), "The items are many");
         test.done();
     },
+    testStringFormatChoiceCharClasses29: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(8), "The items are many");
+        test.done();
+    },
     
     testStringFormatChoiceCharClassesComplex1: function(test) {
         test.expect(2);

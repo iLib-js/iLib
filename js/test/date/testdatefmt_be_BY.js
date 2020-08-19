@@ -1,5 +1,5 @@
 /*
- * testdatefmt_be_BY.js - test the date formatter object in Georgian
+ * testdatefmt_be_BY.js - test the date formatter object in Belarus
  * 
  * Copyright © 2020, JEDLSoft
  *
@@ -1003,7 +1003,7 @@ module.exports.testdatefmt_be_BY = {
             locale: "be-BY", 
             type: "time", 
             time: "hmz", 
-            timezone: "Europe/Moscow"
+            timezone: "Europe/Minsk"
         });
         test.ok(fmt !== null);
         
@@ -1017,7 +1017,7 @@ module.exports.testdatefmt_be_BY = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 MSK");
+        test.equal(fmt.format(date), "13:45 +03");
         test.done();
     },
 
@@ -1027,7 +1027,7 @@ module.exports.testdatefmt_be_BY = {
             locale: "be-BY", 
             type: "time", 
             time: "hmaz", 
-            timezone: "Europe/Moscow"
+            timezone: "Europe/Minsk"
         });
         test.ok(fmt !== null);
         
@@ -1041,7 +1041,7 @@ module.exports.testdatefmt_be_BY = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 MSK");
+        test.equal(fmt.format(date), "13:45 +03");
         test.done();
     },
 
@@ -1070,7 +1070,7 @@ module.exports.testdatefmt_be_BY = {
             locale: "be-BY", 
             type: "time", 
             time: "hmsz", 
-            timezone: "Europe/Moscow"
+            timezone: "Europe/Minsk"
         });
         test.ok(fmt !== null);
         
@@ -1084,7 +1084,7 @@ module.exports.testdatefmt_be_BY = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 MSK");
+        test.equal(fmt.format(date), "13:45:37 +03");
         test.done();
     },
 
@@ -1094,7 +1094,7 @@ module.exports.testdatefmt_be_BY = {
             locale: "be-BY", 
             type: "time", 
             time: "hmsaz", 
-            timezone: "Europe/Moscow"
+            timezone: "Europe/Minsk"
         });
         test.ok(fmt !== null);
         
@@ -1108,7 +1108,7 @@ module.exports.testdatefmt_be_BY = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 MSK");
+        test.equal(fmt.format(date), "13:45:37 +03");
         test.done();
     },
 
@@ -1252,7 +1252,7 @@ module.exports.testdatefmt_be_BY = {
             type: "time", 
             length: "full", 
             time: "hmz", 
-            timezone: "Europe/Moscow"
+            timezone: "Europe/Minsk"
         });
         test.ok(fmt !== null);
         
@@ -1266,7 +1266,7 @@ module.exports.testdatefmt_be_BY = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 MSK");
+        test.equal(fmt.format(date), "13:45 +03");
         test.done();
     },
 
@@ -1277,7 +1277,7 @@ module.exports.testdatefmt_be_BY = {
             type: "time", 
             length: "full", 
             time: "hmaz", 
-            timezone: "Europe/Moscow"
+            timezone: "Europe/Minsk"
         });
         test.ok(fmt !== null);
         
@@ -1291,7 +1291,7 @@ module.exports.testdatefmt_be_BY = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 MSK");
+        test.equal(fmt.format(date), "13:45 +03");
         test.done();
     },
 
@@ -1321,7 +1321,7 @@ module.exports.testdatefmt_be_BY = {
             type: "time", 
             length: "full", 
             time: "hmsz", 
-            timezone: "Europe/Moscow"
+            timezone: "Europe/Minsk"
         });
         test.ok(fmt !== null);
         
@@ -1335,7 +1335,7 @@ module.exports.testdatefmt_be_BY = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 MSK");
+        test.equal(fmt.format(date), "13:45:37 +03");
         test.done();
     },
 
@@ -1346,7 +1346,7 @@ module.exports.testdatefmt_be_BY = {
             type: "time", 
             length: "full", 
             time: "hmsaz", 
-            timezone: "Europe/Moscow"
+            timezone: "Europe/Minsk"
         });
         test.ok(fmt !== null);
         
@@ -1360,7 +1360,7 @@ module.exports.testdatefmt_be_BY = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 MSK");
+        test.equal(fmt.format(date), "13:45:37 +03");
         test.done();
     },
 
@@ -1371,7 +1371,7 @@ module.exports.testdatefmt_be_BY = {
             type: "time", 
             length: "full", 
             time: "hmsz", 
-            timezone: "Europe/Moscow"
+            timezone: "Europe/Minsk"
         });
         test.ok(fmt !== null);
         
@@ -1385,7 +1385,7 @@ module.exports.testdatefmt_be_BY = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 MSK");
+        test.equal(fmt.format(date), "13:45:37 +03");
         test.done();
     },
 

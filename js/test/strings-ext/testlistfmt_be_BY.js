@@ -77,7 +77,7 @@ module.exports.testlistfmt_be_BY = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["адзін", "два", "тры", "чатыры", "ხუთი"]), "адзін, два, тры, чатыры і ხუთი");
+        test.equal(fmt.format(["адзін", "два", "тры", "чатыры", "пяць"]), "адзін, два, тры, чатыры і пяць");
         test.done();
     },
     testListFmtUnitStylekaGENumberFormatOneShort: function(test) {
@@ -132,7 +132,7 @@ module.exports.testlistfmt_be_BY = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["адзін", "два", "тры", "чатыры", "ხუთი"]), "адзін два тры чатыры ხუთი");
+        test.equal(fmt.format(["адзін", "два", "тры", "чатыры", "пяць"]), "адзін два тры чатыры пяць");
         test.done();
     },
     testListFmtUnitStylekaGENumberFormatOneFull: function(test) {
@@ -192,7 +192,7 @@ module.exports.testlistfmt_be_BY = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["адзін", "два", "тры", "чатыры", "ხუთი"]), "адзін два тры чатыры ხუთი");
+        test.equal(fmt.format(["адзін", "два", "тры", "чатыры", "пяць"]), "адзін два тры чатыры пяць");
         test.done();
     },
     testListFmtORStylekaGENumberFormatOne: function(test) {
@@ -247,7 +247,7 @@ module.exports.testlistfmt_be_BY = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["адзін", "два", "тры", "чатыры", "ხუთი"]), "адзін, два, тры, чатыры ці ხუთი");
+        test.equal(fmt.format(["адзін", "два", "тры", "чатыры", "пяць"]), "адзін, два, тры, чатыры ці пяць");
         test.done();
     }
 };

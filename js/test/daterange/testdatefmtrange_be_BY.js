@@ -1,5 +1,5 @@
 /*
- * testdatefmtrange_be_BY.js - test the date range formatter object Georgian/Georgia
+ * testdatefmtrange_be_BY.js - test the date range formatter object Belarussian/Belarus
  * 
  * Copyright © 2020, JEDLSoft
  *
