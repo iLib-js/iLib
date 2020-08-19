@@ -34,7 +34,7 @@ module.exports.testdatefmtrange_be_BY = {
         callback();
     },
 
-    testDateRngFmtkaGERangeInDayShort: function(test) {
+    testDateRngFmtbeBYRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "short"});
         test.ok(fmt !== null);
@@ -60,7 +60,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "31.12.11, 13:45 – 14:30");
         test.done();
     },
-    testDateRngFmtkaGERangeInDayMedium: function(test) {
+    testDateRngFmtbeBYRangeInDayMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "medium"});
         test.ok(fmt !== null);
@@ -86,7 +86,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "31.12.2011, 13:45 – 14:30");
         test.done();
     },
-    testDateRngFmtkaGERangeInDayLong: function(test) {
+    testDateRngFmtbeBYRangeInDayLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "long"});
         test.ok(fmt !== null);
@@ -112,7 +112,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "31 снежня 2011 г. у 13:45 – 14:30");
         test.done();
     },
-    testDateRngFmtkaGERangeInDayFull: function(test) {
+    testDateRngFmtbeBYRangeInDayFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "full"});
         test.ok(fmt !== null);
@@ -139,7 +139,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.done();
     },
     
-    testDateRngFmtkaGERangeNextDayShort: function(test) {
+    testDateRngFmtbeBYRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "short"});
         test.ok(fmt !== null);
@@ -165,7 +165,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "30.12.11, 13:45 – 31.12.11, 14:30");
         test.done();
     },
-    testDateRngFmtkaGERangeNextDayMedium: function(test) {
+    testDateRngFmtbeBYRangeNextDayMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "medium"});
         test.ok(fmt !== null);
@@ -191,7 +191,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "30.12.2011, 13:45 – 31.12.2011, 14:30");
         test.done();
     },
-    testDateRngFmtkaGERangeNextDayLong: function(test) {
+    testDateRngFmtbeBYRangeNextDayLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "long"});
         test.ok(fmt !== null);
@@ -217,7 +217,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "30 снежня 2011 г. у 13:45 – 31 снежня 2011 г. у 14:30");
         test.done();
     },
-    testDateRngFmtkaGERangeNextDayFull: function(test) {
+    testDateRngFmtbeBYRangeNextDayFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "full"});
         test.ok(fmt !== null);
@@ -244,7 +244,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.done();
     },
     
-    testDateRngFmtkaGERangeMultiDayShort: function(test) {
+    testDateRngFmtbeBYRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "short"});
         test.ok(fmt !== null);
@@ -270,7 +270,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "20 – 31.12.11");
         test.done();
     },
-    testDateRngFmtkaGERangeMultiDayMedium: function(test) {
+    testDateRngFmtbeBYRangeMultiDayMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "medium"});
         test.ok(fmt !== null);
@@ -296,7 +296,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "20 – 31.12.2011");
         test.done();
     },
-    testDateRngFmtkaGERangeMultiDayLong: function(test) {
+    testDateRngFmtbeBYRangeMultiDayLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "long"});
         test.ok(fmt !== null);
@@ -322,7 +322,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "20 – 31 снежня 2011 г.");
         test.done();
     },
-    testDateRngFmtkaGERangeMultiDayFull: function(test) {
+    testDateRngFmtbeBYRangeMultiDayFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "full"});
         test.ok(fmt !== null);
@@ -349,7 +349,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.done();
     },
     
-    testDateRngFmtkaGERangeNextMonthShort: function(test) {
+    testDateRngFmtbeBYRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "short"});
         test.ok(fmt !== null);
@@ -375,7 +375,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "20.11 – 31.12.11");
         test.done();
     },
-    testDateRngFmtkaGERangeNextMonthMedium: function(test) {
+    testDateRngFmtbeBYRangeNextMonthMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "medium"});
         test.ok(fmt !== null);
@@ -401,7 +401,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "20.11 – 31.12.2011");
         test.done();
     },
-    testDateRngFmtkaGERangeNextMonthLong: function(test) {
+    testDateRngFmtbeBYRangeNextMonthLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "long"});
         test.ok(fmt !== null);
@@ -427,7 +427,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "20 лістапада – 31 снежня 2011 г.");
         test.done();
     },
-    testDateRngFmtkaGERangeNextMonthFull: function(test) {
+    testDateRngFmtbeBYRangeNextMonthFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "full"});
         test.ok(fmt !== null);
@@ -454,7 +454,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.done();
     },
     
-    testDateRngFmtkaGERangeNextYearShort: function(test) {
+    testDateRngFmtbeBYRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "short"});
         test.ok(fmt !== null);
@@ -480,7 +480,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "20.11.11 – 31.01.12");
         test.done();
     },
-    testDateRngFmtkaGERangeNextYearMedium: function(test) {
+    testDateRngFmtbeBYRangeNextYearMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "medium"});
         test.ok(fmt !== null);
@@ -506,7 +506,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "20.11.2011 – 31.01.2012");
         test.done();
     },
-    testDateRngFmtkaGERangeNextYearLong: function(test) {
+    testDateRngFmtbeBYRangeNextYearLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "long"});
         test.ok(fmt !== null);
@@ -532,7 +532,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "20 лістапада 2011 г. – 31 студзеня 2012 г.");
         test.done();
     },
-    testDateRngFmtkaGERangeNextYearFull: function(test) {
+    testDateRngFmtbeBYRangeNextYearFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "full"});
         test.ok(fmt !== null);
@@ -559,7 +559,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.done();
     },
     
-    testDateRngFmtkaGERangeMultiYearShort: function(test) {
+    testDateRngFmtbeBYRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "short"});
         test.ok(fmt !== null);
@@ -585,7 +585,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "11.11 – 01.14");
         test.done();
     },
-    testDateRngFmtkaGERangeMultiYearMedium: function(test) {
+    testDateRngFmtbeBYRangeMultiYearMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "medium"});
         test.ok(fmt !== null);
@@ -611,7 +611,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "11.2011 – 01.2014");
         test.done();
     },
-    testDateRngFmtkaGERangeMultiYearLong: function(test) {
+    testDateRngFmtbeBYRangeMultiYearLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "long"});
         test.ok(fmt !== null);
@@ -637,7 +637,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "лістапада 2011 г. – студзеня 2014 г.");
         test.done();
     },
-    testDateRngFmtkaGERangeMultiYearFull: function(test) {
+    testDateRngFmtbeBYRangeMultiYearFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "full"});
         test.ok(fmt !== null);
@@ -663,7 +663,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "лістапада 2011 г. – студзеня 2014 г.");
         test.done();
     },
-    testDateRngFmtkaGEManyYearsFull: function(test) {
+    testDateRngFmtbeBYManyYearsFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "full"});
         test.ok(fmt !== null);

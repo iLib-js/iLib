@@ -30,7 +30,7 @@ module.exports.testlistfmt_be_BY = {
         ilib.clearCache();
         callback();
     },
-    testListFmtkaGENumberFormatOne: function(test) {
+    testListFmtbeBYNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY"
         });
@@ -40,7 +40,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін"]), "адзін");
         test.done();
     },
-    testListFmtkaGENumberFormatTwo: function(test) {
+    testListFmtbeBYNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY"
         });
@@ -50,7 +50,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін", "два"]), "адзін і два");
         test.done();
     },
-    testListFmtkaGENumberFormatThree: function(test) {
+    testListFmtbeBYNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY"
         });
@@ -60,7 +60,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін", "два", "тры"]), "адзін, два і тры");
         test.done();
     },
-    testListFmtkaGENumberFormatFour: function(test) {
+    testListFmtbeBYNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY"
         });
@@ -70,7 +70,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін", "два", "тры", "чатыры"]), "адзін, два, тры і чатыры");
         test.done();
     },
-    testListFmtkaGENumberFormatFive: function(test) {
+    testListFmtbeBYNumberFormatFive: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY"
         });
@@ -80,7 +80,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін", "два", "тры", "чатыры", "пяць"]), "адзін, два, тры, чатыры і пяць");
         test.done();
     },
-    testListFmtUnitStylekaGENumberFormatOneShort: function(test) {
+    testListFmtUnitStylebeBYNumberFormatOneShort: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY",
             style: "unit"
@@ -91,7 +91,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін"]), "адзін");
         test.done();
     },
-    testListFmtUnitStylekaGENumberFormatTwoShort: function(test) {
+    testListFmtUnitStylebeBYNumberFormatTwoShort: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY",
             style: "unit"
@@ -102,7 +102,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін", "два"]), "адзін два");
         test.done();
     },
-    testListFmtUnitStylekaGENumberFormatThreeShort: function(test) {
+    testListFmtUnitStylebeBYNumberFormatThreeShort: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY",
             style: "unit"
@@ -113,7 +113,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін", "два", "тры"]), "адзін два тры");
         test.done();
     },
-    testListFmtUnitStylekaGENumberFormatFourShort: function(test) {
+    testListFmtUnitStylebeBYNumberFormatFourShort: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY",
             style: "unit"
@@ -124,7 +124,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін", "два", "тры", "чатыры"]), "адзін два тры чатыры");
         test.done();
     },
-    testListFmtUnitStylekaGENumberFormatFiveShort: function(test) {
+    testListFmtUnitStylebeBYNumberFormatFiveShort: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY",
             style: "unit"
@@ -135,7 +135,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін", "два", "тры", "чатыры", "пяць"]), "адзін два тры чатыры пяць");
         test.done();
     },
-    testListFmtUnitStylekaGENumberFormatOneFull: function(test) {
+    testListFmtUnitStylebeBYNumberFormatOneFull: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY",
             style: "unit",
@@ -147,7 +147,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін"]), "адзін");
         test.done();
     },
-    testListFmtUnitStylekaGENumberFormatTwoFull: function(test) {
+    testListFmtUnitStylebeBYNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY",
             style: "unit",
@@ -159,7 +159,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін", "два"]), "адзін два");
         test.done();
     },
-    testListFmtUnitStylekaGENumberFormatThreeFull: function(test) {
+    testListFmtUnitStylebeBYNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY",
             style: "unit",
@@ -171,7 +171,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін", "два", "тры"]), "адзін два тры");
         test.done();
     },
-    testListFmtUnitStylekaGENumberFormatFourFull: function(test) {
+    testListFmtUnitStylebeBYNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY",
             style: "unit",
@@ -183,7 +183,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін", "два", "тры", "чатыры"]), "адзін два тры чатыры");
         test.done();
     },
-    testListFmtUnitStylekaGENumberFormatFiveFull: function(test) {
+    testListFmtUnitStylebeBYNumberFormatFiveFull: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY",
             style: "unit",
@@ -195,7 +195,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін", "два", "тры", "чатыры", "пяць"]), "адзін два тры чатыры пяць");
         test.done();
     },
-    testListFmtORStylekaGENumberFormatOne: function(test) {
+    testListFmtORStylebeBYNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY",
             style: "disjunction"
@@ -206,7 +206,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін"]), "адзін");
         test.done();
     },
-    testListFmtORStylekaGENumberFormatTwo: function(test) {
+    testListFmtORStylebeBYNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY",
             style: "disjunction"
@@ -217,7 +217,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін", "два"]), "адзін ці два");
         test.done();
     },
-    testListFmtORStylekaGENumberFormatThree: function(test) {
+    testListFmtORStylebeBYNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY",
             style: "disjunction"
@@ -228,7 +228,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін", "два", "тры"]), "адзін, два ці тры");
         test.done();
     },
-    testListFmtORStylekaGENumberFormatFour: function(test) {
+    testListFmtORStylebeBYNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY",
             style: "disjunction"
@@ -239,7 +239,7 @@ module.exports.testlistfmt_be_BY = {
         test.equal(fmt.format(["адзін", "два", "тры", "чатыры"]), "адзін, два, тры ці чатыры");
         test.done();
     },
-    testListFmtORStylekaGENumberFormatFiveFull: function(test) {
+    testListFmtORStylebeBYNumberFormatFiveFull: function(test) {
         var fmt = new ListFmt({
             locale: "be-BY",
             style: "disjunction"
