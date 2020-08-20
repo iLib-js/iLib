@@ -1973,5 +1973,15 @@ module.exports.testmeridiems = {
         test.equal(fmt[1].name, "PM");
 
         test.done();
+    },
+    testMeridiem_gl_ES: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"gl-ES"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "a.m.");
+        test.equal(fmt[1].name, "p.m.");
+
+        test.done();
     }
 }
