@@ -1106,6 +1106,28 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ka-Geor-GE");
         test.done();
     },
+   testLocaleMatcherGetLikelyLocaleByLocaleCode66: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "eu-ES"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "eu-Latn-ES");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode67: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "eu"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "eu-Latn-ES");
+        test.done();
+    },
 
     testLocaleMatcherMatchExactFullLocale: function(test) {
         test.expect(2);
@@ -1571,6 +1593,17 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "ka-GE");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalByLanguage5: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "eu"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "eu-ES");
         test.done();
     },
 

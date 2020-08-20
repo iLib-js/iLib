@@ -5129,5 +5129,31 @@ module.exports.testdatetimeformat = {
         test.equal(result1,  "HH:mm:ss z");
 
         test.done();
+    },
+    testDateTimeFormat_eu_ES: function(test) {
+        test.expect(7);
+
+        var result1, result2, result3, result4;
+
+        result1 = new DateFmt({locale:"eu-ES", type:"date", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"eu-ES", type:"date", date:"dmwy", length: "long", useNative:false, timezone:"local"}).template;
+        result3 = new DateFmt({locale:"eu-ES", type:"date", date:"dmwy", length: "medium", useNative:false, timezone:"local"}).template;
+        result4 = new DateFmt({locale:"eu-ES", type:"date", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "yyyy(\'e\')\'ko\' MMMM\'ren\' d(\'a\'), EEEE");
+        test.equal(result2, "yyyy(\'e\')\'ko\' MMMM\'ren\' d(\'a\'), EEE");
+        test.equal(result3, "yyyy(\'e\')\'ko\' MMM d(\'a\'), EE");
+        test.equal(result4, "yy/M/d, E");
+
+        result1 = new DateFmt({locale:"eu-ES", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"eu-ES", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "yyyy(\'e\')\'ko\' MMMM\'ren\' d(\'a\'), EEEE HH:mm");
+        test.equal(result2, "yy/M/d, E HH:mm");
+
+        result1 = new DateFmt({locale:"eu-ES", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
+        test.equal(result1,  "HH:mm:ss (z)");
+
+        test.done();
     }
 }

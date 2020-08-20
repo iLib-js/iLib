@@ -9036,5 +9036,46 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_18[3], '18სთ, 18წთ, 18წმ');
 
         test.done();
+    },
+    testDurFmt_eu_ES: function(test) {
+        test.expect(16);
+        // 1 11
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [], textformatted_11 = [];
+        var clockformatted_1 = [], clockformatted_11 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "eu-ES", style:"text", length:length[i]});
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+        }
+
+        test.equal(textformatted_1[0], '1 urte, 1 hilabete, 1 aste eta 1 egun');
+        test.equal(textformatted_1[1], '1 urte, 1 hilabete, 1 aste, 1 egun');
+        test.equal(textformatted_1[2], '1 u., 1 hil, 1 aste, 1 e.');
+        test.equal(textformatted_1[3], '1 u., 1 hil, 1 aste, 1 e.');
+
+        test.equal(textformatted_11[0], '11 urte, 11 hilabete, 11 aste eta 11 egun');
+        test.equal(textformatted_11[1], '11 urte, 11 hilabete, 11 aste, 11 egun');
+        test.equal(textformatted_11[2], '11 u., 11 hil, 11 aste, 11 e.');
+        test.equal(textformatted_11[3], '11 u., 11 hil, 11 aste, 11 e.');
+
+        test.equal(clockformatted_1[0], '1 ordu, 1 minutu eta 1 segundo');
+        test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[3], '1 h, 1 min, 1 s');
+
+        test.equal(clockformatted_11[0], '11 ordu, 11 minutu eta 11 segundo');
+        test.equal(clockformatted_11[1], '11 h, 11 min, 11 s');
+        test.equal(clockformatted_11[2], '11 h, 11 min, 11 s');
+        test.equal(clockformatted_11[3], '11 h, 11 min, 11 s');
+
+        test.done();
     }
 }
