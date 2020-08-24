@@ -190,7 +190,8 @@
             "kilobyte-per-hour": "#{n} կիլոբայթ ժամում",
             "megabyte-per-hour": "#{n} մեգաբայթ ժամում",
             "gigabyte-per-hour": "#{n} գիգաբայթ ժամում",
-            "terabyte-per-hour": "#{n} տերաբայթ ժամում"
+            "terabyte-per-hour": "#{n} տերաբայթ ժամում",
+            "megameter": "#{n} մեգաչափեր"
         },
         "short": {
             "times": "",

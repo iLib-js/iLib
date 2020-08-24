@@ -217,7 +217,39 @@ module.exports.testunitfmt_hy_AM = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "3,21868 megameters");
+        test.equal(str, "3,21868 մեգաչափեր");
+        test.done();
+    },
+    testUnitFormatLength3_hy_AM: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "meter",
+            amount: 2000
+        });
+
+        var uf = new UnitFmt({
+            locale: "hy-AM",
+            autoConvert: true,
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 կմ");
+        test.done();
+    },
+    testUnitFormatLength4_hy_AM: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "meter",
+            amount: 2000
+        });
+
+        var uf = new UnitFmt({
+            locale: "hy-AM",
+            autoConvert: true,
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 կիլոմետր");
         test.done();
     },
     testUnitFormatWithUsageVehicleDistance1_hy_AM: function(test) {

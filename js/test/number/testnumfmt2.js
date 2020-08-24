@@ -1,5 +1,5 @@
  /*
- * testnumfmt2.js
+ * testnumfmt2.js - test the number formatter object
  *
  * Copyright © 2019-2020, JEDLSoft
  *

@@ -1,5 +1,5 @@
  /*
- * testWeekdayTranslation.js
+ * testWeekdayTranslation.js - test the weekday's translation
  *
  * Copyright © 2019-2020, JEDLSoft
  *

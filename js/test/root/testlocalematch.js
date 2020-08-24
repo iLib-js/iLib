@@ -1131,7 +1131,7 @@ module.exports.testlocalematch = {
     testLocaleMatcherGetLikelyLocaleByLocaleCodehy3: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
-            locale: "Aram-AM"
+            locale: "Armn-AM"
         });
         test.ok(typeof(lm) !== "undefined");
         var locale = lm.getLikelyLocale();
@@ -1883,7 +1883,7 @@ module.exports.testlocalematch = {
     testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocalehyAM2: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
-            locale: "hy-Aram"
+            locale: "hy-Armn"
         });
         test.ok(typeof(lm) !== "undefined");
         var locale = lm.getLikelyLocaleMinimal();
