@@ -172,6 +172,32 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "en-AU");
         test.done();
     },
+    testCountryLocalehy_AM: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "hy-AM"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"), "Չինաստանի Մակաո ՀՎՇ");
+        test.equal(ctry.getCode("Չինաստանի Մակաո ՀՎՇ"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "hy-AM");
+        test.done();
+    },
+    testCountryLocalehy_AM2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "hy-AM"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"), 'Հարավային Կորեա');
+        test.equal(ctry.getCode('Հարավային Կորեա'), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "hy-AM");
+        test.done();
+    },
     
     testCountryGetByCodeUnknown: function(test) {
         try {
