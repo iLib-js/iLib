@@ -191,24 +191,26 @@ module.exports.testunitfmt_hy_AM = {
     testUnitFormatLength1_hy_AM: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "mile",
-            amount: 2000
+            unit: "inch",
+            amount: 32
         });
 
         var uf = new UnitFmt({
             locale: "hy-AM",
             autoConvert: true,
-            length: "short"
+            length: "short",
+            maxFractionDigits: 2,
+            roundingMode: "half"
         });
         var str = uf.format(m1);
-        test.equal(str, "3,21868 Mm");
+        test.equal(str, "8,13 դմ");
         test.done();
     },
     testUnitFormatLength2_hy_AM: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "mile",
-            amount: 2000
+            unit: "inch",
+            amount: 32
         });
 
         var uf = new UnitFmt({
@@ -217,7 +219,7 @@ module.exports.testunitfmt_hy_AM = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "3,21868 մեգաչափեր");
+        test.equal(str, "8,12799552 դեցիմետր");
         test.done();
     },
     testUnitFormatLength3_hy_AM: function(test) {
