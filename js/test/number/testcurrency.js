@@ -1,7 +1,7 @@
 /*
  * testcurrency.js - test the currency routines
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1901,6 +1901,24 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "GEL");
+
+        test.done();
+    },
+    testCurrency_ca_AD: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ca-AD");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "EUR");
+
+        test.done();
+    },
+    testCurrency_ca_ES: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ca-ES");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "EUR");
 
         test.done();
     }

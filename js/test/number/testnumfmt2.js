@@ -3773,5 +3773,43 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.equal(curfmt.format(57.05), "57,05 ₾"); //GEL
         test.done();
+    },
+    testNumFmt_ca_AD: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("ca-AD");
+        var fmt = new NumFmt({locale:"ca-AD", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), ".");
+        test.equal(fmt.format(123456789.45), "123.456.789,45");
+
+        var pctfmt = new NumFmt({locale:"ca-AD", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+
+        var curfmt = new NumFmt({locale: "ca-AD", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 €"); //EUR
+        test.done();
+    },
+    testNumFmt_ca_ES: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("ca-ES");
+        var fmt = new NumFmt({locale:"ca-ES", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), ".");
+        test.equal(fmt.format(123456789.45), "123.456.789,45");
+
+        var pctfmt = new NumFmt({locale:"ca-ES", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+
+        var curfmt = new NumFmt({locale: "ca-ES", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 €"); //EUR
+        test.done();
     }
 }

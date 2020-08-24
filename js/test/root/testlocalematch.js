@@ -1106,6 +1106,17 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ka-Geor-GE");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_ca: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ca"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ca-Latn-ES");
+        test.done();
+    },
 
     testLocaleMatcherMatchExactFullLocale: function(test) {
         test.expect(2);
@@ -1714,6 +1725,18 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "ka-GE");
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_AD: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "AD"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ca-AD");
         test.done();
     },
 

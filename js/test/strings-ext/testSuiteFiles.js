@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
  * 
- * Copyright © 2017-2018, JEDLSoft
+ * Copyright © 2017-2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ module.exports.files = [
     "testlistfmt_am_ET.js",
     "testlistfmt_ar.js",
     "testlistfmt_bs.js",
+    "testlistfmt_ca.js",
     "testlistfmt_de.js",
     "testlistfmt_el.js",
     "testlistfmt_en.js",

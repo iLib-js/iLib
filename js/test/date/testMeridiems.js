@@ -1973,5 +1973,25 @@ module.exports.testmeridiems = {
         test.equal(fmt[1].name, "PM");
 
         test.done();
+    },
+    testMeridiem_ca_AD: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"ca-AD"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "a. m.");
+        test.equal(fmt[1].name, "p. m.");
+
+        test.done();
+    },
+    testMeridiem_ca_ES: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"ca-ES"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "a. m.");
+        test.equal(fmt[1].name, "p. m.");
+
+        test.done();
     }
 }

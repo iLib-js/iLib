@@ -1,7 +1,7 @@
 /*
  * testcountry.js - test the country routines
  *
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -170,6 +170,32 @@ module.exports.testcountry = {
         test.equal(ctry.getCode("Macao SAR China"), "MO");
         var locale = ctry.getLocale();
         test.equal(locale.toString(), "en-AU");
+        test.done();
+    },
+    testCountryLocale_ca_AD: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ca-AD"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"Macau (RAE Xina)");
+        test.equal(ctry.getCode("Macau (RAE Xina)"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ca-AD");
+        test.done();
+    },
+    testCountryLocale_ca_AD2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ca-AD"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"),"Corea del Sud");
+        test.equal(ctry.getCode("Corea del Sud"), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ca-AD");
         test.done();
     },
     

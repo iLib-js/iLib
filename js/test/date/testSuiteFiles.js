@@ -40,6 +40,7 @@ module.exports.files = [
     "testdatefmt_bn_IN.js",
     "testdatefmt_bs_Cyrl_BA.js",
     "testdatefmt_bs_Latn_BA.js",
+    "testdatefmt_ca.js",
     "testdatefmt_cop_EG.js",
     "testdatefmt_cs_CZ.js",
     "testdatefmt_da_DK.js",
