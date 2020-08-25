@@ -1774,5 +1774,14 @@ module.exports.testclock = {
         test.equal(info.getClock(), 24);
 
         test.done();
+    },
+    testClock_ky_KG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ky-KG");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
     }
 }

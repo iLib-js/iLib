@@ -1968,5 +1968,15 @@ module.exports.testweekdata = {
         test.equal(info.getWeekEndStart(), 6);
         test.equal(info.getWeekEndEnd(), 0);
         test.done();
+    },
+    testWeekData_ky_KG: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ky-KG");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 1);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
     }
 }

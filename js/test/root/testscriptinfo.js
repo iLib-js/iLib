@@ -2185,5 +2185,15 @@ module.exports.testscriptinfo = {
         test.equal(li.getScript(), "Geor");
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
+    },
+    testScriptInfo_ky_KG: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ky-KG");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Cyrl");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
     }
 };
