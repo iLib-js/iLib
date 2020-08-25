@@ -1106,6 +1106,17 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ka-Geor-GE");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_lo: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "lo"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "lo-Laoo-LA");
+        test.done();
+    },
 
     testLocaleMatcherMatchExactFullLocale: function(test) {
         test.expect(2);
@@ -1634,6 +1645,18 @@ module.exports.testlocalematch = {
         test.done();
     },
 
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_LA: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "LA"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "lo-LA");
+        test.done();
+    },
+
     testLocaleMatcherGetLikelyLocaleMinimalNonDefaultScriptForLanguage1: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -1777,6 +1800,18 @@ module.exports.testlocalematch = {
         test.done();
     },
 
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocaleForScript_Laoo: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "Laoo"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "lo-LA");
+        test.done();
+    },
+
     testLocaleMatcherGetLikelyLocaleMinimalDefaultLocaleForLangScript1: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -1834,6 +1869,17 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "ar-Hebr-IL");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocaleForLangScript_laoo: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "lo-Laoo"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "lo-LA");
         test.done();
     }
 };

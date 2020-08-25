@@ -1973,5 +1973,15 @@ module.exports.testmeridiems = {
         test.equal(fmt[1].name, "PM");
 
         test.done();
+    },
+    testMeridiem_lo_LA: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"lo-LA"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "ກ່ອນທ່ຽງ");
+        test.equal(fmt[1].name, "ຫຼັງທ່ຽງ");
+
+        test.done();
     }
 }

@@ -5129,5 +5129,31 @@ module.exports.testdatetimeformat = {
         test.equal(result1,  "HH:mm:ss z");
 
         test.done();
+    },
+    testDateTimeFormat_lo_LA: function(test) {
+        test.expect(7);
+
+        var result1, result2, result3, result4;
+
+        result1 = new DateFmt({locale:"lo-LA", type:"date", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"lo-LA", type:"date", date:"dmwy", length: "long", useNative:false, timezone:"local"}).template;
+        result3 = new DateFmt({locale:"lo-LA", type:"date", date:"dmwy", length: "medium", useNative:false, timezone:"local"}).template;
+        result4 = new DateFmt({locale:"lo-LA", type:"date", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "EEEE ທີ d MMMM yyyy");
+        test.equal(result2, "EEE ທີ d MMMM yyyy");
+        test.equal(result3, "EE ທີ d MMM yyyy");
+        test.equal(result4, "E ທີ d/M/yyyy");
+
+        result1 = new DateFmt({locale:"lo-LA", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"lo-LA", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "EEEE ທີ d MMMM yyyy, H:mm");
+        test.equal(result2, "E ທີ d/M/yyyy, H:mm");
+
+        result1 = new DateFmt({locale:"lo-LA", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
+        test.equal(result1,  "H:mm:ss z");
+
+        test.done();
     }
 }

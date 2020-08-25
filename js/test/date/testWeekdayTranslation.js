@@ -11223,5 +11223,76 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[6], "შ");
 
         test.done();
+    },
+    testWeekdayTranslationFull_lo_LA: function(test) {
+        // full -> wide
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"lo-LA", date:"w", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "ວັນອາທິດ");
+        test.equal(value[1], "ວັນຈັນ");
+        test.equal(value[2], "ວັນອັງຄານ");
+        test.equal(value[3], "ວັນພຸດ");
+        test.equal(value[4], "ວັນພະຫັດ");
+        test.equal(value[5], "ວັນສຸກ");
+        test.equal(value[6], "ວັນເສົາ");
+        test.done();
+    },
+    testWeekdayTranslationLong_lo_LA: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"lo-LA", date:"w", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "ອາທິດ");
+        test.equal(value[1], "ຈັນ");
+        test.equal(value[2], "ອັງຄານ");
+        test.equal(value[3], "ພຸດ");
+        test.equal(value[4], "ພະຫັດ");
+        test.equal(value[5], "ສຸກ");
+        test.equal(value[6], "ເສົາ");
+
+        test.done();
+    },
+    testWeekdayTranslationMedium_lo_LA: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"lo-LA", date:"w", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "ອາ.");
+        test.equal(value[1], "ຈ.");
+        test.equal(value[2], "ອ.");
+        test.equal(value[3], "ພ.");
+        test.equal(value[4], "ພຫ.");
+        test.equal(value[5], "ສຸ.");
+        test.equal(value[6], "ສ.");
+
+        test.done();
+    },
+    testWeekdayTranslationShort_lo_LA: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"lo-LA", date:"w", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "ອາ");
+        test.equal(value[1], "ຈ");
+        test.equal(value[2], "ອ");
+        test.equal(value[3], "ພ");
+        test.equal(value[4], "ພຫ");
+        test.equal(value[5], "ສຸ");
+        test.equal(value[6], "ສ");
+
+        test.done();
     }
 }
