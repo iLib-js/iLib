@@ -188,26 +188,10 @@ module.exports.testunitfmt_gl_ES = {
         test.equal(str, "2 quilómetros por litro");
         test.done();
     },
-    testUnitFormatLength1_gl_ES: function(test) {
+    testUnitFormatMass1_gl_ES: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "mile",
-            amount: 2000
-        });
-
-        var uf = new UnitFmt({
-            locale: "gl-ES",
-            autoConvert: true,
-            length: "short"
-        });
-        var str = uf.format(m1);
-        test.equal(str, "3,21868 Mm");
-        test.done();
-    },
-    testUnitFormatLength2_gl_ES: function(test) {
-        test.expect(1);
-        var m1 = MeasurementFactory({
-            unit: "mile",
+            unit: "gram",
             amount: 2000
         });
 
@@ -217,7 +201,23 @@ module.exports.testunitfmt_gl_ES = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "3,21868 megameters");
+        test.equal(str, "2 quilogramos");
+        test.done();
+    },
+    testUnitFormatMass2_gl_ES: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kg",
+            amount: 2000
+        });
+
+        var uf = new UnitFmt({
+            locale: "gl-ES",
+            autoConvert: true,
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 toneladas métricas");
         test.done();
     },
     testUnitFormatWithUsageVehicleDistance1_gl_ES: function(test) {
