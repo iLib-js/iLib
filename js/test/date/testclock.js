@@ -1774,5 +1774,14 @@ module.exports.testclock = {
         test.equal(info.getClock(), 24);
 
         test.done();
+    },
+    testClock_eu_ES: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("eu-ES");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
     }
 }
