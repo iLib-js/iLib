@@ -193,7 +193,7 @@ module.exports.testunitfmt_ca = {
     testUnitFormatLength1_ca_AD: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "mile",
+            unit: "meter",
             amount: 2000
         });
 
@@ -203,13 +203,13 @@ module.exports.testunitfmt_ca = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "3,21868 Mm");
+        test.equal(str, "2 km");
         test.done();
     },
     testUnitFormatLength2_ca_AD: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "mile",
+            unit: "meter",
             amount: 2000
         });
 
@@ -219,7 +219,7 @@ module.exports.testunitfmt_ca = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "3,21868 megameters");
+        test.equal(str, "2 quilòmetres");
         test.done();
     },
     testUnitFormatWithUsageVehicleDistance1_ca_AD: function(test) {
@@ -502,7 +502,7 @@ module.exports.testunitfmt_ca = {
     testUnitFormatLength2_ca_ES: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "mile",
+            unit: "meter",
             amount: 2000
         });
 
@@ -512,7 +512,7 @@ module.exports.testunitfmt_ca = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "3,21868 megameters");
+        test.equal(str, "2 quilòmetres");
         test.done();
     },
     testUnitFormatWithUsageVehicleDistance1_ca_ES: function(test) {
