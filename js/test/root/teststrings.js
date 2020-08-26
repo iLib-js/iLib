@@ -3711,5 +3711,25 @@ module.exports.teststrings = {
 
         test.equal(str.formatChoice(10.0), "Default items");
         test.done();
+    },
+    testStringFormatChoiceDecimal_ca_ES: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ca-ES");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(2.7), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_ca_ES2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ca-ES");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(14.4), "Default items");
+        test.done();
     }
 };
