@@ -1903,5 +1903,14 @@ module.exports.testcurrency = {
         test.equal(info.getCurrency(), "GEL");
 
         test.done();
+    },
+    testCurrency_my_MM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("my-MM");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "MMK");
+
+        test.done();
     }
 };

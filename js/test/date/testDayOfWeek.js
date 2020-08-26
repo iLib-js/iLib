@@ -1978,5 +1978,15 @@ module.exports.testweekdata = {
         test.equal(info.getWeekEndStart(), 6);
         test.equal(info.getWeekEndEnd(), 0);
         test.done();
+    },
+    testWeekData_my_MM: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("my-MM");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 0);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
     }
 }

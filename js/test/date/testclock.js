@@ -1783,5 +1783,14 @@ module.exports.testclock = {
         test.equal(info.getClock(), 24);
 
         test.done();
+    },
+    testClock_my_MM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("my-MM");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
     }
 }
