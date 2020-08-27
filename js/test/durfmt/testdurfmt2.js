@@ -9077,5 +9077,46 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_11[3], '11 h, 11 min, 11 s');
 
         test.done();
+    },
+    testDurFmt_my_MM: function(test) {
+        test.expect(16);
+        // 1 14
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [], textformatted_14 = [];
+        var clockformatted_1 = [], clockformatted_14 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "my-MM", style:"text", length:length[i], useNative: false});
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_14.push(textfmt.format({year: 14,month: 14,week: 14,day: 14}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_14.push(textfmt.format({hour: 14,minute: 14,second: 14}).toString());
+        }
+
+        test.equal(textformatted_1[0], '1 နှစ် 1 လ 1 ပတ်နှင့် 1 ရက်');
+        test.equal(textformatted_1[1], '1 နှစ် 1 လ 1 ပတ် 1 ရက်');
+        test.equal(textformatted_1[2], '1 နှစ် 1 လ 1 ပတ် 1 ရက်');
+        test.equal(textformatted_1[3], '1 နှစ် 1 လ 1 ပတ် 1 ရက်');
+
+        test.equal(textformatted_14[0], '14 နှစ် 14 လ 14 ပတ်နှင့် 14 ရက်');
+        test.equal(textformatted_14[1], '14 နှစ် 14 လ 14 ပတ် 14 ရက်');
+        test.equal(textformatted_14[2], '14 နှစ် 14 လ 14 ပတ် 14 ရက်');
+        test.equal(textformatted_14[3], '14 နှစ် 14 လ 14 ပတ် 14 ရက်');
+
+        test.equal(clockformatted_1[0], '1 နာရီ 1 မိနစ်နှင့် 1 စက္ကန့်');
+        test.equal(clockformatted_1[1], '1 နာရီ 1 မိနစ် 1 စက္ကန့်');
+        test.equal(clockformatted_1[2], '1 နာရီ 1 မိနစ် 1 s');
+        test.equal(clockformatted_1[3], '1 နာရီ 1 မိနစ် 1 s');
+
+        test.equal(clockformatted_14[0], '14 နာရီ 14 မိနစ်နှင့် 14 စက္ကန့်');
+        test.equal(clockformatted_14[1], '14 နာရီ 14 မိနစ် 14 စက္ကန့်');
+        test.equal(clockformatted_14[2], '14 နာရီ 14 မိနစ် 14 s');
+        test.equal(clockformatted_14[3], '14 နာရီ 14 မိနစ် 14 s');
+
+        test.done();
     }
 }

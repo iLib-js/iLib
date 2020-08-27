@@ -185,6 +185,32 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "eu-ES");
         test.done();
     },
+    testCountryLocale_my_MM: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "my-MM"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"မကာအို (တရုတ်ပြည်)");
+        test.equal(ctry.getCode("မကာအို (တရုတ်ပြည်)"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "my-MM");
+        test.done();
+    },
+    testCountryLocale_my_MM2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "my-MM"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"),"တောင်ကိုရီးယား");
+        test.equal(ctry.getCode('တောင်ကိုရီးယား'), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "my-MM");
+        test.done();
+    },
     
     testCountryGetByCodeUnknown: function(test) {
         try {
