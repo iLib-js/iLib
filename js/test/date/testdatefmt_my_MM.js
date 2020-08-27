@@ -1,5 +1,5 @@
 /*
- * testdatefmt_my_MM.js - test the date formatter object in Basque/Spain
+ * testdatefmt_my_MM.js - test the date formatter object in Burmese-Myanmar
  * 
  * Copyright © 2020, JEDLSoft
  *
