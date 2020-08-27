@@ -2195,5 +2195,15 @@ module.exports.testscriptinfo = {
         test.equal(li.getScript(), "Latn");
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
+    },
+    testScriptInfo_ne_NP: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ne-NP");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Deva");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
     }
 };

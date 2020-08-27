@@ -9077,5 +9077,46 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_11[3], '11 h, 11 min, 11 s');
 
         test.done();
+    },
+    testDurFmt_ne_NP: function(test) {
+        test.expect(16);
+        // 1 11
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [], textformatted_9 = [];
+        var clockformatted_1 = [], clockformatted_9 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "ne-NP", style:"text", length:length[i], useNative: false});
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_9.push(textfmt.format({year: 9,month: 9,week: 9,day: 9}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_9.push(textfmt.format({hour: 9,minute: 9,second: 9}).toString());
+        }
+
+        test.equal(textformatted_1[0], '1 वर्ष, 1 महिना, 1 हप्ता,1 दिन');
+        test.equal(textformatted_1[1], '1 वर्ष, 1 महिना, 1 हप्ता, 1 दिन');
+        test.equal(textformatted_1[2], '1 वर्ष1 महिना1 हप्ता1 दिन');
+        test.equal(textformatted_1[3], '1 वर्ष1 महिना1 हप्ता1 दिन');
+
+        test.equal(textformatted_9[0], '9 वर्ष, 9 महिना, 9 हप्ता,9 दिन');
+        test.equal(textformatted_9[1], '9 वर्ष, 9 महिना, 9 हप्ता, 9 दिन');
+        test.equal(textformatted_9[2], '9 वर्ष9 महिना9 हप्ता9 दिन');
+        test.equal(textformatted_9[3], '9 वर्ष9 महिना9 हप्ता9 दिन');
+
+        test.equal(clockformatted_1[0], '1 घण्टा, 1 मिनेट,1 सेकेन्ड');
+        test.equal(clockformatted_1[1], '1 घण्टा, 1 मिनेट, 1 सेकेन्ड');
+        test.equal(clockformatted_1[2], '1 घण्टा1 मिनेट1 सेकेन्ड');
+        test.equal(clockformatted_1[3], '1 घण्टा1 मिनेट1 सेकेन्ड');
+
+        test.equal(clockformatted_9[0], '9 घण्टा, 9 मिनेट,9 सेकेन्ड');
+        test.equal(clockformatted_9[1], '9 घण्टा, 9 मिनेट, 9 सेकेन्ड');
+        test.equal(clockformatted_9[2], '9 घण्टा9 मिनेट9 सेकेन्ड');
+        test.equal(clockformatted_9[3], '9 घण्टा9 मिनेट9 सेकेन्ड');
+
+        test.done();
     }
 }

@@ -1,7 +1,7 @@
 /*
  * testnumfmt.js - test the number formatter object
  *
- * Copyright © 2012-2018 JEDLSoft
+ * Copyright © 2012-2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -6869,6 +6869,94 @@ module.exports.testnumfmt = {
         test.ok(fmt);
 
         test.equal(fmt.format(12345678900), "1.23E+10");
+        test.done();
+    },
+    //test cases for ne-NP
+    testNumFmt_ne_NP: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "ne-NP",
+            maxFractionDigits: 2
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(1234567.89), "१,२३४,५६७.८९");
+        test.done();
+    },
+    testNumFmtNative_ne_NP: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "ne-NP",
+            useNative: true,
+            maxFractionDigits: 2
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(-1234568.78), "-१,२३४,५६८.७८");
+        test.done();
+    },
+    testNumFmtCurrencyFormatNativeCurrencyForLocale_ne_NP1: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            type: "currency",
+            locale: "ne-NP",
+            useNative: true,
+            currency: "NPR"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(100110.57), "Rs १००,११०.५७");
+        test.done();
+    },
+    testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ne_NP1: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            type: "currency",
+            locale: "ne-NP",
+            useNative: true,
+            currency: "NPR"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(-100110.57), "-Rs १००,११०.५७");
+        test.done();
+    },
+    testNumFmtCurrencyFormatCorrectCurrencyForLocale_ne_NP: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            type: "currency",
+            locale: "ne-NP",
+            currency: "NPR"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(100110.57), "Rs १००,११०.५७");
+        test.done();
+    },
+    testNumFmtPercentageFormatRegular_ne_NP: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "ne-NP",
+            useNative: true,
+            type: "percentage"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(57.8), "५७.८%");
+        test.done();
+    },
+    testNumFmtPercentageNativeFormatRegular_ne_NP: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "ne-NP",
+            type: "percentage"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(-57.8), "-५७.८%");
+        test.done();
+    },
+    testNumFmtPercentageNativeFormatNegative_ne_NP: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "ne-NP",
+            type: "percentage"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(57.8), "५७.८%");
         test.done();
     }
 };

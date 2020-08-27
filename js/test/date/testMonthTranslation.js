@@ -7361,5 +7361,50 @@ module.exports.testmonthtranslation = {
         test.equal(value[11], "abe.");
 
         test.done();
+    },
+    testMonthTranslate_ne_NP: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ne-NP", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "जनवरी");
+        test.equal(value[1], "फेब्रुअरी");
+        test.equal(value[2], "मार्च");
+        test.equal(value[3], "अप्रिल");
+        test.equal(value[4], "मे");
+        test.equal(value[5], "जुन");
+        test.equal(value[6], "जुलाई");
+        test.equal(value[7], "अगस्ट");
+        test.equal(value[8], "सेप्टेम्बर");
+        test.equal(value[9], "अक्टोबर");
+        test.equal(value[10], "नोभेम्बर");
+        test.equal(value[11], "डिसेम्बर");
+
+        var fmt = new DateFmt({locale:"ne-NP", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+
+        test.equal(value[0], "जनवरी");
+        test.equal(value[1], "फेब्रुअरी");
+        test.equal(value[2], "मार्च");
+        test.equal(value[3], "अप्रिल");
+        test.equal(value[4], "मे");
+        test.equal(value[5], "जुन");
+        test.equal(value[6], "जुलाई");
+        test.equal(value[7], "अगस्ट");
+        test.equal(value[8], "सेप्टेम्बर");
+        test.equal(value[9], "अक्टोबर");
+        test.equal(value[10], "नोभेम्बर");
+        test.equal(value[11], "डिसेम्बर");
+
+        test.done();
     }
 }
