@@ -30,7 +30,7 @@ module.exports.testlistfmt_my_MM = {
         ilib.clearCache();
         callback();
     },
-    testListFmteuESNumberFormatOne: function(test) {
+    testListFmtNumberFormatOne_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM"
         });
@@ -40,7 +40,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္"]), "တစ္");
         test.done();
     },
-    testListFmteuESNumberFormatTwo: function(test) {
+    testListFmtNumberFormatTwo_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM"
         });
@@ -50,7 +50,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္", "ႎႀစ္"]), 'တစ္နှင့် ႎႀစ္');
         test.done();
     },
-    testListFmteuESNumberFormatThree: function(test) {
+    testListFmtNumberFormatThree_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM"
         });
@@ -60,7 +60,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး"]), 'တစ္ ႎႀစ္နှင့် သံုး');
         test.done();
     },
-    testListFmteuESNumberFormatFour: function(test) {
+    testListFmtNumberFormatFour_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM"
         });
@@ -70,7 +70,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး"]), 'တစ္ ႎႀစ္ သံုးနှင့် ေလး');
         test.done();
     },
-    testListFmteuESNumberFormatFive: function(test) {
+    testListFmtNumberFormatFive_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM"
         });
@@ -80,7 +80,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး", "ငၝး"]), 'တစ္ ႎႀစ္ သံုး ေလးနှင့် ငၝး');
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatOneShort: function(test) {
+    testListFmtUnitStyleNumberFormatOneShort_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM",
             style: "unit"
@@ -91,7 +91,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္"]), "တစ္");
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatTwoShort: function(test) {
+    testListFmtUnitStyleNumberFormatTwoShort_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM",
             style: "unit"
@@ -102,7 +102,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္", "ႎႀစ္"]), 'တစ္နှင့် ႎႀစ္');
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatThreeShort: function(test) {
+    testListFmtUnitStyleNumberFormatThreeShort_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM",
             style: "unit"
@@ -113,7 +113,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး"]), 'တစ္ ႎႀစ္နှင့် သံုး');
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatFourShort: function(test) {
+    testListFmtUnitStyleNumberFormatFourShort_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM",
             style: "unit"
@@ -124,7 +124,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး"]), 'တစ္ ႎႀစ္ သံုးနှင့် ေလး');
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatFiveShort: function(test) {
+    testListFmtUnitStyleNumberFormatFiveShort_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM",
             style: "unit"
@@ -135,7 +135,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး", "ငၝး"]), 'တစ္ ႎႀစ္ သံုး ေလးနှင့် ငၝး');
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatOneFull: function(test) {
+    testListFmtUnitStyleNumberFormatOneFull_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM",
             style: "unit",
@@ -147,7 +147,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္"]), "တစ္");
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatTwoFull: function(test) {
+    testListFmtUnitStyleNumberFormatTwoFull_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM",
             style: "unit",
@@ -159,7 +159,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္", "ႎႀစ္"]), 'တစ္နှင့်ႎႀစ္');
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatThreeFull: function(test) {
+    testListFmtUnitStyleNumberFormatThreeFull_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM",
             style: "unit",
@@ -171,7 +171,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး"]), 'တစ္ ႎႀစ္နှင့် သံုး');
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatFourFull: function(test) {
+    testListFmtUnitStyleNumberFormatFourFull_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM",
             style: "unit",
@@ -183,7 +183,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး"]), 'တစ္ ႎႀစ္ သံုးနှင့် ေလး');
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatFiveFull: function(test) {
+    testListFmtUnitStyleNumberFormatFiveFull_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM",
             style: "unit",
@@ -195,7 +195,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး", "ငၝး"]), 'တစ္ ႎႀစ္ သံုး ေလးနှင့် ငၝး');
         test.done();
     },
-    testListFmtORStyleeuESNumberFormatOne: function(test) {
+    testListFmtORStyleNumberFormatOne_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM",
             style: "disjunction"
@@ -206,7 +206,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္"]), "တစ္");
         test.done();
     },
-    testListFmtORStyleeuESNumberFormatTwo: function(test) {
+    testListFmtORStyleNumberFormatTwo_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM",
             style: "disjunction"
@@ -217,7 +217,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္", "ႎႀစ္"]), 'တစ္ သို့မဟုတ် ႎႀစ္');
         test.done();
     },
-    testListFmtORStyleeuESNumberFormatThree: function(test) {
+    testListFmtORStyleNumberFormatThree_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM",
             style: "disjunction"
@@ -228,7 +228,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး"]), 'တစ္ ၊ ႎႀစ္ သို့မဟုတ် သံုး');
         test.done();
     },
-    testListFmtORStyleeuESNumberFormatFour: function(test) {
+    testListFmtORStyleNumberFormatFour_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM",
             style: "disjunction"
@@ -239,7 +239,7 @@ module.exports.testlistfmt_my_MM = {
         test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး"]), 'တစ္ ၊ ႎႀစ္ သံုး သို့မဟုတ် ေလး');
         test.done();
     },
-    testListFmtORStyleeuESNumberFormatFiveFull: function(test) {
+    testListFmtORStyleNumberFormatFiveFull_my_MM: function(test) {
         var fmt = new ListFmt({
             locale: "my-MM",
             style: "disjunction"
