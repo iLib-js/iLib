@@ -1,5 +1,5 @@
 /*
- * testdatefmtrange_ky_KG.js - test the date range formatter object Georgian/Georgia
+ * testdatefmtrange_ky_KG.js - test the date range formatter object Kyrgyz/Kyrgyzstan
  * 
  * Copyright © 2020, JEDLSoft
  *
