@@ -1,5 +1,5 @@
 /*
- * testdatefmtrange_lo_LA.js - test the date range formatter object Georgian/Georgia
+ * testdatefmtrange_lo_LA.js - test the date range formatter object Lao/Laos
  * 
  * Copyright © 2020, JEDLSoft
  *

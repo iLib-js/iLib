@@ -1,5 +1,5 @@
 /*
- * testdatefmt_lo_LA.js - test the date formatter object in Georgian
+ * testdatefmt_lo_LA.js - test the date formatter object in Lao
  * 
  * Copyright © 2020, JEDLSoft
  *
