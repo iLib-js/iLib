@@ -9037,6 +9037,46 @@ module.exports.testdurfmt2 = {
 
         test.done();
     },
+    testDurFmt_gl_ES: function(test) {
+        test.expect(16);
+        // 1 11
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_11 = [];
+        var clockformatted_1 = [],clockformatted_11 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "gl-ES", style:"text", length:length[i]});
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+        }
+            test.equal(textformatted_1[0], '1 ano, 1 mes, 1 semana e 1 día');
+            test.equal(textformatted_1[1], '1 ano, 1 mes, 1 sem., 1 día');
+            test.equal(textformatted_1[2], '1 a., 1 m., 1 sem., 1 d');
+            test.equal(textformatted_1[3], '1 a., 1 m., 1 sem., 1 d');
+    
+            test.equal(textformatted_11[0], '11 anos, 11 meses, 11 semanas e 11 días');
+            test.equal(textformatted_11[1], '11 anos, 11 meses, 11 sem., 11 días');
+            test.equal(textformatted_11[2], '11 a., 11 m., 11 sem., 11 d');
+            test.equal(textformatted_11[3], '11 a., 11 m., 11 sem., 11 d');
+    
+            test.equal(clockformatted_1[0], '1 hora, 1 minuto e 1 segundo');
+            test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
+            test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
+            test.equal(clockformatted_1[3], '1 h, 1 min, 1 s');
+
+            test.equal(clockformatted_11[0], '11 horas, 11 minutos e 11 segundos');
+            test.equal(clockformatted_11[1], '11 h, 11 min, 11 s');
+            test.equal(clockformatted_11[2], '11 h, 11 min, 11 s');
+            test.equal(clockformatted_11[3], '11 h, 11 min, 11 s');
+
+            test.done();
+    },
     testDurFmt_eu_ES: function(test) {
         test.expect(16);
         // 1 11

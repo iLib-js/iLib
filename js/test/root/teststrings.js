@@ -3263,7 +3263,8 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(1), "There items are one");
         test.done();
     },
-    testStringFormatChoiceCharClasses30: function(test) {
+
+    testStringFormatChoiceCharClasses32: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("eu-ES");
@@ -3273,17 +3274,35 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(1), "There items are one");
         test.done();
     },
-    testStringFormatChoiceCharClasses31: function(test) {
+    testStringFormatChoiceCharClasses30: function(test) {
+
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("eu-ES");
 
         test.ok(str !== null);
 
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses33: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("eu-ES");
+
+        test.ok(str !== null);
+        test.equal(str.formatChoice(11), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses31: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("eu-ES");
+
+        test.ok(str !== null);
         test.equal(str.formatChoice(16), "Default items");
         test.done();
     },
-    
     testStringFormatChoiceCharClassesComplex1: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");

@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
  * 
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,6 +48,7 @@ module.exports.files = [
     "testdatefmtrange_fr_FR.js",
     "testdatefmtrange_ga_IE.js",
     "testdatefmtrange_gu_IN.js",
+    "testdatefmtrange_gl_ES.js",
     "testdatefmtrange_ha_Latn_NG.js",
     "testdatefmtrange_he_IL.js",
     "testdatefmtrange_hi_IN.js",

@@ -13389,9 +13389,20 @@ module.exports.testlocaleinfo = {
         test.equal(info.getPaperSize(), "A4");
         test.done();
     },
+    testLocaleInfoQuotation_gl_ES: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("gl-ES");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
     testLocaleInfoQuotation_eu_ES: function(test) {
         test.expect(4);
         var info = new LocaleInfo("eu-ES");
+
         test.ok(info !== null);
 
         test.equal(info.getDelimiterQuotationStart(), "“");
