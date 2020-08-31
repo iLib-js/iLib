@@ -198,7 +198,19 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "hy-AM");
         test.done();
     },
-    
+    testCountryLocale10: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "eu-ES"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"Macau Txinako AEB" );
+        test.equal(ctry.getCode("Macau Txinako AEB"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "eu-ES");
+        test.done();
+    },
     testCountryGetByCodeUnknown: function(test) {
         try {
             var ctry = new Country();
