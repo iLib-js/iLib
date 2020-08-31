@@ -190,7 +190,7 @@ module.exports.testunitfmt_be_BY = {
     testUnitFormatLength1_be_BY: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "mile",
+            unit: "meter",
             amount: 2000
         });
 
@@ -200,13 +200,13 @@ module.exports.testunitfmt_be_BY = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "3,21868 Mm");
+        test.equal(str, "2 км");
         test.done();
     },
     testUnitFormatLength2_be_BY: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "mile",
+            unit: "meter",
             amount: 2000
         });
 
@@ -216,7 +216,7 @@ module.exports.testunitfmt_be_BY = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "3,21868 megameters");
+        test.equal(str, "2 кіламетры");
         test.done();
     },
     testUnitFormatWithUsageVehicleDistance1_be_BY: function(test) {
