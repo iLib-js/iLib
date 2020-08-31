@@ -1106,10 +1106,44 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ka-Geor-GE");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCodehy: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "hy"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "hy-Armn-AM");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCodehy2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "AM"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "hy-Armn-AM");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCodehy3: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "Armn-AM"
+            });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "hy-Armn-AM");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleByLocaleCode68: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
             locale: "gl-ES"
+
         });
         test.ok(typeof(lm) !== "undefined");
         var locale = lm.getLikelyLocale();
@@ -1128,17 +1162,14 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "gl-Latn-ES");
         test.done();
     },
-
    testLocaleMatcherGetLikelyLocaleByLocaleCode66: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
             locale: "eu-ES"
-
         });
         test.ok(typeof(lm) !== "undefined");
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
-
         test.equal(locale.getSpec(), "eu-Latn-ES");
         test.done();
     },
@@ -1150,7 +1181,6 @@ module.exports.testlocalematch = {
         test.ok(typeof(lm) !== "undefined");
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
-
         test.equal(locale.getSpec(), "eu-Latn-ES");
 
         test.done();
@@ -1904,6 +1934,28 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "ar-Hebr-IL");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocalehyAM: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "hy-AM"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "hy-AM");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocalehyAM2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "hy-Armn"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "hy-AM");
         test.done();
     }
 };

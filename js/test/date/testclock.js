@@ -1,4 +1,4 @@
- /*
+/*
  * testclock.js - test the 12/24 hour support amongst various locales
  *
  * Copyright © 2019-2020, JEDLSoft
@@ -1773,6 +1773,14 @@ module.exports.testclock = {
 
         test.equal(info.getClock(), 24);
 
+        test.done();
+    },
+    testClock_hy_AM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("hy-AM");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
         test.done();
     },
     testClock_gl_ES: function(test) {

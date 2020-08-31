@@ -1,5 +1,5 @@
  /*
- * testWeekdayTranslation.js
+ * testWeekdayTranslation.js - test the weekday's translation
  *
  * Copyright © 2019-2020, JEDLSoft
  *
@@ -11222,6 +11222,76 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[5], "პ");
         test.equal(value[6], "შ");
 
+        test.done();
+    },
+    testWeekdayTranslationFull_hy_AM: function(test) {
+        // full -> wide
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"hy-AM", date:"w", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "կիրակի");
+        test.equal(value[1], "երկուշաբթի");
+        test.equal(value[2], "երեքշաբթի");
+        test.equal(value[3], "չորեքշաբթի");
+        test.equal(value[4], "հինգշաբթի");
+        test.equal(value[5], "ուրբաթ");
+        test.equal(value[6], "շաբաթ");
+        test.done();
+    },
+    testWeekdayTranslationLong_hy_AM: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"hy-AM", date:"w", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "կիր");
+        test.equal(value[1], "երկ");
+        test.equal(value[2], "երք");
+        test.equal(value[3], "չրք");
+        test.equal(value[4], "հնգ");
+        test.equal(value[5], "ուր");
+        test.equal(value[6], "շբթ");
+
+        test.done();
+    },
+    testWeekdayTranslationMedium_hy_AM: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"hy-AM", date:"w", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "կր");
+        test.equal(value[1], "եկ");
+        test.equal(value[2], "եք");
+        test.equal(value[3], "չք");
+        test.equal(value[4], "հգ");
+        test.equal(value[5], "ու");
+        test.equal(value[6], "շբ");
+
+        test.done();
+    },
+    testWeekdayTranslationShort_hy_AM: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"hy-AM", date:"w", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "Կ");
+        test.equal(value[1], "Ե");
+        test.equal(value[2], "Ե");
+        test.equal(value[3], "Չ");
+        test.equal(value[4], "Հ");
+        test.equal(value[5], "Ո");
+        test.equal(value[6], "Շ");
         test.done();
     },
     testWeekdayTranslationFull_gl_ES: function(test) {

@@ -1,5 +1,5 @@
  /*
- * testnumfmt2.js
+ * testnumfmt2.js - test the number formatter object
  *
  * Copyright © 2019-2020, JEDLSoft
  *
@@ -3774,7 +3774,25 @@ module.exports.testnumfmt2 = {
         test.equal(curfmt.format(57.05), "57,05 ₾"); //GEL
         test.done();
     },
+    testNumFmt_hy_AM: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("hy-AM");
+        var fmt = new NumFmt({locale:"hy-AM", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), " ");
+        test.equal(fmt.format(123456789.45), "123 456 789,45");
 
+        var pctfmt = new NumFmt({locale:"hy-AM", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+
+        var curfmt = new NumFmt({locale: "hy-AM", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 դր.");
+        test.done();
+    },
     testNumFmt_gl_ES: function(test) {
         test.expect(9);
         var li = new LocaleInfo("gl-ES");

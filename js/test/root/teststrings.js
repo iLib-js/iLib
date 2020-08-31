@@ -3445,6 +3445,26 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(1), "There items are one");
         test.done();
     },
+    testStringFormatChoiceCharClassesComplexhyAM: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("hy-AM");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplexhyAM2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("hy-AM");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(15), "Default items");
+        test.done();
+    },
     
     testStringFormatChoiceDecimal1: function(test) {
         test.expect(2);
@@ -3710,14 +3730,32 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(1.7), "Default items");
         test.done();
     },
+    testStringFormatChoiceDecimalhyAM: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("hy-AM");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.0), "There items are one");
+        test.done();
+    },
     testStringFormatChoiceDecimal29: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("eu-ES");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimalhyAM2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("hy-AM");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(3.5), "Default items");
         test.done();
     },
     testStringFormatChoiceDecimal30: function(test) {

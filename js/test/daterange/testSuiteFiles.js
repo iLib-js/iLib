@@ -54,6 +54,7 @@ module.exports.files = [
     "testdatefmtrange_hi_IN.js",
     "testdatefmtrange_hr_HR.js",
     "testdatefmtrange_hu_HU.js",
+    "testdatefmtrange_hy_AM.js",
     "testdatefmtrange_id_ID.js",
     "testdatefmtrange_it_IT.js",
     "testdatefmtrange_ja_JP.js",

@@ -1974,6 +1974,15 @@ module.exports.testmeridiems = {
 
         test.done();
     },
+    testMeridiem_hy_AM: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"hy-AM"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
+        test.done();
+    },
     testMeridiem_gl_ES: function(test) {
         test.expect(3);
         var fmt = DateFmt.getMeridiemsRange({locale:"gl-ES"});
