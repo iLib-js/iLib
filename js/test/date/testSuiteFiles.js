@@ -52,6 +52,7 @@ module.exports.files = [
     "testdatefmt_es_CO.js",
     "testdatefmt_es_ES.js",
     "testdatefmt_et_EE.js",
+    "testdatefmt_eu_ES.js",
     "testdatefmt_fa_IR.js",
     "testdatefmt_fi_FI.js",
     "testdatefmt_fr_CA.js",
