@@ -2205,5 +2205,35 @@ module.exports.testscriptinfo = {
         test.equal(li.getScript(), "Latn");
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
+    },
+    testScriptInfo_hy_AM: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("hy-AM");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Armn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_gl_ES: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("gl-ES");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_eu_ES: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("eu-ES");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
     }
 };

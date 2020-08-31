@@ -9043,7 +9043,6 @@ module.exports.testdurfmt2 = {
         var textfmt;
         var data = setVariable();
         var length = data["fullLength"];
-
         var textformatted_1 = [],textformatted_11 = [];
         var clockformatted_1 = [],clockformatted_11 = [];
 
@@ -9055,7 +9054,6 @@ module.exports.testdurfmt2 = {
             clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
             clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
         }
-
         test.equal(textformatted_1[0], '1 any, 1 mes, 1 setmana i 1 dia');
         test.equal(textformatted_1[1], '1 any, 1 mes, 1 setm., 1 dia');
         test.equal(textformatted_1[2], '1 any, 1 m, 1 setm., 1 d');
@@ -9084,7 +9082,6 @@ module.exports.testdurfmt2 = {
         var textfmt;
         var data = setVariable();
         var length = data["fullLength"];
-
         var textformatted_1 = [],textformatted_18 = [];
         var clockformatted_1 = [],clockformatted_18 = [];
 
@@ -9116,6 +9113,125 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_18[1], '18 h, 18 min, 18 s');
         test.equal(clockformatted_18[2], '18 h, 18 min, 18 s');
         test.equal(clockformatted_18[3], '18 h, 18 min, 18 s');
+        test.done();
+    },
+    testDurFmt_hy_AM: function(test) {
+        test.expect(16);
+        // 1 18
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+        var textformatted_1 = [],textformatted_15 = [];
+        var clockformatted_1 = [],clockformatted_15 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "hy-AM", style:"text", length:length[i]});
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_15.push(textfmt.format({year: 15,month: 15,week: 15,day: 15}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_15.push(textfmt.format({hour: 15,minute: 15,second: 15}).toString());
+        }
+
+        test.equal(textformatted_1[0], '1 տարի, 1 ամիս, 1 շաբաթ և 1 օր');
+        test.equal(textformatted_1[1], '1 տ 1 ամս 1 շաբ 1 օր');
+        test.equal(textformatted_1[2], '1 տ 1 ա 1 շ 1 օ');
+        test.equal(textformatted_1[3], '1 տ 1 ա 1 շ 1 օ');
+
+        test.equal(textformatted_15[0], '15 տարի, 15 ամիս, 15 շաբաթ և 15 օր');
+        test.equal(textformatted_15[1], '15 տ 15 ամս 15 շաբ 15 օր');
+        test.equal(textformatted_15[2], '15 տ 15 ա 15 շ 15 օ');
+        test.equal(textformatted_15[3], '15 տ 15 ա 15 շ 15 օ');
+
+        test.equal(clockformatted_1[0], '1 ժամ, 1 րոպե և 1 վայրկյան');
+        test.equal(clockformatted_1[1], '1 ժ 1 ր 1 վրկ');
+        test.equal(clockformatted_1[2], '1 ժ 1 ր 1 վ');
+        test.equal(clockformatted_1[3], '1 ժ 1 ր 1 վ');
+
+        test.equal(clockformatted_15[0], '15 ժամ, 15 րոպե և 15 վայրկյան');
+        test.equal(clockformatted_15[1], '15 ժ 15 ր 15 վրկ');
+        test.equal(clockformatted_15[2], '15 ժ 15 ր 15 վ');
+        test.equal(clockformatted_15[3], '15 ժ 15 ր 15 վ');
+        test.done();
+    },
+    testDurFmt_gl_ES: function(test) {
+        test.expect(16);
+        // 1 11
+
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+        var textformatted_1 = [],textformatted_11 = [];
+        var clockformatted_1 = [],clockformatted_11 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "gl-ES", style:"text", length:length[i]});
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+        }
+        test.equal(textformatted_1[0], '1 ano, 1 mes, 1 semana e 1 día');
+        test.equal(textformatted_1[1], '1 ano, 1 mes, 1 sem., 1 día');
+        test.equal(textformatted_1[2], '1 a., 1 m., 1 sem., 1 d');
+        test.equal(textformatted_1[3], '1 a., 1 m., 1 sem., 1 d');
+    
+        test.equal(textformatted_11[0], '11 anos, 11 meses, 11 semanas e 11 días');
+        test.equal(textformatted_11[1], '11 anos, 11 meses, 11 sem., 11 días');
+        test.equal(textformatted_11[2], '11 a., 11 m., 11 sem., 11 d');
+        test.equal(textformatted_11[3], '11 a., 11 m., 11 sem., 11 d');
+    
+        test.equal(clockformatted_1[0], '1 hora, 1 minuto e 1 segundo');
+        test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[3], '1 h, 1 min, 1 s');
+
+        test.equal(clockformatted_11[0], '11 horas, 11 minutos e 11 segundos');
+        test.equal(clockformatted_11[1], '11 h, 11 min, 11 s');
+        test.equal(clockformatted_11[2], '11 h, 11 min, 11 s');
+        test.equal(clockformatted_11[3], '11 h, 11 min, 11 s');
+
+            test.done();
+    },
+    testDurFmt_eu_ES: function(test) {
+        test.expect(16);
+        // 1 11
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [], textformatted_11 = [];
+        var clockformatted_1 = [], clockformatted_11 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "eu-ES", style:"text", length:length[i]});
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+        }
+
+        test.equal(textformatted_1[0], '1 urte, 1 hilabete, 1 aste eta 1 egun');
+        test.equal(textformatted_1[1], '1 urte, 1 hilabete, 1 aste, 1 egun');
+        test.equal(textformatted_1[2], '1 u., 1 hil, 1 aste, 1 e.');
+        test.equal(textformatted_1[3], '1 u., 1 hil, 1 aste, 1 e.');
+
+        test.equal(textformatted_11[0], '11 urte, 11 hilabete, 11 aste eta 11 egun');
+        test.equal(textformatted_11[1], '11 urte, 11 hilabete, 11 aste, 11 egun');
+        test.equal(textformatted_11[2], '11 u., 11 hil, 11 aste, 11 e.');
+        test.equal(textformatted_11[3], '11 u., 11 hil, 11 aste, 11 e.');
+
+        test.equal(clockformatted_1[0], '1 ordu, 1 minutu eta 1 segundo');
+        test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[3], '1 h, 1 min, 1 s');
+
+        test.equal(clockformatted_11[0], '11 ordu, 11 minutu eta 11 segundo');
+        test.equal(clockformatted_11[1], '11 h, 11 min, 11 s');
+        test.equal(clockformatted_11[2], '11 h, 11 min, 11 s');
+        test.equal(clockformatted_11[3], '11 h, 11 min, 11 s');
 
         test.done();
     }
