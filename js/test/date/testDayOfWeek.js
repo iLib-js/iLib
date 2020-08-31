@@ -1969,6 +1969,26 @@ module.exports.testweekdata = {
         test.equal(info.getWeekEndEnd(), 0);
         test.done();
     },
+    testWeekData_ca_AD: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ca-AD");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 1);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+    },
+    testWeekData_ca_ES: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ca-ES");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 1);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+    },
     testWeekData_hy_AM: function(test) {
         test.expect(4);
         var info = new LocaleInfo("hy-AM");

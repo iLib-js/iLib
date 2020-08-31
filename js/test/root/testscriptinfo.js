@@ -2186,6 +2186,26 @@ module.exports.testscriptinfo = {
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
     },
+    testScriptInfo_ca_AD: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ca-AD");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_es_ES: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ca-ES");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
     testScriptInfo_hy_AM: function(test) {
         test.expect(4);
         var li = new LocaleInfo("hy-AM");

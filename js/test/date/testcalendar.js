@@ -23,10 +23,10 @@ if (typeof(LocaleInfo) === "undefined") {
 
 module.exports.testcalendar = {
     testDefaultCalendar_GregorianCaseAll: function(test) {
-        test.expect(196);
+        test.expect(198);
         var localeList = ["ar-AE","ar-BH","ar-DJ","ar-DZ","ar-EG","ar-IQ","ar-JO","ar-KW","ar-LB","ar-LY","ar-MA","ar-MR",
         "ar-OM","ar-QA","ar-SA","ar-SD","ar-SY","ar-TN","ar-YE","as-IN","az-Latn-AZ","bg-BG","bn-IN","bs-Latn-BA,bs-Latn-ME",
-        "cs-CZ","da-DK","de-AT","de-CH","de-DE","de-LU","et-EE","el-CY","el-GR","en-AM","en-AU","en-AZ","en-CA","en-GB","en-GH",
+        "ca-AD", "ca-ES", "cs-CZ","da-DK","de-AT","de-CH","de-DE","de-LU","et-EE","el-CY","el-GR","en-AM","en-AU","en-AZ","en-CA","en-GB","en-GH",
         "en-GM","en-HK","en-IE","en-IN","en-IS","en-JP","en-KE","en-KR","en-LK","en-LR","en-MM","en-MW","en-MY","en-NG","en-NZ",
         "en-PH","en-PK","en-PR","en-RW","en-SD","en-SG","en-SL","en-TW","en-TZ","en-UG","en-US","en-ZA","en-ZM","es-AR","es-BO",
         "es-CL","es-CO","es-CR","es-DO","es-EC","es-ES","es-GQ","es-GT","es-HN","es-MX","es-NI","es-PA","es-PE","es-PH","es-PR",
