@@ -1904,6 +1904,14 @@ module.exports.testcurrency = {
 
         test.done();
     },
+    testCurrency_be_BY: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("be-BY");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "BYN");
+        test.done();
+    },
     testCurrency_ne_NP: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ne-NP");

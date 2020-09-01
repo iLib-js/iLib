@@ -23,6 +23,7 @@ module.exports.files = [
     "testlistfmt.js",
     "testlistfmt_am_ET.js",
     "testlistfmt_ar.js",
+    "testlistfmt_be_BY.js",
     "testlistfmt_bs.js",
     "testlistfmt_ca.js",
     "testlistfmt_de.js",

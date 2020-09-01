@@ -172,6 +172,19 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "en-AU");
         test.done();
     },
+    testCountryLocale9: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "be-BY"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"Макаа, САР (Кітай)" );
+        test.equal(ctry.getCode("Макаа, САР (Кітай)"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "be-BY");
+        test.done();
+    },
     testCountryLocale_lo_LA: function(test) {
         test.expect(4);
         var ctry = new Country({

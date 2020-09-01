@@ -11223,6 +11223,76 @@ module.exports.testWeekdayTranslation = {
 
         test.done();
     },
+    testWeekdayTranslationFull_be_BY: function(test) {
+        // full -> wide
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"be-BY", date:"w", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "нядзеля");
+        test.equal(value[1], "панядзелак");
+        test.equal(value[2], "аўторак");
+        test.equal(value[3], "серада");
+        test.equal(value[4], "чацвер");
+        test.equal(value[5], "пятніца");
+        test.equal(value[6], "субота");
+        test.done();
+    },
+    testWeekdayTranslationLong_be_BY: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"be-BY", date:"w", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "нд");
+        test.equal(value[1], "пн");
+        test.equal(value[2], "аў");
+        test.equal(value[3], "ср");
+        test.equal(value[4], "чц");
+        test.equal(value[5], "пт");
+        test.equal(value[6], "сб");
+
+        test.done();
+    },
+    testWeekdayTranslationMedium_be_BY: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"be-BY", date:"w", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "нд");
+        test.equal(value[1], "пн");
+        test.equal(value[2], "аў");
+        test.equal(value[3], "ср");
+        test.equal(value[4], "чц");
+        test.equal(value[5], "пт");
+        test.equal(value[6], "сб");
+
+        test.done();
+    },
+    testWeekdayTranslationShort_be_BY: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"be-BY", date:"w", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "н");
+        test.equal(value[1], "п");
+        test.equal(value[2], "а");
+        test.equal(value[3], "с");
+        test.equal(value[4], "ч");
+        test.equal(value[5], "п");
+        test.equal(value[6], "с");
+        test.done();
+    },
     testWeekdayTranslationFull_lo_LA: function(test) {
         // full -> wide
         test.expect(7);

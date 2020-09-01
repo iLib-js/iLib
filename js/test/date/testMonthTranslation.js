@@ -7317,6 +7317,31 @@ module.exports.testmonthtranslation = {
 
         test.done();
     },
+    testMonthTranslate_be_BY: function(test) {
+        test.expect(12);
+
+        // full, long: MMMM
+        // short, medium: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"be-BY", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "студзень");
+        test.equal(value[1], "люты");
+        test.equal(value[2], "сакавік");
+        test.equal(value[3], "красавік");
+        test.equal(value[4], "май");
+        test.equal(value[5], "чэрвень");
+        test.equal(value[6], "ліпень");
+        test.equal(value[7], "жнівень");
+        test.equal(value[8], "верасень");
+        test.equal(value[9], "кастрычнік");
+        test.equal(value[10], "лістапад");
+        test.equal(value[11], "снежань");
+        test.done();
+    },
     testMonthTranslate_lo_LA: function(test) {
         test.expect(24);
 

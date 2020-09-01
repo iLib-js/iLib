@@ -3263,7 +3263,25 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(1), "There items are one");
         test.done();
     },
+    testStringFormatChoiceCharClasses25: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
 
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(0), "There are no items.");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses26: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
     testStringFormatChoiceCharClasses32: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
@@ -3274,6 +3292,37 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(1), "There items are one");
         test.done();
     },
+    testStringFormatChoiceCharClasses27: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(3), "The items are few");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses28: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(100), "The items are many");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses29: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(8), "The items are many");
+        test.done();
+    },
+    
     testStringFormatChoiceCharClasses30: function(test) {
 
         test.expect(2);
@@ -3783,6 +3832,36 @@ module.exports.teststrings = {
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.7), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal26: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(21.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal27: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(33.0), "The items are few");
+        test.done();
+    },
+    testStringFormatChoiceDecimal28: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(100.1), "Default items");
         test.done();
     },
     testStringFormatChoiceDecimal_lo_LA: function(test) {
