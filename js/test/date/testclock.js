@@ -1,4 +1,4 @@
- /*
+/*
  * testclock.js - test the 12/24 hour support amongst various locales
  *
  * Copyright © 2019-2020, JEDLSoft
@@ -1778,6 +1778,72 @@ module.exports.testclock = {
     testClock_be_BY: function(test) {
         test.expect(2);
         var info = new LocaleInfo("be-BY");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
+    },
+    testClock_lo_LA: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("lo-LA");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
+    },
+    testClock_ky_KG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ky-KG");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
+    },
+    testClock_ca_AD: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ca-AD");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
+    },
+    testClock_ca_ES: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ca-ES");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_hy_AM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("hy-AM");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_gl_ES: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("gl-ES");
+        test.ok(info !== null);
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_eu_ES: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("eu-ES");
+        test.ok(info !== null);
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_ne_NP: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ne-NP");
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);

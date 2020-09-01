@@ -120,46 +120,46 @@
                 "s": "{st} – {et}, {sd}/{sm}/{sy}"
             },
             "c01": {
-                "f": "{st} do {sd} de {sm} de {sy} – {et} do d de MMMM de yyyy",
-                "l": "{st} do {sd} de {sm} de {sy} – {et} do d de MMMM de yyyy",
-                "m": "{st}, {sd} de {sm} de {sy} – {et}, d de MMM de yyyy",
-                "s": "{st}, {sd}/{sm}/{sy} – {et}, dd/MM/yy"
+                "f": "{st} do {sd} de {sm} de {sy} – {et} do {ed} de {em} de {ey}",
+                "l": "{st} do {sd} de {sm} de {sy} – {et} do {ed} de {em} de {ey}",
+                "m": "{st}, {sd} de {sm} de {sy} – {et}, {ed} de {em} de {ey}",
+                "s": "{st}, {sd}/{sm}/{sy} – {et}, {ed}/{em}/{ey}"
             },
             "c02": {
-                "f": "{st} do {sd} de {sm} de {sy} – {et} do d de MMMM de yyyy",
-                "l": "{st} do {sd} de {sm} de {sy} – {et} do d de MMMM de yyyy",
-                "m": "{st}, {sd} de {sm} de {sy} – {et}, d de MMM de yyyy",
-                "s": "{st}, {sd}/{sm}/{sy} – {et}, dd/MM/yy"
+                "f": "{st} do {sd} de {sm} de {sy} – {et} do {ed} de {em} de {ey}",
+                "l": "{st} do {sd} de {sm} de {sy} – {et} do {ed} de {em} de {ey}",
+                "m": "{st}, {sd} de {sm} de {sy} – {et}, {ed} de {em} de {ey}",
+                "s": "{st}, {sd}/{sm}/{sy} – {et}, {ed}/{em}/{ey}"
             },
             "c03": {
-                "f": "{st} do {sd} de {sm} de {sy} – {et} do d de MMMM de yyyy",
-                "l": "{st} do {sd} de {sm} de {sy} – {et} do d de MMMM de yyyy",
-                "m": "{st}, {sd} de {sm} de {sy} – {et}, d de MMM de yyyy",
-                "s": "{st}, {sd}/{sm}/{sy} – {et}, dd/MM/yy"
+                "f": "{st} do {sd} de {sm} de {sy} – {et} do {ed} de {em} de {ey}",
+                "l": "{st} do {sd} de {sm} de {sy} – {et} do {ed} de {em} de {ey}",
+                "m": "{st}, {sd} de {sm} de {sy} – {et}, {ed} de {em} de {ey}",
+                "s": "{st}, {sd}/{sm}/{sy} – {et}, {ed}/{em}/{ey}"
             },
             "c10": {
-                "f": "{date} – {date}",
-                "l": "{date} – {date}",
-                "m": "{date} – {date}",
-                "s": "{date} – {date}"
+                "f": "{sd} – {ed} de {em} de {ey}",
+                "l": "{sd} – {ed} de {em} de {ey}",
+                "m": "{sd} – {ed} de {em} de {ey}",
+                "s": "{sd} – {ed}/{em}/{ey}"
             },
             "c11": {
-                "f": "{date} – {date}",
-                "l": "{date} – {date}",
-                "m": "{date} – {date}",
-                "s": "{date} – {date}"
+                "f": "{sd} de {sm} – {ed} de {em} de {ey}",
+                "l": "{sd} de {sm} – {ed} de {em} de {ey}",
+                "m": "{sd} de {sm} – {ed} de {em} de {ey}",
+                "s": "{sd}/{sm} – {ed}/{em}/{ey}"
             },
             "c12": {
-                "f": "d de MMMM de yyyy – {date}",
-                "l": "d de MMMM de yyyy – {date}",
-                "m": "d de MMM de yyyy – {date}",
-                "s": "dd/MM/yy – {date}"
+                "f": "{sd} de {sm} de {sy} – {ed} de {em} de {ey}",
+                "l": "{sd} de {sm} de {sy} – {ed} de {em} de {ey}",
+                "m": "{sd} de {sm} de {sy} – {ed} de {em} de {ey}",
+                "s": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}"
             },
             "c20": {
-                "f": "d de MMMM de yyyy – {date}",
-                "l": "d de MMMM de yyyy – {date}",
-                "m": "d de MMM de yyyy – {date}",
-                "s": "dd/MM/yy – {date}"
+                "f": "{sm} de {sy} – {em} de {ey}",
+                "l": "{sm} de {sy} – {em} de {ey}",
+                "m": "{sm} de {sy} – {em} de {ey}",
+                "s": "{sm}/{sy} – {em}/{ey}"
             },
             "c30": {
                 "f": "{sy} – {ey}",

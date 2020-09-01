@@ -11,6 +11,7 @@ Bug Fixes:
 * Updated to IANA time zone data 2020a
 * Put base option back on ResBundle
 * Fixed a few tools and dependencies so that ilib works on node v14
+* Fixed a bug which a default script for ky should be Cyrl instead of Arabic
 
 Build 009
 -------
