@@ -7346,7 +7346,6 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-
         test.equal(value[0], "ມ.ກ.");
         test.equal(value[1], "ກ.ພ.");
         test.equal(value[2], "ມ.ນ.");
@@ -7359,7 +7358,268 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "ຕ.ລ.");
         test.equal(value[10], "ພ.ຈ.");
         test.equal(value[11], "ທ.ວ.");
+        test.done();
+    },
+    testMonthTranslate_ky_KG: function(test) {
+        test.expect(24);
 
+        // full, long: MMMM
+        // medium: MMM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ky-KG", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "Январь");
+        test.equal(value[1], "Февраль");
+        test.equal(value[2], "Март");
+        test.equal(value[3], "Апрель");
+        test.equal(value[4], "Май");
+        test.equal(value[5], "Июнь");
+        test.equal(value[6], "Июль");
+        test.equal(value[7], "Август");
+        test.equal(value[8], "Сентябрь");
+        test.equal(value[9], "Октябрь");
+        test.equal(value[10], "Ноябрь");
+        test.equal(value[11], "Декабрь");
+
+        var fmt = new DateFmt({locale:"ky-KG", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+
+        test.equal(value[0], "Янв");
+        test.equal(value[1], "Фев");
+        test.equal(value[2], "Мар");
+        test.equal(value[3], "Апр");
+        test.equal(value[4], "Май");
+        test.equal(value[5], "Июн");
+        test.equal(value[6], "Июл");
+        test.equal(value[7], "Авг");
+        test.equal(value[8], "Сен");
+        test.equal(value[9], "Окт");
+        test.equal(value[10], "Ноя");
+        test.equal(value[11], "Дек");
+        test.done();
+    },
+    testMonthTranslate_ca_AD: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ca-AD", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "gener");
+        test.equal(value[1], "febrer");
+        test.equal(value[2], "març");
+        test.equal(value[3], "abril");
+        test.equal(value[4], "maig");
+        test.equal(value[5], "juny");
+        test.equal(value[6], "juliol");
+        test.equal(value[7], "agost");
+        test.equal(value[8], "setembre");
+        test.equal(value[9], "octubre");
+        test.equal(value[10], "novembre");
+        test.equal(value[11], "desembre");
+
+        var fmt = new DateFmt({locale:"ca-AD", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "gen.");
+        test.equal(value[1], "febr.");
+        test.equal(value[2], "març");
+        test.equal(value[3], "abr.");
+        test.equal(value[4], "maig");
+        test.equal(value[5], "juny");
+        test.equal(value[6], "jul.");
+        test.equal(value[7], "ag.");
+        test.equal(value[8], "set.");
+        test.equal(value[9], "oct.");
+        test.equal(value[10], "nov.");
+        test.equal(value[11], "des.");
+
+        test.done();
+    },
+    testMonthTranslate_ca_ES: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ca-ES", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "gener");
+        test.equal(value[1], "febrer");
+        test.equal(value[2], "març");
+        test.equal(value[3], "abril");
+        test.equal(value[4], "maig");
+        test.equal(value[5], "juny");
+        test.equal(value[6], "juliol");
+        test.equal(value[7], "agost");
+        test.equal(value[8], "setembre");
+        test.equal(value[9], "octubre");
+        test.equal(value[10], "novembre");
+        test.equal(value[11], "desembre");
+
+        var fmt = new DateFmt({locale:"ca-AD", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+
+        test.equal(value[0], "gen.");
+        test.equal(value[1], "febr.");
+        test.equal(value[2], "març");
+        test.equal(value[3], "abr.");
+        test.equal(value[4], "maig");
+        test.equal(value[5], "juny");
+        test.equal(value[6], "jul.");
+        test.equal(value[7], "ag.");
+        test.equal(value[8], "set.");
+        test.equal(value[9], "oct.");
+        test.equal(value[10], "nov.");
+        test.equal(value[11], "des.");
+        test.done();
+    },
+    testMonthTranslate_hy_AM: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"hy-AM", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "հունվար");
+        test.equal(value[1], "փետրվար");
+        test.equal(value[2], "մարտ");
+        test.equal(value[3], "ապրիլ");
+        test.equal(value[4], "մայիս");
+        test.equal(value[5], "հունիս");
+        test.equal(value[6], "հուլիս");
+        test.equal(value[7], "օգոստոս");
+        test.equal(value[8], "սեպտեմբեր");
+        test.equal(value[9], "հոկտեմբեր");
+        test.equal(value[10], "նոյեմբեր");
+        test.equal(value[11], "դեկտեմբեր");
+
+        var fmt = new DateFmt({locale:"hy-AM", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "հնվ");
+        test.equal(value[1], "փտվ");
+        test.equal(value[2], "մրտ");
+        test.equal(value[3], "ապր");
+        test.equal(value[4], "մյս");
+        test.equal(value[5], "հնս");
+        test.equal(value[6], "հլս");
+        test.equal(value[7], "օգս");
+        test.equal(value[8], "սեպ");
+        test.equal(value[9], "հոկ");
+        test.equal(value[10], "նոյ");
+        test.equal(value[11], "դեկ");
+        test.done();
+    },
+    testMonthTranslate_gl_ES: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"gl-ES", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "Xaneiro");
+        test.equal(value[1], "Febreiro");
+        test.equal(value[2], "Marzo");
+        test.equal(value[3], "Abril");
+        test.equal(value[4], "Maio");
+        test.equal(value[5], "Xuño");
+        test.equal(value[6], "Xullo");
+        test.equal(value[7], "Agosto");
+        test.equal(value[8], "Setembro");
+        test.equal(value[9], "Outubro");
+        test.equal(value[10], "Novembro");
+        test.equal(value[11], "Decembro");
+
+        var fmt = new DateFmt({locale:"gl-ES", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "Xan.");
+        test.equal(value[1], "Feb.");
+        test.equal(value[2], "Mar.");
+        test.equal(value[3], "Abr.");
+        test.equal(value[4], "Maio");
+        test.equal(value[5], "Xuño");
+        test.equal(value[6], "Xul.");
+        test.equal(value[7], "Ago.");
+        test.equal(value[8], "Set.");
+        test.equal(value[9], "Out.");
+        test.equal(value[10], "Nov.");
+        test.equal(value[11], "Dec.");
+        test.done();
+    },
+    testMonthTranslate_eu_ES: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"eu-ES", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "urtarrila");
+        test.equal(value[1], "otsaila");
+        test.equal(value[2], "martxoa");
+        test.equal(value[3], "apirila");
+        test.equal(value[4], "maiatza");
+        test.equal(value[5], "ekaina");
+        test.equal(value[6], "uztaila");
+        test.equal(value[7], "abuztua");
+        test.equal(value[8], "iraila");
+        test.equal(value[9], "urria");
+        test.equal(value[10], "azaroa");
+        test.equal(value[11], "abendua");
+
+        var fmt = new DateFmt({locale:"eu-ES", date:"m", length: "medium", useNative:false, timezone:"local"})
+
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "urt.");
+        test.equal(value[1], "ots.");
+        test.equal(value[2], "mar.");
+        test.equal(value[3], "api.");
+        test.equal(value[4], "mai.");
+        test.equal(value[5], "eka.");
+        test.equal(value[6], "uzt.");
+        test.equal(value[7], "abu.");
+        test.equal(value[8], "ira.");
+        test.equal(value[9], "urr.");
+        test.equal(value[10], "aza.");
+        test.equal(value[11], "abe.");
         test.done();
     }
 }

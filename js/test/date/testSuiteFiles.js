@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
  * 
- * Copyright © 2017-2018,2020 JEDLSoft
+ * Copyright © 2017-2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,6 +40,7 @@ module.exports.files = [
     "testdatefmt_bn_IN.js",
     "testdatefmt_bs_Cyrl_BA.js",
     "testdatefmt_bs_Latn_BA.js",
+    "testdatefmt_ca.js",
     "testdatefmt_cop_EG.js",
     "testdatefmt_cs_CZ.js",
     "testdatefmt_da_DK.js",
@@ -52,16 +53,19 @@ module.exports.files = [
     "testdatefmt_es_CO.js",
     "testdatefmt_es_ES.js",
     "testdatefmt_et_EE.js",
+    "testdatefmt_eu_ES.js",
     "testdatefmt_fa_IR.js",
     "testdatefmt_fi_FI.js",
     "testdatefmt_fr_CA.js",
     "testdatefmt_fr_FR.js",
     "testdatefmt_ga_IE.js",
+    "testdatefmt_gl_ES.js",
     "testdatefmt_gu_IN.js",
     "testdatefmt_ha_Latn_NG.js",
     "testdatefmt_he_IL.js",
     "testdatefmt_hi_IN.js",
     "testdatefmt_hr_HR.js",
+    "testdatefmt_hy_AM.js",
     "testdatefmt_id_ID.js",
     "testdatefmt_it_IT.js",
     "testdatefmt_ja_JP.js",
@@ -71,6 +75,7 @@ module.exports.files = [
     "testdatefmt_kn_IN.js",
     "testdatefmt_ko_KR.js",
     "testdatefmt_ku_Arab_IQ.js",
+    "testdatefmt_ky_KG.js",
     "testdatefmt_lo_LA.js",
     "testdatefmt_lt_LT.js",
     "testdatefmt_lv_LV.js",
