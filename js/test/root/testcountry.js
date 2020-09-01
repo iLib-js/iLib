@@ -198,7 +198,71 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "ky-KG");
         test.done();
     },
-    
+    testCountryLocale_ca_AD: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ca-AD"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"Macau (RAE Xina)");
+        test.equal(ctry.getCode("Macau (RAE Xina)"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ca-AD");
+        test.done();
+    },
+    testCountryLocale_ca_AD2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ca-AD"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"),"Corea del Sud");
+        test.equal(ctry.getCode("Corea del Sud"), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ca-AD");
+        test.done();
+    },
+    testCountryLocalehy_AM: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "hy-AM"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"), "Չինաստանի Մակաո ՀՎՇ");
+        test.equal(ctry.getCode("Չինաստանի Մակաո ՀՎՇ"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "hy-AM");
+        test.done();
+    },
+    testCountryLocalehy_AM2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "hy-AM"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"), 'Հարավային Կորեա');
+        test.equal(ctry.getCode('Հարավային Կորեա'), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "hy-AM");
+        test.done();
+    },
+    testCountryLocale10: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "eu-ES"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"Macau Txinako AEB" );
+        test.equal(ctry.getCode("Macau Txinako AEB"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "eu-ES");
+        test.done();
+    },
     testCountryGetByCodeUnknown: function(test) {
         try {
             var ctry = new Country();
