@@ -57,7 +57,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31-12-11 B 13:45 – B 14:30');
+        test.equal(fmt.format(start, end), '31-12-11၊ 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeInDayMedium: function(test) {
@@ -83,7 +83,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီ 31 B 13:45 – B 14:30');
+        test.equal(fmt.format(start, end), '2011၊ ဒီ 31 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeInDayLong: function(test) {
@@ -109,7 +109,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ 31 ဒီဇင်ဘာ B 13:45 – B 14:30');
+        test.equal(fmt.format(start, end), '2011၊ 31 ဒီဇင်ဘာ 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeInDayFull: function(test) {
@@ -135,7 +135,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီဇင်ဘာ 31 B 13:45 – B 14:30' );
+        test.equal(fmt.format(start, end), '2011၊ ဒီဇင်ဘာ 31 13:45 – 14:30' );
         test.done();
     },
     
@@ -162,7 +162,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30-12-11 B 13:45 – 31-12-11 B 14:30');
+        test.equal(fmt.format(start, end), '30-12-11၊ 13:45 – 31-12-11၊ 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeNextDayMedium: function(test) {
@@ -188,7 +188,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီ 30 B 13:45 – 2011၊ ဒီ 31 B 14:30');
+        test.equal(fmt.format(start, end), '2011၊ ဒီ 30 13:45 – 2011၊ ဒီ 31 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeNextDayLong: function(test) {
@@ -214,7 +214,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ 30 ဒီဇင်ဘာ B 13:45 – 2011၊ 31 ဒီဇင်ဘာ B 14:30');
+        test.equal(fmt.format(start, end), '2011၊ 30 ဒီဇင်ဘာ 13:45 – 2011၊ 31 ဒီဇင်ဘာ 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeNextDayFull: function(test) {
@@ -240,7 +240,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီဇင်ဘာ 30 B 13:45 – 2011၊ ဒီဇင်ဘာ 31 B 14:30');
+        test.equal(fmt.format(start, end), '2011၊ ဒီဇင်ဘာ 30 13:45 – 2011၊ ဒီဇင်ဘာ 31 14:30');
         test.done();
     },
     
@@ -267,7 +267,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '20 – 31-12-11');
+        test.equal(fmt.format(start, end), '20 – 31-12-11၊');
         test.done();
     },
     testDateRngFmtmyMMRangeMultiDayMedium: function(test) {
@@ -372,7 +372,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '20-11 – 31-12-11');
+        test.equal(fmt.format(start, end), '20-11 – 31-12-11၊');
         test.done();
     },
     testDateRngFmtmyMMRangeNextMonthMedium: function(test) {
@@ -477,7 +477,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '20-11-11 – 31-01-12');
+        test.equal(fmt.format(start, end), '20-11-11၊ – 31-01-12၊');
         test.done();
     },
     testDateRngFmtmyMMRangeNextYearMedium: function(test) {
@@ -582,7 +582,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '11-11 – 01-14');
+        test.equal(fmt.format(start, end), '11-11၊ – 01-14၊');
         test.done();
     },
     testDateRngFmtmyMMRangeMultiYearMedium: function(test) {
@@ -686,7 +686,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 – 2064");
+        test.equal(fmt.format(start, end), "2011၊ – 2064၊");
         test.done();
     }
 };

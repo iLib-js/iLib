@@ -59,7 +59,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11');
+        test.equal(fmt.format(date), '29-09-11၊');
         test.done();
     },
 
@@ -135,7 +135,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'B 13:45');
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
 
@@ -154,7 +154,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'B 13:45');
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
 
@@ -173,7 +173,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'B 13:45');
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
 
@@ -192,7 +192,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'B 1:45');
+        test.equal(fmt.format(date), '1:45');
         test.done();
     },
 
@@ -211,7 +211,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11 B 13:45');
+        test.equal(fmt.format(date), '29-09-11၊ 13:45');
         test.done();
     },
 
@@ -230,7 +230,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက် 29 B 13:45');
+        test.equal(fmt.format(date), '2011၊ စက် 29 13:45');
         test.done();
     },
 
@@ -249,7 +249,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ 29 စက်တင်ဘာ B 13:45');
+        test.equal(fmt.format(date), '2011၊ 29 စက်တင်ဘာ 13:45');
         test.done();
     },
 
@@ -268,7 +268,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29 B 13:45');
+        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29 13:45');
         test.done();
     },
     
@@ -479,7 +479,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11');
+        test.equal(fmt.format(date), '29-09-11၊');
         test.done();
     },
 
@@ -498,7 +498,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'B 13:45');
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
 
@@ -517,7 +517,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11 B 13:45');
+        test.equal(fmt.format(date), '29-09-11၊ 13:45');
         test.done();
     },
 
@@ -631,7 +631,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '09-11');
+        test.equal(fmt.format(date), '09-11၊');
         test.done();
     },
 
@@ -650,7 +650,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11');
+        test.equal(fmt.format(date), '29-09-11၊');
         test.done();
     },
 
@@ -954,7 +954,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "B 13:45");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
 
@@ -973,7 +973,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "B 13:45:37");
+        test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
 
@@ -992,7 +992,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "B 13:45");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
 
@@ -1017,7 +1017,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC B 13:45");
+        test.equal(fmt.format(date), "UTC 13:45");
         test.done();
     },
 
@@ -1042,7 +1042,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC B 13:45");
+        test.equal(fmt.format(date), "UTC 13:45");
         test.done();
     },
 
@@ -1061,7 +1061,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "B 13:45:37");
+        test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
 
@@ -1086,7 +1086,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC B 13:45:37");
+        test.equal(fmt.format(date), "UTC 13:45:37");
         test.done();
     },
 
@@ -1111,7 +1111,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC B 13:45:37");
+        test.equal(fmt.format(date), "UTC 13:45:37");
         test.done();
     },
 
@@ -1206,7 +1206,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "B 13:45");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
 
@@ -1225,7 +1225,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "B 13:45:37");
+        test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
 
@@ -1250,7 +1250,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "B 13:45");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
 
@@ -1276,7 +1276,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC B 13:45");
+        test.equal(fmt.format(date), "UTC 13:45");
         test.done();
     },
 
@@ -1302,7 +1302,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC B 13:45");
+        test.equal(fmt.format(date), "UTC 13:45");
         test.done();
     },
 
@@ -1321,7 +1321,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "B 13:45:37");
+        test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
 
@@ -1347,7 +1347,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC B 13:45:37");
+        test.equal(fmt.format(date), "UTC 13:45:37");
         test.done();
     },
 
@@ -1373,7 +1373,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC B 13:45:37");
+        test.equal(fmt.format(date), "UTC 13:45:37");
         test.done();
     },
 
@@ -1399,7 +1399,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC B 13:45:37");
+        test.equal(fmt.format(date), "UTC 13:45:37");
         test.done();
     },
 
