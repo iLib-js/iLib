@@ -1831,5 +1831,14 @@ module.exports.testclock = {
         test.ok(info !== null);
         test.equal(info.getClock(), 24);
         test.done();
+    },
+    testClock_ne_NP: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ne-NP");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
     }
 }

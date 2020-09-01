@@ -1227,6 +1227,28 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "eu-Latn-ES");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_ne: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ne"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ne-Deva-NP");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_ne_NP: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ne-NP"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ne-Deva-NP");
+        test.done();
+    },
     testLocaleMatcherMatchExactFullLocale: function(test) {
         test.expect(2);
         var lm = new LocaleMatcher({
@@ -1775,6 +1797,18 @@ module.exports.testlocalematch = {
         test.done();
     },
 
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForLanguage_ne: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ne"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ne-NP");
+        test.done();
+    },
+
     testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -1784,6 +1818,17 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "fi-FI"); // default is Latin
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_NP: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "NP"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ne-NP");
         test.done();
     },
 
@@ -2034,6 +2079,17 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "ar-Hebr-IL");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocaleForLangScript_ne_Deva: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ne-Deva"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ne-NP");
         test.done();
     },
     testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocaleForLangScript_laoo: function(test) {

@@ -290,6 +290,32 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "eu-ES");
         test.done();
     },
+    testCountryLocale_ne_NP: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ne-NP"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"(मकाउ चिनियाँ विशेष प्रशासनिक क्षेत्र");
+        test.equal(ctry.getCode("(मकाउ चिनियाँ विशेष प्रशासनिक क्षेत्र"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ne-NP");
+        test.done();
+    },
+    testCountryLocale_ne_NP2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ne-NP"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"), 'दक्षिण कोरिया');
+        test.equal(ctry.getCode('दक्षिण कोरिया'), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ne-NP");
+        test.done();
+    },
     testCountryGetByCodeUnknown: function(test) {
         try {
             var ctry = new Country();

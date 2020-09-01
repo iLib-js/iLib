@@ -1904,6 +1904,14 @@ module.exports.testcurrency = {
 
         test.done();
     },
+    testCurrency_ne_NP: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ne-NP");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "NPR");
+        test.done();
+    },
     testCurrency_lo_LA: function(test) {
         test.expect(2);
         var info = new LocaleInfo("lo-LA");

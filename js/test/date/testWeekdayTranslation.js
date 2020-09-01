@@ -11715,5 +11715,76 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[5], "O");
         test.equal(value[6], "L");
         test.done();
+    },
+    testWeekdayTranslationFull_ne_NP: function(test) {
+        // full -> wide
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ne-NP", date:"w", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "आइतबार");
+        test.equal(value[1], "सोमबार");
+        test.equal(value[2], "मङ्गलबार");
+        test.equal(value[3], "बुधबार");
+        test.equal(value[4], "बिहिबार");
+        test.equal(value[5], "शुक्रबार");
+        test.equal(value[6], "शनिबार");
+        test.done();
+    },
+    testWeekdayTranslationLong_ne_NP: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ne-NP", date:"w", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "आइत");
+        test.equal(value[1], "सोम");
+        test.equal(value[2], "मङ्गल");
+        test.equal(value[3], "बुध");
+        test.equal(value[4], "बिहि");
+        test.equal(value[5], "शुक्र");
+        test.equal(value[6], "शनि");
+
+        test.done();
+    },
+    testWeekdayTranslationMedium_ne_NP: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ne-NP", date:"w", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "आइत");
+        test.equal(value[1], "सोम");
+        test.equal(value[2], "मङ्गल");
+        test.equal(value[3], "बुध");
+        test.equal(value[4], "बिहि");
+        test.equal(value[5], "शुक्र");
+        test.equal(value[6], "शनि");
+
+        test.done();
+    },
+    testWeekdayTranslationShort_ne_NP: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ne-NP", date:"w", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "आ");
+        test.equal(value[1], "सो");
+        test.equal(value[2], "म");
+        test.equal(value[3], "बु");
+        test.equal(value[4], "बि");
+        test.equal(value[5], "शु");
+        test.equal(value[6], "श");
+
+        test.done();
     }
 }
