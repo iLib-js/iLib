@@ -9037,6 +9037,46 @@ module.exports.testdurfmt2 = {
 
         test.done();
     },
+    testDurFmt_lo_LA: function(test) {
+        test.expect(16);
+        // 1 18
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+        var textformatted_1 = [],textformatted_13 = [];
+        var clockformatted_1 = [],clockformatted_13 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "lo-LA", style:"text", length:length[i]});
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_13.push(textfmt.format({year: 13,month: 13,week: 13,day: 13}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_13.push(textfmt.format({hour: 13,minute: 13,second: 13}).toString());
+        }
+
+        test.equal(textformatted_1[0], '1 ປີ, 1 ເດືອນ, 1 ອາທິດ, 1 ມື້');
+        test.equal(textformatted_1[1], '1 ປີ, 1 ດ., 1 ອທ., 1 ມື້');
+        test.equal(textformatted_1[2], '1 ປ 1 ດ. 1 ອທ. 1 ມ.');
+        test.equal(textformatted_1[3], '1 ປ 1 ດ. 1 ອທ. 1 ມ.');
+
+        test.equal(textformatted_13[0], '13 ປີ, 13 ເດືອນ, 13 ອາທິດ, 13 ມື້');
+        test.equal(textformatted_13[1], '13 ປີ, 13 ດ., 13 ອທ., 13 ມື້');
+        test.equal(textformatted_13[2], '13 ປ 13 ດ. 13 ອທ. 13 ມ.');
+        test.equal(textformatted_13[3], '13 ປ 13 ດ. 13 ອທ. 13 ມ.');
+
+        test.equal(clockformatted_1[0], '1 ຊົ່ວໂມງ, 1 ນາທີ, 1 ວິນາທີ');
+        test.equal(clockformatted_1[1], '1 ຊມ, 1 ນທ, 1 ວິ');
+        test.equal(clockformatted_1[2], '1 ຊມ 1 ນທ 1 ວິ');
+        test.equal(clockformatted_1[3], '1 ຊມ 1 ນທ 1 ວິ');
+
+        test.equal(clockformatted_13[0], '13 ຊົ່ວໂມງ, 13 ນາທີ, 13 ວິນາທີ');
+        test.equal(clockformatted_13[1], '13 ຊມ, 13 ນທ, 13 ວິ');
+        test.equal(clockformatted_13[2], '13 ຊມ 13 ນທ 13 ວິ');
+        test.equal(clockformatted_13[3], '13 ຊມ 13 ນທ 13 ວິ');
+
+        test.done();
+    },
     testDurFmt_ky_KG: function(test) {
         test.expect(16);
         // 1 18
@@ -9195,7 +9235,6 @@ module.exports.testdurfmt2 = {
     testDurFmt_gl_ES: function(test) {
         test.expect(16);
         // 1 11
-
         var textfmt;
         var data = setVariable();
         var length = data["fullLength"];
@@ -9270,7 +9309,6 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_11[1], '11 h, 11 min, 11 s');
         test.equal(clockformatted_11[2], '11 h, 11 min, 11 s');
         test.equal(clockformatted_11[3], '11 h, 11 min, 11 s');
-
         test.done();
     }
 }

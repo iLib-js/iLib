@@ -1969,6 +1969,16 @@ module.exports.testweekdata = {
         test.equal(info.getWeekEndEnd(), 0);
         test.done();
     },
+    testWeekData_lo_LA: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("lo-LA");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 0);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+    },
     testWeekData_ky_KG: function(test) {
         test.expect(4);
         var info = new LocaleInfo("ky-KG");

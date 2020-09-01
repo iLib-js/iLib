@@ -1775,6 +1775,15 @@ module.exports.testclock = {
 
         test.done();
     },
+    testClock_lo_LA: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("lo-LA");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
+    },
     testClock_ky_KG: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ky-KG");

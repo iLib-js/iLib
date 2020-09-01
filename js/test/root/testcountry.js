@@ -172,6 +172,33 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "en-AU");
         test.done();
     },
+    testCountryLocale_lo_LA: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "lo-LA"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"ມາກາວ ເຂດປົກຄອງພິເສດ ຈີນ" );
+        test.equal(ctry.getCode("ມາກາວ ເຂດປົກຄອງພິເສດ ຈີນ"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "lo-LA");
+        test.done();
+    },
+    testCountryLocale_lo_LA2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "lo-LA"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"),"ເກົາຫລີໃຕ້" );
+        test.equal(ctry.getCode("ເກົາຫລີໃຕ້"), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "lo-LA");
+        test.done();
+    },
+    
     testCountryLocale_ky_KG: function(test) {
         test.expect(4);
         var ctry = new Country({
