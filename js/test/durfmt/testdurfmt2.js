@@ -9037,6 +9037,44 @@ module.exports.testdurfmt2 = {
 
         test.done();
     },
+    testDurFmt_ky_KG: function(test) {
+        test.expect(16);
+        // 1 18
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+        var textformatted_1 = [],textformatted_18 = [];
+        var clockformatted_1 = [],clockformatted_18 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "ky-KG", style:"text", length:length[i]});
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_18.push(textfmt.format({year: 18,month: 18,week: 18,day: 18}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_18.push(textfmt.format({hour: 18,minute: 18,second: 18}).toString());
+        }
+        test.equal(textformatted_1[0], '1 жыл, 1 ай, 1 апта, 1 күн');
+        test.equal(textformatted_1[1], '1 ж., 1 ай, 1 апт, 1 күн');
+        test.equal(textformatted_1[2], '1 ж., 1 ай, 1 ап, 1 кн');
+        test.equal(textformatted_1[3], '1 ж. 1 ай 1 ап 1 кн');
+
+        test.equal(textformatted_18[0], '18 жыл, 18 ай, 18 апта, 18 күн');
+        test.equal(textformatted_18[1], '18 ж., 18 ай, 18 апт, 18 күн');
+        test.equal(textformatted_18[2], '18 ж., 18 ай, 18 ап, 18 кн');
+        test.equal(textformatted_18[3], '18 ж. 18 ай 18 ап 18 кн');
+
+        test.equal(clockformatted_1[0], '1 саат, 1 мүнөт, 1 секунд');
+        test.equal(clockformatted_1[1], '1 ст, 1 мүн, 1 сек');
+        test.equal(clockformatted_1[2], '1 ст, 1 мүн, 1 сек');
+        test.equal(clockformatted_1[3], '1 ст 1 мүн 1 сек');
+
+        test.equal(clockformatted_18[0], '18 саат, 18 мүнөт, 18 секунд');
+        test.equal(clockformatted_18[1], '18 ст, 18 мүн, 18 сек');
+        test.equal(clockformatted_18[2], '18 ст, 18 мүн, 18 сек');
+        test.equal(clockformatted_18[3], '18 ст 18 мүн 18 сек');
+        test.done();
+    },
     testDurFmt_ca_AD: function(test) {
         test.expect(16);
         // 1 11

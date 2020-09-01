@@ -5130,6 +5130,31 @@ module.exports.testdatetimeformat = {
 
         test.done();
     },
+    testDateTimeFormat_ky_KG: function(test) {
+        test.expect(7);
+
+        var result1, result2, result3, result4;
+        result1 = new DateFmt({locale:"ky-KG", type:"date", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"ky-KG", type:"date", date:"dmwy", length: "long", useNative:false, timezone:"local"}).template;
+        result3 = new DateFmt({locale:"ky-KG", type:"date", date:"dmwy", length: "medium", useNative:false, timezone:"local"}).template;
+        result4 = new DateFmt({locale:"ky-KG", type:"date", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "yyyy-\'ж\'., d-MMMM, EEEE");
+        test.equal(result2, "yyyy-\'ж\'., d-MMMM, EEE");
+        test.equal(result3, "yyyy-\'ж\'., d-MMM, EE");
+        test.equal(result4, "d/M/yy, E");
+
+        result1 = new DateFmt({locale:"ky-KG", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"ky-KG", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "yyyy-\'ж\'., d-MMMM, EEEE HH:mm");
+        test.equal(result2, "d/M/yy, E HH:mm");
+
+        result1 = new DateFmt({locale:"ky-KG", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
+        test.equal(result1, "HH:mm:ss z");
+
+        test.done();
+    },
     testDateTimeFormat_ca_AD: function(test) {
         test.expect(7);
 

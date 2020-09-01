@@ -172,6 +172,32 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "en-AU");
         test.done();
     },
+    testCountryLocale_ky_KG: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ky-KG"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("CH"),"Швейцария" );
+        test.equal(ctry.getCode("Швейцария"), "CH");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ky-KG");
+        test.done();
+    },
+    testCountryLocale_ky_KG2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ky-KG"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"),"Түштүк Корея" );
+        test.equal(ctry.getCode("Түштүк Корея"), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ky-KG");
+        test.done();
+    },
     testCountryLocale_ca_AD: function(test) {
         test.expect(4);
         var ctry = new Country({

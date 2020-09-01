@@ -1974,6 +1974,16 @@ module.exports.testmeridiems = {
 
         test.done();
     },
+    testMeridiem_ky_KG: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"ky-KG"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "таңкы");
+        test.equal(fmt[1].name, "түштөн кийинки");
+
+        test.done();
+    },
     testMeridiem_ca_AD: function(test) {
         test.expect(3);
         var fmt = DateFmt.getMeridiemsRange({locale:"ca-AD"});

@@ -1904,6 +1904,14 @@ module.exports.testcurrency = {
 
         test.done();
     },
+    testCurrency_ky_KG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ky-KG");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "KGS");
+        test.done();
+    },
     testCurrency_ca_AD: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ca-AD");
@@ -1919,7 +1927,22 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
+        test.done();
+    },
+    testCurrency_gl_ES: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("gl-ES");
+        test.ok(info !== null);
 
+        test.equal(info.getCurrency(), "EUR");
+        test.done();
+    },
+    testCurrency_hy_AM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("hy-AM");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "AMD");
         test.done();
     }
 };

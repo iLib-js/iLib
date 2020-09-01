@@ -49,7 +49,6 @@ var rtlLanguages = [
     "jpr",
     "jrb",
     "ks",
-    "ky",
     "lad",
     "lah",
     "lki",

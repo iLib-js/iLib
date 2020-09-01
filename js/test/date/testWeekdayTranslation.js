@@ -25,7 +25,6 @@ if (typeof(DateFmt) === "undefined") {
     var DateFmt = require("../../lib/DateFmt.js");
 }
 
-
 module.exports.testWeekdayTranslation = {
     setUp: function(callback) {
         callback();
@@ -11221,6 +11220,77 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "ხ");
         test.equal(value[5], "პ");
         test.equal(value[6], "შ");
+
+        test.done();
+    },
+    testWeekdayTranslationFull_ky_KG: function(test) {
+        // full -> wide
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ky-KG", date:"w", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "жекшемби");
+        test.equal(value[1], "дүйшөмбү");
+        test.equal(value[2], "шейшемби");
+        test.equal(value[3], "шаршемби");
+        test.equal(value[4], "бейшемби");
+        test.equal(value[5], "жума");
+        test.equal(value[6], "ишемби");
+        test.done();
+    },
+    testWeekdayTranslationLong_ky_KG: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ky-KG", date:"w", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "жек.");
+        test.equal(value[1], "дүй.");
+        test.equal(value[2], "шейш.");
+        test.equal(value[3], "шарш.");
+        test.equal(value[4], "бейш.");
+        test.equal(value[5], "жума");
+        test.equal(value[6], "ишм.");
+
+        test.done();
+    },
+    testWeekdayTranslationMedium_ky_KG: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ky-KG", date:"w", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "жш.");
+        test.equal(value[1], "дш.");
+        test.equal(value[2], "шш.");
+        test.equal(value[3], "шр.");
+        test.equal(value[4], "бш.");
+        test.equal(value[5], "жм.");
+        test.equal(value[6], "иш.");
+
+        test.done();
+    },
+    testWeekdayTranslationShort_ky_KG: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ky-KG", date:"w", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "Ж");
+        test.equal(value[1], "Д");
+        test.equal(value[2], "Ш");
+        test.equal(value[3], "Ш");
+        test.equal(value[4], "Б");
+        test.equal(value[5], "Ж");
+        test.equal(value[6], "И");
 
         test.done();
     },

@@ -1106,6 +1106,28 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ka-Geor-GE");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_ky: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ky"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ky-Cyrl-KG");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_KG: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "KG"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ky-Cyrl-KG");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleByLocaleCode_ca: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -1661,6 +1683,17 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ka-GE");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleMinimalByLanguage_ky: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ky"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ky-Cyrl-KG");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleMinimalByLanguage6: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -1824,6 +1857,17 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "ka-GE");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_KG: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "KG"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ky-Cyrl-KG");
         test.done();
     },
 
