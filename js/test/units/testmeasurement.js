@@ -715,6 +715,12 @@ module.exports.testmeasurement = {
         test.equal(Measurement.getMeasurementSystemForLocale("zu-ZA"), "metric");
         test.done();
     },
+    testMeasurementGetMeasurementSystemOther4: function(test) {
+        test.expect(1);
+
+        test.equal(Measurement.getMeasurementSystemForLocale("be-BY"), "metric");
+        test.done();
+    },
 
     testMeasurementGetMeasurementSystemOtherWithLocaleObj: function(test) {
         test.expect(1);

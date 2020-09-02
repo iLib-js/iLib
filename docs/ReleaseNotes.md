@@ -12,6 +12,7 @@ Bug Fixes:
 * Put base option back on ResBundle
 * Fixed a few tools and dependencies so that ilib works on node v14
 * Fixed a default timezone in `my-MM` to `Asia/Yangon`
+* Fixed a bug which a default script for `ky` should be `Cyrl` instead of `Arabic`
 
 Build 009
 -------

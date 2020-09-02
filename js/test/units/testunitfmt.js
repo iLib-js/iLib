@@ -1936,6 +1936,30 @@ module.exports.testunitfmt = {
         test.equal(str, "1,000兆字节/秒");
         test.done();
     },
+    testUnitFormatDigitalSpeed5: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "megabyte/s",
+            amount: 1000
+        });
+
+        var uf = new UnitFmt({locale: "be-BY",length:"long",autoConvert:false,autoScale: false});
+        var str = uf.format(m1);
+        test.equal(str, "1 000 мегабайта у секунду");
+        test.done();
+    },
+    testUnitFormatDigitalSpeed6: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "megabyte/s",
+            amount: 1000
+        });
+
+        var uf = new UnitFmt({locale: "be-BY",length:"short",autoConvert:false,autoScale: false});
+        var str = uf.format(m1);
+        test.equal(str, "1 000 МБ/с");
+        test.done();
+    },
 
     testUnitFormatEnergy11: function(test) {
         test.expect(1);
