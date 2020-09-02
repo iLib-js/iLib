@@ -59,7 +59,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11၊');
+        test.equal(fmt.format(date), '29-09-11');
         test.done();
     },
 
@@ -211,7 +211,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11၊ 13:45');
+        test.equal(fmt.format(date), '29-09-11 13:45');
         test.done();
     },
 
@@ -479,7 +479,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11၊');
+        test.equal(fmt.format(date), '29-09-11');
         test.done();
     },
 
@@ -517,7 +517,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11၊ 13:45');
+        test.equal(fmt.format(date), '29-09-11 13:45');
         test.done();
     },
 
@@ -631,7 +631,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '09-11၊');
+        test.equal(fmt.format(date), '09-11');
         test.done();
     },
 
@@ -650,7 +650,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11၊');
+        test.equal(fmt.format(date), '29-09-11');
         test.done();
     },
 
