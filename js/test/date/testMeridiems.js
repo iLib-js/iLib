@@ -2059,5 +2059,15 @@ module.exports.testmeridiems = {
         test.equal(fmt[1].name, "अपराह्न");
 
         test.done();
+    },
+    testMeridiem_my_MM: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"my-MM"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'နံနက်');
+        test.equal(fmt[1].name, 'ညနေ');
+
+        test.done();
     }
 }

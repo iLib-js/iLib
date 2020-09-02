@@ -1260,6 +1260,28 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "eu-Latn-ES");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_my_MM: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "my-MM"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "my-Mymr-MM");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_my: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "my"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "my-Mymr-MM");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleByLocaleCode_ne: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -1970,6 +1992,17 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ka-GE");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_MM: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "MM"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "my-MM");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_KG: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -1993,7 +2026,6 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ca-AD");
         test.done();
     },
-
     testLocaleMatcherGetLikelyLocaleMinimalDefaultLocaleForScript1: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -2123,6 +2155,28 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "ar-Hebr-IL");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocaleForLangScript_my_Mymr: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "my-Mymr"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "my-MM");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocaleForLangScript_Mymr: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "Mymr"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "my-MM");
         test.done();
     },
     testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocaleForLangScript_ne_Deva: function(test) {

@@ -75,6 +75,7 @@ module.exports.files = [
     "testdatefmtrange_mn_Cyrl_MN.js",
     "testdatefmtrange_mr_IN.js",
     "testdatefmtrange_ms_MY.js",
+    "testdatefmtrange_my_MM.js",
     "testdatefmtrange_nb_NO.js",
     "testdatefmtrange_ne_NP.js",
     "testdatefmtrange_nl_NL.js",

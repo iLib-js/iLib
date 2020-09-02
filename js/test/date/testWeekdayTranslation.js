@@ -11856,5 +11856,76 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[6], "श");
 
         test.done();
+    },
+    testWeekdayTranslationFull_my_MM: function(test) {
+        // full -> wide
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"my-MM", date:"w", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "တနင်္ဂနွေ");
+        test.equal(value[1], "တနင်္လာ");
+        test.equal(value[2], "အင်္ဂါ");
+        test.equal(value[3], "ဗုဒ္ဓဟူး");
+        test.equal(value[4], "ကြာသပတေး");
+        test.equal(value[5], "သောကြာ");
+        test.equal(value[6], "စနေ");
+        test.done();
+    },
+    testWeekdayTranslationLong_my_MM: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"my-MM", date:"w", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "တနင်္ဂနွေ");
+        test.equal(value[1], "တနင်္လာ");
+        test.equal(value[2], "အင်္ဂါ");
+        test.equal(value[3], "ဗုဒ္ဓဟူး");
+        test.equal(value[4], "ကြာသပတေး");
+        test.equal(value[5], "သောကြာ");
+        test.equal(value[6], "စနေ");
+
+        test.done();
+    },
+    testWeekdayTranslationMedium_my_MM: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"my-MM", date:"w", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "တနင်္ဂနွေ");
+        test.equal(value[1], "တနင်္လာ");
+        test.equal(value[2], "အင်္ဂါ");
+        test.equal(value[3], "ဗုဒ္ဓဟူး");
+        test.equal(value[4], "ကြာသပတေး");
+        test.equal(value[5], "သောကြာ");
+        test.equal(value[6], "စနေ");
+
+        test.done();
+    },
+    testWeekdayTranslationShort_my_MM: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"my-MM", date:"w", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "တ");
+        test.equal(value[1], "တ");
+        test.equal(value[2], "အ");
+        test.equal(value[3], "ဗ");
+        test.equal(value[4], "က");
+        test.equal(value[5], "သ");
+        test.equal(value[6], "စ");
+
+        test.done();
     }
 }

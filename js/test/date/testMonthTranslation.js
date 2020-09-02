@@ -7691,5 +7691,50 @@ module.exports.testmonthtranslation = {
         test.equal(value[11], "डिसेम्बर");
 
         test.done();
+    },
+    testMonthTranslate_my_MM: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"my-MM", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "ဇန်နဝါရီ");
+        test.equal(value[1], "ဖေဖော်ဝါရီ");
+        test.equal(value[2], "မတ်");
+        test.equal(value[3], "ဧပြီ");
+        test.equal(value[4], "မေ");
+        test.equal(value[5], "ဇွန်");
+        test.equal(value[6], "ဇူလိုင်");
+        test.equal(value[7], "ဩဂုတ်");
+        test.equal(value[8], "စက်တင်ဘာ");
+        test.equal(value[9], "အောက်တိုဘာ");
+        test.equal(value[10], "နိုဝင်ဘာ");
+        test.equal(value[11], "ဒီဇင်ဘာ");
+
+        var fmt = new DateFmt({locale:"my-MM", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+
+        test.equal(value[0], "ဇန်");
+        test.equal(value[1], "ဖေ");
+        test.equal(value[2], "မတ်");
+        test.equal(value[3], "ဧ");
+        test.equal(value[4], "မေ");
+        test.equal(value[5], "ဇွန်");
+        test.equal(value[6], "ဇူ");
+        test.equal(value[7], "ဩ");
+        test.equal(value[8], "စက်");
+        test.equal(value[9], "အောက်");
+        test.equal(value[10], "နို");
+        test.equal(value[11], "ဒီ");
+
+        test.done();
     }
 }

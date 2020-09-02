@@ -1904,6 +1904,14 @@ module.exports.testcurrency = {
 
         test.done();
     },
+    testCurrency_my_MM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("my-MM");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "MMK");
+        test.done();
+    },
     testCurrency_be_BY: function(test) {
         test.expect(2);
         var info = new LocaleInfo("be-BY");
