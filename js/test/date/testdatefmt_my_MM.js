@@ -1002,7 +1002,7 @@ module.exports.testdatefmt_my_MM = {
             locale: "my-MM", 
             type: "time", 
             time: "hmz", 
-            timezone: "Asia/Rangoon",
+            timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
@@ -1017,7 +1017,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC 13:45");
+        test.equal(fmt.format(date), "+0630 13:45");
         test.done();
     },
 
@@ -1027,7 +1027,7 @@ module.exports.testdatefmt_my_MM = {
             locale: "my-MM", 
             type: "time", 
             time: "hmaz", 
-            timezone: "Asia/Rangoon",
+            timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
@@ -1042,7 +1042,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC 13:45");
+        test.equal(fmt.format(date), "+0630 13:45");
         test.done();
     },
 
@@ -1071,7 +1071,7 @@ module.exports.testdatefmt_my_MM = {
             locale: "my-MM", 
             type: "time", 
             time: "hmsz", 
-            timezone: "Asia/Rangoon",
+            timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
@@ -1086,7 +1086,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC 13:45:37");
+        test.equal(fmt.format(date), "+0630 13:45:37");
         test.done();
     },
 
@@ -1096,7 +1096,7 @@ module.exports.testdatefmt_my_MM = {
             locale: "my-MM", 
             type: "time", 
             time: "hmsaz", 
-            timezone: "Asia/Rangoon",
+            timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
@@ -1111,7 +1111,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC 13:45:37");
+        test.equal(fmt.format(date), "+0630 13:45:37");
         test.done();
     },
 
@@ -1261,7 +1261,7 @@ module.exports.testdatefmt_my_MM = {
             type: "time", 
             length: "full", 
             time: "hmz", 
-            timezone: "Asia/Rangoon",
+            timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
@@ -1276,7 +1276,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC 13:45");
+        test.equal(fmt.format(date), "+0630 13:45");
         test.done();
     },
 
@@ -1287,7 +1287,7 @@ module.exports.testdatefmt_my_MM = {
             type: "time", 
             length: "full", 
             time: "hmaz", 
-            timezone: "Asia/Rangoon",
+            timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
@@ -1302,7 +1302,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC 13:45");
+        test.equal(fmt.format(date), "+0630 13:45");
         test.done();
     },
 
@@ -1332,7 +1332,7 @@ module.exports.testdatefmt_my_MM = {
             type: "time", 
             length: "full", 
             time: "hmsz", 
-            timezone: "Asia/Rangoon",
+            timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
@@ -1347,7 +1347,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC 13:45:37");
+        test.equal(fmt.format(date), "+0630 13:45:37");
         test.done();
     },
 
@@ -1358,7 +1358,7 @@ module.exports.testdatefmt_my_MM = {
             type: "time", 
             length: "full", 
             time: "hmsaz", 
-            timezone: "Asia/Rangoon",
+            timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
@@ -1373,7 +1373,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC 13:45:37");
+        test.equal(fmt.format(date), "+0630 13:45:37");
         test.done();
     },
 
@@ -1384,7 +1384,7 @@ module.exports.testdatefmt_my_MM = {
             type: "time", 
             length: "full", 
             time: "hmsz", 
-            timezone: "Asia/Rangoon",
+            timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
@@ -1399,7 +1399,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "UTC 13:45:37");
+        test.equal(fmt.format(date), "+0630 13:45:37");
         test.done();
     },
 
