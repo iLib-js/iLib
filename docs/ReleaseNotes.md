@@ -1,6 +1,19 @@
 Release Notes for Version 14
 ============================
 
+Build 010
+-------
+Published as version 14.6.1
+
+New Features:
+
+Bug Fixes:
+* Updated to IANA time zone data 2020a
+* Put base option back on ResBundle
+* Fixed a few tools and dependencies so that ilib works on node v14
+* Fixed a default timezone in `my-MM` to `Asia/Yangon`
+* Fixed a bug which a default script for `ky` should be `Cyrl` instead of `Arabic`
+
 Build 009
 -------
 Published as version 14.6.0

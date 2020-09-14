@@ -1973,5 +1973,101 @@ module.exports.testmeridiems = {
         test.equal(fmt[1].name, "PM");
 
         test.done();
+    },
+    testMeridiem_be_BY: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"be-BY"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
+        test.done();
+    },
+    testMeridiem_lo_LA: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"lo-LA"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "ກ່ອນທ່ຽງ");
+        test.equal(fmt[1].name, "ຫຼັງທ່ຽງ");
+
+        test.done();
+    },
+    testMeridiem_ky_KG: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"ky-KG"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "таңкы");
+        test.equal(fmt[1].name, "түштөн кийинки");
+
+        test.done();
+    },
+    testMeridiem_ca_AD: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"ca-AD"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "a. m.");
+        test.equal(fmt[1].name, "p. m.");
+
+        test.done();
+    },
+    testMeridiem_ca_ES: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"ca-ES"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "a. m.");
+        test.equal(fmt[1].name, "p. m.");
+        test.done();
+    },
+    testMeridiem_hy_AM: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"hy-AM"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
+        test.done();
+    },
+    testMeridiem_gl_ES: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"gl-ES"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "a.m.");
+        test.equal(fmt[1].name, "p.m.");
+
+        test.done();
+    },
+    testMeridiem_en_ES: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"eu-ES"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
+        test.done();
+    },
+    testMeridiem_ne_NP: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"ne-NP"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "पूर्वाह्न");
+        test.equal(fmt[1].name, "अपराह्न");
+
+        test.done();
+    },
+    testMeridiem_my_MM: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"my-MM"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'နံနက်');
+        test.equal(fmt[1].name, 'ညနေ');
+
+        test.done();
     }
 }

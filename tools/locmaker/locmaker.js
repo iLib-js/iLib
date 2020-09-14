@@ -3,7 +3,7 @@
  * all of the locale data needed for a particular set of classes with
  * a particular set of locales.
  *
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@ function usage() {
             "-h or --help\n" +
             "  this help\n" +
             "toDir\n" +
-            "  directory where the output should go\n");
+            "  directory where the output should go");
     process.exit(1);
 }
 
@@ -58,7 +58,7 @@ if (!fs.existsSync(localeDir)) {
 }
 
 console.log("locmaker - generate js files containing ilib data for particular locales.\n" +
-	"Copyright (c) 2017 JEDLSoft\n");
+	"Copyright (c) 2017 JEDLSoft");
 
 util.print("output dir: " + toDir + "\n");
 

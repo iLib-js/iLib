@@ -38,7 +38,7 @@ function usage() {
         "iLibDataDir\n" +
     "  Current ilib locale directory in order to refer the current currency info.\n" +
         "toDir\n" +
-    "  directory to output the currency.jf json files. Default: current dir.\n");
+    "  directory to output the currency.jf json files. Default: current dir.");
     process.exit(1);
 }
 
@@ -119,8 +119,8 @@ if (process.argv.length > 3) {
     toDir = process.argv[3];
 }
 
-console.log("gencurrency - generate currency information files.\n" + "Copyright © 2016, 2018-2020, JEDLSoft\n");
-console.log("output dir: " + toDir + "\n");
+console.log("gencurrency - generate currency information files.\n" + "Copyright © 2016, 2018-2020, JEDLSoft");
+console.log("output dir: " + toDir);
 
 var ilibDataFileName = path.join(ilibDir, "currency.json");
 

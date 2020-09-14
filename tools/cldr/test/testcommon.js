@@ -833,7 +833,7 @@ module.exports.testcommon = {
             }
         };
         common.mergeAndPrune(data);
-        //util.print("data.a.m.data is " + JSON.stringify(data.a.m.data) + "\n");
+        //console.log("data.a.m.data is " + JSON.stringify(data.a.m.data));
         test.ok(common.isEmpty(data.a.m.data));
         test.done();
     },

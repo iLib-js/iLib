@@ -5129,5 +5129,230 @@ module.exports.testdatetimeformat = {
         test.equal(result1,  "HH:mm:ss z");
 
         test.done();
+    },
+    testDateTimeFormat_be_BY: function(test) {
+        test.expect(7);
+
+        var result1, result2, result3, result4;
+        result1 = new DateFmt({locale:"be-BY", type:"date", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"be-BY", type:"date", date:"dmwy", length: "long", useNative:false, timezone:"local"}).template;
+        result3 = new DateFmt({locale:"be-BY", type:"date", date:"dmwy", length: "medium", useNative:false, timezone:"local"}).template;
+        result4 = new DateFmt({locale:"be-BY", type:"date", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "EEEE, d MMMM yyyy \'г\'.");
+        test.equal(result2, "EEE, d MMMM yyyy \'г\'.");
+        test.equal(result3, "EE, d.MM.yyyy");
+        test.equal(result4, "E, d.MM.yy");
+
+        result1 = new DateFmt({locale:"be-BY", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"be-BY", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "EEEE, d MMMM yyyy \'г\'. \'у\' HH:mm");
+        test.equal(result2, "E, d.MM.yy, HH:mm");
+
+        result1 = new DateFmt({locale:"be-BY", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
+        test.equal(result1,  "HH:mm:ss z");
+
+        test.done();
+    },
+    testDateTimeFormat_lo_LA: function(test) {
+        test.expect(7);
+
+        var result1, result2, result3, result4;
+
+        result1 = new DateFmt({locale:"lo-LA", type:"date", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"lo-LA", type:"date", date:"dmwy", length: "long", useNative:false, timezone:"local"}).template;
+        result3 = new DateFmt({locale:"lo-LA", type:"date", date:"dmwy", length: "medium", useNative:false, timezone:"local"}).template;
+        result4 = new DateFmt({locale:"lo-LA", type:"date", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "EEEE ທີ d MMMM yyyy");
+        test.equal(result2, "EEE ທີ d MMMM yyyy");
+        test.equal(result3, "EE ທີ d MMM yyyy");
+        test.equal(result4, "E ທີ d/M/yyyy");
+
+        result1 = new DateFmt({locale:"lo-LA", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"lo-LA", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "EEEE ທີ d MMMM yyyy, H:mm");
+        test.equal(result2, "E ທີ d/M/yyyy, H:mm");
+
+        result1 = new DateFmt({locale:"lo-LA", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
+        test.equal(result1,  "H:mm:ss z");
+        test.done();
+    },
+    testDateTimeFormat_ky_KG: function(test) {
+        test.expect(7);
+
+        var result1, result2, result3, result4;
+        result1 = new DateFmt({locale:"ky-KG", type:"date", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"ky-KG", type:"date", date:"dmwy", length: "long", useNative:false, timezone:"local"}).template;
+        result3 = new DateFmt({locale:"ky-KG", type:"date", date:"dmwy", length: "medium", useNative:false, timezone:"local"}).template;
+        result4 = new DateFmt({locale:"ky-KG", type:"date", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "yyyy-\'ж\'., d-MMMM, EEEE");
+        test.equal(result2, "yyyy-\'ж\'., d-MMMM, EEE");
+        test.equal(result3, "yyyy-\'ж\'., d-MMM, EE");
+        test.equal(result4, "d/M/yy, E");
+
+        result1 = new DateFmt({locale:"ky-KG", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"ky-KG", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "yyyy-\'ж\'., d-MMMM, EEEE HH:mm");
+        test.equal(result2, "d/M/yy, E HH:mm");
+
+        result1 = new DateFmt({locale:"ky-KG", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
+        test.equal(result1, "HH:mm:ss z");
+
+        test.done();
+    },
+    testDateTimeFormat_ca_AD: function(test) {
+        test.expect(7);
+
+        var result1, result2, result3, result4;
+
+        result1 = new DateFmt({locale:"ca-AD", type:"date", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"ca-AD", type:"date", date:"dmwy", length: "long", useNative:false, timezone:"local"}).template;
+        result3 = new DateFmt({locale:"ca-AD", type:"date", date:"dmwy", length: "medium", useNative:false, timezone:"local"}).template;
+        result4 = new DateFmt({locale:"ca-AD", type:"date", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "EEEE, d MMMM \'de\' yyyy");
+        test.equal(result2, "EEE, d MMMM \'de\' yyyy");
+        test.equal(result3, "EE, d MMM yyyy");
+        test.equal(result4, "E, d/M/yy");
+
+        result1 = new DateFmt({locale:"ca-AD", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"ca-AD", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "EEEE, d MMMM \'de\' yyyy \'a\' \'les\' H:mm");
+        test.equal(result2, "E, d/M/yy H:mm");
+
+        result1 = new DateFmt({locale:"ca-AD", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
+        test.equal(result1,  "H:mm:ss z");
+
+        test.done();
+    },
+    testDateTimeFormat_ca_ES: function(test) {
+        test.expect(7);
+
+        var result1, result2, result3, result4;
+        result1 = new DateFmt({locale:"ca-ES", type:"date", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"ca-ES", type:"date", date:"dmwy", length: "long", useNative:false, timezone:"local"}).template;
+        result3 = new DateFmt({locale:"ca-ES", type:"date", date:"dmwy", length: "medium", useNative:false, timezone:"local"}).template;
+        result4 = new DateFmt({locale:"ca-ES", type:"date", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "EEEE, d MMMM \'de\' yyyy");
+        test.equal(result2, "EEE, d MMMM \'de\' yyyy");
+        test.equal(result3, "EE, d MMM yyyy");
+        test.equal(result4, "E, d/M/yy");
+
+        result1 = new DateFmt({locale:"ca-ES", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"ca-ES", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "EEEE, d MMMM \'de\' yyyy \'a\' \'les\' H:mm");
+        test.equal(result2, "E, d/M/yy H:mm");
+
+        result1 = new DateFmt({locale:"ca-ES", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
+        test.equal(result1,  "H:mm:ss z");
+        test.done();
+    },
+    testDateTimeFormat_hy_AM: function(test) {
+        test.expect(7);
+
+        var result1, result2, result3, result4;
+        result1 = new DateFmt({locale:"hy-AM", type:"date", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"hy-AM", type:"date", date:"dmwy", length: "long", useNative:false, timezone:"local"}).template;
+        result3 = new DateFmt({locale:"hy-AM", type:"date", date:"dmwy", length: "medium", useNative:false, timezone:"local"}).template;
+        result4 = new DateFmt({locale:"hy-AM", type:"date", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "yyyy թ. MMMM d, EEEE");
+        test.equal(result2, "dd MMMM, yyyy թ., EEE");
+        test.equal(result3, "dd MMM, yyyy թ., EE");
+        test.equal(result4, "dd.MM.yy, E");
+
+        result1 = new DateFmt({locale:"hy-AM", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"hy-AM", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "yyyy թ. MMMM d, EEEE, HH:mm");
+        test.equal(result2, "dd.MM.yy, E, HH:mm");
+
+        result1 = new DateFmt({locale:"hy-AM", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
+        test.equal(result1,  "HH:mm:ss z");
+        test.done();
+    },
+    testDateTimeFormat_eu_ES: function(test) {
+        test.expect(7);
+
+        var result1, result2, result3, result4;
+        result1 = new DateFmt({locale:"eu-ES", type:"date", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"eu-ES", type:"date", date:"dmwy", length: "long", useNative:false, timezone:"local"}).template;
+        result3 = new DateFmt({locale:"eu-ES", type:"date", date:"dmwy", length: "medium", useNative:false, timezone:"local"}).template;
+        result4 = new DateFmt({locale:"eu-ES", type:"date", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "yyyy(\'e\')\'ko\' MMMM\'ren\' d(\'a\'), EEEE");
+        test.equal(result2, "yyyy(\'e\')\'ko\' MMMM\'ren\' d(\'a\'), EEE");
+        test.equal(result3, "yyyy(\'e\')\'ko\' MMM d(\'a\'), EE");
+        test.equal(result4, "yy/M/d, E");
+
+        result1 = new DateFmt({locale:"eu-ES", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"eu-ES", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "yyyy(\'e\')\'ko\' MMMM\'ren\' d(\'a\'), EEEE HH:mm");
+        test.equal(result2, "yy/M/d, E HH:mm");
+
+        result1 = new DateFmt({locale:"eu-ES", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
+        test.equal(result1,  "HH:mm:ss (z)");
+        test.done();
+    },
+    testDateTimeFormat_ne_NP: function(test) {
+        test.expect(7);
+
+        var result1, result2, result3, result4;
+
+        result1 = new DateFmt({locale:"ne-NP", type:"date", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"ne-NP", type:"date", date:"dmwy", length: "long", useNative:false, timezone:"local"}).template;
+        result3 = new DateFmt({locale:"ne-NP", type:"date", date:"dmwy", length: "medium", useNative:false, timezone:"local"}).template;
+        result4 = new DateFmt({locale:"ne-NP", type:"date", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "yyyy MMMM d, EEEE");
+        test.equal(result2, "yyyy MMMM d, EEE");
+        test.equal(result3, "yyyy MMM d, EE");
+        test.equal(result4, "yy/M/d, E");
+
+        result1 = new DateFmt({locale:"ne-NP", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"ne-NP", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "yyyy MMMM d, EEEE HH:mm");
+        test.equal(result2, "yy/M/d, E, HH:mm");
+
+        result1 = new DateFmt({locale:"ne-NP", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
+        test.equal(result1,  "HH:mm:ss z");
+
+        test.done();
+    },
+    testDateTimeFormat_my_MM: function(test) {
+        test.expect(7);
+
+        var result1, result2, result3, result4;
+
+        result1 = new DateFmt({locale:"my-MM", type:"date", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"my-MM", type:"date", date:"dmwy", length: "long", useNative:false, timezone:"local"}).template;
+        result3 = new DateFmt({locale:"my-MM", type:"date", date:"dmwy", length: "medium", useNative:false, timezone:"local"}).template;
+        result4 = new DateFmt({locale:"my-MM", type:"date", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "yyyy၊ MMMM d၊ EEEE");
+        test.equal(result2, "yyyy၊ d MMMM၊ EEE");
+        test.equal(result3, "yyyy၊ MMM d၊ EE");
+        test.equal(result4, "dd-MM-yy၊ E");
+
+        result1 = new DateFmt({locale:"my-MM", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
+        result2 = new DateFmt({locale:"my-MM", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
+
+        test.equal(result1, "yyyy၊ MMMM d၊ EEEE H:mm");
+        test.equal(result2, "dd-MM-yy၊ E H:mm");
+
+        result1 = new DateFmt({locale:"my-MM", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
+        test.equal(result1,  "z HH:mm:ss");
+
+        test.done();
     }
 }

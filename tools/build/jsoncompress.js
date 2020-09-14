@@ -1,7 +1,7 @@
 /* 
  * jsoncompress.js - ilib tool to remove the whitespace from json files
  *
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,14 +25,14 @@ var common = require('../cldr/common');
 var path = require('../../js/lib/Path.js');
 
 function usage() {
-	util.print("Usage: jsoncompress.js [-h] [source_dir [target_dir]]\n" +
+	console.log("Usage: jsoncompress.js [-h] [source_dir [target_dir]]\n" +
 		"Find all json files and compress all the whitespace out of them.\n\n" +
 		"-h or --help\n" +
 		"  this help\n" +
 		"source_dir\n" +
 		'  Where to find json files to compress. Default "."\n' +
 		"target_dir\n" +
-		'  Where to put the results. Default "compressed"\n');
+		'  Where to put the results. Default "compressed"');
 	process.exit(1);
 }
 
@@ -52,7 +52,7 @@ if (process.argv.length > 2) {
 
 fs.exists(sourcedir, function (exists) {
 	if (!exists) {
-		util.print("Could not access source directory " + sourcedir + "\n");
+		console.log("Could not access source directory " + sourcedir);
 		usage();
 	}
 });
@@ -62,14 +62,14 @@ fs.exists(targetdir, function (exists) {
 		try {
 			common.makeDirs(targetdir);
 		} catch (e) {
-			util.print("Could not access or create target directory " + targetdir + "\nError: " + e + "\n");
+			console.log("Could not access or create target directory " + targetdir + "\nError: " + e);
 			usage();
 		}
 	}
 });
 
-util.print("source dir: " + sourcedir + "\n");
-util.print("target dir: " + targetdir + "\n");
+console.log("source dir: " + sourcedir);
+console.log("target dir: " + targetdir);
 
 //escape some of these Unicode characters because Google Closure Compiler doesn't like them
 function escape(str) {
@@ -111,18 +111,18 @@ function walk(root, dir) {
 						obj = JSON.parse(data);
 						var targetPath = path.join(targetdir, sourcePathRelative);
 						
-						util.print("compress " + sourcePath + " -> " + targetPath + "\n");
+						console.log("compress " + sourcePath + " -> " + targetPath);
 						
 						var targetDir = path.dirname(targetPath);
-						//util.print("dirname is " + targetDir + "\n");
+						//console.log("dirname is " + targetDir);
 						common.makeDirs(targetDir);
 						
-						//util.print("writing file " + targetPath + "\n");
+						//console.log("writing file " + targetPath);
 						fs.writeFileSync(targetPath, escape(JSON.stringify(obj)), 'utf8');
 					}
 				} catch (err) {
-					util.print("File " + sourcePath + " is not readable or does not contain valid JSON.\n");
-					util.print(err + "\n");
+					console.log("File " + sourcePath + " is not readable or does not contain valid JSON.");
+					console.log(err);
 					process.exit(2);
 				}
 			}

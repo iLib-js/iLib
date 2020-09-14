@@ -2,7 +2,7 @@
  * genclockprefs.js - ilib tool to generate the  clock json fragments from
  * the CLDR data files
  *
- * Copyright © 2013-2018, LGE
+ * Copyright © 2013-2018, 2020 LGE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ function usage() {
         "-h or --help\n" +
         "  this help\n" +
         "locale_data_dir\n" +
-    "  the top level of the ilib locale data directory\n");
+    "  the top level of the ilib locale data directory");
     process.exit(1);
 }
 var cldrDirName;
@@ -64,7 +64,7 @@ function loadFile(pathname) {
     if (fs.existsSync(pathname)) {
         var json = fs.readFileSync(pathname, "utf-8");
         ret = JSON.parse(json);
-        //console.log("pathname is :"+pathname+"\n");#
+        //console.log("pathname is :"+pathname);#
     }
     return ret;
 }
@@ -139,12 +139,12 @@ function anyProperties(data) {
 
 function writeClockPrefs(language, script, region, data) {
     var pathname = calcLocalePath(language, script, region, "");
-    //console.log("data to be written into jf files" + pathname + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data)+"\n");
+    //console.log("data to be written into jf files" + pathname + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data));
     if (data.generated) {
         if (anyProperties(data)) {
             console.log("Writing " + pathname);
             makeDirs(pathname);
-            //console.log("data to be written into jf files" + pathname + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data["clock"])+"\n");#
+            //console.log("data to be written into jf files" + pathname + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringifyta["clock"]));#
             if (typeof (data["clock"]) != 'undefined') {
                 data.generated = true;
                 makeDirs(pathname);
@@ -180,8 +180,8 @@ function getClockPrefs(locale) {
     } else {
         console.log("could not find default clock preference for locale " + locale);
     }
-    //console.log("time format is :"+JSON.stringify(timeformat)+"\n");
-    //console.log("clock preference is :"+JSON.stringify(clockprefs)+"\n");
+    //console.log("time format is :"+JSON.stringify(timeformat));
+    //console.log("clock preference is :"+JSON.stringify(clockprefs));
     return clockprefs;
 }
 

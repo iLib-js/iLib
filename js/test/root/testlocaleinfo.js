@@ -13388,5 +13388,85 @@ module.exports.testlocaleinfo = {
         test.equal(info.getDelimiterQuotationEnd(), "“");
         test.equal(info.getPaperSize(), "A4");
         test.done();
+    },
+    testLocaleInfoQuotation_be_BY: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("be-BY");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "«");
+        test.equal(info.getDelimiterQuotationEnd(), "»");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_lo_LA: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("lo-LA");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_ky_KG: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ky-KG");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "«");
+        test.equal(info.getDelimiterQuotationEnd(), "»");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_hy_AM: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("hy-AM");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "«");
+        test.equal(info.getDelimiterQuotationEnd(), "»");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_gl_ES: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("gl-ES");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_eu_ES: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("eu-ES");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_my_MM: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("my-MM");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_ne_NP: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ne-NP");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
     }
 };

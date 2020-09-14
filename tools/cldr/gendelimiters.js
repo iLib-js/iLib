@@ -2,7 +2,7 @@
  * gendelimiters.js - ilib tool to generate delimiters json fragments from  
  * the CLDR data files 
  *  
- * Copyright © 2013-2018, LGE 
+ * Copyright © 2013-2018, 2020 LGE 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -37,7 +37,7 @@ function usage() {
         "-h or --help\n" +
         "  this help\n" +
         "locale_data_dir\n" +
-        "  the top level of the ilib locale data directory\n");
+        "  the top level of the ilib locale data directory");
     process.exit(1);
 }
 
@@ -84,7 +84,7 @@ function loadFile_jf(path) {
     var ret = undefined;
 
     if (fs.existsSync(path)) {
-        //console.log("path is :" + path + "\n");
+        //console.log("path is :" + path);
         var json = fs.readFileSync(path, "utf-8");
         ret = JSON.parse(json);
     }
@@ -190,7 +190,7 @@ function anyProperties(data) {
 function writeQuotationChars(language, script, region, data) {
 
     var path = calcLocalePath(language, script, region, "");
-    //console.log("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data)+"\n");
+    //console.log("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data));
     if (data.generated) {
         if (anyProperties(data)) {
             console.log("Writing " + path);
@@ -217,7 +217,7 @@ function getQuotationChars(language, script, region, data) {
 
     if (delimiters) {
         console.log("Loaded existing resources from " + calcLocalePath(language, script, region, "delimiters.jf"));
-        //console.log("\nLoaded existing resources data " + JSON.stringify(delimiters) + "\n");
+        //console.log("\nLoaded existing resources data " + JSON.stringify(delimiters));
         delimiters.generated = false;
         return delimiters;
     }
@@ -269,11 +269,11 @@ for (language in localeData) {
 
 //resources.data = getQuotationChars(undefined, undefined, undefined, localeData.data); 
 console.log("Merging and pruning r...");
-//console.log("\nLoaded existing resources " + JSON.stringify(resources) + "\n");
+//console.log("\nLoaded existing resources " + JSON.stringify(resources));
 //writeQuotationChars(undefined, undefined, undefined, resources.data); 
-//console.log("\ndata before merge and pruning\n"+JSON.stringify(resources)+"\n");
+//console.log("\ndata before merge and pruning\n"+JSON.stringify(resources));
 mergeAndPrune(resources);
-//console.log("\ndata after merge and pruning\n"+JSON.stringify(resources)+"\n");
+//console.log("\ndata after merge and pruning\n"+JSON.stringify(resources));
 //writeQuotationChars(undefined, undefined, undefined, resources.data);
 
 for (language in resources) {

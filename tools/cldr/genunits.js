@@ -1,7 +1,7 @@
 /*
  * genunits.js - ilib tool to generate the json data about unit formats
  *
- * Copyright © 2013, 2018 JEDLSoft
+ * Copyright © 2013, 2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ function usage() {
             "-h or --help\n" +
             "  this help\n" +
             "locale_data_dir\n" +
-            "  the top level of the ilib locale data directory\n");
+            "  the top level of the ilib locale data directory");
     process.exit(1);
 }
 
@@ -50,9 +50,9 @@ process.argv.forEach(function (val, index, array) {
 localeDirName = process.argv[2] || "tmp";
 
 console.log("genunits - tool to generate the json data about unit formats from the CLDR data.\n" +
-        "Copyright (c) 2013, 2018 JEDLSoft\n");
+        "Copyright (c) 2013, 2018 JEDLSoft");
 
-console.log("locale dir: " + localeDirName + "\n");
+console.log("locale dir: " + localeDirName );
 
 if (!fs.existsSync(localeDirName)) {
     common.makeDirs(localeDirName);
@@ -588,7 +588,7 @@ function frameUnits(data, locale, localeData) {
     return localeData;
 }
 
-console.log("Loading locale data...\n");
+console.log("Loading locale data...");
 
 cldrData.availableLocales.forEach(function(locale) {
     var path = "main/" + locale + "/units";

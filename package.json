@@ -1,6 +1,6 @@
 {
     "name": "ilib",
-    "version": "14.6.0",
+    "version": "14.6.1",
     "main": "js/index.js",
     "description": "iLib is a cross-engine library of internationalization (i18n) classes written in pure JS",
     "keywords": [
@@ -75,6 +75,7 @@
         "ilib-webpack-plugin": "^1.3.0",
         "iso-15924": "^2.1.0",
         "jsdoc2": "^2.4.0",
+        "node-expat": "^2.3.18",
         "nodeunit": "^0.11.0",
         "should": "^13.2.3",
         "tap": "^10.0.2",

@@ -1,7 +1,7 @@
 /* 
  * mkli.js - ilib tool to remove the non-json fragments
  *
- * Copyright © 2013, LGE
+ * Copyright © 2013, 2020 LGE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,20 +24,20 @@ var util = require('util');
 var common = require('../cldr/common');
 
 function usage() {
-	util.print("Usage: mkli.js [-h] [locale_data_dir]\n" +
+	console.log("Usage: mkli.js [-h] [locale_data_dir]\n" +
 		"Make the localeinfo.json files from the jf fragment files.\n\n" +
 		"-h or --help\n" +
 		"  this help\n" +
 		"locale_data_dir\n" +
-		'  the top level of the ilib locale data directory. Default "."\n');
+		'  the top level of the ilib locale data directory. Default "."');
 	process.exit(1);
 }
 
 localeDirName = process.argv[2] || ".";
-util.print("locale dir: " + localeDirName + "\n");
+console.log("locale dir: " + localeDirName);
 fs.exists(localeDirName, function (exists) {
 	if (!exists) {
-		util.print("Could not access locale data directory " + localeDirName);
+		console.log("Could not access locale data directory " + localeDirName);
 		usage();
 	}
 });
@@ -61,8 +61,8 @@ function walk(dir, locale) {
 						merged = common.merge(merged, obj);
 					}
 				} catch (err) {
-					util.print("File " + path + " is not readable or does not contain valid JSON.\n");
-					util.print(err + "\n");
+					console.log("File " + path + " is not readable or does not contain valid JSON.");
+					console.log(err);
 				}
 			}
 		}
@@ -75,9 +75,9 @@ function walk(dir, locale) {
 		}
 		merged.locale = locale;
 		fs.writeFileSync(path + "/localeinfo.json", JSON.stringify(merged, true, 4), 'utf8');
-		util.print(path + ": merged *.jf into localeinfo.json\n");
+		console.log(path + ": merged *.jf into localeinfo.json");
 	} else {
-		util.print(path + ": nothing to write\n");
+		console.log(path + ": nothing to write");
 	}
 
 	return results;

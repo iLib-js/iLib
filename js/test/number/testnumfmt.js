@@ -1,7 +1,11 @@
 /*
  * testnumfmt.js - test the number formatter object
  *
- * Copyright © 2012-2018 JEDLSoft
+<<<<<<< HEAD
+ * Copyright © 2012-2018 2020 JEDLSoft
+=======
+ * Copyright © 2012-2018, 2020 JEDLSoft
+>>>>>>> development
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -6869,6 +6873,187 @@ module.exports.testnumfmt = {
         test.ok(fmt);
 
         test.equal(fmt.format(12345678900), "1.23E+10");
+        test.done();
+    },
+
+    //test cases for my-MM
+
+    testNumFmt_my_MM: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "my-MM",
+            maxFractionDigits: 2
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(12340568.78), "၁၂,၃၄၀,၅၆၈.၇၈");
+        test.done();
+    },
+    testNumFmtNative_my_MM: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "my-MM",
+            useNative: true,
+            maxFractionDigits: 2
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(57.8), "၅၇.၈");
+        test.done();
+    },
+    testNumFmtPercentageFormatRegular_my_MM: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "my-MM",
+            useNative: true,
+            type: "percentage"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(-57.8), '-၅၇.၈%');
+        test.done();
+    },
+    testNumFmtPercentageNativeFormatRegular_my_MM: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "my-MM",
+            type: "percentage"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(-57.8), '-၅၇.၈%');
+        test.done();
+    },
+    testNumFmtCurrencyFormatNativeCurrencyForLocale_my_MM1: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            type: "currency",
+            locale: "my-MM",
+            useNative: true,
+            currency: "MMK"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(123.57), "၁၂၄ K");
+        test.done();
+    },
+    testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_my_MM1: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            type: "currency",
+            locale: "my-MM",
+            useNative: true,
+            currency: "MMK"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(-123.57), "-၁၂၄ K");
+        test.done();
+    },
+    testNumFmtCurrencyFormatCorrectCurrencyForLocale_my_MM: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            type: "currency",
+            locale: "my-MM",
+            currency: "MMK"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(123.57), "၁၂၄ K");
+        test.done();
+    },
+    testNumFmtPercentageFormatRegular_my_MM: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "my-MM",
+            useNative: true,
+            type: "percentage"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(-1234568.78), "-၁,၂၃၄,၅၆၈.၇၈%");
+        test.done();
+    },
+
+    //test cases for ne-NP
+    testNumFmt_ne_NP: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "ne-NP",
+            maxFractionDigits: 2
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(1234567.89), "१,२३४,५६७.८९");
+        test.done();
+    },
+    testNumFmtNative_ne_NP: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "ne-NP",
+            useNative: true,
+            maxFractionDigits: 2
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(-123.57), "-१२३.५७");
+        test.done();
+    },
+    
+    testNumFmtCurrencyFormatNativeCurrencyForLocale_ne_NP1: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            type: "currency",
+            locale: "ne-NP",
+            useNative: true,
+            currency: "NPR"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(100110.57), "Rs १००,११०.५७");
+        test.done();
+    },
+    testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ne_NP1: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            type: "currency",
+            locale: "ne-NP",
+            useNative: true,
+            currency: "NPR"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(-100110.57), "-Rs १००,११०.५७");
+        test.done();
+    },
+    testNumFmtCurrencyFormatCorrectCurrencyForLocale_ne_NP: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            type: "currency",
+            locale: "ne-NP",
+            currency: "NPR"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(100110.57), "Rs १००,११०.५७");
+        test.done();
+    },
+    testNumFmtPercentageFormatRegular_ne_NP: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "ne-NP",
+            useNative: true,
+            type: "percentage"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(57.8), "५७.८%");
+        test.done();
+    },
+    testNumFmtPercentageNativeFormatRegular_ne_NP: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "ne-NP",
+            type: "percentage"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(-57.8), "-५७.८%");
+        test.done();
+    },
+    testNumFmtPercentageNativeFormatNegative_ne_NP: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "ne-NP",
+            type: "percentage"
+        });
+        test.ok(fmt);
+        test.equal(fmt.format(57.8), "५७.८%");
         test.done();
     }
 };

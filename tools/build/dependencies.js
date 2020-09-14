@@ -3,7 +3,7 @@
  * uses those modules to have the right require() statements at the
  * top of them
  *
- * Copyright © 2015, JEDLSoft
+ * Copyright © 2015, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ var util = require('util');
 var path = require('path');
 
 function usage() {
-	util.print("Usage: dependencies.js [-h] [-c] [-v] [-I lib_dir ] [start_dir]\n" +
+	console.log("Usage: dependencies.js [-h] [-c] [-v] [-I lib_dir ] [start_dir]\n" +
 		"Automatically find modules and update code that uses those modules\n" +
 		"to have the right require() statements at the top of them.\n\n" +
 		"-h or --help\n" +
@@ -43,7 +43,7 @@ function usage() {
 		"  start dir for modules." +
 		"start_dir\n" +
 		"  The top level of the diretory to search for js file that need their\n" +
-		'  require() statements updated. Default "."\n');
+		'  require() statements updated. Default "."');
 	process.exit(1);
 }
 
@@ -62,7 +62,7 @@ for (var i = 2; i < process.argv.length; i++) {
 	case "-i":
 	case "--include":
 		if (i+1 >= process.argv.length) {
-			util.print("Error: " + process.argv[i] + " must be followed by a directory name");
+			console.log("Error: " + process.argv[i] + " must be followed by a directory name");
 			usage();
 		}
 		i++;
@@ -81,7 +81,7 @@ for (var i = 2; i < process.argv.length; i++) {
 		
 	default:
 		if (process.argv[i].charAt(0) === '-') {
-			util.print("Unrecognized option: " + process.argv[i] + "\n");
+			console.log("Unrecognized option: " + process.argv[i]);
 			usage();
 		}
 		startDir.push(process.argv[i]);
@@ -93,18 +93,18 @@ if (startDir.length === 0) {
 	startDir.push(".");
 }
 
-verbose && util.print("Start dir: " + startDir + "\n");
+verbose && console.log("Start dir: " + startDir);
 
 for (i = 0; i < startDir.length; i++) {
 	if (!fs.existsSync(startDir[i])) {
-		util.print("Could not access start directory " + startDir[i] + "\n");
+		console.log("Could not access start directory " + startDir[i]);
 		usage();
 	}
 }
 
 for (i = 0; i < includes.length; i++) {
 	if (!fs.existsSync(includes[i])) {
-		util.print("Could not access include directory " + includes[i] + "\n");
+		console.log("Could not access include directory " + includes[i]);
 		usage();
 	}
 }
@@ -307,20 +307,20 @@ function processFile(dir, file, update) {
 	var result, text = fs.readFileSync(pathname, "utf-8");
 	if (text) {
 		if (update) {
-			verbose && util.print("Searching " + pathname + " for module definitions...");
+			verbose && console.log("Searching " + pathname + " for module definitions...");
 			if ((result = reExports.exec(text)) && result && result.length > 0) {
-				verbose && util.print("found " + result[1]);
+				verbose && console.log("found " + result[1]);
 				modules[result[1]] = {
 					"path": pathname,
 					"re": new RegExp("([^\\w\\$]" + result[1] + "[^\\w\\$]|^" + result[1] + "[^\\w\\$]|[^\\w\\$]" + result[1] + "$)")
 				}
 			}
-			verbose && util.print("\n");
+			verbose && console.log("");
 			reExports.lastIndex = 0;
 		} else {
 			verbose && console.log("Searching " + pathname + " to update its require() calls.");
 			if (reSlashSlashNoDependencies.test(text)) {
-				verbose && util.print("  Found a 'dependencies: false' comment. Skipping this file.\n");
+				verbose && console.log("  Found a 'dependencies: false' comment. Skipping this file.");
 			} else {
 				var uses = [];
 				var requires = [];
@@ -330,10 +330,10 @@ function processFile(dir, file, update) {
 					var len = text.length;
 					// first convert old ilib namespace calls to the modular classes
 					for (var name in legacyCalls) {
-						util.print("  trying " + name + "\n");
+						console.log("  trying " + name);
 						text = text.replace(new RegExp(name, "g"), legacyCalls[name]);
 						if (text.length !== len) {
-							verbose && util.print("  Replaced legacy call " + name + " with call to module " + legacyCalls[name] + "\n");
+							verbose && console.log("  Replaced legacy call " + name + " with call to module " + legacyCalls[name]);
 							len = text.length;
 							changes++;
 						}
@@ -349,7 +349,7 @@ function processFile(dir, file, update) {
 					if (modules[mod].path !== pathname) {
 						result = modules[mod].re.exec(cleaned);
 						if (result && result.length > 0) {
-							verbose && util.print("  This file uses module " + mod + "\n");
+							verbose && console.log("  This file uses module " + mod);
 							uses.push(mod);
 						}
 						modules[mod].re.lastIndex = 0;
@@ -357,7 +357,7 @@ function processFile(dir, file, update) {
 				}
 				
 				while ((result = reRequires.exec(cleaned)) && result && result.length > 0) {
-					verbose && util.print("  File already requires " + result[1] + "\n");
+					verbose && console.log("  File already requires " + result[1]);
 					requires.push(result[1]);
 				}
 				
@@ -365,7 +365,7 @@ function processFile(dir, file, update) {
 				
 				for (i = 0; i < uses.length; i++) {
 					if (requires.indexOf(uses[i]) === -1) {
-						verbose && util.print("  Need to add require('" + uses[i] + "')\n");
+						verbose && console.log("  Need to add require('" + uses[i] + "')");
 						changes++;
 						
 						j = 0; 
@@ -397,7 +397,7 @@ function processFile(dir, file, update) {
 	
 				for (i = 0; i < requires.length; i++) {
 					if (uses.indexOf(requires[i]) === -1) {
-						verbose && util.print("  Need to remove require('" + requires[i] + "')\n");
+						verbose && console.log("  Need to remove require('" + requires[i] + "')");
 						changes++;
 
 						if (!updated) {
@@ -417,7 +417,7 @@ function processFile(dir, file, update) {
 					}
 				}
 				
-				verbose && util.print(changes + " changes were needed.\n");
+				verbose && console.log(changes + " changes were needed.");
 				if (changes > 0) {
 					filesUpdated++;
 					fs.writeFileSync(pathname, updated.join("\n"));
@@ -460,4 +460,4 @@ for (i = 0; i < startDir.length; i++) {
 	}
 }
 
-util.print("Done. " + filesUpdated + " files updated.\n");
+console.log("Done. " + filesUpdated + " files updated.");

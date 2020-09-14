@@ -1,7 +1,7 @@
 /*
  * testcurrency.js - test the currency routines
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1902,6 +1902,79 @@ module.exports.testcurrency = {
 
         test.equal(info.getCurrency(), "GEL");
 
+        test.done();
+    },
+    testCurrency_my_MM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("my-MM");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "MMK");
+        test.done();
+    },
+    testCurrency_be_BY: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("be-BY");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "BYN");
+        test.done();
+    },
+    testCurrency_ne_NP: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ne-NP");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "NPR");
+        test.done();
+    },
+    testCurrency_lo_LA: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("lo-LA");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "LAK");
+        test.done();
+    },
+    testCurrency_ky_KG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ky-KG");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "KGS");
+        test.done();
+    },
+    testCurrency_ca_AD: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ca-AD");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "EUR");
+
+        test.done();
+    },
+    testCurrency_ca_ES: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ca-ES");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "EUR");
+        test.done();
+    },
+    testCurrency_gl_ES: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("gl-ES");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "EUR");
+        test.done();
+    },
+    testCurrency_hy_AM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("hy-AM");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "AMD");
         test.done();
     }
 };

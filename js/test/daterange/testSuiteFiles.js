@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
  * 
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,9 +26,11 @@ module.exports.files = [
     "testdatefmtrange_ar_SA.js",
     "testdatefmtrange_as_IN.js",
     "testdatefmtrange_az_Latn_AZ.js",
+    "testdatefmtrange_be_BY.js",
     "testdatefmtrange_bg_BG.js",
     "testdatefmtrange_bn_IN.js",
     "testdatefmtrange_bs_Latn_BA.js",
+    "testdatefmtrange_ca.js",
     "testdatefmtrange_cs_CZ.js",
     "testdatefmtrange_da_DK.js",
     "testdatefmtrange_de_DE.js",
@@ -41,17 +43,20 @@ module.exports.files = [
     "testdatefmtrange_es_UY.js",
     "testdatefmtrange_es_VE.js",
     "testdatefmtrange_et_EE.js",
+    "testdatefmtrange_eu_ES.js",
     "testdatefmtrange_fa_IR.js",
     "testdatefmtrange_fi_FI.js",
     "testdatefmtrange_fr_CA.js",
     "testdatefmtrange_fr_FR.js",
     "testdatefmtrange_ga_IE.js",
     "testdatefmtrange_gu_IN.js",
+    "testdatefmtrange_gl_ES.js",
     "testdatefmtrange_ha_Latn_NG.js",
     "testdatefmtrange_he_IL.js",
     "testdatefmtrange_hi_IN.js",
     "testdatefmtrange_hr_HR.js",
     "testdatefmtrange_hu_HU.js",
+    "testdatefmtrange_hy_AM.js",
     "testdatefmtrange_id_ID.js",
     "testdatefmtrange_it_IT.js",
     "testdatefmtrange_ja_JP.js",
@@ -61,6 +66,8 @@ module.exports.files = [
     "testdatefmtrange_kn_IN.js",
     "testdatefmtrange_ko_KR.js",
     "testdatefmtrange_ku_Arab_IQ.js",
+    "testdatefmtrange_ky_KG.js",
+    "testdatefmtrange_lo_LA.js",
     "testdatefmtrange_lt_LT.js",
     "testdatefmtrange_lv_LV.js",
     "testdatefmtrange_mk_MK.js",
@@ -68,7 +75,9 @@ module.exports.files = [
     "testdatefmtrange_mn_Cyrl_MN.js",
     "testdatefmtrange_mr_IN.js",
     "testdatefmtrange_ms_MY.js",
+    "testdatefmtrange_my_MM.js",
     "testdatefmtrange_nb_NO.js",
+    "testdatefmtrange_ne_NP.js",
     "testdatefmtrange_nl_NL.js",
     "testdatefmtrange_or_IN.js",
     "testdatefmtrange_pa_IN.js",
