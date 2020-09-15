@@ -23,6 +23,7 @@
 var fs = require('fs');
 var path = require('path');
 var cldr = require('cldr-data');
+var dayPeriods = require('cldr-data/supplemental/dayPeriods.json');
 
 var common = require('./common');
 var merge = common.merge;
@@ -120,7 +121,7 @@ localeDirName = process.argv[2];
 
 
 console.log("gendatefmts2 - generate date and time formats information files.\n" +
-"Copyright (c) 2013-2019 JEDLSoft\n");
+"Copyright (c) 2013-2020 JEDLSoft\n");
 
 console.log("locale dir: " + localeDirName);
 
@@ -274,6 +275,13 @@ list.forEach(function (file) {
         group.data = merge(group.data || {}, hardCodeData[language]);
     }
 
+    // day periods
+    var periods = dayPeriods.supplemental.dayPeriodRuleSet;
+    newFormats = aux.createDayPeriods(periods, cal.main[file].dates.calendars, language);
+    group = aux.getFormatGroup(dateFormats, localeComponents);
+    group.data = merge(group.data || {}, newFormats.periods);
+    group = aux.getFormatGroup(systemResources, localeComponents);
+    group.data = merge(group.data || {}, newFormats.sysres);
 });
 
 console.log("\nMerging formats forward ...");

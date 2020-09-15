@@ -1622,10 +1622,6 @@ module.exports = {
     createDurationResourceDetail: function (cldrUnitData, durationObject, length, language, script) {
         var durationSysres = {};
         var durationSysresTest = {};
-        var cldrDateFieldData = {};
-        var dataLength = length;
-
-        var isRtl = (rtlLanguages.indexOf(language) > -1) && (!script || rtlScripts.indexOf(script) > 0);
 
         for(duration in durationObject) {
             var durationKey = "duration-" + duration;
@@ -1907,10 +1903,69 @@ module.exports = {
         }
         return relativeSysres;
     },
+
+    createDayPeriods: function (dayPeriods, cldrData, language, script, region) {
+        var periodNameMap = {}, calendarNameSuffix;
+
+        var formats = {
+            periods: {
+                dayPeriods: [],
+            },
+            sysres: {}
+        };
+
+        function parsePeriod(period) {
+            var parts = period.split(":");
+            var hour = parseInt(parts[0]);
+            var minute = parseInt(parts[1]);
+            return hour * 60 + minute;
+        }
+
+        function pushPeriod(array, period) {
+            array.push(typeof(period._at) !== 'undefined' ?
+                {
+                    from: parsePeriod(period._at),
+                    to: parsePeriod(period._at)
+                } :
+                {
+                    from: parsePeriod(period._from),
+                    to: parsePeriod(period._before)
+                }
+            );
+        }
+
+        function findPeriods(dayPeriods, locale) {
+            if (!dayPeriods[locale]) return;
+            for (var name in dayPeriods[locale]) {
+                var period = dayPeriods[locale][name];
+                periodNameMap[name] = formats.periods.dayPeriods.length;
+                pushPeriod(formats.periods.dayPeriods, period);
+            }
+        }
+
+        findPeriods(dayPeriods, "root");
+        findPeriods(dayPeriods, language);
+        findPeriods(dayPeriods, language + "-" + script);
+        findPeriods(dayPeriods, language + "-" + region);
+        findPeriods(dayPeriods, language + "-" + script + "-" + region);
+
+        var sysres = formats.sysres;
+        for (var calendarName in cldrData) {
+            calendarNameSuffix = (calendarName !== "gregorian") ? "-" + calendarName : "";
+            var periods = cldrData[calendarName].dayPeriods.format.wide;
+            for (var name in periods) {
+                var period = periodNameMap[name];
+                sysres['B' + period + calendarNameSuffix] = periods[name];
+            }
+        }
+
+        return formats;
+    },
+
     /**
      * Find the distance between two objects in terms of number of properties that
      * are missing or have different values.
-     * @param {Object} left
+     * @param {Object} leftt
      * @param {Object} right
      * @return {number} the number of difference between the objects
      */
