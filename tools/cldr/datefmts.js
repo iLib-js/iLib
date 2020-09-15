@@ -1955,7 +1955,9 @@ module.exports = {
             var periods = cldrData[calendarName].dayPeriods.format.wide;
             for (var name in periods) {
                 var period = periodNameMap[name];
-                sysres['B' + period + calendarNameSuffix] = periods[name];
+                if (typeof(period) !== 'undefined') {
+                    sysres['B' + period + calendarNameSuffix] = periods[name];
+                }
             }
         }
 
