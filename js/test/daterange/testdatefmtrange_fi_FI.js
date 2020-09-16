@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_fi_FI.js - test the date range formatter object in Finnish/Finland
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_fi_FI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "marraskuuta 2011 – tammikuuta 2014");
+        test.equal(fmt.format(start, end), "marraskuu 2011 – tammikuu 2014");
         test.done();
     },
     testDateRngFmtFIRangeMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_fi_FI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "marraskuuta 2011 – tammikuuta 2014");
+        test.equal(fmt.format(start, end), "marraskuu 2011 – tammikuu 2014");
         test.done();
     },
     testDateRngFmtFIManyYearsFull: function(test) {

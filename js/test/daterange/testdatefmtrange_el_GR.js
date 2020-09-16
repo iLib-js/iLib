@@ -1,7 +1,7 @@
 /*
  * testdatefmtGR_GR_GR.js - test the date GR formatter object GR GRench/GRance
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -607,7 +607,7 @@ module.exports.testdatefmtrange_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "Νοε 2011 – Ιαν 2014");
+        test.equal(fmt.format(start, end), "Νοέ 2011 – Ιαν 2014");
         test.done();
     },
     testDateRngFmtGRMultiYearLong: function(test) {
@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "Νοεμβρίου 2011 – Ιανουαρίου 2014");
+        test.equal(fmt.format(start, end), "Νοέμβριος 2011 – Ιανουάριος 2014");
         test.done();
     },
     testDateRngFmtGRMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "Νοεμβρίου 2011 – Ιανουαρίου 2014");
+        test.equal(fmt.format(start, end), "Νοέμβριος 2011 – Ιανουάριος 2014");
         test.done();
     },
     testDateRngFmtGRManyYearsFull: function(test) {

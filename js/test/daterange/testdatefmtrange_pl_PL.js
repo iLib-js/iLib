@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_pl_PL.js - test the date range formatter object in Polish/Poland
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_pl_PL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "listopada 2011 – stycznia 2014");
+        test.equal(fmt.format(start, end), "listopad 2011 – styczeń 2014");
         test.done();
     },
     testDateRngFmtPLRangeMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_pl_PL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "listopada 2011 – stycznia 2014");
+        test.equal(fmt.format(start, end), "listopad 2011 – styczeń 2014");
         test.done();
     },
     testDateRngFmtPLManyYearsFull: function(test) {

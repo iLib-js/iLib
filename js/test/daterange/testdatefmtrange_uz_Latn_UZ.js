@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_Latn_UZ.js - test the date range formatter object Uzbek/Uzbekistan for Latin script
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -607,7 +607,7 @@ module.exports.testdatefmtrange_uz_Latn_UZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "noy, 2011 – yan, 2014");
+        test.equal(fmt.format(start, end), "Noy, 2011 – Yan, 2014");
         test.done();
     },
     testDateRngFmtLatn_UZRangeMultiYearLong: function(test) {
@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_uz_Latn_UZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "noyabr, 2011 – yanvar, 2014");
+        test.equal(fmt.format(start, end), "Noyabr, 2011 – Yanvar, 2014");
         test.done();
     },
     testDateRngFmtLatn_UZRangeMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_uz_Latn_UZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "noyabr, 2011 – yanvar, 2014");
+        test.equal(fmt.format(start, end), "Noyabr, 2011 – Yanvar, 2014");
         test.done();
     },
     testDateRngFmtLatn_UZManyYearsFull: function(test) {

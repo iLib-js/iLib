@@ -634,7 +634,7 @@ module.exports.testdatefmtrange_be_BY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "лістапада 2011 г. – студзеня 2014 г.");
+        test.equal(fmt.format(start, end), "лістапад 2011 г. – студзень 2014 г.");
         test.done();
     },
     testDateRngFmtbeBYRangeMultiYearFull: function(test) {
@@ -660,7 +660,7 @@ module.exports.testdatefmtrange_be_BY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "лістапада 2011 г. – студзеня 2014 г.");
+        test.equal(fmt.format(start, end), "лістапад 2011 г. – студзень 2014 г.");
         test.done();
     },
     testDateRngFmtbeBYManyYearsFull: function(test) {

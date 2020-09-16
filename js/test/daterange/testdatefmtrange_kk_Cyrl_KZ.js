@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_kk-Cyrl_KZ.js - test the date range formatter object in Kazakh/Kazakhstan
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. қараша – 2014 ж. қаңтар");
+        test.equal(fmt.format(start, end), "2011 ж. Қараша – 2014 ж. Қаңтар");
         test.done();
     },
     testDateRngFmtKZRangeMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. қараша – 2014 ж. қаңтар");
+        test.equal(fmt.format(start, end), "2011 ж. Қараша – 2014 ж. Қаңтар");
         test.done();
     },
     testDateRngFmtKZManyYearsFull: function(test) {
