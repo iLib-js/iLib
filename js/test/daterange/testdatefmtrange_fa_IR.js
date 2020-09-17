@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_fa_IR.js - test date range formatter object in Farsi/Iran
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -702,7 +702,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "نوامبر ۲۰۱۱ – ژانویهٔ ۲۰۱۴");
+        test.equal(fmt.format(start, end), 'نوامبر ۲۰۱۱ – ژانویه ۲۰۱۴');
         test.done();
     },
     testDateRngFmtIRRangeMultiYearLong: function(test) {
@@ -732,7 +732,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "نوامبر ۲۰۱۱ – ژانویهٔ ۲۰۱۴");
+        test.equal(fmt.format(start, end), 'نوامبر ۲۰۱۱ – ژانویه ۲۰۱۴');
         test.done();
     },
     testDateRngFmtIRRangeMultiYearFull: function(test) {
@@ -762,7 +762,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "نوامبر ۲۰۱۱ – ژانویهٔ ۲۰۱۴");
+        test.equal(fmt.format(start, end), 'نوامبر ۲۰۱۱ – ژانویه ۲۰۱۴');
         test.done();
     
     },
@@ -1461,7 +1461,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'بهمن ۱۳۹۳ – فروردین ۱۳۹۶');
+        test.equal(fmt.format(start, end), 'نوامبر ۱۳۹۳ – ژانویه ۱۳۹۶');
         test.done();
     },
     testDateRngFmtPersRangeMultiYearLong_fa_IR: function(test) {
@@ -1491,7 +1491,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'بهمن ۱۳۹۳ – فروردین ۱۳۹۶');
+        test.equal(fmt.format(start, end), 'نوامبر ۱۳۹۳ – ژانویه ۱۳۹۶');
         test.done();
     },
     testDateRngFmtPersRangeMultiYearFull_fa_IR: function(test) {
@@ -1521,7 +1521,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '‏۱۳۹۳ بهمن – ‏۱۳۹۶ فروردین');
+        test.equal(fmt.format(start, end), '‏۱۳۹۳ نوامبر – ‏۱۳۹۶ ژانویه');
         test.done();
     },
     testDateRngFmtPersManyYearsFull_fa_IR: function(test) {

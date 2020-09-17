@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_vi_VN.js - test the date range formatter object Vietnamese/Vietnam
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -608,7 +608,7 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "thg 11, 2011 – thg 1, 2014");
+        test.equal(fmt.format(start, end), "Thg 11, 2011 – Thg 1, 2014");
         test.done();
     },
     testDateRngFmtVNRangeMultiYearLong: function(test) {
@@ -634,7 +634,7 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "tháng 11, 2011 – tháng 1, 2014");
+        test.equal(fmt.format(start, end), "Tháng 11, 2011 – Tháng 1, 2014");
         test.done();
     },
     testDateRngFmtVNRangeMultiYearFull: function(test) {
@@ -660,7 +660,7 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "tháng 11, 2011 – tháng 1, 2014");
+        test.equal(fmt.format(start, end), "Tháng 11, 2011 – Tháng 1, 2014");
         test.done();
     },
     testDateRngFmtVNManyYearsFull: function(test) {

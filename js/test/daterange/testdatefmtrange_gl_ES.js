@@ -608,7 +608,7 @@ module.exports.testdatefmtrange_gl_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "nov. de 2011 – xan. de 2014");
+        test.equal(fmt.format(start, end), "Nov. de 2011 – Xan. de 2014");
         test.done();
     },
     testDateRngFmtglESRangeMultiYearLong: function(test) {
@@ -634,7 +634,7 @@ module.exports.testdatefmtrange_gl_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "novembro de 2011 – xaneiro de 2014");
+        test.equal(fmt.format(start, end), "Novembro de 2011 – Xaneiro de 2014");
         test.done();
     },
     testDateRngFmtglESRangeMultiYearFull: function(test) {
@@ -660,7 +660,7 @@ module.exports.testdatefmtrange_gl_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "novembro de 2011 – xaneiro de 2014");
+        test.equal(fmt.format(start, end), "Novembro de 2011 – Xaneiro de 2014");
         test.done();
     },
     testDateRngFmtglESManyYearsFull: function(test) {

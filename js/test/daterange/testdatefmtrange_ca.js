@@ -608,7 +608,7 @@ module.exports.testdatefmtrange_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "de nov. 2011 – de gen. 2014");
+        test.equal(fmt.format(start, end), "nov. 2011 – gen. 2014");
         test.done();
     },
     testDateRngFmtcaADRangeMultiYearLong: function(test) {
@@ -634,7 +634,7 @@ module.exports.testdatefmtrange_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "de novembre de 2011 – de gener de 2014");
+        test.equal(fmt.format(start, end), "novembre de 2011 – gener de 2014");
         test.done();
     },
     testDateRngFmtcaADRangeMultiYearFull: function(test) {
@@ -660,7 +660,7 @@ module.exports.testdatefmtrange_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "de novembre de 2011 – de gener de 2014");
+        test.equal(fmt.format(start, end), "novembre de 2011 – gener de 2014");
         test.done();
     },
     testDateRngFmtcaADManyYearsFull: function(test) {
@@ -1264,7 +1264,7 @@ module.exports.testdatefmtrange_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "de nov. 2011 – de gen. 2014");
+        test.equal(fmt.format(start, end), "nov. 2011 – gen. 2014");
         test.done();
     },
     testDateRngFmtcaESRangeMultiYearLong: function(test) {
@@ -1290,7 +1290,7 @@ module.exports.testdatefmtrange_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "de novembre de 2011 – de gener de 2014");
+        test.equal(fmt.format(start, end), "novembre de 2011 – gener de 2014");
         test.done();
     },
     testDateRngFmtcaESRangeMultiYearFull: function(test) {
@@ -1316,7 +1316,7 @@ module.exports.testdatefmtrange_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "de novembre de 2011 – de gener de 2014");
+        test.equal(fmt.format(start, end), "novembre de 2011 – gener de 2014");
         test.done();
     },
     testDateRngFmtcaESManyYearsFull: function(test) {

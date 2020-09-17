@@ -1,7 +1,7 @@
 /*
  * DateFmt.js - Date formatter definition
  *
- * Copyright © 2012-2015, 2018, JEDLSoft
+ * Copyright © 2012-2015, 2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1306,7 +1306,8 @@ DateFmt.prototype = {
                 case 'LLL':
                 case 'LLLL':
                     key = templateArr[i] + (date.month || 1);
-                    str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                    str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key) ||
+                           this.sysres.getString(undefined, key.replace(/L/g,"M") + "-" + this.calName) || this.sysres.getString(undefined, key.replace(/L/g,"M")));
                     break;
 
                 case 'E':
