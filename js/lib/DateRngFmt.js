@@ -374,6 +374,13 @@ DateRngFmt.prototype = {
         monthTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "m", this.length) || "MM");
         dayTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "d", this.length) || "dd");
 
+
+        /*
+        * Some languages use two different forms of strings (standlone and format) depending on the context.
+        * Typically the standalone version is the nominative form of the word,
+        * and the format version is in the genitive (or related form).
+        * In c20 case, It should present standAlone form, In order to support that, the format symbol is changed.
+        */
         if (isStandAlone && monthTemplate[0].length >= 3) {
             monthTemplate[0] = monthTemplate[0].replace(/M/g,"L");
         }
