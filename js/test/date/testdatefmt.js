@@ -2111,6 +2111,158 @@ module.exports.testdatefmt = {
         test.done();
     },
 
+    testDateFmtDayPeriodShort0: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({template: "B", locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "de-DE",
+            year: 0,
+            month: 12,
+            day: 31,
+            hour: 0,
+            minute: 0,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "Mitternacht");
+        test.done();
+    },
+
+    testDateFmtDayPeriodShort1: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({template: "B", locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "de-DE",
+            year: 0,
+            month: 12,
+            day: 31,
+            hour: 1,
+            minute: 0,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "nachts");
+        test.done();
+    },
+
+    testDateFmtDayPeriodShort2: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({template: "B", locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "de-DE",
+            year: 0,
+            month: 12,
+            day: 31,
+            hour: 6,
+            minute: 0,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "morgens");
+        test.done();
+    },
+
+    testDateFmtDayPeriodShort3: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({template: "B", locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "de-DE",
+            year: 0,
+            month: 12,
+            day: 31,
+            hour: 12,
+            minute: 0,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "mittags");
+        test.done();
+    },
+
+    testDateFmtDayPeriodShort4: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({template: "B", locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "de-DE",
+            year: 0,
+            month: 12,
+            day: 31,
+            hour: 12,
+            minute: 30,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "mittags");
+        test.done();
+    },
+
+    testDateFmtDayPeriodShort5: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({template: "B", locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "de-DE",
+            year: 0,
+            month: 12,
+            day: 31,
+            hour: 15,
+            minute: 30,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "nachmittags");
+        test.done();
+    },
+
+    testDateFmtDayPeriodShort6: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({template: "B", locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "de-DE",
+            year: 0,
+            month: 12,
+            day: 31,
+            hour: 18,
+            minute: 30,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "abends");
+        test.done();
+    },
+
+    testDateFmtDayPeriodShort7: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({template: "B", locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "de-DE",
+            year: 0,
+            month: 12,
+            day: 31,
+            hour: 23,
+            minute: 0,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "nachts");
+        test.done();
+    },
+
     /*
     exception does not happen any more because we always convert
     the argument to the format method to an DateFactory first now.

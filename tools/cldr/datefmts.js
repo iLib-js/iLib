@@ -1904,8 +1904,8 @@ module.exports = {
         return relativeSysres;
     },
 
-    createDayPeriods: function (dayPeriods, cldrData, language, script, region) {
-        var periodNameMap = {}, calendarNameSuffix;
+    createDayPeriods: function (dayPeriods, cldrData, language, region) {
+        var calendarNameSuffix, periodArray = [];
 
         var formats = {
             periods: {
@@ -1921,13 +1921,14 @@ module.exports = {
             return hour * 60 + minute;
         }
 
-        function pushPeriod(array, period) {
-            array.push(typeof(period._at) !== 'undefined' ?
+        function pushPeriod(period, name) {
+            periodArray.push(typeof(period._at) !== 'undefined' ?
                 {
-                    from: parsePeriod(period._at),
-                    to: parsePeriod(period._at)
+                    name: name,
+                    at: parsePeriod(period._at)
                 } :
                 {
+                    name: name,
                     from: parsePeriod(period._from),
                     to: parsePeriod(period._before)
                 }
@@ -1938,30 +1939,51 @@ module.exports = {
             if (!dayPeriods[locale]) return;
             for (var name in dayPeriods[locale]) {
                 var period = dayPeriods[locale][name];
-                periodNameMap[name] = formats.periods.dayPeriods.length;
-                pushPeriod(formats.periods.dayPeriods, period);
+                pushPeriod(period, name);
             }
         }
 
-        findPeriods(dayPeriods, "root");
-        findPeriods(dayPeriods, language);
-        findPeriods(dayPeriods, language + "-" + script);
-        findPeriods(dayPeriods, language + "-" + region);
-        findPeriods(dayPeriods, language + "-" + script + "-" + region);
+        if (dayPeriods[language] && dayPeriods[language].length) {
+            findPeriods(dayPeriods, "root");
+            findPeriods(dayPeriods, language);
+            findPeriods(dayPeriods, language + "-" + region);
 
-        var sysres = formats.sysres;
-        for (var calendarName in cldrData) {
-            calendarNameSuffix = (calendarName !== "gregorian") ? "-" + calendarName : "";
-            var periods = cldrData[calendarName].dayPeriods.format.wide;
-            for (var name in periods) {
-                var period = periodNameMap[name];
-                if (typeof(period) !== 'undefined') {
-                    sysres['B' + period + calendarNameSuffix] = periods[name];
+            // sort by start time of the period
+            periodArray.sort(function(left, right) {
+                var value = (typeof(left.at) !== 'undefined' ? left.at : left.from) -
+                    (typeof(right.at) !== 'undefined' ? right.at : right.from);
+                if (!value) {
+                    value = (typeof(left.at) !== 'undefined' ? left.at : left.to) -
+                    (typeof(right.at) !== 'undefined' ? right.at : right.to)
                 }
+                return value;
+            });
+
+            formats.periods.dayPeriods = periodArray.map(function(period) {
+                if (typeof(period.at) !== 'undefined') {
+                    return { at: period.at };
+                } else {
+                    return {
+                        from: period.from,
+                        to: period.to
+                    };
+                }
+            });
+
+            var sysres = formats.sysres;
+            for (var calendarName in cldrData) {
+                calendarNameSuffix = (calendarName !== "gregorian") ? "-" + calendarName : "";
+                var periods = cldrData[calendarName].dayPeriods.format.wide;
+
+                periodArray.forEach(function(period, index) {
+                    sysres['B' + index + calendarNameSuffix] = periods[period.name];
+                });
             }
+
+            return formats;
         }
 
-        return formats;
+        return undefined;
     },
 
     /**

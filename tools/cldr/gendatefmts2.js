@@ -277,11 +277,13 @@ list.forEach(function (file) {
 
     // day periods
     var periods = dayPeriods.supplemental.dayPeriodRuleSet;
-    newFormats = aux.createDayPeriods(periods, cal.main[file].dates.calendars, language);
-    group = aux.getFormatGroup(dateFormats, localeComponents);
-    group.data = merge(group.data || {}, newFormats.periods);
-    group = aux.getFormatGroup(systemResources, localeComponents);
-    group.data = merge(group.data || {}, newFormats.sysres);
+    newFormats = aux.createDayPeriods(periods, cal.main[file].dates.calendars, language, region);
+    if (newFormats) {
+        group = aux.getFormatGroup(dateFormats, localeComponents);
+        group.data = merge(group.data || {}, newFormats.periods);
+        group = aux.getFormatGroup(systemResources, localeComponents);
+        group.data = merge(group.data || {}, newFormats.sysres);
+    }
 });
 
 console.log("\nMerging formats forward ...");

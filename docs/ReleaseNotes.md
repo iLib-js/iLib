@@ -3,9 +3,11 @@ Release Notes for Version 14
 
 Build 011
 -------
-Published as version 14.6.2
+Published as version 14.7.0
 
 New Features:
+* Added support for day periods per locale. These are periods like "morning", "afternoon", "evening".
+  Each locale has a different idea of when the periods are and when they start and end.
 
 Bug Fixes:
 * Fixed a DateRange Formatting to present standAlone case properly

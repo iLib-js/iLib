@@ -617,6 +617,8 @@ DateFmt.prototype = {
                         formats = ilib.data.dateformats || DateFmt.defaultFmt;
                     }
 
+                    this.info = formats;
+
                     if (typeof(this.clock) === 'undefined') {
                         // default to the locale instead
                         this.clock = this.locinfo.getClock();
@@ -1109,6 +1111,23 @@ DateFmt.prototype = {
         return result;
     },
 
+    _findMeridiem: function(hours, minutes) {
+        var range = this.info.dayPeriods;
+        if (!range) {
+            return "";
+        }
+        var minuteOfDay = hours * 60 + minutes;
+        for (var i = 0; i < range.length; i++) {
+            var period = range[i];
+            if (minuteOfDay === period.at || (minuteOfDay >= period.start && minuteOfDay < period.end)) {
+                var periodCode = "B" + i;
+                return this.sysres.getString(undefined, periodCode + "-" + this.calName) ||
+                    this.sysres.getString(undefined, periodCode);
+            }
+        }
+        return "";
+    },
+
     /**
      * @private
      */
@@ -1361,6 +1380,10 @@ DateFmt.prototype = {
                     }
                     //console.log("finding " + key + " in the resources");
                     str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                    break;
+
+                case 'B':
+                    str += this._findMeridiem(date.hour, date.minute);
                     break;
 
                 case 'w':
