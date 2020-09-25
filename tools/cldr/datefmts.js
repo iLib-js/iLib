@@ -968,7 +968,7 @@ module.exports = {
                 var regExp = /[^s^\s^\-^\.^\/^\u200f]y+/;
                 var regExp2 = /\bd+\b/;
                 var regExp3 = /\by+\b/;
-                var regExp4 = /\bM+\b/;
+                var regExp4 = /\b[LM]+\b/;
 
                 var dmyOrdercldr = dateOrder(cldrFormats[len]);
 
@@ -1380,7 +1380,7 @@ module.exports = {
 
                                 if (language === 'vi') {
                                     if (lenAbbr === 'l') {
-                                        cFmt10 = replaceFormats(cFmt10,"{date}", calendar.date["dm"][lenAbbr]);
+                                        cFmt10 = replaceFormats(cFmt10,"{date}", calendar.date["d"][lenAbbr]);
                                         cFmt10 = cFmt10.replace(" 'tháng' MM", "");
                                         cFmt10 = cFmt10.replace(regExp2,"{sd}")
                                         cFmt10 = replaceFormats(cFmt10,"{date}", calendar.date["dmy"][lenAbbr]);
@@ -1454,21 +1454,21 @@ module.exports = {
                                     if (lenAbbr === 'l') {
                                         cFmt20 = cFmt20.replace(/'Ngày' dd 'tháng' /,"");
                                         cFmt20 = cFmt20.replace(/[LM]+/,"{sm}").replace(/\b\wy+\b/, "{sy}");
-                                        cFmt20 = replaceFormats(cFmt20,"{date}", calendar.date["dmy"][lenAbbr]);
+                                        cFmt20 = replaceFormats(cFmt20,"{date}", calendar.date["my"][lenAbbr]);
                                         cFmt20 = cFmt20.replace(/'Ngày' dd 'tháng' /,"");
                                         cFmt20 = cFmt20.replace(/[LM]+/,"{em}").replace(/yyyy/, "{ey}");
 
                                     } else if(lenAbbr === 'f') {
                                         cFmt20 = cFmt20.replace(/d+\s/,"");
                                         cFmt20 = cFmt20.replace(/[LM]+/,"{sm}").replace(regExp3, "{sy}");
-                                        cFmt20 = replaceFormats(cFmt20,"{date}", calendar.date["dmy"][lenAbbr]);
-                                        cFmt20 = cFmt20.replace(/[^s]d+/,"");
+                                        cFmt20 = replaceFormats(cFmt20,"{date}", calendar.date["my"][lenAbbr]);
+                                        cFmt20 = cFmt20.replace(/\bd+/,"");
                                         cFmt20 = cFmt20.replace(/[LM]+/,"{em}").replace(regExp3, "{ey}");
 
                                     } else {
                                         cFmt20 = cFmt20.replace(/d+\W/,"");
                                         cFmt20 = cFmt20.replace(/[LM]+/,"{sm}").replace(regExp3, "{sy}");
-                                        cFmt20 = replaceFormats(cFmt20,"{date}", calendar.date["dmy"][lenAbbr]);
+                                        cFmt20 = replaceFormats(cFmt20,"{date}", calendar.date["my"][lenAbbr]);
                                         cFmt20 = cFmt20.replace(/d+\W/,"");
                                         cFmt20 = cFmt20.replace(/[LM]+/,"{em}").replace(regExp3, "{ey}");
                                     }
@@ -1541,7 +1541,7 @@ module.exports = {
                                 calendar.range["c11"][lenAbbr] = cFmt11;
 
                                 //mdy - mdy
-                                cFmt12 = "{st} {date} – {et} {date}";
+                                cFmt12 = "{date} – {date}";
                                 cFmt12 = replaceFormats(cFmt12,"{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt12 = cFmt12.replace(/[LM]+/, "{sm}").replace(regExp2,"{sd}").replace(regExp3,"{sy}");
                                 cFmt12 = replaceFormats(cFmt12,"{date}", calendar.date[dmyiLib][lenAbbr]);

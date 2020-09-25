@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_ta_IN.js - test the date range formatter object in Tamil/India
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -109,7 +109,7 @@ module.exports.testdatefmtrange_ta_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31 டிசம்பர், 2011 அன்று பிற்பகல் 1:45 – பிற்பகல் 2:30');
+        test.equal(fmt.format(start, end), '31 டிசம்பர், 2011 ’அன்று’ பிற்பகல் 1:45 – பிற்பகல் 2:30');
         test.done();
     },
     testDateRngFmtRangeinDayFull_ta_IN: function(test) {
@@ -135,7 +135,7 @@ module.exports.testdatefmtrange_ta_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31 டிசம்பர், 2011 அன்று பிற்பகல் 1:45 – பிற்பகல் 2:30');
+        test.equal(fmt.format(start, end), '31 டிசம்பர், 2011 ’அன்று’ பிற்பகல் 1:45 – பிற்பகல் 2:30');
         test.done();
     },
     
@@ -214,7 +214,7 @@ module.exports.testdatefmtrange_ta_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30 டிசம்பர், 2011 அன்று பிற்பகல் 1:45 – 31 டிசம்பர், 2011 அன்று பிற்பகல் 2:30');
+        test.equal(fmt.format(start, end), '30 டிசம்பர், 2011 ’அன்று’ பிற்பகல் 1:45 – 31 டிசம்பர், 2011 ’அன்று’ பிற்பகல் 2:30');
         test.done();
     },
     testDateRngFmtRangeNextDayFull_ta_IN: function(test) {
@@ -240,7 +240,7 @@ module.exports.testdatefmtrange_ta_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30 டிசம்பர், 2011 அன்று பிற்பகல் 1:45 – 31 டிசம்பர், 2011 அன்று பிற்பகல் 2:30');
+        test.equal(fmt.format(start, end), '30 டிசம்பர், 2011 ’அன்று’ பிற்பகல் 1:45 – 31 டிசம்பர், 2011 ’அன்று’ பிற்பகல் 2:30');
         test.done();
     },
     

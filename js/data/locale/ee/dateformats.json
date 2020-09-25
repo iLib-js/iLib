@@ -133,10 +133,10 @@
                 "s": "{sm}/{sd} – {em}/{ed}/{ey}"
             },
             "c12": {
-                "f": "{st} {sm} {sd} lia {sy} – {et} {em} {ed} lia {ey}",
-                "l": "{st} {sm} {sd} lia {sy} – {et} {em} {ed} lia {ey}",
-                "m": "{st} {sm} {sd} lia, {sy} – {et} {em} {ed} lia, {ey}",
-                "s": "{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}"
+                "f": "{sm} {sd} lia {sy} – {em} {ed} lia {ey}",
+                "l": "{sm} {sd} lia {sy} – {em} {ed} lia {ey}",
+                "m": "{sm} {sd} lia, {sy} – {em} {ed} lia, {ey}",
+                "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
             },
             "c20": {
                 "f": "{sm} lia {sy} – {em} lia {ey}",
