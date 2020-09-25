@@ -1786,11 +1786,11 @@ module.exports = {
                     result = module.exports.createDurationResourceDetail(unit, durationObject[prop], "long", language, script);
                     sysres.push(result);
                     break;
-                    case "durationPropertiesMedium":
+                case "durationPropertiesMedium":
                     unit = table.narrow;
                     result = module.exports.createDurationResourceDetail(unit, durationObject[prop], "medium", language, script);
                     sysres.push(result);
-                break;
+                    break;
                 case "durationPropertiesShort":
                     unit = table.narrow;
                     result = module.exports.createDurationResourceDetail(unit, durationObject[prop], "short", language, script);
