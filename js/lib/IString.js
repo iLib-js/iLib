@@ -1444,10 +1444,4 @@ IString.prototype = {
     }
 };
 
-Object.defineProperty(IString, 'length', {
-    get: function() {
-        return this._length();
-    }
-});
-
 module.exports = IString;
