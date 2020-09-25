@@ -134,8 +134,6 @@ if (!fs.existsSync(localeDirName)) {
 
 makeDirs(localeDirName);
 
-var filename, root, json, suppData, languageData, scripts = {};
-
 var language, region, script;
 
 console.log("Reading existing locale data ...");
@@ -167,7 +165,7 @@ var list = cldr.availableLocales;
 // var list = ["as"];
 
 //these locales have the wrong data in CLDR and need to be skipped for now
-var skipList = [""];
+var skipList = ["ku"];
 
 list.forEach(function (file) {
     var locale = file ? new Locale(file) : undefined;
@@ -204,7 +202,7 @@ list.forEach(function (file) {
         group = aux.getFormatGroup(dateFormats, localeComponents);
         group.data = merge(group.data || {}, newFormats);
 
-        newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
+        newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language, script);
         // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(systemResources, localeComponents);
         group.data = merge(group.data || {}, newFormats);
@@ -217,7 +215,7 @@ list.forEach(function (file) {
         group = aux.getFormatGroup(dateFormats, localeComponents);
         group.data = merge(group.data || {}, newFormats);
 
-        newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
+        newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language, script);
         // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
         var group = aux.getFormatGroup(systemResources, localeComponents);
         group.data = merge(group.data || {}, newFormats);
@@ -232,7 +230,7 @@ list.forEach(function (file) {
         group = aux.getFormatGroup(dateFormats, localeComponents);
         group.data = merge(group.data || {}, newFormats);
 
-        newFormats = aux.createSystemResources(cals, language);
+        newFormats = aux.createSystemResources(cals, language, script);
         // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(systemResources, localeComponents);
         group.data = merge(group.data || {}, newFormats);
@@ -245,7 +243,7 @@ list.forEach(function (file) {
     group = aux.getFormatGroup(dateFormats, localeComponents);
     group.data = merge(group.data || {}, newFormats);
 
-    newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
+    newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language, script);
     //console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
     group = aux.getFormatGroup(systemResources, localeComponents);
     group.data = merge(group.data || {}, newFormats);
@@ -277,7 +275,7 @@ list.forEach(function (file) {
 
     // day periods
     var periods = dayPeriods.supplemental.dayPeriodRuleSet;
-    newFormats = aux.createDayPeriods(periods, cal.main[file].dates.calendars, language, region);
+    newFormats = aux.createDayPeriods(periods, cal.main[file].dates.calendars, language);
     if (newFormats) {
         group = aux.getFormatGroup(dateFormats, localeComponents);
         group.data = merge(group.data || {}, newFormats.periods);
