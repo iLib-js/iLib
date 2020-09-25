@@ -4943,7 +4943,7 @@ module.exports.testdurfmt = {
             second: 1,
             millisecond: 1
         });
-        test.equal(duration.toString(), "1년 1개월 1주 1일 1시간 1분 1초 1밀리초");
+        test.equal(duration.toString(), "1년 1개월 1주 1일 1시간 1분 1초 1ms");
         test.done();
     },
 
@@ -4966,7 +4966,7 @@ module.exports.testdurfmt = {
             second: 1,
             millisecond: 1
         });
-        test.equal(duration.toString(), "1년 1개월 1주 1일 1시간 1분 1초 1밀리초");
+        test.equal(duration.toString(), "1년 1개월 1주 1일 1시간 1분 1초 1ms");
         test.done();
     },
 
@@ -5011,7 +5011,7 @@ module.exports.testdurfmt = {
             second: 1,
             millisecond: 1
         });
-        test.equal(duration.toString(), "1년 1개월 1주 1일 1시간 1분 1초 1밀리초");
+        test.equal(duration.toString(), "1년 1개월 1주 1일 1시간 1분 1초 1ms");
         test.done();
     },
 
@@ -5033,7 +5033,7 @@ module.exports.testdurfmt = {
             second: 1,
             millisecond: 1
         });
-        test.equal(duration.toString(), "1년 1개월 1주 1일 1시간 1분 1초 1밀리초");
+        test.equal(duration.toString(), "1년 1개월 1주 1일 1시간 1분 1초 1ms");
         test.done();
     },
 
