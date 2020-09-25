@@ -2254,7 +2254,7 @@ module.exports.testdatefmt = {
             year: 0,
             month: 12,
             day: 31,
-            hour: 23,
+            hour: 2,
             minute: 0,
             second: 0,
             millisecond: 0

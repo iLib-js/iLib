@@ -803,7 +803,7 @@ module.exports.testdatefmt_ky_KG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011-ж., Сентябрь');
+        test.equal(fmt.format(date), '2011-ж., сентябрь');
         test.done();
     },
 

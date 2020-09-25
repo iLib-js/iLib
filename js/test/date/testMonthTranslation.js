@@ -498,18 +498,18 @@ module.exports.testmonthtranslation = {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
-        test.equal(value[0], "Ιανουάριος"); //standAlone
-        test.equal(value[1], "Φεβρουάριος");
-        test.equal(value[2], "Μάρτιος");
-        test.equal(value[3], "Απρίλιος");
-        test.equal(value[4], "Μάιος");
-        test.equal(value[5], "Ιούνιος");
-        test.equal(value[6], "Ιούλιος");
-        test.equal(value[7], "Αύγουστος");
-        test.equal(value[8], "Σεπτέμβριος");
-        test.equal(value[9], "Οκτώβριος");
-        test.equal(value[10], "Νοέμβριος");
-        test.equal(value[11], "Δεκέμβριος");
+        test.equal(value[0], "Ιανουαρίου"); //standAlone
+        test.equal(value[1], "Φεβρουαρίου");
+        test.equal(value[2], "Μαρτίου");
+        test.equal(value[3], "Απριλίου");
+        test.equal(value[4], "Μαΐου");
+        test.equal(value[5], "Ιουνίου");
+        test.equal(value[6], "Ιουλίου");
+        test.equal(value[7], "Αυγούστου");
+        test.equal(value[8], "Σεπτεμβρίου");
+        test.equal(value[9], "Οκτωβρίου");
+        test.equal(value[10], "Νοεμβρίου");
+        test.equal(value[11], "Δεκεμβρίου");
 
         var fmt = new DateFmt({locale:"el-CY", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
@@ -518,15 +518,15 @@ module.exports.testmonthtranslation = {
 
         test.equal(value[0], "Ιαν");
         test.equal(value[1], "Φεβ");
-        test.equal(value[2], "Μάρ");
+        test.equal(value[2], "Μαρ");
         test.equal(value[3], "Απρ");
-        test.equal(value[4], "Μάι");
-        test.equal(value[5], "Ιούν");
-        test.equal(value[6], "Ιούλ");
-        test.equal(value[7], "Αύγ");
+        test.equal(value[4], "Μαΐ");
+        test.equal(value[5], "Ιουν");
+        test.equal(value[6], "Ιουλ");
+        test.equal(value[7], "Αυγ");
         test.equal(value[8], "Σεπ");
         test.equal(value[9], "Οκτ");
-        test.equal(value[10], "Νοέ");
+        test.equal(value[10], "Νοε");
         test.equal(value[11], "Δεκ");
 
         test.done();
@@ -544,18 +544,18 @@ module.exports.testmonthtranslation = {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
-        test.equal(value[0], "Ιανουάριος"); //standAlone
-        test.equal(value[1], "Φεβρουάριος");
-        test.equal(value[2], "Μάρτιος");
-        test.equal(value[3], "Απρίλιος");
-        test.equal(value[4], "Μάιος");
-        test.equal(value[5], "Ιούνιος");
-        test.equal(value[6], "Ιούλιος");
-        test.equal(value[7], "Αύγουστος");
-        test.equal(value[8], "Σεπτέμβριος");
-        test.equal(value[9], "Οκτώβριος");
-        test.equal(value[10], "Νοέμβριος");
-        test.equal(value[11], "Δεκέμβριος");
+        test.equal(value[0], "Ιανουαρίου"); //standAlone
+        test.equal(value[1], "Φεβρουαρίου");
+        test.equal(value[2], "Μαρτίου");
+        test.equal(value[3], "Απριλίου");
+        test.equal(value[4], "Μαΐου");
+        test.equal(value[5], "Ιουνίου");
+        test.equal(value[6], "Ιουλίου");
+        test.equal(value[7], "Αυγούστου");
+        test.equal(value[8], "Σεπτεμβρίου");
+        test.equal(value[9], "Οκτωβρίου");
+        test.equal(value[10], "Νοεμβρίου");
+        test.equal(value[11], "Δεκεμβρίου");
 
         var fmt = new DateFmt({locale:"el-GR", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
@@ -564,15 +564,15 @@ module.exports.testmonthtranslation = {
 
         test.equal(value[0], "Ιαν");
         test.equal(value[1], "Φεβ");
-        test.equal(value[2], "Μάρ");
+        test.equal(value[2], "Μαρ");
         test.equal(value[3], "Απρ");
-        test.equal(value[4], "Μάι");
-        test.equal(value[5], "Ιούν");
-        test.equal(value[6], "Ιούλ");
-        test.equal(value[7], "Αύγ");
+        test.equal(value[4], "Μαΐ");
+        test.equal(value[5], "Ιουν");
+        test.equal(value[6], "Ιουλ");
+        test.equal(value[7], "Αυγ");
         test.equal(value[8], "Σεπ");
         test.equal(value[9], "Οκτ");
-        test.equal(value[10], "Νοέ");
+        test.equal(value[10], "Νοε");
         test.equal(value[11], "Δεκ");
 
         test.done();

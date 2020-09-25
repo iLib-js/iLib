@@ -426,13 +426,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "N");
-        test.equal(value[1], "P");
-        test.equal(value[2], "U");
-        test.equal(value[3], "S");
-        test.equal(value[4], "Č");
-        test.equal(value[5], "P");
-        test.equal(value[6], "S");
+        test.equal(value[0], "n");
+        test.equal(value[1], "p");
+        test.equal(value[2], "u");
+        test.equal(value[3], "s");
+        test.equal(value[4], "č");
+        test.equal(value[5], "p");
+        test.equal(value[6], "s");
 
         test.done();
     },
@@ -486,13 +486,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "N");
-        test.equal(value[1], "P");
-        test.equal(value[2], "U");
-        test.equal(value[3], "S");
-        test.equal(value[4], "Č");
-        test.equal(value[5], "P");
-        test.equal(value[6], "S");
+        test.equal(value[0], "n");
+        test.equal(value[1], "p");
+        test.equal(value[2], "u");
+        test.equal(value[3], "s");
+        test.equal(value[4], "č");
+        test.equal(value[5], "p");
+        test.equal(value[6], "s");
 
         test.done();
     },
