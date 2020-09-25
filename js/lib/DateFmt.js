@@ -604,27 +604,27 @@ DateFmt.prototype = {
         if (typeof (options.sync) === 'undefined') {
             options.sync = true;
         }
-        if (!this.template) {
-            Utils.loadData({
-                object: "DateFmt",
-                locale: this.locale,
-                name: "dateformats.json",
-                sync: options.sync,
-                loadParams: options.loadParams,
-                callback: ilib.bind(this, function (formats) {
-                    var spec = this.locale.getSpec().replace(/-/g, '_');
-                    if (!formats) {
-                        formats = ilib.data.dateformats || DateFmt.defaultFmt;
-                    }
+        Utils.loadData({
+            object: "DateFmt",
+            locale: this.locale,
+            name: "dateformats.json",
+            sync: options.sync,
+            loadParams: options.loadParams,
+            callback: ilib.bind(this, function (formats) {
+                if (!formats) {
+                    formats = ilib.data.dateformats || DateFmt.defaultFmt;
+                }
 
-                    this.info = formats;
+                this.info = formats;
+                var ret = this;
 
+                if (this.template) {
+                    this._massageTemplate();
+                } else {
                     if (typeof(this.clock) === 'undefined') {
                         // default to the locale instead
                         this.clock = this.locinfo.getClock();
                     }
-
-                    var ret = this;
 
                     if (typeof(options.sync) === "boolean" && !options.sync) {
                         // in async mode, capture the exception and call the callback with "undefined"
@@ -639,19 +639,13 @@ DateFmt.prototype = {
                         this._initTemplate(formats);
                         this._massageTemplate();
                     }
+                }
 
-                    if (typeof(options.onLoad) === 'function') {
-                        options.onLoad(ret);
-                    }
-               })
-            });
-        } else {
-            this._massageTemplate();
-
-            if (typeof(options.onLoad) === 'function') {
-                options.onLoad(this);
-            }
-        }
+                if (typeof(options.onLoad) === 'function') {
+                    options.onLoad(ret);
+                }
+           })
+        });
     },
 
     /**
@@ -1116,16 +1110,29 @@ DateFmt.prototype = {
         if (!range) {
             return "";
         }
+        // find all day periods that apply, and then choose the shortest one
         var minuteOfDay = hours * 60 + minutes;
+        var shortest = {
+            name: "",
+            length: 2000
+        };
         for (var i = 0; i < range.length; i++) {
             var period = range[i];
-            if (minuteOfDay === period.at || (minuteOfDay >= period.start && minuteOfDay < period.end)) {
+            if (minuteOfDay === period.at || (minuteOfDay >= period.from && minuteOfDay < period.to)) {
                 var periodCode = "B" + i;
-                return this.sysres.getString(undefined, periodCode + "-" + this.calName) ||
-                    this.sysres.getString(undefined, periodCode);
+                var length = typeof(period.at) !== "undefined" ? 0 : (period.to - period.from);
+
+                if (length < shortest.length) {
+                    shortest = {
+                        name: this.sysres.getString(undefined, periodCode + "-" + this.calName) ||
+                            this.sysres.getString(undefined, periodCode),
+                        length: length
+                    };
+                }
             }
         }
-        return "";
+
+        return shortest.name;
     },
 
     /**
