@@ -532,6 +532,7 @@ IString.prototype = {
      * console.log("String is " + str._length() + " characters long.");
      * </pre>
      * @private
+     * @deprecated
      */
     _length: function () {
         return this.str.length;
