@@ -160,5 +160,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": ", ",
-    "finalSeparatorShort": ", "
+    "finalSeparatorShort": ", ",
+    "B0": "midnatt",
+    "B1": "natten",
+    "B2": "a.m.",
+    "B3": "morgenen",
+    "B4": "formiddagen",
+    "B5": "ettermiddagen",
+    "B6": "p.m.",
+    "B7": "kvelden"
 }

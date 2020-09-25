@@ -236,5 +236,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "түн ортосу",
+    "B1": "таңкы",
+    "B2": "эртең менен",
+    "B3": "чак түш",
+    "B4": "түштөн кийин",
+    "B5": "түштөн кийинки",
+    "B6": "кечинде",
+    "B7": "түн ичинде"
 }

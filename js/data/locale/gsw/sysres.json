@@ -160,5 +160,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": " und ",
     "separatorShort": ", ",
-    "finalSeparatorShort": " und "
+    "finalSeparatorShort": " und ",
+    "B0": "Mitternacht",
+    "B1": "znacht",
+    "B2": "am Vormittag",
+    "B3": "am Morge",
+    "B4": "zmittag",
+    "B5": "am Namittag",
+    "B6": "am Namittag",
+    "B7": "zaabig"
 }

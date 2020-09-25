@@ -160,5 +160,16 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "അർദ്ധരാത്രി",
+    "B1": "AM",
+    "B2": "പുലർച്ചെ",
+    "B3": "രാവിലെ",
+    "B4": "ഉച്ച",
+    "B5": "ഉച്ചയ്ക്ക്",
+    "B6": "PM",
+    "B7": "ഉച്ചതിരിഞ്ഞ്",
+    "B8": "വൈകുന്നേരം",
+    "B9": "സന്ധ്യ",
+    "B10": "രാത്രി"
 }

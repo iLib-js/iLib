@@ -27,8 +27,8 @@
                 "s": "d.M"
             },
             "my": {
-                "f": "LLLL yyyy",
-                "l": "LLLL yyyy",
+                "f": "MMMM yyyy",
+                "l": "MMMM yyyy",
                 "m": "M.yyyy",
                 "s": "M.yy"
             },

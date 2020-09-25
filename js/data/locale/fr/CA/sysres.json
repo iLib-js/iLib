@@ -22,5 +22,7 @@
     "1#1 mo|#{num} mos": "one#{num}m|#{num}m",
     "durationShortMinutes": "one#{num}m|#{num}m",
     "#{num}w": "one#{num}sem|#{num}sem",
-    "durationShortMonths": "one#{num}m|#{num}m"
+    "durationShortMonths": "one#{num}m|#{num}m",
+    "B2": "a.m.",
+    "B6": "p.m."
 }

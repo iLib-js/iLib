@@ -161,5 +161,14 @@
     "finalSeparatorMedium": " und ",
     "separatorShort": ", ",
     "finalSeparatorShort": " und ",
-    "ordinalChoice": "#{num}."
+    "ordinalChoice": "#{num}.",
+    "B0": "Mitternacht",
+    "B1": "nachts",
+    "B2": "AM",
+    "B3": "morgens",
+    "B4": "vormittags",
+    "B5": "mittags",
+    "B6": "PM",
+    "B7": "nachmittags",
+    "B8": "abends"
 }

@@ -236,5 +236,13 @@
     "separatorMedium": " ",
     "finalSeparatorMedium": " և ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "կեսգիշերին",
+    "B1": "գիշերվա",
+    "B2": "AM",
+    "B3": "առավոտյան",
+    "B4": "կեսօրին",
+    "B5": "ցերեկվա",
+    "B6": "PM",
+    "B7": "երեկոյան"
 }

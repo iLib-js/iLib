@@ -160,5 +160,14 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": " e ",
     "separatorShort": ", ",
-    "finalSeparatorShort": " e "
+    "finalSeparatorShort": " e ",
+    "B0": "e mesnatës",
+    "B1": "e natës",
+    "B2": "e paradites",
+    "B3": "e mëngjesit",
+    "B4": "e paradites",
+    "B5": "e mesditës",
+    "B6": "e pasdites",
+    "B7": "e pasdites",
+    "B8": "e mbrëmjes"
 }

@@ -160,5 +160,14 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ",",
     "separatorShort": "",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "मध्यरात",
+    "B1": "पूर्वाह्न",
+    "B2": "बिहान",
+    "B3": "मध्यान्ह",
+    "B4": "अपरान्ह",
+    "B5": "अपराह्न",
+    "B6": "साँझ",
+    "B7": "बेलुकी",
+    "B8": "रात"
 }

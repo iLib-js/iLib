@@ -236,5 +236,13 @@
     "separatorMedium": " ",
     "finalSeparatorMedium": " ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "vidurnaktis",
+    "B1": "naktis",
+    "B2": "priešpiet",
+    "B3": "rytas",
+    "B4": "perpiet",
+    "B5": "popietė",
+    "B6": "popiet",
+    "B7": "vakaras"
 }

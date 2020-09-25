@@ -1,7 +1,12 @@
 {
     "MMM3": "mart",
     "MMM9": "sept",
+    "LLL3": "mart",
+    "LLL9": "sept",
     "EEEE0": "nedjelja",
     "EEEE3": "srijeda",
-    "a0": "prije podne"
+    "cccc0": "nedjelja",
+    "cccc3": "srijeda",
+    "a0": "prije podne",
+    "B1": "prije podne"
 }

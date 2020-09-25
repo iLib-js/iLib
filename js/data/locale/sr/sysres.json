@@ -160,5 +160,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": " и ",
     "separatorShort": ", ",
-    "finalSeparatorShort": " и "
+    "finalSeparatorShort": " и ",
+    "B0": "поноћ",
+    "B1": "пре подне",
+    "B2": "ујутро",
+    "B3": "подне",
+    "B4": "по подне",
+    "B5": "по подне",
+    "B6": "увече",
+    "B7": "ноћу"
 }

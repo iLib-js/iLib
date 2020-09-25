@@ -32,9 +32,9 @@
                 "s": "dd/MM"
             },
             "my": {
-                "f": "LLLL 'de' yyyy",
-                "l": "LLLL 'de' yyyy",
-                "m": "LLL 'de' yyyy",
+                "f": "MMMM 'de' yyyy",
+                "l": "MMMM 'de' yyyy",
+                "m": "MMM 'de' yyyy",
                 "s": "MM/yy"
             },
             "dw": {
@@ -168,5 +168,38 @@
                 "s": "{sy} – {ey}"
             }
         }
-    }
+    },
+    "dayPeriods": [
+        {
+            "at": 0
+        },
+        {
+            "from": 0,
+            "to": 360
+        },
+        {
+            "from": 0,
+            "to": 720
+        },
+        {
+            "from": 360,
+            "to": 720
+        },
+        {
+            "from": 720,
+            "to": 780
+        },
+        {
+            "from": 720,
+            "to": 1440
+        },
+        {
+            "from": 780,
+            "to": 1260
+        },
+        {
+            "from": 1260,
+            "to": 1440
+        }
+    ]
 }

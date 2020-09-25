@@ -160,5 +160,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": " i ",
     "separatorShort": ", ",
-    "finalSeparatorShort": " i "
+    "finalSeparatorShort": " i ",
+    "B0": "ponoć",
+    "B1": "prijepodne",
+    "B2": "ujutro",
+    "B3": "podne",
+    "B4": "poslijepodne",
+    "B5": "popodne",
+    "B6": "navečer",
+    "B7": "po noći"
 }

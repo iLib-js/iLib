@@ -236,5 +236,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": " і ",
     "separatorShort": ", ",
-    "finalSeparatorShort": " і "
+    "finalSeparatorShort": " і ",
+    "B0": "опівночі",
+    "B1": "ночі",
+    "B2": "дп",
+    "B3": "ранку",
+    "B4": "пополудні",
+    "B5": "дня",
+    "B6": "пп",
+    "B7": "вечора"
 }

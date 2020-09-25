@@ -314,5 +314,13 @@
     "separatorMedium": "،‏ ",
     "finalSeparatorMedium": "،‏ ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "نیمه‌شب",
+    "B1": "قبل‌ازظهر",
+    "B2": "بامداد",
+    "B3": "صبح",
+    "B4": "ظهر",
+    "B5": "بعدازظهر",
+    "B6": "عصر",
+    "B7": "شب"
 }

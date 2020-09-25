@@ -236,5 +236,14 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": " i ",
     "separatorShort": ", ",
-    "finalSeparatorShort": " i "
+    "finalSeparatorShort": " i ",
+    "B0": "mitjanit",
+    "B1": "matinada",
+    "B2": "a. m.",
+    "B3": "matí",
+    "B4": "migdia",
+    "B5": "p. m.",
+    "B6": "tarda",
+    "B7": "vespre",
+    "B8": "nit"
 }

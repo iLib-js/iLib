@@ -27,9 +27,9 @@
                 "s": "‏M/d"
             },
             "my": {
-                "f": "د yyyy د LLLL",
-                "l": "د yyyy د LLLL",
-                "m": "‏yyyy LLL",
+                "f": "د yyyy د MMMM",
+                "l": "د yyyy د MMMM",
+                "m": "‏yyyy MMM",
                 "s": "‏yyyy/M"
             },
             "dw": {

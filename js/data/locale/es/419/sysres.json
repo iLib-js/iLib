@@ -24,5 +24,7 @@
     "#{num}d": "one#{num}d.|#{num}dd.",
     "#{num}w": "one#{num}sem.|#{num}sems.",
     "durationShortMonths": "one#{num}m.|#{num}mm.",
-    "#{num}y": "one#{num}a.|#{num}aa."
+    "#{num}y": "one#{num}a.|#{num}aa.",
+    "B1": "a.m.",
+    "B5": "p.m."
 }

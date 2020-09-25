@@ -160,5 +160,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": ", ",
-    "finalSeparatorShort": ", "
+    "finalSeparatorShort": ", ",
+    "B0": "полунощ",
+    "B1": "пр.об.",
+    "B2": "сутринта",
+    "B3": "на обяд",
+    "B4": "сл.об.",
+    "B5": "следобед",
+    "B6": "вечерта",
+    "B7": "през нощта"
 }

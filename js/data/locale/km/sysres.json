@@ -160,5 +160,13 @@
     "separatorMedium": " ",
     "finalSeparatorMedium": " ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "អធ្រាត្រ",
+    "B1": "AM",
+    "B2": "នៅពេល​ព្រឹក",
+    "B3": "ថ្ងៃត្រង់",
+    "B4": "នៅពេលរសៀល",
+    "B5": "PM",
+    "B6": "នៅពេល​ល្ងាច",
+    "B7": "នៅពេល​យប់"
 }

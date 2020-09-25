@@ -236,5 +236,11 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "π.μ.",
+    "B1": "το πρωί",
+    "B2": "το μεσημέρι",
+    "B3": "μ.μ.",
+    "B4": "το απόγευμα",
+    "B5": "το βράδυ"
 }

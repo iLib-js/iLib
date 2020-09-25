@@ -236,5 +236,13 @@
     "separatorMedium": " ",
     "finalSeparatorMedium": " ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "түн жарымы",
+    "B1": "AM",
+    "B2": "таңғы",
+    "B3": "түскі",
+    "B4": "түстен кейінгі",
+    "B5": "PM",
+    "B6": "кешкі",
+    "B7": "түнгі"
 }

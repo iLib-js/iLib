@@ -160,5 +160,14 @@
     "separatorMedium": "، و",
     "finalSeparatorMedium": "، و",
     "separatorShort": " و",
-    "finalSeparatorShort": " و"
+    "finalSeparatorShort": " و",
+    "B0": "منتصف الليل",
+    "B1": "ص",
+    "B2": "ليلاً",
+    "B3": "فجرًا",
+    "B4": "صباحًا",
+    "B5": "ظهرًا",
+    "B6": "م",
+    "B7": "بعد الظهر",
+    "B8": "مساءً"
 }

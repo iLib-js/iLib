@@ -236,5 +236,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": ", ",
-    "finalSeparatorShort": ", "
+    "finalSeparatorShort": ", ",
+    "B0": "da noite",
+    "B1": "da madrugada",
+    "B2": "a.m.",
+    "B3": "da mañá",
+    "B4": "do mediodía",
+    "B5": "p.m.",
+    "B6": "da tarde",
+    "B7": "da noite"
 }

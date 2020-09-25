@@ -160,5 +160,15 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": " és ",
     "separatorShort": ", ",
-    "finalSeparatorShort": " és "
+    "finalSeparatorShort": " és ",
+    "B0": "éjfél",
+    "B1": "de.",
+    "B2": "hajnal",
+    "B3": "reggel",
+    "B4": "délelőtt",
+    "B5": "dél",
+    "B6": "délután",
+    "B7": "du.",
+    "B8": "este",
+    "B9": "éjjel"
 }

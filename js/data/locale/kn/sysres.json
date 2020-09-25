@@ -160,5 +160,12 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": ", ",
-    "finalSeparatorShort": ", "
+    "finalSeparatorShort": ", ",
+    "B0": "ಮಧ್ಯ ರಾತ್ರಿ",
+    "B1": "ಪೂರ್ವಾಹ್ನ",
+    "B2": "ಬೆಳಗ್ಗೆ",
+    "B3": "ಮಧ್ಯಾಹ್ನ",
+    "B4": "ಅಪರಾಹ್ನ",
+    "B5": "ಸಂಜೆ",
+    "B6": "ರಾತ್ರಿ"
 }

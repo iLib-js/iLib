@@ -27,9 +27,9 @@
                 "s": "M/d"
             },
             "my": {
-                "f": "yyyy 'сыл' LLLL",
-                "l": "yyyy, LLLL",
-                "m": "yyyy, LLL",
+                "f": "yyyy 'сыл' MMMM",
+                "l": "yyyy, MMMM",
+                "m": "yyyy, MMM",
                 "s": "yy/M"
             },
             "dw": {

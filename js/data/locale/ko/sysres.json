@@ -87,7 +87,7 @@
     "1#1 week|#{num} weeks": "#{num}주",
     "1#1 month|#{num} months": "#{num}개월",
     "1#1 year|#{num} years": "#{num}년",
-    "#{num} ms": "#{num}밀리초",
+    "#{num} ms": "#{num}ms",
     "1#1 sec|#{num} sec": "#{num}초",
     "1#1 min|#{num} min": "#{num}분",
     "1#1 hr|#{num} hrs": "#{num}시간",
@@ -103,7 +103,7 @@
     "durationMediumWeeks": "#{num}주",
     "1#1 mo|#{num} mos": "#{num}개월",
     "durationMediumYears": "#{num}년",
-    "durationShortMillis": "#{num}밀리초",
+    "durationShortMillis": "#{num}ms",
     "#{num}s": "#{num}초",
     "durationShortMinutes": "#{num}분",
     "#{num}h": "#{num}시간",
@@ -160,5 +160,14 @@
     "separatorMedium": " ",
     "finalSeparatorMedium": " ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "자정",
+    "B1": "오전",
+    "B2": "새벽",
+    "B3": "오전",
+    "B4": "정오",
+    "B5": "오후",
+    "B6": "오후",
+    "B7": "저녁",
+    "B8": "밤"
 }

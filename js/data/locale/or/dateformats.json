@@ -135,11 +135,11 @@
                 "f": "{sm} {sd} – {em} {ed}, {ey}",
                 "l": "{sm} {sd} – {em} {ed}, {ey}",
                 "m": "{sm} {sd} – {em} {ed}, {ey}",
-                "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
+                "s": "{sm}/{sd} – {em}/{ed}/{ey}"
             },
             "c12": {
-                "f": "{sm} {sd}, {sy} – {em} {ed}, {ey}",
-                "l": "{sm} {sd}, {sy} – {em} {ed}, {ey}",
+                "f": "{st} {sm} {sd}, {sy} – {et} {em} {ed}, {ey}",
+                "l": "{st} {sm} {sd}, {sy} – {et} {em} {ed}, {ey}",
                 "m": "{sm} {sd}, {sy} – {em} {ed}, {ey}",
                 "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
             },
