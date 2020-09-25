@@ -608,7 +608,7 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "Ноя, 2011 – Янв, 2014");
+        test.equal(fmt.format(start, end), "ноя, 2011 – янв, 2014");
         test.done();
     },
     testDateRngFmtCyrl_UZRangeMultiYearLong: function(test) {
@@ -634,7 +634,7 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "Ноябр, 2011 – Январ, 2014");
+        test.equal(fmt.format(start, end), "ноябр, 2011 – январ, 2014");
         test.done();
     },
     testDateRngFmtCyrl_UZRangeMultiYearFull: function(test) {
@@ -660,7 +660,7 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "Ноябр, 2011 – Январ, 2014");
+        test.equal(fmt.format(start, end), "ноябр, 2011 – январ, 2014");
         test.done();
     },
     testDateRngFmtCyrl_UZManyYearsFull: function(test) {
