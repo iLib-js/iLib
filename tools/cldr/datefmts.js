@@ -303,7 +303,7 @@ function scanForLastChars(string, set) {
  * @returns {Boolean}
  */
 function standAlone(calendar, script) {
-    // Verify that the yMMM, yMMMM, MMM, or MMMM formats contain an 'L', as that is the format 
+    // Verify that the yMMM, yMMMM, MMM, or MMMM formats contain an 'L', as that is the format
     // where virtually all locales use the standalone month name
     var available = calendar.dateTimeFormats.availableFormats;
     if ((!available.yMMM || available.yMMM.indexOf('L') < 0) &&
@@ -672,7 +672,7 @@ module.exports = {
                 }
 
                 if (usesStandAlone) {
-                    var avail = (getAvailableFormat(cldrCalendar, "yMMM") || "") + 
+                    var avail = (getAvailableFormat(cldrCalendar, "yMMM") || "") +
                         (getAvailableFormat(cldrCalendar, "yMMMM") || "");
                     if (avail && avail.indexOf('L') > -1) {
                         calendar.date.my[lenAbbr] = calendar.date.my[lenAbbr].replace(/MMMM/, "LLLL").replace(/MMM/, "LLL");
@@ -1700,23 +1700,27 @@ module.exports = {
             var temp;
             var fullStr = "";
 
-            var unitNames = ["zero", "one", "two", "few", "many", "other"];
+            if (language === "ko" && duration === "millisecond") {
+                fullStr = "#{num}밀리초";
+            } else {
+                var unitNames = ["zero", "one", "two", "few", "many", "other"];
 
-            for (var j = 0; j < unitNames.length; j++){
-                name = unitNames[j];
-                nameValue = "unitPattern-count-" + name;
-                if (cldrUnitData[durationKey] && typeof(cldrUnitData[durationKey][nameValue]) !== 'undefined') {
-                    durationSysresTest[durationObject[duration]] = {};
-                    if (fullStr.length > 0) {
-                        fullStr += "|";
-                    }
+                for (var j = 0; j < unitNames.length; j++){
+                    name = unitNames[j];
+                    nameValue = "unitPattern-count-" + name;
+                    if (cldrUnitData[durationKey] && typeof(cldrUnitData[durationKey][nameValue]) !== 'undefined') {
+                        durationSysresTest[durationObject[duration]] = {};
+                        if (fullStr.length > 0) {
+                            fullStr += "|";
+                        }
 
-                    temp = cldrUnitData[durationKey][nameValue].replace("{0}", "{num}");
+                        temp = cldrUnitData[durationKey][nameValue].replace("{0}", "{num}");
 
-                    if (unitNames[j] == "other") {
-                        fullStr += "#" + temp;
-                    } else {
-                        fullStr += name +"#" + temp;
+                        if (unitNames[j] == "other") {
+                            fullStr += "#" + temp;
+                        } else {
+                            fullStr += name +"#" + temp;
+                        }
                     }
                 }
             }
