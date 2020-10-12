@@ -27,6 +27,7 @@ var unifile = require('./unifile.js');
 var common = require('./common.js');
 var UnicodeFile = unifile.UnicodeFile;
 var windowsZones = require("cldr-data/supplemental/windowsZones.json");
+var mkdirs = common.makeDirs;
 
 function usage() {
 	console.log("Usage: gentzinfo [-h] tzdata-dir [toDir]\n" +
@@ -217,5 +218,50 @@ fs.writeFile(filepath, JSON.stringify(countryToZones, true, 4), function (err) {
 		throw err;
 	}
 });
+
+// generate timezone.jf
+var rootTimezone = {timezone: "ETC/UTC"};
+fs.writeFileSync(path.join(toDir, "timezone.jf"), JSON.stringify(rootTimezone, true, 4), "utf-8");
+
+var defaultTimezone = {
+    "AU": "Australia/Sydney",
+    "BD": "Asia/Dhaka",
+    "BR": "America/Sao_Paulo",
+    "CA": "America/Toronto",
+    "CL": "America/Santiago",
+    "CN": "Asia/Shanghai",
+    "CY": "Asia/Nicosia",
+    "ES": "Europe/Madrid",
+    "FM": "Pacific/Chuuk",
+    "GB": "Europe/London",
+    "GL": "America/Nuuk",
+    "IE": "Europe/Dublin",
+    "IN": "Asia/Kolkata",
+    "KE": "Africa/Nairobi",
+    "KI": "Pacific/Kiritimati",
+    "MH": "Pacific/Majuro",
+    "MM": "Asia/Yangon",
+    "MN": "Asia/Ulaanbaatar",
+    "MO": "Asia/Macau",
+    "MX": "America/Mexico_City",
+    "NO": "Europe/Oslo",
+    "NZ": "Pacific/Auckland",
+    "PF": "Pacific/Tahiti",
+    "PG": "Pacific/Port_Moresby",
+    "PT": "Europe/Lisbon",
+    "RU": "Europe/Moscow",
+    "US": "America/New_York"
+}
+
+for (var country in countryToZones) {
+    var directory = path.join(toDir, "und", country);
+    if (!fs.existsSync(directory)) {
+        mkdirs(directory);
+    };
+    var data = {
+        timezone: typeof defaultTimezone[country] !== "undefined" ? defaultTimezone[country]: countryToZones[country][0]
+    }
+    fs.writeFileSync(path.join(directory, "timezone.jf"), JSON.stringify(data, true, 4), "utf-8");
+}
 
 console.log("Done");
