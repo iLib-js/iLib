@@ -370,8 +370,287 @@ module.exports.testtoupper = {
         });
         test.equal(mapper.map("abɓcdɗefghijkƙlmnorstuwyƴz"), "ABƁCDƊEFGHIJKƘLMNORSTUWYƳZ");
         test.done();
+    },
+
+    testToUpper_sl_SI: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            direction: "toupper",
+            locale: "sl-SI"
+        });
+        // take special care of the digraphs
+        test.equal(mapper.map("ǌǋǊǉǈǇ"), "ǊǊǊǇǇǇ");
+        test.done();
+    },
+
+    testCaseMapperTypeSentenceEn: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "sentence",
+            locale: "en-US"
+        });
+        test.equal(mapper.map("this is a test."), "This is a test.");
+        test.done();
+    },
+
+    testCaseMapperTypeSentenceFirstLetterIgnorePunct: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "sentence",
+            locale: "es-ES"
+        });
+        // capitalize the first letter, skipping over any initial punctuation
+        test.equal(mapper.map("¡esto es una prueba!"), "¡Esto es una prueba!");
+        test.done();
+    },
+
+    testCaseMapperTypeSentenceIgnoreInitialWhitespace: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "sentence",
+            locale: "en-US"
+        });
+        // capitalize the first letter after all the whitespace is skipped
+        test.equal(mapper.map("   \n\t\r          this is a test."), "   \n\t\r          This is a test.");
+        test.done();
+    },
+
+    testCaseMapperTypeSentenceFirstLetterDigraphNl: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "sentence",
+            locale: "es-ES"
+        });
+        test.equal(mapper.map("ijsland is koud!"), "¡IJsland is koud!");
+        test.done();
+    },
+
+    testCaseMapperTypeSentenceFirstLetterDigraphHr: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "sentence",
+            locale: "hr-HR"
+        });
+        // use the right digraph
+        test.equal(mapper.map("ǌemačka je sjeverno odavde."), "ǋemačka je sjeverno odavde.");
+        test.done();
+    },
+
+    testCaseMapperTypeSentenceFirstLetterDigraphHr2: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "sentence",
+            locale: "hr-HR"
+        });
+        // use the right digraph
+        test.equal(mapper.map("njemačka je sjeverno odavde."), "Njemačka je sjeverno odavde.");
+        test.done();
+    },
+
+    testCaseMapperTypeSentenceFirstLetterDigraphSl: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "sentence",
+            locale: "sl-SI"
+        });
+        // use the right digraph
+        test.equal(mapper.map("ǉubǉana je čudovita."), "ǈubǉana je čudovita.");
+        test.done();
+    },
+
+    testCaseMapperTypeSentenceIgnoreIdeographs: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "sentence",
+            locale: "ja-JP"
+        });
+        test.equal(mapper.map("これはテストです。"), "これはテストです。");
+        test.done();
+    },
+
+    testCaseMapperTypeSentenceEnMultipleSentences: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "sentence",
+            locale: "en-US"
+        });
+        test.equal(mapper.map("this is a test. this is only a test."), "This is a test. This is only a test.");
+        test.done();
+    },
+
+    testCaseMapperTypeTitleEn: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "title",
+            locale: "en-US"
+        });
+        // only the open class words are capitalized
+        test.equal(mapper.map("this is a test of the emergency capitalization system"), "This is a Test of the Emergency Capitalization system");
+        test.done();
+    },
+
+    testCaseMapperTypeTitleDe: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "title",
+            locale: "de-DE"
+        });
+        // In German, only initial caps, like sentence case
+        test.equal(mapper.map("dies ist einen Test"), "Dies ist einen Test");
+        test.done();
+    },
+
+    testCaseMapperTypeTitleDeDontTouchOtherCaps: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "title",
+            locale: "de-DE"
+        });
+        // don't touch the rest of the sentence
+        test.equal(mapper.map("dies ist einen test"), "Dies ist einen test");
+        test.done();
+    },
+
+    testCaseMapperTypeTitleDe: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "title",
+            locale: "de-DE"
+        });
+        // In Italian, all words are capitalized
+        test.equal(mapper.map("questa è una prova."), "Questa È Una Prova.");
+        test.done();
+    },
+
+    testCaseMapperTypeTitleFirstLetterIgnorePunct: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "title",
+            locale: "es-ES"
+        });
+        // capitalize the first letter, skipping over any initial punctuation
+        test.equal(mapper.map("¡esto es una prueba!"), "¡Esto es una prueba!");
+        test.done();
+    },
+
+    testCaseMapperTypeTitleIgnoreLeadingWhitespace: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "title",
+            locale: "en-US"
+        });
+        // only the open class words are capitalized
+        test.equal(mapper.map("   \t\n\r  this is a test of the emergency capitalization system"), "   \t\n\r  This is a Test of the Emergency Capitalization System");
+        test.done();
+    },
+
+    testCaseMapperTypeStartFirstLetterDigraphHr: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "start",
+            locale: "hr-HR"
+        });
+        // use the right digraph
+        test.equal(mapper.map("ǌemačka je sjeverno odavde."), "ǋemačka je sjeverno odavde.");
+        test.done();
+    },
+
+    testCaseMapperTypeTitleFirstLetterDigraphNl: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "title",
+            locale: "nl-NL"
+        });
+        // use the right digraph
+        test.equal(mapper.map("ijsland is koud."), "IJsland is koud.");
+        test.done();
+    },
+
+    testCaseMapperTypeStartEn: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "start",
+            locale: "en-US"
+        });
+        // only the open class words are capitalized
+        test.equal(mapper.map("this is a test of the emergency capitalization system"), "This Is A Test Of The Emergency Capitalization System");
+        test.done();
+    },
+
+    testCaseMapperTypeStartDe: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "start",
+            locale: "de-DE"
+        });
+        // In German, only initial caps, like sentence case
+        test.equal(mapper.map("dies ist einen Test"), "Dies Ist Einen Test");
+        test.done();
+    },
+
+    testCaseMapperTypeStartDeDontTouchOtherCaps: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "start",
+            locale: "de-DE"
+        });
+        // don't touch the rest of the sentence
+        test.equal(mapper.map("dies ist einen test"), "Dies Ist Einen Test");
+        test.done();
+    },
+
+    testCaseMapperTypeStartDe: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "start",
+            locale: "de-DE"
+        });
+        // In Italian, all words are capitalized
+        test.equal(mapper.map("questa è una prova."), "Questa È Una Prova.");
+        test.done();
+    },
+
+    testCaseMapperTypeStartFirstLetterIgnorePunct: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "start",
+            locale: "es-ES"
+        });
+        // capitalize the first letter, skipping over any initial punctuation
+        test.equal(mapper.map("¡esto es una prueba!"), "¡Esto Es Una Prueba!");
+        test.done();
+    },
+
+    testCaseMapperTypeStartIgnoreLeadingWhitespace: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "start",
+            locale: "en-US"
+        });
+        // only the open class words are capitalized
+        test.equal(mapper.map("   \t\n\r  this is a test of the emergency capitalization system"), "   \t\n\r  This Is A Test Of The Emergency Capitalization System");
+        test.done();
+    },
+
+    testCaseMapperTypeStartFirstLetterDigraphHr: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "start",
+            locale: "hr-HR"
+        });
+        // use the right digraph
+        test.equal(mapper.map("ǌemačka je sjeverno odavde."), "ǋemačka Je Sjeverno Odavde.");
+        test.done();
+    },
+
+    testCaseMapperTypeStartFirstLetterDigraphNl: function(test) {
+        test.expect(1);
+        var mapper = new CaseMapper({
+            type: "start",
+            locale: "nl-NL"
+        });
+        // use the right digraph
+        test.equal(mapper.map("ijsland is koud."), "IJsland Is Koud.");
+        test.done();
     }
-    
-    
-    
 };
