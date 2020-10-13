@@ -27,7 +27,7 @@ var Measurement = require("./Measurement.js");
 /**
  * @class
  * Create a new pressure measurement instance.
- * 
+ *
  * @constructor
  * @extends Measurement
  * @param options {{unit:string,amount:number|string|undefined}} Options controlling
@@ -73,12 +73,12 @@ PressureUnit.ratios = {
  * Return the type of this measurement. Examples are "mass",
  * "length", "speed", etc. Measurements can only be converted
  * to measurements of the same type.<p>
- * 
- * The type of the units is determined automatically from the 
- * units. For example, the unit "grams" is type "mass". Use the 
+ *
+ * The type of the units is determined automatically from the
+ * units. For example, the unit "grams" is type "mass". Use the
  * static call {@link Measurement.getAvailableUnits}
  * to find out what units this version of ilib supports.
- *  
+ *
  * @return {string} the name of the type of this measurement
  */
 PressureUnit.prototype.getMeasure = function() {
@@ -87,7 +87,7 @@ PressureUnit.prototype.getMeasure = function() {
 
 /**
  * Return a new instance of this type of measurement.
- * 
+ *
  * @param {Object} params parameters to the constructor
  * @return {Measurement} a measurement subclass instance
  */
@@ -141,7 +141,7 @@ PressureUnit.systems = {
                 "bar": "pound-per-square-inch",
                 "megapascal": "pound-per-square-inch",
                 "gigapascal": "atmosphere"
-            }    
+            }
         },
         "uscustomary": {
             "metric": {
@@ -218,7 +218,7 @@ PressureUnit.aliases = {
     "kWh": "kilowatt-hour",
     "giga joule": "gigajoule",
     "Gj": "gigajoule",
-    "gigajoule": "gigajoule",   
+    "gigajoule": "gigajoule",
     "gigajoules": "gigajoule",
     "mega watt hour": "megawatt-hour",
     "mega watt hours": "megawatt-hour",
