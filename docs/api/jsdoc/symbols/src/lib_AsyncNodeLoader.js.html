@@ -9,7 +9,7 @@
 <span class='line'>  2</span>  * AsyncAsyncNodeLoader.js - Loader implementation for nodejs with asynchronous calls.
 <span class='line'>  3</span>  * Mostly this is used for testing the async calls
 <span class='line'>  4</span>  *
-<span class='line'>  5</span>  * Copyright © 2018, JEDLSoft
+<span class='line'>  5</span>  * Copyright © 2018, 2020 JEDLSoft
 <span class='line'>  6</span>  *
 <span class='line'>  7</span>  * Licensed under the Apache License, Version 2.0 (the "License");
 <span class='line'>  8</span>  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@
 <span class='line'> 32</span> </span><span class="WHIT">    </span><span class="NAME">Loader</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./Loader.js"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 33</span> 
 <span class='line'> 34</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">AsyncNodeLoader</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ilib</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 35</span> </span><span class="WHIT">        </span><span class="COMM">// util.print("new common AsyncNodeLoader instance\n");</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">        </span><span class="COMM">// console.log("new common AsyncNodeLoader instance");</span><span class="WHIT">
 <span class='line'> 36</span> 
 <span class='line'> 37</span> </span><span class="WHIT">        </span><span class="NAME">this.parent.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ilib</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 38</span> 
@@ -51,8 +51,8 @@
 <span class='line'> 44</span> </span><span class="WHIT">            </span><span class="NAME">path.join</span><span class="PUNC">(</span><span class="NAME">path.dirname</span><span class="PUNC">(</span><span class="NAME">module.filename</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">".."</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT">
 <span class='line'> 45</span> </span><span class="WHIT">            </span><span class="NAME">this.root</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 46</span> 
-<span class='line'> 47</span> </span><span class="WHIT">        </span><span class="COMM">//console.log("module.filename is " + module.filename + "\n");</span><span class="WHIT">
-<span class='line'> 48</span> </span><span class="WHIT">        </span><span class="COMM">//console.log("base is defined as " + this.base + "\n");</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">        </span><span class="COMM">//console.log("module.filename is " + module.filename);</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">        </span><span class="COMM">//console.log("base is defined as " + this.base);</span><span class="WHIT">
 <span class='line'> 49</span> 
 <span class='line'> 50</span> </span><span class="WHIT">        </span><span class="COMM">// this.includePath.push(path.join(this.root, "resources"));</span><span class="WHIT">
 <span class='line'> 51</span> </span><span class="WHIT">        </span><span class="NAME">this._exists</span><span class="PUNC">(</span><span class="NAME">this.root</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"resources"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// always check the application's resources dir first</span><span class="WHIT">
