@@ -1,6 +1,28 @@
 Release Notes for Version 14
 ============================
 
+Build 012
+-------
+Published as version 14.7.0
+
+New Features:
+* Added support for day periods per locale. These are periods like "morning", "afternoon", "evening".
+  Each locale has a different idea of when the periods are and when they start and end.
+    * day periods use the new "B" format specifier in date format templates
+    * updated a few locales that regularly use day periods, such as my-MM
+    * date ranges were also updated to include day periods
+
+Bug Fixes:
+s* Updated date formats to use proper standalone month names
+    * Previously, if either the year-month or the month alone available formats in CLDR
+    used the L standalone month name specifier, then we would use the standalone month name for
+    all year-month and month alone formats. However, some locales use the standalone only
+    for the year-month formats, or for the month alone formats, but not both, so the formatted
+    datess would come out with the wrong month name spellings in some cases
+    * Now year-month formats and month alone formats can use the standalone month names
+    independently of each other in date formatting
+    * Also affects date range formatting as well
+
 Build 011
 -------
 Published as version 14.7.0
