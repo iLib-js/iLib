@@ -220,10 +220,10 @@ fs.writeFile(filepath, JSON.stringify(countryToZones, true, 4), function (err) {
 });
 
 // generate timezone.jf
-var rootTimezone = {"timezone": "Etc/UTC"};
-fs.writeFileSync(path.join(toDir, "timezone.jf"), JSON.stringify(rootTimezone, true, 4), "utf-8");
+var rootTimeZoneID = {"timezone": "Etc/UTC"};
+fs.writeFileSync(path.join(toDir, "timezone.jf"), JSON.stringify(rootTimeZoneID, true, 4), "utf-8");
 
-var defaultTimezone = {
+var defaultTimeZoneID = {
     "AU": "Australia/Sydney",
     "BD": "Asia/Dhaka",
     "BR": "America/Sao_Paulo",
@@ -259,7 +259,7 @@ for (var country in countryToZones) {
         mkdirs(directory);
     };
     var data = {
-        timezone: typeof defaultTimezone[country] !== "undefined" ? defaultTimezone[country]: countryToZones[country][0]
+        timezone: typeof defaultTimeZoneID[country] !== "undefined" ? defaultTimeZoneID[country]: countryToZones[country][0]
     }
     console.log("Writing out timezone.jf file " + path.join(directory, "timezone.jf") );
     fs.writeFileSync(path.join(directory, "timezone.jf"), JSON.stringify(data, true, 4), "utf-8");
