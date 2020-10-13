@@ -1,7 +1,7 @@
 /*
- * testPower.js - test the Power object
+ * testForce.js - test the Force object
  *
- * Copyright © 2019-2020 JEDLSoft
+ * Copyright © 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-if (typeof(PowerUnit) === "undefined") {
-    var PowerUnit = require("../../lib/PowerUnit.js");
+if (typeof(ForceUnit) === "undefined") {
+    var ForceUnit = require("../../lib/ForceUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {
@@ -31,9 +31,9 @@ module.exports.testpower = {
         callback();
     },
 
-    testPowerPowerConstructor: function(test) {
+    testForceForceConstructor: function(test) {
         test.expect(1);
-        var m = new PowerUnit({
+        var m = new ForceUnit({
             unit: "kW",
             amount: 2
         });
@@ -42,13 +42,13 @@ module.exports.testpower = {
         test.done();
     },
 
-    testPowerPowerConvertkWtoHP: function(test) {
+    testForceForceConvertkWtoHP: function(test) {
         test.expect(3);
-        var m1 = new PowerUnit({
+        var m1 = new ForceUnit({
             unit: "kW",
             amount: 2
         });
-        var m2 = new PowerUnit({
+        var m2 = new ForceUnit({
             unit: "horsepower",
             amount: m1
         });
@@ -60,65 +60,65 @@ module.exports.testpower = {
         test.done();
     },
 
-    testPowerStaticConvert1: function(test) {
+    testForceStaticConvert1: function(test) {
         test.expect(1);
-        var m = PowerUnit.convert("gW", "hp", 1);
+        var m = ForceUnit.convert("gW", "hp", 1);
 
         test.roughlyEqual(m, 7.45701033e-7, 1e-10);
         test.done();
     },
 
-    testPowerStaticConvertWithString: function(test) {
+    testForceStaticConvertWithString: function(test) {
         test.expect(1);
-        var m = PowerUnit.convert("MW", "W", "1e6");
+        var m = ForceUnit.convert("MW", "W", "1e6");
 
         test.equal(m, 1);
         test.done();
     },
 
-    testPowerStaticConvert2: function(test) {
+    testForceStaticConvert2: function(test) {
         test.expect(1);
-        var m = PowerUnit.convert("mW", "kW", 1000);
+        var m = ForceUnit.convert("mW", "kW", 1000);
 
         test.equal(m, 1);
         test.done();
     },
 
-    testPowerStaticConvert3: function(test) {
+    testForceStaticConvert3: function(test) {
         test.expect(1);
-        var m = PowerUnit.convert("ft lb/h", "W", 1);
+        var m = ForceUnit.convert("ft lb/h", "W", 1);
 
         test.roughlyEqual(m, 0.737562149277, 1e-8);
         test.done();
     },
 
-    testPowerStaticConvert4: function(test) {
+    testForceStaticConvert4: function(test) {
         test.expect(1);
-        var m = PowerUnit.convert("hp", "btu/h", 1);
+        var m = ForceUnit.convert("hp", "btu/h", 1);
 
         test.roughlyEqual(m, 3.93014685e-4, 1e-7);
         test.done();
     },
 
-    testPowerStaticConvert5: function(test) {
+    testForceStaticConvert5: function(test) {
         test.expect(1);
-        var m = PowerUnit.convert("kW", "HP", 1);
+        var m = ForceUnit.convert("kW", "HP", 1);
 
         test.roughlyEqual(m, 0.7457010335416, 1e-8);
         test.done();
     },
 
-    testPowerStaticConvert6: function(test) {
+    testForceStaticConvert6: function(test) {
         test.expect(1);
-        var m = PowerUnit.convert("MW", "BTU/h", 1);
+        var m = ForceUnit.convert("MW", "BTU/h", 1);
 
         test.equal(m, 2.93071e-6);
         test.done();
     },
 /*
-    testPowerScale1: function(test) {
+    testForceScale1: function(test) {
         test.expect(2);
-        var m1 = new PowerUnit({
+        var m1 = new ForceUnit({
             unit: "watt hour",
             amount: 10000
         });
@@ -129,9 +129,9 @@ module.exports.testpower = {
         test.done();
     },
 
-    testPowerScale2: function(test) {
+    testForceScale2: function(test) {
         test.expect(2);
-        var m1 = new PowerUnit({
+        var m1 = new ForceUnit({
             unit: "kilowatt hour",
             amount: 1233453
         });
@@ -142,9 +142,9 @@ module.exports.testpower = {
         test.done();
     },
 
-    testPowerScale3: function(test) {
+    testForceScale3: function(test) {
         test.expect(2);
-        var m1 = new PowerUnit({
+        var m1 = new ForceUnit({
             unit: "milli joule",
             amount: 5254578
         });
@@ -155,9 +155,9 @@ module.exports.testpower = {
         test.done();
     },
 
-    testPowerScale4: function(test) {
+    testForceScale4: function(test) {
         test.expect(2);
-        var m1 = new PowerUnit({
+        var m1 = new ForceUnit({
             unit: "mega joule",
             amount: 5254578
         });
@@ -168,9 +168,9 @@ module.exports.testpower = {
         test.done();
     },
 */
-    testPowerGetMeasures: function(test) {
+    testForceGetMeasures: function(test) {
         test.expect(1);
-        var measures = PowerUnit.getMeasures();
+        var measures = ForceUnit.getMeasures();
         var expected = [
             "milliwatt",
             "watt",
