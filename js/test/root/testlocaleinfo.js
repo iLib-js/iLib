@@ -337,6 +337,27 @@ module.exports.testlocaleinfo = {
         test.equal(info.getTimeZone(), "Asia/Seoul");
         test.done();
     },
+    testLocaleInfoGetTimeZoneBT: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("dz-BT");
+        test.ok(info !== null);
+        test.equal(info.getTimeZone(), "Asia/Thimphu");
+        test.done();
+    },
+    testLocaleInfoGetTimeZoneFO: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("fo-FO");
+        test.ok(info !== null);
+        test.equal(info.getTimeZone(), "Atlantic/Faroe");
+        test.done();
+    },
+    testLocaleInfoGetTimeZoneFM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("en-FM");
+        test.ok(info !== null);
+        test.equal(info.getTimeZone(), "Pacific/Pohnpei");
+        test.done();
+    },
     
     testLocaleInfoGetTimeZoneDefault: function(test) {
         test.expect(2);
