@@ -220,7 +220,7 @@ fs.writeFile(filepath, JSON.stringify(countryToZones, true, 4), function (err) {
 });
 
 // generate timezone.jf
-var rootTimezone = {timezone: "ETC/UTC"};
+var rootTimezone = {"timezone": "Etc/UTC"};
 fs.writeFileSync(path.join(toDir, "timezone.jf"), JSON.stringify(rootTimezone, true, 4), "utf-8");
 
 var defaultTimezone = {
@@ -261,6 +261,7 @@ for (var country in countryToZones) {
     var data = {
         timezone: typeof defaultTimezone[country] !== "undefined" ? defaultTimezone[country]: countryToZones[country][0]
     }
+    console.log("Writing out timezone.jf file " + path.join(directory, "timezone.jf") );
     fs.writeFileSync(path.join(directory, "timezone.jf"), JSON.stringify(data, true, 4), "utf-8");
 }
 
