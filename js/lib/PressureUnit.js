@@ -1,7 +1,7 @@
 /*
  * PressureUnit.js - Unit conversions for pressure
  *
- * Copyright © 2018, JEDLSoft
+ * Copyright © 2018,2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
