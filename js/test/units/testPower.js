@@ -59,7 +59,7 @@ module.exports.testpower = {
         test.roughlyEqual(m2.getAmount(), 2.68204, 1e-5);
         test.done();
     },
-    
+
     testPowerStaticConvert1: function(test) {
         test.expect(1);
         var m = PowerUnit.convert("gW", "hp", 1);
