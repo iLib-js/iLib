@@ -225,27 +225,17 @@ fs.writeFileSync(path.join(toDir, "timezone.jf"), JSON.stringify(rootTimeZoneID,
 
 var defaultTimeZoneID = {
     "AU": "Australia/Sydney",
-    "BD": "Asia/Dhaka",
     "BR": "America/Sao_Paulo",
     "CA": "America/Toronto",
     "CL": "America/Santiago",
-    "CN": "Asia/Shanghai",
     "CY": "Asia/Nicosia",
     "ES": "Europe/Madrid",
-    "FM": "Pacific/Chuuk",
-    "GB": "Europe/London",
+    "FM": "Pacific/Pohnpei",
     "GL": "America/Nuuk",
-    "IE": "Europe/Dublin",
-    "IN": "Asia/Kolkata",
-    "KE": "Africa/Nairobi",
     "KI": "Pacific/Kiritimati",
     "MH": "Pacific/Majuro",
-    "MM": "Asia/Yangon",
     "MN": "Asia/Ulaanbaatar",
-    "MO": "Asia/Macau",
     "MX": "America/Mexico_City",
-    "NO": "Europe/Oslo",
-    "NZ": "Pacific/Auckland",
     "PF": "Pacific/Tahiti",
     "PG": "Pacific/Port_Moresby",
     "PT": "Europe/Lisbon",
@@ -258,9 +248,15 @@ for (var country in countryToZones) {
     if (!fs.existsSync(directory)) {
         mkdirs(directory);
     };
-    var data = {
-        timezone: typeof defaultTimeZoneID[country] !== "undefined" ? defaultTimeZoneID[country]: countryToZones[country][0]
+    countryZoneID = countryToZones[country][0];
+    if (typeof backwardsMap[countryZoneID] !== 'undefined') {
+        countryZoneID = backwardsMap[countryZoneID];
     }
+
+    var data = {
+        timezone: typeof defaultTimeZoneID[country] !== "undefined" ? defaultTimeZoneID[country]: countryZoneID
+    }
+
     console.log("Writing out timezone.jf file " + path.join(directory, "timezone.jf") );
     fs.writeFileSync(path.join(directory, "timezone.jf"), JSON.stringify(data, true, 4), "utf-8");
 }
