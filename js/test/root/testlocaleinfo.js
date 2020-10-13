@@ -288,11 +288,11 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("en-US");
         test.ok(info !== null);
     
-        test.equal(info.getTimeZone(), "America/Los_Angeles");
+        test.equal(info.getTimeZone(), "America/New_York");
         test.done();
     },
     
-    testLocaleInfoGetTimeZoneUS: function(test) {
+    testLocaleInfoGetTimeZoneDE: function(test) {
         test.expect(2);
         var info = new LocaleInfo("de-DE");
         test.ok(info !== null);
@@ -307,6 +307,34 @@ module.exports.testlocaleinfo = {
         test.ok(info !== null);
     
         test.equal(info.getTimeZone(), "Europe/Madrid");
+        test.done();
+    },
+    testLocaleInfoGetTimeZoneMM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("my-MM");
+        test.ok(info !== null);
+        test.equal(info.getTimeZone(), "Asia/Yangon");
+        test.done();
+    },
+    testLocaleInfoGetTimeZoneCA: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("en-CA");
+        test.ok(info !== null);
+        test.equal(info.getTimeZone(), "America/Toronto");
+        test.done();
+    },
+    testLocaleInfoGetTimeZoneCH: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("de-CH");
+        test.ok(info !== null);
+        test.equal(info.getTimeZone(), "Europe/Zurich");
+        test.done();
+    },
+    testLocaleInfoGetTimeZoneKR: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ko-KR");
+        test.ok(info !== null);
+        test.equal(info.getTimeZone(), "Asia/Seoul");
         test.done();
     },
     
