@@ -140,8 +140,9 @@ module.exports.testlocaleinfo = {
     
     testLocaleInfoConstructorCurrentLocale: function(test) {
         test.expect(4);
+        ilib.locale = undefined;
         var loc, info = new LocaleInfo(); // gives locale of the host JS engine
-    
+
         test.ok(info !== null);
     
         loc = info.getLocale();
