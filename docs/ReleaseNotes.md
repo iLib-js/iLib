@@ -9,6 +9,7 @@ New Features:
 
 Bug Fixes:
 * Fixed a DateRange Formatting to present standAlone case properly
+* Updated `timezone.jf` files to match timezone data 2020a
 
 Build 010
 -------

@@ -27,6 +27,7 @@ var unifile = require('./unifile.js');
 var common = require('./common.js');
 var UnicodeFile = unifile.UnicodeFile;
 var windowsZones = require("cldr-data/supplemental/windowsZones.json");
+var mkdirs = common.makeDirs;
 
 function usage() {
     console.log("Usage: gentzinfo [-h] tzdata-dir [toDir]\n" +
@@ -216,5 +217,47 @@ fs.writeFile(filepath, JSON.stringify(countryToZones, true, 4), function (err) {
         throw err;
     }
 });
+
+// generate timezone.jf
+var rootTimeZoneID = {"timezone": "Etc/UTC"};
+fs.writeFileSync(path.join(toDir, "timezone.jf"), JSON.stringify(rootTimeZoneID, true, 4), "utf-8");
+
+var defaultTimeZoneID = {
+    "AU": "Australia/Sydney",
+    "BR": "America/Sao_Paulo",
+    "CA": "America/Toronto",
+    "CL": "America/Santiago",
+    "CY": "Asia/Nicosia",
+    "ES": "Europe/Madrid",
+    "FM": "Pacific/Pohnpei",
+    "GL": "America/Nuuk",
+    "KI": "Pacific/Kiritimati",
+    "MH": "Pacific/Majuro",
+    "MN": "Asia/Ulaanbaatar",
+    "MX": "America/Mexico_City",
+    "PF": "Pacific/Tahiti",
+    "PG": "Pacific/Port_Moresby",
+    "PT": "Europe/Lisbon",
+    "RU": "Europe/Moscow",
+    "US": "America/New_York"
+}
+
+for (var country in countryToZones) {
+    var directory = path.join(toDir, "und", country);
+    if (!fs.existsSync(directory)) {
+        mkdirs(directory);
+    };
+    countryZoneID = countryToZones[country][0];
+    if (typeof backwardsMap[countryZoneID] !== 'undefined') {
+        countryZoneID = backwardsMap[countryZoneID];
+    }
+
+    var data = {
+        timezone: typeof defaultTimeZoneID[country] !== "undefined" ? defaultTimeZoneID[country]: countryZoneID
+    }
+
+    console.log("Writing out timezone.jf file " + path.join(directory, "timezone.jf") );
+    fs.writeFileSync(path.join(directory, "timezone.jf"), JSON.stringify(data, true, 4), "utf-8");
+}
 
 console.log("Done");
