@@ -21,23 +21,23 @@ limitations under the License.
 <!-- Main build file for the ilib java bits            -->
 <!-- ======================================================================= -->
 <project name="ilib" default="all" basedir=".">
-	<!-- =================================================================== -->
-	<!-- properties                                                          -->
-	<!-- =================================================================== -->
+    <!-- =================================================================== -->
+    <!-- properties                                                          -->
+    <!-- =================================================================== -->
 
-	<!-- Give user a chance to override properties without editing this file -->
-	<!-- (and without typing -D each time it compiles it)                    -->
-	<property file="build.properties"/>
-	
-	<!-- Properties that can be overridden -->
-	<!-- directories -->
-	<property name="build.base"						value="."/>
-	<property name="build.export"					value="export"/>
-	<property name="build.dist"						value="dist"/>
+    <!-- Give user a chance to override properties without editing this file -->
+    <!-- (and without typing -D each time it compiles it)                    -->
+    <property file="build.properties"/>
 
-	<!-- =================================================================== -->
-	<!-- Implement the standard targets                                      -->
-	<!-- =================================================================== -->
+    <!-- Properties that can be overridden -->
+    <!-- directories -->
+    <property name="build.base"						value="."/>
+    <property name="build.export"					value="export"/>
+    <property name="build.dist"						value="dist"/>
+
+    <!-- =================================================================== -->
+    <!-- Implement the standard targets                                      -->
+    <!-- =================================================================== -->
     <macrodef name="iterate">
         <attribute name="target"/>
         <sequential>
@@ -48,15 +48,15 @@ limitations under the License.
         </sequential>
     </macrodef>
 
-	<target name="export" description="Export everything that other subprojects will need to build.">
-		<iterate target="export"/>
+    <target name="export" description="Export everything that other subprojects will need to build.">
+        <iterate target="export"/>
         <copy file="README.md" todir="${build.export}/package" />
-	</target>
+    </target>
 
-	<target name="all" description="Build everything. This is the target that the build should run.">
-		<iterate target="export"/>
-		<iterate target="all"/>
-	</target>
+    <target name="all" description="Build everything. This is the target that the build should run.">
+        <iterate target="export"/>
+        <iterate target="all"/>
+    </target>
 
     <target name="clean" description="Remove all generated files to start from scratch">
         <delete dir="${build.dist}"/>
@@ -70,55 +70,54 @@ limitations under the License.
         <iterate target="clean"/>
     </target>
 
-	<target name="dist" depends="all" description="Build the distribution package.">
-		<mkdir dir="${build.dist}" description="Dir to contain all the distribution outputs"/>
-		<mkdir dir="${build.export}" description="Dir to contain all the exported outputs"/>
-		<iterate target="export"/>
-		<copy file="README.md" todir="${build.export}/package" />
-		<copy file="LICENSE" todir="${build.export}/package" />
-		<zip destfile="${build.dist}/ilib-${version}.zip"
-			basedir="${build.export}"
-			includes="js/**,java/**,locale/**,qt/**"/>
-		<zip destfile="${build.dist}/ilib-${version}-doc.zip"
-			basedir="${build.export}/doc"/>
-		<zip destfile="${build.dist}/ilib-${version}-src.zip">
-			<zipfileset 
-				dir="${build.export}/src"
-				includes="**"/>
-			<zipfileset 
-				dir="${build.export}"
-				includes="tools/**"/>
-			<zipfileset 
-				dir="${build.base}"
-				includes="build.xml,build.properties"/>
-		</zip>
-		<tar destfile="${build.dist}/ilib-${version}.tgz" compression="gzip" 
-			basedir="${build.export}"
-			includes="js/**,java/**,locale/**,qt/**"/>
-		<tar destfile="${build.dist}/ilib-${version}-doc.tgz" compression="gzip" basedir="${build.export}/doc" />
-		<tar destfile="${build.dist}/ilib-${version}-src.tgz" compression="gzip">
-			<fileset dir="${build.export}/src" includes="**"/>
-			<fileset dir="${build.export}"     includes="tools/**"/>
-			<fileset dir="${build.base}"       includes="build.xml,build.properties"/>
-		</tar>
-		<tar destfile="${build.dist}/ilib.tgz" compression="gzip" basedir="${build.export}" includes="package/**"/>
-		<checksum>
-			<fileset dir="${build.dist}">
-				<include name="*.tgz"/>
-				<include name="*.zip"/>
-				<include name="*.jar"/>
-			</fileset>
-		</checksum>
-	</target>
-	
-	<target name="remote" description="Build and run a test server so that remote testing is possible">
-	    <mkdir dir="${build.dist}" description="Dir to contain all the distribution outputs"/>
-		
-	</target>
+    <target name="dist" depends="all" description="Build the distribution package.">
+        <mkdir dir="${build.dist}" description="Dir to contain all the distribution outputs"/>
+        <mkdir dir="${build.export}" description="Dir to contain all the exported outputs"/>
+        <iterate target="export"/>
+        <copy file="README.md" todir="${build.export}/package" />
+        <copy file="LICENSE" todir="${build.export}/package" />
+        <zip destfile="${build.dist}/ilib-${version}.zip"
+            basedir="${build.export}"
+            includes="js/**,java/**,locale/**,qt/**"/>
+        <zip destfile="${build.dist}/ilib-${version}-doc.zip"
+            basedir="${build.export}/doc"/>
+        <zip destfile="${build.dist}/ilib-${version}-src.zip">
+            <zipfileset
+                dir="${build.export}/src"
+                includes="**"/>
+            <zipfileset
+                dir="${build.export}"
+                includes="tools/**"/>
+            <zipfileset
+                dir="${build.base}"
+                includes="build.xml,build.properties"/>
+        </zip>
+        <tar destfile="${build.dist}/ilib-${version}.tgz" compression="gzip"
+            basedir="${build.export}"
+            includes="js/**,java/**,locale/**,qt/**"/>
+        <tar destfile="${build.dist}/ilib-${version}-doc.tgz" compression="gzip" basedir="${build.export}/doc" />
+        <tar destfile="${build.dist}/ilib-${version}-src.tgz" compression="gzip">
+            <fileset dir="${build.export}/src" includes="**"/>
+            <fileset dir="${build.export}"     includes="tools/**"/>
+            <fileset dir="${build.base}"       includes="build.xml,build.properties"/>
+        </tar>
+        <tar destfile="${build.dist}/ilib.tgz" compression="gzip" basedir="${build.export}" includes="package/**"/>
+        <checksum>
+            <fileset dir="${build.dist}">
+                <include name="*.tgz"/>
+                <include name="*.zip"/>
+                <include name="*.jar"/>
+            </fileset>
+        </checksum>
+    </target>
 
-	<target name="test" depends="export" description="Run all tests and build all reports">
-		<iterate target="test"/>
-	</target>
+    <target name="remote" description="Build and run a test server so that remote testing is possible">
+        <mkdir dir="${build.dist}" description="Dir to contain all the distribution outputs"/>
+    </target>
+
+    <target name="test" depends="export" description="Run all tests and build all reports">
+        <iterate target="test"/>
+    </target>
 
     <target name="test.travis" description="Run all tests and build all reports">
         <subant target="export" buildpath="java"/>
@@ -126,17 +125,17 @@ limitations under the License.
         <iterate target="test"/>
     </target>
 
-	<target name="doc" description="Extract all the inline documentation.">
-		<iterate target="doc"/>
-	</target>
+    <target name="doc" description="Extract all the inline documentation.">
+        <iterate target="doc"/>
+    </target>
 
     <target name="apidocs" description="Update the api docs for github pages">
         <subant target="apidocs" buildpath="java"/>
         <subant target="apidocs" buildpath="js"/>
     </target>
 
-	<target name="deps" description="Install dependencies for travis-ci">
-		<!-- nothing yet -->
-	</target>
-	
+    <target name="deps" description="Install dependencies for travis-ci">
+        <!-- nothing yet -->
+    </target>
+
 </project>

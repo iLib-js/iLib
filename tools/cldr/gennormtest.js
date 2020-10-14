@@ -29,60 +29,60 @@ var common = require('./common.js');
 var fromCodePoint = common.codePointToUTF16;
 
 function usage() {
-	console.log("Usage: gennormtest [-h] NormalizationTest.txt [toDir]\n" +
-			"Generate the normalization test data.\n\n" +
-			"-h or --help\n" +
-			"  this help\n" +
-			"NormalizationTest.txt\n" +
-			"  the normalization test data from the Unicode character database\n" +
-			"toDir\n" +
-			"  directory to output the output files. Default: current dir.");
-	process.exit(1);
+    console.log("Usage: gennormtest [-h] NormalizationTest.txt [toDir]\n" +
+            "Generate the normalization test data.\n\n" +
+            "-h or --help\n" +
+            "  this help\n" +
+            "NormalizationTest.txt\n" +
+            "  the normalization test data from the Unicode character database\n" +
+            "toDir\n" +
+            "  directory to output the output files. Default: current dir.");
+    process.exit(1);
 }
 
 function sequenceToString(sequence) {
-	var chars = sequence.split(' ');
-	var result = "";
-	chars.forEach(function (val, index, array) {
-		result += fromCodePoint(parseInt(val, 16));
-	});
-	return result;
+    var chars = sequence.split(' ');
+    var result = "";
+    chars.forEach(function (val, index, array) {
+        result += fromCodePoint(parseInt(val, 16));
+    });
+    return result;
 }
 
 var unicodeFileName;
 var toDir = ".";
 
 process.argv.forEach(function (val, index, array) {
-	if (val === "-h" || val === "--help") {
-		usage();
-	}
+    if (val === "-h" || val === "--help") {
+        usage();
+    }
 });
 
 if (process.argv.length < 3) {
-	console.error('Error: not enough arguments');
-	usage();
+    console.error('Error: not enough arguments');
+    usage();
 }
 
 unicodeFileName = process.argv[2];
 if (process.argv.length > 3) {
-	toDir = process.argv[3];
+    toDir = process.argv[3];
 }
 
 console.log("gennorm - generate normalization test data.\n" +
-		"Copyright (c) 2013 JEDLSoft");
+        "Copyright (c) 2013 JEDLSoft");
 
 fs.exists(unicodeFileName, function (exists) {
-	if (!exists) {
-		console.error("Could not access file " + unicodeFileName);
-		usage();
-	}
+    if (!exists) {
+        console.error("Could not access file " + unicodeFileName);
+        usage();
+    }
 });
 
 fs.exists(toDir, function (exists) {
-	if (!exists) {
-		console.error("Could not access target directory " + toDir);
-		usage();
-	}
+    if (!exists) {
+        console.error("Could not access target directory " + toDir);
+        usage();
+    }
 });
 
 var tests = [];
@@ -91,18 +91,18 @@ var ud = new UnicodeFile({path: unicodeFileName});
 var len = ud.length();
 var row;
 for (var i = 0; i < len; i++ ) {
-	row = ud.get(i);
-	tests.push([
-		sequenceToString(row[0]),
-		sequenceToString(row[1]),
-		sequenceToString(row[2]),
-		sequenceToString(row[3]),
-		sequenceToString(row[4])
-	]);
+    row = ud.get(i);
+    tests.push([
+        sequenceToString(row[0]),
+        sequenceToString(row[1]),
+        sequenceToString(row[2]),
+        sequenceToString(row[3]),
+        sequenceToString(row[4])
+    ]);
 }
 
 fs.writeFile(toDir + "/normdata.js", "var normtests = " + JSON.stringify(tests, true, 4) + ";\nmodule.exports=normtests;", function (err) {
-	if (err) {
-		throw err;
-	}
+    if (err) {
+        throw err;
+    }
 });

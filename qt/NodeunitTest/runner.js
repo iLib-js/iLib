@@ -26,27 +26,26 @@
  * @param {string|ilib.String=} string initialize this instance with this string 
  */
 function TestRunner() {
-	this.subSuites = [];
+    this.subSuites = [];
 };
 
 TestRunner.prototype = {
-	runTests: function() {
+    runTests: function() {
         this.subSuites.forEach(function (suite) {
             console.log("[runner.js] runTests: running suite " + suite.path);
             suite.runTests();
-		}.bind(this));
-	},
+        }.bind(this));
+    },
 
-	
-	addSuite: function (suite) {
+    addSuite: function (suite) {
         //console.log("[runner.js] addSuite:  (" + suite.path + ")");
-		this.subSuites.push(suite);
+        this.subSuites.push(suite);
     }
 };
 
 if (!module) {
-	var module = {
-		exports: {}
-	};
+    var module = {
+        exports: {}
+    };
 }
 module.exports = TestRunner;
