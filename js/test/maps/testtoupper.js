@@ -1,7 +1,7 @@
 /*
  * testtoupper.js - Test the upper-casing mapper
  * 
- * Copyright © 2014-2015,2017, JEDLSoft
+ * Copyright © 2014-2015,2017,2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -379,7 +379,7 @@ module.exports.testtoupper = {
             locale: "sl-SI"
         });
         // take special care of the digraphs
-        test.equal(mapper.map("ǌǋǊǉǈǇ"), "ǊǊǊǇǇǇ");
+        test.equal(mapper.map("ǌǋǊǉǈǇǆǅǄ"), "ǊǊǊǇǇǇǄǄǄ");
         test.done();
     },
 
