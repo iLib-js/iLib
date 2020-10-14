@@ -10,6 +10,9 @@ New Features:
 Bug Fixes:
 * Fixed a DateRange Formatting to present standAlone case properly
 * Updated `timezone.jf` files to match timezone data 2020a
+* Fixed a problem where ilib would not work right if the platform locale was
+  set to "C" or if the platform locale did not have a region tag with it. (ie.
+  it was only the language part.)
 
 Build 010
 -------
