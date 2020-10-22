@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright © 2014, JEDLSoft
+# Copyright © 2014,2020 JEDLSoft
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ then
 fi
 if [ "$JAVA_HOME" = "" ]
 then
-	export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+	export JAVA_HOME=/usr/lib/jvm/java-11-oracle
 fi
 export CLASSPATH="$JAVA_HOME/lib:$ILIB_HOME/java/output/release/*:$ILIB_HOME/java/lib:$ILIB_HOME/java/lib/*"
 
