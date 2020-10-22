@@ -14,6 +14,7 @@ Bug Fixes:
   set to "C" or if the platform locale did not have a region tag with it. (ie.
   it was only the language part.)
 * Updated time zone data to IANA 2020c
+* Updated time zone data to IANA 2020d
 
 Build 010
 -------
