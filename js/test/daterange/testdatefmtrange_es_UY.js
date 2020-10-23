@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_es_UY.js - test the date range formatter object in French/France
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -607,7 +607,7 @@ module.exports.testdatefmtrange_es_UY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "nov. 2011 – ene. 2014");
+        test.equal(fmt.format(start, end), "Nov. 2011 – Ene. 2014");
         test.done();
     },
     testDateRngFmtUYRangeMultiYearLong: function(test) {
@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_es_UY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "noviembre de 2011 – enero de 2014");
+        test.equal(fmt.format(start, end), "Noviembre de 2011 – Enero de 2014");
         test.done();
     },
     testDateRngFmtUYRangeMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_es_UY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "noviembre de 2011 – enero de 2014");
+        test.equal(fmt.format(start, end), "Noviembre de 2011 – Enero de 2014");
         test.done();
     },
     testDateRngFmtUYManyYearsFull: function(test) {

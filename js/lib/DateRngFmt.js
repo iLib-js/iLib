@@ -1,7 +1,7 @@
 /*
  * DateRngFmt.js - Date formatter definition
  *
- * Copyright © 2012-2015, 2018, JEDLSoft
+ * Copyright © 2012-2015, 2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -304,6 +304,7 @@ DateRngFmt.prototype = {
 
         var start = DateFactory._dateToIlib(startDateLike, thisZoneName, this.locale);
         var end = DateFactory._dateToIlib(endDateLike, thisZoneName, this.locale);
+        var isStandAlone = false;
 
         if (typeof(start) !== 'object' || !start.getCalendar || start.getCalendar() !== this.calName || (this.timezone && start.timezone && start.timezone !== this.timezone)) {
             start = DateFactory({
@@ -363,6 +364,7 @@ DateRngFmt.prototype = {
             }
         } else if (endRd - startRd < 3650) {
             fmt = new IString(this.dateFmt._getFormat(this.dateFmt.formats.range, "c20", this.length));
+            isStandAlone = true;
         } else {
             fmt = new IString(this.dateFmt._getFormat(this.dateFmt.formats.range, "c30", this.length));
         }
@@ -371,6 +373,17 @@ DateRngFmt.prototype = {
         yearTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "y", this.length) || "yyyy");
         monthTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "m", this.length) || "MM");
         dayTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "d", this.length) || "dd");
+
+
+        /*
+        * Some languages use two different forms of strings (standlone and format) depending on the context.
+        * Typically the standalone version is the nominative form of the word,
+        * and the format version is in the genitive (or related form).
+        * In c20 case, It should present standAlone form, In order to support that, the format symbol is changed.
+        */
+        if (isStandAlone && monthTemplate[0].length >= 3) {
+            monthTemplate[0] = monthTemplate[0].replace(/M/g,"L");
+        }
 
         /*
         console.log("fmt is " + fmt.toString());

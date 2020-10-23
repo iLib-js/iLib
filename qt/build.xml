@@ -21,52 +21,51 @@ limitations under the License.
 <!-- Main build file for the ilib qt bits            -->
 <!-- ======================================================================= -->
 <project name="ilib" default="all">
-	<!-- =================================================================== -->
-	<!-- properties                                                          -->
-	<!-- =================================================================== -->
+    <!-- =================================================================== -->
+    <!-- properties                                                          -->
+    <!-- =================================================================== -->
 
-	<!-- Give user a chance to override properties without editing this file -->
-	<!-- (and without typing -D each time it compiles it)                    -->
-	<property file="build.properties"/>
-	<property file="../build.properties"/>
-	<property file="../js/build.properties"/>
-	
-	<!-- Properties that can be overridden -->
-	<!-- directories -->
-	<property name="build.base"						value="${basedir}"/>
-	<property name="build.export"					value="${build.base}/../export"/>	
-	<property name="build.output"					value="${build.base}/output"/>
-	<property name="build.output.qt"				value="${build.base}/output/qt"/>
-	<property name="build.filereader"				value="${build.base}/FileReader"/>
-	<property name="build.unittest"					value="${build.base}/NodeunitTest"/>
+    <!-- Give user a chance to override properties without editing this file -->
+    <!-- (and without typing -D each time it compiles it)                    -->
+    <property file="build.properties"/>
+    <property file="../build.properties"/>
+    <property file="../js/build.properties"/>
+    <!-- Properties that can be overridden -->
+    <!-- directories -->
+    <property name="build.base"						value="${basedir}"/>
+    <property name="build.export"					value="${build.base}/../export"/>
+    <property name="build.output"					value="${build.base}/output"/>
+    <property name="build.output.qt"				value="${build.base}/output/qt"/>
+    <property name="build.filereader"				value="${build.base}/FileReader"/>
+    <property name="build.unittest"					value="${build.base}/NodeunitTest"/>
 
-	<!-- =================================================================== -->
-	<!-- Class paths                                                         -->
-	<!-- =================================================================== -->
-	<path id="project.class.path.base">
-		<fileset dir="${build.lib}">
-			<include name="**/*.jar"/>
-		</fileset>
-		<pathelement path="${build.config}"/>
-	</path>
+    <!-- =================================================================== -->
+    <!-- Class paths                                                         -->
+    <!-- =================================================================== -->
+    <path id="project.class.path.base">
+        <fileset dir="${build.lib}">
+            <include name="**/*.jar"/>
+        </fileset>
+        <pathelement path="${build.config}"/>
+    </path>
 
-	<!-- =================================================================== -->
-	<!-- Implement the standard targets                                      -->
-	<!-- =================================================================== -->
-	<target name="all" depends="export" description="Build everything. This is the target that the build should run."/>
+    <!-- =================================================================== -->
+    <!-- Implement the standard targets                                      -->
+    <!-- =================================================================== -->
+    <target name="all" depends="export" description="Build everything. This is the target that the build should run."/>
 
-	<target name="clean" description="Remove all generated files to start from scratch">
-		<sequential>
-			<exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="false" failonerror="false">
-				<arg line="clean"/>
-			</exec>
-			<exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="false"  failonerror="false">
-				<arg line="clean"/>
-			</exec>
-		</sequential>
-		<delete dir="${build.filereader}/imports"/>
-		<delete dir="${build.output}"/>
-		<delete dir="${build.export}/qt"/>
+    <target name="clean" description="Remove all generated files to start from scratch">
+        <sequential>
+            <exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="false" failonerror="false">
+                <arg line="clean"/>
+            </exec>
+            <exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="false"  failonerror="false">
+                <arg line="clean"/>
+            </exec>
+        </sequential>
+        <delete dir="${build.filereader}/imports"/>
+        <delete dir="${build.output}"/>
+        <delete dir="${build.export}/qt"/>
         <delete file="${build.filereader}/.qmake.stash"/>
         <delete>
             <fileset dir="${build.unittest}">
@@ -75,22 +74,22 @@ limitations under the License.
             </fileset>
         </delete>
 
-		<delete>
-			<fileset dir="${build.filereader}" includes="Makefile*" />
-		</delete>
-	</target>
+        <delete>
+            <fileset dir="${build.filereader}" includes="Makefile*" />
+        </delete>
+    </target>
 
-	<target name="prepare" description="Prepare all directories that are needed before the project can be built">
-		<mkdir dir="${build.output.qt}"/>
-		<sequential>
-			<exec osfamily="unix" executable="qmake" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
-				<arg value="filereader.pro"/>
-			</exec>
-			<exec osfamily="windows" executable="qmake.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
-				<arg value="filereader.pro"/>
-			</exec>
-		</sequential>
-	</target>
+    <target name="prepare" description="Prepare all directories that are needed before the project can be built">
+        <mkdir dir="${build.output.qt}"/>
+        <sequential>
+            <exec osfamily="unix" executable="qmake" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+                <arg value="filereader.pro"/>
+            </exec>
+            <exec osfamily="windows" executable="qmake.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
+                <arg value="filereader.pro"/>
+            </exec>
+        </sequential>
+    </target>
 
      <target name="qt.version" description="Check the currently running on Qt version">
         <sequential>
@@ -103,49 +102,49 @@ limitations under the License.
         </sequential>
     </target>
 
-	<!-- =================================================================== -->
-	<!-- Create the core jar file                                            -->
-	<!-- =================================================================== -->
-	<target name="filereader" depends="prepare" description="Build the file reader plugin">
-		<exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
-		</exec>
-		<exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
-		</exec>
-	</target>
+    <!-- =================================================================== -->
+    <!-- Create the core jar file                                            -->
+    <!-- =================================================================== -->
+    <target name="filereader" depends="prepare" description="Build the file reader plugin">
+        <exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+        </exec>
+        <exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
+        </exec>
+    </target>
 
-	<target name="export" depends="filereader" description="Create all objects and export them to the top level dir for packaging">
-		<mkdir dir="${build.export}/qt/${os.name}-${os.arch}/FS"/>
-		<mkdir dir= "${build.filereader}/imports/FS"/>
-		<copy todir="${build.export}/qt/${os.name}-${os.arch}/FS">
-			<fileset dir="${build.output.qt}">
-				<include name="*"/>
-			</fileset>
-			<fileset dir="${build.filereader}">
-				<include name="qmldir"/>
-			</fileset>
-		</copy>
-		<copy todir="${build.filereader}/imports/FS">
-			<fileset dir="${build.output.qt}">
-				<include name="*"/>
-			</fileset>
-			<fileset dir="${build.filereader}">
-				<include name="qmldir"/>
-			</fileset>
-		</copy>
-	</target>
-	
-	<target name="test.all" depends="qt.version, filereader" description="Run the unit tests in the qt test framework. Make sure you have Qt 5.4 or later, and it is the first Qt in your path.">
-		<sequential>
-			<exec osfamily="unix" executable="qmlscene" dir="${build.unittest}" failifexecutionfails="true" failonerror="true">
-				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
-				<arg line="NodeunitRunAll.qml"/>
-			</exec>
-			<exec osfamily="windows" executable="qmlscene.exe" dir="${build.unittest}" failifexecutionfails="true"  failonerror="true">
-				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
-				<arg line="NodeunitRunAll.qml"/>
-			</exec>
-		</sequential>
-	</target>
+    <target name="export" depends="filereader" description="Create all objects and export them to the top level dir for packaging">
+        <mkdir dir="${build.export}/qt/${os.name}-${os.arch}/FS"/>
+        <mkdir dir= "${build.filereader}/imports/FS"/>
+        <copy todir="${build.export}/qt/${os.name}-${os.arch}/FS">
+            <fileset dir="${build.output.qt}">
+                <include name="*"/>
+            </fileset>
+            <fileset dir="${build.filereader}">
+                <include name="qmldir"/>
+            </fileset>
+        </copy>
+        <copy todir="${build.filereader}/imports/FS">
+            <fileset dir="${build.output.qt}">
+                <include name="*"/>
+            </fileset>
+            <fileset dir="${build.filereader}">
+                <include name="qmldir"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="test.all" depends="qt.version, filereader" description="Run the unit tests in the qt test framework. Make sure you have Qt 5.4 or later, and it is the first Qt in your path.">
+        <sequential>
+            <exec osfamily="unix" executable="qmlscene" dir="${build.unittest}" failifexecutionfails="true" failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRunAll.qml"/>
+            </exec>
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.unittest}" failifexecutionfails="true"  failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRunAll.qml"/>
+            </exec>
+        </sequential>
+    </target>
 
     <target name="test.address" depends="qt.version, filereader" description="Run the address unit tests in the qt test framework.">
         <sequential>
@@ -341,6 +340,6 @@ limitations under the License.
             </exec>
         </sequential>
     </target>
-	<target name="test" description="Run all tests and build all reports" />
+    <target name="test" description="Run all tests and build all reports" />
     <target name="doc" />
 </project>

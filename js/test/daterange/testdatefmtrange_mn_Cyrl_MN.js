@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_mn-Cyrl_MN.js - test the date range formatter object in Mongolian/Mongolia for Cyrillic script.
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 оны арван нэгдүгээр сар – 2014 оны нэгдүгээр сар');
+        test.equal(fmt.format(start, end), '2011 оны Арван нэгдүгээр сар – 2014 оны Нэгдүгээр сар');
         test.done();
     },
     testDateRngFmtMNRangeMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 оны арван нэгдүгээр сар – 2014 оны нэгдүгээр сар');
+        test.equal(fmt.format(start, end), '2011 оны Арван нэгдүгээр сар – 2014 оны Нэгдүгээр сар');
         test.done();
     },
     testDateRngFmtMNManyYearsFull: function(test) {
