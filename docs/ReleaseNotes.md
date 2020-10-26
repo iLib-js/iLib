@@ -13,7 +13,7 @@ New Features:
     * date ranges were also updated to include day periods
 
 Bug Fixes:
-s* Updated date formats to use proper standalone month names
+* Updated date formats to use proper standalone month names
     * Previously, if either the year-month or the month alone available formats in CLDR
     used the L standalone month name specifier, then we would use the standalone month name for
     all year-month and month alone formats. However, some locales use the standalone only
@@ -25,11 +25,9 @@ s* Updated date formats to use proper standalone month names
 
 Build 011
 -------
-Published as version 14.7.0
+Published as version 14.6.2
 
 New Features:
-* Added support for day periods per locale. These are periods like "morning", "afternoon", "evening".
-  Each locale has a different idea of when the periods are and when they start and end.
 
 Bug Fixes:
 * Fixed a DateRange Formatting to present standAlone case properly
