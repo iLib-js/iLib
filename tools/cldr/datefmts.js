@@ -292,6 +292,26 @@ function scanForLastChars(string, set) {
     return -1;
 }
 
+var cldrWidths = ["abbreviated", "narrow", "wide", "short"];
+
+function namesMatch(regular, standalone) {
+    for (var i = 0; i < cldrWidths.length; i++) {
+        var namesFormat = regular[cldrWidths[i]],
+            namesStandAlone = standalone[cldrWidths[i]];
+        
+        for (var element in namesFormat) {
+            if (element &&
+                namesFormat[element] &&
+                namesStandAlone[element] &&
+                namesFormat[element] !== namesStandAlone[element]) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
 /**
  * Determine whether or not this locale distinguishes between stand-alone month or day-of-week
  * names and in-format month or day-of-week names. The stand-alone months are typically used
@@ -302,13 +322,10 @@ function scanForLastChars(string, set) {
  * @param calendar
  * @returns {Boolean}
  */
-function standAlone(calendar, script) {
-    // Verify that the yMMM, yMMMM, MMM, or MMMM formats contain an 'L', as that is the format
-    // where virtually all locales use the standalone month name
+function standAloneM(calendar, script) {
+    // Verify that the MMM, or MMMM formats contain an 'L' which indicates stand-alone
     var available = calendar.dateTimeFormats.availableFormats;
-    if ((!available.yMMM || available.yMMM.indexOf('L') < 0) &&
-        (!available.yMMMM || available.yMMMM.indexOf('L') < 0) &&
-        (!available.MMM || available.MMM.indexOf('L') < 0) &&
+    if ((!available.MMM || available.MMM.indexOf('L') < 0) &&
         (!available.MMMM || available.MMMM.indexOf('L') < 0)) {
         return false;
     }
@@ -324,20 +341,70 @@ function standAlone(calendar, script) {
     // not only does it need to use the L format char, the names of the months
     // need to be different from regular to standalone, otherwise we will just
     // use the regular anyways
-    var monthNamesFormat = calendar.months.format.wide,
-    monthNamesStandAlone = calendar.months["stand-alone"].wide;
-
-    for (var month in monthNamesFormat) {
-        if (month &&
-            monthNamesFormat[month] &&
-            monthNamesStandAlone[month] &&
-            monthNamesFormat[month] !== monthNamesStandAlone[month]) {
-            return true;
-        }
+    if (!namesMatch(calendar.months.format, calendar.months["stand-alone"])) {
+        return true;
     }
 
     return false;
 }
+
+function standAloneYM(calendar, script) {
+    // Verify that the yMMM or yMMMM formats contain an 'L' which indicates stand-alone
+    var available = calendar.dateTimeFormats.availableFormats;
+    if ((!available.yMMM || available.yMMM.indexOf('L') < 0) &&
+        (!available.yMMMM || available.yMMMM.indexOf('L') < 0)) {
+        return false;
+    }
+
+    // special case: if the top level locale uses one script, and this
+    // sublocale has another script, then the sublocale must override
+    // the standalone settings for the top level, even if the standalone
+    // month names are the same as the regular monthnames.
+    if (script) {
+        return true;
+    }
+
+    // not only does it need to use the L format char, the names of the months
+    // need to be different from regular to standalone, otherwise we will just
+    // use the regular anyways
+    if (!namesMatch(calendar.months.format, calendar.months["stand-alone"])) {
+        return true;
+    }
+
+    return false;
+}
+
+function standAloneW(calendar, script) {
+    // Verify that the E format contains a 'c' which indicates stand-alone
+    var available = calendar.dateTimeFormats.availableFormats;
+    if (!available.E || available.E.indexOf('c') < 0) {
+        return false;
+    }
+
+    // special case: if the top level locale uses one script, and this
+    // sublocale has another script, then the sublocale must override
+    // the standalone settings for the top level, even if the standalone
+    // day names are the same as the regular daynames.
+    if (script) {
+        return true;
+    }
+
+    // not only does it need to use the c format char, the names of the days
+    // need to be different from regular to standalone, otherwise we will just
+    // use the regular anyways
+    if (!namesMatch(calendar.days.format, calendar.days["stand-alone"])) {
+        return true;
+    }
+
+    return false;
+}
+
+function standAloneY(calendar, script) {
+    // Verify that the y formats contain an 'r' which indicates stand-alone
+    var available = calendar.dateTimeFormats.availableFormats;
+    return (available.y && available.y.indexOf('r') > -1);
+}
+
 
 /**
  * Compare the non-date component parts of formats to see if they
@@ -474,8 +541,6 @@ module.exports = {
                 };
             }
 
-            var usesStandAlone = standAlone(cldrCalendar, script);
-
             // glean the lengths of the various parts
             var cldrFormats = {},
             d = {},
@@ -512,16 +577,6 @@ module.exports = {
              * stand-alone of w (weekday) is e
              * stand-alone of y (year) is r
              */
-            if (usesStandAlone) {
-                calendar.date.e = {};
-                calendar.date.l = {};
-            }
-
-            if (isAsianLang(language)) {
-                calendar.date.a = {};
-                calendar.date.l = {};
-                calendar.date.r = {};
-            }
 
             var w;
 
@@ -671,24 +726,26 @@ module.exports = {
                         break;
                 }
 
-                if (usesStandAlone) {
-                    var avail = (getAvailableFormat(cldrCalendar, "yMMM") || "") +
-                        (getAvailableFormat(cldrCalendar, "yMMMM") || "");
-                    if (avail && avail.indexOf('L') > -1) {
-                        calendar.date.my[lenAbbr] = calendar.date.my[lenAbbr].replace(/MMMM/, "LLLL").replace(/MMM/, "LLL");
-                    }
-                    calendar.date.e[lenAbbr] = calendar.date.w[lenAbbr].replace(/E/g, "c");
-                    avail = (getAvailableFormat(cldrCalendar, "MMM") || "") +
-                        (getAvailableFormat(cldrCalendar, "MMMM") || "");
-                    if (avail && avail.indexOf('L') > -1) {
-                        calendar.date.l[lenAbbr] = calendar.date.m[lenAbbr].replace(/M/g, "L");
-                    }
+                if (standAloneYM(cldrCalendar, script)) {
+                    calendar.date.my[lenAbbr] = calendar.date.my[lenAbbr].replace(/MMMM/, "LLLL").replace(/MMM/, "LLL");
+                }
+
+                if (standAloneM(cldrCalendar, script)) {
+                    calendar.date.m[lenAbbr] = calendar.date.m[lenAbbr].replace(/M/g, "L");
+                }
+
+                if (standAloneW(cldrCalendar, script)) {
+                    calendar.date.w[lenAbbr] = calendar.date.w[lenAbbr].replace(/E/g, "c");
+                }
+
+                if (standAloneY(cldrCalendar, script)) {
+                    calendar.date.y[lenAbbr] = calendar.date.y[lenAbbr].replace(/y/g, "r");
                 }
 
                 if (isAsianLang(language)) {
-                    calendar.date.a[lenAbbr] = getAvailableFormat(cldrCalendar, "d").replace(/d+/, calendar.date.d[lenAbbr]);
-                    calendar.date.l[lenAbbr] = getAvailableFormat(cldrCalendar, "M").replace(/M+/, calendar.date.m[lenAbbr]);
-                    calendar.date.r[lenAbbr] = getAvailableFormat(cldrCalendar, "y").replace(/y+/, calendar.date.y[lenAbbr]);
+                    calendar.date.d[lenAbbr] = getAvailableFormat(cldrCalendar, "d").replace(/d+/, calendar.date.d[lenAbbr]);
+                    calendar.date.m[lenAbbr] = getAvailableFormat(cldrCalendar, "M").replace(/M+/, calendar.date.m[lenAbbr]);
+                    calendar.date.y[lenAbbr] = getAvailableFormat(cldrCalendar, "y").replace(/y+/, calendar.date.y[lenAbbr]);
                 }
 
                 tmp = wTemplate.replace(/\{date\}/, calendar.date.dm[lenAbbr]);
@@ -1211,7 +1268,7 @@ module.exports = {
                                     cFmt10 = cFmt10.replace(/{date}/, "{ed} 'd'.");
                                 } else if(isAsianLang(language)){
                                     if (cFmt10.search(/日|일/) !== -1) {
-                                        cFmt10 = cFmt10.replace(/{date}/, calendar.date["a"][lenAbbr]);
+                                        cFmt10 = cFmt10.replace(/{date}/, calendar.date["d"][lenAbbr]);
                                         cFmt10 = cFmt10.replace(/[^s]d+/, " {ed}");
                                     } else {
                                         cFmt10 = cFmt10.replace(/{date}/, "{ed}");
@@ -1276,7 +1333,7 @@ module.exports = {
 
                                 if (isAsianLang(language)) {
                                     cFmt30="y – y";
-                                    cFmt30 = cFmt30.replace(/y/g, calendar.date["r"][lenAbbr]);
+                                    cFmt30 = cFmt30.replace(/y/g, calendar.date["y"][lenAbbr]);
                                     cFmt30 = cFmt30.replace(/y+/, "{sy}");
                                     cFmt30 = cFmt30.replace(/\by+/, "{ey}");
 
@@ -1613,8 +1670,6 @@ module.exports = {
 
             calendarNameSuffix = (calendarName !== "gregorian") ? "-" + calendarName : "";
 
-            var usesStandAlone = standAlone(cldrCalendar, script);
-
             // now generate all the month names
             var part = cldrCalendar.months.format;
             if (isAsianLang(language)) {
@@ -1644,7 +1699,7 @@ module.exports = {
                     }
                 }
             }
-            if (usesStandAlone) {
+            if (standAloneM(cldrCalendar, script) || standAloneYM(cldrCalendar, script)) {
                 part = cldrCalendar.months["stand-alone"];
                 for (prop in part.wide) {
                     formats["LLLL" + prop + calendarNameSuffix] = part.wide[prop];
@@ -1670,7 +1725,7 @@ module.exports = {
                 formats["EE" + dayNumbers[prop] + calendarNameSuffix] = part.short[prop];
                 formats["E" + dayNumbers[prop] + calendarNameSuffix] = part.narrow[prop];
             }
-            if (usesStandAlone) {
+            if (standAloneW(cldrCalendar, script)) {
                 part = cldrCalendar.days["stand-alone"];
                 for (prop in part.wide) {
                     formats["cccc" + dayNumbers[prop] + calendarNameSuffix] = part.wide[prop];

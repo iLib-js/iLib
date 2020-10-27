@@ -846,10 +846,10 @@ DateFmt.prototype = {
     // stand-alone of w (weekday) is e
     // stand-alone of y (year) is r
     _standAlones: {
-        "m": "l",
-        "d": "a",
-        "w": "e",
-        "y": "r"
+        "l": "m",
+        "a": "d",
+        "e": "w",
+        "r": "y"
     },
 
     /**
@@ -861,15 +861,7 @@ DateFmt.prototype = {
      */
     _getFormat: function getFormat(obj, components, length) {
         // handle some special cases for stand-alone formats
-        if (components && this._standAlones[components]) {
-            var tmp = this._getFormatInternal(obj, this._standAlones[components], length);
-            if (tmp) {
-                return tmp;
-            }
-        }
-
-        // if no stand-alone format is available, fall back to the regular format
-        return this._getFormatInternal(obj, components, length);
+        return this._getFormatInternal(obj, this._standAlones[components] || components, length);
     },
 
     /**

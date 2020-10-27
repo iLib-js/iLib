@@ -51,10 +51,10 @@
                 "s": "d"
             },
             "m": {
-                "f": "MMMM",
-                "l": "MMMM",
-                "m": "MMM",
-                "s": "M"
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "L"
             },
             "y": {
                 "f": "yyyy",

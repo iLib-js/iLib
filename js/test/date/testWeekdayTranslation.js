@@ -1,4 +1,4 @@
- /*
+/*
  * testWeekdayTranslation.js - test the weekday's translation
  *
  * Copyright © 2019-2020, JEDLSoft
@@ -578,13 +578,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "søn.");
-        test.equal(value[1], "man.");
-        test.equal(value[2], "tir.");
-        test.equal(value[3], "ons.");
-        test.equal(value[4], "tor.");
-        test.equal(value[5], "fre.");
-        test.equal(value[6], "lør.");
+        test.equal(value[0], "søn");
+        test.equal(value[1], "man");
+        test.equal(value[2], "tir");
+        test.equal(value[3], "ons");
+        test.equal(value[4], "tor");
+        test.equal(value[5], "fre");
+        test.equal(value[6], "lør");
 
         fmt = new DateFmt({locale:"da-DK", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -637,13 +637,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "So.");
-        test.equal(value[1], "Mo.");
-        test.equal(value[2], "Di.");
-        test.equal(value[3], "Mi.");
-        test.equal(value[4], "Do.");
-        test.equal(value[5], "Fr.");
-        test.equal(value[6], "Sa.");
+        test.equal(value[0], "So");
+        test.equal(value[1], "Mo");
+        test.equal(value[2], "Di");
+        test.equal(value[3], "Mi");
+        test.equal(value[4], "Do");
+        test.equal(value[5], "Fr");
+        test.equal(value[6], "Sa");
 
         fmt = new DateFmt({locale:"de-AT", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -694,25 +694,25 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "So.");
-        test.equal(value[1], "Mo.");
-        test.equal(value[2], "Di.");
-        test.equal(value[3], "Mi.");
-        test.equal(value[4], "Do.");
-        test.equal(value[5], "Fr.");
-        test.equal(value[6], "Sa.");
+        test.equal(value[0], "So");
+        test.equal(value[1], "Mo");
+        test.equal(value[2], "Di");
+        test.equal(value[3], "Mi");
+        test.equal(value[4], "Do");
+        test.equal(value[5], "Fr");
+        test.equal(value[6], "Sa");
 
         fmt = new DateFmt({locale:"de-CH", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "So"); //standAlone format
-        test.equal(value[1], "Mo"); //standAlone format
-        test.equal(value[2], "Di"); //standAlone format
-        test.equal(value[3], "Mi"); //standAlone format
-        test.equal(value[4], "Do"); //standAlone format
-        test.equal(value[5], "Fr"); //standAlone format
-        test.equal(value[6], "Sa"); //standAlone format
+        test.equal(value[0], "So."); //standAlone format
+        test.equal(value[1], "Mo."); //standAlone format
+        test.equal(value[2], "Di."); //standAlone format
+        test.equal(value[3], "Mi."); //standAlone format
+        test.equal(value[4], "Do."); //standAlone format
+        test.equal(value[5], "Fr."); //standAlone format
+        test.equal(value[6], "Sa."); //standAlone format
 
         fmt = new DateFmt({locale:"de-CH", date:"w", length: "short", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -752,13 +752,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "So.");
-        test.equal(value[1], "Mo.");
-        test.equal(value[2], "Di.");
-        test.equal(value[3], "Mi.");
-        test.equal(value[4], "Do.");
-        test.equal(value[5], "Fr.");
-        test.equal(value[6], "Sa.");
+        test.equal(value[0], "So");
+        test.equal(value[1], "Mo");
+        test.equal(value[2], "Di");
+        test.equal(value[3], "Mi");
+        test.equal(value[4], "Do");
+        test.equal(value[5], "Fr");
+        test.equal(value[6], "Sa");
 
         fmt = new DateFmt({locale:"de-DE", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -809,13 +809,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "So.");
-        test.equal(value[1], "Mo.");
-        test.equal(value[2], "Di.");
-        test.equal(value[3], "Mi.");
-        test.equal(value[4], "Do.");
-        test.equal(value[5], "Fr.");
-        test.equal(value[6], "Sa.");
+        test.equal(value[0], "So");
+        test.equal(value[1], "Mo");
+        test.equal(value[2], "Di");
+        test.equal(value[3], "Mi");
+        test.equal(value[4], "Do");
+        test.equal(value[5], "Fr");
+        test.equal(value[6], "Sa");
 
         fmt = new DateFmt({locale:"de-LU", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -2613,13 +2613,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "d");
-        test.equal(value[1], "l");
-        test.equal(value[2], "m");
-        test.equal(value[3], "m");
-        test.equal(value[4], "j");
-        test.equal(value[5], "v");
-        test.equal(value[6], "s");
+        test.equal(value[0], "D");
+        test.equal(value[1], "L");
+        test.equal(value[2], "M");
+        test.equal(value[3], "M");
+        test.equal(value[4], "J");
+        test.equal(value[5], "V");
+        test.equal(value[6], "S");
         test.done();
     },
     testWeekdayTranslation_es_CL: function(test) {
@@ -2658,26 +2658,26 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "do");
-        test.equal(value[1], "lu");
-        test.equal(value[2], "ma");
-        test.equal(value[3], "mi");
-        test.equal(value[4], "ju");
-        test.equal(value[5], "vi");
-        test.equal(value[6], "sá");
+        test.equal(value[0], "DO");
+        test.equal(value[1], "LU");
+        test.equal(value[2], "MA");
+        test.equal(value[3], "MI");
+        test.equal(value[4], "JU");
+        test.equal(value[5], "VI");
+        test.equal(value[6], "SA");
 
         fmt = new DateFmt({locale:"es-CL", date:"w", length: "short", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "d");
-        test.equal(value[1], "l");
-        test.equal(value[2], "m");
-        test.equal(value[3], "m");
-        test.equal(value[4], "j");
-        test.equal(value[5], "v");
-        test.equal(value[6], "s");
+        test.equal(value[0], "D");
+        test.equal(value[1], "L");
+        test.equal(value[2], "M");
+        test.equal(value[3], "M");
+        test.equal(value[4], "J");
+        test.equal(value[5], "V");
+        test.equal(value[6], "S");
 
         test.done();
     },
@@ -2731,13 +2731,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "D");
-        test.equal(value[1], "L");
-        test.equal(value[2], "M");
-        test.equal(value[3], "M");
-        test.equal(value[4], "J");
-        test.equal(value[5], "V");
-        test.equal(value[6], "S");
+        test.equal(value[0], "d");
+        test.equal(value[1], "l");
+        test.equal(value[2], "m");
+        test.equal(value[3], "m");
+        test.equal(value[4], "j");
+        test.equal(value[5], "v");
+        test.equal(value[6], "s");
 
         test.done();
     },
@@ -2851,13 +2851,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "d");
-        test.equal(value[1], "l");
-        test.equal(value[2], "m");
-        test.equal(value[3], "m");
-        test.equal(value[4], "j");
-        test.equal(value[5], "v");
-        test.equal(value[6], "s");
+        test.equal(value[0], "D");
+        test.equal(value[1], "L");
+        test.equal(value[2], "M");
+        test.equal(value[3], "M");
+        test.equal(value[4], "J");
+        test.equal(value[5], "V");
+        test.equal(value[6], "S");
 
         test.done();
     },
@@ -2971,13 +2971,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "d");
-        test.equal(value[1], "l");
-        test.equal(value[2], "m");
-        test.equal(value[3], "m");
-        test.equal(value[4], "j");
-        test.equal(value[5], "v");
-        test.equal(value[6], "s");
+        test.equal(value[0], "D");
+        test.equal(value[1], "L");
+        test.equal(value[2], "M");
+        test.equal(value[3], "M");
+        test.equal(value[4], "J");
+        test.equal(value[5], "V");
+        test.equal(value[6], "S");
 
         test.done();
     },
@@ -3031,13 +3031,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "d");
-        test.equal(value[1], "l");
-        test.equal(value[2], "m");
-        test.equal(value[3], "m");
-        test.equal(value[4], "j");
-        test.equal(value[5], "v");
-        test.equal(value[6], "s");
+        test.equal(value[0], "D");
+        test.equal(value[1], "L");
+        test.equal(value[2], "M");
+        test.equal(value[3], "M");
+        test.equal(value[4], "J");
+        test.equal(value[5], "V");
+        test.equal(value[6], "S");
 
         test.done();
     },
@@ -3151,13 +3151,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "d");
-        test.equal(value[1], "l");
-        test.equal(value[2], "m");
-        test.equal(value[3], "m");
-        test.equal(value[4], "j");
-        test.equal(value[5], "v");
-        test.equal(value[6], "s");
+        test.equal(value[0], "D");
+        test.equal(value[1], "L");
+        test.equal(value[2], "M");
+        test.equal(value[3], "M");
+        test.equal(value[4], "J");
+        test.equal(value[5], "V");
+        test.equal(value[6], "S");
 
         test.done();
     },
@@ -3211,13 +3211,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "d");
-        test.equal(value[1], "l");
-        test.equal(value[2], "m");
-        test.equal(value[3], "m");
-        test.equal(value[4], "j");
-        test.equal(value[5], "v");
-        test.equal(value[6], "s");
+        test.equal(value[0], "D");
+        test.equal(value[1], "L");
+        test.equal(value[2], "M");
+        test.equal(value[3], "M");
+        test.equal(value[4], "J");
+        test.equal(value[5], "V");
+        test.equal(value[6], "S");
 
         test.done();
     },
@@ -3331,13 +3331,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "d");
-        test.equal(value[1], "l");
-        test.equal(value[2], "m");
-        test.equal(value[3], "m");
-        test.equal(value[4], "j");
-        test.equal(value[5], "v");
-        test.equal(value[6], "s");
+        test.equal(value[0], "D");
+        test.equal(value[1], "L");
+        test.equal(value[2], "M");
+        test.equal(value[3], "M");
+        test.equal(value[4], "J");
+        test.equal(value[5], "V");
+        test.equal(value[6], "S");
 
         test.done();
     },
@@ -3378,26 +3378,26 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "do");
-        test.equal(value[1], "lu");
-        test.equal(value[2], "ma");
-        test.equal(value[3], "mi");
-        test.equal(value[4], "ju");
-        test.equal(value[5], "vi");
-        test.equal(value[6], "sa");
+        test.equal(value[0], "Do");
+        test.equal(value[1], "Lu");
+        test.equal(value[2], "Ma");
+        test.equal(value[3], "Mi");
+        test.equal(value[4], "Ju");
+        test.equal(value[5], "Vi");
+        test.equal(value[6], "Sa");
 
         fmt = new DateFmt({locale:"es-PY", date:"w", length: "short", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "d");
-        test.equal(value[1], "l");
-        test.equal(value[2], "m");
-        test.equal(value[3], "m");
-        test.equal(value[4], "j");
-        test.equal(value[5], "v");
-        test.equal(value[6], "s");
+        test.equal(value[0], "D");
+        test.equal(value[1], "L");
+        test.equal(value[2], "M");
+        test.equal(value[3], "M");
+        test.equal(value[4], "J");
+        test.equal(value[5], "V");
+        test.equal(value[6], "S");
 
         test.done();
     },
@@ -3451,13 +3451,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "d");
-        test.equal(value[1], "l");
-        test.equal(value[2], "m");
-        test.equal(value[3], "m");
-        test.equal(value[4], "j");
-        test.equal(value[5], "v");
-        test.equal(value[6], "s");
+        test.equal(value[0], "D");
+        test.equal(value[1], "L");
+        test.equal(value[2], "M");
+        test.equal(value[3], "M");
+        test.equal(value[4], "J");
+        test.equal(value[5], "V");
+        test.equal(value[6], "S");
 
         test.done();
     },
@@ -3629,13 +3629,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "d");
-        test.equal(value[1], "l");
-        test.equal(value[2], "m");
-        test.equal(value[3], "m");
-        test.equal(value[4], "j");
-        test.equal(value[5], "v");
-        test.equal(value[6], "s");
+        test.equal(value[0], "D");
+        test.equal(value[1], "L");
+        test.equal(value[2], "M");
+        test.equal(value[3], "M");
+        test.equal(value[4], "J");
+        test.equal(value[5], "V");
+        test.equal(value[6], "S");
 
         test.done();
     },
@@ -5180,25 +5180,25 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "svētdiena");
-        test.equal(value[1], "pirmdiena");
-        test.equal(value[2], "otrdiena");
-        test.equal(value[3], "trešdiena");
-        test.equal(value[4], "ceturtdiena");
-        test.equal(value[5], "piektdiena");
-        test.equal(value[6], "sestdiena");
+        test.equal(value[0], "Svētdiena");
+        test.equal(value[1], "Pirmdiena");
+        test.equal(value[2], "Otrdiena");
+        test.equal(value[3], "Trešdiena");
+        test.equal(value[4], "Ceturtdiena");
+        test.equal(value[5], "Piektdiena");
+        test.equal(value[6], "Sestdiena");
 
         fmt = new DateFmt({locale:"lv-LV", date:"w", length: "long", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "svētd.");
-        test.equal(value[1], "pirmd.");
-        test.equal(value[2], "otrd.");
-        test.equal(value[3], "trešd.");
-        test.equal(value[4], "ceturtd.");
-        test.equal(value[5], "piektd.");
-        test.equal(value[6], "sestd.");
+        test.equal(value[0], "Svētd.");
+        test.equal(value[1], "Pirmd.");
+        test.equal(value[2], "Otrd.");
+        test.equal(value[3], "Trešd.");
+        test.equal(value[4], "Ceturtd.");
+        test.equal(value[5], "Piektd.");
+        test.equal(value[6], "Sestd.");
 
         fmt = new DateFmt({locale:"lv-LV", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -5251,7 +5251,7 @@ module.exports.testWeekdayTranslation = {
         }
         test.equal(value[0], "нед.");
         test.equal(value[1], "пон.");
-        test.equal(value[2], "вт.");
+        test.equal(value[2], "вто.");
         test.equal(value[3], "сре.");
         test.equal(value[4], "чет.");
         test.equal(value[5], "пет.");
@@ -5296,7 +5296,7 @@ module.exports.testWeekdayTranslation = {
         }
         test.equal(value[0], "ഞായറാഴ്‌ച");
         test.equal(value[1], "തിങ്കളാഴ്‌ച");
-        test.equal(value[2], "ചൊവ്വാഴ്ച");
+        test.equal(value[2], "ചൊവ്വാഴ്‌ച");
         test.equal(value[3], "ബുധനാഴ്‌ച");
         test.equal(value[4], "വ്യാഴാഴ്‌ച");
         test.equal(value[5], "വെള്ളിയാഴ്‌ച");
@@ -5330,7 +5330,7 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "ഞ");
+        test.equal(value[0], "ഞാ");
         test.equal(value[1], "തി");
         test.equal(value[2], "ചൊ");
         test.equal(value[3], "ബു");
@@ -6506,13 +6506,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "Die"); //Not standAlone
-        test.equal(value[1], "Hën"); //Not standAlone
-        test.equal(value[2], "Mar"); //Not standAlone
-        test.equal(value[3], "Mër"); //Not standAlone
-        test.equal(value[4], "Enj"); //Not standAlone
-        test.equal(value[5], "Pre"); //Not standAlone
-        test.equal(value[6], "Sht"); //Not standAlone
+        test.equal(value[0], "die"); //Not standAlone
+        test.equal(value[1], "hën"); //Not standAlone
+        test.equal(value[2], "mar"); //Not standAlone
+        test.equal(value[3], "mër"); //Not standAlone
+        test.equal(value[4], "enj"); //Not standAlone
+        test.equal(value[5], "pre"); //Not standAlone
+        test.equal(value[6], "sht"); //Not standAlone
 
         fmt = new DateFmt({locale:"sq-AL", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -6564,13 +6564,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "Die"); //Not standAlone
-        test.equal(value[1], "Hën"); //Not standAlone
-        test.equal(value[2], "Mar"); //Not standAlone
-        test.equal(value[3], "Mër"); //Not standAlone
-        test.equal(value[4], "Enj"); //Not standAlone
-        test.equal(value[5], "Pre"); //Not standAlone
-        test.equal(value[6], "Sht"); //Not standAlone
+        test.equal(value[0], "die"); //Not standAlone
+        test.equal(value[1], "hën"); //Not standAlone
+        test.equal(value[2], "mar"); //Not standAlone
+        test.equal(value[3], "mër"); //Not standAlone
+        test.equal(value[4], "enj"); //Not standAlone
+        test.equal(value[5], "pre"); //Not standAlone
+        test.equal(value[6], "sht"); //Not standAlone
 
         fmt = new DateFmt({locale:"sq-ME", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -8138,7 +8138,7 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
         test.equal(value[0], "អាទិត្យ");
-        test.equal(value[1], "ច័ន្ទ");
+        test.equal(value[1], "ចន្ទ");
         test.equal(value[2], "អង្គារ");
         test.equal(value[3], "ពុធ");
         test.equal(value[4], "ព្រហស្បតិ៍");
@@ -9678,13 +9678,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "d");
-        test.equal(value[1], "l");
-        test.equal(value[2], "m");
-        test.equal(value[3], "m");
-        test.equal(value[4], "j");
-        test.equal(value[5], "v");
-        test.equal(value[6], "s");
+        test.equal(value[0], "D");
+        test.equal(value[1], "L");
+        test.equal(value[2], "M");
+        test.equal(value[3], "M");
+        test.equal(value[4], "J");
+        test.equal(value[5], "V");
+        test.equal(value[6], "S");
 
         test.done();
     },

@@ -558,7 +558,7 @@ module.exports.testdatefmt_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "৯");
+        test.equal(fmt.format(date), "সে");
         test.done();
     },
 

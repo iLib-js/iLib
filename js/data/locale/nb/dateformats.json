@@ -56,10 +56,10 @@
                 "s": "dd"
             },
             "m": {
-                "f": "MMMM",
-                "l": "MMMM",
-                "m": "MMM",
-                "s": "MM"
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "LL"
             },
             "y": {
                 "f": "yyyy",
