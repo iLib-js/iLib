@@ -100,7 +100,7 @@ requireClass.prototype.require = function(pathname) {
         return {};
     }
 
-    console.log("loading module " + pathname);
+    //console.log("loading module " + pathname);
 
     this.loading[pathname] = true;
 
