@@ -39,10 +39,10 @@
                 "s": "E, dd"
             },
             "w": {
-                "f": "cccc",
-                "l": "ccc",
-                "m": "cc",
-                "s": "c"
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
             },
             "d": {
                 "f": "dd",
@@ -51,16 +51,28 @@
                 "s": "dd"
             },
             "m": {
-                "f": "LLLL",
-                "l": "LLLL",
-                "m": "LLL",
-                "s": "LL"
+                "f": "MMMM",
+                "l": "MMMM",
+                "m": "MMM",
+                "s": "MM"
             },
             "y": {
                 "f": "yyyy",
                 "l": "yyyy",
                 "m": "yyyy",
                 "s": "yyyy"
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "LL"
+            },
+            "e": {
+                "f": "cccc",
+                "l": "ccc",
+                "m": "cc",
+                "s": "c"
             }
         },
         "time": {

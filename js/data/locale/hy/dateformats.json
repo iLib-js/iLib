@@ -27,9 +27,9 @@
                 "s": "dd.MM"
             },
             "my": {
-                "f": "yyyy թ. LLLL",
-                "l": "LLLL, yyyy թ.",
-                "m": "LLL, yyyy թ.",
+                "f": "yyyy թ. MMMM",
+                "l": "MMMM, yyyy թ.",
+                "m": "MMM, yyyy թ.",
                 "s": "MM.yy"
             },
             "dw": {
@@ -51,16 +51,28 @@
                 "s": "dd"
             },
             "m": {
-                "f": "LLLL",
-                "l": "LLLL",
-                "m": "LLL",
-                "s": "LL"
+                "f": "MMMM",
+                "l": "MMMM",
+                "m": "MMM",
+                "s": "MM"
             },
             "y": {
                 "f": "yyyy",
                 "l": "yyyy",
                 "m": "yyyy",
                 "s": "yy"
+            },
+            "mys": {
+                "f": "yyyy թ. LLLL",
+                "l": "LLLL, yyyy թ.",
+                "m": "LLL, yyyy թ.",
+                "s": "MM.yy"
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "LL"
             }
         },
         "time": {

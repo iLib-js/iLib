@@ -27,8 +27,8 @@
                 "s": "MM-dd"
             },
             "my": {
-                "f": "yyyy 'm'. LLLL",
-                "l": "yyyy 'm'. LLLL",
+                "f": "yyyy 'm'. MMMM",
+                "l": "yyyy 'm'. MMMM",
                 "m": "yyyy-MM",
                 "s": "yyyy-MM"
             },
@@ -51,16 +51,28 @@
                 "s": "dd"
             },
             "m": {
-                "f": "LLLL",
-                "l": "LLLL",
-                "m": "LL",
-                "s": "LL"
+                "f": "MMMM",
+                "l": "MMMM",
+                "m": "MM",
+                "s": "MM"
             },
             "y": {
                 "f": "yyyy",
                 "l": "yyyy",
                 "m": "yyyy",
                 "s": "yyyy"
+            },
+            "mys": {
+                "f": "yyyy 'm'. LLLL",
+                "l": "yyyy 'm'. LLLL",
+                "m": "yyyy-MM",
+                "s": "yyyy-MM"
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LL",
+                "s": "LL"
             }
         },
         "time": {

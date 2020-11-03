@@ -27,9 +27,9 @@
                 "s": "MM-dd"
             },
             "my": {
-                "f": "yyyy LLLL",
-                "l": "སྤྱི་ལོ་yyyy LLLL",
-                "m": "yyyy ལོའི་LLL",
+                "f": "yyyy MMMM",
+                "l": "སྤྱི་ལོ་yyyy MMMM",
+                "m": "yyyy ལོའི་MMM",
                 "s": "yyyy-MM"
             },
             "dw": {
@@ -51,16 +51,28 @@
                 "s": "dd"
             },
             "m": {
-                "f": "LLLL",
-                "l": "LLLL",
-                "m": "LLL",
-                "s": "LL"
+                "f": "MMMM",
+                "l": "MMMM",
+                "m": "MMM",
+                "s": "MM"
             },
             "y": {
                 "f": "yyyy",
                 "l": "yyyy",
                 "m": "yyyy",
                 "s": "yyyy"
+            },
+            "mys": {
+                "f": "yyyy LLLL",
+                "l": "སྤྱི་ལོ་yyyy LLLL",
+                "m": "yyyy ལོའི་LLL",
+                "s": "yyyy-MM"
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "LL"
             }
         },
         "time": {

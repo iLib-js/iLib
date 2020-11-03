@@ -27,9 +27,9 @@
                 "s": "dd.MM"
             },
             "my": {
-                "f": "LLLL yyyy 'г'.",
-                "l": "LLLL yyyy 'г'.",
-                "m": "LLL yyyy 'г'.",
+                "f": "MMMM yyyy 'г'.",
+                "l": "MMMM yyyy 'г'.",
+                "m": "MMM yyyy 'г'.",
                 "s": "MM.yyyy"
             },
             "dw": {
@@ -39,10 +39,10 @@
                 "s": "E, dd"
             },
             "w": {
-                "f": "cccc",
-                "l": "ccc",
-                "m": "cc",
-                "s": "c"
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
             },
             "d": {
                 "f": "d",
@@ -51,16 +51,34 @@
                 "s": "dd"
             },
             "m": {
-                "f": "LLLL",
-                "l": "LLLL",
-                "m": "LLL",
-                "s": "LL"
+                "f": "MMMM",
+                "l": "MMMM",
+                "m": "MMM",
+                "s": "MM"
             },
             "y": {
                 "f": "yyyy",
                 "l": "yyyy",
                 "m": "yyyy",
                 "s": "yyyy"
+            },
+            "mys": {
+                "f": "LLLL yyyy 'г'.",
+                "l": "LLLL yyyy 'г'.",
+                "m": "LLL yyyy 'г'.",
+                "s": "MM.yyyy"
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "LL"
+            },
+            "e": {
+                "f": "cccc",
+                "l": "ccc",
+                "m": "cc",
+                "s": "c"
             }
         },
         "time": {

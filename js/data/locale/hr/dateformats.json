@@ -32,9 +32,9 @@
                 "s": "dd. MM"
             },
             "my": {
-                "f": "LLLL yyyy.",
-                "l": "LLLL yyyy.",
-                "m": "LLL yyyy.",
+                "f": "MMMM yyyy.",
+                "l": "MMMM yyyy.",
+                "m": "MMM yyyy.",
                 "s": "MM. yyyy."
             },
             "dw": {
@@ -44,10 +44,10 @@
                 "s": "E, dd"
             },
             "w": {
-                "f": "cccc",
-                "l": "ccc",
-                "m": "cc",
-                "s": "c"
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
             },
             "d": {
                 "f": "d",
@@ -56,16 +56,34 @@
                 "s": "dd"
             },
             "m": {
-                "f": "LLLL",
-                "l": "LLLL",
-                "m": "LLL",
-                "s": "LL"
+                "f": "MMMM",
+                "l": "MMMM",
+                "m": "MMM",
+                "s": "MM"
             },
             "y": {
                 "f": "yyyy",
                 "l": "yyyy",
                 "m": "yyyy",
                 "s": "yyyy"
+            },
+            "mys": {
+                "f": "LLLL yyyy.",
+                "l": "LLLL yyyy.",
+                "m": "LLL yyyy.",
+                "s": "MM. yyyy."
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "LL"
+            },
+            "e": {
+                "f": "cccc",
+                "l": "ccc",
+                "m": "cc",
+                "s": "c"
             }
         },
         "time": {

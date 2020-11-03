@@ -488,38 +488,38 @@ module.exports = {
 
     createDateFormats: function (language, script, region, cldrData) {
         var formats = {},
-        cldrCalendar,
-        calendar,
-        isRtl = (rtlLanguages.indexOf(language) > -1) && (!script || rtlScripts.indexOf(script) > 0);
-        rtlify = isRtl ? function(format) {
-            var f = format.replace(/\u200F/g, "");
-
-            switch(f.charAt(0)) {
-                case 'd':
-                case 'y':
-                case 'h':
-                case 'H':
-                case 'N':
-                    return "\u200F" + f;
-
-                case 'M':
-                    var i = 1;
-                    while (f.charAt(i) === "M") {
-                        i++;
-                    }
-                    if (i < 3) {
-                        // 1 and 2 M's are numeric, whereas 3 and 4 M's are letters
+            cldrCalendar,
+            calendar,
+            isRtl = (rtlLanguages.indexOf(language) > -1) && (!script || rtlScripts.indexOf(script) > 0);
+            rtlify = isRtl ? function(format) {
+                var f = format.replace(/\u200F/g, "");
+    
+                switch(f.charAt(0)) {
+                    case 'd':
+                    case 'y':
+                    case 'h':
+                    case 'H':
+                    case 'N':
                         return "\u200F" + f;
-                    }
-                    return f;
-
-                default:
-                    return f;
-            }
-        } : function(format) {
-            return format;
-        };
-
+    
+                    case 'M':
+                        var i = 1;
+                        while (f.charAt(i) === "M") {
+                            i++;
+                        }
+                        if (i < 3) {
+                            // 1 and 2 M's are numeric, whereas 3 and 4 M's are letters
+                            return "\u200F" + f;
+                        }
+                        return f;
+    
+                    default:
+                        return f;
+                }
+            } : function(format) {
+                return format;
+            };
+        var isAsian = isAsianLang(language);
 
         for (var calendarName in cldrData) {
             cldrCalendar = cldrData[calendarName];
@@ -577,7 +577,6 @@ module.exports = {
              * stand-alone of w (weekday) is e
              * stand-alone of y (year) is r
              */
-
             var w;
 
             var weekFormatIndex = scanForChars(cldrFormats["full"], "Ec");
@@ -707,7 +706,7 @@ module.exports = {
                     case "ymd":
                         // console.log("Length " + len + " order ymd");
                         calendar.date.dm[lenAbbr] = rtlify(dmy.substring(scanForChars(dmy, "M")));
-                        if (isAsianLang(language)) {
+                        if (isAsian) {
                             var firstd = scanForChars(dmy, "d");
                             if (dmy.charAt(firstd-1) == '/') {
                                 firstd--;
@@ -727,25 +726,46 @@ module.exports = {
                 }
 
                 if (standAloneYM(cldrCalendar, script)) {
-                    calendar.date.my[lenAbbr] = calendar.date.my[lenAbbr].replace(/MMMM/, "LLLL").replace(/MMM/, "LLL");
+                    if (!calendar.date.mys) {
+                        calendar.date.mys = {};
+                    }
+                    calendar.date.mys[lenAbbr] = calendar.date.my[lenAbbr].replace(/MMMM/, "LLLL").replace(/MMM/, "LLL");
                 }
 
-                if (standAloneM(cldrCalendar, script)) {
-                    calendar.date.m[lenAbbr] = calendar.date.m[lenAbbr].replace(/M/g, "L");
+                if (standAloneM(cldrCalendar, script) || isAsian) {
+                    if (!calendar.date.l) {
+                        calendar.date.l = {};
+                    }
+                    if (isAsian) {
+                        calendar.date.l[lenAbbr] = getAvailableFormat(cldrCalendar, "M").replace(/M+/, calendar.date.m[lenAbbr]);
+                    } else {
+                        calendar.date.l[lenAbbr] = calendar.date.m[lenAbbr].replace(/M/g, "L");
+                    }
                 }
 
                 if (standAloneW(cldrCalendar, script)) {
-                    calendar.date.w[lenAbbr] = calendar.date.w[lenAbbr].replace(/E/g, "c");
+                    if (!calendar.date.e) {
+                        calendar.date.e = {};
+                    }
+                    calendar.date.e[lenAbbr] = calendar.date.w[lenAbbr].replace(/E/g, "c");
                 }
 
-                if (standAloneY(cldrCalendar, script)) {
-                    calendar.date.y[lenAbbr] = calendar.date.y[lenAbbr].replace(/y/g, "r");
+                if (standAloneY(cldrCalendar, script) || isAsian) {
+                    if (!calendar.date.r) {
+                        calendar.date.r = {};
+                    }
+                    if (isAsian) {
+                        calendar.date.r[lenAbbr] = getAvailableFormat(cldrCalendar, "y").replace(/y+/, calendar.date.y[lenAbbr]);
+                    } else {
+                        calendar.date.r[lenAbbr] = calendar.date.y[lenAbbr].replace(/y/g, "r");
+                    }
                 }
 
-                if (isAsianLang(language)) {
-                    calendar.date.d[lenAbbr] = getAvailableFormat(cldrCalendar, "d").replace(/d+/, calendar.date.d[lenAbbr]);
-                    calendar.date.m[lenAbbr] = getAvailableFormat(cldrCalendar, "M").replace(/M+/, calendar.date.m[lenAbbr]);
-                    calendar.date.y[lenAbbr] = getAvailableFormat(cldrCalendar, "y").replace(/y+/, calendar.date.y[lenAbbr]);
+                if (isAsian) {
+                    if (!calendar.date.a) {
+                        calendar.date.a = {};
+                    }
+                    calendar.date.a[lenAbbr] = getAvailableFormat(cldrCalendar, "d").replace(/d+/, calendar.date.d[lenAbbr]);
                 }
 
                 tmp = wTemplate.replace(/\{date\}/, calendar.date.dm[lenAbbr]);
@@ -1266,7 +1286,7 @@ module.exports = {
 
                                 if (language === 'lt'&& (lenAbbr === 'f' || lenAbbr === 'l')) {
                                     cFmt10 = cFmt10.replace(/{date}/, "{ed} 'd'.");
-                                } else if(isAsianLang(language)){
+                                } else if(isAsian){
                                     if (cFmt10.search(/日|일/) !== -1) {
                                         cFmt10 = cFmt10.replace(/{date}/, calendar.date["d"][lenAbbr]);
                                         cFmt10 = cFmt10.replace(/[^s]d+/, " {ed}");
@@ -1290,7 +1310,7 @@ module.exports = {
                                     cFmt11 = cFmt11.replace(/'m'. {em}/, " {em}");
                                 } else if (language === 'eu' && (lenAbbr === 'f' || lenAbbr === 'l')) {
                                     cFmt11 = cFmt11.replace(/y+\(\'e\'\)\'ko\'/,"").replace(/[LM]+/, "{em}").replace(regExp2,"{ed}");
-                                } else if (isAsianLang(language)) {
+                                } else if (isAsian) {
                                     if (lenAbbr === 's' || lenAbbr === 'm') {
                                         cFmt11 = cFmt11.replace(/\by+/,"{ey}").replace(/[LM]+/, "{em}").replace(regExp2,"{ed}");
                                     } else {
@@ -1331,7 +1351,7 @@ module.exports = {
                                 cFmt20 = cFmt20.replace(/\'/g,"").replace(/\s\s/g," ").trim();
                                 calendar.range["c20"][lenAbbr] = cFmt20;
 
-                                if (isAsianLang(language)) {
+                                if (isAsian) {
                                     cFmt30="y – y";
                                     cFmt30 = cFmt30.replace(/y/g, calendar.date["y"][lenAbbr]);
                                     cFmt30 = cFmt30.replace(/y+/, "{sy}");

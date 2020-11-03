@@ -51,16 +51,22 @@
                 "s": "d"
             },
             "m": {
-                "f": "LLLL",
-                "l": "LLLL",
-                "m": "LL",
-                "s": "L"
+                "f": "MMMM",
+                "l": "MMMM",
+                "m": "MM",
+                "s": "M"
             },
             "y": {
                 "f": "yyyy",
                 "l": "yyyy",
                 "m": "yyyy",
                 "s": "yy"
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LL",
+                "s": "L"
             }
         },
         "time": {

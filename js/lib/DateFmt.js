@@ -190,6 +190,7 @@ var ISet = require("./ISet.js");
  *
  * <ul>
  * <li><i>a</i> - am/pm marker
+ * <li><i>B</i> - the current day period
  * <li><i>d</i> - 1 or 2 digit date of month, not padded
  * <li><i>dd</i> - 1 or 2 digit date of month, 0 padded to 2 digits
  * <li><i>O</i> - ordinal representation of the date of month (eg. "1st", "2nd", etc.)
@@ -200,14 +201,22 @@ var ISet = require("./ISet.js");
  * <li><i>MM</i> - 1 or 2 digit month number, 0 padded to 2 digits
  * <li><i>N</i> - 1 character month name abbreviation
  * <li><i>NN</i> - 2 character month name abbreviation
- * <li><i>MMM</i> - 3 character month month name abbreviation
+ * <li><i>MMM</i> - 3 character month name abbreviation
  * <li><i>MMMM</i> - fully spelled out month name
+ * <li><i>L</i> - 1 character stand-alone month name abbreviation
+ * <li><i>LL</i> - 2 character stand-alone month name abbreviation
+ * <li><i>LLL</i> - 3 character stand-alone month name abbreviation
+ * <li><i>LLLL</i> - fully spelled out stand-alone month name
  * <li><i>yy</i> - 2 digit year
  * <li><i>yyyy</i> - 4 digit year
  * <li><i>E</i> - day-of-week name, abbreviated to a single character
  * <li><i>EE</i> - day-of-week name, abbreviated to a max of 2 characters
  * <li><i>EEE</i> - day-of-week name, abbreviated to a max of 3 characters
  * <li><i>EEEE</i> - day-of-week name fully spelled out
+ * <li><i>c</i> - stand-alone day-of-week name, abbreviated to a single character
+ * <li><i>cc</i> - stand-alone day-of-week name, abbreviated to a max of 2 characters
+ * <li><i>ccc</i> - stand-alone day-of-week name, abbreviated to a max of 3 characters
+ * <li><i>cccc</i> - stand-alone day-of-week name fully spelled out
  * <li><i>G</i> - era designator
  * <li><i>w</i> - week number in year
  * <li><i>ww</i> - week number in year, 0 padded to 2 digits
@@ -842,14 +851,16 @@ DateFmt.prototype = {
     },
 
     // stand-alone of m (month) is l
+    // stand-alone of my (month year) is mys
     // stand-alone of d (day) is a
     // stand-alone of w (weekday) is e
     // stand-alone of y (year) is r
     _standAlones: {
-        "l": "m",
-        "a": "d",
-        "e": "w",
-        "r": "y"
+        "m": "l",
+        "my": "mys",
+        "d": "a",
+        "w": "e",
+        "y": "r"
     },
 
     /**
@@ -861,7 +872,15 @@ DateFmt.prototype = {
      */
     _getFormat: function getFormat(obj, components, length) {
         // handle some special cases for stand-alone formats
-        return this._getFormatInternal(obj, this._standAlones[components] || components, length);
+        if (components && this._standAlones[components]) {
+            var tmp = this._getFormatInternal(obj, this._standAlones[components], length);
+            if (tmp) {
+                return tmp;
+            }
+        }
+
+        // if no stand-alone format is available, fall back to the regular format
+        return this._getFormatInternal(obj, components, length);
     },
 
     /**
