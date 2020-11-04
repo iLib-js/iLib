@@ -409,7 +409,49 @@ module.exports.testdate = {
         // 1572141600000: new Date(2019, 9, 27, 1, 0, 0).getTime() with Azores local time
         test.equal(boundaryiLib.getTimeExtended(), 1572141600000);
         test.done();
-    }/*,
+    },
+    testDstStartBoundary_Santiago: function(test) {
+        test.expect(2);
+        var boundaryiLib = DateFactory({year: 2020,month: 9,day: 6,hour: 0,minute: 0,second: 0,timezone: "America/Santiago"});
+        // we can't set time zone to Date object, so compare with constant value
+        // 1599364800000: new Date(2020, 8, 6, 0, 0, 0).getTime() with Santiago local time
+        test.equal(boundaryiLib.getTimeExtended(), 1599364800000);
+        var ildMyBday = DateFactory({unixtime: 1599364800000});
+        var fmt = new DateFmt({length: "short", type:"datetime",locale:"es-CL", timezone:"America/Santiago"});
+        test.equal("06-09-20 01:00", fmt.format(ildMyBday));
+
+        test.done();
+    },
+    testDstEndBoundary_Santiago: function(test) {
+        test.expect(2);
+        var boundaryiLib = DateFactory({year: 2020, month: 4,day: 5, hour: 0,minute: 0,second: 0,timezone: "America/Santiago"});
+
+        // we can't set time zone to Date object, so compare with constant value
+        // 1591243200000: new Date(2020, 3, 5, 0, 0, 0).getTime() with Santiago local time
+        test.equal(boundaryiLib.getTimeExtended(), 1586059200000);
+        var ildMyBday = DateFactory({unixtime: 1586059200000});
+        var fmt = new DateFmt({length: "short", type:"datetime",locale:"es-CL", timezone:"America/Santiago"});
+        test.equal("05-04-20 00:00", fmt.format(ildMyBday));
+
+        test.done();
+    },
+    testDstEndBoundary_Santiago2: function(test) {
+        test.expect(3);
+        var boundaryiLib = DateFactory({year: 2020, month: 4,day: 4, hour: 23,minute: 0,second: 0,timezone: "America/Santiago"});
+
+        // we can't set time zone to Date object, so compare with constant value
+        // 1591243200000: new Date(2020, 3, 4, 23, 0, 0).getTime() with Santiago local time
+
+        test.equal(1586059200000 - boundaryiLib.getTimeExtended(), 7200000); // 2 hours
+        test.equal(boundaryiLib.getTimeExtended(), 1586052000000);
+
+        var ildMyBday = DateFactory({unixtime: 1586052000000});
+        var fmt = new DateFmt({length: "short", type:"datetime",locale:"es-CL", timezone:"America/Santiago"});
+        test.equal("04-04-20 23:00", fmt.format(ildMyBday));
+
+        test.done();
+    }
+    /*,
     testDstStartBoundary_Windhoek: function(test) {
         test.expect(1);
         var boundaryiLib = DateFactory({
