@@ -685,7 +685,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. Қараша – 2014 ж. Қаңтар");
+        test.equal(fmt.format(start, end), "2011 ж. қараша – 2014 ж. қаңтар");
         test.done();
     },
     testDateRngFmtKZRangeMultiYearFull3: function(test) {
@@ -711,7 +711,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. Маусым – 2016 ж. Сәуір");
+        test.equal(fmt.format(start, end), "2011 ж. маусым – 2016 ж. сәуір");
         test.done();
     },
     testDateRngFmtKZRangeMultiYearLong2: function(test) {
@@ -737,7 +737,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. Маусым – 2016 ж. Сәуір");
+        test.equal(fmt.format(start, end), "2011 ж. маусым – 2016 ж. сәуір");
         test.done();
     },
     testDateRngFmtKZRangeMultiYearMedium2: function(test) {
