@@ -139,8 +139,8 @@
                 "s": "{sy}/{sm}/{sd} {st} – {ey}/{em}/{ed} {et}"
             },
             "c10": {
-                "f": "{sy}年{sm}月{sd}日 – {ed}",
-                "l": "{sy}年{sm}月{sd}日 – {ed}",
+                "f": "{sy}年{sm}月{sd}日 – {ed}日",
+                "l": "{sy}年{sm}月{sd}日 – {ed}日",
                 "m": "{sy}/{sm}/{sd} – {ed}",
                 "s": "{sy}/{sm}/{sd} – {ed}"
             },

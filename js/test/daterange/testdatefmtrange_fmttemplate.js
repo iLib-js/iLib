@@ -5877,10 +5877,10 @@ module.exports.testdaterangefmt = {
         test.equal(templatec20[2], '{sy}/{sm} – {ey}/{em}');
         test.equal(templatec20[3], '{sy}/{sm} – {ey}/{em}');
 
-        test.equal(templatec30[0], "{sy}年 – {ey}年");
-        test.equal(templatec30[1], "{sy}年 – {ey}年");
-        test.equal(templatec30[2], "{sy}年 – {ey}年");
-        test.equal(templatec30[3], "{sy}年 – {ey}年");
+        test.equal(templatec30[0], "{sy} – {ey}");
+        test.equal(templatec30[1], "{sy} – {ey}");
+        test.equal(templatec30[2], "{sy} – {ey}");
+        test.equal(templatec30[3], "{sy} – {ey}");
 
         test.done();
     },
@@ -6095,10 +6095,10 @@ module.exports.testdaterangefmt = {
         test.equal(templatec20[2], '{sy}. {sm}. – {ey}. {em}.');
         test.equal(templatec20[3], '{sy}. {sm}. – {ey}. {em}.');
 
-        test.equal(templatec30[0], "{sy}년 – {ey}년");
-        test.equal(templatec30[1], "{sy}년 – {ey}년");
-        test.equal(templatec30[2], "{sy}년 – {ey}년");
-        test.equal(templatec30[3], "{sy}년 – {ey}년");
+        test.equal(templatec30[0], "{sy} – {ey}");
+        test.equal(templatec30[1], "{sy} – {ey}");
+        test.equal(templatec30[2], "{sy} – {ey}");
+        test.equal(templatec30[3], "{sy} – {ey}");
 
         test.done();
     },
@@ -9021,10 +9021,10 @@ module.exports.testdaterangefmt = {
         test.equal(templatec20[2], '{sy}年{sm}月 – {ey}年{em}月');
         test.equal(templatec20[3], '{sy}/{sm} – {ey}/{em}');
 
-        test.equal(templatec30[0], "{sy}年 – {ey}年");
-        test.equal(templatec30[1], "{sy}年 – {ey}年");
-        test.equal(templatec30[2], "{sy}年 – {ey}年");
-        test.equal(templatec30[3], "{sy}年 – {ey}年");
+        test.equal(templatec30[0], "{sy} – {ey}");
+        test.equal(templatec30[1], "{sy} – {ey}");
+        test.equal(templatec30[2], "{sy} – {ey}");
+        test.equal(templatec30[3], "{sy} – {ey}");
 
         test.done();
     },
@@ -9094,9 +9094,9 @@ module.exports.testdaterangefmt = {
         test.equal(templatec20[2], '{sy}年{sm}月 – {ey}年{em}月');
         test.equal(templatec20[3], '{sm}/{sy} – {em}/{ey}');
 
-        test.equal(templatec30[0], "{sy}年 – {ey}年");
-        test.equal(templatec30[1], "{sy}年 – {ey}年");
-        test.equal(templatec30[2], "{sy}年 – {ey}年");
+        test.equal(templatec30[0], "{sy} – {ey}");
+        test.equal(templatec30[1], "{sy} – {ey}");
+        test.equal(templatec30[2], "{sy} – {ey}");
         test.equal(templatec30[3], "{sy} – {ey}");
 
         test.done();
@@ -9167,10 +9167,10 @@ module.exports.testdaterangefmt = {
         test.equal(templatec20[2], '{sy}年{sm}月 – {ey}年{em}月');
         test.equal(templatec20[3], '{sy}/{sm} – {ey}/{em}');
 
-        test.equal(templatec30[0], "{sy}年 – {ey}年");
-        test.equal(templatec30[1], "{sy}年 – {ey}年");
-        test.equal(templatec30[2], "{sy}年 – {ey}年");
-        test.equal(templatec30[3], "{sy}年 – {ey}年");
+        test.equal(templatec30[0], "{sy} – {ey}");
+        test.equal(templatec30[1], "{sy} – {ey}");
+        test.equal(templatec30[2], "{sy} – {ey}");
+        test.equal(templatec30[3], "{sy} – {ey}");
 
         test.done();
     },
@@ -13715,9 +13715,9 @@ module.exports.testdaterangefmt = {
         test.equal(templatec20[2], '{sy}年{sm}月 – {ey}年{em}月');
         test.equal(templatec20[3], '{sm}/{sy} – {em}/{ey}');
 
-        test.equal(templatec30[0], "{sy}年 – {ey}年");
-        test.equal(templatec30[1], "{sy}年 – {ey}年");
-        test.equal(templatec30[2], "{sy}年 – {ey}年");
+        test.equal(templatec30[0], "{sy} – {ey}");
+        test.equal(templatec30[1], "{sy} – {ey}");
+        test.equal(templatec30[2], "{sy} – {ey}");
         test.equal(templatec30[3], "{sy} – {ey}");
 
         test.done();
@@ -13787,10 +13787,10 @@ module.exports.testdaterangefmt = {
         test.equal(templatec20[2], '{sy}年{sm}月 – {ey}年{em}月');
         test.equal(templatec20[3], '{sy}/{sm} – {ey}/{em}');
 
-        test.equal(templatec30[0], "{sy}年 – {ey}年");
-        test.equal(templatec30[1], "{sy}年 – {ey}年");
-        test.equal(templatec30[2], "{sy}年 – {ey}年");
-        test.equal(templatec30[3], "{sy}年 – {ey}年");
+        test.equal(templatec30[0], "{sy} – {ey}");
+        test.equal(templatec30[1], "{sy} – {ey}");
+        test.equal(templatec30[2], "{sy} – {ey}");
+        test.equal(templatec30[3], "{sy} – {ey}");
 
         test.done();
     },

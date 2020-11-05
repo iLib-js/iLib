@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. Қараша – 2014 ж. Қаңтар");
+        test.equal(fmt.format(start, end), "2011 ж. қараша – 2014 ж. қаңтар");
         test.done();
     },
     testDateRngFmtKZRangeMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. Қараша – 2014 ж. Қаңтар");
+        test.equal(fmt.format(start, end), "2011 ж. қараша – 2014 ж. қаңтар");
         test.done();
     },
     testDateRngFmtKZRangeMultiYearFull2: function(test) {
