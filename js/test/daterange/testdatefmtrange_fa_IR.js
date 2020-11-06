@@ -1,8 +1,8 @@
 /*
  * testdatefmtrange_fa_IR.js - test date range formatter object in Farsi/Iran
- * 
+ *
  * Copyright © 2012-2017, 2020 JEDLSoft
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -42,12 +42,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeinDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -72,12 +72,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeinDayMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -102,12 +102,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeinDayLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -132,12 +132,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeinDayFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -159,16 +159,16 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), "‏۳۱ دسامبر ۲۰۱۱، ساعت ‏۱۳:۴۵ – ‏۱۴:۳۰");
         test.done();
     },
-    
+
     testDateRngFmtIRRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -189,17 +189,17 @@ module.exports.testdatefmtrange_fa_IR = {
         });
         test.equal(fmt.format(start, end), "‏۲۰۱۱/۱۲/۳۰،‏ ‏۱۳:۴۵ – ‏۲۰۱۱/۱۲/۳۱،‏ ‏۱۴:۳۰");
         test.done();
-    
+
     },
     testDateRngFmtIRRangeNextDayMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -224,12 +224,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeNextDayLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -254,12 +254,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeNextDayFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -281,16 +281,16 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), "‏۳۰ دسامبر ۲۰۱۱، ساعت ‏۱۳:۴۵ – ‏۳۱ دسامبر ۲۰۱۱، ساعت ‏۱۴:۳۰");
         test.done();
     },
-    
+
     testDateRngFmtIRRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -315,12 +315,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeMultiDayMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -345,12 +345,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeMultiDayLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -375,12 +375,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeMultiDayFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -402,16 +402,16 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), "‏۲۰ – ‏۳۱ دسامبر ۲۰۱۱");
         test.done();
     },
-    
+
     testDateRngFmtIRRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -436,12 +436,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeNextMonthMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -466,12 +466,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeNextMonthLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -496,12 +496,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeNextMonthFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -523,16 +523,16 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), "‏۲۰ نوامبر – ‏۳۱ دسامبر ۲۰۱۱");
         test.done();
     },
-    
+
     testDateRngFmtIRRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -557,12 +557,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeNextYearMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -587,12 +587,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeNextYearLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -617,12 +617,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeNextYearFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -644,16 +644,16 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), "‏۲۰ نوامبر ۲۰۱۱ – ‏۳۱ ژانویهٔ ۲۰۱۲");
         test.done();
     },
-    
+
     testDateRngFmtIRRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -678,12 +678,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeMultiYearMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -708,12 +708,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeMultiYearLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -738,12 +738,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRRangeMultiYearFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -769,12 +769,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtIRManyYearsFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -796,18 +796,18 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), "‏۲۰۱۱ – ۲۰۶۴");
         test.done();
     },
-    
+
     /* Now the persian calendar tests. */
-    
+
     testDateRngFmtPersRangeinDdfayShort_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 12,
@@ -832,12 +832,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtPersRangeinDayMedium_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 12,
@@ -862,12 +862,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtPersRangeinDayLong_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 12,
@@ -892,12 +892,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtPersRangeinDayFull_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 12,
@@ -919,16 +919,16 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), "‏۱۳۹۳ اسفند ۳۱، ساعت ‏۱۳:۴۵ – ‏۱۴:۳۰");
         test.done();
     },
-    
+
     testDateRngFmtPersRangeNextDayShort_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 12,
@@ -953,12 +953,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtPersRangeNextDayMedium_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 12,
@@ -983,12 +983,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtPersRangeNextDayLong_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 12,
@@ -1013,12 +1013,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtPersRangeNextDayFull_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 12,
@@ -1040,16 +1040,16 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), '‏۱۳۹۳ اسفند ۳۰، ساعت ‏۱۳:۴۵ – ‏۱۳۹۳ اسفند ۳۱، ساعت ‏۱۴:۳۰');
         test.done();
     },
-    
+
     testDateRngFmtPersRangeMultiDayShort_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 12,
@@ -1074,12 +1074,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtPersRangeMultiDayMedium_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 12,
@@ -1104,12 +1104,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtPersRangeMultiDayLong_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 12,
@@ -1134,12 +1134,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtPersRangeMultiDayFull_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 12,
@@ -1161,16 +1161,16 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), "‏۱۳۹۳ اسفند ۲۰ – ۳۱");
         test.done();
     },
-    
+
     testDateRngFmtPersRangeNextMonthShort_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 11,
@@ -1195,12 +1195,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtPersRangeNextMonthMedium_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 11,
@@ -1225,12 +1225,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtPersRangeNextMonthLong_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 11,
@@ -1255,12 +1255,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtPersRangeNextMonthFull_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 11,
@@ -1282,16 +1282,16 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), '‏۱۳۹۳ بهمن ۲۰ – ‏اسفند ۳۱');
         test.done();
     },
-    
+
     testDateRngFmtPersRangeNextYearShort_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 11,
@@ -1316,12 +1316,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtPersRangeNextYearMedium_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 11,
@@ -1346,12 +1346,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtPersRangeNextYearLong_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 11,
@@ -1376,12 +1376,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtPersRangeNextYearFull_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 11,
@@ -1403,16 +1403,16 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), '‏۱۳۹۳ بهمن ۲۰ – ‏۱۳۹۴ فروردین ۳۱');
         test.done();
     },
-    
+
     testDateRngFmtPersRangeMultiYearShort_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 11,
@@ -1437,12 +1437,12 @@ module.exports.testdatefmtrange_fa_IR = {
     testDateRngFmtPersRangeMultiYearMedium_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 11,
@@ -1462,18 +1462,18 @@ module.exports.testdatefmtrange_fa_IR = {
             millisecond: 0
         });
         test.equal(fmt.format(start, end), 'بهمن ۱۳۹۳ – فروردین ۱۳۹۶');
-        
+
         test.done();
     },
     testDateRngFmtPersRangeMultiYearLong_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 11,
@@ -1493,18 +1493,18 @@ module.exports.testdatefmtrange_fa_IR = {
             millisecond: 0
         });
         test.equal(fmt.format(start, end), 'بهمن ۱۳۹۳ – فروردین ۱۳۹۶');
-      
+
         test.done();
     },
     testDateRngFmtPersRangeMultiYearFull_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 11,
@@ -1525,16 +1525,16 @@ module.exports.testdatefmtrange_fa_IR = {
         });
         test.equal(fmt.format(start, end), '‏۱۳۹۳ بهمن – ‏۱۳۹۶ فروردین');
         test.done();
-    }, 
+    },
     testDateRngFmtPersManyYearsFull_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             calendar: "persian",
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var start = new PersianDate({
             year: 1393,
             month: 11,
@@ -1556,5 +1556,5 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), "‏۱۳۹۳ – ۱۴۵۰");
         test.done();
     }
-    
+
 };

@@ -13,15 +13,14 @@ New Features:
     * date ranges were also updated to include day periods
 
 Bug Fixes:
-* Updated date formats to use proper standalone month names
+* Updated date formats to use proper stand-alone month names independently
     * Previously, if either the year-month or the month alone available formats in CLDR
-    used the L standalone month name specifier, then we would use the standalone month name for
-    all year-month and month alone formats. However, some locales use the standalone only
-    for the year-month formats, or for the month alone formats, but not both, so the formatted
-    datess would come out with the wrong month name spellings in some cases
-    * Now year-month formats and month alone formats can use the standalone month names
-    independently of each other in date formatting
-    * Also affects date range formatting as well
+    used the stand-alone month name specifier, then we would use the stand-alone month name for
+    all year-month, month alone, day alone, and weekday alone formats. However, some locales use
+    the stand-alone only for some of those formats, so the formatted dates would come out with
+    the wrong date components in some cases
+    * Also affects date range formatting as well so that the year-month and the year alone
+    ranges can use the stand-alone formats independently of each other
 
 Build 011
 -------

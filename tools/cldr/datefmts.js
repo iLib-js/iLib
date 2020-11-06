@@ -298,7 +298,7 @@ function namesMatch(regular, standalone) {
     for (var i = 0; i < cldrWidths.length; i++) {
         var namesFormat = regular[cldrWidths[i]],
             namesStandAlone = standalone[cldrWidths[i]];
-        
+
         for (var element in namesFormat) {
             if (element &&
                 namesFormat[element] &&
@@ -493,7 +493,7 @@ module.exports = {
             isRtl = (rtlLanguages.indexOf(language) > -1) && (!script || rtlScripts.indexOf(script) > 0);
             rtlify = isRtl ? function(format) {
                 var f = format.replace(/\u200F/g, "");
-    
+
                 switch(f.charAt(0)) {
                     case 'd':
                     case 'y':
@@ -501,7 +501,7 @@ module.exports = {
                     case 'H':
                     case 'N':
                         return "\u200F" + f;
-    
+
                     case 'M':
                         var i = 1;
                         while (f.charAt(i) === "M") {
@@ -512,7 +512,7 @@ module.exports = {
                             return "\u200F" + f;
                         }
                         return f;
-    
+
                     default:
                         return f;
                 }
@@ -1138,7 +1138,7 @@ module.exports = {
                                 //cFmt20 = dateOnlyTemplate;
 
                                 cFmt20 = "{date} – {date}";
-                                var myFormat = calendar.date["mys"] ? calendar.date["mys"][lenAbbr] : calendar.date["my"][lenAbbr]; 
+                                var myFormat = calendar.date["mys"] ? calendar.date["mys"][lenAbbr] : calendar.date["my"][lenAbbr];
                                 cFmt20 = replaceFormats(cFmt20, "{date}", myFormat);
 
                                 cFmt20 = cFmt20.replace(/[LM]+/,"{sm}").replace(/L+/, "{sm}").replace(regExp3, "{sy}");
