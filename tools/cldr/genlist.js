@@ -29,8 +29,6 @@ var coelesce = common.coelesce;
 var Locale = common.Locale;
 var aux = require("./datefmts.js");
 
-var cldr = require("cldr-data");
-
 function usage() {
     console.log("Usage: genlist [-h] [toDir]\n" +
         "Generate the list formatting data.\n\n" +
@@ -68,14 +66,14 @@ function comparePatterns(left, right) {
             left.end !== right.end));
 }
 
-var locales = require("cldr-data/availableLocales.json").availableLocales;
+var locales = require("cldr-core/availableLocales.json").availableLocales.full;
 
 console.log("Locales:" + JSON.stringify(locales));
 
 var localePatterns = {};
 
 locales.forEach(function(locale) {
-    var data = require(path.join("cldr-data/main", locale, "listPatterns.json"));
+    var data = require(path.join("cldr-misc-full/main", locale, "listPatterns.json"));
     var cldrPatterns = data.main[locale].listPatterns;
 
     var patterns = {

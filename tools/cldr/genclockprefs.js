@@ -21,7 +21,6 @@
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
-var cldr = require("cldr-data");
 
 var common = require('./common');
 var merge = common.merge;
@@ -39,16 +38,15 @@ function usage() {
     "  the top level of the ilib locale data directory");
     process.exit(1);
 }
-var cldrDirName;
 var localeDirName;
-process.argv.forEach(function (val, index, array) {
+process.argv.forEach(function (val) {
     if (val === "-h" || val === "--help") {
         usage();
     }
 });
 localeDirName = process.argv[2] || "tmp";
 
-var locales = cldr.availableLocales;
+var locales = require("cldr-core/availableLocales.json").availableLocales.full;
 
 console.log("genclockprefs - generate clock preferences information files.\n" +
 "Copyright (c) 2013-2018 LGE\n");
@@ -57,7 +55,6 @@ console.log("locale dir: " + localeDirName);
 if (!fs.existsSync(localeDirName)) {
     common.makeDirs(localeDirName);
 }
-var languageData;
 
 function loadFile(pathname) {
     var ret = undefined;
@@ -166,10 +163,10 @@ function getClockPrefs(locale) {
     // time formats depending on the calendar
     var greg, timeformat;
     if (locale.substring(0,2) === "ku") {
-        greg = require(path.join("cldr-data/main", "ckb", "ca-gregorian.json"));
+        greg = require(path.join("cldr-dates-full/main", "ckb", "ca-gregorian.json"));
         timeformat = greg.main["ckb"].dates.calendars.gregorian.timeFormats.short;
     } else {
-        greg = require(path.join("cldr-data/main", locale, "ca-gregorian.json"));
+        greg = require(path.join("cldr-dates-full/main", locale, "ca-gregorian.json"));
         timeformat = greg.main[locale].dates.calendars.gregorian.timeFormats.short;
     }
 

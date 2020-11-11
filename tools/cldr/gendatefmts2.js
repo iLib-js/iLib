@@ -22,7 +22,7 @@
  */
 var fs = require('fs');
 var path = require('path');
-var cldr = require('cldr-data');
+var locales = require('cldr-core/availableLocales.json').availableLocales.full;
 var dayPeriods = require('cldr-data/supplemental/dayPeriods.json');
 
 var common = require('./common');
@@ -160,14 +160,10 @@ aux.mergeFormats(systemResources, systemResources, []);
 
 console.log("\nReading CLDR data ...");
 
-var list = cldr.availableLocales;
-// uncomment for debugging:
-// var list = ["as"];
-
 //these locales have the wrong data in CLDR and need to be skipped for now
 var skipList = ["ku"];
 
-list.forEach(function (file) {
+locales.forEach(function (file) {
     var locale = file ? new Locale(file) : undefined;
     if (locale.getVariant()) {
         // ignore locales with variants for now
@@ -192,11 +188,11 @@ list.forEach(function (file) {
     if (script) localeComponents.push(script);
     if (region) localeComponents.push(region);
 
-    var sourceDir = path.join("cldr-data/main", file);
+    var sourceDir = path.join("cldr-dates-full/main", file);
 
     if (language === "fa") {
         // add the settings for the persian calendar as well
-        cal = require(path.join(sourceDir, "ca-persian.json"));
+        cal = require(path.join("cldr-cal-persian-full/main", file, "ca-persian.json"));
         newFormats = aux.createDateFormats(language, script, region, cal.main[file].dates.calendars);
         // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(dateFormats, localeComponents);
@@ -209,7 +205,7 @@ list.forEach(function (file) {
 
     } else if (language === "am") {
         // add the settings for the ethiopic calendar as well
-        cal = require(path.join(sourceDir, "ca-ethiopic.json"));
+        cal = require(path.join("cldr-cal-ethiopic-full/main", file, "ca-ethiopic.json"));
         newFormats = aux.createDateFormats(language, script, region, cal.main[file].dates.calendars);
         // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(dateFormats, localeComponents);
@@ -249,7 +245,7 @@ list.forEach(function (file) {
     group.data = merge(group.data || {}, newFormats);
 
     // date/time duration.
-    units = require(path.join(sourceDir, "units.json"));
+    units = require(path.join("cldr-units-full/main", locale.toString(), "units.json"));
     newFormats = aux.createDurationResources(units.main[file].units, language, script);
     //console.log("Duration data is " + JSON.stringify(newFormats, undefined, 4) );
     group = aux.getFormatGroup(systemResources, localeComponents);
@@ -263,7 +259,7 @@ list.forEach(function (file) {
     group.data = merge(group.data || {}, newFormats);
 
     // separator
-    seperator = require(path.join(sourceDir, "listPatterns.json"));
+    seperator = require(path.join("cldr-misc-full/main", locale.toString(), "listPatterns.json"));
     newFormats = aux.createSeperatorResources(seperator.main[file].listPatterns, language);
     //console.log("listPattern data is " + JSON.stringify(newFormats, undefined, 4) );
     group = aux.getFormatGroup(systemResources, localeComponents);

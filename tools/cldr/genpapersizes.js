@@ -21,7 +21,7 @@
  */
 var fs = require('fs');
 var path = require('path');
-var suppData = require("cldr-data/supplemental/measurementData.json");
+var suppData = require("cldr-core/supplemental/measurementData.json");
 
 var unifile = require('./unifile.js');
 var common = require('./common.js');
