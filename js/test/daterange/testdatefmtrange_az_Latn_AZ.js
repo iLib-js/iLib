@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_az_Latn_AZ.js - test the date range formatter object in Azerbaijani
  *
- * Copyright © 2016-2017, JEDLSoft
+ * Copyright © 2016-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_az_Latn_AZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "Noyabr 2011 – yanvar 2014");
+        test.equal(fmt.format(start, end), "noyabr 2011 – yanvar 2014");
         test.done();
     },
     testDateRngFmtAZRangeMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_az_Latn_AZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "Noyabr 2011 – yanvar 2014");
+        test.equal(fmt.format(start, end), "noyabr 2011 – yanvar 2014");
         test.done();
     },
     testDateRngFmtAZManyYearsFull: function(test) {

@@ -27,8 +27,8 @@
                 "s": "d/M"
             },
             "my": {
-                "f": "LLL yyyy",
-                "l": "LLL yyyy",
+                "f": "MMM yyyy",
+                "l": "MMM yyyy",
                 "m": "MM yyyy",
                 "s": "M/yyyy"
             },
@@ -62,17 +62,17 @@
                 "m": "yyyy",
                 "s": "yyyy"
             },
-            "e": {
-                "f": "cccc",
-                "l": "ccc",
-                "m": "cc",
-                "s": "c"
-            },
             "l": {
                 "f": "LLL",
                 "l": "LLL",
                 "m": "LL",
                 "s": "L"
+            },
+            "e": {
+                "f": "cccc",
+                "l": "ccc",
+                "m": "cc",
+                "s": "c"
             }
         },
         "time": {

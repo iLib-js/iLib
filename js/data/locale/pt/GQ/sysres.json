@@ -51,5 +51,7 @@
     "#{num}s ago": "one#há {num} s|#há {num} s",
     "#{num}mi ago": "one#há {num} min|#há {num} min",
     "separatorShort": ", ",
-    "finalSeparatorShort": " e "
+    "finalSeparatorShort": " e ",
+    "B2": "da manhã",
+    "B6": "da tarde"
 }

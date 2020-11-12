@@ -5347,11 +5347,11 @@ module.exports.testdatetimeformat = {
         result1 = new DateFmt({locale:"my-MM", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
         result2 = new DateFmt({locale:"my-MM", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
 
-        test.equal(result1, "yyyy၊ MMMM d၊ EEEE H:mm");
-        test.equal(result2, "dd-MM-yy၊ E H:mm");
+        test.equal(result1, "yyyy၊ MMMM d၊ EEEE B H:mm");
+        test.equal(result2, "dd-MM-yy၊ E B H:mm");
 
         result1 = new DateFmt({locale:"my-MM", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
-        test.equal(result1,  "z HH:mm:ss");
+        test.equal(result1,  "z B HH:mm:ss");
 
         test.done();
     }

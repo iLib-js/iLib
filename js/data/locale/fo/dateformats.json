@@ -66,6 +66,18 @@
                 "l": "yyyy",
                 "m": "yyyy",
                 "s": "yy"
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LL",
+                "s": "LL"
+            },
+            "e": {
+                "f": "cccc",
+                "l": "ccc",
+                "m": "cc",
+                "s": "c"
             }
         },
         "time": {

@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_uz_Cyrl_UZ.js - test the date range formatter object Uzbek/Uzbekistan for Cyrillic script
  *
- * Copyright © 2012-2015,2017-2018, JEDLSoft
+ * Copyright © 2012-2015,2017-2018,2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -539,7 +539,7 @@ module.exports.testdatefmt_uz_Cyrl_UZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Се");
+        test.equal(fmt.format(date), "се");
         test.done();
     },
 
@@ -711,7 +711,7 @@ module.exports.testdatefmt_uz_Cyrl_UZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Сентябр");
+        test.equal(fmt.format(date), "сентябр");
         test.done();
     },
 

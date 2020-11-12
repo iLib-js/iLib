@@ -236,5 +236,14 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": " i ",
     "separatorShort": ", ",
-    "finalSeparatorShort": " i "
+    "finalSeparatorShort": " i ",
+    "B0": "o północy",
+    "B1": "AM",
+    "B2": "rano",
+    "B3": "przed południem",
+    "B4": "w południe",
+    "B5": "po południu",
+    "B6": "PM",
+    "B7": "wieczorem",
+    "B8": "w nocy"
 }

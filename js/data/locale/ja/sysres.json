@@ -160,5 +160,14 @@
     "separatorMedium": " ",
     "finalSeparatorMedium": " ",
     "separatorShort": "",
-    "finalSeparatorShort": ""
+    "finalSeparatorShort": "",
+    "B0": "真夜中",
+    "B1": "午前",
+    "B2": "朝",
+    "B3": "正午",
+    "B4": "昼",
+    "B5": "午後",
+    "B6": "夕方",
+    "B7": "夜",
+    "B8": "夜中"
 }

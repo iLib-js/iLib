@@ -803,7 +803,7 @@ module.exports.testdatefmt_gl_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'Setembro de 2011');
+        test.equal(fmt.format(date), 'setembro de 2011');
         test.done();
     },
 

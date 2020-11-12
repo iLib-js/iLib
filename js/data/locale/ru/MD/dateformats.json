@@ -27,9 +27,9 @@
                 "s": "dd.MM"
             },
             "my": {
-                "f": "LLLL yyyy 'г'.",
-                "l": "LLLL yyyy 'г'.",
-                "m": "LLL yyyy 'г'.",
+                "f": "MMMM yyyy 'г'.",
+                "l": "MMMM yyyy 'г'.",
+                "m": "MMM yyyy 'г'.",
                 "s": "MM.yyyy"
             },
             "dw": {
@@ -62,17 +62,23 @@
                 "m": "yyyy",
                 "s": "yyyy"
             },
-            "e": {
-                "f": "cccc",
-                "l": "ccc",
-                "m": "cc",
-                "s": "c"
+            "mys": {
+                "f": "LLLL yyyy 'г'.",
+                "l": "LLLL yyyy 'г'.",
+                "m": "LLL yyyy 'г'.",
+                "s": "MM.yyyy"
             },
             "l": {
                 "f": "LLLL",
                 "l": "LLLL",
                 "m": "LLL",
                 "s": "LL"
+            },
+            "e": {
+                "f": "cccc",
+                "l": "ccc",
+                "m": "cc",
+                "s": "c"
             }
         },
         "time": {
@@ -163,5 +169,37 @@
                 "s": "{sy} – {ey}"
             }
         }
-    }
+    },
+    "dayPeriods": [
+        {
+            "at": 0
+        },
+        {
+            "from": 0,
+            "to": 240
+        },
+        {
+            "from": 0,
+            "to": 720
+        },
+        {
+            "from": 240,
+            "to": 720
+        },
+        {
+            "at": 720
+        },
+        {
+            "from": 720,
+            "to": 1080
+        },
+        {
+            "from": 720,
+            "to": 1440
+        },
+        {
+            "from": 1080,
+            "to": 1440
+        }
+    ]
 }
