@@ -108,8 +108,14 @@ for (var language in scripts) {
         if (!fs.existsSync(filename)) {
             fs.mkdirSync(filename);
         }
+        // special cases where we disagree with CLDR
         if (language === 'ms' || language === 'kk' || language === 'pa') {
             scripts[language] = scripts[language].reverse();
+        } else if (language == 'ky') {
+            var lang = scripts[language];
+            var tmp = lang[0];
+            lang[0] = lang[1];
+            lang[1] = tmp;
         }
         console.log(language + ':\t"scripts": ' + JSON.stringify(scripts[language]) + ',');
         scripts_name["scripts"] = scripts[language];

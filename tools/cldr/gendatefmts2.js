@@ -23,7 +23,7 @@
 var fs = require('fs');
 var path = require('path');
 var locales = require('cldr-core/availableLocales.json').availableLocales.full;
-var dayPeriods = require('cldr-data/supplemental/dayPeriods.json');
+var dayPeriods = require('cldr-core/supplemental/dayPeriods.json');
 
 var common = require('./common');
 var merge = common.merge;
