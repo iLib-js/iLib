@@ -22,8 +22,7 @@
  */
 var fs = require('fs');
 var path = require('path');
-var cldr = require("cldr-data");
-var numberingSystemsData = require("cldr-data/supplemental/numberingSystems.json");
+var numberingSystemsData = require("cldr-core/supplemental/numberingSystems.json");
 
 var common = require('./common');
 var Locale = common.Locale;
@@ -396,14 +395,14 @@ function getNativeDigits(script) {
 
 console.log("Reading locale data into memory...");
 
-var list = cldr.availableLocales;
+var list = require("cldr-core/availableLocales.json").availableLocales.full;
 
 list.forEach(function(loc) {
     var locale = loc ? new Locale(loc) : undefined;
 
     console.log(loc);
 
-    var sourceDir = path.join("cldr-data/main", loc);
+    var sourceDir = path.join("cldr-numbers-full/main", loc);
 
     if (loc === "root" || typeof (locale.getVariant()) === 'undefined') {
         // special case because "root" is not a valid locale specifier

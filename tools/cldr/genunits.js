@@ -20,6 +20,7 @@
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
+var path = require('path');
 var util = require('util');
 var common = require('./common');
 var merge = common.merge;
@@ -27,7 +28,7 @@ var Locale = common.Locale;
 var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
 
-var cldrData = require("cldr-data");
+var cldrCore = require("cldr-core/availableLocales.json").availableLocales.full;
 
 function usage() {
     console.log("Usage: genunits [-h] [ locale_data_dir ]\n" +
@@ -590,9 +591,9 @@ function frameUnits(data, locale, localeData) {
 
 console.log("Loading locale data...");
 
-cldrData.availableLocales.forEach(function(locale) {
-    var path = "main/" + locale + "/units";
-    var data = cldrData(path);
+cldrCore.forEach(function(locale) {
+    var pathName = path.join("cldr-units-full/main", locale, "units.json");
+    var data = require(pathName);
     var localeData = {};
     var l = new Locale(locale);
 

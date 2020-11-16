@@ -2,7 +2,7 @@
 #
 # allscripts.sh - run all of the scripts
 #
-# Copyright © 2018-2019, JEDLSoft
+# Copyright © 2018-2020, JEDLSoft
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,13 +18,12 @@
 # limitations under the License.
 #
 
-CLDR_VERSION=34
-UCD_VERSION=12.0.0
-export CLDR_COVERAGE=full
+CLDR_VERSION=36.0.0
+UCD_VERSION=13.0.0
 
 # get the latest full data
 pushd ../..
-npm install cldr-data
+npm install cldr-core@${CLDR_VERSION} cldr-dates-full@${CLDR_VERSION} cldr-cal-ethiopic-full@${CLDR_VERSION} cldr-cal-persian-full@${CLDR_VERSION} cldr-localenames-full@${CLDR_VERSION} cldr-misc-full@${CLDR_VERSION} cldr-numbers-full@${CLDR_VERSION} cldr-units-full@${CLDR_VERSION}
 popd
 
 TARGET=../../js/data/locale
@@ -101,4 +100,3 @@ node genpapersizes.js $TARGET
 # node genplurals.js $TARGET   plurals need a rework before this can be uncommented
 node genunits.js $TARGET
 node genweekdata.js $TARGET
-

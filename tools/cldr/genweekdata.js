@@ -20,7 +20,7 @@
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
-var supplementalData = require("cldr-data/supplemental/weekData.json");
+var supplementalData = require("cldr-core/supplemental/weekData.json");
 
 var unifile = require('./unifile.js');
 var common = require('./common.js');

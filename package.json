@@ -49,10 +49,16 @@
         "type": "git",
         "url": "git@github.com:iLib-js/iLib.git"
     },
-    "cldr-data-coverage": "full",
     "devDependencies": {
         "babel-loader": "^7.1.5",
-        "cldr-data": "^36.0.0",
+        "cldr-cal-ethiopic-full": "^36.0.0",
+        "cldr-cal-persian-full": "^36.0.0",
+        "cldr-core": "^36.0.0",
+        "cldr-dates-full": "^36.0.0",
+        "cldr-localenames-full": "^36.0.0",
+        "cldr-misc-full": "^36.0.0",
+        "cldr-numbers-full": "^36.0.0",
+        "cldr-units-full": "^36.0.0",
         "ejs": "^2.6.1",
         "grunt": "^1.0.3",
         "grunt-cli": "^1.2.0",
