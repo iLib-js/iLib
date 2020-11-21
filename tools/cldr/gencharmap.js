@@ -1,5 +1,5 @@
 /*
- * genccharmap.js - ilib tool to generate the charset mappings from the Unicode 
+ * gencharmap.js - ilib tool to generate the charset mappings from the Unicode
  * data files
  * 
  * Copyright © 2014, 2020 JEDLSoft

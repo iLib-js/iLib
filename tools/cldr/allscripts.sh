@@ -23,7 +23,7 @@ UCD_VERSION=13.0.0
 
 # get the latest full data
 pushd ../..
-npm install cldr-core@${CLDR_VERSION} cldr-dates-full@${CLDR_VERSION} cldr-cal-ethiopic-full@${CLDR_VERSION} cldr-cal-persian-full@${CLDR_VERSION} cldr-localenames-full@${CLDR_VERSION} cldr-misc-full@${CLDR_VERSION} cldr-numbers-full@${CLDR_VERSION} cldr-units-full@${CLDR_VERSION}
+npm install cldr-core@${CLDR_VERSION} cldr-dates-full@${CLDR_VERSION} cldr-cal-ethiopic-full@${CLDR_VERSION} cldr-cal-persian-full@${CLDR_VERSION} cldr-localenames-full@${CLDR_VERSION} cldr-misc-full@${CLDR_VERSION} cldr-numbers-full@${CLDR_VERSION} cldr-units-full@${CLDR_VERSION} ucd-full@{UCD_VERSION}
 popd
 
 TARGET=../../js/data/locale
@@ -83,7 +83,7 @@ node genclockprefs.js $TARGET
 # for now so that we stay on 33
 # node gencountrynames.js ../../../cldr/${CLDR_VERSION} $TARGET
 # node reversectry.js $TARGET
-node genctype.js ../../../ucd/${UCD_VERSION} $TARGET
+node genctype.js $TARGET
 node gencurrencies.js $TARGET
 node gendatefmts2.js $TARGET
 node gendelimiters.js $TARGET

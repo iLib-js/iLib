@@ -123,7 +123,7 @@ exports.hexToChar = function hexToChar(hex) {
  * @return {string} the equivalent string as regular UTF-16 Unicode characters
  */
 exports.hexStringUTF16String = function (hex) {
-    var chars = hex.split("\s+");
+    var chars = hex.split(/\s+/g);
     var ret = "";
 
     for (var i = 0; i < chars.length; i++) {
