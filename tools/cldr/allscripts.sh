@@ -27,6 +27,8 @@ npm install cldr-core@${CLDR_VERSION} cldr-dates-full@${CLDR_VERSION} cldr-cal-e
 popd
 
 TARGET=../../js/data/locale
+TESTTARGET=../../js/test/strings-ext
+
 #TARGET=tmp
 
 # remove all previously generated data so that we can make sure
@@ -100,3 +102,5 @@ node genpapersizes.js $TARGET
 # node genplurals.js $TARGET   plurals need a rework before this can be uncommented
 node genunits.js $TARGET
 node genweekdata.js $TARGET
+node gennorm.js $TARGET
+node gennormtest.js $TESTTARGET

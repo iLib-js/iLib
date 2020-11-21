@@ -837,4 +837,40 @@ module.exports.testcommon = {
         test.ok(common.isEmpty(data.a.m.data));
         test.done();
     },
+
+    testHexToChar0: function(test) {
+        test.expect(1)
+        test.equal(common.hexToChar("1"), '\u0001');
+        test.done();
+    },
+    testHexToChar1: function(test) {
+        test.expect(1)
+        test.equal(common.hexToChar("20"), ' ');
+        test.done();
+    },
+    testHexToChar2: function(test) {
+        test.expect(1)
+        test.equal(common.hexToChar("65"), 'e');
+        test.done();
+    },
+    testHexToChar3: function(test) {
+        test.expect(1)
+        test.equal(common.hexToChar("1E0A"), 'Ḋ');
+        test.done();
+    },
+    testHexToChar3: function(test) {
+        test.expect(1)
+        test.equal(common.hexToChar("1E0A"), 'Ḋ');
+        test.done();
+    },
+    testHexToChar4: function(test) {
+        test.expect(1)
+        test.equal(common.hexToChar("10190"), '𐆐');
+        test.done();
+    },
+    testHexToChar5: function(test) {
+        test.expect(1)
+        test.equal(common.hexToChar("016FF0"), '𖿰');
+        test.done();
+    }
 }
