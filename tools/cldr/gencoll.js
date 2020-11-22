@@ -43,27 +43,17 @@ var coelesce = common.coelesce;
 var hexStringUTF16String = common.hexStringUTF16String;
 
 function usage() {
-    console.log("Usage: gencoll [-h] ISO-15924-file.txt UCD-dir CLDR-dir [toDir]\n" +
+    console.log("Usage: gencoll [-h] [toDir]\n" +
             "Generate the collation data.\n\n" +
             "-h or --help\n" +
             "  this help\n" +
-            "ISO-15924-file.txt\n" +
-            "  the Unicode script code definition file downloaded from the Unicode site\n" +
-            "UCD-dir\n" +
-            "  path to the Unicode Character Database files downloaded from the Unicode site\n" +
-            "CLDR-dir\n" +
-            "  path to the json CLDR files downloaded from the Unicode site\n" +
             "toDir\n" +
             "  directory to output the normalization json files. Default: current dir.");
     process.exit(1);
 }
 
-var iso15924FileName;
-var scriptFileName;
 var ducetFileName;
 
-var ucdDir;
-var cldrDir;
 var toDir = ".";
 
 process.argv.forEach(function (val, index, array) {
@@ -72,79 +62,44 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-if (process.argv.length < 4) {
+if (process.argv.length < 2) {
     console.error('Error: not enough arguments');
     usage();
 }
 
-iso15924FileName = process.argv[2];
-ucdDir = process.argv[3];
-cldrDir = process.argv[4];
-if (process.argv.length > 5) {
-    toDir = process.argv[5];
+if (process.argv.length > 2) {
+    toDir = process.argv[2];
 }
 
 console.log("gencoll - generate collation data.\n" +
-    "Copyright (c) 2014 JEDLSoft\n");
+    "Copyright © 2014, 2020 JEDLSoft\n");
 
-fs.exists(iso15924FileName, function (exists) {
-    if (!exists) {
-        console.error("Could not access file " + iso15924FileName);
-        usage();
-    }
-});
-fs.exists(ucdDir, function (exists) {
-    if (!exists) {
-        console.error("Could not access UCD directory " + ucdDir);
-        usage();
-    }
-});
-fs.exists(cldrDir, function (exists) {
-    if (!exists) {
-        console.error("Could not access CLDR directory " + cldrDir);
-        usage();
-    }
-});
-
-fs.exists(toDir, function (exists) {
-    if (!exists) {
-        console.error("Could not access target directory " + toDir);
-        usage();
-    }
-});
-
-scriptFileName = ucdDir + "/Scripts.txt";
-
-fs.exists(scriptFileName, function (exists) {
-    if (!exists) {
-        console.error("Could not access file " + scriptFileName);
-        usage();
-    }
-});
+if (!fs.exists(toDir) {
+    console.error("Could not access target directory " + toDir);
+    usage();
+}
 
 ducetFileName = cldrDir + "/common/uca/allkeys_DUCET.txt";
 
-fs.exists(ducetFileName, function (exists) {
-    if (!exists) {
-        console.error("Could not access file " + ducetFileName);
-        usage();
-    }
-});
+if (!fs.existsSync(ducetFileName)) {
+    console.error("Could not access file " + ducetFileName);
+    usage();
+}
 
 var scripts = {};
 var fullToShortMap = {};
 
-var iso15924 = new UnicodeFile({path: iso15924FileName});
-var len = iso15924.length();
-var row;
+var iso15924 = require("iso-15924");
+var len = iso15924.length;
+var entry;
 var longCode;
 var code;
 
 for (var i = 0; i < len; i++ ) {
-    row = iso15924.get(i);
-    code = row[0];
+    entry = iso15924[i];
+    code = entry.code;
 
-    longCode = (row[4].length == 0) ? row[2] : row[4];
+    longCode = entry.pva || entry.name;
     longCode = longCode.replace(/ +/g, '_');
 
     if (longCode.length > 0) {
@@ -153,24 +108,21 @@ for (var i = 0; i < len; i++ ) {
     }
 }
 
-var scriptsFile = new UnicodeFile({path: scriptFileName});
+var scriptsFile = require("ucd-full/Scripts.json").Scripts;
 var row, scriptName, rangeStart, rangeEnd, range;
 var ranges = [];
 var rangeToScript = [];
 
-for (var i = 0; i < scriptsFile.length(); i++) {
-    row = scriptsFile.get(i);
-    scriptName = row[1].trim();
+for (var i = 0; i < scriptsFile.length; i++) {
+    entry = scriptsFile[i];
+    scriptName = entry.script;
     scriptName = fullToShortMap[scriptName.toLowerCase()] || scriptName;
-    rangeStart = parseInt(row[0].match(/^[A-F0-9]+/)[0],16);
-    rangeEnd = row[0].match(/\.\.[A-F0-9]+/);
 
-    if (rangeEnd && rangeEnd.length > 0) {
-        rangeEnd = parseInt(rangeEnd[0].substring(2), 16);
-        ranges.push([rangeStart, rangeEnd, scriptName]);
+    if (range.length > 1) {
+        ranges.push([range[0], range[1], scriptName]);
         // console.log("pushing range [" + rangeStart + "," + rangeEnd + "," + scriptName + "]");
     } else {
-        ranges.push([rangeStart, rangeStart, scriptName]);
+        ranges.push([range[0], range[0], scriptName]);
         // console.log("pushing range [" + rangeStart + "," + rangeStart + "," + scriptName + "]");
     }
 }
@@ -477,12 +429,10 @@ function isWhite(ch) {
 var collationsDir = "../../js/data/collation/";
 var collPinyinName = collationsDir + "zh/coll.pinyin.txt";
 
-fs.exists(collPinyinName, function (exists) {
-    if (!exists) {
-        console.error("Could not access file " + collPinyinName);
-        usage();
-    }
-});
+if (!fs.existsSync(collPinyinName)) {
+    console.error("Could not access file " + collPinyinName);
+    usage();
+}
 
 var data = fs.readFileSync(collPinyinName, "utf-8");
 

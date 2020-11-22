@@ -23,7 +23,9 @@
 var fs = require("fs");
 var path = require('path');
 var common = require('./common.js');
+var unifile = require("./unifile.js");
 var mkdirs = common.makeDirs;
+var UnicodeFile = unifile.UnicodeFile;
 
 function usage() {
     console.log("Usage: genphone [-h] phone_data_dir [toDir]\n" +

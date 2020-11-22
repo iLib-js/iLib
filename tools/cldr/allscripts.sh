@@ -104,3 +104,4 @@ node genunits.js $TARGET
 node genweekdata.js $TARGET
 node gennorm.js $TARGET
 node gennormtest.js $TESTTARGET
+node genscripts.js $TARGET
