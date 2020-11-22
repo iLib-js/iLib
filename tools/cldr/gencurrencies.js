@@ -23,9 +23,7 @@
  */
 var fs = require('fs');
 var util = require('util');
-var unifile = require('./unifile.js');
 var common = require('./common.js');
-var UnicodeFile = unifile.UnicodeFile;
 var coelesce = common.coelesce;
 var mkdirs = common.makeDirs;
 var path = require("path");

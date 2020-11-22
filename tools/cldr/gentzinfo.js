@@ -23,9 +23,7 @@
 
 var fs = require('fs');
 var path = require('path');
-var unifile = require('./unifile.js');
 var common = require('./common.js');
-var UnicodeFile = unifile.UnicodeFile;
 var windowsZones = require("cldr-core/supplemental/windowsZones.json");
 var mkdirs = common.makeDirs;
 
