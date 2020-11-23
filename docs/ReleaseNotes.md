@@ -21,6 +21,7 @@ Bug Fixes:
     the wrong date components in some cases
     * Also affects date range formatting as well so that the year-month and the year alone
     ranges can use the stand-alone formats independently of each other
+* Added guard code to consider when the object is undefined in JSUtil.merge at least not to throw an error
 
 Build 011
 -------

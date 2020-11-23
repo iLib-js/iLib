@@ -721,6 +721,28 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
+
+    testMergeUndefined: function(test) {
+        test.expect(1);
+        var object1 = undefined,
+            object2 = {"a": 1, "b": 2};
+
+        var expected = {"a": 1, "b": 2};
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
+        test.done();
+    },
+
+    testMergeUndefined2: function(test) {
+        test.expect(1);
+        var object1 = {"a": 1, "b": 2},
+            object2 = undefined;
+
+        var expected = {"a": 1, "b": 2};
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
+        test.done();
+    },
     
     testIsEmptyFalse: function(test) {
         test.expect(1);
