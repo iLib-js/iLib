@@ -74,7 +74,7 @@ if (process.argv.length > 2) {
 console.log("gencoll - generate collation data.\n" +
     "Copyright © 2014, 2020 JEDLSoft\n");
 
-if (!fs.exists(toDir) {
+if (!fs.exists(toDir)) {
     console.error("Could not access target directory " + toDir);
     usage();
 }
