@@ -86,18 +86,19 @@ function calcLocalePath(language, script, region, filename) {
 var localeData = {};
 
 function getLocaleData(dirname, locale) {
-    try {
-        var language = undefined,script = undefined,region = undefined,spec = undefined;
-        if (locale !== undefined) {
-            language = locale.getLanguage(),
-            script = locale.getScript(),
-            region = locale.getRegion();
-            spec = locale.getSpec();
-        } else {
-            spec = "root";
-        }
+    var language = undefined,script = undefined,region = undefined,spec = undefined;
+    if (locale !== undefined) {
+        language = locale.getLanguage(),
+        script = locale.getScript(),
+        region = locale.getRegion();
+        spec = locale.getSpec();
+    } else {
+        spec = "root";
+    }
 
-        var filename = path.join(dirname, "numbers.json");
+    var filename = path.join(dirname, "numbers.json");
+
+    try {
         var data = require(filename);
         var numData = data.main[spec];
 
@@ -136,7 +137,7 @@ function getLocaleData(dirname, locale) {
 
         //console.log("dirname: " + dirname + "  data: ", numData );
     } catch (e) {
-        console.log("Error: Could not load file " + e );
+        console.log("Could not load file " + filename + " ... skipping.");
     }
 
     return numData;

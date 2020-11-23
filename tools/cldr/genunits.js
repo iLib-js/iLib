@@ -593,17 +593,21 @@ console.log("Loading locale data...");
 
 cldrCore.forEach(function(locale) {
     var pathName = path.join("cldr-units-full/main", locale, "units.json");
-    var data = require(pathName);
-    var localeData = {};
-    var l = new Locale(locale);
-
-    localeData = frameUnits(data, locale, localeData);
-
-    // now special case for the root
-    if (locale === "root") {
-        writeUnits(localeData);
-    } else {
+    try {
+        var data = require(pathName);
+        var localeData = {};
         var l = new Locale(locale);
-        writeUnits(localeData, l.getLanguage(), l.getScript(), l.getRegion());
+    
+        localeData = frameUnits(data, locale, localeData);
+    
+        // now special case for the root
+        if (locale === "root") {
+            writeUnits(localeData);
+        } else {
+            var l = new Locale(locale);
+            writeUnits(localeData, l.getLanguage(), l.getScript(), l.getRegion());
+        }
+    } catch (e) {
+        console.log("Could not find " + pathName + " ... skipping.");
     }
 });

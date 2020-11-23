@@ -73,77 +73,82 @@ console.log("Locales:" + JSON.stringify(locales));
 var localePatterns = {};
 
 locales.forEach(function(locale) {
-    var data = require(path.join("cldr-misc-full/main", locale, "listPatterns.json"));
-    var cldrPatterns = data.main[locale].listPatterns;
+    var filename = path.join("cldr-misc-full/main", locale, "listPatterns.json");
+    try {
+        var data = require(filename);
+        var cldrPatterns = data.main[locale].listPatterns;
 
-    var patterns = {
-        standard: {}
-    };
+        var patterns = {
+            standard: {}
+        };
 
-    if (cldrPatterns["listPattern-type-standard"]) {
-        patterns.standard.short = cldrPatterns["listPattern-type-standard"];
-        patterns.standard.medium = cldrPatterns["listPattern-type-standard"];
-        patterns.standard.long = cldrPatterns["listPattern-type-standard"];
-        patterns.standard.full = cldrPatterns["listPattern-type-standard"];
+        if (cldrPatterns["listPattern-type-standard"]) {
+            patterns.standard.short = cldrPatterns["listPattern-type-standard"];
+            patterns.standard.medium = cldrPatterns["listPattern-type-standard"];
+            patterns.standard.long = cldrPatterns["listPattern-type-standard"];
+            patterns.standard.full = cldrPatterns["listPattern-type-standard"];
 
-        if (cldrPatterns["listPattern-type-standard-short"]) {
-            patterns.standard.short = cldrPatterns["listPattern-type-standard-short"];
-            patterns.standard.medium = cldrPatterns["listPattern-type-standard-short"];
-        }
-
-        if (cldrPatterns["listPattern-type-standard-narrow"]) {
-            patterns.standard.short = cldrPatterns["listPattern-type-standard-narrow"];
-        }
-    }
-
-    if (cldrPatterns["listPattern-type-or"]) {
-        patterns.or = {};
-        patterns.or.short = cldrPatterns["listPattern-type-or"];
-        patterns.or.medium = cldrPatterns["listPattern-type-or"];
-        patterns.or.long = cldrPatterns["listPattern-type-or"];
-        patterns.or.full = cldrPatterns["listPattern-type-or"];
-
-        if (cldrPatterns["listPattern-type-or-short"]) {
-            patterns.or.short = cldrPatterns["listPattern-type-or-short"];
-            patterns.or.medium = cldrPatterns["listPattern-type-or-short"];
-        }
-
-        if (cldrPatterns["listPattern-type-or-narrow"]) {
-            patterns.or.short = cldrPatterns["listPattern-type-or-narrow"];
-        }
-    }
-
-    if (cldrPatterns["listPattern-type-unit"]) {
-        patterns.unit = {};
-        patterns.unit.short = cldrPatterns["listPattern-type-unit"];
-        patterns.unit.medium = cldrPatterns["listPattern-type-unit"];
-        patterns.unit.long = cldrPatterns["listPattern-type-unit"];
-        patterns.unit.full = cldrPatterns["listPattern-type-unit"];
-
-        if (cldrPatterns["listPattern-type-unit-short"]) {
-            patterns.unit.short = cldrPatterns["listPattern-type-unit-short"];
-            patterns.unit.medium = cldrPatterns["listPattern-type-unit-short"];
-        }
-        if (cldrPatterns["listPattern-type-unit-narrow"]) {
-            patterns.unit.short = cldrPatterns["listPattern-type-unit-narrow"];
-        }
-    }
-
-    console.log(locale + "...");
-
-    var l = new Locale(locale);
-    var position = localePatterns;
-
-    [l.getLanguage(), l.getScript(), l.getRegion()].forEach(function(prop) {
-        if (prop) {
-            if (!position[prop]) {
-                position[prop] = {};
+            if (cldrPatterns["listPattern-type-standard-short"]) {
+                patterns.standard.short = cldrPatterns["listPattern-type-standard-short"];
+                patterns.standard.medium = cldrPatterns["listPattern-type-standard-short"];
             }
-            position = position[prop];
-        }
-    });
 
-    position.data = patterns;
+            if (cldrPatterns["listPattern-type-standard-narrow"]) {
+                patterns.standard.short = cldrPatterns["listPattern-type-standard-narrow"];
+            }
+        }
+
+        if (cldrPatterns["listPattern-type-or"]) {
+            patterns.or = {};
+            patterns.or.short = cldrPatterns["listPattern-type-or"];
+            patterns.or.medium = cldrPatterns["listPattern-type-or"];
+            patterns.or.long = cldrPatterns["listPattern-type-or"];
+            patterns.or.full = cldrPatterns["listPattern-type-or"];
+
+            if (cldrPatterns["listPattern-type-or-short"]) {
+                patterns.or.short = cldrPatterns["listPattern-type-or-short"];
+                patterns.or.medium = cldrPatterns["listPattern-type-or-short"];
+            }
+
+            if (cldrPatterns["listPattern-type-or-narrow"]) {
+                patterns.or.short = cldrPatterns["listPattern-type-or-narrow"];
+            }
+        }
+
+        if (cldrPatterns["listPattern-type-unit"]) {
+            patterns.unit = {};
+            patterns.unit.short = cldrPatterns["listPattern-type-unit"];
+            patterns.unit.medium = cldrPatterns["listPattern-type-unit"];
+            patterns.unit.long = cldrPatterns["listPattern-type-unit"];
+            patterns.unit.full = cldrPatterns["listPattern-type-unit"];
+
+            if (cldrPatterns["listPattern-type-unit-short"]) {
+                patterns.unit.short = cldrPatterns["listPattern-type-unit-short"];
+                patterns.unit.medium = cldrPatterns["listPattern-type-unit-short"];
+            }
+            if (cldrPatterns["listPattern-type-unit-narrow"]) {
+                patterns.unit.short = cldrPatterns["listPattern-type-unit-narrow"];
+            }
+        }
+
+        console.log(locale + "...");
+
+        var l = new Locale(locale);
+        var position = localePatterns;
+
+        [l.getLanguage(), l.getScript(), l.getRegion()].forEach(function(prop) {
+            if (prop) {
+                if (!position[prop]) {
+                    position[prop] = {};
+                }
+                position = position[prop];
+            }
+        });
+
+        position.data = patterns;
+    } catch (e) {
+        console.log("Could not find file " + filename + " ... skipping.");
+    }
 });
 
 console.log("\n\nMerging formats forward ...");
