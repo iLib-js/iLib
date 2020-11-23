@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-CLDR_VERSION=36.0.0
+CLDR_VERSION=38.0.0
 UCD_VERSION=13.0.0
 ISO_VERSION=2.4.0
 
