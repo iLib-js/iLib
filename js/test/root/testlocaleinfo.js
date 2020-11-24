@@ -7258,7 +7258,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ne-IN");
         test.ok(info !== null);
     
-        test.equal(info.getSecondaryGroupingDigits(), 0);
+        test.equal(info.getSecondaryGroupingDigits(), 2);
         test.done();
     },
     

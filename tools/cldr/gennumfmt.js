@@ -85,15 +85,15 @@ function calcLocalePath(language, script, region, filename) {
 
 var localeData = {};
 
-function getLocaleData(dirname, locale) {
-    var language = undefined,script = undefined,region = undefined,spec = undefined;
+function getLocaleData(dirname, locale, spec) {
+    var language = undefined,
+        script = undefined,
+        region = undefined;
+
     if (locale !== undefined) {
         language = locale.getLanguage(),
         script = locale.getScript(),
         region = locale.getRegion();
-        spec = locale.getSpec();
-    } else {
-        spec = "root";
     }
 
     var filename = path.join(dirname, "numbers.json");
@@ -403,11 +403,12 @@ list.forEach(function(loc) {
 
     console.log(loc);
 
-    var sourceDir = path.join("cldr-numbers-full/main", loc);
+    var spec = (loc === "ku") ? "ckb" : loc;
+    var sourceDir = path.join("cldr-numbers-full/main", spec);
 
     if (loc === "root" || typeof (locale.getVariant()) === 'undefined') {
         // special case because "root" is not a valid locale specifier
-        getLocaleData(sourceDir, (loc === "root") ? undefined : locale);
+        getLocaleData(sourceDir, (loc === "root") ? undefined : locale, spec);
     }
 });
 
