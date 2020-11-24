@@ -189,94 +189,104 @@ locales.forEach(function (file) {
     if (region) localeComponents.push(region);
 
     var sourceDir = path.join("cldr-dates-full/main", file);
-
-    if (language === "fa") {
-        // add the settings for the persian calendar as well
-        cal = require(path.join("cldr-cal-persian-full/main", file, "ca-persian.json"));
+    var filename = path.join(sourceDir, "ca-gregorian.json");
+    try {
+        if (language === "fa") {
+            // add the settings for the persian calendar as well
+            filename = path.join("cldr-cal-persian-full/main", file, "ca-persian.json");
+            cal = require(filename);
+            newFormats = aux.createDateFormats(language, script, region, cal.main[file].dates.calendars);
+            // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
+            group = aux.getFormatGroup(dateFormats, localeComponents);
+            group.data = merge(group.data || {}, newFormats);
+    
+            newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language, script);
+            // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
+            group = aux.getFormatGroup(systemResources, localeComponents);
+            group.data = merge(group.data || {}, newFormats);
+    
+        } else if (language === "am") {
+            // add the settings for the ethiopic calendar as well
+            filename = path.join("cldr-cal-ethiopic-full/main", file, "ca-ethiopic.json");
+            cal = require(filename);
+            newFormats = aux.createDateFormats(language, script, region, cal.main[file].dates.calendars);
+            // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
+            group = aux.getFormatGroup(dateFormats, localeComponents);
+            group.data = merge(group.data || {}, newFormats);
+    
+            newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language, script);
+            // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
+            var group = aux.getFormatGroup(systemResources, localeComponents);
+            group.data = merge(group.data || {}, newFormats);
+        } else if (language === "th") {
+            // format is the same as gregorian, so load and rename the gregorian settings
+            cal = require(filename);
+            var cals = cal.main[file].dates.calendars;
+            cals.thaisolar = cals.gregorian;
+            // console.log("cals is " + JSON.stringify(cals, undefined, 4) );
+            newFormats = aux.createDateFormats(language, script, region, cals);
+    
+            group = aux.getFormatGroup(dateFormats, localeComponents);
+            group.data = merge(group.data || {}, newFormats);
+    
+            newFormats = aux.createSystemResources(cals, language, script);
+            // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
+            group = aux.getFormatGroup(systemResources, localeComponents);
+            group.data = merge(group.data || {}, newFormats);
+        }
+    
+        // do regular gregorian for all locales
+        filename = path.join(sourceDir, "ca-gregorian.json");
+        cal = require(filename);
         newFormats = aux.createDateFormats(language, script, region, cal.main[file].dates.calendars);
-        // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
+        //console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(dateFormats, localeComponents);
         group.data = merge(group.data || {}, newFormats);
-
+    
         newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language, script);
-        // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
+        //console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(systemResources, localeComponents);
         group.data = merge(group.data || {}, newFormats);
-
-    } else if (language === "am") {
-        // add the settings for the ethiopic calendar as well
-        cal = require(path.join("cldr-cal-ethiopic-full/main", file, "ca-ethiopic.json"));
-        newFormats = aux.createDateFormats(language, script, region, cal.main[file].dates.calendars);
-        // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
-        group = aux.getFormatGroup(dateFormats, localeComponents);
-        group.data = merge(group.data || {}, newFormats);
-
-        newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language, script);
-        // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
-        var group = aux.getFormatGroup(systemResources, localeComponents);
-        group.data = merge(group.data || {}, newFormats);
-    } else if (language === "th") {
-        // format is the same as gregorian, so load and rename the gregorian settings
-        cal = require(path.join(sourceDir, "ca-gregorian.json"));
-        var cals = cal.main[file].dates.calendars;
-        cals.thaisolar = cals.gregorian;
-        // console.log("cals is " + JSON.stringify(cals, undefined, 4) );
-        newFormats = aux.createDateFormats(language, script, region, cals);
-
-        group = aux.getFormatGroup(dateFormats, localeComponents);
-        group.data = merge(group.data || {}, newFormats);
-
-        newFormats = aux.createSystemResources(cals, language, script);
-        // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
+    
+        // date/time duration.
+        filename = path.join("cldr-units-full/main", locale.toString(), "units.json")
+        units = require(filename);
+        newFormats = aux.createDurationResources(units.main[file].units, language, script);
+        //console.log("Duration data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(systemResources, localeComponents);
         group.data = merge(group.data || {}, newFormats);
-    }
-
-    // do regular gregorian for all locales
-    cal = require(path.join(sourceDir, "ca-gregorian.json"));
-    newFormats = aux.createDateFormats(language, script, region, cal.main[file].dates.calendars);
-    //console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
-    group = aux.getFormatGroup(dateFormats, localeComponents);
-    group.data = merge(group.data || {}, newFormats);
-
-    newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language, script);
-    //console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
-    group = aux.getFormatGroup(systemResources, localeComponents);
-    group.data = merge(group.data || {}, newFormats);
-
-    // date/time duration.
-    units = require(path.join("cldr-units-full/main", locale.toString(), "units.json"));
-    newFormats = aux.createDurationResources(units.main[file].units, language, script);
-    //console.log("Duration data is " + JSON.stringify(newFormats, undefined, 4) );
-    group = aux.getFormatGroup(systemResources, localeComponents);
-    group.data = merge(group.data || {}, newFormats);
-
-    // relative time format
-    dateFields = require(path.join(sourceDir, "dateFields.json"));
-    newFormats = aux.createRelativeFormatResources(dateFields.main[file].dates.fields, language, script);
-    //console.log("Relative format data is " + JSON.stringify(newFormats, undefined, 4) );
-    group = aux.getFormatGroup(systemResources, localeComponents);
-    group.data = merge(group.data || {}, newFormats);
-
-    // separator
-    seperator = require(path.join("cldr-misc-full/main", locale.toString(), "listPatterns.json"));
-    newFormats = aux.createSeperatorResources(seperator.main[file].listPatterns, language);
-    //console.log("listPattern data is " + JSON.stringify(newFormats, undefined, 4) );
-    group = aux.getFormatGroup(systemResources, localeComponents);
-    group.data = merge(group.data || {}, newFormats);
-
-    if (hardCodeData.hasOwnProperty(language)) {
-        group.data = merge(group.data || {}, hardCodeData[language]);
-    }
-
-    // day periods
-    var periods = dayPeriods.supplemental.dayPeriodRuleSet;
-    newFormats = aux.createDayPeriods(periods, cal.main[file].dates.calendars, language);
-    if (newFormats) {
-        group = aux.getFormatGroup(dateFormats, localeComponents);
-        group.data = merge(group.data || {}, newFormats.periods);
+    
+        // relative time format
+        filename = path.join(sourceDir, "dateFields.json");
+        dateFields = require(filename);
+        newFormats = aux.createRelativeFormatResources(dateFields.main[file].dates.fields, language, script);
+        //console.log("Relative format data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(systemResources, localeComponents);
-        group.data = merge(group.data || {}, newFormats.sysres);
+        group.data = merge(group.data || {}, newFormats);
+    
+        // separator
+        filename = path.join("cldr-misc-full/main", locale.toString(), "listPatterns.json");
+        seperator = require(filename);
+        newFormats = aux.createSeperatorResources(seperator.main[file].listPatterns, language);
+        //console.log("listPattern data is " + JSON.stringify(newFormats, undefined, 4) );
+        group = aux.getFormatGroup(systemResources, localeComponents);
+        group.data = merge(group.data || {}, newFormats);
+    
+        if (hardCodeData.hasOwnProperty(language)) {
+            group.data = merge(group.data || {}, hardCodeData[language]);
+        }
+    
+        // day periods
+        var periods = dayPeriods.supplemental.dayPeriodRuleSet;
+        newFormats = aux.createDayPeriods(periods, cal.main[file].dates.calendars, language);
+        if (newFormats) {
+            group = aux.getFormatGroup(dateFormats, localeComponents);
+            group.data = merge(group.data || {}, newFormats.periods);
+            group = aux.getFormatGroup(systemResources, localeComponents);
+            group.data = merge(group.data || {}, newFormats.sysres);
+        }
+    } catch (e) {
+        console.log("Could not find the file " + filename + " ... skipping.");
     }
 });
 

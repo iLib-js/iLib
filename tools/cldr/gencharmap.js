@@ -1,5 +1,5 @@
 /*
- * genccharmap.js - ilib tool to generate the charset mappings from the Unicode 
+ * gencharmap.js - ilib tool to generate the charset mappings from the Unicode
  * data files
  * 
  * Copyright © 2014, 2020 JEDLSoft
@@ -69,7 +69,7 @@ if (process.argv.length > 5) {
 toDir = path.join(toDir, "charmaps");
 
 console.log("gencharmap - generate charmap mapping data.\n" +
-        "Copyright (c) 2014 JEDLSoft\n");
+        "Copyright © 2014, 2020 JEDLSoft\n");
 
 if (!fs.existsSync(charmapDir)) {
     console.error("Could not access dir " + charmapDir);

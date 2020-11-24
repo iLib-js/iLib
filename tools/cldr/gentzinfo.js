@@ -71,7 +71,7 @@ if (process.argv.length > 3) {
 }
 
 console.log("gentzinfo - generate time zone info data.\n" +
-        "Copyright (c) 2013, 2018 JEDLSoft\n");
+        "Copyright © 2013-2015, 2018, 2020 JEDLSoft\n");
 console.log("To dir: " + toDir );
 
 if (!fs.existsSync(tzDataDir)) {
@@ -200,11 +200,7 @@ if (!fs.existsSync(path.join(toDir, "zoneinfo"))) {
 for (var zone in timezones) {
     var filepath = path.join(toDir, "zoneinfo", zone + ".json");
     console.log("Writing out zone info file " + filepath );
-    fs.writeFile(filepath, JSON.stringify(timezones[zone], true, 4), function (err) {
-        if (err) {
-            throw err;
-        }
-    });
+    fs.writeFileSync(filepath, JSON.stringify(timezones[zone], true, 4), "utf-8");
 }
 
 var filepath = path.join(toDir, "zoneinfo/zonetab.json");
@@ -212,11 +208,7 @@ console.log("Writing out zone tab file " + filepath );
 for (var country in countryToZones) {
     countryToZones[country].sort();
 }
-fs.writeFile(filepath, JSON.stringify(countryToZones, true, 4), function (err) {
-    if (err) {
-        throw err;
-    }
-});
+fs.writeFileSync(filepath, JSON.stringify(countryToZones, true, 4), "utf-8");
 
 // generate timezone.jf
 var rootTimeZoneID = {"timezone": "Etc/UTC"};

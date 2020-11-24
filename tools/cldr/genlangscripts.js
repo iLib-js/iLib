@@ -21,9 +21,7 @@
  */
 var fs = require('fs');
 
-var unifile = require('./unifile.js');
 var common = require('./common.js');
-var UnicodeFile = unifile.UnicodeFile;
 var coelesce = common.coelesce;
 
 function usage() {

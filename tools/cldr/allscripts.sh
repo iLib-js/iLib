@@ -18,15 +18,18 @@
 # limitations under the License.
 #
 
-CLDR_VERSION=36.0.0
+CLDR_VERSION=37.0.0
 UCD_VERSION=13.0.0
+ISO_VERSION=2.4.0
 
 # get the latest full data
 pushd ../..
-npm install cldr-core@${CLDR_VERSION} cldr-dates-full@${CLDR_VERSION} cldr-cal-ethiopic-full@${CLDR_VERSION} cldr-cal-persian-full@${CLDR_VERSION} cldr-localenames-full@${CLDR_VERSION} cldr-misc-full@${CLDR_VERSION} cldr-numbers-full@${CLDR_VERSION} cldr-units-full@${CLDR_VERSION}
+npm install cldr-core@${CLDR_VERSION} cldr-dates-full@${CLDR_VERSION} cldr-cal-ethiopic-full@${CLDR_VERSION} cldr-cal-persian-full@${CLDR_VERSION} cldr-localenames-full@${CLDR_VERSION} cldr-misc-full@${CLDR_VERSION} cldr-numbers-full@${CLDR_VERSION} cldr-units-full@${CLDR_VERSION} ucd-full@${UCD_VERSION} iso-15924@${ISO_VERSION}
 popd
 
 TARGET=../../js/data/locale
+TESTTARGET=../../js/test/strings-ext
+
 #TARGET=tmp
 
 # remove all previously generated data so that we can make sure
@@ -83,7 +86,7 @@ node genclockprefs.js $TARGET
 # for now so that we stay on 33
 # node gencountrynames.js ../../../cldr/${CLDR_VERSION} $TARGET
 # node reversectry.js $TARGET
-node genctype.js ../../../ucd/${UCD_VERSION} $TARGET
+node genctype.js $TARGET
 node gencurrencies.js $TARGET
 node gendatefmts2.js $TARGET
 node gendelimiters.js $TARGET
@@ -100,3 +103,6 @@ node genpapersizes.js $TARGET
 # node genplurals.js $TARGET   plurals need a rework before this can be uncommented
 node genunits.js $TARGET
 node genweekdata.js $TARGET
+node gennorm.js $TARGET
+node gennormtest.js $TESTTARGET
+node genscripts.js $TARGET
