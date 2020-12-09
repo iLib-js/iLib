@@ -51,7 +51,7 @@ process.argv.forEach(function (val, index, array) {
 localeDirName = process.argv[2] || "tmp";
 
 console.log("genunits - tool to generate the json data about unit formats from the CLDR data.\n" +
-        "Copyright (c) 2013, 2018 JEDLSoft");
+        "Copyright © 2013, 2018, 2020 JEDLSoft");
 
 console.log("locale dir: " + localeDirName );
 
@@ -118,6 +118,34 @@ function isAsianLanguage(locale) {
     return l.getLanguage() === "ja" || l.getLanguage() === "zh" || l.getLanguage() === "th";
 }
 
+// filter out these relative units
+var filter = {
+    "10p-1": true,
+    "10p-2": true,
+    "10p-3": true,
+    "10p-6": true,
+    "10p-9": true,
+    "10p-12": true,
+    "10p-15": true,
+    "10p-18": true,
+    "10p-21": true,
+    "10p-24": true,
+    "10p1": true,
+    "10p2": true,
+    "10p3": true,
+    "10p6": true,
+    "10p9": true,
+    "10p12": true,
+    "10p15": true,
+    "10p18": true,
+    "10p21": true,
+    "10p24": true,
+    "per": true,
+    "power2": true,
+    "power3": true,
+    "times": true
+};
+
 function frameUnits(data, locale, localeData) {
     if (!localeData["unitfmt"]) {
         localeData["unitfmt"] = {};
@@ -127,7 +155,7 @@ function frameUnits(data, locale, localeData) {
             localeData["unitfmt"][size] = {};
         }
         for (var ufl in data["main"][locale]["units"][size]) {
-            if (ufl !== "per") {
+            if (!filter[ufl]) {
                 var index = ufl.indexOf("-");
                 var dispname = ufl.substring(index+1);
                 localeData["unitfmt"][size][dispname] = frameUnitsString(data["main"][locale]["units"][size][ufl]);
