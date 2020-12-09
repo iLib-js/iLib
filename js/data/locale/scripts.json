@@ -201,7 +201,10 @@
     "Chrs": {
         "nb": 109,
         "nm": "Chorasmian",
-        "lid": "Chorasmian"
+        "lid": "Chorasmian",
+        "rtl": true,
+        "ime": false,
+        "casing": false
     },
     "Cirt": {
         "nb": 291,
@@ -253,7 +256,10 @@
     "Diak": {
         "nb": 342,
         "nm": "Dives Akuru",
-        "lid": "Dives_Akuru"
+        "lid": "Dives_Akuru",
+        "rtl": false,
+        "ime": true,
+        "casing": false
     },
     "Dogr": {
         "nb": 328,
@@ -597,7 +603,10 @@
     "Kits": {
         "nb": 288,
         "nm": "Khitan small script",
-        "lid": "Khitan_Small_Script"
+        "lid": "Khitan_Small_Script",
+        "rtl": false,
+        "ime": true,
+        "casing": false
     },
     "Knda": {
         "nb": 345,
@@ -1363,6 +1372,11 @@
         "ime": false,
         "casing": false
     },
+    "Toto": {
+        "nb": 294,
+        "nm": "Toto",
+        "lid": "Toto"
+    },
     "Ugar": {
         "nb": 40,
         "nm": "Ugaritic",
@@ -1424,7 +1438,10 @@
     "Yezi": {
         "nb": 192,
         "nm": "Yezidi",
-        "lid": "Yezidi"
+        "lid": "Yezidi",
+        "rtl": true,
+        "ime": false,
+        "casing": false
     },
     "Yiii": {
         "nb": 460,
