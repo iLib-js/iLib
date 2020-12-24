@@ -11,6 +11,7 @@ New Features:
     * day periods use the new "B" format specifier in date format templates
     * updated a few locales that regularly use day periods, such as my-MM
     * date ranges were also updated to include day periods
+* Updated time zone data to IANA 2020e
 
 Bug Fixes:
 * Updated date formats to use proper stand-alone month names independently
