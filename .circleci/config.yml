@@ -17,7 +17,7 @@ jobs:
           command: |
             #sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
             #sudo apt update
-            sudo apt install -y build-essential libfontconfig1 mesa-common-dev qt55 qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
+            sudo apt install -y build-essential libfontconfig1 mesa-common-dev qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
 
       - run:
           name: Set up node packages
@@ -26,7 +26,7 @@ jobs:
             npm install
 
       - run:
-          name: Set up environment
+          name: Set up environment vars
           command: |
             export PATH=$PWD/node_modules/.bin:$PATH
             export NODE_OPTIONS="--max-old-space-size=3072"
