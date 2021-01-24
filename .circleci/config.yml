@@ -3,6 +3,11 @@ jobs:
   test:
     docker:
       - image: cimg/openjdk:8.0-node
+
+    environment:
+      NODE_OPTIONS: "--max-old-space-size=3072"
+      TZ: "America/Los_Angeles"
+
     steps:
       - checkout
 
@@ -26,20 +31,20 @@ jobs:
             npm install
 
       - run:
-          name: Set up environment vars
+          name: Check environment
           command: |
-            export PATH=$PWD/node_modules/.bin:$PATH
-            export NODE_OPTIONS="--max-old-space-size=3072"
-            export TZ=America/Los_Angeles
             echo "node version: " $(node -v)
             echo "npm version: " $(npm -v)
             echo "java version: " $(java -version)
             echo "ant version: " $(ant -version)
             echo "qmake version: " $(qmake --version)
+            echo "TZ is $TZ"
+            echo "NODE_OPTIONS is $NODE_OPTIONS"
 
       - run:
           name: Running all unit tests
           command: |
+            export PATH="$PWD/node_modules/.bin:$PATH"
             ant clean test.travis
 
 workflows:
