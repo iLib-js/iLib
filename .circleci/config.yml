@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: cimg/openjdk:1.8-node
+      - image: cimg/openjdk:8.0-node
     steps:
       - checkout
       - run:
@@ -11,11 +11,13 @@ jobs:
             ls -la
             rm -rf node_modules package-lock.json
             npm install
+            echo "node version: " $(node -v)
+            echo "npm version: " $(npm -v)
+            echo "java version: " $(java --version)
+            echo "ant version: " $(ant --version)
       - run:
           name: Running all unit tests
           command: |
-            echo "node version: " $(node -v)
-            echo "npm version: " $(npm -v)
             ant test
 
 workflows:
