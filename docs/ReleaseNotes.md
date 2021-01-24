@@ -11,6 +11,9 @@ New Features:
     * day periods use the new "B" format specifier in date format templates
     * updated a few locales that regularly use day periods, such as my-MM
     * date ranges were also updated to include day periods
+* Update data to Unicode Character Database (UCD) version 13.0 and the Common Locale Data Repository (CLDR)
+  version 37.0.0
+    * includes corresponding fixes to the unit tests
 * Updated time zone data to IANA 2020e
 
 Bug Fixes:

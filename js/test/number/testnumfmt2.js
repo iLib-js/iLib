@@ -3932,7 +3932,7 @@ module.exports.testnumfmt2 = {
         var fmt = new NumFmt({locale:"ne-NP", type:"standard", useNative:false});
         test.equal(li.getDecimalSeparator(), ".");
         test.equal(li.getGroupingSeparator(), ",");
-        test.equal(fmt.format(123456789.45), "123,456,789.45");
+        test.equal(fmt.format(123456789.45), "12,34,56,789.45");
 
         var pctfmt = new NumFmt({locale:"ne-NP", type:"percentage", useNative:false});
         test.equal(li.getPercentageFormat(), "{n}%");

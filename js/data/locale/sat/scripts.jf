@@ -1,9 +1,9 @@
 {
     "scripts": [
-        "Latn",
+        "Olck",
         "Beng",
         "Deva",
-        "Olck",
+        "Latn",
         "Orya"
     ],
     "generated": true
