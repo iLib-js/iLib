@@ -18,3 +18,8 @@ jobs:
             echo "npm version: " $(npm -v)
             ant test
 
+workflows:
+  version: 2
+  test-all-node-versions:
+    jobs:
+      - test
