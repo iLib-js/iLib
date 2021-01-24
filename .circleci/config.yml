@@ -8,7 +8,9 @@ jobs:
 
       - run:
           name: Setup
-          command: sudo apt-get install -y ant
+          command: |
+            sudo apt update
+            sudo apt install -y ant
 
       - run:
           name: Setup
@@ -17,8 +19,8 @@ jobs:
             npm install
             echo "node version: " $(node -v)
             echo "npm version: " $(npm -v)
-            echo "java version: " $(java --version)
-            echo "ant version: " $(ant --version)
+            echo "java version: " $(java -version)
+            echo "ant version: " $(ant -version)
 
       - run:
           name: Running all unit tests
