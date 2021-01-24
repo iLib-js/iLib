@@ -35,6 +35,7 @@ jobs:
             echo "npm version: " $(npm -v)
             echo "java version: " $(java -version)
             echo "ant version: " $(ant -version)
+            echo "qmake version: " $(qmake --version)
 
       - run:
           name: Running all unit tests
