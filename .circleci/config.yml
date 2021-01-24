@@ -7,16 +7,30 @@ jobs:
       - checkout
 
       - run:
-          name: Setup
+          name: Set up ant
           command: |
             sudo apt update
             sudo apt install -y ant
 
       - run:
-          name: Setup
+          name: Set up QT
+          command: |
+            sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
+            sudo apt update
+            sudo apt install -y 'qt55[QTPACKAGE]' qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
+
+      - run:
+          name: Set up node packages
           command: |
             rm -rf node_modules package-lock.json
             npm install
+
+      - run:
+          name: Set up environment
+          command: |
+            export PATH=$PWD/node_modules/.bin:$PATH
+            export NODE_OPTIONS="--max-old-space-size=3072"
+            export TZ=America/Los_Angeles
             echo "node version: " $(node -v)
             echo "npm version: " $(npm -v)
             echo "java version: " $(java -version)
@@ -25,7 +39,7 @@ jobs:
       - run:
           name: Running all unit tests
           command: |
-            ant test
+            ant clean test.travis
 
 workflows:
   version: 2
