@@ -2,10 +2,14 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: circleci/node:14.0
-      - image: circleci/java:8-jdk
+      - image: circleci/openjdk:8.0-node
     steps:
       - checkout
+
+      - run:
+          name: Setup
+          command: sudo apt-get install -y ant
+
       - run:
           name: Setup
           command: |
@@ -15,6 +19,7 @@ jobs:
             echo "npm version: " $(npm -v)
             echo "java version: " $(java --version)
             echo "ant version: " $(ant --version)
+
       - run:
           name: Running all unit tests
           command: |
