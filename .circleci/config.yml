@@ -15,9 +15,9 @@ jobs:
       - run:
           name: Set up QT
           command: |
-            sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
-            sudo apt update
-            sudo apt install -y 'qt55[QTPACKAGE]' qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
+            #sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
+            #sudo apt update
+            sudo apt install -y build-essential libfontconfig1 mesa-common-dev 'qt55[QTPACKAGE]' qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
 
       - run:
           name: Set up node packages
