@@ -2,13 +2,13 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: cimg/openjdk:8.0-node
+      - image: circleci/node:14.0
+      - image: circleci/java:8-jdk
     steps:
       - checkout
       - run:
           name: Setup
           command: |
-            ls -la
             rm -rf node_modules package-lock.json
             npm install
             echo "node version: " $(node -v)
