@@ -1,147 +1,54 @@
 version: 2.1
 jobs:
-  test6:
+  test:
     docker:
-      - image: circleci/node:6-browsers
+      - image: cimg/openjdk:8.0-node
+
+    environment:
+      NODE_OPTIONS: "--max-old-space-size=3072"
+      TZ: "America/Los_Angeles"
+
     steps:
       - checkout
+
       - run:
-          name: Setup
+          name: Set up ant
           command: |
-            ls -la
+            sudo apt update
+            sudo apt install -y ant
+
+      - run:
+          name: Set up QT
+          command: |
+            #sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
+            #sudo apt update
+            sudo apt install -y build-essential libfontconfig1 mesa-common-dev qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
+
+      - run:
+          name: Set up node packages
+          command: |
             rm -rf node_modules package-lock.json
             npm install
-            NODE=$(dirname $(dirname $(which node)))
-            sed "s@XXXX@$NODE@" build.properties.travis > build.properties
+
+      - run:
+          name: Check environment
+          command: |
+            echo "node version: " $(node -v)
+            echo "npm version: " $(npm -v)
+            echo "java version: " $(java -version)
+            echo "ant version: " $(ant -version)
+            echo "qmake version: " $(qmake --version)
+            echo "TZ is $TZ"
+            echo "NODE_OPTIONS is $NODE_OPTIONS"
+
       - run:
           name: Running all unit tests
           command: |
-            node -v
-            npm -v
-            npm run test
-  test8:
-    docker:
-      - image: circleci/node:8-browsers
-    steps:
-      - checkout
-      - run:
-          name: Setup
-          command: |
-            ls -la
-            rm -rf node_modules package-lock.json
-            npm install
-            NODE=$(dirname $(dirname $(which node)))
-            sed "s@XXXX@$NODE@" build.properties.travis > build.properties
-      - run:
-          name: Running all unit tests
-          command: |
-            node -v
-            npm -v
-            npm run test
-  test10:
-    docker:
-      - image: circleci/node:10-browsers
-    steps:
-      - checkout
-      - run:
-          name: Setup
-          command: |
-            ls -la
-            rm -rf node_modules package-lock.json
-            npm install
-            NODE=$(dirname $(dirname $(which node)))
-            sed "s@XXXX@$NODE@" build.properties.travis > build.properties
-      - run:
-          name: Running all unit tests
-          command: |
-            node -v
-            npm -v
-            npm run test
-  test12:
-    docker:
-      - image: circleci/node:12-browsers
-    steps:
-      - checkout
-      - run:
-          name: Setup
-          command: |
-            ls -la
-            rm -rf node_modules package-lock.json
-            npm install
-            NODE=$(dirname $(dirname $(which node)))
-            sed "s@XXXX@$NODE@" build.properties.travis > build.properties
-      - run:
-          name: Running all unit tests
-          command: |
-            node -v
-            npm -v
-            npm run test
-  test13:
-    docker:
-      - image: circleci/node:13-browsers
-    steps:
-      - checkout
-      - run:
-          name: Setup
-          command: |
-            ls -la
-            rm -rf node_modules package-lock.json
-            npm install
-            NODE=$(dirname $(dirname $(which node)))
-            sed "s@XXXX@$NODE@" build.properties.travis > build.properties
-      - run:
-          name: Running all unit tests
-          command: |
-            node -v
-            npm -v
-            npm run test
-  test14:
-    docker:
-      - image: circleci/node:14-browsers
-    steps:
-      - checkout
-      - run:
-          name: Setup
-          command: |
-            ls -la
-            rm -rf node_modules package-lock.json
-            npm install
-            NODE=$(dirname $(dirname $(which node)))
-            sed "s@XXXX@$NODE@" build.properties.travis > build.properties
-      - run:
-          name: Running all unit tests
-          command: |
-            node -v
-            npm -v
-            npm run test
-  testCurrent:
-    docker:
-      - image: circleci/node:current-browsers
-    steps:
-      - checkout
-      - run:
-          name: Setup
-          command: |
-            ls -la
-            rm -rf node_modules package-lock.json
-            npm install
-            NODE=$(dirname $(dirname $(which node)))
-            sed "s@XXXX@$NODE@" build.properties.travis > build.properties
-      - run:
-          name: Running all unit tests
-          command: |
-            node -v
-            npm -v
-            npm run test
+            export PATH="$PWD/node_modules/.bin:$PATH"
+            ant clean test.travis
 
 workflows:
   version: 2
   test-all-node-versions:
     jobs:
-      - test6
-      - test8
-      - test10
-      - test12
-      - test13
-      - test14
-      - testCurrent
+      - test
