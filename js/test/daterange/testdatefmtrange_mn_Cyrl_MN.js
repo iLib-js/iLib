@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 оны Арван нэгдүгээр сар – 2014 оны Нэгдүгээр сар');
+        test.equal(fmt.format(start, end), '2011 оны арван нэгдүгээр сар – 2014 оны нэгдүгээр сар');
         test.done();
     },
     testDateRngFmtMNRangeMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 оны Арван нэгдүгээр сар – 2014 оны Нэгдүгээр сар');
+        test.equal(fmt.format(start, end), '2011 оны арван нэгдүгээр сар – 2014 оны нэгдүгээр сар');
         test.done();
     },
     testDateRngFmtMNManyYearsFull: function(test) {

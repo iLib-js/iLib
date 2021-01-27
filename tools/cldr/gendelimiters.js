@@ -23,7 +23,7 @@
 var fs = require('fs');
 var path = require('path');
 var util = require('util');
-var cldr = require('cldr-data');
+var localeDirs = require('cldr-core/availableLocales.json').availableLocales.full;
 
 var common = require('./common');
 var merge = common.merge;
@@ -62,7 +62,6 @@ if (!fs.existsSync(localeDirName)) {
 }
 
 var language, region, script, files;
-var localeDirs = cldr.availableLocales;
 var localeData = {};
 
 console.log("Reading locale data into memory...");
@@ -133,7 +132,7 @@ function getLocaleData(dirname, locale) {
             spec = "root";
         }
 
-        var filename = path.join("cldr-data/main", dirname, "delimiters.json");
+        var filename = path.join("cldr-misc-full/main", dirname, "delimiters.json");
         var data = require(filename);
         var numData = data.main[spec].delimiters;
 

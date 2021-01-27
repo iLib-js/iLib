@@ -160,5 +160,13 @@
     "separatorMedium": " ",
     "finalSeparatorMedium": "နှင့် ",
     "separatorShort": " ",
-    "finalSeparatorShort": "နှင့် "
+    "finalSeparatorShort": "နှင့် ",
+    "B0": "သန်းခေါင်ယံ",
+    "B1": "နံနက်",
+    "B2": "နံနက်",
+    "B3": "မွန်းတည့်",
+    "B4": "နေ့လယ်",
+    "B5": "ညနေ",
+    "B6": "ညနေ",
+    "B7": "ည"
 }

@@ -23,26 +23,18 @@
  */
 
 var fs = require('fs');
-var uniData = require('./uniData.js');
-var unifile = require('./unifile.js');
 var common = require('./common.js');
 var iso15924 = require('iso-15924');
 
-var UnicodeData = uniData.UnicodeData;
-var CharacterInfo = uniData.CharacterInfo;
-var UnicodeFile = unifile.UnicodeFile;
 var charIterator = common.charIterator;
 var isMember = common.isMember;
 var coelesce = common.coelesce;
 
 function usage() {
-    console.log("Usage: gennorm [-h] UCD_dir [dataDir [codeDir]]\n" +
+    console.log("Usage: gennorm [-h] [dataDir [codeDir]]\n" +
             "Generate the normalization data.\n\n" +
             "-h or --help\n" +
             "  this help\n" +
-            "UCD_dir\n" +
-            "  path to the Unicode Character Database files and the ISO-15924-file.txt script\n" +
-            "  code definition file downloaded from the Unicode site and untarred/uncompressed.\n" +
             "dataDir\n" +
             "  directory to output the normalization data json files. Default: current_dir/locale.\n" +
             "codeDir\n" +
@@ -50,7 +42,6 @@ function usage() {
     process.exit(1);
 }
 
-var unicodeDirName;
 var toDir = "./locale";
 var codeDir = "./lib";
 
@@ -60,46 +51,24 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-if (process.argv.length < 3) {
+if (process.argv.length < 2) {
     console.error('Error: not enough arguments');
     usage();
 }
 
-unicodeDirName = process.argv[2];
-if (process.argv.length > 3) {
-    toDir = process.argv[3];
-    if (process.argv.length > 4) {
-        codeDir = process.argv[4];
+if (process.argv.length > 2) {
+    toDir = process.argv[2];
+    if (process.argv.length > 3) {
+        codeDir = process.argv[3];
     } else {
         codeDir = toDir;
     }
 }
 
 console.log("gennorm - generate normalization data.\n" +
-        "Copyright (c) 2012 JEDLSoft");
+        "Copyright (c) 2013-2018, 2020 JEDLSoft");
 
-if (!fs.existsSync(unicodeDirName)) {
-    console.error("Could not access UCD dir " + unicodeDirName);
-    usage();
-}
 
-var unicodeFileName = unicodeDirName + "/UnicodeData.txt", 
-    exclusionFileName = unicodeDirName + "/DerivedNormalizationProps.txt",
-    scriptNamesFileName = unicodeDirName + "/ISO-15924-file.txt",
-    scriptFileName = unicodeDirName + "/Scripts.txt";
-
-if (!fs.existsSync(unicodeFileName)) {
-    console.error("Could not find file " + unicodeFileName);
-    usage();
-}
-if (!fs.existsSync(exclusionFileName)) {
-    console.error("Could not find file " + exclusionFileName);
-    usage();
-}
-if (!fs.existsSync(scriptFileName)) {
-    console.error("Could not find file " + scriptFileName);
-    usage();
-}
 if (!fs.existsSync(toDir)) {
     mkdirs(toDir);
     if (!fs.existsSync(toDir)) {
@@ -149,37 +118,46 @@ function expand(ch, canon, compat) {
     return expansion;
 }
 
-var exclusionFile = new UnicodeFile({path: exclusionFileName});
-var len = exclusionFile.length();
-for (var i = 0; i < len; i++ ) {
-    var fields = exclusionFile.get(i);
-    if (fields[1].trim() === "Full_Composition_Exclusion") {
-        var range = fields[0].split(/\.\./);
-        compositionExclusions.push((range.length > 1) ? [parseInt(range[0], 16), parseInt(range[1], 16)] : parseInt(fields[0], 16));
+var ef = require("ucd-full/DerivedNormalizationProps.json");
+for (var i = 0; i < ef.DerivedNormalizationProps.length; i++ ) {
+    var entry = ef.DerivedNormalizationProps[i];
+    if (entry.property === "Full_Composition_Exclusion") {
+        var range = entry.range.map(function(element) {
+            return parseInt(element, 16);
+        });
+        compositionExclusions.push(range);
     }
 }
 //console.log("Full exclusion table is:\n" + JSON.stringify(compositionExclusions));
 
-var ud = new UnicodeData({path: unicodeFileName});
-len = ud.length();
-var row;
-for (var i = 0; i < len; i++ ) {
-    row = ud.get(i);
-    var c = row.getCharacter();
-    if (row.getDecompositionType() === 'canon') {
-        canonicalMappings[c] = row.getDecomposition();
-        if (!isMember(compositionExclusions, common.UTF16ToCodePoint(c))) {
-            canonicalComp[row.getDecomposition()] = c;
-        //} else {
-        //	console.log("Composition from " + common.UTF16ToCodePoint(c) + " to " + common.UTF16ToCodePoint(row.getDecomposition()) + " is on the exclusion list.");
+var ud = require("ucd-full/UnicodeData.json");
+
+for (var i = 0; i < ud.UnicodeData.length; i++ ) {
+    var entry = ud.UnicodeData[i];
+    var c = common.hexStringUTF16String(entry.codepoint);
+    var decomposition;
+    // the decomposition type is given in <angle brackets> at the beginning of the mapping.
+    // if there are no angle brackets, then this is a canonical mapping
+    if (entry.characterDecompositionMapping) {
+        decomposition = entry.characterDecompositionMapping;
+        if (decomposition.length && decomposition[0] === '<') {
+            decomposition = entry.characterDecompositionMapping.split(/\s+/g).slice(1).join(' ');
+            compatibilityMappings[c] = common.hexStringUTF16String(decomposition);
+        } else {
+            // decompositionType is "canonical"
+            decomposition = common.hexStringUTF16String(decomposition);
+            canonicalMappings[c] = decomposition;
+            if (!isMember(compositionExclusions, common.UTF16ToCodePoint(c))) {
+                canonicalComp[decomposition] = c;
+            //} else {
+            //	console.log("Composition from " + common.UTF16ToCodePoint(c) + " to " + common.UTF16ToCodePoint(entry.characterDecompositionMapping) + " is on the exclusion list.");
+            }
         }
-    } else {
-        compatibilityMappings[c] = row.getDecomposition();
     }
 
-    var temp = row.getCombiningClass();
+    var temp = entry.canonicalCombiningClass;
     if (temp > 0) {
-        combiningMappings[row.getCharacter()] = temp;
+        combiningMappings[c] = parseInt(temp);
     }
 }
 
@@ -189,23 +167,24 @@ iso15924.forEach(function(script) {
     fullToShortMap[(script.pva && script.pva.toLowerCase()) || script.name.toLowerCase()] = script.code;
 });
 
-var scriptsFile = new UnicodeFile({path: scriptFileName});
-var scriptName, rangeStart, rangeEnd;
+var scriptName;
 var ranges = [];
 var rangeToScript = [];
 
-for (var i = 0; i < scriptsFile.length(); i++) {
-    row = scriptsFile.get(i);
-    scriptName = row[1].trim();
-    scriptName = fullToShortMap[scriptName.toLowerCase()] || scriptName;
-    rangeStart = parseInt(row[0].match(/^[A-F0-9]+/)[0],16);
-    rangeEnd = row[0].match(/\.\.[A-F0-9]+/);
+var sf = require("ucd-full/Scripts.json");
 
-    if (rangeEnd && rangeEnd.length > 0) {
-        rangeEnd = parseInt(rangeEnd[0].substring(2), 16);
-        ranges.push([rangeStart, rangeEnd, scriptName]);
+for (var i = 0; i < sf.Scripts.length; i++) {
+    var entry = sf.Scripts[i];
+    scriptName = entry.script;
+    scriptName = fullToShortMap[scriptName.toLowerCase()] || scriptName;
+    range = entry.range.map(function(element) {
+        return parseInt(element, 16);
+    });
+
+    if (range.length > 1) {
+        ranges.push([range[0], range[1], scriptName]);
     } else {
-        ranges.push([rangeStart, rangeStart, scriptName]);
+        ranges.push([range[0], range[0], scriptName]);
     }
 }
 
@@ -230,7 +209,7 @@ function genCode(script, form) {
         "/*\n" +
         " * " + script + ".js - include file for normalization data for a particular script\n" +
         " * \n" +
-        " * Copyright © 2013 - 2018, JEDLSoft\n" +
+        " * Copyright © 2013 - 2018, 2020 JEDLSoft\n" +
         " *\n" +
         " * Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
         " * you may not use this file except in compliance with the License.\n" +
@@ -292,7 +271,7 @@ var nfkdByScript = {};
 // decompositions recursively here to pre-calculate the full decomposition 
 // before writing out the files.
 
-for (mapping in canonicalMappings) {
+for (var mapping in canonicalMappings) {
     if (mapping && canonicalMappings[mapping]) {
         canonicalDecomp[mapping] = expand(mapping, canonicalMappings);
 

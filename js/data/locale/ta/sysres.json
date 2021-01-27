@@ -160,5 +160,16 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": " மற்றும் ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "நள்ளிரவு",
+    "B1": "முற்பகல்",
+    "B2": "அதிகாலை",
+    "B3": "காலை",
+    "B4": "நண்பகல்",
+    "B5": "மதியம்",
+    "B6": "பிற்பகல்",
+    "B7": "பிற்பகல்",
+    "B8": "மாலை",
+    "B9": "அந்தி மாலை",
+    "B10": "இரவு"
 }

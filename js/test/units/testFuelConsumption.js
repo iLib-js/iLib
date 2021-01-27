@@ -230,7 +230,7 @@ module.exports.testFuelConsumption = {
         test.expect(1);
         var measures = FuelConsumptionUnit.getMeasures();
         var expected = [
-            "liter-per-100kilometers",
+            "liter-per-100-kilometer",
             "mile-per-gallon",
             "mile-per-gallon-imperial",
             "kilometer-per-liter",

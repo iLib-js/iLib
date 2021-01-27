@@ -325,6 +325,12 @@ DateRngFmt.prototype = {
         startRd = start.getRataDie();
         endRd = end.getRataDie();
 
+        formats = this.dateFmt.formats.date;
+        // these are not stand-alone templates. We add stand-alone below if necessary for the locale and the format.
+        yearTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "y", this.length) || "yyyy");
+        monthTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "m", this.length) || "MM");
+        dayTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "d", this.length) || "dd");
+
         //
         // legend:
         // c00 - difference is less than 3 days. Year, month, and date are same, but time is different
@@ -364,25 +370,29 @@ DateRngFmt.prototype = {
             }
         } else if (endRd - startRd < 3650) {
             fmt = new IString(this.dateFmt._getFormat(this.dateFmt.formats.range, "c20", this.length));
-            isStandAlone = true;
+            // need to check for month/year stand-alone formats here
+            var tmp = this.dateFmt._getFormatInternal(formats, "mys", this.length);
+            if (tmp) {
+                if (tmp.indexOf('r') > -1) {
+                    var tmp2 = this.dateFmt._getFormatInternal(formats, "r", this.length);
+                    if (tmp2) {
+                        yearTemplate = this.dateFmt._tokenize(tmp2);
+                    }
+                }
+                if (tmp.indexOf('L') > -1) {
+                    var tmp3 = this.dateFmt._getFormatInternal(formats, "l", this.length);
+                    if (tmp3) {
+                        monthTemplate = this.dateFmt._tokenize(tmp3);
+                    }
+                }
+            }
         } else {
             fmt = new IString(this.dateFmt._getFormat(this.dateFmt.formats.range, "c30", this.length));
-        }
-
-        formats = this.dateFmt.formats.date;
-        yearTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "y", this.length) || "yyyy");
-        monthTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "m", this.length) || "MM");
-        dayTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "d", this.length) || "dd");
-
-
-        /*
-        * Some languages use two different forms of strings (standlone and format) depending on the context.
-        * Typically the standalone version is the nominative form of the word,
-        * and the format version is in the genitive (or related form).
-        * In c20 case, It should present standAlone form, In order to support that, the format symbol is changed.
-        */
-        if (isStandAlone && monthTemplate[0].length >= 3) {
-            monthTemplate[0] = monthTemplate[0].replace(/M/g,"L");
+            // need to check for stand-alone year formats here
+            var tmp = this.dateFmt._getFormatInternal(formats, "r", this.length);
+            if (tmp) {
+                yearTemplate = this.dateFmt._tokenize(tmp);
+            }
         }
 
         /*

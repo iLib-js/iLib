@@ -633,14 +633,14 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. Қараша – 2014 ж. Қаңтар");
+        test.equal(fmt.format(start, end), "2011 ж. қараша – 2014 ж. қаңтар");
         test.done();
     },
     testDateRngFmtKZRangeMultiYearFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -659,7 +659,111 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. Қараша – 2014 ж. Қаңтар");
+        test.equal(fmt.format(start, end), "2011 ж. қараша – 2014 ж. қаңтар");
+        test.done();
+    },
+    testDateRngFmtKZRangeMultiYearFull2: function(test) {
+        test.expect(2);
+        var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});
+        test.ok(fmt !== null);
+
+        var start = new GregorianDate({
+            year: 2011,
+            month: 11,
+            day: 20,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        var end = new GregorianDate({
+            year: 2014,
+            month: 1,
+            day: 31,
+            hour: 14,
+            minute: 30,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(start, end), "2011 ж. қараша – 2014 ж. қаңтар");
+        test.done();
+    },
+    testDateRngFmtKZRangeMultiYearFull3: function(test) {
+        test.expect(2);
+        var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});
+        test.ok(fmt !== null);
+
+        var start = new GregorianDate({
+            year: 2011,
+            month: 6,
+            day: 20,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        var end = new GregorianDate({
+            year: 2016,
+            month: 4,
+            day: 28,
+            hour: 5,
+            minute: 30,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(start, end), "2011 ж. маусым – 2016 ж. сәуір");
+        test.done();
+    },
+    testDateRngFmtKZRangeMultiYearLong2: function(test) {
+        test.expect(2);
+        var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});
+        test.ok(fmt !== null);
+
+        var start = new GregorianDate({
+            year: 2011,
+            month: 6,
+            day: 20,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        var end = new GregorianDate({
+            year: 2016,
+            month: 4,
+            day: 28,
+            hour: 5,
+            minute: 30,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(start, end), "2011 ж. маусым – 2016 ж. сәуір");
+        test.done();
+    },
+    testDateRngFmtKZRangeMultiYearMedium2: function(test) {
+        test.expect(2);
+        var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "medium"});
+        test.ok(fmt !== null);
+
+        var start = new GregorianDate({
+            year: 2011,
+            month: 6,
+            day: 20,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        var end = new GregorianDate({
+            year: 2016,
+            month: 4,
+            day: 28,
+            hour: 5,
+            minute: 30,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(start, end), "2011 ж. мау. – 2016 ж. сәу.");
         test.done();
     },
     testDateRngFmtKZManyYearsFull: function(test) {
@@ -688,5 +792,4 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-    
 };

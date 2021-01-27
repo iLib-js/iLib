@@ -180,7 +180,7 @@ module.exports.testscriptinfo = {
         var scripts = ScriptInfo.getAllScripts();
         test.ok(scripts !== null);
         
-        test.equal(scripts.length, 202);
+        test.equal(scripts.length, 203);
     
         test.equal(scripts[0], "Adlm");
         test.equal(scripts[1], "Afak");
@@ -200,7 +200,7 @@ module.exports.testscriptinfo = {
         test.equal(si.getName(), "Khitan small script");
         test.equal(si.getLongCode(), "Khitan_Small_Script");
         test.equal(si.getScriptDirection(), "ltr");
-        test.ok(!si.getNeedsIME());
+        test.ok(si.getNeedsIME());
         test.ok(!si.getCasing());
         test.done();
     },

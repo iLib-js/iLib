@@ -608,7 +608,7 @@ module.exports.testdatefmtrange_ky_KG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-ж., Ноя – 2014-ж., Янв");
+        test.equal(fmt.format(start, end), "2011-ж., ноя. – 2014-ж., янв.");
         test.done();
     },
     testDateRngFmtkyKGRangeMultiYearLong: function(test) {
@@ -634,7 +634,7 @@ module.exports.testdatefmtrange_ky_KG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-ж., Ноябрь – 2014-ж., Январь");
+        test.equal(fmt.format(start, end), "2011-ж., ноябрь – 2014-ж., январь");
         test.done();
     },
     testDateRngFmtkyKGRangeMultiYearFull: function(test) {
@@ -660,7 +660,7 @@ module.exports.testdatefmtrange_ky_KG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-ж., Ноябрь – 2014-ж., Январь");
+        test.equal(fmt.format(start, end), "2011-ж., ноябрь – 2014-ж., январь");
         test.done();
     },
     testDateRngFmtkyKGManyYearsFull: function(test) {

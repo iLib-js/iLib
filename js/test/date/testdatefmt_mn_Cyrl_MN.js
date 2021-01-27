@@ -1,7 +1,7 @@
 /*
  * testdatefmt_mn_Cyrl_MN.js - test the date formatter object in Mongolian
  *
- * Copyright © 2012-2015,2017-2018, JEDLSoft
+ * Copyright © 2012-2015,2017-2018,2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -787,7 +787,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011 оны Есдүгээр сар');
+        test.equal(fmt.format(date), '2011 оны есдүгээр сар');
         test.done();
     },
 

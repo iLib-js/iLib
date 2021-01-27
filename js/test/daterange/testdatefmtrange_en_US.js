@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_en_US.js - test the date range formatter object in US English
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -371,7 +371,7 @@ module.exports.testdatefmtrange_en_US = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11/20/11 – 12/31/11");
+        test.equal(fmt.format(start, end), "11/20 – 12/31/11");
         test.done();
     },
     testDateRngFmtNextMonthMedium: function(test) {
@@ -797,7 +797,7 @@ module.exports.testdatefmtrange_en_US = {
             millisecond: 0
         });
     
-        test.equal(fmt.format(date1, date2), "5/2/11 – 11/19/11");    
+        test.equal(fmt.format(date1, date2), "5/2 – 11/19/11");
         test.done();
     },
     

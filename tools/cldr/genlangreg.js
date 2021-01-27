@@ -22,7 +22,6 @@
  */
 var fs = require('fs');
 var common = require("./common");
-var cldr = require("cldr-data");
 var path = require("path");
 var Locale = common.Locale;
 var mkdirs = common.makeDirs;
@@ -65,7 +64,7 @@ var region_name = {
     generated: true
 };
 
-var filename = "cldr-data/main/en/languages.json";
+var filename = "cldr-localenames-full/main/en/languages.json";
 
 try {
     languagesData = require(filename);
@@ -89,9 +88,9 @@ for (var lang in languages) {
 }
 
 try {
-    regionsData = require("cldr-data/main/en/territories.json");
+    regionsData = require("cldr-localenames-full/main/en/territories.json");
 } catch (e) {
-    console.log("Error: Could not load file cldr-data/main/en/territories.json");
+    console.log("Error: Could not load file cldr-localenames-full/main/en/territories.json");
     process.exit(2);
 }
 regions = regionsData.main.en.localeDisplayNames.territories;

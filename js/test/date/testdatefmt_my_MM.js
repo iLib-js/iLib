@@ -135,7 +135,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45');
+        test.equal(fmt.format(date), 'နေ့လယ် 13:45');
         test.done();
     },
 
@@ -154,7 +154,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45');
+        test.equal(fmt.format(date), 'နေ့လယ် 13:45');
         test.done();
     },
 
@@ -173,7 +173,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45');
+        test.equal(fmt.format(date), 'နေ့လယ် 13:45');
         test.done();
     },
 
@@ -192,7 +192,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45');
+        test.equal(fmt.format(date), 'နံနက် 1:45');
         test.done();
     },
 
@@ -211,7 +211,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11 13:45');
+        test.equal(fmt.format(date), '29-09-11 နေ့လယ် 13:45');
         test.done();
     },
 
@@ -230,7 +230,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက် 29 13:45');
+        test.equal(fmt.format(date), '2011၊ စက် 29 နေ့လယ် 13:45');
         test.done();
     },
 
@@ -249,7 +249,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ 29 စက်တင်ဘာ 13:45');
+        test.equal(fmt.format(date), '2011၊ 29 စက်တင်ဘာ နေ့လယ် 13:45');
         test.done();
     },
 
@@ -268,7 +268,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29 13:45');
+        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29 နေ့လယ် 13:45');
         test.done();
     },
     
@@ -293,7 +293,7 @@ module.exports.testdatefmt_my_MM = {
 
     testDateFmtTemplateCalendarIncompatibleDateType_my_MM: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "my-MM", calendar: "julian", template: "yyyy-MM-dd HH:mm", useNative: false});
+        var fmt = new DateFmt({locale: "my-MM", calendar: "julian", template: "yyyy-MM-dd B HH:mm", useNative: false});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -307,7 +307,7 @@ module.exports.testdatefmt_my_MM = {
             millisecond: 0
         });
         // convert automatically to a Julian calendar date
-        test.equal(fmt.format(date), "2011-09-16 13:45");
+        test.equal(fmt.format(date), "2011-09-16 နေ့လယ် 13:45");
         test.done();
     },
 
@@ -498,7 +498,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45');
+        test.equal(fmt.format(date), 'နေ့လယ် 13:45');
         test.done();
     },
 
@@ -517,7 +517,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11 13:45');
+        test.equal(fmt.format(date), '29-09-11 နေ့လယ် 13:45');
         test.done();
     },
 
@@ -954,7 +954,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "နေ့လယ် 13:45");
         test.done();
     },
 
@@ -973,7 +973,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), "နေ့လယ် 13:45:37");
         test.done();
     },
 
@@ -992,7 +992,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "နေ့လယ် 13:45");
         test.done();
     },
 
@@ -1017,7 +1017,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "+0630 13:45");
+        test.equal(fmt.format(date), "+0630 နေ့လယ် 13:45");
         test.done();
     },
 
@@ -1042,7 +1042,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "+0630 13:45");
+        test.equal(fmt.format(date), "+0630 နေ့လယ် 13:45");
         test.done();
     },
 
@@ -1061,7 +1061,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), "နေ့လယ် 13:45:37");
         test.done();
     },
 
@@ -1086,7 +1086,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "+0630 13:45:37");
+        test.equal(fmt.format(date), "+0630 နေ့လယ် 13:45:37");
         test.done();
     },
 
@@ -1111,7 +1111,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "+0630 13:45:37");
+        test.equal(fmt.format(date), "+0630 နေ့လယ် 13:45:37");
         test.done();
     },
 
@@ -1206,7 +1206,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "နေ့လယ် 13:45");
         test.done();
     },
 
@@ -1225,7 +1225,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), "နေ့လယ် 13:45:37");
         test.done();
     },
 
@@ -1250,7 +1250,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "နေ့လယ် 13:45");
         test.done();
     },
 
@@ -1276,7 +1276,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "+0630 13:45");
+        test.equal(fmt.format(date), "+0630 နေ့လယ် 13:45");
         test.done();
     },
 
@@ -1302,7 +1302,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "+0630 13:45");
+        test.equal(fmt.format(date), "+0630 နေ့လယ် 13:45");
         test.done();
     },
 
@@ -1321,7 +1321,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), "နေ့လယ် 13:45:37");
         test.done();
     },
 
@@ -1347,7 +1347,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "+0630 13:45:37");
+        test.equal(fmt.format(date), "+0630 နေ့လယ် 13:45:37");
         test.done();
     },
 
@@ -1373,7 +1373,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "+0630 13:45:37");
+        test.equal(fmt.format(date), "+0630 နေ့လယ် 13:45:37");
         test.done();
     },
 
@@ -1399,7 +1399,7 @@ module.exports.testdatefmt_my_MM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "+0630 13:45:37");
+        test.equal(fmt.format(date), "+0630 နေ့လယ် 13:45:37");
         test.done();
     },
 

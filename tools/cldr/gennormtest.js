@@ -23,33 +23,27 @@
  */
 
 var fs = require('fs');
-var unifile = require('./unifile.js');
-var UnicodeFile = unifile.UnicodeFile;
+var path = require('path');
 var common = require('./common.js');
-var fromCodePoint = common.codePointToUTF16;
 
 function usage() {
-    console.log("Usage: gennormtest [-h] NormalizationTest.txt [toDir]\n" +
+    console.log("Usage: gennormtest [-h] [toDir]\n" +
             "Generate the normalization test data.\n\n" +
             "-h or --help\n" +
             "  this help\n" +
-            "NormalizationTest.txt\n" +
-            "  the normalization test data from the Unicode character database\n" +
             "toDir\n" +
             "  directory to output the output files. Default: current dir.");
     process.exit(1);
 }
 
 function sequenceToString(sequence) {
-    var chars = sequence.split(' ');
-    var result = "";
-    chars.forEach(function (val, index, array) {
-        result += fromCodePoint(parseInt(val, 16));
-    });
-    return result;
+    if (!sequence) return undefined;
+
+    return sequence.map(function(entry) {
+        return common.hexToChar(entry);
+    }).join('');
 }
 
-var unicodeFileName;
 var toDir = ".";
 
 process.argv.forEach(function (val, index, array) {
@@ -58,51 +52,44 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-if (process.argv.length < 3) {
+if (process.argv.length < 2) {
     console.error('Error: not enough arguments');
     usage();
 }
 
-unicodeFileName = process.argv[2];
-if (process.argv.length > 3) {
-    toDir = process.argv[3];
+if (process.argv.length > 2) {
+    toDir = process.argv[2];
 }
 
 console.log("gennorm - generate normalization test data.\n" +
-        "Copyright (c) 2013 JEDLSoft");
+        "Copyright © 2012-2015, 2020 JEDLSoft");
 
-fs.exists(unicodeFileName, function (exists) {
-    if (!exists) {
-        console.error("Could not access file " + unicodeFileName);
-        usage();
-    }
-});
-
-fs.exists(toDir, function (exists) {
-    if (!exists) {
-        console.error("Could not access target directory " + toDir);
-        usage();
-    }
-});
+if (!fs.existsSync(toDir)) {
+    console.error("Could not access target directory " + toDir);
+    usage();
+}
 
 var tests = [];
 
-var ud = new UnicodeFile({path: unicodeFileName});
-var len = ud.length();
-var row;
+var ud = require("ucd-full/NormalizationTest.json").NormalizationTest;
+var len = ud.length;
+
 for (var i = 0; i < len; i++ ) {
-    row = ud.get(i);
-    tests.push([
-        sequenceToString(row[0]),
-        sequenceToString(row[1]),
-        sequenceToString(row[2]),
-        sequenceToString(row[3]),
-        sequenceToString(row[4])
-    ]);
+    var entry = ud[i];
+    if (entry.NFCSequence ||
+            entry.NFDSequence ||
+            entry.NFKCSequence ||
+            entry.NFKDSequence) {
+        tests.push([
+            sequenceToString(entry.sourceSequence),
+            sequenceToString(entry.NFCSequence),
+            sequenceToString(entry.NFDSequence),
+            sequenceToString(entry.NFKCSequence),
+            sequenceToString(entry.NFKDSequence)
+        ]);
+    }
 }
 
-fs.writeFile(toDir + "/normdata.js", "var normtests = " + JSON.stringify(tests, true, 4) + ";\nmodule.exports=normtests;", function (err) {
-    if (err) {
-        throw err;
-    }
-});
+fs.writeFileSync(path.join(toDir, "normdata.js"),
+    "var normtests = " + JSON.stringify(tests, true, 4) + ";\nmodule.exports=normtests;\n",
+    "utf-8");

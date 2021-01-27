@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_af_ZA.js - test the date range formatter object in Afrikaans
  * 
- * Copyright © 2015-2017, JEDLSoft
+ * Copyright © 2015-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-12-31 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "2011-12-31 1:45 nm. – 2:30 nm.");
         test.done();
     },
     testDateRngFmtAFNAFRangeInDayMedium: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Des. 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 Des. 2011 1:45 nm. – 2:30 nm.");
         test.done();
     },
     testDateRngFmtAFNAFRangeInDayLong: function(test) {
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Desember 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 Desember 2011 1:45 nm. – 2:30 nm.");
         test.done();
     },
     testDateRngFmtAFNAFRangeInDayFull: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Desember 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 Desember 2011 1:45 nm. – 2:30 nm.");
         test.done();
     },
     
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-12-30 13:45 – 2011-12-31 14:30");
+        test.equal(fmt.format(start, end), "2011-12-30 1:45 nm. – 2011-12-31 2:30 nm.");
         test.done();
     },
     testDateRngFmtAFNAFRangeNextDayMedium: function(test) {
@@ -187,7 +187,7 @@ module.exports.testdatefmtrange_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Des. 2011 13:45 – 31 Des. 2011 14:30");
+        test.equal(fmt.format(start, end), "30 Des. 2011 1:45 nm. – 31 Des. 2011 2:30 nm.");
         test.done();
     },
     testDateRngFmtAFNAFRangeNextDayLong: function(test) {
@@ -213,7 +213,7 @@ module.exports.testdatefmtrange_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Desember 2011 13:45 – 31 Desember 2011 14:30");
+        test.equal(fmt.format(start, end), "30 Desember 2011 1:45 nm. – 31 Desember 2011 2:30 nm.");
         test.done();
     },
     testDateRngFmtAFNAFRangeNextDayFull: function(test) {
@@ -239,7 +239,7 @@ module.exports.testdatefmtrange_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Desember 2011 13:45 – 31 Desember 2011 14:30");
+        test.equal(fmt.format(start, end), "30 Desember 2011 1:45 nm. – 31 Desember 2011 2:30 nm.");
         test.done();
     },
     

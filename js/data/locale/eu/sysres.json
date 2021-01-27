@@ -160,5 +160,14 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": " eta ",
     "separatorShort": ", ",
-    "finalSeparatorShort": " eta "
+    "finalSeparatorShort": " eta ",
+    "B0": "gauerdia",
+    "B1": "goizaldeko",
+    "B2": "AM",
+    "B3": "goizeko",
+    "B4": "eguerdiko",
+    "B5": "PM",
+    "B6": "arratsaldeko",
+    "B7": "iluntzeko",
+    "B8": "gaueko"
 }
