@@ -28,7 +28,7 @@ var Locale = common.Locale;
 var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
 
-var pluralData = require("cldr-data/supplemental/plurals.json");
+var pluralData = require("cldr-core/supplemental/plurals.json");
 
 function usage() {
     console.log("Usage: genplurals [-h] [toDir]" +

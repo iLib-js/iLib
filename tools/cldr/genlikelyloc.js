@@ -26,8 +26,8 @@ var fs = require('fs');
 var common = require('./common');
 var Locale = common.Locale;
 
-var likelySubtags = require('cldr-data/supplemental/likelySubtags');
-var territoryContainment = require('cldr-data/supplemental/territoryContainment');
+var likelySubtags = require('cldr-core/supplemental/likelySubtags.json');
+var territoryContainment = require('cldr-core/supplemental/territoryContainment.json');
 
 function usage() {
     console.log("Usage: genlikelyloc [-h] [ locale_data_dir ]\n" +

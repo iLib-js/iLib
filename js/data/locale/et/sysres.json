@@ -160,5 +160,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "keskööl",
+    "B1": "AM",
+    "B2": "hommikul",
+    "B3": "keskpäeval",
+    "B4": "pärastlõunal",
+    "B5": "PM",
+    "B6": "õhtul",
+    "B7": "öösel"
 }

@@ -634,7 +634,7 @@ module.exports.testdatefmtrange_hy_AM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "նոյեմբերի, 2011 թ. – հունվարի, 2014 թ.");
+        test.equal(fmt.format(start, end), "նոյեմբեր, 2011 թ. – հունվար, 2014 թ.");
         test.done();
     },
     testDateRngFmthyAMRangeMultiYearFull: function(test) {
@@ -660,7 +660,7 @@ module.exports.testdatefmtrange_hy_AM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 թ. նոյեմբերի – 2014 թ. հունվարի");
+        test.equal(fmt.format(start, end), "2011 թ. նոյեմբեր – 2014 թ. հունվար");
         test.done();
     },
     testDateRngFmthyAMManyYearsFull: function(test) {

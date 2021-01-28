@@ -555,7 +555,7 @@ module.exports.testdatefmt_ne_NP = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "9");
+        test.equal(fmt.format(date), "सेप");
         test.done();
     },
 

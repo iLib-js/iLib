@@ -542,7 +542,7 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "09");
+        test.equal(fmt.format(date), "සැ");
         test.done();
     },
 

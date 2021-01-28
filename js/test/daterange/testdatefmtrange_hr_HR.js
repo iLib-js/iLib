@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_hr_HR.js - test the date range formatter object in Croation/Croatia
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_hr_HR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "studenoga 2011. – siječnja 2014.");
+        test.equal(fmt.format(start, end), "studeni 2011. – siječanj 2014.");
         test.done();
     },
     testDateRngFmtHRRangeMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_hr_HR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "studenoga 2011. – siječnja 2014.");
+        test.equal(fmt.format(start, end), "studeni 2011. – siječanj 2014.");
         test.done();
     },
     testDateRngFmtHRManyYearsFull: function(test) {

@@ -160,5 +160,14 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "חצות",
+    "B1": "לפנה״צ",
+    "B2": "לפנות בוקר",
+    "B3": "בבוקר",
+    "B4": "בצהריים",
+    "B5": "אחה״צ",
+    "B6": "אחר הצהריים",
+    "B7": "בערב",
+    "B8": "בלילה"
 }

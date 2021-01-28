@@ -34,7 +34,7 @@ var Measurement = require("./Measurement.js");
  * the construction of this instance
  */
 var FuelConsumptionUnit = function(options) {
-    this.unit = "liter-per-100kilometers";
+    this.unit = "liter-per-100-kilometer";
     this.amount = 0;
 
     this.ratios = FuelConsumptionUnit.ratios;
@@ -53,7 +53,7 @@ FuelConsumptionUnit.ratios = {
     /*                         index    km/L        L/km        L/100km           mpg         mpgi       inverse? */
      "kilometer-per-liter":      [ 1,   1,          1,          100,              2.35215,    2.82481,   false ],
      "liter-per-kilometer":      [ 2,   1,          1,          0.01,             2.35215,    2.82481,   true  ],
-     "liter-per-100kilometers":  [ 3,   100,        0.01,       1,                235.215,    282.481,   true  ],
+     "liter-per-100-kilometer":  [ 3,   100,        0.01,       1,                235.215,    282.481,   true  ],
      "mile-per-gallon":          [ 4,   0.425144,   2.35215,    235.215,          1,          1.20095,   false ],
      "mile-per-gallon-imperial": [ 5,   0.354006,   2.82481,    282.481,          0.8326741,  1,         false ]
 };
@@ -96,21 +96,21 @@ FuelConsumptionUnit.aliases = {
     "kilometers/liter": "kilometer-per-liter",
     "kilometer/liter": "kilometer-per-liter",
     "km/liter": "kilometer-per-liter",
-    "Liter/100km": "liter-per-100kilometers",
-    "Liters/100km": "liter-per-100kilometers",
-    "Liter/100kms": "liter-per-100kilometers",
-    "Liters/100kms": "liter-per-100kilometers",
-    "liter/100km": "liter-per-100kilometers",
-    "liters/100kms": "liter-per-100kilometers",
-    "liters/100km": "liter-per-100kilometers",
-    "liter/100kms": "liter-per-100kilometers",
-    "Liter/100KM": "liter-per-100kilometers",
-    "Liters/100KM": "liter-per-100kilometers",
-    "L/100km": "liter-per-100kilometers",
-    "L/100KM": "liter-per-100kilometers",
-    "l/100KM": "liter-per-100kilometers",
-    "l/100km": "liter-per-100kilometers",
-    "l/100kms": "liter-per-100kilometers",
+    "Liter/100km": "liter-per-100-kilometer",
+    "Liters/100km": "liter-per-100-kilometer",
+    "Liter/100kms": "liter-per-100-kilometer",
+    "Liters/100kms": "liter-per-100-kilometer",
+    "liter/100km": "liter-per-100-kilometer",
+    "liters/100kms": "liter-per-100-kilometer",
+    "liters/100km": "liter-per-100-kilometer",
+    "liter/100kms": "liter-per-100-kilometer",
+    "Liter/100KM": "liter-per-100-kilometer",
+    "Liters/100KM": "liter-per-100-kilometer",
+    "L/100km": "liter-per-100-kilometer",
+    "L/100KM": "liter-per-100-kilometer",
+    "l/100KM": "liter-per-100-kilometer",
+    "l/100km": "liter-per-100-kilometer",
+    "l/100kms": "liter-per-100-kilometer",
     "Liter/km": "liter-per-kilometer",
     "Liters/km": "liter-per-kilometer",
     "Liter/kms": "liter-per-kilometer",
@@ -166,7 +166,7 @@ FuelConsumptionUnit.prototype.convert = function(to) {
 FuelConsumptionUnit.systems = {
     "metric": [
         "liter-per-kilometer",
-        "liter-per-100kilometers",
+        "liter-per-100-kilometer",
         "kilometer-per-liter"
     ],
     "uscustomary": [
@@ -180,17 +180,17 @@ FuelConsumptionUnit.systems = {
             "uscustomary": {
                 "liter-per-kilometer": "mile-per-gallon",
                 "kilometer-per-liter": "mile-per-gallon",
-                "liter-per-100kilometers": "mile-per-gallon"
+                "liter-per-100-kilometer": "mile-per-gallon"
             },
             "imperial": {
                 "liter-per-kilometer": "mile-per-gallon-imperial",
                 "kilometer-per-liter": "mile-per-gallon-imperial",
-                "liter-per-100kilometers": "mile-per-gallon-imperial"
+                "liter-per-100-kilometer": "mile-per-gallon-imperial"
             }
         },
         "uscustomary": {
             "metric": {
-                "mile-per-gallon": "liter-per-100kilometers"
+                "mile-per-gallon": "liter-per-100-kilometer"
             },
             "imperial": {
                 "mile-per-gallon": "mile-per-gallon-imperial"
@@ -198,7 +198,7 @@ FuelConsumptionUnit.systems = {
         },
         "imperial": {
             "metric": {
-                "mile-per-gallon-imperial": "liter-per-100kilometers"
+                "mile-per-gallon-imperial": "liter-per-100-kilometer"
             },
             "uscustomary": {
                 "mile-per-gallon-imperial": "mile-per-gallon"

@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_te_IN.js - test the date range formatter object in Telugu/India
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_te_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31 డిసెంబర్, 2011 1:45 PMకి – 2:30 PMకి');
+        test.equal(fmt.format(start, end), '31 డిసెంబర్, 2011 1:45 PMకి – 2:30 PM');
         test.done();
     },
     testDateRngFmtRangeinDayFull_te_IN: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_te_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31, డిసెంబర్ 2011 1:45 PMకి – 2:30 PMకి');
+        test.equal(fmt.format(start, end), '31, డిసెంబర్ 2011 1:45 PMకి – 2:30 PM');
         test.done();
     },
     

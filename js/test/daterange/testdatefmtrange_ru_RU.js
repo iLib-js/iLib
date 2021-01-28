@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_ru_RU.js - test the date range formatter object Russian/Russia
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "ноября 2011 г. – января 2014 г.");
+        test.equal(fmt.format(start, end), "ноябрь 2011 г. – январь 2014 г.");
         test.done();
     },
     testDateRngFmtRURangeMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "ноября 2011 г. – января 2014 г.");
+        test.equal(fmt.format(start, end), "ноябрь 2011 г. – январь 2014 г.");
         test.done();
     },
     testDateRngFmtRUManyYearsFull: function(test) {

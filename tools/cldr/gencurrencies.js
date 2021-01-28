@@ -23,9 +23,7 @@
  */
 var fs = require('fs');
 var util = require('util');
-var unifile = require('./unifile.js');
 var common = require('./common.js');
-var UnicodeFile = unifile.UnicodeFile;
 var coelesce = common.coelesce;
 var mkdirs = common.makeDirs;
 var path = require("path");
@@ -133,8 +131,8 @@ if (fs.existsSync(ilibDataFileName)) {
     var ilibDataString = fs.readFileSync(ilibDataFileName, "utf-8");
     ilibData = JSON.parse(ilibDataString);
 }
-var supplementalData = require("cldr-data/supplemental/currencyData.json");
-var mainData = require("cldr-data/main/en/currencies.json");
+var supplementalData = require("cldr-core/supplemental/currencyData.json");
+var mainData = require("cldr-numbers-full/main/en/currencies.json");
 var currencyData = supplementalData.supplemental.currencyData;
 var currencyDispData = mainData.main['en'].numbers.currencies;
 var currencyObj = {}; // for saving currency.jf in each directory

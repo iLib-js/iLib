@@ -21,7 +21,6 @@
  */
 var fs = require('fs');
 var path = require('path');
-var unifile = require('./unifile.js');
 var common = require('./common.js');
 var mkdirs = common.makeDirs;
 

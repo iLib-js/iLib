@@ -331,8 +331,8 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-NG");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
-        
+        test.equal(info.getClock(), 24);
+
         test.done();
     },
     testClock_en_NZ: function(test) {

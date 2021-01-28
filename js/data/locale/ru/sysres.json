@@ -236,5 +236,13 @@
     "separatorMedium": " ",
     "finalSeparatorMedium": " ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "полночь",
+    "B1": "ночи",
+    "B2": "AM",
+    "B3": "утра",
+    "B4": "полдень",
+    "B5": "дня",
+    "B6": "PM",
+    "B7": "вечера"
 }

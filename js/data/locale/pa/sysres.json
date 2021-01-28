@@ -160,5 +160,12 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "ਅੱਧੀ ਰਾਤ",
+    "B1": "ਪੂ.ਦੁ.",
+    "B2": "ਸਵੇਰੇ",
+    "B3": "ਦੁਪਹਿਰੇ",
+    "B4": "ਬਾ.ਦੁ.",
+    "B5": "ਸ਼ਾਮੀਂ",
+    "B6": "ਰਾਤੀਂ"
 }

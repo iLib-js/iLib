@@ -22,8 +22,7 @@
  */
 var fs = require('fs');
 var path = require('path');
-var cldr = require("cldr-data");
-var numberingSystemsData = require("cldr-data/supplemental/numberingSystems.json");
+var numberingSystemsData = require("cldr-core/supplemental/numberingSystems.json");
 
 var common = require('./common');
 var Locale = common.Locale;
@@ -86,19 +85,20 @@ function calcLocalePath(language, script, region, filename) {
 
 var localeData = {};
 
-function getLocaleData(dirname, locale) {
-    try {
-        var language = undefined,script = undefined,region = undefined,spec = undefined;
-        if (locale !== undefined) {
-            language = locale.getLanguage(),
-            script = locale.getScript(),
-            region = locale.getRegion();
-            spec = locale.getSpec();
-        } else {
-            spec = "root";
-        }
+function getLocaleData(dirname, locale, spec) {
+    var language = undefined,
+        script = undefined,
+        region = undefined;
 
-        var filename = path.join(dirname, "numbers.json");
+    if (locale !== undefined) {
+        language = locale.getLanguage(),
+        script = locale.getScript(),
+        region = locale.getRegion();
+    }
+
+    var filename = path.join(dirname, "numbers.json");
+
+    try {
         var data = require(filename);
         var numData = data.main[spec];
 
@@ -137,7 +137,7 @@ function getLocaleData(dirname, locale) {
 
         //console.log("dirname: " + dirname + "  data: ", numData );
     } catch (e) {
-        console.log("Error: Could not load file " + e );
+        console.log("Could not load file " + filename + " ... skipping.");
     }
 
     return numData;
@@ -396,18 +396,19 @@ function getNativeDigits(script) {
 
 console.log("Reading locale data into memory...");
 
-var list = cldr.availableLocales;
+var list = require("cldr-core/availableLocales.json").availableLocales.full;
 
 list.forEach(function(loc) {
     var locale = loc ? new Locale(loc) : undefined;
 
     console.log(loc);
 
-    var sourceDir = path.join("cldr-data/main", loc);
+    var spec = (loc === "ku") ? "ckb" : loc;
+    var sourceDir = path.join("cldr-numbers-full/main", spec);
 
     if (loc === "root" || typeof (locale.getVariant()) === 'undefined') {
         // special case because "root" is not a valid locale specifier
-        getLocaleData(sourceDir, (loc === "root") ? undefined : locale);
+        getLocaleData(sourceDir, (loc === "root") ? undefined : locale, spec);
     }
 });
 

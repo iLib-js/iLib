@@ -109,43 +109,43 @@
             },
             "c01": {
                 "f": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
-                "l": "{st} {sd} {sm} {sy} – {et} d MMMM yyyy",
+                "l": "{st} {sd} {sm} {sy} – {et} {ed} {em} {ey}",
                 "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
                 "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
             "c02": {
                 "f": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
-                "l": "{st} {sd} {sm} {sy} – {et} d MMMM yyyy",
+                "l": "{st} {sd} {sm} {sy} – {et} {ed} {em} {ey}",
                 "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
                 "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
             "c03": {
                 "f": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
-                "l": "{st} {sd} {sm} {sy} – {et} d MMMM yyyy",
+                "l": "{st} {sd} {sm} {sy} – {et} {ed} {em} {ey}",
                 "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
                 "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
             "c10": {
                 "f": "{sd} – {ed} {em}, {ey}",
-                "l": "{date} – {date}",
+                "l": "{sd} – {ed} {em} {ey}",
                 "m": "{sd} – {ed} {em} {ey}",
                 "s": "{sd} – {ed}/{em}/{ey}"
             },
             "c11": {
                 "f": "{sd} {sm} – {ed} {em}, {ey}",
-                "l": "{date} – {date}",
+                "l": "{sd} {sm} – {ed} {em} {ey}",
                 "m": "{sd} {sm} – {ed} {em} {ey}",
                 "s": "{sd}/{sm} – {ed}/{em}/{ey}"
             },
             "c12": {
                 "f": "{sd} {sm}, {sy} – {ed} {em}, {ey}",
-                "l": "d MMMM yyyy – {date}",
+                "l": "{sd} {sm} {sy} – {ed} {em} {ey}",
                 "m": "{sd} {sm} {sy} – {ed} {em} {ey}",
                 "s": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}"
             },
             "c20": {
                 "f": "{sm}, {sy} – {em}, {ey}",
-                "l": "d MMMM yyyy – {date}",
+                "l": "{sm} {sy} – {em} {ey}",
                 "m": "{sm} {sy} – {em} {ey}",
                 "s": "{sm}/{sy} – {em}/{ey}"
             },

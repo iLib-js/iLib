@@ -27,9 +27,9 @@
                 "s": "dd.MM"
             },
             "my": {
-                "f": "LLLL, yyyy 'аз'",
-                "l": "LLLL, yyyy 'аз'",
-                "m": "LLL yyyy 'аз'",
+                "f": "MMMM, yyyy 'аз'",
+                "l": "MMMM, yyyy 'аз'",
+                "m": "MMM yyyy 'аз'",
                 "s": "MM.yy"
             },
             "dw": {
@@ -62,17 +62,23 @@
                 "m": "yyyy",
                 "s": "yy"
             },
-            "e": {
-                "f": "cccc",
-                "l": "ccc",
-                "m": "cc",
-                "s": "c"
+            "mys": {
+                "f": "LLLL, yyyy 'аз'",
+                "l": "LLLL, yyyy 'аз'",
+                "m": "LLL yyyy 'аз'",
+                "s": "MM.yy"
             },
             "l": {
                 "f": "LLLL",
                 "l": "LLLL",
                 "m": "LLL",
                 "s": "LL"
+            },
+            "e": {
+                "f": "cccc",
+                "l": "ccc",
+                "m": "cc",
+                "s": "c"
             }
         },
         "time": {

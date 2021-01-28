@@ -160,5 +160,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": ", ",
-    "finalSeparatorShort": ", "
+    "finalSeparatorShort": ", ",
+    "B0": "la miezul nopții",
+    "B1": "a.m.",
+    "B2": "dimineața",
+    "B3": "la amiază",
+    "B4": "după-amiaza",
+    "B5": "p.m.",
+    "B6": "seara",
+    "B7": "noaptea"
 }

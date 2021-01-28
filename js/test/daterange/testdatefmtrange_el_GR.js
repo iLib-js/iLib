@@ -1,7 +1,7 @@
 /*
  * testdatefmtGR_GR_GR.js - test the date GR formatter object GR GRench/GRance
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

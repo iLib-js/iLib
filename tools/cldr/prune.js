@@ -26,31 +26,31 @@ var common = require('./common');
 var path = require('path');
 
 function usage() {
-	util.print("Usage: prune.js [-h] [locale_data_dir]\n" +
-		"Prune json files to remove extraneous properties.\n\n" +
-		"-h or --help\n" +
-		"  this help\n" +
-		"locale_data_dir\n" +
-		'  the top level of the ilib locale data directory. Default "."\n');
-	process.exit(1);
+    util.print("Usage: prune.js [-h] [locale_data_dir]\n" +
+        "Prune json files to remove extraneous properties.\n\n" +
+        "-h or --help\n" +
+        "  this help\n" +
+        "locale_data_dir\n" +
+        '  the top level of the ilib locale data directory. Default "."\n');
+    process.exit(1);
 }
 
 localeDirName = process.argv[2] || ".";
 util.print("locale dir: " + localeDirName + "\n");
 if (!fs.existsSync(localeDirName)) {
-	util.print("Could not access locale data directory " + localeDirName);
-	usage();
+    util.print("Could not access locale data directory " + localeDirName);
+    usage();
 }
 
 function readJson(path) {
-	if (!fs.existsSync(path)) {
-		return undefined;
-	}
-	var data = fs.readFileSync(path);
-	if (data.length > 0) {
-		return JSON.parse(data); 
-	}
-	return {};
+    if (!fs.existsSync(path)) {
+        return undefined;
+    }
+    var data = fs.readFileSync(path);
+    if (data.length > 0) {
+        return JSON.parse(data);
+    }
+    return {};
 }
 
 
@@ -59,105 +59,105 @@ var likelylocales = {};
 
 var temp = readJson(likelyLocaleFileName);
 if (temp) {
-	for (var part in temp) {
-		if (part && temp[part]) {
-			likelylocale[part] = new common.Locale(temp[part]);
-		}
-	}
+    for (var part in temp) {
+        if (part && temp[part]) {
+            likelylocale[part] = new common.Locale(temp[part]);
+        }
+    }
 }
 
 var fileTypes = [
-	"address.json",
-	"calendar.jf",
-	"clock.jf",
-	"countries.json",
-	"ctrynames.json",
-	"currency.jf",
-	"currency.json",
-	"dateformats.json",
-	"delimiters.jf",
-	"empty.jf",
-	"firstdayofweek.jf",
-	"langname.jf",
-	"name.json",
-	"nativecountries.json",
-	"numfmt.jf",
-	"papersizes.jf",
-	"phoneres.json",
-	"plurals.json",
-	"scripts.jf",
-	"sysres.json",
-	"timezone.jf",
-	"unitfmt.json",
-	"units.jf"
+    "address.json",
+    "calendar.jf",
+    "clock.jf",
+    "countries.json",
+    "ctrynames.json",
+    "currency.jf",
+    "currency.json",
+    "dateformats.json",
+    "delimiters.jf",
+    "empty.jf",
+    "firstdayofweek.jf",
+    "langname.jf",
+    "name.json",
+    "nativecountries.json",
+    "numfmt.jf",
+    "papersizes.jf",
+    "phoneres.json",
+    "plurals.json",
+    "scripts.jf",
+    "sysres.json",
+    "timezone.jf",
+    "unitfmt.json",
+    "units.jf"
 ];
 
 function walk(dir, locale) {
-	var results = [];
-	var list = fs.readdirSync(dir);
-	var merged = {};
-	var thisloc = new common.Locale(locale);
-	
-	// special case -- und is the undetermined language, so leave it off
-	var lookupSpec = (thisloc.getLanguage() === 'und') ? thisloc.getRegion() : thisloc.getSpec();
+    var results = [];
+    var list = fs.readdirSync(dir);
+    var merged = {};
+    var thisloc = new common.Locale(locale);
 
-	fileTypes.forEach(function (type) {
-		var json;
-		var thispath = path.join(dir, type);
-		if (!fs.existsSync(thispath)) {
-			// try to find the base locale's version of the file and use that instead
-			var loc;
-			loc = likelylocales[lookupSpec];
-			if (loc) {
-				var filename = path.join(dir, loc.getLanguage(), loc.getRegion(), type);
-				if (fs.existsSync(filename)) {
-					json = readJson(filename);
-				} else {
-					filename = path.join(dir, loc.getLanguage(), loc.getScript(), loc.getRegion(), type);
-					if (fs.existsSync(filename)) {
-						json = readJson(filename);
-					} else {
-						filename = path.join(dir, loc.getLanguage(), loc.getScript(), type);
-						if (fs.existsSync(filename)) {
-							json = readJson(filename);
-						}
-					}
-				}				
-			}
-		}
-	});
-	
-	list.forEach(function (file) {
-		var thispath = dir + '/' + file;
-		var stat = fs.statSync(thispath);
-		if (stat && stat.isDirectory()) {
-			walk(thispath, (locale && locale !== "und" && locale !== '.') ? locale + "-" + file : file);
-		} else {
-			var obj = {};
-			if (fileTypes.indexOf(file) !== -1) {
-				try {
-					
-				} catch (err) {
-					util.print("File " + thispath + " is not readable or does not contain valid JSON.\n");
-					util.print(err + "\n");
-				}
-			}
-		}
-	});
+    // special case -- und is the undetermined language, so leave it off
+    var lookupSpec = (thisloc.getLanguage() === 'und') ? thisloc.getRegion() : thisloc.getSpec();
 
-	var thispath = dir;
-	if (!common.isEmpty(merged)) {
-		if (merged.generated) {
-			delete merged.generated;
-		}
-		merged.locale = locale;
-		fs.writeFileSync(thispath + "/localeinfo.json", JSON.stringify(merged, true, 4), 'utf8');
-		util.print(thispath + ": merged *.jf into localeinfo.json\n");
-	} else {
-		util.print(thispath + ": nothing to write\n");
-	}
+    fileTypes.forEach(function (type) {
+        var json;
+        var thispath = path.join(dir, type);
+        if (!fs.existsSync(thispath)) {
+            // try to find the base locale's version of the file and use that instead
+            var loc;
+            loc = likelylocales[lookupSpec];
+            if (loc) {
+                var filename = path.join(dir, loc.getLanguage(), loc.getRegion(), type);
+                if (fs.existsSync(filename)) {
+                    json = readJson(filename);
+                } else {
+                    filename = path.join(dir, loc.getLanguage(), loc.getScript(), loc.getRegion(), type);
+                    if (fs.existsSync(filename)) {
+                        json = readJson(filename);
+                    } else {
+                        filename = path.join(dir, loc.getLanguage(), loc.getScript(), type);
+                        if (fs.existsSync(filename)) {
+                            json = readJson(filename);
+                        }
+                    }
+                }
+            }
+        }
+    });
 
-	return results;
+    list.forEach(function (file) {
+        var thispath = dir + '/' + file;
+        var stat = fs.statSync(thispath);
+        if (stat && stat.isDirectory()) {
+            walk(thispath, (locale && locale !== "und" && locale !== '.') ? locale + "-" + file : file);
+        } else {
+            var obj = {};
+            if (fileTypes.indexOf(file) !== -1) {
+                try {
+
+                } catch (err) {
+                    util.print("File " + thispath + " is not readable or does not contain valid JSON.\n");
+                    util.print(err + "\n");
+                }
+            }
+        }
+    });
+
+    var thispath = dir;
+    if (!common.isEmpty(merged)) {
+        if (merged.generated) {
+            delete merged.generated;
+        }
+        merged.locale = locale;
+        fs.writeFileSync(thispath + "/localeinfo.json", JSON.stringify(merged, true, 4), 'utf8');
+        util.print(thispath + ": merged *.jf into localeinfo.json\n");
+    } else {
+        util.print(thispath + ": nothing to write\n");
+    }
+
+    return results;
 }
 
 walk(localeDirName, undefined);

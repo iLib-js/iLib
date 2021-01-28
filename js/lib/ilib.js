@@ -1,7 +1,7 @@
 /*
  * ilib.js - define the ilib name space
  *
- * Copyright © 2012-2019, JEDLSoft
+ * Copyright © 2012-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -303,7 +303,7 @@ ilib.getLocale = function () {
             case 'browser':
                 // running in a browser
                 if(typeof(navigator.language) !== 'undefined') {
-                    ilib.locale = navigator.language.substring(0,3) + navigator.language.substring(3,5).toUpperCase();  // FF/Opera/Chrome/Webkit
+                    ilib.locale = (navigator.language.length > 3) ? navigator.language.substring(0,3) + navigator.language.substring(3,5).toUpperCase() : navigator.language;  // FF/Opera/Chrome/Webkit
                 }
                 if (!ilib.locale) {
                     // IE on Windows
@@ -316,7 +316,9 @@ ilib.getLocale = function () {
                                             undefined));
                     if (typeof(lang) !== 'undefined' && lang) {
                         // for some reason, MS uses lower case region tags
-                        ilib.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
+                        ilib.locale = (lang.length > 3) ? lang.substring(0,3) + lang.substring(3,5).toUpperCase() : lang;
+                    } else {
+                        ilib.locale = undefined;
                     }
                 }
                 break;
@@ -329,6 +331,8 @@ ilib.getLocale = function () {
                     ilib.locale = PalmSystem.locales.UI;
                 } else if (typeof(PalmSystem.locale) !== 'undefined') {
                     ilib.locale = PalmSystem.locale;
+                } else {
+                    ilib.locale = undefined;
                 }
                 break;
             case 'rhino':
@@ -347,7 +351,13 @@ ilib.getLocale = function () {
                 // where language and region are the correct ISO codes separated by
                 // an underscore. This translate it back to the BCP-47 form.
                 if (lang && typeof(lang) !== 'undefined') {
-                    ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
+                    var dot = lang.indexOf('.');
+                    if (dot > -1) {
+                        lang = lang.substring(0, dot);
+                    }
+                    ilib.locale = (lang.length > 3) ? lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase() : lang;
+                } else {
+                    ilib.locale = undefined;
                 }
                 break;
             case 'nodejs':
@@ -357,7 +367,13 @@ ilib.getLocale = function () {
                 // where language and region are the correct ISO codes separated by
                 // an underscore. This translate it back to the BCP-47 form.
                 if (lang && typeof(lang) !== 'undefined') {
-                    ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
+                    var dot = lang.indexOf('.');
+                    if (dot > -1) {
+                        lang = lang.substring(0, dot);
+                    }
+                    ilib.locale = (lang.length > 3) ? lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase() : lang;
+                } else {
+                    ilib.locale = undefined;
                 }
                 break;
             case 'qt':
@@ -366,7 +382,7 @@ ilib.getLocale = function () {
                 var lang = locobj.name && locobj.name.replace("_", "-") || "en-US";
                 break;
         }
-        ilib.locale = typeof(ilib.locale) === 'string' && ilib.locale ? ilib.locale : 'en-US';
+        ilib.locale = typeof(ilib.locale) === 'string' && ilib.locale.length && ilib.locale !== "C" ? ilib.locale : 'en-US';
         if (ilib.locale === "en") {
             ilib.locale = "en-US"; // hack to get various platforms working correctly
         }

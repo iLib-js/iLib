@@ -1876,7 +1876,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["មួយ", "ពីរ"]), "មួយ និង​ពីរ");
+        test.equal(fmt.format(["មួយ", "ពីរ"]), "មួយ និង ពីរ");
         test.done();
     },
 

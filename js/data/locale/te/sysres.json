@@ -160,5 +160,12 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": ", ",
-    "finalSeparatorShort": ", "
+    "finalSeparatorShort": ", ",
+    "B0": "అర్ధరాత్రి",
+    "B1": "AM",
+    "B2": "ఉదయం",
+    "B3": "మధ్యాహ్నం",
+    "B4": "PM",
+    "B5": "సాయంత్రం",
+    "B6": "రాత్రి"
 }

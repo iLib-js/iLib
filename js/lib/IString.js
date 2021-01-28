@@ -532,6 +532,7 @@ IString.prototype = {
      * console.log("String is " + str._length() + " characters long.");
      * </pre>
      * @private
+     * @deprecated
      */
     _length: function () {
         return this.str.length;
@@ -1443,11 +1444,5 @@ IString.prototype = {
         return this.cpLength;
     }
 };
-
-Object.defineProperty(IString, 'length', {
-    get: function() {
-        return this._length();
-    }
-});
 
 module.exports = IString;

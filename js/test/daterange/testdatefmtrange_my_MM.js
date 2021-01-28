@@ -57,7 +57,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31-12-11 13:45 – 14:30');
+        test.equal(fmt.format(start, end), '31-12-11 နေ့လယ် 13:45 – နေ့လယ် 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeInDayMedium: function(test) {
@@ -83,7 +83,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီ 31 13:45 – 14:30');
+        test.equal(fmt.format(start, end), '2011၊ ဒီ 31 နေ့လယ် 13:45 – နေ့လယ် 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeInDayLong: function(test) {
@@ -109,7 +109,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ 31 ဒီဇင်ဘာ 13:45 – 14:30');
+        test.equal(fmt.format(start, end), '2011၊ 31 ဒီဇင်ဘာ နေ့လယ် 13:45 – နေ့လယ် 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeInDayFull: function(test) {
@@ -135,7 +135,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီဇင်ဘာ 31 13:45 – 14:30' );
+        test.equal(fmt.format(start, end), '2011၊ ဒီဇင်ဘာ 31 နေ့လယ် 13:45 – နေ့လယ် 14:30' );
         test.done();
     },
     
@@ -162,7 +162,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30-12-11 13:45 – 31-12-11 14:30');
+        test.equal(fmt.format(start, end), '30-12-11 နေ့လယ် 13:45 – 31-12-11 နေ့လယ် 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeNextDayMedium: function(test) {
@@ -188,7 +188,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီ 30 13:45 – 2011၊ ဒီ 31 14:30');
+        test.equal(fmt.format(start, end), '2011၊ ဒီ 30 နေ့လယ် 13:45 – 2011၊ ဒီ 31 နေ့လယ် 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeNextDayLong: function(test) {
@@ -214,7 +214,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ 30 ဒီဇင်ဘာ 13:45 – 2011၊ 31 ဒီဇင်ဘာ 14:30');
+        test.equal(fmt.format(start, end), '2011၊ 30 ဒီဇင်ဘာ နေ့လယ် 13:45 – 2011၊ 31 ဒီဇင်ဘာ နေ့လယ် 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeNextDayFull: function(test) {
@@ -240,7 +240,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီဇင်ဘာ 30 13:45 – 2011၊ ဒီဇင်ဘာ 31 14:30');
+        test.equal(fmt.format(start, end), '2011၊ ဒီဇင်ဘာ 30 နေ့လယ် 13:45 – 2011၊ ဒီဇင်ဘာ 31 နေ့လယ် 14:30');
         test.done();
     },
     

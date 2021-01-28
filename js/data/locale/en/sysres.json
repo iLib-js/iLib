@@ -160,5 +160,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "midnight",
+    "B1": "AM",
+    "B2": "in the morning",
+    "B3": "noon",
+    "B4": "in the afternoon",
+    "B5": "PM",
+    "B6": "in the evening",
+    "B7": "at night"
 }

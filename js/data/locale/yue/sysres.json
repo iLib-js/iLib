@@ -160,5 +160,14 @@
     "separatorMedium": " ",
     "finalSeparatorMedium": " ",
     "separatorShort": "",
-    "finalSeparatorShort": ""
+    "finalSeparatorShort": "",
+    "B0": "午夜",
+    "B1": "凌晨",
+    "B2": "上午",
+    "B3": "清晨",
+    "B4": "朝早",
+    "B5": "中午",
+    "B6": "下午",
+    "B7": "下晝",
+    "B8": "夜晚"
 }

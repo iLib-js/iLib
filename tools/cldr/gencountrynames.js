@@ -106,7 +106,7 @@ function getCountryNames(localeData, pathname, locale) {
             script = locale.getScript(),
             country = locale.getRegion();
 
-        var data = require(path.join("cldr-data/main", locale.getSpec(), "territories.json"));
+        var data = require(path.join("cldr-localnames-full/main", locale.getSpec(), "territories.json"));
 
         var destfile = calcLocalePath(language, script, country, "ctrynames.json");
         var destdata = loadFile(destfile);
@@ -491,9 +491,9 @@ function mergeCountries(localeData) {
 var localeDirs, localeData = {}, regionData = {};
 
 try {
-    localeDirs = require("cldr-data/availableLocales.json").availableLocales;
+    localeDirs = require("cldr-core/availableLocales.json").availableLocales;
 } catch (e) {
-    console.log("Error: Could not load file cldr-data/availableLocales.json");
+    console.log("Error: Could not load file cldr-core/availableLocales.json");
     process.exit(2);
 }
 

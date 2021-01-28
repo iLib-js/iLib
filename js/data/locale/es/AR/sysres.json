@@ -23,5 +23,10 @@
     "#in {num}s": "one#dentro de {num} seg.|#dentro de {num} seg.",
     "#in {num}d": "one#dentro de {num} días|#dentro de {num} días",
     "#{num}s ago": "one#hace {num} seg.|#hace {num} seg.",
-    "#{num}d ago": "one#hace {num} días|#hace {num} días"
+    "#{num}d ago": "one#hace {num} días|#hace {num} días",
+    "B0": "madrugada",
+    "B2": "mañana",
+    "B3": "mediodía",
+    "B4": "tarde",
+    "B6": "noche"
 }

@@ -210,6 +210,12 @@ JSUtils.isDate = function(object) {
  * @return {Object} the merged object
  */
 JSUtils.merge = function (object1, object2, replace, name1, name2) {
+    if (!object1 && object2) {
+        return object2;
+    }
+    if (object1 && !object2) {
+        return object1;
+    }
     var prop = undefined,
         newObj = {};
     for (prop in object1) {

@@ -160,5 +160,12 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "de la madrugada",
+    "B1": "a. m.",
+    "B2": "de la mañana",
+    "B3": "del mediodía",
+    "B4": "de la tarde",
+    "B5": "p. m.",
+    "B6": "de la noche"
 }

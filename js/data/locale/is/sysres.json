@@ -160,5 +160,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": " og ",
     "separatorShort": " ",
-    "finalSeparatorShort": " og "
+    "finalSeparatorShort": " og ",
+    "B0": "miðnætti",
+    "B1": "að nóttu",
+    "B2": "f.h.",
+    "B3": "að morgni",
+    "B4": "hádegi",
+    "B5": "síðdegis",
+    "B6": "e.h.",
+    "B7": "að kvöldi"
 }

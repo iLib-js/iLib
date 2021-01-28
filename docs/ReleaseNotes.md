@@ -1,6 +1,48 @@
 Release Notes for Version 14
 ============================
 
+Build 012
+-------
+Published as version 14.7.0
+
+New Features:
+* Added support for day periods per locale. These are periods like "morning", "afternoon", "evening".
+  Each locale has a different idea of when the periods are and when they start and end.
+    * day periods use the new "B" format specifier in date format templates
+    * updated a few locales that regularly use day periods, such as my-MM
+    * date ranges were also updated to include day periods
+* Update data to Unicode Character Database (UCD) version 13.0 and the Common Locale Data Repository (CLDR)
+  version 37.0.0
+    * includes corresponding fixes to the unit tests
+* Updated time zone data to IANA 2020e
+
+Bug Fixes:
+* Updated date formats to use proper stand-alone month names independently
+    * Previously, if either the year-month or the month alone available formats in CLDR
+    used the stand-alone month name specifier, then we would use the stand-alone month name for
+    all year-month, month alone, day alone, and weekday alone formats. However, some locales use
+    the stand-alone only for some of those formats, so the formatted dates would come out with
+    the wrong date components in some cases
+    * Also affects date range formatting as well so that the year-month and the year alone
+    ranges can use the stand-alone formats independently of each other
+* Added guard code to consider when the object is undefined in JSUtil.merge at least not to throw an error
+* Switched from travis to circleci for running the CI, since travis doesn't want to play nice any more
+
+Build 011
+-------
+Published as version 14.6.2
+
+New Features:
+
+Bug Fixes:
+* Fixed a DateRange Formatting to present standAlone case properly
+* Updated `timezone.jf` files to match timezone data 2020a
+* Fixed a problem where ilib would not work right if the platform locale was
+  set to "C" or if the platform locale did not have a region tag with it. (ie.
+  it was only the language part.)
+* Updated time zone data to IANA 2020c
+* Updated time zone data to IANA 2020d
+
 Build 010
 -------
 Published as version 14.6.1

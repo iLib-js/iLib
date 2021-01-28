@@ -27,8 +27,8 @@
                 "s": "MM-dd"
             },
             "my": {
-                "f": "yyyy 'm'. LLLL",
-                "l": "yyyy 'm'. LLLL",
+                "f": "yyyy 'm'. MMMM",
+                "l": "yyyy 'm'. MMMM",
                 "m": "yyyy-MM",
                 "s": "yyyy-MM"
             },
@@ -62,11 +62,11 @@
                 "m": "yyyy",
                 "s": "yyyy"
             },
-            "e": {
-                "f": "cccc",
-                "l": "ccc",
-                "m": "cc",
-                "s": "c"
+            "mys": {
+                "f": "yyyy 'm'. LLLL",
+                "l": "yyyy 'm'. LLLL",
+                "m": "yyyy-MM",
+                "s": "yyyy-MM"
             },
             "l": {
                 "f": "LLLL",
@@ -163,5 +163,37 @@
                 "s": "{sy} – {ey}"
             }
         }
-    }
+    },
+    "dayPeriods": [
+        {
+            "at": 0
+        },
+        {
+            "from": 0,
+            "to": 360
+        },
+        {
+            "from": 0,
+            "to": 720
+        },
+        {
+            "from": 360,
+            "to": 720
+        },
+        {
+            "at": 720
+        },
+        {
+            "from": 720,
+            "to": 1080
+        },
+        {
+            "from": 720,
+            "to": 1440
+        },
+        {
+            "from": 1080,
+            "to": 1440
+        }
+    ]
 }

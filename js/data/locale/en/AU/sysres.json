@@ -29,5 +29,8 @@
     "#{num}mi ago": "one#{num} min. ago|#{num} mins ago",
     "#{num}h ago": "one#{num} hr ago|#{num} hrs ago",
     "#{num}w ago": "one#{num} wk ago|#{num} wks ago",
-    "#{num}y ago": "one#{num} yr ago|#{num} yrs ago"
+    "#{num}y ago": "one#{num} yr ago|#{num} yrs ago",
+    "B1": "am",
+    "B3": "midday",
+    "B5": "pm"
 }

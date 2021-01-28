@@ -160,5 +160,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "ທ່ຽງຄືນ",
+    "B1": "ກ່ອນທ່ຽງ",
+    "B2": "ຕອນເຊົ້າ",
+    "B3": "ຕອນທ່ຽງ",
+    "B4": "ຕອນບ່າຍ",
+    "B5": "ຫຼັງທ່ຽງ",
+    "B6": "ຕອນແລງ",
+    "B7": "ຕອນກາງຄືນ"
 }

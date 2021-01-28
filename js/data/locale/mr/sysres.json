@@ -160,5 +160,15 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "मध्यरात्र",
+    "B1": "म.पू.",
+    "B2": "पहाट",
+    "B3": "सकाळ",
+    "B4": "मध्यान्ह",
+    "B5": "दुपार",
+    "B6": "म.उ.",
+    "B7": "संध्याकाळ",
+    "B8": "सायंकाळ",
+    "B9": "रात्र"
 }

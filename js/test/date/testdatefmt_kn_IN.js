@@ -555,7 +555,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "9");
+        test.equal(fmt.format(date), "ಸೆ");
         test.done();
     },
 

@@ -53,5 +53,7 @@
     "#{num}h ago": "one#{num} hr. ago|#{num} hrs. ago",
     "#{num}w ago": "one#{num} wk. ago|#{num} wks. ago",
     "#{num}mo ago": "one#{num} mo. ago|#{num} mos. ago",
-    "#{num}y ago": "one#{num} yr. ago|#{num} yrs. ago"
+    "#{num}y ago": "one#{num} yr. ago|#{num} yrs. ago",
+    "B1": "a.m.",
+    "B5": "p.m."
 }

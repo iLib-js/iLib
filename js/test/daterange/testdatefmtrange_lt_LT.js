@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_lt_LT.js - test the date range formatter object in Lithuanian/Lithuania
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_lt_LT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 m. lapkričio – 2014 m. sausio");
+        test.equal(fmt.format(start, end), "2011 m. lapkritis – 2014 m. sausis");
         test.done();
     },
     testDateRngFmtLTRangeMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_lt_LT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 m. lapkričio – 2014 m. sausio");
+        test.equal(fmt.format(start, end), "2011 m. lapkritis – 2014 m. sausis");
         test.done();
     },
     testDateRngFmtLTManyYearsFull: function(test) {

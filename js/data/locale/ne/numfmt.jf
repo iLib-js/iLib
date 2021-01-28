@@ -2,6 +2,7 @@
     "generated": true,
     "numfmt": {
         "script": "Deva",
+        "secgroupSize": 2,
         "digits": "०१२३४५६७८९",
         "useNative": true
     }

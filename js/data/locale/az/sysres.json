@@ -236,5 +236,15 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": ", ",
-    "finalSeparatorShort": ", "
+    "finalSeparatorShort": ", ",
+    "B0": "gecəyarı",
+    "B1": "gecə",
+    "B2": "AM",
+    "B3": "sübh",
+    "B4": "səhər",
+    "B5": "günorta",
+    "B6": "gündüz",
+    "B7": "PM",
+    "B8": "axşamüstü",
+    "B9": "axşam"
 }

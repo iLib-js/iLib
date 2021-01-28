@@ -20,11 +20,8 @@
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
-var cldr = require('cldr-data');
 
-var unifile = require('./unifile.js');
 var common = require('./common.js');
-var UnicodeFile = unifile.UnicodeFile;
 var coelesce = common.coelesce;
 
 function usage() {
@@ -53,14 +50,12 @@ console.log("genlangscripts - generate the localeinfo script.jf files.\n" +
 
 console.log("output dir: " + toDir);
 
-languageDataFileName = "cldr-data/supplemental/languageData.json";
-
 if (!fs.existsSync(toDir)) {
     console.error("Could not access locale data directory " + toDir);
     usage();
 }
 
-var supplementalData = require(languageDataFileName);
+var supplementalData = require("cldr-core/supplemental/languageData.json");
 
 var scripts = {};
 var scripts_name = {};
@@ -111,8 +106,14 @@ for (var language in scripts) {
         if (!fs.existsSync(filename)) {
             fs.mkdirSync(filename);
         }
+        // special cases where we disagree with CLDR
         if (language === 'ms' || language === 'kk' || language === 'pa') {
             scripts[language] = scripts[language].reverse();
+        } else if (language == 'ky') {
+            var lang = scripts[language];
+            var tmp = lang[0];
+            lang[0] = lang[1];
+            lang[1] = tmp;
         }
         console.log(language + ':\t"scripts": ' + JSON.stringify(scripts[language]) + ',');
         scripts_name["scripts"] = scripts[language];

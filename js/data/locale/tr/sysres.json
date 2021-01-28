@@ -160,5 +160,15 @@
     "separatorMedium": " ",
     "finalSeparatorMedium": " ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "gece yarısı",
+    "B1": "ÖÖ",
+    "B2": "sabah",
+    "B3": "öğleden önce",
+    "B4": "öğle",
+    "B5": "öğleden sonra",
+    "B6": "ÖS",
+    "B7": "akşamüstü",
+    "B8": "akşam",
+    "B9": "gece"
 }

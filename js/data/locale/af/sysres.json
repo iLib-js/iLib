@@ -160,5 +160,12 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": " en ",
     "separatorShort": ", ",
-    "finalSeparatorShort": " en "
+    "finalSeparatorShort": " en ",
+    "B0": "middernag",
+    "B1": "die nag",
+    "B2": "vm.",
+    "B3": "die oggend",
+    "B4": "die middag",
+    "B5": "nm.",
+    "B6": "die aand"
 }

@@ -30,5 +30,6 @@
     "1#1 dy ago|#{num} dys ago": "#{num} 日前",
     "1#1 wk ago|#{num} wks ago": "#{num} 星期前",
     "#{num}d ago": "#{num} 日前",
-    "#{num}w ago": "#{num} 星期前"
+    "#{num}w ago": "#{num} 星期前",
+    "B3": "早上"
 }

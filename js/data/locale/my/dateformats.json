@@ -68,31 +68,31 @@
                 "h": "h",
                 "m": "mm",
                 "s": "ss",
-                "ah": "a h",
-                "hm": "a h:mm",
+                "ah": "B h",
+                "hm": "B h:mm",
                 "ms": "mm:ss",
-                "ahm": "a h:mm",
-                "hms": "a h:mm:ss",
-                "hmz": "z a h:mm",
-                "ahmz": "z a h:mm",
-                "ahms": "a h:mm:ss",
-                "hmsz": "z a h:mm:ss",
-                "ahmsz": "z a h:mm:ss"
+                "ahm": "hB h:mm",
+                "hms": "B h:mm:ss",
+                "hmz": "z B h:mm",
+                "ahmz": "z hB h:mm",
+                "ahms": "hB h:mm:ss",
+                "hmsz": "z B h:mm:ss",
+                "ahmsz": "z hB h:mm:ss"
             },
             "24": {
                 "h": "HH",
                 "m": "mm",
                 "s": "ss",
                 "ah": "HH",
-                "hm": "H:mm",
+                "hm": "B H:mm",
                 "ms": "mm:ss",
-                "ahm": "H:mm",
-                "hms": "HH:mm:ss",
-                "hmz": "z H:mm",
-                "ahmz": "z H:mm",
-                "ahms": "HH:mm:ss",
-                "hmsz": "z HH:mm:ss",
-                "ahmsz": "z HH:mm:ss"
+                "ahm": "B H:mm",
+                "hms": "B HH:mm:ss",
+                "hmz": "z B H:mm",
+                "ahmz": "z B H:mm",
+                "ahms": "B HH:mm:ss",
+                "hmsz": "z B HH:mm:ss",
+                "ahmsz": "z B HH:mm:ss"
             }
         },
         "range": {
@@ -151,5 +151,37 @@
                 "s": "{sy} – {ey}"
             }
         }
-    }
+    },
+    "dayPeriods": [
+        {
+            "at": 0
+        },
+        {
+            "from": 0,
+            "to": 720
+        },
+        {
+            "from": 0,
+            "to": 720
+        },
+        {
+            "at": 720
+        },
+        {
+            "from": 720,
+            "to": 960
+        },
+        {
+            "from": 720,
+            "to": 1440
+        },
+        {
+            "from": 960,
+            "to": 1140
+        },
+        {
+            "from": 1140,
+            "to": 1440
+        }
+    ]
 }

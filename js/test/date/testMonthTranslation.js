@@ -194,8 +194,8 @@ module.exports.testmonthtranslation = {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
-        test.equal(value[0], "জানু");
-        test.equal(value[1], "ফেব");
+        test.equal(value[0], "জানুয়ারী");
+        test.equal(value[1], "ফেব্রুয়ারী");
         test.equal(value[2], "মার্চ");
         test.equal(value[3], "এপ্রিল");
         test.equal(value[4], "মে");
@@ -498,18 +498,18 @@ module.exports.testmonthtranslation = {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
-        test.equal(value[0], "Ιανουάριος"); //standAlone
-        test.equal(value[1], "Φεβρουάριος");
-        test.equal(value[2], "Μάρτιος");
-        test.equal(value[3], "Απρίλιος");
-        test.equal(value[4], "Μάιος");
-        test.equal(value[5], "Ιούνιος");
-        test.equal(value[6], "Ιούλιος");
-        test.equal(value[7], "Αύγουστος");
-        test.equal(value[8], "Σεπτέμβριος");
-        test.equal(value[9], "Οκτώβριος");
-        test.equal(value[10], "Νοέμβριος");
-        test.equal(value[11], "Δεκέμβριος");
+        test.equal(value[0], "Ιανουαρίου"); //standAlone
+        test.equal(value[1], "Φεβρουαρίου");
+        test.equal(value[2], "Μαρτίου");
+        test.equal(value[3], "Απριλίου");
+        test.equal(value[4], "Μαΐου");
+        test.equal(value[5], "Ιουνίου");
+        test.equal(value[6], "Ιουλίου");
+        test.equal(value[7], "Αυγούστου");
+        test.equal(value[8], "Σεπτεμβρίου");
+        test.equal(value[9], "Οκτωβρίου");
+        test.equal(value[10], "Νοεμβρίου");
+        test.equal(value[11], "Δεκεμβρίου");
 
         var fmt = new DateFmt({locale:"el-CY", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
@@ -518,15 +518,15 @@ module.exports.testmonthtranslation = {
 
         test.equal(value[0], "Ιαν");
         test.equal(value[1], "Φεβ");
-        test.equal(value[2], "Μάρ");
+        test.equal(value[2], "Μαρ");
         test.equal(value[3], "Απρ");
-        test.equal(value[4], "Μάι");
-        test.equal(value[5], "Ιούν");
-        test.equal(value[6], "Ιούλ");
-        test.equal(value[7], "Αύγ");
+        test.equal(value[4], "Μαΐ");
+        test.equal(value[5], "Ιουν");
+        test.equal(value[6], "Ιουλ");
+        test.equal(value[7], "Αυγ");
         test.equal(value[8], "Σεπ");
         test.equal(value[9], "Οκτ");
-        test.equal(value[10], "Νοέ");
+        test.equal(value[10], "Νοε");
         test.equal(value[11], "Δεκ");
 
         test.done();
@@ -544,18 +544,18 @@ module.exports.testmonthtranslation = {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
-        test.equal(value[0], "Ιανουάριος"); //standAlone
-        test.equal(value[1], "Φεβρουάριος");
-        test.equal(value[2], "Μάρτιος");
-        test.equal(value[3], "Απρίλιος");
-        test.equal(value[4], "Μάιος");
-        test.equal(value[5], "Ιούνιος");
-        test.equal(value[6], "Ιούλιος");
-        test.equal(value[7], "Αύγουστος");
-        test.equal(value[8], "Σεπτέμβριος");
-        test.equal(value[9], "Οκτώβριος");
-        test.equal(value[10], "Νοέμβριος");
-        test.equal(value[11], "Δεκέμβριος");
+        test.equal(value[0], "Ιανουαρίου"); //standAlone
+        test.equal(value[1], "Φεβρουαρίου");
+        test.equal(value[2], "Μαρτίου");
+        test.equal(value[3], "Απριλίου");
+        test.equal(value[4], "Μαΐου");
+        test.equal(value[5], "Ιουνίου");
+        test.equal(value[6], "Ιουλίου");
+        test.equal(value[7], "Αυγούστου");
+        test.equal(value[8], "Σεπτεμβρίου");
+        test.equal(value[9], "Οκτωβρίου");
+        test.equal(value[10], "Νοεμβρίου");
+        test.equal(value[11], "Δεκεμβρίου");
 
         var fmt = new DateFmt({locale:"el-GR", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
@@ -564,15 +564,15 @@ module.exports.testmonthtranslation = {
 
         test.equal(value[0], "Ιαν");
         test.equal(value[1], "Φεβ");
-        test.equal(value[2], "Μάρ");
+        test.equal(value[2], "Μαρ");
         test.equal(value[3], "Απρ");
-        test.equal(value[4], "Μάι");
-        test.equal(value[5], "Ιούν");
-        test.equal(value[6], "Ιούλ");
-        test.equal(value[7], "Αύγ");
+        test.equal(value[4], "Μαΐ");
+        test.equal(value[5], "Ιουν");
+        test.equal(value[6], "Ιουλ");
+        test.equal(value[7], "Αυγ");
         test.equal(value[8], "Σεπ");
         test.equal(value[9], "Οκτ");
-        test.equal(value[10], "Νοέ");
+        test.equal(value[10], "Νοε");
         test.equal(value[11], "Δεκ");
 
         test.done();
@@ -3331,18 +3331,18 @@ module.exports.testmonthtranslation = {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
-        test.equal(value[0],"ಜನವರಿ" );
+        test.equal(value[0], "ಜನವರಿ" );
         test.equal(value[1], "ಫೆಬ್ರವರಿ");
-        test.equal(value[2],"ಮಾರ್ಚ್" );
+        test.equal(value[2], "ಮಾರ್ಚ್" );
         test.equal(value[3], "ಏಪ್ರಿಲ್");
         test.equal(value[4], "ಮೇ");
         test.equal(value[5], "ಜೂನ್");
-        test.equal(value[6],"ಜುಲೈ" );
-        test.equal(value[7],"ಆಗಸ್ಟ್");
-        test.equal(value[8],"ಸೆಪ್ಟೆಂಬರ್");
-        test.equal(value[9],"ಅಕ್ಟೋಬರ್");
+        test.equal(value[6], "ಜುಲೈ" );
+        test.equal(value[7], "ಆಗಸ್ಟ್");
+        test.equal(value[8], "ಸೆಪ್ಟೆಂಬರ್");
+        test.equal(value[9], "ಅಕ್ಟೋಬರ್");
         test.equal(value[10], "ನವೆಂಬರ್");
-        test.equal(value[11],"ಡಿಸೆಂಬರ್");
+        test.equal(value[11], "ಡಿಸೆಂಬರ್");
 
         var fmt = new DateFmt({locale:"kn-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
 
@@ -3350,18 +3350,18 @@ module.exports.testmonthtranslation = {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
-        test.equal(value[0], "ಜನವರಿ"  );
-        test.equal(value[1], "ಫೆಬ್ರವರಿ");
+        test.equal(value[0], "ಜನ" );
+        test.equal(value[1], "ಫೆಬ್ರ");
         test.equal(value[2], "ಮಾರ್ಚ್"  );
         test.equal(value[3], "ಏಪ್ರಿ");
-        test.equal(value[4],  "ಮೇ" );
+        test.equal(value[4], "ಮೇ" );
         test.equal(value[5], "ಜೂನ್" );
-        test.equal(value[6],"ಜುಲೈ" );
+        test.equal(value[6], "ಜುಲೈ" );
         test.equal(value[7], "ಆಗ");
         test.equal(value[8], "ಸೆಪ್ಟೆಂ");
         test.equal(value[9], "ಅಕ್ಟೋ");
-        test.equal(value[10],"ನವೆಂ");
-        test.equal(value[11],"ಡಿಸೆಂ");
+        test.equal(value[10], "ನವೆಂ");
+        test.equal(value[11], "ಡಿಸೆಂ");
 
         test.done();
     },
@@ -3680,18 +3680,18 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        test.equal(value[0], "jan.");
-        test.equal(value[1], "feb.");
-        test.equal(value[2], "mar.");
-        test.equal(value[3], "apr.");
+        test.equal(value[0], "jan");
+        test.equal(value[1], "feb");
+        test.equal(value[2], "mar");
+        test.equal(value[3], "apr");
         test.equal(value[4], "mai");
-        test.equal(value[5], "jun.");
-        test.equal(value[6], "jul.");
-        test.equal(value[7], "aug.");
-        test.equal(value[8], "sep.");
-        test.equal(value[9], "okt.");
-        test.equal(value[10], "nov.");
-        test.equal(value[11], "des.");
+        test.equal(value[5], "jun");
+        test.equal(value[6], "jul");
+        test.equal(value[7], "aug");
+        test.equal(value[8], "sep");
+        test.equal(value[9], "okt");
+        test.equal(value[10], "nov");
+        test.equal(value[11], "des");
 
         test.done();
     },
@@ -5530,7 +5530,7 @@ module.exports.testmonthtranslation = {
         }
         test.equal(value[0], "ජන");
         test.equal(value[1], "පෙබ");
-        test.equal(value[2], "මාර්තු");
+        test.equal(value[2], "මාර්");
         test.equal(value[3], "අප්‍රේල්");
         test.equal(value[4], "මැයි");
         test.equal(value[5], "ජූනි");

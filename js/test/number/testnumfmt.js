@@ -1,17 +1,13 @@
 /*
  * testnumfmt.js - test the number formatter object
  *
-<<<<<<< HEAD
- * Copyright © 2012-2018 2020 JEDLSoft
-=======
  * Copyright © 2012-2018, 2020 JEDLSoft
->>>>>>> development
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSe-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -6975,7 +6971,7 @@ module.exports.testnumfmt = {
             maxFractionDigits: 2
         });
         test.ok(fmt);
-        test.equal(fmt.format(1234567.89), "१,२३४,५६७.८९");
+        test.equal(fmt.format(1234567.89), "१२,३४,५६७.८९");
         test.done();
     },
     testNumFmtNative_ne_NP: function(test) {
@@ -6999,7 +6995,7 @@ module.exports.testnumfmt = {
             currency: "NPR"
         });
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "Rs १००,११०.५७");
+        test.equal(fmt.format(100110.57), "Rs १,००,११०.५७");
         test.done();
     },
     testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ne_NP1: function(test) {
@@ -7011,7 +7007,7 @@ module.exports.testnumfmt = {
             currency: "NPR"
         });
         test.ok(fmt);
-        test.equal(fmt.format(-100110.57), "-Rs १००,११०.५७");
+        test.equal(fmt.format(-100110.57), "-Rs १,००,११०.५७");
         test.done();
     },
     testNumFmtCurrencyFormatCorrectCurrencyForLocale_ne_NP: function(test) {
@@ -7022,7 +7018,7 @@ module.exports.testnumfmt = {
             currency: "NPR"
         });
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "Rs १००,११०.५७");
+        test.equal(fmt.format(100110.57), "Rs १,००,११०.५७");
         test.done();
     },
     testNumFmtPercentageFormatRegular_ne_NP: function(test) {
