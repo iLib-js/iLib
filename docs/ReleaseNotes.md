@@ -1,6 +1,17 @@
 Release Notes for Version 14
 ============================
 
+Build 013
+-------
+Published as version 14.8.0
+
+New Features:
+* Added Locale.isValid() method which returns true iff all of the given locale components (language,
+  script, region) are valid ISO codes.
+
+Bug Fixes:
+
+
 Build 012
 -------
 Published as version 14.7.0
