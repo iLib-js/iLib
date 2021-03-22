@@ -578,6 +578,7 @@ Locale.a1toa3langmap = {
     "zu": "zul"
 };
 
+// the list below is originally from https://unicode.org/iso15924/iso15924-codes.html
 Locale.iso15924 = [
     "Adlm",
     "Afak",
