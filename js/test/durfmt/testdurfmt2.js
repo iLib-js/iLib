@@ -1,7 +1,7 @@
 /*
  * testdurfmt2.js - test the duration formatter object
  *
- * Copyright © 2019-2020, JEDLSoft
+ * Copyright © 2019-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -9442,6 +9442,71 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_14[1], '14 နာရီ 14 မိနစ် 14 စက္ကန့်');
         test.equal(clockformatted_14[2], '14 နာရီ 14 မိနစ် 14 s');
         test.equal(clockformatted_14[3], '14 နာရီ 14 မိနစ် 14 s');
+
+        test.done();
+    },
+    testDurFmt_mt_MT: function(test) {
+        test.expect(32);
+        // 1 5 14 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [], textformatted_5 = [], textformatted_14 = [], textformatted_100 = [];
+        var clockformatted_1 = [], clockformatted_5 = [], clockformatted_14 = [], clockformatted_100 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "mt-MT", style:"text", length:length[i], useNative: false});
+            textformatted_1.push(textfmt.format({year: 1, month: 1, week: 1, day: 1}).toString());
+            textformatted_5.push(textfmt.format({year: 5, month: 5, week: 5, day: 5}).toString());
+            textformatted_14.push(textfmt.format({year: 14,month: 14,week: 14,day: 14}).toString());
+            textformatted_100.push(textfmt.format({year: 100, month: 100, week: 100, day: 100}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1, minute: 1, second: 1}).toString());
+            clockformatted_5.push(textfmt.format({hour: 5, minute: 5, second: 5}).toString());
+            clockformatted_14.push(textfmt.format({hour: 14, minute: 14, second: 14}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100, minute: 100, second: 100}).toString());
+        }
+
+        test.equal(textformatted_1[0], '1 y, 1 m, 1 w, u 1 d');
+        test.equal(textformatted_1[1], '1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[2], '1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[3], '1 y, 1 m, 1 w, 1 d');
+
+        test.equal(textformatted_5[0], '5 y, 5 m, 5 w, u 5 d');
+        test.equal(textformatted_5[1], '5 y, 5 m, 5 w, 5 d');
+        test.equal(textformatted_5[2], '5 y, 5 m, 5 w, 5 d');
+        test.equal(textformatted_5[3], '5 y, 5 m, 5 w, 5 d');
+
+        test.equal(textformatted_14[0], '14 y, 14 m, 14 w, u 14 d');
+        test.equal(textformatted_14[1], '14 y, 14 m, 14 w, 14 d');
+        test.equal(textformatted_14[2], '14 y, 14 m, 14 w, 14 d');
+        test.equal(textformatted_14[3], '14 y, 14 m, 14 w, 14 d');
+
+        test.equal(textformatted_100[0], '100 y, 100 m, 100 w, u 100 d');
+        test.equal(textformatted_100[1], '100 y, 100 m, 100 w, 100 d');
+        test.equal(textformatted_100[2], '100 y, 100 m, 100 w, 100 d');
+        test.equal(textformatted_100[3], '100 y, 100 m, 100 w, 100 d');
+
+        test.equal(clockformatted_1[0], '1 h, 1 min, u 1 s');
+        test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[3], '1 h, 1 min, 1 s');
+
+        test.equal(clockformatted_5[0], '5 h, 5 min, u 5 s');
+        test.equal(clockformatted_5[1], '5 h, 5 min, 5 s');
+        test.equal(clockformatted_5[2], '5 h, 5 min, 5 s');
+        test.equal(clockformatted_5[3], '5 h, 5 min, 5 s');
+
+        test.equal(clockformatted_14[0], '14 h, 14 min, u 14 s');
+        test.equal(clockformatted_14[1], '14 h, 14 min, 14 s');
+        test.equal(clockformatted_14[2], '14 h, 14 min, 14 s');
+        test.equal(clockformatted_14[3], '14 h, 14 min, 14 s');
+
+        test.equal(clockformatted_100[0], '100 h, 100 min, u 100 s');
+        test.equal(clockformatted_100[1], '100 h, 100 min, 100 s');
+        test.equal(clockformatted_100[2], '100 h, 100 min, 100 s');
+        test.equal(clockformatted_100[3], '100 h, 100 min, 100 s');
 
         test.done();
     }

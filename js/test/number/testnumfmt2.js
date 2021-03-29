@@ -1,7 +1,7 @@
  /*
  * testnumfmt2.js - test the number formatter object
  *
- * Copyright © 2019-2020, JEDLSoft
+ * Copyright © 2019-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3962,6 +3962,25 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.equal(curfmt.format(57.05), "57 K");
+        test.done();
+    },
+    testNumFmt_mt_MT: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("mt-MT");
+        var fmt = new NumFmt({locale:"mt-MT", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ".");
+        test.equal(li.getGroupingSeparator(), ",");
+        test.equal(fmt.format(123456789.45), "123,456,789.45");
+
+        var pctfmt = new NumFmt({locale:"mt-MT", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+
+        var curfmt = new NumFmt({locale: "mt-MT", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{s}{n}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
+        test.equal(curfmt.format(57.05), "€57.05");
         test.done();
     }
 }

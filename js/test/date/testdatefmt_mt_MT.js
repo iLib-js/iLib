@@ -1,5 +1,5 @@
 /*
- * testdatefmt_mt_MT.js - test the date formatter object in 
+ * testdatefmt_mt_MT.js - test the date formatter object in Maltese-Malta
  * 
  * Copyright © 2021, JEDLSoft
  *
@@ -111,7 +111,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ta’ Settembru 2011");
+        test.equal(fmt.format(date), '29 ta’ Settembru 2011');
         test.done();
     },
     testDateFmtSimpleTimeShort_mt_MT: function(test) {
@@ -129,7 +129,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
     testDateFmtSimpleTimeMedium_mt_MT: function(test) {
@@ -147,7 +147,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
     testDateFmtSimpleTimeLong_mt_MT: function(test) {
@@ -165,7 +165,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
     testDateFmtSimpleTimeFull_mt_MT: function(test) {
@@ -178,12 +178,12 @@ module.exports.testdatefmt_mt_MT = {
             year: 2011,
             month: 9,
             day: 29,
-            hour: 13,
+            hour: 1,
             minute: 45,
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), '01:45');
         test.done();
     },
     testDateFmtDateTimeSimpleShort_mt_MT: function(test) {
@@ -201,7 +201,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011 13:45");
+        test.equal(fmt.format(date), '29/09/2011 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_mt_MT: function(test) {
@@ -219,7 +219,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Set 2011 13:45");
+        test.equal(fmt.format(date), '29 Set 2011 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleLong_mt_MT: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ta’ Settembru 2011 13:45");
+        test.equal(fmt.format(date), '29 ta’ Settembru 2011 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_mt_MT: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ta’ Settembru 2011 13:45");
+        test.equal(fmt.format(date), '29 ta’ Settembru 2011 13:45');
         test.done();
     },
     testDateFmtTemplateCalendar_mt_MT: function(test) {
@@ -274,6 +274,25 @@ module.exports.testdatefmt_mt_MT = {
             millisecond: 0
         });
         test.equal(fmt.format(date), "2011-09-29");
+        test.done();
+    },
+    testDateFmtTemplateCalendarIncompatibleDateType_mt_MT: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "mt-MT", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
+        test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "mt-MT",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        // convert automatically to a Julian calendar date
+        test.equal(fmt.format(date), "2011-09-16 13:45");
         test.done();
     },
     testDateFmtTemplateClock12SwitchHH_mt_MT: function(test) {
@@ -330,7 +349,7 @@ module.exports.testdatefmt_mt_MT = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    testDateFmtTemplateClock24SwitchKK_mt_MT: function(test) {
+    testDateFmtTemplateClock24SwitchKK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "mt-MT", clock: "24", template: "KK:mm"});
         test.ok(fmt !== null);
@@ -366,7 +385,7 @@ module.exports.testdatefmt_mt_MT = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_mt_MT: function(test) {
+    testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "mt-MT", template: "KK:mm"});
         test.ok(fmt !== null);
@@ -420,6 +439,60 @@ module.exports.testdatefmt_mt_MT = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
+    testDateFmtTypeDate_mt_MT: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "mt-MT", type: "date"});
+        test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "mt-MT",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), '29/09/2011');
+        test.done();
+    },
+    testDateFmtTypeTime_mt_MT: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "mt-MT", type: "time"});
+        test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "mt-MT",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), '13:45');
+        test.done();
+    },
+    testDateFmtTypeDateTime_mt_MT: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "mt-MT", type: "datetime"});
+        test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "mt-MT",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), '29/09/2011 13:45');
+        test.done();
+    },
     testDateFmtShortDateComponentsY_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "mt-MT", date: "y"});
@@ -456,24 +529,6 @@ module.exports.testdatefmt_mt_MT = {
         test.equal(fmt.format(date), "Se");
         test.done();
     },
-    testDateFmtShortDateComponentsN_mt_MT: function(test) {
-        test.expect(2);
-        var fmt = new DateFmt({locale: "mt-MT", date: "n"});
-        test.ok(fmt !== null);
-        
-        var date = new GregorianDate({
-            locale: "mt-MT",
-            year: 2011,
-            month: 9,
-            day: 29,
-            hour: 13,
-            minute: 45,
-            second: 0,
-            millisecond: 0
-        });
-        test.equal(fmt.format(date), "S");
-        test.done();
-    },
     testDateFmtShortDateComponentsD_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "mt-MT", date: "d"});
@@ -507,7 +562,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09");
+        test.equal(fmt.format(date), '29/09');
         test.done();
     },
     testDateFmtShortDateComponentsMY_mt_MT: function(test) {
@@ -525,7 +580,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "09/2011");
+        test.equal(fmt.format(date), '09/2011');
         test.done();
     },
     testDateFmtShortDateComponentsDMY_mt_MT: function(test) {
@@ -543,7 +598,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011");
+        test.equal(fmt.format(date), '29/09/2011');
         test.done();
     },
     testDateFmtShortDateComponentsWDM_mt_MT: function(test) {
@@ -561,7 +616,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Ħm, 29/09");
+        test.equal(fmt.format(date), 'Ħm, 29/09');
         test.done();
     },
     testDateFmtShortDateComponentsWDMY_mt_MT: function(test) {
@@ -579,7 +634,25 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Ħm, 29/09/2011");
+        test.equal(fmt.format(date), 'Ħm, 29/09/2011');
+        test.done();
+    },
+    testDateFmtLongDateComponentsWDM_mt_MT: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "mt-MT", date: "wdm", length: "long"});
+        test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "mt-MT",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), 'Ħam, 29 ta’ Settembru');
         test.done();
     },
     testDateFmtFullDateComponentsY_mt_MT: function(test) {
@@ -651,7 +724,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ta’ Settembru");
+        test.equal(fmt.format(date), '29 ta’ Settembru');
         test.done();
     },
     testDateFmtFullDateComponentsMY_mt_MT: function(test) {
@@ -669,7 +742,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Settembru 2011");
+        test.equal(fmt.format(date), 'Settembru 2011');
         test.done();
     },
     testDateFmtFullDateComponentsDMY_mt_MT: function(test) {
@@ -687,7 +760,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ta’ Settembru 2011");
+        test.equal(fmt.format(date), '29 ta’ Settembru 2011');
         test.done();
     },
     testDateFmtFullDateComponentsWDM_mt_MT: function(test) {
@@ -705,7 +778,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Il-Ħamis, 29 ta’ Settembru");
+        test.equal(fmt.format(date), 'Il-Ħamis, 29 ta’ Settembru');
         test.done();
     },
     testDateFmtFullDateComponentsWDMY_mt_MT: function(test) {
@@ -723,7 +796,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Il-Ħamis, 29 ta’ Settembru 2011");
+        test.equal(fmt.format(date), 'Il-Ħamis, 29 ta’ Settembru 2011');
         test.done();
     },
     testDateFmtShortTimeComponentsS_mt_MT: function(test) {
@@ -780,8 +853,24 @@ module.exports.testdatefmt_mt_MT = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-    
-    
+    testDateFmtShortTimeComponentsMS_mt_MT: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "mt-MT", type: "time", time: "ms"});
+        test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "mt-MT",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "45:37");
+        test.done();
+    },
     testDateFmtShortTimeComponentsHM_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "mt-MT", type: "time", time: "hm"});
@@ -839,9 +928,10 @@ module.exports.testdatefmt_mt_MT = {
     testDateFmtShortTimeComponentsHMZ_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "mt-MT", 
-            type: "time", 
-            time: "hmz"
+            locale: "mt-MT",
+            type: "time",
+            time: "hmz",
+            timezone: "Europe/Malta"
         });
         test.ok(fmt !== null);
         
@@ -861,9 +951,10 @@ module.exports.testdatefmt_mt_MT = {
     testDateFmtShortTimeComponentsHMAZ_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "mt-MT", 
-            type: "time", 
-            time: "ahmsz"
+            locale: "mt-MT",
+            type: "time",
+            time: "hmaz",
+            timezone: "Europe/Malta"
         });
         test.ok(fmt !== null);
         
@@ -877,7 +968,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 CEST");
+        test.equal(fmt.format(date), "13:45 CEST");
         test.done();
     },
     testDateFmtShortTimeComponentsHMSA_mt_MT: function(test) {
@@ -901,9 +992,10 @@ module.exports.testdatefmt_mt_MT = {
     testDateFmtShortTimeComponentsHMSZ_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "mt-MT", 
-            type: "time", 
-            time: "hmsz"
+            locale: "mt-MT",
+            type: "time",
+            time: "hmsz",
+            timezone: "Europe/Malta"
         });
         test.ok(fmt !== null);
         
@@ -923,9 +1015,10 @@ module.exports.testdatefmt_mt_MT = {
     testDateFmtShortTimeComponentsHMSAZ_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "mt-MT", 
-            type: "time", 
-            time: "hmsaz"
+            locale: "mt-MT",
+            type: "time",
+            time: "hmsaz",
+            timezone: "Europe/Malta"
         });
         test.ok(fmt !== null);
         
@@ -996,6 +1089,24 @@ module.exports.testdatefmt_mt_MT = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
+    testDateFmtFullTimeComponentsMS_mt_MT: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "mt-MT", type: "time", length: "full", time: "ms"});
+        test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "mt-MT",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "45:37");
+        test.done();
+    },
     testDateFmtFullTimeComponentsHM_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "mt-MT", type: "time", length: "full", time: "hm"});
@@ -1056,7 +1167,32 @@ module.exports.testdatefmt_mt_MT = {
             locale: "mt-MT", 
             type: "time", 
             length: "full", 
-            time: "hmz"
+            time: "hmz", 
+            timezone: "Europe/Malta"
+        });
+        test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "mt-MT",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "13:45 CEST");
+        test.done();
+    },
+    testDateFmtFullTimeComponentsHMAZ_mt_MT: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({
+            locale: "mt-MT",
+            type: "time",
+            length: "full",
+            time: "hmaz",
+            timezone: "Europe/Malta"
         });
         test.ok(fmt !== null);
         
@@ -1094,10 +1230,11 @@ module.exports.testdatefmt_mt_MT = {
     testDateFmtFullTimeComponentsHMSZ_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "mt-MT", 
-            type: "time", 
-            length: "full", 
-            time: "hmsz"
+            locale: "mt-MT",
+            type: "time",
+            length: "full",
+            time: "hmsz",
+            timezone: "Europe/Malta"
         });
         test.ok(fmt !== null);
         
@@ -1117,10 +1254,11 @@ module.exports.testdatefmt_mt_MT = {
     testDateFmtFullTimeComponentsHMSAZ_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "mt-MT", 
-            type: "time", 
-            length: "full", 
-            time: "hmsaz"
+            locale: "mt-MT",
+            type: "time",
+            length: "full",
+            time: "hmsaz",
+            timezone: "Europe/Malta"
         });
         test.ok(fmt !== null);
         
@@ -1140,10 +1278,11 @@ module.exports.testdatefmt_mt_MT = {
     testDateFmtWithTimeZoneAndNoDST_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "mt-MT", 
-            type: "time", 
-            length: "full", 
-            time: "hmsz"
+            locale: "mt-MT",
+            type: "time",
+            length: "full",
+            time: "hmsz",
+            timezone: "Europe/Malta"
         });
         test.ok(fmt !== null);
         
@@ -1269,7 +1408,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "10 minuti ilu");
+        test.equal(fmt.formatRelative(reference, date), '10 minuti ilu');
         test.done();
     },
     testDateFmtFormatRelativeWithinDayAfter_mt_MT: function(test) {
@@ -1297,7 +1436,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "fi żmien 4 sigħat");
+        test.equal(fmt.formatRelative(reference, date), 'fi żmien 4 sigħat');
         test.done();
     },
     testDateFmtFormatRelativeWithinDayBefore_mt_MT: function(test) {
@@ -1325,7 +1464,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "4 sigħat ilu");
+        test.equal(fmt.formatRelative(reference, date), '4 sigħat ilu');
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightAfter_mt_MT: function(test) {
@@ -1353,7 +1492,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "fi żmien 4 ġurnata oħra");
+        test.equal(fmt.formatRelative(reference, date), 'fi żmien 4 ġurnata oħra');
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightBefore_mt_MT: function(test) {
@@ -1381,7 +1520,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "4 ġranet ilu");
+        test.equal(fmt.formatRelative(reference, date), '4 ġranet ilu');
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterAfter_mt_MT: function(test) {
@@ -1409,7 +1548,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "sa 9 ġimgħat oħra");
+        test.equal(fmt.formatRelative(reference, date), 'sa 9 ġimgħat oħra');
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterBefore_mt_MT: function(test) {
@@ -1437,7 +1576,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "9 ġimgħat ilu");
+        test.equal(fmt.formatRelative(reference, date), '9 ġimgħat ilu');
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsAfter_mt_MT: function(test) {
@@ -1465,7 +1604,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "fi 16 xhur oħra");
+        test.equal(fmt.formatRelative(reference, date), 'fi 16 xhur oħra');
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsBefore_mt_MT: function(test) {
@@ -1493,7 +1632,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "14 xhur ilu");
+        test.equal(fmt.formatRelative(reference, date), '14 xhur ilu');
         test.done();
     },
     testDateFmtFormatRelativeYearsAfter_mt_MT: function(test) {
@@ -1521,7 +1660,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "fi żmien 14 snin oħra");
+        test.equal(fmt.formatRelative(reference, date), 'fi żmien 14 snin oħra');
         test.done();
     },
     testDateFmtFormatRelativeYearsBefore_mt_MT: function(test) {
@@ -1549,10 +1688,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "21 snin ilu");
+        test.equal(fmt.formatRelative(reference, date), '21 snin ilu');
         test.done();
     }
-    
-    
-    
 };

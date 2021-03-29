@@ -119,6 +119,17 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "an-Latn-ES");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLanguage8: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "mt"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "mt-Latn-MT");
+        test.done();
+    },
 
     testLocaleMatcherGetLikelyLocaleByRegion: function(test) {
         test.expect(3);
@@ -129,6 +140,17 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "uz-Latn-UZ");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByRegion2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "MT"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "mt-Latn-MT");
         test.done();
     },
 
