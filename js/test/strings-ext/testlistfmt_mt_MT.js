@@ -30,7 +30,7 @@ module.exports.testlistfmt_mt_MT = {
         ilib.clearCache();
         callback();
     },
-    testListFmteuESNumberFormatOne: function(test) {
+    testListFmtNumberFormatOne_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT"
         });
@@ -40,7 +40,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda"]), "waħda");
         test.done();
     },
-    testListFmteuESNumberFormatTwo: function(test) {
+    testListFmtNumberFormatTwo_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT"
         });
@@ -50,7 +50,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda", "tnejn"]), "waħda u tnejn");
         test.done();
     },
-    testListFmteuESNumberFormatThree: function(test) {
+    testListFmtNumberFormatThree_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT"
         });
@@ -60,7 +60,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda", "tnejn", "tlieta"]), "waħda, tnejn, u tlieta");
         test.done();
     },
-    testListFmteuESNumberFormatFour: function(test) {
+    testListFmtNumberFormatFour_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT"
         });
@@ -70,7 +70,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda", "tnejn", "tlieta", "erbgħa"]), "waħda, tnejn, tlieta, u erbgħa");
         test.done();
     },
-    testListFmteuESNumberFormatFive: function(test) {
+    testListFmtNumberFormatFive_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT"
         });
@@ -80,7 +80,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda", "tnejn", "tlieta", "erbgħa", "ħamsa"]), "waħda, tnejn, tlieta, erbgħa, u ħamsa");
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatOneShort: function(test) {
+    testListFmtUnitStyleNumberFormatOneShort_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT",
             style: "unit"
@@ -91,7 +91,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda"]), "waħda");
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatTwoShort: function(test) {
+    testListFmtUnitStyleNumberFormatTwoShort_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT",
             style: "unit"
@@ -102,7 +102,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda", "tnejn"]), "waħda u tnejn");
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatThreeShort: function(test) {
+    testListFmtUnitStyleNumberFormatThreeShort_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT",
             style: "unit"
@@ -113,7 +113,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda", "tnejn", "tlieta"]), "waħda, tnejn, u tlieta");
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatFourShort: function(test) {
+    testListFmtUnitStyleNumberFormatFourShort_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT",
             style: "unit"
@@ -124,7 +124,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda", "tnejn", "tlieta", "erbgħa"]), "waħda, tnejn, tlieta, u erbgħa");
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatFiveShort: function(test) {
+    testListFmtUnitStyleNumberFormatFiveShort_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT",
             style: "unit"
@@ -135,7 +135,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda", "tnejn", "tlieta", "erbgħa", "ħamsa"]), "waħda, tnejn, tlieta, erbgħa, u ħamsa");
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatOneFull: function(test) {
+    testListFmtUnitStyleNumberFormatOneFull_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT",
             style: "unit",
@@ -147,7 +147,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda"]), "waħda");
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatTwoFull: function(test) {
+    testListFmtUnitStyleNumberFormatTwoFull_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT",
             style: "unit",
@@ -159,7 +159,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda", "tnejn"]), "waħda u tnejn");
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatThreeFull: function(test) {
+    testListFmtUnitStyleNumberFormatThreeFull_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT",
             style: "unit",
@@ -171,7 +171,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda", "tnejn", "tlieta"]), "waħda, tnejn, u tlieta");
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatFourFull: function(test) {
+    testListFmtUnitStyleNumberFormatFourFull_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT",
             style: "unit",
@@ -183,7 +183,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda", "tnejn", "tlieta", "erbgħa"]), "waħda, tnejn, tlieta, u erbgħa");
         test.done();
     },
-    testListFmtUnitStyleeuESNumberFormatFiveFull: function(test) {
+    testListFmtUnitStyleNumberFormatFiveFull_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT",
             style: "unit",
@@ -195,7 +195,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda", "tnejn", "tlieta", "erbgħa", "ħamsa"]), "waħda, tnejn, tlieta, erbgħa, u ħamsa");
         test.done();
     },
-    testListFmtORStyleeuESNumberFormatOne: function(test) {
+    testListFmtORStyleNumberFormatOne_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT",
             style: "disjunction"
@@ -206,7 +206,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda"]), "waħda");
         test.done();
     },
-    testListFmtORStyleeuESNumberFormatTwo: function(test) {
+    testListFmtORStyleNumberFormatTwo_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT",
             style: "disjunction"
@@ -217,7 +217,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda", "tnejn"]), "waħda or tnejn");
         test.done();
     },
-    testListFmtORStyleeuESNumberFormatThree: function(test) {
+    testListFmtORStyleNumberFormatThree_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT",
             style: "disjunction"
@@ -228,7 +228,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda", "tnejn", "tlieta"]), "waħda, tnejn, or tlieta");
         test.done();
     },
-    testListFmtORStyleeuESNumberFormatFour: function(test) {
+    testListFmtORStyleNumberFormatFour_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT",
             style: "disjunction"
@@ -239,7 +239,7 @@ module.exports.testlistfmt_mt_MT = {
         test.equal(fmt.format(["waħda", "tnejn", "tlieta", "erbgħa"]), "waħda, tnejn, tlieta, or erbgħa");
         test.done();
     },
-    testListFmtORStyleeuESNumberFormatFiveFull: function(test) {
+    testListFmtORStyleNumberFormatFiveFull_mt_MT: function(test) {
         var fmt = new ListFmt({
             locale: "mt-MT",
             style: "disjunction"
