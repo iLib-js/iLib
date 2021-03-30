@@ -1,5 +1,5 @@
 /*
- * testdatefmtrange_tg_TJ.js - test the date range formatter object Maltese-Malta
+ * testdatefmtrange_tg_TJ.js - test the date range formatter object Tajik-Tajikistan
  * 
  * Copyright © 2021, JEDLSoft
  *

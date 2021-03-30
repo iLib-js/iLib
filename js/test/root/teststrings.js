@@ -4047,7 +4047,7 @@ module.exports.teststrings = {
 
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(4.7), "Default items");
+        test.equal(str.formatChoice(5.3), "Default items");
         test.done();
     }
 };

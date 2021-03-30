@@ -1929,17 +1929,6 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ne-NP");
         test.done();
     },
-    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_TJ: function(test) {
-        test.expect(3);
-        var lm = new LocaleMatcher({
-            locale: "TJ"
-        });
-        test.ok(typeof(lm) !== "undefined");
-        var locale = lm.getLikelyLocaleMinimal();
-        test.ok(typeof(locale) !== "undefined");
-        test.equal(locale.getSpec(), "tg-TJ");
-        test.done();
-    },
 
     testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_LA: function(test) {
         test.expect(3);

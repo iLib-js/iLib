@@ -385,7 +385,7 @@ module.exports.testdatefmt_tg_TJ = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK: function(test) {
+    testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_tg_TJ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "tg-TJ", template: "KK:mm"});
         test.ok(fmt !== null);
