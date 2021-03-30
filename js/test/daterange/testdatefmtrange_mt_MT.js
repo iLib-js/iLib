@@ -33,8 +33,7 @@ module.exports.testdatefmtrange_mt_MT = {
         ilib.clearCache();
         callback();
     },
-
-    testDateRngFmteuESRangeInDayShort: function(test) {
+    testDateRngFmtRangeInDayShort_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "short"});
         test.ok(fmt !== null);
@@ -60,7 +59,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "31/12/2011 13:45 – 14:30");
         test.done();
     },
-    testDateRngFmteuESRangeInDayMedium: function(test) {
+    testDateRngFmtRangeInDayMedium_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "medium"});
         test.ok(fmt !== null);
@@ -86,7 +85,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "31 Diċ 2011 13:45 – 14:30");
         test.done();
     },
-    testDateRngFmteuESRangeInDayLong: function(test) {
+    testDateRngFmtRangeInDayLong_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "long"});
         test.ok(fmt !== null);
@@ -112,7 +111,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "31 ta’ Diċembru 2011 13:45 – 14:30");
         test.done();
     },
-    testDateRngFmteuESRangeInDayFull: function(test) {
+    testDateRngFmtRangeInDayFull_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "full"});
         test.ok(fmt !== null);
@@ -139,7 +138,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.done();
     },
     
-    testDateRngFmteuESRangeNextDayShort: function(test) {
+    testDateRngFmtRangeNextDayShort_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "short"});
         test.ok(fmt !== null);
@@ -165,7 +164,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "30/12/2011 13:45 – 31/12/2011 14:30");
         test.done();
     },
-    testDateRngFmteuESRangeNextDayMedium: function(test) {
+    testDateRngFmtRangeNextDayMedium_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "medium"});
         test.ok(fmt !== null);
@@ -191,7 +190,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "30 Diċ 2011 13:45 – 31 Diċ 2011 14:30");
         test.done();
     },
-    testDateRngFmteuESRangeNextDayLong: function(test) {
+    testDateRngFmtRangeNextDayLong_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "long"});
         test.ok(fmt !== null);
@@ -217,7 +216,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "30 ta’ Diċembru 2011 13:45 – 31 ta’ Diċembru 2011 14:30");
         test.done();
     },
-    testDateRngFmteuESRangeNextDayFull: function(test) {
+    testDateRngFmtRangeNextDayFull_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "full"});
         test.ok(fmt !== null);
@@ -244,7 +243,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.done();
     },
     
-    testDateRngFmteuESRangeMultiDayShort: function(test) {
+    testDateRngFmtRangeMultiDayShort_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "short"});
         test.ok(fmt !== null);
@@ -270,7 +269,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "20 – 31/12/2011");
         test.done();
     },
-    testDateRngFmteuESRangeMultiDayMedium: function(test) {
+    testDateRngFmtRangeMultiDayMedium_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "medium"});
         test.ok(fmt !== null);
@@ -296,7 +295,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "20 – 31 Diċ 2011");
         test.done();
     },
-    testDateRngFmteuESRangeMultiDayLong: function(test) {
+    testDateRngFmtRangeMultiDayLong_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "long"});
         test.ok(fmt !== null);
@@ -322,7 +321,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "20 – 31 ta’ Diċembru 2011");
         test.done();
     },
-    testDateRngFmteuESRangeMultiDayFull: function(test) {
+    testDateRngFmtRangeMultiDayFull_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "full"});
         test.ok(fmt !== null);
@@ -349,7 +348,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.done();
     },
     
-    testDateRngFmteuESRangeNextMonthShort: function(test) {
+    testDateRngFmtRangeNextMonthShort_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "short"});
         test.ok(fmt !== null);
@@ -375,7 +374,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "20/11 – 31/12/2011");
         test.done();
     },
-    testDateRngFmteuESRangeNextMonthMedium: function(test) {
+    testDateRngFmtRangeNextMonthMedium_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "medium"});
         test.ok(fmt !== null);
@@ -401,7 +400,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "20 Nov – 31 Diċ 2011");
         test.done();
     },
-    testDateRngFmteuESRangeNextMonthLong: function(test) {
+    testDateRngFmtRangeNextMonthLong_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "long"});
         test.ok(fmt !== null);
@@ -427,7 +426,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "20 ta’ Novembru – 31 ta’ Diċembru 2011");
         test.done();
     },
-    testDateRngFmteuESRangeNextMonthFull: function(test) {
+    testDateRngFmtRangeNextMonthFull_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "full"});
         test.ok(fmt !== null);
@@ -454,7 +453,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.done();
     },
     
-    testDateRngFmteuESRangeNextYearShort: function(test) {
+    testDateRngFmtRangeNextYearShort_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "short"});
         test.ok(fmt !== null);
@@ -480,7 +479,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "20/11/2011 – 31/01/2012");
         test.done();
     },
-    testDateRngFmteuESRangeNextYearMedium: function(test) {
+    testDateRngFmtRangeNextYearMedium_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "medium"});
         test.ok(fmt !== null);
@@ -506,7 +505,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "20 Nov 2011 – 31 Jan 2012");
         test.done();
     },
-    testDateRngFmteuESRangeNextYearLong: function(test) {
+    testDateRngFmtRangeNextYearLong_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "long"});
         test.ok(fmt !== null);
@@ -532,7 +531,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "20 ta’ Novembru 2011 – 31 ta’ Jannar 2012");
         test.done();
     },
-    testDateRngFmteuESRangeNextYearFull: function(test) {
+    testDateRngFmtRangeNextYearFull_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "full"});
         test.ok(fmt !== null);
@@ -559,7 +558,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.done();
     },
     
-    testDateRngFmteuESRangeMultiYearShort: function(test) {
+    testDateRngFmtRangeMultiYearShort_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "short"});
         test.ok(fmt !== null);
@@ -585,7 +584,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "11/2011 – 01/2014");
         test.done();
     },
-    testDateRngFmteuESRangeMultiYearMedium: function(test) {
+    testDateRngFmtRangeMultiYearMedium_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "medium"});
         test.ok(fmt !== null);
@@ -611,7 +610,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "Nov 2011 – Jan 2014");
         test.done();
     },
-    testDateRngFmteuESRangeMultiYearLong: function(test) {
+    testDateRngFmtRangeMultiYearLong_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "long"});
         test.ok(fmt !== null);
@@ -637,7 +636,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "Novembru 2011 – Jannar 2014");
         test.done();
     },
-    testDateRngFmteuESRangeMultiYearFull: function(test) {
+    testDateRngFmtRangeMultiYearFull_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "full"});
         test.ok(fmt !== null);
@@ -663,7 +662,7 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "Novembru 2011 – Jannar 2014");
         test.done();
     },
-    testDateRngFmteuESManyYearsFull: function(test) {
+    testDateRngFmtManyYearsFull_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "full"});
         test.ok(fmt !== null);
