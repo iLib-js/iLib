@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
  * 
- * Copyright © 2017, 2020 JEDLSoft
+ * Copyright © 2017, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,6 +41,7 @@ module.exports.files = [
     "testunitfmt_lo_LA.js",
     "testunitfmt_ne_NP.js",
     "testunitfmt_my_MM.js",
+    "testunitfmt_tg_TJ.js",
     "testunitfmtasync.js",
     "testdigitalspeed.js",
     "testunitfmt_usages.js"

@@ -1,7 +1,7 @@
 /*
  * testWeekdayTranslation.js - test the weekday's translation
  *
- * Copyright © 2019-2020, JEDLSoft
+ * Copyright © 2019-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -11925,6 +11925,77 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "က");
         test.equal(value[5], "သ");
         test.equal(value[6], "စ");
+
+        test.done();
+    },
+    testWeekdayTranslationFull_tg_TJ: function(test) {
+        // full -> wide
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"tg-TJ", date:"w", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Якшанбе');
+        test.equal(value[1], 'Душанбе');
+        test.equal(value[2], 'Сешанбе');
+        test.equal(value[3], 'Чоршанбе');
+        test.equal(value[4], 'Панҷшанбе');
+        test.equal(value[5], 'Ҷумъа');
+        test.equal(value[6], 'Шанбе');
+        test.done();
+    },
+    testWeekdayTranslationLong_tg_TJ: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"tg-TJ", date:"w", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Яшб');
+        test.equal(value[1], 'Дшб');
+        test.equal(value[2], 'Сшб');
+        test.equal(value[3], 'Чшб');
+        test.equal(value[4], 'Пшб');
+        test.equal(value[5], 'Ҷмъ');
+        test.equal(value[6], 'Шнб');
+
+        test.done();
+    },
+    testWeekdayTranslationMedium_tg_TJ: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"tg-TJ", date:"w", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Яшб');
+        test.equal(value[1], 'Дшб');
+        test.equal(value[2], 'Сшб');
+        test.equal(value[3], 'Чшб');
+        test.equal(value[4], 'Пшб');
+        test.equal(value[5], 'Ҷмъ');
+        test.equal(value[6], 'Шнб');
+
+        test.done();
+    },
+    testWeekdayTranslationShort_tg_TJ: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"tg-TJ", date:"w", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Я');
+        test.equal(value[1], 'Д');
+        test.equal(value[2], 'С');
+        test.equal(value[3], 'Ч');
+        test.equal(value[4], 'П');
+        test.equal(value[5], 'Ҷ');
+        test.equal(value[6], 'Ш');
 
         test.done();
     }

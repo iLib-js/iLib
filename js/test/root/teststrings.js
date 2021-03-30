@@ -1,7 +1,7 @@
 /*
  * teststrings.js - test the String object
  *
- * Copyright © 2012-2019-2020, JEDLSoft
+ * Copyright © 2012-2019-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3590,7 +3590,25 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(15), "Default items");
         test.done();
     },
-    
+    testStringFormatChoiceCharClassesComplex_tg_TJ: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("tg-TJ");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_tg_TJ2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("tg-TJ");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(7), "Default items");
+        test.done();
+    },
+
     testStringFormatChoiceDecimal1: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
@@ -4003,6 +4021,26 @@ module.exports.teststrings = {
         test.done();
     },
     testStringFormatChoiceDecimal_ne_NP2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ne-NP");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(4.7), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_tg_TJ: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ne-NP");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_tg_TJ2: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ne-NP");

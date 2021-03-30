@@ -1,7 +1,7 @@
 /*
  * testdurfmt2.js - test the duration formatter object
  *
- * Copyright © 2019-2020, JEDLSoft
+ * Copyright © 2019-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -9442,6 +9442,47 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_14[1], '14 နာရီ 14 မိနစ် 14 စက္ကန့်');
         test.equal(clockformatted_14[2], '14 နာရီ 14 မိနစ် 14 s');
         test.equal(clockformatted_14[3], '14 နာရီ 14 မိနစ် 14 s');
+
+        test.done();
+    },
+    testDurFmt_tg_TJ: function(test) {
+        test.expect(16);
+        // 1 5
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [], textformatted_5 = [];
+        var clockformatted_1 = [], clockformatted_5 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "tg-TJ", style:"text", length:length[i], useNative: false});
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_5.push(textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_5.push(textfmt.format({hour: 5,minute: 5,second: 5}).toString());
+        }
+
+        test.equal(textformatted_1[0], '1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[1], '1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[2], '1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[3], '1 y, 1 m, 1 w, 1 d');
+
+        test.equal(textformatted_5[0], '5 y, 5 m, 5 w, 5 d');
+        test.equal(textformatted_5[1], '5 y, 5 m, 5 w, 5 d');
+        test.equal(textformatted_5[2], '5 y, 5 m, 5 w, 5 d');
+        test.equal(textformatted_5[3], '5 y, 5 m, 5 w, 5 d');
+
+        test.equal(clockformatted_1[0], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[3], '1 h, 1 min, 1 s');
+
+        test.equal(clockformatted_5[0], '5 h, 5 min, 5 s');
+        test.equal(clockformatted_5[1], '5 h, 5 min, 5 s');
+        test.equal(clockformatted_5[2], '5 h, 5 min, 5 s');
+        test.equal(clockformatted_5[3], '5 h, 5 min, 5 s');
 
         test.done();
     }
