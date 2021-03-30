@@ -356,6 +356,32 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "ne-NP");
         test.done();
     },
+    testCountryLocale_tk_TM: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "tk-TM"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("CN"),"Hytaý");
+        test.equal(ctry.getCode("Hytaý"), "CN");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "tk-TM");
+        test.done();
+    },
+    testCountryLocale_tk_TM2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "tk-TM"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"), 'Günorta Koreýa');
+        test.equal(ctry.getCode('Günorta Koreýa'), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "tk-TM");
+        test.done();
+    },
     testCountryGetByCodeUnknown: function(test) {
         try {
             var ctry = new Country();

@@ -2069,5 +2069,15 @@ module.exports.testmeridiems = {
         test.equal(fmt[1].name, 'ညနေ');
 
         test.done();
+    },
+    testMeridiem_tk_TM: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"tk-TM"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'günortadan öň');
+        test.equal(fmt[1].name, 'günortadan soň');
+
+        test.done();
     }
 }
