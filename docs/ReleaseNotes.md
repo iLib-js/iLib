@@ -10,7 +10,7 @@ New Features:
   script, region) are valid ISO codes.
 
 Bug Fixes:
-
+* Fixed a bug which a default script for `tg` should be `Cyrl` instead of `Arabic`
 
 Build 012
 -------
