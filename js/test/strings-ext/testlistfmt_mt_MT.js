@@ -214,7 +214,7 @@ module.exports.testlistfmt_mt_MT = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["waħda", "tnejn"]), "waħda or tnejn");
+        test.equal(fmt.format(["waħda", "tnejn"]), "waħda jew tnejn");
         test.done();
     },
     testListFmtORStyleNumberFormatThree_mt_MT: function(test) {
@@ -225,7 +225,7 @@ module.exports.testlistfmt_mt_MT = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["waħda", "tnejn", "tlieta"]), "waħda, tnejn, or tlieta");
+        test.equal(fmt.format(["waħda", "tnejn", "tlieta"]), "waħda, tnejn, jew tlieta");
         test.done();
     },
     testListFmtORStyleNumberFormatFour_mt_MT: function(test) {
@@ -236,7 +236,7 @@ module.exports.testlistfmt_mt_MT = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["waħda", "tnejn", "tlieta", "erbgħa"]), "waħda, tnejn, tlieta, or erbgħa");
+        test.equal(fmt.format(["waħda", "tnejn", "tlieta", "erbgħa"]), "waħda, tnejn, tlieta, jew erbgħa");
         test.done();
     },
     testListFmtORStyleNumberFormatFiveFull_mt_MT: function(test) {
@@ -247,7 +247,7 @@ module.exports.testlistfmt_mt_MT = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["waħda", "tnejn", "tlieta", "erbgħa", "ħamsa"]), "waħda, tnejn, tlieta, erbgħa, or ħamsa");
+        test.equal(fmt.format(["waħda", "tnejn", "tlieta", "erbgħa", "ħamsa"]), "waħda, tnejn, tlieta, erbgħa, jew ħamsa");
         test.done();
     }
 };

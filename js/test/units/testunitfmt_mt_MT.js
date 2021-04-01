@@ -84,7 +84,7 @@ module.exports.testunitfmt_mt_MT = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "-16.666666666666668°C");
+        test.equal(str, "-16.666666666666668 grad Celsius");
         test.done();
     },
 
@@ -119,7 +119,7 @@ module.exports.testunitfmt_mt_MT = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "2 cm²");
+        test.equal(str, "2 square centimeter");
         test.done();
     },
     testUnitFormatArea3_mt_MT: function(test) {
@@ -153,7 +153,7 @@ module.exports.testunitfmt_mt_MT = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "10 km²");
+        test.equal(str, "10 kilometru kwadru");
         test.done();
     },
     testUnitFormatFuelConsumption1_mt_MT: function(test) {
@@ -185,7 +185,7 @@ module.exports.testunitfmt_mt_MT = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 km/l");
+        test.equal(str, "2 kilometru kull litru");
         test.done();
     },
     testUnitFormatLength1_mt_MT: function(test) {
@@ -251,7 +251,7 @@ module.exports.testunitfmt_mt_MT = {
             autoConvert: true
         });
         var str = uf.format(m1);
-        test.equal(str, "10 km");
+        test.equal(str, "10 kilometru");
         test.done();
     },
     testUnitFormatWithUsageFuelVolume1_mt_MT: function(test) {
@@ -287,7 +287,7 @@ module.exports.testunitfmt_mt_MT = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "9.09 l");
+        test.equal(str, "9.09 litru");
         test.done();
     },
     testUnitFormatWithUsageOverrideSignificantDigits1_mt_MT: function(test) {
@@ -325,7 +325,7 @@ module.exports.testunitfmt_mt_MT = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "102.338 kWh");
+        test.equal(str, "102.338 kilowatt-siegħa");
         test.done();
     }
 }
