@@ -9464,22 +9464,22 @@ module.exports.testdurfmt2 = {
             clockformatted_5.push(textfmt.format({hour: 5,minute: 5,second: 5}).toString());
         }
 
-        test.equal(textformatted_1[0], '1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[0], '1 сол, 1 моҳ, 1 ҳафта, 1 рӯз');
         test.equal(textformatted_1[1], '1 y, 1 m, 1 w, 1 d');
         test.equal(textformatted_1[2], '1 y, 1 m, 1 w, 1 d');
         test.equal(textformatted_1[3], '1 y, 1 m, 1 w, 1 d');
 
-        test.equal(textformatted_5[0], '5 y, 5 m, 5 w, 5 d');
+        test.equal(textformatted_5[0], '5 сол, 5 моҳ, 5 ҳафта, 5 рӯз');
         test.equal(textformatted_5[1], '5 y, 5 m, 5 w, 5 d');
         test.equal(textformatted_5[2], '5 y, 5 m, 5 w, 5 d');
         test.equal(textformatted_5[3], '5 y, 5 m, 5 w, 5 d');
 
-        test.equal(clockformatted_1[0], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[0], '1 соат, 1 дақиқа, 1 сония');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
         test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
         test.equal(clockformatted_1[3], '1 h, 1 min, 1 s');
 
-        test.equal(clockformatted_5[0], '5 h, 5 min, 5 s');
+        test.equal(clockformatted_5[0], '5 соат, 5 дақиқа, 5 сония');
         test.equal(clockformatted_5[1], '5 h, 5 min, 5 s');
         test.equal(clockformatted_5[2], '5 h, 5 min, 5 s');
         test.equal(clockformatted_5[3], '5 h, 5 min, 5 s');

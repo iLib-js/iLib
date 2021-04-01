@@ -84,7 +84,7 @@ module.exports.testunitfmt_tg_TJ = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "-16,666666666666668°C");
+        test.equal(str, "-16,666666666666668 Сельсий");
         test.done();
     },
 
@@ -119,7 +119,7 @@ module.exports.testunitfmt_tg_TJ = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "2 cm²");
+        test.equal(str, "2 сантиметр мураббаъ");
         test.done();
     },
     testUnitFormatArea3_tg_TJ: function(test) {
@@ -153,7 +153,7 @@ module.exports.testunitfmt_tg_TJ = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "10 km²");
+        test.equal(str, "10 километри мураббаъ");
         test.done();
     },
     testUnitFormatFuelConsumption1_tg_TJ: function(test) {
@@ -185,7 +185,7 @@ module.exports.testunitfmt_tg_TJ = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 km/l");
+        test.equal(str, "2 километри як литр");
         test.done();
     },
     testUnitFormatLength1_tg_TJ: function(test) {
@@ -217,7 +217,7 @@ module.exports.testunitfmt_tg_TJ = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "3,21868 megameters");
+        test.equal(str, "3,21868 мегаметри");
         test.done();
     },
     testUnitFormatWithUsageVehicleDistance1_tg_TJ: function(test) {
@@ -251,7 +251,7 @@ module.exports.testunitfmt_tg_TJ = {
             autoConvert: true
         });
         var str = uf.format(m1);
-        test.equal(str, "10 km");
+        test.equal(str, "10 километр");
         test.done();
     },
     testUnitFormatWithUsageFuelVolume1_tg_TJ: function(test) {
@@ -287,7 +287,7 @@ module.exports.testunitfmt_tg_TJ = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "9,09 l");
+        test.equal(str, "9,09 литр");
         test.done();
     },
     testUnitFormatWithUsageOverrideSignificantDigits1_tg_TJ: function(test) {
@@ -325,7 +325,7 @@ module.exports.testunitfmt_tg_TJ = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "102,338 kWh");
+        test.equal(str, "102,338 киловатт-соат");
         test.done();
     }
 }

@@ -214,7 +214,7 @@ module.exports.testlistfmt_tg_TJ = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["як", "ду"]), "як or ду");
+        test.equal(fmt.format(["як", "ду"]), "як ё ду");
         test.done();
     },
     testListFmtORStyleNumberFormatThree_tg_TJ: function(test) {
@@ -225,7 +225,7 @@ module.exports.testlistfmt_tg_TJ = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["як", "ду", "се"]), "як, ду, or се");
+        test.equal(fmt.format(["як", "ду", "се"]), "як, ду, ё се");
         test.done();
     },
     testListFmtORStyleNumberFormatFour_tg_TJ: function(test) {
@@ -236,7 +236,7 @@ module.exports.testlistfmt_tg_TJ = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["як", "ду", "се", "чор"]), "як, ду, се, or чор");
+        test.equal(fmt.format(["як", "ду", "се", "чор"]), "як, ду, се, ё чор");
         test.done();
     },
     testListFmtORStyleNumberFormatFiveFull_tg_TJ: function(test) {
@@ -247,7 +247,7 @@ module.exports.testlistfmt_tg_TJ = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["як", "ду", "се", "чор", "панҷ"]), "як, ду, се, чор, or панҷ");
+        test.equal(fmt.format(["як", "ду", "се", "чор", "панҷ"]), "як, ду, се, чор, ё панҷ");
         test.done();
     }
 };

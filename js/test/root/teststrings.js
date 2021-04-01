@@ -3592,16 +3592,16 @@ module.exports.teststrings = {
     },
     testStringFormatChoiceCharClassesComplex_tg_TJ: function(test) {
         test.expect(2);
-        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        var str = new IString("0#There are no items.|few#The items are few|many#The items are many|#Default items");
         str.setLocale("tg-TJ");
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(1), "There items are one");
+        test.equal(str.formatChoice(1), "Default items");
         test.done();
     },
     testStringFormatChoiceCharClassesComplex_tg_TJ2: function(test) {
         test.expect(2);
-        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        var str = new IString("0#There are no items.|few#The items are few|many#The items are many|#Default items");
         str.setLocale("tg-TJ");
         test.ok(str !== null);
 
@@ -4032,18 +4032,18 @@ module.exports.teststrings = {
     },
     testStringFormatChoiceDecimal_tg_TJ: function(test) {
         test.expect(2);
-        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
-        str.setLocale("ne-NP");
+        var str = new IString("0#There are no items.|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("tg-TJ");
 
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(1.0), "There items are one");
+        test.equal(str.formatChoice(1.0), "Default items");
         test.done();
     },
     testStringFormatChoiceDecimal_tg_TJ2: function(test) {
         test.expect(2);
-        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
-        str.setLocale("ne-NP");
+        var str = new IString("0#There are no items.|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("tg-TJ");
 
         test.ok(str !== null);
 

@@ -1,7 +1,7 @@
 /*
- * genscripts.js - ilib tool to generate the json data about ISO 15924 scripts
+ * genlangscripts.js - ilib tool to generate the json data about ISO 15924 scripts
  *
- * Copyright © 2013-2018, 2020-2011 JEDLSoft
+ * Copyright © 2013-2018, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
