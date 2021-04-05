@@ -249,5 +249,17 @@ module.exports.testlistfmt_mt_MT = {
         test.ok(fmt !== null);
         test.equal(fmt.format(["waħda", "tnejn", "tlieta", "erbgħa", "ħamsa"]), "waħda, tnejn, tlieta, erbgħa, jew ħamsa");
         test.done();
+    },
+    testListFmtORStyleNumberFormatShortFiveFull_mt_MT: function(test) {
+        var fmt = new ListFmt({
+            locale: "mt-MT",
+            style: "disjunction",
+            length: "short"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["waħda", "tnejn", "tlieta", "erbgħa", "ħamsa"]), "waħda, tnejn, tlieta, erbgħa, jew ħamsa");
+        test.done();
     }
 };

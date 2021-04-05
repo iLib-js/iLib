@@ -9468,42 +9468,42 @@ module.exports.testdurfmt2 = {
             clockformatted_100.push(textfmt.format({hour: 100, minute: 100, second: 100}).toString());
         }
 
-        test.equal(textformatted_1[0], '1 y, 1 m, 1 w, u 1 d');
+        test.equal(textformatted_1[0], 'Sena, Xahar, Ġimgħa, u 1 jum');
         test.equal(textformatted_1[1], '1 y, 1 m, 1 w, 1 d');
         test.equal(textformatted_1[2], '1 y, 1 m, 1 w, 1 d');
         test.equal(textformatted_1[3], '1 y, 1 m, 1 w, 1 d');
 
-        test.equal(textformatted_5[0], '5 y, 5 m, 5 w, u 5 d');
+        test.equal(textformatted_5[0], '5 snin, 5 minuti, 5 ġimgħat, u 5 ijiem');
         test.equal(textformatted_5[1], '5 y, 5 m, 5 w, 5 d');
         test.equal(textformatted_5[2], '5 y, 5 m, 5 w, 5 d');
         test.equal(textformatted_5[3], '5 y, 5 m, 5 w, 5 d');
 
-        test.equal(textformatted_14[0], '14 y, 14 m, 14 w, u 14 d');
+        test.equal(textformatted_14[0], '14-il sena, 14 xhur, 14-il ġimgħa, u 14-il jum');
         test.equal(textformatted_14[1], '14 y, 14 m, 14 w, 14 d');
         test.equal(textformatted_14[2], '14 y, 14 m, 14 w, 14 d');
         test.equal(textformatted_14[3], '14 y, 14 m, 14 w, 14 d');
 
-        test.equal(textformatted_100[0], '100 y, 100 m, 100 w, u 100 d');
+        test.equal(textformatted_100[0], '100 sena, 100 xahar, 100 ġimgħa, u 100 jum');
         test.equal(textformatted_100[1], '100 y, 100 m, 100 w, 100 d');
         test.equal(textformatted_100[2], '100 y, 100 m, 100 w, 100 d');
         test.equal(textformatted_100[3], '100 y, 100 m, 100 w, 100 d');
 
-        test.equal(clockformatted_1[0], '1 h, 1 min, u 1 s');
+        test.equal(clockformatted_1[0], '1 siegħa, 1 minuta, u 1 sekonda');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
         test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
         test.equal(clockformatted_1[3], '1 h, 1 min, 1 s');
 
-        test.equal(clockformatted_5[0], '5 h, 5 min, u 5 s');
+        test.equal(clockformatted_5[0], '5 sigħat, 5 minuti, u 5 sekondi');
         test.equal(clockformatted_5[1], '5 h, 5 min, 5 s');
         test.equal(clockformatted_5[2], '5 h, 5 min, 5 s');
         test.equal(clockformatted_5[3], '5 h, 5 min, 5 s');
 
-        test.equal(clockformatted_14[0], '14 h, 14 min, u 14 s');
+        test.equal(clockformatted_14[0], '14-il siegħa, 14-il minuta, u 14-il sekonda');
         test.equal(clockformatted_14[1], '14 h, 14 min, 14 s');
         test.equal(clockformatted_14[2], '14 h, 14 min, 14 s');
         test.equal(clockformatted_14[3], '14 h, 14 min, 14 s');
 
-        test.equal(clockformatted_100[0], '100 h, 100 min, u 100 s');
+        test.equal(clockformatted_100[0], '100 siegħa, 100 minuta, u 100 sekonda');
         test.equal(clockformatted_100[1], '100 h, 100 min, 100 s');
         test.equal(clockformatted_100[2], '100 h, 100 min, 100 s');
         test.equal(clockformatted_100[3], '100 h, 100 min, 100 s');

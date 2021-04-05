@@ -119,7 +119,7 @@ module.exports.testunitfmt_mt_MT = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "2 square centimeter");
+        test.equal(str, "2 ċentimetri kwadri");
         test.done();
     },
     testUnitFormatArea3_mt_MT: function(test) {
@@ -153,7 +153,7 @@ module.exports.testunitfmt_mt_MT = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "10 kilometru kwadru");
+        test.equal(str, "10 kilometri kwadri");
         test.done();
     },
     testUnitFormatFuelConsumption1_mt_MT: function(test) {
@@ -185,7 +185,7 @@ module.exports.testunitfmt_mt_MT = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 kilometru kull litru");
+        test.equal(str, "2 kilometri kull litru");
         test.done();
     },
     testUnitFormatLength1_mt_MT: function(test) {
@@ -224,7 +224,7 @@ module.exports.testunitfmt_mt_MT = {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "km",
-            amount: 10
+            amount: 14
         });
 
         var uf = new UnitFmt({
@@ -234,14 +234,14 @@ module.exports.testunitfmt_mt_MT = {
             autoConvert: true,
         });
         var str = uf.format(m1);
-        test.equal(str, "10 km");
+        test.equal(str, "14 km");
         test.done();
     },
     testUnitFormatWithUsageVehicleDistance2_mt_MT: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "km",
-            amount: 10
+            amount: 14
         });
 
         var uf = new UnitFmt({
@@ -251,7 +251,7 @@ module.exports.testunitfmt_mt_MT = {
             autoConvert: true
         });
         var str = uf.format(m1);
-        test.equal(str, "10 kilometru");
+        test.equal(str, "14-il kilometru");
         test.done();
     },
     testUnitFormatWithUsageFuelVolume1_mt_MT: function(test) {
