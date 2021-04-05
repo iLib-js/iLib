@@ -9469,44 +9469,44 @@ module.exports.testdurfmt2 = {
         }
 
         test.equal(textformatted_1[0], 'Sena, Xahar, Ġimgħa, u 1 jum');
-        test.equal(textformatted_1[1], '1 y, 1 m, 1 w, 1 d');
-        test.equal(textformatted_1[2], '1 y, 1 m, 1 w, 1 d');
-        test.equal(textformatted_1[3], '1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[1], 'Sen., Xah., Ġim., 1 jum');
+        test.equal(textformatted_1[2], 'Se., Xa., Ġi., 1 ju.');
+        test.equal(textformatted_1[3], '1 s, 1 x, 1 g, 1 j');
 
-        test.equal(textformatted_5[0], '5 snin, 5 minuti, 5 ġimgħat, u 5 ijiem');
-        test.equal(textformatted_5[1], '5 y, 5 m, 5 w, 5 d');
-        test.equal(textformatted_5[2], '5 y, 5 m, 5 w, 5 d');
-        test.equal(textformatted_5[3], '5 y, 5 m, 5 w, 5 d');
+        test.equal(textformatted_5[0], '5 snin, 5 xhur, 5 ġimgħat, u 5 ijiem');
+        test.equal(textformatted_5[1], '5 sni., 5 xhu., 5 ġim., 5 iji.');
+        test.equal(textformatted_5[2], '5 sn., 5 xh., 5 ġi., 5 ij.');
+        test.equal(textformatted_5[3], '5 s, 5 x, 5 g, 5 j');
 
-        test.equal(textformatted_14[0], '14-il sena, 14 xhur, 14-il ġimgħa, u 14-il jum');
-        test.equal(textformatted_14[1], '14 y, 14 m, 14 w, 14 d');
-        test.equal(textformatted_14[2], '14 y, 14 m, 14 w, 14 d');
-        test.equal(textformatted_14[3], '14 y, 14 m, 14 w, 14 d');
+        test.equal(textformatted_14[0], '14-il sena, 14-il xahar, 14-il ġimgħa, u 14-il jum');
+        test.equal(textformatted_14[1], '14-il sen., 14-il xah., 14-il ġim., 14-il jum');
+        test.equal(textformatted_14[2], '14-il se., 14-il xa., 14-il ġi., 14-il ju.');
+        test.equal(textformatted_14[3], '14 s, 14 x, 14 g, 14 j');
 
         test.equal(textformatted_100[0], '100 sena, 100 xahar, 100 ġimgħa, u 100 jum');
-        test.equal(textformatted_100[1], '100 y, 100 m, 100 w, 100 d');
-        test.equal(textformatted_100[2], '100 y, 100 m, 100 w, 100 d');
-        test.equal(textformatted_100[3], '100 y, 100 m, 100 w, 100 d');
+        test.equal(textformatted_100[1], '100 sen., 100 xah., 100 ġim., 100 jum');
+        test.equal(textformatted_100[2], '100 se., 100 xa., 100 ġi., 100 ju.');
+        test.equal(textformatted_100[3], '100 s, 100 x, 100 g, 100 j');
 
         test.equal(clockformatted_1[0], '1 siegħa, 1 minuta, u 1 sekonda');
-        test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[3], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[1], '1 sie., 1 min., 1 sek.');
+        test.equal(clockformatted_1[2], '1 si., 1 mi., 1 se.');
+        test.equal(clockformatted_1[3], '1 s, 1 m, 1 s');
 
         test.equal(clockformatted_5[0], '5 sigħat, 5 minuti, u 5 sekondi');
-        test.equal(clockformatted_5[1], '5 h, 5 min, 5 s');
-        test.equal(clockformatted_5[2], '5 h, 5 min, 5 s');
-        test.equal(clockformatted_5[3], '5 h, 5 min, 5 s');
+        test.equal(clockformatted_5[1], '5 sig., 5 min., 5 sek.');
+        test.equal(clockformatted_5[2], '5 si., 5 mi., 5 se.');
+        test.equal(clockformatted_5[3], '5 s, 5 m, 5 s');
 
         test.equal(clockformatted_14[0], '14-il siegħa, 14-il minuta, u 14-il sekonda');
-        test.equal(clockformatted_14[1], '14 h, 14 min, 14 s');
-        test.equal(clockformatted_14[2], '14 h, 14 min, 14 s');
-        test.equal(clockformatted_14[3], '14 h, 14 min, 14 s');
+        test.equal(clockformatted_14[1], '14-il sie., 14-il min., 14-il sek.');
+        test.equal(clockformatted_14[2], '14-il si., 14-il mi., 14-il se.');
+        test.equal(clockformatted_14[3], '14 s, 14 m, 14 s');
 
         test.equal(clockformatted_100[0], '100 siegħa, 100 minuta, u 100 sekonda');
-        test.equal(clockformatted_100[1], '100 h, 100 min, 100 s');
-        test.equal(clockformatted_100[2], '100 h, 100 min, 100 s');
-        test.equal(clockformatted_100[3], '100 h, 100 min, 100 s');
+        test.equal(clockformatted_100[1], '100 sie., 100 min., 100 sek.');
+        test.equal(clockformatted_100[2], '100 si., 100 mi., 100 se.');
+        test.equal(clockformatted_100[3], '100 s, 100 m, 100 s');
 
         test.done();
     }
