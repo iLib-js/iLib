@@ -249,5 +249,16 @@ module.exports.testlistfmt_tg_TJ = {
         test.ok(fmt !== null);
         test.equal(fmt.format(["як", "ду", "се", "чор", "панҷ"]), "як, ду, се, чор, ё панҷ");
         test.done();
+    },
+    testListFmtORStyleNumberFormatShortFiveFull_tg_TJ: function(test) {
+        var fmt = new ListFmt({
+            locale: "tg-TJ",
+            style: "disjunction"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["як", "ду", "се", "чор", "панҷ"]), "як, ду, се, чор, ё панҷ");
+        test.done();
     }
 };
