@@ -1,7 +1,7 @@
 /*
  * testcurrency.js - test the currency routines
  *
- * Copyright © 2012-2017, 2020 JEDLSoft
+ * Copyright © 2012-2017, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1975,6 +1975,14 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "AMD");
+        test.done();
+    },
+    testCurrency_wo_SN: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("wo-SN");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "XOF");
         test.done();
     }
 };

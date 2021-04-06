@@ -1,7 +1,7 @@
 /*
  * testlocalematch.js - test the locale matcher object
  *
- * Copyright © 2012-2015,2017,2019-2020 JEDLSoft
+ * Copyright © 2012-2015,2017,2019-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1304,6 +1304,28 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ne-Deva-NP");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_wo: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "wo"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "wo-Latn-SN");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_wo_SN: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "wo-SN"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "wo-Latn-SN");
+        test.done();
+    },
     testLocaleMatcherMatchExactFullLocale: function(test) {
         test.expect(2);
         var lm = new LocaleMatcher({
@@ -2014,7 +2036,17 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ky-Cyrl-KG");
         test.done();
     },
-
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_SN: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "SN"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "fr-SN");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_AD: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -2221,6 +2253,28 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "hy-AM");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocale_wo_SN: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "wo-SN"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "wo-SN");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocale_wo_SN2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "wo-Latn"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "wo-SN");
         test.done();
     }
 };

@@ -1,7 +1,7 @@
 /*
  * testMonthTranslation.js - test the month's translation
  *
- * Copyright © 2019-2020, JEDLSoft
+ * Copyright © 2019-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -7734,6 +7734,52 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "အောက်");
         test.equal(value[10], "နို");
         test.equal(value[11], "ဒီ");
+
+        test.done();
+    },
+    testMonthTranslate_wo_SN: function(test) {
+        test.expect(24);
+
+        // full, medium: MMM
+        // long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"wo-SN", date:"m", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "Samwiyee");
+        test.equal(value[1], "Fewriyee");
+        test.equal(value[2], "Mars");
+        test.equal(value[3], "Awril");
+        test.equal(value[4], "Mee");
+        test.equal(value[5], "Suwe");
+        test.equal(value[6], "Sulet");
+        test.equal(value[7], "Ut");
+        test.equal(value[8], "Sàttumbar");
+        test.equal(value[9], "Oktoobar");
+        test.equal(value[10], "Nowàmbar");
+        test.equal(value[11], "Desàmbar");
+
+        var fmt = new DateFmt({locale:"wo-SN", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+
+        test.equal(value[0], "Sam");
+        test.equal(value[1], "Few");
+        test.equal(value[2], "Mar");
+        test.equal(value[3], "Awr");
+        test.equal(value[4], "Mee");
+        test.equal(value[5], "Suw");
+        test.equal(value[6], "Sul");
+        test.equal(value[7], "Ut");
+        test.equal(value[8], "Sàt");
+        test.equal(value[9], "Okt");
+        test.equal(value[10], "Now");
+        test.equal(value[11], "Des");
 
         test.done();
     }

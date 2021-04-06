@@ -1,7 +1,7 @@
 /*
  * testlocaleinfo.js - test the locale info object
  *
- * Copyright © 2012-2017,2020 JEDLSoft
+ * Copyright © 2012-2017,2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13512,6 +13512,16 @@ module.exports.testlocaleinfo = {
     testLocaleInfoQuotation_ne_NP: function(test) {
         test.expect(4);
         var info = new LocaleInfo("ne-NP");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_wo_SN: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("wo-SN");
         test.ok(info !== null);
 
         test.equal(info.getDelimiterQuotationStart(), "“");
