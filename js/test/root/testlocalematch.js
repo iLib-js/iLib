@@ -156,6 +156,7 @@ module.exports.testlocalematch = {
         test.expect(3);
         var lm = new LocaleMatcher({
             locale: "TM"
+        });
         test.ok(typeof(lm) !== "undefined");
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
