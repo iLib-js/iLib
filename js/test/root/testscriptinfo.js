@@ -2286,6 +2286,16 @@ module.exports.testscriptinfo = {
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
     },
+    testScriptInfo_tk_TM: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("tk-TM");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
     testScriptInfo_tg_TJ: function(test) {
         test.expect(4);
         var li = new LocaleInfo("tg-TJ");

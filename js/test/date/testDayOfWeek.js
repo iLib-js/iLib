@@ -2069,6 +2069,16 @@ module.exports.testweekdata = {
         test.equal(info.getWeekEndEnd(), 0);
         test.done();
     },
+    testWeekData_tk_TM: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("tk-TM");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 1);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+     },
     testWeekData_tg_TJ: function(test) {
         test.expect(4);
         var info = new LocaleInfo("tg-TJ");

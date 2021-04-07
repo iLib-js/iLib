@@ -107,7 +107,7 @@ for (var language in scripts) {
             fs.mkdirSync(filename);
         }
         // special cases where we disagree with CLDR
-        if (language === 'ms' || language === 'kk' || language === 'pa') {
+        if (language === 'ms' || language === 'kk' || language === 'pa'|| language === 'tk') {
             scripts[language] = scripts[language].reverse();
         } else if (language == 'ky'|| language == 'tg') {
             var lang = scripts[language];

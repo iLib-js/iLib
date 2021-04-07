@@ -3909,6 +3909,15 @@ module.exports.testdatefmt = {
         test.equal(fmt.getDateComponentOrder(), "ydm");
         test.done();
     },
+    testDateFmtGetDateComponentOrderTM: function(test) {
+    	test.expect(2);
+
+    	var fmt = new DateFmt({locale: "tk-TM"})
+      test.ok(fmt !== null);
+
+        test.equal(fmt.getDateComponentOrder(), "dmy");
+        test.done();
+    },
     testDateFmtGetDateComponentOrderTJ: function(test) {
     	test.expect(2);
 

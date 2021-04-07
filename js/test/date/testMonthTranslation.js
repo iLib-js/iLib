@@ -7737,6 +7737,67 @@ module.exports.testmonthtranslation = {
 
         test.done();
     },
+    testMonthTranslate_tk_TM: function(test) {
+        test.expect(36);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+          var fmt = new DateFmt({locale:"tk-TM", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Ýanwar');
+        test.equal(value[1], 'Fewral');
+        test.equal(value[2], 'Mart');
+        test.equal(value[3], 'Aprel');
+        test.equal(value[4], 'Maý');
+        test.equal(value[5], 'Iýun');
+        test.equal(value[6], 'Iýul');
+        test.equal(value[7], 'Awgust');
+        test.equal(value[8], 'Sentýabr');
+        test.equal(value[9], 'Oktýabr');
+        test.equal(value[10], 'Noýabr');
+        test.equal(value[11], 'Dekabr');
+
+        var fmt = new DateFmt({locale:"tk-TM", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+
+        test.equal(value[0], 'Ýan');
+        test.equal(value[1], 'Few');
+        test.equal(value[2], 'Mar');
+        test.equal(value[3], 'Apr');
+        test.equal(value[4], 'Maý');
+        test.equal(value[5], 'Iýun');
+        test.equal(value[6], 'Iýul');
+        test.equal(value[7], 'Awg');
+        test.equal(value[8], 'Sen');
+        test.equal(value[9], 'Okt');
+        test.equal(value[10], 'Noý');
+        test.equal(value[11], 'Dek');
+
+        var fmt = new DateFmt({locale:"tk-TM", date:"m", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Ýa');
+        test.equal(value[1], 'Fe');
+        test.equal(value[2], 'Ma');
+        test.equal(value[3], 'Ap');
+        test.equal(value[4], 'Ma');
+        test.equal(value[5], 'Iý');
+        test.equal(value[6], 'Iý');
+        test.equal(value[7], 'Aw');
+        test.equal(value[8], 'Se');
+        test.equal(value[9], 'Ok');
+        test.equal(value[10], 'No');
+        test.equal(value[11], 'De');
+        test.done();
+    },
     testMonthTranslate_tg_TJ: function(test) {
         test.expect(24);
   
@@ -7827,7 +7888,6 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-
         test.equal(value[0], 'Ja');
         test.equal(value[1], 'Fr');
         test.equal(value[2], 'Ma');

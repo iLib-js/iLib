@@ -2245,4 +2245,22 @@ module.exports.testtimezone = {
         test.deepEqual(tz.getOffset(gd), {h:-5});
         test.done();
     },
+    testTZGetDefaultFor_tk_TM: function(test) {
+        test.expect(5);
+        var tz = new TimeZone({locale: "tk-TM"});
+        test.ok(tz !== null);
+
+        test.equal(tz.getId(), "Asia/Ashgabat");
+        test.equal(tz.getRawOffsetStr(), "5:0");
+        test.equal(tz.getDSTSavingsStr(), "0:0");
+
+        var gd = new GregorianDate({
+            year: 2021,
+            month: 4,
+            day: 1
+        });
+        test.equal(tz.getDisplayName(gd, 'standard'), "+05");
+
+        test.done();
+    },
 };
