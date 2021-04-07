@@ -9445,6 +9445,45 @@ module.exports.testdurfmt2 = {
 
         test.done();
     },
+    testDurFmt_tg_TJ: function(test) {
+        test.expect(16);
+        // 1 5
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+        var textformatted_1 = [], textformatted_5 = [];
+        var clockformatted_1 = [], clockformatted_5 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "tg-TJ", style:"text", length:length[i], useNative: false});
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_5.push(textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_5.push(textfmt.format({hour: 5,minute: 5,second: 5}).toString());
+        }
+
+        test.equal(textformatted_1[0], '1 сол, 1 моҳ, 1 ҳафта, 1 рӯз');
+        test.equal(textformatted_1[1], '1 сол, 1 моҳ, 1 ҳаф, 1 рӯз');
+        test.equal(textformatted_1[2], '1 со, 1 мо, 1 ҳа, 1 рӯ');
+        test.equal(textformatted_1[3], '1 с, 1 м, 1 ҳ, 1 р');
+
+        test.equal(textformatted_5[0], '5 сол, 5 моҳ, 5 ҳафта, 5 рӯз');
+        test.equal(textformatted_5[1], '5 сол, 5 моҳ, 5 ҳаф, 5 рӯз');
+        test.equal(textformatted_5[2], '5 со, 5 мо, 5 ҳа, 5 рӯ');
+        test.equal(textformatted_5[3], '5 с, 5 м, 5 ҳ, 5 р');
+
+        test.equal(clockformatted_1[0], '1 соат, 1 дақиқа, 1 сония');
+        test.equal(clockformatted_1[1], '1 соа, 1 дақ, 1 сон');
+        test.equal(clockformatted_1[2], '1 со, 1 да, 1 со');
+        test.equal(clockformatted_1[3], '1 с, 1 д, 1 с');
+
+        test.equal(clockformatted_5[0], '5 соат, 5 дақиқа, 5 сония');
+        test.equal(clockformatted_5[1], '5 соа, 5 дақ, 5 сон');
+        test.equal(clockformatted_5[2], '5 со, 5 да, 5 со');
+        test.equal(clockformatted_5[3], '5 с, 5 д, 5 с');
+        test.done();
+    },
     testDurFmt_mt_MT: function(test) {
         test.expect(32);
         // 1 5 14 100

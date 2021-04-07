@@ -3964,6 +3964,24 @@ module.exports.testnumfmt2 = {
         test.equal(curfmt.format(57.05), "57 K");
         test.done();
     },
+    testNumFmt_tg_TJ: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("tg-TJ");
+        var fmt = new NumFmt({locale:"tg-TJ", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), " ");
+        test.equal(fmt.format(123456789.45), "123 456 789,45");
+
+        var pctfmt = new NumFmt({locale:"tg-TJ", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+        var curfmt = new NumFmt({locale: "tg-TJ", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 ЅМ");
+        test.done();
+    },
     testNumFmt_mt_MT: function(test) {
         test.expect(9);
         var li = new LocaleInfo("mt-MT");

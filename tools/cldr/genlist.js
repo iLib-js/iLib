@@ -29,6 +29,26 @@ var aux = require("./datefmts.js");
 var merge = common.merge;
 
 var hardCodeData = {
+    "tg":{
+        "or": {
+            "short": {
+                "2": "{0} ё {1}",
+                "end": "{0}, ё {1}"
+            },
+            "medium": {
+                "2": "{0} ё {1}",
+                "end": "{0}, ё {1}"
+            },
+            "long": {
+                "2": "{0} ё {1}",
+                "end": "{0}, ё {1}"
+            },
+            "full": {
+                "2": "{0} ё {1}",
+                "end": "{0}, ё {1}"
+              }
+        }
+    },
     "mt":{
         "or": {
             "short": {
