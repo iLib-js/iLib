@@ -7745,7 +7745,7 @@ module.exports.testmonthtranslation = {
         // short: MM
 
         var value = [], i;
-        var fmt = new DateFmt({locale:"tk-TM", date:"m", length: "full", useNative:false, timezone:"local"})
+          var fmt = new DateFmt({locale:"tk-TM", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
@@ -7784,7 +7784,6 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-
         test.equal(value[0], 'Ýa');
         test.equal(value[1], 'Fe');
         test.equal(value[2], 'Ma');
@@ -7797,7 +7796,110 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], 'Ok');
         test.equal(value[10], 'No');
         test.equal(value[11], 'De');
+        test.done();
+    },
+    testMonthTranslate_tg_TJ: function(test) {
+        test.expect(24);
+  
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"tg-TJ", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Январ');
+        test.equal(value[1], 'Феврал');
+        test.equal(value[2], 'Март');
+        test.equal(value[3], 'Апрел');
+        test.equal(value[4], 'Май');
+        test.equal(value[5], 'Июн');
+        test.equal(value[6], 'Июл');
+        test.equal(value[7], 'Август');
+        test.equal(value[8], 'Сентябр');
+        test.equal(value[9], 'Октябр');
+        test.equal(value[10], 'Ноябр');
+        test.equal(value[11], 'Декабр');
+
+        var fmt = new DateFmt({locale:"tg-TJ", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Янв');
+        test.equal(value[1], 'Фев');
+        test.equal(value[2], 'Мар');
+        test.equal(value[3], 'Апр');
+        test.equal(value[4], 'Май');
+        test.equal(value[5], 'Июн');
+        test.equal(value[6], 'Июл');
+        test.equal(value[7], 'Авг');
+        test.equal(value[8], 'Сен');
+        test.equal(value[9], 'Окт');
+        test.equal(value[10], 'Ноя');
+        test.equal(value[11], 'Дек');
+        test.done();
+    },
+    testMonthTranslate_mt_MT: function(test) {
+        test.expect(36);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"mt-MT", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Jannar');
+        test.equal(value[1], 'Frar');
+        test.equal(value[2], 'Marzu');
+        test.equal(value[3], 'April');
+        test.equal(value[4], 'Mejju');
+        test.equal(value[5], 'Ġunju');
+        test.equal(value[6], 'Lulju');
+        test.equal(value[7], 'Awwissu');
+        test.equal(value[8], 'Settembru');
+        test.equal(value[9], 'Ottubru');
+        test.equal(value[10], 'Novembru');
+        test.equal(value[11], 'Diċembru');
+
+        var fmt = new DateFmt({locale:"mt-MT", date:"m", length: "medium", useNative:false, timezone:"local"})
+
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Jan');
+        test.equal(value[1], 'Fra');
+        test.equal(value[2], 'Mar');
+        test.equal(value[3], 'Apr');
+        test.equal(value[4], 'Mej');
+        test.equal(value[5], 'Ġun');
+        test.equal(value[6], 'Lul');
+        test.equal(value[7], 'Aww');
+        test.equal(value[8], 'Set');
+        test.equal(value[9], 'Ott');
+        test.equal(value[10], 'Nov');
+        test.equal(value[11], 'Diċ');
+
+        var fmt = new DateFmt({locale:"mt-MT", date:"m", length: "shoret", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Ja');
+        test.equal(value[1], 'Fr');
+        test.equal(value[2], 'Ma');
+        test.equal(value[3], 'Ap');
+        test.equal(value[4], 'Me');
+        test.equal(value[5], 'Ġu');
+        test.equal(value[6], 'Lu');
+        test.equal(value[7], 'Aw');
+        test.equal(value[8], 'Se');
+        test.equal(value[9], 'Ot');
+        test.equal(value[10], 'No');
+        test.equal(value[11], 'Di');
         test.done();
     }
 }

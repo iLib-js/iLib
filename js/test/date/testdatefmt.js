@@ -1,7 +1,7 @@
 /*
  * testdatefmt.js - test the date formatter object
  *
- * Copyright © 2012-2015,2017,2020-2021 JEDLSoft
+ * Copyright © 2012-2015, 2017, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3851,9 +3851,9 @@ module.exports.testdatefmt = {
     },
 
     testDateFmtGetDateComponentOrderEN: function(test) {
-    	test.expect(2);
+        test.expect(2);
 
-    	var fmt = new DateFmt({locale: "en"})
+        var fmt = new DateFmt({locale: "en"})
         test.ok(fmt !== null);
 
         test.equal(fmt.getDateComponentOrder(), "mdy");
@@ -3861,9 +3861,9 @@ module.exports.testdatefmt = {
     },
 
     testDateFmtGetDateComponentOrderENGB: function(test) {
-    	test.expect(2);
+        test.expect(2);
 
-    	var fmt = new DateFmt({locale: "en-GB"})
+        var fmt = new DateFmt({locale: "en-GB"})
         test.ok(fmt !== null);
 
         test.equal(fmt.getDateComponentOrder(), "dmy");
@@ -3871,9 +3871,9 @@ module.exports.testdatefmt = {
     },
 
     testDateFmtGetDateComponentOrderENUS: function(test) {
-    	test.expect(2);
+        test.expect(2);
 
-    	var fmt = new DateFmt({locale: "en-US"})
+        var fmt = new DateFmt({locale: "en-US"})
         test.ok(fmt !== null);
 
         test.equal(fmt.getDateComponentOrder(), "mdy");
@@ -3881,9 +3881,9 @@ module.exports.testdatefmt = {
     },
 
     testDateFmtGetDateComponentOrderDE: function(test) {
-    	test.expect(2);
+        test.expect(2);
 
-    	var fmt = new DateFmt({locale: "de-DE"})
+        var fmt = new DateFmt({locale: "de-DE"})
         test.ok(fmt !== null);
 
         test.equal(fmt.getDateComponentOrder(), "dmy");
@@ -3891,9 +3891,9 @@ module.exports.testdatefmt = {
     },
 
     testDateFmtGetDateComponentOrderAK: function(test) {
-    	test.expect(2);
+        test.expect(2);
 
-    	var fmt = new DateFmt({locale: "ak-GH"})
+        var fmt = new DateFmt({locale: "ak-GH"})
         test.ok(fmt !== null);
 
         test.equal(fmt.getDateComponentOrder(), "ymd");
@@ -3901,9 +3901,9 @@ module.exports.testdatefmt = {
     },
 
     testDateFmtGetDateComponentOrderLV: function(test) {
-    	test.expect(2);
+        test.expect(2);
 
-    	var fmt = new DateFmt({locale: "lv-LV"})
+        var fmt = new DateFmt({locale: "lv-LV"})
         test.ok(fmt !== null);
 
         test.equal(fmt.getDateComponentOrder(), "ydm");
@@ -3913,6 +3913,24 @@ module.exports.testdatefmt = {
     	test.expect(2);
 
     	var fmt = new DateFmt({locale: "tk-TM"})
+      test.ok(fmt !== null);
+
+        test.equal(fmt.getDateComponentOrder(), "dmy");
+        test.done();
+    },
+    testDateFmtGetDateComponentOrderTJ: function(test) {
+    	test.expect(2);
+
+    	var fmt = new DateFmt({locale: "tg-TJ"})
+      test.ok(fmt !== null);
+
+        test.equal(fmt.getDateComponentOrder(), "dmy");
+        test.done();
+    },
+    testDateFmtGetDateComponentOrderMT: function(test) {
+        test.expect(2);
+
+        var fmt = new DateFmt({locale: "mt-MT"})
         test.ok(fmt !== null);
 
         test.equal(fmt.getDateComponentOrder(), "dmy");

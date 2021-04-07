@@ -1,5 +1,5 @@
 /*
- * genscripts.js - ilib tool to generate the json data about ISO 15924 scripts
+ * genlangscripts.js - ilib tool to generate the json data about ISO 15924 scripts
  *
  * Copyright © 2013-2018, 2020-2021 JEDLSoft
  *
@@ -109,7 +109,7 @@ for (var language in scripts) {
         // special cases where we disagree with CLDR
         if (language === 'ms' || language === 'kk' || language === 'pa'|| language === 'tk') {
             scripts[language] = scripts[language].reverse();
-        } else if (language == 'ky') {
+        } else if (language == 'ky'|| language == 'tg') {
             var lang = scripts[language];
             var tmp = lang[0];
             lang[0] = lang[1];

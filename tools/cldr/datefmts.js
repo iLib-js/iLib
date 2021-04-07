@@ -64,7 +64,6 @@ var rtlLanguages = [
     "sd",
     "swb",
     "syr",
-    "tg",
     "ug",
     "ur",
     "uz",
