@@ -13528,5 +13528,15 @@ module.exports.testlocaleinfo = {
         test.equal(info.getDelimiterQuotationEnd(), "”");
         test.equal(info.getPaperSize(), "A4");
         test.done();
+    },
+    testLocaleInfoQuotation_mt_MT: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("mt-MT");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
     }
 };

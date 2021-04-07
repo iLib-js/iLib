@@ -46,6 +46,26 @@ var hardCodeData = {
             "full": {
                 "2": "{0} ё {1}",
                 "end": "{0}, ё {1}"
+              }
+        }
+    },
+    "mt":{
+        "or": {
+            "short": {
+                "2": "{0} jew {1}",
+                "end": "{0}, jew {1}"
+            },
+            "medium": {
+                "2": "{0} jew {1}",
+                "end": "{0}, jew {1}"
+            },
+            "long": {
+                "2": "{0} jew {1}",
+                "end": "{0}, jew {1}"
+            },
+            "full": {
+                "2": "{0} jew {1}",
+                "end": "{0}, jew {1}"
             }
         }
     }
@@ -62,6 +82,7 @@ function usage() {
 }
 
 var toDir = ".";
+
 
 process.argv.forEach(function (val, index, array) {
     if (val === "-h" || val === "--help") {

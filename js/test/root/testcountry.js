@@ -354,7 +354,6 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "my-MM");
         test.done();
     },
-    
     testCountryLocale_ne_NP: function(test) {
         test.expect(4);
         var ctry = new Country({
@@ -379,6 +378,32 @@ module.exports.testcountry = {
         test.equal(ctry.getCode('दक्षिण कोरिया'), "KR");
         var locale = ctry.getLocale();
         test.equal(locale.toString(), "ne-NP");
+        test.done();
+    },
+    testCountryLocale_mt_MT: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "mt-MT"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"ir-Reġjun Amministrattiv Speċjali tal-Macao tar-Repubblika tal-Poplu taċ-Ċina");
+        test.equal(ctry.getCode("ir-Reġjun Amministrattiv Speċjali tal-Macao tar-Repubblika tal-Poplu taċ-Ċina"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "mt-MT");
+        test.done();
+    },
+    testCountryLocale_mt_MT2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "mt-MT"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"), 'il-Korea t’Isfel');
+        test.equal(ctry.getCode('il-Korea t’Isfel'), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "mt-MT");
         test.done();
     },
     testCountryGetByCodeUnknown: function(test) {

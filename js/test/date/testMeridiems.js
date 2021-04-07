@@ -2079,5 +2079,14 @@ module.exports.testmeridiems = {
         test.equal(fmt[1].name, 'PM');
 
         test.done();
+    },
+    testMeridiem_mt_MT: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"mt-MT"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'AM');
+        test.equal(fmt[1].name, 'PM');
+        test.done();
     }
 }

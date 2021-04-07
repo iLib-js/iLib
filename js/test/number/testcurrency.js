@@ -1984,5 +1984,13 @@ module.exports.testcurrency = {
 
         test.equal(info.getCurrency(), "TJS");
         test.done();
+    },
+    testCurrency_mt_MT: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("mt-MT");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "EUR");
+        test.done();
     }
 };

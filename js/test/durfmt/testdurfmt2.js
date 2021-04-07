@@ -9451,7 +9451,6 @@ module.exports.testdurfmt2 = {
         var textfmt;
         var data = setVariable();
         var length = data["fullLength"];
-
         var textformatted_1 = [], textformatted_5 = [];
         var clockformatted_1 = [], clockformatted_5 = [];
 
@@ -9483,6 +9482,70 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_5[1], '5 соа, 5 дақ, 5 сон');
         test.equal(clockformatted_5[2], '5 со, 5 да, 5 со');
         test.equal(clockformatted_5[3], '5 с, 5 д, 5 с');
+        test.done();
+    },
+    testDurFmt_mt_MT: function(test) {
+        test.expect(32);
+        // 1 5 14 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [], textformatted_5 = [], textformatted_14 = [], textformatted_100 = [];
+        var clockformatted_1 = [], clockformatted_5 = [], clockformatted_14 = [], clockformatted_100 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "mt-MT", style:"text", length:length[i], useNative: false});
+            textformatted_1.push(textfmt.format({year: 1, month: 1, week: 1, day: 1}).toString());
+            textformatted_5.push(textfmt.format({year: 5, month: 5, week: 5, day: 5}).toString());
+            textformatted_14.push(textfmt.format({year: 14,month: 14,week: 14,day: 14}).toString());
+            textformatted_100.push(textfmt.format({year: 100, month: 100, week: 100, day: 100}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1, minute: 1, second: 1}).toString());
+            clockformatted_5.push(textfmt.format({hour: 5, minute: 5, second: 5}).toString());
+            clockformatted_14.push(textfmt.format({hour: 14, minute: 14, second: 14}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100, minute: 100, second: 100}).toString());
+        }
+
+        test.equal(textformatted_1[0], 'Sena, Xahar, Ġimgħa, u 1 jum');
+        test.equal(textformatted_1[1], 'Sen., Xah., Ġim., 1 jum');
+        test.equal(textformatted_1[2], 'Se., Xa., Ġi., 1 ju.');
+        test.equal(textformatted_1[3], '1 s, 1 x, 1 g, 1 j');
+
+        test.equal(textformatted_5[0], '5 snin, 5 xhur, 5 ġimgħat, u 5 ijiem');
+        test.equal(textformatted_5[1], '5 sni., 5 xhu., 5 ġim., 5 iji.');
+        test.equal(textformatted_5[2], '5 sn., 5 xh., 5 ġi., 5 ij.');
+        test.equal(textformatted_5[3], '5 s, 5 x, 5 g, 5 j');
+
+        test.equal(textformatted_14[0], '14-il sena, 14-il xahar, 14-il ġimgħa, u 14-il jum');
+        test.equal(textformatted_14[1], '14-il sen., 14-il xah., 14-il ġim., 14-il jum');
+        test.equal(textformatted_14[2], '14-il se., 14-il xa., 14-il ġi., 14-il ju.');
+        test.equal(textformatted_14[3], '14 s, 14 x, 14 g, 14 j');
+
+        test.equal(textformatted_100[0], '100 sena, 100 xahar, 100 ġimgħa, u 100 jum');
+        test.equal(textformatted_100[1], '100 sen., 100 xah., 100 ġim., 100 jum');
+        test.equal(textformatted_100[2], '100 se., 100 xa., 100 ġi., 100 ju.');
+        test.equal(textformatted_100[3], '100 s, 100 x, 100 g, 100 j');
+
+        test.equal(clockformatted_1[0], '1 siegħa, 1 minuta, u 1 sekonda');
+        test.equal(clockformatted_1[1], '1 sie., 1 min., 1 sek.');
+        test.equal(clockformatted_1[2], '1 si., 1 mi., 1 se.');
+        test.equal(clockformatted_1[3], '1 s, 1 m, 1 s');
+
+        test.equal(clockformatted_5[0], '5 sigħat, 5 minuti, u 5 sekondi');
+        test.equal(clockformatted_5[1], '5 sig., 5 min., 5 sek.');
+        test.equal(clockformatted_5[2], '5 si., 5 mi., 5 se.');
+        test.equal(clockformatted_5[3], '5 s, 5 m, 5 s');
+
+        test.equal(clockformatted_14[0], '14-il siegħa, 14-il minuta, u 14-il sekonda');
+        test.equal(clockformatted_14[1], '14-il sie., 14-il min., 14-il sek.');
+        test.equal(clockformatted_14[2], '14-il si., 14-il mi., 14-il se.');
+        test.equal(clockformatted_14[3], '14 s, 14 m, 14 s');
+
+        test.equal(clockformatted_100[0], '100 siegħa, 100 minuta, u 100 sekonda');
+        test.equal(clockformatted_100[1], '100 sie., 100 min., 100 sek.');
+        test.equal(clockformatted_100[2], '100 si., 100 mi., 100 se.');
+        test.equal(clockformatted_100[3], '100 s, 100 m, 100 s');
 
         test.done();
     }

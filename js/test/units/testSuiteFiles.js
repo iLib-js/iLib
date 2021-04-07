@@ -40,6 +40,7 @@ module.exports.files = [
     "testunitfmt_ky_KG.js",
     "testunitfmt_lo_LA.js",
     "testunitfmt_ne_NP.js",
+    "testunitfmt_mt_MT.js",
     "testunitfmt_my_MM.js",
     "testunitfmt_tg_TJ.js",
     "testunitfmtasync.js",
