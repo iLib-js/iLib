@@ -1,7 +1,7 @@
 /*
  * testdatefmt.js - test the date formatter object
  *
- * Copyright © 2012-2015,2017,2020 JEDLSoft
+ * Copyright © 2012-2015,2017,2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3907,6 +3907,15 @@ module.exports.testdatefmt = {
         test.ok(fmt !== null);
 
         test.equal(fmt.getDateComponentOrder(), "ydm");
+        test.done();
+    },
+    testDateFmtGetDateComponentOrder_wo_SN: function(test) {
+        test.expect(2);
+
+        var fmt = new DateFmt({locale: "wo-SN"})
+        test.ok(fmt !== null);
+
+        test.equal(fmt.getDateComponentOrder(), "dmy");
         test.done();
     }
 };
