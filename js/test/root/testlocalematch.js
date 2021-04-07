@@ -1,7 +1,7 @@
 /*
  * testlocalematch.js - test the locale matcher object
  *
- * Copyright © 2012-2015,2017,2019-2020 JEDLSoft
+ * Copyright © 2012-2015,2017,2019-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -119,6 +119,17 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "an-Latn-ES");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLanguage8: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "mt"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "mt-Latn-MT");
+        test.done();
+    },
 
     testLocaleMatcherGetLikelyLocaleByRegion: function(test) {
         test.expect(3);
@@ -129,6 +140,17 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "uz-Latn-UZ");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByRegion2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "MT"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "mt-Latn-MT");
         test.done();
     },
 
@@ -1874,6 +1896,17 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ne-NP");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForLanguage_mt: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "mt"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "mt-MT");
+        test.done();
+    },
 
     testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry: function(test) {
         test.expect(3);
@@ -1895,6 +1928,17 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "ne-NP");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_MT: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "MT"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "mt-MT");
         test.done();
     },
 

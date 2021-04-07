@@ -1,7 +1,7 @@
 /*
  * testtimezone.js - test the time zone object
  * 
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -219,6 +219,31 @@ module.exports.testtimezone = {
         test.equal(tz.getId(), "Europe/Amsterdam");
         test.equal(tz.getRawOffsetStr(), "1:0");
         test.equal(tz.getDSTSavingsStr(), "1:0");
+        test.done();
+    },
+    testTZGetDefaultLocale_mt_MT: function(test) {
+        test.expect(6);
+        var tz = new TimeZone({locale: "mt-MT"});
+        test.ok(tz !== null);
+        
+        test.equal(tz.getId(), "Europe/Malta");
+        test.equal(tz.getRawOffsetStr(), "1:0");
+        test.equal(tz.getDSTSavingsStr(), "1:0");
+
+        var gd = new GregorianDate({
+            year: 2021,
+            month: 4,
+            day: 1
+        });
+        test.equal(tz.getDisplayName(gd, 'standard'), "CEST");
+
+        var gd2 = new GregorianDate({
+            year: 2021,
+            month: 12,
+            day: 1
+        });
+        test.equal(tz.getDisplayName(gd2, 'standard'), "CET");
+
         test.done();
     },
     

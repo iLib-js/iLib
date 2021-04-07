@@ -1,7 +1,7 @@
 /*
  * testclock.js - test the 12/24 hour support amongst various locales
  *
- * Copyright © 2019-2020, JEDLSoft
+ * Copyright © 2019-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1853,6 +1853,15 @@ module.exports.testclock = {
     testClock_my_MM: function(test) {
         test.expect(2);
         var info = new LocaleInfo("my-MM");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
+    },
+    testClock_mt_MT: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("mt-MT");
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
