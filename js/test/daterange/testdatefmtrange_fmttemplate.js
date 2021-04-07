@@ -14579,7 +14579,6 @@ module.exports.testdaterangefmt = {
         test.done();
     },
     testDateRngFmt_tg_TJ: function(test) {
-        fmt = new DateRngFmt({locale:"tg-TJ", length: length[i]})
         test.expect(36);
         var fmt;
         var data = setVariables();
@@ -14592,6 +14591,7 @@ module.exports.testdaterangefmt = {
 
         //ymd
         for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"tg-TJ", length: length[i]})
             templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
             templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
             templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
