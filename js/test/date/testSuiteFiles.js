@@ -116,5 +116,6 @@ module.exports.files = [
     "testdatefmt_vi_VN.js",
     "testdatefmt_zh_CN.js",
     "testdatefmt_zh_Hant_HK.js",
-    "testdatefmt_zh_Hant_TW.js"
+    "testdatefmt_zh_Hant_TW.js",
+    "testdatefmt_zu_ZA.js"
 ];
