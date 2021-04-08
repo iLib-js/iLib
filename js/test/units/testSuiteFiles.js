@@ -44,6 +44,7 @@ module.exports.files = [
     "testunitfmt_my_MM.js",
     "testunitfmt_tk_TM.js",
     "testunitfmt_tg_TJ.js",
+    "testunitfmt_wo_SN.js",
     "testunitfmtasync.js",
     "testdigitalspeed.js",
     "testunitfmt_usages.js"

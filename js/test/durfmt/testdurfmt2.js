@@ -9587,5 +9587,46 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_100[3], '100 s, 100 m, 100 s');
 
         test.done();
+    },
+    testDurFmt_wo_SN: function(test) {
+        test.expect(16);
+        // 1 3
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [], textformatted_3 = [];
+        var clockformatted_1 = [], clockformatted_3 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "wo-SN", style:"text", length:length[i], useNative: false});
+            textformatted_1.push(textfmt.format({year: 1, month: 1, week: 1, day: 1}).toString());
+            textformatted_3.push(textfmt.format({year: 3, month: 3, week: 3, day: 3}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1, minute: 1, second: 1}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3, minute: 3, second: 3}).toString());
+        }
+
+        test.equal(textformatted_1[0], '1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[1], '1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[2], '1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[3], '1 y, 1 m, 1 w, 1 d');
+
+        test.equal(textformatted_3[0], '3 y, 3 m, 3 w, 3 d');
+        test.equal(textformatted_3[1], '3 y, 3 m, 3 w, 3 d');
+        test.equal(textformatted_3[2], '3 y, 3 m, 3 w, 3 d');
+        test.equal(textformatted_3[3], '3 y, 3 m, 3 w, 3 d');
+
+        test.equal(clockformatted_1[0], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[3], '1 h, 1 min, 1 s');
+
+        test.equal(clockformatted_3[0], '3 h, 3 min, 3 s');
+        test.equal(clockformatted_3[1], '3 h, 3 min, 3 s');
+        test.equal(clockformatted_3[2], '3 h, 3 min, 3 s');
+        test.equal(clockformatted_3[3], '3 h, 3 min, 3 s');
+
+        test.done();
     }
 }

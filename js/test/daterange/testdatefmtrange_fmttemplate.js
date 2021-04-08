@@ -14589,7 +14589,7 @@ module.exports.testdaterangefmt = {
         var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
         var templatec30 = [];
 
-        //ymd
+        //dmy
         for (var i=0; i < 4; i++) {
             fmt = new DateRngFmt({locale:"wo-SN", length: length[i]})
             templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
@@ -14659,7 +14659,7 @@ module.exports.testdaterangefmt = {
         var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
         var templatec30 = [];
 
-        //ymd
+        //dmy
         for (var i=0; i < 4; i++) {
             fmt = new DateRngFmt({locale:"tk-TM", length: length[i]})
             templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
@@ -14729,7 +14729,7 @@ module.exports.testdaterangefmt = {
         var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
         var templatec30 = [];
 
-        //ymd
+        //dmy
         for (var i=0; i < 4; i++) {
             fmt = new DateRngFmt({locale:"tg-TJ", length: length[i]})
             templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
@@ -14800,7 +14800,7 @@ module.exports.testdaterangefmt = {
         var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
         var templatec30 = [];
 
-        //ymd
+        //dmy
         for (var i=0; i < 4; i++) {
             fmt = new DateRngFmt({locale:"mt-MT", length: length[i]})
             templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
