@@ -119,7 +119,28 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "an-Latn-ES");
         test.done();
     },
-
+    testLocaleMatcherGetLikelyLocaleByLanguage_tk: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "tk"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "tk-Latn-TM");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLanguage8: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "mt"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "mt-Latn-MT");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleByRegion: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -131,7 +152,29 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "uz-Latn-UZ");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByRegion_TM: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "TM"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "tk-Latn-TM");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByRegion2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "MT"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
 
+        test.equal(locale.getSpec(), "mt-Latn-MT");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleByScript1: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -1326,6 +1369,28 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "wo-Latn-SN");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_tg: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "tg"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "tg-Cyrl-TJ");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_tg_TJ: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "tg-TJ"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "tg-Cyrl-TJ");
+        test.done();
+    },
     testLocaleMatcherMatchExactFullLocale: function(test) {
         test.expect(2);
         var lm = new LocaleMatcher({
@@ -1896,7 +1961,39 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ne-NP");
         test.done();
     },
-
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForLanguage_tk: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "tk"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "tk-TM");          
+        test.done();
+    },      
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForLanguage_tg: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "tg"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "tg-Cyrl-TJ");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForLanguage_mt: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "mt"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "mt-MT");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -1919,6 +2016,17 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ne-NP");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_MT: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "MT"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "mt-MT");
+        test.done();
+    },
 
     testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_LA: function(test) {
         test.expect(3);
@@ -1931,7 +2039,6 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "lo-LA");
         test.done();
     },
-
     testLocaleMatcherGetLikelyLocaleMinimalNonDefaultScriptForLanguage1: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -2025,6 +2132,17 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "my-MM");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_TJ: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "TJ"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "tg-Cyrl-TJ");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_KG: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -2056,6 +2174,17 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "ca-AD");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_TM: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "TM"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "tk-TM");
         test.done();
     },
     testLocaleMatcherGetLikelyLocaleMinimalDefaultLocaleForScript1: function(test) {

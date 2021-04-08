@@ -1865,7 +1865,30 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_tk_TM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("tk-TM");
+        test.ok(info !== null);
 
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_tg_TJ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("tg-TJ");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_mt_MT: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("mt-MT");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
         test.done();
     }
 }

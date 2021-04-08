@@ -1,7 +1,7 @@
 /*
  * testlocaleinfo.js - test the locale info object
  *
- * Copyright © 2012-2017,2020-2021 JEDLSoft
+ * Copyright © 2012-2017, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13522,6 +13522,36 @@ module.exports.testlocaleinfo = {
     testLocaleInfoQuotation_wo_SN: function(test) {
         test.expect(4);
         var info = new LocaleInfo("wo-SN");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_tk_TM: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("tk-TM");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_tg_TJ: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("tg-TJ");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_mt_MT: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("mt-MT");
         test.ok(info !== null);
 
         test.equal(info.getDelimiterQuotationStart(), "“");
