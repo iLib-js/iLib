@@ -9607,25 +9607,25 @@ module.exports.testdurfmt2 = {
             clockformatted_3.push(textfmt.format({hour: 3, minute: 3, second: 3}).toString());
         }
 
-        test.equal(textformatted_1[0], '1 y, 1 m, 1 w, 1 d');
-        test.equal(textformatted_1[1], '1 y, 1 m, 1 w, 1 d');
-        test.equal(textformatted_1[2], '1 y, 1 m, 1 w, 1 d');
-        test.equal(textformatted_1[3], '1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[0], '1 at, 1 weer, 1 ayubés, 1 bés');
+        test.equal(textformatted_1[1], '1 at, 1 wee, 1 ayu, 1 bés');
+        test.equal(textformatted_1[2], '1 at, 1 we, 1 ay, 1 bé');
+        test.equal(textformatted_1[3], '1 at, 1 we, 1 ay, 1 b');
 
-        test.equal(textformatted_3[0], '3 y, 3 m, 3 w, 3 d');
-        test.equal(textformatted_3[1], '3 y, 3 m, 3 w, 3 d');
-        test.equal(textformatted_3[2], '3 y, 3 m, 3 w, 3 d');
-        test.equal(textformatted_3[3], '3 y, 3 m, 3 w, 3 d');
+        test.equal(textformatted_3[0], '3 at, 3 weer, 3 ayubés, 3 bés');
+        test.equal(textformatted_3[1], '3 at, 3 wee, 3 ayu, 3 bés');
+        test.equal(textformatted_3[2], '3 at, 3 we, 3 ay, 3 bé');
+        test.equal(textformatted_3[3], '3 at, 3 we, 3 ay, 3 b');
 
-        test.equal(clockformatted_1[0], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[3], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[0], '1 waxtu, 1 simili, 1 saa');
+        test.equal(clockformatted_1[1], '1 wax, 1 sim, 1 saa');
+        test.equal(clockformatted_1[2], '1 wa, 1 si, 1 sa');
+        test.equal(clockformatted_1[3], '1 wa, 1 si, 1 sa');
 
-        test.equal(clockformatted_3[0], '3 h, 3 min, 3 s');
-        test.equal(clockformatted_3[1], '3 h, 3 min, 3 s');
-        test.equal(clockformatted_3[2], '3 h, 3 min, 3 s');
-        test.equal(clockformatted_3[3], '3 h, 3 min, 3 s');
+        test.equal(clockformatted_3[0], '3 waxtu, 3 simili, 3 saa');
+        test.equal(clockformatted_3[1], '3 wax, 3 sim, 3 saa');
+        test.equal(clockformatted_3[2], '3 wa, 3 si, 3 sa');
+        test.equal(clockformatted_3[3], '3 wa, 3 si, 3 sa');
 
         test.done();
     }

@@ -214,7 +214,7 @@ module.exports.testlistfmt_wo_SN = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["benn", "ñaar"]), "benn or ñaar");
+        test.equal(fmt.format(["benn", "ñaar"]), "benn mba ñaar");
         test.done();
     },
     testListFmtORStyleNumberFormatThree_wo_SN: function(test) {
@@ -225,7 +225,7 @@ module.exports.testlistfmt_wo_SN = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["benn", "ñaar", "ñett"]), "benn, ñaar, or ñett");
+        test.equal(fmt.format(["benn", "ñaar", "ñett"]), "benn, ñaar, mba ñett");
         test.done();
     },
     testListFmtORStyleNumberFormatFour_wo_SN: function(test) {
@@ -236,7 +236,7 @@ module.exports.testlistfmt_wo_SN = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["benn", "ñaar", "ñett", "ñeent"]), "benn, ñaar, ñett, or ñeent");
+        test.equal(fmt.format(["benn", "ñaar", "ñett", "ñeent"]), "benn, ñaar, ñett, mba ñeent");
         test.done();
     },
     testListFmtORStyleNumberFormatFiveFull_wo_SN: function(test) {
@@ -247,7 +247,7 @@ module.exports.testlistfmt_wo_SN = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["benn", "ñaar", "ñett", "ñeent", "juróom"]), "benn, ñaar, ñett, ñeent, or juróom");
+        test.equal(fmt.format(["benn", "ñaar", "ñett", "ñeent", "juróom"]), "benn, ñaar, ñett, ñeent, mba juróom");
         test.done();
     },
     testListFmtORStyleNumberFormatShortFiveFull_wo_SN: function(test) {
@@ -259,7 +259,7 @@ module.exports.testlistfmt_wo_SN = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["benn", "ñaar", "ñett", "ñeent", "juróom"]), "benn, ñaar, ñett, ñeent, or juróom");
+        test.equal(fmt.format(["benn", "ñaar", "ñett", "ñeent", "juróom"]), "benn, ñaar, ñett, ñeent, mba juróom");
         test.done();
     }
 };
