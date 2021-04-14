@@ -153,7 +153,7 @@ module.exports.testunitfmt_zu_ZA = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "10 km²");
+        test.equal(str, "amakhilomitha-skwele ayi-10");
         test.done();
     },
     testUnitFormatFuelConsumption1_zu_ZA: function(test) {
