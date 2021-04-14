@@ -328,6 +328,32 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "eu-ES");
         test.done();
     },
+    testCountryLocale_zu_ZA: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "zu-ZA"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"i-Macau SAR China");
+        test.equal(ctry.getCode("i-Macau SAR China"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "zu-ZA");
+        test.done();
+    },
+    testCountryLocale_zu_ZA2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "zu-ZA"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"),"i-South Korea");
+        test.equal(ctry.getCode('i-South Korea'), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "zu-ZA");
+        test.done();
+    },
     testCountryLocale_my_MM: function(test) {
         test.expect(4);
         var ctry = new Country({

@@ -14790,5 +14790,77 @@ module.exports.testdaterangefmt = {
         test.equal(templatec30[3], "{sy} – {ey}");
 
         test.done();
+    },
+    testDateRngFmt_zu_ZA: function(test) {
+        test.expect(36);
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+
+        //ymd
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"zu-ZA", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
+        }
+
+        test.equal(templatec00[0], '{sm} {sd}, {sy} {st} – {et}');
+        test.equal(templatec00[1], '{sm} {sd}, {sy} {st} – {et}');
+        test.equal(templatec00[2], '{sm} {sd}, {sy} {st} – {et}');
+        test.equal(templatec00[3], '{sm}/{sd}/{sy} {st} – {et}');
+
+        test.equal(templatec01[0], '{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}');
+        test.equal(templatec01[1], '{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}');
+        test.equal(templatec01[2], '{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}');
+        test.equal(templatec01[3], '{sm}/{sd}/{sy} {st} – {em}/{ed}/{ey} {et}');
+
+        test.equal(templatec02[1], '{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}');
+        test.equal(templatec02[0], '{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}');
+        test.equal(templatec02[2], '{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}');
+        test.equal(templatec02[3], '{sm}/{sd}/{sy} {st} – {em}/{ed}/{ey} {et}');
+
+        test.equal(templatec03[0], '{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}');
+        test.equal(templatec03[1], '{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}');
+        test.equal(templatec03[2], '{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}');
+        test.equal(templatec03[3], '{sm}/{sd}/{sy} {st} – {em}/{ed}/{ey} {et}');
+
+        test.equal(templatec10[0], '{sm} {sd} – {ed}, {ey}');
+        test.equal(templatec10[1], '{sm} {sd} – {ed}, {ey}');
+        test.equal(templatec10[2], '{sm} {sd} – {ed}, {ey}');
+        test.equal(templatec10[3], '{sm}/{sd}/{sy} – {em}/{ed}/{ey}');
+
+        test.equal(templatec11[0], '{sm} {sd} – {em} {ed}, {ey}');
+        test.equal(templatec11[1], '{sm} {sd} – {em} {ed}, {ey}');
+        test.equal(templatec11[2], '{sm} {sd} – {em} {ed}, {ey}');
+        test.equal(templatec11[3], '{sm}/{sd} – {em}/{ed}/{ey}');
+
+        test.equal(templatec12[0], '{sm} {sd}, {sy} – {em} {ed}, {ey}');
+        test.equal(templatec12[1], '{sm} {sd}, {sy} – {em} {ed}, {ey}');
+        test.equal(templatec12[2], '{sm} {sd}, {sy} – {em} {ed}, {ey}');
+        test.equal(templatec12[3], '{sm}/{sd}/{sy} – {em}/{ed}/{ey}');
+
+        test.equal(templatec20[0], '{sm}, {sy} – {em}, {ey}');
+        test.equal(templatec20[1], '{sm}, {sy} – {em}, {ey}');
+        test.equal(templatec20[2], '{sm}, {sy} – {em}, {ey}');
+        test.equal(templatec20[3], '{sm}/{sy} – {em}/{ey}');
+
+        test.equal(templatec30[0], "{sy} – {ey}");
+        test.equal(templatec30[1], "{sy} – {ey}");
+        test.equal(templatec30[2], "{sy} – {ey}");
+        test.equal(templatec30[3], "{sy} – {ey}");
+
+        test.done();
     }
 }

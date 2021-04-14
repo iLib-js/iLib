@@ -134,7 +134,7 @@
     "1#1 day|#{num} days": "one#{num} usuku|#{num} izinsuku",
     "1#1 week|#{num} weeks": "one#{num} iviki|#{num} amaviki",
     "1#1 month|#{num} months": "one#{num} inyanga|#{num} izinyanga",
-    "1#1 year|#{num} years": "one#{num} y|#{num} y",
+    "1#1 year|#{num} years": "one#{num} unyaka|#iminyaka engu-{num}",
     "#{num} ms": "one#{num} ms|#{num} ms",
     "1#1 sec|#{num} sec": "one#{num} sekhondi|#{num} sec",
     "1#1 min|#{num} min": "one#{num} iminithi|#{num} iminithi",

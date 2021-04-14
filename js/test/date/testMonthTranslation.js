@@ -7884,7 +7884,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], 'Nov');
         test.equal(value[11], 'Diċ');
 
-        var fmt = new DateFmt({locale:"mt-MT", date:"m", length: "shoret", useNative:false, timezone:"local"})
+        var fmt = new DateFmt({locale:"mt-MT", date:"m", length: "short", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
@@ -7900,6 +7900,50 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], 'Ot');
         test.equal(value[10], 'No');
         test.equal(value[11], 'Di');
+        test.done();
+    },
+    testMonthTranslate_zu_ZA: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"zu-ZA", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Januwari');
+        test.equal(value[1], 'Februwari');
+        test.equal(value[2], 'Mashi');
+        test.equal(value[3], 'Ephreli');
+        test.equal(value[4], 'Meyi');
+        test.equal(value[5], 'Juni');
+        test.equal(value[6], 'Julayi');
+        test.equal(value[7], 'Agasti');
+        test.equal(value[8], 'Septhemba');
+        test.equal(value[9], 'Okthoba');
+        test.equal(value[10], 'Novemba');
+        test.equal(value[11], 'Disemba');
+
+        var fmt = new DateFmt({locale:"zu-ZA", date:"m", length: "medium", useNative:false, timezone:"local"})
+
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Jan');
+        test.equal(value[1], 'Feb');
+        test.equal(value[2], 'Mas');
+        test.equal(value[3], 'Eph');
+        test.equal(value[4], 'Mey');
+        test.equal(value[5], 'Jun');
+        test.equal(value[6], 'Jul');
+        test.equal(value[7], 'Aga');
+        test.equal(value[8], 'Sep');
+        test.equal(value[9], 'Okt');
+        test.equal(value[10], 'Nov');
+        test.equal(value[11], 'Dis');
         test.done();
     }
 }

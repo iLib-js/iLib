@@ -68,6 +68,26 @@ var hardCodeData = {
                 "end": "{0}, jew {1}"
             }
         }
+    },
+    "zu":{
+        "or": {
+            "short": {
+                "2": "{0} noma {1}",
+                "end": "{0}, noma {1}"
+            },
+            "medium": {
+                "2": "{0} noma {1}",
+                "end": "{0}, noma {1}"
+            },
+            "long": {
+                "2": "{0} noma {1}",
+                "end": "{0}, noma {1}"
+            },
+            "full": {
+                "2": "{0} noma {1}",
+                "end": "{0}, noma {1}"
+            }
+        }
     }
 }
 
