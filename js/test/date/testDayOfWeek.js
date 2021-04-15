@@ -2108,5 +2108,15 @@ module.exports.testweekdata = {
         test.equal(info.getWeekEndStart(), 6);
         test.equal(info.getWeekEndEnd(), 0);
         test.done();
+    },
+    testWeekData_zu_ZA: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("zu-ZA");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 0);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
     }
 }

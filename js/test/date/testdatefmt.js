@@ -3944,5 +3944,14 @@ module.exports.testdatefmt = {
 
         test.equal(fmt.getDateComponentOrder(), "dmy");
         test.done();
+    },
+    testDateFmtGetDateComponentOrder_ZA: function(test) {
+        test.expect(2);
+
+        var fmt = new DateFmt({locale: "zu-ZA"})
+        test.ok(fmt !== null);
+
+        test.equal(fmt.getDateComponentOrder(), "mdy");
+        test.done();
     }
 };

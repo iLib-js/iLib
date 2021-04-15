@@ -221,7 +221,6 @@ module.exports.testtimezone = {
         test.equal(tz.getDSTSavingsStr(), "1:0");
         test.done();
     },
-
     testTZGetDefaultFor_wo_SN: function(test) {
         test.expect(5);
         var tz = new TimeZone({locale: "wo-SN"});
@@ -240,7 +239,6 @@ module.exports.testtimezone = {
         test.equal(tz.getDisplayName(gd, 'standard'), "GMT");
         test.done();
     },
-
     testTZGetDefaultFor_tg_TJ: function(test) {
         test.expect(5);
         var tz = new TimeZone({locale: "tg-TJ"});
@@ -282,6 +280,24 @@ module.exports.testtimezone = {
         });
         test.equal(tz.getDisplayName(gd2, 'standard'), "CET");
 
+        test.done();
+    },
+    testTZGetDefaultFor_zu_ZA: function(test) {
+        test.expect(5);
+        var tz = new TimeZone({locale: "zu-ZA"});
+        test.ok(tz !== null);
+        
+        // should have the default time zone for the US locale
+        test.equal(tz.getId(), "Africa/Johannesburg");
+        test.equal(tz.getRawOffsetStr(), "2:0");
+        test.equal(tz.getDSTSavingsStr(), "0:0");
+
+        var gd = new GregorianDate({
+            year: 2021,
+            month: 4,
+            day: 1
+        });
+        test.equal(tz.getDisplayName(gd, 'standard'), "SAST");
         test.done();
     },
     testTZGetUnknown: function(test) {

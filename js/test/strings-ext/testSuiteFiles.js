@@ -70,6 +70,7 @@ module.exports.files = [
     "testlistfmt_ur.js",
     "testlistfmt_wo_SN.js",
     "testlistfmt_zh.js",
+    "testlistfmt_zu_ZA.js",
     "testlistfmtasync.js",
     "testnorm.js",
     "testnormasync.js"

@@ -109,5 +109,6 @@ module.exports.files = [
     "testdatefmtrange_zh_Hans_CN.js",
     "testdatefmtrange_zh_Hant_HK.js",
     "testdatefmtrange_zh_Hant_TW.js",
+    "testdatefmtrange_zu_ZA.js",
     "testdatefmtrange_fmttemplate.js",
 ];

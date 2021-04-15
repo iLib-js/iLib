@@ -1204,6 +1204,28 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ky-Cyrl-KG");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_zu: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "zu"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "zu-Latn-ZA");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_ZA: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ZA"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "en-Latn-ZA");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleByLocaleCode_KG: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -1994,6 +2016,17 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "mt-MT");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForLanguage_zu: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "zu"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "zu-ZA");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -2185,6 +2218,17 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "tk-TM");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_ZA: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ZA"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "en-ZA");
         test.done();
     },
     testLocaleMatcherGetLikelyLocaleMinimalDefaultLocaleForScript1: function(test) {

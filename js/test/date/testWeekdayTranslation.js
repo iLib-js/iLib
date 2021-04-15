@@ -12208,5 +12208,76 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[6], "Sb");
 
         test.done();
+    },
+    testWeekdayTranslationFull_zu_ZA: function(test) {
+        // full -> wide
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"zu-ZA", date:"w", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "ISonto");
+        test.equal(value[1], "UMsombuluko");
+        test.equal(value[2], "ULwesibili");
+        test.equal(value[3], "ULwesithathu");
+        test.equal(value[4], "ULwesine");
+        test.equal(value[5], "ULwesihlanu");
+        test.equal(value[6], "UMgqibelo");
+        test.done();
+    },
+    testWeekdayTranslationLong_zu_ZA: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"zu-ZA", date:"w", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "Son");
+        test.equal(value[1], "Mso");
+        test.equal(value[2], "Bil");
+        test.equal(value[3], "Tha");
+        test.equal(value[4], "Sin");
+        test.equal(value[5], "Hla");
+        test.equal(value[6], "Mgq");
+
+        test.done();
+    },
+    testWeekdayTranslationMedium_zu_ZA: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"zu-ZA", date:"w", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "Son");
+        test.equal(value[1], "Mso");
+        test.equal(value[2], "Bil");
+        test.equal(value[3], "Tha");
+        test.equal(value[4], "Sin");
+        test.equal(value[5], "Hla");
+        test.equal(value[6], "Mgq");
+
+        test.done();
+    },
+    testWeekdayTranslationShort_zu_ZA: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"zu-ZA", date:"w", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "S");
+        test.equal(value[1], "M");
+        test.equal(value[2], "B");
+        test.equal(value[3], "T");
+        test.equal(value[4], "S");
+        test.equal(value[5], "H");
+        test.equal(value[6], "M");
+
+        test.done();
     }
 }

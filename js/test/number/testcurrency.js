@@ -2008,5 +2008,13 @@ module.exports.testcurrency = {
 
         test.equal(info.getCurrency(), "EUR");
         test.done();
+    },
+    testCurrency_zu_ZA: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("zu-ZA");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "ZAR");
+        test.done();
     }
 };

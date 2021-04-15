@@ -1890,5 +1890,14 @@ module.exports.testclock = {
 
         test.equal(info.getClock(), 24);
         test.done();
+    },
+    testClock_zu_ZA: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("zu-ZA");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
     }
 }
