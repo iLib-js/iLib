@@ -7737,6 +7737,51 @@ module.exports.testmonthtranslation = {
 
         test.done();
     },
+    testMonthTranslate_wo_SN: function(test) {
+        test.expect(24);
+
+        // full, medium: MMM
+        // long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"wo-SN", date:"m", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "Samwiyee");
+        test.equal(value[1], "Fewriyee");
+        test.equal(value[2], "Mars");
+        test.equal(value[3], "Awril");
+        test.equal(value[4], "Mee");
+        test.equal(value[5], "Suwe");
+        test.equal(value[6], "Sulet");
+        test.equal(value[7], "Ut");
+        test.equal(value[8], "Sàttumbar");
+        test.equal(value[9], "Oktoobar");
+        test.equal(value[10], "Nowàmbar");
+        test.equal(value[11], "Desàmbar");
+
+        var fmt = new DateFmt({locale:"wo-SN", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "Sam");
+        test.equal(value[1], "Few");
+        test.equal(value[2], "Mar");
+        test.equal(value[3], "Awr");
+        test.equal(value[4], "Mee");
+        test.equal(value[5], "Suw");
+        test.equal(value[6], "Sul");
+        test.equal(value[7], "Ut");
+        test.equal(value[8], "Sàt");
+        test.equal(value[9], "Okt");
+        test.equal(value[10], "Now");
+        test.equal(value[11], "Des");
+        test.done();
+    },
+
     testMonthTranslate_tk_TM: function(test) {
         test.expect(36);
 
@@ -7745,7 +7790,8 @@ module.exports.testmonthtranslation = {
         // short: MM
 
         var value = [], i;
-          var fmt = new DateFmt({locale:"tk-TM", date:"m", length: "full", useNative:false, timezone:"local"})
+        
+        var fmt = new DateFmt({locale:"tk-TM", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
@@ -7766,7 +7812,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-
+        
         test.equal(value[0], 'Ýan');
         test.equal(value[1], 'Few');
         test.equal(value[2], 'Mar');

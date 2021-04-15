@@ -1347,6 +1347,28 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ne-Deva-NP");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_wo: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "wo"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "wo-Latn-SN");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_wo_SN: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "wo-SN"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "wo-Latn-SN");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleByLocaleCode_tg: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -2132,7 +2154,17 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ky-Cyrl-KG");
         test.done();
     },
-
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_SN: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "SN"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "fr-SN");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_AD: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -2350,6 +2382,28 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "hy-AM");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocale_wo_SN: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "wo-SN"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "wo-SN");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocale_wo_SN2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "wo-Latn"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "wo-SN");
         test.done();
     }
 };

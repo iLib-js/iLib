@@ -9587,5 +9587,46 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_100[3], '100 s, 100 m, 100 s');
 
         test.done();
+    },
+    testDurFmt_wo_SN: function(test) {
+        test.expect(16);
+        // 1 3
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [], textformatted_3 = [];
+        var clockformatted_1 = [], clockformatted_3 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "wo-SN", style:"text", length:length[i], useNative: false});
+            textformatted_1.push(textfmt.format({year: 1, month: 1, week: 1, day: 1}).toString());
+            textformatted_3.push(textfmt.format({year: 3, month: 3, week: 3, day: 3}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1, minute: 1, second: 1}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3, minute: 3, second: 3}).toString());
+        }
+
+        test.equal(textformatted_1[0], '1 at, 1 weer, 1 ayubés, 1 bés');
+        test.equal(textformatted_1[1], '1 at, 1 wee, 1 ayu, 1 bés');
+        test.equal(textformatted_1[2], '1 at, 1 we, 1 ay, 1 bé');
+        test.equal(textformatted_1[3], '1 at, 1 we, 1 ay, 1 b');
+
+        test.equal(textformatted_3[0], '3 at, 3 weer, 3 ayubés, 3 bés');
+        test.equal(textformatted_3[1], '3 at, 3 wee, 3 ayu, 3 bés');
+        test.equal(textformatted_3[2], '3 at, 3 we, 3 ay, 3 bé');
+        test.equal(textformatted_3[3], '3 at, 3 we, 3 ay, 3 b');
+
+        test.equal(clockformatted_1[0], '1 waxtu, 1 simili, 1 saa');
+        test.equal(clockformatted_1[1], '1 wax, 1 sim, 1 saa');
+        test.equal(clockformatted_1[2], '1 wa, 1 si, 1 sa');
+        test.equal(clockformatted_1[3], '1 wa, 1 si, 1 sa');
+
+        test.equal(clockformatted_3[0], '3 waxtu, 3 simili, 3 saa');
+        test.equal(clockformatted_3[1], '3 wax, 3 sim, 3 saa');
+        test.equal(clockformatted_3[2], '3 wa, 3 si, 3 sa');
+        test.equal(clockformatted_3[3], '3 wa, 3 si, 3 sa');
+
+        test.done();
     }
 }

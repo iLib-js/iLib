@@ -1977,6 +1977,14 @@ module.exports.testcurrency = {
         test.equal(info.getCurrency(), "AMD");
         test.done();
     },
+    testCurrency_wo_SN: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("wo-SN");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "XOF");
+        test.done();
+    },
     testCurrency_tk_TM: function(test) {
         test.expect(2);
         var info = new LocaleInfo("tk-TM");

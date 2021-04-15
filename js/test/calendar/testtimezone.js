@@ -222,6 +222,24 @@ module.exports.testtimezone = {
         test.done();
     },
 
+    testTZGetDefaultFor_wo_SN: function(test) {
+        test.expect(5);
+        var tz = new TimeZone({locale: "wo-SN"});
+        test.ok(tz !== null);
+
+        // should have the default time zone for the US locale
+        test.equal(tz.getId(), "Africa/Dakar");
+        test.equal(tz.getRawOffsetStr(), "0:0");
+        test.equal(tz.getDSTSavingsStr(), "0:0");
+
+        var gd = new GregorianDate({
+            year: 2021,
+            month: 4,
+            day: 1
+        });
+        test.equal(tz.getDisplayName(gd, 'standard'), "GMT");
+        test.done();
+    },
 
     testTZGetDefaultFor_tg_TJ: function(test) {
         test.expect(5);
