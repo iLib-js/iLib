@@ -9608,24 +9608,24 @@ module.exports.testdurfmt2 = {
         }
 
         test.equal(textformatted_1[0], '1 unyaka, 1 inyanga, 1 iviki, 1 usuku');
-        test.equal(textformatted_1[1], '1 y, 1 nyanga, 1 viki, 1 usuku');
-        test.equal(textformatted_1[2], '1 y, 1 m, 1 w, 1');
-        test.equal(textformatted_1[3], '1 y, 1 m, 1 w, 1');
+        test.equal(textformatted_1[1], '1 nyk, 1 nyg, 1 vik, 1 suk');
+        test.equal(textformatted_1[2], '1 nk, 1 ng, 1 v, 1 su');
+        test.equal(textformatted_1[3], '1 nk, 1 ng, 1 v, 1 su');
 
-        test.equal(textformatted_17[0], 'iminyaka engu-17, 17 izinyanga, 17 amaviki, 17 izinsuku');
-        test.equal(textformatted_17[1], '17 yrs, 17 izinyanga, 17 amaviki, 17 izinsuku');
-        test.equal(textformatted_17[2], '17 y, 17 m, 17 w, 17 suku');
-        test.equal(textformatted_17[3], '17 y, 17 m, 17 w, 17 suku');
+        test.equal(textformatted_17[0], '17 iminyaka, 17 izinyanga, 17 amaviki, 17 izinsuku');
+        test.equal(textformatted_17[1], '17 nyk, 17 nyg, 17 vik, 17 suk');
+        test.equal(textformatted_17[2], '17 nk, 17 ng, 17 v, 17 su');
+        test.equal(textformatted_17[3], '17 nk, 17 ng, 17 v, 17 su');
 
         test.equal(clockformatted_1[0], '1 ihora, 1 iminithi, 1 isekhondi');
-        test.equal(clockformatted_1[1], '1 hora, 1 iminithi, 1 sekhondi');
-        test.equal(clockformatted_1[2], '1 hora, 1 umzuzu, 1 s');
-        test.equal(clockformatted_1[3], '1 hora, 1 umzuzu, 1 s');
+        test.equal(clockformatted_1[1], '1 hor, 1 min, 1 sek');
+        test.equal(clockformatted_1[2], '1 ho, 1 mi, 1 se');
+        test.equal(clockformatted_1[3], '1 h, 1 m, 1 se');
 
         test.equal(clockformatted_17[0], '17 amahora, 17 amaminithi, 17 amasekhondi');
-        test.equal(clockformatted_17[1], '17 hr, 17 iminithi, 17 sec');
-        test.equal(clockformatted_17[2], '17 hora, 17 umzuzu, 17 s');
-        test.equal(clockformatted_17[3], '17 hora, 17 umzuzu, 17 s');
+        test.equal(clockformatted_17[1], '17 hor, 17 min, 17 sek');
+        test.equal(clockformatted_17[2], '17 ho, 17 mi, 17 se');
+        test.equal(clockformatted_17[3], '17 h, 17 m, 17 se');
 
         test.done();
     }
