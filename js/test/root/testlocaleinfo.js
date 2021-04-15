@@ -13519,6 +13519,16 @@ module.exports.testlocaleinfo = {
         test.equal(info.getPaperSize(), "A4");
         test.done();
     },
+    testLocaleInfoQuotation_wo_SN: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("wo-SN");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
     testLocaleInfoQuotation_tk_TM: function(test) {
         test.expect(4);
         var info = new LocaleInfo("tk-TM");

@@ -2070,6 +2070,16 @@ module.exports.testmeridiems = {
 
         test.done();
     },
+    testMeridiem_wo_SN: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"wo-SN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'Sub');
+        test.equal(fmt[1].name, 'Ngo');
+
+        test.done();
+    },
     testMeridiem_tk_TM: function(test) {
         test.expect(3);
         var fmt = DateFmt.getMeridiemsRange({locale:"tk-TM"});
