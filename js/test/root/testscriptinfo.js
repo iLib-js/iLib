@@ -1,7 +1,7 @@
 /*
  * testscriptinfo.js - test the script info object
  * 
- * Copyright © 2013-2017, 2019-2020 JEDLSoft
+ * Copyright © 2013-2017, 2019-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2283,6 +2283,56 @@ module.exports.testscriptinfo = {
         test.ok(li !== null);
         test.ok(scinfo !== null);
         test.equal(li.getScript(), "Deva");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_wo_SN: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("wo-SN");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_tk_TM: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("tk-TM");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_tg_TJ: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("tg-TJ");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Cyrl");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_mt_MT: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("mt-MT");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_zu_ZA: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("zu-ZA");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
     }

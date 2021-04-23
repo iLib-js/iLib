@@ -1,7 +1,7 @@
 /*
  * testtimezone.js - test the time zone object
  * 
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -221,7 +221,85 @@ module.exports.testtimezone = {
         test.equal(tz.getDSTSavingsStr(), "1:0");
         test.done();
     },
-    
+    testTZGetDefaultFor_wo_SN: function(test) {
+        test.expect(5);
+        var tz = new TimeZone({locale: "wo-SN"});
+        test.ok(tz !== null);
+
+        // should have the default time zone for the US locale
+        test.equal(tz.getId(), "Africa/Dakar");
+        test.equal(tz.getRawOffsetStr(), "0:0");
+        test.equal(tz.getDSTSavingsStr(), "0:0");
+
+        var gd = new GregorianDate({
+            year: 2021,
+            month: 4,
+            day: 1
+        });
+        test.equal(tz.getDisplayName(gd, 'standard'), "GMT");
+        test.done();
+    },
+    testTZGetDefaultFor_tg_TJ: function(test) {
+        test.expect(5);
+        var tz = new TimeZone({locale: "tg-TJ"});
+        test.ok(tz !== null);
+        
+        // should have the default time zone for the US locale
+        test.equal(tz.getId(), "Asia/Dushanbe");
+        test.equal(tz.getRawOffsetStr(), "5:0");
+        test.equal(tz.getDSTSavingsStr(), "0:0");
+
+        var gd = new GregorianDate({
+            year: 2021,
+            month: 4,
+            day: 1
+        });
+        test.equal(tz.getDisplayName(gd, 'standard'), "+05");
+        test.done();
+    },
+    testTZGetDefaultLocale_mt_MT: function(test) {
+        test.expect(6);
+        var tz = new TimeZone({locale: "mt-MT"});
+        test.ok(tz !== null);
+        
+        test.equal(tz.getId(), "Europe/Malta");
+        test.equal(tz.getRawOffsetStr(), "1:0");
+        test.equal(tz.getDSTSavingsStr(), "1:0");
+
+        var gd = new GregorianDate({
+            year: 2021,
+            month: 4,
+            day: 1
+        });
+        test.equal(tz.getDisplayName(gd, 'standard'), "CEST");
+
+        var gd2 = new GregorianDate({
+            year: 2021,
+            month: 12,
+            day: 1
+        });
+        test.equal(tz.getDisplayName(gd2, 'standard'), "CET");
+
+        test.done();
+    },
+    testTZGetDefaultFor_zu_ZA: function(test) {
+        test.expect(5);
+        var tz = new TimeZone({locale: "zu-ZA"});
+        test.ok(tz !== null);
+        
+        // should have the default time zone for the US locale
+        test.equal(tz.getId(), "Africa/Johannesburg");
+        test.equal(tz.getRawOffsetStr(), "2:0");
+        test.equal(tz.getDSTSavingsStr(), "0:0");
+
+        var gd = new GregorianDate({
+            year: 2021,
+            month: 4,
+            day: 1
+        });
+        test.equal(tz.getDisplayName(gd, 'standard'), "SAST");
+        test.done();
+    },
     testTZGetUnknown: function(test) {
         test.expect(4);
         var tz = new TimeZone({id: "America/asdfasdfasdf"});
@@ -2199,6 +2277,24 @@ module.exports.testtimezone = {
             day: 1
         });
         test.deepEqual(tz.getOffset(gd), {h:-5});
+        test.done();
+    },
+    testTZGetDefaultFor_tk_TM: function(test) {
+        test.expect(5);
+        var tz = new TimeZone({locale: "tk-TM"});
+        test.ok(tz !== null);
+
+        test.equal(tz.getId(), "Asia/Ashgabat");
+        test.equal(tz.getRawOffsetStr(), "5:0");
+        test.equal(tz.getDSTSavingsStr(), "0:0");
+
+        var gd = new GregorianDate({
+            year: 2021,
+            month: 4,
+            day: 1
+        });
+        test.equal(tz.getDisplayName(gd, 'standard'), "+05");
+
         test.done();
     },
 };

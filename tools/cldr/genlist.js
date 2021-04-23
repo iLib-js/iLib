@@ -1,7 +1,7 @@
 /*
  * genlist.js - ilib tool to generate the ilib format list data from cldr
  *
- * Copyright © 2017-2020, JEDLSoft
+ * Copyright © 2017-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,12 +22,94 @@
  */
 
 var fs = require('fs');
-var util = require('util');
 var path = require("path");
 var common = require('./common.js');
-var coelesce = common.coelesce;
 var Locale = common.Locale;
 var aux = require("./datefmts.js");
+var merge = common.merge;
+
+var hardCodeData = {
+    "tg":{
+        "or": {
+            "short": {
+                "2": "{0} ё {1}",
+                "end": "{0}, ё {1}"
+            },
+            "medium": {
+                "2": "{0} ё {1}",
+                "end": "{0}, ё {1}"
+            },
+            "long": {
+                "2": "{0} ё {1}",
+                "end": "{0}, ё {1}"
+            },
+            "full": {
+                "2": "{0} ё {1}",
+                "end": "{0}, ё {1}"
+              }
+        }
+    },
+    "mt":{
+        "or": {
+            "short": {
+                "2": "{0} jew {1}",
+                "end": "{0}, jew {1}"
+            },
+            "medium": {
+                "2": "{0} jew {1}",
+                "end": "{0}, jew {1}"
+            },
+            "long": {
+                "2": "{0} jew {1}",
+                "end": "{0}, jew {1}"
+            },
+            "full": {
+                "2": "{0} jew {1}",
+                "end": "{0}, jew {1}"
+            }
+        }
+    },
+    "zu":{
+        "or": {
+            "short": {
+                "2": "{0} noma {1}",
+                "end": "{0}, noma {1}"
+            },
+            "medium": {
+                "2": "{0} noma {1}",
+                "end": "{0}, noma {1}"
+            },
+            "long": {
+                "2": "{0} noma {1}",
+                "end": "{0}, noma {1}"
+            },
+            "full": {
+                "2": "{0} noma {1}",
+                "end": "{0}, noma {1}"
+              }
+          }
+    },
+    "wo":{
+        "or": {
+            "short": {
+                "2": "{0} mba {1}",
+                "end": "{0}, mba {1}"
+            },
+            "medium": {
+                "2": "{0} mba {1}",
+                "end": "{0}, mba {1}"
+            },
+            "long": {
+                "2": "{0} mba {1}",
+                "end": "{0}, mba {1}"
+            },
+            "full": {
+                "2": "{0} mba {1}",
+                "end": "{0}, mba {1}"
+            }
+        }
+    }
+}
 
 function usage() {
     console.log("Usage: genlist [-h] [toDir]\n" +
@@ -40,6 +122,7 @@ function usage() {
 }
 
 var toDir = ".";
+
 
 process.argv.forEach(function (val, index, array) {
     if (val === "-h" || val === "--help") {
@@ -172,5 +255,10 @@ console.log("\n\nPruning duplicated formats ...");
 aux.pruneFormats(localePatterns);
 
 console.log("");
+
+for(var language in hardCodeData) {
+    var currentData = localePatterns[language].data || {};
+    localePatterns[language].data = merge(currentData, hardCodeData[language]);
+}
 
 aux.writeFormats(toDir, "list.json", localePatterns, []);

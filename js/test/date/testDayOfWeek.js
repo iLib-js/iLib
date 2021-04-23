@@ -1,7 +1,7 @@
  /*
  * testWeekDate.js - test the weekdata information
  *
- * Copyright © 2019-2020, JEDLSoft
+ * Copyright © 2019-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2062,6 +2062,56 @@ module.exports.testweekdata = {
     testWeekData_ne_NP: function(test) {
         test.expect(4);
         var info = new LocaleInfo("ne-NP");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 0);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+    },
+    testWeekData_wo_SN: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("wo-SN");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 1);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+    },
+    testWeekData_tk_TM: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("tk-TM");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 1);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+     },
+    testWeekData_tg_TJ: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("tg-TJ");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 1);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+    },
+    testWeekData_mt_MT: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("mt-MT");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 0);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+    },
+    testWeekData_zu_ZA: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("zu-ZA");
         test.ok(info !== null);
 
         test.equal(info.getFirstDayOfWeek(), 0);

@@ -1,7 +1,7 @@
  /*
  * testMeridiems.js - test the meridiems data
  *
- * Copyright © 2019-2020, JEDLSoft
+ * Copyright © 2019-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2068,6 +2068,54 @@ module.exports.testmeridiems = {
         test.equal(fmt[0].name, 'နံနက်');
         test.equal(fmt[1].name, 'ညနေ');
 
+        test.done();
+    },
+    testMeridiem_wo_SN: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"wo-SN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'Sub');
+        test.equal(fmt[1].name, 'Ngo');
+
+        test.done();
+    },
+    testMeridiem_tk_TM: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"tk-TM"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'günortadan öň');
+        test.equal(fmt[1].name, 'günortadan soň');
+
+        test.done();
+    },
+    testMeridiem_tg_TJ: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"tg-TJ"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'AM');
+        test.equal(fmt[1].name, 'PM');
+
+        test.done();
+    },
+    testMeridiem_mt_MT: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"mt-MT"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'AM');
+        test.equal(fmt[1].name, 'PM');
+        test.done();
+    },
+    testMeridiem_zu_ZA: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"zu-ZA"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'AM');
+        test.equal(fmt[1].name, 'PM');
         test.done();
     }
 }
