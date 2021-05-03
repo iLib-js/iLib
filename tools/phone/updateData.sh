@@ -25,7 +25,6 @@ tasks()
     elif [ $number = "2" ];then
         if [ ! -d "libphonenumber" ];then
             echo "libphonenumer doesn't exist!"
-            git clone https://github.com/google/libphonenumber.git
             git clone git@github.com:google/libphonenumber.git
         else
             cd libphonenumber
