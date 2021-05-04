@@ -6,9 +6,9 @@ Build 014
 Published as version 14.8.1
 
 New Features:
-* Updated `iddarea.json`, `phoneloc.json`, and `numplan.json` from phonenumber library based on metadata version 4.0.0 which are used in PhoneNumber formatting.
 
 Bug Fixes:
+* Updated `iddarea.json`, `phoneloc.json`, and `numplan.json` from phonenumber library based on metadata version 4.0.0 which are used in PhoneNumber formatting.
 
 Build 013
 -------

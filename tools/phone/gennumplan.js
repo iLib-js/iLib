@@ -1,7 +1,7 @@
 /*
  * gennumplan.js - ilib tool to generate the json numplan information from the libphonenumber-js library
  *
- * Copyright © 2019-2020 JEDLSoft
+ * Copyright © 2019-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -159,7 +159,8 @@ for (country in countryData) {
     fs.writeFileSync(file1, JSON.stringify(numPlanData, true, 4), "utf-8");
 }
 
-var file2 = path.join(toDir, "exampleNums.json");
+var file2 = path.join(toDir, "sampleNumbers:.json");
 fs.writeFileSync(file2, JSON.stringify(exampleNums, true, 4), "utf-8");
+fs.writeFileSync("sampleNumbers.json", JSON.stringify(exampleNums, true, 4), "utf-8");
 
 console.log("Done.");
