@@ -405,7 +405,29 @@ ResBundle.prototype = {
                             i += m[0].length;
                         }
                     }
-
+                } else if (this.type === "ruby") {
+                    if (str.charAt(i) === "%") {
+                        ret += str.charAt(i++);
+                        while (i < str.length && str.charAt(i) !== '%') {
+                            ret += str.charAt(i++);
+                        }
+                    }
+                } else if (this.type === "template") {
+                    if (str.charAt(i) === '<' && str.charAt(i+1) === '%') {
+                        ret += str.charAt(i++);
+                        ret += str.charAt(i++);
+                        while (i < str.length && (str.charAt(i) !== '>' || str.charAt(i-1) !== '%')) {
+                            ret += str.charAt(i++);
+                        }
+                    } else if (str.charAt(i) === '&') {
+                        ret += str.charAt(i++);
+                        while (i < str.length && str.charAt(i) !== ';' && str.charAt(i) !== ' ') {
+                            ret += str.charAt(i++);
+                        }
+                    } else if (str.charAt(i) === '\\' && str.charAt(i+1) === "u") {
+                        ret += str.substring(i, i+6);
+                        i += 6;
+                    }
                 }
                 if (i < str.length) {
                     if (str.charAt(i) === '{') {
