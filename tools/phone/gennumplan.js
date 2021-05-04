@@ -159,7 +159,7 @@ for (country in countryData) {
     fs.writeFileSync(file1, JSON.stringify(numPlanData, true, 4), "utf-8");
 }
 
-var file2 = path.join(toDir, "sampleNumbers:.json");
+var file2 = path.join(toDir, "sampleNumbers.json");
 fs.writeFileSync(file2, JSON.stringify(exampleNums, true, 4), "utf-8");
 fs.writeFileSync("sampleNumbers.json", JSON.stringify(exampleNums, true, 4), "utf-8");
 
