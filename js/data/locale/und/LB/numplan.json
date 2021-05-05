@@ -14,7 +14,7 @@
         "serviceCode": 0,
         "personal": 0,
         "minLocalLength": 0,
-        "maxLocalLength": 7,
+        "maxLocalLength": 8,
         "emergency": 0,
         "special": 0
     }

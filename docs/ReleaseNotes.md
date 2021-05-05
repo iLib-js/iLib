@@ -1,6 +1,15 @@
 Release Notes for Version 14
 ============================
 
+Build 014
+-------
+Published as version 14.8.1
+
+New Features:
+
+Bug Fixes:
+* Updated `iddarea.json`, `phoneloc.json`, and `numplan.json` from phonenumber library based on metadata version 4.0.0 which are used in PhoneNumber formatting.
+
 Build 013
 -------
 Published as version 14.8.0
@@ -118,7 +127,7 @@ Build 007
 Published as version 14.4.0
 
 New Features:
-* Updated `iddarea.json` and 'phoneloc.json' which are used in `PhoneNumber` information and wrote a script file to automatically generate it.
+* Updated `iddarea.json` and `phoneloc.json` which are used in `PhoneNumber` information and wrote a script file to automatically generate it.
 * Added LocaleMatch.getLikelyLocaleMinimal() method which returns the same thing as the getLikelyLocale method but without the script
 part of the locale specifier if it has a very common/default value
     * For languages such as Chinese which are commonly written in multiple scripts, the script is always given

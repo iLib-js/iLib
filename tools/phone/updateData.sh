@@ -16,7 +16,7 @@ tasks()
     then
         if [ ! -d "libphonenumber-js" ];then
             echo "libphonenumer-js doesn't exist!"
-            git clone https://github.com/catamphetamine/libphonenumber-js.git
+            git clone git@gitlab.com:catamphetamine/libphonenumber-js.git
         fi
         cd libphonenumber-js
         git pull
@@ -25,7 +25,7 @@ tasks()
     elif [ $number = "2" ];then
         if [ ! -d "libphonenumber" ];then
             echo "libphonenumer doesn't exist!"
-            git clone https://github.com/google/libphonenumber.git
+            git clone git@github.com:google/libphonenumber.git
         else
             cd libphonenumber
             git pull
