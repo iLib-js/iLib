@@ -517,20 +517,21 @@ module.exports.testresources = {
     },
     
     testResBundleGetStringOtherBundlePseudoC: function(test) {
-        test.expect(38);
+        test.expect(48);
         var rb = new ResBundle({
             name: "tester",
             locale: "zxx-XX",
             type: "c",
             lengthen: true
         });
-        
+
         test.ok(rb !== null);
-        
+
         // should not pseudo-ize the C style replacement parameters
+        // now follows the IEEE printf specification:
+        // https://pubs.opengroup.org/onlinepubs/009695399/functions/printf.html
         test.equal(rb.getStringJS("actual %s "), "àçţüàľ %s 43210");
         test.equal(rb.getStringJS("actual %b "), "àçţüàľ %b 43210");
-        test.equal(rb.getStringJS("actual %h "), "àçţüàľ %h 43210");
         test.equal(rb.getStringJS("actual %c "), "àçţüàľ %c 43210");
         test.equal(rb.getStringJS("actual %d "), "àçţüàľ %d 43210");
         test.equal(rb.getStringJS("actual %o "), "àçţüàľ %o 43210");
@@ -539,21 +540,18 @@ module.exports.testresources = {
         test.equal(rb.getStringJS("actual %f "), "àçţüàľ %f 43210");
         test.equal(rb.getStringJS("actual %g "), "àçţüàľ %g 43210");
         test.equal(rb.getStringJS("actual %a "), "àçţüàľ %a 43210");
-        test.equal(rb.getStringJS("actual %t "), "àçţüàľ %t 43210");
         test.equal(rb.getStringJS("actual %% "), "àçţüàľ %% 43210");
         test.equal(rb.getStringJS("actual %n "), "àçţüàľ %n 43210");
-        
+        test.equal(rb.getStringJS("actual %p "), "àçţüàľ %p 43210");
+
         test.equal(rb.getStringJS("actual %S "), "àçţüàľ %S 43210");
-        test.equal(rb.getStringJS("actual %B "), "àçţüàľ %B 43210");
-        test.equal(rb.getStringJS("actual %H "), "àçţüàľ %H 43210");
         test.equal(rb.getStringJS("actual %C "), "àçţüàľ %C 43210");
         test.equal(rb.getStringJS("actual %X "), "àçţüàľ %X 43210");
         test.equal(rb.getStringJS("actual %E "), "àçţüàľ %E 43210");
         test.equal(rb.getStringJS("actual %G "), "àçţüàľ %G 43210");
         test.equal(rb.getStringJS("actual %A "), "àçţüàľ %A 43210");
-        test.equal(rb.getStringJS("actual %T "), "àçţüàľ %T 43210");
         test.equal(rb.getStringJS("actual %% "), "àçţüàľ %% 43210");
-        
+
         test.equal(rb.getStringJS("actual %2$s "), "àçţüàľ %2$s 543210");
         test.equal(rb.getStringJS("actual %-d "), "àçţüàľ %-d 543210");
         test.equal(rb.getStringJS("actual %#d "), "àçţüàľ %#d 543210");
@@ -563,11 +561,33 @@ module.exports.testresources = {
         test.equal(rb.getStringJS("actual %.2d "), "àçţüàľ %.2d 543210");
         test.equal(rb.getStringJS("actual %(2d "), "àçţüàľ %(2d 543210");
         test.equal(rb.getStringJS("actual %4$-2.2d "), "àçţüàľ %4$-2.2d 76543210");
-        
+
         test.equal(rb.getStringJS("actual %N "), "àçţüàľ %Ň 43210");
         test.equal(rb.getStringJS("actual %F "), "àçţüàľ %F 43210");
         test.equal(rb.getStringJS("actual %D "), "àçţüàľ %Ð 43210");
         test.equal(rb.getStringJS("actual %O "), "àçţüàľ %Ø 43210");
+
+        test.equal(rb.getStringJS("actual %hd "), "àçţüàľ %hd 543210");
+        test.equal(rb.getStringJS("actual %hhd "), "àçţüàľ %hhd 543210");
+        test.equal(rb.getStringJS("actual %ld "), "àçţüàľ %ld 543210");
+        test.equal(rb.getStringJS("actual %lld "), "àçţüàľ %lld 543210");
+        test.equal(rb.getStringJS("actual %Af "), "àçţüàľ %Af 543210");
+        test.equal(rb.getStringJS("actual %zd "), "àçţüàľ %zd 543210");
+        test.equal(rb.getStringJS("actual %td "), "àçţüàľ %td 543210");
+        test.equal(rb.getStringJS("actual %jd "), "àçţüàľ %jd 543210");
+        test.equal(rb.getStringJS("actual %% "), "àçţüàľ %% 43210");
+
+        // now everything at once!
+        test.equal(rb.getStringJS("actual %2$+0.4lld "), "àçţüàľ %2$+0.4lld 876543210");
+
+        // now some extended format specifiers to support Swift/Objective-C
+        // from https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html#//apple_ref/doc/uid/TP40004265-SW1
+        // %@ means format an objective-C or swift object
+        test.equal(rb.getStringJS("actual %@ "), "àçţüàľ %@ 43210");
+        test.equal(rb.getStringJS("actual %2$@ "), "àçţüàľ %2$@ 543210");
+        test.equal(rb.getStringJS("actual %2$0ll@ "), "àçţüàľ %2$0ll@ 76543210");
+        test.equal(rb.getStringJS("actual %qd "), "àçţüàľ %qd 543210");
+
         test.done();
     },
     

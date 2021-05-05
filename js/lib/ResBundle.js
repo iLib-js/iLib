@@ -45,15 +45,17 @@ var IString = require("./IString.js");
  * base name is "resources".
  *
  * <li><i>type</i> - Name the type of strings this bundle contains. Valid values are
- * "xml", "html", "text", "c", or "raw". The default is "text". If the type is "xml" or "html",
+ * "xml", "html", "text", "c", "raw", "ruby", or "template". The default is "text".
+ * If the type is "xml" or "html",
  * then XML/HTML entities and tags are not pseudo-translated. During a real translation,
  * HTML character entities are translated to their corresponding characters in a source
  * string before looking that string up in the translations. Also, the characters "<", ">",
  * and "&" are converted to entities again in the output, but characters are left as they
- * are. If the type is "xml", "html", or "text" types, then the replacement parameter names
+ * are. If the type is "xml", "html", "ruby", or "text" types, then the replacement parameter names
  * are not pseudo-translated as well so that the output can be used for formatting with
  * the IString class. If the type is "c" then all C language style printf replacement
- * parameters (eg. "%s" and "%d") are skipped automatically. If the type is raw, all characters
+ * parameters (eg. "%s" and "%d") are skipped automatically. This includes iOS/Objective-C/Swift
+ * substitution parameters like "%@" or "%1$@". If the type is raw, all characters
  * are pseudo-translated, including replacement parameters as well as XML/HTML tags and entities.
  *
  * <li><i>lengthen</i> - when pseudo-translating the string, tell whether or not to
@@ -368,7 +370,7 @@ ResBundle.prototype = {
         return this.type;
     },
 
-    percentRE: new RegExp("%(\\d+\\$)?([\\-#\\+ 0,\\(])?(\\d+)?(\\.\\d+)?[bBhHsScCdoxXeEfgGaAtT%n]"),
+    percentRE: new RegExp("%(\\d+\\$)?([\\-#\\+ 0,\\(])*(\\d+)?(\\.\\d+)?(h|hh|l|ll|j|z|t|L|q)?[diouxXfFeEgGaAcspnCS%@]"),
 
     /**
      * @private
