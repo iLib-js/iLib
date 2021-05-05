@@ -3,9 +3,15 @@ Release Notes for Version 14
 
 Build 014
 -------
-Published as version 14.8.1
+Published as version 14.9.0
 
 New Features:
+* Add ruby & template style escaping for pseudo localization.
+    * Here is an example of `%RUBY%` substitution parameters.
+    * Here is an example of template substitution parameters:
+    `<% code here %>`
+    * Also added Objective-C/Swift substitution parameter support
+      for the "c" style of escaping
 
 Bug Fixes:
 * Updated `iddarea.json`, `phoneloc.json`, and `numplan.json` from phonenumber library based on metadata version 4.0.0 which are used in PhoneNumber formatting.
@@ -19,7 +25,7 @@ New Features:
   script, region) are valid ISO codes.
 * Supported additional mt-MT, tg-TJ, tk-TM, wo-SN, zu-ZA locales
     * validated locale data and added many test cases
-    
+
 Bug Fixes:
 * Fixed a bug which a default script for `tk` should be `Latin` instead of `Arabic`
 * Fixed a bug which a default script for `tg` should be `Cyrl` instead of `Arabic`
@@ -127,7 +133,7 @@ Build 007
 Published as version 14.4.0
 
 New Features:
-* Updated `iddarea.json` and `phoneloc.json` which are used in `PhoneNumber` information and wrote a script file to automatically generate it.
+* Updated `iddarea.json` and 'phoneloc.json' which are used in `PhoneNumber` information and wrote a script file to automatically generate it.
 * Added LocaleMatch.getLikelyLocaleMinimal() method which returns the same thing as the getLikelyLocale method but without the script
 part of the locale specifier if it has a very common/default value
     * For languages such as Chinese which are commonly written in multiple scripts, the script is always given
