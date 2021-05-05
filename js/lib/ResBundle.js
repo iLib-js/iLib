@@ -408,7 +408,7 @@ ResBundle.prototype = {
                         }
                     }
                 } else if (this.type === "ruby") {
-                    if (str.charAt(i) === "%") {
+                    if (str.charAt(i) === "%" && i < str.length && str.charAt(i+1) !== "{") {
                         ret += str.charAt(i++);
                         while (i < str.length && str.charAt(i) !== '%') {
                             ret += str.charAt(i++);

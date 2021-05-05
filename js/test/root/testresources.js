@@ -1230,6 +1230,20 @@ module.exports.testresources = {
        test.done();
     },
 
+    testResBundleGetStringPseudoHtmlEscapeHaml: function(test) {
+        test.expect(2);
+       var rb = new ResBundle({
+           name: "asdfasdffoobar",
+           locale: "zxx-XX",
+           type: "ruby"
+       });
+
+       test.ok(rb !== null);
+
+       test.equal(rb.getStringJS("Hello from %{city}, city of #{description}."), "Ħëľľõ fŕõm %{city}, çíţÿ õf #{description}.");
+       test.done();
+    },
+
     testResBundleGetStringPseudoHtmlEscapeJS: function(test) {
         test.expect(2);
        var rb = new ResBundle({
