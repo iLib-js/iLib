@@ -50,12 +50,6 @@
         "type": "git",
         "url": "git@github.com:iLib-js/iLib.git"
     },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "git@github.com:iLib-js/iLib.git"
-        }
-    ],
     "scripts": {
        "test": "ant test"
     },
