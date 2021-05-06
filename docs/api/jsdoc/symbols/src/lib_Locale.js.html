@@ -8,7 +8,7 @@
 	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
 <span class='line'>  2</span>  * Locale.js - Locale specifier definition
 <span class='line'>  3</span>  *
-<span class='line'>  4</span>  * Copyright © 2012-2015, 2018, JEDLSoft
+<span class='line'>  4</span>  * Copyright © 2012-2015, 2018,2021 JEDLSoft
 <span class='line'>  5</span>  *
 <span class='line'>  6</span>  * Licensed under the Apache License, Version 2.0 (the "License");
 <span class='line'>  7</span>  * you may not use this file except in compliance with the License.
@@ -585,339 +585,560 @@
 <span class='line'>578</span> </span><span class="WHIT">    </span><span class="STRN">"zu"</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"zul"</span><span class="WHIT">
 <span class='line'>579</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>580</span> 
-<span class='line'>581</span> </span><span class="COMM">/**
-<span class='line'>582</span>  * Tell whether or not the str does not start with a lower case ASCII char.
-<span class='line'>583</span>  * @private
-<span class='line'>584</span>  * @param {string} str the char to check
-<span class='line'>585</span>  * @return {boolean} true if the char is not a lower case ASCII char
-<span class='line'>586</span>  */</span><span class="WHIT">
-<span class='line'>587</span> </span><span class="NAME">Locale._notLower</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>588</span> </span><span class="WHIT">    </span><span class="COMM">// do this with ASCII only so we don't have to depend on the CType functions</span><span class="WHIT">
-<span class='line'>589</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.charCodeAt</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>590</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">97</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">122</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>591</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>592</span> 
-<span class='line'>593</span> </span><span class="COMM">/**
-<span class='line'>594</span>  * Tell whether or not the str does not start with an upper case ASCII char.
-<span class='line'>595</span>  * @private
-<span class='line'>596</span>  * @param {string} str the char to check
-<span class='line'>597</span>  * @return {boolean} true if the char is a not an upper case ASCII char
-<span class='line'>598</span>  */</span><span class="WHIT">
-<span class='line'>599</span> </span><span class="NAME">Locale._notUpper</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>600</span> </span><span class="WHIT">    </span><span class="COMM">// do this with ASCII only so we don't have to depend on the CType functions</span><span class="WHIT">
-<span class='line'>601</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.charCodeAt</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>602</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">65</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">90</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>603</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>604</span> 
-<span class='line'>605</span> </span><span class="COMM">/**
-<span class='line'>606</span>  * Tell whether or not the str does not start with a digit char.
-<span class='line'>607</span>  * @private
-<span class='line'>608</span>  * @param {string} str the char to check
-<span class='line'>609</span>  * @return {boolean} true if the char is a not an upper case ASCII char
-<span class='line'>610</span>  */</span><span class="WHIT">
-<span class='line'>611</span> </span><span class="NAME">Locale._notDigit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>612</span> </span><span class="WHIT">    </span><span class="COMM">// do this with ASCII only so we don't have to depend on the CType functions</span><span class="WHIT">
-<span class='line'>613</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.charCodeAt</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>614</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">48</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">57</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>615</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>616</span> 
-<span class='line'>617</span> </span><span class="COMM">/**
-<span class='line'>618</span>  * Tell whether or not the given string has the correct syntax to be
-<span class='line'>619</span>  * an ISO 639 language code.
-<span class='line'>620</span>  *
-<span class='line'>621</span>  * @private
-<span class='line'>622</span>  * @param {string} str the string to parse
-<span class='line'>623</span>  * @return {boolean} true if the string could syntactically be a language code.
-<span class='line'>624</span>  */</span><span class="WHIT">
-<span class='line'>625</span> </span><span class="NAME">Locale._isLanguageCode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>626</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">3</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>627</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>628</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>629</span> 
-<span class='line'>630</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>631</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">Locale._notLower</span><span class="PUNC">(</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>632</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>633</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>634</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>635</span> 
-<span class='line'>636</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>637</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>638</span> 
-<span class='line'>639</span> </span><span class="COMM">/**
-<span class='line'>640</span>  * Tell whether or not the given string has the correct syntax to be
-<span class='line'>641</span>  * an ISO 3166 2-letter region code or M.49 3-digit region code.
-<span class='line'>642</span>  *
-<span class='line'>643</span>  * @private
-<span class='line'>644</span>  * @param {string} str the string to parse
-<span class='line'>645</span>  * @return {boolean} true if the string could syntactically be a language code.
-<span class='line'>646</span>  */</span><span class="WHIT">
-<span class='line'>647</span> </span><span class="NAME">Locale._isRegionCode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>648</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>649</span> 
-<span class='line'>650</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">3</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>651</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>652</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>653</span> 
-<span class='line'>654</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str.length</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>655</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>656</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">Locale._notUpper</span><span class="PUNC">(</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>657</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>658</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>659</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>660</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>661</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>662</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">Locale._notDigit</span><span class="PUNC">(</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>663</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>664</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>665</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>666</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>667</span> 
-<span class='line'>668</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>669</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>670</span> 
-<span class='line'>671</span> </span><span class="COMM">/**
-<span class='line'>672</span>  * Tell whether or not the given string has the correct syntax to be
-<span class='line'>673</span>  * an ISO 639 language code.
-<span class='line'>674</span>  *
-<span class='line'>675</span>  * @private
-<span class='line'>676</span>  * @param {string} str the string to parse
-<span class='line'>677</span>  * @return {boolean} true if the string could syntactically be a language code.
-<span class='line'>678</span>  */</span><span class="WHIT">
-<span class='line'>679</span> </span><span class="NAME">Locale._isScriptCode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>680</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">Locale._notUpper</span><span class="PUNC">(</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>681</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>682</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>683</span> 
-<span class='line'>684</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>685</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">Locale._notLower</span><span class="PUNC">(</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>686</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>687</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>688</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>689</span> 
-<span class='line'>690</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>691</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>692</span> 
-<span class='line'>693</span> </span><span class="COMM">/**
-<span class='line'>694</span>  * Return the ISO-3166 alpha3 equivalent region code for the given ISO 3166 alpha2
-<span class='line'>695</span>  * region code. If the given alpha2 code is not found, this function returns its
-<span class='line'>696</span>  * argument unchanged.
-<span class='line'>697</span>  * @static
-<span class='line'>698</span>  * @param {string|undefined} alpha2 the alpha2 code to map
-<span class='line'>699</span>  * @return {string|undefined} the alpha3 equivalent of the given alpha2 code, or the alpha2
-<span class='line'>700</span>  * parameter if the alpha2 value is not found
-<span class='line'>701</span>  */</span><span class="WHIT">
-<span class='line'>702</span> </span><span class="NAME">Locale.regionAlpha2ToAlpha3</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">alpha2</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>703</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Locale.a2toa3regmap</span><span class="PUNC">[</span><span class="NAME">alpha2</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">alpha2</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>704</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>705</span> 
-<span class='line'>706</span> </span><span class="COMM">/**
-<span class='line'>707</span>  * Return the ISO-639 alpha3 equivalent language code for the given ISO 639 alpha1
-<span class='line'>708</span>  * language code. If the given alpha1 code is not found, this function returns its
-<span class='line'>709</span>  * argument unchanged.
-<span class='line'>710</span>  * @static
-<span class='line'>711</span>  * @param {string|undefined} alpha1 the alpha1 code to map
-<span class='line'>712</span>  * @return {string|undefined} the alpha3 equivalent of the given alpha1 code, or the alpha1
-<span class='line'>713</span>  * parameter if the alpha1 value is not found
-<span class='line'>714</span>  */</span><span class="WHIT">
-<span class='line'>715</span> </span><span class="NAME">Locale.languageAlpha1ToAlpha3</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">alpha1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>716</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Locale.a1toa3langmap</span><span class="PUNC">[</span><span class="NAME">alpha1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">alpha1</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>717</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>718</span> 
-<span class='line'>719</span> </span><span class="NAME">Locale.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>720</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>721</span>      * @private
-<span class='line'>722</span>      */</span><span class="WHIT">
-<span class='line'>723</span> </span><span class="WHIT">    </span><span class="NAME">_genSpec</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>724</span> </span><span class="WHIT">        </span><span class="NAME">this.spec</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.language</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>725</span> 
-<span class='line'>726</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.script</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>727</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.spec.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>728</span> </span><span class="WHIT">                </span><span class="NAME">this.spec</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"-"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>729</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>730</span> </span><span class="WHIT">            </span><span class="NAME">this.spec</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.script</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>731</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>732</span> 
-<span class='line'>733</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.region</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>734</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.spec.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>735</span> </span><span class="WHIT">                </span><span class="NAME">this.spec</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"-"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>736</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>737</span> </span><span class="WHIT">            </span><span class="NAME">this.spec</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.region</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>738</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>739</span> 
-<span class='line'>740</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.variant</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>741</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.spec.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>742</span> </span><span class="WHIT">                </span><span class="NAME">this.spec</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"-"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>743</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>744</span> </span><span class="WHIT">            </span><span class="NAME">this.spec</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.variant</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>745</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>746</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>747</span> 
-<span class='line'>748</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>749</span>      * Return the ISO 639 language code for this locale.
-<span class='line'>750</span>      * @return {string|undefined} the language code for this locale
-<span class='line'>751</span>      */</span><span class="WHIT">
-<span class='line'>752</span> </span><span class="WHIT">    </span><span class="NAME">getLanguage</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>753</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.language</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>754</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>755</span> 
-<span class='line'>756</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>757</span>      * Return the language of this locale as an ISO-639-alpha3 language code
-<span class='line'>758</span>      * @return {string|undefined} the alpha3 language code of this locale
-<span class='line'>759</span>      */</span><span class="WHIT">
-<span class='line'>760</span> </span><span class="WHIT">    </span><span class="NAME">getLanguageAlpha3</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>761</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Locale.languageAlpha1ToAlpha3</span><span class="PUNC">(</span><span class="NAME">this.language</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>762</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>763</span> 
-<span class='line'>764</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>765</span>      * Return the ISO 3166 region code for this locale.
-<span class='line'>766</span>      * @return {string|undefined} the region code of this locale
-<span class='line'>767</span>      */</span><span class="WHIT">
-<span class='line'>768</span> </span><span class="WHIT">    </span><span class="NAME">getRegion</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>769</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.region</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>770</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>771</span> 
-<span class='line'>772</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>773</span>      * Return the region of this locale as an ISO-3166-alpha3 region code
-<span class='line'>774</span>      * @return {string|undefined} the alpha3 region code of this locale
-<span class='line'>775</span>      */</span><span class="WHIT">
-<span class='line'>776</span> </span><span class="WHIT">    </span><span class="NAME">getRegionAlpha3</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>777</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Locale.regionAlpha2ToAlpha3</span><span class="PUNC">(</span><span class="NAME">this.region</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>778</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>779</span> 
-<span class='line'>780</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>781</span>      * Return the ISO 15924 script code for this locale
-<span class='line'>782</span>      * @return {string|undefined} the script code of this locale
-<span class='line'>783</span>      */</span><span class="WHIT">
-<span class='line'>784</span> </span><span class="WHIT">    </span><span class="NAME">getScript</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>785</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.script</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>786</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>581</span> </span><span class="COMM">// the list below is originally from https://unicode.org/iso15924/iso15924-codes.html</span><span class="WHIT">
+<span class='line'>582</span> </span><span class="NAME">Locale.iso15924</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT">
+<span class='line'>583</span> </span><span class="WHIT">    </span><span class="STRN">"Adlm"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>584</span> </span><span class="WHIT">    </span><span class="STRN">"Afak"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>585</span> </span><span class="WHIT">    </span><span class="STRN">"Aghb"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>586</span> </span><span class="WHIT">    </span><span class="STRN">"Ahom"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>587</span> </span><span class="WHIT">    </span><span class="STRN">"Arab"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>588</span> </span><span class="WHIT">    </span><span class="STRN">"Aran"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>589</span> </span><span class="WHIT">    </span><span class="STRN">"Armi"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>590</span> </span><span class="WHIT">    </span><span class="STRN">"Armn"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>591</span> </span><span class="WHIT">    </span><span class="STRN">"Avst"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>592</span> </span><span class="WHIT">    </span><span class="STRN">"Bali"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>593</span> </span><span class="WHIT">    </span><span class="STRN">"Bamu"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>594</span> </span><span class="WHIT">    </span><span class="STRN">"Bass"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>595</span> </span><span class="WHIT">    </span><span class="STRN">"Batk"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>596</span> </span><span class="WHIT">    </span><span class="STRN">"Beng"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>597</span> </span><span class="WHIT">    </span><span class="STRN">"Bhks"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>598</span> </span><span class="WHIT">    </span><span class="STRN">"Blis"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>599</span> </span><span class="WHIT">    </span><span class="STRN">"Bopo"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>600</span> </span><span class="WHIT">    </span><span class="STRN">"Brah"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>601</span> </span><span class="WHIT">    </span><span class="STRN">"Brai"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>602</span> </span><span class="WHIT">    </span><span class="STRN">"Bugi"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>603</span> </span><span class="WHIT">    </span><span class="STRN">"Buhd"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>604</span> </span><span class="WHIT">    </span><span class="STRN">"Cakm"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>605</span> </span><span class="WHIT">    </span><span class="STRN">"Cans"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>606</span> </span><span class="WHIT">    </span><span class="STRN">"Cari"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>607</span> </span><span class="WHIT">    </span><span class="STRN">"Cham"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>608</span> </span><span class="WHIT">    </span><span class="STRN">"Cher"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>609</span> </span><span class="WHIT">    </span><span class="STRN">"Chrs"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>610</span> </span><span class="WHIT">    </span><span class="STRN">"Cirt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>611</span> </span><span class="WHIT">    </span><span class="STRN">"Copt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>612</span> </span><span class="WHIT">    </span><span class="STRN">"Cpmn"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>613</span> </span><span class="WHIT">    </span><span class="STRN">"Cprt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>614</span> </span><span class="WHIT">    </span><span class="STRN">"Cyrl"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>615</span> </span><span class="WHIT">    </span><span class="STRN">"Cyrs"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>616</span> </span><span class="WHIT">    </span><span class="STRN">"Deva"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>617</span> </span><span class="WHIT">    </span><span class="STRN">"Diak"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>618</span> </span><span class="WHIT">    </span><span class="STRN">"Dogr"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>619</span> </span><span class="WHIT">    </span><span class="STRN">"Dsrt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>620</span> </span><span class="WHIT">    </span><span class="STRN">"Dupl"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>621</span> </span><span class="WHIT">    </span><span class="STRN">"Egyd"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>622</span> </span><span class="WHIT">    </span><span class="STRN">"Egyh"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>623</span> </span><span class="WHIT">    </span><span class="STRN">"Egyp"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>624</span> </span><span class="WHIT">    </span><span class="STRN">"Elba"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>625</span> </span><span class="WHIT">    </span><span class="STRN">"Elym"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>626</span> </span><span class="WHIT">    </span><span class="STRN">"Ethi"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>627</span> </span><span class="WHIT">    </span><span class="STRN">"Geok"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>628</span> </span><span class="WHIT">    </span><span class="STRN">"Geor"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>629</span> </span><span class="WHIT">    </span><span class="STRN">"Glag"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>630</span> </span><span class="WHIT">    </span><span class="STRN">"Gong"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>631</span> </span><span class="WHIT">    </span><span class="STRN">"Gonm"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>632</span> </span><span class="WHIT">    </span><span class="STRN">"Goth"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>633</span> </span><span class="WHIT">    </span><span class="STRN">"Gran"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>634</span> </span><span class="WHIT">    </span><span class="STRN">"Grek"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>635</span> </span><span class="WHIT">    </span><span class="STRN">"Gujr"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>636</span> </span><span class="WHIT">    </span><span class="STRN">"Guru"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>637</span> </span><span class="WHIT">    </span><span class="STRN">"Hanb"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>638</span> </span><span class="WHIT">    </span><span class="STRN">"Hang"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>639</span> </span><span class="WHIT">    </span><span class="STRN">"Hani"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>640</span> </span><span class="WHIT">    </span><span class="STRN">"Hano"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>641</span> </span><span class="WHIT">    </span><span class="STRN">"Hans"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>642</span> </span><span class="WHIT">    </span><span class="STRN">"Hant"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>643</span> </span><span class="WHIT">    </span><span class="STRN">"Hatr"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>644</span> </span><span class="WHIT">    </span><span class="STRN">"Hebr"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>645</span> </span><span class="WHIT">    </span><span class="STRN">"Hira"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>646</span> </span><span class="WHIT">    </span><span class="STRN">"Hluw"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>647</span> </span><span class="WHIT">    </span><span class="STRN">"Hmng"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>648</span> </span><span class="WHIT">    </span><span class="STRN">"Hmnp"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>649</span> </span><span class="WHIT">    </span><span class="STRN">"Hrkt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>650</span> </span><span class="WHIT">    </span><span class="STRN">"Hung"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>651</span> </span><span class="WHIT">    </span><span class="STRN">"Inds"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>652</span> </span><span class="WHIT">    </span><span class="STRN">"Ital"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>653</span> </span><span class="WHIT">    </span><span class="STRN">"Jamo"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>654</span> </span><span class="WHIT">    </span><span class="STRN">"Java"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>655</span> </span><span class="WHIT">    </span><span class="STRN">"Jpan"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>656</span> </span><span class="WHIT">    </span><span class="STRN">"Jurc"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>657</span> </span><span class="WHIT">    </span><span class="STRN">"Kali"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>658</span> </span><span class="WHIT">    </span><span class="STRN">"Kana"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>659</span> </span><span class="WHIT">    </span><span class="STRN">"Khar"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>660</span> </span><span class="WHIT">    </span><span class="STRN">"Khmr"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>661</span> </span><span class="WHIT">    </span><span class="STRN">"Khoj"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>662</span> </span><span class="WHIT">    </span><span class="STRN">"Kitl"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>663</span> </span><span class="WHIT">    </span><span class="STRN">"Kits"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>664</span> </span><span class="WHIT">    </span><span class="STRN">"Knda"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>665</span> </span><span class="WHIT">    </span><span class="STRN">"Kore"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>666</span> </span><span class="WHIT">    </span><span class="STRN">"Kpel"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>667</span> </span><span class="WHIT">    </span><span class="STRN">"Kthi"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>668</span> </span><span class="WHIT">    </span><span class="STRN">"Lana"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>669</span> </span><span class="WHIT">    </span><span class="STRN">"Laoo"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>670</span> </span><span class="WHIT">    </span><span class="STRN">"Latf"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>671</span> </span><span class="WHIT">    </span><span class="STRN">"Latg"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>672</span> </span><span class="WHIT">    </span><span class="STRN">"Latn"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>673</span> </span><span class="WHIT">    </span><span class="STRN">"Leke"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>674</span> </span><span class="WHIT">    </span><span class="STRN">"Lepc"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>675</span> </span><span class="WHIT">    </span><span class="STRN">"Limb"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>676</span> </span><span class="WHIT">    </span><span class="STRN">"Lina"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>677</span> </span><span class="WHIT">    </span><span class="STRN">"Linb"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>678</span> </span><span class="WHIT">    </span><span class="STRN">"Lisu"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>679</span> </span><span class="WHIT">    </span><span class="STRN">"Loma"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>680</span> </span><span class="WHIT">    </span><span class="STRN">"Lyci"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>681</span> </span><span class="WHIT">    </span><span class="STRN">"Lydi"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>682</span> </span><span class="WHIT">    </span><span class="STRN">"Mahj"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>683</span> </span><span class="WHIT">    </span><span class="STRN">"Maka"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>684</span> </span><span class="WHIT">    </span><span class="STRN">"Mand"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>685</span> </span><span class="WHIT">    </span><span class="STRN">"Mani"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>686</span> </span><span class="WHIT">    </span><span class="STRN">"Marc"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>687</span> </span><span class="WHIT">    </span><span class="STRN">"Maya"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>688</span> </span><span class="WHIT">    </span><span class="STRN">"Medf"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>689</span> </span><span class="WHIT">    </span><span class="STRN">"Mend"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>690</span> </span><span class="WHIT">    </span><span class="STRN">"Merc"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>691</span> </span><span class="WHIT">    </span><span class="STRN">"Mero"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>692</span> </span><span class="WHIT">    </span><span class="STRN">"Mlym"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>693</span> </span><span class="WHIT">    </span><span class="STRN">"Modi"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>694</span> </span><span class="WHIT">    </span><span class="STRN">"Mong"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>695</span> </span><span class="WHIT">    </span><span class="STRN">"Moon"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>696</span> </span><span class="WHIT">    </span><span class="STRN">"Mroo"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>697</span> </span><span class="WHIT">    </span><span class="STRN">"Mtei"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>698</span> </span><span class="WHIT">    </span><span class="STRN">"Mult"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>699</span> </span><span class="WHIT">    </span><span class="STRN">"Mymr"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>700</span> </span><span class="WHIT">    </span><span class="STRN">"Nand"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>701</span> </span><span class="WHIT">    </span><span class="STRN">"Narb"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>702</span> </span><span class="WHIT">    </span><span class="STRN">"Nbat"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>703</span> </span><span class="WHIT">    </span><span class="STRN">"Newa"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>704</span> </span><span class="WHIT">    </span><span class="STRN">"Nkdb"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>705</span> </span><span class="WHIT">    </span><span class="STRN">"Nkgb"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>706</span> </span><span class="WHIT">    </span><span class="STRN">"Nkoo"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>707</span> </span><span class="WHIT">    </span><span class="STRN">"Nshu"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>708</span> </span><span class="WHIT">    </span><span class="STRN">"Ogam"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>709</span> </span><span class="WHIT">    </span><span class="STRN">"Olck"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>710</span> </span><span class="WHIT">    </span><span class="STRN">"Orkh"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>711</span> </span><span class="WHIT">    </span><span class="STRN">"Orya"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>712</span> </span><span class="WHIT">    </span><span class="STRN">"Osge"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>713</span> </span><span class="WHIT">    </span><span class="STRN">"Osma"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>714</span> </span><span class="WHIT">    </span><span class="STRN">"Palm"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>715</span> </span><span class="WHIT">    </span><span class="STRN">"Pauc"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>716</span> </span><span class="WHIT">    </span><span class="STRN">"Perm"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>717</span> </span><span class="WHIT">    </span><span class="STRN">"Phag"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>718</span> </span><span class="WHIT">    </span><span class="STRN">"Phli"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>719</span> </span><span class="WHIT">    </span><span class="STRN">"Phlp"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>720</span> </span><span class="WHIT">    </span><span class="STRN">"Phlv"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>721</span> </span><span class="WHIT">    </span><span class="STRN">"Phnx"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>722</span> </span><span class="WHIT">    </span><span class="STRN">"Plrd"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>723</span> </span><span class="WHIT">    </span><span class="STRN">"Piqd"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>724</span> </span><span class="WHIT">    </span><span class="STRN">"Prti"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>725</span> </span><span class="WHIT">    </span><span class="STRN">"Qaaa"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>726</span> </span><span class="WHIT">    </span><span class="STRN">"Qabx"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>727</span> </span><span class="WHIT">    </span><span class="STRN">"Rjng"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>728</span> </span><span class="WHIT">    </span><span class="STRN">"Rohg"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>729</span> </span><span class="WHIT">    </span><span class="STRN">"Roro"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>730</span> </span><span class="WHIT">    </span><span class="STRN">"Runr"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>731</span> </span><span class="WHIT">    </span><span class="STRN">"Samr"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>732</span> </span><span class="WHIT">    </span><span class="STRN">"Sara"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>733</span> </span><span class="WHIT">    </span><span class="STRN">"Sarb"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>734</span> </span><span class="WHIT">    </span><span class="STRN">"Saur"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>735</span> </span><span class="WHIT">    </span><span class="STRN">"Sgnw"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>736</span> </span><span class="WHIT">    </span><span class="STRN">"Shaw"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>737</span> </span><span class="WHIT">    </span><span class="STRN">"Shrd"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>738</span> </span><span class="WHIT">    </span><span class="STRN">"Shui"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>739</span> </span><span class="WHIT">    </span><span class="STRN">"Sidd"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>740</span> </span><span class="WHIT">    </span><span class="STRN">"Sind"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>741</span> </span><span class="WHIT">    </span><span class="STRN">"Sinh"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>742</span> </span><span class="WHIT">    </span><span class="STRN">"Sogd"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>743</span> </span><span class="WHIT">    </span><span class="STRN">"Sogo"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>744</span> </span><span class="WHIT">    </span><span class="STRN">"Sora"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>745</span> </span><span class="WHIT">    </span><span class="STRN">"Soyo"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>746</span> </span><span class="WHIT">    </span><span class="STRN">"Sund"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>747</span> </span><span class="WHIT">    </span><span class="STRN">"Sylo"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>748</span> </span><span class="WHIT">    </span><span class="STRN">"Syrc"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>749</span> </span><span class="WHIT">    </span><span class="STRN">"Syre"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>750</span> </span><span class="WHIT">    </span><span class="STRN">"Syrj"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>751</span> </span><span class="WHIT">    </span><span class="STRN">"Syrn"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>752</span> </span><span class="WHIT">    </span><span class="STRN">"Tagb"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>753</span> </span><span class="WHIT">    </span><span class="STRN">"Takr"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>754</span> </span><span class="WHIT">    </span><span class="STRN">"Tale"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>755</span> </span><span class="WHIT">    </span><span class="STRN">"Talu"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>756</span> </span><span class="WHIT">    </span><span class="STRN">"Taml"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>757</span> </span><span class="WHIT">    </span><span class="STRN">"Tang"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>758</span> </span><span class="WHIT">    </span><span class="STRN">"Tavt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>759</span> </span><span class="WHIT">    </span><span class="STRN">"Telu"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>760</span> </span><span class="WHIT">    </span><span class="STRN">"Teng"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>761</span> </span><span class="WHIT">    </span><span class="STRN">"Tfng"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>762</span> </span><span class="WHIT">    </span><span class="STRN">"Tglg"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>763</span> </span><span class="WHIT">    </span><span class="STRN">"Thaa"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>764</span> </span><span class="WHIT">    </span><span class="STRN">"Thai"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>765</span> </span><span class="WHIT">    </span><span class="STRN">"Tibt"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>766</span> </span><span class="WHIT">    </span><span class="STRN">"Tirh"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>767</span> </span><span class="WHIT">    </span><span class="STRN">"Toto"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>768</span> </span><span class="WHIT">    </span><span class="STRN">"Ugar"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>769</span> </span><span class="WHIT">    </span><span class="STRN">"Vaii"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>770</span> </span><span class="WHIT">    </span><span class="STRN">"Visp"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>771</span> </span><span class="WHIT">    </span><span class="STRN">"Wara"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>772</span> </span><span class="WHIT">    </span><span class="STRN">"Wcho"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>773</span> </span><span class="WHIT">    </span><span class="STRN">"Wole"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>774</span> </span><span class="WHIT">    </span><span class="STRN">"Xpeo"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>775</span> </span><span class="WHIT">    </span><span class="STRN">"Xsux"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>776</span> </span><span class="WHIT">    </span><span class="STRN">"Yezi"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>777</span> </span><span class="WHIT">    </span><span class="STRN">"Yiii"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>778</span> </span><span class="WHIT">    </span><span class="STRN">"Zanb"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>779</span> </span><span class="WHIT">    </span><span class="STRN">"Zinh"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>780</span> </span><span class="WHIT">    </span><span class="STRN">"Zmth"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>781</span> </span><span class="WHIT">    </span><span class="STRN">"Zsye"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>782</span> </span><span class="WHIT">    </span><span class="STRN">"Zsym"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>783</span> </span><span class="WHIT">    </span><span class="STRN">"Zxxx"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>784</span> </span><span class="WHIT">    </span><span class="STRN">"Zyyy"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>785</span> </span><span class="WHIT">    </span><span class="STRN">"Zzzz"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>786</span> </span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>787</span> 
-<span class='line'>788</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>789</span>      * Return the variant code for this locale
-<span class='line'>790</span>      * @return {string|undefined} the variant code of this locale, if any
-<span class='line'>791</span>      */</span><span class="WHIT">
-<span class='line'>792</span> </span><span class="WHIT">    </span><span class="NAME">getVariant</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>793</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.variant</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>794</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>795</span> 
-<span class='line'>796</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>797</span>      * Return the whole locale specifier as a string.
-<span class='line'>798</span>      * @return {string} the locale specifier
-<span class='line'>799</span>      */</span><span class="WHIT">
-<span class='line'>800</span> </span><span class="WHIT">    </span><span class="NAME">getSpec</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>801</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.spec</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">this._genSpec</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>802</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.spec</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>803</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>804</span> 
-<span class='line'>805</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>806</span>      * Return the language locale specifier. This includes the
-<span class='line'>807</span>      * language and the script if it is available. This can be
-<span class='line'>808</span>      * used to see whether the written language of two locales
-<span class='line'>809</span>      * match each other regardless of the region or variant.
-<span class='line'>810</span>      *
-<span class='line'>811</span>      * @return {string} the language locale specifier
-<span class='line'>812</span>      */</span><span class="WHIT">
-<span class='line'>813</span> </span><span class="WHIT">    </span><span class="NAME">getLangSpec</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>814</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">spec</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.language</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>815</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">spec</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.script</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>816</span> </span><span class="WHIT">            </span><span class="NAME">spec</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"-"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.script</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>817</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>818</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">spec</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>819</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>820</span> 
-<span class='line'>821</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>822</span>      * Express this locale object as a string. Currently, this simply calls the getSpec
-<span class='line'>823</span>      * function to represent the locale as its specifier.
-<span class='line'>824</span>      *
-<span class='line'>825</span>      * @return {string} the locale specifier
-<span class='line'>826</span>      */</span><span class="WHIT">
-<span class='line'>827</span> </span><span class="WHIT">    </span><span class="NAME">toString</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>828</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.getSpec</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>829</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>830</span> 
-<span class='line'>831</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>832</span>      * Return true if the the other locale is exactly equal to the current one.
-<span class='line'>833</span>      * @return {boolean} whether or not the other locale is equal to the current one
-<span class='line'>834</span>      */</span><span class="WHIT">
-<span class='line'>835</span> </span><span class="WHIT">    </span><span class="NAME">equals</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">other</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>836</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.language</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">other.language</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
-<span class='line'>837</span> </span><span class="WHIT">            </span><span class="NAME">this.region</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">other.region</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
-<span class='line'>838</span> </span><span class="WHIT">            </span><span class="NAME">this.script</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">other.script</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
-<span class='line'>839</span> </span><span class="WHIT">            </span><span class="NAME">this.variant</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">other.variant</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>840</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>841</span> 
-<span class='line'>842</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>843</span>      * Return true if the current locale is the special pseudo locale.
-<span class='line'>844</span>      * @return {boolean} true if the current locale is the special pseudo locale
-<span class='line'>845</span>      */</span><span class="WHIT">
-<span class='line'>846</span> </span><span class="WHIT">    </span><span class="NAME">isPseudo</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>847</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">JSUtils.indexOf</span><span class="PUNC">(</span><span class="NAME">ilib.pseudoLocales</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.spec</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>848</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>849</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>850</span> 
-<span class='line'>851</span> </span><span class="COMM">// static functions</span><span class="WHIT">
-<span class='line'>852</span> </span><span class="COMM">/**
-<span class='line'>853</span>  * @private
-<span class='line'>854</span>  */</span><span class="WHIT">
-<span class='line'>855</span> </span><span class="NAME">Locale.locales</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>856</span> </span><span class="COMM">// !macro localelist</span><span class="WHIT">
-<span class='line'>857</span> 
-<span class='line'>858</span> </span><span class="COMM">/**
-<span class='line'>859</span>  * Return the list of available locales that this iLib file supports.
-<span class='line'>860</span>  * If this copy of ilib is pre-assembled with locale data, then the
-<span class='line'>861</span>  * list locales may be much smaller
-<span class='line'>862</span>  * than the list of all available locales in the iLib repository. The
-<span class='line'>863</span>  * assembly tool will automatically fill in the list for an assembled
-<span class='line'>864</span>  * copy of iLib. If this copy is being used with dynamically loaded
-<span class='line'>865</span>  * data, then you
-<span class='line'>866</span>  * can load any locale that iLib supports. You can form a locale with any
-<span class='line'>867</span>  * combination of a language and region tags that exist in the locale
-<span class='line'>868</span>  * data directory. Language tags are in the root of the locale data dir,
-<span class='line'>869</span>  * and region tags can be found underneath the "und" directory. (The
-<span class='line'>870</span>  * region tags are separated into a different dir because the region names
-<span class='line'>871</span>  * conflict with language names on file systems that are case-insensitive.)
-<span class='line'>872</span>  * If you have culled the locale data directory to limit the size of
-<span class='line'>873</span>  * your app, then this function should return only those files that actually exist
-<span class='line'>874</span>  * according to the ilibmanifest.json file in the root of that locale
-<span class='line'>875</span>  * data dir. Make sure your ilibmanifest.json file is up-to-date with
-<span class='line'>876</span>  * respect to the list of files that exist in the locale data dir.
-<span class='line'>877</span>  *
-<span class='line'>878</span>  * @param {boolean} sync if false, load the list of available files from disk
-<span class='line'>879</span>  * asynchronously, otherwise load them synchronously. (Default: true/synchronously)
-<span class='line'>880</span>  * @param {Function} onLoad a callback function to call if asynchronous
-<span class='line'>881</span>  * load was requested and the list of files have been loaded.
-<span class='line'>882</span>  * @return {Array.&lt;string>} this is an array of locale specs for which
-<span class='line'>883</span>  * this iLib file has locale data for
-<span class='line'>884</span>  */</span><span class="WHIT">
-<span class='line'>885</span> </span><span class="NAME">Locale.getAvailableLocales</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>886</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">locales</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>887</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">Locale.locales.length</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">ilib._load.listAvailableFiles</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>888</span> </span><span class="WHIT">        </span><span class="NAME">locales</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Locale.locales</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>889</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">onLoad</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>890</span> </span><span class="WHIT">            </span><span class="NAME">onLoad</span><span class="PUNC">(</span><span class="NAME">locales</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>891</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>892</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>893</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>894</span> </span><span class="WHIT">            </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>895</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>896</span> </span><span class="WHIT">        </span><span class="NAME">ilib._load.listAvailableFiles</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">manifest</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>897</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">manifest</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>898</span> </span><span class="WHIT">                </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dir</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">manifest</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>899</span> </span><span class="WHIT">                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">filelist</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">manifest</span><span class="PUNC">[</span><span class="NAME">dir</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>900</span> </span><span class="WHIT">                    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">filelist.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>901</span> </span><span class="WHIT">                        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">filelist</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">15</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">filelist</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">substr</span><span class="PUNC">(</span><span class="PUNC">-</span><span class="NUMB">15</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"localeinfo.json"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>902</span> </span><span class="WHIT">                            </span><span class="NAME">locales.push</span><span class="PUNC">(</span><span class="NAME">filelist</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">substring</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="NAME">filelist</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">length</span><span class="PUNC">-</span><span class="NUMB">16</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">replace</span><span class="PUNC">(</span><span class="REGX">/\//g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"-"</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>903</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>904</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>905</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>906</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>907</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">onLoad</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>908</span> </span><span class="WHIT">                </span><span class="NAME">onLoad</span><span class="PUNC">(</span><span class="NAME">locales</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>909</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>910</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>911</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>912</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">locales</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>913</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>914</span> 
-<span class='line'>915</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>916</span> </span></pre></body></html>
+<span class='line'>788</span> </span><span class="COMM">/**
+<span class='line'>789</span>  * Tell whether or not the str does not start with a lower case ASCII char.
+<span class='line'>790</span>  * @private
+<span class='line'>791</span>  * @param {string} str the char to check
+<span class='line'>792</span>  * @return {boolean} true if the char is not a lower case ASCII char
+<span class='line'>793</span>  */</span><span class="WHIT">
+<span class='line'>794</span> </span><span class="NAME">Locale._notLower</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>795</span> </span><span class="WHIT">    </span><span class="COMM">// do this with ASCII only so we don't have to depend on the CType functions</span><span class="WHIT">
+<span class='line'>796</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.charCodeAt</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>797</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">97</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">122</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>798</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>799</span> 
+<span class='line'>800</span> </span><span class="COMM">/**
+<span class='line'>801</span>  * Tell whether or not the str does not start with an upper case ASCII char.
+<span class='line'>802</span>  * @private
+<span class='line'>803</span>  * @param {string} str the char to check
+<span class='line'>804</span>  * @return {boolean} true if the char is a not an upper case ASCII char
+<span class='line'>805</span>  */</span><span class="WHIT">
+<span class='line'>806</span> </span><span class="NAME">Locale._notUpper</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>807</span> </span><span class="WHIT">    </span><span class="COMM">// do this with ASCII only so we don't have to depend on the CType functions</span><span class="WHIT">
+<span class='line'>808</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.charCodeAt</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>809</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">65</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">90</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>810</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>811</span> 
+<span class='line'>812</span> </span><span class="COMM">/**
+<span class='line'>813</span>  * Tell whether or not the str does not start with a digit char.
+<span class='line'>814</span>  * @private
+<span class='line'>815</span>  * @param {string} str the char to check
+<span class='line'>816</span>  * @return {boolean} true if the char is a not an upper case ASCII char
+<span class='line'>817</span>  */</span><span class="WHIT">
+<span class='line'>818</span> </span><span class="NAME">Locale._notDigit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>819</span> </span><span class="WHIT">    </span><span class="COMM">// do this with ASCII only so we don't have to depend on the CType functions</span><span class="WHIT">
+<span class='line'>820</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">str.charCodeAt</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>821</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">48</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">ch</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">57</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>822</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>823</span> 
+<span class='line'>824</span> </span><span class="COMM">/**
+<span class='line'>825</span>  * Tell whether or not the given string has the correct syntax to be
+<span class='line'>826</span>  * an ISO 639 language code.
+<span class='line'>827</span>  *
+<span class='line'>828</span>  * @private
+<span class='line'>829</span>  * @param {string} str the string to parse
+<span class='line'>830</span>  * @return {boolean} true if the string could syntactically be a language code.
+<span class='line'>831</span>  */</span><span class="WHIT">
+<span class='line'>832</span> </span><span class="NAME">Locale._isLanguageCode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>833</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">3</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>834</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>835</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>836</span> 
+<span class='line'>837</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>838</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">Locale._notLower</span><span class="PUNC">(</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>839</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>840</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>841</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>842</span> 
+<span class='line'>843</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>844</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>845</span> 
+<span class='line'>846</span> </span><span class="COMM">/**
+<span class='line'>847</span>  * Tell whether or not the given string has the correct syntax to be
+<span class='line'>848</span>  * an ISO 3166 2-letter region code or M.49 3-digit region code.
+<span class='line'>849</span>  *
+<span class='line'>850</span>  * @private
+<span class='line'>851</span>  * @param {string} str the string to parse
+<span class='line'>852</span>  * @return {boolean} true if the string could syntactically be a language code.
+<span class='line'>853</span>  */</span><span class="WHIT">
+<span class='line'>854</span> </span><span class="NAME">Locale._isRegionCode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>855</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>856</span> 
+<span class='line'>857</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">3</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>858</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>859</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>860</span> 
+<span class='line'>861</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">str.length</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>862</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>863</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">Locale._notUpper</span><span class="PUNC">(</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>864</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>865</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>866</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>867</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>868</span> </span><span class="WHIT">        </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>869</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">Locale._notDigit</span><span class="PUNC">(</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>870</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>871</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>872</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>873</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>874</span> 
+<span class='line'>875</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>876</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>877</span> 
+<span class='line'>878</span> </span><span class="COMM">/**
+<span class='line'>879</span>  * Tell whether or not the given string has the correct syntax to be
+<span class='line'>880</span>  * an ISO 639 language code.
+<span class='line'>881</span>  *
+<span class='line'>882</span>  * @private
+<span class='line'>883</span>  * @param {string} str the string to parse
+<span class='line'>884</span>  * @return {boolean} true if the string could syntactically be a language code.
+<span class='line'>885</span>  */</span><span class="WHIT">
+<span class='line'>886</span> </span><span class="NAME">Locale._isScriptCode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>887</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">str.length</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">Locale._notUpper</span><span class="PUNC">(</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>888</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>889</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>890</span> 
+<span class='line'>891</span> </span><span class="WHIT">    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>892</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">Locale._notLower</span><span class="PUNC">(</span><span class="NAME">str.charAt</span><span class="PUNC">(</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>893</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>894</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>895</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>896</span> 
+<span class='line'>897</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>898</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>899</span> 
+<span class='line'>900</span> </span><span class="COMM">/**
+<span class='line'>901</span>  * Return the ISO-3166 alpha3 equivalent region code for the given ISO 3166 alpha2
+<span class='line'>902</span>  * region code. If the given alpha2 code is not found, this function returns its
+<span class='line'>903</span>  * argument unchanged.
+<span class='line'>904</span>  * @static
+<span class='line'>905</span>  * @param {string|undefined} alpha2 the alpha2 code to map
+<span class='line'>906</span>  * @return {string|undefined} the alpha3 equivalent of the given alpha2 code, or the alpha2
+<span class='line'>907</span>  * parameter if the alpha2 value is not found
+<span class='line'>908</span>  */</span><span class="WHIT">
+<span class='line'>909</span> </span><span class="NAME">Locale.regionAlpha2ToAlpha3</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">alpha2</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>910</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Locale.a2toa3regmap</span><span class="PUNC">[</span><span class="NAME">alpha2</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">alpha2</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>911</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>912</span> 
+<span class='line'>913</span> </span><span class="COMM">/**
+<span class='line'>914</span>  * Return the ISO-639 alpha3 equivalent language code for the given ISO 639 alpha1
+<span class='line'>915</span>  * language code. If the given alpha1 code is not found, this function returns its
+<span class='line'>916</span>  * argument unchanged.
+<span class='line'>917</span>  * @static
+<span class='line'>918</span>  * @param {string|undefined} alpha1 the alpha1 code to map
+<span class='line'>919</span>  * @return {string|undefined} the alpha3 equivalent of the given alpha1 code, or the alpha1
+<span class='line'>920</span>  * parameter if the alpha1 value is not found
+<span class='line'>921</span>  */</span><span class="WHIT">
+<span class='line'>922</span> </span><span class="NAME">Locale.languageAlpha1ToAlpha3</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">alpha1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>923</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Locale.a1toa3langmap</span><span class="PUNC">[</span><span class="NAME">alpha1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">alpha1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>924</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>925</span> 
+<span class='line'>926</span> </span><span class="NAME">Locale.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>927</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>928</span>      * @private
+<span class='line'>929</span>      */</span><span class="WHIT">
+<span class='line'>930</span> </span><span class="WHIT">    </span><span class="NAME">_genSpec</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>931</span> </span><span class="WHIT">        </span><span class="NAME">this.spec</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.language</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>932</span> 
+<span class='line'>933</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.script</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>934</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.spec.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>935</span> </span><span class="WHIT">                </span><span class="NAME">this.spec</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"-"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>936</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>937</span> </span><span class="WHIT">            </span><span class="NAME">this.spec</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.script</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>938</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>939</span> 
+<span class='line'>940</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.region</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>941</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.spec.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>942</span> </span><span class="WHIT">                </span><span class="NAME">this.spec</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"-"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>943</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>944</span> </span><span class="WHIT">            </span><span class="NAME">this.spec</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.region</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>945</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>946</span> 
+<span class='line'>947</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.variant</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>948</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.spec.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>949</span> </span><span class="WHIT">                </span><span class="NAME">this.spec</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"-"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>950</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>951</span> </span><span class="WHIT">            </span><span class="NAME">this.spec</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.variant</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>952</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>953</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>954</span> 
+<span class='line'>955</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>956</span>      * Return the ISO 639 language code for this locale.
+<span class='line'>957</span>      * @return {string|undefined} the language code for this locale
+<span class='line'>958</span>      */</span><span class="WHIT">
+<span class='line'>959</span> </span><span class="WHIT">    </span><span class="NAME">getLanguage</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>960</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.language</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>961</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>962</span> 
+<span class='line'>963</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>964</span>      * Return the language of this locale as an ISO-639-alpha3 language code
+<span class='line'>965</span>      * @return {string|undefined} the alpha3 language code of this locale
+<span class='line'>966</span>      */</span><span class="WHIT">
+<span class='line'>967</span> </span><span class="WHIT">    </span><span class="NAME">getLanguageAlpha3</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>968</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Locale.languageAlpha1ToAlpha3</span><span class="PUNC">(</span><span class="NAME">this.language</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>969</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>970</span> 
+<span class='line'>971</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>972</span>      * Return the ISO 3166 region code for this locale.
+<span class='line'>973</span>      * @return {string|undefined} the region code of this locale
+<span class='line'>974</span>      */</span><span class="WHIT">
+<span class='line'>975</span> </span><span class="WHIT">    </span><span class="NAME">getRegion</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>976</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.region</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>977</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>978</span> 
+<span class='line'>979</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>980</span>      * Return the region of this locale as an ISO-3166-alpha3 region code
+<span class='line'>981</span>      * @return {string|undefined} the alpha3 region code of this locale
+<span class='line'>982</span>      */</span><span class="WHIT">
+<span class='line'>983</span> </span><span class="WHIT">    </span><span class="NAME">getRegionAlpha3</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>984</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Locale.regionAlpha2ToAlpha3</span><span class="PUNC">(</span><span class="NAME">this.region</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>985</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>986</span> 
+<span class='line'>987</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>988</span>      * Return the ISO 15924 script code for this locale
+<span class='line'>989</span>      * @return {string|undefined} the script code of this locale
+<span class='line'>990</span>      */</span><span class="WHIT">
+<span class='line'>991</span> </span><span class="WHIT">    </span><span class="NAME">getScript</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>992</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.script</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>993</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>994</span> 
+<span class='line'>995</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>996</span>      * Return the variant code for this locale
+<span class='line'>997</span>      * @return {string|undefined} the variant code of this locale, if any
+<span class='line'>998</span>      */</span><span class="WHIT">
+<span class='line'>999</span> </span><span class="WHIT">    </span><span class="NAME">getVariant</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1000</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.variant</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1001</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1002</span> 
+<span class='line'>1003</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1004</span>      * Return the whole locale specifier as a string.
+<span class='line'>1005</span>      * @return {string} the locale specifier
+<span class='line'>1006</span>      */</span><span class="WHIT">
+<span class='line'>1007</span> </span><span class="WHIT">    </span><span class="NAME">getSpec</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1008</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.spec</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">this._genSpec</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1009</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.spec</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1010</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1011</span> 
+<span class='line'>1012</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1013</span>      * Return the language locale specifier. This includes the
+<span class='line'>1014</span>      * language and the script if it is available. This can be
+<span class='line'>1015</span>      * used to see whether the written language of two locales
+<span class='line'>1016</span>      * match each other regardless of the region or variant.
+<span class='line'>1017</span>      *
+<span class='line'>1018</span>      * @return {string} the language locale specifier
+<span class='line'>1019</span>      */</span><span class="WHIT">
+<span class='line'>1020</span> </span><span class="WHIT">    </span><span class="NAME">getLangSpec</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1021</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">spec</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.language</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1022</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">spec</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">this.script</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1023</span> </span><span class="WHIT">            </span><span class="NAME">spec</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"-"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.script</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1024</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1025</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">spec</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1026</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1027</span> 
+<span class='line'>1028</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1029</span>      * Express this locale object as a string. Currently, this simply calls the getSpec
+<span class='line'>1030</span>      * function to represent the locale as its specifier.
+<span class='line'>1031</span>      *
+<span class='line'>1032</span>      * @return {string} the locale specifier
+<span class='line'>1033</span>      */</span><span class="WHIT">
+<span class='line'>1034</span> </span><span class="WHIT">    </span><span class="NAME">toString</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1035</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.getSpec</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1036</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1037</span> 
+<span class='line'>1038</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1039</span>      * Return true if the the other locale is exactly equal to the current one.
+<span class='line'>1040</span>      * @return {boolean} whether or not the other locale is equal to the current one
+<span class='line'>1041</span>      */</span><span class="WHIT">
+<span class='line'>1042</span> </span><span class="WHIT">    </span><span class="NAME">equals</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">other</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1043</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.language</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">other.language</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>1044</span> </span><span class="WHIT">            </span><span class="NAME">this.region</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">other.region</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>1045</span> </span><span class="WHIT">            </span><span class="NAME">this.script</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">other.script</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>1046</span> </span><span class="WHIT">            </span><span class="NAME">this.variant</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">other.variant</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1047</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1048</span> 
+<span class='line'>1049</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1050</span>      * Return true if the current locale is the special pseudo locale.
+<span class='line'>1051</span>      * @return {boolean} true if the current locale is the special pseudo locale
+<span class='line'>1052</span>      */</span><span class="WHIT">
+<span class='line'>1053</span> </span><span class="WHIT">    </span><span class="NAME">isPseudo</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1054</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">JSUtils.indexOf</span><span class="PUNC">(</span><span class="NAME">ilib.pseudoLocales</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.spec</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1055</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1056</span> 
+<span class='line'>1057</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1058</span>      * Return true if the current locale uses a valid ISO codes for each component
+<span class='line'>1059</span>      * of the locale that exists.
+<span class='line'>1060</span>      * @return {boolean} true if the current locale has all valid components, and
+<span class='line'>1061</span>      * false otherwise.
+<span class='line'>1062</span>      */</span><span class="WHIT">
+<span class='line'>1063</span> </span><span class="WHIT">    </span><span class="NAME">isValid</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1064</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.language</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">this.script</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">this.region</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1065</span> 
+<span class='line'>1066</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="PUNC">!</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.language</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">Locale._isLanguageCode</span><span class="PUNC">(</span><span class="NAME">this.language</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">Locale.a1toa3langmap</span><span class="PUNC">[</span><span class="NAME">this.language</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>1067</span> </span><span class="WHIT">            </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.script</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">Locale._isScriptCode</span><span class="PUNC">(</span><span class="NAME">this.script</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">Locale.iso15924.indexOf</span><span class="PUNC">(</span><span class="NAME">this.script</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT">
+<span class='line'>1068</span> </span><span class="WHIT">            </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.region</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">Locale._isRegionCode</span><span class="PUNC">(</span><span class="NAME">this.region</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">Locale.a2toa3regmap</span><span class="PUNC">[</span><span class="NAME">this.region</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1069</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1070</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1071</span> 
+<span class='line'>1072</span> </span><span class="COMM">// static functions</span><span class="WHIT">
+<span class='line'>1073</span> </span><span class="COMM">/**
+<span class='line'>1074</span>  * @private
+<span class='line'>1075</span>  */</span><span class="WHIT">
+<span class='line'>1076</span> </span><span class="NAME">Locale.locales</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1077</span> </span><span class="COMM">// !macro localelist</span><span class="WHIT">
+<span class='line'>1078</span> 
+<span class='line'>1079</span> </span><span class="COMM">/**
+<span class='line'>1080</span>  * Return the list of available locales that this iLib file supports.
+<span class='line'>1081</span>  * If this copy of ilib is pre-assembled with locale data, then the
+<span class='line'>1082</span>  * list locales may be much smaller
+<span class='line'>1083</span>  * than the list of all available locales in the iLib repository. The
+<span class='line'>1084</span>  * assembly tool will automatically fill in the list for an assembled
+<span class='line'>1085</span>  * copy of iLib. If this copy is being used with dynamically loaded
+<span class='line'>1086</span>  * data, then you
+<span class='line'>1087</span>  * can load any locale that iLib supports. You can form a locale with any
+<span class='line'>1088</span>  * combination of a language and region tags that exist in the locale
+<span class='line'>1089</span>  * data directory. Language tags are in the root of the locale data dir,
+<span class='line'>1090</span>  * and region tags can be found underneath the "und" directory. (The
+<span class='line'>1091</span>  * region tags are separated into a different dir because the region names
+<span class='line'>1092</span>  * conflict with language names on file systems that are case-insensitive.)
+<span class='line'>1093</span>  * If you have culled the locale data directory to limit the size of
+<span class='line'>1094</span>  * your app, then this function should return only those files that actually exist
+<span class='line'>1095</span>  * according to the ilibmanifest.json file in the root of that locale
+<span class='line'>1096</span>  * data dir. Make sure your ilibmanifest.json file is up-to-date with
+<span class='line'>1097</span>  * respect to the list of files that exist in the locale data dir.
+<span class='line'>1098</span>  *
+<span class='line'>1099</span>  * @param {boolean} sync if false, load the list of available files from disk
+<span class='line'>1100</span>  * asynchronously, otherwise load them synchronously. (Default: true/synchronously)
+<span class='line'>1101</span>  * @param {Function} onLoad a callback function to call if asynchronous
+<span class='line'>1102</span>  * load was requested and the list of files have been loaded.
+<span class='line'>1103</span>  * @return {Array.&lt;string>} this is an array of locale specs for which
+<span class='line'>1104</span>  * this iLib file has locale data for
+<span class='line'>1105</span>  */</span><span class="WHIT">
+<span class='line'>1106</span> </span><span class="NAME">Locale.getAvailableLocales</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1107</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">locales</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1108</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">Locale.locales.length</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">ilib._load.listAvailableFiles</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1109</span> </span><span class="WHIT">        </span><span class="NAME">locales</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Locale.locales</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1110</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">onLoad</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1111</span> </span><span class="WHIT">            </span><span class="NAME">onLoad</span><span class="PUNC">(</span><span class="NAME">locales</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1112</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1113</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1114</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1115</span> </span><span class="WHIT">            </span><span class="NAME">sync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1116</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1117</span> </span><span class="WHIT">        </span><span class="NAME">ilib._load.listAvailableFiles</span><span class="PUNC">(</span><span class="NAME">sync</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">manifest</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1118</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">manifest</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1119</span> </span><span class="WHIT">                </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dir</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">manifest</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1120</span> </span><span class="WHIT">                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">filelist</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">manifest</span><span class="PUNC">[</span><span class="NAME">dir</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1121</span> </span><span class="WHIT">                    </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">filelist.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1122</span> </span><span class="WHIT">                        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">filelist</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">15</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">filelist</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">substr</span><span class="PUNC">(</span><span class="PUNC">-</span><span class="NUMB">15</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">"localeinfo.json"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1123</span> </span><span class="WHIT">                            </span><span class="NAME">locales.push</span><span class="PUNC">(</span><span class="NAME">filelist</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">substring</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="NAME">filelist</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">length</span><span class="PUNC">-</span><span class="NUMB">16</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">replace</span><span class="PUNC">(</span><span class="REGX">/\//g</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"-"</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1124</span> </span><span class="WHIT">                        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1125</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1126</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1127</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1128</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">onLoad</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">onLoad</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1129</span> </span><span class="WHIT">                </span><span class="NAME">onLoad</span><span class="PUNC">(</span><span class="NAME">locales</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1130</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1131</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1132</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1133</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">locales</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1134</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1135</span> 
+<span class='line'>1136</span> </span><span class="NAME">module.exports</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Locale</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1137</span> </span></pre></body></html>
