@@ -12,8 +12,8 @@
         "mobilePrefix": 0,
         "serviceCode": 0,
         "personal": 0,
-        "minLocalLength": 0,
-        "maxLocalLength": 5,
+        "minLocalLength": 5,
+        "maxLocalLength": 6,
         "emergency": 0,
         "special": 0
     }

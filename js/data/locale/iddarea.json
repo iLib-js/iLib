@@ -392,8 +392,8 @@
         "ln": "Botswana"
     },
     "268": {
-        "sn": "Swaziland",
-        "ln": "Swaziland"
+        "sn": "Eswatini",
+        "ln": "Eswatini"
     },
     "269": {
         "sn": "Comoros",
@@ -524,8 +524,8 @@
         "ln": "Bosnia & Herzegovina"
     },
     "389": {
-        "sn": "Macedonia",
-        "ln": "Macedonia"
+        "sn": "North Macedonia",
+        "ln": "North Macedonia"
     },
     "420": {
         "sn": "Czechia",
@@ -707,10 +707,6 @@
         "sn": "Freephone",
         "ln": "Universal international freephone number"
     },
-    "808": {
-        "sn": "World",
-        "ln": "World"
-    },
     "850": {
         "sn": "North Korea",
         "ln": "North Korea"
@@ -720,8 +716,8 @@
         "ln": "Hong Kong SAR China"
     },
     "853": {
-        "sn": "Macau SAR China",
-        "ln": "Macau SAR China"
+        "sn": "Macao SAR China",
+        "ln": "Macao SAR China"
     },
     "855": {
         "sn": "Cambodia",
@@ -730,10 +726,6 @@
     "856": {
         "sn": "Laos",
         "ln": "Laos"
-    },
-    "870": {
-        "sn": "World",
-        "ln": "World"
     },
     "878": {
         "sn": "Universal Personal",

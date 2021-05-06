@@ -1,7 +1,7 @@
 {
     "region": "CL",
     "countryCode": "56",
-    "iddCode": "(?:0|1(?:1[0-69]|2[0-57]|5[13-58]|69|7[0167]|8[018]))0  - It's a regular expression. It needs to be checked",
+    "iddCode": "(?:0|1(?:1[0-69]|2[02-5]|5[13-58]|69|7[0167]|8[018]))0  - It's a regular expression. It needs to be checked",
     "skipTrunk": false,
     "dialingPlan": "closed",
     "commonFormatChars": " ",

@@ -416,4 +416,4 @@ phoneLocData["area2reg"] = areaToreg;
 var file = path.join(toDir, "phoneloc.json");
 fs.writeFileSync(file, JSON.stringify(phoneLocData, true, 4), "utf-8");
 
-console.log("Done.");
+console.log("Generating " + path.join(toDir, "phoneloc.json") + " is Done.");
