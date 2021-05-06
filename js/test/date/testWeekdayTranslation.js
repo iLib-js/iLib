@@ -1,7 +1,7 @@
 /*
  * testWeekdayTranslation.js - test the weekday's translation
  *
- * Copyright © 2019-2020, JEDLSoft
+ * Copyright © 2019-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -11925,6 +11925,358 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "က");
         test.equal(value[5], "သ");
         test.equal(value[6], "စ");
+
+        test.done();
+    },
+    testWeekdayTranslationFull_wo_SN: function(test) {
+        // full -> wide
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"wo-SN", date:"w", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "Dibéer");
+        test.equal(value[1], "Altine");
+        test.equal(value[2], "Talaata");
+        test.equal(value[3], "Àlarba");
+        test.equal(value[4], "Alxamis");
+        test.equal(value[5], "Àjjuma");
+        test.equal(value[6], "Aseer");
+        test.done();
+    },
+    testWeekdayTranslationLong_wo_SN: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"wo-SN", date:"w", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "Dib");
+        test.equal(value[1], "Alt");
+        test.equal(value[2], "Tal");
+        test.equal(value[3], "Àla");
+        test.equal(value[4], "Alx");
+        test.equal(value[5], "Àjj");
+        test.equal(value[6], "Ase");
+
+        test.done();
+    },
+    testWeekdayTranslationMedium_wo_SN: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"wo-SN", date:"w", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "Dib");
+        test.equal(value[1], "Alt");
+        test.equal(value[2], "Tal");
+        test.equal(value[3], "Àla");
+        test.equal(value[4], "Alx");
+        test.equal(value[5], "Àjj");
+        test.equal(value[6], "Ase");
+
+        test.done();
+    },
+    testWeekdayTranslationShort_wo_SN: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"wo-SN", date:"w", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "Dib");
+        test.equal(value[1], "Alt");
+        test.equal(value[2], "Tal");
+        test.equal(value[3], "Àla");
+        test.equal(value[4], "Alx");
+        test.equal(value[5], "Àjj");
+        test.equal(value[6], "Ase");
+        test.done();
+    },
+    testWeekdayTranslationFull_tk_TM: function(test) {
+        // full -> wide
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"tk-TM", date:"w", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Ýekşenbe');
+        test.equal(value[1], 'Duşenbe');
+        test.equal(value[2], 'Sişenbe');
+        test.equal(value[3], 'Çarşenbe');
+        test.equal(value[4], 'Penşenbe');
+        test.equal(value[5], 'Anna');
+        test.equal(value[6], 'Şenbe');
+        test.done();
+    },
+    testWeekdayTranslationLong_tk_TM: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"tk-TM", date:"w", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Ýek');
+        test.equal(value[1], 'Duş');
+        test.equal(value[2], 'Siş');
+        test.equal(value[3], 'Çar');
+        test.equal(value[4], 'Pen');
+        test.equal(value[5], 'Ann');
+        test.equal(value[6], 'Şen');
+
+        test.done();
+    },
+    testWeekdayTranslationMedium_tk_TM: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"tk-TM", date:"w", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Ýb');
+        test.equal(value[1], 'Db');
+        test.equal(value[2], 'Sb');
+        test.equal(value[3], 'Çb');
+        test.equal(value[4], 'Pb');
+        test.equal(value[5], 'An');
+        test.equal(value[6], 'Şb');
+
+        test.done();
+    },
+    testWeekdayTranslationShort_tk_TM: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"tk-TM", date:"w", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Ý');
+        test.equal(value[1], 'D');
+        test.equal(value[2], 'S');
+        test.equal(value[3], 'Ç');
+        test.equal(value[4], 'P');
+        test.equal(value[5], 'A');
+        test.equal(value[6], 'Ş');
+        test.done();
+    },
+    testWeekdayTranslationFull_tg_TJ: function(test) {
+        // full -> wide
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"tg-TJ", date:"w", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Якшанбе');
+        test.equal(value[1], 'Душанбе');
+        test.equal(value[2], 'Сешанбе');
+        test.equal(value[3], 'Чоршанбе');
+        test.equal(value[4], 'Панҷшанбе');
+        test.equal(value[5], 'Ҷумъа');
+        test.equal(value[6], 'Шанбе');
+        test.done();
+    },
+    testWeekdayTranslationLong_tg_TJ: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"tg-TJ", date:"w", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Яшб');
+        test.equal(value[1], 'Дшб');
+        test.equal(value[2], 'Сшб');
+        test.equal(value[3], 'Чшб');
+        test.equal(value[4], 'Пшб');
+        test.equal(value[5], 'Ҷмъ');
+        test.equal(value[6], 'Шнб');
+
+        test.done();
+    },
+    testWeekdayTranslationMedium_tg_TJ: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"tg-TJ", date:"w", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Яшб');
+        test.equal(value[1], 'Дшб');
+        test.equal(value[2], 'Сшб');
+        test.equal(value[3], 'Чшб');
+        test.equal(value[4], 'Пшб');
+        test.equal(value[5], 'Ҷмъ');
+        test.equal(value[6], 'Шнб');
+
+        test.done();
+    },
+    testWeekdayTranslationShort_tg_TJ: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"tg-TJ", date:"w", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Я');
+        test.equal(value[1], 'Д');
+        test.equal(value[2], 'С');
+        test.equal(value[3], 'Ч');
+        test.equal(value[4], 'П');
+        test.equal(value[5], 'Ҷ');
+        test.equal(value[6], 'Ш');
+      test.done();
+    },
+    testWeekdayTranslationFull_mt_MT: function(test) {
+        // full -> wide
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"mt-MT", date:"w", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "Il-Ħadd");
+        test.equal(value[1], "It-Tnejn");
+        test.equal(value[2], "It-Tlieta");
+        test.equal(value[3], "L-Erbgħa");
+        test.equal(value[4], "Il-Ħamis");
+        test.equal(value[5], "Il-Ġimgħa");
+        test.equal(value[6], "Is-Sibt");
+        test.done();
+    },
+    testWeekdayTranslationLong_mt_MT: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"mt-MT", date:"w", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "Ħad");
+        test.equal(value[1], "Tne");
+        test.equal(value[2], "Tli");
+        test.equal(value[3], "Erb");
+        test.equal(value[4], "Ħam");
+        test.equal(value[5], "Ġim");
+        test.equal(value[6], "Sib");
+
+        test.done();
+    },
+    testWeekdayTranslationMedium_mt_MT: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"mt-MT", date:"w", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "Ħad");
+        test.equal(value[1], "Tne");
+        test.equal(value[2], "Tli");
+        test.equal(value[3], "Erb");
+        test.equal(value[4], "Ħam");
+        test.equal(value[5], "Ġim");
+        test.equal(value[6], "Sib");
+
+        test.done();
+    },
+    testWeekdayTranslationShort_mt_MT: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"mt-MT", date:"w", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "Ħd");
+        test.equal(value[1], "Tn");
+        test.equal(value[2], "Tl");
+        test.equal(value[3], "Er");
+        test.equal(value[4], "Ħm");
+        test.equal(value[5], "Ġm");
+        test.equal(value[6], "Sb");
+
+        test.done();
+    },
+    testWeekdayTranslationFull_zu_ZA: function(test) {
+        // full -> wide
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"zu-ZA", date:"w", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "ISonto");
+        test.equal(value[1], "UMsombuluko");
+        test.equal(value[2], "ULwesibili");
+        test.equal(value[3], "ULwesithathu");
+        test.equal(value[4], "ULwesine");
+        test.equal(value[5], "ULwesihlanu");
+        test.equal(value[6], "UMgqibelo");
+        test.done();
+    },
+    testWeekdayTranslationLong_zu_ZA: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"zu-ZA", date:"w", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "Son");
+        test.equal(value[1], "Mso");
+        test.equal(value[2], "Bil");
+        test.equal(value[3], "Tha");
+        test.equal(value[4], "Sin");
+        test.equal(value[5], "Hla");
+        test.equal(value[6], "Mgq");
+
+        test.done();
+    },
+    testWeekdayTranslationMedium_zu_ZA: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"zu-ZA", date:"w", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "Son");
+        test.equal(value[1], "Mso");
+        test.equal(value[2], "Bil");
+        test.equal(value[3], "Tha");
+        test.equal(value[4], "Sin");
+        test.equal(value[5], "Hla");
+        test.equal(value[6], "Mgq");
+
+        test.done();
+    },
+    testWeekdayTranslationShort_zu_ZA: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"zu-ZA", date:"w", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "S");
+        test.equal(value[1], "M");
+        test.equal(value[2], "B");
+        test.equal(value[3], "T");
+        test.equal(value[4], "S");
+        test.equal(value[5], "H");
+        test.equal(value[6], "M");
 
         test.done();
     }

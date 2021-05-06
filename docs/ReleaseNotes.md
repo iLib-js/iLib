@@ -1,6 +1,20 @@
 Release Notes for Version 14
 ============================
 
+Build 013
+-------
+Published as version 14.8.0
+
+New Features:
+* Added Locale.isValid() method which returns true iff all of the given locale components (language,
+  script, region) are valid ISO codes.
+* Supported additional mt-MT, tg-TJ, tk-TM, wo-SN, zu-ZA locales
+    * validated locale data and added many test cases
+    
+Bug Fixes:
+* Fixed a bug which a default script for `tk` should be `Latin` instead of `Arabic`
+* Fixed a bug which a default script for `tg` should be `Cyrl` instead of `Arabic`
+
 Build 012
 -------
 Published as version 14.7.0

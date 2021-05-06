@@ -1,7 +1,7 @@
 /*
  * testlocale.js - test the locale object
  *
- * Copyright © 2012-2015, 2017-2018, 2020 JEDLSoft
+ * Copyright © 2012-2015, 2017-2018, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1032,6 +1032,106 @@ module.exports.testlocale = {
         } catch (e) {
             test.fail();
         }
+        test.done();
+    },
+
+    testLocaleIsValidLocaleTrueFull: function(test) {
+        test.expect(2);
+
+        var loc = new Locale("zh-Hans-CN");
+        test.ok(loc !== null);
+        test.ok(loc.isValid());
+
+        test.done();
+    },
+
+    testLocaleIsValidLocaleTrueLang: function(test) {
+        test.expect(2);
+
+        var loc = new Locale("de");
+        test.ok(loc !== null);
+        test.ok(loc.isValid());
+
+        test.done();
+    },
+
+    testLocaleIsValidLocaleTrueScript: function(test) {
+        test.expect(2);
+
+        var loc = new Locale("Latn");
+        test.ok(loc !== null);
+        test.ok(loc.isValid());
+
+        test.done();
+    },
+
+    testLocaleIsValidLocaleTrueRegion: function(test) {
+        test.expect(2);
+
+        var loc = new Locale("BE");
+        test.ok(loc !== null);
+        test.ok(loc.isValid());
+
+        test.done();
+    },
+
+    testLocaleIsValidLocaleFalseScript: function(test) {
+        test.expect(2);
+
+        var loc = new Locale("zh-Hank-CN");
+        test.ok(loc !== null);
+        test.ok(!loc.isValid());
+
+        test.done();
+    },
+
+    testLocaleIsValidLocaleFalseLanguage: function(test) {
+        test.expect(2);
+
+        var loc = new Locale("zz-Hans-CN");
+        test.ok(loc !== null);
+        test.ok(!loc.isValid());
+
+        test.done();
+    },
+
+    testLocaleIsValidLocaleFalseRegion: function(test) {
+        test.expect(2);
+
+        var loc = new Locale("zh-Hans-CQ");
+        test.ok(loc !== null);
+        test.ok(!loc.isValid());
+
+        test.done();
+    },
+
+    testLocaleIsValidLocaleTrueWithVariant: function(test) {
+        test.expect(2);
+
+        var loc = new Locale("zh-Hans-CN-SHANGHAI");
+        test.ok(loc !== null);
+        test.ok(loc.isValid());
+
+        test.done();
+    },
+
+    testLocaleIsValidLocaleFalseEmpty: function(test) {
+        test.expect(2);
+
+        var loc = new Locale(" ");
+        test.ok(loc !== null);
+        test.ok(!loc.isValid());
+
+        test.done();
+    },
+
+    testLocaleIsValidLocaleTrueParts: function(test) {
+        test.expect(2);
+
+        var loc = new Locale("zh", "CN", "Hans");
+        test.ok(loc !== null);
+        test.ok(loc.isValid());
+
         test.done();
     }
 };

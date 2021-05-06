@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
  * 
- * Copyright © 2017-2018, 2020 JEDLSoft
+ * Copyright © 2017-2018, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -85,6 +85,7 @@ module.exports.files = [
     "testdatefmt_mn_Cyrl_MN.js",
     "testdatefmt_mr_IN.js",
     "testdatefmt_ms_MY.js",
+    "testdatefmt_mt_MT.js",
     "testdatefmt_my_MM.js",
     "testdatefmt_nb_NO.js",
     "testdatefmt_ne_NP.js",
@@ -104,14 +105,18 @@ module.exports.files = [
     "testdatefmt_sw_KE.js",
     "testdatefmt_ta_IN.js",
     "testdatefmt_te_IN.js",
+    "testdatefmt_tg_TJ.js",
     "testdatefmt_th_TH.js",
+    "testdatefmt_tk_TM.js",
     "testdatefmt_tr_TR.js",
     "testdatefmt_uk_UA.js",
     "testdatefmt_ur_IN.js",
     "testdatefmt_uz_Cyrl_UZ.js",
     "testdatefmt_uz_Latn_UZ.js",
     "testdatefmt_vi_VN.js",
+    "testdatefmt_wo_SN.js",
     "testdatefmt_zh_CN.js",
     "testdatefmt_zh_Hant_HK.js",
-    "testdatefmt_zh_Hant_TW.js"
+    "testdatefmt_zh_Hant_TW.js",
+    "testdatefmt_zu_ZA.js"
 ];
