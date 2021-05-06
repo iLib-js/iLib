@@ -2,7 +2,7 @@
  * genphonefmt.js - ilib tool to generate the json phonefmt information from the libphonefmt-js
  * library
  *
- * Copyright © 2019-2020 JEDLSoft
+ * Copyright © 2019-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ var mkdirs = common.makeDirs;
 var toDir = "tmp";
 
 var libphonefmt = require('libphonenumber-js/max');
-var sampleNums = require("./tmp/exampleNums.json");
+var sampleNums = require("./sampleNumbers.json");
 
 var numberTemplate =[];
 var wholeTemplate = {};

@@ -1,7 +1,7 @@
 /*
  * numplan.js - Test the phone numbering plan.
  * 
- * Copyright © 2014-2015,2017, JEDLSoft
+ * Copyright © 2014-2015,2017, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -146,6 +146,44 @@ module.exports.numplan = {
                 test.done();
             }
         });
-    }
+    },
+    testRightContents_el_GR: function(test) {
+        test.expect(14);
+        var plan = new NumberingPlan({locale: "el-GR"});
+        test.ok(typeof(plan) !== "undefined");
+        test.equal(plan.getName(), "GR");
+        test.equal(plan.getTrunkCode(), "0");
+        test.equal(plan.getIDDCode(), "00");
+        test.equal(plan.getFieldLength('areaCode'), 0);
+        test.equal(plan.getFieldLength('minLocalLength'), 0);
+        test.equal(plan.getFieldLength('maxLocalLength'), 10);
+        test.equal(plan.getFieldLength('serviceCode'), 0);
+        test.equal(plan.getFieldLength('cic'), 0);
+        test.equal(plan.getFieldLength('mobilePrefix'), 0);
+        test.equal(plan.getFieldLength('emergency'), 0);
+        test.equal(plan.getFieldLength('vsc'), 0);
+        test.equal(plan.getPlanStyle(), "closed");
+        test.equal(plan.getCommonFormatChars(), " ");
+        test.done();
+    },
+    testRightContents_es_PA: function(test) {
+        test.expect(14);
+        var plan = new NumberingPlan({locale: "es-PA"});
+        test.ok(typeof(plan) !== "undefined");
+        test.equal(plan.getName(), "PA");
+        test.equal(plan.getTrunkCode(), "0");
+        test.equal(plan.getIDDCode(), "00");
+        test.equal(plan.getFieldLength('areaCode'), 0);
+        test.equal(plan.getFieldLength('minLocalLength'), 0);
+        test.equal(plan.getFieldLength('maxLocalLength'), 7);
+        test.equal(plan.getFieldLength('serviceCode'), 0);
+        test.equal(plan.getFieldLength('cic'), 0);
+        test.equal(plan.getFieldLength('mobilePrefix'), 0);
+        test.equal(plan.getFieldLength('emergency'), 0);
+        test.equal(plan.getFieldLength('vsc'), 0);
+        test.equal(plan.getPlanStyle(), "closed");
+        test.equal(plan.getCommonFormatChars(), "- ");
+        test.done();
+    },
     
 };

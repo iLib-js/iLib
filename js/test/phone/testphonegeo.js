@@ -1,7 +1,7 @@
 /*
  * phonegeo.js - Test the GeoLocator Object.
  * 
- * Copyright © 2014-2015,2017, JEDLSoft
+ * Copyright © 2014-2015,2017, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2050,6 +2050,46 @@ module.exports.phonegeo = {
         };
         
         var locator = new PhoneGeoLocator({locale: 'en-HK'});
+        var geoInfo = locator.locate(parsed);
+    
+        test.ok(typeof(locator) !== "undefined");
+        test.equal(geoInfo.country.code, expected.country.code);
+        test.equal(geoInfo.country.ln, expected.country.ln);
+        test.equal(geoInfo.country.sn, expected.country.sn);
+        test.done();
+    },
+    testSZMobile: function(test) {
+        test.expect(4);
+        var parsed = new PhoneNumber("76123456", {locale: "en-SZ"});
+        var expected = {
+            country: {
+                sn: "Eswatini",
+                ln: "Eswatini",
+                code: "SZ"
+            }
+        };
+        
+        var locator = new PhoneGeoLocator({locale: 'en-SZ'});
+        var geoInfo = locator.locate(parsed);
+    
+        test.ok(typeof(locator) !== "undefined");
+        test.equal(geoInfo.country.code, expected.country.code);
+        test.equal(geoInfo.country.ln, expected.country.ln);
+        test.equal(geoInfo.country.sn, expected.country.sn);
+        test.done();
+    },
+    testMOMobile: function(test) {
+        test.expect(4);
+        var parsed = new PhoneNumber("66123456", {locale: "en-MO"});
+        var expected = {
+            country: {
+                sn: "Macao SAR China",
+                ln: "Macao SAR China",
+                code: "MO"
+            }
+        };
+        
+        var locator = new PhoneGeoLocator({locale: 'en-MO'});
         var geoInfo = locator.locate(parsed);
     
         test.ok(typeof(locator) !== "undefined");
