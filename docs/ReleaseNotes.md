@@ -23,7 +23,6 @@ New Features:
 
 Bug Fixes:
 * Updated `iddarea.json`, `phoneloc.json`, and `numplan.json` from phonenumber library based on metadata version 4.0.0 which are used in PhoneNumber formatting.
-* Added new `plurals.json` files in some locales from cldr 37
 
 Build 013
 -------
