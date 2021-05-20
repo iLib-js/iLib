@@ -15,6 +15,7 @@ New Features:
 
 Bug Fixes:
 * Updated `iddarea.json`, `phoneloc.json`, and `numplan.json` from phonenumber library based on metadata version 4.0.0 which are used in PhoneNumber formatting.
+* Fixed a build error that occurs on `Qt 6.1` and fixed some warning messages that reported from the latest Qt version.
 
 Build 013
 -------
