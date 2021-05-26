@@ -297,6 +297,7 @@ ilib.setLocale = function (spec) {
  * @return {string} the locale specifier for the default locale
  */
 ilib.getLocale = function () {
+    var lang, dot;
     if (typeof(ilib.locale) !== 'string') {
         var plat = ilib._getPlatform();
         switch (plat) {
@@ -351,7 +352,7 @@ ilib.getLocale = function () {
                 // where language and region are the correct ISO codes separated by
                 // an underscore. This translate it back to the BCP-47 form.
                 if (lang && typeof(lang) !== 'undefined') {
-                    var dot = lang.indexOf('.');
+                    dot = lang.indexOf('.');
                     if (dot > -1) {
                         lang = lang.substring(0, dot);
                     }
@@ -367,7 +368,7 @@ ilib.getLocale = function () {
                 // where language and region are the correct ISO codes separated by
                 // an underscore. This translate it back to the BCP-47 form.
                 if (lang && typeof(lang) !== 'undefined') {
-                    var dot = lang.indexOf('.');
+                    dot = lang.indexOf('.');
                     if (dot > -1) {
                         lang = lang.substring(0, dot);
                     }
@@ -379,7 +380,7 @@ ilib.getLocale = function () {
             case 'qt':
                 // running in the Javascript engine under Qt/QML
                 var locobj = Qt.locale();
-                var lang = locobj.name && locobj.name.replace("_", "-") || "en-US";
+                lang = locobj.name && locobj.name.replace("_", "-") || "en-US";
                 break;
         }
         ilib.locale = typeof(ilib.locale) === 'string' && ilib.locale.length && ilib.locale !== "C" ? ilib.locale : 'en-US';

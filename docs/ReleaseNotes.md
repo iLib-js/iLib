@@ -1,6 +1,14 @@
 Release Notes for Version 14
 ============================
 
+Build 015
+-------
+Published as version 14.9.1
+New Features:
+
+Bug Fixes:
+* Fixed a build error that occurs on `Qt 6.1` and fixed some warning messages that reported from the latest Qt version.
+
 Build 014
 -------
 Published as version 14.9.0
