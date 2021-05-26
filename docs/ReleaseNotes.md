@@ -7,6 +7,7 @@ Published as version 14.9.1
 New Features:
 
 Bug Fixes:
+* Fixed a build error that occurs on `Qt 6.1` and fixed some warning messages that reported from the latest Qt version.
 * Added new `plurals.json` files in some locales from cldr 37
 
 Build 014

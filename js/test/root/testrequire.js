@@ -72,9 +72,8 @@ module.exports.testrequire = {
             test.done();
             return;
         }
-        test.expect(4);
-        test.ok(typeof(Qwerty) === "undefined");
-    
+        test.expect(3);
+
         var Qwerty = require("./testfiles/qwerty.js");
         test.ok(typeof(Qwerty) !== "undefined");
         
