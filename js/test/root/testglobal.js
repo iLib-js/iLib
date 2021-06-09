@@ -252,10 +252,10 @@ module.exports.testglobal = {
         
         test.expect(1);
         test.equal(ilib.getLocale(), "th-TH");
-        test.done();
 
         process.env.LANG = "";
         ilib.locale = undefined;
+        test.done();
     },
 
     testGetLocaleNodejs2: function(test) {
@@ -271,10 +271,67 @@ module.exports.testglobal = {
 
         test.expect(1);
         test.equal(ilib.getLocale(), "th-TH");
-        test.done();
 
         process.env.LC_ALL = "";
         ilib.locale = undefined;
+        test.done();
+    },
+
+    testGetLocaleNodejsFullLocale: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        process.env.LC_ALL = "zh-Hans-CN";
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "zh-Hans-CN");
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+        test.done();
+    },
+
+    testGetLocaleNodejsLangScript: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        process.env.LC_ALL = "zh-Hans";
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "zh-Hans");
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+        test.done();
+    },
+
+    testGetLocaleNodejsLangOnly: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        process.env.LC_ALL = "zh";
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "zh");
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+        test.done();
     },
 
     testGetLocaleNodejsPosixLocale: function(test) {

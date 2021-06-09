@@ -288,7 +288,7 @@ ilib.setLocale = function (spec) {
  * @private
  */
 function parseLocale(str) {
-    if (!str || str === "C") return str;
+    if (!str) return str;
 
     // take care of the libc style locale with a dot + script at the end
     var dot = str.indexOf('.')
@@ -299,6 +299,7 @@ function parseLocale(str) {
     // handle the posix default locale
     if (str === "C") return "en-US";
 
+    // full locale
     if (str.length >= 10) {
         return [
             str.substring(0,2).toLowerCase(),
@@ -307,6 +308,15 @@ function parseLocale(str) {
         ].join("-");
     }
 
+    // language + script
+    if (str.length >= 7) {
+        return [
+            str.substring(0,2).toLowerCase(),
+            str[3].toUpperCase() + str.substring(4,7).toLowerCase()
+        ].join("-");
+    }
+
+    // language + region
     if (str.length >= 5) {
         return [
             str.substring(0,2).toLowerCase(),
@@ -314,6 +324,7 @@ function parseLocale(str) {
         ].join("-");
     }
 
+    // language only
     if (str.length < 3) {
         return str.toLowerCase();
     }
