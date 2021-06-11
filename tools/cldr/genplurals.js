@@ -2,7 +2,7 @@
  * genplurals.js - ilib tool to generate plurals json fragments from  
  * the CLDR data files 
  *  
- * Copyright © 2015-2017, 2020 JEDLSoft
+ * Copyright © 2015-2017, 2020-2021 JEDLSoft
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -23,9 +23,7 @@
 var fs = require('fs');
 var path = require('path');
 var common = require('./common');
-var merge = common.merge;
 var Locale = common.Locale;
-var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
 
 var pluralData = require("cldr-core/supplemental/plurals.json");
@@ -46,11 +44,14 @@ process.argv.forEach(function (val, index, array) {
         }
     });
 
+var toDir = "tmp";
 
-toDir = process.argv[2];
+if (process.argv.length  > 2) {
+    toDir = process.argv[2];
+}
 
 console.log("genplurals - generate plurals information files.\n" +
-    "Copyright (c) 2015-2017, 2020  JEDLSoft");
+    "Copyright (c) 2015-2017, 2020-2021  JEDLSoft");
 console.log("toDir: " + toDir);
 
 if (!fs.existsSync(toDir)) {

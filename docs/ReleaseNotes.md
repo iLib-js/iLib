@@ -16,6 +16,7 @@ Bug Fixes:
     * Platforms where the region code is not upper-case
     * Platforms that don't use a dash to separate the components
     * Platforms that include a dot and a charset name after the specifier
+* Fixed a `genplurals.js` tool code bug when default target directory is empty
 
 Build 014
 -------
