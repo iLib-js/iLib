@@ -2,7 +2,7 @@
 <!--
 build.xml - build the Qt/QML parts
 
-Copyright © 2015, 2019 2021 JEDLSoft
+Copyright © 2015, 2019, 2021 JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -144,7 +144,6 @@ limitations under the License.
             </fileset>
         </copy>
         <move file="${build.js}/lib/index.js" tofile="${build.js}/index.js"/>
-        <!-- <antcall target="js.original"/>-->
     </target>
 
     <target name="js.original" depends="" description="">
@@ -164,6 +163,19 @@ limitations under the License.
             </exec>
         </sequential>
     </target>
+    <target name="test.all.compiled" depends="qt.version, filereader, js.minify" description="Run the unit tests in the qt test framework. Make sure you have Qt 5.4 or later, and it is the first Qt in your path.">
+        <sequential>
+            <exec osfamily="unix" executable="qmlscene" dir="${build.unittest}" failifexecutionfails="true" failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRunAll.qml"/>
+            </exec>
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.unittest}" failifexecutionfails="true"  failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRunAll.qml"/>
+            </exec>
+        </sequential>
+        <antcall target="js.original"/>
+    </target>
 
     <target name="test.address" depends="qt.version, filereader" description="Run the address unit tests in the qt test framework.">
         <sequential>
@@ -177,7 +189,7 @@ limitations under the License.
             </exec>
         </sequential>
     </target>
-    <target name="test.address.minify" depends="qt.version, filereader, js.minify" description="Run the address unit tests in the qt test framework.">
+    <target name="test.address.compiled" depends="qt.version, filereader, js.minify" description="Run the address unit tests in the qt test framework.">
         <sequential>
             <exec osfamily="unix" executable="qmlscene" dir="${build.unittest}" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -203,6 +215,19 @@ limitations under the License.
             </exec>
         </sequential>
     </target>
+    <target name="test.calendar.compiled" depends="qt.version, export, js.minify" description="Run the calendar unit tests in the qt test framework.">
+        <sequential>
+            <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_calendar.qml"/>
+            </exec>
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_calendar.qml"/>
+            </exec>
+        </sequential>
+        <antcall target="js.original"/>
+    </target>
 
     <target name="test.collate" depends="qt.version, export" description="Run the collate unit tests in the qt test framework.">
         <sequential>
@@ -215,6 +240,19 @@ limitations under the License.
                 <arg line="NodeunitRun_collate.qml"/>
             </exec>
         </sequential>
+    </target>
+    <target name="test.collate.compiled" depends="qt.version, export, js.minify" description="Run the collate unit tests in the qt test framework.">
+        <sequential>
+            <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_collate.qml"/>
+            </exec>
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_collate.qml"/>
+            </exec>
+        </sequential>
+        <antcall target="js.original"/>
     </target>
 
     <target name="test.ctype" depends="qt.version, export" description="Run the ctype unit tests in the qt test framework.">
@@ -229,6 +267,19 @@ limitations under the License.
             </exec>
         </sequential>
     </target>
+    <target name="test.ctype.compiled" depends="qt.version, export, js.minify" description="Run the ctype unit tests in the qt test framework.">
+        <sequential>
+            <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_ctype.qml"/>
+            </exec>
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_ctype.qml"/>
+            </exec>
+        </sequential>
+        <antcall target="js.original"/>
+    </target>
 
     <target name="test.date" depends="qt.version, export" description="Run the date unit tests in the qt test framework.">
         <sequential>
@@ -241,6 +292,19 @@ limitations under the License.
                 <arg line="NodeunitRun_date.qml"/>
             </exec>
         </sequential>
+    </target>
+    <target name="test.date.compiled" depends="qt.version, export, js.minify" description="Run the date unit tests in the qt test framework.">
+        <sequential>
+            <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_date.qml"/>
+            </exec>
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_date.qml"/>
+            </exec>
+        </sequential>
+        <antcall target="js.original"/>
     </target>
 
     <target name="test.daterange" depends="qt.version, export" description="Run the daterange unit tests in the qt test framework.">
@@ -255,6 +319,19 @@ limitations under the License.
             </exec>
         </sequential>
     </target>
+    <target name="test.daterange.compiled" depends="qt.version, export, js.minify" description="Run the daterange unit tests in the qt test framework.">
+        <sequential>
+            <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_daterange.qml"/>
+            </exec>
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_daterange.qml"/>
+            </exec>
+        </sequential>
+        <antcall target="js.original"/>
+    </target>
 
     <target name="test.durfmt" depends="qt.version, export" description="Run the durfmt unit tests in the qt test framework.">
         <sequential>
@@ -267,6 +344,19 @@ limitations under the License.
                 <arg line="NodeunitRun_durfmt.qml"/>
             </exec>
         </sequential>
+    </target>
+    <target name="test.durfmt.compiled" depends="qt.version, export" description="Run the durfmt unit tests in the qt test framework.">
+        <sequential>
+            <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_durfmt.qml"/>
+            </exec>
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_durfmt.qml"/>
+            </exec>
+        </sequential>
+        <antcall target="js.original"/>
     </target>
 
     <target name="test.maps" depends="qt.version, export" description="Run the maps unit tests in the qt test framework.">
@@ -281,6 +371,19 @@ limitations under the License.
             </exec>
         </sequential>
     </target>
+    <target name="test.maps.compiled" depends="qt.version, export, js.minify" description="Run the maps unit tests in the qt test framework.">
+        <sequential>
+            <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_maps.qml"/>
+            </exec>
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_maps.qml"/>
+            </exec>
+        </sequential>
+        <antcall target="js.original"/>
+    </target>
 
     <target name="test.name" depends="qt.version, export" description="Run the name unit tests in the qt test framework.">
         <sequential>
@@ -293,6 +396,19 @@ limitations under the License.
                 <arg line="NodeunitRun_name.qml"/>
             </exec>
         </sequential>
+    </target>
+    <target name="test.name.compiled" depends="qt.version, export, js.minify" description="Run the name unit tests in the qt test framework.">
+        <sequential>
+            <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_name.qml"/>
+            </exec>
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_name.qml"/>
+            </exec>
+        </sequential>
+        <antcall target="js.original"/>
     </target>
 
     <target name="test.number" depends="qt.version, export" description="Run the number unit tests in the qt test framework.">
@@ -307,6 +423,19 @@ limitations under the License.
             </exec>
         </sequential>
     </target>
+    <target name="test.number.compiled" depends="qt.version, export, js.minify" description="Run the number unit tests in the qt test framework.">
+        <sequential>
+            <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_number.qml"/>
+            </exec>
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_number.qml"/>
+            </exec>
+        </sequential>
+        <antcall target="js.original"/>
+    </target>
 
     <target name="test.phone" depends="qt.version, export" description="Run the phone unit tests in the qt test framework.">
         <sequential>
@@ -319,6 +448,19 @@ limitations under the License.
                 <arg line="NodeunitRun_phone.qml"/>
             </exec>
         </sequential>
+    </target>
+    <target name="test.phone.compiled" depends="qt.version, export, js.minify" description="Run the phone unit tests in the qt test framework.">
+        <sequential>
+            <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_phone.qml"/>
+            </exec>
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_phone.qml"/>
+            </exec>
+        </sequential>
+        <antcall target="js.original"/>
     </target>
 
     <target name="test.root" depends="qt.version, export" description="Run the root unit tests in the qt test framework.">
@@ -333,6 +475,19 @@ limitations under the License.
             </exec>
         </sequential>
     </target>
+    <target name="test.root.compiled" depends="qt.version, export, js.minify" description="Run the root unit tests in the qt test framework.">
+        <sequential>
+            <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_root.qml"/>
+            </exec>
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_root.qml"/>
+            </exec>
+        </sequential>
+        <antcall target="js.original"/>
+    </target>
 
     <target name="test.strings_ext" depends="qt.version, export" description="Run the strings_ext unit tests in the qt test framework.">
         <sequential>
@@ -345,6 +500,19 @@ limitations under the License.
                 <arg line="NodeunitRun_strings_ext.qml"/>
             </exec>
         </sequential>
+    </target>
+    <target name="test.strings_ext.compiled" depends="qt.version, export, js.minify" description="Run the strings_ext unit tests in the qt test framework.">
+        <sequential>
+            <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_strings_ext.qml"/>
+            </exec>
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_strings_ext.qml"/>
+            </exec>
+        </sequential>
+        <antcall target="js.original"/>
     </target>
 
     <target name="test.units" depends="qt.version, export" description="Run the units unit tests in the qt test framework.">
@@ -359,6 +527,19 @@ limitations under the License.
             </exec>
         </sequential>
     </target>
+    <target name="test.units.compiled" depends="qt.version, export, js.minify" description="Run the units unit tests in the qt test framework.">
+        <sequential>
+            <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_units.qml"/>
+            </exec>
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_units.qml"/>
+            </exec>
+        </sequential>
+        <antcall target="js.original"/>
+    </target>
 
     <target name="test.util" depends="qt.version, export" description="Run the util unit tests in the qt test framework.">
         <sequential>
@@ -372,6 +553,20 @@ limitations under the License.
             </exec>
         </sequential>
     </target>
+    <target name="test.util.compiled" depends="qt.version, export, js.minify" description="Run the util unit tests in the qt test framework.">
+        <sequential>
+            <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_util.qml"/>
+            </exec>
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+                <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+                <arg line="NodeunitRun_util.qml"/>
+            </exec>
+        </sequential>
+        <antcall target="js.original"/>
+    </target>
+
     <target name="test" description="Run all tests and build all reports" />
     <target name="doc" />
 </project>
