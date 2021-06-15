@@ -304,7 +304,7 @@ DateRngFmt.prototype = {
 
         var start = DateFactory._dateToIlib(startDateLike, thisZoneName, this.locale);
         var end = DateFactory._dateToIlib(endDateLike, thisZoneName, this.locale);
-        var isStandAlone = false;
+        var tmp;
 
         if (typeof(start) !== 'object' || !start.getCalendar || start.getCalendar() !== this.calName || (this.timezone && start.timezone && start.timezone !== this.timezone)) {
             start = DateFactory({
@@ -371,7 +371,7 @@ DateRngFmt.prototype = {
         } else if (endRd - startRd < 3650) {
             fmt = new IString(this.dateFmt._getFormat(this.dateFmt.formats.range, "c20", this.length));
             // need to check for month/year stand-alone formats here
-            var tmp = this.dateFmt._getFormatInternal(formats, "mys", this.length);
+            tmp = this.dateFmt._getFormatInternal(formats, "mys", this.length);
             if (tmp) {
                 if (tmp.indexOf('r') > -1) {
                     var tmp2 = this.dateFmt._getFormatInternal(formats, "r", this.length);
@@ -389,7 +389,7 @@ DateRngFmt.prototype = {
         } else {
             fmt = new IString(this.dateFmt._getFormat(this.dateFmt.formats.range, "c30", this.length));
             // need to check for stand-alone year formats here
-            var tmp = this.dateFmt._getFormatInternal(formats, "r", this.length);
+            tmp = this.dateFmt._getFormatInternal(formats, "r", this.length);
             if (tmp) {
                 yearTemplate = this.dateFmt._tokenize(tmp);
             }
