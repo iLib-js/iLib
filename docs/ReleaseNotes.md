@@ -17,6 +17,7 @@ Bug Fixes:
     * Platforms that don't use a dash to separate the components
     * Platforms that include a dot and a charset name after the specifier
 * Fixed a `genplurals.js` tool code bug when default target directory is empty
+* Added ability to test minified version of files on Qt
 
 Build 014
 -------
