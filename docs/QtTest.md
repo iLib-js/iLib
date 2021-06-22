@@ -3,7 +3,8 @@
 In order to run a test on QT/QML environment, You need to some setting in Advance.
 
 ##### 1. QT Installation 
-You need to install [QT](https://www.qt.io/download) on your machine first. We've confirmed that iLib works in QT 5.9.  The latest version of QT is not guaranteed yet. I recommend installing version under `QT 5.9` and `QtQuick 2.5+`
+You need to install [QT](https://www.qt.io/download) on your machine first. [Qt Downloads](https://download.qt.io/archive/qt/)  
+To run Qt 6.0+ on Linux machin, The Ubuntu version requires `20.04`. [link](https://doc.qt.io/qt-6/supported-platforms.html#availability-of-packages).
 
 ##### 2. Modify qt/build.properties file
 When you checkout iLib sources, Default values in `qt/build.properties` is  `QTBIN=/opt/qt55/bin` If you install different locations, You need to modify this file.
@@ -26,7 +27,7 @@ It's System-wide configuration file. If a `default.conf` is provided, the settin
 ##### 3. Run Qt/QML Test by executing ant
 Executing below command under qt/ directory.
 ~~~~~
-> ant test.qt.nodeunit
+> ant test.all
 ~~~~~
 
 ### Trouble Shooting ###

@@ -63,7 +63,9 @@ QString FileReader::read(QString path) const {
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return "";
     QTextStream in(&file);
+#if QT_VERSION < QT_VERSION_CHECK(6,0,0)
     in.setCodec("UTF-8");
+#endif
     return in.readAll();
 }
 

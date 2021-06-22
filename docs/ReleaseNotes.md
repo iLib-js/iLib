@@ -1,6 +1,24 @@
 Release Notes for Version 14
 ============================
 
+Build 015
+-------
+Published as version 14.9.1
+New Features:
+
+Bug Fixes:
+* Fixed a build error that occurs on `Qt 6.1` and fixed some warning messages that reported from the latest Qt version.
+* Added new `plurals.json` files in some locales from cldr 37
+* Fixed a bug which a default script for `ha` should be `Latin` instead of `Arabic`
+* Fixed various bugs parsing the platform locales in ilib.getLocale()
+    * Locales with a script code such as "zh-Hans-CN"
+    * The posix "C" default locale
+    * Platforms where the region code is not upper-case
+    * Platforms that don't use a dash to separate the components
+    * Platforms that include a dot and a charset name after the specifier
+* Fixed a `genplurals.js` tool code bug when default target directory is empty
+* Added ability to test minified version of files on Qt
+
 Build 014
 -------
 Published as version 14.9.0
