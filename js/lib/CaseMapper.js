@@ -1,7 +1,7 @@
 /*
  * CaseMapper.js - define upper- and lower-case mapper
  *
- * Copyright © 2014-2015, 2018, JEDLSoft
+ * Copyright © 2014-2015, 2018, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,35 @@
  * limitations under the License.
  */
 
+// !data casing
+
 var ilib = require("../index.js");
 
 var Locale = require("./Locale.js");
 var IString = require("./IString.js");
+var casing = require("../locale/casing.json");
+
+/**
+ * @private
+ * There are only a few styles of title case:
+ *
+ * firstcap: The first letter or digraph is capitalized
+ * and the rest of the text follows regular capitalization
+ * rules.
+ *
+ * everycap: Every word in the title is capitalized
+ *
+ * important: The first letter or digraph is capitalized
+ * and all important words after that are capitalized. Other
+ * words start with small letters. (ie. rules in English.)
+ */
+function titleTypeForLanguage(language) {
+    if (language === "en") {
+        return "english";
+    }
+
+    return "firstcap";
+};
 
 /**
  * @class
@@ -58,8 +83,8 @@ var IString = require("./IString.js");
  *   others, only the initial word in the string is capitalized (like sentence case)
  *   and all other words retain their previous capitalization. The style depends on
  *   the locale.
- *   <li><i>start</i> - map the string to start case. This converts each word in the
- *   string to be capitalized.
+ *   <li><i>start</i> - map the string to start case. This capitalizes each word in the
+ *   string regardless of grammar for the language.
  *   </ul>
  * </ul>
  *
@@ -89,17 +114,47 @@ var IString = require("./IString.js");
 var CaseMapper = function (options) {
     this.up = true;
     this.locale = new Locale();
+    var target = this.locale.getLanguage();
+    var type = "allcaps";
+    
+    if (casing.languages.indexOf(target) < -1) {
+        // this language does not use a script that has casing, so any operation on this
+        // string is a no-op
+        this.style = "noop";
+        return;
+    }
 
     if (options) {
         if (typeof(options.locale) !== 'undefined') {
             this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
         }
 
-        this.up = (!options.direction || options.direction === "toupper");
+        this.up = (!options.direction || options.direction === "toupper" || options.type === "toupper");
+        type = options.type;
+        if (options.type) {
+            switch (options.type) {
+               case 'toupper':
+                   this.up = true;
+                   break;
+               case 'tolower':
+                   this.up = false;
+                   break;
+               case 'sentence':
+               case 'title': 
+               case 'start':
+                   break;
+               default:
+                   // unrecognized type -- just do toupper by default
+                   this.up = true;
+                   type = "allcaps";
+            }
+        } else {
+            type = this.up ? "allcaps" : "alllower";
+        }
     }
 
     this.mapData = this.up ? {
-        "ß": "SS",        // German
+        "ß": "SS",       // German
         'ΐ': 'Ι',        // Greek
         'ά': 'Α',
         'έ': 'Ε',
@@ -114,10 +169,13 @@ var CaseMapper = function (options) {
         'Ӏ': 'Ӏ',        // Russian and slavic languages
         'ӏ': 'Ӏ'
     } : {
-        'Ӏ': 'Ӏ'        // Russian and slavic languages
+        'Ӏ': 'Ӏ'         // Russian and slavic languages
     };
 
-    switch (this.locale.getLanguage()) {
+    if (type === "sentence" || type === "title") {
+        this.ligatures = {};
+    }
+    switch (target) {
         case "az":
         case "tr":
         case "crh":
@@ -128,6 +186,179 @@ var CaseMapper = function (options) {
             var upper = "İI";
             this._setUpMap(lower, upper);
             break;
+
+        case 'nl':
+            if (type === "sentence" || type === "title" || type === "start") {
+                this.ligatures = {
+                    "i": {
+                        "j": "IJ"
+                    }
+                };
+            }
+            break;
+
+        // Bali
+        case 'bfa':
+        case 'keo':
+        case 'mqu':
+            this.ligatures = {
+                "ʼ": {
+                    "b": "ʼB"
+                },
+                "ʼ": {
+                    "d": "ʼD"
+                },
+                "ʼ": {
+                    "y": "ʼY"
+                }
+            };
+            break;
+
+        // Irish
+        case 'ga':
+            this.ligatures = {
+                "m": {
+                    "b": "mB"
+                },
+                "n": {
+                    "d": "nD"
+                },
+                "n": {
+                    "g": "nG"
+                }
+            };
+            break;
+
+        // northern slavic + others = treat digraphs as separate letters
+        case 'lt':
+        case 'lv':
+        case 'cz':
+        case 'sk':
+            this.ligatures = {
+                "D": {
+                    "Z": "Dz",
+                    "Ž": "Dž",
+                },
+                "d": {
+                    "z": "Dz",
+                    "ž": "Dž"
+                },
+                "l": {
+                    "j": "Lj",
+                },
+                "n": {
+                    "j": "Nj",
+                },
+
+                "ǌ": "Nj",
+                "Ǌ": "Nj",
+
+                "ǉ": "Lj",
+                "Ǉ": "Lj",
+
+                "ǳ": "Dz",
+                "Ǳ": "Dz",
+
+                "ǆ": "Dž",
+                "Ǆ": "Dž"
+            };
+            break;
+
+        // South Slavic languages = digraphs are a single letter with 3 forms
+        case 'hr':
+        case 'hrp':
+        case 'sr':
+        case 'srp':
+        case 'bs':
+        case 'bos':
+        case 'cnr':
+        case 'sl':
+        case 'slv':
+        case 'kjv':
+        case 'ckm':
+        case 'sh':
+        case 'hsb':
+        case 'scr':
+            if (type === "sentence" || type === "title") {
+                this.ligatures = {
+                    "n": {
+                        "j": "Nj"
+                    },
+                    "N": {
+                        "J": "Nj"
+                    },
+                    "ǌ": "ǋ",
+                    "Ǌ": "Ǌ",
+
+                    "l": {
+                        "j": "Lj"
+                    },
+                    "L": {
+                        "J": "Lj"
+                    },
+                    "ǉ": "ǈ",
+                    "Ǉ": "ǈ",
+
+                    "d": {
+                        "z": "Dz",
+                        "ž": "Dž"
+                    },
+                    "D": {
+                        "Z": "Dz",
+	                    "Ž": "Dž"
+                    },
+                    "ǳ": "ǲ",
+                    "Ǳ": "ǲ",
+
+                    "ǆ": "ǅ",
+                    "Ǆ": "ǅ"
+                };
+            } else if (type === "start") {
+                this.ligatures = {
+                    "n": {
+                        "j": "NJ"
+                    },
+                    "N": {
+                        "j": "NJ"
+                    },
+                    "ǌ": "Ǌ",
+                    "ǋ": "Ǌ",
+
+                    "l": {
+                        "j": "LJ"
+                    },
+                    "L": {
+                        "j": "LJ"
+                    },
+                    "ǉ": "Ǉ",
+                    "ǈ": "Ǉ",
+
+                    "d": {
+                        "z": "DZ",
+	                    "ž": "DŽ"
+                    },
+                    "D": {
+                        "z": "DZ",
+	                    "ž": "DŽ"
+                    },
+                    "ǳ": "Ǳ",
+                    "ǲ": "Ǳ",
+
+                    "ǆ": "Ǆ",
+                    "ǅ": "Ǆ"
+                };
+            }
+            break;
+    }
+
+    if (type === "sentence") {
+        // first character of each sentence is a capital
+        this.style = "firstcap";
+    } else if (type === "title") {
+        // for most languages, titles are like sentence case
+        this.style = titleTypeForLanguage(target);
+    } else if (type === "initial") {
+        this.style = "initialcaps";
     }
 
     if (ilib._getBrowser() === "ie" || ilib._getBrowser() === "Edge") {
@@ -142,6 +373,83 @@ var CaseMapper = function (options) {
 };
 
 CaseMapper.prototype = {
+    _toupper: function(c) {
+        if (this.mapData[c]) {
+            return this.mapData[c];
+        } else {
+            return c.toUpperCase();
+        }
+    },
+
+    _capitalizeFirst: function(charArray) {
+        if (this.ligatures) {
+            var node = this.ligatures;
+            if (typeof(node[charArray[0]]) === "string") {
+                charArray[0] = node[charArray[0]];
+            } else if (typeof(node[charArray[0]]) === "object") {
+                node = node[charArray[0]];
+                if (typeof(node[charArray[1]]) === "string") {
+                    charArray = [node[charArray[1]]].concat(charArray.slice(2));
+                } else {
+                    charArray[0] = _toupper(charArray[0]);
+                }
+            } else {
+                charArray[0] = _toupper(charArray[0]);
+            }
+        }
+        return charArray;
+    },
+
+    /**
+     * @private
+     */
+    _titleMapper: function(string) {
+        var input = (typeof(string) === 'string') ? new IString(string) : string.toString();
+        var it = input.charIterator();
+
+        var charArray = [];
+        while (it.hasNext()) {
+            charArray.push(it.next());
+        }
+
+        if (this.style === "firstcap") {
+            var uppercased = this._capitalizeFirst(charArray);
+            return uppercased.join("");
+        }
+
+        var ret = "";
+        var c;
+        var wordArray = [];
+        var state = "break";
+        var word = [];
+        var i = 0;
+
+        while (i < charArray.length) {
+            c = charArray[i];
+            switch (state) {
+                case "break":
+                    if (isBreak(c)) {
+                        word.push(c);
+                    } else {
+                        wordArray.push(word);
+                        state = "text";
+                        word = [c];
+                    }
+                    break;
+                case "text":
+                    if (isBreak(c)) {
+                        state = "break";
+                    }
+                    word.push(c);
+                    break;
+            }
+        }
+        if (word.length) {
+            wordArray.push(word);
+        }
+
+    },
+
     /**
      * @private
      */
@@ -210,7 +518,16 @@ CaseMapper.prototype = {
      * @return {string|undefined}
      */
     map: function (string) {
-        return this._charMapper(string);
+        if (!string || this.style === "noop") {
+            return string;
+        }
+        switch (this.style) {
+            case "allcaps":
+                return this._charMapper(string);
+            case "firstcap":
+            case "title":
+                break;
+        }
     }
 };
 

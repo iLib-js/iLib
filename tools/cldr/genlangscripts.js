@@ -46,7 +46,7 @@ process.argv.forEach(function (val, index, array) {
 toDir = process.argv[2] || "tmp";
 
 console.log("genlangscripts - generate the localeinfo script.jf files.\n" +
-    "Copyright (c) 2013 - 2018 JEDLSoft");
+    "Copyright (c) 2013-2018, 2020-2021 JEDLSoft");
 
 console.log("output dir: " + toDir);
 
@@ -56,22 +56,27 @@ if (!fs.existsSync(toDir)) {
 }
 
 var supplementalData = require("cldr-core/supplemental/languageData.json");
+var scriptMetaData = require("cldr-core/scriptMetadata.json").scriptMetadata;
 
 var scripts = {};
 var scripts_name = {};
 var languageData = supplementalData.supplemental.languageData;
+var casingScripts = new Set();
+var casingLanguages = new Set();
 
 function anyProperties(data) {
-    var count = 0;
     for (var prop in data) {
         if (prop && data[prop]) {
-            count++;
-        }
-        if (count >= 1) {
             return true;
         }
     }
     return false;
+}
+
+for (var script in scriptMetaData) {
+    if (scriptMetaData[script] && scriptMetaData[script].hasCase === "YES") {
+        casingScripts.add(script);
+    }
 }
 
 for (var locale in languageData) {
@@ -81,21 +86,27 @@ for (var locale in languageData) {
             if (typeof (scripts[language]) === 'undefined') {
                 scripts[language] = [];
             }
-            var newLangs = languageData[locale]["_scripts"];
+            var newScripts = languageData[locale]["_scripts"];
 
             if (locale.length <= 3) {
-                console.log("language " + language + " prepending " + JSON.stringify(newLangs));
-                scripts[language] = newLangs;
+                console.log("language " + language + " prepending " + JSON.stringify(newScripts));
+                scripts[language] = newScripts;
             } else {
-                console.log("language " + language + " appending " + JSON.stringify(newLangs));
+                console.log("language " + language + " appending " + JSON.stringify(newScripts));
                 if (anyProperties(scripts[language])) {
-                    for (i=0; i < newLangs.length; i++) {
-                        scripts[language].push(newLangs[i]);
+                    for (i=0; i < newScripts.length; i++) {
+                        scripts[language].push(newScripts[i]);
                     }
                 } else {
-                    scripts[language] = newLangs;
+                    scripts[language] = newScripts;
                 }
             }
+            
+            scripts[language].forEach(function(script) {
+                if (casingScripts.has(script)) {
+                    casingLanguages.add(language);
+                }
+            });
         }
     }
 }
@@ -118,11 +129,20 @@ for (var language in scripts) {
         console.log(language + ':\t"scripts": ' + JSON.stringify(scripts[language]) + ',');
         scripts_name["scripts"] = scripts[language];
         scripts_name.generated = true;
-        fs.writeFile(filename + "/scripts.jf", JSON.stringify(scripts_name, true, 4), function (err) {
-            if (err) {
-                console.log(err);
-                throw err;
-            }
-        });
+        fs.writeFileSync(filename + "/scripts.jf", JSON.stringify(scripts_name, true, 4), "utf-8");
     }
 }
+
+var casing = {
+    scripts: [],
+    languages: []
+};
+casingScripts.forEach(function(script) {
+    casing.scripts.push(script);
+});
+casingLanguages.forEach(function(language) {
+    casing.languages.push(language);
+});
+fs.writeFileSync(toDir + "/casing.json", JSON.stringify(casing, true, 4), "utf-8");
+
+console.log("Done.");
