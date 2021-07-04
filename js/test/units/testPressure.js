@@ -1,7 +1,7 @@
 /*
  * testPressure.js - test the Pressure object
  *
- * Copyright © 2020 JEDLSoft
+ * Copyright © 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
-module.exports.testpower = {
+module.exports.testpressure = {
     setUp: function(callback) {
         ilib.clearCache();
         callback();

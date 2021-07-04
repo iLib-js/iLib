@@ -1,7 +1,7 @@
 /*
  * testForce.js - test the Force object
  *
- * Copyright © 2020 JEDLSoft
+ * Copyright © 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
-module.exports.testpower = {
+module.exports.testforce = {
     setUp: function(callback) {
         ilib.clearCache();
         callback();
@@ -34,7 +34,7 @@ module.exports.testpower = {
     testForceForceConstructor: function(test) {
         test.expect(1);
         var m = new ForceUnit({
-            unit: "kW",
+            unit: "N",
             amount: 2
         });
 
@@ -42,144 +42,129 @@ module.exports.testpower = {
         test.done();
     },
 
-    testForceForceConvertkWtoHP: function(test) {
+    testForceForceConvertNtoHP: function(test) {
         test.expect(3);
         var m1 = new ForceUnit({
-            unit: "kW",
+            unit: "N",
             amount: 2
         });
         var m2 = new ForceUnit({
-            unit: "horsepower",
+            unit: "dyne",
             amount: m1
         });
 
         test.ok(m1 !== null);
         test.ok(m2 !== null);
 
-        test.roughlyEqual(m2.getAmount(), 2.68204, 1e-5);
+        test.roughlyEqual(m2.getAmount(), 2e5, 1e-6);
         test.done();
     },
 
     testForceStaticConvert1: function(test) {
         test.expect(1);
-        var m = ForceUnit.convert("gW", "hp", 1);
+        var m = ForceUnit.convert("newton", "poundal", 1);
 
-        test.roughlyEqual(m, 7.45701033e-7, 1e-10);
+        test.roughlyEqual(m, 1.38255e-1, 1e-5);
         test.done();
     },
 
     testForceStaticConvertWithString: function(test) {
         test.expect(1);
-        var m = ForceUnit.convert("MW", "W", "1e6");
+        var m = ForceUnit.convert("poundal", "newton", "100");
 
-        test.equal(m, 1);
+        test.roughlyEqual(m, 723.301, 1e-4);
         test.done();
     },
 
     testForceStaticConvert2: function(test) {
         test.expect(1);
-        var m = ForceUnit.convert("mW", "kW", 1000);
+        var m = ForceUnit.convert("pound-force", "N", 1);
 
-        test.equal(m, 1);
+        test.roughlyEqual(m, 0.224809, 1e-6);
         test.done();
     },
 
     testForceStaticConvert3: function(test) {
         test.expect(1);
-        var m = ForceUnit.convert("ft lb/h", "W", 1);
+        var m = ForceUnit.convert("pound-force", "poundal", 1);
 
-        test.roughlyEqual(m, 0.737562149277, 1e-8);
+        test.roughlyEqual(m, 0.031081, 1e-4);
         test.done();
     },
 
     testForceStaticConvert4: function(test) {
         test.expect(1);
-        var m = ForceUnit.convert("hp", "btu/h", 1);
+        var m = ForceUnit.convert("N", "mN", 1);
 
-        test.roughlyEqual(m, 3.93014685e-4, 1e-7);
+        test.roughlyEqual(m, 1e-3, 1e-7);
         test.done();
     },
 
-    testForceStaticConvert5: function(test) {
-        test.expect(1);
-        var m = ForceUnit.convert("kW", "HP", 1);
-
-        test.roughlyEqual(m, 0.7457010335416, 1e-8);
-        test.done();
-    },
-
-    testForceStaticConvert6: function(test) {
-        test.expect(1);
-        var m = ForceUnit.convert("MW", "BTU/h", 1);
-
-        test.equal(m, 2.93071e-6);
-        test.done();
-    },
-/*
     testForceScale1: function(test) {
         test.expect(2);
         var m1 = new ForceUnit({
-            unit: "watt hour",
+            unit: "millinewton",
             amount: 10000
         });
         var m2 = m1.scale("metric");
 
         test.equal(m2.amount, 10);
-        test.equal(m2.unit, "kilowatt-hour");
+        test.equal(m2.unit, "newton");
         test.done();
     },
 
     testForceScale2: function(test) {
         test.expect(2);
         var m1 = new ForceUnit({
-            unit: "kilowatt hour",
+            unit: "newton",
             amount: 1233453
         });
         var m2 = m1.scale("metric");
 
         test.equal(m2.amount, 1.233453);
-        test.equal(m2.unit, "gigawatt-hour");
+        test.equal(m2.unit, "meganewton");
         test.done();
     },
 
     testForceScale3: function(test) {
         test.expect(2);
         var m1 = new ForceUnit({
-            unit: "milli joule",
-            amount: 5254578
+            unit: "dyne",
+            amount: 525457893
         });
         var m2 = m1.scale("metric");
 
-        test.roughlyEqual(m2.amount, 1.459605, 0.000001);
-        test.equal(m2.unit, "watt-hour");
+        test.roughlyEqual(m2.amount, 5.25457893, 1e-9);
+        test.equal(m2.unit, "kilonewton");
         test.done();
     },
 
     testForceScale4: function(test) {
         test.expect(2);
         var m1 = new ForceUnit({
-            unit: "mega joule",
-            amount: 5254578
+            unit: "N",
+            amount: 5254578322
         });
         var m2 = m1.scale("metric");
 
-        test.roughlyEqual(m2.amount, 1.4596, 0.00001);
-        test.equal(m2.unit, "gigawatt-hour");
+        test.roughlyEqual(m2.amount, 5.254578322, 1e-9);
+        test.equal(m2.unit, "giganewton");
         test.done();
     },
-*/
+
     testForceGetMeasures: function(test) {
         test.expect(1);
         var measures = ForceUnit.getMeasures();
         var expected = [
-            "milliwatt",
-            "watt",
-            "kilowatt",
-            "megawatt",
-            "gigawatt",
-            "foot-pound-per-hour",
-            "horsepower",
-            "btu-per-hour"
+            "millinewton",
+            "newton",
+            "kilonewton",
+            "meganewton",
+            "giganewton",
+            "dyne",
+            "kilogram-force",
+            "poundal",
+            "pound-force"
         ];
         test.equalIgnoringOrder(measures, expected);
         test.done();
