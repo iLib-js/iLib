@@ -352,7 +352,28 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getScript()) === "undefined");
         test.done();
     },
+    testLocaleConstructorSpecWithVariant2: function(test) {
+        test.expect(5);
+        var loc = new Locale("ko-KR-flavor");
 
+        test.ok(loc !== null);
+        test.equal(loc.getLanguage(), "ko");
+        test.equal(loc.getRegion(), "KR");
+        test.equal(typeof(loc.getScript()), "undefined");
+        test.ok(loc.getVariant() === "flavor");
+        test.done();
+    },
+    testLocaleConstructorSpecWithVariant3: function(test) {
+        test.expect(5);
+        var loc = new Locale("zh-Hans-CN-flavor");
+
+        test.ok(loc !== null);
+        test.equal(loc.getLanguage(), "zh");
+        test.equal(loc.getRegion(), "CN");
+        test.equal(loc.getScript(), "Hans");
+        test.ok(loc.getVariant() === "flavor");
+        test.done();
+    },
     testLocaleConstructorSpecWithScript: function(test) {
         test.expect(5);
         var loc = new Locale("en-US-Latn");

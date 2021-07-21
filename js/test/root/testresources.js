@@ -1,7 +1,7 @@
 /*
  * testresources.js - test the Resources object
  * 
- * Copyright © 2012-2015, 2017-2019, JEDLSoft
+ * Copyright © 2012-2015, 2017-2019, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1550,6 +1550,92 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from {country}").toString(), "Хэлло фром {чоунтря}");
         test.equal(rb.getString("Hello from {city}").toString(), "Хэлло фром {читя}");
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Грээтингс фром {читя} ин {чоунтря}");
+        test.done();
+    },
+    testResBundleGetStringko_KR: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(2);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+
+        test.ok(rb !== null);
+
+        test.equal(rb.getString("Hello, {name}").toString(), "{name}, 안녕하세요");
+        test.done();
+    },
+    testResBundleGetStringVariant: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(2);
+
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+
+        var rb = new ResBundle({
+            locale: "ko-KR-flavor",
+            basePath: base
+        });
+
+        test.ok(rb !== null);
+
+        test.equal(rb.getString("Hello, {name}").toString(), "안녕하세요")
+        test.done();
+    },
+    testResBundleGetString_zh_Hans_CN: function(test) {
+        
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(2);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+
+        var rb = new ResBundle({
+            locale: "zh-Hans-CN",
+            basePath: base
+        });
+
+        test.ok(rb !== null);
+
+        test.equal(rb.getString("Hello, {name}").toString(), "{name}, 你好");
+        test.done();
+    },
+    testResBundleGetStringVariant2: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(2);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+
+        var rb = new ResBundle({
+            locale: "zh-Hans-CN-flavor",
+            basePath: base
+        });
+
+        test.ok(rb !== null);
+
+        test.equal(rb.getString("Hello, {name}").toString(), "你好")
         test.done();
     },
     
