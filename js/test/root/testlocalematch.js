@@ -1413,6 +1413,17 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "tg-Cyrl-TJ");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_pa_PK: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "pa-PK"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "pa-Arab-PK");
+        test.done();
+    },
     testLocaleMatcherMatchExactFullLocale: function(test) {
         test.expect(2);
         var lm = new LocaleMatcher({
