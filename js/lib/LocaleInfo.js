@@ -117,14 +117,15 @@ var LocaleInfo = function(locale, options) {
             this.locale = locale;
             break;
     }
+    var manipulateLocale = ["pa-PK"];
 
-    if (this.locale.getSpec() === "pa-PK") {
+    if (manipulateLocale.indexOf(this.locale.getSpec()) != -1) {
         new LocaleMatcher({
             locale: this.locale.getSpec(),
             sync:sync,
             loadParams:loadParams,
             onLoad: ilib.bind(this, function(lm){
-                this.locale = lm.getLikelyLocale();
+                this.locale = new Locale(lm.getLikelyLocale());
             })
         })
     }

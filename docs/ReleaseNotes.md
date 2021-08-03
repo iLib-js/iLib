@@ -1,7 +1,6 @@
 Release Notes for Version 14
 ============================
 
-
 Build 016
 -------
 Published as version 14.9.2
@@ -9,6 +8,7 @@ New Features:
 
 Bug Fixes:
 * Fixed a case where variant locale resources could not be loaded
+* Fixed to return correct default script for `pa-PK`
 
 Build 015
 -------
