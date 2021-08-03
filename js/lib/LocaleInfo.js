@@ -117,7 +117,7 @@ var LocaleInfo = function(locale, options) {
             this.locale = locale;
             break;
     }
-    var manipulateLocale = ["pa-PK"];
+    var manipulateLocale = ["pa-PK", "ha-CM", "ha-SD"];
 
     if (manipulateLocale.indexOf(this.locale.getSpec()) != -1) {
         new LocaleMatcher({

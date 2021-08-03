@@ -8,7 +8,7 @@ New Features:
 
 Bug Fixes:
 * Fixed a case where variant locale resources could not be loaded
-* Fixed to return correct default script for `pa-PK`
+* Fixed to return correct default script for `pa-PK`,`ha-CM` and `ha-SD`
 
 Build 015
 -------

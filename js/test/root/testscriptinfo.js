@@ -1636,6 +1636,46 @@ module.exports.testscriptinfo = {
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
     },
+    testScriptInfo_ha: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ha");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_ha_NG: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ha-NG");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_ha_CM: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ha-CM");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Arab");
+        test.equal(scinfo.getScriptDirection(), "rtl");
+        test.done();
+    },
+    testScriptInfo_ha_SD: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ha-SD");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Arab");
+        test.equal(scinfo.getScriptDirection(), "rtl");
+        test.done();
+    },
     testScriptInfo_or_IN: function(test) {
         test.expect(4);
         var li = new LocaleInfo("or-IN");
