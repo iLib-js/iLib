@@ -1,7 +1,7 @@
 /*
  * testethiopicdate.js - test the ethiopic date object
  * 
- * Copyright © 2015,2017, JEDLSoft
+ * Copyright © 2015,2017, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,18 @@ if (typeof(EthiopicRataDie) === "undefined") {
 }
 if (typeof(EthiopicDate) === "undefined") {
     var EthiopicDate = require("../../lib/EthiopicDate.js");
+}
+
+if (typeof(GregorianDate) === "undefined") {
+    var GregorianDate = require("../../lib/GregorianDate.js");
+}
+
+if (typeof(DateFmt) === "undefined") {
+    var DateFmt = require("../../lib/DateFmt.js");
+}
+
+if (typeof(DateFactory) === "undefined") {
+    var DateFactory = require("../../lib/DateFactory.js");
 }
 
 var testDatesEthiopic = [
@@ -1208,6 +1220,88 @@ module.exports.testethiopicdate = {
         test.equal(jd2.getMinutes(), jd.getMinutes());
         test.equal(jd2.getSeconds(), jd.getSeconds());
         test.done();
+    },
+    /*
+    0(sun): እሑድ
+    1: ሰኞ
+    2: ማክሰኞ
+    3: ረቡዕ
+    4: ሐሙስ
+    5: ዓርብ
+    6: ቅዳሜ
+    */
+    testEthiopicDateConversion: function(test) {
+        test.expect(3);
+
+        /*if (!process.env) process.env = {};
+        var tmp = process.env.TZ;
+        process.env.TZ = "Africa/Addis_Abab";
+        */
+
+        var gd = new GregorianDate({
+            year: 2021,
+            month: 8,
+            day: 20,
+            timezone: "Africa/Addis_Ababa"
+        });
+        test.ok(gd !== null);
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(gd);
+        test.equal(result, "14 ነሐሴ 2013");
+        
+        var fmt = new DateFmt({locale:"am-ET", date:"dmwy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(gd);
+        test.equal(result, "ዓርብ፣ 14 ነሐሴ 2013");  // return ዓርብ፣ 13 ነሐሴ 2013
+        //process.env.TZ = tmp;
+
+        test.done();
+    },
+    testEthiopicDateConversion2: function(test) {
+        test.expect(3);
+
+        /*if (!process.env) process.env = {};
+        var tmp = process.env.TZ;
+        process.env.TZ = "Africa/Addis_Abab";*/
+
+        var date=new Date(2021,7,20)
+        test.ok(date !== null);
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(date);
+        test.equal(result, "14 ነሐሴ 2013");
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmwy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(date);
+        test.equal(result, "ዓርብ፣ 14 ነሐሴ 2013");
+
+        //process.env.TZ = tmp;
+        test.done();
+    },
+    testEthiopicDateConversion3: function(test) {
+        test.expect(3);
+
+        /*if (!process.env) process.env = {};
+        var tmp = process.env.TZ;
+        process.env.TZ = "Africa/Addis_Abab";*/
+
+        var date = DateFactory({
+            year: 2021,
+            month: 8,
+            day:20,
+            type:"gregorian"
+        });
+        test.ok(date !== null);
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(date);
+        test.equal(result, "14 ነሐሴ 2013");
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmwy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(date);
+        test.equal(result, "ዓርብ፣ 14 ነሐሴ 2013");
+
+        //process.env.TZ = tmp;
+        test.done();
     }
-    
 };
