@@ -1293,5 +1293,26 @@ module.exports.testethiopicdate = {
         test.equal(result, "ዓርብ፣ 14 ነሐሴ 2013");
 
         test.done();
+    },
+    testEthiopicDateConversion4: function(test) {
+        test.expect(3);
+
+        var date = DateFactory({
+            year: 2023,
+            month: 11,
+            day: 8,
+            type:"gregorian"
+        });
+        test.ok(date !== null);
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(date);
+        test.equal(result, "28 ጥቅምት 2016");
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmwy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(date);
+        test.equal(result, "ረቡዕ፣ 27 ጥቅምት 2016");
+
+        test.done();
     }
 };
