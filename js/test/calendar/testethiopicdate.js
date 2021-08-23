@@ -1260,10 +1260,6 @@ module.exports.testethiopicdate = {
     testEthiopicDateConversion2: function(test) {
         test.expect(3);
 
-        /*if (!process.env) process.env = {};
-        var tmp = process.env.TZ;
-        process.env.TZ = "Africa/Addis_Abab";*/
-
         var date=new Date(2021,7,20)
         test.ok(date !== null);
 
@@ -1275,15 +1271,10 @@ module.exports.testethiopicdate = {
         var result = fmt.format(date);
         test.equal(result, "ዓርብ፣ 14 ነሐሴ 2013");
 
-        //process.env.TZ = tmp;
         test.done();
     },
     testEthiopicDateConversion3: function(test) {
         test.expect(3);
-
-        /*if (!process.env) process.env = {};
-        var tmp = process.env.TZ;
-        process.env.TZ = "Africa/Addis_Abab";*/
 
         var date = DateFactory({
             year: 2021,
@@ -1301,7 +1292,6 @@ module.exports.testethiopicdate = {
         var result = fmt.format(date);
         test.equal(result, "ዓርብ፣ 14 ነሐሴ 2013");
 
-        //process.env.TZ = tmp;
         test.done();
     }
 };
