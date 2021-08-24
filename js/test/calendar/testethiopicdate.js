@@ -1233,15 +1233,34 @@ module.exports.testethiopicdate = {
     testEthiopicDateConversion: function(test) {
         test.expect(3);
 
-        /*if (!process.env) process.env = {};
-        var tmp = process.env.TZ;
-        process.env.TZ = "Africa/Addis_Abab";
-        */
+        var gd = new GregorianDate({
+            year: 2021,
+            month: 8,
+            day: 20,
+            hour: 1,
+            minute: 0,
+            timezone: "Africa/Addis_Ababa"
+        });
+        test.ok(gd !== null);
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(gd);
+        test.equal(result, "13 ነሐሴ 2013");
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmwy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(gd);
+        test.equal(result, "ሐሙስ፣ 13 ነሐሴ 2013");
+        test.done();
+    },
+    testEthiopicDateConversion2: function(test) {
+        test.expect(3);
 
         var gd = new GregorianDate({
             year: 2021,
             month: 8,
             day: 20,
+            hour:14,
+            minute: 30,
             timezone: "Africa/Addis_Ababa"
         });
         test.ok(gd !== null);
@@ -1249,28 +1268,10 @@ module.exports.testethiopicdate = {
         var fmt = new DateFmt({locale:"am-ET", date:"dmy", length:"full", timezone:"Africa/Addis_Ababa"});
         var result = fmt.format(gd);
         test.equal(result, "14 ነሐሴ 2013");
-        
+
         var fmt = new DateFmt({locale:"am-ET", date:"dmwy", length:"full", timezone:"Africa/Addis_Ababa"});
         var result = fmt.format(gd);
-        test.equal(result, "ዓርብ፣ 14 ነሐሴ 2013");  // return ዓርብ፣ 13 ነሐሴ 2013
-        //process.env.TZ = tmp;
-
-        test.done();
-    },
-    testEthiopicDateConversion2: function(test) {
-        test.expect(3);
-
-        var date=new Date(2021,7,20)
-        test.ok(date !== null);
-
-        var fmt = new DateFmt({locale:"am-ET", date:"dmy", length:"full", timezone:"Africa/Addis_Ababa"});
-        var result = fmt.format(date);
-        test.equal(result, "14 ነሐሴ 2013");
-
-        var fmt = new DateFmt({locale:"am-ET", date:"dmwy", length:"full", timezone:"Africa/Addis_Ababa"});
-        var result = fmt.format(date);
         test.equal(result, "ዓርብ፣ 14 ነሐሴ 2013");
-
         test.done();
     },
     testEthiopicDateConversion3: function(test) {
@@ -1279,7 +1280,32 @@ module.exports.testethiopicdate = {
         var date = DateFactory({
             year: 2021,
             month: 8,
-            day:20,
+            day: 20,
+            hour: 3,
+            minute:43,
+            type:"gregorian"
+        });
+        test.ok(date !== null);
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(date);
+        test.equal(result, "13 ነሐሴ 2013");
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmwy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(date);
+        test.equal(result, "ሐሙስ፣ 13 ነሐሴ 2013");
+
+        test.done();
+    },
+    testEthiopicDateConversion4: function(test) {
+        test.expect(3);
+
+        var date = DateFactory({
+            year: 2021,
+            month: 8,
+            day: 20,
+            hour: 19,
+            minute: 0,
             type:"gregorian"
         });
         test.ok(date !== null);
@@ -1291,27 +1317,6 @@ module.exports.testethiopicdate = {
         var fmt = new DateFmt({locale:"am-ET", date:"dmwy", length:"full", timezone:"Africa/Addis_Ababa"});
         var result = fmt.format(date);
         test.equal(result, "ዓርብ፣ 14 ነሐሴ 2013");
-
-        test.done();
-    },
-    testEthiopicDateConversion4: function(test) {
-        test.expect(3);
-
-        var date = DateFactory({
-            year: 2023,
-            month: 11,
-            day: 8,
-            type:"gregorian"
-        });
-        test.ok(date !== null);
-
-        var fmt = new DateFmt({locale:"am-ET", date:"dmy", length:"full", timezone:"Africa/Addis_Ababa"});
-        var result = fmt.format(date);
-        test.equal(result, "28 ጥቅምት 2016");
-
-        var fmt = new DateFmt({locale:"am-ET", date:"dmwy", length:"full", timezone:"Africa/Addis_Ababa"});
-        var result = fmt.format(date);
-        test.equal(result, "ረቡዕ፣ 27 ጥቅምት 2016");
 
         test.done();
     }

@@ -267,11 +267,6 @@ EthiopicDate.prototype._calcDateComponents = function () {
     this.day = Math.floor(remainder);
     remainder -= this.day;
 
-    /* manuplate day? Math.ceil?
-    this.day = Math.floor(remainder) + 1;
-    remainder -= this.day-1;
-    */
-
     // now convert to milliseconds for the rest of the calculation
     remainder = Math.round(remainder * 86400000);
 
