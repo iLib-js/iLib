@@ -34,7 +34,7 @@ module.exports.testpressure = {
     testPressurePressureConstructor: function(test) {
         test.expect(1);
         var m = new PressureUnit({
-            unit: "kW",
+            unit: "kPa",
             amount: 2
         });
 
@@ -45,32 +45,32 @@ module.exports.testpressure = {
     testPressurePressureConvertkWtoHP: function(test) {
         test.expect(3);
         var m1 = new PressureUnit({
-            unit: "kW",
+            unit: "kPa",
             amount: 2
         });
         var m2 = new PressureUnit({
-            unit: "horsepower",
+            unit: "psi",
             amount: m1
         });
 
         test.ok(m1 !== null);
         test.ok(m2 !== null);
 
-        test.roughlyEqual(m2.getAmount(), 2.68204, 1e-5);
+        test.roughlyEqual(m2.getAmount(), 0.290075, 1e-6);
         test.done();
     },
 
     testPressureStaticConvert1: function(test) {
         test.expect(1);
-        var m = PressureUnit.convert("gW", "hp", 1);
+        var m = PressureUnit.convert("psi", "Pa", 1);
 
-        test.roughlyEqual(m, 7.45701033e-7, 1e-10);
+        test.roughlyEqual(m, 1.45038e-4, 1e-10);
         test.done();
     },
 
     testPressureStaticConvertWithString: function(test) {
         test.expect(1);
-        var m = PressureUnit.convert("MW", "W", "1e6");
+        var m = PressureUnit.convert("MPa", "Pa", "1e6");
 
         test.equal(m, 1);
         test.done();
@@ -78,70 +78,56 @@ module.exports.testpressure = {
 
     testPressureStaticConvert2: function(test) {
         test.expect(1);
-        var m = PressureUnit.convert("mW", "kW", 1000);
+        var m = PressureUnit.convert("bar", "kPa", 1000);
 
-        test.equal(m, 1);
+        test.equal(m, 10);
         test.done();
     },
 
     testPressureStaticConvert3: function(test) {
         test.expect(1);
-        var m = PressureUnit.convert("ft lb/h", "W", 1);
+        var m = PressureUnit.convert("psi", "torr", 1);
 
-        test.roughlyEqual(m, 0.737562149277, 1e-8);
+        test.roughlyEqual(m, 1.93368e-2, 1e-5);
         test.done();
     },
 
     testPressureStaticConvert4: function(test) {
         test.expect(1);
-        var m = PressureUnit.convert("hp", "btu/h", 1);
+        var m = PressureUnit.convert("pound-per-square-inch", "atmosphere", 1);
 
-        test.roughlyEqual(m, 3.93014685e-4, 1e-7);
+        test.roughlyEqual(m, 14.69594877, 1e-7);
         test.done();
     },
 
-    testPressureStaticConvert5: function(test) {
-        test.expect(1);
-        var m = PressureUnit.convert("kW", "HP", 1);
-
-        test.roughlyEqual(m, 0.7457010335416, 1e-8);
-        test.done();
-    },
-
-    testPressureStaticConvert6: function(test) {
-        test.expect(1);
-        var m = PressureUnit.convert("MW", "BTU/h", 1);
-
-        test.equal(m, 2.93071e-6);
-        test.done();
-    },
-/*
     testPressureScale1: function(test) {
         test.expect(2);
         var m1 = new PressureUnit({
-            unit: "watt hour",
-            amount: 10000
+            unit: "millipascal",
+            amount: 430000
         });
         var m2 = m1.scale("metric");
 
-        test.equal(m2.amount, 10);
-        test.equal(m2.unit, "kilowatt-hour");
+        test.roughlyEqual(m2.amount, 4.3, 1e-8);
+        test.equal(m2.unit, "hectopascal");
         test.done();
     },
+
 
     testPressureScale2: function(test) {
         test.expect(2);
         var m1 = new PressureUnit({
-            unit: "kilowatt hour",
-            amount: 1233453
+            unit: "millibar",
+            amount: 0.0001
         });
         var m2 = m1.scale("metric");
 
-        test.equal(m2.amount, 1.233453);
-        test.equal(m2.unit, "gigawatt-hour");
+        test.equal(m2.amount, 10);
+        test.equal(m2.unit, "millipascal");
         test.done();
     },
 
+/*
     testPressureScale3: function(test) {
         test.expect(2);
         var m1 = new PressureUnit({
@@ -172,14 +158,17 @@ module.exports.testpressure = {
         test.expect(1);
         var measures = PressureUnit.getMeasures();
         var expected = [
-            "milliwatt",
-            "watt",
-            "kilowatt",
-            "megawatt",
-            "gigawatt",
-            "foot-pound-per-hour",
-            "horsepower",
-            "btu-per-hour"
+            "millipascal",
+            "pascal",
+            "hectopascal",
+            "millibar",
+            "kilopascal",
+            "bar",
+            "megapascal",
+            "gigapascal",
+            "atmosphere",
+            "torr",
+            "pound-per-square-inch"
         ];
         test.equalIgnoringOrder(measures, expected);
         test.done();

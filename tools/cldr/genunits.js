@@ -611,7 +611,7 @@ function frameUnits(data, locale, localeData) {
                 "style": "numeric"
             },
             "gasVolume": {
-                "description": "volume of a gas such as natural gas used in a home a home might use",
+                "description": "volume of a gas such as natural gas used in a home",
                 "type": "volume",
                 "units": {
                     "metric": ["cubic-meter"],
@@ -619,7 +619,47 @@ function frameUnits(data, locale, localeData) {
                     "imperial": ["cubic-foot"]
                 },
                 "maxFractionDigits": 3
-            }
+            },
+            "gasPressure": {
+                "description": "pressure of a gas",
+                "type": "pressure",
+                "units": {
+                    "metric": ["pascal"],
+                    "uscustomary": ["pound-per-square-inch"],
+                    "imperial": ["pound-per-square-inch"]
+                },
+                "maxFractionDigits": 3
+            },
+            "atmosphericPressure": {
+                "description": "pressure of the atmosphere used in weather reports",
+                "type": "pressure",
+                "units": {
+                    "metric": ["millibar", "hectopascal"],
+                    "uscustomary": ["atmosphere"],
+                    "imperial": ["atmosphere"]
+                },
+                "maxFractionDigits": 2
+            },
+            "vehiclePower": {
+                "description": "power of a vehicle's engine",
+                "type": "power",
+                "units": {
+                    "metric": ["kilowatt"],
+                    "uscustomary": ["horsepower"],
+                    "imperial": ["horsepower"]
+                },
+                "maxFractionDigits": 2
+            },
+            "vehiclePower": {
+                "description": "power of a vehicle's engine",
+                "type": "power",
+                "units": {
+                    "metric": ["kilowatt"],
+                    "uscustomary": ["horsepower"],
+                    "imperial": ["horsepower"]
+                },
+                "maxFractionDigits": 2
+            },
         };
     }
     return localeData;

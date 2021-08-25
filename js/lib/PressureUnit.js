@@ -1,7 +1,7 @@
 /*
  * PressureUnit.js - Unit conversions for pressure
  *
- * Copyright © 2018,2020 JEDLSoft
+ * Copyright © 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 /*
 !depends
 Measurement.js
- */
+*/
 
 var Measurement = require("./Measurement.js");
 
@@ -51,22 +51,18 @@ PressureUnit.prototype.constructor = PressureUnit;
 
 // https://en.wikipedia.org/wiki/Pressure
 PressureUnit.ratios = {
-    /*                        index mPa         Pa          hPa               kPa         MPa               GPa               lbs/in2        atm                mbar           bar                 Torr              mmHg            inHg         */
-    "pascal":                [ 2,   1000,       1,          9.4781707775e-4,  0.001,      2.7777777778e-4,  2.3884589663e-4,  1.0e-6,        2.7777777778e-7,   1.0e-9,        2.7777777778e-10,   2.7777777778e-13  ],
-    "hectopascal":           [ 3,   1055055.9,  1055.0559,  1,                1.0550559,  0.29307108333,    0.25199577243,    1.0550559e-3,  2.9307108333e-4,   1.0550559e-6,  2.9307108333e-7,    2.9307108333e-10  ],
-    "millibar":              [ 9,   1e+12,      1e+9,       947817.07775,     1e+6,       277777.77778,     238845.89663,     1000,          277.77777778,      1,             0.27777777778,      2.7777777778e-4   ],
-    "kilopascal":            [ 4,   1000000,    1000,       0.94781707775,    1,          0.27777777778,    0.23884589663,    0.001,         2.7777777778e-4,   1.0e-6,        2.7777777778e-7,    2.7777777778e-10  ],
-    "bar":                   [ 10,  1e+12,      1e+9,       947817.07775,     1e+6,       277777.77778,     238845.89663,     1000,          277.77777778,      1,             0.27777777778,      2.7777777778e-4   ],
-    "megapascal":            [ 5,   3.6e+6,     3600,       3.4121414799,     3.6,        1,                0.85984522786,    0.0036,        0.001,             3.6e-6,        1.0e-6,             1.0e-9            ],
-    "gigapascal":            [ 6,   4.868e+5,   4186.8,     3.9683205411,     4.1868,     1.163,            1,                4.1868e-3,     1.163e-3,          4.1868e-6,     1.163e-6,           1.163e-9          ],
-    "torr":                  [ 11,  3.6e+12,    3.6e+9,     3412141.4799,     3.6e+6,     1e+6,             859845.22786,     3600,          1000,              3.6,           1,                  0.001             ],
-    "pound-per-square-inch": [ 7,   1e+9,       1e+6,       947.81707775,     1000,       277.77777778,     238.84589663,     1,             0.27777777778,     0.001,         2.7777777778e-4,    2.7777777778e-7   ],
-    "atmosphere":            [ 8,   3.6e+9,     3.6e+6,     3412.1414799,     3600,       1000,             859.84522786,     3.6,           1,                 3.6e-3,        0.001,              1e-6              ],
-    "millimeter-of-mercury": [ 12,  3.6e+15,    3.6e+12,    3412141479.9,     3.6e+9,     1e+9,             859845227.86,     3.6e+6,        1e+6,              3600,          1000,               1                 ],
-    "inch-of-mercury":       [ 13,  3.6e+15,    3.6e+12,    3412141479.9,     3.6e+9,     1e+9,             859845227.86,     3.6e+6,        1e+6,              3600,          1000,               1                 ],
-    "centimeter-of-water":   [ 14,  3.6e+15,    3.6e+12,    3412141479.9,     3.6e+9,     1e+9,             859845227.86,     3.6e+6,        1e+6,              3600,          1000,               1                 ],
-    "foot-sea-water":        [ 15,  3.6e+15,    3.6e+12,    3412141479.9,     3.6e+9,     1e+9,             859845227.86,     3.6e+6,        1e+6,              3600,          1000,               1                 ],
-    "meter-sea-water":       [ 16,  3.6e+15,    3.6e+12,    3412141479.9,     3.6e+9,     1e+9,             859845227.86,     3.6e+6,        1e+6,              3600,          1000,               1                 ]
+    /*                        index mPa           Pa            hPa           mbar          kPa          bar            MPa            GPa            atm          torr       lbs/in2            */
+    "millipascal":           [ 1,   1,            1e-3,         1e-5,         1e-5,         1e-6,        1e-8,          1e-9,          1e-12,         9.8692e-9,   7.5006e-6, 1.45038e-7         ],
+    "pascal":                [ 2,   1000,         1,            1e-2,         1e-2,         1e-3,        1e-5,          1e-6,          1e-9,          9.8692e-6,   7.5006e-3, 1.45038e-4         ],
+    "hectopascal":           [ 3,   1e5,          1e2,          1,            1,            0.1,         1e-3,          1e-4,          1e-7,          9.8692e-4,   7.5006e-1, 1.45038e-2         ],
+    "millibar":              [ 4,   1e5,          1e2,          1,            1,            0.1,         1e-3,          1e-4,          1e-7,          9.8692e-4,   7.5006e-1, 1.45038e-2         ],
+    "kilopascal":            [ 5,   1e6,          1e3,          1e2,          1e2,          1,           1e-2,          1e-3,          1e-6,          9.8692e-3,   7.5006,    1.45038e-1         ],
+    "bar":                   [ 6,   1e8,          1e5,          1e3,          1e3,          100,         1,             0.1,           1e-4,          9.8692e-1,   7.5006e2,  14.5038            ],
+    "megapascal":            [ 7,   1e9,          1e6,          1e4,          1e4,          1e3,         10,            1,             1e-3,          9.8692,      7.5006e3,  145.038            ],
+    "gigapascal":            [ 8,   1e12,         1e9,          1e7,          1e7,          1e6,         1e4,           1e3,           1,             9.8692e3,    7.5006e6,  1.45038e5          ],
+    "atmosphere":            [ 9,   1.01325e8,    1.01325e5,    1.01325e3,    1.01325e3,    1.01325e2,   1.01325,       1.01325e-1,    1.01325e-4,    1,           760,       14.6959487755142   ],
+    "torr":                  [ 10,  1.333224e5,   1.333224e2,   1.333224,     1.333224,     1.333224e-1, 1.333224e-3,   1.333224e-4,   1.333224e-2,   1.315789e-3, 1,         1.9336775e-2       ],
+    "pound-per-square-inch": [ 11,  6.89475729e6, 6.89475729e3, 6.89475729e1, 6.89475729e1, 6.89475729,  6.89475729e-2, 6.89475729e-3, 6.89475729e-6, 6.8046e-2,   51.7149,   1                  ],
 };
 
 /**
@@ -97,6 +93,7 @@ PressureUnit.prototype.newUnit = function(params) {
 
 PressureUnit.systems = {
     "metric": [
+        "millipascal",
         "pascal",
         "hectopascal",
         "millibar",
@@ -107,24 +104,25 @@ PressureUnit.systems = {
     ],
     "uscustomary": [
         "torr",
-        "inch-of-mercury",
-        "foot-sea-water",
+//        "inch-of-mercury",
+//        "foot-sea-water",
         "pound-per-square-inch",
         "atmosphere"
     ],
     "imperial": [
-        "centimeter-of-water",
+//        "centimeter-of-water",
         "torr",
-        "millimeter-of-mercury",
-        "inch-of-mercury",
-        "foot-sea-water",
+//        "millimeter-of-mercury",
+//        "inch-of-mercury",
+//        "foot-sea-water",
         "pound-per-square-inch",
-        "meter-sea-water",
+//        "meter-sea-water",
         "atmosphere"
     ],
     "conversions": {
         "metric": {
             "uscustomary": {
+                "millipascal": "torr",
                 "pascal": "torr",
                 "hectopascal": "torr",
                 "millibar": "torr",
@@ -134,6 +132,7 @@ PressureUnit.systems = {
                 "gigapascal": "atmosphere"
             },
             "imperial": {
+                "millipascal": "torr",
                 "pascal": "torr",
                 "hectopascal": "torr",
                 "millibar": "torr",
@@ -146,26 +145,26 @@ PressureUnit.systems = {
         "uscustomary": {
             "metric": {
                 "torr": "pascal",
-                "inch-of-mercury": "kilopascal",
-                "foot-sea-water": "meter-sea-water",
+//                "inch-of-mercury": "kilopascal",
+//                "foot-sea-water": "meter-sea-water",
                 "pound-per-square-inch": "bar",
                 "atmosphere": "bar"
             },
             "imperial": {
-                "centimeter-of-water": "torr",
-                "millimeter-of-mercury": "inch-of-mercury",
-                "meter-sea-water": "atmosphere"
+//                "centimeter-of-water": "torr",
+//                "millimeter-of-mercury": "inch-of-mercury",
+//               "meter-sea-water": "atmosphere"
             }
         },
         "imperial": {
             "metric": {
-                "centimeter-of-water": "pascal",
+//                "centimeter-of-water": "pascal",
                 "torr": "pascal",
-                "millimeter-of-mercury": "millibar",
-                "inch-of-mercury": "kilopascal",
-                "foot-sea-water": "meter-sea-water",
+//                "millimeter-of-mercury": "millibar",
+//                "inch-of-mercury": "kilopascal",
+//                "foot-sea-water": "meter-sea-water",
                 "pound-per-square-inch": "bar",
-                "meter-sea-water": "foot-sea-water",
+//                "meter-sea-water": "foot-sea-water",
                 "atmosphere": "bar"
             }
         }
@@ -173,78 +172,48 @@ PressureUnit.systems = {
 };
 
 PressureUnit.aliases = {
-    "milli joule": "millijoule",
-    "millijoule": "millijoule",
-    "milliJ": "millijoule",
-    "mJ": "millijoule",
-    "joule": "joule",
-    "joules": "joule",
-    "J": "joule",
-    "BTU": "BTU",
-    "British Thermal Unit": "BTU",
-    "British Thermal Units": "BTU",
-    "kilo joule": "kilojoule",
-    "kilojoule": "kilojoule",
-    "kilojoules": "kilojoule",
-    "kjoule": "kilojoule",
-    "kJ": "kilojoule",
-    "watt hour": "watt-hour",
-    "watt hours": "watt-hour",
-    "Wh": "watt-hour",
-    "food calorie": "foodcalorie",
-    "food calories": "foodcalorie",
-    "calorie": "foodcalorie",
-    "calories": "foodcalorie",
-    "Cal": "foodcalorie",
-    "mega joule": "megajoule",
-    "mega joules": "megajoule",
-    "megajoule": "megajoule",
-    "megajoules": "megajoule",
-    "MJ": "megajoule",
-    "kilo watt hour": "kilowatt-hour",
-    "kilo watt hours": "kilowatt-hour",
-    "kiloWh": "kilowatt-hour",
-    "kilowatt hour": "kilowatt-hour",
-    "kilowatt hours": "kilowatt-hour",
-    "kilowatt-hour": "kilowatt-hour",
-    "kilowatt-hours": "kilowatt-hour",
-    "kilowatthour": "kilowatt-hour",
-    "kilowatthours": "kilowatt-hour",
-    "kW hour": "kilowatt-hour",
-    "kW hours": "kilowatt-hour",
-    "kW-hour": "kilowatt-hour",
-    "kW-hours": "kilowatt-hour",
-    "kiloWh": "kilowatt-hour",
-    "kWh": "kilowatt-hour",
-    "giga joule": "gigajoule",
-    "Gj": "gigajoule",
-    "gigajoule": "gigajoule",
-    "gigajoules": "gigajoule",
-    "mega watt hour": "megawatt-hour",
-    "mega watt hours": "megawatt-hour",
-    "megawatt hour": "megawatt-hour",
-    "megawatt hours": "megawatt-hour",
-    "megawatt-hour": "megawatt-hour",
-    "megawatt-hours": "megawatt-hour",
-    "MW hour": "megawatt-hour",
-    "MW hours": "megawatt-hour",
-    "MW-hour": "megawatt-hour",
-    "MW-hours": "megawatt-hour",
-    "megaWh": "megawatt-hour",
-    "MWh": "megawatt-hour",
-    "giga watt hour": "gigawatt-hour",
-    "giga watt hour": "gigawatt-hour",
-    "giga watt hours": "gigawatt-hour",
-    "gigawatt hour": "gigawatt-hour",
-    "gigawatt hours": "gigawatt-hour",
-    "gigawatt-hours": "gigawatt-hour",
-    "gigawatthour": "gigawatt-hour",
-    "GW hour": "gigawatt-hour",
-    "GW hours": "gigawatt-hour",
-    "GW-hour": "gigawatt-hour",
-    "GW-hours": "gigawatt-hour",
-    "gigaWh": "gigawatt-hour",
-    "GWh": "gigawatt-hour"
+    "Pa": "pascal",
+    "㎩": "pascal",
+    "pascals": "pascal",
+    "hPa": "hectopascal",
+    "㍱": "hectopascal",
+    "mbar": "millibar",
+    "kPa": "kilopascal",
+    "㎪": "kilopascal",
+    "MPa": "megapascal",
+    "㎫": "megapascal",
+    "GPa": "gigapascal",
+    "㎬": "gigapascal",
+    "t": "torr",
+    "psi": "pound-per-square-inch",
+    "pounds per square inch": "pound-per-square-inch",
+    "pound per square inch": "pound-per-square-inch",
+    "pound force per square inch": "pound-per-square-inch",
+    "pounds per sq. in.": "pound-per-square-inch",
+    "pound per sq. in.": "pound-per-square-inch",
+    "lbs per square inch": "pound-per-square-inch",
+    "lbf per square inch": "pound-per-square-inch",
+    "lbs per sq. in.": "pound-per-square-inch",
+    "lbf per sq. in.": "pound-per-square-inch",
+    "pounds/square inch": "pound-per-square-inch",
+    "pounds/sq. in.": "pound-per-square-inch",
+    "lbs/square inch": "pound-per-square-inch",
+    "lbf/square inch": "pound-per-square-inch",
+    "lbs/sq. in.": "pound-per-square-inch",
+    "lbf/sq. in.": "pound-per-square-inch",
+    "pounds/inch²": "pound-per-square-inch",
+    "pounds/in²": "pound-per-square-inch",
+    "lbs/inch²": "pound-per-square-inch",
+    "lbf/inch²": "pound-per-square-inch",
+    "lbs/in²": "pound-per-square-inch",
+    "lbf/in²": "pound-per-square-inch",
+    "atmos": "atmosphere",
+    "atm": "atmosphere",
+    "mmHg": "millimeter-of-mercury",
+    "inHg": "inch-of-mercury",
+    "cmw": "centimeter-of-water",
+    "fsw": "foot-sea-water",
+    "msw": "meter-sea-water",
 };
 
 PressureUnit.aliasesLower = {};
