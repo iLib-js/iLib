@@ -289,7 +289,8 @@ EthiopicDate.prototype._calcDateComponents = function () {
  * @return {number} the day of the week
  */
 EthiopicDate.prototype.getDayOfWeek = function() {
-    var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
+    // subtract 0.25 because the Ethopic day starts at the equivalent of 6am
+    var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0) - 0.25);
     return MathUtils.mod(rd-4, 7);
 };
 
