@@ -1,7 +1,7 @@
 /*
  * EthiopicDate.js - Represent a date in the Ethiopic calendar
  *
- * Copyright © 2015, 2018, JEDLSoft
+ * Copyright © 2015, 2018, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -289,9 +289,8 @@ EthiopicDate.prototype._calcDateComponents = function () {
  * @return {number} the day of the week
  */
 EthiopicDate.prototype.getDayOfWeek = function() {
-    // subtract 0.25 because the Ethopic day starts at the equivalent of 6am
-    var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0) - 0.25);
-    return MathUtils.mod(rd-4, 7);
+    var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
+    return MathUtils.mod(rd-5, 7);
 };
 
 /**

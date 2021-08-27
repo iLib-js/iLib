@@ -7902,9 +7902,9 @@ module.exports.testWeekdayTranslation = {
         // medium: short
         // short: narrow
 
-        fmt = new DateFmt({locale:"am-ET", date:"w", length: "full", useNative:false, timezone:"local"})
+        fmt = new DateFmt({locale:"am-ET", date:"w", length: "full", useNative:false, timezone: "Africa/Addis_Ababa"})
         for (i=0; i < 13; i++) {
-            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+7, hour: 12, type:"ethiopic"}));
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+8, hour: 12, type:"ethiopic", timezone: "Africa/Addis_Ababa"}));
         }
         test.equal(value[0], "እሑድ");
         test.equal(value[1], "ሰኞ");
@@ -7914,9 +7914,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[5], "ዓርብ");
         test.equal(value[6], "ቅዳሜ");
 
-        fmt = new DateFmt({locale:"am-ET", date:"w", length: "long", useNative:false, timezone:"local"})
+        fmt = new DateFmt({locale:"am-ET", date:"w", length: "long", useNative:false, timezone: "Africa/Addis_Ababa"})
         for (i=0; i < 13; i++) {
-            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+7, hour: 12, type:"ethiopic"}));
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+8, hour: 12, type:"ethiopic", timezone: "Africa/Addis_Ababa"}));
         }
         test.equal(value[0], "እሑድ");
         test.equal(value[1], "ሰኞ");
@@ -7926,9 +7926,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[5], "ዓርብ");
         test.equal(value[6], "ቅዳሜ");
 
-        fmt = new DateFmt({locale:"am-ET", date:"w", length: "medium", useNative:false, timezone:"local"})
+        fmt = new DateFmt({locale:"am-ET", date:"w", length: "medium", useNative:false, timezone: "Africa/Addis_Ababa"})
         for (i=0; i < 13; i++) {
-            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+7, hour: 12, type:"ethiopic"}));
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+8, hour: 12, type:"ethiopic", timezone: "Africa/Addis_Ababa"}));
         }
         test.equal(value[0], "እ");
         test.equal(value[1], "ሰ");
@@ -7938,9 +7938,9 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[5], "ዓ");
         test.equal(value[6], "ቅ");
 
-        fmt = new DateFmt({locale:"am-ET", date:"w", length: "short", useNative:false, timezone:"local"})
+        fmt = new DateFmt({locale:"am-ET", date:"w", length: "short", useNative:false, timezone: "Africa/Addis_Ababa"})
         for (i=0; i < 13; i++) {
-            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+7, hour: 12, type:"ethiopic"}));
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+8, hour: 12, type:"ethiopic", timezone: "Africa/Addis_Ababa"}));
         }
 
         test.equal(value[0], "እ");
@@ -9190,7 +9190,7 @@ module.exports.testWeekdayTranslation = {
         //////////////  Note. No data in CLDR ?!?!?!?! /////////////
         fmt = new DateFmt({locale:"en-ET", date:"w", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
-            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+7, hour: 12, type:"ethiopic"}));
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+8, hour: 12, type:"ethiopic"}));
         }
         test.equal(value[0], "Ihud");
         test.equal(value[1], "Sanyo");
@@ -9202,7 +9202,7 @@ module.exports.testWeekdayTranslation = {
 
         fmt = new DateFmt({locale:"en-ET", date:"w", length: "long", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
-            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+7, hour: 12, type:"ethiopic"}));
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+8, hour: 12, type:"ethiopic"}));
         }
         test.equal(value[0], "Ihu");
         test.equal(value[1], "San");
@@ -9214,7 +9214,7 @@ module.exports.testWeekdayTranslation = {
 
         fmt = new DateFmt({locale:"en-ET", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
-            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+7, hour: 12, type:"ethiopic"}));
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+8, hour: 12, type:"ethiopic"}));
         }
         test.equal(value[0], "Ih");
         test.equal(value[1], "Sa");
@@ -9226,7 +9226,7 @@ module.exports.testWeekdayTranslation = {
 
         fmt = new DateFmt({locale:"en-ET", date:"w", length: "short", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
-            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+7, hour: 12, type:"ethiopic"}));
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+8, hour: 12, type:"ethiopic"}));
         }
         test.equal(value[0], "I");
         test.equal(value[1], "S");
