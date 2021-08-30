@@ -3626,19 +3626,19 @@ module.exports.testnumfmt2 = {
         test.expect(9);
         var li = new LocaleInfo("pa-PK");
         var fmt = new NumFmt({locale:"pa-PK", type:"standard", useNative:false});
-        test.equal(li.getDecimalSeparator(), ".");
-        test.equal(li.getGroupingSeparator(), ",");
-        test.equal(fmt.format(123456789.45), "12,34,56,789.45");
+        test.equal(li.getDecimalSeparator(), '٫');
+        test.equal(li.getGroupingSeparator(), '٬');
+        test.equal(fmt.format(123456789.45), '12٬34٬56٬789٫45');
 
         var pctfmt = new NumFmt({locale:"pa-PK", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n}%");
-        test.equal(li.getNegativePercentageFormat(), "-{n}%");
-        test.equal(pctfmt.format(34), "34%");
+        test.equal(li.getPercentageFormat(), '{n}٪');
+        test.equal(li.getNegativePercentageFormat(), '‎-‎{n}٪');
+        test.equal(pctfmt.format(34), '34٪');
 
         var curfmt = new NumFmt({locale: "pa-PK", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s} {n}");
-        test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}");
-        test.equal(curfmt.format(57.05), "Rs 57.05"); //PKR
+        test.equal(li.getCurrencyFormats().commonNegative, '‎-‎{s} {n}');
+        test.equal(curfmt.format(57.05), 'Rs 57٫05'); //PKR
         test.done();
     },
     testNumFmt_pt_AO: function(test) {

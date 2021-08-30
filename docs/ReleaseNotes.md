@@ -1,6 +1,19 @@
 Release Notes for Version 14
 ============================
 
+Build 016
+-------
+Published as version 14.9.2
+New Features:
+
+Bug Fixes:
+* Fixed a case where variant locale resources could not be loaded
+* Fixed to return correct default script for `pa-PK`,`ha-CM` and `ha-SD`
+* Fixed Ethiopic dates to return the correct day of the week
+    * Calculations were off by one because the Ethiopic day starts
+      at 6am Gregorian time, not at midnight (= 12:00am Ethiopic time),
+      and the calculations were for midnight.
+
 Build 015
 -------
 Published as version 14.9.1

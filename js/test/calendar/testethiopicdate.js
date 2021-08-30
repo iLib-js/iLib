@@ -1,7 +1,7 @@
 /*
  * testethiopicdate.js - test the ethiopic date object
  * 
- * Copyright © 2015,2017, JEDLSoft
+ * Copyright © 2015,2017, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,41 +24,53 @@ if (typeof(EthiopicDate) === "undefined") {
     var EthiopicDate = require("../../lib/EthiopicDate.js");
 }
 
+if (typeof(GregorianDate) === "undefined") {
+    var GregorianDate = require("../../lib/GregorianDate.js");
+}
+
+if (typeof(DateFmt) === "undefined") {
+    var DateFmt = require("../../lib/DateFmt.js");
+}
+
+if (typeof(DateFactory) === "undefined") {
+    var DateFactory = require("../../lib/DateFactory.js");
+}
+
 var testDatesEthiopic = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek
-    [1507231.5, -594,  12,    5,   18,   0,      0,      0,           0],
-    [1660037.5, -175,  4,     11,  18,   0,      0,      0,           3],
-    [1746893.5, 63,    1,     28,  18,   0,      0,      0,           3],
-    [1770641.5, 128,   2,     4,   18,   0,      0,      0,           0],
-    [1892731.5, 462,   5,     11,  18,   0,      0,      0,           3],
-    [1931579.5, 568,   9,     22,  18,   0,      0,      0,           1],
-    [1974851.5, 687,   3,     10,  18,   0,      0,      0,           6],
-    [2091164.5, 1005,  8,     23,  18,   0,      0,      0,           0],
-    [2121509.5, 1088,  9,     22,  18,   0,      0,      0,           0],
-    [2155779.5, 1182,  7,     19,  18,   0,      0,      0,           5],
-    [2174029.5, 1232,  7,     6,   18,   0,      0,      0,           6],
-    [2191584.5, 1280,  7,     29,  18,   0,      0,      0,           5],
-    [2195261.5, 1290,  8,     24,  18,   0,      0,      0,           0],
-    [2229274.5, 1383,  10,    9,   18,   0,      0,      0,           0],
-    [2245580.5, 1428,  5,     28,  18,   0,      0,      0,           3],
-    [2266100.5, 1484,  8,     4,   18,   0,      0,      0,           6],
-    [2288542.5, 1546,  1,     11,  18,   0,      0,      0,           6],
-    [2290901.5, 1552,  6,     28,  18,   0,      0,      0,           6],
-    [2323140.5, 1640,  10,    5,   18,   0,      0,      0,           3],
-    [2334848.5, 1672,  10,    25,  18,   0,      0,      0,           0],
-    [2348020.5, 1708,  11,    18,  18,   0,      0,      0,           5],
-    [2366978.5, 1760,  10,    13,  18,   0,      0,      0,           0],
-    [2385648.5, 1811,  11,    26,  18,   0,      0,      0,           1],
-    [2392825.5, 1831,  7,     18,  18,   0,      0,      0,           3],
-    [2416223.5, 1895,  8,     10,  18,   0,      0,      0,           0],
-    [2425848.5, 1921,  12,    18,  18,   0,      0,      0,           0],
-    [2430266.5, 1934,  1,     18,  18,   0,      0,      0,           1],
-    [2430833.5, 1935,  8,     10,  18,   0,      0,      0,           1],
-    [2431004.5, 1936,  1,     25,  18,   0,      0,      0,           4],
-    [2448698.5, 1984,  7,     7,   18,   0,      0,      0,           2],
-    [2450138.5, 1988,  6,     16,  18,   0,      0,      0,           0],
-    [2465737.5, 2031,  2,     30,  18,   0,      0,      0,           3],
-    [2486076.5, 2086,  11,    10,  18,   0,      0,      0,           0]
+    [1507231.5, -594,  12,    5,   18,   0,      0,      0,           6],
+    [1660037.5, -175,  4,     11,  18,   0,      0,      0,           2],
+    [1746893.5, 63,    1,     28,  18,   0,      0,      0,           2],
+    [1770641.5, 128,   2,     4,   18,   0,      0,      0,           6],
+    [1892731.5, 462,   5,     11,  18,   0,      0,      0,           2],
+    [1931579.5, 568,   9,     22,  18,   0,      0,      0,           0],
+    [1974851.5, 687,   3,     10,  18,   0,      0,      0,           5],
+    [2091164.5, 1005,  8,     23,  18,   0,      0,      0,           6],
+    [2121509.5, 1088,  9,     22,  18,   0,      0,      0,           6],
+    [2155779.5, 1182,  7,     19,  18,   0,      0,      0,           4],
+    [2174029.5, 1232,  7,     6,   18,   0,      0,      0,           5],
+    [2191584.5, 1280,  7,     29,  18,   0,      0,      0,           4],
+    [2195261.5, 1290,  8,     24,  18,   0,      0,      0,           6],
+    [2229274.5, 1383,  10,    9,   18,   0,      0,      0,           6],
+    [2245580.5, 1428,  5,     28,  18,   0,      0,      0,           2],
+    [2266100.5, 1484,  8,     4,   18,   0,      0,      0,           5],
+    [2288542.5, 1546,  1,     11,  18,   0,      0,      0,           5],
+    [2290901.5, 1552,  6,     28,  18,   0,      0,      0,           5],
+    [2323140.5, 1640,  10,    5,   18,   0,      0,      0,           2],
+    [2334848.5, 1672,  10,    25,  18,   0,      0,      0,           6],
+    [2348020.5, 1708,  11,    18,  18,   0,      0,      0,           4],
+    [2366978.5, 1760,  10,    13,  18,   0,      0,      0,           6],
+    [2385648.5, 1811,  11,    26,  18,   0,      0,      0,           0],
+    [2392825.5, 1831,  7,     18,  18,   0,      0,      0,           2],
+    [2416223.5, 1895,  8,     10,  18,   0,      0,      0,           6],
+    [2425848.5, 1921,  12,    18,  18,   0,      0,      0,           6],
+    [2430266.5, 1934,  1,     18,  18,   0,      0,      0,           0],
+    [2430833.5, 1935,  8,     10,  18,   0,      0,      0,           0],
+    [2431004.5, 1936,  1,     25,  18,   0,      0,      0,           3],
+    [2448698.5, 1984,  7,     7,   18,   0,      0,      0,           1],
+    [2450138.5, 1988,  6,     16,  18,   0,      0,      0,           6],
+    [2465737.5, 2031,  2,     30,  18,   0,      0,      0,           2],
+    [2486076.5, 2086,  11,    10,  18,   0,      0,      0,           6]
 ];
 
 if (typeof(ilib) === "undefined") {
@@ -1208,6 +1220,106 @@ module.exports.testethiopicdate = {
         test.equal(jd2.getMinutes(), jd.getMinutes());
         test.equal(jd2.getSeconds(), jd.getSeconds());
         test.done();
+    },
+    /*
+    0(sun): እሑድ
+    1: ሰኞ
+    2: ማክሰኞ
+    3: ረቡዕ
+    4: ሐሙስ
+    5: ዓርብ
+    6: ቅዳሜ
+    */
+    testEthiopicDateConversion: function(test) {
+        test.expect(3);
+
+        var gd = new GregorianDate({
+            year: 2021,
+            month: 8,
+            day: 20,
+            hour: 1,
+            minute: 0,
+            timezone: "Africa/Addis_Ababa"
+        });
+        test.ok(gd !== null);
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(gd);
+        test.equal(result, "13 ነሐሴ 2013");
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmwy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(gd);
+        test.equal(result, "ሐሙስ፣ 13 ነሐሴ 2013");
+        test.done();
+    },
+    testEthiopicDateConversion2: function(test) {
+        test.expect(3);
+
+        var gd = new GregorianDate({
+            year: 2021,
+            month: 8,
+            day: 20,
+            hour:14,
+            minute: 30,
+            timezone: "Africa/Addis_Ababa"
+        });
+        test.ok(gd !== null);
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(gd);
+        test.equal(result, "14 ነሐሴ 2013");
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmwy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(gd);
+        test.equal(result, "ዓርብ፣ 14 ነሐሴ 2013");
+        test.done();
+    },
+    testEthiopicDateConversion3: function(test) {
+        test.expect(3);
+
+        var date = DateFactory({
+            year: 2021,
+            month: 8,
+            day: 20,
+            hour: 3,
+            minute:43,
+            type:"gregorian",
+            timezone: "Africa/Addis_Ababa"
+        });
+        test.ok(date !== null);
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(date);
+        test.equal(result, "13 ነሐሴ 2013");
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmwy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(date);
+        test.equal(result, "ሐሙስ፣ 13 ነሐሴ 2013");
+
+        test.done();
+    },
+    testEthiopicDateConversion4: function(test) {
+        test.expect(3);
+
+        var date = DateFactory({
+            year: 2021,
+            month: 8,
+            day: 20,
+            hour: 19,
+            minute: 0,
+            type:"gregorian",
+            timezone: "Africa/Addis_Ababa"
+        });
+        test.ok(date !== null);
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(date);
+        test.equal(result, "14 ነሐሴ 2013");
+
+        var fmt = new DateFmt({locale:"am-ET", date:"dmwy", length:"full", timezone:"Africa/Addis_Ababa"});
+        var result = fmt.format(date);
+        test.equal(result, "ዓርብ፣ 14 ነሐሴ 2013");
+
+        test.done();
     }
-    
 };
