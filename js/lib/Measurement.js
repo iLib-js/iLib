@@ -527,8 +527,8 @@ Measurement.getUnitIdCaseInsensitive = function(measurement, unit) {
 // Hard-code these because CLDR has incorrect data, plus this is small so we don't
 // want to do an async load just to get it.
 // Source: https://en.wikipedia.org/wiki/Metrication#Overview
-// Remove GB from imperial
-// reference: https://www.worldatlas.com/articles/does-england-use-the-metric-system.html
+// Remove GB from an imperial list
+// note: https://www.worldatlas.com/articles/does-england-use-the-metric-system.html
 var systems = {
     "uscustomary": ["US", "FM", "MH", "LR", "PR", "PW", "GU", "WS", "AS", "VI", "MP"],
     "imperial": ["MM"]
