@@ -677,21 +677,21 @@ module.exports.testmeasurement = {
     testMeasurementGetMeasurementSystemGB: function(test) {
         test.expect(1);
 
-        test.equal(Measurement.getMeasurementSystemForLocale("en-GB"), "imperial");
+        test.equal(Measurement.getMeasurementSystemForLocale("en-GB"), "metric");
         test.done();
     },
 
     testMeasurementGetMeasurementSystemGBWithLocaleObj: function(test) {
         test.expect(1);
 
-        test.equal(Measurement.getMeasurementSystemForLocale(new Locale("en-GB")), "imperial");
+        test.equal(Measurement.getMeasurementSystemForLocale(new Locale("en-GB")), "metric");
         test.done();
     },
 
     testMeasurementGetMeasurementSystemGBWithFlavor: function(test) {
         test.expect(1);
 
-        test.equal(Measurement.getMeasurementSystemForLocale("en-GB-ASDF"), "imperial");
+        test.equal(Measurement.getMeasurementSystemForLocale("en-GB-ASDF"), "metric");
         test.done();
     },
 

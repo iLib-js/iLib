@@ -1,7 +1,7 @@
 /*
  * testunits_usages.js - test the units formatter object with various usages
  *
- * Copyright © 2018 JEDLSoft
+ * Copyright © 2018, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1666,6 +1666,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "liquidFoodVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -1683,6 +1684,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "liquidFoodVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -1700,6 +1702,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "liquidFoodVolume",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
@@ -1883,6 +1886,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "dryFoodVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -1900,6 +1904,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "dryFoodVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -1917,6 +1922,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "dryFoodVolume",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
@@ -1934,6 +1940,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "dryFoodVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -2100,6 +2107,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "drinkVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -2117,6 +2125,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "drinkVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -2134,6 +2143,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "drinkVolume",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
@@ -2317,6 +2327,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "fuelVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -2334,6 +2345,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "fuelVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -2351,6 +2363,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "fuelVolume",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
@@ -2368,6 +2381,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "fuelVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -2385,6 +2399,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "fuelVolume",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
@@ -2600,6 +2615,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "storageVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -2617,6 +2633,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "storageVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -2682,6 +2699,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "storageVolume",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
@@ -2732,6 +2750,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "storageVolume",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });

@@ -1,7 +1,7 @@
 /*
  * testSpeeds.js - test the Speed object
  * 
- * Copyright © 2014-2015,2017, JEDLSoft
+ * Copyright © 2014-2015,2017, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -193,8 +193,8 @@ module.exports.testspeeds = {
     
         m = m.localize("en-GB");
     
-        test.equal(m.amount, 1000);
-        test.equal(m.unit, "mile-per-hour");
+        test.equal(m.amount, 1609.34);
+        test.equal(m.unit, "kilometer-per-hour");
         test.done();
     },
     

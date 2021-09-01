@@ -207,8 +207,8 @@ module.exports.testFuelConsumption = {
 
         m = m.localize("en-GB");
 
-        test.equal(m.amount, 2824.81);
-        test.equal(m.unit, "mile-per-gallon-imperial");
+        test.equal(m.amount, 1000);
+        test.equal(m.unit, "kilometer-per-liter");
         test.done();
     },
 
@@ -221,8 +221,8 @@ module.exports.testFuelConsumption = {
 
         m = m.localize("en-GB");
 
-        test.roughlyEqual(m.amount, 2824.81, 0.001);
-        test.equal(m.unit, "mile-per-gallon-imperial");
+        test.equal(m.amount, 1000);
+        test.equal(m.unit, "kilometer-per-liter");
         test.done();
     },
 

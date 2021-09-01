@@ -1,7 +1,7 @@
 /*
  * testvolumes.js - test the volumes object
  * 
- * Copyright © 2014-2015,2017, JEDLSoft
+ * Copyright © 2014-2015,2017, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -998,8 +998,8 @@ module.exports.testVolume = {
     
         m = m.localize("en-GB");
     
-        test.roughlyEqual(m.amount, 879.877, 0.0001);
-        test.equal(m.unit, "quart-imperial");
+        test.equal(m.amount, 1000);
+        test.equal(m.unit, "liter");
         test.done();
     },
     
@@ -1012,8 +1012,8 @@ module.exports.testVolume = {
     
         m = m.localize("en-GB");
     
-        test.roughlyEqual(m.amount, 1040.84, 0.001);
-        test.equal(m.unit, "ounce-imperial");
+        test.equal(m.amount, 29573.5, 0.001);
+        test.equal(m.unit, "milliliter");
         test.done();
     },
     
