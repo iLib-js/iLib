@@ -2,7 +2,7 @@
     "scripts": [
         "Latn",
         "Cyrl",
-        "Latn"
+        "Arab"
     ],
     "generated": true
 }
