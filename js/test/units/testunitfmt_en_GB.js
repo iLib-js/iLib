@@ -101,5 +101,244 @@ module.exports.testunitfmt_en_GB = {
         test.equal(str, "-16.666666666666668 degrees Celsius");
         test.done();
     },
+    testUnitFormatArea1_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "square centimeter",
+            amount: 2
+        });
 
+        var uf = new UnitFmt({
+            locale: "en-GB",
+            autoConvert:true,
+            length:"short"
+        });
+
+        var str = uf.format(m1);
+        test.equal(str, "2 cm²");
+        test.done();
+    },
+    testUnitFormatArea2_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "square centimeter",
+            amount: 2
+        });
+
+        var uf = new UnitFmt({
+            locale: "en-GB",
+            autoConvert: true,
+            length: "long"
+        });
+
+        var str = uf.format(m1);
+        test.equal(str, "2 square centimetres");
+        test.done();
+    },
+    testUnitFormatArea3_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "hectare",
+            amount: 1000
+        });
+
+        var uf = new UnitFmt({
+            locale: "en-GB",
+            autoConvert: true,
+            length: "short"
+        });
+
+        var str = uf.format(m1);
+        test.equal(str, "10 km²");
+        test.done();
+    },
+    testUnitFormatArea4_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "hectare",
+            amount: 1000
+        });
+
+        var uf = new UnitFmt({
+            locale: "en-GB",
+            autoConvert: true,
+            length: "long"
+        });
+
+        var str = uf.format(m1);
+        test.equal(str, "10 square kilometres");
+        test.done();
+    },
+    testUnitFormatFuelConsumption1_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "km/liter",
+            amount: 2
+        });
+
+        var uf = new UnitFmt({
+            locale: "en-GB",
+            autoConvert: true,
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 km/l");
+        test.done();
+    },
+    testUnitFormatFuelConsumption2_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "km/liter",
+            amount: 2
+        });
+
+        var uf = new UnitFmt({
+            locale: "en-GB",
+            autoConvert: true,
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 kilometres per litre");
+        test.done();
+    },
+    testUnitFormatLength1_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "mile",
+            amount: 2000
+        });
+
+        var uf = new UnitFmt({
+            locale: "en-GB",
+            autoConvert: true,
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "3.21868 Mm");
+        test.done();
+    },
+    testUnitFormatLength2_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "mile",
+            amount: 2000
+        });
+
+        var uf = new UnitFmt({
+            locale: "en-GB",
+            autoConvert: true,
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "3.21868 megameters");
+        test.done();
+    },
+    testUnitFormatWithUsageVehicleDistance1_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "km",
+            amount: 10
+        });
+
+        var uf = new UnitFmt({
+            locale: "en-GB",
+            usage: "vehicleDistance",
+            length: "short",
+            autoConvert: true,
+        });
+        var str = uf.format(m1);
+        test.equal(str, "10 km");
+        test.done();
+    },
+    testUnitFormatWithUsageVehicleDistance2_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "km",
+            amount: 10
+        });
+
+        var uf = new UnitFmt({
+            locale: "en-GB",
+            usage: "vehicleDistance",
+            length: "long",
+            autoConvert: true
+        });
+        var str = uf.format(m1);
+        test.equal(str, "10 kilometres");
+        test.done();
+    },
+    testUnitFormatWithUsageFuelVolume1_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "imperial gallon",
+            amount: 2
+        });
+
+        var uf = new UnitFmt({
+            locale: "en-GB",
+            usage: "fuelVolume",
+            length: "short",
+            autoConvert: true
+        });
+
+        var str = uf.format(m1);
+        test.equal(str, "9.09 l");
+        test.done();
+    },
+    testUnitFormatWithUsageFuelVolume2_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "imperial gallon",
+            amount: 2
+        });
+
+        var uf = new UnitFmt({
+            locale: "en-GB",
+            usage: "fuelVolume",
+            length: "long",
+            autoConvert: true
+        });
+
+        var str = uf.format(m1);
+        test.equal(str, "9.09 litres");
+        test.done();
+    },
+    testUnitFormatWithUsageOverrideSignificantDigits1_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kWh",
+            amount: 102.338322234
+        });
+
+        var uf = new UnitFmt({
+            locale: "en-GB",
+            usage: "electricalEnergy",
+            length: "short",
+            significantDigits: "6",
+            autoConvert: true
+        });
+
+        var str = uf.format(m1);
+        test.equal(str, "102.338 kWh");
+        test.done();
+    },
+    testUnitFormatWithUsageOverrideSignificantDigits2_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kWh",
+            amount: 102.338322234
+        });
+
+        var uf = new UnitFmt({
+            locale: "en-GB",
+            usage: "electricalEnergy",
+            length: "long",
+            significantDigits: "6",
+            autoConvert: true
+        });
+
+        var str = uf.format(m1);
+        test.equal(str, "102.338 kilowatt-hours");
+        test.done();
+    }
 }
