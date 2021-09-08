@@ -340,5 +340,209 @@ module.exports.testunitfmt_en_GB = {
         var str = uf.format(m1);
         test.equal(str, "102.338 kilowatt-hours");
         test.done();
-    }
+    },
+    testUnitFormatWithUsagePersonWeight_Short_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kg",
+            amount: 58
+        });
+
+        var uf = new UnitFmt({
+            usage: "personWeight",
+            measurementSystem: "imperial",
+            length: "short",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "128 lb");
+        test.done();
+    },
+    testUnitFormatWithUsagePersonWeight_Long_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kg",
+            amount: 58
+        });
+
+        var uf = new UnitFmt({
+            usage: "personWeight",
+            measurementSystem: "imperial",
+            length: "long",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "128 pounds");
+        test.done();
+    },
+    testUnitFormatWithUsagePersonHeight_Short_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cm",
+            amount: 178
+        });
+
+        var uf = new UnitFmt({
+            usage: "personHeight",
+            measurementSystem: "imperial",
+            length: "short",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "5 ft, 10 in");
+        test.done();
+    },
+    testUnitFormatWithUsagePersonHeight_Long_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cm",
+            amount: 178
+        });
+
+        var uf = new UnitFmt({
+            usage: "personHeight",
+            measurementSystem: "imperial",
+            length: "long",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "5 feet, 10 inches");
+        test.done();
+    },
+    testUnitFormatWithUsageBabyHeight_Short_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cm",
+            amount: 40
+        });
+
+        var uf = new UnitFmt({
+            usage: "babyHeight",
+            measurementSystem: "imperial",
+            length: "short",
+            locale: "en-GB",
+            style: "numeric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "15.7 in");
+        test.done();
+    },
+    testUnitFormatWithUsageBabyHeight_Long_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cm",
+            amount: 40
+        });
+
+        var uf = new UnitFmt({
+            usage: "babyHeight",
+            measurementSystem: "imperial",
+            length: "long",
+            locale: "en-GB",
+            style: "numeric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "15.7 inches");
+        test.done();
+    },
+    testUnitFormatWithUsageBabyWeight_Short_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kg",
+            amount: 14
+        });
+
+        var uf = new UnitFmt({
+            usage: "babyWeight",
+            measurementSystem: "imperial",
+            length: "short",
+            locale: "en-GB",
+            style: "numeric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "30 lb, 14 oz");
+        test.done();
+    },
+    testUnitFormatWithUsageBabyWeight_Long_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kg",
+            amount: 14
+        });
+
+        var uf = new UnitFmt({
+            usage: "babyWeight",
+            measurementSystem: "imperial",
+            length: "long",
+            locale: "en-GB",
+            style: "numeric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "30 pounds, 14 ounces");
+        test.done();
+    },
+    testUnitFormatWithUsageDrinkVolume_short_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 1234
+        });
+
+        var uf = new UnitFmt({
+            usage: "drinkVolume",
+            length: "short",
+            measurementSystem: "imperial"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.09 qt(i)");
+        test.done();
+    },
+    testUnitFormatWithUsageDrinkVolume_Long_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 1234
+        });
+
+        var uf = new UnitFmt({
+            usage: "drinkVolume",
+            length: "long",
+            measurementSystem: "imperial"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.09 imperial quarts");
+        test.done();
+    },
+    testUnitFormatWithUsageGasVolume_short_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 2500
+        });
+
+        var uf = new UnitFmt({
+            usage: "gasVolume",
+            length: "short",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2.5 m³");
+        test.done();
+    },
+    testUnitFormatWithUsageGasVolume_long_en_GB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 2500
+        });
+
+        var uf = new UnitFmt({
+            usage: "gasVolume",
+            length: "long",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2.5 cubic metres");
+        test.done();
+    },
 }
