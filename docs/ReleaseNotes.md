@@ -1,6 +1,14 @@
 Release Notes for Version 14
 ============================
 
+Build 017
+-------
+Published as version 14.9.3
+New Features:
+
+Bug Fixes:
+* Fixed a bug which a default script for `az` should be `Latin` instead of `Arabic`
+
 Build 016
 -------
 Published as version 14.9.2

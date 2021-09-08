@@ -1646,6 +1646,17 @@ module.exports.testscriptinfo = {
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
     },
+    testScriptInfo_az: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("az");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    
     testScriptInfo_ha_NG: function(test) {
         test.expect(4);
         var li = new LocaleInfo("ha-NG");
@@ -1683,6 +1694,16 @@ module.exports.testscriptinfo = {
         test.ok(li !== null);
         test.ok(scinfo !== null);
         test.equal(li.getScript(), "Orya");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_az_AZ: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("az-AZ");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
     },
