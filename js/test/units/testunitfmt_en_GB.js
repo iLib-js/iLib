@@ -350,7 +350,6 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "personWeight",
-            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
@@ -367,7 +366,6 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "personWeight",
-            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -384,7 +382,6 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "personHeight",
-            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
@@ -401,7 +398,6 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "personHeight",
-            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -418,7 +414,6 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "babyHeight",
-            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB",
             style: "numeric"
@@ -436,7 +431,6 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "babyHeight",
-            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB",
             style: "numeric"
@@ -449,68 +443,64 @@ module.exports.testunitfmt_en_GB = {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "kg",
-            amount: 14
+            amount: 2.5
         });
 
         var uf = new UnitFmt({
             usage: "babyWeight",
-            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB",
             style: "numeric"
         });
         var str = uf.format(m1);
-        test.equal(str, "30 lb, 14 oz");
+        test.equal(str, "5 lb, 8 oz");
         test.done();
     },
     testUnitFormatWithUsageBabyWeight_Long_en_GB: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "kg",
-            amount: 14
+            amount: 2.5
         });
 
         var uf = new UnitFmt({
             usage: "babyWeight",
-            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB",
             style: "numeric"
         });
         var str = uf.format(m1);
-        test.equal(str, "30 pounds, 14 ounces");
+        test.equal(str, "5 pounds, 8 ounces");
         test.done();
     },
     testUnitFormatWithUsageDrinkVolume_short_en_GB: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "ml",
-            amount: 1234
+            amount: 569
         });
 
         var uf = new UnitFmt({
             usage: "drinkVolume",
             length: "short",
-            measurementSystem: "imperial"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.09 qt(i)");
+        test.equal(str, "1 pt(i)");
         test.done();
     },
     testUnitFormatWithUsageDrinkVolume_Long_en_GB: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "ml",
-            amount: 1234
+            amount: 569
         });
 
         var uf = new UnitFmt({
             usage: "drinkVolume",
             length: "long",
-            measurementSystem: "imperial"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.09 imperial quarts");
+        test.equal(str, "1 imperial pint");
         test.done();
     },
     testUnitFormatWithUsageGasVolume_short_en_GB: function(test) {
