@@ -8,7 +8,7 @@ New Features:
 * Changed a default UnitSystem in GB from `imperial` to `metric`
 
 Bug Fixes:
-
+* Fixed a bug which a default script for `az` should be `Latin` instead of `Arabic`
 
 
 Build 016
