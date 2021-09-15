@@ -350,6 +350,7 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "personWeight",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
@@ -366,6 +367,7 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "personWeight",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -382,6 +384,7 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "personHeight",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
@@ -398,6 +401,7 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "personHeight",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -414,6 +418,7 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "babyHeight",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB",
             style: "numeric"
@@ -431,6 +436,7 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "babyHeight",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB",
             style: "numeric"
@@ -449,6 +455,7 @@ module.exports.testunitfmt_en_GB = {
         var uf = new UnitFmt({
             usage: "babyWeight",
             length: "short",
+            measurementSystem: "imperial",
             locale: "en-GB",
             style: "numeric"
         });
@@ -465,6 +472,7 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "babyWeight",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB",
             style: "numeric"
@@ -482,6 +490,7 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "drinkVolume",
+            measurementSystem: "imperial",
             length: "short",
         });
         var str = uf.format(m1);
@@ -497,6 +506,7 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "drinkVolume",
+            measurementSystem: "imperial",
             length: "long",
         });
         var str = uf.format(m1);
@@ -512,11 +522,12 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "gasVolume",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "2.5 m³");
+        test.equal(str, "88.287 ft³");
         test.done();
     },
     testUnitFormatWithUsageGasVolume_long_en_GB: function(test) {
@@ -528,11 +539,12 @@ module.exports.testunitfmt_en_GB = {
 
         var uf = new UnitFmt({
             usage: "gasVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "2.5 cubic metres");
+        test.equal(str, "88.287 cubic feet");
         test.done();
     },
 }
