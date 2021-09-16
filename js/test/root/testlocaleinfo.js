@@ -244,7 +244,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("en-GB");
         test.ok(info !== null);
     
-        test.equal(info.getUnits(), "imperial");
+        test.equal(info.getUnits(), "metric");
         test.done();
     },
     

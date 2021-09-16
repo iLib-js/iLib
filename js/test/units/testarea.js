@@ -339,8 +339,8 @@ module.exports.testarea = {
     
         m = m.localize("en-GB");
     
-        test.equal(m.amount, 1000);
-        test.equal(m.unit, "square-mile");
+        test.equal(m.amount, 2589.99);
+        test.equal(m.unit, "square-kilometer");
         test.done();
     },
     testAreaGetMeasures: function(test) {
