@@ -426,7 +426,7 @@ module.exports.testlocale = {
         test.done();
     },
 
-    testLocaleConstructorSpecPartial: function(test) {
+    testLocaleConstructorSpecWithUnderscores2: function(test) {
         test.expect(4);
         // some locales like those in java properties file names
         // or in gnu gettext libraries are specified with underscores
