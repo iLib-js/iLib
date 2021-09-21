@@ -659,7 +659,7 @@ function frameUnits(data, locale, localeData) {
                     "imperial": ["horsepower"]
                 },
                 "maxFractionDigits": 2
-            },
+            }
         };
     }
     return localeData;

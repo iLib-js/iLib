@@ -3024,4 +3024,118 @@ module.exports.testunitfmt_usages = {
         test.done();
     },
 
+    testUnitFormatWithUsageCarPower: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "hp",
+            amount: 107.677
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehiclePower",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "107.68 horsepower");
+        test.done();
+    },
+
+    testUnitFormatWithUsageCarPowerConvert: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kW",
+            amount: 80
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehiclePower",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "107.28 horsepower");
+        test.done();
+    },
+
+    testUnitFormatWithUsageCarPowerShort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "hp",
+            amount: 107
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehiclePower",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "107 hp");
+        test.done();
+    },
+
+    testUnitFormatWithUsageCarPowerScale: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "W",
+            amount: 80000
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehiclePower",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "107.28 hp");
+        test.done();
+    },
+
+    testUnitFormatWithUsageCarPowerScaleMetric: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "W",
+            amount: 80000
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehiclePower",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "80 kW");
+        test.done();
+    },
+
+    testUnitFormatWithUsageCarPowerfrCA: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "W",
+            amount: 80000
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehiclePower",
+            length: "long",
+            locale: "fr-CA"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "107,28 chevaux-vapeur");
+        test.done();
+    },
+
+    testUnitFormatWithUsageCarPowerBY: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "W",
+            amount: 80562
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehiclePower",
+            length: "long",
+            locale: "be-BY"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "80,56 кілаватаў");
+        test.done();
+    }
 };
