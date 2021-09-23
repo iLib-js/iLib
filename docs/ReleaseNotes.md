@@ -4,8 +4,12 @@ Release Notes for Version 14
 Build 017
 -------
 Published as version 14.10.0
+
 New Features:
 * Changed a default UnitSystem in GB from `imperial` to `metric`
+* Added the ability to parse locale specs with underscores instead of dashes. Some
+  locale specs for Java properties file names or in some gnu gettext libraries are
+  specified with underscores. (ie. "zh_Hans_CN" === "zh-Hans-CN" now)
 
 Bug Fixes:
 * Fixed a bug which a default script for `az` should be `Latin` instead of `Arabic`

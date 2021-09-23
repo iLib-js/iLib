@@ -411,6 +411,35 @@ module.exports.testlocale = {
         test.done();
     },
 
+    testLocaleConstructorSpecWithUnderscores1: function(test) {
+        test.expect(5);
+        // some locales like those in java properties file names
+        // or in gnu gettext libraries are specified with underscores
+        var loc = new Locale("zh_Hans_CN");
+
+        test.ok(loc !== null);
+
+        test.equal(loc.getLanguage(), "zh");
+        test.equal(loc.getRegion(), "CN");
+        test.equal(loc.getScript(), "Hans");
+        test.ok(typeof(loc.getVariant()) === "undefined");
+        test.done();
+    },
+
+    testLocaleConstructorSpecWithUnderscores2: function(test) {
+        test.expect(4);
+        // some locales like those in java properties file names
+        // or in gnu gettext libraries are specified with underscores
+        var loc = new Locale("en_US");
+
+        test.ok(loc !== null);
+
+        test.equal(loc.getLanguage(), "en");
+        test.equal(loc.getRegion(), "US");
+        test.ok(typeof(loc.getVariant()) === "undefined");
+        test.done();
+    },
+
     testLocaleConstructorShort: function(test) {
         test.expect(4);
         var loc = new Locale("en");
