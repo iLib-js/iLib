@@ -189,6 +189,7 @@ for (var i = 0; i < suite.length; i++) {
                 subtest = require("./" + filepath);
             } else {
                 global.module = { exports: {} };
+                // console.log("reading " + filepath);
                 var test = fs.readFileSync(filepath, "utf-8");
                 geval(test);
                 subtest = global.module.exports;

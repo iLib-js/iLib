@@ -18,9 +18,6 @@
  */
 
 module.exports.files = [
-    "testPower.js",
-    "testForce.js",
-    "testPressure.js",
     "testFuelConsumption.js",
     "testUnknown.js",
     "testVolume.js",
@@ -31,6 +28,9 @@ module.exports.files = [
     "testmass.js",
     "testmeasurement.js",
     "testspeeds.js",
+    "testPower.js",
+    "testForce.js",
+    "testPressure.js",
     "testtemp.js",
     "testtime.js",
     "testunits.js",
