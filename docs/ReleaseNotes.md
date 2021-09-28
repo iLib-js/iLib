@@ -13,6 +13,7 @@ New Features:
 
 Bug Fixes:
 * Fixed a bug which a default script for `az` should be `Latin` instead of `Arabic`
+* Updated to IANA time zone data 2021b
 
 
 Build 016
