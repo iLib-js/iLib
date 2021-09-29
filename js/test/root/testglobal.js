@@ -372,6 +372,162 @@ module.exports.testglobal = {
         ilib.locale = undefined;
     },
 
+    testGetLocaleNodejsThreeLetterLanguage1: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        process.env.LC_ALL = "yue"; // Cantonese
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "yue");
+        test.done();
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+    },
+
+    testGetLocaleNodejsThreeLetterLanguage2: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        process.env.LC_ALL = "yue-Hant"; // Cantonese
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "yue-Hant");
+        test.done();
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+    },
+
+    testGetLocaleNodejsThreeLetterLanguage3: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        process.env.LC_ALL = "yue-Hant-CN"; // Cantonese
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "yue-Hant-CN");
+        test.done();
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+    },
+
+    testGetLocaleNodejsThreeDigitRegion: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        process.env.LC_ALL = "en-001"; // Cantonese
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "en-001");
+        test.done();
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+    },
+
+    testGetLocaleNodejsUnderscoreLocale: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        // on some platforms, it uses underscores instead of dashes
+        process.env.LC_ALL = "de_DE";
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "de-DE");
+        test.done();
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+    },
+
+    testGetLocaleNodejsLocaleWithVariant1: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        // should ignore variants
+        process.env.LC_ALL = "de-DE-FOOBAR";
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "de-DE");
+        test.done();
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+    },
+
+    testGetLocaleNodejsLocaleWithVariant2: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        // should ignore variants
+        process.env.LC_ALL = "zh-Hans-CN-FOOBAR";
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "zh-Hans-CN");
+        test.done();
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+    },
+
+    testGetLocaleNodejsLocaleWithLongVariant: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        // should ignore variants
+        process.env.LC_ALL = "zh-Hans-CN-u-col-pinyin";
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "zh-Hans-CN");
+        test.done();
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+    },
+
     testGetLocaleSimulateRhino: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node

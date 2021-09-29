@@ -14,7 +14,14 @@ New Features:
 Bug Fixes:
 * Fixed a bug which a default script for `az` should be `Latin` instead of `Arabic`
 * Updated to IANA time zone data 2021b
-
+* Fixed a bug where locales from the platform returned by ilib.getLocale() were not
+  recognized properly if any of the following apply:
+    * They have underscores in them
+    * They have a 3 letter language name ("yue" means "Cantonese" for example)
+    * They have a three digit UN.49 region name ("001" is the "The World",
+      for example)
+    * They have a variant on them ("zh-Hant-TW-u-PostOffice" should return the
+      basic locale "zh-Hant-TW" as the platform locale)
 
 Build 016
 -------

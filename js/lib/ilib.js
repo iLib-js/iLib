@@ -299,37 +299,41 @@ function parseLocale(str) {
     // handle the posix default locale
     if (str === "C") return "en-US";
 
-    // full locale
-    if (str.length >= 10) {
-        return [
-            str.substring(0,2).toLowerCase(),
-            str[3].toUpperCase() + str.substring(4,7).toLowerCase(),
-            str.substring(8,10).toUpperCase()
-        ].join("-");
+    function isLanguage(s) {
+        return s && (s.length == 2 || s.length === 3) && s.match(/[a-z]+/);
+    }
+    function isScript(s) {
+        return s && (s.length == 2 || s.length === 3) && s.match(/[a-z]+/);
     }
 
-    // language + script
-    if (str.length >= 7) {
-        return [
-            str.substring(0,2).toLowerCase(),
-            str[3].toUpperCase() + str.substring(4,7).toLowerCase()
-        ].join("-");
+    var parts = str.replace(/_/g, '-').split(/-/g);
+    var localeParts = [];
+
+    if (parts.length > 0) {
+        if (parts[0].length === 2 || parts[0].length === 3) {
+            // language
+            localeParts.push(parts[0].toLowerCase());
+
+            if (parts.length > 1) {
+                if (parts[1].length === 4) {
+                    // script
+                    localeParts.push(parts[1][0].toUpperCase() + parts[1].substring(1).toLowerCase());
+                } else if (parts[1].length === 2 || parts[1].length == 3) {
+                    // region
+                    localeParts.push(parts[1].toUpperCase());
+                }
+
+                if (parts.length > 2) {
+                    if (parts[2].length === 2 || parts[2].length == 3) {
+                        // region
+                        localeParts.push(parts[2].toUpperCase());
+                    }
+                }
+            }
+        }
     }
 
-    // language + region
-    if (str.length >= 5) {
-        return [
-            str.substring(0,2).toLowerCase(),
-            str.substring(3,5).toUpperCase()
-        ].join("-");
-    }
-
-    // language only
-    if (str.length < 3) {
-        return str.toLowerCase();
-    }
-
-    return str;
+    return localeParts.join('-');
 }
 
 /**
