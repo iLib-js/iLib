@@ -299,13 +299,6 @@ function parseLocale(str) {
     // handle the posix default locale
     if (str === "C") return "en-US";
 
-    function isLanguage(s) {
-        return s && (s.length == 2 || s.length === 3) && s.match(/[a-z]+/);
-    }
-    function isScript(s) {
-        return s && (s.length == 2 || s.length === 3) && s.match(/[a-z]+/);
-    }
-
     var parts = str.replace(/_/g, '-').split(/-/g);
     var localeParts = [];
 
