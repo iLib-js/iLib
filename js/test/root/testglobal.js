@@ -347,10 +347,10 @@ module.exports.testglobal = {
 
         test.expect(1);
         test.equal(ilib.getLocale(), "en-US");
-        test.done();
 
         process.env.LC_ALL = "";
         ilib.locale = undefined;
+        test.done();
     },
 
     testGetLocaleNodejsPosixLocaleFull: function(test) {
@@ -366,10 +366,10 @@ module.exports.testglobal = {
 
         test.expect(1);
         test.equal(ilib.getLocale(), "en-US");
-        test.done();
 
         process.env.LC_ALL = "";
         ilib.locale = undefined;
+        test.done();
     },
 
     testGetLocaleNodejsThreeLetterLanguage1: function(test) {
@@ -385,10 +385,10 @@ module.exports.testglobal = {
 
         test.expect(1);
         test.equal(ilib.getLocale(), "yue");
-        test.done();
 
         process.env.LC_ALL = "";
         ilib.locale = undefined;
+        test.done();
     },
 
     testGetLocaleNodejsThreeLetterLanguage2: function(test) {
@@ -404,10 +404,10 @@ module.exports.testglobal = {
 
         test.expect(1);
         test.equal(ilib.getLocale(), "yue-Hant");
-        test.done();
 
         process.env.LC_ALL = "";
         ilib.locale = undefined;
+        test.done();
     },
 
     testGetLocaleNodejsThreeLetterLanguage3: function(test) {
@@ -423,10 +423,10 @@ module.exports.testglobal = {
 
         test.expect(1);
         test.equal(ilib.getLocale(), "yue-Hant-CN");
-        test.done();
 
         process.env.LC_ALL = "";
         ilib.locale = undefined;
+        test.done();
     },
 
     testGetLocaleNodejsThreeDigitRegion: function(test) {
@@ -442,10 +442,10 @@ module.exports.testglobal = {
 
         test.expect(1);
         test.equal(ilib.getLocale(), "en-001");
-        test.done();
 
         process.env.LC_ALL = "";
         ilib.locale = undefined;
+        test.done();
     },
 
     testGetLocaleNodejsUnderscoreLocale: function(test) {
@@ -462,10 +462,10 @@ module.exports.testglobal = {
 
         test.expect(1);
         test.equal(ilib.getLocale(), "de-DE");
-        test.done();
 
         process.env.LC_ALL = "";
         ilib.locale = undefined;
+        test.done();
     },
 
     testGetLocaleNodejsLocaleWithVariant1: function(test) {
@@ -482,10 +482,10 @@ module.exports.testglobal = {
 
         test.expect(1);
         test.equal(ilib.getLocale(), "de-DE");
-        test.done();
 
         process.env.LC_ALL = "";
         ilib.locale = undefined;
+        test.done();
     },
 
     testGetLocaleNodejsLocaleWithVariant2: function(test) {
@@ -502,10 +502,10 @@ module.exports.testglobal = {
 
         test.expect(1);
         test.equal(ilib.getLocale(), "zh-Hans-CN");
-        test.done();
 
         process.env.LC_ALL = "";
         ilib.locale = undefined;
+        test.done();
     },
 
     testGetLocaleNodejsLocaleWithLongVariant: function(test) {
@@ -522,10 +522,10 @@ module.exports.testglobal = {
 
         test.expect(1);
         test.equal(ilib.getLocale(), "zh-Hans-CN");
-        test.done();
 
         process.env.LC_ALL = "";
         ilib.locale = undefined;
+        test.done();
     },
 
     testGetLocaleSimulateRhino: function(test) {
