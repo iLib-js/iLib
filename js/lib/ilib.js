@@ -285,6 +285,33 @@ ilib.setLocale = function (spec) {
 };
 
 /**
+* Set the multiple paths for  ResBundle's resource path of ilib.
+*
+* @param {Array.<string>} paths an array of strings to format in
+*/
+ilib.setPaths = function (paths) {
+    if (!(ilib.isArray(paths))) return;
+    ilib.resPaths = paths;
+};
+
+/**
+* Set the multiple paths for  ResBundle's resource path of ilib.
+*
+* @return {Array.<string>} a array of multipe paths
+*/
+ilib.getPaths = function() {
+    return ilib.resPaths;
+};
+
+/**
+ * Clear the Resbundle path This is mainly used by the unit tests,
+ * but could be used by regular callers if you want to clear paths
+ */
+ilib.clearPaths = function() {
+    ilib.resPaths = undefined;
+};
+
+/**
  * @private
  */
 function parseLocale(str) {

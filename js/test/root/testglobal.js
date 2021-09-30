@@ -930,7 +930,25 @@ module.exports.testglobal = {
         test.equal(ilib.getLocale(), loc);
         test.done();
     },
-    
+    testsetPaths: function(test) {
+        test.expect(3);
+        var resBundlePaths = ["./resources", "/mnt"];
+        ilib.setPaths(resBundlePaths);
+        
+        var result = ilib.getPaths(resBundlePaths);
+        test.equal(result.length, 2);
+        test.equal(result[0], "./resources");
+        test.equal(result[1], "/mnt");
+
+        ilib.clearPaths();
+        test.done();
+    },
+    testsetPaths2: function(test) {
+        test.expect(1);
+        ilib.setPaths();
+        test.equal(ilib.getPaths(), undefined);
+        test.done();
+    },
     testIsArrayNewArrayObj: function(test) {
         test.expect(1);
         var a = new Array();
