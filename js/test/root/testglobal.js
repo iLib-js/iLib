@@ -74,7 +74,7 @@ module.exports.testglobal = {
             return;
         }
         test.expect(1);
-        test.equal(ilib.getVersion().substring(0,4), "14.9");
+        test.equal(ilib.getVersion().substring(0,5), "14.10");
         test.done();
     },
     
@@ -347,10 +347,10 @@ module.exports.testglobal = {
 
         test.expect(1);
         test.equal(ilib.getLocale(), "en-US");
-        test.done();
 
         process.env.LC_ALL = "";
         ilib.locale = undefined;
+        test.done();
     },
 
     testGetLocaleNodejsPosixLocaleFull: function(test) {
@@ -366,10 +366,166 @@ module.exports.testglobal = {
 
         test.expect(1);
         test.equal(ilib.getLocale(), "en-US");
-        test.done();
 
         process.env.LC_ALL = "";
         ilib.locale = undefined;
+        test.done();
+    },
+
+    testGetLocaleNodejsThreeLetterLanguage1: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        process.env.LC_ALL = "yue"; // Cantonese
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "yue");
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+        test.done();
+    },
+
+    testGetLocaleNodejsThreeLetterLanguage2: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        process.env.LC_ALL = "yue-Hant"; // Cantonese
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "yue-Hant");
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+        test.done();
+    },
+
+    testGetLocaleNodejsThreeLetterLanguage3: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        process.env.LC_ALL = "yue-Hant-CN"; // Cantonese
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "yue-Hant-CN");
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+        test.done();
+    },
+
+    testGetLocaleNodejsThreeDigitRegion: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        process.env.LC_ALL = "en-001"; // Cantonese
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "en-001");
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+        test.done();
+    },
+
+    testGetLocaleNodejsUnderscoreLocale: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        // on some platforms, it uses underscores instead of dashes
+        process.env.LC_ALL = "de_DE";
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "de-DE");
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+        test.done();
+    },
+
+    testGetLocaleNodejsLocaleWithVariant1: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        // should ignore variants
+        process.env.LC_ALL = "de-DE-FOOBAR";
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "de-DE");
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+        test.done();
+    },
+
+    testGetLocaleNodejsLocaleWithVariant2: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        // should ignore variants
+        process.env.LC_ALL = "zh-Hans-CN-FOOBAR";
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "zh-Hans-CN");
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+        test.done();
+    },
+
+    testGetLocaleNodejsLocaleWithLongVariant: function(test) {
+        if (ilib._getPlatform() !== "nodejs") {
+            // only test this in node
+            test.done();
+            return;
+        }
+
+        ilib.locale = undefined;
+
+        // should ignore variants
+        process.env.LC_ALL = "zh-Hans-CN-u-col-pinyin";
+
+        test.expect(1);
+        test.equal(ilib.getLocale(), "zh-Hans-CN");
+
+        process.env.LC_ALL = "";
+        ilib.locale = undefined;
+        test.done();
     },
 
     testGetLocaleSimulateRhino: function(test) {

@@ -348,8 +348,8 @@ module.exports.testlengths = {
     
         m = m.localize("en-GB");
     
-        test.equal(m.amount, 1000);
-        test.equal(m.unit, "mile");
+        test.equal(m.amount, 1609.34);
+        test.equal(m.unit, "kilometer");
         test.done();
     },
     

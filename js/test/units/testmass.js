@@ -285,8 +285,8 @@ module.exports.testmass = {
 
         m = m.localize("en-GB"); // no change -- long tons are imperial units
 
-        test.equal(m.amount, 1000);
-        test.equal(m.unit, "long-ton");
+        test.equal(m.amount, 1016.05);
+        test.equal(m.unit, "metric-ton");
         test.done();
     },
 
@@ -299,8 +299,8 @@ module.exports.testmass = {
 
         m = m.localize("en-GB");
 
-        test.equal(m.amount, 892.857);
-        test.equal(m.unit, "long-ton");
+        test.equal(m.amount, 907.1850000000001);
+        test.equal(m.unit, "metric-ton");
         test.done();
     },
 
@@ -313,8 +313,8 @@ module.exports.testmass = {
 
         m = m.localize("en-GB");
 
-        test.roughlyEqual(m.amount, 984.207, 0.001);
-        test.equal(m.unit, "long-ton");
+        test.equal(m.amount, 1000);
+        test.equal(m.unit, "metric-ton");
         test.done();
     },
 

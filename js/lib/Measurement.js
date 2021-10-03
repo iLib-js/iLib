@@ -1,7 +1,7 @@
 /*
  * Measurement.js - Measurement unit superclass
  *
- * Copyright © 2014-2015, 2018 JEDLSoft
+ * Copyright © 2014-2015, 2018, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -527,9 +527,11 @@ Measurement.getUnitIdCaseInsensitive = function(measurement, unit) {
 // Hard-code these because CLDR has incorrect data, plus this is small so we don't
 // want to do an async load just to get it.
 // Source: https://en.wikipedia.org/wiki/Metrication#Overview
+// Remove GB from an imperial list
+// note: https://www.worldatlas.com/articles/does-england-use-the-metric-system.html
 var systems = {
     "uscustomary": ["US", "FM", "MH", "LR", "PR", "PW", "GU", "WS", "AS", "VI", "MP"],
-    "imperial": ["GB", "MM"]
+    "imperial": ["MM"]
 };
 
 // every other country in the world is metric. Myanmar (MM) is adopting metric by 2019

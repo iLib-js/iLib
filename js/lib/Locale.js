@@ -70,7 +70,7 @@ var Locale = function(language, region, variant, script) {
     if (typeof(region) === 'undefined' && typeof(variant) === 'undefined' && typeof(script) === 'undefined') {
         var spec = language || ilib.getLocale();
         if (typeof(spec) === 'string') {
-            var parts = spec.split('-');
+            var parts = spec.split(/[-_]/g);
             for ( var i = 0; i < parts.length; i++ ) {
                 if (Locale._isLanguageCode(parts[i])) {
                     /**
