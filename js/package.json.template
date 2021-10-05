@@ -4,11 +4,11 @@
     "main": "index.js",
     "description": "iLib is a cross-engine library of internationalization (i18n) classes written in pure JS",
     "keywords": [
-        "internationalization", 
-        "i18n", 
-        "localization", 
-        "l10n", 
-        "globalization", 
+        "internationalization",
+        "i18n",
+        "localization",
+        "l10n",
+        "globalization",
         "g11n",
         "date",
         "time",
@@ -28,7 +28,7 @@
     "contributors": [
         {
             "name": "Edwin Hoogerbeets",
-            "email": "ehoogerbeets@gmail.com" 
+            "email": "ehoogerbeets@gmail.com"
         },
         {
             "name": "Goun Lee",
