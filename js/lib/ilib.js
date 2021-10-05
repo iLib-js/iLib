@@ -137,8 +137,7 @@ ilib._getPlatform = function () {
                 return ilib._platform;
             }
         } catch (e) {}
-
-        if (typeof(global) !== 'undefined' && global.process && global.process.versions && global.process.versions.node && typeof(module) !== 'undefined') {
+	if (typeof(global) !== 'undefined' && global.process && ((global.process.versions && global.process.versions.node && typeof(module) !== 'undefined') || global.process.argv[0].includes("iotjs"))) {
             ilib._platform = "nodejs";
         } else if (typeof(Qt) !== 'undefined') {
             ilib._platform = "qt";
