@@ -222,7 +222,8 @@ var IString = require("./IString.js");
  * @param {?Object} options Options controlling how the bundle is created
  */
 var ResBundle = function (options) {
-    var lookupLocale, spec;
+    var lookupLocale;
+    var pathArray;
 
     this.locale = new Locale();    // use the default locale
     this.baseName = "strings";
@@ -230,6 +231,7 @@ var ResBundle = function (options) {
     this.loadParams = {};
     this.missing = "source";
     this.sync = true;
+    this.multiResPaths= false;
 
     if (options) {
         if (options.locale) {
@@ -273,6 +275,10 @@ var ResBundle = function (options) {
 
     lookupLocale = this.locale.isPseudo() ? new Locale("en-US") : this.locale;
 
+    this.pathArray = ilib.getPaths();
+    this.multiResPaths = (this.pathArray && this.pathArray.length > 0 ? true : false);
+    this.map2=[];
+
     Utils.loadData({
         locale: lookupLocale,
         name: this.baseName + ".json",
@@ -302,6 +308,43 @@ var ResBundle = function (options) {
             }
         })
     });
+    if (this.multiResPaths){
+        // loading multiple paths
+        // smaller index number, higher priority
+        //determine absolute/relative path
+
+        this.pathArray.forEach(ilib.bind(this, function(element){
+            Utils.loadData({
+                locale: lookupLocale,
+                name: this.baseName + ".json",
+                sync: this.sync,
+                loadParams: this.loadParams,
+                root: element,
+                callback: ilib.bind(this, function (mapData) {
+                    if (!mapData) {
+                        mapData = ilib.data[this.baseName] || {};
+                    }
+                    this.map2.push(mapData);
+                    if (this.locale.isPseudo()) {
+                        this._loadPseudo(this.locale, options.onLoad);
+                    } else if (this.missing === "pseudo") {
+                        new LocaleInfo(this.locale, {
+                            sync: this.sync,
+                            loadParams: this.loadParams,
+                            onLoad: ilib.bind(this, function (li) {
+                                var pseudoLocale = new Locale("zxx", "XX", undefined, li.getDefaultScript());
+                                this._loadPseudo(pseudoLocale, options.onLoad);
+                            })
+                        });
+                    } else {
+                        if (typeof(options.onLoad) === 'function') {
+                            options.onLoad(this);
+                        }
+                    }
+                })
+            });
+        }));
+    }
 
     // console.log("Merged resources " + this.locale.toString() + " are: " + JSON.stringify(this.map));
     //if (!this.locale.isPseudo() && JSUtils.isEmpty(this.map)) {
@@ -511,6 +554,19 @@ ResBundle.prototype = {
     /**
      * @private
      */
+     _reSearchMatchString: function(keyName){
+        var string;
+        this.map2.forEach(ilib.bind(this,function(idx){
+            if(idx[keyName] !== undefined){
+                string=idx[keyName];
+            }
+        }));
+        return string;
+     },
+
+    /**
+     * @private
+     */
     _getStringSingle: function(source, key, escapeMode) {
         if (!source && !key) return new IString("");
 
@@ -530,6 +586,10 @@ ResBundle.prototype = {
                 trans = source;
             }
         }
+        if (this.multiResPaths){
+            var keyName = key || this._makeKey(source);
+            trans = this._reSearchMatchString(keyName);
+        } 
 
         if (escapeMode && escapeMode !== "none") {
             if (escapeMode == "default") {

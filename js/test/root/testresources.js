@@ -2278,5 +2278,51 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from {city}").toString(), "{city}からこんにちは2");
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "{city}と{country}からこんにちは2");
         test.done();
-    }
+    },
+    testResBundleBasic_ko_KR: function(test) {
+
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(2);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "안녕하세요!");
+        ilib.clearPaths();
+        
+        test.done();
+    },
+    testResBundleMultiPaths_ko_KR: function(test) {
+
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(2);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
+        
+        ilib.setPaths([multiPath]);
+
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "안녕!!!");
+        ilib.clearPaths();
+        
+        test.done();
+    },
 };
