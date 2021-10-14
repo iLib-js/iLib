@@ -102,7 +102,7 @@
     "1#1 dy|#{num} dys": "one#{num} д|#{num} д",
     "durationMediumWeeks": "one#{num} седм.|#{num} седм.",
     "1#1 mo|#{num} mos": "one#{num} мес.|#{num} мес.",
-    "durationMediumYears": "one#{num} г|#{num} г",
+    "durationMediumYears": "one#{num} г.|#{num} г.",
     "durationShortMillis": "one#{num} мсек|#{num} мсек",
     "#{num}s": "one#{num} с|#{num} с",
     "durationShortMinutes": "one#{num} мин|#{num} мин",
@@ -110,7 +110,7 @@
     "#{num}d": "one#{num} д|#{num} д",
     "#{num}w": "one#{num} седм.|#{num} седм.",
     "durationShortMonths": "one#{num} мес.|#{num} мес.",
-    "#{num}y": "one#{num} г|#{num} г",
+    "#{num}y": "one#{num} г.|#{num} г.",
     "1#in 1 second|#in {num} seconds": "one#след {num} секунда|#след {num} секунди",
     "1#in 1 minute|#in {num} minutes": "one#след {num} минута|#след {num} минути",
     "1#in 1 hour|#in {num} hours": "one#след {num} час|#след {num} часа",
@@ -160,5 +160,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": ", ",
-    "finalSeparatorShort": ", "
+    "finalSeparatorShort": ", ",
+    "B0": "полунощ",
+    "B1": "пр.об.",
+    "B2": "сутринта",
+    "B3": "на обяд",
+    "B4": "сл.об.",
+    "B5": "следобед",
+    "B6": "вечерта",
+    "B7": "през нощта"
 }

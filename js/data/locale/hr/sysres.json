@@ -232,9 +232,17 @@
     "separatorFull": ", ",
     "finalSeparatorFull": " i ",
     "separatorLong": ", ",
-    "finalSeparatorLong": ", ",
+    "finalSeparatorLong": " i ",
     "separatorMedium": ", ",
-    "finalSeparatorMedium": ", ",
+    "finalSeparatorMedium": " i ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "ponoć",
+    "B1": "AM",
+    "B2": "ujutro",
+    "B3": "podne",
+    "B4": "poslije podne",
+    "B5": "PM",
+    "B6": "navečer",
+    "B7": "noću"
 }

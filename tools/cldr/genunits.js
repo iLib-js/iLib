@@ -1,7 +1,7 @@
 /*
  * genunits.js - ilib tool to generate the json data about unit formats
  *
- * Copyright © 2013, 2018 JEDLSoft
+ * Copyright © 2013, 2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
+var path = require('path');
 var util = require('util');
 var common = require('./common');
 var merge = common.merge;
@@ -27,7 +28,7 @@ var Locale = common.Locale;
 var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
 
-var cldrData = require("cldr-data");
+var cldrCore = require("cldr-core/availableLocales.json").availableLocales.full;
 
 function usage() {
     console.log("Usage: genunits [-h] [ locale_data_dir ]\n" +
@@ -35,7 +36,7 @@ function usage() {
             "-h or --help\n" +
             "  this help\n" +
             "locale_data_dir\n" +
-            "  the top level of the ilib locale data directory\n");
+            "  the top level of the ilib locale data directory");
     process.exit(1);
 }
 
@@ -50,9 +51,9 @@ process.argv.forEach(function (val, index, array) {
 localeDirName = process.argv[2] || "tmp";
 
 console.log("genunits - tool to generate the json data about unit formats from the CLDR data.\n" +
-        "Copyright (c) 2013, 2018 JEDLSoft\n");
+        "Copyright © 2013, 2018, 2020 JEDLSoft");
 
-console.log("locale dir: " + localeDirName + "\n");
+console.log("locale dir: " + localeDirName );
 
 if (!fs.existsSync(localeDirName)) {
     common.makeDirs(localeDirName);
@@ -117,6 +118,34 @@ function isAsianLanguage(locale) {
     return l.getLanguage() === "ja" || l.getLanguage() === "zh" || l.getLanguage() === "th";
 }
 
+// filter out these relative units
+var filter = {
+    "10p-1": true,
+    "10p-2": true,
+    "10p-3": true,
+    "10p-6": true,
+    "10p-9": true,
+    "10p-12": true,
+    "10p-15": true,
+    "10p-18": true,
+    "10p-21": true,
+    "10p-24": true,
+    "10p1": true,
+    "10p2": true,
+    "10p3": true,
+    "10p6": true,
+    "10p9": true,
+    "10p12": true,
+    "10p15": true,
+    "10p18": true,
+    "10p21": true,
+    "10p24": true,
+    "per": true,
+    "power2": true,
+    "power3": true,
+    "times": true
+};
+
 function frameUnits(data, locale, localeData) {
     if (!localeData["unitfmt"]) {
         localeData["unitfmt"] = {};
@@ -126,7 +155,7 @@ function frameUnits(data, locale, localeData) {
             localeData["unitfmt"][size] = {};
         }
         for (var ufl in data["main"][locale]["units"][size]) {
-            if (ufl !== "per") {
+            if (!filter[ufl]) {
                 var index = ufl.indexOf("-");
                 var dispname = ufl.substring(index+1);
                 localeData["unitfmt"][size][dispname] = frameUnitsString(data["main"][locale]["units"][size][ufl]);
@@ -588,21 +617,25 @@ function frameUnits(data, locale, localeData) {
     return localeData;
 }
 
-console.log("Loading locale data...\n");
+console.log("Loading locale data...");
 
-cldrData.availableLocales.forEach(function(locale) {
-    var path = "main/" + locale + "/units";
-    var data = cldrData(path);
-    var localeData = {};
-    var l = new Locale(locale);
-
-    localeData = frameUnits(data, locale, localeData);
-
-    // now special case for the root
-    if (locale === "root") {
-        writeUnits(localeData);
-    } else {
+cldrCore.forEach(function(locale) {
+    var pathName = path.join("cldr-units-full/main", locale, "units.json");
+    try {
+        var data = require(pathName);
+        var localeData = {};
         var l = new Locale(locale);
-        writeUnits(localeData, l.getLanguage(), l.getScript(), l.getRegion());
+    
+        localeData = frameUnits(data, locale, localeData);
+    
+        // now special case for the root
+        if (locale === "root") {
+            writeUnits(localeData);
+        } else {
+            var l = new Locale(locale);
+            writeUnits(localeData, l.getLanguage(), l.getScript(), l.getRegion());
+        }
+    } catch (e) {
+        console.log("Could not find " + pathName + " ... skipping.");
     }
 });

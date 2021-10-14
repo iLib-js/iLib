@@ -2,7 +2,7 @@
  * AsyncAsyncNodeLoader.js - Loader implementation for nodejs with asynchronous calls.
  * Mostly this is used for testing the async calls
  *
- * Copyright © 2018, JEDLSoft
+ * Copyright © 2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ module.exports = function (ilib) {
     Loader = require("./Loader.js");
 
     var AsyncNodeLoader = function (ilib) {
-        // util.print("new common AsyncNodeLoader instance\n");
+        // console.log("new common AsyncNodeLoader instance");
 
         this.parent.call(this, ilib);
 
@@ -44,8 +44,8 @@ module.exports = function (ilib) {
             path.join(path.dirname(module.filename), "..") :
             this.root;
 
-        //console.log("module.filename is " + module.filename + "\n");
-        //console.log("base is defined as " + this.base + "\n");
+        //console.log("module.filename is " + module.filename);
+        //console.log("base is defined as " + this.base);
 
         // this.includePath.push(path.join(this.root, "resources"));
         this._exists(this.root, "resources"); // always check the application's resources dir first

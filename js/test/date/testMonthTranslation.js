@@ -1,7 +1,7 @@
 /*
- * testMonthTranslation.js
+ * testMonthTranslation.js - test the month's translation
  *
- * Copyright © 2019, JEDLSoft
+ * Copyright © 2019-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ module.exports.testmonthtranslation = {
     },
     testMonthTranslate_ar_EG: function(test) {
         test.expect(12);
-        
+
         // full, long: MMMM
         // medium: MM
         // short: M
@@ -56,7 +56,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9],"أكتوبر");
         test.equal(value[10],"نوفمبر");
         test.equal(value[11], "ديسمبر");
-        
+
         test.done();
     },
 
@@ -84,7 +84,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9],"تشرين الأول");
         test.equal(value[10],"تشرين الثاني");
         test.equal(value[11], "كانون الأول");
-        
+
         test.done();
     },
     testMonthTranslate_ar_MA: function(test) {
@@ -111,7 +111,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "أكتوبر");
         test.equal(value[10], "نونبر");
         test.equal(value[11], "دجنبر");
-        
+
         test.done();
     },
     testMonthTranslate_as_IN: function(test) {
@@ -137,7 +137,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "অক্টোবৰ");
         test.equal(value[10], "নৱেম্বৰ");
         test.equal(value[11], "ডিচেম্বৰ");
-        
+
         test.done();
     },
     testMonthTranslate_bg_BG: function(test) {
@@ -194,8 +194,8 @@ module.exports.testmonthtranslation = {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
-        test.equal(value[0], "জানু");
-        test.equal(value[1], "ফেব");
+        test.equal(value[0], "জানুয়ারী");
+        test.equal(value[1], "ফেব্রুয়ারী");
         test.equal(value[2], "মার্চ");
         test.equal(value[3], "এপ্রিল");
         test.equal(value[4], "মে");
@@ -206,7 +206,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "অক্টোবর");
         test.equal(value[10], "নভেম্বর");
         test.equal(value[11], "ডিসেম্বর");
-        
+
         test.done();
     },
 
@@ -253,7 +253,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "okt");
         test.equal(value[10], "nov");
         test.equal(value[11], "dec");
-        
+
         test.done();
     },
     testMonthTranslate_bs_Latn_ME: function(test) {
@@ -299,7 +299,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "okt");
         test.equal(value[10], "nov");
         test.equal(value[11], "dec");
-        
+
         test.done();
     },
     testMonthTranslate_cs_CZ: function(test) {
@@ -326,7 +326,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "říjen");
         test.equal(value[10], "listopad");
         test.equal(value[11], "prosinec");
-        
+
         test.done();
     },
     testMonthTranslate_da_DK: function(test) {
@@ -359,7 +359,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "jan.");
         test.equal(value[1], "feb.");
         test.equal(value[2], "mar.");
@@ -372,7 +372,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "okt.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dec.");
-        
+
         test.done();
     },
     testMonthTranslate_de_AT: function(test) {
@@ -399,7 +399,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oktober");
         test.equal(value[10], "November");
         test.equal(value[11], "Dezember");
-        
+
         test.done();
     },
     testMonthTranslate_de_CH: function(test) {
@@ -426,7 +426,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oktober");
         test.equal(value[10], "November");
         test.equal(value[11], "Dezember");
-        
+
         test.done();
     },
     testMonthTranslate_de_DE: function(test) {
@@ -453,10 +453,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oktober");
         test.equal(value[10], "November");
         test.equal(value[11], "Dezember");
-        
+
         test.done();
     },
-    
+
     testMonthTranslate_de_LU: function(test) {
         test.expect(12);
 
@@ -482,7 +482,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oktober");
         test.equal(value[10], "November");
         test.equal(value[11], "Dezember");
-        
+
         test.done();
     },
     testMonthTranslate_el_CY: function(test) {
@@ -498,37 +498,37 @@ module.exports.testmonthtranslation = {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
-        test.equal(value[0], "Ιανουάριος"); //standAlone
-        test.equal(value[1], "Φεβρουάριος");
-        test.equal(value[2], "Μάρτιος");
-        test.equal(value[3], "Απρίλιος");
-        test.equal(value[4], "Μάιος");
-        test.equal(value[5], "Ιούνιος");
-        test.equal(value[6], "Ιούλιος");
-        test.equal(value[7], "Αύγουστος");
-        test.equal(value[8], "Σεπτέμβριος");
-        test.equal(value[9], "Οκτώβριος");
-        test.equal(value[10], "Νοέμβριος");
-        test.equal(value[11], "Δεκέμβριος");
+        test.equal(value[0], "Ιανουαρίου"); //standAlone
+        test.equal(value[1], "Φεβρουαρίου");
+        test.equal(value[2], "Μαρτίου");
+        test.equal(value[3], "Απριλίου");
+        test.equal(value[4], "Μαΐου");
+        test.equal(value[5], "Ιουνίου");
+        test.equal(value[6], "Ιουλίου");
+        test.equal(value[7], "Αυγούστου");
+        test.equal(value[8], "Σεπτεμβρίου");
+        test.equal(value[9], "Οκτωβρίου");
+        test.equal(value[10], "Νοεμβρίου");
+        test.equal(value[11], "Δεκεμβρίου");
 
         var fmt = new DateFmt({locale:"el-CY", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Ιαν");
         test.equal(value[1], "Φεβ");
-        test.equal(value[2], "Μάρ");
+        test.equal(value[2], "Μαρ");
         test.equal(value[3], "Απρ");
-        test.equal(value[4], "Μάι");
-        test.equal(value[5], "Ιούν");
-        test.equal(value[6], "Ιούλ");
-        test.equal(value[7], "Αύγ");
+        test.equal(value[4], "Μαΐ");
+        test.equal(value[5], "Ιουν");
+        test.equal(value[6], "Ιουλ");
+        test.equal(value[7], "Αυγ");
         test.equal(value[8], "Σεπ");
         test.equal(value[9], "Οκτ");
-        test.equal(value[10], "Νοέ");
+        test.equal(value[10], "Νοε");
         test.equal(value[11], "Δεκ");
-        
+
         test.done();
     },
     testMonthTranslate_el_GR: function(test) {
@@ -544,37 +544,37 @@ module.exports.testmonthtranslation = {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
-        test.equal(value[0], "Ιανουάριος"); //standAlone
-        test.equal(value[1], "Φεβρουάριος");
-        test.equal(value[2], "Μάρτιος");
-        test.equal(value[3], "Απρίλιος");
-        test.equal(value[4], "Μάιος");
-        test.equal(value[5], "Ιούνιος");
-        test.equal(value[6], "Ιούλιος");
-        test.equal(value[7], "Αύγουστος");
-        test.equal(value[8], "Σεπτέμβριος");
-        test.equal(value[9], "Οκτώβριος");
-        test.equal(value[10], "Νοέμβριος");
-        test.equal(value[11], "Δεκέμβριος");
+        test.equal(value[0], "Ιανουαρίου"); //standAlone
+        test.equal(value[1], "Φεβρουαρίου");
+        test.equal(value[2], "Μαρτίου");
+        test.equal(value[3], "Απριλίου");
+        test.equal(value[4], "Μαΐου");
+        test.equal(value[5], "Ιουνίου");
+        test.equal(value[6], "Ιουλίου");
+        test.equal(value[7], "Αυγούστου");
+        test.equal(value[8], "Σεπτεμβρίου");
+        test.equal(value[9], "Οκτωβρίου");
+        test.equal(value[10], "Νοεμβρίου");
+        test.equal(value[11], "Δεκεμβρίου");
 
         var fmt = new DateFmt({locale:"el-GR", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Ιαν");
         test.equal(value[1], "Φεβ");
-        test.equal(value[2], "Μάρ");
+        test.equal(value[2], "Μαρ");
         test.equal(value[3], "Απρ");
-        test.equal(value[4], "Μάι");
-        test.equal(value[5], "Ιούν");
-        test.equal(value[6], "Ιούλ");
-        test.equal(value[7], "Αύγ");
+        test.equal(value[4], "Μαΐ");
+        test.equal(value[5], "Ιουν");
+        test.equal(value[6], "Ιουλ");
+        test.equal(value[7], "Αυγ");
         test.equal(value[8], "Σεπ");
         test.equal(value[9], "Οκτ");
-        test.equal(value[10], "Νοέ");
+        test.equal(value[10], "Νοε");
         test.equal(value[11], "Δεκ");
-        
+
         test.done();
     },
     testMonthTranslate_en_AM: function(test) {
@@ -607,7 +607,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
         test.equal(value[2], "Mar");
@@ -620,7 +620,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
     testMonthTranslate_en_AU: function(test) {
@@ -653,7 +653,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
         test.equal(value[2], "Mar");
@@ -665,8 +665,8 @@ module.exports.testmonthtranslation = {
         test.equal(value[8], "Sep");
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
-        test.equal(value[11], "Dec");        
-        
+        test.equal(value[11], "Dec");
+
         test.done();
     },
     testMonthTranslate_en_AZ: function(test) {
@@ -694,7 +694,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
         test.equal(value[2], "Mar");
@@ -707,7 +707,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
     testMonthTranslate_en_CA: function(test) {
@@ -739,7 +739,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Jan.");
         test.equal(value[1], "Feb.");
         test.equal(value[2], "Mar.");
@@ -752,7 +752,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct.");
         test.equal(value[10], "Nov.");
         test.equal(value[11], "Dec.");
-        
+
         test.done();
     },
     testMonthTranslate_en_GB: function(test) {
@@ -784,7 +784,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
         test.equal(value[2], "Mar");
@@ -797,7 +797,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
     testMonthTranslate_en_GH: function(test) {
@@ -829,7 +829,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
         test.equal(value[2], "Mar");
@@ -842,7 +842,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
     testMonthTranslate_en_HK: function(test) {
@@ -874,7 +874,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
         test.equal(value[2], "Mar");
@@ -887,7 +887,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
     testMonthTranslate_en_IE: function(test) {
@@ -920,7 +920,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
         test.equal(value[2], "Mar");
@@ -933,7 +933,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
     testMonthTranslate_en_IN: function(test) {
@@ -966,7 +966,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
         test.equal(value[2], "Mar");
@@ -979,7 +979,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
     testMonthTranslate_en_IS: function(test) {
@@ -1031,7 +1031,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "October");
         test.equal(value[10], "November");
         test.equal(value[11], "December");
-        
+
         test.done();
     },
     testMonthTranslate_en_KE: function(test) {
@@ -1076,7 +1076,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
     testMonthTranslate_en_KR: function(test) {
@@ -1102,7 +1102,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "October");
         test.equal(value[10], "November");
         test.equal(value[11], "December");
-        
+
         test.done();
     },
     testMonthTranslate_en_LK: function(test) {
@@ -1128,7 +1128,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "October");
         test.equal(value[10], "November");
         test.equal(value[11], "December");
-        
+
         test.done();
     },
     testMonthTranslate_en_MM: function(test) {
@@ -1154,7 +1154,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "October");
         test.equal(value[10], "November");
         test.equal(value[11], "December");
-        
+
         test.done();
     },
     testMonthTranslate_en_MW: function(test) {
@@ -1199,7 +1199,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
     testMonthTranslate_en_MY: function(test) {
@@ -1243,7 +1243,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
     testMonthTranslate_en_NG: function(test) {
@@ -1287,7 +1287,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
     testMonthTranslate_en_NZ: function(test) {
@@ -1314,7 +1314,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "October");
         test.equal(value[10], "November");
         test.equal(value[11], "December");
-        
+
         test.done();
     },
     testMonthTranslate_en_PH: function(test) {
@@ -1358,7 +1358,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
     testMonthTranslate_en_PR: function(test) {
@@ -1391,7 +1391,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
         test.equal(value[2], "Mar");
@@ -1437,7 +1437,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
         test.equal(value[2], "Mar");
@@ -1450,12 +1450,12 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
     testMonthTranslate_en_US: function(test) {
         test.expect(24);
- 
+
         // full, long: MMMM
         // medium: MMM
         // short: M
@@ -1483,7 +1483,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
         test.equal(value[2], "Mar");
@@ -1496,13 +1496,13 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
-    
+
     testMonthTranslate_en_UG: function(test) {
         test.expect(24);
-        
+
         // full, long: MMMM
         // medium: MMM
         // short: MM
@@ -1530,7 +1530,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
         test.equal(value[2], "Mar");
@@ -1543,7 +1543,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
     testMonthTranslate_en_ZA: function(test) {
@@ -1576,7 +1576,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
         test.equal(value[2], "Mar");
@@ -1589,7 +1589,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
     testMonthTranslate_en_ZM: function(test) {
@@ -1622,7 +1622,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
         test.equal(value[2], "Mar");
@@ -1635,7 +1635,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dec");
-        
+
         test.done();
     },
     testMonthTranslate_es_AR: function(test) {
@@ -1679,10 +1679,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dic.");
-        
+
         test.done();
     },
-    
+
     testMonthTranslate_es_BO: function(test) {
         test.expect(24);
 
@@ -1713,7 +1713,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "ene.");
         test.equal(value[1], "feb.");
         test.equal(value[2], "mar.");
@@ -1726,7 +1726,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dic.");
-        
+
         test.done();
     },
     testMonthTranslate_es_CL: function(test) {
@@ -1782,7 +1782,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "octubre");
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
-        
+
         test.done();
     },
     testMonthTranslate_es_DO: function(test) {
@@ -1815,7 +1815,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "ene.");
         test.equal(value[1], "feb.");
         test.equal(value[2], "mar.");
@@ -1828,7 +1828,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dic.");
-        
+
         test.done();
     },
 
@@ -1838,7 +1838,7 @@ module.exports.testmonthtranslation = {
         // full, long: MMMM
         // medium: MMM
         // short: M
-        
+
         var value = [], i;
         var fmt = new DateFmt({locale:"es-EC", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
@@ -1862,7 +1862,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "ene.");
         test.equal(value[1], "feb.");
         test.equal(value[2], "mar.");
@@ -1907,7 +1907,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], "ene.");
         test.equal(value[1], "feb.");
         test.equal(value[2], "mar.");
@@ -1920,7 +1920,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dic.");
-        
+
         test.done();
     },
     testMonthTranslate_es_GT: function(test) {
@@ -1947,7 +1947,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "octubre");
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
-        
+
         test.done();
     },
     testMonthTranslate_es_HN: function(test) {
@@ -1991,7 +1991,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dic.");
-        
+
         test.done();
     },
     testMonthTranslate_es_MX: function(test) {
@@ -2023,19 +2023,19 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        test.equal(value[0], "ene");
-        test.equal(value[1], "feb");
-        test.equal(value[2], "mar");
-        test.equal(value[3], "abr");
-        test.equal(value[4], "may");
-        test.equal(value[5], "jun");
-        test.equal(value[6], "jul");
-        test.equal(value[7], "ago");
-        test.equal(value[8], "sep");
-        test.equal(value[9], "oct");
-        test.equal(value[10], "nov");
-        test.equal(value[11], "dic");
-        
+        test.equal(value[0], 'ene.');
+        test.equal(value[1], 'feb.');
+        test.equal(value[2], 'mar.');
+        test.equal(value[3], 'abr.');
+        test.equal(value[4], 'may.');
+        test.equal(value[5], 'jun.');
+        test.equal(value[6], 'jul.');
+        test.equal(value[7], 'ago.');
+        test.equal(value[8], 'sep.');
+        test.equal(value[9], 'oct.');
+        test.equal(value[10], 'nov.');
+        test.equal(value[11], 'dic.');
+
         test.done();
     },
     testMonthTranslate_es_NI: function(test) {
@@ -2079,7 +2079,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dic.");
-        
+
         test.done();
     },
     testMonthTranslate_es_PA: function(test) {
@@ -2106,7 +2106,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "octubre");
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
-        
+
         test.done();
     },
     testMonthTranslate_es_PE: function(test) {
@@ -2150,7 +2150,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct.");
         test.equal(value[10], "Nov.");
         test.equal(value[11], "Dic.");
-        
+
         test.done();
     },
     testMonthTranslate_es_PR: function(test) {
@@ -2177,7 +2177,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "octubre");
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
-        
+
         test.done();
     },
     testMonthTranslate_es_PY: function(test) {
@@ -2221,7 +2221,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dic.");
-        
+
         test.done();
     },
     testMonthTranslate_es_SV: function(test) {
@@ -2265,7 +2265,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dic.");
-        
+
         test.done();
     },
     testMonthTranslate_es_US: function(test) {
@@ -2309,7 +2309,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dic.");
-        
+
         test.done();
     },
     testMonthTranslate_es_UY: function(test) {
@@ -2353,12 +2353,12 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Oct.");
         test.equal(value[10], "Nov.");
         test.equal(value[11], "Dic.");
-        
+
         test.done();
     },
     testMonthTranslate_es_VE: function(test) {
         test.expect(24);
-        
+
         // full, long: MMMM
         // medium: MMM
         // short: M
@@ -2398,13 +2398,13 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dic.");
-        
+
         test.done();
     },
-    
+
     testMonthTranslate_et_EE: function(test) {
         test.expect(24);
-        
+
         // full, long: MMMM
         // medium: MMM
         // short: MM
@@ -2444,7 +2444,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "okt");
         test.equal(value[10], "nov");
         test.equal(value[11], "dets");
-        
+
         test.done();
     },
     testMonthTranslate_fa_AF: function(test) {
@@ -2491,10 +2491,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "دی");
         test.equal(value[10], "بهمن");
         test.equal(value[11], "اسفند");
-        
+
         test.done();
     },
-    
+
     testMonthTranslate_fa_IR: function(test) {
         test.expect(24);
 
@@ -2537,7 +2537,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "دی");
         test.equal(value[10], "بهمن");
         test.equal(value[11], "اسفند");
-        
+
         test.done();
     },
     testMonthTranslate_fi_FI: function(test) {
@@ -2564,7 +2564,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "lokakuu");
         test.equal(value[10], "marraskuu");
         test.equal(value[11], "joulukuu");
-        
+
         test.done();
     },
     testMonthTranslate_fr_BE: function(test) {
@@ -2609,7 +2609,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_CA: function(test) {
@@ -2698,7 +2698,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_FR: function(test) {
@@ -2743,7 +2743,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_LU: function(test) {
@@ -2833,7 +2833,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "DFómh");
         test.equal(value[10], "Samh");
         test.equal(value[11], "Noll");
-        
+
         test.done();
     },
     testMonthTranslate_gu_IN: function(test) {
@@ -2878,7 +2878,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "ઑક્ટો");
         test.equal(value[10], "નવે");
         test.equal(value[11], "ડિસે");
-        
+
         test.done();
     },
     testMonthTranslate_he_IL: function(test) {
@@ -2923,7 +2923,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "אוק׳");
         test.equal(value[10], "נוב׳");
         test.equal(value[11],"דצמ׳");
-        
+
         test.done();
     },
     testMonthTranslate_hi_IN: function(test) {
@@ -2968,7 +2968,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "अक्तू॰");
         test.equal(value[10], "नव॰");
         test.equal(value[11], "दिस॰");
-        
+
         test.done();
     },
         testMonthTranslate_hr_HR: function(test) {
@@ -3013,7 +3013,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "lis");
         test.equal(value[10], "stu");
         test.equal(value[11], "pro");
-        
+
         test.done();
     },
     testMonthTranslate_hr_ME: function(test) {
@@ -3038,7 +3038,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "listopad");
         test.equal(value[10], "studeni");
         test.equal(value[11], "prosinac");
-        
+
         test.done();
     },
     testMonthTranslate_hr_HU: function(test) {
@@ -3063,7 +3063,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "listopad");
         test.equal(value[10], "studeni");
         test.equal(value[11], "prosinac");
-        
+
         test.done();
     },
     testMonthTranslate_id_ID: function(test) {
@@ -3155,7 +3155,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "okt.");
         test.equal(value[10], "nóv.");
         test.equal(value[11], "des.");
-        
+
         test.done();
     },
     testMonthTranslate_it_CH: function(test) {
@@ -3200,7 +3200,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "ott");
         test.equal(value[10], "nov");
         test.equal(value[11], "dic");
-        
+
         test.done();
     },
     testMonthTranslate_it_IT: function(test) {
@@ -3270,7 +3270,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "10月");
         test.equal(value[10], "11月");
         test.equal(value[11], "12月");
-        
+
         test.done();
     },
     testMonthTranslate_kk_KZ: function(test) {
@@ -3315,7 +3315,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "қаз.");
         test.equal(value[10], "қар.");
         test.equal(value[11], "жел.");
-        
+
         test.done();
     },
     testMonthTranslate_kn_IN: function(test) {
@@ -3331,18 +3331,18 @@ module.exports.testmonthtranslation = {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
-        test.equal(value[0],"ಜನವರಿ" );
+        test.equal(value[0], "ಜನವರಿ" );
         test.equal(value[1], "ಫೆಬ್ರವರಿ");
-        test.equal(value[2],"ಮಾರ್ಚ್" );
+        test.equal(value[2], "ಮಾರ್ಚ್" );
         test.equal(value[3], "ಏಪ್ರಿಲ್");
         test.equal(value[4], "ಮೇ");
         test.equal(value[5], "ಜೂನ್");
-        test.equal(value[6],"ಜುಲೈ" );
-        test.equal(value[7],"ಆಗಸ್ಟ್");
-        test.equal(value[8],"ಸೆಪ್ಟೆಂಬರ್");
-        test.equal(value[9],"ಅಕ್ಟೋಬರ್");
+        test.equal(value[6], "ಜುಲೈ" );
+        test.equal(value[7], "ಆಗಸ್ಟ್");
+        test.equal(value[8], "ಸೆಪ್ಟೆಂಬರ್");
+        test.equal(value[9], "ಅಕ್ಟೋಬರ್");
         test.equal(value[10], "ನವೆಂಬರ್");
-        test.equal(value[11],"ಡಿಸೆಂಬರ್");
+        test.equal(value[11], "ಡಿಸೆಂಬರ್");
 
         var fmt = new DateFmt({locale:"kn-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
 
@@ -3350,19 +3350,19 @@ module.exports.testmonthtranslation = {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
-        test.equal(value[0], "ಜನವರಿ"  );
-        test.equal(value[1], "ಫೆಬ್ರವರಿ");
+        test.equal(value[0], "ಜನ" );
+        test.equal(value[1], "ಫೆಬ್ರ");
         test.equal(value[2], "ಮಾರ್ಚ್"  );
         test.equal(value[3], "ಏಪ್ರಿ");
-        test.equal(value[4],  "ಮೇ" );
+        test.equal(value[4], "ಮೇ" );
         test.equal(value[5], "ಜೂನ್" );
-        test.equal(value[6],"ಜುಲೈ" );
+        test.equal(value[6], "ಜುಲೈ" );
         test.equal(value[7], "ಆಗ");
         test.equal(value[8], "ಸೆಪ್ಟೆಂ");
         test.equal(value[9], "ಅಕ್ಟೋ");
-        test.equal(value[10],"ನವೆಂ");
-        test.equal(value[11],"ಡಿಸೆಂ");
-        
+        test.equal(value[10], "ನವೆಂ");
+        test.equal(value[11], "ಡಿಸೆಂ");
+
         test.done();
     },
     testMonthTranslate_ko_KR: function(test) {
@@ -3389,7 +3389,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "10월");
         test.equal(value[10], "11월");
         test.equal(value[11], "12월");
-        
+
         test.done();
     },
     testMonthTranslate_ku_IQ: function(test) {
@@ -3461,7 +3461,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "spalis");
         test.equal(value[10], "lapkritis");
         test.equal(value[11], "gruodis");
-        
+
         test.done();
     },
     testMonthTranslate_lv_LV: function(test) {
@@ -3506,7 +3506,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "okt.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dec.");
-        
+
         test.done();
     },
     testMonthTranslate_mk_MK: function(test) {
@@ -3533,7 +3533,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "октомври");
         test.equal(value[10], "ноември");
         test.equal(value[11], "декември");
-        
+
         test.done();
     },
     testMonthTranslate_ml_IN: function(test) {
@@ -3560,7 +3560,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9],  "ഒക്‌ടോബർ");
         test.equal(value[10],"നവംബർ");
         test.equal(value[11],"ഡിസംബർ");
-        
+
         var fmt = new DateFmt({locale:"ml-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
 
         for (i=0; i < 12; i++) {
@@ -3578,7 +3578,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "ഒക്ടോ");
         test.equal(value[10], "നവം");
         test.equal(value[11], "ഡിസം");
-        
+
         test.done();
     },
     testMonthTranslate_mr_IN: function(test) {
@@ -3602,7 +3602,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9],"ऑक्टोबर");
         test.equal(value[10],"नोव्हेंबर");
         test.equal(value[11], "डिसेंबर");
-        
+
         test.done();
     },
     testMonthTranslate_ms_MY: function(test) {
@@ -3647,7 +3647,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Okt");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dis");
-        
+
         test.done();
     },
     testMonthTranslate_nb_NO: function(test) {
@@ -3680,19 +3680,19 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        test.equal(value[0], "jan.");
-        test.equal(value[1], "feb.");
-        test.equal(value[2], "mar.");
-        test.equal(value[3], "apr.");
+        test.equal(value[0], "jan");
+        test.equal(value[1], "feb");
+        test.equal(value[2], "mar");
+        test.equal(value[3], "apr");
         test.equal(value[4], "mai");
-        test.equal(value[5], "jun.");
-        test.equal(value[6], "jul.");
-        test.equal(value[7], "aug.");
-        test.equal(value[8], "sep.");
-        test.equal(value[9], "okt.");
-        test.equal(value[10], "nov.");
-        test.equal(value[11], "des.");
-        
+        test.equal(value[5], "jun");
+        test.equal(value[6], "jul");
+        test.equal(value[7], "aug");
+        test.equal(value[8], "sep");
+        test.equal(value[9], "okt");
+        test.equal(value[10], "nov");
+        test.equal(value[11], "des");
+
         test.done();
     },
     testMonthTranslate_nl_BE: function(test) {
@@ -3737,7 +3737,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "okt.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dec.");
-        
+
         test.done();
     },
     testMonthTranslate_nl_NL: function(test) {
@@ -3782,7 +3782,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "okt.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dec.");
-        
+
         test.done();
     },
     testMonthTranslate_pa_Guru_IN: function(test) {
@@ -3827,7 +3827,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9],  "ਅਕਤੂ");
         test.equal(value[10],"ਨਵੰ");
         test.equal(value[11],"ਦਸੰ");
-        
+
         test.done();
     },
     testMonthTranslate_pl_PL: function(test) {
@@ -3873,7 +3873,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "paź");
         test.equal(value[10], "lis");
         test.equal(value[11], "gru");
-        
+
         test.done();
     },
     testMonthTranslate_pt_BR: function(test) {
@@ -3898,7 +3898,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "outubro");
         test.equal(value[10], "novembro");
         test.equal(value[11], "dezembro");
-        
+
         test.done();
     },
     testMonthTranslate_pt_PT: function(test) {
@@ -3970,7 +3970,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dec.");
-        
+
         test.done();
     },
     testMonthTranslate_sr_Cyrl_RS: function(test) {
@@ -3997,7 +3997,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "октобар");
         test.equal(value[10], "новембар");
         test.equal(value[11], "децембар");
-        
+
         test.done();
     },
     testMonthTranslate_sr_Latn_RS: function(test) {
@@ -4024,7 +4024,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oktobar");
         test.equal(value[10], "novembar");
         test.equal(value[11], "decembar");
-        
+
         test.done();
     },
     testMonthTranslate_ru_BY: function(test) {
@@ -4069,7 +4069,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "окт.");
         test.equal(value[10], "нояб.");
         test.equal(value[11], "дек.");
-        
+
         test.done();
     },
     testMonthTranslate_ru_KG: function(test) {
@@ -4114,7 +4114,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "окт.");
         test.equal(value[10], "нояб.");
         test.equal(value[11], "дек.");
-        
+
         test.done();
     },
     testMonthTranslate_ru_KZ: function(test) {
@@ -4159,7 +4159,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "окт.");
         test.equal(value[10], "нояб.");
         test.equal(value[11], "дек.");
-        
+
         test.done();
     },
     testMonthTranslate_ru_GE: function(test) {
@@ -4184,7 +4184,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "октябрь");
         test.equal(value[10], "ноябрь");
         test.equal(value[11], "декабрь");
-        
+
         test.done();
     },
     testMonthTranslate_ru_RU: function(test) {
@@ -4229,7 +4229,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "окт.");
         test.equal(value[10], "нояб.");
         test.equal(value[11], "дек.");
-        
+
         test.done();
     },
     testMonthTranslate_ru_UA: function(test) {
@@ -4301,7 +4301,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "október");
         test.equal(value[10], "november");
         test.equal(value[11], "december");
-        
+
         test.done();
     },
     testMonthTranslate_sl_SI: function(test) {
@@ -4346,7 +4346,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "okt.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dec.");
-        
+
         test.done();
     },
     testMonthTranslate_sq_AL: function(test) {
@@ -4391,7 +4391,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "tet");
         test.equal(value[10], "nën");
         test.equal(value[11], "dhj");
-        
+
         test.done();
     },
     testMonthTranslate_sq_ME: function(test) {
@@ -4438,7 +4438,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "tet");
         test.equal(value[10], "nën");
         test.equal(value[11], "dhj");
-        
+
         test.done();
     },
     testMonthTranslate_sv_FI: function(test) {
@@ -4483,7 +4483,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "okt.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dec.");
-        
+
         test.done();
     },
     testMonthTranslate_sv_SE: function(test) {
@@ -4528,7 +4528,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "okt.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dec.");
-        
+
         test.done();
     },
     testMonthTranslate_ta_IN: function(test) {
@@ -4573,7 +4573,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "அக்.");
         test.equal(value[10],"நவ.");
         test.equal(value[11], "டிச.");
-        
+
         test.done();
     },
     testMonthTranslate_te_IN: function(test) {
@@ -4606,7 +4606,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0],"జన");
         test.equal(value[1],"ఫిబ్ర");
         test.equal(value[2], "మార్చి");
@@ -4641,7 +4641,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[5], "มิถุนายน");
         test.equal(value[6], "กรกฎาคม");
         test.equal(value[7], "สิงหาคม");
-        test.equal(value[8], "กันยายน"); 
+        test.equal(value[8], "กันยายน");
         test.equal(value[9], "ตุลาคม");
         test.equal(value[10], "พฤศจิกายน");
         test.equal(value[11], "ธันวาคม");
@@ -4659,7 +4659,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[5], "มิ.ย.");
         test.equal(value[6], "ก.ค.");
         test.equal(value[7], "ส.ค.");
-        test.equal(value[8], "ก.ย."); 
+        test.equal(value[8], "ก.ย.");
         test.equal(value[9], "ต.ค.");
         test.equal(value[10], "พ.ย.");
         test.equal(value[11], "ธ.ค.");
@@ -4707,7 +4707,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Eki");
         test.equal(value[10], "Kas");
         test.equal(value[11], "Ara");
-        
+
         test.done();
     },
     testMonthTranslate_tr_AZ: function(test) {
@@ -4732,7 +4732,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Ekim");
         test.equal(value[10], "Kasım");
         test.equal(value[11], "Aralık");
-        
+
         test.done();
     },
     testMonthTranslate_tr_CY: function(test) {
@@ -4777,7 +4777,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Eki");
         test.equal(value[10], "Kas");
         test.equal(value[11], "Ara");
-        
+
         test.done();
     },
     testMonthTranslate_tr_TR: function(test) {
@@ -4822,7 +4822,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Eki");
         test.equal(value[10], "Kas");
         test.equal(value[11], "Ara");
-        
+
         test.done();
     },
     testMonthTranslate_uk_UA: function(test) {
@@ -4867,7 +4867,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "жов");
         test.equal(value[10], "лис");
         test.equal(value[11], "гру");
-        
+
         test.done();
     },
     testMonthTranslate_ur_IN: function(test) {
@@ -4913,7 +4913,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9],"اکتوبر");
         test.equal(value[10],"نومبر");
         test.equal(value[11],"دسمبر");
-       
+
         test.done();
     },
     testMonthTranslate_uz_Latn_UZ: function(test) {
@@ -4958,7 +4958,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Okt");
         test.equal(value[10], "Noy");
         test.equal(value[11], "Dek");
-        
+
         test.done();
     },
     testMonthTranslate_vi_VN: function(test) {
@@ -4985,7 +4985,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Tháng 10");
         test.equal(value[10], "Tháng 11");
         test.equal(value[11], "Tháng 12");
-        
+
         var fmt = new DateFmt({locale:"vi-VN", date:"m", length: "medium", useNative:false, timezone:"local"})
 
         for (i=0; i < 12; i++) {
@@ -5025,7 +5025,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "10月");
         test.equal(value[10], "11月");
         test.equal(value[11], "12月");
-        
+
         test.done();
     },
     testMonthTranslate_zh_Hant_HK: function(test) {
@@ -5048,7 +5048,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "10月");
         test.equal(value[10], "11月");
         test.equal(value[11], "12月");
-        
+
         test.done();
     },
     testMonthTranslate_zh_Hant_TW: function(test) {
@@ -5071,7 +5071,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "10月");
         test.equal(value[10], "11月");
         test.equal(value[11], "12月");
-        
+
         test.done();
     },
     testMonthTranslate_en_GE: function(test) {
@@ -5096,7 +5096,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "October");
         test.equal(value[10], "November");
         test.equal(value[11], "December");
-        
+
         test.done();
     },
     testMonthTranslate_en_CN: function(test) {
@@ -5122,7 +5122,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "October");
         test.equal(value[10], "November");
         test.equal(value[11], "December");
-        
+
         test.done();
     },
     testMonthTranslate_en_MX: function(test) {
@@ -5147,7 +5147,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "October");
         test.equal(value[10], "November");
         test.equal(value[11], "December");
-        
+
         test.done();
     },
     testMonthTranslate_en_TW: function(test) {
@@ -5173,7 +5173,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "October");
         test.equal(value[10], "November");
         test.equal(value[11], "December");
-        
+
         test.done();
     },
     testMonthTranslate_mn_MN: function(test) {
@@ -5200,7 +5200,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "10-р сар");
         test.equal(value[10], "11-р сар");
         test.equal(value[11], "12-р сар");
-        
+
         test.done();
     },
     testMonthTranslate_es_CA: function(test) {
@@ -5225,7 +5225,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "octubre");
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
-        
+
         test.done();
     },
     testMonthTranslate_af_ZA: function(test) {
@@ -5270,7 +5270,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Okt.");
         test.equal(value[10], "Nov.");
         test.equal(value[11], "Des.");
-        
+
         test.done();
     },
     testMonthTranslate_am_ET: function(test) {
@@ -5314,7 +5314,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "ሰኔ");
         test.equal(value[10], "ሐምሌ");
         test.equal(value[11], "ነሐሴ");
-        test.equal(value[12], "ጳጉሜን");        
+        test.equal(value[12], "ጳጉሜን");
         test.done();
     },
     testMonthTranslate_ha_Latn_NG: function(test) {
@@ -5359,7 +5359,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Okt");
         test.equal(value[10], "Nuw");
         test.equal(value[11], "Dis");
-        
+
         test.done();
     },
     testMonthTranslate_or_IN: function(test) {
@@ -5392,7 +5392,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0],"ଜାନୁଆରୀ");
         test.equal(value[1], "ଫେବୃଆରୀ");
         test.equal(value[2],"ମାର୍ଚ୍ଚ");
@@ -5405,7 +5405,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9],"ଅକ୍ଟୋବର");
         test.equal(value[10], "ନଭେମ୍ବର");
         test.equal(value[11],"ଡିସେମ୍ବର");
-        
+
         test.done();
     },
     testMonthTranslate_az_Latn_AZ: function(test) {
@@ -5420,9 +5420,9 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        test.equal(value[0], "Yanvar");
+        test.equal(value[0], 'yanvar');
         test.equal(value[1], "Fevral");
-        test.equal(value[2], "Mart");
+        test.equal(value[2], 'mart');
         test.equal(value[3], "Aprel");
         test.equal(value[4], "May");
         test.equal(value[5], "İyun");
@@ -5431,7 +5431,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[8], "Sentyabr");
         test.equal(value[9], "Oktyabr");
         test.equal(value[10], "Noyabr");
-        test.equal(value[11], "Dekabr");
+        test.equal(value[11], 'dekabr');
 
         var fmt = new DateFmt({locale:"az-Latn-AZ", date:"m", length: "medium", useNative:false, timezone:"local"})
 
@@ -5450,7 +5450,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "okt");
         test.equal(value[10], "noy");
         test.equal(value[11], "dek");
-        
+
         test.done();
     },
     testMonthTranslate_km_KH: function(test) {
@@ -5495,7 +5495,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "តុលា");
         test.equal(value[10], "វិច្ឆិកា");
         test.equal(value[11], "ធ្នូ");
-        
+
         test.done();
     },
     testMonthTranslate_si_LK: function(test) {
@@ -5530,7 +5530,7 @@ module.exports.testmonthtranslation = {
         }
         test.equal(value[0], "ජන");
         test.equal(value[1], "පෙබ");
-        test.equal(value[2], "මාර්තු");
+        test.equal(value[2], "මාර්");
         test.equal(value[3], "අප්‍රේල්");
         test.equal(value[4], "මැයි");
         test.equal(value[5], "ජූනි");
@@ -5540,7 +5540,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "ඔක්");
         test.equal(value[10], "නොවැ");
         test.equal(value[11], "දෙසැ");
-        
+
         test.done();
     },
     testMonthTranslate_ar_AE: function(test) {
@@ -5567,7 +5567,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "أكتوبر");
         test.equal(value[10], "نوفمبر");
         test.equal(value[11], "ديسمبر");
-        
+
         test.done();
     },
     testMonthTranslate_ar_BH: function(test) {
@@ -5594,7 +5594,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "أكتوبر");
         test.equal(value[10], "نوفمبر");
         test.equal(value[11], "ديسمبر");
-        
+
         test.done();
     },
     testMonthTranslate_ar_DJ: function(test) {
@@ -5621,7 +5621,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "أكتوبر");
         test.equal(value[10], "نوفمبر");
         test.equal(value[11], "ديسمبر");
-        
+
         test.done();
     },
     testMonthTranslate_ar_DZ: function(test) {
@@ -5648,7 +5648,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "أكتوبر");
         test.equal(value[10], "نوفمبر");
         test.equal(value[11], "ديسمبر");
-        
+
         test.done();
     },
     testMonthTranslate_ar_JO: function(test) {
@@ -5675,7 +5675,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "تشرين الأول");
         test.equal(value[10], "تشرين الثاني");
         test.equal(value[11], "كانون الأول");
-        
+
         test.done();
     },
     testMonthTranslate_ar_KW: function(test) {
@@ -5702,7 +5702,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "أكتوبر");
         test.equal(value[10], "نوفمبر");
         test.equal(value[11], "ديسمبر");
-        
+
         test.done();
     },
     testMonthTranslate_ar_LB: function(test) {
@@ -5729,7 +5729,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "تشرين الأول");
         test.equal(value[10], "تشرين الثاني");
         test.equal(value[11],"كانون الأول");
-        
+
         test.done();
     },
     testMonthTranslate_ar_LY: function(test) {
@@ -5756,7 +5756,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "أكتوبر");
         test.equal(value[10], "نوفمبر");
         test.equal(value[11], "ديسمبر");
-        
+
         test.done();
     },
     testMonthTranslate_ar_MR: function(test) {
@@ -5783,7 +5783,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "أكتوبر");
         test.equal(value[10], "نوفمبر");
         test.equal(value[11], "دجمبر");
-        
+
         test.done();
     },
     testMonthTranslate_ar_OM: function(test) {
@@ -5810,7 +5810,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "أكتوبر");
         test.equal(value[10], "نوفمبر");
         test.equal(value[11], "ديسمبر");
-        
+
         test.done();
     },
     testMonthTranslate_ar_QA: function(test) {
@@ -5837,7 +5837,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "أكتوبر");
         test.equal(value[10], "نوفمبر");
         test.equal(value[11], "ديسمبر");
-        
+
         test.done();
     },
     testMonthTranslate_ar_SA: function(test) {
@@ -5864,7 +5864,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "أكتوبر");
         test.equal(value[10], "نوفمبر");
         test.equal(value[11], "ديسمبر");
-        
+
         test.done();
     },
     testMonthTranslate_ar_SD: function(test) {
@@ -5891,7 +5891,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "أكتوبر");
         test.equal(value[10], "نوفمبر");
         test.equal(value[11], "ديسمبر");
-        
+
         test.done();
     },
     testMonthTranslate_ar_SY: function(test) {
@@ -5918,7 +5918,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "تشرين الأول");
         test.equal(value[10], "تشرين الثاني");
         test.equal(value[11], "كانون الأول");
-        
+
         test.done();
     },
     testMonthTranslate_ar_TN: function(test) {
@@ -5945,7 +5945,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "أكتوبر");
         test.equal(value[10], "نوفمبر");
         test.equal(value[11], "ديسمبر");
-        
+
         test.done();
     },
     testMonthTranslate_ar_YE: function(test) {
@@ -5972,7 +5972,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "أكتوبر");
         test.equal(value[10], "نوفمبر");
         test.equal(value[11], "ديسمبر");
-        
+
         test.done();
     },
     testMonthTranslate_en_ET: function(test) {
@@ -6018,7 +6018,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "Hamle");
         test.equal(value[11], "Nehasse");
         test.equal(value[12], "Pagumen");
-        
+
         test.done();
     },
     testMonthTranslate_en_GM: function(test) {
@@ -6042,7 +6042,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "October");
         test.equal(value[10], "November");
         test.equal(value[11], "December");
-        
+
         test.done();
     },
     testMonthTranslate_en_LR: function(test) {
@@ -6065,7 +6065,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "October");
         test.equal(value[10], "November");
         test.equal(value[11], "December");
-        
+
         test.done();
     },
     testMonthTranslate_en_PK: function(test) {
@@ -6088,7 +6088,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "October");
         test.equal(value[10], "November");
         test.equal(value[11], "December");
-        
+
         test.done();
     },
     testMonthTranslate_en_RW: function(test) {
@@ -6111,7 +6111,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "October");
         test.equal(value[10], "November");
         test.equal(value[11], "December");
-        
+
         test.done();
     },
     testMonthTranslate_en_SD: function(test) {
@@ -6134,7 +6134,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "October");
         test.equal(value[10], "November");
         test.equal(value[11], "December");
-        
+
         test.done();
     },
     testMonthTranslate_en_SL: function(test) {
@@ -6157,7 +6157,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "October");
         test.equal(value[10], "November");
         test.equal(value[11], "December");
-        
+
         test.done();
     },
     testMonthTranslate_en_TZ: function(test) {
@@ -6180,7 +6180,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "October");
         test.equal(value[10], "November");
         test.equal(value[11], "December");
-        
+
         test.done();
     },
     testMonthTranslate_es_CR: function(test) {
@@ -6225,7 +6225,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dic.");
-        
+
         test.done();
     },
     testMonthTranslate_es_GQ: function(test) {
@@ -6266,7 +6266,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dic.");
-        
+
         test.done();
     },
     testMonthTranslate_es_PH: function(test) {
@@ -6307,7 +6307,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "dic.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_BF: function(test) {
@@ -6352,7 +6352,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_BJ: function(test) {
@@ -6433,12 +6433,12 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_CF: function(test) {
         test.expect(24);
-        
+
         var value = [], i;
         var fmt = new DateFmt({locale:"fr-CF", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
@@ -6474,7 +6474,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_CG: function(test) {
@@ -6515,7 +6515,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_CI: function(test) {
@@ -6556,7 +6556,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_CM: function(test) {
@@ -6597,7 +6597,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_GQ: function(test) {
@@ -6638,7 +6638,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_DJ: function(test) {
@@ -6679,7 +6679,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_DZ: function(test) {
@@ -6720,7 +6720,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_GA: function(test) {
@@ -6761,7 +6761,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_GN: function(test) {
@@ -6802,7 +6802,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_LB: function(test) {
@@ -6843,7 +6843,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_ML: function(test) {
@@ -6884,7 +6884,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_RW: function(test) {
@@ -6925,7 +6925,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_SN: function(test) {
@@ -6966,7 +6966,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_fr_TG: function(test) {
@@ -7007,7 +7007,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "oct.");
         test.equal(value[10], "nov.");
         test.equal(value[11], "déc.");
-        
+
         test.done();
     },
     testMonthTranslate_ms_Latn_SG: function(test) {
@@ -7052,7 +7052,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "Okt");
         test.equal(value[10], "Nov");
         test.equal(value[11], "Dis");
-        
+
         test.done();
     },
     testMonthTranslate_pa_PK: function(test) {
@@ -7097,7 +7097,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "ਅਕਤੂ");
         test.equal(value[10], "ਨਵੰ");
         test.equal(value[11], "ਦਸੰ");
-        
+
         test.done();
     },
     testMonthTranslate_pt_AO: function(test) {
@@ -7124,7 +7124,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "outubro");
         test.equal(value[10], "novembro");
         test.equal(value[11], "dezembro");
-        
+
         test.done();
     },
     testMonthTranslate_pt_GQ: function(test) {
@@ -7151,7 +7151,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "outubro");
         test.equal(value[10], "novembro");
         test.equal(value[11], "dezembro");
-        
+
         test.done();
     },
     testMonthTranslate_pt_CV: function(test) {
@@ -7178,7 +7178,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "outubro");
         test.equal(value[10], "novembro");
         test.equal(value[11], "dezembro");
-        
+
         test.done();
     },
     testMonthTranslate_ur_PK: function(test) {
@@ -7223,7 +7223,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "اکتوبر");
         test.equal(value[10], "نومبر");
         test.equal(value[11], "دسمبر");
-        
+
         test.done();
     },
     testMonthTranslate_zh_Hans_SG: function(test) {
@@ -7246,7 +7246,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "10月");
         test.equal(value[10], "11月");
         test.equal(value[11], "12月");
-        
+
         test.done();
     },
     testMonthTranslate_zh_Hans_MY: function(test) {
@@ -7269,7 +7269,727 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "10月");
         test.equal(value[10], "11月");
         test.equal(value[11], "12月");
+
+        test.done();
+    },
+    testMonthTranslate_ka_GE: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ka-GE", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "იანვარი");
+        test.equal(value[1], "თებერვალი");
+        test.equal(value[2], "მარტი");
+        test.equal(value[3], "აპრილი");
+        test.equal(value[4], "მაისი");
+        test.equal(value[5], "ივნისი");
+        test.equal(value[6], "ივლისი");
+        test.equal(value[7], "აგვისტო");
+        test.equal(value[8], "სექტემბერი");
+        test.equal(value[9], "ოქტომბერი");
+        test.equal(value[10], "ნოემბერი");
+        test.equal(value[11], "დეკემბერი");
+
+        var fmt = new DateFmt({locale:"ka-GE", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+
+        test.equal(value[0], "იან");
+        test.equal(value[1], "თებ");
+        test.equal(value[2], "მარ");
+        test.equal(value[3], "აპრ");
+        test.equal(value[4], "მაი");
+        test.equal(value[5], "ივნ");
+        test.equal(value[6], "ივლ");
+        test.equal(value[7], "აგვ");
+        test.equal(value[8], "სექ");
+        test.equal(value[9], "ოქტ");
+        test.equal(value[10], "ნოე");
+        test.equal(value[11], "დეკ");
+
+        test.done();
+    },
+    testMonthTranslate_be_BY: function(test) {
+        test.expect(12);
+
+        // full, long: MMMM
+        // short, medium: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"be-BY", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "студзень");
+        test.equal(value[1], "люты");
+        test.equal(value[2], "сакавік");
+        test.equal(value[3], "красавік");
+        test.equal(value[4], "май");
+        test.equal(value[5], "чэрвень");
+        test.equal(value[6], "ліпень");
+        test.equal(value[7], "жнівень");
+        test.equal(value[8], "верасень");
+        test.equal(value[9], "кастрычнік");
+        test.equal(value[10], "лістапад");
+        test.equal(value[11], "снежань");
+        test.done();
+    },
+    testMonthTranslate_lo_LA: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"lo-LA", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "ມັງກອນ");
+        test.equal(value[1], "ກຸມພາ");
+        test.equal(value[2], "ມີນາ");
+        test.equal(value[3], "ເມສາ");
+        test.equal(value[4], "ພຶດສະພາ");
+        test.equal(value[5], "ມິຖຸນາ");
+        test.equal(value[6], "ກໍລະກົດ");
+        test.equal(value[7], "ສິງຫາ");
+        test.equal(value[8], "ກັນຍາ");
+        test.equal(value[9], "ຕຸລາ");
+        test.equal(value[10], "ພະຈິກ");
+        test.equal(value[11], "ທັນວາ");
+
+        var fmt = new DateFmt({locale:"lo-LA", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "ມ.ກ.");
+        test.equal(value[1], "ກ.ພ.");
+        test.equal(value[2], "ມ.ນ.");
+        test.equal(value[3], "ມ.ສ.");
+        test.equal(value[4], "ພ.ພ.");
+        test.equal(value[5], "ມິ.ຖ.");
+        test.equal(value[6], "ກ.ລ.");
+        test.equal(value[7], "ສ.ຫ.");
+        test.equal(value[8], "ກ.ຍ.");
+        test.equal(value[9], "ຕ.ລ.");
+        test.equal(value[10], "ພ.ຈ.");
+        test.equal(value[11], "ທ.ວ.");
+        test.done();
+    },
+    testMonthTranslate_ky_KG: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ky-KG", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "Январь");
+        test.equal(value[1], "Февраль");
+        test.equal(value[2], "Март");
+        test.equal(value[3], "Апрель");
+        test.equal(value[4], "Май");
+        test.equal(value[5], "Июнь");
+        test.equal(value[6], "Июль");
+        test.equal(value[7], "Август");
+        test.equal(value[8], "Сентябрь");
+        test.equal(value[9], "Октябрь");
+        test.equal(value[10], "Ноябрь");
+        test.equal(value[11], "Декабрь");
+
+        var fmt = new DateFmt({locale:"ky-KG", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+
+        test.equal(value[0], "Янв");
+        test.equal(value[1], "Фев");
+        test.equal(value[2], "Мар");
+        test.equal(value[3], "Апр");
+        test.equal(value[4], "Май");
+        test.equal(value[5], "Июн");
+        test.equal(value[6], "Июл");
+        test.equal(value[7], "Авг");
+        test.equal(value[8], "Сен");
+        test.equal(value[9], "Окт");
+        test.equal(value[10], "Ноя");
+        test.equal(value[11], "Дек");
+        test.done();
+    },
+    testMonthTranslate_ca_AD: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ca-AD", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "gener");
+        test.equal(value[1], "febrer");
+        test.equal(value[2], "març");
+        test.equal(value[3], "abril");
+        test.equal(value[4], "maig");
+        test.equal(value[5], "juny");
+        test.equal(value[6], "juliol");
+        test.equal(value[7], "agost");
+        test.equal(value[8], "setembre");
+        test.equal(value[9], "octubre");
+        test.equal(value[10], "novembre");
+        test.equal(value[11], "desembre");
+
+        var fmt = new DateFmt({locale:"ca-AD", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "gen.");
+        test.equal(value[1], "febr.");
+        test.equal(value[2], "març");
+        test.equal(value[3], "abr.");
+        test.equal(value[4], "maig");
+        test.equal(value[5], "juny");
+        test.equal(value[6], "jul.");
+        test.equal(value[7], "ag.");
+        test.equal(value[8], "set.");
+        test.equal(value[9], "oct.");
+        test.equal(value[10], "nov.");
+        test.equal(value[11], "des.");
+
+        test.done();
+    },
+    testMonthTranslate_ca_ES: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ca-ES", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "gener");
+        test.equal(value[1], "febrer");
+        test.equal(value[2], "març");
+        test.equal(value[3], "abril");
+        test.equal(value[4], "maig");
+        test.equal(value[5], "juny");
+        test.equal(value[6], "juliol");
+        test.equal(value[7], "agost");
+        test.equal(value[8], "setembre");
+        test.equal(value[9], "octubre");
+        test.equal(value[10], "novembre");
+        test.equal(value[11], "desembre");
+
+        var fmt = new DateFmt({locale:"ca-AD", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+
+        test.equal(value[0], "gen.");
+        test.equal(value[1], "febr.");
+        test.equal(value[2], "març");
+        test.equal(value[3], "abr.");
+        test.equal(value[4], "maig");
+        test.equal(value[5], "juny");
+        test.equal(value[6], "jul.");
+        test.equal(value[7], "ag.");
+        test.equal(value[8], "set.");
+        test.equal(value[9], "oct.");
+        test.equal(value[10], "nov.");
+        test.equal(value[11], "des.");
+        test.done();
+    },
+    testMonthTranslate_hy_AM: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"hy-AM", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "հունվար");
+        test.equal(value[1], "փետրվար");
+        test.equal(value[2], "մարտ");
+        test.equal(value[3], "ապրիլ");
+        test.equal(value[4], "մայիս");
+        test.equal(value[5], "հունիս");
+        test.equal(value[6], "հուլիս");
+        test.equal(value[7], "օգոստոս");
+        test.equal(value[8], "սեպտեմբեր");
+        test.equal(value[9], "հոկտեմբեր");
+        test.equal(value[10], "նոյեմբեր");
+        test.equal(value[11], "դեկտեմբեր");
+
+        var fmt = new DateFmt({locale:"hy-AM", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "հնվ");
+        test.equal(value[1], "փտվ");
+        test.equal(value[2], "մրտ");
+        test.equal(value[3], "ապր");
+        test.equal(value[4], "մյս");
+        test.equal(value[5], "հնս");
+        test.equal(value[6], "հլս");
+        test.equal(value[7], "օգս");
+        test.equal(value[8], "սեպ");
+        test.equal(value[9], "հոկ");
+        test.equal(value[10], "նոյ");
+        test.equal(value[11], "դեկ");
+        test.done();
+    },
+    testMonthTranslate_gl_ES: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"gl-ES", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "Xaneiro");
+        test.equal(value[1], "Febreiro");
+        test.equal(value[2], "Marzo");
+        test.equal(value[3], "Abril");
+        test.equal(value[4], "Maio");
+        test.equal(value[5], "Xuño");
+        test.equal(value[6], "Xullo");
+        test.equal(value[7], "Agosto");
+        test.equal(value[8], "Setembro");
+        test.equal(value[9], "Outubro");
+        test.equal(value[10], "Novembro");
+        test.equal(value[11], "Decembro");
+
+        var fmt = new DateFmt({locale:"gl-ES", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "Xan.");
+        test.equal(value[1], "Feb.");
+        test.equal(value[2], "Mar.");
+        test.equal(value[3], "Abr.");
+        test.equal(value[4], "Maio");
+        test.equal(value[5], "Xuño");
+        test.equal(value[6], "Xul.");
+        test.equal(value[7], "Ago.");
+        test.equal(value[8], "Set.");
+        test.equal(value[9], "Out.");
+        test.equal(value[10], "Nov.");
+        test.equal(value[11], "Dec.");
+        test.done();
+    },
+    testMonthTranslate_eu_ES: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"eu-ES", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "urtarrila");
+        test.equal(value[1], "otsaila");
+        test.equal(value[2], "martxoa");
+        test.equal(value[3], "apirila");
+        test.equal(value[4], "maiatza");
+        test.equal(value[5], "ekaina");
+        test.equal(value[6], "uztaila");
+        test.equal(value[7], "abuztua");
+        test.equal(value[8], "iraila");
+        test.equal(value[9], "urria");
+        test.equal(value[10], "azaroa");
+        test.equal(value[11], "abendua");
+
+        var fmt = new DateFmt({locale:"eu-ES", date:"m", length: "medium", useNative:false, timezone:"local"})
+
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "urt.");
+        test.equal(value[1], "ots.");
+        test.equal(value[2], "mar.");
+        test.equal(value[3], "api.");
+        test.equal(value[4], "mai.");
+        test.equal(value[5], "eka.");
+        test.equal(value[6], "uzt.");
+        test.equal(value[7], "abu.");
+        test.equal(value[8], "ira.");
+        test.equal(value[9], "urr.");
+        test.equal(value[10], "aza.");
+        test.equal(value[11], "abe.");
+        test.done();
+    },
+    testMonthTranslate_ne_NP: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ne-NP", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "जनवरी");
+        test.equal(value[1], "फेब्रुअरी");
+        test.equal(value[2], "मार्च");
+        test.equal(value[3], "अप्रिल");
+        test.equal(value[4], "मे");
+        test.equal(value[5], "जुन");
+        test.equal(value[6], "जुलाई");
+        test.equal(value[7], "अगस्ट");
+        test.equal(value[8], "सेप्टेम्बर");
+        test.equal(value[9], "अक्टोबर");
+        test.equal(value[10], "नोभेम्बर");
+        test.equal(value[11], "डिसेम्बर");
+
+        var fmt = new DateFmt({locale:"ne-NP", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+
+        test.equal(value[0], "जनवरी");
+        test.equal(value[1], "फेब्रुअरी");
+        test.equal(value[2], "मार्च");
+        test.equal(value[3], "अप्रिल");
+        test.equal(value[4], "मे");
+        test.equal(value[5], "जुन");
+        test.equal(value[6], "जुलाई");
+        test.equal(value[7], "अगस्ट");
+        test.equal(value[8], "सेप्टेम्बर");
+        test.equal(value[9], "अक्टोबर");
+        test.equal(value[10], "नोभेम्बर");
+        test.equal(value[11], "डिसेम्बर");
+
+        test.done();
+    },
+    testMonthTranslate_my_MM: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"my-MM", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "ဇန်နဝါရီ");
+        test.equal(value[1], "ဖေဖော်ဝါရီ");
+        test.equal(value[2], "မတ်");
+        test.equal(value[3], "ဧပြီ");
+        test.equal(value[4], "မေ");
+        test.equal(value[5], "ဇွန်");
+        test.equal(value[6], "ဇူလိုင်");
+        test.equal(value[7], "ဩဂုတ်");
+        test.equal(value[8], "စက်တင်ဘာ");
+        test.equal(value[9], "အောက်တိုဘာ");
+        test.equal(value[10], "နိုဝင်ဘာ");
+        test.equal(value[11], "ဒီဇင်ဘာ");
+
+        var fmt = new DateFmt({locale:"my-MM", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+
+        test.equal(value[0], "ဇန်");
+        test.equal(value[1], "ဖေ");
+        test.equal(value[2], "မတ်");
+        test.equal(value[3], "ဧ");
+        test.equal(value[4], "မေ");
+        test.equal(value[5], "ဇွန်");
+        test.equal(value[6], "ဇူ");
+        test.equal(value[7], "ဩ");
+        test.equal(value[8], "စက်");
+        test.equal(value[9], "အောက်");
+        test.equal(value[10], "နို");
+        test.equal(value[11], "ဒီ");
+
+        test.done();
+    },
+    testMonthTranslate_wo_SN: function(test) {
+        test.expect(24);
+
+        // full, medium: MMM
+        // long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"wo-SN", date:"m", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "Samwiyee");
+        test.equal(value[1], "Fewriyee");
+        test.equal(value[2], "Mars");
+        test.equal(value[3], "Awril");
+        test.equal(value[4], "Mee");
+        test.equal(value[5], "Suwe");
+        test.equal(value[6], "Sulet");
+        test.equal(value[7], "Ut");
+        test.equal(value[8], "Sàttumbar");
+        test.equal(value[9], "Oktoobar");
+        test.equal(value[10], "Nowàmbar");
+        test.equal(value[11], "Desàmbar");
+
+        var fmt = new DateFmt({locale:"wo-SN", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "Sam");
+        test.equal(value[1], "Few");
+        test.equal(value[2], "Mar");
+        test.equal(value[3], "Awr");
+        test.equal(value[4], "Mee");
+        test.equal(value[5], "Suw");
+        test.equal(value[6], "Sul");
+        test.equal(value[7], "Ut");
+        test.equal(value[8], "Sàt");
+        test.equal(value[9], "Okt");
+        test.equal(value[10], "Now");
+        test.equal(value[11], "Des");
+        test.done();
+    },
+
+    testMonthTranslate_tk_TM: function(test) {
+        test.expect(36);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
         
+        var fmt = new DateFmt({locale:"tk-TM", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Ýanwar');
+        test.equal(value[1], 'Fewral');
+        test.equal(value[2], 'Mart');
+        test.equal(value[3], 'Aprel');
+        test.equal(value[4], 'Maý');
+        test.equal(value[5], 'Iýun');
+        test.equal(value[6], 'Iýul');
+        test.equal(value[7], 'Awgust');
+        test.equal(value[8], 'Sentýabr');
+        test.equal(value[9], 'Oktýabr');
+        test.equal(value[10], 'Noýabr');
+        test.equal(value[11], 'Dekabr');
+
+        var fmt = new DateFmt({locale:"tk-TM", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        
+        test.equal(value[0], 'Ýan');
+        test.equal(value[1], 'Few');
+        test.equal(value[2], 'Mar');
+        test.equal(value[3], 'Apr');
+        test.equal(value[4], 'Maý');
+        test.equal(value[5], 'Iýun');
+        test.equal(value[6], 'Iýul');
+        test.equal(value[7], 'Awg');
+        test.equal(value[8], 'Sen');
+        test.equal(value[9], 'Okt');
+        test.equal(value[10], 'Noý');
+        test.equal(value[11], 'Dek');
+
+        var fmt = new DateFmt({locale:"tk-TM", date:"m", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Ýa');
+        test.equal(value[1], 'Fe');
+        test.equal(value[2], 'Ma');
+        test.equal(value[3], 'Ap');
+        test.equal(value[4], 'Ma');
+        test.equal(value[5], 'Iý');
+        test.equal(value[6], 'Iý');
+        test.equal(value[7], 'Aw');
+        test.equal(value[8], 'Se');
+        test.equal(value[9], 'Ok');
+        test.equal(value[10], 'No');
+        test.equal(value[11], 'De');
+        test.done();
+    },
+    testMonthTranslate_tg_TJ: function(test) {
+        test.expect(24);
+  
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"tg-TJ", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Январ');
+        test.equal(value[1], 'Феврал');
+        test.equal(value[2], 'Март');
+        test.equal(value[3], 'Апрел');
+        test.equal(value[4], 'Май');
+        test.equal(value[5], 'Июн');
+        test.equal(value[6], 'Июл');
+        test.equal(value[7], 'Август');
+        test.equal(value[8], 'Сентябр');
+        test.equal(value[9], 'Октябр');
+        test.equal(value[10], 'Ноябр');
+        test.equal(value[11], 'Декабр');
+
+        var fmt = new DateFmt({locale:"tg-TJ", date:"m", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Янв');
+        test.equal(value[1], 'Фев');
+        test.equal(value[2], 'Мар');
+        test.equal(value[3], 'Апр');
+        test.equal(value[4], 'Май');
+        test.equal(value[5], 'Июн');
+        test.equal(value[6], 'Июл');
+        test.equal(value[7], 'Авг');
+        test.equal(value[8], 'Сен');
+        test.equal(value[9], 'Окт');
+        test.equal(value[10], 'Ноя');
+        test.equal(value[11], 'Дек');
+        test.done();
+    },
+    testMonthTranslate_mt_MT: function(test) {
+        test.expect(36);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"mt-MT", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Jannar');
+        test.equal(value[1], 'Frar');
+        test.equal(value[2], 'Marzu');
+        test.equal(value[3], 'April');
+        test.equal(value[4], 'Mejju');
+        test.equal(value[5], 'Ġunju');
+        test.equal(value[6], 'Lulju');
+        test.equal(value[7], 'Awwissu');
+        test.equal(value[8], 'Settembru');
+        test.equal(value[9], 'Ottubru');
+        test.equal(value[10], 'Novembru');
+        test.equal(value[11], 'Diċembru');
+
+        var fmt = new DateFmt({locale:"mt-MT", date:"m", length: "medium", useNative:false, timezone:"local"})
+
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Jan');
+        test.equal(value[1], 'Fra');
+        test.equal(value[2], 'Mar');
+        test.equal(value[3], 'Apr');
+        test.equal(value[4], 'Mej');
+        test.equal(value[5], 'Ġun');
+        test.equal(value[6], 'Lul');
+        test.equal(value[7], 'Aww');
+        test.equal(value[8], 'Set');
+        test.equal(value[9], 'Ott');
+        test.equal(value[10], 'Nov');
+        test.equal(value[11], 'Diċ');
+
+        var fmt = new DateFmt({locale:"mt-MT", date:"m", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Ja');
+        test.equal(value[1], 'Fr');
+        test.equal(value[2], 'Ma');
+        test.equal(value[3], 'Ap');
+        test.equal(value[4], 'Me');
+        test.equal(value[5], 'Ġu');
+        test.equal(value[6], 'Lu');
+        test.equal(value[7], 'Aw');
+        test.equal(value[8], 'Se');
+        test.equal(value[9], 'Ot');
+        test.equal(value[10], 'No');
+        test.equal(value[11], 'Di');
+        test.done();
+    },
+    testMonthTranslate_zu_ZA: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"zu-ZA", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Januwari');
+        test.equal(value[1], 'Februwari');
+        test.equal(value[2], 'Mashi');
+        test.equal(value[3], 'Ephreli');
+        test.equal(value[4], 'Meyi');
+        test.equal(value[5], 'Juni');
+        test.equal(value[6], 'Julayi');
+        test.equal(value[7], 'Agasti');
+        test.equal(value[8], 'Septhemba');
+        test.equal(value[9], 'Okthoba');
+        test.equal(value[10], 'Novemba');
+        test.equal(value[11], 'Disemba');
+
+        var fmt = new DateFmt({locale:"zu-ZA", date:"m", length: "medium", useNative:false, timezone:"local"})
+
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Jan');
+        test.equal(value[1], 'Feb');
+        test.equal(value[2], 'Mas');
+        test.equal(value[3], 'Eph');
+        test.equal(value[4], 'Mey');
+        test.equal(value[5], 'Jun');
+        test.equal(value[6], 'Jul');
+        test.equal(value[7], 'Aga');
+        test.equal(value[8], 'Sep');
+        test.equal(value[9], 'Okt');
+        test.equal(value[10], 'Nov');
+        test.equal(value[11], 'Dis');
         test.done();
     }
 }

@@ -160,5 +160,14 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": " in ",
     "separatorShort": ", ",
-    "finalSeparatorShort": " in "
+    "finalSeparatorShort": " in ",
+    "B0": "opolnoči",
+    "B1": "dop.",
+    "B2": "zjutraj",
+    "B3": "dopoldan",
+    "B4": "opoldne",
+    "B5": "popoldan",
+    "B6": "pop.",
+    "B7": "zvečer",
+    "B8": "ponoči"
 }

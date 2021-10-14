@@ -1,7 +1,7 @@
 /*
  * DateFmt.js - Date formatter definition
  *
- * Copyright © 2012-2015, 2018-2019, JEDLSoft
+ * Copyright © 2012-2015, 2018-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -190,6 +190,7 @@ var ISet = require("./ISet.js");
  *
  * <ul>
  * <li><i>a</i> - am/pm marker
+ * <li><i>B</i> - the current day period
  * <li><i>d</i> - 1 or 2 digit date of month, not padded
  * <li><i>dd</i> - 1 or 2 digit date of month, 0 padded to 2 digits
  * <li><i>O</i> - ordinal representation of the date of month (eg. "1st", "2nd", etc.)
@@ -200,14 +201,22 @@ var ISet = require("./ISet.js");
  * <li><i>MM</i> - 1 or 2 digit month number, 0 padded to 2 digits
  * <li><i>N</i> - 1 character month name abbreviation
  * <li><i>NN</i> - 2 character month name abbreviation
- * <li><i>MMM</i> - 3 character month month name abbreviation
+ * <li><i>MMM</i> - 3 character month name abbreviation
  * <li><i>MMMM</i> - fully spelled out month name
+ * <li><i>L</i> - 1 character stand-alone month name abbreviation
+ * <li><i>LL</i> - 2 character stand-alone month name abbreviation
+ * <li><i>LLL</i> - 3 character stand-alone month name abbreviation
+ * <li><i>LLLL</i> - fully spelled out stand-alone month name
  * <li><i>yy</i> - 2 digit year
  * <li><i>yyyy</i> - 4 digit year
  * <li><i>E</i> - day-of-week name, abbreviated to a single character
  * <li><i>EE</i> - day-of-week name, abbreviated to a max of 2 characters
  * <li><i>EEE</i> - day-of-week name, abbreviated to a max of 3 characters
  * <li><i>EEEE</i> - day-of-week name fully spelled out
+ * <li><i>c</i> - stand-alone day-of-week name, abbreviated to a single character
+ * <li><i>cc</i> - stand-alone day-of-week name, abbreviated to a max of 2 characters
+ * <li><i>ccc</i> - stand-alone day-of-week name, abbreviated to a max of 3 characters
+ * <li><i>cccc</i> - stand-alone day-of-week name fully spelled out
  * <li><i>G</i> - era designator
  * <li><i>w</i> - week number in year
  * <li><i>ww</i> - week number in year, 0 padded to 2 digits
@@ -605,25 +614,27 @@ DateFmt.prototype = {
         if (typeof (options.sync) === 'undefined') {
             options.sync = true;
         }
-        if (!this.template) {
-            Utils.loadData({
-                object: "DateFmt",
-                locale: this.locale,
-                name: "dateformats.json",
-                sync: options.sync,
-                loadParams: options.loadParams,
-                callback: ilib.bind(this, function (formats) {
-                    var spec = this.locale.getSpec().replace(/-/g, '_');
-                    if (!formats) {
-                        formats = ilib.data.dateformats || DateFmt.defaultFmt;
-                    }
+        Utils.loadData({
+            object: "DateFmt",
+            locale: this.locale,
+            name: "dateformats.json",
+            sync: options.sync,
+            loadParams: options.loadParams,
+            callback: ilib.bind(this, function (formats) {
+                if (!formats) {
+                    formats = ilib.data.dateformats || DateFmt.defaultFmt;
+                }
 
+                this.info = formats;
+                var ret = this;
+
+                if (this.template) {
+                    this._massageTemplate();
+                } else {
                     if (typeof(this.clock) === 'undefined') {
                         // default to the locale instead
                         this.clock = this.locinfo.getClock();
                     }
-
-                    var ret = this;
 
                     if (typeof(options.sync) === "boolean" && !options.sync) {
                         // in async mode, capture the exception and call the callback with "undefined"
@@ -638,19 +649,13 @@ DateFmt.prototype = {
                         this._initTemplate(formats);
                         this._massageTemplate();
                     }
+                }
 
-                    if (typeof(options.onLoad) === 'function') {
-                        options.onLoad(ret);
-                    }
-               })
-            });
-        } else {
-            this._massageTemplate();
-
-            if (typeof(options.onLoad) === 'function') {
-                options.onLoad(this);
-            }
-        }
+                if (typeof(options.onLoad) === 'function') {
+                    options.onLoad(ret);
+                }
+           })
+        });
     },
 
     /**
@@ -845,11 +850,13 @@ DateFmt.prototype = {
     },
 
     // stand-alone of m (month) is l
+    // stand-alone of my (month year) is mys
     // stand-alone of d (day) is a
     // stand-alone of w (weekday) is e
     // stand-alone of y (year) is r
     _standAlones: {
         "m": "l",
+        "my": "mys",
         "d": "a",
         "w": "e",
         "y": "r"
@@ -1108,6 +1115,36 @@ DateFmt.prototype = {
         }
 
         return result;
+    },
+
+    _findMeridiem: function(hours, minutes) {
+        var range = this.info.dayPeriods;
+        if (!range) {
+            return "";
+        }
+        // find all day periods that apply, and then choose the shortest one
+        var minuteOfDay = hours * 60 + minutes;
+        var shortest = {
+            name: "",
+            length: 2000
+        };
+        for (var i = 0; i < range.length; i++) {
+            var period = range[i];
+            if (minuteOfDay === period.at || (minuteOfDay >= period.from && minuteOfDay < period.to)) {
+                var periodCode = "B" + i;
+                var length = typeof(period.at) !== "undefined" ? 0 : (period.to - period.from);
+
+                if (length < shortest.length) {
+                    shortest = {
+                        name: this.sysres.getString(undefined, periodCode + "-" + this.calName) ||
+                            this.sysres.getString(undefined, periodCode),
+                        length: length
+                    };
+                }
+            }
+        }
+
+        return shortest.name;
     },
 
     /**
@@ -1370,6 +1407,10 @@ DateFmt.prototype = {
                     }
                     //console.log("finding " + key + " in the resources");
                     str += (this.sysres.getStringJS(undefined, key + "-" + this.calName) || this.sysres.getStringJS(undefined, key));
+                    break;
+
+                case 'B':
+                    str += this._findMeridiem(date.hour, date.minute);
                     break;
 
                 case 'w':

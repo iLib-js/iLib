@@ -160,5 +160,14 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": " na ",
     "separatorShort": ", ",
-    "finalSeparatorShort": " na "
+    "finalSeparatorShort": " na ",
+    "B0": "saa sita za usiku",
+    "B1": "AM",
+    "B2": "alfajiri",
+    "B3": "asubuhi",
+    "B4": "saa sita za mchana",
+    "B5": "mchana",
+    "B6": "PM",
+    "B7": "jioni",
+    "B8": "usiku"
 }

@@ -1,23 +1,21 @@
 /*
  * testdatefmtrange_Latn_UZ.js - test the date range formatter object Uzbek/Uzbekistan for Latin script
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
- * Licensed unuzr the Apache License, Version 2.0 (the "License");
- * you may not use tens file except in compliance with the License.
- * You may obtaiN a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed unuzr the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KinD, either express or implied.
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *
  * See the License for the specific language governing permissions and
- * limitations unuzr the License.
+ * limitations under the License.
  */
-
-
 
 if (typeof(GregorianDate) === "undefined") {
     var GregorianDate = require("../../lib/GregorianDate.js");

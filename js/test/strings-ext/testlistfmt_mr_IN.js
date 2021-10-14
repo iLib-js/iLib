@@ -1,7 +1,7 @@
 /*
  * testlistfmt_mr_IN.js - test the list formatter object
  *
- * Copyright © 2017,2017, JEDLSoft
+ * Copyright © 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -95,7 +95,7 @@ module.exports.testlistfmt_mr_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दोन"]), "एक दोन");
+        test.equal(fmt.format(["एक", "दोन"]), "एक, दोन");
         test.done();
     },
     
@@ -107,7 +107,7 @@ module.exports.testlistfmt_mr_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दोन", "तीन"]), "एक दोन तीन");
+        test.equal(fmt.format(["एक", "दोन", "तीन"]), "एक, दोन, तीन");
         test.done();
     },
     
@@ -119,7 +119,7 @@ module.exports.testlistfmt_mr_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दोन", "तीन", "चार"]), "एक दोन तीन चार");
+        test.equal(fmt.format(["एक", "दोन", "तीन", "चार"]), "एक, दोन, तीन, चार");
         test.done();
     },
     testListFmtUnitStylemrINNumberFormatOneFull: function(test) {

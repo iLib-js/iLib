@@ -77,8 +77,8 @@
     "E6": "с",
     "a0": "пре подне",
     "a1": "по подне",
-    "G-1": "BCE",
-    "G1": "CE",
+    "G-1": "п. н. е.",
+    "G1": "н. е.",
     "1#1 millisecond|#{num} milliseconds": "one#{num} милисекунда|few#{num} милисекунде|#{num} милисекунди",
     "1#1 second|#{num} seconds": "one#{num} секунда|few#{num} секунде|#{num} секунди",
     "1#1 minute|#{num} minutes": "one#{num} минут|few#{num} минута|#{num} минута",
@@ -160,5 +160,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": " и ",
     "separatorShort": ", ",
-    "finalSeparatorShort": " и "
+    "finalSeparatorShort": " и ",
+    "B0": "поноћ",
+    "B1": "пре подне",
+    "B2": "ујутро",
+    "B3": "подне",
+    "B4": "по подне",
+    "B5": "по подне",
+    "B6": "увече",
+    "B7": "ноћу"
 }

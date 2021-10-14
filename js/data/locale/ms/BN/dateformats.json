@@ -8,10 +8,10 @@
         },
         "date": {
             "dmwy": {
-                "f": "dd MMMM yyyy",
-                "l": "d MMMM yyyy",
-                "m": "d MMM yyyy",
-                "s": "d/MM/yy"
+                "f": "EEEE dd MMMM yyyy",
+                "l": "EEE d MMMM yyyy",
+                "m": "EE d MMM yyyy",
+                "s": "E d/MM/yy"
             },
             "dmy": {
                 "f": "dd MMMM yyyy",
@@ -20,10 +20,10 @@
                 "s": "d/MM/yy"
             },
             "dmw": {
-                "f": "dd MMMM",
-                "l": "d MMMM",
-                "m": "d MMM",
-                "s": "d/MM"
+                "f": "EEEE dd MMMM",
+                "l": "EEE d MMMM",
+                "m": "EE d MMM",
+                "s": "E d/MM"
             },
             "dm": {
                 "f": "dd MMMM",
@@ -37,7 +37,12 @@
                 "m": "MMM yyyy",
                 "s": "MM/yy"
             },
-            "dw": {},
+            "dw": {
+                "f": "EEEE dd",
+                "l": "EEE d",
+                "m": "EE d",
+                "s": "E d"
+            },
             "w": {
                 "f": "EEEE",
                 "l": "EEE",
@@ -151,5 +156,35 @@
                 "s": "{sy} – {ey}"
             }
         }
-    }
+    },
+    "dayPeriods": [
+        {
+            "from": 0,
+            "to": 60
+        },
+        {
+            "from": 0,
+            "to": 720
+        },
+        {
+            "from": 60,
+            "to": 720
+        },
+        {
+            "from": 720,
+            "to": 840
+        },
+        {
+            "from": 720,
+            "to": 1440
+        },
+        {
+            "from": 840,
+            "to": 1140
+        },
+        {
+            "from": 1140,
+            "to": 1440
+        }
+    ]
 }

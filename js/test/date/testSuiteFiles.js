@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
  * 
- * Copyright © 2017-2019, JEDLSoft
+ * Copyright © 2017-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,10 +37,12 @@ module.exports.files = [
     "testdatefmt_ar_SA.js",
     "testdatefmt_as_IN.js",
     "testdatefmt_az_Latn_AZ.js",
+    "testdatefmt_be_BY.js",
     "testdatefmt_bg.js",
     "testdatefmt_bn_IN.js",
     "testdatefmt_bs_Cyrl_BA.js",
     "testdatefmt_bs_Latn_BA.js",
+    "testdatefmt_ca.js",
     "testdatefmt_cop_EG.js",
     "testdatefmt_cs_CZ.js",
     "testdatefmt_da_DK.js",
@@ -53,24 +55,30 @@ module.exports.files = [
     "testdatefmt_es_CO.js",
     "testdatefmt_es_ES.js",
     "testdatefmt_et_EE.js",
+    "testdatefmt_eu_ES.js",
     "testdatefmt_fa_IR.js",
     "testdatefmt_fi_FI.js",
     "testdatefmt_fr_CA.js",
     "testdatefmt_fr_FR.js",
     "testdatefmt_ga_IE.js",
+    "testdatefmt_gl_ES.js",
     "testdatefmt_gu_IN.js",
     "testdatefmt_ha_Latn_NG.js",
     "testdatefmt_he_IL.js",
     "testdatefmt_hi_IN.js",
     "testdatefmt_hr_HR.js",
+    "testdatefmt_hy_AM.js",
     "testdatefmt_id_ID.js",
     "testdatefmt_it_IT.js",
     "testdatefmt_ja_JP.js",
+    "testdatefmt_ka_GE.js",
     "testdatefmt_kk_Cyrl_KZ.js",
     "testdatefmt_km_KH.js",
     "testdatefmt_kn_IN.js",
     "testdatefmt_ko_KR.js",
     "testdatefmt_ku_Arab_IQ.js",
+    "testdatefmt_ky_KG.js",
+    "testdatefmt_lo_LA.js",
     "testdatefmt_lt_LT.js",
     "testdatefmt_lv_LV.js",
     "testdatefmt_mk_MK.js",
@@ -78,7 +86,10 @@ module.exports.files = [
     "testdatefmt_mn_Cyrl_MN.js",
     "testdatefmt_mr_IN.js",
     "testdatefmt_ms_MY.js",
+    "testdatefmt_mt_MT.js",
+    "testdatefmt_my_MM.js",
     "testdatefmt_nb_NO.js",
+    "testdatefmt_ne_NP.js",
     "testdatefmt_nl_NL.js",
     "testdatefmt_or_IN.js",
     "testdatefmt_pa_IN.js",
@@ -95,14 +106,18 @@ module.exports.files = [
     "testdatefmt_sw_KE.js",
     "testdatefmt_ta_IN.js",
     "testdatefmt_te_IN.js",
+    "testdatefmt_tg_TJ.js",
     "testdatefmt_th_TH.js",
+    "testdatefmt_tk_TM.js",
     "testdatefmt_tr_TR.js",
     "testdatefmt_uk_UA.js",
     "testdatefmt_ur_IN.js",
     "testdatefmt_uz_Cyrl_UZ.js",
     "testdatefmt_uz_Latn_UZ.js",
     "testdatefmt_vi_VN.js",
+    "testdatefmt_wo_SN.js",
     "testdatefmt_zh_CN.js",
     "testdatefmt_zh_Hant_HK.js",
-    "testdatefmt_zh_Hant_TW.js"
+    "testdatefmt_zh_Hant_TW.js",
+    "testdatefmt_zu_ZA.js"
 ];

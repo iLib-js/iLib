@@ -1,20 +1,20 @@
 /*
  * testdatefmtrange_lt_LT.js - test the date range formatter object in Lithuanian/Lithuania
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance wlth the License.
+ * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenslt/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unllts required by applicable law or agreed to in wrlting, software
+ * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
- * WLTHOUT WARRANTILT OR CONDLTIONS OF ANY KIND, elther exprlts or implied.
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *
  * See the License for the specific language governing permissions and
- * limltations under the License.
+ * limitations under the License.
  */
 
 if (typeof(GregorianDate) === "undefined") {
@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_lt_LT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 m. lapkričio – 2014 m. sausio");
+        test.equal(fmt.format(start, end), "2011 m. lapkritis – 2014 m. sausis");
         test.done();
     },
     testDateRngFmtLTRangeMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_lt_LT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 m. lapkričio – 2014 m. sausio");
+        test.equal(fmt.format(start, end), "2011 m. lapkritis – 2014 m. sausis");
         test.done();
     },
     testDateRngFmtLTManyYearsFull: function(test) {

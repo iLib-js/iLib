@@ -1,7 +1,7 @@
 /*
  * testlistfmt_ta_IN.js - test the list formatter object
  *
- * Copyright © 2017,2017, JEDLSoft
+ * Copyright © 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -96,7 +96,7 @@ module.exports.testlistfmt_ta_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ஒரு", "இரண்டு"]), "ஒரு இரண்டு");
+        test.equal(fmt.format(["ஒரு", "இரண்டு"]), "ஒரு மற்றும் இரண்டு");
         test.done();
     },
     
@@ -108,7 +108,7 @@ module.exports.testlistfmt_ta_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ஒரு", "இரண்டு", "மூன்று"]), "ஒரு இரண்டு மூன்று");
+        test.equal(fmt.format(["ஒரு", "இரண்டு", "மூன்று"]), "ஒரு, இரண்டு மற்றும் மூன்று");
         test.done();
     },
     
@@ -120,7 +120,7 @@ module.exports.testlistfmt_ta_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ஒரு", "இரண்டு", "மூன்று", "நான்கு"]), "ஒரு இரண்டு மூன்று நான்கு");
+        test.equal(fmt.format(["ஒரு", "இரண்டு", "மூன்று", "நான்கு"]), "ஒரு, இரண்டு, மூன்று மற்றும் நான்கு");
         test.done();
     },
     testListFmtUnitStyletaINNumberFormatOneMedium: function(test) {
@@ -145,7 +145,7 @@ module.exports.testlistfmt_ta_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ஒரு", "இரண்டு"]), "ஒரு, இரண்டு");
+        test.equal(fmt.format(["ஒரு", "இரண்டு"]), "ஒரு மற்றும் இரண்டு");
         test.done();
     },
     
@@ -158,7 +158,7 @@ module.exports.testlistfmt_ta_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ஒரு", "இரண்டு", "மூன்று"]), "ஒரு, இரண்டு, மூன்று");
+        test.equal(fmt.format(["ஒரு", "இரண்டு", "மூன்று"]), "ஒரு, இரண்டு மற்றும் மூன்று");
         test.done();
     },
     
@@ -171,7 +171,7 @@ module.exports.testlistfmt_ta_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ஒரு", "இரண்டு", "மூன்று", "நான்கு"]), "ஒரு, இரண்டு, மூன்று, நான்கு");
+        test.equal(fmt.format(["ஒரு", "இரண்டு", "மூன்று", "நான்கு"]), "ஒரு, இரண்டு, மூன்று மற்றும் நான்கு");
         test.done();
     }
 

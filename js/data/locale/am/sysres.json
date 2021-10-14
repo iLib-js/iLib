@@ -81,9 +81,6 @@
     "E6-ethiopic": "ቅ",
     "a0-ethiopic": "ጥዋት",
     "a1-ethiopic": "ቀትር",
-    "a2-ethiopic": "ከሰዓት",
-    "a3-ethiopic": "ከምሽቱ",
-    "a4-ethiopic": "ከሌሊቱ",
     "MMMM1": "ጃንዩወሪ",
     "MMM1": "ጃንዩ",
     "NN1": "ጃን",
@@ -245,5 +242,16 @@
     "separatorMedium": "፣ ",
     "finalSeparatorMedium": "፣ ",
     "separatorShort": "፣ ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "a2-ethiopic": "ከሰዓት",
+    "a3-ethiopic": "ከምሽቱ",
+    "a4-ethiopic": "ከሌሊቱ",
+    "B0": "እኩለ ሌሊት",
+    "B1": "ሌሊት1",
+    "B2": "ጥዋት",
+    "B3": "ጥዋት1",
+    "B4": "ቀትር",
+    "B5": "ከሰዓት 7 ሰዓት",
+    "B6": "ከሰዓት",
+    "B7": "ማታ1"
 }

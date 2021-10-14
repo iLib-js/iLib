@@ -1,7 +1,7 @@
 /*
  * testutils.js - test the utility routines
  * 
- * Copyright © 2012-2015, 2017-2019 JEDLSoft
+ * Copyright © 2012-2015, 2017-2019, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -721,6 +721,28 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
+
+    testMergeUndefined: function(test) {
+        test.expect(1);
+        var object1 = undefined,
+            object2 = {"a": 1, "b": 2};
+
+        var expected = {"a": 1, "b": 2};
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
+        test.done();
+    },
+
+    testMergeUndefined2: function(test) {
+        test.expect(1);
+        var object1 = {"a": 1, "b": 2},
+            object2 = undefined;
+
+        var expected = {"a": 1, "b": 2};
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
+        test.done();
+    },
     
     testIsEmptyFalse: function(test) {
         test.expect(1);
@@ -957,14 +979,14 @@ module.exports.testutils = {
     testGetSublocalesWithVariant: function(test) {
         test.expect(1);
 
-        test.deepEqual(Utils.getSublocales("es-US-ASDF"), ["root", "es", "und-US", "es-US", "und-US-ASDF", "es-US-ASDF"]);
+        test.deepEqual(Utils.getSublocales("es-US-ASDF"), ["root", "es", "und-US", "es-US", "es-ASDF", "und-US-ASDF", "es-US-ASDF"]);
         test.done();
     },
 
     testGetSublocalesWithScriptAndVariant: function(test) {
         test.expect(1);
 
-        test.deepEqual(Utils.getSublocales("zh-Hans-CN-ASDF"), ["root", "zh", "und-CN", "zh-Hans", "zh-CN", "und-CN-ASDF", "zh-Hans-CN", "zh-CN-ASDF", "zh-Hans-CN-ASDF"]);
+        test.deepEqual(Utils.getSublocales("zh-Hans-CN-ASDF"), ["root", "zh", "und-CN", "zh-Hans", "zh-CN", "zh-ASDF", "und-CN-ASDF", "zh-Hans-CN", "zh-Hans-ASDF", "zh-CN-ASDF", "zh-Hans-CN-ASDF"]);
         test.done();
     },
 
@@ -1299,7 +1321,8 @@ module.exports.testutils = {
         var f = Utils.getLocFiles(locale, "localeinfo.json");
         var expected = [
             "localeinfo.json",
-            "en/localeinfo.json"
+            "en/localeinfo.json",
+            "en/govt/localeinfo.json"
         ];
         
         test.equal(f.length, expected.length);
@@ -1361,7 +1384,9 @@ module.exports.testutils = {
         var expected = [
             "localeinfo.json",
             "en/localeinfo.json",
-            "en/Latn/localeinfo.json"
+            "en/Latn/localeinfo.json",
+            "en/govt/localeinfo.json",
+            "en/Latn/govt/localeinfo.json",
         ];
         
         test.equal(f.length, expected.length);
@@ -1378,6 +1403,7 @@ module.exports.testutils = {
             "en/localeinfo.json",
             "und/US/localeinfo.json",
             "en/US/localeinfo.json",
+            "en/govt/localeinfo.json",
             "und/US/govt/localeinfo.json",
             "en/US/govt/localeinfo.json"
         ];
@@ -1397,8 +1423,10 @@ module.exports.testutils = {
             "und/US/localeinfo.json",
             "en/Latn/localeinfo.json",
             "en/US/localeinfo.json",
+            "en/govt/localeinfo.json",
             "und/US/govt/localeinfo.json",
             "en/Latn/US/localeinfo.json",
+            "en/Latn/govt/localeinfo.json",
             "en/US/govt/localeinfo.json",
             "en/Latn/US/govt/localeinfo.json"
         ];
@@ -1431,8 +1459,10 @@ module.exports.testutils = {
             "und/US/resources.json",
             "en/Latn/resources.json",
             "en/US/resources.json",
+            "en/govt/resources.json",
             "und/US/govt/resources.json",
             "en/Latn/US/resources.json",
+            "en/Latn/govt/resources.json",
             "en/US/govt/resources.json",
             "en/Latn/US/govt/resources.json"
         ];

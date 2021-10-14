@@ -1,7 +1,7 @@
 /*
- * genscripts.js - ilib tool to generate the json data about ISO 15924 scripts
+ * genlangscripts.js - ilib tool to generate the json data about ISO 15924 scripts
  *
- * Copyright © 2013-2018, JEDLSoft
+ * Copyright © 2013-2018, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,11 +20,8 @@
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
-var cldr = require('cldr-data');
 
-var unifile = require('./unifile.js');
 var common = require('./common.js');
-var UnicodeFile = unifile.UnicodeFile;
 var coelesce = common.coelesce;
 
 function usage() {
@@ -33,7 +30,7 @@ function usage() {
         "-h or --help\n" +
         "  this help\n" +
         "toDir\n" +
-    "  directory to output the script.jf json files. Default: current dir.\n");
+    "  directory to output the script.jf json files. Default: current dir.");
     process.exit(1);
 }
 
@@ -49,18 +46,16 @@ process.argv.forEach(function (val, index, array) {
 toDir = process.argv[2] || "tmp";
 
 console.log("genlangscripts - generate the localeinfo script.jf files.\n" +
-    "Copyright (c) 2013 - 2018 JEDLSoft\n");
+    "Copyright (c) 2013 - 2018 JEDLSoft");
 
 console.log("output dir: " + toDir);
-
-languageDataFileName = "cldr-data/supplemental/languageData.json";
 
 if (!fs.existsSync(toDir)) {
     console.error("Could not access locale data directory " + toDir);
     usage();
 }
 
-var supplementalData = require(languageDataFileName);
+var supplementalData = require("cldr-core/supplemental/languageData.json");
 
 var scripts = {};
 var scripts_name = {};
@@ -111,8 +106,14 @@ for (var language in scripts) {
         if (!fs.existsSync(filename)) {
             fs.mkdirSync(filename);
         }
-        if (language === 'ms' || language === 'kk' || language === 'pa') {
+        // special cases where we disagree with CLDR
+        if (language === 'az' || language === 'ms' || language === 'kk' || language === 'pa'|| language === 'tk'|| language === 'ha') {
             scripts[language] = scripts[language].reverse();
+        } else if (language == 'ky'|| language == 'tg') {
+            var lang = scripts[language];
+            var tmp = lang[0];
+            lang[0] = lang[1];
+            lang[1] = tmp;
         }
         console.log(language + ':\t"scripts": ' + JSON.stringify(scripts[language]) + ',');
         scripts_name["scripts"] = scripts[language];

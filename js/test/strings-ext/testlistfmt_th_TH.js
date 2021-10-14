@@ -1,7 +1,7 @@
 /*
  * testlistfmt_th_TH.js - test the list formatter object
  *
- * Copyright © 2017,2017, JEDLSoft
+ * Copyright © 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ module.exports.testlistfmt_th_TH = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["หนึ่ง", "สอง"]), "หนึ่ง และ สอง");
+        test.equal(fmt.format(["หนึ่ง", "สอง"]), "หนึ่งและสอง");
         test.done();
     },
     
@@ -108,7 +108,7 @@ module.exports.testlistfmt_th_TH = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["หนึ่ง", "สอง", "สาม"]), "หนึ่ง สอง สาม");
+        test.equal(fmt.format(["หนึ่ง", "สอง", "สาม"]), "หนึ่ง สอง และ สาม");
         test.done();
     },
     
@@ -120,7 +120,7 @@ module.exports.testlistfmt_th_TH = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["หนึ่ง", "สอง", "สาม", "สี่"]), "หนึ่ง สอง สาม สี่");
+        test.equal(fmt.format(["หนึ่ง", "สอง", "สาม", "สี่"]), "หนึ่ง สอง สาม และ สี่");
         test.done();
     },
     testListFmtUnitStylethTHNumberFormatOneMedium: function(test) {
@@ -168,11 +168,54 @@ module.exports.testlistfmt_th_TH = {
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["หนึ่ง", "สอง", "สาม", "สี่"]), "หนึ่ง สอง สาม และ สี่");
         test.done();
     },
+    testListFmtUnitStylethTHNumberFormatOneDisjunction: function(test) {
+        var fmt = new ListFmt({
+            locale: "th-TH",
+            style: "disjunction"
+        });
 
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["หนึ่ง"]), "หนึ่ง");
+        test.done();
+    },
+    testListFmtUnitStylethTHNumberFormatTwoDisjunction: function(test) {
+        var fmt = new ListFmt({
+            locale: "th-TH",
+            style: "disjunction"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["หนึ่ง", "สอง"]), "หนึ่งหรือสอง");
+        test.done();
+    },
+    testListFmtUnitStylethTHNumberFormatThreeDisjunction: function(test) {
+        var fmt = new ListFmt({
+            locale: "th-TH",
+            style: "disjunction"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["หนึ่ง", "สอง", "สาม"]), "หนึ่ง, สอง หรือ สาม");
+        test.done();
+    },
+    testListFmtUnitStylethTHNumberFormatFourDisjunction: function(test) {
+        var fmt = new ListFmt({
+            locale: "th-TH",
+            style: "disjunction"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["หนึ่ง", "สอง", "สาม", "สี่"]), "หนึ่ง, สอง, สาม หรือ สี่");
+        test.done();
+    }
 };

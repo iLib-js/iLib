@@ -7,11 +7,15 @@
     "1#1 mon|#{num} mons": "one#{num} m.|#{num} mm.",
     "1#1 yr|#{num} yrs": "one#{num} año|#{num} años",
     "1#1 se|#{num} sec": "one#{num}seg.|#{num}seg.",
+    "1#1 mi|#{num} min": "one#{num}min|#{num}min",
+    "durationMediumHours": "one#{num}h|#{num}h",
     "1#1 dy|#{num} dys": "one#{num}d.|#{num}dd.",
     "durationMediumWeeks": "one#{num}sem.|#{num}sems.",
     "1#1 mo|#{num} mos": "one#{num}m.|#{num}mm.",
     "durationMediumYears": "one#{num}a.|#{num}a.",
     "#{num}s": "one#{num}seg.|#{num}seg.",
+    "durationShortMinutes": "one#{num}min|#{num}min",
+    "#{num}h": "one#{num}h|#{num}h",
     "#{num}d": "one#{num}d.|#{num}dd.",
     "#{num}w": "one#{num}sem.|#{num}sems.",
     "durationShortMonths": "one#{num}m.|#{num}mm.",
@@ -19,5 +23,10 @@
     "#in {num}s": "one#dentro de {num} seg.|#dentro de {num} seg.",
     "#in {num}d": "one#dentro de {num} días|#dentro de {num} días",
     "#{num}s ago": "one#hace {num} seg.|#hace {num} seg.",
-    "#{num}d ago": "one#hace {num} días|#hace {num} días"
+    "#{num}d ago": "one#hace {num} días|#hace {num} días",
+    "B0": "madrugada",
+    "B2": "mañana",
+    "B3": "mediodía",
+    "B4": "tarde",
+    "B6": "noche"
 }

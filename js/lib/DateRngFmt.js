@@ -1,7 +1,7 @@
 /*
  * DateRngFmt.js - Date formatter definition
  *
- * Copyright © 2012-2015, 2018, JEDLSoft
+ * Copyright © 2012-2015, 2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -304,6 +304,7 @@ DateRngFmt.prototype = {
 
         var start = DateFactory._dateToIlib(startDateLike, thisZoneName, this.locale);
         var end = DateFactory._dateToIlib(endDateLike, thisZoneName, this.locale);
+        var tmp;
 
         if (typeof(start) !== 'object' || !start.getCalendar || start.getCalendar() !== this.calName || (this.timezone && start.timezone && start.timezone !== this.timezone)) {
             start = DateFactory({
@@ -323,6 +324,12 @@ DateRngFmt.prototype = {
 
         startRd = start.getRataDie();
         endRd = end.getRataDie();
+
+        formats = this.dateFmt.formats.date;
+        // these are not stand-alone templates. We add stand-alone below if necessary for the locale and the format.
+        yearTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "y", this.length) || "yyyy");
+        monthTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "m", this.length) || "MM");
+        dayTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "d", this.length) || "dd");
 
         //
         // legend:
@@ -363,14 +370,30 @@ DateRngFmt.prototype = {
             }
         } else if (endRd - startRd < 3650) {
             fmt = new IString(this.dateFmt._getFormat(this.dateFmt.formats.range, "c20", this.length));
+            // need to check for month/year stand-alone formats here
+            tmp = this.dateFmt._getFormatInternal(formats, "mys", this.length);
+            if (tmp) {
+                if (tmp.indexOf('r') > -1) {
+                    var tmp2 = this.dateFmt._getFormatInternal(formats, "r", this.length);
+                    if (tmp2) {
+                        yearTemplate = this.dateFmt._tokenize(tmp2);
+                    }
+                }
+                if (tmp.indexOf('L') > -1) {
+                    var tmp3 = this.dateFmt._getFormatInternal(formats, "l", this.length);
+                    if (tmp3) {
+                        monthTemplate = this.dateFmt._tokenize(tmp3);
+                    }
+                }
+            }
         } else {
             fmt = new IString(this.dateFmt._getFormat(this.dateFmt.formats.range, "c30", this.length));
+            // need to check for stand-alone year formats here
+            tmp = this.dateFmt._getFormatInternal(formats, "r", this.length);
+            if (tmp) {
+                yearTemplate = this.dateFmt._tokenize(tmp);
+            }
         }
-
-        formats = this.dateFmt.formats.date;
-        yearTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "y", this.length) || "yyyy");
-        monthTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "m", this.length) || "MM");
-        dayTemplate = this.dateFmt._tokenize(this.dateFmt._getFormatInternal(formats, "d", this.length) || "dd");
 
         /*
         console.log("fmt is " + fmt.toString());

@@ -1,18 +1,6 @@
 {
-    "MMM1": "jan.",
-    "MMM2": "feb.",
     "MMM3": "mart",
-    "MMM4": "apr.",
-    "MMM8": "avg.",
-    "MMM9": "sept.",
-    "MMM10": "okt.",
-    "MMM11": "nov.",
-    "MMM12": "dec.",
-    "EEE0": "ned.",
-    "EEE1": "pon.",
-    "EEE2": "ut.",
-    "EEE3": "sr.",
-    "EEE4": "čet.",
-    "EEE5": "pet.",
-    "EEE6": "sub."
+    "MMM9": "sept",
+    "LLL3": "mart",
+    "LLL9": "sept"
 }

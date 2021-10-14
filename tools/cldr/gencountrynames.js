@@ -2,7 +2,7 @@
  * gencountrynames.js - ilib tool to generate the ctrynames.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2018, JEDLSoft
+ * Copyright © 2013-2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ function usage() {
             "CLDR_xml_dir\n" +
             "  the top level of the Unicode CLDR distribution in xml format\n" +
             "locale_data_dir\n" +
-            "  the top level of the ilib locale data directory\n");
+            "  the top level of the ilib locale data directory");
     process.exit(1);
 }
 
@@ -106,7 +106,7 @@ function getCountryNames(localeData, pathname, locale) {
             script = locale.getScript(),
             country = locale.getRegion();
 
-        var data = require(path.join("cldr-data/main", locale.getSpec(), "territories.json"));
+        var data = require(path.join("cldr-localnames-full/main", locale.getSpec(), "territories.json"));
 
         var destfile = calcLocalePath(language, script, country, "ctrynames.json");
         var destdata = loadFile(destfile);
@@ -116,7 +116,7 @@ function getCountryNames(localeData, pathname, locale) {
         if (!destdata || typeof(destdata.generated) === 'undefined' || destdata.generated !== false) {
             destdata = {};
         } else {
-            console.log("Merging into existing by-hand file\n");
+            console.log("Merging into existing by-hand file");
         }
 
         if (script) {
@@ -419,12 +419,12 @@ function mergeAndSortRegions(localeData) {
             localeData.merged = localeData.data;
         }
         for (var prop in localeData) {
-            // util.print("merging " + prop + "\n");
+            // console.log("merging " + prop);
             if (prop && typeof(localeData[prop]) !== 'undefined' && prop !== 'data' && prop !== 'merged') {
-                // util.print(prop + " ");
+                // console.log(prop + " ");
                 localeData[prop].merged = mergeRegions(localeData.merged || {}, localeData[prop].data || {});
                 localeData[prop].data = sortRegions(localeData[prop].merged);
-                // util.print("recursing\n");
+                // console.log("recursing");
                 mergeAndSortRegions(localeData[prop]);
             }
         }
@@ -460,9 +460,9 @@ function sortCountries(localeData, locale) {
         }
 
         for (var prop in localeData) {
-            // util.print("merging " + prop + "\n");
+            // console.log("merging " + prop);
             if (prop && typeof(localeData[prop]) !== 'undefined' && prop !== 'data' && prop !== 'merged') {
-                // util.print(prop + " ");
+                // console.log(prop + " ");
                 sortCountries(localeData[prop], (locale !== "root") ? locale + '-' + prop : prop);
             }
         }
@@ -476,12 +476,12 @@ function mergeCountries(localeData) {
             localeData.merged = localeData.data;
         }
         for (var prop in localeData) {
-            // util.print("merging " + prop + "\n");
+            // console.log("merging " + prop);
             if (prop && typeof(localeData[prop]) !== 'undefined' && prop !== 'data' && prop !== 'merged') {
-                // util.print(prop + " ");
+                // console.log(prop + " ");
                 localeData[prop].merged = mergeByValue(localeData.merged || {}, localeData[prop].data || {});
                 localeData[prop].data = localeData[prop].merged;
-                // util.print("recursing\n");
+                // console.log("recursing");
                 mergeCountries(localeData[prop]);
             }
         }
@@ -491,9 +491,9 @@ function mergeCountries(localeData) {
 var localeDirs, localeData = {}, regionData = {};
 
 try {
-    localeDirs = require("cldr-data/availableLocales.json").availableLocales;
+    localeDirs = require("cldr-core/availableLocales.json").availableLocales;
 } catch (e) {
-    console.log("Error: Could not load file cldr-data/availableLocales.json");
+    console.log("Error: Could not load file cldr-core/availableLocales.json");
     process.exit(2);
 }
 

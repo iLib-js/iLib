@@ -1,7 +1,7 @@
 /*
  * testdurfmt_sw-KE.js - test the duration formatter object
  *
- * Copyright © 2017,2017, JEDLSoft
+ * Copyright © 2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ module.exports.testdurfmt_sw_KE = {
             length: "short"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -50,7 +50,6 @@ module.exports.testdurfmt_sw_KE = {
         test.equal(duration.toString(), "mwaka 1, mwezi 1, wiki 1, siku 1, saa 1, dakika 1, sekunde 1");
         test.done();
     },
-    
     testDurFmtKEFormatShortText: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -59,7 +58,7 @@ module.exports.testdurfmt_sw_KE = {
             style: "text"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -72,7 +71,6 @@ module.exports.testdurfmt_sw_KE = {
         test.equal(duration.toString(), "mwaka 1, mwezi 1, wiki 1, siku 1, saa 1, dakika 1, sekunde 1");
         test.done();
     },
-    
     testDurFmtKEFormatShortClock: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -81,7 +79,7 @@ module.exports.testdurfmt_sw_KE = {
             style: "clock"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -94,7 +92,6 @@ module.exports.testdurfmt_sw_KE = {
         test.equal(duration.toString(), "mwaka 1, mwezi 1, wiki 1, siku 1, 01:01:01");
         test.done();
     },
-    
     testDurFmtKEFormatMedium: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -102,7 +99,7 @@ module.exports.testdurfmt_sw_KE = {
             length: "medium"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -115,7 +112,6 @@ module.exports.testdurfmt_sw_KE = {
         test.equal(duration.toString(), "mwaka 1, mwezi 1, wiki 1, siku 1, saa 1, dakika 1, sekunde 1");
         test.done();
     },
-    
     testDurFmtKEFormatLong: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -123,7 +119,7 @@ module.exports.testdurfmt_sw_KE = {
             length: "long"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -136,7 +132,6 @@ module.exports.testdurfmt_sw_KE = {
         test.equal(duration.toString(), "mwaka 1, mwezi 1, wiki 1, siku 1, saa 1, dakika 1, sekunde 1");
         test.done();
     },
-    
     testDurFmtKEFormatFull: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -144,7 +139,7 @@ module.exports.testdurfmt_sw_KE = {
             length: "full"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -157,8 +152,6 @@ module.exports.testdurfmt_sw_KE = {
         test.equal(duration.toString(), "mwaka 1, mwezi 1, wiki 1, siku 1, saa 1, dakika 1 na sekunde 1");
         test.done();
     },
-    
-    
     testDurFmtKEAsyncWithLocale: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -167,7 +160,7 @@ module.exports.testdurfmt_sw_KE = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-    
+
                 var duration = fmt.format({
                     year: 2,
                     month: 2,
@@ -182,7 +175,6 @@ module.exports.testdurfmt_sw_KE = {
             }
         });
     },
-    
     testDurFmtKEFormatShortClockAsync: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -192,7 +184,7 @@ module.exports.testdurfmt_sw_KE = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-    
+
                 var duration = fmt.format({
                     year: 1,
                     month: 1,

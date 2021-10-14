@@ -105,70 +105,6 @@ var asianLangs = [
     "ja"
     ];
 
-// from https://meta.wikimedia.org/wiki/Capitalization_of_Wiktionary_pages#Capitalization_of_month_names
-var capitalizedMonthLocales = {
-    "af": 1,
-    "br": 1,
-    "cy": 1,
-    "el": 1,
-    "en": 1,
-    "de": 1,
-    "bar": 1,
-    "gsw": 1,
-    "ksh": 1,
-    "lb": 1,
-    "nds": 1,
-    "pfl": 1,
-    "hz": 1,
-    "id": 1,
-    "la": 1,
-    "ms": 1,
-    "pt": 1,
-    "ve": 1,
-    "xh": 1,
-    "zu": 1,
-};
-var lowercasedMonthLocales = {
-    "bs": 1,
-    "bg": 1,
-    "hr": 1,
-    "ca": 1,
-    "cs": 1,
-    "da": 1,
-    "dsb": 1,
-    "eo": 1,
-    "es": 1,
-    "et": 1,
-    "fi": 1,
-    "fr": 1,
-    "hr": 1,
-    "hsb": 1,
-    "hu": 1,
-    "hy": 1,
-    "is": 1,
-    "it": 1,
-    "li": 1,
-    "lv": 1,
-    "lt": 1,
-    "mk": 1,
-    "no": 1,
-    "nn": 1,
-    "nl": 1,
-    "pl": 1,
-    "BR": 1,
-    "ro": 1,
-    "ru": 1,
-    "os": 1,
-    "sr": 1,
-    "sk": 1,
-    "sl": 1,
-    "sv": 1,
-    "tr": 1,
-    "uk": 1,
-    "vi": 1,
-    "wa": 1
-};
-
 function addDateFormat(formats, locale, data) {
     if (!locale) {
         // root
@@ -1588,27 +1524,11 @@ module.exports = {
         return formats;
     },
 
-    ilibMonth: function(calendar, cldrMonth) {
-        if (calendar !== "hebrew") return cldrMonth;
-
-        var m;
-        m = parseInt(cldrMonth);
-        // cldr switched "Adar" and "Adar I" around backwards and numbered the months
-        // incorrectly, so now we have to compensate
-        if (m === 6) {
-            return "12-leap";
-        } else if (m === 7) {
-            return cldrMonth.endsWith("-leap") ? "13-leap" : "12";
-        }
-        m = (m + 6) % 13;
-        return String(m);
-    },
-
     createSystemResources: function (cldrData, language) {
         var formats,
-            cldrCalendar,
-            calendarNameSuffix,
-            prop;
+        cldrCalendar,
+        calendarNameSuffix,
+        prop;
 
         var dayNumbers = {
             "sun": 0,
@@ -1633,30 +1553,28 @@ module.exports = {
             var isAsian = isAsianLang(language);
             if (isAsianLang(language)) {
                 for (prop in part.wide) {
-                    var month = this.ilibMonth(calendarName, prop);
-                    formats["MMMM" + month + calendarNameSuffix] = part.wide[prop].substring(0, part.wide[prop].length-1);
-                    formats["N" + month + calendarNameSuffix] =
-                        formats["NN" + month + calendarNameSuffix] =
-                            formats["MMM" + month + calendarNameSuffix] =
+                    formats["MMMM" + prop + calendarNameSuffix] = part.wide[prop].substring(0, part.wide[prop].length-1);
+                    formats["N" + prop + calendarNameSuffix] =
+                        formats["NN" + prop + calendarNameSuffix] =
+                            formats["MMM" + prop + calendarNameSuffix] =
                                 part.abbreviated[prop].substring(0, part.abbreviated[prop].length-1);
                 }
             } else {
                 for (prop in part.wide) {
-                    var month = this.ilibMonth(calendarName, prop);
-                    formats["MMMM" + month + calendarNameSuffix] = part.wide[prop];
-                    formats["MMM" + month + calendarNameSuffix] = part.abbreviated[prop];
-                    formats["NN" + month + calendarNameSuffix] = part.abbreviated[prop].substring(0,2);
-                    formats["N" + month + calendarNameSuffix] = part.abbreviated[prop].substring(0,1);
+                    formats["MMMM" + prop + calendarNameSuffix] = part.wide[prop];
+                    formats["MMM" + prop + calendarNameSuffix] = part.abbreviated[prop];
+                    formats["NN" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,2);
+                    formats["N" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,1);
                     /* TODO. Some cldr data provide value as number in narrow format which doesn't meet iLib spec.
                              So I update code to create 'N' format value from abbreviated.
                              but I think it's better to reference abbreviated if narrow values are number.
                              and some cases are having same alphabets which are not good.
                      */
                     if (language === "mn") {
-                        formats["NN" + month + calendarNameSuffix] = part.abbreviated[prop].substring(0,1);
+                        formats["NN" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,1);
                     } else if (language === "vi") {
-                        formats["NN" + month + calendarNameSuffix] = part.abbreviated[prop].substring(0,2) + prop;
-                        formats["N" + month + calendarNameSuffix] = part.abbreviated[prop].substring(0,1) + prop;
+                        formats["NN" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,2) + prop;
+                        formats["N" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,1) + prop;
                     }
                 }
             }
@@ -1664,10 +1582,19 @@ module.exports = {
                 part = cldrCalendar.months["stand-alone"];
                 for (prop in part.wide) {
                     var month = this.ilibMonth(calendarName, prop);
+                    
                     formats["LLLL" + month + calendarNameSuffix] = part.wide[prop];
                     formats["LLL" + month + calendarNameSuffix] = part.abbreviated[prop];
-                    formats["LL" + month + calendarNameSuffix] = part.abbreviated[prop].substring(0,2);
-                    formats["L" + month + calendarNameSuffix] = part.narrow[prop];
+                    if (language === "mn") {
+                        formats["LL" + month + calendarNameSuffix] = part.abbreviated[prop].substring(0,1);
+                        formats["L" + month + calendarNameSuffix] = part.narrow[prop];
+                    } else if (language === "vi") {
+                        formats["LL" + month + calendarNameSuffix] = part.abbreviated[prop].substring(0,2) + prop;
+                        formats["L" + month + calendarNameSuffix] = part.abbreviated[prop].substring(0,1) + prop;
+                    } else {
+                        formats["LL" + month + calendarNameSuffix] = part.abbreviated[prop].substring(0,2);
+                        formats["L" + month + calendarNameSuffix] = part.narrow[prop];
+                    }
                 }
             }
 
@@ -1700,7 +1627,6 @@ module.exports = {
 
         return formats;
     },
-
     createDurationResourceDetail: function (cldrUnitData, durationObject, length, language, script) {
         var durationSysres = {};
         var durationSysresTest = {};
@@ -1739,7 +1665,6 @@ module.exports = {
 
         return durationSysres;
     },
-
     createDurationResources: function (cldrData, language, script) {
         var durationObject = {
             "durationPropertiesFull" : {
@@ -1942,7 +1867,6 @@ module.exports = {
         }
         return mergedSysres;
     },
-
     createRelativeFormatDetail: function (cldrDateFieldsData, relativeObject, relation, length, language, script) {
         var relativeSysres = {};
         var dataLength = "";
@@ -2128,7 +2052,7 @@ module.exports = {
             return;
         }
 
-        console.log("Promoting " + totals[0].name + "/" + filename + " to " + parentName + "\n");
+        console.log("Promoting " + totals[0].name + "/" + filename + " to " + parentName);
         // promote a child as the new root, dropping the current root
         group.data = group[totals[0].name].data;
     },
@@ -2195,99 +2119,5 @@ module.exports = {
                 module.exports.writeFormats(outputDir, outfile, group[comp], localeComponents.concat([comp]));
             }
         }
-    },
-
-    createRootDisplayNames: function() {
-        return {
-            "AM/PM": "AM/PM",
-            "Day": "Day",
-            "Day of Year": "Day Of Year",
-            "Era": "Era",
-            "Hour": "Hour",
-            "Millisecond": "Millisecond",
-            "Minute": "Minute",
-            "Month": "Month",
-            "Second": "Second",
-            "Time Zone": "Time Zone",
-            "Week": "Week",
-            "Week of Month": "Week Of Month",
-            "Year": "Year",
-            "D": "D",
-            "DD": "DD",
-            "YY": "YY",
-            "YYYY": "YYYY",
-            "M": "M",
-            "MM": "MM",
-            "H": "H",
-            "HH": "HH",
-            "mm": "mm",
-            "ss": "ss",
-            "ms": "ms"
-        };
-    },
-
-    createDisplayNames: function(cldrData, language, script) {
-        var formats = {};
-        var fieldNames = {
-            "dayperiod": "AM/PM",
-            "day": "Day",
-            "dayOfYear": "Day of Year",
-            "era": "Era",
-            "hour": "Hour",
-            "minute": "Minute",
-            "month": "Month",
-            "second": "Second",
-            "zone": "Time Zone",
-            "week": "Week",
-            "weekOfMonth": "Week of Month",
-            "year": "Year"
-        };
-
-        for (var dateField in fieldNames) {
-            if (typeof(cldrData[dateField]) !== 'undefined' && cldrData[dateField].displayName) {
-                if (fieldNames[dateField] !== cldrData[dateField].displayName) {
-                    if (capitalizedMonthLocales[language]) {
-                        var fieldName = cldrData[dateField].displayName[0].toUpperCase() + cldrData[dateField].displayName.substring(1);
-                        formats[fieldNames[dateField]] = fieldName;
-                    } else {
-                        formats[fieldNames[dateField]] = cldrData[dateField].displayName;
-                    }
-                }
-            }
-        }
-
-        var placeholders = {
-            "D": "Day",
-            "DD": "Day",
-            "YY": "Year",
-            "YYYY": "Year",
-            "M": "Month",
-            "MM": "Month",
-            "H": "Hour",
-            "HH": "Hour",
-            "mm": "Minute",
-            "ss": "Second"
-        };
-
-        function isUpper(str) {
-            return (str.toUpperCase() === str);
-        }
-
-        for (var ph in placeholders) {
-            var name = formats[placeholders[ph]];
-            if (name) {
-                if (name.length <= 2 || name.length < ph.length || rtlLanguages.indexOf(language) > -1 || rtlScripts.indexOf(script) > -1) {
-                    // if it's short or if it's using the Arabic script, just use the full name of the field
-                    formats[ph] = isUpper(ph) ? name.toUpperCase() : name;
-                } else {
-                    // else if it's not certain scripts, use the abbreviation
-                    var initial = name[0];
-                    initial = isUpper(ph) ? initial.toUpperCase() : initial.toLowerCase();
-                    formats[ph] = ph.replace(/./g, initial);
-                }
-            }
-        }
-
-        return formats;
     }
 };

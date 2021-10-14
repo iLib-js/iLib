@@ -1,7 +1,7 @@
 /*
  * testlocaleinfo.js - test the locale info object
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -140,8 +140,9 @@ module.exports.testlocaleinfo = {
     
     testLocaleInfoConstructorCurrentLocale: function(test) {
         test.expect(4);
+        ilib.locale = undefined;
         var loc, info = new LocaleInfo(); // gives locale of the host JS engine
-    
+
         test.ok(info !== null);
     
         loc = info.getLocale();
@@ -243,7 +244,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("en-GB");
         test.ok(info !== null);
     
-        test.equal(info.getUnits(), "imperial");
+        test.equal(info.getUnits(), "metric");
         test.done();
     },
     
@@ -288,11 +289,11 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("en-US");
         test.ok(info !== null);
     
-        test.equal(info.getTimeZone(), "America/Los_Angeles");
+        test.equal(info.getTimeZone(), "America/New_York");
         test.done();
     },
     
-    testLocaleInfoGetTimeZoneUS: function(test) {
+    testLocaleInfoGetTimeZoneDE: function(test) {
         test.expect(2);
         var info = new LocaleInfo("de-DE");
         test.ok(info !== null);
@@ -307,6 +308,55 @@ module.exports.testlocaleinfo = {
         test.ok(info !== null);
     
         test.equal(info.getTimeZone(), "Europe/Madrid");
+        test.done();
+    },
+    testLocaleInfoGetTimeZoneMM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("my-MM");
+        test.ok(info !== null);
+        test.equal(info.getTimeZone(), "Asia/Yangon");
+        test.done();
+    },
+    testLocaleInfoGetTimeZoneCA: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("en-CA");
+        test.ok(info !== null);
+        test.equal(info.getTimeZone(), "America/Toronto");
+        test.done();
+    },
+    testLocaleInfoGetTimeZoneCH: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("de-CH");
+        test.ok(info !== null);
+        test.equal(info.getTimeZone(), "Europe/Zurich");
+        test.done();
+    },
+    testLocaleInfoGetTimeZoneKR: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ko-KR");
+        test.ok(info !== null);
+        test.equal(info.getTimeZone(), "Asia/Seoul");
+        test.done();
+    },
+    testLocaleInfoGetTimeZoneBT: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("dz-BT");
+        test.ok(info !== null);
+        test.equal(info.getTimeZone(), "Asia/Thimphu");
+        test.done();
+    },
+    testLocaleInfoGetTimeZoneFO: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("fo-FO");
+        test.ok(info !== null);
+        test.equal(info.getTimeZone(), "Atlantic/Faroe");
+        test.done();
+    },
+    testLocaleInfoGetTimeZoneFM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("en-FM");
+        test.ok(info !== null);
+        test.equal(info.getTimeZone(), "Pacific/Pohnpei");
         test.done();
     },
     
@@ -6789,7 +6839,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("mk-MK");
         test.ok(info !== null);
     
-        test.equal(info.getPercentageFormat(), "{n}%");
+        test.equal(info.getPercentageFormat(), "{n} %");
         test.done();
     },
     
@@ -6816,7 +6866,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("mk-MK");
         test.ok(info !== null);
     
-        test.equal(info.getNegativePercentageFormat(), "-{n}%");
+        test.equal(info.getNegativePercentageFormat(), "-{n} %");
         test.done();
     },
     
@@ -7208,7 +7258,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ne-IN");
         test.ok(info !== null);
     
-        test.equal(info.getSecondaryGroupingDigits(), 0);
+        test.equal(info.getSecondaryGroupingDigits(), 2);
         test.done();
     },
     
@@ -7281,7 +7331,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("nl-BE");
         test.ok(info !== null);
     
-        test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
+        test.equal(info.getCurrencyFormats().commonNegative, "{s} -{n}");
         test.done();
     },
     
@@ -12675,6 +12725,20 @@ module.exports.testlocaleinfo = {
         test.equal(li.getLanguageName(), "Asu");
         test.done();
     },
+    testLocaleInfoGetLanguageName4: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("mus");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getLanguageName(), "Muscogee");
+        test.done();
+    },
+    testLocaleInfoGetLanguageName5: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("cic");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getLanguageName(), "Chickasaw");
+        test.done();
+    },
     
     testLocaleInfoGetRegionName1: function(test) {
         test.expect(2);
@@ -12699,7 +12763,48 @@ module.exports.testlocaleinfo = {
         test.equal(li.getRegionName(), "Tanzania");
         test.done();
     },
-    
+    testLocaleInfoGetRegionName4: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("MK");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getRegionName(), "North Macedonia");
+        test.done();
+    },
+    testLocaleInfoGetRegionName5: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("MO");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getRegionName(), "Macao SAR China");
+        test.done();
+    },
+    testLocaleInfoGetRegionName6: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("SZ");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getRegionName(), "Eswatini");
+        test.done();
+    },
+    testLocaleInfoGetRegionName7: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("XX");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getRegionName(), "Unknown");
+        test.done();
+    },
+    testLocaleInfoGetRegionName8: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("XA");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getRegionName(), "Pseudo-Accents");
+        test.done();
+    },
+    testLocaleInfoGetRegionName9: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("XB");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getRegionName(), "Pseudo-Bidi");
+        test.done();
+    },
     testGetDigitsWestern: function(test) {
         test.expect(2);
         var li = new LocaleInfo("en-US");
@@ -13323,6 +13428,145 @@ module.exports.testlocaleinfo = {
         test.equal(info.getDelimiterQuotationStart(), "„");
         test.equal(info.getDelimiterQuotationEnd(), "“");
         test.done();
+    },
+    testLocaleInfoQuotation_ka_GE: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ka-GE");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "„");
+        test.equal(info.getDelimiterQuotationEnd(), "“");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_be_BY: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("be-BY");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "«");
+        test.equal(info.getDelimiterQuotationEnd(), "»");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_lo_LA: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("lo-LA");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_ky_KG: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ky-KG");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "«");
+        test.equal(info.getDelimiterQuotationEnd(), "»");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_hy_AM: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("hy-AM");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "«");
+        test.equal(info.getDelimiterQuotationEnd(), "»");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_gl_ES: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("gl-ES");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_eu_ES: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("eu-ES");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_my_MM: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("my-MM");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_ne_NP: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ne-NP");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_wo_SN: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("wo-SN");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_tk_TM: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("tk-TM");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_tg_TJ: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("tg-TJ");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_mt_MT: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("mt-MT");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_zu_ZA: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("zu-ZA");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
     }
-    
 };

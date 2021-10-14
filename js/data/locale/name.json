@@ -5,7 +5,8 @@
 		"long": "pgmf",
 		"full": "pgmfs",
 		"formal_short": "pf",
-		"formal_long": "pgf"
+		"formal_long": "pgf",
+		"familiar": "g"
 	},
 	"format": "{prefix} {givenName} {middleName} {familyName}{suffix}",
 	"sortByHeadWord": false,

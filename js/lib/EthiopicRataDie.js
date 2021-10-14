@@ -1,7 +1,7 @@
 /*
  * EthiopicRataDie.js - Represent an RD date in the Ethiopic calendar
  *
- * Copyright © 2015, 2018, JEDLSoft
+ * Copyright © 2015, 2018, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -82,7 +82,7 @@ EthiopicRataDie.prototype.constructor = EthiopicRataDie;
  * The difference between the zero Julian day and the first Ethiopic date
  * of Friday, August 29, 8 CE Julian at 6:00am UTC.<p>
  *
- * See <a href="http://us.wow.com/wiki/Time_in_Ethiopia?s_chn=90&s_pt=aolsem&v_t=aolsem"
+ * See <a href="https://en.wikipedia.org/wiki/Time_in_Ethiopia"
  * Time in Ethiopia</a> for information about how time is handled in Ethiopia.
  *
  * @protected

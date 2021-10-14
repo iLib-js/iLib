@@ -1,7 +1,7 @@
 /*
  * testdatefmt_bs_Cyrl_BA.js - test the date formatter object in Cyrillic Bosnian
  *
- * Copyright © 2012-2015,2017-2018, JEDLSoft
+ * Copyright © 2012-2015,2017-2018,2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -540,7 +540,7 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "9");
+        test.equal(fmt.format(date), "с");
         test.done();
     },
 
@@ -1401,7 +1401,7 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "пре 30 секунди");
+        test.equal(fmt.formatRelative(reference, date), 'прије 30 секунди');
         test.done();
     },
     testDateFmtFormatRelativeWithinHourAfter_bs_Cyrl_BA: function(test) {
@@ -1457,7 +1457,7 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "пре 10 минута");
+        test.equal(fmt.formatRelative(reference, date), 'прије 10 минута');
         test.done();
     },
     testDateFmtFormatRelativeWithinDayAfter_bs_Cyrl_BA: function(test) {
@@ -1513,7 +1513,7 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "пре 4 сата");
+        test.equal(fmt.formatRelative(reference, date), 'прије 4 сата');
         test.done();
     },
 
@@ -1570,7 +1570,7 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "пре 4 дана");
+        test.equal(fmt.formatRelative(reference, date), 'прије 4 дана');
         test.done();
     },
 
@@ -1599,7 +1599,7 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "за 9 недеља");
+        test.equal(fmt.formatRelative(reference, date), 'за 9 седмица');
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterBefore_bs_Cyrl_BA: function(test) {
@@ -1627,7 +1627,7 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "пре 9 недеља");
+        test.equal(fmt.formatRelative(reference, date), 'прије 9 седмица');
         test.done();
     },
 
@@ -1656,7 +1656,7 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "за 16 месеци");
+        test.equal(fmt.formatRelative(reference, date), 'за 16 мјесеци');
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsBefore_bs_Cyrl_BA: function(test) {
@@ -1684,7 +1684,7 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "пре 14 месеци");
+        test.equal(fmt.formatRelative(reference, date), 'прије 14 мјесеци');
         test.done();
     },
 
@@ -1741,7 +1741,7 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "пре 21 годину");
+        test.equal(fmt.formatRelative(reference, date), 'прије 21 годину');
         test.done();
     }
 };

@@ -1,21 +1,10 @@
 {
-    "MMM1": "jan.",
-    "MMM2": "feb.",
     "MMM3": "mart",
-    "MMM4": "apr.",
-    "MMM8": "avg.",
-    "MMM9": "sept.",
-    "MMM10": "okt.",
-    "MMM11": "nov.",
-    "MMM12": "dec.",
+    "MMM9": "sept",
+    "LLL3": "mart",
+    "LLL9": "sept",
     "EEEE0": "nedjelja",
-    "EEE0": "ned.",
-    "EEE1": "pon.",
-    "EEE2": "ut.",
     "EEEE3": "srijeda",
-    "EEE3": "sr.",
-    "EEE4": "čet.",
-    "EEE5": "pet.",
-    "EEE6": "sub.",
-    "a0": "prije podne"
+    "a0": "prije podne",
+    "B1": "prije podne"
 }

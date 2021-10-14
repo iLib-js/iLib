@@ -1,7 +1,7 @@
 /*
  * testdatefmt_af_NA.js - test the date formatter object in Afrikaans for Namibia
  *
- * Copyright © 2015,2017,2019 JEDLSoft
+ * Copyright © 2015,2017,2019-2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -359,7 +359,7 @@ module.exports.testdatefmt_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45");
+        test.equal(fmt.format(date), "1:45 vm.");
         test.done();
     },
 
@@ -378,7 +378,7 @@ module.exports.testdatefmt_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "1:45 nm.");
         test.done();
     },
 
@@ -397,7 +397,7 @@ module.exports.testdatefmt_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "1:45 nm.");
         test.done();
     },
 
@@ -416,7 +416,7 @@ module.exports.testdatefmt_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "1:45 nm.");
         test.done();
     },
 
@@ -435,7 +435,7 @@ module.exports.testdatefmt_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011-09-29 13:45");
+        test.equal(fmt.format(date), "2011-09-29 1:45 nm.");
         test.done();
     },
 
@@ -454,7 +454,7 @@ module.exports.testdatefmt_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Sep. 2011 13:45");
+        test.equal(fmt.format(date), "29 Sep. 2011 1:45 nm.");
         test.done();
     },
 
@@ -473,7 +473,7 @@ module.exports.testdatefmt_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 September 2011 13:45");
+        test.equal(fmt.format(date), "29 September 2011 1:45 nm.");
         test.done();
     },
 
@@ -492,7 +492,7 @@ module.exports.testdatefmt_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 September 2011 13:45");
+        test.equal(fmt.format(date), "29 September 2011 1:45 nm.");
         test.done();
     },
 
@@ -705,7 +705,7 @@ module.exports.testdatefmt_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "1:45 nm.");
         test.done();
     },
 
@@ -724,7 +724,7 @@ module.exports.testdatefmt_af_NA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011-09-29 13:45");
+        test.equal(fmt.format(date), "2011-09-29 1:45 nm.");
         test.done();
     },
 
@@ -1125,7 +1125,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13");
+        test.equal(fmt.format(date), "1");
         test.done();
     },
 
@@ -1163,7 +1163,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "1:45");
         test.done();
     },
 
@@ -1182,7 +1182,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), "1:45:37");
         test.done();
     },
 
@@ -1201,7 +1201,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "1:45 nm.");
         test.done();
     },
 
@@ -1225,7 +1225,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 CAT");
+        test.equal(fmt.format(date), "1:45 WAT");
         test.done();
     },
 
@@ -1249,7 +1249,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 CAT");
+        test.equal(fmt.format(date), "1:45 nm. WAT");
         test.done();
     },
 
@@ -1268,7 +1268,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), "1:45:37 nm.");
         test.done();
     },
 
@@ -1292,7 +1292,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 CAT");
+        test.equal(fmt.format(date), "1:45:37 WAT");
         test.done();
     },
 
@@ -1316,7 +1316,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 CAT");
+        test.equal(fmt.format(date), "1:45:37 nm. WAT");
         test.done();
     },
 
@@ -1374,7 +1374,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13");
+        test.equal(fmt.format(date), "1");
         test.done();
     },
 
@@ -1412,7 +1412,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "1:45");
         test.done();
     },
 
@@ -1431,7 +1431,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), "1:45:37");
         test.done();
     },
 
@@ -1450,7 +1450,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "1:45 nm.");
         test.done();
     },
 
@@ -1474,7 +1474,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 CAT");
+        test.equal(fmt.format(date), "1:45 WAT");
         test.done();
     },
 
@@ -1498,7 +1498,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 CAT");
+        test.equal(fmt.format(date), "1:45 nm. WAT");
         test.done();
     },
 
@@ -1517,7 +1517,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), "1:45:37 nm.");
         test.done();
     },
 
@@ -1542,7 +1542,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 CAT");
+        test.equal(fmt.format(date), "1:45:37 WAT");
         test.done();
     },
 
@@ -1566,7 +1566,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 CAT");
+        test.equal(fmt.format(date), "1:45:37 nm. WAT");
         test.done();
     },
 
@@ -1590,7 +1590,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 CAT");
+        test.equal(fmt.format(date), "1:45:37 WAT");
         test.done();
     },
 

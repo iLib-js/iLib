@@ -2,6 +2,8 @@
 
 Hello, and welcome to the iLib project!
 
+View this documentation on [github pages](https://ilib-js.github.io/iLib/docs/)
+
 * [Welcome](Welcome.md)
 * [History](History.md)
 * [License](License.md)
@@ -10,7 +12,7 @@ Hello, and welcome to the iLib project!
 # Documentation #
 
 * [Getting Started](GettingStarted.md)
-* [Old Tutorial](tutorial/iLib1.0JSTutorial.pdf)
+* Tutorials:
     * [Handling Phone Numbers in iLib](tutorial/phone.md)
     * [Name Parsing and Formatting](tutorial/name.md)
     * [Glyphs, Characters, and Character Normalization](tutorial/characters.md)
@@ -20,18 +22,22 @@ Hello, and welcome to the iLib project!
 * Architecture and Process
     * [Overall Architecture](Architecture.md)
     * [CommonJS Modularization Support](tutorial/modules.md) as of 11.0
+        * For ES6-style modules, see the [ilib-es6](https://github.com/ilib-js/ilib-es6/) project
+          which provides wrappers for all ilib classes
     * [Updating the time zone information](tutorial/timezone.md)
     * [Running unit test on QT/QML](QtTest.md)
 * API Reference: 
-    * [10.0](http://www.translationcircle.com/ilib/doc/10.0/jsdoc/)
-    * [11.0](http://www.translationcircle.com/ilib/doc/11.0/jsdoc/)
-    * [12.0](http://www.translationcircle.com/ilib/doc/jsdoc/) (latest stable)
-    * [latest](http://www.translationcircle.com/ilib/doc/jsdoc/) (latest development release)
+    * [10.0](https://ilib-js.github.io/iLib/docs/api/10.0/jsdoc/index.html)
+    * [11.0](https://ilib-js.github.io/iLib/docs/api/11.0/jsdoc/index.html)
+    * [12.0](https://ilib-js.github.io/iLib/docs/api/12.0/jsdoc/index.html)
+    * [13.0](https://ilib-js.github.io/iLib/docs/api/13.0/jsdoc/index.html)
+    * [14.0](https://ilib-js.github.io/iLib/docs/api/jsdoc/index.html) (latest stable)
 * Javadocs:
-    * [10.0](http://www.translationcircle.com/ilib/doc/10.0/javadoc/)
-    * [11.0](http://www.translationcircle.com/ilib/doc/11.0/javadoc/)
-    * [12.0](http://www.translationcircle.com/ilib/doc/javadoc/) (latest stable)
-    * [latest](http://www.translationcircle.com/ilib/doc/javadoc/) (latest development release)
+    * [10.0](https://ilib-js.github.io/iLib/docs/api/10.0/javadoc/index.html)
+    * [11.0](https://ilib-js.github.io/iLib/docs/api/11.0/javadoc/index.html)
+    * [12.0](https://ilib-js.github.io/iLib/docs/api/12.0/javadoc/index.html)
+    * [13.0](https://ilib-js.github.io/iLib/docs/api/13.0/javadoc/index.html)
+    * [14.0](https://ilib-js.github.io/iLib/docs/api/javadoc/index.html) (latest stable)
 * [FAQ](FAQ.md)
 * [Demo](http://www.translationcircle.com/ilib/demo/)
 

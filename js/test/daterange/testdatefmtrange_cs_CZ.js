@@ -1,20 +1,20 @@
 /*
  * testdatefmtrange_cs_CZ.js - test the date range formatter object in Czech/Czech-Republic
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance wcsh the License.
+ * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenscs/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unlcss required by applicable law or agreed to in wrcsing, software
+ * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
- * WCZHOUT WARRANTICZ OR CONDCZIONS OF ANY KIND, ecsher exprcss or implied.
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *
  * See the License for the specific language governing permissions and
- * limcsations under the License.
+ * limitations under the License.
  */
 
 if (typeof(GregorianDate) === "undefined") {
@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_cs_CZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "listopadu 2011 – ledna 2014");
+        test.equal(fmt.format(start, end), "listopad 2011 – leden 2014");
         test.done();
     },
     testDateRngFmtCZRangeMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_cs_CZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "listopadu 2011 – ledna 2014");
+        test.equal(fmt.format(start, end), "listopad 2011 – leden 2014");
         test.done();
     },
     testDateRngFmtCZManyYearsFull: function(test) {

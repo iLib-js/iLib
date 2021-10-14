@@ -1,7 +1,7 @@
- /*
+/*
  * testclock.js - test the 12/24 hour support amongst various locales
  *
- * Copyright © 2019, JEDLSoft
+ * Copyright © 2019-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -331,8 +331,8 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-NG");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
-        
+        test.equal(info.getClock(), 24);
+
         test.done();
     },
     testClock_en_NZ: function(test) {
@@ -1764,6 +1764,140 @@ module.exports.testclock = {
 
         test.equal(info.getClock(), 12);
         
+        test.done();
+    },
+    testClock_ka_GE: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ka-GE");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
+    },
+    testClock_be_BY: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("be-BY");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
+    },
+    testClock_lo_LA: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("lo-LA");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
+    },
+    testClock_ky_KG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ky-KG");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
+    },
+    testClock_ca_AD: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ca-AD");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
+    },
+    testClock_ca_ES: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ca-ES");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_hy_AM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("hy-AM");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_gl_ES: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("gl-ES");
+        test.ok(info !== null);
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_eu_ES: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("eu-ES");
+        test.ok(info !== null);
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_ne_NP: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ne-NP");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
+    },
+    testClock_my_MM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("my-MM");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
+    },
+    testClock_wo_SN: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("wo-SN");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_tk_TM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("tk-TM");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_tg_TJ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("tg-TJ");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_mt_MT: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("mt-MT");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_zu_ZA: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("zu-ZA");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
         test.done();
     }
 }

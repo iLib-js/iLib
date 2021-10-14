@@ -1,7 +1,7 @@
 /*
  * testdurfmtasync.js - test the duration formatter object
  *
- * Copyright © 2018, JEDLSoft
+ * Copyright © 2018-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -156,7 +156,7 @@ module.exports.testdurfmtasync = {
                     second: 1,
                     millisecond: 1
                 });
-                test.equal(duration.toString(), "1 J, 1 M, 1 W, 1 T, 1 Std., 1 Min., 1 s, 1 ms");
+                test.equal(duration.toString(), '1 J, 1 M, 1 W, 1 T, 1 Std., 1 Min., 1 Sek., 1 ms');
                 test.done();
             }
         });

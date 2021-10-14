@@ -1,7 +1,7 @@
 /*
  * testlistfmtasync.js - test the list formatter object
  *
- * Copyright © 2018, JEDLSoft
+ * Copyright © 2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ module.exports.testlistfmtasync = {
             onLoad: function(fmt) {
                 test.expect(2);
                 test.ok(fmt !== null);
-                test.equal(fmt.format(["true", "false"]), "true and false");
+                test.equal(fmt.format(["true", "false"]), "true & false");
                 test.done();
             }
         });

@@ -1,7 +1,7 @@
 /*
  * testlistfmt_uk_UA.js - test the list formatter object
  *
- * Copyright © 2017,2017, JEDLSoft
+ * Copyright © 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -96,7 +96,7 @@ module.exports.testlistfmt_uk_UA = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["Один", "Два"]), "Один, Два");
+        test.equal(fmt.format(["Один", "Два"]), "Один і Два");
         test.done();
     },
     
@@ -108,7 +108,7 @@ module.exports.testlistfmt_uk_UA = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["Один", "Два", "Три"]), "Один, Два, Три");
+        test.equal(fmt.format(["Один", "Два", "Три"]), "Один, Два і Три");
         test.done();
     },
     
@@ -120,7 +120,7 @@ module.exports.testlistfmt_uk_UA = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["Один", "Два", "Три", "Чотири"]), "Один, Два, Три, Чотири");
+        test.equal(fmt.format(["Один", "Два", "Три", "Чотири"]), "Один, Два, Три і Чотири");
         test.done();
     },
     testListFmtUnitStyleukUANumberFormatOneFull: function(test) {

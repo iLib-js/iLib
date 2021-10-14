@@ -21,5 +21,9 @@ qt/FileReader/debug/
 qt/FileReader/imports/
 qt/FileReader/release/
 qt/output/
-
+qt/FileReader/.qmake.stash
+qt/NodeunitRun.qmlproject.user
+qt/NodeunitTest/NodeunitRun.qmlproject.autosave
+qt/NodeunitTest/NodeunitRun.qmlproject.user.4.8-pre1
 /node_modules/
+/dist/

@@ -1,7 +1,7 @@
 /*
  * ilib.js - define the ilib name space
  *
- * Copyright © 2012-2019, JEDLSoft
+ * Copyright © 2012-2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -285,6 +285,51 @@ ilib.setLocale = function (spec) {
 };
 
 /**
+ * @private
+ */
+function parseLocale(str) {
+    if (!str) return str;
+
+    // take care of the libc style locale with a dot + script at the end
+    var dot = str.indexOf('.')
+    if (dot > -1) {
+        str = str.substring(0, dot);
+    }
+
+    // handle the posix default locale
+    if (str === "C") return "en-US";
+
+    var parts = str.replace(/_/g, '-').split(/-/g);
+    var localeParts = [];
+
+    if (parts.length > 0) {
+        if (parts[0].length === 2 || parts[0].length === 3) {
+            // language
+            localeParts.push(parts[0].toLowerCase());
+
+            if (parts.length > 1) {
+                if (parts[1].length === 4) {
+                    // script
+                    localeParts.push(parts[1][0].toUpperCase() + parts[1].substring(1).toLowerCase());
+                } else if (parts[1].length === 2 || parts[1].length == 3) {
+                    // region
+                    localeParts.push(parts[1].toUpperCase());
+                }
+
+                if (parts.length > 2) {
+                    if (parts[2].length === 2 || parts[2].length == 3) {
+                        // region
+                        localeParts.push(parts[2].toUpperCase());
+                    }
+                }
+            }
+        }
+    }
+
+    return localeParts.join('-');
+}
+
+/**
  * Return the default locale for all of ilib if one has been set. This
  * locale will be used when no explicit locale is passed to any ilib
  * class. If the default
@@ -297,13 +342,14 @@ ilib.setLocale = function (spec) {
  * @return {string} the locale specifier for the default locale
  */
 ilib.getLocale = function () {
+    var lang, dot;
     if (typeof(ilib.locale) !== 'string') {
         var plat = ilib._getPlatform();
         switch (plat) {
             case 'browser':
                 // running in a browser
                 if(typeof(navigator.language) !== 'undefined') {
-                    ilib.locale = navigator.language.substring(0,3) + navigator.language.substring(3,5).toUpperCase();  // FF/Opera/Chrome/Webkit
+                    ilib.locale = parseLocale(navigator.language);  // FF/Opera/Chrome/Webkit
                 }
                 if (!ilib.locale) {
                     // IE on Windows
@@ -316,7 +362,9 @@ ilib.getLocale = function () {
                                             undefined));
                     if (typeof(lang) !== 'undefined' && lang) {
                         // for some reason, MS uses lower case region tags
-                        ilib.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
+                        ilib.locale = parseLocale(lang);
+                    } else {
+                        ilib.locale = undefined;
                     }
                 }
                 break;
@@ -326,18 +374,21 @@ ilib.getLocale = function () {
                 if (typeof(PalmSystem.locales) !== 'undefined' &&
                     typeof(PalmSystem.locales.UI) != 'undefined' &&
                     PalmSystem.locales.UI.length > 0) {
-                    ilib.locale = PalmSystem.locales.UI;
+                    ilib.locale = parseLocale(PalmSystem.locales.UI);
                 } else if (typeof(PalmSystem.locale) !== 'undefined') {
-                    ilib.locale = PalmSystem.locale;
+                    ilib.locale = parseLocale(PalmSystem.locale);
+                } else {
+                    ilib.locale = undefined;
                 }
                 break;
             case 'rhino':
                 if (typeof(environment) !== 'undefined' && environment.user && typeof(environment.user.language) === 'string' && environment.user.language.length > 0) {
                     // running under plain rhino
-                    ilib.locale = environment.user.language;
+                    var l = [environment.user.language];
                     if (typeof(environment.user.country) === 'string' && environment.user.country.length > 0) {
-                        ilib.locale += '-' + environment.user.country;
+                        l.push(environment.user.country);
                     }
+                    ilib.locale = l.join("-");
                 }
                 break;
             case "trireme":
@@ -346,9 +397,7 @@ ilib.getLocale = function () {
                 // the LANG variable on unix is in the form "lang_REGION.CHARSET"
                 // where language and region are the correct ISO codes separated by
                 // an underscore. This translate it back to the BCP-47 form.
-                if (lang && typeof(lang) !== 'undefined') {
-                    ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
-                }
+                ilib.locale = parseLocale(lang);
                 break;
             case 'nodejs':
                 // running under nodejs
@@ -356,17 +405,16 @@ ilib.getLocale = function () {
                 // the LANG variable on unix is in the form "lang_REGION.CHARSET"
                 // where language and region are the correct ISO codes separated by
                 // an underscore. This translate it back to the BCP-47 form.
-                if (lang && typeof(lang) !== 'undefined') {
-                    ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
-                }
+                ilib.locale = parseLocale(lang);
                 break;
             case 'qt':
                 // running in the Javascript engine under Qt/QML
                 var locobj = Qt.locale();
-                var lang = locobj.name && locobj.name.replace("_", "-") || "en-US";
+                ilib.locale = parseLocale(locobj.name || "en-US");
                 break;
         }
-        ilib.locale = typeof(ilib.locale) === 'string' && ilib.locale ? ilib.locale : 'en-US';
+        // test for posix "C" locale
+        ilib.locale = typeof(ilib.locale) === 'string' && ilib.locale.length && ilib.locale !== "C" ? ilib.locale : 'en-US';
         if (ilib.locale === "en") {
             ilib.locale = "en-US"; // hack to get various platforms working correctly
         }

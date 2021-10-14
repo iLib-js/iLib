@@ -1,7 +1,7 @@
 /*
  * genlist.js - ilib tool to generate the ilib format list data from cldr
  *
- * Copyright © 2017-2019, JEDLSoft
+ * Copyright © 2017-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,14 +22,94 @@
  */
 
 var fs = require('fs');
-var util = require('util');
 var path = require("path");
 var common = require('./common.js');
-var coelesce = common.coelesce;
 var Locale = common.Locale;
 var aux = require("./datefmts.js");
+var merge = common.merge;
 
-var cldr = require("cldr-data");
+var hardCodeData = {
+    "tg":{
+        "or": {
+            "short": {
+                "2": "{0} ё {1}",
+                "end": "{0}, ё {1}"
+            },
+            "medium": {
+                "2": "{0} ё {1}",
+                "end": "{0}, ё {1}"
+            },
+            "long": {
+                "2": "{0} ё {1}",
+                "end": "{0}, ё {1}"
+            },
+            "full": {
+                "2": "{0} ё {1}",
+                "end": "{0}, ё {1}"
+              }
+        }
+    },
+    "mt":{
+        "or": {
+            "short": {
+                "2": "{0} jew {1}",
+                "end": "{0}, jew {1}"
+            },
+            "medium": {
+                "2": "{0} jew {1}",
+                "end": "{0}, jew {1}"
+            },
+            "long": {
+                "2": "{0} jew {1}",
+                "end": "{0}, jew {1}"
+            },
+            "full": {
+                "2": "{0} jew {1}",
+                "end": "{0}, jew {1}"
+            }
+        }
+    },
+    "zu":{
+        "or": {
+            "short": {
+                "2": "{0} noma {1}",
+                "end": "{0}, noma {1}"
+            },
+            "medium": {
+                "2": "{0} noma {1}",
+                "end": "{0}, noma {1}"
+            },
+            "long": {
+                "2": "{0} noma {1}",
+                "end": "{0}, noma {1}"
+            },
+            "full": {
+                "2": "{0} noma {1}",
+                "end": "{0}, noma {1}"
+              }
+          }
+    },
+    "wo":{
+        "or": {
+            "short": {
+                "2": "{0} mba {1}",
+                "end": "{0}, mba {1}"
+            },
+            "medium": {
+                "2": "{0} mba {1}",
+                "end": "{0}, mba {1}"
+            },
+            "long": {
+                "2": "{0} mba {1}",
+                "end": "{0}, mba {1}"
+            },
+            "full": {
+                "2": "{0} mba {1}",
+                "end": "{0}, mba {1}"
+            }
+        }
+    }
+}
 
 function usage() {
     console.log("Usage: genlist [-h] [toDir]\n" +
@@ -37,11 +117,12 @@ function usage() {
         "-h or --help\n" +
         "  this help\n" +
         "toDir\n" +
-        "  directory to output the normalization json files. Default: current dir.\n");
+        "  directory to output the normalization json files. Default: current dir.");
     process.exit(1);
 }
 
 var toDir = ".";
+
 
 process.argv.forEach(function (val, index, array) {
     if (val === "-h" || val === "--help") {
@@ -52,7 +133,7 @@ process.argv.forEach(function (val, index, array) {
 toDir = process.argv[2] || "tmp";
 
 console.log("genlist - generate list formatter data.\n" +
-    "Copyright (c) 2017-2018 JEDLSoft\n");
+    "Copyright (c) 2017-2020 JEDLSoft");
 
 console.log("output dir: " + toDir);
 
@@ -68,62 +149,56 @@ function comparePatterns(left, right) {
             left.end !== right.end));
 }
 
-var locales = require("cldr-data/availableLocales.json").availableLocales;
+var locales = require("cldr-core/availableLocales.json").availableLocales.full;
 
 console.log("Locales:" + JSON.stringify(locales));
 
 var localePatterns = {};
 
 locales.forEach(function(locale) {
-    var data = require(path.join("cldr-data/main", locale, "listPatterns.json"));
-    var cldrPatterns = data.main[locale].listPatterns;
+    var filename = path.join("cldr-misc-full/main", locale, "listPatterns.json");
+    try {
+        var data = require(filename);
+        var cldrPatterns = data.main[locale].listPatterns;
 
-    var patterns = {
-        standard: {}
-    };
+        var patterns = {
+            standard: {}
+        };
 
-    if (cldrPatterns["listPattern-type-standard"]) {
-        if (comparePatterns(cldrPatterns["listPattern-type-standard-short"], cldrPatterns["listPattern-type-standard"]) ||
-            comparePatterns(cldrPatterns["listPattern-type-standard-narrow"], cldrPatterns["listPattern-type-standard"])) {
+        if (cldrPatterns["listPattern-type-standard"]) {
             patterns.standard.short = cldrPatterns["listPattern-type-standard"];
             patterns.standard.medium = cldrPatterns["listPattern-type-standard"];
             patterns.standard.long = cldrPatterns["listPattern-type-standard"];
             patterns.standard.full = cldrPatterns["listPattern-type-standard"];
+
             if (cldrPatterns["listPattern-type-standard-short"]) {
                 patterns.standard.short = cldrPatterns["listPattern-type-standard-short"];
                 patterns.standard.medium = cldrPatterns["listPattern-type-standard-short"];
             }
+
             if (cldrPatterns["listPattern-type-standard-narrow"]) {
                 patterns.standard.short = cldrPatterns["listPattern-type-standard-narrow"];
             }
-        } else {
-            patterns.standard = cldrPatterns["listPattern-type-standard"];
         }
-    }
 
-    if (cldrPatterns["listPattern-type-or"]) {
-        if (comparePatterns(cldrPatterns["listPattern-type-or-short"], cldrPatterns["listPattern-type-or"]) ||
-            comparePatterns(cldrPatterns["listPattern-type-or-narrow"], cldrPatterns["listPattern-type-or"])) {
+        if (cldrPatterns["listPattern-type-or"]) {
             patterns.or = {};
             patterns.or.short = cldrPatterns["listPattern-type-or"];
             patterns.or.medium = cldrPatterns["listPattern-type-or"];
             patterns.or.long = cldrPatterns["listPattern-type-or"];
             patterns.or.full = cldrPatterns["listPattern-type-or"];
+
             if (cldrPatterns["listPattern-type-or-short"]) {
                 patterns.or.short = cldrPatterns["listPattern-type-or-short"];
                 patterns.or.medium = cldrPatterns["listPattern-type-or-short"];
             }
+
             if (cldrPatterns["listPattern-type-or-narrow"]) {
                 patterns.or.short = cldrPatterns["listPattern-type-or-narrow"];
             }
-        } else {
-            patterns.or = cldrPatterns["listPattern-type-or"];
         }
-    }
 
-    if (cldrPatterns["listPattern-type-unit"]) {
-        if (comparePatterns(cldrPatterns["listPattern-type-unit-short"], cldrPatterns["listPattern-type-unit"]) ||
-            comparePatterns(cldrPatterns["listPattern-type-unit-narrow"], cldrPatterns["listPattern-type-unit"])) {
+        if (cldrPatterns["listPattern-type-unit"]) {
             patterns.unit = {};
             patterns.unit.short = cldrPatterns["listPattern-type-unit"];
             patterns.unit.medium = cldrPatterns["listPattern-type-unit"];
@@ -137,33 +212,33 @@ locales.forEach(function(locale) {
             if (cldrPatterns["listPattern-type-unit-narrow"]) {
                 patterns.unit.short = cldrPatterns["listPattern-type-unit-narrow"];
             }
-        } else {
-            patterns.unit = cldrPatterns["listPattern-type-unit"];
         }
-    }
 
-    console.log(locale + "...");
+        console.log(locale + "...");
 
-    var l = new Locale(locale);
-    var position = localePatterns;
+        var l = new Locale(locale);
+        var position = localePatterns;
 
-    [l.getLanguage(), l.getScript(), l.getRegion()].forEach(function(prop) {
-        if (prop) {
-            if (!position[prop]) {
-                position[prop] = {};
+        [l.getLanguage(), l.getScript(), l.getRegion()].forEach(function(prop) {
+            if (prop) {
+                if (!position[prop]) {
+                    position[prop] = {};
+                }
+                position = position[prop];
             }
-            position = position[prop];
-        }
-    });
+        });
 
-    position.data = patterns;
+        position.data = patterns;
+    } catch (e) {
+        console.log("Could not find file " + filename + " ... skipping.");
+    }
 });
 
-console.log("\n\nMerging formats forward ...\n");
+console.log("\n\nMerging formats forward ...");
 
 aux.mergeFormats(localePatterns, localePatterns, []);
 
-console.log("\n\nPromoting sublocales ...\n");
+console.log("\n\nPromoting sublocales ...");
 
 for (var language in localePatterns) {
     if (language !== "und" && language !== "data") {
@@ -171,7 +246,7 @@ for (var language in localePatterns) {
     }
 }
 
-console.log("\n\nPruning duplicated formats ...\n");
+console.log("\n\nPruning duplicated formats ...");
 
 //Don't prune the root. Iterate through the first level so we can
 //skip the root and only prune the "language" level of the locale
@@ -179,6 +254,11 @@ console.log("\n\nPruning duplicated formats ...\n");
 
 aux.pruneFormats(localePatterns);
 
-console.log("\n");
+console.log("");
+
+for(var language in hardCodeData) {
+    var currentData = localePatterns[language].data || {};
+    localePatterns[language].data = merge(currentData, hardCodeData[language]);
+}
 
 aux.writeFormats(toDir, "list.json", localePatterns, []);

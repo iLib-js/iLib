@@ -1,7 +1,7 @@
 /*
  * testdatefmt_sw_KE.js - test the date formatter object in Kenya
  *
- * Copyright © 2017,2017-2018, JEDLSoft
+ * Copyright © 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -213,7 +213,7 @@ module.exports.testdatefmt_sw_KE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011, 13:45");
+        test.equal(fmt.format(date), '29/09/2011 13:45');
         test.done();
     },
 
@@ -232,7 +232,7 @@ module.exports.testdatefmt_sw_KE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Sep 2011, 13:45");
+        test.equal(fmt.format(date), '29 Sep 2011 13:45');
         test.done();
     },
 
@@ -252,7 +252,7 @@ module.exports.testdatefmt_sw_KE = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "29 Septemba 2011 saa 13:45");
+        test.equal(fmt.format(date), '29 Septemba 2011 13:45');
         test.done();
     },
 
@@ -271,7 +271,7 @@ module.exports.testdatefmt_sw_KE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Septemba 2011 saa 13:45");
+        test.equal(fmt.format(date), '29 Septemba 2011 13:45');
         test.done();
     },
 
@@ -503,7 +503,7 @@ module.exports.testdatefmt_sw_KE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011, 13:45");
+        test.equal(fmt.format(date), '29/09/2011 13:45');
         test.done();
     },
 

@@ -1,7 +1,7 @@
 /*
  * testcurrency.js - test the currency routines
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1893,6 +1893,128 @@ module.exports.testcurrency = {
 
         test.equal(info.getCurrency(), "MYR");
         
+        test.done();
+    },
+    testCurrency_ka_GE: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ka-GE");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "GEL");
+
+        test.done();
+    },
+    testCurrency_my_MM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("my-MM");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "MMK");
+        test.done();
+    },
+    testCurrency_be_BY: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("be-BY");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "BYN");
+        test.done();
+    },
+    testCurrency_ne_NP: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ne-NP");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "NPR");
+        test.done();
+    },
+    testCurrency_lo_LA: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("lo-LA");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "LAK");
+        test.done();
+    },
+    testCurrency_ky_KG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ky-KG");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "KGS");
+        test.done();
+    },
+    testCurrency_ca_AD: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ca-AD");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "EUR");
+
+        test.done();
+    },
+    testCurrency_ca_ES: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ca-ES");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "EUR");
+        test.done();
+    },
+    testCurrency_gl_ES: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("gl-ES");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "EUR");
+        test.done();
+    },
+    testCurrency_hy_AM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("hy-AM");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "AMD");
+        test.done();
+    },
+    testCurrency_wo_SN: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("wo-SN");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "XOF");
+        test.done();
+    },
+    testCurrency_tk_TM: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("tk-TM");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "TMT");
+        test.done();
+    },
+    testCurrency_tg_TJ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("tg-TJ");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "TJS");
+        test.done();
+    },
+    testCurrency_mt_MT: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("mt-MT");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "EUR");
+        test.done();
+    },
+    testCurrency_zu_ZA: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("zu-ZA");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "ZAR");
         test.done();
     }
 };

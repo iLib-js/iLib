@@ -1,7 +1,7 @@
 /*
  * testdatefmt_kk_cyrl_KZ.js - test the date formatter object in Cyrillic Kazakhstan
  * 
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017,2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -712,7 +712,7 @@ module.exports.testdatefmt_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 ж. Қыркүйек");
+        test.equal(fmt.format(date), "2011 ж. қыркүйек");
         test.done();
     },
     

@@ -1,7 +1,7 @@
 /*
  * testctype.js - test the character type information functions
  *
- * Copyright © 2012-2015, 2017-2018, JEDLSoft
+ * Copyright © 2012-2015, 2017-2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1616,7 +1616,16 @@ module.exports.testctype = {
         test.ok(CType.withinRange("\uFFFA", "Specials"));
         test.done();
     },
-
+    testWithinRangedivesakuru: function(test) {
+        test.expect(1);
+        test.ok(CType.withinRange("\uD806\uDD10", "dives akuru"));
+        test.done();
+    },
+    testWithinRangeegyptianhieroglyphcontrols: function(test) {
+        test.expect(1);
+        test.ok(CType.withinRange("\uD80D\uDC32", "egyptian hieroglyph format controls"));
+        test.done();
+    },
     testWithinRangeCopticnumber: function(test) {
         test.expect(1);
         var str = IString.fromCodePoint(0x102e0);
@@ -1777,8 +1786,24 @@ module.exports.testctype = {
         test.ok(CType.withinRange(str, "glagolitic"));
         test.done();
     },
-
-
+    testWithinRangeElymaic: function(test) {
+        test.expect(1);
+        var str = IString.fromCodePoint(0x10feb);
+        test.ok(CType.withinRange(str, "elymaic"));
+        test.done();
+    },
+    testWithinRangechorasmian: function(test) {
+        test.expect(1);
+        var str = IString.fromCodePoint(0x10fb3);
+        test.ok(CType.withinRange(str, "chorasmian"));
+        test.done();
+    },
+    testWithinRangedivesAkuru: function(test) {
+        test.expect(1);
+        var str = IString.fromCodePoint(0x11911);
+        test.ok(CType.withinRange(str, "dives akuru"));
+        test.done();
+    },
     testIsScriptTrue: function(test) {
         test.expect(8);
         test.ok("testing Latn", isScript("a", "Latn"));

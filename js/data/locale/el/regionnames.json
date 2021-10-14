@@ -643,6 +643,12 @@
             "code": "P"
         }
     ],
+    "AS": [
+        {
+            "code": "",
+            "name": "American Samoa"
+        }
+    ],
     "AT": [
         {
             "name": "Μπούργκενλαντ",
@@ -713,6 +719,18 @@
         {
             "name": "Τασμανία",
             "code": "TAS"
+        }
+    ],
+    "AW": [
+        {
+            "code": "",
+            "name": "Aruba"
+        }
+    ],
+    "AX": [
+        {
+            "code": "",
+            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -877,12 +895,12 @@
             "code": "XCI"
         },
         {
-            "name": "Λάνκαραν",
-            "code": "LA"
-        },
-        {
             "name": "Λανκαράν",
             "code": "LAN"
+        },
+        {
+            "name": "Λάνκαραν",
+            "code": "LA"
         },
         {
             "name": "Λέρικ",
@@ -1143,10 +1161,6 @@
             "code": "02"
         },
         {
-            "name": "Barisal",
-            "code": "A"
-        },
-        {
             "name": "Bhola",
             "code": "07"
         },
@@ -1167,10 +1181,6 @@
             "code": "10"
         },
         {
-            "name": "Chittagong Division",
-            "code": "B"
-        },
-        {
             "name": "Chuadanga",
             "code": "12"
         },
@@ -1187,20 +1197,12 @@
             "code": "13"
         },
         {
-            "name": "Dinajpur",
-            "code": "14"
-        },
-        {
             "name": "Faridpur",
             "code": "15"
         },
         {
             "name": "Feni",
             "code": "16"
-        },
-        {
-            "name": "Gaibandha",
-            "code": "19"
         },
         {
             "name": "Gazipur",
@@ -1215,10 +1217,6 @@
             "code": "20"
         },
         {
-            "name": "Jamalpur",
-            "code": "21"
-        },
-        {
             "name": "Jessore",
             "code": "22"
         },
@@ -1229,10 +1227,6 @@
         {
             "name": "Jhenaidah",
             "code": "23"
-        },
-        {
-            "name": "Joypurhat",
-            "code": "24"
         },
         {
             "name": "Khagrachari",
@@ -1247,20 +1241,8 @@
             "code": "26"
         },
         {
-            "name": "Kurigram",
-            "code": "28"
-        },
-        {
             "name": "Kushtia",
             "code": "30"
-        },
-        {
-            "name": "Lakshmipur",
-            "code": "31"
-        },
-        {
-            "name": "Lalmonirhat",
-            "code": "32"
         },
         {
             "name": "Madaripur",
@@ -1281,18 +1263,6 @@
         {
             "name": "Meherpur",
             "code": "39"
-        },
-        {
-            "name": "Munshiganj",
-            "code": "35"
-        },
-        {
-            "name": "Mymensingh",
-            "code": "34"
-        },
-        {
-            "name": "Mymensingh Division",
-            "code": "H"
         },
         {
             "name": "Naogaon",
@@ -1319,24 +1289,12 @@
             "code": "45"
         },
         {
-            "name": "Netrokona",
-            "code": "41"
-        },
-        {
-            "name": "Nilphamari",
-            "code": "46"
-        },
-        {
             "name": "Noakhali",
             "code": "47"
         },
         {
             "name": "Pabna",
             "code": "49"
-        },
-        {
-            "name": "Panchagarh",
-            "code": "52"
         },
         {
             "name": "Patuakhali",
@@ -1347,20 +1305,8 @@
             "code": "50"
         },
         {
-            "name": "Rajbari",
-            "code": "53"
-        },
-        {
-            "name": "Rajshahi Division",
-            "code": "E"
-        },
-        {
             "name": "Rangamati Hill",
             "code": "56"
-        },
-        {
-            "name": "Rangpur Division",
-            "code": "F"
         },
         {
             "name": "Satkhira",
@@ -1369,10 +1315,6 @@
         {
             "name": "Shariatpur",
             "code": "62"
-        },
-        {
-            "name": "Sherpur",
-            "code": "57"
         },
         {
             "name": "Sirajganj",
@@ -1391,8 +1333,84 @@
             "code": "63"
         },
         {
-            "name": "Thakurgaon",
+            "name": "Διαίρεση Μίμενσινγκ",
+            "code": "H"
+        },
+        {
+            "name": "Διαίρεση Μπαρισάλ",
+            "code": "A"
+        },
+        {
+            "name": "Διαίρεση Ρανγκπούρ",
+            "code": "F"
+        },
+        {
+            "name": "Διαίρεση Ρατζσάχι",
+            "code": "E"
+        },
+        {
+            "name": "Διαίρεση Τσιταγκόνγκ",
+            "code": "B"
+        },
+        {
+            "name": "Επαρχία Γκαϊμπάντα",
+            "code": "19"
+        },
+        {
+            "name": "Επαρχία Θακουργκαόν",
             "code": "64"
+        },
+        {
+            "name": "Επαρχία Κουριγκράμ",
+            "code": "28"
+        },
+        {
+            "name": "Επαρχία Λακσμιπούρ",
+            "code": "31"
+        },
+        {
+            "name": "Επαρχία Λαλμονιρχάτ",
+            "code": "32"
+        },
+        {
+            "name": "Επαρχία Μίμενσινγκ",
+            "code": "34"
+        },
+        {
+            "name": "Επαρχία Μουνσιγκάντζ",
+            "code": "35"
+        },
+        {
+            "name": "Επαρχία Νετροκόνα",
+            "code": "41"
+        },
+        {
+            "name": "Επαρχία Νιλφαμάρι",
+            "code": "46"
+        },
+        {
+            "name": "Επαρχία Ντινατζπούρ",
+            "code": "14"
+        },
+        {
+            "name": "Επαρχία Παντσαγκάρ",
+            "code": "52"
+        },
+        {
+            "name": "Επαρχία Ρατζμπάρι",
+            "code": "53"
+        },
+        {
+            "name": "Επαρχία Σερπούρ",
+            "code": "57"
+        },
+        {
+            "name": "Επαρχία Τζαϊπουρχάτ",
+            "code": "24"
+        },
+        {
+            "name": "Επαρχία Τζαμαλπούρ",
+            "code": "21"
         },
         {
             "name": "Κούλνα",
@@ -1717,7 +1735,7 @@
             "code": "02"
         },
         {
-            "name": "Varna",
+            "name": "Επαρχία Βάρνας",
             "code": "03"
         },
         {
@@ -1967,6 +1985,12 @@
             "code": "OU"
         }
     ],
+    "BL": [
+        {
+            "code": "",
+            "name": "St. Barthélemy"
+        }
+    ],
     "BN": [
         {
             "name": "Μπελάιτ",
@@ -2148,6 +2172,10 @@
         }
     ],
     "BS": [
+        {
+            "name": "New Providence",
+            "code": "NP"
+        },
         {
             "name": "Άκλινς",
             "code": "AK"
@@ -2909,10 +2937,6 @@
             "code": "18"
         },
         {
-            "name": "Gôh-Djiboua",
-            "code": "GD"
-        },
-        {
             "name": "Haut-Sassandra",
             "code": "02"
         },
@@ -2985,10 +3009,6 @@
             "code": "08"
         },
         {
-            "name": "Zanzan²",
-            "code": "ZZ"
-        },
-        {
             "name": "Αμπιτζάν",
             "code": "AB"
         },
@@ -2999,6 +3019,14 @@
         {
             "name": "Γιαμουσουκρό",
             "code": "YM"
+        },
+        {
+            "name": "Γκο-Ντζιμπουά",
+            "code": "GD"
+        },
+        {
+            "name": "Ζανζάν",
+            "code": "ZZ"
         },
         {
             "name": "Μπας-Σασάντρα",
@@ -3017,6 +3045,10 @@
         {
             "name": "Arica y Parinacota",
             "code": "AP"
+        },
+        {
+            "name": "Ñuble",
+            "code": "NB"
         },
         {
             "name": "Αϊσέν",
@@ -3119,140 +3151,152 @@
     ],
     "CN": [
         {
-            "name": "Πεκίνο",
-            "code": "11"
+            "name": "Hong Kong SAR China",
+            "code": "91"
         },
         {
-            "name": "Τιαντσίν",
-            "code": "12"
-        },
-        {
-            "name": "Χεπέι",
-            "code": "13"
-        },
-        {
-            "name": "Σανσί",
-            "code": "14"
-        },
-        {
-            "name": "Εσωτερική Μογγολία",
-            "code": "15"
-        },
-        {
-            "name": "Λιαόνινγκ",
-            "code": "21"
-        },
-        {
-            "name": "Τζιλίν",
-            "code": "22"
-        },
-        {
-            "name": "Χεϊλονγκτσιάνγκ",
-            "code": "23"
-        },
-        {
-            "name": "Σαγκάη",
-            "code": "31"
-        },
-        {
-            "name": "Τσιανγκσού",
-            "code": "32"
-        },
-        {
-            "name": "Τσετσιάνγκ",
-            "code": "33"
-        },
-        {
-            "name": "Ανχουί",
-            "code": "34"
-        },
-        {
-            "name": "Φουτσιάν",
-            "code": "35"
-        },
-        {
-            "name": "Τσιανγκσί",
-            "code": "36"
-        },
-        {
-            "name": "Σαν-τούνγκ",
-            "code": "37"
-        },
-        {
-            "name": "Χενάν",
-            "code": "41"
-        },
-        {
-            "name": "Χουπέι",
-            "code": "42"
-        },
-        {
-            "name": "Χουνάν",
-            "code": "43"
-        },
-        {
-            "name": "Κουανγκτόνγκ",
-            "code": "44"
-        },
-        {
-            "name": "Κουανγκσί",
-            "code": "45"
-        },
-        {
-            "name": "Χαϊνάν",
-            "code": "46"
-        },
-        {
-            "name": "Τσονγκίνγκ",
-            "code": "50"
-        },
-        {
-            "name": "Σιτσουάν",
-            "code": "51"
-        },
-        {
-            "name": "Κουιτσού",
-            "code": "52"
-        },
-        {
-            "name": "Γιουνάν",
-            "code": "53"
-        },
-        {
-            "name": "Θιβέτ",
-            "code": "54"
-        },
-        {
-            "name": "Σαάνξι",
-            "code": "61"
-        },
-        {
-            "name": "Γκανσού",
-            "code": "62"
-        },
-        {
-            "name": "Κινγκχάι",
-            "code": "63"
-        },
-        {
-            "name": "Νινγκσιά",
-            "code": "64"
-        },
-        {
-            "name": "Σιντζιάνγκ",
-            "code": "65"
+            "name": "Macao SAR China",
+            "code": "92"
         },
         {
             "name": "Taiwan",
             "code": "71"
         },
         {
-            "name": "Hong Kong SAR China",
-            "code": "91"
+            "name": "Ανχουί",
+            "code": "AH"
         },
         {
-            "name": "Macau SAR China",
-            "code": "92"
+            "name": "Γιουνάν",
+            "code": "YN"
+        },
+        {
+            "name": "Γκανσού",
+            "code": "GS"
+        },
+        {
+            "name": "Επαρχία Ταϊβάν (Λαϊκή Δημοκρατία της Κίνας)",
+            "code": "TW"
+        },
+        {
+            "name": "Εσωτερική Μογγολία",
+            "code": "NM"
+        },
+        {
+            "name": "Θιβέτ",
+            "code": "XZ"
+        },
+        {
+            "name": "Κινγκχάι",
+            "code": "QH"
+        },
+        {
+            "name": "Κουανγκσί",
+            "code": "GX"
+        },
+        {
+            "name": "Κουανγκτόνγκ",
+            "code": "GD"
+        },
+        {
+            "name": "Κουιτσού",
+            "code": "GZ"
+        },
+        {
+            "name": "Λιαόνινγκ",
+            "code": "LN"
+        },
+        {
+            "name": "Μακάου",
+            "code": "MO"
+        },
+        {
+            "name": "Νινγκσιά",
+            "code": "NX"
+        },
+        {
+            "name": "Πεκίνο",
+            "code": "BJ"
+        },
+        {
+            "name": "Σαάνξι",
+            "code": "SN"
+        },
+        {
+            "name": "Σαγκάη",
+            "code": "SH"
+        },
+        {
+            "name": "Σαν-τούνγκ",
+            "code": "SD"
+        },
+        {
+            "name": "Σανσί",
+            "code": "SX"
+        },
+        {
+            "name": "Σιντζιάνγκ",
+            "code": "XJ"
+        },
+        {
+            "name": "Σιτσουάν",
+            "code": "SC"
+        },
+        {
+            "name": "Τζιλίν",
+            "code": "JL"
+        },
+        {
+            "name": "Τιαντσίν",
+            "code": "TJ"
+        },
+        {
+            "name": "Τσετσιάνγκ",
+            "code": "ZJ"
+        },
+        {
+            "name": "Τσιανγκσί",
+            "code": "JX"
+        },
+        {
+            "name": "Τσιανγκσού",
+            "code": "JS"
+        },
+        {
+            "name": "Τσονγκίνγκ",
+            "code": "CQ"
+        },
+        {
+            "name": "Φουτσιάν",
+            "code": "FJ"
+        },
+        {
+            "name": "Χαϊνάν",
+            "code": "HI"
+        },
+        {
+            "name": "Χεϊλονγκτσιάνγκ",
+            "code": "HL"
+        },
+        {
+            "name": "Χενάν",
+            "code": "HA"
+        },
+        {
+            "name": "Χεπέι",
+            "code": "HE"
+        },
+        {
+            "name": "Χονγκ Κονγκ",
+            "code": "HK"
+        },
+        {
+            "name": "Χουνάν",
+            "code": "HN"
+        },
+        {
+            "name": "Χουπέι",
+            "code": "HB"
         }
     ],
     "CO": [
@@ -3387,6 +3431,12 @@
         {
             "name": "Χουίλα",
             "code": "HUI"
+        }
+    ],
+    "CP": [
+        {
+            "code": "",
+            "name": "Clipperton Island"
         }
     ],
     "CR": [
@@ -3581,6 +3631,12 @@
         {
             "name": "Σάο Φιλίπε",
             "code": "SF"
+        }
+    ],
+    "CW": [
+        {
+            "code": "",
+            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -4881,16 +4937,8 @@
             "code": "O"
         },
         {
-            "name": "Balears Province",
-            "code": "PM"
-        },
-        {
             "name": "Canary Islands",
             "code": "CN"
-        },
-        {
-            "name": "Cantabria Province",
-            "code": "S"
         },
         {
             "name": "Madrid Province",
@@ -4899,10 +4947,6 @@
         {
             "name": "Murcia",
             "code": "MU"
-        },
-        {
-            "name": "Navarra",
-            "code": "NA"
         },
         {
             "name": "Α Κορούνια",
@@ -4939,6 +4983,10 @@
         {
             "name": "Βαλεαρίδες Νήσοι",
             "code": "IB"
+        },
+        {
+            "name": "Βαλεαρίδες Νήσοι²",
+            "code": "PM"
         },
         {
             "name": "Βαλένθια",
@@ -5061,6 +5109,10 @@
             "code": "CB"
         },
         {
+            "name": "Κανταβρία²",
+            "code": "S"
+        },
+        {
             "name": "Καστίλλη και Λεόν",
             "code": "CL"
         },
@@ -5115,6 +5167,10 @@
         {
             "name": "Ναβάρρα",
             "code": "NC"
+        },
+        {
+            "name": "Ναβάρρα²",
+            "code": "NA"
         },
         {
             "name": "Ουέσκα",
@@ -5375,20 +5431,8 @@
     ],
     "FR": [
         {
-            "name": "Brittany",
-            "code": "E"
-        },
-        {
-            "name": "Burgundy-Franche-Comté",
-            "code": "BFC"
-        },
-        {
             "name": "Clipperton Island",
             "code": "CP"
-        },
-        {
-            "name": "Corsica",
-            "code": "H"
         },
         {
             "name": "French Guiana",
@@ -5407,7 +5451,7 @@
             "code": "GUA"
         },
         {
-            "name": "Guadeloupe²",
+            "name": "Guadeloupe",
             "code": "GP"
         },
         {
@@ -5423,20 +5467,12 @@
             "code": "MAY"
         },
         {
-            "name": "Mayotte²",
+            "name": "Mayotte",
             "code": "YT"
         },
         {
             "name": "New Caledonia",
             "code": "NC"
-        },
-        {
-            "name": "Nouvelle-Aquitaine",
-            "code": "NAQ"
-        },
-        {
-            "name": "Occitanie",
-            "code": "OCC"
         },
         {
             "name": "Réunion",
@@ -5553,6 +5589,10 @@
         {
             "name": "Βοζ",
             "code": "88"
+        },
+        {
+            "name": "Βουργουνδία-Φρανς-Κοντέ",
+            "code": "BFC"
         },
         {
             "name": "Βρετάνη",
@@ -5719,6 +5759,10 @@
             "code": "13"
         },
         {
+            "name": "Νέα Ακουιτανία",
+            "code": "NAQ"
+        },
+        {
             "name": "Νιέβρ",
             "code": "58"
         },
@@ -5749,6 +5793,10 @@
         {
             "name": "Ντρομ",
             "code": "26"
+        },
+        {
+            "name": "Οξιτανία",
+            "code": "OCC"
         },
         {
             "name": "Ορν",
@@ -5971,10 +6019,6 @@
             "code": "BDG"
         },
         {
-            "name": "Barnet",
-            "code": "BNE"
-        },
-        {
             "name": "Barnsley",
             "code": "BNS"
         },
@@ -6021,10 +6065,6 @@
         {
             "name": "Bridgend",
             "code": "BGE"
-        },
-        {
-            "name": "Brighton and Hove",
-            "code": "BNH"
         },
         {
             "name": "Bury",
@@ -6191,20 +6231,12 @@
             "code": "GRE"
         },
         {
-            "name": "Gwynedd",
-            "code": "GWN"
-        },
-        {
             "name": "Halton",
             "code": "HAL"
         },
         {
             "name": "Hammersmith and Fulham",
             "code": "HMF"
-        },
-        {
-            "name": "Haringey",
-            "code": "HRY"
         },
         {
             "name": "Harrow",
@@ -6217,10 +6249,6 @@
         {
             "name": "Havering",
             "code": "HAV"
-        },
-        {
-            "name": "Herefordshire",
-            "code": "HEF"
         },
         {
             "name": "Hillingdon",
@@ -6259,10 +6287,6 @@
             "code": "LDS"
         },
         {
-            "name": "Leicestershire",
-            "code": "LEC"
-        },
-        {
             "name": "Lewisham",
             "code": "LEW"
         },
@@ -6289,10 +6313,6 @@
         {
             "name": "Merthyr Tydfil",
             "code": "MTY"
-        },
-        {
-            "name": "Merton",
-            "code": "MRT"
         },
         {
             "name": "Mid and East Antrim",
@@ -6367,10 +6387,6 @@
             "code": "NYK"
         },
         {
-            "name": "Northamptonshire",
-            "code": "NTH"
-        },
-        {
             "name": "Oldham",
             "code": "OLD"
         },
@@ -6395,10 +6411,6 @@
             "code": "POL"
         },
         {
-            "name": "Powys",
-            "code": "POW"
-        },
-        {
             "name": "Redbridge",
             "code": "RDB"
         },
@@ -6409,14 +6421,6 @@
         {
             "name": "Renfrewshire",
             "code": "RFW"
-        },
-        {
-            "name": "Rhondda Cynon Taf",
-            "code": "RCT"
-        },
-        {
-            "name": "Richmond upon Thames",
-            "code": "RIC"
         },
         {
             "name": "Rochdale",
@@ -6445,10 +6449,6 @@
         {
             "name": "Sefton",
             "code": "SFT"
-        },
-        {
-            "name": "Shropshire",
-            "code": "SHR"
         },
         {
             "name": "Solihull",
@@ -6527,16 +6527,8 @@
             "code": "TWH"
         },
         {
-            "name": "Vale of Glamorgan",
-            "code": "VGL"
-        },
-        {
             "name": "Wakefield",
             "code": "WKF"
-        },
-        {
-            "name": "Walsall",
-            "code": "WLL"
         },
         {
             "name": "Waltham Forest",
@@ -6549,10 +6541,6 @@
         {
             "name": "West Lothian",
             "code": "WLN"
-        },
-        {
-            "name": "Wigan",
-            "code": "WGN"
         },
         {
             "name": "Windsor and Maidenhead",
@@ -6569,10 +6557,6 @@
         {
             "name": "Worcestershire",
             "code": "WOR"
-        },
-        {
-            "name": "Wrexham",
-            "code": "WRX"
         },
         {
             "name": "Αγγλία",
@@ -6609,6 +6593,10 @@
         {
             "name": "Γκλούσεστερσαϊρ",
             "code": "GLS"
+        },
+        {
+            "name": "Γκουίνεθ",
+            "code": "GWN"
         },
         {
             "name": "Γλασκώβη",
@@ -6683,6 +6671,14 @@
             "code": "COV"
         },
         {
+            "name": "κοιλάδα του Γκλαμόργκαν",
+            "code": "VGL"
+        },
+        {
+            "name": "Κομητειακός Δήμος Ρέξαμ",
+            "code": "WRX"
+        },
+        {
             "name": "Κορνουάλη",
             "code": "CON"
         },
@@ -6703,12 +6699,24 @@
             "code": "LCE"
         },
         {
+            "name": "Λέστερσαϊρ",
+            "code": "LEC"
+        },
+        {
             "name": "Λίβερπουλ",
             "code": "LIV"
         },
         {
             "name": "Λίνκολνσαϊρ",
             "code": "LIN"
+        },
+        {
+            "name": "Λονδρέζικο Προάστιο του Μπαρνέτ",
+            "code": "BNE"
+        },
+        {
+            "name": "Λονδρέζικος Δήμος του Μέρτον",
+            "code": "MRT"
         },
         {
             "name": "Λούτον",
@@ -6721,6 +6729,14 @@
         {
             "name": "Μεγάλη Βρετανία",
             "code": "GBN"
+        },
+        {
+            "name": "Μητροπολιτικός Δήμος του Γουίγκαν",
+            "code": "WGN"
+        },
+        {
+            "name": "Μητροπολιτικός Δήμος του Γουόλσολ",
+            "code": "WLL"
         },
         {
             "name": "Μίντλεσμπρο",
@@ -6745,6 +6761,10 @@
         {
             "name": "Μπόρνμουθ",
             "code": "BMH"
+        },
+        {
+            "name": "Μπράιτον εντ Χόουβ",
+            "code": "BNH"
         },
         {
             "name": "Μπρίστολ",
@@ -6773,6 +6793,10 @@
         {
             "name": "Νορθάμπερλαντ",
             "code": "NBL"
+        },
+        {
+            "name": "Νορθάμπτονσαϊρ",
+            "code": "NTH"
         },
         {
             "name": "Νόρφολκ",
@@ -6835,12 +6859,24 @@
             "code": "SLF"
         },
         {
+            "name": "Πόουις",
+            "code": "POW"
+        },
+        {
             "name": "Πόρτσμουθ",
             "code": "POR"
         },
         {
             "name": "Ρέντινγκ",
             "code": "RDG"
+        },
+        {
+            "name": "Ρίτσμοντ",
+            "code": "RIC"
+        },
+        {
+            "name": "Ρόντα Σίνον Ταφ",
+            "code": "RCT"
         },
         {
             "name": "Σαουθάμπτον",
@@ -6867,7 +6903,7 @@
             "code": "LND"
         },
         {
-            "name": "Σκωτία",
+            "name": "Σκοτία",
             "code": "SCT"
         },
         {
@@ -6881,6 +6917,10 @@
         {
             "name": "Σουόνσι",
             "code": "SWA"
+        },
+        {
+            "name": "Σρόπσαϊρ",
+            "code": "SHR"
         },
         {
             "name": "Στάφορντσαϊρ",
@@ -6913,6 +6953,14 @@
         {
             "name": "Χάμπσαϊρ",
             "code": "HAM"
+        },
+        {
+            "name": "Χάριγκεϋ",
+            "code": "HRY"
+        },
+        {
+            "name": "Χέρεφορντσαϊρ",
+            "code": "HEF"
         },
         {
             "name": "Χέρτφορντσαϊρ",
@@ -6999,6 +7047,12 @@
             "code": "TB"
         }
     ],
+    "GF": [
+        {
+            "code": "",
+            "name": "French Guiana"
+        }
+    ],
     "GH": [
         {
             "name": "Άπερ Γουέστ",
@@ -7042,6 +7096,14 @@
         }
     ],
     "GL": [
+        {
+            "name": "Avannaata Kommunia",
+            "code": "AV"
+        },
+        {
+            "name": "Kommune Qeqertalik",
+            "code": "QT"
+        },
         {
             "name": "Καασουίτσουπ",
             "code": "QA"
@@ -7249,6 +7311,12 @@
         {
             "name": "Φριά",
             "code": "FR"
+        }
+    ],
+    "GP": [
+        {
+            "code": "",
+            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -7641,6 +7709,12 @@
             "code": "HU"
         }
     ],
+    "GU": [
+        {
+            "code": "",
+            "name": "Guam"
+        }
+    ],
     "GW": [
         {
             "name": "Leste",
@@ -7731,6 +7805,12 @@
         {
             "name": "Ποτάρο-Σιπαρούνι",
             "code": "PT"
+        }
+    ],
+    "HK": [
+        {
+            "code": "",
+            "name": "Hong Kong SAR China"
         }
     ],
     "HN": [
@@ -7945,10 +8025,6 @@
             "code": "DU"
         },
         {
-            "name": "Eger",
-            "code": "EG"
-        },
-        {
             "name": "Érd",
             "code": "ER"
         },
@@ -7979,6 +8055,10 @@
         {
             "name": "Γκιούρ",
             "code": "GY"
+        },
+        {
+            "name": "Έγκερ",
+            "code": "EG"
         },
         {
             "name": "Επαρχία Φετζέρ",
@@ -8107,6 +8187,12 @@
         {
             "name": "Χοντμεζοβάσαρχεϊ",
             "code": "HV"
+        }
+    ],
+    "IC": [
+        {
+            "code": "",
+            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -8407,12 +8493,12 @@
             "code": "D"
         },
         {
-            "name": "Tel Aviv District",
-            "code": "TA"
-        },
-        {
             "name": "Βόρεια Περιοχή, Ισραήλ",
             "code": "Z"
+        },
+        {
+            "name": "Διαμέρισμα του Τελ Αβίβ",
+            "code": "TA"
         },
         {
             "name": "Σέντραλ Ντίστρικτ, Ισραήλ",
@@ -8681,7 +8767,7 @@
             "code": "10"
         },
         {
-            "name": "Zanjan",
+            "name": "Ζαντζάν",
             "code": "11"
         },
         {
@@ -8737,7 +8823,7 @@
             "code": "24"
         },
         {
-            "name": "Yazd",
+            "name": "Επαρχία Γιαζντ",
             "code": "25"
         },
         {
@@ -8808,6 +8894,10 @@
         }
     ],
     "IT": [
+        {
+            "name": "Sud Sardegna",
+            "code": "SD"
+        },
         {
             "name": "Αβελλίνο",
             "code": "AV"
@@ -10173,10 +10263,6 @@
     ],
     "KW": [
         {
-            "name": "Al Asimah",
-            "code": "KU"
-        },
-        {
             "name": "Al Jahra",
             "code": "JA"
         },
@@ -10189,6 +10275,10 @@
             "code": "FA"
         },
         {
+            "name": "Κυβερνείο Πρωτεύουσας",
+            "code": "KU"
+        },
+        {
             "name": "Μουμπάρακ Αλ-Καμπίρ",
             "code": "MU"
         },
@@ -10199,8 +10289,8 @@
     ],
     "KZ": [
         {
-            "name": "Jambyl",
-            "code": "ZHA"
+            "name": "Shymkent",
+            "code": "SHY"
         },
         {
             "name": "Ακμόλα",
@@ -10265,6 +10355,10 @@
         {
             "name": "Περιφέρεια Παβλοντάρ",
             "code": "PAV"
+        },
+        {
+            "name": "Περιφέρεια Τζαμπίλ",
+            "code": "ZHA"
         }
     ],
     "LA": [
@@ -10455,7 +10549,7 @@
             "code": "09"
         },
         {
-            "name": "Triesenberg",
+            "name": "Τρίζενμπεργκ",
             "code": "10"
         },
         {
@@ -10489,7 +10583,7 @@
             "code": "6"
         },
         {
-            "name": "North Central",
+            "name": "Βορειοκεντρική επαρχία",
             "code": "7"
         },
         {
@@ -10501,7 +10595,7 @@
             "code": "9"
         },
         {
-            "name": "Colombo",
+            "name": "Διαμέρισμα του Κολόμπο",
             "code": "11"
         },
         {
@@ -10549,7 +10643,7 @@
             "code": "43"
         },
         {
-            "name": "Vavuniya",
+            "name": "Επαρχία Βαβουνίγια",
             "code": "44"
         },
         {
@@ -10731,10 +10825,6 @@
             "code": "16"
         },
         {
-            "name": "Kauno Municipality",
-            "code": "15"
-        },
-        {
             "name": "Kėdainiai",
             "code": "18"
         },
@@ -10903,6 +10993,10 @@
             "code": "14"
         },
         {
+            "name": "Δήμος Κάουνας",
+            "code": "15"
+        },
+        {
             "name": "Δήμος Μπιρστόνας",
             "code": "05"
         },
@@ -11001,24 +11095,12 @@
             "code": "DI"
         },
         {
-            "name": "Diekirch²",
-            "code": "D"
-        },
-        {
             "name": "Echternach",
             "code": "EC"
         },
         {
             "name": "Grevenmacher",
             "code": "GR"
-        },
-        {
-            "name": "Grevenmacher²",
-            "code": "G"
-        },
-        {
-            "name": "Luxembourg²",
-            "code": "L"
         },
         {
             "name": "Mersch",
@@ -11363,12 +11445,12 @@
             "code": "024"
         },
         {
-            "name": "Ντάουγκαβπιλς",
-            "code": "025"
-        },
-        {
             "name": "Νταουγκάβπιλς",
             "code": "DGV"
+        },
+        {
+            "name": "Ντάουγκαβπιλς",
+            "code": "025"
         },
         {
             "name": "Ντόμπελε",
@@ -11651,6 +11733,10 @@
             "code": "BER"
         },
         {
+            "name": "Berrechid",
+            "code": "BRR"
+        },
+        {
             "name": "Boujdour",
             "code": "BOD"
         },
@@ -11669,6 +11755,10 @@
         {
             "name": "Chtouka Aït Baha",
             "code": "CHT"
+        },
+        {
+            "name": "Driouch",
+            "code": "DRI"
         },
         {
             "name": "El Hajeb",
@@ -11697,6 +11787,14 @@
         {
             "name": "Figuig",
             "code": "FIG"
+        },
+        {
+            "name": "Fquih Ben Salah",
+            "code": "FQH"
+        },
+        {
+            "name": "Guercif",
+            "code": "GUF"
         },
         {
             "name": "Ifrane",
@@ -11739,16 +11837,24 @@
             "code": "LAR"
         },
         {
+            "name": "M’diq-Fnideq",
+            "code": "MDF"
+        },
+        {
+            "name": "Marrakech",
+            "code": "MAR"
+        },
+        {
             "name": "Médiouna",
             "code": "MED"
         },
         {
-            "name": "Moulay Yacoub",
-            "code": "MOU"
+            "name": "Midelt",
+            "code": "MID"
         },
         {
-            "name": "Nador",
-            "code": "NAD"
+            "name": "Moulay Yacoub",
+            "code": "MOU"
         },
         {
             "name": "Nouaceur",
@@ -11763,8 +11869,12 @@
             "code": "16"
         },
         {
-            "name": "Safi",
-            "code": "SAF"
+            "name": "Ouezzane",
+            "code": "OUZ"
+        },
+        {
+            "name": "Rehamna",
+            "code": "REH"
         },
         {
             "name": "Sefrou",
@@ -11775,8 +11885,20 @@
             "code": "SET"
         },
         {
+            "name": "Sidi Bennour",
+            "code": "SIB"
+        },
+        {
+            "name": "Sidi Ifni",
+            "code": "SIF"
+        },
+        {
             "name": "Sidi Kacem",
             "code": "SIK"
+        },
+        {
+            "name": "Sidi Slimane",
+            "code": "SIL"
         },
         {
             "name": "Tan-Tan",
@@ -11789,6 +11911,10 @@
         {
             "name": "Taourirt",
             "code": "TAI"
+        },
+        {
+            "name": "Tarfaya (EH-partial)",
+            "code": "TAF"
         },
         {
             "name": "Taroudant",
@@ -11807,8 +11933,16 @@
             "code": "TET"
         },
         {
+            "name": "Tinghir",
+            "code": "TIN"
+        },
+        {
             "name": "Tiznit",
             "code": "TIZ"
+        },
+        {
+            "name": "Youssoufia",
+            "code": "YUS"
         },
         {
             "name": "Zagora",
@@ -11833,6 +11967,14 @@
         {
             "name": "Γκραντ Καζαμπλάνκα",
             "code": "08"
+        },
+        {
+            "name": "επαρχία Σάφι",
+            "code": "SAF"
+        },
+        {
+            "name": "Επαρχία του Ναντόρ",
+            "code": "NAD"
         },
         {
             "name": "Καζαμπλάνκα",
@@ -12221,7 +12363,7 @@
             "code": "16"
         },
         {
-            "name": "Rožaje",
+            "name": "Δήμος Ρόζαγιε",
             "code": "17"
         },
         {
@@ -12247,6 +12389,12 @@
         {
             "name": "Petnjica",
             "code": "23"
+        }
+    ],
+    "MF": [
+        {
+            "code": "",
+            "name": "St. Martin"
         }
     ],
     "MG": [
@@ -12479,7 +12627,7 @@
             "code": "24"
         },
         {
-            "name": "Demir Hisar",
+            "name": "Δήμος του Ντεμίρ Χισάρ",
             "code": "25"
         },
         {
@@ -12615,7 +12763,7 @@
             "code": "58"
         },
         {
-            "name": "Petrovec",
+            "name": "Δήμος του Πέτροβετς",
             "code": "59"
         },
         {
@@ -12647,7 +12795,7 @@
             "code": "66"
         },
         {
-            "name": "Rosoman",
+            "name": "Δήμος του Ρόσομαν",
             "code": "67"
         },
         {
@@ -12827,7 +12975,7 @@
             "code": "17"
         },
         {
-            "name": "Naypyidaw",
+            "name": "Ενωσιακή Επικράτεια Νέπιντο",
             "code": "18"
         }
     ],
@@ -12921,46 +13069,52 @@
             "code": "073"
         }
     ],
+    "MO": [
+        {
+            "code": "",
+            "name": "Macao SAR China"
+        }
+    ],
+    "MP": [
+        {
+            "code": "",
+            "name": "Northern Mariana Islands"
+        }
+    ],
+    "MQ": [
+        {
+            "code": "",
+            "name": "Martinique"
+        }
+    ],
     "MR": [
         {
-            "name": "Nouakchott",
-            "code": "NKC"
+            "name": "Χοντχ Εκ Τσάργκουι",
+            "code": "01"
         },
         {
-            "name": "Nouakchott Nord",
-            "code": "14"
-        },
-        {
-            "name": "Nouakchott Ouest",
-            "code": "13"
-        },
-        {
-            "name": "Nouakchott Sud",
-            "code": "15"
-        },
-        {
-            "name": "Αντράρ",
-            "code": "07"
+            "name": "Χοντ Ελ Γκάρμπι",
+            "code": "02"
         },
         {
             "name": "Ασσάμπα",
             "code": "03"
         },
         {
-            "name": "Γκιντιμάγκα",
-            "code": "10"
-        },
-        {
             "name": "Γκοργκόλ",
             "code": "04"
         },
         {
-            "name": "Ιντσίρι",
-            "code": "12"
-        },
-        {
             "name": "Μπράκνα",
             "code": "05"
+        },
+        {
+            "name": "Τράρζα",
+            "code": "06"
+        },
+        {
+            "name": "Αντράρ",
+            "code": "07"
         },
         {
             "name": "Ντακχλέτ",
@@ -12971,20 +13125,28 @@
             "code": "09"
         },
         {
+            "name": "Γκιντιμάγκα",
+            "code": "10"
+        },
+        {
             "name": "Τίρις Ζεμούρ",
             "code": "11"
         },
         {
-            "name": "Τράρζα",
-            "code": "06"
+            "name": "Ιντσίρι",
+            "code": "12"
         },
         {
-            "name": "Χοντ Ελ Γκάρμπι",
-            "code": "02"
+            "name": "Nouakchott Ouest",
+            "code": "13"
         },
         {
-            "name": "Χοντχ Εκ Τσάργκουι",
-            "code": "01"
+            "name": "Nouakchott Nord",
+            "code": "14"
+        },
+        {
+            "name": "Nouakchott Sud",
+            "code": "15"
         }
     ],
     "MT": [
@@ -13875,6 +14037,12 @@
             "code": "HA"
         }
     ],
+    "NC": [
+        {
+            "code": "",
+            "name": "New Caledonia"
+        }
+    ],
     "NE": [
         {
             "name": "Αγκαντέζ",
@@ -14233,7 +14401,7 @@
             "code": "07"
         },
         {
-            "name": "Telemark",
+            "name": "Τέλεμαρκ",
             "code": "08"
         },
         {
@@ -14287,12 +14455,48 @@
         {
             "name": "Γιαν Μαγιέν",
             "code": "22"
+        },
+        {
+            "name": "Trøndelag",
+            "code": "23"
+        },
+        {
+            "name": "Trøndelag",
+            "code": "50"
         }
     ],
     "NP": [
         {
+            "name": "Gandaki²",
+            "code": "P4"
+        },
+        {
+            "name": "Karnali²",
+            "code": "P6"
+        },
+        {
             "name": "Kosi",
             "code": "KO"
+        },
+        {
+            "name": "Province 1",
+            "code": "P1"
+        },
+        {
+            "name": "Province 2",
+            "code": "P2"
+        },
+        {
+            "name": "Province 3",
+            "code": "P3"
+        },
+        {
+            "name": "Province 5",
+            "code": "P5"
+        },
+        {
+            "name": "Province 7",
+            "code": "P7"
         },
         {
             "name": "Ανατολική αναπτυξιακή περιοχή",
@@ -14439,20 +14643,12 @@
             "code": "NSN"
         },
         {
-            "name": "North Island",
-            "code": "N"
-        },
-        {
             "name": "Northland",
             "code": "NTL"
         },
         {
             "name": "Otago",
             "code": "OTA"
-        },
-        {
-            "name": "South Island",
-            "code": "S"
         },
         {
             "name": "Γκίσμπερν",
@@ -14504,14 +14700,6 @@
         }
     ],
     "OM": [
-        {
-            "name": "Al Batinah",
-            "code": "BA"
-        },
-        {
-            "name": "Ash Sharqiyah",
-            "code": "SH"
-        },
         {
             "name": "Shamal al Batinah",
             "code": "BS"
@@ -14715,6 +14903,12 @@
         {
             "name": "Χουανούκο",
             "code": "HUC"
+        }
+    ],
+    "PF": [
+        {
+            "code": "",
+            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -15237,68 +15431,80 @@
     ],
     "PL": [
         {
-            "name": "βοϊβοδάτο Βαρμίας-Μαζουρίας",
-            "code": "WN"
-        },
-        {
-            "name": "Βοϊβοδάτο Οπόλε",
-            "code": "OP"
-        },
-        {
-            "name": "βοϊβοδάτο Σβιετοκρίσκιε",
-            "code": "SK"
-        },
-        {
-            "name": "Δυτική Πομερανία",
-            "code": "ZP"
-        },
-        {
-            "name": "Ευρύτερη Πολωνία",
-            "code": "WP"
-        },
-        {
             "name": "Κάτω Σιλεσία",
-            "code": "DS"
+            "code": "02"
         },
         {
             "name": "Κουγιαβιανό-Πομεράνιο Βοϊβοδάτο",
-            "code": "KP"
-        },
-        {
-            "name": "Λοτζ",
-            "code": "LD"
+            "code": "04"
         },
         {
             "name": "Λούμπλιν",
-            "code": "LU"
+            "code": "06"
         },
         {
             "name": "Λουμπούζ Βοϊβοδάτο",
-            "code": "LB"
+            "code": "08"
+        },
+        {
+            "name": "Λοτζ",
+            "code": "10"
         },
         {
             "name": "Μαλοπόλσκιε",
-            "code": "MA"
+            "code": "12"
         },
         {
             "name": "Μασοβία",
-            "code": "MZ"
+            "code": "14"
         },
         {
-            "name": "Πομερανία",
-            "code": "PM"
+            "name": "Βοϊβοδάτο Οπόλε",
+            "code": "16"
         },
         {
             "name": "Ποντκαρπάκιε",
-            "code": "PK"
+            "code": "18"
         },
         {
             "name": "Ποντλάσκιε",
-            "code": "PD"
+            "code": "20"
+        },
+        {
+            "name": "Πομερανία",
+            "code": "22"
         },
         {
             "name": "Σιλεσία",
-            "code": "SL"
+            "code": "24"
+        },
+        {
+            "name": "βοϊβοδάτο Σβιετοκρίσκιε",
+            "code": "26"
+        },
+        {
+            "name": "βοϊβοδάτο Βαρμίας-Μαζουρίας",
+            "code": "28"
+        },
+        {
+            "name": "Ευρύτερη Πολωνία",
+            "code": "30"
+        },
+        {
+            "name": "Δυτική Πομερανία",
+            "code": "32"
+        }
+    ],
+    "PM": [
+        {
+            "code": "",
+            "name": "St. Pierre & Miquelon"
+        }
+    ],
+    "PR": [
+        {
+            "code": "",
+            "name": "Puerto Rico"
         }
     ],
     "PS": [
@@ -15621,6 +15827,12 @@
         {
             "name": "Ουμ Σαλάλ",
             "code": "US"
+        }
+    ],
+    "RE": [
+        {
+            "code": "",
+            "name": "Réunion"
         }
     ],
     "RO": [
@@ -16915,7 +17127,7 @@
             "code": "060"
         },
         {
-            "name": "Ljubljana",
+            "name": "Δήμος Πόλης της Λιουμπλιάνα",
             "code": "061"
         },
         {
@@ -17559,6 +17771,10 @@
     ],
     "SL": [
         {
+            "name": "North Western",
+            "code": "NW"
+        },
+        {
             "name": "Ανατολική Περιφέρεια",
             "code": "E"
         },
@@ -17897,6 +18113,12 @@
             "code": "CH"
         }
     ],
+    "SX": [
+        {
+            "code": "",
+            "name": "Sint Maarten"
+        }
+    ],
     "SY": [
         {
             "name": "Αλ Χασακά",
@@ -17971,6 +18193,12 @@
         {
             "name": "Χνόχο",
             "code": "HH"
+        }
+    ],
+    "TA": [
+        {
+            "code": "",
+            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -18065,6 +18293,12 @@
         {
             "name": "Χάτζερ-Λάμις",
             "code": "HL"
+        }
+    ],
+    "TF": [
+        {
+            "code": "",
+            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -18507,7 +18741,7 @@
     ],
     "TN": [
         {
-            "name": "Tunis",
+            "name": "Κυβερνείο Τύνιδας",
             "code": "11"
         },
         {
@@ -18767,7 +19001,7 @@
             "code": "35"
         },
         {
-            "name": "Kars",
+            "name": "Επαρχία Καρς",
             "code": "36"
         },
         {
@@ -19015,36 +19249,36 @@
     ],
     "TV": [
         {
-            "code": "FUN",
-            "name": "Funafuti"
+            "name": "Nanumanga",
+            "code": "NMG"
         },
         {
-            "code": "NMG",
-            "name": "Nanumanga"
+            "name": "Nanumea",
+            "code": "NMA"
         },
         {
-            "code": "NMA",
-            "name": "Nanumea"
+            "name": "Niutao",
+            "code": "NIT"
         },
         {
-            "code": "NIT",
-            "name": "Niutao"
+            "name": "Nui",
+            "code": "NUI"
         },
         {
-            "code": "NUI",
-            "name": "Nui"
+            "name": "Nukufetau",
+            "code": "NKF"
         },
         {
-            "code": "NKF",
-            "name": "Nukufetau"
+            "name": "Nukulaelae",
+            "code": "NKL"
         },
         {
-            "code": "NKL",
-            "name": "Nukulaelae"
+            "name": "Vaitupu",
+            "code": "VAI"
         },
         {
-            "code": "VAI",
-            "name": "Vaitupu"
+            "name": "Φουναφούτι",
+            "code": "FUN"
         }
     ],
     "TW": [
@@ -19059,6 +19293,10 @@
         {
             "name": "Penghu",
             "code": "PEN"
+        },
+        {
+            "name": "Taiwan",
+            "code": ""
         },
         {
             "name": "Γιλάν",
@@ -19129,12 +19367,12 @@
             "code": "HUA"
         },
         {
-            "name": "Χσιντσού",
-            "code": "HSZ"
-        },
-        {
             "name": "Χσίντσου",
             "code": "HSQ"
+        },
+        {
+            "name": "Χσιντσού",
+            "code": "HSZ"
         }
     ],
     "TZ": [
@@ -19257,6 +19495,10 @@
         {
             "name": "Περιφέρεια Σιμίγιου",
             "code": "30"
+        },
+        {
+            "name": "Songwe",
+            "code": "31"
         }
     ],
     "UA": [
@@ -19375,6 +19617,10 @@
             "code": "201"
         },
         {
+            "name": "Bugweri",
+            "code": "235"
+        },
+        {
             "name": "Bunyangabu",
             "code": "430"
         },
@@ -19391,12 +19637,32 @@
             "code": "428"
         },
         {
+            "name": "Kapelebyong",
+            "code": "236"
+        },
+        {
+            "name": "Kasanda",
+            "code": "126"
+        },
+        {
+            "name": "Kikuube",
+            "code": "432"
+        },
+        {
             "name": "Kisoro",
             "code": "408"
         },
         {
+            "name": "Kwania",
+            "code": "333"
+        },
+        {
             "name": "Kyotera",
             "code": "125"
+        },
+        {
+            "name": "Nabilatuk",
+            "code": "334"
         },
         {
             "name": "Namisindwa",
@@ -19876,6 +20142,10 @@
         }
     ],
     "UM": [
+        {
+            "name": "U.S. Outlying Islands",
+            "code": ""
+        },
         {
             "name": "Ατόλλη Τζόνστον",
             "code": "67"
@@ -20407,6 +20677,12 @@
             "code": "W"
         }
     ],
+    "VI": [
+        {
+            "code": "",
+            "name": "U.S. Virgin Islands"
+        }
+    ],
     "VN": [
         {
             "name": "Bắc Kạn",
@@ -20689,6 +20965,10 @@
     ],
     "WF": [
         {
+            "name": "Wallis & Futuna",
+            "code": ""
+        },
+        {
             "name": "Άλο",
             "code": "AL"
         },
@@ -20835,6 +21115,12 @@
         {
             "name": "Χάτζα",
             "code": "HJ"
+        }
+    ],
+    "YT": [
+        {
+            "code": "",
+            "name": "Mayotte"
         }
     ],
     "ZA": [

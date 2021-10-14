@@ -1,7 +1,7 @@
 /*
  * genscripts.js - ilib tool to generate the json data about ISO 15924 scripts
  * 
- * Copyright © 2013 - 2017, JEDLSoft
+ * Copyright © 2013 - 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,139 +22,85 @@
  */
 
 var fs = require('fs');
-var unifile = require('./unifile.js');
+var path = require('path');
 var common = require('./common.js');
-var UnicodeFile = unifile.UnicodeFile;
 var coelesce = common.coelesce;
 
 function usage() {
-	console.log("Usage: genscripts [-h] ISO-15924-file.txt ScriptMetadata.txt UCD-dir  [toDir]\n" +
-			"Generate the normalization data.\n\n" +
-			"-h or --help\n" +
-			"  this help\n" +
-			"ISO-15924-file.txt\n" +
-			"  the Unicode script code definition file downloaded from the Unicode site at\n" +
-			"  https://unicode.org/iso15924/iso15924-text.html\n" +
-			"UCD-dir\n" +
-			"  path to the Unicode Character Database files downloaded from the Unicode site\n" +
-			"CLDR-dir\n" +
-			"  path to the json CLDR files downloaded from the Unicode site\n" +
-			"toDir\n" +
-			"  directory to output the normalization json files. Default: current dir.\n");
-	process.exit(1);
+    console.log("Usage: genscripts [-h] [toDir]\n" +
+            "Generate the normalization data.\n\n" +
+            "-h or --help\n" +
+            "  this help\n" +
+            "toDir\n" +
+            "  directory to output the normalization json files. Default: current dir.");
+    process.exit(1);
 }
 
-var iso15924FileName;
-var scriptFileName;
-var scriptMetaDataFileName;
-var ucdDir;
-var cldrDir;
 var toDir = ".";
 
 process.argv.forEach(function (val, index, array) {
-	if (val === "-h" || val === "--help") {
-		usage();
-	}
+    if (val === "-h" || val === "--help") {
+        usage();
+    }
 });
 
-if (process.argv.length < 4) {
-	console.error('Error: not enough arguments');
-	usage();
+if (process.argv.length < 2) {
+    console.error('Error: not enough arguments');
+    usage();
 }
 
-iso15924FileName = process.argv[2];
-scriptMetaDataFileName = process.argv[3];
-ucdDir = process.argv[4];
-
-if (process.argv.length > 5) {
-	toDir = process.argv[5];
+if (process.argv.length > 1) {
+    toDir = process.argv[2];
 }
 
 console.log("genscripts - generate scripts data.\n" +
-		"Copyright (c) 2012 - 2016 JEDLSoft");
+        "Copyright (c) 2012 - 2017, 2020 JEDLSoft");
 
-// TODO: these should call fs.existsSync instead
-fs.exists(iso15924FileName, function (exists) {
-	if (!exists) {
-		console.error("Could not access file " + iso15924FileName);
-		usage();
-	}
-});
-
-fs.exists(ucdDir, function (exists) {
-	if (!exists) {
-		console.error("Could not access UCD directory " + ucdDir);
-		usage();
-	}
-});
-
-fs.exists(scriptMetaDataFileName, function (exists) {
-	if (!exists) {
-		console.error("Could not access file " + scriptMetaDataFileName);
-		usage();
-	}
-});
-
-fs.exists(toDir, function (exists) {
-	if (!exists) {
-		console.error("Could not access target directory " + toDir);
-		usage();
-	}
-});
-
-scriptFileName = ucdDir + "/Scripts.txt";
-
-fs.exists(scriptFileName, function (exists) {
-	if (!exists) {
-		console.error("Could not access file " + scriptFileName);
-		usage();
-	}
-});
+if (!fs.existsSync(toDir)) {
+    console.error("Could not access target directory " + toDir);
+    usage();
+}
 
 var scripts = {};
 var fullToShortMap = {};
 
-var iso15924 = new UnicodeFile({path: iso15924FileName});
-var len = iso15924.length();
-var row;
+var iso15924 = require("iso-15924");
+var len = iso15924.length;
+var entry;
 var script;
 var longCode;
-var code;
 
 for (var i = 0; i < len; i++ ) {
-	row = iso15924.get(i);
-	code = row[0];
+    entry = iso15924[i];
 
-	longCode = (row[4].length == 0) ? row[2] : row[4];
-	longCode = longCode.replace(/ +/g, '_');
-	script = {
-		nb: parseInt(row[1], 10),
-		nm: row[2],
-		lid: longCode
-	};
-	
-	scripts[row[0]] = script;
-	if (longCode.length > 0) {
-		fullToShortMap[longCode.toLowerCase()] = row[0];
-	}
+    longCode = entry.pva || entry.name;
+    longCode = longCode.replace(/ +/g, '_');
+    script = {
+        nb: parseInt(entry.numeric, 10),
+        nm: entry.name,
+        lid: longCode
+    };
+
+    scripts[entry.code] = script;
+    if (longCode.length > 0) {
+        fullToShortMap[longCode.toLowerCase()] = entry.code;
+    }
 }
 
-var scriptMetaData = new UnicodeFile({path: scriptMetaDataFileName});
-var len = scriptMetaData.length();
+var scriptMetaData = require("cldr-core/scriptMetadata.json").scriptMetadata;
 
-for (var i = 0; i < len; i++ ) {
-	row = scriptMetaData.get(i);
-	code = row[0];
-	console.log(code + " isrtl " + row[6]);
+for (var scriptName in scriptMetaData) {
+    var entry = scriptMetaData[scriptName];
+    console.log(scriptName + " isrtl " + entry.rtl);
 
-	// is this script written right-to-left?
-	scripts[code].rtl = (row[6] === " YES" ? true : false);
-	
-	// does this script require an IME to enter text?
-	scripts[code].ime = (row[9] === " YES" ? true : false);
-	
-	// does this script have the concept of upper- and lower-case?
-	scripts[code].casing = (row[10] === " YES" ? true : false);
+    // is this script written right-to-left?
+    scripts[scriptName].rtl = (entry.rtl === "YES");
+
+    // does this script require an IME to enter text?
+    scripts[scriptName].ime = (entry.ime === "YES");
+
+    // does this script have the concept of upper- and lower-case?
+    scripts[scriptName].casing = (entry.hasCase === "YES");
 }
 
 // the Unicode data has only the binary decompositions. That is, the first of 
@@ -162,62 +108,46 @@ for (var i = 0; i < len; i++ ) {
 // decompositions recursively here to pre-calculate the full decomposition 
 // before writing out the files.
 
-fs.writeFile(toDir + "/scripts.json", JSON.stringify(scripts, true, 4), function (err) {
-	if (err) {
-		throw err;
-	}
-});
+fs.writeFileSync(path.join(toDir, "scripts.json"), JSON.stringify(scripts, true, 4), "utf-8");
 
-var scriptsFile = new UnicodeFile({path: scriptFileName});
-var row, scriptName, rangeStart, rangeEnd, range;
+var scriptsFile = require("ucd-full/Scripts.json").Scripts;
+var row, scriptName, range;
 var scriptToRange = {};
 var ranges = [];
 var rangeToScript = [];
 
-for (var i = 0; i < scriptsFile.length(); i++) {
-	row = scriptsFile.get(i);
-	scriptName = row[1].trim();
-	scriptName = fullToShortMap[scriptName.toLowerCase()] || scriptName;
-	rangeStart = parseInt(row[0].match(/^[A-F0-9]+/)[0],16);
-	rangeEnd = row[0].match(/\.\.[A-F0-9]+/);
-	
-	if (rangeEnd && rangeEnd.length > 0) {
-		rangeEnd = parseInt(rangeEnd[0].substring(2), 16);
-		range = [rangeStart, rangeEnd];
-		ranges.push([scriptName, rangeStart, rangeEnd]);
-	} else {
-		range = [rangeStart];
-		ranges.push([scriptName, rangeStart]);
-	}
+for (var i = 0; i < scriptsFile.length; i++) {
+    entry = scriptsFile[i];
+    scriptName = fullToShortMap[entry.script.toLowerCase()] || entry.script;
+    range = entry.range.map(function(element) {
+        return parseInt(element, 16);
+    });
 
-	if (!scriptToRange[scriptName]) {
-		scriptToRange[scriptName] = [range];
-	} else {
-		scriptToRange[scriptName].push(range);
-	}
+    if (range.length > 1) {
+        ranges.push([scriptName, range[0], range[1]]);
+    } else {
+        ranges.push([scriptName, range[0]]);
+    }
+
+    if (!scriptToRange[scriptName]) {
+        scriptToRange[scriptName] = [range];
+    } else {
+        scriptToRange[scriptName].push(range);
+    }
 }
 
 for (script in scriptToRange) {
-	if (script && scriptToRange[script]) {
-		scriptToRange[script] = coelesce(scriptToRange[script], 0);
-	}
+    if (script && scriptToRange[script]) {
+        scriptToRange[script] = coelesce(scriptToRange[script], 0);
+    }
 }
 
 function compareByStart(left, right) {
-	return left[1] - right[1];
+    return left[1] - right[1];
 }
 
 ranges.sort(compareByStart);
 rangeToScript = coelesce(ranges, 1);
 
-fs.writeFile(toDir + "/scriptToRange.json", JSON.stringify(scriptToRange, true, 4), function (err) {
-	if (err) {
-		throw err;
-	}
-});
-
-fs.writeFile(toDir + "/rangeToScript.json", JSON.stringify(rangeToScript, true, 4), function (err) {
-	if (err) {
-		throw err;
-	}
-});
+fs.writeFileSync(path.join(toDir, "scriptToRange.json"), JSON.stringify(scriptToRange, true, 4), "utf-8");
+fs.writeFileSync(path.join(toDir, "rangeToScript.json"), JSON.stringify(rangeToScript, true, 4), "utf-8");

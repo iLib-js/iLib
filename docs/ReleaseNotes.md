@@ -1,6 +1,195 @@
 Release Notes for Version 14
 ============================
 
+Build 018
+-------
+Published as version 14.10.1
+
+New Features:
+
+Bug Fixes:
+* Updated to IANA time zone data 2021c
+
+Build 017
+-------
+Published as version 14.10.0
+
+New Features:
+* Changed a default UnitSystem in GB from `imperial` to `metric`
+* Added the ability to parse locale specs with underscores instead of dashes. Some
+  locale specs for Java properties file names or in some gnu gettext libraries are
+  specified with underscores. (ie. "zh_Hans_CN" === "zh-Hans-CN" now)
+
+Bug Fixes:
+* Fixed a bug which a default script for `az` should be `Latin` instead of `Arabic`
+* Updated to IANA time zone data 2021b
+* Fixed a bug where locales from the platform returned by ilib.getLocale() were not
+  recognized properly if any of the following apply:
+    * They have underscores in them
+    * They have a 3 letter language name ("yue" means "Cantonese" for example)
+    * They have a three digit UN.49 region name ("001" is the "The World",
+      for example)
+    * They have a variant on them ("zh-Hant-TW-u-PostOffice" should return the
+      basic locale "zh-Hant-TW" as the platform locale)
+
+Build 016
+-------
+Published as version 14.9.2
+New Features:
+
+Bug Fixes:
+* Fixed a case where variant locale resources could not be loaded
+* Fixed to return correct default script for `pa-PK`,`ha-CM` and `ha-SD`
+* Fixed Ethiopic dates to return the correct day of the week
+    * Calculations were off by one because the Ethiopic day starts
+      at 6am Gregorian time, not at midnight (= 12:00am Ethiopic time),
+      and the calculations were for midnight.
+
+Build 015
+-------
+Published as version 14.9.1
+New Features:
+
+Bug Fixes:
+* Fixed a build error that occurs on `Qt 6.1` and fixed some warning messages that reported from the latest Qt version.
+* Added new `plurals.json` files in some locales from cldr 37
+* Fixed a bug which a default script for `ha` should be `Latin` instead of `Arabic`
+* Fixed various bugs parsing the platform locales in ilib.getLocale()
+    * Locales with a script code such as "zh-Hans-CN"
+    * The posix "C" default locale
+    * Platforms where the region code is not upper-case
+    * Platforms that don't use a dash to separate the components
+    * Platforms that include a dot and a charset name after the specifier
+* Fixed a `genplurals.js` tool code bug when default target directory is empty
+* Added ability to test minified version of files on Qt
+
+Build 014
+-------
+Published as version 14.9.0
+
+New Features:
+* Add ruby & template style escaping for pseudo localization.
+    * Here is an example of `%RUBY%` substitution parameters.
+    * Here is an example of template substitution parameters:
+    `<% code here %>`
+    * Also added Objective-C/Swift substitution parameter support
+      for the "c" style of escaping
+
+Bug Fixes:
+* Updated `iddarea.json`, `phoneloc.json`, and `numplan.json` from phonenumber library based on metadata version 4.0.0 which are used in PhoneNumber formatting.
+
+Build 013
+-------
+Published as version 14.8.0
+
+New Features:
+* Added Locale.isValid() method which returns true iff all of the given locale components (language,
+  script, region) are valid ISO codes.
+* Supported additional mt-MT, tg-TJ, tk-TM, wo-SN, zu-ZA locales
+    * validated locale data and added many test cases
+
+Bug Fixes:
+* Fixed a bug which a default script for `tk` should be `Latin` instead of `Arabic`
+* Fixed a bug which a default script for `tg` should be `Cyrl` instead of `Arabic`
+
+Build 012
+-------
+Published as version 14.7.0
+
+New Features:
+* Added support for day periods per locale. These are periods like "morning", "afternoon", "evening".
+  Each locale has a different idea of when the periods are and when they start and end.
+    * day periods use the new "B" format specifier in date format templates
+    * updated a few locales that regularly use day periods, such as my-MM
+    * date ranges were also updated to include day periods
+* Update data to Unicode Character Database (UCD) version 13.0 and the Common Locale Data Repository (CLDR)
+  version 37.0.0
+    * includes corresponding fixes to the unit tests
+* Updated time zone data to IANA 2020e
+
+Bug Fixes:
+* Updated date formats to use proper stand-alone month names independently
+    * Previously, if either the year-month or the month alone available formats in CLDR
+    used the stand-alone month name specifier, then we would use the stand-alone month name for
+    all year-month, month alone, day alone, and weekday alone formats. However, some locales use
+    the stand-alone only for some of those formats, so the formatted dates would come out with
+    the wrong date components in some cases
+    * Also affects date range formatting as well so that the year-month and the year alone
+    ranges can use the stand-alone formats independently of each other
+* Added guard code to consider when the object is undefined in JSUtil.merge at least not to throw an error
+* Switched from travis to circleci for running the CI, since travis doesn't want to play nice any more
+
+Build 011
+-------
+Published as version 14.6.2
+
+New Features:
+
+Bug Fixes:
+* Fixed a DateRange Formatting to present standAlone case properly
+* Updated `timezone.jf` files to match timezone data 2020a
+* Fixed a problem where ilib would not work right if the platform locale was
+  set to "C" or if the platform locale did not have a region tag with it. (ie.
+  it was only the language part.)
+* Updated time zone data to IANA 2020c
+* Updated time zone data to IANA 2020d
+
+Build 010
+-------
+Published as version 14.6.1
+
+New Features:
+
+Bug Fixes:
+* Updated to IANA time zone data 2020a
+* Put base option back on ResBundle
+* Fixed a few tools and dependencies so that ilib works on node v14
+* Fixed a default timezone in `my-MM` to `Asia/Yangon`
+* Fixed a bug which a default script for `ky` should be `Cyrl` instead of `Arabic`
+
+Build 009
+-------
+Published as version 14.6.0
+
+New Features:
+* Updated all locale data to CLDR 36 and Unicode Character Database 13.0
+* The methods of the TimeZone object that take dates as parameters can now
+  take any date types, such as a unix time number, an intrinsic Javascript
+  Date object, or an ilib IDate instance. Previously, they only took
+  IDate instances.
+    * updated methods are: getDisplayName, getOffset, getOffsetStr, 
+    getOffsetMillis, and inDaylightTime
+
+Bug Fixes:
+* Time zones in Indiana, Kentucky, North Dakota, and Argentina were missing.
+  Fixed the zone info compiler to generate the json data for these missing time
+  zones properly.
+* Changed a default length style to `medium` in List Formatting.
+
+
+Build 008
+-------
+Published as version 14.5.0
+
+New Features:
+* Added missing methods to the IString classes to echo all the methods on the intrinsic string class
+    * Added methods that have been added in the last few years which some engines define and others do not
+    * Delegates to the string class. Does not offer a polyfill yet.
+    * Methods added are: matchAll, endsWith, startsWith, includes, normalize, padEnd,
+      padStart, repeat, toLocaleLowerCase, toLocaleUpperCase, trim, trimEnd, trimRight,
+      trimStart, trimLeft.
+    * Defined the "length" property so that it returns the string's length like the intrinsic strings do
+    * Added unit tests that only test the new methods if the underlying string class implements each new
+    method.
+* Added a "familiar" style to the name formatter
+    * This is as familiar as you can get and yet not be rude to a stranger for each locale. For example, in
+      English, you would use someone's given name, but in Japan, you would use the full name with honorific.
+
+Bug Fixes:
+* Updated to IANA time zone data 2019c
+* Updated the Korean Name Formatting component per style. Including 'suffix' is more natural than having a 'prefix' or 'honorific'.
+* Added missing likelylocale for `hr-ME`.
+
 Build 007
 -------
 Published as version 14.4.0

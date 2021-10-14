@@ -54,7 +54,7 @@ c03 | all	 |  Mdy st – Mdy et
 c10 | full, long, medium	 | Md – dy
 c10 | short	 | Mdy –Mdy 
 c11 | full, long, medium |Md – Mdy
-c11 | short	 | Mdy –Mdy 
+c11 | short	 | Md – Mdy
 c12 | all |	Mdy – Mdy
 c20 | all | My – My
 c30 | all | y – y

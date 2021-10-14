@@ -1,7 +1,7 @@
 /*
  * genmeasurementsystem.js - ilib tool to generate the json data about day of the week
  *
- * Copyright © 2013, 2018 JEDLSoft
+ * Copyright © 2013, 2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@
  */
 var fs = require('fs');
 var path = require('path');
-var unifile = require('./unifile.js');
 var common = require('./common.js');
 var mkdirs = common.makeDirs;
 
@@ -31,7 +30,7 @@ function usage() {
         "-h or --help\n" +
         "  this help\n" +
         "toDir\n" +
-        "  directory to output the units.jf json files. Default: current dir.\n");
+        "  directory to output the units.jf json files. Default: current dir.");
     process.exit(1);
 }
 
@@ -53,9 +52,9 @@ if (process.argv.length > 2) {
 }
 
 console.log("genmeasurementsystem - generate the localeinfo units.jf files.\n" +
-"Copyright (c) 2013, 2018 JEDLSoft\n");
+"Copyright (c) 2013, 2018 JEDLSoft");
 
-console.log("output dir: " + toDir + "\n");
+console.log("output dir: " + toDir );
 
 if (!fs.existsSync(toDir)) {
     console.log("Could not access target directory " + toDir);
@@ -69,9 +68,11 @@ var metric = {
 
 // hard-code these because CLDR has incorrect data
 // See https://en.wikipedia.org/wiki/Metrication#Overview
+// Remove GB from an imperial list
+// note: https://www.worldatlas.com/articles/does-england-use-the-metric-system.html
 var systems = {
     "uscustomary": ["US", "FM", "MH", "LR", "PR", "PW", "GU", "WS", "AS", "VI", "MP"],
-    "imperial": ["GB", "MM"]
+    "imperial": ["MM"]
 };
 
 // root is metric

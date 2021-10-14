@@ -2,7 +2,7 @@
  * genlang2charset.js - ilib tool to generate the mapping between languages
  * and charsets that support that language
  * 
- * Copyright © 2018, JEDLSoft
+ * Copyright © 2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@
  */
 
 var fs = require('fs');
-var util = require('util');
 var common = require('./common.js');
 var path = require('path');
 
@@ -38,7 +37,7 @@ function usage() {
             "-h or --help\n" +
             "  this help\n" +
             "path_to_locale_data\n" +
-            "  path to ilib's js/data/locale directory. Default: ../../js/data/locale\n");
+            "  path to ilib's js/data/locale directory. Default: ../../js/data/locale");
     process.exit(1);
 }
 
@@ -62,7 +61,7 @@ console.log("genlang2charset - generate language to charset mapping data.\n" +
         "Copyright (c) 2018 JEDLSoft\n");
 
 if (!fs.existsSync(localeDir)) {
-    util.error("Could not access locale dir " + localeDir);
+    console.error("Could not access locale dir " + localeDir);
     usage();
 }
 

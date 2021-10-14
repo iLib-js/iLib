@@ -2,7 +2,7 @@
  * gendelimiters.js - ilib tool to generate delimiters json fragments from  
  * the CLDR data files 
  *  
- * Copyright © 2013-2018, LGE 
+ * Copyright © 2013-2018, 2020 LGE 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -23,7 +23,7 @@
 var fs = require('fs');
 var path = require('path');
 var util = require('util');
-var cldr = require('cldr-data');
+var localeDirs = require('cldr-core/availableLocales.json').availableLocales.full;
 
 var common = require('./common');
 var merge = common.merge;
@@ -37,7 +37,7 @@ function usage() {
         "-h or --help\n" +
         "  this help\n" +
         "locale_data_dir\n" +
-        "  the top level of the ilib locale data directory\n");
+        "  the top level of the ilib locale data directory");
     process.exit(1);
 }
 
@@ -62,7 +62,6 @@ if (!fs.existsSync(localeDirName)) {
 }
 
 var language, region, script, files;
-var localeDirs = cldr.availableLocales;
 var localeData = {};
 
 console.log("Reading locale data into memory...");
@@ -84,7 +83,7 @@ function loadFile_jf(path) {
     var ret = undefined;
 
     if (fs.existsSync(path)) {
-        //console.log("path is :" + path + "\n");
+        //console.log("path is :" + path);
         var json = fs.readFileSync(path, "utf-8");
         ret = JSON.parse(json);
     }
@@ -133,7 +132,7 @@ function getLocaleData(dirname, locale) {
             spec = "root";
         }
 
-        var filename = path.join("cldr-data/main", dirname, "delimiters.json");
+        var filename = path.join("cldr-misc-full/main", dirname, "delimiters.json");
         var data = require(filename);
         var numData = data.main[spec].delimiters;
 
@@ -190,7 +189,7 @@ function anyProperties(data) {
 function writeQuotationChars(language, script, region, data) {
 
     var path = calcLocalePath(language, script, region, "");
-    //console.log("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data)+"\n");
+    //console.log("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data));
     if (data.generated) {
         if (anyProperties(data)) {
             console.log("Writing " + path);
@@ -217,7 +216,7 @@ function getQuotationChars(language, script, region, data) {
 
     if (delimiters) {
         console.log("Loaded existing resources from " + calcLocalePath(language, script, region, "delimiters.jf"));
-        //console.log("\nLoaded existing resources data " + JSON.stringify(delimiters) + "\n");
+        //console.log("\nLoaded existing resources data " + JSON.stringify(delimiters));
         delimiters.generated = false;
         return delimiters;
     }
@@ -269,11 +268,11 @@ for (language in localeData) {
 
 //resources.data = getQuotationChars(undefined, undefined, undefined, localeData.data); 
 console.log("Merging and pruning r...");
-//console.log("\nLoaded existing resources " + JSON.stringify(resources) + "\n");
+//console.log("\nLoaded existing resources " + JSON.stringify(resources));
 //writeQuotationChars(undefined, undefined, undefined, resources.data); 
-//console.log("\ndata before merge and pruning\n"+JSON.stringify(resources)+"\n");
+//console.log("\ndata before merge and pruning\n"+JSON.stringify(resources));
 mergeAndPrune(resources);
-//console.log("\ndata after merge and pruning\n"+JSON.stringify(resources)+"\n");
+//console.log("\ndata after merge and pruning\n"+JSON.stringify(resources));
 //writeQuotationChars(undefined, undefined, undefined, resources.data);
 
 for (language in resources) {

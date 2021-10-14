@@ -2,7 +2,7 @@
  * genctype.js - ilib tool to generate the json ctype information from the Unicode
  * data files
  *
- * Copyright © 2013-2015, 2018 JEDLSoft
+ * Copyright © 2013-2015, 2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,26 +26,21 @@ var fs = require('fs');
 var util = require('util');
 var path = require('path');
 
-var unifile = require('./unifile.js');
 var common = require('./common.js');
-var UnicodeFile = unifile.UnicodeFile;
 var charIterator = common.charIterator;
 var isMember = common.isMember;
 var coelesce = common.coelesce;
 
 function usage() {
-    console.log("Usage: genctype [-h] UCD_dir [toDir]\n" +
+    console.log("Usage: genctype [-h] [toDir]\n" +
         "Generate the character type data.\n\n" +
         "-h or --help\n" +
         "  this help\n" +
-        "UCD_dir\n" +
-        "  path to the Unicode Character Database files \n" +
         "toDir\n" +
-        "  directory to output the normalization json files. Default: current dir.\n");
+        "  directory to output the normalization json files. Default: current dir.");
     process.exit(1);
 }
 
-var unicodeFileName;
 var fileName;
 var toDir = "tmp";
 
@@ -56,77 +51,54 @@ process.argv.forEach(function (val, index, array) {
 });
 
 
-if (process.argv.length < 3) {
+if (process.argv.length < 2) {
     console.error('Error: not enough arguments');
     usage();
 }
 
-var unicodeDirName = process.argv[2];
-
-var unicodeFileName = path.join(unicodeDirName, "extracted/DerivedGeneralCategory.txt");
-var unicodeBlockFile = path.join(unicodeDirName, "Blocks.txt");
-
-
-if (process.argv.length > 3) {
-    toDir = process.argv[3];
+if (process.argv.length > 2) {
+    toDir = process.argv[2];
 }
 
 console.log("genctype - generate ctype data.\n" +
-    "Copyright (c) 2012 - 2015, 2018 JEDLSoft\n");
-
-if (!fs.existsSync(unicodeFileName)) {
-    console.error("Could not access file " + unicodeFileName);
-    usage();
-}
+    "Copyright (c) 2012 - 2015, 2018, 2020 JEDLSoft");
 
 if (!fs.existsSync(toDir)) {
     common.makeDirs(toDir);
+}
+
+function convertRangeToNumbers(range) {
+    return range.map(function(entry) {
+        return parseInt(entry, 16);
+    });
 }
 
 /*
  *	For creating ctype_*.json
  */
 var map = {};
-
-var uf = new UnicodeFile({path: unicodeFileName});
-var len = uf.length();
-var row;
-var range, rangeName, rangeStart, rangeEnd;
 var rangeLetter;
+var dgc = require("ucd-full/extracted/DerivedGeneralCategory.json");
 
-for (var i = 0; i < len; i++ ) {
-    row = uf.get(i);
+for (var i = 0; i < dgc.DerivedGeneralCategory.length; i++) {
+    var entry = dgc.DerivedGeneralCategory[i];
+    var range = convertRangeToNumbers(entry.range);
 
-    rangeName = row[1].trim();
-    rangeStart = parseInt(row[0].match(/^[A-F0-9]+/)[0],16);
-    rangeEnd = row[0].match(/\.\.[A-F0-9]+/);
-
-    if (rangeEnd && rangeEnd.length > 0) {
-        rangeEnd = parseInt(rangeEnd[0].substring(2), 16);
-        range = [rangeStart, rangeEnd];
-    } else {
-        range = [rangeStart];
-    }
-
-    rangeLetter = rangeName.substring(0,1).toLowerCase();
+    rangeLetter = entry.category[0].toLowerCase();
     if (typeof(map[rangeLetter]) === 'undefined') {
         map[rangeLetter] = {};
     }
-    if (typeof(map[rangeLetter][rangeName]) === 'undefined') {
-        map[rangeLetter][rangeName] = [];
+    if (typeof(map[rangeLetter][entry.category]) === 'undefined') {
+        map[rangeLetter][entry.category] = [];
     }
-    map[rangeLetter][rangeName].push(range);
+    map[rangeLetter][entry.category].push(range);
 }
 
-for (letter in map) {
+for (var letter in map) {
     if (letter && map[letter]) {
         fileName = path.join(toDir, "/ctype_" + letter + ".json");
         console.log(fileName);
-        fs.writeFile(fileName, JSON.stringify(map[letter], true, 4), function (err) {
-            if (err) {
-                throw err;
-            }
-        });
+        fs.writeFileSync(fileName, JSON.stringify(map[letter], true, 4), "utf-8");
     }
 }
 
@@ -384,39 +356,24 @@ function sortObject(objectName) {
 }
 
 function createKeys (keyTitle, keyList){
-    var name = keyTitle,
-    list = keyList;
-
-    for (i=0; i < list.length; i++) {
-        for (j=0; j< ctypeMap[list[i]].length ;j++) {
-            ctypeMap[keyTitle].push(ctypeMap[list[i]][j]);
+    for (i=0; i < keyList.length; i++) {
+        for (j = 0; j < ctypeMap[keyList[i]].length; j++) {
+            ctypeMap[keyTitle].push(ctypeMap[keyList[i]][j]);
         }
     }
 }
 
 var ctypeMap = {};
+var blockFile = require("ucd-full/Blocks.json");
 
-uf = new UnicodeFile({path: unicodeBlockFile});
-len = uf.length();
-
-for (var i = 0; i < len; i++) {
-    row = uf.get(i);
-
-    rangeName = row[1].trim().toLowerCase();
+for (var i = 0; i < blockFile.Blocks.length; i++) {
+    var entry = blockFile.Blocks[i];
+    rangeName = entry.block.toLowerCase();
     updateRangeName = blockNameMapping[rangeName];
+    var range = convertRangeToNumbers(entry.range);
 
     if (updateRangeName !== undefined) {
         rangeName = updateRangeName;
-    }
-
-    rangeStart = parseInt(row[0].match(/^[A-F0-9]+/)[0],16);
-    rangeEnd = row[0].match(/\.\.[A-F0-9]+/);
-
-    if (rangeEnd && rangeEnd.length > 0) {
-        rangeEnd = parseInt(rangeEnd[0].substring(2), 16);
-        range = [rangeStart, rangeEnd];
-    } else {
-        range = [rangeStart];
     }
 
     if (!ctypeMap[rangeName]) {
@@ -424,7 +381,6 @@ for (var i = 0; i < len; i++) {
     } else {
         ctypeMap[rangeName].push(range);
     }
-
 }
 
 for (rangeName in ctypeMap) {
@@ -439,7 +395,7 @@ var ideographGroup = ["bopomofo", "cjk", "katakana",  "yi", "hangul","cjkcompati
 var ideootherGroup = ["bopomofo", "katakana", "hangul",
     "hiragana", "cjkcompatibility", "cjkradicals",
     "cjkpunct", "cjkstrokes"
-    ];
+];
 
 createKeys("ideograph", ideographGroup)
 listMap = ctypeMap["ideograph"];

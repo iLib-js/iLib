@@ -135,7 +135,7 @@
                 "f": "{sm} {sd} – {em} {ed}, {ey}",
                 "l": "{sm} {sd} – {em} {ed}, {ey}",
                 "m": "{sm} {sd} – {em} {ed}, {ey}",
-                "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
+                "s": "{sm}/{sd} – {em}/{ed}/{ey}"
             },
             "c12": {
                 "f": "{sm} {sd}, {sy} – {em} {ed}, {ey}",
@@ -144,9 +144,9 @@
                 "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
             },
             "c20": {
-                "f": "{sm} {sy} – {em} {ey}",
-                "l": "{sm} {sy} – {em} {ey}",
-                "m": "{sm} {sy} – {em} {ey}",
+                "f": "{sm}, {sy} – {em}, {ey}",
+                "l": "{sm}, {sy} – {em}, {ey}",
+                "m": "{sm}, {sy} – {em}, {ey}",
                 "s": "{sm}/{sy} – {em}/{ey}"
             },
             "c30": {

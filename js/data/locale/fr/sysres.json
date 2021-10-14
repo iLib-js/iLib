@@ -97,7 +97,7 @@
     "1#1 yr|#{num} yrs": "one#{num} an|#{num} ans",
     "durationMediumMillis": "one#{num}ms|#{num}ms",
     "1#1 se|#{num} sec": "one#{num}s|#{num}s",
-    "1#1 mi|#{num} min": "one#{num} min|#{num} min",
+    "1#1 mi|#{num} min": "one#{num}min|#{num}min",
     "durationMediumHours": "one#{num}h|#{num}h",
     "1#1 dy|#{num} dys": "one#{num}j|#{num}j",
     "durationMediumWeeks": "one#{num}sem.|#{num}sem.",
@@ -105,7 +105,7 @@
     "durationMediumYears": "one#{num}a|#{num}a",
     "durationShortMillis": "one#{num}ms|#{num}ms",
     "#{num}s": "one#{num}s|#{num}s",
-    "durationShortMinutes": "one#{num} min|#{num} min",
+    "durationShortMinutes": "one#{num}min|#{num}min",
     "#{num}h": "one#{num}h|#{num}h",
     "#{num}d": "one#{num}j|#{num}j",
     "#{num}w": "one#{num}sem.|#{num}sem.",
@@ -160,5 +160,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": " et ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "minuit",
+    "B1": "du matin",
+    "B2": "AM",
+    "B3": "du matin",
+    "B4": "midi",
+    "B5": "de l’après-midi",
+    "B6": "PM",
+    "B7": "du soir"
 }

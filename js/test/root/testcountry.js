@@ -1,7 +1,7 @@
 /*
  * testcountry.js - test the country routines
  *
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -120,7 +120,344 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "ja-JP");
         test.done();
     },
-    
+    testCountryLocale5: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ko-KR"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("SZ"), "에스와티니");
+        test.equal(ctry.getCode("에스와티니"), "SZ");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ko-KR");
+        test.done();
+    },
+    testCountryLocale6: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "af-NA"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MK"), "Noord-Macedonië");
+        test.equal(ctry.getCode("Noord-Macedonië"), "MK");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "af-NA");
+        test.done();
+    },
+    testCountryLocale7: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "as-IN"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("SG"),"ছিংগাপুৰ" );
+        test.equal(ctry.getCode("ছিংগাপুৰ"), "SG");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "as-IN");
+        test.done();
+    },
+    testCountryLocale8: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "en-AU"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"Macao SAR China" );
+        test.equal(ctry.getCode("Macao SAR China"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "en-AU");
+        test.done();
+    },
+    testCountryLocale9: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "be-BY"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"Макаа, САР (Кітай)" );
+        test.equal(ctry.getCode("Макаа, САР (Кітай)"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "be-BY");
+        test.done();
+    },
+    testCountryLocale_lo_LA: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "lo-LA"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"ມາກາວ ເຂດປົກຄອງພິເສດ ຈີນ" );
+        test.equal(ctry.getCode("ມາກາວ ເຂດປົກຄອງພິເສດ ຈີນ"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "lo-LA");
+        test.done();
+    },
+    testCountryLocale_lo_LA2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "lo-LA"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"),"ເກົາຫລີໃຕ້" );
+        test.equal(ctry.getCode("ເກົາຫລີໃຕ້"), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "lo-LA");
+        test.done();
+    },
+    testCountryLocale_tg_TJ: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "tg-TJ"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"Макао (МММ)" );
+        test.equal(ctry.getCode("Макао (МММ)"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "tg-TJ");
+        test.done();
+    },
+    testCountryLocale_tg_TJ2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "tg-TJ"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"),"South Korea" );
+        test.equal(ctry.getCode("South Korea"), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "tg-TJ");
+        test.done();
+    },  
+    testCountryLocale_ky_KG: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ky-KG"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("CH"),"Швейцария" );
+        test.equal(ctry.getCode("Швейцария"), "CH");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ky-KG");
+        test.done();
+    },
+    testCountryLocale_ky_KG2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ky-KG"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"),"Түштүк Корея" );
+        test.equal(ctry.getCode("Түштүк Корея"), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ky-KG");
+        test.done();
+    },
+    testCountryLocale_ca_AD: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ca-AD"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"Macau (RAE Xina)");
+        test.equal(ctry.getCode("Macau (RAE Xina)"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ca-AD");
+        test.done();
+    },
+    testCountryLocale_ca_AD2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ca-AD"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"),"Corea del Sud");
+        test.equal(ctry.getCode("Corea del Sud"), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ca-AD");
+        test.done();
+    },
+    testCountryLocalehy_AM: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "hy-AM"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"), "Չինաստանի Մակաո ՀՎՇ");
+        test.equal(ctry.getCode("Չինաստանի Մակաո ՀՎՇ"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "hy-AM");
+        test.done();
+    },
+    testCountryLocalehy_AM2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "hy-AM"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"), 'Հարավային Կորեա');
+        test.equal(ctry.getCode('Հարավային Կորեա'), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "hy-AM");
+        test.done();
+    },
+    testCountryLocale10: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "eu-ES"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"Macau Txinako AEB" );
+        test.equal(ctry.getCode("Macau Txinako AEB"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "eu-ES");
+        test.done();
+    },
+    testCountryLocale_zu_ZA: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "zu-ZA"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"i-Macau SAR China");
+        test.equal(ctry.getCode("i-Macau SAR China"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "zu-ZA");
+        test.done();
+    },
+    testCountryLocale_zu_ZA2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "zu-ZA"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"),"i-South Korea");
+        test.equal(ctry.getCode('i-South Korea'), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "zu-ZA");
+        test.done();
+    },
+    testCountryLocale_my_MM: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "my-MM"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"မကာအို (တရုတ်ပြည်)");
+        test.equal(ctry.getCode("မကာအို (တရုတ်ပြည်)"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "my-MM");
+        test.done();
+    },
+    testCountryLocale_my_MM2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "my-MM"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"),"တောင်ကိုရီးယား");
+        test.equal(ctry.getCode('တောင်ကိုရီးယား'), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "my-MM");
+        test.done();
+    },
+    testCountryLocale_ne_NP: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ne-NP"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"(मकाउ चिनियाँ विशेष प्रशासनिक क्षेत्र");
+        test.equal(ctry.getCode("(मकाउ चिनियाँ विशेष प्रशासनिक क्षेत्र"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ne-NP");
+        test.done();
+    },
+    testCountryLocale_ne_NP2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ne-NP"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"), 'दक्षिण कोरिया');
+        test.equal(ctry.getCode('दक्षिण कोरिया'), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ne-NP");
+        test.done();
+    },
+    testCountryLocale_tk_TM: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "tk-TM"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("CN"),"Hytaý");
+        test.equal(ctry.getCode("Hytaý"), "CN");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "tk-TM");
+        test.done();
+    },
+    testCountryLocale_tk_TM2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "tk-TM"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"), 'Günorta Koreýa');
+        test.equal(ctry.getCode('Günorta Koreýa'), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "tk-TM");
+        test.done();
+    },
+    testCountryLocale_mt_MT: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "mt-MT"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"),"ir-Reġjun Amministrattiv Speċjali tal-Macao tar-Repubblika tal-Poplu taċ-Ċina");
+        test.equal(ctry.getCode("ir-Reġjun Amministrattiv Speċjali tal-Macao tar-Repubblika tal-Poplu taċ-Ċina"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "mt-MT");
+        test.done();
+    },
+    testCountryLocale_mt_MT2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "mt-MT"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"), 'il-Korea t’Isfel');
+        test.equal(ctry.getCode('il-Korea t’Isfel'), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "mt-MT");
+        test.done();
+    },
     testCountryGetByCodeUnknown: function(test) {
         try {
             var ctry = new Country();

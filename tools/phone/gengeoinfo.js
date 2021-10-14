@@ -2,7 +2,7 @@
  * gennumplan.js - ilib tool to generate the json numplan information from the libphonefmt-js
  * library
  *
- * Copyright © 2019 JEDLSoft
+ * Copyright © 2019-2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ if (process.argv.length > 2) {
 
 function usage() {
 	console.log("Usage: gengeoinfo.js [-h] [ output_dir ]\n" +
-            "-h or --help\n" + "  this help\n");
+            "-h or --help\n" + "  this help");
     process.exit(1);
 }
 
@@ -49,7 +49,7 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-console.log("gengeoinfo.js - generate the areaInfo.json file.\n");
+console.log("gengeoinfo.js - generate the areaInfo.json file.");
 
 function getCountry(file) {
     var country;
@@ -60,7 +60,7 @@ function getCountry(file) {
     country = metadata["country_calling_codes"][filename];
 
     if (country.length > 1) {
-        console.log("\n\n");
+        console.log("");
         console.log("country is more than one......: ", country.length);
         for (var i=0; i < country.length; i++) {
             console.log("Country..... ", country[i]);

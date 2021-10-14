@@ -1,6 +1,6 @@
 /*
  * testdatefmt_bg_BG.js - test the date formatter object in bulgarian
- * 
+ *
  * Copyright © 2012-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,17 +39,17 @@ module.exports.testdatefmt_bg = {
     testDateFmtConstructorEmpty_bg_BG: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "bg-BG"});
-        
+
         test.ok(fmt !== null);
         test.done();
     },
-    
-    
+
+
     testDateFmtSimpleShort_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "short"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -63,12 +63,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "29.09.11 г.");
         test.done();
     },
-    
+
     testDateFmtSimpleMedium_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -82,12 +82,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "29.09.2011 г.");
         test.done();
     },
-    
+
     testDateFmtSimpleLong_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "long"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -101,12 +101,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "29 септември 2011 г.");
         test.done();
     },
-    
+
     testDateFmtSimpleFull_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -120,12 +120,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "29 септември 2011 г.");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeShort_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "short", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -136,15 +136,15 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 ч.");
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
-    
+
     testDateFmtSimpleTimeMedium_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "medium", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -155,15 +155,15 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 ч.");
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
-    
+
     testDateFmtSimpleTimeLong_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", timelength: "long", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -174,15 +174,15 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 ч.");
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
-    
+
     testDateFmtSimpleTimeFull_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -193,15 +193,15 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 ч.");
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleShort_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "short", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -212,15 +212,15 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.09.11 г., 13:45 ч.");
+        test.equal(fmt.format(date), '29.09.11 г., 13:45');
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleMedium_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "medium", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -231,15 +231,15 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.09.2011 г., 13:45 ч.");
+        test.equal(fmt.format(date), '29.09.2011 г., 13:45');
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleLong_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "long", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -250,15 +250,15 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 септември 2011 г., 13:45 ч.");
+        test.equal(fmt.format(date), '29 септември 2011 г., 13:45');
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleFull_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -269,16 +269,16 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 септември 2011 г., 13:45 ч.");
+        test.equal(fmt.format(date), '29 септември 2011 г., 13:45');
         test.done();
     },
-    
-    
+
+
     testDateFmtTemplateCalendar_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", calendar: "julian", template: "yyyy-MM-dd"});
         test.ok(fmt !== null);
-        
+
         var date = new JulianDate({
             locale: "bg-BG",
             year: 2011,
@@ -292,13 +292,13 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-    
-    
+
+
     testDateFmtTemplateClock12SwitchHH_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", clock: "12", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -312,12 +312,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateClock12Switchkk_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", clock: "12", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -331,12 +331,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateClock24Switchhh_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", clock: "24", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -350,12 +350,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTemplateClock24SwitchKK_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", clock: "24", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -369,12 +369,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -388,12 +388,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -407,12 +407,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -426,12 +426,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -445,13 +445,13 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
-    
+
+
     testDateFmtTypeDate_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "date"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -465,12 +465,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "29.09.11 г.");
         test.done();
     },
-    
+
     testDateFmtTypeTime_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -481,15 +481,15 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 ч.");
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
-    
+
     testDateFmtTypeDateTime_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -500,16 +500,16 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.09.11 г., 13:45 ч.");
+        test.equal(fmt.format(date), '29.09.11 г., 13:45');
         test.done();
     },
-    
-    
+
+
     testDateFmtShortDateComponentsY_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -523,12 +523,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "11");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsM_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -542,12 +542,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "09");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsN_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", date: "n"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -561,12 +561,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "с");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsD_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -580,12 +580,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsDM_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -599,13 +599,13 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "29.09");
         test.done();
     },
-    
+
     /*
     testDateFmtShortDateComponentsMY_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -620,12 +620,12 @@ module.exports.testdatefmt_bg = {
         test.done();
     },
     */
-    
+
     testDateFmtShortDateComponentsDMY_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -639,12 +639,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "29.09.11 г.");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsWDM_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -658,13 +658,13 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "ч, 29.09");
         test.done();
     },
-    
+
     /*
     testDateFmtShortDateComponentsWDMY_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -679,12 +679,12 @@ module.exports.testdatefmt_bg = {
         test.done();
     },
     */
-    
+
     testDateFmtFullDateComponentsY_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -698,12 +698,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsM_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -717,12 +717,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "септември");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsD_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -736,12 +736,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsDM_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -755,12 +755,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "29 септември");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsMY_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -774,12 +774,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "септември 2011 г.");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsDMY_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -793,12 +793,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "29 септември 2011 г.");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsWDM_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -812,13 +812,13 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "четвъртък, 29 септември");
         test.done();
     },
-    
+
     /*
     testDateFmtFullDateComponentsWDMY_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -832,14 +832,14 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "четвъртък, 29 септ. 2011 г.");
         test.done();
     },
-    
+
     */
-    
+
     testDateFmtShortTimeComponentsS_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -853,12 +853,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsM_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -872,12 +872,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsH_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -891,12 +891,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsMS_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time", time: "ms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -910,12 +910,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHM_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -926,15 +926,15 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 ч.");
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMS_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -945,15 +945,15 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 ч.");
+        test.equal(fmt.format(date), '13:45:37');
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMA_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -964,20 +964,20 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 ч.");
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMZ_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bg-BG", 
-            type: "time", 
-            time: "hmz", 
+            locale: "bg-BG",
+            type: "time",
+            time: "hmz",
             timezone: "Europe/Sofia"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -988,20 +988,20 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 ч. EEST");
+        test.equal(fmt.format(date), '13:45 EEST');
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMAZ_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bg-BG", 
-            type: "time", 
-            time: "hmaz", 
+            locale: "bg-BG",
+            type: "time",
+            time: "hmaz",
             timezone: "Europe/Sofia"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1012,15 +1012,15 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 ч. EEST");
+        test.equal(fmt.format(date), '13:45 EEST');
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMSA_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1031,20 +1031,20 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 ч.");
+        test.equal(fmt.format(date), '13:45:37');
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMSZ_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bg-BG", 
-            type: "time", 
-            time: "hmsz", 
+            locale: "bg-BG",
+            type: "time",
+            time: "hmsz",
             timezone: "Europe/Sofia"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1055,20 +1055,20 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 ч. EEST");
+        test.equal(fmt.format(date), '13:45:37 EEST');
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMSAZ_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bg-BG", 
-            type: "time", 
-            time: "hmsaz", 
+            locale: "bg-BG",
+            type: "time",
+            time: "hmsaz",
             timezone: "Europe/Sofia"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1079,16 +1079,16 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 ч. EEST");
+        test.equal(fmt.format(date), '13:45:37 EEST');
         test.done();
     },
-    
-    
+
+
     testDateFmtFullTimeComponentsS_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time", length: "full", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1102,12 +1102,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsM_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time", length: "full", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1121,12 +1121,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsH_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time", length: "full", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1140,12 +1140,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsMS_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time", length: "full", time: "ms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1159,12 +1159,12 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHM_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time", length: "full", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1175,15 +1175,15 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 ч.");
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMS_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time", length: "full", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1194,15 +1194,15 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 ч.");
+        test.equal(fmt.format(date), '13:45:37');
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMA_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time", length: "full", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1213,21 +1213,21 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 ч.");
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMZ_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bg-BG", 
-            type: "time", 
-            length: "full", 
-            time: "hmz", 
+            locale: "bg-BG",
+            type: "time",
+            length: "full",
+            time: "hmz",
             timezone: "Europe/Sofia"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1238,21 +1238,21 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 ч. EEST");
+        test.equal(fmt.format(date), '13:45 EEST');
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMAZ_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bg-BG", 
-            type: "time", 
-            length: "full", 
-            time: "hmaz", 
+            locale: "bg-BG",
+            type: "time",
+            length: "full",
+            time: "hmaz",
             timezone: "Europe/Sofia"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1263,15 +1263,15 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 ч. EEST");
+        test.equal(fmt.format(date), '13:45 EEST');
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMSA_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", type: "time", length: "full", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1282,21 +1282,21 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 ч.");
+        test.equal(fmt.format(date), '13:45:37');
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMSZ_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bg-BG", 
-            type: "time", 
-            length: "full", 
-            time: "hmsz", 
+            locale: "bg-BG",
+            type: "time",
+            length: "full",
+            time: "hmsz",
             timezone: "Europe/Sofia"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1307,21 +1307,21 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 ч. EEST");
+        test.equal(fmt.format(date), '13:45:37 EEST');
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMSAZ_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bg-BG", 
-            type: "time", 
-            length: "full", 
-            time: "hmsaz", 
+            locale: "bg-BG",
+            type: "time",
+            length: "full",
+            time: "hmsaz",
             timezone: "Europe/Sofia"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1332,21 +1332,21 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 ч. EEST");
+        test.equal(fmt.format(date), '13:45:37 EEST');
         test.done();
     },
-    
+
     testDateFmtWithTimeZoneAndNoDST_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bg-BG", 
-            type: "time", 
-            length: "full", 
-            time: "hmsz", 
+            locale: "bg-BG",
+            type: "time",
+            length: "full",
+            time: "hmsz",
             timezone: "Europe/Sofia"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1357,16 +1357,16 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 ч. EET");
+        test.equal(fmt.format(date), '13:45:37 EET');
         test.done();
     },
-    
+
     /*
     testDateFmtFormatRelativeWithinMinuteAfter_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1391,12 +1391,12 @@ module.exports.testdatefmt_bg = {
         test.done();
     },
     */
-    
+
     testDateFmtFormatRelativeWithinMinuteBefore_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1425,7 +1425,7 @@ module.exports.testdatefmt_bg = {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1450,12 +1450,12 @@ module.exports.testdatefmt_bg = {
         test.done();
     },
     */
-    
+
     testDateFmtFormatRelativeWithinHourBefore_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1484,7 +1484,7 @@ module.exports.testdatefmt_bg = {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1513,7 +1513,7 @@ module.exports.testdatefmt_bg = {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1537,13 +1537,13 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.formatRelative(reference, date), "преди 4 часа");
         test.done();
     },
-    
+
     /*
     testDateFmtFormatRelativeWithinFortnightAfter_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1572,7 +1572,7 @@ module.exports.testdatefmt_bg = {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1596,13 +1596,13 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.formatRelative(reference, date), "преди 4 дни");
         test.done();
     },
-    
+
     /*
     testDateFmtFormatRelativeWithinQuarterAfter_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1631,7 +1631,7 @@ module.exports.testdatefmt_bg = {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1655,13 +1655,13 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.formatRelative(reference, date), "преди 9 седмици");
         test.done();
     },
-    
+
     /*
     testDateFmtFormatRelativeWithinTwoYearsAfter_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1690,7 +1690,7 @@ module.exports.testdatefmt_bg = {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1714,13 +1714,13 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.formatRelative(reference, date), "преди 14 месеца");
         test.done();
     },
-    
+
     /*
     testDateFmtFormatRelativeYearsAfter_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1749,7 +1749,7 @@ module.exports.testdatefmt_bg = {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bg-BG",
             year: 2011,
@@ -1773,6 +1773,6 @@ module.exports.testdatefmt_bg = {
         test.equal(fmt.formatRelative(reference, date), "преди 21 години");
         test.done();
     }
-    
-    
+
+
 };

@@ -160,5 +160,13 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "B0": "midnatt",
+    "B1": "på natten",
+    "B2": "fm",
+    "B3": "på morgonen",
+    "B4": "på förmiddagen",
+    "B5": "på eftermiddagen",
+    "B6": "em",
+    "B7": "på kvällen"
 }

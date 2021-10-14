@@ -1,7 +1,7 @@
 /*
  * testlistfmt_ur.js - test the list formatter object
  *
- * Copyright © 2017,2017, JEDLSoft
+ * Copyright © 2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -242,7 +242,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);                    
-        test.equal(fmt.format(["ایک کو", "دو"]), "دو ایک کو");
+        test.equal(fmt.format(["ایک کو", "دو"]), "دو، ایک کو");
         test.done();
     },
     
@@ -254,7 +254,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ایک کو", "دو", "تین"]), "تین دو ایک کو");
+        test.equal(fmt.format(["ایک کو", "دو", "تین"]), "ایک کو، تین، دو");
         test.done();
     },
     
@@ -266,7 +266,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ایک کو", "دو", "تین", "چار"]), "چار تین دو ایک کو");
+        test.equal(fmt.format(["ایک کو", "دو", "تین", "چار"]), "ایک کو، دو، چار، تین");
         test.done();
     },
     testListFmtUnitStyleurArabINNumberFormatOneFull: function(test) {

@@ -1,7 +1,7 @@
 /*
  * NameFmt.js - Format person names for display
  *
- * Copyright © 2013-2015, 2018, JEDLSoft
+ * Copyright © 2013-2015, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,6 +49,11 @@ var isPunct = require("./isPunct.js");
  *     name. eg. "Mr. Smith"
  *     <li><i>formal_long</i> - Format a name with the honorific or prefix/suffix and the
  *     given and family name. eg. "Mr. John Smith"
+ *     <li><i>familiar</i> - Format a name with the most familiar style that the culture of the locale
+ *     will accept. In some locales, it is not rude to address people you just met by their given name.
+ *     In others, it is rude to address a person in such a familiar style unless you are previously
+ *     invited to do so or unless you have known them for a while. In this case, it will use a more formal
+ *     style, but still as familiar as possible so as not to be rude.
  *   </ul>
  * <li><i>components</i> - Format the name with the given components in the correct
  * order for those components. Components are encoded as a string of letters representing
@@ -179,6 +184,10 @@ var NameFmt = function(options) {
         case "fl":
         case "formal_long":
             this.style = "formal_long";
+            break;
+        case "fam":
+        case "familiar":
+            this.style = "familiar";
             break;
     }
 

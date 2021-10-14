@@ -1,7 +1,7 @@
 /*
  * testunits_usages.js - test the units formatter object with various usages
  *
- * Copyright © 2018 JEDLSoft
+ * Copyright © 2018, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-US"
         });
         var str = uf.format(m1);
-        test.equal(str, "6 ft 2 in");
+        test.equal(str, "6 ft, 2 in");
         test.done();
     },
 
@@ -64,7 +64,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-US"
         });
         var str = uf.format(m1);
-        test.equal(str, "6 ft 2 in");
+        test.equal(str, "6 ft, 2 in");
         test.done();
     },
 
@@ -81,7 +81,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-US"
         });
         var str = uf.format(m1);
-        test.equal(str, "6 ft 2 in");
+        test.equal(str, "6 ft, 2 in");
         test.done();
     },
 
@@ -895,7 +895,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "6 pounds 4 ounces");
+        test.equal(str, "6 pounds, 4 ounces");
         test.done();
     },
 
@@ -911,7 +911,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "7 pounds 1 ounce");
+        test.equal(str, "7 pounds, 1 ounce");
         test.done();
     },
 
@@ -943,7 +943,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "6 lb 4 oz");
+        test.equal(str, "6 lb, 4 oz");
         test.done();
     },
 
@@ -1356,7 +1356,23 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "18 kph");
+        test.equal(str, "18 km/h");
+        test.done();
+    },
+    testUnitFormatLongWithUsageVehicleSpeedScaleMetric: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "m/s",
+            amount: 5
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehicleSpeed",
+            length: "long",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "18 kilometers per hour");
         test.done();
     },
 
@@ -1373,7 +1389,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "80 kph");
+        test.equal(str, "80 km/h");
         test.done();
     },
 
@@ -1488,7 +1504,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "18 kph");
+        test.equal(str, "18 km/h");
         test.done();
     },
 
@@ -1505,7 +1521,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "93 kph");
+        test.equal(str, "93 km/h");
         test.done();
     },
 
@@ -1555,7 +1571,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 tablespoon 0.2 teaspoons");
+        test.equal(str, "1 tablespoon, 0.2 teaspoons");
         test.done();
     },
 
@@ -1603,7 +1619,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 pint 1 fluid ounce 1 tablespoon");
+        test.equal(str, "1 pint, 1 fluid ounce, 1 tablespoon");
         test.done();
     },
 
@@ -1620,7 +1636,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 liter 234 milliliters");
+        test.equal(str, "1 liter, 234 milliliters");
         test.done();
     },
 
@@ -1650,11 +1666,12 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "liquidFoodVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 imperial tablespoon 0.2 imperial teaspoons");
+        test.equal(str, "1 imperial tablespoon, 0.2 imperial teaspoons");
         test.done();
     },
 
@@ -1667,6 +1684,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "liquidFoodVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -1684,11 +1702,12 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "liquidFoodVolume",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "6 oz(i) 1.2 tsp(i)");
+        test.equal(str, "6 oz(i), 1.2 tsp(i)");
         test.done();
     },
 
@@ -1705,7 +1724,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 pint 5 fluid ounces 0.1 teaspoons");
+        test.equal(str, "1 pint, 5 fluid ounces, 0.1 teaspoons");
         test.done();
     },
 
@@ -1722,7 +1741,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 c(i) 2 oz(i) 2.4 tsp(i)");
+        test.equal(str, "1 c(i), 2 oz(i), 2.4 tsp(i)");
         test.done();
     },
 
@@ -1772,7 +1791,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 tablespoon 0.2 teaspoons");
+        test.equal(str, "1 tablespoon, 0.2 teaspoons");
         test.done();
     },
 
@@ -1820,7 +1839,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 cups 3 tablespoons");
+        test.equal(str, "2 cups, 3 tablespoons");
         test.done();
     },
 
@@ -1837,7 +1856,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 liter 234 milliliters");
+        test.equal(str, "1 liter, 234 milliliters");
         test.done();
     },
 
@@ -1867,11 +1886,12 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "dryFoodVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 imperial tablespoon 0.2 imperial teaspoons");
+        test.equal(str, "1 imperial tablespoon, 0.2 imperial teaspoons");
         test.done();
     },
 
@@ -1884,6 +1904,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "dryFoodVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -1901,6 +1922,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "dryFoodVolume",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
@@ -1918,11 +1940,12 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "dryFoodVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 imperial cups 3 imperial tablespoons");
+        test.equal(str, "2 imperial cups, 3 imperial tablespoons");
         test.done();
     },
 
@@ -1939,7 +1962,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 c(i) 4 tbsp(i)");
+        test.equal(str, "1 c(i), 4 tbsp(i)");
         test.done();
     },
 
@@ -2084,6 +2107,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "drinkVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -2101,6 +2125,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "drinkVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -2118,6 +2143,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "drinkVolume",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
@@ -2301,6 +2327,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "fuelVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -2318,6 +2345,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "fuelVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -2335,6 +2363,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "fuelVolume",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
@@ -2352,6 +2381,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "fuelVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -2369,6 +2399,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "fuelVolume",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
@@ -2539,7 +2570,7 @@ module.exports.testunitfmt_usages = {
             locale: "km-KH"
         });
         var str = uf.format(m1);
-        test.equal(str, "330,2 សង់ទីម៉ែត្រ​គីប");
+        test.equal(str, "330,2 សង់ទីម៉ែត្រគូប");
         test.done();
     },
 
@@ -2584,6 +2615,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "storageVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -2601,6 +2633,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "storageVolume",
+            measurementSystem: "imperial",
             length: "long",
             locale: "en-GB"
         });
@@ -2666,6 +2699,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "storageVolume",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });
@@ -2716,6 +2750,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "storageVolume",
+            measurementSystem: "imperial",
             length: "short",
             locale: "en-GB"
         });

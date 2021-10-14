@@ -75,8 +75,8 @@
     "EEE6": "शनि",
     "EE6": "श",
     "E6": "श",
-    "a0": "पूर्वाह्न",
-    "a1": "अपराह्न",
+    "a0": "am",
+    "a1": "pm",
     "G-1": "ईसवी पूर्व",
     "G1": "ईसवी",
     "1#1 millisecond|#{num} milliseconds": "one#{num} मिलीसेकंड|#{num} मिलीसेकंड",
@@ -160,5 +160,12 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": ", ",
-    "finalSeparatorShort": ", "
+    "finalSeparatorShort": " ",
+    "B0": "मध्यरात्रि",
+    "B1": "am",
+    "B2": "सुबह",
+    "B3": "दोपहर",
+    "B4": "pm",
+    "B5": "शाम",
+    "B6": "रात"
 }

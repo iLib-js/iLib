@@ -1,7 +1,7 @@
 /*
  * testdatefmt.js - test the date formatter object
  *
- * Copyright © 2012-2015,2017,2019 JEDLSoft
+ * Copyright © 2012-2015,2017,2019-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -968,6 +968,127 @@ module.exports.testdatefmt = {
         test.equal(fmt.format("Wed May 14 2014 23:37:35 GMT-0700"), "Wednesday");
         test.done();
     },
+
+    testDateFmtGetMonthsOfYear1: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "en-US"});
+        test.ok(fmt !== null);
+
+        var arrMonths = fmt.getMonthsOfYear();
+        var expected = [undefined, "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
+        test.deepEqual(arrMonths, expected);
+        test.done();
+    },
+
+    testDateFmtGetMonthsOfYear2: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "en-US"});
+        test.ok(fmt !== null);
+
+        var arrMonths = fmt.getMonthsOfYear({length: "long"});
+        var expected = [undefined, "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        test.deepEqual(arrMonths, expected);
+        test.done();
+    },
+
+    testDateFmtGetMonthsOfYearThai: function(test) {
+        test.expect(2);
+        // uses ThaiSolar calendar
+        var fmt = new DateFmt({locale: "th-TH"});
+        test.ok(fmt !== null);
+
+        var arrMonths = fmt.getMonthsOfYear({length: "long"});
+
+        var expected = [undefined, "ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
+        test.deepEqual(arrMonths, expected);
+        test.done();
+    },
+
+    testDateFmtGetMonthsOfYearLeapYear: function(test) {
+        test.expect(2);
+        var d = DateFactory({type: "hebrew", locale: "en-US", year: 5774, month: 1, day: 1});
+        var fmt = new DateFmt({date: "en-US", calendar: "hebrew"});
+        test.ok(fmt !== null);
+
+        var arrMonths = fmt.getMonthsOfYear({length: "long", date: d});
+
+        var expected = [undefined, "Nis", "Iyy", "Siv", "Tam", "Av", "Elu", "Tis", "Ḥes", "Kis", "Tev", "She", "Ada", "Ad2"];
+        test.deepEqual(arrMonths, expected);
+        test.done();
+    },
+
+    testDateFmtGetMonthsOfYearNonLeapYear: function(test) {
+        test.expect(2);
+        var d = DateFactory({type: "hebrew", locale: "en-US", year: 5775, month: 1, day: 1});
+        var fmt = new DateFmt({date: "en-US", calendar: "hebrew"});
+        test.ok(fmt !== null);
+
+        var arrMonths = fmt.getMonthsOfYear({length: "long", date: d});
+
+        var expected = [undefined, "Nis", "Iyy", "Siv", "Tam", "Av", "Elu", "Tis", "Ḥes", "Kis", "Tev", "She", "Ada"];
+        test.deepEqual(arrMonths, expected);
+        test.done();
+    },
+
+    testDateFmtGetDaysOfWeek1: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "en-US"});
+        test.ok(fmt !== null);
+
+        var arrDays = fmt.getDaysOfWeek();
+
+        var expected = ["S", "M", "T", "W", "T", "F", "S"];
+        test.deepEqual(arrDays, expected);
+        test.done();
+    },
+
+    testDateFmtGetDaysOfWeek2: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "en-US"});
+        test.ok(fmt !== null);
+
+        var arrDays = fmt.getDaysOfWeek({length: 'long'});
+        var expected = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        test.deepEqual(arrDays, expected);
+        test.done();
+    },
+
+    testDateFmtGetDaysOfWeekOtherCalendar: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "en-US", calendar: "hebrew"});
+        test.ok(fmt !== null);
+
+        var arrDays = fmt.getDaysOfWeek({length: 'long'});
+
+        var expected = ["ris", "she", "shl", "rvi", "ḥam", "shi", "sha"];
+        test.deepEqual(arrDays, expected);
+        test.done();
+    },
+
+    testDateFmtGetDaysOfWeekThai: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar"});
+        test.ok(fmt !== null);
+
+        var arrDays = fmt.getDaysOfWeek({length: 'long'});
+
+        var expected = ["อา.", "จ.", "อ.", "พ.", "พฤ.", "ศ.", "ส."];
+        test.deepEqual(arrDays, expected);
+        test.done();
+    },
+
+    testDateFmtGetDaysOfWeekThaiInEnglish: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "en-US", calendar: "thaisolar"});
+        test.ok(fmt !== null);
+
+        var arrDays = fmt.getDaysOfWeek({length: 'long'});
+
+        var expected = ["ath", "cha", "ang", "phu", "phr", "suk", "sao"];
+        test.deepEqual(arrDays, expected);
+        test.done();
+    },
+
 
     testDateFmtWeekYear1: function(test) {
         test.expect(2);
@@ -1988,6 +2109,158 @@ module.exports.testdatefmt = {
         test.done();
     },
 
+    testDateFmtDayPeriodShort0: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({template: "B", locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "de-DE",
+            year: 0,
+            month: 12,
+            day: 31,
+            hour: 0,
+            minute: 0,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "Mitternacht");
+        test.done();
+    },
+
+    testDateFmtDayPeriodShort1: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({template: "B", locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "de-DE",
+            year: 0,
+            month: 12,
+            day: 31,
+            hour: 1,
+            minute: 0,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "nachts");
+        test.done();
+    },
+
+    testDateFmtDayPeriodShort2: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({template: "B", locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "de-DE",
+            year: 0,
+            month: 12,
+            day: 31,
+            hour: 6,
+            minute: 0,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "morgens");
+        test.done();
+    },
+
+    testDateFmtDayPeriodShort3: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({template: "B", locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "de-DE",
+            year: 0,
+            month: 12,
+            day: 31,
+            hour: 12,
+            minute: 0,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "mittags");
+        test.done();
+    },
+
+    testDateFmtDayPeriodShort4: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({template: "B", locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "de-DE",
+            year: 0,
+            month: 12,
+            day: 31,
+            hour: 12,
+            minute: 30,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "mittags");
+        test.done();
+    },
+
+    testDateFmtDayPeriodShort5: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({template: "B", locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "de-DE",
+            year: 0,
+            month: 12,
+            day: 31,
+            hour: 15,
+            minute: 30,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "nachmittags");
+        test.done();
+    },
+
+    testDateFmtDayPeriodShort6: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({template: "B", locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "de-DE",
+            year: 0,
+            month: 12,
+            day: 31,
+            hour: 18,
+            minute: 30,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "abends");
+        test.done();
+    },
+
+    testDateFmtDayPeriodShort7: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({template: "B", locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "de-DE",
+            year: 0,
+            month: 12,
+            day: 31,
+            hour: 2,
+            minute: 0,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "nachts");
+        test.done();
+    },
+
     /*
     exception does not happen any more because we always convert
     the argument to the format method to an DateFactory first now.
@@ -2556,7 +2829,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "Tuesday, 20 September 2011 at 1:45 pm");
+        test.equal(fmt.format(date), "Tuesday, 20 September 2011 at 13:45");
         test.done();
     },
 
@@ -2712,7 +2985,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "martes, 20 de septiembre de 2011, 13:45");
+        test.equal(fmt.format(date), "martes, 20 de septiembre de 2011 a las 13:45");
         test.done();
     },
 
@@ -2738,7 +3011,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "martes, 20 de septiembre de 2011, 13:45");
+        test.equal(fmt.format(date), "martes, 20 de septiembre de 2011 a las 13:45");
         test.done();
 
     },
@@ -3161,6 +3434,410 @@ module.exports.testdatefmt = {
         test.done();
     },
 
+    testDateFmtGetMeridiemsRangeLength_with_am_ET_locale: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "am-ET"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt.length, 5);
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeName_with_am_ET_locale: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "am-ET"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "ጥዋት");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeStart_with_am_ET_locale: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "am-ET"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].start, "00:00");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeEnd_with_am_ET_locale: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "am-ET"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].end, "05:59");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeLength_with_am_ET_locale_gregorian_meridiems: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "gregorian"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt.length, 2);
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeName_with_am_ET_locale_gregorian_meridiems: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "gregorian"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "ጥዋት");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeStart_with_am_ET_locale_gregorian_meridiems: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "gregorian"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].start, "00:00");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeEnd_with_am_ET_locale_gregorian_meridiems: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "gregorian"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].end, "11:59");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeLength_with_am_ET_locale_ethiopic_meridiems: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "ethiopic"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt.length, 5);
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeName_with_am_ET_locale_ethiopic_meridiems: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "ethiopic"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "ጥዋት");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeStart_with_am_ET_locale_ethiopic_meridiems: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "ethiopic"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].start, "00:00");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeEnd_with_am_ET_locale_ethiopic_meridiems: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "ethiopic"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].end, "05:59");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeLength_with_zh_CN_locale: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "zh-CN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt.length, 2);
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeName_with_zh_CN_locale: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "zh-CN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "上午");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeStart_with_zh_CN_locale: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "zh-CN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].start, "00:00");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeEnd_with_zh_CN_locale: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "zh-CN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].end, "11:59");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeLength_with_zh_CN_locale_gregorian_meridiems: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "gregorian"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt.length, 2);
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeName_with_zh_CN_locale_gregorian_meridiems: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "gregorian"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "上午");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeStart_with_zh_CN_locale_gregorian_meridiems: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "gregorian"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].start, "00:00");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeEnd_with_zh_CN_locale_gregorian_meridiems: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "gregorian"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].end, "11:59");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeLength_with_zh_CN_locale_chinese_meridiems: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "chinese"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt.length, 7);
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeName_with_zh_CN_locale_chinese_meridiems: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "chinese"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "凌晨");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeStart_with_zh_CN_locale_chinese_meridiems: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "chinese"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].start, "00:00");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeEnd_with_zh_CN_locale_chinese_meridiems: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "chinese"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].end, "05:59");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeLength_with_en_US_locale: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "en-US"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt.length, 2);
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeName_with_en_US_locale: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "en-US"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "AM");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeStart_with_en_US_locale: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({ locale: "en-US"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].start, "00:00");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeEnd_with_en_US_locale: function(test) {
+        test.expect(2);
+        var fmt = DateFmt.getMeridiemsRange({locale: "en-US"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].end, "11:59");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeName_with_bn_IN_locale: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale: "bn-IN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeName_with_gu_IN_locale: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale: "gu-IN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
+        test.done();
+    },
+    testDateFmtGetMeridiemsRangeName_with_kn_IN_locale: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale: "kn-IN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "ಪೂರ್ವಾಹ್ನ");
+        test.equal(fmt[1].name, "ಅಪರಾಹ್ನ");
+        test.done();
+    },
+    testDateFmtGetMeridiemsRangeName_with_ml_IN_locale: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale: "ml-IN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
+        test.done();
+    },
+    testDateFmtGetMeridiemsRangeName_with_mr_IN_locale: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale: "mr-IN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "म.पू.");
+        test.equal(fmt[1].name, "म.उ.");
+        test.done();
+    },
+    testDateFmtGetMeridiemsRangeName_with_or_IN_locale: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale: "or-IN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
+        test.done();
+    },
+    testDateFmtGetMeridiemsRangeName_with_pa_IN_locale: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale: "pa-IN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "ਪੂ.ਦੁ.");
+        test.equal(fmt[1].name, "ਬਾ.ਦੁ.");
+        test.done();
+    },
+    testDateFmtGetMeridiemsRangeName_with_ta_IN_locale: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale: "ta-IN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "முற்பகல்");
+        test.equal(fmt[1].name, "பிற்பகல்");
+        test.done();
+    },
+    testDateFmtGetMeridiemsRangeName_with_te_IN_locale: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale: "te-IN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
+        test.done();
+    },
+    testDateFmtGetMeridiemsRangeName_with_ur_IN_locale: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale: "ur-IN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
+        test.done();
+    },
+    testDateFmtGetMeridiemsRangeName_with_as_IN_locale: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale: "as-IN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'পূৰ্বাহ্ন');
+        test.equal(fmt[1].name,  'অপৰাহ্ন');
+        test.done();
+    },
+    testDateFmtGetMeridiemsRangeName_with_hi_IN_locale: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale: "hi-IN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "am");
+        test.equal(fmt[1].name, "pm");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRangeName_with_ur_PK_locale: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale: "ur-PK"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRange_with_noArgument: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt();
+        test.ok(fmt !== null);
+
+        var mdRange = fmt.getMeridiemsRange();
+        // if locale is not specified, DateFmt takes default locale.
+        test.ok("getMeridiemsRange should return length value greater than 0", mdRange.length > 0);
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRange_with_undefined_locale: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({ locale: undefined });
+        test.ok(fmt !== null);
+
+        var mdRange = fmt.getMeridiemsRange();
+        // if locale is not specified, DateFmt takes default locale.
+        test.ok("getMeridiemsRange should return length value greater than 0", mdRange.length > 0);
+        test.done();
+    },
+
+    testDateFmtGetMeridiemsRange_with_wrong_locale: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({ locale: "wrong" });
+        test.ok(fmt !== null);
+
+        var mdRange = fmt.getMeridiemsRange();
+        // if locale is specified wrong value, DateFmt takes default locale.
+        test.ok("getMeridiemsRange should return length value greater than 0", mdRange.length > 0);
+        test.done();
+    },
 
     testDateFmtTimeTemplate_mms: function(test) {
         test.expect(2);
@@ -3228,6 +3905,51 @@ module.exports.testdatefmt = {
         test.ok(fmt !== null);
 
         test.equal(fmt.getDateComponentOrder(), "ydm");
+        test.done();
+    },
+    testDateFmtGetDateComponentOrder_wo_SN: function(test) {
+        test.expect(2);
+
+        var fmt = new DateFmt({locale: "wo-SN"})
+        test.ok(fmt !== null);
+
+        test.equal(fmt.getDateComponentOrder(), "dmy");
+        test.done();
+    },
+    testDateFmtGetDateComponentOrderTM: function(test) {
+    	test.expect(2);
+
+    	var fmt = new DateFmt({locale: "tk-TM"})
+      test.ok(fmt !== null);
+
+        test.equal(fmt.getDateComponentOrder(), "dmy");
+        test.done();
+    },
+    testDateFmtGetDateComponentOrderTJ: function(test) {
+    	test.expect(2);
+
+    	var fmt = new DateFmt({locale: "tg-TJ"})
+      test.ok(fmt !== null);
+
+        test.equal(fmt.getDateComponentOrder(), "dmy");
+        test.done();
+    },
+    testDateFmtGetDateComponentOrderMT: function(test) {
+        test.expect(2);
+
+        var fmt = new DateFmt({locale: "mt-MT"})
+        test.ok(fmt !== null);
+
+        test.equal(fmt.getDateComponentOrder(), "dmy");
+        test.done();
+    },
+    testDateFmtGetDateComponentOrder_ZA: function(test) {
+        test.expect(2);
+
+        var fmt = new DateFmt({locale: "zu-ZA"})
+        test.ok(fmt !== null);
+
+        test.equal(fmt.getDateComponentOrder(), "mdy");
         test.done();
     }
 };

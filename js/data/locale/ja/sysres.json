@@ -77,8 +77,8 @@
     "E6": "土",
     "a0": "午前",
     "a1": "午後",
-    "G-1": "BCE",
-    "G1": "CE",
+    "G-1": "西暦紀元前",
+    "G1": "西暦紀元",
     "1#1 millisecond|#{num} milliseconds": "#{num} ミリ秒",
     "1#1 second|#{num} seconds": "#{num} 秒",
     "1#1 minute|#{num} minutes": "#{num} 分",
@@ -160,5 +160,14 @@
     "separatorMedium": " ",
     "finalSeparatorMedium": " ",
     "separatorShort": "",
-    "finalSeparatorShort": ""
+    "finalSeparatorShort": "",
+    "B0": "真夜中",
+    "B1": "午前",
+    "B2": "朝",
+    "B3": "正午",
+    "B4": "昼",
+    "B5": "午後",
+    "B6": "夕方",
+    "B7": "夜",
+    "B8": "夜中"
 }

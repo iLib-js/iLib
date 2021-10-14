@@ -3,28 +3,28 @@
         "order": "{date} {time}",
         "date": {
             "dmwy": {
-                "f": "EEEE, dd MMMM yyyy",
-                "l": "EEE, dd MMMM yyyy",
-                "m": "EE, dd.M.yyyy",
-                "s": "E, dd.M.yy"
+                "f": "EEEE, d MMMM yyyy",
+                "l": "EEE, d MMMM yyyy",
+                "m": "EE, d.M.yyyy",
+                "s": "E, d.M.yy"
             },
             "dmy": {
-                "f": "dd MMMM yyyy",
-                "l": "dd MMMM yyyy",
-                "m": "dd.M.yyyy",
-                "s": "dd.M.yy"
+                "f": "d MMMM yyyy",
+                "l": "d MMMM yyyy",
+                "m": "d.M.yyyy",
+                "s": "d.M.yy"
             },
             "dmw": {
-                "f": "EEEE, dd MMMM",
-                "l": "EEE, dd MMMM",
-                "m": "EE, dd.M",
-                "s": "E, dd.M"
+                "f": "EEEE, d MMMM",
+                "l": "EEE, d MMMM",
+                "m": "EE, d.M",
+                "s": "E, d.M"
             },
             "dm": {
-                "f": "dd MMMM",
-                "l": "dd MMMM",
-                "m": "dd.M",
-                "s": "dd.M"
+                "f": "d MMMM",
+                "l": "d MMMM",
+                "m": "d.M",
+                "s": "d.M"
             },
             "my": {
                 "f": "MMMM yyyy",
@@ -33,10 +33,10 @@
                 "s": "M.yy"
             },
             "dw": {
-                "f": "EEEE, dd",
-                "l": "EEE, dd",
-                "m": "EE, dd",
-                "s": "E, dd"
+                "f": "EEEE, d",
+                "l": "EEE, d",
+                "m": "EE, d",
+                "s": "E, d"
             },
             "w": {
                 "f": "EEEE",
@@ -45,10 +45,10 @@
                 "s": "E"
             },
             "d": {
-                "f": "dd",
-                "l": "dd",
-                "m": "dd",
-                "s": "dd"
+                "f": "d",
+                "l": "d",
+                "m": "d",
+                "s": "d"
             },
             "m": {
                 "f": "MMMM",
@@ -61,6 +61,12 @@
                 "l": "yyyy",
                 "m": "yyyy",
                 "s": "yy"
+            },
+            "e": {
+                "f": "cccc",
+                "l": "ccc",
+                "m": "cc",
+                "s": "c"
             }
         },
         "time": {
@@ -151,5 +157,41 @@
                 "s": "{sy} – {ey}"
             }
         }
-    }
+    },
+    "dayPeriods": [
+        {
+            "at": 0
+        },
+        {
+            "from": 0,
+            "to": 240
+        },
+        {
+            "from": 0,
+            "to": 720
+        },
+        {
+            "from": 240,
+            "to": 600
+        },
+        {
+            "from": 600,
+            "to": 720
+        },
+        {
+            "at": 720
+        },
+        {
+            "from": 720,
+            "to": 1080
+        },
+        {
+            "from": 720,
+            "to": 1440
+        },
+        {
+            "from": 1080,
+            "to": 1440
+        }
+    ]
 }

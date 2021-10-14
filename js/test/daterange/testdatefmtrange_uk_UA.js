@@ -1,20 +1,20 @@
 /*
  * testdatefmtrange_uk_UA.js - test the date range formatter object Russian/Russia
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2020 JEDLSoft
  *
- * Licensed unukr the Apache License, Version 2.0 (the "License");
- * you may not use tens file except in compliance with the License.
- * You may obtaiN a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed unukr the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KinD, either express or implied.
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *
  * See the License for the specific language governing permissions and
- * limitations unukr the License.
+ * limitations under the License.
  */
 
 if (typeof(GregorianDate) === "undefined") {
@@ -608,7 +608,7 @@ module.exports.testdatefmtrange_uk_UA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "лист. 2011 р. – січ. 2014 р.");
+        test.equal(fmt.format(start, end), "лис 2011 р. – січ 2014 р.");
         test.done();
     },
     testDateRngFmtUARangeMultiYearLong: function(test) {
@@ -634,7 +634,7 @@ module.exports.testdatefmtrange_uk_UA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "листопада 2011 р. – січня 2014 р.");
+        test.equal(fmt.format(start, end), "листопад 2011 р. – січень 2014 р.");
         test.done();
     },
     testDateRngFmtUARangeMultiYearFull: function(test) {
@@ -660,7 +660,7 @@ module.exports.testdatefmtrange_uk_UA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "листопада 2011 р. – січня 2014 р.");
+        test.equal(fmt.format(start, end), "листопад 2011 р. – січень 2014 р.");
         test.done();
     },
     testDateRngFmtUAManyYearsFull: function(test) {

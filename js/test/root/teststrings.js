@@ -1,7 +1,7 @@
 /*
  * teststrings.js - test the String object
  *
- * Copyright © 2012-2018, JEDLSoft
+ * Copyright © 2012-2019-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -845,6 +845,92 @@ module.exports.teststrings = {
         test.done();
     },
 
+    testStringFormatChoiceWithMultipleIndexesWithClassesPT1: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).|other,other#{num} items (other) on {pages} pages (other).");
+        str.setLocale("pt-PT");
+
+        test.ok(str !== null);
+
+        var params = {
+            num: 0,
+            pages: 5
+        };
+        test.equal(str.formatChoice([params.num,params.pages], params), "0 items (other) on 5 pages (other).");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexesWithClassesPT2: function(test) {
+        test.expect(2);
+        var str = new IString("one,one#{num} item on {pages} page.|one,other#{num} item on {pages} pages (other).|other,one#{num} items (other) on {pages} page.(one)|other,other#{num} items (other) on {pages} pages (other).");
+        str.setLocale("pt-PT");
+
+        test.ok(str !== null);
+
+        var params = {
+            num: 0,
+            pages: 1
+        };
+        test.equal(str.formatChoice([params.num,params.pages], params), "0 item on 1 page.");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexesWithClassesPT3: function(test) {
+        test.expect(2);
+        var str = new IString("one,one#{num} item on {pages} page.|one,other#{num} item on {pages} pages (other).|other,one#{num} items (other) on {pages} page.(one)|other,other#{num} items (other) on {pages} pages (other).");
+        str.setLocale("pt-PT");
+        test.ok(str !== null);
+
+        var params = {
+            num: 50,
+            pages: 100
+        };
+
+        test.equal(str.formatChoice([params.num,params.pages], params), "50 items (other) on 100 pages (other).");
+        test.done();
+    },
+    testStringFormatChoiceWithMultipleIndexesWithClassesMK1: function(test) {
+        test.expect(2);
+        var str = new IString("one,one#{num} item on {pages} page.|one,other#{num} item on {pages} pages (other).|other,one#{num} items (other) on {pages} page.(one)|other,other#{num} items (other) on {pages} pages (other).");
+        str.setLocale("mk-MK");
+        test.ok(str !== null);
+
+        var params = {
+            num: 1,
+            pages: 21
+        };
+
+        test.equal(str.formatChoice([params.num,params.pages], params), "1 item on 21 page.");
+        test.done();
+    },
+    testStringFormatChoiceWithMultipleIndexesWithClassesMK2: function(test) {
+        test.expect(2);
+        var str = new IString("one,one#{num} item on {pages} page.|one,other#{num} item on {pages} pages (other).|other,one#{num} items (other) on {pages} page.(one)|other,other#{num} items (other) on {pages} pages (other).");
+        str.setLocale("mk-MK");
+        test.ok(str !== null);
+
+        var params = {
+            num: 11,
+            pages: 25
+        };
+
+        test.equal(str.formatChoice([params.num,params.pages], params), "11 items (other) on 25 pages (other).");
+        test.done();
+    },
+    testStringFormatChoiceWithMultipleIndexesWithClassesMK3: function(test) {
+        test.expect(2);
+        var str = new IString("one,one#{num} item on {pages} page.|one,other#{num} item on {pages} pages (other).|other,one#{num} items (other) on {pages} page.(one)|other,other#{num} items (other) on {pages} pages (other).");
+        str.setLocale("mk-MK");
+        test.ok(str !== null);
+
+        var params = {
+            num: 41,
+            pages: 25
+        };
+
+        test.equal(str.formatChoice([params.num,params.pages], params), "41 item on 25 pages (other).");
+        test.done();
+    },
     testStringFormatChoiceWithMultipleIndexesWithInsufficientIndexes: function(test) {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
@@ -856,7 +942,7 @@ module.exports.teststrings = {
             num: 25,
             pages: 5
         };
-        
+
         test.equal(str.formatChoice(params.num, params), "25 items (many) on 5 page.");
         test.done();
     },
@@ -1023,7 +1109,7 @@ module.exports.teststrings = {
         test.done();
     },
     
-    testStringDelegateToLowerCase: function(test) {
+    testStringDelegateToUpperCase: function(test) {
         test.expect(2);
         var str = new IString("abcdef");
     
@@ -1032,7 +1118,396 @@ module.exports.teststrings = {
         test.equal(str.toUpperCase(), "ABCDEF");
         test.done();
     },
+
+    testStringDelegateLength: function(test) {
+        test.expect(2);
+        var str = new IString("abcdef");
     
+        test.ok(str !== null);
+    
+        test.equal(str.length, 6);
+        test.done();
+    },
+
+    testStringDelegateMatchAll: function(test) {
+        if (typeof("".matchAll) === 'function') {
+            test.expect(13);
+            var str = new IString("abc bd bc ab ef bc");
+
+            test.ok(str !== null);
+
+            var it = str.matchAll(/bc/g);
+            
+            test.ok(it);
+            
+            var match = it.next();
+            test.ok(match);
+            test.ok(!match.done);
+            test.equal(match.value[0], "bc");
+
+            match = it.next();
+            test.ok(match);
+            test.ok(!match.done);
+            test.equal(match.value[0], "bc");
+
+            match = it.next();
+            test.ok(match);
+            test.ok(!match.done);
+            test.equal(match.value[0], "bc");
+
+            match = it.next();
+            test.ok(match);
+            test.ok(match.done);
+        } else {
+            console.log("This version of the JS engine does not support String.matchAll()");
+        }
+        test.done();
+    },
+
+    testStringDelegateToLocaleLowerCase: function(test) {
+        if (typeof("".toLocaleLowerCase) === 'function') {
+            test.expect(2);
+            var str = new IString("ABCDEF");
+
+            test.ok(str !== null);
+
+            test.equal(str.toLocaleLowerCase(), "abcdef");
+        } else {
+            console.log("This version of the JS engine does not support String.toLocaleLowerCase()");
+        }
+        test.done();
+    },
+    
+    testStringDelegateToLocaleUpperCase: function(test) {
+        if (typeof("".toLocaleUpperCase) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.equal(str.toLocaleUpperCase(), "ABCDEF");
+        } else {
+            console.log("This version of the JS engine does not support String.toLocaleUpperCase()");
+        }
+        test.done();
+    },
+
+    testStringDelegateEndsWithTrue: function(test) {
+        if (typeof("".endsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.endsWith("def"));
+        } else {
+            console.log("This version of the JS engine does not support String.endsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateEndsWithTrueWithLength1: function(test) {
+        if (typeof("".endsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.endsWith("def", str.length));
+        } else {
+            console.log("This version of the JS engine does not support String.endsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateEndsWithTrueWithLength2: function(test) {
+        if (typeof("".endsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.endsWith("def", undefined));
+        } else {
+            console.log("This version of the JS engine does not support String.endsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateEndsWithFalse: function(test) {
+        if (typeof("".endsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(!str.endsWith("de"));
+        } else {
+            console.log("This version of the JS engine does not support String.endsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateEndsWithFalse2: function(test) {
+        if (typeof("".endsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(!str.endsWith("def", 3));
+        } else {
+            console.log("This version of the JS engine does not support String.endsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateStartsWithTrue: function(test) {
+        if (typeof("".startsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.startsWith("abc"));
+        } else {
+            console.log("This version of the JS engine does not support String.startsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateStartsWithLength1: function(test) {
+        if (typeof("".startsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.startsWith("abc", 0));
+        } else {
+            console.log("This version of the JS engine does not support String.startsWith()");
+        }
+        test.done();
+    },
+    testStringDelegateStartsWithLength2: function(test) {
+        if (typeof("".startsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.startsWith("abc", undefined));
+        } else {
+            console.log("This version of the JS engine does not support String.startsWith()");
+        }
+        test.done();
+    },
+
+
+    testStringDelegateStartsWithFalse: function(test) {
+        if (typeof("".startsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(!str.startsWith("bc"));
+        } else {
+            console.log("This version of the JS engine does not support String.startsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateStartsWithFalse2: function(test) {
+        if (typeof("".startsWith) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(!str.startsWith("ab", 4));
+        } else {
+            console.log("This version of the JS engine does not support String.startsWith()");
+        }
+        test.done();
+    },
+
+    testStringDelegateIncludesTrue: function(test) {
+        if (typeof("".includes) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(str.includes("bcd"));
+        } else {
+            console.log("This version of the JS engine does not support String.includes()");
+        }
+        test.done();
+    },
+
+    testStringDelegateIncludesFalse: function(test) {
+        if (typeof("".includes) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.ok(!str.includes("bcf"));
+        } else {
+            console.log("This version of the JS engine does not support String.includes()");
+        }
+        test.done();
+    },
+
+    testStringDelegateNormalize: function(test) {
+        if (typeof("".normalize) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.equal(str.normalize("NFKC"), "abcdef");
+        } else {
+            console.log("This version of the JS engine does not support String.normalize()");
+        }
+        test.done();
+    },
+
+    testStringDelegatePadEnd: function(test) {
+        if (typeof("".padEnd) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.equal(str.padEnd(12, "x"), "abcdefxxxxxx");
+        } else {
+            console.log("This version of the JS engine does not support String.padEnd()");
+        }
+        test.done();
+    },
+
+    testStringDelegatePadStart: function(test) {
+        if (typeof("".padStart) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.equal(str.padStart(11, "x"), "xxxxxabcdef");
+        } else {
+            console.log("This version of the JS engine does not support String.padStart()");
+        }
+        test.done();
+    },
+
+    testStringDelegateRepeat: function(test) {
+        if (typeof("".repeat) === 'function') {
+
+            test.expect(2);
+            var str = new IString("abcdef");
+
+            test.ok(str !== null);
+
+            test.equal(str.repeat(3), "abcdefabcdefabcdef");
+        } else {
+            console.log("This version of the JS engine does not support String.repeat()");
+        }
+        test.done();
+    },
+
+    testStringDelegateTrim: function(test) {
+        if (typeof("".trim) === 'function') {
+
+            test.expect(2);
+            var str = new IString("  \r  \n abcdef    \t \t");
+
+            test.ok(str !== null);
+
+            test.equal(str.trim(), "abcdef");
+        } else {
+            console.log("This version of the JS engine does not support String.trim()");
+        }
+        test.done();
+    },
+
+    testStringDelegateTrimEnd: function(test) {
+        if (typeof("".trimEnd) === 'function') {
+
+            test.expect(2);
+            var str = new IString("  \r  \n abcdef    \t \t");
+
+            test.ok(str !== null);
+
+            test.equal(str.trimEnd(), "  \r  \n abcdef");
+        } else {
+            console.log("This version of the JS engine does not support String.trimEnd()");
+        }
+        test.done();
+    },
+
+    testStringDelegateTrimRight: function(test) {
+        if (typeof("".trimRight) === 'function') {
+
+            test.expect(2);
+            var str = new IString("  \r  \n abcdef    \t \t");
+
+            test.ok(str !== null);
+
+            test.equal(str.trimRight(), "  \r  \n abcdef");
+        } else {
+            console.log("This version of the JS engine does not support String.trimRight()");
+        }
+        test.done();
+    },
+
+    testStringDelegateTrimStart: function(test) {
+        if (typeof("".trimStart) === 'function') {
+
+            test.expect(2);
+            var str = new IString("  \r  \n abcdef    \t \t");
+
+            test.ok(str !== null);
+
+            test.equal(str.trimStart(), "abcdef    \t \t");
+        } else {
+            console.log("This version of the JS engine does not support String.trimStart()");
+        }
+        test.done();
+    },
+
+    testStringDelegateTrimLeft: function(test) {
+        if (typeof("".trimLeft) === 'function') {
+
+            test.expect(2);
+            var str = new IString("  \r  \n abcdef    \t \t");
+
+            test.ok(str !== null);
+
+            test.equal(str.trimLeft(), "abcdef    \t \t");
+        } else {
+            console.log("This version of the JS engine does not support String.trimLeft()");
+        }
+        test.done();
+    },
+
     testCodePointToUTF: function(test) {
         test.expect(3);
         var str = IString.fromCodePoint(0x10302);
@@ -2698,6 +3173,235 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(1), "There items are one");
         test.done();
     },
+    testStringFormatChoiceCharClasses16: function(test) {
+        test.expect(2);
+        var str = new IString("one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(0), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses17: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(0), "There are no items.");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses18: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses19: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(15), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses20: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("pt-BR");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses21: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("pt-BR");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(0), "There are no items.");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses22: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("pt-BR");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(13), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses23: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("pt-PT");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(0), "There are no items.");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses24: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("pt-PT");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses25: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(0), "There are no items.");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses26: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses32: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("eu-ES");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses27: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(3), "The items are few");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses28: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(100), "The items are many");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses29: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(8), "The items are many");
+        test.done();
+    },
+    
+    testStringFormatChoiceCharClasses30: function(test) {
+
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("eu-ES");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses33: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("eu-ES");
+
+        test.ok(str !== null);
+        test.equal(str.formatChoice(11), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses31: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("eu-ES");
+
+        test.ok(str !== null);
+        test.equal(str.formatChoice(16), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses_my_MM: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("my-MM");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses_my_MM2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("my-MM");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(5), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses_zu_ZA: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("my-MM");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses_zu_ZA2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("my-MM");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(5), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses_zu_ZA3: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("my-MM");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(15), "Default items");
+        test.done();
+    },
     
     testStringFormatChoiceCharClassesComplex1: function(test) {
         test.expect(2);
@@ -2819,7 +3523,196 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(10), "Default items");
         test.done();
     },
-    
+
+    testStringFormatChoiceCharClassesComplex12: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(10), "Default items");
+        test.done();
+    },
+
+    testStringFormatChoiceCharClassesComplex13: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_ne_NP: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ne-NP");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_ne_NP2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ne-NP");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(11), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_wo_SN: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ne-NP");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_wo_SN2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ne-NP");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(8), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_lo_LA: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("lo-LA");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_lo_LA2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("lo-LA");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(13), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_tk_TM: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("tk-TM");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_tk_TM2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("tk-TM");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(13), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_ca_AD: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ca-AD");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplexhyAM: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("hy-AM");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_ca_AD2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ca-AD");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(15), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplexhyAM2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("hy-AM");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(15), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_tg_TJ: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("tg-TJ");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_tg_TJ2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("tg-TJ");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(7), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_mt_MT: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("mt-MT");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(0), "There are no items.");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_mt_MT2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("mt-MT");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(5), "The items are few");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplexmt_mt_MT3: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("mt-MT");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(14), "The items are many");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplexmt_mt_MT4: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("mt-MT");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(35), "Default items");
+        test.done();
+    },
     testStringFormatChoiceDecimal1: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
@@ -2974,7 +3867,6 @@ module.exports.teststrings = {
         test.done();
     },
     
-    
     testStringFormatChoiceDecimal15: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
@@ -2984,6 +3876,362 @@ module.exports.teststrings = {
     
         test.equal(str.formatChoice(1.5), "Default items");
         test.done();
-    }
+    },
+    testStringFormatChoiceDecimal16: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("pt-BR");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal17: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ka-GE");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal18: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+
+        str.setLocale("ka-GE");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(0.0), "There are no items.");
+        test.done();
+    },
+    testStringFormatChoiceDecimal19: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("pt-BR");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal20: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("pt-PT");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal21: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("pt-PT");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.5), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal22: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("pt-BR");
+
+        test.ok(str !== null);
     
+        test.equal(str.formatChoice(1.5), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal23: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("mk-MK");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal24: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("mk-MK");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(7.1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal25: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("mk-MK");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.7), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal26: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(21.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal27: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(33.0), "The items are few");
+        test.done();
+    },
+    testStringFormatChoiceDecimal28: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("be-BY");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(100.1), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_lo_LA: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("lo-LA");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(3.5), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_ca_AD: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ca-AD");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.7), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_ca_AD2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ca-AD");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(10.0), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_ca_ES: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ca-ES");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(2.7), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_ca_ES2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ca-ES");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(14.4), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimalhyAM: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("hy-AM");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal29: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("eu-ES");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimalhyAM2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("hy-AM");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(3.5), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal30: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("eu-ES");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.7), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_my_MM: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("my-MM");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_my_MM2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("my-MM");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(3.7), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_ne_NP: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ne-NP");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_ne_NP2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ne-NP");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(4.7), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_wo_SN: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("wo-SN");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(4.0), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_wo_SN2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("wo-SN");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(23.0), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_tg_TJ: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("tg-TJ");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.0), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_tg_TJ2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("tg-TJ");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(5.3), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_mt_MT: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("mt-MT");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_mt_MT2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("mt-MT");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(3.0), "The items are few");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_mt_MT3: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("mt-MT");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(17.0), "The items are many");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_mt_MT4: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("mt-MT");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(100.0), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_zu_ZA: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("zu-ZA");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_zu_ZA2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("zu-ZA");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(17.3), "Default items");
+        test.done();
+    }
 };

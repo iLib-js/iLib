@@ -1,7 +1,7 @@
 /*
  * Utils.js - Core utility routines
  *
- * Copyright © 2012-2015, 2018-2019, JEDLSoft
+ * Copyright © 2012-2015, 2018-2019, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -144,7 +144,6 @@ Utils.getSublocales = function(locale) {
     if (lang) {
         ret.push(lang);
     }
-
     if (region) {
         ret.push('und-' + region);
     }
@@ -153,9 +152,11 @@ Utils.getSublocales = function(locale) {
         if (script) {
             ret.push(lang + '-' + script);
         }
-
         if (region) {
             ret.push(lang + '-' + region);
+        }
+        if (variant) {
+            ret.push(lang + '-' + variant);
         }
     }
 
@@ -167,11 +168,12 @@ Utils.getSublocales = function(locale) {
         if (script && region) {
             ret.push(lang + '-' + script + '-' + region);
         }
-
+        if (script && variant) {
+            ret.push(lang + '-' + script + '-' + variant);
+        }
         if (region && variant) {
             ret.push(lang + '-' + region + '-' + variant);
         }
-
         if (script && region && variant) {
             ret.push(lang + '-' + script + '-' + region + '-' + variant);
         }

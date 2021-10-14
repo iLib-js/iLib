@@ -1,7 +1,7 @@
  /*
- * testnumfmt2.js
+ * testnumfmt2.js - test the number formatter object
  *
- * Copyright © 2019, JEDLSoft
+ * Copyright © 2019-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -505,9 +505,9 @@ module.exports.testnumfmt2 = {
         test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "en-IN", type: "currency", useNative:false, currency:li.getCurrency()});
-        test.equal(li.getCurrencyFormats().common, "{s} {n}");
-        test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}");
-        test.equal(curfmt.format(57.05), "₹ 57.05"); //INR
+        test.equal(li.getCurrencyFormats().common, "{s}{n}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
+        test.equal(curfmt.format(57.05), "₹57.05"); //INR
         test.done();
     },
     testNumFmt_en_IS: function(test) {
@@ -1098,9 +1098,9 @@ module.exports.testnumfmt2 = {
         test.equal(pctfmt.format(34), "34 %");
 
         var curfmt = new NumFmt({locale: "es-PE", type: "currency", useNative:false, currency:li.getCurrency()});
-        test.equal(li.getCurrencyFormats().common, "{s}{n}");
-        test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
-        test.equal(curfmt.format(57.05), "S/.57.05"); //PEN
+        test.equal(li.getCurrencyFormats().common, "{s} {n}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}");
+        test.equal(curfmt.format(57.05), "S/. 57.05"); //PEN
         
         test.done();
     },
@@ -1769,9 +1769,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123.456.789,45");
 
         var pctfmt = new NumFmt({locale:"mk-MK", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n}%");
-        test.equal(li.getNegativePercentageFormat(), "-{n}%");
-        test.equal(pctfmt.format(34), "34%");
+        test.equal(li.getPercentageFormat(), "{n} %");
+        test.equal(li.getNegativePercentageFormat(), "-{n} %");
+        test.equal(pctfmt.format(34), "34 %");
 
         var curfmt = new NumFmt({locale: "mk-MK", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
@@ -1869,8 +1869,8 @@ module.exports.testnumfmt2 = {
         test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "nl-BE", type: "currency", useNative:false, currency:li.getCurrency()});
-        test.equal(li.getCurrencyFormats().common, "{s} {n}"); // CLDR 34 change
-        test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}"); // CLDR 34 change
+        test.equal(li.getCurrencyFormats().common, "{s} {n}");
+        test.equal(li.getCurrencyFormats().commonNegative, "{s} -{n}");
         test.equal(curfmt.format(57.05), "€ 57,05"); //EUR
         test.done();
     },
@@ -3626,19 +3626,19 @@ module.exports.testnumfmt2 = {
         test.expect(9);
         var li = new LocaleInfo("pa-PK");
         var fmt = new NumFmt({locale:"pa-PK", type:"standard", useNative:false});
-        test.equal(li.getDecimalSeparator(), ".");
-        test.equal(li.getGroupingSeparator(), ",");
-        test.equal(fmt.format(123456789.45), "12,34,56,789.45");
+        test.equal(li.getDecimalSeparator(), '٫');
+        test.equal(li.getGroupingSeparator(), '٬');
+        test.equal(fmt.format(123456789.45), '12٬34٬56٬789٫45');
 
         var pctfmt = new NumFmt({locale:"pa-PK", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n}%");
-        test.equal(li.getNegativePercentageFormat(), "-{n}%");
-        test.equal(pctfmt.format(34), "34%");
+        test.equal(li.getPercentageFormat(), '{n}٪');
+        test.equal(li.getNegativePercentageFormat(), '‎-‎{n}٪');
+        test.equal(pctfmt.format(34), '34٪');
 
         var curfmt = new NumFmt({locale: "pa-PK", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s} {n}");
-        test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}");
-        test.equal(curfmt.format(57.05), "Rs 57.05"); //PKR
+        test.equal(li.getCurrencyFormats().commonNegative, '‎-‎{s} {n}');
+        test.equal(curfmt.format(57.05), 'Rs 57٫05'); //PKR
         test.done();
     },
     testNumFmt_pt_AO: function(test) {
@@ -3753,6 +3753,307 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "RM57.05"); //MYR
+        test.done();
+    },
+    testNumFmt_ka_GE: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("ka-GE");
+        var fmt = new NumFmt({locale:"ka-GE", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), " ");
+        test.equal(fmt.format(123456789.45), "123 456 789,45");
+
+        var pctfmt = new NumFmt({locale:"ka-GE", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+
+        var curfmt = new NumFmt({locale: "ka-GE", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 ₾"); //GEL
+        test.done();
+    },
+    testNumFmt_be_BY: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("be-BY");
+        var fmt = new NumFmt({locale:"be-BY", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), " ");
+        test.equal(fmt.format(123456789.45), "123 456 789,45");
+
+        var pctfmt = new NumFmt({locale:"be-BY", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n} %");
+        test.equal(li.getNegativePercentageFormat(), "-{n} %");
+        test.equal(pctfmt.format(34), "34 %");
+
+        var curfmt = new NumFmt({locale: "be-BY", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 р."); //BYN
+        test.done();
+    },
+    testNumFmt_lo_LA: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("lo-LA");
+        var fmt = new NumFmt({locale:"lo-LA", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), ".");
+        test.equal(fmt.format(123456789.45), "123.456.789,45");
+        var pctfmt = new NumFmt({locale:"lo-LA", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+
+        var curfmt = new NumFmt({locale: "lo-LA", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{s}{n}");
+        test.equal(li.getCurrencyFormats().commonNegative, "{s}-{n}");
+        test.equal(curfmt.format(57.05), "₭57"); //LAK
+        test.done();
+    },
+    testNumFmt_ky_KG: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("ky-KG");
+        var fmt = new NumFmt({locale:"ky-KG", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), " ");
+        test.equal(fmt.format(123456789.45), "123 456 789,45");
+
+        var pctfmt = new NumFmt({locale:"ky-KG", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+
+        var curfmt = new NumFmt({locale: "ky-KG", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 лв"); //KGS
+        test.done();
+    },
+    testNumFmt_ca_AD: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("ca-AD");
+        var fmt = new NumFmt({locale:"ca-AD", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), ".");
+        test.equal(fmt.format(123456789.45), "123.456.789,45");
+
+        var pctfmt = new NumFmt({locale:"ca-AD", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+        var curfmt = new NumFmt({locale: "ca-AD", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 €"); //EUR
+        test.done();
+    },
+    testNumFmt_ca_ES: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("ca-ES");
+        var fmt = new NumFmt({locale:"ca-ES", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), ".");
+        test.equal(fmt.format(123456789.45), "123.456.789,45");
+        var pctfmt = new NumFmt({locale:"ca-ES", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+
+        var curfmt = new NumFmt({locale: "ca-ES", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 €"); //EUR
+        test.done();
+    },
+    testNumFmt_hy_AM: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("hy-AM");
+        var fmt = new NumFmt({locale:"hy-AM", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), " ");
+        test.equal(fmt.format(123456789.45), "123 456 789,45");
+
+        var pctfmt = new NumFmt({locale:"hy-AM", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+
+        var curfmt = new NumFmt({locale: "hy-AM", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 դր.");
+        test.done();
+    },
+    testNumFmt_gl_ES: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("gl-ES");
+        var fmt = new NumFmt({locale:"gl-ES", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), ".");
+        test.equal(fmt.format(123456789.45), "123.456.789,45");
+
+        var pctfmt = new NumFmt({locale:"gl-ES", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n} %");
+        test.equal(li.getNegativePercentageFormat(), "-{n} %");
+        test.equal(pctfmt.format(34), "34 %");
+
+        var curfmt = new NumFmt({locale: "gl-ES", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 €");
+        test.done();
+    },
+    testNumFmt_eu_ES: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("eu-ES");
+        var fmt = new NumFmt({locale:"eu-ES", type:"standard", useNative:false});
+
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), ".");
+        test.equal(fmt.format(123456789.45), "123.456.789,45");
+
+        var pctfmt = new NumFmt({locale:"eu-ES", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "% {n}");
+        test.equal(li.getNegativePercentageFormat(), "−% {n}");
+        test.equal(pctfmt.format(34), "% 34");
+
+        var curfmt = new NumFmt({locale: "eu-ES", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "−{n} {s}");
+
+        test.equal(curfmt.format(57.05), "57,05 €");
+
+        test.done();
+    },
+    testNumFmt_ne_NP: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("ne-NP");
+        var fmt = new NumFmt({locale:"ne-NP", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ".");
+        test.equal(li.getGroupingSeparator(), ",");
+        test.equal(fmt.format(123456789.45), "12,34,56,789.45");
+
+        var pctfmt = new NumFmt({locale:"ne-NP", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+
+        var curfmt = new NumFmt({locale: "ne-NP", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{s} {n}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}");
+        test.equal(curfmt.format(57.05), "Rs 57.05"); //NPR
+        test.done();
+    },
+    testNumFmt_my_MM: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("my-MM");
+        var fmt = new NumFmt({locale:"my-MM", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ".");
+        test.equal(li.getGroupingSeparator(), ",");
+        test.equal(fmt.format(123456789.45), "123,456,789.45");
+
+        var pctfmt = new NumFmt({locale:"my-MM", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+
+        var curfmt = new NumFmt({locale: "my-MM", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57 K");
+        test.done();
+    },
+    testNumFmt_wo_SN: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("wo-SN");
+        var fmt = new NumFmt({locale:"wo-SN", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), ".");
+        test.equal(fmt.format(123456789.45), "123.456.789,45");
+
+        var pctfmt = new NumFmt({locale:"wo-SN", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+        var curfmt = new NumFmt({locale: "wo-SN", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{s} {n}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}");
+        test.equal(curfmt.format(57.05), "Fr 57");
+        test.done();
+    },
+    testNumFmt_tk_TM: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("tk-TM");
+        var fmt = new NumFmt({locale:"tk-TM", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), " ");
+        test.equal(fmt.format(123456789.45), "123 456 789,45");
+        var pctfmt = new NumFmt({locale:"tk-TM", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n} %");
+        test.equal(li.getNegativePercentageFormat(), "-{n} %");
+        test.equal(pctfmt.format(34), "34 %");
+
+        var curfmt = new NumFmt({locale: "tk-TM", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 m");
+        test.done();
+    },
+    testNumFmt_tg_TJ: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("tg-TJ");
+        var fmt = new NumFmt({locale:"tg-TJ", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), " ");
+        test.equal(fmt.format(123456789.45), "123 456 789,45");
+
+        var pctfmt = new NumFmt({locale:"tg-TJ", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+        var curfmt = new NumFmt({locale: "tg-TJ", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 ЅМ");
+        test.done();
+    },
+    testNumFmt_mt_MT: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("mt-MT");
+        var fmt = new NumFmt({locale:"mt-MT", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ".");
+        test.equal(li.getGroupingSeparator(), ",");
+        test.equal(fmt.format(123456789.45), "123,456,789.45");
+
+        var pctfmt = new NumFmt({locale:"mt-MT", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+        
+        var curfmt = new NumFmt({locale: "mt-MT", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{s}{n}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
+        test.equal(curfmt.format(57.05), "€57.05");
+        test.done();
+    },
+    testNumFmt_zu_ZA: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("zu-ZA");
+        var fmt = new NumFmt({locale:"zu-ZA", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ".");
+        test.equal(li.getGroupingSeparator(), ",");
+        test.equal(fmt.format(123456789.45), "123,456,789.45");
+
+        var pctfmt = new NumFmt({locale:"zu-ZA", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
+
+        var curfmt = new NumFmt({locale: "zu-ZA", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, "{s}{n}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
+        test.equal(curfmt.format(57.05), "R57.05");
         test.done();
     }
 }
