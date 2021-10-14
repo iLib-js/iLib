@@ -949,6 +949,14 @@ module.exports.testglobal = {
         test.equal(ilib.getPaths(), undefined);
         test.done();
     },
+    testsetPaths3: function(test) {
+        test.expect(1);
+        ilib.setPaths("./resources3");
+
+        test.equal(ilib.getPaths()[0], "./resources3");
+        ilib.clearPaths();
+        test.done();
+    },
     testIsArrayNewArrayObj: function(test) {
         test.expect(1);
         var a = new Array();
