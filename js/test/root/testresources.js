@@ -2279,6 +2279,28 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "{city}と{country}からこんにちは2");
         test.done();
     },
+    testResBundlesetPath: function(test) {
+        test.expect(1);
+        
+        var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
+        
+        ilib.setPaths(multiPath);
+        test.equal(ilib.getPaths()[0], "resources2");
+
+        ilib.clearPaths();
+        test.done();
+    },
+    testResBundlesetPath2: function(test) {
+        test.expect(1);
+        
+        var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
+        
+        ilib.setPaths();
+        test.equal(typeof(ilib.getPaths()), "undefined");
+
+        ilib.clearPaths();
+        test.done();
+    },
     testResBundleBasic_ko_KR: function(test) {
 
         if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
@@ -2286,9 +2308,7 @@ module.exports.testresources = {
             return;
         }
         test.expect(2);
-        // clear this to be sure it is actually loading something
-        ilib.clearCache();
-
+        
         var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
         var rb = new ResBundle({
             locale: "ko-KR",
@@ -2312,17 +2332,94 @@ module.exports.testresources = {
 
         var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
         var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
+        var multiPath2 = path.relative(process.cwd(), path.resolve(__dirname, "./resources5"));//not exist directory
         
-        ilib.setPaths([multiPath]);
+        ilib.setPaths([multiPath,multiPath2]);
 
         var rb = new ResBundle({
             locale: "ko-KR",
             basePath: base
         });
         test.ok(rb !== null);
-        test.equal(rb.getString("hello").toString(), "안녕!!!");
+        test.equal(rb.getString("hello").toString(), "안녕2");
         ilib.clearPaths();
         
         test.done();
     },
+    testResBundleMultiPaths_ko_KR2: function(test) {
+
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(2);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
+        var multiPath2 = path.relative(process.cwd(), path.resolve(__dirname, "./resources3")); // Not exist directory
+        
+        ilib.setPaths([multiPath, multiPath2]);
+
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "안녕2");
+        ilib.clearPaths();
+        
+        test.done();
+    },
+    testResBundleMultiPaths_ko_KR3: function(test) {
+
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(2);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        var multiPath2 = path.relative(process.cwd(), path.resolve(__dirname, "./resources3"));
+        
+        ilib.setPaths([multiPath2]);
+
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "안녕3");
+        ilib.clearPaths();
+        
+        test.done();
+    },
+    testResBundleMultiPaths_ko_KR4: function(test) {
+
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(2);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        var multiPath2 = path.relative(process.cwd(), path.resolve(__dirname, "./resources5")); //Not exist direectory
+        
+        ilib.setPaths([multiPath2]);
+
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "안녕하세요!");
+        ilib.clearPaths();
+        
+        test.done();
+    }
 };

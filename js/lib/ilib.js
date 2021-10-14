@@ -290,7 +290,9 @@ ilib.setLocale = function (spec) {
 * @param {Array.<string>} paths an array of strings to format in
 */
 ilib.setPaths = function (paths) {
-    if (!(ilib.isArray(paths))) return;
+    ilib.resPath=[];
+    if(!paths) return;
+    paths = ilib.isArray(paths) ? paths : [paths];
     ilib.resPaths = paths;
 };
 

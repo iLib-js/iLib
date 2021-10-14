@@ -311,7 +311,6 @@ var ResBundle = function (options) {
     if (this.multiResPaths){
         // loading multiple paths
         // smaller index number, higher priority
-        //determine absolute/relative path
 
         this.pathArray.forEach(ilib.bind(this, function(element){
             Utils.loadData({
@@ -344,6 +343,11 @@ var ResBundle = function (options) {
                 })
             });
         }));
+    }
+
+    if (this.multiResPaths){
+        var mergedObj = this._mergeMultiResData(this.map2);
+        this.map = JSUtils.merge(this.map, mergedObj);
     }
 
     // console.log("Merged resources " + this.locale.toString() + " are: " + JSON.stringify(this.map));
@@ -554,15 +558,13 @@ ResBundle.prototype = {
     /**
      * @private
      */
-     _reSearchMatchString: function(keyName){
-        var string;
-        this.map2.forEach(ilib.bind(this,function(idx){
-            if(idx[keyName] !== undefined){
-                string=idx[keyName];
-            }
+    _mergeMultiResData: function(){
+        var newObj = {};
+        this.map2.reverse().forEach(ilib.bind(this, function(item){
+            newObj = Object.assign(newObj,item);
         }));
-        return string;
-     },
+        return newObj;
+    },
 
     /**
      * @private
@@ -586,10 +588,6 @@ ResBundle.prototype = {
                 trans = source;
             }
         }
-        if (this.multiResPaths){
-            var keyName = key || this._makeKey(source);
-            trans = this._reSearchMatchString(keyName);
-        } 
 
         if (escapeMode && escapeMode !== "none") {
             if (escapeMode == "default") {
