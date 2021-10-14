@@ -1,7 +1,7 @@
 /*
  * gentzinfo.js - ilib tool to generate the tzinfo about time zones in a locale
  * 
- * Copyright © 2013-2015, 2018, 2020 JEDLSoft
+ * Copyright © 2013-2015, 2018, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -149,10 +149,17 @@ for (var i = 0; i < zoneTab.length(); i++) {
     console.log("map " + row[2] + " to " + row[0] );
     countries[row[2]] = row[0];
     if (!countryToZones[row[0]]) {
-        countryToZones[row[0]] = [];
+        countryToZones[row[0]] = new Set();
     }
-    countryToZones[row[0]].push(row[2]);
+    countryToZones[row[0]].add(row[2]);
 }
+
+// some hard-coded zones that not listed properly in the zone.tab
+countries = Object.assign(countries, {
+    "America/Coral_Harbour": "CA",
+    "Atlantic/Jan_Mayen": "NO",
+    "America/Virgin": "TT"
+});
 
 for (var zone in timezones) {
     var zoneDef = timezones[zone];
@@ -170,10 +177,13 @@ for (var zone in timezones) {
 // now deal with backwards maps so that they appear in the right country's list of zones
 for (var oldzone in backwardsMap) {
     var newzone = backwardsMap[oldzone];
-    if (countries[newzone]) {
-        countryToZones[countries[newzone]].push(oldzone);
+    if (countries[newzone] && (!countries[oldzone] || countries[newzone] === countries[oldzone])) {
+        countryToZones[countries[newzone]].add(oldzone);
+    } else if (countries[oldzone]) {
+        countryToZones[countries[oldzone]].add(oldzone);
     }
 }
+
 
 var tz;
 
@@ -182,13 +192,16 @@ for (var zone = 0; zone < windowsZones.windowsZones.mapTimezones.length; zone++)
     var type = mapZone["@type"] || mapZone["_type"];
     var zones = type.split(/ /g);
     for (var i = 0; i < zones.length; i++) {
-        var name = backwardsMap[zones[i]] || zones[i];
+        var zoneName = zones[i];
+        var name = backwardsMap[zoneName];
+        var other = mapZone["@other"] || mapZone["_other"];
         if (timezones[name]) {
-            var other = mapZone["@other"] || mapZone["_other"];
             timezones[name].n = other.replace(/[Ss]tandard/, "{c}");
             console.log("zone " + name + " long name is " + timezones[name].n );
-        } else {
-            console.log("zone " + name + " long name is missing");
+        }
+        if (timezones[zoneName]) {
+            timezones[zoneName].n = other.replace(/[Ss]tandard/, "{c}");
+            console.log("zone " + zoneName + " long name is " + timezones[zoneName].n );
         }
     }
 }
@@ -206,8 +219,13 @@ for (var zone in timezones) {
 var filepath = path.join(toDir, "zoneinfo/zonetab.json");
 console.log("Writing out zone tab file " + filepath );
 for (var country in countryToZones) {
-    countryToZones[country].sort();
+    var zones = [];
+    countryToZones[country].forEach(function(zone) {
+        zones.push(zone);
+    });
+    countryToZones[country] = zones.sort();
 }
+
 fs.writeFileSync(filepath, JSON.stringify(countryToZones, true, 4), "utf-8");
 
 // generate timezone.jf
