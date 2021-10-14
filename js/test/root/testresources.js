@@ -2296,6 +2296,10 @@ module.exports.testresources = {
         test.done();
     },
     testResBundlesetPath2: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
         test.expect(1);
         
         ilib.setPaths();
