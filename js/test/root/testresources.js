@@ -2280,6 +2280,11 @@ module.exports.testresources = {
         test.done();
     },
     testResBundlesetPath: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+
         test.expect(1);
         
         var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
@@ -2292,8 +2297,6 @@ module.exports.testresources = {
     },
     testResBundlesetPath2: function(test) {
         test.expect(1);
-        
-        var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
         
         ilib.setPaths();
         test.equal(typeof(ilib.getPaths()), "undefined");
