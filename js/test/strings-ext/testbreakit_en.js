@@ -18,11 +18,11 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
+    var ilib = require("../../lib/ilib.js");
 }
 
 if (typeof(BreakIteratorFactory) === "undefined") {
-    var BreakIteratorFactory = require("../.././../lib/BreakIteratorFactory.js");
+    var BreakIteratorFactory = require(".././../lib/BreakIteratorFactory.js");
 }
 
 if (typeof(wordBreakData) === "undefined") {

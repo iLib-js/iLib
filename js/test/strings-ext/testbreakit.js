@@ -18,14 +18,14 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
+    var ilib = require("../../lib/ilib.js");
 }
 
 if (typeof(BreakIteratorFactory) === "undefined") {
-    var BreakIteratorFactory = require("../.././../lib/BreakIteratorFactory.js");
-    var BreakIteratorCharacter = require("../.././../lib/BreakIteratorCharacter.js");
-    var BreakIteratorGlyph = require("../.././../lib/BreakIteratorGlyph.js");
-    var BreakIteratorWord = require("../.././../lib/BreakIteratorWord.js");
+    var BreakIteratorFactory = require("../../lib/BreakIteratorFactory.js");
+    var BreakIteratorCharacter = require("../../lib/BreakIteratorCharacter.js");
+    var BreakIteratorGlyph = require("../../lib/BreakIteratorGlyph.js");
+    var BreakIteratorWord = require("../../lib/BreakIteratorWord.js");
 }
 
 module.exports.testbreakit = {
