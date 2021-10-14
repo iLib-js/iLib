@@ -6,7 +6,7 @@ Build 018
 Published as version 14.11.0
 
 New Features:
-* Added the ability to take multiple paths for ResBundle. Additional paths can be set through newly add `ilib.setPaths()`, and Resbundle read resources  with higher priority.
+* Added the ability to take multiple paths for ResBundle. Additional paths can be set through newly add `ilib.setPaths()`, and ResBundle reads resources with higher priority.
 
 
 Bug Fixes:
