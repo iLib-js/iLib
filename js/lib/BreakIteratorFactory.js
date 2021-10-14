@@ -123,7 +123,7 @@ var BreakIteratorFactory = function (string, options) {
     if (typeof(BreakIteratorFactory._constructors[type]) === "function") {
         return new BreakIteratorFactory._constructors[type](string, options);
     }
-    
+
     return new BreakIteratorCharacter(string, options);
 };
 

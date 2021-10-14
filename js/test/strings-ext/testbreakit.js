@@ -76,7 +76,7 @@ module.exports.testbreakit = {
             type: "character"
         });
         test.ok(bi);
-    
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "a");
         test.ok(bi.hasNext());

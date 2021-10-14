@@ -114,7 +114,7 @@ var BreakIteratorWord = function (string, options) {
             locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
         }
 
-        if (typeof(options.sync) === 'boolean') {   
+        if (typeof(options.sync) === 'boolean') {
             this.sync = options.sync;
         }
 
@@ -133,13 +133,13 @@ var BreakIteratorWord = function (string, options) {
         loadParams: this.loadParams,
         callback: ilib.bind(this, function (info) {
             this.info = info;
-            
+
             this._parse(ilib.bind(this, function() {
                 if (options && typeof(options.onLoad) === "function") {
                     options.onLoad(this);
                 }
             }));
-            
+
             /*
             if (!this.type) {
                 new LocaleInfo(locale, {
@@ -166,7 +166,7 @@ var compare = function(range, target) {
 /**
  * @private
  * Convert the given character into a token.
- * 
+ *
  * @param {number} codepoint the codepoint of the character to convert
  * @returns {string} the name of the token corresponding
  * to the character
@@ -174,8 +174,8 @@ var compare = function(range, target) {
 BreakIteratorWord.prototype._tokenize = function(codepoint) {
     var tokenEntry = SearchUtils.bsearch(codepoint, this.info.properties, compare);
     return tokenEntry > -1 &&
-        tokenEntry < this.info.properties.length && 
-        compare(this.info.properties[tokenEntry], codepoint) === 0 && 
+        tokenEntry < this.info.properties.length &&
+        compare(this.info.properties[tokenEntry], codepoint) === 0 &&
         this.info.properties[tokenEntry].t;
 };
 
@@ -198,7 +198,7 @@ BreakIteratorWord.prototype._parse = function(cb) {
             this.breaks = [];
             var index = 0;
             var buffer, nexttoken;
-            
+
             while (buffer || it.hasNext()) {
                 var ch = buffer || it.next();
                 buffer = undefined;
@@ -213,7 +213,7 @@ BreakIteratorWord.prototype._parse = function(cb) {
                     if (typeof(current[token]) === "object") {
                         buffer = it.next();
                         nexttoken = this._tokenize(IString.toCodePoint(buffer));
-    
+
                         if (current[token][nexttoken]) {
                             token = nexttoken;
                             buffer = undefined;
@@ -226,7 +226,7 @@ BreakIteratorWord.prototype._parse = function(cb) {
                 state = token || "Any";
                 index++;
             }
-            
+
             cb();
         })
     });

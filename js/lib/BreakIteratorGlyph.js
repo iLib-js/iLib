@@ -1,5 +1,5 @@
 /*
- * BreakIteratorGlyph.js - A class that locates character boundaries in text, and acts 
+ * BreakIteratorGlyph.js - A class that locates character boundaries in text, and acts
  * as an iterator over chunks of text between those boundaries.
  *
  * Copyright © 2018, JEDLSoft
@@ -89,9 +89,9 @@ var BreakIteratorGlyph = function (string, options) {
     }
 
     var it = this.string.charIterator();
-    
+
     this.boundaries = [];
-    
+
     while (it.hasNext()) {
         this.boundaries.push(it.next());
     }
