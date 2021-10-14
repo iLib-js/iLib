@@ -2285,7 +2285,7 @@ module.exports.testresources = {
         var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
         
         ilib.setPaths(multiPath);
-        test.equal(ilib.getPaths()[0], "resources2");
+        test.equal(ilib.getPaths()[0], "root/resources2");
 
         ilib.clearPaths();
         test.done();
@@ -2332,9 +2332,8 @@ module.exports.testresources = {
 
         var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
         var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
-        var multiPath2 = path.relative(process.cwd(), path.resolve(__dirname, "./resources5"));//not exist directory
         
-        ilib.setPaths([multiPath,multiPath2]);
+        ilib.setPaths(multiPath);
 
         var rb = new ResBundle({
             locale: "ko-KR",
@@ -2358,7 +2357,7 @@ module.exports.testresources = {
 
         var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
         var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
-        var multiPath2 = path.relative(process.cwd(), path.resolve(__dirname, "./resources3")); // Not exist directory
+        var multiPath2 = path.relative(process.cwd(), path.resolve(__dirname, "./resources5")); // doesn't exist directory
         
         ilib.setPaths([multiPath, multiPath2]);
 
