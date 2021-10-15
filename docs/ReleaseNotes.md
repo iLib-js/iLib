@@ -9,6 +9,7 @@ New Features:
 
 Bug Fixes:
 * Updated to IANA time zone data 2021c
+* Fixed NodeLoader to check application's resource dir first correctly
 
 Build 017
 -------
