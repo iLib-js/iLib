@@ -117,7 +117,8 @@ var exportClassesPublic = [
     "AlphabeticIndex",
     "TimeZone",
     "Currency",
-    "DigitalSpeedUnit"
+    "DigitalSpeedUnit",
+	"DateFmtInfo"
 ];
 
 if (top) {

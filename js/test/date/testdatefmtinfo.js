@@ -2,7 +2,7 @@
  * testgetformatinfo.js - test the date formatter object's
  * getFormatInfo call
  *
- * Copyright © 2019 JEDLSoft
+ * Copyright © 2019-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -383,7 +383,7 @@ module.exports.testdategetformatinfo = {
                 test.equal(info[16].component, "timezone");
                 test.equal(info[16].label, "Time zone");
                 test.equal(typeof(info[16].constraint), "object");
-                test.equal(info[16].constraint.length, 511);
+                test.equal(info[16].constraint.length, 532);
             }
         });
 
@@ -506,7 +506,7 @@ module.exports.testdategetformatinfo = {
                 test.equal(info[16].component, "timezone");
                 test.equal(info[16].label, "Time zone");
                 test.equal(typeof(info[16].constraint), "object");
-                test.equal(info[16].constraint.length, 511);
+                test.equal(info[16].constraint.length, 532);
             }
         });
 
