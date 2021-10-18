@@ -9,6 +9,7 @@ New Features:
 
 Bug Fixes:
 * Updated to IANA time zone data 2021c
+* Updated to IANA time zone data 2021d
 
 Build 017
 -------
