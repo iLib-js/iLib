@@ -241,7 +241,6 @@ Loader.prototype.isMultiPaths = function () {
     return this.multiPaths;
 };
 
-
 Loader.indexOf = function(array, obj) {
     if (!array || !obj) {
         return -1;
