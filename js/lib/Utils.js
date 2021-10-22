@@ -475,16 +475,12 @@ Utils.loadData = function(params) {
         var isPath = ilib._load.multiPaths;
         
         if (typeof(isPath) == undefined || isPath == false){
+            // find the ones we haven't loaded before
             files = files.filter(ilib.bind(this, function(file) {
                 return !ilib.data.cache.fileSet.has(Path.join(root, file)) && dataNotExists(basename, file, root);
             }));
         }
 
-        // find the ones we haven't loaded before
-        /*files = files.filter(ilib.bind(this, function(file) {
-            return !ilib.data.cache.fileSet.has(Path.join(root, file)) && dataNotExists(basename, file, root);
-        }));
-        */
         if (files.length) {
             Utils._callLoadData(files, sync, loadParams, root, ilib.bind(this, function(arr) {
                 for (var i = 0; i < files.length; i++) {
