@@ -90,7 +90,7 @@ Loader.prototype.loadFiles = function(paths, sync, params, callback, root) {
     root = root || (params && params.base);
     var includePath = this.includePath;;
     if (root) {
-        if (ilib._load.isMultiPaths()){
+        if (ilib._load.multiPaths){
             includePath.splice(1,0,root);
         } else  {
             includePath = [root].concat(this.includePath);
