@@ -2,7 +2,7 @@
  * genclockprefs.js - ilib tool to generate the  clock json fragments from
  * the CLDR data files
  *
- * Copyright © 2013-2018, 2020 LGE
+ * Copyright © 2013-2018, 2020-2021 LGE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -222,5 +222,5 @@ for (language in localeData) {
         writeClockPrefs(language, undefined, undefined, localeData[language].data);
     }
 }
-writeClockPrefs(undefined, undefined, undefined, localeData.data);
+writeClockPrefs(undefined, undefined, undefined, localeData);
 process.exit(0);

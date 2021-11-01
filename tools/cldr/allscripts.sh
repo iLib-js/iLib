@@ -2,7 +2,7 @@
 #
 # allscripts.sh - run all of the scripts
 #
-# Copyright © 2018-2020, JEDLSoft
+# Copyright © 2018-2021, JEDLSoft
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,9 +18,9 @@
 # limitations under the License.
 #
 
-CLDR_VERSION=37.0.0
-UCD_VERSION=13.0.0
-ISO_VERSION=2.4.0
+CLDR_VERSION=40.0.0
+UCD_VERSION=14.0.1
+ISO_VERSION=3.0.1
 
 # get the latest full data
 pushd ../..

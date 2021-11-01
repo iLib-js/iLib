@@ -419,7 +419,7 @@ mergeAndPrune(localeData);
 console.log("Extracting number formats...");
 
 var resources = {};
-resources.data = getNumberFormats(undefined, undefined, undefined, localeData.data);
+// resources.data = getNumberFormats(undefined, undefined, undefined, localeData.data);
 
 for (language in localeData) {
     if (language && localeData[language] && language !== 'data' && language !== 'merged') {
@@ -471,5 +471,5 @@ for (language in resources) {
     }
 }
 
-writeNumberFormats(undefined, undefined, undefined, resources.data);
+// writeNumberFormats(undefined, undefined, undefined, resources.data);
 process.exit(0);
