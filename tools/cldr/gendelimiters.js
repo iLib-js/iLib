@@ -2,7 +2,7 @@
  * gendelimiters.js - ilib tool to generate delimiters json fragments from  
  * the CLDR data files 
  *
- * Copyright © 2013-2018, 2020-2021 LGE
+ * Copyright © 2013-2021 LGE
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -52,7 +52,7 @@ process.argv.forEach(function (val, index, array) {
 localeDirName = process.argv[2] || "tmp";
 
 console.log("gendelimiters - generate delimiters information files.\n" +
-"Copyright (c) 2013-2018, 2020-2021 LGE\n");
+"Copyright (c) 2013-2021 LGE\n");
 
 console.log("locale dir: " + localeDirName);
 
@@ -68,8 +68,8 @@ console.log("Reading locale data into memory...");
 
 for (var i = 0; i < localeDirs.length; i++) {
     var dirname = localeDirs[i];
-    if (dirname === "en-001") {
-        // special case for "root". English for the world is default.
+    if (dirname === "und") {
+        // special case for "root"
         getLocaleData(dirname, undefined);
     } else {
         var locale = new Locale(dirname);
@@ -242,7 +242,7 @@ mergeAndPrune(localeData);
 
 var resources = {};
 
-resources.data = getQuotationChars(undefined, undefined, undefined, localeData);
+resources.data = getQuotationChars(undefined, undefined, undefined, localeData.data);
 for (language in localeData) {
     if (language && localeData[language] && language !== 'data' && language !== 'merged') {
         resources[language] = resources[language] || {};

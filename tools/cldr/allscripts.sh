@@ -81,6 +81,7 @@ popd
 rm filetypes.grep
 
 node genclockprefs.js $TARGET
+exit 0
 # region codes changed in 34 ... can't have that because entries 
 # in databases depend on stable region codes! Commenting this out
 # for now so that we stay on 33

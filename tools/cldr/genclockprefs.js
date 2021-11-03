@@ -2,7 +2,7 @@
  * genclockprefs.js - ilib tool to generate the  clock json fragments from
  * the CLDR data files
  *
- * Copyright © 2013-2018, 2020-2021 LGE
+ * Copyright © 2013-2021 LGE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,7 +49,7 @@ localeDirName = process.argv[2] || "tmp";
 var locales = require("cldr-core/availableLocales.json").availableLocales.full;
 
 console.log("genclockprefs - generate clock preferences information files.\n" +
-"Copyright (c) 2013-2018 LGE\n");
+"Copyright (c) 2013-2021 LGE\n");
 console.log("locale dir: " + localeDirName);
 
 if (!fs.existsSync(localeDirName)) {
@@ -189,8 +189,8 @@ console.log("Reading locale data into memory...");
 for (var i = 0; i < locales.length; i++) {
     var pref = getClockPrefs(locales[i]);
     if (pref) {
-        if (locales[i] === "root") {
-            // special case because "root" is not a valid locale specifier#
+        if (locales[i] === "und") {
+            // special case because "root" or "und" is the parent of everything
             localeData.data = pref;
         } else {
             var l = new Locale(locales[i]);
@@ -222,5 +222,5 @@ for (language in localeData) {
         writeClockPrefs(language, undefined, undefined, localeData[language].data);
     }
 }
-writeClockPrefs(undefined, undefined, undefined, localeData);
+writeClockPrefs(undefined, undefined, undefined, localeData.data);
 process.exit(0);
