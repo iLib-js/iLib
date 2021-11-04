@@ -88,10 +88,11 @@ Loader.prototype._loadFileAlongIncludePath = function(includePath, pathname) {
 
 Loader.prototype.loadFiles = function(paths, sync, params, callback, root) {
     root = root || (params && params.base);
-    var includePath = this.includePath;;
+    var includePath = this.includePath;
+
     if (root) {
         if (ilib._load.multiPaths){
-            includePath.splice(1,0,root);
+            includePath.splice(1, 0, root);
         } else  {
             includePath = [root].concat(this.includePath);
         }
@@ -230,14 +231,19 @@ Loader.prototype.listAvailableFiles = function(sync, cb) {
     return this.manifest;
 };
 
-Loader.prototype.setPaths = function (pathArray) {
-    if (!pathArray) return;
-    this.includePath.unshift(pathArray);
+Loader.prototype.addPath = function (path) {
+    if (!path) return;
+    this.includePath.unshift(path);
     this.multiPaths = true;
 };
 
-Loader.prototype.isMultiPaths = function () {
-    return this.multiPaths;
+Loader.prototype.removePath = function (path) {
+    if (!path) return;
+    var index = this.includePath.indexOf(path);
+
+    if (index !== -1){
+        this.includePath.splice(index, 1);
+    }
 };
 
 Loader.indexOf = function(array, obj) {

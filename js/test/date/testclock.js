@@ -17,6 +17,14 @@
  * limitations under the License.
  */
 
+if (typeof(ilib) === "undefined") {
+    var ilib = require("../../lib/ilib.js");
+}
+
+if (ilib._getPlatform() === "nodejs" && ilib._dyndata && ilib._dyncode) {
+    var path = require("path");
+}
+
 if (typeof(LocaleInfo) === "undefined") {
     var LocaleInfo = require("../../lib/LocaleInfo.js");
 }
@@ -792,6 +800,23 @@ module.exports.testclock = {
 
         test.equal(info.getClock(), 12);
         
+        test.done();
+    },
+    testClock_ko_KR_Custom: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./custom"));
+        var ilibLoader = ilib.getLoader();
+        ilibLoader.addPath(multiPath);
+
+        test.expect(2);
+        var info = new LocaleInfo("ko-KR");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        ilibLoader.removePath(multiPath);
         test.done();
     },
     testClock_ku_IQ: function(test) {
