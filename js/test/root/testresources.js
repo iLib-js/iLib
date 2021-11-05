@@ -2310,7 +2310,6 @@ module.exports.testresources = {
         var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
 
         var ilibLoader = ilib.getLoader();
-        //ilibLoader.isMultiPaths(true);
         ilibLoader.addPath(multiPath);
         
         var rb = new ResBundle({
@@ -2362,8 +2361,6 @@ module.exports.testresources = {
         ilib.clearCache();
 
         var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
-
-        var ilibLoader = ilib.getLoader();
 
         var rb = new ResBundle({
             locale: "ko-KR",
