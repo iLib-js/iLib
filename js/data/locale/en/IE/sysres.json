@@ -1,4 +1,5 @@
 {
+    "MMM9": "Sept",
     "a0": "a.m.",
     "a1": "p.m.",
     "1#1 sec|#{num} sec": "one#{num} sec|#{num} secs",
@@ -15,7 +16,5 @@
     "#{num}h ago": "one#{num} hr ago|#{num} hr ago",
     "#{num}w ago": "one#{num} wk ago|#{num} wk ago",
     "#{num}mo ago": "one#{num} mo ago|#{num} mo ago",
-    "#{num}y ago": "one#{num} yr ago|#{num} yr ago",
-    "B1": "a.m.",
-    "B5": "p.m."
+    "#{num}y ago": "one#{num} yr ago|#{num} yr ago"
 }

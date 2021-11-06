@@ -1324,7 +1324,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+30 s");
+        test.equal(fmt.formatRelative(reference, date), "пас аз 30 сония");
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteBefore_tg_TJ: function(test) {
@@ -1352,7 +1352,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "-30 s");
+        test.equal(fmt.formatRelative(reference, date), "30 сония пеш");
         test.done();
     },
     testDateFmtFormatRelativeWithinHourAfter_tg_TJ: function(test) {
@@ -1380,7 +1380,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+10 min");
+        test.equal(fmt.formatRelative(reference, date), "пас аз 10 дақиқа");
         test.done();
     },
     testDateFmtFormatRelativeWithinHourBefore_tg_TJ: function(test) {
@@ -1408,7 +1408,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '-10 min');
+        test.equal(fmt.formatRelative(reference, date), '10 дақиқа пеш');
         test.done();
     },
     testDateFmtFormatRelativeWithinDayAfter_tg_TJ: function(test) {
@@ -1436,7 +1436,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '+4 h');
+        test.equal(fmt.formatRelative(reference, date), 'пас аз 4 соат');
         test.done();
     },
     testDateFmtFormatRelativeWithinDayBefore_tg_TJ: function(test) {
@@ -1464,7 +1464,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '-4 h');
+        test.equal(fmt.formatRelative(reference, date), '4 соат пеш');
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightAfter_tg_TJ: function(test) {
@@ -1492,7 +1492,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '+4 d');
+        test.equal(fmt.formatRelative(reference, date), 'пас аз 4 рӯз');
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightBefore_tg_TJ: function(test) {
@@ -1520,7 +1520,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '-4 d');
+        test.equal(fmt.formatRelative(reference, date), '4 рӯз пеш');
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterAfter_tg_TJ: function(test) {
@@ -1548,7 +1548,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '+9 w');
+        test.equal(fmt.formatRelative(reference, date), 'пас аз 9 ҳафта');
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterBefore_tg_TJ: function(test) {
@@ -1576,7 +1576,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '-9 w');
+        test.equal(fmt.formatRelative(reference, date), '9 ҳафта пеш');
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsAfter_tg_TJ: function(test) {
@@ -1604,7 +1604,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '+16 m');
+        test.equal(fmt.formatRelative(reference, date), 'пас аз 16 моҳ');
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsBefore_tg_TJ: function(test) {
@@ -1632,7 +1632,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '-14 m');
+        test.equal(fmt.formatRelative(reference, date), '14 моҳ пеш');
         test.done();
     },
     testDateFmtFormatRelativeYearsAfter_tg_TJ: function(test) {
@@ -1660,7 +1660,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '+14 y');
+        test.equal(fmt.formatRelative(reference, date), 'пас аз 14 сол');
         test.done();
     },
     testDateFmtFormatRelativeYearsBefore_tg_TJ: function(test) {
@@ -1688,7 +1688,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '-21 y');
+        test.equal(fmt.formatRelative(reference, date), '21 сол пеш');
         test.done();
     }
 };
