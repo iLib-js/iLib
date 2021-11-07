@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ru_RU.js - test the date formatter object in Russian
  * 
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -672,7 +672,7 @@ module.exports.testdatefmt_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "чт, 29.09");
+        test.equal(fmt.format(date), "Ч, 29.09");
         test.done();
     },
     
@@ -691,7 +691,7 @@ module.exports.testdatefmt_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "чт, 29.09.2011");
+        test.equal(fmt.format(date), "Ч, 29.09.2011");
         test.done();
     },
     
