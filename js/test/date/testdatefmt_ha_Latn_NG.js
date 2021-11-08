@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ha_Latn_NG.js - test the date formatter object in Hausa.
  *
- * Copyright © 2015,2017-2018, JEDLSoft
+ * Copyright © 2015,2017-2018,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -435,7 +435,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/9/11 13:45");
+        test.equal(fmt.format(date), "29/9/11, 13:45");
         test.done();
     },
 
@@ -454,7 +454,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Sat, 2011 13:45");
+        test.equal(fmt.format(date), "29 Sat, 2011, 13:45");
         test.done();
     },
 
@@ -473,7 +473,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Satumba, 2011 13:45");
+        test.equal(fmt.format(date), "29 Satumba, 2011 da 13:45");
         test.done();
     },
 
@@ -492,7 +492,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Satumba, 2011 13:45");
+        test.equal(fmt.format(date), "29 Satumba, 2011 da 13:45");
         test.done();
     },
 
@@ -724,7 +724,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/9/11 13:45");
+        test.equal(fmt.format(date), "29/9/11, 13:45");
         test.done();
     },
 
@@ -1783,7 +1783,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+4 d");
+        test.equal(fmt.formatRelative(reference, date), "a cikin kwanaki 4");
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightBefore_ha_Latn: function(test) {
@@ -1811,7 +1811,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "-4 d");
+        test.equal(fmt.formatRelative(reference, date), "kwanaki da suka gabata 4");
         test.done();
     },
 
@@ -1840,7 +1840,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+9 w");
+        test.equal(fmt.formatRelative(reference, date), "a cikin makonni 9");
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterBefore_ha_Latn: function(test) {
@@ -1868,7 +1868,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "-9 w");
+        test.equal(fmt.formatRelative(reference, date), "makonni da suka gabata 9");
         test.done();
     },
 
@@ -1897,7 +1897,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+16 m");
+        test.equal(fmt.formatRelative(reference, date), "a cikin watanni 16");
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsBefore_ha_Latn: function(test) {
@@ -1925,7 +1925,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "-14 m");
+        test.equal(fmt.formatRelative(reference, date), "watanni da suka gabata 14");
         test.done();
     },
 
@@ -1954,7 +1954,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+14 y");
+        test.equal(fmt.formatRelative(reference, date), "a shekaru 14");
         test.done();
     },
     testDateFmtFormatRelativeYearsBefore_ha_Latn: function(test) {
@@ -1982,7 +1982,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "-21 y");
+        test.equal(fmt.formatRelative(reference, date), "shekara da suka gabata 21");
         test.done();
     }
 };

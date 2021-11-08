@@ -2038,6 +2038,11 @@ module.exports = {
                         temp = "\u200F" + temp;
                     }
 
+                    // work around a bug in cldr
+                    if (language === "ha" && temp.endsWith("}}")) {
+                        temp = temp.replace(/\}\}$/, "}");
+                    }
+
                     if (plural === "other") {
                         fullStr += "#" + temp;
                     } else {
