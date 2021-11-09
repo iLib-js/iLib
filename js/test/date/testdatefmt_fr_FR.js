@@ -1,7 +1,7 @@
 /*
  * testdatefmt_fr_FR.js - test the date formatter object in standard French
  * 
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -231,7 +231,7 @@ module.exports.testdatefmt_fr_FR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 sept. 2011 à 13:45");
+        test.equal(fmt.format(date), "29 sept. 2011, 13:45");
         test.done();
     },
     

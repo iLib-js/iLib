@@ -1,7 +1,7 @@
 /*
  * testdatefmt_eu_ES.js - test the date formatter object in Basque/Spain
  * 
- * Copyright © 2020, JEDLSoft
+ * Copyright © 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -97,7 +97,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011(e)ko irailaren 29(a)");
+        test.equal(fmt.format(date), "2011(e)ko irailakren 29(a)");
         test.done();
     },
 
@@ -116,7 +116,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011(e)ko irailaren 29(a)');
+        test.equal(fmt.format(date), '2011(e)ko irailakren 29(a)');
         test.done();
     },
 
@@ -249,7 +249,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011(e)ko irailaren 29(a) 13:45');
+        test.equal(fmt.format(date), '2011(e)ko irailakren 29(a) 13:45');
         test.done();
     },
 
@@ -268,7 +268,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011(e)ko irailaren 29(a) 13:45');
+        test.equal(fmt.format(date), '2011(e)ko irailakren 29(a) 13:45');
         test.done();
     },
 
@@ -556,7 +556,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "9");
+        test.equal(fmt.format(date), "I");
         test.done();
     },
 
@@ -708,7 +708,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'irailaren 29(a), og.');
+        test.equal(fmt.format(date), 'irailakren 29(a), og.');
         test.done();
     },
 
@@ -784,7 +784,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'irailaren 29(a)');
+        test.equal(fmt.format(date), 'irailakren 29(a)');
         test.done();
     },
 
@@ -803,7 +803,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011(e)ko iraila');
+        test.equal(fmt.format(date), '2011(e)ko irailak');
         test.done();
     },
 
@@ -822,7 +822,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011(e)ko irailaren 29(a)');
+        test.equal(fmt.format(date), '2011(e)ko irailakren 29(a)');
         test.done();
     },
 
@@ -841,7 +841,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'irailaren 29(a), osteguna');
+        test.equal(fmt.format(date), 'irailakren 29(a), osteguna');
         test.done();
     },
 
@@ -860,7 +860,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011(e)ko irailaren 29(a), osteguna');
+        test.equal(fmt.format(date), '2011(e)ko irailakren 29(a), osteguna');
         test.done();
     },
 

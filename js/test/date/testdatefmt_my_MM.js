@@ -1,7 +1,7 @@
 /*
  * testdatefmt_my_MM.js - test the date formatter object in Burmese-Myanmar
  * 
- * Copyright © 2020-2021, JEDLSoft
+ * Copyright © 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -78,7 +78,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက် 29');
+        test.equal(fmt.format(date), '2011- စက် 29');
         test.done();
     },
 
@@ -97,7 +97,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date),'2011၊ 29 စက်တင်ဘာ');
+        test.equal(fmt.format(date),'2011- စက်တင်ဘာ 29');
         test.done();
     },
 
@@ -116,7 +116,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29');
+        test.equal(fmt.format(date), '2011- စက်တင်ဘာ 29');
         test.done();
     },
 
@@ -230,7 +230,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက် 29 နေ့လယ် 13:45');
+        test.equal(fmt.format(date), '2011- စက် 29 13:45');
         test.done();
     },
 
@@ -249,7 +249,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ 29 စက်တင်ဘာ နေ့လယ် 13:45');
+        test.equal(fmt.format(date), '2011- စက်တင်ဘာ 29 13:45');
         test.done();
     },
 
@@ -268,7 +268,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29 နေ့လယ် 13:45');
+        test.equal(fmt.format(date), '2011- စက်တင်ဘာ 29 13:45');
         test.done();
     },
     
@@ -307,7 +307,7 @@ module.exports.testdatefmt_my_MM = {
             millisecond: 0
         });
         // convert automatically to a Julian calendar date
-        test.equal(fmt.format(date), "2011-09-16 နေ့လယ် 13:45");
+        test.equal(fmt.format(date), "2011-09-16 ညနေ 13:45");
         test.done();
     },
 
@@ -669,7 +669,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09၊ က');
+        test.equal(fmt.format(date), '29-09- က');
         test.done();
     },
 
@@ -688,7 +688,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11၊ က');
+        test.equal(fmt.format(date), '29-09-11- က');
         test.done();
     },
 
@@ -707,7 +707,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 စက်တင်ဘာ၊ ကြာသပတေး');
+        test.equal(fmt.format(date), 'စက်တင်ဘာ 29- ကြာသပတေး');
         test.done();
     },
 
@@ -802,7 +802,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ');
+        test.equal(fmt.format(date), '2011- စက်တင်ဘာ');
         test.done();
     },
 
@@ -821,7 +821,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29');
+        test.equal(fmt.format(date), '2011- စက်တင်ဘာ 29');
         test.done();
     },
 
@@ -840,7 +840,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'စက်တင်ဘာ 29၊ ကြာသပတေး');
+        test.equal(fmt.format(date), 'စက်တင်ဘာ 29- ကြာသပတေး');
         test.done();
     },
 
@@ -859,7 +859,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29၊ ကြာသပတေး');
+        test.equal(fmt.format(date), '2011- စက်တင်ဘာ 29- ကြာသပတေး');
         test.done();
     },
 
