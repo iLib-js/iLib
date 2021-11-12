@@ -32,6 +32,7 @@ var Loader = function() {
 
     this.protocol = "file://";
     this.includePath = [];
+    this.addPaths = [];
 };
 
 Loader.prototype = new ilib.Loader();
@@ -231,8 +232,9 @@ Loader.prototype.listAvailableFiles = function(sync, cb) {
 
 Loader.prototype.addPath = function (paths) {
     if (!paths) return;
-    paths = ilib.isArray(paths) ? paths : [paths];
-    this.addPaths = paths;
+
+    var newpaths = ilib.isArray(paths) ? paths : [paths];
+    this.addPaths = this.addPaths.concat(newpaths);
     this.isMultiPaths = true;
 };
 
