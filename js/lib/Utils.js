@@ -472,7 +472,7 @@ Utils.loadData = function(params) {
         // the data is not preassembled, so attempt to load it dynamically
         var files = nonlocale ? [ name || "resources.json" ] : Utils.getLocFiles(locale, name);
 
-        var isPath = ilib._load.multiPaths;
+        var isPath = ilib._load.isMultiPaths;
         
         if (typeof(isPath) == "undefined" || isPath == false){
             // find the ones we haven't loaded before

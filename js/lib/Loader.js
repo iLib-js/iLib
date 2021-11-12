@@ -88,15 +88,13 @@ Loader.prototype._loadFileAlongIncludePath = function(includePath, pathname) {
 
 Loader.prototype.loadFiles = function(paths, sync, params, callback, root) {
     root = root || (params && params.base);
-    var includePath = this.includePath;
+    var includePath = [];
 
-    if (root) {
-        if (ilib._load.multiPaths){
-            includePath.splice(1, 0, root);
-        } else  {
-            includePath = [root].concat(this.includePath);
-        }
+    if(this.addPaths && this.addPaths.length > 0){
+        includePath= includePath.concat(this.addPaths);
     }
+    if (root) includePath.push(root);
+    includePath = includePath.concat(this.includePath);
     
     //console.log("Loader loadFiles called");
     // make sure we know what we can load
@@ -231,19 +229,23 @@ Loader.prototype.listAvailableFiles = function(sync, cb) {
     return this.manifest;
 };
 
-Loader.prototype.addPath = function (path) {
-    if (!path) return;
-    this.includePath.unshift(path);
-    this.multiPaths = true;
+Loader.prototype.addPath = function (paths) {
+    if (!paths) return;
+    paths = ilib.isArray(paths) ? paths : [paths];
+    this.addPaths = paths;
+    this.isMultiPaths = true;
 };
 
-Loader.prototype.removePath = function (path) {
-    if (!path) return;
-    var index = this.includePath.indexOf(path);
+Loader.prototype.removePath = function (paths) {
+    if (!paths) return;
+    paths = ilib.isArray(paths) ? paths : [paths];
 
-    if (index !== -1){
-        this.includePath.splice(index, 1);
-    }
+    paths.forEach(ilib.bind(this, function(item){
+        var index = this.addPaths.indexOf(item);
+        if (index !== -1) {
+            this.addPaths.splice(index, 1);
+        }
+    }));
 };
 
 Loader.indexOf = function(array, obj) {
