@@ -64,15 +64,25 @@ Loader.prototype._exists = function(dir, file) {
 };
 
 Loader.prototype._loadFileAlongIncludePath = function(includePath, pathname) {
+    var textMerge={};
     for (var i = 0; i < includePath.length; i++) {
         var manifest = this.manifest[includePath[i]];
         if (!manifest || Loader.indexOf(manifest, pathname) > -1) {
             var filepath = Path.join(includePath[i], pathname);
             //console.log("Loader._loadFileAlongIncludePath: attempting sync load " + filepath);
             var text = this._loadFile(filepath, true);
+
             if (text) {
-                //console.log("Loader._loadFileAlongIncludePath: succeeded");
-                return text;
+
+                if (typeof (this.isMultiPaths) != "undefined" && this.isMultiPaths == true){
+                    if (typeof(text) === "string") {
+                        text = JSON.parse(text);
+                    }
+                    textMerge=Object.assign(text, textMerge);
+                } else {
+                    //console.log("Loader._loadFileAlongIncludePath: succeeded" + filepath);
+                    return text;
+                }
             }
             //else {
                 //console.log("Loader._loadFileAlongIncludePath: failed");
@@ -81,6 +91,11 @@ Loader.prototype._loadFileAlongIncludePath = function(includePath, pathname) {
         //else {
             //console.log("Loader._loadFileAlongIncludePath: " + pathname + " not in manifest for " + this.includePath[i]);
         //}
+    }
+
+    if (Object.keys(textMerge).length > 0) {
+        //console.log("Loader._loadFileAlongIncludePath: succeeded");
+        return textMerge;
     }
 
     //console.log("Loader._loadFileAlongIncludePath: file not found anywhere along the path.");

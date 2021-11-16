@@ -2511,4 +2511,29 @@ module.exports.testresources = {
         ilibLoader.removePath(multiPath3);
         test.done();
     },
+    testResBundleMultiPaths_ko_KR10: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(3);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        var multiPath2 = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
+
+        var ilibLoader = ilib.getLoader();
+        ilibLoader.addPath([multiPath2]);
+
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "안녕2");
+        test.equal(rb.getString("Settings").toString(), "설정");
+
+        test.done();
+    },
 };
