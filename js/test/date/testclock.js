@@ -811,11 +811,12 @@ module.exports.testclock = {
         var ilibLoader = ilib.getLoader();
         ilibLoader.addPath(multiPath);
 
-        test.expect(2);
+        test.expect(3);
         var info = new LocaleInfo("ko-KR");
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
+        test.equal(info.getScript(), "Kore"); //Check if data that is not overridden comes out well
         ilibLoader.removePath(multiPath);
         test.done();
     },

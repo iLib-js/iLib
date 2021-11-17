@@ -19,6 +19,7 @@
 
 var Path = require("./Path.js");
 var ilib = require("./ilib.js");
+var JSUtils = require("./JSUtils.js");
 
 /**
  * @class
@@ -33,6 +34,8 @@ var Loader = function() {
     this.protocol = "file://";
     this.includePath = [];
     this.addPaths = [];
+
+    this.jsutils =JSUtils;
 };
 
 Loader.prototype = new ilib.Loader();
@@ -78,7 +81,7 @@ Loader.prototype._loadFileAlongIncludePath = function(includePath, pathname) {
                     if (typeof(text) === "string") {
                         text = JSON.parse(text);
                     }
-                    textMerge=Object.assign(text, textMerge);
+                    textMerge = this.jsutils.merge(text, textMerge);
                 } else {
                     //console.log("Loader._loadFileAlongIncludePath: succeeded" + filepath);
                     return text;

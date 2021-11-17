@@ -6115,19 +6115,28 @@ module.exports.testdaterangefmt = {
         var ilibLoader = ilib.getLoader();
         ilibLoader.addPath(multiPath);
 
-        test.expect(4);
+        test.expect(8);
         var fmt;
         var data = setVariables();
         var length = data["fullLength"];
         var abbrLength = data["abbrLength"];
         
+        var templatec20 = [];
         var templatec30 = [];
 
         //ymd
         for (var i=0; i < 4; i++) {
             fmt = new DateRngFmt({locale:"ko-KR", length: length[i]})
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
             templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
+
+        //Check if data that is not overridden comes out well
+        test.equal(templatec20[0], '{sy}년 {sm}월 – {ey}년 {em}월');
+        test.equal(templatec20[1], '{sy}년 {sm}월 – {ey}년 {em}월');
+        test.equal(templatec20[2], '{sy}. {sm}. – {ey}. {em}.');
+        test.equal(templatec20[3], '{sy}. {sm}. – {ey}. {em}.');
+
         test.equal(templatec30[0], "{sy}년 – {ey}년");
         test.equal(templatec30[1], "{sy}년 – {ey}년");
         test.equal(templatec30[2], "{sy}년 – {ey}년");
