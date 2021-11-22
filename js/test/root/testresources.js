@@ -2278,5 +2278,262 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from {city}").toString(), "{city}からこんにちは2");
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "{city}と{country}からこんにちは2");
         test.done();
-    }
+    },
+    testResBundleMultiPaths_ko_KR: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+
+        test.expect(2);
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "안녕하세요!");
+        
+        test.done();
+    },
+    testResBundleMultiPaths_ko_KR2: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+
+        test.expect(2);
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
+
+        var ilibLoader = ilib.getLoader();
+        ilibLoader.addPath(multiPath);
+        
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "안녕2");
+
+        ilibLoader.removePath(multiPath);
+        
+        test.done();
+    },
+    testResBundleMultiPathsArray_ko_KR3: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+
+        test.expect(2);
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
+
+        var ilibLoader = ilib.getLoader();
+        ilibLoader.addPath([multiPath]);
+        
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "안녕2");
+
+        ilibLoader.removePath(multiPath);
+        
+        test.done();
+    },
+    testResBundleMultiPaths_ko_KR4: function(test) {
+
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(2);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./resources5")); //Not exist direectory
+
+        var ilibLoader = ilib.getLoader();
+        ilibLoader.addPath(multiPath);
+
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "안녕하세요!");
+
+        ilibLoader.removePath(multiPath);
+
+        test.done();
+    },
+    testResBundleMultiPaths_ko_KR5: function(test) {
+
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(2);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        var multiPath2 = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
+        var multiPath3 = path.relative(process.cwd(), path.resolve(__dirname, "./resources3"));
+
+        var ilibLoader = ilib.getLoader();
+        ilibLoader.addPath([multiPath2, multiPath3]);
+
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "안녕2");
+
+        ilibLoader.removePath(multiPath2);
+        ilibLoader.removePath(multiPath3);
+
+        test.done();
+    },
+    testResBundleMultiPaths_ko_KR6: function(test) {
+
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(2);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        var multiPath2 = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
+        var multiPath3 = path.relative(process.cwd(), path.resolve(__dirname, "./resources3"));
+
+        var ilibLoader = ilib.getLoader();
+        ilibLoader.addPath([multiPath3, multiPath2]);
+
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "안녕3");
+
+        ilibLoader.removePath([multiPath2, multiPath3]);
+        test.done();
+    },
+    testResBundleMultiPaths_ko_KR7: function(test) {
+
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(3);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "안녕하세요!");
+        test.equal(rb.getString("thanks").toString(), "감사합니다");
+
+        test.done();
+    },
+    testResBundleMultiPaths_ko_KR8: function(test) {
+
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(3);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        var multiPath2 = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
+        var multiPath3 = path.relative(process.cwd(), path.resolve(__dirname, "./resources3"));
+
+        var ilibLoader = ilib.getLoader();
+        ilibLoader.addPath([multiPath2, multiPath3]);
+
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "안녕2");
+        test.equal(rb.getString("thanks").toString(), "고마워2");
+
+        ilibLoader.removePath(multiPath2);
+        ilibLoader.removePath(multiPath3);
+        test.done();
+    },
+    testResBundleMultiPaths_ko_KR9: function(test) {
+
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(2);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        var multiPath2 = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
+        var multiPath3 = path.relative(process.cwd(), path.resolve(__dirname, "./resources3"));
+
+        var ilibLoader = ilib.getLoader();
+        ilibLoader.addPath([multiPath2]);
+        ilibLoader.addPath(multiPath3);
+
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "안녕2");
+
+        ilibLoader.removePath(multiPath2);
+        ilibLoader.removePath(multiPath3);
+        test.done();
+    },
+    testResBundleMultiPaths_ko_KR10: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(3);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        var multiPath2 = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
+
+        var ilibLoader = ilib.getLoader();
+        ilibLoader.addPath([multiPath2]);
+
+        var rb = new ResBundle({
+            locale: "ko-KR",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "안녕2");
+        test.equal(rb.getString("Settings").toString(), "설정");
+
+        test.done();
+    },
 };

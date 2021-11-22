@@ -472,10 +472,14 @@ Utils.loadData = function(params) {
         // the data is not preassembled, so attempt to load it dynamically
         var files = nonlocale ? [ name || "resources.json" ] : Utils.getLocFiles(locale, name);
 
-        // find the ones we haven't loaded before
-        files = files.filter(ilib.bind(this, function(file) {
-            return !ilib.data.cache.fileSet.has(Path.join(root, file)) && dataNotExists(basename, file, root);
-        }));
+        var isPath = ilib._load.isMultiPaths;
+        
+        if (typeof(isPath) == "undefined" || isPath == false){
+            // find the ones we haven't loaded before
+            files = files.filter(ilib.bind(this, function(file) {
+                return !ilib.data.cache.fileSet.has(Path.join(root, file)) && dataNotExists(basename, file, root);
+            }));
+        }
 
         if (files.length) {
             Utils._callLoadData(files, sync, loadParams, root, ilib.bind(this, function(arr) {
@@ -483,10 +487,11 @@ Utils.loadData = function(params) {
                     if (arr[i]) {
                         var property = nonlocale ? basename : getPropertyNameFromFile(basename, files[i], root);
 
-                        if (!ilib.data[property]) {
+                        if (isPath || !ilib.data[property]) {
                             ilib.data[property] = arr[i];
                         }
                     }
+                    
                     ilib.data.cache.fileSet.add(Path.join(root, files[i]));
                 }
 
