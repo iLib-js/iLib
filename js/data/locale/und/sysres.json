@@ -59,6 +59,9 @@
     "EE5": "Fri",
     "EEEE6": "Sat",
     "EE6": "Sat",
+    "finalSeparatorFull": ", ",
+    "separatorShort": ", ",
+    "separatorMedium": ", ",
     "1#1 millisecond|#{num} milliseconds": "#{num} ms",
     "1#1 second|#{num} seconds": "#{num} s",
     "1#1 minute|#{num} minutes": "#{num} min",
@@ -133,12 +136,11 @@
     "#{num}w ago": "#-{num} w",
     "#{num}mo ago": "#-{num} m",
     "#{num}y ago": "#-{num} y",
-    "finalSeparatorFull": ", ",
     "finalSeparatorLong": ", ",
-    "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
-    "separatorShort": ", ",
     "finalSeparatorShort": ", ",
     "B0": "AM",
-    "B1": "PM"
+    "B1": "AM",
+    "B2": "PM",
+    "B3": "PM"
 }

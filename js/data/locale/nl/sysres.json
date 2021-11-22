@@ -159,9 +159,9 @@
     "finalSeparatorShort": ", ",
     "B0": "middernacht",
     "B1": "’s nachts",
-    "B2": "’s ochtends",
-    "B3": "’s middags",
-    "B4": "’s avonds",
+    "B2": "a.m.",
+    "B3": "’s ochtends",
+    "B4": "’s middags",
     "B5": "p.m.",
     "B6": "’s avonds"
 }

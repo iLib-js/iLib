@@ -209,11 +209,11 @@
     "finalSeparatorShort": " i ",
     "B0": "mitjanit",
     "B1": "matinada",
-    "B2": "matí",
-    "B3": "migdia",
-    "B4": "tarda",
-    "B5": "vespre",
-    "B6": "nit",
+    "B2": "a. m.",
+    "B3": "matí",
+    "B4": "migdia",
+    "B5": "p. m.",
+    "B6": "tarda",
     "B7": "vespre",
     "B8": "nit"
 }

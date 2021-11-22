@@ -232,11 +232,11 @@
     "finalSeparatorMedium": " i ",
     "finalSeparatorShort": " ",
     "B0": "ponoć",
-    "B1": "ujutro",
-    "B2": "podne",
-    "B3": "poslije podne",
-    "B4": "navečer",
-    "B5": "noću",
+    "B1": "AM",
+    "B2": "ujutro",
+    "B3": "podne",
+    "B4": "poslije podne",
+    "B5": "PM",
     "B6": "navečer",
     "B7": "noću"
 }

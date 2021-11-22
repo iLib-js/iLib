@@ -204,10 +204,10 @@
     "finalSeparatorShort": ", ",
     "B0": "midnatt",
     "B1": "på natten",
-    "B2": "på morgenen",
-    "B3": "på formiddagen",
-    "B4": "på ettermiddagen",
-    "B5": "på kvelden",
+    "B2": "a.m.",
+    "B3": "på morgenen",
+    "B4": "på formiddagen",
+    "B5": "på ettermiddagen",
     "B6": "p.m.",
-    "B7": "kvelden"
+    "B7": "på kvelden"
 }

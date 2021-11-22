@@ -22,7 +22,6 @@
     "#{num}y": "one#{num}a.|#{num}aa.",
     "#in {num}d": "one#dentro de {num} día|#dentro de {num} días",
     "#{num}d ago": "one#hace {num} día|#hace {num} días",
-    "B5": "p.m.",
     "cccc0": "domingo",
     "ccc0": "dom",
     "cc0": "DO",

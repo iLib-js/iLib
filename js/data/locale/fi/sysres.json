@@ -231,12 +231,12 @@
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
     "B0": "keskiyöllä",
-    "B1": "aamulla",
-    "B2": "aamupäivällä",
-    "B3": "keskipäivällä",
-    "B4": "iltapäivällä",
-    "B5": "illalla",
-    "B6": "yöllä",
+    "B1": "ap.",
+    "B2": "aamulla",
+    "B3": "aamupäivällä",
+    "B4": "keskipäivällä",
+    "B5": "iltapäivällä",
+    "B6": "ip.",
     "B7": "illalla",
     "B8": "yöllä"
 }

@@ -126,10 +126,10 @@
     "finalSeparatorShort": ", ",
     "B0": "tengah malam",
     "B1": "pagi",
-    "B2": "siang",
-    "B3": "tengah hari",
-    "B4": "sore",
-    "B5": "malam",
+    "B2": "AM",
+    "B3": "siang",
+    "B4": "tengah hari",
+    "B5": "PM",
     "B6": "sore",
     "B7": "malam"
 }

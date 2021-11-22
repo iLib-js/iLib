@@ -53,6 +53,9 @@
     "EE6": "Sap",
     "G-1": "SM",
     "G1": "M",
+    "finalSeparatorFull": ", sareng ",
+    "separatorShort": ", ",
+    "separatorMedium": ", ",
     "1#1 millisecond|#{num} milliseconds": "#{num} ms",
     "1#1 second|#{num} seconds": "#{num} s",
     "1#1 minute|#{num} minutes": "#{num} min",
@@ -127,10 +130,7 @@
     "#{num}w ago": "#-{num} w",
     "#{num}mo ago": "#-{num} m",
     "#{num}y ago": "#-{num} y",
-    "finalSeparatorFull": ", sareng ",
     "finalSeparatorLong": ", sareng ",
-    "separatorMedium": ", ",
     "finalSeparatorMedium": ", sareng ",
-    "separatorShort": ", ",
     "finalSeparatorShort": ", sareng "
 }

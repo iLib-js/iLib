@@ -121,7 +121,7 @@ localeDirName = process.argv[2];
 
 
 console.log("gendatefmts2 - generate date and time formats information files.\n" +
-"Copyright (c) 2013-2020 JEDLSoft\n");
+"Copyright (c) 2013-2021 JEDLSoft\n");
 
 console.log("locale dir: " + localeDirName);
 
@@ -281,7 +281,7 @@ locales.forEach(function (file) {
         newFormats = aux.createDayPeriods(periods, cal.main[file].dates.calendars, language);
         if (newFormats) {
             group = aux.getFormatGroup(dateFormats, localeComponents);
-            group.data = merge(group.data || {}, newFormats.periods);
+            group.data.dayPeriods = newFormats.periods.dayPeriods;
             group = aux.getFormatGroup(systemResources, localeComponents);
             group.data = merge(group.data || {}, newFormats.sysres);
         }

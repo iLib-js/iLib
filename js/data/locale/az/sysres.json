@@ -235,12 +235,12 @@
     "finalSeparatorShort": ", ",
     "B0": "gecəyarı",
     "B1": "gecə",
-    "B2": "sübh",
-    "B3": "səhər",
-    "B4": "günorta",
-    "B5": "gündüz",
-    "B6": "axşamüstü",
-    "B7": "axşam",
+    "B2": "AM",
+    "B3": "sübh",
+    "B4": "səhər",
+    "B5": "günorta",
+    "B6": "gündüz",
+    "B7": "PM",
     "B8": "axşamüstü",
     "B9": "axşam"
 }

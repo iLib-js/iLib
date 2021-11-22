@@ -71,12 +71,12 @@
         },
         "time": {
             "12": {
-                "ahmsz": "z hh:mm:ss",
-                "ahms": "hh:mm:ss",
+                "ahmsz": "z B h:mm:ss",
+                "ahms": "B h:mm:ss",
                 "hmsz": "z h:mm:ss",
                 "hms": "h:mm:ss",
-                "ahmz": "z hh:mm",
-                "ahm": "hh:mm",
+                "ahmz": "z B h:mm",
+                "ahm": "B h:mm",
                 "hmz": "z h:mm",
                 "ah": "B h",
                 "hm": "h:mm",
@@ -347,28 +347,6 @@
         {
             "from": 720,
             "to": 1440
-        },
-        {
-            "from": 960,
-            "to": 1140
-        },
-        {
-            "from": 1140,
-            "to": 1440
-        },
-        {
-            "at": 0
-        },
-        {
-            "from": 0,
-            "to": 720
-        },
-        {
-            "at": 720
-        },
-        {
-            "from": 720,
-            "to": 960
         },
         {
             "from": 960,

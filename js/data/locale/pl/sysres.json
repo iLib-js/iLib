@@ -232,12 +232,12 @@
     "finalSeparatorMedium": " i ",
     "finalSeparatorShort": " i ",
     "B0": "o północy",
-    "B1": "rano",
-    "B2": "przed południem",
-    "B3": "w południe",
-    "B4": "po południu",
-    "B5": "wieczorem",
-    "B6": "w nocy",
+    "B1": "AM",
+    "B2": "rano",
+    "B3": "przed południem",
+    "B4": "w południe",
+    "B5": "po południu",
+    "B6": "PM",
     "B7": "wieczorem",
     "B8": "w nocy"
 }

@@ -182,10 +182,10 @@
     "finalSeparatorShort": " og ",
     "B0": "midnat",
     "B1": "om natten",
-    "B2": "om morgenen",
-    "B3": "om formiddagen",
-    "B4": "om eftermiddagen",
-    "B5": "om aftenen",
+    "B2": "AM",
+    "B3": "om morgenen",
+    "B4": "om formiddagen",
+    "B5": "om eftermiddagen",
     "B6": "PM",
     "B7": "om aftenen"
 }

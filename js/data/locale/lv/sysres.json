@@ -185,11 +185,11 @@
     "finalSeparatorMedium": " un ",
     "finalSeparatorShort": " ",
     "B0": "pusnaktī",
-    "B1": "no rīta",
-    "B2": "pusdienlaikā",
-    "B3": "pēcpusdienā",
-    "B4": "vakarā",
-    "B5": "naktī",
+    "B1": "priekšpusdienā",
+    "B2": "no rīta",
+    "B3": "pusdienlaikā",
+    "B4": "pēcpusdienā",
+    "B5": "pēcpusdienā",
     "B6": "vakarā",
     "B7": "naktī"
 }

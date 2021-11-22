@@ -32,5 +32,7 @@
     "#{num}d ago": "one#prije {num} d.|few#prije {num} d.|#prije {num} d.",
     "#{num}w ago": "one#prije {num} ned.|few#prije {num} ned.|#prije {num} ned.",
     "#{num}mo ago": "one#prije {num} mjes.|few#prije {num} mjes.|#prije {num} mjes.",
-    "#{num}y ago": "one#prije {num} god.|few#prije {num} god.|#prije {num} god."
+    "#{num}y ago": "one#prije {num} god.|few#prije {num} god.|#prije {num} god.",
+    "B1": "prije podne",
+    "B5": "po podne"
 }

@@ -76,6 +76,8 @@
     "EE6": "sàb",
     "G-1": "a.E.C.",
     "G1": "E.C.",
+    "finalSeparatorFull": " e ",
+    "separatorMedium": ", ",
     "1#1 millisecond|#{num} milliseconds": "one#{num} millisegundu|#{num} millisegundos",
     "1#1 second|#{num} seconds": "one#{num} segundu|#{num} segundos",
     "1#1 minute|#{num} minutes": "one#{num} minutu|#{num} minutos",
@@ -150,9 +152,7 @@
     "#{num}w ago": "one#{num} ch. a como|#{num} ch. a como",
     "#{num}mo ago": "one#{num} mese a como|#{num} meses a como",
     "#{num}y ago": "one#{num} annu a como|#{num} annos a como",
-    "finalSeparatorFull": " e ",
     "finalSeparatorLong": " e ",
-    "separatorMedium": ", ",
     "finalSeparatorMedium": " e ",
     "finalSeparatorShort": " "
 }

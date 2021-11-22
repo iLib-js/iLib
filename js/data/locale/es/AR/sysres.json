@@ -22,9 +22,8 @@
     "#{num}s ago": "one#hace {num} seg.|#hace {num} seg.",
     "#{num}d ago": "one#hace {num} días|#hace {num} días",
     "B0": "madrugada",
-    "B1": "mañana",
-    "B2": "mediodía",
-    "B3": "tarde",
-    "B4": "noche",
+    "B2": "mañana",
+    "B3": "mediodía",
+    "B4": "tarde",
     "B6": "noche"
 }

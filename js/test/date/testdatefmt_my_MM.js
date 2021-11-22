@@ -307,7 +307,7 @@ module.exports.testdatefmt_my_MM = {
             millisecond: 0
         });
         // convert automatically to a Julian calendar date
-        test.equal(fmt.format(date), "2011-09-16 ညနေ 13:45");
+        test.equal(fmt.format(date), "2011-09-16 နေ့လယ် 13:45");
         test.done();
     },
 

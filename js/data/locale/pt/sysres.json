@@ -156,10 +156,10 @@
     "finalSeparatorShort": " ",
     "B0": "meia-noite",
     "B1": "da madrugada",
-    "B2": "da manhã",
-    "B3": "meio-dia",
-    "B4": "da tarde",
-    "B5": "da noite",
+    "B2": "AM",
+    "B3": "da manhã",
+    "B4": "meio-dia",
+    "B5": "da tarde",
     "B6": "PM",
     "B7": "da noite"
 }

@@ -199,11 +199,11 @@ function timeOrder(fmt) {
     var stripped = fmt.replace(/'[^']*'/g, "");
     if (stripped.match(/H.*z/) || stripped.match(/h.*a.*z/)) {
         return "haz";
-    } else if (stripped.match(/z.*H/) || stripped.match(/z.*a.*h/)) {
+    } else if (stripped.match(/z.*H/) || stripped.match(/z.*[aB].*[hK]/)) {
         return "zah";
-    } else if (stripped.match(/a.*h/)) {
+    } else if (stripped.match(/[Ba].*[hK]/)) {
         return "ahz";
-    } else if (stripped.match(/h.*a/)) {
+    } else if (stripped.match(/[hK].*[aB]/)) {
         return "haz";
     } else {
         console.log("WARNING: unknown time order: " + fmt);
@@ -858,7 +858,7 @@ module.exports = {
 
                     switch (order) {
                         case 'haz':
-                            end = scanForChars(available["h"], "a");
+                            end = scanForChars(available["h"], "aB");
                             i = end;
                             while (available["h"].charAt(i) !== ' ' && i > 0) {
                                 i--;
@@ -870,7 +870,7 @@ module.exports = {
                         case 'ahz':
                         case 'zah':
                             begin = scanForChars(available["h"], "hK");
-                            aTemplate = available["h"].substring(begin) + "{time}";
+                            aTemplate = available["h"].substring(0, begin) + "{time}";
                             break;
                     }
                     h = available["h"].replace(/[^h]/g, "");
@@ -2095,7 +2095,7 @@ module.exports = {
         }
 
         if (dayPeriods[language] && Object.keys(dayPeriods[language]).length > 1) {
-            findPeriods(dayPeriods, "root");
+            findPeriods(dayPeriods, "und");
             findPeriods(dayPeriods, language);
             findPeriods(dayPeriods, language + "-" + region);
 
@@ -2238,14 +2238,14 @@ module.exports = {
         if (group.data) {
             // finally do the root as well, as it might be minimum already. If there is no root
             // data, promote the most likely child, no matter how many there are
-            if (!distances["root"]) distances["root"] = {};
+            if (!distances["und"]) distances["und"] = {};
             for (right in group) {
-                if (right && right !== "data" && "root" !== right && group[right]) {
-                    if (typeof(distances["root"][right]) === "undefined") {
-                        distances["root"][right] = module.exports.distance(group.data || {}, group[right].data);
+                if (right && right !== "data" && "und" !== right && group[right]) {
+                    if (typeof(distances["und"][right]) === "undefined") {
+                        distances["und"][right] = module.exports.distance(group.data || {}, group[right].data);
                         if (!distances[right]) distances[right] = {};
                         // distance is reflexive
-                        distances[right]["root"] = distances["root"][right];
+                        distances[right]["und"] = distances["und"][right];
                     }
                 }
             }
@@ -2269,7 +2269,7 @@ module.exports = {
         });
 
         // now totals[0] has the child with the minimum total distance, which may be the root too
-        if (totals[0].name === "root") {
+        if (totals[0].name === "und") {
             // already the minimum, so we don't need to do anything
             return;
         }

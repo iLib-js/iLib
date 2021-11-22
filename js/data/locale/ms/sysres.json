@@ -128,10 +128,10 @@
     "finalSeparatorMedium": " dan ",
     "finalSeparatorShort": " ",
     "B0": "tengah malam",
-    "B1": "pagi",
-    "B2": "tengah hari",
-    "B3": "petang",
-    "B4": "malam",
+    "B1": "PG",
+    "B2": "pagi",
+    "B3": "tengah hari",
+    "B4": "PTG",
     "B5": "petang",
     "B6": "malam"
 }

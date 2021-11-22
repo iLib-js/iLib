@@ -206,11 +206,11 @@
     "finalSeparatorShort": " und ",
     "B0": "Mitternacht",
     "B1": "nachts",
-    "B2": "morgens",
-    "B3": "vormittags",
-    "B4": "mittags",
-    "B5": "nachmittags",
-    "B6": "abends",
+    "B2": "AM",
+    "B3": "morgens",
+    "B4": "vormittags",
+    "B5": "mittags",
+    "B6": "PM",
     "B7": "nachmittags",
     "B8": "abends"
 }

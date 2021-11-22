@@ -24,5 +24,5 @@
     "durationShortMonths": "one#{num} lună|few#{num} luni|#{num} luni",
     "#{num}y": "one#{num} an|few#{num} ani|#{num} ani",
     "B0": "miezul nopții",
-    "B2": "amiază"
+    "B3": "amiază"
 }

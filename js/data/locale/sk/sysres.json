@@ -206,12 +206,12 @@
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
     "B0": "o polnoci",
-    "B1": "ráno",
-    "B2": "dopoludnia",
-    "B3": "napoludnie",
-    "B4": "popoludní",
-    "B5": "večer",
-    "B6": "v noci",
+    "B1": "AM",
+    "B2": "ráno",
+    "B3": "dopoludnia",
+    "B4": "napoludnie",
+    "B5": "popoludní",
+    "B6": "PM",
     "B7": "večer",
     "B8": "v noci"
 }
