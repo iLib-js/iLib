@@ -1,6 +1,15 @@
 Release Notes for Version 14
 ============================
 
+Build 019
+-------
+Published as version 14.11.1
+
+Bug Fixes:
+* The distribution 14.11.0 was broken due to changes in the dependencies used to
+  package the code. This versino is the same code as 14.11.0 but with those packaging
+  problems resolved.
+
 Build 018
 -------
 Published as version 14.11.0
