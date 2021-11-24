@@ -1,6 +1,18 @@
 Release Notes for Version 14
 ============================
 
+Build 018
+-------
+Published as version 14.11.0
+
+New Features:
+* Added the ability to set additional path to Loader. Additional paths can be set through newly add Loader's `addPath()`, and iLib reads resources with higher priority. The added path can be removed by `removePath()` to Loader's path list.
+
+Bug Fixes:
+* Updated to IANA time zone data 2021c
+* Updated to IANA time zone data 2021d
+* Updated to IANA time zone data 2021e
+
 Build 017
 -------
 Published as version 14.10.0

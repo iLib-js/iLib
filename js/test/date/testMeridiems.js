@@ -17,6 +17,14 @@
  * limitations under the License.
  */
 
+if (typeof(ilib) === "undefined") {
+    var ilib = require("../../lib/ilib.js");
+}
+
+if (ilib._getPlatform() === "nodejs" && ilib._dyndata && ilib._dyncode) {
+    var path = require("path");
+}
+
 if (typeof(DateFmt) === "undefined") {
     var DateFmt = require("../../lib/DateFmt.js");
 }
@@ -2116,6 +2124,35 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, 'AM');
         test.equal(fmt[1].name, 'PM');
+        test.done();
+    },
+    testMeridiem_pa_IN: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"pa-IN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'ਪੂ.ਦੁ.');
+        test.equal(fmt[1].name, 'ਬਾ.ਦੁ.');
+        test.done();
+    },
+    testMeridiem_pa_IN_Custom: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./custom"));
+        var ilibLoader = ilib.getLoader();
+        
+        ilibLoader.addPath(multiPath);
+
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"pa-IN"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'AM');
+        test.equal(fmt[1].name, 'PM');
+
+        ilibLoader.removePath(multiPath);
         test.done();
     }
 }
