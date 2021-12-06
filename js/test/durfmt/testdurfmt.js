@@ -1,7 +1,7 @@
 /*
  * testdurfmt.js - test the duration formatter object
  *
- * Copyright © 2012-2020, JEDLSoft
+ * Copyright © 2012-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -7167,7 +7167,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 р., 1 міс., 1 тиж., 1 дн., 1 год, 1 хв, 1 с");
+        test.equal(duration.toString(), "1р, 1м, 1т, 1д, 1 год., 1х, 1с");
         test.done();
     },
 
@@ -7189,7 +7189,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 р., 1 міс., 1 тиж., 1 дн., 01:01:01");
+        test.equal(duration.toString(), "1р, 1м, 1т, 1д, 01:01:01");
         test.done();
     },
 
@@ -7210,7 +7210,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 р., 1 міс., 1 тиж., 1 дн., 1 год, 1 хв, 1 с');
+        test.equal(duration.toString(), '1р, 1м, 1т, 1д, 1 год., 1х, 1с');
         test.done();
     },
 
@@ -7231,7 +7231,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 р., 1 міс., 1 тиж., 1 д., 1 год, 1 хв, 1 с");
+        test.equal(duration.toString(), "1 р., 1 міс., 1 тиж., 1 дн., 1 год, 1 хв, 1 с");
         test.done();
     },
 
@@ -7642,7 +7642,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 năm, 1 tháng, 1 tuần, 1 ngày, 1 giờ, 1 phút và 1 giây");
+        test.equal(duration.toString(), "1 năm, 1 tháng, 1 tuần, 1 ngày, 1 giờ, 1 phút, 1 giây");
         test.done();
     },
 

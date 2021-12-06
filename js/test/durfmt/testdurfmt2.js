@@ -5502,34 +5502,34 @@ module.exports.testdurfmt2 = {
         }
 
         test.equal(textformatted_1[0], '1 рік, 1 місяць, 1 тиждень і 1 день');
-        test.equal(textformatted_1[1], '1 р., 1 міс., 1 тиж., 1 д.');
-        test.equal(textformatted_1[2], '1 р., 1 міс., 1 тиж., 1 дн.');
-        test.equal(textformatted_1[3], '1 р., 1 міс., 1 тиж., 1 дн.');
+        test.equal(textformatted_1[1], '1 р., 1 міс., 1 тиж., 1 дн.');
+        test.equal(textformatted_1[2], '1 р, 1 м, 1 т, 1 д');
+        test.equal(textformatted_1[3], '1р, 1м, 1т, 1д');
 
         test.equal(textformatted_2[0], '2 роки, 2 місяці, 2 тижні і 2 дні');
         test.equal(textformatted_2[1], '2 р., 2 міс., 2 тиж., 2 дн.');
-        test.equal(textformatted_2[2], '2 р., 2 міс., 2 тиж., 2 дн.');
-        test.equal(textformatted_2[3], '2 р., 2 міс., 2 тиж., 2 дн.');
+        test.equal(textformatted_2[2], '2р, 2м, 2т, 2д');
+        test.equal(textformatted_2[3], '2р, 2м, 2т, 2д');
 
         test.equal(textformatted_5[0], '5 років, 5 місяців, 5 тижнів і 5 днів');
         test.equal(textformatted_5[1], '5 р., 5 міс., 5 тиж., 5 дн.');
-        test.equal(textformatted_5[2], '5 р., 5 міс., 5 тиж., 5 дн.');
-        test.equal(textformatted_5[3], '5 р., 5 міс., 5 тиж., 5 дн.');
+        test.equal(textformatted_5[2], '5р, 5м, 5т, 5д');
+        test.equal(textformatted_5[3], '5р, 5м, 5т, 5д');
 
         test.equal(clockformatted_1[0], '1 година, 1 хвилина і 1 секунда');
         test.equal(clockformatted_1[1], '1 год, 1 хв, 1 с');
-        test.equal(clockformatted_1[2], '1 год, 1 хв, 1 с');
-        test.equal(clockformatted_1[3], '1 год, 1 хв, 1 с');
+        test.equal(clockformatted_1[2], '1г, 1х, 1с');
+        test.equal(clockformatted_1[3], '1г, 1х, 1с');
 
         test.equal(clockformatted_2[0], '2 години, 2 хвилини і 2 секунди');
         test.equal(clockformatted_2[1], '2 год, 2 хв, 2 с');
-        test.equal(clockformatted_2[2], '2 год, 2 хв, 2 с');
-        test.equal(clockformatted_2[3], '2 год, 2 хв, 2 с');
+        test.equal(clockformatted_2[2], '2г, 2х, 2с');
+        test.equal(clockformatted_2[3], '2г, 2х, 2с');
 
         test.equal(clockformatted_5[0], '5 годин, 5 хвилин і 5 секунд');
         test.equal(clockformatted_5[1], '5 год, 5 хв, 5 с');
-        test.equal(clockformatted_5[2], '5 год, 5 хв, 5 с');
-        test.equal(clockformatted_5[3], '5 год, 5 хв, 5 с');
+        test.equal(clockformatted_5[2], '5г, 5х, 5с');
+        test.equal(clockformatted_5[3], '5г, 5х, 5с');
 
         test.done();
     },
@@ -6095,25 +6095,25 @@ module.exports.testdurfmt2 = {
             clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
-        test.equal(textformatted_1[0], '1 y, 1 m, 1 w, 1 d');
-        test.equal(textformatted_1[1], '1 y, 1 m, 1 w, 1 d');
-        test.equal(textformatted_1[2], '1 y, 1 m, 1 w, 1 d');
-        test.equal(textformatted_1[3], '1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[0], 'shekara 1, wata 1, mako 1, rana 1');
+        test.equal(textformatted_1[1], 'she 1, wat 1, mak 1, ran 1');
+        test.equal(textformatted_1[2], 'sh 1, wa 1, ma 1, ra 1');
+        test.equal(textformatted_1[3], 's1, w1, m1, r1');
 
-        test.equal(textformatted_2[0], '2 y, 2 m, 2 w, 2 d');
-        test.equal(textformatted_2[1], '2 y, 2 m, 2 w, 2 d');
-        test.equal(textformatted_2[2], '2 y, 2 m, 2 w, 2 d');
-        test.equal(textformatted_2[3], '2 y, 2 m, 2 w, 2 d');
+        test.equal(textformatted_2[0], 'shekaru 2, watanni 2, makonni 2, ranaku 2');
+        test.equal(textformatted_2[1], 'she 2, wat 2, mak 2, ran 2');
+        test.equal(textformatted_2[2], 'sh 2, wa 2, ma 2, ra 2');
+        test.equal(textformatted_2[3], 's2, w2, m2, r2');
 
-        test.equal(clockformatted_1[0], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[3], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[0], "sa'a 1, minti 1, daƙiƙa 1");
+        test.equal(clockformatted_1[1], 'sa 1, min 1, daƙ 1');
+        test.equal(clockformatted_1[2], 'sa 1, mi 1, da 1');
+        test.equal(clockformatted_1[3], 's1, m1, d1');
 
-        test.equal(clockformatted_2[0], '2 h, 2 min, 2 s');
-        test.equal(clockformatted_2[1], '2 h, 2 min, 2 s');
-        test.equal(clockformatted_2[2], '2 h, 2 min, 2 s');
-        test.equal(clockformatted_2[3], '2 h, 2 min, 2 s');
+        test.equal(clockformatted_2[0], "sa'o'i 2, mintoci 2, daƙiƙoƙi 2");
+        test.equal(clockformatted_2[1], 'sa 2, min 2, daƙ 2');
+        test.equal(clockformatted_2[2], 'sa 2, mi 2, da 2');
+        test.equal(clockformatted_2[3], 's2, m2, d2');
 
         test.done();
     },
@@ -9624,9 +9624,10 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_17[0], '17 amahora, 17 amaminithi, 17 amasekhondi');
         test.equal(clockformatted_17[1], '17 hor, 17 min, 17 sek');
         test.equal(clockformatted_17[2], '17 ho, 17 mi, 17 se');
-        test.equal(clockformatted_17[3], '17 h, 17 m, 17 se');
+        test.equal(clockformatted_17[3], '17 ah, 17 m, 17 se');
         test.done();
     },
+
     testDurFmt_wo_SN: function(test) {
         test.expect(16);
         // 1 3

@@ -1,7 +1,7 @@
 /*
  * testdurfmt_sw-KE.js - test the duration formatter object
  *
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ module.exports.testdurfmt_sw_KE = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "mwaka 1, mwezi 1, wiki 1, siku 1, saa 1, dakika 1, sekunde 1");
+        test.equal(duration.toString(), "mwaka 1, mwezi 1, wiki 1, siku 1, saa 1, dak 1, sek 1");
         test.done();
     },
     testDurFmtKEFormatShortText: function(test) {
@@ -68,7 +68,7 @@ module.exports.testdurfmt_sw_KE = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "mwaka 1, mwezi 1, wiki 1, siku 1, saa 1, dakika 1, sekunde 1");
+        test.equal(duration.toString(), "mwaka 1, mwezi 1, wiki 1, siku 1, saa 1, dak 1, sek 1");
         test.done();
     },
     testDurFmtKEFormatShortClock: function(test) {
@@ -109,7 +109,7 @@ module.exports.testdurfmt_sw_KE = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "mwaka 1, mwezi 1, wiki 1, siku 1, saa 1, dakika 1, sekunde 1");
+        test.equal(duration.toString(), "mwaka 1, mwezi 1, wiki 1, siku 1, saa 1, dak 1, sek 1");
         test.done();
     },
     testDurFmtKEFormatLong: function(test) {
