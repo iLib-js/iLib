@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_eu_ES.js - test the date range formatter object Basque-Spain
  * 
- * Copyright © 2020, JEDLSoft
+ * Copyright © 2020-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -109,7 +109,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 31(a) 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "2011(e)ko abenduakren 31(a) 13:45 – 14:30");
         test.done();
     },
     testDateRngFmteuESRangeInDayFull: function(test) {
@@ -135,7 +135,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 31(a) 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "2011(e)ko abenduakren 31(a) 13:45 – 14:30");
         test.done();
     },
     
@@ -214,7 +214,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 30(a) 13:45 – 2011(e)ko abenduaren 31(a) 14:30");
+        test.equal(fmt.format(start, end), "2011(e)ko abenduakren 30(a) 13:45 – 2011(e)ko abenduakren 31(a) 14:30");
         test.done();
     },
     testDateRngFmteuESRangeNextDayFull: function(test) {
@@ -240,7 +240,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 30(a) 13:45 – 2011(e)ko abenduaren 31(a) 14:30");
+        test.equal(fmt.format(start, end), "2011(e)ko abenduakren 30(a) 13:45 – 2011(e)ko abenduakren 31(a) 14:30");
         test.done();
     },
     
@@ -319,7 +319,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 20(a) – 31");
+        test.equal(fmt.format(start, end), "2011(e)ko abenduakren 20(a) – 31");
         test.done();
     },
     testDateRngFmteuESRangeMultiDayFull: function(test) {
@@ -345,7 +345,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 20(a) – 31");
+        test.equal(fmt.format(start, end), "2011(e)ko abenduakren 20(a) – 31");
         test.done();
     },
     
@@ -424,7 +424,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko azaroaren 20(a) – abenduaren 31(a)");
+        test.equal(fmt.format(start, end), "2011(e)ko azaroakren 20(a) – abenduakren 31(a)");
         test.done();
     },
     testDateRngFmteuESRangeNextMonthFull: function(test) {
@@ -450,7 +450,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko azaroaren 20(a) – abenduaren 31(a)");
+        test.equal(fmt.format(start, end), "2011(e)ko azaroakren 20(a) – abenduakren 31(a)");
         test.done();
     },
     
@@ -529,7 +529,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko azaroaren 20(a) – 2012(e)ko urtarrilaren 31(a)");
+        test.equal(fmt.format(start, end), "2011(e)ko azaroakren 20(a) – 2012(e)ko urtarrilakren 31(a)");
         test.done();
     },
     testDateRngFmteuESRangeNextYearFull: function(test) {
@@ -555,7 +555,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko azaroaren 20(a) – 2012(e)ko urtarrilaren 31(a)");
+        test.equal(fmt.format(start, end), "2011(e)ko azaroakren 20(a) – 2012(e)ko urtarrilakren 31(a)");
         test.done();
     },
     
@@ -634,7 +634,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko azaroa – 2014(e)ko urtarrila");
+        test.equal(fmt.format(start, end), "2011(e)ko azaroak – 2014(e)ko urtarrilak");
         test.done();
     },
     testDateRngFmteuESRangeMultiYearFull: function(test) {
@@ -660,7 +660,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko azaroa – 2014(e)ko urtarrila");
+        test.equal(fmt.format(start, end), "2011(e)ko azaroak – 2014(e)ko urtarrilak");
         test.done();
     },
     testDateRngFmteuESManyYearsFull: function(test) {

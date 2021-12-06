@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_mk_MK.js - test the date range formatter object in Macedonian/Macedonia
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31.12.11 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31.12.11, во 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtMKRangeinDayMedium: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31.12.2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31.12.2011, во 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtMKRangeinDayLong: function(test) {
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 декември 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 декември 2011, во 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtMKRangeinDayFull: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 декември 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 декември 2011, во 13:45 – 14:30");
         test.done();
     },
     
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30.12.11 13:45 – 31.12.11 14:30");
+        test.equal(fmt.format(start, end), "30.12.11, во 13:45 – 31.12.11, во 14:30");
         test.done();
     },
     testDateRngFmtMKRangeNextDayMedium: function(test) {
@@ -187,7 +187,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30.12.2011 13:45 – 31.12.2011 14:30");
+        test.equal(fmt.format(start, end), "30.12.2011, во 13:45 – 31.12.2011, во 14:30");
         test.done();
     },
     testDateRngFmtMKRangeNextDayLong: function(test) {
@@ -213,7 +213,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 декември 2011 13:45 – 31 декември 2011 14:30");
+        test.equal(fmt.format(start, end), "30 декември 2011, во 13:45 – 31 декември 2011, во 14:30");
         test.done();
     },
     testDateRngFmtMKRangeNextDayFull: function(test) {
@@ -239,7 +239,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 декември 2011 13:45 – 31 декември 2011 14:30");
+        test.equal(fmt.format(start, end), "30 декември 2011, во 13:45 – 31 декември 2011, во 14:30");
         test.done();
     },
     

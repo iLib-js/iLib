@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_mr_IN.js - test the date range formatter object in Marathi/India
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_mr_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "३१/१२/११, १:४५ म.उ. – २:३० म.उ.");
+        test.equal(fmt.format(start, end), "३१/१२/११, १:४५ PM – २:३० PM");
         test.done();
     },
     testDateRngFmtRangeinDayMedium_mr_IN: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_mr_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "३१ डिसें, २०११, १:४५ म.उ. – २:३० म.उ.");
+        test.equal(fmt.format(start, end), "३१ डिसें, २०११, १:४५ PM – २:३० PM");
         test.done();
     },
     testDateRngFmtRangeinDayLong_mr_IN: function(test) {
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_mr_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "३१ डिसेंबर, २०११ रोजी १:४५ म.उ. – २:३० म.उ.");
+        test.equal(fmt.format(start, end), "३१ डिसेंबर, २०११ रोजी १:४५ PM – २:३० PM");
         test.done();
     },
     testDateRngFmtRangeinDayFull_mr_IN: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_mr_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "३१ डिसेंबर, २०११ रोजी १:४५ म.उ. – २:३० म.उ.");
+        test.equal(fmt.format(start, end), "३१ डिसेंबर, २०११ रोजी १:४५ PM – २:३० PM");
         test.done();
     },
     
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_mr_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "३०/१२/११, १:४५ म.उ. – ३१/१२/११, २:३० म.उ.");
+        test.equal(fmt.format(start, end), "३०/१२/११, १:४५ PM – ३१/१२/११, २:३० PM");
         test.done();
     },
     testDateRngFmtRangeNextDayMedium_mr_IN: function(test) {
@@ -187,7 +187,7 @@ module.exports.testdatefmtrange_mr_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "३० डिसें, २०११, १:४५ म.उ. – ३१ डिसें, २०११, २:३० म.उ.");
+        test.equal(fmt.format(start, end), "३० डिसें, २०११, १:४५ PM – ३१ डिसें, २०११, २:३० PM");
         test.done();
     },
     testDateRngFmtRangeNextDayLong_mr_IN: function(test) {
@@ -213,7 +213,7 @@ module.exports.testdatefmtrange_mr_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "३० डिसेंबर, २०११ रोजी १:४५ म.उ. – ३१ डिसेंबर, २०११ रोजी २:३० म.उ.");
+        test.equal(fmt.format(start, end), "३० डिसेंबर, २०११ रोजी १:४५ PM – ३१ डिसेंबर, २०११ रोजी २:३० PM");
         test.done();
     },
     testDateRngFmtRangeNextDayFull_mr_IN: function(test) {
@@ -239,7 +239,7 @@ module.exports.testdatefmtrange_mr_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "३० डिसेंबर, २०११ रोजी १:४५ म.उ. – ३१ डिसेंबर, २०११ रोजी २:३० म.उ.");
+        test.equal(fmt.format(start, end), "३० डिसेंबर, २०११ रोजी १:४५ PM – ३१ डिसेंबर, २०११ रोजी २:३० PM");
         test.done();
     },
     

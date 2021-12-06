@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_sl_SI.js - test the date range formatter object in Slovenian/Slovenia
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31. 12. 11 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31. 12. 11, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtSIRangeInDayMedium: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31. dec. 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31. dec. 2011, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtSIRangeInDayLong: function(test) {
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30. 12. 11 13:45 – 31. 12. 11 14:30");
+        test.equal(fmt.format(start, end), "30. 12. 11, 13:45 – 31. 12. 11, 14:30");
         test.done();
     },
     testDateRngFmtSIRangeNextDayMedium: function(test) {
@@ -187,7 +187,7 @@ module.exports.testdatefmtrange_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30. dec. 2011 13:45 – 31. dec. 2011 14:30");
+        test.equal(fmt.format(start, end), "30. dec. 2011, 13:45 – 31. dec. 2011, 14:30");
         test.done();
     },
     testDateRngFmtSIRangeNextDayLong: function(test) {

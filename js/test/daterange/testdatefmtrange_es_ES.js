@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_es_ES.js - test the date range formatter object in Spanish/Spain
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_es_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/11 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31/12/11, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtESRangeinDayMedium: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_es_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 dic. 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 dic 2011, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtESRangeinDayLong: function(test) {
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_es_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/11 13:45 – 31/12/11 14:30");
+        test.equal(fmt.format(start, end), "30/12/11, 13:45 – 31/12/11, 14:30");
         test.done();
     },
     testDateRngFmtESRangeNextDayMedium: function(test) {
@@ -187,7 +187,7 @@ module.exports.testdatefmtrange_es_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 dic. 2011 13:45 – 31 dic. 2011 14:30");
+        test.equal(fmt.format(start, end), "30 dic 2011, 13:45 – 31 dic 2011, 14:30");
         test.done();
     },
     testDateRngFmtESRangeNextDayLong: function(test) {
@@ -292,7 +292,7 @@ module.exports.testdatefmtrange_es_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31 dic. 2011");
+        test.equal(fmt.format(start, end), "20 – 31 dic 2011");
         test.done();
     },
     testDateRngFmtESRangeMultiDayLong: function(test) {
@@ -397,7 +397,7 @@ module.exports.testdatefmtrange_es_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 nov. – 31 dic. 2011");
+        test.equal(fmt.format(start, end), "20 nov – 31 dic 2011");
         test.done();
     },
     testDateRngFmtESRangeNextMonthLong: function(test) {
@@ -502,7 +502,7 @@ module.exports.testdatefmtrange_es_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 nov. 2011 – 31 ene. 2012");
+        test.equal(fmt.format(start, end), "20 nov 2011 – 31 ene 2012");
         test.done();
     },
     testDateRngFmtESRangeNextYearLong: function(test) {
@@ -607,7 +607,7 @@ module.exports.testdatefmtrange_es_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "nov. 2011 – ene. 2014");
+        test.equal(fmt.format(start, end), "nov 2011 – ene 2014");
         test.done();
     },
     testDateRngFmtESRangeMultiYearLong: function(test) {

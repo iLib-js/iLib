@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_nb_NO.js - test the date range formatter object in Norwegian Bokmal/Norway
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_nb_NO = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31. desember 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31. desember 2011 kl. 13:45 – 14:30");
         test.done();
     },
     
@@ -239,7 +239,7 @@ module.exports.testdatefmtrange_nb_NO = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30. desember 2011 13:45 – 31. desember 2011 14:30");
+        test.equal(fmt.format(start, end), "30. desember 2011 kl. 13:45 – 31. desember 2011 kl. 14:30");
         test.done();
     },
     

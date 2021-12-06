@@ -8238,23 +8238,23 @@ module.exports.testdaterangefmt = {
             templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
-        test.equal(templatec00[0], '{sd} {sm}, {sy} ’அன்று’ {st} – {et}');
-        test.equal(templatec00[1], '{sd} {sm}, {sy} ’அன்று’ {st} – {et}');
+        test.equal(templatec00[0], '{sd} {sm}, {sy} அன்று {st} – {et}');
+        test.equal(templatec00[1], '{sd} {sm}, {sy} அன்று {st} – {et}');
         test.equal(templatec00[2], '{sd} {sm}, {sy}, {st} – {et}');
         test.equal(templatec00[3], '{sd}/{sm}/{sy}, {st} – {et}');
 
-        test.equal(templatec01[0], '{sd} {sm}, {sy} ’அன்று’ {st} – {ed} {em}, {ey} ’அன்று’ {et}');
-        test.equal(templatec01[1], '{sd} {sm}, {sy} ’அன்று’ {st} – {ed} {em}, {ey} ’அன்று’ {et}');
+        test.equal(templatec01[0], '{sd} {sm}, {sy} அன்று {st} – {ed} {em}, {ey} அன்று {et}');
+        test.equal(templatec01[1], '{sd} {sm}, {sy} அன்று {st} – {ed} {em}, {ey} அன்று {et}');
         test.equal(templatec01[2], '{sd} {sm}, {sy}, {st} – {ed} {em}, {ey}, {et}');
         test.equal(templatec01[3], '{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}');
 
-        test.equal(templatec02[1], '{sd} {sm}, {sy} ’அன்று’ {st} – {ed} {em}, {ey} ’அன்று’ {et}');
-        test.equal(templatec02[0], '{sd} {sm}, {sy} ’அன்று’ {st} – {ed} {em}, {ey} ’அன்று’ {et}');
+        test.equal(templatec02[1], '{sd} {sm}, {sy} அன்று {st} – {ed} {em}, {ey} அன்று {et}');
+        test.equal(templatec02[0], '{sd} {sm}, {sy} அன்று {st} – {ed} {em}, {ey} அன்று {et}');
         test.equal(templatec02[2], '{sd} {sm}, {sy}, {st} – {ed} {em}, {ey}, {et}');
         test.equal(templatec02[3], '{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}');
 
-        test.equal(templatec03[0], '{sd} {sm}, {sy} ’அன்று’ {st} – {ed} {em}, {ey} ’அன்று’ {et}');
-        test.equal(templatec03[1], '{sd} {sm}, {sy} ’அன்று’ {st} – {ed} {em}, {ey} ’அன்று’ {et}');
+        test.equal(templatec03[0], '{sd} {sm}, {sy} அன்று {st} – {ed} {em}, {ey} அன்று {et}');
+        test.equal(templatec03[1], '{sd} {sm}, {sy} அன்று {st} – {ed} {em}, {ey} அன்று {et}');
         test.equal(templatec03[2], '{sd} {sm}, {sy}, {st} – {ed} {em}, {ey}, {et}');
         test.equal(templatec03[3], '{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}');
 
