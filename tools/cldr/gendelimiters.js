@@ -129,7 +129,7 @@ function getLocaleData(dirname, locale) {
             region = locale.getRegion();
             spec = locale.getSpec();	
         } else {
-            spec = "root";
+            spec = "und";
         }
 
         var filename = path.join("cldr-misc-full/main", dirname, "delimiters.json");
