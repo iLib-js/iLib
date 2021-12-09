@@ -1,6 +1,14 @@
 Release Notes for Version 14
 ============================
 
+Build 020
+-------
+Published as version 14.11.2
+
+Bug Fixes:
+* Updated to route the code flow via NodeLoader when a platform is IoTjs
+
+
 Build 019
 -------
 Published as version 14.11.1
