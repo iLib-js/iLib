@@ -1,7 +1,7 @@
 /*
  * testglobal.js - test the ilib static routines
  *
- * Copyright © 2012-2015, 2017-2019, JEDLSoft
+ * Copyright © 2012-2015, 2017-2019, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -237,7 +237,17 @@ module.exports.testglobal = {
         test.equal(ilib.getTimeZone(), "Europe/London");
         test.done();
     },
-    
+    testGetPlatformIoTjs: function(test) {
+        test.expect(1);
+
+        global.process.iotjs = {
+            "board": "None"
+        };
+
+        test.equal(ilib._getPlatform(), "nodejs");
+        global.iotjs = undefined;
+        test.done();
+    },
     testGetLocaleNodejs1: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
