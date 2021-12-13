@@ -92,7 +92,7 @@
     "1#1 month|#{num} months": "#{num} လ",
     "1#1 year|#{num} years": "#{num} နှစ်",
     "#{num} ms": "#{num} မီလီစက္ကန့်",
-    "1#1 sec|#{num} sec": "#{num} sec",
+    "1#1 sec|#{num} sec": "#{num} စက္ကန့်",
     "1#1 min|#{num} min": "#{num} မိနစ်",
     "1#1 hr|#{num} hrs": "#{num} နာရီ",
     "durationLongDays": "#{num} ရက်",
