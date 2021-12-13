@@ -75,13 +75,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -153,13 +153,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -231,13 +231,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6325,13 +6325,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6403,13 +6403,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6481,13 +6481,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3],  '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6560,13 +6560,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6639,13 +6639,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6717,13 +6717,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6796,13 +6796,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6875,13 +6875,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6953,13 +6953,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -7031,13 +7031,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -7109,13 +7109,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -7265,13 +7265,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -7343,13 +7343,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -7421,13 +7421,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -7499,13 +7499,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -9147,7 +9147,7 @@ module.exports.testdurfmt2 = {
             clockformatted_18.push(textfmt.format({hour: 18,minute: 18,second: 18}).toString());
         }
         test.equal(textformatted_1[0], '1 жыл, 1 ай, 1 апта, 1 күн');
-        test.equal(textformatted_1[1], '1 ж., 1 ай, 1 апт, 1 күн');
+        test.equal(textformatted_1[1], '1-ж., 1 ай, 1 апт, 1 күн');
         test.equal(textformatted_1[2], '1 ж., 1 ай, 1 ап, 1 кн');
         test.equal(textformatted_1[3], '1 ж. 1 ай 1 ап 1 кн');
 
@@ -9423,23 +9423,23 @@ module.exports.testdurfmt2 = {
             clockformatted_14.push(textfmt.format({hour: 14,minute: 14,second: 14}).toString());
         }
 
-        test.equal(textformatted_1[0], '1 နှစ် 1 လ 1 ပတ်နှင့် 1 ရက်');
-        test.equal(textformatted_1[1], '1 နှစ် 1 လ 1 ပတ် 1 ရက်');
+        test.equal(textformatted_1[0], '1 နှစ်- 1 လ- 1 ပတ်နှင့် 1 ရက်');
+        test.equal(textformatted_1[1], '1 နှစ်- 1 လ- 1 ပတ်- 1 ရက်');
         test.equal(textformatted_1[2], '1 နှစ် 1 လ 1 ပတ် 1 ရက်');
         test.equal(textformatted_1[3], '1 နှစ် 1 လ 1 ပတ် 1 ရက်');
 
-        test.equal(textformatted_14[0], '14 နှစ် 14 လ 14 ပတ်နှင့် 14 ရက်');
-        test.equal(textformatted_14[1], '14 နှစ် 14 လ 14 ပတ် 14 ရက်');
+        test.equal(textformatted_14[0], '14 နှစ်- 14 လ- 14 ပတ်နှင့် 14 ရက်');
+        test.equal(textformatted_14[1], '14 နှစ်- 14 လ- 14 ပတ်- 14 ရက်');
         test.equal(textformatted_14[2], '14 နှစ် 14 လ 14 ပတ် 14 ရက်');
         test.equal(textformatted_14[3], '14 နှစ် 14 လ 14 ပတ် 14 ရက်');
 
-        test.equal(clockformatted_1[0], '1 နာရီ 1 မိနစ်နှင့် 1 စက္ကန့်');
-        test.equal(clockformatted_1[1], '1 နာရီ 1 မိနစ် 1 စက္ကန့်');
+        test.equal(clockformatted_1[0], '1 နာရီ- 1 မိနစ်နှင့် 1 စက္ကန့်');
+        test.equal(clockformatted_1[1], '1 နာရီ- 1 မိနစ်- 1 စက္ကန့်');
         test.equal(clockformatted_1[2], '1 နာရီ 1 မိနစ် 1 s');
         test.equal(clockformatted_1[3], '1 နာရီ 1 မိနစ် 1 s');
 
-        test.equal(clockformatted_14[0], '14 နာရီ 14 မိနစ်နှင့် 14 စက္ကန့်');
-        test.equal(clockformatted_14[1], '14 နာရီ 14 မိနစ် 14 စက္ကန့်');
+        test.equal(clockformatted_14[0], '14 နာရီ- 14 မိနစ်နှင့် 14 စက္ကန့်');
+        test.equal(clockformatted_14[1], '14 နာရီ- 14 မိနစ်- 14 စက္ကန့်');
         test.equal(clockformatted_14[2], '14 နာရီ 14 မိနစ် 14 s');
         test.equal(clockformatted_14[3], '14 နာရီ 14 မိနစ် 14 s');
 
@@ -9617,14 +9617,14 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_17[3], '17 nk, 17 ng, 17 v, 17 su');
 
         test.equal(clockformatted_1[0], '1 ihora, 1 iminithi, 1 isekhondi');
-        test.equal(clockformatted_1[1], '1 hor, 1 min, 1 sek');
-        test.equal(clockformatted_1[2], '1 ho, 1 mi, 1 se');
-        test.equal(clockformatted_1[3], '1 h, 1 m, 1 se');
+        test.equal(clockformatted_1[1], '1 hora, 1 iminithi, 1 sekhondi');
+        test.equal(clockformatted_1[2], '1 hora, 1 umzuzu, 1 s');
+        test.equal(clockformatted_1[3], '1 hora, 1 umzuzu, 1 s');
 
         test.equal(clockformatted_17[0], '17 amahora, 17 amaminithi, 17 amasekhondi');
-        test.equal(clockformatted_17[1], '17 hor, 17 min, 17 sek');
-        test.equal(clockformatted_17[2], '17 ho, 17 mi, 17 se');
-        test.equal(clockformatted_17[3], '17 ah, 17 m, 17 se');
+        test.equal(clockformatted_17[1], '17 hr, 17 iminithi, 17 sec');
+        test.equal(clockformatted_17[2], '17 hora, 17 umzuzu, 17 s');
+        test.equal(clockformatted_17[3], '17 hora, 17 umzuzu, 17 s');
         test.done();
     },
 
