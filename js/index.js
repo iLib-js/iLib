@@ -1,7 +1,7 @@
 /*
  * index.js - top level entry point for ilib
  *
- * Copyright © 2018 JEDLSoft
+ * Copyright © 2018, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ if (!ilib._platform || (typeof(ilib._dyndata) !== 'boolean' && typeof(ilib._dync
             case 'webos-webapp':
                 break;
             case 'webos':
+            case 'iotjs':
             case 'nodejs':
                 require("./lib/ilib-node.js");
                 break;

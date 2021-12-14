@@ -138,8 +138,12 @@ ilib._getPlatform = function () {
             }
         } catch (e) {}
 
-        if (typeof(global) !== 'undefined' && global.process && global.process.versions && global.process.versions.node && typeof(module) !== 'undefined' || (typeof(global.process.iotjs) !== "undefined") ) {
-            ilib._platform = "nodejs";
+        if (typeof(global) !== 'undefined' && global.process && global.process.versions && global.process.versions.node && typeof(module) !== 'undefined') {
+            if ((typeof(global.process.iotjs) !== "undefined")){
+                ilib._platform = "iotjs";
+            } else {
+                ilib._platform = "nodejs";
+            }
         } else if (typeof(Qt) !== 'undefined') {
             ilib._platform = "qt";
             ilib._cacheMerged = true; // qt is too slow, so we need to cache the already-merged locale data
