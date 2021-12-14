@@ -4312,18 +4312,18 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 godzina, 1 minuta i 1 sekunda');
         test.equal(clockformatted_1[1], '1 godz., 1 min, 1 sek.');
-        test.equal(clockformatted_1[2], '1 g., 1 min, 1 s'); // CLDR 34 change (hour)
-        test.equal(clockformatted_1[3], '1 g., 1 min, 1 s'); // CLDR 34 change (hour)
+        test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[3], '1 h, 1 min, 1 s');
 
         test.equal(clockformatted_2[0], '2 godziny, 2 minuty i 2 sekundy');
         test.equal(clockformatted_2[1], '2 godz., 2 min, 2 sek.');
-        test.equal(clockformatted_2[2], '2 g., 2 min, 2 s'); // CLDR 34 change (hour)
-        test.equal(clockformatted_2[3], '2 g., 2 min, 2 s'); // CLDR 34 change (hour)
+        test.equal(clockformatted_2[2], '2 h, 2 min, 2 s');
+        test.equal(clockformatted_2[3], '2 h, 2 min, 2 s');
 
         test.equal(clockformatted_5[0], '5 godzin, 5 minut i 5 sekund');
         test.equal(clockformatted_5[1], '5 godz., 5 min, 5 sek.');
-        test.equal(clockformatted_5[2], '5 g., 5 min, 5 s'); // CLDR 34 change (hour)
-        test.equal(clockformatted_5[3], '5 g., 5 min, 5 s'); // CLDR 34 change (hour)
+        test.equal(clockformatted_5[2], '5 h, 5 min, 5 s');
+        test.equal(clockformatted_5[3], '5 h, 5 min, 5 s');
 
         test.done();
     },
@@ -9607,14 +9607,14 @@ module.exports.testdurfmt2 = {
         }
 
         test.equal(textformatted_1[0], '1 unyaka, 1 inyanga, 1 iviki, 1 usuku');
-        test.equal(textformatted_1[1], '1 nyk, 1 nyg, 1 vik, 1 suk');
-        test.equal(textformatted_1[2], '1 nk, 1 ng, 1 v, 1 su');
-        test.equal(textformatted_1[3], '1 nk, 1 ng, 1 v, 1 su');
+        test.equal(textformatted_1[1], '1 nyk, 1 nyanga, 1 viki, 1 usuku');
+        test.equal(textformatted_1[2], '1 nk, 1 ng, 1 v, 1 suku');
+        test.equal(textformatted_1[3], '1 nk, 1 ng, 1 v, 1 suku');
 
         test.equal(textformatted_17[0], '17 iminyaka, 17 izinyanga, 17 amaviki, 17 izinsuku');
-        test.equal(textformatted_17[1], '17 nyk, 17 nyg, 17 vik, 17 suk');
-        test.equal(textformatted_17[2], '17 nk, 17 ng, 17 v, 17 su');
-        test.equal(textformatted_17[3], '17 nk, 17 ng, 17 v, 17 su');
+        test.equal(textformatted_17[1], '17 nyk, 17 izinyanga, 17 amaviki, 17 izinsuku');
+        test.equal(textformatted_17[2], '17 nk, 17 ng, 17 v, 17 suku');
+        test.equal(textformatted_17[3], '17 nk, 17 ng, 17 v, 17 suku');
 
         test.equal(clockformatted_1[0], '1 ihora, 1 iminithi, 1 isekhondi');
         test.equal(clockformatted_1[1], '1 hora, 1 iminithi, 1 sekhondi');
