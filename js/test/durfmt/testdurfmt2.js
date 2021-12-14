@@ -994,7 +994,6 @@ module.exports.testdurfmt2 = {
             clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
             clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
-        //// CLDr 34 change
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
         test.equal(textformatted_1[1], '1 yr, 1 mo, 1 wk, 1 day');
@@ -1002,7 +1001,7 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_1[3], '1y 1m 1w 1d');
 
         test.equal(textformatted_2[0], '2 years, 2 months, 2 weeks, 2 days');
-        test.equal(textformatted_2[1], '2 yrs, 2 mos, 2 wks, 2 days'); // CLDR 34 change (month)
+        test.equal(textformatted_2[1], '2 yrs, 2 mos, 2 wks, 2 days');
         test.equal(textformatted_2[2], '2y, 2m, 2w, 2d');
         test.equal(textformatted_2[3], '2y 2m 2w 2d');
 
@@ -1014,7 +1013,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_2[0], '2 hours, 2 minutes, 2 seconds');
         test.equal(clockformatted_2[1], '2 hrs, 2 mins, 2 secs');
         test.equal(clockformatted_2[2], '2h, 2min, 2s');
-        test.equal(clockformatted_2[3], '2h 2min 2s'); // CLDR 34 change
+        test.equal(clockformatted_2[3], '2h 2min 2s');
 
         test.done();
     },
@@ -4620,7 +4619,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_2[3], '2 ч 2 мин 2 с');
 
         test.equal(clockformatted_5[0], '5 часов 5 минут 5 секунд');
-        test.equal(clockformatted_5[1], '5 ч 5 мин 5 с'); // CLDR 34 change.
+        test.equal(clockformatted_5[1], '5 ч 5 мин 5 с');
         test.equal(clockformatted_5[2], '5 ч 5 мин 5 с');
         test.equal(clockformatted_5[3], '5 ч 5 мин 5 с');
 
@@ -4674,7 +4673,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_24[3], '24 ч 24 мин 24 с');
 
         test.equal(clockformatted_25[0], '25 часов 25 минут 25 секунд');
-        test.equal(clockformatted_25[1], '25 ч 25 мин 25 с'); // CLDR 34 change.
+        test.equal(clockformatted_25[1], '25 ч 25 мин 25 с');
         test.equal(clockformatted_25[2], '25 ч 25 мин 25 с');
         test.equal(clockformatted_25[3], '25 ч 25 мин 25 с');
 
@@ -4728,7 +4727,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_22[3], '22 ч 22 мин 22 с');
 
         test.equal(clockformatted_20[0], '20 часов 20 минут 20 секунд');
-        test.equal(clockformatted_20[1], '20 ч 20 мин 20 с'); // CLDR 34 change.
+        test.equal(clockformatted_20[1], '20 ч 20 мин 20 с');
         test.equal(clockformatted_20[2], '20 ч 20 мин 20 с');
         test.equal(clockformatted_20[3], '20 ч 20 мин 20 с');
 
@@ -4783,7 +4782,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_4[3], '4 ч 4 мин 4 с');
 
         test.equal(clockformatted_19[0], '19 часов 19 минут 19 секунд');
-        test.equal(clockformatted_19[1], '19 ч 19 мин 19 с'); // CLDR 34 change.
+        test.equal(clockformatted_19[1], '19 ч 19 мин 19 с');
         test.equal(clockformatted_19[2], '19 ч 19 мин 19 с');
         test.equal(clockformatted_19[3], '19 ч 19 мин 19 с');
 
@@ -4837,7 +4836,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_32[3], '32 ч 32 мин 32 с');
 
         test.equal(clockformatted_19[0], '19 часов 19 минут 19 секунд');
-        test.equal(clockformatted_19[1], '19 ч 19 мин 19 с'); // CLDR 34 change.
+        test.equal(clockformatted_19[1], '19 ч 19 мин 19 с');
         test.equal(clockformatted_19[2], '19 ч 19 мин 19 с');
         test.equal(clockformatted_19[3], '19 ч 19 мин 19 с');
 
@@ -6482,7 +6481,7 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
-        test.equal(textformatted_3[3],  '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
