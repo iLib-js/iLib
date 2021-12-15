@@ -28,6 +28,8 @@ jobs:
           name: Set up node packages
           command: |
             rm -rf node_modules package-lock.json
+            echo "node version: " $(node -v)
+            echo "npm version: " $(npm -v)
             npm install
 
       - run:
