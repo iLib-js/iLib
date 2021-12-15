@@ -53,4 +53,13 @@ workflows:
   version: 2
   test-all-node-versions:
     jobs:
-      - test
+      - test:
+	    docker_image: circleci/node:8-browsers
+      - test:
+	    docker_image: circleci/node:10-browsers
+      - test:
+	    docker_image: circleci/node:12-browsers
+      - test:
+	    docker_image: circleci/node:14-browsers
+      - test:
+	    docker_image: circleci/node:16-browsers
