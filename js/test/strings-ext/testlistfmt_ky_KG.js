@@ -1,7 +1,7 @@
 /*
  * testlistfmt_ky_KG.js - test the list formatter object
  *
- * Copyright © 2020, JEDLSoft
+ * Copyright © 2020-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -225,7 +225,7 @@ module.exports.testlistfmt_ky_KG = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["бир", "эки", "үч"]), "бир, эки, же үч");
+        test.equal(fmt.format(["бир", "эки", "үч"]), "бир, эки же үч");
         test.done();
     },
     testListFmtORStylekaGENumberFormatFour: function(test) {
@@ -236,7 +236,7 @@ module.exports.testlistfmt_ky_KG = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["бир", "эки", "үч", "төрт"]), "бир, эки, үч, же төрт");
+        test.equal(fmt.format(["бир", "эки", "үч", "төрт"]), "бир, эки, үч же төрт");
         test.done();
     },
     testListFmtORStylekaGENumberFormatFiveFull: function(test) {
@@ -247,7 +247,7 @@ module.exports.testlistfmt_ky_KG = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["бир", "эки", "үч", "төрт", "беш"]), "бир, эки, үч, төрт, же беш");
+        test.equal(fmt.format(["бир", "эки", "үч", "төрт", "беш"]), "бир, эки, үч, төрт же беш");
         test.done();
     }
 };
