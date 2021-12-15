@@ -1,8 +1,13 @@
 version: 2.1
 jobs:
   test:
+    parameters:
+        docker_image:
+          type: string
+          default: cimg/openjdk:8.0-node
+
     docker:
-      - image: cimg/openjdk:8.0-node
+      - image: << parameters.docker_image >>
 
     environment:
       NODE_OPTIONS: "--max-old-space-size=3072"
