@@ -625,9 +625,9 @@ module.exports.testcollation_no = {
         test.ok(typeof(col) !== "undefined");
     
         // comma is the thousands separator and period is the decimal separator
-        test.equal(col.compare("0,012,123.4", "12,123.4"), 0);
-        test.ok(col.compare("00123.4", "123") > 0);
-        test.ok(col.compare("00123.4", "124") < 0);
+        test.equal(col.compare("0.012.123,4", "12.123,4"), 0);
+        test.ok(col.compare("00123,4", "123") > 0);
+        test.ok(col.compare("00123,4", "124") < 0);
         test.done();
     }
     
