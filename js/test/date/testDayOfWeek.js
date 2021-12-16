@@ -204,7 +204,7 @@ module.exports.testweekdata = {
         var info = new LocaleInfo("en-AU");
         test.ok(info !== null);
 
-        test.equal(info.getFirstDayOfWeek(), 0);
+        test.equal(info.getFirstDayOfWeek(), 1);
         test.equal(info.getWeekEndStart(), 6);
         test.equal(info.getWeekEndEnd(), 0);
         test.done();
