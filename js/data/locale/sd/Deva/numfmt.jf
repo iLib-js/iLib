@@ -1,0 +1,18 @@
+{
+    "generated": true,
+    "numfmt": {
+        "script": "Latn",
+        "decimalChar": ".",
+        "groupChar": ",",
+        "pctChar": "%",
+        "exponential": "E",
+        "currencyFormats": {
+            "common": "{s} {n}",
+            "commonNegative": "-{s} {n}"
+        },
+        "negativenumFmt": "-{n}",
+        "pctFmt": "{n}%",
+        "negativepctFmt": "-{n}%",
+        "useNative": false
+    }
+}
