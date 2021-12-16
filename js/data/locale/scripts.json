@@ -222,7 +222,10 @@
     "Cpmn": {
         "nb": 402,
         "nm": "Cypro-Minoan",
-        "lid": "Cypro-Minoan"
+        "lid": "Cypro-Minoan",
+        "rtl": false,
+        "ime": true,
+        "casing": false
     },
     "Cprt": {
         "nb": 403,
@@ -981,6 +984,14 @@
         "ime": false,
         "casing": false
     },
+    "Ougr": {
+        "nb": 143,
+        "nm": "Old Uyghur",
+        "lid": "Old_Uyghur",
+        "rtl": true,
+        "ime": false,
+        "casing": false
+    },
     "Palm": {
         "nb": 126,
         "nm": "Palmyrene",
@@ -996,6 +1007,16 @@
         "rtl": false,
         "ime": false,
         "casing": false
+    },
+    "Pcun": {
+        "nb": 15,
+        "nm": "Proto-Cuneiform",
+        "lid": "Proto-Cuneiform"
+    },
+    "Pelm": {
+        "nb": 16,
+        "nm": "Proto-Elamite",
+        "lid": "Proto-Elamite"
     },
     "Perm": {
         "nb": 227,
@@ -1063,6 +1084,11 @@
         "ime": false,
         "casing": false
     },
+    "Psin": {
+        "nb": 103,
+        "nm": "Proto-Sinaitic",
+        "lid": "Proto-Sinaitic"
+    },
     "Qaaa": {
         "nb": 900,
         "nm": "Reserved for private use (start)",
@@ -1072,6 +1098,11 @@
         "nb": 949,
         "nm": "Reserved for private use (end)",
         "lid": "Reserved_for_private_use_(end)"
+    },
+    "Ranj": {
+        "nb": 303,
+        "nm": "Ranjana",
+        "lid": "Ranjana"
     },
     "Rjng": {
         "nb": 363,
@@ -1372,10 +1403,21 @@
         "ime": false,
         "casing": false
     },
+    "Tnsa": {
+        "nb": 275,
+        "nm": "Tangsa",
+        "lid": "Tangsa",
+        "rtl": false,
+        "ime": false,
+        "casing": false
+    },
     "Toto": {
         "nb": 294,
         "nm": "Toto",
-        "lid": "Toto"
+        "lid": "Toto",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Ugar": {
         "nb": 40,
@@ -1397,6 +1439,14 @@
         "nb": 280,
         "nm": "Visible Speech",
         "lid": "Visible_Speech"
+    },
+    "Vith": {
+        "nb": 228,
+        "nm": "Vithkuqi",
+        "lid": "Vithkuqi",
+        "rtl": false,
+        "ime": false,
+        "casing": true
     },
     "Wara": {
         "nb": 262,
