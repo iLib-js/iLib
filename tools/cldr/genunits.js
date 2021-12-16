@@ -143,7 +143,15 @@ var filter = {
     "per": true,
     "power2": true,
     "power3": true,
-    "times": true
+    "times": true,
+    "1024p1": true,
+    "1024p2": true,
+    "1024p3": true,
+    "1024p4": true,
+    "1024p5": true,
+    "1024p6": true,
+    "1024p7": true,
+    "1024p8": true
 };
 
 function frameUnits(data, locale, localeData) {

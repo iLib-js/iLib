@@ -1,7 +1,7 @@
 /*
  * testunits.js - test the units formatter object
  *
- * Copyright © 2014-2015, 2017-2018 JEDLSoft
+ * Copyright © 2014-2015, 2017-2018, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -631,7 +631,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"de-DE",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1.000 Kilobytes");
+        test.equal(str, "1.000 Kilobyte");
         test.done();
     },
 
@@ -801,7 +801,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 калорий");
+        test.equal(str, "1 000 килокалорий");
         test.done();
     },
 
@@ -854,7 +854,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"ru-RU",autoConvert:false});
         var str = uf.format(m1);
-        test.equal(str, "2 мили на галлон");
+        test.equal(str, "2 мили на амер. галлон");
         test.done();
     },
 
@@ -1634,7 +1634,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
         var str = uf.format(m1);
-        test.equal(str, "1 000 мин.");
+        test.equal(str, "1 000 мин");
         test.done();
     },
 
@@ -1751,7 +1751,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"long"});
         var str = uf.format(m1);
-        test.equal(str, "1 галлон");
+        test.equal(str, "1 амер. галлон");
         test.done();
     },
 
@@ -1764,7 +1764,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
         var str = uf.format(m1);
-        test.equal(str, "1 000 гал.");
+        test.equal(str, "1 000 ам. гал.");
         test.done();
     },
 

@@ -1258,7 +1258,7 @@ module.exports.testunitfmt_usages = {
             locale: "ha-NG"
         });
         var str = uf.format(m1);
-        test.equal(str, "800 mg");
+        test.equal(str, "milligiramgiram 800");
         test.done();
     },
 
@@ -2112,7 +2112,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.5 imperial quarts");
+        test.equal(str, "1.5 quarts");
         test.done();
     },
 
@@ -2148,7 +2148,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 qt(i)");
+        test.equal(str, "1 qt");
         test.done();
     },
 
@@ -2165,7 +2165,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.25 imperial quarts");
+        test.equal(str, "1.25 quarts");
         test.done();
     },
 
@@ -2182,7 +2182,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.25 qt(i)");
+        test.equal(str, "1.25 qt");
         test.done();
     },
 
