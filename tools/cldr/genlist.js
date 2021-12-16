@@ -133,7 +133,7 @@ process.argv.forEach(function (val, index, array) {
 toDir = process.argv[2] || "tmp";
 
 console.log("genlist - generate list formatter data.\n" +
-    "Copyright (c) 2017-2020 JEDLSoft");
+    "Copyright (c) 2017-2021 JEDLSoft");
 
 console.log("output dir: " + toDir);
 
