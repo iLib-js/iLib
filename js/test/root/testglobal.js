@@ -238,6 +238,12 @@ module.exports.testglobal = {
         test.done();
     },
     testGetPlatformIoTjs: function(test) {
+        if (typeof(global) === 'undefined' || !global.process) {
+            // only test this in a platform that supports process
+            test.done();
+            return;
+        }
+
         test.expect(1);
 
         global.process.iotjs = {
