@@ -79,9 +79,6 @@
     "a1": "cɛɛ́nko",
     "G-1": "d.Y.",
     "G1": "k.Y.",
-    "finalSeparatorFull": ", ",
-    "separatorShort": ", ",
-    "separatorMedium": ", ",
     "1#1 millisecond|#{num} milliseconds": "#{num} ms",
     "1#1 second|#{num} seconds": "#{num} s",
     "1#1 minute|#{num} minutes": "#{num} min",
@@ -156,7 +153,12 @@
     "#{num}w ago": "#-{num} w",
     "#{num}mo ago": "#-{num} m",
     "#{num}y ago": "#-{num} y",
+    "separatorFull": ", ",
+    "finalSeparatorFull": ", ",
+    "separatorLong": ", ",
     "finalSeparatorLong": ", ",
+    "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
+    "separatorShort": ", ",
     "finalSeparatorShort": ", "
 }
