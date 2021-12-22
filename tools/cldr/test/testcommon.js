@@ -1,7 +1,7 @@
 /*
  * testcommon.js - test the common routines
- * 
- * Copyright © 2020, JEDLSoft
+ *
+ * Copyright © 2020-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -871,6 +871,116 @@ module.exports.testcommon = {
     testHexToChar5: function(test) {
         test.expect(1)
         test.equal(common.hexToChar("016FF0"), '𖿰');
+        test.done();
+    },
+
+    testSortTree1: function(test) {
+        test.expect(1);
+        var input = {
+            "s": 4,
+            "l": 2,
+            "m": 3,
+            "f": 1
+        };
+
+        var expected =
+            '{\n' +
+            '    "f": 1,\n' +
+            '    "l": 2,\n' +
+            '    "m": 3,\n' +
+            '    "s": 4\n' +
+            '}';
+
+        test.equal(JSON.stringify(common.sortTree(input), undefined, 4), expected);
+        test.done();
+    },
+
+    testSortTreeDeep: function(test) {
+        test.expect(1);
+        var input =
+        {
+            "gregorian": {
+                "date": {
+                    "m": {
+                        "s": "M",
+                        "m": "MM",
+                        "l": "MMM",
+                        "f": "MMMM"
+                    },
+                    "dmwy": {
+                        "s": 4,
+                        "l": 2,
+                        "m": 3,
+                        "f": 1
+                    }
+                }
+            },
+            "ethiopian": "gregorian"
+        };
+
+        var expected =
+            '{\n' +
+            '    "ethiopian": "gregorian",\n' +
+            '    "gregorian": {\n' +
+            '        "date": {\n' +
+            '            "dmwy": {\n' +
+            '                "f": 1,\n' +
+            '                "l": 2,\n' +
+            '                "m": 3,\n' +
+            '                "s": 4\n' +
+            '            },\n' +
+            '            "m": {\n' +
+            '                "f": "MMMM",\n' +
+            '                "l": "MMM",\n' +
+            '                "m": "MM",\n' +
+            '                "s": "M"\n' +
+            '            }\n' +
+            '        }\n' +
+            '    }\n' +
+            '}';
+
+        test.equal(JSON.stringify(common.sortTree(input), undefined, 4), expected);
+        test.done();
+    },
+
+    testSortTreeWithArrays: function(test) {
+        test.expect(1);
+        var input = {
+            "x": [
+                {
+                    "start": 1,
+                    "end": 23
+                },
+                {
+                    "start": 24,
+                    "end": 44
+                },
+                {
+                    "start": 45,
+                    "end": 51
+                }
+            ]
+        };
+
+        var expected =
+            '{\n' +
+            '    "x": [\n' +
+            '        {\n' +
+            '            "end": 23,\n' +
+            '            "start": 1\n' +
+            '        },\n' +
+            '        {\n' +
+            '            "end": 44,\n' +
+            '            "start": 24\n' +
+            '        },\n' +
+            '        {\n' +
+            '            "end": 51,\n' +
+            '            "start": 45\n' +
+            '        }\n' +
+            '    ]\n' +
+            '}';
+
+        test.equal(JSON.stringify(common.sortTree(input), undefined, 4), expected);
         test.done();
     }
 }

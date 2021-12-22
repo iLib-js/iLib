@@ -21,6 +21,7 @@
  */
 var fs = require('fs');
 var path = require('path');
+var stringify = require('json-stable-stringify');
 
 var common = require('./common.js');
 var merge = common.merge;
@@ -2326,14 +2327,14 @@ module.exports = {
     writeFormats: function(outputDir, outfile, group, localeComponents) {
         var dir = path.join.apply(undefined, [outputDir].concat(localeComponents));
         var filename = path.join(dir, outfile);
-        var contents = JSON.stringify(group.data, undefined, 4);
+        var contents = stringify(group.data, {space: 4});
 
         // don't write out empty files!
         if (contents !== "{}") {
             console.log(localeComponents.join("-") + " ");
 
             makeDirs(dir);
-            fs.writeFileSync(filename, JSON.stringify(group.data, undefined, 4), 'utf8');
+            fs.writeFileSync(filename, stringify(group.data, {space: 4}), 'utf8');
         }
 
         for (var comp in group) {
