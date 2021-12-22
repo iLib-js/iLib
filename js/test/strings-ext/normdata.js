@@ -132944,4 +132944,4 @@ var normtests = [
         "𑤵̴𑤰"
     ]
 ];
-module.exports=normtests;
+if (typeof(module) !== 'undefined') module.exports=normtests;
