@@ -24,12 +24,14 @@ var fs = require('fs');
 var path = require('path');
 var locales = require('cldr-core/availableLocales.json').availableLocales.full;
 var dayPeriods = require('cldr-core/supplemental/dayPeriods.json');
+var stringify = require('json-stable-stringify');
 
 var common = require('./common');
 var merge = common.merge;
 var Locale = common.Locale;
 var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
+var sortTree = common.sortTree;
 
 var hardCodeData = {
     "zh": {
@@ -223,7 +225,7 @@ function writeSystemResources(language, script, region, data) {
     if (anyProperties(data)) {
         console.log("Writing " + path );
         makeDirs(path);
-        fs.writeFileSync(path + "/sysres.json", JSON.stringify(data, true, 4), "utf-8");
+        fs.writeFileSync(path + "/sysres.json", stringify(data, {space: 4}), "utf-8");
     } else {
         console.log("Skipping empty " + path );
     }
@@ -453,10 +455,12 @@ mergeAndPrune(dateFormats);
 console.log("\nWriting out final files ...");
 
 console.log("dateformats.json: ");
+// sortTree(dateFormats);
 aux.writeFormats(localeDirName, "dateformats.json", dateFormats, []);
 console.log("");
 console.log("sysres.json: ");
 mergeAndPrune(systemResources);
+// sortTree(systemResources);
 for (language in systemResources) {
     if (language && systemResources[language] && language !== 'data' && language !== 'merged') {
         for (var subpart in systemResources[language]) {
