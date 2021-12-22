@@ -79,9 +79,6 @@
     "a1": "बेलासे",
     "G-1": "ईसा.पूर्व",
     "G1": "सन",
-    "finalSeparatorFull": ", ",
-    "separatorShort": ", ",
-    "separatorMedium": ", ",
     "1#1 millisecond|#{num} milliseconds": "#{num} ms",
     "1#1 second|#{num} seconds": "one#{num} सेकं.|#{num} सेकं.",
     "1#1 minute|#{num} minutes": "one#{num} मिन.|#{num} मिन.",
@@ -156,7 +153,12 @@
     "#{num}w ago": "#-{num} w",
     "#{num}mo ago": "#-{num} m",
     "#{num}y ago": "#-{num} y",
+    "separatorFull": ", ",
+    "finalSeparatorFull": ", ",
+    "separatorLong": ", ",
     "finalSeparatorLong": ", ",
+    "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
+    "separatorShort": ", ",
     "finalSeparatorShort": ", "
 }
