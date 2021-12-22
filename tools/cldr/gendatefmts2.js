@@ -43,14 +43,137 @@ var hardCodeData = {
         "ordinalChoice": "#{num}天"
     },
     "am": {
-      "a0-ethiopic": "ጥዋት",
-      "a1-ethiopic": "ቀትር",
-      "a2-ethiopic": "ከሰዓት",
-      "a3-ethiopic": "ከምሽቱ",
-      "a4-ethiopic": "ከሌሊቱ",
+        "a0-ethiopic": "ጥዋት",
+        "a1-ethiopic": "ቀትር",
+        "a2-ethiopic": "ከሰዓት",
+        "a3-ethiopic": "ከምሽቱ",
+        "a4-ethiopic": "ከሌሊቱ",
     },
     "de": {
         "ordinalChoice": "#{num}."
+    },
+    "my": {
+        "1#1 sec|#{num} sec": "#{num} စက္ကန့်"
+    },
+    "tg": {
+        "1#1 millisecond|#{num} milliseconds": "#{num} миллисекундҳо",
+        "1#1 second|#{num} seconds": "#{num} сония",
+        "1#1 minute|#{num} minutes": "#{num} дақиқа",
+        "1#1 hour|#{num} hours": "#{num} соат",
+        "1#1 day|#{num} days": "#{num} рӯз",
+        "1#1 week|#{num} weeks": "#{num} ҳафта",
+        "1#1 month|#{num} months": "#{num} моҳ",
+        "1#1 year|#{num} years": "#{num} сол",
+        "#{num} ms": "#{num} мил",
+        "1#1 sec|#{num} sec": "#{num} сон",
+        "1#1 min|#{num} min": "#{num} дақ",
+        "1#1 hr|#{num} hrs": "#{num} соа",
+        "durationLongDays": "#{num} рӯз",
+        "1#1 wk|#{num} wks": "#{num} ҳаф",
+        "1#1 mon|#{num} mons": "#{num} моҳ",
+        "1#1 yr|#{num} yrs": "#{num} сол",
+        "durationMediumMillis": "#{num} ми",
+        "1#1 se|#{num} sec": "#{num} со",
+        "1#1 mi|#{num} min": "#{num} да",
+        "durationMediumHours": "#{num} со",
+        "1#1 dy|#{num} dys": "#{num} рӯ",
+        "durationMediumWeeks": "#{num} ҳа",
+        "1#1 mo|#{num} mos": "#{num} мо",
+        "durationMediumYears": "#{num} со",
+        "durationShortMillis": "#{num} м",
+        "#{num}s": "#{num} с",
+        "durationShortMinutes": "#{num} д",
+        "#{num}h": "#{num} с",
+        "#{num}d": "#{num} р",
+        "#{num}w": "#{num} ҳ",
+        "durationShortMonths": "#{num} м",
+        "#{num}y": "#{num} с"
+    },
+    "mt": {
+        "1#1 second|#{num} seconds": "one#{num} sekonda|few#{num} sekondi|many#{num}-il sekonda|#{num} sekonda",
+        "1#1 minute|#{num} minutes": "one#{num} minuta|few#{num} minuti|many#{num}-il minuta|#{num} minuta",
+        "1#1 hour|#{num} hours": "one#{num} siegħa|few#{num} sigħat|many#{num}-il siegħa|#{num} siegħa",
+        "1#1 day|#{num} days": "one#{num} jum|few#{num} ijiem|many#{num}-il jum|#{num} jum",
+        "1#1 week|#{num} weeks": "one#Ġimgħa|few#{num} ġimgħat|many#{num}-il ġimgħa|#{num} ġimgħa",
+        "1#1 month|#{num} months": "one#Xahar|few#{num} xhur|many#{num}-il xahar|#{num} xahar",
+        "1#1 year|#{num} years": "one#Sena|few#{num} snin|many#{num}-il sena|#{num} sena",
+        "1#1 sec|#{num} sec": "one#{num} sek.|few#{num} sek.|many#{num}-il sek.|#{num} sek.",
+        "1#1 min|#{num} min": "one#{num} min.|few#{num} min.|many#{num}-il min.|#{num} min.",
+        "1#1 hr|#{num} hrs": "one#{num} sie.|few#{num} sig.|many#{num}-il sie.|#{num} sie.",
+        "durationLongDays": "one#{num} jum|few#{num} iji.|many#{num}-il jum|#{num} jum",
+        "1#1 wk|#{num} wks": "one#Ġim.|few#{num} ġim.|many#{num}-il ġim.|#{num} ġim.",
+        "1#1 mon|#{num} mons": "one#Xah.|few#{num} xhu.|many#{num}-il xah.|#{num} xah.",
+        "1#1 yr|#{num} yrs": "one#Sen.|few#{num} sni.|many#{num}-il sen.|#{num} sen.",
+        "1#1 se|#{num} sec": "one#{num} se.|few#{num} se.|many#{num}-il se.|#{num} se.",
+        "1#1 mi|#{num} min": "one#{num} mi.|few#{num} mi.|many#{num}-il mi.|#{num} mi.",
+        "durationMediumHours": "one#{num} si.|few#{num} si.|many#{num}-il si.|#{num} si.",
+        "1#1 dy|#{num} dys": "one#{num} ju.|few#{num} ij.|many#{num}-il ju.|#{num} ju.",
+        "durationMediumWeeks": "one#Ġi.|few#{num} ġi.|many#{num}-il ġi.|#{num} ġi.",
+        "1#1 mo|#{num} mos": "one#Xa.|few#{num} xh.|many#{num}-il xa.|#{num} xa.",
+        "durationMediumYears": "one#Se.|few#{num} sn.|many#{num}-il se.|#{num} se.",
+        "1#1 se|#{num} sec": "one#{num} se.|few#{num} se.|many#{num}-il se.|#{num} se.",
+        "1#1 mi|#{num} min": "one#{num} mi.|few#{num} mi.|many#{num}-il mi.|#{num} mi.",
+        "durationMediumHours": "one#{num} si.|few#{num} si.|many#{num}-il si.|#{num} si.",
+        "1#1 dy|#{num} dys": "one#{num} ju.|few#{num} ij.|many#{num}-il ju.|#{num} ju.",
+        "durationMediumWeeks": "one#Ġi.|few#{num} ġi.|many#{num}-il ġi.|#{num} ġi.",
+        "1#1 mo|#{num} mos": "one#Xa.|few#{num} xh.|many#{num}-il xa.|#{num} xa.",
+        "durationMediumYears": "one#Se.|few#{num} sn.|many#{num}-il se.|#{num} se.",
+        "durationShortMinutes": "#{num} m",
+        "#{num}h": "#{num} s",
+        "#{num}d": "#{num} j",
+        "#{num}w": "#{num} g",
+        "durationShortMonths": "#{num} x",
+        "#{num}y": "#{num} s"
+    },
+    "fa": {
+        "1#1 se|#{num} sec": "one#{num} ث|#{num} ث",
+        "1#1 mi|#{num} min": "one#{num} دقیقه|#{num} دقیقه",
+        "durationMediumHours": "one#{num} ساعت|#{num} ساعت",
+        "#{num}s": "one#{num} ث|#{num} ث",
+        "durationShortMinutes": "one#{num} دقیقه|#{num} دقیقه",
+        "#{num}h": "one#{num} ساعت|#{num} ساعت"
+    },
+    "wo": {
+        "1#1 second|#{num} seconds": "#{num} saa",
+        "1#1 minute|#{num} minutes": "#{num} simili",
+        "1#1 hour|#{num} hours": "#{num} waxtu",
+        "1#1 day|#{num} days": "#{num} bés",
+        "1#1 week|#{num} weeks": "#{num} ayubés",
+        "1#1 month|#{num} months": "#{num} weer",
+        "1#1 year|#{num} years": "#{num} at",
+        "1#1 sec|#{num} sec": "#{num} saa",
+        "1#1 min|#{num} min": "#{num} sim",
+        "1#1 hr|#{num} hrs": "#{num} wax",
+        "durationLongDays": "#{num} bés",
+        "1#1 wk|#{num} wks": "#{num} ayu",
+        "1#1 mon|#{num} mons": "#{num} wee",
+        "1#1 yr|#{num} yrs": "#{num} at",
+        "1#1 se|#{num} sec": "#{num} sa",
+        "1#1 mi|#{num} min": "#{num} si",
+        "durationMediumHours": "#{num} wa",
+        "1#1 dy|#{num} dys": "#{num} bé",
+        "durationMediumWeeks": "#{num} ay",
+        "1#1 mo|#{num} mos": "#{num} we",
+        "durationMediumYears": "#{num} at",
+        "#{num}s": "#{num} sa",
+        "durationShortMinutes": "#{num} si",
+        "#{num}h": "#{num} wa",
+        "#{num}d": "#{num} b",
+        "#{num}w": "#{num} ay",
+        "durationShortMonths": "#{num} we",
+        "#{num}y": "#{num} at"
+    },
+    "zu": {
+        "1#1 year|#{num} years": "one#{num} unyaka|#{num} iminyaka",
+        "1#1 yr|#{num} yrs": "one#{num} nyk|#{num} nyk",
+        "1#1 dy|#{num} dys": "one#{num} suku|#{num} suku",
+        "durationMediumWeeks": "one#{num} v|#{num} v",
+        "1#1 mo|#{num} mos": "one#{num} ng|#{num} ng",
+        "durationMediumYears": "one#{num} nk|#{num} nk",
+        "#{num}d": "one#{num} suku|#{num} suku",
+        "#{num}w": "one#{num} v|#{num} v",
+        "durationShortMonths": "one#{num} ng|#{num} ng",
+        "#{num}y": "one#{num} nk|#{num} nk"
     }
 }
 
@@ -303,14 +426,14 @@ console.log("\nMerging formats forward ...");
 console.log("\nPromoting sublocales ...");
 
 /*for (var language in dateFormats) {
-	if (language !== "und" && language !== "data") {
-		aux.promoteFormats(dateFormats[language], language, "dateformats.json");
-	}
+    if (language !== "und" && language !== "data") {
+        aux.promoteFormats(dateFormats[language], language, "dateformats.json");
+    }
 }
 for (var language in systemResources) {
-	if (language !== "und" && language !== "data") {
-		aux.promoteFormats(systemResources[language], language, "sysres.json");
-	}
+    if (language !== "und" && language !== "data") {
+        aux.promoteFormats(systemResources[language], language, "sysres.json");
+    }
 }*/
 
 console.log("\nPruning duplicated formats ...");
