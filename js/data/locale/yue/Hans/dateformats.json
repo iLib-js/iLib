@@ -1,66 +1,23 @@
 {
     "gregorian": {
-        "order": "{date} {time}",
         "date": {
             "dmwy": {
-                "f": "yyyy年M月d日EEEE",
-                "l": "yyyy年M月d日EEE",
+                "s": "yyyy/M/dE",
                 "m": "yyyy年M月d日EE",
-                "s": "yyyy/M/dE"
-            },
-            "dmy": {
-                "f": "yyyy年M月d日",
-                "l": "yyyy年M月d日",
-                "m": "yyyy年M月d日",
-                "s": "yyyy/M/d"
+                "l": "yyyy年M月d日EEE",
+                "f": "yyyy年M月d日EEEE"
             },
             "dmw": {
-                "f": "M月d日EEEE",
-                "l": "M月d日EEE",
+                "s": "M/dE",
                 "m": "M月d日EE",
-                "s": "M/dE"
-            },
-            "dm": {
-                "f": "M月d日",
-                "l": "M月d日",
-                "m": "M月d日",
-                "s": "M/d"
-            },
-            "my": {
-                "f": "yyyy年M",
-                "l": "yyyy年M",
-                "m": "yyyy年M",
-                "s": "yyyy/M"
+                "l": "M月d日EEE",
+                "f": "M月d日EEEE"
             },
             "dw": {
-                "f": "d日EEEE",
-                "l": "d日EEE",
+                "s": "dE",
                 "m": "d日EE",
-                "s": "dE"
-            },
-            "w": {
-                "f": "EEEE",
-                "l": "EEE",
-                "m": "EE",
-                "s": "E"
-            },
-            "d": {
-                "f": "d",
-                "l": "d",
-                "m": "d",
-                "s": "d"
-            },
-            "m": {
-                "f": "M",
-                "l": "M",
-                "m": "M",
-                "s": "M"
-            },
-            "y": {
-                "f": "yyyy",
-                "l": "yyyy",
-                "m": "yyyy",
-                "s": "yyyy"
+                "l": "d日EEE",
+                "f": "d日EEEE"
             },
             "l": {
                 "f": "L",
@@ -77,128 +34,24 @@
         },
         "time": {
             "12": {
-                "h": "h",
-                "m": "mm",
-                "s": "ss",
-                "ah": "ah时",
-                "hm": "h:mm",
-                "ms": "mm:ss",
-                "ahm": "ah:mm",
-                "hms": "h:mm:ss",
-                "hmz": "z h:mm",
-                "ahmz": "z ah:mm",
-                "ahms": "ah:mm:ss",
+                "ahmsz": "z ah:mm:ss",
                 "hmsz": "z h:mm:ss",
-                "ahmsz": "z ah:mm:ss"
+                "ahmz": "z ah:mm",
+                "hmz": "z h:mm",
+                "ah": "ah时"
             },
             "24": {
-                "h": "HH",
-                "m": "mm",
-                "s": "ss",
-                "ah": "HH",
-                "hm": "HH:mm",
-                "ms": "mm:ss",
-                "ahm": "HH:mm",
-                "hms": "HH:mm:ss",
-                "hmz": "z HH:mm",
-                "ahmz": "z HH:mm",
+                "ahmsz": "z HH:mm:ss",
                 "ahms": "HH:mm:ss",
                 "hmsz": "z HH:mm:ss",
-                "ahmsz": "z HH:mm:ss"
-            }
-        },
-        "range": {
-            "c00": {
-                "f": "{sy}年{sm}月{sd}日 {st} – {et}",
-                "l": "{sy}年{sm}月{sd}日 {st} – {et}",
-                "m": "{sy}年{sm}月{sd}日 {st} – {et}",
-                "s": "{sy}/{sm}/{sd} {st} – {et}"
-            },
-            "c01": {
-                "f": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}",
-                "l": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}",
-                "m": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}",
-                "s": "{sy}/{sm}/{sd} {st} – {ey}/{em}/{ed} {et}"
-            },
-            "c02": {
-                "f": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}",
-                "l": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}",
-                "m": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}",
-                "s": "{sy}/{sm}/{sd} {st} – {ey}/{em}/{ed} {et}"
-            },
-            "c03": {
-                "f": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}",
-                "l": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}",
-                "m": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}",
-                "s": "{sy}/{sm}/{sd} {st} – {ey}/{em}/{ed} {et}"
-            },
-            "c10": {
-                "f": "{sy}年{sm}月{sd}日 – {ed}",
-                "l": "{sy}年{sm}月{sd}日 – {ed}",
-                "m": "{sy}年{sm}月{sd}日 – {ed}",
-                "s": "{sy}/{sm}/{sd} – {ed}"
-            },
-            "c11": {
-                "f": "{sy}年{sm}月{sd}日 – {em}月{ed}日",
-                "l": "{sy}年{sm}月{sd}日 – {em}月{ed}日",
-                "m": "{sy}年{sm}月{sd}日 – {ey}年{em}月{ed}日",
-                "s": "{sy}/{sm}/{sd} – {ey}/{em}/{ed}"
-            },
-            "c12": {
-                "f": "{sy}年{sm}月{sd}日 – {ey}年{em}月{ed}日",
-                "l": "{sy}年{sm}月{sd}日 – {ey}年{em}月{ed}日",
-                "m": "{sy}年{sm}月{sd}日 – {ey}年{em}月{ed}日",
-                "s": "{sy}/{sm}/{sd} – {ey}/{em}/{ed}"
-            },
-            "c20": {
-                "f": "{sy}年{sm} – {ey}年{em}",
-                "l": "{sy}年{sm} – {ey}年{em}",
-                "m": "{sy}年{sm} – {ey}年{em}",
-                "s": "{sy}/{sm} – {ey}/{em}"
-            },
-            "c30": {
-                "f": "{sy} – {ey}",
-                "l": "{sy} – {ey}",
-                "m": "{sy} – {ey}",
-                "s": "{sy} – {ey}"
+                "hms": "HH:mm:ss",
+                "ahmz": "z HH:mm",
+                "ahm": "HH:mm",
+                "hmz": "z HH:mm",
+                "ah": "HH",
+                "hm": "HH:mm",
+                "h": "HH"
             }
         }
-    },
-    "dayPeriods": [
-        {
-            "at": 0
-        },
-        {
-            "from": 0,
-            "to": 300
-        },
-        {
-            "from": 0,
-            "to": 720
-        },
-        {
-            "from": 300,
-            "to": 480
-        },
-        {
-            "from": 480,
-            "to": 720
-        },
-        {
-            "from": 720,
-            "to": 780
-        },
-        {
-            "from": 720,
-            "to": 1440
-        },
-        {
-            "from": 780,
-            "to": 1140
-        },
-        {
-            "from": 1140,
-            "to": 1440
-        }
-    ]
+    }
 }

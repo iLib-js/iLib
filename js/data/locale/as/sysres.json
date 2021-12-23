@@ -79,6 +79,8 @@
     "a1": "অপৰাহ্ন",
     "G-1": "খ্ৰীষ্টপূৰ্ব",
     "G1": "চি. ই.",
+    "finalSeparatorFull": ", ",
+    "separatorMedium": ", ",
     "1#1 millisecond|#{num} milliseconds": "one#{num} মিলিছেকেণ্ড|#{num} মিলিছেকেণ্ড",
     "1#1 second|#{num} seconds": "one#{num} ছেকেণ্ড|#{num} ছেকেণ্ড",
     "1#1 minute|#{num} minutes": "one#{num} মিনিট|#{num} মিনিট",
@@ -153,12 +155,7 @@
     "#{num}w ago": "one#{num} সপ্তাহ পূৰ্বে|#{num} সপ্তাহ পূৰ্বে",
     "#{num}mo ago": "one#{num} মাহ পূৰ্বে|#{num} মাহ পূৰ্বে",
     "#{num}y ago": "one#{num} বছৰৰ পূৰ্বে|#{num} বছৰৰ পূৰ্বে",
-    "separatorFull": ", ",
-    "finalSeparatorFull": ", ",
-    "separatorLong": ", ",
     "finalSeparatorLong": ", ",
-    "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
-    "separatorShort": " ",
     "finalSeparatorShort": " "
 }

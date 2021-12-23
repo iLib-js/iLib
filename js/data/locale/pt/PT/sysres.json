@@ -10,6 +10,7 @@
     "a1": "da tarde",
     "G-1": "a.E.C.",
     "G1": "E.C.",
+    "separatorShort": ", ",
     "#{num} ms": "one#{num} ms|#{num} ms",
     "1#1 sec|#{num} sec": "one#{num} s|#{num} s",
     "1#1 min|#{num} min": "one#{num} min|#{num} min",
@@ -43,7 +44,6 @@
     "#in {num}y": "one#dentro de {num} ano|#dentro de {num} anos",
     "#{num}s ago": "one#há {num} s|#há {num} s",
     "#{num}mi ago": "one#há {num} min|#há {num} min",
-    "separatorShort": ", ",
     "finalSeparatorShort": " e ",
     "B2": "da manhã",
     "B6": "da tarde"

@@ -77,8 +77,9 @@
     "E6": "ش",
     "a0": "چۈشتىن بۇرۇن",
     "a1": "چۈشتىن كېيىن",
-    "G-1": "BCE",
     "G1": "مىلادىيە",
+    "separatorShort": ", ",
+    "separatorMedium": ", ",
     "1#1 millisecond|#{num} milliseconds": "one#{num} مىللى سېكۇنت|#{num} مىللى سېكۇنت",
     "1#1 second|#{num} seconds": "one#{num} سېكۇنت|#{num} سېكۇنت",
     "1#1 minute|#{num} minutes": "one#{num} مىنۇت|#{num} مىنۇت",
@@ -153,12 +154,7 @@
     "#{num}w ago": "one#‏{num} ھەپتە ئىلگىرى|#‏{num} ھەپتە ئىلگىرى",
     "#{num}mo ago": "one#‏{num} ئاي ئىلگىرى|#‏{num} ئاي ئىلگىرى",
     "#{num}y ago": "one#‏{num} يىل ئىلگىرى|#‏{num} يىل ئىلگىرى",
-    "separatorFull": ", ",
-    "finalSeparatorFull": ", and ",
-    "separatorLong": ", ",
     "finalSeparatorLong": ", and ",
-    "separatorMedium": ", ",
     "finalSeparatorMedium": ", and ",
-    "separatorShort": ", ",
     "finalSeparatorShort": ", and "
 }
