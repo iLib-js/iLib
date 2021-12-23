@@ -2337,7 +2337,7 @@ module.exports = {
         }
 
         for (var comp in group) {
-            if (comp && comp !== "data") {
+            if (comp && comp !== "data" && comp !== "merged") {
                 module.exports.writeFormats(outputDir, outfile, group[comp], localeComponents.concat([comp]));
             }
         }

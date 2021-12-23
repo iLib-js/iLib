@@ -448,6 +448,7 @@ console.log("\nPruning duplicated formats ...");
 ///aux.pruneFormats(systemResources);
 //console.log("System resources after:\n" + JSON.stringify(systemResources, undefined, 4) );
 //fs.writeFileSync("post.sysres.json", JSON.stringify(systemResources, undefined, 4), "utf-8");
+mergeAndPrune(dateFormats);
 
 console.log("\nWriting out final files ...");
 
