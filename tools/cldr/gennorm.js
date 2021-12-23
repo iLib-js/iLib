@@ -138,7 +138,7 @@ function genCode(script, form) {
         "/*\n" +
         " * " + script + ".js - include file for normalization data for a particular script\n" +
         " * \n" +
-        " * Copyright © 2013 - 2018, 2020 JEDLSoft\n" +
+        " * Copyright © 2013-2018, 2020-2021 JEDLSoft\n" +
         " *\n" +
         " * Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
         " * you may not use this file except in compliance with the License.\n" +
