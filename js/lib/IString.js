@@ -1,7 +1,7 @@
 /*
  * IString.js - ilib string subclass definition
  *
- * Copyright © 2012-2015, 2018, JEDLSoft
+ * Copyright © 2012-2015, 2018, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -285,6 +285,9 @@ IString._fncs = {
         var parts = [];
         var numberDigits =  {};
         var operandSymbol =  {};
+
+        operandSymbol.c = 0;
+        operandSymbol.e = 0;
 
         if (numberToString.indexOf('.') !== -1) { //decimal
             parts = numberToString.split('.', 2);
@@ -640,7 +643,7 @@ IString.prototype = {
                         case "few":
                         case "many":
                             // CLDR locale-dependent number classes
-                            var ruleset = ilib.data["plurals_" + this.locale.getLanguage()]|| IString.plurals_default;
+                            var ruleset = ilib.data["plurals_" + this.locale.getLanguage()+ "_" + this.locale.getRegion()] || ilib.data["plurals_" + this.locale.getLanguage()]|| IString.plurals_default;
                             if (ruleset) {
                                 var rule = ruleset[limit];
                                 return IString._fncs.getValue(rule, operandValue);

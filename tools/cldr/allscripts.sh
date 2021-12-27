@@ -100,7 +100,7 @@ node genlist.js $TARGET
 node genmeasurementsystem.js $TARGET
 node gennumfmt.js $TARGET
 node genpapersizes.js $TARGET
-# node genplurals.js $TARGET   plurals need a rework before this can be uncommented
+node genplurals.js $TARGET   plurals need a rework before this can be uncommented
 node genunits.js $TARGET
 node genweekdata.js $TARGET
 node gennorm.js $TARGET
