@@ -286,9 +286,6 @@ IString._fncs = {
         var numberDigits =  {};
         var operandSymbol =  {};
 
-        operandSymbol.c = 0;
-        operandSymbol.e = 0;
-
         var exponentialNum = number.toExponential();
         var exponentialIndex = exponentialNum.indexOf("e");
         if (exponentialIndex != -1) {
