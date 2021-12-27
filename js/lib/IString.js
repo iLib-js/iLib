@@ -289,6 +289,16 @@ IString._fncs = {
         operandSymbol.c = 0;
         operandSymbol.e = 0;
 
+        var exponentialNum = number.toExponential();
+        var exponentialIndex = exponentialNum.indexOf("e");
+        if (exponentialIndex != -1) {
+            operandSymbol.c = parseInt(exponentialNum[exponentialIndex+2]);
+            operandSymbol.e = parseInt(exponentialNum[exponentialIndex+2]);
+        } else {
+            operandSymbol.c = 0;
+            operandSymbol.e = 0;
+        }
+
         if (numberToString.indexOf('.') !== -1) { //decimal
             parts = numberToString.split('.', 2);
             numberDigits.integerPart = parseInt(parts[0], 10);

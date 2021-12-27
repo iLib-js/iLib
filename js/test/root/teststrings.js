@@ -3748,7 +3748,7 @@ module.exports.teststrings = {
         str.setLocale("it-IT");
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(3e3), "Default items");
+        test.equal(str.formatChoice(3e6), "The items are many");
         test.done();
     },
     testStringFormatChoiceCharClassesComplexmt_es_ES2: function(test) {
@@ -4298,6 +4298,46 @@ module.exports.teststrings = {
         test.ok(str !== null);
 
         test.equal(str.formatChoice(17.3), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_es_ES: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("es-ES");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(3.1e6), "The items are many");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_es_ES2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("es-ES");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(3.1e3), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_fr_FR: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("fr-FR");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(6.1e9), "The items are many");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_fr_FR2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("fr-FR");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(4.1e2), "Default items");
         test.done();
     }
 };
