@@ -1,7 +1,7 @@
 /*
  * testdurfmt_or_IN.js - test the duration formatter object
  * 
- * Copyright © 2015,2017, JEDLSoft
+ * Copyright © 2015,2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s");
+        test.equal(duration.toString(), "shkr 1, w1, m1, r1, s1, minti1, d 1");
         test.done();
     },
     
@@ -69,7 +69,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s");
+        test.equal(duration.toString(), "shkr 1, w1, m1, r1, s1, minti1, d 1");
         test.done();
     },
     
@@ -91,7 +91,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 y, 1 m, 1 w, 1 d, 01:01:01");
+        test.equal(duration.toString(), "shkr 1, w1, m1, r1, 01:01:01");
         test.done();
     },
     
@@ -112,7 +112,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s");
+        test.equal(duration.toString(), "shkr 1, w1, m1, r1, s1, minti1, d 1");
         test.done();
     },
     
@@ -133,7 +133,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s");
+        test.equal(duration.toString(), "shkr 1, wat 1, mk 1, rana 1, s 1, mnt 1, d 1");
         test.done();
     },
     
@@ -154,7 +154,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s");
+        test.equal(duration.toString(), "shekara 1, wata 1, mako 1, rana 1, sa'a 1, minti 1, daƙiƙa 1");
         test.done();
     },
     
@@ -177,7 +177,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
                     minute: 2,
                     second: 2
                 });
-                test.equal(duration.toString(), "2 y, 2 m, 2 w, 2 d, 2 h, 2 min, 2 s");
+                test.equal(duration.toString(), "shekaru 2, watanni 2, makonni 2, ranaku 2, sa'o'i 2, mintoci 2, daƙiƙoƙi 2");
                 test.done();
             }
         });
@@ -202,7 +202,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
                     minute: 1,
                     second: 1
                 });
-                test.equal(duration.toString(), "1 y, 1 m, 1 w, 1 d, 01:01:01");
+                test.equal(duration.toString(), "shkr 1, w1, m1, r1, 01:01:01");
                 test.done();
             }
         });

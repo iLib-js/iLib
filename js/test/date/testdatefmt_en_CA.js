@@ -1,7 +1,7 @@
 /*
  * testdatefmt_en_CA.js - test the date formatter object in Canadian English
  * 
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,7 +79,7 @@ module.exports.testdatefmt_en_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Sep. 29, 2011");
+        test.equal(fmt.format(date), "Sept 29, 2011");
         test.done();
     },
     
@@ -231,7 +231,7 @@ module.exports.testdatefmt_en_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Sep. 29, 2011, 1:45 p.m.");
+        test.equal(fmt.format(date), "Sept 29, 2011, 1:45 p.m.");
         test.done();
     },
     

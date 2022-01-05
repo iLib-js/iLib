@@ -133,7 +133,7 @@ process.argv.forEach(function (val, index, array) {
 toDir = process.argv[2] || "tmp";
 
 console.log("genlist - generate list formatter data.\n" +
-    "Copyright (c) 2017-2020 JEDLSoft");
+    "Copyright (c) 2017-2021 JEDLSoft");
 
 console.log("output dir: " + toDir);
 
@@ -219,14 +219,17 @@ locales.forEach(function(locale) {
         var l = new Locale(locale);
         var position = localePatterns;
 
-        [l.getLanguage(), l.getScript(), l.getRegion()].forEach(function(prop) {
-            if (prop) {
-                if (!position[prop]) {
-                    position[prop] = {};
+        // und is the root, so leave it at the top
+        if (locale !== "und") {
+            [l.getLanguage(), l.getScript(), l.getRegion()].forEach(function(prop) {
+                if (prop) {
+                    if (!position[prop]) {
+                        position[prop] = {};
+                    }
+                    position = position[prop];
                 }
-                position = position[prop];
-            }
-        });
+            });
+        }
 
         position.data = patterns;
     } catch (e) {

@@ -1324,7 +1324,7 @@ module.exports.testdatefmt_wo_SN = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+30 s");
+        test.equal(fmt.formatRelative(reference, date), "fileek 30 saa");
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteBefore_wo_SN: function(test) {
@@ -1352,7 +1352,7 @@ module.exports.testdatefmt_wo_SN = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "-30 s");
+        test.equal(fmt.formatRelative(reference, date), "30 saa ci ginaaw");
         test.done();
     },
     testDateFmtFormatRelativeWithinHourAfter_wo_SN: function(test) {
@@ -1380,7 +1380,7 @@ module.exports.testdatefmt_wo_SN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+10 min");
+        test.equal(fmt.formatRelative(reference, date), "fileek 10 simili");
         test.done();
     },
     testDateFmtFormatRelativeWithinHourBefore_wo_SN: function(test) {
@@ -1408,7 +1408,7 @@ module.exports.testdatefmt_wo_SN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '-10 min');
+        test.equal(fmt.formatRelative(reference, date), '10 simili ci ginaaw');
         test.done();
     },
     testDateFmtFormatRelativeWithinDayAfter_wo_SN: function(test) {
@@ -1436,7 +1436,7 @@ module.exports.testdatefmt_wo_SN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '+4 h');
+        test.equal(fmt.formatRelative(reference, date), 'fileek 4 waxtu');
         test.done();
     },
     testDateFmtFormatRelativeWithinDayBefore_wo_SN: function(test) {
@@ -1464,7 +1464,7 @@ module.exports.testdatefmt_wo_SN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '-4 h');
+        test.equal(fmt.formatRelative(reference, date), '4 waxtu ci ginaaw');
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightAfter_wo_SN: function(test) {
@@ -1492,7 +1492,7 @@ module.exports.testdatefmt_wo_SN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '+4 d');
+        test.equal(fmt.formatRelative(reference, date), 'fileek 4 fan');
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightBefore_wo_SN: function(test) {
@@ -1520,7 +1520,7 @@ module.exports.testdatefmt_wo_SN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '-4 d');
+        test.equal(fmt.formatRelative(reference, date), '4 fan ci ginaaw');
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterAfter_wo_SN: function(test) {
@@ -1548,7 +1548,7 @@ module.exports.testdatefmt_wo_SN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '+9 w');
+        test.equal(fmt.formatRelative(reference, date), 'fileek 9 ayi-bis');
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterBefore_wo_SN: function(test) {
@@ -1576,7 +1576,7 @@ module.exports.testdatefmt_wo_SN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '-9 w');
+        test.equal(fmt.formatRelative(reference, date), '9 ayi-bis ci ginaaw');
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsAfter_wo_SN: function(test) {
@@ -1604,7 +1604,7 @@ module.exports.testdatefmt_wo_SN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '+16 m');
+        test.equal(fmt.formatRelative(reference, date), 'fileek 16 weer');
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsBefore_wo_SN: function(test) {
@@ -1632,7 +1632,7 @@ module.exports.testdatefmt_wo_SN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '-14 m');
+        test.equal(fmt.formatRelative(reference, date), '14 weer ci ginaaw');
         test.done();
     },
     testDateFmtFormatRelativeYearsAfter_wo_SN: function(test) {
@@ -1660,7 +1660,7 @@ module.exports.testdatefmt_wo_SN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '+14 y');
+        test.equal(fmt.formatRelative(reference, date), 'fileek 14 at');
         test.done();
     },
     testDateFmtFormatRelativeYearsBefore_wo_SN: function(test) {
@@ -1688,7 +1688,7 @@ module.exports.testdatefmt_wo_SN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '-21 y');
+        test.equal(fmt.formatRelative(reference, date), '21 at ci ginaaw');
         test.done();
     }
 };

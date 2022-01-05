@@ -1,0 +1,25 @@
+{
+    "generated": true,
+    "native_numfmt": {
+        "script": "Latn",
+        "decimalChar": ".",
+        "groupChar": ",",
+        "pctChar": "%",
+        "exponential": "E",
+        "prigroupSize": 3,
+        "currencyFormats": {
+            "common": "{s} {n}",
+            "commonNegative": "-{s} {n}"
+        },
+        "negativenumFmt": "-{n}",
+        "pctFmt": "{n}%",
+        "negativepctFmt": "-{n}%",
+        "roundingMode": "halfdown",
+        "useNative": false
+    },
+    "numfmt": {
+        "script": "Olck",
+        "digits": "᱐᱑᱒᱓᱔᱕᱖᱗᱘᱙",
+        "useNative": true
+    }
+}

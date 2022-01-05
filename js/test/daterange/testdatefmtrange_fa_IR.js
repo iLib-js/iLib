@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_fa_IR.js - test date range formatter object in Farsi/Iran
  *
- * Copyright © 2012-2017, 2020 JEDLSoft
+ * Copyright © 2012-2017, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -581,7 +581,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۲۰ نوامبر ۲۰۱۱ – ‏۳۱ ژانویهٔ ۲۰۱۲");
+        test.equal(fmt.format(start, end), '‏۲۰ نوامبر ۲۰۱۱ – ‏۳۱ ژانویه ۲۰۱۲');
         test.done();
     },
     testDateRngFmtIRRangeNextYearLong: function(test) {
@@ -702,7 +702,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'نوامبر ۲۰۱۱ – ژانویهٔ ۲۰۱۴');
+        test.equal(fmt.format(start, end), 'نوامبر ۲۰۱۱ – ژانویه ۲۰۱۴');
         test.done();
     },
     testDateRngFmtIRRangeMultiYearLong: function(test) {

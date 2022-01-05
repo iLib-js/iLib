@@ -1,7 +1,7 @@
 /*
  * testunitfmt_my_MM.js - test the unitfmt for my-MM
  *
- * Copyright © 2020 JEDLSoft
+ * Copyright © 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -177,7 +177,7 @@ module.exports.testunitfmt_my_MM = {
             useNative: false
         });
         var str = uf.format(m1);
-        test.equal(str, '1.665348 ယူကဂေါလံ');
+        test.equal(str, '1.665348 ယူကေ ဂါလံ');
         test.done();
     },
     testUnitFormatFuelConsumption2_my_MM: function(test) {
@@ -283,7 +283,7 @@ module.exports.testunitfmt_my_MM = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, '2 ယူကဂေါလံ');
+        test.equal(str, '2 ယူကေ ဂါလံ');
         test.done();
     },
     testUnitFormatWithUsageFuelVolume2_my_MM: function(test) {
@@ -322,7 +322,7 @@ module.exports.testunitfmt_my_MM = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, '22.5113 ယူကဂေါလံ');
+        test.equal(str, '22.5113 ယူကေ ဂါလံ');
         test.done();
     },
     testUnitFormatWithUsageOverrideSignificantDigits2_my_MM: function(test) {

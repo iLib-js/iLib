@@ -1,8 +1,13 @@
 version: 2.1
 jobs:
   test:
+    parameters:
+        docker_image:
+          type: string
+          default: cimg/openjdk:8.0-node
+
     docker:
-      - image: cimg/openjdk:8.0-node
+      - image: << parameters.docker_image >>
 
     environment:
       NODE_OPTIONS: "--max-old-space-size=3072"
@@ -28,6 +33,8 @@ jobs:
           name: Set up node packages
           command: |
             rm -rf node_modules package-lock.json
+            echo "node version: " $(node -v)
+            echo "npm version: " $(npm -v)
             npm install
 
       - run:
@@ -51,4 +58,13 @@ workflows:
   version: 2
   test-all-node-versions:
     jobs:
-      - test
+      - test:
+          docker_image: circleci/node:8-browsers
+      - test:
+          docker_image: circleci/node:10-browsers
+      - test:
+          docker_image: circleci/node:12-browsers
+      - test:
+          docker_image: circleci/node:14-browsers
+      - test:
+          docker_image: circleci/node:16-browsers

@@ -932,8 +932,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"mr-IN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "म.पू.");
-        test.equal(fmt[1].name, "म.उ.");
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
 
         test.done();
     },
@@ -1032,8 +1032,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"sr-Cyrl-RS"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "пре подне");
-        test.equal(fmt[1].name, "по подне");
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
 
         test.done();
     },
@@ -1042,8 +1042,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"sr-Latn-RS"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "pre podne");
-        test.equal(fmt[1].name, "po podne");
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
 
         test.done();
     },

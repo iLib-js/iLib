@@ -1,7 +1,7 @@
 /*
  * testnumfmt.js - test the number formatter object
  *
- * Copyright © 2012-2018, 2020 JEDLSoft
+ * Copyright © 2012-2018, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4686,7 +4686,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-111123456.785), "-111.123.456,78");
+        test.equal(fmt.format(-111123456.785), "−111.123.456,78");
         test.done();
     },
     
@@ -5013,7 +5013,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-100110.57), "−kr 100 110,57");
+        test.equal(fmt.format(-100110.57), "kr -100 110,57");
         test.done();
     },
     testNumFmtPercentageFormatRegular_nb_NO: function(test) {

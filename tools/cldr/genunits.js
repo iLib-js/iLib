@@ -1,7 +1,7 @@
 /*
  * genunits.js - ilib tool to generate the json data about unit formats
  *
- * Copyright © 2013, 2018, 2020 JEDLSoft
+ * Copyright © 2013, 2018, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ process.argv.forEach(function (val, index, array) {
 localeDirName = process.argv[2] || "tmp";
 
 console.log("genunits - tool to generate the json data about unit formats from the CLDR data.\n" +
-        "Copyright © 2013, 2018, 2020 JEDLSoft");
+        "Copyright © 2013, 2018, 2020-2021 JEDLSoft");
 
 console.log("locale dir: " + localeDirName );
 
@@ -143,7 +143,15 @@ var filter = {
     "per": true,
     "power2": true,
     "power3": true,
-    "times": true
+    "times": true,
+    "1024p1": true,
+    "1024p2": true,
+    "1024p3": true,
+    "1024p4": true,
+    "1024p5": true,
+    "1024p6": true,
+    "1024p7": true,
+    "1024p8": true
 };
 
 function frameUnits(data, locale, localeData) {
@@ -191,7 +199,7 @@ function frameUnits(data, locale, localeData) {
     };
 
     var l = new Locale(locale);
-    if (locale !== "root") {
+    if (locale !== "und") {
         // English can inherit from root, so just ignore it
         //if (l.getLanguage() !== "en") {
             ["long", "short"].forEach(function(size) {
@@ -629,7 +637,7 @@ cldrCore.forEach(function(locale) {
         localeData = frameUnits(data, locale, localeData);
     
         // now special case for the root
-        if (locale === "root") {
+        if (locale === "und") {
             writeUnits(localeData);
         } else {
             var l = new Locale(locale);

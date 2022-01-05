@@ -1,7 +1,7 @@
 /*
  * testdatefmt_zh_Hant_TW.js - test the date formatter object in Chinese (traditional) for Taiwan
  * 
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1369,7 +1369,7 @@ module.exports.testdatefmt_zh_Hant_TW = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "上午1:45");
+        test.equal(fmt.format(date), "凌晨1:45");
         test.done();
     },
     
@@ -1441,7 +1441,7 @@ module.exports.testdatefmt_zh_Hant_TW = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "下午12:37");
+        test.equal(fmt.format(date), "中午12:37");
         test.done();
     },
     
@@ -1489,7 +1489,7 @@ module.exports.testdatefmt_zh_Hant_TW = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "下午7:47");
+        test.equal(fmt.format(date), "晚上7:47");
         test.done();
     },
     
@@ -1513,7 +1513,7 @@ module.exports.testdatefmt_zh_Hant_TW = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "下午10:53");
+        test.equal(fmt.format(date), "晚上10:53");
         test.done();
     },
     
@@ -1563,7 +1563,7 @@ module.exports.testdatefmt_zh_Hant_TW = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "早上8:30");
+        test.equal(fmt.format(date), "上午8:30");
         test.done();
     },
     
@@ -1613,7 +1613,7 @@ module.exports.testdatefmt_zh_Hant_TW = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "正午12:37");
+        test.equal(fmt.format(date), "中午12:37");
         test.done();
     },
     
@@ -1663,7 +1663,7 @@ module.exports.testdatefmt_zh_Hant_TW = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "傍晚7:47");
+        test.equal(fmt.format(date), "晚上7:47");
         test.done();
     },
     

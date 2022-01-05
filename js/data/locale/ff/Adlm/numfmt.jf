@@ -1,0 +1,14 @@
+{
+    "generated": true,
+    "numfmt": {
+        "script": "Adlm",
+        "decimalChar": ".",
+        "groupChar": "⹁",
+        "currencyFormats": {
+            "common": "{s} {n}",
+            "commonNegative": "-{s} {n}"
+        },
+        "digits": "𞥐𞥑𞥒𞥓𞥔𞥕𞥖𞥗𞥘𞥙",
+        "useNative": true
+    }
+}

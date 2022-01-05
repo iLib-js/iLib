@@ -1,7 +1,7 @@
 /*
  * testlistfmt_es.js - test the list formatter object
  *
- * Copyright © 2017, 2020 JEDLSoft
+ * Copyright © 2017, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1135,7 +1135,7 @@ module.exports.testlistfmt_es = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["uno", "dos", "tres"]), "uno, dos, tres");
+        test.equal(fmt.format(["uno", "dos", "tres"]), "uno, dos y tres");
         test.done();
     },
     
@@ -1148,7 +1148,7 @@ module.exports.testlistfmt_es = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["uno", "dos", "tres", "cuatro"]), "uno, dos, tres, cuatro");
+        test.equal(fmt.format(["uno", "dos", "tres", "cuatro"]), "uno, dos, tres y cuatro");
         test.done();
     },
     // es-UY

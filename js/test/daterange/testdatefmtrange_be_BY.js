@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_be_BY.js - test the date range formatter object Belarussian/Belarus
  * 
- * Copyright © 2020, JEDLSoft
+ * Copyright © 2020-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,7 +83,7 @@ module.exports.testdatefmtrange_be_BY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31.12.2011, 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 сне 2011 г., 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtbeBYRangeInDayLong: function(test) {
@@ -188,7 +188,7 @@ module.exports.testdatefmtrange_be_BY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30.12.2011, 13:45 – 31.12.2011, 14:30");
+        test.equal(fmt.format(start, end), "30 сне 2011 г., 13:45 – 31 сне 2011 г., 14:30");
         test.done();
     },
     testDateRngFmtbeBYRangeNextDayLong: function(test) {
@@ -293,7 +293,7 @@ module.exports.testdatefmtrange_be_BY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31.12.2011");
+        test.equal(fmt.format(start, end), "20 – 31 сне 2011 г.");
         test.done();
     },
     testDateRngFmtbeBYRangeMultiDayLong: function(test) {
@@ -398,7 +398,7 @@ module.exports.testdatefmtrange_be_BY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20.11 – 31.12.2011");
+        test.equal(fmt.format(start, end), "20 ліс – 31 сне 2011 г.");
         test.done();
     },
     testDateRngFmtbeBYRangeNextMonthLong: function(test) {
@@ -503,7 +503,7 @@ module.exports.testdatefmtrange_be_BY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20.11.2011 – 31.01.2012");
+        test.equal(fmt.format(start, end), "20 ліс 2011 г. – 31 сту 2012 г.");
         test.done();
     },
     testDateRngFmtbeBYRangeNextYearLong: function(test) {
@@ -608,7 +608,7 @@ module.exports.testdatefmtrange_be_BY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11.2011 – 01.2014");
+        test.equal(fmt.format(start, end), "ліс 2011 г. – сту 2014 г.");
         test.done();
     },
     testDateRngFmtbeBYRangeMultiYearLong: function(test) {

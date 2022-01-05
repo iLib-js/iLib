@@ -68,6 +68,10 @@
     "EEEE6": "asiḍyas",
     "EEE6": "asiḍ",
     "EE6": "asiḍ",
+    "a0": "tifawt",
+    "a1": "tadggʷat",
+    "G-1": "daɛ",
+    "G1": "dfɛ",
     "cccc0": "asamas",
     "ccc0": "asa",
     "cc0": "asa",
@@ -95,7 +99,5 @@
     "cccc6": "asiḍyas",
     "ccc6": "asiḍ",
     "cc6": "asiḍ",
-    "c6": "S",
-    "a0": "tifawt",
-    "a1": "tadggʷat"
+    "c6": "S"
 }

@@ -1,7 +1,7 @@
 /*
  * testlistfmt_fa.js - test the list formatter object
  *
- * Copyright © 2017, 2020 JEDLSoft
+ * Copyright © 2017, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -186,7 +186,7 @@ module.exports.testlistfmt_fa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["یکی", "دو", "سه"]), "یکی،‏ دو،‏ سه");
+        test.equal(fmt.format(["یکی", "دو", "سه"]), 'یکی،‏ دو، و سه');
         test.done();
     },
     
@@ -199,7 +199,7 @@ module.exports.testlistfmt_fa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["یکی", "دو", "سه", "چهار"]), "یکی،‏ دو،‏ سه،‏ چهار");
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار"]), 'یکی،‏ دو،‏ سه، و چهار');
         test.done();
     },
     
@@ -212,7 +212,7 @@ module.exports.testlistfmt_fa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["یکی", "دو", "سه", "چهار", "پنج"]), "یکی،‏ دو،‏ سه،‏ چهار،‏ پنج");
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار", "پنج"]), 'یکی،‏ دو،‏ سه،‏ چهار، و پنج');
         test.done();
     },
     
@@ -561,7 +561,7 @@ module.exports.testlistfmt_fa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["یکی", "دو", "سه"]), "یکی،‏ دو،‏ سه");
+        test.equal(fmt.format(["یکی", "دو", "سه"]), 'یکی،‏ دو، و سه');
         test.done();
     },
     
@@ -574,7 +574,7 @@ module.exports.testlistfmt_fa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["یکی", "دو", "سه", "چهار"]), "یکی،‏ دو،‏ سه،‏ چهار");
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار"]), 'یکی،‏ دو،‏ سه، و چهار');
         test.done();
     },
     
@@ -587,7 +587,7 @@ module.exports.testlistfmt_fa = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["یکی", "دو", "سه", "چهار", "پنج"]), "یکی،‏ دو،‏ سه،‏ چهار،‏ پنج");
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار", "پنج"]), 'یکی،‏ دو،‏ سه،‏ چهار، و پنج');
         test.done();
     },
     

@@ -1,7 +1,7 @@
 /*
  * testdatefmt_el_GR.js - test the date formatter object in Greece
  * 
- * Copyright © 2012-2015,2017,2020 JEDLSoft
+ * Copyright © 2012-2015,2017,2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -598,7 +598,7 @@ module.exports.testdatefmt_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Π, 29/9");
+        test.equal(fmt.format(date), "Π 29/9");
         test.done();
     },
     
@@ -617,7 +617,7 @@ module.exports.testdatefmt_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Π, 29/9/11");
+        test.equal(fmt.format(date), "Π 29/9/11");
         test.done();
     },
     
@@ -751,7 +751,7 @@ module.exports.testdatefmt_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Πέμπτη, 29 Σεπτεμβρίου");
+        test.equal(fmt.format(date), "Πέμπτη 29 Σεπτεμβρίου");
         test.done();
     },
     
@@ -770,7 +770,7 @@ module.exports.testdatefmt_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Πέμπτη, 29 Σεπτεμβρίου 2011");
+        test.equal(fmt.format(date), "Πέμπτη 29 Σεπτεμβρίου 2011");
         test.done();
     },
     

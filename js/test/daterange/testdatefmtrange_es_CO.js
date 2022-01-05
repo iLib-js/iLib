@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_es_CO.js - test the date range formatter object in Spanish/Columbia
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_es_CO = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 de diciembre de 2011 a las 1:45 p. m. – 2:30 p. m.");
+        test.equal(fmt.format(start, end), "31 de diciembre de 2011, 1:45 p. m. – 2:30 p. m.");
         test.done();
     },
     testDateRngFmtCORangeinDayFull: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_es_CO = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 de diciembre de 2011 a las 1:45 p. m. – 2:30 p. m.");
+        test.equal(fmt.format(start, end), "31 de diciembre de 2011, 1:45 p. m. – 2:30 p. m.");
         test.done();
 
     },
@@ -214,7 +214,7 @@ module.exports.testdatefmtrange_es_CO = {
             second: 0,
             millisecond: 0
         })
-        test.equal(fmt.format(start, end), "30 de diciembre de 2011 a las 1:45 p. m. – 31 de diciembre de 2011 a las 2:30 p. m.");
+        test.equal(fmt.format(start, end), "30 de diciembre de 2011, 1:45 p. m. – 31 de diciembre de 2011, 2:30 p. m.");
         test.done();
     },
     testDateRngFmtCORangeNextDayFull: function(test) {
@@ -240,7 +240,7 @@ module.exports.testdatefmtrange_es_CO = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 de diciembre de 2011 a las 1:45 p. m. – 31 de diciembre de 2011 a las 2:30 p. m.");
+        test.equal(fmt.format(start, end), "30 de diciembre de 2011, 1:45 p. m. – 31 de diciembre de 2011, 2:30 p. m.");
         test.done();
     },
 

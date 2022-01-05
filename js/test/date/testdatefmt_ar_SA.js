@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ar_SA.js - test the date formatter in saudi Arabia
  * 
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -205,7 +205,7 @@ module.exports.testdatefmt_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏٢٩/٩/٢٠١١ ‏١:٤٥ م');
+        test.equal(fmt.format(date), '‏٢٩/٩/٢٠١١, ‏١:٤٥ م');
         test.done();
     },
     
@@ -224,7 +224,7 @@ module.exports.testdatefmt_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏٢٩/٠٩/٢٠١١ ‏١:٤٥ م');
+        test.equal(fmt.format(date), '‏٢٩/٠٩/٢٠١١, ‏١:٤٥ م');
         test.done();
     },
     
@@ -243,7 +243,7 @@ module.exports.testdatefmt_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏٢٩ سبتمبر ٢٠١١ ‏١:٤٥ م');
+        test.equal(fmt.format(date), '‏٢٩ سبتمبر ٢٠١١ في ‏١:٤٥ م');
         test.done();
     },
     
@@ -262,7 +262,7 @@ module.exports.testdatefmt_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date),'‏٢٩ سبتمبر ٢٠١١ ‏١:٤٥ م');
+        test.equal(fmt.format(date), '‏٢٩ سبتمبر ٢٠١١ في ‏١:٤٥ م');
         test.done();
     },
     
@@ -493,7 +493,7 @@ module.exports.testdatefmt_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏٢٩/٩/٢٠١١ ‏١:٤٥ م');
+        test.equal(fmt.format(date), '‏٢٩/٩/٢٠١١, ‏١:٤٥ م');
         test.done();
     },
     
@@ -1949,7 +1949,7 @@ module.exports.testdatefmt_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏29/9/2011 ‏1:45 م');
+        test.equal(fmt.format(date), '‏29/9/2011, ‏1:45 م');
         test.done();
     },
     
@@ -1968,7 +1968,7 @@ module.exports.testdatefmt_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏29/09/2011 ‏1:45 م');
+        test.equal(fmt.format(date), '‏29/09/2011, ‏1:45 م');
         test.done();
     },
     
@@ -1987,7 +1987,7 @@ module.exports.testdatefmt_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏29 سبتمبر 2011 ‏1:45 م');
+        test.equal(fmt.format(date), '‏29 سبتمبر 2011 في ‏1:45 م');
         test.done();
     },
     
@@ -2006,7 +2006,7 @@ module.exports.testdatefmt_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏29 سبتمبر 2011 ‏1:45 م');
+        test.equal(fmt.format(date), '‏29 سبتمبر 2011 في ‏1:45 م');
         test.done();
     }
     

@@ -1,7 +1,7 @@
 /*
  * testunitfmt_ky_KG.js - test the unitfmt for ky-KG
  *
- * Copyright © 2020 JEDLSoft
+ * Copyright © 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -169,7 +169,7 @@ module.exports.testunitfmt_ky_KG = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "л/2 км");
+        test.equal(str, "2 км/л");
         test.done();
     },
     testUnitFormatFuelConsumption2_ky_KG: function(test) {

@@ -1,7 +1,7 @@
 /*
  * testlistfmt.js - test the list formatter object
  *
- * Copyright © 2017, 2020 JEDLSoft
+ * Copyright © 2017, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1397,7 +1397,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ceann", "dhá", "trí"]), "ceann, dhá, agus trí");
+        test.equal(fmt.format(["ceann", "dhá", "trí"]), "ceann, dhá agus trí");
         test.done();
     },
     testListFmtUnitStylegaIENumberFormatFourFull: function(test) {
@@ -1409,7 +1409,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ceann", "dhá", "trí", "ceithre"]), "ceann, dhá, trí, agus ceithre");
+        test.equal(fmt.format(["ceann", "dhá", "trí", "ceithre"]), "ceann, dhá, trí agus ceithre");
         test.done();
     },
 

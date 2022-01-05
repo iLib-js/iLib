@@ -2857,7 +2857,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "Tuesday, 20 September 2011 at 1:45 pm");
+        test.equal(fmt.format(date), "Tuesday, September 20, 2011 at 1:45 pm");
         test.done();
     },
 
@@ -2987,7 +2987,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "martes, 20 de septiembre de 2011 a las 13:45");
+        test.equal(fmt.format(date), "martes, 20 de septiembre de 2011, 13:45");
         test.done();
     },
 
@@ -3013,7 +3013,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "martes, 20 de septiembre de 2011 a las 13:45");
+        test.equal(fmt.format(date), "martes, 20 de septiembre de 2011, 13:45");
         test.done();
 
     },
@@ -3092,7 +3092,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "Torsdag 20. oktober 2011 13.45");
+        test.equal(fmt.format(date), "torsdag 20. oktober 2011 kl. 13:45");
         test.done();
     },
 
@@ -3730,8 +3730,8 @@ module.exports.testdatefmt = {
         var fmt = DateFmt.getMeridiemsRange({locale: "mr-IN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "म.पू.");
-        test.equal(fmt[1].name, "म.उ.");
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
         test.done();
     },
     testDateFmtGetMeridiemsRangeName_with_or_IN_locale: function(test) {
