@@ -90,6 +90,13 @@ function escape(str) {
     return output;
 }
 
+// which types of files not to sort
+var noSortFiles = {
+    "ctrynames.json": true,
+    "currency.json": true,
+    "phonefmt.json": true
+};
+
 function walk(root, dir) {
     var results = [];
     var list = fs.readdirSync(path.join(root, dir));
@@ -118,7 +125,8 @@ function walk(root, dir) {
                         common.makeDirs(targetDir);
 
                         //console.log("writing file " + targetPath);
-                        fs.writeFileSync(targetPath, escape(stringify(obj, {space: 4})), 'utf8');
+                        var output = noSortFiles[file] ? JSON.stringify(obj, true, 4) : stringify(obj, {space: 4});
+                        fs.writeFileSync(targetPath, escape(output), 'utf8');
                     }
                 } catch (err) {
                     console.log("File " + sourcePath + " is not readable or does not contain valid JSON.");

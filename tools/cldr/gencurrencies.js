@@ -232,4 +232,6 @@ for(var i = 0; i < keys.length; i++) {
     sortedInfoObj[key].decimals = currencyInfoObj[key].decimals
     sortedInfoObj[key].sign = currencyInfoObj[key].sign
 }
-fs.writeFileSync(fnJson, stringify(sortedInfoObj, {space: 4}), "utf-8");
+// cannot use "stringify" because the order of the entries is important
+// and they cannot be resorted
+fs.writeFileSync(fnJson, JSON.stringify(sortedInfoObj, true, 4), "utf-8");
