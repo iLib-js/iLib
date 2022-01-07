@@ -1,7 +1,7 @@
 /* 
  * jsoncompress.js - ilib tool to remove the whitespace from json files
  *
- * Copyright © 2013, 2020 JEDLSoft
+ * Copyright © 2013, 2020, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@
  */
 var fs = require('fs');
 var util = require('util');
+var stringify = require('json-stable-stringify');
 var common = require('../cldr/common');
 var path = require('../../js/lib/Path.js');
 
@@ -117,7 +118,7 @@ function walk(root, dir) {
                         common.makeDirs(targetDir);
 
                         //console.log("writing file " + targetPath);
-                        fs.writeFileSync(targetPath, escape(JSON.stringify(obj)), 'utf8');
+                        fs.writeFileSync(targetPath, escape(stringify(obj, {space: 4})), 'utf8');
                     }
                 } catch (err) {
                     console.log("File " + sourcePath + " is not readable or does not contain valid JSON.");

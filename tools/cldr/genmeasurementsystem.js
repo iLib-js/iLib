@@ -1,7 +1,7 @@
 /*
  * genmeasurementsystem.js - ilib tool to generate the json data about day of the week
  *
- * Copyright © 2013, 2018, 2020 JEDLSoft
+ * Copyright © 2013, 2018, 2020, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@
  */
 var fs = require('fs');
 var path = require('path');
+var stringify = require('json-stable-stringify');
 var common = require('./common.js');
 var mkdirs = common.makeDirs;
 
@@ -52,7 +53,7 @@ if (process.argv.length > 2) {
 }
 
 console.log("genmeasurementsystem - generate the localeinfo units.jf files.\n" +
-"Copyright (c) 2013, 2018 JEDLSoft");
+"Copyright (c) 2013, 2018, 2020, 2022 JEDLSoft");
 
 console.log("output dir: " + toDir );
 
@@ -76,7 +77,7 @@ var systems = {
 };
 
 // root is metric
-fs.writeFileSync(path.join(toDir, "units.jf"), JSON.stringify(metric, true, 4), "utf-8");
+fs.writeFileSync(path.join(toDir, "units.jf"), stringify(metric, {space: 4}), "utf-8");
 
 for (var system in systems) {
     var content = {
@@ -89,6 +90,6 @@ for (var system in systems) {
         if (!fs.existsSync(dirname)) {
             mkdirs(dirname);
         }
-        fs.writeFileSync(filename, JSON.stringify(content, true, 4), "utf-8");
+        fs.writeFileSync(filename, stringify(content, {space: 4}), "utf-8");
     });
 }

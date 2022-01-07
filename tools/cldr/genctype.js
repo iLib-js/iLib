@@ -2,7 +2,7 @@
  * genctype.js - ilib tool to generate the json ctype information from the Unicode
  * data files
  *
- * Copyright © 2013-2015, 2018, 2020 JEDLSoft
+ * Copyright © 2013-2015, 2018, 2020, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@
 var fs = require('fs');
 var util = require('util');
 var path = require('path');
+var stringify = require('json-stable-stringify');
 
 var common = require('./common.js');
 var charIterator = common.charIterator;
@@ -61,7 +62,7 @@ if (process.argv.length > 2) {
 }
 
 console.log("genctype - generate ctype data.\n" +
-    "Copyright (c) 2012 - 2015, 2018, 2020 JEDLSoft");
+    "Copyright (c) 2012 - 2015, 2018, 2020, 2022 JEDLSoft");
 
 if (!fs.existsSync(toDir)) {
     common.makeDirs(toDir);
@@ -98,7 +99,7 @@ for (var letter in map) {
     if (letter && map[letter]) {
         fileName = path.join(toDir, "/ctype_" + letter + ".json");
         console.log(fileName);
-        fs.writeFileSync(fileName, JSON.stringify(map[letter], true, 4), "utf-8");
+        fs.writeFileSync(fileName, stringify(map[letter], {space: 4}), "utf-8");
     }
 }
 
@@ -409,6 +410,6 @@ var sortedCtype = sortKeys(ctypeMap)
 var merged = common.merge(manuallyHandleRange, sortedCtype);
 fileName = path.join(toDir, "ctype.json");
 console.log(fileName);
-fs.writeFileSync(fileName, JSON.stringify(merged, true, 4))
+fs.writeFileSync(fileName, stringify(merged, {space: 4}))
 
 console.log("Done.");

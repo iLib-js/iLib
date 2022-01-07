@@ -1,7 +1,7 @@
 /*
  * genscripts.js - ilib tool to generate the json data about ISO 15924 scripts
  * 
- * Copyright © 2013 - 2017, 2020-2021 JEDLSoft
+ * Copyright © 2013 - 2017, 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@
 
 var fs = require('fs');
 var path = require('path');
+var stringify = require('json-stable-stringify');
 var common = require('./common.js');
 var coelesce = common.coelesce;
 var scriptMetaData = require("cldr-core/scriptMetadata.json").scriptMetadata;
@@ -56,7 +57,7 @@ if (process.argv.length > 1) {
 }
 
 console.log("genscripts - generate scripts data.\n" +
-        "Copyright (c) 2012-2017, 2020-2021 JEDLSoft");
+        "Copyright (c) 2012-2017, 2020-2022 JEDLSoft");
 
 if (!fs.existsSync(toDir)) {
     console.error("Could not access target directory " + toDir);
@@ -119,7 +120,7 @@ import("iso-15924").then(function(isoModule) {
     // decompositions recursively here to pre-calculate the full decomposition 
     // before writing out the files.
     
-    fs.writeFileSync(path.join(toDir, "scripts.json"), JSON.stringify(scripts, true, 4), "utf-8");
+    fs.writeFileSync(path.join(toDir, "scripts.json"), stringify(scripts, {space: 4}), "utf-8");
     
     for (var i = 0; i < scriptsFile.length; i++) {
         entry = scriptsFile[i];
@@ -150,6 +151,6 @@ import("iso-15924").then(function(isoModule) {
     ranges.sort(compareByStart);
     rangeToScript = coelesce(ranges, 1);
     
-    fs.writeFileSync(path.join(toDir, "scriptToRange.json"), JSON.stringify(scriptToRange, true, 4), "utf-8");
-    fs.writeFileSync(path.join(toDir, "rangeToScript.json"), JSON.stringify(rangeToScript, true, 4), "utf-8");
+    fs.writeFileSync(path.join(toDir, "scriptToRange.json"), stringify(scriptToRange, {space: 4}), "utf-8");
+    fs.writeFileSync(path.join(toDir, "rangeToScript.json"), stringify(rangeToScript, {space: 4}), "utf-8");
 });

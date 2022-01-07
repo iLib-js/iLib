@@ -2,7 +2,7 @@
  * gencountrynames.js - ilib tool to generate the ctrynames.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2021 JEDLSoft
+ * Copyright © 2013-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@
 var fs = require('fs');
 var path = require('path');
 var xml2json = require("xml2json");
+var stringify = require('json-stable-stringify');
 var common = require('./common');
 var merge = common.merge;
 var Locale = common.Locale;
@@ -64,7 +65,7 @@ cldrDirName = process.argv[2];
 localeDirName = process.argv[3] || "tmp";
 
 console.log("gencountrynames - generate localized country names from the CLDR data.\n" +
-        "Copyright (c) 2013-2021 JEDLSoft");
+        "Copyright (c) 2013-2022 JEDLSoft");
 console.log("CLDR dir: " + cldrDirName);
 console.log("locale dir: " + localeDirName);
 
@@ -312,7 +313,7 @@ function writeResources(language, script, country, data, filePrefix, writeRevers
         console.log("Writing " + pathname);
         if (pathname && pathname !== ".") makeDirs(pathname);
         //data = sortObject(data);
-        fs.writeFileSync(path.join(pathname, filePrefix + "names.json"), JSON.stringify(data, true, 4), "utf-8");
+        fs.writeFileSync(path.join(pathname, filePrefix + "names.json"), stringify(data, {space: 4}), "utf-8");
 
         if (writeReverse) {
             for (var ctry in data) {
@@ -321,7 +322,7 @@ function writeResources(language, script, country, data, filePrefix, writeRevers
                 }
             }
 
-            fs.writeFileSync(path.join(pathname, filePrefix + "reverse.json"), JSON.stringify(reverse, true, 4), "utf-8");
+            fs.writeFileSync(path.join(pathname, filePrefix + "reverse.json"), stringify(reverse, {space: 4}), "utf-8");
         }
     } else {
         console.log("Skipping empty " + pathname);

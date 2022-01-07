@@ -1,7 +1,7 @@
 /*
  * genDayofWeek.js - ilib tool to generate the json data about day of the week
  *
- * Copyright © 2013-2018, 2020 JEDLSoft
+ * Copyright © 2013-2018, 2020, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@
  */
 var fs = require('fs');
 var supplementalData = require("cldr-core/supplemental/weekData.json");
+var stringify = require('json-stable-stringify');
 
 var common = require('./common.js');
 var coelesce = common.coelesce;
@@ -51,7 +52,7 @@ if (process.argv.length > 2) {
     toDir = process.argv[2];
 }
 console.log("genweekdata - generate the localeinfo firstdayofweek.jf files.\n" +
-    "Copyright (c) 2013-2018 JEDLSoft");
+    "Copyright (c) 2013-2018, 2020, 2022 JEDLSoft");
 console.log("output dir: " + toDir);
 
 if (!fs.existsSync(toDir)) {
@@ -80,7 +81,7 @@ for (var locale in firstDayOfWeekData) {
             fstOfWeek.firstDayOfWeek = dayProperties[firstDayOfWeekData[locale]];
             fstOfWeek.generated = true;
             var fn = path.join(filename, "firstdayofweek.jf");
-            fs.writeFileSync(fn, JSON.stringify(fstOfWeek, true, 4), "utf-8");
+            fs.writeFileSync(fn, stringify(fstOfWeek, {space: 4}), "utf-8");
         }
     }
 }
@@ -101,7 +102,7 @@ for (var locale in weekendStartData) {
     weekendStart.weekendStart = dayProperties[weekendStartData[locale]];
     weekendStart.generated = true;
     var fn = path.join(filename, "weekendstart.jf");
-    fs.writeFileSync(fn, JSON.stringify(weekendStart, true, 4), "utf-8");
+    fs.writeFileSync(fn, stringify(weekendStart, {space: 4}), "utf-8");
 }
 
 var weekendEnd = {};
@@ -120,5 +121,5 @@ for (var locale in weekendEndData) {
     weekendEnd.weekendEnd = dayProperties[weekendEndData[locale]];
     weekendEnd.generated = true;
     var fn = path.join(filename, "weekendend.jf");
-    fs.writeFileSync(fn, JSON.stringify(weekendEnd, true, 4), "utf-8");
+    fs.writeFileSync(fn, stringify(weekendEnd, {space: 4}), "utf-8");
 }

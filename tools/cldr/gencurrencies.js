@@ -23,6 +23,7 @@
  */
 var fs = require('fs');
 var util = require('util');
+var stringify = require('json-stable-stringify');
 var common = require('./common.js');
 var coelesce = common.coelesce;
 var mkdirs = common.makeDirs;
@@ -140,13 +141,13 @@ var currencyInfoObj = {}; // currency information object for currency.json
 var filename, nameAndSign = [], cur = [];
 
 var rootCurrency = {"currency": "USD"}
-fs.writeFileSync(path.join(toDir, "currency.jf"), JSON.stringify(rootCurrency, true, 4), "utf-8");
+fs.writeFileSync(path.join(toDir, "currency.jf"), stringify(rootCurrency, {space: 4}), "utf-8");
 
 var zxxPath = path.join(toDir, "zxx");
 if (!fs.existsSync(zxxPath)) {
     mkdirs(zxxPath);
 }
-fs.writeFileSync(path.join(zxxPath, "currency.jf"), JSON.stringify(rootCurrency, true, 4), "utf-8");
+fs.writeFileSync(path.join(zxxPath, "currency.jf"), stringify(rootCurrency, {space: 4}), "utf-8");
 
 for (var region in currencyData.region) {
     if (region && currencyData.region[region]) {
@@ -170,7 +171,7 @@ for (var region in currencyData.region) {
             currencyInfoObj[cur[i]].decimals = getDecimals(cur[i], currencyData.fractions);
             currencyInfoObj[cur[i]].sign = nameAndSign['sign'];
             fn = path.join(filename, "currency.jf");
-            fs.writeFileSync(fn, JSON.stringify(currencyObj, true, 4), "utf-8");
+            fs.writeFileSync(fn, stringify(currencyObj, {space: 4}), "utf-8");
         }
     }
 }
@@ -231,4 +232,4 @@ for(var i = 0; i < keys.length; i++) {
     sortedInfoObj[key].decimals = currencyInfoObj[key].decimals
     sortedInfoObj[key].sign = currencyInfoObj[key].sign
 }
-fs.writeFileSync(fnJson, JSON.stringify(sortedInfoObj, true, 4), "utf-8");
+fs.writeFileSync(fnJson, stringify(sortedInfoObj, {space: 4}), "utf-8");

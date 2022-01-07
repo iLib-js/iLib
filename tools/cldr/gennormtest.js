@@ -2,7 +2,7 @@
  * gennormtest.js - ilib tool to generate the UNA normalization test data from the Unicode 
  * data files
  * 
- * Copyright © 2012-2015, 2020-2021 JEDLSoft
+ * Copyright © 2012-2015, 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@
 
 var fs = require('fs');
 var path = require('path');
+var stringify = require('json-stable-stringify');
 var common = require('./common.js');
 
 function usage() {
@@ -62,7 +63,7 @@ if (process.argv.length > 2) {
 }
 
 console.log("gennorm - generate normalization test data.\n" +
-        "Copyright © 2012-2015, 2020-2021 JEDLSoft");
+        "Copyright © 2012-2015, 2020-2022 JEDLSoft");
 
 if (!fs.existsSync(toDir)) {
     console.error("Could not access target directory " + toDir);
@@ -91,5 +92,5 @@ for (var i = 0; i < len; i++ ) {
 }
 
 fs.writeFileSync(path.join(toDir, "normdata.js"),
-    "var normtests = " + JSON.stringify(tests, true, 4) + ";\nif (typeof(module) !== 'undefined') module.exports=normtests;\n",
+    "var normtests = " + stringify(tests, {space: 4}) + ";\nif (typeof(module) !== 'undefined') module.exports=normtests;\n",
     "utf-8");
