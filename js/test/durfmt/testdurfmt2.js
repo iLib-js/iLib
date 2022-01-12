@@ -75,13 +75,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -153,13 +153,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -231,13 +231,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -539,8 +539,8 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_2[2], '2 r, 2 m, 2 t, 2 d');
         test.equal(textformatted_2[3], '2 r 2 m 2 t 2 d');
 
-        test.equal(textformatted_5[0], '5 let, 5 měsíců, 5 týdnů a 5 dní');
-        test.equal(textformatted_5[1], '5 let, 5 měs., 5 týd., 5 dní');
+        test.equal(textformatted_5[0], '5 let, 5 měsíců, 5 týdnů a 5 dnů');
+        test.equal(textformatted_5[1], '5 let, 5 měs., 5 týd., 5 dnů');
         test.equal(textformatted_5[2], '5 r, 5 m, 5 t, 5 d');
         test.equal(textformatted_5[3], '5 r 5 m 5 t 5 d');
 
@@ -597,7 +597,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_1[3], '1 t, 1 m, 1 s');
 
         test.equal(clockformatted_2[0], '2 timer, 2 minutter og 2 sekunder');
-        test.equal(clockformatted_2[1], '2 t, 2 min., 2 sek.');
+        test.equal(clockformatted_2[1], '2 t., 2 min., 2 sek.');
         test.equal(clockformatted_2[2], '2 t, 2 m, 2 s');
         test.equal(clockformatted_2[3], '2 t, 2 m, 2 s');
 
@@ -799,12 +799,12 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_2[3], '2 έ 2 μ 2 ε 2 η');
 
         test.equal(clockformatted_1[0], '1 ώρα, 1 λεπτό, 1 δευτερόλεπτο');
-        test.equal(clockformatted_1[1], '1 ώρα, 1 λεπ., 1 δευτ.');
+        test.equal(clockformatted_1[1], '1 ώ., 1 λ., 1 δευτ.');
         test.equal(clockformatted_1[2], '1 ώ, 1 λ, 1 δ');
         test.equal(clockformatted_1[3], '1 ώ 1 λ 1 δ');
 
         test.equal(clockformatted_2[0], '2 ώρες, 2 λεπτά, 2 δευτερόλεπτα');
-        test.equal(clockformatted_2[1], '2 ώρ., 2 λεπ., 2 δευτ.');
+        test.equal(clockformatted_2[1], '2 ώ., 2 λ., 2 δευτ.');
         test.equal(clockformatted_2[2], '2 ώ, 2 λ, 2 δ');
         test.equal(clockformatted_2[3], '2 ώ 2 λ 2 δ');
 
@@ -841,12 +841,12 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_17[3], '17 έ 17 μ 17 ε 17 η');
 
         test.equal(clockformatted_1[0], '1 ώρα, 1 λεπτό, 1 δευτερόλεπτο');
-        test.equal(clockformatted_1[1], '1 ώρα, 1 λεπ., 1 δευτ.');
+        test.equal(clockformatted_1[1], '1 ώ., 1 λ., 1 δευτ.');
         test.equal(clockformatted_1[2], '1 ώ, 1 λ, 1 δ');
         test.equal(clockformatted_1[3], '1 ώ 1 λ 1 δ');
 
         test.equal(clockformatted_17[0], '17 ώρες, 17 λεπτά, 17 δευτερόλεπτα');
-        test.equal(clockformatted_17[1], '17 ώρ., 17 λεπ., 17 δευτ.');
+        test.equal(clockformatted_17[1], '17 ώ., 17 λ., 17 δευτ.');
         test.equal(clockformatted_17[2], '17 ώ, 17 λ, 17 δ');
         test.equal(clockformatted_17[3], '17 ώ 17 λ 17 δ');
 
@@ -914,12 +914,12 @@ module.exports.testdurfmt2 = {
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
-        test.equal(textformatted_1[1], '1 yr, 1 m., 1 wk, 1 day');
+        test.equal(textformatted_1[1], '1 yr, 1 mth, 1 wk, 1 day');
         test.equal(textformatted_1[2], '1y, 1m, 1w, 1d');
         test.equal(textformatted_1[3], '1y 1m 1w 1d');
 
         test.equal(textformatted_16[0], '16 years, 16 months, 16 weeks, 16 days');
-        test.equal(textformatted_16[1], '16 yrs, 16 m., 16 wks, 16 days');
+        test.equal(textformatted_16[1], '16 yrs, 16 mths, 16 wks, 16 days');
         test.equal(textformatted_16[2], '16y, 16m, 16w, 16d');
         test.equal(textformatted_16[3], '16y 16m 16w 16d');
 
@@ -929,7 +929,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_1[3], '1h 1min. 1s.');
 
         test.equal(clockformatted_16[0], '16 hours, 16 minutes, 16 seconds');
-        test.equal(clockformatted_16[1], '16 hrs, 16 min., 16 sec.');
+        test.equal(clockformatted_16[1], '16 hrs, 16 mins, 16 secs');
         test.equal(clockformatted_16[3], '16h 16min. 16s.');
         test.equal(clockformatted_16[3], '16h 16min. 16s.');
 
@@ -994,27 +994,26 @@ module.exports.testdurfmt2 = {
             clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
             clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
-        //// CLDr 34 change
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
-        test.equal(textformatted_1[1], '1 yr., 1 mo., 1 wk., 1 day');
-        test.equal(textformatted_1[2], '1 y, 1 m, 1 w, 1 d');
-        test.equal(textformatted_1[3], '1 y 1 m 1 w 1 d');
+        test.equal(textformatted_1[1], '1 yr, 1 mo, 1 wk, 1 day');
+        test.equal(textformatted_1[2], '1y, 1m, 1w, 1d');
+        test.equal(textformatted_1[3], '1y 1m 1w 1d');
 
         test.equal(textformatted_2[0], '2 years, 2 months, 2 weeks, 2 days');
-        test.equal(textformatted_2[1], '2 yrs., 2 mos., 2 wks., 2 days'); // CLDR 34 change (month)
-        test.equal(textformatted_2[2], '2 y, 2 m, 2 w, 2 d');
-        test.equal(textformatted_2[3], '2 y 2 m 2 w 2 d');
+        test.equal(textformatted_2[1], '2 yrs, 2 mos, 2 wks, 2 days');
+        test.equal(textformatted_2[2], '2y, 2m, 2w, 2d');
+        test.equal(textformatted_2[3], '2y 2m 2w 2d');
 
         test.equal(clockformatted_1[0], '1 hour, 1 minute, 1 second');
-        test.equal(clockformatted_1[1], '1 hr., 1 min., 1 sec.');
-        test.equal(clockformatted_1[2], '1 h, 1 min., 1 sec.');
-        test.equal(clockformatted_1[3], '1 h 1 min. 1 sec.');
+        test.equal(clockformatted_1[1], '1 hr, 1 min, 1 sec');
+        test.equal(clockformatted_1[2], '1h, 1min, 1s');
+        test.equal(clockformatted_1[3], '1h 1min 1s');
 
         test.equal(clockformatted_2[0], '2 hours, 2 minutes, 2 seconds');
-        test.equal(clockformatted_2[1], '2 hrs., 2 min., 2 secs.');
-        test.equal(clockformatted_2[2], '2 h, 2 min., 2 sec.');
-        test.equal(clockformatted_2[3], '2 h 2 min. 2 sec.'); // CLDR 34 change
+        test.equal(clockformatted_2[1], '2 hrs, 2 mins, 2 secs');
+        test.equal(clockformatted_2[2], '2h, 2min, 2s');
+        test.equal(clockformatted_2[3], '2h 2min 2s');
 
         test.done();
     },
@@ -1939,13 +1938,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 seg.');
-        test.equal(clockformatted_1[2], '1h, 1min, 1seg.');
-        test.equal(clockformatted_1[3], '1h 1min 1seg.');
+        test.equal(clockformatted_1[2], '1h, 1m, 1seg.');
+        test.equal(clockformatted_1[3], '1h 1m 1seg.');
 
         test.equal(clockformatted_2[0], '2 horas, 2 minutos y 2 segundos');
         test.equal(clockformatted_2[1], '2 h, 2 min, 2 seg.');
-        test.equal(clockformatted_2[2], '2h, 2min, 2seg.');
-        test.equal(clockformatted_2[3], '2h 2min 2seg.');
+        test.equal(clockformatted_2[2], '2h, 2m, 2seg.');
+        test.equal(clockformatted_2[3], '2h 2m 2seg.');
 
         test.done();
     },
@@ -1980,13 +1979,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 s');
-        test.equal(clockformatted_1[3], '1h 1min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_16[0], '2 horas, 2 minutos y 2 segundos');
         test.equal(clockformatted_16[1], '2 h, 2 min, 2 s');
-        test.equal(clockformatted_16[2], '2h, 2min, 2 s');
-        test.equal(clockformatted_16[3], '2h 2min 2 s');
+        test.equal(clockformatted_16[2], '2h, 2m, 2s');
+        test.equal(clockformatted_16[3], '2h 2m 2s');
 
         test.done();
     },
@@ -2020,13 +2019,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 s');
-        test.equal(clockformatted_1[3], '1h 1min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_2[0], '2 horas, 2 minutos y 2 segundos');
         test.equal(clockformatted_2[1], '2 h, 2 min, 2 s');
-        test.equal(clockformatted_2[2], '2h, 2min, 2 s');
-        test.equal(clockformatted_2[3], '2h 2min 2 s');
+        test.equal(clockformatted_2[2], '2h, 2m, 2s');
+        test.equal(clockformatted_2[3], '2h 2m 2s');
 
         test.done();
     },
@@ -2101,13 +2100,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 seg.');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 seg.');
-        test.equal(clockformatted_1[3], '1h 1min 1 seg.');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_2[0], '2 horas, 2 minutos y 2 segundos');
         test.equal(clockformatted_2[1], '2 h, 2 min, 2 seg.');
-        test.equal(clockformatted_2[2], '2h, 2min, 2 seg.');
-        test.equal(clockformatted_2[3], '2h 2min 2 seg.');
+        test.equal(clockformatted_2[2], '2h, 2m, 2s');
+        test.equal(clockformatted_2[3], '2h 2m 2s');
 
         test.done();
     },
@@ -2142,13 +2141,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 s');
-        test.equal(clockformatted_1[3], '1h 1min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_16[0], '16 horas, 16 minutos y 16 segundos');
         test.equal(clockformatted_16[1], '16 h, 16 min, 16 s');
-        test.equal(clockformatted_16[2], '16h, 16min, 16 s');
-        test.equal(clockformatted_16[3], '16h 16min 16 s');
+        test.equal(clockformatted_16[2], '16h, 16m, 16s');
+        test.equal(clockformatted_16[3], '16h 16m 16s');
 
         test.done();
     },
@@ -2172,23 +2171,23 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
         test.equal(textformatted_1[1], '1 a, 1 m., 1 sem., 1 d');
-        test.equal(textformatted_1[2], '1 a, 1 m., 1 sem., 1 d');
-        test.equal(textformatted_1[3], '1 a 1 m. 1 sem. 1 d');
+        test.equal(textformatted_1[2], '1a, 1m, 1sem, 1d');
+        test.equal(textformatted_1[3], '1a 1m 1sem 1d');
 
         test.equal(textformatted_2[0], '2 años, 2 meses, 2 semanas y 2 días');
         test.equal(textformatted_2[1], '2 a, 2 m., 2 sem., 2 d');
-        test.equal(textformatted_2[2], '2 a, 2 m., 2 sem., 2 d');
-        test.equal(textformatted_2[3], '2 a 2 m. 2 sem. 2 d');
+        test.equal(textformatted_2[2], '2a, 2m, 2sem, 2d');
+        test.equal(textformatted_2[3], '2a 2m 2sem 2d');
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[3], '1 h 1 min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1min, 1s');
+        test.equal(clockformatted_1[3], '1h 1min 1s');
 
         test.equal(clockformatted_2[0], '2 horas, 2 minutos y 2 segundos');
         test.equal(clockformatted_2[1], '2 h, 2 min, 2 s');
-        test.equal(clockformatted_2[2], '2 h, 2 min, 2 s');
-        test.equal(clockformatted_2[3], '2 h 2 min 2 s');
+        test.equal(clockformatted_2[2], '2h, 2min, 2s');
+        test.equal(clockformatted_2[3], '2h 2min 2s');
 
         test.done();
     },
@@ -2223,13 +2222,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 s');
-        test.equal(clockformatted_1[3], '1h 1min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_16[0], '16 horas, 16 minutos y 16 segundos');
         test.equal(clockformatted_16[1], '16 h, 16 min, 16 s');
-        test.equal(clockformatted_16[2], '16h, 16min, 16 s');
-        test.equal(clockformatted_16[3], '16h 16min 16 s');
+        test.equal(clockformatted_16[2], '16h, 16m, 16s');
+        test.equal(clockformatted_16[3], '16h 16m 16s');
 
         test.done();
     },
@@ -2264,13 +2263,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 s');
-        test.equal(clockformatted_1[3], '1h 1min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_17[0], '17 horas, 17 minutos y 17 segundos');
         test.equal(clockformatted_17[1], '17 h, 17 min, 17 s');
-        test.equal(clockformatted_17[2], '17h, 17min, 17 s');
-        test.equal(clockformatted_17[3], '17h 17min 17 s');
+        test.equal(clockformatted_17[2], '17h, 17m, 17s');
+        test.equal(clockformatted_17[3], '17h 17m 17s');
 
         test.done();
     },
@@ -2304,13 +2303,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 s');
-        test.equal(clockformatted_1[3], '1h 1min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_2[0], '2 horas, 2 minutos y 2 segundos');
         test.equal(clockformatted_2[1], '2 h, 2 min, 2 s');
-        test.equal(clockformatted_2[2], '2h, 2min, 2 s');
-        test.equal(clockformatted_2[3], '2h 2min 2 s');
+        test.equal(clockformatted_2[2], '2h, 2m, 2s');
+        test.equal(clockformatted_2[3], '2h 2m 2s');
 
         test.done();
     },
@@ -2345,13 +2344,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 s');
-        test.equal(clockformatted_1[3], '1h 1min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_16[0], '16 horas, 16 minutos y 16 segundos');
         test.equal(clockformatted_16[1], '16 h, 16 min, 16 s');
-        test.equal(clockformatted_16[2], '16h, 16min, 16 s');
-        test.equal(clockformatted_16[3], '16h 16min 16 s');
+        test.equal(clockformatted_16[2], '16h, 16m, 16s');
+        test.equal(clockformatted_16[3], '16h 16m 16s');
 
         test.done();
     },
@@ -2386,13 +2385,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 s');
-        test.equal(clockformatted_1[3], '1h 1min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_17[0], '17 horas, 17 minutos y 17 segundos');
         test.equal(clockformatted_17[1], '17 h, 17 min, 17 s');
-        test.equal(clockformatted_17[2], '17h, 17min, 17 s');
-        test.equal(clockformatted_17[3], '17h 17min 17 s');
+        test.equal(clockformatted_17[2], '17h, 17m, 17s');
+        test.equal(clockformatted_17[3], '17h 17m 17s');
 
         test.done();
     },
@@ -2427,13 +2426,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 s');
-        test.equal(clockformatted_1[3], '1h 1min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_16[0], '16 horas, 16 minutos y 16 segundos');
         test.equal(clockformatted_16[1], '16 h, 16 min, 16 s');
-        test.equal(clockformatted_16[2], '16h, 16min, 16 s');
-        test.equal(clockformatted_16[3], '16h 16min 16 s');
+        test.equal(clockformatted_16[2], '16h, 16m, 16s');
+        test.equal(clockformatted_16[3], '16h 16m 16s');
 
         test.done();
     },
@@ -2467,13 +2466,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 s');
-        test.equal(clockformatted_1[3], '1h 1min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_2[0], '2 horas, 2 minutos y 2 segundos');
         test.equal(clockformatted_2[1], '2 h, 2 min, 2 s');
-        test.equal(clockformatted_2[2], '2h, 2min, 2 s');
-        test.equal(clockformatted_2[3], '2h 2min 2 s');
+        test.equal(clockformatted_2[2], '2h, 2m, 2s');
+        test.equal(clockformatted_2[3], '2h 2m 2s');
 
         test.done();
     },
@@ -2507,13 +2506,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 seg.');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 seg.');
-        test.equal(clockformatted_1[3], '1h 1min 1 seg.');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_2[0], '2 horas, 2 minutos y 2 segundos');
         test.equal(clockformatted_2[1], '2 h, 2 min, 2 seg.');
-        test.equal(clockformatted_2[2], '2h, 2min, 2 seg.');
-        test.equal(clockformatted_2[3], '2h 2min 2 seg.');
+        test.equal(clockformatted_2[2], '2h, 2m, 2s');
+        test.equal(clockformatted_2[3], '2h 2m 2s');
 
         test.done();
     },
@@ -2548,13 +2547,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 s');
-        test.equal(clockformatted_1[3], '1h 1min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_17[0], '17 horas, 17 minutos y 17 segundos');
         test.equal(clockformatted_17[1], '17 h, 17 min, 17 s');
-        test.equal(clockformatted_17[2], '17h, 17min, 17 s');
-        test.equal(clockformatted_17[3], '17h 17min 17 s');
+        test.equal(clockformatted_17[2], '17h, 17m, 17s');
+        test.equal(clockformatted_17[3], '17h 17m 17s');
 
         test.done();
     },
@@ -2578,24 +2577,24 @@ module.exports.testdurfmt2 = {
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
-        test.equal(textformatted_1[1], '1 a, 1 m, 1 sem, 1 día');
-        test.equal(textformatted_1[2], '1a, 1m, 1sem, 1d');
-        test.equal(textformatted_1[3], '1a 1m 1sem 1d');
+        test.equal(textformatted_1[1], '1 a, 1 m, 1 sem., 1 día');
+        test.equal(textformatted_1[2], '1a, 1m, 1sem., 1d');
+        test.equal(textformatted_1[3], '1a 1m 1sem. 1d');
 
         test.equal(textformatted_17[0], '17 años, 17 meses, 17 semanas y 17 días');
-        test.equal(textformatted_17[1], '17 a, 17 m, 17 sem, 17 días');
-        test.equal(textformatted_17[2], '17a, 17m, 17sem, 17d');
-        test.equal(textformatted_17[3], '17a 17m 17sem 17d');
+        test.equal(textformatted_17[1], '17 aa., 17 mm., 17 sems., 17 días');
+        test.equal(textformatted_17[2], '17a, 17m, 17sems., 17d');
+        test.equal(textformatted_17[3], '17a 17m 17sems. 17d');
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 s');
-        test.equal(clockformatted_1[3], '1h 1min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_17[0], '17 horas, 17 minutos y 17 segundos');
         test.equal(clockformatted_17[1], '17 h, 17 min, 17 s');
-        test.equal(clockformatted_17[2], '17h, 17min, 17 s');
-        test.equal(clockformatted_17[3], '17h 17min 17 s');
+        test.equal(clockformatted_17[2], '17h, 17m, 17s');
+        test.equal(clockformatted_17[3], '17h 17m 17s');
 
         test.done();
     },
@@ -2629,13 +2628,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 s');
-        test.equal(clockformatted_1[3], '1h 1min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_2[0], '2 horas, 2 minutos y 2 segundos');
         test.equal(clockformatted_2[1], '2 h, 2 min, 2 s');
-        test.equal(clockformatted_2[2], '2h, 2min, 2 s');
-        test.equal(clockformatted_2[3], '2h 2min 2 s');
+        test.equal(clockformatted_2[2], '2h, 2m, 2s');
+        test.equal(clockformatted_2[3], '2h 2m 2s');
 
         test.done();
     },
@@ -2670,13 +2669,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 s');
-        test.equal(clockformatted_1[3], '1h 1min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_16[0], '16 horas, 16 minutos y 16 segundos');
         test.equal(clockformatted_16[1], '16 h, 16 min, 16 s');
-        test.equal(clockformatted_16[2], '16h, 16min, 16 s');
-        test.equal(clockformatted_16[3], '16h 16min 16 s');
+        test.equal(clockformatted_16[2], '16h, 16m, 16s');
+        test.equal(clockformatted_16[3], '16h 16m 16s');
 
         test.done();
     },
@@ -3081,52 +3080,52 @@ module.exports.testdurfmt2 = {
             clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
         }
 
-        test.equal(textformatted_1[0], '1 bhliain, 1 mhí, 1 seachtain, agus 1 lá');
+        test.equal(textformatted_1[0], '1 bhliain, 1 mhí, 1 seachtain agus 1 lá');
         test.equal(textformatted_1[1], '1 bhl, 1 mhí, 1 scht, 1 lá');
         test.equal(textformatted_1[2], '1b, 1m, 1s, 1l');
         test.equal(textformatted_1[3], '1b 1m 1s 1l');
 
-        test.equal(textformatted_2[0], '2 bhliain, 2 mhí, 2 sheachtain, agus 2 lá');
+        test.equal(textformatted_2[0], '2 bhliain, 2 mhí, 2 sheachtain agus 2 lá');
         test.equal(textformatted_2[1], '2 bhl, 2 mhí, 2 scht, 2 lá');
         test.equal(textformatted_2[2], '2b, 2m, 2s, 2l');
         test.equal(textformatted_2[3], '2b 2m 2s 2l');
 
-        test.equal(textformatted_3[0], '3 bliana, 3 mhí, 3 seachtaine, agus 3 lá');
+        test.equal(textformatted_3[0], '3 bliana, 3 mhí, 3 seachtaine agus 3 lá');
         test.equal(textformatted_3[1], '3 bl, 3 mhí, 3 scht, 3 lá');
         test.equal(textformatted_3[2], '3b, 3m, 3s, 3l');
         test.equal(textformatted_3[3], '3b 3m 3s 3l');
 
-        test.equal(textformatted_7[0], '7 mbliana, 7 mí, 7 seachtaine, agus 7 lá');
+        test.equal(textformatted_7[0], '7 mbliana, 7 mí, 7 seachtaine agus 7 lá');
         test.equal(textformatted_7[1], '7 mbl, 7 mí, 7 scht, 7 lá');
         test.equal(textformatted_7[2], '7b, 7m, 7s, 7l');
         test.equal(textformatted_7[3], '7b 7m 7s 7l');
 
-        test.equal(textformatted_11[0], '11 bliain, 11 mí, 11 seachtain, agus 11 lá');
+        test.equal(textformatted_11[0], '11 bliain, 11 mí, 11 seachtain agus 11 lá');
         test.equal(textformatted_11[1], '11 bl, 11 mí, 11 scht, 11 lá');
         test.equal(textformatted_11[2], '11b, 11m, 11s, 11l');
         test.equal(textformatted_11[3], '11b 11m 11s 11l');
 
-        test.equal(clockformatted_1[0], '1 uair, 1 nóiméad, agus 1 soicind');
+        test.equal(clockformatted_1[0], '1 uair, 1 nóiméad agus 1 soicind');
         test.equal(clockformatted_1[1], '1 u, 1 nóim, 1 soic');
         test.equal(clockformatted_1[2], '1u, 1n, 1s');
         test.equal(clockformatted_1[3], '1u 1n 1s');
 
-        test.equal(clockformatted_2[0], '2 uair, 2 nóiméad, agus 2 shoicind');
+        test.equal(clockformatted_2[0], '2 uair, 2 nóiméad agus 2 shoicind');
         test.equal(clockformatted_2[1], '2 u, 2 nóim, 2 shoic');
         test.equal(clockformatted_2[2], '2u, 2n, 2s');
         test.equal(clockformatted_2[3], '2u 2n 2s');
 
-        test.equal(clockformatted_3[0], '3 huaire, 3 nóiméad, agus 3 shoicind');
+        test.equal(clockformatted_3[0], '3 huaire, 3 nóiméad agus 3 shoicind');
         test.equal(clockformatted_3[1], '3 u, 3 nóim, 3 shoic');
         test.equal(clockformatted_3[2], '3u, 3n, 3s');
         test.equal(clockformatted_3[3], '3u 3n 3s');
 
-        test.equal(clockformatted_7[0], '7 n-uaire, 7 nóiméad, agus 7 soicind');
+        test.equal(clockformatted_7[0], '7 n-uaire, 7 nóiméad agus 7 soicind');
         test.equal(clockformatted_7[1], '7 u, 7 nóim, 7 soic');
         test.equal(clockformatted_7[2], '7u, 7n, 7s');
         test.equal(clockformatted_7[3], '7u 7n 7s');
 
-        test.equal(clockformatted_11[0], '11 uair, 11 nóiméad, agus 11 soicind');
+        test.equal(clockformatted_11[0], '11 uair, 11 nóiméad agus 11 soicind');
         test.equal(clockformatted_11[1], '11 u, 11 nóim, 11 soic');
         test.equal(clockformatted_11[2], '11u, 11n, 11s');
         test.equal(clockformatted_11[3], '11u 11n 11s');
@@ -3264,12 +3263,12 @@ module.exports.testdurfmt2 = {
 
         // CLDR 34 change (long/short: hour, minute, second)
 
-        test.equal(textformatted_1[0], '1 वर्ष, 1 माह, 1 सप्ताह, और 1 दिन');
+        test.equal(textformatted_1[0], '1 वर्ष, 1 महीना, 1 सप्ताह, और 1 दिन');
         test.equal(textformatted_1[1], '1 वर्ष, 1 माह, 1 सप्ताह, 1 दिन');
         test.equal(textformatted_1[2], '1वर्ष, 1माह, 1 सप्ताह, 1दिन');
         test.equal(textformatted_1[3], '1वर्ष, 1माह, 1 सप्ताह, 1दिन');
 
-        test.equal(textformatted_2[0], '2 वर्ष, 2 माह, 2 सप्ताह, और 2 दिन');
+        test.equal(textformatted_2[0], '2 वर्ष, 2 महीना, 2 सप्ताह, और 2 दिन');
         test.equal(textformatted_2[1], '2 वर्ष, 2 माह, 2 सप्ताह, 2 दिन');
         test.equal(textformatted_2[2], '2वर्ष, 2माह, 2 सप्ताह, 2दिन');
         test.equal(textformatted_2[3], '2वर्ष, 2माह, 2 सप्ताह, 2दिन');
@@ -3470,23 +3469,23 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_1[0], '1 tahun, 1 bulan, 1 minggu, 1 hari');
         test.equal(textformatted_1[1], '1 thn, 1 bln, 1 mgg, 1 hr');
-        test.equal(textformatted_1[2], '1thn, 1bln, 1mgg, 1hr');
-        test.equal(textformatted_1[3], '1thn, 1bln, 1mgg, 1hr');
+        test.equal(textformatted_1[2], '1 thn, 1 bln, 1 mgg, 1 hr');
+        test.equal(textformatted_1[3], '1 thn, 1 bln, 1 mgg, 1 hr');
 
         test.equal(textformatted_2[0], '2 tahun, 2 bulan, 2 minggu, 2 hari');
         test.equal(textformatted_2[1], '2 thn, 2 bln, 2 mgg, 2 hr');
-        test.equal(textformatted_2[2], '2thn, 2bln, 2mgg, 2hr');
-        test.equal(textformatted_2[3], '2thn, 2bln, 2mgg, 2hr');
+        test.equal(textformatted_2[2], '2 thn, 2 bln, 2 mgg, 2 hr');
+        test.equal(textformatted_2[3], '2 thn, 2 bln, 2 mgg, 2 hr');
 
         test.equal(clockformatted_1[0], '1 jam, 1 menit, 1 detik');
         test.equal(clockformatted_1[1], '1 j, 1 mnt, 1 dtk');
-        test.equal(clockformatted_1[2], '1j, 1mnt, 1dtk');
-        test.equal(clockformatted_1[3], '1j, 1mnt, 1dtk');
+        test.equal(clockformatted_1[2], '1 j, 1 mnt, 1 dtk');
+        test.equal(clockformatted_1[3], '1 j, 1 mnt, 1 dtk');
 
         test.equal(clockformatted_2[0], '2 jam, 2 menit, 2 detik');
         test.equal(clockformatted_2[1], '2 j, 2 mnt, 2 dtk');
-        test.equal(clockformatted_2[2], '2j, 2mnt, 2dtk');
-        test.equal(clockformatted_2[3], '2j, 2mnt, 2dtk');
+        test.equal(clockformatted_2[2], '2 j, 2 mnt, 2 dtk');
+        test.equal(clockformatted_2[3], '2 j, 2 mnt, 2 dtk');
 
         test.done();
     },
@@ -3726,7 +3725,7 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_1[3], '1ವ, 1ತಿಂ., 1ವಾ, 1ದಿ');
 
         test.equal(textformatted_2[0], '2 ವರ್ಷಗಳು, 2 ತಿಂಗಳು, 2 ವಾರಗಳು, 2 ದಿನಗಳು');
-        test.equal(textformatted_2[1], '2 ವರ್ಷಗಳು, 2 ತಿಂ., 2 ವಾರಗಳು, 2 ದಿನಗಳು');
+        test.equal(textformatted_2[1], '2 ವರ್ಷಗಳು, 2 ತಿಂ.ಗಳು, 2 ವಾರಗಳು, 2 ದಿನಗಳು');
         test.equal(textformatted_2[2], '2ವ, 2ತಿಂ., 2ವಾ, 2ದಿ');
         test.equal(textformatted_2[3], '2ವ, 2ತಿಂ., 2ವಾ, 2ದಿ');
 
@@ -3911,7 +3910,7 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_9[3], '9 g. 9 m. 9 n. 9 d.');
 
         test.equal(clockformatted_21[0], '21 stunda, 21 minūte un 21 sekunde');
-        test.equal(clockformatted_21[1], '21 st., 21 min., 21 sek.');
+        test.equal(clockformatted_21[1], '21 st., 21 min, 21 sek.');
         test.equal(clockformatted_21[2], '21 h, 21 min, 21 s');
         test.equal(clockformatted_21[3], '21 h 21 min 21 s');
 
@@ -4295,35 +4294,35 @@ module.exports.testdurfmt2 = {
             clockformatted_5.push(textfmt.format({hour: 5,minute: 5,second: 5}).toString());
         }
 
-        test.equal(textformatted_1[0], '1 rok, 1 miesiąc, 1 tydzień i 1 dzień');
-        test.equal(textformatted_1[1], '1 rok, 1 mies., 1 tydz., 1 dzień');
+        test.equal(textformatted_1[0], '1 rok, 1 miesiąc, 1 tydzień i 1 doba');
+        test.equal(textformatted_1[1], '1 rok, 1 mies., 1 tydz., 1 doba');
         test.equal(textformatted_1[2], '1 r., 1 m-c, 1 tydz., 1 d.');
         test.equal(textformatted_1[3], '1 r., 1 m-c, 1 tydz., 1 d.');
 
-        test.equal(textformatted_2[0], '2 lata, 2 miesiące, 2 tygodnie i 2 dni');
-        test.equal(textformatted_2[1], '2 lata, 2 mies., 2 tyg., 2 dni');
-        test.equal(textformatted_2[2], '2 l., 2 m-ce, 2 tyg., 2 dn.');
-        test.equal(textformatted_2[3], '2 l., 2 m-ce, 2 tyg., 2 dn.');
+        test.equal(textformatted_2[0], '2 lata, 2 miesiące, 2 tygodnie i 2 doby');
+        test.equal(textformatted_2[1], '2 lata, 2 mies., 2 tyg., 2 doby');
+        test.equal(textformatted_2[2], '2 l., 2 m-ce, 2 t., 2 d.');
+        test.equal(textformatted_2[3], '2 l., 2 m-ce, 2 t., 2 d.');
 
-        test.equal(textformatted_5[0], '5 lat, 5 miesięcy, 5 tygodni i 5 dni');
-        test.equal(textformatted_5[1], '5 lat, 5 mies., 5 tyg., 5 dni');
-        test.equal(textformatted_5[2], '5 l., 5 m-cy, 5 tyg., 5 dn.');
-        test.equal(textformatted_5[3], '5 l., 5 m-cy, 5 tyg., 5 dn.');
+        test.equal(textformatted_5[0], '5 lat, 5 miesięcy, 5 tygodni i 5 dób');
+        test.equal(textformatted_5[1], '5 lat, 5 mies., 5 tyg., 5 dób');
+        test.equal(textformatted_5[2], '5 l., 5 m-cy, 5 tyg., 5 d.');
+        test.equal(textformatted_5[3], '5 l., 5 m-cy, 5 tyg., 5 d.');
 
         test.equal(clockformatted_1[0], '1 godzina, 1 minuta i 1 sekunda');
         test.equal(clockformatted_1[1], '1 godz., 1 min, 1 sek.');
-        test.equal(clockformatted_1[2], '1 g., 1 min, 1 s'); // CLDR 34 change (hour)
-        test.equal(clockformatted_1[3], '1 g., 1 min, 1 s'); // CLDR 34 change (hour)
+        test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[3], '1 h, 1 min, 1 s');
 
         test.equal(clockformatted_2[0], '2 godziny, 2 minuty i 2 sekundy');
         test.equal(clockformatted_2[1], '2 godz., 2 min, 2 sek.');
-        test.equal(clockformatted_2[2], '2 g., 2 min, 2 s'); // CLDR 34 change (hour)
-        test.equal(clockformatted_2[3], '2 g., 2 min, 2 s'); // CLDR 34 change (hour)
+        test.equal(clockformatted_2[2], '2 h, 2 min, 2 s');
+        test.equal(clockformatted_2[3], '2 h, 2 min, 2 s');
 
         test.equal(clockformatted_5[0], '5 godzin, 5 minut i 5 sekund');
         test.equal(clockformatted_5[1], '5 godz., 5 min, 5 sek.');
-        test.equal(clockformatted_5[2], '5 g., 5 min, 5 s'); // CLDR 34 change (hour)
-        test.equal(clockformatted_5[3], '5 g., 5 min, 5 s'); // CLDR 34 change (hour)
+        test.equal(clockformatted_5[2], '5 h, 5 min, 5 s');
+        test.equal(clockformatted_5[3], '5 h, 5 min, 5 s');
 
         test.done();
     },
@@ -4610,17 +4609,17 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_5[3], '5 л. 5 м. 5 н. 5 д.');
 
         test.equal(clockformatted_1[0], '1 час 1 минута 1 секунда');
-        test.equal(clockformatted_1[1], '1 ч 1 мин. 1 сек.');
+        test.equal(clockformatted_1[1], '1 ч 1 мин 1 с');
         test.equal(clockformatted_1[2], '1 ч 1 мин 1 с');
         test.equal(clockformatted_1[3], '1 ч 1 мин 1 с');
 
         test.equal(clockformatted_2[0], '2 часа 2 минуты 2 секунды');
-        test.equal(clockformatted_2[1], '2 ч 2 мин. 2 сек.');
+        test.equal(clockformatted_2[1], '2 ч 2 мин 2 с');
         test.equal(clockformatted_2[2], '2 ч 2 мин 2 с');
         test.equal(clockformatted_2[3], '2 ч 2 мин 2 с');
 
         test.equal(clockformatted_5[0], '5 часов 5 минут 5 секунд');
-        test.equal(clockformatted_5[1], '5 ч 5 мин. 5 сек.'); // CLDR 34 change.
+        test.equal(clockformatted_5[1], '5 ч 5 мин 5 с');
         test.equal(clockformatted_5[2], '5 ч 5 мин 5 с');
         test.equal(clockformatted_5[3], '5 ч 5 мин 5 с');
 
@@ -4664,17 +4663,17 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_25[3], '25 л. 25 м. 25 н. 25 д.');
 
         test.equal(clockformatted_41[0], '41 час 41 минута 41 секунда');
-        test.equal(clockformatted_41[1], '41 ч 41 мин. 41 сек.');
+        test.equal(clockformatted_41[1], '41 ч 41 мин 41 с');
         test.equal(clockformatted_41[2], '41 ч 41 мин 41 с');
         test.equal(clockformatted_41[3], '41 ч 41 мин 41 с');
 
         test.equal(clockformatted_24[0], '24 часа 24 минуты 24 секунды');
-        test.equal(clockformatted_24[1], '24 ч 24 мин. 24 сек.');
+        test.equal(clockformatted_24[1], '24 ч 24 мин 24 с');
         test.equal(clockformatted_24[2], '24 ч 24 мин 24 с');
         test.equal(clockformatted_24[3], '24 ч 24 мин 24 с');
 
         test.equal(clockformatted_25[0], '25 часов 25 минут 25 секунд');
-        test.equal(clockformatted_25[1], '25 ч 25 мин. 25 сек.'); // CLDR 34 change.
+        test.equal(clockformatted_25[1], '25 ч 25 мин 25 с');
         test.equal(clockformatted_25[2], '25 ч 25 мин 25 с');
         test.equal(clockformatted_25[3], '25 ч 25 мин 25 с');
 
@@ -4718,17 +4717,17 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_20[3], '20 л. 20 м. 20 н. 20 д.');
 
         test.equal(clockformatted_31[0], '31 час 31 минута 31 секунда');
-        test.equal(clockformatted_31[1], '31 ч 31 мин. 31 сек.');
+        test.equal(clockformatted_31[1], '31 ч 31 мин 31 с');
         test.equal(clockformatted_31[2], '31 ч 31 мин 31 с');
         test.equal(clockformatted_31[3], '31 ч 31 мин 31 с');
 
         test.equal(clockformatted_22[0], '22 часа 22 минуты 22 секунды');
-        test.equal(clockformatted_22[1], '22 ч 22 мин. 22 сек.');
+        test.equal(clockformatted_22[1], '22 ч 22 мин 22 с');
         test.equal(clockformatted_22[2], '22 ч 22 мин 22 с');
         test.equal(clockformatted_22[3], '22 ч 22 мин 22 с');
 
         test.equal(clockformatted_20[0], '20 часов 20 минут 20 секунд');
-        test.equal(clockformatted_20[1], '20 ч 20 мин. 20 сек.'); // CLDR 34 change.
+        test.equal(clockformatted_20[1], '20 ч 20 мин 20 с');
         test.equal(clockformatted_20[2], '20 ч 20 мин 20 с');
         test.equal(clockformatted_20[3], '20 ч 20 мин 20 с');
 
@@ -4773,17 +4772,17 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_19[3], '19 л. 19 м. 19 н. 19 д.');
 
         test.equal(clockformatted_21[0], '21 час 21 минута 21 секунда');
-        test.equal(clockformatted_21[1], '21 ч 21 мин. 21 сек.');
+        test.equal(clockformatted_21[1], '21 ч 21 мин 21 с');
         test.equal(clockformatted_21[2], '21 ч 21 мин 21 с');
         test.equal(clockformatted_21[3], '21 ч 21 мин 21 с');
 
         test.equal(clockformatted_4[0], '4 часа 4 минуты 4 секунды');
-        test.equal(clockformatted_4[1], '4 ч 4 мин. 4 сек.');
+        test.equal(clockformatted_4[1], '4 ч 4 мин 4 с');
         test.equal(clockformatted_4[2], '4 ч 4 мин 4 с');
         test.equal(clockformatted_4[3], '4 ч 4 мин 4 с');
 
         test.equal(clockformatted_19[0], '19 часов 19 минут 19 секунд');
-        test.equal(clockformatted_19[1], '19 ч 19 мин. 19 сек.'); // CLDR 34 change.
+        test.equal(clockformatted_19[1], '19 ч 19 мин 19 с');
         test.equal(clockformatted_19[2], '19 ч 19 мин 19 с');
         test.equal(clockformatted_19[3], '19 ч 19 мин 19 с');
 
@@ -4827,17 +4826,17 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_19[3], '19 л. 19 м. 19 н. 19 д.');
 
         test.equal(clockformatted_31[0], '31 час 31 минута 31 секунда');
-        test.equal(clockformatted_31[1], '31 ч 31 мин. 31 сек.');
+        test.equal(clockformatted_31[1], '31 ч 31 мин 31 с');
         test.equal(clockformatted_31[2], '31 ч 31 мин 31 с');
         test.equal(clockformatted_31[3], '31 ч 31 мин 31 с');
 
         test.equal(clockformatted_32[0], '32 часа 32 минуты 32 секунды');
-        test.equal(clockformatted_32[1], '32 ч 32 мин. 32 сек.');
+        test.equal(clockformatted_32[1], '32 ч 32 мин 32 с');
         test.equal(clockformatted_32[2], '32 ч 32 мин 32 с');
         test.equal(clockformatted_32[3], '32 ч 32 мин 32 с');
 
         test.equal(clockformatted_19[0], '19 часов 19 минут 19 секунд');
-        test.equal(clockformatted_19[1], '19 ч 19 мин. 19 сек.'); // CLDR 34 change.
+        test.equal(clockformatted_19[1], '19 ч 19 мин 19 с');
         test.equal(clockformatted_19[2], '19 ч 19 мин 19 с');
         test.equal(clockformatted_19[3], '19 ч 19 мин 19 с');
 
@@ -4881,17 +4880,17 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_5[3], '5 л. 5 м. 5 н. 5 д.');
 
         test.equal(clockformatted_1[0], '1 час 1 минута 1 секунда');
-        test.equal(clockformatted_1[1], '1 ч 1 мин. 1 сек.');
+        test.equal(clockformatted_1[1], '1 ч 1 мин 1 с');
         test.equal(clockformatted_1[2], '1 ч 1 мин 1 с');
         test.equal(clockformatted_1[3], '1 ч 1 мин 1 с');
 
         test.equal(clockformatted_2[0], '2 часа 2 минуты 2 секунды');
-        test.equal(clockformatted_2[1], '2 ч 2 мин. 2 сек.');
+        test.equal(clockformatted_2[1], '2 ч 2 мин 2 с');
         test.equal(clockformatted_2[2], '2 ч 2 мин 2 с');
         test.equal(clockformatted_2[3], '2 ч 2 мин 2 с');
 
         test.equal(clockformatted_5[0], '5 часов 5 минут 5 секунд');
-        test.equal(clockformatted_5[1], '5 ч 5 мин. 5 сек.');
+        test.equal(clockformatted_5[1], '5 ч 5 мин 5 с');
         test.equal(clockformatted_5[2], '5 ч 5 мин 5 с');
         test.equal(clockformatted_5[3], '5 ч 5 мин 5 с');
 
@@ -4985,7 +4984,7 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_2[2], '2 l, 2 m, 2 t, 2 d');
         test.equal(textformatted_2[3], '2 l, 2 m, 2 t, 2 d');
 
-        test.equal(textformatted_3[0], '3 let, 3 mesecev, 3 tednov in 3 dni');
+        test.equal(textformatted_3[0], '3 let, 3 meseci, 3 tedni in 3 dni');
         test.equal(textformatted_3[1], '3 l, 3 m, 3 t, 3 d');
         test.equal(textformatted_3[2], '3 l, 3 m, 3 t, 3 d');
         test.equal(textformatted_3[3], '3 l, 3 m, 3 t, 3 d');
@@ -5221,7 +5220,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_1[3], '1 ம.நே. 1 நிமி. 1 வி.');
 
         test.equal(clockformatted_2[0], '2 மணிநேரங்கள், 2 நிமிடங்கள் மற்றும் 2 விநாடிகள்');
-        test.equal(clockformatted_2[1], '2 மணிநேரம், 2 நிமிட, 2 விநாடிகள்');
+        test.equal(clockformatted_2[1], '2 மணிநேரம், 2 நிமிட, 2 விநாடி');
         test.equal(clockformatted_2[2], '2 ம.நே. 2 நிமி. 2 வி.');
         test.equal(clockformatted_2[3], '2 ம.நே. 2 நிமி. 2 வி.');
 
@@ -5502,34 +5501,34 @@ module.exports.testdurfmt2 = {
         }
 
         test.equal(textformatted_1[0], '1 рік, 1 місяць, 1 тиждень і 1 день');
-        test.equal(textformatted_1[1], '1 р., 1 міс., 1 тиж., 1 д.');
-        test.equal(textformatted_1[2], '1 р., 1 міс., 1 тиж., 1 дн.');
-        test.equal(textformatted_1[3], '1 р., 1 міс., 1 тиж., 1 дн.');
+        test.equal(textformatted_1[1], '1 р., 1 міс., 1 тиж., 1 дн.');
+        test.equal(textformatted_1[2], '1р, 1м, 1т, 1д');
+        test.equal(textformatted_1[3], '1р, 1м, 1т, 1д');
 
         test.equal(textformatted_2[0], '2 роки, 2 місяці, 2 тижні і 2 дні');
         test.equal(textformatted_2[1], '2 р., 2 міс., 2 тиж., 2 дн.');
-        test.equal(textformatted_2[2], '2 р., 2 міс., 2 тиж., 2 дн.');
-        test.equal(textformatted_2[3], '2 р., 2 міс., 2 тиж., 2 дн.');
+        test.equal(textformatted_2[2], '2р, 2м, 2т, 2д');
+        test.equal(textformatted_2[3], '2р, 2м, 2т, 2д');
 
         test.equal(textformatted_5[0], '5 років, 5 місяців, 5 тижнів і 5 днів');
         test.equal(textformatted_5[1], '5 р., 5 міс., 5 тиж., 5 дн.');
-        test.equal(textformatted_5[2], '5 р., 5 міс., 5 тиж., 5 дн.');
-        test.equal(textformatted_5[3], '5 р., 5 міс., 5 тиж., 5 дн.');
+        test.equal(textformatted_5[2], '5р, 5м, 5т, 5д');
+        test.equal(textformatted_5[3], '5р, 5м, 5т, 5д');
 
         test.equal(clockformatted_1[0], '1 година, 1 хвилина і 1 секунда');
         test.equal(clockformatted_1[1], '1 год, 1 хв, 1 с');
-        test.equal(clockformatted_1[2], '1 год, 1 хв, 1 с');
-        test.equal(clockformatted_1[3], '1 год, 1 хв, 1 с');
+        test.equal(clockformatted_1[2], '1 год., 1х, 1с');
+        test.equal(clockformatted_1[3], '1 год., 1х, 1с');
 
         test.equal(clockformatted_2[0], '2 години, 2 хвилини і 2 секунди');
         test.equal(clockformatted_2[1], '2 год, 2 хв, 2 с');
-        test.equal(clockformatted_2[2], '2 год, 2 хв, 2 с');
-        test.equal(clockformatted_2[3], '2 год, 2 хв, 2 с');
+        test.equal(clockformatted_2[2], '2 год., 2х, 2с');
+        test.equal(clockformatted_2[3], '2 год., 2х, 2с');
 
         test.equal(clockformatted_5[0], '5 годин, 5 хвилин і 5 секунд');
         test.equal(clockformatted_5[1], '5 год, 5 хв, 5 с');
-        test.equal(clockformatted_5[2], '5 год, 5 хв, 5 с');
-        test.equal(clockformatted_5[3], '5 год, 5 хв, 5 с');
+        test.equal(clockformatted_5[2], '5 год., 5х, 5с');
+        test.equal(clockformatted_5[3], '5 год., 5х, 5с');
 
         test.done();
     },
@@ -5637,22 +5636,22 @@ module.exports.testdurfmt2 = {
             clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
-        test.equal(textformatted_1[0], '1 năm, 1 tháng, 1 tuần và 1 ngày');
+        test.equal(textformatted_1[0], '1 năm, 1 tháng, 1 tuần, 1 ngày');
         test.equal(textformatted_1[1], '1 năm, 1 tháng, 1 tuần, 1 ngày');
         test.equal(textformatted_1[2], '1 năm, 1 tháng, 1 tuần, 1 ngày');
         test.equal(textformatted_1[3], '1 năm 1 tháng 1 tuần 1 ngày');
 
-        test.equal(textformatted_2[0], '2 năm, 2 tháng, 2 tuần và 2 ngày');
+        test.equal(textformatted_2[0], '2 năm, 2 tháng, 2 tuần, 2 ngày');
         test.equal(textformatted_2[1], '2 năm, 2 tháng, 2 tuần, 2 ngày');
         test.equal(textformatted_2[2], '2 năm, 2 tháng, 2 tuần, 2 ngày');
         test.equal(textformatted_2[3], '2 năm 2 tháng 2 tuần 2 ngày');
 
-        test.equal(clockformatted_1[0], '1 giờ, 1 phút và 1 giây');
+        test.equal(clockformatted_1[0], '1 giờ, 1 phút, 1 giây');
         test.equal(clockformatted_1[1], '1 giờ, 1 phút, 1 giây');
         test.equal(clockformatted_1[2], '1 giờ, 1 phút, 1 giây');
         test.equal(clockformatted_1[3], '1 giờ 1 phút 1 giây');
 
-        test.equal(clockformatted_2[0], '2 giờ, 2 phút và 2 giây');
+        test.equal(clockformatted_2[0], '2 giờ, 2 phút, 2 giây');
         test.equal(clockformatted_2[1], '2 giờ, 2 phút, 2 giây');
         test.equal(clockformatted_2[2], '2 giờ, 2 phút, 2 giây');
         test.equal(clockformatted_2[3], '2 giờ 2 phút 2 giây');
@@ -5971,23 +5970,23 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
         test.equal(textformatted_1[1], '1 a, 1 m., 1 sem., 1 d');
-        test.equal(textformatted_1[2], '1 a, 1 m., 1 sem., 1 d');
-        test.equal(textformatted_1[3], '1 a 1 m. 1 sem. 1 d');
+        test.equal(textformatted_1[2], '1a, 1m, 1sem, 1d');
+        test.equal(textformatted_1[3], '1a 1m 1sem 1d');
 
         test.equal(textformatted_17[0], '17 años, 17 meses, 17 semanas y 17 días');
         test.equal(textformatted_17[1], '17 a, 17 m., 17 sem., 17 d');
-        test.equal(textformatted_17[2], '17 a, 17 m., 17 sem., 17 d');
-        test.equal(textformatted_17[3], '17 a 17 m. 17 sem. 17 d');
+        test.equal(textformatted_17[2], '17a, 17m, 17sem, 17d');
+        test.equal(textformatted_17[3], '17a 17m 17sem 17d');
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[3], '1 h 1 min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1min, 1s');
+        test.equal(clockformatted_1[3], '1h 1min 1s');
 
         test.equal(clockformatted_17[0], '17 horas, 17 minutos y 17 segundos');
         test.equal(clockformatted_17[1], '17 h, 17 min, 17 s');
-        test.equal(clockformatted_17[2], '17 h, 17 min, 17 s');
-        test.equal(clockformatted_17[3], '17 h 17 min 17 s');
+        test.equal(clockformatted_17[2], '17h, 17min, 17s');
+        test.equal(clockformatted_17[3], '17h 17min 17s');
 
         test.done();
     },
@@ -6095,25 +6094,25 @@ module.exports.testdurfmt2 = {
             clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
-        test.equal(textformatted_1[0], '1 y, 1 m, 1 w, 1 d');
-        test.equal(textformatted_1[1], '1 y, 1 m, 1 w, 1 d');
-        test.equal(textformatted_1[2], '1 y, 1 m, 1 w, 1 d');
-        test.equal(textformatted_1[3], '1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[0], 'shekara 1, wata 1, mako 1, rana 1');
+        test.equal(textformatted_1[1], 'shkr 1, wat 1, mk 1, rana 1');
+        test.equal(textformatted_1[2], 'shkr 1, w1, m1, r1');
+        test.equal(textformatted_1[3], 'shkr 1, w1, m1, r1');
 
-        test.equal(textformatted_2[0], '2 y, 2 m, 2 w, 2 d');
-        test.equal(textformatted_2[1], '2 y, 2 m, 2 w, 2 d');
-        test.equal(textformatted_2[2], '2 y, 2 m, 2 w, 2 d');
-        test.equal(textformatted_2[3], '2 y, 2 m, 2 w, 2 d');
+        test.equal(textformatted_2[0], 'shekaru 2, watanni 2, makonni 2, ranaku 2');
+        test.equal(textformatted_2[1], 'shkru 2, wtnn 2, mkn 2, ranaku 2');
+        test.equal(textformatted_2[2], 's2, w2, m2, r2');
+        test.equal(textformatted_2[3], 's2, w2, m2, r2');
 
-        test.equal(clockformatted_1[0], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[3], '1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[0], "sa'a 1, minti 1, daƙiƙa 1");
+        test.equal(clockformatted_1[1], 's 1, mnt 1, d 1');
+        test.equal(clockformatted_1[2], 's1, minti1, d 1');
+        test.equal(clockformatted_1[3], 's1, minti1, d 1');
 
-        test.equal(clockformatted_2[0], '2 h, 2 min, 2 s');
-        test.equal(clockformatted_2[1], '2 h, 2 min, 2 s');
-        test.equal(clockformatted_2[2], '2 h, 2 min, 2 s');
-        test.equal(clockformatted_2[3], '2 h, 2 min, 2 s');
+        test.equal(clockformatted_2[0], "sa'o'i 2, mintoci 2, daƙiƙoƙi 2");
+        test.equal(clockformatted_2[1], 's 2, mnt 2, d 2');
+        test.equal(clockformatted_2[2], 's2, minti 2, d 2');
+        test.equal(clockformatted_2[3], 's2, minti 2, d 2');
 
         test.done();
     },
@@ -6325,13 +6324,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6403,13 +6402,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6481,13 +6480,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6560,13 +6559,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6639,13 +6638,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6717,13 +6716,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6796,13 +6795,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6875,13 +6874,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -6953,13 +6952,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -7031,13 +7030,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -7109,13 +7108,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -7265,13 +7264,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -7343,13 +7342,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -7421,13 +7420,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -7499,13 +7498,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_3[0], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
         test.equal(textformatted_3[1], '‏3 سنوات، و3 أشهر، و3 أسابيع، و3 أيام');
-        test.equal(textformatted_3[2], '‏3 سنة و3 شهر و3 أ و3 ي');
-        test.equal(textformatted_3[3], '‏3 سنة و3 شهر و3 أ و3 ي');
+        test.equal(textformatted_3[2], '‏3 سنة و3 أشهر و3 أ و3 ي');
+        test.equal(textformatted_3[3], '‏3 سنة و3 أشهر و3 أ و3 ي');
 
         test.equal(textformatted_11[0], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
         test.equal(textformatted_11[1], '‏11 سنة، و11 شهرًا، و11 أسبوعًا، و11 يومًا');
-        test.equal(textformatted_11[2], '‏11 سنة و11 شهر و11 أ و11 ي');
-        test.equal(textformatted_11[3], '‏11 سنة و11 شهر و11 أ و11 ي');
+        test.equal(textformatted_11[2], '‏11 سنة و11 شهرًا و11 أ و11 ي');
+        test.equal(textformatted_11[3], '‏11 سنة و11 شهرًا و11 أ و11 ي');
 
         test.equal(textformatted_100[0], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
         test.equal(textformatted_100[1], '‏100 سنة، و100 شهر، و100 أسبوع، و100 يوم');
@@ -7899,13 +7898,13 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1h, 1min, 1 s');
-        test.equal(clockformatted_1[3], '1h 1min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1m, 1s');
+        test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_17[0], '17 horas, 17 minutos y 17 segundos');
         test.equal(clockformatted_17[1], '17 h, 17 min, 17 s');
-        test.equal(clockformatted_17[2], '17h, 17min, 17 s');
-        test.equal(clockformatted_17[3], '17h 17min 17 s');
+        test.equal(clockformatted_17[2], '17h, 17m, 17s');
+        test.equal(clockformatted_17[3], '17h 17m 17s');
 
         test.done();
     },
@@ -7930,23 +7929,23 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
         test.equal(textformatted_1[1], '1 a, 1 m., 1 sem., 1 d' );
-        test.equal(textformatted_1[2], '1 a, 1 m., 1 sem., 1 d');
-        test.equal(textformatted_1[3], '1 a 1 m. 1 sem. 1 d');
+        test.equal(textformatted_1[2], '1a, 1m, 1sem, 1d');
+        test.equal(textformatted_1[3], '1a 1m 1sem 1d');
 
         test.equal(textformatted_2[0], '2 años, 2 meses, 2 semanas y 2 días');
         test.equal(textformatted_2[1], '2 a, 2 m., 2 sem., 2 d');
-        test.equal(textformatted_2[2], '2 a, 2 m., 2 sem., 2 d');
-        test.equal(textformatted_2[3], '2 a 2 m. 2 sem. 2 d');
+        test.equal(textformatted_2[2], '2a, 2m, 2sem, 2d');
+        test.equal(textformatted_2[3], '2a 2m 2sem 2d');
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[3], '1 h 1 min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1min, 1s');
+        test.equal(clockformatted_1[3], '1h 1min 1s');
 
         test.equal(clockformatted_2[0], '2 horas, 2 minutos y 2 segundos');
         test.equal(clockformatted_2[1], '2 h, 2 min, 2 s');
-        test.equal(clockformatted_2[2], '2 h, 2 min, 2 s');
-        test.equal(clockformatted_2[3], '2 h 2 min 2 s');
+        test.equal(clockformatted_2[2], '2h, 2min, 2s');
+        test.equal(clockformatted_2[3], '2h 2min 2s');
 
         test.done();
     },
@@ -7971,23 +7970,23 @@ module.exports.testdurfmt2 = {
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
         test.equal(textformatted_1[1], '1 a, 1 m., 1 sem., 1 d');
-        test.equal(textformatted_1[2], '1 a, 1 m., 1 sem., 1 d');
-        test.equal(textformatted_1[3], '1 a 1 m. 1 sem. 1 d');
+        test.equal(textformatted_1[2], '1a, 1m, 1sem, 1d');
+        test.equal(textformatted_1[3], '1a 1m 1sem 1d');
 
         test.equal(textformatted_17[0], '17 años, 17 meses, 17 semanas y 17 días');
         test.equal(textformatted_17[1], '17 a, 17 m., 17 sem., 17 d');
-        test.equal(textformatted_17[2], '17 a, 17 m., 17 sem., 17 d');
-        test.equal(textformatted_17[3], '17 a 17 m. 17 sem. 17 d');
+        test.equal(textformatted_17[2], '17a, 17m, 17sem, 17d');
+        test.equal(textformatted_17[3], '17a 17m 17sem 17d');
 
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
-        test.equal(clockformatted_1[3], '1 h 1 min 1 s');
+        test.equal(clockformatted_1[2], '1h, 1min, 1s');
+        test.equal(clockformatted_1[3], '1h 1min 1s');
 
         test.equal(clockformatted_17[0], '17 horas, 17 minutos y 17 segundos');
         test.equal(clockformatted_17[1], '17 h, 17 min, 17 s');
-        test.equal(clockformatted_17[2], '17 h, 17 min, 17 s');
-        test.equal(clockformatted_17[3], '17 h 17 min 17 s');
+        test.equal(clockformatted_17[2], '17h, 17min, 17s');
+        test.equal(clockformatted_17[3], '17h 17min 17s');
 
         test.done();
     },
@@ -9147,7 +9146,7 @@ module.exports.testdurfmt2 = {
             clockformatted_18.push(textfmt.format({hour: 18,minute: 18,second: 18}).toString());
         }
         test.equal(textformatted_1[0], '1 жыл, 1 ай, 1 апта, 1 күн');
-        test.equal(textformatted_1[1], '1 ж., 1 ай, 1 апт, 1 күн');
+        test.equal(textformatted_1[1], '1-ж., 1 ай, 1 апт, 1 күн');
         test.equal(textformatted_1[2], '1 ж., 1 ай, 1 ап, 1 кн');
         test.equal(textformatted_1[3], '1 ж. 1 ай 1 ап 1 кн');
 
@@ -9423,23 +9422,23 @@ module.exports.testdurfmt2 = {
             clockformatted_14.push(textfmt.format({hour: 14,minute: 14,second: 14}).toString());
         }
 
-        test.equal(textformatted_1[0], '1 နှစ် 1 လ 1 ပတ်နှင့် 1 ရက်');
-        test.equal(textformatted_1[1], '1 နှစ် 1 လ 1 ပတ် 1 ရက်');
+        test.equal(textformatted_1[0], '1 နှစ်- 1 လ- 1 ပတ်နှင့် 1 ရက်');
+        test.equal(textformatted_1[1], '1 နှစ်- 1 လ- 1 ပတ်- 1 ရက်');
         test.equal(textformatted_1[2], '1 နှစ် 1 လ 1 ပတ် 1 ရက်');
         test.equal(textformatted_1[3], '1 နှစ် 1 လ 1 ပတ် 1 ရက်');
 
-        test.equal(textformatted_14[0], '14 နှစ် 14 လ 14 ပတ်နှင့် 14 ရက်');
-        test.equal(textformatted_14[1], '14 နှစ် 14 လ 14 ပတ် 14 ရက်');
+        test.equal(textformatted_14[0], '14 နှစ်- 14 လ- 14 ပတ်နှင့် 14 ရက်');
+        test.equal(textformatted_14[1], '14 နှစ်- 14 လ- 14 ပတ်- 14 ရက်');
         test.equal(textformatted_14[2], '14 နှစ် 14 လ 14 ပတ် 14 ရက်');
         test.equal(textformatted_14[3], '14 နှစ် 14 လ 14 ပတ် 14 ရက်');
 
-        test.equal(clockformatted_1[0], '1 နာရီ 1 မိနစ်နှင့် 1 စက္ကန့်');
-        test.equal(clockformatted_1[1], '1 နာရီ 1 မိနစ် 1 စက္ကန့်');
+        test.equal(clockformatted_1[0], '1 နာရီ- 1 မိနစ်နှင့် 1 စက္ကန့်');
+        test.equal(clockformatted_1[1], '1 နာရီ- 1 မိနစ်- 1 စက္ကန့်');
         test.equal(clockformatted_1[2], '1 နာရီ 1 မိနစ် 1 s');
         test.equal(clockformatted_1[3], '1 နာရီ 1 မိနစ် 1 s');
 
-        test.equal(clockformatted_14[0], '14 နာရီ 14 မိနစ်နှင့် 14 စက္ကန့်');
-        test.equal(clockformatted_14[1], '14 နာရီ 14 မိနစ် 14 စက္ကန့်');
+        test.equal(clockformatted_14[0], '14 နာရီ- 14 မိနစ်နှင့် 14 စက္ကန့်');
+        test.equal(clockformatted_14[1], '14 နာရီ- 14 မိနစ်- 14 စက္ကန့်');
         test.equal(clockformatted_14[2], '14 နာရီ 14 မိနစ် 14 s');
         test.equal(clockformatted_14[3], '14 နာရီ 14 မိနစ် 14 s');
 
@@ -9607,26 +9606,27 @@ module.exports.testdurfmt2 = {
         }
 
         test.equal(textformatted_1[0], '1 unyaka, 1 inyanga, 1 iviki, 1 usuku');
-        test.equal(textformatted_1[1], '1 nyk, 1 nyg, 1 vik, 1 suk');
-        test.equal(textformatted_1[2], '1 nk, 1 ng, 1 v, 1 su');
-        test.equal(textformatted_1[3], '1 nk, 1 ng, 1 v, 1 su');
+        test.equal(textformatted_1[1], '1 nyk, 1 nyanga, 1 viki, 1 usuku');
+        test.equal(textformatted_1[2], '1 nk, 1 ng, 1 v, 1 suku');
+        test.equal(textformatted_1[3], '1 nk, 1 ng, 1 v, 1 suku');
 
         test.equal(textformatted_17[0], '17 iminyaka, 17 izinyanga, 17 amaviki, 17 izinsuku');
-        test.equal(textformatted_17[1], '17 nyk, 17 nyg, 17 vik, 17 suk');
-        test.equal(textformatted_17[2], '17 nk, 17 ng, 17 v, 17 su');
-        test.equal(textformatted_17[3], '17 nk, 17 ng, 17 v, 17 su');
+        test.equal(textformatted_17[1], '17 nyk, 17 izinyanga, 17 amaviki, 17 izinsuku');
+        test.equal(textformatted_17[2], '17 nk, 17 ng, 17 v, 17 suku');
+        test.equal(textformatted_17[3], '17 nk, 17 ng, 17 v, 17 suku');
 
         test.equal(clockformatted_1[0], '1 ihora, 1 iminithi, 1 isekhondi');
-        test.equal(clockformatted_1[1], '1 hor, 1 min, 1 sek');
-        test.equal(clockformatted_1[2], '1 ho, 1 mi, 1 se');
-        test.equal(clockformatted_1[3], '1 h, 1 m, 1 se');
+        test.equal(clockformatted_1[1], '1 hora, 1 iminithi, 1 sekhondi');
+        test.equal(clockformatted_1[2], '1 hora, 1 umzuzu, 1 s');
+        test.equal(clockformatted_1[3], '1 hora, 1 umzuzu, 1 s');
 
         test.equal(clockformatted_17[0], '17 amahora, 17 amaminithi, 17 amasekhondi');
-        test.equal(clockformatted_17[1], '17 hor, 17 min, 17 sek');
-        test.equal(clockformatted_17[2], '17 ho, 17 mi, 17 se');
-        test.equal(clockformatted_17[3], '17 h, 17 m, 17 se');
+        test.equal(clockformatted_17[1], '17 hr, 17 iminithi, 17 sec');
+        test.equal(clockformatted_17[2], '17 hora, 17 umzuzu, 17 s');
+        test.equal(clockformatted_17[3], '17 hora, 17 umzuzu, 17 s');
         test.done();
     },
+
     testDurFmt_wo_SN: function(test) {
         test.expect(16);
         // 1 3

@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_sr-Latn_RS.js - test the date range formatter object Serbian/Serbia for Latin
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,7 +83,7 @@ module.exports.testdatefmtrange_sr_Latn_RS = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31.12.2011. 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31. 12. 2011. 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtRSRangeInDayLong: function(test) {
@@ -188,7 +188,7 @@ module.exports.testdatefmtrange_sr_Latn_RS = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30.12.2011. 13:45 – 31.12.2011. 14:30");
+        test.equal(fmt.format(start, end), "30. 12. 2011. 13:45 – 31. 12. 2011. 14:30");
         test.done();
     },
     testDateRngFmtRSRangeNextDayLong: function(test) {
@@ -294,7 +294,7 @@ module.exports.testdatefmtrange_sr_Latn_RS = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31.12.2011.");
+        test.equal(fmt.format(start, end), "20 – 31. 12. 2011.");
         test.done();
     },
     testDateRngFmtRSRangeMultiDayLong: function(test) {
@@ -399,7 +399,7 @@ module.exports.testdatefmtrange_sr_Latn_RS = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20.11 – 31.12.2011.");
+        test.equal(fmt.format(start, end), "20. 11 – 31. 12. 2011.");
         test.done();
     },
     testDateRngFmtRSRangeNextMonthLong: function(test) {
@@ -504,7 +504,7 @@ module.exports.testdatefmtrange_sr_Latn_RS = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20.11.2011. – 31.01.2012.");
+        test.equal(fmt.format(start, end), "20. 11. 2011. – 31. 1. 2012.");
         test.done();
     },
     testDateRngFmtRSRangeNextYearLong: function(test) {
@@ -609,7 +609,7 @@ module.exports.testdatefmtrange_sr_Latn_RS = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11.2011. – 01.2014.");
+        test.equal(fmt.format(start, end), "11. 2011. – 1. 2014.");
         test.done();
     },
     testDateRngFmtRSRangeMultiYearLong: function(test) {

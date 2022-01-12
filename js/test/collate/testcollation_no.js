@@ -1,7 +1,7 @@
 /*
  * testcollation_no.js - test the Collator object in Norwegian
  * 
- * Copyright © 2014, 2017-2018, JEDLSoft
+ * Copyright © 2014, 2017-2018, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -625,9 +625,9 @@ module.exports.testcollation_no = {
         test.ok(typeof(col) !== "undefined");
     
         // comma is the thousands separator and period is the decimal separator
-        test.equal(col.compare("0,012,123.4", "12,123.4"), 0);
-        test.ok(col.compare("00123.4", "123") > 0);
-        test.ok(col.compare("00123.4", "124") < 0);
+        test.equal(col.compare("0 012 123,4", "12 123,4"), 0);
+        test.ok(col.compare("00123,4", "123") > 0);
+        test.ok(col.compare("00123,4", "124") < 0);
         test.done();
     }
     

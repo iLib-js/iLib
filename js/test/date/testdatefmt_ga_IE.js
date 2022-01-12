@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ga_IE.js - test the date formatter object in Irish Gaelic
  *
- * Copyright © 2012-2015,2017-2018, JEDLSoft
+ * Copyright © 2012-2015,2017-2018,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1389,7 +1389,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "i gceann 4 huaire an chloig");
+        test.equal(fmt.formatRelative(reference, date), "i gceann 4 uair an chloig");
         test.done();
     },
     testDateFmtFormatRelativeWithinDayBefore_ga_IE: function(test) {
@@ -1417,7 +1417,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "4 huaire an chloig ó shin");
+        test.equal(fmt.formatRelative(reference, date), "4 uair an chloig ó shin");
         test.done();
     },
 

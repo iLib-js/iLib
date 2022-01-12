@@ -180,7 +180,7 @@ module.exports.testscriptinfo = {
         var scripts = ScriptInfo.getAllScripts();
         test.ok(scripts !== null);
         
-        test.equal(scripts.length, 203);
+        test.equal(scripts.length, 210);
     
         test.equal(scripts[0], "Adlm");
         test.equal(scripts[1], "Afak");

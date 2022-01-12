@@ -8,10 +8,10 @@
         },
         "date": {
             "dmwy": {
-                "f": "EEEE, d MMMM yyyy",
-                "l": "EEE, d MMMM yyyy",
-                "m": "EE, d MMM yyyy",
-                "s": "E, d/M/yy"
+                "f": "EEEE d MMMM yyyy",
+                "l": "EEE d MMMM yyyy",
+                "m": "EE d MMM yyyy",
+                "s": "E d/M/yy"
             },
             "dmy": {
                 "f": "d MMMM yyyy",
@@ -20,10 +20,10 @@
                 "s": "d/M/yy"
             },
             "dmw": {
-                "f": "EEEE, d MMMM",
-                "l": "EEE, d MMMM",
-                "m": "EE, d MMM",
-                "s": "E, d/M"
+                "f": "EEEE d MMMM",
+                "l": "EEE d MMMM",
+                "m": "EE d MMM",
+                "s": "E d/M"
             },
             "dm": {
                 "f": "d MMMM",
@@ -38,10 +38,10 @@
                 "s": "M/yy"
             },
             "dw": {
-                "f": "EEEE, d",
-                "l": "EEE, d",
-                "m": "EE, d",
-                "s": "E, d"
+                "f": "EEEE d",
+                "l": "EEE d",
+                "m": "EE d",
+                "s": "E d"
             },
             "w": {
                 "f": "EEEE",

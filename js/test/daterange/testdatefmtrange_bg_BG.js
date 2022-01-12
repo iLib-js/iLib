@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_bg_BG.js - test the date range formatter object in Bulgarian/Bulgaria
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_bg_BG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31.12.11 г., 13:45 – 14:30');
+        test.equal(fmt.format(start, end), '31.12.11 г., 13:45 ч. – 14:30 ч.');
         test.done();
     },
     testDateRngFmtBGRangeinDayMedium: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_bg_BG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31.12.2011 г., 13:45 – 14:30');
+        test.equal(fmt.format(start, end), '31.12.2011 г., 13:45 ч. – 14:30 ч.');
         test.done();
     },
     testDateRngFmtBGRangeinDayLong: function(test) {
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_bg_BG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31 декември 2011 г., 13:45 – 14:30');
+        test.equal(fmt.format(start, end), '31 декември 2011 г., 13:45 ч. – 14:30 ч.');
         test.done();
     },
     testDateRngFmtBGRangeinDayFull: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_bg_BG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31 декември 2011 г., 13:45 – 14:30');
+        test.equal(fmt.format(start, end), '31 декември 2011 г., 13:45 ч. – 14:30 ч.');
         test.done();
     },
 
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_bg_BG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30.12.11 г., 13:45 – 31.12.11 г., 14:30');
+        test.equal(fmt.format(start, end), '30.12.11 г., 13:45 ч. – 31.12.11 г., 14:30 ч.');
         test.done();
     },
     testDateRngFmtBGRangeNextDayMedium: function(test) {
@@ -187,7 +187,7 @@ module.exports.testdatefmtrange_bg_BG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30.12.2011 г., 13:45 – 31.12.2011 г., 14:30');
+        test.equal(fmt.format(start, end), '30.12.2011 г., 13:45 ч. – 31.12.2011 г., 14:30 ч.');
         test.done();
     },
     testDateRngFmtBGRangeNextDayLong: function(test) {
@@ -213,7 +213,7 @@ module.exports.testdatefmtrange_bg_BG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30 декември 2011 г., 13:45 – 31 декември 2011 г., 14:30');
+        test.equal(fmt.format(start, end), '30 декември 2011 г., 13:45 ч. – 31 декември 2011 г., 14:30 ч.');
         test.done();
     },
     testDateRngFmtBGRangeNextDayFull: function(test) {
@@ -239,7 +239,7 @@ module.exports.testdatefmtrange_bg_BG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30 декември 2011 г., 13:45 – 31 декември 2011 г., 14:30');
+        test.equal(fmt.format(start, end), '30 декември 2011 г., 13:45 ч. – 31 декември 2011 г., 14:30 ч.');
         test.done();
     },
 

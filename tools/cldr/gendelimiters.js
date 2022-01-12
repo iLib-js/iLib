@@ -1,8 +1,8 @@
 /* 
  * gendelimiters.js - ilib tool to generate delimiters json fragments from  
  * the CLDR data files 
- *  
- * Copyright © 2013-2018, 2020 LGE 
+ *
+ * Copyright © 2013-2021 LGE
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -52,7 +52,7 @@ process.argv.forEach(function (val, index, array) {
 localeDirName = process.argv[2] || "tmp";
 
 console.log("gendelimiters - generate delimiters information files.\n" +
-"Copyright (c) 2013 - 2018 LGE\n");
+"Copyright (c) 2013-2021 LGE\n");
 
 console.log("locale dir: " + localeDirName);
 
@@ -68,8 +68,8 @@ console.log("Reading locale data into memory...");
 
 for (var i = 0; i < localeDirs.length; i++) {
     var dirname = localeDirs[i];
-    if (dirname === "root") {
-        // special case because "root" is not a valid locale specifier 
+    if (dirname === "und") {
+        // special case for "root"
         getLocaleData(dirname, undefined);
     } else {
         var locale = new Locale(dirname);
@@ -129,7 +129,7 @@ function getLocaleData(dirname, locale) {
             region = locale.getRegion();
             spec = locale.getSpec();	
         } else {
-            spec = "root";
+            spec = "und";
         }
 
         var filename = path.join("cldr-misc-full/main", dirname, "delimiters.json");
@@ -225,11 +225,11 @@ function getQuotationChars(language, script, region, data) {
     delimiters = {
         generated: true
     };
-    var delimiter_chars=data;
-    delimiter_symbol["quotationStart"]=delimiter_chars["quotationStart"];
-    delimiter_symbol["quotationEnd"]=delimiter_chars["quotationEnd"];
-    delimiter_symbol["alternateQuotationStart"]=delimiter_chars["alternateQuotationStart"];
-    delimiter_symbol["alternateQuotationEnd"]=delimiter_chars["alternateQuotationEnd"];
+    var delimiter_chars = data;
+    delimiter_symbol["quotationStart"] = delimiter_chars["quotationStart"];
+    delimiter_symbol["quotationEnd"] = delimiter_chars["quotationEnd"];
+    delimiter_symbol["alternateQuotationStart"] = delimiter_chars["alternateQuotationStart"];
+    delimiter_symbol["alternateQuotationEnd"] = delimiter_chars["alternateQuotationEnd"];
 
     //console.log("the delimiters are :"+JSON.stringify(delimiter_symbol));
     delimiters["delimiter"]=delimiter_symbol;
@@ -267,7 +267,7 @@ for (language in localeData) {
 }
 
 //resources.data = getQuotationChars(undefined, undefined, undefined, localeData.data); 
-console.log("Merging and pruning r...");
+console.log("Merging and pruning...");
 //console.log("\nLoaded existing resources " + JSON.stringify(resources));
 //writeQuotationChars(undefined, undefined, undefined, resources.data); 
 //console.log("\ndata before merge and pruning\n"+JSON.stringify(resources));

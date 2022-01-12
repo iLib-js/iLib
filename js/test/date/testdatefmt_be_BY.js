@@ -1,7 +1,7 @@
 /*
  * testdatefmt_be_BY.js - test the date formatter object in Belarus
  * 
- * Copyright © 2020, JEDLSoft
+ * Copyright © 2020-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -78,7 +78,7 @@ module.exports.testdatefmt_be_BY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.09.2011");
+        test.equal(fmt.format(date), "29 вер 2011 г.");
         test.done();
     },
 
@@ -230,7 +230,7 @@ module.exports.testdatefmt_be_BY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29.09.2011, 13:45');
+        test.equal(fmt.format(date), '29 вер 2011 г., 13:45');
         test.done();
     },
 

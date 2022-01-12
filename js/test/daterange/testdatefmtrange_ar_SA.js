@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_ar_SA.js - test date range formatter object in arabic/Saudi Arabia
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '‏٣١/١٢/٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م');
+        test.equal(fmt.format(start, end), '‏٣١/١٢/٢٠١١, ‏١:٤٥ م – ‏٢:٣٠ م');
         test.done();
     },
     testDateRngFmtSARangeinDayMedium: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '‏٣١/١٢/٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م');
+        test.equal(fmt.format(start, end), '‏٣١/١٢/٢٠١١, ‏١:٤٥ م – ‏٢:٣٠ م');
         test.done();
     },
     testDateRngFmtSARangeinDayLong: function(test) {
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '‏٣١ ديسمبر ٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م');
+        test.equal(fmt.format(start, end), '‏٣١ ديسمبر ٢٠١١ في ‏١:٤٥ م – ‏٢:٣٠ م');
         test.done();
     },
     testDateRngFmtSARangeinDayFull: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '‏٣١ ديسمبر ٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م');
+        test.equal(fmt.format(start, end), '‏٣١ ديسمبر ٢٠١١ في ‏١:٤٥ م – ‏٢:٣٠ م');
         test.done();
     },
     
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '‏٣٠/١٢/٢٠١١ ‏١:٤٥ م – ‏٣١/١٢/٢٠١١ ‏٢:٣٠ م');
+        test.equal(fmt.format(start, end), '‏٣٠/١٢/٢٠١١, ‏١:٤٥ م – ‏٣١/١٢/٢٠١١, ‏٢:٣٠ م');
         test.done();
     },
     testDateRngFmtSARangeNextDayMedium: function(test) {
@@ -187,7 +187,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '‏٣٠/١٢/٢٠١١ ‏١:٤٥ م – ‏٣١/١٢/٢٠١١ ‏٢:٣٠ م');
+        test.equal(fmt.format(start, end), '‏٣٠/١٢/٢٠١١, ‏١:٤٥ م – ‏٣١/١٢/٢٠١١, ‏٢:٣٠ م');
         test.done();
     },
     testDateRngFmtSARangeNextDayLong: function(test) {
@@ -213,7 +213,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '‏٣٠ ديسمبر ٢٠١١ ‏١:٤٥ م – ‏٣١ ديسمبر ٢٠١١ ‏٢:٣٠ م');
+        test.equal(fmt.format(start, end), '‏٣٠ ديسمبر ٢٠١١ في ‏١:٤٥ م – ‏٣١ ديسمبر ٢٠١١ في ‏٢:٣٠ م');
         test.done();
     },
     testDateRngFmtSARangeNextDayFull: function(test) {
@@ -239,7 +239,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '‏٣٠ ديسمبر ٢٠١١ ‏١:٤٥ م – ‏٣١ ديسمبر ٢٠١١ ‏٢:٣٠ م');
+        test.equal(fmt.format(start, end), '‏٣٠ ديسمبر ٢٠١١ في ‏١:٤٥ م – ‏٣١ ديسمبر ٢٠١١ في ‏٢:٣٠ م');
         test.done();
     },
     

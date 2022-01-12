@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_ca.js - test the date range formatter object Catalan
  * 
- * Copyright © 2020, JEDLSoft
+ * Copyright © 2020-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -109,7 +109,7 @@ module.exports.testdatefmtrange_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 de desembre de 2011 a les 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 de desembre de 2011, a les 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtcaADRangeInDayFull: function(test) {
@@ -135,7 +135,7 @@ module.exports.testdatefmtrange_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 de desembre de 2011 a les 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 de desembre de 2011, a les 13:45 – 14:30");
         test.done();
     },
     
@@ -214,7 +214,7 @@ module.exports.testdatefmtrange_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 de desembre de 2011 a les 13:45 – 31 de desembre de 2011 a les 14:30");
+        test.equal(fmt.format(start, end), "30 de desembre de 2011, a les 13:45 – 31 de desembre de 2011, a les 14:30");
         test.done();
     },
     testDateRngFmtcaADRangeNextDayFull: function(test) {
@@ -240,7 +240,7 @@ module.exports.testdatefmtrange_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 de desembre de 2011 a les 13:45 – 31 de desembre de 2011 a les 14:30");
+        test.equal(fmt.format(start, end), "30 de desembre de 2011, a les 13:45 – 31 de desembre de 2011, a les 14:30");
         test.done();
     },
     
@@ -765,7 +765,7 @@ module.exports.testdatefmtrange_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 de desembre de 2011 a les 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 de desembre de 2011, a les 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtcaESRangeInDayFull: function(test) {
@@ -791,7 +791,7 @@ module.exports.testdatefmtrange_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 de desembre de 2011 a les 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 de desembre de 2011, a les 13:45 – 14:30");
         test.done();
     },
     
@@ -870,7 +870,7 @@ module.exports.testdatefmtrange_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 de desembre de 2011 a les 13:45 – 31 de desembre de 2011 a les 14:30");
+        test.equal(fmt.format(start, end), "30 de desembre de 2011, a les 13:45 – 31 de desembre de 2011, a les 14:30");
         test.done();
     },
     testDateRngFmtcaESRangeNextDayFull: function(test) {
@@ -896,7 +896,7 @@ module.exports.testdatefmtrange_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 de desembre de 2011 a les 13:45 – 31 de desembre de 2011 a les 14:30");
+        test.equal(fmt.format(start, end), "30 de desembre de 2011, a les 13:45 – 31 de desembre de 2011, a les 14:30");
         test.done();
     },
     

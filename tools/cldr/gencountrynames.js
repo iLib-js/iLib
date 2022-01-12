@@ -2,7 +2,7 @@
  * gencountrynames.js - ilib tool to generate the ctrynames.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2018, 2020 JEDLSoft
+ * Copyright © 2013-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,7 +64,7 @@ cldrDirName = process.argv[2];
 localeDirName = process.argv[3] || "tmp";
 
 console.log("gencountrynames - generate localized country names from the CLDR data.\n" +
-        "Copyright (c) 2013-2018 JEDLSoft");
+        "Copyright (c) 2013-2021 JEDLSoft");
 console.log("CLDR dir: " + cldrDirName);
 console.log("locale dir: " + localeDirName);
 
@@ -434,7 +434,7 @@ function mergeAndSortRegions(localeData) {
 function sortCountries(localeData, locale) {
     if (localeData) {
         if (localeData.data) {
-            var loc = (locale === "root") ? "en-US" : locale;
+            var loc = (locale === "und") ? "en-US" : locale;
             var collator = new Collator({
                 locale: loc,
                 sensitivity: "case"
@@ -463,7 +463,7 @@ function sortCountries(localeData, locale) {
             // console.log("merging " + prop);
             if (prop && typeof(localeData[prop]) !== 'undefined' && prop !== 'data' && prop !== 'merged') {
                 // console.log(prop + " ");
-                sortCountries(localeData[prop], (locale !== "root") ? locale + '-' + prop : prop);
+                sortCountries(localeData[prop], (locale !== "und") ? locale + '-' + prop : prop);
             }
         }
     }
@@ -505,7 +505,7 @@ for (var i = 0; i < localeDirs.length; i++) {
     var localeSpec = localeDirs[i];
     var locale = new Locale(localeSpec);
 
-    if (localeSpec !== "root") {
+    if (localeSpec !== "und") {
         getCountryNames(localeData, localeSpec, locale);
         getRegionNames(regionData, localeSpec, locale);
     }
@@ -516,7 +516,7 @@ console.log("Merging and pruning locale data...");
 localeData.data = localeData.en.data;
 
 mergeCountries(localeData);
-sortCountries(localeData, "root");
+sortCountries(localeData, "und");
 
 // use English as the root language for regions
 regionData.data = regionData.en.data;

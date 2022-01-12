@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_es_UY.js - test the date range formatter object in French/France
  *
- * Copyright © 2012-2017, 2020 JEDLSoft
+ * Copyright © 2012-2017, 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_es_UY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/11 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31/12/11, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtUYRangeinDayMedium: function(test) {
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_es_UY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 de diciembre de 2011 a las 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 de diciembre de 2011, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtUYRangeinDayFull: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_es_UY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 de diciembre de 2011 a las 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 de diciembre de 2011, 13:45 – 14:30");
         test.done();
     },
 
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_es_UY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/11 13:45 – 31/12/11 14:30");
+        test.equal(fmt.format(start, end), "30/12/11, 13:45 – 31/12/11, 14:30");
         test.done();
     },
     testDateRngFmtUYRangeNextDayMedium: function(test) {
@@ -213,7 +213,7 @@ module.exports.testdatefmtrange_es_UY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 de diciembre de 2011 a las 13:45 – 31 de diciembre de 2011 a las 14:30");
+        test.equal(fmt.format(start, end), "30 de diciembre de 2011, 13:45 – 31 de diciembre de 2011, 14:30");
         test.done();
     },
     testDateRngFmtUYRangeNextDayFull: function(test) {
@@ -239,7 +239,7 @@ module.exports.testdatefmtrange_es_UY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 de diciembre de 2011 a las 13:45 – 31 de diciembre de 2011 a las 14:30");
+        test.equal(fmt.format(start, end), "30 de diciembre de 2011, 13:45 – 31 de diciembre de 2011, 14:30");
         test.done();
     },
 

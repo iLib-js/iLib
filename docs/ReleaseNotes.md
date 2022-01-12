@@ -1,6 +1,20 @@
 Release Notes for Version 14
 ============================
 
+Build 020
+-------
+Published as version 14.12.0
+
+New Features:
+* Updated support:
+    * Unicode Character Database (UCD) v14.0.0
+    * CLDR 40.0.0
+    * ISO 15924
+
+Bug Fixes:
+* Updated to route the code flow via NodeLoader when a platform is IoTjs
+
+
 Build 019
 -------
 Published as version 14.11.1

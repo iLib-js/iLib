@@ -1,0 +1,159 @@
+{
+    "gregorian": {
+        "date": {
+            "dmwy": {
+                "s": "E, dd/MM/yyyy",
+                "m": "EE, d 'ne' MMM, yyyy",
+                "l": "EEE, d 'ne' MMMM, yyyy",
+                "f": "EEEE, d 'ne' MMMM, yyyy"
+            },
+            "dmy": {
+                "s": "dd/MM/yyyy",
+                "m": "d 'ne' MMM, yyyy",
+                "l": "d 'ne' MMMM, yyyy",
+                "f": "d 'ne' MMMM, yyyy"
+            },
+            "dmw": {
+                "s": "E, dd/MM",
+                "m": "EE, d 'ne' MMM",
+                "l": "EEE, d 'ne' MMMM",
+                "f": "EEEE, d 'ne' MMMM"
+            },
+            "dm": {
+                "s": "dd/MM",
+                "m": "d 'ne' MMM",
+                "l": "d 'ne' MMMM",
+                "f": "d 'ne' MMMM"
+            },
+            "my": {
+                "s": "MM/yyyy",
+                "m": "MMM, yyyy",
+                "l": "MMMM, yyyy",
+                "f": "MMMM, yyyy"
+            },
+            "dw": {
+                "s": "E, dd",
+                "m": "EE, d",
+                "l": "EEE, d",
+                "f": "EEEE, d"
+            },
+            "d": {
+                "f": "d",
+                "l": "d",
+                "m": "d",
+                "s": "dd"
+            },
+            "m": {
+                "s": "MM",
+                "m": "MMM",
+                "l": "MMMM"
+            },
+            "y": {
+                "s": "yyyy"
+            }
+        },
+        "time": {
+            "12": {
+                "ahmsz": "h:mm:ss a z",
+                "ahms": "h:mm:ss a",
+                "ahmz": "h:mm a z",
+                "ahm": "h:mm a",
+                "ah": "h a"
+            },
+            "24": {
+                "ahmsz": "HH:mm:ss z",
+                "ahms": "HH:mm:ss",
+                "hmsz": "HH:mm:ss z",
+                "hms": "HH:mm:ss",
+                "ahmz": "HH:mm z",
+                "ahm": "HH:mm",
+                "hmz": "HH:mm z",
+                "ah": "HH",
+                "hm": "HH:mm",
+                "h": "HH"
+            }
+        },
+        "range": {
+            "c00": {
+                "m": "{sd} ne {sm}, {sy} {st} – {et}",
+                "l": "{sd} ne {sm}, {sy} {st} – {et}",
+                "f": "{sd} ne {sm}, {sy} {st} – {et}"
+            },
+            "c01": {
+                "m": "{sd} ne {sm}, {sy} {st} – {ed} ne {em}, {ey} {et}",
+                "l": "{sd} ne {sm}, {sy} {st} – {ed} ne {em}, {ey} {et}",
+                "f": "{sd} ne {sm}, {sy} {st} – {ed} ne {em}, {ey} {et}"
+            },
+            "c02": {
+                "m": "{sd} ne {sm}, {sy} {st} – {ed} ne {em}, {ey} {et}",
+                "l": "{sd} ne {sm}, {sy} {st} – {ed} ne {em}, {ey} {et}",
+                "f": "{sd} ne {sm}, {sy} {st} – {ed} ne {em}, {ey} {et}"
+            },
+            "c03": {
+                "m": "{sd} ne {sm}, {sy} {st} – {ed} ne {em}, {ey} {et}",
+                "l": "{sd} ne {sm}, {sy} {st} – {ed} ne {em}, {ey} {et}",
+                "f": "{sd} ne {sm}, {sy} {st} – {ed} ne {em}, {ey} {et}"
+            },
+            "c10": {
+                "s": "{sd} – {ed}/{em}/{ey}",
+                "m": "{sd} – {ed} ne {em}, {ey}",
+                "l": "{sd} – {ed} ne {em}, {ey}",
+                "f": "{sd} – {ed} ne {em}, {ey}"
+            },
+            "c11": {
+                "s": "{sd}/{sm} – {ed}/{em}/{ey}",
+                "m": "{sd} ne {sm} – {ed} ne {em}, {ey}",
+                "l": "{sd} ne {sm} – {ed} ne {em}, {ey}",
+                "f": "{sd} ne {sm} – {ed} ne {em}, {ey}"
+            },
+            "c12": {
+                "m": "{sd} ne {sm}, {sy} – {ed} ne {em}, {ey}",
+                "l": "{sd} ne {sm}, {sy} – {ed} ne {em}, {ey}",
+                "f": "{sd} ne {sm}, {sy} – {ed} ne {em}, {ey}"
+            },
+            "c20": {
+                "m": "{sm}, {sy} – {em}, {ey}",
+                "l": "{sm}, {sy} – {em}, {ey}",
+                "f": "{sm}, {sy} – {em}, {ey}"
+            },
+            "c30": {
+                "f": "{sy} – {ey}",
+                "l": "{sy} – {ey}",
+                "m": "{sy} – {ey}",
+                "s": "{sy} – {ey}"
+            }
+        }
+    },
+    "dayPeriods": [
+        {
+            "at": 0
+        },
+        {
+            "from": 0,
+            "to": 360
+        },
+        {
+            "from": 0,
+            "to": 720
+        },
+        {
+            "from": 360,
+            "to": 720
+        },
+        {
+            "at": 720
+        },
+        {
+            "from": 720,
+            "to": 1140
+        },
+        {
+            "from": 720,
+            "to": 1440
+        },
+        {
+            "from": 1140,
+            "to": 1440
+        }
+    ]
+}

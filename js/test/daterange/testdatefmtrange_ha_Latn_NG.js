@@ -1,7 +1,7 @@
 /*
- * testdatefmtrange_Latn_NG.js - test the date range formatter object Ha for Latin script
+ * testdatefmtrange_ha_Latn_NG.js - test the date range formatter object Hausa with Latin script
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/11 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31/12/11, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmt_ha_Latn_NG_RangeInDayMedium: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Dis, 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 Dis, 2011, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmt_ha_Latn_NG_RangeInDayLong: function(test) {
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Disamba, 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 Disamba, 2011 da 13:45 – 14:30");
         test.done();
     },
     testDateRngFmt_ha_Latn_NG_RangeInDayFull: function(test) {
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/11 13:45 – 31/12/11 14:30");
+        test.equal(fmt.format(start, end), "30/12/11, 13:45 – 31/12/11, 14:30");
         test.done();
     },
     testDateRngFmt_ha_Latn_NG_RangeNextDayMedium: function(test) {
@@ -187,7 +187,7 @@ module.exports.testdatefmtrange_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Dis, 2011 13:45 – 31 Dis, 2011 14:30");
+        test.equal(fmt.format(start, end), "30 Dis, 2011, 13:45 – 31 Dis, 2011, 14:30");
         test.done();
     },
     testDateRngFmt_ha_Latn_NG_RangeNextDayLong: function(test) {
@@ -213,7 +213,7 @@ module.exports.testdatefmtrange_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Disamba, 2011 13:45 – 31 Disamba, 2011 14:30");
+        test.equal(fmt.format(start, end), "30 Disamba, 2011 da 13:45 – 31 Disamba, 2011 da 14:30");
         test.done();
     },
     testDateRngFmt_ha_Latn_NG_RangeNextDayFull: function(test) {
