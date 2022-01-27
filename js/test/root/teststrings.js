@@ -1,7 +1,7 @@
 /*
  * teststrings.js - test the String object
  *
- * Copyright © 2012-2019-2021, JEDLSoft
+ * Copyright © 2012-2019-2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4338,6 +4338,57 @@ module.exports.teststrings = {
         test.ok(str !== null);
 
         test.equal(str.formatChoice(4.1e2), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceGender: function(test) {
+        test.expect(2);
+        
+        var str = new IString("feminine#She is my friend|masculine#He is my friend|Default#They are my friends");
+        test.ok(str !== null);
+        test.equal(str.formatChoice("feminine"), "She is my friend");
+        test.done();
+    },
+    testStringFormatChoiceGender_es_ES: function(test) {
+        test.expect(2);
+
+        var params = {
+            num: 1,
+            gender: "feminine",
+            name: "Alice"
+        }
+        
+        var str = new IString("feminine,one#{name}, Ella es mi amiga.|masculine,one#{name}, Él es mi amigo.|feminine,many#,(many) Ella es mi amiga.|masculine,many#(many) Él es mi amigo.|feminine,#(default)Ellas son mis amigas.|masculine,#(default)Ellos son mis amigos.");
+        str.setLocale("es-ES");
+        test.ok(str !== null);
+        test.equal(str.formatChoice([params.gender, params.num], params), "Alice, Ella es mi amiga.");
+        test.done();
+    },
+    testStringFormatChoiceGender_es_ES2: function(test) {
+        test.expect(2);
+
+        var params = {
+            num: 5,
+            gender: "feminine"
+        }
+        
+        var str = new IString("feminine,one#{name}, Ella es mi amiga.|masculine,one#{name}, Él es mi amigo.|feminine,many#,(many) Ella es mi amiga.|masculine,many#(many) Él es mi amigo.|feminine,#(default)Ellas son mis amigas.|masculine,#(default)Ellos son mis amigos.");
+        str.setLocale("es-ES");
+        test.ok(str !== null);
+        test.equal(str.formatChoice([params.gender, params.num], params), "(default)Ellas son mis amigas.");
+        test.done();
+    },
+    testStringFormatChoiceGender_es_ES3: function(test) {
+        test.expect(2);
+
+        var params = {
+            num: 1000000,
+            gender: "masculine"
+        }
+        
+        var str = new IString("feminine,one#{name}, Ella es mi amiga.|masculine,one#{name}, Él es mi amigo.|feminine,many#,(many) Ella es mi amiga.|masculine,many#(many) Él es mi amigo.|feminine,#(default)Ellas son mis amigas.|masculine,#(default)Ellos son mis amigos.");
+        str.setLocale("es-ES");
+        test.ok(str !== null);
+        test.equal(str.formatChoice([params.gender, params.num], params), "(many) Él es mi amigo.");
         test.done();
     }
 };
