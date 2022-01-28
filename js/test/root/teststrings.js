@@ -4399,3 +4399,4 @@ module.exports.teststrings = {
         test.equal(str.formatChoice([params.gender, params.num], params), "(many) Él es mi amigo.");
         test.done();
     }
+}
