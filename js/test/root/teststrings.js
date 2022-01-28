@@ -4343,9 +4343,17 @@ module.exports.teststrings = {
     testStringFormatChoiceGender: function(test) {
         test.expect(2);
         
-        var str = new IString("feminine#She is my friend|masculine#He is my friend|Default#They are my friends");
+        var str = new IString("feminine#She is my friend|masculine#He is my friend|#They are my friends");
         test.ok(str !== null);
         test.equal(str.formatChoice("feminine"), "She is my friend");
+        test.done();
+    },
+    testStringFormatChoiceGenderUnknown: function(test) {
+        test.expect(2);
+        
+        var str = new IString("feminine#She is my friend|masculine#He is my friend|#They are my friends");
+        test.ok(str !== null);
+        test.equal(str.formatChoice("unknown"), "They are my friends");
         test.done();
     },
     testStringFormatChoiceGender_es_ES: function(test) {
@@ -4357,10 +4365,10 @@ module.exports.teststrings = {
             name: "Alice"
         }
         
-        var str = new IString("feminine,one#{name}, Ella es mi amiga.|masculine,one#{name}, Él es mi amigo.|feminine,many#,(many) Ella es mi amiga.|masculine,many#(many) Él es mi amigo.|feminine,#(default)Ellas son mis amigas.|masculine,#(default)Ellos son mis amigos.");
+        var str = new IString("feminine,one#{name}, ella es mi amiga.|masculine,one#{name}, él es mi amigo.|feminine,many#,(many) ella es mi amiga.|masculine,many#(many) él es mi amigo.|feminine,#(feminine, default) Ellas son mis amigas.|masculine,#(masculine, default) Ellos son mis amigos.|#(default, default) Ellos son mis amigos.");
         str.setLocale("es-ES");
         test.ok(str !== null);
-        test.equal(str.formatChoice([params.gender, params.num], params), "Alice, Ella es mi amiga.");
+        test.equal(str.formatChoice([params.gender, params.num], params), "Alice, ella es mi amiga.");
         test.done();
     },
     testStringFormatChoiceGender_es_ES2: function(test) {
@@ -4391,4 +4399,3 @@ module.exports.teststrings = {
         test.equal(str.formatChoice([params.gender, params.num], params), "(many) Él es mi amigo.");
         test.done();
     }
-};
