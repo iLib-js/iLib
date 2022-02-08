@@ -47,7 +47,7 @@ resultDir = process.argv[2] || "tmp";
 var timeData = supplementalData.timeData;
 
 console.log("genclockprefs - generate clock preferences information files.\n" +
-"Copyright (c) 2022 JEDLSoft\n");
+"Copyright (c) 2013-2022 JEDLSoft\n");
 
 if (!fs.existsSync(resultDir)) {
     common.makeDirs(resultDir);
@@ -65,7 +65,7 @@ clockprefs = {
 };
 
 clockprefs["clock"] = rootClockPref;
-fs.writeFileSync(path.join(resultDir, "clocks.jf"), JSON.stringify(clockprefs, true, 4), "utf-8");
+fs.writeFileSync(path.join(resultDir, "clock.jf"), JSON.stringify(clockprefs, true, 4), "utf-8");
 
 for(var region in timeData){
     clockprefs = {
@@ -75,24 +75,25 @@ for(var region in timeData){
     if (region === "001") continue;
     var clock = timeData[region]["_preferred"];
     var outPath = "", fullPath = "";
-    if (getPreferClock(clock) !== rootClockPref) {
-        if (Locale.isRegionCode(region)){
-            outPath = path.join("und", region)
-        } else {
+
+    if (Locale.isRegionCode(region)){
+        outPath = path.join("und", region);
+    } else {
+        if (getPreferClock(clock) !== rootClockPref){
             if (region.indexOf("001") > -1){
                 outPath = region.slice(0, region.indexOf("001")-1);
             } else {
                 outPath = region.replace("-", "/");
             }
         }
-        fullPath = path.join(resultDir, outPath);
-        if (!fs.existsSync(fullPath)){
-            makeDirs(fullPath);
-        }
-        clockprefs["clock"] = getPreferClock(clock);
-        console.log("Writing file : " + path.join(fullPath, "clock.jf"));
-        fs.writeFileSync(path.join(fullPath, "clocks.jf"), JSON.stringify(clockprefs, true, 4), "utf-8");
     }
+    fullPath = path.join(resultDir, outPath);
+    if (!fs.existsSync(fullPath)){
+        makeDirs(fullPath);
+    }
+    clockprefs["clock"] = getPreferClock(clock);
+    console.log("Writing file : " + path.join(fullPath, "clock.jf"));
+    fs.writeFileSync(path.join(fullPath, "clock.jf"), JSON.stringify(clockprefs, true, 4), "utf-8");
 }
 
 console.log("DONE.");
