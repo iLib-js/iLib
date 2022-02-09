@@ -79,12 +79,10 @@ for(var region in timeData){
     if (Locale.isRegionCode(region)){
         outPath = path.join("und", region);
     } else {
-        if (getPreferClock(clock) !== rootClockPref){
-            if (region.indexOf("001") > -1){
-                outPath = region.slice(0, region.indexOf("001")-1);
-            } else {
-                outPath = region.replace("-", "/");
-            }
+        if (region.indexOf("001") > -1){
+            outPath = region.slice(0, region.indexOf("001")-1);
+        } else {
+            outPath = region.replace("-", "/");
         }
     }
     fullPath = path.join(resultDir, outPath);
