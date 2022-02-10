@@ -1,7 +1,7 @@
 /*
  * Power.js - Unit conversions for Power
  *
- * Copyright © 2018-2020, JEDLSoft
+ * Copyright © 2018-2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -96,24 +96,14 @@ PowerUnit.systems = {
         "gigawatt"
     ],
     "uscustomary": [
-        "milliwatt",
         "foot-pound-per-hour",
-        "watt",
         "btu-per-hour",
-        "kilowatt",
-        "horsepower",
-        "megawatt",
-        "gigawatt"
+        "horsepower"
     ],
     "imperial": [
-        "milliwatt",
         "foot-pound-per-hour",
-        "watt",
         "btu-per-hour",
-        "kilowatt",
-        "horsepower",
-        "megawatt",
-        "gigawatt"
+        "horsepower"
     ],
     "conversions": {
         "uscustomary": {
@@ -130,6 +120,22 @@ PowerUnit.systems = {
                 "btu-per-hour": "watt",
                 "refridgeration-ton": "kilowatt",
                 "horsepower": "kilowatt"
+            }
+        },
+        "metric": {
+            "uscustomary": {
+                "milliwatt": "horsepower",
+                "watt": "horsepower",
+                "kilowatt": "horsepower",
+                "megawatt": "horsepower",
+                "gigawatt": "horsepower"
+            },
+            "imperial": {
+                "milliwatt": "horsepower",
+                "watt": "horsepower",
+                "kilowatt": "horsepower",
+                "megawatt": "horsepower",
+                "gigawatt": "horsepower"
             }
         }
     }

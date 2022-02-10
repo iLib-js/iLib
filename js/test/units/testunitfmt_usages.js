@@ -1,7 +1,7 @@
 /*
  * testunits_usages.js - test the units formatter object with various usages
  *
- * Copyright © 2018, 2021 JEDLSoft
+ * Copyright © 2018, 2021-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3115,7 +3115,8 @@ module.exports.testunitfmt_usages = {
         var uf = new UnitFmt({
             usage: "vehiclePower",
             length: "long",
-            locale: "fr-CA"
+            locale: "fr-CA",
+            measurementSystem: "uscustomary"
         });
         var str = uf.format(m1);
         test.equal(str, "107,28 chevaux-vapeur");

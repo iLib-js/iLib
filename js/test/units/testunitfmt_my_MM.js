@@ -1,7 +1,7 @@
 /*
  * testunitfmt_my_MM.js - test the unitfmt for my-MM
  *
- * Copyright © 2020-2021 JEDLSoft
+ * Copyright © 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -289,7 +289,7 @@ module.exports.testunitfmt_my_MM = {
     testUnitFormatWithUsageFuelVolume2_my_MM: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "megawatt",
+            unit: "gallon",
             amount: 2
         });
 
@@ -301,8 +301,30 @@ module.exports.testunitfmt_my_MM = {
             useNative: false
         });
 
+        // converts uscustomary to imperial gallons
         var str = uf.format(m1);
-        test.equal(str, '2 မီဂါဝပ်');
+        test.equal(str, '1.67 ယူကေ ဂါလံ');
+        test.done();
+    },
+    testUnitFormatWithUsageFuelVolume3_my_MM: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 106
+        });
+
+        var uf = new UnitFmt({
+            locale: "my-MM",
+            usage: "fuelVolume",
+            length: "long",
+            significantDigits: "4",
+            autoConvert: true,
+            useNative: false
+        });
+
+        // converts metric to imperial gallons
+        var str = uf.format(m1);
+        test.equal(str, '23.32 ယူကေ ဂါလံ');
         test.done();
     },
     testUnitFormatWithUsageOverrideSignificantDigits1_my_MM: function(test) {
