@@ -649,16 +649,6 @@ function frameUnits(data, locale, localeData) {
                     "imperial": ["horsepower"]
                 },
                 "maxFractionDigits": 2
-            },
-            "vehiclePower": {
-                "description": "power of a vehicle's engine",
-                "type": "power",
-                "units": {
-                    "metric": ["kilowatt"],
-                    "uscustomary": ["horsepower"],
-                    "imperial": ["horsepower"]
-                },
-                "maxFractionDigits": 2
             }
         };
     }
