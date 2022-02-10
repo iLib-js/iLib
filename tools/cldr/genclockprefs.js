@@ -67,22 +67,25 @@ clockprefs = {
 clockprefs["clock"] = rootClockPref;
 fs.writeFileSync(path.join(resultDir, "clock.jf"), JSON.stringify(clockprefs, true, 4), "utf-8");
 
-for(var region in timeData){
+for(var locale in timeData){
     clockprefs = {
         generated: true
     };
 
-    if (region === "001") continue;
-    var clock = timeData[region]["_preferred"];
+    var lo = new Locale(locale);
+    var loStr=lo.getSpec();
+
+    if (loStr === "001") continue;
+    var clock = timeData[locale]["_preferred"];
     var outPath = "", fullPath = "";
 
-    if (Locale.isRegionCode(region)){
-        outPath = path.join("und", region);
+    if (Locale.isRegionCode(loStr)){
+        outPath = path.join("und", locale);
     } else {
-        if (region.indexOf("001") > -1){
-            outPath = region.slice(0, region.indexOf("001")-1);
+        if (loStr.indexOf("001") > -1){
+            outPath = lo.getLanguage();
         } else {
-            outPath = region.replace("-", "/");
+            outPath = path.join(lo.getLanguage(), lo.getRegion());
         }
     }
     fullPath = path.join(resultDir, outPath);
