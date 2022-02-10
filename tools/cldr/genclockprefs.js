@@ -79,10 +79,10 @@ for(var locale in timeData){
     var clock = timeData[locale]["_preferred"];
     var outPath = "", fullPath = "";
 
-    if (Locale.isRegionCode(loStr)){
+    if (!lo.getLanguage()){
         outPath = path.join("und", locale);
     } else {
-        if (loStr.indexOf("001") > -1){
+        if (lo.getRegion() === "001") {
             outPath = lo.getLanguage();
         } else {
             outPath = path.join(lo.getLanguage(), lo.getRegion());
