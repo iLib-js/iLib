@@ -99,8 +99,5 @@
     },
     "publishConfig": {
         "tag": "experimental"
-    },
-    "dependencies": {
-        "ilib-resbundler": "^1.0.1"
     }
 }
