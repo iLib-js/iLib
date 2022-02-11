@@ -3,6 +3,16 @@ Release Notes for Version 14
 
 Build 020
 -------
+Published as version 14.13.0
+
+New Features:
+* Updated clock.jf files by referencing cldr-core/supplemental/timeDate.json and modified related cldr script code.
+
+Bug Fixes:
+
+
+Build 020
+-------
 Published as version 14.12.0
 
 New Features:

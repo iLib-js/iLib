@@ -233,7 +233,7 @@ module.exports.testdurfmtasync = {
                     second: 1,
                     millisecond: 1
                 });
-                test.equal(duration.toString(), "1年1个月1周1天1:01:01");
+                test.equal(duration.toString(), "1年1个月1周1天01:01:01");
                 test.done();
             }
         });

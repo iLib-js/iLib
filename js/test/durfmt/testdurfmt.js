@@ -1,7 +1,7 @@
 /*
  * testdurfmt.js - test the duration formatter object
  *
- * Copyright © 2012-2021, JEDLSoft
+ * Copyright © 2012-2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -667,7 +667,7 @@ module.exports.testdurfmt = {
             second: 1,
             millisecond: 1
         });
-        test.equal(duration.toString(), "1年1个月1周1天1:01:01");
+        test.equal(duration.toString(), "1年1个月1周1天01:01:01");
         test.done();
     },
 
