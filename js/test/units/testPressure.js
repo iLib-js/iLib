@@ -127,33 +127,6 @@ module.exports.testpressure = {
         test.done();
     },
 
-/*
-    testPressureScale3: function(test) {
-        test.expect(2);
-        var m1 = new PressureUnit({
-            unit: "milli joule",
-            amount: 5254578
-        });
-        var m2 = m1.scale("metric");
-
-        test.roughlyEqual(m2.amount, 1.459605, 0.000001);
-        test.equal(m2.unit, "watt-hour");
-        test.done();
-    },
-
-    testPressureScale4: function(test) {
-        test.expect(2);
-        var m1 = new PressureUnit({
-            unit: "mega joule",
-            amount: 5254578
-        });
-        var m2 = m1.scale("metric");
-
-        test.roughlyEqual(m2.amount, 1.4596, 0.00001);
-        test.equal(m2.unit, "gigawatt-hour");
-        test.done();
-    },
-*/
     testPressureGetMeasures: function(test) {
         test.expect(1);
         var measures = PressureUnit.getMeasures();
