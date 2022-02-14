@@ -3,7 +3,7 @@
  * for the demo site
  *
  * @license
- * Copyright © 2018, JEDLSoft
+ * Copyright © 2018, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
