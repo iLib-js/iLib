@@ -42,7 +42,9 @@
     "files": [
         "lib",
         "locale",
+        "src",
         "index.js",
+        "switchmode.js",
         "README.md",
         "LICENSE"
     ],

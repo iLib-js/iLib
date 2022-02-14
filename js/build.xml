@@ -119,6 +119,11 @@ limitations under the License.
 	<target name="prepare" depends="update.package.json" description="Prepare all directories that are needed before the project can be built">
 		<mkdir dir="${build.output.js}"/>
 		<mkdir dir="${build.output.dyncode}"/>
+		<mkdir dir="${build.output.dyncode}/charmaps"/>
+		<mkdir dir="${build.output.dyncode}/nfc"/>
+		<mkdir dir="${build.output.dyncode}/nfd"/>
+		<mkdir dir="${build.output.dyncode}/nfkc"/>
+		<mkdir dir="${build.output.dyncode}/nfkd"/>
 		<mkdir dir="${build.output.test}"/>
 		
 	</target>
@@ -135,7 +140,7 @@ limitations under the License.
 		<sequential>
 		    <echo>executing webpack</echo>
 			<exec osfamily="unix" executable="webpack-cli" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-				<env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
+				<env key="NODE_OPTIONS" value="--max-old-space-size=4096"/>
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
 				<arg value="--env.compilation=@{compilation}"/>
@@ -146,7 +151,7 @@ limitations under the License.
                 <arg value="--mode=@{mode}"/>
 			</exec>
 			<exec osfamily="windows" executable="webpack-cli.bat" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
-				<env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
+				<env key="NODE_OPTIONS" value="--max-old-space-size=4096"/>
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
 				<arg value="--env.compilation=@{compilation}"/>
@@ -166,11 +171,11 @@ limitations under the License.
 		</uptodate>
 	</target>
 	<target name="assemble.core.assembled" depends="prepare,gen.manifest.locale,testilib.core" unless="core.ilib.core.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
-		<runassemble size="core"/>
+		<runassemble size="core" mode="development"/>
 		<runassemble size="core" compilation="compiled"/>
 	</target>
     <target name="assemble.core.dyndata" depends="prepare,gen.manifest.locale,testilib.core" unless="core.ilib.core.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
-        <runassemble assembly="dynamicdata" size="core"/>
+        <runassemble assembly="dynamicdata" size="core" mode="development"/>
         <runassemble assembly="dynamicdata" size="core" compilation="compiled"/>
     </target>
     <target name="assemble.core" depends="assemble.core.assembled,assemble.core.dyndata"/>
@@ -199,11 +204,11 @@ limitations under the License.
 		</uptodate>
 	</target>
 	<target name="assemble.standard.assembled" depends="prepare,gen.manifest.locale,testilib.standard" unless="core.ilib.standard.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
-		<runassemble size="standard"/>
+		<runassemble size="standard" mode="development"/>
 		<runassemble size="standard" compilation="compiled"/>
 	</target>
     <target name="assemble.standard.dyndata" depends="prepare,gen.manifest.locale,testilib.standard" unless="core.ilib.standard.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
-        <runassemble assembly="dynamicdata" size="standard"/>
+        <runassemble assembly="dynamicdata" size="standard" mode="development"/>
         <runassemble assembly="dynamicdata" size="standard" compilation="compiled"/>
     </target>
 	<target name="assemble.standard" depends="assemble.standard.assembled,assemble.standard.dyndata"/>
@@ -216,11 +221,11 @@ limitations under the License.
 		</uptodate>
 	</target>
 	<target name="assemble.full.assembled" depends="prepare,gen.manifest.locale,testilib.full" unless="core.ilib.full.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
-		<runassemble size="full"/>
+		<runassemble size="full" mode="development"/>
 		<runassemble size="full" compilation="compiled"/>
 	</target>
 	<target name="assemble.full.dyndata" depends="prepare,gen.manifest.locale,testilib.full" unless="core.ilib.full.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
-        <runassemble assembly="dynamicdata" size="full"/>
+        <runassemble assembly="dynamicdata" size="full" mode="development"/>
         <runassemble assembly="dynamicdata" size="full" compilation="compiled"/>
     </target>
 	<target name="assemble.full" depends="assemble.full.assembled,assemble.full.dyndata"/>
@@ -282,11 +287,11 @@ limitations under the License.
 		</uptodate>
 	</target>
 	<target name="assemble.demo.assembled" depends="prepare,gen.manifest.locale,testilibdemo" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
-		<runassemble size="demo" locales="${locales.demo}"/>
+		<runassemble size="demo" locales="${locales.demo}" mode="development"/>
 		<runassemble size="demo" compilation="compiled" locales="${locales.demo}"/>
 	</target>
     <target name="assemble.demo.dyndata" depends="prepare,gen.manifest.locale,testilibdemo" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
-        <runassemble assembly="dynamicdata" size="demo" locales="${locales.demo}"/>
+        <runassemble assembly="dynamicdata" size="demo" locales="${locales.demo}" mode="development"/>
         <runassemble assembly="dynamicdata" size="demo" compilation="compiled" locales="${locales.demo}"/>
     </target>
 	<target name="assemble.demo" depends="assemble.demo.assembled,assemble.demo.dyndata"/>
@@ -342,6 +347,11 @@ limitations under the License.
             <arg value="--verbose"/>
             <fileset dir="${build.lib}">
                 <include name="*.js"/>
+                <include name="charmaps/*.js"/>
+                <include name="nfc/*.js"/>
+                <include name="nfd*/.js"/>
+                <include name="nfkc/*.js"/>
+                <include name="nfkd/*.js"/>
                 <exclude name="ilib.js"/>
                 <exclude name="ilib-*.js"/>
                 <exclude name="externs.js"/>
@@ -356,6 +366,7 @@ limitations under the License.
             </fileset>
             <fileset dir="${build.base}">
                 <include name="index.js"/>
+                <include name="switchmode.js"/>
             </fileset>
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
@@ -406,16 +417,22 @@ limitations under the License.
 		<copy todir="${build.export}/js/assembled">
 			<fileset dir="${build.output.js}">
 				<include name="core-assembled-uncompiled-web/*.js"/>
+				<include name="core-assembled-uncompiled-web/*.map"/>
 				<include name="core-assembled-compiled-web/*.js"/>
 				<include name="standard-assembled-uncompiled-web/*.js"/>
+				<include name="standard-assembled-uncompiled-web/*.map"/>
 				<include name="standard-assembled-compiled-web/*.js"/>
 				<include name="full-assembled-uncompiled-web/*.js"/>
+				<include name="full-assembled-uncompiled-web/*.map"/>
 				<include name="full-assembled-compiled-web/*.js"/>
 				<include name="core-dynamicdata-uncompiled-web/*.js"/>
+				<include name="core-dynamicdata-uncompiled-web/*.map"/>
 				<include name="core-dynamicdata-compiled-web/*.js"/>
 				<include name="standard-dynamicdata-uncompiled-web/*.js"/>
+				<include name="standard-dynamicdata-uncompiled-web/*.map"/>
 				<include name="standard-dynamicdata-compiled-web/*.js"/>
 				<include name="full-dynamicdata-uncompiled-web/*.js"/>
+				<include name="full-dynamicdata-uncompiled-web/*.map"/>
 				<include name="full-dynamicdata-compiled-web/*.js"/>
 			</fileset>
 		</copy>
@@ -458,6 +475,7 @@ limitations under the License.
 		<copy todir="${build.export}/package/lib">
 			<fileset dir="${build.export}/js/dyncode">
 				<include name="**/*"/>
+				<exclude name="externs.js"/>
 				<exclude name="*Loader.js"/>
 				<exclude name="ilib-web.js"/>
 				<exclude name="ilib-qt.js"/>
@@ -479,9 +497,29 @@ limitations under the License.
 		<copy todir="${build.export}/package">
             <fileset dir="${build.export}/js/dyncode">
                 <include name="index.js"/>
+                <include name="switchmode.js"/>
             </fileset>
 		</copy>
-		<copy todir="${build.export}/package/locale">
+        <mkdir dir="${build.export}/package/src" description="Dir to contain all the exported source files"/>
+        <copy todir="${build.export}/package/src">
+            <fileset dir="${build.base}/lib">
+                <include name="**/*.js"/>
+                <exclude name="externs.js"/>
+                <exclude name="metafiles/*"/>
+                <exclude name="ilib-qt.js"/>
+                <exclude name="ilib-rhino.js"/>
+                <exclude name="ilib-ringo.js"/>
+                <exclude name="ilib-web.js"/>
+                <exclude name="*Loader.js"/>
+            </fileset>
+            <fileset dir="${build.base}/lib">
+                <include name="Loader.js"/>
+                <include name="RhinoLoader.js"/>
+                <include name="WebpackLoader.js"/>
+                <include name="NodeLoader.js"/>
+            </fileset>
+        </copy>
+        <copy todir="${build.export}/package/locale">
 			<fileset dir="${build.locale}">
 				<include name="**/*.json"/>
 			</fileset>

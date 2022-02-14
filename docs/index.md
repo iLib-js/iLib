@@ -26,6 +26,7 @@ View this documentation on [github pages](https://ilib-js.github.io/iLib/docs/)
           which provides wrappers for all ilib classes
     * [Updating the time zone information](tutorial/timezone.md)
     * [Running unit test on QT/QML](QtTest.md)
+    * [Production and Development Modes](Mode.md)
 * API Reference: 
     * [10.0](https://ilib-js.github.io/iLib/docs/api/10.0/jsdoc/index.html)
     * [11.0](https://ilib-js.github.io/iLib/docs/api/11.0/jsdoc/index.html)

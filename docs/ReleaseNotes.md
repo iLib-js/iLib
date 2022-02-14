@@ -225,6 +225,9 @@ Bug Fixes:
 * Updated to IANA time zone data 2019c
 * Updated the Korean Name Formatting component per style. Including 'suffix' is more natural than having a 'prefix' or 'honorific'.
 * Added missing likelylocale for `hr-ME`.
+* Now published packages include the source maps for the uncompiled webpacked versions
+so that they can be used for debugging purposes easily
+    * compiled versions are considered production code and are uglified as well
 
 Build 007
 -------
