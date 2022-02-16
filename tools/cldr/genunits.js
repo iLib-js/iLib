@@ -1,7 +1,7 @@
 /*
  * genunits.js - ilib tool to generate the json data about unit formats
  *
- * Copyright © 2013, 2018, 2020-2021 JEDLSoft
+ * Copyright © 2013, 2018, 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -611,7 +611,7 @@ function frameUnits(data, locale, localeData) {
                 "style": "numeric"
             },
             "gasVolume": {
-                "description": "volume of a gas such as natural gas used in a home a home might use",
+                "description": "volume of a gas such as natural gas used in a home",
                 "type": "volume",
                 "units": {
                     "metric": ["cubic-meter"],
@@ -619,6 +619,36 @@ function frameUnits(data, locale, localeData) {
                     "imperial": ["cubic-foot"]
                 },
                 "maxFractionDigits": 3
+            },
+            "gasPressure": {
+                "description": "pressure of a gas",
+                "type": "pressure",
+                "units": {
+                    "metric": ["pascal"],
+                    "uscustomary": ["pound-per-square-inch"],
+                    "imperial": ["pound-per-square-inch"]
+                },
+                "maxFractionDigits": 3
+            },
+            "atmosphericPressure": {
+                "description": "pressure of the atmosphere used in weather reports",
+                "type": "pressure",
+                "units": {
+                    "metric": ["millibar", "hectopascal"],
+                    "uscustomary": ["atmosphere"],
+                    "imperial": ["atmosphere"]
+                },
+                "maxFractionDigits": 2
+            },
+            "vehiclePower": {
+                "description": "power of a vehicle's engine",
+                "type": "power",
+                "units": {
+                    "metric": ["kilowatt"],
+                    "uscustomary": ["horsepower"],
+                    "imperial": ["horsepower"]
+                },
+                "maxFractionDigits": 2
             }
         };
     }

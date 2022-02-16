@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_zh_Hans_CN.js - test the date range formatter object in Chinese/China
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011/12/31 下午1:45 – 下午2:30");
+        test.equal(fmt.format(start, end), "2011/12/31 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtCNRangeInDayMedium: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011年12月31日 下午1:45 – 下午2:30");
+        test.equal(fmt.format(start, end), "2011年12月31日 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtCNRangeInDayLong: function(test) {
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011年12月31日 下午1:45 – 下午2:30");
+        test.equal(fmt.format(start, end), "2011年12月31日 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtCNRangeInDayFull: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011年12月31日 下午1:45 – 下午2:30");
+        test.equal(fmt.format(start, end), "2011年12月31日 13:45 – 14:30");
         test.done();
     },
     
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011/12/30 下午1:45 – 2011/12/31 下午2:30");
+        test.equal(fmt.format(start, end), "2011/12/30 13:45 – 2011/12/31 14:30");
         test.done();
     },
     testDateRngFmtCNRangeNextDayMedium: function(test) {
@@ -187,7 +187,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011年12月30日 下午1:45 – 2011年12月31日 下午2:30");
+        test.equal(fmt.format(start, end), "2011年12月30日 13:45 – 2011年12月31日 14:30");
         test.done();
     },
     testDateRngFmtCNRangeNextDayLong: function(test) {
@@ -213,7 +213,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011年12月30日 下午1:45 – 2011年12月31日 下午2:30");
+        test.equal(fmt.format(start, end), "2011年12月30日 13:45 – 2011年12月31日 14:30");
         test.done();
     },
     testDateRngFmtCNRangeNextDayFull: function(test) {
@@ -239,7 +239,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011年12月30日 下午1:45 – 2011年12月31日 下午2:30");
+        test.equal(fmt.format(start, end), "2011年12月30日 13:45 – 2011年12月31日 14:30");
         test.done();
     },
     

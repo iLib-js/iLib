@@ -1,7 +1,7 @@
 /*
  * testdatefmt_zh_CN.js - test the date formatter object in Chinese (simplified)
  * 
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -135,7 +135,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "下午1:45");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
     
@@ -154,7 +154,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "下午1:45");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
     
@@ -173,7 +173,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "下午1:45");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
     
@@ -192,7 +192,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "下午1:45");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
     
@@ -211,7 +211,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011/9/29 下午1:45");
+        test.equal(fmt.format(date), "2011/9/29 13:45");
         test.done();
     },
     
@@ -230,7 +230,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011年9月29日 下午1:45");
+        test.equal(fmt.format(date), "2011年9月29日 13:45");
         test.done();
     },
     
@@ -249,7 +249,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011年9月29日 下午1:45");
+        test.equal(fmt.format(date), "2011年9月29日 13:45");
         test.done();
     },
     
@@ -268,7 +268,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011年9月29日 下午1:45");
+        test.equal(fmt.format(date), "2011年9月29日 13:45");
         test.done();
     },
     
@@ -499,7 +499,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "下午1:45");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
     
@@ -518,7 +518,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011/9/29 下午1:45");
+        test.equal(fmt.format(date), "2011/9/29 13:45");
         test.done();
     },
     
@@ -901,7 +901,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1");
+        test.equal(fmt.format(date), "13");
         test.done();
     },
     
@@ -939,7 +939,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
     
@@ -958,7 +958,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37");
+        test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
     
@@ -977,7 +977,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "下午1:45");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
     
@@ -1001,7 +1001,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "CST 1:45");
+        test.equal(fmt.format(date), "CST 13:45");
         test.done();
     },
     
@@ -1025,7 +1025,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "CST 下午1:45");
+        test.equal(fmt.format(date), "CST 13:45");
         test.done();
     },
     
@@ -1044,7 +1044,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "下午1:45:37");
+        test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
     
@@ -1068,7 +1068,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "CST 1:45:37");
+        test.equal(fmt.format(date), "CST 13:45:37");
         test.done();
     },
     
@@ -1092,7 +1092,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "CST 下午1:45:37");
+        test.equal(fmt.format(date), "CST 13:45:37");
         test.done();
     },
     
@@ -1150,7 +1150,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1");
+        test.equal(fmt.format(date), "13");
         test.done();
     },
     
@@ -1188,7 +1188,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
     
@@ -1207,7 +1207,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37");
+        test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
     
@@ -1226,7 +1226,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "下午1:45");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
     
@@ -1251,7 +1251,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "CST 1:45");
+        test.equal(fmt.format(date), "CST 13:45");
         test.done();
     },
     
@@ -1260,9 +1260,10 @@ module.exports.testdatefmt_zh_CN = {
         var fmt = new DateFmt({
             locale: "zh-Hans-CN", 
             type: "time", 
-            length: "full", 
-            time: "hmaz", 
-            timezone: "Asia/Shanghai"
+            length: "full",
+            timezone: "Asia/Shanghai",
+            clock: "12",
+            time:"hmaz"
         });
         test.ok(fmt !== null);
         
@@ -1282,7 +1283,7 @@ module.exports.testdatefmt_zh_CN = {
     
     testDateFmtFullTimeComponentsHMSA_zh_Hans_CN: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "zh-Hans-CN", type: "time", length: "full", time: "hmsa"});
+        var fmt = new DateFmt({locale: "zh-Hans-CN", type: "time", length: "full"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1295,7 +1296,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "下午1:45:37");
+        test.equal(fmt.format(date), "13:45");
         test.done();
     },
     
@@ -1304,8 +1305,8 @@ module.exports.testdatefmt_zh_CN = {
         var fmt = new DateFmt({
             locale: "zh-Hans-CN", 
             type: "time", 
-            length: "full", 
-            time: "hmsz", 
+            length: "full",
+            time: "hmsaz",
             timezone: "Asia/Shanghai"
         });
         test.ok(fmt !== null);
@@ -1320,7 +1321,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "CST 1:45:37");
+        test.equal(fmt.format(date), "CST 13:45:37");
         test.done();
     },
     
@@ -1330,7 +1331,7 @@ module.exports.testdatefmt_zh_CN = {
             locale: "zh-Hans-CN", 
             type: "time", 
             length: "full", 
-            time: "hmsaz", 
+            time: "hmsaz",
             timezone: "Asia/Shanghai"
         });
         test.ok(fmt !== null);
@@ -1345,7 +1346,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "CST 下午1:45:37");
+        test.equal(fmt.format(date), "CST 13:45:37");
         test.done();
     },
     
@@ -1355,7 +1356,8 @@ module.exports.testdatefmt_zh_CN = {
             locale: "zh-Hans-CN", 
             type: "time", 
             length: "full", 
-            time: "hma"
+            time: "hma",
+            clock: "12"
         });
         test.ok(fmt !== null);
         
@@ -1379,7 +1381,8 @@ module.exports.testdatefmt_zh_CN = {
             locale: "zh-Hans-CN", 
             type: "time", 
             length: "full", 
-            time: "hma"
+            time: "hma",
+            clock: "12"
         });
         test.ok(fmt !== null);
         
@@ -1403,7 +1406,8 @@ module.exports.testdatefmt_zh_CN = {
             locale: "zh-Hans-CN", 
             type: "time", 
             length: "full", 
-            time: "hma"
+            time: "hma",
+            clock: "12"
         });
         test.ok(fmt !== null);
         
@@ -1427,7 +1431,8 @@ module.exports.testdatefmt_zh_CN = {
             locale: "zh-Hans-CN", 
             type: "time", 
             length: "full", 
-            time: "hma"
+            time: "hma",
+            clock: "12"
         });
         test.ok(fmt !== null);
         
@@ -1451,7 +1456,8 @@ module.exports.testdatefmt_zh_CN = {
             locale: "zh-Hans-CN", 
             type: "time", 
             length: "full", 
-            time: "hma"
+            time: "hma",
+            clock: "12"
         });
         test.ok(fmt !== null);
         
@@ -1475,7 +1481,8 @@ module.exports.testdatefmt_zh_CN = {
             locale: "zh-Hans-CN", 
             type: "time", 
             length: "full", 
-            time: "hma"
+            time: "hma",
+            clock: "12"
         });
         test.ok(fmt !== null);
         
@@ -1499,7 +1506,8 @@ module.exports.testdatefmt_zh_CN = {
             locale: "zh-Hans-CN", 
             type: "time", 
             length: "full", 
-            time: "hma"
+            time: "hma",
+            clock: "12"
         });
         test.ok(fmt !== null);
         
@@ -1524,7 +1532,8 @@ module.exports.testdatefmt_zh_CN = {
             type: "time", 
             length: "full", 
             time: "hma",
-            meridiems: "chinese"
+            meridiems: "chinese",
+            clock: "12"
         });
         test.ok(fmt !== null);
         
@@ -1549,7 +1558,8 @@ module.exports.testdatefmt_zh_CN = {
             type: "time", 
             length: "full", 
             time: "hma",
-            meridiems: "chinese"
+            meridiems: "chinese",
+            clock: "12"
         });
         test.ok(fmt !== null);
         
@@ -1574,7 +1584,8 @@ module.exports.testdatefmt_zh_CN = {
             type: "time", 
             length: "full", 
             time: "hma",
-            meridiems: "chinese"
+            meridiems: "chinese",
+            clock: "12"
         });
         test.ok(fmt !== null);
         
@@ -1599,7 +1610,8 @@ module.exports.testdatefmt_zh_CN = {
             type: "time", 
             length: "full", 
             time: "hma",
-            meridiems: "chinese"
+            meridiems: "chinese",
+            clock: "12"
         });
         test.ok(fmt !== null);
         
@@ -1624,7 +1636,8 @@ module.exports.testdatefmt_zh_CN = {
             type: "time", 
             length: "full", 
             time: "hma",
-            meridiems: "chinese"
+            meridiems: "chinese",
+            clock: "12"
         });
         test.ok(fmt !== null);
         
@@ -1649,7 +1662,8 @@ module.exports.testdatefmt_zh_CN = {
             type: "time", 
             length: "full", 
             time: "hma",
-            meridiems: "chinese"
+            meridiems: "chinese",
+            clock: "12"
         });
         test.ok(fmt !== null);
         
@@ -1674,7 +1688,8 @@ module.exports.testdatefmt_zh_CN = {
             type: "time", 
             length: "full", 
             time: "hma",
-            meridiems: "chinese"
+            meridiems: "chinese",
+            clock: "12"
         });
         test.ok(fmt !== null);
         
@@ -1713,7 +1728,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "CST 1:45:37");
+        test.equal(fmt.format(date), "CST 13:45:37");
         test.done();
     },
     

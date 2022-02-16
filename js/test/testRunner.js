@@ -1,7 +1,7 @@
 /*
  * testRunner.js - top level test suite
  * 
- * Copyright © 2017-2019, JEDLSoft
+ * Copyright © 2017-2019, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -189,6 +189,7 @@ for (var i = 0; i < suite.length; i++) {
                 subtest = require("./" + filepath);
             } else {
                 global.module = { exports: {} };
+                // console.log("reading " + filepath);
                 var test = fs.readFileSync(filepath, "utf-8");
                 geval(test);
                 subtest = global.module.exports;
