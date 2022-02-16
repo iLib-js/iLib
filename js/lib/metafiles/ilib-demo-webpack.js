@@ -3,7 +3,7 @@
  * for the demo site
  *
  * @license
- * Copyright © 2018, JEDLSoft
+ * Copyright © 2018, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -101,6 +101,9 @@ ilib.AreaUnit = require("../AreaUnit.js");
 ilib.FuelConsumptionUnit = require("../FuelConsumptionUnit.js");
 ilib.VolumeUnit = require("../VolumeUnit.js");
 ilib.EnergyUnit = require("../EnergyUnit.js");
+ilib.ForceUnit = require("../ForceUnit.js");
+ilib.PowerUnit = require("../PowerUnit.js");
+ilib.PressureUnit = require("../PressureUnit.js");
 ilib.Charset = require("../Charset.js");
 ilib.Charmap = require("../Charmap.js");
 ilib.CharmapFactory = require("../CharmapFactory.js");
