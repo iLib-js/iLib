@@ -6,17 +6,9 @@ Build 021
 Published as version 14.13.0
 
 New Features:
+* Updated clock.jf files by referencing cldr-core/supplemental/timeDate.json and modified related cldr script code.
 * Added new unit types for power, pressure, and force
     * includes unit conversion and formatting
-
-Bug Fixes:
-
-Build 020
--------
-Published as version 14.13.0
-
-New Features:
-* Updated clock.jf files by referencing cldr-core/supplemental/timeDate.json and modified related cldr script code.
 
 Bug Fixes:
 
