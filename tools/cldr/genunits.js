@@ -625,8 +625,8 @@ function frameUnits(data, locale, localeData) {
                 "type": "pressure",
                 "units": {
                     "metric": ["pascal"],
-                    "uscustomary": ["pound-per-square-inch"],
-                    "imperial": ["pound-per-square-inch"]
+                    "uscustomary": ["pound-force-per-square-inch"],
+                    "imperial": ["pound-force-per-square-inch"]
                 },
                 "maxFractionDigits": 3
             },

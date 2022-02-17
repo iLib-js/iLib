@@ -2890,4 +2890,25 @@ module.exports.testunitfmt = {
         test.equal(str, "188.9759938 ሴንቲሜትር");
         test.done();
     },
+    
+    /** pressure **/
+
+    testUnitFormatPressure: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "psi",
+            amount: 1000
+        });
+
+        var uf = new UnitFmt({
+            locale: "de-DE",
+            autoConvert: false,
+            autoScale: false,
+            sync: false,
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.000 Pfund pro Quadratzoll");
+        test.done();
+    },
 };
