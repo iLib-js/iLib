@@ -1,7 +1,7 @@
 /*
  * testunits.js - test the units formatter object
  *
- * Copyright © 2014-2015, 2017-2018, 2021 JEDLSoft
+ * Copyright © 2014-2015, 2017-2018, 2021-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2890,7 +2890,7 @@ module.exports.testunitfmt = {
         test.equal(str, "188.9759938 ሴንቲሜትር");
         test.done();
     },
-    
+
     /** pressure **/
 
     testUnitFormatPressure: function(test) {
