@@ -1,7 +1,7 @@
 /*
  * testunits.js - test the units formatter object
  *
- * Copyright © 2014-2015, 2017-2018, 2021 JEDLSoft
+ * Copyright © 2014-2015, 2017-2018, 2021-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2888,6 +2888,27 @@ module.exports.testunitfmt = {
         });
         var str = uf.format(m1);
         test.equal(str, "188.9759938 ሴንቲሜትር");
+        test.done();
+    },
+
+    /** pressure **/
+
+    testUnitFormatPressure: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "psi",
+            amount: 1000
+        });
+
+        var uf = new UnitFmt({
+            locale: "de-DE",
+            autoConvert: false,
+            autoScale: false,
+            sync: false,
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.000 Pfund pro Quadratzoll");
         test.done();
     },
 };

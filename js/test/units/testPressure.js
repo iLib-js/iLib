@@ -94,7 +94,7 @@ module.exports.testpressure = {
 
     testPressureStaticConvert4: function(test) {
         test.expect(1);
-        var m = PressureUnit.convert("pound-per-square-inch", "atmosphere", 1);
+        var m = PressureUnit.convert("pound-force-per-square-inch", "atmosphere", 1);
 
         test.roughlyEqual(m, 14.69594877, 1e-7);
         test.done();
@@ -141,7 +141,7 @@ module.exports.testpressure = {
             "gigapascal",
             "atmosphere",
             "torr",
-            "pound-per-square-inch"
+            "pound-force-per-square-inch"
         ];
         test.equalIgnoringOrder(measures, expected);
         test.done();
