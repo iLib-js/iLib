@@ -1,7 +1,7 @@
 /*
  * testcurrency.js - test the currency routines
  *
- * Copyright © 2012-2017, 2020-2021 JEDLSoft
+ * Copyright © 2012-2017, 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2015,6 +2015,14 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "ZAR");
+        test.done();
+    },
+    testCurrency_ig_NG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ig-NG");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "NGN");
         test.done();
     }
 };

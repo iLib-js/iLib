@@ -1,7 +1,7 @@
  /*
  * testMeridiems.js - test the meridiems data
  *
- * Copyright © 2019-2021, JEDLSoft
+ * Copyright © 2019-2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2154,5 +2154,14 @@ module.exports.testmeridiems = {
 
         ilibLoader.removePath(multiPath);
         test.done();
-    }
+    },
+    testMeridiem_ig_NG: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"ig-NG"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'N’ụtụtụ');
+        test.equal(fmt[1].name, 'N’abali');
+        test.done();
+    },
 }
