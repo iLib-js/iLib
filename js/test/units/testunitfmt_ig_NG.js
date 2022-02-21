@@ -1,5 +1,5 @@
 /*
- * testunitfmt_ig_NG.js - test the unitfmt for ig-NG
+ * testunitfmt_ig_NG.js - test the unitfmt for Igbo - Nigeria
  *
  * Copyright © 2022 JEDLSoft
  *

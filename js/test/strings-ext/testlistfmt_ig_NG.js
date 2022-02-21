@@ -1,5 +1,5 @@
 /*
- * testlistfmt_ig_NG.js - test the list formatter object
+ * testlistfmt_ig_NG.js - test the list formatter object Igbo - Nigeria
  *
  * Copyright © 2022, JEDLSoft
  *
