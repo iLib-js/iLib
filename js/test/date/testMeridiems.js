@@ -1,7 +1,7 @@
  /*
  * testMeridiems.js - test the meridiems data
  *
- * Copyright © 2019-2021, JEDLSoft
+ * Copyright © 2019-2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2124,6 +2124,15 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, 'AM');
         test.equal(fmt[1].name, 'PM');
+        test.done();
+    },
+    testMeridiem_lb_LU: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"lb-LU"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'moies');
+        test.equal(fmt[1].name, 'nomëttes');
         test.done();
     },
     testMeridiem_pa_IN: function(test) {

@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
  * 
- * Copyright © 2017-2018, 2020-2021 JEDLSoft
+ * Copyright © 2017-2018, 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,6 +77,7 @@ module.exports.files = [
     "testdatefmt_ko_KR.js",
     "testdatefmt_ku_Arab_IQ.js",
     "testdatefmt_ky_KG.js",
+    "testdatefmt_lb_LU.js",
     "testdatefmt_lo_LA.js",
     "testdatefmt_lt_LT.js",
     "testdatefmt_lv_LV.js",

@@ -1,7 +1,7 @@
 /*
  * testMonthTranslation.js - test the month's translation
  *
- * Copyright © 2019-2021, JEDLSoft
+ * Copyright © 2019-2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -7990,6 +7990,50 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], 'Okt');
         test.equal(value[10], 'Nov');
         test.equal(value[11], 'Dis');
+        test.done();
+    },
+    testMonthTranslate_lb_LU: function(test) {
+        test.expect(24);
+
+        // full : MMMM
+        // lonh, medium: MMM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"lb-LU", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Januar');
+        test.equal(value[1], 'Februar');
+        test.equal(value[2], 'Mäerz');
+        test.equal(value[3], 'Abrëll');
+        test.equal(value[4], 'Mee');
+        test.equal(value[5], 'Juni');
+        test.equal(value[6], 'Juli');
+        test.equal(value[7], 'August');
+        test.equal(value[8], 'September');
+        test.equal(value[9], 'Oktober');
+        test.equal(value[10], 'November');
+        test.equal(value[11], 'Dezember');
+
+        var fmt = new DateFmt({locale:"lb-LU", date:"m", length: "medium", useNative:false, timezone:"local"})
+
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Jan');
+        test.equal(value[1], 'Feb');
+        test.equal(value[2], 'Mäe');
+        test.equal(value[3], 'Abr');
+        test.equal(value[4], 'Mee');
+        test.equal(value[5], 'Jun');
+        test.equal(value[6], 'Jul');
+        test.equal(value[7], 'Aug');
+        test.equal(value[8], 'Sep');
+        test.equal(value[9], 'Okt');
+        test.equal(value[10], 'Nov');
+        test.equal(value[11], 'Dez');
         test.done();
     }
 }

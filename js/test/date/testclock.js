@@ -1925,5 +1925,14 @@ module.exports.testclock = {
         test.equal(info.getClock(), 24);
 
         test.done();
+    },
+    testClock_lb_LU: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("lb-LU");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+
+        test.done();
     }
 }

@@ -2016,5 +2016,13 @@ module.exports.testcurrency = {
 
         test.equal(info.getCurrency(), "ZAR");
         test.done();
+    },
+    testCurrency_lb_LU: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("lb-LU");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "EUR");
+        test.done();
     }
 };

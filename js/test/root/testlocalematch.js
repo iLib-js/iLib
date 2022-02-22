@@ -1,7 +1,7 @@
 /*
  * testlocalematch.js - test the locale matcher object
  *
- * Copyright © 2012-2015,2017,2019-2021 JEDLSoft
+ * Copyright © 2012-2015,2017,2019-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1213,6 +1213,28 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "zu-Latn-ZA");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_lb: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "lb"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "lb-Latn-LU");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_LU: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "LU"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "fr-Latn-LU");
         test.done();
     },
     testLocaleMatcherGetLikelyLocaleByLocaleCode_ZA: function(test) {
@@ -2459,6 +2481,28 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "wo-SN");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocale_lb_LU: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "lb-LU"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "lb-LU");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocale_lb_LU2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "lb-Latn"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "lb-LU");
         test.done();
     }
 };
