@@ -6,12 +6,13 @@ Build 022
 Published as version 14.14.0
 
 New Features:
-* Supported additional lb-LU locales
+* Added support for ig-NG, lb-LU locales
     * validated locale data and added many test cases
 
 Bug Fixes:
 * Fixed the long name of the pounds per square inch (psi) of pressure measure to match the long name used
   in CLDR so that measures of psi can be formatted with the format templates from CLDR
+
 
 Build 021
 -------

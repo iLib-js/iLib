@@ -126,6 +126,26 @@ var hardCodeData = {
             "full": {
                 "2": "{0} oder {1}",
                 "end": "{0}, oder {1}"
+               }
+        }
+    },
+    "ig":{
+        "or": {
+            "short": {
+                "2": "{0} mba {1}",
+                "end": "{0}, mba {1}"
+            },
+            "medium": {
+                "2": "{0} mba {1}",
+                "end": "{0}, mba {1}"
+            },
+            "long": {
+                "2": "{0} mba {1}",
+                "end": "{0}, mba {1}"
+            },
+            "full": {
+                "2": "{0} mba {1}",
+                "end": "{0}, mba {1}"
             }
         }
     }

@@ -13578,5 +13578,15 @@ module.exports.testlocaleinfo = {
         test.equal(info.getDelimiterQuotationEnd(), "“");
         test.equal(info.getPaperSize(), "A4");
         test.done();
+    },
+    testLocaleInfoQuotation_ig_NG: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ig-NG");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
     }
 };

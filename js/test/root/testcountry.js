@@ -469,6 +469,19 @@ module.exports.testcountry = {
         test.equal(ctry.getCode('Südkorea'), "KR");
         var locale = ctry.getLocale();
         test.equal(locale.toString(), "lb-LU");
+      test.done();
+    },
+    testCountryLocale_ig_NG: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ig-NG"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"), 'South Korea');
+        test.equal(ctry.getCode('South Korea'), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ig-NG");
         test.done();
     },
     testCountryGetByCodeUnknown: function(test) {

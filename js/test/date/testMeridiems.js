@@ -2163,5 +2163,14 @@ module.exports.testmeridiems = {
 
         ilibLoader.removePath(multiPath);
         test.done();
-    }
+    },
+    testMeridiem_ig_NG: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"ig-NG"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'N’ụtụtụ');
+        test.equal(fmt[1].name, 'N’abali');
+        test.done();
+    },
 }

@@ -2430,6 +2430,26 @@ module.exports.testscriptinfo = {
     testScriptInfo_lb: function(test) {
         test.expect(4);
         var li = new LocaleInfo("lb-LU");
+      var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_ig: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ig");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_ig_NG: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ig-NG");
         var scinfo = new ScriptInfo(li.getScript());
         test.ok(li !== null);
         test.ok(scinfo !== null);
