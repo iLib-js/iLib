@@ -1,7 +1,7 @@
 /*
  * testMonthTranslation.js - test the month's translation
  *
- * Copyright © 2019-2021, JEDLSoft
+ * Copyright © 2019-2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -7988,6 +7988,50 @@ module.exports.testmonthtranslation = {
         test.equal(value[7], 'Aga');
         test.equal(value[8], 'Sep');
         test.equal(value[9], 'Okt');
+        test.equal(value[10], 'Nov');
+        test.equal(value[11], 'Dis');
+        test.done();
+    },
+    testMonthTranslate_ig_NG: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ig-NG", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Jenụwarị');
+        test.equal(value[1], 'Febrụwarị');
+        test.equal(value[2], 'Maachị');
+        test.equal(value[3], 'Epreel');
+        test.equal(value[4], 'Mee');
+        test.equal(value[5], 'Juun');
+        test.equal(value[6], 'Julaị');
+        test.equal(value[7], 'Ọgọọst');
+        test.equal(value[8], 'Septemba');
+        test.equal(value[9], 'Ọktoba');
+        test.equal(value[10], 'Novemba');
+        test.equal(value[11], 'Disemba');
+
+        var fmt = new DateFmt({locale:"ig-NG", date:"m", length: "medium", useNative:false, timezone:"local"})
+
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Jen');
+        test.equal(value[1], 'Feb');
+        test.equal(value[2], 'Maa');
+        test.equal(value[3], 'Epr');
+        test.equal(value[4], 'Mee');
+        test.equal(value[5], 'Juu');
+        test.equal(value[6], 'Jul');
+        test.equal(value[7], 'Ọgọ');
+        test.equal(value[8], 'Sep');
+        test.equal(value[9], 'Ọkt');
         test.equal(value[10], 'Nov');
         test.equal(value[11], 'Dis');
         test.done();

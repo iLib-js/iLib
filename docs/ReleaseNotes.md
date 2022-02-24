@@ -3,13 +3,16 @@ Release Notes for Version 14
 
 Build 022
 -------
-Published as version 14.13.1
+Published as version 14.14.0
 
 New Features:
+* Added support for ig-NG locale
+    * validated locale data and added many test cases
 
 Bug Fixes:
 * Fixed the long name of the pounds per square inch (psi) of pressure measure to match the long name used
   in CLDR so that measures of psi can be formatted with the format templates from CLDR
+
 
 Build 021
 -------
