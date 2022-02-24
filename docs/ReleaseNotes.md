@@ -6,7 +6,7 @@ Build 022
 Published as version 14.14.0
 
 New Features:
-* Supported additional ig-NG locales
+* Added support for ig-NG locale
     * validated locale data and added many test cases
 
 Bug Fixes:
