@@ -2126,6 +2126,15 @@ module.exports.testmeridiems = {
         test.equal(fmt[1].name, 'PM');
         test.done();
     },
+    testMeridiem_lb_LU: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"lb-LU"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'moies');
+        test.equal(fmt[1].name, 'nomëttes');
+        test.done();
+    },
     testMeridiem_pa_IN: function(test) {
         test.expect(3);
         var fmt = DateFmt.getMeridiemsRange({locale:"pa-IN"});

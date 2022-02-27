@@ -2119,6 +2119,16 @@ module.exports.testweekdata = {
         test.equal(info.getWeekEndEnd(), 0);
         test.done();
     },
+    testWeekData_lb_LU: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("lb-LU");
+
+        test.ok(info !== null);
+        test.equal(info.getFirstDayOfWeek(), 1);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+    },
     testWeekData_ig_NG: function(test) {
         test.expect(4);
         var info = new LocaleInfo("ig-NG");

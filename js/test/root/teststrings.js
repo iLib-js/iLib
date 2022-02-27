@@ -3743,7 +3743,24 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(35), "Default items");
         test.done();
     },
+    testStringFormatChoiceCharClassesComplex_lb_LU: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("lb-LU");
+        test.ok(str !== null);
 
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_lb_LU2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("lb-LU");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(5), "Default items");
+        test.done();
+    },
     testStringFormatChoiceCharClassesComplexmt_it_IT: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
@@ -4359,6 +4376,26 @@ module.exports.teststrings = {
 
         test.equal(str.formatChoice(4.1e2), "Default items");
         test.done();
+    },
+    testStringFormatChoiceDecimal_lb_LU: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("lb-LU");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.1), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_lb_LU2: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("lb-LU");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(10.0), "Default items");
+      test.done();
     },
     testStringFormatChoiceDecimal_ig_NG: function(test) {
         test.expect(2);

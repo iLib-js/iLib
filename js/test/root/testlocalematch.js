@@ -1215,6 +1215,28 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "zu-Latn-ZA");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_lb: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "lb"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "lb-Latn-LU");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_LU: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "LU"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "fr-Latn-LU");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleByLocaleCode_ZA: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -2481,6 +2503,28 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "wo-SN");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocale_lb_LU: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "lb-LU"
+          });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "lb-LU");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocale_lb_LU2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "lb-Latn"
+          });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "lb-LU");
         test.done();
     },
     testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocale_ig_NG: function(test) {

@@ -9667,6 +9667,45 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_3[3], '3 wa, 3 si, 3 sa');
         test.done();
     },
+    testDurFmt_lb_LU: function(test) {
+        test.expect(16);
+        // 1 18
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+        var textformatted_1 = [], textformatted_18 = [];
+        var clockformatted_1 = [], clockformatted_18 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "lb-LU", style:"text", length:length[i], useNative: false});
+            textformatted_1.push(textfmt.format({year: 1, month: 1, week: 1, day: 1}).toString());
+            textformatted_18.push(textfmt.format({year: 18, month: 18, week: 18, day: 18}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1, minute: 1, second: 1}).toString());
+            clockformatted_18.push(textfmt.format({hour: 18, minute: 18, second: 18}).toString());
+        }
+
+        test.equal(textformatted_1[0], '1 Joer, 1 Mount, 1 Woch, 1 Dag');
+        test.equal(textformatted_1[1], '1 J, 1 Mnt, 1 W, 1 D');
+        test.equal(textformatted_1[2], '1 J, 1 M, 1 W, 1 D');
+        test.equal(textformatted_1[3], '1 J 1 M 1 W 1 D');
+
+        test.equal(textformatted_18[0], '18 Joer, 18 Méint, 18 Wochen, 18 Deeg');
+        test.equal(textformatted_18[1], '18 J, 18 Mnt, 18 W, 18 D');
+        test.equal(textformatted_18[2], '18 J, 18 M, 18 W, 18 D');
+        test.equal(textformatted_18[3], '18 J 18 M 18 W 18 D');
+
+        test.equal(clockformatted_1[0], '1 Stonn, 1 Minutt, 1 Sekonn');
+        test.equal(clockformatted_1[1], '1 St., 1 Min., 1 Sek.');
+        test.equal(clockformatted_1[2], '1 st, 1 min, 1 s');
+        test.equal(clockformatted_1[3], '1 st 1 min 1 s');
+
+        test.equal(clockformatted_18[0], '18 Stonnen, 18 Minutten, 18 Sekonnen');
+        test.equal(clockformatted_18[1], '18 St., 18 Min., 18 Sek.');
+        test.equal(clockformatted_18[2], '18 st, 18 min, 18 s');
+        test.equal(clockformatted_18[3], '18 st 18 min 18 s');
+        test.done();
+    },
     testDurFmt_ig_NG: function(test) {
         test.expect(16);
         // 1 3
