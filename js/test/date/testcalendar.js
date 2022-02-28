@@ -23,7 +23,7 @@ if (typeof(LocaleInfo) === "undefined") {
 
 module.exports.testcalendar = {
     testDefaultCalendar_GregorianCaseAll: function(test) {
-        test.expect(210);
+        test.expect(212);
 
         var localeList = ["ar-AE","ar-BH","ar-DJ","ar-DZ","ar-EG","ar-IQ","ar-JO","ar-KW","ar-LB","ar-LY","ar-MA","ar-MR",
         "ar-OM","ar-QA","ar-SA","ar-SD","ar-SY","ar-TN","ar-YE","as-IN","az-Latn-AZ","be-BY","bg-BG","bn-IN","bs-Latn-BA,bs-Latn-ME",
@@ -37,7 +37,7 @@ module.exports.testcalendar = {
         "ko-KR","ku-Arab-IQ","ky-KG","lb-LU","lo-LA","lt-LT","lv-LV","mk-MK","ml-IN","mn-Cyrl-MN","mr-IN","ms-MY","ms-SG","mt-MT","my-MM","nb-NO","ne-NP","nl-BE","nl-NL","pa-IN",
         "pa-PK","pl-PL","pt-AO","pt-BR","pt-GQ","pt-CV","pt-PT","ro-RO","ru-BY","ru-GE","ru-KG","ru-KZ","ru-RU","ru-UA","si-LK",
         "sk-SK","sl-SI","sq-AL","sq-ME","sr-Latn-ME","sr-Latn-RS","sv-FI","sv-SE","sw-KE","ta-IN","ta-SG","te-IN","tg-TJ","tk-TM","tr-AM","tr-AZ",
-        "tr-CY","tr-TR","uk-UA","ur-IN","ur-PK","uz-Cyrl-UZ","uz-Latn-UZ","vi-VN","wo-SN","zh-Hans-CN","zh-Hans-SG","zh-Hant-HK",
+        "tr-CY","tr-TR","uk-UA","ur-IN","ur-PK","uz-Cyrl-UZ","uz-Latn-UZ","vi-VN","wo-SN","yo-BJ", "yo-NG","zh-Hans-CN","zh-Hans-SG","zh-Hant-HK",
         "zh-Hans-MY","zh-Hant-TW","zu-ZA","af-ZA","ha-Latn-NG","or-IN","en-GE","en-CN","en-MX","en-TW","es-CA"];
 
         //console.log("localeList.length: ", localeList.length);

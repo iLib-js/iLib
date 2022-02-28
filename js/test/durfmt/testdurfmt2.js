@@ -9745,5 +9745,85 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_17[2], '17 h, 17 min, 17 s');
         test.equal(clockformatted_17[3], '17 h, 17 min, 17 s');
         test.done();
+    },
+    testDurFmt_yo_NG: function(test) {
+        test.expect(16);
+        // 1 3
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [], textformatted_5 = [];
+        var clockformatted_1 = [], clockformatted_5 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "yo-NG", style:"text", length:length[i], useNative: false});
+            textformatted_1.push(textfmt.format({year: 1, month: 1, week: 1, day: 1}).toString());
+            textformatted_5.push(textfmt.format({year: 5, month: 5, week: 5, day: 5}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1, minute: 1, second: 1}).toString());
+            clockformatted_5.push(textfmt.format({hour: 5, minute: 5, second: 5}).toString());
+        }
+
+        test.equal(textformatted_1[0], '1 ọd, 1 oṣù, 1 ọṣ, ọj 1');
+        test.equal(textformatted_1[1], '1 ọd, 1 oṣù, 1 ọṣ, 1 ọj');
+        test.equal(textformatted_1[2], '1 ọd, 1 oṣù, 1 ọṣ, ọj 1');
+        test.equal(textformatted_1[3], '1 ọd, 1 oṣù, 1 ọṣ, ọj 1');
+
+        test.equal(textformatted_5[0], '5 ọd, 5 oṣù, 5 ọṣ, ọj 5');
+        test.equal(textformatted_5[1], '5 ọd, 5 oṣù, 5 ọṣ, 5 ọj');
+        test.equal(textformatted_5[2], '5 ọd, 5 oṣù, 5 ọṣ, ọj 5');
+        test.equal(textformatted_5[3], '5 ọd, 5 oṣù, 5 ọṣ, ọj 5');
+
+        test.equal(clockformatted_1[0], '1 wkt, 1 ìṣ, 1ìṣ àáy');
+        test.equal(clockformatted_1[1], '1 wkt, 1 ìṣ, 1 ìṣ àáy');
+        test.equal(clockformatted_1[2], '1 wkt, 1/ìṣ, 1 ìṣ àáy');
+        test.equal(clockformatted_1[3], '1 wkt, 1/ìṣ, 1 ìṣ àáy');
+
+        test.equal(clockformatted_5[0], '5 wkt, 5 ìṣ, 5ìṣ àáy');
+        test.equal(clockformatted_5[1], '5 wkt, 5 ìṣ, 5 ìṣ àáy');
+        test.equal(clockformatted_5[2], '5 wkt, 5/ìṣ, 5 ìṣ àáy');
+        test.equal(clockformatted_5[3], '5 wkt, 5/ìṣ, 5 ìṣ àáy');
+        test.done();
+    },
+    testDurFmt_yo_BJ: function(test) {
+        test.expect(16);
+        // 1 3
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [], textformatted_17 = [];
+        var clockformatted_1 = [], clockformatted_17 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "yo-BJ", style:"text", length:length[i], useNative: false});
+            textformatted_1.push(textfmt.format({year: 1, month: 1, week: 1, day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17, month: 17, week: 17, day: 17}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1, minute: 1, second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17, minute: 17, second: 17}).toString());
+        }
+
+        test.equal(textformatted_1[0], '1 ɔd, 1 oshù, 1 ɔsh, ɔj 1');
+        test.equal(textformatted_1[1], '1 ɔd, 1 oshù, 1 ɔsh, 1 ɔj');
+        test.equal(textformatted_1[2], '1 ɔd, 1 oshù, 1 ɔsh, ɔj 1');
+        test.equal(textformatted_1[3], '1 ɔd, 1 oshù, 1 ɔsh, ɔj 1');
+
+        test.equal(textformatted_17[0], '17 ɔd, 17 oshù, 17 ɔsh, ɔj 17');
+        test.equal(textformatted_17[1], '17 ɔd, 17 oshù, 17 ɔsh, 17 ɔj');
+        test.equal(textformatted_17[2], '17 ɔd, 17 oshù, 17 ɔsh, ɔj 17');
+        test.equal(textformatted_17[3], '17 ɔd, 17 oshù, 17 ɔsh, ɔj 17');
+
+        test.equal(clockformatted_1[0], '1 wkt, 1 ìsh, 1ìsh àáy');
+        test.equal(clockformatted_1[1], '1 wkt, 1 ìsh, 1 ìsh àáy');
+        test.equal(clockformatted_1[2], '1 wkt, 1/ìsh, 1 ìsh àáy');
+        test.equal(clockformatted_1[3], '1 wkt, 1/ìsh, 1 ìsh àáy');
+
+        test.equal(clockformatted_17[0], '17 wkt, 17 ìsh, 17ìsh àáy');
+        test.equal(clockformatted_17[1], '17 wkt, 17 ìsh, 17 ìsh àáy');
+        test.equal(clockformatted_17[2], '17 wkt, 17/ìsh, 17 ìsh àáy');
+        test.equal(clockformatted_17[3], '17 wkt, 17/ìsh, 17 ìsh àáy');
+        test.done();
     }
 }

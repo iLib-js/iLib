@@ -148,6 +148,26 @@ var hardCodeData = {
                 "end": "{0}, mba {1}"
             }
         }
+    },
+    "yo":{
+        "or": {
+            "short": {
+                "2": "{0} tabi {1}",
+                "end": "{0}, tabi {1}"
+            },
+            "medium": {
+                "2": "{0} tabi {1}",
+                "end": "{0}, tabi {1}"
+            },
+            "long": {
+                "2": "{0} tabi {1}",
+                "end": "{0}, tabi {1}"
+            },
+            "full": {
+                "2": "{0} tabi {1}",
+                "end": "{0}, tabi {1}"
+            }
+        }
     }
 }
 

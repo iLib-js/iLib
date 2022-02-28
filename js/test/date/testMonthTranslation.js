@@ -8078,5 +8078,57 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], 'Nov');
         test.equal(value[11], 'Dis');
         test.done();
+    },
+    testMonthTranslate_yo_NG: function(test) {
+        test.expect(12);
+
+        // full, long: MMM
+        // medium: MM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"yo-NG", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Ṣẹ́');
+        test.equal(value[1], 'Èr');
+        test.equal(value[2], 'Ẹr');
+        test.equal(value[3], 'Ìg');
+        test.equal(value[4], 'Ẹ̀b');
+        test.equal(value[5], 'Òk');
+        test.equal(value[6], 'Ag');
+        test.equal(value[7], 'Òg');
+        test.equal(value[8], 'Ow');
+        test.equal(value[9], 'Ọ̀w');
+        test.equal(value[10], 'Bé');
+        test.equal(value[11], 'Ọ̀p');
+       test.done();
+    },
+    testMonthTranslate_yo_BJ: function(test) {
+        test.expect(12);
+
+        // full, long: MMM
+        // medium: MM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"yo-BJ", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'Shɛ́');
+        test.equal(value[1], 'Èr');
+        test.equal(value[2], 'Ɛr');
+        test.equal(value[3], 'Ìg');
+        test.equal(value[4], 'Ɛ̀b');
+        test.equal(value[5], 'Òk');
+        test.equal(value[6], 'Ag');
+        test.equal(value[7], 'Òg');
+        test.equal(value[8], 'Ow');
+        test.equal(value[9], 'Ɔ̀w');
+        test.equal(value[10], 'Bé');
+        test.equal(value[11], 'Ɔ̀p');
+       test.done();
     }
 }
