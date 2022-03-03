@@ -4093,5 +4093,44 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "₦57.05");
         test.done();
+    },
+    testNumFmt_ps_PK: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("ps-PK");
+        var fmt = new NumFmt({locale:"ps-PK", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(),'٫');
+        test.equal(li.getGroupingSeparator(),  '٬');
+        test.equal(fmt.format(123456789.45), '123٬456٬789٫45');
+
+        var pctfmt = new NumFmt({locale:"ps-PK", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), '{n}٪');
+        test.equal(li.getNegativePercentageFormat(),  '‎-‎{n}٪' );
+        test.equal(pctfmt.format(34), '34٪' );
+
+        var curfmt = new NumFmt({locale: "ps-PK", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common,'{n} {s}');
+        test.equal(li.getCurrencyFormats().commonNegative, '‎-‎{n} {s}');
+        test.equal(curfmt.format(57.05), '57٫05 Rs');
+        test.done();
+    },
+    testNumFmt_ps_AF: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("ps-AF");
+        var fmt = new NumFmt({locale:"ps-AF", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), '٫');
+        test.equal(li.getGroupingSeparator(), '٬');
+        test.equal(fmt.format(123456789.45), '123٬456٬789٫45');
+
+        var pctfmt = new NumFmt({locale:"ps-AF", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), '{n}٪');
+        test.equal(li.getNegativePercentageFormat(), '‎-‎{n}٪');
+        test.equal(pctfmt.format(34), '34٪');
+
+        var curfmt = new NumFmt({locale: "ps-AF", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, '{n} {s}');
+        test.equal(li.getCurrencyFormats().commonNegative, '‎-‎{n} {s}');
+        test.equal(curfmt.format(57.05), '57 ؋');
+        test.done();
     }
+
 }

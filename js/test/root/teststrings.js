@@ -3432,6 +3432,26 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(5), "Default items");
         test.done();
     },
+    testStringFormatChoiceCharClasses_ps_PK: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ps-PK");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses_ps_AF: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ps-AF");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(15), "Default items");
+        test.done();
+    },
     
     testStringFormatChoiceCharClassesComplex1: function(test) {
         test.expect(2);
@@ -4415,6 +4435,26 @@ module.exports.teststrings = {
         test.ok(str !== null);
 
         test.equal(str.formatChoice(6.1), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_ps_AF: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ps-AF");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1.0), "There items are one");
+        test.done();
+    },
+    testStringFormatChoiceDecimal_ps_PK: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ig-NG");
+
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(26.1), "Default items");
         test.done();
     },
     testStringFormatChoiceGender: function(test) {
