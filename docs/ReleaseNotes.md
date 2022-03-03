@@ -12,6 +12,7 @@ New Features:
 Bug Fixes:
 * Fixed the long name of the pounds per square inch (psi) of pressure measure to match the long name used
   in CLDR so that measures of psi can be formatted with the format templates from CLDR
+* Fixed the ilib demo build failure issue that is related ilib-scanner.
 
 
 Build 021
