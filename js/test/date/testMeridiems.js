@@ -2173,4 +2173,22 @@ module.exports.testmeridiems = {
         test.equal(fmt[1].name, 'N’abali');
         test.done();
     },
+    testMeridiem_ps_AF: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"ps-AF"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'غ.م.');
+        test.equal(fmt[1].name, 'غ.و.');
+        test.done();
+    },
+    testMeridiem_ps_PK: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"ps-PK"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'غ.م.');
+        test.equal(fmt[1].name, 'غ.و.');
+        test.done();
+    },
 }

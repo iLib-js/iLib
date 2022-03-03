@@ -2138,5 +2138,25 @@ module.exports.testweekdata = {
         test.equal(info.getWeekEndStart(), 6);
         test.equal(info.getWeekEndEnd(), 0);
         test.done();
+    },
+    testWeekData_ps_PK: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ps-PK");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 0);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+    },
+    testWeekData_ps_AF: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ps-AF");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 6);
+        test.equal(info.getWeekEndStart(), 4);
+        test.equal(info.getWeekEndEnd(), 5);
+        test.done();
     }
 }
