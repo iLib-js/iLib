@@ -2,7 +2,7 @@
  * gendatefmts2.js - ilib tool to generate the dateformats.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2021, JEDLSoft
+ * Copyright © 2013-2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -244,7 +244,7 @@ localeDirName = process.argv[2];
 
 
 console.log("gendatefmts2 - generate date and time formats information files.\n" +
-"Copyright (c) 2013-2021 JEDLSoft\n");
+"Copyright (c) 2013-2022 JEDLSoft\n");
 
 console.log("locale dir: " + localeDirName);
 
@@ -314,7 +314,7 @@ locales.forEach(function (file) {
     var sourceDir = path.join("cldr-dates-full/main", file);
     var filename = path.join(sourceDir, "ca-gregorian.json");
     try {
-        if (language === "fa") {
+        if (language === "fa" || (language === "ps" && region !== "PK")) {
             // add the settings for the persian calendar as well
             filename = path.join("cldr-cal-persian-full/main", file, "ca-persian.json");
             cal = require(filename);
