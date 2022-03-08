@@ -12429,7 +12429,7 @@ module.exports.testWeekdayTranslation = {
         var fmt, value = [], i;
         fmt = new DateFmt({locale:"ps-AF", date:"w", length: "full", useNative:false, timezone: "Etc/UTC"})
         for (i=0; i < 7; i++) {
-            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian"}));
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+1, type:"persian"}));
         }
         test.equal(value[0], "يونۍ");
         test.equal(value[1], "دونۍ");
@@ -12446,7 +12446,7 @@ module.exports.testWeekdayTranslation = {
         var fmt, value = [], i;
         fmt = new DateFmt({locale:"ps-AF", date:"w", length: "long", useNative:false, timezone: "Etc/UTC"})
         for (i=0; i < 7; i++) {
-            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian"}));
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+1, type:"persian"}));
         }
         test.equal(value[0], "يونۍ");
         test.equal(value[1], "دونۍ");
@@ -12464,7 +12464,7 @@ module.exports.testWeekdayTranslation = {
         var fmt, value = [], i;
         fmt = new DateFmt({locale:"ps-AF", date:"w", length: "medium", useNative:false, timezone: "Etc/UTC"})
         for (i=0; i < 7; i++) {
-            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian"}));
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+1, type:"persian"}));
         }
         test.equal(value[0], "يونۍ");
         test.equal(value[1], "دونۍ");
@@ -12482,7 +12482,7 @@ module.exports.testWeekdayTranslation = {
         fmt = new DateFmt({locale:"ps-AF", date:"w", length: "short", useNative:false, timezone: "Etc/UTC"})
 
         for (i=0; i < 7; i++) {
-            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian"}));
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+1, type:"persian"}));
         }
         test.equal(value[0], "S");
         test.equal(value[1], "M");
