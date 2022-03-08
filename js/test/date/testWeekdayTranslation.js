@@ -12455,7 +12455,6 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "پينځنۍ");
         test.equal(value[5], "جمعه");
         test.equal(value[6], "اونۍ");
-
         test.done();
     },
     testWeekdayTranslationMedium_ps_AF: function(test) {
@@ -12491,7 +12490,6 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "T");
         test.equal(value[5], "F");
         test.equal(value[6], "S");
-
         test.done();
     },
     testWeekdayTranslationFull_ps_PK: function(test) {

@@ -9745,5 +9745,85 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_17[2], '17 h, 17 min, 17 s');
         test.equal(clockformatted_17[3], '17 h, 17 min, 17 s');
         test.done();
+    },
+    testDurFmt_ps_AF: function(test) {
+        test.expect(16);
+        // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [], textformatted_16 = [];
+        var clockformatted_1 = [], clockformatted_16 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "ps-AF", style:"text", length:length[i], useNative: false});
+            textformatted_1.push(textfmt.format({year: 1, month: 1, week: 1, day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16, month: 16, week: 16, day: 16}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1, minute: 1, second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16, minute: 16, second: 16}).toString());
+        }
+
+        test.equal(textformatted_1[0], '‏1 کال, 1 مياشت, اونۍ, 1 ورځ');
+        test.equal(textformatted_1[1], '‏1 y, 1 m, 1 w, 1 ورځ');
+        test.equal(textformatted_1[2], '‏1 y 1 m 1 w 1 ورځ');
+        test.equal(textformatted_1[3], '‏1 y 1 m 1 w 1 ورځ');
+
+        test.equal(textformatted_16[0], '‏16 کالونه, 16 مياشتې, 16 اونۍ, 16 ورځې');
+        test.equal(textformatted_16[1], '‏16 y, 16 mths, 16 wks, 16 ورځې');
+        test.equal(textformatted_16[2], '‏16 y 16 m 16 w 16d');
+        test.equal(textformatted_16[3], '‏16 y 16 m 16 w 16d');
+
+        test.equal(clockformatted_1[0], '‏1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[1], '‏1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[2], '‏1 h 1 min 1 s');
+        test.equal(clockformatted_1[3], '‏1 h 1 min 1 s');
+
+        test.equal(clockformatted_16[0], '‏16 h, 16 min, 16 s');
+        test.equal(clockformatted_16[1], '‏16 h, 16 min, 16 s');
+        test.equal(clockformatted_16[2], '‏16 h 16m 16 s');
+        test.equal(clockformatted_16[3], '‏16 h 16m 16 s');
+        test.done();
+    },
+    testDurFmt_ps_PK: function(test) {
+        test.expect(16);
+        // 1 11
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [], textformatted_11 = [];
+        var clockformatted_1 = [], clockformatted_11 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "ps-PK", style:"text", length:length[i], useNative: false});
+            textformatted_1.push(textfmt.format({year: 1, month: 1, week: 1, day: 1}).toString());
+            textformatted_11.push(textfmt.format({year: 11, month: 11, week: 11, day: 11}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1, minute: 1, second: 1}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11, minute: 11, second: 11}).toString());
+        }
+
+        test.equal(textformatted_1[0], '‏1 کال, 1 مياشت, اونۍ, 1 ورځ');
+        test.equal(textformatted_1[1], '‏1 y, 1 m, 1 w, 1 ورځ');
+        test.equal(textformatted_1[2], '‏1 y 1 m 1 w 1 ورځ');
+        test.equal(textformatted_1[3], '‏1 y 1 m 1 w 1 ورځ');
+
+        test.equal(textformatted_11[0], '‏11 کالونه, 11 مياشتے, 11 اونۍ, 11 ورځے');
+        test.equal(textformatted_11[1], '‏11 y, 11 mths, 11 wks, 11 ورځے');
+        test.equal(textformatted_11[2], '‏11 y 11 m 11 w 11d');
+        test.equal(textformatted_11[3], '‏11 y 11 m 11 w 11d');
+
+        test.equal(clockformatted_1[0], '‏1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[1], '‏1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[2], '‏1 h 1 min 1 s');
+        test.equal(clockformatted_1[3], '‏1 h 1 min 1 s');
+
+        test.equal(clockformatted_11[0], '‏11 h, 11 min, 11 s');
+        test.equal(clockformatted_11[1], '‏11 h, 11 min, 11 s');
+        test.equal(clockformatted_11[2], '‏11 h 11m 11 s');
+        test.equal(clockformatted_11[3], '‏11 h 11m 11 s');
+        test.done();
     }
 }
