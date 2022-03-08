@@ -12427,7 +12427,7 @@ module.exports.testWeekdayTranslation = {
         // full -> wide
         test.expect(7);
         var fmt, value = [], i;
-        fmt = new DateFmt({locale:"ps-AF", date:"w", length: "full", useNative:false, timezone:"local"})
+        fmt = new DateFmt({locale:"ps-AF", date:"w", length: "full", useNative:false, timezone:"Asia/Kabul"})
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian"}));
         }
@@ -12444,7 +12444,7 @@ module.exports.testWeekdayTranslation = {
         // long -> abbreviate
         test.expect(7);
         var fmt, value = [], i;
-        fmt = new DateFmt({locale:"ps-AF", date:"w", length: "long", useNative:false, timezone:"local"})
+        fmt = new DateFmt({locale:"ps-AF", date:"w", length: "long", useNative:false, timezone:"Asia/Kabul"})
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian"}));
         }
@@ -12462,7 +12462,7 @@ module.exports.testWeekdayTranslation = {
         // medium -> short
         test.expect(7);
         var fmt, value = [], i;
-        fmt = new DateFmt({locale:"ps-AF", date:"w", length: "medium", useNative:false, timezone:"local"})
+        fmt = new DateFmt({locale:"ps-AF", date:"w", length: "medium", useNative:false, timezone:"Asia/Kabul"})
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian"}));
         }
@@ -12479,7 +12479,7 @@ module.exports.testWeekdayTranslation = {
         // short: narrow
         test.expect(7);
         var fmt, value = [], i;
-        fmt = new DateFmt({locale:"ps-AF", date:"w", length: "short", useNative:false, timezone:"local"})
+        fmt = new DateFmt({locale:"ps-AF", date:"w", length: "short", useNative:false, timezone:"Asia/Kabul"})
 
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian"}));
