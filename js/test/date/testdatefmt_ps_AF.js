@@ -20,9 +20,6 @@
 if (typeof(JulianDate) === "undefined") {
     var JulianDate = require("../../lib/JulianDate.js");
 }
-if (typeof(PersianDate) === "undefined") {
-    var PersianDate = require("../../lib/PersianDate.js");
-}
 
 if (typeof(PersianDate) === "undefined") {
     var PersianDate = require("../../lib/PersianDate.js");
