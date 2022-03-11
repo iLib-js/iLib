@@ -498,12 +498,12 @@ limitations under the License.
             <exec osfamily="unix" executable="bash" dir="${build.demo}" failifexecutionfails="@{failquit}" failonerror="@{failquit}" searchpath="true">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <arg value="-c"/>
-                <arg value="ilib-scanner scripts/ilib-include.js --assembly=assembled --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base} --mode=production"/>
+                <arg value="ilib-scanner scripts/ilib-include.js --assembly=assembled --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base} --mode=production --classPath=./lib/ilib-unpack.js"/>
             </exec>
             <exec osfamily="windows" executable="cmd.exe" dir="${build.demo}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}" searchpath="true">
                 <env key="Path" path="${env.PATH}:${nm.bin}"/>
                 <arg value="/c"/>
-                <arg value="ilib-scanner.bat scripts/ilib-include.js --assembly=assembled --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base} --mode=production"/>
+                <arg value="ilib-scanner.bat scripts/ilib-include.js --assembly=assembled --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base} --mode=production --classPath=./lib/ilib-unpack.js"/>
             </exec>
         </sequential>
     </target>
@@ -513,12 +513,12 @@ limitations under the License.
             <exec osfamily="unix" executable="bash" dir="${build.demo}" failifexecutionfails="@{failquit}" failonerror="@{failquit}" searchpath="true">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <arg value="-c"/>
-                <arg value="ilib-scanner scripts/ilib-include.js --assembly=dynamicdata --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base} --mode=production"/>
+                <arg value="ilib-scanner scripts/ilib-include.js --assembly=dynamicdata --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base} --mode=production --classPath=./lib/ilib-unpack.js"/>
             </exec>
             <exec osfamily="windows" executable="cmd.exe" dir="${build.demo}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}" searchpath="true">
                 <env key="Path" path="${env.PATH}:${nm.bin}"/>
                 <arg value="/c"/>
-                <arg value="ilib-scanner.bat scripts/ilib-include.js --assembly=dynamicdata --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base} --mode=production"/>
+                <arg value="ilib-scanner.bat scripts/ilib-include.js --assembly=dynamicdata --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base} --mode=production --classPath=./lib/ilib-unpack.js"/>
             </exec>
         </sequential>
     </target>
