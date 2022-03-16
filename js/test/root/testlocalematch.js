@@ -1468,6 +1468,39 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ig-Latn-NG");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_yo: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "yo"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "yo-Latn-NG");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_yo_NG: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "yo-NG"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "yo-Latn-NG");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_yo_BJ: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "yo-BJ"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "yo-Latn-BJ");
+        test.done();
+    },
     testLocaleMatcherMatchExactFullLocale: function(test) {
         test.expect(2);
         var lm = new LocaleMatcher({
@@ -2547,6 +2580,39 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "ig-NG");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocale_yo: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "yo"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "yo-NG");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocale_yo_BJ: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "yo-BJ"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "yo-BJ");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocale_yo_NG: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "yo-NG"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "yo-NG");
         test.done();
     }
 };

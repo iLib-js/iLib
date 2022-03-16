@@ -6,7 +6,7 @@ Build 022
 Published as version 14.14.0
 
 New Features:
-* Added support for ig-NG, lb-LU locales
+* Added support for ig-NG, lb-LU, yo-BJ, yo-NG locales
     * validated locale data and added many test cases
 
 Bug Fixes:
