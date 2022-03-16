@@ -8,8 +8,6 @@ jobs:
 
     docker:
       - image: << parameters.docker_image >>
-    resource_class: xlarge
-    parallelism: 3
     environment:
       NODE_OPTIONS: "--max-old-space-size=3072"
       TZ: "America/Los_Angeles"
