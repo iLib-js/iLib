@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
  * 
- * Copyright © 2017-2018, 2020-2021 JEDLSoft
+ * Copyright © 2017-2018, 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,6 +68,7 @@ module.exports.files = [
     "testdatefmt_hr_HR.js",
     "testdatefmt_hy_AM.js",
     "testdatefmt_id_ID.js",
+    "testdatefmt_ig_NG.js",
     "testdatefmt_it_IT.js",
     "testdatefmt_ja_JP.js",
     "testdatefmt_ka_GE.js",
@@ -77,6 +78,7 @@ module.exports.files = [
     "testdatefmt_ko_KR.js",
     "testdatefmt_ku_Arab_IQ.js",
     "testdatefmt_ky_KG.js",
+    "testdatefmt_lb_LU.js",
     "testdatefmt_lo_LA.js",
     "testdatefmt_lt_LT.js",
     "testdatefmt_lv_LV.js",
@@ -115,6 +117,8 @@ module.exports.files = [
     "testdatefmt_uz_Latn_UZ.js",
     "testdatefmt_vi_VN.js",
     "testdatefmt_wo_SN.js",
+    "testdatefmt_yo_BJ.js",
+    "testdatefmt_yo_NG.js",
     "testdatefmt_zh_CN.js",
     "testdatefmt_zh_Hant_HK.js",
     "testdatefmt_zh_Hant_TW.js",

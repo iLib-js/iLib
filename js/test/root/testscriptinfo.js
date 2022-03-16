@@ -1,7 +1,7 @@
 /*
  * testscriptinfo.js - test the script info object
  * 
- * Copyright © 2013-2017, 2019-2021 JEDLSoft
+ * Copyright © 2013-2017, 2019-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2420,6 +2420,56 @@ module.exports.testscriptinfo = {
     testScriptInfo_ha: function(test) {
         test.expect(4);
         var li = new LocaleInfo("ha");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_lb: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("lb-LU");
+      var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_ig: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ig");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_ig_NG: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ig-NG");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_yo_BJ: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("yo-BJ");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_yo_NG: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("yo-NG");
         var scinfo = new ScriptInfo(li.getScript());
         test.ok(li !== null);
         test.ok(scinfo !== null);

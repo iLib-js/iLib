@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
  * 
- * Copyright © 2017, 2020-2021 JEDLSoft
+ * Copyright © 2017, 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,9 @@ module.exports.files = [
     "testmass.js",
     "testmeasurement.js",
     "testspeeds.js",
+    "testPower.js",
+    "testForce.js",
+    "testPressure.js",
     "testtemp.js",
     "testtime.js",
     "testunits.js",
@@ -38,7 +41,9 @@ module.exports.files = [
     "testunitfmt_eu_ES.js",
     "testunitfmt_gl_ES.js",
     "testunitfmt_hy_AM.js",
+    "testunitfmt_ig_NG.js",
     "testunitfmt_ky_KG.js",
+    "testunitfmt_lb_LU.js",
     "testunitfmt_lo_LA.js",
     "testunitfmt_ne_NP.js",
     "testunitfmt_mt_MT.js",
@@ -46,6 +51,8 @@ module.exports.files = [
     "testunitfmt_tk_TM.js",
     "testunitfmt_tg_TJ.js",
     "testunitfmt_wo_SN.js",
+    "testunitfmt_yo_BJ.js",
+    "testunitfmt_yo_NG.js",
     "testunitfmt_zu_ZA.js",
     "testunitfmtasync.js",
     "testdigitalspeed.js",

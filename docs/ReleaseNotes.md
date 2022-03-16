@@ -1,6 +1,32 @@
 Release Notes for Version 14
 ============================
 
+Build 022
+-------
+Published as version 14.14.0
+
+New Features:
+* Added support for ig-NG, lb-LU, yo-BJ, yo-NG locales
+    * validated locale data and added many test cases
+
+Bug Fixes:
+* Fixed the long name of the pounds per square inch (psi) of pressure measure to match the long name used
+  in CLDR so that measures of psi can be formatted with the format templates from CLDR
+* Fixed the ilib demo build failure issue that is related ilib-scanner.
+
+
+Build 021
+-------
+Published as version 14.13.0
+
+New Features:
+* Updated clock.jf files by referencing cldr-core/supplemental/timeDate.json and modified related cldr script code.
+* Added new unit types for power, pressure, and force
+    * includes unit conversion and formatting
+
+Bug Fixes:
+
+
 Build 020
 -------
 Published as version 14.12.0

@@ -1,7 +1,7 @@
 /*
  * testclock.js - test the 12/24 hour support amongst various locales
  *
- * Copyright © 2019-2021, JEDLSoft
+ * Copyright © 2019-2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -186,7 +186,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-AM");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
+        test.equal(info.getClock(), 24);
         
         test.done();
     },
@@ -204,7 +204,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-AZ");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
+        test.equal(info.getClock(), 24);
         
         test.done();
     },
@@ -267,7 +267,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-IS");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
+        test.equal(info.getClock(), 24);
         
         test.done();
     },
@@ -276,7 +276,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-JP");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
+        test.equal(info.getClock(), 24);
         
         test.done();
     },
@@ -303,7 +303,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-LK");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
+        test.equal(info.getClock(), 24);
         
         test.done();
     },
@@ -312,7 +312,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-MM");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
+        test.equal(info.getClock(), 24);
         
         test.done();
     },
@@ -1059,7 +1059,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("sq-ME");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
+        test.equal(info.getClock(), 24);
         
         test.done();
     },
@@ -1185,7 +1185,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("zh-Hans-CN");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
+        test.equal(info.getClock(), 24);
         
         test.done();
     },
@@ -1212,7 +1212,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-GE");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
+        test.equal(info.getClock(), 24);
         
         test.done();
     },
@@ -1221,7 +1221,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-CN");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
+        test.equal(info.getClock(), 24);
         
         test.done();
     },
@@ -1230,7 +1230,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-MX");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
+        test.equal(info.getClock(), 24);
         
         test.done();
     },
@@ -1257,7 +1257,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("es-CA");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         
         test.done();
     },
@@ -1509,7 +1509,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-RW");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         
         test.done();
     },
@@ -1680,7 +1680,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("fr-LB");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         
         test.done();
     },
@@ -1924,6 +1924,38 @@ module.exports.testclock = {
 
         test.equal(info.getClock(), 24);
 
+        test.done();
+    },
+    testClock_lb_LU: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("lb-LU");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_ig_NG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ig-NG");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_yo_NG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("yo-NG");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_yo_BJ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("yo_BJ");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
         test.done();
     }
 }
