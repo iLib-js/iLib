@@ -23,7 +23,7 @@ if (typeof(LocaleInfo) === "undefined") {
 
 module.exports.testcalendar = {
     testDefaultCalendar_GregorianCaseAll: function(test) {
-        test.expect(212);
+        test.expect(213);
 
         var localeList = ["ar-AE","ar-BH","ar-DJ","ar-DZ","ar-EG","ar-IQ","ar-JO","ar-KW","ar-LB","ar-LY","ar-MA","ar-MR",
         "ar-OM","ar-QA","ar-SA","ar-SD","ar-SY","ar-TN","ar-YE","as-IN","az-Latn-AZ","be-BY","bg-BG","bn-IN","bs-Latn-BA,bs-Latn-ME",
