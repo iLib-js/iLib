@@ -2158,5 +2158,25 @@ module.exports.testweekdata = {
         test.equal(info.getWeekEndStart(), 4);
         test.equal(info.getWeekEndEnd(), 5);
         test.done();
-    }
+    },
+    testWeekData_yo_BJ: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("yo-BJ");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 1);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+    },
+    testWeekData_yo_NG: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("yo-NG");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 1);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+    },
 }

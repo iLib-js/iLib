@@ -1941,5 +1941,21 @@ module.exports.testclock = {
 
         test.equal(info.getClock(), 24);
         test.done();
+    },
+    testClock_yo_NG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("yo-NG");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_yo_BJ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("yo_BJ");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
     }
 }

@@ -2047,6 +2047,22 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "AFN");
+      test.done();
+    },
+    testCurrency_yo_NG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("yo-NG");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "NGN");
+        test.done();
+    },
+    testCurrency_yo_BJ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("yo-BJ");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "XOF");
         test.done();
     }
 };

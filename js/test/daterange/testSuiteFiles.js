@@ -110,6 +110,8 @@ module.exports.files = [
     "testdatefmtrange_uz_Latn_UZ.js",
     "testdatefmtrange_vi_VN.js",
     "testdatefmtrange_wo_SN.js",
+    "testdatefmtrange_yo_BJ.js",
+    "testdatefmtrange_yo_NG.js",
     "testdatefmtrange_zh_Hans_CN.js",
     "testdatefmtrange_zh_Hant_HK.js",
     "testdatefmtrange_zh_Hant_TW.js",

@@ -2189,6 +2189,24 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, 'غ.م.');
         test.equal(fmt[1].name, 'غ.و.');
+      test.done();
+    },
+    testMeridiem_yo_NG: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"yo-NG"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'Àárọ̀');
+        test.equal(fmt[1].name, 'Ọ̀sán');
+        test.done();
+    },
+    testMeridiem_yo_BJ: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"yo-BJ"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'Àárɔ̀');
+        test.equal(fmt[1].name, 'Ɔ̀sán');
         test.done();
     },
 }

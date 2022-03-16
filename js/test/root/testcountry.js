@@ -508,6 +508,32 @@ module.exports.testcountry = {
         test.equal(ctry.getCode('چین'), "CN");
         var locale = ctry.getLocale();
         test.equal(locale.toString(), "ps-AF");
+      test.done();
+    },
+    testCountryLocale_yo_BJ: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "yo-BJ"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"), 'Orílɛ́ède Ariwa Kɔria');
+        test.equal(ctry.getCode('Orílɛ́ède Ariwa Kɔria'), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "yo-BJ");
+        test.done();
+    },
+    testCountryLocale_yo_NG: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "yo-NG"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("FR"), 'Orílẹ́ède Faranse');
+        test.equal(ctry.getCode('Orílẹ́ède Faranse'), "FR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "yo-NG");
         test.done();
     },
     testCountryGetByCodeUnknown: function(test) {
