@@ -8,6 +8,7 @@ Published as version 14.14.0
 New Features:
 * Added support for ig-NG, lb-LU, yo-BJ, yo-NG locales
     * validated locale data and added many test cases
+* Updated cldr tool codes to have consitently sorted locale data order.
 
 Bug Fixes:
 * Fixed the long name of the pounds per square inch (psi) of pressure measure to match the long name used
