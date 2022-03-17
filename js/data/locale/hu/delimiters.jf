@@ -1,8 +1,8 @@
 {
-    "generated": true,
     "delimiter": {
-        "quotationStart": "„",
+        "alternateQuotationEnd": "«",
         "alternateQuotationStart": "»",
-        "alternateQuotationEnd": "«"
-    }
+        "quotationStart": "„"
+    },
+    "generated": true
 }
