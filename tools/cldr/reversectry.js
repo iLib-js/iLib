@@ -2,7 +2,7 @@
  * reversectry.js - ilib tool to generate the ctryreverse.json from 
  * ctrynames.json files for LG specific country data
  *
- * Copyright © 2017, 2020 LGE
+ * Copyright © 2017, 2020, 2022 LGE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@
  */
 var fs = require('fs');
 var util = require('util');
+var stringify = require('json-stable-stringify');
 var path = require('../../js/lib/Path.js');
 
 function usage() {
@@ -77,7 +78,7 @@ function walk(root, dir) {
                             }
                             reversePath = sourcePath.replace('ctrynames', 'ctryreverse');
                             console.log(reversePath);
-                            fs.writeFileSync(reversePath, JSON.stringify(reverse, true, 4), 'utf8');
+                            fs.writeFileSync(reversePath, stringify(reverse, {space: 4}), 'utf8');
                         }
                     } catch (err) {
                         console.log("File " + sourcePath + " is not readable or does not contain valid JSON.\n");

@@ -2,7 +2,7 @@
  * gennorm.js - ilib tool to generate the json UNA normalization data from the Unicode
  * data files
  *
- * Copyright © 2013-2018, 2020-2021 JEDLSoft
+ * Copyright © 2013-2018, 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@
  */
 
 var fs = require('fs');
+var stringify = require('json-stable-stringify');
 var common = require('./common.js');
 
 var charIterator = common.charIterator;
@@ -65,7 +66,7 @@ if (process.argv.length > 2) {
 }
 
 console.log("gennorm - generate normalization data.\n" +
-        "Copyright (c) 2013-2018, 2020-2021 JEDLSoft");
+        "Copyright (c) 2013-2018, 2020-2022 JEDLSoft");
 
 
 if (!fs.existsSync(toDir)) {
@@ -323,7 +324,7 @@ import("iso-15924").then(function(isoModule) {
     mkdirs(codeDir + "/nfkd");
     mkdirs(codeDir + "/nfkc");
 
-    fs.writeFile(toDir + "/nfd/all.json", JSON.stringify(canonicalDecomp, true, 4), function (err) {
+    fs.writeFile(toDir + "/nfd/all.json", stringify(canonicalDecomp, {space: 4}), function (err) {
         if (err) {
             throw err;
         }
@@ -336,7 +337,7 @@ import("iso-15924").then(function(isoModule) {
 
     for (script in nfdByScript) {
         if (script && nfdByScript[script]) {
-            fs.writeFile(toDir + "/nfd/" + script + ".json", JSON.stringify(nfdByScript[script], true, 4), function (err) {
+            fs.writeFile(toDir + "/nfd/" + script + ".json", stringify(nfdByScript[script], {space: 4}), function (err) {
                 if (err) {
                     throw err;
                 }
@@ -350,7 +351,7 @@ import("iso-15924").then(function(isoModule) {
         }
     }
 
-    fs.writeFile(toDir + "/nfc/all.json", JSON.stringify(canonicalComp, true, 4), function (err) {
+    fs.writeFile(toDir + "/nfc/all.json", stringify(canonicalComp, {space: 4}), function (err) {
         if (err) {
             throw err;
         }
@@ -364,7 +365,7 @@ import("iso-15924").then(function(isoModule) {
 
     for (script in nfcByScript) {
         if (script && nfcByScript[script]) {
-            fs.writeFile(toDir + "/nfc/" + script + ".json", JSON.stringify(nfcByScript[script], true, 4), function (err) {
+            fs.writeFile(toDir + "/nfc/" + script + ".json", stringify(nfcByScript[script], {space: 4}), function (err) {
                 if (err) {
                     throw err;
                 }
@@ -377,7 +378,7 @@ import("iso-15924").then(function(isoModule) {
         }
     }
 
-    fs.writeFile(toDir + "/nfkd/all.json", JSON.stringify(compatibilityDecomp, true, 4), function (err) {
+    fs.writeFile(toDir + "/nfkd/all.json", stringify(compatibilityDecomp, {space: 4}), function (err) {
         if (err) {
             throw err;
         }
@@ -390,7 +391,7 @@ import("iso-15924").then(function(isoModule) {
 
     for (script in nfkdByScript) {
         if (script && nfkdByScript[script]) {
-            fs.writeFile(toDir + "/nfkd/" + script + ".json", JSON.stringify(nfkdByScript[script], true, 4), function (err) {
+            fs.writeFile(toDir + "/nfkd/" + script + ".json", stringify(nfkdByScript[script], {space: 4}), function (err) {
                 if (err) {
                     throw err;
                 }
@@ -420,7 +421,7 @@ import("iso-15924").then(function(isoModule) {
         }
     }
 
-    fs.writeFile(toDir + "/ccc.json", JSON.stringify(combiningMappings, true, 4), function (err) {
+    fs.writeFile(toDir + "/ccc.json", stringify(combiningMappings, {space: 4}), function (err) {
         if (err) {
             throw err;
         }

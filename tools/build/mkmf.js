@@ -1,7 +1,7 @@
 /* 
  * mkmf.js - ilib tool to create the manifest file for locale data
  *
- * Copyright © 2013, 2020 JEDLSoft
+ * Copyright © 2013, 2020, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@
  */
 var fs = require('fs');
 var util = require('util');
+var stringify = require('json-stable-stringify');
 var common = require('../cldr/common');
 var path = require('../../js/lib/Path.js');
 
@@ -78,7 +79,7 @@ walk(sourcedir, "");
 try {
     var targetPath = path.join(sourcedir, "ilibmanifest.json");
     console.log("Writing " + targetPath);
-    fs.writeFileSync(targetPath, JSON.stringify(manifest), 'utf8');
+    fs.writeFileSync(targetPath, stringify(manifest, {space: 4}), 'utf8');
 } catch (err) {
     console.log("Could not write target manifest file: " + targetPath);
     console.log(err);

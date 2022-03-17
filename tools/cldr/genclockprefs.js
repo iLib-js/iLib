@@ -26,6 +26,7 @@ var common = require('./common');
 var Locale = common.Locale;
 var makeDirs = common.makeDirs;
 var path = require("path");
+var stringify = require('json-stable-stringify');
 var supplementalData = require("cldr-core/supplemental/timeData.json").supplemental;
 
 function usage() {
@@ -65,7 +66,7 @@ clockprefs = {
 };
 
 clockprefs["clock"] = rootClockPref;
-fs.writeFileSync(path.join(resultDir, "clock.jf"), JSON.stringify(clockprefs, true, 4), "utf-8");
+fs.writeFileSync(path.join(resultDir, "clock.jf"), stringify(clockprefs, {space: 4}), "utf-8");
 
 for(var locale in timeData){
     clockprefs = {
@@ -94,7 +95,7 @@ for(var locale in timeData){
     }
     clockprefs["clock"] = getPreferClock(clock);
     console.log("Writing file : " + path.join(fullPath, "clock.jf"));
-    fs.writeFileSync(path.join(fullPath, "clock.jf"), JSON.stringify(clockprefs, true, 4), "utf-8");
+    fs.writeFileSync(path.join(fullPath, "clock.jf"), stringify(clockprefs, {space: 4}), "utf-8");
 }
 
 console.log("DONE.");

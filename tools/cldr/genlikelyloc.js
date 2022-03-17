@@ -2,7 +2,7 @@
  * genlikelyloc.js - ilib tool to generate the localematch.json files from 
  * the CLDR data files
  * 
- * Copyright © 2013-2020, JEDLSoft
+ * Copyright © 2013-2020, J2022 EDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,7 +50,7 @@ process.argv.forEach(function (val, index, array) {
 localeDirName = process.argv[2] || "tmp";
 
 console.log("genlikelyloc - generate the localematch.json file.\n" +
-        "Copyright (c) 2013-2019 JEDLSoft");
+        "Copyright (c) 2013-2019, 2022 JEDLSoft");
 
 console.log("locale dir: " + localeDirName);
 
@@ -267,7 +267,7 @@ console.log("Writing localematch.json...");
 // now write out the system resources
 
 var filename = localeDirName + "/localematch.json";
-fs.writeFile(filename, JSON.stringify(localematch, true, 4), function (err) {
+fs.writeFile(filename, stringify(localematch, {space: 4}), function (err) {
     if (err) {
         console.log(err);
         throw err;

@@ -1,7 +1,7 @@
 /*
  * genlangscripts.js - ilib tool to generate the json data about ISO 15924 scripts
  *
- * Copyright © 2013-2018, 2020-2021 JEDLSoft
+ * Copyright © 2013-2018, 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@ process.argv.forEach(function (val, index, array) {
 toDir = process.argv[2] || "tmp";
 
 console.log("genlangscripts - generate the localeinfo script.jf files.\n" +
-    "Copyright (c) 2013 - 2018 JEDLSoft");
+    "Copyright (c) 2013-2018, 2020-2022 JEDLSoft");
 
 console.log("output dir: " + toDir);
 
@@ -118,7 +118,7 @@ for (var language in scripts) {
         console.log(language + ':\t"scripts": ' + JSON.stringify(scripts[language]) + ',');
         scripts_name["scripts"] = scripts[language];
         scripts_name.generated = true;
-        fs.writeFile(filename + "/scripts.jf", JSON.stringify(scripts_name, true, 4), function (err) {
+        fs.writeFile(filename + "/scripts.jf", stringify(scripts_name, {space: 4}), function (err) {
             if (err) {
                 console.log(err);
                 throw err;

@@ -8,7 +8,6 @@ jobs:
 
     docker:
       - image: << parameters.docker_image >>
-
     environment:
       NODE_OPTIONS: "--max-old-space-size=3072"
       TZ: "America/Los_Angeles"

@@ -2,7 +2,7 @@
  * genlangreg.js - ilib tool to generate the langname and regionname json fragments from the CLDR
  * data files
  *
- * Copyright © 2013-2018, 2020 JEDLSoft
+ * Copyright © 2013-2018, 2020, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
+var stringify = require('json-stable-stringify');
 var common = require("./common");
 var path = require("path");
 var Locale = common.Locale;
@@ -47,7 +48,7 @@ process.argv.forEach(function (val, index, array) {
 localeDirName = process.argv[2] || "tmp";
 
 console.log("genlangreg - generate language and region name data.\n" +
-    "Copyright (c) 2013-2018, 2020 JEDLSoft");
+    "Copyright (c) 2013-2018, 2020, 2022 JEDLSoft");
 
 console.log("locale dir: " + localeDirName);
 
@@ -83,7 +84,7 @@ for (var lang in languages) {
         mkdirs(langdir);
         language_name["language.name"] = languages[lang];
         language_name.generated = true;
-        fs.writeFileSync(path.join(langdir, "langname.jf"), JSON.stringify(language_name, true, 4), "utf-8");
+        fs.writeFileSync(path.join(langdir, "langname.jf"), stringify(language_name, {space: 4}), "utf-8");
     }
 }
 
@@ -102,7 +103,7 @@ for (region in regions) {
         mkdirs(regdir);
         region_name["region.name"] = regions[region];
         region_name.generated = true;
-        fs.writeFileSync(path.join(regdir, "regionname.jf"), JSON.stringify(region_name, true, 4), "utf-8");
+        fs.writeFileSync(path.join(regdir, "regionname.jf"), stringify(region_name, {space: 4}), "utf-8");
     }
 }
 var xxRegion = {"region.name": "Unknown"};
@@ -111,4 +112,4 @@ var xxPath = path.join(localeDirName, "und", "XX");
 if (!fs.existsSync(xxPath)) {
     mkdirs(xxPath);
 }
-fs.writeFileSync(path.join(xxPath, "regionname.jf"), JSON.stringify(xxRegion, true, 4), "utf-8");
+fs.writeFileSync(path.join(xxPath, "regionname.jf"), stringify(xxRegion, {space: 4}), "utf-8");
