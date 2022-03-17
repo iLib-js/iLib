@@ -1,50 +1,36 @@
 {
     "gregorian": {
-        "order": {
-            "f": "{date}, {time}",
-            "l": "{date}, {time}",
-            "m": "{date} {time}",
-            "s": "{date}, {time}"
-        },
         "date": {
+            "d": {
+                "s": "dd"
+            },
+            "dm": {
+                "s": "dd/MM"
+            },
+            "dmw": {
+                "s": "E, dd/MM"
+            },
             "dmwy": {
                 "s": "E, dd/MM/yy"
             },
             "dmy": {
                 "s": "dd/MM/yy"
             },
-            "dmw": {
-                "s": "E, dd/MM"
-            },
-            "dm": {
-                "s": "dd/MM"
-            },
-            "my": {
-                "s": "MM/yy"
-            },
             "dw": {
                 "s": "E, dd"
             },
-            "d": {
-                "s": "dd"
-            },
             "m": {
                 "s": "MM"
+            },
+            "my": {
+                "s": "MM/yy"
             }
         },
-        "time": {
-            "24": {
-                "ahmsz": "HH:mm:ss z",
-                "ahms": "HH:mm:ss",
-                "hmsz": "HH:mm:ss z",
-                "hms": "HH:mm:ss",
-                "ahmz": "HH:mm z",
-                "ahm": "HH:mm",
-                "hmz": "HH:mm z",
-                "ah": "HH",
-                "hm": "HH:mm",
-                "h": "HH"
-            }
+        "order": {
+            "f": "{date}, {time}",
+            "l": "{date}, {time}",
+            "m": "{date} {time}",
+            "s": "{date}, {time}"
         },
         "range": {
             "c00": {
@@ -58,6 +44,20 @@
             },
             "c03": {
                 "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}"
+            }
+        },
+        "time": {
+            "24": {
+                "ah": "HH",
+                "ahm": "HH:mm",
+                "ahms": "HH:mm:ss",
+                "ahmsz": "HH:mm:ss z",
+                "ahmz": "HH:mm z",
+                "h": "HH",
+                "hm": "HH:mm",
+                "hms": "HH:mm:ss",
+                "hmsz": "HH:mm:ss z",
+                "hmz": "HH:mm z"
             }
         }
     }

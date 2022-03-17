@@ -1,55 +1,41 @@
 {
     "gregorian": {
         "date": {
+            "a": {
+                "s": "dd日"
+            },
+            "d": {
+                "s": "dd"
+            },
+            "dm": {
+                "s": "dd/MM"
+            },
+            "dmw": {
+                "s": "dd/MME"
+            },
             "dmwy": {
                 "s": "dd/MM/yyE"
             },
             "dmy": {
                 "s": "dd/MM/yy"
             },
-            "dmw": {
-                "s": "dd/MME"
-            },
-            "dm": {
-                "s": "dd/MM"
-            },
-            "my": {
-                "s": "MM/yy"
-            },
             "dw": {
                 "s": "dd/E"
-            },
-            "d": {
-                "s": "dd"
-            },
-            "m": {
-                "s": "MM"
-            },
-            "y": {
-                "s": "yy"
             },
             "l": {
                 "s": "MM月"
             },
+            "m": {
+                "s": "MM"
+            },
+            "my": {
+                "s": "MM/yy"
+            },
             "r": {
                 "s": "yy年"
             },
-            "a": {
-                "s": "dd日"
-            }
-        },
-        "time": {
-            "24": {
-                "ahmsz": "z H:mm:ss",
-                "ahms": "H:mm:ss",
-                "hmsz": "z H:mm:ss",
-                "hms": "H:mm:ss",
-                "ahmz": "z H:mm",
-                "ahm": "H:mm",
-                "hmz": "z H:mm",
-                "ah": "H时",
-                "hm": "H:mm",
-                "h": "H时"
+            "y": {
+                "s": "yy"
             }
         },
         "range": {
@@ -76,6 +62,20 @@
             },
             "c20": {
                 "s": "{sm}/{sy} – {em}/{ey}"
+            }
+        },
+        "time": {
+            "24": {
+                "ah": "H时",
+                "ahm": "H:mm",
+                "ahms": "H:mm:ss",
+                "ahmsz": "z H:mm:ss",
+                "ahmz": "z H:mm",
+                "h": "H时",
+                "hm": "H:mm",
+                "hms": "H:mm:ss",
+                "hmsz": "z H:mm:ss",
+                "hmz": "z H:mm"
             }
         }
     }

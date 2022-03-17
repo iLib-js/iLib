@@ -1,67 +1,67 @@
 {
     "gregorian": {
+        "date": {
+            "d": {
+                "m": "dd"
+            },
+            "dm": {
+                "m": "dd/MM"
+            },
+            "dmw": {
+                "m": "EE, dd/MM"
+            },
+            "dmwy": {
+                "m": "EE, dd/MM/yyyy",
+                "s": "E, dd/MM/yy"
+            },
+            "dmy": {
+                "m": "dd/MM/yyyy",
+                "s": "dd/MM/yy"
+            },
+            "dw": {
+                "m": "EE, dd"
+            },
+            "m": {
+                "m": "MM"
+            },
+            "my": {
+                "m": "MM/yyyy",
+                "s": "MM/yy"
+            },
+            "y": {
+                "s": "yy"
+            }
+        },
         "order": {
             "f": "{date} 'às' {time}",
             "l": "{date} 'às' {time}",
             "m": "{date}, {time}",
             "s": "{date}, {time}"
         },
-        "date": {
-            "dmwy": {
-                "s": "E, dd/MM/yy",
-                "m": "EE, dd/MM/yyyy"
-            },
-            "dmy": {
-                "s": "dd/MM/yy",
-                "m": "dd/MM/yyyy"
-            },
-            "dmw": {
-                "m": "EE, dd/MM"
-            },
-            "dm": {
-                "m": "dd/MM"
-            },
-            "my": {
-                "s": "MM/yy",
-                "m": "MM/yyyy"
-            },
-            "dw": {
-                "m": "EE, dd"
-            },
-            "d": {
-                "m": "dd"
-            },
-            "m": {
-                "m": "MM"
-            },
-            "y": {
-                "s": "yy"
-            }
-        },
         "range": {
             "c00": {
-                "s": "{sd}/{sm}/{sy}, {st} – {et}",
-                "m": "{sd}/{sm}/{sy}, {st} – {et}",
+                "f": "{sd} de {sm} de {sy} às {st} – {et}",
                 "l": "{sd} de {sm} de {sy} às {st} – {et}",
-                "f": "{sd} de {sm} de {sy} às {st} – {et}"
+                "m": "{sd}/{sm}/{sy}, {st} – {et}",
+                "s": "{sd}/{sm}/{sy}, {st} – {et}"
             },
             "c01": {
-                "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}",
-                "m": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}",
+                "f": "{sd} de {sm} de {sy} às {st} – {ed} de {em} de {ey} às {et}",
                 "l": "{sd} de {sm} de {sy} às {st} – {ed} de {em} de {ey} às {et}",
-                "f": "{sd} de {sm} de {sy} às {st} – {ed} de {em} de {ey} às {et}"
+                "m": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}",
+                "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c02": {
-                "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}",
-                "m": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}",
+                "f": "{sd} de {sm} de {sy} às {st} – {ed} de {em} de {ey} às {et}",
                 "l": "{sd} de {sm} de {sy} às {st} – {ed} de {em} de {ey} às {et}",
-                "f": "{sd} de {sm} de {sy} às {st} – {ed} de {em} de {ey} às {et}"
+                "m": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}",
+                "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c03": {
-                "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}",
-                "m": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}",
+                "f": "{sd} de {sm} de {sy} às {st} – {ed} de {em} de {ey} às {et}",
                 "l": "{sd} de {sm} de {sy} às {st} – {ed} de {em} de {ey} às {et}",
-                "f": "{sd} de {sm} de {sy} às {st} – {ed} de {em} de {ey} às {et}"
+                "m": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}",
+                "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c10": {
                 "m": "{sd} – {ed}/{em}/{ey}"

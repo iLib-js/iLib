@@ -1,56 +1,42 @@
 {
     "gregorian": {
-        "order": {
-            "f": "{date}, {time}",
-            "l": "{date}, {time}",
-            "m": "{date} {time}",
-            "s": "{date}, {time}"
-        },
         "date": {
-            "dmwy": {
-                "s": "E, d/MM/yy",
-                "m": "EE, d/MM/yyyy"
-            },
-            "dmy": {
-                "s": "d/MM/yy",
-                "m": "d/MM/yyyy"
+            "dm": {
+                "m": "d/MM",
+                "s": "d/MM"
             },
             "dmw": {
-                "s": "E, d/MM",
-                "m": "EE, d/MM"
+                "m": "EE, d/MM",
+                "s": "E, d/MM"
             },
-            "dm": {
-                "s": "d/MM",
-                "m": "d/MM"
+            "dmwy": {
+                "m": "EE, d/MM/yyyy",
+                "s": "E, d/MM/yy"
             },
-            "my": {
-                "s": "MM/yy",
-                "m": "MM/yyyy"
-            },
-            "m": {
-                "s": "MM",
-                "m": "MM"
+            "dmy": {
+                "m": "d/MM/yyyy",
+                "s": "d/MM/yy"
             },
             "e": {
                 "f": "cccc",
                 "l": "ccc",
                 "m": "cc",
                 "s": "c"
+            },
+            "m": {
+                "m": "MM",
+                "s": "MM"
+            },
+            "my": {
+                "m": "MM/yyyy",
+                "s": "MM/yy"
             }
         },
-        "time": {
-            "24": {
-                "ahmsz": "HH:mm:ss z",
-                "ahms": "HH:mm:ss",
-                "hmsz": "HH:mm:ss z",
-                "hms": "HH:mm:ss",
-                "ahmz": "HH:mm z",
-                "ahm": "HH:mm",
-                "hmz": "HH:mm z",
-                "ah": "HH",
-                "hm": "HH:mm",
-                "h": "HH"
-            }
+        "order": {
+            "f": "{date}, {time}",
+            "l": "{date}, {time}",
+            "m": "{date} {time}",
+            "s": "{date}, {time}"
         },
         "range": {
             "c00": {
@@ -76,6 +62,20 @@
             },
             "c20": {
                 "m": "{sm}/{sy} – {em}/{ey}"
+            }
+        },
+        "time": {
+            "24": {
+                "ah": "HH",
+                "ahm": "HH:mm",
+                "ahms": "HH:mm:ss",
+                "ahmsz": "HH:mm:ss z",
+                "ahmz": "HH:mm z",
+                "h": "HH",
+                "hm": "HH:mm",
+                "hms": "HH:mm:ss",
+                "hmsz": "HH:mm:ss z",
+                "hmz": "HH:mm z"
             }
         }
     }
