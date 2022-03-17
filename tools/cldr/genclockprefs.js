@@ -66,7 +66,7 @@ clockprefs = {
 };
 
 clockprefs["clock"] = rootClockPref;
-fs.writeFileSync(path.join(resultDir, "clock.jf"), JSON.stringify(clockprefs, true, 4), "utf-8");
+fs.writeFileSync(path.join(resultDir, "clock.jf"), stringify(clockprefs, {space: 4}), "utf-8");
 
 for(var locale in timeData){
     clockprefs = {
