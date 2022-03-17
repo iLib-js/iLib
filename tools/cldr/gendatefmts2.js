@@ -57,6 +57,16 @@ var hardCodeData = {
     "my": {
         "1#1 sec|#{num} sec": "#{num} စက္ကန့်"
     },
+    "ig":{
+        "1#1 millisecond|#{num} milliseconds": "#{num} millisekọnd",
+        "1#1 second|#{num} seconds": "#{num} sekọnd",
+        "1#1 minute|#{num} minutes": "#{num} Nkeji",
+        "1#1 hour|#{num} hours": "one#{num} elekere|#awa {num}",
+        "1#1 day|#{num} days": "one#{num} ụbọchị|#Ụbọchị {num}",
+        "1#1 week|#{num} weeks": "one#{num} izu|#Izu {num}",
+        "1#1 month|#{num} months": "one#{num} ọnwa|#Ọnwa {num}",
+        "1#1 year|#{num} years": "one#{num} afọ|#Afọ {num}"
+    },
     "tg": {
         "1#1 millisecond|#{num} milliseconds": "#{num} миллисекундҳо",
         "1#1 second|#{num} seconds": "#{num} сония",
