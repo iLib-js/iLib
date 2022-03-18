@@ -15,7 +15,7 @@ Bug Fixes:
   in CLDR so that measures of psi can be formatted with the format templates from CLDR
 * Fixed the ilib demo build failure issue that is related ilib-scanner.
 * Update to time zone data 2022a
-* * Fixed correct currency symbol (AMD, AZN, GHS)
+* Fixed correct currency symbol (AMD, AZN, GHS)
 
 
 Build 021
