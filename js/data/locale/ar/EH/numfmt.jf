@@ -1,36 +1,36 @@
 {
     "generated": true,
     "native_numfmt": {
-        "script": "Arab",
-        "decimalChar": "٫",
-        "groupChar": "٬",
-        "pctChar": "٪؜",
-        "exponential": "اس",
-        "prigroupSize": 3,
         "currencyFormats": {
             "common": "{n} {s}",
             "commonNegative": "؜-{n} {s}"
         },
-        "negativenumFmt": "؜-{n}",
-        "pctFmt": "{n}٪؜",
-        "negativepctFmt": "؜-{n}٪؜",
-        "roundingMode": "halfdown",
+        "decimalChar": "٫",
         "digits": "٠١٢٣٤٥٦٧٨٩",
+        "exponential": "اس",
+        "groupChar": "٬",
+        "negativenumFmt": "؜-{n}",
+        "negativepctFmt": "؜-{n}٪؜",
+        "pctChar": "٪؜",
+        "pctFmt": "{n}٪؜",
+        "prigroupSize": 3,
+        "roundingMode": "halfdown",
+        "script": "Arab",
         "useNative": true
     },
     "numfmt": {
-        "script": "Latn",
-        "decimalChar": ".",
-        "groupChar": ",",
-        "pctChar": "‎%‎",
-        "exponential": "E",
         "currencyFormats": {
             "common": "{s} {n}",
             "commonNegative": "‎-{s} {n}"
         },
+        "decimalChar": ".",
+        "exponential": "E",
+        "groupChar": ",",
         "negativenumFmt": "‎-{n}",
-        "pctFmt": "{n}‎%‎",
         "negativepctFmt": "‎-{n}‎%‎",
+        "pctChar": "‎%‎",
+        "pctFmt": "{n}‎%‎",
+        "script": "Latn",
         "useNative": false
     }
 }

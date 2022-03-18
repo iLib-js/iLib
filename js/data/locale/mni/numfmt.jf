@@ -1,25 +1,25 @@
 {
     "generated": true,
     "native_numfmt": {
-        "script": "Latn",
-        "decimalChar": ".",
-        "groupChar": ",",
-        "pctChar": "%",
-        "exponential": "E",
-        "prigroupSize": 3,
         "currencyFormats": {
             "common": "{s} {n}",
             "commonNegative": "-{s} {n}"
         },
+        "decimalChar": ".",
+        "exponential": "E",
+        "groupChar": ",",
         "negativenumFmt": "-{n}",
-        "pctFmt": "{n}%",
         "negativepctFmt": "-{n}%",
+        "pctChar": "%",
+        "pctFmt": "{n}%",
+        "prigroupSize": 3,
         "roundingMode": "halfdown",
+        "script": "Latn",
         "useNative": false
     },
     "numfmt": {
-        "script": "Beng",
         "digits": "০১২৩৪৫৬৭৮৯",
+        "script": "Beng",
         "useNative": true
     }
 }
