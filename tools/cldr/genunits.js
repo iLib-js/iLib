@@ -246,10 +246,8 @@ var hardCodeData = {
     "yo": {
         "unitfmt": {
             "long": {
-                "square-kilometer": "#{n} square-kilometer",
                 "hectare": "#{n} saare",
                 "square-meter": "#{n} square-mita",
-                "square-centimeter": "#{n} square-centimeter",
                 "square-mile": "#{n} square-mile",
                 "kilowatt-hour": "#{n} kilowatt-wakati",
                 "kilometer": "#{n} kilometer",
