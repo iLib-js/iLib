@@ -6396,7 +6396,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "100.110,57 AZN");
+        test.equal(fmt.format(100110.57), '100.110,57 ₼');
         test.done();
     },
     testNumFmtPercentageFormatRegular_az_Latn_AZ: function(test) {
@@ -6422,7 +6422,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-100110.57), "-100.110,57 AZN");
+        test.equal(fmt.format(-100110.57), '-100.110,57 ₼');
         test.done();
     },
     
