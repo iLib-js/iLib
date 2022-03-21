@@ -2327,8 +2327,7 @@ module.exports = {
     writeFormats: function(outputDir, outfile, group, localeComponents) {
         var dir = path.join.apply(undefined, [outputDir].concat(localeComponents));
         var filename = path.join(dir, outfile);
-        var contents = stringify(group.data, {space: 4});
-
+        var contents = JSON.stringify(group.data, undefined, 4); // to filter out `{\n}` case
         // don't write out empty files!
         if (contents !== "{}") {
             console.log(localeComponents.join("-") + " ");
