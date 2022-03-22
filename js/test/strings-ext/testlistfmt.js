@@ -2825,7 +2825,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["một", "hai"]), "một, hai");
+        test.equal(fmt.format(["một", "hai"]), "một và hai");
         test.done();
     },
 
@@ -2837,7 +2837,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["một", "hai", "số ba"]), "một, hai, số ba");
+        test.equal(fmt.format(["một", "hai", "số ba"]), "một, hai và số ba");
         test.done();
     },
 
@@ -2849,7 +2849,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["một", "hai", "số ba", "bốn"]), "một, hai, số ba, bốn");
+        test.equal(fmt.format(["một", "hai", "số ba", "bốn"]), "một, hai, số ba và bốn");
         test.done();
     },
 
@@ -2861,7 +2861,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["một", "hai", "số ba", "bốn", "số năm"]), "một, hai, số ba, bốn, số năm");
+        test.equal(fmt.format(["một", "hai", "số ba", "bốn", "số năm"]), "một, hai, số ba, bốn và số năm");
         test.done();
     },
 
@@ -2887,7 +2887,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["một", "hai"]), "một, hai");
+        test.equal(fmt.format(["một", "hai"]), "một và hai");
         test.done();
     },
 
@@ -2900,7 +2900,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["một", "hai", "số ba"]), "một, hai, số ba");
+        test.equal(fmt.format(["một", "hai", "số ba"]), "một, hai và số ba");
         test.done();
     },
 
@@ -2913,7 +2913,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["một", "hai", "số ba", "bốn"]), "một, hai, số ba, bốn");
+        test.equal(fmt.format(["một", "hai", "số ba", "bốn"]), "một, hai, số ba và bốn");
         test.done();
     },
 
@@ -2926,7 +2926,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["một", "hai", "số ba", "bốn", "số năm"]), "một, hai, số ba, bốn, số năm");
+        test.equal(fmt.format(["một", "hai", "số ba", "bốn", "số năm"]), "một, hai, số ba, bốn và số năm");
         test.done();
     },
     testListFmtUnitStyleviVNNumberFormatFiveFullDisjunction: function(test) {
