@@ -157,5 +157,158 @@
                 "s": "ss"
             }
         }
+    },
+    "persian": {
+        "date": {
+            "d": {
+                "f": "d",
+                "l": "d",
+                "m": "d",
+                "s": "d"
+            },
+            "dm": {
+                "f": "MMMM d",
+                "l": "MMMM d",
+                "m": "MMM d",
+                "s": "‏M/d"
+            },
+            "dmw": {
+                "f": "EEEE MMMM d",
+                "l": "EEE MMMM d",
+                "m": "EE MMM d",
+                "s": "E ‏M/d"
+            },
+            "dmwy": {
+                "f": "EEEE د yyyy د MMMM d",
+                "l": "EEE د yyyy د MMMM d",
+                "m": "EE yyyy MMM d",
+                "s": "E yyyy/M/d"
+            },
+            "dmy": {
+                "f": "د yyyy د MMMM d",
+                "l": "د yyyy د MMMM d",
+                "m": "‏yyyy MMM d",
+                "s": "‏yyyy/M/d"
+            },
+            "dw": {
+                "f": "EEEE d",
+                "l": "EEE d",
+                "m": "EE d",
+                "s": "E d"
+            },
+            "m": {
+                "f": "MMMM",
+                "l": "MMMM",
+                "m": "MMM",
+                "s": "M"
+            },
+            "my": {
+                "f": "د yyyy د MMMM",
+                "l": "د yyyy د MMMM",
+                "m": "‏yyyy MMM",
+                "s": "‏yyyy/M"
+            },
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
+            },
+            "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
+                "s": "yyyy"
+            }
+        },
+        "order": "{date} {time}",
+        "range": {
+            "c00": {
+                "f": "د {sy} د {sm} {sd} {st} – {et}",
+                "l": "د {sy} د {sm} {sd} {st} – {et}",
+                "m": "‏{sy} {sm} {sd} {st} – {et}",
+                "s": "‏{sy}/{sm}/{sd} {st} – {et}"
+            },
+            "c01": {
+                "f": "د {sy} د {sm} {sd} {st} – د {ey} د {em} {ed} {et}",
+                "l": "د {sy} د {sm} {sd} {st} – د {ey} د {em} {ed} {et}",
+                "m": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
+                "s": "‏{sy}/{sm}/{sd} {st} – ‏{ey}/{em}/{ed} {et}"
+            },
+            "c02": {
+                "f": "د {sy} د {sm} {sd} {st} – د {ey} د {em} {ed} {et}",
+                "l": "د {sy} د {sm} {sd} {st} – د {ey} د {em} {ed} {et}",
+                "m": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
+                "s": "‏{sy}/{sm}/{sd} {st} – ‏{ey}/{em}/{ed} {et}"
+            },
+            "c03": {
+                "f": "د {sy} د {sm} {sd} {st} – د {ey} د {em} {ed} {et}",
+                "l": "د {sy} د {sm} {sd} {st} – د {ey} د {em} {ed} {et}",
+                "m": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
+                "s": "‏{sy}/{sm}/{sd} {st} – ‏{ey}/{em}/{ed} {et}"
+            },
+            "c10": {
+                "f": "د {sy} د {sm} {sd} – {ed}",
+                "l": "د {sy} د {sm} {sd} – {ed}",
+                "m": "‏{sy} {sm} {sd} – {ed}",
+                "s": "‏{sy}/{sm}/{sd} – {ed}"
+            },
+            "c11": {
+                "f": "د {sy} د {sm} {sd} – د {em} {ed}",
+                "l": "د {sy} د {sm} {sd} – د {em} {ed}",
+                "m": "‏{sy} {sm} {sd} – ‏{ey} {em} {ed}",
+                "s": "‏{sy}/{sm}/{sd} – ‏{ey}/{em}/{ed}"
+            },
+            "c12": {
+                "f": "د {sy} د {sm} {sd} – د {ey} د {em} {ed}",
+                "l": "د {sy} د {sm} {sd} – د {ey} د {em} {ed}",
+                "m": "‏{sy} {sm} {sd} – ‏{ey} {em} {ed}",
+                "s": "‏{sy}/{sm}/{sd} – ‏{ey}/{em}/{ed}"
+            },
+            "c20": {
+                "f": "د {sy} د {sm} – د {ey} د {em}",
+                "l": "د {sy} د {sm} – د {ey} د {em}",
+                "m": "‏{sy} {sm} – ‏{ey} {em}",
+                "s": "‏{sy}/{sm} – ‏{ey}/{em}"
+            },
+            "c30": {
+                "f": "‏{sy} – {ey}",
+                "l": "‏{sy} – {ey}",
+                "m": "‏{sy} – {ey}",
+                "s": "‏{sy} – {ey}"
+            }
+        },
+        "time": {
+            "12": {
+                "ah": "‏h a",
+                "ahm": "‏h:mm a",
+                "ahms": "‏h:mm:ss a",
+                "ahmsz": "‏h:mm:ss a (z)",
+                "ahmz": "‏h:mm a (z)",
+                "h": "h",
+                "hm": "‏h:mm",
+                "hms": "‏h:mm:ss",
+                "hmsz": "‏h:mm:ss (z)",
+                "hmz": "‏h:mm (z)",
+                "m": "mm",
+                "ms": "mm:ss",
+                "s": "ss"
+            },
+            "24": {
+                "ah": "‏H",
+                "ahm": "‏H:mm",
+                "ahms": "‏H:mm:ss",
+                "ahmsz": "‏H:mm:ss (z)",
+                "ahmz": "‏H:mm (z)",
+                "h": "H",
+                "hm": "‏H:mm",
+                "hms": "‏H:mm:ss",
+                "hmsz": "‏H:mm:ss (z)",
+                "hmz": "‏H:mm (z)",
+                "m": "mm",
+                "ms": "mm:ss",
+                "s": "ss"
+            }
+        }
     }
 }
