@@ -12483,13 +12483,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+1, type:"persian", timezone: "Etc/UTC"}));
         }
-        test.equal(value[0], 'ﯼ');
-        test.equal(value[1], 'ﺩ');
-        test.equal(value[2], 'ﺱ');
-        test.equal(value[3], 'ﭺ');
-        test.equal(value[4], 'ﭖ');
-        test.equal(value[5], 'ﺝ');
-        test.equal(value[6], 'ﺵ');
+        test.equal(value[0], 'S');
+        test.equal(value[1], 'M');
+        test.equal(value[2], 'T');
+        test.equal(value[3], 'W');
+        test.equal(value[4], 'T');
+        test.equal(value[5], 'F');
+        test.equal(value[6], 'S');
         test.done();
     },
     testWeekdayTranslationFull_ps_PK: function(test) {
@@ -12552,13 +12552,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], 'ﺡ');
-        test.equal(value[1], 'ﻥ');
-        test.equal(value[2], 'ﺙ');
-        test.equal(value[3], 'ﺭ');
-        test.equal(value[4], 'ﺥ');
-        test.equal(value[5], 'ﺝ');
-        test.equal(value[6], 'ﺱ');
+        test.equal(value[0], 'S');
+        test.equal(value[1], 'M');
+        test.equal(value[2], 'T');
+        test.equal(value[3], 'W');
+        test.equal(value[4], 'T');
+        test.equal(value[5], 'F');
+        test.equal(value[6], 'S');
         test.done();
     },
     testWeekdayTranslationFull_yo_NG: function(test) {
