@@ -174,6 +174,22 @@ var hardCodeData = {
         "#{num}w": "one#{num} v|#{num} v",
         "durationShortMonths": "one#{num} ng|#{num} ng",
         "#{num}y": "one#{num} nk|#{num} nk"
+    },
+    "ps": {
+        "E0": "ﺡ",//copied data from ar/sysres.json
+        "E1": "ﻥ",
+        "E2": "ﺙ",
+        "E3": "ﺭ",
+        "E4": "ﺥ",
+        "E5": "ﺝ",
+        "E6": "ﺱ",
+        "E0-persian": "ﯼ",//copied data from fa/sysres.json
+        "E1-persian": "ﺩ",
+        "E2-persian": "ﺱ",
+        "E3-persian": "ﭺ",
+        "E4-persian": "ﭖ",
+        "E5-persian": "ﺝ",
+        "E6-persian": "ﺵ"
     }
 }
 

@@ -618,7 +618,7 @@ module.exports.testdatefmt_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'T ‏9/29');
+        test.equal(fmt.format(date), 'ﺱ ‏9/29');
         test.done();
     },
     testDateFmtShortDateComponentsWDMY_ps_AF: function(test) {
@@ -636,7 +636,7 @@ module.exports.testdatefmt_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'T 2021/9/29');
+        test.equal(fmt.format(date), 'ﺱ 2021/9/29');
         test.done();
     },
     testDateFmtLongDateComponentsWDM_ps_AF: function(test) {
