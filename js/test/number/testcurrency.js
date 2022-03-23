@@ -2033,6 +2033,22 @@ module.exports.testcurrency = {
         test.equal(info.getCurrency(), "NGN");
         test.done();
     },
+    testCurrency_ps_PK: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ps-PK");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "PKR");
+      test.done();
+    },
+    testCurrency_ps_AF: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ps-AF");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "AFN");
+      test.done();
+    },
     testCurrency_yo_NG: function(test) {
         test.expect(2);
         var info = new LocaleInfo("yo-NG");

@@ -13589,6 +13589,26 @@ module.exports.testlocaleinfo = {
         test.equal(info.getPaperSize(), "A4");
         test.done();
     },
+    testLocaleInfoQuotation_ps_AF: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ps-AF");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_ps_AF: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ps-PK");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
     testLocaleInfoQuotation_yo_BJ: function(test) {
         test.expect(4);
         var info = new LocaleInfo("yo-BJ");

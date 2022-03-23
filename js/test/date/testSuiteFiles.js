@@ -95,6 +95,8 @@ module.exports.files = [
     "testdatefmt_or_IN.js",
     "testdatefmt_pa_IN.js",
     "testdatefmt_pl_PL.js",
+    "testdatefmt_ps_AF.js",
+    "testdatefmt_ps_PK.js",
     "testdatefmt_pt_BR.js",
     "testdatefmt_ro_RO.js",
     "testdatefmt_ru_RU.js",
