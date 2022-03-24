@@ -48,6 +48,8 @@ module.exports.files = [
     "testunitfmt_ne_NP.js",
     "testunitfmt_mt_MT.js",
     "testunitfmt_my_MM.js",
+    "testunitfmt_ps_AF.js",
+    "testunitfmt_ps_PK.js",
     "testunitfmt_tk_TM.js",
     "testunitfmt_tg_TJ.js",
     "testunitfmt_wo_SN.js",

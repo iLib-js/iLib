@@ -1270,6 +1270,39 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ca-Latn-ES");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_ps: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ps"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ps-Arab-AF");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_PK: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "PK"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ur-Arab-PK");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_AF: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "AF"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "fa-Arab-AF");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleByLocaleCodehy: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({

@@ -62,7 +62,7 @@
     "AMD": {
         "name": "Armenian Dram",
         "decimals": 2,
-        "sign": "դր."
+        "sign": "֏"
     },
     "ANG": {
         "name": "Netherlands Antillean Guilder",
@@ -92,7 +92,7 @@
     "AZN": {
         "name": "Azerbaijani Manat",
         "decimals": 2,
-        "sign": "AZN"
+        "sign": "₼"
     },
     "BAM": {
         "name": "Bosnia-Herzegovina Convertible Mark",
@@ -277,7 +277,7 @@
     "GHS": {
         "name": "Ghanaian Cedi",
         "decimals": 2,
-        "sign": "₵"
+        "sign": "GH₵"
     },
     "GIP": {
         "name": "Gibraltar Pound",

@@ -6,7 +6,7 @@ Build 022
 Published as version 14.14.0
 
 New Features:
-* Added support for ig-NG, lb-LU, yo-BJ, yo-NG locales
+* Added support for ig-NG, lb-LU, yo-BJ, yo-NG, ps-AF, and ps-PK locales
     * validated locale data and added many test cases
 * Updated cldr tool codes to have a consistently sorted locale data order.
 
@@ -14,6 +14,8 @@ Bug Fixes:
 * Fixed the long name of the pounds per square inch (psi) of pressure measure to match the long name used
   in CLDR so that measures of psi can be formatted with the format templates from CLDR
 * Fixed the ilib demo build failure issue that is related ilib-scanner.
+* Update to time zone data 2022a
+* Fixed correct currency symbol (AMD, AZN, GHS)
 
 
 Build 021

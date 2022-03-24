@@ -1,7 +1,7 @@
 /*
  * datefmts.js - auxillary tools used to generate the dateformats.json files
  *
- * Copyright © 2015-2021, JEDLSoft
+ * Copyright © 2015-2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -217,7 +217,7 @@ function getDateFormat(calendar, length) {
         ret = typeof(calendar.dateFormats[length]) === "string" ? calendar.dateFormats[length] : calendar.dateFormats[length]._value;
         ret = ret ? ret.replace(/ *G+/, "") : ret;
     }
-    return ret;
+    return ret.trim();
 }
 
 function getTimeFormat(calendar, length) {
