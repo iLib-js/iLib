@@ -1,7 +1,7 @@
  /*
  * testWeekDate.js - test the weekdata information
  *
- * Copyright © 2019-2021, JEDLSoft
+ * Copyright © 2019-2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2118,5 +2118,65 @@ module.exports.testweekdata = {
         test.equal(info.getWeekEndStart(), 6);
         test.equal(info.getWeekEndEnd(), 0);
         test.done();
-    }
+    },
+    testWeekData_lb_LU: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("lb-LU");
+
+        test.ok(info !== null);
+        test.equal(info.getFirstDayOfWeek(), 1);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+    },
+    testWeekData_ig_NG: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ig-NG");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 1);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+    },
+    testWeekData_ps_PK: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ps-PK");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 0);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+    },
+    testWeekData_ps_AF: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ps-AF");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 6);
+        test.equal(info.getWeekEndStart(), 4);
+        test.equal(info.getWeekEndEnd(), 5);
+        test.done();
+    },
+    testWeekData_yo_BJ: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("yo-BJ");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 1);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+    },
+    testWeekData_yo_NG: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("yo-NG");
+        test.ok(info !== null);
+
+        test.equal(info.getFirstDayOfWeek(), 1);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
+        test.done();
+    },
 }

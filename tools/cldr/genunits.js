@@ -22,6 +22,7 @@
 var fs = require('fs');
 var path = require('path');
 var util = require('util');
+var stringify = require('json-stable-stringify');
 var common = require('./common');
 var merge = common.merge;
 var Locale = common.Locale;
@@ -51,7 +52,7 @@ process.argv.forEach(function (val, index, array) {
 localeDirName = process.argv[2] || "tmp";
 
 console.log("genunits - tool to generate the json data about unit formats from the CLDR data.\n" +
-        "Copyright © 2013, 2018, 2020-2021 JEDLSoft");
+        "Copyright © 2013, 2018, 2020-2022 JEDLSoft");
 
 console.log("locale dir: " + localeDirName );
 
@@ -77,7 +78,7 @@ function writeUnits(data, language, script, region) {
     var path = calcLocalePath(language, script, region);
     console.log("Writing " + path + "unitfmt.json");
     makeDirs(path);
-    fs.writeFileSync(path + "unitfmt.json", JSON.stringify(data, true, 4), "utf-8");
+    fs.writeFileSync(path + "unitfmt.json", stringify(data, {space: 4}), "utf-8");
 }
 
 function frameUnitsString(data) {
@@ -625,8 +626,8 @@ function frameUnits(data, locale, localeData) {
                 "type": "pressure",
                 "units": {
                     "metric": ["pascal"],
-                    "uscustomary": ["pound-per-square-inch"],
-                    "imperial": ["pound-per-square-inch"]
+                    "uscustomary": ["pound-force-per-square-inch"],
+                    "imperial": ["pound-force-per-square-inch"]
                 },
                 "maxFractionDigits": 3
             },

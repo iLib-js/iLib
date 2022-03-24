@@ -1,7 +1,7 @@
 /*
  * gentzinfo.js - ilib tool to generate the tzinfo about time zones in a locale
  * 
- * Copyright © 2013-2015, 2018, 2020-2021 JEDLSoft
+ * Copyright © 2013-2015, 2018, 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@
 
 var fs = require('fs');
 var path = require('path');
+var stringify = require('json-stable-stringify');
 var unifile = require('./unifile.js');
 var common = require('./common.js');
 var UnicodeFile = unifile.UnicodeFile;
@@ -71,7 +72,7 @@ if (process.argv.length > 3) {
 }
 
 console.log("gentzinfo - generate time zone info data.\n" +
-        "Copyright © 2013-2015, 2018, 2020 JEDLSoft\n");
+        "Copyright © 2013-2015, 2018, 2020, 2022 JEDLSoft\n");
 console.log("To dir: " + toDir );
 
 if (!fs.existsSync(tzDataDir)) {
@@ -213,7 +214,7 @@ if (!fs.existsSync(path.join(toDir, "zoneinfo"))) {
 for (var zone in timezones) {
     var filepath = path.join(toDir, "zoneinfo", zone + ".json");
     console.log("Writing out zone info file " + filepath );
-    fs.writeFileSync(filepath, JSON.stringify(timezones[zone], true, 4), "utf-8");
+    fs.writeFileSync(filepath, stringify(timezones[zone], {space: 4}), "utf-8");
 }
 
 var filepath = path.join(toDir, "zoneinfo/zonetab.json");
@@ -226,11 +227,11 @@ for (var country in countryToZones) {
     countryToZones[country] = zones.sort();
 }
 
-fs.writeFileSync(filepath, JSON.stringify(countryToZones, true, 4), "utf-8");
+fs.writeFileSync(filepath, stringify(countryToZones, {space: 4}), "utf-8");
 
 // generate timezone.jf
 var rootTimeZoneID = {"timezone": "Etc/UTC"};
-fs.writeFileSync(path.join(toDir, "timezone.jf"), JSON.stringify(rootTimeZoneID, true, 4), "utf-8");
+fs.writeFileSync(path.join(toDir, "timezone.jf"), stringify(rootTimeZoneID, {space: 4}), "utf-8");
 
 var defaultTimeZoneID = {
     "AU": "Australia/Sydney",
@@ -267,7 +268,7 @@ for (var country in countryToZones) {
     }
 
     console.log("Writing out timezone.jf file " + path.join(directory, "timezone.jf") );
-    fs.writeFileSync(path.join(directory, "timezone.jf"), JSON.stringify(data, true, 4), "utf-8");
+    fs.writeFileSync(path.join(directory, "timezone.jf"), stringify(data, {space: 4}), "utf-8");
 }
 
 console.log("Done");

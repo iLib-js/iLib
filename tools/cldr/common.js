@@ -1,7 +1,7 @@
 /*
  * common.js - common routines shared amongst the cldr/unicode tools
  * 
- * Copyright © 2013, 2018, JEDLSoft
+ * Copyright © 2013, 2018, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1014,4 +1014,40 @@ exports.Trie.prototype._clean = function (node) {
  */
 exports.Trie.prototype.cleanForm = function() {
     return this._clean(this.nodes);
+};
+
+
+/**
+ * Return a new tree where each of the children are sorted in the object.
+ * This relies on node preserving the order of insertion, which is not
+ * guaranteed, but works for now. The children are recursively sorted,
+ * so the entire tree should come out sorted.
+ *
+ * @private
+ * @param {Object} node the top node of this tree
+ * @returns {Object} the sorted tree
+ */
+exports.sortTree = function(node) {
+    var keys;
+    var result;
+
+    if (typeof(node) === "object") {
+        // don't mess with the order of arrays
+        if (exports.isArray(node)) {
+            result = [];
+            node.forEach(function(element) {
+                result.push(exports.sortTree(element));
+            });
+        } else {
+            keys = Object.keys(node);
+            result = {};
+            keys.sort().forEach(function(key) {
+                result[key] = exports.sortTree(node[key]);
+            });
+        }
+    } else {
+        result = node;
+    }
+
+    return result;
 };

@@ -1,7 +1,7 @@
 /*
  * genlist.js - ilib tool to generate the ilib format list data from cldr
  *
- * Copyright © 2017-2021, JEDLSoft
+ * Copyright © 2017-2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -106,6 +106,86 @@ var hardCodeData = {
             "full": {
                 "2": "{0} mba {1}",
                 "end": "{0}, mba {1}"
+            }
+        }
+    },
+    "lb": {
+        "or": {
+            "short": {
+                "2": "{0} oder {1}",
+                "end": "{0}, oder {1}"
+            },
+            "medium": {
+                "2": "{0} oder {1}",
+                "end": "{0}, oder {1}"
+            },
+            "long": {
+                "2": "{0} oder {1}",
+                "end": "{0}, oder {1}"
+            },
+            "full": {
+                "2": "{0} oder {1}",
+                "end": "{0}, oder {1}"
+               }
+        }
+    },
+    "ig":{
+        "or": {
+            "short": {
+                "2": "{0} mba {1}",
+                "end": "{0}, mba {1}"
+            },
+            "medium": {
+                "2": "{0} mba {1}",
+                "end": "{0}, mba {1}"
+            },
+            "long": {
+                "2": "{0} mba {1}",
+                "end": "{0}, mba {1}"
+            },
+            "full": {
+                "2": "{0} mba {1}",
+                "end": "{0}, mba {1}"
+            }
+        }
+    },
+    "ps":{
+        "or": {
+            "short": {
+                "2": "{0} یا {1}",
+                "end": "{0}, یا {1}"
+            },
+            "medium": {
+                "2": "{0} یا {1}",
+                "end": "{0}, یا {1}"
+            },
+            "long": {
+                "2": "{0} یا {1}",
+                "end": "{0}, یا {1}"
+            },
+            "full": {
+                "2": "{0} یا {1}",
+                "end": "{0}, یا {1}"
+              }
+        }
+    },
+    "yo":{
+        "or": {
+            "short": {
+                "2": "{0} tabi {1}",
+                "end": "{0}, tabi {1}"
+            },
+            "medium": {
+                "2": "{0} tabi {1}",
+                "end": "{0}, tabi {1}"
+            },
+            "long": {
+                "2": "{0} tabi {1}",
+                "end": "{0}, tabi {1}"
+            },
+            "full": {
+                "2": "{0} tabi {1}",
+                "end": "{0}, tabi {1}"
             }
         }
     }

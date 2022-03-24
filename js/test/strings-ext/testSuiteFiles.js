@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
  * 
- * Copyright © 2017-2018, 2020-2021 JEDLSoft
+ * Copyright © 2017-2018, 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,10 +40,12 @@ module.exports.files = [
     "testlistfmt_hr.js",
     "testlistfmt_hy_AM.js",
     "testlistfmt_it.js",
+    "testlistfmt_ig_NG.js",
     "testlistfmt_ja_JP.js",
     "testlistfmt_ka_GE.js",
     "testlistfmt_kn_IN.js",
     "testlistfmt_ky_KG.js",
+    "testlistfmt_lb_LU.js",
     "testlistfmt_lo_LA.js",
     "testlistfmt_ml_IN.js",
     "testlistfmt_mr_IN.js",
@@ -54,6 +56,7 @@ module.exports.files = [
     "testlistfmt_ne_NP.js",
     "testlistfmt_nl.js",
     "testlistfmt_pa.js",
+    "testlistfmt_ps.js",
     "testlistfmt_pt.js",
     "testlistfmt_ru.js",
     "testlistfmt_si_LK.js",
@@ -69,6 +72,7 @@ module.exports.files = [
     "testlistfmt_uk_UA.js",
     "testlistfmt_ur.js",
     "testlistfmt_wo_SN.js",
+    "testlistfmt_yo.js",
     "testlistfmt_zh.js",
     "testlistfmt_zu_ZA.js",
     "testlistfmtasync.js",

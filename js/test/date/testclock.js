@@ -1925,5 +1925,37 @@ module.exports.testclock = {
         test.equal(info.getClock(), 24);
 
         test.done();
+    },
+    testClock_lb_LU: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("lb-LU");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_ig_NG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ig-NG");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_yo_NG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("yo-NG");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_yo_BJ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("yo_BJ");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
     }
 }
