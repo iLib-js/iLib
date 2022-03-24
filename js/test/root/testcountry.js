@@ -484,6 +484,32 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "ig-NG");
         test.done();
     },
+    testCountryLocale_ps_PK: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ps-PK"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("KR"), 'سویلي کوریا');
+        test.equal(ctry.getCode('سویلي کوریا'), "KR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ps-PK");
+        test.done();
+    },
+    testCountryLocale_ps_AF: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ps-AF"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("CN"), 'چین');
+        test.equal(ctry.getCode('چین'), "CN");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ps-AF");
+      test.done();
+    },
     testCountryLocale_yo_BJ: function(test) {
         test.expect(4);
         var ctry = new Country({

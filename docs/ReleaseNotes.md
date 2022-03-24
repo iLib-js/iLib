@@ -6,7 +6,7 @@ Build 022
 Published as version 14.14.0
 
 New Features:
-* Added support for ig-NG, lb-LU, yo-BJ, yo-NG locales
+* Added support for ig-NG, lb-LU, yo-BJ, yo-NG, ps-AF, and ps-PK locales
     * validated locale data and added many test cases
 * Updated cldr tool codes to have a consistently sorted locale data order.
 

@@ -8079,6 +8079,95 @@ module.exports.testmonthtranslation = {
         test.equal(value[11], 'Dis');
         test.done();
     },
+    testMonthTranslate_ps_AF: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ps-AF", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"persian"}));
+        }
+        test.equal(value[0], 'وری');
+        test.equal(value[1], 'غویی');
+        test.equal(value[2], 'غبرگولی');
+        test.equal(value[3], 'چنگاښ');
+        test.equal(value[4], 'زمری');
+        test.equal(value[5], 'وږی');
+        test.equal(value[6], 'تله');
+        test.equal(value[7], 'لړم');
+        test.equal(value[8], 'لیندۍ');
+        test.equal(value[9], 'مرغومی');
+        test.equal(value[10], 'سلواغه');
+        test.equal(value[11], 'کب');
+
+        var fmt = new DateFmt({locale:"ps-AF", date:"m", length: "medium", useNative:false, timezone:"local"})
+
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"persian"}));
+        }
+        test.equal(value[0], 'وری');
+        test.equal(value[1], 'غویی');
+        test.equal(value[2], 'غبرگولی');
+        test.equal(value[3], 'چنگاښ');
+        test.equal(value[4], 'زمری');
+        test.equal(value[5], 'وږی');
+        test.equal(value[6], 'تله');
+        test.equal(value[7], 'لړم');
+        test.equal(value[8], 'لیندۍ');
+        test.equal(value[9], 'مرغومی');
+        test.equal(value[10], 'سلواغه');
+        test.equal(value[11], 'کب');
+        test.done();
+    },
+    testMonthTranslate_ps_PK: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: M
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ps-PK", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'جنوري');
+        test.equal(value[1], 'فېبروري');
+        test.equal(value[2], 'مارچ');
+        test.equal(value[3], 'اپریل');
+        test.equal(value[4], 'مۍ');
+        test.equal(value[5], 'جون');
+        test.equal(value[6], 'جولای');
+        test.equal(value[7], 'اګست');
+        test.equal(value[8], 'سپتمبر');
+        test.equal(value[9], 'اکتوبر');
+        test.equal(value[10], 'نومبر');
+        test.equal(value[11], 'دسمبر');
+
+        var fmt = new DateFmt({locale:"ps-PK", date:"m", length: "medium", useNative:false, timezone:"local"})
+
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], 'جنوري');
+        test.equal(value[1], 'فبروري');
+        test.equal(value[2], 'مارچ');
+        test.equal(value[3], 'اپریل');
+        test.equal(value[4], 'مۍ');
+        test.equal(value[5], 'جون');
+        test.equal(value[6], 'جولای');
+        test.equal(value[7], 'اګست');
+        test.equal(value[8], 'سپتمبر');
+        test.equal(value[9], 'اکتوبر');
+        test.equal(value[10], 'نومبر');
+        test.equal(value[11], 'دسمبر');
+
+        test.done();
+    },
     testMonthTranslate_yo_NG: function(test) {
         test.expect(12);
 

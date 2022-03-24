@@ -12423,6 +12423,144 @@ module.exports.testWeekdayTranslation = {
 
         test.done();
     },
+    testWeekdayTranslationFull_ps_AF: function(test) {
+        // full -> wide
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ps-AF", date:"w", length: "full", useNative:false, timezone: "Etc/UTC"});
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+1, type:"persian", timezone: "Etc/UTC"}));
+        }
+
+        test.equal(value[0], "يونۍ");
+        test.equal(value[1], "دونۍ");
+        test.equal(value[2], "درېنۍ");
+        test.equal(value[3], "څلرنۍ");
+        test.equal(value[4], "پينځنۍ");
+        test.equal(value[5], "جمعه");
+        test.equal(value[6], "اونۍ");
+        test.done();
+    },
+    testWeekdayTranslationLong_ps_AF: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ps-AF", date:"w", length: "long", useNative:false, timezone: "Etc/UTC"});
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+1, type:"persian", timezone: "Etc/UTC"}));
+        }
+        test.equal(value[0], "يونۍ");
+        test.equal(value[1], "دونۍ");
+        test.equal(value[2], "درېنۍ");
+        test.equal(value[3], "څلرنۍ");
+        test.equal(value[4], "پينځنۍ");
+        test.equal(value[5], "جمعه");
+        test.equal(value[6], "اونۍ");
+        test.done();
+    },
+    testWeekdayTranslationMedium_ps_AF: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ps-AF", date:"w", length: "medium", useNative:false, timezone: "Etc/UTC"});
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+1, type:"persian", timezone: "Etc/UTC"}));
+        }
+        test.equal(value[0], "يونۍ");
+        test.equal(value[1], "دونۍ");
+        test.equal(value[2], "درېنۍ");
+        test.equal(value[3], "څلرنۍ");
+        test.equal(value[4], "پينځنۍ");
+        test.equal(value[5], "جمعه");
+        test.equal(value[6], "اونۍ");
+        test.done();
+    },
+    testWeekdayTranslationShort_ps_AF: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ps-AF", date:"w", length: "short", useNative:false, timezone: "Etc/UTC"});
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+1, type:"persian", timezone: "Etc/UTC"}));
+        }
+        test.equal(value[0], 'S');
+        test.equal(value[1], 'M');
+        test.equal(value[2], 'T');
+        test.equal(value[3], 'W');
+        test.equal(value[4], 'T');
+        test.equal(value[5], 'F');
+        test.equal(value[6], 'S');
+        test.done();
+    },
+    testWeekdayTranslationFull_ps_PK: function(test) {
+        // full -> wide
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ps-PK", date:"w", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "يونۍ");
+        test.equal(value[1], "دونۍ");
+        test.equal(value[2], "درېنۍ");
+        test.equal(value[3], "څلرنۍ");
+        test.equal(value[4], "پينځنۍ");
+        test.equal(value[5], "جمعه");
+        test.equal(value[6], "اونۍ");
+        test.done();
+    },
+    testWeekdayTranslationLong_ps_PK: function(test) {
+        // long -> abbreviate
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ps-PK", date:"w", length: "long", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "يونۍ");
+        test.equal(value[1], "دونۍ");
+        test.equal(value[2], "درېنۍ");
+        test.equal(value[3], "څلرنۍ");
+        test.equal(value[4], "پينځنۍ");
+        test.equal(value[5], "جمعه");
+        test.equal(value[6], "اونۍ");
+
+        test.done();
+    },
+    testWeekdayTranslationMedium_ps_PK: function(test) {
+        // medium -> short
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ps-PK", date:"w", length: "medium", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "يونۍ");
+        test.equal(value[1], "دونۍ");
+        test.equal(value[2], "درېنۍ");
+        test.equal(value[3], "څلرنۍ");
+        test.equal(value[4], "پينځنۍ");
+        test.equal(value[5], "جمعه");
+        test.equal(value[6], "اونۍ");
+        test.done();
+    },
+    testWeekdayTranslationShort_ps_PK: function(test) {
+        // short: narrow
+        test.expect(7);
+        var fmt, value = [], i;
+        fmt = new DateFmt({locale:"ps-PK", date:"w", length: "short", useNative:false, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], 'S');
+        test.equal(value[1], 'M');
+        test.equal(value[2], 'T');
+        test.equal(value[3], 'W');
+        test.equal(value[4], 'T');
+        test.equal(value[5], 'F');
+        test.equal(value[6], 'S');
+        test.done();
+    },
     testWeekdayTranslationFull_yo_NG: function(test) {
         // full -> wide
         test.expect(7);
@@ -12551,7 +12689,6 @@ module.exports.testWeekdayTranslation = {
         test.expect(7);
         var fmt, value = [], i;
         fmt = new DateFmt({locale:"yo-NG", date:"w", length: "short", useNative:false, timezone:"local"})
-
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
@@ -12562,7 +12699,6 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "Ọ");
         test.equal(value[5], "Ẹ");
         test.equal(value[6], "À");
-
         test.done();
     }
 }
