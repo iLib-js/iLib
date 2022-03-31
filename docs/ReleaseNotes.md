@@ -1,6 +1,16 @@
 Release Notes for Version 14
 ============================
 
+Build 023
+-------
+Published as version 14.14.1
+
+New Features:
+
+Bug Fixes:
+* Fixed a bug where the DateFmt.formatRelative() does not represent correct result in certain case.
+
+
 Build 022
 -------
 Published as version 14.14.0
