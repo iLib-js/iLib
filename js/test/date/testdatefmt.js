@@ -1,7 +1,7 @@
 /*
  * testdatefmt.js - test the date formatter object
  *
- * Copyright © 2012-2015, 2017, 2020-2021 JEDLSoft
+ * Copyright © 2012-2015, 2017, 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2503,6 +2503,34 @@ module.exports.testdatefmt = {
         test.equal(fmt.formatRelative(reference, date), "4 days ago");
         test.done();
     },
+
+    testDateFmtFormatRelativeWithinFortnightBeforeMedium: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({length: "medium"});
+        test.ok(fmt !== null);
+
+        var reference = new GregorianDate({
+            year: 2011,
+            month: 11,
+            day: 20,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        var date = new GregorianDate({
+            year: 2011,
+            month: 11,
+            day: 16,
+            hour: 9,
+            minute: 35,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.formatRelative(reference, date), "4 days ago");
+        test.done();
+    },
+    
 
     testDateFmtFormatRelativeWithinQuarterAfter: function(test) {
         test.expect(2);
