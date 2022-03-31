@@ -1590,7 +1590,7 @@ DateFmt.prototype = {
                     fmt = diff > 0 ? this.sysres.getString("#{num}d ago") : this.sysres.getString("#in {num}d");
                     break;
                 case 'm':
-                    fmt = diff > 0 ? this.sysres.getString("1#1 dy ago|#{nudurationm} dys ago") : this.sysres.getString("1#in 1 dy|#in {num} dys");
+                    fmt = diff > 0 ? this.sysres.getString("1#1 dy ago|#{num} dys ago") : this.sysres.getString("1#in 1 dy|#in {num} dys");
                     break;
                 default:
                 case 'f':
