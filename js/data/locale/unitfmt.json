@@ -1,748 +1,552 @@
 {
     "unitfmt": {
         "long": {
-            "g-force": "#{n} G",
-            "meter-per-square-second": "#{n} m/s²",
-            "revolution": "#{n} rev",
-            "radian": "#{n} rad",
-            "degree": "#{n}°",
+            "BTU": "one#{n} BTU|#{n} BTU",
+            "acre": "#{n} ac",
+            "acre-foot": "#{n} ac ft",
+            "ampere": "#{n} A",
             "arc-minute": "#{n}′",
             "arc-second": "#{n}″",
-            "square-kilometer": "#{n} km²",
-            "hectare": "#{n} ha",
-            "square-meter": "#{n} m²",
-            "square-centimeter": "#{n} cm²",
-            "square-mile": "#{n} mi²",
-            "acre": "#{n} ac",
-            "square-yard": "#{n} yd²",
-            "square-foot": "#{n} ft²",
-            "square-inch": "#{n} in²",
-            "dunam": "#{n} dunam",
-            "karat": "#{n} kt",
-            "milligram-ofglucose-per-deciliter": "#{n} mg/dL",
-            "millimole-per-liter": "#{n} mmol/L",
-            "item": "#{n} item",
-            "permillion": "#{n} ppm",
-            "percent": "#{n}%",
-            "permille": "#{n}‰",
-            "permyriad": "#{n}‱",
-            "mole": "#{n} mol",
-            "liter-per-kilometer": "#{n} L/km",
-            "liter-per-100-kilometer": "#{n} L/100km",
-            "mile-per-gallon": "#{n} mpg US",
-            "mile-per-gallon-imperial": "#{n} mpg Imp.",
-            "petabyte": "one#{n} petabyte|#{n} petabytes",
-            "terabyte": "#{n} TB",
-            "terabit": "#{n} Tb",
-            "gigabyte": "#{n} GB",
-            "gigabit": "#{n} Gb",
-            "megabyte": "#{n} MB",
-            "megabit": "#{n} Mb",
-            "kilobyte": "#{n} kB",
-            "kilobit": "#{n} kb",
-            "byte": "#{n} byte",
-            "bit": "#{n} bit",
-            "century": "#{n} c",
-            "decade": "one#{n} decade|#{n} decades",
-            "year": "#{n} y",
-            "month": "#{n} m",
-            "week": "#{n} w",
-            "day": "#{n} d",
-            "hour": "#{n} h",
-            "minute": "#{n} min",
-            "second": "#{n} s",
-            "millisecond": "#{n} ms",
-            "microsecond": "#{n} μs",
-            "nanosecond": "#{n} ns",
-            "ampere": "#{n} A",
-            "milliampere": "#{n} mA",
-            "ohm": "#{n} Ω",
-            "volt": "#{n} V",
-            "kilocalorie": "#{n} kcal",
-            "calorie": "#{n} cal",
-            "kilojoule": "#{n} kJ",
-            "joule": "#{n} J",
-            "kilowatt-hour": "#{n} kWh",
-            "electronvolt": "#{n} eV",
-            "british-thermal-unit": "#{n} Btu",
-            "therm-us": "#{n} US therm",
-            "pound-force": "#{n} lbf",
-            "newton": "#{n} N",
-            "kilowatt-hour-per-100-kilometer": "#{n} kWh/100km",
-            "gigahertz": "#{n} GHz",
-            "megahertz": "#{n} MHz",
-            "kilohertz": "#{n} kHz",
-            "hertz": "#{n} Hz",
-            "em": "#{n} em",
-            "pixel": "#{n} px",
-            "megapixel": "#{n} MP",
-            "pixel-per-centimeter": "#{n} ppcm",
-            "pixel-per-inch": "#{n} ppi",
-            "earth-radius": "#{n} R⊕",
-            "kilometer": "#{n} km",
-            "meter": "#{n} m",
-            "decimeter": "#{n} dm",
-            "centimeter": "#{n} cm",
-            "millimeter": "#{n} mm",
-            "micrometer": "#{n} μm",
-            "nanometer": "#{n} nm",
-            "picometer": "#{n} pm",
-            "mile": "#{n} mi",
-            "yard": "#{n} yd",
-            "foot": "#{n} ft",
-            "inch": "#{n} in",
-            "parsec": "#{n} pc",
-            "light-year": "#{n} ly",
             "astronomical-unit": "#{n} au",
-            "furlong": "#{n} fur",
-            "fathom": "#{n} fth",
-            "nautical-mile": "#{n} nmi",
-            "mile-scandinavian": "#{n} smi",
-            "point": "#{n} pt",
-            "solar-radius": "#{n} R☉",
-            "lux": "#{n} lx",
-            "candela": "#{n} cd",
-            "lumen": "#{n} lm",
-            "solar-luminosity": "#{n} L☉",
-            "metric-ton": "#{n} t",
-            "kilogram": "#{n} kg",
-            "gram": "#{n} g",
-            "milligram": "#{n} mg",
-            "microgram": "#{n} μg",
-            "ton": "#{n} tn",
-            "short-ton": "1#{n} short ton|#{n} short tons",
-            "stone": "#{n} st",
-            "pound": "#{n} lb",
-            "ounce": "#{n} oz",
-            "ounce-troy": "#{n} oz t",
-            "carat": "#{n} CD",
-            "dalton": "#{n} Da",
-            "earth-mass": "#{n} M⊕",
-            "solar-mass": "#{n} M☉",
-            "grain": "#{n} grain",
-            "gigawatt": "#{n} GW",
-            "megawatt": "#{n} MW",
-            "kilowatt": "#{n} kW",
-            "watt": "#{n} W",
-            "milliwatt": "#{n} mW",
-            "horsepower": "#{n} hp",
-            "millimeter-ofhg": "#{n} mm Hg",
-            "pound-force-per-square-inch": "#{n} psi",
-            "inch-ofhg": "#{n} inHg",
-            "bar": "#{n} bar",
-            "millibar": "#{n} mbar",
             "atmosphere": "#{n} atm",
-            "pascal": "#{n} Pa",
-            "hectopascal": "#{n} hPa",
-            "kilopascal": "#{n} kPa",
-            "megapascal": "#{n} MPa",
-            "kilometer-per-hour": "#{n} km/h",
-            "meter-per-second": "#{n} m/s",
-            "mile-per-hour": "#{n} mi/h",
-            "knot": "#{n} kn",
-            "generic": "#{n}°",
+            "bar": "#{n} bar",
+            "barrel": "#{n} bbl",
+            "bit": "#{n} bit",
+            "bit-per-second": "#{n} b/s",
+            "british-thermal-unit": "#{n} Btu",
+            "bushel": "#{n} bu",
+            "byte": "#{n} byte",
+            "byte-per-hour": "#{n} B/h",
+            "byte-per-second": "#{n} B/s",
+            "calorie": "#{n} cal",
+            "candela": "#{n} cd",
+            "carat": "#{n} CD",
             "celsius": "#{n}°C",
-            "fahrenheit": "#{n}°F",
-            "kelvin": "#{n} K",
-            "pound-force-foot": "#{n} lbf⋅ft",
-            "newton-meter": "#{n} N⋅m",
-            "cubic-kilometer": "#{n} km³",
-            "cubic-meter": "#{n} m³",
+            "centiliter": "#{n} cL",
+            "centimeter": "#{n} cm",
+            "century": "#{n} c",
+            "coordinateUnit": "",
             "cubic-centimeter": "#{n} cm³",
-            "cubic-mile": "#{n} mi³",
-            "cubic-yard": "#{n} yd³",
             "cubic-foot": "#{n} ft³",
             "cubic-inch": "#{n} in³",
-            "megaliter": "#{n} ML",
-            "hectoliter": "#{n} hL",
-            "liter": "#{n} l",
-            "deciliter": "#{n} dL",
-            "centiliter": "#{n} cL",
-            "milliliter": "#{n} mL",
-            "pint-metric": "#{n} mpt",
-            "cup-metric": "#{n} mc",
-            "acre-foot": "#{n} ac ft",
-            "bushel": "#{n} bu",
-            "gallon": "#{n} gal US",
-            "gallon-imperial": "#{n} gal Imp.",
-            "quart": "#{n} qt",
-            "pint": "#{n} pt",
+            "cubic-kilometer": "#{n} km³",
+            "cubic-meter": "#{n} m³",
+            "cubic-mile": "#{n} mi³",
+            "cubic-yard": "#{n} yd³",
             "cup": "#{n} c",
-            "fluid-ounce": "#{n} fl oz US",
-            "fluid-ounce-imperial": "#{n} fl oz Imp.",
-            "tablespoon": "#{n} tbsp",
-            "teaspoon": "#{n} tsp",
-            "barrel": "#{n} bbl",
+            "cup-imperial": "one#{n} imperial cup|#{n} imperial cups",
+            "cup-metric": "#{n} mc",
+            "dalton": "#{n} Da",
+            "day": "#{n} d",
+            "decade": "one#{n} decade|#{n} decades",
+            "decameter": "one#{n} decameter|#{n} decameters",
+            "deciliter": "#{n} dL",
+            "decimeter": "#{n} dm",
+            "degree": "#{n}°",
             "dessert-spoon": "#{n} dstspn",
             "dessert-spoon-imperial": "#{n} dstspn Imp",
-            "drop": "#{n} drop",
             "dram": "#{n} dram fl",
-            "jigger": "#{n} jigger",
-            "pinch": "#{n} pinch",
-            "quart-imperial": "one#{n} imperial quart|#{n} imperial quarts",
-            "coordinateUnit": "",
-            "decameter": "one#{n} decameter|#{n} decameters",
-            "hectometer": "one#{n} hectometer|#{n} hectometers",
-            "megameter": "one#{n} megameter|#{n} megameters",
-            "gigameter": "one#{n} gigameter|#{n} gigameters",
-            "petabit": "one#{n} petabit|#{n} petabits",
-            "BTU": "one#{n} BTU|#{n} BTU",
-            "millijoule": "one#{n} millijoule|#{n} millijoules",
-            "watt-hour": "one#{n} watt hour|#{n} watt hours",
-            "megajoule": "one#{n} megajoule|#{n} megajoules",
-            "gigajoule": "one#{n} gigajoule|#{n} gigajoules",
-            "megawatt-hour": "one#{n} megawatt hour|#{n} megawatt hours",
-            "gigawatt-hour": "one#{n} gigawatt hour|#{n} gigawatt hours",
-            "kilometer-per-liter": "1#{n} kilometer per liter|#{n} kilometers per liter",
+            "drop": "#{n} drop",
+            "dunam": "#{n} dunam",
+            "earth-mass": "#{n} M⊕",
+            "earth-radius": "#{n} R⊕",
+            "electronvolt": "#{n} eV",
+            "em": "#{n} em",
+            "fahrenheit": "#{n}°F",
+            "fathom": "#{n} fth",
+            "fluid-ounce": "#{n} fl oz US",
+            "fluid-ounce-imperial": "#{n} fl oz Imp.",
+            "foot": "#{n} ft",
             "foot-per-second": "1#{n} foot per second|#{n} feet per second",
-            "kilometer-per-second": "1#{n} kilometer per second|#{n} kilometers per second",
-            "mile-per-second": "1#{n} mile per second|#{n} miles per second",
-            "teaspoon-imperial": "one#{n} imperial teaspoon|#{n} imperial teaspoons",
-            "tablespoon-imperial": "one#{n} imperial tablespoon|#{n} imperial tablespoons",
-            "ounce-imperial": "one#{n} imperial ounce|#{n} imperial ounces",
-            "cup-imperial": "one#{n} imperial cup|#{n} imperial cups",
-            "pint-imperial": "one#{n} imperial pint|#{n} imperial pints",
-            "bit-per-second": "#{n} b/s",
-            "kilobit-per-second": "#{n} kb/s",
-            "megabit-per-second": "#{n} Mb/s",
+            "furlong": "#{n} fur",
+            "g-force": "#{n} G",
+            "gallon": "#{n} gal US",
+            "gallon-imperial": "#{n} gal Imp.",
+            "generic": "#{n}°",
+            "gigabit": "#{n} Gb",
             "gigabit-per-second": "#{n} Gb/s",
-            "terabit-per-second": "#{n} Tb/s",
-            "petabit-per-second": "#{n} Pb/s",
-            "byte-per-second": "#{n} B/s",
-            "kilobyte-per-second": "#{n} kB/s",
-            "megabyte-per-second": "#{n} MB/s",
-            "gigabyte-per-second": "#{n} GB/s",
-            "terabyte-per-second": "#{n} TB/s",
-            "petabyte-per-second": "#{n} PB/s",
-            "byte-per-hour": "#{n} B/h",
-            "kilobyte-per-hour": "#{n} kB/h",
-            "megabyte-per-hour": "#{n} MB/h",
+            "gigabyte": "#{n} GB",
             "gigabyte-per-hour": "#{n} GB/h",
+            "gigabyte-per-second": "#{n} GB/s",
+            "gigahertz": "#{n} GHz",
+            "gigajoule": "one#{n} gigajoule|#{n} gigajoules",
+            "gigameter": "one#{n} gigameter|#{n} gigameters",
+            "gigawatt": "#{n} GW",
+            "gigawatt-hour": "one#{n} gigawatt hour|#{n} gigawatt hours",
+            "grain": "#{n} grain",
+            "gram": "#{n} g",
+            "hectare": "#{n} ha",
+            "hectoliter": "#{n} hL",
+            "hectometer": "one#{n} hectometer|#{n} hectometers",
+            "hectopascal": "#{n} hPa",
+            "hertz": "#{n} Hz",
+            "horsepower": "#{n} hp",
+            "hour": "#{n} h",
+            "inch": "#{n} in",
+            "inch-ofhg": "#{n} inHg",
+            "item": "#{n} item",
+            "jigger": "#{n} jigger",
+            "joule": "#{n} J",
+            "karat": "#{n} kt",
+            "kelvin": "#{n} K",
+            "kilobit": "#{n} kb",
+            "kilobit-per-second": "#{n} kb/s",
+            "kilobyte": "#{n} kB",
+            "kilobyte-per-hour": "#{n} kB/h",
+            "kilobyte-per-second": "#{n} kB/s",
+            "kilocalorie": "#{n} kcal",
+            "kilogram": "#{n} kg",
+            "kilohertz": "#{n} kHz",
+            "kilojoule": "#{n} kJ",
+            "kilometer": "#{n} km",
+            "kilometer-per-hour": "#{n} km/h",
+            "kilometer-per-liter": "1#{n} kilometer per liter|#{n} kilometers per liter",
+            "kilometer-per-second": "1#{n} kilometer per second|#{n} kilometers per second",
+            "kilopascal": "#{n} kPa",
+            "kilowatt": "#{n} kW",
+            "kilowatt-hour": "#{n} kWh",
+            "kilowatt-hour-per-100-kilometer": "#{n} kWh/100km",
+            "knot": "#{n} kn",
+            "light-year": "#{n} ly",
+            "liter": "#{n} l",
+            "liter-per-100-kilometer": "#{n} L/100km",
+            "liter-per-kilometer": "#{n} L/km",
+            "lumen": "#{n} lm",
+            "lux": "#{n} lx",
+            "megabit": "#{n} Mb",
+            "megabit-per-second": "#{n} Mb/s",
+            "megabyte": "#{n} MB",
+            "megabyte-per-hour": "#{n} MB/h",
+            "megabyte-per-second": "#{n} MB/s",
+            "megahertz": "#{n} MHz",
+            "megajoule": "one#{n} megajoule|#{n} megajoules",
+            "megaliter": "#{n} ML",
+            "megameter": "one#{n} megameter|#{n} megameters",
+            "megapascal": "#{n} MPa",
+            "megapixel": "#{n} MP",
+            "megawatt": "#{n} MW",
+            "megawatt-hour": "one#{n} megawatt hour|#{n} megawatt hours",
+            "meter": "#{n} m",
+            "meter-per-second": "#{n} m/s",
+            "meter-per-square-second": "#{n} m/s²",
+            "metric-ton": "#{n} t",
+            "microgram": "#{n} μg",
+            "micrometer": "#{n} μm",
+            "microsecond": "#{n} μs",
+            "mile": "#{n} mi",
+            "mile-per-gallon": "#{n} mpg US",
+            "mile-per-gallon-imperial": "#{n} mpg Imp.",
+            "mile-per-hour": "#{n} mi/h",
+            "mile-per-second": "1#{n} mile per second|#{n} miles per second",
+            "mile-scandinavian": "#{n} smi",
+            "milliampere": "#{n} mA",
+            "millibar": "#{n} mbar",
+            "milligram": "#{n} mg",
+            "milligram-ofglucose-per-deciliter": "#{n} mg/dL",
+            "millijoule": "one#{n} millijoule|#{n} millijoules",
+            "milliliter": "#{n} mL",
+            "millimeter": "#{n} mm",
+            "millimeter-ofhg": "#{n} mm Hg",
+            "millimole-per-liter": "#{n} mmol/L",
+            "millisecond": "#{n} ms",
+            "milliwatt": "#{n} mW",
+            "minute": "#{n} min",
+            "mole": "#{n} mol",
+            "month": "#{n} m",
+            "nanometer": "#{n} nm",
+            "nanosecond": "#{n} ns",
+            "nautical-mile": "#{n} nmi",
+            "newton": "#{n} N",
+            "newton-meter": "#{n} N⋅m",
+            "ohm": "#{n} Ω",
+            "ounce": "#{n} oz",
+            "ounce-imperial": "one#{n} imperial ounce|#{n} imperial ounces",
+            "ounce-troy": "#{n} oz t",
+            "parsec": "#{n} pc",
+            "pascal": "#{n} Pa",
+            "percent": "#{n}%",
+            "permille": "#{n}‰",
+            "permillion": "#{n} ppm",
+            "permyriad": "#{n}‱",
+            "petabit": "one#{n} petabit|#{n} petabits",
+            "petabit-per-second": "#{n} Pb/s",
+            "petabyte": "one#{n} petabyte|#{n} petabytes",
+            "petabyte-per-hour": "#{n} PB/h",
+            "petabyte-per-second": "#{n} PB/s",
+            "picometer": "#{n} pm",
+            "pinch": "#{n} pinch",
+            "pint": "#{n} pt",
+            "pint-imperial": "one#{n} imperial pint|#{n} imperial pints",
+            "pint-metric": "#{n} mpt",
+            "pixel": "#{n} px",
+            "pixel-per-centimeter": "#{n} ppcm",
+            "pixel-per-inch": "#{n} ppi",
+            "point": "#{n} pt",
+            "pound": "#{n} lb",
+            "pound-force": "#{n} lbf",
+            "pound-force-foot": "#{n} lbf⋅ft",
+            "pound-force-per-square-inch": "#{n} psi",
+            "quart": "#{n} qt",
+            "quart-imperial": "one#{n} imperial quart|#{n} imperial quarts",
+            "radian": "#{n} rad",
+            "revolution": "#{n} rev",
+            "second": "#{n} s",
+            "short-ton": "1#{n} short ton|#{n} short tons",
+            "solar-luminosity": "#{n} L☉",
+            "solar-mass": "#{n} M☉",
+            "solar-radius": "#{n} R☉",
+            "square-centimeter": "#{n} cm²",
+            "square-foot": "#{n} ft²",
+            "square-inch": "#{n} in²",
+            "square-kilometer": "#{n} km²",
+            "square-meter": "#{n} m²",
+            "square-mile": "#{n} mi²",
+            "square-yard": "#{n} yd²",
+            "stone": "#{n} st",
+            "tablespoon": "#{n} tbsp",
+            "tablespoon-imperial": "one#{n} imperial tablespoon|#{n} imperial tablespoons",
+            "teaspoon": "#{n} tsp",
+            "teaspoon-imperial": "one#{n} imperial teaspoon|#{n} imperial teaspoons",
+            "terabit": "#{n} Tb",
+            "terabit-per-second": "#{n} Tb/s",
+            "terabyte": "#{n} TB",
             "terabyte-per-hour": "#{n} TB/h",
-            "petabyte-per-hour": "#{n} PB/h"
+            "terabyte-per-second": "#{n} TB/s",
+            "therm-us": "#{n} US therm",
+            "ton": "#{n} tn",
+            "volt": "#{n} V",
+            "watt": "#{n} W",
+            "watt-hour": "one#{n} watt hour|#{n} watt hours",
+            "week": "#{n} w",
+            "yard": "#{n} yd",
+            "year": "#{n} y"
         },
         "short": {
-            "g-force": "#{n} G",
-            "meter-per-square-second": "#{n} m/s²",
-            "revolution": "#{n} rev",
-            "radian": "#{n} rad",
-            "degree": "#{n}°",
+            "BTU": "one#{n} BTU|#{n} BTU",
+            "acre": "#{n} ac",
+            "acre-foot": "#{n} ac ft",
+            "ampere": "#{n} A",
             "arc-minute": "#{n}′",
             "arc-second": "#{n}″",
-            "square-kilometer": "#{n} km²",
-            "hectare": "#{n} ha",
-            "square-meter": "#{n} m²",
-            "square-centimeter": "#{n} cm²",
-            "square-mile": "#{n} mi²",
-            "acre": "#{n} ac",
-            "square-yard": "#{n} yd²",
-            "square-foot": "#{n} ft²",
-            "square-inch": "#{n} in²",
-            "dunam": "#{n} dunam",
-            "karat": "#{n} kt",
-            "milligram-ofglucose-per-deciliter": "#{n} mg/dL",
-            "millimole-per-liter": "#{n} mmol/L",
-            "item": "#{n} item",
-            "permillion": "#{n} ppm",
-            "percent": "#{n}%",
-            "permille": "#{n}‰",
-            "permyriad": "#{n}‱",
-            "mole": "#{n} mol",
-            "liter-per-kilometer": "#{n} L/km",
-            "liter-per-100-kilometer": "#{n} L/100km",
-            "mile-per-gallon": "#{n} mpg US",
-            "mile-per-gallon-imperial": "#{n} mpg Imp.",
-            "petabyte": "one#{n} pB|#{n} pB",
-            "terabyte": "#{n} TB",
-            "terabit": "#{n} Tb",
-            "gigabyte": "#{n} GB",
-            "gigabit": "#{n} Gb",
-            "megabyte": "#{n} MB",
-            "megabit": "#{n} Mb",
-            "kilobyte": "#{n} kB",
-            "kilobit": "#{n} kb",
-            "byte": "#{n} byte",
-            "bit": "#{n} bit",
-            "century": "#{n} c",
-            "decade": "one#{n} decade|#{n} decades",
-            "year": "#{n} y",
-            "month": "#{n} m",
-            "week": "#{n} w",
-            "day": "#{n} d",
-            "hour": "#{n} h",
-            "minute": "#{n} min",
-            "second": "#{n} s",
-            "millisecond": "#{n} ms",
-            "microsecond": "#{n} μs",
-            "nanosecond": "#{n} ns",
-            "ampere": "#{n} A",
-            "milliampere": "#{n} mA",
-            "ohm": "#{n} Ω",
-            "volt": "#{n} V",
-            "kilocalorie": "#{n} kcal",
-            "calorie": "#{n} cal",
-            "kilojoule": "#{n} kJ",
-            "joule": "#{n} J",
-            "kilowatt-hour": "#{n} kWh",
-            "electronvolt": "#{n} eV",
-            "british-thermal-unit": "#{n} Btu",
-            "therm-us": "#{n} US therm",
-            "pound-force": "#{n} lbf",
-            "newton": "#{n} N",
-            "kilowatt-hour-per-100-kilometer": "#{n} kWh/100km",
-            "gigahertz": "#{n} GHz",
-            "megahertz": "#{n} MHz",
-            "kilohertz": "#{n} kHz",
-            "hertz": "#{n} Hz",
-            "em": "#{n} em",
-            "pixel": "#{n} px",
-            "megapixel": "#{n} MP",
-            "pixel-per-centimeter": "#{n} ppcm",
-            "pixel-per-inch": "#{n} ppi",
-            "earth-radius": "#{n} R⊕",
-            "kilometer": "#{n} km",
-            "meter": "#{n} m",
-            "decimeter": "#{n} dm",
-            "centimeter": "#{n} cm",
-            "millimeter": "#{n} mm",
-            "micrometer": "#{n} μm",
-            "nanometer": "#{n} nm",
-            "picometer": "#{n} pm",
-            "mile": "#{n} mi",
-            "yard": "#{n} yd",
-            "foot": "#{n} ft",
-            "inch": "#{n} in",
-            "parsec": "#{n} pc",
-            "light-year": "#{n} ly",
             "astronomical-unit": "#{n} au",
-            "furlong": "#{n} fur",
-            "fathom": "#{n} fth",
-            "nautical-mile": "#{n} nmi",
-            "mile-scandinavian": "#{n} smi",
-            "point": "#{n} pt",
-            "solar-radius": "#{n} R☉",
-            "lux": "#{n} lx",
-            "candela": "#{n} cd",
-            "lumen": "#{n} lm",
-            "solar-luminosity": "#{n} L☉",
-            "metric-ton": "#{n} t",
-            "kilogram": "#{n} kg",
-            "gram": "#{n} g",
-            "milligram": "#{n} mg",
-            "microgram": "#{n} μg",
-            "ton": "#{n} tn",
-            "short-ton": "1#{n} short ton|#{n} short tons",
-            "stone": "#{n} st",
-            "pound": "#{n} lb",
-            "ounce": "#{n} oz",
-            "ounce-troy": "#{n} oz t",
-            "carat": "#{n} CD",
-            "dalton": "#{n} Da",
-            "earth-mass": "#{n} M⊕",
-            "solar-mass": "#{n} M☉",
-            "grain": "#{n} grain",
-            "gigawatt": "#{n} GW",
-            "megawatt": "#{n} MW",
-            "kilowatt": "#{n} kW",
-            "watt": "#{n} W",
-            "milliwatt": "#{n} mW",
-            "horsepower": "#{n} hp",
-            "millimeter-ofhg": "#{n} mm Hg",
-            "pound-force-per-square-inch": "#{n} psi",
-            "inch-ofhg": "#{n} inHg",
-            "bar": "#{n} bar",
-            "millibar": "#{n} mbar",
             "atmosphere": "#{n} atm",
-            "pascal": "#{n} Pa",
-            "hectopascal": "#{n} hPa",
-            "kilopascal": "#{n} kPa",
-            "megapascal": "#{n} MPa",
-            "kilometer-per-hour": "#{n} km/h",
-            "meter-per-second": "#{n} m/s",
-            "mile-per-hour": "#{n} mi/h",
-            "knot": "#{n} kn",
-            "generic": "#{n}°",
+            "bar": "#{n} bar",
+            "barrel": "#{n} bbl",
+            "bit": "#{n} bit",
+            "bit-per-second": "#{n} b/s",
+            "british-thermal-unit": "#{n} Btu",
+            "bushel": "#{n} bu",
+            "byte": "#{n} byte",
+            "byte-per-hour": "#{n} B/h",
+            "byte-per-second": "#{n} B/s",
+            "calorie": "#{n} cal",
+            "candela": "#{n} cd",
+            "carat": "#{n} CD",
             "celsius": "#{n}°C",
-            "fahrenheit": "#{n}°F",
-            "kelvin": "#{n} K",
-            "pound-force-foot": "#{n} lbf⋅ft",
-            "newton-meter": "#{n} N⋅m",
-            "cubic-kilometer": "#{n} km³",
-            "cubic-meter": "#{n} m³",
+            "centiliter": "#{n} cL",
+            "centimeter": "#{n} cm",
+            "century": "#{n} c",
+            "coordinateUnit": "",
             "cubic-centimeter": "#{n} cm³",
-            "cubic-mile": "#{n} mi³",
-            "cubic-yard": "#{n} yd³",
             "cubic-foot": "#{n} ft³",
             "cubic-inch": "#{n} in³",
-            "megaliter": "#{n} ML",
-            "hectoliter": "#{n} hL",
-            "liter": "#{n} l",
-            "deciliter": "#{n} dL",
-            "centiliter": "#{n} cL",
-            "milliliter": "#{n} mL",
-            "pint-metric": "#{n} mpt",
-            "cup-metric": "#{n} mc",
-            "acre-foot": "#{n} ac ft",
-            "bushel": "#{n} bu",
-            "gallon": "#{n} gal US",
-            "gallon-imperial": "#{n} gal Imp.",
-            "quart": "#{n} qt",
-            "pint": "#{n} pt",
+            "cubic-kilometer": "#{n} km³",
+            "cubic-meter": "#{n} m³",
+            "cubic-mile": "#{n} mi³",
+            "cubic-yard": "#{n} yd³",
             "cup": "#{n} c",
-            "fluid-ounce": "#{n} fl oz US",
-            "fluid-ounce-imperial": "#{n} fl oz Imp.",
-            "tablespoon": "#{n} tbsp",
-            "teaspoon": "#{n} tsp",
-            "barrel": "#{n} bbl",
+            "cup-imperial": "one#{n} c(i)|#{n} c(i)",
+            "cup-metric": "#{n} mc",
+            "dalton": "#{n} Da",
+            "day": "#{n} d",
+            "decade": "one#{n} decade|#{n} decades",
+            "decameter": "one#{n} dam|#{n} dam",
+            "deciliter": "#{n} dL",
+            "decimeter": "#{n} dm",
+            "degree": "#{n}°",
             "dessert-spoon": "#{n} dstspn",
             "dessert-spoon-imperial": "#{n} dstspn Imp",
-            "drop": "#{n} drop",
             "dram": "#{n} dram fl",
-            "jigger": "#{n} jigger",
-            "pinch": "#{n} pinch",
-            "quart-imperial": "one#{n} qt(i)|#{n} qt(i)",
-            "coordinateUnit": "",
-            "decameter": "one#{n} dam|#{n} dam",
-            "hectometer": "one#{n} hm|#{n} hm",
-            "megameter": "one#{n} Mm|#{n} Mm",
-            "gigameter": "one#{n} Gm|#{n} Gm",
-            "petabit": "one#{n} pb|#{n} pb",
-            "BTU": "one#{n} BTU|#{n} BTU",
-            "millijoule": "one#{n} mJ|#{n} mJ",
-            "watt-hour": "one#{n} Wh|#{n} Wh",
-            "megajoule": "one#{n} MJ|#{n} MJ",
-            "gigajoule": "one#{n} GJ|#{n} GJ",
-            "megawatt-hour": "one#{n} MWh|#{n} MWh",
-            "gigawatt-hour": "one#{n} GWh|#{n} GWh",
-            "kilometer-per-liter": "1#{n} km/l|#{n} km/l",
+            "drop": "#{n} drop",
+            "dunam": "#{n} dunam",
+            "earth-mass": "#{n} M⊕",
+            "earth-radius": "#{n} R⊕",
+            "electronvolt": "#{n} eV",
+            "em": "#{n} em",
+            "fahrenheit": "#{n}°F",
+            "fathom": "#{n} fth",
+            "fluid-ounce": "#{n} fl oz US",
+            "fluid-ounce-imperial": "#{n} fl oz Imp.",
+            "foot": "#{n} ft",
             "foot-per-second": "1#{n} ft/s|#{n} ft/s",
-            "kilometer-per-second": "1#{n}  km/s|#{n}  km/s",
-            "mile-per-second": "1#{n} mps|#{n}  mps",
-            "teaspoon-imperial": "one#{n} tsp(i)|#{n} tsp(i)",
-            "tablespoon-imperial": "one#{n} tbsp(i)|#{n} tbsp(i)",
-            "ounce-imperial": "one#{n} oz(i)|#{n} oz(i)",
-            "cup-imperial": "one#{n} c(i)|#{n} c(i)",
-            "pint-imperial": "one#{n} pt(i)|#{n} pt(i)",
-            "bit-per-second": "#{n} b/s",
-            "kilobit-per-second": "#{n} kb/s",
-            "megabit-per-second": "#{n} Mb/s",
+            "furlong": "#{n} fur",
+            "g-force": "#{n} G",
+            "gallon": "#{n} gal US",
+            "gallon-imperial": "#{n} gal Imp.",
+            "generic": "#{n}°",
+            "gigabit": "#{n} Gb",
             "gigabit-per-second": "#{n} Gb/s",
-            "terabit-per-second": "#{n} Tb/s",
-            "petabit-per-second": "#{n} Pb/s",
-            "byte-per-second": "#{n} B/s",
-            "kilobyte-per-second": "#{n} kB/s",
-            "megabyte-per-second": "#{n} MB/s",
-            "gigabyte-per-second": "#{n} GB/s",
-            "terabyte-per-second": "#{n} TB/s",
-            "petabyte-per-second": "#{n} PB/s",
-            "byte-per-hour": "#{n} B/h",
-            "kilobyte-per-hour": "#{n} kB/h",
-            "megabyte-per-hour": "#{n} MB/h",
+            "gigabyte": "#{n} GB",
             "gigabyte-per-hour": "#{n} GB/h",
+            "gigabyte-per-second": "#{n} GB/s",
+            "gigahertz": "#{n} GHz",
+            "gigajoule": "one#{n} GJ|#{n} GJ",
+            "gigameter": "one#{n} Gm|#{n} Gm",
+            "gigawatt": "#{n} GW",
+            "gigawatt-hour": "one#{n} GWh|#{n} GWh",
+            "grain": "#{n} grain",
+            "gram": "#{n} g",
+            "hectare": "#{n} ha",
+            "hectoliter": "#{n} hL",
+            "hectometer": "one#{n} hm|#{n} hm",
+            "hectopascal": "#{n} hPa",
+            "hertz": "#{n} Hz",
+            "horsepower": "#{n} hp",
+            "hour": "#{n} h",
+            "inch": "#{n} in",
+            "inch-ofhg": "#{n} inHg",
+            "item": "#{n} item",
+            "jigger": "#{n} jigger",
+            "joule": "#{n} J",
+            "karat": "#{n} kt",
+            "kelvin": "#{n} K",
+            "kilobit": "#{n} kb",
+            "kilobit-per-second": "#{n} kb/s",
+            "kilobyte": "#{n} kB",
+            "kilobyte-per-hour": "#{n} kB/h",
+            "kilobyte-per-second": "#{n} kB/s",
+            "kilocalorie": "#{n} kcal",
+            "kilogram": "#{n} kg",
+            "kilohertz": "#{n} kHz",
+            "kilojoule": "#{n} kJ",
+            "kilometer": "#{n} km",
+            "kilometer-per-hour": "#{n} km/h",
+            "kilometer-per-liter": "1#{n} km/l|#{n} km/l",
+            "kilometer-per-second": "1#{n}  km/s|#{n}  km/s",
+            "kilopascal": "#{n} kPa",
+            "kilowatt": "#{n} kW",
+            "kilowatt-hour": "#{n} kWh",
+            "kilowatt-hour-per-100-kilometer": "#{n} kWh/100km",
+            "knot": "#{n} kn",
+            "light-year": "#{n} ly",
+            "liter": "#{n} l",
+            "liter-per-100-kilometer": "#{n} L/100km",
+            "liter-per-kilometer": "#{n} L/km",
+            "lumen": "#{n} lm",
+            "lux": "#{n} lx",
+            "megabit": "#{n} Mb",
+            "megabit-per-second": "#{n} Mb/s",
+            "megabyte": "#{n} MB",
+            "megabyte-per-hour": "#{n} MB/h",
+            "megabyte-per-second": "#{n} MB/s",
+            "megahertz": "#{n} MHz",
+            "megajoule": "one#{n} MJ|#{n} MJ",
+            "megaliter": "#{n} ML",
+            "megameter": "one#{n} Mm|#{n} Mm",
+            "megapascal": "#{n} MPa",
+            "megapixel": "#{n} MP",
+            "megawatt": "#{n} MW",
+            "megawatt-hour": "one#{n} MWh|#{n} MWh",
+            "meter": "#{n} m",
+            "meter-per-second": "#{n} m/s",
+            "meter-per-square-second": "#{n} m/s²",
+            "metric-ton": "#{n} t",
+            "microgram": "#{n} μg",
+            "micrometer": "#{n} μm",
+            "microsecond": "#{n} μs",
+            "mile": "#{n} mi",
+            "mile-per-gallon": "#{n} mpg US",
+            "mile-per-gallon-imperial": "#{n} mpg Imp.",
+            "mile-per-hour": "#{n} mi/h",
+            "mile-per-second": "1#{n} mps|#{n}  mps",
+            "mile-scandinavian": "#{n} smi",
+            "milliampere": "#{n} mA",
+            "millibar": "#{n} mbar",
+            "milligram": "#{n} mg",
+            "milligram-ofglucose-per-deciliter": "#{n} mg/dL",
+            "millijoule": "one#{n} mJ|#{n} mJ",
+            "milliliter": "#{n} mL",
+            "millimeter": "#{n} mm",
+            "millimeter-ofhg": "#{n} mm Hg",
+            "millimole-per-liter": "#{n} mmol/L",
+            "millisecond": "#{n} ms",
+            "milliwatt": "#{n} mW",
+            "minute": "#{n} min",
+            "mole": "#{n} mol",
+            "month": "#{n} m",
+            "nanometer": "#{n} nm",
+            "nanosecond": "#{n} ns",
+            "nautical-mile": "#{n} nmi",
+            "newton": "#{n} N",
+            "newton-meter": "#{n} N⋅m",
+            "ohm": "#{n} Ω",
+            "ounce": "#{n} oz",
+            "ounce-imperial": "one#{n} oz(i)|#{n} oz(i)",
+            "ounce-troy": "#{n} oz t",
+            "parsec": "#{n} pc",
+            "pascal": "#{n} Pa",
+            "percent": "#{n}%",
+            "permille": "#{n}‰",
+            "permillion": "#{n} ppm",
+            "permyriad": "#{n}‱",
+            "petabit": "one#{n} pb|#{n} pb",
+            "petabit-per-second": "#{n} Pb/s",
+            "petabyte": "one#{n} pB|#{n} pB",
+            "petabyte-per-hour": "#{n} PB/h",
+            "petabyte-per-second": "#{n} PB/s",
+            "picometer": "#{n} pm",
+            "pinch": "#{n} pinch",
+            "pint": "#{n} pt",
+            "pint-imperial": "one#{n} pt(i)|#{n} pt(i)",
+            "pint-metric": "#{n} mpt",
+            "pixel": "#{n} px",
+            "pixel-per-centimeter": "#{n} ppcm",
+            "pixel-per-inch": "#{n} ppi",
+            "point": "#{n} pt",
+            "pound": "#{n} lb",
+            "pound-force": "#{n} lbf",
+            "pound-force-foot": "#{n} lbf⋅ft",
+            "pound-force-per-square-inch": "#{n} psi",
+            "quart": "#{n} qt",
+            "quart-imperial": "one#{n} qt(i)|#{n} qt(i)",
+            "radian": "#{n} rad",
+            "revolution": "#{n} rev",
+            "second": "#{n} s",
+            "short-ton": "1#{n} short ton|#{n} short tons",
+            "solar-luminosity": "#{n} L☉",
+            "solar-mass": "#{n} M☉",
+            "solar-radius": "#{n} R☉",
+            "square-centimeter": "#{n} cm²",
+            "square-foot": "#{n} ft²",
+            "square-inch": "#{n} in²",
+            "square-kilometer": "#{n} km²",
+            "square-meter": "#{n} m²",
+            "square-mile": "#{n} mi²",
+            "square-yard": "#{n} yd²",
+            "stone": "#{n} st",
+            "tablespoon": "#{n} tbsp",
+            "tablespoon-imperial": "one#{n} tbsp(i)|#{n} tbsp(i)",
+            "teaspoon": "#{n} tsp",
+            "teaspoon-imperial": "one#{n} tsp(i)|#{n} tsp(i)",
+            "terabit": "#{n} Tb",
+            "terabit-per-second": "#{n} Tb/s",
+            "terabyte": "#{n} TB",
             "terabyte-per-hour": "#{n} TB/h",
-            "petabyte-per-hour": "#{n} PB/h"
+            "terabyte-per-second": "#{n} TB/s",
+            "therm-us": "#{n} US therm",
+            "ton": "#{n} tn",
+            "volt": "#{n} V",
+            "watt": "#{n} W",
+            "watt-hour": "one#{n} Wh|#{n} Wh",
+            "week": "#{n} w",
+            "yard": "#{n} yd",
+            "year": "#{n} y"
         }
     },
     "usages": {
-        "floorSpace": {
-            "description": "area of the floor of a house or building",
-            "type": "area",
-            "units": {
-                "metric": [
-                    "square-meter"
-                ],
-                "uscustomary": [
-                    "square-foot"
-                ],
-                "imperial": [
-                    "square-foot"
-                ]
-            },
-            "systems": {
-                "metric": {
-                    "units": [
-                        "square-meter"
-                    ],
-                    "maxFractionDigits": 2
-                },
-                "uscustomary": {
-                    "units": [
-                        "square-foot"
-                    ],
-                    "maxFractionDigits": 0
-                },
-                "imperial": {
-                    "units": [
-                        "square-foot"
-                    ],
-                    "maxFractionDigits": 0
-                }
-            },
-            "style": "numeric"
-        },
-        "landArea": {
-            "description": "area of a piece of plot of land",
-            "type": "area",
-            "units": {
-                "metric": [
-                    "square-meter",
-                    "hectare"
-                ],
-                "uscustomary": [
-                    "square-foot",
-                    "acre",
-                    "square-mile"
-                ],
-                "imperial": [
-                    "square-foot",
-                    "acre",
-                    "square-mile"
-                ]
-            },
-            "maxFractionDigits": 2
-        },
-        "networkingSpeed": {
-            "description": "speed of transfer of data over a network",
-            "type": "digitalSpeed",
-            "system": "bitSystem",
+        "atmosphericPressure": {
+            "description": "pressure of the atmosphere used in weather reports",
             "maxFractionDigits": 2,
-            "significantDigits": 3
+            "type": "pressure",
+            "units": {
+                "imperial": [
+                    "atmosphere"
+                ],
+                "metric": [
+                    "millibar",
+                    "hectopascal"
+                ],
+                "uscustomary": [
+                    "atmosphere"
+                ]
+            }
         },
         "audioSpeed": {
             "description": "speed of transfer of audio data",
-            "type": "digitalSpeed",
+            "significantDigits": 3,
             "system": "bitSystem",
-            "significantDigits": 3
-        },
-        "interfaceSpeed": {
-            "description": "speed of transfer of data over a computer interface such as a USB or SATA bus",
-            "type": "digitalSpeed",
-            "system": "byteSystem",
-            "significantDigits": 3
-        },
-        "foodEnergy": {
-            "description": "amount of energy contains in food",
-            "type": "energy",
-            "units": {
-                "metric": [
-                    "millijoule",
-                    "joule",
-                    "kilojoule",
-                    "megajoule",
-                    "gigajoule"
-                ],
-                "uscustomary": [
-                    "foodcalorie"
-                ],
-                "imperial": [
-                    "foodcalorie"
-                ]
-            },
-            "significantDigits": 3
-        },
-        "electricalEnergy": {
-            "description": "amount of energy in electricity",
-            "type": "energy",
-            "units": {
-                "metric": [
-                    "watt-hour",
-                    "kilowatt-hour",
-                    "megawatt-hour",
-                    "gigawatt-hour"
-                ],
-                "uscustomary": [
-                    "watt-hour",
-                    "kilowatt-hour",
-                    "megawatt-hour",
-                    "gigawatt-hour"
-                ],
-                "imperial": [
-                    "watt-hour",
-                    "kilowatt-hour",
-                    "megawatt-hour",
-                    "gigawatt-hour"
-                ]
-            },
-            "significantDigits": 4
-        },
-        "heatingEnergy": {
-            "description": "amount of energy required to heat things such as water or home interiors",
-            "type": "energy",
-            "units": {
-                "metric": [
-                    "millijoule",
-                    "joule",
-                    "kilojoule",
-                    "megajoule",
-                    "gigajoule"
-                ],
-                "uscustomary": [
-                    "BTU"
-                ],
-                "imperial": [
-                    "BTU"
-                ]
-            },
-            "significantDigits": 4
-        },
-        "nauticalDistance": {
-            "description": "distance traveled by a boat",
-            "type": "length",
-            "units": {
-                "metric": [
-                    "meter",
-                    "kilometer"
-                ],
-                "uscustomary": [
-                    "foot",
-                    "yard",
-                    "nautical-mile"
-                ],
-                "imperial": [
-                    "foot",
-                    "yard",
-                    "nautical-mile"
-                ]
-            },
-            "maxFractionDigits": 2,
-            "significantDigits": 4
+            "type": "digitalSpeed"
         },
         "babyHeight": {
             "description": "length of a baby",
+            "significantDigits": 3,
             "type": "length",
             "units": {
+                "imperial": [
+                    "inch"
+                ],
                 "metric": [
                     "centimeter"
                 ],
                 "uscustomary": [
                     "inch"
-                ],
-                "imperial": [
-                    "inch"
                 ]
-            },
-            "significantDigits": 3
-        },
-        "personHeight": {
-            "description": "height of an adult or child (not a baby)",
-            "type": "length",
-            "systems": {
-                "metric": {
-                    "units": [
-                        "centimeter",
-                        "meter"
-                    ],
-                    "maxFractionDigits": 2,
-                    "style": "numeric"
-                },
-                "uscustomary": {
-                    "units": [
-                        "inch",
-                        "foot"
-                    ],
-                    "maxFractionDigits": 0,
-                    "style": "list"
-                },
-                "imperial": {
-                    "units": [
-                        "inch",
-                        "foot"
-                    ],
-                    "maxFractionDigits": 0,
-                    "style": "list"
-                }
             }
-        },
-        "vehicleDistance": {
-            "description": "distance traveled by a vehicle or aircraft (except a boat)",
-            "type": "length",
-            "units": {
-                "metric": [
-                    "meter",
-                    "kilometer"
-                ],
-                "uscustomary": [
-                    "yard",
-                    "mile"
-                ],
-                "imperial": [
-                    "yard",
-                    "mile"
-                ]
-            },
-            "maxFractionDigits": 2,
-            "significantDigits": 4
-        },
-        "personWeight": {
-            "description": "weight/mass of an adult human or larger child",
-            "type": "mass",
-            "units": {
-                "metric": [
-                    "kilogram"
-                ],
-                "uscustomary": [
-                    "pound"
-                ],
-                "imperial": [
-                    "pound",
-                    "stone"
-                ]
-            },
-            "style": "list",
-            "maxFractionDigits": 0
         },
         "babyWeight": {
             "description": "weight/mass of a baby or of small animals such as cats and dogs",
-            "type": "mass",
             "systems": {
+                "imperial": {
+                    "maxFractionDigits": 0,
+                    "style": "list",
+                    "units": [
+                        "ounce",
+                        "pound"
+                    ]
+                },
                 "metric": {
+                    "maxFractionDigits": 2,
+                    "style": "numeric",
                     "units": [
                         "kilogram"
-                    ],
-                    "maxFractionDigits": 2,
-                    "style": "numeric"
+                    ]
                 },
                 "uscustomary": {
+                    "maxFractionDigits": 0,
+                    "style": "list",
                     "units": [
                         "ounce",
                         "pound"
-                    ],
-                    "maxFractionDigits": 0,
-                    "style": "list"
-                },
-                "imperial": {
-                    "units": [
-                        "ounce",
-                        "pound"
-                    ],
-                    "maxFractionDigits": 0,
-                    "style": "list"
+                    ]
                 }
-            }
+            },
+            "type": "mass"
         },
-        "vehicleWeight": {
-            "description": "weight/mass of a vehicle (including a boat)",
-            "type": "mass",
+        "drinkVolume": {
+            "description": "volume of a drink",
+            "maxFractionDigits": 2,
+            "style": "numeric",
+            "type": "volume",
             "units": {
+                "imperial": [
+                    "ounce-imperial",
+                    "cup",
+                    "pint-imperial",
+                    "quart-imperial",
+                    "gallon-imperial"
+                ],
                 "metric": [
-                    "kilogram",
-                    "metric-ton"
+                    "milliliter",
+                    "liter"
                 ],
                 "uscustomary": [
-                    "pound",
-                    "short-ton"
-                ],
-                "imperial": [
-                    "pound",
-                    "ton"
+                    "fluid-ounce",
+                    "cup",
+                    "pint",
+                    "quart",
+                    "gallon"
                 ]
-            },
-            "maxFractionDigits": 2
+            }
         },
         "drugWeight": {
             "description": "weight/mass of a dose of a medicinal drug",
+            "significantDigits": 6,
             "type": "mass",
             "units": {
+                "imperial": [
+                    "milligram",
+                    "ounce"
+                ],
                 "metric": [
                     "microgram",
                     "milligram",
@@ -751,162 +555,358 @@
                 "uscustomary": [
                     "milligram",
                     "ounce"
-                ],
-                "imperial": [
-                    "milligram",
-                    "ounce"
                 ]
-            },
-            "significantDigits": 6
-        },
-        "vehicleSpeed": {
-            "description": "speed of travel of a vehicle, except boats",
-            "type": "velocity",
-            "units": {
-                "metric": [
-                    "kilometer-per-hour"
-                ],
-                "uscustomary": [
-                    "mile-per-hour"
-                ],
-                "imperial": [
-                    "mile-per-hour"
-                ]
-            },
-            "maxFractionDigits": 0
-        },
-        "nauticalSpeed": {
-            "description": "speed of travel of a boat",
-            "type": "velocity",
-            "units": {
-                "metric": [
-                    "kilometer-per-hour"
-                ],
-                "uscustomary": [
-                    "knot"
-                ],
-                "imperial": [
-                    "knot"
-                ]
-            },
-            "maxFractionDigits": 0
+            }
         },
         "dryFoodVolume": {
             "description": "volume of a dry food substance in a recipe such as flour",
-            "type": "volume",
-            "units": {
-                "metric": [
-                    "milliliter",
-                    "liter"
-                ],
-                "uscustomary": [
-                    "teaspoon",
-                    "tablespoon",
-                    "cup",
-                    "gallon"
-                ],
-                "imperial": [
-                    "teaspoon-imperial",
-                    "tablespoon-imperial",
-                    "cup-imperial",
-                    "gallon-imperial"
-                ]
-            },
-            "style": "list",
-            "maxFractionDigits": 2
-        },
-        "liquidFoodVolume": {
-            "description": "volume of a liquid food substance in a recipe such as milk",
-            "type": "volume",
-            "units": {
-                "metric": [
-                    "milliliter",
-                    "liter"
-                ],
-                "uscustomary": [
-                    "teaspoon",
-                    "tablespoon",
-                    "fluid-ounce",
-                    "cup",
-                    "pint",
-                    "quart",
-                    "gallon"
-                ],
-                "imperial": [
-                    "teaspoon-imperial",
-                    "tablespoon-imperial",
-                    "ounce-imperial",
-                    "cup-imperial",
-                    "pint-imperial",
-                    "quart-imperial",
-                    "gallon-imperial"
-                ]
-            },
-            "style": "list",
-            "maxFractionDigits": 2
-        },
-        "drinkVolume": {
-            "description": "volume of a drink",
-            "type": "volume",
-            "units": {
-                "metric": [
-                    "milliliter",
-                    "liter"
-                ],
-                "uscustomary": [
-                    "fluid-ounce",
-                    "cup",
-                    "pint",
-                    "quart",
-                    "gallon"
-                ],
-                "imperial": [
-                    "ounce-imperial",
-                    "cup",
-                    "pint-imperial",
-                    "quart-imperial",
-                    "gallon-imperial"
-                ]
-            },
             "maxFractionDigits": 2,
-            "style": "numeric"
-        },
-        "fuelVolume": {
-            "description": "volume of a vehicular fuel",
+            "style": "list",
             "type": "volume",
             "units": {
+                "imperial": [
+                    "teaspoon-imperial",
+                    "tablespoon-imperial",
+                    "cup-imperial",
+                    "gallon-imperial"
+                ],
                 "metric": [
+                    "milliliter",
                     "liter"
                 ],
                 "uscustomary": [
+                    "teaspoon",
+                    "tablespoon",
+                    "cup",
                     "gallon"
-                ],
-                "imperial": [
-                    "gallon-imperial"
                 ]
-            },
-            "maxFractionDigits": 2
+            }
+        },
+        "electricalEnergy": {
+            "description": "amount of energy in electricity",
+            "significantDigits": 4,
+            "type": "energy",
+            "units": {
+                "imperial": [
+                    "watt-hour",
+                    "kilowatt-hour",
+                    "megawatt-hour",
+                    "gigawatt-hour"
+                ],
+                "metric": [
+                    "watt-hour",
+                    "kilowatt-hour",
+                    "megawatt-hour",
+                    "gigawatt-hour"
+                ],
+                "uscustomary": [
+                    "watt-hour",
+                    "kilowatt-hour",
+                    "megawatt-hour",
+                    "gigawatt-hour"
+                ]
+            }
         },
         "engineVolume": {
             "description": "volume of an engine's combustion space",
+            "maxFractionDigits": 2,
             "type": "volume",
             "units": {
+                "imperial": [
+                    "cubic-inch"
+                ],
                 "metric": [
                     "cubic-centimeter"
                 ],
                 "uscustomary": [
                     "cubic-inch"
-                ],
-                "imperial": [
-                    "cubic-inch"
                 ]
+            }
+        },
+        "floorSpace": {
+            "description": "area of the floor of a house or building",
+            "style": "numeric",
+            "systems": {
+                "imperial": {
+                    "maxFractionDigits": 0,
+                    "units": [
+                        "square-foot"
+                    ]
+                },
+                "metric": {
+                    "maxFractionDigits": 2,
+                    "units": [
+                        "square-meter"
+                    ]
+                },
+                "uscustomary": {
+                    "maxFractionDigits": 0,
+                    "units": [
+                        "square-foot"
+                    ]
+                }
             },
-            "maxFractionDigits": 2
+            "type": "area",
+            "units": {
+                "imperial": [
+                    "square-foot"
+                ],
+                "metric": [
+                    "square-meter"
+                ],
+                "uscustomary": [
+                    "square-foot"
+                ]
+            }
+        },
+        "foodEnergy": {
+            "description": "amount of energy contains in food",
+            "significantDigits": 3,
+            "type": "energy",
+            "units": {
+                "imperial": [
+                    "foodcalorie"
+                ],
+                "metric": [
+                    "millijoule",
+                    "joule",
+                    "kilojoule",
+                    "megajoule",
+                    "gigajoule"
+                ],
+                "uscustomary": [
+                    "foodcalorie"
+                ]
+            }
+        },
+        "fuelVolume": {
+            "description": "volume of a vehicular fuel",
+            "maxFractionDigits": 2,
+            "type": "volume",
+            "units": {
+                "imperial": [
+                    "gallon-imperial"
+                ],
+                "metric": [
+                    "liter"
+                ],
+                "uscustomary": [
+                    "gallon"
+                ]
+            }
+        },
+        "gasPressure": {
+            "description": "pressure of a gas",
+            "maxFractionDigits": 3,
+            "type": "pressure",
+            "units": {
+                "imperial": [
+                    "pound-force-per-square-inch"
+                ],
+                "metric": [
+                    "pascal"
+                ],
+                "uscustomary": [
+                    "pound-force-per-square-inch"
+                ]
+            }
+        },
+        "gasVolume": {
+            "description": "volume of a gas such as natural gas used in a home",
+            "maxFractionDigits": 3,
+            "type": "volume",
+            "units": {
+                "imperial": [
+                    "cubic-foot"
+                ],
+                "metric": [
+                    "cubic-meter"
+                ],
+                "uscustomary": [
+                    "cubic-foot"
+                ]
+            }
+        },
+        "heatingEnergy": {
+            "description": "amount of energy required to heat things such as water or home interiors",
+            "significantDigits": 4,
+            "type": "energy",
+            "units": {
+                "imperial": [
+                    "BTU"
+                ],
+                "metric": [
+                    "millijoule",
+                    "joule",
+                    "kilojoule",
+                    "megajoule",
+                    "gigajoule"
+                ],
+                "uscustomary": [
+                    "BTU"
+                ]
+            }
+        },
+        "interfaceSpeed": {
+            "description": "speed of transfer of data over a computer interface such as a USB or SATA bus",
+            "significantDigits": 3,
+            "system": "byteSystem",
+            "type": "digitalSpeed"
+        },
+        "landArea": {
+            "description": "area of a piece of plot of land",
+            "maxFractionDigits": 2,
+            "type": "area",
+            "units": {
+                "imperial": [
+                    "square-foot",
+                    "acre",
+                    "square-mile"
+                ],
+                "metric": [
+                    "square-meter",
+                    "hectare"
+                ],
+                "uscustomary": [
+                    "square-foot",
+                    "acre",
+                    "square-mile"
+                ]
+            }
+        },
+        "liquidFoodVolume": {
+            "description": "volume of a liquid food substance in a recipe such as milk",
+            "maxFractionDigits": 2,
+            "style": "list",
+            "type": "volume",
+            "units": {
+                "imperial": [
+                    "teaspoon-imperial",
+                    "tablespoon-imperial",
+                    "ounce-imperial",
+                    "cup-imperial",
+                    "pint-imperial",
+                    "quart-imperial",
+                    "gallon-imperial"
+                ],
+                "metric": [
+                    "milliliter",
+                    "liter"
+                ],
+                "uscustomary": [
+                    "teaspoon",
+                    "tablespoon",
+                    "fluid-ounce",
+                    "cup",
+                    "pint",
+                    "quart",
+                    "gallon"
+                ]
+            }
+        },
+        "nauticalDistance": {
+            "description": "distance traveled by a boat",
+            "maxFractionDigits": 2,
+            "significantDigits": 4,
+            "type": "length",
+            "units": {
+                "imperial": [
+                    "foot",
+                    "yard",
+                    "nautical-mile"
+                ],
+                "metric": [
+                    "meter",
+                    "kilometer"
+                ],
+                "uscustomary": [
+                    "foot",
+                    "yard",
+                    "nautical-mile"
+                ]
+            }
+        },
+        "nauticalSpeed": {
+            "description": "speed of travel of a boat",
+            "maxFractionDigits": 0,
+            "type": "velocity",
+            "units": {
+                "imperial": [
+                    "knot"
+                ],
+                "metric": [
+                    "kilometer-per-hour"
+                ],
+                "uscustomary": [
+                    "knot"
+                ]
+            }
+        },
+        "networkingSpeed": {
+            "description": "speed of transfer of data over a network",
+            "maxFractionDigits": 2,
+            "significantDigits": 3,
+            "system": "bitSystem",
+            "type": "digitalSpeed"
+        },
+        "personHeight": {
+            "description": "height of an adult or child (not a baby)",
+            "systems": {
+                "imperial": {
+                    "maxFractionDigits": 0,
+                    "style": "list",
+                    "units": [
+                        "inch",
+                        "foot"
+                    ]
+                },
+                "metric": {
+                    "maxFractionDigits": 2,
+                    "style": "numeric",
+                    "units": [
+                        "centimeter",
+                        "meter"
+                    ]
+                },
+                "uscustomary": {
+                    "maxFractionDigits": 0,
+                    "style": "list",
+                    "units": [
+                        "inch",
+                        "foot"
+                    ]
+                }
+            },
+            "type": "length"
+        },
+        "personWeight": {
+            "description": "weight/mass of an adult human or larger child",
+            "maxFractionDigits": 0,
+            "style": "list",
+            "type": "mass",
+            "units": {
+                "imperial": [
+                    "pound",
+                    "stone"
+                ],
+                "metric": [
+                    "kilogram"
+                ],
+                "uscustomary": [
+                    "pound"
+                ]
+            }
         },
         "storageVolume": {
             "description": "volume of a mass storage tank",
+            "maxFractionDigits": 3,
+            "style": "numeric",
             "type": "volume",
             "units": {
+                "imperial": [
+                    "gallon-imperial",
+                    "cubic-foot"
+                ],
                 "metric": [
                     "liter",
                     "cubic-meter"
@@ -914,60 +914,79 @@
                 "uscustomary": [
                     "gallon",
                     "cubic-foot"
-                ],
-                "imperial": [
-                    "gallon-imperial",
-                    "cubic-foot"
                 ]
-            },
-            "maxFractionDigits": 3,
-            "style": "numeric"
+            }
         },
-        "gasVolume": {
-            "description": "volume of a gas such as natural gas used in a home a home might use",
-            "type": "volume",
+        "vehicleDistance": {
+            "description": "distance traveled by a vehicle or aircraft (except a boat)",
+            "maxFractionDigits": 2,
+            "significantDigits": 4,
+            "type": "length",
             "units": {
+                "imperial": [
+                    "yard",
+                    "mile"
+                ],
                 "metric": [
-                    "cubic-meter"
+                    "meter",
+                    "kilometer"
                 ],
                 "uscustomary": [
-                    "cubic-foot"
-                ],
-                "imperial": [
-                    "cubic-foot"
+                    "yard",
+                    "mile"
                 ]
-            },
-            "maxFractionDigits": 3
-        },
-        "gasPressure": {
-            "description": "pressure of a gas",
-            "type": "pressure",
-            "units": {
-                "metric": ["pascal"],
-                "uscustomary": ["pound-force-per-square-inch"],
-                "imperial": ["pound-force-per-square-inch"]
-            },
-            "maxFractionDigits": 3
-        },
-        "atmosphericPressure": {
-            "description": "pressure of the atmosphere used in weather reports",
-            "type": "pressure",
-            "units": {
-                "metric": ["millibar", "hectopascal"],
-                "uscustomary": ["atmosphere"],
-                "imperial": ["atmosphere"]
-            },
-            "maxFractionDigits": 2
+            }
         },
         "vehiclePower": {
             "description": "power of a vehicle's engine",
+            "maxFractionDigits": 2,
             "type": "power",
             "units": {
-                "metric": ["kilowatt"],
-                "uscustomary": ["horsepower"],
-                "imperial": ["horsepower"]
-            },
-            "maxFractionDigits": 2
+                "imperial": [
+                    "horsepower"
+                ],
+                "metric": [
+                    "kilowatt"
+                ],
+                "uscustomary": [
+                    "horsepower"
+                ]
+            }
+        },
+        "vehicleSpeed": {
+            "description": "speed of travel of a vehicle, except boats",
+            "maxFractionDigits": 0,
+            "type": "velocity",
+            "units": {
+                "imperial": [
+                    "mile-per-hour"
+                ],
+                "metric": [
+                    "kilometer-per-hour"
+                ],
+                "uscustomary": [
+                    "mile-per-hour"
+                ]
+            }
+        },
+        "vehicleWeight": {
+            "description": "weight/mass of a vehicle (including a boat)",
+            "maxFractionDigits": 2,
+            "type": "mass",
+            "units": {
+                "imperial": [
+                    "pound",
+                    "ton"
+                ],
+                "metric": [
+                    "kilogram",
+                    "metric-ton"
+                ],
+                "uscustomary": [
+                    "pound",
+                    "short-ton"
+                ]
+            }
         }
     }
 }

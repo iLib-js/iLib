@@ -1,43 +1,29 @@
 {
     "gregorian": {
         "date": {
+            "dm": {
+                "s": "d/M"
+            },
+            "dmw": {
+                "s": "d/ME"
+            },
             "dmwy": {
                 "s": "d/M/yyE"
             },
             "dmy": {
                 "s": "d/M/yy"
             },
-            "dmw": {
-                "s": "d/ME"
-            },
-            "dm": {
-                "s": "d/M"
+            "dw": {
+                "s": "d/E"
             },
             "my": {
                 "s": "M/yy"
             },
-            "dw": {
-                "s": "d/E"
+            "r": {
+                "s": "yy年"
             },
             "y": {
                 "s": "yy"
-            },
-            "r": {
-                "s": "yy年"
-            }
-        },
-        "time": {
-            "24": {
-                "ahmsz": "z H:mm:ss",
-                "ahms": "H:mm:ss",
-                "hmsz": "z H:mm:ss",
-                "hms": "H:mm:ss",
-                "ahmz": "z H:mm",
-                "ahm": "H:mm",
-                "hmz": "z H:mm",
-                "ah": "H时",
-                "hm": "H:mm",
-                "h": "H时"
             }
         },
         "range": {
@@ -64,6 +50,20 @@
             },
             "c20": {
                 "s": "{sm}/{sy} – {em}/{ey}"
+            }
+        },
+        "time": {
+            "24": {
+                "ah": "H时",
+                "ahm": "H:mm",
+                "ahms": "H:mm:ss",
+                "ahmsz": "z H:mm:ss",
+                "ahmz": "z H:mm",
+                "h": "H时",
+                "hm": "H:mm",
+                "hms": "H:mm:ss",
+                "hmsz": "z H:mm:ss",
+                "hmz": "z H:mm"
             }
         }
     }

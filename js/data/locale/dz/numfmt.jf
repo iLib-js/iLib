@@ -1,15 +1,15 @@
 {
     "generated": true,
     "numfmt": {
-        "script": "Tibt",
-        "secgroupSize": 2,
         "currencyFormats": {
             "common": "{s}{n}",
             "commonNegative": "-{s}{n}"
         },
-        "pctFmt": "{n} %",
-        "negativepctFmt": "-{n} %",
         "digits": "༠༡༢༣༤༥༦༧༨༩",
+        "negativepctFmt": "-{n} %",
+        "pctFmt": "{n} %",
+        "script": "Tibt",
+        "secgroupSize": 2,
         "useNative": true
     }
 }

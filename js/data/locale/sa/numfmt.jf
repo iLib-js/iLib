@@ -1,13 +1,13 @@
 {
     "generated": true,
     "numfmt": {
-        "script": "Deva",
-        "secgroupSize": 2,
         "currencyFormats": {
             "common": "{s}{n}",
             "commonNegative": "-{s}{n}"
         },
         "digits": "०१२३४५६७८९",
+        "script": "Deva",
+        "secgroupSize": 2,
         "useNative": true
     }
 }

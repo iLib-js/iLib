@@ -1,21 +1,21 @@
 {
     "generated": true,
     "native_numfmt": {
-        "script": "Vaii",
-        "decimalChar": ".",
-        "groupChar": ",",
-        "pctChar": "%",
-        "exponential": "E",
-        "prigroupSize": 3,
         "currencyFormats": {
             "common": "{s}{n}",
             "commonNegative": "-{s}{n}"
         },
-        "negativenumFmt": "-{n}",
-        "pctFmt": "{n}%",
-        "negativepctFmt": "-{n}%",
-        "roundingMode": "halfdown",
+        "decimalChar": ".",
         "digits": "꘠꘡꘢꘣꘤꘥꘦꘧꘨꘩",
+        "exponential": "E",
+        "groupChar": ",",
+        "negativenumFmt": "-{n}",
+        "negativepctFmt": "-{n}%",
+        "pctChar": "%",
+        "pctFmt": "{n}%",
+        "prigroupSize": 3,
+        "roundingMode": "halfdown",
+        "script": "Vaii",
         "useNative": true
     },
     "numfmt": {

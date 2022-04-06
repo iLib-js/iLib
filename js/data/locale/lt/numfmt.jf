@@ -1,15 +1,15 @@
 {
     "generated": true,
     "numfmt": {
-        "decimalChar": ",",
-        "groupChar": " ",
-        "exponential": "×10^",
         "currencyFormats": {
             "common": "{n} {s}",
             "commonNegative": "−{n} {s}"
         },
+        "decimalChar": ",",
+        "exponential": "×10^",
+        "groupChar": " ",
         "negativenumFmt": "−{n}",
-        "pctFmt": "{n} %",
-        "negativepctFmt": "−{n} %"
+        "negativepctFmt": "−{n} %",
+        "pctFmt": "{n} %"
     }
 }

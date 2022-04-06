@@ -1,55 +1,59 @@
 {
     "gregorian": {
         "date": {
-            "dmwy": {
-                "s": "yyyy-MM-dd, E",
-                "m": "yyyy ལོའི་MMMཚེས་d, EE",
-                "l": "སྤྱི་ལོ་yyyy MMMMའི་ཚེས་d, EEE",
-                "f": "yyyy MMMMའི་ཚེས་d, EEEE"
-            },
-            "dmy": {
-                "s": "yyyy-MM-dd",
-                "m": "yyyy ལོའི་MMMཚེས་d",
-                "l": "སྤྱི་ལོ་yyyy MMMMའི་ཚེས་d",
-                "f": "yyyy MMMMའི་ཚེས་d"
-            },
-            "dmw": {
-                "s": "MM-dd, E",
-                "m": "MMMཚེས་d, EE",
-                "l": "MMMMའི་ཚེས་d, EEE",
-                "f": "MMMMའི་ཚེས་d, EEEE"
-            },
-            "dm": {
-                "s": "MM-dd",
-                "m": "MMMཚེས་d",
-                "l": "MMMMའི་ཚེས་d",
-                "f": "MMMMའི་ཚེས་d"
-            },
-            "my": {
-                "s": "yyyy-MM",
-                "m": "yyyy ལོའི་MMM",
-                "l": "སྤྱི་ལོ་yyyy MMMM",
-                "f": "yyyy MMMM"
-            },
-            "dw": {
-                "s": "dd, E",
-                "m": "d, EE",
-                "l": "d, EEE",
-                "f": "d, EEEE"
-            },
             "d": {
                 "f": "d",
                 "l": "d",
                 "m": "d",
                 "s": "dd"
             },
-            "m": {
-                "s": "MM",
-                "m": "MMM",
-                "l": "MMMM"
+            "dm": {
+                "f": "MMMMའི་ཚེས་d",
+                "l": "MMMMའི་ཚེས་d",
+                "m": "MMMཚེས་d",
+                "s": "MM-dd"
             },
-            "y": {
-                "s": "yyyy"
+            "dmw": {
+                "f": "MMMMའི་ཚེས་d, EEEE",
+                "l": "MMMMའི་ཚེས་d, EEE",
+                "m": "MMMཚེས་d, EE",
+                "s": "MM-dd, E"
+            },
+            "dmwy": {
+                "f": "yyyy MMMMའི་ཚེས་d, EEEE",
+                "l": "སྤྱི་ལོ་yyyy MMMMའི་ཚེས་d, EEE",
+                "m": "yyyy ལོའི་MMMཚེས་d, EE",
+                "s": "yyyy-MM-dd, E"
+            },
+            "dmy": {
+                "f": "yyyy MMMMའི་ཚེས་d",
+                "l": "སྤྱི་ལོ་yyyy MMMMའི་ཚེས་d",
+                "m": "yyyy ལོའི་MMMཚེས་d",
+                "s": "yyyy-MM-dd"
+            },
+            "dw": {
+                "f": "d, EEEE",
+                "l": "d, EEE",
+                "m": "d, EE",
+                "s": "dd, E"
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "LL"
+            },
+            "m": {
+                "f": "MMMM",
+                "l": "MMMM",
+                "m": "MMM",
+                "s": "MM"
+            },
+            "my": {
+                "f": "yyyy MMMM",
+                "l": "སྤྱི་ལོ་yyyy MMMM",
+                "m": "yyyy ལོའི་MMM",
+                "s": "yyyy-MM"
             },
             "mys": {
                 "f": "yyyy LLLL",
@@ -57,88 +61,106 @@
                 "m": "yyyy ལོའི་LLL",
                 "s": "yyyy-MM"
             },
-            "l": {
-                "f": "LLLL",
-                "l": "LLLL",
-                "m": "LLL",
-                "s": "LL"
-            }
-        },
-        "time": {
-            "12": {
-                "ahmsz": "h:mm:ss a z",
-                "ahms": "h:mm:ss a",
-                "ahmz": "h:mm a z",
-                "ahm": "h:mm a",
-                "ah": "h a"
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
             },
-            "24": {
-                "ahmsz": "HH:mm:ss z",
-                "ahms": "HH:mm:ss",
-                "hmsz": "HH:mm:ss z",
-                "hms": "HH:mm:ss",
-                "ahmz": "HH:mm z",
-                "ahm": "HH:mm",
-                "hmz": "HH:mm z",
-                "ah": "HH",
-                "hm": "HH:mm",
-                "h": "HH"
+            "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
+                "s": "yyyy"
             }
         },
+        "order": "{date} {time}",
         "range": {
             "c00": {
-                "s": "{sy}-{sm}-{sd} {st} – {et}",
-                "m": "{sy} ལོའི་{sm}ཚེས་{sd} {st} – {et}",
+                "f": "{sy} {sm}འི་ཚེས་{sd} {st} – {et}",
                 "l": "སྤྱི་ལོ་{sy} {sm}འི་ཚེས་{sd} {st} – {et}",
-                "f": "{sy} {sm}འི་ཚེས་{sd} {st} – {et}"
+                "m": "{sy} ལོའི་{sm}ཚེས་{sd} {st} – {et}",
+                "s": "{sy}-{sm}-{sd} {st} – {et}"
             },
             "c01": {
-                "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}",
-                "m": "{sy} ལོའི་{sm}ཚེས་{sd} {st} – {ey} ལོའི་{em}ཚེས་{ed} {et}",
+                "f": "{sy} {sm}འི་ཚེས་{sd} {st} – {ey} {em}འི་ཚེས་{ed} {et}",
                 "l": "སྤྱི་ལོ་{sy} {sm}འི་ཚེས་{sd} {st} – སྤྱི་ལོ་{ey} {em}འི་ཚེས་{ed} {et}",
-                "f": "{sy} {sm}འི་ཚེས་{sd} {st} – {ey} {em}འི་ཚེས་{ed} {et}"
+                "m": "{sy} ལོའི་{sm}ཚེས་{sd} {st} – {ey} ལོའི་{em}ཚེས་{ed} {et}",
+                "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
             },
             "c02": {
-                "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}",
-                "m": "{sy} ལོའི་{sm}ཚེས་{sd} {st} – {ey} ལོའི་{em}ཚེས་{ed} {et}",
+                "f": "{sy} {sm}འི་ཚེས་{sd} {st} – {ey} {em}འི་ཚེས་{ed} {et}",
                 "l": "སྤྱི་ལོ་{sy} {sm}འི་ཚེས་{sd} {st} – སྤྱི་ལོ་{ey} {em}འི་ཚེས་{ed} {et}",
-                "f": "{sy} {sm}འི་ཚེས་{sd} {st} – {ey} {em}འི་ཚེས་{ed} {et}"
+                "m": "{sy} ལོའི་{sm}ཚེས་{sd} {st} – {ey} ལོའི་{em}ཚེས་{ed} {et}",
+                "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
             },
             "c03": {
-                "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}",
-                "m": "{sy} ལོའི་{sm}ཚེས་{sd} {st} – {ey} ལོའི་{em}ཚེས་{ed} {et}",
+                "f": "{sy} {sm}འི་ཚེས་{sd} {st} – {ey} {em}འི་ཚེས་{ed} {et}",
                 "l": "སྤྱི་ལོ་{sy} {sm}འི་ཚེས་{sd} {st} – སྤྱི་ལོ{ey} {em}འི་ཚེས་{ed} {et}",
-                "f": "{sy} {sm}འི་ཚེས་{sd} {st} – {ey} {em}འི་ཚེས་{ed} {et}"
+                "m": "{sy} ལོའི་{sm}ཚེས་{sd} {st} – {ey} ལོའི་{em}ཚེས་{ed} {et}",
+                "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
             },
             "c10": {
-                "s": "{sy}-{sm}-{sd} – {ed}",
-                "m": "{sy} ལོའི་{sm}ཚེས་{sd} – {ed}",
+                "f": "{sy} {sm}འི་ཚེས་{sd} – {ed}",
                 "l": "སྤྱི་ལོ་{sy} {sm}འི་ཚེས་{sd} – {ed}",
-                "f": "{sy} {sm}འི་ཚེས་{sd} – {ed}"
+                "m": "{sy} ལོའི་{sm}ཚེས་{sd} – {ed}",
+                "s": "{sy}-{sm}-{sd} – {ed}"
             },
             "c11": {
-                "s": "{sy}-{sm}-{sd} – {ey}-{em}-{ed}",
-                "m": "{sy} ལོའི་{sm}ཚེས་{sd} – {ey} ལོའི་{em}ཚེས་{ed}",
+                "f": "{sy} {sm}འི་ཚེས་{sd} – {em}འི་ཚེས་{ed}",
                 "l": "སྤྱི་ལོ་{sy} {sm}འི་ཚེས་{sd} – སྤྱི་ལོ{em}འི་ཚེས་{ed}",
-                "f": "{sy} {sm}འི་ཚེས་{sd} – {em}འི་ཚེས་{ed}"
+                "m": "{sy} ལོའི་{sm}ཚེས་{sd} – {ey} ལོའི་{em}ཚེས་{ed}",
+                "s": "{sy}-{sm}-{sd} – {ey}-{em}-{ed}"
             },
             "c12": {
-                "s": "{sy}-{sm}-{sd} – {ey}-{em}-{ed}",
-                "m": "{sy} ལོའི་{sm}ཚེས་{sd} – {ey} ལོའི་{em}ཚེས་{ed}",
+                "f": "{sy} {sm}འི་ཚེས་{sd} – {ey} {em}འི་ཚེས་{ed}",
                 "l": "སྤྱི་ལོ་{sy} {sm}འི་ཚེས་{sd} – སྤྱི་ལོ{ey} {em}འི་ཚེས་{ed}",
-                "f": "{sy} {sm}འི་ཚེས་{sd} – {ey} {em}འི་ཚེས་{ed}"
+                "m": "{sy} ལོའི་{sm}ཚེས་{sd} – {ey} ལོའི་{em}ཚེས་{ed}",
+                "s": "{sy}-{sm}-{sd} – {ey}-{em}-{ed}"
             },
             "c20": {
-                "s": "{sy}-{sm} – {ey}-{em}",
-                "m": "{sy} ལོའི་{sm} – {ey} ལོའི་{em}",
+                "f": "{sy} {sm} – {ey} {em}",
                 "l": "སྤྱི་ལོ་{sy} {sm} – སྤྱི་ལོ{ey} {em}",
-                "f": "{sy} {sm} – {ey} {em}"
+                "m": "{sy} ལོའི་{sm} – {ey} ལོའི་{em}",
+                "s": "{sy}-{sm} – {ey}-{em}"
             },
             "c30": {
                 "f": "{sy} – {ey}",
                 "l": "{sy} – {ey}",
                 "m": "{sy} – {ey}",
                 "s": "{sy} – {ey}"
+            }
+        },
+        "time": {
+            "12": {
+                "ah": "h a",
+                "ahm": "h:mm a",
+                "ahms": "h:mm:ss a",
+                "ahmsz": "h:mm:ss a z",
+                "ahmz": "h:mm a z",
+                "h": "h",
+                "hm": "h:mm",
+                "hms": "h:mm:ss",
+                "hmsz": "h:mm:ss z",
+                "hmz": "h:mm z",
+                "m": "mm",
+                "ms": "mm:ss",
+                "s": "ss"
+            },
+            "24": {
+                "ah": "HH",
+                "ahm": "HH:mm",
+                "ahms": "HH:mm:ss",
+                "ahmsz": "HH:mm:ss z",
+                "ahmz": "HH:mm z",
+                "h": "HH",
+                "hm": "HH:mm",
+                "hms": "HH:mm:ss",
+                "hmsz": "HH:mm:ss z",
+                "hmz": "HH:mm z",
+                "m": "mm",
+                "ms": "mm:ss",
+                "s": "ss"
             }
         }
     }

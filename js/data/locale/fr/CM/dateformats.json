@@ -2,11 +2,11 @@
     "gregorian": {
         "time": {
             "12": {
-                "ahmsz": "h:mm:ssh z",
-                "ahms": "h:mm:ssh",
-                "ahmz": "h:mmh z",
+                "ah": "h",
                 "ahm": "h:mmh",
-                "ah": "h"
+                "ahms": "h:mm:ssh",
+                "ahmsz": "h:mm:ssh z",
+                "ahmz": "h:mmh z"
             }
         }
     }

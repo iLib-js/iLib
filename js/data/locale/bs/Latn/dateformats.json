@@ -1,17 +1,17 @@
 {
     "gregorian": {
         "date": {
-            "mys": {
-                "f": "LLLL yyyy.",
-                "l": "LLLL yyyy.",
-                "m": "LLL yyyy.",
-                "s": "M. yyyy."
-            },
             "l": {
                 "f": "LLLL",
                 "l": "LLLL",
                 "m": "LLL",
                 "s": "L"
+            },
+            "mys": {
+                "f": "LLLL yyyy.",
+                "l": "LLLL yyyy.",
+                "m": "LLL yyyy.",
+                "s": "M. yyyy."
             }
         }
     }
