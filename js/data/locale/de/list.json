@@ -1,51 +1,51 @@
 {
-    "standard": {
-        "short": {
-            "2": "{0} und {1}",
-            "end": "{0} und {1}"
-        },
-        "medium": {
-            "2": "{0} und {1}",
-            "end": "{0} und {1}"
+    "or": {
+        "full": {
+            "2": "{0} oder {1}",
+            "end": "{0} oder {1}"
         },
         "long": {
-            "2": "{0} und {1}",
-            "end": "{0} und {1}"
+            "2": "{0} oder {1}",
+            "end": "{0} oder {1}"
         },
-        "full": {
-            "2": "{0} und {1}",
-            "end": "{0} und {1}"
+        "medium": {
+            "2": "{0} oder {1}",
+            "end": "{0} oder {1}"
+        },
+        "short": {
+            "2": "{0} oder {1}",
+            "end": "{0} oder {1}"
         }
     },
-    "or": {
-        "short": {
-            "2": "{0} oder {1}",
-            "end": "{0} oder {1}"
-        },
-        "medium": {
-            "2": "{0} oder {1}",
-            "end": "{0} oder {1}"
+    "standard": {
+        "full": {
+            "2": "{0} und {1}",
+            "end": "{0} und {1}"
         },
         "long": {
-            "2": "{0} oder {1}",
-            "end": "{0} oder {1}"
+            "2": "{0} und {1}",
+            "end": "{0} und {1}"
         },
-        "full": {
-            "2": "{0} oder {1}",
-            "end": "{0} oder {1}"
+        "medium": {
+            "2": "{0} und {1}",
+            "end": "{0} und {1}"
+        },
+        "short": {
+            "2": "{0} und {1}",
+            "end": "{0} und {1}"
         }
     },
     "unit": {
-        "short": {
-            "end": "{0} und {1}"
-        },
-        "medium": {
+        "full": {
             "end": "{0} und {1}"
         },
         "long": {
             "end": "{0} und {1}"
         },
-        "full": {
+        "medium": {
+            "end": "{0} und {1}"
+        },
+        "short": {
             "end": "{0} und {1}"
         }
     }
