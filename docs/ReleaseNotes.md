@@ -9,6 +9,7 @@ New Features:
 
 Bug Fixes:
 * Fixed a bug where the DateFmt.formatRelative() does not represent correct result in certain case.
+* Updated locale data to have a consistently sorted order by rerunning cldr tool code.
 
 
 Build 022
