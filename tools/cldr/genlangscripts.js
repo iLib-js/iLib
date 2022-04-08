@@ -20,6 +20,7 @@
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
+var stringify = require('json-stable-stringify');
 
 var common = require('./common.js');
 var coelesce = common.coelesce;

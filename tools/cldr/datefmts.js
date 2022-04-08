@@ -2329,7 +2329,7 @@ module.exports = {
         var filename = path.join(dir, outfile);
         var contents = JSON.stringify(group.data, undefined, 4); // to filter out `{\n}` case
         // don't write out empty files!
-        if (contents !== "{}") {
+        if (group.data && contents !== "{}") {
             console.log(localeComponents.join("-") + " ");
 
             makeDirs(dir);
