@@ -93,8 +93,6 @@
     "EEEE4": "ଗୁରୁବାର",
     "EEEE5": "ଶୁକ୍ରବାର",
     "EEEE6": "ଶନିବାର",
-    "G-1": "BCE",
-    "G1": "CE",
     "MMM1": "ଜାନୁଆରୀ",
     "MMM10": "ଅକ୍ଟୋବର",
     "MMM11": "ନଭେମ୍ବର",
@@ -143,8 +141,6 @@
     "NN7": "ଜୁ",
     "NN8": "ଅଗ",
     "NN9": "ସେ",
-    "a0": "AM",
-    "a1": "PM",
     "durationLongDays": "one#{num} ଦିନ|#{num} ଦିନ",
     "durationMediumHours": "one#{num}ଘଣ୍ଟା|#{num}ଘଣ୍ଟା",
     "durationMediumMillis": "one#{num}ms|#{num} ms",
@@ -157,8 +153,5 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
-    "separatorMedium": ", ",
-    "separatorShort": " "
+    "separatorMedium": ", "
 }

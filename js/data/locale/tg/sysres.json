@@ -143,8 +143,6 @@
     "NN7": "Ию",
     "NN8": "Ав",
     "NN9": "Се",
-    "a0": "AM",
-    "a1": "PM",
     "durationLongDays": "#{num} рӯз",
     "durationMediumHours": "#{num} со",
     "durationMediumMillis": "#{num} ми",
@@ -157,8 +155,6 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

@@ -93,8 +93,6 @@
     "EEEE4": "Ọjọ́bọ",
     "EEEE5": "Ọjọ́ Ẹtì",
     "EEEE6": "Ọjọ́ Àbámẹ́ta",
-    "G-1": "BCE",
-    "G1": "CE",
     "L1": "S",
     "L10": "Ọ̀",
     "L11": "B",
@@ -233,8 +231,6 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

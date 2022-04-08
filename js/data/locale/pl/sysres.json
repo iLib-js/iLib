@@ -102,8 +102,6 @@
     "EEEE4": "czwartek",
     "EEEE5": "piątek",
     "EEEE6": "sobota",
-    "G-1": "BCE",
-    "G1": "CE",
     "L1": "S",
     "L10": "P",
     "L11": "L",
@@ -200,8 +198,6 @@
     "NN7": "li",
     "NN8": "si",
     "NN9": "wr",
-    "a0": "AM",
-    "a1": "PM",
     "c0": "N",
     "c1": "P",
     "c2": "W",
@@ -242,8 +238,6 @@
     "finalSeparatorLong": " i ",
     "finalSeparatorMedium": " i ",
     "finalSeparatorShort": " i ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

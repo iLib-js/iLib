@@ -200,8 +200,6 @@
     "NN7": "uz",
     "NN8": "ab",
     "NN9": "ir",
-    "a0": "AM",
-    "a1": "PM",
     "durationLongDays": "one#{num} egun|#{num} egun",
     "durationMediumHours": "one#{num} h|#{num} h",
     "durationMediumMillis": "one#{num} ms|#{num} ms",
@@ -214,8 +212,6 @@
     "finalSeparatorLong": " eta ",
     "finalSeparatorMedium": " eta ",
     "finalSeparatorShort": " eta ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

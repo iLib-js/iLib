@@ -41,7 +41,6 @@
                 "s": "d"
             },
             "dm": {
-                "f": "d MMMM",
                 "l": "d MMMM",
                 "m": "d.MM",
                 "s": "d.MM"
@@ -71,9 +70,7 @@
                 "s": "E, d"
             },
             "m": {
-                "f": "MMMM",
                 "l": "MMMM",
-                "m": "MM",
                 "s": "MM"
             },
             "my": {
@@ -81,18 +78,6 @@
                 "l": "MMMM yyyy 'г'.",
                 "m": "MM.yyyy 'г'.",
                 "s": "MM.yy 'г'."
-            },
-            "w": {
-                "f": "EEEE",
-                "l": "EEE",
-                "m": "EE",
-                "s": "E"
-            },
-            "y": {
-                "f": "yyyy",
-                "l": "yyyy",
-                "m": "yyyy",
-                "s": "yy"
             }
         },
         "order": "{date}, {time}",
@@ -159,29 +144,20 @@
                 "ahms": "h:mm:ss 'ч'. a",
                 "ahmsz": "h:mm:ss 'ч'. a z",
                 "ahmz": "h:mm 'ч'. a z",
-                "h": "h",
                 "hm": "h:mm 'ч'.",
                 "hms": "h:mm:ss 'ч'.",
                 "hmsz": "h:mm:ss 'ч'. z",
-                "hmz": "h:mm 'ч'. z",
-                "m": "mm",
-                "ms": "mm:ss",
-                "s": "ss"
+                "hmz": "h:mm 'ч'. z"
             },
             "24": {
-                "ah": "H",
                 "ahm": "H:mm 'ч'.",
                 "ahms": "H:mm:ss 'ч'.",
                 "ahmsz": "H:mm:ss 'ч'. z",
                 "ahmz": "H:mm 'ч'. z",
-                "h": "H",
                 "hm": "H:mm 'ч'.",
                 "hms": "H:mm:ss 'ч'.",
                 "hmsz": "H:mm:ss 'ч'. z",
-                "hmz": "H:mm 'ч'. z",
-                "m": "mm",
-                "ms": "mm:ss",
-                "s": "ss"
+                "hmz": "H:mm 'ч'. z"
             }
         }
     }

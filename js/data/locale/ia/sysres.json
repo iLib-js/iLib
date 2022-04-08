@@ -191,8 +191,6 @@
     "NN7": "ju",
     "NN8": "au",
     "NN9": "se",
-    "a0": "AM",
-    "a1": "PM",
     "durationLongDays": "one#{num} die|#{num} dies",
     "durationMediumHours": "one#{num}h|#{num}h",
     "durationMediumMillis": "one#{num}ms|#{num}ms",
@@ -205,8 +203,5 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
-    "separatorMedium": ", ",
-    "separatorShort": " "
+    "separatorMedium": ", "
 }

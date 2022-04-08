@@ -199,8 +199,6 @@
     "NN7": "𑄎",
     "NN8": "𑄃",
     "NN9": "𑄥",
-    "a0": "AM",
-    "a1": "PM",
     "durationLongDays": "one#{num} 𑄘𑄨𑄚𑄴|#{num} 𑄘𑄨𑄚𑄴",
     "durationMediumHours": "one#{num} 𑄊𑄂|#{num} 𑄊𑄂",
     "durationMediumMillis": "one#{num} ms|#{num} ms",
@@ -213,8 +211,6 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

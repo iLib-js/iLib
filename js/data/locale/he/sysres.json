@@ -102,8 +102,6 @@
     "EEEE4": "יום חמישי",
     "EEEE5": "יום שישי",
     "EEEE6": "יום שבת",
-    "G-1": "BCE",
-    "G1": "CE",
     "MMM1": "ינו׳",
     "MMM10": "אוק׳",
     "MMM11": "נוב׳",
@@ -166,8 +164,5 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
-    "separatorMedium": ", ",
-    "separatorShort": " "
+    "separatorMedium": ", "
 }
