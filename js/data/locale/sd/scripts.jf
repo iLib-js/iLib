@@ -1,9 +1,9 @@
 {
+    "generated": true,
     "scripts": [
         "Arab",
         "Deva",
         "Khoj",
         "Sind"
-    ],
-    "generated": true
+    ]
 }

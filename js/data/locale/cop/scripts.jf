@@ -1,8 +1,8 @@
 {
+    "generated": true,
     "scripts": [
         "Arab",
         "Copt",
         "Grek"
-    ],
-    "generated": true
+    ]
 }
