@@ -7,6 +7,7 @@ Published as version 14.15.0
 
 New Features:
 * Update to CLDR v41 data
+* Update to the latest ISO-14924 data (writing script information)
 
 Bug Fixes:
 * Fixed a bug where the DateFmt.formatRelative() does not represent correct result in certain case.
