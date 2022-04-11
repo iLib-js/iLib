@@ -30,14 +30,14 @@ var mkdirs = common.makeDirs;
 var path = require("path");
 
 function usage() {
-    console.log("Usage: gencurrency [-h] [iLib locale Dir] [toDir]\n" +
+    console.log("Usage: gencurrency [-h] [iLib locale Dir [toDir]]\n" +
         "Generate the currency.jf files for each country.\n\n" +
         "-h or --help\n" +
         "  this help\n" +
         "iLibDataDir\n" +
-    "  Current ilib locale directory in order to refer the current currency info.\n" +
+        "  Current ilib locale directory in order to refer the current currency info.\n" +
         "toDir\n" +
-    "  directory to output the currency.jf json files. Default: current dir.");
+        "  directory to output the currency.jf json files. Default: current dir.");
     process.exit(1);
 }
 
@@ -96,7 +96,7 @@ function getNameAndSign(currency, cldrData, ilibData) {
     return undefined;
 }
 
-var currencyDataFileName;
+var currencyDataFileName, ilibDir;
 var toDir = "./tmp";
 
 process.argv.forEach(function (val, index, array) {
@@ -111,7 +111,7 @@ if (process.argv.length < 2) {
 }
 
 if (process.argv.length > 2) {
-    toDir = process.argv[2];
+    ilibDir = process.argv[2];
 }
 
 if (process.argv.length > 3) {
@@ -121,7 +121,7 @@ if (process.argv.length > 3) {
 console.log("gencurrency - generate currency information files.\n" + "Copyright © 2016, 2018-2020, JEDLSoft");
 console.log("output dir: " + toDir);
 
-var ilibDataFileName = path.join(toDir, "currency.json");
+var ilibDataFileName = path.join(ilibDir, "currency.json");
 
 if (!fs.existsSync(toDir)) {
     common.makeDirs(toDir);
