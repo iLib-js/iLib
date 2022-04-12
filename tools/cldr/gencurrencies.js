@@ -2,7 +2,7 @@
  * gencurrencies.js - ilib tool to generate the json data about currency
  * the CLDR data files
  *
- * Copyright © 2016, 2018-2020, JEDLSoft
+ * Copyright © 2016, 2018-2020, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,14 +30,14 @@ var mkdirs = common.makeDirs;
 var path = require("path");
 
 function usage() {
-    console.log("Usage: gencurrency [-h] [iLib locale Dir] [toDir]\n" +
+    console.log("Usage: gencurrency [-h] [iLib locale Dir [toDir]]\n" +
         "Generate the currency.jf files for each country.\n\n" +
         "-h or --help\n" +
         "  this help\n" +
         "iLibDataDir\n" +
-    "  Current ilib locale directory in order to refer the current currency info.\n" +
+        "  Current ilib locale directory in order to refer the current currency info.\n" +
         "toDir\n" +
-    "  directory to output the currency.jf json files. Default: current dir.");
+        "  directory to output the currency.jf json files. Default: current dir.");
     process.exit(1);
 }
 
@@ -96,7 +96,7 @@ function getNameAndSign(currency, cldrData, ilibData) {
     return undefined;
 }
 
-var currencyDataFileName;
+var currencyDataFileName, ilibDir;
 var toDir = "./tmp";
 
 process.argv.forEach(function (val, index, array) {

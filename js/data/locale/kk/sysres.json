@@ -101,8 +101,6 @@
     "EEEE4": "бейсенбі",
     "EEEE5": "жұма",
     "EEEE6": "сенбі",
-    "G-1": "BCE",
-    "G1": "CE",
     "L1": "Қ",
     "L10": "Қ",
     "L11": "Қ",
@@ -199,8 +197,6 @@
     "NN7": "ші",
     "NN8": "та",
     "NN9": "қы",
-    "a0": "AM",
-    "a1": "PM",
     "durationLongDays": "one#{num} күн|#{num} күн",
     "durationMediumHours": "one#{num} сағ|#{num} сағ",
     "durationMediumMillis": "one#{num} мс|#{num} мс",
@@ -214,7 +210,5 @@
     "finalSeparatorMedium": " ",
     "finalSeparatorShort": " ",
     "separatorFull": " ",
-    "separatorLong": " ",
-    "separatorMedium": " ",
-    "separatorShort": " "
+    "separatorLong": " "
 }

@@ -8,7 +8,6 @@
                 "s": "d"
             },
             "dm": {
-                "f": "d MMMM",
                 "l": "d MMMM",
                 "m": "dd-MM",
                 "s": "d-M"
@@ -38,10 +37,7 @@
                 "s": "E, d"
             },
             "m": {
-                "f": "MMMM",
-                "l": "MMMM",
-                "m": "MM",
-                "s": "M"
+                "l": "MMMM"
             },
             "my": {
                 "f": "MMMM, yyyy",
@@ -49,20 +45,10 @@
                 "m": "MM-yyyy",
                 "s": "M-yyyy"
             },
-            "w": {
-                "f": "EEEE",
-                "l": "EEE",
-                "m": "EE",
-                "s": "E"
-            },
             "y": {
-                "f": "yyyy",
-                "l": "yyyy",
-                "m": "yyyy",
                 "s": "yyyy"
             }
         },
-        "order": "{date} {time}",
         "range": {
             "c00": {
                 "f": "{sd} {sm}, {sy} {st} – {et}",
@@ -126,14 +112,11 @@
                 "ahms": "a h.mm.ss",
                 "ahmsz": "a h.mm.ss z",
                 "ahmz": "a h.mm z",
-                "h": "h",
                 "hm": "h.mm",
                 "hms": "h.mm.ss",
                 "hmsz": "h.mm.ss z",
                 "hmz": "h.mm z",
-                "m": "mm",
-                "ms": "mm.ss",
-                "s": "ss"
+                "ms": "mm.ss"
             },
             "24": {
                 "ah": "HH",
@@ -146,9 +129,7 @@
                 "hms": "HH.mm.ss",
                 "hmsz": "HH.mm.ss z",
                 "hmz": "HH.mm z",
-                "m": "mm",
-                "ms": "mm.ss",
-                "s": "ss"
+                "ms": "mm.ss"
             }
         }
     }

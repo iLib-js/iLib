@@ -40,10 +40,8 @@
                 "s": "d"
             },
             "dm": {
-                "f": "d MMMM",
                 "l": "d MMMM",
-                "m": "d MMM",
-                "s": "d/M"
+                "m": "d MMM"
             },
             "dmw": {
                 "f": "EEEE ທີ d MMMM",
@@ -58,7 +56,6 @@
                 "s": "E ທີ d/M/yyyy"
             },
             "dmy": {
-                "f": "d MMMM yyyy",
                 "l": "d MMMM yyyy",
                 "m": "d MMM yyyy",
                 "s": "d/M/yyyy"
@@ -70,27 +67,15 @@
                 "s": "E ທີ d"
             },
             "m": {
-                "f": "MMMM",
                 "l": "MMMM",
-                "m": "MMM",
-                "s": "M"
+                "m": "MMM"
             },
             "my": {
-                "f": "MMMM yyyy",
                 "l": "MMMM yyyy",
                 "m": "MMM yyyy",
                 "s": "M/yyyy"
             },
-            "w": {
-                "f": "EEEE",
-                "l": "EEE",
-                "m": "EE",
-                "s": "E"
-            },
             "y": {
-                "f": "yyyy",
-                "l": "yyyy",
-                "m": "yyyy",
                 "s": "yyyy"
             }
         },
@@ -133,16 +118,10 @@
                 "s": "{sd}/{sm} – {ed}/{em}/{ey}"
             },
             "c12": {
-                "f": "{sd} {sm} {sy} – {ed} {em} {ey}",
-                "l": "{sd} {sm} {sy} – {ed} {em} {ey}",
-                "m": "{sd} {sm} {sy} – {ed} {em} {ey}",
-                "s": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}"
+                "m": "{sd} {sm} {sy} – {ed} {em} {ey}"
             },
             "c20": {
-                "f": "{sm} {sy} – {em} {ey}",
-                "l": "{sm} {sy} – {em} {ey}",
-                "m": "{sm} {sy} – {em} {ey}",
-                "s": "{sm}/{sy} – {em}/{ey}"
+                "m": "{sm} {sy} – {em} {ey}"
             },
             "c30": {
                 "f": "{sy} – {ey}",
@@ -158,29 +137,10 @@
                 "ahms": "h:mm:ss ໂມງa",
                 "ahmsz": "h:mm:ss ໂມງa z",
                 "ahmz": "h:mm ໂມງa z",
-                "h": "h",
-                "hm": "h:mm",
-                "hms": "h:mm:ss",
-                "hmsz": "h:mm:ss z",
-                "hmz": "h:mm z",
-                "m": "m",
-                "ms": "mm:ss",
-                "s": "ss"
+                "m": "m"
             },
             "24": {
-                "ah": "H",
-                "ahm": "H:mm",
-                "ahms": "H:mm:ss",
-                "ahmsz": "H:mm:ss z",
-                "ahmz": "H:mm z",
-                "h": "H",
-                "hm": "H:mm",
-                "hms": "H:mm:ss",
-                "hmsz": "H:mm:ss z",
-                "hmz": "H:mm z",
-                "m": "m",
-                "ms": "mm:ss",
-                "s": "ss"
+                "m": "m"
             }
         }
     }

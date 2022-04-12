@@ -199,8 +199,6 @@
     "NN7": "հլ",
     "NN8": "օգ",
     "NN9": "սե",
-    "a0": "AM",
-    "a1": "PM",
     "durationLongDays": "one#{num} օր|#{num} օր",
     "durationMediumHours": "one#{num} ժ|#{num} ժ",
     "durationMediumMillis": "one#{num} մվ|#{num} մվ",
@@ -213,8 +211,5 @@
     "finalSeparatorLong": " և ",
     "finalSeparatorMedium": " և ",
     "finalSeparatorShort": " ",
-    "separatorFull": ", ",
-    "separatorLong": " ",
-    "separatorMedium": " ",
-    "separatorShort": " "
+    "separatorLong": " "
 }

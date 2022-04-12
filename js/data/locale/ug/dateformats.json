@@ -38,7 +38,6 @@
                 "s": "‏dd، E"
             },
             "m": {
-                "f": "MMMM",
                 "l": "MMMM",
                 "m": "MMM",
                 "s": "MM"
@@ -49,16 +48,7 @@
                 "m": "MMM، yyyy",
                 "s": "‏yyyy-MM"
             },
-            "w": {
-                "f": "EEEE",
-                "l": "EEE",
-                "m": "EE",
-                "s": "E"
-            },
             "y": {
-                "f": "yyyy",
-                "l": "yyyy",
-                "m": "yyyy",
                 "s": "yyyy"
             }
         },
@@ -131,14 +121,10 @@
                 "ahms": "‏h:mm:ss a",
                 "ahmsz": "‏h:mm:ss a z",
                 "ahmz": "‏h:mm a z",
-                "h": "h",
                 "hm": "‏h:mm",
                 "hms": "‏h:mm:ss",
                 "hmsz": "‏h:mm:ss z",
-                "hmz": "‏h:mm z",
-                "m": "mm",
-                "ms": "mm:ss",
-                "s": "ss"
+                "hmz": "‏h:mm z"
             },
             "24": {
                 "ah": "‏HH",
@@ -150,10 +136,7 @@
                 "hm": "‏HH:mm",
                 "hms": "‏HH:mm:ss",
                 "hmsz": "‏HH:mm:ss z",
-                "hmz": "‏HH:mm z",
-                "m": "mm",
-                "ms": "mm:ss",
-                "s": "ss"
+                "hmz": "‏HH:mm z"
             }
         }
     }

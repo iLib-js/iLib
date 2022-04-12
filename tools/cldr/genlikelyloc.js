@@ -23,6 +23,8 @@
  */
 
 var fs = require('fs');
+var stringify = require('json-stable-stringify');
+
 var common = require('./common');
 var Locale = common.Locale;
 

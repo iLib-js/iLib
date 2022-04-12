@@ -71,7 +71,6 @@
     "E3": "M",
     "E4": "G",
     "E5": "V",
-    "E6": "S",
     "EE0": "du",
     "EE1": "gli",
     "EE2": "ma",
@@ -93,8 +92,6 @@
     "EEEE4": "gievgia",
     "EEEE5": "venderdi",
     "EEEE6": "sonda",
-    "G-1": "BCE",
-    "G1": "CE",
     "L1": "S",
     "L10": "O",
     "L11": "N",
@@ -191,8 +188,6 @@
     "NN7": "fa",
     "NN8": "av",
     "NN9": "se",
-    "a0": "AM",
-    "a1": "PM",
     "durationLongDays": "one#{num} di|#{num} dis",
     "durationMediumHours": "one#{num} uras|#{num} uras",
     "durationMediumMillis": "one#{num}ms|#{num}ms",
@@ -205,8 +200,5 @@
     "finalSeparatorLong": " e ",
     "finalSeparatorMedium": " e ",
     "finalSeparatorShort": " ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
-    "separatorMedium": ", ",
-    "separatorShort": " "
+    "separatorMedium": ", "
 }
