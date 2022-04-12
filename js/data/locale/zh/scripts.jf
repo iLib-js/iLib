@@ -1,9 +1,9 @@
 {
+    "generated": true,
     "scripts": [
         "Hans",
         "Hant",
         "Bopo",
         "Phag"
-    ],
-    "generated": true
+    ]
 }

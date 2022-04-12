@@ -222,7 +222,7 @@
     "Cpmn": {
         "casing": false,
         "ime": true,
-        "lid": "Cypro-Minoan",
+        "lid": "Cypro_Minoan",
         "nb": 402,
         "nm": "Cypro-Minoan",
         "rtl": false
@@ -574,6 +574,11 @@
         "nm": "Katakana",
         "rtl": false
     },
+    "Kawi": {
+        "lid": "Kawi",
+        "nb": 368,
+        "nm": "Kawi"
+    },
     "Khar": {
         "casing": false,
         "ime": false,
@@ -877,6 +882,11 @@
         "nb": 350,
         "nm": "Myanmar (Burmese)",
         "rtl": false
+    },
+    "Nagm": {
+        "lid": "Nag_Mundari",
+        "nb": 295,
+        "nm": "Nag Mundari"
     },
     "Nand": {
         "casing": false,
@@ -1254,6 +1264,11 @@
         "nb": 362,
         "nm": "Sundanese",
         "rtl": false
+    },
+    "Sunu": {
+        "lid": "Sunuwar",
+        "nb": 274,
+        "nm": "Sunuwar"
     },
     "Sylo": {
         "casing": false,
