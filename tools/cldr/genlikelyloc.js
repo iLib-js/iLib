@@ -65,15 +65,21 @@ var likelySubtags, likelySubtagsData, filename, json;
 
 var localematch = {};
 
+// cldr is missing these
+var hardCodedSubtags = {
+    "yo-BJ": "yo-Latn-BJ"
+};
+
 // Likely Locales
 
 var likelylocales = {};
 likelySubtagsData = likelySubtags.supplemental;
+var likelySubtags = Object.assign({}, likelySubtagsData.likelySubtags, hardCodedSubtags);
 
-for (var partial in likelySubtagsData.likelySubtags) {
-    if (partial && likelySubtagsData.likelySubtags[partial]) {
+for (var partial in likelySubtags) {
+    if (partial && likelySubtags[partial]) {
         var partialLoc = new Locale(partial);
-        var full = new Locale(likelySubtagsData.likelySubtags[partial]);
+        var full = new Locale(likelySubtags[partial]);
         if (partialLoc.language === "und") {
             var cleanloc = new Locale(undefined, partialLoc.script, partialLoc.region);
 
