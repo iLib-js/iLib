@@ -428,6 +428,26 @@ var DateFmt = function(options) {
 
     loadParams = options.loadParams;
 
+    //intl.""
+    /*
+    2022 년 3월 22이리 화. 불가능. option 으로 나오는 형태가 다름.
+    date. dmwy (full) -->    dateSylte: full.
+    date: dmy (long)  -->    dateStyle: long
+    date: dmy (full)  -->    dateStyle: long
+    date: dmy (medium)   --> dateStyle : medium
+    dmy (short)   --? dateStyle: short
+
+    time: ahm  --     timeStyle: short.
+    time ahms        timestyle : medium
+    time ahmsz        timestyle: long
+
+    this.type = "date";
+    this.length = "s";
+    this.dateComponents = "dmy";
+    this.timeComponents = "ahm";
+    "date": ["dmy, dmwy"]
+    //date: w
+    */
     new LocaleInfo(this.locale, {
         sync: sync,
         loadParams: loadParams,
@@ -437,60 +457,82 @@ var DateFmt = function(options) {
             // get the default calendar name from the locale, and if the locale doesn't define
             // one, use the hard-coded gregorian as the last resort
             this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
-            if (ilib.isDynCode()) {
-                // If we are running in the dynamic code loading assembly of ilib, the following
-                // will attempt to dynamically load the calendar date class for this calendar. If
-                // it doesn't work, this just goes on and it will use Gregorian instead.
-                DateFactory._init(this.calName);
+
+            if(sync && typeof(Intl) !== 'undefined' && this.locinfo.getDigitsStyle()== "western" && (!options.template)){
+                if(this.type == "date" && this.dateComponents == "dmy"){
+                    var len;
+                    if(this.length=='s'){
+                        len="short";
+                    } else if(this.length=='m'){
+                        len="medium";
+                    } else if(this.length=='l'){
+                        len="long";
+                    } else {
+                        len="full";
+                    };
+                    //console.log("#####");
+                    this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
+                        dateStyle: len
+                    })
+                };
+                //return this.IntlDateTimeObj;
             }
+            if(!this.IntlDateTimeObj){
+                if (!this.IntlDateTimeObj && ilib.isDynCode()) {
+                    // If we are running in the dynamic code loading assembly of ilib, the following
+                    // will attempt to dynamically load the calendar date class for this calendar. If
+                    // it doesn't work, this just goes on and it will use Gregorian instead.
+                    DateFactory._init(this.calName);
+                }
 
-            CalendarFactory({
-                type: this.calName,
-                sync: sync,
-                loadParams: loadParams,
-                onLoad: ilib.bind(this, function(cal) {
-                    this.cal = cal;
+                CalendarFactory({
+                    type: this.calName,
+                    sync: sync,
+                    loadParams: loadParams,
+                    onLoad: ilib.bind(this, function(cal) {
+                        this.cal = cal;
 
-                    if (!this.cal) {
-                        // can be synchronous
-                        this.cal = new GregorianCal();
-                    }
-                    if (this.meridiems === "default") {
-                        this.meridiems = li.getMeridiemsStyle();
-                    }
+                        if (!this.cal) {
+                            // can be synchronous
+                            this.cal = new GregorianCal();
+                        }
+                        if (this.meridiems === "default") {
+                            this.meridiems = li.getMeridiemsStyle();
+                        }
 
-                    // load the strings used to translate the components
-                    new ResBundle({
-                        locale: this.locale,
-                        name: "sysres",
-                        sync: sync,
-                        loadParams: loadParams,
-                        onLoad: ilib.bind(this, function (rb) {
-                            this.sysres = rb;
+                        // load the strings used to translate the components
+                        new ResBundle({
+                            locale: this.locale,
+                            name: "sysres",
+                            sync: sync,
+                            loadParams: loadParams,
+                            onLoad: ilib.bind(this, function (rb) {
+                                this.sysres = rb;
 
-                            if (!this.tz) {
-                                var timezone = options.timezone;
-                                if (!timezone && !options.locale) {
-                                    timezone = "local";
+                                if (!this.tz) {
+                                    var timezone = options.timezone;
+                                    if (!timezone && !options.locale) {
+                                        timezone = "local";
+                                    }
+
+                                    new TimeZone({
+                                        locale: this.locale,
+                                        id: timezone,
+                                        sync: sync,
+                                        loadParams: loadParams,
+                                        onLoad: ilib.bind(this, function(tz) {
+                                            this.tz = tz;
+                                            this._init(options);
+                                        })
+                                    });
+                                } else {
+                                    this._init(options);
                                 }
-
-                                new TimeZone({
-                                    locale: this.locale,
-                                    id: timezone,
-                                    sync: sync,
-                                    loadParams: loadParams,
-                                    onLoad: ilib.bind(this, function(tz) {
-                                        this.tz = tz;
-                                        this._init(options);
-                                    })
-                                });
-                            } else {
-                                this._init(options);
-                            }
-                        })
-                    });
-                })
-            });
+                            })
+                        });
+                    })
+                });
+            }
         })
     });
 };
@@ -958,7 +1000,7 @@ DateFmt.prototype = {
      * @return {string} the name of the calendar used by this formatter
      */
     getCalendar: function () {
-        return this.cal.getType();
+        return this.cal.getType() || 'gregorian';
     },
 
     /**
@@ -1472,6 +1514,10 @@ DateFmt.prototype = {
 
         if (!date.getCalendar || !(date instanceof IDate)) {
             throw "Wrong date type passed to DateFmt.format()";
+        }
+
+        if(this.IntlDateTimeObj){
+            return this.IntlDateTimeObj.format();
         }
 
         var dateZoneName = date.timezone || "local";
