@@ -312,6 +312,7 @@ var DateFmt = function(options) {
     this.dateComponents = "dmy";
     this.timeComponents = "ahm";
     this.meridiems = "default";
+    this.useIntlObj = false;
 
     options = options || {sync: true};
     if (options.locale) {
@@ -457,25 +458,17 @@ var DateFmt = function(options) {
             // get the default calendar name from the locale, and if the locale doesn't define
             // one, use the hard-coded gregorian as the last resort
             this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
-
-            if(sync && typeof(Intl) !== 'undefined' && this.locinfo.getDigitsStyle()== "western" && (!options.template)){
-                if(this.type == "date" && this.dateComponents == "dmy"){
-                    var len;
-                    if(this.length=='s'){
-                        len="short";
-                    } else if(this.length=='m'){
-                        len="medium";
-                    } else if(this.length=='l'){
-                        len="long";
-                    } else {
-                        len="full";
+            
+            if(sync && typeof(Intl) !== 'undefined' && Intl.DateTimeFormat.supportedLocalesOf(this.locale.getSpec().length>0)){
+                if (this.locinfo.getDigitsStyle()== "western" && (!options.template))    {
+                    if(this.type == "date" && this.dateComponents == "dmy"){
+                        var len = this._makefullLengthName(this.length);
+                        this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
+                            dateStyle: len
+                        })
+                        this.useIntlObj = true;
                     };
-                    //console.log("#####");
-                    this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
-                        dateStyle: len
-                    })
-                };
-                //return this.IntlDateTimeObj;
+                }
             }
             if(!this.IntlDateTimeObj){
                 if (!this.IntlDateTimeObj && ilib.isDynCode()) {
@@ -698,6 +691,25 @@ DateFmt.prototype = {
            })
         });
     },
+    _makefullLengthName: function(style) {
+        if(!style) return;
+        var fullName;
+        switch(style){
+            case 'f':
+                fullName = "full";
+                break;
+            case 'l':
+                fullName = "long";
+                break;
+            case 'medium':
+                fullName = "medium";
+                break;
+            default:
+                fullName = "short";
+                break;
+        }
+        return fullName;
+    },
 
     /**
      * @protected
@@ -726,7 +738,7 @@ DateFmt.prototype = {
      *             l:string,
      *             f:string
      *         })>
-     *     }} formats
+     *     }}
      */
     _initTemplate: function (formats) {
         if (formats[this.calName]) {
@@ -1516,8 +1528,9 @@ DateFmt.prototype = {
             throw "Wrong date type passed to DateFmt.format()";
         }
 
-        if(this.IntlDateTimeObj){
-            return this.IntlDateTimeObj.format();
+        if(this.useIntlObj && this.IntlDateTimeObj){
+            var jsDate = DateFactory._ilibToDate(date);
+            return this.IntlDateTimeObj.format(jsDate);
         }
 
         var dateZoneName = date.timezone || "local";
