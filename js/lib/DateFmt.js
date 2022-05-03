@@ -429,7 +429,6 @@ var DateFmt = function(options) {
 
     loadParams = options.loadParams;
 
-    //intl.""
     /*
     2022 년 3월 22이리 화. 불가능. option 으로 나오는 형태가 다름.
     date. dmwy (full) -->    dateSylte: full.
@@ -446,8 +445,6 @@ var DateFmt = function(options) {
     this.length = "s";
     this.dateComponents = "dmy";
     this.timeComponents = "ahm";
-    "date": ["dmy, dmwy"]
-    //date: w
     */
     new LocaleInfo(this.locale, {
         sync: sync,
@@ -459,14 +456,16 @@ var DateFmt = function(options) {
             // one, use the hard-coded gregorian as the last resort
             this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
             
-            if(sync && typeof(Intl) !== 'undefined' && Intl.DateTimeFormat.supportedLocalesOf(this.locale.getSpec().length>0)){
-                if (this.locinfo.getDigitsStyle()== "western" && (!options.template))    {
-                    if(this.type == "date" && this.dateComponents == "dmy"){
-                        var len = this._makefullLengthName(this.length);
+            if(sync && typeof(Intl) !== 'undefined' && Intl.DateTimeFormat.supportedLocalesOf(this.locale.getSpec()).length > 0){
+                if (this.locinfo.getDigitsStyle() == "western" && (!options.template) && this.calName == "gregorian")    {
+                    if(this.type == "date" && ((this.dateComponents == "dmy" && this.length != "f") ||
+                        (this.dateComponents == "dmwy" && this.length == "f"))){
+                        var len = DateFmt.lenmap[this.length];
                         this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
                             dateStyle: len
-                        })
+                        });
                         this.useIntlObj = true;
+                        //this.objOptions = options;
                     };
                 }
             }
@@ -691,26 +690,6 @@ DateFmt.prototype = {
            })
         });
     },
-    _makefullLengthName: function(style) {
-        if(!style) return;
-        var fullName;
-        switch(style){
-            case 'f':
-                fullName = "full";
-                break;
-            case 'l':
-                fullName = "long";
-                break;
-            case 'medium':
-                fullName = "medium";
-                break;
-            default:
-                fullName = "short";
-                break;
-        }
-        return fullName;
-    },
-
     /**
      * @protected
      * @param {string|{
@@ -1012,7 +991,11 @@ DateFmt.prototype = {
      * @return {string} the name of the calendar used by this formatter
      */
     getCalendar: function () {
-        return this.cal.getType() || 'gregorian';
+        if(this.IntlDateTimeObj){
+            return this.calName;
+        } else {
+            return this.cal.getType() || 'gregorian';
+        }
     },
 
     /**
