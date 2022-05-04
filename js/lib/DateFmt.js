@@ -430,21 +430,17 @@ var DateFmt = function(options) {
     loadParams = options.loadParams;
 
     /*
-    2022 년 3월 22이리 화. 불가능. option 으로 나오는 형태가 다름.
     date. dmwy (full) -->    dateSylte: full.
-    date: dmy (long)  -->    dateStyle: long
-    date: dmy (full)  -->    dateStyle: long
-    date: dmy (medium)   --> dateStyle : medium
-    dmy (short)   --? dateStyle: short
+    date. dmwy (long) -->    X
 
-    time: ahm  --     timeStyle: short.
-    time ahms        timestyle : medium
-    time ahmsz        timestyle: long
+    date: dmy (long) -->    dateStyle: long
+    date: dmy (full) -->    dateStyle: long
+    date: dmy (medium) --> dateStyle : medium
+    date: dmy (short) --> dateStyle : short
 
-    this.type = "date";
-    this.length = "s";
-    this.dateComponents = "dmy";
-    this.timeComponents = "ahm";
+    time: ahm -->    timeStyle: short.
+    time: ahms -->   timestyle : medium
+    time: ahmsz -->  timestyle: long
     */
     new LocaleInfo(this.locale, {
         sync: sync,
@@ -465,7 +461,6 @@ var DateFmt = function(options) {
                             dateStyle: len
                         });
                         this.useIntlObj = true;
-                        //this.objOptions = options;
                     };
                 }
             }
