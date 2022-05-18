@@ -44,7 +44,6 @@ module.exports.testdatefmt_ko_KR = {
         test.done();
     },
     
-    
     testDateFmtSimpleShort_ko_KR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ko-KR", length: "short"});
@@ -65,6 +64,11 @@ module.exports.testdatefmt_ko_KR = {
     },
 
     testDateFmtSimpleShort_ko_KR_useIntl: function(test) {
+        if(!ilib._global("Intl") || Intl.DateTimeFormat.supportedLocalesOf("ko-KR").length == 0){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
         test.expect(2);
         var fmt = new DateFmt({locale: "ko-KR", length: "short", useIntl: true});
         test.ok(fmt !== null);
@@ -103,6 +107,11 @@ module.exports.testdatefmt_ko_KR = {
     },
 
     testDateFmtSimpleMedium_ko_KR_useIntl: function(test) {
+        if(!ilib._global("Intl") || Intl.DateTimeFormat.supportedLocalesOf("ko-KR").length == 0){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
         test.expect(2);
         var fmt = new DateFmt({locale: "ko-KR", length: "medium", useIntl: true});
         test.ok(fmt !== null);
