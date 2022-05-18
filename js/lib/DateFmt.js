@@ -312,7 +312,7 @@ var DateFmt = function(options) {
     this.dateComponents = "dmy";
     this.timeComponents = "ahm";
     this.meridiems = "default";
-    this.useIntlObj = false;
+    this.useIntl = false;
 
     options = options || {sync: true};
     if (options.locale) {
@@ -427,10 +427,14 @@ var DateFmt = function(options) {
         sync = (options.sync === true);
     }
 
+    if (typeof(options.useIntl) !== 'undefined') {
+        this.useIntl = options.useIntl;
+    }
+
     loadParams = options.loadParams;
 
     /*
-    date. dmwy (full) -->    dateSylte: full.
+    date. dmwy (full) -->    dateSyle: full.
     date. dmwy (long) -->    X
 
     date: dmy (long) -->    dateStyle: long
@@ -452,19 +456,28 @@ var DateFmt = function(options) {
             // one, use the hard-coded gregorian as the last resort
             this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
             
-            if(sync && typeof(Intl) !== 'undefined' && Intl.DateTimeFormat.supportedLocalesOf(this.locale.getSpec()).length > 0){
-                if (this.locinfo.getDigitsStyle() == "western" && (!options.template) && this.calName == "gregorian")    {
-                    if(this.type == "date" && ((this.dateComponents == "dmy" && this.length != "f") ||
-                        (this.dateComponents == "dmwy" && this.length == "f"))){
-                        var len = DateFmt.lenmap[this.length];
-                        this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
-                            dateStyle: len
-                        });
-                        this.useIntlObj = true;
-                    };
+            if(this.useIntl && typeof(Intl) !== 'undefined' && Intl.DateTimeFormat.supportedLocalesOf(this.locale.getSpec()).length > 0 &&
+            (this.locinfo.getDigitsStyle() == "western" && (!options.template) && this.calName == "gregorian")){
+                var len = DateFmt.lenmap[this.length];
+                if(this.type == "date" &&
+                    ((this.dateComponents == "dmy" && len != "full") || (this.dateComponents == "dmwy" && this.length == "full"))){
+                    this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
+                        dateStyle: len
+                    });
+                } else if (this.type == "time" &&
+                    this.timeComponents== "ahm" || this.timeComponents== "ahms" || this.timeComponents== "ahmsz"){
+                    var timeMap = {
+                        "ahm": "short",
+                        "ahms": "medium",
+                        "ahmsz": "long"
+                    }
+                    this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
+                        timeStyle: timeMap(this.timeComponents)
+                    });
                 }
+                
             }
-            if(!this.IntlDateTimeObj){
+            if(!this.useIntl){
                 if (!this.IntlDateTimeObj && ilib.isDynCode()) {
                     // If we are running in the dynamic code loading assembly of ilib, the following
                     // will attempt to dynamically load the calendar date class for this calendar. If
@@ -712,7 +725,7 @@ DateFmt.prototype = {
      *             l:string,
      *             f:string
      *         })>
-     *     }}
+     *     }} formats
      */
     _initTemplate: function (formats) {
         if (formats[this.calName]) {
@@ -1506,7 +1519,7 @@ DateFmt.prototype = {
             throw "Wrong date type passed to DateFmt.format()";
         }
 
-        if(this.useIntlObj && this.IntlDateTimeObj){
+        if(this.useIntl && this.IntlDateTimeObj){
             var jsDate = DateFactory._ilibToDate(date);
             return this.IntlDateTimeObj.format(jsDate);
         }

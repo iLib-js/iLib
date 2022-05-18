@@ -260,18 +260,10 @@ DateFactory._dateToIlib = function(inDate, timezone, locale) {
 };
 
 DateFactory._ilibToDate = function(ilibDate, timezone, locale) {
-    if (typeof(ilibDate) === 'undefined' || ilibDate === null) {
+    if (typeof(ilibDate) !== 'object' || !(ilibDate instanceof IDate)) {
         return ilibDate;
     }
-    var year = ilibDate.year;
-    var month = ilibDate.month-1;
-    var day = ilibDate.day;
-    var hours = ilibDate.hour;
-    var minutes = ilibDate.minute;
-    var seconds = ilibDate.second;
-    var milliseconds = ilibDate.second;
-
-    return new Date(year, month, day, hours, minutes, seconds, milliseconds);
+    return new Date(ilibDate.getTimeExtended());
 };
 
 module.exports = DateFactory;

@@ -63,10 +63,48 @@ module.exports.testdatefmt_ko_KR = {
         test.equal(fmt.format(date), "11. 9. 29.");
         test.done();
     },
+
+    testDateFmtSimpleShort_ko_KR_useIntl: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ko-KR", length: "short", useIntl: true});
+        test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "ko-KR",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "11. 9. 29.");
+        test.done();
+    },
     
     testDateFmtSimpleMedium_ko_KR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ko-KR", length: "medium"});
+        test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "ko-KR",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "2011. 9. 29.");
+        test.done();
+    },
+
+    testDateFmtSimpleMedium_ko_KR_useIntl: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ko-KR", length: "medium", useIntl: true});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
