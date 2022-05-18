@@ -434,7 +434,7 @@ var DateFmt = function(options) {
     loadParams = options.loadParams;
 
     /*
-    date. dmwy (full) -->    dateSyle: full.
+    date. dmwy (full) -->    dateStyle: full
     date. dmwy (long) -->    X
 
     date: dmy (long) -->    dateStyle: long
