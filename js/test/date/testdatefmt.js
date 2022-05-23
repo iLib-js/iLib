@@ -3981,5 +3981,12 @@ module.exports.testdatefmt = {
 
         test.equal(fmt.getDateComponentOrder(), "mdy");
         test.done();
+    },
+    testDateFmtisIntlDateTimeAvaiable: function(test) {
+        test.expect(1);
+
+        var result = DateFmt.isIntlDateTimeAvailable();
+        test.equal(result, false);
+        test.done();
     }
 };

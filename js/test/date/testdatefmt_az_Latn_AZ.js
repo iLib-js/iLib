@@ -84,7 +84,7 @@ module.exports.testdatefmt_az_Latn_AZ = {
     },
 
     testDateFmtSimpleMedium_az_Latn_AZ_useIntl: function(test) {
-        if(!ilib._global("Intl") || Intl.DateTimeFormat.supportedLocalesOf("az-Latn-AZ").length == 0){
+        if(!DateFmt.isIntlDateTimeAvailable("az-Latn-AZ")){
             // The result is different depending on the node version.
             test.done();
             return;

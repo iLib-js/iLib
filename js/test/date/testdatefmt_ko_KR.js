@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+const DateFactory = require("../../lib/DateFactory.js");
+
 if (typeof(JulianDate) === "undefined") {
     var JulianDate = require("../../lib/JulianDate.js");
 }
@@ -28,6 +30,10 @@ if (typeof(DateFmt) === "undefined") {
 }
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
+}
+
+if (typeof(DateFactory) === "undefined") {
+    var ilib = require("../../lib/DateFactory.js");
 }
 
 module.exports.testdatefmt_ko_KR = {
@@ -64,7 +70,7 @@ module.exports.testdatefmt_ko_KR = {
     },
 
     testDateFmtSimpleShort_ko_KR_useIntl: function(test) {
-        if(!ilib._global("Intl") || Intl.DateTimeFormat.supportedLocalesOf("ko-KR").length == 0){
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
             // The result is different depending on the node version.
             test.done();
             return;
@@ -107,7 +113,7 @@ module.exports.testdatefmt_ko_KR = {
     },
 
     testDateFmtSimpleMedium_ko_KR_useIntl: function(test) {
-        if(!ilib._global("Intl") || Intl.DateTimeFormat.supportedLocalesOf("ko-KR").length == 0){
+        if(!DateFmt.isIntlDateTimeAvailable("az-Latn-AZ")){
             // The result is different depending on the node version.
             test.done();
             return;
@@ -186,7 +192,25 @@ module.exports.testdatefmt_ko_KR = {
         test.equal(fmt.format(date), "오후 1:45");
         test.done();
     },
-    
+
+    testDateFmtSimpleTimeShort_ko_KR_Intl: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ko-KR", length: "short", type: "time", useIntl: true});
+        test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "ko-KR",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "오후 1:45");
+        test.done();
+    },
     testDateFmtSimpleTimeMedium_ko_KR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ko-KR", length: "medium", type: "time"});

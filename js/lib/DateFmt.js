@@ -472,7 +472,7 @@ var DateFmt = function(options) {
                         "ahmsz": "long"
                     }
                     this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
-                        timeStyle: timeMap(this.timeComponents)
+                        timeStyle: timeMap[this.timeComponents]
                     });
                 }
                 
@@ -532,6 +532,11 @@ var DateFmt = function(options) {
                         });
                     })
                 });
+            }
+            else {
+                if (typeof(options.onLoad) === 'function') {
+                    options.onLoad(this.IntlDateTimeObj);
+                }
             }
         })
     });
@@ -644,6 +649,25 @@ DateFmt.getMeridiemsRange = function (options) {
     var fmt = new DateFmt(args);
 
     return fmt.getMeridiemsRange();
+};
+
+/**
+ * return true if the locale is supported in date and time formatting for Intl.DateTimeFormat Object
+ * <ul>
+ * <li><i>locale</i> - locale to check if it is available or not.
+ * If the locale is not specified, then it returns false.
+ *
+ * </ul>
+ *
+ * @static
+ * @public
+ * @param {string} locale locale to check if it is available or not.
+ * @return {Boolean} true if it is available to use, false otherwise
+ */
+
+DateFmt.isIntlDateTimeAvailable = function (locale) {
+    if(!locale || !ilib._global("Intl")) return false;
+    return (Intl.DateTimeFormat.supportedLocalesOf(locale).length > 0) ? true : false;
 };
 
 DateFmt.prototype = {
@@ -999,11 +1023,7 @@ DateFmt.prototype = {
      * @return {string} the name of the calendar used by this formatter
      */
     getCalendar: function () {
-        if(this.IntlDateTimeObj){
-            return this.calName;
-        } else {
-            return this.cal.getType() || 'gregorian';
-        }
+        return this.cal.getType() || 'gregorian';
     },
 
     /**
@@ -1520,7 +1540,7 @@ DateFmt.prototype = {
         }
 
         if(this.useIntl && this.IntlDateTimeObj){
-            var jsDate = DateFactory._ilibToDate(date);
+            var jsDate = DateFactory._ilibToDate(date, thisZoneName, this.locale);
             return this.IntlDateTimeObj.format(jsDate);
         }
 
