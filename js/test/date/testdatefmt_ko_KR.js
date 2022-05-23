@@ -113,7 +113,7 @@ module.exports.testdatefmt_ko_KR = {
     },
 
     testDateFmtSimpleMedium_ko_KR_useIntl: function(test) {
-        if(!DateFmt.isIntlDateTimeAvailable("az-Latn-AZ")){
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
             // The result is different depending on the node version.
             test.done();
             return;
@@ -194,6 +194,11 @@ module.exports.testdatefmt_ko_KR = {
     },
 
     testDateFmtSimpleTimeShort_ko_KR_Intl: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
         test.expect(2);
         var fmt = new DateFmt({locale: "ko-KR", length: "short", type: "time", useIntl: true});
         test.ok(fmt !== null);
