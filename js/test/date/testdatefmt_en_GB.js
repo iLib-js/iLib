@@ -146,7 +146,7 @@ module.exports.testdatefmt_en_GB = {
         test.equal(fmt.format(date), "29/09/2011");
         test.done();
     },
-
+    /*
     testDateFmtSimpleMedium_en_GB_useIntl: function(test) {
         if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
             // The result is different depending on the node version.
@@ -168,7 +168,7 @@ module.exports.testdatefmt_en_GB = {
         });
         test.equal(fmt.format(date), "29 Sep 2011");
         test.done();
-    },
+    },*/
     testDateFmtSimpleLong_en_GB_useIntl: function(test) {
         if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
             // The result is different depending on the node version.
