@@ -3403,11 +3403,6 @@ module.exports.testmonthtranslation = {
         }
         test.expect(12);
 
-        // full, long: MMMM
-        // medium: MM
-        // short: MM
-
-
         var value = [], i;
         var fmt = new DateFmt({locale:"ko-KR", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {

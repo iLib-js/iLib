@@ -433,19 +433,6 @@ var DateFmt = function(options) {
 
     loadParams = options.loadParams;
 
-    /*
-    date. dmwy (full) -->    dateStyle: full
-    date. dmwy (long) -->    X
-
-    date: dmy (long) -->    dateStyle: long
-    date: dmy (full) -->    dateStyle: long
-    date: dmy (medium) --> dateStyle : medium
-    date: dmy (short) --> dateStyle : short
-
-    time: ahm -->    timeStyle: short.
-    time: ahms -->   timestyle : medium
-    time: ahmsz -->  timestyle: long
-    */
     new LocaleInfo(this.locale, {
         sync: sync,
         loadParams: loadParams,
