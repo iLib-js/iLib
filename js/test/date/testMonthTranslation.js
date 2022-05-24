@@ -1923,6 +1923,37 @@ module.exports.testmonthtranslation = {
 
         test.done();
     },
+
+    testMonthTranslate_es_ES_Intl: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("es-ES")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(12);
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-ES", date:"m", length: "full", useNative:false, useIntl: true, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+
+        test.equal(value[0], "enero");
+        test.equal(value[1], "febrero");
+        test.equal(value[2], "marzo");
+        test.equal(value[3], "abril");
+        test.equal(value[4], "mayo");
+        test.equal(value[5], "junio");
+        test.equal(value[6], "julio");
+        test.equal(value[7], "agosto");
+        test.equal(value[8], "septiembre");
+        test.equal(value[9], "octubre");
+        test.equal(value[10], "noviembre");
+        test.equal(value[11], "diciembre");
+
+        test.done();
+    },
+
     testMonthTranslate_es_GT: function(test) {
         test.expect(12);
 
@@ -3366,6 +3397,38 @@ module.exports.testmonthtranslation = {
         test.done();
     },
     testMonthTranslate_ko_KR: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            test.done();
+            return;
+        }
+        test.expect(12);
+
+        // full, long: MMMM
+        // medium: MM
+        // short: MM
+
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ko-KR", date:"m", length: "full", useNative:false, timezone:"local"})
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "1월");
+        test.equal(value[1], "2월");
+        test.equal(value[2], "3월");
+        test.equal(value[3], "4월");
+        test.equal(value[4], "5월");
+        test.equal(value[5], "6월");
+        test.equal(value[6], "7월");
+        test.equal(value[7], "8월");
+        test.equal(value[8], "9월");
+        test.equal(value[9], "10월");
+        test.equal(value[10], "11월");
+        test.equal(value[11], "12월");
+
+        test.done();
+    },
+    testMonthTranslate_ko_KR_Intl: function(test) {
         test.expect(12);
 
         // full, long: MMMM
@@ -3373,7 +3436,7 @@ module.exports.testmonthtranslation = {
         // short: MM
 
         var value = [], i;
-        var fmt = new DateFmt({locale:"ko-KR", date:"m", length: "full", useNative:false, timezone:"local"})
+        var fmt = new DateFmt({locale:"ko-KR", date:"m", length: "full", useNative:false, useIntl:true, timezone:"local"})
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }

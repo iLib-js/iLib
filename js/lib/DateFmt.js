@@ -460,7 +460,8 @@ var DateFmt = function(options) {
             (this.locinfo.getDigitsStyle() == "western" && (!options.template) && this.calName == "gregorian")){
                 var len = DateFmt.lenmap[this.length];
                 if(this.type == "date" &&
-                    ((this.dateComponents == "dmy" && len != "full") || (this.dateComponents == "dmwy" && this.length == "full"))){
+                    ((this.dateComponents == "dmy" && len != "full") || (this.dateComponents == "dmwy" && len == "full"))){
+                    
                     this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
                         dateStyle: len
                     });
@@ -472,8 +473,20 @@ var DateFmt = function(options) {
                         "ahmsz": "long"
                     }
                     this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
-                        timeStyle: timeMap[this.timeComponents]
+                        timeStyle: timeMap[this.timeComponents],
+                        timeZone: this.timezone || "UTC"
                     });
+                } else if (this.type == "date" && this.dateComponents == "m" && len == "full") {
+                    this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
+                        month: "long"
+                    });
+
+                } else if (this.type == "date" && this.dateComponents == "w" && len == "full") {
+                    this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
+                       weekday: "long"
+                    });
+                } else {
+                    this.useIntl = false;
                 }
                 
             }
