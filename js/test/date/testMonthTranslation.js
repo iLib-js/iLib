@@ -3397,10 +3397,6 @@ module.exports.testmonthtranslation = {
         test.done();
     },
     testMonthTranslate_ko_KR: function(test) {
-        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
-            test.done();
-            return;
-        }
         test.expect(12);
 
         var value = [], i;
@@ -3424,6 +3420,10 @@ module.exports.testmonthtranslation = {
         test.done();
     },
     testMonthTranslate_ko_KR_Intl: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            test.done();
+            return;
+        }
         test.expect(12);
 
         // full, long: MMMM
