@@ -1267,7 +1267,7 @@ module.exports.testdatefmt_en_GB = {
             millisecond: 0
         });
 
-        if(ilib._getPlatform() === "nodejs"){
+        if(ilib._getPlatform() === "nodejs") {
             var version = process.versions["node"];
             if (version == "12.22.7") {
                 test.equal(fmt.format(date), "1:45 PM");
