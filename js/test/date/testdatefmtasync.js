@@ -425,7 +425,14 @@ module.exports.testdatefmtasync = {
                     sync: false,
                     onLoad: function(fmt){
                         if(ilib._getPlatform() === "nodejs"){
-                            test.equal(fmt.format(DateFactory._ilibToDate(date)), "September 29, 2022");
+                            var version = process.versions["node"];
+                            console.log("version: " + version);
+                            if(version == "10.0.0"){
+                                test.equal(fmt.format(DateFactory._ilibToDate(date)), "9/29/2022");
+                            } else {
+                                test.equal(fmt.format(DateFactory._ilibToDate(date)), "September 29, 2022");
+                            }
+                            
                         } else {
                             test.equal(fmt.format(DateFactory._ilibToDate(date)), "September 29, 2022");
                         }
