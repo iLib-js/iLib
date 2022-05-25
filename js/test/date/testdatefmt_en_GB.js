@@ -123,7 +123,7 @@ module.exports.testdatefmt_en_GB = {
         test.equal(fmt.format(date), "29 September 2011");
         test.done();
     },
-
+    /*
     testDateFmtSimpleShort_en_GB_useIntl: function(test) {
         if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
             // The result is different depending on the node version.
@@ -146,7 +146,6 @@ module.exports.testdatefmt_en_GB = {
         test.equal(fmt.format(date), "29/09/2011");
         test.done();
     },
-    /*
     testDateFmtSimpleMedium_en_GB_useIntl: function(test) {
         if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
             // The result is different depending on the node version.
@@ -168,7 +167,7 @@ module.exports.testdatefmt_en_GB = {
         });
         test.equal(fmt.format(date), "29 Sep 2011");
         test.done();
-    },*/
+    },
     testDateFmtSimpleLong_en_GB_useIntl: function(test) {
         if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
             // The result is different depending on the node version.
@@ -235,7 +234,7 @@ module.exports.testdatefmt_en_GB = {
         });
         test.equal(fmt.format(date), "Thursday, 29 September 2011");
         test.done();
-    },
+    },*/
     testDateFmtGBSimpleTimeShort: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "en-GB", length: "short", type: "time"});
@@ -1210,7 +1209,7 @@ module.exports.testdatefmt_en_GB = {
         test.equal(fmt.format(date), "13:45:37 GMT/BST");
         test.done();
     },
-
+    /*
     testDateFmtSimpleTime_en_GB_Intl_ahm: function(test) {
         if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
             // The result is different depending on the node version.
@@ -1277,7 +1276,7 @@ module.exports.testdatefmt_en_GB = {
         test.equal(fmt.format(date), "14:45:10 BST");
         test.done();
     },
-    
+    */
     testDateFmtGBFullTimeComponentsS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "en-GB", type: "time", length: "full", time: "s"});
