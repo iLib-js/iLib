@@ -1254,28 +1254,6 @@ module.exports.testdatefmt_en_GB = {
         test.equal(fmt.format(date), "13:45:10");
         test.done();
     },
-    testDateFmtSimpleTime_en_GB_Intl_ahmsz: function(test) {
-        if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
-            // The result is different depending on the node version.
-            test.done();
-            return;
-        }
-        test.expect(2);
-        var fmt = new DateFmt({locale: "en-GB", type: "time", time: "ahmsz", useIntl: true, timezone: "Europe/London"});
-        test.ok(fmt !== null);
-        
-        var date = DateFactory({
-            year: 2011,
-            month: 9,
-            day: 29,
-            hour: 13,
-            minute: 45,
-            second: 10,
-            millisecond: 0
-        });
-        test.equal(fmt.format(date), "14:45:10 BST");
-        test.done();
-    },
     */
     testDateFmtGBFullTimeComponentsS: function(test) {
         test.expect(2);

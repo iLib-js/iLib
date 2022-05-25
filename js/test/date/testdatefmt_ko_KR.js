@@ -305,28 +305,6 @@ module.exports.testdatefmt_ko_KR = {
         test.equal(fmt.format(date), "오후 1:45:10");
         test.done();
     },
-    testDateFmtSimpleTime_ko_KR_Intl_ahmsz: function(test) {
-        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
-            // The result is different depending on the node version.
-            test.done();
-            return;
-        }
-        test.expect(2);
-        var fmt = new DateFmt({locale: "ko-KR", type: "time", time: "ahmsz", useIntl: true, timezone: "Asia/Seoul"});
-        test.ok(fmt !== null);
-        
-        var date = DateFactory({
-            year: 2011,
-            month: 9,
-            day: 29,
-            hour: 13,
-            minute: 45,
-            second: 10,
-            millisecond: 0
-        });
-        test.equal(fmt.format(date), "오후 10시 45분 10초 GMT+9");
-        test.done();
-    },
     testDateFmtSimpleTimeMedium_ko_KR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ko-KR", length: "medium", type: "time"});

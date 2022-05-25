@@ -453,15 +453,13 @@ var DateFmt = function(options) {
                         dateStyle: len
                     });
                 } else if (this.type == "time" &&
-                    this.timeComponents== "ahm" || this.timeComponents== "ahms" || this.timeComponents== "ahmsz"){
+                    this.timeComponents== "ahm" || this.timeComponents== "ahms"){
                     var timeMap = {
                         "ahm": "short",
-                        "ahms": "medium",
-                        "ahmsz": "long"
+                        "ahms": "medium"
                     }
                     this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
-                        timeStyle: timeMap[this.timeComponents],
-                        timeZone: this.timezone || "UTC"
+                        timeStyle: timeMap[this.timeComponents]
                     });
                 } else if (this.type == "date" && this.dateComponents == "m" && len == "full") {
                     this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
