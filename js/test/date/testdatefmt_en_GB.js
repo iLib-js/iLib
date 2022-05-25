@@ -123,7 +123,7 @@ module.exports.testdatefmt_en_GB = {
         test.equal(fmt.format(date), "29 September 2011");
         test.done();
     },
-    /*
+    
     testDateFmtSimpleShort_en_GB_useIntl: function(test) {
         if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
             // The result is different depending on the node version.
@@ -143,9 +143,23 @@ module.exports.testdatefmt_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011");
+
+        if(ilib._getPlatform() === "nodejs"){
+            var version = process.versions["node"];
+            console.log("version: " + version);
+            if (version == "8.0.0") {
+                test.equal(fmt.format(date), "9/29/2011");
+                
+            } else {
+                test.equal(fmt.format(date), "29/09/2011");
+            }
+        } else {
+            test.equal(fmt.format(date), "29/09/2011");
+        }
+        
         test.done();
     },
+    
     testDateFmtSimpleMedium_en_GB_useIntl: function(test) {
         if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
             // The result is different depending on the node version.
@@ -234,7 +248,7 @@ module.exports.testdatefmt_en_GB = {
         });
         test.equal(fmt.format(date), "Thursday, 29 September 2011");
         test.done();
-    },*/
+    },
     testDateFmtGBSimpleTimeShort: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "en-GB", length: "short", type: "time"});
@@ -1209,7 +1223,7 @@ module.exports.testdatefmt_en_GB = {
         test.equal(fmt.format(date), "13:45:37 GMT/BST");
         test.done();
     },
-    /*
+    
     testDateFmtSimpleTime_en_GB_Intl_ahm: function(test) {
         if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
             // The result is different depending on the node version.
@@ -1254,7 +1268,7 @@ module.exports.testdatefmt_en_GB = {
         test.equal(fmt.format(date), "13:45:10");
         test.done();
     },
-    */
+    
     testDateFmtGBFullTimeComponentsS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "en-GB", type: "time", length: "full", time: "s"});
@@ -1531,6 +1545,4 @@ module.exports.testdatefmt_en_GB = {
         test.equal(fmt.format(date), "13:45:37 GMT/BST");
         test.done();
     }
-    
-    
 };

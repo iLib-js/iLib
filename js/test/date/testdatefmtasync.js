@@ -401,7 +401,7 @@ module.exports.testdatefmtasync = {
                 test.done();
             }
         });
-    },/*
+    },
     testDateFmtIntlDateTimeObjAsync2_en_US: function(test) {
         if(!DateFmt.isIntlDateTimeAvailable("en-US")){
             // The result is different depending on the node version.
@@ -434,7 +434,7 @@ module.exports.testdatefmtasync = {
                 });
             }
         })
-    },*/
+    },
     testDateFmtIntlDateTimeObjAsync2_ko_KR: function(test) {
         if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
             // The result is different depending on the node version.
