@@ -146,10 +146,9 @@ module.exports.testdatefmt_en_GB = {
 
         if(ilib._getPlatform() === "nodejs"){
             var version = process.versions["node"];
-            console.log("version: " + version);
-            if (version == "8.0.0") {
-                test.equal(fmt.format(date), "9/29/2011");
-                
+            //console.log("version: " + version);
+            if (version == "12.22.7") {
+                test.equal(fmt.format(date), "9/29/11");
             } else {
                 test.equal(fmt.format(date), "29/09/2011");
             }
@@ -179,7 +178,19 @@ module.exports.testdatefmt_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Sep 2011");
+
+        if(ilib._getPlatform() === "nodejs"){
+            var version = process.versions["node"];
+            if (version == "12.22.7") {
+                test.equal(fmt.format(date), "Sep 29, 2011");
+            } else if (version == "14.18.2" || version == "16.13.1"){
+                test.equal(fmt.format(date), "29 Sept 2011");
+            } else {
+                test.equal(fmt.format(date), "29 Sep 2011"); 
+            }
+        } else {
+            test.equal(fmt.format(date), "29 Sep 2011");
+        }
         test.done();
     },
     testDateFmtSimpleLong_en_GB_useIntl: function(test) {
@@ -201,7 +212,18 @@ module.exports.testdatefmt_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 September 2011");
+
+        if(ilib._getPlatform() === "nodejs"){
+            var version = process.versions["node"];
+            if (version == "12.22.7") {
+                test.equal(fmt.format(date), "September 29, 2011");
+            } else {
+                test.equal(fmt.format(date), "29 September 2011");
+            }
+        } else {
+            test.equal(fmt.format(date), "29 September 2011");
+        }
+        
         test.done();
     },
     testDateFmtSimpleFull_en_GB_useIntl: function(test) {
@@ -223,6 +245,7 @@ module.exports.testdatefmt_en_GB = {
             second: 0,
             millisecond: 0
         });
+        
         test.equal(fmt.format(date), "29 September 2011");
         test.done();
     },
@@ -1243,7 +1266,17 @@ module.exports.testdatefmt_en_GB = {
             second: 10,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+
+        if(ilib._getPlatform() === "nodejs"){
+            var version = process.versions["node"];
+            if (version == "12.22.7") {
+                test.equal(fmt.format(date), "1:45 PM");
+            } else {
+                test.equal(fmt.format(date), "13:45");
+            }
+        } else {
+            test.equal(fmt.format(date), "13:45");
+        }
         test.done();
     },
     testDateFmtSimpleTime_en_GB_Intl_ahms: function(test) {
@@ -1265,7 +1298,18 @@ module.exports.testdatefmt_en_GB = {
             second: 10,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:10");
+
+        if(ilib._getPlatform() === "nodejs"){
+            var version = process.versions["node"];
+            if (version == "12.22.7") {
+                test.equal(fmt.format(date), "1:45:10 PM");
+            } else {
+                test.equal(fmt.format(date), "13:45:10");
+            }
+        } else {
+            test.equal(fmt.format(date), "13:45:10");
+        }
+        
         test.done();
     },
     

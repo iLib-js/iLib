@@ -427,7 +427,7 @@ module.exports.testdatefmtasync = {
                         if(ilib._getPlatform() === "nodejs"){
                             var version = process.versions["node"];
                             console.log("version: " + version);
-                            if(version == "10.0.0"){
+                            if(version == "8.17.0" || version == "10.24.1" ){
                                 test.equal(fmt.format(DateFactory._ilibToDate(date)), "9/29/2022");
                             } else {
                                 test.equal(fmt.format(DateFactory._ilibToDate(date)), "September 29, 2022");
