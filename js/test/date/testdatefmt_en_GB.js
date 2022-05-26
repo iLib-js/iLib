@@ -197,7 +197,7 @@ module.exports.testdatefmt_en_GB = {
                 test.equal(fmt.format(date), "29 Sep 2011"); 
             }
         } else {
-            test.equal(fmt.format(date), "29 Sep 2011");
+            test.equal(fmt.format(date), "29 Sept 2011");
         }
         test.done();
     },

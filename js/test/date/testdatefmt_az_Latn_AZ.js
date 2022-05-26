@@ -107,7 +107,12 @@ module.exports.testdatefmt_az_Latn_AZ = {
         if(ilib._getPlatform() === "nodejs"){
             test.equal(fmt.format(date), "29 sentyabr 2011");
         } else {
-            test.equal(fmt.format(date), "2011 M09 29");
+            var browser = ilib._getBrowser();
+            if(browser === "firefox"){
+                test.equal(fmt.format(date), "29 sentyabr 2011");
+            } else {
+                test.equal(fmt.format(date), "2011 M09 29");
+            }
         }
         test.done();
     },
