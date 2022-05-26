@@ -9,6 +9,7 @@ New Features:
 * Update to CLDR v41 data
 * Update to the latest ISO-14924 data (writing script information)
 * Added `useIntl` option in DateFmt to choose whether to use Intl.DateTimeFormat
+    * When it is is true, and paramaters are convertable for using Intl Object case, you can get relatively fast result, but different result may get depending on the platform nd version.
 
 Bug Fixes:
 * Fixed a bug where the DateFmt.formatRelative() does not represent correct result in certain case.

@@ -320,7 +320,18 @@ module.exports.testdatefmtasync = {
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
                 var date = new Date(2022, 4, 29);
-                test.equal(fmt.format(date), "May 29, 2022");
+
+                if(ilib._getPlatform() === "nodejs"){
+                    var version = process.versions["node"];
+                    var majorVersion = version.split(".")[0];
+                    if (majorVersion == 8 || majorVersion == 10){
+                        test.equal(fmt.format(date), "5/29/2022");
+                    } else {
+                        test.equal(fmt.format(date), "May 29, 2022");
+                    }
+                } else {
+                    test.equal(fmt.format(date), "May 29, 2022");
+                }
                 test.done();
             }
         });
