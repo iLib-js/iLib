@@ -251,6 +251,11 @@ var ISet = require("./ISet.js");
  * to the various parts of the day. N.B. Even for the Chinese locales, the default is "gregorian"
  * when formatting dates in the Gregorian calendar.
  *
+ * <li><i>useIntl</i> - choose whether Intl.DateTimeFormat object for formatting. when it is is true,
+ * and paramaters are convertable for using Intl Object case, it use the object to get result.
+ * You can get relatively fast result, but different result may get depending on
+ * currently running on the platform and version.
+ *
  * <li><i>onLoad</i> - a callback function to call when the date format object is fully
  * loaded. When the onLoad option is given, the DateFmt object will attempt to
  * load any missing locale data using the ilib loader callback.
@@ -448,7 +453,6 @@ var DateFmt = function(options) {
                 var len = DateFmt.lenmap[this.length];
                 if(this.type == "date" &&
                     ((this.dateComponents == "dmy" && len != "full") || (this.dateComponents == "dmwy" && len == "full"))){
-                    
                     this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
                         dateStyle: len
                     });
@@ -473,7 +477,6 @@ var DateFmt = function(options) {
                 } else {
                     this.useIntl = false;
                 }
-                
             }
             if(!this.useIntl){
                 if (!this.IntlDateTimeObj && ilib.isDynCode()) {

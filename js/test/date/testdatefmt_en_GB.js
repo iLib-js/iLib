@@ -183,7 +183,7 @@ module.exports.testdatefmt_en_GB = {
         if(ilib._getPlatform() === "nodejs"){
             var version = process.versions["node"];
             var majorVersion = version.split(".")[0];
-            console.log("version: " + version + " majorVersion: " + majorVersion);
+            //console.log("version: " + version + " majorVersion: " + majorVersion);
             if (majorVersion == "8" || majorVersion == "10") {
                 test.equal(fmt.format(date), "9/29/2011");
             } else if (majorVersion == "12") {

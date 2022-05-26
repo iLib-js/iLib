@@ -305,7 +305,6 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-    /*
     testDateFmtIntlDateTimeObjAsync_en_US: function(test) {
         if(!DateFmt.isIntlDateTimeAvailable("en-US")){
             // The result is different depending on the node version.
@@ -321,15 +320,11 @@ module.exports.testdatefmtasync = {
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
                 var date = new Date(2022, 4, 29);
-                if(ilib._getPlatform() === "nodejs"){
-                    test.equal(fmt.format(date), "May 29, 2022");
-                } else {
-                    test.equal(fmt.format(date), "May 29, 2022");
-                }
+                test.equal(fmt.format(date), "May 29, 2022");
                 test.done();
             }
         });
-    },*/
+    },
     testDateFmtIntlDateTimeObjAsync_ko_KR_Short: function(test) {
         if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
             // The result is different depending on the node version.
@@ -345,11 +340,7 @@ module.exports.testdatefmtasync = {
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
                 var date = new Date(2022, 4, 29);
-                if(ilib._getPlatform() === "nodejs"){
-                    test.equal(fmt.format(date), "22. 5. 29.");
-                } else {
-                    test.equal(fmt.format(date), "22. 5. 29.");
-                }
+                test.equal(fmt.format(date), "22. 5. 29.");
                 test.done();
             }
         });
@@ -369,11 +360,7 @@ module.exports.testdatefmtasync = {
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
                 var date = new Date(2022, 4, 29);
-                if(ilib._getPlatform() === "nodejs"){
-                    test.equal(fmt.format(date), "2022. 5. 29.");
-                } else {
-                    test.equal(fmt.format(date), "2022. 5. 29.");
-                }
+                test.equal(fmt.format(date), "2022. 5. 29.");
                 test.done();
             }
         });
@@ -393,11 +380,7 @@ module.exports.testdatefmtasync = {
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
                 var date = new Date(2022, 4, 29);
-                if(ilib._getPlatform() === "nodejs"){
-                    test.equal(fmt.format(date), "2022년 5월 29일");
-                } else {
-                    test.equal(fmt.format(date), "2022년 5월 29일");
-                }
+                test.equal(fmt.format(date), "2022년 5월 29일");
                 test.done();
             }
         });
@@ -465,11 +448,7 @@ module.exports.testdatefmtasync = {
                     useIntl: true,
                     sync: false,
                     onLoad: function(fmt){
-                        if(ilib._getPlatform() === "nodejs"){
-                            test.equal(fmt.format(DateFactory._ilibToDate(date)), "2022. 5. 29.");
-                        } else {
-                            test.equal(fmt.format(DateFactory._ilibToDate(date)), "2022. 5. 29.");
-                        }
+                        test.equal(fmt.format(DateFactory._ilibToDate(date)), "2022. 5. 29.");
                         test.done();
                     }
                 });
