@@ -3996,7 +3996,18 @@ module.exports.testdatefmt = {
         }
         test.expect(1);
         var result = DateFmt.isIntlDateTimeAvailable("ko-KR");
-        test.equal(result, true);
+
+        if(ilib._getPlatform() === "nodejs") {
+            var version = process.versions["node"];
+            var majorVersion = version.split(".")[0];
+            if (majorVersion == "8" || majorVersion == "10" || majorVersion == "12") {
+                test.equal(result, false);
+            } else {
+                test.equal(result, true);
+            }
+        } else {
+            test.equal(result, true);
+        }
         test.done();
     }
 };
