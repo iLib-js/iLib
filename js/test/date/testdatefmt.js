@@ -3988,5 +3988,15 @@ module.exports.testdatefmt = {
         var result = DateFmt.isIntlDateTimeAvailable();
         test.equal(result, false);
         test.done();
+    },
+    testDateFmtisIntlDateTimeAvaiable_ko_KR: function(test) {
+        if (!(ilib._getPlatform() === "nodejs" || ilib._getPlatform() === "browser")) {
+            test.done();
+            return;
+        }
+        test.expect(1);
+        var result = DateFmt.isIntlDateTimeAvailable("ko-KR");
+        test.equal(result, true);
+        test.done();
     }
 };
