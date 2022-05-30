@@ -251,10 +251,15 @@ var ISet = require("./ISet.js");
  * to the various parts of the day. N.B. Even for the Chinese locales, the default is "gregorian"
  * when formatting dates in the Gregorian calendar.
  *
- * <li><i>useIntl</i> - choose whether Intl.DateTimeFormat object for formatting. when it is is true,
- * and paramaters are convertable for using Intl Object case, it use the object to get result.
- * You can get relatively fast result, but different result may get depending on
- * currently running on the platform and version.
+ * <li><i>useIntl</i> - choose whether Intl.DateTimeFormat object for formatting.
+ * When it is set to true, the Intl object is available, it supports the requested locale, and
+ * the parameters can be converted to equivalent parameters for the Intl.DateTimeFormat object,
+ * then it will format the date relatively quickly using Intl.
+ * When they cannot be converted, the Intl object is not available, or the Intl object does not support
+ * the requested locale, it will perform the relatively slow formatting using regular ilib code written in Javascript.
+ * The code will often return different results depending on the platform and version of the Javascript engine
+ * and which version of CLDR it supports. If you need consistency across versions and platforms,
+ * do not use the useIntl flag. Just stick with the regular ilib formatting code.
  *
  * <li><i>onLoad</i> - a callback function to call when the date format object is fully
  * loaded. When the onLoad option is given, the DateFmt object will attempt to
