@@ -465,5 +465,31 @@ module.exports.testdatefmtasync = {
                 });
             }
         })
-    }
+    },
+    testDateFmtIntlDateTimeObjAsync3_ko_KR: function(test) {
+        test.expect(2);
+        new DateFmt({
+            locale: "ko-KR",
+            date:"dmwy",
+            length: "full", 
+            useIntl: true,
+            sync: false,
+            onLoad: function(fmt) {
+                test.ok(fmt !== null);
+                DateFactory({
+                    year: 2022,
+                    month: 5,
+                    day: 29,
+                    hout:13,
+                    minute: 32,
+                    sync: false,
+                    onLoad: function(date) {
+                        test.equal(fmt.format(date), "2022년 5월 29일 일요일");
+                        test.done();
+                    }
+                });
+
+            }
+        });
+    },
 };
