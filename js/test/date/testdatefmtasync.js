@@ -459,7 +459,7 @@ module.exports.testdatefmtasync = {
                     useIntl: true,
                     sync: false,
                     onLoad: function(fmt){
-                        test.equal(fmt.format(DateFactory._ilibToDate(date)), "2022. 5. 29.");
+                        test.equal(fmt.format(date), "2022. 5. 29.");
                         test.done();
                     }
                 });
