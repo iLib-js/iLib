@@ -536,7 +536,7 @@ var DateFmt = function(options) {
             }
             else {
                 if (typeof(options.onLoad) === 'function') {
-                    options.onLoad(this.IntlDateTimeObj);
+                    options.onLoad(this);
                 }
             }
         })

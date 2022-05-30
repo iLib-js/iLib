@@ -423,13 +423,13 @@ module.exports.testdatefmtasync = {
                             var majorVersion = version.split(".")[0];
                             //console.log("version: " + version);
                             if(majorVersion == "8" || majorVersion == "10"){
-                                test.equal(fmt.format(DateFactory._ilibToDate(date)), "9/29/2022");
+                                test.equal(fmt.format(date), "9/29/2022");
                             } else {
-                                test.equal(fmt.format(DateFactory._ilibToDate(date)), "September 29, 2022");
+                                test.equal(fmt.format(date), "September 29, 2022");
                             }
                             
                         } else {
-                            test.equal(fmt.format(DateFactory._ilibToDate(date)), "September 29, 2022");
+                            test.equal(fmt.format(date), "September 29, 2022");
                         }
                         test.done();
                     }
