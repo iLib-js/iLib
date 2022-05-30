@@ -467,11 +467,16 @@ module.exports.testdatefmtasync = {
         })
     },
     testDateFmtIntlDateTimeObjAsync3_ko_KR: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
         test.expect(2);
         new DateFmt({
             locale: "ko-KR",
             date:"dmwy",
-            length: "full", 
+            length: "full",
             useIntl: true,
             sync: false,
             onLoad: function(fmt) {
