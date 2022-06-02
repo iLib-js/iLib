@@ -3981,5 +3981,33 @@ module.exports.testdatefmt = {
 
         test.equal(fmt.getDateComponentOrder(), "mdy");
         test.done();
+    },
+    testDateFmtisIntlDateTimeAvaiable: function(test) {
+        test.expect(1);
+
+        var result = DateFmt.isIntlDateTimeAvailable();
+        test.equal(result, false);
+        test.done();
+    },
+    testDateFmtisIntlDateTimeAvaiable_ko_KR: function(test) {
+        if (!(ilib._getPlatform() === "nodejs" || ilib._getPlatform() === "browser")) {
+            test.done();
+            return;
+        }
+        test.expect(1);
+        var result = DateFmt.isIntlDateTimeAvailable("ko-KR");
+
+        if(ilib._getPlatform() === "nodejs") {
+            var version = process.versions["node"];
+            var majorVersion = version.split(".")[0];
+            if (majorVersion == "8" || majorVersion == "10" || majorVersion == "12") {
+                test.equal(result, false);
+            } else {
+                test.equal(result, true);
+            }
+        } else {
+            test.equal(result, true);
+        }
+        test.done();
     }
 };

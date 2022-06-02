@@ -8,6 +8,11 @@ Published as version 14.15.0
 New Features:
 * Update to CLDR v41 data
 * Update to the latest ISO-14924 data (writing script information)
+* Added `useIntl` option in DateFmt to choose whether to use Intl.DateTimeFormat
+    * When it is set to true, the Intl object is available, it supports the requested locale, and the parameters can be converted to equivalent parameters for the Intl.DateTimeFormat object, then it will format the date relatively quickly using Intl.
+    * When they cannot be converted, the Intl object is not available, or the Intl object does not support the requested locale, it will perform the relatively slow formatting using regular ilib code written in Javascript.
+    *  The code will often return different results depending on the platform and version of the Javascript engine and which version of CLDR it supports. If you need consistency across versions and platforms, do not use the useIntl flag. Just stick with the regular ilib formatting code.
+
 
 Bug Fixes:
 * Fixed a bug where the DateFmt.formatRelative() does not represent correct result in certain case.

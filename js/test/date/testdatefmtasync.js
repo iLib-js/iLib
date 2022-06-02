@@ -1,7 +1,7 @@
 /*
  * testdatefmtasync.js - test the date formatter object asynchronously
  *
- * Copyright © 2018, JEDLSoft
+ * Copyright © 2018, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -304,5 +304,197 @@ module.exports.testdatefmtasync = {
 
             }
         });
-    }
+    },
+    testDateFmtIntlDateTimeObjAsync_en_US: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("en-US")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        new DateFmt({
+            length: "long",
+            locale: "en-US",
+            useIntl: true,
+            sync: false,
+            onLoad: function(fmt) {
+                test.ok(fmt !== null);
+                var date = new Date(2022, 4, 29);
+
+                if(ilib._getPlatform() === "nodejs"){
+                    var version = process.versions["node"];
+                    var majorVersion = version.split(".")[0];
+                    if (majorVersion == 8 || majorVersion == 10){
+                        test.equal(fmt.format(date), "5/29/2022");
+                    } else {
+                        test.equal(fmt.format(date), "May 29, 2022");
+                    }
+                } else {
+                    test.equal(fmt.format(date), "May 29, 2022");
+                }
+                test.done();
+            }
+        });
+    },
+    testDateFmtIntlDateTimeObjAsync_ko_KR_Short: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        new DateFmt({
+            length: "short",
+            locale: "ko-KR",
+            useIntl: true,
+            sync: false,
+            onLoad: function(fmt) {
+                test.ok(fmt !== null);
+                var date = new Date(2022, 4, 29);
+                test.equal(fmt.format(date), "22. 5. 29.");
+                test.done();
+            }
+        });
+    },
+    testDateFmtIntlDateTimeObjAsync_ko_KR_Medium: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        new DateFmt({
+            length: "medium",
+            locale: "ko-KR",
+            useIntl: true,
+            sync: false,
+            onLoad: function(fmt) {
+                test.ok(fmt !== null);
+                var date = new Date(2022, 4, 29);
+                test.equal(fmt.format(date), "2022. 5. 29.");
+                test.done();
+            }
+        });
+    },
+    testDateFmtIntlDateTimeObjAsync_ko_KR_Long: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        new DateFmt({
+            length: "long",
+            locale: "ko-KR",
+            useIntl: true,
+            sync: false,
+            onLoad: function(fmt) {
+                test.ok(fmt !== null);
+                var date = new Date(2022, 4, 29);
+                test.equal(fmt.format(date), "2022년 5월 29일");
+                test.done();
+            }
+        });
+    },
+    testDateFmtIntlDateTimeObjAsync2_en_US: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("en-US")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        DateFactory({
+            year: 2022,
+            month: 9,
+            day: 29,
+            hout:13,
+            minute: 32,
+            sync: false,
+            onLoad:function(date){
+                test.ok(date !== null);
+                new DateFmt({
+                    length: "long",
+                    locale: "en-US",
+                    useIntl: true,
+                    sync: false,
+                    onLoad: function(fmt){
+                        if(ilib._getPlatform() === "nodejs"){
+                            var version = process.versions["node"];
+                            var majorVersion = version.split(".")[0];
+                            //console.log("version: " + version);
+                            if(majorVersion == "8" || majorVersion == "10"){
+                                test.equal(fmt.format(date), "9/29/2022");
+                            } else {
+                                test.equal(fmt.format(date), "September 29, 2022");
+                            }
+                            
+                        } else {
+                            test.equal(fmt.format(date), "September 29, 2022");
+                        }
+                        test.done();
+                    }
+                });
+            }
+        })
+    },
+    testDateFmtIntlDateTimeObjAsync2_ko_KR: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        DateFactory({
+            year: 2022,
+            month: 5,
+            day: 29,
+            hout:13,
+            minute: 32,
+            sync: false,
+            onLoad:function(date){
+                test.ok(date !== null);
+                new DateFmt({
+                    length: "medium",
+                    locale: "ko-KR",
+                    useIntl: true,
+                    sync: false,
+                    onLoad: function(fmt){
+                        test.equal(fmt.format(date), "2022. 5. 29.");
+                        test.done();
+                    }
+                });
+            }
+        })
+    },
+    testDateFmtIntlDateTimeObjAsync3_ko_KR: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        new DateFmt({
+            locale: "ko-KR",
+            date:"dmwy",
+            length: "full",
+            useIntl: true,
+            sync: false,
+            onLoad: function(fmt) {
+                test.ok(fmt !== null);
+                DateFactory({
+                    year: 2022,
+                    month: 5,
+                    day: 29,
+                    hout:13,
+                    minute: 32,
+                    sync: false,
+                    onLoad: function(date) {
+                        test.equal(fmt.format(date), "2022년 5월 29일 일요일");
+                        test.done();
+                    }
+                });
+
+            }
+        });
+    },
 };
