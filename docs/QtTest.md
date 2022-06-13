@@ -80,4 +80,4 @@ export LD_LIBRARY_PATH=/home/goun/Qt5.9.0/5.9/gcc_64/lib
 
 
 ## More Reading
-If you want to know regarding How to use iLib on QT/QML. Please visit this [page](https://github.com/iLib-js/iLib/blob/development/docs/tutorial/modules.md).
+If you want to know regarding How to use iLib on QT/QML. Please visit this [page](https://github.com/iLib-js/iLib/blob/development/docs/tutorial/modules.md#new-platforms).
