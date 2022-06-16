@@ -1,7 +1,7 @@
 /*
  * LocaleInfo.js - Encode locale-specific defaults
  *
- * Copyright © 2012-2015, 2018, 2021 JEDLSoft
+ * Copyright © 2012-2015, 2018, 2021-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ var ilib = require("../index.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
 var LocaleMatcher = require("./LocaleMatcher.js");
-const { WebpackOptionsDefaulter } = require("webpack");
 
 /**
  * @class
