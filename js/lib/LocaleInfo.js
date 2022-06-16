@@ -23,6 +23,7 @@ var ilib = require("../index.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
 var LocaleMatcher = require("./LocaleMatcher.js");
+const { WebpackOptionsDefaulter } = require("webpack");
 
 /**
  * @class
@@ -69,8 +70,8 @@ var LocaleMatcher = require("./LocaleMatcher.js");
  * the current locale
  */
 var LocaleInfo = function(locale, options) {
-    var sync = true,
-        loadParams = undefined;
+    this.sync = true,
+    this.loadParams = undefined;
 
     /**
       @private
@@ -122,8 +123,8 @@ var LocaleInfo = function(locale, options) {
     if (manipulateLocale.indexOf(this.locale.getSpec()) != -1) {
         new LocaleMatcher({
             locale: this.locale.getSpec(),
-            sync:sync,
-            loadParams:loadParams,
+            sync:this.sync,
+            loadParams:this.loadParams,
             onLoad: ilib.bind(this, function(lm){
                 this.locale = new Locale(lm.getLikelyLocale());
             })
@@ -132,27 +133,38 @@ var LocaleInfo = function(locale, options) {
 
     if (options) {
         if (typeof(options.sync) !== 'undefined') {
-            sync = !!options.sync;
+            this.sync = !!options.sync;
+            
         }
 
         if (typeof(options.loadParams) !== 'undefined') {
-            loadParams = options.loadParams;
+            this.loadParams = options.loadParams;
         }
     }
 
-    Utils.loadData({
-        object: "LocaleInfo",
-        locale: this.locale,
-        name: "localeinfo.json",
-        sync: sync,
-        loadParams: loadParams,
-        callback: ilib.bind(this, function (info) {
-            this.info = info || LocaleInfo.defaultInfo;
-            if (options && typeof(options.onLoad) === 'function') {
-                options.onLoad(this);
-            }
-        })
-    });
+    if (typeof ("Intl") != 'undefined'){
+        this.IntlLocaleObj = new Intl.Locale(this.locale.getSpec());
+    }
+
+    if (this.IntlLocaleObj && Object.keys(this.IntlLocaleObj).length > 0){
+        if (options && typeof(options.onLoad) === 'function') {
+            options.onLoad(this);
+        }
+    } else {
+        Utils.loadData({
+            object: "LocaleInfo",
+            locale: this.locale,
+            name: "localeinfo.json",
+            sync: this.sync,
+            loadParams: this.loadParams,
+            callback: ilib.bind(this, function (info) {
+                this.info = info || LocaleInfo.defaultInfo;
+                if (options && typeof(options.onLoad) === 'function') {
+                    options.onLoad(this);
+                }
+            })
+        });
+    }
 };
 
 LocaleInfo.defaultInfo = ilib.data.localeinfo;
@@ -198,11 +210,32 @@ LocaleInfo.defaultInfo = LocaleInfo.defaultInfo || {
 };
 
 LocaleInfo.prototype = {
+    _loadLocaleInfoJson:function(locale, sync, loadParams, onLoad){
+        Utils.loadData({
+            object: "LocaleInfo",
+            locale: locale,
+            name: "localeinfo.json",
+            sync: sync,
+            loadParams: loadParams,
+            callback: ilib.bind(this, function (info) {
+                this.info = info || LocaleInfo.defaultInfo;
+                if (onLoad && typeof(onLoad) === 'function') {
+                    onLoad(this.info);
+                }
+            })
+        });
+    },
     /**
      * Return the name of the locale's language in English.
      * @returns {string} the name of the locale's language in English
      */
     getLanguageName: function () {
+        var locale = new Locale(this.locale);
+        if (!this.info["language.name"]){
+            this._loadLocaleInfoJson(locale, this.sync, this.loadParams, function(tt){
+                this.info=tt;
+            });
+        }
         return this.info["language.name"];
     },
 
@@ -213,6 +246,12 @@ LocaleInfo.prototype = {
      * @returns {string|undefined} the name of the locale's region in English
      */
     getRegionName: function () {
+        var locale = new Locale(this.locale);
+        if (!this.info["language.name"]){
+            this._loadLocaleInfoJson(locale, this.sync, this.loadParams, function(tt){
+                this.info=tt;
+            });
+        }
         return this.info["region.name"];
     },
 
@@ -223,7 +262,12 @@ LocaleInfo.prototype = {
      * if the locale commonly uses a 24-hour clock.
      */
     getClock: function() {
-        return this.info.clock;
+        if (this.IntlLocaleObj && Object.keys(this.IntlLocaleObj).length > 0){
+            return (this.IntlLocaleObj.hourCycle=='h12' ? 12 : 24 ||
+                   this.IntlLocaleObj.hourCycles[0]=='h12' ? 12 : 24)
+        } else {
+            return this.info.clock;
+        }
     },
 
     /**
