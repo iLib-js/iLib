@@ -12685,6 +12685,13 @@ module.exports.testlocaleinfo = {
         test.equal(li.getScript(), "Latn");
         test.done();
     },
+    testLocaleInfoGetScriptSingle_ko_KR: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("ko-KR");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getScript(), "Kore");
+        test.done();
+    },
     
     testLocaleInfoGetScriptMultiple: function(test) {
         test.expect(2);

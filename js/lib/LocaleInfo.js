@@ -71,7 +71,7 @@ var LocaleMatcher = require("./LocaleMatcher.js");
 var LocaleInfo = function(locale, options) {
     this.sync = true,
     this.loadParams = undefined;
-
+    this.useIntlLocale = false;
     /**
       @private
       @type {{
@@ -117,9 +117,11 @@ var LocaleInfo = function(locale, options) {
             this.locale = locale;
             break;
     }
+
     var manipulateLocale = ["pa-PK", "ha-CM", "ha-SD"];
 
-    if (manipulateLocale.indexOf(this.locale.getSpec()) != -1) {
+    if (manipulateLocale.indexOf(this.locale.getSpec()) != -1 ||
+        (typeof ("Intl") != 'undefined' && this.locale.getSpec() !== 'Etc/UTC')) {
         new LocaleMatcher({
             locale: this.locale.getSpec(),
             sync:this.sync,
@@ -133,19 +135,17 @@ var LocaleInfo = function(locale, options) {
     if (options) {
         if (typeof(options.sync) !== 'undefined') {
             this.sync = !!options.sync;
-            
         }
-
         if (typeof(options.loadParams) !== 'undefined') {
             this.loadParams = options.loadParams;
         }
     }
 
-    if (typeof ("Intl") != 'undefined'){
+    if (typeof ("Intl") != 'undefined' && this.locale.getSpec() !== 'Etc/UTC') {
         this.IntlLocaleObj = new Intl.Locale(this.locale.getSpec());
     }
 
-    if (this.IntlLocaleObj && Object.keys(this.IntlLocaleObj).length > 0){
+    if (this.IntlLocaleObj && this._isIntlLocaleAvailable()){
         if (options && typeof(options.onLoad) === 'function') {
             options.onLoad(this);
         }
@@ -209,7 +209,10 @@ LocaleInfo.defaultInfo = LocaleInfo.defaultInfo || {
 };
 
 LocaleInfo.prototype = {
-    _loadLocaleInfoJson:function(locale, sync, loadParams, onLoad){
+    /**
+     *
+     */
+    _loadLocaleInfoJson: function(locale, sync, loadParams, onLoad){
         Utils.loadData({
             object: "LocaleInfo",
             locale: locale,
@@ -219,10 +222,21 @@ LocaleInfo.prototype = {
             callback: ilib.bind(this, function (info) {
                 this.info = info || LocaleInfo.defaultInfo;
                 if (onLoad && typeof(onLoad) === 'function') {
+                    this.info = info
                     onLoad(this.info);
                 }
             })
         });
+    },
+    /**
+     *
+     */
+    _isIntlLocaleAvailable: function(){
+        if (this.IntlLocaleObj &&
+            (this.IntlLocaleObj.hourCycle || (this.IntlLocaleObj.hourCycles && this.IntlLocaleObj.hourCycles[0]))) {
+                return true;
+            }
+        return false;
     },
     /**
      * Return the name of the locale's language in English.
@@ -246,14 +260,13 @@ LocaleInfo.prototype = {
      */
     getRegionName: function () {
         var locale = new Locale(this.locale);
-        if (!this.info["language.name"]){
-            this._loadLocaleInfoJson(locale, this.sync, this.loadParams, function(tt){
-                this.info=tt;
+        if (!this.info["region.name"]){
+            this._loadLocaleInfoJson(locale, this.sync, this.loadParams, function(lo){
+                this.info=lo;
             });
         }
         return this.info["region.name"];
     },
-
     /**
      * Return whether this locale commonly uses the 12- or the 24-hour clock.
      *
@@ -261,14 +274,22 @@ LocaleInfo.prototype = {
      * if the locale commonly uses a 24-hour clock.
      */
     getClock: function() {
-        if (this.IntlLocaleObj && Object.keys(this.IntlLocaleObj).length > 0){
-            return (this.IntlLocaleObj.hourCycle=='h12' ? 12 : 24 ||
-                   this.IntlLocaleObj.hourCycles[0]=='h12' ? 12 : 24)
+        if (this._isIntlLocaleAvailable()){
+            if(this.IntlLocaleObj.hourCycle){
+                return this.IntlLocaleObj.hourCycle == 'h12' ? 12 : 24;
+            } else {
+                return this.IntlLocaleObj.hourCycles[0] == 'h12' ? 12 : 24;
+            }
         } else {
+            var locale = new Locale(this.locale);
+            this._loadLocaleInfoJson(locale, this.sync, this.loadParams, function(lo){
+                this.info=lo;
+                
+            });
             return this.info.clock;
         }
     },
-
+    
     /**
      * Return the locale that this info object was created with.
      * @returns {Locale} The locale spec of the locale used to construct this info instance
@@ -551,7 +572,6 @@ LocaleInfo.prototype = {
     getDefaultScript: function() {
         return (this.info.scripts) ? this.info.scripts[0] : "Latn";
     },
-
     /**
      * Return the script used for the current locale. If the current locale
      * explicitly defines a script, then this script is returned. If not, then
@@ -562,7 +582,12 @@ LocaleInfo.prototype = {
      * text in this locale
      */
     getScript: function() {
-        return this.locale.getScript() || this.getDefaultScript();
+        if(this._isIntlLocaleAvailable()){
+            return this.IntlLocaleObj.script;
+        } else {
+            return this.locale.getScript() || this.getDefaultScript();
+        }
+        
     },
 
     /**
