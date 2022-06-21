@@ -71,7 +71,6 @@ var LocaleMatcher = require("./LocaleMatcher.js");
 var LocaleInfo = function(locale, options) {
     this.sync = true,
     this.loadParams = undefined;
-    this.useIntlLocale = false;
     /**
       @private
       @type {{
@@ -119,9 +118,9 @@ var LocaleInfo = function(locale, options) {
     }
 
     var manipulateLocale = ["pa-PK", "ha-CM", "ha-SD"];
-
-    if (manipulateLocale.indexOf(this.locale.getSpec()) != -1 ||
-        (typeof ("Intl") != 'undefined' && this.locale.getSpec() !== 'Etc/UTC')) {
+    var exceptionLocale  = ["Etc/UTC", "zz-ZZ", "xxx-QQ", "XX", "XA", "XB"];
+    if ((manipulateLocale.indexOf(this.locale.getSpec()) != -1) ||
+        ((typeof ("Intl") != 'undefined') && (exceptionLocale.indexOf(this.locale.getSpec()) == -1))) {
         new LocaleMatcher({
             locale: this.locale.getSpec(),
             sync:this.sync,
@@ -141,7 +140,7 @@ var LocaleInfo = function(locale, options) {
         }
     }
 
-    if (typeof ("Intl") != 'undefined' && this.locale.getSpec() !== 'Etc/UTC') {
+    if (typeof ("Intl") != 'undefined' && (exceptionLocale.indexOf(this.locale.getSpec()) == -1)) {
         this.IntlLocaleObj = new Intl.Locale(this.locale.getSpec());
     }
 
@@ -284,7 +283,6 @@ LocaleInfo.prototype = {
             var locale = new Locale(this.locale);
             this._loadLocaleInfoJson(locale, this.sync, this.loadParams, function(lo){
                 this.info=lo;
-                
             });
             return this.info.clock;
         }
@@ -365,6 +363,12 @@ LocaleInfo.prototype = {
      * @returns {string} the decimal separator char
      */
     getDecimalSeparator: function () {
+        var locale = new Locale(this.locale);
+        if (!this.info.numfmt.decimalChar){
+            this._loadLocaleInfoJson(locale, this.sync, this.loadParams, function(lo){
+                this.info=lo;
+            });
+        }
         return this.info.numfmt.decimalChar;
     },
 
@@ -382,6 +386,12 @@ LocaleInfo.prototype = {
      * @returns {string} the grouping separator char
      */
     getGroupingSeparator: function () {
+        var locale = new Locale(this.locale);
+        if (!this.info.numfmt.groupChar){
+            this._loadLocaleInfoJson(locale, this.sync, this.loadParams, function(lo){
+                this.info=lo;
+            });
+        }
         return this.info.numfmt.groupChar;
     },
 
