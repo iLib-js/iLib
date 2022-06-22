@@ -118,7 +118,8 @@ var LocaleInfo = function(locale, options) {
     }
 
     var manipulateLocale = ["pa-PK", "ha-CM", "ha-SD"];
-    var exceptionLocale  = ["Etc/UTC", "zz-ZZ", "xxx-QQ", "XX", "XA", "XB"];
+    var exceptionLocale  = ["Etc/UTC", "zz-ZZ", "xxx-QQ", "XX", "XA", "XB", "bn-IN"];
+    // bn-IN: nodejs. getWeekEndStart is wrong.
     if ((manipulateLocale.indexOf(this.locale.getSpec()) != -1) ||
         ((typeof ("Intl") != 'undefined') && (exceptionLocale.indexOf(this.locale.getSpec()) == -1))) {
         new LocaleMatcher({
@@ -244,8 +245,8 @@ LocaleInfo.prototype = {
     getLanguageName: function () {
         var locale = new Locale(this.locale);
         if (!this.info["language.name"]){
-            this._loadLocaleInfoJson(locale, this.sync, this.loadParams, function(tt){
-                this.info=tt;
+            this._loadLocaleInfoJson(locale, this.sync, this.loadParams, function(lo){
+                this.info = lo;
             });
         }
         return this.info["language.name"];
@@ -261,7 +262,7 @@ LocaleInfo.prototype = {
         var locale = new Locale(this.locale);
         if (!this.info["region.name"]){
             this._loadLocaleInfoJson(locale, this.sync, this.loadParams, function(lo){
-                this.info=lo;
+                this.info = lo;
             });
         }
         return this.info["region.name"];
@@ -282,7 +283,7 @@ LocaleInfo.prototype = {
         } else {
             var locale = new Locale(this.locale);
             this._loadLocaleInfoJson(locale, this.sync, this.loadParams, function(lo){
-                this.info=lo;
+                this.info = lo;
             });
             return this.info.clock;
         }
@@ -324,7 +325,15 @@ LocaleInfo.prototype = {
      * @returns {number} the day of the week that starts weeks in the current locale.
      */
     getFirstDayOfWeek: function () {
-        return this.info.firstDayOfWeek;
+        if (this._isIntlLocaleAvailable()){
+            return this.IntlLocaleObj.weekInfo.firstDay % 7;
+        } else {
+            var locale = new Locale(this.locale);
+            this._loadLocaleInfoJson(locale, this.sync, this.loadParams, function(lo){
+                this.info = lo;
+            });
+            return this.info.firstDayOfWeek;
+        }
     },
 
     /**
@@ -334,7 +343,15 @@ LocaleInfo.prototype = {
      * @returns {number} the day of the week that starts weeks in the current locale.
      */
     getWeekEndStart: function () {
-        return this.info.weekendStart;
+        if (this._isIntlLocaleAvailable()){
+            return (this.IntlLocaleObj.weekInfo.weekend[0]) % 7;
+        } else {
+            var locale = new Locale(this.locale);
+            this._loadLocaleInfoJson(locale, this.sync, this.loadParams, function(lo){
+                this.info = lo;
+            });
+            return this.info.weekendStart;
+        }        
     },
 
     /**
@@ -344,7 +361,16 @@ LocaleInfo.prototype = {
      * @returns {number} the day of the week that starts weeks in the current locale.
      */
     getWeekEndEnd: function () {
-        return this.info.weekendEnd;
+        if (this._isIntlLocaleAvailable()){
+            var weekendInfo = this.IntlLocaleObj.weekInfo;
+            return (weekendInfo.weekend[1] == 'undefined')? weekendInfo.weekend[0] % 7 : weekendInfo.weekend[1] % 7;
+        } else {
+            var locale = new Locale(this.locale);
+            this._loadLocaleInfoJson(locale, this.sync, this.loadParams, function(lo){
+                this.info = lo;
+            });
+            return this.info.weekendEnd;
+        }        
     },
 
     /**
