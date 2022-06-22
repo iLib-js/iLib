@@ -12674,7 +12674,7 @@ module.exports.testlocaleinfo = {
         test.expect(2);
         var li = new LocaleInfo("uz-UZ");
         test.ok(typeof(li) !== "undefined");
-        test.equal(li.getDefaultScript(), "Arab");
+        test.equal(li.getDefaultScript(), "Latn");
         test.done();
     },
     
@@ -12697,7 +12697,7 @@ module.exports.testlocaleinfo = {
         test.expect(2);
         var li = new LocaleInfo("uz-UZ");
         test.ok(typeof(li) !== "undefined");
-        test.equal(li.getScript(), "Arab");
+        test.equal(li.getScript(), "Latn");
         test.done();
     },
     

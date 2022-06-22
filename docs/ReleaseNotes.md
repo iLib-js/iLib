@@ -13,10 +13,10 @@ New Features:
     * When they cannot be converted, the Intl object is not available, or the Intl object does not support the requested locale, it will perform the relatively slow formatting using regular ilib code written in Javascript.
     *  The code will often return different results depending on the platform and version of the Javascript engine and which version of CLDR it supports. If you need consistency across versions and platforms, do not use the useIntl flag. Just stick with the regular ilib formatting code.
 
-
 Bug Fixes:
 * Fixed a bug where the DateFmt.formatRelative() does not represent correct result in certain case.
 * Updated locale data to have a consistently sorted order by rerunning cldr tool code.
+* Fixed a bug which a default script for `uz` should be `Latin` instead of `Arabic`
 
 
 Build 022
