@@ -1509,7 +1509,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-RW");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
+        test.equal(info.getClock(), 24);
         
         test.done();
     },
