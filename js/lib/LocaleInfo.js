@@ -118,7 +118,8 @@ var LocaleInfo = function(locale, options) {
     }
 
     var manipulateLocale = ["pa-PK", "ha-CM", "ha-SD"];
-    var exceptionLocale  = ["Etc/UTC", "ww-WW", "yy-YY", "zz-YY","zz-ZZ", "xxx-QQ", "XX", "XA", "XB"];
+    var exceptionLocale  = ["Etc/UTC", "qq-QQ", "ww-WW", "yy-YY", "yyy-ZX", "zz-YY","zz-ZZ", "xxx-QQ", "XX", "XA", "XB", "fr-FR-overseas"]; //mostly it's for testing in test files.
+
     if ((manipulateLocale.indexOf(this.locale.getSpec()) != -1) ||
         ((typeof ("Intl") != 'undefined') && (exceptionLocale.indexOf(this.locale.getSpec()) == -1))) {
         new LocaleMatcher({
@@ -249,9 +250,8 @@ LocaleInfo.prototype = {
      * @returns {string} the name of the locale's language in English
      */
     getLanguageName: function () {
-        var locale = new Locale(this.locale);
         if (!this.info["language.name"]){
-            this._loadData(locale, this.sync, this.loadParams);
+            this._loadData(this.locale, this.sync, this.loadParams);
         }
         return this.info["language.name"];
     },
@@ -263,9 +263,8 @@ LocaleInfo.prototype = {
      * @returns {string|undefined} the name of the locale's region in English
      */
     getRegionName: function () {
-        var locale = new Locale(this.locale);
         if (!this.info["region.name"]){
-            this._loadData(locale, this.sync, this.loadParams);
+            this._loadData(this.locale, this.sync, this.loadParams);
         }
         return this.info["region.name"];
     },
@@ -283,8 +282,7 @@ LocaleInfo.prototype = {
                 return this.IntlLocaleObj.hourCycles[0] == 'h12' ? 12 : 24;
             }
         } else {
-            var locale = new Locale(this.locale);
-            this._loadData(locale, this.sync, this.loadParams);
+            this._loadData(this.locale, this.sync, this.loadParams);
             return this.info.clock;
         }
     },
@@ -304,8 +302,7 @@ LocaleInfo.prototype = {
      * @returns {string} The name of the measuring system commonly used in the locale
      */
     getUnits: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.units;
     },
 
@@ -315,8 +312,7 @@ LocaleInfo.prototype = {
      * @returns {string} The name of the calendar commonly used in the locale
      */
     getCalendar: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.calendar;
     },
 
@@ -332,8 +328,7 @@ LocaleInfo.prototype = {
         if (this._isIntlLocaleAvailable()){
             return this.IntlLocaleObj.weekInfo.firstDay % 7;
         } else {
-            var locale = new Locale(this.locale);
-            this._loadData(locale, this.sync, this.loadParams);
+            this._loadData(this.locale, this.sync, this.loadParams);
             return this.info.firstDayOfWeek;
         }
     },
@@ -348,8 +343,7 @@ LocaleInfo.prototype = {
         if (this._isIntlLocaleAvailable()){
             return (this.IntlLocaleObj.weekInfo.weekend[0]) % 7;
         } else {
-            var locale = new Locale(this.locale);
-            this._loadData(locale, this.sync, this.loadParams);
+            this._loadData(this.locale, this.sync, this.loadParams);
             return this.info.weekendStart;
         }        
     },
@@ -365,8 +359,7 @@ LocaleInfo.prototype = {
             var weekendInfo = this.IntlLocaleObj.weekInfo;
             return (typeof(weekendInfo.weekend[1]) === "undefined")? weekendInfo.weekend[0] % 7 : weekendInfo.weekend[1] % 7;
         } else {
-            var locale = new Locale(this.locale);
-            this._loadData(locale, this.sync, this.loadParams);
+            this._loadData(this.locale, this.sync, this.loadParams);
             return this.info.weekendEnd;
         }        
     },
@@ -379,8 +372,7 @@ LocaleInfo.prototype = {
      * @returns {string} the default time zone for this locale.
      */
     getTimeZone: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.timezone;
     },
 
@@ -389,8 +381,7 @@ LocaleInfo.prototype = {
      * @returns {string} the decimal separator char
      */
     getDecimalSeparator: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.numfmt.decimalChar;
     },
 
@@ -399,8 +390,7 @@ LocaleInfo.prototype = {
      * @returns {string} the decimal separator char
      */
     getNativeDecimalSeparator: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return (this.info.native_numfmt && this.info.native_numfmt.decimalChar) || this.info.numfmt.decimalChar;
     },
 
@@ -410,8 +400,7 @@ LocaleInfo.prototype = {
      * @returns {string} the grouping separator char
      */
     getGroupingSeparator: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.numfmt.groupChar;
     },
 
@@ -421,8 +410,7 @@ LocaleInfo.prototype = {
      * @returns {string} the grouping separator char
      */
     getNativeGroupingSeparator: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return (this.info.native_numfmt && this.info.native_numfmt.groupChar) || this.info.numfmt.groupChar;
     },
 
@@ -434,8 +422,7 @@ LocaleInfo.prototype = {
      * @returns {number} the number of digits in a primary grouping, or 0 for no grouping
      */
     getPrimaryGroupingDigits: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return (typeof(this.info.numfmt.prigroupSize) !== 'undefined' && this.info.numfmt.prigroupSize) || 0;
     },
 
@@ -455,8 +442,7 @@ LocaleInfo.prototype = {
      * secondary grouping.
      */
     getSecondaryGroupingDigits: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.numfmt.secgroupSize || 0;
     },
 
@@ -465,8 +451,7 @@ LocaleInfo.prototype = {
      * @returns {string} the format template for formatting percentages
      */
     getPercentageFormat: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.numfmt.pctFmt;
     },
 
@@ -476,8 +461,7 @@ LocaleInfo.prototype = {
      * @returns {string} the format template for formatting percentages
      */
     getNegativePercentageFormat: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.numfmt.negativepctFmt;
     },
 
@@ -486,8 +470,7 @@ LocaleInfo.prototype = {
      * @returns {string} the symbol used for percentages in this locale
      */
     getPercentageSymbol: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.numfmt.pctChar || "%";
     },
 
@@ -496,8 +479,7 @@ LocaleInfo.prototype = {
      * @returns {string} the symbol used for exponential in this locale
      */
     getExponential: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.numfmt.exponential;
     },
 
@@ -506,8 +488,7 @@ LocaleInfo.prototype = {
      * @returns {string} the symbol used for exponential in this locale for native script
      */
     getNativeExponential: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return (this.info.native_numfmt && this.info.native_numfmt.exponential) || this.info.numfmt.exponential;
     },
 
@@ -516,8 +497,7 @@ LocaleInfo.prototype = {
      * @returns {string} the symbol used for percentages in this locale for native script
      */
     getNativePercentageSymbol: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return (this.info.native_numfmt && this.info.native_numfmt.pctChar) || this.info.numfmt.pctChar || "%";
 
     },
@@ -526,8 +506,7 @@ LocaleInfo.prototype = {
      * @returns {string} the format template for formatting negative numbers
      */
     getNegativeNumberFormat: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.numfmt.negativenumFmt;
     },
 
@@ -539,8 +518,7 @@ LocaleInfo.prototype = {
      * @returns {Object} an object containing the format templates for currencies
      */
     getCurrencyFormats: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.numfmt.currencyFormats;
     },
 
@@ -550,8 +528,7 @@ LocaleInfo.prototype = {
      * @returns {string} the ISO 4217 code for the currency of this locale
      */
     getCurrency: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.currency;
     },
 
@@ -569,6 +546,8 @@ LocaleInfo.prototype = {
      * @returns {string} string that describes the style of digits used in this locale
      */
     getDigitsStyle: function () {
+        this._loadData(this.locale, this.sync, this.loadParams);
+
         if (this.info.numfmt && this.info.numfmt.useNative) {
             return "native";
         }
@@ -585,8 +564,7 @@ LocaleInfo.prototype = {
      * @returns {string|undefined} the digits used in the default script
      */
     getDigits: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.numfmt.digits;
     },
 
@@ -595,8 +573,7 @@ LocaleInfo.prototype = {
      * @returns {string|undefined} the digits used in the default script
      */
     getNativeDigits: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return (this.info.numfmt.useNative && this.info.numfmt.digits) || (this.info.native_numfmt && this.info.native_numfmt.digits);
     },
 
@@ -611,8 +588,7 @@ LocaleInfo.prototype = {
      * locale, or "halfdown" if the locale does not override the default
      */
     getRoundingMode: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.numfmt.roundingMode;
     },
 
@@ -633,8 +609,7 @@ LocaleInfo.prototype = {
         if(this._isIntlLocaleAvailable()){
             return this.IntlLocaleObj.script;
         } else {
-            var locale = new Locale(this.locale);
-            this._loadData(locale, this.sync, this.loadParams);
+            this._loadData(this.locale, this.sync, this.loadParams);
             return (this.info.scripts) ? this.info.scripts[0] : "Latn";
         }
     },
@@ -668,8 +643,7 @@ LocaleInfo.prototype = {
      * to write text in this language
      */
     getAllScripts: function() {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.scripts || ["Latn"];
     },
 
@@ -685,8 +659,7 @@ LocaleInfo.prototype = {
      * values are "gregorian", "chinese", and "ethiopic"
      */
     getMeridiemsStyle: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.meridiems || "gregorian";
     },
     /**
@@ -694,8 +667,7 @@ LocaleInfo.prototype = {
      * @returns {string} default PaperSize in this locale
      */
     getPaperSize: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.paperSizes.regular;
     },
     /**
@@ -703,8 +675,7 @@ LocaleInfo.prototype = {
      * @returns {string} default QuotationStart in this locale
      */
     getDelimiterQuotationStart: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.delimiter.quotationStart;
     },
     /**
@@ -712,8 +683,7 @@ LocaleInfo.prototype = {
      * @returns {string} default QuotationEnd in this locale
      */
     getDelimiterQuotationEnd: function () {
-        var locale = new Locale(this.locale);
-        this._loadData(locale, this.sync, this.loadParams);
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info.delimiter.quotationEnd;
     }
 };
