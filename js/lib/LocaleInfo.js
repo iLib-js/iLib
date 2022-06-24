@@ -250,9 +250,7 @@ LocaleInfo.prototype = {
      * @returns {string} the name of the locale's language in English
      */
     getLanguageName: function () {
-        if (!this.info["language.name"]){
-            this._loadData(this.locale, this.sync, this.loadParams);
-        }
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info["language.name"];
     },
 
@@ -263,9 +261,7 @@ LocaleInfo.prototype = {
      * @returns {string|undefined} the name of the locale's region in English
      */
     getRegionName: function () {
-        if (!this.info["region.name"]){
-            this._loadData(this.locale, this.sync, this.loadParams);
-        }
+        this._loadData(this.locale, this.sync, this.loadParams);
         return this.info["region.name"];
     },
     /**
