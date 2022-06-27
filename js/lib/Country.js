@@ -83,7 +83,7 @@ var Country = function (options) {
         loadParams: loadParams,
         onLoad: ilib.bind(this, function (li) {
             this.locinfo = li;
-            if (this.locinfo.getRegionName() === undefined) {
+            if (this.locale.getSpec() === undefined) {
                 locale = 'en-US';
             } else {
                 locale = this.locale;

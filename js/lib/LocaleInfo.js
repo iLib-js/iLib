@@ -117,11 +117,20 @@ var LocaleInfo = function(locale, options) {
             break;
     }
 
+    if (options) {
+        if (typeof(options.sync) !== 'undefined') {
+            this.sync = !!options.sync;
+        }
+        if (typeof(options.loadParams) !== 'undefined') {
+            this.loadParams = options.loadParams;
+        }
+    }
+
     var manipulateLocale = ["pa-PK", "ha-CM", "ha-SD"];
     var exceptionLocale  = ["Etc/UTC", "qq-QQ", "ww-WW", "yy-YY", "yyy-ZX", "zz-YY","zz-ZZ", "xxx-QQ", "XX", "XA", "XB", "fr-FR-overseas"]; //mostly it's for testing in test files.
 
     if ((manipulateLocale.indexOf(this.locale.getSpec()) != -1) ||
-        ((typeof ("Intl") != 'undefined') && (exceptionLocale.indexOf(this.locale.getSpec()) == -1))) {
+        ((this.sync) && (typeof ("Intl") != 'undefined') && (exceptionLocale.indexOf(this.locale.getSpec()) == -1))) {
         new LocaleMatcher({
             locale: this.locale.getSpec(),
             sync:this.sync,
@@ -132,16 +141,7 @@ var LocaleInfo = function(locale, options) {
         })
     }
 
-    if (options) {
-        if (typeof(options.sync) !== 'undefined') {
-            this.sync = !!options.sync;
-        }
-        if (typeof(options.loadParams) !== 'undefined') {
-            this.loadParams = options.loadParams;
-        }
-    }
-
-    if (this.sync == true && typeof ("Intl") != 'undefined' && (exceptionLocale.indexOf(this.locale.getSpec()) == -1)) {
+    if (this.sync && typeof ("Intl") != 'undefined' && (exceptionLocale.indexOf(this.locale.getSpec()) == -1)) {
         this.IntlLocaleObj = new Intl.Locale(this.locale.getSpec());
     }
 
@@ -242,7 +242,7 @@ LocaleInfo.prototype = {
         if (this.IntlLocaleObj &&
             (this.IntlLocaleObj.hourCycle || (this.IntlLocaleObj.hourCycles && this.IntlLocaleObj.hourCycles[0]))) {
                 return true;
-            }
+        }
         return false;
     },
     /**
