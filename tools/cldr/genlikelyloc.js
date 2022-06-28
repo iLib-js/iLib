@@ -67,7 +67,14 @@ var localematch = {};
 
 // cldr is missing these
 var hardCodedSubtags = {
-    "yo-BJ": "yo-Latn-BJ"
+    "yo-BJ": "yo-Latn-BJ",
+    "bn-IN": "bn-Beng-IN",
+    "en-KR": "en-Latn-KR",
+    "hr-HU": "hr-Latn-HU",
+    "ka-IR": "ka-Geor-IR",
+    "ku-IQ": "ku-Arab-IQ",
+    "ps-PK": "ps-Arab-PK",
+    "pt-MO": "pt-Latn-MO"
 };
 
 // Likely Locales
