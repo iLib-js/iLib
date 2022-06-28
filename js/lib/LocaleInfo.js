@@ -242,6 +242,10 @@ LocaleInfo.prototype = {
      * @private
      */
     _isIntlLocaleAvailable: function(){
+        /*
+        * It needs additional check if it's really making sure Intl.Locale is available.
+        * decided to check hourCycle value as representative.
+        */
         if (this.IntlLocaleObj &&
             (this.IntlLocaleObj.hourCycle || (this.IntlLocaleObj.hourCycles && this.IntlLocaleObj.hourCycles[0]))) {
                 return true;
