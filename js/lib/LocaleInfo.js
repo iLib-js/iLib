@@ -141,7 +141,8 @@ var LocaleInfo = function(locale, options) {
         })
     }
 
-    if (this.sync && typeof ("Intl") != 'undefined' && (exceptionLocale.indexOf(this.locale.getSpec()) == -1)) {
+    if (this.sync && typeof ("Intl") != 'undefined' && this._isIntlLocalePlatformSupport()
+       && (exceptionLocale.indexOf(this.locale.getSpec()) == -1)) {
         this.IntlLocaleObj = new Intl.Locale(this.locale.getSpec());
     }
 
@@ -242,6 +243,17 @@ LocaleInfo.prototype = {
         if (this.IntlLocaleObj &&
             (this.IntlLocaleObj.hourCycle || (this.IntlLocaleObj.hourCycles && this.IntlLocaleObj.hourCycles[0]))) {
                 return true;
+        }
+        return false;
+    },
+    /**
+     *
+     */
+    _isIntlLocalePlatformSupport: function(){
+        var platform = ilib._getPlatform();
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale#browser_compatibility
+        if (platform == "browser" || (platform == "nodejs" && Number(process.versions["node"].split(".")[0]) >= 12)){
+            return true;
         }
         return false;
     },
