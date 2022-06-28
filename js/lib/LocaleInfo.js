@@ -127,8 +127,8 @@ var LocaleInfo = function(locale, options) {
     }
 
     var manipulateLocale = ["pa-PK", "ha-CM", "ha-SD"];
-    var exceptionLocale  = ["Etc/UTC", "qq-QQ", "ww-WW", "yy-YY", "yyy-ZX", "zz-YY","zz-ZZ", "xxx-QQ", "XX", "XA", "XB", "fr-FR-overseas"]; //mostly it's for testing in test files.
-
+    var exceptionLocale  = ["pt-PT", "ha-Latn-NG", "zh-Hant-TW", "Etc/UTC", "qq-QQ", "ww-WW", "yy-YY", "yyy-ZX", "zz-YY","zz-ZZ", "xxx-QQ", "XX", "XA", "XB", "fr-FR-overseas"];
+     //mostly it's for testing in test files.
     if ((manipulateLocale.indexOf(this.locale.getSpec()) != -1) ||
         ((this.sync) && (typeof ("Intl") != 'undefined') && (exceptionLocale.indexOf(this.locale.getSpec()) == -1))) {
         new LocaleMatcher({
@@ -146,7 +146,7 @@ var LocaleInfo = function(locale, options) {
         this.IntlLocaleObj = new Intl.Locale(this.locale.getSpec());
     }
 
-    if (this.IntlLocaleObj && this._isIntlLocaleAvailable()){
+    if (typeof (this.IntlLocaleObj) !== "undefined" && this._isIntlLocaleAvailable()){
         if (options && typeof(options.onLoad) === 'function') {
             options.onLoad(this);
         }
@@ -211,7 +211,7 @@ LocaleInfo.defaultInfo = LocaleInfo.defaultInfo || {
 
 LocaleInfo.prototype = {
     /**
-     *
+     * @private
      */
     _loadLocaleInfoJson: function(locale, sync, loadParams, onLoad){
         Utils.loadData({
@@ -230,14 +230,16 @@ LocaleInfo.prototype = {
         });
         
     },
+    /**
+     * @private
+     */
     _loadData: function(locale, sync, loadParams){
         this._loadLocaleInfoJson(locale, sync, loadParams, function(lo){
             this.info=lo;
         });
     },
-    
     /**
-     *
+     * @private
      */
     _isIntlLocaleAvailable: function(){
         if (this.IntlLocaleObj &&
@@ -247,7 +249,7 @@ LocaleInfo.prototype = {
         return false;
     },
     /**
-     *
+     * @private
      */
     _isIntlLocalePlatformSupport: function(){
         var platform = ilib._getPlatform();
@@ -294,7 +296,7 @@ LocaleInfo.prototype = {
             return this.info.clock;
         }
     },
-    
+
     /**
      * Return the locale that this info object was created with.
      * @returns {Locale} The locale spec of the locale used to construct this info instance

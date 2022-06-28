@@ -1,7 +1,7 @@
 /*
  * Country.js - Country class to get country name corresponding to country code in locale assigned
  *
- * Copyright © 2017, 2018, JEDLSoft
+ * Copyright © 2017, 2018, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
