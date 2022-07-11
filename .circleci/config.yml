@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Set up ant
           command: |
-            #sudo apt update
+            sudo apt update
             sudo apt install -y ant
 
       - run:
