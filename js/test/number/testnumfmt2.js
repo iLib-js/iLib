@@ -4170,7 +4170,7 @@ module.exports.testnumfmt2 = {
         test.equal(curfmt.format(57.05), "Fr57");
         test.done();
     },
-/*
+
     testNumFmt_en_MV: function(test) {
         test.expect(9);
         var li = new LocaleInfo("en-MV");
@@ -4189,5 +4189,5 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().commonNegative, '-{s} {n}');
         test.equal(curfmt.format(57.05), '.ރ 57.05');
         test.done();
-    }*/
+    }
 }
