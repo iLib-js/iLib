@@ -4,8 +4,7 @@ jobs:
     parameters:
         docker_image:
           type: string
-          default: cimg/openjdk:18.0.1-node
-
+          default: cimg/openjdk:11.0.13-node
     docker:
       - image: << parameters.docker_image >>
     environment:
@@ -18,6 +17,7 @@ jobs:
       - run:
           name: Set up ant
           command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo apt update
             sudo apt install -y ant
 
