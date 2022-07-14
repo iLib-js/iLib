@@ -1611,6 +1611,17 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "yo-Latn-BJ");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_ko_US: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ko-US"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ko-Kore-US");
+        test.done();
+    },
     testLocaleMatcherMatchExactFullLocale: function(test) {
         test.expect(2);
         var lm = new LocaleMatcher({

@@ -18,6 +18,7 @@ Bug Fixes:
 * Fixed a bug where the DateFmt.formatRelative() does not represent correct result in certain case.
 * Updated locale data to have a consistently sorted order by rerunning cldr tool code.
 * Fixed a bug which a default script for `uz` should be `Latin` instead of `Arabic`
+* Updated hardcoded locales for LocaleMatcher (bn-IN, en-KR, hr-HU, ka-IR, ko-US, ku-IQ, ps-PK, pt-MO)
 
 
 Build 022
