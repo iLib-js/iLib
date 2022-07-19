@@ -361,7 +361,7 @@
             "pascal": "#{n} Pa",
             "percent": "#{n} %",
             "permille": "#{n} ‰",
-            "permillion": "one#{n} partur/mill.|#{n} partar/mill.",
+            "permillion": "#{n} pt./mill.",
             "permyriad": "#{n} ‱",
             "petabyte": "#{n} PB",
             "picometer": "#{n} pm",

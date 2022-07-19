@@ -356,7 +356,7 @@
             "parsec": "#{n} pc",
             "pascal": "#{n} Pa",
             "percent": "#{n}%",
-            "permille": "#{n} àmì ìdákan",
+            "permille": "#{n}‰",
             "permillion": "#{n} ppm",
             "permyriad": "#{n}‱",
             "petabyte": "#{n} Píbáìtì",

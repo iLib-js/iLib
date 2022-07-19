@@ -64,7 +64,7 @@
             "g-force": "#{n} g-kraft",
             "gallon": "#{n} gallon",
             "gallon-imperial": "#{n} ämbar à 4,6 l",
-            "generic": "#{n}°",
+            "generic": "one#{n} grad|#{n} grader",
             "gigabit": "#{n} gigabit",
             "gigabit-per-second": "#{n} gigabit per sekund",
             "gigabyte": "#{n} gigabyte",
