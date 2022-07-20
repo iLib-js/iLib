@@ -145,7 +145,7 @@
             "millisecond": "one#{n} Millisekunde|#{n} Millisekunden",
             "milliwatt": "#{n} Milliwatt",
             "minute": "one#{n} Minute|#{n} Minuten",
-            "mole": "#{n} mol",
+            "mole": "#{n} Mol",
             "month": "one#{n} Monat|#{n} Monate",
             "nanometer": "#{n} Nanometer",
             "nanosecond": "one#{n} Nanosekunde|#{n} Nanosekunden",

@@ -363,7 +363,7 @@
             "pascal": "#{n} پاسکال",
             "percent": "#{n}٪",
             "permille": "#{n}‰",
-            "permillion": "#{n} بخش در میلیون",
+            "permillion": "#{n} ppm",
             "permyriad": "#{n}‱",
             "petabyte": "#{n} PB",
             "picometer": "#{n} پ.م",

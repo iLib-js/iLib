@@ -381,7 +381,7 @@
             "quart": "#kwati {n}",
             "quart-imperial": "#qt Imp. {n}",
             "radian": "#radiani {n}",
-            "revolution": "one#mzunguko {n}|#mizunguko {n}",
+            "revolution": "#{n} rev",
             "second": "#sekunde {n}",
             "short-ton": "#tani fupi {n}",
             "solar-luminosity": "#L☉ {n}",

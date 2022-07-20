@@ -52,7 +52,7 @@
             "earth-mass": "one#{n} massa da Terra|#{n} massas da Terra",
             "earth-radius": "one#{n} raio terrestre|#{n} raios terrestres",
             "electronvolt": "one#{n} eletrão-volt|#{n} eletrões-volts",
-            "em": "#{n} em",
+            "em": "one#{n} em|#{n} ems",
             "fahrenheit": "one#{n} grau Fahrenheit|#{n} graus Fahrenheit",
             "fathom": "one#{n} braça|#{n} braças",
             "fluid-ounce": "one#{n} onça fluida|#{n} onças fluidas",

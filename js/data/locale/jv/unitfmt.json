@@ -363,7 +363,7 @@
             "pascal": "#{n} Pa",
             "percent": "#{n}%",
             "permille": "#{n}‰",
-            "permillion": "#{n} bagean saben yuta",
+            "permillion": "#{n}bpj",
             "permyriad": "#{n}‱",
             "petabyte": "#{n} PB",
             "picometer": "#{n} pm",
