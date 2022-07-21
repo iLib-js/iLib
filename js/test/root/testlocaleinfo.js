@@ -12748,9 +12748,9 @@ module.exports.testlocaleinfo = {
     },
     testLocaleInfoGetLanguageName7: function(test) {
         test.expect(2);
-        var li = new LocaleInfo("str");
+        var li = new LocaleInfo("ojs");
         test.ok(typeof(li) !== "undefined");
-        test.equal(li.getLanguageName(), "Straits Salish");
+        test.equal(li.getLanguageName(), "Oji-Cree");
         test.done();
     },
     
