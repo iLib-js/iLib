@@ -12739,6 +12739,20 @@ module.exports.testlocaleinfo = {
         test.equal(li.getLanguageName(), "Chickasaw");
         test.done();
     },
+    testLocaleInfoGetLanguageName6: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("crh");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getLanguageName(), "Crimean Tatar");
+        test.done();
+    },
+    testLocaleInfoGetLanguageName7: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("str");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getLanguageName(), "Straits Salish");
+        test.done();
+    },
     
     testLocaleInfoGetRegionName1: function(test) {
         test.expect(2);
