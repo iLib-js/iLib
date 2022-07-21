@@ -29,10 +29,8 @@ var xml2json = require("xml2json");
 var common = require('./common');
 var merge = common.merge;
 var Locale = common.Locale;
-var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
 
-var ilib = require("../../js/index.js");
 var Collator = require("../../js/lib/Collator.js");
 
 function usage() {
