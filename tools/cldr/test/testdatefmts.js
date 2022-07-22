@@ -1687,6 +1687,267 @@ module.exports.testdatefmts = {
         test.equal("d/M/yy", formats.zh.Hant.TW.data.dmy.s);
         test.done();
     },
+    testMergePromoteTest2: function(test) {
+        test.expect(3);
+        var formats = {
+            data: {
+                "or": {
+                    "full": {
+                        "2" : "{0} or {1}",
+                        "end" : "{0}, or {1}",
+                        "middle" : "{0}, {1}",
+                        "start": "{0}, {1}"
+                    },
+                    "long":{
+                        "2": "{0} or {1}",
+                        "end": "{0}, or {1}",
+                        "middle": "{0}, {1}",
+                        "start": "{0}, {1}"
+                    },
+                    "medium": {
+                        "2": "{0} or {1}",
+                        "end": "{0}, or {1}",
+                        "middle": "{0}, {1}",
+                        "start": "{0}, {1}"
+                    },
+                    "short": {
+                        "2": "{0} or {1}",
+                        "end": "{0}, or {1}",
+                        "middle": "{0}, {1}",
+                        "start": "{0}, {1}"
+                    }
+                },
+                "standard": {
+                    "full": {
+                        "2": "{0} and {1}",
+                        "end": "{0}, and {1}",
+                        "middle": "{0}, {1}",
+                        "start": "{0}, {1}",
+                    },
+                    "long":{
+                        "2": "{0} and {1}",
+                        "end": "{0}, and {1}",
+                        "middle": "{0}, {1}",
+                        "start": "{0}, {1}"
+                    },
+                    "medium": {
+                        "2": "{0} & {1}",
+                        "end": "{0}, & {1}",
+                        "middle": "{0}, {1}",
+                        "start": "{0}, {1}"
+                    },
+                    "short": {
+                        "2": "{0}, {1}",
+                        "end": "{0}, {1}",
+                        "middle": "{0}, {1}",
+                        "start": "{0}, {1}"
+                    }
+                },
+                "unit": {
+                    "full": {
+                        "2": "{0}, {1}",
+                        "end": "{0}, {1}",
+                        "middle": "{0}, {1}",
+                        "start": "{0}, {1}"
+                    },
+                    "long":{
+                        "2": "{0}, {1}",
+                        "end": "{0}, {1}",
+                        "middle": "{0}, {1}",
+                        "start": "{0}, {1}"
+                    },
+                    "medium": {
+                        "2": "{0}, {1}",
+                        "end": "{0}, {1}",
+                        "middle": "{0}, {1}",
+                        "start": "{0}, {1}"
+                    },
+                    "short": {
+                        "2": "{0} {1}",
+                        "end": "{0} {1}",
+                        "middle": "{0} {1}",
+                        "start": "{0} {1}"
+                    }
+                },
+            },
+            "CA": {
+                data: {
+                    "or": {
+                       "full":{
+                            "2": "{0} or {1}",
+                            "end": "{0} or {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}",
+                       }, 
+                       "long": {
+                            "2": "{0} or {1}",
+                            "end": "{0} or {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                       },
+                       "medium": {
+                            "2": "{0} or {1}",
+                            "end": "{0} or {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                       },
+                       "short": {
+                            "2": "{0} or {1}",
+                            "end": "{0} or {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                       }
+                    },
+                    "standard": {
+                        "full":{
+                            "2": "{0} and {1}",
+                            "end": "{0} and {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                        }, 
+                        "long": {
+                            "2": "{0} and {1}",
+                            "end": "{0} and {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                        },
+                        "medium": {
+                            "2": "{0} and {1}",
+                            "end": "{0} and {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                        },
+                        "short": {
+                            "2": "{0}, {1}",
+                            "end": "{0}, {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                        }
+                     },
+                     "unit": {
+                        "full":{
+                            "2": "{0}, {1}",
+                            "end": "{0}, {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                        }, 
+                        "long": {
+                            "2": "{0}, {1}",
+                            "end": "{0}, {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                        },
+                        "medium": {
+                            "2": "{0}, {1}",
+                            "end": "{0}, {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                        },
+                        "short": {
+                            "2": "{0} {1}",
+                            "end": "{0} {1}",
+                            "middle": "{0} {1}",
+                            "start": "{0} {1}"
+                        }
+                     },
+
+                },
+                
+            },
+            "150": {
+                data: {
+                    "or": {
+                       "full":{
+                            "2": "{0} or {1}",
+                            "end": "{0} or {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                       }, 
+                       "long": {
+                            "2": "{0} or {1}",
+                            "end": "{0} or {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}",
+                       },
+                       "medium": {
+                            "2": "{0} or {1}",
+                            "end": "{0} or {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                       },
+                       "short": {
+                            "2": "{0} or {1}",
+                            "end": "{0} or {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                       }
+                    },
+                    "standard": {
+                        "full":{
+                            "2": "{0} and {1}",
+                            "end": "{0} and {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}",
+                        }, 
+                        "long": {
+                            "2": "{0} and {1}",
+                            "end": "{0} and {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                        },
+                        "medium": {
+                            "2": "{0} and {1}",
+                            "end": "{0} and {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                        },
+                        "short": {
+                            "2": "{0}, {1}",
+                            "end": "{0}, {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                        }
+                     },
+                     "unit": {
+                        "full":{
+                            "2": "{0}, {1}",
+                            "end": "{0}, {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}",
+                        }, 
+                        "long": {
+                            "2": "{0}, {1}",
+                            "end": "{0}, {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}",
+                        },
+                        "medium": {
+                            "2": "{0}, {1}",
+                            "end": "{0}, {1}",
+                            "middle": "{0}, {1}",
+                            "start": "{0}, {1}"
+                        },
+                        "short": {
+                            "2": "{0} {1}",
+                            "end": "{0} {1}",
+                            "middle": "{0} {1}",
+                            "start": "{0} {1}"
+                        }
+                     },
+                },
+                
+            }
+        };
+
+        
+        aux.promoteFormats(formats);
+        test.equal("{0}, and {1}", formats.data.standard.full.end);
+        test.equal("{0}, & {1}", formats.data.standard.medium.end);
+        test.equal("{0} and {1}", formats.CA.data.standard.full.end);
+        
+        test.done();
+    },
+
     testMergePromoteMerge: function(test) {
         test.expect(3);
         var formats = {
