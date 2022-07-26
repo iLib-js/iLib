@@ -2141,7 +2141,7 @@ module.exports = {
     /**
      * Find the distance between two objects in terms of number of properties that
      * are missing or have different values.
-     * @param {Object} leftt
+     * @param {Object} left
      * @param {Object} right
      * @return {number} the number of difference between the objects
      */
