@@ -387,8 +387,8 @@ module.exports.testcountry = {
         });
         test.ok(ctry !== null);
 
-        test.equal(ctry.getName("MO"),"(मकाउ चिनियाँ विशेष प्रशासनिक क्षेत्र");
-        test.equal(ctry.getCode("(मकाउ चिनियाँ विशेष प्रशासनिक क्षेत्र"), "MO");
+        test.equal(ctry.getName("MO"),'मकाउ चिनियाँ विशेष प्रशासनिक क्षेत्र');
+        test.equal(ctry.getCode('मकाउ चिनियाँ विशेष प्रशासनिक क्षेत्र'), "MO");
         var locale = ctry.getLocale();
         test.equal(locale.toString(), "ne-NP");
         test.done();
@@ -517,8 +517,8 @@ module.exports.testcountry = {
         });
         test.ok(ctry !== null);
 
-        test.equal(ctry.getName("KR"), 'Orílɛ́ède Ariwa Kɔria');
-        test.equal(ctry.getCode('Orílɛ́ède Ariwa Kɔria'), "KR");
+        test.equal(ctry.getName("KR"), 'Ariwa Kɔria');
+        test.equal(ctry.getCode('Ariwa Kɔria'), "KR");
         var locale = ctry.getLocale();
         test.equal(locale.toString(), "yo-BJ");
         test.done();
@@ -530,8 +530,8 @@ module.exports.testcountry = {
         });
         test.ok(ctry !== null);
 
-        test.equal(ctry.getName("FR"), 'Orílẹ́ède Faranse');
-        test.equal(ctry.getCode('Orílẹ́ède Faranse'), "FR");
+        test.equal(ctry.getName("FR"), 'Faranse');
+        test.equal(ctry.getCode('Faranse'), "FR");
         var locale = ctry.getLocale();
         test.equal(locale.toString(), "yo-NG");
         test.done();
