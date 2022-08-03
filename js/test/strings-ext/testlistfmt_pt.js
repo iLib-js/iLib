@@ -1,7 +1,7 @@
 /*
  * testlistfmt_pt.js - test the list formatter object
  *
- * Copyright © 2017, 2020 JEDLSoft
+ * Copyright © 2017, 2020, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -144,6 +144,70 @@ module.exports.testlistfmt_pt = {
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["um", "dois", "três", "quatro", "cinco"]), "um, dois, três, quatro e cinco");
+        test.done();
+    },
+    testListFmtUnitStyleptBRNumberFormatOne_Short: function(test) {
+        var fmt = new ListFmt({
+            locale: "pt-BR",
+            style: "unit",
+            length: "short"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["um"]), "um");
+        test.done();
+    },
+    
+    testListFmtUnitStyleptBRNumberFormatTwo_Short: function(test) {
+        var fmt = new ListFmt({
+            locale: "pt-BR",
+            style: "unit",
+            length: "short"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["um", "dois"]), "um dois");
+        test.done();
+    },
+    
+    testListFmtUnitStyleptBRNumberFormatThree_Short: function(test) {
+        var fmt = new ListFmt({
+            locale: "pt-BR",
+            style: "unit",
+            length: "short"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["um", "dois", "três"]), "um dois três");
+        test.done();
+    },
+    
+    testListFmtUnitStyleptBRNumberFormatFour_Short: function(test) {
+        var fmt = new ListFmt({
+            locale: "pt-BR",
+            style: "unit",
+            length: "short"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["um", "dois", "três", "quatro"]), "um dois três quatro");
+        test.done();
+    },
+    
+    testListFmtUnitStyleptBRNumberFormatFive_Short: function(test) {
+        var fmt = new ListFmt({
+            locale: "pt-BR",
+            style:"unit",
+            length: "short"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["um", "dois", "três", "quatro", "cinco"]), "um dois três quatro cinco");
         test.done();
     },
     
@@ -330,6 +394,58 @@ module.exports.testlistfmt_pt = {
         var fmt = new ListFmt({
             locale: "pt-PT",
             length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["um", "dois", "três", "quatro"]), "um, dois, três e quatro");
+        test.done();
+    },
+    /*pt-MO*/
+    testListFmtptMONumberFormatOne_Unit_Short: function(test) {
+        var fmt = new ListFmt({
+            locale: "pt-MO",
+            length: "short",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["um"]), "um");
+        test.done();
+    },
+    
+    testListFmtptMONumberFormatTwoFull_Unit_Short: function(test) {
+        var fmt = new ListFmt({
+            locale: "pt-MO",
+            length: "short",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["um", "dois"]), "um e dois");
+        test.done();
+    },
+    
+    testListFmtptMONumberFormatThreeFull_Unit_Short: function(test) {
+        var fmt = new ListFmt({
+            locale: "pt-MO",
+            length: "short",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["um", "dois", "três"]), "um, dois e três");
+        test.done();
+    },
+    
+    testListFmtptMONumberFormatFourFull_Unit_Short: function(test) {
+        var fmt = new ListFmt({
+            locale: "pt-MO",
+            length: "short",
+            style: "unit"
         });
     
         test.expect(2);

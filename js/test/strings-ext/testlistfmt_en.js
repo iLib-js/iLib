@@ -1,7 +1,7 @@
 /*
  * testlistfmt_en.js - test the list formatter object
  *
- * Copyright © 2017, 2020 JEDLSoft
+ * Copyright © 2017, 2020, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -587,7 +587,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two"]), "one and two");
+        test.equal(fmt.format(["one", "two"]), "one & two");
         test.done();
     },
     
@@ -598,7 +598,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three"]), "one, two and three");
+        test.equal(fmt.format(["one", "two", "three"]), "one, two, & three");
         test.done();
     },
     
@@ -609,7 +609,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three and four");
+        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, & four");
         test.done();
     },
 
@@ -646,7 +646,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three"]), "one, two, and three");
+        test.equal(fmt.format(["one", "two", "three"]), "one, two and three");
         test.done();
     },
     
@@ -658,7 +658,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, and four");
+        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three and four");
         test.done();
     },
     // en-GH
@@ -981,7 +981,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two"]), "one and two");
+        test.equal(fmt.format(["one", "two"]), "one & two");
         test.done();
     },
     
@@ -992,7 +992,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three"]), "one, two and three");
+        test.equal(fmt.format(["one", "two", "three"]), "one, two, & three");
         test.done();
     },
     
@@ -1003,7 +1003,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three and four");
+        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, & four");
         test.done();
     },
 
@@ -1088,7 +1088,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three"]), "one, two and three");
+        test.equal(fmt.format(["one", "two", "three"]), "one, two, and three");
         test.done();
     },
     
@@ -1100,7 +1100,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three and four");
+        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, and four");
         test.done();
     },
     // en-MM
@@ -1136,7 +1136,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three"]), "one, two and three");
+        test.equal(fmt.format(["one", "two", "three"]), "one, two, and three");
         test.done();
     },
     
@@ -1148,7 +1148,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three and four");
+        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, and four");
         test.done();
     },
     testListFmtenMPNumberFormatFourFull: function(test) {
@@ -1782,7 +1782,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two"]), "one and two");
+        test.equal(fmt.format(["one", "two"]), "one & two");
         test.done();
     },
     
@@ -1793,7 +1793,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three"]), "one, two and three");
+        test.equal(fmt.format(["one", "two", "three"]), "one, two, & three");
         test.done();
     },
     
@@ -1804,7 +1804,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three and four");
+        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, & four");
         test.done();
     },
 
@@ -2177,7 +2177,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two"]), "one and two");
+        test.equal(fmt.format(["one", "two"]), "one & two");
         test.done();
     },
     
@@ -2188,7 +2188,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three"]), "one, two and three");
+        test.equal(fmt.format(["one", "two", "three"]), "one, two, & three");
         test.done();
     },
     
@@ -2199,7 +2199,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three and four");
+        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, & four");
         test.done();
     },
     
@@ -2210,7 +2210,7 @@ module.exports.testlistfmt_en = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["one", "two", "three", "four", "five"]), "one, two, three, four and five");
+        test.equal(fmt.format(["one", "two", "three", "four", "five"]), "one, two, three, four, & five");
         test.done();
     }
 };

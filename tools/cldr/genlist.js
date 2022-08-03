@@ -321,14 +321,6 @@ console.log("\n\nMerging formats forward ...");
 
 aux.mergeFormats(localePatterns, localePatterns, []);
 
-console.log("\n\nPromoting sublocales ...");
-
-for (var language in localePatterns) {
-    if (language !== "und" && language !== "data") {
-        aux.promoteFormats(localePatterns[language], language, "list.json");
-    }
-}
-
 console.log("\n\nPruning duplicated formats ...");
 
 //Don't prune the root. Iterate through the first level so we can
