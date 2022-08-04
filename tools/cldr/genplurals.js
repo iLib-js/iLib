@@ -284,7 +284,12 @@ function writePluralsData(locale, data) {
     if (data) {
         console.log("Writing " + fullpath);
         makeDirs(fullpath);
-        fs.writeFileSync(path.join(fullpath, "plurals.json"), stringify(data, {space: 4}), "utf-8");
+        if (Object.keys(data).length ==0 ){
+            fs.writeFileSync(path.join(fullpath, "plurals.json"), stringify({"others": ""}, {space: 4}), "utf-8");
+        } else {
+            fs.writeFileSync(path.join(fullpath, "plurals.json"), stringify(data, {space: 4}), "utf-8");
+        }
+        
     } else {
         console.log("Skipping empty  " + fullpath);
     }
@@ -296,7 +301,7 @@ for (var language in pluralsObject) {
     if (language && pluralsObject[language]) {
         pluralsData = create_rule(pluralsObject[language]);
 
-        if (anyProperties(pluralsData)) {
+        if (language !== "und") {
             var locale = new Locale(language);
             writePluralsData(locale, pluralsData);
         }
