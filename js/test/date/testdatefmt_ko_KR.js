@@ -77,7 +77,7 @@ module.exports.testdatefmt_ko_KR = {
         var fmt = new DateFmt({locale: "ko-KR", length: "short", useIntl: true});
         test.ok(fmt !== null);
         
-        var date = new GregorianDate({
+        var date = DateFactory({
             locale: "ko-KR",
             year: 2011,
             month: 9,
@@ -120,7 +120,7 @@ module.exports.testdatefmt_ko_KR = {
         var fmt = new DateFmt({locale: "ko-KR", length: "medium", useIntl: true});
         test.ok(fmt !== null);
         
-        var date = new GregorianDate({
+        var date = DateFactory({
             locale: "ko-KR",
             year: 2011,
             month: 9,
@@ -164,7 +164,7 @@ module.exports.testdatefmt_ko_KR = {
             return;
         }
         test.expect(2);
-        var fmt = new DateFmt({locale: "ko-KR", length: "full", useIntl: true});
+        var fmt = new DateFmt({locale: "ko-KR", length: "full", useIntl: true, timezone:"Asia/Seoul"});
         // Not supported case in iLib. follow normal iLib logic.
         test.ok(fmt !== null);
         
