@@ -1,41 +1,32 @@
 {
     "gregorian": {
         "date": {
+            "dm": {
+                "s": "d/M"
+            },
+            "dmw": {
+                "f": "M月d日EEEE",
+                "l": "M月d日EEE",
+                "m": "M月d日EE",
+                "s": "d/ME"
+            },
             "dmwy": {
-                "s": "d/M/yyyyE",
-                "m": "yyyy年M月d日EE",
+                "f": "yyyy年M月d日EEEE",
                 "l": "yyyy年M月d日EEE",
-                "f": "yyyy年M月d日EEEE"
+                "m": "yyyy年M月d日EE",
+                "s": "d/M/yyyyE"
             },
             "dmy": {
                 "s": "d/M/yyyy"
             },
-            "dmw": {
-                "s": "d/ME",
-                "m": "M月d日EE",
-                "l": "M月d日EEE",
-                "f": "M月d日EEEE"
-            },
-            "dm": {
-                "s": "d/M"
+            "dw": {
+                "f": "d日EEEE",
+                "l": "d日EEE",
+                "m": "d日EE",
+                "s": "d/E"
             },
             "my": {
                 "s": "M/yyyy"
-            },
-            "dw": {
-                "s": "d/E",
-                "m": "d日EE",
-                "l": "d日EEE",
-                "f": "d日EEEE"
-            }
-        },
-        "time": {
-            "12": {
-                "ahmsz": "ah:mm:ss [z]",
-                "ahms": "ah:mm:ss",
-                "ahmz": "ah:mm [z]",
-                "ahm": "ah:mm",
-                "ah": "ah時"
             }
         },
         "range": {
@@ -62,6 +53,15 @@
             },
             "c20": {
                 "s": "{sm}/{sy} – {em}/{ey}"
+            }
+        },
+        "time": {
+            "12": {
+                "ah": "ah時",
+                "ahm": "ah:mm",
+                "ahms": "ah:mm:ss",
+                "ahmsz": "ah:mm:ss [z]",
+                "ahmz": "ah:mm [z]"
             }
         }
     }

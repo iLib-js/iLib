@@ -1,1556 +1,1571 @@
 {
     "Adlm": {
+        "casing": true,
+        "ime": false,
+        "lid": "Adlam",
         "nb": 166,
         "nm": "Adlam",
-        "lid": "Adlam",
-        "rtl": true,
-        "ime": false,
-        "casing": true
+        "rtl": true
     },
     "Afak": {
+        "lid": "Afaka",
         "nb": 439,
-        "nm": "Afaka",
-        "lid": "Afaka"
+        "nm": "Afaka"
     },
     "Aghb": {
+        "casing": false,
+        "ime": false,
+        "lid": "Caucasian_Albanian",
         "nb": 239,
         "nm": "Caucasian Albanian",
-        "lid": "Caucasian_Albanian",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Ahom": {
+        "casing": false,
+        "ime": false,
+        "lid": "Ahom",
         "nb": 338,
         "nm": "Ahom, Tai Ahom",
-        "lid": "Ahom",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Arab": {
+        "casing": false,
+        "ime": false,
+        "lid": "Arabic",
         "nb": 160,
         "nm": "Arabic",
-        "lid": "Arabic",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Aran": {
+        "lid": "Arabic_(Nastaliq_variant)",
         "nb": 161,
-        "nm": "Arabic (Nastaliq variant)",
-        "lid": "Arabic_(Nastaliq_variant)"
+        "nm": "Arabic (Nastaliq variant)"
     },
     "Armi": {
+        "casing": false,
+        "ime": false,
+        "lid": "Imperial_Aramaic",
         "nb": 124,
         "nm": "Imperial Aramaic",
-        "lid": "Imperial_Aramaic",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Armn": {
+        "casing": true,
+        "ime": false,
+        "lid": "Armenian",
         "nb": 230,
         "nm": "Armenian",
-        "lid": "Armenian",
-        "rtl": false,
-        "ime": false,
-        "casing": true
+        "rtl": false
     },
     "Avst": {
+        "casing": false,
+        "ime": false,
+        "lid": "Avestan",
         "nb": 134,
         "nm": "Avestan",
-        "lid": "Avestan",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Bali": {
+        "casing": false,
+        "ime": false,
+        "lid": "Balinese",
         "nb": 360,
         "nm": "Balinese",
-        "lid": "Balinese",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Bamu": {
+        "casing": false,
+        "ime": true,
+        "lid": "Bamum",
         "nb": 435,
         "nm": "Bamum",
-        "lid": "Bamum",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Bass": {
+        "casing": false,
+        "ime": false,
+        "lid": "Bassa_Vah",
         "nb": 259,
         "nm": "Bassa Vah",
-        "lid": "Bassa_Vah",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Batk": {
+        "casing": false,
+        "ime": false,
+        "lid": "Batak",
         "nb": 365,
         "nm": "Batak",
-        "lid": "Batak",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Beng": {
+        "casing": false,
+        "ime": false,
+        "lid": "Bengali",
         "nb": 325,
         "nm": "Bengali (Bangla)",
-        "lid": "Bengali",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Bhks": {
+        "casing": false,
+        "ime": false,
+        "lid": "Bhaiksuki",
         "nb": 334,
         "nm": "Bhaiksuki",
-        "lid": "Bhaiksuki",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Blis": {
+        "lid": "Blissymbols",
         "nb": 550,
-        "nm": "Blissymbols",
-        "lid": "Blissymbols"
+        "nm": "Blissymbols"
     },
     "Bopo": {
+        "casing": false,
+        "ime": false,
+        "lid": "Bopomofo",
         "nb": 285,
         "nm": "Bopomofo",
-        "lid": "Bopomofo",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Brah": {
+        "casing": false,
+        "ime": false,
+        "lid": "Brahmi",
         "nb": 300,
         "nm": "Brahmi",
-        "lid": "Brahmi",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Brai": {
+        "casing": false,
+        "ime": false,
+        "lid": "Braille",
         "nb": 570,
         "nm": "Braille",
-        "lid": "Braille",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Bugi": {
+        "casing": false,
+        "ime": false,
+        "lid": "Buginese",
         "nb": 367,
         "nm": "Buginese",
-        "lid": "Buginese",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Buhd": {
+        "casing": false,
+        "ime": false,
+        "lid": "Buhid",
         "nb": 372,
         "nm": "Buhid",
-        "lid": "Buhid",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Cakm": {
+        "casing": false,
+        "ime": false,
+        "lid": "Chakma",
         "nb": 349,
         "nm": "Chakma",
-        "lid": "Chakma",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Cans": {
+        "casing": false,
+        "ime": true,
+        "lid": "Canadian_Aboriginal",
         "nb": 440,
         "nm": "Unified Canadian Aboriginal Syllabics",
-        "lid": "Canadian_Aboriginal",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Cari": {
+        "casing": false,
+        "ime": false,
+        "lid": "Carian",
         "nb": 201,
         "nm": "Carian",
-        "lid": "Carian",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Cham": {
+        "casing": false,
+        "ime": false,
+        "lid": "Cham",
         "nb": 358,
         "nm": "Cham",
-        "lid": "Cham",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Cher": {
+        "casing": true,
+        "ime": false,
+        "lid": "Cherokee",
         "nb": 445,
         "nm": "Cherokee",
-        "lid": "Cherokee",
-        "rtl": false,
-        "ime": false,
-        "casing": true
+        "rtl": false
     },
     "Chrs": {
+        "casing": false,
+        "ime": false,
+        "lid": "Chorasmian",
         "nb": 109,
         "nm": "Chorasmian",
-        "lid": "Chorasmian",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Cirt": {
+        "lid": "Cirth",
         "nb": 291,
-        "nm": "Cirth",
-        "lid": "Cirth"
+        "nm": "Cirth"
     },
     "Copt": {
+        "casing": true,
+        "ime": false,
+        "lid": "Coptic",
         "nb": 204,
         "nm": "Coptic",
-        "lid": "Coptic",
-        "rtl": false,
-        "ime": false,
-        "casing": true
+        "rtl": false
     },
     "Cpmn": {
+        "casing": false,
+        "ime": true,
+        "lid": "Cypro_Minoan",
         "nb": 402,
         "nm": "Cypro-Minoan",
-        "lid": "Cypro-Minoan",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Cprt": {
+        "casing": false,
+        "ime": false,
+        "lid": "Cypriot",
         "nb": 403,
         "nm": "Cypriot syllabary",
-        "lid": "Cypriot",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Cyrl": {
+        "casing": true,
+        "ime": false,
+        "lid": "Cyrillic",
         "nb": 220,
         "nm": "Cyrillic",
-        "lid": "Cyrillic",
-        "rtl": false,
-        "ime": false,
-        "casing": true
+        "rtl": false
     },
     "Cyrs": {
+        "lid": "Cyrillic_(Old_Church_Slavonic_variant)",
         "nb": 221,
-        "nm": "Cyrillic (Old Church Slavonic variant)",
-        "lid": "Cyrillic_(Old_Church_Slavonic_variant)"
+        "nm": "Cyrillic (Old Church Slavonic variant)"
     },
     "Deva": {
+        "casing": false,
+        "ime": false,
+        "lid": "Devanagari",
         "nb": 315,
         "nm": "Devanagari (Nagari)",
-        "lid": "Devanagari",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Diak": {
+        "casing": false,
+        "ime": true,
+        "lid": "Dives_Akuru",
         "nb": 342,
         "nm": "Dives Akuru",
-        "lid": "Dives_Akuru",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Dogr": {
+        "casing": false,
+        "ime": false,
+        "lid": "Dogra",
         "nb": 328,
         "nm": "Dogra",
-        "lid": "Dogra",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Dsrt": {
+        "casing": true,
+        "ime": false,
+        "lid": "Deseret",
         "nb": 250,
         "nm": "Deseret (Mormon)",
-        "lid": "Deseret",
-        "rtl": false,
-        "ime": false,
-        "casing": true
+        "rtl": false
     },
     "Dupl": {
+        "casing": false,
+        "ime": true,
+        "lid": "Duployan",
         "nb": 755,
         "nm": "Duployan shorthand, Duployan stenography",
-        "lid": "Duployan",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Egyd": {
+        "lid": "Egyptian_demotic",
         "nb": 70,
-        "nm": "Egyptian demotic",
-        "lid": "Egyptian_demotic"
+        "nm": "Egyptian demotic"
     },
     "Egyh": {
+        "lid": "Egyptian_hieratic",
         "nb": 60,
-        "nm": "Egyptian hieratic",
-        "lid": "Egyptian_hieratic"
+        "nm": "Egyptian hieratic"
     },
     "Egyp": {
+        "casing": false,
+        "ime": true,
+        "lid": "Egyptian_Hieroglyphs",
         "nb": 50,
         "nm": "Egyptian hieroglyphs",
-        "lid": "Egyptian_Hieroglyphs",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Elba": {
+        "casing": false,
+        "ime": false,
+        "lid": "Elbasan",
         "nb": 226,
         "nm": "Elbasan",
-        "lid": "Elbasan",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Elym": {
+        "casing": false,
+        "ime": false,
+        "lid": "Elymaic",
         "nb": 128,
         "nm": "Elymaic",
-        "lid": "Elymaic",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Ethi": {
+        "casing": false,
+        "ime": true,
+        "lid": "Ethiopic",
         "nb": 430,
         "nm": "Ethiopic (Geʻez)",
-        "lid": "Ethiopic",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Geok": {
+        "lid": "Georgian",
         "nb": 241,
-        "nm": "Khutsuri (Asomtavruli and Nuskhuri)",
-        "lid": "Georgian"
+        "nm": "Khutsuri (Asomtavruli and Nuskhuri)"
     },
     "Geor": {
+        "casing": false,
+        "ime": false,
+        "lid": "Georgian",
         "nb": 240,
         "nm": "Georgian (Mkhedruli and Mtavruli)",
-        "lid": "Georgian",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Glag": {
+        "casing": true,
+        "ime": false,
+        "lid": "Glagolitic",
         "nb": 225,
         "nm": "Glagolitic",
-        "lid": "Glagolitic",
-        "rtl": false,
-        "ime": false,
-        "casing": true
+        "rtl": false
     },
     "Gong": {
+        "casing": false,
+        "ime": false,
+        "lid": "Gunjala_Gondi",
         "nb": 312,
         "nm": "Gunjala Gondi",
-        "lid": "Gunjala_Gondi",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Gonm": {
+        "casing": false,
+        "ime": false,
+        "lid": "Masaram_Gondi",
         "nb": 313,
         "nm": "Masaram Gondi",
-        "lid": "Masaram_Gondi",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Goth": {
+        "casing": false,
+        "ime": false,
+        "lid": "Gothic",
         "nb": 206,
         "nm": "Gothic",
-        "lid": "Gothic",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Gran": {
+        "casing": false,
+        "ime": false,
+        "lid": "Grantha",
         "nb": 343,
         "nm": "Grantha",
-        "lid": "Grantha",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Grek": {
+        "casing": true,
+        "ime": false,
+        "lid": "Greek",
         "nb": 200,
         "nm": "Greek",
-        "lid": "Greek",
-        "rtl": false,
-        "ime": false,
-        "casing": true
+        "rtl": false
     },
     "Gujr": {
+        "casing": false,
+        "ime": false,
+        "lid": "Gujarati",
         "nb": 320,
         "nm": "Gujarati",
-        "lid": "Gujarati",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Guru": {
+        "casing": false,
+        "ime": false,
+        "lid": "Gurmukhi",
         "nb": 310,
         "nm": "Gurmukhi",
-        "lid": "Gurmukhi",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Hanb": {
+        "casing": false,
+        "ime": true,
+        "lid": "Han_with_Bopomofo_(alias_for_Han_+_Bopomofo)",
         "nb": 503,
         "nm": "Han with Bopomofo (alias for Han + Bopomofo)",
-        "lid": "Han_with_Bopomofo_(alias_for_Han_+_Bopomofo)",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Hang": {
+        "casing": false,
+        "ime": true,
+        "lid": "Hangul",
         "nb": 286,
         "nm": "Hangul (Hangŭl, Hangeul)",
-        "lid": "Hangul",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Hani": {
+        "casing": false,
+        "ime": true,
+        "lid": "Han",
         "nb": 500,
         "nm": "Han (Hanzi, Kanji, Hanja)",
-        "lid": "Han",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Hano": {
+        "casing": false,
+        "ime": false,
+        "lid": "Hanunoo",
         "nb": 371,
         "nm": "Hanunoo (Hanunóo)",
-        "lid": "Hanunoo",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Hans": {
+        "casing": false,
+        "ime": true,
+        "lid": "Han_(Simplified_variant)",
         "nb": 501,
         "nm": "Han (Simplified variant)",
-        "lid": "Han_(Simplified_variant)",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Hant": {
+        "casing": false,
+        "ime": true,
+        "lid": "Han_(Traditional_variant)",
         "nb": 502,
         "nm": "Han (Traditional variant)",
-        "lid": "Han_(Traditional_variant)",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Hatr": {
+        "casing": false,
+        "ime": false,
+        "lid": "Hatran",
         "nb": 127,
         "nm": "Hatran",
-        "lid": "Hatran",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Hebr": {
+        "casing": false,
+        "ime": false,
+        "lid": "Hebrew",
         "nb": 125,
         "nm": "Hebrew",
-        "lid": "Hebrew",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Hira": {
+        "casing": false,
+        "ime": false,
+        "lid": "Hiragana",
         "nb": 410,
         "nm": "Hiragana",
-        "lid": "Hiragana",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Hluw": {
+        "casing": false,
+        "ime": true,
+        "lid": "Anatolian_Hieroglyphs",
         "nb": 80,
         "nm": "Anatolian Hieroglyphs (Luwian Hieroglyphs, Hittite Hieroglyphs)",
-        "lid": "Anatolian_Hieroglyphs",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Hmng": {
+        "casing": false,
+        "ime": false,
+        "lid": "Pahawh_Hmong",
         "nb": 450,
         "nm": "Pahawh Hmong",
-        "lid": "Pahawh_Hmong",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Hmnp": {
+        "casing": false,
+        "ime": false,
+        "lid": "Nyiakeng_Puachue_Hmong",
         "nb": 451,
         "nm": "Nyiakeng Puachue Hmong",
-        "lid": "Nyiakeng_Puachue_Hmong",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Hrkt": {
+        "lid": "Katakana_Or_Hiragana",
         "nb": 412,
-        "nm": "Japanese syllabaries (alias for Hiragana + Katakana)",
-        "lid": "Katakana_Or_Hiragana"
+        "nm": "Japanese syllabaries (alias for Hiragana + Katakana)"
     },
     "Hung": {
+        "casing": true,
+        "ime": false,
+        "lid": "Old_Hungarian",
         "nb": 176,
         "nm": "Old Hungarian (Hungarian Runic)",
-        "lid": "Old_Hungarian",
-        "rtl": true,
-        "ime": false,
-        "casing": true
+        "rtl": true
     },
     "Inds": {
+        "lid": "Indus_(Harappan)",
         "nb": 610,
-        "nm": "Indus (Harappan)",
-        "lid": "Indus_(Harappan)"
+        "nm": "Indus (Harappan)"
     },
     "Ital": {
+        "casing": false,
+        "ime": false,
+        "lid": "Old_Italic",
         "nb": 210,
         "nm": "Old Italic (Etruscan, Oscan, etc.)",
-        "lid": "Old_Italic",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Jamo": {
+        "casing": false,
+        "ime": true,
+        "lid": "Jamo_(alias_for_Jamo_subset_of_Hangul)",
         "nb": 284,
         "nm": "Jamo (alias for Jamo subset of Hangul)",
-        "lid": "Jamo_(alias_for_Jamo_subset_of_Hangul)",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Java": {
+        "casing": false,
+        "ime": false,
+        "lid": "Javanese",
         "nb": 361,
         "nm": "Javanese",
-        "lid": "Javanese",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Jpan": {
+        "casing": false,
+        "ime": true,
+        "lid": "Japanese_(alias_for_Han_+_Hiragana_+_Katakana)",
         "nb": 413,
         "nm": "Japanese (alias for Han + Hiragana + Katakana)",
-        "lid": "Japanese_(alias_for_Han_+_Hiragana_+_Katakana)",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Jurc": {
+        "lid": "Jurchen",
         "nb": 510,
-        "nm": "Jurchen",
-        "lid": "Jurchen"
+        "nm": "Jurchen"
     },
     "Kali": {
+        "casing": false,
+        "ime": false,
+        "lid": "Kayah_Li",
         "nb": 357,
         "nm": "Kayah Li",
-        "lid": "Kayah_Li",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Kana": {
+        "casing": false,
+        "ime": false,
+        "lid": "Katakana",
         "nb": 411,
         "nm": "Katakana",
-        "lid": "Katakana",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
+    },
+    "Kawi": {
+        "lid": "Kawi",
+        "nb": 368,
+        "nm": "Kawi"
     },
     "Khar": {
+        "casing": false,
+        "ime": false,
+        "lid": "Kharoshthi",
         "nb": 305,
         "nm": "Kharoshthi",
-        "lid": "Kharoshthi",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Khmr": {
+        "casing": false,
+        "ime": false,
+        "lid": "Khmer",
         "nb": 355,
         "nm": "Khmer",
-        "lid": "Khmer",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Khoj": {
+        "casing": false,
+        "ime": false,
+        "lid": "Khojki",
         "nb": 322,
         "nm": "Khojki",
-        "lid": "Khojki",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Kitl": {
+        "lid": "Khitan_large_script",
         "nb": 505,
-        "nm": "Khitan large script",
-        "lid": "Khitan_large_script"
+        "nm": "Khitan large script"
     },
     "Kits": {
+        "casing": false,
+        "ime": true,
+        "lid": "Khitan_Small_Script",
         "nb": 288,
         "nm": "Khitan small script",
-        "lid": "Khitan_Small_Script",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Knda": {
+        "casing": false,
+        "ime": false,
+        "lid": "Kannada",
         "nb": 345,
         "nm": "Kannada",
-        "lid": "Kannada",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Kore": {
+        "casing": false,
+        "ime": true,
+        "lid": "Korean_(alias_for_Hangul_+_Han)",
         "nb": 287,
         "nm": "Korean (alias for Hangul + Han)",
-        "lid": "Korean_(alias_for_Hangul_+_Han)",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Kpel": {
+        "lid": "Kpelle",
         "nb": 436,
-        "nm": "Kpelle",
-        "lid": "Kpelle"
+        "nm": "Kpelle"
     },
     "Kthi": {
+        "casing": false,
+        "ime": false,
+        "lid": "Kaithi",
         "nb": 317,
         "nm": "Kaithi",
-        "lid": "Kaithi",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Lana": {
+        "casing": false,
+        "ime": false,
+        "lid": "Tai_Tham",
         "nb": 351,
         "nm": "Tai Tham (Lanna)",
-        "lid": "Tai_Tham",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Laoo": {
+        "casing": false,
+        "ime": false,
+        "lid": "Lao",
         "nb": 356,
         "nm": "Lao",
-        "lid": "Lao",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Latf": {
+        "lid": "Latin_(Fraktur_variant)",
         "nb": 217,
-        "nm": "Latin (Fraktur variant)",
-        "lid": "Latin_(Fraktur_variant)"
+        "nm": "Latin (Fraktur variant)"
     },
     "Latg": {
+        "lid": "Latin_(Gaelic_variant)",
         "nb": 216,
-        "nm": "Latin (Gaelic variant)",
-        "lid": "Latin_(Gaelic_variant)"
+        "nm": "Latin (Gaelic variant)"
     },
     "Latn": {
+        "casing": true,
+        "ime": false,
+        "lid": "Latin",
         "nb": 215,
         "nm": "Latin",
-        "lid": "Latin",
-        "rtl": false,
-        "ime": false,
-        "casing": true
+        "rtl": false
     },
     "Leke": {
+        "lid": "Leke",
         "nb": 364,
-        "nm": "Leke",
-        "lid": "Leke"
+        "nm": "Leke"
     },
     "Lepc": {
+        "casing": false,
+        "ime": false,
+        "lid": "Lepcha",
         "nb": 335,
         "nm": "Lepcha (Róng)",
-        "lid": "Lepcha",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Limb": {
+        "casing": false,
+        "ime": false,
+        "lid": "Limbu",
         "nb": 336,
         "nm": "Limbu",
-        "lid": "Limbu",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Lina": {
+        "casing": false,
+        "ime": true,
+        "lid": "Linear_A",
         "nb": 400,
         "nm": "Linear A",
-        "lid": "Linear_A",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Linb": {
+        "casing": false,
+        "ime": true,
+        "lid": "Linear_B",
         "nb": 401,
         "nm": "Linear B",
-        "lid": "Linear_B",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Lisu": {
+        "casing": false,
+        "ime": true,
+        "lid": "Lisu",
         "nb": 399,
         "nm": "Lisu (Fraser)",
-        "lid": "Lisu",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Loma": {
+        "lid": "Loma",
         "nb": 437,
-        "nm": "Loma",
-        "lid": "Loma"
+        "nm": "Loma"
     },
     "Lyci": {
+        "casing": false,
+        "ime": false,
+        "lid": "Lycian",
         "nb": 202,
         "nm": "Lycian",
-        "lid": "Lycian",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Lydi": {
+        "casing": false,
+        "ime": false,
+        "lid": "Lydian",
         "nb": 116,
         "nm": "Lydian",
-        "lid": "Lydian",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Mahj": {
+        "casing": false,
+        "ime": false,
+        "lid": "Mahajani",
         "nb": 314,
         "nm": "Mahajani",
-        "lid": "Mahajani",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Maka": {
+        "casing": false,
+        "ime": false,
+        "lid": "Makasar",
         "nb": 366,
         "nm": "Makasar",
-        "lid": "Makasar",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Mand": {
+        "casing": false,
+        "ime": false,
+        "lid": "Mandaic",
         "nb": 140,
         "nm": "Mandaic, Mandaean",
-        "lid": "Mandaic",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Mani": {
+        "casing": false,
+        "ime": false,
+        "lid": "Manichaean",
         "nb": 139,
         "nm": "Manichaean",
-        "lid": "Manichaean",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Marc": {
+        "casing": false,
+        "ime": false,
+        "lid": "Marchen",
         "nb": 332,
         "nm": "Marchen",
-        "lid": "Marchen",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Maya": {
+        "lid": "Mayan_hieroglyphs",
         "nb": 90,
-        "nm": "Mayan hieroglyphs",
-        "lid": "Mayan_hieroglyphs"
+        "nm": "Mayan hieroglyphs"
     },
     "Medf": {
+        "casing": true,
+        "ime": false,
+        "lid": "Medefaidrin",
         "nb": 265,
         "nm": "Medefaidrin (Oberi Okaime, Oberi Ɔkaimɛ)",
-        "lid": "Medefaidrin",
-        "rtl": false,
-        "ime": false,
-        "casing": true
+        "rtl": false
     },
     "Mend": {
+        "casing": false,
+        "ime": true,
+        "lid": "Mende_Kikakui",
         "nb": 438,
         "nm": "Mende Kikakui",
-        "lid": "Mende_Kikakui",
-        "rtl": true,
-        "ime": true,
-        "casing": false
+        "rtl": true
     },
     "Merc": {
+        "casing": false,
+        "ime": false,
+        "lid": "Meroitic_Cursive",
         "nb": 101,
         "nm": "Meroitic Cursive",
-        "lid": "Meroitic_Cursive",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Mero": {
+        "casing": false,
+        "ime": false,
+        "lid": "Meroitic_Hieroglyphs",
         "nb": 100,
         "nm": "Meroitic Hieroglyphs",
-        "lid": "Meroitic_Hieroglyphs",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Mlym": {
+        "casing": false,
+        "ime": false,
+        "lid": "Malayalam",
         "nb": 347,
         "nm": "Malayalam",
-        "lid": "Malayalam",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Modi": {
+        "casing": false,
+        "ime": false,
+        "lid": "Modi",
         "nb": 324,
         "nm": "Modi, Moḍī",
-        "lid": "Modi",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Mong": {
+        "casing": false,
+        "ime": false,
+        "lid": "Mongolian",
         "nb": 145,
         "nm": "Mongolian",
-        "lid": "Mongolian",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Moon": {
+        "lid": "Moon_(Moon_code,_Moon_script,_Moon_type)",
         "nb": 218,
-        "nm": "Moon (Moon code, Moon script, Moon type)",
-        "lid": "Moon_(Moon_code,_Moon_script,_Moon_type)"
+        "nm": "Moon (Moon code, Moon script, Moon type)"
     },
     "Mroo": {
+        "casing": false,
+        "ime": false,
+        "lid": "Mro",
         "nb": 264,
         "nm": "Mro, Mru",
-        "lid": "Mro",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Mtei": {
+        "casing": false,
+        "ime": false,
+        "lid": "Meetei_Mayek",
         "nb": 337,
         "nm": "Meitei Mayek (Meithei, Meetei)",
-        "lid": "Meetei_Mayek",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Mult": {
+        "casing": false,
+        "ime": false,
+        "lid": "Multani",
         "nb": 323,
         "nm": "Multani",
-        "lid": "Multani",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Mymr": {
+        "casing": false,
+        "ime": false,
+        "lid": "Myanmar",
         "nb": 350,
         "nm": "Myanmar (Burmese)",
-        "lid": "Myanmar",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
+    },
+    "Nagm": {
+        "lid": "Nag_Mundari",
+        "nb": 295,
+        "nm": "Nag Mundari"
     },
     "Nand": {
+        "casing": false,
+        "ime": false,
+        "lid": "Nandinagari",
         "nb": 311,
         "nm": "Nandinagari",
-        "lid": "Nandinagari",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Narb": {
+        "casing": false,
+        "ime": false,
+        "lid": "Old_North_Arabian",
         "nb": 106,
         "nm": "Old North Arabian (Ancient North Arabian)",
-        "lid": "Old_North_Arabian",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Nbat": {
+        "casing": false,
+        "ime": false,
+        "lid": "Nabataean",
         "nb": 159,
         "nm": "Nabataean",
-        "lid": "Nabataean",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Newa": {
+        "casing": false,
+        "ime": false,
+        "lid": "Newa",
         "nb": 333,
         "nm": "Newa, Newar, Newari, Nepāla lipi",
-        "lid": "Newa",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Nkdb": {
+        "lid": "Naxi_Dongba_(na²¹ɕi³³_to³³ba²¹,_Nakhi_Tomba)",
         "nb": 85,
-        "nm": "Naxi Dongba (na²¹ɕi³³ to³³ba²¹, Nakhi Tomba)",
-        "lid": "Naxi_Dongba_(na²¹ɕi³³_to³³ba²¹,_Nakhi_Tomba)"
+        "nm": "Naxi Dongba (na²¹ɕi³³ to³³ba²¹, Nakhi Tomba)"
     },
     "Nkgb": {
+        "lid": "Naxi_Geba_(na²¹ɕi³³_gʌ²¹ba²¹,_'Na-'Khi_²Ggŏ-¹baw,_Nakhi_Geba)",
         "nb": 420,
-        "nm": "Naxi Geba (na²¹ɕi³³ gʌ²¹ba²¹, 'Na-'Khi ²Ggŏ-¹baw, Nakhi Geba)",
-        "lid": "Naxi_Geba_(na²¹ɕi³³_gʌ²¹ba²¹,_'Na-'Khi_²Ggŏ-¹baw,_Nakhi_Geba)"
+        "nm": "Naxi Geba (na²¹ɕi³³ gʌ²¹ba²¹, 'Na-'Khi ²Ggŏ-¹baw, Nakhi Geba)"
     },
     "Nkoo": {
+        "casing": false,
+        "ime": false,
+        "lid": "Nko",
         "nb": 165,
         "nm": "N’Ko",
-        "lid": "Nko",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Nshu": {
+        "casing": false,
+        "ime": true,
+        "lid": "Nushu",
         "nb": 499,
         "nm": "Nüshu",
-        "lid": "Nushu",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Ogam": {
+        "casing": false,
+        "ime": false,
+        "lid": "Ogham",
         "nb": 212,
         "nm": "Ogham",
-        "lid": "Ogham",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Olck": {
+        "casing": false,
+        "ime": false,
+        "lid": "Ol_Chiki",
         "nb": 261,
         "nm": "Ol Chiki (Ol Cemet’, Ol, Santali)",
-        "lid": "Ol_Chiki",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Orkh": {
+        "casing": false,
+        "ime": false,
+        "lid": "Old_Turkic",
         "nb": 175,
         "nm": "Old Turkic, Orkhon Runic",
-        "lid": "Old_Turkic",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Orya": {
+        "casing": false,
+        "ime": false,
+        "lid": "Oriya",
         "nb": 327,
         "nm": "Oriya (Odia)",
-        "lid": "Oriya",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Osge": {
+        "casing": true,
+        "ime": false,
+        "lid": "Osage",
         "nb": 219,
         "nm": "Osage",
-        "lid": "Osage",
-        "rtl": false,
-        "ime": false,
-        "casing": true
+        "rtl": false
     },
     "Osma": {
+        "casing": false,
+        "ime": false,
+        "lid": "Osmanya",
         "nb": 260,
         "nm": "Osmanya",
-        "lid": "Osmanya",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Ougr": {
+        "casing": false,
+        "ime": false,
+        "lid": "Old_Uyghur",
         "nb": 143,
         "nm": "Old Uyghur",
-        "lid": "Old_Uyghur",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Palm": {
+        "casing": false,
+        "ime": false,
+        "lid": "Palmyrene",
         "nb": 126,
         "nm": "Palmyrene",
-        "lid": "Palmyrene",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Pauc": {
+        "casing": false,
+        "ime": false,
+        "lid": "Pau_Cin_Hau",
         "nb": 263,
         "nm": "Pau Cin Hau",
-        "lid": "Pau_Cin_Hau",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Pcun": {
+        "lid": "Proto-Cuneiform",
         "nb": 15,
-        "nm": "Proto-Cuneiform",
-        "lid": "Proto-Cuneiform"
+        "nm": "Proto-Cuneiform"
     },
     "Pelm": {
+        "lid": "Proto-Elamite",
         "nb": 16,
-        "nm": "Proto-Elamite",
-        "lid": "Proto-Elamite"
+        "nm": "Proto-Elamite"
     },
     "Perm": {
+        "casing": false,
+        "ime": false,
+        "lid": "Old_Permic",
         "nb": 227,
         "nm": "Old Permic",
-        "lid": "Old_Permic",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Phag": {
+        "casing": false,
+        "ime": false,
+        "lid": "Phags_Pa",
         "nb": 331,
         "nm": "Phags-pa",
-        "lid": "Phags_Pa",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Phli": {
+        "casing": false,
+        "ime": false,
+        "lid": "Inscriptional_Pahlavi",
         "nb": 131,
         "nm": "Inscriptional Pahlavi",
-        "lid": "Inscriptional_Pahlavi",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Phlp": {
+        "casing": false,
+        "ime": false,
+        "lid": "Psalter_Pahlavi",
         "nb": 132,
         "nm": "Psalter Pahlavi",
-        "lid": "Psalter_Pahlavi",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Phlv": {
+        "lid": "Book_Pahlavi",
         "nb": 133,
-        "nm": "Book Pahlavi",
-        "lid": "Book_Pahlavi"
+        "nm": "Book Pahlavi"
     },
     "Phnx": {
+        "casing": false,
+        "ime": false,
+        "lid": "Phoenician",
         "nb": 115,
         "nm": "Phoenician",
-        "lid": "Phoenician",
-        "rtl": true,
-        "ime": false,
-        "casing": false
-    },
-    "Plrd": {
-        "nb": 282,
-        "nm": "Miao (Pollard)",
-        "lid": "Miao",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Piqd": {
+        "lid": "Klingon_(KLI_pIqaD)",
         "nb": 293,
-        "nm": "Klingon (KLI pIqaD)",
-        "lid": "Klingon_(KLI_pIqaD)"
+        "nm": "Klingon (KLI pIqaD)"
+    },
+    "Plrd": {
+        "casing": false,
+        "ime": false,
+        "lid": "Miao",
+        "nb": 282,
+        "nm": "Miao (Pollard)",
+        "rtl": false
     },
     "Prti": {
+        "casing": false,
+        "ime": false,
+        "lid": "Inscriptional_Parthian",
         "nb": 130,
         "nm": "Inscriptional Parthian",
-        "lid": "Inscriptional_Parthian",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Psin": {
+        "lid": "Proto-Sinaitic",
         "nb": 103,
-        "nm": "Proto-Sinaitic",
-        "lid": "Proto-Sinaitic"
+        "nm": "Proto-Sinaitic"
     },
     "Qaaa": {
+        "lid": "Reserved_for_private_use_(start)",
         "nb": 900,
-        "nm": "Reserved for private use (start)",
-        "lid": "Reserved_for_private_use_(start)"
+        "nm": "Reserved for private use (start)"
     },
     "Qabx": {
+        "lid": "Reserved_for_private_use_(end)",
         "nb": 949,
-        "nm": "Reserved for private use (end)",
-        "lid": "Reserved_for_private_use_(end)"
+        "nm": "Reserved for private use (end)"
     },
     "Ranj": {
+        "lid": "Ranjana",
         "nb": 303,
-        "nm": "Ranjana",
-        "lid": "Ranjana"
+        "nm": "Ranjana"
     },
     "Rjng": {
+        "casing": false,
+        "ime": false,
+        "lid": "Rejang",
         "nb": 363,
         "nm": "Rejang (Redjang, Kaganga)",
-        "lid": "Rejang",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Rohg": {
+        "casing": false,
+        "ime": false,
+        "lid": "Hanifi_Rohingya",
         "nb": 167,
         "nm": "Hanifi Rohingya",
-        "lid": "Hanifi_Rohingya",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Roro": {
+        "lid": "Rongorongo",
         "nb": 620,
-        "nm": "Rongorongo",
-        "lid": "Rongorongo"
+        "nm": "Rongorongo"
     },
     "Runr": {
+        "casing": false,
+        "ime": false,
+        "lid": "Runic",
         "nb": 211,
         "nm": "Runic",
-        "lid": "Runic",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Samr": {
+        "casing": false,
+        "ime": false,
+        "lid": "Samaritan",
         "nb": 123,
         "nm": "Samaritan",
-        "lid": "Samaritan",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Sara": {
+        "lid": "Sarati",
         "nb": 292,
-        "nm": "Sarati",
-        "lid": "Sarati"
+        "nm": "Sarati"
     },
     "Sarb": {
+        "casing": false,
+        "ime": false,
+        "lid": "Old_South_Arabian",
         "nb": 105,
         "nm": "Old South Arabian",
-        "lid": "Old_South_Arabian",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Saur": {
+        "casing": false,
+        "ime": false,
+        "lid": "Saurashtra",
         "nb": 344,
         "nm": "Saurashtra",
-        "lid": "Saurashtra",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Sgnw": {
+        "casing": false,
+        "ime": true,
+        "lid": "SignWriting",
         "nb": 95,
         "nm": "SignWriting",
-        "lid": "SignWriting",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Shaw": {
+        "casing": false,
+        "ime": false,
+        "lid": "Shavian",
         "nb": 281,
         "nm": "Shavian (Shaw)",
-        "lid": "Shavian",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Shrd": {
+        "casing": false,
+        "ime": false,
+        "lid": "Sharada",
         "nb": 319,
         "nm": "Sharada, Śāradā",
-        "lid": "Sharada",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Shui": {
+        "lid": "Shuishu",
         "nb": 530,
-        "nm": "Shuishu",
-        "lid": "Shuishu"
+        "nm": "Shuishu"
     },
     "Sidd": {
+        "casing": false,
+        "ime": false,
+        "lid": "Siddham",
         "nb": 302,
         "nm": "Siddham, Siddhaṃ, Siddhamātṛkā",
-        "lid": "Siddham",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Sind": {
+        "casing": false,
+        "ime": false,
+        "lid": "Khudawadi",
         "nb": 318,
         "nm": "Khudawadi, Sindhi",
-        "lid": "Khudawadi",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Sinh": {
+        "casing": false,
+        "ime": false,
+        "lid": "Sinhala",
         "nb": 348,
         "nm": "Sinhala",
-        "lid": "Sinhala",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Sogd": {
+        "casing": false,
+        "ime": false,
+        "lid": "Sogdian",
         "nb": 141,
         "nm": "Sogdian",
-        "lid": "Sogdian",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Sogo": {
+        "casing": false,
+        "ime": false,
+        "lid": "Old_Sogdian",
         "nb": 142,
         "nm": "Old Sogdian",
-        "lid": "Old_Sogdian",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Sora": {
+        "casing": false,
+        "ime": false,
+        "lid": "Sora_Sompeng",
         "nb": 398,
         "nm": "Sora Sompeng",
-        "lid": "Sora_Sompeng",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Soyo": {
+        "casing": false,
+        "ime": false,
+        "lid": "Soyombo",
         "nb": 329,
         "nm": "Soyombo",
-        "lid": "Soyombo",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Sund": {
+        "casing": false,
+        "ime": false,
+        "lid": "Sundanese",
         "nb": 362,
         "nm": "Sundanese",
-        "lid": "Sundanese",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
+    },
+    "Sunu": {
+        "lid": "Sunuwar",
+        "nb": 274,
+        "nm": "Sunuwar"
     },
     "Sylo": {
+        "casing": false,
+        "ime": false,
+        "lid": "Syloti_Nagri",
         "nb": 316,
         "nm": "Syloti Nagri",
-        "lid": "Syloti_Nagri",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Syrc": {
+        "casing": false,
+        "ime": false,
+        "lid": "Syriac",
         "nb": 135,
         "nm": "Syriac",
-        "lid": "Syriac",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Syre": {
+        "lid": "Syriac_(Estrangelo_variant)",
         "nb": 138,
-        "nm": "Syriac (Estrangelo variant)",
-        "lid": "Syriac_(Estrangelo_variant)"
+        "nm": "Syriac (Estrangelo variant)"
     },
     "Syrj": {
+        "lid": "Syriac_(Western_variant)",
         "nb": 137,
-        "nm": "Syriac (Western variant)",
-        "lid": "Syriac_(Western_variant)"
+        "nm": "Syriac (Western variant)"
     },
     "Syrn": {
+        "lid": "Syriac_(Eastern_variant)",
         "nb": 136,
-        "nm": "Syriac (Eastern variant)",
-        "lid": "Syriac_(Eastern_variant)"
+        "nm": "Syriac (Eastern variant)"
     },
     "Tagb": {
+        "casing": false,
+        "ime": false,
+        "lid": "Tagbanwa",
         "nb": 373,
         "nm": "Tagbanwa",
-        "lid": "Tagbanwa",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Takr": {
+        "casing": false,
+        "ime": false,
+        "lid": "Takri",
         "nb": 321,
         "nm": "Takri, Ṭākrī, Ṭāṅkrī",
-        "lid": "Takri",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Tale": {
+        "casing": false,
+        "ime": false,
+        "lid": "Tai_Le",
         "nb": 353,
         "nm": "Tai Le",
-        "lid": "Tai_Le",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Talu": {
+        "casing": false,
+        "ime": false,
+        "lid": "New_Tai_Lue",
         "nb": 354,
         "nm": "New Tai Lue",
-        "lid": "New_Tai_Lue",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Taml": {
+        "casing": false,
+        "ime": false,
+        "lid": "Tamil",
         "nb": 346,
         "nm": "Tamil",
-        "lid": "Tamil",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Tang": {
+        "casing": false,
+        "ime": true,
+        "lid": "Tangut",
         "nb": 520,
         "nm": "Tangut",
-        "lid": "Tangut",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Tavt": {
+        "casing": false,
+        "ime": false,
+        "lid": "Tai_Viet",
         "nb": 359,
         "nm": "Tai Viet",
-        "lid": "Tai_Viet",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Telu": {
+        "casing": false,
+        "ime": false,
+        "lid": "Telugu",
         "nb": 340,
         "nm": "Telugu",
-        "lid": "Telugu",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Teng": {
+        "lid": "Tengwar",
         "nb": 290,
-        "nm": "Tengwar",
-        "lid": "Tengwar"
+        "nm": "Tengwar"
     },
     "Tfng": {
+        "casing": false,
+        "ime": false,
+        "lid": "Tifinagh",
         "nb": 120,
         "nm": "Tifinagh (Berber)",
-        "lid": "Tifinagh",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Tglg": {
+        "casing": false,
+        "ime": false,
+        "lid": "Tagalog",
         "nb": 370,
         "nm": "Tagalog (Baybayin, Alibata)",
-        "lid": "Tagalog",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Thaa": {
+        "casing": false,
+        "ime": false,
+        "lid": "Thaana",
         "nb": 170,
         "nm": "Thaana",
-        "lid": "Thaana",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Thai": {
+        "casing": false,
+        "ime": false,
+        "lid": "Thai",
         "nb": 352,
         "nm": "Thai",
-        "lid": "Thai",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Tibt": {
+        "casing": false,
+        "ime": false,
+        "lid": "Tibetan",
         "nb": 330,
         "nm": "Tibetan",
-        "lid": "Tibetan",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Tirh": {
+        "casing": false,
+        "ime": false,
+        "lid": "Tirhuta",
         "nb": 326,
         "nm": "Tirhuta",
-        "lid": "Tirhuta",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Tnsa": {
+        "casing": false,
+        "ime": false,
+        "lid": "Tangsa",
         "nb": 275,
         "nm": "Tangsa",
-        "lid": "Tangsa",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Toto": {
+        "casing": false,
+        "ime": false,
+        "lid": "Toto",
         "nb": 294,
         "nm": "Toto",
-        "lid": "Toto",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Ugar": {
+        "casing": false,
+        "ime": false,
+        "lid": "Ugaritic",
         "nb": 40,
         "nm": "Ugaritic",
-        "lid": "Ugaritic",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Vaii": {
+        "casing": false,
+        "ime": true,
+        "lid": "Vai",
         "nb": 470,
         "nm": "Vai",
-        "lid": "Vai",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Visp": {
+        "lid": "Visible_Speech",
         "nb": 280,
-        "nm": "Visible Speech",
-        "lid": "Visible_Speech"
+        "nm": "Visible Speech"
     },
     "Vith": {
+        "casing": true,
+        "ime": false,
+        "lid": "Vithkuqi",
         "nb": 228,
         "nm": "Vithkuqi",
-        "lid": "Vithkuqi",
-        "rtl": false,
-        "ime": false,
-        "casing": true
+        "rtl": false
     },
     "Wara": {
+        "casing": true,
+        "ime": false,
+        "lid": "Warang_Citi",
         "nb": 262,
         "nm": "Warang Citi (Varang Kshiti)",
-        "lid": "Warang_Citi",
-        "rtl": false,
-        "ime": false,
-        "casing": true
+        "rtl": false
     },
     "Wcho": {
+        "casing": false,
+        "ime": false,
+        "lid": "Wancho",
         "nb": 283,
         "nm": "Wancho",
-        "lid": "Wancho",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Wole": {
+        "lid": "Woleai",
         "nb": 480,
-        "nm": "Woleai",
-        "lid": "Woleai"
+        "nm": "Woleai"
     },
     "Xpeo": {
+        "casing": false,
+        "ime": false,
+        "lid": "Old_Persian",
         "nb": 30,
         "nm": "Old Persian",
-        "lid": "Old_Persian",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Xsux": {
+        "casing": false,
+        "ime": true,
+        "lid": "Cuneiform",
         "nb": 20,
         "nm": "Cuneiform, Sumero-Akkadian",
-        "lid": "Cuneiform",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Yezi": {
+        "casing": false,
+        "ime": false,
+        "lid": "Yezidi",
         "nb": 192,
         "nm": "Yezidi",
-        "lid": "Yezidi",
-        "rtl": true,
-        "ime": false,
-        "casing": false
+        "rtl": true
     },
     "Yiii": {
+        "casing": false,
+        "ime": true,
+        "lid": "Yi",
         "nb": 460,
         "nm": "Yi",
-        "lid": "Yi",
-        "rtl": false,
-        "ime": true,
-        "casing": false
+        "rtl": false
     },
     "Zanb": {
+        "casing": false,
+        "ime": false,
+        "lid": "Zanabazar_Square",
         "nb": 339,
         "nm": "Zanabazar Square (Zanabazarin Dörböljin Useg, Xewtee Dörböljin Bicig, Horizontal Square Script)",
-        "lid": "Zanabazar_Square",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Zinh": {
+        "casing": false,
+        "ime": false,
+        "lid": "Inherited",
         "nb": 994,
         "nm": "Code for inherited script",
-        "lid": "Inherited",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Zmth": {
+        "lid": "Mathematical_notation",
         "nb": 995,
-        "nm": "Mathematical notation",
-        "lid": "Mathematical_notation"
+        "nm": "Mathematical notation"
     },
     "Zsye": {
+        "lid": "Symbols_(Emoji_variant)",
         "nb": 993,
-        "nm": "Symbols (Emoji variant)",
-        "lid": "Symbols_(Emoji_variant)"
+        "nm": "Symbols (Emoji variant)"
     },
     "Zsym": {
+        "lid": "Symbols",
         "nb": 996,
-        "nm": "Symbols",
-        "lid": "Symbols"
+        "nm": "Symbols"
     },
     "Zxxx": {
+        "lid": "Code_for_unwritten_documents",
         "nb": 997,
-        "nm": "Code for unwritten documents",
-        "lid": "Code_for_unwritten_documents"
+        "nm": "Code for unwritten documents"
     },
     "Zyyy": {
+        "casing": false,
+        "ime": false,
+        "lid": "Common",
         "nb": 998,
         "nm": "Code for undetermined script",
-        "lid": "Common",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     },
     "Zzzz": {
+        "casing": false,
+        "ime": false,
+        "lid": "Unknown",
         "nb": 999,
         "nm": "Code for uncoded script",
-        "lid": "Unknown",
-        "rtl": false,
-        "ime": false,
-        "casing": false
+        "rtl": false
     }
 }

@@ -119,7 +119,7 @@ module.exports.testunitfmt_yo_BJ = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "2 square-centimeter");
+        test.equal(str, "2 cm²");
         test.done();
     },
     testUnitFormatArea3_yo_BJ: function(test) {
@@ -153,7 +153,7 @@ module.exports.testunitfmt_yo_BJ = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "10 square-kilometer");
+        test.equal(str, "10 km²");
         test.done();
     },
     testUnitFormatFuelConsumption1_yo_BJ: function(test) {

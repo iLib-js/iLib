@@ -169,8 +169,8 @@
     "Monténégro": "ME",
     "Morisɛ": "MU",
     "Moritani": "MR",
-    "Mozambíki": "MZ",
     "Mɔsera": "MS",
+    "Mozambíki": "MZ",
     "Namibi": "NA",
     "Nauru": "NR",
     "Nepálɛ": "NP",
@@ -283,7 +283,7 @@
     "Western Asia": "145",
     "Western Europe": "155",
     "Western Sahara": "EH",
-    "World": "001",
+    "world": "001",
     "Yemɛnɛ": "YE",
     "Zamaiki": "JM",
     "Zambi": "ZM",
@@ -291,6 +291,6 @@
     "Zelandɛ ya sika": "NZ",
     "Zibatalɛ": "GI",
     "Zimbabwe": "ZW",
-    "Zorzi": "GE",
-    "Zɔdani": "JO"
+    "Zɔdani": "JO",
+    "Zorzi": "GE"
 }

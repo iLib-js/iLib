@@ -1,56 +1,56 @@
 {
     "gregorian": {
         "date": {
-            "dmwy": {
-                "s": "yyyy/M/dE",
-                "m": "yyyy年M月d日EE",
-                "l": "yyyy年M月d日EEE",
-                "f": "yyyy年M月d日EEEE"
-            },
             "dmw": {
-                "s": "M/dE",
-                "m": "M月d日EE",
+                "f": "M月d日EEEE",
                 "l": "M月d日EEE",
-                "f": "M月d日EEEE"
+                "m": "M月d日EE",
+                "s": "M/dE"
+            },
+            "dmwy": {
+                "f": "yyyy年M月d日EEEE",
+                "l": "yyyy年M月d日EEE",
+                "m": "yyyy年M月d日EE",
+                "s": "yyyy/M/dE"
             },
             "dw": {
-                "s": "dE",
-                "m": "d日EE",
+                "f": "d日EEEE",
                 "l": "d日EEE",
-                "f": "d日EEEE"
-            },
-            "l": {
-                "f": "L",
-                "l": "L",
-                "m": "L",
-                "s": "L"
+                "m": "d日EE",
+                "s": "dE"
             },
             "e": {
                 "f": "cccc",
                 "l": "ccc",
                 "m": "cc",
                 "s": "c"
+            },
+            "l": {
+                "f": "L",
+                "l": "L",
+                "m": "L",
+                "s": "L"
             }
         },
         "time": {
             "12": {
+                "ah": "ah时",
                 "ahmsz": "z ah:mm:ss",
-                "hmsz": "z h:mm:ss",
                 "ahmz": "z ah:mm",
-                "hmz": "z h:mm",
-                "ah": "ah时"
+                "hmsz": "z h:mm:ss",
+                "hmz": "z h:mm"
             },
             "24": {
-                "ahmsz": "z HH:mm:ss",
-                "ahms": "HH:mm:ss",
-                "hmsz": "z HH:mm:ss",
-                "hms": "HH:mm:ss",
-                "ahmz": "z HH:mm",
-                "ahm": "HH:mm",
-                "hmz": "z HH:mm",
                 "ah": "HH",
+                "ahm": "HH:mm",
+                "ahms": "HH:mm:ss",
+                "ahmsz": "z HH:mm:ss",
+                "ahmz": "z HH:mm",
+                "h": "HH",
                 "hm": "HH:mm",
-                "h": "HH"
+                "hms": "HH:mm:ss",
+                "hmsz": "z HH:mm:ss",
+                "hmz": "z HH:mm"
             }
         }
     }

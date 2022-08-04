@@ -4273,11 +4273,11 @@ module.exports.testdatetimeformat = {
         result1 = new DateFmt({locale:"en-RW", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
         result2 = new DateFmt({locale:"en-RW", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
 
-        test.equal(result1, "EEEE, d MMMM yyyy 'at' h:mm a");
-        test.equal(result2, "E, dd/MM/yyyy, h:mm a");
+        test.equal(result1, "EEEE, d MMMM yyyy 'at' HH:mm");
+        test.equal(result2, "E, dd/MM/yyyy, HH:mm");
 
         result1 = new DateFmt({locale:"en-RW", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
-        test.equal(result1, "h:mm:ss a z");
+        test.equal(result1, "HH:mm:ss z");
 
         test.done();
     },

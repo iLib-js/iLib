@@ -1,7 +1,7 @@
 {
+    "1#1 sec ago|#{num} sec ago": "#{num}秒前",
+    "1#1 second ago|#{num} seconds ago": "#{num}秒前",
     "1#1 second|#{num} seconds": "#{num}秒",
     "1#in 1 second|#in {num} seconds": "#{num}秒后",
-    "1#in 1 sec|#in {num} sec": "#{num}秒后",
-    "1#1 second ago|#{num} seconds ago": "#{num}秒前",
-    "1#1 sec ago|#{num} sec ago": "#{num}秒前"
+    "1#in 1 sec|#in {num} sec": "#{num}秒后"
 }

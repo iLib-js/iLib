@@ -1,6 +1,6 @@
 {
+    "generated": true,
     "paperSizes": {
         "regular": "A4"
-    },
-    "generated": true
+    }
 }

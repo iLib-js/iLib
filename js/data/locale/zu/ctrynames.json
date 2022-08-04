@@ -1,5 +1,4 @@
 {
-    "Eurozone": "EZ",
     "i-Afghanistan": "AF",
     "i-Africa": "002",
     "i-Åland Islands": "AX",
@@ -88,6 +87,7 @@
     "i-Ethiopia": "ET",
     "i-Europe": "150",
     "i-European Union": "EU",
+    "I-Eurozone": "EZ",
     "i-Falkland Islands": "FK",
     "i-Faroe Islands": "FO",
     "i-Fiji": "FJ",

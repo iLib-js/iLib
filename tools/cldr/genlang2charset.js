@@ -123,6 +123,7 @@ output["*"] = [
     "UTF-16LE"
 ];
 
+console.log("Writing lang2charset.json");
 fs.writeFileSync(path.join(localeDir, "lang2charset.json"), JSON.stringify(output, undefined, 4), "utf-8");
 
 console.log("Done.");

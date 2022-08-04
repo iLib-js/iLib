@@ -2141,7 +2141,7 @@ module.exports = {
     /**
      * Find the distance between two objects in terms of number of properties that
      * are missing or have different values.
-     * @param {Object} leftt
+     * @param {Object} left
      * @param {Object} right
      * @return {number} the number of difference between the objects
      */
@@ -2327,10 +2327,9 @@ module.exports = {
     writeFormats: function(outputDir, outfile, group, localeComponents) {
         var dir = path.join.apply(undefined, [outputDir].concat(localeComponents));
         var filename = path.join(dir, outfile);
-        var contents = stringify(group.data, {space: 4});
-
+        var contents = JSON.stringify(group.data, undefined, 4); // to filter out `{\n}` case
         // don't write out empty files!
-        if (contents !== "{}") {
+        if (group.data && contents !== "{}") {
             console.log(localeComponents.join("-") + " ");
 
             makeDirs(dir);

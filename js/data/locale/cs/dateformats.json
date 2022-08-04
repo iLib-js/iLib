@@ -1,126 +1,4 @@
 {
-    "gregorian": {
-        "date": {
-            "dmwy": {
-                "s": "E dd.MM.yy",
-                "m": "EE d. M. yyyy",
-                "l": "EEE d. MMMM yyyy",
-                "f": "EEEE d. MMMM yyyy"
-            },
-            "dmy": {
-                "s": "dd.MM.yy",
-                "m": "d. M. yyyy",
-                "l": "d. MMMM yyyy",
-                "f": "d. MMMM yyyy"
-            },
-            "dmw": {
-                "s": "E dd.MM",
-                "m": "EE d. M",
-                "l": "EEE d. MMMM",
-                "f": "EEEE d. MMMM"
-            },
-            "dm": {
-                "s": "dd.MM",
-                "m": "d. M",
-                "l": "d. MMMM",
-                "f": "d. MMMM"
-            },
-            "my": {
-                "s": "MM.yy",
-                "m": "M. yyyy",
-                "l": "MMMM yyyy"
-            },
-            "dw": {
-                "s": "E dd"
-            },
-            "d": {
-                "f": "d",
-                "l": "d",
-                "m": "d",
-                "s": "dd"
-            },
-            "m": {
-                "s": "MM",
-                "m": "M",
-                "l": "MMMM"
-            },
-            "mys": {
-                "f": "LLLL yyyy",
-                "l": "LLLL yyyy",
-                "m": "M. yyyy",
-                "s": "MM.yy"
-            },
-            "l": {
-                "f": "LLLL",
-                "l": "LLLL",
-                "m": "L",
-                "s": "LL"
-            }
-        },
-        "time": {
-            "12": {
-                "ahmsz": "h:mm:ss a z",
-                "ahms": "h:mm:ss a",
-                "ahmz": "h:mm a z",
-                "ahm": "h:mm a",
-                "ah": "h a"
-            }
-        },
-        "range": {
-            "c00": {
-                "s": "{sd}.{sm}.{sy} {st} – {et}",
-                "m": "{sd}. {sm}. {sy} {st} – {et}",
-                "l": "{sd}. {sm} {sy} {st} – {et}",
-                "f": "{sd}. {sm} {sy} {st} – {et}"
-            },
-            "c01": {
-                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
-                "m": "{sd}. {sm}. {sy} {st} – {ed}. {em}. {ey} {et}",
-                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}"
-            },
-            "c02": {
-                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
-                "m": "{sd}. {sm}. {sy} {st} – {ed}. {em}. {ey} {et}",
-                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}"
-            },
-            "c03": {
-                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
-                "m": "{sd}. {sm}. {sy} {st} – {ed}. {em}. {ey} {et}",
-                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}"
-            },
-            "c10": {
-                "s": "{sd} – {ed}.{em}.{ey}",
-                "m": "{sd} – {ed}. {em}. {ey}",
-                "l": "{sd} – {ed}. {em} {ey}",
-                "f": "{sd} – {ed}. {em} {ey}"
-            },
-            "c11": {
-                "s": "{sd}.{sm} – {ed}.{em}.{ey}",
-                "m": "{sd}. {sm} – {ed}. {em}. {ey}",
-                "l": "{sd}. {sm} – {ed}. {em} {ey}",
-                "f": "{sd}. {sm} – {ed}. {em} {ey}"
-            },
-            "c12": {
-                "s": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
-                "m": "{sd}. {sm}. {sy} – {ed}. {em}. {ey}",
-                "l": "{sd}. {sm} {sy} – {ed}. {em} {ey}",
-                "f": "{sd}. {sm} {sy} – {ed}. {em} {ey}"
-            },
-            "c20": {
-                "s": "{sm}.{sy} – {em}.{ey}",
-                "m": "{sm}. {sy} – {em}. {ey}"
-            },
-            "c30": {
-                "f": "{sy} – {ey}",
-                "l": "{sy} – {ey}",
-                "m": "{sy} – {ey}",
-                "s": "{sy} – {ey}"
-            }
-        }
-    },
     "dayPeriods": [
         {
             "at": 0
@@ -156,5 +34,127 @@
             "from": 1320,
             "to": 240
         }
-    ]
+    ],
+    "gregorian": {
+        "date": {
+            "d": {
+                "f": "d",
+                "l": "d",
+                "m": "d",
+                "s": "dd"
+            },
+            "dm": {
+                "f": "d. MMMM",
+                "l": "d. MMMM",
+                "m": "d. M",
+                "s": "dd.MM"
+            },
+            "dmw": {
+                "f": "EEEE d. MMMM",
+                "l": "EEE d. MMMM",
+                "m": "EE d. M",
+                "s": "E dd.MM"
+            },
+            "dmwy": {
+                "f": "EEEE d. MMMM yyyy",
+                "l": "EEE d. MMMM yyyy",
+                "m": "EE d. M. yyyy",
+                "s": "E dd.MM.yy"
+            },
+            "dmy": {
+                "f": "d. MMMM yyyy",
+                "l": "d. MMMM yyyy",
+                "m": "d. M. yyyy",
+                "s": "dd.MM.yy"
+            },
+            "dw": {
+                "s": "E dd"
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "L",
+                "s": "LL"
+            },
+            "m": {
+                "l": "MMMM",
+                "m": "M",
+                "s": "MM"
+            },
+            "my": {
+                "l": "MMMM yyyy",
+                "m": "M. yyyy",
+                "s": "MM.yy"
+            },
+            "mys": {
+                "f": "LLLL yyyy",
+                "l": "LLLL yyyy",
+                "m": "M. yyyy",
+                "s": "MM.yy"
+            }
+        },
+        "range": {
+            "c00": {
+                "f": "{sd}. {sm} {sy} {st} – {et}",
+                "l": "{sd}. {sm} {sy} {st} – {et}",
+                "m": "{sd}. {sm}. {sy} {st} – {et}",
+                "s": "{sd}.{sm}.{sy} {st} – {et}"
+            },
+            "c01": {
+                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
+                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
+                "m": "{sd}. {sm}. {sy} {st} – {ed}. {em}. {ey} {et}",
+                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
+            },
+            "c02": {
+                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
+                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
+                "m": "{sd}. {sm}. {sy} {st} – {ed}. {em}. {ey} {et}",
+                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
+            },
+            "c03": {
+                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
+                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
+                "m": "{sd}. {sm}. {sy} {st} – {ed}. {em}. {ey} {et}",
+                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
+            },
+            "c10": {
+                "f": "{sd} – {ed}. {em} {ey}",
+                "l": "{sd} – {ed}. {em} {ey}",
+                "m": "{sd} – {ed}. {em}. {ey}",
+                "s": "{sd} – {ed}.{em}.{ey}"
+            },
+            "c11": {
+                "f": "{sd}. {sm} – {ed}. {em} {ey}",
+                "l": "{sd}. {sm} – {ed}. {em} {ey}",
+                "m": "{sd}. {sm} – {ed}. {em}. {ey}",
+                "s": "{sd}.{sm} – {ed}.{em}.{ey}"
+            },
+            "c12": {
+                "f": "{sd}. {sm} {sy} – {ed}. {em} {ey}",
+                "l": "{sd}. {sm} {sy} – {ed}. {em} {ey}",
+                "m": "{sd}. {sm}. {sy} – {ed}. {em}. {ey}",
+                "s": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}"
+            },
+            "c20": {
+                "m": "{sm}. {sy} – {em}. {ey}",
+                "s": "{sm}.{sy} – {em}.{ey}"
+            },
+            "c30": {
+                "f": "{sy} – {ey}",
+                "l": "{sy} – {ey}",
+                "m": "{sy} – {ey}",
+                "s": "{sy} – {ey}"
+            }
+        },
+        "time": {
+            "12": {
+                "ah": "h a",
+                "ahm": "h:mm a",
+                "ahms": "h:mm:ss a",
+                "ahmsz": "h:mm:ss a z",
+                "ahmz": "h:mm a z"
+            }
+        }
+    }
 }

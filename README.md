@@ -196,7 +196,7 @@ section about webpack for links.
 Copyright and License
 -------
 
-Copyright (c) 2011-2021, JEDLSoft
+Copyright (c) 2011-2022, JEDLSoft
 
 Ilib is licensed under the Apache License, Version 2.0 (the "License");
 you may not use this library except in compliance with the License.

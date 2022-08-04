@@ -6208,7 +6208,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ks-Arab-IN");
         test.ok(info !== null);
     
-        test.equal(info.getCurrencyFormats().common, "{s} {n}");
+        test.equal(info.getCurrencyFormats().common, '{s}{n}');
         test.done();
     },
     
@@ -6235,7 +6235,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ks-Arab-IN");
         test.ok(info !== null);
     
-        test.equal(info.getCurrencyFormats().commonNegative, "‎-‎{s} {n}");
+        test.equal(info.getCurrencyFormats().commonNegative, '‎-‎{s}{n}');
         test.done();
     },
     
@@ -6253,7 +6253,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ks-Arab-IN");
         test.ok(info !== null);
     
-        test.equal(info.getSecondaryGroupingDigits(), 2);
+        test.equal(info.getSecondaryGroupingDigits(), 0);
         test.done();
     },
     
@@ -12674,7 +12674,7 @@ module.exports.testlocaleinfo = {
         test.expect(2);
         var li = new LocaleInfo("uz-UZ");
         test.ok(typeof(li) !== "undefined");
-        test.equal(li.getDefaultScript(), "Arab");
+        test.equal(li.getDefaultScript(), "Latn");
         test.done();
     },
     
@@ -12690,7 +12690,7 @@ module.exports.testlocaleinfo = {
         test.expect(2);
         var li = new LocaleInfo("uz-UZ");
         test.ok(typeof(li) !== "undefined");
-        test.equal(li.getScript(), "Arab");
+        test.equal(li.getScript(), "Latn");
         test.done();
     },
     
@@ -12737,6 +12737,20 @@ module.exports.testlocaleinfo = {
         var li = new LocaleInfo("cic");
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getLanguageName(), "Chickasaw");
+        test.done();
+    },
+    testLocaleInfoGetLanguageName6: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("crh");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getLanguageName(), "Crimean Tatar");
+        test.done();
+    },
+    testLocaleInfoGetLanguageName7: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("ojs");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getLanguageName(), "Oji-Cree");
         test.done();
     },
     

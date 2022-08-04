@@ -23,6 +23,8 @@
  */
 
 var fs = require('fs');
+var stringify = require('json-stable-stringify');
+
 var common = require('./common');
 var Locale = common.Locale;
 
@@ -63,15 +65,29 @@ var likelySubtags, likelySubtagsData, filename, json;
 
 var localematch = {};
 
+// cldr is missing these
+var hardCodedSubtags = {
+    "bn-IN": "bn-Beng-IN",
+    "en-KR": "en-Latn-KR",
+    "hr-HU": "hr-Latn-HU",
+    "ka-IR": "ka-Geor-IR",
+    "ko-US": "ko-Kore-US",
+    "ku-IQ": "ku-Arab-IQ",
+    "ps-PK": "ps-Arab-PK",
+    "pt-MO": "pt-Latn-MO",
+    "yo-BJ": "yo-Latn-BJ"
+};
+
 // Likely Locales
 
 var likelylocales = {};
 likelySubtagsData = likelySubtags.supplemental;
+var likelySubtags = Object.assign({}, likelySubtagsData.likelySubtags, hardCodedSubtags);
 
-for (var partial in likelySubtagsData.likelySubtags) {
-    if (partial && likelySubtagsData.likelySubtags[partial]) {
+for (var partial in likelySubtags) {
+    if (partial && likelySubtags[partial]) {
         var partialLoc = new Locale(partial);
-        var full = new Locale(likelySubtagsData.likelySubtags[partial]);
+        var full = new Locale(likelySubtags[partial]);
         if (partialLoc.language === "und") {
             var cleanloc = new Locale(undefined, partialLoc.script, partialLoc.region);
 

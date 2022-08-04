@@ -1,7 +1,7 @@
 /*
  * testdatefmt_az_Latn_AZ.js - test the date formatter object in Latin Azerbaijani
  *
- * Copyright © 2016-2017,2020-2021 JEDLSoft
+ * Copyright © 2016-2017,2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,7 +45,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.done();
     },
     
-    
     testDateFmtSimpleShort_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "short"});
@@ -81,6 +80,40 @@ module.exports.testdatefmt_az_Latn_AZ = {
             millisecond: 0
         });
         test.equal(fmt.format(date), "29 sen 2011");
+        test.done();
+    },
+
+    testDateFmtSimpleMedium_az_Latn_AZ_useIntl: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("az-Latn-AZ")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        var fmt = new DateFmt({locale: "az-Latn-AZ", length: "long", useIntl: true});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "az-Latn-AZ",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        
+        if(ilib._getPlatform() === "nodejs"){
+            test.equal(fmt.format(date), "29 sentyabr 2011");
+        } else {
+            var browser = ilib._getBrowser();
+            if(browser === "firefox"){
+                test.equal(fmt.format(date), "29 sentyabr 2011");
+            } else {
+                test.equal(fmt.format(date), "2011 M09 29");
+            }
+        }
         test.done();
     },
     

@@ -72,8 +72,8 @@
     "KM": "Comoras",
     "KP": "Corea del Norte",
     "KR": "Corea del Sur",
+    "CI": "Costa de Marfil",
     "CR": "Costa Rica",
-    "CI": "Côte d’Ivoire",
     "HR": "Croacia",
     "CU": "Cuba",
     "CW": "Curazao",
@@ -93,6 +93,7 @@
     "SZ": "Esuatini",
     "ET": "Etiopía",
     "039": "Europa meridional",
+    "EZ": "Eurozona",
     "PH": "Filipinas",
     "FI": "Finlandia",
     "FJ": "Fiyi",
@@ -231,7 +232,7 @@
     "RW": "Ruanda",
     "RO": "Rumanía",
     "RU": "Rusia",
-    "EH": "Sáhara Occidental",
+    "EH": "Sahara Occidental",
     "WS": "Samoa",
     "AS": "Samoa Americana",
     "BL": "San Bartolomé",
@@ -291,6 +292,5 @@
     "YE": "Yemen",
     "DJ": "Yibuti",
     "ZM": "Zambia",
-    "ZW": "Zimbabue",
-    "EZ": "zona euro"
+    "ZW": "Zimbabue"
 }

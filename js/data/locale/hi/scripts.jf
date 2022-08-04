@@ -1,8 +1,8 @@
 {
+    "generated": true,
     "scripts": [
         "Deva",
         "Latn",
         "Mahj"
-    ],
-    "generated": true
+    ]
 }

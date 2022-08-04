@@ -1,7 +1,7 @@
 {
+    "generated": true,
     "scripts": [
         "Laoo",
         "Latn"
-    ],
-    "generated": true
+    ]
 }
