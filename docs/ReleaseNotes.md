@@ -1,6 +1,14 @@
 Release Notes for Version 14
 ============================
 
+Build 023
+-------
+Published as version 14.16.0
+
+New Features:
+
+Bug Fixes:
+* Fixed to generate `plurals.json` files even when the rule only have `others`
 
 Build 023
 -------
