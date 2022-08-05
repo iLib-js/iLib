@@ -285,7 +285,7 @@ function writePluralsData(locale, data) {
         console.log("Writing " + fullpath);
         makeDirs(fullpath);
         if (Object.keys(data).length ==0 ){
-            fs.writeFileSync(path.join(fullpath, "plurals.json"), stringify({"others": ""}, {space: 4}), "utf-8");
+            fs.writeFileSync(path.join(fullpath, "plurals.json"), stringify({"other": ""}, {space: 4}), "utf-8");
         } else {
             fs.writeFileSync(path.join(fullpath, "plurals.json"), stringify(data, {space: 4}), "utf-8");
         }
