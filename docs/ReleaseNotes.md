@@ -1,7 +1,6 @@
 Release Notes for Version 14
 ============================
 
-
 Build 023
 -------
 Published as version 14.15.0
@@ -17,9 +16,9 @@ New Features:
 Bug Fixes:
 * Fixed a bug where the DateFmt.formatRelative() does not represent correct result in certain case.
 * Updated locale data to have a consistently sorted order by rerunning cldr tool code.
-* Fixed a bug which a default script for `uz` should be `Latin` instead of `Arabic`
-* Updated hardcoded locales for LocaleMatcher (bn-IN, en-KR, hr-HU, ka-IR, ko-US, ku-IQ, ps-PK, pt-MO)
-
+* Fixed a bug which a default script for `uz` should be `Latin` instead of `Arabic`.
+* Updated hardcoded locales for LocaleMatcher. (bn-IN, en-KR, hr-HU, ka-IR, ko-US, ku-IQ, ps-PK, pt-MO)
+* Fixed to generate `plurals.json` files even when the rule only has `other`.
 
 Build 022
 -------
