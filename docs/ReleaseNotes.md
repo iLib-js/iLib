@@ -6,7 +6,7 @@ Build 024
 Published as version 14.15.1
 
 Bug Fixes:
-* Updated to load `plurals.json` in ResBundle Constructor, then you could call call synchronously all the time because we can be sure if is alread loaded.
+* Updated to load `plurals.json` in ResBundle Constructor, then you could call call synchronously all the time because we can be sure if is already loaded.
 
 
 Build 023
