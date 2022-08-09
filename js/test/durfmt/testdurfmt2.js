@@ -9725,7 +9725,7 @@ module.exports.testdurfmt2 = {
             clockformatted_17.push(textfmt.format({hour: 17, minute: 17, second: 17}).toString());
         }
 
-        test.equal(textformatted_1[0], '1 afọ, 1 ọnwa, 1 izu, na 1 ụbọchị');
+        test.equal(textformatted_1[0], 'Afọ 1, Ọnwa 1, Izu 1, na Ụbọchị 1');
         test.equal(textformatted_1[1], '1 y, 1 m, 1 w, 1 d');
         test.equal(textformatted_1[2], '1 y, 1 m, 1 w, 1 d');
         test.equal(textformatted_1[3], '1 y, 1 m, 1 w, 1 d');
@@ -9735,7 +9735,7 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_17[2], '17 y, 17 m, 17 w, 17 d');
         test.equal(textformatted_17[3], '17 y, 17 m, 17 w, 17 d');
 
-        test.equal(clockformatted_1[0], '1 elekere, 1 Nkeji, na 1 sekọnd');
+        test.equal(clockformatted_1[0], 'awa 1, 1 Nkeji, na 1 sekọnd');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
         test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');
         test.equal(clockformatted_1[3], '1 h, 1 min, 1 s');
