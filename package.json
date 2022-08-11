@@ -1,6 +1,6 @@
 {
     "name": "ilib",
-    "version": "14.15.1",
+    "version": "14.15.0",
     "main": "js/index.js",
     "description": "iLib is a cross-engine library of internationalization (i18n) classes written in pure JS",
     "keywords": [
