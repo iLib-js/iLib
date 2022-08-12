@@ -1,6 +1,7 @@
 Release Notes for Version 14
 ============================
 
+
 Build 023
 -------
 Published as version 14.15.0
@@ -19,6 +20,7 @@ Bug Fixes:
 * Fixed a bug which a default script for `uz` should be `Latin` instead of `Arabic`.
 * Updated hardcoded locales for LocaleMatcher. (bn-IN, en-KR, hr-HU, ka-IR, ko-US, ku-IQ, ps-PK, pt-MO)
 * Fixed to generate `plurals.json` files even when the rule only has `other`.
+* Updated to load `plurals.json` in ResBundle Constructor, then you could call synchronously all the time because we can be sure if is already loaded.
 
 Build 022
 -------

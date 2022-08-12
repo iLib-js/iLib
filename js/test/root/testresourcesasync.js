@@ -1,7 +1,7 @@
 /*
  * testresourcesasync.js - test the Resources object
  *
- * Copyright © 2018-2019, JEDLSoft
+ * Copyright © 2018-2019, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,11 @@ if (typeof(ilib) === "undefined") {
 if (typeof(ResBundle) === "undefined") {
     var ResBundle = require("../../lib/ResBundle.js");
 }
+
+if (typeof(IString) === "undefined") {
+    var IString = require("../../lib/IString.js");
+}
+
 if (typeof(Locale) === "undefined") {
     var Locale = require("../../lib/Locale.js");
 }
@@ -57,6 +62,58 @@ module.exports.testresourcesasync = {
                 var loc = rb.getLocale();
 
                 test.equal(loc.toString(), "de-DE");
+                test.done();
+            }
+        });
+    },
+
+    testResBundleAsyncLocaleformatChoice_de_DE: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+
+        test.expect(2);
+        
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        new ResBundle({
+            locale: "de-DE",
+            sync: false,
+            basePath: base,
+            onLoad: function(rb) {
+                var loc = rb.getLocale();
+                test.equal(loc.toString(), "de-DE");
+
+                var str = new IString("one#({N}) file selected|#({N}) files selected");
+                var temp = rb.getString(str);
+                test.equal(temp.formatChoice(2, {N:2}), "(2) Dateien ausgewählt");
+
+                test.done();
+            }
+        });
+    },
+
+    testResBundleAsyncLocaleformatChoice_ko_KR: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+
+        test.expect(2);
+        ilib.clearCache();
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        new ResBundle({
+            locale: "ko-KR",
+            sync: false,
+            basePath: base,
+            onLoad: function(rb) {
+                var loc = rb.getLocale();
+                test.equal(loc.toString(), "ko-KR");
+
+                var str = new IString("one#({N}) file selected|#({N}) files selected");
+                var temp = rb.getString(str);
+                test.equal(temp.formatChoice(1, {N:1}), "(1)개 파일 선택됨(other)");
+
                 test.done();
             }
         });
