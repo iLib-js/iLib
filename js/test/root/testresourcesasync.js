@@ -74,7 +74,8 @@ module.exports.testresourcesasync = {
         }
 
         test.expect(2);
-        
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
         var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
         new ResBundle({
             locale: "de-DE",
@@ -100,6 +101,7 @@ module.exports.testresourcesasync = {
         }
 
         test.expect(2);
+        // clear this to be sure it is actually loading something
         ilib.clearCache();
         var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
         new ResBundle({
