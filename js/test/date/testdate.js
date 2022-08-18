@@ -1,7 +1,7 @@
 /*
  * testdate.js - test the date object
  *
- * Copyright © 2012-2015,2017,2021 JEDLSoft
+ * Copyright © 2012-2015,2017,2021-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -412,13 +412,13 @@ module.exports.testdate = {
     },
     testDstStartBoundary_Santiago: function(test) {
         test.expect(2);
-        var boundaryiLib = DateFactory({year: 2020,month: 9,day: 6,hour: 0,minute: 0,second: 0,timezone: "America/Santiago"});
+        var boundaryiLib = DateFactory({year: 2020,month: 9,day: 13,hour: 0,minute: 0,second: 0,timezone: "America/Santiago"});
         // we can't set time zone to Date object, so compare with constant value
-        // 1599364800000: new Date(2020, 8, 6, 0, 0, 0).getTime() with Santiago local time
-        test.equal(boundaryiLib.getTimeExtended(), 1599364800000);
-        var ildMyBday = DateFactory({unixtime: 1599364800000});
+        // 1599969600000: new Date(2020, 8, 6, 0, 0, 0).getTime() with Santiago local time
+        test.equal(boundaryiLib.getTimeExtended(), 1599969600000);
+        var ildMyBday = DateFactory({unixtime: 1599969600000});
         var fmt = new DateFmt({length: "short", type:"datetime",locale:"es-CL", timezone:"America/Santiago"});
-        test.equal(fmt.format(ildMyBday), "06-09-20, 01:00");
+        test.equal(fmt.format(ildMyBday), "13-09-20, 01:00");
 
         test.done();
     },

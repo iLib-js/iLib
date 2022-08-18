@@ -175,11 +175,24 @@ for (var zone in timezones) {
     }
 }
 
+// some hard-coded backwards zones that map to a zone in a different country
+// which confuses the countryToZones lists!
+var backwardsExceptions = {
+    "Iceland": "IS",
+    "Pacific/Ponape": "FM",
+    "Pacific/Truk": "FM",
+    "Pacific/Yap": "FM"
+};
+
 // now deal with backwards maps so that they appear in the right country's list of zones
 for (var oldzone in backwardsMap) {
     var newzone = backwardsMap[oldzone];
     if (countries[newzone] && (!countries[oldzone] || countries[newzone] === countries[oldzone])) {
-        countryToZones[countries[newzone]].add(oldzone);
+        if (backwardsExceptions[oldzone]) {
+            countryToZones[backwardsExceptions[oldzone]].add(oldzone);
+        } else {
+            countryToZones[countries[newzone]].add(oldzone);
+        }
     } else if (countries[oldzone]) {
         countryToZones[countries[oldzone]].add(oldzone);
     }
