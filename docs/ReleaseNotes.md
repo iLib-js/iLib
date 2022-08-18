@@ -21,6 +21,8 @@ Bug Fixes:
 * Updated hardcoded locales for LocaleMatcher. (bn-IN, en-KR, hr-HU, ka-IR, ko-US, ku-IQ, ps-PK, pt-MO)
 * Fixed to generate `plurals.json` files even when the rule only has `other`.
 * Updated to load `plurals.json` in ResBundle Constructor, then you could call synchronously all the time because we can be sure if is already loaded.
+* Fixed a bug where the Currency was loaded always synchronously.
+
 
 Build 022
 -------
