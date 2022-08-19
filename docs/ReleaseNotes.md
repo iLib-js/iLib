@@ -23,6 +23,7 @@ Bug Fixes:
 * Updated to load `plurals.json` in ResBundle Constructor, then you could call synchronously all the time because we can be sure if is already loaded.
 * Fixed a bug where the Currency didn't work asynchronously.
 * Update to time zone data 2022c
+* Fixed to handle both absolute and relative paths correctly in `ilib-web.js`.
 
 Build 022
 -------

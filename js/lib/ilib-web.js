@@ -59,9 +59,9 @@ var requireClass = function() {
     for (var i = 0; i < scripts.length; i++) {
         var source = scripts[i].src;
         if (source && (pos = source.search(/ilib-web\.js$/)) !== -1) {
-            var colon = source.indexOf('://');
-            this.protocol = source.substring(0,colon+3);
-            this.root = source.substring(colon+3, pos-1);
+            var url = new URL(source);
+            this.protocol = url.protocol + "//";
+            this.root = url.pathname;
             break;
         }
     }
