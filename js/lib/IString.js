@@ -1,7 +1,7 @@
 /*
  * IString.js - ilib string subclass definition
  *
- * Copyright © 2012-2015, 2018, 2021 JEDLSoft
+ * Copyright © 2012-2015, 2018, 2021-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -856,26 +856,67 @@ IString.prototype = {
 
         var args = (ilib.isArray(argIndex)) ? argIndex : [argIndex];
 
-        // then apply the argument index (or indices)
-        for (i = 0; i < limits.length; i++) {
-            if (limits[i].length === 0) {
-                // this is default case
-                defaultCase = new IString(strings[i]);
-            } else {
-                var limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
-
-                var applicable = true;
-                for (var j = 0; applicable && j < args.length && j < limitsArr.length; j++) {
-                    applicable = this._testChoice(args[j], limitsArr[j]);
+        if (this.intlPlural){
+            this.cateArr = [];
+            for(i = 0; i < args.length;i++) {
+                var r = this.intlPlural.select(args[i]);
+                this.cateArr.push(r);
+            }
+            if (args.length == 1) {
+                var idx = limits.indexOf(this.cateArr[0]);
+                if (idx == -1) {
+                    idx = limits.indexOf("");
                 }
+                result = new IString(strings[idx]);
+            } else {
+                if (limits.length === 0) {
+                    defaultCase = new IString(strings[i]);
+                } else {
+                    this.findOne = false;
 
-                if (applicable) {
-                    result = new IString(strings[i]);
-                    i = limits.length;
+                    for(i = 0; !this.findOne && i < limits.length; i++){
+                        var limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
+
+                        if (limitsArr.length > 1 && (limitsArr.length < this.cateArr.length)){
+                            this.cateArr = this.cateArr.slice(0,limitsArr.length);
+                        }
+                        limitsArr = limitsArr.map(function(item){
+                            return item.trim();
+                        })
+                        limitsArr.filter(ilib.bind(this, function(element, idx, arr){
+                            if (JSON.stringify(arr) === JSON.stringify(this.cateArr)){
+                                this.number = i;
+                                this.fineOne = true;
+                            }
+                        }));
+                    }
+                    if (this.number == -1){
+                        this.number = limits.indexOf("");
+                    }
+                    result = new IString(strings[this.number]);
+                }
+            }
+        } else {
+            // then apply the argument index (or indices)
+            for (i = 0; i < limits.length; i++) {
+                if (limits[i].length === 0) {
+                    // this is default case
+                    defaultCase = new IString(strings[i]);
+                } else {
+                    var limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
+
+                    var applicable = true;
+                    for (var j = 0; applicable && j < args.length && j < limitsArr.length; j++) {
+                        applicable = this._testChoice(args[j], limitsArr[j]);
+                    }
+
+                    if (applicable) {
+                        result = new IString(strings[i]);
+                        i = limits.length;
+                    }
                 }
             }
         }
-
         if (!result) {
             result = defaultCase || new IString("");
         }
@@ -1414,6 +1455,12 @@ IString.prototype = {
         } else {
             this.localeSpec = locale;
             this.locale = new Locale(locale);
+        }
+
+        if (typeof(Intl) !== 'undefined' && typeof(this.locale.getVariant()) == `undefined`){
+            if (Intl.PluralRules.supportedLocalesOf(this.locale.getSpec()).length > 0){
+                this.intlPlural = new Intl.PluralRules(this.locale.getSpec());
+            }
         }
 
         IString.loadPlurals(typeof(sync) !== 'undefined' ? sync : true, this.locale, loadParams, onLoad);
