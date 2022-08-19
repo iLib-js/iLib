@@ -1,6 +1,6 @@
 {
-    "f": "HST",
-    "o": "-10:0",
     "c": "US",
-    "n": "Hawaiian {c} Time"
+    "f": "HST",
+    "n": "Hawaiian {c} Time",
+    "o": "-10:0"
 }

@@ -1,6 +1,6 @@
 {
-    "f": "CST",
-    "o": "-6:0",
     "c": "CR",
-    "n": "Central America {c} Time"
+    "f": "CST",
+    "n": "Central America {c} Time",
+    "o": "-6:0"
 }
