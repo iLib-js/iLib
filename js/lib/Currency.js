@@ -1,7 +1,7 @@
 /*
  * Currency.js - Currency definition
  *
- * Copyright © 2012-2015, 2018, JEDLSoft
+ * Copyright © 2012-2015, 2018, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -105,12 +105,9 @@ var Currency = function (options) {
         if (options.loadParams) {
             this.loadParams = options.loadParams;
         }
+        options.sync = (typeof(options.sync) !== 'undefined') ? options.sync : true;
     } else {
         options = {sync: true};
-    }
-
-    if (typeof(options.sync) === 'undefined') {
-        options.sync = true;
     }
 
     this.locale = this.locale || new Locale();
@@ -119,7 +116,7 @@ var Currency = function (options) {
             name: "currency.json",
             object: "Currency",
             locale: "-",
-            sync: this.sync,
+            sync: options.sync,
             loadParams: this.loadParams,
             callback: ilib.bind(this, function(currency) {
                 ilib.data.currency = currency;
