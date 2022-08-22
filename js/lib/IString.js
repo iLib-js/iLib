@@ -832,7 +832,7 @@ IString.prototype = {
         var limit;
         var result = undefined;
         var defaultCase = "";
-
+        var checkArgsType;
         if (this.str.length === 0) {
             // nothing to do
             return "";
@@ -856,7 +856,14 @@ IString.prototype = {
 
         var args = (ilib.isArray(argIndex)) ? argIndex : [argIndex];
 
-        if (this.intlPlural){
+        checkArgsType = args.filter(ilib.bind(this, function(item){
+            if (typeof(item) !== `number`) {
+                return false;
+            }
+            return true;
+        }))
+
+        if (this.intlPlural && (args.length === checkArgsType.length)){
             this.cateArr = [];
             for(i = 0; i < args.length;i++) {
                 var r = this.intlPlural.select(args[i]);
