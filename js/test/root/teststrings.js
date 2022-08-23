@@ -974,7 +974,7 @@ module.exports.teststrings = {
             pages: 5
         };
         
-        test.equal(str.formatChoice([params.num,params.pages,10], params), "22 items (few) on 5 pages.");
+        test.equal(str.formatChoice([params.num,params.pages,10], params, false), "22 items (few) on 5 pages.");
         test.done();
     },
 
