@@ -4494,6 +4494,7 @@ module.exports.teststrings = {
 
         if (ilib._getPlatform() === "nodejs") {
             test.equal(str.formatChoice(2.1e6), "Default items"); // wrong result base on cldr41
+            // same result on chrome 102.0.5005.115 (Official Build) (64-bit)
         } else {
             test.equal(str.formatChoice(2.1e6), "The items are many");
         }
