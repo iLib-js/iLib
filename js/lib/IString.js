@@ -823,16 +823,16 @@ IString.prototype = {
      * @throws "syntax error in choice format pattern: " if there is a syntax error
      * @return {string} the formatted string
      */
-    formatChoice: function(argIndex, params) {
+    formatChoice: function(argIndex, params, useIntlPlural) {
         var choices = this.str.split("|");
         var limits = [];
         var strings = [];
         var i;
         var parts;
-        var limit;
         var result = undefined;
         var defaultCase = "";
         var checkArgsType;
+        var useIntl = typeof(useIntlPlural) !== 'undefined' ? useIntlPlural : true;
         if (this.str.length === 0) {
             // nothing to do
             return "";
@@ -863,7 +863,7 @@ IString.prototype = {
             return true;
         }))
 
-        if (this.intlPlural && (args.length === checkArgsType.length)){
+        if (useIntl && this.intlPlural && (args.length === checkArgsType.length)){
             this.cateArr = [];
             for(i = 0; i < args.length;i++) {
                 var r = this.intlPlural.select(args[i]);

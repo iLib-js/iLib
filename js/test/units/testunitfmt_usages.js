@@ -2789,7 +2789,7 @@ module.exports.testunitfmt_usages = {
             locale: "be-BY"
         });
         var str = uf.format(m1);
-        test.equal(str, "3,2 кубічныя метры");
+        test.equal(str, "3,2 кубічнага метра");
         test.done();
     },
 
@@ -2920,7 +2920,7 @@ module.exports.testunitfmt_usages = {
             locale: "be-BY"
         });
         var str = uf.format(m1);
-        test.equal(str, "3,2 кубічныя метры");
+        test.equal(str, "3,2 кубічнага метра");
         test.done();
     },
 

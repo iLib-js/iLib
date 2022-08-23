@@ -84,7 +84,7 @@ module.exports.testunitfmt_be_BY = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "-16,666666666666668 градусы Цэльсія");
+        test.equal(str, "-16,666666666666668 градуса Цэльсія");
         test.done();
     },
     testUnitFormatArea1_be_BY: function(test) {

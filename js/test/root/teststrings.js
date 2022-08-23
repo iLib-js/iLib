@@ -3244,7 +3244,13 @@ module.exports.teststrings = {
         test.ok(str !== null);
 
         if (ilib._getPlatform() === "nodejs") {
-            test.equal(str.formatChoice(1000000), "Default items"); // wrong result base on cldr41
+            var version = process.versions["node"];
+            var majorVersion = version.split(".")[0];
+            if (Number(majorVersion) < 16) {
+                test.equal(str.formatChoice(1000000), "Default items"); // wrong result base on cldr41
+            } else {
+                test.equal(str.formatChoice(1000000), "The items are many");
+            }
         } else {
             test.equal(str.formatChoice(1000000), "The items are many");
         }
@@ -3857,7 +3863,13 @@ module.exports.teststrings = {
         test.ok(str !== null);
 
         if (ilib._getPlatform() === "nodejs") {
-            test.equal(str.formatChoice(1000000), "Default items"); // wrong result base on cldr41
+            var version = process.versions["node"];
+            var majorVersion = version.split(".")[0];
+            if (Number(majorVersion) < 16) {
+                test.equal(str.formatChoice(1000000), "Default items"); // wrong result base on cldr41
+            } else {
+                test.equal(str.formatChoice(1000000), "The items are many");
+            }
         } else {
             test.equal(str.formatChoice(1000000), "The items are many");
         }
@@ -3868,8 +3880,15 @@ module.exports.teststrings = {
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("it-IT");
         test.ok(str !== null);
+
         if (ilib._getPlatform() === "nodejs") {
-            test.equal(str.formatChoice(3e6), "Default items"); // wrong result base on cldr41
+            var version = process.versions["node"];
+            var majorVersion = version.split(".")[0];
+            if (Number(majorVersion) < 16) {
+                test.equal(str.formatChoice(3e6), "Default items"); // wrong result base on cldr41
+            } else {
+                test.equal(str.formatChoice(3e6), "The items are many");
+            }
         } else {
             test.equal(str.formatChoice(3e6), "The items are many");
         }
@@ -3882,7 +3901,13 @@ module.exports.teststrings = {
         test.ok(str !== null);
 
         if (ilib._getPlatform() === "nodejs") {
-            test.equal(str.formatChoice(1000000), "Default items"); // wrong result base on cldr41
+            var version = process.versions["node"];
+            var majorVersion = version.split(".")[0];
+            if (Number(majorVersion) < 16) {
+                test.equal(str.formatChoice(1000000), "Default items"); // wrong result base on cldr41
+            } else {
+                test.equal(str.formatChoice(1000000), "The items are many");
+            }
         }  else {
             test.equal(str.formatChoice(1000000), "The items are many");
         }
@@ -3904,7 +3929,13 @@ module.exports.teststrings = {
         test.ok(str !== null);
 
         if (ilib._getPlatform() === "nodejs") {
-            test.equal(str.formatChoice(5e6), "Default items"); // wrong result base on cldr41
+            var version = process.versions["node"];
+            var majorVersion = version.split(".")[0];
+            if (Number(majorVersion) < 16) {
+                test.equal(str.formatChoice(5e6), "Default items"); // wrong result base on cldr41
+            } else {
+                test.equal(str.formatChoice(5e6), "The items are many");
+            }
         } else {
             test.equal(str.formatChoice(5e6), "The items are many");
         }
