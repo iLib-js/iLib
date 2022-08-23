@@ -686,6 +686,28 @@ IString.prototype = {
 
         return false;
     },
+    /** @private */
+    _isIntlPluralAvailable: function(locale) {
+        if (typeof (locale.getVariant()) !== 'undefined'){
+            return false;
+        }
+
+        if (typeof(Intl) !== 'undefined') {
+            if (ilib._getPlatform() === 'nodejs') {
+                var version = process.versions["node"];
+                var majorVersion = version.split(".")[0];
+                if (Number(majorVersion) >= 10 && (Intl.PluralRules.supportedLocalesOf(locale.getSpec()).length > 0)) {
+                    return true;
+                }
+                return false;
+            } else if (Intl.PluralRules.supportedLocalesOf(locale.getSpec()).length > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+    },
 
     /**
      * Format a string as one of a choice of strings dependent on the value of
@@ -1464,10 +1486,8 @@ IString.prototype = {
             this.locale = new Locale(locale);
         }
 
-        if (typeof(Intl) !== 'undefined' && typeof(this.locale.getVariant()) == `undefined`){
-            if (Intl.PluralRules.supportedLocalesOf(this.locale.getSpec()).length > 0){
-                this.intlPlural = new Intl.PluralRules(this.locale.getSpec());
-            }
+        if (this._isIntlPluralAvailable(this.locale)){
+            this.intlPlural = new Intl.PluralRules(this.locale.getSpec());
         }
 
         IString.loadPlurals(typeof(sync) !== 'undefined' ? sync : true, this.locale, loadParams, onLoad);
