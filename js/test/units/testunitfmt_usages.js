@@ -2789,7 +2789,17 @@ module.exports.testunitfmt_usages = {
             locale: "be-BY"
         });
         var str = uf.format(m1);
-        test.equal(str, "3,2 кубічнага метра");
+        if (ilib._getPlatform() === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 40) {
+                test.equal(str, "3,2 кубічныя метры");
+            } else {
+                test.equal(str, "3,2 кубічнага метра");
+            }
+        } else {
+            test.equal(str, "3,2 кубічнага метра");
+        }
+        
         test.done();
     },
 
@@ -2920,7 +2930,17 @@ module.exports.testunitfmt_usages = {
             locale: "be-BY"
         });
         var str = uf.format(m1);
-        test.equal(str, "3,2 кубічнага метра");
+
+        if (ilib._getPlatform() === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 40) {
+                test.equal(str, "3,2 кубічныя метры");
+            } else {
+                test.equal(str, "3,2 кубічнага метра");
+            }
+        } else {
+            test.equal(str, "3,2 кубічнага метра");
+        }
         test.done();
     },
 
