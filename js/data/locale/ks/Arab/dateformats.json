@@ -28,16 +28,16 @@
         },
         "range": {
             "c00": {
-                "s": "{sm}/{sd}/{sy} {st} – {et}"
+                "s": "{sm}/{sd}/{sy}, {st} – {et}"
             },
             "c01": {
-                "s": "{sm}/{sd}/{sy} {st} – {em}/{ed}/{ey} {et}"
+                "s": "{sm}/{sd}/{sy}, {st} – {em}/{ed}/{ey}, {et}"
             },
             "c02": {
-                "s": "{sm}/{sd}/{sy} {st} – {em}/{ed}/{ey} {et}"
+                "s": "{sm}/{sd}/{sy}, {st} – {em}/{ed}/{ey}, {et}"
             },
             "c03": {
-                "s": "{sm}/{sd}/{sy} {st} – {em}/{ed}/{ey} {et}"
+                "s": "{sm}/{sd}/{sy}, {st} – {em}/{ed}/{ey}, {et}"
             },
             "c10": {
                 "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
