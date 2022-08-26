@@ -87,7 +87,7 @@ module.exports.testunitfmt_be_BY = {
 
         if (ilib._getPlatform() === "nodejs") {
             var cldrVersion = process.versions["cldr"];
-            if (Number(cldrVersion) < 40) {
+            if (Number(cldrVersion) < 35) {
                 test.equal(str, "-16,666666666666668 градусы Цэльсія");
             } else {
                 test.equal(str, "-16,666666666666668 градуса Цэльсія");

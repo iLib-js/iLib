@@ -879,7 +879,7 @@ IString.prototype = {
         var args = (ilib.isArray(argIndex)) ? argIndex : [argIndex];
 
         checkArgsType = args.filter(ilib.bind(this, function(item){
-            if (typeof(item) !== `number`) {
+            if (typeof(item) !== "number") {
                 return false;
             }
             return true;
