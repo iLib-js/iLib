@@ -2791,7 +2791,7 @@ module.exports.testunitfmt_usages = {
         var str = uf.format(m1);
         if (ilib._getPlatform() === "nodejs") {
             var cldrVersion = process.versions["cldr"];
-            if (Number(cldrVersion) < 35) {
+            if (Number(cldrVersion) < 36) {
                 test.equal(str, "3,2 кубічныя метры");
             } else {
                 test.equal(str, "3,2 кубічнага метра");
@@ -2933,7 +2933,7 @@ module.exports.testunitfmt_usages = {
 
         if (ilib._getPlatform() === "nodejs") {
             var cldrVersion = process.versions["cldr"];
-            if (Number(cldrVersion) < 35) {
+            if (Number(cldrVersion) < 36) {
                 test.equal(str, "3,2 кубічныя метры");
             } else {
                 test.equal(str, "3,2 кубічнага метра");

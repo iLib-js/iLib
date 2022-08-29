@@ -696,11 +696,10 @@ module.exports.teststrings = {
             pages: 0
         };
         
-        console.log(" Platform: " + ilib._getPlatform());
         if (ilib._getPlatform() === "nodejs") {
             var cldrVersion = process.versions["cldr"];
             console.log("******* nodeVersion: " + process.versions.node + " cldrVersion: "  + cldrVersion + "******* ");
-            if (Number(cldrVersion) < 34) {
+            if (Number(cldrVersion) < 36) {
                 test.equal(str.formatChoice([params.num,params.pages], params), "0 items on 0 pages.");
             } else {
                 test.equal(str.formatChoice([params.num,params.pages], params), "0 items (many) on 0 pages (many).");
@@ -3848,7 +3847,7 @@ module.exports.teststrings = {
 
         if (ilib._getPlatform() === "nodejs") {
             var cldrVersion = process.versions["cldr"];
-            if (Number(cldrVersion) < 35) { // Intl.PluralRules doesn't support this locale until this version.
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(0), "There are no items.");
             } else {
                 test.equal(str.formatChoice(0), "The items are few");
@@ -4089,7 +4088,7 @@ module.exports.teststrings = {
 
         if (ilib._getPlatform() === "nodejs") {
             var cldrVersion = process.versions["cldr"];
-            if (Number(cldrVersion) < 35) { // Intl.PluralRules doesn't support this locale until this version.
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(5.2), "The items are few");
             } else {
                 test.equal(str.formatChoice(5.2), "Default items"); // wrong result based on cldr41
@@ -4204,7 +4203,7 @@ module.exports.teststrings = {
 
         if (ilib._getPlatform() === "nodejs") {
             var cldrVersion = process.versions["cldr"];
-            if (Number(cldrVersion) < 35) { // Intl.PluralRules doesn't support this locale until this version.
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(0.0), "There are no items.");
             } else {
                 test.equal(str.formatChoice(0.0), "Default items");
@@ -4253,7 +4252,7 @@ module.exports.teststrings = {
     
         if (ilib._getPlatform() === "nodejs") {
             var cldrVersion = process.versions["cldr"];
-            if (Number(cldrVersion) < 35) {
+            if (Number(cldrVersion) < 36) {
                 test.equal(str.formatChoice(1.5), "Default items");
             } else {
                 test.equal(str.formatChoice(1.5), "The item is one");
@@ -4559,7 +4558,7 @@ module.exports.teststrings = {
         test.ok(str !== null);
         if (ilib._getPlatform() === "nodejs") {
             var cldrVersion = process.versions["cldr"];
-            if (Number(cldrVersion) < 35) { // Intl.PluralRules doesn't support this locale until this version.
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(3.1e6), "The items are many");
             } else {
                 test.equal(str.formatChoice(3.1e6), "Default items"); //  wrong result based on cldr41
@@ -4588,7 +4587,7 @@ module.exports.teststrings = {
 
         if (ilib._getPlatform() === "nodejs") {
             var cldrVersion = process.versions["cldr"];
-            if (Number(cldrVersion) < 35) {// Intl.PluralRules doesn't support this locale until this version.
+            if (Number(cldrVersion) < 36) {// Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(2.1e6), "The items are many");
             } else {
                 test.equal(str.formatChoice(2.1e6), "Default items"); // wrong result based on cldr41
