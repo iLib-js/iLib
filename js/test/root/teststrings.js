@@ -696,10 +696,11 @@ module.exports.teststrings = {
             pages: 0
         };
         
+        console.log(" Platform: " + ilib._getPlatform());
         if (ilib._getPlatform() === "nodejs") {
             var cldrVersion = process.versions["cldr"];
             console.log("******* nodeVersion: " + process.versions.node + " cldrVersion: "  + cldrVersion + "******* ");
-            if (Number(cldrVersion) < 35) {
+            if (Number(cldrVersion) < 34) {
                 test.equal(str.formatChoice([params.num,params.pages], params), "0 items on 0 pages.");
             } else {
                 test.equal(str.formatChoice([params.num,params.pages], params), "0 items (many) on 0 pages (many).");
