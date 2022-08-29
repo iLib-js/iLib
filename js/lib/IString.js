@@ -622,7 +622,6 @@ IString.prototype = {
 
     /** @private */
     _testChoice: function(index, limit) {
-        var numberDigits = {};
         var operandValue = {};
 
         switch (typeof(index)) {
@@ -842,6 +841,8 @@ IString.prototype = {
      * or an array of indices
      * @param {Object} params The hash of parameter values that replace the replacement
      * variables in the string
+     * * @param {boolean} useIntlPlural [optional] true if you are willing to use Intl.PluralRules object
+     * If it is omitted, the default value is true
      * @throws "syntax error in choice format pattern: " if there is a syntax error
      * @return {string} the formatted string
      */
