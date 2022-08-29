@@ -698,7 +698,6 @@ module.exports.teststrings = {
         
         if (ilib._getPlatform() === "nodejs") {
             var cldrVersion = process.versions["cldr"];
-            console.log("******* nodeVersion: " + process.versions.node + " cldrVersion: "  + cldrVersion + "******* ");
             if (Number(cldrVersion) < 36) {
                 test.equal(str.formatChoice([params.num,params.pages], params), "0 items on 0 pages.");
             } else {
