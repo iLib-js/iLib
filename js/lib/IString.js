@@ -884,7 +884,7 @@ IString.prototype = {
                 return false;
             }
             return true;
-        }))
+        }));
 
         if (useIntl && this.intlPlural && (args.length === checkArgsType.length)){
             this.cateArr = [];
