@@ -288,7 +288,7 @@ IString._fncs = {
 
         var exponentialNum = number.toExponential();
         var exponentialIndex = exponentialNum.indexOf("e");
-        if (exponentialIndex != -1) {
+        if (exponentialIndex !== -1) {
             operandSymbol.c = parseInt(exponentialNum[exponentialIndex+2]);
             operandSymbol.e = parseInt(exponentialNum[exponentialIndex+2]);
         } else {
@@ -344,7 +344,7 @@ IString._fncs = {
     is: function(rule, n) {
         var left = IString._fncs.getValue(rule[0], n);
         var right = IString._fncs.getValue(rule[1], n);
-        return left == right;
+        return left === right;
     },
 
     /**
@@ -354,7 +354,7 @@ IString._fncs = {
      * @return {boolean}
      */
     isnot: function(rule, n) {
-        return IString._fncs.getValue(rule[0], n) != IString._fncs.getValue(rule[1], n);
+        return IString._fncs.getValue(rule[0], n) !== IString._fncs.getValue(rule[1], n);
     },
 
     /**
@@ -892,7 +892,7 @@ IString.prototype = {
                 var r = this.intlPlural.select(args[i]);
                 this.cateArr.push(r);
             }
-            if (args.length == 1) {
+            if (args.length === 1) {
                 var idx = limits.indexOf(this.cateArr[0]);
                 if (idx == -1) {
                     idx = limits.indexOf("");
@@ -920,7 +920,7 @@ IString.prototype = {
                             }
                         }));
                     }
-                    if (this.number == -1){
+                    if (this.number === -1){
                         this.number = limits.indexOf("");
                     }
                     result = new IString(strings[this.number]);

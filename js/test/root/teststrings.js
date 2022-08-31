@@ -696,15 +696,18 @@ module.exports.teststrings = {
             pages: 0
         };
         
-        if (ilib._getPlatform() === "nodejs") {
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
             var cldrVersion = process.versions["cldr"];
             if (Number(cldrVersion) < 36) {
                 test.equal(str.formatChoice([params.num,params.pages], params), "0 items on 0 pages.");
             } else {
                 test.equal(str.formatChoice([params.num,params.pages], params), "0 items (many) on 0 pages (many).");
             }
-        } else {
+        } else if (platform == "browser") {
             test.equal(str.formatChoice([params.num,params.pages], params), "0 items (many) on 0 pages (many).");
+        } else {
+            test.equal(str.formatChoice([params.num,params.pages], params), "0 items on 0 pages.");
         }        
         test.done();
     },
@@ -3017,15 +3020,19 @@ module.exports.teststrings = {
         str.setLocale("sl-SL");
     
         test.ok(str !== null);
-        if (ilib._getPlatform() === "nodejs") {
+
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
             var cldrVersion = process.versions["cldr"];
             if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(0), "There are no items.");
             } else {
                 test.equal(str.formatChoice(0), "Default items");
             }
-        } else {
+        } else if (platform == "browser") {
             test.equal(str.formatChoice(0), "Default items");
+        } else {
+            test.equal(str.formatChoice(0), "There are no items.");
         }
         test.done();
     },
@@ -3240,15 +3247,18 @@ module.exports.teststrings = {
 
         test.ok(str !== null);
 
-        if (ilib._getPlatform() === "nodejs") {
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
             var cldrVersion = process.versions["cldr"];
             if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(0), "There are no items.");
             } else {
                 test.equal(str.formatChoice(0), "The item is one");
             }
-        } else {
+        } else if (platform == "browser") {
             test.equal(str.formatChoice(0), "The item is one");
+        } else {
+            test.equal(str.formatChoice(0), "There are no items.");
         }
         test.done();
     },
@@ -3290,15 +3300,18 @@ module.exports.teststrings = {
 
         test.ok(str !== null);
 
-        if (ilib._getPlatform() === "nodejs") {
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
             var cldrVersion = process.versions["cldr"];
             if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(0), "There are no items.");
             } else {
                 test.equal(str.formatChoice(0), "Default items");
             }
-        } else {
+        } else if (platform == "browser") {
             test.equal(str.formatChoice(0), "Default items");
+        } else {
+            test.equal(str.formatChoice(0), "There are no items.");
         }
         test.done();
     },
@@ -3318,15 +3331,18 @@ module.exports.teststrings = {
         str.setLocale("be-BY");
 
         test.ok(str !== null);
-        if (ilib._getPlatform() === "nodejs") {
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
             var cldrVersion = process.versions["cldr"];
             if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(0), "There are no items.");
             } else {
                 test.equal(str.formatChoice(0), "The items are many");
             }
-        } else {
+        } else if (platform == "browser") {
             test.equal(str.formatChoice(0), "The items are many");
+        } else {
+            test.equal(str.formatChoice(0), "There are no items.");
         }
         
         test.done();
@@ -3844,15 +3860,18 @@ module.exports.teststrings = {
         str.setLocale("mt-MT");
         test.ok(str !== null);
 
-        if (ilib._getPlatform() === "nodejs") {
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
             var cldrVersion = process.versions["cldr"];
             if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(0), "There are no items.");
             } else {
                 test.equal(str.formatChoice(0), "The items are few");
             }
-        } else {
+        } else if (platform == "browser") {
             test.equal(str.formatChoice(0), "The items are few");
+        } else {
+            test.equal(str.formatChoice(0), "There are no items.");
         }
         test.done();
     },
@@ -4085,15 +4104,18 @@ module.exports.teststrings = {
     
         test.ok(str !== null);
 
-        if (ilib._getPlatform() === "nodejs") {
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
             var cldrVersion = process.versions["cldr"];
             if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(5.2), "The items are few");
             } else {
                 test.equal(str.formatChoice(5.2), "Default items"); // wrong result based on cldr41
             }
-        } else {
+        } else if (platform == "browser") {
             test.equal(str.formatChoice(5.2), "Default items"); // wrong result based on cldr41
+        } else {
+            test.equal(str.formatChoice(5.2), "The items are few");
         }
         test.done();
     },
@@ -4200,15 +4222,18 @@ module.exports.teststrings = {
 
         test.ok(str !== null);
 
-        if (ilib._getPlatform() === "nodejs") {
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
             var cldrVersion = process.versions["cldr"];
             if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(0.0), "There are no items.");
             } else {
                 test.equal(str.formatChoice(0.0), "Default items");
-            }    
-        } else {
+            }
+        } else if (platform == "browser") {
             test.equal(str.formatChoice(0.0), "Default items");
+        } else {
+            test.equal(str.formatChoice(0.0), "There are no items.");
         }
         test.done();
     },
@@ -4248,16 +4273,18 @@ module.exports.teststrings = {
         str.setLocale("pt-BR");
 
         test.ok(str !== null);
-    
-        if (ilib._getPlatform() === "nodejs") {
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
             var cldrVersion = process.versions["cldr"];
             if (Number(cldrVersion) < 36) {
                 test.equal(str.formatChoice(1.5), "Default items");
             } else {
                 test.equal(str.formatChoice(1.5), "The item is one");
             }
-        } else {
+        } else if (platform == "browser") {
             test.equal(str.formatChoice(1.5), "The item is one");
+        } else {
+            test.equal(str.formatChoice(1.5), "Default items");
         }
         
         test.done();
@@ -4555,15 +4582,18 @@ module.exports.teststrings = {
         str.setLocale("es-ES");
 
         test.ok(str !== null);
-        if (ilib._getPlatform() === "nodejs") {
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
             var cldrVersion = process.versions["cldr"];
             if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(3.1e6), "The items are many");
             } else {
                 test.equal(str.formatChoice(3.1e6), "Default items"); // wrong result based on cldr41
             }
-        } else {
+        } else if (platform == "browser") {
             test.equal(str.formatChoice(3.1e6), "Default items"); // wrong result based on cldr41
+        } else {
+            test.equal(str.formatChoice(3.1e6), "The items are many");
         }
         test.done();
     },
@@ -4583,17 +4613,19 @@ module.exports.teststrings = {
         str.setLocale("fr-FR");
 
         test.ok(str !== null);
-
-        if (ilib._getPlatform() === "nodejs") {
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
             var cldrVersion = process.versions["cldr"];
             if (Number(cldrVersion) < 36) {// Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(2.1e6), "The items are many");
             } else {
                 test.equal(str.formatChoice(2.1e6), "Default items"); // wrong result based on cldr41
             }
-        } else {
+        } else if (platform == "browser") {
             test.equal(str.formatChoice(2.1e6), "Default items");
             //wrong result based on cldr (tested on chrome  104.0)
+        } else {
+            test.equal(str.formatChoice(2.1e6), "The items are many");
         }
         test.done();
     },
