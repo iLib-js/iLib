@@ -357,7 +357,7 @@ DurationFmt.prototype.format = function (components) {
     //for (i = 0; i < list.length; i++) {
     for (i = list.length-1; i >= 0; i--) {
         //console.log("Now dealing with " + list[i]);
-        if (typeof(components[list[i]]) !== 'undefined' && components[list[i]] != 0) {
+        if (typeof(components[list[i]]) !== 'undefined' && components[list[i]] !== 0) {
             if (str.length > 0) {
                 str = ((this.length === 'full' && secondlast) ? this.components.finalSeparator : this.components.separator) + str;
                 secondlast = false;
