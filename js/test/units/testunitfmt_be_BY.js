@@ -1,7 +1,7 @@
 /*
  * testunitfmt_be_BY.js - test the unitfmt for be-BY
  *
- * Copyright © 2020 JEDLSoft
+ * Copyright © 2020 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -84,7 +84,19 @@ module.exports.testunitfmt_be_BY = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "-16,666666666666668 градусы Цэльсія");
+
+        if (ilib._getPlatform() === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) {
+                test.equal(str, "-16,666666666666668 градусы Цэльсія");
+            } else {
+                test.equal(str, "-16,666666666666668 градуса Цэльсія");
+            }
+        } else {
+            test.equal(str, "-16,666666666666668 градуса Цэльсія");
+        }
+
+        
         test.done();
     },
     testUnitFormatArea1_be_BY: function(test) {

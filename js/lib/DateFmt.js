@@ -1502,7 +1502,7 @@ DateFmt.prototype = {
 
                 case 'O':
                     temp = this.sysres.getString("1#1st|2#2nd|3#3rd|21#21st|22#22nd|23#23rd|31#31st|#{num}th", "ordinalChoice");
-                    str += temp.formatChoice(date.day, {num: date.day});
+                    str += temp.formatChoice(date.day, {num: date.day}, false);
                     break;
 
                 case 'z': // general time zone
