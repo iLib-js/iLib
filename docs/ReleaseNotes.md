@@ -13,6 +13,7 @@ New Features:
     * When it is set to true, the Intl object is available, it supports the requested locale, and the parameters can be converted to equivalent parameters for the Intl.DateTimeFormat object, then it will format the date relatively quickly using Intl.
     * When they cannot be converted, the Intl object is not available, or the Intl object does not support the requested locale, it will perform the relatively slow formatting using regular ilib code written in Javascript.
     *  The code will often return different results depending on the platform and version of the Javascript engine and which version of CLDR it supports. If you need consistency across versions and platforms, do not use the useIntl flag. Just stick with the regular ilib formatting code.
+*  Added the ability to use Intl.PluralRules in IString get the plural category with the number.
 
 Bug Fixes:
 * Fixed a bug where the DateFmt.formatRelative() does not represent correct result in certain case.
