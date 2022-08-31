@@ -154,21 +154,8 @@ module.exports.teststrings = {
             str.formatChoice(i);
         }
         console.timeEnd("intl-Time-ko-KR");
+
         test.equal(str.formatChoice(2), "Default items");
-        test.done();
-    },
-    testStringFormatChoice_ko_KR_intl: function(test) {
-        test.expect(2);
-        var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
-        str.setLocale("ko-KR");
-
-        for(var i=0;i<=1000;i++){
-            str.formatChoice(i);
-        }
-    
-        test.ok(str !== null);
-        test.equal(str.formatChoice(1), "Default items");
-
         test.done();
     },
     testStringFormatChoiceWithMultipleIndexes2: function(test) {
