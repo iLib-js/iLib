@@ -850,6 +850,7 @@ IString.prototype = {
         var choices = this.str.split("|");
         var limits = [];
         var strings = [];
+        var limitsArr = [];
         var i;
         var parts;
         var result = undefined;
@@ -905,7 +906,7 @@ IString.prototype = {
                     this.findOne = false;
 
                     for(i = 0; !this.findOne && i < limits.length; i++){
-                        var limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
+                        limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
 
                         if (limitsArr.length > 1 && (limitsArr.length < this.cateArr.length)){
                             this.cateArr = this.cateArr.slice(0,limitsArr.length);
@@ -933,7 +934,7 @@ IString.prototype = {
                     // this is default case
                     defaultCase = new IString(strings[i]);
                 } else {
-                    var limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
+                    limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
 
                     var applicable = true;
                     for (var j = 0; applicable && j < args.length && j < limitsArr.length; j++) {
