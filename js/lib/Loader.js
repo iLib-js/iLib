@@ -77,7 +77,7 @@ Loader.prototype._loadFileAlongIncludePath = function(includePath, pathname) {
 
             if (text) {
 
-                if (typeof (this.isMultiPaths) != "undefined" && this.isMultiPaths == true){
+                if (typeof (this.isMultiPaths) !== "undefined" && this.isMultiPaths === true){
                     if (typeof(text) === "string") {
                         text = JSON.parse(text);
                     }

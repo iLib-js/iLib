@@ -479,7 +479,7 @@ IString._fncs = {
         if(typeof(valueRight) === 'boolean') {
             return (valueRight ? true : false);
         } else {
-            return (valueLeft == valueRight ? true :false);
+            return (valueLeft === valueRight ? true :false);
         }
     },
     /**

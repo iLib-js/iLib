@@ -535,12 +535,12 @@ ResBundle.prototype = {
         }
 
         if (escapeMode && escapeMode !== "none") {
-            if (escapeMode == "default") {
+            if (escapeMode === "default") {
                 escapeMode = this.type;
             }
             if (escapeMode === "xml" || escapeMode === "html") {
                 trans = this._escapeXml(trans);
-            } else if (escapeMode == "js" || escapeMode === "attribute") {
+            } else if (escapeMode === "js" || escapeMode === "attribute") {
                 trans = trans.replace(/'/g, "\\\'").replace(/"/g, "\\\"");
             }
         }
