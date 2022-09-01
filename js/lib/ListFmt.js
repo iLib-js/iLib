@@ -180,10 +180,10 @@ ListFmt.prototype.format = function(items) {
 
     } else {
         for(i = itemCount; i >= 0 ; i--){
-            if (i == itemCount) {
+            if (i === itemCount) {
                 formattedList = endFmt.replace("{0}", items[itemCount-2]).replace("{1}", items[itemCount-1]);
                 i = i-2;
-            } else if (i == 0) {
+            } else if (i === 0) {
                 formattedList = startFmt.replace("{0}",items[i]).replace("{1}", formattedList);
             }
              else {

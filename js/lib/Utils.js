@@ -474,7 +474,7 @@ Utils.loadData = function(params) {
 
         var isPath = ilib._load.isMultiPaths;
         
-        if (typeof(isPath) == "undefined" || isPath == false){
+        if (typeof(isPath) === "undefined" || isPath === false){
             // find the ones we haven't loaded before
             files = files.filter(ilib.bind(this, function(file) {
                 return !ilib.data.cache.fileSet.has(Path.join(root, file)) && dataNotExists(basename, file, root);

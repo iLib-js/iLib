@@ -454,15 +454,15 @@ var DateFmt = function(options) {
             this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
             
             if(this.useIntl && typeof(Intl) !== 'undefined' && Intl.DateTimeFormat.supportedLocalesOf(this.locale.getSpec()).length > 0 &&
-            (this.locinfo.getDigitsStyle() == "western" && (!options.template) && this.calName == "gregorian")){
+            (this.locinfo.getDigitsStyle() === "western" && (!options.template) && this.calName === "gregorian")){
                 var len = DateFmt.lenmap[this.length];
-                if(this.type == "date" &&
-                    ((this.dateComponents == "dmy" && len != "full") || (this.dateComponents == "dmwy" && len == "full"))){
+                if(this.type === "date" &&
+                    ((this.dateComponents === "dmy" && len !== "full") || (this.dateComponents === "dmwy" && len === "full"))){
                     this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
                         dateStyle: len
                     });
-                } else if (this.type == "time" &&
-                    this.timeComponents== "ahm" || this.timeComponents== "ahms"){
+                } else if (this.type === "time" &&
+                    this.timeComponents === "ahm" || this.timeComponents === "ahms"){
                     var timeMap = {
                         "ahm": "short",
                         "ahms": "medium"
@@ -470,12 +470,12 @@ var DateFmt = function(options) {
                     this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
                         timeStyle: timeMap[this.timeComponents]
                     });
-                } else if (this.type == "date" && this.dateComponents == "m" && len == "full") {
+                } else if (this.type === "date" && this.dateComponents === "m" && len === "full") {
                     this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
                         month: "long"
                     });
 
-                } else if (this.type == "date" && this.dateComponents == "w" && len == "full") {
+                } else if (this.type === "date" && this.dateComponents === "w" && len === "full") {
                     this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
                        weekday: "long"
                     });

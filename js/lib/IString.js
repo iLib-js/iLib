@@ -288,7 +288,7 @@ IString._fncs = {
 
         var exponentialNum = number.toExponential();
         var exponentialIndex = exponentialNum.indexOf("e");
-        if (exponentialIndex != -1) {
+        if (exponentialIndex !== -1) {
             operandSymbol.c = parseInt(exponentialNum[exponentialIndex+2]);
             operandSymbol.e = parseInt(exponentialNum[exponentialIndex+2]);
         } else {
@@ -344,7 +344,7 @@ IString._fncs = {
     is: function(rule, n) {
         var left = IString._fncs.getValue(rule[0], n);
         var right = IString._fncs.getValue(rule[1], n);
-        return left == right;
+        return left === right;
     },
 
     /**
@@ -354,7 +354,7 @@ IString._fncs = {
      * @return {boolean}
      */
     isnot: function(rule, n) {
-        return IString._fncs.getValue(rule[0], n) != IString._fncs.getValue(rule[1], n);
+        return IString._fncs.getValue(rule[0], n) !== IString._fncs.getValue(rule[1], n);
     },
 
     /**
@@ -479,7 +479,7 @@ IString._fncs = {
         if(typeof(valueRight) === 'boolean') {
             return (valueRight ? true : false);
         } else {
-            return (valueLeft == valueRight ? true :false);
+            return (valueLeft === valueRight ? true :false);
         }
     },
     /**
@@ -850,6 +850,7 @@ IString.prototype = {
         var choices = this.str.split("|");
         var limits = [];
         var strings = [];
+        var limitsArr = [];
         var i;
         var parts;
         var result = undefined;
@@ -892,7 +893,7 @@ IString.prototype = {
                 var r = this.intlPlural.select(args[i]);
                 this.cateArr.push(r);
             }
-            if (args.length == 1) {
+            if (args.length === 1) {
                 var idx = limits.indexOf(this.cateArr[0]);
                 if (idx == -1) {
                     idx = limits.indexOf("");
@@ -905,7 +906,7 @@ IString.prototype = {
                     this.findOne = false;
 
                     for(i = 0; !this.findOne && i < limits.length; i++){
-                        var limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
+                        limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
 
                         if (limitsArr.length > 1 && (limitsArr.length < this.cateArr.length)){
                             this.cateArr = this.cateArr.slice(0,limitsArr.length);
@@ -920,7 +921,7 @@ IString.prototype = {
                             }
                         }));
                     }
-                    if (this.number == -1){
+                    if (this.number === -1){
                         this.number = limits.indexOf("");
                     }
                     result = new IString(strings[this.number]);
@@ -933,7 +934,7 @@ IString.prototype = {
                     // this is default case
                     defaultCase = new IString(strings[i]);
                 } else {
-                    var limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
+                    limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
 
                     var applicable = true;
                     for (var j = 0; applicable && j < args.length && j < limitsArr.length; j++) {
