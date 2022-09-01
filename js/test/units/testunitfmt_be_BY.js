@@ -94,7 +94,7 @@ module.exports.testunitfmt_be_BY = {
             } else {
                 test.equal(str, "-16,666666666666668 градуса Цэльсія");
             }
-        } else if (platform == "browser") {
+        } else if (platform === "browser") {
             test.equal(str, "-16,666666666666668 градуса Цэльсія");
         } else {
             test.equal(str, "-16,666666666666668 градусы Цэльсія");

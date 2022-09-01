@@ -704,7 +704,7 @@ module.exports.teststrings = {
             } else {
                 test.equal(str.formatChoice([params.num,params.pages], params), "0 items (many) on 0 pages (many).");
             }
-        } else if (platform == "browser") {
+        } else if (platform === "browser") {
             test.equal(str.formatChoice([params.num,params.pages], params), "0 items (many) on 0 pages (many).");
         } else {
             test.equal(str.formatChoice([params.num,params.pages], params), "0 items on 0 pages.");
@@ -3029,7 +3029,7 @@ module.exports.teststrings = {
             } else {
                 test.equal(str.formatChoice(0), "Default items");
             }
-        } else if (platform == "browser") {
+        } else if (platform === "browser") {
             test.equal(str.formatChoice(0), "Default items");
         } else {
             test.equal(str.formatChoice(0), "There are no items.");
@@ -3255,7 +3255,7 @@ module.exports.teststrings = {
             } else {
                 test.equal(str.formatChoice(0), "The item is one");
             }
-        } else if (platform == "browser") {
+        } else if (platform === "browser") {
             test.equal(str.formatChoice(0), "The item is one");
         } else {
             test.equal(str.formatChoice(0), "There are no items.");
@@ -3308,7 +3308,7 @@ module.exports.teststrings = {
             } else {
                 test.equal(str.formatChoice(0), "Default items");
             }
-        } else if (platform == "browser") {
+        } else if (platform === "browser") {
             test.equal(str.formatChoice(0), "Default items");
         } else {
             test.equal(str.formatChoice(0), "There are no items.");
@@ -3339,7 +3339,7 @@ module.exports.teststrings = {
             } else {
                 test.equal(str.formatChoice(0), "The items are many");
             }
-        } else if (platform == "browser") {
+        } else if (platform === "browser") {
             test.equal(str.formatChoice(0), "The items are many");
         } else {
             test.equal(str.formatChoice(0), "There are no items.");
@@ -3868,7 +3868,7 @@ module.exports.teststrings = {
             } else {
                 test.equal(str.formatChoice(0), "The items are few");
             }
-        } else if (platform == "browser") {
+        } else if (platform === "browser") {
             test.equal(str.formatChoice(0), "The items are few");
         } else {
             test.equal(str.formatChoice(0), "There are no items.");
@@ -4112,7 +4112,7 @@ module.exports.teststrings = {
             } else {
                 test.equal(str.formatChoice(5.2), "Default items"); // wrong result based on cldr41
             }
-        } else if (platform == "browser") {
+        } else if (platform === "browser") {
             test.equal(str.formatChoice(5.2), "Default items"); // wrong result based on cldr41
         } else {
             test.equal(str.formatChoice(5.2), "The items are few");
@@ -4230,7 +4230,7 @@ module.exports.teststrings = {
             } else {
                 test.equal(str.formatChoice(0.0), "Default items");
             }
-        } else if (platform == "browser") {
+        } else if (platform === "browser") {
             test.equal(str.formatChoice(0.0), "Default items");
         } else {
             test.equal(str.formatChoice(0.0), "There are no items.");
@@ -4281,7 +4281,7 @@ module.exports.teststrings = {
             } else {
                 test.equal(str.formatChoice(1.5), "The item is one");
             }
-        } else if (platform == "browser") {
+        } else if (platform === "browser") {
             test.equal(str.formatChoice(1.5), "The item is one");
         } else {
             test.equal(str.formatChoice(1.5), "Default items");
@@ -4590,7 +4590,7 @@ module.exports.teststrings = {
             } else {
                 test.equal(str.formatChoice(3.1e6), "Default items"); // wrong result based on cldr41
             }
-        } else if (platform == "browser") {
+        } else if (platform === "browser") {
             test.equal(str.formatChoice(3.1e6), "Default items"); // wrong result based on cldr41
         } else {
             test.equal(str.formatChoice(3.1e6), "The items are many");
@@ -4621,7 +4621,7 @@ module.exports.teststrings = {
             } else {
                 test.equal(str.formatChoice(2.1e6), "Default items"); // wrong result based on cldr41
             }
-        } else if (platform == "browser") {
+        } else if (platform === "browser") {
             test.equal(str.formatChoice(2.1e6), "Default items");
             //wrong result based on cldr (tested on chrome  104.0)
         } else {

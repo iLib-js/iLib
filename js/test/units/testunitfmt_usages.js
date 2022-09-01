@@ -2797,7 +2797,7 @@ module.exports.testunitfmt_usages = {
             } else {
                 test.equal(str, "3,2 кубічнага метра");
             }
-        } else if (platform == "browser") {
+        } else if (platform === "browser") {
             test.equal(str, "3,2 кубічнага метра");
         } else {
             test.equal(str, "3,2 кубічныя метры");
@@ -2942,7 +2942,7 @@ module.exports.testunitfmt_usages = {
             } else {
                 test.equal(str, "3,2 кубічнага метра");
             }
-        } else if (platform == "browser") {
+        } else if (platform === "browser") {
             test.equal(str, "3,2 кубічнага метра");
         } else {
             test.equal(str, "3,2 кубічныя метры");
