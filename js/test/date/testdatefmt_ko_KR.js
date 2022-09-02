@@ -88,7 +88,8 @@ module.exports.testdatefmt_ko_KR = {
             millisecond: 0,
             timezone: "local"
         });
-        test.equal(fmt.format(date), "11. 9. 29.");
+        var expected = (ilib._getPlatform() === "browser" && ilib._getBrowser() === "safari") ? "2011. 9. 29." : "11. 9. 29.";
+        test.equal(fmt.format(date), expected);
         test.done();
     },
     

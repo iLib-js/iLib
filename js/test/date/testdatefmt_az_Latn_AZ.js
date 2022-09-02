@@ -104,16 +104,28 @@ module.exports.testdatefmt_az_Latn_AZ = {
             millisecond: 0
         });
         
-        if(ilib._getPlatform() === "nodejs"){
-            test.equal(fmt.format(date), "29 sentyabr 2011");
-        } else {
-            var browser = ilib._getBrowser();
-            if(browser === "firefox"){
-                test.equal(fmt.format(date), "29 sentyabr 2011");
-            } else {
-                test.equal(fmt.format(date), "2011 M09 29");
-            }
+        var expected;
+        switch (ilib._getPlatform()) {
+            case "nodejs":
+                expected = "29 sentyabr 2011";
+                break;
+            case "browser":
+                var browser = ilib._getBrowser();
+                switch (browser) {
+                    case "firefox":
+                    case 'safari':
+                        expected = "29 sentyabr 2011";
+                        break;
+                    default:
+                        expected = "2011 M09 29";
+                        break;
+                }
+                break;
+            default:
+                expected = "2011 M09 29";
+                break;
         }
+        test.equal(fmt.format(date), expected);
         test.done();
     },
     
