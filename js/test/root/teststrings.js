@@ -209,7 +209,6 @@ module.exports.teststrings = {
         test.done();
     },
     
-    
     testStringFormatChoiceSimple1: function(test) {
         test.expect(2);
         var str = new IString("1#first string|2#second string");
@@ -697,7 +696,19 @@ module.exports.teststrings = {
             pages: 0
         };
         
-        test.equal(str.formatChoice([params.num,params.pages], params), "0 items on 0 pages.");
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) {
+                test.equal(str.formatChoice([params.num,params.pages], params), "0 items on 0 pages.");
+            } else {
+                test.equal(str.formatChoice([params.num,params.pages], params), "0 items (many) on 0 pages (many).");
+            }
+        } else if (platform === "browser") {
+            test.equal(str.formatChoice([params.num,params.pages], params), "0 items (many) on 0 pages (many).");
+        } else {
+            test.equal(str.formatChoice([params.num,params.pages], params), "0 items on 0 pages.");
+        }        
         test.done();
     },
 
@@ -943,7 +954,7 @@ module.exports.teststrings = {
             pages: 5
         };
 
-        test.equal(str.formatChoice(params.num, params), "25 items (many) on 5 page.");
+        test.equal(str.formatChoice([params.num, params.pages], params), "25 items (many) on 5 pages (many).");
         test.done();
     },
 
@@ -975,7 +986,7 @@ module.exports.teststrings = {
             pages: 5
         };
         
-        test.equal(str.formatChoice([params.num,params.pages,10], params), "22 items (few) on 5 pages.");
+        test.equal(str.formatChoice([params.num,params.pages,10], params, false), "22 items (few) on 5 pages.");
         test.done();
     },
 
@@ -1948,7 +1959,6 @@ module.exports.teststrings = {
         test.done();
     },
     
-    
     testRuleGetValueInRangeFalseIntegersAfter: function(test) {
         test.expect(1);
         var rule = {
@@ -2026,7 +2036,6 @@ module.exports.teststrings = {
         test.ok(IString._fncs.getValue(rule, 6));
         test.done();
     },
-    
     
     testRuleGetValueInRangeComplexTrue1: function(test) {
         test.expect(1);
@@ -2210,7 +2219,6 @@ module.exports.teststrings = {
         test.done();
     },
     
-    
     testRuleGetValueNotInRangeFalseIntegersAfter: function(test) {
         test.expect(1);
         var rule = {
@@ -2288,7 +2296,6 @@ module.exports.teststrings = {
         test.ok(!IString._fncs.getValue(rule, 6));
         test.done();
     },
-    
     
     testRuleGetValueNotInRangeComplexTrue1: function(test) {
         test.expect(1);
@@ -2472,7 +2479,6 @@ module.exports.teststrings = {
         test.done();
     },
     
-    
     testRuleGetValueWithinFalseAfter: function(test) {
         test.expect(1);
         var rule = {
@@ -2550,7 +2556,6 @@ module.exports.teststrings = {
         test.ok(IString._fncs.getValue(rule, 6));
         test.done();
     },
-    
     
     testRuleGetValueWithinComplexTrue1: function(test) {
         test.expect(1);
@@ -3015,8 +3020,20 @@ module.exports.teststrings = {
         str.setLocale("sl-SL");
     
         test.ok(str !== null);
-    
-        test.equal(str.formatChoice(0), "There are no items.");
+
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
+                test.equal(str.formatChoice(0), "There are no items.");
+            } else {
+                test.equal(str.formatChoice(0), "Default items");
+            }
+        } else if (platform === "browser") {
+            test.equal(str.formatChoice(0), "Default items");
+        } else {
+            test.equal(str.formatChoice(0), "There are no items.");
+        }
         test.done();
     },
     
@@ -3190,7 +3207,7 @@ module.exports.teststrings = {
 
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(0), "There are no items.");
+        test.equal(str.formatChoice(10), "Default items");
         test.done();
     },
     testStringFormatChoiceCharClasses18: function(test) {
@@ -3230,7 +3247,19 @@ module.exports.teststrings = {
 
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(0), "There are no items.");
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
+                test.equal(str.formatChoice(0), "There are no items.");
+            } else {
+                test.equal(str.formatChoice(0), "The item is one");
+            }
+        } else if (platform === "browser") {
+            test.equal(str.formatChoice(0), "The item is one");
+        } else {
+            test.equal(str.formatChoice(0), "There are no items.");
+        }
         test.done();
     },
     testStringFormatChoiceCharClasses22: function(test) {
@@ -3250,7 +3279,22 @@ module.exports.teststrings = {
 
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(1000000), "The items are many");
+        if (ilib._getPlatform() === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
+                test.equal(str.formatChoice(1000000), "The items are many");
+            } else if (Number(cldrVersion) >= 36 && Number(cldrVersion) < 40 ) {
+                test.equal(str.formatChoice(1000000), "Default items"); // wrong result based on cldr41
+            } else {
+                test.equal(str.formatChoice(1000000), "The items are many");
+            }
+        } else {
+            if (ilib._getPlatform() === "browser" && ilib._getBrowser() === "opera") {
+                test.equal(str.formatChoice(1000000), "Default items");
+            } else {
+                test.equal(str.formatChoice(1000000), "The items are many");
+            }
+        }
         test.done();
     },
     testStringFormatChoiceCharClasses23: function(test) {
@@ -3260,7 +3304,19 @@ module.exports.teststrings = {
 
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(0), "There are no items.");
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
+                test.equal(str.formatChoice(0), "There are no items.");
+            } else {
+                test.equal(str.formatChoice(0), "Default items");
+            }
+        } else if (platform === "browser") {
+            test.equal(str.formatChoice(0), "Default items");
+        } else {
+            test.equal(str.formatChoice(0), "There are no items.");
+        }
         test.done();
     },
     testStringFormatChoiceCharClasses24: function(test) {
@@ -3279,8 +3335,20 @@ module.exports.teststrings = {
         str.setLocale("be-BY");
 
         test.ok(str !== null);
-
-        test.equal(str.formatChoice(0), "There are no items.");
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
+                test.equal(str.formatChoice(0), "There are no items.");
+            } else {
+                test.equal(str.formatChoice(0), "The items are many");
+            }
+        } else if (platform === "browser") {
+            test.equal(str.formatChoice(0), "The items are many");
+        } else {
+            test.equal(str.formatChoice(0), "There are no items.");
+        }
+        
         test.done();
     },
     testStringFormatChoiceCharClasses26: function(test) {
@@ -3369,7 +3437,7 @@ module.exports.teststrings = {
 
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(1), "The item is one");
+        test.equal(str.formatChoice(1), "Default items");
         test.done();
     },
     testStringFormatChoiceCharClasses_my_MM2: function(test) {
@@ -3385,7 +3453,7 @@ module.exports.teststrings = {
     testStringFormatChoiceCharClasses_zu_ZA: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
-        str.setLocale("my-MM");
+        str.setLocale("zu-ZA");
 
         test.ok(str !== null);
 
@@ -3395,7 +3463,7 @@ module.exports.teststrings = {
     testStringFormatChoiceCharClasses_zu_ZA2: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
-        str.setLocale("my-MM");
+        str.setLocale("zu-ZA");
 
         test.ok(str !== null);
 
@@ -3405,7 +3473,7 @@ module.exports.teststrings = {
     testStringFormatChoiceCharClasses_zu_ZA3: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
-        str.setLocale("my-MM");
+        str.setLocale("zu-ZA");
 
         test.ok(str !== null);
 
@@ -3419,7 +3487,7 @@ module.exports.teststrings = {
 
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(1), "The item is one");
+        test.equal(str.formatChoice(1), "Default items");
         test.done();
     },
     testStringFormatChoiceCharClasses_ig_NG2: function(test) {
@@ -3454,20 +3522,65 @@ module.exports.teststrings = {
     testStringFormatChoiceCharClasses_yo_NG: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
-        str.setLocale("ig-NG");
+        str.setLocale("yo-NG");
 
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(1), "The item is one");
+        test.equal(str.formatChoice(1), "Default items");
         test.done();
     },
     testStringFormatChoiceCharClasses_yo_BJ: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
-        str.setLocale("ig-NG");
+        str.setLocale("yo-BJ");
         test.ok(str !== null);
 
         test.equal(str.formatChoice(15), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses_ko_KR: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ko-KR");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses_wo_SN: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("wo-SN");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses_zh_Hans_CN: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("zh-Hans-CN");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses_vi_VN: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("vi-VN");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClasses_ja_JP: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ja-JP");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "Default items");
         test.done();
     },
     
@@ -3636,7 +3749,7 @@ module.exports.teststrings = {
     testStringFormatChoiceCharClassesComplex_wo_SN: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|few#The items are few|many#The items are many|#Default items");
-        str.setLocale("ne-NP");
+        str.setLocale("wo-SN");
 
         test.ok(str !== null);
 
@@ -3646,7 +3759,7 @@ module.exports.teststrings = {
     testStringFormatChoiceCharClassesComplex_wo_SN2: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
-        str.setLocale("ne-NP");
+        str.setLocale("wo-SN");
 
         test.ok(str !== null);
 
@@ -3659,7 +3772,7 @@ module.exports.teststrings = {
         str.setLocale("lo-LA");
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(1), "The item is one");
+        test.equal(str.formatChoice(1), "Default items");
         test.done();
     },
     testStringFormatChoiceCharClassesComplex_lo_LA2: function(test) {
@@ -3751,7 +3864,19 @@ module.exports.teststrings = {
         str.setLocale("mt-MT");
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(0), "There are no items.");
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
+                test.equal(str.formatChoice(0), "There are no items.");
+            } else {
+                test.equal(str.formatChoice(0), "The items are few");
+            }
+        } else if (platform === "browser") {
+            test.equal(str.formatChoice(0), "The items are few");
+        } else {
+            test.equal(str.formatChoice(0), "There are no items.");
+        }
         test.done();
     },
     testStringFormatChoiceCharClassesComplex_mt_MT2: function(test) {
@@ -3814,7 +3939,22 @@ module.exports.teststrings = {
         str.setLocale("it-IT");
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(1000000), "The items are many");
+        if (ilib._getPlatform() === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) { // // Intl.PluralRules doesn't support this locale until this version.
+                test.equal(str.formatChoice(3e6), "The items are many");
+            } else if (Number(cldrVersion) >= 36 && Number(cldrVersion) < 40 ) {
+                test.equal(str.formatChoice(1000000), "Default items"); // wrong result based on cldr41
+            } else {
+                test.equal(str.formatChoice(1000000), "The items are many");
+            }
+        } else {
+            if (ilib._getPlatform() === "browser" && ilib._getBrowser() === "opera") {
+                test.equal(str.formatChoice(1000000), "Default items");
+            } else {
+                test.equal(str.formatChoice(1000000), "The items are many");
+            }
+        }
         test.done();
     },
     testStringFormatChoiceCharClassesComplexmt_es_ES: function(test) {
@@ -3823,16 +3963,47 @@ module.exports.teststrings = {
         str.setLocale("it-IT");
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(3e6), "The items are many");
+        if (ilib._getPlatform() === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) { // // Intl.PluralRules doesn't support this locale until this version.
+                test.equal(str.formatChoice(3e6), "The items are many");
+            }
+            else if (Number(cldrVersion) >= 36 && Number(cldrVersion) < 40 ) {
+                test.equal(str.formatChoice(3e6), "Default items"); // wrong result based on cldr41
+            } else {
+                test.equal(str.formatChoice(3e6), "The items are many");
+            }
+        } else {
+            if (ilib._getPlatform() === "browser" && ilib._getBrowser() === "opera") {
+                test.equal(str.formatChoice(3e6), "Default items");
+            } else {
+                test.equal(str.formatChoice(3e6), "The items are many");
+            }
+        }
         test.done();
     },
     testStringFormatChoiceCharClassesComplexmt_es_ES2: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
-        str.setLocale("it-IT");
+        str.setLocale("es-ES");
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(1000000), "The items are many");
+        if (ilib._getPlatform() === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) { // // Intl.PluralRules doesn't support this locale until this version.
+                test.equal(str.formatChoice(1000000), "The items are many");
+            } else if (Number(cldrVersion) >= 36 && Number(cldrVersion) < 40 ) {
+                test.equal(str.formatChoice(1000000), "Default items"); // wrong result based on cldr41
+            } else {
+                test.equal(str.formatChoice(1000000), "The items are many");
+            }
+        }  else {
+            if (ilib._getPlatform() === "browser" && ilib._getBrowser() === "opera") {
+                test.equal(str.formatChoice(1000000), "Default items");
+            } else {
+                test.equal(str.formatChoice(1000000), "The items are many");
+            }
+        }
         test.done();
     },
     testStringFormatChoiceCharClassesComplexmt_fr_FR: function(test) {
@@ -3850,7 +4021,19 @@ module.exports.teststrings = {
         str.setLocale("fr-FR");
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(5e6), "The items are many");
+        if (ilib._getPlatform() === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) {
+                test.equal(str.formatChoice(5e6), "The items are many");
+            } else if (Number(cldrVersion) >= 36  && Number(cldrVersion) < 38) {
+                test.equal(str.formatChoice(5e6), "Default items"); // wrong result based on cldr41
+            } else {
+                test.equal(str.formatChoice(5e6), "The items are many");
+            }
+        } else {
+            test.equal(str.formatChoice(5e6), "The items are many");
+        }
+        
         test.done();
     },
 
@@ -3930,18 +4113,28 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(1.6), "Default items");
         test.done();
     },
-    
     testStringFormatChoiceDecimal8: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ga-IE");
     
         test.ok(str !== null);
-    
-        test.equal(str.formatChoice(5.2), "The items are few");
+
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
+                test.equal(str.formatChoice(5.2), "The items are few");
+            } else {
+                test.equal(str.formatChoice(5.2), "Default items"); // wrong result based on cldr41
+            }
+        } else if (platform === "browser") {
+            test.equal(str.formatChoice(5.2), "Default items"); // wrong result based on cldr41
+        } else {
+            test.equal(str.formatChoice(5.2), "The items are few");
+        }
         test.done();
     },
-    
     testStringFormatChoiceDecimal9: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
@@ -4045,7 +4238,19 @@ module.exports.teststrings = {
 
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(0.0), "There are no items.");
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
+                test.equal(str.formatChoice(0.0), "There are no items.");
+            } else {
+                test.equal(str.formatChoice(0.0), "Default items");
+            }
+        } else if (platform === "browser") {
+            test.equal(str.formatChoice(0.0), "Default items");
+        } else {
+            test.equal(str.formatChoice(0.0), "There are no items.");
+        }
         test.done();
     },
     testStringFormatChoiceDecimal19: function(test) {
@@ -4084,8 +4289,20 @@ module.exports.teststrings = {
         str.setLocale("pt-BR");
 
         test.ok(str !== null);
-    
-        test.equal(str.formatChoice(1.5), "Default items");
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) {
+                test.equal(str.formatChoice(1.5), "Default items");
+            } else {
+                test.equal(str.formatChoice(1.5), "The item is one");
+            }
+        } else if (platform === "browser") {
+            test.equal(str.formatChoice(1.5), "The item is one");
+        } else {
+            test.equal(str.formatChoice(1.5), "Default items");
+        }
+        
         test.done();
     },
     testStringFormatChoiceDecimal23: function(test) {
@@ -4242,7 +4459,7 @@ module.exports.teststrings = {
 
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(1.0), "The item is one");
+        test.equal(str.formatChoice(1.0), "Default items");
         test.done();
     },
     testStringFormatChoiceDecimal_my_MM2: function(test) {
@@ -4381,8 +4598,19 @@ module.exports.teststrings = {
         str.setLocale("es-ES");
 
         test.ok(str !== null);
-
-        test.equal(str.formatChoice(3.1e6), "The items are many");
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
+                test.equal(str.formatChoice(3.1e6), "The items are many");
+            } else {
+                test.equal(str.formatChoice(3.1e6), "Default items"); // wrong result based on cldr41
+            }
+        } else if (platform === "browser") {
+            test.equal(str.formatChoice(3.1e6), "Default items"); // wrong result based on cldr41
+        } else {
+            test.equal(str.formatChoice(3.1e6), "The items are many");
+        }
         test.done();
     },
     testStringFormatChoiceDecimal_es_ES2: function(test) {
@@ -4401,8 +4629,20 @@ module.exports.teststrings = {
         str.setLocale("fr-FR");
 
         test.ok(str !== null);
-
-        test.equal(str.formatChoice(6.1e9), "The items are many");
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = process.versions["cldr"];
+            if (Number(cldrVersion) < 36) {// Intl.PluralRules doesn't support this locale until this version.
+                test.equal(str.formatChoice(2.1e6), "The items are many");
+            } else {
+                test.equal(str.formatChoice(2.1e6), "Default items"); // wrong result based on cldr41
+            }
+        } else if (platform === "browser") {
+            test.equal(str.formatChoice(2.1e6), "Default items");
+            //wrong result based on cldr (tested on chrome  104.0)
+        } else {
+            test.equal(str.formatChoice(2.1e6), "The items are many");
+        }
         test.done();
     },
     testStringFormatChoiceDecimal_fr_FR2: function(test) {
@@ -4442,7 +4682,7 @@ module.exports.teststrings = {
 
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(1.0), "The item is one");
+        test.equal(str.formatChoice(1.0), "Default items");
         test.done();
     },
     testStringFormatChoiceDecimal_ig_NG2: function(test) {
@@ -4468,7 +4708,7 @@ module.exports.teststrings = {
     testStringFormatChoiceDecimal_ps_PK: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
-        str.setLocale("ig-NG");
+        str.setLocale("ps-PK");
 
         test.ok(str !== null);
 
@@ -4482,7 +4722,7 @@ module.exports.teststrings = {
 
         test.ok(str !== null);
 
-        test.equal(str.formatChoice(1.0), "The item is one");
+        test.equal(str.formatChoice(1.0), "Default items");
         test.done();
     },
     testStringFormatChoiceDecimal_yo_BJ: function(test) {

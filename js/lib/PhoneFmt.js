@@ -73,7 +73,7 @@ var PhoneLocale = require("./PhoneLocale.js");
  */
 var PhoneFmt = function(options) {
     this.sync = true;
-    this.styleName = 'default',
+    this.styleName = 'default';
     this.loadParams = {};
 
     var locale = new Locale();

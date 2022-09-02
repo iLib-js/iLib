@@ -13,13 +13,18 @@ New Features:
     * When it is set to true, the Intl object is available, it supports the requested locale, and the parameters can be converted to equivalent parameters for the Intl.DateTimeFormat object, then it will format the date relatively quickly using Intl.
     * When they cannot be converted, the Intl object is not available, or the Intl object does not support the requested locale, it will perform the relatively slow formatting using regular ilib code written in Javascript.
     *  The code will often return different results depending on the platform and version of the Javascript engine and which version of CLDR it supports. If you need consistency across versions and platforms, do not use the useIntl flag. Just stick with the regular ilib formatting code.
+*  Added the ability to use Intl.PluralRules in IString get the plural category with the number.
 
 Bug Fixes:
 * Fixed a bug where the DateFmt.formatRelative() does not represent correct result in certain case.
 * Updated locale data to have a consistently sorted order by rerunning cldr tool code.
-* Fixed a bug which a default script for `uz` should be `Latin` instead of `Arabic`
-* Updated hardcoded locales for LocaleMatcher (bn-IN, en-KR, hr-HU, ka-IR, ko-US, ku-IQ, ps-PK, pt-MO)
-
+* Fixed a bug which a default script for `uz` should be `Latin` instead of `Arabic`.
+* Updated hardcoded locales for LocaleMatcher. (bn-IN, en-KR, hr-HU, ka-IR, ko-US, ku-IQ, ps-PK, pt-MO)
+* Fixed to generate `plurals.json` files even when the rule only has `other`.
+* Updated to load `plurals.json` in ResBundle Constructor, then you could call synchronously all the time because we can be sure if is already loaded.
+* Fixed a bug where the Currency didn't work asynchronously.
+* Update to time zone data 2022c
+* Fixed to handle both absolute and relative paths correctly in `ilib-web.js`.
 
 Build 022
 -------

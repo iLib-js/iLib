@@ -1,7 +1,7 @@
 /*
  * ResBundle.js - Resource bundle definition
  *
- * Copyright © 2012-2016, 2018-2019, JEDLSoft
+ * Copyright © 2012-2016, 2018-2019, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -273,35 +273,38 @@ var ResBundle = function (options) {
 
     lookupLocale = this.locale.isPseudo() ? new Locale("en-US") : this.locale;
 
-    Utils.loadData({
-        locale: lookupLocale,
-        name: this.baseName + ".json",
-        sync: this.sync,
-        loadParams: this.loadParams,
-        root: this.path,
-        callback: ilib.bind(this, function (map) {
-            if (!map) {
-                map = ilib.data[this.baseName] || {};
-            }
-            this.map = map;
-            if (this.locale.isPseudo()) {
-                this._loadPseudo(this.locale, options.onLoad);
-            } else if (this.missing === "pseudo") {
-                new LocaleInfo(this.locale, {
-                    sync: this.sync,
-                    loadParams: this.loadParams,
-                    onLoad: ilib.bind(this, function (li) {
-                        var pseudoLocale = new Locale("zxx", "XX", undefined, li.getDefaultScript());
-                        this._loadPseudo(pseudoLocale, options.onLoad);
-                    })
-                });
-            } else {
-                if (typeof(options.onLoad) === 'function') {
-                    options.onLoad(this);
+    // ensure that the plural rules are loaded before we proceed
+    IString.loadPlurals(this.sync, lookupLocale, this.loadParams, ilib.bind(this, function() {
+        Utils.loadData({
+            locale: lookupLocale,
+            name: this.baseName + ".json",
+            sync: this.sync,
+            loadParams: this.loadParams,
+            root: this.path,
+            callback: ilib.bind(this, function (map) {
+                if (!map) {
+                    map = ilib.data[this.baseName] || {};
                 }
-            }
+                this.map = map;
+                if (this.locale.isPseudo()) {
+                    this._loadPseudo(this.locale, options.onLoad);
+                } else if (this.missing === "pseudo") {
+                    new LocaleInfo(this.locale, {
+                        sync: this.sync,
+                        loadParams: this.loadParams,
+                        onLoad: ilib.bind(this, function (li) {
+                            var pseudoLocale = new Locale("zxx", "XX", undefined, li.getDefaultScript());
+                            this._loadPseudo(pseudoLocale, options.onLoad);
+                        })
+                    });
+                } else {
+                    if (typeof(options.onLoad) === 'function') {
+                        options.onLoad(this);
+                    }
+                }
+            })
         })
-    });
+    }));
 
     // console.log("Merged resources " + this.locale.toString() + " are: " + JSON.stringify(this.map));
     //if (!this.locale.isPseudo() && JSUtils.isEmpty(this.map)) {
@@ -532,12 +535,12 @@ ResBundle.prototype = {
         }
 
         if (escapeMode && escapeMode !== "none") {
-            if (escapeMode == "default") {
+            if (escapeMode === "default") {
                 escapeMode = this.type;
             }
             if (escapeMode === "xml" || escapeMode === "html") {
                 trans = this._escapeXml(trans);
-            } else if (escapeMode == "js" || escapeMode === "attribute") {
+            } else if (escapeMode === "js" || escapeMode === "attribute") {
                 trans = trans.replace(/'/g, "\\\'").replace(/"/g, "\\\"");
             }
         }

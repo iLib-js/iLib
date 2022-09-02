@@ -1,7 +1,7 @@
 /*
  * testresources.js - test the Resources object
  * 
- * Copyright © 2012-2015, 2017-2019, 2021 JEDLSoft
+ * Copyright © 2012-2015, 2017-2019, 2021-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,11 @@ if (typeof(ilib) === "undefined") {
 if (typeof(ResBundle) === "undefined") {
     var ResBundle = require("../../lib/ResBundle.js");
 }
+
+if (typeof(IString) === "undefined") {
+    var IString = require("../../lib/IString.js");
+}
+
 if (typeof(Locale) === "undefined") {
     var Locale = require("../../lib/Locale.js");
 }
@@ -1638,6 +1643,29 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello, {name}").toString(), "你好")
         test.done();
     },
+
+    testResBundleGetStringformatChoice_de_DE: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(3);
+
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        var str = new IString("one#({N}) file selected|#({N}) files selected");
+
+        var rb = new ResBundle({
+            locale: "de-DE",
+            basePath: base
+        });
+        test.ok(rb !== null);
+
+        test.equal(rb.getString(str).formatChoice(1, {N:1}), "(1) Datei ausgewählt");
+        test.equal(rb.getString(str).formatChoice(5, {N:5}), "(5) Dateien ausgewählt");
+        test.done();
+    },
     
     testResBundleGetStringCyrlPseudoText: function(test) {
         test.expect(4);
@@ -2533,6 +2561,8 @@ module.exports.testresources = {
         test.ok(rb !== null);
         test.equal(rb.getString("hello").toString(), "안녕2");
         test.equal(rb.getString("Settings").toString(), "설정");
+
+        ilibLoader.removePath(multiPath2);
 
         test.done();
     },

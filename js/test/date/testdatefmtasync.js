@@ -343,6 +343,7 @@ module.exports.testdatefmtasync = {
             return;
         }
         test.expect(2);
+        var expected = (ilib._getPlatform() === "browser" && ilib._getBrowser() === "safari") ? "2022. 5. 29." : "22. 5. 29.";
         new DateFmt({
             length: "short",
             locale: "ko-KR",
@@ -351,7 +352,7 @@ module.exports.testdatefmtasync = {
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
                 var date = new Date(2022, 4, 29);
-                test.equal(fmt.format(date), "22. 5. 29.");
+                test.equal(fmt.format(date), expected);
                 test.done();
             }
         });

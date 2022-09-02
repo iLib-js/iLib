@@ -236,7 +236,7 @@ JSUtils.merge = function (object1, object2, replace, name1, name2) {
                 newObj[prop] = JSUtils.merge(object1[prop], object2[prop], replace);
             } else {
                 // for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
-                if (name1 && name2 && newObj[prop] == object2[prop]) {
+                if (name1 && name2 && newObj[prop] === object2[prop]) {
                     console.log("Property " + prop + " in " + name1 + " is being overridden by the same value in " + name2);
                 }
                 newObj[prop] = object2[prop];

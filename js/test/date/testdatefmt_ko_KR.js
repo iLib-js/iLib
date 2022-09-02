@@ -74,9 +74,9 @@ module.exports.testdatefmt_ko_KR = {
             return;
         }
         test.expect(2);
-        var fmt = new DateFmt({locale: "ko-KR", length: "short", useIntl: true});
+        var fmt = new DateFmt({locale: "ko-KR", length: "short", timezone: "local", useIntl: true});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ko-KR",
             year: 2011,
@@ -85,9 +85,11 @@ module.exports.testdatefmt_ko_KR = {
             hour: 13,
             minute: 45,
             second: 0,
-            millisecond: 0
+            millisecond: 0,
+            timezone: "local"
         });
-        test.equal(fmt.format(date), "11. 9. 29.");
+        var expected = (ilib._getPlatform() === "browser" && ilib._getBrowser() === "safari") ? "2011. 9. 29." : "11. 9. 29.";
+        test.equal(fmt.format(date), expected);
         test.done();
     },
     
@@ -117,7 +119,7 @@ module.exports.testdatefmt_ko_KR = {
             return;
         }
         test.expect(2);
-        var fmt = new DateFmt({locale: "ko-KR", length: "medium", useIntl: true});
+        var fmt = new DateFmt({locale: "ko-KR", length: "medium", timezone: "local", useIntl: true});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -128,7 +130,8 @@ module.exports.testdatefmt_ko_KR = {
             hour: 13,
             minute: 45,
             second: 0,
-            millisecond: 0
+            millisecond: 0,
+            timezone: "local"
         });
         test.equal(fmt.format(date), "2011. 9. 29.");
         test.done();
@@ -141,7 +144,7 @@ module.exports.testdatefmt_ko_KR = {
             return;
         }
         test.expect(2);
-        var fmt = new DateFmt({locale: "ko-KR", length: "long", useIntl: true});
+        var fmt = new DateFmt({locale: "ko-KR", length: "long", timezone: "local", useIntl: true});
         test.ok(fmt !== null);
         
         var date = DateFactory({
@@ -151,7 +154,8 @@ module.exports.testdatefmt_ko_KR = {
             hour: 13,
             minute: 45,
             second: 0,
-            millisecond: 0
+            millisecond: 0,
+            timezone: "local"
         });
         test.equal(fmt.format(date), "2011년 9월 29일");
         test.done();
@@ -164,7 +168,7 @@ module.exports.testdatefmt_ko_KR = {
             return;
         }
         test.expect(2);
-        var fmt = new DateFmt({locale: "ko-KR", length: "full", useIntl: true});
+        var fmt = new DateFmt({locale: "ko-KR", length: "full", timezone: "local", useIntl: true});
         // Not supported case in iLib. follow normal iLib logic.
         test.ok(fmt !== null);
         
@@ -175,7 +179,8 @@ module.exports.testdatefmt_ko_KR = {
             hour: 13,
             minute: 45,
             second: 0,
-            millisecond: 0
+            millisecond: 0,
+            timezone: "local"
         });
         test.equal(fmt.format(date), "2011년 9월 29일");
         test.done();
@@ -187,7 +192,7 @@ module.exports.testdatefmt_ko_KR = {
             return;
         }
         test.expect(2);
-        var fmt = new DateFmt({locale: "ko-KR", date:"dmwy", length: "full", useIntl: true});
+        var fmt = new DateFmt({locale: "ko-KR", date:"dmwy", timezone: "local", length: "full", useIntl: true});
         // Not supported case in iLib. follow normal iLib logic.
         test.ok(fmt !== null);
         
@@ -198,7 +203,8 @@ module.exports.testdatefmt_ko_KR = {
             hour: 13,
             minute: 45,
             second: 0,
-            millisecond: 0
+            millisecond: 0,
+            timezone: "local"
         });
         test.equal(fmt.format(date), "2011년 9월 29일 목요일");
         test.done();

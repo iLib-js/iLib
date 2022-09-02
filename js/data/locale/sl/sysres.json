@@ -27,7 +27,7 @@
     "1#1 hour|#{num} hours": "one#{num} ura|two#{num} uri|few#{num} ure|#{num} ur",
     "1#1 hr ago|#{num} hrs ago": "one#pred {num} uro|two#pred {num} urama|few#pred {num} urami|#pred {num} urami",
     "1#1 hr|#{num} hrs": "one#{num} h|two#{num} h|few#{num} h|#{num} h",
-    "1#1 millisecond|#{num} milliseconds": "one#{num} milisekunda|two#{num} millisekundi|few#{num} millisekunde|#{num} millisekund",
+    "1#1 millisecond|#{num} milliseconds": "one#{num} milisekunda|two#{num} millisekundi|few#{num} milisekunde|#{num} milisekund",
     "1#1 min ago|#{num} min ago": "one#pred {num} minuto|two#pred {num} minutama|few#pred {num} minutami|#pred {num} minutami",
     "1#1 minute ago|#{num} minutes ago": "one#pred {num} minuto|two#pred {num} minutama|few#pred {num} minutami|#pred {num} minutami",
     "1#1 minute|#{num} minutes": "one#{num} minuta|two#{num} minuti|few#{num} minute|#{num} minut",

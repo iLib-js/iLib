@@ -35,7 +35,7 @@
     "1#1 mi|#{num} min": "one#{num}मि॰|#{num}मि॰",
     "1#1 mon ago|#{num} mons ago": "one#{num} माह पहले|#{num} माह पहले",
     "1#1 month ago|#{num} months ago": "one#{num} माह पहले|#{num} माह पहले",
-    "1#1 month|#{num} months": "one#{num} महीना|#{num} महीना",
+    "1#1 month|#{num} months": "one#{num} महीना|#{num} महीने",
     "1#1 mon|#{num} mons": "one#{num} माह|#{num} माह",
     "1#1 mo|#{num} mos": "one#{num}माह|#{num}माह",
     "1#1 sec ago|#{num} sec ago": "one#{num} सेकंड पहले|#{num} सेकंड पहले",

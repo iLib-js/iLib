@@ -27,7 +27,7 @@
     "1#1 hour|#{num} hours": "one#{num} گھنٹہ|#{num} گھنٹے",
     "1#1 hr ago|#{num} hrs ago": "one#‏{num} گھنٹہ پہلے|#‏{num} گھنٹے پہلے",
     "1#1 hr|#{num} hrs": "one#{num} گھنٹہ|#{num} گھنٹے",
-    "1#1 millisecond|#{num} milliseconds": "one#{num} ملی سیکنڈ|#{num} میل سیکنڈ",
+    "1#1 millisecond|#{num} milliseconds": "one#{num} ملی سیکنڈ|#{num} ملی سیکنڈ",
     "1#1 min ago|#{num} min ago": "one#‏{num} منٹ پہلے|#‏{num} منٹ پہلے",
     "1#1 minute ago|#{num} minutes ago": "one#‏{num} منٹ پہلے|#‏{num} منٹ پہلے",
     "1#1 minute|#{num} minutes": "one#{num} منٹ|#{num} منٹ",

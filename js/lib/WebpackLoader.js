@@ -92,7 +92,7 @@ module.exports = function (ilib) {
 
         filename = locale && locale.getSpec() || (base === "ilibmanifest" ? "localmanifest" : "root");
 
-        var dataName = base;
+        dataName = base;
         if (dir) {
             if (locale) {
                 dataName += "_" + filename;
