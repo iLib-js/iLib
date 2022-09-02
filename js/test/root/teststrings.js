@@ -3289,7 +3289,11 @@ module.exports.teststrings = {
                 test.equal(str.formatChoice(1000000), "The items are many");
             }
         } else {
-            test.equal(str.formatChoice(1000000), "The items are many");
+            if (ilib._getPlatform() === "browser" && ilib._getBrowser() === "opera") {
+                test.equal(str.formatChoice(1000000), "Default items");
+            } else {
+                test.equal(str.formatChoice(1000000), "The items are many");
+            }
         }
         test.done();
     },
@@ -3945,7 +3949,11 @@ module.exports.teststrings = {
                 test.equal(str.formatChoice(1000000), "The items are many");
             }
         } else {
-            test.equal(str.formatChoice(1000000), "The items are many");
+            if (ilib._getPlatform() === "browser" && ilib._getBrowser() === "opera") {
+                test.equal(str.formatChoice(1000000), "Default items");
+            } else {
+                test.equal(str.formatChoice(1000000), "The items are many");
+            }
         }
         test.done();
     },
@@ -3966,7 +3974,11 @@ module.exports.teststrings = {
                 test.equal(str.formatChoice(3e6), "The items are many");
             }
         } else {
-            test.equal(str.formatChoice(3e6), "The items are many");
+            if (ilib._getPlatform() === "browser" && ilib._getBrowser() === "opera") {
+                test.equal(str.formatChoice(3e6), "Default items");
+            } else {
+                test.equal(str.formatChoice(3e6), "The items are many");
+            }
         }
         test.done();
     },
@@ -3986,7 +3998,11 @@ module.exports.teststrings = {
                 test.equal(str.formatChoice(1000000), "The items are many");
             }
         }  else {
-            test.equal(str.formatChoice(1000000), "The items are many");
+            if (ilib._getPlatform() === "browser" && ilib._getBrowser() === "opera") {
+                test.equal(str.formatChoice(1000000), "Default items");
+            } else {
+                test.equal(str.formatChoice(1000000), "The items are many");
+            }
         }
         test.done();
     },
