@@ -145,10 +145,10 @@ module.exports.testdatefmt_en_GB = {
         });
 
         if(ilib._getPlatform() === "nodejs"){
-            var cldrVersion = process.versions["cldr"];
-            if (Number(cldrVersion) < 34) {
+            var cldrVersion = Number(process.versions["cldr"]);
+            if (cldrVersion < 34) {
                 test.equal(fmt.format(date), "9/29/2011");
-            } else if (Number(cldrVersion) < 35) {
+            } else if (cldrVersion < 35) {
                 test.equal(fmt.format(date), "9/29/11");
             } else {
                 test.equal(fmt.format(date), "29/09/2011");
@@ -220,10 +220,10 @@ module.exports.testdatefmt_en_GB = {
         });
 
         if(ilib._getPlatform() === "nodejs"){
-            var cldrVersion = process.versions["cldr"];
-            if (Number(cldrVersion) < 34) {
+            var cldrVersion = Number(process.versions["cldr"]);
+            if (cldrVersion < 34) {
                 test.equal(fmt.format(date), "9/29/2011");
-            } else if (Number(cldrVersion) < 35) {
+            } else if (cldrVersion < 35) {
                 test.equal(fmt.format(date), "September 29, 2011");
             } else {
                 test.equal(fmt.format(date), "29 September 2011");
@@ -280,10 +280,10 @@ module.exports.testdatefmt_en_GB = {
 
 
         if(ilib._getPlatform() === "nodejs"){
-            var cldrVersion = process.versions["cldr"];
-            if (Number(cldrVersion) < 34) {
+            var cldrVersion = Number(process.versions["cldr"]);
+            if (cldrVersion < 34) {
                 test.equal(fmt.format(date), "9/29/2011");
-            } else if (Number(cldrVersion) < 35) {
+            } else if (cldrVersion < 35) {
                 test.equal(fmt.format(date), "Thursday, September 29, 2011");
             } else {
                 test.equal(fmt.format(date), "Thursday, 29 September 2011");
@@ -1290,7 +1290,7 @@ module.exports.testdatefmt_en_GB = {
         });
 
         if(ilib._getPlatform() === "nodejs") {
-            var cldrVersion = process.versions["cldr"];
+            var cldrVersion = Number(process.versions["cldr"]);
             if (cldrVersion < 34) {
                 test.equal(fmt.format(date), "9/29/2011");
             } else if (cldrVersion < 35) {
@@ -1324,7 +1324,7 @@ module.exports.testdatefmt_en_GB = {
         });
 
         if(ilib._getPlatform() === "nodejs"){
-            var cldrVersion = process.versions["cldr"];
+            var cldrVersion = Number(process.versions["cldr"]);
             if (cldrVersion < 34) {
                 test.equal(fmt.format(date), "9/29/2011");
             } else if (cldrVersion < 35) {

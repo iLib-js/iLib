@@ -3998,8 +3998,8 @@ module.exports.testdatefmt = {
         var result = DateFmt.isIntlDateTimeAvailable("ko-KR");
 
         if(ilib._getPlatform() === "nodejs") {
-            var cldrVersion = process.versions["cldr"];
-            if (Number(cldrVersion) < 35) {
+            var cldrVersion = Number(process.versions["cldr"]);
+            if (cldrVersion < 35) {
                 test.equal(result, false);
             } else {
                 test.equal(result, true);

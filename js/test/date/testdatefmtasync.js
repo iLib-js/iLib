@@ -322,8 +322,8 @@ module.exports.testdatefmtasync = {
                 var date = new Date(2022, 4, 29);
 
                 if(ilib._getPlatform() === "nodejs"){
-                    var cldrVersion = process.versions["cldr"];
-                    if (Number(cldrVersion) < 34){
+                    var cldrVersion = Number(process.versions["cldr"]);
+                    if (cldrVersion < 34){
                         test.equal(fmt.format(date), "5/29/2022");
                     } else {
                         test.equal(fmt.format(date), "May 29, 2022");
@@ -419,9 +419,9 @@ module.exports.testdatefmtasync = {
                     sync: false,
                     onLoad: function(fmt){
                         if(ilib._getPlatform() === "nodejs"){
-                            var cldrVersion = process.versions["cldr"];
-                            //console.log("version: " + version);
-                            if(Number(cldrVersion) < 34){
+                            var cldrVersion = Number(process.versions["cldr"]);
+                            console.log("version: " + process.versions["node"]);
+                            if(cldrVersion < 34){
                                 test.equal(fmt.format(date), "9/29/2022");
                             } else {
                                 test.equal(fmt.format(date), "September 29, 2022");
