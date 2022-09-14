@@ -3999,8 +3999,13 @@ module.exports.testdatefmt = {
 
         if(ilib._getPlatform() === "nodejs") {
             var cldrVersion = Number(process.versions["cldr"]);
+            var nodeMajorVersion = process.versions["node"].split(".")[0];
             if (cldrVersion < 38) {
-                test.equal(result, false);
+                if (nodeMajorVersion === "14") {
+                    test.equal(result, true);
+                } else {
+                    test.equal(result, false);
+                }
             } else {
                 test.equal(result, true);
             }

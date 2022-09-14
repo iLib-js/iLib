@@ -420,13 +420,11 @@ module.exports.testdatefmtasync = {
                     onLoad: function(fmt){
                         if(ilib._getPlatform() === "nodejs"){
                             var cldrVersion = Number(process.versions["cldr"]);
-                            console.log("version: " + process.versions["node"]);
                             if(cldrVersion < 36){
                                 test.equal(fmt.format(date), "9/29/2022");
                             } else {
                                 test.equal(fmt.format(date), "September 29, 2022");
                             }
-                            
                         } else {
                             test.equal(fmt.format(date), "September 29, 2022");
                         }

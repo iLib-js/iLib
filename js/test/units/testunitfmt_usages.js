@@ -2802,7 +2802,6 @@ module.exports.testunitfmt_usages = {
         } else {
             test.equal(str, "3,2 кубічныя метры");
         }
-        
         test.done();
     },
 
