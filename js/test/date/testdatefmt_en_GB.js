@@ -151,7 +151,7 @@ module.exports.testdatefmt_en_GB = {
                 test.equal(fmt.format(date), "9/29/2011");
             } else if (cldrVersion < 38) {
                 /*
-                * Both node v12.16.1 and v14.16.1 says the cldr version is 37.0.
+                * Both node v12.16.1 and v14.16.1 say the cldr version is 37.0.
                 * But it returns a different result.
                 */
                 if (nodeMajorVersion === "14") {
