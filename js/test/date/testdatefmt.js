@@ -3998,10 +3998,14 @@ module.exports.testdatefmt = {
         var result = DateFmt.isIntlDateTimeAvailable("ko-KR");
 
         if(ilib._getPlatform() === "nodejs") {
-            var version = process.versions["node"];
-            var majorVersion = version.split(".")[0];
-            if (majorVersion == "8" || majorVersion == "10" || majorVersion == "12") {
-                test.equal(result, false);
+            var cldrVersion = Number(process.versions["cldr"]);
+            var nodeMajorVersion = process.versions["node"].split(".")[0];
+            if (cldrVersion < 38) {
+                if (nodeMajorVersion === "14") {
+                    test.equal(result, true);
+                } else {
+                    test.equal(result, false);
+                }
             } else {
                 test.equal(result, true);
             }
