@@ -1,6 +1,13 @@
 Release Notes for Version 14
 ============================
 
+Build 024
+-------
+Published as version 14.15.1
+New Features:
+
+Bug Fixes:
+* Fixed isomorphic test failures by adding a value check
 
 Build 023
 -------
