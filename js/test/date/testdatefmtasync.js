@@ -322,9 +322,8 @@ module.exports.testdatefmtasync = {
                 var date = new Date(2022, 4, 29);
 
                 if(ilib._getPlatform() === "nodejs"){
-                    var version = process.versions["node"];
-                    var majorVersion = version.split(".")[0];
-                    if (majorVersion == 8 || majorVersion == 10){
+                    var cldrVersion = Number(process.versions["cldr"]);
+                    if (cldrVersion < 36){
                         test.equal(fmt.format(date), "5/29/2022");
                     } else {
                         test.equal(fmt.format(date), "May 29, 2022");
@@ -420,15 +419,12 @@ module.exports.testdatefmtasync = {
                     sync: false,
                     onLoad: function(fmt){
                         if(ilib._getPlatform() === "nodejs"){
-                            var version = process.versions["node"];
-                            var majorVersion = version.split(".")[0];
-                            //console.log("version: " + version);
-                            if(majorVersion == "8" || majorVersion == "10"){
+                            var cldrVersion = Number(process.versions["cldr"]);
+                            if(cldrVersion < 36){
                                 test.equal(fmt.format(date), "9/29/2022");
                             } else {
                                 test.equal(fmt.format(date), "September 29, 2022");
                             }
-                            
                         } else {
                             test.equal(fmt.format(date), "September 29, 2022");
                         }

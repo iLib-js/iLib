@@ -694,6 +694,7 @@ IString.prototype = {
         if (typeof(Intl) !== 'undefined') {
             if (ilib._getPlatform() === 'nodejs') {
                 var version = process.versions["node"];
+                if (!version) return false;
                 var majorVersion = version.split(".")[0];
                 if (Number(majorVersion) >= 10 && (Intl.PluralRules.supportedLocalesOf(locale.getSpec()).length > 0)) {
                     return true;
