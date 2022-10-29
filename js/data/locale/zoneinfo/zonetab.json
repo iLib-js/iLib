@@ -284,7 +284,8 @@
     ],
     "CY": [
         "Asia/Famagusta",
-        "Asia/Nicosia"
+        "Asia/Nicosia",
+        "Europe/Nicosia"
     ],
     "CZ": [
         "Europe/Prague"
@@ -900,6 +901,7 @@
         "Pacific/Tongatapu"
     ],
     "TR": [
+        "Asia/Istanbul",
         "Europe/Istanbul",
         "Turkey"
     ],
