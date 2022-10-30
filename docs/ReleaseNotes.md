@@ -8,7 +8,7 @@ Published as version 14.16.0
 New Features:
 * Update to Unicode Character Database (UCD) version 15.0.0
     * updated character properties
-    * added scripts
+    * added scripts support
     * updated normalization data, especially for Cyrillic characters
 
 Bug Fixes:
