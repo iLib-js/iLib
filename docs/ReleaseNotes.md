@@ -3,12 +3,17 @@ Release Notes for Version 14
 
 Build 025
 -------
-Published as version 14.15.2
+Published as version 14.16.0
 
 New Features:
+* Update to Unicode Character Database (UCD) version 15.0.0
+    * updated character properties
+    * added scripts
+    * updated normalization data, especially for Cyrillic characters
 
 Bug Fixes:
 * Updated to IANA time zone data version 2022f
+* Updated package dependencies
 
 Build 024
 -------

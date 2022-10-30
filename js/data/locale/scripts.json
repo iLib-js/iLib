@@ -575,9 +575,12 @@
         "rtl": false
     },
     "Kawi": {
+        "casing": false,
+        "ime": false,
         "lid": "Kawi",
         "nb": 368,
-        "nm": "Kawi"
+        "nm": "Kawi",
+        "rtl": false
     },
     "Khar": {
         "casing": false,
@@ -884,9 +887,12 @@
         "rtl": false
     },
     "Nagm": {
+        "casing": false,
+        "ime": false,
         "lid": "Nag_Mundari",
         "nb": 295,
-        "nm": "Nag Mundari"
+        "nm": "Nag Mundari",
+        "rtl": false
     },
     "Nand": {
         "casing": false,
