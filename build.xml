@@ -115,6 +115,10 @@ limitations under the License.
         <mkdir dir="${build.dist}" description="Dir to contain all the distribution outputs"/>
     </target>
 
+    <target name="test.dynamic.uncompiled">
+        <subant target="test.dynamic.uncompiled" buildpath="js"/>
+    </target>
+
     <target name="test" depends="export" description="Run all tests and build all reports">
         <iterate target="test"/>
     </target>

@@ -67,6 +67,12 @@
             2207
         ]
     ],
+    "arabic extended-c": [
+        [
+            69312,
+            69375
+        ]
+    ],
     "aramaic": [
         [
             67648,
@@ -299,6 +305,12 @@
             201551
         ]
     ],
+    "cjk unified ideographs extension h": [
+        [
+            201552,
+            205743
+        ]
+    ],
     "cjkcompatibility": [
         [
             13056,
@@ -423,6 +435,12 @@
             42655
         ]
     ],
+    "cyrillic extended-d": [
+        [
+            122928,
+            123023
+        ]
+    ],
     "deseret": [
         [
             66560,
@@ -437,6 +455,12 @@
         [
             43232,
             43263
+        ]
+    ],
+    "devanagari extended-a": [
+        [
+            72448,
+            72543
         ]
     ],
     "digit": [
@@ -478,7 +502,7 @@
     "egyptian hieroglyph format controls": [
         [
             78896,
-            78911
+            78943
         ]
     ],
     "elbasan": [
@@ -883,6 +907,12 @@
             69839
         ]
     ],
+    "kaktovik numerals": [
+        [
+            119488,
+            119519
+        ]
+    ],
     "kana extended-a": [
         [
             110848,
@@ -919,6 +949,12 @@
         [
             110592,
             110847
+        ]
+    ],
+    "kawi": [
+        [
+            73472,
+            73567
         ]
     ],
     "kayahli": [
@@ -1241,6 +1277,12 @@
         [
             67712,
             67759
+        ]
+    ],
+    "nag mundari": [
+        [
+            124112,
+            124159
         ]
     ],
     "nandinagari": [
