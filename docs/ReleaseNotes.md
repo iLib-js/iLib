@@ -12,7 +12,7 @@ New Features:
     * updated normalization data, especially for Cyrillic characters
 
 Bug Fixes:
-* Updated to IANA time zone data version 2022f
+* Updated to IANA time zone data version 2022g
 * Updated package dependencies
 
 Build 024
