@@ -1,24 +1,24 @@
-/* 
- * gendelimiters.js - ilib tool to generate delimiters json fragments from  
- * the CLDR data files 
+/*
+ * gendelimiters.js - ilib tool to generate delimiters json fragments from
+ * the CLDR data files
  *
  * Copyright © 2013-2022 LGE
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
- * You may obtain a copy of the License at 
- * 
- *     http://www.apache.org/licenses/LICENSE-2.0 
- * 
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an "AS IS" BASIS, 
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
- * 
- * See the License for the specific language governing permissions and 
- * limitations under the License. 
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-/* 
- * This code is intended to be run under node.js  
+/*
+ * This code is intended to be run under node.js
  */
 var fs = require('fs');
 var path = require('path');
@@ -110,7 +110,7 @@ function loadFileNonGenerated(language, script, region) {
     var path = calcLocalePath(language, script, region, "delimiters.jf");
     var obj = loadFile_jf(path);
     if (typeof (obj) !== 'undefined' && (typeof (obj.generated) === 'undefined' || obj.generated === false)) {
-        // only return non-generated files 
+        // only return non-generated files
         return obj;
     }
     return undefined;
@@ -124,11 +124,11 @@ function getLocaleData(dirname, locale) {
         region = undefined,
         spec = undefined;
 
-        if (locale !== undefined)	 {
+        if (locale !== undefined)     {
             language = locale.getLanguage(),
             script = locale.getScript(),
             region = locale.getRegion();
-            spec = locale.getSpec();	
+            spec = locale.getSpec();
         } else {
             spec = "und";
         }
@@ -164,7 +164,7 @@ function getLocaleData(dirname, locale) {
             }
             localeData[language].data = numData;
         } else {
-            // root locale 
+            // root locale
             localeData.data = numData;
         }
     } catch (e) {
@@ -196,7 +196,7 @@ function writeQuotationChars(language, script, region, data) {
             console.log("Writing " + path);
             //var delimiters={};
             //makeDirs(path);
-            if ((Object.keys(data["delimiter"]).length !== 0))	{
+            if ((Object.keys(data["delimiter"]).length !== 0))    {
                 data.generated=true;
                 makeDirs(path);
                 //if(data=undefined){
@@ -212,7 +212,7 @@ function writeQuotationChars(language, script, region, data) {
 }
 
 function getQuotationChars(language, script, region, data) {
-    // if it is already there and non-generated, return it 
+    // if it is already there and non-generated, return it
     var delimiters = loadFileNonGenerated(language, script, region);
 
     if (delimiters) {
@@ -222,7 +222,7 @@ function getQuotationChars(language, script, region, data) {
         return delimiters;
     }
     var delimiter_symbol={};
-    // else generate a new one 
+    // else generate a new one
     delimiters = {
         generated: true
     };
@@ -247,7 +247,7 @@ resources.data = getQuotationChars(undefined, undefined, undefined, localeData.d
 for (language in localeData) {
     if (language && localeData[language] && language !== 'data' && language !== 'merged') {
         resources[language] = resources[language] || {};
-        console.log(language + " "); 
+        console.log(language + " ");
         for (var subpart in localeData[language]) {
             if (subpart && localeData[language][subpart] && subpart !== 'data' && subpart !== 'merged') {
                 resources[language][subpart] = resources[language][subpart] || {};
@@ -267,10 +267,10 @@ for (language in localeData) {
     }
 }
 
-//resources.data = getQuotationChars(undefined, undefined, undefined, localeData.data); 
+//resources.data = getQuotationChars(undefined, undefined, undefined, localeData.data);
 console.log("Merging and pruning...");
 //console.log("\nLoaded existing resources " + JSON.stringify(resources));
-//writeQuotationChars(undefined, undefined, undefined, resources.data); 
+//writeQuotationChars(undefined, undefined, undefined, resources.data);
 //console.log("\ndata before merge and pruning\n"+JSON.stringify(resources));
 mergeAndPrune(resources);
 //console.log("\ndata after merge and pruning\n"+JSON.stringify(resources));
@@ -297,5 +297,5 @@ for (language in resources) {
     }
 }
 
-writeQuotationChars(undefined, undefined, undefined, resources.data); 
+writeQuotationChars(undefined, undefined, undefined, resources.data);
 process.exit(0);

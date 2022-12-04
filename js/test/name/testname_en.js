@@ -375,7 +375,7 @@ module.exports.testname_en = {
 
         // name in English in Hong Kong are written with Asian order, much like Hungarian
         var expected = {
-        	prefix: "Dr",
+            prefix: "Dr",
             givenName: "Ho",
             middleName: "Yun",
             familyName: "Chan"

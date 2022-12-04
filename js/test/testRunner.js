@@ -28,38 +28,38 @@ var nodeunit = require("nodeunit");
 require("./test/assertExtras.js");
 
 var suiteDefinitions = {
-	"core": [
-	    "util",
-	    "root"
-	],
-	"standard": [
-		"util",
-		"root",
-		"calendar",
-		"date",
-		"daterange",
-		"durfmt",
-		"number",
-		"maps",
-		"ctype"
-	],
-	"full": [
-		"util",
-		"root",
-		"calendar",
-		"date",
-		"daterange",
-		"durfmt",
-		"number",
-		"maps",
-		"ctype",
-		"strings-ext",
-		"phone",
-		"units",
-		"name",
-		"address",
-		"collate"
-	]
+    "core": [
+        "util",
+        "root"
+    ],
+    "standard": [
+        "util",
+        "root",
+        "calendar",
+        "date",
+        "daterange",
+        "durfmt",
+        "number",
+        "maps",
+        "ctype"
+    ],
+    "full": [
+        "util",
+        "root",
+        "calendar",
+        "date",
+        "daterange",
+        "durfmt",
+        "number",
+        "maps",
+        "ctype",
+        "strings-ext",
+        "phone",
+        "units",
+        "name",
+        "address",
+        "collate"
+    ]
 };
 
 // override the possible node environment to make the tests uniform
@@ -85,45 +85,45 @@ if (process.argv.length >= 2 &&
 
 // Usage: testSuite.js [assembly_style [compilation_style [suite_name_or_collection [sync|async]]]]
 if (process.argv.length > 2) {
-	if (process.argv.length > 3) {
-		if (process.argv.length > 4) {
-			if (process.argv.length > 5) {
-			    sync = (process.argv[5] !== "async");
-			}
+    if (process.argv.length > 3) {
+        if (process.argv.length > 4) {
+            if (process.argv.length > 5) {
+                sync = (process.argv[5] !== "async");
+            }
 
-			size = process.argv[4];
-			if (suiteDefinitions[size]) {
+            size = process.argv[4];
+            if (suiteDefinitions[size]) {
                 console.log("Only running set " + size);
                 suite = suiteDefinitions[size];
                 reporter = nodeunit.reporters.minimal;
-			} else if (suiteDefinitions.full.indexOf(size) > -1) {
+            } else if (suiteDefinitions.full.indexOf(size) > -1) {
                 console.log("Only running suite " + size);
                 suite = [size];
                 reporter = nodeunit.reporters["default"];
-			} else {
-			    if (size !== "all") {
-			        console.log("Suite " + size + " is unrecognized. Testing all suites by default.");
-			    } else {
-			        console.log("Testing all suites.");
-			    }
+            } else {
+                if (size !== "all") {
+                    console.log("Suite " + size + " is unrecognized. Testing all suites by default.");
+                } else {
+                    console.log("Testing all suites.");
+                }
                 suite = suiteDefinitions.full;
                 reporter = nodeunit.reporters.minimal;
-			}
-		}
-		compilation = process.argv[3];
-		if (compilation !== "uncompiled" && compilation !== "compiled") {
-			console.log("Compilation " + compilation + " is unknown. Using 'compiled' by default.");
-			compilation = "compiled";
-		}
-	}
-	assembly = process.argv[2];
-	if (assembly !== "assembled" && assembly !== "dynamicdata" && assembly !== "dynamic") {
-		// assembled: pre-assembled code and locale data together in one file
-		// dynamicdata: pre-assembled code, but dynamically loaded locale data
-		// dynamic: dynamically loaded code and locale data
-		console.log("Assembly " + assembly + " is unknown. Using 'dynamic' by default.");
-		assembly = "dynamic";
-	}
+            }
+        }
+        compilation = process.argv[3];
+        if (compilation !== "uncompiled" && compilation !== "compiled") {
+            console.log("Compilation " + compilation + " is unknown. Using 'compiled' by default.");
+            compilation = "compiled";
+        }
+    }
+    assembly = process.argv[2];
+    if (assembly !== "assembled" && assembly !== "dynamicdata" && assembly !== "dynamic") {
+        // assembled: pre-assembled code and locale data together in one file
+        // dynamicdata: pre-assembled code, but dynamically loaded locale data
+        // dynamic: dynamically loaded code and locale data
+        console.log("Assembly " + assembly + " is unknown. Using 'dynamic' by default.");
+        assembly = "dynamic";
+    }
 } else {
     console.log('Usage: testRunner.js [assembled|dynamicdata|dynamic [compiled|uncompiled [suite_name_or_collection [sync|async]]]]');
     process.exit(1);

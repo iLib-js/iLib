@@ -347,7 +347,7 @@ module.exports.testalphaindex_ko = {
             "딸기",
             "고구마",
             "도라지",
-	        "고구마",
+            "고구마",
             "컵",
             "자석",
             "고무",

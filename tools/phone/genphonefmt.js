@@ -64,7 +64,7 @@ for (country in sampleNums) {
 
     asYouType = new libphonefmt.AsYouType(country);
     numbers = sampleNums[country];
-    
+
     fixedlineNumber = numbers["fixed_line"];
     mobileNumber = numbers ["mobile"];
     serviceNumber = numbers ["toll_free"];

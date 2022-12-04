@@ -1,5 +1,5 @@
-/* 
- * reversectry.js - ilib tool to generate the ctryreverse.json from 
+/*
+ * reversectry.js - ilib tool to generate the ctryreverse.json from
  * ctrynames.json files for LG specific country data
  *
  * Copyright © 2017, 2020, 2022 LGE
@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/* 
+/*
  * This code is intended to be run under node.js
  */
 var fs = require('fs');

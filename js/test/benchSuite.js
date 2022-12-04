@@ -24,7 +24,7 @@ var JsUnit = require("./runner.js");
 var runner = new JsUnit.TestRunner("../..");
 
 var suites = [
-	"test/benchSuite.js"
+    "test/benchSuite.js"
 ];
 
 // override the possible node environment to make the tests uniform
@@ -33,8 +33,8 @@ process.env.LANG = "";
 process.env.LC_ALL = "";
 
 for (suite in suites) {
-	ts = new JsUnit.TestSuite(suites[suite]);
-	runner.addSuite(ts);
+    ts = new JsUnit.TestSuite(suites[suite]);
+    runner.addSuite(ts);
 }
 
 runner.runTests();

@@ -3947,18 +3947,18 @@ module.exports.testdatefmt = {
         test.done();
     },
     testDateFmtGetDateComponentOrderTM: function(test) {
-    	test.expect(2);
+        test.expect(2);
 
-    	var fmt = new DateFmt({locale: "tk-TM"})
+        var fmt = new DateFmt({locale: "tk-TM"})
       test.ok(fmt !== null);
 
         test.equal(fmt.getDateComponentOrder(), "dmy");
         test.done();
     },
     testDateFmtGetDateComponentOrderTJ: function(test) {
-    	test.expect(2);
+        test.expect(2);
 
-    	var fmt = new DateFmt({locale: "tg-TJ"})
+        var fmt = new DateFmt({locale: "tg-TJ"})
       test.ok(fmt !== null);
 
         test.equal(fmt.getDateComponentOrder(), "dmy");

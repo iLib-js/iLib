@@ -1,6 +1,6 @@
 /*
  * common.js - common routines shared amongst the cldr/unicode tools
- * 
+ *
  * Copyright © 2013, 2018, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ var fs = require('fs');
 var util = require('util');
 
 /**
- * Test whether an object in an javascript array. 
- * 
+ * Test whether an object in an javascript array.
+ *
  * @param {*} object The object to test
  * @return {boolean} return true if the object is an array
  * and false otherwise
@@ -39,10 +39,10 @@ exports.isArray = function (object) {
 /*
  * The 32-bit Unicode value:
  * 000u uuuu xxxx   xxxx xxxx xxxx
- * 
+ *
  * Is translated to the following UTF-16 sequence:
  * 1101 10ww wwxx xxxx   1101 11xx xxxx xxxx
- * 
+ *
  * Where wwww = uuuuu - 1
  */
 exports.codePointToUTF16 = function codePointToUTF16(codepoint) {
@@ -91,8 +91,8 @@ exports.charIterator = function charIterator(string) {
         var ch = undefined;
         if (this.index < string.length) {
             ch = string.charAt(this.index);
-            if (exports.isSurrogate(ch) && 
-                    this.index+1 < string.length && 
+            if (exports.isSurrogate(ch) &&
+                    this.index+1 < string.length &&
                     exports.isSurrogate(string.charAt(this.index+1))) {
                 this.index++;
                 ch += string.charAt(this.index);
@@ -105,7 +105,7 @@ exports.charIterator = function charIterator(string) {
 
 /**
  * Return the character that is represented by the given hexadecimal encoding.
- * 
+ *
  * @param {string} hex the hexadecimal encoding of the code point of the character
  * @return {string} the character that is equivalent to the hexadecimal
  */
@@ -115,10 +115,10 @@ exports.hexToChar = function hexToChar(hex) {
 
 /**
  * Return a string created by interpretting the space-separated Unicode characters
- * encoded as hex digits. 
- * 
+ * encoded as hex digits.
+ *
  * Example: "0065 0066"  -> "ab"
- * 
+ *
  * @param {string} hex the string of characters encoded as hex digits
  * @return {string} the equivalent string as regular UTF-16 Unicode characters
  */
@@ -136,8 +136,8 @@ exports.hexStringUTF16String = function (hex) {
 /**
  * Re-encode the characters in a string as a space-separated sequence of 16-bit
  * hex values.
- * 
- * @param {string} string string to re-encode 
+ *
+ * @param {string} string string to re-encode
  * @return {string} the re-encoded string
  */
 exports.toHexString = function toHexString(string) {
@@ -163,9 +163,9 @@ exports.toHexString = function toHexString(string) {
  * as a match. If the element is a range array, then the range array
  * has the low end of the range encoded in the 0th element, and the
  * high end in the 1st element. The range array may contain more elements
- * after that, but the extra elements are ignored. They may be used to 
- * indicate other information about the range, such as a name for example. 
- * 
+ * after that, but the extra elements are ignored. They may be used to
+ * indicate other information about the range, such as a name for example.
+ *
  * @param {Array.<{Array.<number>|number}>} arr array of number or array of number to search
  * @param {number} num value to search for
  * @return {number} the index in the array of the matching element or -1 to indicate no
@@ -203,8 +203,8 @@ exports.findMember = function findMember(arr, num) {
 /**
  * Do a binary search of an array of ranges and single values to determine
  * whether or not the given character is encoded in that array.
- * 
- * @param {Array.<{Array.<number>|number}>} arr 
+ *
+ * @param {Array.<{Array.<number>|number}>} arr
  * @param {number} num number to search for
  * @return {boolean} true if the number is in the array or within a range in the array
  */
@@ -214,17 +214,17 @@ exports.isMember = function isMember(arr, num) {
 
 /**
  * Coelesce ranges to shorten files and to make searching it more efficient. There are 4 cases:
- * 
+ *
  * 1. [A] followed by [A+1]       -> [A, A+1]
  * 2. [A] followed by [A+1, B]    -> [A, B]
  * 3. [A, B] followed by [B+1]    -> [A, B+1]
  * 4. [A, B] followed by [B+1, C] -> [A, C]
- * 
+ *
  * where A, B, and C represent particular values. Handle each case properly.
- * 
+ *
  * @param {Array.<{Array.<string|number>}>} ranges an array of range arrays
- * @param {number} skip the number of elements to skip before the range.  
- * If it is 0, look at elements 0 and 1, and if it is 1, then the range is 
+ * @param {number} skip the number of elements to skip before the range.
+ * If it is 0, look at elements 0 and 1, and if it is 1, then the range is
  * in elements 1 and 2.
  * @return {Array.<{Array.<string|number>}>} a coelesced array of ranges
  */
@@ -262,10 +262,10 @@ exports.coelesce = function coelesce(ranges, skip) {
  * the value in object1. If a property exists in object1, but not in object2, its value
  * will not be touched. If a property exists in object2, but not in object1, it will be
  * added to the merged result.<p>
- * 
+ *
  * Name1 and name2 are for creating debug output only. They are not necessary.<p>
- * 
- * 
+ *
+ *
  * @param {*} object1 the object to merge into
  * @param {*} object2 the object to merge
  * @param {string=} name1 name of the object being merged into
@@ -302,12 +302,12 @@ exports.merge = function merge(object1, object2, name1, name2) {
 };
 
 /**
- * Return the default locale for the common classes if one has been set. This 
- * locale will be used when no explicit locale is passed to any common 
- * class. If the default locale is not set, the common classes will attempt 
- * to use the locale of the environment it is running in, if it can find 
+ * Return the default locale for the common classes if one has been set. This
+ * locale will be used when no explicit locale is passed to any common
+ * class. If the default locale is not set, the common classes will attempt
+ * to use the locale of the environment it is running in, if it can find
  * that. If not, it will default to the locale "en-US".<p>
- * 
+ *
  * @static
  * @return {string} the locale specifier for the default locale
  */
@@ -319,9 +319,9 @@ exports.getLocale = function () {
             if (!exports.locale) {
                 // IE on Windows
                 var lang = typeof(navigator.browserLanguage) !== 'undefined' ?
-                    navigator.browserLanguage : 
-                    (typeof(navigator.userLanguage) !== 'undefined' ? 
-                        navigator.userLanguage : 
+                    navigator.browserLanguage :
+                    (typeof(navigator.userLanguage) !== 'undefined' ?
+                        navigator.userLanguage :
                         (typeof(navigator.systemLanguage) !== 'undefined' ?
                             navigator.systemLanguage :
                             undefined));
@@ -332,8 +332,8 @@ exports.getLocale = function () {
             }
         } else if (typeof(PalmSystem) !== 'undefined') {
             // webOS
-            if (typeof(PalmSystem.locales) !== 'undefined' && 
-                    typeof(PalmSystem.locales.UI) != 'undefined' && 
+            if (typeof(PalmSystem.locales) !== 'undefined' &&
+                    typeof(PalmSystem.locales.UI) != 'undefined' &&
                     PalmSystem.locales.UI.length > 0) {
                 ilib.locale = PalmSystem.locales.UI;
             } else if (typeof(PalmSystem.locale) !== 'undefined') {
@@ -365,43 +365,43 @@ exports.getLocale = function () {
 
 /**
  * @class
- * Create a new locale instance. Locales are specified either with a specifier string 
- * that follows the BCP-47 convention (roughly: "language-region-script-variant") or 
+ * Create a new locale instance. Locales are specified either with a specifier string
+ * that follows the BCP-47 convention (roughly: "language-region-script-variant") or
  * with 4 parameters that specify the language, region, variant, and script individually.<p>
- * 
+ *
  * The language is given as an ISO 639-1 two-letter, lower-case language code. You
- * can find a full list of these codes at 
+ * can find a full list of these codes at
  * <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes</a><p>
- * 
+ *
  * The region is given as an ISO 3166-1 two-letter, upper-case region code. You can
- * find a full list of these codes at 
+ * find a full list of these codes at
  * <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2</a>.<p>
- * 
+ *
  * The variant is any string that does not contain a dash which further differentiates
  * locales from each other.<p>
- * 
+ *
  * The script is given as the ISO 15924 four-letter script code. In some locales,
  * text may be validly written in more than one script. For example, Serbian is often
  * written in both Latin and Cyrillic, though not usually mixed together. You can find a
- * full list of these codes at 
+ * full list of these codes at
  * <a href="http://en.wikipedia.org/wiki/ISO_15924#List_of_codes">http://en.wikipedia.org/wiki/ISO_15924#List_of_codes</a>.<p>
- * 
- * As an example in ilib, the script can be used in the date formatter. Dates formatted 
+ *
+ * As an example in ilib, the script can be used in the date formatter. Dates formatted
  * in Serbian could have day-of-week names or month names written in the Latin
  * or Cyrillic script. Often one script is default such that sr-SR-Latn is the same
- * as sr-SR so the script code "Latn" can be left off of the locale spec.<p> 
- * 
- * Each part is optional, and an empty string in the specifier before or after a 
+ * as sr-SR so the script code "Latn" can be left off of the locale spec.<p>
+ *
+ * Each part is optional, and an empty string in the specifier before or after a
  * dash or as a parameter to the constructor denotes an unspecified value. In this
  * case, many of the ilib functions will treat the locale as generic. For example
  * the locale "en-" is equivalent to "en" and to "en--" and denotes a locale
  * of "English" with an unspecified region and variant, which typically matches
  * any region or variant.<p>
- * 
+ *
  * Without any arguments to the constructor, this function returns the locale of
  * the host Javascript engine.<p>
- * 
- * 
+ *
+ *
  * @constructor
  * @param {?string=} language the ISO 639 2-letter code for the language, or a full
  * locale spec in BCP-47 format
@@ -531,9 +531,9 @@ exports.Locale._notDigit = function(str) {
 };
 
 /**
- * Tell whether or not the given string has the correct syntax to be 
+ * Tell whether or not the given string has the correct syntax to be
  * an ISO 639 language code.
- * 
+ *
  * @param {string} str the string to parse
  * @return {boolean} true if the string could syntactically be a language code.
  */
@@ -552,9 +552,9 @@ exports.Locale.isLanguageCode = function isLanguageCode(str) {
 };
 
 /**
- * Tell whether or not the given string has the correct syntax to be 
+ * Tell whether or not the given string has the correct syntax to be
  * an ISO 639 language code.
- * 
+ *
  * @param {string} str the string to parse
  * @return {boolean} true if the string could syntactically be a language code.
  */
@@ -581,9 +581,9 @@ exports.Locale.isRegionCode = function (str) {
 };
 
 /**
- * Tell whether or not the given string has the correct syntax to be 
+ * Tell whether or not the given string has the correct syntax to be
  * an ISO 639 language code.
- * 
+ *
  * @param {string} str the string to parse
  * @return {boolean} true if the string could syntactically be a language code.
  */
@@ -604,7 +604,7 @@ exports.Locale.isScriptCode = function isScriptCode(str)
 
 exports.Locale.prototype = {
     /**
-     * Return the ISO 639 language code for this locale. 
+     * Return the ISO 639 language code for this locale.
      * @return {string|undefined} the language code for this locale
      */
     getLanguage: function() {
@@ -774,7 +774,7 @@ exports.isEmpty = function (obj) {
  * If Function.prototype.bind does not exist in this JS engine, this
  * function reimplements it in terms of older JS functions.
  * bind() doesn't exist in many older browsers.
- * 
+ *
  * @param {Object} scope object that the method should operate on
  * @param {function(...)} method method to call
  * @return {function(...)|undefined} function that calls the given method
@@ -816,7 +816,7 @@ exports.bind = function(scope, method/*, bound arguments*/){
 
 /**
  * Create a new weight vector instance.
- * 
+ *
  * @param {Array.<number>|string|number?} primary
  * @param {string|number?} secondary
  * @param {string|number?} tertiary
@@ -914,7 +914,7 @@ var TrieNode = function (obj) {
 
 /**
  * Create a new, empty trie instance.
- * 
+ *
  * @class
  * @constructor
  */
@@ -925,7 +925,7 @@ exports.Trie = function () {
 /**
  * Add a node to the trie that maps from the given array
  * to the given object.
- * 
+ *
  * @param {Array.<string>} from
  * @param {Object} to
  */
