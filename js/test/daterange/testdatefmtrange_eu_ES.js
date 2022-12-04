@@ -1,6 +1,6 @@
 /*
  * testdatefmtrange_eu_ES.js - test the date range formatter object Basque-Spain
- * 
+ *
  * Copyright © 2020-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -138,7 +138,7 @@ module.exports.testdatefmtrange_eu_ES = {
         test.equal(fmt.format(start, end), "2011(e)ko abenduakren 31(a) 13:45 – 14:30");
         test.done();
     },
-    
+
     testDateRngFmteuESRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "eu-ES", length: "short"});
@@ -243,7 +243,7 @@ module.exports.testdatefmtrange_eu_ES = {
         test.equal(fmt.format(start, end), "2011(e)ko abenduakren 30(a) 13:45 – 2011(e)ko abenduakren 31(a) 14:30");
         test.done();
     },
-    
+
     testDateRngFmteuESRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "eu-ES", length: "short"});
@@ -348,7 +348,7 @@ module.exports.testdatefmtrange_eu_ES = {
         test.equal(fmt.format(start, end), "2011(e)ko abenduakren 20(a) – 31");
         test.done();
     },
-    
+
     testDateRngFmteuESRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "eu-ES", length: "short"});
@@ -453,7 +453,7 @@ module.exports.testdatefmtrange_eu_ES = {
         test.equal(fmt.format(start, end), "2011(e)ko azaroakren 20(a) – abenduakren 31(a)");
         test.done();
     },
-    
+
     testDateRngFmteuESRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "eu-ES", length: "short"});
@@ -558,7 +558,7 @@ module.exports.testdatefmtrange_eu_ES = {
         test.equal(fmt.format(start, end), "2011(e)ko azaroakren 20(a) – 2012(e)ko urtarrilakren 31(a)");
         test.done();
     },
-    
+
     testDateRngFmteuESRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "eu-ES", length: "short"});

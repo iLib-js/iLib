@@ -1,6 +1,6 @@
 /*
  * testaddress_SL.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports.testaddress_SL = {
     testParseAddressSLNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone", {locale: 'en-SL'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Kamara 7A Ross Road Cline");
         test.equal(parsedAddress.locality, "Freetown");
@@ -46,11 +46,11 @@ module.exports.testaddress_SL = {
         test.equal(parsedAddress.countryCode, "SL");
         test.done();
     },
-    
+
     testParseAddressSLNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone", {locale: 'en-SL'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Kamara 7A Ross Road Cline");
         test.equal(parsedAddress.locality, "Freetown");
@@ -60,11 +60,11 @@ module.exports.testaddress_SL = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressSLNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara 7A Ross Road Cline\nFreetown", {locale: 'en-SL'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Kamara 7A Ross Road Cline");
         test.equal(parsedAddress.locality, "Freetown");
@@ -74,7 +74,7 @@ module.exports.testaddress_SL = {
         test.equal(parsedAddress.countryCode, "SL");
         test.done();
     },
-    
+
     testParseAddressSLManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara\n7A Ross Road Cline\nFreetown\nSierra Leone\n\n\n", {locale: 'en-SL'});
@@ -87,11 +87,11 @@ module.exports.testaddress_SL = {
         test.equal(parsedAddress.countryCode, "SL");
         test.done();
     },
-    
+
     testParseAddressSLOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara , 7A Ross Road Cline , Freetown , Sierra Leone", {locale: 'en-SL'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Kamara, 7A Ross Road Cline");
         test.equal(parsedAddress.locality, "Freetown");
@@ -101,11 +101,11 @@ module.exports.testaddress_SL = {
         test.equal(parsedAddress.countryCode, "SL");
         test.done();
     },
-    
+
     testParseAddressSLSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\t\tMr. John Kamara\t\t\t7A Ross Road Cline\t\nFreetown\n\t Sierra Leone\n\n\n", {locale: 'en-SL'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Kamara 7A Ross Road Cline");
         test.equal(parsedAddress.locality, "Freetown");
@@ -115,11 +115,11 @@ module.exports.testaddress_SL = {
         test.equal(parsedAddress.countryCode, "SL");
         test.done();
     },
-    
+
     testParseAddressSLNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara 7A Ross Road Cline, Freetown Sierra Leone", {locale: 'en-SL'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Kamara 7A Ross Road Cline");
         test.equal(parsedAddress.locality, "Freetown");
@@ -129,11 +129,11 @@ module.exports.testaddress_SL = {
         test.equal(parsedAddress.countryCode, "SL");
         test.done();
     },
-    
+
     testParseAddressSLFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Kamara 7A Ross Road Cline");
         test.equal(parsedAddress.locality, "Freetown");
@@ -143,7 +143,7 @@ module.exports.testaddress_SL = {
         test.equal(parsedAddress.countryCode, "SL");
         test.done();
     },
-    
+
     testFormatAddressSL: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -152,13 +152,13 @@ module.exports.testaddress_SL = {
             country: "Sierra Leone",
             countryCode: "SL"
         }, {locale: 'en-SL'});
-        
+
         var expected = "Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone";
         var formatter = new AddressFmt({locale: 'en-SL'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressSLFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -167,13 +167,13 @@ module.exports.testaddress_SL = {
             country: "Sierra Leone",
             countryCode: "SL"
         }, {locale: 'en-US'});
-        
+
         var expected = "Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressSL1: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -182,13 +182,13 @@ module.exports.testaddress_SL = {
             country: "Sierra Leone",
             countryCode: "SL"
         }, {locale: 'en-US'});
-        
+
         var expected = "Mr. Simon Hunter 87 Florence's, Peninsula Road\nFreetown\nSierra Leone";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressSL2: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -197,17 +197,17 @@ module.exports.testaddress_SL = {
             country: "Sierra Leone",
             countryCode: "SL"
         }, {locale: 'en-SL'});
-        
+
         var expected = "Mr. Simon Hunter 87 Florence's, Peninsula Road\nFreetown\nSierra Leone";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testParseAddressSL3: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Simon Hunter 87 Florence's, Peninsula Road\nFreetown\nSierra Leone", {locale: 'en-SL'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Simon Hunter 87 Florence's, Peninsula Road");
         test.equal(parsedAddress.locality, "Freetown");
@@ -217,6 +217,6 @@ module.exports.testaddress_SL = {
         test.equal(parsedAddress.countryCode, "SL");
         test.done();
     }
-    
-    
+
+
 };

@@ -1,7 +1,7 @@
 /*
  * ilibstrings.js - Dummy source file for the loctool to extract strings
  * for translation.
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

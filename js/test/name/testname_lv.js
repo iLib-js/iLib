@@ -1,6 +1,6 @@
 /*
  * testname_lv_LV.js - test the name object in Latvian
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,98 +37,98 @@ module.exports.testname_lv = {
         test.expect(2);
         var parsed = new Name("Mikhail Baryshnikov", {locale: 'lv-LV'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Mikhail",
             familyName: "Baryshnikov"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseSimpleWithMiddleName_lv_LV: function(test) {
         test.expect(2);
         var parsed = new Name("Sergei M. Eisenstein", {locale: 'lv-LV'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Sergei",
             middleName: "M.",
             familyName: "Eisenstein"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitle_lv_LV: function(test) {
         test.expect(2);
         var parsed = new Name("Mikhail Baryshnikov vecākais", {locale: 'lv-LV'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             suffix: "vecākais",
             givenName: "Mikhail",
             familyName: "Baryshnikov"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitleWithFamilyOnly_lv_LV: function(test) {
         test.expect(2);
         var parsed = new Name("priekšsēdētāja Baryshnikov", {locale: 'lv-LV'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "priekšsēdētāja",
             familyName: "Baryshnikov"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseEverything_lv_LV: function(test) {
         test.expect(2);
         var parsed = new Name("kungs un kundze Baryshnikov", {locale: 'lv-LV'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "kungs un kundze",
             familyName: "Baryshnikov"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseprefix_lv_LV: function(test) {
         test.expect(2);
         var parsed = new Name("kungs Mikhail Baryshnikov", {locale: 'lv-LV'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "kungs",
             givenName: "Mikhail",
             familyName: "Baryshnikov"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -136,18 +136,18 @@ module.exports.testname_lv = {
             familyName: "Baryshnikov"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Mikhail Baryshnikov";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -155,18 +155,18 @@ module.exports.testname_lv = {
             familyName: "Baryshnikov"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Mikhail Baryshnikov";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -175,18 +175,18 @@ module.exports.testname_lv = {
             suffix: "asdf"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Mikhail Baryshnikov";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameWithMiddleNameFull_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -196,18 +196,18 @@ module.exports.testname_lv = {
             suffix: "pūt"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Sergei M. Eisenstein pūt";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSurname_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -215,18 +215,18 @@ module.exports.testname_lv = {
             familyName: "Baryshnikov"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "kungs un kundze Baryshnikov";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -236,18 +236,18 @@ module.exports.testname_lv = {
             suffix: "jaunākais"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "priekšsēdētājs Mikhail Baryshnikov jaunākais";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -256,18 +256,18 @@ module.exports.testname_lv = {
             familyName: "Baryshnikov"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Mikhail Baryshnikov";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -276,18 +276,18 @@ module.exports.testname_lv = {
             familyName: "Baryshnikov"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Mikhail Baryshnikov";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -301,13 +301,13 @@ module.exports.testname_lv = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "priekšsēdētājs Mikhail Baryshnikov";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
+
+
+
 };

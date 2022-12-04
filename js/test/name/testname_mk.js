@@ -1,6 +1,6 @@
 /*
  * testname_mk_MK.js - test the name object in macedonian
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,97 +37,97 @@ module.exports.testname_mk = {
         test.expect(2);
         var parsed = new Name("Љубunша Самарџunќ", {locale: 'mk-MK'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Љубunша",
             familyName: "Самарџunќ"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseSimpleWithHiphen_mk_MK: function(test) {
         test.expect(2);
         var parsed = new Name("Nikola-Kole Angelovski", {locale: 'mk-MK'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Nikola-Kole",
             familyName: "Angelovski"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitle_mk_MK: function(test) {
         test.expect(2);
         var parsed = new Name("Љубunша Самарџunќ високи", {locale: 'mk-MK'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             suffix: "високи",
             givenName: "Љубunша",
             familyName: "Самарџunќ"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitleWithFamilyOnly_mk_MK: function(test) {
         test.expect(2);
         var parsed = new Name("г-дин Самарџunќ", {locale: 'mk-MK'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "г-дин",
             familyName: "Самарџunќ"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseEverything_mk_MK: function(test) {
         test.expect(2);
         var parsed = new Name("г-дин и г-ѓа Самарџunќ", {locale: 'mk-MK'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "г-дин и г-ѓа",
             familyName: "Самарџunќ"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseprefix_mk_MK: function(test) {
         test.expect(2);
         var parsed = new Name("г-дин Љубunша Самарџunќ", {locale: 'mk-MK'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "г-дин",
             givenName: "Љубunша",
             familyName: "Самарџunќ"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_mk_MK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -135,18 +135,18 @@ module.exports.testname_mk = {
             familyName: "Самарџunќ"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'mk-MK'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Љубunша Самарџunќ";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_mk_MK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -154,18 +154,18 @@ module.exports.testname_mk = {
             familyName: "Самарџunќ"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'mk-MK'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Љубunша Самарџunќ";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_mk_MK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -174,20 +174,20 @@ module.exports.testname_mk = {
             suffix: "asdf"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'mk-MK'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Љубunша Самарџunќ";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testFormatSurname_mk_MK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -195,18 +195,18 @@ module.exports.testname_mk = {
             familyName: "Самарџunќ"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'mk-MK'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "г-дunн и kundze Самарџunќ";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_mk_MK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -216,18 +216,18 @@ module.exports.testname_mk = {
             suffix: "помладun"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'mk-MK'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "претседател Љубunша Самарџunќ помладun";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_mk_MK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -236,18 +236,18 @@ module.exports.testname_mk = {
             familyName: "Самарџunќ"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'mk-MK'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Љубunша Самарџunќ";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_mk_MK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -256,18 +256,18 @@ module.exports.testname_mk = {
             familyName: "Самарџunќ"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'mk-MK'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Љубunша Самарџunќ";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_mk_MK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -281,13 +281,13 @@ module.exports.testname_mk = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "претседател Љубunша Самарџunќ";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
+
+
+
 };

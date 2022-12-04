@@ -1,6 +1,6 @@
 /*
  * testdatefmtrange_my_MM.js - test the date range formatter object Burmese-Myanmar
- * 
+ *
  * Copyright © 2020-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -138,7 +138,7 @@ module.exports.testdatefmtrange_my_MM = {
         test.equal(fmt.format(start, end), '2011- ဒီဇင်ဘာ 31 13:45 – 14:30' );
         test.done();
     },
-    
+
     testDateRngFmtmyMMRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "my-MM", length: "short", useNative: false});
@@ -243,7 +243,7 @@ module.exports.testdatefmtrange_my_MM = {
         test.equal(fmt.format(start, end), '2011- ဒီဇင်ဘာ 30 13:45 – 2011- ဒီဇင်ဘာ 31 14:30');
         test.done();
     },
-    
+
     testDateRngFmtmyMMRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "my-MM", length: "short", useNative: false});
@@ -348,7 +348,7 @@ module.exports.testdatefmtrange_my_MM = {
         test.equal(fmt.format(start, end), '2011- ဒီဇင်ဘာ 20 – 31');
         test.done();
     },
-    
+
     testDateRngFmtmyMMRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "my-MM", length: "short", useNative: false});
@@ -453,7 +453,7 @@ module.exports.testdatefmtrange_my_MM = {
         test.equal(fmt.format(start, end), '2011- နိုဝင်ဘာ 20 – ဒီဇင်ဘာ 31');
         test.done();
     },
-    
+
     testDateRngFmtmyMMRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "my-MM", length: "short", useNative: false});
@@ -558,7 +558,7 @@ module.exports.testdatefmtrange_my_MM = {
         test.equal(fmt.format(start, end), '2011- နိုဝင်ဘာ 20 – 2012- ဇန်နဝါရီ 31');
         test.done();
     },
-    
+
     testDateRngFmtmyMMRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "my-MM", length: "short", useNative: false});

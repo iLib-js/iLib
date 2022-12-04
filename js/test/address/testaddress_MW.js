@@ -1,6 +1,6 @@
 /*
  * testaddress_PY.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports.testaddress_MW = {
     testParseAddressMWNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. W.M. Lundu P.O. Box 30500\nLILONGWE 3\nMALAWI", {locale: 'en-MW'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. W.M. Lundu P.O. Box 30500");
         test.equal(parsedAddress.locality, "LILONGWE 3");
@@ -46,11 +46,11 @@ module.exports.testaddress_MW = {
         test.equal(parsedAddress.countryCode, "MW");
         test.done();
     },
-    
+
     testParseAddressMWNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. W.M. Lundu P.O. Box 30500\nLILONGWE 3\nMALAWI", {locale: 'en-MW'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. W.M. Lundu P.O. Box 30500");
         test.equal(parsedAddress.locality, "LILONGWE 3");
@@ -60,11 +60,11 @@ module.exports.testaddress_MW = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressMWNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. W.M. Lundu P.O. Box 30500\nLILONGWE 3", {locale: 'en-MW'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. W.M. Lundu P.O. Box 30500");
         test.equal(parsedAddress.locality, "LILONGWE 3");
@@ -74,7 +74,7 @@ module.exports.testaddress_MW = {
         test.equal(parsedAddress.countryCode, "MW");
         test.done();
     },
-    
+
     testParseAddressMWManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. W.M. Lundu\nP.O. Box 30500\n\n\n\n\nLILONGWE 3\n\n\nMALAWI\n\n\n", {locale: 'en-MW'});
@@ -87,11 +87,11 @@ module.exports.testaddress_MW = {
         test.equal(parsedAddress.countryCode, "MW");
         test.done();
     },
-    
+
     testParseAddressMWOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. W.M. Lundu , P.O. Box 30500 , LILONGWE 3 , MALAWI", {locale: 'en-MW'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. W.M. Lundu, P.O. Box 30500");
         test.equal(parsedAddress.locality, "LILONGWE 3");
@@ -101,11 +101,11 @@ module.exports.testaddress_MW = {
         test.equal(parsedAddress.countryCode, "MW");
         test.done();
     },
-    
+
     testParseAddressMWSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tMr. W.M. Lundu\t\t\rP.O. Box 30500\t\t\r\n\n\n\nLILONGWE 3\n\t MALAWI\n\n\n", {locale: 'en-MW'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. W.M. Lundu P.O. Box 30500");
         test.equal(parsedAddress.locality, "LILONGWE 3");
@@ -115,11 +115,11 @@ module.exports.testaddress_MW = {
         test.equal(parsedAddress.countryCode, "MW");
         test.done();
     },
-    
+
     testParseAddressMWNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. W.M. Lundu P.O. Box 30500  LILONGWE 3 MALAWI", {locale: 'en-MW'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. W.M. Lundu P.O. Box 30500");
         test.equal(parsedAddress.locality, "LILONGWE 3");
@@ -129,13 +129,13 @@ module.exports.testaddress_MW = {
         test.equal(parsedAddress.countryCode, "MW");
         test.done();
     },
-    
+
     testParseAddressMWFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. W.M. Lundu P.O. Box 30500\n LILONGWE 3\nMALAWI", {locale: 'en-US'});
-        
+
         // the country name is in German because this address is for a contact in a German database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. W.M. Lundu P.O. Box 30500");
         test.equal(parsedAddress.locality, "LILONGWE 3");
@@ -145,7 +145,7 @@ module.exports.testaddress_MW = {
         test.equal(parsedAddress.countryCode, "MW");
         test.done();
     },
-    
+
     testFormatAddressMW: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -154,13 +154,13 @@ module.exports.testaddress_MW = {
             country: "MALAWI",
             countryCode: "MW"
         }, {locale: 'en-MW'});
-        
+
         var expected = "Mr. W.M. Lundu P.O. Box 30500\nLILONGWE 3\nMALAWI";
         var formatter = new AddressFmt({locale: 'en-MW'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressMWFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -169,11 +169,11 @@ module.exports.testaddress_MW = {
             country: "MALAWI",
             countryCode: "MW"
         }, {locale: 'en-US'});
-        
+
         var expected = "Mr. W.M. Lundu P.O. Box 30500\nLILONGWE 3\nMALAWI";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

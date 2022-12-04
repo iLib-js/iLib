@@ -1,6 +1,6 @@
 /*
  * testcollation_de.js - test the Collator object in German
- * 
+ *
  * Copyright © 2014-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,9 +40,9 @@ module.exports.testcollation_de = {
             style: "phonebook",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // aa ae äa äz af
         test.ok("aa < ae",  col.compare("aa", "ae") < 0);
         test.ok("ae < äa",  col.compare("ae", "äa") < 0);
@@ -50,7 +50,7 @@ module.exports.testcollation_de = {
         test.ok("äz < af",  col.compare("äz", "af") < 0);
         test.done();
     },
-    
+
     testJSCollatorPhonebookQuatOE_de: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -60,9 +60,9 @@ module.exports.testcollation_de = {
             style: "phonebook",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // oa oe öa öz of
         test.ok("oa < oe",  col.compare("oa", "oe") < 0);
         test.ok("oe < öa",  col.compare("oe", "öa") < 0);
@@ -70,7 +70,7 @@ module.exports.testcollation_de = {
         test.ok("öz < of",  col.compare("öz", "of") < 0);
         test.done();
     },
-    
+
     testJSCollatorPhonebookQuatUE_de: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -80,9 +80,9 @@ module.exports.testcollation_de = {
             style: "phonebook",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // ua ue üa üz uf
         test.ok("ua < ue",  col.compare("ua", "ue") < 0);
         test.ok("ue < üa",  col.compare("ue", "üa") < 0);
@@ -90,9 +90,9 @@ module.exports.testcollation_de = {
         test.ok("üz < uf",  col.compare("üz", "uf") < 0);
         test.done();
     },
-    
+
     // differences in umlauted characters should be primary differences
-    
+
     testJSCollatorPhonebookPrimaryAE_de: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -102,9 +102,9 @@ module.exports.testcollation_de = {
             style: "phonebook",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // aa ae äa äz af
         test.ok("aa < ae",  col.compare("aa", "ae") < 0);
         test.ok("ae < äa",  col.compare("ae", "äa") < 0);
@@ -112,7 +112,7 @@ module.exports.testcollation_de = {
         test.ok("äz < af",  col.compare("äz", "af") < 0);
         test.done();
     },
-    
+
     testJSCollatorPhonebookPrimaryOE_de: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -122,9 +122,9 @@ module.exports.testcollation_de = {
             style: "phonebook",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // oa oe öa öz of
         test.ok("oa < oe",  col.compare("oa", "oe") < 0);
         test.ok("oe < öa",  col.compare("oe", "öa") < 0);
@@ -132,7 +132,7 @@ module.exports.testcollation_de = {
         test.ok("öz < of",  col.compare("öz", "of") < 0);
         test.done();
     },
-    
+
     testJSCollatorPhonebookPrimaryUE_de: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -142,9 +142,9 @@ module.exports.testcollation_de = {
             style: "phonebook",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // ua ue üa üz uf
         test.ok("ua < ue",  col.compare("ua", "ue") < 0);
         test.ok("ue < üa",  col.compare("ue", "üa") < 0);
@@ -152,7 +152,7 @@ module.exports.testcollation_de = {
         test.ok("üz < uf",  col.compare("üz", "uf") < 0);
         test.done();
     },
-    
+
     testCollatorPhonebookdeDECase: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -163,7 +163,7 @@ module.exports.testcollation_de = {
             style: "phonebook"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
             "Flüße",
             "Montags",
@@ -183,9 +183,9 @@ module.exports.testcollation_de = {
             "Fluße",
             "Fuß"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "Dienstag",
             "Februar",
@@ -203,13 +203,13 @@ module.exports.testcollation_de = {
             "März",
             "Montag",
             "Montags",
-            "Sonntag"                        
+            "Sonntag"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorPhonebookdeDEVariant: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -221,7 +221,7 @@ module.exports.testcollation_de = {
             style: "phonebook"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
             "Sonntag",
             "Montags",
@@ -238,9 +238,9 @@ module.exports.testcollation_de = {
             "flüße",
             "flüsse"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "Dienstag",
             "Februar",
@@ -255,13 +255,13 @@ module.exports.testcollation_de = {
             "März",
             "Montag",
             "Montags",
-            "Sonntag"                        
+            "Sonntag"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testJSCollatorDictionaryQuatAE_de: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -271,9 +271,9 @@ module.exports.testcollation_de = {
             style: "dictionary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // aa ae af az äa äz
         test.ok("aa < ae",  col.compare("aa", "ae") < 0);
         test.ok("ae < af",  col.compare("ae", "af") < 0);
@@ -283,7 +283,7 @@ module.exports.testcollation_de = {
         test.ok("äa < äz", col.compare("äa", "äz") < 0);
         test.done();
     },
-    
+
     testJSCollatorDictionaryQuatOE_de: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -293,10 +293,10 @@ module.exports.testcollation_de = {
             style: "dictionary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // oa oe of oz öa öz 
+
+        // oa oe of oz öa öz
         test.ok("oa < oe",  col.compare("oa", "oe") < 0);
         test.ok("oe < of",  col.compare("oe", "of") < 0);
         test.ok("of < oz",  col.compare("of", "oz") < 0);
@@ -305,7 +305,7 @@ module.exports.testcollation_de = {
         test.ok("öa < öz", col.compare("öa", "öz") < 0);
         test.done();
     },
-    
+
     testJSCollatorDictionaryQuatUE_de: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -315,10 +315,10 @@ module.exports.testcollation_de = {
             style: "dictionary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // ua ue uf uz üa üz 
+
+        // ua ue uf uz üa üz
         test.ok("ua < ue",  col.compare("ua", "ue") < 0);
         test.ok("ua < uf",  col.compare("ua", "uf") < 0);
         test.ok("uf < uz",  col.compare("uf", "uz") < 0);
@@ -327,7 +327,7 @@ module.exports.testcollation_de = {
         test.ok("üa < üz", col.compare("üa", "üz") < 0);
         test.done();
     },
-    
+
     testJSCollatorDictionaryPrimaryAE_de: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -337,9 +337,9 @@ module.exports.testcollation_de = {
             style: "dictionary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // aa ae af az äa äz
         test.ok("aa < ae",  col.compare("aa", "ae") < 0);
         test.ok("ae < af",  col.compare("ae", "af") < 0);
@@ -349,7 +349,7 @@ module.exports.testcollation_de = {
         test.ok("äa < äz", col.compare("äa", "äz") < 0);
         test.done();
     },
-    
+
     testJSCollatorDictionaryPrimaryOE_de: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -359,10 +359,10 @@ module.exports.testcollation_de = {
             style: "dictionary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // oa oe of oz öa öz 
+
+        // oa oe of oz öa öz
         test.ok("oa < oe",  col.compare("oa", "oe") < 0);
         test.ok("oe < of",  col.compare("oe", "of") < 0);
         test.ok("of < oz",  col.compare("of", "oz") < 0);
@@ -371,7 +371,7 @@ module.exports.testcollation_de = {
         test.ok("öa < öz", col.compare("öa", "öz") < 0);
         test.done();
     },
-    
+
     testJSCollatorDictionaryPrimaryUE_de: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -381,10 +381,10 @@ module.exports.testcollation_de = {
             style: "dictionary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // ua ue uf uz üa üz 
+
+        // ua ue uf uz üa üz
         test.ok("ua < ue",  col.compare("ua", "ue") < 0);
         test.ok("ua < uf",  col.compare("ua", "uf") < 0);
         test.ok("uf < uz",  col.compare("uf", "uz") < 0);
@@ -393,7 +393,7 @@ module.exports.testcollation_de = {
         test.ok("üa < üz", col.compare("üa", "üz") < 0);
         test.done();
     },
-    
+
     testCollatorDictionarydeDECase: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -404,7 +404,7 @@ module.exports.testcollation_de = {
             style: "dictionary"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
             "Flüße",
             "Montags",
@@ -424,9 +424,9 @@ module.exports.testcollation_de = {
             "Fluße",
             "Fuß"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "Dienstag",
             "Februar",
@@ -444,13 +444,13 @@ module.exports.testcollation_de = {
             "März",
             "Montag",
             "Montags",
-            "Sonntag"                        
+            "Sonntag"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorDictionarydeDEPrimary: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -462,7 +462,7 @@ module.exports.testcollation_de = {
             style: "dictionary"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
             "Sonntag",
             "Montags",
@@ -479,9 +479,9 @@ module.exports.testcollation_de = {
             "flüße",
             "flüsse"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "Dienstag",
             "Februar",
@@ -496,9 +496,9 @@ module.exports.testcollation_de = {
             "März",
             "Montag",
             "Montags",
-            "Sonntag"                        
+            "Sonntag"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     }

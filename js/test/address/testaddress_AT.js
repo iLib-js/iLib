@@ -1,6 +1,6 @@
 /*
  * testaddress.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,7 +38,7 @@ module.exports.testaddress_AT = {
     testParseATAddressNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("R. Fellner, Pazmaniteng 24-9, A-1020 Wien, Österreich", {locale: 'de-AT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "R. Fellner, Pazmaniteng 24-9");
         test.equal(parsedAddress.locality, "Wien");
@@ -48,11 +48,11 @@ module.exports.testaddress_AT = {
         test.equal(parsedAddress.countryCode, "AT");
         test.done();
     },
-    
+
     testParseATAddressNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("R. Fellner, Pazmaniteng 24-9, Wien, Österreich", {locale: 'de-AT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "R. Fellner, Pazmaniteng 24-9");
         test.equal(parsedAddress.locality, "Wien");
@@ -62,11 +62,11 @@ module.exports.testaddress_AT = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseATAddressNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("R. Fellner, Pazmaniteng 24-9, A-1020 Wien", {locale: 'de-AT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "R. Fellner, Pazmaniteng 24-9");
         test.equal(parsedAddress.locality, "Wien");
@@ -76,11 +76,11 @@ module.exports.testaddress_AT = {
         test.equal(parsedAddress.countryCode, "AT");
         test.done();
     },
-    
+
     testParseATAddressManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Wolfgang Schüssel\nLiebiggasse 5\n1010 Wien\nÖsterreich\n\n\n", {locale: 'de-AT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Wolfgang Schüssel, Liebiggasse 5");
         test.equal(parsedAddress.locality, "Wien");
@@ -90,11 +90,11 @@ module.exports.testaddress_AT = {
         test.equal(parsedAddress.countryCode, "AT");
         test.done();
     },
-    
+
     testParseATAddressOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("R. Fellner, Pazmaniteng 24-9, A-1020 Wien, Österreich", {locale: 'de-AT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "R. Fellner, Pazmaniteng 24-9");
         test.equal(parsedAddress.locality, "Wien");
@@ -104,11 +104,11 @@ module.exports.testaddress_AT = {
         test.equal(parsedAddress.countryCode, "AT");
         test.done();
     },
-    
+
     testParseATAddressSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("  \t  \r  Wolfgang Schüssel,\n\t    Liebiggasse 5,\n\n\n\n\t 1010 Wien\r\t  ,\n\t Österreich       ", {locale: 'de-AT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Wolfgang Schüssel, Liebiggasse 5");
         test.equal(parsedAddress.locality, "Wien");
@@ -118,11 +118,11 @@ module.exports.testaddress_AT = {
         test.equal(parsedAddress.countryCode, "AT");
         test.done();
     },
-    
+
     testParseATAddressNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Wolfgang Schüssel Liebiggasse 5 1010 Wien Österreich", {locale: 'de-AT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Wolfgang Schüssel Liebiggasse 5");
         test.equal(parsedAddress.locality, "Wien");
@@ -132,11 +132,11 @@ module.exports.testaddress_AT = {
         test.equal(parsedAddress.countryCode, "AT");
         test.done();
     },
-    
+
     testParseATAddressSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Wolfgang Schüssel, Liebiggasse 5, 1010 Wien, Österreich", {locale: 'de-AT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Wolfgang Schüssel, Liebiggasse 5");
         test.equal(parsedAddress.locality, "Wien");
@@ -146,13 +146,13 @@ module.exports.testaddress_AT = {
         test.equal(parsedAddress.countryCode, "AT");
         test.done();
     },
-    
+
     testParseATAddressFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Wolfgang Schüssel, Liebiggasse 5, 1010 Wien, Austria", {locale: 'en-US'});
-        
+
         // the country name is in English because this address is for a contact in a US database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Wolfgang Schüssel, Liebiggasse 5");
         test.equal(parsedAddress.locality, "Wien");
@@ -162,7 +162,7 @@ module.exports.testaddress_AT = {
         test.equal(parsedAddress.countryCode, "AT");
         test.done();
     },
-    
+
     testFormatAddressAT: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -172,13 +172,13 @@ module.exports.testaddress_AT = {
             country: "Österreich",
             countryCode: "AT"
         }, {locale: 'de-AT'});
-        
+
         var expected = "Wolfgang Schüssel, Liebiggasse 5\n1010 Wien\nÖsterreich";
         var formatter = new AddressFmt({locale: 'de-AT'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressATFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -188,11 +188,11 @@ module.exports.testaddress_AT = {
             country: "Austria",
             countryCode: "AT"
         }, {locale: 'en-US'});
-        
+
         var expected = "Wolfgang Schüssel, Liebiggasse 5\n1010 Vienna\nAustria";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

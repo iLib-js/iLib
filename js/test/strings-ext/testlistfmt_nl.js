@@ -31,45 +31,45 @@ module.exports.testlistfmt_nl = {
         callback();
     },
 
-    // nl-BE  
+    // nl-BE
     testListFmtnlBENumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "nl-BE"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een"]), "een");
         test.done();
     },
-    
+
     testListFmtnlBENumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "nl-BE"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee"]), "een en twee");
         test.done();
     },
-    
+
     testListFmtnlBENumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "nl-BE"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee", "drie"]), "een, twee en drie");
         test.done();
     },
-    
+
     testListFmtnlBENumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "nl-BE"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee", "drie", "vier"]), "een, twee, drie en vier");
@@ -81,43 +81,43 @@ module.exports.testlistfmt_nl = {
             locale: "nl-BE",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een"]), "een");
         test.done();
     },
-    
+
     testListFmtUnitStylenlBENumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "nl-BE",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee"]), "een, twee");
         test.done();
     },
-    
+
     testListFmtUnitStylenlBENumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "nl-BE",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee", "drie"]), "een, twee, drie");
         test.done();
     },
-    
+
     testListFmtUnitStylenlBENumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "nl-BE",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee", "drie", "vier"]), "een, twee, drie, vier");
@@ -129,46 +129,46 @@ module.exports.testlistfmt_nl = {
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een"]), "een");
         test.done();
     },
-    
+
     testListFmtUnitStylenlBENumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "nl-BE",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee"]), "een en twee");
         test.done();
     },
-    
+
     testListFmtUnitStylenlBENumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "nl-BE",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee", "drie"]), "een, twee en drie");
         test.done();
     },
-    
+
     testListFmtUnitStylenlBENumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "nl-BE",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee", "drie", "vier"]), "een, twee, drie en vier");
@@ -180,40 +180,40 @@ module.exports.testlistfmt_nl = {
         var fmt = new ListFmt({
             locale: "nl-NL"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een"]), "een");
         test.done();
     },
-    
+
     testListFmtnlNLNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "nl-NL"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee"]), "een en twee");
         test.done();
     },
-    
+
     testListFmtnlNLNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "nl-NL"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee", "drie"]), "een, twee en drie");
         test.done();
     },
-    
+
     testListFmtnlNLNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "nl-NL"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee", "drie", "vier"]), "een, twee, drie en vier");
@@ -225,43 +225,43 @@ module.exports.testlistfmt_nl = {
             locale: "nl-NL",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een"]), "een");
         test.done();
     },
-    
+
     testListFmtUnitStylenlNLNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "nl-NL",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee"]), "een, twee");
         test.done();
     },
-    
+
     testListFmtUnitStylenlNLNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "nl-NL",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee", "drie"]), "een, twee, drie");
         test.done();
     },
-    
+
     testListFmtUnitStylenlNLNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "nl-NL",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee", "drie", "vier"]), "een, twee, drie, vier");
@@ -273,46 +273,46 @@ module.exports.testlistfmt_nl = {
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een"]), "een");
         test.done();
     },
-    
+
     testListFmtUnitStylenlNLNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "nl-NL",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee"]), "een en twee");
         test.done();
     },
-    
+
     testListFmtUnitStylenlNLNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "nl-NL",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee", "drie"]), "een, twee en drie");
         test.done();
     },
-    
+
     testListFmtUnitStylenlNLNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "nl-NL",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["een", "twee", "drie", "vier"]), "een, twee, drie en vier");

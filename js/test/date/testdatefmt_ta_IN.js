@@ -1,6 +1,6 @@
 /*
  * testdatefmt_ta_IN.js - test the date formatter object in tamil for India
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,17 +39,17 @@ module.exports.testdatefmt_ta_IN = {
     testDateFmtINConstructorEmpty_ta_IN: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "ta-IN"});
-        
+
         test.ok(typeof(fmt) !== "undefined");
         test.done();
     },
-    
-    
+
+
     testDateFmtINSimpleShort_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "short"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -62,12 +62,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
-    
+
     testDateFmtINSimpleMedium_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "medium"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -81,12 +81,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "29 செப்., 2011");
         test.done();
     },
-    
+
     testDateFmtINSimpleLong_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "long"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -100,13 +100,13 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "29 செப்டம்பர், 2011");
         test.done();
     },
-    
+
     testDateFmtINSimpleFull_ta_IN: function(test) {
         test.expect(4);
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -124,7 +124,7 @@ module.exports.testdatefmt_ta_IN = {
     /*function testDateFmtINSimpleTimeShort_ta_IN() {
         var fmt = new DateFmt({locale: "ta-IN", length: "short", type: "time"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -138,13 +138,13 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45 अपराह्न");
         test.done();
     },
-    
-    
+
+
     testDateFmtINSimpleTimeShort_ta_IN1: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "short", type: "time"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -158,12 +158,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45 अपराह्न");
         test.done();
     },
-    
+
     testDateFmtINSimpleTimeMedium_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "medium", type: "time"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -177,12 +177,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45 अपराह्न");
         test.done();
     },
-    
+
     testDateFmtINSimpleTimeLong_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", timelength: "long", type: "time"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -196,12 +196,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45 अपराह्न");
         test.done();
     },
-    
+
     testDateFmtINSimpleTimeFull_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full", type: "time"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -215,12 +215,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45 अपराह्न");
         test.done();
     },
-    
+
     testDateFmtINDateTimeSimpleShort_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "short", type: "datetime"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -234,12 +234,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45 अपराह्न 29/9/11");
         test.done();
     },
-    
+
     testDateFmtINDateTimeSimpleMedium_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "medium", type: "datetime"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -253,12 +253,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45 अपराह्न 29 செப்., 11");
         test.done();
     },
-    
+
     testDateFmtINDateTimeSimpleLong_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "long", type: "datetime"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -272,12 +272,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45 अपराह्न 29 செப்., 2011");
         test.done();
     },
-    
+
     testDateFmtINDateTimeSimpleFull_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full", type: "datetime"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -291,13 +291,13 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45 अपराह्न 29 செப்டம்பர் 2011");
         test.done();
     },
-    
-    
+
+
     testDateFmtINTemplateCalendar_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", calendar: "julian", template: "yyyy-MM-dd"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new JulianDate({
             year: 2011,
             month: 9,
@@ -310,13 +310,13 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-    
-    
+
+
     testDateFmtINTemplateClock12SwitchHH_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", clock: "12", template: "HH:mm"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -330,12 +330,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtINTemplateClock12Switchkk_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", clock: "12", template: "kk:mm"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -349,12 +349,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtINTemplateClock24Switchhh_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", clock: "24", template: "hh:mm"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -368,12 +368,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtINTemplateClock24SwitchKK_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", clock: "24", template: "KK:mm"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -387,12 +387,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12hh_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", template: "hh:mm"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -406,12 +406,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12KK_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", template: "KK:mm"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -425,12 +425,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24HH_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", template: "HH:mm"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -444,12 +444,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24kk_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", template: "kk:mm"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -463,14 +463,14 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
-    
+
+
     testDateFmtINTypeDate_ta_IN: function(test) {
         test.expect(4);
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", type: "date"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -484,11 +484,11 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
-    
+
     /*function testDateFmtINTypeTime_ta_IN() {
         var fmt = new DateFmt({locale: "ta-IN", type: "time"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -502,12 +502,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45 अपराह्न");
         test.done();
     },
-    
+
     testDateFmtINTypeDateTime_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", type: "datetime"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -522,12 +522,12 @@ module.exports.testdatefmt_ta_IN = {
         test.done();
     },
     */
-    
+
     testDateFmtINShortDateComponentsY_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", date: "y"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -541,12 +541,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "11");
         test.done();
     },
-    
+
     testDateFmtINShortDateComponentsM_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", date: "m"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -560,12 +560,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "9");
         test.done();
     },
-    
+
     testDateFmtINShortDateComponentsN_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", date: "n"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -579,12 +579,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "ச");
         test.done();
     },
-    
+
     testDateFmtINShortDateComponentsD_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", date: "d"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -598,12 +598,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-    
+
     testDateFmtINShortDateComponentsDM_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", date: "dm"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -617,12 +617,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "29/9");
         test.done();
     },
-    
+
     testDateFmtINShortDateComponentsMY_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", date: "my"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -636,12 +636,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "9/11");
         test.done();
     },
-    
+
     testDateFmtINShortDateComponentsDMY_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", date: "dmy"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -655,12 +655,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
-    
+
     testDateFmtINShortDateComponentsWDM_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", date: "wdm"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -674,12 +674,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "வி, 29/9");
         test.done();
     },
-    
+
     testDateFmtINShortDateComponentsWDMY_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", date: "wdmy"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -693,13 +693,13 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "வி, 29/9/11");
         test.done();
     },
-    
-    
+
+
     testDateFmtINFullDateComponentsY_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full", date: "y"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -713,12 +713,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-    
+
     testDateFmtINFullDateComponentsM_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full", date: "m"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -732,12 +732,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "செப்டம்பர்");
         test.done();
     },
-    
+
     testDateFmtINFullDateComponentsD_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full", date: "d"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -751,12 +751,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-    
+
     testDateFmtINFullDateComponentsDM_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full", date: "dm"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -770,12 +770,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "29 செப்டம்பர்");
         test.done();
     },
-    
+
     testDateFmtINFullDateComponentsMY_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full", date: "my"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -789,12 +789,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "செப்டம்பர், 2011");
         test.done();
     },
-    
+
     testDateFmtINFullDateComponentsDMY_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full", date: "dmy"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -808,12 +808,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "29 செப்டம்பர், 2011");
         test.done();
     },
-    
+
     testDateFmtINFullDateComponentsWDM_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full", date: "wdm"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -827,12 +827,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "வியாழன், 29 செப்டம்பர்");
         test.done();
     },
-    
+
     testDateFmtINFullDateComponentsWDMY_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full", date: "wdmy"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -846,13 +846,13 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "வியாழன், 29 செப்டம்பர், 2011");
         test.done();
     },
-    
-    
+
+
     testDateFmtINShortTimeComponentsS_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", type: "time", time: "s"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -866,12 +866,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-    
+
     testDateFmtINShortTimeComponentsM_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", type: "time", time: "m"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -885,13 +885,13 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-    
+
     testDateFmtINShortTimeComponentsH_ta_IN: function(test) {
         test.expect(4);
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", type: "time", time: "h"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -905,12 +905,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1");
         test.done();
     },
-    
-    
+
+
     /*function testDateFmtINShortTimeComponentsHM_ta_IN() {
         var fmt = new DateFmt({locale: "ta-IN", type: "time", time: "hm"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -924,12 +924,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45 अपराह्न");
         test.done();
     },
-    
+
     testDateFmtINShortTimeComponentsHMS_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", type: "time", time: "hms"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -943,12 +943,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45:37 अपराह्न");
         test.done();
     },
-    
+
     testDateFmtINShortTimeComponentsHMA_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", type: "time", time: "hma"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -962,16 +962,16 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45 अपराह्न");
         test.done();
     },
-    
+
     testDateFmtINShortTimeComponentsHMZ_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ta-IN", 
-            type: "time", 
+            locale: "ta-IN",
+            type: "time",
             time: "ahmsz"
         });
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -985,17 +985,17 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45:37 अपराह्न IST");
         test.done();
     },
-    
+
     testDateFmtINShortTimeComponentsHMAZ_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ta-IN", 
-            type: "time", 
-            time: "ahmsz", 
+            locale: "ta-IN",
+            type: "time",
+            time: "ahmsz",
             timezone: "Asia/Kolkata"
         });
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1009,12 +1009,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45:37 अपराह्न IST");
         test.done();
     },
-    
+
     testDateFmtINShortTimeComponentsHMSA_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", type: "time", time: "hmsa"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1028,17 +1028,17 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45:37 अपराह्न");
         test.done();
     },
-    
+
     testDateFmtINShortTimeComponentsHMSZ_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ta-IN", 
-            type: "time", 
-            time: "hmsaz", 
+            locale: "ta-IN",
+            type: "time",
+            time: "hmsaz",
             timezone: "Asia/Kolkata"
         });
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1052,17 +1052,17 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45:37 अपराह्न IST");
         test.done();
     },
-    
+
     testDateFmtINShortTimeComponentsHMSAZ_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ta-IN", 
-            type: "time", 
-            time: "hmsaz", 
+            locale: "ta-IN",
+            type: "time",
+            time: "hmsaz",
             timezone: "Asia/Kolkata"
         });
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1077,12 +1077,12 @@ module.exports.testdatefmt_ta_IN = {
         test.done();
     },
     */
-    
+
     testDateFmtINFullTimeComponentsS_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", type: "time", length: "full", time: "s"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1096,12 +1096,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-    
+
     testDateFmtINFullTimeComponentsM_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", type: "time", length: "full", time: "m"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1115,13 +1115,13 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-    
+
     testDateFmtINFullTimeComponentsH_ta_IN: function(test) {
         test.expect(4);
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", type: "time", length: "full", time: "h"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1135,13 +1135,13 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1");
         test.done();
     },
-    
+
     //needs to have translations for ago and after
-    
+
     /*function testDateFmtINFullTimeComponentsHM_ta_IN() {
         var fmt = new DateFmt({locale: "ta-IN", type: "time", length: "full", time: "hma"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1155,12 +1155,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45 अपराह्न");
         test.done();
     },
-    
+
     testDateFmtINFullTimeComponentsHMS_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", type: "time", length: "full", time: "hmsa"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1174,12 +1174,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45:37 अपराह्न");
         test.done();
     },
-    
+
     testDateFmtINFullTimeComponentsHMA_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", type: "time", length: "full", time: "hma"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1193,20 +1193,20 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45 अपराह्न");
         test.done();
     },
-    
-    
-    
+
+
+
     testDateFmtINFullTimeComponentsHMAZ_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ta-IN", 
-            type: "time", 
-            length: "full", 
-            time: "ahmsz", 
+            locale: "ta-IN",
+            type: "time",
+            length: "full",
+            time: "ahmsz",
             timezone: "Asia/Kolkata"
         });
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1220,12 +1220,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45:37 अपराह्न IST");
         test.done();
     },
-    
+
     testDateFmtINFullTimeComponentsHMSA_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", type: "time", length: "full", time: "hmsa"});
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1239,18 +1239,18 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45:37 अपराह्न");
         test.done();
     },
-    
+
     testDateFmtINFullTimeComponentsHMSZ_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ta-IN", 
-            type: "time", 
-            length: "full", 
-            time: "hmsaz", 
+            locale: "ta-IN",
+            type: "time",
+            length: "full",
+            time: "hmsaz",
             timezone: "Asia/Kolkata"
         });
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1264,18 +1264,18 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45:37 अपराह्न IST");
         test.done();
     },
-    
+
     testDateFmtINFullTimeComponentsHMSAZ_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ta-IN", 
-            type: "time", 
-            length: "full", 
-            time: "hmsaz", 
+            locale: "ta-IN",
+            type: "time",
+            length: "full",
+            time: "hmsaz",
             timezone: "Asia/Kolkata"
         });
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1289,19 +1289,19 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45:37 अपराह्न IST");
         test.done();
     },
-    
+
     testDateFmtINWithTimeZoneAndNoDST_ta_IN: function(test) {
         test.expect(4);
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ta-IN", 
-            type: "time", 
-            length: "full", 
-            time: "hmsaz", 
+            locale: "ta-IN",
+            type: "time",
+            length: "full",
+            time: "hmsaz",
             timezone: "Asia/Kolkata"
         });
         test.ok(typeof(fmt) !== "undefined");
-        
+
         var date = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1315,11 +1315,11 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.format(date), "1:45:37 अपराह्न IST");
         test.done();
     },
-    
+
     /*function testDateFmtFormatRelativeWittanMinuteAfter_ta_IN() {
         var fmt = new DateFmt({locale: "ta-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1347,7 +1347,7 @@ module.exports.testdatefmt_ta_IN = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1375,7 +1375,7 @@ module.exports.testdatefmt_ta_IN = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1403,7 +1403,7 @@ module.exports.testdatefmt_ta_IN = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1431,7 +1431,7 @@ module.exports.testdatefmt_ta_IN = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1459,7 +1459,7 @@ module.exports.testdatefmt_ta_IN = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1483,12 +1483,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.formatRelative(reference, date), "4 மணிநேரம் पहले");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWittanFortnightAfter_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1516,7 +1516,7 @@ module.exports.testdatefmt_ta_IN = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1540,12 +1540,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.formatRelative(reference, date), "4 நாட்கள் पहले");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWittanQuarterAfter_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1573,7 +1573,7 @@ module.exports.testdatefmt_ta_IN = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1597,12 +1597,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.formatRelative(reference, date), "9 வாரங்கள் पहले");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWittanTwoYearsAfter_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1630,7 +1630,7 @@ module.exports.testdatefmt_ta_IN = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1654,12 +1654,12 @@ module.exports.testdatefmt_ta_IN = {
         test.equal(fmt.formatRelative(reference, date), "14 மாதங்கள் पहले");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeYearsAfter_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1687,7 +1687,7 @@ module.exports.testdatefmt_ta_IN = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ta-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ta-IN",
             year: 2011,
@@ -1712,6 +1712,6 @@ module.exports.testdatefmt_ta_IN = {
         test.done();
     }
     */
-    
-    
+
+
 };

@@ -9304,12 +9304,12 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_1[1], '1 ano, 1 mes, 1 sem., 1 día');
         test.equal(textformatted_1[2], '1 a., 1 m., 1 sem., 1 d');
         test.equal(textformatted_1[3], '1 a., 1 m., 1 sem., 1 d');
-    
+
         test.equal(textformatted_11[0], '11 anos, 11 meses, 11 semanas e 11 días');
         test.equal(textformatted_11[1], '11 anos, 11 meses, 11 sem., 11 días');
         test.equal(textformatted_11[2], '11 a., 11 m., 11 sem., 11 d');
         test.equal(textformatted_11[3], '11 a., 11 m., 11 sem., 11 d');
-    
+
         test.equal(clockformatted_1[0], '1 hora, 1 minuto e 1 segundo');
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
         test.equal(clockformatted_1[2], '1 h, 1 min, 1 s');

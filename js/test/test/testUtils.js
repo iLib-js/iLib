@@ -1,6 +1,6 @@
 									/*
  * testUtils.js - utilities used by the unit tests
- * 
+ *
  * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,16 +23,16 @@
  * object also exists in the actual object and that it has the same value. The actual
  * object may have more properties that do not exist in expected, but this function
  * is used to test for only the properties that the unit test cares about.
- * 
+ *
  * @param {Object} expected a set of properties to check in the actual result
  * @param {Object} actual the actual result
  * @param {string=} comment a comment to use if the test fails
- * @throws "actual does not contain expected properties" if the actual result does not 
+ * @throws "actual does not contain expected properties" if the actual result does not
  * contain all of the expected properties
  */
 function assertObjectContains(expected, actual, comment) {
 	var p;
-	
+
 	for (p in expected) {
 		if (p && expected[p]) {
 			if (!comment) {
@@ -58,23 +58,23 @@ function assertObjectContains(expected, actual, comment) {
  * <ul>
  * <li><i>fn</i> - the function to test. If the function is synchronous, then
  * the args will be passed and the entire function can be measured directly.
- * If the function is asynchronous, then 
- * 
+ * If the function is asynchronous, then
+ *
  * <li><i>args</i> - arguments to pass to the test function on each iteration
- * 
- * <li><i>name</i> - the name of this test. This will be used later during 
+ *
+ * <li><i>name</i> - the name of this test. This will be used later during
  * the results calculation and in the reporting.
- * 
+ *
  * <li><i>iterations</i> - How many times to run this test.
- * 
+ *
  * <li><i>whole</i> - time the whole test function. If whole is false, then
  * the test function should call this.start() and this.stop() to start and
  * stop the timer at the right time.
  * </ul>
- * 
+ *
  * @constructor
  * @class
- * @param {Object} options options that configure how this timed test should 
+ * @param {Object} options options that configure how this timed test should
  * work. Returns a timed test object.
  */
 var TimedTest = function (options) {
@@ -89,7 +89,7 @@ var TimedTest = function (options) {
 	this.fn = this.fn || function () {};
 	this.name = this.name || "test";
 	this.whole = typeof(this.whole) === 'undefined' ? true : this.whole;
-	
+
 	this.micros = 0;
 	this.startTime = process.hrtime();
 	this.started = false;
@@ -111,14 +111,14 @@ TimedTest.prototype = {
 			}
 		}
 	},
-	
+
 	start: function () {
 		if (!this.started) {
 			this.startTime = process.hrtime();
 			this.started = true;
 		}
 	},
-	
+
 	stop: function() {
 		if (this.started) {
 			var t = process.hrtime(this.startTime);

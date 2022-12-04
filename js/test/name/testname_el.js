@@ -1,6 +1,6 @@
 /*
  * testname_en.js - test the name object in Japanese
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,86 +37,86 @@ module.exports.testname_el = {
         test.expect(2);
         var parsed = new Name("Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Νικόλαος",
             familyName: "Αλεξόπουλος"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseSimpleName_el_GR: function(test) {
         test.expect(2);
         var parsed = new Name("Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Νικόλαος",
             familyName: "Αλεξόπουλος"
-                   
+
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseSingleNameWithPrefixAndAdjunct_el_GR: function(test) {
         test.expect(2);
         var parsed = new Name("Νικόλαος Αλεξόπουλος κατώτερος", {locale: 'el-GR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
              suffix : "κατώτερος",
             givenName: "Νικόλαος",
             familyName: "Αλεξόπουλος"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseTitle_el_GR1: function(test) {
         test.expect(2);
         var parsed = new Name("Ο κ. Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix : "Ο κ.",
             givenName: "Νικόλαος",
             familyName: "Αλεξόπουλος"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseTitle_el_GR_second: function(test) {
         test.expect(2);
         var parsed = new Name("Κυρία. Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix : "Κυρία.",
             givenName: "Νικόλαος",
             familyName: "Αλεξόπουλος"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseTitleWithFamilyOnlyAndAdjunct_el_GR: function(test) {
         test.expect(2);
-    
+
         var name = new Name({
             prefix: "Ο κ.",
             givenName: "Νικόλαος",
@@ -124,55 +124,55 @@ module.exports.testname_el = {
             suffix: "μουσκεύω"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'el-GR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Ο κ. Νικόλαος Αλεξόπουλος μουσκεύω";
-        
+
         test.equal(formatted, expected);
         test.done();
-    
+
     },
-    
-    
+
+
     testParseTitleWithFamilyOnlyAndAdjunctex_el_GR: function(test) {
         test.expect(2);
         var parsed = new Name("αντιπρόεδρος Νικόλαος Αλεξόπουλος μουσκεύω", {locale: 'el-GR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "αντιπρόεδρος",
             givenName: "Νικόλαος",
             familyName: "Αλεξόπουλος",
             suffix : "μουσκεύω"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseCompoundHonorific_el_GR: function(test) {
         test.expect(2);
         var parsed = new Name("Ο κ. Αλεξόπουλος", {locale: 'el-GR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Ο κ.",
             familyName: "Αλεξόπουλος"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_el_GR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -180,18 +180,18 @@ module.exports.testname_el = {
             familyName: "Αλεξόπουλος"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'el-GR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Νικόλαος Αλεξόπουλος";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_el_GR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -199,39 +199,39 @@ module.exports.testname_el = {
             familyName: "Αλεξόπουλος"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'el-GR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Νικόλαος Αλεξόπουλος";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_el_GR: function(test) {
         test.expect(2);
         var name = new Name({
-            
+
             givenName: "Νικόλαος",
             familyName: "Αλεξόπουλος",
             suffix: "μουσκεύω"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'el-GR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Νικόλαος Αλεξόπουλος μουσκεύω";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_el_GR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -240,19 +240,19 @@ module.exports.testname_el = {
             familyName: "Αλεξόπουλος"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'el-GR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Νικόλαος Αλεξόπουλος";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
-    
+
+
     testFormatAsianNameMedium_el_GR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -262,18 +262,18 @@ module.exports.testname_el = {
             suffix: "太太"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'el-GR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameLong_el_GR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -283,19 +283,19 @@ module.exports.testname_el = {
             suffix: "太太"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'el-GR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "小地獸太太";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
-    
+
+
+
+
 };

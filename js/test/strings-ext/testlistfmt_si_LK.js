@@ -32,45 +32,45 @@ module.exports.testlistfmt_si_LK = {
     },
 
     // si-LK
-    
+
     testListFmtsiLKNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "si-LK"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["එක"]), "එක");
         test.done();
     },
-    
+
     testListFmtsiLKNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "si-LK"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["එක", "දෙක"]), "එක සහ දෙක");
         test.done();
     },
-    
+
     testListFmtsiLKNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "si-LK"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["එක", "දෙක", "තුන්"]), "එක, දෙක, සහ තුන්");
         test.done();
     },
-    
+
     testListFmtsiLKNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "si-LK"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["එක", "දෙක", "තුන්", "සිව්"]), "එක, දෙක, තුන්, සහ සිව්");
@@ -81,43 +81,43 @@ module.exports.testlistfmt_si_LK = {
             locale: "si-LK",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["එක"]), "එක");
         test.done();
     },
-    
+
     testListFmtUnitStylesiLKNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "si-LK",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["එක", "දෙක"]), "එක සහ දෙක");
         test.done();
     },
-    
+
     testListFmtUnitStylesiLKNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "si-LK",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["එක", "දෙක", "තුන්"]), "එක, දෙක, සහ තුන්");
         test.done();
     },
-    
+
     testListFmtUnitStylesiLKNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "si-LK",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["එක", "දෙක", "තුන්", "සිව්"]), "එක, දෙක, තුන්, සහ සිව්");

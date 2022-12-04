@@ -1,6 +1,6 @@
 /*
  * testglyphstrasync.js - test the glyph iteration routines
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,7 @@ module.exports.testglyphstrasync = {
             sync: false,
             onLoad: function(s) {
                 var it = s.charIterator();
-                
+
                 test.ok(it.hasNext());
                 test.equal(it.next(), "a");
                 test.ok(it.hasNext());
@@ -45,28 +45,28 @@ module.exports.testglyphstrasync = {
             }
         });
     },
-    
+
     testGlyphStrAsyncCharIteratorEmpty: function(test) {
         test.expect(2);
         var s = new GlyphString("", {
             sync: false,
             onLoad: function(s) {
                 var it = s.charIterator();
-                
+
                 test.ok(!it.hasNext());
                 test.equal(it.next(), undefined);
                 test.done();
             }
         });
     },
-    
+
     testGlyphStrAsyncCharIteratorMultipleDecomposed: function(test) {
         test.expect(8);
         var s = new GlyphString("aẬa", { // the accented A is a decomposed char with 2 accents
             sync: false,
             onLoad: function(s) {
                 var it = s.charIterator();
-                
+
                 test.ok(it.hasNext());
                 test.equal(it.next(), "a");
                 test.ok(it.hasNext());
@@ -79,7 +79,7 @@ module.exports.testglyphstrasync = {
             }
         });
     },
-    
+
     testGlyphStrAsyncTruncateWithCombiningAccentsWholeGlyphs: function(test) {
         test.expect(1);
         var s = new GlyphString("aẬbẬcẬdẬe", { // the accented A is a decomposed char with 2 accents
@@ -90,20 +90,20 @@ module.exports.testglyphstrasync = {
             }
         });
     },
-    
+
     testGlyphStrAsyncTruncateThai: function(test) {
         test.expect(1);
         var s = new GlyphString("สวัุสดีคุณเป็นอย่างไรบ้าง", {
             sync: false,
             onLoad: function(s) {
                 // this tests non-spacing marks that are also non-combining
-                
+
                 test.equal(s.truncate(4), "สวัุสดี");
                 test.done();
             }
         });
     },
-    
+
     testGlyphStrAsyncTruncateDevanagari1: function(test) {
         test.expect(1);
         var s = new GlyphString("हैलो, आप कैसे हैं?", {
@@ -117,7 +117,7 @@ module.exports.testglyphstrasync = {
             }
         });
     },
-    
+
     testGlyphStrAsyncEllipsizeDevanagari2: function(test) {
         test.expect(1);
         var s = new GlyphString("हैलो, आप कैसे हैं?", {
@@ -128,7 +128,7 @@ module.exports.testglyphstrasync = {
             }
         });
     },
-    
+
     testGlyphStrAsyncEllipsizeJapanese: function(test) {
         test.expect(1);
         var s = new GlyphString("ェドイン", {
@@ -138,5 +138,5 @@ module.exports.testglyphstrasync = {
                 test.done();
             }
         });
-    }    
+    }
 };

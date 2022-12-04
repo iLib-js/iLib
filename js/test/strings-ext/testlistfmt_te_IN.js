@@ -32,45 +32,45 @@ module.exports.testlistfmt_te_IN = {
     },
 
     // te-IN
-    
+
     testListFmtteINNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "te-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ఒకటి"]), "ఒకటి");
         test.done();
     },
-    
+
     testListFmtteINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "te-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ఒకటి", "రెండు"]), "ఒకటి మరియు రెండు");
         test.done();
     },
-    
+
     testListFmtteINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "te-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ఒకటి", "రెండు", "మూడు"]), "ఒకటి, రెండు మరియు మూడు");
         test.done();
     },
-    
+
     testListFmtteINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "te-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ఒకటి", "రెండు", "మూడు", "నాలుగు"]), "ఒకటి, రెండు, మూడు మరియు నాలుగు");
@@ -81,43 +81,43 @@ module.exports.testlistfmt_te_IN = {
             locale: "te-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ఒకటి"]), "ఒకటి");
         test.done();
     },
-    
+
     testListFmtUnitStyleteINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "te-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ఒకటి", "రెండు"]), "ఒకటి, రెండు");
         test.done();
     },
-    
+
     testListFmtUnitStyleteINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "te-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ఒకటి", "రెండు", "మూడు"]), "ఒకటి, రెండు, మూడు");
         test.done();
     },
-    
+
     testListFmtUnitStyleteINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "te-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ఒకటి", "రెండు", "మూడు", "నాలుగు"]), "ఒకటి, రెండు, మూడు, నాలుగు");

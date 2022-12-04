@@ -1,6 +1,6 @@
 /*
  * testdatefmt_es_CO.js - tCOST the date formatter object in spainish Columbia
- * 
+ *
  * Copyright © 2012-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ if (typeof(DateFmt) === "undefined") {
 }
 function tCOSTDateFmtConstructorEmpty_es_CO() {
     var fmt = new DateFmt({lole: "es-CO"});
-    
+
     assertNotNull(fmt);
 }
 
@@ -36,7 +36,7 @@ function tCOSTDateFmtConstructorEmpty_es_CO() {
 function tCOSTDateFmtSimpleShort_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "short"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -53,7 +53,7 @@ function tCOSTDateFmtSimpleShort_es_CO() {
 function tCOSTDateFmtSimpleMedium_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "medium"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -70,7 +70,7 @@ function tCOSTDateFmtSimpleMedium_es_CO() {
 function tCOSTDateFmtSimpleLong_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "long"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -87,7 +87,7 @@ function tCOSTDateFmtSimpleLong_es_CO() {
 function tCOSTDateFmtSimpleFull_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "full"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -104,7 +104,7 @@ function tCOSTDateFmtSimpleFull_es_CO() {
 function tCOSTDateFmtSimpleTimeShort_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "short", type: "time"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -121,7 +121,7 @@ function tCOSTDateFmtSimpleTimeShort_es_CO() {
 function tCOSTDateFmtSimpleTimeMedium_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "medium", type: "time"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -138,7 +138,7 @@ function tCOSTDateFmtSimpleTimeMedium_es_CO() {
 function tCOSTDateFmtSimpleTimeLong_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", timelength: "long", type: "time"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -155,7 +155,7 @@ function tCOSTDateFmtSimpleTimeLong_es_CO() {
 function tCOSTDateFmtSimpleTimeFull_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "full", type: "time"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -172,7 +172,7 @@ function tCOSTDateFmtSimpleTimeFull_es_CO() {
 function tCOSTDateFmtDateTimeSimpleShort_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "short", type: "datetime"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -189,7 +189,7 @@ function tCOSTDateFmtDateTimeSimpleShort_es_CO() {
 function tCOSTDateFmtDateTimeSimpleMedium_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "medium", type: "datetime"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -206,7 +206,7 @@ function tCOSTDateFmtDateTimeSimpleMedium_es_CO() {
 function tCOSTDateFmtDateTimeSimpleLong_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "long", type: "datetime"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -223,7 +223,7 @@ function tCOSTDateFmtDateTimeSimpleLong_es_CO() {
 function tCOSTDateFmtDateTimeSimpleFull_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "full", type: "datetime"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -241,7 +241,7 @@ function tCOSTDateFmtDateTimeSimpleFull_es_CO() {
 function tCOSTDateFmtTemplatelendar_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", lendar: "julian", template: "yyyy-MM-dd"});
     assertNotNull(fmt);
-    
+
     var date = new JulianDate({
         year: 2011,
         month: 9,
@@ -258,7 +258,7 @@ function tCOSTDateFmtTemplatelendar_es_CO() {
 function tCOSTDateFmtTemplateClock12SwitchHH_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", clock: "12", template: "HH:mm"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -275,7 +275,7 @@ function tCOSTDateFmtTemplateClock12SwitchHH_es_CO() {
 function tCOSTDateFmtTemplateClock12Switchkk_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", clock: "12", template: "kk:mm"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -292,7 +292,7 @@ function tCOSTDateFmtTemplateClock12Switchkk_es_CO() {
 function tCOSTDateFmtTemplateClock24Switchhh_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", clock: "24", template: "hh:mm"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -309,7 +309,7 @@ function tCOSTDateFmtTemplateClock24Switchhh_es_CO() {
 function tCOSTDateFmtTemplateClock24SwitchKK_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", clock: "24", template: "KK:mm"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -326,7 +326,7 @@ function tCOSTDateFmtTemplateClock24SwitchKK_es_CO() {
 function tCOSTDateFmtTemplateNoClockDoNotFollowLoleDefault12hh_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", template: "hh:mm"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -343,7 +343,7 @@ function tCOSTDateFmtTemplateNoClockDoNotFollowLoleDefault12hh_es_CO() {
 function tCOSTDateFmtTemplateNoClockDoNotFollowLoleDefault12KK_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", template: "KK:mm"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -360,7 +360,7 @@ function tCOSTDateFmtTemplateNoClockDoNotFollowLoleDefault12KK_es_CO() {
 function tCOSTDateFmtTemplateNoClockDoNotFollowLoleDefault24HH_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", template: "HH:mm"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -377,7 +377,7 @@ function tCOSTDateFmtTemplateNoClockDoNotFollowLoleDefault24HH_es_CO() {
 function tCOSTDateFmtTemplateNoClockDoNotFollowLoleDefault24kk_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", template: "kk:mm"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -395,7 +395,7 @@ function tCOSTDateFmtTemplateNoClockDoNotFollowLoleDefault24kk_es_CO() {
 function tCOSTDateFmtTypeDate_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "date"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -412,7 +412,7 @@ function tCOSTDateFmtTypeDate_es_CO() {
 function tCOSTDateFmtTypeTime_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -429,7 +429,7 @@ function tCOSTDateFmtTypeTime_es_CO() {
 function tCOSTDateFmtTypeDateTime_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "datetime"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -447,7 +447,7 @@ function tCOSTDateFmtTypeDateTime_es_CO() {
 function tCOSTDateFmtShortDateComponentsY_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", date: "y"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -464,7 +464,7 @@ function tCOSTDateFmtShortDateComponentsY_es_CO() {
 function tCOSTDateFmtShortDateComponentsM_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", date: "m"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -481,7 +481,7 @@ function tCOSTDateFmtShortDateComponentsM_es_CO() {
 function tCOSTDateFmtShortDateComponentsN_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", date: "n"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -498,7 +498,7 @@ function tCOSTDateFmtShortDateComponentsN_es_CO() {
 function tCOSTDateFmtShortDateComponentsD_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", date: "d"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -515,7 +515,7 @@ function tCOSTDateFmtShortDateComponentsD_es_CO() {
 function tCOSTDateFmtShortDateComponentsDM_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", date: "dm"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -532,7 +532,7 @@ function tCOSTDateFmtShortDateComponentsDM_es_CO() {
 function tCOSTDateFmtShortDateComponentsMY_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", date: "my"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -549,7 +549,7 @@ function tCOSTDateFmtShortDateComponentsMY_es_CO() {
 function tCOSTDateFmtShortDateComponentsDMY_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", date: "dmy"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -566,7 +566,7 @@ function tCOSTDateFmtShortDateComponentsDMY_es_CO() {
 function tCOSTDateFmtShortDateComponentsWDM_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", date: "wdm"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -583,7 +583,7 @@ function tCOSTDateFmtShortDateComponentsWDM_es_CO() {
 function tCOSTDateFmtShortDateComponentsWDMY_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", date: "wdmy"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -601,7 +601,7 @@ function tCOSTDateFmtShortDateComponentsWDMY_es_CO() {
 function tCOSTDateFmtFullDateComponentsY_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "full", date: "y"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -618,7 +618,7 @@ function tCOSTDateFmtFullDateComponentsY_es_CO() {
 function tCOSTDateFmtFullDateComponentsM_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "full", date: "m"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -635,7 +635,7 @@ function tCOSTDateFmtFullDateComponentsM_es_CO() {
 function tCOSTDateFmtFullDateComponentsD_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "full", date: "d"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -652,7 +652,7 @@ function tCOSTDateFmtFullDateComponentsD_es_CO() {
 function tCOSTDateFmtFullDateComponentsDM_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "full", date: "dm"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -669,7 +669,7 @@ function tCOSTDateFmtFullDateComponentsDM_es_CO() {
 function tCOSTDateFmtFullDateComponentsMY_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "full", date: "my"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -686,7 +686,7 @@ function tCOSTDateFmtFullDateComponentsMY_es_CO() {
 function tCOSTDateFmtFullDateComponentsDMY_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "full", date: "dmy"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -703,7 +703,7 @@ function tCOSTDateFmtFullDateComponentsDMY_es_CO() {
 function tCOSTDateFmtFullDateComponentsWDM_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "full", date: "wdm"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -720,7 +720,7 @@ function tCOSTDateFmtFullDateComponentsWDM_es_CO() {
 function tCOSTDateFmtFullDateComponentsWDMY_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", length: "full", date: "wdmy"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -738,7 +738,7 @@ function tCOSTDateFmtFullDateComponentsWDMY_es_CO() {
 function tCOSTDateFmtShortTimeComponentsS_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time", time: "s"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -755,7 +755,7 @@ function tCOSTDateFmtShortTimeComponentsS_es_CO() {
 function tCOSTDateFmtShortTimeComponentsM_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time", time: "m"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -772,7 +772,7 @@ function tCOSTDateFmtShortTimeComponentsM_es_CO() {
 function tCOSTDateFmtShortTimeComponentsH_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time", time: "h"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -789,7 +789,7 @@ function tCOSTDateFmtShortTimeComponentsH_es_CO() {
 function tCOSTDateFmtShortTimeComponentsMS_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time", time: "ms"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -806,7 +806,7 @@ function tCOSTDateFmtShortTimeComponentsMS_es_CO() {
 function tCOSTDateFmtShortTimeComponentsHM_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time", time: "hm"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -823,7 +823,7 @@ function tCOSTDateFmtShortTimeComponentsHM_es_CO() {
 function tCOSTDateFmtShortTimeComponentsHMS_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time", time: "hms"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -840,7 +840,7 @@ function tCOSTDateFmtShortTimeComponentsHMS_es_CO() {
 function tCOSTDateFmtShortTimeComponentsHMA_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time", time: "hma"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -856,13 +856,13 @@ function tCOSTDateFmtShortTimeComponentsHMA_es_CO() {
 
 function tCOSTDateFmtShortTimeComponentsHMZ_es_CO() {
     var fmt = new DateFmt({
-        lole: "es-CO", 
-        type: "time", 
-        time: "hmz", 
-       
+        lole: "es-CO",
+        type: "time",
+        time: "hmz",
+
     });
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -878,13 +878,13 @@ function tCOSTDateFmtShortTimeComponentsHMZ_es_CO() {
 
 function tCOSTDateFmtShortTimeComponentsHMAZ_es_CO() {
     var fmt = new DateFmt({
-        lole: "es-CO", 
-        type: "time", 
-        time: "hmaz" 
-       
+        lole: "es-CO",
+        type: "time",
+        time: "hmaz"
+
     });
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -901,7 +901,7 @@ function tCOSTDateFmtShortTimeComponentsHMAZ_es_CO() {
 function tCOSTDateFmtShortTimeComponentsHMSA_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time", time: "hmsa"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -917,13 +917,13 @@ function tCOSTDateFmtShortTimeComponentsHMSA_es_CO() {
 
 function tCOSTDateFmtShortTimeComponentsHMSZ_es_CO() {
     var fmt = new DateFmt({
-        lole: "es-CO", 
-        type: "time", 
+        lole: "es-CO",
+        type: "time",
         time: "hmsz"
-       
+
     });
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -939,13 +939,13 @@ function tCOSTDateFmtShortTimeComponentsHMSZ_es_CO() {
 
 function tCOSTDateFmtShortTimeComponentsHMSAZ_es_CO() {
     var fmt = new DateFmt({
-        lole: "es-CO", 
-        type: "time", 
+        lole: "es-CO",
+        type: "time",
         time: "hmsaz"
-       
+
     });
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -963,7 +963,7 @@ function tCOSTDateFmtShortTimeComponentsHMSAZ_es_CO() {
 function tCOSTDateFmtFullTimeComponentsS_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time", length: "full", time: "s"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -980,7 +980,7 @@ function tCOSTDateFmtFullTimeComponentsS_es_CO() {
 function tCOSTDateFmtFullTimeComponentsM_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time", length: "full", time: "m"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -997,7 +997,7 @@ function tCOSTDateFmtFullTimeComponentsM_es_CO() {
 function tCOSTDateFmtFullTimeComponentsH_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time", length: "full", time: "h"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -1014,7 +1014,7 @@ function tCOSTDateFmtFullTimeComponentsH_es_CO() {
 function tCOSTDateFmtFullTimeComponentsMS_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time", length: "full", time: "ms"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -1031,7 +1031,7 @@ function tCOSTDateFmtFullTimeComponentsMS_es_CO() {
 function tCOSTDateFmtFullTimeComponentsHM_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time", length: "full", time: "hm"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -1048,7 +1048,7 @@ function tCOSTDateFmtFullTimeComponentsHM_es_CO() {
 function tCOSTDateFmtFullTimeComponentsHMS_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time", length: "full", time: "hms"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -1065,7 +1065,7 @@ function tCOSTDateFmtFullTimeComponentsHMS_es_CO() {
 function tCOSTDateFmtFullTimeComponentsHMA_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time", length: "full", time: "hma"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -1081,14 +1081,14 @@ function tCOSTDateFmtFullTimeComponentsHMA_es_CO() {
 
 function tCOSTDateFmtFullTimeComponentsHMZ_es_CO() {
     var fmt = new DateFmt({
-        lole: "es-CO", 
-        type: "time", 
-        length: "full", 
-        time: "hmz", 
-       
+        lole: "es-CO",
+        type: "time",
+        length: "full",
+        time: "hmz",
+
     });
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -1104,14 +1104,14 @@ function tCOSTDateFmtFullTimeComponentsHMZ_es_CO() {
 
 function tCOSTDateFmtFullTimeComponentsHMAZ_es_CO() {
     var fmt = new DateFmt({
-        lole: "es-CO", 
-        type: "time", 
-        length: "full", 
-        time: "hmaz" 
-       
+        lole: "es-CO",
+        type: "time",
+        length: "full",
+        time: "hmaz"
+
     });
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -1128,7 +1128,7 @@ function tCOSTDateFmtFullTimeComponentsHMAZ_es_CO() {
 function tCOSTDateFmtFullTimeComponentsHMSA_es_CO() {
     var fmt = new DateFmt({lole: "es-CO", type: "time", length: "full", time: "hmsa"});
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -1144,14 +1144,14 @@ function tCOSTDateFmtFullTimeComponentsHMSA_es_CO() {
 
 function tCOSTDateFmtFullTimeComponentsHMSZ_es_CO() {
     var fmt = new DateFmt({
-        lole: "es-CO", 
-        type: "time", 
-        length: "full", 
-        time: "hmsz", 
-       
+        lole: "es-CO",
+        type: "time",
+        length: "full",
+        time: "hmsz",
+
     });
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -1167,14 +1167,14 @@ function tCOSTDateFmtFullTimeComponentsHMSZ_es_CO() {
 
 function tCOSTDateFmtFullTimeComponentsHMSAZ_es_CO() {
     var fmt = new DateFmt({
-        lole: "es-CO", 
-        type: "time", 
-        length: "full", 
-        time: "hmsaz", 
-       
+        lole: "es-CO",
+        type: "time",
+        length: "full",
+        time: "hmsaz",
+
     });
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -1190,14 +1190,14 @@ function tCOSTDateFmtFullTimeComponentsHMSAZ_es_CO() {
 
 function tCOSTDateFmtWithTimeZoneAndNoDST_es_CO() {
     var fmt = new DateFmt({
-        lole: "es-CO", 
-        type: "time", 
-        length: "full", 
-        time: "hmsz", 
-       
+        lole: "es-CO",
+        type: "time",
+        length: "full",
+        time: "hmsz",
+
     });
     assertNotNull(fmt);
-    
+
     var date = new GregorianDate({
         locale: "es-CO",
         year: 2011,
@@ -1225,7 +1225,7 @@ module.exports.testdatefmt_es_CO = {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "es-CO",
             year: 2011,
@@ -1253,7 +1253,7 @@ module.exports.testdatefmt_es_CO = {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "es-CO",
             year: 2011,
@@ -1281,7 +1281,7 @@ module.exports.testdatefmt_es_CO = {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "es-CO",
             year: 2011,
@@ -1309,7 +1309,7 @@ module.exports.testdatefmt_es_CO = {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "es-CO",
             year: 2011,
@@ -1337,7 +1337,7 @@ module.exports.testdatefmt_es_CO = {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "es-CO",
             year: 2011,
@@ -1361,13 +1361,13 @@ module.exports.testdatefmt_es_CO = {
         test.equal(fmt.formatRelative(reference, date), "dentro de 4 horas");
         test.done();
     },
-    
-    
+
+
     testDateFmtFormatRelativeWithinDayBefore_es_CO: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "es-CO",
             year: 2011,
@@ -1391,12 +1391,12 @@ module.exports.testdatefmt_es_CO = {
         test.equal(fmt.formatRelative(reference, date), "hace 4 horas");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinFortnightAfter_es_CO: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "es-CO",
             year: 2011,
@@ -1424,7 +1424,7 @@ module.exports.testdatefmt_es_CO = {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "es-CO",
             year: 2011,
@@ -1448,12 +1448,12 @@ module.exports.testdatefmt_es_CO = {
         test.equal(fmt.formatRelative(reference, date), "hace 4 días");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinQuarterAfter_es_CO: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "es-CO",
             year: 2011,
@@ -1481,7 +1481,7 @@ module.exports.testdatefmt_es_CO = {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "es-CO",
             year: 2011,
@@ -1505,12 +1505,12 @@ module.exports.testdatefmt_es_CO = {
         test.equal(fmt.formatRelative(reference, date), "hace 9 semanas");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinTwoYearsAfter_es_CO: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "es-CO",
             year: 2011,
@@ -1538,7 +1538,7 @@ module.exports.testdatefmt_es_CO = {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "es-CO",
             year: 2011,
@@ -1562,12 +1562,12 @@ module.exports.testdatefmt_es_CO = {
         test.equal(fmt.formatRelative(reference, date), "hace 14 meses");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeYearsAfter_es_CO: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "es-CO",
             year: 2011,
@@ -1595,7 +1595,7 @@ module.exports.testdatefmt_es_CO = {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "es-CO",
             year: 2011,
@@ -1619,7 +1619,7 @@ module.exports.testdatefmt_es_CO = {
         test.equal(fmt.formatRelative(reference, date), "hace 21 años");
         test.done();
     }
-    
-    
-    
+
+
+
 };

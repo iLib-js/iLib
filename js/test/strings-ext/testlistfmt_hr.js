@@ -31,105 +31,105 @@ module.exports.testlistfmt_hr = {
         callback();
     },
     // hr-HR
-    
+
     testListFmthrHRNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "hr-HR"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan"]), "jedan");
         test.done();
     },
-    
+
     testListFmthrHRNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "hr-HR"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva"]), "jedan i dva");
         test.done();
     },
-    
+
     testListFmthrHRNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "hr-HR"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva", "tri"]), "jedan, dva i tri");
         test.done();
     },
-    
+
     testListFmthrHRNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "hr-HR"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva", "tri", "četiri"]), "jedan, dva, tri i četiri");
         test.done();
     },
-    
+
     testListFmtUnitStylehrHRNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "hr-HR",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan"]), "jedan");
         test.done();
     },
-    
+
     testListFmtUnitStylehrHRNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "hr-HR",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva"]), "jedan i dva");
         test.done();
     },
-    
+
     testListFmtUnitStylehrHRNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "hr-HR",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva", "tri"]), "jedan, dva i tri");
         test.done();
     },
-    
+
     testListFmtUnitStylehrHRNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "hr-HR",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva", "три", "četiri"]), "jedan, dva, три i četiri");
         test.done();
     },
-    
+
     testListFmtUnitStylehrHRNumberFormatFive: function(test) {
         var fmt = new ListFmt({
             locale: "hr-HR",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva", "три", "četiri", "pet"]), "jedan, dva, три, četiri i pet");
@@ -137,105 +137,105 @@ module.exports.testlistfmt_hr = {
     },
 
     // hr-ME
-    
+
     testListFmthrMENumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "hr-ME"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan"]), "jedan");
         test.done();
     },
-    
+
     testListFmthrMENumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "hr-ME"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva"]), "jedan i dva");
         test.done();
     },
-    
+
     testListFmthrMENumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "hr-ME"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva", "tri"]), "jedan, dva i tri");
         test.done();
     },
-    
+
     testListFmthrMENumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "hr-ME"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva", "tri", "četiri"]), "jedan, dva, tri i četiri");
         test.done();
     },
-    
+
     testListFmtUnitStylehrMENumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "hr-ME",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan"]), "jedan");
         test.done();
     },
-    
+
     testListFmtUnitStylehrMENumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "hr-ME",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva"]), "jedan i dva");
         test.done();
     },
-    
+
     testListFmtUnitStylehrMENumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "hr-ME",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva", "tri"]), "jedan, dva i tri");
         test.done();
     },
-    
+
     testListFmtUnitStylehrMENumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "hr-ME",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva", "tri", "četiri"]), "jedan, dva, tri i četiri");
         test.done();
     },
-    
+
     testListFmtUnitStylehrMENumberFormatFive: function(test) {
         var fmt = new ListFmt({
             locale: "hr-ME",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva", "три", "četiri", "pet"]), "jedan, dva, три, četiri i pet");
@@ -248,59 +248,59 @@ module.exports.testlistfmt_hr = {
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan"]), "jedan");
         test.done();
     },
-    
+
     testListFmtUnitStylehrMENumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "hr-ME",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva"]), "jedan i dva");
         test.done();
     },
-    
+
     testListFmtUnitStylehrMENumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "hr-ME",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva", "tri"]), "jedan, dva i tri");
         test.done();
     },
-    
+
     testListFmtUnitStylehrMENumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "hr-ME",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva", "tri", "četiri"]), "jedan, dva, tri i četiri");
         test.done();
     },
-    
+
     testListFmtUnitStylehrMENumberFormatFiveFull: function(test) {
         var fmt = new ListFmt({
             locale: "hr-ME",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["jedan", "dva", "tri", "četiri", "pet"]), "jedan, dva, tri, četiri i pet");

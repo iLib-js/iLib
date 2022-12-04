@@ -1,6 +1,6 @@
 /*
  * testname_kk.js - test the name object in Kazahk
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,68 +37,68 @@ module.exports.testname_kk = {
         test.expect(2);
         var parsed = new Name("Джордж Буш", {locale: 'kk-KZ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             givenName: "Джордж",
             familyName: "Буш"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseSingleNameWithPrefixAndAdjunct_kk: function(test) {
         test.expect(2);
         var parsed = new Name("үлкен Буш", {locale: 'kk-KZ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             prefix: "үлкен",
             familyName: "Буш"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseTitle_kk: function(test) {
         test.expect(2);
         var parsed = new Name("Джордж Буш 2-ші", {locale: 'kk-KZ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =    {
             suffix: "2-ші",
             givenName: "Джордж",
             familyName: "Буш"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseEverything_kk: function(test) {
         test.expect(2);
         var parsed = new Name("үлкен Джордж Буш 2-ші", {locale: 'kk-KZ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =    {
             prefix: "үлкен",
             givenName: "Джордж",
             familyName: "Буш",
             suffix: "2-ші"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_kk: function(test) {
         test.expect(2);
         var name = new Name({
@@ -106,18 +106,18 @@ module.exports.testname_kk = {
             familyName: "Буш"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'kk-KZ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Джордж Буш";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_kk: function(test) {
         test.expect(2);
         var name = new Name({
@@ -125,18 +125,18 @@ module.exports.testname_kk = {
             familyName: "Буш"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'kk-KZ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Джордж Буш";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_kk: function(test) {
         test.expect(2);
         var name = new Name({
@@ -145,18 +145,18 @@ module.exports.testname_kk = {
             suffix: "2-ші"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'kk-KZ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Джордж Буш";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_kk: function(test) {
         test.expect(2);
         var name = new Name({
@@ -166,18 +166,18 @@ module.exports.testname_kk = {
             suffix: "2-ші"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'kk-KZ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "үлкен Джордж Буш 2-ші";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
+
+
+
 };

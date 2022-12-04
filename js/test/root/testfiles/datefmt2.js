@@ -4,9 +4,9 @@ var Locale2 = require("./locale2.js");
 
 DateFmt2 = function(options) {
 	// console.log("DateFmt2: options is " + JSON.stringify(options));
-	
+
 	var locale = new Locale2(options.locale);
-	
+
 	if (locale.getLanguage() === "en") {
 		this.template = "MM/dd/yyyy";
 	} else {

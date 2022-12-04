@@ -1,6 +1,6 @@
 /*
  * testcollation_tr.js - test the Collator object in Turkish
- * 
+ *
  * Copyright © 2015, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,9 +38,9 @@ module.exports.testcollation_tr = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z
         test.ok("A < a",  col.compare("A", "a") < 0);
         test.ok("a < Â",  col.compare("a", "Â") < 0);
@@ -94,7 +94,7 @@ module.exports.testcollation_tr = {
         test.ok("ü < V",  col.compare("ü", "V") < 0);
         test.done();
     },
-    
+
     testJSCollatorTer_tr: function(test) {
         test.expect(51);
         var col = new Collator({
@@ -103,9 +103,9 @@ module.exports.testcollation_tr = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z
         test.ok("A < a",  col.compare("A", "a") < 0);
         test.ok("a < Â",  col.compare("a", "Â") < 0);
@@ -159,7 +159,7 @@ module.exports.testcollation_tr = {
         test.ok("ü < V",  col.compare("ü", "V") < 0);
         test.done();
     },
-    
+
     testJSCollatorSec_tr: function(test) {
         test.expect(51);
         var col = new Collator({
@@ -168,9 +168,9 @@ module.exports.testcollation_tr = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z
         test.ok("A = a",  col.compare("A", "a") === 0);
         test.ok("a < Â",  col.compare("a", "Â") < 0);
@@ -224,7 +224,7 @@ module.exports.testcollation_tr = {
         test.ok("ü < V",  col.compare("ü", "V") < 0);
         test.done();
     },
-    
+
     testJSCollatorPri_tr: function(test) {
         test.expect(51);
         var col = new Collator({
@@ -233,9 +233,9 @@ module.exports.testcollation_tr = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z
         test.ok("A = a",  col.compare("A", "a") === 0);
         test.ok("a = Â",  col.compare("a", "Â") === 0);
@@ -289,7 +289,7 @@ module.exports.testcollation_tr = {
         test.ok("ü < V",  col.compare("ü", "V") < 0);
         test.done();
     },
-    
+
     testJSCollatorSortQuat_tr: function(test) {
         test.expect(51);
         var col = new Collator({
@@ -298,9 +298,9 @@ module.exports.testcollation_tr = {
             sensitivity: "quaternary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z
         test.ok("A < a",  col.compare("A", "a") < 0);
         test.ok("a < Â",  col.compare("a", "Â") < 0);
@@ -354,7 +354,7 @@ module.exports.testcollation_tr = {
         test.ok("ü < V",  col.compare("ü", "V") < 0);
         test.done();
     },
-    
+
     testJSCollatorSortTer_tr: function(test) {
         test.expect(51);
         var col = new Collator({
@@ -363,9 +363,9 @@ module.exports.testcollation_tr = {
             sensitivity: "tertiary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z
         test.ok("A < a",  col.compare("A", "a") < 0);
         test.ok("a < Â",  col.compare("a", "Â") < 0);
@@ -419,7 +419,7 @@ module.exports.testcollation_tr = {
         test.ok("ü < V",  col.compare("ü", "V") < 0);
         test.done();
     },
-    
+
     testJSCollatorSortSec_tr: function(test) {
         test.expect(51);
         var col = new Collator({
@@ -428,9 +428,9 @@ module.exports.testcollation_tr = {
             sensitivity: "secondary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z
         test.ok("A < a",  col.compare("A", "a") < 0);
         test.ok("a < Â",  col.compare("a", "Â") < 0);
@@ -484,7 +484,7 @@ module.exports.testcollation_tr = {
         test.ok("ü < V",  col.compare("ü", "V") < 0);
         test.done();
     },
-    
+
     testJSCollatorSortPri_tr: function(test) {
         test.expect(51);
         var col = new Collator({
@@ -493,9 +493,9 @@ module.exports.testcollation_tr = {
             sensitivity: "primary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z
         test.ok("A < a",  col.compare("A", "a") < 0);
         test.ok("a < Â",  col.compare("a", "Â") < 0);
@@ -549,7 +549,7 @@ module.exports.testcollation_tr = {
         test.ok("ü < V",  col.compare("ü", "V") < 0);
         test.done();
     },
-    
+
     testCollatorWithSortCase_tr: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -559,7 +559,7 @@ module.exports.testcollation_tr = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
              "ügur",
             "Çolasan",
@@ -591,9 +591,9 @@ module.exports.testcollation_tr = {
             "İpekçi",
             "Ügur"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "Cakar",
             "Coskun",
@@ -625,11 +625,11 @@ module.exports.testcollation_tr = {
             "ügur",
             "üğur"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorWithSortVariant_tr: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -640,7 +640,7 @@ module.exports.testcollation_tr = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
             "ügur",
             "Çolasan",
@@ -672,9 +672,9 @@ module.exports.testcollation_tr = {
             "İpekçi",
             "Ügur"
         ];
-    
+
         input.sort(col.getComparator());
-        
+
         var expected = [
             "Cakar",
             "Coskun",
@@ -706,10 +706,10 @@ module.exports.testcollation_tr = {
             "ügur",
             "üğur"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     }
-    
-    
+
+
 };

@@ -100,7 +100,7 @@ module.exports.testunitfmt_be_BY = {
             test.equal(str, "-16,666666666666668 градусы Цэльсія");
         }
 
-        
+
         test.done();
     },
     testUnitFormatArea1_be_BY: function(test) {
@@ -111,7 +111,7 @@ module.exports.testunitfmt_be_BY = {
         });
 
         var uf = new UnitFmt({
-            locale: "be-BY", 
+            locale: "be-BY",
             autoConvert:true,
             length:"short"
         });
@@ -128,7 +128,7 @@ module.exports.testunitfmt_be_BY = {
         });
 
         var uf = new UnitFmt({
-            locale: "be-BY", 
+            locale: "be-BY",
             autoConvert: true,
             length: "long"
         });
@@ -145,7 +145,7 @@ module.exports.testunitfmt_be_BY = {
         });
 
         var uf = new UnitFmt({
-            locale: "be-BY", 
+            locale: "be-BY",
             autoConvert: true,
             length: "short"
         });
@@ -162,7 +162,7 @@ module.exports.testunitfmt_be_BY = {
         });
 
         var uf = new UnitFmt({
-            locale: "be-BY", 
+            locale: "be-BY",
             autoConvert: true,
             length: "long"
         });

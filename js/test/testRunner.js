@@ -1,6 +1,6 @@
 /*
  * testRunner.js - top level test suite
- * 
+ *
  * Copyright © 2017-2019, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@ require("./test/assertExtras.js");
 
 var suiteDefinitions = {
 	"core": [
-	    "util", 
+	    "util",
 	    "root"
 	],
 	"standard": [
@@ -90,7 +90,7 @@ if (process.argv.length > 2) {
 			if (process.argv.length > 5) {
 			    sync = (process.argv[5] !== "async");
 			}
-			
+
 			size = process.argv[4];
 			if (suiteDefinitions[size]) {
                 console.log("Only running set " + size);
@@ -143,7 +143,7 @@ if (assembly === "dynamic") {
 } else {
     var dirName = ["ut", assembly, compilation, target].join("-");
     var urlPath = path.join('../output/js', dirName);
-    
+
     fileName = path.join(urlPath, "ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js");
     console.log("loading in " + fileName);
     var script = fs.readFileSync(fileName, "utf-8");
@@ -151,7 +151,7 @@ if (assembly === "dynamic") {
 
     if (assembly === "dynamicdata") {
         global.ilib.setLoaderCallback(sync ? NodeLoader(ilib) : AsyncNodeLoader(ilib));
-    
+
         global.ilib._dyncode = false;
         global.ilib._dyndata = true;
         global.require = require;
@@ -162,11 +162,11 @@ if (assembly === "dynamic") {
         if (suite.indexOf("strings-ext") > -1) {
             global.NormString.init();
         }
-        
+
         global.ilib._dyncode = false;
         global.ilib._dyndata = false;
     }
-    
+
     if (suite.indexOf("strings-ext") > -1) {
         // special case for massive test data that we should only load if we need it
         script = fs.readFileSync("strings-ext/normdata.js", "utf-8");

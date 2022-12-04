@@ -1,6 +1,6 @@
 /*
  * testaddress.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,7 +38,7 @@ module.exports.testaddress_CM = {
     testParseAddressCMNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Pierre Marie, BP 6000, YAOUNDE, CAMEROON", {locale: 'fr-CM'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Pierre Marie, BP 6000");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -48,11 +48,11 @@ module.exports.testaddress_CM = {
         test.equal(parsedAddress.countryCode, "CM");
         test.done();
     },
-    
+
     testParseAddressCMNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Pierre Marie, BP 6000, YAOUNDE, CAMEROON", {locale: 'fr-CM'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Pierre Marie, BP 6000");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -62,11 +62,11 @@ module.exports.testaddress_CM = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressCMManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Pierre Marie\nBP 6000, YAOUNDE\nCAMEROON", {locale: 'fr-CM'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Pierre Marie, BP 6000");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -76,11 +76,11 @@ module.exports.testaddress_CM = {
         test.equal(parsedAddress.countryCode, "CM");
         test.done();
     },
-    
+
     testParseAddressCMOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Pierre Marie, BP 6000, YAOUNDE, CAMEROON", {locale: 'fr-CM'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Pierre Marie, BP 6000");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -90,11 +90,11 @@ module.exports.testaddress_CM = {
         test.equal(parsedAddress.countryCode, "CM");
         test.done();
     },
-    
+
     testParseAddressCMSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Pierre Marie  \n\t\n BP 6000, YAOUNDE\t\n\n CAMEROON  \n  \t\t\t", {locale: 'fr-CM'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Pierre Marie, BP 6000");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -104,11 +104,11 @@ module.exports.testaddress_CM = {
         test.equal(parsedAddress.countryCode, "CM");
         test.done();
     },
-    
+
     testParseAddressCMNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Pierre Marie BP 6000 YAOUNDE CAMEROON", {locale: 'fr-CM'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Pierre Marie BP 6000");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -118,11 +118,11 @@ module.exports.testaddress_CM = {
         test.equal(parsedAddress.countryCode, "CM");
         test.done();
     },
-    
+
     testParseAddressCMSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Direction des postes ,Régulation des réseaux et services postaux, YAOUNDE, CAMEROON", {locale: 'fr-CM'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Direction des postes, Régulation des réseaux et services postaux");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -132,13 +132,13 @@ module.exports.testaddress_CM = {
         test.equal(parsedAddress.countryCode, "CM");
         test.done();
     },
-    
+
     testParseAddressCMFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Pierre Marie, BP 6000, YAOUNDE, CAMEROON", {locale: 'en-US'});
-        
+
         // the country name is in English because this address is for a contact in a US database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Pierre Marie, BP 6000");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -148,7 +148,7 @@ module.exports.testaddress_CM = {
         test.equal(parsedAddress.countryCode, "CM");
         test.done();
     },
-    
+
     testFormatAddressCM: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -157,13 +157,13 @@ module.exports.testaddress_CM = {
             country: "CAMEROON",
             countryCode: "AM"
         }, {locale: 'fr-CM'});
-        
+
         var expected = "M. Pierre Marie\nBP 6000\nYAOUNDE\nCAMEROON";
         var formatter = new AddressFmt({locale: 'fr-CM'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressCMFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -172,11 +172,11 @@ module.exports.testaddress_CM = {
             locality: "YAOUNDE",
             countryCode: "AM"
         }, {locale: 'en-US'});
-        
+
         var expected = "M. Pierre Marie\nBP 6000\nYAOUNDE\nCAMEROON";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

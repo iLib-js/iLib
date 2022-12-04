@@ -1,6 +1,6 @@
 /*
  * testaddress_SE.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -45,9 +45,9 @@ module.exports.testaddress_SE = {
         test.equal(parsedAddress.country, "SWEDEN");
         test.equal(parsedAddress.countryCode, "SE");
         test.done();
-    
+
     },
-    
+
     testParseAddressSENoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Martin Rebas Gyllenkrooksgatan 1\nGÖTEBORG\nSWEDEN", {locale: 'sv-SE'});
@@ -60,11 +60,11 @@ module.exports.testaddress_SE = {
         test.equal(parsedAddress.countryCode, "SE");
         test.done();
     },
-    
+
     testParseAddressSENoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Martin Rebas Gyllenkrooksgatan 1 , 412 84 , GÖTEBORG", {locale: 'sv-SE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Martin Rebas Gyllenkrooksgatan 1");
         test.equal(parsedAddress.locality, "GÖTEBORG");
@@ -74,11 +74,11 @@ module.exports.testaddress_SE = {
         test.equal(parsedAddress.countryCode, "SE");
         test.done();
     },
-    
+
     testParseAddressSEManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Ms. Hypothetical\nc/o Jon Wätte Hagagatan 1\nvi\n113 49\nStockholm\nSWEDEN", {locale: 'sv-SE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ms. Hypothetical, c/o Jon Wätte Hagagatan 1, vi");
         test.equal(parsedAddress.locality, "Stockholm");
@@ -88,11 +88,11 @@ module.exports.testaddress_SE = {
         test.equal(parsedAddress.countryCode, "SE");
         test.done();
     },
-    
+
     testParseAddressSEOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Ms. Hypothetical , c/o Jon Wätte Hagagatan 1 , 113 49 , Stockholm , SWEDEN", {locale: 'sv-SE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ms. Hypothetical, c/o Jon Wätte Hagagatan 1");
         test.equal(parsedAddress.locality, "Stockholm");
@@ -102,12 +102,12 @@ module.exports.testaddress_SE = {
         test.equal(parsedAddress.countryCode, "SE");
         test.done();
     },
-    
-    
+
+
     testParseAddressSENoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Ms. Hypothetical c/o Jon Wätte Hagagatan 113 49 Stockholm SWEDEN", {locale: 'sv-SE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ms. Hypothetical c/o Jon Wätte Hagagatan");
         test.equal(parsedAddress.locality, "Stockholm");
@@ -117,14 +117,14 @@ module.exports.testaddress_SE = {
         test.equal(parsedAddress.countryCode, "SE");
         test.done();
     },
-    
-    
+
+
     testParseAddressSEFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Martin Rebas Gyllenkrooksgatan 1\nGÖTEBORG 412 84\nSWEDEN", {locale: 'en-US'});
-        
+
         // the country name is in English because this address is for a contact in a US database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Martin Rebas Gyllenkrooksgatan 1");
         test.equal(parsedAddress.locality, "GÖTEBORG");
@@ -134,7 +134,7 @@ module.exports.testaddress_SE = {
         test.equal(parsedAddress.countryCode, "SE");
         test.done();
     },
-    
+
     testFormatAddressSE: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -145,13 +145,13 @@ module.exports.testaddress_SE = {
             country: "SWEDEN",
             countryCode: "SE"
         }, {locale: 'sv-SE'});
-        
+
         var expected = "Martin Rebas Gyllenkrooksgatan 1\n412 84 GÖTEBORG\nSWEDEN";
         var formatter = new AddressFmt({locale: 'sv-SE'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressSEFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -162,11 +162,11 @@ module.exports.testaddress_SE = {
             country: "SWEDEN",
             countryCode: "SE"
         }, {locale: 'en-US'});
-        
+
         var expected = "Martin Rebas Gyllenkrooksgatan\n412 84 GÖTEBORG\nSWEDEN";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

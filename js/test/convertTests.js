@@ -1,23 +1,23 @@
-/* 
+/*
  * convertTests.js - ilib tool to convert jsunit tests to nodeunit tests
- *  
+ *
  * Copyright © 2017, JEDLSoft
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
- * You may obtain a copy of the License at 
- * 
- *     http://www.apache.org/licenses/LICENSE-2.0 
- * 
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an "AS IS" BASIS, 
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
- * 
- * See the License for the specific language governing permissions and 
- * limitations under the License. 
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-/* 
- * This code is intended to be run under node.js  
+/*
+ * This code is intended to be run under node.js
  */
 var fs = require('fs');
 var path = require('path');
@@ -29,7 +29,7 @@ var reCopyright = /^ \* Copyright © (20..)(,20..)?(-20..)?(.*)/;
 var reLoops = /^\s*(for |while |\} catch |\w+\.forEach|bisectionSearch)/;
 var reReturn = /^(\s*)return/;
 var reGetPlatform = /(ilib\._getPlatform\(\)|isDynData\(\)|isDynCode\(\)|typeof\(Intl\))/;
-    
+
 var assertMappings = [
 	{re: /(\s*)assertEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equal($6, $2)"},
     {re: /(\s*)assertEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equal($10, $6, $2)"},
@@ -62,13 +62,13 @@ var nonAssertMappings = [
 function convertFile(dir, fileName, outFileName) {
 	var testFile = path.join(dir, "test", fileName);
 	var data = fs.readFileSync(testFile, "utf-8");
-	
+
 	var lines = data.split("\n");
-	
+
 	var i = 0, j;
 	var match, firstFunction = true, foundLoops = false, foundGetPlatform = false;
 	var numberOfTests, firstLineOfTest, firstAssertion, lastAssertion, firstReturn;
-	
+
 	while (i < lines.length) {
         if (lines[i]) {
             lines[i] = lines[i].replace(/\t/g, '    ');
@@ -86,9 +86,9 @@ function convertFile(dir, fileName, outFileName) {
 			if (match !== null) {
 				if (firstFunction) {
 					firstFunction = false;
-					
+
 					var baseName = path.basename(fileName, ".js").replace(/-/g, "_");
-					
+
 					lines.splice(i, 1,
 					    'if (typeof(ilib) === "undefined") {',
 					    '    var ilib = require("../../..");',
@@ -151,7 +151,7 @@ function convertFile(dir, fileName, outFileName) {
                     lines.splice(i, 1, '        test.done();', '    },');
                 }
                 i += 2;
-                
+
                 if (!foundLoops) {
                     var lineno = (firstReturn < firstAssertion) ? firstAssertion : firstLineOfTest;
                     lines.splice(lineno, 0, '        test.expect(' + numberOfTests + ');');
@@ -186,22 +186,22 @@ function convertFile(dir, fileName, outFileName) {
 				    if (i < firstReturn) {
 				        firstReturn = i;
 				    }
-				    
+
 				    if (foundGetPlatform) {
     				    lines.splice(i, 0, '    ' + match[1] + 'test.done();');
         				i++;
 				    }
 				}
-				
+
 				if (reGetPlatform.exec(lines[i]) !== null) {
 				    foundGetPlatform = true;
 				}
-				
+
 				if (reLoops.exec(lines[i]) !== null) {
 				    // when there's a loop, we don't know how many tests to expect, so leave off the test.expect() call
 				    foundLoops = true;
 				}
-				
+
 				if (!mapped) {
 				    // increase the indent for non-mapped lines
 				    lines[i] = "    " + lines[i];
@@ -209,9 +209,9 @@ function convertFile(dir, fileName, outFileName) {
 
 				i++;
 			}
-		}		
+		}
 	}
-	
+
 	// now run backwards and remove the last comma after the last function if it's there
 	i = lines.length-1;
 	while (i > 0) {
@@ -223,21 +223,21 @@ function convertFile(dir, fileName, outFileName) {
 		}
 		i--;
 	}
-	
+
 	lines.push('};');
-	
+
 	if (!outFileName) {
 	    outFileName = fileName;
 	}
-	
+
 	var outDir = path.join(dir, "nodeunit");
 	if (!fs.existsSync(outDir)) {
 		fs.mkdirSync(outDir);
 	}
-	
+
 	var outFile = path.join(outDir, outFileName);
 	fs.writeFileSync(outFile, lines.join('\n'), "utf-8");
-	
+
 	console.log(testFile + " -> " + outFile);
 }
 
@@ -267,11 +267,11 @@ function generateSuiteJS(dir, tests) {
         'var modules = {};',
         'var suites = ['
     ];
-    
+
     tests.forEach(function(test) {
         lines.push('    "' + test + '",');
     });
-    
+
     lines = lines.concat([
         '];',
         '',
@@ -284,10 +284,10 @@ function generateSuiteJS(dir, tests) {
         '',
         'reporter.run(modules);'
     ]);
-    
+
     var outFile = path.join(dir, "nodeunit", "testSuite.js");
     fs.writeFileSync(outFile, lines.join('\n'), "utf-8");
-    
+
     lines = [
         '/*',
         ' * testSuiteFiles.js - list the test files in this directory',
@@ -313,7 +313,7 @@ function generateSuiteJS(dir, tests) {
     tests.forEach(function(test) {
         lines.push('    "' + test + '",');
     });
-    
+
     lines.push('];');
 
     var outFile = path.join(dir, "nodeunit", "testSuiteFiles.js");
@@ -355,11 +355,11 @@ function generateSuiteHTML(dir, tests) {
         '        };',
         '    </script>'
     ];
-        
+
     tests.forEach(function(test) {
         lines.push('    <script src="' + test + '"></script>');
     });
-    
+
     lines = lines.concat([
         '  </head>',
         '  <body>',
@@ -370,7 +370,7 @@ function generateSuiteHTML(dir, tests) {
         '  </body>',
         '</html>'
     ]);
-    
+
     var outFile = path.join(dir, "nodeunit", "testSuite.html");
     fs.writeFileSync(outFile, lines.join('\n'), "utf-8");
 }
@@ -397,7 +397,7 @@ suites.forEach(function (dir) {
 					}
 				}
 			});
-			
+
 			generateSuiteJS(dir, suite);
 			generateSuiteHTML(dir, suite);
 		}

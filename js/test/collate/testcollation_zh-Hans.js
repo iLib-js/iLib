@@ -1,6 +1,6 @@
 /*
  * testcollation_zh-Hans.js - test the Collator object in simplified Chinese
- * 
+ *
  * Copyright © 2015, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,11 +38,11 @@ module.exports.testcollation_zh_Hans = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("阿 < 拜", col.compare("阿", "拜") < 0);
         test.ok("拜 < 𩑻", col.compare("拜", "𩑻") < 0);
         test.ok("𩑻 < 䯋", col.compare("𩑻", "䯋") < 0);
@@ -65,7 +65,7 @@ module.exports.testcollation_zh_Hans = {
         test.ok("赵 < 蓙", col.compare("赵", "蓙") < 0);
         test.done();
     },
-    
+
     testJSCollatorTerHanzi_zh_Hans: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -74,9 +74,9 @@ module.exports.testcollation_zh_Hans = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
         test.ok("阿 < 拜", col.compare("阿", "拜") < 0);
         test.ok("拜 < 𩑻", col.compare("拜", "𩑻") < 0);
@@ -100,7 +100,7 @@ module.exports.testcollation_zh_Hans = {
         test.ok("赵 < 蓙", col.compare("赵", "蓙") < 0);
         test.done();
     },
-    
+
     testJSCollatorSecHanzi_zh_Hans: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -109,9 +109,9 @@ module.exports.testcollation_zh_Hans = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
         test.ok("阿 < 拜", col.compare("阿", "拜") < 0);
         test.ok("拜 < 𩑻", col.compare("拜", "𩑻") < 0);
@@ -135,7 +135,7 @@ module.exports.testcollation_zh_Hans = {
         test.ok("赵 < 蓙", col.compare("赵", "蓙") < 0);
         test.done();
     },
-    
+
     testJSCollatorPriHanzi_zh_Hans: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -144,9 +144,9 @@ module.exports.testcollation_zh_Hans = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
         test.ok("阿 < 拜", col.compare("阿", "拜") < 0);
         test.ok("拜 < 𩑻", col.compare("拜", "𩑻") < 0);
@@ -170,7 +170,7 @@ module.exports.testcollation_zh_Hans = {
         test.ok("赵 < 蓙", col.compare("赵", "蓙") < 0);
         test.done();
     },
-    
+
     testJSCollatorQuatHanziVariants_zh_Hans: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -179,9 +179,9 @@ module.exports.testcollation_zh_Hans = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         // extra variants at the tertiary level
         test.ok("幼 < ㉅", col.compare("幼", "㉅") < 0);
         test.ok("平成 < ㍻", col.compare("平成", "㍻") < 0);
@@ -194,7 +194,7 @@ module.exports.testcollation_zh_Hans = {
         test.ok("龠 < ⿕", col.compare("龠", "⿕") < 0);
         test.done();
     },
-    
+
     testJSCollatorTerHanziVariants_zh_Hans: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -203,9 +203,9 @@ module.exports.testcollation_zh_Hans = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         // extra variants at the tertiary level
         test.ok("幼 < ㉅", col.compare("幼", "㉅") < 0);
         test.ok("平成 < ㍻", col.compare("平成", "㍻") < 0);
@@ -218,7 +218,7 @@ module.exports.testcollation_zh_Hans = {
         test.ok("龠 < ⿕", col.compare("龠", "⿕") < 0);
         test.done();
     },
-    
+
     testJSCollatorSecHanziVariants_zh_Hans: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -227,9 +227,9 @@ module.exports.testcollation_zh_Hans = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         // extra variants at the tertiary level
         test.ok("幼 = ㉅", col.compare("幼", "㉅") === 0);
         test.ok("平成 = ㍻", col.compare("平成", "㍻") === 0);
@@ -242,7 +242,7 @@ module.exports.testcollation_zh_Hans = {
         test.ok("龠 = ⿕", col.compare("龠", "⿕") === 0);
         test.done();
     },
-    
+
     testJSCollatorPriHanziVariants_zh_Hans: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -251,9 +251,9 @@ module.exports.testcollation_zh_Hans = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         // extra variants at the tertiary level
         test.ok("幼 = ㉅", col.compare("幼", "㉅") === 0);
         test.ok("平成 = ㍻", col.compare("平成", "㍻") === 0);
@@ -266,7 +266,7 @@ module.exports.testcollation_zh_Hans = {
         test.ok("龠 = ⿕", col.compare("龠", "⿕") === 0);
         test.done();
     },
-    
+
     testJSCollatorPinyinQuat_zh_Hans: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -275,11 +275,11 @@ module.exports.testcollation_zh_Hans = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("bā < bá", col.compare("bā", "bá") < 0);
         test.ok("bá < bǎ", col.compare("bá", "bǎ") < 0);
         test.ok("bǎ < bà", col.compare("bǎ", "bà") < 0);
@@ -291,7 +291,7 @@ module.exports.testcollation_zh_Hans = {
         test.ok("chēn < ché", col.compare("chēn", "ché") < 0);
         test.ok("ché < chě", col.compare("ché", "chě") < 0);
         test.ok("chě < chè", col.compare("chě", "chè") < 0);
-        
+
         test.ok("Ā < Ā", col.compare("Ā", "Ā") < 0);
         test.ok("Ā < ā", col.compare("Ā", "ā") < 0);
         test.ok("ā < ā", col.compare("ā", "ā") < 0);
@@ -501,7 +501,7 @@ module.exports.testcollation_zh_Hans = {
         test.ok("Z < z", col.compare("Z", "z") < 0);
         test.done();
     },
-    
+
     testJSCollatorPinyinTer_zh_Hans: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -510,11 +510,11 @@ module.exports.testcollation_zh_Hans = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("bā < bá", col.compare("bā", "bá") < 0);
         test.ok("bá < bǎ", col.compare("bá", "bǎ") < 0);
         test.ok("bǎ < bà", col.compare("bǎ", "bà") < 0);
@@ -526,7 +526,7 @@ module.exports.testcollation_zh_Hans = {
         test.ok("chēn < ché", col.compare("chēn", "ché") < 0);
         test.ok("ché < chě", col.compare("ché", "chě") < 0);
         test.ok("chě < chè", col.compare("chě", "chè") < 0);
-    
+
         test.ok("Ā = Ā", col.compare("Ā", "Ā") === 0);
         test.ok("Ā < ā", col.compare("Ā", "ā") < 0);
         test.ok("ā = ā", col.compare("ā", "ā") === 0);
@@ -736,7 +736,7 @@ module.exports.testcollation_zh_Hans = {
         test.ok("Z < z", col.compare("Z", "z") < 0);
         test.done();
     },
-    
+
     testJSCollatorPinyinSec_zh_Hans: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -745,11 +745,11 @@ module.exports.testcollation_zh_Hans = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("bā < bá", col.compare("bā", "bá") < 0);
         test.ok("bá < bǎ", col.compare("bá", "bǎ") < 0);
         test.ok("bǎ < bà", col.compare("bǎ", "bà") < 0);
@@ -761,7 +761,7 @@ module.exports.testcollation_zh_Hans = {
         test.ok("chēn < ché", col.compare("chēn", "ché") < 0);
         test.ok("ché < chě", col.compare("ché", "chě") < 0);
         test.ok("chě < chè", col.compare("chě", "chè") < 0);
-    
+
         test.ok("Ā = Ā", col.compare("Ā", "Ā") === 0);
         test.ok("Ā = ā", col.compare("Ā", "ā") === 0);
         test.ok("ā = ā", col.compare("ā", "ā") === 0);
@@ -971,7 +971,7 @@ module.exports.testcollation_zh_Hans = {
         test.ok("Z = z", col.compare("Z", "z") === 0);
         test.done();
     },
-    
+
     testJSCollatorPinyinPri_zh_Hans: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -980,11 +980,11 @@ module.exports.testcollation_zh_Hans = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("bā = bá", col.compare("bā", "bá") === 0);
         test.ok("bá = bǎ", col.compare("bá", "bǎ") === 0);
         test.ok("bǎ = bà", col.compare("bǎ", "bà") === 0);
@@ -996,7 +996,7 @@ module.exports.testcollation_zh_Hans = {
         test.ok("chēn > ché", col.compare("chēn", "ché") > 0);
         test.ok("ché = chě", col.compare("ché", "chě") === 0);
         test.ok("chě = chè", col.compare("chě", "chè") === 0);
-    
+
         test.ok("Ā = Ā", col.compare("Ā", "Ā") === 0);
         test.ok("Ā = ā", col.compare("Ā", "ā") === 0);
         test.ok("ā = ā", col.compare("ā", "ā") === 0);
@@ -1206,7 +1206,7 @@ module.exports.testcollation_zh_Hans = {
         test.ok("Z = z", col.compare("Z", "z") === 0);
         test.done();
     },
-    
+
     testCollatorCase_zh_Hans: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1216,18 +1216,18 @@ module.exports.testcollation_zh_Hans = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-        
+
         var input = [
-             "波", // bō  
-            "里", // lǐ 
-            "摸", // mō 
+             "波", // bō
+            "里", // lǐ
+            "摸", // mō
             "子", // zī
             "次", // cī
             "西", // xī
             "德", // dé
             "科", // kē
             "记", // jī
-            "各", // gè 
+            "各", // gè
             "坡", // pō
              "啊", // ā
             "日", // rī
@@ -1237,48 +1237,48 @@ module.exports.testcollation_zh_Hans = {
             "食", // shí
             "起", // qī
             "站", // zhàn
-            "体", // tǐ 
+            "体", // tǐ
             "和", // hé
             "一", // yī
             "额", // é
             "佛", // fú
-            "四"  // sī 
+            "四"  // sī
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "啊", // ā
-            "波", // bō  
+            "波", // bō
             "吃", // chī
             "次", // cī
             "德", // dé
             "额", // é
             "佛", // fú
-            "各", // gè 
+            "各", // gè
             "和", // hé
             "记", // jī
             "科", // kē
-            "里", // lǐ 
-            "摸", // mō 
+            "里", // lǐ
+            "摸", // mō
             "那", // nà
             "坡", // pō
             "起", // qī
             "日", // rī
             "食", // shí
-            "四", // sī 
-            "体", // tǐ 
+            "四", // sī
+            "体", // tǐ
             "吴", // wú
             "西", // xī
             "一", // yī
             "站", // zhàn
             "子"  // zī
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorPri_zh_Hans: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1288,18 +1288,18 @@ module.exports.testcollation_zh_Hans = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-        
+
         var input = [
-             "波", // bō  
-            "里", // lǐ 
-            "摸", // mō 
+             "波", // bō
+            "里", // lǐ
+            "摸", // mō
             "子", // zī
             "次", // cī
             "西", // xī
             "德", // dé
             "科", // kē
             "记", // jī
-            "各", // gè 
+            "各", // gè
             "坡", // pō
              "啊", // ā
             "日", // rī
@@ -1309,48 +1309,48 @@ module.exports.testcollation_zh_Hans = {
             "食", // shí
             "起", // qī
             "站", // zhàn
-            "体", // tǐ 
+            "体", // tǐ
             "和", // hé
             "一", // yī
             "额", // é
             "佛", // fú
-            "四"  // sī 
+            "四"  // sī
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "啊", // ā
-            "波", // bō  
+            "波", // bō
             "吃", // chī
             "次", // cī
             "德", // dé
             "额", // é
             "佛", // fú
-            "各", // gè 
+            "各", // gè
             "和", // hé
             "记", // jī
             "科", // kē
-            "里", // lǐ 
-            "摸", // mō 
+            "里", // lǐ
+            "摸", // mō
             "那", // nà
             "坡", // pō
             "起", // qī
             "日", // rī
             "食", // shí
-            "四", // sī 
-            "体", // tǐ 
+            "四", // sī
+            "体", // tǐ
             "吴", // wú
             "西", // xī
             "一", // yī
             "站", // zhàn
             "子"  // zī
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorCaseMixed_zh_Hans: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1360,12 +1360,12 @@ module.exports.testcollation_zh_Hans = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-        
+
         var input = [
-             "波", // bō  
-            "里", // lǐ 
+             "波", // bō
+            "里", // lǐ
             "apple",
-            "摸", // mō 
+            "摸", // mō
             "子", // zī
             "orange",
             "次", // cī
@@ -1373,7 +1373,7 @@ module.exports.testcollation_zh_Hans = {
             "德", // dé
             "科", // kē
             "记", // jī
-            "各", // gè 
+            "各", // gè
             "banana",
             "坡", // pō
              "啊", // ā
@@ -1387,18 +1387,18 @@ module.exports.testcollation_zh_Hans = {
             "起", // qī
             "站", // zhàn
             "raspberry",
-            "体", // tǐ 
+            "体", // tǐ
             "和", // hé
             "一", // yī
             "peach",
             "额", // é
             "佛", // fú
             "RASPBERRY",
-            "四"  // sī 
+            "四"  // sī
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "Apple",
             "apple",
@@ -1409,36 +1409,36 @@ module.exports.testcollation_zh_Hans = {
             "RASPBERRY",
             "raspberry",
             "啊", // ā
-            "波", // bō  
+            "波", // bō
             "吃", // chī
             "次", // cī
             "德", // dé
             "额", // é
             "佛", // fú
-            "各", // gè 
+            "各", // gè
             "和", // hé
             "记", // jī
             "科", // kē
-            "里", // lǐ 
-            "摸", // mō 
+            "里", // lǐ
+            "摸", // mō
             "那", // nà
             "坡", // pō
             "起", // qī
             "日", // rī
             "食", // shí
-            "四", // sī 
-            "体", // tǐ 
+            "四", // sī
+            "体", // tǐ
             "吴", // wú
             "西", // xī
             "一", // yī
             "站", // zhàn
             "子"  // zī
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorCaseMixedWithIndexMarkers_zh_Hans: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1448,12 +1448,12 @@ module.exports.testcollation_zh_Hans = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-        
+
         var input = [
-             "波", // bō  
-            "里", // lǐ 
+             "波", // bō
+            "里", // lǐ
             "\uFDD0Apple",
-            "摸", // mō 
+            "摸", // mō
             "子", // zī
             "\uFDD0Orange",
             "次", // cī
@@ -1463,7 +1463,7 @@ module.exports.testcollation_zh_Hans = {
             "\uFDD0Lemon",
             "科", // kē
             "记", // jī
-            "各", // gè 
+            "各", // gè
             "\uFDD0Banana",
             "坡", // pō
              "啊", // ā
@@ -1477,16 +1477,16 @@ module.exports.testcollation_zh_Hans = {
             "起", // qī
             "站", // zhàn
             "\uFDD0Raspberry",
-            "体", // tǐ 
+            "体", // tǐ
             "和", // hé
             "一", // yī
             "\uFDD0Peach",
             "额", // é
             "佛", // fú
             "\uFDD0RASPBERRY",
-            "四"  // sī 
+            "四"  // sī
         ];
-    
+
         input.sort(col.getComparator());
         var browser = ilib._getBrowser();
         if (browser === "ie") {
@@ -1533,19 +1533,19 @@ module.exports.testcollation_zh_Hans = {
             "\uFDD0Apple",
             "啊", // ā
             "\uFDD0Banana",
-            "波", // bō  
+            "波", // bō
             "吃", // chī
             "次", // cī
             "德", // dé
             "额", // é
             "佛", // fú
-            "各", // gè 
+            "各", // gè
             "和", // hé
             "记", // jī
             "科", // kē
             "\uFDD0Lemon",
-            "里", // lǐ 
-            "摸", // mō 
+            "里", // lǐ
+            "摸", // mō
             "那", // nà
             "\uFDD0ORange",
             "\uFDD0Orange",
@@ -1557,7 +1557,7 @@ module.exports.testcollation_zh_Hans = {
             "日", // rī
             "食", // shí
             "四", // sī
-            "体", // tǐ 
+            "体", // tǐ
             "吴", // wú
             "西", // xī
             "\uFDD0Yam",
@@ -1569,8 +1569,8 @@ module.exports.testcollation_zh_Hans = {
         test.deepEqual(input, expected);
         test.done();
     },
-    
-    
+
+
     testCollatorHanziTones_zh_Hans: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1580,7 +1580,7 @@ module.exports.testcollation_zh_Hans = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-        
+
         var input = [
             "鱼",
             "闷",
@@ -1610,9 +1610,9 @@ module.exports.testcollation_zh_Hans = {
             "崩",
             "逼",
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
                "把", // "bǎ"
             "白", // "bái"
@@ -1626,7 +1626,7 @@ module.exports.testcollation_zh_Hans = {
             "别", // "bié"
             "鬓", // "bìn"
             "病", // "bìng"
-            "伯", // "bó"  
+            "伯", // "bó"
             "捕", // "bǔ"
             "耳", // "Ěr"
             "美", // "měi"
@@ -1638,14 +1638,14 @@ module.exports.testcollation_zh_Hans = {
             "癖", // "pǐ"
             "勇", // "yǒng"
             "有", // "yǒu"
-            "鱼", // "yú" 
+            "鱼", // "yú"
             "月", // "yuè"
             "孕"  // "yùn"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     }
-    
-    
+
+
 };

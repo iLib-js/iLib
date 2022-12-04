@@ -102,7 +102,7 @@ module.exports.testalphaindex_de = {
         test.equal("U", ai.getBucket("über"));
         test.equal("A", ai.getBucket("änderen"));
         test.equal("O", ai.getBucket("öffenen"));
-          
+
         test.equal("U", ai.getBucket("Über"));
         test.equal("A", ai.getBucket("Änderen"));
         test.equal("O", ai.getBucket("Öffenen"));

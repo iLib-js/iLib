@@ -1,6 +1,6 @@
 /*
  * testname_bs.js - test the name object in Bulgarian
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,160 +37,160 @@ module.exports.testname_bs = {
         test.expect(2);
         var parsed = new Name("Derviš Sušić", {locale: 'bs-BA'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             givenName: "Derviš",
-            familyName: "Sušić"  
+            familyName: "Sušić"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseAdjunctNames_bs: function(test) {
         test.expect(2);
         var parsed = new Name("Derviš Sušić", {locale: 'bs-BA'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =  {
             givenName: "Derviš",
-            familyName: "Sušić"  
+            familyName: "Sušić"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseSingleNameWithPrefixAndAdjunct_bs: function(test) {
         test.expect(2);
         var parsed = new Name("Gospodin i Gospođica Sušić", {locale: 'bs-BA'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             prefix: "Gospodin i Gospođica",
-            familyName: "Sušić"  
+            familyName: "Sušić"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseTitle_bs: function(test) {
         test.expect(2);
         var parsed = new Name("Derviš Sušić viši", {locale: 'bs-BA'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =    {
             suffix: "viši",
             givenName: "Derviš",
-            familyName: "Sušić"  
+            familyName: "Sušić"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitleWithFamilyOnly_bs: function(test) {
         test.expect(2);
         var parsed = new Name("predsjednik Sušić", {locale: 'bs-BA'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             prefix: "predsjednik",
-            familyName: "Sušić"  
+            familyName: "Sušić"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseEverything_bs: function(test) {
         test.expect(2);
         var parsed = new Name("predsjednik Derviš Sušić", {locale: 'bs-BA'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =    {
             prefix: "predsjednik",
             givenName: "Derviš",
-            familyName: "Sušić"  
+            familyName: "Sušić"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_bs: function(test) {
         test.expect(2);
         var name = new Name({
             givenName: "Derviš",
-            familyName: "Sušić"  
+            familyName: "Sušić"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Derviš Sušić";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_bs: function(test) {
         test.expect(2);
         var name = new Name({
             givenName: "Derviš",
-            familyName: "Sušić"  
+            familyName: "Sušić"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Derviš Sušić";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_bs: function(test) {
         test.expect(2);
         var name = new Name({
             givenName: "Derviš",
-            
+
             familyName: "Sušić"  ,
             suffix: "viši"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Derviš Sušić";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_bs: function(test) {
         test.expect(2);
         var name = new Name({
@@ -200,64 +200,64 @@ module.exports.testname_bs = {
             suffix: "viši"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Gospodin Derviš Sušić viši";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_bs: function(test) {
         test.expect(2);
         var name = new Name({
             prefix: "Gospodin",
             givenName: "Derviš",
-            familyName: "Sušić"  
+            familyName: "Sušić"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Derviš Sušić";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_bs: function(test) {
         test.expect(2);
         var name = new Name({
             prefix: "Gospodin",
             givenName: "Derviš",
-            familyName: "Sušić"  
+            familyName: "Sušić"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Derviš Sušić";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_bs: function(test) {
         test.expect(2);
         var name = new Name({
             prefix: "Gospodin",
             givenName: "Derviš",
-            familyName: "Sušić"  
+            familyName: "Sušić"
         });
         var fmt = new NameFmt({
             style: "full",
@@ -265,13 +265,13 @@ module.exports.testname_bs = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Gospodin Derviš Sušić";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameShort_bs: function(test) {
         test.expect(2);
         var name = new Name({
@@ -280,18 +280,18 @@ module.exports.testname_bs = {
             familyName: "地"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameMedium_bs: function(test) {
         test.expect(2);
         var name = new Name({
@@ -300,18 +300,18 @@ module.exports.testname_bs = {
             familyName: "地"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameLong_bs: function(test) {
         test.expect(2);
         var name = new Name({
@@ -320,21 +320,21 @@ module.exports.testname_bs = {
             familyName: "地"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "小地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 };

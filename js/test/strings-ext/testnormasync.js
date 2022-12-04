@@ -1,6 +1,6 @@
 /*
  * testnormasync.js - test the Unicode Normalization Algorithm routines
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,8 +25,8 @@ if (typeof(NormString) === "undefined") {
 }
 
 function toHexString(string) {
-    var i, result = ""; 
-    
+    var i, result = "";
+
     if (!string) {
         return "";
     }
@@ -53,7 +53,7 @@ module.exports.testnormasync = {
             }
         });
     },
-    
+
     testNormStringAsyncNormalizeNFKD: function(test) {
         test.expect(1);
         new NormString("ᄀ각ᆨ", {
@@ -64,7 +64,7 @@ module.exports.testnormasync = {
             }
         });
     },
-    
+
     testNormStringAsyncNormalizeNFC: function(test) {
         test.expect(1);
         new NormString("ᄀ각ᆨ", {
@@ -75,7 +75,7 @@ module.exports.testnormasync = {
             }
         });
     },
-    
+
     testNormStringAsyncNormalizeNFKC: function(test) {
         test.expect(1);
         new NormString("ᄀ각ᆨ", {
@@ -86,14 +86,14 @@ module.exports.testnormasync = {
             }
         });
     },
-    
+
     testNormStringAsyncCharIteratorDecomposed: function(test) {
         test.expect(8);
         var s = new NormString("aÄa", { // the A umlaut is a decomposed char
             sync: false,
             onLoad: function(str) {
                 var it = str.charIterator();
-                
+
                 test.ok(it.hasNext());
                 test.equal(it.next(), "a");
                 test.ok(it.hasNext());
@@ -105,5 +105,5 @@ module.exports.testnormasync = {
                 test.done();
             }
         });
-    }    
+    }
 };

@@ -1,6 +1,6 @@
 /*
  * testname_pt_PT.js - test the name object in Portugese
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,97 +37,97 @@ module.exports.testname_pt = {
         test.expect(2);
         var parsed = new Name("Cristiano Ronaldo", {locale: 'pt-PT'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Cristiano",
             familyName: "Ronaldo"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseSimpleNameWithTwoFamilyName_pt_PT: function(test) {
         test.expect(2);
         var parsed = new Name("José Eduardo Tavares Silva", {locale: 'pt-PT'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "José",
             middleName: "Eduardo",
             familyName: "Tavares Silva"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseTitle_pt_PT: function(test) {
         test.expect(2);
         var parsed = new Name("Cristiano Ronaldo aposentados", {locale: 'pt-PT'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             suffix: "aposentados",
             givenName: "Cristiano",
             familyName: "Ronaldo"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitleWithFamilyOnly_pt_PT: function(test) {
         test.expect(2);
         var parsed = new Name("Senhor Ronaldo", {locale: 'pt-PT'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Senhor",
             familyName: "Ronaldo"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseEverything_pt_PT: function(test) {
         test.expect(2);
         var parsed = new Name("Senhor e Senhora Ronaldo", {locale: 'pt-PT'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Senhor e Senhora",
             familyName: "Ronaldo"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseprefix_pt_PT: function(test) {
         test.expect(2);
         var parsed = new Name("Senhor Cristiano Ronaldo", {locale: 'pt-PT'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Senhor",
             givenName: "Cristiano",
             familyName: "Ronaldo"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_pt_PT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -135,18 +135,18 @@ module.exports.testname_pt = {
             familyName: "Ronaldo"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'pt-PT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Cristiano Ronaldo";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_pt_PT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -154,18 +154,18 @@ module.exports.testname_pt = {
             familyName: "Ronaldo"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'pt-PT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Cristiano Ronaldo";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_pt_PT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -174,20 +174,20 @@ module.exports.testname_pt = {
             suffix: "asdf"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'pt-PT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Cristiano Ronaldo";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testFormatSurname_pt_PT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -195,18 +195,18 @@ module.exports.testname_pt = {
             familyName: "Ronaldo"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'pt-PT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Senhor e Senhori Ronaldo";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_pt_PT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -216,18 +216,18 @@ module.exports.testname_pt = {
             suffix: "aposentados"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'pt-PT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "presidente Cristiano Ronaldo aposentados";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_pt_PT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -236,18 +236,18 @@ module.exports.testname_pt = {
             familyName: "Ronaldo"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'pt-PT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Cristiano Ronaldo";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_pt_PT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -256,18 +256,18 @@ module.exports.testname_pt = {
             familyName: "Ronaldo"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'pt-PT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Cristiano Ronaldo";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_pt_PT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -281,13 +281,13 @@ module.exports.testname_pt = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "presidente Cristiano Ronaldo";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
+
+
+
 };

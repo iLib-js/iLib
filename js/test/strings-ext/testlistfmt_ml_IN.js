@@ -32,45 +32,45 @@ module.exports.testlistfmt_ml_IN = {
     },
 
     // ml-IN
-    
+
     testListFmtmlINNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ഒന്ന്"]), "ഒന്ന്");
         test.done();
     },
-    
+
     testListFmtmlINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്"]), "ഒന്ന് കൂടാതെ രണ്ട്");
         test.done();
     },
-    
+
     testListFmtmlINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്", "മൂന്ന്"]), "ഒന്ന്, രണ്ട്, മൂന്ന് എന്നിവ");
         test.done();
     },
-    
+
     testListFmtmlINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്", "മൂന്ന്", "നാല്"]), "ഒന്ന്, രണ്ട്, മൂന്ന്, നാല് എന്നിവ");
@@ -81,43 +81,43 @@ module.exports.testlistfmt_ml_IN = {
             locale: "ml-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ഒന്ന്"]), "ഒന്ന്");
         test.done();
     },
-    
+
     testListFmtUnitStylemlINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്"]), 'ഒന്ന്, രണ്ട്');
         test.done();
     },
-    
+
     testListFmtUnitStylemlINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്", "മൂന്ന്"]), "ഒന്ന്, രണ്ട്, മൂന്ന്");
         test.done();
     },
-    
+
     testListFmtUnitStylemlINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്", "മൂന്ന്", "നാല്"]), "ഒന്ന്, രണ്ട്, മൂന്ന്, നാല്");
@@ -129,46 +129,46 @@ module.exports.testlistfmt_ml_IN = {
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ഒന്ന്"]), "ഒന്ന്");
         test.done();
     },
-    
+
     testListFmtUnitStylemlINNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്"]), 'ഒന്ന്, രണ്ട്');
         test.done();
     },
-    
+
     testListFmtUnitStylemlINNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്", "മൂന്ന്"]), "ഒന്ന്, രണ്ട്, മൂന്ന്");
         test.done();
     },
-    
+
     testListFmtUnitStylemlINNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്", "മൂന്ന്", "നാല്"]), "ഒന്ന്, രണ്ട്, മൂന്ന്, നാല്");
@@ -179,43 +179,43 @@ module.exports.testlistfmt_ml_IN = {
             locale: "ml-IN",
             style: "disjunction"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ഒന്ന്"]), "ഒന്ന്");
         test.done();
     },
-    
+
     testListFmtORStyle_ml_IN_Two: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
             style: "disjunction"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്"]), 'ഒന്ന് അല്ലെങ്കിൽ രണ്ട്');
         test.done();
     },
-    
+
     testListFmtORStyle_ml_IN_Three: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
             style: "disjunction"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്", "മൂന്ന്"]), 'ഒന്ന്, രണ്ട്, അല്ലെങ്കിൽ മൂന്ന്');
         test.done();
     },
-    
+
     testListFmtORStyle_ml_IN_Four: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
             style: "disjunction"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്", "മൂന്ന്", "നാല്"]), 'ഒന്ന്, രണ്ട്, മൂന്ന്, അല്ലെങ്കിൽ നാല്');

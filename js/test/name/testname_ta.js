@@ -1,6 +1,6 @@
 /*
  * testname_ta_IN.js - test the name object in Tamil
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,77 +37,77 @@ module.exports.testname_ta = {
         test.expect(2);
         var parsed = new Name("மஹிலா ஜெயவர்த்தனே", {locale: 'ta-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "மஹிலா",
             familyName: "ஜெயவர்த்தனே"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseTitle_ta_IN: function(test) {
         test.expect(2);
         var parsed = new Name("மஹிலா ஜெயவர்த்தனே மூத்த", {locale: 'ta-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             suffix: "மூத்த",
             givenName: "மஹிலா",
             familyName: "ஜெயவர்த்தனே"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseTitleWithFamilyOnly_ta_IN: function(test) {
         test.expect(2);
         var parsed = new Name("திரு ஜெயவர்த்தனே", {locale: 'ta-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "திரு",
             familyName: "ஜெயவர்த்தனே"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseEverything_ta_IN: function(test) {
         test.expect(2);
         var parsed = new Name("திரு மற்றும் திருமதி ஜெயவர்த்தனே", {locale: 'ta-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "திரு மற்றும் திருமதி",
             familyName: "ஜெயவர்த்தனே"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseprefix_ta_IN: function(test) {
         test.expect(2);
         var parsed = new Name("திரு மஹிலா ஜெயவர்த்தனே", {locale: 'ta-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "திரு",
             givenName: "மஹிலா",
             familyName: "ஜெயவர்த்தனே"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_ta_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -115,18 +115,18 @@ module.exports.testname_ta = {
             familyName: "ஜெயவர்த்தனே"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'ta-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "மஹிலா ஜெயவர்த்தனே";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_ta_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -134,18 +134,18 @@ module.exports.testname_ta = {
             familyName: "ஜெயவர்த்தனே"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'ta-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "மஹிலா ஜெயவர்த்தனே";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_ta_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -153,18 +153,18 @@ module.exports.testname_ta = {
             familyName: "ஜெயவர்த்தனே"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'ta-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "மஹிலா ஜெயவர்த்தனே";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSurname_ta_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -172,18 +172,18 @@ module.exports.testname_ta = {
             familyName: "ஜெயவர்த்தனே"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'ta-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "திரு மற்றும் திருமதி ஜெயவர்த்தனே";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_ta_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -193,18 +193,18 @@ module.exports.testname_ta = {
             suffix: "மிஸ்"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'ta-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "வைத்தியர் மஹிலா ஜெயவர்த்தனே மிஸ்";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_ta_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -213,18 +213,18 @@ module.exports.testname_ta = {
             familyName: "ஜெயவர்த்தனே"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'ta-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "மஹிலா ஜெயவர்த்தனே";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_ta_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -233,18 +233,18 @@ module.exports.testname_ta = {
             familyName: "ஜெயவர்த்தனே"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'ta-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "மஹிலா ஜெயவர்த்தனே";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_ta_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -258,13 +258,13 @@ module.exports.testname_ta = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "வைத்தியர் மஹிலா ஜெயவர்த்தனே";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
+
+
+
 };

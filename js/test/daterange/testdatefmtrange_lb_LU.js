@@ -1,6 +1,6 @@
 /*
  * testdatefmtrange_lb_LU.js - test the date range formatter object Luxembourgish-Luxembourg
- * 
+ *
  * Copyright © 2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

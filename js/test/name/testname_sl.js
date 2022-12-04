@@ -1,6 +1,6 @@
 /*
  * testname_sl_SI.js - test the name object in slovenian
- * 
+ *
  * Copyright © 2013-2015,2017, JEGSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,93 +37,93 @@ module.exports.testname_sl = {
         test.expect(2);
         var parsed = new Name("Melania Trump", {locale: 'sl-SI'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Melania",
             familyName: "Trump"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseTitle_sl_SI: function(test) {
         test.expect(2);
         var parsed = new Name("Melania Trump upokojil", {locale: 'sl-SI'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             suffix: "upokojil",
             givenName: "Melania",
             familyName: "Trump"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseTitleWithFamilyOnly_sl_SI: function(test) {
         test.expect(2);
         var parsed = new Name("G. Trump", {locale: 'sl-SI'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "G.",
             familyName: "Trump"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseEverything_sl_SI: function(test) {
         test.expect(2);
         var parsed = new Name("G. in Ga. Trump", {locale: 'sl-SI'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "G. in Ga.",
             familyName: "Trump"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseprefix_sl_SI: function(test) {
         test.expect(2);
         var parsed = new Name("Ga. Melania Trump", {locale: 'sl-SI'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Ga.",
             givenName: "Melania",
             familyName: "Trump"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseprefixAndSuffix_sl_SI: function(test) {
         test.expect(2);
         var parsed = new Name("Predsednik Melania Trump upokojil", {locale: 'sl-SI'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Predsednik",
             givenName: "Melania",
             familyName: "Trump",
             suffix:"upokojil"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_sl_SI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -131,18 +131,18 @@ module.exports.testname_sl = {
             familyName: "Trump"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'sl-SI'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Melania Trump";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_sl_SI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -150,18 +150,18 @@ module.exports.testname_sl = {
             familyName: "Trump"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'sl-SI'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Melania Trump";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_sl_SI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -170,20 +170,20 @@ module.exports.testname_sl = {
             suffix: "asdf"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'sl-SI'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Melania Trump";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testFormatSurname_sl_SI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -191,18 +191,18 @@ module.exports.testname_sl = {
             familyName: "Trump"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'sl-SI'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "G. in Ga. Trump";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_sl_SI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -212,18 +212,18 @@ module.exports.testname_sl = {
             suffix: "upokojil"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'sl-SI'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Princeska Melania Trump upokojil";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_sl_SI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -232,18 +232,18 @@ module.exports.testname_sl = {
             familyName: "Trump"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'sl-SI'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Melania Trump";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_sl_SI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -252,18 +252,18 @@ module.exports.testname_sl = {
             familyName: "Trump"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'sl-SI'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Melania Trump";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_sl_SI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -277,13 +277,13 @@ module.exports.testname_sl = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Princeska Melania Trump";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
+
+
+
 };

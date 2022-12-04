@@ -226,11 +226,11 @@ var nodeunit = (function(){
             }
             return true;
         }
-        
+
         function isArray(object) {
             return typeof(object) === 'object' && Object.prototype.toString.call(object) === '[object Array]';
         };
-        
+
         /**
          * Performs a deep comparison of arrays, ignoring the order of the
          * elements of the array. Essentially, this ensure that they have the same
@@ -370,7 +370,7 @@ var nodeunit = (function(){
             }
             return "Unknown reason.";
         }
-        
+
         exports.run = function (modules) {
             exports.runModules(modules, {
                 moduleStart: function (name) {
@@ -523,7 +523,7 @@ var nodeunit = (function(){
                 }
             }
         };
-        
+
         exports.runModule = function(suite, options) {
             exports.runSuite(null, suite, options, function(err, a_list) {
                 options.moduleDone();
@@ -538,7 +538,7 @@ var nodeunit = (function(){
                 }
             }
         };
-        
+
         exports.finish = function() {
             endTime = new Date().getTime();
             console.log("===========================================================================================");

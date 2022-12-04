@@ -2530,7 +2530,7 @@ module.exports.testdatefmt = {
         test.equal(fmt.formatRelative(reference, date), "4 days ago");
         test.done();
     },
-    
+
 
     testDateFmtFormatRelativeWithinQuarterAfter: function(test) {
         test.expect(2);

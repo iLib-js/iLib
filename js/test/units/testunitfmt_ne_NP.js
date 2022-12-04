@@ -98,7 +98,7 @@ module.exports.testunitfmt_ne_NP = {
         });
 
         var uf = new UnitFmt({
-            locale: "ne-NP", 
+            locale: "ne-NP",
             autoConvert:true,
             length:"short",
             useNative: false
@@ -116,7 +116,7 @@ module.exports.testunitfmt_ne_NP = {
         });
 
         var uf = new UnitFmt({
-            locale: "ne-NP", 
+            locale: "ne-NP",
             autoConvert: true,
             length: "long",
             useNative: false
@@ -134,7 +134,7 @@ module.exports.testunitfmt_ne_NP = {
         });
 
         var uf = new UnitFmt({
-            locale: "ne-NP", 
+            locale: "ne-NP",
             autoConvert: true,
             length: "short",
             useNative: false
@@ -152,7 +152,7 @@ module.exports.testunitfmt_ne_NP = {
         });
 
         var uf = new UnitFmt({
-            locale: "ne-NP", 
+            locale: "ne-NP",
             autoConvert: true,
             length: "long",
             useNative: false

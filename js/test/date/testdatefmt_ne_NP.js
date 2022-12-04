@@ -1,6 +1,6 @@
 /*
  * testdatefmt_ne_NP.js - test the date formatter object in Nepali-Nepal
- * 
+ *
  * Copyright © 2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,7 +39,7 @@ module.exports.testdatefmt_ne_NP = {
     testDateFmtConstructorEmpty_ne_NP: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "ne-NP"});
-        
+
         test.ok(fmt !== null);
         test.done();
     },
@@ -48,7 +48,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "short", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -67,7 +67,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "medium", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -86,7 +86,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "long", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -105,7 +105,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -124,7 +124,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "short", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -143,7 +143,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "medium", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -162,7 +162,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", timelength: "long", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -181,7 +181,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -200,7 +200,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "short", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -219,7 +219,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "medium", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -238,7 +238,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "long", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -257,7 +257,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -271,12 +271,12 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '2011 सेप्टेम्बर 29 13:45');
         test.done();
     },
-    
+
     testDateFmtTemplateCalendar_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", calendar: "julian", template: "yyyy-MM-dd", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new JulianDate({
             locale: "ne-NP",
             year: 2011,
@@ -295,7 +295,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", calendar: "julian", template: "yyyy-MM-dd HH:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -315,7 +315,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", clock: "12", template: "HH:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -334,7 +334,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", clock: "12", template: "kk:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -353,7 +353,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", clock: "24", template: "hh:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -372,7 +372,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", clock: "24", template: "KK:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -391,7 +391,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", template: "hh:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -410,7 +410,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", template: "KK:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -429,7 +429,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", template: "HH:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -448,7 +448,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", template: "kk:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -463,12 +463,12 @@ module.exports.testdatefmt_ne_NP = {
         test.done();
     },
 
-    
+
     testDateFmtTypeDate_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "date", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -487,7 +487,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -506,7 +506,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -525,7 +525,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "y", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -544,7 +544,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "m", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -563,7 +563,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "n", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -582,7 +582,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "d", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -601,7 +601,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "dm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -620,7 +620,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "my", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -639,7 +639,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "dmy", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -658,7 +658,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "wdm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -677,7 +677,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "wdmy", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -696,7 +696,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "wdm", length: "long", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -715,7 +715,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", date: "y", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -734,7 +734,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", date: "m", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -753,7 +753,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", date: "d", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -772,7 +772,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", date: "dm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -791,7 +791,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", date: "my", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -810,7 +810,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", date: "dmy", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -829,7 +829,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", date: "wdm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -848,7 +848,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", date: "wdmy", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -867,7 +867,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", time: "s", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -886,7 +886,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", time: "m", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -905,7 +905,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", time: "h", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -924,7 +924,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", time: "ms", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -943,7 +943,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", time: "hm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -962,7 +962,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", time: "hms", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -981,7 +981,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", time: "hma", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -999,14 +999,14 @@ module.exports.testdatefmt_ne_NP = {
     testDateFmtShortTimeComponentsHMZ_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ne-NP", 
-            type: "time", 
-            time: "hmz", 
+            locale: "ne-NP",
+            type: "time",
+            time: "hmz",
             timezone: "Asia/Kathmandu",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1024,14 +1024,14 @@ module.exports.testdatefmt_ne_NP = {
     testDateFmtShortTimeComponentsHMAZ_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ne-NP", 
-            type: "time", 
-            time: "hmaz", 
+            locale: "ne-NP",
+            type: "time",
+            time: "hmaz",
             timezone: "Asia/Kathmandu",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1050,7 +1050,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", time: "hmsa", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1068,14 +1068,14 @@ module.exports.testdatefmt_ne_NP = {
     testDateFmtShortTimeComponentsHMSZ_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ne-NP", 
-            type: "time", 
-            time: "hmsz", 
+            locale: "ne-NP",
+            type: "time",
+            time: "hmsz",
             timezone: "Asia/Kathmandu",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1093,14 +1093,14 @@ module.exports.testdatefmt_ne_NP = {
     testDateFmtShortTimeComponentsHMSAZ_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ne-NP", 
-            type: "time", 
-            time: "hmsaz", 
+            locale: "ne-NP",
+            type: "time",
+            time: "hmsaz",
             timezone: "Asia/Kathmandu",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1119,7 +1119,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", length: "full", time: "s", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1138,7 +1138,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", length: "full", time: "m", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1157,7 +1157,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", length: "full", time: "h", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1176,7 +1176,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", length: "full", time: "ms", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1195,7 +1195,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", length: "full", time: "hm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1214,7 +1214,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", length: "full", time: "hms", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1233,7 +1233,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", length: "full", time: "hma", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1251,15 +1251,15 @@ module.exports.testdatefmt_ne_NP = {
     testDateFmtFullTimeComponentsHMZ_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ne-NP", 
-            type: "time", 
-            length: "full", 
-            time: "hmz", 
+            locale: "ne-NP",
+            type: "time",
+            length: "full",
+            time: "hmz",
             timezone: "Asia/Kathmandu",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1277,15 +1277,15 @@ module.exports.testdatefmt_ne_NP = {
     testDateFmtFullTimeComponentsHMAZ_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ne-NP", 
-            type: "time", 
-            length: "full", 
-            time: "hmaz", 
+            locale: "ne-NP",
+            type: "time",
+            length: "full",
+            time: "hmaz",
             timezone: "Asia/Kathmandu",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1304,7 +1304,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", length: "full", time: "hmsa", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1322,15 +1322,15 @@ module.exports.testdatefmt_ne_NP = {
     testDateFmtFullTimeComponentsHMSZ_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ne-NP", 
-            type: "time", 
-            length: "full", 
-            time: "hmsz", 
+            locale: "ne-NP",
+            type: "time",
+            length: "full",
+            time: "hmsz",
             timezone: "Asia/Kathmandu",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1348,15 +1348,15 @@ module.exports.testdatefmt_ne_NP = {
     testDateFmtFullTimeComponentsHMSAZ_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ne-NP", 
-            type: "time", 
-            length: "full", 
-            time: "hmsaz", 
+            locale: "ne-NP",
+            type: "time",
+            length: "full",
+            time: "hmsaz",
             timezone: "Asia/Kathmandu",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1374,15 +1374,15 @@ module.exports.testdatefmt_ne_NP = {
     testDateFmtWithTimeZoneAndNoDST_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ne-NP", 
-            type: "time", 
-            length: "full", 
-            time: "hmsz", 
+            locale: "ne-NP",
+            type: "time",
+            length: "full",
+            time: "hmsz",
             timezone: "Asia/Kathmandu",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1401,7 +1401,7 @@ module.exports.testdatefmt_ne_NP = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1429,7 +1429,7 @@ testDateFmtFormatRelativeWithinMinuteBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1457,7 +1457,7 @@ testDateFmtFormatRelativeWithinHourAfter_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1485,7 +1485,7 @@ testDateFmtFormatRelativeWithinHourBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1513,7 +1513,7 @@ testDateFmtFormatRelativeWithinDayAfter_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1541,7 +1541,7 @@ testDateFmtFormatRelativeWithinDayBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1570,7 +1570,7 @@ testDateFmtFormatRelativeWithinDayBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1598,7 +1598,7 @@ testDateFmtFormatRelativeWithinFortnightBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1627,7 +1627,7 @@ testDateFmtFormatRelativeWithinFortnightBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1655,7 +1655,7 @@ testDateFmtFormatRelativeWithinQuarterBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1684,7 +1684,7 @@ testDateFmtFormatRelativeWithinQuarterBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1712,7 +1712,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1741,7 +1741,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1769,7 +1769,7 @@ testDateFmtFormatRelativeYearsBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ne-NP",
             year: 2011,
@@ -1792,5 +1792,5 @@ testDateFmtFormatRelativeYearsBefore_ne_NP: function(test) {
         });
         test.equal(fmt.formatRelative(reference, date), '21 वर्ष अघि');
         test.done();
-    }    
+    }
 };

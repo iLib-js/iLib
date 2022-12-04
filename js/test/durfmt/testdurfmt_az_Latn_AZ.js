@@ -37,7 +37,7 @@ module.exports.testdurfmt_az_Latn_AZ = {
             length: "short"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -50,7 +50,7 @@ module.exports.testdurfmt_az_Latn_AZ = {
         test.equal(duration.toString(), "1 il, 1 ay, 1 hft, 1 gün, 1 saat, 1 dəq, 1 san");
         test.done();
     },
-    
+
     testDurFmtAZFormatShortText: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -59,7 +59,7 @@ module.exports.testdurfmt_az_Latn_AZ = {
             style: "text"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -72,7 +72,7 @@ module.exports.testdurfmt_az_Latn_AZ = {
         test.equal(duration.toString(), "1 il, 1 ay, 1 hft, 1 gün, 1 saat, 1 dəq, 1 san");
         test.done();
     },
-    
+
     testDurFmtAZFormatShortClock: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -81,7 +81,7 @@ module.exports.testdurfmt_az_Latn_AZ = {
             style: "clock"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -94,7 +94,7 @@ module.exports.testdurfmt_az_Latn_AZ = {
         test.equal(duration.toString(), "1 il, 1 ay, 1 hft, 1 gün, 01:01:01");
         test.done();
     },
-    
+
     testDurFmtAZFormatMedium: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -102,7 +102,7 @@ module.exports.testdurfmt_az_Latn_AZ = {
             length: "medium"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -115,7 +115,7 @@ module.exports.testdurfmt_az_Latn_AZ = {
         test.equal(duration.toString(), "1 il, 1 ay, 1 hft, 1 gün, 1 saat, 1 dəq, 1 san");
         test.done();
     },
-    
+
     testDurFmtAZFormatLong: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -123,7 +123,7 @@ module.exports.testdurfmt_az_Latn_AZ = {
             length: "long"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -136,7 +136,7 @@ module.exports.testdurfmt_az_Latn_AZ = {
         test.equal(duration.toString(), "1 il, 1 ay, 1 hft, 1 gün, 1 saat, 1 dəq, 1 san");
         test.done();
     },
-    
+
     testDurFmtAZFormatFull: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -144,7 +144,7 @@ module.exports.testdurfmt_az_Latn_AZ = {
             length: "full"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -153,12 +153,12 @@ module.exports.testdurfmt_az_Latn_AZ = {
             hour: 1,
             minute: 1,
             second: 1
-        });           
+        });
         test.equal(duration.toString(), "1 il, 1 ay, 1 həftə, 1 gün, 1 saat, 1 dəqiqə, 1 saniyə");
         test.done();
     },
-    
-    
+
+
     testDurFmtAZAsyncWithLocale: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -167,7 +167,7 @@ module.exports.testdurfmt_az_Latn_AZ = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-    
+
                 var duration = fmt.format({
                     year: 2,
                     month: 2,
@@ -176,13 +176,13 @@ module.exports.testdurfmt_az_Latn_AZ = {
                     hour: 2,
                     minute: 2,
                     second: 2
-                });           
+                });
                 test.equal(duration.toString(), "2 il, 2 ay, 2 həftə, 2 gün, 2 saat, 2 dəqiqə, 2 saniyə");
                 test.done();
             }
         });
     },
-    
+
     testDurFmtAZFormatShortClockAsync: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -192,7 +192,7 @@ module.exports.testdurfmt_az_Latn_AZ = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-    
+
                 var duration = fmt.format({
                     year: 1,
                     month: 1,
@@ -207,5 +207,5 @@ module.exports.testdurfmt_az_Latn_AZ = {
             }
         });
     }
-    
+
 };
