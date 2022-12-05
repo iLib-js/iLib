@@ -1,7 +1,7 @@
 /*
- * testloader.js - test the loader object for whatever platform this test 
+ * testloader.js - test the loader object for whatever platform this test
  * is running on
- * 
+ *
  * Copyright © 2015, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,76 +32,76 @@ module.exports.testloader = {
         if (ilib.isDynData()) {
             test.expect(1);
             var loader = ilib.getLoader();
-            
+
             test.ok(typeof(loader) !== "undefined");
         }
         test.done();
     },
-    
+
     testLoaderIsAvailable: function(test) {
         if (ilib.isDynData()) {
             test.expect(2);
             var loader = ilib.getLoader();
             test.ok(typeof(loader) !== "undefined");
-            
+
             test.ok(loader.isAvailable("dateformats.json"));
         }
         test.done();
     },
-    
+
     testLoaderIsAvailableFalse: function(test) {
         if (ilib.isDynData()) {
             test.expect(2);
             var loader = ilib.getLoader();
             test.ok(typeof(loader) !== "undefined");
-            
+
             test.ok(!loader.isAvailable("notavailable.json"));
         }
         test.done();
     },
-    
+
     testLoaderIsAvailableWithDirectory: function(test) {
         if (ilib.isDynData()) {
             test.expect(2);
             var loader = ilib.getLoader();
             test.ok(typeof(loader) !== "undefined");
-        
+
             test.ok(loader.isAvailable("am/dateformats.json"));
         }
         test.done();
     },
-    
+
     testLoaderIsAvailableWithDirectories: function(test) {
         if (ilib.isDynData()) {
             test.expect(2);
             var loader = ilib.getLoader();
             test.ok(typeof(loader) !== "undefined");
-            
+
             test.ok(loader.isAvailable("und/US/localeinfo.json"));
         }
         test.done();
     },
-    
+
     testLoaderListAvailableFilesNotEmpty: function(test) {
         if (ilib.isDynData()) {
             test.expect(2);
             var loader = ilib.getLoader();
             test.ok(typeof(loader) !== "undefined");
-            
+
             var files = loader.listAvailableFiles();
             test.ok(typeof(files) !== "undefined");
         }
         test.done();
     },
-    
+
     testLoaderListAvailableFilesRightContents: function(test) {
         if (ilib.isDynData()) {
             test.expect(2);
             var loader = ilib.getLoader();
             test.ok(typeof(loader) !== "undefined");
-            
+
             var files = loader.listAvailableFiles();
-            
+
             var found = false;
             for (var list in files) {
                 if (files[list].indexOf("und/US/localeinfo.json") !== -1) found = true;
@@ -110,30 +110,30 @@ module.exports.testloader = {
         }
         test.done();
     },
-    
+
     testLoaderLoadFilesSingle: function(test) {
         if (ilib.isDynData()) {
             test.expect(3);
             var loader = ilib.getLoader();
             test.ok(typeof(loader) !== "undefined");
-        
+
             var files = loader.loadFiles(["und/US/localeinfo.json"], true, undefined, undefined);
-            
+
             test.ok(typeof(files) !== "undefined");
             test.equal(files.length, 1);
         }
         test.done();
     },
-    
+
     testLoaderLoadFilesSingleRightContents: function(test) {
         if (ilib.isDynData()) {
             test.expect(5);
             var loader = ilib.getLoader();
             test.ok(typeof(loader) !== "undefined");
-        
+
             var files = loader.loadFiles(["und/US/localeinfo.json"], true, undefined, undefined);
             var json = files[0];
-            
+
             test.equal(json.currency, "USD");
             test.equal(json.firstDayOfWeek, 0);
             test.equal(json["region.name"], "United States");
@@ -141,39 +141,39 @@ module.exports.testloader = {
         }
         test.done();
     },
-    
+
     testLoaderLoadFilesMultiple: function(test) {
         if (ilib.isDynData()) {
             test.expect(3);
             var loader = ilib.getLoader();
             test.ok(typeof(loader) !== "undefined");
-        
+
             var files = loader.loadFiles([
                 "localeinfo.json",
                 "en/localeinfo.json",
                 "und/US/localeinfo.json"
             ], true, undefined, undefined);
-            
+
             test.ok(typeof(files) !== "undefined");
             test.equal(files.length, 3);
         }
         test.done();
     },
-    
+
     testLoaderLoadFilesMultipleRightContents: function(test) {
         if (ilib.isDynData()) {
             test.expect(16);
             var loader = ilib.getLoader();
             test.ok(typeof(loader) !== "undefined");
-        
+
             var files = loader.loadFiles([
                 "localeinfo.json",
                 "en/localeinfo.json",
                 "und/US/localeinfo.json"
             ], true, undefined, undefined);
-            
+
             test.ok(typeof(files) !== "undefined");
-        
+
             test.equal(files[0].clock, "24");
             test.equal(files[0].calendar, "gregorian");
             test.equal(files[0].firstDayOfWeek, 1);
@@ -181,7 +181,7 @@ module.exports.testloader = {
             test.equal(files[0].units, "metric");
             test.equal(files[0].numfmt.decimalChar, ".");
             test.equal(files[0].numfmt.groupChar, ",");
-        
+
             test.equal(files[1].clock, "12");
             test.equal(files[1]["language.name"], "English");
             test.equal(files[1].locale, "en");
@@ -192,41 +192,41 @@ module.exports.testloader = {
         }
         test.done();
     },
-    
+
     testLoaderLoadFilesMultipleMissingFile: function(test) {
         if (ilib.isDynData()) {
             test.expect(3);
             var loader = ilib.getLoader();
             test.ok(typeof(loader) !== "undefined");
-        
+
             var files = loader.loadFiles([
                 "localeinfo.json",
                 "en/localeinfo.json",
                 "en/US/localeinfo.json",
                 "und/US/localeinfo.json"
             ], true, undefined, undefined);
-            
+
             test.ok(typeof(files) !== "undefined");
             test.equal(files.length, 4);
         }
         test.done();
     },
-    
+
     testLoaderLoadFilesMultipleMissingFileRightContents: function(test) {
         if (ilib.isDynData()) {
             test.expect(17);
             var loader = ilib.getLoader();
             test.ok(typeof(loader) !== "undefined");
-        
+
             var files = loader.loadFiles([
                 "localeinfo.json",
                 "en/localeinfo.json",
                 "en/US/localeinfo.json", // this one doesn't exist
                 "und/US/localeinfo.json"
             ], true, undefined, undefined);
-            
+
             test.ok(typeof(files) !== "undefined");
-        
+
             test.equal(files[0].clock, "24");
             test.equal(files[0].calendar, "gregorian");
             test.equal(files[0].firstDayOfWeek, 1);
@@ -234,7 +234,7 @@ module.exports.testloader = {
             test.equal(files[0].units, "metric");
             test.equal(files[0].numfmt.decimalChar, ".");
             test.equal(files[0].numfmt.groupChar, ",");
-    
+
             test.equal(files[1].clock, "12");
             test.equal(files[1]["language.name"], "English");
             test.equal(files[1].locale, "en");
@@ -246,5 +246,5 @@ module.exports.testloader = {
         }
         test.done();
     }
-    
+
 };

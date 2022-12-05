@@ -1,6 +1,6 @@
 /*
  * testname_ar.js - test the name object in Arabic
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,101 +37,101 @@ module.exports.testname_ar = {
         test.expect(2);
         var parsed = new Name("ابن سعود", {locale: 'ar-SA'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             givenName: "ابن",
             familyName: "سعود"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseAdjunctNames_ar: function(test) {
         test.expect(2);
         var parsed = new Name("ابن سعود", {locale: 'ar-SA'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =  {
             givenName: "ابن",
             familyName: "سعود"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseSingleNameWithPrefixAndAdjunct_ar: function(test) {
         test.expect(2);
         var parsed = new Name("السيد و السيدة سعود", {locale: 'ar-SA'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             prefix: "السيد و السيدة",
             familyName: "سعود"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseTitle_ar: function(test) {
         test.expect(2);
         var parsed = new Name("ابن سعود كبار", {locale: 'ar-SA'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =    {
             suffix: "كبار",
             givenName: "ابن",
             familyName: "سعود"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitleWithFamilyOnly_ar: function(test) {
         test.expect(2);
         var parsed = new Name("الملك سعود", {locale: 'ar-SA'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             prefix: "الملك",
             familyName: "سعود"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseEverything_ar: function(test) {
         test.expect(2);
         var parsed = new Name("الملك ابن سعود", {locale: 'ar-SA'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =    {
             prefix: "الملك",
             givenName: "ابن",
             familyName: "سعود"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_ar: function(test) {
         test.expect(2);
         var name = new Name({
@@ -139,18 +139,18 @@ module.exports.testname_ar = {
             familyName: "سعود"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "ابن سعود";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_ar: function(test) {
         test.expect(2);
         var name = new Name({
@@ -158,39 +158,39 @@ module.exports.testname_ar = {
             familyName: "سعود"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "ابن سعود";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_ar: function(test) {
         test.expect(2);
         var name = new Name({
             givenName: "ابن",
-            
+
             familyName: "سعود",
             suffix: "كبار"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "ابن سعود";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_ar: function(test) {
         test.expect(2);
         var name = new Name({
@@ -200,18 +200,18 @@ module.exports.testname_ar = {
             suffix: "كبار"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "الملك ابن سعود كبار";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_ar: function(test) {
         test.expect(2);
         var name = new Name({
@@ -220,18 +220,18 @@ module.exports.testname_ar = {
             familyName: "سعود"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "ابن سعود";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_ar: function(test) {
         test.expect(2);
         var name = new Name({
@@ -240,18 +240,18 @@ module.exports.testname_ar = {
             familyName: "سعود"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "ابن سعود";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_ar: function(test) {
         test.expect(2);
         var name = new Name({
@@ -265,13 +265,13 @@ module.exports.testname_ar = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "الملك ابن سعود";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameShort_ar: function(test) {
         test.expect(2);
         var name = new Name({
@@ -280,18 +280,18 @@ module.exports.testname_ar = {
             familyName: "地"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameMedium_ar: function(test) {
         test.expect(2);
         var name = new Name({
@@ -300,18 +300,18 @@ module.exports.testname_ar = {
             familyName: "地"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameLong_ar: function(test) {
         test.expect(2);
         var name = new Name({
@@ -320,21 +320,21 @@ module.exports.testname_ar = {
             familyName: "地"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "小地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 };

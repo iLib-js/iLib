@@ -1,4 +1,4 @@
-/* 
+/*
  * mkmf.js - ilib tool to create the manifest file for locale data
  *
  * Copyright © 2013, 2020, 2022 JEDLSoft
@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/* 
+/*
  * This code is intended to be run under node.js
  */
 var fs = require('fs');

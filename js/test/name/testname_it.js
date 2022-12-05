@@ -1,6 +1,6 @@
 /*
  * testname_it_IT.js - test the name object in Italian
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,70 +37,70 @@ module.exports.testname_it = {
         test.expect(2);
         var parsed = new Name("Leonardo DiCaprio", {locale: 'it-IT'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Leonardo",
             familyName: "DiCaprio"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitle_it_IT: function(test) {
         test.expect(2);
         var parsed = new Name("Leonardo DiCaprio", {locale: 'it-IT'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Leonardo",
             familyName: "DiCaprio"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitleWithFamilyOnly_it_IT: function(test) {
         test.expect(2);
         var parsed = new Name("ingegnere. DiCaprio", {locale: 'it-IT'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "ingegnere.",
             familyName: "DiCaprio"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseEverything_it_IT: function(test) {
         test.expect(2);
         var parsed = new Name("ingegnere Leonardo DiCaprio", {locale: 'it-IT'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "ingegnere",
             givenName: "Leonardo",
             familyName: "DiCaprio"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_it_IT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -108,80 +108,80 @@ module.exports.testname_it = {
             familyName: "DiCaprio"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'it-IT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Leonardo DiCaprio";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_it_IT: function(test) {
         test.expect(2);
         var name = new Name({
             givenName: "Leonardo",
-            
+
             familyName: "DiCaprio"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'it-IT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Leonardo DiCaprio";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_it_IT: function(test) {
         test.expect(2);
         var name = new Name({
             givenName: "Leonardo",
-            
+
             familyName: "DiCaprio",
             suffix: "asdf"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'it-IT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Leonardo DiCaprio";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_it_IT: function(test) {
         test.expect(2);
         var name = new Name({
             prefix: "dottore",
             givenName: "Leonardo",
-            
+
             familyName: "DiCaprio"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'it-IT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "dottore Leonardo DiCaprio";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_it_IT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -190,18 +190,18 @@ module.exports.testname_it = {
             familyName: "DiCaprio"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'it-IT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Leonardo DiCaprio";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_it_IT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -210,18 +210,18 @@ module.exports.testname_it = {
             familyName: "DiCaprio"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'it-IT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Leonardo DiCaprio";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_it_IT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -235,13 +235,13 @@ module.exports.testname_it = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "dottore Leonardo DiCaprio";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
+
+
+
 };

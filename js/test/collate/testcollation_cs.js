@@ -1,6 +1,6 @@
 /*
  * testcollation_cs.js - test the Collator object in Czech
- * 
+ *
  * Copyright © 2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,11 +38,11 @@ module.exports.testcollation_cs = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // A a Á Á á á B b C c Č Č č č D d Ď ď E e É É é é Ě Ě ě ě F f G g H h CH Ch cH ch I i Í Í í í J j K k L l M m N n Ň Ň ň ň O o Ó Ó ó ó P p Q q R r Ř Ř ř ř S s Š Š š š T t Ť Ť ť ť U u Ú Ú ú ú Ů Ů ů ů V v W w X x Y y Ý Ý ý ý Z z Ž Ž ž ž
-    
+
         test.ok("A < a", col.compare("A", "a") < 0);
         test.ok("a < Á", col.compare("a", "Á") < 0);
         test.ok("Á < Á", col.compare("Á", "Á") < 0);
@@ -160,7 +160,7 @@ module.exports.testcollation_cs = {
         test.ok("ž < ž", col.compare("ž", "ž") < 0);
         test.done();
     },
-    
+
     testJSCollatorTer_cs: function(test) {
         test.expect(116);
         var col = new Collator({
@@ -169,11 +169,11 @@ module.exports.testcollation_cs = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // A a Á Á á á B b C c Č Č č č D d Ď ď E e É É é é Ě Ě ě ě F f G g H h CH Ch cH ch I i Í Í í í J j K k L l M m N n Ň Ň ň ň O o Ó Ó ó ó P p Q q R r Ř Ř ř ř S s Š Š š š T t Ť Ť ť ť U u Ú Ú ú ú Ů Ů ů ů V v W w X x Y y Ý Ý ý ý Z z Ž Ž ž ž
-    
+
         test.ok("A < a", col.compare("A", "a") < 0);
         test.ok("a < Á", col.compare("a", "Á") < 0);
         test.ok("Á = Á", col.compare("Á", "Á") === 0);
@@ -291,7 +291,7 @@ module.exports.testcollation_cs = {
         test.ok("ž = ž", col.compare("ž", "ž") === 0);
         test.done();
     },
-    
+
     testJSCollatorSec_cs: function(test) {
         test.expect(116);
         var col = new Collator({
@@ -300,11 +300,11 @@ module.exports.testcollation_cs = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // A a Á Á á á B b C c Č Č č č D d Ď ď E e É É é é Ě Ě ě ě F f G g H h CH Ch cH ch I i Í Í í í J j K k L l M m N n Ň Ň ň ň O o Ó Ó ó ó P p Q q R r Ř Ř ř ř S s Š Š š š T t Ť Ť ť ť U u Ú Ú ú ú Ů Ů ů ů V v W w X x Y y Ý Ý ý ý Z z Ž Ž ž ž
-    
+
         test.ok("A = a", col.compare("A", "a") === 0);
         test.ok("a < Á", col.compare("a", "Á") < 0);
         test.ok("Á = Á", col.compare("Á", "Á") === 0);
@@ -422,7 +422,7 @@ module.exports.testcollation_cs = {
         test.ok("ž = ž", col.compare("ž", "ž") === 0);
         test.done();
     },
-    
+
     testJSCollatorPri_cs: function(test) {
         test.expect(116);
         var col = new Collator({
@@ -431,11 +431,11 @@ module.exports.testcollation_cs = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // A a Á Á á á B b C c Č Č č č D d Ď ď E e É É é é Ě Ě ě ě F f G g H h CH Ch cH ch I i Í Í í í J j K k L l M m N n Ň Ň ň ň O o Ó Ó ó ó P p Q q R r Ř Ř ř ř S s Š Š š š T t Ť Ť ť ť U u Ú Ú ú ú Ů Ů ů ů V v W w X x Y y Ý Ý ý ý Z z Ž Ž ž ž
-    
+
         test.ok("A = a", col.compare("A", "a") === 0);
         test.ok("a < Á", col.compare("a", "Á") < 0);
         test.ok("Á = Á", col.compare("Á", "Á") === 0);
@@ -553,7 +553,7 @@ module.exports.testcollation_cs = {
         test.ok("ž = ž", col.compare("ž", "ž") === 0);
         test.done();
     },
-    
+
     testJSCollatorQuatSort_cs: function(test) {
         test.expect(116);
         var col = new Collator({
@@ -562,11 +562,11 @@ module.exports.testcollation_cs = {
             sensitivity: "quaternary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // A a Á Á á á B b C c Č Č č č D d Ď ď E e É É é é Ě Ě ě ě F f G g H h CH Ch cH ch I i Í Í í í J j K k L l M m N n Ň Ň ň ň O o Ó Ó ó ó P p Q q R r Ř Ř ř ř S s Š Š š š T t Ť Ť ť ť U u Ú Ú ú ú Ů Ů ů ů V v W w X x Y y Ý Ý ý ý Z z Ž Ž ž ž
-    
+
         test.ok("A < a", col.compare("A", "a") < 0);
         test.ok("a < Á", col.compare("a", "Á") < 0);
         test.ok("Á < Á", col.compare("Á", "Á") < 0);
@@ -684,7 +684,7 @@ module.exports.testcollation_cs = {
         test.ok("ž < ž", col.compare("ž", "ž") < 0);
         test.done();
     },
-    
+
     testJSCollatorTerSort_cs: function(test) {
         test.expect(116);
         var col = new Collator({
@@ -693,11 +693,11 @@ module.exports.testcollation_cs = {
             sensitivity: "tertiary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // A a Á Á á á B b C c Č Č č č D d Ď ď E e É É é é Ě Ě ě ě F f G g H h CH Ch cH ch I i Í Í í í J j K k L l M m N n Ň Ň ň ň O o Ó Ó ó ó P p Q q R r Ř Ř ř ř S s Š Š š š T t Ť Ť ť ť U u Ú Ú ú ú Ů Ů ů ů V v W w X x Y y Ý Ý ý ý Z z Ž Ž ž ž
-    
+
         test.ok("A < a", col.compare("A", "a") < 0);
         test.ok("a < Á", col.compare("a", "Á") < 0);
         test.ok("Á < Á", col.compare("Á", "Á") < 0);
@@ -815,7 +815,7 @@ module.exports.testcollation_cs = {
         test.ok("ž < ž", col.compare("ž", "ž") < 0);
         test.done();
     },
-    
+
     testJSCollatorSecSort_cs: function(test) {
         test.expect(116);
         var col = new Collator({
@@ -824,11 +824,11 @@ module.exports.testcollation_cs = {
             sensitivity: "secondary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // A a Á Á á á B b C c Č Č č č D d Ď ď E e É É é é Ě Ě ě ě F f G g H h CH Ch cH ch I i Í Í í í J j K k L l M m N n Ň Ň ň ň O o Ó Ó ó ó P p Q q R r Ř Ř ř ř S s Š Š š š T t Ť Ť ť ť U u Ú Ú ú ú Ů Ů ů ů V v W w X x Y y Ý Ý ý ý Z z Ž Ž ž ž
-    
+
         test.ok("A < a", col.compare("A", "a") < 0);
         test.ok("a < Á", col.compare("a", "Á") < 0);
         test.ok("Á < Á", col.compare("Á", "Á") < 0);
@@ -946,7 +946,7 @@ module.exports.testcollation_cs = {
         test.ok("ž < ž", col.compare("ž", "ž") < 0);
         test.done();
     },
-    
+
     testJSCollatorPriSort_cs: function(test) {
         test.expect(116);
         var col = new Collator({
@@ -955,11 +955,11 @@ module.exports.testcollation_cs = {
             sensitivity: "primary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // A a Á Á á á B b C c Č Č č č D d Ď ď E e É É é é Ě Ě ě ě F f G g H h CH Ch cH ch I i Í Í í í J j K k L l M m N n Ň Ň ň ň O o Ó Ó ó ó P p Q q R r Ř Ř ř ř S s Š Š š š T t Ť Ť ť ť U u Ú Ú ú ú Ů Ů ů ů V v W w X x Y y Ý Ý ý ý Z z Ž Ž ž ž
-    
+
         test.ok("A < a", col.compare("A", "a") < 0);
         test.ok("a < Á", col.compare("a", "Á") < 0);
         test.ok("Á < Á", col.compare("Á", "Á") < 0);
@@ -1077,7 +1077,7 @@ module.exports.testcollation_cs = {
         test.ok("ž < ž", col.compare("ž", "ž") < 0);
         test.done();
     },
-    
+
     testCollatorCase_cs: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1087,65 +1087,65 @@ module.exports.testcollation_cs = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-        
+
         var input = [
             "úber",
-            "ček", 
+            "ček",
             "aaa",
             "ůber",
              "á",
-            "Ďud", 
+            "Ďud",
             "izzy",
-            "é", 
-            "czech", 
+            "é",
+            "czech",
             "uzbek",
-            "Ě", 
-            "car", 
+            "Ě",
+            "car",
             "ůlaru",
-            "ě", 
-            "aa", 
-            "church", 
-            "a", 
+            "ě",
+            "aa",
+            "church",
+            "a",
             "island",
             "uber",
-            "ísland", 
-            "áa", 
-            "drum", 
+            "ísland",
+            "áa",
+            "drum",
             "az",
             "hzzzzz",
-            "e", 
-            "Church", 
+            "e",
+            "Church",
             "úzo",
             "Bilbao"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
      // A a Á Á á á B b C c Č Č č č D d Ď ď E e É É é é Ě Ě ě ě F f G g H h CH Ch cH ch I i Í Í í í J j K k L l M m N n Ň Ň ň ň O o Ó Ó ó ó P p Q q R r Ř Ř ř ř S s Š Š š š T t Ť Ť ť ť U u Ú Ú ú ú Ů Ů ů ů V v W w X x Y y Ý Ý ý ý Z z Ž Ž ž ž
-    
+
         var expected = [
-            "a", 
-            "aa", 
+            "a",
+            "aa",
             "aaa",
             "az",
             "á",
-            "áa", 
-            "Bilbao", 
-            "car", 
-            "czech", 
-            "ček", 
-            "drum", 
-            "Ďud", 
-            "e", 
-            "é", 
-            "Ě", 
-            "ě", 
+            "áa",
+            "Bilbao",
+            "car",
+            "czech",
+            "ček",
+            "drum",
+            "Ďud",
+            "e",
+            "é",
+            "Ě",
+            "ě",
             "hzzzzz",
-            "Church", 
-            "church", 
+            "Church",
+            "church",
             "island",
             "izzy",
-            "ísland", 
+            "ísland",
             "uber",
             "uzbek",
             "úber",
@@ -1153,11 +1153,11 @@ module.exports.testcollation_cs = {
             "ůber",
             "ůlaru"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorPrimary_cs: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1167,65 +1167,65 @@ module.exports.testcollation_cs = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
             "úber",
-            "ček", 
+            "ček",
             "aaa",
             "ůber",
             "á",
-            "Ďud", 
+            "Ďud",
             "izzy",
-            "é", 
-            "czech", 
+            "é",
+            "czech",
             "uzbek",
-            "Ě", 
-            "car", 
+            "Ě",
+            "car",
             "ůlaru",
-            "ě", 
-            "aa", 
-            "church", 
-            "a", 
+            "ě",
+            "aa",
+            "church",
+            "a",
             "island",
             "uber",
-            "ísland", 
-            "áa", 
-            "drum", 
+            "ísland",
+            "áa",
+            "drum",
             "az",
             "hzzzzz",
-            "e", 
-            "Church", 
+            "e",
+            "Church",
             "úzo",
             "Bilbao"
          ];
-    
+
         input.sort(col.getComparator());
-    
+
       // A a Á Á á á B b C c Č Č č č D d Ď ď E e É É é é Ě Ě ě ě F f G g H h CH Ch cH ch I i Í Í í í J j K k L l M m N n Ň Ň ň ň O o Ó Ó ó ó P p Q q R r Ř Ř ř ř S s Š Š š š T t Ť Ť ť ť U u Ú Ú ú ú Ů Ů ů ů V v W w X x Y y Ý Ý ý ý Z z Ž Ž ž ž
-    
+
         var expected = [
-            "a", 
-            "aa", 
+            "a",
+            "aa",
             "aaa",
             "az",
             "á",
-            "áa", 
-            "Bilbao", 
-            "car", 
-            "czech", 
-            "ček", 
-            "drum", 
-            "Ďud", 
-            "e", 
-            "é", 
-            "Ě", 
-            "ě", 
+            "áa",
+            "Bilbao",
+            "car",
+            "czech",
+            "ček",
+            "drum",
+            "Ďud",
+            "e",
+            "é",
+            "Ě",
+            "ě",
             "hzzzzz",
-            "Church", 
-            "church", 
+            "Church",
+            "church",
             "island",
             "izzy",
-            "ísland", 
+            "ísland",
             "uber",
             "uzbek",
             "úber",
@@ -1233,9 +1233,9 @@ module.exports.testcollation_cs = {
             "ůber",
             "ůlaru"
          ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     }
-    
+
 };

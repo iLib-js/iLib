@@ -1,6 +1,6 @@
 /*
  * testdatefmtrange_zu_ZA.js - test the date range formatter object Tajik-Tajikistan
- * 
+ *
  * Copyright © 2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

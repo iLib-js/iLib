@@ -1,7 +1,7 @@
 /*
- * testcm_JP.js - Test the charset mapping routines for the various Japanese 
+ * testcm_JP.js - Test the charset mapping routines for the various Japanese
  * character sets
- * 
+ *
  * Copyright © 2014-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -75,10 +75,10 @@ var testDataJP = {
             0x68, // h
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x61, // a
             0x20, //
             0x74, // t
@@ -106,7 +106,7 @@ var testDataJP = {
             0xa5, 0xab, // カ
             0xa5, 0xca, // ナ
             0xa4, 0xc7, // で
-            0xa4, 0xb9  // す   
+            0xa4, 0xb9  // す
         ],
         "Ελλασ": [
             0xa6, 0xa5, // Ε
@@ -142,10 +142,10 @@ var testDataJP = {
                0x68, // h
                0x69, // i
                0x73, // s
-               0x20, // 
+               0x20, //
                0x69, // i
                0x73, // s
-               0x20, // 
+               0x20, //
                0x61, // a
                0x20, //
                0x74, // t
@@ -173,7 +173,7 @@ var testDataJP = {
             0xa5, 0xab, // カ
             0xa5, 0xca, // ナ
             0xa4, 0xc7, // で
-            0xa4, 0xb9  // す   
+            0xa4, 0xb9  // す
         ],
            "Ελλασ": [
                0xa6, 0xa5, // Ε
@@ -209,10 +209,10 @@ var testDataJP = {
             0x68, // h
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x61, // a
             0x20, //
             0x74, // t
@@ -276,10 +276,10 @@ var testDataJP = {
             0x68, // h
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x61, // a
             0x20, //
             0x74, // t
@@ -343,10 +343,10 @@ var testDataJP = {
             0x68, // h
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x61, // a
             0x20, //
             0x74, // t
@@ -362,7 +362,7 @@ var testDataJP = {
         ],
         "ひらがなです": [
             27, 36, 40, 81, // designate hiragana
-            27, 
+            27,
             0x82, 0xD0, // ひ
             0x82, 0xE7, // ら
             0x82, 0xAA, // が
@@ -430,7 +430,7 @@ module.exports.testcm_JP = {
         }
         test.done();
     },
-    
+
     testCharmapJPMapToUnicode: function(test) {
         for (var charset in testDataJP) {
             var cm = CharmapFactory({
@@ -445,7 +445,7 @@ module.exports.testcm_JP = {
         }
         test.done();
     },
-    
+
     testCharmapJPMapToNative: function(test) {
         for (var charset in testDataJP) {
             var cm = CharmapFactory({
@@ -456,7 +456,7 @@ module.exports.testcm_JP = {
             for (var element in data) {
                 var array = cm.mapToNative(element);
                 // console.log("cm.mapToNative returned " + JSON.stringify(cm.mapToUnicode(array)));
-                
+
                 for (var i = 0; i < data[element].length; i++) {
                     // console.log("testing " + charset + " element " + element + " array index " + i);
                     test.equal(data[element][i], array[i], "testing " + charset + " element " + element + " array index " + i + "\n");
@@ -465,6 +465,6 @@ module.exports.testcm_JP = {
         }
         test.done();
     }
-    
-    
+
+
 };

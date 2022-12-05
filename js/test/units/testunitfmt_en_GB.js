@@ -58,7 +58,7 @@ module.exports.testunitfmt_en_GB = {
     },
     testGetTemperatureUnit_en_GB: function(test) {
         test.expect(2);
-        
+
         var tu = new TemperatureUnit();
         test.ok(tu);
         var unit = tu.localize("en-GB").getUnit();

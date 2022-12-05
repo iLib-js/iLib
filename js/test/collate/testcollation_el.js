@@ -1,6 +1,6 @@
 /*
  * testcollation_el.js - test the Collator object in Greek
- * 
+ *
  * Copyright © 2015, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,11 +38,11 @@ module.exports.testcollation_el = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
-        
+
+        // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ
+
         test.ok("Α < α", col.compare("Α", "α") < 0);
         test.ok("α < Ά", col.compare("α", "Ά") < 0);
         test.ok("Ά < Ά", col.compare("Ά", "Ά") < 0);
@@ -135,7 +135,7 @@ module.exports.testcollation_el = {
         test.ok("ώ < ώ", col.compare("ώ", "ώ") < 0);
         test.done();
     },
-    
+
     testJSCollatorTer_el: function(test) {
         test.expect(91);
         var col = new Collator({
@@ -144,11 +144,11 @@ module.exports.testcollation_el = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
-        
+
+        // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ
+
         test.ok("Α < α", col.compare("Α", "α") < 0);
         test.ok("α < Ά", col.compare("α", "Ά") < 0);
         test.ok("Ά = Ά", col.compare("Ά", "Ά") === 0);
@@ -241,7 +241,7 @@ module.exports.testcollation_el = {
         test.ok("ώ = ώ", col.compare("ώ", "ώ") === 0);
         test.done();
     },
-    
+
     testJSCollatorSec_el: function(test) {
         test.expect(91);
         var col = new Collator({
@@ -250,11 +250,11 @@ module.exports.testcollation_el = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
-        
+
+        // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ
+
         test.ok("Α = α", col.compare("Α", "α") === 0);
         test.ok("α < Ά", col.compare("α", "Ά") < 0);
         test.ok("Ά = Ά", col.compare("Ά", "Ά") === 0);
@@ -347,7 +347,7 @@ module.exports.testcollation_el = {
         test.ok("ώ = ώ", col.compare("ώ", "ώ") === 0);
         test.done();
     },
-    
+
     testJSCollatorPri_el: function(test) {
         test.expect(91);
         var col = new Collator({
@@ -356,11 +356,11 @@ module.exports.testcollation_el = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
-        
+
+        // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ
+
         test.ok("Α = α", col.compare("Α", "α") === 0);
         test.ok("α = Ά", col.compare("α", "Ά") === 0);
         test.ok("Ά = Ά", col.compare("Ά", "Ά") === 0);
@@ -453,7 +453,7 @@ module.exports.testcollation_el = {
         test.ok("ώ = ώ", col.compare("ώ", "ώ") === 0);
         test.done();
     },
-    
+
     testJSCollatorQuatSort_el: function(test) {
         test.expect(91);
         var col = new Collator({
@@ -462,11 +462,11 @@ module.exports.testcollation_el = {
             sensitivity: "quaternary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
-        
+
+        // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ
+
         test.ok("Α < α", col.compare("Α", "α") < 0);
         test.ok("α < Ά", col.compare("α", "Ά") < 0);
         test.ok("Ά < Ά", col.compare("Ά", "Ά") < 0);
@@ -559,7 +559,7 @@ module.exports.testcollation_el = {
         test.ok("ώ < ώ", col.compare("ώ", "ώ") < 0);
         test.done();
     },
-    
+
     testJSCollatorTerSort_el: function(test) {
         test.expect(91);
         var col = new Collator({
@@ -568,11 +568,11 @@ module.exports.testcollation_el = {
             sensitivity: "tertiary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
-        
+
+        // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ
+
         test.ok("Α < α", col.compare("Α", "α") < 0);
         test.ok("α < Ά", col.compare("α", "Ά") < 0);
         test.ok("Ά < Ά", col.compare("Ά", "Ά") < 0);
@@ -665,7 +665,7 @@ module.exports.testcollation_el = {
         test.ok("ώ < ώ", col.compare("ώ", "ώ") < 0);
         test.done();
     },
-    
+
     testJSCollatorSecSort_el: function(test) {
         test.expect(91);
         var col = new Collator({
@@ -674,11 +674,11 @@ module.exports.testcollation_el = {
             sensitivity: "secondary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
-        
+
+        // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ
+
         test.ok("Α < α", col.compare("Α", "α") < 0);
         test.ok("α < Ά", col.compare("α", "Ά") < 0);
         test.ok("Ά < Ά", col.compare("Ά", "Ά") < 0);
@@ -771,7 +771,7 @@ module.exports.testcollation_el = {
         test.ok("ώ < ώ", col.compare("ώ", "ώ") < 0);
         test.done();
     },
-    
+
     testJSCollatorPriSort_el: function(test) {
         test.expect(91);
         var col = new Collator({
@@ -780,11 +780,11 @@ module.exports.testcollation_el = {
             sensitivity: "primary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
-        
+
+        // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ
+
         test.ok("Α < α", col.compare("Α", "α") < 0);
         test.ok("α < Ά", col.compare("α", "Ά") < 0);
         test.ok("Ά < Ά", col.compare("Ά", "Ά") < 0);
@@ -877,7 +877,7 @@ module.exports.testcollation_el = {
         test.ok("ώ < ώ", col.compare("ώ", "ώ") < 0);
         test.done();
     },
-    
+
     testCollatorCase_el: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -887,65 +887,65 @@ module.exports.testcollation_el = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-        
+
         var input = [
-             "ΐ", 
-            "ί̈", 
-             "Α", 
-            "ξ", 
-            "ΐ", 
-            "σ", 
-            "Η", 
-            "Κ", 
-            "ϊ", 
-            "ά", 
-            "ω", 
-            "ώ", 
-            "α", 
-            "Σ", 
-            "ϊ", 
-            "Δ", 
-            "ά", 
+             "ΐ",
+            "ί̈",
+             "Α",
+            "ξ",
+            "ΐ",
+            "σ",
+            "Η",
+            "Κ",
+            "ϊ",
+            "ά",
+            "ω",
+            "ώ",
+            "α",
+            "Σ",
+            "ϊ",
+            "Δ",
+            "ά",
             "ώ",
-            "Ή", 
-            "Ι", 
-            "ι", 
+            "Ή",
+            "Ι",
+            "ι",
             "ς",
             "Ψ"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
-            "Α", 
-            "α", 
-            "ά", 
-            "ά", 
-            "Δ", 
-            "Η", 
-            "Ή", 
-            "Ι", 
-            "ι", 
-            "ϊ", 
-            "ϊ", 
-            "ΐ", 
-            "ΐ", 
-            "ί̈", 
-            "Κ", 
-            "ξ", 
-            "Σ", 
-            "σ", 
+            "Α",
+            "α",
+            "ά",
+            "ά",
+            "Δ",
+            "Η",
+            "Ή",
+            "Ι",
+            "ι",
+            "ϊ",
+            "ϊ",
+            "ΐ",
+            "ΐ",
+            "ί̈",
+            "Κ",
+            "ξ",
+            "Σ",
+            "σ",
             "ς",
-            "Ψ", 
-            "ω", 
-            "ώ", 
+            "Ψ",
+            "ω",
+            "ώ",
             "ώ"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorPrimary_el: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -955,69 +955,69 @@ module.exports.testcollation_el = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
-            "ΐ", 
+            "ΐ",
             "ας",
-            "ί̈", 
-             "Α", 
-            "ξ", 
-            "ΐ", 
-            "σ", 
-            "Η", 
-            "Κ", 
+            "ί̈",
+             "Α",
+            "ξ",
+            "ΐ",
+            "σ",
+            "Η",
+            "Κ",
             "αδ",
-            "ϊ", 
-            "ά", 
-            "ω", 
-            "ώ", 
-            "α", 
-            "Σ", 
-            "ϊ", 
-            "Δ", 
-            "ά", 
+            "ϊ",
+            "ά",
+            "ω",
+            "ώ",
+            "α",
+            "Σ",
+            "ϊ",
+            "Δ",
+            "ά",
             "ώ",
-            "Ή", 
-            "Ι", 
-            "ι", 
+            "Ή",
+            "Ι",
+            "ι",
             "ς",
             "Ψ"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
-            "Α", 
+            "Α",
             "α",
             "αδ",
             "ας",
-            "ά", 
-            "ά", 
-            "Δ", 
-            "Η", 
-            "Ή", 
-            "Ι", 
-            "ι", 
-            "ϊ", 
-            "ϊ", 
-            "ΐ", 
-            "ΐ", 
-            "ί̈", 
-            "Κ", 
-            "ξ", 
-            "Σ", 
-            "σ", 
+            "ά",
+            "ά",
+            "Δ",
+            "Η",
+            "Ή",
+            "Ι",
+            "ι",
+            "ϊ",
+            "ϊ",
+            "ΐ",
+            "ΐ",
+            "ί̈",
+            "Κ",
+            "ξ",
+            "Σ",
+            "σ",
             "ς",
-            "Ψ", 
-            "ω", 
-            "ώ", 
+            "Ψ",
+            "ω",
+            "ώ",
             "ώ"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorIgnoreStressMarks_el: function(test) {
         test.expect(3);
         var col = new Collator({
@@ -1027,15 +1027,15 @@ module.exports.testcollation_el = {
             usage: "search"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var comp = col.getComparator();
-        
+
         // ignore stress marks
         test.equal(comp("παϊδάκια", "παιδάκια"), 0);
         test.equal(comp("Αθηνά", "Αθήνα"), 0);
         test.done();
     },
-    
+
     testJSCollatorQuatLatin_el: function(test) {
         test.expect(18);
         var col = new Collator({
@@ -1044,9 +1044,9 @@ module.exports.testcollation_el = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // all latin letters
         test.ok("A < a", col.compare("A", "a") < 0);
         test.ok("a < B", col.compare("a", "B") < 0);
@@ -1067,7 +1067,7 @@ module.exports.testcollation_el = {
         test.ok("I < i", col.compare("I", "i") < 0);
         test.done();
     },
-    
+
     testCollatorPrimaryMixed_el: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1077,79 +1077,79 @@ module.exports.testcollation_el = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
-             "ΐ", 
+             "ΐ",
             "ας",
-            "Σ", 
-            "ϊ", 
-            "Δ", 
+            "Σ",
+            "ϊ",
+            "Δ",
             "orange",
-            "ί̈", 
+            "ί̈",
             "peach",
-            "ΐ", 
-            "σ", 
-            "Η", 
-            "Κ", 
+            "ΐ",
+            "σ",
+            "Η",
+            "Κ",
             "apple",
             "αδ",
-            "ϊ", 
-            "ά", 
-            "ω", 
+            "ϊ",
+            "ά",
+            "ω",
             "raspberry",
-             "Α", 
-            "ξ", 
-            "ώ", 
-            "α", 
-            "Ή", 
-            "Ι", 
-            "ι", 
-            "ά", 
+             "Α",
+            "ξ",
+            "ώ",
+            "α",
+            "Ή",
+            "Ι",
+            "ι",
+            "ά",
             "ώ",
             "banana",
             "ς",
             "Ψ"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         // Latin letters sort before the Greek ones
-        
+
         var expected = [
             "apple",
             "banana",
             "orange",
             "peach",
             "raspberry",
-            "Α", 
+            "Α",
             "α",
             "αδ",
             "ας",
-            "ά", 
-            "ά", 
-            "Δ", 
-            "Η", 
-            "Ή", 
-            "Ι", 
-            "ι", 
-            "ϊ", 
-            "ϊ", 
-            "ΐ", 
-            "ΐ", 
-            "ί̈", 
-            "Κ", 
-            "ξ", 
-            "Σ", 
-            "σ", 
+            "ά",
+            "ά",
+            "Δ",
+            "Η",
+            "Ή",
+            "Ι",
+            "ι",
+            "ϊ",
+            "ϊ",
+            "ΐ",
+            "ΐ",
+            "ί̈",
+            "Κ",
+            "ξ",
+            "Σ",
+            "σ",
             "ς",
-            "Ψ", 
-            "ω", 
-            "ώ", 
+            "Ψ",
+            "ω",
+            "ώ",
             "ώ"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     }
-    
+
 };

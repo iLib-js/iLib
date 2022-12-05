@@ -1,6 +1,6 @@
 /*
  * testaddress_KE.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports.testaddress_KE = {
     testParseAddressKENormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Paul Makeba P.O. Box 3120\nNAKURU\n20100\nKENYA", {locale: 'en-KE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Paul Makeba P.O. Box 3120");
         test.equal(parsedAddress.locality, "NAKURU");
@@ -46,11 +46,11 @@ module.exports.testaddress_KE = {
         test.equal(parsedAddress.countryCode, "KE");
         test.done();
     },
-    
+
     testParseAddressKENoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Paul Makeba P.O. Box 3120\nNAKURU\nKENYA", {locale: 'en-KE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Paul Makeba P.O. Box 3120");
         test.equal(parsedAddress.locality, "NAKURU");
@@ -60,11 +60,11 @@ module.exports.testaddress_KE = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressKENoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Paul Makeba P.O. Box 3120\nNAKURU\n20100", {locale: 'en-KE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Paul Makeba P.O. Box 3120");
         test.equal(parsedAddress.locality, "NAKURU");
@@ -74,7 +74,7 @@ module.exports.testaddress_KE = {
         test.equal(parsedAddress.countryCode, "KE");
         test.done();
     },
-    
+
     testParseAddressKEManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Paul Makeba\nP.O. Box 3120\n\n\n\n\nNAKURU\n\n20100\n\nKENYA\n\n\n", {locale: 'en-KE'});
@@ -87,11 +87,11 @@ module.exports.testaddress_KE = {
         test.equal(parsedAddress.countryCode, "KE");
         test.done();
     },
-    
+
     testParseAddressKEOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Paul Makeba , P.O. Box 3120 , NAKURU , 20100 , KENYA", {locale: 'en-KE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Paul Makeba, P.O. Box 3120");
         test.equal(parsedAddress.locality, "NAKURU");
@@ -101,11 +101,11 @@ module.exports.testaddress_KE = {
         test.equal(parsedAddress.countryCode, "KE");
         test.done();
     },
-    
+
     testParseAddressKESuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tPaul Makeba\t\t\rP.O. Box 3120\t\t\r\n\n\n\nNAKURU\n\t20100\n\nKENYA\n\n\n", {locale: 'en-KE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Paul Makeba P.O. Box 3120");
         test.equal(parsedAddress.locality, "NAKURU");
@@ -115,11 +115,11 @@ module.exports.testaddress_KE = {
         test.equal(parsedAddress.countryCode, "KE");
         test.done();
     },
-    
+
     testParseAddressKENoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Paul Makeba P.O. Box 3120 NAKURU\n20100 KENYA", {locale: 'en-KE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Paul Makeba P.O. Box 3120");
         test.equal(parsedAddress.locality, "NAKURU");
@@ -129,13 +129,13 @@ module.exports.testaddress_KE = {
         test.equal(parsedAddress.countryCode, "KE");
         test.done();
     },
-    
+
     testParseAddressKEFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Paul Makeba P.O. Box 3120\nNAKURU\n20100\nKENYA", {locale: 'en-US'});
-        
+
         // the country name is in German because this address is for a contact in a German database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Paul Makeba P.O. Box 3120");
         test.equal(parsedAddress.locality, "NAKURU");
@@ -145,7 +145,7 @@ module.exports.testaddress_KE = {
         test.equal(parsedAddress.countryCode, "KE");
         test.done();
     },
-    
+
     testFormatAddressKE: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -155,13 +155,13 @@ module.exports.testaddress_KE = {
             country: "KENYA",
             countryCode: "KE"
         }, {locale: 'en-KE'});
-        
+
         var expected = "Paul Makeba P.O. Box 3120\nNAKURU\n20100\nKENYA";
         var formatter = new AddressFmt({locale: 'en-KE'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressKEFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -171,11 +171,11 @@ module.exports.testaddress_KE = {
             country: "KENYA",
             countryCode: "KE"
         }, {locale: 'en-US'});
-        
+
         var expected = "Paul Makeba P.O. Box 3120\nNAKURU\n20100\nKENYA";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

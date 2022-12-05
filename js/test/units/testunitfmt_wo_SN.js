@@ -96,7 +96,7 @@ module.exports.testunitfmt_wo_SN = {
         });
 
         var uf = new UnitFmt({
-            locale: "wo-SN", 
+            locale: "wo-SN",
             autoConvert:true,
             length:"short"
         });
@@ -113,7 +113,7 @@ module.exports.testunitfmt_wo_SN = {
         });
 
         var uf = new UnitFmt({
-            locale: "wo-SN", 
+            locale: "wo-SN",
             autoConvert: true,
             length: "long"
         });
@@ -130,7 +130,7 @@ module.exports.testunitfmt_wo_SN = {
         });
 
         var uf = new UnitFmt({
-            locale: "wo-SN", 
+            locale: "wo-SN",
             autoConvert: true,
             length: "short"
         });
@@ -147,7 +147,7 @@ module.exports.testunitfmt_wo_SN = {
         });
 
         var uf = new UnitFmt({
-            locale: "wo-SN", 
+            locale: "wo-SN",
             autoConvert: true,
             length: "long"
         });

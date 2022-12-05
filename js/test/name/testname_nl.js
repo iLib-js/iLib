@@ -1,6 +1,6 @@
 /*
  * testname_nl.js - test the name object in Dutch
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,125 +37,125 @@ module.exports.testname_nl = {
         test.expect(2);
         var parsed = new Name("Jan Hoogeboom", {locale: 'nl-NL'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Jan",
             familyName: "Hoogeboom"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testNLParseTripleName: function(test) {
         test.expect(2);
         var parsed = new Name("Jan Michael Hoogeboom", {locale: 'nl-NL'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Jan",
             middleName: "Michael",
             familyName: "Hoogeboom"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testNLParseAdjunctNames: function(test) {
         test.expect(2);
         var parsed = new Name("Ludwig Klaus von Beethoven", {locale: 'nl-NL'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Ludwig",
             middleName: "Klaus",
             familyName: "von Beethoven"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testNLParseMultiAdjunctNames: function(test) {
         test.expect(2);
         var parsed = new Name("Geertje van den Bosch", {locale: 'nl-NL'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Geertje",
             familyName: "van den Bosch"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testNLParseHypenatedName: function(test) {
         test.expect(2);
         var parsed = new Name("Jan Michael Bergische-Hoogeboom", {locale: 'nl-NL'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Jan",
             middleName: "Michael",
             familyName: "Bergische-Hoogeboom"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testNLParseQuadrupleName: function(test) {
         test.expect(2);
         var parsed = new Name("Jan Michael Jürgen Hoogeboom", {locale: 'nl-NL'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Jan",
             middleName: "Michael Jürgen",
             familyName: "Hoogeboom"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testNLParseTitle: function(test) {
         test.expect(2);
         var parsed = new Name("Dr. Jan Hoogeboom", {locale: 'nl-NL'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Dr.",
             givenName: "Jan",
             familyName: "Hoogeboom"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testNLParseHonorific: function(test) {
         test.expect(2);
         var parsed = new Name("Mvw. Julia Maier", {locale: 'nl-NL'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Mvw.",
             givenName: "Julia",
             familyName: "Maier"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testNLParseEverything: function(test) {
         test.expect(2);
         var parsed = new Name("President Jan Michael Jürgen Hoogeboom Jr.", {locale: 'nl-NL'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "President",
             givenName: "Jan",
@@ -163,15 +163,15 @@ module.exports.testname_nl = {
             familyName: "Hoogeboom",
             suffix: "Jr."
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     /*
      * Format Tests
      */
-    
+
     testNLFormatSimpleNameShort: function(test) {
         test.expect(2);
         var name = new Name({
@@ -182,13 +182,13 @@ module.exports.testname_nl = {
         var fmt = new NameFmt({style: "short", locale: 'nl-NL'});
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Jan Hoogeboom";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testNLFormatSimpleNameMedium: function(test) {
         test.expect(2);
         var name = new Name({
@@ -199,13 +199,13 @@ module.exports.testname_nl = {
         var fmt = new NameFmt({style: "medium", locale: 'nl-NL'});
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Jan Michael Hoogeboom";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testNLFormatSimpleNameLong: function(test) {
         test.expect(2);
         var name = new Name({
@@ -216,13 +216,13 @@ module.exports.testname_nl = {
         var fmt = new NameFmt({style: "long", locale: 'nl-NL'});
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Jan Michael Hoogeboom";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testNLFormatSimpleNameFull: function(test) {
         test.expect(2);
         var name = new Name({
@@ -233,13 +233,13 @@ module.exports.testname_nl = {
         var fmt = new NameFmt({style: "full", locale: 'nl-NL'});
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Jan Michael Hoogeboom";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testNLFormatComplexNameShort: function(test) {
         test.expect(2);
         var name = new Name({
@@ -252,13 +252,13 @@ module.exports.testname_nl = {
         var fmt = new NameFmt({style: "short", locale: 'nl-NL'});
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Jan van der Smits";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testNLFormatComplexNameMedium: function(test) {
         test.expect(2);
         var name = new Name({
@@ -271,13 +271,13 @@ module.exports.testname_nl = {
         var fmt = new NameFmt({style: "medium", locale: 'nl-NL'});
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Jan Michael Pieter van der Smits";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testNLFormatComplexNameLong: function(test) {
         test.expect(2);
         var name = new Name({
@@ -290,13 +290,13 @@ module.exports.testname_nl = {
         var fmt = new NameFmt({style: "long", locale: 'nl-NL'});
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Dr. Jan Michael Pieter van der Smits";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testNLFormatComplexNameFull: function(test) {
         test.expect(2);
         var name = new Name({
@@ -309,13 +309,13 @@ module.exports.testname_nl = {
         var fmt = new NameFmt({style: "full", locale: 'nl-NL'});
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Dr. Jan Michael Pieter van der Smits III";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testNLFormatAsianNameShort: function(test) {
         test.expect(2);
         var name = new Name({
@@ -327,13 +327,13 @@ module.exports.testname_nl = {
         var fmt = new NameFmt({style: "short", locale: 'nl-NL'});
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testNLFormatAsianNameMedium: function(test) {
         test.expect(2);
         var name = new Name({
@@ -345,13 +345,13 @@ module.exports.testname_nl = {
         var fmt = new NameFmt({style: "medium", locale: 'nl-NL'});
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testNLFormatAsianNameLong: function(test) {
         test.expect(2);
         var name = new Name({
@@ -363,13 +363,13 @@ module.exports.testname_nl = {
         var fmt = new NameFmt({style: "long", locale: 'nl-NL'});
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "小地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testNLFormatAsianNameFull: function(test) {
         test.expect(2);
         var name = new Name({
@@ -381,11 +381,11 @@ module.exports.testname_nl = {
         var fmt = new NameFmt({style: "full", locale: 'nl-NL'});
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "小地獸太太";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
+
 };

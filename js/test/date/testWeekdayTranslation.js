@@ -5085,7 +5085,7 @@ module.exports.testWeekdayTranslation = {
         }
         test.expect(7);
         var fmt, value = [], i;
-        
+
         fmt = new DateFmt({locale:"ko-KR", date:"w", length: "full", useNative:false, useIntl: true, timezone:"local"})
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
@@ -5097,7 +5097,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "목요일");
         test.equal(value[5], "금요일");
         test.equal(value[6], "토요일");
-      
+
         test.done();
     },
     testWeekdayTranslation_ku_Arab_IQ: function(test) {
@@ -12382,7 +12382,7 @@ module.exports.testWeekdayTranslation = {
         test.expect(7);
         var fmt, value = [], i;
         fmt = new DateFmt({locale:"lb-LU", date:"w", length: "short", useNative:false, timezone:"local"});
-      
+
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }

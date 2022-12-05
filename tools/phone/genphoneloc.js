@@ -274,7 +274,7 @@ var mccToreg = {
     "543": "WF",
     "421": "YE",
     "645": "ZM",
-    "648": "ZW"    
+    "648": "ZW"
 }
 
 var areaToreg = {
@@ -345,7 +345,7 @@ var areaToreg = {
         "508": "PM",
         "590": "GP",
         "594": "GF",
-        "596": "MQ" 
+        "596": "MQ"
     },
     "39": {
         "default": "IT",

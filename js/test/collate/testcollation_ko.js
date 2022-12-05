@@ -1,6 +1,6 @@
 /*
  * testcollation_ko.js - test the Collator object in Korean
- * 
+ *
  * Copyright © 2014, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,9 +37,9 @@ module.exports.testcollation_ko = {
             useNative: false,
             sensitivity: "primary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // 가까나다따
         test.ok("가 < 까", col.compare("가", "까") < 0);
         test.ok("까 < 나", col.compare("까", "나") < 0);
@@ -47,7 +47,7 @@ module.exports.testcollation_ko = {
         test.ok("다 < 따", col.compare("다", "따") < 0);
         test.done();
     },
-    
+
     testJSCollatorPriV_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -55,9 +55,9 @@ module.exports.testcollation_ko = {
             useNative: false,
             sensitivity: "primary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // 가개갸걔거
         test.ok("가 < 개", col.compare("가", "개") < 0);
         test.ok("개 < 갸", col.compare("개", "갸") < 0);
@@ -65,7 +65,7 @@ module.exports.testcollation_ko = {
         test.ok("걔 < 거", col.compare("걔", "거") < 0);
         test.done();
     },
-    
+
     testJSCollatorPriT_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -73,9 +73,9 @@ module.exports.testcollation_ko = {
             useNative: false,
             sensitivity: "primary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // 가각갂갃간
         test.ok("가 < 각", col.compare("가", "각") < 0);
         test.ok("각 < 갂", col.compare("각", "갂") < 0);
@@ -83,7 +83,7 @@ module.exports.testcollation_ko = {
         test.ok("갃 < 간", col.compare("갃", "간") < 0);
         test.done();
     },
-    
+
     testJSCollatorSecL_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -91,9 +91,9 @@ module.exports.testcollation_ko = {
             useNative: false,
             sensitivity: "secondary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // 가까나다따
         test.ok("가 < 까", col.compare("가", "까") < 0);
         test.ok("까 < 나", col.compare("까", "나") < 0);
@@ -101,7 +101,7 @@ module.exports.testcollation_ko = {
         test.ok("다 < 따", col.compare("다", "따") < 0);
         test.done();
     },
-    
+
     testJSCollatorSecV_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -109,9 +109,9 @@ module.exports.testcollation_ko = {
             useNative: false,
             sensitivity: "secondary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // 가개갸걔거
         test.ok("가 < 개", col.compare("가", "개") < 0);
         test.ok("개 < 갸", col.compare("개", "갸") < 0);
@@ -119,7 +119,7 @@ module.exports.testcollation_ko = {
         test.ok("걔 < 거", col.compare("걔", "거") < 0);
         test.done();
     },
-    
+
     testJSCollatorSecT_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -127,9 +127,9 @@ module.exports.testcollation_ko = {
             useNative: false,
             sensitivity: "secondary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // 가각갂갃간
         test.ok("가 < 각", col.compare("가", "각") < 0);
         test.ok("각 < 갂", col.compare("각", "갂") < 0);
@@ -137,7 +137,7 @@ module.exports.testcollation_ko = {
         test.ok("갃 < 간", col.compare("갃", "간") < 0);
         test.done();
     },
-    
+
     testJSCollatorTerL_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -145,9 +145,9 @@ module.exports.testcollation_ko = {
             useNative: false,
             sensitivity: "tertiary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // 가까나다따
         test.ok("가 < 까", col.compare("가", "까") < 0);
         test.ok("까 < 나", col.compare("까", "나") < 0);
@@ -155,7 +155,7 @@ module.exports.testcollation_ko = {
         test.ok("다 < 따", col.compare("다", "따") < 0);
         test.done();
     },
-    
+
     testJSCollatorTerV_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -163,9 +163,9 @@ module.exports.testcollation_ko = {
             useNative: false,
             sensitivity: "tertiary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // 가개갸걔거
         test.ok("가 < 개", col.compare("가", "개") < 0);
         test.ok("개 < 갸", col.compare("개", "갸") < 0);
@@ -173,7 +173,7 @@ module.exports.testcollation_ko = {
         test.ok("걔 < 거", col.compare("걔", "거") < 0);
         test.done();
     },
-    
+
     testJSCollatorTerT_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -181,9 +181,9 @@ module.exports.testcollation_ko = {
             useNative: false,
             sensitivity: "tertiary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // 가각갂갃간
         test.ok("가 < 각", col.compare("가", "각") < 0);
         test.ok("각 < 갂", col.compare("각", "갂") < 0);
@@ -191,7 +191,7 @@ module.exports.testcollation_ko = {
         test.ok("갃 < 간", col.compare("갃", "간") < 0);
         test.done();
     },
-    
+
     testJSCollatorQuatL_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -199,9 +199,9 @@ module.exports.testcollation_ko = {
             useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // 가까나다따
         test.ok("가 < 까", col.compare("가", "까") < 0);
         test.ok("까 < 나", col.compare("까", "나") < 0);
@@ -209,7 +209,7 @@ module.exports.testcollation_ko = {
         test.ok("다 < 따", col.compare("다", "따") < 0);
         test.done();
     },
-    
+
     testJSCollatorQuatV_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -217,9 +217,9 @@ module.exports.testcollation_ko = {
             useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // 가개갸걔거
         test.ok("가 < 개", col.compare("가", "개") < 0);
         test.ok("개 < 갸", col.compare("개", "갸") < 0);
@@ -227,7 +227,7 @@ module.exports.testcollation_ko = {
         test.ok("걔 < 거", col.compare("걔", "거") < 0);
         test.done();
     },
-    
+
     testJSCollatorQuatT_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -235,9 +235,9 @@ module.exports.testcollation_ko = {
             useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // 가각갂갃간
         test.ok("가 < 각", col.compare("가", "각") < 0);
         test.ok("각 < 갂", col.compare("각", "갂") < 0);
@@ -245,7 +245,7 @@ module.exports.testcollation_ko = {
         test.ok("갃 < 간", col.compare("갃", "간") < 0);
         test.done();
     },
-    
+
     testJSCollatorJamoL_ko: function(test) {
         test.expect(19);
         var col = new Collator({
@@ -253,9 +253,9 @@ module.exports.testcollation_ko = {
             useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // initial consonants ㄱ ㄲ ㄴ ㄷ ㄸ ㄹ ㅁ ㅂ ㅃ ㅅ ㅆ ㅇ ㅈ ㅉ ㅊ ㅋ ㅌ ㅍ ㅎ
         test.ok("ㄱ < ㄲ", col.compare("ㄱ", "ㄲ") < 0);
         test.ok("ㄲ < ㄴ", col.compare("ㄲ", "ㄴ") < 0);
@@ -277,7 +277,7 @@ module.exports.testcollation_ko = {
         test.ok("ㅍ < ㅎ", col.compare("ㅍ", "ㅎ") < 0);
         test.done();
     },
-    
+
     testJSCollatorJamoV_ko: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -285,9 +285,9 @@ module.exports.testcollation_ko = {
             useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // middle vowels ㅏ ㅐ ㅑ ㅒ ㅓ ㅔ ㅕ ㅖ ㅗ ㅘ ㅙ ㅚ ㅛ ㅜ ㅝ ㅞ ㅟ ㅠ ㅡ ㅢ ㅣ
         test.ok("ㅏ < ㅐ", col.compare("ㅏ", "ㅐ") < 0);
         test.ok("ㅐ < ㅑ", col.compare("ㅐ", "ㅑ") < 0);
@@ -311,7 +311,7 @@ module.exports.testcollation_ko = {
         test.ok("ㅢ < ㅣ", col.compare("ㅢ", "ㅣ") < 0);
         test.done();
     },
-    
+
     testJSCollatorJamoT_ko: function(test) {
         test.expect(27);
         var col = new Collator({
@@ -319,11 +319,11 @@ module.exports.testcollation_ko = {
             useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // optional final consonants ㄱ ㄲ ㄳ ㄴ ㄵ ㄶ ㄷ ㄹ ㄺ ㄻ ㄼ ㄽ ㄾ ㄿ ㅀ ㅁ ㅂ ㅄ ㅅ ㅆ ㅇ ㅈ ㅊ ㅋ ㅌ ㅍ ㅎ
-        
+
         test.ok("ᆨ < ᆩ", col.compare("ᆨ", "ᆩ") < 0);
         test.ok("ᆩ < ᆪ", col.compare("ᆩ", "ᆪ") < 0);
         test.ok("ᆪ < ᆫ", col.compare("ᆪ", "ᆫ") < 0);
@@ -352,7 +352,7 @@ module.exports.testcollation_ko = {
         test.ok("ᇁ < ᇂ", col.compare("ᇁ", "ᇂ") < 0);
         test.done();
     },
-    
+
     testJSCollatorJamoLHalfwidthPri_ko: function(test) {
         test.expect(104);
         var col = new Collator({
@@ -361,9 +361,9 @@ module.exports.testcollation_ko = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         test.equal(0, col.compare("ᄀ", "ﾡ"), "ᄀ = ﾡ");
         test.equal(0, col.compare("ﾡ", "ㄱ"), "ﾡ = ㄱ");
         test.equal(0, col.compare("ᄁ", "ﾢ"), "ᄁ = ﾢ");
@@ -406,7 +406,7 @@ module.exports.testcollation_ko = {
         test.equal(0, col.compare("ﾰ", "ㅀ"), "ﾰ = ㅀ");
         test.equal(0, col.compare("ᄡ", "ﾴ"), "ᄡ = ﾴ");
         test.equal(0, col.compare("ﾴ", "ㅄ"), "ﾴ = ㅄ");
-        
+
         test.equal(0, col.compare("ᅡ", "ￂ"), "ᅡ = ￂ");
         test.equal(0, col.compare("ￂ", "ㅏ"), "ￂ = ㅏ");
         test.equal(0, col.compare("ᅢ", "ￃ"), "ᅢ = ￃ");
@@ -467,7 +467,7 @@ module.exports.testcollation_ko = {
         test.equal(0, col.compare("ﾮ", "ㄾ"), "ﾮ = ㄾ");
         test.equal(0, col.compare("ᆵ", "ﾯ"), "ᆵ = ﾯ");
         test.equal(0, col.compare("ﾯ", "ㄿ"), "ﾯ = ㄿ");
-        
+
         test.equal(0, col.compare("₩", "￦"), "₩ = ￦");
         test.done();
     },
@@ -479,9 +479,9 @@ module.exports.testcollation_ko = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         test.equal(0, col.compare("ᄀ", "ﾡ"), "ᄀ = ﾡ");
         test.equal(0, col.compare("ﾡ", "ㄱ"), "ﾡ = ㄱ");
         test.equal(0, col.compare("ᄁ", "ﾢ"), "ᄁ = ﾢ");
@@ -524,7 +524,7 @@ module.exports.testcollation_ko = {
         test.equal(0, col.compare("ﾰ", "ㅀ"), "ﾰ = ㅀ");
         test.equal(0, col.compare("ᄡ", "ﾴ"), "ᄡ = ﾴ");
         test.equal(0, col.compare("ﾴ", "ㅄ"), "ﾴ = ㅄ");
-        
+
         test.equal(0, col.compare("ᅡ", "ￂ"), "ᅡ = ￂ");
         test.equal(0, col.compare("ￂ", "ㅏ"), "ￂ = ㅏ");
         test.equal(0, col.compare("ᅢ", "ￃ"), "ᅢ = ￃ");
@@ -585,11 +585,11 @@ module.exports.testcollation_ko = {
         test.equal(0, col.compare("ﾮ", "ㄾ"), "ﾮ = ㄾ");
         test.equal(0, col.compare("ᆵ", "ﾯ"), "ᆵ = ﾯ");
         test.equal(0, col.compare("ﾯ", "ㄿ"), "ﾯ = ㄿ");
-        
+
         test.equal(0, col.compare("₩", "￦"), "₩ = ￦");
         test.done();
     },
-    
+
     testJSCollatorJamoLHalfwidthTer_ko: function(test) {
         test.expect(104);
         var col = new Collator({
@@ -598,9 +598,9 @@ module.exports.testcollation_ko = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         test.equal(0, col.compare("ᄀ", "ﾡ"), "ᄀ = ﾡ");
         test.equal(0, col.compare("ﾡ", "ㄱ"), "ﾡ = ㄱ");
         test.equal(0, col.compare("ᄁ", "ﾢ"), "ᄁ = ﾢ");
@@ -643,7 +643,7 @@ module.exports.testcollation_ko = {
         test.equal(0, col.compare("ﾰ", "ㅀ"), "ﾰ = ㅀ");
         test.equal(0, col.compare("ᄡ", "ﾴ"), "ᄡ = ﾴ");
         test.equal(0, col.compare("ﾴ", "ㅄ"), "ﾴ = ㅄ");
-        
+
         test.equal(0, col.compare("ᅡ", "ￂ"), "ᅡ = ￂ");
         test.equal(0, col.compare("ￂ", "ㅏ"), "ￂ = ㅏ");
         test.equal(0, col.compare("ᅢ", "ￃ"), "ᅢ = ￃ");
@@ -704,11 +704,11 @@ module.exports.testcollation_ko = {
         test.equal(0, col.compare("ﾮ", "ㄾ"), "ﾮ = ㄾ");
         test.equal(0, col.compare("ᆵ", "ﾯ"), "ᆵ = ﾯ");
         test.equal(0, col.compare("ﾯ", "ㄿ"), "ﾯ = ㄿ");
-        
+
         test.equal(0, col.compare("₩", "￦"), "₩ = ￦");
         test.done();
     },
-    
+
     testJSCollatorJamoLHalfwidthTer_ko: function(test) {
         test.expect(104);
         var col = new Collator({
@@ -717,9 +717,9 @@ module.exports.testcollation_ko = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         test.ok("ᄀ < ﾡ", col.compare("ᄀ", "ﾡ") < 0);
         test.ok("ﾡ < ㄱ", col.compare("ﾡ", "ㄱ") < 0);
         test.ok("ᄁ < ﾢ", col.compare("ᄁ", "ﾢ") < 0);
@@ -762,7 +762,7 @@ module.exports.testcollation_ko = {
         test.ok("ﾰ < ㅀ", col.compare("ﾰ", "ㅀ") < 0);
         test.ok("ᄡ < ﾴ", col.compare("ᄡ", "ﾴ") < 0);
         test.ok("ﾴ < ㅄ", col.compare("ﾴ", "ㅄ") < 0);
-        
+
         test.ok("ᅡ < ￂ", col.compare("ᅡ", "ￂ") < 0);
         test.ok("ￂ < ㅏ", col.compare("ￂ", "ㅏ") < 0);
         test.ok("ᅢ < ￃ", col.compare("ᅢ", "ￃ") < 0);
@@ -823,11 +823,11 @@ module.exports.testcollation_ko = {
         test.ok("ﾮ < ㄾ", col.compare("ﾮ", "ㄾ") < 0);
         test.ok("ᆵ < ﾯ", col.compare("ᆵ", "ﾯ") < 0);
         test.ok("ﾯ < ㄿ", col.compare("ﾯ", "ㄿ") < 0);
-        
+
         test.ok("₩ < ￦", col.compare("₩", "￦") < 0);
         test.done();
     },
-    
+
     testCollatorPri_ko: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -837,7 +837,7 @@ module.exports.testcollation_ko = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
              "성항동",
             "한명숙",
@@ -853,9 +853,9 @@ module.exports.testcollation_ko = {
             "고건",
             "김석수"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "고건",
             "김석수",
@@ -869,11 +869,11 @@ module.exports.testcollation_ko = {
             "최순길",
             "한덕수",
             "한명숙",
-            "한승수"                    
+            "한승수"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     }
-    
+
 };

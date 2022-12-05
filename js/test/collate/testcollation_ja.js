@@ -1,6 +1,6 @@
 /*
  * testcollation_ja.js - test the Collator object in Japanese
- * 
+ *
  * Copyright © 2015, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,9 +38,9 @@ module.exports.testcollation_ja = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         // kanji are all primary differences from each other
-    
+
         test.ok(typeof(col) !== "undefined");
         test.ok("鯵 < 允", col.compare("鯵", "允") < 0);
         test.ok("允 < 渦", col.compare("允", "渦") < 0);
@@ -80,7 +80,7 @@ module.exports.testcollation_ja = {
         test.ok("鶩 < 熙", col.compare("鶩", "熙") < 0);
         test.done();
     },
-    
+
     testJSCollatorTerKanji_ja: function(test) {
         test.expect(37);
         var col = new Collator({
@@ -89,9 +89,9 @@ module.exports.testcollation_ja = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         // kanji are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
         test.ok("鯵 < 允", col.compare("鯵", "允") < 0);
         test.ok("允 < 渦", col.compare("允", "渦") < 0);
@@ -131,7 +131,7 @@ module.exports.testcollation_ja = {
         test.ok("鶩 < 熙", col.compare("鶩", "熙") < 0);
         test.done();
     },
-    
+
     testJSCollatorSecKanji_ja: function(test) {
         test.expect(37);
         var col = new Collator({
@@ -140,9 +140,9 @@ module.exports.testcollation_ja = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         // kanji are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
         test.ok("鯵 < 允", col.compare("鯵", "允") < 0);
         test.ok("允 < 渦", col.compare("允", "渦") < 0);
@@ -182,7 +182,7 @@ module.exports.testcollation_ja = {
         test.ok("鶩 < 熙", col.compare("鶩", "熙") < 0);
         test.done();
     },
-    
+
     testJSCollatorPriKanji_ja: function(test) {
         test.expect(37);
         var col = new Collator({
@@ -191,9 +191,9 @@ module.exports.testcollation_ja = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         // kanji are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
         test.ok("鯵 < 允", col.compare("鯵", "允") < 0);
         test.ok("允 < 渦", col.compare("允", "渦") < 0);
@@ -233,7 +233,7 @@ module.exports.testcollation_ja = {
         test.ok("鶩 < 熙", col.compare("鶩", "熙") < 0);
         test.done();
     },
-    
+
     testJSCollatorHiraganaQuat_ja: function(test) {
         test.expect(100);
         var col = new Collator({
@@ -242,11 +242,11 @@ module.exports.testcollation_ja = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
-        
+
         test.ok("あ < い", col.compare("あ", "い") < 0);
         test.ok("い < う", col.compare("い", "う") < 0);
         test.ok("う < ゔ", col.compare("う", "ゔ") < 0);
@@ -348,7 +348,7 @@ module.exports.testcollation_ja = {
         test.ok("を < ん", col.compare("を", "ん") < 0);
         test.done();
     },
-    
+
     testJSCollatorHiraganaTer_ja: function(test) {
         test.expect(100);
         var col = new Collator({
@@ -357,11 +357,11 @@ module.exports.testcollation_ja = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う ゔ ゔ え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
-        
+
         test.ok("あ < い", col.compare("あ", "い") < 0);
         test.ok("い < う", col.compare("い", "う") < 0);
         test.ok("う < ゔ", col.compare("う", "ゔ") < 0);
@@ -463,7 +463,7 @@ module.exports.testcollation_ja = {
         test.ok("を < ん", col.compare("を", "ん") < 0);
         test.done();
     },
-    
+
     testJSCollatorHiraganaSec_ja: function(test) {
         test.expect(100);
         var col = new Collator({
@@ -472,11 +472,11 @@ module.exports.testcollation_ja = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う ゔ ゔ え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
-        
+
         test.ok("あ < い", col.compare("あ", "い") < 0);
         test.ok("い < う", col.compare("い", "う") < 0);
         test.ok("う < ゔ", col.compare("う", "ゔ") < 0);
@@ -578,7 +578,7 @@ module.exports.testcollation_ja = {
         test.ok("を < ん", col.compare("を", "ん") < 0);
         test.done();
     },
-    
+
     testJSCollatorHiraganaPri_ja: function(test) {
         test.expect(100);
         var col = new Collator({
@@ -587,11 +587,11 @@ module.exports.testcollation_ja = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う ゔ ゔ え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
-        
+
         test.ok("あ < い", col.compare("あ", "い") < 0);
         test.ok("い < う", col.compare("い", "う") < 0);
         test.ok("う = ゔ", col.compare("う", "ゔ") === 0);
@@ -693,7 +693,7 @@ module.exports.testcollation_ja = {
         test.ok("を < ん", col.compare("を", "ん") < 0);
         test.done();
     },
-    
+
     testJSCollatorHiraganaLengthMarksQuat_ja: function(test) {
         test.expect(86);
         var col = new Collator({
@@ -702,11 +702,11 @@ module.exports.testcollation_ja = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
-        
+
         test.ok("ぁー < ぁぁ", col.compare("ぁー", "ぁぁ") < 0);
         test.ok("あー < あぁ", col.compare("あー", "あぁ") < 0);
         test.ok("かー < かぁ", col.compare("かー", "かぁ") < 0);
@@ -726,7 +726,7 @@ module.exports.testcollation_ja = {
         test.ok("らー < らぁ", col.compare("らー", "らぁ") < 0);
         test.ok("ゎー < ゎぁ", col.compare("ゎー", "ゎぁ") < 0);
         test.ok("わー < わぁ", col.compare("わー", "わぁ") < 0);
-        
+
         test.ok("ぃー < ぃぃ", col.compare("ぃー", "ぃぃ") < 0);
         test.ok("いー < いぃ", col.compare("いー", "いぃ") < 0);
         test.ok("きー < きぃ", col.compare("きー", "きぃ") < 0);
@@ -742,7 +742,7 @@ module.exports.testcollation_ja = {
         test.ok("みー < みぃ", col.compare("みー", "みぃ") < 0);
         test.ok("りー < りぃ", col.compare("りー", "りぃ") < 0);
         test.ok("ゐー < ゐぃ", col.compare("ゐー", "ゐぃ") < 0);
-        
+
         test.ok("ぅー < ぅぃ", col.compare("ぅー", "ぅぅ") < 0);
         test.ok("うー < うぃ", col.compare("うー", "うぅ") < 0);
         test.ok("くー < くぃ", col.compare("くー", "くぅ") < 0);
@@ -761,7 +761,7 @@ module.exports.testcollation_ja = {
         test.ok("ゆー < ゆぃ", col.compare("ゆー", "ゆぅ") < 0);
         test.ok("るー < るぃ", col.compare("るー", "るぅ") < 0);
         test.ok("ゔー < ゔぃ", col.compare("ゔー", "ゔぅ") < 0);
-        
+
         test.ok("ぇー < ぇぇ", col.compare("ぇー", "ぇぇ") < 0);
         test.ok("えー < えぇ", col.compare("えー", "えぇ") < 0);
         test.ok("けー < けぇ", col.compare("けー", "けぇ") < 0);
@@ -778,7 +778,7 @@ module.exports.testcollation_ja = {
         test.ok("めー < めぇ", col.compare("めー", "めぇ") < 0);
         test.ok("れー < れぇ", col.compare("れー", "れぇ") < 0);
         test.ok("ゑー < ゑぇ", col.compare("ゑー", "ゑぇ") < 0);
-        
+
         test.ok("ぉー < ぉぉ", col.compare("ぉー", "ぉぉ") < 0);
         test.ok("おー < おぉ", col.compare("おー", "おぉ") < 0);
         test.ok("こー < こぉ", col.compare("こー", "こぉ") < 0);
@@ -798,7 +798,7 @@ module.exports.testcollation_ja = {
         test.ok("をー < をぉ", col.compare("をー", "をぉ") < 0);
         test.done();
     },
-    
+
     testJSCollatorHiraganaLengthMarksTer_ja: function(test) {
         test.expect(86);
         var col = new Collator({
@@ -807,11 +807,11 @@ module.exports.testcollation_ja = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
-        
+
         test.ok("ぁー < ぁぁ", col.compare("ぁー", "ぁぁ") < 0);
         test.ok("あー < あぁ", col.compare("あー", "あぁ") < 0);
         test.ok("かー < かぁ", col.compare("かー", "かぁ") < 0);
@@ -831,7 +831,7 @@ module.exports.testcollation_ja = {
         test.ok("らー < らぁ", col.compare("らー", "らぁ") < 0);
         test.ok("ゎー < ゎぁ", col.compare("ゎー", "ゎぁ") < 0);
         test.ok("わー < わぁ", col.compare("わー", "わぁ") < 0);
-        
+
         test.ok("ぃー < ぃぃ", col.compare("ぃー", "ぃぃ") < 0);
         test.ok("いー < いぃ", col.compare("いー", "いぃ") < 0);
         test.ok("きー < きぃ", col.compare("きー", "きぃ") < 0);
@@ -847,7 +847,7 @@ module.exports.testcollation_ja = {
         test.ok("みー < みぃ", col.compare("みー", "みぃ") < 0);
         test.ok("りー < りぃ", col.compare("りー", "りぃ") < 0);
         test.ok("ゐー < ゐぃ", col.compare("ゐー", "ゐぃ") < 0);
-        
+
         test.ok("ぅー < ぅぅ", col.compare("ぅー", "ぅぅ") < 0);
         test.ok("うー < うぅ", col.compare("うー", "うぅ") < 0);
         test.ok("くー < くぅ", col.compare("くー", "くぅ") < 0);
@@ -866,7 +866,7 @@ module.exports.testcollation_ja = {
         test.ok("ゆー < ゆぅ", col.compare("ゆー", "ゆぅ") < 0);
         test.ok("るー < るぅ", col.compare("るー", "るぅ") < 0);
         test.ok("ゔー < ゔぅ", col.compare("ゔー", "ゔぅ") < 0);
-        
+
         test.ok("ぇー < ぇぇ", col.compare("ぇー", "ぇぇ") < 0);
         test.ok("えー < えぇ", col.compare("えー", "えぇ") < 0);
         test.ok("けー < けぇ", col.compare("けー", "けぇ") < 0);
@@ -883,7 +883,7 @@ module.exports.testcollation_ja = {
         test.ok("めー < めぇ", col.compare("めー", "めぇ") < 0);
         test.ok("れー < れぇ", col.compare("れー", "れぇ") < 0);
         test.ok("ゑー < ゑぇ", col.compare("ゑー", "ゑぇ") < 0);
-        
+
         test.ok("ぉー < ぉぉ", col.compare("ぉー", "ぉぉ") < 0);
         test.ok("おー < おぉ", col.compare("おー", "おぉ") < 0);
         test.ok("こー < こぉ", col.compare("こー", "こぉ") < 0);
@@ -903,7 +903,7 @@ module.exports.testcollation_ja = {
         test.ok("をー < をぉ", col.compare("をー", "をぉ") < 0);
         test.done();
     },
-    
+
     testJSCollatorHiraganaLengthMarksSec_ja: function(test) {
         test.expect(86);
         var col = new Collator({
@@ -912,11 +912,11 @@ module.exports.testcollation_ja = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
-        
+
         test.ok("ぁー = ぁぁ", col.compare("ぁー", "ぁぁ") === 0);
         test.ok("あー = あぁ", col.compare("あー", "あぁ") === 0);
         test.ok("かー = かぁ", col.compare("かー", "かぁ") === 0);
@@ -936,7 +936,7 @@ module.exports.testcollation_ja = {
         test.ok("らー = らぁ", col.compare("らー", "らぁ") === 0);
         test.ok("ゎー = ゎぁ", col.compare("ゎー", "ゎぁ") === 0);
         test.ok("わー = わぁ", col.compare("わー", "わぁ") === 0);
-        
+
         test.ok("ぃー = ぃぃ", col.compare("ぃー", "ぃぃ") === 0);
         test.ok("いー = いぃ", col.compare("いー", "いぃ") === 0);
         test.ok("きー = きぃ", col.compare("きー", "きぃ") === 0);
@@ -952,7 +952,7 @@ module.exports.testcollation_ja = {
         test.ok("みー = みぃ", col.compare("みー", "みぃ") === 0);
         test.ok("りー = りぃ", col.compare("りー", "りぃ") === 0);
         test.ok("ゐー = ゐぃ", col.compare("ゐー", "ゐぃ") === 0);
-        
+
         test.ok("ぅー = ぅぃ", col.compare("ぅー", "ぅぅ") === 0);
         test.ok("うー = うぃ", col.compare("うー", "うぅ") === 0);
         test.ok("くー = くぃ", col.compare("くー", "くぅ") === 0);
@@ -971,7 +971,7 @@ module.exports.testcollation_ja = {
         test.ok("ゆー = ゆぃ", col.compare("ゆー", "ゆぅ") === 0);
         test.ok("るー = るぃ", col.compare("るー", "るぅ") === 0);
         test.ok("ゔー = ゔぃ", col.compare("ゔー", "ゔぅ") === 0);
-        
+
         test.ok("ぇー = ぇぇ", col.compare("ぇー", "ぇぇ") === 0);
         test.ok("えー = えぇ", col.compare("えー", "えぇ") === 0);
         test.ok("けー = けぇ", col.compare("けー", "けぇ") === 0);
@@ -988,7 +988,7 @@ module.exports.testcollation_ja = {
         test.ok("めー = めぇ", col.compare("めー", "めぇ") === 0);
         test.ok("れー = れぇ", col.compare("れー", "れぇ") === 0);
         test.ok("ゑー = ゑぇ", col.compare("ゑー", "ゑぇ") === 0);
-        
+
         test.ok("ぉー = ぉぉ", col.compare("ぉー", "ぉぉ") === 0);
         test.ok("おー = おぉ", col.compare("おー", "おぉ") === 0);
         test.ok("こー = こぉ", col.compare("こー", "こぉ") === 0);
@@ -1008,7 +1008,7 @@ module.exports.testcollation_ja = {
         test.ok("をー = をぉ", col.compare("をー", "をぉ") === 0);
         test.done();
     },
-    
+
     testJSCollatorHiraganaLengthMarksPri_ja: function(test) {
         test.expect(86);
         var col = new Collator({
@@ -1017,11 +1017,11 @@ module.exports.testcollation_ja = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
-        
+
         test.ok("ぁー = ぁぁ", col.compare("ぁー", "ぁぁ") === 0);
         test.ok("あー = あぁ", col.compare("あー", "あぁ") === 0);
         test.ok("かー = かぁ", col.compare("かー", "かぁ") === 0);
@@ -1041,7 +1041,7 @@ module.exports.testcollation_ja = {
         test.ok("らー = らぁ", col.compare("らー", "らぁ") === 0);
         test.ok("ゎー = ゎぁ", col.compare("ゎー", "ゎぁ") === 0);
         test.ok("わー = わぁ", col.compare("わー", "わぁ") === 0);
-        
+
         test.ok("ぃー = ぃぃ", col.compare("ぃー", "ぃぃ") === 0);
         test.ok("いー = いぃ", col.compare("いー", "いぃ") === 0);
         test.ok("きー = きぃ", col.compare("きー", "きぃ") === 0);
@@ -1057,7 +1057,7 @@ module.exports.testcollation_ja = {
         test.ok("みー = みぃ", col.compare("みー", "みぃ") === 0);
         test.ok("りー = りぃ", col.compare("りー", "りぃ") === 0);
         test.ok("ゐー = ゐぃ", col.compare("ゐー", "ゐぃ") === 0);
-        
+
         test.ok("ぅー = ぅぃ", col.compare("ぅー", "ぅぅ") === 0);
         test.ok("うー = うぃ", col.compare("うー", "うぅ") === 0);
         test.ok("くー = くぃ", col.compare("くー", "くぅ") === 0);
@@ -1076,7 +1076,7 @@ module.exports.testcollation_ja = {
         test.ok("ゆー = ゆぃ", col.compare("ゆー", "ゆぅ") === 0);
         test.ok("るー = るぃ", col.compare("るー", "るぅ") === 0);
         test.ok("ゔー = ゔぃ", col.compare("ゔー", "ゔぅ") === 0);
-        
+
         test.ok("ぇー = ぇぇ", col.compare("ぇー", "ぇぇ") === 0);
         test.ok("えー = えぇ", col.compare("えー", "えぇ") === 0);
         test.ok("けー = けぇ", col.compare("けー", "けぇ") === 0);
@@ -1093,7 +1093,7 @@ module.exports.testcollation_ja = {
         test.ok("めー = めぇ", col.compare("めー", "めぇ") === 0);
         test.ok("れー = れぇ", col.compare("れー", "れぇ") === 0);
         test.ok("ゑー = ゑぇ", col.compare("ゑー", "ゑぇ") === 0);
-        
+
         test.ok("ぉー = ぉぉ", col.compare("ぉー", "ぉぉ") === 0);
         test.ok("おー = おぉ", col.compare("おー", "おぉ") === 0);
         test.ok("こー = こぉ", col.compare("こー", "こぉ") === 0);
@@ -1113,7 +1113,7 @@ module.exports.testcollation_ja = {
         test.ok("をー = をぉ", col.compare("をー", "をぉ") === 0);
         test.done();
     },
-    
+
     testJSCollatorHiraganaIterationMarksQuat_ja: function(test) {
         test.expect(139);
         var col = new Collator({
@@ -1122,11 +1122,11 @@ module.exports.testcollation_ja = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
-        
+
         test.ok("あゝ < ああ", col.compare("あゝ", "ああ") < 0);
         test.ok("ぁゝ < ぁあ", col.compare("ぁゝ", "ぁあ") < 0);
         test.ok("いゝ < いい", col.compare("いゝ", "いい") < 0);
@@ -1141,7 +1141,7 @@ module.exports.testcollation_ja = {
         test.ok("ぇゝ < ぇえ", col.compare("ぇゝ", "ぇえ") < 0);
         test.ok("おゝ < おお", col.compare("おゝ", "おお") < 0);
         test.ok("ぉゝ < ぉお", col.compare("ぉゝ", "ぉお") < 0);
-    
+
         test.ok("かゝ < かか", col.compare("かゝ", "かか") < 0);
         test.ok("ゕゝ < ゕか", col.compare("ゕゝ", "ゕか") < 0);
         test.ok("がゝ < がか", col.compare("がゝ", "がか") < 0);
@@ -1160,7 +1160,7 @@ module.exports.testcollation_ja = {
         test.ok("ごゝ < ごこ", col.compare("ごゝ", "ごこ") < 0);
         test.ok("こゞ < こご", col.compare("こゞ", "こご") < 0);
         test.ok("ごゞ < ごご", col.compare("ごゞ", "ごご") < 0);
-    
+
         test.ok("さゝ < ささ", col.compare("さゝ", "ささ") < 0);
         test.ok("ざゝ < ざさ", col.compare("ざゝ", "ざさ") < 0);
         test.ok("さゞ < さざ", col.compare("さゞ", "さざ") < 0);
@@ -1181,7 +1181,7 @@ module.exports.testcollation_ja = {
         test.ok("ぞゝ < ぞそ", col.compare("ぞゝ", "ぞそ") < 0);
         test.ok("そゞ < そぞ", col.compare("そゞ", "そぞ") < 0);
         test.ok("ぞゞ < ぞぞ", col.compare("ぞゞ", "ぞぞ") < 0);
-    
+
         test.ok("たゝ < たた", col.compare("たゝ", "たた") < 0);
         test.ok("だゝ < だた", col.compare("だゝ", "だた") < 0);
         test.ok("たゞ < ただ", col.compare("たゞ", "ただ") < 0);
@@ -1206,13 +1206,13 @@ module.exports.testcollation_ja = {
         test.ok("どゝ < どと", col.compare("どゝ", "どと") < 0);
         test.ok("とゞ < とど", col.compare("とゞ", "とど") < 0);
         test.ok("どゞ < どど", col.compare("どゞ", "どど") < 0);
-    
+
         test.ok("なゝ < なな", col.compare("なゝ", "なな") < 0);
         test.ok("にゝ < にに", col.compare("にゝ", "にに") < 0);
         test.ok("ぬゝ < ぬぬ", col.compare("ぬゝ", "ぬぬ") < 0);
         test.ok("ねゝ < ねね", col.compare("ねゝ", "ねね") < 0);
         test.ok("のゝ < のの", col.compare("のゝ", "のの") < 0);
-    
+
         test.ok("はゝ < はは", col.compare("はゝ", "はは") < 0);
         test.ok("ばゝ < ばは", col.compare("ばゝ", "ばは") < 0);
         test.ok("はゞ < はば", col.compare("はゞ", "はば") < 0);
@@ -1243,26 +1243,26 @@ module.exports.testcollation_ja = {
         test.ok("ぼゞ < ぼぼ", col.compare("ぼゞ", "ぼぼ") < 0);
         test.ok("ぽゝ < ぽほ", col.compare("ぽゝ", "ぽほ") < 0);
         test.ok("ぽゞ < ぽぼ", col.compare("ぽゞ", "ぽぼ") < 0);
-    
+
         test.ok("まゝ < まま", col.compare("まゝ", "まま") < 0);
         test.ok("みゝ < みみ", col.compare("みゝ", "みみ") < 0);
         test.ok("むゝ < むむ", col.compare("むゝ", "むむ") < 0);
         test.ok("めゝ < めめ", col.compare("めゝ", "めめ") < 0);
         test.ok("もゝ < もも", col.compare("もゝ", "もも") < 0);
-    
+
         test.ok("やゝ < やや", col.compare("やゝ", "やや") < 0);
         test.ok("ゃゝ < ゃや", col.compare("ゃゝ", "ゃや") < 0);
         test.ok("ゆゝ < ゆゆ", col.compare("ゆゝ", "ゆゆ") < 0);
         test.ok("ゅゝ < ゅゆ", col.compare("ゅゝ", "ゅゆ") < 0);
         test.ok("よゝ < よよ", col.compare("よゝ", "よよ") < 0);
         test.ok("ょゝ < ょよ", col.compare("ょゝ", "ょよ") < 0);
-    
+
         test.ok("らゝ < らら", col.compare("らゝ", "らら") < 0);
         test.ok("りゝ < りり", col.compare("りゝ", "りり") < 0);
         test.ok("るゝ < るる", col.compare("るゝ", "るる") < 0);
         test.ok("れゝ < れれ", col.compare("れゝ", "れれ") < 0);
         test.ok("ろゝ < ろろ", col.compare("ろゝ", "ろろ") < 0);
-    
+
         test.ok("わゝ < わわ", col.compare("わゝ", "わわ") < 0);
         test.ok("ゎゝ < ゎわ", col.compare("ゎゝ", "ゎわ") < 0);
         test.ok("わゞ < わわ", col.compare("わゞ", "わわ") < 0);
@@ -1273,11 +1273,11 @@ module.exports.testcollation_ja = {
         test.ok("ゑゞ < ゑゑ", col.compare("ゑゞ", "ゑゑ") < 0);
         test.ok("をゝ < をを", col.compare("をゝ", "をを") < 0);
         test.ok("をゞ < をを", col.compare("をゞ", "をを") < 0);
-    
+
         test.ok("んゝ < んん", col.compare("んゝ", "んん") < 0);
         test.done();
     },
-    
+
     testJSCollatorHiraganaIterationMarksTer_ja: function(test) {
         test.expect(139);
         var col = new Collator({
@@ -1286,11 +1286,11 @@ module.exports.testcollation_ja = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
-        
+
         test.ok("あゝ < ああ", col.compare("あゝ", "ああ") < 0);
         test.ok("ぁゝ < ぁあ", col.compare("ぁゝ", "ぁあ") < 0);
         test.ok("いゝ < いい", col.compare("いゝ", "いい") < 0);
@@ -1305,7 +1305,7 @@ module.exports.testcollation_ja = {
         test.ok("ぇゝ < ぇえ", col.compare("ぇゝ", "ぇえ") < 0);
         test.ok("おゝ < おお", col.compare("おゝ", "おお") < 0);
         test.ok("ぉゝ < ぉお", col.compare("ぉゝ", "ぉお") < 0);
-    
+
         test.ok("かゝ < かか", col.compare("かゝ", "かか") < 0);
         test.ok("ゕゝ < ゕか", col.compare("ゕゝ", "ゕか") < 0);
         test.ok("がゝ < がか", col.compare("がゝ", "がか") < 0);
@@ -1324,7 +1324,7 @@ module.exports.testcollation_ja = {
         test.ok("ごゝ < ごこ", col.compare("ごゝ", "ごこ") < 0);
         test.ok("こゞ < こご", col.compare("こゞ", "こご") < 0);
         test.ok("ごゞ < ごご", col.compare("ごゞ", "ごご") < 0);
-    
+
         test.ok("さゝ < ささ", col.compare("さゝ", "ささ") < 0);
         test.ok("ざゝ < ざさ", col.compare("ざゝ", "ざさ") < 0);
         test.ok("さゞ < さざ", col.compare("さゞ", "さざ") < 0);
@@ -1345,7 +1345,7 @@ module.exports.testcollation_ja = {
         test.ok("ぞゝ < ぞそ", col.compare("ぞゝ", "ぞそ") < 0);
         test.ok("そゞ < そぞ", col.compare("そゞ", "そぞ") < 0);
         test.ok("ぞゞ < ぞぞ", col.compare("ぞゞ", "ぞぞ") < 0);
-    
+
         test.ok("たゝ < たた", col.compare("たゝ", "たた") < 0);
         test.ok("だゝ < だた", col.compare("だゝ", "だた") < 0);
         test.ok("たゞ < ただ", col.compare("たゞ", "ただ") < 0);
@@ -1370,13 +1370,13 @@ module.exports.testcollation_ja = {
         test.ok("どゝ < どと", col.compare("どゝ", "どと") < 0);
         test.ok("とゞ < とど", col.compare("とゞ", "とど") < 0);
         test.ok("どゞ < どど", col.compare("どゞ", "どど") < 0);
-    
+
         test.ok("なゝ < なな", col.compare("なゝ", "なな") < 0);
         test.ok("にゝ < にに", col.compare("にゝ", "にに") < 0);
         test.ok("ぬゝ < ぬぬ", col.compare("ぬゝ", "ぬぬ") < 0);
         test.ok("ねゝ < ねね", col.compare("ねゝ", "ねね") < 0);
         test.ok("のゝ < のの", col.compare("のゝ", "のの") < 0);
-    
+
         test.ok("はゝ < はは", col.compare("はゝ", "はは") < 0);
         test.ok("ばゝ < ばは", col.compare("ばゝ", "ばは") < 0);
         test.ok("はゞ < はば", col.compare("はゞ", "はば") < 0);
@@ -1407,26 +1407,26 @@ module.exports.testcollation_ja = {
         test.ok("ぼゞ < ぼぼ", col.compare("ぼゞ", "ぼぼ") < 0);
         test.ok("ぽゝ < ぽほ", col.compare("ぽゝ", "ぽほ") < 0);
         test.ok("ぽゞ < ぽぼ", col.compare("ぽゞ", "ぽぼ") < 0);
-    
+
         test.ok("まゝ < まま", col.compare("まゝ", "まま") < 0);
         test.ok("みゝ < みみ", col.compare("みゝ", "みみ") < 0);
         test.ok("むゝ < むむ", col.compare("むゝ", "むむ") < 0);
         test.ok("めゝ < めめ", col.compare("めゝ", "めめ") < 0);
         test.ok("もゝ < もも", col.compare("もゝ", "もも") < 0);
-    
+
         test.ok("やゝ < やや", col.compare("やゝ", "やや") < 0);
         test.ok("ゃゝ < ゃや", col.compare("ゃゝ", "ゃや") < 0);
         test.ok("ゆゝ < ゆゆ", col.compare("ゆゝ", "ゆゆ") < 0);
         test.ok("ゅゝ < ゅゆ", col.compare("ゅゝ", "ゅゆ") < 0);
         test.ok("よゝ < よよ", col.compare("よゝ", "よよ") < 0);
         test.ok("ょゝ < ょよ", col.compare("ょゝ", "ょよ") < 0);
-    
+
         test.ok("らゝ < らら", col.compare("らゝ", "らら") < 0);
         test.ok("りゝ < りり", col.compare("りゝ", "りり") < 0);
         test.ok("るゝ < るる", col.compare("るゝ", "るる") < 0);
         test.ok("れゝ < れれ", col.compare("れゝ", "れれ") < 0);
         test.ok("ろゝ < ろろ", col.compare("ろゝ", "ろろ") < 0);
-    
+
         test.ok("わゝ < わわ", col.compare("わゝ", "わわ") < 0);
         test.ok("ゎゝ < ゎわ", col.compare("ゎゝ", "ゎわ") < 0);
         test.ok("わゞ < わわ", col.compare("わゞ", "わわ") < 0);
@@ -1437,11 +1437,11 @@ module.exports.testcollation_ja = {
         test.ok("ゑゞ < ゑゑ", col.compare("ゑゞ", "ゑゑ") < 0);
         test.ok("をゝ < をを", col.compare("をゝ", "をを") < 0);
         test.ok("をゞ < をを", col.compare("をゞ", "をを") < 0);
-    
+
         test.ok("んゝ < んん", col.compare("んゝ", "んん") < 0);
         test.done();
     },
-    
+
     testJSCollatorHiraganaIterationMarksSec_ja: function(test) {
         test.expect(139);
         var col = new Collator({
@@ -1450,11 +1450,11 @@ module.exports.testcollation_ja = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
-        
+
         test.ok("あゝ = ああ", col.compare("あゝ", "ああ") === 0);
         test.ok("ぁゝ = ぁあ", col.compare("ぁゝ", "ぁあ") === 0);
         test.ok("いゝ = いい", col.compare("いゝ", "いい") === 0);
@@ -1469,7 +1469,7 @@ module.exports.testcollation_ja = {
         test.ok("ぇゝ = ぇえ", col.compare("ぇゝ", "ぇえ") === 0);
         test.ok("おゝ = おお", col.compare("おゝ", "おお") === 0);
         test.ok("ぉゝ = ぉお", col.compare("ぉゝ", "ぉお") === 0);
-    
+
         test.ok("かゝ = かか", col.compare("かゝ", "かか") === 0);
         test.ok("ゕゝ = ゕか", col.compare("ゕゝ", "ゕか") === 0);
         test.ok("がゝ = がか", col.compare("がゝ", "がか") === 0);
@@ -1488,7 +1488,7 @@ module.exports.testcollation_ja = {
         test.ok("ごゝ = ごこ", col.compare("ごゝ", "ごこ") === 0);
         test.ok("こゞ = こご", col.compare("こゞ", "こご") === 0);
         test.ok("ごゞ = ごご", col.compare("ごゞ", "ごご") === 0);
-    
+
         test.ok("さゝ = ささ", col.compare("さゝ", "ささ") === 0);
         test.ok("ざゝ = ざさ", col.compare("ざゝ", "ざさ") === 0);
         test.ok("さゞ = さざ", col.compare("さゞ", "さざ") === 0);
@@ -1509,7 +1509,7 @@ module.exports.testcollation_ja = {
         test.ok("ぞゝ = ぞそ", col.compare("ぞゝ", "ぞそ") === 0);
         test.ok("そゞ = そぞ", col.compare("そゞ", "そぞ") === 0);
         test.ok("ぞゞ = ぞぞ", col.compare("ぞゞ", "ぞぞ") === 0);
-    
+
         test.ok("たゝ = たた", col.compare("たゝ", "たた") === 0);
         test.ok("だゝ = だた", col.compare("だゝ", "だた") === 0);
         test.ok("たゞ = ただ", col.compare("たゞ", "ただ") === 0);
@@ -1534,13 +1534,13 @@ module.exports.testcollation_ja = {
         test.ok("どゝ = どと", col.compare("どゝ", "どと") === 0);
         test.ok("とゞ = とど", col.compare("とゞ", "とど") === 0);
         test.ok("どゞ = どど", col.compare("どゞ", "どど") === 0);
-    
+
         test.ok("なゝ = なな", col.compare("なゝ", "なな") === 0);
         test.ok("にゝ = にに", col.compare("にゝ", "にに") === 0);
         test.ok("ぬゝ = ぬぬ", col.compare("ぬゝ", "ぬぬ") === 0);
         test.ok("ねゝ = ねね", col.compare("ねゝ", "ねね") === 0);
         test.ok("のゝ = のの", col.compare("のゝ", "のの") === 0);
-    
+
         test.ok("はゝ = はは", col.compare("はゝ", "はは") === 0);
         test.ok("ばゝ = ばは", col.compare("ばゝ", "ばは") === 0);
         test.ok("はゞ = はば", col.compare("はゞ", "はば") === 0);
@@ -1571,26 +1571,26 @@ module.exports.testcollation_ja = {
         test.ok("ぼゞ = ぼぼ", col.compare("ぼゞ", "ぼぼ") === 0);
         test.ok("ぽゝ = ぽほ", col.compare("ぽゝ", "ぽほ") === 0);
         test.ok("ぽゞ = ぽぼ", col.compare("ぽゞ", "ぽぼ") === 0);
-    
+
         test.ok("まゝ = まま", col.compare("まゝ", "まま") === 0);
         test.ok("みゝ = みみ", col.compare("みゝ", "みみ") === 0);
         test.ok("むゝ = むむ", col.compare("むゝ", "むむ") === 0);
         test.ok("めゝ = めめ", col.compare("めゝ", "めめ") === 0);
         test.ok("もゝ = もも", col.compare("もゝ", "もも") === 0);
-    
+
         test.ok("やゝ = やや", col.compare("やゝ", "やや") === 0);
         test.ok("ゃゝ = ゃや", col.compare("ゃゝ", "ゃや") === 0);
         test.ok("ゆゝ = ゆゆ", col.compare("ゆゝ", "ゆゆ") === 0);
         test.ok("ゅゝ = ゅゆ", col.compare("ゅゝ", "ゅゆ") === 0);
         test.ok("よゝ = よよ", col.compare("よゝ", "よよ") === 0);
         test.ok("ょゝ = ょよ", col.compare("ょゝ", "ょよ") === 0);
-    
+
         test.ok("らゝ = らら", col.compare("らゝ", "らら") === 0);
         test.ok("りゝ = りり", col.compare("りゝ", "りり") === 0);
         test.ok("るゝ = るる", col.compare("るゝ", "るる") === 0);
         test.ok("れゝ = れれ", col.compare("れゝ", "れれ") === 0);
         test.ok("ろゝ = ろろ", col.compare("ろゝ", "ろろ") === 0);
-    
+
         test.ok("わゝ = わわ", col.compare("わゝ", "わわ") === 0);
         test.ok("ゎゝ = ゎわ", col.compare("ゎゝ", "ゎわ") === 0);
         test.ok("わゞ = わわ", col.compare("わゞ", "わわ") === 0);
@@ -1601,11 +1601,11 @@ module.exports.testcollation_ja = {
         test.ok("ゑゞ = ゑゑ", col.compare("ゑゞ", "ゑゑ") === 0);
         test.ok("をゝ = をを", col.compare("をゝ", "をを") === 0);
         test.ok("をゞ = をを", col.compare("をゞ", "をを") === 0);
-    
+
         test.ok("んゝ = んん", col.compare("んゝ", "んん") === 0);
         test.done();
     },
-    
+
     testJSCollatorHiraganaIterationMarksPri_ja: function(test) {
         test.expect(139);
         var col = new Collator({
@@ -1614,11 +1614,11 @@ module.exports.testcollation_ja = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
-        
+
         test.ok("あゝ = ああ", col.compare("あゝ", "ああ") === 0);
         test.ok("ぁゝ = ぁあ", col.compare("ぁゝ", "ぁあ") === 0);
         test.ok("いゝ = いい", col.compare("いゝ", "いい") === 0);
@@ -1633,7 +1633,7 @@ module.exports.testcollation_ja = {
         test.ok("ぇゝ = ぇえ", col.compare("ぇゝ", "ぇえ") === 0);
         test.ok("おゝ = おお", col.compare("おゝ", "おお") === 0);
         test.ok("ぉゝ = ぉお", col.compare("ぉゝ", "ぉお") === 0);
-    
+
         test.ok("かゝ = かか", col.compare("かゝ", "かか") === 0);
         test.ok("ゕゝ = ゕか", col.compare("ゕゝ", "ゕか") === 0);
         test.ok("がゝ = がか", col.compare("がゝ", "がか") === 0);
@@ -1652,7 +1652,7 @@ module.exports.testcollation_ja = {
         test.ok("ごゝ = ごこ", col.compare("ごゝ", "ごこ") === 0);
         test.ok("こゞ = こご", col.compare("こゞ", "こご") === 0);
         test.ok("ごゞ = ごご", col.compare("ごゞ", "ごご") === 0);
-    
+
         test.ok("さゝ = ささ", col.compare("さゝ", "ささ") === 0);
         test.ok("ざゝ = ざさ", col.compare("ざゝ", "ざさ") === 0);
         test.ok("さゞ = さざ", col.compare("さゞ", "さざ") === 0);
@@ -1673,7 +1673,7 @@ module.exports.testcollation_ja = {
         test.ok("ぞゝ = ぞそ", col.compare("ぞゝ", "ぞそ") === 0);
         test.ok("そゞ = そぞ", col.compare("そゞ", "そぞ") === 0);
         test.ok("ぞゞ = ぞぞ", col.compare("ぞゞ", "ぞぞ") === 0);
-    
+
         test.ok("たゝ = たた", col.compare("たゝ", "たた") === 0);
         test.ok("だゝ = だた", col.compare("だゝ", "だた") === 0);
         test.ok("たゞ = ただ", col.compare("たゞ", "ただ") === 0);
@@ -1698,13 +1698,13 @@ module.exports.testcollation_ja = {
         test.ok("どゝ = どと", col.compare("どゝ", "どと") === 0);
         test.ok("とゞ = とど", col.compare("とゞ", "とど") === 0);
         test.ok("どゞ = どど", col.compare("どゞ", "どど") === 0);
-    
+
         test.ok("なゝ = なな", col.compare("なゝ", "なな") === 0);
         test.ok("にゝ = にに", col.compare("にゝ", "にに") === 0);
         test.ok("ぬゝ = ぬぬ", col.compare("ぬゝ", "ぬぬ") === 0);
         test.ok("ねゝ = ねね", col.compare("ねゝ", "ねね") === 0);
         test.ok("のゝ = のの", col.compare("のゝ", "のの") === 0);
-    
+
         test.ok("はゝ = はは", col.compare("はゝ", "はは") === 0);
         test.ok("ばゝ = ばは", col.compare("ばゝ", "ばは") === 0);
         test.ok("はゞ = はば", col.compare("はゞ", "はば") === 0);
@@ -1735,26 +1735,26 @@ module.exports.testcollation_ja = {
         test.ok("ぼゞ = ぼぼ", col.compare("ぼゞ", "ぼぼ") === 0);
         test.ok("ぽゝ = ぽほ", col.compare("ぽゝ", "ぽほ") === 0);
         test.ok("ぽゞ = ぽぼ", col.compare("ぽゞ", "ぽぼ") === 0);
-    
+
         test.ok("まゝ = まま", col.compare("まゝ", "まま") === 0);
         test.ok("みゝ = みみ", col.compare("みゝ", "みみ") === 0);
         test.ok("むゝ = むむ", col.compare("むゝ", "むむ") === 0);
         test.ok("めゝ = めめ", col.compare("めゝ", "めめ") === 0);
         test.ok("もゝ = もも", col.compare("もゝ", "もも") === 0);
-    
+
         test.ok("やゝ = やや", col.compare("やゝ", "やや") === 0);
         test.ok("ゃゝ = ゃや", col.compare("ゃゝ", "ゃや") === 0);
         test.ok("ゆゝ = ゆゆ", col.compare("ゆゝ", "ゆゆ") === 0);
         test.ok("ゅゝ = ゅゆ", col.compare("ゅゝ", "ゅゆ") === 0);
         test.ok("よゝ = よよ", col.compare("よゝ", "よよ") === 0);
         test.ok("ょゝ = ょよ", col.compare("ょゝ", "ょよ") === 0);
-    
+
         test.ok("らゝ = らら", col.compare("らゝ", "らら") === 0);
         test.ok("りゝ = りり", col.compare("りゝ", "りり") === 0);
         test.ok("るゝ = るる", col.compare("るゝ", "るる") === 0);
         test.ok("れゝ = れれ", col.compare("れゝ", "れれ") === 0);
         test.ok("ろゝ = ろろ", col.compare("ろゝ", "ろろ") === 0);
-    
+
         test.ok("わゝ = わわ", col.compare("わゝ", "わわ") === 0);
         test.ok("ゎゝ = ゎわ", col.compare("ゎゝ", "ゎわ") === 0);
         test.ok("わゞ = わわ", col.compare("わゞ", "わわ") === 0);
@@ -1765,11 +1765,11 @@ module.exports.testcollation_ja = {
         test.ok("ゑゞ = ゑゑ", col.compare("ゑゞ", "ゑゑ") === 0);
         test.ok("をゝ = をを", col.compare("をゝ", "をを") === 0);
         test.ok("をゞ = をを", col.compare("をゞ", "をを") === 0);
-    
+
         test.ok("んゝ = んん", col.compare("んゝ", "んん") === 0);
         test.done();
     },
-    
+
     testJSCollatorKatakanaQuat_ja: function(test) {
         test.expect(98);
         var col = new Collator({
@@ -1778,11 +1778,11 @@ module.exports.testcollation_ja = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
-    
+
+        // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
+
         test.ok("ア < イ", col.compare("ア", "イ") < 0);
         test.ok("イ < ウ", col.compare("イ", "ウ") < 0);
         test.ok("ウ < エ", col.compare("ウ", "エ") < 0);
@@ -1882,7 +1882,7 @@ module.exports.testcollation_ja = {
         test.ok("ヲ < ン", col.compare("ヲ", "ン") < 0);
         test.done();
     },
-    
+
     testJSCollatorKatakanaTer_ja: function(test) {
         test.expect(98);
         var col = new Collator({
@@ -1891,11 +1891,11 @@ module.exports.testcollation_ja = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
-    
+
+        // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
+
         test.ok("ア < イ", col.compare("ア", "イ") < 0);
         test.ok("イ < ウ", col.compare("イ", "ウ") < 0);
         test.ok("ウ < エ", col.compare("ウ", "エ") < 0);
@@ -1995,7 +1995,7 @@ module.exports.testcollation_ja = {
         test.ok("ヲ < ン", col.compare("ヲ", "ン") < 0);
         test.done();
     },
-    
+
     testJSCollatorKatakanaSec_ja: function(test) {
         test.expect(98);
         var col = new Collator({
@@ -2004,11 +2004,11 @@ module.exports.testcollation_ja = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
-    
+
+        // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
+
         test.ok("ア < イ", col.compare("ア", "イ") < 0);
         test.ok("イ < ウ", col.compare("イ", "ウ") < 0);
         test.ok("ウ < エ", col.compare("ウ", "エ") < 0);
@@ -2108,7 +2108,7 @@ module.exports.testcollation_ja = {
         test.ok("ヲ < ン", col.compare("ヲ", "ン") < 0);
         test.done();
     },
-    
+
     testJSCollatorKatakanaPri_ja: function(test) {
         test.expect(98);
         var col = new Collator({
@@ -2117,11 +2117,11 @@ module.exports.testcollation_ja = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
-    
+
+        // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
+
         test.ok("ア < イ", col.compare("ア", "イ") < 0);
         test.ok("イ < ウ", col.compare("イ", "ウ") < 0);
         test.ok("ウ < エ", col.compare("ウ", "エ") < 0);
@@ -2221,7 +2221,7 @@ module.exports.testcollation_ja = {
         test.ok("ヲ < ン", col.compare("ヲ", "ン") < 0);
         test.done();
     },
-    
+
     testJSCollatorKatakanaLengthMarksQuat_ja: function(test) {
         test.expect(189);
         var col = new Collator({
@@ -2230,11 +2230,11 @@ module.exports.testcollation_ja = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
-    
+
+        // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
+
         test.ok("ァー < ァア", col.compare("ァー", "ァア") < 0);
         test.ok("ｧー < ｧア", col.compare("ｧー", "ｧア") < 0);
         test.ok("アー < アア", col.compare("アー", "アア") < 0);
@@ -2274,7 +2274,7 @@ module.exports.testcollation_ja = {
         test.ok("ヵー < ヵア", col.compare("ヵー", "ヵア") < 0);
         test.ok("ヷー < ヷア", col.compare("ヷー", "ヷア") < 0);
         test.ok("ヷー < ヷア", col.compare("ヷー", "ヷア") < 0);
-    
+
         test.ok("ィー < ィイ", col.compare("ィー", "ィイ") < 0);
         test.ok("ｨー < ｨイ", col.compare("ｨー", "ｨイ") < 0);
         test.ok("イー < イイ", col.compare("イー", "イイ") < 0);
@@ -2309,7 +2309,7 @@ module.exports.testcollation_ja = {
         test.ok("ヰー < ヰイ", col.compare("ヰー", "ヰイ") < 0);
         test.ok("ヸー < ヸイ", col.compare("ヸー", "ヸイ") < 0);
         test.ok("ヸー < ヸイ", col.compare("ヸー", "ヸイ") < 0);
-    
+
         test.ok("ゥー < ゥウ", col.compare("ゥー", "ゥウ") < 0);
         test.ok("ｩー < ｩウ", col.compare("ｩー", "ｩウ") < 0);
         test.ok("ウー < ウウ", col.compare("ウー", "ウウ") < 0);
@@ -2352,7 +2352,7 @@ module.exports.testcollation_ja = {
         test.ok("ㇽー < ㇽウ", col.compare("ㇽー", "ㇽウ") < 0);
         test.ok("ヴー < ヴウ", col.compare("ヴー", "ヴウ") < 0);
         test.ok("ヴー < ヴウ", col.compare("ヴー", "ヴウ") < 0);
-    
+
         test.ok("ェー < ェエ", col.compare("ェー", "ェエ") < 0);
         test.ok("ｪー < ｪエ", col.compare("ｪー", "ｪエ") < 0);
         test.ok("エー < エエ", col.compare("エー", "エエ") < 0);
@@ -2387,7 +2387,7 @@ module.exports.testcollation_ja = {
         test.ok("ヶー < ヶエ", col.compare("ヶー", "ヶエ") < 0);
         test.ok("ヹー < ヹエ", col.compare("ヹー", "ヹエ") < 0);
         test.ok("ヹー < ヹエ", col.compare("ヹー", "ヹエ") < 0);
-    
+
         test.ok("ォー < ォオ", col.compare("ォー", "ォオ") < 0);
         test.ok("ｫー < ｫオ", col.compare("ｫー", "ｫオ") < 0);
         test.ok("オー < オオ", col.compare("オー", "オオ") < 0);
@@ -2429,7 +2429,7 @@ module.exports.testcollation_ja = {
         test.ok("ヺー < ヺオ", col.compare("ヺー", "ヺオ") < 0);
         test.done();
     },
-    
+
     testJSCollatorKatakanaLengthMarksTer_ja: function(test) {
         test.expect(189);
         var col = new Collator({
@@ -2438,11 +2438,11 @@ module.exports.testcollation_ja = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
-    
+
+        // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
+
         test.ok("ァー < ァア", col.compare("ァー", "ァア") < 0);
         test.ok("ｧー < ｧア", col.compare("ｧー", "ｧア") < 0);
         test.ok("アー < アア", col.compare("アー", "アア") < 0);
@@ -2482,7 +2482,7 @@ module.exports.testcollation_ja = {
         test.ok("ヵー < ヵア", col.compare("ヵー", "ヵア") < 0);
         test.ok("ヷー < ヷア", col.compare("ヷー", "ヷア") < 0);
         test.ok("ヷー < ヷア", col.compare("ヷー", "ヷア") < 0);
-    
+
         test.ok("ィー < ィイ", col.compare("ィー", "ィイ") < 0);
         test.ok("ｨー < ｨイ", col.compare("ｨー", "ｨイ") < 0);
         test.ok("イー < イイ", col.compare("イー", "イイ") < 0);
@@ -2517,7 +2517,7 @@ module.exports.testcollation_ja = {
         test.ok("ヰー < ヰイ", col.compare("ヰー", "ヰイ") < 0);
         test.ok("ヸー < ヸイ", col.compare("ヸー", "ヸイ") < 0);
         test.ok("ヸー < ヸイ", col.compare("ヸー", "ヸイ") < 0);
-    
+
         test.ok("ゥー < ゥウ", col.compare("ゥー", "ゥウ") < 0);
         test.ok("ｩー < ｩウ", col.compare("ｩー", "ｩウ") < 0);
         test.ok("ウー < ウウ", col.compare("ウー", "ウウ") < 0);
@@ -2560,7 +2560,7 @@ module.exports.testcollation_ja = {
         test.ok("ㇽー < ㇽウ", col.compare("ㇽー", "ㇽウ") < 0);
         test.ok("ヴー < ヴウ", col.compare("ヴー", "ヴウ") < 0);
         test.ok("ヴー < ヴウ", col.compare("ヴー", "ヴウ") < 0);
-    
+
         test.ok("ェー < ェエ", col.compare("ェー", "ェエ") < 0);
         test.ok("ｪー < ｪエ", col.compare("ｪー", "ｪエ") < 0);
         test.ok("エー < エエ", col.compare("エー", "エエ") < 0);
@@ -2595,7 +2595,7 @@ module.exports.testcollation_ja = {
         test.ok("ヶー < ヶエ", col.compare("ヶー", "ヶエ") < 0);
         test.ok("ヹー < ヹエ", col.compare("ヹー", "ヹエ") < 0);
         test.ok("ヹー < ヹエ", col.compare("ヹー", "ヹエ") < 0);
-    
+
         test.ok("ォー < ォオ", col.compare("ォー", "ォオ") < 0);
         test.ok("ｫー < ｫオ", col.compare("ｫー", "ｫオ") < 0);
         test.ok("オー < オオ", col.compare("オー", "オオ") < 0);
@@ -2637,7 +2637,7 @@ module.exports.testcollation_ja = {
         test.ok("ヺー < ヺオ", col.compare("ヺー", "ヺオ") < 0);
         test.done();
     },
-    
+
     testJSCollatorKatakanaLengthMarksSec_ja: function(test) {
         test.expect(189);
         var col = new Collator({
@@ -2646,11 +2646,11 @@ module.exports.testcollation_ja = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
-    
+
+        // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
+
         test.ok("ァー = ァア", col.compare("ァー", "ァア") === 0);
         test.ok("ｧー = ｧア", col.compare("ｧー", "ｧア") === 0);
         test.ok("アー = アア", col.compare("アー", "アア") === 0);
@@ -2690,7 +2690,7 @@ module.exports.testcollation_ja = {
         test.ok("ヵー = ヵア", col.compare("ヵー", "ヵア") === 0);
         test.ok("ヷー = ヷア", col.compare("ヷー", "ヷア") === 0);
         test.ok("ヷー = ヷア", col.compare("ヷー", "ヷア") === 0);
-    
+
         test.ok("ィー = ィイ", col.compare("ィー", "ィイ") === 0);
         test.ok("ｨー = ｨイ", col.compare("ｨー", "ｨイ") === 0);
         test.ok("イー = イイ", col.compare("イー", "イイ") === 0);
@@ -2725,7 +2725,7 @@ module.exports.testcollation_ja = {
         test.ok("ヰー = ヰイ", col.compare("ヰー", "ヰイ") === 0);
         test.ok("ヸー = ヸイ", col.compare("ヸー", "ヸイ") === 0);
         test.ok("ヸー = ヸイ", col.compare("ヸー", "ヸイ") === 0);
-    
+
         test.ok("ゥー = ゥウ", col.compare("ゥー", "ゥウ") === 0);
         test.ok("ｩー = ｩウ", col.compare("ｩー", "ｩウ") === 0);
         test.ok("ウー = ウウ", col.compare("ウー", "ウウ") === 0);
@@ -2768,7 +2768,7 @@ module.exports.testcollation_ja = {
         test.ok("ㇽー = ㇽウ", col.compare("ㇽー", "ㇽウ") === 0);
         test.ok("ヴー = ヴウ", col.compare("ヴー", "ヴウ") === 0);
         test.ok("ヴー = ヴウ", col.compare("ヴー", "ヴウ") === 0);
-    
+
         test.ok("ェー = ェエ", col.compare("ェー", "ェエ") === 0);
         test.ok("ｪー = ｪエ", col.compare("ｪー", "ｪエ") === 0);
         test.ok("エー = エエ", col.compare("エー", "エエ") === 0);
@@ -2803,7 +2803,7 @@ module.exports.testcollation_ja = {
         test.ok("ヶー = ヶエ", col.compare("ヶー", "ヶエ") === 0);
         test.ok("ヹー = ヹエ", col.compare("ヹー", "ヹエ") === 0);
         test.ok("ヹー = ヹエ", col.compare("ヹー", "ヹエ") === 0);
-    
+
         test.ok("ォー = ォオ", col.compare("ォー", "ォオ") === 0);
         test.ok("ｫー = ｫオ", col.compare("ｫー", "ｫオ") === 0);
         test.ok("オー = オオ", col.compare("オー", "オオ") === 0);
@@ -2845,7 +2845,7 @@ module.exports.testcollation_ja = {
         test.ok("ヺー = ヺオ", col.compare("ヺー", "ヺオ") === 0);
         test.done();
     },
-    
+
     testJSCollatorKatakanaLengthMarksPri_ja: function(test) {
         test.expect(189);
         var col = new Collator({
@@ -2854,11 +2854,11 @@ module.exports.testcollation_ja = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
-    
+
+        // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
+
         test.ok("ァー = ァア", col.compare("ァー", "ァア") === 0);
         test.ok("ｧー = ｧア", col.compare("ｧー", "ｧア") === 0);
         test.ok("アー = アア", col.compare("アー", "アア") === 0);
@@ -2898,7 +2898,7 @@ module.exports.testcollation_ja = {
         test.ok("ヵー = ヵア", col.compare("ヵー", "ヵア") === 0);
         test.ok("ヷー = ヷア", col.compare("ヷー", "ヷア") === 0);
         test.ok("ヷー = ヷア", col.compare("ヷー", "ヷア") === 0);
-    
+
         test.ok("ィー = ィイ", col.compare("ィー", "ィイ") === 0);
         test.ok("ｨー = ｨイ", col.compare("ｨー", "ｨイ") === 0);
         test.ok("イー = イイ", col.compare("イー", "イイ") === 0);
@@ -2933,7 +2933,7 @@ module.exports.testcollation_ja = {
         test.ok("ヰー = ヰイ", col.compare("ヰー", "ヰイ") === 0);
         test.ok("ヸー = ヸイ", col.compare("ヸー", "ヸイ") === 0);
         test.ok("ヸー = ヸイ", col.compare("ヸー", "ヸイ") === 0);
-    
+
         test.ok("ゥー = ゥウ", col.compare("ゥー", "ゥウ") === 0);
         test.ok("ｩー = ｩウ", col.compare("ｩー", "ｩウ") === 0);
         test.ok("ウー = ウウ", col.compare("ウー", "ウウ") === 0);
@@ -2976,7 +2976,7 @@ module.exports.testcollation_ja = {
         test.ok("ㇽー = ㇽウ", col.compare("ㇽー", "ㇽウ") === 0);
         test.ok("ヴー = ヴウ", col.compare("ヴー", "ヴウ") === 0);
         test.ok("ヴー = ヴウ", col.compare("ヴー", "ヴウ") === 0);
-    
+
         test.ok("ェー = ェエ", col.compare("ェー", "ェエ") === 0);
         test.ok("ｪー = ｪエ", col.compare("ｪー", "ｪエ") === 0);
         test.ok("エー = エエ", col.compare("エー", "エエ") === 0);
@@ -3011,7 +3011,7 @@ module.exports.testcollation_ja = {
         test.ok("ヶー = ヶエ", col.compare("ヶー", "ヶエ") === 0);
         test.ok("ヹー = ヹエ", col.compare("ヹー", "ヹエ") === 0);
         test.ok("ヹー = ヹエ", col.compare("ヹー", "ヹエ") === 0);
-    
+
         test.ok("ォー = ォオ", col.compare("ォー", "ォオ") === 0);
         test.ok("ｫー = ｫオ", col.compare("ｫー", "ｫオ") === 0);
         test.ok("オー = オオ", col.compare("オー", "オオ") === 0);
@@ -3053,7 +3053,7 @@ module.exports.testcollation_ja = {
         test.ok("ヺー = ヺオ", col.compare("ヺー", "ヺオ") === 0);
         test.done();
     },
-    
+
     testJSCollatorKatakanaIterationMarksQuat_ja: function(test) {
         test.expect(310);
         var col = new Collator({
@@ -3062,11 +3062,11 @@ module.exports.testcollation_ja = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
-        
+
         test.ok("アヽ < アア", col.compare("アヽ", "アア") < 0);
         test.ok("ｱヽ < ｱア", col.compare("ｱヽ", "ｱア") < 0);
         test.ok("ァヽ < ァア", col.compare("ァヽ", "ァア") < 0);
@@ -3075,7 +3075,7 @@ module.exports.testcollation_ja = {
         test.ok("ｲヽ < ｲイ", col.compare("ｲヽ", "ｲイ") < 0);
         test.ok("ィヽ < ィイ", col.compare("ィヽ", "ィイ") < 0);
         test.ok("ｨヽ < ｨイ", col.compare("ｨヽ", "ｨイ") < 0);
-        
+
         test.ok("ウヽ < ウウ", col.compare("ウヽ", "ウウ") < 0);
         test.ok("ｳヽ < ｳウ", col.compare("ｳヽ", "ｳウ") < 0);
         test.ok("ゥヽ < ゥウ", col.compare("ゥヽ", "ゥウ") < 0);
@@ -3088,23 +3088,23 @@ module.exports.testcollation_ja = {
         test.ok("ｩヾ < ｩヴ", col.compare("ｩヾ", "ｩヴ") < 0);
         test.ok("ヴヾ < ヴヴ", col.compare("ヴヾ", "ヴヴ") < 0);
         test.ok("ヴヾ < ヴヴ", col.compare("ヴヾ", "ヴヴ") < 0);
-        
+
         test.ok("エヽ < エエ", col.compare("エヽ", "エエ") < 0);
         test.ok("ｴヽ < ｴエ", col.compare("ｴヽ", "ｴエ") < 0);
         test.ok("ェヽ < ェエ", col.compare("ェヽ", "ェエ") < 0);
         test.ok("ｪヽ < ｪエ", col.compare("ｪヽ", "ｪエ") < 0);
-        
+
         test.ok("オヽ < オオ", col.compare("オヽ", "オオ") < 0);
         test.ok("ｵヽ < ｵオ", col.compare("ｵヽ", "ｵオ") < 0);
         test.ok("ォヽ < ォオ", col.compare("ォヽ", "ォオ") < 0);
         test.ok("ｫヽ < ｫオ", col.compare("ｫヽ", "ｫオ") < 0);
-        
+
         test.ok("カヽ < カカ", col.compare("カヽ", "カカ") < 0);
         test.ok("ｶヽ < ｶカ", col.compare("ｶヽ", "ｶカ") < 0);
         test.ok("ヵヽ < ヵカ", col.compare("ヵヽ", "ヵカ") < 0);
         test.ok("ガヽ < ガカ", col.compare("ガヽ", "ガカ") < 0);
         test.ok("ガヽ < ガカ", col.compare("ガヽ", "ガカ") < 0);
-        
+
         test.ok("キヽ < キキ", col.compare("キヽ", "キキ") < 0);
         test.ok("ｷヽ < ｷキ", col.compare("ｷヽ", "ｷキ") < 0);
         test.ok("ギヽ < ギキ", col.compare("ギヽ", "ギキ") < 0);
@@ -3113,7 +3113,7 @@ module.exports.testcollation_ja = {
         test.ok("ｷヾ < ｷギ", col.compare("ｷヾ", "ｷギ") < 0);
         test.ok("ギヾ < ギギ", col.compare("ギヾ", "ギギ") < 0);
         test.ok("ギヾ < ギギ", col.compare("ギヾ", "ギギ") < 0);
-    
+
         test.ok("クヽ < クク", col.compare("クヽ", "クク") < 0);
         test.ok("ｸヽ < ｸク", col.compare("ｸヽ", "ｸク") < 0);
         test.ok("ㇰヽ < ㇰク", col.compare("ㇰヽ", "ㇰク") < 0);
@@ -3124,13 +3124,13 @@ module.exports.testcollation_ja = {
         test.ok("ㇰヾ < ㇰグ", col.compare("ㇰヾ", "ㇰグ") < 0);
         test.ok("グヾ < ググ", col.compare("グヾ", "ググ") < 0);
         test.ok("グヾ < ググ", col.compare("グヾ", "ググ") < 0);
-        
+
         test.ok("ケヽ < ケケ", col.compare("ケヽ", "ケケ") < 0);
         test.ok("ｹヽ < ｹケ", col.compare("ｹヽ", "ｹケ") < 0);
         test.ok("ヶヽ < ヶケ", col.compare("ヶヽ", "ヶケ") < 0);
         test.ok("ゲヽ < ゲケ", col.compare("ゲヽ", "ゲケ") < 0);
         test.ok("ゲヽ < ゲケ", col.compare("ゲヽ", "ゲケ") < 0);
-        
+
         test.ok("コヽ < ココ", col.compare("コヽ", "ココ") < 0);
         test.ok("ｺヽ < ｺコ", col.compare("ｺヽ", "ｺコ") < 0);
         test.ok("ゴヽ < ゴコ", col.compare("ゴヽ", "ゴコ") < 0);
@@ -3139,7 +3139,7 @@ module.exports.testcollation_ja = {
         test.ok("ｺヾ < ｺゴ", col.compare("ｺヾ", "ｺゴ") < 0);
         test.ok("ゴヾ < ゴゴ", col.compare("ゴヾ", "ゴゴ") < 0);
         test.ok("ゴヾ < ゴゴ", col.compare("ゴヾ", "ゴゴ") < 0);
-        
+
         test.ok("サヽ < ササ", col.compare("サヽ", "ササ") < 0);
         test.ok("ｻヽ < ｻサ", col.compare("ｻヽ", "ｻサ") < 0);
         test.ok("ザヽ < ザサ", col.compare("ザヽ", "ザサ") < 0);
@@ -3148,7 +3148,7 @@ module.exports.testcollation_ja = {
         test.ok("ｻヾ < ｻザ", col.compare("ｻヾ", "ｻザ") < 0);
         test.ok("ザヾ < ザザ", col.compare("ザヾ", "ザザ") < 0);
         test.ok("ザヾ < ザザ", col.compare("ザヾ", "ザザ") < 0);
-    
+
         test.ok("シヽ < シシ", col.compare("シヽ", "シシ") < 0);
         test.ok("ｼヽ < ｼシ", col.compare("ｼヽ", "ｼシ") < 0);
         test.ok("ㇱヽ < ㇱシ", col.compare("ㇱヽ", "ㇱシ") < 0);
@@ -3159,7 +3159,7 @@ module.exports.testcollation_ja = {
         test.ok("ㇱヾ < ㇱジ", col.compare("ㇱヾ", "ㇱジ") < 0);
         test.ok("ジヾ < ジジ", col.compare("ジヾ", "ジジ") < 0);
         test.ok("ジヾ < ジジ", col.compare("ジヾ", "ジジ") < 0);
-    
+
         test.ok("スヽ < スス", col.compare("スヽ", "スス") < 0);
         test.ok("ｽヽ < ｽス", col.compare("ｽヽ", "ｽス") < 0);
         test.ok("ㇲヽ < ㇲス", col.compare("ㇲヽ", "ㇲス") < 0);
@@ -3170,7 +3170,7 @@ module.exports.testcollation_ja = {
         test.ok("ㇲヾ < ㇲズ", col.compare("ㇲヾ", "ㇲズ") < 0);
         test.ok("ズヾ < ズズ", col.compare("ズヾ", "ズズ") < 0);
         test.ok("ズヾ < ズズ", col.compare("ズヾ", "ズズ") < 0);
-    
+
         test.ok("セヽ < セセ", col.compare("セヽ", "セセ") < 0);
         test.ok("ｾヽ < ｾセ", col.compare("ｾヽ", "ｾセ") < 0);
         test.ok("ゼヽ < ゼセ", col.compare("ゼヽ", "ゼセ") < 0);
@@ -3179,7 +3179,7 @@ module.exports.testcollation_ja = {
         test.ok("ｾヾ < ｾゼ", col.compare("ｾヾ", "ｾゼ") < 0);
         test.ok("ゼヾ < ゼゼ", col.compare("ゼヾ", "ゼゼ") < 0);
         test.ok("ゼヾ < ゼゼ", col.compare("ゼヾ", "ゼゼ") < 0);
-    
+
         test.ok("ソヽ < ソソ", col.compare("ソヽ", "ソソ") < 0);
         test.ok("ｿヽ < ｿソ", col.compare("ｿヽ", "ｿソ") < 0);
         test.ok("ゾヽ < ゾソ", col.compare("ゾヽ", "ゾソ") < 0);
@@ -3188,7 +3188,7 @@ module.exports.testcollation_ja = {
         test.ok("ｿヾ < ｿゾ", col.compare("ｿヾ", "ｿゾ") < 0);
         test.ok("ゾヾ < ゾゾ", col.compare("ゾヾ", "ゾゾ") < 0);
         test.ok("ゾヾ < ゾゾ", col.compare("ゾヾ", "ゾゾ") < 0);
-    
+
         test.ok("タヽ < タタ", col.compare("タヽ", "タタ") < 0);
         test.ok("ﾀヽ < ﾀタ", col.compare("ﾀヽ", "ﾀタ") < 0);
         test.ok("ダヽ < ダタ", col.compare("ダヽ", "ダタ") < 0);
@@ -3197,7 +3197,7 @@ module.exports.testcollation_ja = {
         test.ok("ﾀヾ < ﾀダ", col.compare("ﾀヾ", "ﾀダ") < 0);
         test.ok("ダヾ < ダダ", col.compare("ダヾ", "ダダ") < 0);
         test.ok("ダヾ < ダダ", col.compare("ダヾ", "ダダ") < 0);
-    
+
         test.ok("チヽ < チチ", col.compare("チヽ", "チチ") < 0);
         test.ok("ﾁヽ < ﾁチ", col.compare("ﾁヽ", "ﾁチ") < 0);
         test.ok("ヂヽ < ヂチ", col.compare("ヂヽ", "ヂチ") < 0);
@@ -3206,7 +3206,7 @@ module.exports.testcollation_ja = {
         test.ok("ﾁヾ < ﾁヂ", col.compare("ﾁヾ", "ﾁヂ") < 0);
         test.ok("ヂヾ < ヂヂ", col.compare("ヂヾ", "ヂヂ") < 0);
         test.ok("ヂヾ < ヂヂ", col.compare("ヂヾ", "ヂヂ") < 0);
-    
+
         test.ok("ツヽ < ツツ", col.compare("ツヽ", "ツツ") < 0);
         test.ok("ﾂヽ < ﾂツ", col.compare("ﾂヽ", "ﾂツ") < 0);
         test.ok("ッヽ < ッツ", col.compare("ッヽ", "ッツ") < 0);
@@ -3223,7 +3223,7 @@ module.exports.testcollation_ja = {
         test.ok("ｯヾ < ｯヅ", col.compare("ｯヾ", "ｯヅ") < 0);
         test.ok("ツヾ < ツヅ", col.compare("ツヾ", "ツヅ") < 0);
         test.ok("ﾂヾ < ﾂヅ", col.compare("ﾂヾ", "ﾂヅ") < 0);
-    
+
         test.ok("テヽ < テテ", col.compare("テヽ", "テテ") < 0);
         test.ok("ﾃヽ < ﾃテ", col.compare("ﾃヽ", "ﾃテ") < 0);
         test.ok("デヽ < デテ", col.compare("デヽ", "デテ") < 0);
@@ -3232,7 +3232,7 @@ module.exports.testcollation_ja = {
         test.ok("ﾃヾ < ﾃデ", col.compare("ﾃヾ", "ﾃデ") < 0);
         test.ok("デヾ < デデ", col.compare("デヾ", "デデ") < 0);
         test.ok("デヾ < デデ", col.compare("デヾ", "デデ") < 0);
-    
+
         test.ok("トヽ < トト", col.compare("トヽ", "トト") < 0);
         test.ok("ﾄヽ < ﾄト", col.compare("ﾄヽ", "ﾄト") < 0);
         test.ok("ㇳヽ < ㇳト", col.compare("ㇳヽ", "ㇳト") < 0);
@@ -3243,23 +3243,23 @@ module.exports.testcollation_ja = {
         test.ok("ㇳヾ < ㇳド", col.compare("ㇳヾ", "ㇳド") < 0);
         test.ok("ドヾ < ドド", col.compare("ドヾ", "ドド") < 0);
         test.ok("ドヾ < ドド", col.compare("ドヾ", "ドド") < 0);
-    
+
         test.ok("ナヽ < ナナ", col.compare("ナヽ", "ナナ") < 0);
         test.ok("ﾅヽ < ﾅナ", col.compare("ﾅヽ", "ﾅナ") < 0);
-    
+
         test.ok("ニヽ < ニニ", col.compare("ニヽ", "ニニ") < 0);
         test.ok("ﾆヽ < ﾆニ", col.compare("ﾆヽ", "ﾆニ") < 0);
-    
+
         test.ok("ヌヽ < ヌヌ", col.compare("ヌヽ", "ヌヌ") < 0);
         test.ok("ﾇヽ < ﾇヌ", col.compare("ﾇヽ", "ﾇヌ") < 0);
         test.ok("ㇴヽ < ㇴヌ", col.compare("ㇴヽ", "ㇴヌ") < 0);
-        
+
         test.ok("ネヽ < ネネ", col.compare("ネヽ", "ネネ") < 0);
         test.ok("ﾈヽ < ﾈネ", col.compare("ﾈヽ", "ﾈネ") < 0);
-        
+
         test.ok("ノヽ < ノノ", col.compare("ノヽ", "ノノ") < 0);
         test.ok("ﾉヽ < ﾉノ", col.compare("ﾉヽ", "ﾉノ") < 0);
-        
+
         test.ok("ハヽ < ハハ", col.compare("ハヽ", "ハハ") < 0);
         test.ok("ﾊヽ < ﾊハ", col.compare("ﾊヽ", "ﾊハ") < 0);
         test.ok("ㇵヽ < ㇵハ", col.compare("ㇵヽ", "ㇵハ") < 0);
@@ -3274,7 +3274,7 @@ module.exports.testcollation_ja = {
         test.ok("パヽ < パハ", col.compare("パヽ", "パハ") < 0);
         test.ok("パヾ < パバ", col.compare("パヾ", "パバ") < 0);
         test.ok("パヾ < パバ", col.compare("パヾ", "パバ") < 0);
-        
+
         test.ok("ヒヽ < ヒヒ", col.compare("ヒヽ", "ヒヒ") < 0);
         test.ok("ﾋヽ < ﾋヒ", col.compare("ﾋヽ", "ﾋヒ") < 0);
         test.ok("ㇶヽ < ㇶヒ", col.compare("ㇶヽ", "ㇶヒ") < 0);
@@ -3289,7 +3289,7 @@ module.exports.testcollation_ja = {
         test.ok("ピヽ < ピヒ", col.compare("ピヽ", "ピヒ") < 0);
         test.ok("ピヾ < ピビ", col.compare("ピヾ", "ピビ") < 0);
         test.ok("ピヾ < ピビ", col.compare("ピヾ", "ピビ") < 0);
-        
+
         test.ok("フヽ < フフ", col.compare("フヽ", "フフ") < 0);
         test.ok("ﾌヽ < ﾌフ", col.compare("ﾌヽ", "ﾌフ") < 0);
         test.ok("ㇷヽ < ㇷフ", col.compare("ㇷヽ", "ㇷフ") < 0);
@@ -3304,7 +3304,7 @@ module.exports.testcollation_ja = {
         test.ok("プヽ < プフ", col.compare("プヽ", "プフ") < 0);
         test.ok("プヾ < プブ", col.compare("プヾ", "プブ") < 0);
         test.ok("プヾ < プブ", col.compare("プヾ", "プブ") < 0);
-        
+
         test.ok("ヘヽ < ヘヘ", col.compare("ヘヽ", "ヘヘ") < 0);
         test.ok("ﾍヽ < ﾍヘ", col.compare("ﾍヽ", "ﾍヘ") < 0);
         test.ok("ㇸヽ < ㇸヘ", col.compare("ㇸヽ", "ㇸヘ") < 0);
@@ -3319,7 +3319,7 @@ module.exports.testcollation_ja = {
         test.ok("ペヽ < ペヘ", col.compare("ペヽ", "ペヘ") < 0);
         test.ok("ペヾ < ペベ", col.compare("ペヾ", "ペベ") < 0);
         test.ok("ペヾ < ペベ", col.compare("ペヾ", "ペベ") < 0);
-        
+
         test.ok("ホヽ < ホホ", col.compare("ホヽ", "ホホ") < 0);
         test.ok("ﾎヽ < ﾎホ", col.compare("ﾎヽ", "ﾎホ") < 0);
         test.ok("ㇹヽ < ㇹホ", col.compare("ㇹヽ", "ㇹホ") < 0);
@@ -3334,58 +3334,58 @@ module.exports.testcollation_ja = {
         test.ok("ポヽ < ポホ", col.compare("ポヽ", "ポホ") < 0);
         test.ok("ポヾ < ポボ", col.compare("ポヾ", "ポボ") < 0);
         test.ok("ポヾ < ポボ", col.compare("ポヾ", "ポボ") < 0);
-        
+
         test.ok("マヽ < ママ", col.compare("マヽ", "ママ") < 0);
         test.ok("ﾏヽ < ﾏマ", col.compare("ﾏヽ", "ﾏマ") < 0);
-        
+
         test.ok("ミヽ < ミミ", col.compare("ミヽ", "ミミ") < 0);
         test.ok("ﾐヽ < ﾐミ", col.compare("ﾐヽ", "ﾐミ") < 0);
-        
+
         test.ok("ムヽ < ムム", col.compare("ムヽ", "ムム") < 0);
         test.ok("ﾑヽ < ﾑム", col.compare("ﾑヽ", "ﾑム") < 0);
         test.ok("ㇺヽ < ㇺム", col.compare("ㇺヽ", "ㇺム") < 0);
-        
+
         test.ok("メヽ < メメ", col.compare("メヽ", "メメ") < 0);
         test.ok("ﾒヽ < ﾒメ", col.compare("ﾒヽ", "ﾒメ") < 0);
-        
+
         test.ok("モヽ < モモ", col.compare("モヽ", "モモ") < 0);
         test.ok("ﾓヽ < ﾓモ", col.compare("ﾓヽ", "ﾓモ") < 0);
-        
+
         test.ok("ヤヽ < ヤヤ", col.compare("ヤヽ", "ヤヤ") < 0);
         test.ok("ﾔヽ < ﾔヤ", col.compare("ﾔヽ", "ﾔヤ") < 0);
         test.ok("ャヽ < ャヤ", col.compare("ャヽ", "ャヤ") < 0);
         test.ok("ｬヽ < ｬヤ", col.compare("ｬヽ", "ｬヤ") < 0);
-        
+
         test.ok("ユヽ < ユユ", col.compare("ユヽ", "ユユ") < 0);
         test.ok("ﾕヽ < ﾕユ", col.compare("ﾕヽ", "ﾕユ") < 0);
         test.ok("ュヽ < ュユ", col.compare("ュヽ", "ュユ") < 0);
         test.ok("ｭヽ < ｭユ", col.compare("ｭヽ", "ｭユ") < 0);
-        
+
         test.ok("ヨヽ < ヨヨ", col.compare("ヨヽ", "ヨヨ") < 0);
         test.ok("ﾖヽ < ﾖヨ", col.compare("ﾖヽ", "ﾖヨ") < 0);
         test.ok("ョヽ < ョヨ", col.compare("ョヽ", "ョヨ") < 0);
         test.ok("ｮヽ < ｮヨ", col.compare("ｮヽ", "ｮヨ") < 0);
-        
+
         test.ok("ラヽ < ララ", col.compare("ラヽ", "ララ") < 0);
         test.ok("ﾗヽ < ﾗラ", col.compare("ﾗヽ", "ﾗラ") < 0);
         test.ok("ㇻヽ < ㇻラ", col.compare("ㇻヽ", "ㇻラ") < 0);
-        
+
         test.ok("リヽ < リリ", col.compare("リヽ", "リリ") < 0);
         test.ok("ﾘヽ < ﾘリ", col.compare("ﾘヽ", "ﾘリ") < 0);
         test.ok("ㇼヽ < ㇼリ", col.compare("ㇼヽ", "ㇼリ") < 0);
-        
+
         test.ok("ルヽ < ルル", col.compare("ルヽ", "ルル") < 0);
         test.ok("ﾙヽ < ﾙル", col.compare("ﾙヽ", "ﾙル") < 0);
         test.ok("ㇽヽ < ㇽル", col.compare("ㇽヽ", "ㇽル") < 0);
-        
+
         test.ok("レヽ < レレ", col.compare("レヽ", "レレ") < 0);
         test.ok("ﾚヽ < ﾚレ", col.compare("ﾚヽ", "ﾚレ") < 0);
         test.ok("ㇾヽ < ㇾレ", col.compare("ㇾヽ", "ㇾレ") < 0);
-        
+
         test.ok("ロヽ < ロロ", col.compare("ロヽ", "ロロ") < 0);
         test.ok("ﾛヽ < ﾛロ", col.compare("ﾛヽ", "ﾛロ") < 0);
         test.ok("ㇿヽ < ㇿロ", col.compare("ㇿヽ", "ㇿロ") < 0);
-        
+
         test.ok("ワヽ < ワワ", col.compare("ワヽ", "ワワ") < 0);
         test.ok("ﾜヽ < ﾜワ", col.compare("ﾜヽ", "ﾜワ") < 0);
         test.ok("ヮヽ < ヮワ", col.compare("ヮヽ", "ヮワ") < 0);
@@ -3396,21 +3396,21 @@ module.exports.testcollation_ja = {
         test.ok("ヷヾ < ヷワ", col.compare("ヷヾ", "ヷヷ") < 0);
         test.ok("ヷヾ < ヷヷ", col.compare("ヷヾ", "ヷヷ") < 0);
         test.ok("ヮヾ < ヮヷ", col.compare("ヮヾ", "ヮヷ") < 0);
-        
+
         test.ok("ヰヽ < ヰヰ", col.compare("ヰヽ", "ヰヰ") < 0);
         test.ok("ヸヽ < ヸヰ", col.compare("ヸヽ", "ヸヰ") < 0);
         test.ok("ヸヽ < ヸヰ", col.compare("ヸヽ", "ヸヰ") < 0);
         test.ok("ヰヾ < ヰヸ", col.compare("ヰヾ", "ヰヸ") < 0);
         test.ok("ヸヾ < ヸヸ", col.compare("ヸヾ", "ヸヸ") < 0);
         test.ok("ヸヾ < ヸヸ", col.compare("ヸヾ", "ヸヸ") < 0);
-        
+
         test.ok("ヱヽ < ヱヱ", col.compare("ヱヽ", "ヱヱ") < 0);
         test.ok("ヹヽ < ヹヱ", col.compare("ヹヽ", "ヹヱ") < 0);
         test.ok("ヹヽ < ヹヱ", col.compare("ヹヽ", "ヹヱ") < 0);
         test.ok("ヱヾ < ヱヹ", col.compare("ヱヾ", "ヱヹ") < 0);
         test.ok("ヹヾ < ヹヹ", col.compare("ヹヾ", "ヹヹ") < 0);
         test.ok("ヹヾ < ヹヹ", col.compare("ヹヾ", "ヹヹ") < 0);
-        
+
         test.ok("ヲヽ < ヲヲ", col.compare("ヲヽ", "ヲヲ") < 0);
         test.ok("ｦヽ < ｦヲ", col.compare("ｦヽ", "ｦヲ") < 0);
         test.ok("ヺヽ < ヺヲ", col.compare("ヺヽ", "ヺヲ") < 0);
@@ -3419,12 +3419,12 @@ module.exports.testcollation_ja = {
         test.ok("ｦヾ < ｦヺ", col.compare("ｦヾ", "ｦヺ") < 0);
         test.ok("ヺヾ < ヺヺ", col.compare("ヺヾ", "ヺヺ") < 0);
         test.ok("ヺヾ < ヺヺ", col.compare("ヺヾ", "ヺヺ") < 0);
-        
+
         test.ok("ンヽ < ンン", col.compare("ンヽ", "ンン") < 0);
-        test.ok("ﾝヽ < ﾝン", col.compare("ﾝヽ", "ﾝン") < 0);    
+        test.ok("ﾝヽ < ﾝン", col.compare("ﾝヽ", "ﾝン") < 0);
         test.done();
     },
-    
+
     testJSCollatorKatakanaIterationMarksTer_ja: function(test) {
         test.expect(310);
         var col = new Collator({
@@ -3433,11 +3433,11 @@ module.exports.testcollation_ja = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
-        
+
         test.ok("アヽ < アア", col.compare("アヽ", "アア") < 0);
         test.ok("ｱヽ < ｱア", col.compare("ｱヽ", "ｱア") < 0);
         test.ok("ァヽ < ァア", col.compare("ァヽ", "ァア") < 0);
@@ -3446,7 +3446,7 @@ module.exports.testcollation_ja = {
         test.ok("ｲヽ < ｲイ", col.compare("ｲヽ", "ｲイ") < 0);
         test.ok("ィヽ < ィイ", col.compare("ィヽ", "ィイ") < 0);
         test.ok("ｨヽ < ｨイ", col.compare("ｨヽ", "ｨイ") < 0);
-        
+
         test.ok("ウヽ < ウウ", col.compare("ウヽ", "ウウ") < 0);
         test.ok("ｳヽ < ｳウ", col.compare("ｳヽ", "ｳウ") < 0);
         test.ok("ゥヽ < ゥウ", col.compare("ゥヽ", "ゥウ") < 0);
@@ -3459,23 +3459,23 @@ module.exports.testcollation_ja = {
         test.ok("ｩヾ < ｩヴ", col.compare("ｩヾ", "ｩヴ") < 0);
         test.ok("ヴヾ < ヴヴ", col.compare("ヴヾ", "ヴヴ") < 0);
         test.ok("ヴヾ < ヴヴ", col.compare("ヴヾ", "ヴヴ") < 0);
-        
+
         test.ok("エヽ < エエ", col.compare("エヽ", "エエ") < 0);
         test.ok("ｴヽ < ｴエ", col.compare("ｴヽ", "ｴエ") < 0);
         test.ok("ェヽ < ェエ", col.compare("ェヽ", "ェエ") < 0);
         test.ok("ｪヽ < ｪエ", col.compare("ｪヽ", "ｪエ") < 0);
-        
+
         test.ok("オヽ < オオ", col.compare("オヽ", "オオ") < 0);
         test.ok("ｵヽ < ｵオ", col.compare("ｵヽ", "ｵオ") < 0);
         test.ok("ォヽ < ォオ", col.compare("ォヽ", "ォオ") < 0);
         test.ok("ｫヽ < ｫオ", col.compare("ｫヽ", "ｫオ") < 0);
-        
+
         test.ok("カヽ < カカ", col.compare("カヽ", "カカ") < 0);
         test.ok("ｶヽ < ｶカ", col.compare("ｶヽ", "ｶカ") < 0);
         test.ok("ヵヽ < ヵカ", col.compare("ヵヽ", "ヵカ") < 0);
         test.ok("ガヽ < ガカ", col.compare("ガヽ", "ガカ") < 0);
         test.ok("ガヽ < ガカ", col.compare("ガヽ", "ガカ") < 0);
-        
+
         test.ok("キヽ < キキ", col.compare("キヽ", "キキ") < 0);
         test.ok("ｷヽ < ｷキ", col.compare("ｷヽ", "ｷキ") < 0);
         test.ok("ギヽ < ギキ", col.compare("ギヽ", "ギキ") < 0);
@@ -3484,7 +3484,7 @@ module.exports.testcollation_ja = {
         test.ok("ｷヾ < ｷギ", col.compare("ｷヾ", "ｷギ") < 0);
         test.ok("ギヾ < ギギ", col.compare("ギヾ", "ギギ") < 0);
         test.ok("ギヾ < ギギ", col.compare("ギヾ", "ギギ") < 0);
-    
+
         test.ok("クヽ < クク", col.compare("クヽ", "クク") < 0);
         test.ok("ｸヽ < ｸク", col.compare("ｸヽ", "ｸク") < 0);
         test.ok("ㇰヽ < ㇰク", col.compare("ㇰヽ", "ㇰク") < 0);
@@ -3495,13 +3495,13 @@ module.exports.testcollation_ja = {
         test.ok("ㇰヾ < ㇰグ", col.compare("ㇰヾ", "ㇰグ") < 0);
         test.ok("グヾ < ググ", col.compare("グヾ", "ググ") < 0);
         test.ok("グヾ < ググ", col.compare("グヾ", "ググ") < 0);
-        
+
         test.ok("ケヽ < ケケ", col.compare("ケヽ", "ケケ") < 0);
         test.ok("ｹヽ < ｹケ", col.compare("ｹヽ", "ｹケ") < 0);
         test.ok("ヶヽ < ヶケ", col.compare("ヶヽ", "ヶケ") < 0);
         test.ok("ゲヽ < ゲケ", col.compare("ゲヽ", "ゲケ") < 0);
         test.ok("ゲヽ < ゲケ", col.compare("ゲヽ", "ゲケ") < 0);
-        
+
         test.ok("コヽ < ココ", col.compare("コヽ", "ココ") < 0);
         test.ok("ｺヽ < ｺコ", col.compare("ｺヽ", "ｺコ") < 0);
         test.ok("ゴヽ < ゴコ", col.compare("ゴヽ", "ゴコ") < 0);
@@ -3510,7 +3510,7 @@ module.exports.testcollation_ja = {
         test.ok("ｺヾ < ｺゴ", col.compare("ｺヾ", "ｺゴ") < 0);
         test.ok("ゴヾ < ゴゴ", col.compare("ゴヾ", "ゴゴ") < 0);
         test.ok("ゴヾ < ゴゴ", col.compare("ゴヾ", "ゴゴ") < 0);
-        
+
         test.ok("サヽ < ササ", col.compare("サヽ", "ササ") < 0);
         test.ok("ｻヽ < ｻサ", col.compare("ｻヽ", "ｻサ") < 0);
         test.ok("ザヽ < ザサ", col.compare("ザヽ", "ザサ") < 0);
@@ -3519,7 +3519,7 @@ module.exports.testcollation_ja = {
         test.ok("ｻヾ < ｻザ", col.compare("ｻヾ", "ｻザ") < 0);
         test.ok("ザヾ < ザザ", col.compare("ザヾ", "ザザ") < 0);
         test.ok("ザヾ < ザザ", col.compare("ザヾ", "ザザ") < 0);
-    
+
         test.ok("シヽ < シシ", col.compare("シヽ", "シシ") < 0);
         test.ok("ｼヽ < ｼシ", col.compare("ｼヽ", "ｼシ") < 0);
         test.ok("ㇱヽ < ㇱシ", col.compare("ㇱヽ", "ㇱシ") < 0);
@@ -3530,7 +3530,7 @@ module.exports.testcollation_ja = {
         test.ok("ㇱヾ < ㇱジ", col.compare("ㇱヾ", "ㇱジ") < 0);
         test.ok("ジヾ < ジジ", col.compare("ジヾ", "ジジ") < 0);
         test.ok("ジヾ < ジジ", col.compare("ジヾ", "ジジ") < 0);
-    
+
         test.ok("スヽ < スス", col.compare("スヽ", "スス") < 0);
         test.ok("ｽヽ < ｽス", col.compare("ｽヽ", "ｽス") < 0);
         test.ok("ㇲヽ < ㇲス", col.compare("ㇲヽ", "ㇲス") < 0);
@@ -3541,7 +3541,7 @@ module.exports.testcollation_ja = {
         test.ok("ㇲヾ < ㇲズ", col.compare("ㇲヾ", "ㇲズ") < 0);
         test.ok("ズヾ < ズズ", col.compare("ズヾ", "ズズ") < 0);
         test.ok("ズヾ < ズズ", col.compare("ズヾ", "ズズ") < 0);
-    
+
         test.ok("セヽ < セセ", col.compare("セヽ", "セセ") < 0);
         test.ok("ｾヽ < ｾセ", col.compare("ｾヽ", "ｾセ") < 0);
         test.ok("ゼヽ < ゼセ", col.compare("ゼヽ", "ゼセ") < 0);
@@ -3550,7 +3550,7 @@ module.exports.testcollation_ja = {
         test.ok("ｾヾ < ｾゼ", col.compare("ｾヾ", "ｾゼ") < 0);
         test.ok("ゼヾ < ゼゼ", col.compare("ゼヾ", "ゼゼ") < 0);
         test.ok("ゼヾ < ゼゼ", col.compare("ゼヾ", "ゼゼ") < 0);
-    
+
         test.ok("ソヽ < ソソ", col.compare("ソヽ", "ソソ") < 0);
         test.ok("ｿヽ < ｿソ", col.compare("ｿヽ", "ｿソ") < 0);
         test.ok("ゾヽ < ゾソ", col.compare("ゾヽ", "ゾソ") < 0);
@@ -3559,7 +3559,7 @@ module.exports.testcollation_ja = {
         test.ok("ｿヾ < ｿゾ", col.compare("ｿヾ", "ｿゾ") < 0);
         test.ok("ゾヾ < ゾゾ", col.compare("ゾヾ", "ゾゾ") < 0);
         test.ok("ゾヾ < ゾゾ", col.compare("ゾヾ", "ゾゾ") < 0);
-    
+
         test.ok("タヽ < タタ", col.compare("タヽ", "タタ") < 0);
         test.ok("ﾀヽ < ﾀタ", col.compare("ﾀヽ", "ﾀタ") < 0);
         test.ok("ダヽ < ダタ", col.compare("ダヽ", "ダタ") < 0);
@@ -3568,7 +3568,7 @@ module.exports.testcollation_ja = {
         test.ok("ﾀヾ < ﾀダ", col.compare("ﾀヾ", "ﾀダ") < 0);
         test.ok("ダヾ < ダダ", col.compare("ダヾ", "ダダ") < 0);
         test.ok("ダヾ < ダダ", col.compare("ダヾ", "ダダ") < 0);
-    
+
         test.ok("チヽ < チチ", col.compare("チヽ", "チチ") < 0);
         test.ok("ﾁヽ < ﾁチ", col.compare("ﾁヽ", "ﾁチ") < 0);
         test.ok("ヂヽ < ヂチ", col.compare("ヂヽ", "ヂチ") < 0);
@@ -3577,7 +3577,7 @@ module.exports.testcollation_ja = {
         test.ok("ﾁヾ < ﾁヂ", col.compare("ﾁヾ", "ﾁヂ") < 0);
         test.ok("ヂヾ < ヂヂ", col.compare("ヂヾ", "ヂヂ") < 0);
         test.ok("ヂヾ < ヂヂ", col.compare("ヂヾ", "ヂヂ") < 0);
-    
+
         test.ok("ツヽ < ツツ", col.compare("ツヽ", "ツツ") < 0);
         test.ok("ﾂヽ < ﾂツ", col.compare("ﾂヽ", "ﾂツ") < 0);
         test.ok("ッヽ < ッツ", col.compare("ッヽ", "ッツ") < 0);
@@ -3594,7 +3594,7 @@ module.exports.testcollation_ja = {
         test.ok("ｯヾ < ｯヅ", col.compare("ｯヾ", "ｯヅ") < 0);
         test.ok("ツヾ < ツヅ", col.compare("ツヾ", "ツヅ") < 0);
         test.ok("ﾂヾ < ﾂヅ", col.compare("ﾂヾ", "ﾂヅ") < 0);
-    
+
         test.ok("テヽ < テテ", col.compare("テヽ", "テテ") < 0);
         test.ok("ﾃヽ < ﾃテ", col.compare("ﾃヽ", "ﾃテ") < 0);
         test.ok("デヽ < デテ", col.compare("デヽ", "デテ") < 0);
@@ -3603,7 +3603,7 @@ module.exports.testcollation_ja = {
         test.ok("ﾃヾ < ﾃデ", col.compare("ﾃヾ", "ﾃデ") < 0);
         test.ok("デヾ < デデ", col.compare("デヾ", "デデ") < 0);
         test.ok("デヾ < デデ", col.compare("デヾ", "デデ") < 0);
-    
+
         test.ok("トヽ < トト", col.compare("トヽ", "トト") < 0);
         test.ok("ﾄヽ < ﾄト", col.compare("ﾄヽ", "ﾄト") < 0);
         test.ok("ㇳヽ < ㇳト", col.compare("ㇳヽ", "ㇳト") < 0);
@@ -3614,23 +3614,23 @@ module.exports.testcollation_ja = {
         test.ok("ㇳヾ < ㇳド", col.compare("ㇳヾ", "ㇳド") < 0);
         test.ok("ドヾ < ドド", col.compare("ドヾ", "ドド") < 0);
         test.ok("ドヾ < ドド", col.compare("ドヾ", "ドド") < 0);
-    
+
         test.ok("ナヽ < ナナ", col.compare("ナヽ", "ナナ") < 0);
         test.ok("ﾅヽ < ﾅナ", col.compare("ﾅヽ", "ﾅナ") < 0);
-    
+
         test.ok("ニヽ < ニニ", col.compare("ニヽ", "ニニ") < 0);
         test.ok("ﾆヽ < ﾆニ", col.compare("ﾆヽ", "ﾆニ") < 0);
-    
+
         test.ok("ヌヽ < ヌヌ", col.compare("ヌヽ", "ヌヌ") < 0);
         test.ok("ﾇヽ < ﾇヌ", col.compare("ﾇヽ", "ﾇヌ") < 0);
         test.ok("ㇴヽ < ㇴヌ", col.compare("ㇴヽ", "ㇴヌ") < 0);
-        
+
         test.ok("ネヽ < ネネ", col.compare("ネヽ", "ネネ") < 0);
         test.ok("ﾈヽ < ﾈネ", col.compare("ﾈヽ", "ﾈネ") < 0);
-        
+
         test.ok("ノヽ < ノノ", col.compare("ノヽ", "ノノ") < 0);
         test.ok("ﾉヽ < ﾉノ", col.compare("ﾉヽ", "ﾉノ") < 0);
-        
+
         test.ok("ハヽ < ハハ", col.compare("ハヽ", "ハハ") < 0);
         test.ok("ﾊヽ < ﾊハ", col.compare("ﾊヽ", "ﾊハ") < 0);
         test.ok("ㇵヽ < ㇵハ", col.compare("ㇵヽ", "ㇵハ") < 0);
@@ -3645,7 +3645,7 @@ module.exports.testcollation_ja = {
         test.ok("パヽ < パハ", col.compare("パヽ", "パハ") < 0);
         test.ok("パヾ < パバ", col.compare("パヾ", "パバ") < 0);
         test.ok("パヾ < パバ", col.compare("パヾ", "パバ") < 0);
-        
+
         test.ok("ヒヽ < ヒヒ", col.compare("ヒヽ", "ヒヒ") < 0);
         test.ok("ﾋヽ < ﾋヒ", col.compare("ﾋヽ", "ﾋヒ") < 0);
         test.ok("ㇶヽ < ㇶヒ", col.compare("ㇶヽ", "ㇶヒ") < 0);
@@ -3660,7 +3660,7 @@ module.exports.testcollation_ja = {
         test.ok("ピヽ < ピヒ", col.compare("ピヽ", "ピヒ") < 0);
         test.ok("ピヾ < ピビ", col.compare("ピヾ", "ピビ") < 0);
         test.ok("ピヾ < ピビ", col.compare("ピヾ", "ピビ") < 0);
-        
+
         test.ok("フヽ < フフ", col.compare("フヽ", "フフ") < 0);
         test.ok("ﾌヽ < ﾌフ", col.compare("ﾌヽ", "ﾌフ") < 0);
         test.ok("ㇷヽ < ㇷフ", col.compare("ㇷヽ", "ㇷフ") < 0);
@@ -3675,7 +3675,7 @@ module.exports.testcollation_ja = {
         test.ok("プヽ < プフ", col.compare("プヽ", "プフ") < 0);
         test.ok("プヾ < プブ", col.compare("プヾ", "プブ") < 0);
         test.ok("プヾ < プブ", col.compare("プヾ", "プブ") < 0);
-        
+
         test.ok("ヘヽ < ヘヘ", col.compare("ヘヽ", "ヘヘ") < 0);
         test.ok("ﾍヽ < ﾍヘ", col.compare("ﾍヽ", "ﾍヘ") < 0);
         test.ok("ㇸヽ < ㇸヘ", col.compare("ㇸヽ", "ㇸヘ") < 0);
@@ -3690,7 +3690,7 @@ module.exports.testcollation_ja = {
         test.ok("ペヽ < ペヘ", col.compare("ペヽ", "ペヘ") < 0);
         test.ok("ペヾ < ペベ", col.compare("ペヾ", "ペベ") < 0);
         test.ok("ペヾ < ペベ", col.compare("ペヾ", "ペベ") < 0);
-        
+
         test.ok("ホヽ < ホホ", col.compare("ホヽ", "ホホ") < 0);
         test.ok("ﾎヽ < ﾎホ", col.compare("ﾎヽ", "ﾎホ") < 0);
         test.ok("ㇹヽ < ㇹホ", col.compare("ㇹヽ", "ㇹホ") < 0);
@@ -3705,58 +3705,58 @@ module.exports.testcollation_ja = {
         test.ok("ポヽ < ポホ", col.compare("ポヽ", "ポホ") < 0);
         test.ok("ポヾ < ポボ", col.compare("ポヾ", "ポボ") < 0);
         test.ok("ポヾ < ポボ", col.compare("ポヾ", "ポボ") < 0);
-        
+
         test.ok("マヽ < ママ", col.compare("マヽ", "ママ") < 0);
         test.ok("ﾏヽ < ﾏマ", col.compare("ﾏヽ", "ﾏマ") < 0);
-        
+
         test.ok("ミヽ < ミミ", col.compare("ミヽ", "ミミ") < 0);
         test.ok("ﾐヽ < ﾐミ", col.compare("ﾐヽ", "ﾐミ") < 0);
-        
+
         test.ok("ムヽ < ムム", col.compare("ムヽ", "ムム") < 0);
         test.ok("ﾑヽ < ﾑム", col.compare("ﾑヽ", "ﾑム") < 0);
         test.ok("ㇺヽ < ㇺム", col.compare("ㇺヽ", "ㇺム") < 0);
-        
+
         test.ok("メヽ < メメ", col.compare("メヽ", "メメ") < 0);
         test.ok("ﾒヽ < ﾒメ", col.compare("ﾒヽ", "ﾒメ") < 0);
-        
+
         test.ok("モヽ < モモ", col.compare("モヽ", "モモ") < 0);
         test.ok("ﾓヽ < ﾓモ", col.compare("ﾓヽ", "ﾓモ") < 0);
-        
+
         test.ok("ヤヽ < ヤヤ", col.compare("ヤヽ", "ヤヤ") < 0);
         test.ok("ﾔヽ < ﾔヤ", col.compare("ﾔヽ", "ﾔヤ") < 0);
         test.ok("ャヽ < ャヤ", col.compare("ャヽ", "ャヤ") < 0);
         test.ok("ｬヽ < ｬヤ", col.compare("ｬヽ", "ｬヤ") < 0);
-        
+
         test.ok("ユヽ < ユユ", col.compare("ユヽ", "ユユ") < 0);
         test.ok("ﾕヽ < ﾕユ", col.compare("ﾕヽ", "ﾕユ") < 0);
         test.ok("ュヽ < ュユ", col.compare("ュヽ", "ュユ") < 0);
         test.ok("ｭヽ < ｭユ", col.compare("ｭヽ", "ｭユ") < 0);
-        
+
         test.ok("ヨヽ < ヨヨ", col.compare("ヨヽ", "ヨヨ") < 0);
         test.ok("ﾖヽ < ﾖヨ", col.compare("ﾖヽ", "ﾖヨ") < 0);
         test.ok("ョヽ < ョヨ", col.compare("ョヽ", "ョヨ") < 0);
         test.ok("ｮヽ < ｮヨ", col.compare("ｮヽ", "ｮヨ") < 0);
-        
+
         test.ok("ラヽ < ララ", col.compare("ラヽ", "ララ") < 0);
         test.ok("ﾗヽ < ﾗラ", col.compare("ﾗヽ", "ﾗラ") < 0);
         test.ok("ㇻヽ < ㇻラ", col.compare("ㇻヽ", "ㇻラ") < 0);
-        
+
         test.ok("リヽ < リリ", col.compare("リヽ", "リリ") < 0);
         test.ok("ﾘヽ < ﾘリ", col.compare("ﾘヽ", "ﾘリ") < 0);
         test.ok("ㇼヽ < ㇼリ", col.compare("ㇼヽ", "ㇼリ") < 0);
-        
+
         test.ok("ルヽ < ルル", col.compare("ルヽ", "ルル") < 0);
         test.ok("ﾙヽ < ﾙル", col.compare("ﾙヽ", "ﾙル") < 0);
         test.ok("ㇽヽ < ㇽル", col.compare("ㇽヽ", "ㇽル") < 0);
-        
+
         test.ok("レヽ < レレ", col.compare("レヽ", "レレ") < 0);
         test.ok("ﾚヽ < ﾚレ", col.compare("ﾚヽ", "ﾚレ") < 0);
         test.ok("ㇾヽ < ㇾレ", col.compare("ㇾヽ", "ㇾレ") < 0);
-        
+
         test.ok("ロヽ < ロロ", col.compare("ロヽ", "ロロ") < 0);
         test.ok("ﾛヽ < ﾛロ", col.compare("ﾛヽ", "ﾛロ") < 0);
         test.ok("ㇿヽ < ㇿロ", col.compare("ㇿヽ", "ㇿロ") < 0);
-        
+
         test.ok("ワヽ < ワワ", col.compare("ワヽ", "ワワ") < 0);
         test.ok("ﾜヽ < ﾜワ", col.compare("ﾜヽ", "ﾜワ") < 0);
         test.ok("ヮヽ < ヮワ", col.compare("ヮヽ", "ヮワ") < 0);
@@ -3767,21 +3767,21 @@ module.exports.testcollation_ja = {
         test.ok("ヷヾ < ヷワ", col.compare("ヷヾ", "ヷヷ") < 0);
         test.ok("ヷヾ < ヷヷ", col.compare("ヷヾ", "ヷヷ") < 0);
         test.ok("ヮヾ < ヮヷ", col.compare("ヮヾ", "ヮヷ") < 0);
-        
+
         test.ok("ヰヽ < ヰヰ", col.compare("ヰヽ", "ヰヰ") < 0);
         test.ok("ヸヽ < ヸヰ", col.compare("ヸヽ", "ヸヰ") < 0);
         test.ok("ヸヽ < ヸヸ", col.compare("ヸヽ", "ヸヸ") < 0);
         test.ok("ヰヾ < ヰヸ", col.compare("ヰヾ", "ヰヸ") < 0);
         test.ok("ヸヾ < ヸヸ", col.compare("ヸヾ", "ヸヸ") < 0);
         test.ok("ヸヾ < ヸヸ", col.compare("ヸヾ", "ヸヸ") < 0);
-        
+
         test.ok("ヱヽ < ヱヱ", col.compare("ヱヽ", "ヱヱ") < 0);
         test.ok("ヹヽ < ヹヱ", col.compare("ヹヽ", "ヹヱ") < 0);
         test.ok("ヹヽ < ヹヱ", col.compare("ヹヽ", "ヹヱ") < 0);
         test.ok("ヱヾ < ヱヹ", col.compare("ヱヾ", "ヱヹ") < 0);
         test.ok("ヹヾ < ヹヹ", col.compare("ヹヾ", "ヹヹ") < 0);
         test.ok("ヹヾ < ヹヹ", col.compare("ヹヾ", "ヹヹ") < 0);
-        
+
         test.ok("ヲヽ < ヲヲ", col.compare("ヲヽ", "ヲヲ") < 0);
         test.ok("ｦヽ < ｦヲ", col.compare("ｦヽ", "ｦヲ") < 0);
         test.ok("ヺヽ < ヺヲ", col.compare("ヺヽ", "ヺヲ") < 0);
@@ -3790,12 +3790,12 @@ module.exports.testcollation_ja = {
         test.ok("ｦヾ < ｦヺ", col.compare("ｦヾ", "ｦヺ") < 0);
         test.ok("ヺヾ < ヺヺ", col.compare("ヺヾ", "ヺヺ") < 0);
         test.ok("ヺヾ < ヺヺ", col.compare("ヺヾ", "ヺヺ") < 0);
-        
+
         test.ok("ンヽ < ンン", col.compare("ンヽ", "ンン") < 0);
-        test.ok("ﾝヽ < ﾝン", col.compare("ﾝヽ", "ﾝン") < 0);    
+        test.ok("ﾝヽ < ﾝン", col.compare("ﾝヽ", "ﾝン") < 0);
         test.done();
     },
-    
+
     testJSCollatorKatakanaIterationMarksSec_ja: function(test) {
         test.expect(310);
         var col = new Collator({
@@ -3804,11 +3804,11 @@ module.exports.testcollation_ja = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
-        
+
         test.ok("アヽ = アア", col.compare("アヽ", "アア") === 0);
         test.ok("ｱヽ = ｱア", col.compare("ｱヽ", "ｱア") === 0);
         test.ok("ァヽ = ァア", col.compare("ァヽ", "ァア") === 0);
@@ -3817,7 +3817,7 @@ module.exports.testcollation_ja = {
         test.ok("ｲヽ = ｲイ", col.compare("ｲヽ", "ｲイ") === 0);
         test.ok("ィヽ = ィイ", col.compare("ィヽ", "ィイ") === 0);
         test.ok("ｨヽ = ｨイ", col.compare("ｨヽ", "ｨイ") === 0);
-        
+
         test.ok("ウヽ = ウウ", col.compare("ウヽ", "ウウ") === 0);
         test.ok("ｳヽ = ｳウ", col.compare("ｳヽ", "ｳウ") === 0);
         test.ok("ゥヽ = ゥウ", col.compare("ゥヽ", "ゥウ") === 0);
@@ -3830,23 +3830,23 @@ module.exports.testcollation_ja = {
         test.ok("ｩヾ = ｩヴ", col.compare("ｩヾ", "ｩヴ") === 0);
         test.ok("ヴヾ = ヴヴ", col.compare("ヴヾ", "ヴヴ") === 0);
         test.ok("ヴヾ = ヴヴ", col.compare("ヴヾ", "ヴヴ") === 0);
-        
+
         test.ok("エヽ = エエ", col.compare("エヽ", "エエ") === 0);
         test.ok("ｴヽ = ｴエ", col.compare("ｴヽ", "ｴエ") === 0);
         test.ok("ェヽ = ェエ", col.compare("ェヽ", "ェエ") === 0);
         test.ok("ｪヽ = ｪエ", col.compare("ｪヽ", "ｪエ") === 0);
-        
+
         test.ok("オヽ = オオ", col.compare("オヽ", "オオ") === 0);
         test.ok("ｵヽ = ｵオ", col.compare("ｵヽ", "ｵオ") === 0);
         test.ok("ォヽ = ォオ", col.compare("ォヽ", "ォオ") === 0);
         test.ok("ｫヽ = ｫオ", col.compare("ｫヽ", "ｫオ") === 0);
-        
+
         test.ok("カヽ = カカ", col.compare("カヽ", "カカ") === 0);
         test.ok("ｶヽ = ｶカ", col.compare("ｶヽ", "ｶカ") === 0);
         test.ok("ヵヽ = ヵカ", col.compare("ヵヽ", "ヵカ") === 0);
         test.ok("ガヽ = ガカ", col.compare("ガヽ", "ガカ") === 0);
         test.ok("ガヽ = ガカ", col.compare("ガヽ", "ガカ") === 0);
-        
+
         test.ok("キヽ = キキ", col.compare("キヽ", "キキ") === 0);
         test.ok("ｷヽ = ｷキ", col.compare("ｷヽ", "ｷキ") === 0);
         test.ok("ギヽ = ギキ", col.compare("ギヽ", "ギキ") === 0);
@@ -3855,7 +3855,7 @@ module.exports.testcollation_ja = {
         test.ok("ｷヾ = ｷギ", col.compare("ｷヾ", "ｷギ") === 0);
         test.ok("ギヾ = ギギ", col.compare("ギヾ", "ギギ") === 0);
         test.ok("ギヾ = ギギ", col.compare("ギヾ", "ギギ") === 0);
-    
+
         test.ok("クヽ = クク", col.compare("クヽ", "クク") === 0);
         test.ok("ｸヽ = ｸク", col.compare("ｸヽ", "ｸク") === 0);
         test.ok("ㇰヽ = ㇰク", col.compare("ㇰヽ", "ㇰク") === 0);
@@ -3866,13 +3866,13 @@ module.exports.testcollation_ja = {
         test.ok("ㇰヾ = ㇰグ", col.compare("ㇰヾ", "ㇰグ") === 0);
         test.ok("グヾ = ググ", col.compare("グヾ", "ググ") === 0);
         test.ok("グヾ = ググ", col.compare("グヾ", "ググ") === 0);
-        
+
         test.ok("ケヽ = ケケ", col.compare("ケヽ", "ケケ") === 0);
         test.ok("ｹヽ = ｹケ", col.compare("ｹヽ", "ｹケ") === 0);
         test.ok("ヶヽ = ヶケ", col.compare("ヶヽ", "ヶケ") === 0);
         test.ok("ゲヽ = ゲケ", col.compare("ゲヽ", "ゲケ") === 0);
         test.ok("ゲヽ = ゲケ", col.compare("ゲヽ", "ゲケ") === 0);
-        
+
         test.ok("コヽ = ココ", col.compare("コヽ", "ココ") === 0);
         test.ok("ｺヽ = ｺコ", col.compare("ｺヽ", "ｺコ") === 0);
         test.ok("ゴヽ = ゴコ", col.compare("ゴヽ", "ゴコ") === 0);
@@ -3881,7 +3881,7 @@ module.exports.testcollation_ja = {
         test.ok("ｺヾ = ｺゴ", col.compare("ｺヾ", "ｺゴ") === 0);
         test.ok("ゴヾ = ゴゴ", col.compare("ゴヾ", "ゴゴ") === 0);
         test.ok("ゴヾ = ゴゴ", col.compare("ゴヾ", "ゴゴ") === 0);
-        
+
         test.ok("サヽ = ササ", col.compare("サヽ", "ササ") === 0);
         test.ok("ｻヽ = ｻサ", col.compare("ｻヽ", "ｻサ") === 0);
         test.ok("ザヽ = ザサ", col.compare("ザヽ", "ザサ") === 0);
@@ -3890,7 +3890,7 @@ module.exports.testcollation_ja = {
         test.ok("ｻヾ = ｻザ", col.compare("ｻヾ", "ｻザ") === 0);
         test.ok("ザヾ = ザザ", col.compare("ザヾ", "ザザ") === 0);
         test.ok("ザヾ = ザザ", col.compare("ザヾ", "ザザ") === 0);
-    
+
         test.ok("シヽ = シシ", col.compare("シヽ", "シシ") === 0);
         test.ok("ｼヽ = ｼシ", col.compare("ｼヽ", "ｼシ") === 0);
         test.ok("ㇱヽ = ㇱシ", col.compare("ㇱヽ", "ㇱシ") === 0);
@@ -3901,7 +3901,7 @@ module.exports.testcollation_ja = {
         test.ok("ㇱヾ = ㇱジ", col.compare("ㇱヾ", "ㇱジ") === 0);
         test.ok("ジヾ = ジジ", col.compare("ジヾ", "ジジ") === 0);
         test.ok("ジヾ = ジジ", col.compare("ジヾ", "ジジ") === 0);
-    
+
         test.ok("スヽ = スス", col.compare("スヽ", "スス") === 0);
         test.ok("ｽヽ = ｽス", col.compare("ｽヽ", "ｽス") === 0);
         test.ok("ㇲヽ = ㇲス", col.compare("ㇲヽ", "ㇲス") === 0);
@@ -3912,7 +3912,7 @@ module.exports.testcollation_ja = {
         test.ok("ㇲヾ = ㇲズ", col.compare("ㇲヾ", "ㇲズ") === 0);
         test.ok("ズヾ = ズズ", col.compare("ズヾ", "ズズ") === 0);
         test.ok("ズヾ = ズズ", col.compare("ズヾ", "ズズ") === 0);
-    
+
         test.ok("セヽ = セセ", col.compare("セヽ", "セセ") === 0);
         test.ok("ｾヽ = ｾセ", col.compare("ｾヽ", "ｾセ") === 0);
         test.ok("ゼヽ = ゼセ", col.compare("ゼヽ", "ゼセ") === 0);
@@ -3921,7 +3921,7 @@ module.exports.testcollation_ja = {
         test.ok("ｾヾ = ｾゼ", col.compare("ｾヾ", "ｾゼ") === 0);
         test.ok("ゼヾ = ゼゼ", col.compare("ゼヾ", "ゼゼ") === 0);
         test.ok("ゼヾ = ゼゼ", col.compare("ゼヾ", "ゼゼ") === 0);
-    
+
         test.ok("ソヽ = ソソ", col.compare("ソヽ", "ソソ") === 0);
         test.ok("ｿヽ = ｿソ", col.compare("ｿヽ", "ｿソ") === 0);
         test.ok("ゾヽ = ゾソ", col.compare("ゾヽ", "ゾソ") === 0);
@@ -3930,7 +3930,7 @@ module.exports.testcollation_ja = {
         test.ok("ｿヾ = ｿゾ", col.compare("ｿヾ", "ｿゾ") === 0);
         test.ok("ゾヾ = ゾゾ", col.compare("ゾヾ", "ゾゾ") === 0);
         test.ok("ゾヾ = ゾゾ", col.compare("ゾヾ", "ゾゾ") === 0);
-    
+
         test.ok("タヽ = タタ", col.compare("タヽ", "タタ") === 0);
         test.ok("ﾀヽ = ﾀタ", col.compare("ﾀヽ", "ﾀタ") === 0);
         test.ok("ダヽ = ダタ", col.compare("ダヽ", "ダタ") === 0);
@@ -3939,7 +3939,7 @@ module.exports.testcollation_ja = {
         test.ok("ﾀヾ = ﾀダ", col.compare("ﾀヾ", "ﾀダ") === 0);
         test.ok("ダヾ = ダダ", col.compare("ダヾ", "ダダ") === 0);
         test.ok("ダヾ = ダダ", col.compare("ダヾ", "ダダ") === 0);
-    
+
         test.ok("チヽ = チチ", col.compare("チヽ", "チチ") === 0);
         test.ok("ﾁヽ = ﾁチ", col.compare("ﾁヽ", "ﾁチ") === 0);
         test.ok("ヂヽ = ヂチ", col.compare("ヂヽ", "ヂチ") === 0);
@@ -3948,7 +3948,7 @@ module.exports.testcollation_ja = {
         test.ok("ﾁヾ = ﾁヂ", col.compare("ﾁヾ", "ﾁヂ") === 0);
         test.ok("ヂヾ = ヂヂ", col.compare("ヂヾ", "ヂヂ") === 0);
         test.ok("ヂヾ = ヂヂ", col.compare("ヂヾ", "ヂヂ") === 0);
-    
+
         test.ok("ツヽ = ツツ", col.compare("ツヽ", "ツツ") === 0);
         test.ok("ﾂヽ = ﾂツ", col.compare("ﾂヽ", "ﾂツ") === 0);
         test.ok("ッヽ = ッツ", col.compare("ッヽ", "ッツ") === 0);
@@ -3965,7 +3965,7 @@ module.exports.testcollation_ja = {
         test.ok("ｯヾ = ｯヅ", col.compare("ｯヾ", "ｯヅ") === 0);
         test.ok("ツヾ = ツヅ", col.compare("ツヾ", "ツヅ") === 0);
         test.ok("ﾂヾ = ﾂヅ", col.compare("ﾂヾ", "ﾂヅ") === 0);
-    
+
         test.ok("テヽ = テテ", col.compare("テヽ", "テテ") === 0);
         test.ok("ﾃヽ = ﾃテ", col.compare("ﾃヽ", "ﾃテ") === 0);
         test.ok("デヽ = デテ", col.compare("デヽ", "デテ") === 0);
@@ -3974,7 +3974,7 @@ module.exports.testcollation_ja = {
         test.ok("ﾃヾ = ﾃデ", col.compare("ﾃヾ", "ﾃデ") === 0);
         test.ok("デヾ = デデ", col.compare("デヾ", "デデ") === 0);
         test.ok("デヾ = デデ", col.compare("デヾ", "デデ") === 0);
-    
+
         test.ok("トヽ = トト", col.compare("トヽ", "トト") === 0);
         test.ok("ﾄヽ = ﾄト", col.compare("ﾄヽ", "ﾄト") === 0);
         test.ok("ㇳヽ = ㇳト", col.compare("ㇳヽ", "ㇳト") === 0);
@@ -3985,23 +3985,23 @@ module.exports.testcollation_ja = {
         test.ok("ㇳヾ = ㇳド", col.compare("ㇳヾ", "ㇳド") === 0);
         test.ok("ドヾ = ドド", col.compare("ドヾ", "ドド") === 0);
         test.ok("ドヾ = ドド", col.compare("ドヾ", "ドド") === 0);
-    
+
         test.ok("ナヽ = ナナ", col.compare("ナヽ", "ナナ") === 0);
         test.ok("ﾅヽ = ﾅナ", col.compare("ﾅヽ", "ﾅナ") === 0);
-    
+
         test.ok("ニヽ = ニニ", col.compare("ニヽ", "ニニ") === 0);
         test.ok("ﾆヽ = ﾆニ", col.compare("ﾆヽ", "ﾆニ") === 0);
-    
+
         test.ok("ヌヽ = ヌヌ", col.compare("ヌヽ", "ヌヌ") === 0);
         test.ok("ﾇヽ = ﾇヌ", col.compare("ﾇヽ", "ﾇヌ") === 0);
         test.ok("ㇴヽ = ㇴヌ", col.compare("ㇴヽ", "ㇴヌ") === 0);
-        
+
         test.ok("ネヽ = ネネ", col.compare("ネヽ", "ネネ") === 0);
         test.ok("ﾈヽ = ﾈネ", col.compare("ﾈヽ", "ﾈネ") === 0);
-        
+
         test.ok("ノヽ = ノノ", col.compare("ノヽ", "ノノ") === 0);
         test.ok("ﾉヽ = ﾉノ", col.compare("ﾉヽ", "ﾉノ") === 0);
-        
+
         test.ok("ハヽ = ハハ", col.compare("ハヽ", "ハハ") === 0);
         test.ok("ﾊヽ = ﾊハ", col.compare("ﾊヽ", "ﾊハ") === 0);
         test.ok("ㇵヽ = ㇵハ", col.compare("ㇵヽ", "ㇵハ") === 0);
@@ -4016,7 +4016,7 @@ module.exports.testcollation_ja = {
         test.ok("パヽ = パハ", col.compare("パヽ", "パハ") === 0);
         test.ok("パヾ = パバ", col.compare("パヾ", "パバ") === 0);
         test.ok("パヾ = パバ", col.compare("パヾ", "パバ") === 0);
-        
+
         test.ok("ヒヽ = ヒヒ", col.compare("ヒヽ", "ヒヒ") === 0);
         test.ok("ﾋヽ = ﾋヒ", col.compare("ﾋヽ", "ﾋヒ") === 0);
         test.ok("ㇶヽ = ㇶヒ", col.compare("ㇶヽ", "ㇶヒ") === 0);
@@ -4031,7 +4031,7 @@ module.exports.testcollation_ja = {
         test.ok("ピヽ = ピヒ", col.compare("ピヽ", "ピヒ") === 0);
         test.ok("ピヾ = ピビ", col.compare("ピヾ", "ピビ") === 0);
         test.ok("ピヾ = ピビ", col.compare("ピヾ", "ピビ") === 0);
-        
+
         test.ok("フヽ = フフ", col.compare("フヽ", "フフ") === 0);
         test.ok("ﾌヽ = ﾌフ", col.compare("ﾌヽ", "ﾌフ") === 0);
         test.ok("ㇷヽ = ㇷフ", col.compare("ㇷヽ", "ㇷフ") === 0);
@@ -4046,7 +4046,7 @@ module.exports.testcollation_ja = {
         test.ok("プヽ = プフ", col.compare("プヽ", "プフ") === 0);
         test.ok("プヾ = プブ", col.compare("プヾ", "プブ") === 0);
         test.ok("プヾ = プブ", col.compare("プヾ", "プブ") === 0);
-        
+
         test.ok("ヘヽ = ヘヘ", col.compare("ヘヽ", "ヘヘ") === 0);
         test.ok("ﾍヽ = ﾍヘ", col.compare("ﾍヽ", "ﾍヘ") === 0);
         test.ok("ㇸヽ = ㇸヘ", col.compare("ㇸヽ", "ㇸヘ") === 0);
@@ -4061,7 +4061,7 @@ module.exports.testcollation_ja = {
         test.ok("ペヽ = ペヘ", col.compare("ペヽ", "ペヘ") === 0);
         test.ok("ペヾ = ペベ", col.compare("ペヾ", "ペベ") === 0);
         test.ok("ペヾ = ペベ", col.compare("ペヾ", "ペベ") === 0);
-        
+
         test.ok("ホヽ = ホホ", col.compare("ホヽ", "ホホ") === 0);
         test.ok("ﾎヽ = ﾎホ", col.compare("ﾎヽ", "ﾎホ") === 0);
         test.ok("ㇹヽ = ㇹホ", col.compare("ㇹヽ", "ㇹホ") === 0);
@@ -4076,58 +4076,58 @@ module.exports.testcollation_ja = {
         test.ok("ポヽ = ポホ", col.compare("ポヽ", "ポホ") === 0);
         test.ok("ポヾ = ポボ", col.compare("ポヾ", "ポボ") === 0);
         test.ok("ポヾ = ポボ", col.compare("ポヾ", "ポボ") === 0);
-        
+
         test.ok("マヽ = ママ", col.compare("マヽ", "ママ") === 0);
         test.ok("ﾏヽ = ﾏマ", col.compare("ﾏヽ", "ﾏマ") === 0);
-        
+
         test.ok("ミヽ = ミミ", col.compare("ミヽ", "ミミ") === 0);
         test.ok("ﾐヽ = ﾐミ", col.compare("ﾐヽ", "ﾐミ") === 0);
-        
+
         test.ok("ムヽ = ムム", col.compare("ムヽ", "ムム") === 0);
         test.ok("ﾑヽ = ﾑム", col.compare("ﾑヽ", "ﾑム") === 0);
         test.ok("ㇺヽ = ㇺム", col.compare("ㇺヽ", "ㇺム") === 0);
-        
+
         test.ok("メヽ = メメ", col.compare("メヽ", "メメ") === 0);
         test.ok("ﾒヽ = ﾒメ", col.compare("ﾒヽ", "ﾒメ") === 0);
-        
+
         test.ok("モヽ = モモ", col.compare("モヽ", "モモ") === 0);
         test.ok("ﾓヽ = ﾓモ", col.compare("ﾓヽ", "ﾓモ") === 0);
-        
+
         test.ok("ヤヽ = ヤヤ", col.compare("ヤヽ", "ヤヤ") === 0);
         test.ok("ﾔヽ = ﾔヤ", col.compare("ﾔヽ", "ﾔヤ") === 0);
         test.ok("ャヽ = ャヤ", col.compare("ャヽ", "ャヤ") === 0);
         test.ok("ｬヽ = ｬヤ", col.compare("ｬヽ", "ｬヤ") === 0);
-        
+
         test.ok("ユヽ = ユユ", col.compare("ユヽ", "ユユ") === 0);
         test.ok("ﾕヽ = ﾕユ", col.compare("ﾕヽ", "ﾕユ") === 0);
         test.ok("ュヽ = ュユ", col.compare("ュヽ", "ュユ") === 0);
         test.ok("ｭヽ = ｭユ", col.compare("ｭヽ", "ｭユ") === 0);
-        
+
         test.ok("ヨヽ = ヨヨ", col.compare("ヨヽ", "ヨヨ") === 0);
         test.ok("ﾖヽ = ﾖヨ", col.compare("ﾖヽ", "ﾖヨ") === 0);
         test.ok("ョヽ = ョヨ", col.compare("ョヽ", "ョヨ") === 0);
         test.ok("ｮヽ = ｮヨ", col.compare("ｮヽ", "ｮヨ") === 0);
-        
+
         test.ok("ラヽ = ララ", col.compare("ラヽ", "ララ") === 0);
         test.ok("ﾗヽ = ﾗラ", col.compare("ﾗヽ", "ﾗラ") === 0);
         test.ok("ㇻヽ = ㇻラ", col.compare("ㇻヽ", "ㇻラ") === 0);
-        
+
         test.ok("リヽ = リリ", col.compare("リヽ", "リリ") === 0);
         test.ok("ﾘヽ = ﾘリ", col.compare("ﾘヽ", "ﾘリ") === 0);
         test.ok("ㇼヽ = ㇼリ", col.compare("ㇼヽ", "ㇼリ") === 0);
-        
+
         test.ok("ルヽ = ルル", col.compare("ルヽ", "ルル") === 0);
         test.ok("ﾙヽ = ﾙル", col.compare("ﾙヽ", "ﾙル") === 0);
         test.ok("ㇽヽ = ㇽル", col.compare("ㇽヽ", "ㇽル") === 0);
-        
+
         test.ok("レヽ = レレ", col.compare("レヽ", "レレ") === 0);
         test.ok("ﾚヽ = ﾚレ", col.compare("ﾚヽ", "ﾚレ") === 0);
         test.ok("ㇾヽ = ㇾレ", col.compare("ㇾヽ", "ㇾレ") === 0);
-        
+
         test.ok("ロヽ = ロロ", col.compare("ロヽ", "ロロ") === 0);
         test.ok("ﾛヽ = ﾛロ", col.compare("ﾛヽ", "ﾛロ") === 0);
         test.ok("ㇿヽ = ㇿロ", col.compare("ㇿヽ", "ㇿロ") === 0);
-        
+
         test.ok("ワヽ = ワワ", col.compare("ワヽ", "ワワ") === 0);
         test.ok("ﾜヽ = ﾜワ", col.compare("ﾜヽ", "ﾜワ") === 0);
         test.ok("ヮヽ = ヮワ", col.compare("ヮヽ", "ヮワ") === 0);
@@ -4138,21 +4138,21 @@ module.exports.testcollation_ja = {
         test.ok("ヷヾ = ヷワ", col.compare("ヷヾ", "ヷヷ") === 0);
         test.ok("ヷヾ = ヷヷ", col.compare("ヷヾ", "ヷヷ") === 0);
         test.ok("ヮヾ = ヮヷ", col.compare("ヮヾ", "ヮヷ") === 0);
-        
+
         test.ok("ヰヽ = ヰヰ", col.compare("ヰヽ", "ヰヰ") === 0);
         test.ok("ヸヽ = ヸヰ", col.compare("ヸヽ", "ヸヰ") === 0);
         test.ok("ヸヽ = ヸヰ", col.compare("ヸヽ", "ヸヰ") === 0);
         test.ok("ヰヾ = ヰヸ", col.compare("ヰヾ", "ヰヸ") === 0);
         test.ok("ヸヾ = ヸヸ", col.compare("ヸヾ", "ヸヸ") === 0);
         test.ok("ヸヾ = ヸヸ", col.compare("ヸヾ", "ヸヸ") === 0);
-        
+
         test.ok("ヱヽ = ヱヱ", col.compare("ヱヽ", "ヱヱ") === 0);
         test.ok("ヹヽ = ヹヱ", col.compare("ヹヽ", "ヹヱ") === 0);
         test.ok("ヹヽ = ヹヱ", col.compare("ヹヽ", "ヹヱ") === 0);
         test.ok("ヱヾ = ヱヹ", col.compare("ヱヾ", "ヱヹ") === 0);
         test.ok("ヹヾ = ヹヹ", col.compare("ヹヾ", "ヹヹ") === 0);
         test.ok("ヹヾ = ヹヹ", col.compare("ヹヾ", "ヹヹ") === 0);
-        
+
         test.ok("ヲヽ = ヲヲ", col.compare("ヲヽ", "ヲヲ") === 0);
         test.ok("ｦヽ = ｦヲ", col.compare("ｦヽ", "ｦヲ") === 0);
         test.ok("ヺヽ = ヺヲ", col.compare("ヺヽ", "ヺヲ") === 0);
@@ -4161,12 +4161,12 @@ module.exports.testcollation_ja = {
         test.ok("ｦヾ = ｦヺ", col.compare("ｦヾ", "ｦヺ") === 0);
         test.ok("ヺヾ = ヺヺ", col.compare("ヺヾ", "ヺヺ") === 0);
         test.ok("ヺヾ = ヺヺ", col.compare("ヺヾ", "ヺヺ") === 0);
-        
+
         test.ok("ンヽ = ンン", col.compare("ンヽ", "ンン") === 0);
-        test.ok("ﾝヽ = ﾝン", col.compare("ﾝヽ", "ﾝン") === 0);    
+        test.ok("ﾝヽ = ﾝン", col.compare("ﾝヽ", "ﾝン") === 0);
         test.done();
     },
-    
+
     testJSCollatorKatakanaIterationMarksPri_ja: function(test) {
         test.expect(310);
         var col = new Collator({
@@ -4175,11 +4175,11 @@ module.exports.testcollation_ja = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
-        
+
         test.ok("アヽ = アア", col.compare("アヽ", "アア") === 0);
         test.ok("ｱヽ = ｱア", col.compare("ｱヽ", "ｱア") === 0);
         test.ok("ァヽ = ァア", col.compare("ァヽ", "ァア") === 0);
@@ -4188,7 +4188,7 @@ module.exports.testcollation_ja = {
         test.ok("ｲヽ = ｲイ", col.compare("ｲヽ", "ｲイ") === 0);
         test.ok("ィヽ = ィイ", col.compare("ィヽ", "ィイ") === 0);
         test.ok("ｨヽ = ｨイ", col.compare("ｨヽ", "ｨイ") === 0);
-        
+
         test.ok("ウヽ = ウウ", col.compare("ウヽ", "ウウ") === 0);
         test.ok("ｳヽ = ｳウ", col.compare("ｳヽ", "ｳウ") === 0);
         test.ok("ゥヽ = ゥウ", col.compare("ゥヽ", "ゥウ") === 0);
@@ -4201,23 +4201,23 @@ module.exports.testcollation_ja = {
         test.ok("ｩヾ = ｩヴ", col.compare("ｩヾ", "ｩヴ") === 0);
         test.ok("ヴヾ = ヴヴ", col.compare("ヴヾ", "ヴヴ") === 0);
         test.ok("ヴヾ = ヴヴ", col.compare("ヴヾ", "ヴヴ") === 0);
-        
+
         test.ok("エヽ = エエ", col.compare("エヽ", "エエ") === 0);
         test.ok("ｴヽ = ｴエ", col.compare("ｴヽ", "ｴエ") === 0);
         test.ok("ェヽ = ェエ", col.compare("ェヽ", "ェエ") === 0);
         test.ok("ｪヽ = ｪエ", col.compare("ｪヽ", "ｪエ") === 0);
-        
+
         test.ok("オヽ = オオ", col.compare("オヽ", "オオ") === 0);
         test.ok("ｵヽ = ｵオ", col.compare("ｵヽ", "ｵオ") === 0);
         test.ok("ォヽ = ォオ", col.compare("ォヽ", "ォオ") === 0);
         test.ok("ｫヽ = ｫオ", col.compare("ｫヽ", "ｫオ") === 0);
-        
+
         test.ok("カヽ = カカ", col.compare("カヽ", "カカ") === 0);
         test.ok("ｶヽ = ｶカ", col.compare("ｶヽ", "ｶカ") === 0);
         test.ok("ヵヽ = ヵカ", col.compare("ヵヽ", "ヵカ") === 0);
         test.ok("ガヽ = ガカ", col.compare("ガヽ", "ガカ") === 0);
         test.ok("ガヽ = ガカ", col.compare("ガヽ", "ガカ") === 0);
-        
+
         test.ok("キヽ = キキ", col.compare("キヽ", "キキ") === 0);
         test.ok("ｷヽ = ｷキ", col.compare("ｷヽ", "ｷキ") === 0);
         test.ok("ギヽ = ギキ", col.compare("ギヽ", "ギキ") === 0);
@@ -4226,7 +4226,7 @@ module.exports.testcollation_ja = {
         test.ok("ｷヾ = ｷギ", col.compare("ｷヾ", "ｷギ") === 0);
         test.ok("ギヾ = ギギ", col.compare("ギヾ", "ギギ") === 0);
         test.ok("ギヾ = ギギ", col.compare("ギヾ", "ギギ") === 0);
-    
+
         test.ok("クヽ = クク", col.compare("クヽ", "クク") === 0);
         test.ok("ｸヽ = ｸク", col.compare("ｸヽ", "ｸク") === 0);
         test.ok("ㇰヽ = ㇰク", col.compare("ㇰヽ", "ㇰク") === 0);
@@ -4237,13 +4237,13 @@ module.exports.testcollation_ja = {
         test.ok("ㇰヾ = ㇰグ", col.compare("ㇰヾ", "ㇰグ") === 0);
         test.ok("グヾ = ググ", col.compare("グヾ", "ググ") === 0);
         test.ok("グヾ = ググ", col.compare("グヾ", "ググ") === 0);
-        
+
         test.ok("ケヽ = ケケ", col.compare("ケヽ", "ケケ") === 0);
         test.ok("ｹヽ = ｹケ", col.compare("ｹヽ", "ｹケ") === 0);
         test.ok("ヶヽ = ヶケ", col.compare("ヶヽ", "ヶケ") === 0);
         test.ok("ゲヽ = ゲケ", col.compare("ゲヽ", "ゲケ") === 0);
         test.ok("ゲヽ = ゲケ", col.compare("ゲヽ", "ゲケ") === 0);
-        
+
         test.ok("コヽ = ココ", col.compare("コヽ", "ココ") === 0);
         test.ok("ｺヽ = ｺコ", col.compare("ｺヽ", "ｺコ") === 0);
         test.ok("ゴヽ = ゴコ", col.compare("ゴヽ", "ゴコ") === 0);
@@ -4252,7 +4252,7 @@ module.exports.testcollation_ja = {
         test.ok("ｺヾ = ｺゴ", col.compare("ｺヾ", "ｺゴ") === 0);
         test.ok("ゴヾ = ゴゴ", col.compare("ゴヾ", "ゴゴ") === 0);
         test.ok("ゴヾ = ゴゴ", col.compare("ゴヾ", "ゴゴ") === 0);
-        
+
         test.ok("サヽ = ササ", col.compare("サヽ", "ササ") === 0);
         test.ok("ｻヽ = ｻサ", col.compare("ｻヽ", "ｻサ") === 0);
         test.ok("ザヽ = ザサ", col.compare("ザヽ", "ザサ") === 0);
@@ -4261,7 +4261,7 @@ module.exports.testcollation_ja = {
         test.ok("ｻヾ = ｻザ", col.compare("ｻヾ", "ｻザ") === 0);
         test.ok("ザヾ = ザザ", col.compare("ザヾ", "ザザ") === 0);
         test.ok("ザヾ = ザザ", col.compare("ザヾ", "ザザ") === 0);
-    
+
         test.ok("シヽ = シシ", col.compare("シヽ", "シシ") === 0);
         test.ok("ｼヽ = ｼシ", col.compare("ｼヽ", "ｼシ") === 0);
         test.ok("ㇱヽ = ㇱシ", col.compare("ㇱヽ", "ㇱシ") === 0);
@@ -4272,7 +4272,7 @@ module.exports.testcollation_ja = {
         test.ok("ㇱヾ = ㇱジ", col.compare("ㇱヾ", "ㇱジ") === 0);
         test.ok("ジヾ = ジジ", col.compare("ジヾ", "ジジ") === 0);
         test.ok("ジヾ = ジジ", col.compare("ジヾ", "ジジ") === 0);
-    
+
         test.ok("スヽ = スス", col.compare("スヽ", "スス") === 0);
         test.ok("ｽヽ = ｽス", col.compare("ｽヽ", "ｽス") === 0);
         test.ok("ㇲヽ = ㇲス", col.compare("ㇲヽ", "ㇲス") === 0);
@@ -4283,7 +4283,7 @@ module.exports.testcollation_ja = {
         test.ok("ㇲヾ = ㇲズ", col.compare("ㇲヾ", "ㇲズ") === 0);
         test.ok("ズヾ = ズズ", col.compare("ズヾ", "ズズ") === 0);
         test.ok("ズヾ = ズズ", col.compare("ズヾ", "ズズ") === 0);
-    
+
         test.ok("セヽ = セセ", col.compare("セヽ", "セセ") === 0);
         test.ok("ｾヽ = ｾセ", col.compare("ｾヽ", "ｾセ") === 0);
         test.ok("ゼヽ = ゼセ", col.compare("ゼヽ", "ゼセ") === 0);
@@ -4292,7 +4292,7 @@ module.exports.testcollation_ja = {
         test.ok("ｾヾ = ｾゼ", col.compare("ｾヾ", "ｾゼ") === 0);
         test.ok("ゼヾ = ゼゼ", col.compare("ゼヾ", "ゼゼ") === 0);
         test.ok("ゼヾ = ゼゼ", col.compare("ゼヾ", "ゼゼ") === 0);
-    
+
         test.ok("ソヽ = ソソ", col.compare("ソヽ", "ソソ") === 0);
         test.ok("ｿヽ = ｿソ", col.compare("ｿヽ", "ｿソ") === 0);
         test.ok("ゾヽ = ゾソ", col.compare("ゾヽ", "ゾソ") === 0);
@@ -4301,7 +4301,7 @@ module.exports.testcollation_ja = {
         test.ok("ｿヾ = ｿゾ", col.compare("ｿヾ", "ｿゾ") === 0);
         test.ok("ゾヾ = ゾゾ", col.compare("ゾヾ", "ゾゾ") === 0);
         test.ok("ゾヾ = ゾゾ", col.compare("ゾヾ", "ゾゾ") === 0);
-    
+
         test.ok("タヽ = タタ", col.compare("タヽ", "タタ") === 0);
         test.ok("ﾀヽ = ﾀタ", col.compare("ﾀヽ", "ﾀタ") === 0);
         test.ok("ダヽ = ダタ", col.compare("ダヽ", "ダタ") === 0);
@@ -4310,7 +4310,7 @@ module.exports.testcollation_ja = {
         test.ok("ﾀヾ = ﾀダ", col.compare("ﾀヾ", "ﾀダ") === 0);
         test.ok("ダヾ = ダダ", col.compare("ダヾ", "ダダ") === 0);
         test.ok("ダヾ = ダダ", col.compare("ダヾ", "ダダ") === 0);
-    
+
         test.ok("チヽ = チチ", col.compare("チヽ", "チチ") === 0);
         test.ok("ﾁヽ = ﾁチ", col.compare("ﾁヽ", "ﾁチ") === 0);
         test.ok("ヂヽ = ヂチ", col.compare("ヂヽ", "ヂチ") === 0);
@@ -4319,7 +4319,7 @@ module.exports.testcollation_ja = {
         test.ok("ﾁヾ = ﾁヂ", col.compare("ﾁヾ", "ﾁヂ") === 0);
         test.ok("ヂヾ = ヂヂ", col.compare("ヂヾ", "ヂヂ") === 0);
         test.ok("ヂヾ = ヂヂ", col.compare("ヂヾ", "ヂヂ") === 0);
-    
+
         test.ok("ツヽ = ツツ", col.compare("ツヽ", "ツツ") === 0);
         test.ok("ﾂヽ = ﾂツ", col.compare("ﾂヽ", "ﾂツ") === 0);
         test.ok("ッヽ = ッツ", col.compare("ッヽ", "ッツ") === 0);
@@ -4336,7 +4336,7 @@ module.exports.testcollation_ja = {
         test.ok("ｯヾ = ｯヅ", col.compare("ｯヾ", "ｯヅ") === 0);
         test.ok("ツヾ = ツヅ", col.compare("ツヾ", "ツヅ") === 0);
         test.ok("ﾂヾ = ﾂヅ", col.compare("ﾂヾ", "ﾂヅ") === 0);
-    
+
         test.ok("テヽ = テテ", col.compare("テヽ", "テテ") === 0);
         test.ok("ﾃヽ = ﾃテ", col.compare("ﾃヽ", "ﾃテ") === 0);
         test.ok("デヽ = デテ", col.compare("デヽ", "デテ") === 0);
@@ -4345,7 +4345,7 @@ module.exports.testcollation_ja = {
         test.ok("ﾃヾ = ﾃデ", col.compare("ﾃヾ", "ﾃデ") === 0);
         test.ok("デヾ = デデ", col.compare("デヾ", "デデ") === 0);
         test.ok("デヾ = デデ", col.compare("デヾ", "デデ") === 0);
-    
+
         test.ok("トヽ = トト", col.compare("トヽ", "トト") === 0);
         test.ok("ﾄヽ = ﾄト", col.compare("ﾄヽ", "ﾄト") === 0);
         test.ok("ㇳヽ = ㇳト", col.compare("ㇳヽ", "ㇳト") === 0);
@@ -4356,23 +4356,23 @@ module.exports.testcollation_ja = {
         test.ok("ㇳヾ = ㇳド", col.compare("ㇳヾ", "ㇳド") === 0);
         test.ok("ドヾ = ドド", col.compare("ドヾ", "ドド") === 0);
         test.ok("ドヾ = ドド", col.compare("ドヾ", "ドド") === 0);
-    
+
         test.ok("ナヽ = ナナ", col.compare("ナヽ", "ナナ") === 0);
         test.ok("ﾅヽ = ﾅナ", col.compare("ﾅヽ", "ﾅナ") === 0);
-    
+
         test.ok("ニヽ = ニニ", col.compare("ニヽ", "ニニ") === 0);
         test.ok("ﾆヽ = ﾆニ", col.compare("ﾆヽ", "ﾆニ") === 0);
-    
+
         test.ok("ヌヽ = ヌヌ", col.compare("ヌヽ", "ヌヌ") === 0);
         test.ok("ﾇヽ = ﾇヌ", col.compare("ﾇヽ", "ﾇヌ") === 0);
         test.ok("ㇴヽ = ㇴヌ", col.compare("ㇴヽ", "ㇴヌ") === 0);
-        
+
         test.ok("ネヽ = ネネ", col.compare("ネヽ", "ネネ") === 0);
         test.ok("ﾈヽ = ﾈネ", col.compare("ﾈヽ", "ﾈネ") === 0);
-        
+
         test.ok("ノヽ = ノノ", col.compare("ノヽ", "ノノ") === 0);
         test.ok("ﾉヽ = ﾉノ", col.compare("ﾉヽ", "ﾉノ") === 0);
-        
+
         test.ok("ハヽ = ハハ", col.compare("ハヽ", "ハハ") === 0);
         test.ok("ﾊヽ = ﾊハ", col.compare("ﾊヽ", "ﾊハ") === 0);
         test.ok("ㇵヽ = ㇵハ", col.compare("ㇵヽ", "ㇵハ") === 0);
@@ -4387,7 +4387,7 @@ module.exports.testcollation_ja = {
         test.ok("パヽ = パハ", col.compare("パヽ", "パハ") === 0);
         test.ok("パヾ = パバ", col.compare("パヾ", "パバ") === 0);
         test.ok("パヾ = パバ", col.compare("パヾ", "パバ") === 0);
-        
+
         test.ok("ヒヽ = ヒヒ", col.compare("ヒヽ", "ヒヒ") === 0);
         test.ok("ﾋヽ = ﾋヒ", col.compare("ﾋヽ", "ﾋヒ") === 0);
         test.ok("ㇶヽ = ㇶヒ", col.compare("ㇶヽ", "ㇶヒ") === 0);
@@ -4402,7 +4402,7 @@ module.exports.testcollation_ja = {
         test.ok("ピヽ = ピヒ", col.compare("ピヽ", "ピヒ") === 0);
         test.ok("ピヾ = ピビ", col.compare("ピヾ", "ピビ") === 0);
         test.ok("ピヾ = ピビ", col.compare("ピヾ", "ピビ") === 0);
-        
+
         test.ok("フヽ = フフ", col.compare("フヽ", "フフ") === 0);
         test.ok("ﾌヽ = ﾌフ", col.compare("ﾌヽ", "ﾌフ") === 0);
         test.ok("ㇷヽ = ㇷフ", col.compare("ㇷヽ", "ㇷフ") === 0);
@@ -4417,7 +4417,7 @@ module.exports.testcollation_ja = {
         test.ok("プヽ = プフ", col.compare("プヽ", "プフ") === 0);
         test.ok("プヾ = プブ", col.compare("プヾ", "プブ") === 0);
         test.ok("プヾ = プブ", col.compare("プヾ", "プブ") === 0);
-        
+
         test.ok("ヘヽ = ヘヘ", col.compare("ヘヽ", "ヘヘ") === 0);
         test.ok("ﾍヽ = ﾍヘ", col.compare("ﾍヽ", "ﾍヘ") === 0);
         test.ok("ㇸヽ = ㇸヘ", col.compare("ㇸヽ", "ㇸヘ") === 0);
@@ -4432,7 +4432,7 @@ module.exports.testcollation_ja = {
         test.ok("ペヽ = ペヘ", col.compare("ペヽ", "ペヘ") === 0);
         test.ok("ペヾ = ペベ", col.compare("ペヾ", "ペベ") === 0);
         test.ok("ペヾ = ペベ", col.compare("ペヾ", "ペベ") === 0);
-        
+
         test.ok("ホヽ = ホホ", col.compare("ホヽ", "ホホ") === 0);
         test.ok("ﾎヽ = ﾎホ", col.compare("ﾎヽ", "ﾎホ") === 0);
         test.ok("ㇹヽ = ㇹホ", col.compare("ㇹヽ", "ㇹホ") === 0);
@@ -4447,58 +4447,58 @@ module.exports.testcollation_ja = {
         test.ok("ポヽ = ポホ", col.compare("ポヽ", "ポホ") === 0);
         test.ok("ポヾ = ポボ", col.compare("ポヾ", "ポボ") === 0);
         test.ok("ポヾ = ポボ", col.compare("ポヾ", "ポボ") === 0);
-        
+
         test.ok("マヽ = ママ", col.compare("マヽ", "ママ") === 0);
         test.ok("ﾏヽ = ﾏマ", col.compare("ﾏヽ", "ﾏマ") === 0);
-        
+
         test.ok("ミヽ = ミミ", col.compare("ミヽ", "ミミ") === 0);
         test.ok("ﾐヽ = ﾐミ", col.compare("ﾐヽ", "ﾐミ") === 0);
-        
+
         test.ok("ムヽ = ムム", col.compare("ムヽ", "ムム") === 0);
         test.ok("ﾑヽ = ﾑム", col.compare("ﾑヽ", "ﾑム") === 0);
         test.ok("ㇺヽ = ㇺム", col.compare("ㇺヽ", "ㇺム") === 0);
-        
+
         test.ok("メヽ = メメ", col.compare("メヽ", "メメ") === 0);
         test.ok("ﾒヽ = ﾒメ", col.compare("ﾒヽ", "ﾒメ") === 0);
-        
+
         test.ok("モヽ = モモ", col.compare("モヽ", "モモ") === 0);
         test.ok("ﾓヽ = ﾓモ", col.compare("ﾓヽ", "ﾓモ") === 0);
-        
+
         test.ok("ヤヽ = ヤヤ", col.compare("ヤヽ", "ヤヤ") === 0);
         test.ok("ﾔヽ = ﾔヤ", col.compare("ﾔヽ", "ﾔヤ") === 0);
         test.ok("ャヽ = ャヤ", col.compare("ャヽ", "ャヤ") === 0);
         test.ok("ｬヽ = ｬヤ", col.compare("ｬヽ", "ｬヤ") === 0);
-        
+
         test.ok("ユヽ = ユユ", col.compare("ユヽ", "ユユ") === 0);
         test.ok("ﾕヽ = ﾕユ", col.compare("ﾕヽ", "ﾕユ") === 0);
         test.ok("ュヽ = ュユ", col.compare("ュヽ", "ュユ") === 0);
         test.ok("ｭヽ = ｭユ", col.compare("ｭヽ", "ｭユ") === 0);
-        
+
         test.ok("ヨヽ = ヨヨ", col.compare("ヨヽ", "ヨヨ") === 0);
         test.ok("ﾖヽ = ﾖヨ", col.compare("ﾖヽ", "ﾖヨ") === 0);
         test.ok("ョヽ = ョヨ", col.compare("ョヽ", "ョヨ") === 0);
         test.ok("ｮヽ = ｮヨ", col.compare("ｮヽ", "ｮヨ") === 0);
-        
+
         test.ok("ラヽ = ララ", col.compare("ラヽ", "ララ") === 0);
         test.ok("ﾗヽ = ﾗラ", col.compare("ﾗヽ", "ﾗラ") === 0);
         test.ok("ㇻヽ = ㇻラ", col.compare("ㇻヽ", "ㇻラ") === 0);
-        
+
         test.ok("リヽ = リリ", col.compare("リヽ", "リリ") === 0);
         test.ok("ﾘヽ = ﾘリ", col.compare("ﾘヽ", "ﾘリ") === 0);
         test.ok("ㇼヽ = ㇼリ", col.compare("ㇼヽ", "ㇼリ") === 0);
-        
+
         test.ok("ルヽ = ルル", col.compare("ルヽ", "ルル") === 0);
         test.ok("ﾙヽ = ﾙル", col.compare("ﾙヽ", "ﾙル") === 0);
         test.ok("ㇽヽ = ㇽル", col.compare("ㇽヽ", "ㇽル") === 0);
-        
+
         test.ok("レヽ = レレ", col.compare("レヽ", "レレ") === 0);
         test.ok("ﾚヽ = ﾚレ", col.compare("ﾚヽ", "ﾚレ") === 0);
         test.ok("ㇾヽ = ㇾレ", col.compare("ㇾヽ", "ㇾレ") === 0);
-        
+
         test.ok("ロヽ = ロロ", col.compare("ロヽ", "ロロ") === 0);
         test.ok("ﾛヽ = ﾛロ", col.compare("ﾛヽ", "ﾛロ") === 0);
         test.ok("ㇿヽ = ㇿロ", col.compare("ㇿヽ", "ㇿロ") === 0);
-        
+
         test.ok("ワヽ = ワワ", col.compare("ワヽ", "ワワ") === 0);
         test.ok("ﾜヽ = ﾜワ", col.compare("ﾜヽ", "ﾜワ") === 0);
         test.ok("ヮヽ = ヮワ", col.compare("ヮヽ", "ヮワ") === 0);
@@ -4509,21 +4509,21 @@ module.exports.testcollation_ja = {
         test.ok("ヷヾ = ヷワ", col.compare("ヷヾ", "ヷヷ") === 0);
         test.ok("ヷヾ = ヷヷ", col.compare("ヷヾ", "ヷヷ") === 0);
         test.ok("ヮヾ = ヮヷ", col.compare("ヮヾ", "ヮヷ") === 0);
-        
+
         test.ok("ヰヽ = ヰヰ", col.compare("ヰヽ", "ヰヰ") === 0);
         test.ok("ヸヽ = ヸヰ", col.compare("ヸヽ", "ヸヰ") === 0);
         test.ok("ヸヽ = ヸヰ", col.compare("ヸヽ", "ヸヰ") === 0);
         test.ok("ヰヾ = ヰヸ", col.compare("ヰヾ", "ヰヸ") === 0);
         test.ok("ヸヾ = ヸヸ", col.compare("ヸヾ", "ヸヸ") === 0);
         test.ok("ヸヾ = ヸヸ", col.compare("ヸヾ", "ヸヸ") === 0);
-        
+
         test.ok("ヱヽ = ヱヱ", col.compare("ヱヽ", "ヱヱ") === 0);
         test.ok("ヹヽ = ヹヱ", col.compare("ヹヽ", "ヹヱ") === 0);
         test.ok("ヹヽ = ヹヱ", col.compare("ヹヽ", "ヹヱ") === 0);
         test.ok("ヱヾ = ヱヹ", col.compare("ヱヾ", "ヱヹ") === 0);
         test.ok("ヹヾ = ヹヹ", col.compare("ヹヾ", "ヹヹ") === 0);
         test.ok("ヹヾ = ヹヹ", col.compare("ヹヾ", "ヹヹ") === 0);
-        
+
         test.ok("ヲヽ = ヲヲ", col.compare("ヲヽ", "ヲヲ") === 0);
         test.ok("ｦヽ = ｦヲ", col.compare("ｦヽ", "ｦヲ") === 0);
         test.ok("ヺヽ = ヺヲ", col.compare("ヺヽ", "ヺヲ") === 0);
@@ -4532,12 +4532,12 @@ module.exports.testcollation_ja = {
         test.ok("ｦヾ = ｦヺ", col.compare("ｦヾ", "ｦヺ") === 0);
         test.ok("ヺヾ = ヺヺ", col.compare("ヺヾ", "ヺヺ") === 0);
         test.ok("ヺヾ = ヺヺ", col.compare("ヺヾ", "ヺヺ") === 0);
-        
+
         test.ok("ンヽ = ンン", col.compare("ンヽ", "ンン") === 0);
-        test.ok("ﾝヽ = ﾝン", col.compare("ﾝヽ", "ﾝン") === 0);    
+        test.ok("ﾝヽ = ﾝン", col.compare("ﾝヽ", "ﾝン") === 0);
         test.done();
     },
-    
+
     testJSCollatorHiraBeforeKataQuat_ja: function(test) {
         test.expect(99);
         var col = new Collator({
@@ -4546,12 +4546,12 @@ module.exports.testcollation_ja = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
-        
+
         test.ok("あ < ア", col.compare("あ", "ア") < 0);
         test.ok("い < イ", col.compare("い", "イ") < 0);
         test.ok("う < ウ", col.compare("う", "ウ") < 0);
@@ -4652,7 +4652,7 @@ module.exports.testcollation_ja = {
         test.ok("ん < ン", col.compare("ん", "ン") < 0);
         test.done();
     },
-    
+
     testJSCollatorHiraBeforeKataTer_ja: function(test) {
         test.expect(99);
         var col = new Collator({
@@ -4661,12 +4661,12 @@ module.exports.testcollation_ja = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
-        
+
         test.ok("あ < ア", col.compare("あ", "ア") < 0);
         test.ok("い < イ", col.compare("い", "イ") < 0);
         test.ok("う < ウ", col.compare("う", "ウ") < 0);
@@ -4767,7 +4767,7 @@ module.exports.testcollation_ja = {
         test.ok("ん < ン", col.compare("ん", "ン") < 0);
         test.done();
     },
-    
+
     testJSCollatorHiraBeforeKataSec_ja: function(test) {
         test.expect(99);
         var col = new Collator({
@@ -4776,12 +4776,12 @@ module.exports.testcollation_ja = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
-        
+
         test.ok("あ = ア", col.compare("あ", "ア") === 0);
         test.ok("い = イ", col.compare("い", "イ") === 0);
         test.ok("う = ウ", col.compare("う", "ウ") === 0);
@@ -4882,7 +4882,7 @@ module.exports.testcollation_ja = {
         test.ok("ん = ン", col.compare("ん", "ン") === 0);
         test.done();
     },
-    
+
     testJSCollatorHiraBeforeKataPri_ja: function(test) {
         test.expect(99);
         var col = new Collator({
@@ -4891,12 +4891,12 @@ module.exports.testcollation_ja = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
-        
+
         test.ok("あ = ア", col.compare("あ", "ア") === 0);
         test.ok("い = イ", col.compare("い", "イ") === 0);
         test.ok("う = ウ", col.compare("う", "ウ") === 0);
@@ -4997,7 +4997,7 @@ module.exports.testcollation_ja = {
         test.ok("ん = ン", col.compare("ん", "ン") === 0);
         test.done();
     },
-    
+
     testJSCollatorKanaBeforeKanji_ja: function(test) {
         test.expect(3);
         var col = new Collator({
@@ -5006,17 +5006,17 @@ module.exports.testcollation_ja = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // あ い う え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
-        
+
         test.ok("ん <  鯵", col.compare("ん", "鯵") < 0);
         test.ok("ン <  鯵", col.compare("ン", "鯵") < 0);
         test.done();
     },
-    
+
     testJSCollatorSortQuat_ja: function(test) {
         test.expect(50);
         var col = new Collator({
@@ -5025,26 +5025,26 @@ module.exports.testcollation_ja = {
             sensitivity: "quaternary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         test.ok("鯵 < 允", col.compare("鯵", "允") < 0);
         test.ok("允 < 渦", col.compare("允", "渦") < 0);
         test.ok("渦 < 頴", col.compare("渦", "頴") < 0);
-        
+
         test.ok("あ < い", col.compare("あ", "い") < 0);
         test.ok("い < う", col.compare("い", "う") < 0);
         test.ok("う < ゔ", col.compare("う", "ゔ") < 0);
         test.ok("ゔ < ゔ", col.compare("ゔ", "ゔ") < 0);
         test.ok("ゔ < え", col.compare("ゔ", "え") < 0);
-    
+
         test.ok("ぁー < ぁぁ", col.compare("ぁー", "ぁぁ") < 0);
         test.ok("あー < あぁ", col.compare("あー", "あぁ") < 0);
         test.ok("かー < かぁ", col.compare("かー", "かぁ") < 0);
         test.ok("ゕー < ゕぁ", col.compare("ゕー", "ゕぁ") < 0);
         test.ok("がー < がぁ", col.compare("がー", "がぁ") < 0);
         test.ok("さー < さぁ", col.compare("さー", "さぁ") < 0);
-    
+
         test.ok("あゝ < ああ", col.compare("あゝ", "ああ") < 0);
         test.ok("ぁゝ < ぁあ", col.compare("ぁゝ", "ぁあ") < 0);
         test.ok("いゝ < いい", col.compare("いゝ", "いい") < 0);
@@ -5054,14 +5054,14 @@ module.exports.testcollation_ja = {
         test.ok("ゔゝ < ゔう", col.compare("ゔゝ", "ゔう") < 0);
         test.ok("うゞ < うゔ", col.compare("うゞ", "うゔ") < 0);
         test.ok("ぅゞ < ぅゔ", col.compare("ぅゞ", "ぅゔ") < 0);
-    
+
         test.ok("ア < イ", col.compare("ア", "イ") < 0);
         test.ok("イ < ウ", col.compare("イ", "ウ") < 0);
         test.ok("ウ < エ", col.compare("ウ", "エ") < 0);
         test.ok("エ < オ", col.compare("エ", "オ") < 0);
         test.ok("オ < カ", col.compare("オ", "カ") < 0);
         test.ok("カ < ガ", col.compare("カ", "ガ") < 0);
-        
+
         test.ok("ァー < ァア", col.compare("ァー", "ァア") < 0);
         test.ok("ｧー < ｧア", col.compare("ｧー", "ｧア") < 0);
         test.ok("アー < アア", col.compare("アー", "アア") < 0);
@@ -5072,7 +5072,7 @@ module.exports.testcollation_ja = {
         test.ok("ガー < ガア", col.compare("ガー", "ガア") < 0);
         test.ok("サー < サア", col.compare("サー", "サア") < 0);
         test.ok("ｻー < ｻア", col.compare("ｻー", "ｻア") < 0);
-    
+
         test.ok("ウヽ < ウウ", col.compare("ウヽ", "ウウ") < 0);
         test.ok("ｳヽ < ｳウ", col.compare("ｳヽ", "ｳウ") < 0);
         test.ok("ゥヽ < ゥウ", col.compare("ゥヽ", "ゥウ") < 0);
@@ -5085,7 +5085,7 @@ module.exports.testcollation_ja = {
         test.ok("ｩヾ < ｩヴ", col.compare("ｩヾ", "ｩヴ") < 0);
         test.done();
     },
-    
+
     testJSCollatorSortTer_ja: function(test) {
         test.expect(50);
         var col = new Collator({
@@ -5094,28 +5094,28 @@ module.exports.testcollation_ja = {
             sensitivity: "tertiary",
             usage: "sort"
         });
-    
+
         // with usage "sort" all of these should stay the same no matter the sensitivity
-        
+
         test.ok(typeof(col) !== "undefined");
-    
+
         test.ok("鯵 < 允", col.compare("鯵", "允") < 0);
         test.ok("允 < 渦", col.compare("允", "渦") < 0);
         test.ok("渦 < 頴", col.compare("渦", "頴") < 0);
-        
+
         test.ok("あ < い", col.compare("あ", "い") < 0);
         test.ok("い < う", col.compare("い", "う") < 0);
         test.ok("う < ゔ", col.compare("う", "ゔ") < 0);
         test.ok("ゔ < ゔ", col.compare("ゔ", "ゔ") < 0);
         test.ok("ゔ < え", col.compare("ゔ", "え") < 0);
-    
+
         test.ok("ぁー < ぁぁ", col.compare("ぁー", "ぁぁ") < 0);
         test.ok("あー < あぁ", col.compare("あー", "あぁ") < 0);
         test.ok("かー < かぁ", col.compare("かー", "かぁ") < 0);
         test.ok("ゕー < ゕぁ", col.compare("ゕー", "ゕぁ") < 0);
         test.ok("がー < がぁ", col.compare("がー", "がぁ") < 0);
         test.ok("さー < さぁ", col.compare("さー", "さぁ") < 0);
-    
+
         test.ok("あゝ < ああ", col.compare("あゝ", "ああ") < 0);
         test.ok("ぁゝ < ぁあ", col.compare("ぁゝ", "ぁあ") < 0);
         test.ok("いゝ < いい", col.compare("いゝ", "いい") < 0);
@@ -5125,14 +5125,14 @@ module.exports.testcollation_ja = {
         test.ok("ゔゝ < ゔう", col.compare("ゔゝ", "ゔう") < 0);
         test.ok("うゞ < うゔ", col.compare("うゞ", "うゔ") < 0);
         test.ok("ぅゞ < ぅゔ", col.compare("ぅゞ", "ぅゔ") < 0);
-    
+
         test.ok("ア < イ", col.compare("ア", "イ") < 0);
         test.ok("イ < ウ", col.compare("イ", "ウ") < 0);
         test.ok("ウ < エ", col.compare("ウ", "エ") < 0);
         test.ok("エ < オ", col.compare("エ", "オ") < 0);
         test.ok("オ < カ", col.compare("オ", "カ") < 0);
         test.ok("カ < ガ", col.compare("カ", "ガ") < 0);
-        
+
         test.ok("ァー < ァア", col.compare("ァー", "ァア") < 0);
         test.ok("ｧー < ｧア", col.compare("ｧー", "ｧア") < 0);
         test.ok("アー < アア", col.compare("アー", "アア") < 0);
@@ -5143,7 +5143,7 @@ module.exports.testcollation_ja = {
         test.ok("ガー < ガア", col.compare("ガー", "ガア") < 0);
         test.ok("サー < サア", col.compare("サー", "サア") < 0);
         test.ok("ｻー < ｻア", col.compare("ｻー", "ｻア") < 0);
-    
+
         test.ok("ウヽ < ウウ", col.compare("ウヽ", "ウウ") < 0);
         test.ok("ｳヽ < ｳウ", col.compare("ｳヽ", "ｳウ") < 0);
         test.ok("ゥヽ < ゥウ", col.compare("ゥヽ", "ゥウ") < 0);
@@ -5156,7 +5156,7 @@ module.exports.testcollation_ja = {
         test.ok("ｩヾ < ｩヴ", col.compare("ｩヾ", "ｩヴ") < 0);
         test.done();
     },
-    
+
     testJSCollatorSortSec_ja: function(test) {
         test.expect(50);
         var col = new Collator({
@@ -5165,28 +5165,28 @@ module.exports.testcollation_ja = {
             sensitivity: "secondary",
             usage: "sort"
         });
-    
+
         // with usage "sort" all of these should stay the same no matter the sensitivity
-        
+
         test.ok(typeof(col) !== "undefined");
-    
+
         test.ok("鯵 < 允", col.compare("鯵", "允") < 0);
         test.ok("允 < 渦", col.compare("允", "渦") < 0);
         test.ok("渦 < 頴", col.compare("渦", "頴") < 0);
-        
+
         test.ok("あ < い", col.compare("あ", "い") < 0);
         test.ok("い < う", col.compare("い", "う") < 0);
         test.ok("う < ゔ", col.compare("う", "ゔ") < 0);
         test.ok("ゔ < ゔ", col.compare("ゔ", "ゔ") < 0);
         test.ok("ゔ < え", col.compare("ゔ", "え") < 0);
-    
+
         test.ok("ぁー < ぁぁ", col.compare("ぁー", "ぁぁ") < 0);
         test.ok("あー < あぁ", col.compare("あー", "あぁ") < 0);
         test.ok("かー < かぁ", col.compare("かー", "かぁ") < 0);
         test.ok("ゕー < ゕぁ", col.compare("ゕー", "ゕぁ") < 0);
         test.ok("がー < がぁ", col.compare("がー", "がぁ") < 0);
         test.ok("さー < さぁ", col.compare("さー", "さぁ") < 0);
-    
+
         test.ok("あゝ < ああ", col.compare("あゝ", "ああ") < 0);
         test.ok("ぁゝ < ぁあ", col.compare("ぁゝ", "ぁあ") < 0);
         test.ok("いゝ < いい", col.compare("いゝ", "いい") < 0);
@@ -5196,14 +5196,14 @@ module.exports.testcollation_ja = {
         test.ok("ゔゝ < ゔう", col.compare("ゔゝ", "ゔう") < 0);
         test.ok("うゞ < うゔ", col.compare("うゞ", "うゔ") < 0);
         test.ok("ぅゞ < ぅゔ", col.compare("ぅゞ", "ぅゔ") < 0);
-    
+
         test.ok("ア < イ", col.compare("ア", "イ") < 0);
         test.ok("イ < ウ", col.compare("イ", "ウ") < 0);
         test.ok("ウ < エ", col.compare("ウ", "エ") < 0);
         test.ok("エ < オ", col.compare("エ", "オ") < 0);
         test.ok("オ < カ", col.compare("オ", "カ") < 0);
         test.ok("カ < ガ", col.compare("カ", "ガ") < 0);
-        
+
         test.ok("ァー < ァア", col.compare("ァー", "ァア") < 0);
         test.ok("ｧー < ｧア", col.compare("ｧー", "ｧア") < 0);
         test.ok("アー < アア", col.compare("アー", "アア") < 0);
@@ -5214,7 +5214,7 @@ module.exports.testcollation_ja = {
         test.ok("ガー < ガア", col.compare("ガー", "ガア") < 0);
         test.ok("サー < サア", col.compare("サー", "サア") < 0);
         test.ok("ｻー < ｻア", col.compare("ｻー", "ｻア") < 0);
-    
+
         test.ok("ウヽ < ウウ", col.compare("ウヽ", "ウウ") < 0);
         test.ok("ｳヽ < ｳウ", col.compare("ｳヽ", "ｳウ") < 0);
         test.ok("ゥヽ < ゥウ", col.compare("ゥヽ", "ゥウ") < 0);
@@ -5227,7 +5227,7 @@ module.exports.testcollation_ja = {
         test.ok("ｩヾ < ｩヴ", col.compare("ｩヾ", "ｩヴ") < 0);
         test.done();
     },
-    
+
     testJSCollatorSortPri_ja: function(test) {
         test.expect(50);
         var col = new Collator({
@@ -5236,28 +5236,28 @@ module.exports.testcollation_ja = {
             sensitivity: "primary",
             usage: "sort"
         });
-    
+
         // with usage "sort" all of these should stay the same no matter the sensitivity
-        
+
         test.ok(typeof(col) !== "undefined");
-    
+
         test.ok("鯵 < 允", col.compare("鯵", "允") < 0);
         test.ok("允 < 渦", col.compare("允", "渦") < 0);
         test.ok("渦 < 頴", col.compare("渦", "頴") < 0);
-        
+
         test.ok("あ < い", col.compare("あ", "い") < 0);
         test.ok("い < う", col.compare("い", "う") < 0);
         test.ok("う < ゔ", col.compare("う", "ゔ") < 0);
         test.ok("ゔ < ゔ", col.compare("ゔ", "ゔ") < 0);
         test.ok("ゔ < え", col.compare("ゔ", "え") < 0);
-    
+
         test.ok("ぁー < ぁぁ", col.compare("ぁー", "ぁぁ") < 0);
         test.ok("あー < あぁ", col.compare("あー", "あぁ") < 0);
         test.ok("かー < かぁ", col.compare("かー", "かぁ") < 0);
         test.ok("ゕー < ゕぁ", col.compare("ゕー", "ゕぁ") < 0);
         test.ok("がー < がぁ", col.compare("がー", "がぁ") < 0);
         test.ok("さー < さぁ", col.compare("さー", "さぁ") < 0);
-    
+
         test.ok("あゝ < ああ", col.compare("あゝ", "ああ") < 0);
         test.ok("ぁゝ < ぁあ", col.compare("ぁゝ", "ぁあ") < 0);
         test.ok("いゝ < いい", col.compare("いゝ", "いい") < 0);
@@ -5267,14 +5267,14 @@ module.exports.testcollation_ja = {
         test.ok("ゔゝ < ゔう", col.compare("ゔゝ", "ゔう") < 0);
         test.ok("うゞ < うゔ", col.compare("うゞ", "うゔ") < 0);
         test.ok("ぅゞ < ぅゔ", col.compare("ぅゞ", "ぅゔ") < 0);
-    
+
         test.ok("ア < イ", col.compare("ア", "イ") < 0);
         test.ok("イ < ウ", col.compare("イ", "ウ") < 0);
         test.ok("ウ < エ", col.compare("ウ", "エ") < 0);
         test.ok("エ < オ", col.compare("エ", "オ") < 0);
         test.ok("オ < カ", col.compare("オ", "カ") < 0);
         test.ok("カ < ガ", col.compare("カ", "ガ") < 0);
-        
+
         test.ok("ァー < ァア", col.compare("ァー", "ァア") < 0);
         test.ok("ｧー < ｧア", col.compare("ｧー", "ｧア") < 0);
         test.ok("アー < アア", col.compare("アー", "アア") < 0);
@@ -5285,7 +5285,7 @@ module.exports.testcollation_ja = {
         test.ok("ガー < ガア", col.compare("ガー", "ガア") < 0);
         test.ok("サー < サア", col.compare("サー", "サア") < 0);
         test.ok("ｻー < ｻア", col.compare("ｻー", "ｻア") < 0);
-    
+
         test.ok("ウヽ < ウウ", col.compare("ウヽ", "ウウ") < 0);
         test.ok("ｳヽ < ｳウ", col.compare("ｳヽ", "ｳウ") < 0);
         test.ok("ゥヽ < ゥウ", col.compare("ゥヽ", "ゥウ") < 0);
@@ -5298,7 +5298,7 @@ module.exports.testcollation_ja = {
         test.ok("ｩヾ < ｩヴ", col.compare("ｩヾ", "ｩヴ") < 0);
         test.done();
     },
-    
+
     testCollatorCase_ja: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -5308,7 +5308,7 @@ module.exports.testcollation_ja = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-        
+
         var input = [
                     "ぁー",
                     "ｧー",
@@ -5322,7 +5322,7 @@ module.exports.testcollation_ja = {
                     "ゔゝ",
             "渦",
                     "うゞ",
-                   "ぃゝ",              
+                   "ぃゝ",
                     "う",
                     "ウ",
                      "サー",
@@ -5360,9 +5360,9 @@ module.exports.testcollation_ja = {
                     "いゝ",
             "ｶー"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
                       "ぁー",
                     "ぁゝ",
@@ -5374,12 +5374,12 @@ module.exports.testcollation_ja = {
             "ア",
             "アー",
             "ｱー",
-    
+
             "ぃゝ",
             "い",
             "いゝ",
             "イ",
-            
+
             "ぅゝ",
             "ぅゞ",
             "う",
@@ -5397,13 +5397,13 @@ module.exports.testcollation_ja = {
             "ゔゝ",
             "ヴヽ",
             "ヴヽ",
-            
+
             "え",
             "エ",
-            
+
             "お",
             "オ",
-            
+
             "ゕー",
             "か",
             "かー",
@@ -5413,19 +5413,19 @@ module.exports.testcollation_ja = {
             "がー",
             "ガー",
             "ガー",
-    
+
             "サー",
             "ｻー",
-    
+
             "鯵",
             "允",
             "渦"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorPrimary_ja: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -5435,7 +5435,7 @@ module.exports.testcollation_ja = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
             "ぁー",
             "ｧー",
@@ -5449,7 +5449,7 @@ module.exports.testcollation_ja = {
             "ゔゝ",
             "渦",
             "うゞ",
-            "ぃゝ",              
+            "ぃゝ",
             "う",
             "ウ",
             "サー",
@@ -5487,9 +5487,9 @@ module.exports.testcollation_ja = {
             "いゝ",
             "ｶー"
         ];
-        
+
         input.sort(col.getComparator());
-        
+
         var expected = [
             "ぁー",
             "ぁゝ",
@@ -5501,12 +5501,12 @@ module.exports.testcollation_ja = {
             "ア",
             "アー",
             "ｱー",
-            
+
             "ぃゝ",
             "い",
             "いゝ",
             "イ",
-            
+
             "ぅゝ",
             "ぅゞ",
             "う",
@@ -5524,13 +5524,13 @@ module.exports.testcollation_ja = {
             "ゔゝ",
             "ヴヽ",
             "ヴヽ",
-            
+
             "え",
             "エ",
-            
+
             "お",
             "オ",
-            
+
             "ゕー",
             "か",
             "かー",
@@ -5540,19 +5540,19 @@ module.exports.testcollation_ja = {
             "がー",
             "ガー",
             "ガー",
-            
+
             "サー",
             "ｻー",
-            
+
             "鯵",
             "允",
             "渦"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testJSCollatorQuatLatin_ja: function(test) {
         test.expect(18);
         var col = new Collator({
@@ -5561,9 +5561,9 @@ module.exports.testcollation_ja = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // all latin letters
         test.ok("A < a", col.compare("A", "a") < 0);
         test.ok("a < B", col.compare("a", "B") < 0);
@@ -5584,7 +5584,7 @@ module.exports.testcollation_ja = {
         test.ok("I < i", col.compare("I", "i") < 0);
         test.done();
     },
-    
+
     testCollatorPrimaryMixed_ja: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -5594,7 +5594,7 @@ module.exports.testcollation_ja = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
                      "ぁー",
                     "ｧー",
@@ -5610,7 +5610,7 @@ module.exports.testcollation_ja = {
                     "ゔゝ",
             "渦",
                     "うゞ",
-                   "ぃゝ",              
+                   "ぃゝ",
                     "う",
                     "ウ",
                      "サー",
@@ -5651,18 +5651,18 @@ module.exports.testcollation_ja = {
                     "いゝ",
             "ｶー"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         // Latin letters sort after the Cyrillic ones
-        
+
         var expected = [
             "apple",
             "banana",
             "orange",
             "peach",
             "raspberry",
-    
+
                     "ぁー",
                     "ぁゝ",
                 "あ",
@@ -5673,12 +5673,12 @@ module.exports.testcollation_ja = {
                 "ア",
                 "アー",
                 "ｱー",
-    
+
                 "ぃゝ",
                 "い",
                 "いゝ",
                 "イ",
-                
+
                     "ぅゝ",
                    "ぅゞ",
                 "う",
@@ -5696,13 +5696,13 @@ module.exports.testcollation_ja = {
                 "ゔゝ",
                 "ヴヽ",
                 "ヴヽ",
-                
+
                 "え",
                 "エ",
-                
+
                 "お",
                 "オ",
-                
+
                 "ゕー",
                 "か",
                 "かー",
@@ -5712,17 +5712,17 @@ module.exports.testcollation_ja = {
                 "がー",
                 "ガー",
                 "ガー",
-    
+
                 "サー",
                 "ｻー",
-    
+
             "鯵",
             "允",
             "渦"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     }
-    
+
 };

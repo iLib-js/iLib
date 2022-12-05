@@ -2200,9 +2200,9 @@ module.exports.testlocalematch = {
         test.ok(typeof(lm) !== "undefined");
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
-        test.equal(locale.getSpec(), "tk-TM");          
+        test.equal(locale.getSpec(), "tk-TM");
         test.done();
-    },      
+    },
     testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForLanguage_tg: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({

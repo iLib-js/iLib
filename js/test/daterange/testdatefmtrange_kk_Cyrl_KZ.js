@@ -1,6 +1,6 @@
 /*
  * testdatefmtrange_kk-Cyrl_KZ.js - test the date range formatter object in Kazakh/Kazakhstan
- * 
+ *
  * Copyright © 2012-2017, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -63,7 +63,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -89,7 +89,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -115,7 +115,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -137,12 +137,12 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.equal(fmt.format(start, end), "2011 ж. 31 желтоқсан, 13:45 – 14:30");
         test.done();
     },
-    
+
     testDateRngFmtKZRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -168,7 +168,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -194,7 +194,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -220,7 +220,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -242,12 +242,12 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.equal(fmt.format(start, end), "2011 ж. 30 желтоқсан, 13:45 – 2011 ж. 31 желтоқсан, 14:30");
         test.done();
     },
-    
+
     testDateRngFmtKZRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -273,7 +273,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -299,7 +299,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -325,7 +325,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -347,12 +347,12 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.equal(fmt.format(start, end), "2011 ж. 20 желтоқсан – 31 желтоқсан");
         test.done();
     },
-    
+
     testDateRngFmtKZRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -378,7 +378,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -404,7 +404,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -430,7 +430,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -452,12 +452,12 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.equal(fmt.format(start, end), "2011 ж. 20 қараша – 2011 ж. 31 желтоқсан");
         test.done();
     },
-    
+
     testDateRngFmtKZRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -483,7 +483,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -509,7 +509,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -535,7 +535,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -557,12 +557,12 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.equal(fmt.format(start, end), "2011 ж. 20 қараша – 2012 ж. 31 қаңтар");
         test.done();
     },
-    
+
     testDateRngFmtKZRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -588,7 +588,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -614,7 +614,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -770,7 +770,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,

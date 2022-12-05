@@ -1,6 +1,6 @@
 /*
  * numplan.js - Test the phone numbering plan.
- * 
+ *
  * Copyright © 2014-2015,2017, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,12 +26,12 @@ if (typeof(NumberingPlan) === "undefined") {
 
 function mockLoaderNP(paths, sync, params, callback) {
     var data = [];
-    
+
     data.push(ilib.data.numplan); // for the generic, shared stuff
     data.push(ilib.data.numplan_US);
-    
+
     if (typeof(callback) !== 'undefined') {
-        callback.call(this, data);    
+        callback.call(this, data);
     }
     return data;
 }
@@ -43,7 +43,7 @@ module.exports.numplan = {
         ilib.clearCache();
         callback();
     },
-    
+
     tearDown: function(callback) {
         ilib._load = oldLoader;
         callback();
@@ -56,7 +56,7 @@ module.exports.numplan = {
         test.equal(plan.getName(), "US");
         test.done();
     },
-    
+
     testGet2: function(test) {
         test.expect(2);
         var plan = new NumberingPlan({locale: "de-DE"});
@@ -64,7 +64,7 @@ module.exports.numplan = {
         test.equal(plan.getName(), "DE");
         test.done();
     },
-    
+
     testGetUnknown: function(test) {
         test.expect(2);
         var plan = new NumberingPlan({locale: "unknown-unknown"});
@@ -72,7 +72,7 @@ module.exports.numplan = {
         test.equal(plan.getName(), "XX");
         test.done();
     },
-    
+
     testGetUnrecognized: function(test) {
         test.expect(2);
         var plan = new NumberingPlan({locale: "zu-ZZ"});
@@ -80,7 +80,7 @@ module.exports.numplan = {
         test.equal(plan.getName(), "XX");
         test.done();
     },
-    
+
     testGetDefault: function(test) {
         test.expect(2);
         var plan = new NumberingPlan({});
@@ -88,7 +88,7 @@ module.exports.numplan = {
         test.equal(plan.getName(), "US");
         test.done();
     },
-    
+
     testGetContextFreeContent: function(test) {
         test.expect(2);
         var plan = new NumberingPlan({locale: "en-GB"});
@@ -96,7 +96,7 @@ module.exports.numplan = {
         test.equal(plan.getContextFree(), false);
         test.done();
     },
-    
+
     testGetContextFreeContent: function(test) {
         test.expect(2);
         var plan = new NumberingPlan({locale: "en-US"});
@@ -104,7 +104,7 @@ module.exports.numplan = {
         test.equal(plan.getContextFree(), undefined);
         test.done();
     },
-    
+
     testRightContents: function(test) {
         test.expect(13);
         var plan = new NumberingPlan({locale: "en-US"});
@@ -120,10 +120,10 @@ module.exports.numplan = {
         test.equal(plan.getFieldLength('emergency'), 0);
         test.equal(plan.getFieldLength('vsc'), 0);
         test.equal(plan.getPlanStyle(), "closed");
-        test.equal(plan.getCommonFormatChars(), " ()-.");    
+        test.equal(plan.getCommonFormatChars(), " ()-.");
         test.done();
     },
-    
+
     testNumPlanLoadLocaleDataSynch: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -131,10 +131,10 @@ module.exports.numplan = {
             test.done();
             return;
         }
-        
+
         var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoaderNP);
-    
+
         new NumberingPlan({
             locale: "en-US",
             sync: false,
@@ -142,7 +142,7 @@ module.exports.numplan = {
                 ilib.setLoaderCallback(oldLoader);
         test.expect(2);
                 test.ok(plan !== null);
-                test.equal(plan.getName(), "US");                
+                test.equal(plan.getName(), "US");
                 test.done();
             }
         });
@@ -185,5 +185,5 @@ module.exports.numplan = {
         test.equal(plan.getCommonFormatChars(), "- ");
         test.done();
     },
-    
+
 };

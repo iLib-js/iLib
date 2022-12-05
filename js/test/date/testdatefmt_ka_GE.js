@@ -1,6 +1,6 @@
 /*
  * testdatefmt_ka_GE.js - test the date formatter object in Georgian
- * 
+ *
  * Copyright © 2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,7 +39,7 @@ module.exports.testdatefmt_ka_GE = {
     testDateFmtConstructorEmpty_ka_GE: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "ka-GE"});
-        
+
         test.ok(fmt !== null);
         test.done();
     },
@@ -48,7 +48,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "short"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -67,7 +67,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -86,7 +86,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "long"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -105,7 +105,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -124,7 +124,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "short", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -143,7 +143,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "medium", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -162,7 +162,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", timelength: "long", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -181,7 +181,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -200,7 +200,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "short", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -219,7 +219,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "medium", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -238,7 +238,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "long", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -257,7 +257,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -272,12 +272,12 @@ module.exports.testdatefmt_ka_GE = {
         test.done();
     },
 
-    
+
     testDateFmtTemplateCalendar_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", calendar: "julian", template: "yyyy-MM-dd"});
         test.ok(fmt !== null);
-        
+
         var date = new JulianDate({
             locale: "ka-GE",
             year: 2011,
@@ -296,7 +296,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -316,7 +316,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", clock: "12", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -335,7 +335,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", clock: "12", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -354,7 +354,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", clock: "24", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -373,7 +373,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", clock: "24", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -392,7 +392,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -411,7 +411,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -430,7 +430,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -449,7 +449,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -464,12 +464,12 @@ module.exports.testdatefmt_ka_GE = {
         test.done();
     },
 
-    
+
     testDateFmtTypeDate_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "date"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -488,7 +488,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -507,7 +507,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -526,7 +526,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -545,7 +545,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -564,7 +564,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "n"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -583,7 +583,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -602,7 +602,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -621,7 +621,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -640,7 +640,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -659,7 +659,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -678,7 +678,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -697,7 +697,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "wdm", length: "long"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -716,7 +716,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -735,7 +735,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -754,7 +754,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -773,7 +773,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -792,7 +792,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -811,7 +811,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -830,7 +830,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -849,7 +849,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -868,7 +868,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -887,7 +887,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -906,7 +906,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -925,7 +925,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "ms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -944,7 +944,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -963,7 +963,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -982,7 +982,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1000,13 +1000,13 @@ module.exports.testdatefmt_ka_GE = {
     testDateFmtShortTimeComponentsHMZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ka-GE", 
-            type: "time", 
-            time: "hmz", 
+            locale: "ka-GE",
+            type: "time",
+            time: "hmz",
             timezone: "Asia/Tbilisi"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1024,13 +1024,13 @@ module.exports.testdatefmt_ka_GE = {
     testDateFmtShortTimeComponentsHMAZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ka-GE", 
-            type: "time", 
-            time: "hmaz", 
+            locale: "ka-GE",
+            type: "time",
+            time: "hmaz",
             timezone: "Asia/Tbilisi"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1049,7 +1049,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1067,13 +1067,13 @@ module.exports.testdatefmt_ka_GE = {
     testDateFmtShortTimeComponentsHMSZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ka-GE", 
-            type: "time", 
-            time: "hmsz", 
+            locale: "ka-GE",
+            type: "time",
+            time: "hmsz",
             timezone: "Asia/Tbilisi"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1091,13 +1091,13 @@ module.exports.testdatefmt_ka_GE = {
     testDateFmtShortTimeComponentsHMSAZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ka-GE", 
-            type: "time", 
-            time: "hmsaz", 
+            locale: "ka-GE",
+            type: "time",
+            time: "hmsaz",
             timezone: "Asia/Tbilisi"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1116,7 +1116,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1135,7 +1135,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1154,7 +1154,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1173,7 +1173,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "ms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1192,7 +1192,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1211,7 +1211,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1230,7 +1230,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1248,14 +1248,14 @@ module.exports.testdatefmt_ka_GE = {
     testDateFmtFullTimeComponentsHMZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ka-GE", 
-            type: "time", 
-            length: "full", 
-            time: "hmz", 
+            locale: "ka-GE",
+            type: "time",
+            length: "full",
+            time: "hmz",
             timezone: "Asia/Tbilisi"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1273,14 +1273,14 @@ module.exports.testdatefmt_ka_GE = {
     testDateFmtFullTimeComponentsHMAZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ka-GE", 
-            type: "time", 
-            length: "full", 
-            time: "hmaz", 
+            locale: "ka-GE",
+            type: "time",
+            length: "full",
+            time: "hmaz",
             timezone: "Asia/Tbilisi"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1299,7 +1299,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1317,14 +1317,14 @@ module.exports.testdatefmt_ka_GE = {
     testDateFmtFullTimeComponentsHMSZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ka-GE", 
-            type: "time", 
-            length: "full", 
-            time: "hmsz", 
+            locale: "ka-GE",
+            type: "time",
+            length: "full",
+            time: "hmsz",
             timezone: "Asia/Tbilisi"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1342,14 +1342,14 @@ module.exports.testdatefmt_ka_GE = {
     testDateFmtFullTimeComponentsHMSAZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ka-GE", 
-            type: "time", 
-            length: "full", 
-            time: "hmsaz", 
+            locale: "ka-GE",
+            type: "time",
+            length: "full",
+            time: "hmsaz",
             timezone: "Asia/Tbilisi"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1367,14 +1367,14 @@ module.exports.testdatefmt_ka_GE = {
     testDateFmtWithTimeZoneAndNoDST_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ka-GE", 
-            type: "time", 
-            length: "full", 
-            time: "hmsz", 
+            locale: "ka-GE",
+            type: "time",
+            length: "full",
+            time: "hmsz",
             timezone: "Asia/Tbilisi"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1393,7 +1393,7 @@ module.exports.testdatefmt_ka_GE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1421,7 +1421,7 @@ testDateFmtFormatRelativeWithinMinuteBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1449,7 +1449,7 @@ testDateFmtFormatRelativeWithinHourAfter_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1477,7 +1477,7 @@ testDateFmtFormatRelativeWithinHourBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1505,7 +1505,7 @@ testDateFmtFormatRelativeWithinDayAfter_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1533,7 +1533,7 @@ testDateFmtFormatRelativeWithinDayBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1562,7 +1562,7 @@ testDateFmtFormatRelativeWithinDayBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1590,7 +1590,7 @@ testDateFmtFormatRelativeWithinFortnightBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1619,7 +1619,7 @@ testDateFmtFormatRelativeWithinFortnightBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1647,7 +1647,7 @@ testDateFmtFormatRelativeWithinQuarterBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1676,7 +1676,7 @@ testDateFmtFormatRelativeWithinQuarterBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1704,7 +1704,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1733,7 +1733,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1761,7 +1761,7 @@ testDateFmtFormatRelativeYearsBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ka-GE",
             year: 2011,
@@ -1784,5 +1784,5 @@ testDateFmtFormatRelativeYearsBefore_ka_GE: function(test) {
         });
         test.equal(fmt.formatRelative(reference, date), '21 წლის წინ');
         test.done();
-    }    
+    }
 };

@@ -1,4 +1,4 @@
-/* 
+/*
  * prune.js - ilib tool to remove properties from lower-level json files
  * when the values of those lower-level properties match the parent.
  *
@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/* 
+/*
  * This code is intended to be run under node.js
  */
 var fs = require('fs');

@@ -1,7 +1,7 @@
 /*
  * gencharmap.js - ilib tool to generate the charset mappings from the Unicode
  * data files
- * 
+ *
  * Copyright © 2014, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@
  */
 
 /*
- * This code is intended to be run under node.js 
+ * This code is intended to be run under node.js
  */
 
 var fs = require('fs');

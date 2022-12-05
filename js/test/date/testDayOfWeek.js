@@ -25,7 +25,7 @@ module.exports.testweekdata = {
     testLocaleInfoConstructor: function(test) {
         test.expect(1);
         var info = new LocaleInfo();
-    
+
         test.ok(info !== null);
         test.done();
     },

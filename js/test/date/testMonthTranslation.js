@@ -7848,7 +7848,7 @@ module.exports.testmonthtranslation = {
         // short: MM
 
         var value = [], i;
-        
+
         var fmt = new DateFmt({locale:"tk-TM", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
@@ -7870,7 +7870,7 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        
+
         test.equal(value[0], 'Ýan');
         test.equal(value[1], 'Few');
         test.equal(value[2], 'Mar');
@@ -7904,7 +7904,7 @@ module.exports.testmonthtranslation = {
     },
     testMonthTranslate_tg_TJ: function(test) {
         test.expect(24);
-  
+
         // full, long: MMMM
         // medium: MMM
         // short: MM

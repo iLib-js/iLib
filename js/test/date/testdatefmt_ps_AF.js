@@ -1,6 +1,6 @@
 /*
  * testdatefmt_ps_AF.js - test the date formatter object in Pashto-Afghanistan
- * 
+ *
  * Copyright © 2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,7 +40,7 @@ module.exports.testdatefmt_ps_AF = {
     testDateFmtConstructorEmpty_ps_AF: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "ps-AF"});
-        
+
         test.ok(fmt !== null);
         test.done();
     },
@@ -48,7 +48,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "short", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -66,7 +66,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "medium", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -84,7 +84,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "long", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -102,7 +102,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -120,7 +120,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "short", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -138,7 +138,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "medium", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -156,7 +156,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", timelength: "long", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -174,7 +174,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -192,7 +192,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "short", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -210,7 +210,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "medium", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -228,7 +228,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "long", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -246,7 +246,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -264,7 +264,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", calendar: "julian", template: "yyyy-MM-dd", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new JulianDate({
             locale: "ps-AF",
             year: 2021,
@@ -282,7 +282,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", calendar: "julian", template: "yyyy-MM-dd HH:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new JulianDate({
             locale: "ps-AF",
             year: 2021,
@@ -301,7 +301,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", clock: "12", template: "HH:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -319,7 +319,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", clock: "12", template: "kk:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -337,7 +337,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", clock: "24", template: "hh:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -355,7 +355,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", clock: "24", template: "KK:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -373,7 +373,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", template: "hh:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -391,7 +391,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", template: "KK:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -409,7 +409,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", template: "HH:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -427,7 +427,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", template: "kk:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -445,7 +445,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "date", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -463,7 +463,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -481,7 +481,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -499,7 +499,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", date: "y", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -517,7 +517,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", date: "m", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -535,7 +535,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", date: "d", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -553,7 +553,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", date: "dm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -571,7 +571,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", date: "my", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -589,7 +589,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", date: "dmy", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -607,7 +607,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", date: "wdm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -625,7 +625,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", date: "wdmy", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -643,7 +643,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", date: "wdm", length: "long", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -661,7 +661,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", date: "y", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -679,7 +679,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", date: "m", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -697,7 +697,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", date: "d", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -715,7 +715,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", date: "dm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -733,7 +733,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", date: "my", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -751,7 +751,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", date: "dmy", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -769,7 +769,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", date: "wdm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -787,7 +787,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", date: "wdmy", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -805,7 +805,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", time: "s", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -823,7 +823,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", time: "m", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -841,7 +841,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", time: "h", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -859,7 +859,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", time: "ms", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -877,7 +877,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", time: "hm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -895,7 +895,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", time: "hms", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -913,7 +913,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", time: "hma", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -937,7 +937,7 @@ module.exports.testdatefmt_ps_AF = {
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -961,7 +961,7 @@ module.exports.testdatefmt_ps_AF = {
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -979,7 +979,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", time: "hmsa", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -1003,7 +1003,7 @@ module.exports.testdatefmt_ps_AF = {
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -1027,7 +1027,7 @@ module.exports.testdatefmt_ps_AF = {
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -1045,7 +1045,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", length: "full", time: "s", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -1063,7 +1063,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", length: "full", time: "m", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -1081,7 +1081,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", length: "full", time: "h", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -1099,7 +1099,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", length: "full", time: "ms", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -1117,7 +1117,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", length: "full", time: "hm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -1135,7 +1135,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", length: "full", time: "hms", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -1153,7 +1153,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", length: "full", time: "hma", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -1170,15 +1170,15 @@ module.exports.testdatefmt_ps_AF = {
     testDateFmtFullTimeComponentsHMZ_ps_AF: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ps-AF", 
-            type: "time", 
-            length: "full", 
-            time: "hmz", 
+            locale: "ps-AF",
+            type: "time",
+            length: "full",
+            time: "hmz",
             timezone: "Asia/Kabul",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -1203,7 +1203,7 @@ module.exports.testdatefmt_ps_AF = {
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -1221,7 +1221,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", type: "time", length: "full", time: "hmsa", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -1246,7 +1246,7 @@ module.exports.testdatefmt_ps_AF = {
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -1271,7 +1271,7 @@ module.exports.testdatefmt_ps_AF = {
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -1296,7 +1296,7 @@ module.exports.testdatefmt_ps_AF = {
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new PersianDate({
             locale: "ps-AF",
             year: 2021,
@@ -1314,7 +1314,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var reference = new PersianDate({
             locale: "ps-AF",
             year: 2011,
@@ -1342,7 +1342,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var reference = new PersianDate({
             locale: "ps-AF",
             year: 2011,
@@ -1370,7 +1370,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var reference = new PersianDate({
             locale: "ps-AF",
             year: 2011,
@@ -1398,7 +1398,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var reference = new PersianDate({
             locale: "ps-AF",
             year: 2011,
@@ -1426,7 +1426,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var reference = new PersianDate({
             locale: "ps-AF",
             year: 2011,
@@ -1454,7 +1454,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var reference = new PersianDate({
             locale: "ps-AF",
             year: 2011,
@@ -1482,7 +1482,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var reference = new PersianDate({
             locale: "ps-AF",
             year: 2011,
@@ -1510,7 +1510,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var reference = new PersianDate({
             locale: "ps-AF",
             year: 2011,
@@ -1538,7 +1538,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var reference = new PersianDate({
             locale: "ps-AF",
             year: 2011,
@@ -1566,7 +1566,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var reference = new PersianDate({
             locale: "ps-AF",
             year: 2011,
@@ -1594,7 +1594,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var reference = new PersianDate({
             locale: "ps-AF",
             year: 2011,
@@ -1622,7 +1622,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var reference = new PersianDate({
             locale: "ps-AF",
             year: 2011,
@@ -1650,7 +1650,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var reference = new PersianDate({
             locale: "ps-AF",
             year: 2011,
@@ -1678,7 +1678,7 @@ module.exports.testdatefmt_ps_AF = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-AF", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var reference = new PersianDate({
             locale: "ps-AF",
             year: 2011,

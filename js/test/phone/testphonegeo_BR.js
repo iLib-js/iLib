@@ -1,6 +1,6 @@
 /*
  * phonegeo_JP.js - Test the GeoLocator Object.
- * 
+ *
  * Copyright © 2014-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -41,19 +41,19 @@ module.exports.phonegeo_BR = {
                 sn: "Brazil",
                 ln: "Brazil",
                 code: "BR"
-            }        
+            }
         };
-    
+
         var locator = new PhoneGeoLocator({locale: 'pt-BR'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-    
+
     testBRNumberWithAreaCode1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("0 31 85 2222 2222",{locale: "pt-BR"});
@@ -68,10 +68,10 @@ module.exports.phonegeo_BR = {
                 ln: "Greater Fortaleza"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: "pt-BR"});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -79,7 +79,7 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testBRNumberWithAreaCode2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("0-31-31-2222-2222",{locale: "pt-BR"});
@@ -94,10 +94,10 @@ module.exports.phonegeo_BR = {
                 ln: "Central Minas Gerais State (Greater Belo Horizonte, Sete Lagoas, Ipatinga)"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'pt-BR'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -105,7 +105,7 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testBRNumberWithAreaCodeAndCountry1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+55-31-2122-3456");
@@ -120,10 +120,10 @@ module.exports.phonegeo_BR = {
                 ln: "Central Minas Gerais State (Greater Belo Horizonte, Sete Lagoas, Ipatinga)"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'pt-BR'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -131,7 +131,7 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testBRNumberWithAreaCodeAndCountry2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+55-87-2122-3456");
@@ -146,10 +146,10 @@ module.exports.phonegeo_BR = {
                 ln: "Central and West Pernambuco State (Petrolina, Garanhuns)"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -157,7 +157,7 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testBRNumberWithAreaCodeAndCountry3: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+55-71-2123-3456");
@@ -172,10 +172,10 @@ module.exports.phonegeo_BR = {
                 ln: "Greater Salvador"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -183,7 +183,7 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testBRNumberCallFromUS: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("011 55-71-2123-3456");
@@ -198,10 +198,10 @@ module.exports.phonegeo_BR = {
                 ln: "Greater Salvador"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -209,7 +209,7 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testBRPolice: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("197",{locale: "pt-BR"});
@@ -226,7 +226,7 @@ module.exports.phonegeo_BR = {
         };
         var locator = new PhoneGeoLocator({locale: "pt-BR"});
         var geoInfo = locator.locate(parsed);
-    
+
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
@@ -235,7 +235,7 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testBRAmbulance: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("192",{locale: "pt-BR"});
@@ -252,7 +252,7 @@ module.exports.phonegeo_BR = {
         };
         var locator = new PhoneGeoLocator({locale: "pt-BR"});
         var geoInfo = locator.locate(parsed);
-    
+
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
@@ -261,6 +261,6 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     }
-    
-    
+
+
 };

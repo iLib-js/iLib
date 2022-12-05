@@ -1,6 +1,6 @@
 /*
  * phonegeo_JP.js - Test the GeoLocator Object.
- * 
+ *
  * Copyright © 2014-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -41,19 +41,19 @@ module.exports.phonegeo_JP = {
                 sn: "Japan",
                 ln: "Japan",
                 code: "JP"
-            }        
+            }
         };
-    
+
         var locator = new PhoneGeoLocator({locale: 'ja-JP'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-    
+
     testJPNumberWithAreaCode1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("056-5-3111-1111",{locale: "ja-JP"});
@@ -68,10 +68,10 @@ module.exports.phonegeo_JP = {
                 ln: "Higashikamo District, Nishikamo District, Toyota, Aichi"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: "ja-JP"});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -79,7 +79,7 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testJPNumberWithAreaCode2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("03-3262-2391",{locale: "ja-JP"});
@@ -94,10 +94,10 @@ module.exports.phonegeo_JP = {
                 ln: "Tokyo"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'ja-JP'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -105,7 +105,7 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testJPNumberWithAreaCodeAndCountry1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+81-3-2122-3456");
@@ -120,10 +120,10 @@ module.exports.phonegeo_JP = {
                 ln: "Tokyo"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'ja-JP'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -131,7 +131,7 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testJPNumberWithAreaCodeAndCountry2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+81-56-5-2122-3456");
@@ -146,10 +146,10 @@ module.exports.phonegeo_JP = {
                 ln: "Higashikamo District, Nishikamo District, Toyota, Aichi"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -157,7 +157,7 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testJPNumberWithAreaCodeAndCountry3: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+81-4-29-2123-3456");
@@ -172,10 +172,10 @@ module.exports.phonegeo_JP = {
                 ln: "Hannō, Hidaka, Iruma District, Iruma, Sayama, Tokorozawa, Saitama"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -183,7 +183,7 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testJPNumberCallFromUS: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("011 81-4-29-2123-3456");
@@ -198,10 +198,10 @@ module.exports.phonegeo_JP = {
                 ln: "Hannō, Hidaka, Iruma District, Iruma, Sayama, Tokorozawa, Saitama"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -209,7 +209,7 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testJPNumberWithAreaCodeAndCountry4: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+81-4-29-2123-3456");
@@ -224,10 +224,10 @@ module.exports.phonegeo_JP = {
                 ln: "Hannō, Hidaka, Iruma District, Iruma, Sayama, Tokorozawa, Saitama"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'fr-FR'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -235,7 +235,7 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testJPPolice: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("110",{locale: "ja-JP"});
@@ -252,7 +252,7 @@ module.exports.phonegeo_JP = {
         };
         var locator = new PhoneGeoLocator({locale: "ja-JP"});
         var geoInfo = locator.locate(parsed);
-    
+
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
@@ -261,7 +261,7 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testJPFireAndAmbulance: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("119",{locale: "ja-JP"});
@@ -278,7 +278,7 @@ module.exports.phonegeo_JP = {
         };
         var locator = new PhoneGeoLocator({locale: "ja-JP"});
         var geoInfo = locator.locate(parsed);
-    
+
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
@@ -287,6 +287,6 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     }
-    
-    
+
+
 };

@@ -115,7 +115,7 @@ exports.run = function (files, options, callback) {
                    ' assertions (' + assertions.duration + 'ms)'
                 );
             }
-            
+
             if (callback) callback(assertions.failures() ? new Error('We have got test failures.') : undefined);
         },
         testStart: function(name) {

@@ -1,6 +1,6 @@
 /*
  * testaddress_PT.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports.testaddress_PT = {
     testParseAddressPTNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Augusto Rodrigues Avenida António Arroio 5\n2775-153 Parede\nPortugal", {locale: 'pt-PT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Augusto Rodrigues Avenida António Arroio 5");
         test.equal(parsedAddress.locality, "Parede");
@@ -46,11 +46,11 @@ module.exports.testaddress_PT = {
         test.equal(parsedAddress.countryCode, "PT");
         test.done();
     },
-    
+
     testParseAddressPTNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Augusto Rodrigues Avenida António Arroio 5\nParede\nPortugal", {locale: 'pt-PT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Augusto Rodrigues Avenida António Arroio 5");
         test.equal(parsedAddress.locality, "Parede");
@@ -60,11 +60,11 @@ module.exports.testaddress_PT = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressPTNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Augusto Rodrigues Avenida António Arroio 5\n2775-153 Parede", {locale: 'pt-PT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Augusto Rodrigues Avenida António Arroio 5");
         test.equal(parsedAddress.locality, "Parede");
@@ -74,7 +74,7 @@ module.exports.testaddress_PT = {
         test.equal(parsedAddress.countryCode, "PT");
         test.done();
     },
-    
+
     testParseAddressPTManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Augusto Rodrigues\nAvenida António Arroio 5\n\n2775-153\nParede\nPortugal\n\n\n", {locale: 'pt-PT'});
@@ -87,11 +87,11 @@ module.exports.testaddress_PT = {
         test.equal(parsedAddress.countryCode, "PT");
         test.done();
     },
-    
+
     testParseAddressPTOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Augusto Rodrigues , Avenida António Arroio 5 , 2775-153 , Parede , Portugal", {locale: 'pt-PT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Augusto Rodrigues, Avenida António Arroio 5");
         test.equal(parsedAddress.locality, "Parede");
@@ -101,11 +101,11 @@ module.exports.testaddress_PT = {
         test.equal(parsedAddress.countryCode, "PT");
         test.done();
     },
-    
+
     testParseAddressPTSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tAugusto Rodrigues\n\t\t\tAvenida António Arroio 5\n\t\n2775-153\t\nParede\n\t Portugal\n\n\n", {locale: 'pt-PT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Augusto Rodrigues, Avenida António Arroio 5");
         test.equal(parsedAddress.locality, "Parede");
@@ -115,11 +115,11 @@ module.exports.testaddress_PT = {
         test.equal(parsedAddress.countryCode, "PT");
         test.done();
     },
-    
+
     testParseAddressPTNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Augusto Rodrigues Avenida António Arroio 5 2775-153 Parede Portugal", {locale: 'pt-PT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Augusto Rodrigues Avenida António Arroio 5");
         test.equal(parsedAddress.locality, "Parede");
@@ -129,13 +129,13 @@ module.exports.testaddress_PT = {
         test.equal(parsedAddress.countryCode, "PT");
         test.done();
     },
-    
+
     testParseAddressPTFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Augusto Rodrigues Avenida António Arroio 5\n2775-153 Parede\nPortugal", {locale: 'en-US'});
-        
+
         // the country name is in German because this address is for a contact in a German database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Augusto Rodrigues Avenida António Arroio 5");
         test.equal(parsedAddress.locality, "Parede");
@@ -145,7 +145,7 @@ module.exports.testaddress_PT = {
         test.equal(parsedAddress.countryCode, "PT");
         test.done();
     },
-    
+
     testFormatAddressPT: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -155,13 +155,13 @@ module.exports.testaddress_PT = {
             country: "Portugal",
             countryCode: "PT"
         }, {locale: 'pt-PT'});
-        
+
         var expected = "Augusto Rodrigues Avenida António Arroio 5\n2775-153 Parede\nPortugal";
         var formatter = new AddressFmt({locale: 'pt-PT'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressPTFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -171,11 +171,11 @@ module.exports.testaddress_PT = {
             country: "Portugal",
             countryCode: "PT"
         }, {locale: 'en-US'});
-        
+
         var expected = "Augusto Rodrigues Avenida António Arroio 5\n2775-153 Parede\nPortugal";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

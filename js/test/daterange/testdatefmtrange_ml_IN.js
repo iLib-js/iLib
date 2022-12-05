@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_ml_IN.js - test the date range formatter object in Malyalam/India
- * 
- * 
+ *
+ *
  * Copyright © 2012-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,7 +39,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -65,7 +65,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -91,7 +91,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -117,7 +117,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -139,12 +139,12 @@ module.exports.testdatefmtrange_ml_IN = {
         test.equal(fmt.format(start, end), "2011, ഡിസംബർ 31 1:45 PM – 2:30 PM");
         test.done();
     },
-    
+
     testDateRngFmtRangeNextDayShort_ml_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -170,7 +170,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -196,7 +196,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -222,7 +222,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -244,12 +244,12 @@ module.exports.testdatefmtrange_ml_IN = {
         test.equal(fmt.format(start, end), "2011, ഡിസംബർ 30 1:45 PM – 2011, ഡിസംബർ 31 2:30 PM");
         test.done();
     },
-    
+
     testDateRngFmtRangeMultiDayShort_ml_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -275,7 +275,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -301,7 +301,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -327,7 +327,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -349,12 +349,12 @@ module.exports.testdatefmtrange_ml_IN = {
         test.equal(fmt.format(start, end), "2011, ഡിസംബർ 20 – 31");
         test.done();
     },
-    
+
     testDateRngFmtRangeNextMonthShort_ml_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -380,7 +380,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -406,7 +406,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -432,7 +432,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -454,12 +454,12 @@ module.exports.testdatefmtrange_ml_IN = {
         test.equal(fmt.format(start, end), "2011, നവംബർ 20 – ഡിസംബർ 31");
         test.done();
     },
-    
+
     testDateRngFmtRangeNextYearShort_ml_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -485,7 +485,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -511,7 +511,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -537,7 +537,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -559,12 +559,12 @@ module.exports.testdatefmtrange_ml_IN = {
         test.equal(fmt.format(start, end), "2011, നവംബർ 20 – 2012, ജനുവരി 31");
         test.done();
     },
-    
+
     testDateRngFmtRangeMultiYearShort_ml_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -590,7 +590,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -616,7 +616,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -642,7 +642,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -668,7 +668,7 @@ module.exports.testdatefmtrange_ml_IN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -690,5 +690,5 @@ module.exports.testdatefmtrange_ml_IN = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-    
+
 };

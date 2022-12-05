@@ -1,6 +1,6 @@
 /*
  * testdatefmt_my_MM.js - test the date formatter object in Burmese-Myanmar
- * 
+ *
  * Copyright © 2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,7 +39,7 @@ module.exports.testdatefmt_my_MM = {
     testDateFmtConstructorEmpty_my_MM: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "my-MM"});
-        
+
         test.ok(fmt !== null);
         test.done();
     },
@@ -48,7 +48,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "short", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -67,7 +67,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "medium", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -86,7 +86,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "long", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -105,7 +105,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -124,7 +124,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "short", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -143,7 +143,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "medium", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -162,7 +162,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", timelength: "long", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -181,7 +181,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -200,7 +200,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "short", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -219,7 +219,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "medium", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -238,7 +238,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "long", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -257,7 +257,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -271,12 +271,12 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), '2011- စက်တင်ဘာ 29 13:45');
         test.done();
     },
-    
+
     testDateFmtTemplateCalendar_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", calendar: "julian", template: "yyyy-MM-dd", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new JulianDate({
             locale: "my-MM",
             year: 2011,
@@ -295,7 +295,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", calendar: "julian", template: "yyyy-MM-dd B HH:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -315,7 +315,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", clock: "12", template: "HH:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -334,7 +334,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", clock: "12", template: "kk:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -353,7 +353,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", clock: "24", template: "hh:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -372,7 +372,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", clock: "24", template: "KK:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -391,7 +391,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", template: "hh:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -410,7 +410,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", template: "KK:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -429,7 +429,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", template: "HH:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -448,7 +448,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", template: "kk:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -463,12 +463,12 @@ module.exports.testdatefmt_my_MM = {
         test.done();
     },
 
-    
+
     testDateFmtTypeDate_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "date", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -487,7 +487,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -506,7 +506,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -525,7 +525,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "y", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -544,7 +544,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "m", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -563,7 +563,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "n", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -582,7 +582,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "d", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -601,7 +601,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "dm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -620,7 +620,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "my", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -639,7 +639,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "dmy", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -658,7 +658,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "wdm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -677,7 +677,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "wdmy", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -696,7 +696,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "wdm", length: "long", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -715,7 +715,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", date: "y", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -734,7 +734,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", date: "m", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -753,7 +753,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", date: "d", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -772,7 +772,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", date: "dm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -791,7 +791,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", date: "my", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -810,7 +810,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", date: "dmy", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -829,7 +829,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", date: "wdm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -848,7 +848,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", date: "wdmy", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -867,7 +867,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", time: "s", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -886,7 +886,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", time: "m", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -905,7 +905,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", time: "h", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -924,7 +924,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", time: "ms", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -943,7 +943,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", time: "hm",useNative:false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -962,7 +962,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", time: "hms", useNative:false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -981,7 +981,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", time: "hma", useNative:false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -999,14 +999,14 @@ module.exports.testdatefmt_my_MM = {
     testDateFmtShortTimeComponentsHMZ_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "my-MM", 
-            type: "time", 
-            time: "hmz", 
+            locale: "my-MM",
+            type: "time",
+            time: "hmz",
             timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1024,14 +1024,14 @@ module.exports.testdatefmt_my_MM = {
     testDateFmtShortTimeComponentsHMAZ_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "my-MM", 
-            type: "time", 
-            time: "hmaz", 
+            locale: "my-MM",
+            type: "time",
+            time: "hmaz",
             timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1050,7 +1050,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", time: "hmsa", useNative:false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1068,14 +1068,14 @@ module.exports.testdatefmt_my_MM = {
     testDateFmtShortTimeComponentsHMSZ_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "my-MM", 
-            type: "time", 
-            time: "hmsz", 
+            locale: "my-MM",
+            type: "time",
+            time: "hmsz",
             timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1093,14 +1093,14 @@ module.exports.testdatefmt_my_MM = {
     testDateFmtShortTimeComponentsHMSAZ_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "my-MM", 
-            type: "time", 
-            time: "hmsaz", 
+            locale: "my-MM",
+            type: "time",
+            time: "hmsaz",
             timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1119,7 +1119,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", length: "full", time: "s", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1138,7 +1138,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", length: "full", time: "m", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1157,7 +1157,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", length: "full", time: "h", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1176,7 +1176,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", length: "full", time: "ms",useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1195,7 +1195,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", length: "full", time: "hm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1214,7 +1214,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", length: "full", time: "hms", useNative:false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1234,12 +1234,12 @@ module.exports.testdatefmt_my_MM = {
         var fmt = new DateFmt({
             locale: "my-MM",
             type: "time",
-            length: "full", 
+            length: "full",
             time: "hma",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1257,15 +1257,15 @@ module.exports.testdatefmt_my_MM = {
     testDateFmtFullTimeComponentsHMZ_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "my-MM", 
-            type: "time", 
-            length: "full", 
-            time: "hmz", 
+            locale: "my-MM",
+            type: "time",
+            length: "full",
+            time: "hmz",
             timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1283,15 +1283,15 @@ module.exports.testdatefmt_my_MM = {
     testDateFmtFullTimeComponentsHMAZ_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "my-MM", 
-            type: "time", 
-            length: "full", 
-            time: "hmaz", 
+            locale: "my-MM",
+            type: "time",
+            length: "full",
+            time: "hmaz",
             timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1310,7 +1310,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", length: "full", time: "hmsa", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1328,15 +1328,15 @@ module.exports.testdatefmt_my_MM = {
     testDateFmtFullTimeComponentsHMSZ_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "my-MM", 
-            type: "time", 
-            length: "full", 
-            time: "hmsz", 
+            locale: "my-MM",
+            type: "time",
+            length: "full",
+            time: "hmsz",
             timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1354,15 +1354,15 @@ module.exports.testdatefmt_my_MM = {
     testDateFmtFullTimeComponentsHMSAZ_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "my-MM", 
-            type: "time", 
-            length: "full", 
-            time: "hmsaz", 
+            locale: "my-MM",
+            type: "time",
+            length: "full",
+            time: "hmsaz",
             timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1380,15 +1380,15 @@ module.exports.testdatefmt_my_MM = {
     testDateFmtWithTimeZoneAndNoDST_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "my-MM", 
-            type: "time", 
-            length: "full", 
-            time: "hmsz", 
+            locale: "my-MM",
+            type: "time",
+            length: "full",
+            time: "hmsz",
             timezone: "Asia/Yangon",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1407,7 +1407,7 @@ module.exports.testdatefmt_my_MM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1435,7 +1435,7 @@ testDateFmtFormatRelativeWithinMinuteBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1463,7 +1463,7 @@ testDateFmtFormatRelativeWithinHourAfter_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1491,7 +1491,7 @@ testDateFmtFormatRelativeWithinHourBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1519,7 +1519,7 @@ testDateFmtFormatRelativeWithinDayAfter_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1547,7 +1547,7 @@ testDateFmtFormatRelativeWithinDayBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1576,7 +1576,7 @@ testDateFmtFormatRelativeWithinDayBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1604,7 +1604,7 @@ testDateFmtFormatRelativeWithinFortnightBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1633,7 +1633,7 @@ testDateFmtFormatRelativeWithinFortnightBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1661,7 +1661,7 @@ testDateFmtFormatRelativeWithinQuarterBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1690,7 +1690,7 @@ testDateFmtFormatRelativeWithinQuarterBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1718,7 +1718,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1747,7 +1747,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1775,7 +1775,7 @@ testDateFmtFormatRelativeYearsBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "my-MM",
             year: 2011,
@@ -1798,5 +1798,5 @@ testDateFmtFormatRelativeYearsBefore_my_MM: function(test) {
         });
         test.equal(fmt.formatRelative(reference, date), 'ပြီးခဲ့သည့် 21 နှစ်');
         test.done();
-    }    
+    }
 };

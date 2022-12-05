@@ -1,6 +1,6 @@
 /*
  * testcollation_ru.js - test the Collator object in Russian
- * 
+ *
  * Copyright © 2015, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,9 +38,9 @@ module.exports.testcollation_ru = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // А А́ а а́ Ӑ Ӑ ӑ ӑ Ӓ Ӓ ӓ ӓ Б б В в Г г Ґ ґ Ғ ғ Ӻ ӻ Ҕ ҕ Ӷ ӷ Ѓ Ѓ ѓ ѓ
         test.ok("А < А́", col.compare("А", "А́") < 0);
         test.ok("А́ < а", col.compare("А́", "а") < 0);
@@ -75,7 +75,7 @@ module.exports.testcollation_ru = {
         test.ok("ѓ < ѓ", col.compare("ѓ", "ѓ") < 0);
         test.done();
     },
-    
+
     testJSCollatorTer_ru: function(test) {
         test.expect(32);
         var col = new Collator({
@@ -84,9 +84,9 @@ module.exports.testcollation_ru = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // А А́ а а́ Ӑ Ӑ ӑ ӑ Ӓ Ӓ ӓ ӓ Б б В в Г г Ґ ґ Ғ ғ Ӻ ӻ Ҕ ҕ Ӷ ӷ Ѓ Ѓ ѓ ѓ
         test.ok("А = А́", col.compare("А", "А́") === 0);
         test.ok("А́ < а", col.compare("А́", "а") < 0);
@@ -121,7 +121,7 @@ module.exports.testcollation_ru = {
         test.ok("ѓ = ѓ", col.compare("ѓ", "ѓ") === 0);
         test.done();
     },
-    
+
     testJSCollatorSec_ru: function(test) {
         test.expect(32);
         var col = new Collator({
@@ -130,9 +130,9 @@ module.exports.testcollation_ru = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // А А́ а а́ Ӑ Ӑ ӑ ӑ Ӓ Ӓ ӓ ӓ Б б В в Г г Ґ ґ Ғ ғ Ӻ ӻ Ҕ ҕ Ӷ ӷ Ѓ Ѓ ѓ ѓ
         test.ok("А = А́", col.compare("А", "А́") === 0);
         test.ok("А́ = а", col.compare("А́", "а") === 0);
@@ -167,7 +167,7 @@ module.exports.testcollation_ru = {
         test.ok("ѓ = ѓ", col.compare("ѓ", "ѓ") === 0);
         test.done();
     },
-    
+
     testJSCollatorPri_ru: function(test) {
         test.expect(32);
         var col = new Collator({
@@ -176,9 +176,9 @@ module.exports.testcollation_ru = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // А А́ а а́ Ӑ Ӑ ӑ ӑ Ӓ Ӓ ӓ ӓ Б б В в Г г Ґ ґ Ғ ғ Ӻ ӻ Ҕ ҕ Ӷ ӷ Ѓ Ѓ ѓ ѓ
         test.ok("А = А́", col.compare("А", "А́") === 0);
         test.ok("А́ = а", col.compare("А́", "а") === 0);
@@ -213,7 +213,7 @@ module.exports.testcollation_ru = {
         test.ok("ѓ = ѓ", col.compare("ѓ", "ѓ") === 0);
         test.done();
     },
-    
+
     testJSCollatorQuatSort_ru: function(test) {
         test.expect(32);
         var col = new Collator({
@@ -222,9 +222,9 @@ module.exports.testcollation_ru = {
             sensitivity: "quaternary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // А А́ а а́ Ӑ Ӑ ӑ ӑ Ӓ Ӓ ӓ ӓ Б б В в Г г Ґ ґ Ғ ғ Ӻ ӻ Ҕ ҕ Ӷ ӷ Ѓ Ѓ ѓ ѓ
         test.ok("А < А́", col.compare("А", "А́") < 0);
         test.ok("А́ < а", col.compare("А́", "а") < 0);
@@ -259,7 +259,7 @@ module.exports.testcollation_ru = {
         test.ok("ѓ < ѓ", col.compare("ѓ", "ѓ") < 0);
         test.done();
     },
-    
+
     testJSCollatorTerSort_ru: function(test) {
         test.expect(32);
         var col = new Collator({
@@ -268,9 +268,9 @@ module.exports.testcollation_ru = {
             sensitivity: "tertiary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // А А́ а а́ Ӑ Ӑ ӑ ӑ Ӓ Ӓ ӓ ӓ Б б В в Г г Ґ ґ Ғ ғ Ӻ ӻ Ҕ ҕ Ӷ ӷ Ѓ Ѓ ѓ ѓ
         test.ok("А < А́", col.compare("А", "А́") < 0);
         test.ok("А́ < а", col.compare("А́", "а") < 0);
@@ -305,7 +305,7 @@ module.exports.testcollation_ru = {
         test.ok("ѓ < ѓ", col.compare("ѓ", "ѓ") < 0);
         test.done();
     },
-    
+
     testJSCollatorSecSort_ru: function(test) {
         test.expect(32);
         var col = new Collator({
@@ -314,9 +314,9 @@ module.exports.testcollation_ru = {
             sensitivity: "secondary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // А А́ а а́ Ӑ Ӑ ӑ ӑ Ӓ Ӓ ӓ ӓ Б б В в Г г Ґ ґ Ғ ғ Ӻ ӻ Ҕ ҕ Ӷ ӷ Ѓ Ѓ ѓ ѓ
         test.ok("А < А́", col.compare("А", "А́") < 0);
         test.ok("А́ < а", col.compare("А́", "а") < 0);
@@ -351,7 +351,7 @@ module.exports.testcollation_ru = {
         test.ok("ѓ < ѓ", col.compare("ѓ", "ѓ") < 0);
         test.done();
     },
-    
+
     testJSCollatorPriSort_ru: function(test) {
         test.expect(32);
         var col = new Collator({
@@ -360,9 +360,9 @@ module.exports.testcollation_ru = {
             sensitivity: "primary",
             usage: "sort"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // А А́ а а́ Ӑ Ӑ ӑ ӑ Ӓ Ӓ ӓ ӓ Б б В в Г г Ґ ґ Ғ ғ Ӻ ӻ Ҕ ҕ Ӷ ӷ Ѓ Ѓ ѓ ѓ
         test.ok("А < А́", col.compare("А", "А́") < 0);
         test.ok("А́ < а", col.compare("А́", "а") < 0);
@@ -397,7 +397,7 @@ module.exports.testcollation_ru = {
         test.ok("ѓ < ѓ", col.compare("ѓ", "ѓ") < 0);
         test.done();
     },
-    
+
     testCollatorCase_ru: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -407,7 +407,7 @@ module.exports.testcollation_ru = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
             "У",
             "Ё",
@@ -427,9 +427,9 @@ module.exports.testcollation_ru = {
             "Ў",
             "Ё"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "А́А",
             "аа",
@@ -449,11 +449,11 @@ module.exports.testcollation_ru = {
             "Ю",
             "Ꙕ"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorPrimary_ru: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -463,7 +463,7 @@ module.exports.testcollation_ru = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
             "У",
             "Ё",
@@ -483,9 +483,9 @@ module.exports.testcollation_ru = {
             "Ў",
             "Ё"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "А́А",
             "аа",
@@ -505,11 +505,11 @@ module.exports.testcollation_ru = {
             "Ю",
             "Ꙕ"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorIgnoreStressMarks_ru: function(test) {
         test.expect(9);
         var col = new Collator({
@@ -519,9 +519,9 @@ module.exports.testcollation_ru = {
             usage: "search"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var comp = col.getComparator();
-        
+
         // ignore stress marks
         test.equal(comp("за́мок", "замо́к"), 0);
         test.equal(comp("сто́ящий", "стоя́щий"), 0);
@@ -530,11 +530,11 @@ module.exports.testcollation_ru = {
         test.equal(comp("узна́ю", "узнаю́"), 0);
         test.equal(comp("отреза́ть", "отре́зать"), 0);
         test.equal(comp("Ты́ съел печенье?", "Ты съе́л печенье?"), 0);
-        
+
         test.equal(comp("ЗА́МОК", "ЗАМО́К"), 0);
         test.done();
     },
-    
+
     testJSCollatorQuatLatin_ru: function(test) {
         test.expect(18);
         var col = new Collator({
@@ -543,9 +543,9 @@ module.exports.testcollation_ru = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // all latin letters
         test.ok("A < a", col.compare("A", "a") < 0);
         test.ok("a < B", col.compare("a", "B") < 0);
@@ -566,7 +566,7 @@ module.exports.testcollation_ru = {
         test.ok("I < i", col.compare("I", "i") < 0);
         test.done();
     },
-    
+
     testCollatorPrimaryMixed_ru: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -576,7 +576,7 @@ module.exports.testcollation_ru = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
             "У",
             "Ё",
@@ -601,11 +601,11 @@ module.exports.testcollation_ru = {
             "raspberry",
             "Ё"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         // Latin letters sort before the Cyrillic ones
-        
+
         var expected = [
             "apple",
             "banana",
@@ -630,9 +630,9 @@ module.exports.testcollation_ru = {
             "Ю",
             "Ꙕ"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     }
-    
+
 };

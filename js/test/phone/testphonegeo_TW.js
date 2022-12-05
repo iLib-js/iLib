@@ -1,6 +1,6 @@
 /*
  * phonegeo_TW.js - Test the GeoLocator Object.
- * 
+ *
  * Copyright © 2014-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,10 +47,10 @@ module.exports.phonegeo_TW = {
                 ln: "Taipei County, Keelung, Panchiao, Sanchung, Yingge, Yungho, Jilong"
             }
         };
-        
+
         var locator = new PhoneGeoLocator();
         var geoInfo = locator.locate(parsed);
-        
+
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
@@ -59,7 +59,7 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testTWLocalNumber2: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("212-3456",{locale: "en-US"});
@@ -68,19 +68,19 @@ module.exports.phonegeo_TW = {
                 sn: "Taiwan",
                 ln: "Republic of China",
                 code: "TW"
-            }        
+            }
         };
-    
+
         var locator = new PhoneGeoLocator({locale: "tw-TW"});
         var geoInfo = locator.locate(parsed);
-        
+
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-    
+
     testTWNumberWithAreaCode1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("(89) 456-7890",{locale: "en-US"});
@@ -95,10 +95,10 @@ module.exports.phonegeo_TW = {
                 ln: "Taitung County"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'tw-TW'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -106,7 +106,7 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testTWNumberWithAreaCode2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("(49)212-3456",{locale: "en-US"});
@@ -121,10 +121,10 @@ module.exports.phonegeo_TW = {
                 ln: "Buli, Riyuetan, Xincun, Zhongxing, Nantou County"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'tw-TW'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -132,7 +132,7 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testTWNumberWithAreaCodeAndCountry1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+886-49-312-3456");
@@ -147,10 +147,10 @@ module.exports.phonegeo_TW = {
                 ln: "Buli, Riyuetan, Xincun, Zhongxing, Nantou County"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'ko-KR'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -158,7 +158,7 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testTWNumberWithAreaCodeAndCountry2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+886-49-32-456-1");
@@ -173,10 +173,10 @@ module.exports.phonegeo_TW = {
                 ln: "Buli, Riyuetan, Xincun, Zhongxing, Nantou County"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -184,7 +184,7 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testTWNumberWithAreaCodeAndCountry3: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+886-2-212-3456");
@@ -199,10 +199,10 @@ module.exports.phonegeo_TW = {
                 ln: "Taipei County, Keelung, Panchiao, Sanchung, Yingge, Yungho, Jilong"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -210,7 +210,7 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testTWNumberCallFromUS: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("011 886-812-212-3456");
@@ -225,10 +225,10 @@ module.exports.phonegeo_TW = {
                 ln: "Pingtung, Kinmen, Lienchiang, Taitung Counties, Wuqiu Township"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -236,7 +236,7 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testTWNumberWithAreaCodeAndCountry4: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+886-37-212-3456");
@@ -251,10 +251,10 @@ module.exports.phonegeo_TW = {
                 ln: "Miaoli County, Zhunan, Miaoli"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'fr-FR'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -262,7 +262,7 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testTWPolice: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("112",{locale: "tw-TW"});
@@ -279,7 +279,7 @@ module.exports.phonegeo_TW = {
         };
         var locator = new PhoneGeoLocator({locale: "tw-TW"});
         var geoInfo = locator.locate(parsed);
-    
+
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
@@ -288,7 +288,7 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testTWFireAndAmbulance: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("119",{locale: "tw-TW"});
@@ -305,7 +305,7 @@ module.exports.phonegeo_TW = {
         };
         var locator = new PhoneGeoLocator({locale: "tw-TW"});
         var geoInfo = locator.locate(parsed);
-    
+
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
@@ -314,6 +314,6 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     }
-    
-    
+
+
 };

@@ -100,7 +100,7 @@ module.exports.testunitfmt_ps_AF = {
         });
 
         var uf = new UnitFmt({
-            locale: "ps-AF", 
+            locale: "ps-AF",
             autoConvert:true,
             length:"short",
             useNative: false
@@ -118,7 +118,7 @@ module.exports.testunitfmt_ps_AF = {
         });
 
         var uf = new UnitFmt({
-            locale: "ps-AF", 
+            locale: "ps-AF",
             autoConvert: true,
             length: "long",
             useNative: false
@@ -136,7 +136,7 @@ module.exports.testunitfmt_ps_AF = {
         });
 
         var uf = new UnitFmt({
-            locale: "ps-AF", 
+            locale: "ps-AF",
             autoConvert: true,
             length: "short",
             useNative: false
@@ -154,7 +154,7 @@ module.exports.testunitfmt_ps_AF = {
         });
 
         var uf = new UnitFmt({
-            locale: "ps-AF", 
+            locale: "ps-AF",
             autoConvert: true,
             length: "long",
             useNative: false

@@ -1,6 +1,6 @@
 /*
  * testdatefmtrange_ig_NG.js - test the date range formatter object Igbo - Nigeria
- * 
+ *
  * Copyright © 2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

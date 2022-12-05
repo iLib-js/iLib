@@ -1,6 +1,6 @@
 /*
  * testaddress_SD.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports.testaddress_SD = {
     testParseAddressSDNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\nالسودان", {locale: 'ar-SD'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١");
         test.equal(parsedAddress.locality, "ﺎﻠﺧﺮﻃﻮﻣ");
@@ -46,11 +46,11 @@ module.exports.testaddress_SD = {
         test.equal(parsedAddress.countryCode, "SD");
         test.done();
     },
-    
+
     testParseAddressSDNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\nﺎﻠﺧﺮﻃﻮﻣ\nالسودان", {locale: 'ar-SD'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١");
         test.equal(parsedAddress.locality, "ﺎﻠﺧﺮﻃﻮﻣ");
@@ -60,11 +60,11 @@ module.exports.testaddress_SD = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressSDNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ", {locale: 'ar-SD'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١");
         test.equal(parsedAddress.locality, "ﺎﻠﺧﺮﻃﻮﻣ");
@@ -74,7 +74,7 @@ module.exports.testaddress_SD = {
         test.equal(parsedAddress.countryCode, "SD");
         test.done();
     },
-    
+
     testParseAddressSDManyLines: function(test) {
         test.expect(6);
         var parsedAddress = new Address("ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\nﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\n\nالسودان\n\n\n", {locale: 'ar-OM'});
@@ -86,11 +86,11 @@ module.exports.testaddress_SD = {
         test.equal(parsedAddress.countryCode, "SD");
         test.done();
     },
-    
+
     testParseAddressSDOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١ ,  ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ , ١١١١١ , ﺎﻠﺧﺮﻃﻮﻣ , السودان", {locale: 'ar-SD'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١, ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ");
         test.equal(parsedAddress.locality, "ﺎﻠﺧﺮﻃﻮﻣ");
@@ -100,11 +100,11 @@ module.exports.testaddress_SD = {
         test.equal(parsedAddress.countryCode, "SD");
         test.done();
     },
-    
+
     testParseAddressSDSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n\n\tﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ\n\n\t١١١١١\n\n\tﺎﻠﺧﺮﻃﻮﻣ\n\n\tالسودان\n\n\n", {locale: 'ar-SD'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١, ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ");
         test.equal(parsedAddress.locality, "ﺎﻠﺧﺮﻃﻮﻣ");
@@ -114,11 +114,11 @@ module.exports.testaddress_SD = {
         test.equal(parsedAddress.countryCode, "SD");
         test.done();
     },
-    
+
     testParseAddressSDNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١ ١١١١١  ﺎﻠﺧﺮﻃﻮﻣ السودان", {locale: 'ar-SD'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١");
         test.equal(parsedAddress.locality, "ﺎﻠﺧﺮﻃﻮﻣ");
@@ -128,13 +128,13 @@ module.exports.testaddress_SD = {
         test.equal(parsedAddress.countryCode, "SD");
         test.done();
     },
-    
+
     testParseAddressSDFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\nSudan", {locale: 'en-US'});
-        
+
         // the country name is in German because this address is for a contact in a German database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١");
         test.equal(parsedAddress.locality, "ﺎﻠﺧﺮﻃﻮﻣ");
@@ -144,7 +144,7 @@ module.exports.testaddress_SD = {
         test.equal(parsedAddress.countryCode, "SD");
         test.done();
     },
-    
+
     testFormatAddressSD: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -154,13 +154,13 @@ module.exports.testaddress_SD = {
             country: "السودان",
             countryCode: "SD"
         }, {locale: 'ar-SD'});
-        
+
         var expected = "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\nالسودان";
         var formatter = new AddressFmt({locale: 'ar-SD'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressSDFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -170,11 +170,11 @@ module.exports.testaddress_SD = {
             country: "Sudan",
             countryCode: "SD"
         }, {locale: 'en-US'});
-        
+
         var expected = "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\nSudan";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

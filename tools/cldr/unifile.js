@@ -1,6 +1,6 @@
 /*
  * unifile.js - read and parse a file downloaded from the unicode repository
- * 
+ *
  * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ var fs = require('fs');
 
 /**
  * @class
- * 
+ *
  * Parses a Unicode-style file. Unicode files have comments, blank
  * lines and content lines. Content lines have fields separated with
  * a semi-colon, which are optionally followed by a comment. This
@@ -31,16 +31,16 @@ var fs = require('fs');
  * It is up to the caller to interpret the fields in a content line
  * as it sees fit. Content lines do not necessarily all contain the
  * same number of fields.<p>
- * 
+ *
  * The options must contain only one of the following properties:
- * 
+ *
  * <ul>
  * <li>path - Path to the file to read on disk
  * <li>string - The actual in-memory text of the file
  * </ul>
- * 
+ *
  * The options can also contain zero or more of the following properties:
- * 
+ *
  * <ul>
  * <li>splitChar - defines the field separator. This can be a character or
  * regular expression to split each line on. Default is semi-colon ';'
@@ -48,7 +48,7 @@ var fs = require('fs');
  * Everything after this string to the end of the line is ignored as a comment.
  * Default is the hash char '#'.
  * </ul>
- * 
+ *
  * @constructor
  * @param {Object.<path:string,string:string,splitChar:string,commentString:string>} options options governing the construction of this file
  */

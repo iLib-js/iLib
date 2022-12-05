@@ -1,6 +1,6 @@
 /*
  * testname_nb_NO.js - test the name object in Norweign
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,82 +37,82 @@ module.exports.testname_nb = {
         test.expect(2);
         var parsed = new Name("Maria Bonnevie", {locale: 'nb-NO'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Maria",
             familyName: "Bonnevie"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseTitle_nb_NO: function(test) {
         test.expect(2);
         var parsed = new Name("Maria Bonnevie pensjonert", {locale: 'nb-NO'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             suffix: "pensjonert",
             givenName: "Maria",
             familyName: "Bonnevie"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitleWithFamilyOnly_nb_NO: function(test) {
         test.expect(2);
         var parsed = new Name("Mrs. Bonnevie", {locale: 'nb-NO'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Mrs.",
             familyName: "Bonnevie"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseEverything_nb_NO: function(test) {
         test.expect(2);
         var parsed = new Name("Mr. og Mrs. Bonnevie", {locale: 'nb-NO'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Mr. og Mrs.",
             familyName: "Bonnevie"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseprefix_nb_NO: function(test) {
         test.expect(2);
         var parsed = new Name("Mrs. Maria Bonnevie", {locale: 'nb-NO'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Mrs.",
             givenName: "Maria",
             familyName: "Bonnevie"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_nb_NO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -120,18 +120,18 @@ module.exports.testname_nb = {
             familyName: "Bonnevie"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'nb-NO'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Maria Bonnevie";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_nb_NO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -139,18 +139,18 @@ module.exports.testname_nb = {
             familyName: "Bonnevie"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'nb-NO'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Maria Bonnevie";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_nb_NO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -159,20 +159,20 @@ module.exports.testname_nb = {
             suffix: "asdf"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'nb-NO'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Maria Bonnevie";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testFormatSurname_nb_NO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -180,18 +180,18 @@ module.exports.testname_nb = {
             familyName: "Bonnevie"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'nb-NO'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Mr. og Mrs. Bonnevie";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_nb_NO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -201,18 +201,18 @@ module.exports.testname_nb = {
             suffix: "pensjonert"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'nb-NO'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "vice president Maria Bonnevie pensjonert";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_nb_NO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -221,18 +221,18 @@ module.exports.testname_nb = {
             familyName: "Bonnevie"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'nb-NO'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Maria Bonnevie";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_nb_NO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -241,18 +241,18 @@ module.exports.testname_nb = {
             familyName: "Bonnevie"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'nb-NO'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Maria Bonnevie";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_nb_NO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -266,13 +266,13 @@ module.exports.testname_nb = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "vice president Maria Bonnevie";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
+
+
+
 };

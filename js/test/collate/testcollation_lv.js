@@ -1,6 +1,6 @@
 /*
  * testcollation_lv.js - test the Collator object in Latvian
- * 
+ *
  * Copyright © 2014-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,12 +38,12 @@ module.exports.testcollation_lv = {
             useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // AĀBCČDEĒFGĢHIYĪJKĶLĻMNŅO..RŖSŠTUŪVZŽ
         // aābcčdeēfgģhiyījkķlļmnņo..rŗsštuūvzž
-    
+
         test.ok("A < Ā",  col.compare("A", "Ā") < 0);
         test.ok("Ā < B",  col.compare("Ā", "B") < 0);
         test.ok("B < C",  col.compare("B", "C") < 0);
@@ -78,7 +78,7 @@ module.exports.testcollation_lv = {
         test.ok("Z < Ž",  col.compare("Z", "Ž") < 0);
         test.done();
     },
-    
+
     testJSCollatorQuatLower_lv: function(test) {
         test.expect(33);
         var col = new Collator({
@@ -86,12 +86,12 @@ module.exports.testcollation_lv = {
             useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // AĀBCČDEĒFGĢHIYĪJKĶLĻMNŅO..RŖSŠTUŪVZŽ
         // aābcčdeēfgģhiyījkķlļmnņo..rŗsštuūvzž
-    
+
         test.ok("a < ā",  col.compare("a", "ā") < 0);
         test.ok("ā < b",  col.compare("ā", "b") < 0);
         test.ok("b < c",  col.compare("b", "c") < 0);
@@ -123,12 +123,12 @@ module.exports.testcollation_lv = {
         test.ok("u < ū",  col.compare("u", "ū") < 0);
         test.ok("ū < v",  col.compare("ū", "v") < 0);
         test.ok("v < z",  col.compare("v", "z") < 0);
-        test.ok("z < ž",  col.compare("z", "ž") < 0);    
+        test.ok("z < ž",  col.compare("z", "ž") < 0);
         test.done();
     },
-    
+
     // differences in umlauted characters should be primary differences
-    
+
     testJSCollatorPrimaryUpper_lv: function(test) {
         test.expect(33);
         var col = new Collator({
@@ -137,9 +137,9 @@ module.exports.testcollation_lv = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         test.ok("A < Ā",  col.compare("A", "Ā") < 0);
         test.ok("Ā < B",  col.compare("Ā", "B") < 0);
         test.ok("B < C",  col.compare("B", "C") < 0);
@@ -174,7 +174,7 @@ module.exports.testcollation_lv = {
         test.ok("Z < Ž",  col.compare("Z", "Ž") < 0);
         test.done();
     },
-    
+
     testJSCollatorPrimaryOE_lv: function(test) {
         test.expect(33);
         var col = new Collator({
@@ -183,9 +183,9 @@ module.exports.testcollation_lv = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         test.ok("a < ā",  col.compare("a", "ā") < 0);
         test.ok("ā < b",  col.compare("ā", "b") < 0);
         test.ok("b < c",  col.compare("b", "c") < 0);
@@ -217,10 +217,10 @@ module.exports.testcollation_lv = {
         test.ok("u < ū",  col.compare("u", "ū") < 0);
         test.ok("ū < v",  col.compare("ū", "v") < 0);
         test.ok("v < z",  col.compare("v", "z") < 0);
-        test.ok("z < ž",  col.compare("z", "ž") < 0);    
+        test.ok("z < ž",  col.compare("z", "ž") < 0);
         test.done();
     },
-    
+
     testCollatorNativeCase_lv: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -230,7 +230,7 @@ module.exports.testcollation_lv = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
             "Ēo",
             "fo",
@@ -301,12 +301,12 @@ module.exports.testcollation_lv = {
             "Oo",
             "Ŗo",
         ];
-    
+
         input.sort(col.getComparator());
-    
+
            // AĀBCČDEĒFGĢHIYĪJKĶLĻMNŅO..RŖSŠTUŪVZŽ
            // aābcčdeēfgģhiyījkķlļmnņo..rŗsštuūvzž
-    
+
         var expected = [
                "Ao",
             "ao",
@@ -377,11 +377,11 @@ module.exports.testcollation_lv = {
             "Žo",
             "žo"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorNativeVariant_lv: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -392,7 +392,7 @@ module.exports.testcollation_lv = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
              "Ēo",
             "fo",
@@ -477,9 +477,9 @@ module.exports.testcollation_lv = {
             "Oo",
             "Ŗo"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
                "Ao",
             "ao",
@@ -564,7 +564,7 @@ module.exports.testcollation_lv = {
             "žo",
             "žo"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     }

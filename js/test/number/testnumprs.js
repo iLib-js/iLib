@@ -231,7 +231,7 @@ module.exports.testnumprs = {
     testNumberFloatNoLocaleData: function(test) {
         test.expect(2);
 
-        // make sure the Russian locale info is already 
+        // make sure the Russian locale info is already
         // loaded before we shut off the loader
         var li = new LocaleInfo("ru-RU");
 

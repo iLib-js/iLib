@@ -32,45 +32,45 @@ module.exports.testlistfmt_kn_IN = {
     },
 
     // kn-IN
-    
+
     testListFmtknINNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "kn-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ಒಂದು"]), "ಒಂದು");
         test.done();
     },
-    
+
     testListFmtknINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "kn-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ಒಂದು", "ಎರಡು"]), "ಒಂದು ಮತ್ತು ಎರಡು");
         test.done();
     },
-    
+
     testListFmtknINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "kn-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ಒಂದು", "ಎರಡು", "ಮೂರು"]), "ಒಂದು, ಎರಡು, ಮತ್ತು ಮೂರು");
         test.done();
     },
-    
+
     testListFmtknINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "kn-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ಒಂದು", "ಎರಡು", "ಮೂರು", "ನಾಲ್ಕು"]), "ಒಂದು, ಎರಡು, ಮೂರು, ಮತ್ತು ನಾಲ್ಕು");
@@ -81,43 +81,43 @@ module.exports.testlistfmt_kn_IN = {
             locale: "kn-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ಒಂದು"]), "ಒಂದು");
         test.done();
     },
-    
+
     testListFmtUnitStyleknINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "kn-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ಒಂದು", "ಎರಡು"]), "ಒಂದು, ಎರಡು");
         test.done();
     },
-    
+
     testListFmtUnitStyleknINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "kn-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ಒಂದು", "ಎರಡು", "ಮೂರು"]), "ಒಂದು, ಎರಡು, ಮೂರು");
         test.done();
     },
-    
+
     testListFmtUnitStyleknINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "kn-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ಒಂದು", "ಎರಡು", "ಮೂರು", "ನಾಲ್ಕು"]), "ಒಂದು, ಎರಡು, ಮೂರು, ನಾಲ್ಕು");
@@ -129,46 +129,46 @@ module.exports.testlistfmt_kn_IN = {
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ಒಂದು"]), "ಒಂದು");
         test.done();
     },
-    
+
     testListFmtUnitStyleknINNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "kn-IN",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ಒಂದು", "ಎರಡು"]), "ಒಂದು, ಎರಡು");
         test.done();
     },
-    
+
     testListFmtUnitStyleknINNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "kn-IN",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ಒಂದು", "ಎರಡು", "ಮೂರು"]), "ಒಂದು, ಎರಡು, ಮೂರು");
         test.done();
     },
-    
+
     testListFmtUnitStyleknINNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "kn-IN",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ಒಂದು", "ಎರಡು", "ಮೂರು", "ನಾಲ್ಕು"]), "ಒಂದು, ಎರಡು, ಮೂರು, ನಾಲ್ಕು");
@@ -180,46 +180,46 @@ module.exports.testlistfmt_kn_IN = {
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ಒಂದು"]), "ಒಂದು");
         test.done();
     },
-    
+
     testListFmtUnitStyleelGRNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "kn-IN",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ಒಂದು", "ಎರಡು"]), "ಒಂದು, ಎರಡು");
         test.done();
     },
-    
+
     testListFmtUnitStyleelGRNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "kn-IN",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ಒಂದು", "ಎರಡು", "ಮೂರು"]), "ಒಂದು, ಎರಡು, ಮೂರು");
         test.done();
     },
-    
+
     testListFmtUnitStyleelGRNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "kn-IN",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ಒಂದು", "ಎರಡು", "ಮೂರು", "ನಾಲ್ಕು"]), "ಒಂದು, ಎರಡು, ಮೂರು, ನಾಲ್ಕು");

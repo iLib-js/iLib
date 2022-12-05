@@ -114,7 +114,7 @@ Loader.prototype.loadFiles = function(paths, sync, params, callback, root) {
     }
     if (root) includePath.push(root);
     includePath = includePath.concat(this.includePath);
-    
+
     //console.log("Loader loadFiles called");
     // make sure we know what we can load
     if (!paths) {

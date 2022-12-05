@@ -925,7 +925,7 @@ module.exports.testalphaindex = {
 
         test.equal("#", ai.getOverflowLabel());
         test.equal("*", ai.getUnderflowLabel());
-        
+
         test.done();
     },
 
@@ -943,7 +943,7 @@ module.exports.testalphaindex = {
 
         test.equal("@", ai.getOverflowLabel());
         test.equal("^", ai.getUnderflowLabel());
-        
+
         test.done();
     },
 
@@ -956,7 +956,7 @@ module.exports.testalphaindex = {
 
         test.ok(ai);
         test.ok(ai.getCollator());
-        
+
         test.done();
     },
 
@@ -1001,7 +1001,7 @@ module.exports.testalphaindex = {
             "@@",
             "$$$"
         ];
-        
+
         ai.addLabels(["@@","$$$"]);
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
@@ -1048,7 +1048,7 @@ module.exports.testalphaindex = {
             "Z",
             "#"
         ];
-        
+
         ai.addLabels(["@@","$$$"], 3);
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();

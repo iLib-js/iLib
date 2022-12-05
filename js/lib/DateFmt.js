@@ -452,7 +452,7 @@ var DateFmt = function(options) {
             // get the default calendar name from the locale, and if the locale doesn't define
             // one, use the hard-coded gregorian as the last resort
             this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
-            
+
             if(this.useIntl && typeof(Intl) !== 'undefined' && Intl.DateTimeFormat.supportedLocalesOf(this.locale.getSpec()).length > 0 &&
             (this.locinfo.getDigitsStyle() === "western" && (!options.template) && this.calName === "gregorian")){
                 var len = DateFmt.lenmap[this.length];

@@ -1,6 +1,6 @@
 /*
  * testSuite.js - test suite for this directory
- * 
+ *
  * Copyright © 2012, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

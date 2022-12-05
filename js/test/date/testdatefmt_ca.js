@@ -1,6 +1,6 @@
 /*
  * testdatefmt_ca.js - test the date formatter object in Catalan
- * 
+ *
  * Copyright © 2020-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,7 +39,7 @@ module.exports.testdatefmt_ca = {
     testDateFmtConstructorEmpty_ca_AD: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "ca-AD"});
-        
+
         test.ok(fmt !== null);
         test.done();
     },
@@ -48,7 +48,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "short"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -67,7 +67,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -86,7 +86,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "long"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -105,7 +105,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -124,7 +124,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "short", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -143,7 +143,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "medium", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -162,7 +162,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", timelength: "long", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -181,7 +181,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -200,7 +200,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "short", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -219,7 +219,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "medium", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -238,7 +238,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "long", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -257,7 +257,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -276,7 +276,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", calendar: "julian", template: "yyyy-MM-dd"});
         test.ok(fmt !== null);
-        
+
         var date = new JulianDate({
             locale: "ca-AD",
             year: 2011,
@@ -295,7 +295,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -315,7 +315,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", clock: "12", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -334,7 +334,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", clock: "12", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -353,7 +353,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", clock: "24", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -372,7 +372,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", clock: "24", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -391,7 +391,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -410,7 +410,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -429,7 +429,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -448,7 +448,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -463,12 +463,12 @@ module.exports.testdatefmt_ca = {
         test.done();
     },
 
-    
+
     testDateFmtTypeDate_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "date"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -487,7 +487,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -506,7 +506,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -525,7 +525,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -544,7 +544,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -563,7 +563,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", date: "n"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -582,7 +582,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -601,7 +601,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -620,7 +620,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -639,7 +639,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -658,7 +658,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -677,7 +677,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -696,7 +696,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", date: "wdm", length: "long"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -715,7 +715,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -734,7 +734,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -753,7 +753,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -772,7 +772,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -791,7 +791,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -810,7 +810,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -829,7 +829,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -848,7 +848,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -867,7 +867,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -886,7 +886,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -905,7 +905,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -924,7 +924,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time", time: "ms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -943,7 +943,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -962,7 +962,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -981,7 +981,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -999,13 +999,13 @@ module.exports.testdatefmt_ca = {
     testDateFmtShortTimeComponentsHMZ_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-AD", 
-            type: "time", 
-            time: "hmz", 
+            locale: "ca-AD",
+            type: "time",
+            time: "hmz",
             timezone: "Europe/Andorra"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1023,13 +1023,13 @@ module.exports.testdatefmt_ca = {
     testDateFmtShortTimeComponentsHMAZ_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-AD", 
-            type: "time", 
-            time: "hmaz", 
+            locale: "ca-AD",
+            type: "time",
+            time: "hmaz",
             timezone: "Europe/Andorra"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1048,7 +1048,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1066,13 +1066,13 @@ module.exports.testdatefmt_ca = {
     testDateFmtShortTimeComponentsHMSZ_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-AD", 
-            type: "time", 
-            time: "hmsz", 
+            locale: "ca-AD",
+            type: "time",
+            time: "hmsz",
             timezone: "Europe/Andorra"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1090,13 +1090,13 @@ module.exports.testdatefmt_ca = {
     testDateFmtShortTimeComponentsHMSAZ_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-AD", 
-            type: "time", 
-            time: "hmsaz", 
+            locale: "ca-AD",
+            type: "time",
+            time: "hmsaz",
             timezone: "Europe/Andorra"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1115,7 +1115,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time", length: "full", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1134,7 +1134,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time", length: "full", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1153,7 +1153,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time", length: "full", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1172,7 +1172,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time", length: "full", time: "ms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1191,7 +1191,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time", length: "full", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1210,7 +1210,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time", length: "full", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1229,7 +1229,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time", length: "full", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1247,14 +1247,14 @@ module.exports.testdatefmt_ca = {
     testDateFmtFullTimeComponentsHMZ_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-AD", 
-            type: "time", 
-            length: "full", 
-            time: "hmz", 
+            locale: "ca-AD",
+            type: "time",
+            length: "full",
+            time: "hmz",
             timezone: "Europe/Andorra"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1272,14 +1272,14 @@ module.exports.testdatefmt_ca = {
     testDateFmtFullTimeComponentsHMAZ_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-AD", 
-            type: "time", 
-            length: "full", 
-            time: "hmaz", 
+            locale: "ca-AD",
+            type: "time",
+            length: "full",
+            time: "hmaz",
             timezone: "Europe/Andorra"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1298,7 +1298,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", type: "time", length: "full", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1316,14 +1316,14 @@ module.exports.testdatefmt_ca = {
     testDateFmtFullTimeComponentsHMSZ_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-AD", 
-            type: "time", 
-            length: "full", 
-            time: "hmsz", 
+            locale: "ca-AD",
+            type: "time",
+            length: "full",
+            time: "hmsz",
             timezone: "Europe/Andorra"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1341,14 +1341,14 @@ module.exports.testdatefmt_ca = {
     testDateFmtFullTimeComponentsHMSAZ_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-AD", 
-            type: "time", 
-            length: "full", 
-            time: "hmsaz", 
+            locale: "ca-AD",
+            type: "time",
+            length: "full",
+            time: "hmsaz",
             timezone: "Europe/Andorra"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1366,14 +1366,14 @@ module.exports.testdatefmt_ca = {
     testDateFmtWithTimeZoneAndNoDST_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-AD", 
-            type: "time", 
-            length: "full", 
-            time: "hmsz", 
+            locale: "ca-AD",
+            type: "time",
+            length: "full",
+            time: "hmsz",
             timezone: "Europe/Andorra"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1392,7 +1392,7 @@ module.exports.testdatefmt_ca = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1420,7 +1420,7 @@ testDateFmtFormatRelativeWithinMinuteBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1448,7 +1448,7 @@ testDateFmtFormatRelativeWithinHourAfter_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1476,7 +1476,7 @@ testDateFmtFormatRelativeWithinHourBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1504,7 +1504,7 @@ testDateFmtFormatRelativeWithinDayAfter_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1532,7 +1532,7 @@ testDateFmtFormatRelativeWithinDayBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1561,7 +1561,7 @@ testDateFmtFormatRelativeWithinDayBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1589,7 +1589,7 @@ testDateFmtFormatRelativeWithinFortnightBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1618,7 +1618,7 @@ testDateFmtFormatRelativeWithinFortnightBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1646,7 +1646,7 @@ testDateFmtFormatRelativeWithinQuarterBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1675,7 +1675,7 @@ testDateFmtFormatRelativeWithinQuarterBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1703,7 +1703,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1732,7 +1732,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1760,7 +1760,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-AD", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-AD",
             year: 2011,
@@ -1789,7 +1789,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
     testDateFmtConstructorEmpty_ca_ES: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "ca-ES"});
-        
+
         test.ok(fmt !== null);
         test.done();
     },
@@ -1798,7 +1798,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "short"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -1817,7 +1817,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -1836,7 +1836,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "long"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -1855,7 +1855,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -1874,7 +1874,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "short", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -1893,7 +1893,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "medium", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -1912,7 +1912,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", timelength: "long", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -1931,7 +1931,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -1950,7 +1950,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "short", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -1969,7 +1969,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "medium", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -1988,7 +1988,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "long", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2007,7 +2007,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2026,7 +2026,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", calendar: "julian", template: "yyyy-MM-dd"});
         test.ok(fmt !== null);
-        
+
         var date = new JulianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2045,7 +2045,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2065,7 +2065,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", clock: "12", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2084,7 +2084,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", clock: "12", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2103,7 +2103,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", clock: "24", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2122,7 +2122,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", clock: "24", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2141,7 +2141,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2160,7 +2160,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2179,7 +2179,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2198,7 +2198,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2212,12 +2212,12 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTypeDate_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "date"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2236,7 +2236,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2255,7 +2255,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2274,7 +2274,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2293,7 +2293,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2312,7 +2312,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", date: "n"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2331,7 +2331,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2350,7 +2350,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2369,7 +2369,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2388,7 +2388,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2407,7 +2407,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2426,7 +2426,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2445,7 +2445,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", date: "wdm", length: "long"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2464,7 +2464,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2483,7 +2483,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2502,7 +2502,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2521,7 +2521,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2540,7 +2540,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2559,7 +2559,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2578,7 +2578,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2597,7 +2597,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2616,7 +2616,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2635,7 +2635,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2654,7 +2654,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2673,7 +2673,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time", time: "ms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2692,7 +2692,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2711,7 +2711,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2730,7 +2730,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2748,13 +2748,13 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
     testDateFmtShortTimeComponentsHMZ_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-ES", 
-            type: "time", 
-            time: "hmz", 
+            locale: "ca-ES",
+            type: "time",
+            time: "hmz",
             timezone: "Europe/Madrid"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2772,13 +2772,13 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
     testDateFmtShortTimeComponentsHMAZ_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-ES", 
-            type: "time", 
-            time: "hmaz", 
+            locale: "ca-ES",
+            type: "time",
+            time: "hmaz",
             timezone: "Europe/Madrid"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2797,7 +2797,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2815,13 +2815,13 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
     testDateFmtShortTimeComponentsHMSZ_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-ES", 
-            type: "time", 
-            time: "hmsz", 
+            locale: "ca-ES",
+            type: "time",
+            time: "hmsz",
             timezone: "Europe/Madrid"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2839,13 +2839,13 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
     testDateFmtShortTimeComponentsHMSAZ_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-ES", 
-            type: "time", 
-            time: "hmsaz", 
+            locale: "ca-ES",
+            type: "time",
+            time: "hmsaz",
             timezone: "Europe/Madrid"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2864,7 +2864,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time", length: "full", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2883,7 +2883,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time", length: "full", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2902,7 +2902,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time", length: "full", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2921,7 +2921,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time", length: "full", time: "ms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2940,7 +2940,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time", length: "full", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2959,7 +2959,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time", length: "full", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2978,7 +2978,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time", length: "full", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -2996,14 +2996,14 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
     testDateFmtFullTimeComponentsHMZ_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-ES", 
-            type: "time", 
-            length: "full", 
-            time: "hmz", 
+            locale: "ca-ES",
+            type: "time",
+            length: "full",
+            time: "hmz",
             timezone: "Europe/Madrid"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3021,14 +3021,14 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
     testDateFmtFullTimeComponentsHMAZ_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-ES", 
-            type: "time", 
-            length: "full", 
-            time: "hmaz", 
+            locale: "ca-ES",
+            type: "time",
+            length: "full",
+            time: "hmaz",
             timezone: "Europe/Madrid"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3047,7 +3047,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", type: "time", length: "full", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3065,14 +3065,14 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
     testDateFmtFullTimeComponentsHMSZ_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-ES", 
-            type: "time", 
-            length: "full", 
-            time: "hmsz", 
+            locale: "ca-ES",
+            type: "time",
+            length: "full",
+            time: "hmsz",
             timezone: "Europe/Madrid"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3090,14 +3090,14 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
     testDateFmtFullTimeComponentsHMSAZ_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-ES", 
-            type: "time", 
-            length: "full", 
-            time: "hmsaz", 
+            locale: "ca-ES",
+            type: "time",
+            length: "full",
+            time: "hmsaz",
             timezone: "Europe/Madrid"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3115,14 +3115,14 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
     testDateFmtWithTimeZoneAndNoDST_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ca-ES", 
-            type: "time", 
-            length: "full", 
-            time: "hmsz", 
+            locale: "ca-ES",
+            type: "time",
+            length: "full",
+            time: "hmsz",
             timezone: "Europe/Madrid"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3141,7 +3141,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_AD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3169,7 +3169,7 @@ testDateFmtFormatRelativeWithinMinuteBefore_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3197,7 +3197,7 @@ testDateFmtFormatRelativeWithinHourAfter_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3225,7 +3225,7 @@ testDateFmtFormatRelativeWithinHourBefore_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3253,7 +3253,7 @@ testDateFmtFormatRelativeWithinDayAfter_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3281,7 +3281,7 @@ testDateFmtFormatRelativeWithinDayBefore_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3310,7 +3310,7 @@ testDateFmtFormatRelativeWithinDayBefore_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3338,7 +3338,7 @@ testDateFmtFormatRelativeWithinFortnightBefore_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3367,7 +3367,7 @@ testDateFmtFormatRelativeWithinFortnightBefore_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3395,7 +3395,7 @@ testDateFmtFormatRelativeWithinQuarterBefore_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3424,7 +3424,7 @@ testDateFmtFormatRelativeWithinQuarterBefore_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3452,7 +3452,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3481,7 +3481,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
@@ -3509,7 +3509,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ca-ES",
             year: 2011,
