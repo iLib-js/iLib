@@ -761,6 +761,26 @@ module.exports.testlocaleinfo = {
         test.done();
     },
 
+    testLocaleInfoGetNegativeCurrencyFormat_zh_TW_Hant: function(test) {
+        test.expect(3);
+        var info = new LocaleInfo("zh-Hant-TW");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "「");
+        test.equal(info.getDelimiterQuotationEnd(), "」");
+        test.done();
+    },
+
+    testLocaleInfoGetNegativeCurrencyFormat_zh_TW: function(test) {
+        test.expect(3);
+        var info = new LocaleInfo("zh-TW");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "「");
+        test.equal(info.getDelimiterQuotationEnd(), "」");
+        test.done();
+    },
+
     //test cases for fr-FR number format
 
     testLocaleInfoGetDecimalSeparatorfor_fr_FR: function(test) {
@@ -13508,8 +13528,8 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("eu-ES");
         test.ok(info !== null);
 
-        test.equal(info.getDelimiterQuotationStart(), "“");
-        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getDelimiterQuotationStart(), "«");
+        test.equal(info.getDelimiterQuotationEnd(), "»");
         test.equal(info.getPaperSize(), "A4");
         test.done();
     },
