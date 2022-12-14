@@ -14,6 +14,9 @@ New Features:
 Bug Fixes:
 * Updated to IANA time zone data version 2022g
 * Updated package dependencies
+* Fixed the locale info for zh-TW, zh-MO, and zh-HK
+    * It was returning different info than zh-Hant-TW, etc., but it
+	  should have been the same
 
 Build 024
 -------
