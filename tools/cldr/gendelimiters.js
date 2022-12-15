@@ -149,6 +149,11 @@ function getLocaleData(dirname, locale) {
                     localeData[language][script][region] = {};
                 }
                 localeData[language][script][region].data = numData;
+            } else {
+                if (!localeData[language][script]) {
+                    localeData[language][script] = {};
+                }
+                localeData[language][script].data = numData;
             }
         } else if (region) {
             if (!localeData[language]) {
@@ -266,6 +271,14 @@ for (language in localeData) {
         resources[language].data = getQuotationChars(language, undefined, undefined, localeData[language].merged);
     }
 }
+
+// special case for Chinese traditional locales
+resources.zh.TW = {
+    data: Object.assign({}, resources.zh.Hant.data)
+};
+resources.zh.HK = {
+    data: Object.assign({}, resources.zh.Hant.HK.data)
+};
 
 //resources.data = getQuotationChars(undefined, undefined, undefined, localeData.data);
 console.log("Merging and pruning...");
