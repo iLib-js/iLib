@@ -1,0 +1,25 @@
+{
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc", "closure"]
+    },
+    "copyright": "Copyright (c) 2022 JEDLSoft",
+    "linenums": true,
+    "sort": true,
+    "search": true,
+    "opts": {
+        "template": "node_modules/ink-docstrap/template",
+        "encoding": "utf8",
+        "destination": "docs",
+        "recurse": true,
+		"readme":"README.md"
+    },
+    "source": {
+        "include": ["lib"],
+    	"exclude": ["lib/metafiles", "lib/ilib-webpack.js"]
+    },
+	"plugins": [
+		"plugins/markdown"
+	]
+
+}
