@@ -1,0 +1,4870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> LocaleInfo</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="CType.html">CType</a></li><li><a href="ilib.html">ilib</a></li></ul><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="AddressFmt.html">AddressFmt</a></li><li><a href="AlphabeticIndex.html">AlphabeticIndex</a></li><li><a href="AreaUnit.html">AreaUnit</a></li><li><a href="CaseMapper.html">CaseMapper</a></li><li><a href="Charmap.html">Charmap</a></li><li><a href="CharmapTable.html">CharmapTable</a></li><li><a href="Charset.html">Charset</a></li><li><a href="Collator.html">Collator</a></li><li><a href="CopticCal.html">CopticCal</a></li><li><a href="CopticDate.html">CopticDate</a></li><li><a href="Country.html">Country</a></li><li><a href="Currency.html">Currency</a></li><li><a href="DateFmt.html">DateFmt</a></li><li><a href="DateRngFmt.html">DateRngFmt</a></li><li><a href="DigitalSpeedUnit.html">DigitalSpeedUnit</a></li><li><a href="DigitalStorageUnit.html">DigitalStorageUnit</a></li><li><a href="DurationFmt.html">DurationFmt</a></li><li><a href="EnergyUnit.html">EnergyUnit</a></li><li><a href="EthiopicCal.html">EthiopicCal</a></li><li><a href="EthiopicDate.html">EthiopicDate</a></li><li><a href="ForceUnit.html">ForceUnit</a></li><li><a href="FuelConsumptionUnit.html">FuelConsumptionUnit</a></li><li><a href="GlyphString.html">GlyphString</a></li><li><a href="GlyphString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="GregorianCal.html">GregorianCal</a></li><li><a href="GregorianDate.html">GregorianDate</a></li><li><a href="HanCal.html">HanCal</a></li><li><a href="HanDate.html">HanDate</a></li><li><a href="HebrewCal.html">HebrewCal</a></li><li><a href="HebrewDate.html">HebrewDate</a></li><li><a href="INumber.html">INumber</a></li><li><a href="ISO2022.html">ISO2022</a></li><li><a href="ISet.html">ISet</a></li><li><a href="IString.html">IString</a></li><li><a href="IString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="IString_iterator-_iterator.html">_iterator</a></li><li><a href="IslamicCal.html">IslamicCal</a></li><li><a href="IslamicDate.html">IslamicDate</a></li><li><a href="JulianCal.html">JulianCal</a></li><li><a href="JulianDate.html">JulianDate</a></li><li><a href="JulianDay.html">JulianDay</a></li><li><a href="LengthUnit.html">LengthUnit</a></li><li><a href="ListFmt.html">ListFmt</a></li><li><a href="Locale.html">Locale</a></li><li><a href="LocaleInfo.html">LocaleInfo</a></li><li><a href="LocaleMatcher.html">LocaleMatcher</a></li><li><a href="MassUnit.html">MassUnit</a></li><li><a href="Name.html">Name</a></li><li><a href="NameFmt.html">NameFmt</a></li><li><a href="NormString.html">NormString</a></li><li><a href="NormString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="NumFmt.html">NumFmt</a></li><li><a href="PersianAlgoCal.html">PersianAlgoCal</a></li><li><a href="PersianAlgoDate.html">PersianAlgoDate</a></li><li><a href="PersianCal.html">PersianCal</a></li><li><a href="PersianDate.html">PersianDate</a></li><li><a href="PhoneFmt.html">PhoneFmt</a></li><li><a href="PhoneGeoLocator.html">PhoneGeoLocator</a></li><li><a href="PhoneNumber.html">PhoneNumber</a></li><li><a href="PowerUnit.html">PowerUnit</a></li><li><a href="PressureUnit.html">PressureUnit</a></li><li><a href="ResBundle.html">ResBundle</a></li><li><a href="ScriptInfo.html">ScriptInfo</a></li><li><a href="StringMapper.html">StringMapper</a></li><li><a href="TemperatureUnit.html">TemperatureUnit</a></li><li><a href="ThaiSolarCal.html">ThaiSolarCal</a></li><li><a href="ThaiSolarDate.html">ThaiSolarDate</a></li><li><a href="TimeUnit.html">TimeUnit</a></li><li><a href="TimeZone.html">TimeZone</a></li><li><a href="UTF16BE.html">UTF16BE</a></li><li><a href="UTF16LE.html">UTF16LE</a></li><li><a href="UTF8.html">UTF8</a></li><li><a href="UnitFmt.html">UnitFmt</a></li><li><a href="UnknownUnit.html">UnknownUnit</a></li><li><a href="VelocityUnit.html">VelocityUnit</a></li><li><a href="VolumeUnit.html">VolumeUnit</a></li></ul><h3>Interfaces</h3><ul><li><a href="ilib.Loader.html">Loader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CalendarFactory">CalendarFactory</a></li><li><a href="global.html#CharmapFactory">CharmapFactory</a></li><li><a href="global.html#DateFactory">DateFactory</a></li><li><a href="global.html#MeasurementFactory">MeasurementFactory</a></li><li><a href="global.html#isAlnum">isAlnum</a></li><li><a href="global.html#isAlpha">isAlpha</a></li><li><a href="global.html#isAscii">isAscii</a></li><li><a href="global.html#isBlank">isBlank</a></li><li><a href="global.html#isCntrl">isCntrl</a></li><li><a href="global.html#isDigit">isDigit</a></li><li><a href="global.html#isGraph">isGraph</a></li><li><a href="global.html#isIdeo">isIdeo</a></li><li><a href="global.html#isLower">isLower</a></li><li><a href="global.html#isPrint">isPrint</a></li><li><a href="global.html#isPunct">isPunct</a></li><li><a href="global.html#isScript">isScript</a></li><li><a href="global.html#isSpace">isSpace</a></li><li><a href="global.html#isUpper">isUpper</a></li><li><a href="global.html#isXdigit">isXdigit</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>LocaleInfo</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>LocaleInfo<span class="signature">(locale, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description"><p>Create a new locale info instance. Locale info instances give information about
+the default settings for a particular locale. These settings may be overridden
+by various parts of the code, and should be used as a fall-back setting of last
+resort. <p></p>
+<p>The optional options object holds extra parameters if they are necessary. The
+current list of supported options are:</p>
+<ul>
+<li><i>onLoad</i> - a callback function to call when the locale info object is fully
+loaded. When the onLoad option is given, the localeinfo object will attempt to
+load any missing locale data using the ilib loader callback.
+When the constructor is done (even if the data is already preassembled), the
+onLoad function is called with the current instance as a parameter, so this
+callback can be used with preassembled or dynamic loading or a mix of the two.
+<li><i>sync</i> - tell whether to load any missing locale data synchronously or
+asynchronously. If this option is given as "false", then the "onLoad"
+callback must be given, as the instance returned from this constructor will
+not be usable for a while.
+<li><i>loadParams</i> - an object containing parameters to pass to the
+loader callback function when locale data is missing. The parameters are not
+interpretted or modified in any way. They are simply passed along. The object
+may contain any property/value pairs as long as the calling code is in
+agreement with the loader callback function as to what those parameters mean.
+</ul>
+<p>If this copy of ilib is pre-assembled and all the data is already available,
+or if the data was already previously loaded, then this constructor will call
+the onLoad callback immediately when the initialization is done.
+If the onLoad option is not given, this class will only attempt to load any
+missing locale data synchronously.</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="LocaleInfo">
+        <a class="href-link" href="#LocaleInfo">#</a>
+        
+        <span class="code-name">
+            
+                new LocaleInfo<span class="signature">(locale, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>locale</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="Locale.html">Locale</a></code>
+|
+
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>the locale for which the info is sought, or undefined for</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>options</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>the locale for which the info is sought, or undefined for
+the current locale</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>{ilib.setLoaderCallback} for information about registering a loader callback
+function</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line71">line 71</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getAllScripts">
+        <a class="href-link" href="#getAllScripts">#</a>
+        
+        <span class="code-name">
+            
+                getAllScripts<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;string>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return an array of script codes which are used to write text in the current
+language. Text for most languages is written in only one script, but there
+are some languages where the text can be written in a number of scripts,
+depending on a variety of things such as the region, ethnicity, religion,
+etc. of the author. This method returns an array of script codes in which
+the language is commonly written.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line536">line 536</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>an array of ISO 15924 codes for the scripts used
+to write text in this language</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Array.&lt;string></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getCalendar">
+        <a class="href-link" href="#getCalendar">#</a>
+        
+        <span class="code-name">
+            
+                getCalendar<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the name of the calendar that is commonly used in the given locale.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line252">line 252</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The name of the calendar commonly used in the locale</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getClock">
+        <a class="href-link" href="#getClock">#</a>
+        
+        <span class="code-name">
+            
+                getClock<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return whether this locale commonly uses the 12- or the 24-hour clock.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line225">line 225</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>&quot;12&quot; if the locale commonly uses a 12-hour clock, or &quot;24&quot;
+if the locale commonly uses a 24-hour clock.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getCurrency">
+        <a class="href-link" href="#getCurrency">#</a>
+        
+        <span class="code-name">
+            
+                getCurrency<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the currency that is legal in the locale, or which is most commonly
+used in regular commerce.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line436">line 436</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the ISO 4217 code for the currency of this locale</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getCurrencyFormats">
+        <a class="href-link" href="#getCurrencyFormats">#</a>
+        
+        <span class="code-name">
+            
+                getCurrencyFormats<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return an object containing the format templates for formatting currencies
+in this locale. The object has a number of properties in it that each are
+a particular style of format. Normally, this contains a &quot;common&quot; and an &quot;iso&quot;
+style, but may contain others in the future.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line427">line 427</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>an object containing the format templates for currencies</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Object</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getDecimalSeparator">
+        <a class="href-link" href="#getDecimalSeparator">#</a>
+        
+        <span class="code-name">
+            
+                getDecimalSeparator<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the decimal separator for formatted numbers in this locale.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line303">line 303</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the decimal separator char</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getDefaultScript">
+        <a class="href-link" href="#getDefaultScript">#</a>
+        
+        <span class="code-name">
+            
+                getDefaultScript<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the default script used to write text in the language of this
+locale. Text for most languages is written in only one script, but there
+are some languages where the text can be written in a number of scripts,
+depending on a variety of things such as the region, ethnicity, religion,
+etc. of the author. This method returns the default script for the
+locale, in which the language is most commonly written.<p></p>
+<p>The script is returned as an ISO 15924 4-letter code.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line508">line 508</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the ISO 15924 code for the default script used to write
+text in this locale</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getDelimiterQuotationEnd">
+        <a class="href-link" href="#getDelimiterQuotationEnd">#</a>
+        
+        <span class="code-name">
+            
+                getDelimiterQuotationEnd<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the default Delimiter QuotationEnd information in this locale.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line572">line 572</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>default QuotationEnd in this locale</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getDelimiterQuotationStart">
+        <a class="href-link" href="#getDelimiterQuotationStart">#</a>
+        
+        <span class="code-name">
+            
+                getDelimiterQuotationStart<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the default Delimiter QuotationStart information in this locale.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line565">line 565</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>default QuotationStart in this locale</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getDigits">
+        <a class="href-link" href="#getDigits">#</a>
+        
+        <span class="code-name">
+            
+                getDigits<span class="signature">()</span><span class="type-signature"> &rarr; {string|undefined}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the digits of the default script if they are defined.
+If not defined, the default should be the regular &quot;Arabic numerals&quot;
+used in the Latin script. (0-9)</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line469">line 469</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the digits used in the default script</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+|
+
+<code class="param-type">undefined</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getDigitsStyle">
+        <a class="href-link" href="#getDigitsStyle">#</a>
+        
+        <span class="code-name">
+            
+                getDigitsStyle<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return a string that describes the style of digits used by this locale.
+Possible return values are:</p>
+<ul>
+<li><i>western</i> - uses the regular western 10-based digits 0 through 9
+<li><i>optional</i> - native 10-based digits exist, but in modern usage,
+this locale most often uses western digits
+<li><i>native</i> - native 10-based native digits exist and are used
+regularly by this locale
+<li><i>custom</i> - uses native digits by default that are not 10-based
+</ul>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line453">line 453</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>string that describes the style of digits used in this locale</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getExponential">
+        <a class="href-link" href="#getExponential">#</a>
+        
+        <span class="code-name">
+            
+                getExponential<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the symbol used for exponential in this locale.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line392">line 392</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the symbol used for exponential in this locale</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getFirstDayOfWeek">
+        <a class="href-link" href="#getFirstDayOfWeek">#</a>
+        
+        <span class="code-name">
+            
+                getFirstDayOfWeek<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the day of week that starts weeks in the current locale. Days are still
+numbered the standard way with 0 for Sunday through 6 for Saturday, but calendars
+should be displayed and weeks calculated with the day of week returned from this
+function as the first day of the week.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line264">line 264</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the day of the week that starts weeks in the current locale.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getGroupingSeparator">
+        <a class="href-link" href="#getGroupingSeparator">#</a>
+        
+        <span class="code-name">
+            
+                getGroupingSeparator<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the separator character used to separate groups of digits on the
+integer side of the decimal character.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line320">line 320</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the grouping separator char</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getLanguageName">
+        <a class="href-link" href="#getLanguageName">#</a>
+        
+        <span class="code-name">
+            
+                getLanguageName<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the name of the locale's language in English.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line205">line 205</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the name of the locale's language in English</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getLocale">
+        <a class="href-link" href="#getLocale">#</a>
+        
+        <span class="code-name">
+            
+                getLocale<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Locale.html">Locale</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the locale that this info object was created with.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line233">line 233</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The locale spec of the locale used to construct this info instance</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="Locale.html">Locale</a></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getMeridiemsStyle">
+        <a class="href-link" href="#getMeridiemsStyle">#</a>
+        
+        <span class="code-name">
+            
+                getMeridiemsStyle<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the default style of meridiems used in this locale. Meridiems are
+times of day like AM/PM. In a few locales with some calendars, for example
+Amharic/Ethiopia using the Ethiopic calendar, the times of day may be
+split into different segments than simple AM/PM as in the Gregorian
+calendar. Only a few locales are like that. For most locales, formatting
+a Gregorian date will use the regular Gregorian AM/PM meridiems.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line551">line 551</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the default meridiems style used in this locale. Possible
+values are &quot;gregorian&quot;, &quot;chinese&quot;, and &quot;ethiopic&quot;</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getNativeDecimalSeparator">
+        <a class="href-link" href="#getNativeDecimalSeparator">#</a>
+        
+        <span class="code-name">
+            
+                getNativeDecimalSeparator<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the decimal separator for formatted numbers in this locale for native script.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line311">line 311</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the decimal separator char</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getNativeDigits">
+        <a class="href-link" href="#getNativeDigits">#</a>
+        
+        <span class="code-name">
+            
+                getNativeDigits<span class="signature">()</span><span class="type-signature"> &rarr; {string|undefined}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the digits of the native script if they are defined.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line477">line 477</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the digits used in the default script</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+|
+
+<code class="param-type">undefined</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getNativeExponential">
+        <a class="href-link" href="#getNativeExponential">#</a>
+        
+        <span class="code-name">
+            
+                getNativeExponential<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the symbol used for exponential in this locale for native script.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line400">line 400</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the symbol used for exponential in this locale for native script</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getNativeGroupingSeparator">
+        <a class="href-link" href="#getNativeGroupingSeparator">#</a>
+        
+        <span class="code-name">
+            
+                getNativeGroupingSeparator<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the separator character used to separate groups of digits on the
+integer side of the decimal character for the native script if present other than the default script.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line329">line 329</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the grouping separator char</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getNativePercentageSymbol">
+        <a class="href-link" href="#getNativePercentageSymbol">#</a>
+        
+        <span class="code-name">
+            
+                getNativePercentageSymbol<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the symbol used for percentages in this locale for native script.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line408">line 408</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the symbol used for percentages in this locale for native script</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getNegativeNumberFormat">
+        <a class="href-link" href="#getNegativeNumberFormat">#</a>
+        
+        <span class="code-name">
+            
+                getNegativeNumberFormat<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the format template used to format negative numbers in this locale.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line416">line 416</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the format template for formatting negative numbers</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getNegativePercentageFormat">
+        <a class="href-link" href="#getNegativePercentageFormat">#</a>
+        
+        <span class="code-name">
+            
+                getNegativePercentageFormat<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the format template used to format percentages in this locale
+with negative amounts.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line376">line 376</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the format template for formatting percentages</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getPaperSize">
+        <a class="href-link" href="#getPaperSize">#</a>
+        
+        <span class="code-name">
+            
+                getPaperSize<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the default PaperSize information in this locale.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line558">line 558</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>default PaperSize in this locale</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getPercentageFormat">
+        <a class="href-link" href="#getPercentageFormat">#</a>
+        
+        <span class="code-name">
+            
+                getPercentageFormat<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the format template used to format percentages in this locale.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line367">line 367</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the format template for formatting percentages</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getPercentageSymbol">
+        <a class="href-link" href="#getPercentageSymbol">#</a>
+        
+        <span class="code-name">
+            
+                getPercentageSymbol<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the symbol used for percentages in this locale.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line384">line 384</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the symbol used for percentages in this locale</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getPrimaryGroupingDigits">
+        <a class="href-link" href="#getPrimaryGroupingDigits">#</a>
+        
+        <span class="code-name">
+            
+                getPrimaryGroupingDigits<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the minimum number of digits grouped together on the integer side
+for the first (primary) group.
+In western European cultures, groupings are in 1000s, so the number of digits
+is 3.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line340">line 340</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the number of digits in a primary grouping, or 0 for no grouping</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getRegionName">
+        <a class="href-link" href="#getRegionName">#</a>
+        
+        <span class="code-name">
+            
+                getRegionName<span class="signature">()</span><span class="type-signature"> &rarr; {string|undefined}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the name of the locale's region in English. If the locale
+has no region, this returns undefined.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line215">line 215</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the name of the locale's region in English</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+|
+
+<code class="param-type">undefined</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getRoundingMode">
+        <a class="href-link" href="#getRoundingMode">#</a>
+        
+        <span class="code-name">
+            
+                getRoundingMode<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>If this locale typically uses a different type of rounding for numeric
+formatting other than halfdown, especially for currency, then it can be
+specified in the localeinfo. If the locale uses the default, then this
+method returns undefined. The locale's rounding method overrides the
+rounding method for the currency itself, which can sometimes shared
+between various locales so it is less specific.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line491">line 491</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the name of the rounding mode typically used in this
+locale, or &quot;halfdown&quot; if the locale does not override the default</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getScript">
+        <a class="href-link" href="#getScript">#</a>
+        
+        <span class="code-name">
+            
+                getScript<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the script used for the current locale. If the current locale
+explicitly defines a script, then this script is returned. If not, then
+the default script for the locale is returned.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>LocaleInfo.getDefaultScript</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line521">line 521</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the ISO 15924 code for the script used to write
+text in this locale</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getSecondaryGroupingDigits">
+        <a class="href-link" href="#getSecondaryGroupingDigits">#</a>
+        
+        <span class="code-name">
+            
+                getSecondaryGroupingDigits<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the minimum number of digits grouped together on the integer side
+for the second or more (secondary) group.<p></p>
+<p>In western European cultures, all groupings are by 1000s, so the secondary
+size should be 0 because there is no secondary size. In general, if this
+method returns 0, then all groupings are of the primary size.<p></p>
+<p>For some other cultures, the first grouping (primary)
+is 3 and any subsequent groupings (secondary) are two. So, 100000 would be
+written as: &quot;1,00,000&quot;.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line359">line 359</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the number of digits in a secondary grouping, or 0 for no
+secondary grouping.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getTimeZone">
+        <a class="href-link" href="#getTimeZone">#</a>
+        
+        <span class="code-name">
+            
+                getTimeZone<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the default time zone for this locale. Many locales span across multiple
+time zones. In this case, the time zone with the largest population is chosen
+to represent the locale. This is obviously not that accurate, but then again,
+this method's return value should only be used as a default anyways.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line295">line 295</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the default time zone for this locale.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getUnits">
+        <a class="href-link" href="#getUnits">#</a>
+        
+        <span class="code-name">
+            
+                getUnits<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the name of the measuring system that is commonly used in the given locale.
+Valid values are &quot;uscustomary&quot;, &quot;imperial&quot;, and &quot;metric&quot;.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line243">line 243</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The name of the measuring system commonly used in the locale</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getWeekEndEnd">
+        <a class="href-link" href="#getWeekEndEnd">#</a>
+        
+        <span class="code-name">
+            
+                getWeekEndEnd<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the day of week that starts weekend in the current locale. Days are still
+numbered the standard way with 0 for Sunday through 6 for Saturday.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line284">line 284</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the day of the week that starts weeks in the current locale.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getWeekEndStart">
+        <a class="href-link" href="#getWeekEndStart">#</a>
+        
+        <span class="code-name">
+            
+                getWeekEndStart<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the day of week that starts weekend in the current locale. Days are still
+numbered the standard way with 0 for Sunday through 6 for Saturday.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="LocaleInfo.js.html" class="button">View Source</a>
+            <span>
+                <a href="LocaleInfo.js.html">LocaleInfo.js</a>, <a href="LocaleInfo.js.html#line274">line 274</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the day of the week that starts weeks in the current locale.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

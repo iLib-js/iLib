@@ -1,0 +1,7821 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> NormString</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="CType.html">CType</a></li><li><a href="ilib.html">ilib</a></li></ul><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="AddressFmt.html">AddressFmt</a></li><li><a href="AlphabeticIndex.html">AlphabeticIndex</a></li><li><a href="AreaUnit.html">AreaUnit</a></li><li><a href="CaseMapper.html">CaseMapper</a></li><li><a href="Charmap.html">Charmap</a></li><li><a href="CharmapTable.html">CharmapTable</a></li><li><a href="Charset.html">Charset</a></li><li><a href="Collator.html">Collator</a></li><li><a href="CopticCal.html">CopticCal</a></li><li><a href="CopticDate.html">CopticDate</a></li><li><a href="Country.html">Country</a></li><li><a href="Currency.html">Currency</a></li><li><a href="DateFmt.html">DateFmt</a></li><li><a href="DateRngFmt.html">DateRngFmt</a></li><li><a href="DigitalSpeedUnit.html">DigitalSpeedUnit</a></li><li><a href="DigitalStorageUnit.html">DigitalStorageUnit</a></li><li><a href="DurationFmt.html">DurationFmt</a></li><li><a href="EnergyUnit.html">EnergyUnit</a></li><li><a href="EthiopicCal.html">EthiopicCal</a></li><li><a href="EthiopicDate.html">EthiopicDate</a></li><li><a href="ForceUnit.html">ForceUnit</a></li><li><a href="FuelConsumptionUnit.html">FuelConsumptionUnit</a></li><li><a href="GlyphString.html">GlyphString</a></li><li><a href="GlyphString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="GregorianCal.html">GregorianCal</a></li><li><a href="GregorianDate.html">GregorianDate</a></li><li><a href="HanCal.html">HanCal</a></li><li><a href="HanDate.html">HanDate</a></li><li><a href="HebrewCal.html">HebrewCal</a></li><li><a href="HebrewDate.html">HebrewDate</a></li><li><a href="INumber.html">INumber</a></li><li><a href="ISO2022.html">ISO2022</a></li><li><a href="ISet.html">ISet</a></li><li><a href="IString.html">IString</a></li><li><a href="IString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="IString_iterator-_iterator.html">_iterator</a></li><li><a href="IslamicCal.html">IslamicCal</a></li><li><a href="IslamicDate.html">IslamicDate</a></li><li><a href="JulianCal.html">JulianCal</a></li><li><a href="JulianDate.html">JulianDate</a></li><li><a href="JulianDay.html">JulianDay</a></li><li><a href="LengthUnit.html">LengthUnit</a></li><li><a href="ListFmt.html">ListFmt</a></li><li><a href="Locale.html">Locale</a></li><li><a href="LocaleInfo.html">LocaleInfo</a></li><li><a href="LocaleMatcher.html">LocaleMatcher</a></li><li><a href="MassUnit.html">MassUnit</a></li><li><a href="Name.html">Name</a></li><li><a href="NameFmt.html">NameFmt</a></li><li><a href="NormString.html">NormString</a></li><li><a href="NormString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="NumFmt.html">NumFmt</a></li><li><a href="PersianAlgoCal.html">PersianAlgoCal</a></li><li><a href="PersianAlgoDate.html">PersianAlgoDate</a></li><li><a href="PersianCal.html">PersianCal</a></li><li><a href="PersianDate.html">PersianDate</a></li><li><a href="PhoneFmt.html">PhoneFmt</a></li><li><a href="PhoneGeoLocator.html">PhoneGeoLocator</a></li><li><a href="PhoneNumber.html">PhoneNumber</a></li><li><a href="PowerUnit.html">PowerUnit</a></li><li><a href="PressureUnit.html">PressureUnit</a></li><li><a href="ResBundle.html">ResBundle</a></li><li><a href="ScriptInfo.html">ScriptInfo</a></li><li><a href="StringMapper.html">StringMapper</a></li><li><a href="TemperatureUnit.html">TemperatureUnit</a></li><li><a href="ThaiSolarCal.html">ThaiSolarCal</a></li><li><a href="ThaiSolarDate.html">ThaiSolarDate</a></li><li><a href="TimeUnit.html">TimeUnit</a></li><li><a href="TimeZone.html">TimeZone</a></li><li><a href="UTF16BE.html">UTF16BE</a></li><li><a href="UTF16LE.html">UTF16LE</a></li><li><a href="UTF8.html">UTF8</a></li><li><a href="UnitFmt.html">UnitFmt</a></li><li><a href="UnknownUnit.html">UnknownUnit</a></li><li><a href="VelocityUnit.html">VelocityUnit</a></li><li><a href="VolumeUnit.html">VolumeUnit</a></li></ul><h3>Interfaces</h3><ul><li><a href="ilib.Loader.html">Loader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CalendarFactory">CalendarFactory</a></li><li><a href="global.html#CharmapFactory">CharmapFactory</a></li><li><a href="global.html#DateFactory">DateFactory</a></li><li><a href="global.html#MeasurementFactory">MeasurementFactory</a></li><li><a href="global.html#isAlnum">isAlnum</a></li><li><a href="global.html#isAlpha">isAlpha</a></li><li><a href="global.html#isAscii">isAscii</a></li><li><a href="global.html#isBlank">isBlank</a></li><li><a href="global.html#isCntrl">isCntrl</a></li><li><a href="global.html#isDigit">isDigit</a></li><li><a href="global.html#isGraph">isGraph</a></li><li><a href="global.html#isIdeo">isIdeo</a></li><li><a href="global.html#isLower">isLower</a></li><li><a href="global.html#isPrint">isPrint</a></li><li><a href="global.html#isPunct">isPunct</a></li><li><a href="global.html#isScript">isScript</a></li><li><a href="global.html#isSpace">isSpace</a></li><li><a href="global.html#isUpper">isUpper</a></li><li><a href="global.html#isXdigit">isXdigit</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>NormString</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>NormString<span class="signature">(str, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description"><p>Create a new normalized string instance. This string inherits from
+the GlyphString class, and adds the normalize method. It can be
+used anywhere that a normal Javascript string is used. <p></p>
+<p>The options parameter is optional, and may contain any combination
+of the following properties:<p></p>
+<ul>
+<li><i>onLoad</i> - a callback function to call when the locale data are
+fully loaded. When the onLoad option is given, this object will attempt to
+load any missing locale data using the ilib loader callback.
+When the constructor is done (even if the data is already preassembled), the
+onLoad function is called with the current instance as a parameter, so this
+callback can be used with preassembled or dynamic loading or a mix of the two.
+<li><i>sync</i> - tell whether to load any missing locale data synchronously or
+asynchronously. If this option is given as "false", then the "onLoad"
+callback must be given, as the instance returned from this constructor will
+not be usable for a while.
+<li><i>loadParams</i> - an object containing parameters to pass to the
+loader callback function when locale data is missing. The parameters are not
+interpretted or modified in any way. They are simply passed along. The object
+may contain any property/value pairs as long as the calling code is in
+agreement with the loader callback function as to what those parameters mean.
+</ul></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="NormString">
+        <a class="href-link" href="#NormString">#</a>
+        
+        <span class="code-name">
+            
+                new NormString<span class="signature">(str, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>str</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+|
+
+<code class="param-type"><a href="IString.html">IString</a></code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>initialize this instance with this string</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>options</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>options governing the way this instance works</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="NormString.js.html" class="button">View Source</a>
+            <span>
+                <a href="NormString.js.html">NormString.js</a>, <a href="NormString.js.html#line63">line 63</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="GlyphString.html">GlyphString</a></li>
+    </ul>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="_toCodePoint">
+        <a class="href-link" href="#_toCodePoint">#</a>
+        
+            
+                <span class='tag'>protected</span>
+            
+        
+        <span class="code-name">
+            
+                _toCodePoint<span class="signature">(index)</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Convert the character or the surrogate pair at the given
+index into the string to a Unicode UCS-4 code point.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>index</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>index into the string</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#_toCodePoint">IString#_toCodePoint</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1295">line 1295</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>code point of the character at the
+given index into the string</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="charAt">
+        <a class="href-link" href="#charAt">#</a>
+        
+        <span class="code-name">
+            
+                charAt<span class="signature">(index)</span><span class="type-signature"> &rarr; {<a href="IString.html">IString</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.charAt()</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>index</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>the index of the character being sought</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#charAt">IString#charAt</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line983">line 983</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the character at the given index</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="IString.html">IString</a></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="charCodeAt">
+        <a class="href-link" href="#charCodeAt">#</a>
+        
+        <span class="code-name">
+            
+                charCodeAt<span class="signature">(index)</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.charCodeAt(). This only reports on
+2-byte UCS-2 Unicode values, and does not take into
+account supplementary characters encoded in UTF-16.
+If you would like to take account of those characters,
+use codePointAt() instead.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>index</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>the index of the character being sought</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#charCodeAt">IString#charCodeAt</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line997">line 997</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the character code of the character at the
+given index in the string</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="codePointAt">
+        <a class="href-link" href="#codePointAt">#</a>
+        
+        <span class="code-name">
+            
+                codePointAt<span class="signature">(index)</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the code point at the given index when the string is viewed
+as an array of code points. If the index is beyond the end of the
+array of code points or if the index is negative, -1 is returned.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>index</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>index of the code point</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#codePointAt">IString#codePointAt</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1458">line 1458</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>code point of the character at the given index into
+the string</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="codePointLength">
+        <a class="href-link" href="#codePointLength">#</a>
+        
+        <span class="code-name">
+            
+                codePointLength<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the number of code points in this string. This may be different
+than the number of characters, as the UTF-16 encoding that Javascript
+uses for its basis returns surrogate pairs separately. Two 2-byte
+surrogate characters together make up one character/code point in
+the supplementary character planes. If your string contains no
+characters in the supplementary planes, this method will return the
+same thing as the length() method.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#codePointLength">IString#codePointLength</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1522">line 1522</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the number of code points in this string</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="concat">
+        <a class="href-link" href="#concat">#</a>
+        
+        <span class="code-name">
+            
+                concat<span class="signature">(strings)</span><span class="type-signature"> &rarr; {<a href="IString.html">IString</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.concat()</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>strings</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>strings to concatenate to the current one</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#concat">IString#concat</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1006">line 1006</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a concatenation of the given strings</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="IString.html">IString</a></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="ellipsize">
+        <a class="href-link" href="#ellipsize">#</a>
+        
+        <span class="code-name">
+            
+                ellipsize<span class="signature">(length)</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Truncate the current string at the given number of glyphs and add an ellipsis
+to indicate that is more to the string. The ellipsis forms the last character
+in the string, so the string is actually truncated at length-1 glyphs.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>length</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>the number of whole glyphs to keep in the string
+including the ellipsis</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="GlyphString.html#ellipsize">GlyphString#ellipsize</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="GlyphString.js.html" class="button">View Source</a>
+            <span>
+                <a href="GlyphString.js.html">GlyphString.js</a>, <a href="GlyphString.js.html#line434">line 434</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a string truncated to the requested number of glyphs
+with an ellipsis</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="endsWith">
+        <a class="href-link" href="#endsWith">#</a>
+        
+        <span class="code-name">
+            
+                endsWith<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.endsWith().</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#endsWith">IString#endsWith</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1154">line 1154</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>true if the given characters are found at
+the end of the string, and false otherwise</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="forEach">
+        <a class="href-link" href="#forEach">#</a>
+        
+        <span class="code-name">
+            
+                forEach<span class="signature">(callback)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Call the callback with each character in the string one at
+a time, taking care to step through the surrogate pairs in
+the UTF-16 encoding properly.<p></p>
+<p>The standard Javascript String's charAt() method only
+returns a particular 16-bit character in the
+UTF-16 encoding scheme.
+If the index to charAt() is pointing to a low- or
+high-surrogate character,
+it will return the surrogate character rather
+than the the character
+in the supplementary planes that the two surrogates together
+encode. This function will call the callback with the full
+character, making sure to join two
+surrogates into one character in the supplementary planes
+where necessary.<p></p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>callback</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">function</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>a callback function to call with each
+full character in the current string</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#forEach">IString#forEach</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1320">line 1320</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="forEachCodePoint">
+        <a class="href-link" href="#forEachCodePoint">#</a>
+        
+        <span class="code-name">
+            
+                forEachCodePoint<span class="signature">(callback)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Call the callback with each numeric code point in the string one at
+a time, taking care to step through the surrogate pairs in
+the UTF-16 encoding properly.<p></p>
+<p>The standard Javascript String's charCodeAt() method only
+returns information about a particular 16-bit character in the
+UTF-16 encoding scheme.
+If the index to charCodeAt() is pointing to a low- or
+high-surrogate character,
+it will return the code point of the surrogate character rather
+than the code point of the character
+in the supplementary planes that the two surrogates together
+encode. This function will call the callback with the full
+code point of each character, making sure to join two
+surrogates into one code point in the supplementary planes.<p></p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>callback</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">function</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>a callback function to call with each
+code point in the current string</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#forEachCodePoint">IString#forEachCodePoint</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1349">line 1349</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="format">
+        <a class="href-link" href="#format">#</a>
+        
+        <span class="code-name">
+            
+                format<span class="signature">(params)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Format this string instance as a message, replacing the parameters with
+the given values.<p></p>
+<p>The string can contain any text that a regular Javascript string can
+contain. Replacement parameters have the syntax:</p>
+<pre>
+{name}
+</pre>
+<p>Where &quot;name&quot; can be any string surrounded by curly brackets. The value of
+&quot;name&quot; is taken from the parameters argument.<p></p>
+<p>Example:</p>
+<pre>
+var str = new IString("There are {num} objects.");
+console.log(str.format({
+  num: 12
+});
+</pre>
+<p>Would give the output:</p>
+<pre>
+There are 12 objects.
+</pre>
+<p>If a property is missing from the parameter block, the replacement
+parameter substring is left untouched in the string, and a different
+set of parameters may be applied a second time. This way, different
+parts of the code may format different parts of the message that they
+happen to know about.<p></p>
+<p>Example:</p>
+<pre>
+var str = new IString("There are {num} objects in the {container}.");
+console.log(str.format({
+  num: 12
+});
+</pre>
+<p>Would give the output:<p></p>
+<pre>
+There are 12 objects in the {container}.
+</pre>
+<p>The result can then be formatted again with a different parameter block that
+specifies a value for the container property.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>params</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>a Javascript object containing values for the replacement
+parameters in the current string</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#format">IString#format</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line609">line 609</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a new IString instance with as many replacement parameters filled
+out as possible with real values.</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="formatChoice">
+        <a class="href-link" href="#formatChoice">#</a>
+        
+        <span class="code-name">
+            
+                formatChoice<span class="signature">(argIndex, params)</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Format a string as one of a choice of strings dependent on the value of
+a particular argument index or array of indices.<p></p>
+<p>The syntax of the choice string is as follows. The string contains a
+series of choices separated by a vertical bar character &quot;|&quot;. Each choice
+has a value or range of values to match followed by a hash character &quot;#&quot;
+followed by the string to use if the variable matches the criteria.<p></p>
+<p>Example string:</p>
+<pre>
+var num = 2;
+var str = new IString("0#There are no objects.|1#There is one object.|2#There are {number} objects.");
+console.log(str.formatChoice(num, {
+  number: num
+}));
+</pre>
+<p>Gives the output:</p>
+<pre>
+"There are 2 objects."
+</pre>
+<p>The strings to format may contain replacement variables that will be formatted
+using the format() method above and the params argument as a source of values
+to use while formatting those variables.<p></p>
+<p>If the criterion for a particular choice is empty, that choice will be used
+as the default one for use when none of the other choice's criteria match.<p></p>
+<p>Example string:</p>
+<pre>
+var num = 22;
+var str = new IString("0#There are no objects.|1#There is one object.|#There are {number} objects.");
+console.log(str.formatChoice(num, {
+  number: num
+}));
+</pre>
+<p>Gives the output:</p>
+<pre>
+"There are 22 objects."
+</pre>
+<p>If multiple choice patterns can match a given argument index, the first one
+encountered in the string will be used. If no choice patterns match the
+argument index, then the default choice will be used. If there is no default
+choice defined, then this method will return an empty string.<p></p>
+<p><b>Special Syntax</b><p></p>
+<p>For any choice format string, all of the patterns in the string should be
+of a single type: numeric, boolean, or string/regexp. The type of the
+patterns is determined by the type of the argument index parameter.<p></p>
+<p>If the argument index is numeric, then some special syntax can be used
+in the patterns to match numeric ranges.<p></p>
+<ul>
+<li><i>&gt;x</i> - match any number that is greater than x
+<li><i>&gt;=x</i> - match any number that is greater than or equal to x
+<li><i>&lt;x</i> - match any number that is less than x
+<li><i>&lt;=x</i> - match any number that is less than or equal to x
+<li><i>start-end</i> - match any number in the range [start,end)
+<li><i>zero</i> - match any number in the class "zero". (See below for
+a description of number classes.)
+<li><i>one</i> - match any number in the class "one"
+<li><i>two</i> - match any number in the class "two"
+<li><i>few</i> - match any number in the class "few"
+<li><i>many</i> - match any number in the class "many"
+<li><i>other</i> - match any number in the other or default class
+</ul>
+<p>A number class defines a set of numbers that receive a particular syntax
+in the strings. For example, in Slovenian, integers ending in the digit
+&quot;1&quot; are in the &quot;one&quot; class, including 1, 21, 31, ... 101, 111, etc.
+Similarly, integers ending in the digit &quot;2&quot; are in the &quot;two&quot; class.
+Integers ending in the digits &quot;3&quot; or &quot;4&quot; are in the &quot;few&quot; class, and
+every other integer is handled by the default string.<p></p>
+<p>The definition of what numbers are included in a class is locale-dependent.
+They are defined in the data file plurals.json. If your string is in a
+different locale than the default for ilib, you should call the setLocale()
+method of the string instance before calling this method.<p></p>
+<p><b>Other Pattern Types</b><p></p>
+<p>If the argument index is a boolean, the string values &quot;true&quot; and &quot;false&quot;
+may appear as the choice patterns.<p></p>
+<p>If the argument index is of type string, then the choice patterns may contain
+regular expressions, or static strings as degenerate regexps.<p></p>
+<p><b>Multiple Indexes</b><p></p>
+<p>If you have 2 or more indexes to format into a string, you can pass them as
+an array. When you do that, the patterns to match should be a comma-separate
+list of patterns as per the rules above.<p></p>
+<p>Example string:</p>
+<pre>
+var str = new IString("zero,zero#There are no objects on zero pages.|one,one#There is 1 object on 1 page.|other,one#There are {number} objects on 1 page.|#There are {number} objects on {pages} pages.");
+var num = 4, pages = 1;
+console.log(str.formatChoice([num, pages], {
+  number: num,
+  pages: pages
+}));
+</pre>
+<p>Gives the output:<p></p>
+<pre>
+"There are 4 objects on 1 page."
+</pre>
+<p>Note that when there is a single index, you would typically leave the pattern blank to
+indicate the default choice. When there are multiple indices, sometimes one of the
+patterns has to be the default case when the other is not. Rather than leaving one or
+more of the patterns blank with commas that look out-of-place in the middle of it, you
+can use the word &quot;other&quot; to indicate a match with the default or other choice. The above example
+shows the use of the &quot;other&quot; pattern. That said, you are allowed to leave the pattern
+blank if you so choose. In the example above, the pattern for the third string could
+easily have been written as &quot;,one&quot; instead of &quot;other,one&quot; and the result will be the same.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>argIndex</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">*</code>
+|
+
+<code class="param-type">Array.&lt;*></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The index into the choice array of the current parameter,
+or an array of indices</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>params</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The hash of parameter values that replace the replacement
+variables in the string</p>
+<ul>
+<li>@param {boolean} useIntlPlural [optional] true if you are willing to use Intl.PluralRules object
+If it is omitted, the default value is true</li>
+</ul></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#formatChoice">IString#formatChoice</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line850">line 850</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Throws:</label></div>
+        <div class="column is-10">
+            
+                    
+<div class="columns">
+    
+        
+            <div class='param-desc column is-12'><p>&quot;syntax error in choice format pattern: &quot; if there is a syntax error</p></div>
+        
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the formatted string</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getLocale">
+        <a class="href-link" href="#getLocale">#</a>
+        
+        <span class="code-name">
+            
+                getLocale<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the locale to use when processing choice formats. The locale
+affects how number classes are interpretted. In some cultures,
+the limit &quot;few&quot; maps to &quot;any integer that ends in the digits 2 to 9&quot; and
+in yet others, &quot;few&quot; maps to &quot;any integer that ends in the digits
+3 or 4&quot;.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#getLocale">IString#getLocale</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1508">line 1508</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>localespec to use when processing choice
+formats with this string</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="includes">
+        <a class="href-link" href="#includes">#</a>
+        
+        <span class="code-name">
+            
+                includes<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.includes().</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#includes">IString#includes</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1178">line 1178</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>true if the search string is found anywhere
+with the given string, and false otherwise</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="indexOf">
+        <a class="href-link" href="#indexOf">#</a>
+        
+        <span class="code-name">
+            
+                indexOf<span class="signature">(searchValue, start)</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.indexOf()</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>searchValue</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>string to search for</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>start</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>index into the string to start searching, or
+undefined to search the entire string</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#indexOf">IString#indexOf</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1018">line 1018</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>index into the string of the string being sought,
+or -1 if the string is not found</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="iterator">
+        <a class="href-link" href="#iterator">#</a>
+        
+        <span class="code-name">
+            
+                iterator<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return an iterator that will step through all of the characters
+in the string one at a time and return their code points, taking
+care to step through the surrogate pairs in UTF-16 encoding
+properly.<p></p>
+<p>The standard Javascript String's charCodeAt() method only
+returns information about a particular 16-bit character in the
+UTF-16 encoding scheme.
+If the index is pointing to a low- or high-surrogate character,
+it will return a code point of the surrogate character rather
+than the code point of the character
+in the supplementary planes that the two surrogates together
+encode.<p></p>
+<p>The iterator instance returned has two methods, hasNext() which
+returns true if the iterator has more code points to iterate through,
+and next() which returns the next code point as a number.<p></p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#iterator">IString#iterator</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1380">line 1380</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>an iterator
+that iterates through all the code points in the string</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Object</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="lastIndexOf">
+        <a class="href-link" href="#lastIndexOf">#</a>
+        
+        <span class="code-name">
+            
+                lastIndexOf<span class="signature">(searchValue, start)</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.lastIndexOf()</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>searchValue</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>string to search for</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>start</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>index into the string to start searching, or
+undefined to search the entire string</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#lastIndexOf">IString#lastIndexOf</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1030">line 1030</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>index into the string of the string being sought,
+or -1 if the string is not found</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="match">
+        <a class="href-link" href="#match">#</a>
+        
+        <span class="code-name">
+            
+                match<span class="signature">(regexp)</span><span class="type-signature"> &rarr; {Array.&lt;string>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.match()</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>regexp</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>the regular expression to match</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#match">IString#match</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1039">line 1039</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>an array of matches</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Array.&lt;string></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="matchAll">
+        <a class="href-link" href="#matchAll">#</a>
+        
+        <span class="code-name">
+            
+                matchAll<span class="signature">(regexp)</span><span class="type-signature"> &rarr; {iterator}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.matchAll()</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>regexp</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>the regular expression to match</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#matchAll">IString#matchAll</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1048">line 1048</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>an iterator of the matches</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">iterator</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="normalize">
+        <a class="href-link" href="#normalize">#</a>
+        
+        <span class="code-name">
+            
+                normalize<span class="signature">(form)</span><span class="type-signature"> &rarr; {<a href="IString.html">IString</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Perform the Unicode Normalization Algorithm upon the string and return
+the resulting new string. The current string is not modified.</p>
+<h2>Forms</h2>
+<p>The forms of possible normalizations are defined by the <a
+href="http://www.unicode.org/reports/tr15/">Unicode Standard
+Annex (UAX) 15</a>. The form parameter is a string that may have one
+of the following values:</p>
+<ul>
+<li>nfd - Canonical decomposition. This decomposes characters into
+their exactly equivalent forms. For example, "&uuml;" would decompose
+into a "u" followed by the combining diaeresis character.
+<li>nfc - Canonical decomposition followed by canonical composition.
+This decomposes and then recomposes character into their shortest
+exactly equivalent forms by recomposing as many combining characters
+as possible. For example, "&uuml;" followed by a combining
+macron character would decompose into a "u" followed by the combining
+macron characters the combining diaeresis character, and then be recomposed into
+the u with macron and diaeresis "&#x1E7B;" character. The reason that
+the "nfc" form decomposes and then recomposes is that combining characters
+have a specific order under the Unicode Normalization Algorithm, and
+partly composed characters such as the "&uuml;" followed by combining
+marks may change the order of the combining marks when decomposed and
+recomposed.
+<li>nfkd - Compatibility decomposition. This decomposes characters
+into compatible forms that may not be exactly equivalent semantically,
+as well as performing canonical decomposition as well.
+For example, the "&oelig;" ligature character decomposes to the two
+characters "oe" because they are compatible even though they are not
+exactly the same semantically.
+<li>nfkc - Compatibility decomposition followed by canonical composition.
+This decomposes characters into compatible forms, then recomposes
+characters using the canonical composition. That is, it breaks down
+characters into the compatible forms, and then recombines all combining
+marks it can with their base characters. For example, the character
+"&#x01FD;" would be normalized to "a&eacute;" by first decomposing
+the character into "a" followed by "e" followed by the combining acute accent
+combining mark, and then recomposed to an "a" followed by the "e"
+with acute accent.
+</ul>
+<h2>Operation</h2>
+<p>Two strings a and b can be said to be canonically equivalent if
+normalize(a) = normalize(b)
+under the nfc normalization form. Two strings can be said to be compatible if
+normalize(a) = normalize(b) under the nfkc normalization form.<p></p>
+<p>The canonical normalization is often used to see if strings are
+equivalent to each other, and thus is useful when implementing parsing
+algorithms or exact matching algorithms. It can also be used to ensure
+that any string output produces a predictable sequence of characters.<p></p>
+<p>Compatibility normalization
+does not always preserve the semantic meaning of all the characters,
+although this is sometimes the behaviour that you are after. It is useful,
+for example, when doing searches of user-input against text in documents
+where the matches are supposed to &quot;fuzzy&quot;. In this case, both the query
+string and the document string would be mapped to their compatibility
+normalized forms, and then compared.<p></p>
+<p>Compatibility normalization also does not guarantee round-trip conversion
+to and from legacy character sets as the normalization is &quot;lossy&quot;. It is
+akin to doing a lower- or upper-case conversion on text -- after casing,
+you cannot tell what case each character is in the original string. It is
+good for matching and searching, but it rarely good for output because some
+distinctions or meanings in the original text have been lost.<p></p>
+<p>Note that W3C normalization for HTML also escapes and unescapes
+HTML character entities such as &quot;&amp;uuml;&quot; for u with diaeresis. This
+method does not do such escaping or unescaping. If normalization is required
+for HTML strings with entities, unescaping should be performed on the string
+prior to calling this method.<p></p>
+<h2>Data</h2>
+<p>Normalization requires a fair amount of mapping data, much of which you may
+not need for the characters expected in your texts. It is possible to assemble
+a copy of ilib that saves space by only including normalization data for
+those scripts that you expect to encounter in your data.<p></p>
+<p>The normalization data is organized by normalization form and within there
+by script. To include the normalization data for a particular script with
+a particular normalization form, use the following require:</p>
+<pre><code>
+NormString.init({
+  form: "&lt;form&gt;",
+  script: "&lt;script&gt;"
+});
+</code></pre>
+<p>Where &lt;form&amp;gt is the normalization form (&quot;nfd&quot;, &quot;nfc&quot;, &quot;nfkd&quot;, or &quot;nfkc&quot;), and
+&lt;script&gt; is the ISO 15924 code for the script you would like to
+support. Example: to load in the NFC data for Cyrillic, you would use:</p>
+<pre><code>
+NormString.init({
+  form: "nfc",
+  script: "Cyrl"
+});
+</code></pre>
+<p>Note that because certain normalization forms include others in their algorithm,
+their data also depends on the data for the other forms. For example, if you
+include the &quot;nfc&quot; data for a script, you will automatically get the &quot;nfd&quot; data
+for that same script as well because the NFC algorithm does NFD normalization
+first. Here are the dependencies:<p></p>
+<ul>
+<li>NFD -> no dependencies
+<li>NFC -> NFD
+<li>NFKD -> NFD
+<li>NFKC -> NFKD, NFD, NFC
+</ul>
+<p>A special value for the script dependency is &quot;all&quot; which will cause the data for
+all scripts
+to be loaded for that normalization form. This would be useful if you know that
+you are going to normalize a lot of multilingual text or cannot predict which scripts
+will appear in the input. Because the NFKC form depends on all others, you can
+get all of the data for all forms automatically by depending on &quot;nfkc/all.js&quot;.
+Note that the normalization data for practically all script automatically depend
+on data for the Common script (code &quot;Zyyy&quot;) which contains all of the characters
+that are commonly used in many different scripts. Examples of characters in the
+Common script are the ASCII punctuation characters, or the ASCII Arabic
+numerals &quot;0&quot; through &quot;9&quot;.<p></p>
+<p>By default, none of the data for normalization is automatically
+included in the preassembled ilib files. (For size &quot;full&quot;.)
+If you would like to normalize strings, you must assemble
+your own copy of ilib and explicitly include the normalization data
+for those scripts. This normalization method will
+produce output, even without the normalization data. However, the output will be
+simply the same thing as its input for all scripts
+except Korean Hangul and Jamo, which are decomposed and recomposed
+algorithmically and therefore do not rely on data.<p></p>
+<p>If characters are encountered for which there are no normalization data, they
+will be passed through to the output string unmodified.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>form</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The normalization form requested</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="GlyphString.html#normalize">GlyphString#normalize</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="NormString.js.html" class="button">View Source</a>
+            <span>
+                <a href="NormString.js.html">NormString.js</a>, <a href="NormString.js.html#line371">line 371</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a new instance of an IString that has been normalized
+according to the requested form. The current instance is not modified.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="IString.html">IString</a></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="padEnd">
+        <a class="href-link" href="#padEnd">#</a>
+        
+        <span class="code-name">
+            
+                padEnd<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.padEnd().</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#padEnd">IString#padEnd</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1198">line 1198</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a string of the specified length with the
+pad string applied at the end of the current string</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="padStart">
+        <a class="href-link" href="#padStart">#</a>
+        
+        <span class="code-name">
+            
+                padStart<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.padStart().</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#padStart">IString#padStart</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1207">line 1207</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a string of the specified length with the
+pad string applied at the end of the current string</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="repeat">
+        <a class="href-link" href="#repeat">#</a>
+        
+        <span class="code-name">
+            
+                repeat<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.repeat().</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#repeat">IString#repeat</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1216">line 1216</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a new string containing the specified number
+of copies of the given string</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="replace">
+        <a class="href-link" href="#replace">#</a>
+        
+        <span class="code-name">
+            
+                replace<span class="signature">(searchValue, newValue)</span><span class="type-signature"> &rarr; {<a href="IString.html">IString</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.replace()</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>searchValue</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>a regular expression to search for</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>newValue</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>the string to replace the matches with</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#replace">IString#replace</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1059">line 1059</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a new string with all the matches replaced
+with the new value</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="IString.html">IString</a></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="search">
+        <a class="href-link" href="#search">#</a>
+        
+        <span class="code-name">
+            
+                search<span class="signature">(regexp)</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.search()</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>regexp</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>the regular expression to search for</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#search">IString#search</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1068">line 1068</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>position of the match, or -1 for no match</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setLocale">
+        <a class="href-link" href="#setLocale">#</a>
+        
+        <span class="code-name">
+            
+                setLocale<span class="signature">(locale, sync<span class="signature-attributes">opt</span>, loadParams<span class="signature-attributes">opt</span>, onLoad<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Set the locale to use when processing choice formats. The locale
+affects how number classes are interpretted. In some cultures,
+the limit &quot;few&quot; maps to &quot;any integer that ends in the digits 2 to 9&quot; and
+in yet others, &quot;few&quot; maps to &quot;any integer that ends in the digits
+3 or 4&quot;.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>locale</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="Locale.html">Locale</a></code>
+|
+
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>locale to use when processing choice
+formats with this string</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>sync</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">boolean</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>[optional] whether to load the locale data synchronously
+or not</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>loadParams</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>[optional] parameters to pass to the loader function</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>onLoad</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">function</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>[optional] function to call when the loading is done</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#setLocale">IString#setLocale</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1484">line 1484</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="slice">
+        <a class="href-link" href="#slice">#</a>
+        
+        <span class="code-name">
+            
+                slice<span class="signature">(start, end)</span><span class="type-signature"> &rarr; {<a href="IString.html">IString</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.slice()</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>start</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>first character to include in the string</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>end</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>include all characters up to, but not including
+the end character</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#slice">IString#slice</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1079">line 1079</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a slice of the current string</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="IString.html">IString</a></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="split">
+        <a class="href-link" href="#split">#</a>
+        
+        <span class="code-name">
+            
+                split<span class="signature">(separator, limit)</span><span class="type-signature"> &rarr; {Array.&lt;string>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.split()</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>separator</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>regular expression to match to find
+separations between the parts of the text</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>limit</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>maximum number of items in the final
+output array. Any items beyond that limit will be ignored.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#split">IString#split</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1092">line 1092</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the parts of the current string split
+by the separator</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Array.&lt;string></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="startsWith">
+        <a class="href-link" href="#startsWith">#</a>
+        
+        <span class="code-name">
+            
+                startsWith<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.startsWith().</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#startsWith">IString#startsWith</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1169">line 1169</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>true if the given characters are found at
+the beginning of the string, and false otherwise</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="substr">
+        <a class="href-link" href="#substr">#</a>
+        
+        <span class="code-name">
+            
+                substr<span class="signature">(start, length)</span><span class="type-signature"> &rarr; {<a href="IString.html">IString</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.substr()</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>start</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>the index of the character that should
+begin the returned substring</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>length</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>the number of characters to return after
+the start character.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#substr">IString#substr</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1104">line 1104</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the requested substring</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="IString.html">IString</a></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="substring">
+        <a class="href-link" href="#substring">#</a>
+        
+        <span class="code-name">
+            
+                substring<span class="signature">(from, to)</span><span class="type-signature"> &rarr; {<a href="IString.html">IString</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.substring()</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>from</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>the index of the character that should
+begin the returned substring</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>to</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>the index where to stop the extraction. If
+omitted, extracts the rest of the string</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#substring">IString#substring</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1124">line 1124</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the requested substring</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="IString.html">IString</a></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="toLocaleLowerCase">
+        <a class="href-link" href="#toLocaleLowerCase">#</a>
+        
+        <span class="code-name">
+            
+                toLocaleLowerCase<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.toLocaleLowerCase(). If the JS engine does not support this
+method, you can use the ilib CaseMapper class instead.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#toLocaleLowerCase">IString#toLocaleLowerCase</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1227">line 1227</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a new string representing the calling string
+converted to lower case, according to any locale-sensitive
+case mappings</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="toLocaleUpperCase">
+        <a class="href-link" href="#toLocaleUpperCase">#</a>
+        
+        <span class="code-name">
+            
+                toLocaleUpperCase<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.toLocaleUpperCase(). If the JS engine does not support this
+method, you can use the ilib CaseMapper class instead.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#toLocaleUpperCase">IString#toLocaleUpperCase</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1238">line 1238</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a new string representing the calling string
+converted to upper case, according to any locale-sensitive
+case mappings</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="toLowerCase">
+        <a class="href-link" href="#toLowerCase">#</a>
+        
+        <span class="code-name">
+            
+                toLowerCase<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="IString.html">IString</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.toLowerCase(). Note that this method is
+not locale-sensitive.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#toLowerCase">IString#toLowerCase</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1134">line 1134</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a string with the first character
+lower-cased</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="IString.html">IString</a></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="toString">
+        <a class="href-link" href="#toString">#</a>
+        
+        <span class="code-name">
+            
+                toString<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.toString()</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#toString">IString#toString</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line966">line 966</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>this instance as regular Javascript string</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="toUpperCase">
+        <a class="href-link" href="#toUpperCase">#</a>
+        
+        <span class="code-name">
+            
+                toUpperCase<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="IString.html">IString</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.toUpperCase(). Note that this method is
+not locale-sensitive. Use toLocaleUpperCase() instead
+to get locale-sensitive behaviour.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#toUpperCase">IString#toUpperCase</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1145">line 1145</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a string with the first character
+upper-cased</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="IString.html">IString</a></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="trim">
+        <a class="href-link" href="#trim">#</a>
+        
+        <span class="code-name">
+            
+                trim<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.trim().</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#trim">IString#trim</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1247">line 1247</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a new string representing the calling string stripped
+of whitespace from both ends.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="trimEnd">
+        <a class="href-link" href="#trimEnd">#</a>
+        
+        <span class="code-name">
+            
+                trimEnd<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.trimEnd().</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#trimEnd">IString#trimEnd</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1256">line 1256</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a new string representing the calling string stripped
+of whitespace from its (right) end.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="trimLeft">
+        <a class="href-link" href="#trimLeft">#</a>
+        
+        <span class="code-name">
+            
+                trimLeft<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.trimLeft().</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#trimLeft">IString#trimLeft</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1283">line 1283</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>A new string representing the calling string stripped
+of whitespace from its beginning (left end).</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="trimRight">
+        <a class="href-link" href="#trimRight">#</a>
+        
+        <span class="code-name">
+            
+                trimRight<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.trimRight().</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#trimRight">IString#trimRight</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1265">line 1265</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a new string representing the calling string stripped
+of whitespace from its (right) end.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="trimStart">
+        <a class="href-link" href="#trimStart">#</a>
+        
+        <span class="code-name">
+            
+                trimStart<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.trimStart().</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#trimStart">IString#trimStart</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line1274">line 1274</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>A new string representing the calling string stripped
+of whitespace from its beginning (left end).</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="truncate">
+        <a class="href-link" href="#truncate">#</a>
+        
+        <span class="code-name">
+            
+                truncate<span class="signature">(length)</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Truncate the current string at the given number of whole glyphs and return
+the resulting string.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>length</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>the number of whole glyphs to keep in the string</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="GlyphString.html#truncate">GlyphString#truncate</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="GlyphString.js.html" class="button">View Source</a>
+            <span>
+                <a href="GlyphString.js.html">GlyphString.js</a>, <a href="GlyphString.js.html#line399">line 399</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a string truncated to the requested number of glyphs</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="valueOf">
+        <a class="href-link" href="#valueOf">#</a>
+        
+        <span class="code-name">
+            
+                valueOf<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Same as String.valueOf()</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="IString.html#valueOf">IString#valueOf</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="IString.js.html" class="button">View Source</a>
+            <span>
+                <a href="IString.js.html">IString.js</a>, <a href="IString.js.html#line974">line 974</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>this instance as a regular Javascript string</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".init">
+        <a class="href-link" href="#.init">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                init<span class="signature">(options)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Initialize the normalized string routines statically. This
+is intended to be called in a dynamic-load version of ilib
+to load the data needed to normalize strings before any instances
+of NormString are created.<p></p>
+<p>The options parameter may contain any of the following properties:</p>
+<ul>
+<li><i>form</i> - {string} the normalization form to load
+<li><i>script</i> - {string} load the normalization for this script. If the
+script is given as "all" then the normalization data for all scripts
+is loaded at the same time
+<li><i>sync</i> - {boolean} whether to load the files synchronously or not
+<li><i>loadParams</i> - {Object} parameters to the loader function
+<li><i>onLoad</i> - {function()} a function to call when the
+files are done being loaded
+</ul>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>options</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>an object containing properties that govern
+how to initialize the data</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="NormString.js.html" class="button">View Source</a>
+            <span>
+                <a href="NormString.js.html">NormString.js</a>, <a href="NormString.js.html#line94">line 94</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

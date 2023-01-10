@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Locale.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Address.html">Address</a><ul class='methods'><li data-type='method'><a href="Address.html#_findCountry">_findCountry</a></li></ul></li><li><a href="AddressFmt.html">AddressFmt</a><ul class='methods'><li data-type='method'><a href="AddressFmt.html#format">format</a></li><li data-type='method'><a href="AddressFmt.html#getFormatInfo">getFormatInfo</a></li></ul></li><li><a href="AlphabeticIndex.html">AlphabeticIndex</a><ul class='methods'><li data-type='method'><a href="AlphabeticIndex.html#addElement">addElement</a></li><li data-type='method'><a href="AlphabeticIndex.html#addLabels">addLabels</a></li><li data-type='method'><a href="AlphabeticIndex.html#clear">clear</a></li><li data-type='method'><a href="AlphabeticIndex.html#getAllBucketLabels">getAllBucketLabels</a></li><li data-type='method'><a href="AlphabeticIndex.html#getAllBuckets">getAllBuckets</a></li><li data-type='method'><a href="AlphabeticIndex.html#getBucket">getBucket</a></li><li data-type='method'><a href="AlphabeticIndex.html#getBucketCount">getBucketCount</a></li><li data-type='method'><a href="AlphabeticIndex.html#getBucketLabels">getBucketLabels</a></li><li data-type='method'><a href="AlphabeticIndex.html#getCollator">getCollator</a></li><li data-type='method'><a href="AlphabeticIndex.html#getElementCount">getElementCount</a></li><li data-type='method'><a href="AlphabeticIndex.html#getIndexStyle">getIndexStyle</a></li><li data-type='method'><a href="AlphabeticIndex.html#getLocale">getLocale</a></li><li data-type='method'><a href="AlphabeticIndex.html#getOverflowLabel">getOverflowLabel</a></li><li data-type='method'><a href="AlphabeticIndex.html#getUnderflowLabel">getUnderflowLabel</a></li><li data-type='method'><a href="AlphabeticIndex.html#setOverflowLabel">setOverflowLabel</a></li><li data-type='method'><a href="AlphabeticIndex.html#setUnderflowLabel">setUnderflowLabel</a></li></ul></li><li><a href="AreaUnit.html">AreaUnit</a><ul class='methods'><li data-type='method'><a href="AreaUnit.html#convert">convert</a></li><li data-type='method'><a href="AreaUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="AreaUnit.html#expand">expand</a></li><li data-type='method'><a href="AreaUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="AreaUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="AreaUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="AreaUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="AreaUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="AreaUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="AreaUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="AreaUnit.html#list">list</a></li><li data-type='method'><a href="AreaUnit.html#localize">localize</a></li><li data-type='method'><a href="AreaUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="AreaUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="AreaUnit.html#scale">scale</a></li><li data-type='method'><a href="AreaUnit.html#.convert">convert</a></li></ul></li><li><a href="CaseMapper.html">CaseMapper</a><ul class='methods'><li data-type='method'><a href="CaseMapper.html#getLocale">getLocale</a></li><li data-type='method'><a href="CaseMapper.html#map">map</a></li></ul></li><li><a href="Charmap.html">Charmap</a><ul class='methods'><li data-type='method'><a href="Charmap.html#getName">getName</a></li><li data-type='method'><a href="Charmap.html#mapToNative">mapToNative</a></li><li data-type='method'><a href="Charmap.html#mapToUnicode">mapToUnicode</a></li></ul></li><li><a href="CharmapTable.html">CharmapTable</a><ul class='methods'><li data-type='method'><a href="CharmapTable.html#getName">getName</a></li><li data-type='method'><a href="CharmapTable.html#mapToNative">mapToNative</a></li><li data-type='method'><a href="CharmapTable.html#mapToUnicode">mapToUnicode</a></li></ul></li><li><a href="Charset.html">Charset</a><ul class='methods'><li data-type='method'><a href="Charset.html#getDescription">getDescription</a></li><li data-type='method'><a href="Charset.html#getMaxCharWidth">getMaxCharWidth</a></li><li data-type='method'><a href="Charset.html#getMinCharWidth">getMinCharWidth</a></li><li data-type='method'><a href="Charset.html#getName">getName</a></li><li data-type='method'><a href="Charset.html#getOriginalName">getOriginalName</a></li><li data-type='method'><a href="Charset.html#getScripts">getScripts</a></li><li data-type='method'><a href="Charset.html#isBigEndian">isBigEndian</a></li><li data-type='method'><a href="Charset.html#isMultibyte">isMultibyte</a></li></ul></li><li><a href="Collator.html">Collator</a><ul class='methods'><li data-type='method'><a href="Collator.html#compare">compare</a></li><li data-type='method'><a href="Collator.html#getComparator">getComparator</a></li><li data-type='method'><a href="Collator.html#getDefaultCollatorStyle">getDefaultCollatorStyle</a></li><li data-type='method'><a href="Collator.html#sortKey">sortKey</a></li><li data-type='method'><a href="Collator.html#.getAvailableScripts">getAvailableScripts</a></li><li data-type='method'><a href="Collator.html#.getAvailableStyles">getAvailableStyles</a></li></ul></li><li><a href="CopticCal.html">CopticCal</a><ul class='methods'><li data-type='method'><a href="CopticCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="CopticCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="CopticCal.html#getType">getType</a></li><li data-type='method'><a href="CopticCal.html#isLeapYear">isLeapYear</a></li></ul></li><li><a href="CopticDate.html">CopticDate</a><ul class='methods'><li data-type='method'><a href="CopticDate.html#_calcDateComponents">_calcDateComponents</a></li><li data-type='method'><a href="CopticDate.html#_calcYear">_calcYear</a></li><li data-type='method'><a href="CopticDate.html#after">after</a></li><li data-type='method'><a href="CopticDate.html#before">before</a></li><li data-type='method'><a href="CopticDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="CopticDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="CopticDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="CopticDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="CopticDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="CopticDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="CopticDate.html#getTime">getTime</a></li><li data-type='method'><a href="CopticDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="CopticDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="CopticDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="CopticDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="CopticDate.html#newRd">newRd</a></li><li data-type='method'><a href="CopticDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="CopticDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="CopticDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="CopticDate.html#setRd">setRd</a></li><li data-type='method'><a href="CopticDate.html#setTime">setTime</a></li><li data-type='method'><a href="CopticDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="Country.html">Country</a><ul class='methods'><li data-type='method'><a href="Country.html#getCode">getCode</a></li><li data-type='method'><a href="Country.html#getLocale">getLocale</a></li><li data-type='method'><a href="Country.html#getName">getName</a></li><li data-type='method'><a href="Country.html#.getAvailableCode">getAvailableCode</a></li><li data-type='method'><a href="Country.html#.getAvailableCountry">getAvailableCountry</a></li></ul></li><li><a href="Currency.html">Currency</a><ul class='methods'><li data-type='method'><a href="Currency.html#getCode">getCode</a></li><li data-type='method'><a href="Currency.html#getFractionDigits">getFractionDigits</a></li><li data-type='method'><a href="Currency.html#getLocale">getLocale</a></li><li data-type='method'><a href="Currency.html#getName">getName</a></li><li data-type='method'><a href="Currency.html#getSign">getSign</a></li><li data-type='method'><a href="Currency.html#.getAvailableCurrencies">getAvailableCurrencies</a></li></ul></li><li><a href="DateFmt.html">DateFmt</a><ul class='methods'><li data-type='method'><a href="DateFmt.html#_getFormat">_getFormat</a></li><li data-type='method'><a href="DateFmt.html#_getFormatInternal">_getFormatInternal</a></li><li data-type='method'><a href="DateFmt.html#_getLengthFormat">_getLengthFormat</a></li><li data-type='method'><a href="DateFmt.html#_initTemplate">_initTemplate</a></li><li data-type='method'><a href="DateFmt.html#_massageTemplate">_massageTemplate</a></li><li data-type='method'><a href="DateFmt.html#_tokenize">_tokenize</a></li><li data-type='method'><a href="DateFmt.html#format">format</a></li><li data-type='method'><a href="DateFmt.html#formatRelative">formatRelative</a></li><li data-type='method'><a href="DateFmt.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="DateFmt.html#getClock">getClock</a></li><li data-type='method'><a href="DateFmt.html#getDateComponentOrder">getDateComponentOrder</a></li><li data-type='method'><a href="DateFmt.html#getDateComponents">getDateComponents</a></li><li data-type='method'><a href="DateFmt.html#getDaysOfWeek">getDaysOfWeek</a></li><li data-type='method'><a href="DateFmt.html#getLength">getLength</a></li><li data-type='method'><a href="DateFmt.html#getLocale">getLocale</a></li><li data-type='method'><a href="DateFmt.html#getMeridiemsRange">getMeridiemsRange</a></li><li data-type='method'><a href="DateFmt.html#getMonthsOfYear">getMonthsOfYear</a></li><li data-type='method'><a href="DateFmt.html#getTemplate">getTemplate</a></li><li data-type='method'><a href="DateFmt.html#getTimeComponents">getTimeComponents</a></li><li data-type='method'><a href="DateFmt.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="DateFmt.html#getType">getType</a></li><li data-type='method'><a href="DateFmt.html#toString">toString</a></li><li data-type='method'><a href="DateFmt.html#.getMeridiemsRange">getMeridiemsRange</a></li><li data-type='method'><a href="DateFmt.html#.isIntlDateTimeAvailable">isIntlDateTimeAvailable</a></li></ul></li><li><a href="DateRngFmt.html">DateRngFmt</a><ul class='methods'><li data-type='method'><a href="DateRngFmt.html#format">format</a></li><li data-type='method'><a href="DateRngFmt.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="DateRngFmt.html#getClock">getClock</a></li><li data-type='method'><a href="DateRngFmt.html#getLength">getLength</a></li><li data-type='method'><a href="DateRngFmt.html#getLocale">getLocale</a></li><li data-type='method'><a href="DateRngFmt.html#getTimeZone">getTimeZone</a></li></ul></li><li><a href="DigitalSpeedUnit.html">DigitalSpeedUnit</a><ul class='methods'><li data-type='method'><a href="DigitalSpeedUnit.html#convert">convert</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#expand">expand</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#list">list</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#localize">localize</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#scale">scale</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#.convert">convert</a></li></ul></li><li><a href="DigitalStorageUnit.html">DigitalStorageUnit</a><ul class='methods'><li data-type='method'><a href="DigitalStorageUnit.html#convert">convert</a></li><li data-type='method'><a href="DigitalStorageUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="DigitalStorageUnit.html#expand">expand</a></li><li data-type='method'><a href="DigitalStorageUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="DigitalStorageUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="DigitalStorageUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="DigitalStorageUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="DigitalStorageUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="DigitalStorageUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="DigitalStorageUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="DigitalStorageUnit.html#list">list</a></li><li data-type='method'><a href="DigitalStorageUnit.html#localize">localize</a></li><li data-type='method'><a href="DigitalStorageUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="DigitalStorageUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="DigitalStorageUnit.html#scale">scale</a></li><li data-type='method'><a href="DigitalStorageUnit.html#.convert">convert</a></li></ul></li><li><a href="DurationFmt.html">DurationFmt</a><ul class='methods'><li data-type='method'><a href="DurationFmt.html#format">format</a></li><li data-type='method'><a href="DurationFmt.html#getLength">getLength</a></li><li data-type='method'><a href="DurationFmt.html#getLocale">getLocale</a></li><li data-type='method'><a href="DurationFmt.html#getStyle">getStyle</a></li></ul></li><li><a href="EnergyUnit.html">EnergyUnit</a><ul class='methods'><li data-type='method'><a href="EnergyUnit.html#convert">convert</a></li><li data-type='method'><a href="EnergyUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="EnergyUnit.html#expand">expand</a></li><li data-type='method'><a href="EnergyUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="EnergyUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="EnergyUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="EnergyUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="EnergyUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="EnergyUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="EnergyUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="EnergyUnit.html#list">list</a></li><li data-type='method'><a href="EnergyUnit.html#localize">localize</a></li><li data-type='method'><a href="EnergyUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="EnergyUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="EnergyUnit.html#scale">scale</a></li><li data-type='method'><a href="EnergyUnit.html#.convert">convert</a></li></ul></li><li><a href="EthiopicCal.html">EthiopicCal</a><ul class='methods'><li data-type='method'><a href="EthiopicCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="EthiopicCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="EthiopicCal.html#getType">getType</a></li><li data-type='method'><a href="EthiopicCal.html#isLeapYear">isLeapYear</a></li></ul></li><li><a href="EthiopicDate.html">EthiopicDate</a><ul class='methods'><li data-type='method'><a href="EthiopicDate.html#_calcDateComponents">_calcDateComponents</a></li><li data-type='method'><a href="EthiopicDate.html#_calcYear">_calcYear</a></li><li data-type='method'><a href="EthiopicDate.html#after">after</a></li><li data-type='method'><a href="EthiopicDate.html#before">before</a></li><li data-type='method'><a href="EthiopicDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="EthiopicDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="EthiopicDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="EthiopicDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="EthiopicDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="EthiopicDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="EthiopicDate.html#getTime">getTime</a></li><li data-type='method'><a href="EthiopicDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="EthiopicDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="EthiopicDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="EthiopicDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="EthiopicDate.html#newRd">newRd</a></li><li data-type='method'><a href="EthiopicDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="EthiopicDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="EthiopicDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="EthiopicDate.html#setRd">setRd</a></li><li data-type='method'><a href="EthiopicDate.html#setTime">setTime</a></li><li data-type='method'><a href="EthiopicDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="ForceUnit.html">ForceUnit</a><ul class='methods'><li data-type='method'><a href="ForceUnit.html#convert">convert</a></li><li data-type='method'><a href="ForceUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="ForceUnit.html#expand">expand</a></li><li data-type='method'><a href="ForceUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="ForceUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="ForceUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="ForceUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="ForceUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="ForceUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="ForceUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="ForceUnit.html#list">list</a></li><li data-type='method'><a href="ForceUnit.html#localize">localize</a></li><li data-type='method'><a href="ForceUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="ForceUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="ForceUnit.html#scale">scale</a></li><li data-type='method'><a href="ForceUnit.html#.convert">convert</a></li></ul></li><li><a href="FuelConsumptionUnit.html">FuelConsumptionUnit</a><ul class='methods'><li data-type='method'><a href="FuelConsumptionUnit.html#convert">convert</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#expand">expand</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#list">list</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#localize">localize</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#scale">scale</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#.convert">convert</a></li></ul></li><li><a href="GlyphString.html">GlyphString</a><ul class='methods'><li data-type='method'><a href="GlyphString.html#_toCodePoint">_toCodePoint</a></li><li data-type='method'><a href="GlyphString.html#charAt">charAt</a></li><li data-type='method'><a href="GlyphString.html#charCodeAt">charCodeAt</a></li><li data-type='method'><a href="GlyphString.html#charIterator">charIterator</a></li><li data-type='method'><a href="GlyphString.html#codePointAt">codePointAt</a></li><li data-type='method'><a href="GlyphString.html#codePointLength">codePointLength</a></li><li data-type='method'><a href="GlyphString.html#concat">concat</a></li><li data-type='method'><a href="GlyphString.html#ellipsize">ellipsize</a></li><li data-type='method'><a href="GlyphString.html#endsWith">endsWith</a></li><li data-type='method'><a href="GlyphString.html#forEach">forEach</a></li><li data-type='method'><a href="GlyphString.html#forEachCodePoint">forEachCodePoint</a></li><li data-type='method'><a href="GlyphString.html#format">format</a></li><li data-type='method'><a href="GlyphString.html#formatChoice">formatChoice</a></li><li data-type='method'><a href="GlyphString.html#getLocale">getLocale</a></li><li data-type='method'><a href="GlyphString.html#includes">includes</a></li><li data-type='method'><a href="GlyphString.html#indexOf">indexOf</a></li><li data-type='method'><a href="GlyphString.html#iterator">iterator</a></li><li data-type='method'><a href="GlyphString.html#lastIndexOf">lastIndexOf</a></li><li data-type='method'><a href="GlyphString.html#match">match</a></li><li data-type='method'><a href="GlyphString.html#matchAll">matchAll</a></li><li data-type='method'><a href="GlyphString.html#normalize">normalize</a></li><li data-type='method'><a href="GlyphString.html#padEnd">padEnd</a></li><li data-type='method'><a href="GlyphString.html#padStart">padStart</a></li><li data-type='method'><a href="GlyphString.html#repeat">repeat</a></li><li data-type='method'><a href="GlyphString.html#replace">replace</a></li><li data-type='method'><a href="GlyphString.html#search">search</a></li><li data-type='method'><a href="GlyphString.html#setLocale">setLocale</a></li><li data-type='method'><a href="GlyphString.html#slice">slice</a></li><li data-type='method'><a href="GlyphString.html#split">split</a></li><li data-type='method'><a href="GlyphString.html#startsWith">startsWith</a></li><li data-type='method'><a href="GlyphString.html#substr">substr</a></li><li data-type='method'><a href="GlyphString.html#substring">substring</a></li><li data-type='method'><a href="GlyphString.html#toLocaleLowerCase">toLocaleLowerCase</a></li><li data-type='method'><a href="GlyphString.html#toLocaleUpperCase">toLocaleUpperCase</a></li><li data-type='method'><a href="GlyphString.html#toLowerCase">toLowerCase</a></li><li data-type='method'><a href="GlyphString.html#toString">toString</a></li><li data-type='method'><a href="GlyphString.html#toUpperCase">toUpperCase</a></li><li data-type='method'><a href="GlyphString.html#trim">trim</a></li><li data-type='method'><a href="GlyphString.html#trimEnd">trimEnd</a></li><li data-type='method'><a href="GlyphString.html#trimLeft">trimLeft</a></li><li data-type='method'><a href="GlyphString.html#trimRight">trimRight</a></li><li data-type='method'><a href="GlyphString.html#trimStart">trimStart</a></li><li data-type='method'><a href="GlyphString.html#truncate">truncate</a></li><li data-type='method'><a href="GlyphString.html#valueOf">valueOf</a></li></ul></li><li><a href="GlyphString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="GregorianCal.html">GregorianCal</a><ul class='methods'><li data-type='method'><a href="GregorianCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="GregorianCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="GregorianCal.html#getType">getType</a></li><li data-type='method'><a href="GregorianCal.html#isLeapYear">isLeapYear</a></li></ul></li><li><a href="GregorianDate.html">GregorianDate</a><ul class='methods'><li data-type='method'><a href="GregorianDate.html#after">after</a></li><li data-type='method'><a href="GregorianDate.html#before">before</a></li><li data-type='method'><a href="GregorianDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="GregorianDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="GregorianDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="GregorianDate.html#getDayOfYear">getDayOfYear</a></li><li data-type='method'><a href="GregorianDate.html#getEra">getEra</a></li><li data-type='method'><a href="GregorianDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="GregorianDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="GregorianDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="GregorianDate.html#getTime">getTime</a></li><li data-type='method'><a href="GregorianDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="GregorianDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="GregorianDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="GregorianDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="GregorianDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="GregorianDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="GregorianDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="GregorianDate.html#setRd">setRd</a></li><li data-type='method'><a href="GregorianDate.html#setTime">setTime</a></li><li data-type='method'><a href="GregorianDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="HanCal.html">HanCal</a><ul class='methods'><li data-type='method'><a href="HanCal.html#equivalentCycleYear">equivalentCycleYear</a></li><li data-type='method'><a href="HanCal.html#getLeapMonth">getLeapMonth</a></li><li data-type='method'><a href="HanCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="HanCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="HanCal.html#getType">getType</a></li><li data-type='method'><a href="HanCal.html#isLeapYear">isLeapYear</a></li><li data-type='method'><a href="HanCal.html#newYears">newYears</a></li><li data-type='method'><a href="HanCal.html#._chineseTZ">_chineseTZ</a></li><li data-type='method'><a href="HanCal.html#._currentMajorST">_currentMajorST</a></li><li data-type='method'><a href="HanCal.html#._getElapsedYear">_getElapsedYear</a></li><li data-type='method'><a href="HanCal.html#._hanNextSolarLongitude">_hanNextSolarLongitude</a></li><li data-type='method'><a href="HanCal.html#._leapYearCalc">_leapYearCalc</a></li><li data-type='method'><a href="HanCal.html#._majorSTOnOrAfter">_majorSTOnOrAfter</a></li><li data-type='method'><a href="HanCal.html#._newMoonBefore">_newMoonBefore</a></li><li data-type='method'><a href="HanCal.html#._newMoonOnOrAfter">_newMoonOnOrAfter</a></li><li data-type='method'><a href="HanCal.html#._noMajorST">_noMajorST</a></li><li data-type='method'><a href="HanCal.html#._solsticeBefore">_solsticeBefore</a></li></ul></li><li><a href="HanDate.html">HanDate</a><ul class='methods'><li data-type='method'><a href="HanDate.html#_calcYear">_calcYear</a></li><li data-type='method'><a href="HanDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="HanDate.html#getCycleYears">getCycleYears</a></li><li data-type='method'><a href="HanDate.html#getCycles">getCycles</a></li><li data-type='method'><a href="HanDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="HanDate.html#getDayOfYear">getDayOfYear</a></li><li data-type='method'><a href="HanDate.html#getEra">getEra</a></li><li data-type='method'><a href="HanDate.html#isLeapMonth">isLeapMonth</a></li><li data-type='method'><a href="HanDate.html#isLeapYear">isLeapYear</a></li><li data-type='method'><a href="HanDate.html#newRd">newRd</a></li></ul></li><li><a href="HebrewCal.html">HebrewCal</a><ul class='methods'><li data-type='method'><a href="HebrewCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="HebrewCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="HebrewCal.html#getType">getType</a></li><li data-type='method'><a href="HebrewCal.html#isLeapYear">isLeapYear</a></li><li data-type='method'><a href="HebrewCal.html#lastDayOfMonth">lastDayOfMonth</a></li><li data-type='method'><a href="HebrewCal.html#.daysInYear">daysInYear</a></li></ul></li><li><a href="HebrewDate.html">HebrewDate</a><ul class='methods'><li data-type='method'><a href="HebrewDate.html#_calcDateComponents">_calcDateComponents</a></li><li data-type='method'><a href="HebrewDate.html#_calcYear">_calcYear</a></li><li data-type='method'><a href="HebrewDate.html#after">after</a></li><li data-type='method'><a href="HebrewDate.html#before">before</a></li><li data-type='method'><a href="HebrewDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="HebrewDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="HebrewDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="HebrewDate.html#getDayOfYear">getDayOfYear</a></li><li data-type='method'><a href="HebrewDate.html#getEra">getEra</a></li><li data-type='method'><a href="HebrewDate.html#getHalaqim">getHalaqim</a></li><li data-type='method'><a href="HebrewDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="HebrewDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="HebrewDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="HebrewDate.html#getTime">getTime</a></li><li data-type='method'><a href="HebrewDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="HebrewDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="HebrewDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="HebrewDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="HebrewDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="HebrewDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="HebrewDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="HebrewDate.html#setRd">setRd</a></li><li data-type='method'><a href="HebrewDate.html#setTime">setTime</a></li><li data-type='method'><a href="HebrewDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="INumber.html">INumber</a><ul class='methods'><li data-type='method'><a href="INumber.html#getCurrency">getCurrency</a></li><li data-type='method'><a href="INumber.html#getLocale">getLocale</a></li><li data-type='method'><a href="INumber.html#toString">toString</a></li><li data-type='method'><a href="INumber.html#valueOf">valueOf</a></li></ul></li><li><a href="ISO2022.html">ISO2022</a></li><li><a href="ISet.html">ISet</a><ul class='methods'><li data-type='method'><a href="ISet.html#add">add</a></li><li data-type='method'><a href="ISet.html#asArray">asArray</a></li><li data-type='method'><a href="ISet.html#clear">clear</a></li><li data-type='method'><a href="ISet.html#contains">contains</a></li><li data-type='method'><a href="ISet.html#fromJS">fromJS</a></li><li data-type='method'><a href="ISet.html#isEmpty">isEmpty</a></li><li data-type='method'><a href="ISet.html#remove">remove</a></li><li data-type='method'><a href="ISet.html#toJS">toJS</a></li><li data-type='method'><a href="ISet.html#toJson">toJson</a></li></ul></li><li><a href="IString.html">IString</a><ul class='methods'><li data-type='method'><a href="IString.html#_toCodePoint">_toCodePoint</a></li><li data-type='method'><a href="IString.html#charAt">charAt</a></li><li data-type='method'><a href="IString.html#charCodeAt">charCodeAt</a></li><li data-type='method'><a href="IString.html#charIterator">charIterator</a></li><li data-type='method'><a href="IString.html#codePointAt">codePointAt</a></li><li data-type='method'><a href="IString.html#codePointLength">codePointLength</a></li><li data-type='method'><a href="IString.html#concat">concat</a></li><li data-type='method'><a href="IString.html#endsWith">endsWith</a></li><li data-type='method'><a href="IString.html#forEach">forEach</a></li><li data-type='method'><a href="IString.html#forEachCodePoint">forEachCodePoint</a></li><li data-type='method'><a href="IString.html#format">format</a></li><li data-type='method'><a href="IString.html#formatChoice">formatChoice</a></li><li data-type='method'><a href="IString.html#getLocale">getLocale</a></li><li data-type='method'><a href="IString.html#includes">includes</a></li><li data-type='method'><a href="IString.html#indexOf">indexOf</a></li><li data-type='method'><a href="IString.html#iterator">iterator</a></li><li data-type='method'><a href="IString.html#lastIndexOf">lastIndexOf</a></li><li data-type='method'><a href="IString.html#match">match</a></li><li data-type='method'><a href="IString.html#matchAll">matchAll</a></li><li data-type='method'><a href="IString.html#normalize">normalize</a></li><li data-type='method'><a href="IString.html#padEnd">padEnd</a></li><li data-type='method'><a href="IString.html#padStart">padStart</a></li><li data-type='method'><a href="IString.html#repeat">repeat</a></li><li data-type='method'><a href="IString.html#replace">replace</a></li><li data-type='method'><a href="IString.html#search">search</a></li><li data-type='method'><a href="IString.html#setLocale">setLocale</a></li><li data-type='method'><a href="IString.html#slice">slice</a></li><li data-type='method'><a href="IString.html#split">split</a></li><li data-type='method'><a href="IString.html#startsWith">startsWith</a></li><li data-type='method'><a href="IString.html#substr">substr</a></li><li data-type='method'><a href="IString.html#substring">substring</a></li><li data-type='method'><a href="IString.html#toLocaleLowerCase">toLocaleLowerCase</a></li><li data-type='method'><a href="IString.html#toLocaleUpperCase">toLocaleUpperCase</a></li><li data-type='method'><a href="IString.html#toLowerCase">toLowerCase</a></li><li data-type='method'><a href="IString.html#toString">toString</a></li><li data-type='method'><a href="IString.html#toUpperCase">toUpperCase</a></li><li data-type='method'><a href="IString.html#trim">trim</a></li><li data-type='method'><a href="IString.html#trimEnd">trimEnd</a></li><li data-type='method'><a href="IString.html#trimLeft">trimLeft</a></li><li data-type='method'><a href="IString.html#trimRight">trimRight</a></li><li data-type='method'><a href="IString.html#trimStart">trimStart</a></li><li data-type='method'><a href="IString.html#valueOf">valueOf</a></li><li data-type='method'><a href="IString.html#.fromCodePoint">fromCodePoint</a></li><li data-type='method'><a href="IString.html#.loadPlurals">loadPlurals</a></li><li data-type='method'><a href="IString.html#.toCodePoint">toCodePoint</a></li></ul></li><li><a href="IString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="IString_iterator-_iterator.html">_iterator</a></li><li><a href="IslamicCal.html">IslamicCal</a><ul class='methods'><li data-type='method'><a href="IslamicCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="IslamicCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="IslamicCal.html#getType">getType</a></li><li data-type='method'><a href="IslamicCal.html#isLeapYear">isLeapYear</a></li></ul></li><li><a href="IslamicDate.html">IslamicDate</a><ul class='methods'><li data-type='method'><a href="IslamicDate.html#_calcDateComponents">_calcDateComponents</a></li><li data-type='method'><a href="IslamicDate.html#_calcYear">_calcYear</a></li><li data-type='method'><a href="IslamicDate.html#after">after</a></li><li data-type='method'><a href="IslamicDate.html#before">before</a></li><li data-type='method'><a href="IslamicDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="IslamicDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="IslamicDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="IslamicDate.html#getDayOfYear">getDayOfYear</a></li><li data-type='method'><a href="IslamicDate.html#getEra">getEra</a></li><li data-type='method'><a href="IslamicDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="IslamicDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="IslamicDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="IslamicDate.html#getTime">getTime</a></li><li data-type='method'><a href="IslamicDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="IslamicDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="IslamicDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="IslamicDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="IslamicDate.html#newRd">newRd</a></li><li data-type='method'><a href="IslamicDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="IslamicDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="IslamicDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="IslamicDate.html#setRd">setRd</a></li><li data-type='method'><a href="IslamicDate.html#setTime">setTime</a></li><li data-type='method'><a href="IslamicDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="JulianCal.html">JulianCal</a><ul class='methods'><li data-type='method'><a href="JulianCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="JulianCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="JulianCal.html#getType">getType</a></li><li data-type='method'><a href="JulianCal.html#isLeapYear">isLeapYear</a></li></ul></li><li><a href="JulianDate.html">JulianDate</a><ul class='methods'><li data-type='method'><a href="JulianDate.html#_calcDateComponents">_calcDateComponents</a></li><li data-type='method'><a href="JulianDate.html#_calcYear">_calcYear</a></li><li data-type='method'><a href="JulianDate.html#after">after</a></li><li data-type='method'><a href="JulianDate.html#before">before</a></li><li data-type='method'><a href="JulianDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="JulianDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="JulianDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="JulianDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="JulianDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="JulianDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="JulianDate.html#getTime">getTime</a></li><li data-type='method'><a href="JulianDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="JulianDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="JulianDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="JulianDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="JulianDate.html#newRd">newRd</a></li><li data-type='method'><a href="JulianDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="JulianDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="JulianDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="JulianDate.html#setRd">setRd</a></li><li data-type='method'><a href="JulianDate.html#setTime">setTime</a></li><li data-type='method'><a href="JulianDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="JulianDay.html">JulianDay</a><ul class='methods'><li data-type='method'><a href="JulianDay.html#addDate">addDate</a></li><li data-type='method'><a href="JulianDay.html#getDate">getDate</a></li><li data-type='method'><a href="JulianDay.html#getDayFraction">getDayFraction</a></li><li data-type='method'><a href="JulianDay.html#getDays">getDays</a></li><li data-type='method'><a href="JulianDay.html#setDate">setDate</a></li><li data-type='method'><a href="JulianDay.html#setDayFraction">setDayFraction</a></li><li data-type='method'><a href="JulianDay.html#setDays">setDays</a></li></ul></li><li><a href="LengthUnit.html">LengthUnit</a><ul class='methods'><li data-type='method'><a href="LengthUnit.html#convert">convert</a></li><li data-type='method'><a href="LengthUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="LengthUnit.html#expand">expand</a></li><li data-type='method'><a href="LengthUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="LengthUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="LengthUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="LengthUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="LengthUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="LengthUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="LengthUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="LengthUnit.html#list">list</a></li><li data-type='method'><a href="LengthUnit.html#localize">localize</a></li><li data-type='method'><a href="LengthUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="LengthUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="LengthUnit.html#scale">scale</a></li><li data-type='method'><a href="LengthUnit.html#.convert">convert</a></li></ul></li><li><a href="ListFmt.html">ListFmt</a><ul class='methods'><li data-type='method'><a href="ListFmt.html#format">format</a></li><li data-type='method'><a href="ListFmt.html#getLocale">getLocale</a></li><li data-type='method'><a href="ListFmt.html#getStyle">getStyle</a></li></ul></li><li><a href="Locale.html">Locale</a><ul class='methods'><li data-type='method'><a href="Locale.html#equals">equals</a></li><li data-type='method'><a href="Locale.html#getLangSpec">getLangSpec</a></li><li data-type='method'><a href="Locale.html#getLanguage">getLanguage</a></li><li data-type='method'><a href="Locale.html#getLanguageAlpha3">getLanguageAlpha3</a></li><li data-type='method'><a href="Locale.html#getRegion">getRegion</a></li><li data-type='method'><a href="Locale.html#getRegionAlpha3">getRegionAlpha3</a></li><li data-type='method'><a href="Locale.html#getScript">getScript</a></li><li data-type='method'><a href="Locale.html#getSpec">getSpec</a></li><li data-type='method'><a href="Locale.html#getVariant">getVariant</a></li><li data-type='method'><a href="Locale.html#isPseudo">isPseudo</a></li><li data-type='method'><a href="Locale.html#isValid">isValid</a></li><li data-type='method'><a href="Locale.html#toString">toString</a></li><li data-type='method'><a href="Locale.html#.getAvailableLocales">getAvailableLocales</a></li><li data-type='method'><a href="Locale.html#.languageAlpha1ToAlpha3">languageAlpha1ToAlpha3</a></li><li data-type='method'><a href="Locale.html#.regionAlpha2ToAlpha3">regionAlpha2ToAlpha3</a></li></ul></li><li><a href="LocaleInfo.html">LocaleInfo</a><ul class='methods'><li data-type='method'><a href="LocaleInfo.html#getAllScripts">getAllScripts</a></li><li data-type='method'><a href="LocaleInfo.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="LocaleInfo.html#getClock">getClock</a></li><li data-type='method'><a href="LocaleInfo.html#getCurrency">getCurrency</a></li><li data-type='method'><a href="LocaleInfo.html#getCurrencyFormats">getCurrencyFormats</a></li><li data-type='method'><a href="LocaleInfo.html#getDecimalSeparator">getDecimalSeparator</a></li><li data-type='method'><a href="LocaleInfo.html#getDefaultScript">getDefaultScript</a></li><li data-type='method'><a href="LocaleInfo.html#getDelimiterQuotationEnd">getDelimiterQuotationEnd</a></li><li data-type='method'><a href="LocaleInfo.html#getDelimiterQuotationStart">getDelimiterQuotationStart</a></li><li data-type='method'><a href="LocaleInfo.html#getDigits">getDigits</a></li><li data-type='method'><a href="LocaleInfo.html#getDigitsStyle">getDigitsStyle</a></li><li data-type='method'><a href="LocaleInfo.html#getExponential">getExponential</a></li><li data-type='method'><a href="LocaleInfo.html#getFirstDayOfWeek">getFirstDayOfWeek</a></li><li data-type='method'><a href="LocaleInfo.html#getGroupingSeparator">getGroupingSeparator</a></li><li data-type='method'><a href="LocaleInfo.html#getLanguageName">getLanguageName</a></li><li data-type='method'><a href="LocaleInfo.html#getLocale">getLocale</a></li><li data-type='method'><a href="LocaleInfo.html#getMeridiemsStyle">getMeridiemsStyle</a></li><li data-type='method'><a href="LocaleInfo.html#getNativeDecimalSeparator">getNativeDecimalSeparator</a></li><li data-type='method'><a href="LocaleInfo.html#getNativeDigits">getNativeDigits</a></li><li data-type='method'><a href="LocaleInfo.html#getNativeExponential">getNativeExponential</a></li><li data-type='method'><a href="LocaleInfo.html#getNativeGroupingSeparator">getNativeGroupingSeparator</a></li><li data-type='method'><a href="LocaleInfo.html#getNativePercentageSymbol">getNativePercentageSymbol</a></li><li data-type='method'><a href="LocaleInfo.html#getNegativeNumberFormat">getNegativeNumberFormat</a></li><li data-type='method'><a href="LocaleInfo.html#getNegativePercentageFormat">getNegativePercentageFormat</a></li><li data-type='method'><a href="LocaleInfo.html#getPaperSize">getPaperSize</a></li><li data-type='method'><a href="LocaleInfo.html#getPercentageFormat">getPercentageFormat</a></li><li data-type='method'><a href="LocaleInfo.html#getPercentageSymbol">getPercentageSymbol</a></li><li data-type='method'><a href="LocaleInfo.html#getPrimaryGroupingDigits">getPrimaryGroupingDigits</a></li><li data-type='method'><a href="LocaleInfo.html#getRegionName">getRegionName</a></li><li data-type='method'><a href="LocaleInfo.html#getRoundingMode">getRoundingMode</a></li><li data-type='method'><a href="LocaleInfo.html#getScript">getScript</a></li><li data-type='method'><a href="LocaleInfo.html#getSecondaryGroupingDigits">getSecondaryGroupingDigits</a></li><li data-type='method'><a href="LocaleInfo.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="LocaleInfo.html#getUnits">getUnits</a></li><li data-type='method'><a href="LocaleInfo.html#getWeekEndEnd">getWeekEndEnd</a></li><li data-type='method'><a href="LocaleInfo.html#getWeekEndStart">getWeekEndStart</a></li></ul></li><li><a href="LocaleMatcher.html">LocaleMatcher</a><ul class='methods'><li data-type='method'><a href="LocaleMatcher.html#getLikelyLocale">getLikelyLocale</a></li><li data-type='method'><a href="LocaleMatcher.html#getLikelyLocaleMinimal">getLikelyLocaleMinimal</a></li><li data-type='method'><a href="LocaleMatcher.html#getLocale">getLocale</a></li><li data-type='method'><a href="LocaleMatcher.html#getMacroLanguage">getMacroLanguage</a></li><li data-type='method'><a href="LocaleMatcher.html#getRegionContainment">getRegionContainment</a></li><li data-type='method'><a href="LocaleMatcher.html#match">match</a></li><li data-type='method'><a href="LocaleMatcher.html#smallestCommonRegion">smallestCommonRegion</a></li></ul></li><li><a href="MassUnit.html">MassUnit</a><ul class='methods'><li data-type='method'><a href="MassUnit.html#convert">convert</a></li><li data-type='method'><a href="MassUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="MassUnit.html#expand">expand</a></li><li data-type='method'><a href="MassUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="MassUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="MassUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="MassUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="MassUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="MassUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="MassUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="MassUnit.html#list">list</a></li><li data-type='method'><a href="MassUnit.html#localize">localize</a></li><li data-type='method'><a href="MassUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="MassUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="MassUnit.html#scale">scale</a></li><li data-type='method'><a href="MassUnit.html#.convert">convert</a></li></ul></li><li><a href="Name.html">Name</a><ul class='methods'><li data-type='method'><a href="Name.html#_extractPrefixes">_extractPrefixes</a></li><li data-type='method'><a href="Name.html#_extractSuffixes">_extractSuffixes</a></li><li data-type='method'><a href="Name.html#_findFamilyName">_findFamilyName</a></li><li data-type='method'><a href="Name.html#_findLastConjunction">_findLastConjunction</a></li><li data-type='method'><a href="Name.html#_findPatronymicName">_findPatronymicName</a></li><li data-type='method'><a href="Name.html#_findPrefix">_findPrefix</a></li><li data-type='method'><a href="Name.html#_findSuffix">_findSuffix</a></li><li data-type='method'><a href="Name.html#_init">_init</a></li><li data-type='method'><a href="Name.html#_isConjunction">_isConjunction</a></li><li data-type='method'><a href="Name.html#_isPatronymicName">_isPatronymicName</a></li><li data-type='method'><a href="Name.html#_joinArrayOrString">_joinArrayOrString</a></li><li data-type='method'><a href="Name.html#_joinAuxillaries">_joinAuxillaries</a></li><li data-type='method'><a href="Name.html#_joinNameArrays">_joinNameArrays</a></li><li data-type='method'><a href="Name.html#_parseAsianName">_parseAsianName</a></li><li data-type='method'><a href="Name.html#_parseGenericWesternName">_parseGenericWesternName</a></li><li data-type='method'><a href="Name.html#_parseIndonesianName">_parseIndonesianName</a></li><li data-type='method'><a href="Name.html#_parseJapaneseName">_parseJapaneseName</a></li><li data-type='method'><a href="Name.html#_parseKoreanName">_parseKoreanName</a></li><li data-type='method'><a href="Name.html#_parseRussianName">_parseRussianName</a></li><li data-type='method'><a href="Name.html#_parseSpanishName">_parseSpanishName</a></li><li data-type='method'><a href="Name.html#_parseWesternName">_parseWesternName</a></li><li data-type='method'><a href="Name.html#clone">clone</a></li><li data-type='method'><a href="Name.html#getSortFamilyName">getSortFamilyName</a></li><li data-type='method'><a href="Name.html#._isAsianChar">_isAsianChar</a></li><li data-type='method'><a href="Name.html#._isAsianName">_isAsianName</a></li><li data-type='method'><a href="Name.html#._isEuroName">_isEuroName</a></li></ul></li><li><a href="NameFmt.html">NameFmt</a><ul class='methods'><li data-type='method'><a href="NameFmt.html#_adjoinAuxillaries">_adjoinAuxillaries</a></li><li data-type='method'><a href="NameFmt.html#_init">_init</a></li><li data-type='method'><a href="NameFmt.html#format">format</a></li><li data-type='method'><a href="NameFmt.html#getComponents">getComponents</a></li><li data-type='method'><a href="NameFmt.html#getLocale">getLocale</a></li><li data-type='method'><a href="NameFmt.html#getStyle">getStyle</a></li></ul></li><li><a href="NormString.html">NormString</a><ul class='methods'><li data-type='method'><a href="NormString.html#_toCodePoint">_toCodePoint</a></li><li data-type='method'><a href="NormString.html#charAt">charAt</a></li><li data-type='method'><a href="NormString.html#charCodeAt">charCodeAt</a></li><li data-type='method'><a href="NormString.html#codePointAt">codePointAt</a></li><li data-type='method'><a href="NormString.html#codePointLength">codePointLength</a></li><li data-type='method'><a href="NormString.html#concat">concat</a></li><li data-type='method'><a href="NormString.html#ellipsize">ellipsize</a></li><li data-type='method'><a href="NormString.html#endsWith">endsWith</a></li><li data-type='method'><a href="NormString.html#forEach">forEach</a></li><li data-type='method'><a href="NormString.html#forEachCodePoint">forEachCodePoint</a></li><li data-type='method'><a href="NormString.html#format">format</a></li><li data-type='method'><a href="NormString.html#formatChoice">formatChoice</a></li><li data-type='method'><a href="NormString.html#getLocale">getLocale</a></li><li data-type='method'><a href="NormString.html#includes">includes</a></li><li data-type='method'><a href="NormString.html#indexOf">indexOf</a></li><li data-type='method'><a href="NormString.html#iterator">iterator</a></li><li data-type='method'><a href="NormString.html#lastIndexOf">lastIndexOf</a></li><li data-type='method'><a href="NormString.html#match">match</a></li><li data-type='method'><a href="NormString.html#matchAll">matchAll</a></li><li data-type='method'><a href="NormString.html#normalize">normalize</a></li><li data-type='method'><a href="NormString.html#padEnd">padEnd</a></li><li data-type='method'><a href="NormString.html#padStart">padStart</a></li><li data-type='method'><a href="NormString.html#repeat">repeat</a></li><li data-type='method'><a href="NormString.html#replace">replace</a></li><li data-type='method'><a href="NormString.html#search">search</a></li><li data-type='method'><a href="NormString.html#setLocale">setLocale</a></li><li data-type='method'><a href="NormString.html#slice">slice</a></li><li data-type='method'><a href="NormString.html#split">split</a></li><li data-type='method'><a href="NormString.html#startsWith">startsWith</a></li><li data-type='method'><a href="NormString.html#substr">substr</a></li><li data-type='method'><a href="NormString.html#substring">substring</a></li><li data-type='method'><a href="NormString.html#toLocaleLowerCase">toLocaleLowerCase</a></li><li data-type='method'><a href="NormString.html#toLocaleUpperCase">toLocaleUpperCase</a></li><li data-type='method'><a href="NormString.html#toLowerCase">toLowerCase</a></li><li data-type='method'><a href="NormString.html#toString">toString</a></li><li data-type='method'><a href="NormString.html#toUpperCase">toUpperCase</a></li><li data-type='method'><a href="NormString.html#trim">trim</a></li><li data-type='method'><a href="NormString.html#trimEnd">trimEnd</a></li><li data-type='method'><a href="NormString.html#trimLeft">trimLeft</a></li><li data-type='method'><a href="NormString.html#trimRight">trimRight</a></li><li data-type='method'><a href="NormString.html#trimStart">trimStart</a></li><li data-type='method'><a href="NormString.html#truncate">truncate</a></li><li data-type='method'><a href="NormString.html#valueOf">valueOf</a></li><li data-type='method'><a href="NormString.html#.init">init</a></li></ul></li><li><a href="NormString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="NumFmt.html">NumFmt</a><ul class='methods'><li data-type='method'><a href="NumFmt.html#constrain">constrain</a></li><li data-type='method'><a href="NumFmt.html#format">format</a></li><li data-type='method'><a href="NumFmt.html#getCurrency">getCurrency</a></li><li data-type='method'><a href="NumFmt.html#getLocale">getLocale</a></li><li data-type='method'><a href="NumFmt.html#getMaxFractionDigits">getMaxFractionDigits</a></li><li data-type='method'><a href="NumFmt.html#getMinFractionDigits">getMinFractionDigits</a></li><li data-type='method'><a href="NumFmt.html#getRoundingMode">getRoundingMode</a></li><li data-type='method'><a href="NumFmt.html#getSignificantDigits">getSignificantDigits</a></li><li data-type='method'><a href="NumFmt.html#getStyle">getStyle</a></li><li data-type='method'><a href="NumFmt.html#getType">getType</a></li><li data-type='method'><a href="NumFmt.html#getUseNative">getUseNative</a></li><li data-type='method'><a href="NumFmt.html#isGroupingUsed">isGroupingUsed</a></li><li data-type='method'><a href="NumFmt.html#.getAvailableLocales">getAvailableLocales</a></li></ul></li><li><a href="PersianAlgoCal.html">PersianAlgoCal</a><ul class='methods'><li data-type='method'><a href="PersianAlgoCal.html#equivalentCycleYear">equivalentCycleYear</a></li><li data-type='method'><a href="PersianAlgoCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="PersianAlgoCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="PersianAlgoCal.html#getType">getType</a></li><li data-type='method'><a href="PersianAlgoCal.html#isLeapYear">isLeapYear</a></li></ul></li><li><a href="PersianAlgoDate.html">PersianAlgoDate</a><ul class='methods'><li data-type='method'><a href="PersianAlgoDate.html#_calcYear">_calcYear</a></li><li data-type='method'><a href="PersianAlgoDate.html#after">after</a></li><li data-type='method'><a href="PersianAlgoDate.html#before">before</a></li><li data-type='method'><a href="PersianAlgoDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="PersianAlgoDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="PersianAlgoDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="PersianAlgoDate.html#getDayOfYear">getDayOfYear</a></li><li data-type='method'><a href="PersianAlgoDate.html#getEra">getEra</a></li><li data-type='method'><a href="PersianAlgoDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="PersianAlgoDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="PersianAlgoDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="PersianAlgoDate.html#getTime">getTime</a></li><li data-type='method'><a href="PersianAlgoDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="PersianAlgoDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="PersianAlgoDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="PersianAlgoDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="PersianAlgoDate.html#newRd">newRd</a></li><li data-type='method'><a href="PersianAlgoDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="PersianAlgoDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="PersianAlgoDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="PersianAlgoDate.html#setRd">setRd</a></li><li data-type='method'><a href="PersianAlgoDate.html#setTime">setTime</a></li><li data-type='method'><a href="PersianAlgoDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="PersianCal.html">PersianCal</a><ul class='methods'><li data-type='method'><a href="PersianCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="PersianCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="PersianCal.html#getType">getType</a></li><li data-type='method'><a href="PersianCal.html#isLeapYear">isLeapYear</a></li></ul></li><li><a href="PersianDate.html">PersianDate</a><ul class='methods'><li data-type='method'><a href="PersianDate.html#_calcYear">_calcYear</a></li><li data-type='method'><a href="PersianDate.html#after">after</a></li><li data-type='method'><a href="PersianDate.html#before">before</a></li><li data-type='method'><a href="PersianDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="PersianDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="PersianDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="PersianDate.html#getDayOfYear">getDayOfYear</a></li><li data-type='method'><a href="PersianDate.html#getEra">getEra</a></li><li data-type='method'><a href="PersianDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="PersianDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="PersianDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="PersianDate.html#getTime">getTime</a></li><li data-type='method'><a href="PersianDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="PersianDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="PersianDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="PersianDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="PersianDate.html#newRd">newRd</a></li><li data-type='method'><a href="PersianDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="PersianDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="PersianDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="PersianDate.html#setRd">setRd</a></li><li data-type='method'><a href="PersianDate.html#setTime">setTime</a></li><li data-type='method'><a href="PersianDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="PhoneFmt.html">PhoneFmt</a><ul class='methods'><li data-type='method'><a href="PhoneFmt.html#_doFormat">_doFormat</a></li><li data-type='method'><a href="PhoneFmt.html#_getStyle">_getStyle</a></li><li data-type='method'><a href="PhoneFmt.html#_substituteDigits">_substituteDigits</a></li><li data-type='method'><a href="PhoneFmt.html#format">format</a></li><li data-type='method'><a href="PhoneFmt.html#getAvailableStyles">getAvailableStyles</a></li><li data-type='method'><a href="PhoneFmt.html#getStyleExample">getStyleExample</a></li></ul></li><li><a href="PhoneGeoLocator.html">PhoneGeoLocator</a><ul class='methods'><li data-type='method'><a href="PhoneGeoLocator.html#country">country</a></li><li data-type='method'><a href="PhoneGeoLocator.html#locate">locate</a></li></ul></li><li><a href="PhoneNumber.html">PhoneNumber</a><ul class='methods'><li data-type='method'><a href="PhoneNumber.html#_getPrefix">_getPrefix</a></li><li data-type='method'><a href="PhoneNumber.html#_hasPrefix">_hasPrefix</a></li><li data-type='method'><a href="PhoneNumber.html#_join">_join</a></li><li data-type='method'><a href="PhoneNumber.html#_parseNumber">_parseNumber</a></li><li data-type='method'><a href="PhoneNumber.html#_parseOtherCountry">_parseOtherCountry</a></li><li data-type='method'><a href="PhoneNumber.html#_xor">_xor</a></li><li data-type='method'><a href="PhoneNumber.html#compare">compare</a></li><li data-type='method'><a href="PhoneNumber.html#equals">equals</a></li><li data-type='method'><a href="PhoneNumber.html#normalize">normalize</a></li><li data-type='method'><a href="PhoneNumber.html#._getCharacterCode">_getCharacterCode</a></li><li data-type='method'><a href="PhoneNumber.html#._parseImsi">_parseImsi</a></li><li data-type='method'><a href="PhoneNumber.html#.parseImsi">parseImsi</a></li></ul></li><li><a href="PowerUnit.html">PowerUnit</a><ul class='methods'><li data-type='method'><a href="PowerUnit.html#convert">convert</a></li><li data-type='method'><a href="PowerUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="PowerUnit.html#expand">expand</a></li><li data-type='method'><a href="PowerUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="PowerUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="PowerUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="PowerUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="PowerUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="PowerUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="PowerUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="PowerUnit.html#list">list</a></li><li data-type='method'><a href="PowerUnit.html#localize">localize</a></li><li data-type='method'><a href="PowerUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="PowerUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="PowerUnit.html#scale">scale</a></li><li data-type='method'><a href="PowerUnit.html#.convert">convert</a></li></ul></li><li><a href="PressureUnit.html">PressureUnit</a><ul class='methods'><li data-type='method'><a href="PressureUnit.html#convert">convert</a></li><li data-type='method'><a href="PressureUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="PressureUnit.html#expand">expand</a></li><li data-type='method'><a href="PressureUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="PressureUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="PressureUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="PressureUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="PressureUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="PressureUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="PressureUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="PressureUnit.html#list">list</a></li><li data-type='method'><a href="PressureUnit.html#localize">localize</a></li><li data-type='method'><a href="PressureUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="PressureUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="PressureUnit.html#scale">scale</a></li><li data-type='method'><a href="PressureUnit.html#.convert">convert</a></li></ul></li><li><a href="ResBundle.html">ResBundle</a><ul class='methods'><li data-type='method'><a href="ResBundle.html#_loadPseudo">_loadPseudo</a></li><li data-type='method'><a href="ResBundle.html#containsKey">containsKey</a></li><li data-type='method'><a href="ResBundle.html#getLocale">getLocale</a></li><li data-type='method'><a href="ResBundle.html#getName">getName</a></li><li data-type='method'><a href="ResBundle.html#getResObj">getResObj</a></li><li data-type='method'><a href="ResBundle.html#getString">getString</a></li><li data-type='method'><a href="ResBundle.html#getStringJS">getStringJS</a></li><li data-type='method'><a href="ResBundle.html#getType">getType</a></li></ul></li><li><a href="ScriptInfo.html">ScriptInfo</a><ul class='methods'><li data-type='method'><a href="ScriptInfo.html#getCasing">getCasing</a></li><li data-type='method'><a href="ScriptInfo.html#getCode">getCode</a></li><li data-type='method'><a href="ScriptInfo.html#getCodeNumber">getCodeNumber</a></li><li data-type='method'><a href="ScriptInfo.html#getLongCode">getLongCode</a></li><li data-type='method'><a href="ScriptInfo.html#getName">getName</a></li><li data-type='method'><a href="ScriptInfo.html#getNeedsIME">getNeedsIME</a></li><li data-type='method'><a href="ScriptInfo.html#getScriptDirection">getScriptDirection</a></li><li data-type='method'><a href="ScriptInfo.html#.getAllScripts">getAllScripts</a></li></ul></li><li><a href="StringMapper.html">StringMapper</a><ul class='methods'><li data-type='method'><a href="StringMapper.html#getLocale">getLocale</a></li><li data-type='method'><a href="StringMapper.html#map">map</a></li></ul></li><li><a href="TemperatureUnit.html">TemperatureUnit</a><ul class='methods'><li data-type='method'><a href="TemperatureUnit.html#convert">convert</a></li><li data-type='method'><a href="TemperatureUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="TemperatureUnit.html#expand">expand</a></li><li data-type='method'><a href="TemperatureUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="TemperatureUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="TemperatureUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="TemperatureUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="TemperatureUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="TemperatureUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="TemperatureUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="TemperatureUnit.html#list">list</a></li><li data-type='method'><a href="TemperatureUnit.html#localize">localize</a></li><li data-type='method'><a href="TemperatureUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="TemperatureUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="TemperatureUnit.html#scale">scale</a></li><li data-type='method'><a href="TemperatureUnit.html#.convert">convert</a></li></ul></li><li><a href="ThaiSolarCal.html">ThaiSolarCal</a><ul class='methods'><li data-type='method'><a href="ThaiSolarCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="ThaiSolarCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="ThaiSolarCal.html#getType">getType</a></li><li data-type='method'><a href="ThaiSolarCal.html#isLeapYear">isLeapYear</a></li></ul></li><li><a href="ThaiSolarDate.html">ThaiSolarDate</a><ul class='methods'><li data-type='method'><a href="ThaiSolarDate.html#_calcDateComponents">_calcDateComponents</a></li><li data-type='method'><a href="ThaiSolarDate.html#after">after</a></li><li data-type='method'><a href="ThaiSolarDate.html#before">before</a></li><li data-type='method'><a href="ThaiSolarDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="ThaiSolarDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="ThaiSolarDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="ThaiSolarDate.html#getDayOfYear">getDayOfYear</a></li><li data-type='method'><a href="ThaiSolarDate.html#getEra">getEra</a></li><li data-type='method'><a href="ThaiSolarDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="ThaiSolarDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="ThaiSolarDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="ThaiSolarDate.html#getTime">getTime</a></li><li data-type='method'><a href="ThaiSolarDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="ThaiSolarDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="ThaiSolarDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="ThaiSolarDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="ThaiSolarDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="ThaiSolarDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="ThaiSolarDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="ThaiSolarDate.html#setRd">setRd</a></li><li data-type='method'><a href="ThaiSolarDate.html#setTime">setTime</a></li><li data-type='method'><a href="ThaiSolarDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="TimeUnit.html">TimeUnit</a><ul class='methods'><li data-type='method'><a href="TimeUnit.html#convert">convert</a></li><li data-type='method'><a href="TimeUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="TimeUnit.html#expand">expand</a></li><li data-type='method'><a href="TimeUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="TimeUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="TimeUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="TimeUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="TimeUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="TimeUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="TimeUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="TimeUnit.html#list">list</a></li><li data-type='method'><a href="TimeUnit.html#localize">localize</a></li><li data-type='method'><a href="TimeUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="TimeUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="TimeUnit.html#scale">scale</a></li><li data-type='method'><a href="TimeUnit.html#.convert">convert</a></li></ul></li><li><a href="TimeZone.html">TimeZone</a><ul class='methods'><li data-type='method'><a href="TimeZone.html#_calcRuleStart">_calcRuleStart</a></li><li data-type='method'><a href="TimeZone.html#_getOffsetMillisWallTime">_getOffsetMillisWallTime</a></li><li data-type='method'><a href="TimeZone.html#getCountry">getCountry</a></li><li data-type='method'><a href="TimeZone.html#getDSTSavings">getDSTSavings</a></li><li data-type='method'><a href="TimeZone.html#getDSTSavingsStr">getDSTSavingsStr</a></li><li data-type='method'><a href="TimeZone.html#getDisplayName">getDisplayName</a></li><li data-type='method'><a href="TimeZone.html#getId">getId</a></li><li data-type='method'><a href="TimeZone.html#getOffset">getOffset</a></li><li data-type='method'><a href="TimeZone.html#getOffsetMillis">getOffsetMillis</a></li><li data-type='method'><a href="TimeZone.html#getOffsetStr">getOffsetStr</a></li><li data-type='method'><a href="TimeZone.html#getRawOffset">getRawOffset</a></li><li data-type='method'><a href="TimeZone.html#getRawOffsetMillis">getRawOffsetMillis</a></li><li data-type='method'><a href="TimeZone.html#getRawOffsetStr">getRawOffsetStr</a></li><li data-type='method'><a href="TimeZone.html#inDaylightTime">inDaylightTime</a></li><li data-type='method'><a href="TimeZone.html#useDaylightTime">useDaylightTime</a></li><li data-type='method'><a href="TimeZone.html#.getAvailableIds">getAvailableIds</a></li></ul></li><li><a href="UTF16BE.html">UTF16BE</a><ul class='methods'><li data-type='method'><a href="UTF16BE.html#getName">getName</a></li><li data-type='method'><a href="UTF16BE.html#mapToNative">mapToNative</a></li><li data-type='method'><a href="UTF16BE.html#mapToUnicode">mapToUnicode</a></li></ul></li><li><a href="UTF16LE.html">UTF16LE</a><ul class='methods'><li data-type='method'><a href="UTF16LE.html#getName">getName</a></li><li data-type='method'><a href="UTF16LE.html#mapToNative">mapToNative</a></li><li data-type='method'><a href="UTF16LE.html#mapToUnicode">mapToUnicode</a></li></ul></li><li><a href="UTF8.html">UTF8</a><ul class='methods'><li data-type='method'><a href="UTF8.html#getName">getName</a></li><li data-type='method'><a href="UTF8.html#mapToNative">mapToNative</a></li><li data-type='method'><a href="UTF8.html#mapToUnicode">mapToUnicode</a></li></ul></li><li><a href="UnitFmt.html">UnitFmt</a><ul class='methods'><li data-type='method'><a href="UnitFmt.html#format">format</a></li><li data-type='method'><a href="UnitFmt.html#getLocale">getLocale</a></li><li data-type='method'><a href="UnitFmt.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="UnitFmt.html#getScale">getScale</a></li><li data-type='method'><a href="UnitFmt.html#getTemplate">getTemplate</a></li><li data-type='method'><a href="UnitFmt.html#toString">toString</a></li></ul></li><li><a href="UnknownUnit.html">UnknownUnit</a><ul class='methods'><li data-type='method'><a href="UnknownUnit.html#convert">convert</a></li><li data-type='method'><a href="UnknownUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="UnknownUnit.html#expand">expand</a></li><li data-type='method'><a href="UnknownUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="UnknownUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="UnknownUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="UnknownUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="UnknownUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="UnknownUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="UnknownUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="UnknownUnit.html#list">list</a></li><li data-type='method'><a href="UnknownUnit.html#localize">localize</a></li><li data-type='method'><a href="UnknownUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="UnknownUnit.html#scale">scale</a></li><li data-type='method'><a href="UnknownUnit.html#.convert">convert</a></li></ul></li><li><a href="VelocityUnit.html">VelocityUnit</a><ul class='methods'><li data-type='method'><a href="VelocityUnit.html#convert">convert</a></li><li data-type='method'><a href="VelocityUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="VelocityUnit.html#expand">expand</a></li><li data-type='method'><a href="VelocityUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="VelocityUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="VelocityUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="VelocityUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="VelocityUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="VelocityUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="VelocityUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="VelocityUnit.html#list">list</a></li><li data-type='method'><a href="VelocityUnit.html#localize">localize</a></li><li data-type='method'><a href="VelocityUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="VelocityUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="VelocityUnit.html#scale">scale</a></li><li data-type='method'><a href="VelocityUnit.html#.convert">convert</a></li></ul></li><li><a href="VolumeUnit.html">VolumeUnit</a><ul class='methods'><li data-type='method'><a href="VolumeUnit.html#convert">convert</a></li><li data-type='method'><a href="VolumeUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="VolumeUnit.html#expand">expand</a></li><li data-type='method'><a href="VolumeUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="VolumeUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="VolumeUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="VolumeUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="VolumeUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="VolumeUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="VolumeUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="VolumeUnit.html#list">list</a></li><li data-type='method'><a href="VolumeUnit.html#localize">localize</a></li><li data-type='method'><a href="VolumeUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="VolumeUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="VolumeUnit.html#scale">scale</a></li><li data-type='method'><a href="VolumeUnit.html#.convert">convert</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="CType.html">CType</a><ul class='methods'><li data-type='method'><a href="CType.html#._inRange">_inRange</a></li><li data-type='method'><a href="CType.html#._init">_init</a></li><li data-type='method'><a href="CType.html#._load">_load</a></li><li data-type='method'><a href="CType.html#.withinRange">withinRange</a></li></ul></li><li><a href="ilib.html">ilib</a><ul class='methods'><li data-type='method'><a href="ilib.html#.bind">bind</a></li><li data-type='method'><a href="ilib.html#.clearCache">clearCache</a></li><li data-type='method'><a href="ilib.html#.clearPseudoLocales">clearPseudoLocales</a></li><li data-type='method'><a href="ilib.html#.extend">extend</a></li><li data-type='method'><a href="ilib.html#.getLoader">getLoader</a></li><li data-type='method'><a href="ilib.html#.getLocale">getLocale</a></li><li data-type='method'><a href="ilib.html#.getTimeZone">getTimeZone</a></li><li data-type='method'><a href="ilib.html#.getVersion">getVersion</a></li><li data-type='method'><a href="ilib.html#.isArray">isArray</a></li><li data-type='method'><a href="ilib.html#.isDynCode">isDynCode</a></li><li data-type='method'><a href="ilib.html#.isDynData">isDynData</a></li><li data-type='method'><a href="ilib.html#.setAsPseudoLocale">setAsPseudoLocale</a></li><li data-type='method'><a href="ilib.html#.setLoaderCallback">setLoaderCallback</a></li><li data-type='method'><a href="ilib.html#.setLocale">setLocale</a></li><li data-type='method'><a href="ilib.html#.setTimeZone">setTimeZone</a></li></ul></li></ul><h3>Interfaces</h3><ul><li><a href="ilib.Loader.html">Loader</a><ul class='methods'><li data-type='method'><a href="ilib.Loader.html#isAvailable">isAvailable</a></li><li data-type='method'><a href="ilib.Loader.html#listAvailableFiles">listAvailableFiles</a></li><li data-type='method'><a href="ilib.Loader.html#loadFiles">loadFiles</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#CalendarFactory">CalendarFactory</a></li><li><a href="global.html#CharmapFactory">CharmapFactory</a></li><li><a href="global.html#DateFactory">DateFactory</a></li><li><a href="global.html#MeasurementFactory">MeasurementFactory</a></li><li><a href="global.html#isAlnum">isAlnum</a></li><li><a href="global.html#isAlpha">isAlpha</a></li><li><a href="global.html#isAscii">isAscii</a></li><li><a href="global.html#isBlank">isBlank</a></li><li><a href="global.html#isCntrl">isCntrl</a></li><li><a href="global.html#isDigit">isDigit</a></li><li><a href="global.html#isGraph">isGraph</a></li><li><a href="global.html#isIdeo">isIdeo</a></li><li><a href="global.html#isLower">isLower</a></li><li><a href="global.html#isPrint">isPrint</a></li><li><a href="global.html#isPunct">isPunct</a></li><li><a href="global.html#isScript">isScript</a></li><li><a href="global.html#isSpace">isSpace</a></li><li><a href="global.html#isUpper">isUpper</a></li><li><a href="global.html#isXdigit">isXdigit</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Locale.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Locale.js - Locale specifier definition
+ *
+ * Copyright © 2012-2015, 2018,2021 JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+var ilib = require("./ilib.js");
+var JSUtils = require("./JSUtils.js");
+
+/**
+ * @class
+ * Create a new locale instance. Locales are specified either with a specifier string
+ * that follows the BCP-47 convention (roughly: "language-region-script-variant") or
+ * with 4 parameters that specify the language, region, variant, and script individually.&lt;p>
+ *
+ * The language is given as an ISO 639-1 two-letter, lower-case language code. You
+ * can find a full list of these codes at
+ * &lt;a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes&lt;/a>&lt;p>
+ *
+ * The region is given as an ISO 3166-1 two-letter, upper-case region code. You can
+ * find a full list of these codes at
+ * &lt;a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2&lt;/a>.&lt;p>
+ *
+ * The variant is any string that does not contain a dash which further differentiates
+ * locales from each other.&lt;p>
+ *
+ * The script is given as the ISO 15924 four-letter script code. In some locales,
+ * text may be validly written in more than one script. For example, Serbian is often
+ * written in both Latin and Cyrillic, though not usually mixed together. You can find a
+ * full list of these codes at
+ * &lt;a href="http://en.wikipedia.org/wiki/ISO_15924#List_of_codes">http://en.wikipedia.org/wiki/ISO_15924#List_of_codes&lt;/a>.&lt;p>
+ *
+ * As an example in ilib, the script can be used in the date formatter. Dates formatted
+ * in Serbian could have day-of-week names or month names written in the Latin
+ * or Cyrillic script. Often one script is default such that sr-SR-Latn is the same
+ * as sr-SR so the script code "Latn" can be left off of the locale spec.&lt;p>
+ *
+ * Each part is optional, and an empty string in the specifier before or after a
+ * dash or as a parameter to the constructor denotes an unspecified value. In this
+ * case, many of the ilib functions will treat the locale as generic. For example
+ * the locale "en-" is equivalent to "en" and to "en--" and denotes a locale
+ * of "English" with an unspecified region and variant, which typically matches
+ * any region or variant.&lt;p>
+ *
+ * Without any arguments to the constructor, this function returns the locale of
+ * the host Javascript engine.&lt;p>
+ *
+ *
+ * @constructor
+ * @param {?string|Locale=} language the ISO 639 2-letter code for the language, or a full
+ * locale spec in BCP-47 format, or another Locale instance to copy from
+ * @param {string=} region the ISO 3166 2-letter code for the region
+ * @param {string=} variant the name of the variant of this locale, if any
+ * @param {string=} script the ISO 15924 code of the script for this locale, if any
+ */
+var Locale = function(language, region, variant, script) {
+    if (typeof(region) === 'undefined' &amp;&amp; typeof(variant) === 'undefined' &amp;&amp; typeof(script) === 'undefined') {
+        var spec = language || ilib.getLocale();
+        if (typeof(spec) === 'string') {
+            var parts = spec.split(/[-_]/g);
+            for ( var i = 0; i &lt; parts.length; i++ ) {
+                if (Locale._isLanguageCode(parts[i])) {
+                    /**
+                     * @private
+                     * @type {string|undefined}
+                     */
+                    this.language = parts[i];
+                } else if (Locale._isRegionCode(parts[i])) {
+                    /**
+                     * @private
+                     * @type {string|undefined}
+                     */
+                    this.region = parts[i];
+                } else if (Locale._isScriptCode(parts[i])) {
+                    /**
+                     * @private
+                     * @type {string|undefined}
+                     */
+                    this.script = parts[i];
+                } else {
+                    /**
+                     * @private
+                     * @type {string|undefined}
+                     */
+                    this.variant = parts[i];
+                }
+            }
+            this.language = this.language || undefined;
+            this.region = this.region || undefined;
+            this.script = this.script || undefined;
+            this.variant = this.variant || undefined;
+        } else if (typeof(spec) === 'object') {
+            this.language = spec.language || undefined;
+            this.region = spec.region || undefined;
+            this.script = spec.script || undefined;
+            this.variant = spec.variant || undefined;
+        }
+    } else {
+        if (language &amp;&amp; typeof(language) === "string") {
+            language = language.trim();
+            this.language = language.length > 0 ? language.toLowerCase() : undefined;
+        } else {
+            this.language = undefined;
+        }
+        if (region &amp;&amp; typeof(region) === "string") {
+            region = region.trim();
+            this.region = region.length > 0 ? region.toUpperCase() : undefined;
+        } else {
+            this.region = undefined;
+        }
+        if (variant &amp;&amp; typeof(variant) === "string") {
+            variant = variant.trim();
+            this.variant = variant.length > 0 ? variant : undefined;
+        } else {
+            this.variant = undefined;
+        }
+        if (script &amp;&amp; typeof(script) === "string") {
+            script = script.trim();
+            this.script = script.length > 0 ? script : undefined;
+        } else {
+            this.script = undefined;
+        }
+    }
+    this._genSpec();
+};
+
+// from http://en.wikipedia.org/wiki/ISO_3166-1
+Locale.a2toa3regmap = {
+    "AF": "AFG",
+    "AX": "ALA",
+    "AL": "ALB",
+    "DZ": "DZA",
+    "AS": "ASM",
+    "AD": "AND",
+    "AO": "AGO",
+    "AI": "AIA",
+    "AQ": "ATA",
+    "AG": "ATG",
+    "AR": "ARG",
+    "AM": "ARM",
+    "AW": "ABW",
+    "AU": "AUS",
+    "AT": "AUT",
+    "AZ": "AZE",
+    "BS": "BHS",
+    "BH": "BHR",
+    "BD": "BGD",
+    "BB": "BRB",
+    "BY": "BLR",
+    "BE": "BEL",
+    "BZ": "BLZ",
+    "BJ": "BEN",
+    "BM": "BMU",
+    "BT": "BTN",
+    "BO": "BOL",
+    "BQ": "BES",
+    "BA": "BIH",
+    "BW": "BWA",
+    "BV": "BVT",
+    "BR": "BRA",
+    "IO": "IOT",
+    "BN": "BRN",
+    "BG": "BGR",
+    "BF": "BFA",
+    "BI": "BDI",
+    "KH": "KHM",
+    "CM": "CMR",
+    "CA": "CAN",
+    "CV": "CPV",
+    "KY": "CYM",
+    "CF": "CAF",
+    "TD": "TCD",
+    "CL": "CHL",
+    "CN": "CHN",
+    "CX": "CXR",
+    "CC": "CCK",
+    "CO": "COL",
+    "KM": "COM",
+    "CG": "COG",
+    "CD": "COD",
+    "CK": "COK",
+    "CR": "CRI",
+    "CI": "CIV",
+    "HR": "HRV",
+    "CU": "CUB",
+    "CW": "CUW",
+    "CY": "CYP",
+    "CZ": "CZE",
+    "DK": "DNK",
+    "DJ": "DJI",
+    "DM": "DMA",
+    "DO": "DOM",
+    "EC": "ECU",
+    "EG": "EGY",
+    "SV": "SLV",
+    "GQ": "GNQ",
+    "ER": "ERI",
+    "EE": "EST",
+    "ET": "ETH",
+    "FK": "FLK",
+    "FO": "FRO",
+    "FJ": "FJI",
+    "FI": "FIN",
+    "FR": "FRA",
+    "GF": "GUF",
+    "PF": "PYF",
+    "TF": "ATF",
+    "GA": "GAB",
+    "GM": "GMB",
+    "GE": "GEO",
+    "DE": "DEU",
+    "GH": "GHA",
+    "GI": "GIB",
+    "GR": "GRC",
+    "GL": "GRL",
+    "GD": "GRD",
+    "GP": "GLP",
+    "GU": "GUM",
+    "GT": "GTM",
+    "GG": "GGY",
+    "GN": "GIN",
+    "GW": "GNB",
+    "GY": "GUY",
+    "HT": "HTI",
+    "HM": "HMD",
+    "VA": "VAT",
+    "HN": "HND",
+    "HK": "HKG",
+    "HU": "HUN",
+    "IS": "ISL",
+    "IN": "IND",
+    "ID": "IDN",
+    "IR": "IRN",
+    "IQ": "IRQ",
+    "IE": "IRL",
+    "IM": "IMN",
+    "IL": "ISR",
+    "IT": "ITA",
+    "JM": "JAM",
+    "JP": "JPN",
+    "JE": "JEY",
+    "JO": "JOR",
+    "KZ": "KAZ",
+    "KE": "KEN",
+    "KI": "KIR",
+    "KP": "PRK",
+    "KR": "KOR",
+    "KW": "KWT",
+    "KG": "KGZ",
+    "LA": "LAO",
+    "LV": "LVA",
+    "LB": "LBN",
+    "LS": "LSO",
+    "LR": "LBR",
+    "LY": "LBY",
+    "LI": "LIE",
+    "LT": "LTU",
+    "LU": "LUX",
+    "MO": "MAC",
+    "MK": "MKD",
+    "MG": "MDG",
+    "MW": "MWI",
+    "MY": "MYS",
+    "MV": "MDV",
+    "ML": "MLI",
+    "MT": "MLT",
+    "MH": "MHL",
+    "MQ": "MTQ",
+    "MR": "MRT",
+    "MU": "MUS",
+    "YT": "MYT",
+    "MX": "MEX",
+    "FM": "FSM",
+    "MD": "MDA",
+    "MC": "MCO",
+    "MN": "MNG",
+    "ME": "MNE",
+    "MS": "MSR",
+    "MA": "MAR",
+    "MZ": "MOZ",
+    "MM": "MMR",
+    "NA": "NAM",
+    "NR": "NRU",
+    "NP": "NPL",
+    "NL": "NLD",
+    "NC": "NCL",
+    "NZ": "NZL",
+    "NI": "NIC",
+    "NE": "NER",
+    "NG": "NGA",
+    "NU": "NIU",
+    "NF": "NFK",
+    "MP": "MNP",
+    "NO": "NOR",
+    "OM": "OMN",
+    "PK": "PAK",
+    "PW": "PLW",
+    "PS": "PSE",
+    "PA": "PAN",
+    "PG": "PNG",
+    "PY": "PRY",
+    "PE": "PER",
+    "PH": "PHL",
+    "PN": "PCN",
+    "PL": "POL",
+    "PT": "PRT",
+    "PR": "PRI",
+    "QA": "QAT",
+    "RE": "REU",
+    "RO": "ROU",
+    "RU": "RUS",
+    "RW": "RWA",
+    "BL": "BLM",
+    "SH": "SHN",
+    "KN": "KNA",
+    "LC": "LCA",
+    "MF": "MAF",
+    "PM": "SPM",
+    "VC": "VCT",
+    "WS": "WSM",
+    "SM": "SMR",
+    "ST": "STP",
+    "SA": "SAU",
+    "SN": "SEN",
+    "RS": "SRB",
+    "SC": "SYC",
+    "SL": "SLE",
+    "SG": "SGP",
+    "SX": "SXM",
+    "SK": "SVK",
+    "SI": "SVN",
+    "SB": "SLB",
+    "SO": "SOM",
+    "ZA": "ZAF",
+    "GS": "SGS",
+    "SS": "SSD",
+    "ES": "ESP",
+    "LK": "LKA",
+    "SD": "SDN",
+    "SR": "SUR",
+    "SJ": "SJM",
+    "SZ": "SWZ",
+    "SE": "SWE",
+    "CH": "CHE",
+    "SY": "SYR",
+    "TW": "TWN",
+    "TJ": "TJK",
+    "TZ": "TZA",
+    "TH": "THA",
+    "TL": "TLS",
+    "TG": "TGO",
+    "TK": "TKL",
+    "TO": "TON",
+    "TT": "TTO",
+    "TN": "TUN",
+    "TR": "TUR",
+    "TM": "TKM",
+    "TC": "TCA",
+    "TV": "TUV",
+    "UG": "UGA",
+    "UA": "UKR",
+    "AE": "ARE",
+    "GB": "GBR",
+    "US": "USA",
+    "UM": "UMI",
+    "UY": "URY",
+    "UZ": "UZB",
+    "VU": "VUT",
+    "VE": "VEN",
+    "VN": "VNM",
+    "VG": "VGB",
+    "VI": "VIR",
+    "WF": "WLF",
+    "EH": "ESH",
+    "YE": "YEM",
+    "ZM": "ZMB",
+    "ZW": "ZWE"
+};
+
+
+Locale.a1toa3langmap = {
+    "ab": "abk",
+    "aa": "aar",
+    "af": "afr",
+    "ak": "aka",
+    "sq": "sqi",
+    "am": "amh",
+    "ar": "ara",
+    "an": "arg",
+    "hy": "hye",
+    "as": "asm",
+    "av": "ava",
+    "ae": "ave",
+    "ay": "aym",
+    "az": "aze",
+    "bm": "bam",
+    "ba": "bak",
+    "eu": "eus",
+    "be": "bel",
+    "bn": "ben",
+    "bh": "bih",
+    "bi": "bis",
+    "bs": "bos",
+    "br": "bre",
+    "bg": "bul",
+    "my": "mya",
+    "ca": "cat",
+    "ch": "cha",
+    "ce": "che",
+    "ny": "nya",
+    "zh": "zho",
+    "cv": "chv",
+    "kw": "cor",
+    "co": "cos",
+    "cr": "cre",
+    "hr": "hrv",
+    "cs": "ces",
+    "da": "dan",
+    "dv": "div",
+    "nl": "nld",
+    "dz": "dzo",
+    "en": "eng",
+    "eo": "epo",
+    "et": "est",
+    "ee": "ewe",
+    "fo": "fao",
+    "fj": "fij",
+    "fi": "fin",
+    "fr": "fra",
+    "ff": "ful",
+    "gl": "glg",
+    "ka": "kat",
+    "de": "deu",
+    "el": "ell",
+    "gn": "grn",
+    "gu": "guj",
+    "ht": "hat",
+    "ha": "hau",
+    "he": "heb",
+    "hz": "her",
+    "hi": "hin",
+    "ho": "hmo",
+    "hu": "hun",
+    "ia": "ina",
+    "id": "ind",
+    "ie": "ile",
+    "ga": "gle",
+    "ig": "ibo",
+    "ik": "ipk",
+    "io": "ido",
+    "is": "isl",
+    "it": "ita",
+    "iu": "iku",
+    "ja": "jpn",
+    "jv": "jav",
+    "kl": "kal",
+    "kn": "kan",
+    "kr": "kau",
+    "ks": "kas",
+    "kk": "kaz",
+    "km": "khm",
+    "ki": "kik",
+    "rw": "kin",
+    "ky": "kir",
+    "kv": "kom",
+    "kg": "kon",
+    "ko": "kor",
+    "ku": "kur",
+    "kj": "kua",
+    "la": "lat",
+    "lb": "ltz",
+    "lg": "lug",
+    "li": "lim",
+    "ln": "lin",
+    "lo": "lao",
+    "lt": "lit",
+    "lu": "lub",
+    "lv": "lav",
+    "gv": "glv",
+    "mk": "mkd",
+    "mg": "mlg",
+    "ms": "msa",
+    "ml": "mal",
+    "mt": "mlt",
+    "mi": "mri",
+    "mr": "mar",
+    "mh": "mah",
+    "mn": "mon",
+    "na": "nau",
+    "nv": "nav",
+    "nb": "nob",
+    "nd": "nde",
+    "ne": "nep",
+    "ng": "ndo",
+    "nn": "nno",
+    "no": "nor",
+    "ii": "iii",
+    "nr": "nbl",
+    "oc": "oci",
+    "oj": "oji",
+    "cu": "chu",
+    "om": "orm",
+    "or": "ori",
+    "os": "oss",
+    "pa": "pan",
+    "pi": "pli",
+    "fa": "fas",
+    "pl": "pol",
+    "ps": "pus",
+    "pt": "por",
+    "qu": "que",
+    "rm": "roh",
+    "rn": "run",
+    "ro": "ron",
+    "ru": "rus",
+    "sa": "san",
+    "sc": "srd",
+    "sd": "snd",
+    "se": "sme",
+    "sm": "smo",
+    "sg": "sag",
+    "sr": "srp",
+    "gd": "gla",
+    "sn": "sna",
+    "si": "sin",
+    "sk": "slk",
+    "sl": "slv",
+    "so": "som",
+    "st": "sot",
+    "es": "spa",
+    "su": "sun",
+    "sw": "swa",
+    "ss": "ssw",
+    "sv": "swe",
+    "ta": "tam",
+    "te": "tel",
+    "tg": "tgk",
+    "th": "tha",
+    "ti": "tir",
+    "bo": "bod",
+    "tk": "tuk",
+    "tl": "tgl",
+    "tn": "tsn",
+    "to": "ton",
+    "tr": "tur",
+    "ts": "tso",
+    "tt": "tat",
+    "tw": "twi",
+    "ty": "tah",
+    "ug": "uig",
+    "uk": "ukr",
+    "ur": "urd",
+    "uz": "uzb",
+    "ve": "ven",
+    "vi": "vie",
+    "vo": "vol",
+    "wa": "wln",
+    "cy": "cym",
+    "wo": "wol",
+    "fy": "fry",
+    "xh": "xho",
+    "yi": "yid",
+    "yo": "yor",
+    "za": "zha",
+    "zu": "zul"
+};
+
+// the list below is originally from https://unicode.org/iso15924/iso15924-codes.html
+Locale.iso15924 = [
+    "Adlm",
+    "Afak",
+    "Aghb",
+    "Ahom",
+    "Arab",
+    "Aran",
+    "Armi",
+    "Armn",
+    "Avst",
+    "Bali",
+    "Bamu",
+    "Bass",
+    "Batk",
+    "Beng",
+    "Bhks",
+    "Blis",
+    "Bopo",
+    "Brah",
+    "Brai",
+    "Bugi",
+    "Buhd",
+    "Cakm",
+    "Cans",
+    "Cari",
+    "Cham",
+    "Cher",
+    "Chrs",
+    "Cirt",
+    "Copt",
+    "Cpmn",
+    "Cprt",
+    "Cyrl",
+    "Cyrs",
+    "Deva",
+    "Diak",
+    "Dogr",
+    "Dsrt",
+    "Dupl",
+    "Egyd",
+    "Egyh",
+    "Egyp",
+    "Elba",
+    "Elym",
+    "Ethi",
+    "Geok",
+    "Geor",
+    "Glag",
+    "Gong",
+    "Gonm",
+    "Goth",
+    "Gran",
+    "Grek",
+    "Gujr",
+    "Guru",
+    "Hanb",
+    "Hang",
+    "Hani",
+    "Hano",
+    "Hans",
+    "Hant",
+    "Hatr",
+    "Hebr",
+    "Hira",
+    "Hluw",
+    "Hmng",
+    "Hmnp",
+    "Hrkt",
+    "Hung",
+    "Inds",
+    "Ital",
+    "Jamo",
+    "Java",
+    "Jpan",
+    "Jurc",
+    "Kali",
+    "Kana",
+    "Khar",
+    "Khmr",
+    "Khoj",
+    "Kitl",
+    "Kits",
+    "Knda",
+    "Kore",
+    "Kpel",
+    "Kthi",
+    "Lana",
+    "Laoo",
+    "Latf",
+    "Latg",
+    "Latn",
+    "Leke",
+    "Lepc",
+    "Limb",
+    "Lina",
+    "Linb",
+    "Lisu",
+    "Loma",
+    "Lyci",
+    "Lydi",
+    "Mahj",
+    "Maka",
+    "Mand",
+    "Mani",
+    "Marc",
+    "Maya",
+    "Medf",
+    "Mend",
+    "Merc",
+    "Mero",
+    "Mlym",
+    "Modi",
+    "Mong",
+    "Moon",
+    "Mroo",
+    "Mtei",
+    "Mult",
+    "Mymr",
+    "Nand",
+    "Narb",
+    "Nbat",
+    "Newa",
+    "Nkdb",
+    "Nkgb",
+    "Nkoo",
+    "Nshu",
+    "Ogam",
+    "Olck",
+    "Orkh",
+    "Orya",
+    "Osge",
+    "Osma",
+    "Palm",
+    "Pauc",
+    "Perm",
+    "Phag",
+    "Phli",
+    "Phlp",
+    "Phlv",
+    "Phnx",
+    "Plrd",
+    "Piqd",
+    "Prti",
+    "Qaaa",
+    "Qabx",
+    "Rjng",
+    "Rohg",
+    "Roro",
+    "Runr",
+    "Samr",
+    "Sara",
+    "Sarb",
+    "Saur",
+    "Sgnw",
+    "Shaw",
+    "Shrd",
+    "Shui",
+    "Sidd",
+    "Sind",
+    "Sinh",
+    "Sogd",
+    "Sogo",
+    "Sora",
+    "Soyo",
+    "Sund",
+    "Sylo",
+    "Syrc",
+    "Syre",
+    "Syrj",
+    "Syrn",
+    "Tagb",
+    "Takr",
+    "Tale",
+    "Talu",
+    "Taml",
+    "Tang",
+    "Tavt",
+    "Telu",
+    "Teng",
+    "Tfng",
+    "Tglg",
+    "Thaa",
+    "Thai",
+    "Tibt",
+    "Tirh",
+    "Toto",
+    "Ugar",
+    "Vaii",
+    "Visp",
+    "Wara",
+    "Wcho",
+    "Wole",
+    "Xpeo",
+    "Xsux",
+    "Yezi",
+    "Yiii",
+    "Zanb",
+    "Zinh",
+    "Zmth",
+    "Zsye",
+    "Zsym",
+    "Zxxx",
+    "Zyyy",
+    "Zzzz",
+];
+
+/**
+ * Tell whether or not the str does not start with a lower case ASCII char.
+ * @private
+ * @param {string} str the char to check
+ * @return {boolean} true if the char is not a lower case ASCII char
+ */
+Locale._notLower = function(str) {
+    // do this with ASCII only so we don't have to depend on the CType functions
+    var ch = str.charCodeAt(0);
+    return ch &lt; 97 || ch > 122;
+};
+
+/**
+ * Tell whether or not the str does not start with an upper case ASCII char.
+ * @private
+ * @param {string} str the char to check
+ * @return {boolean} true if the char is a not an upper case ASCII char
+ */
+Locale._notUpper = function(str) {
+    // do this with ASCII only so we don't have to depend on the CType functions
+    var ch = str.charCodeAt(0);
+    return ch &lt; 65 || ch > 90;
+};
+
+/**
+ * Tell whether or not the str does not start with a digit char.
+ * @private
+ * @param {string} str the char to check
+ * @return {boolean} true if the char is a not an upper case ASCII char
+ */
+Locale._notDigit = function(str) {
+    // do this with ASCII only so we don't have to depend on the CType functions
+    var ch = str.charCodeAt(0);
+    return ch &lt; 48 || ch > 57;
+};
+
+/**
+ * Tell whether or not the given string has the correct syntax to be
+ * an ISO 639 language code.
+ *
+ * @private
+ * @param {string} str the string to parse
+ * @return {boolean} true if the string could syntactically be a language code.
+ */
+Locale._isLanguageCode = function(str) {
+    if (typeof(str) === 'undefined' || str.length &lt; 2 || str.length > 3) {
+        return false;
+    }
+
+    for (var i = 0; i &lt; str.length; i++) {
+        if (Locale._notLower(str.charAt(i))) {
+            return false;
+        }
+    }
+
+    return true;
+};
+
+/**
+ * Tell whether or not the given string has the correct syntax to be
+ * an ISO 3166 2-letter region code or M.49 3-digit region code.
+ *
+ * @private
+ * @param {string} str the string to parse
+ * @return {boolean} true if the string could syntactically be a language code.
+ */
+Locale._isRegionCode = function (str) {
+    var i;
+
+    if (typeof(str) === 'undefined' || str.length &lt; 2 || str.length > 3) {
+        return false;
+    }
+
+    if (str.length === 2) {
+        for (i = 0; i &lt; str.length; i++) {
+            if (Locale._notUpper(str.charAt(i))) {
+                return false;
+            }
+        }
+    } else {
+        for (i = 0; i &lt; str.length; i++) {
+            if (Locale._notDigit(str.charAt(i))) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+};
+
+/**
+ * Tell whether or not the given string has the correct syntax to be
+ * an ISO 639 language code.
+ *
+ * @private
+ * @param {string} str the string to parse
+ * @return {boolean} true if the string could syntactically be a language code.
+ */
+Locale._isScriptCode = function(str) {
+    if (typeof(str) === 'undefined' || str.length !== 4 || Locale._notUpper(str.charAt(0))) {
+        return false;
+    }
+
+    for (var i = 1; i &lt; 4; i++) {
+        if (Locale._notLower(str.charAt(i))) {
+            return false;
+        }
+    }
+
+    return true;
+};
+
+/**
+ * Return the ISO-3166 alpha3 equivalent region code for the given ISO 3166 alpha2
+ * region code. If the given alpha2 code is not found, this function returns its
+ * argument unchanged.
+ * @static
+ * @param {string|undefined} alpha2 the alpha2 code to map
+ * @return {string|undefined} the alpha3 equivalent of the given alpha2 code, or the alpha2
+ * parameter if the alpha2 value is not found
+ */
+Locale.regionAlpha2ToAlpha3 = function(alpha2) {
+    return Locale.a2toa3regmap[alpha2] || alpha2;
+};
+
+/**
+ * Return the ISO-639 alpha3 equivalent language code for the given ISO 639 alpha1
+ * language code. If the given alpha1 code is not found, this function returns its
+ * argument unchanged.
+ * @static
+ * @param {string|undefined} alpha1 the alpha1 code to map
+ * @return {string|undefined} the alpha3 equivalent of the given alpha1 code, or the alpha1
+ * parameter if the alpha1 value is not found
+ */
+Locale.languageAlpha1ToAlpha3 = function(alpha1) {
+    return Locale.a1toa3langmap[alpha1] || alpha1;
+};
+
+Locale.prototype = {
+    /**
+     * @private
+     */
+    _genSpec: function () {
+        this.spec = this.language || "";
+
+        if (this.script) {
+            if (this.spec.length > 0) {
+                this.spec += "-";
+            }
+            this.spec += this.script;
+        }
+
+        if (this.region) {
+            if (this.spec.length > 0) {
+                this.spec += "-";
+            }
+            this.spec += this.region;
+        }
+
+        if (this.variant) {
+            if (this.spec.length > 0) {
+                this.spec += "-";
+            }
+            this.spec += this.variant;
+        }
+    },
+
+    /**
+     * Return the ISO 639 language code for this locale.
+     * @return {string|undefined} the language code for this locale
+     */
+    getLanguage: function() {
+        return this.language;
+    },
+
+    /**
+     * Return the language of this locale as an ISO-639-alpha3 language code
+     * @return {string|undefined} the alpha3 language code of this locale
+     */
+    getLanguageAlpha3: function() {
+        return Locale.languageAlpha1ToAlpha3(this.language);
+    },
+
+    /**
+     * Return the ISO 3166 region code for this locale.
+     * @return {string|undefined} the region code of this locale
+     */
+    getRegion: function() {
+        return this.region;
+    },
+
+    /**
+     * Return the region of this locale as an ISO-3166-alpha3 region code
+     * @return {string|undefined} the alpha3 region code of this locale
+     */
+    getRegionAlpha3: function() {
+        return Locale.regionAlpha2ToAlpha3(this.region);
+    },
+
+    /**
+     * Return the ISO 15924 script code for this locale
+     * @return {string|undefined} the script code of this locale
+     */
+    getScript: function () {
+        return this.script;
+    },
+
+    /**
+     * Return the variant code for this locale
+     * @return {string|undefined} the variant code of this locale, if any
+     */
+    getVariant: function() {
+        return this.variant;
+    },
+
+    /**
+     * Return the whole locale specifier as a string.
+     * @return {string} the locale specifier
+     */
+    getSpec: function() {
+        if (!this.spec) this._genSpec();
+        return this.spec;
+    },
+
+    /**
+     * Return the language locale specifier. This includes the
+     * language and the script if it is available. This can be
+     * used to see whether the written language of two locales
+     * match each other regardless of the region or variant.
+     *
+     * @return {string} the language locale specifier
+     */
+    getLangSpec: function() {
+        var spec = this.language;
+        if (spec &amp;&amp; this.script) {
+            spec += "-" + this.script;
+        }
+        return spec || "";
+    },
+
+    /**
+     * Express this locale object as a string. Currently, this simply calls the getSpec
+     * function to represent the locale as its specifier.
+     *
+     * @return {string} the locale specifier
+     */
+    toString: function() {
+        return this.getSpec();
+    },
+
+    /**
+     * Return true if the the other locale is exactly equal to the current one.
+     * @return {boolean} whether or not the other locale is equal to the current one
+     */
+    equals: function(other) {
+        return this.language === other.language &amp;&amp;
+            this.region === other.region &amp;&amp;
+            this.script === other.script &amp;&amp;
+            this.variant === other.variant;
+    },
+
+    /**
+     * Return true if the current locale is the special pseudo locale.
+     * @return {boolean} true if the current locale is the special pseudo locale
+     */
+    isPseudo: function () {
+        return JSUtils.indexOf(ilib.pseudoLocales, this.spec) > -1;
+    },
+
+    /**
+     * Return true if the current locale uses a valid ISO codes for each component
+     * of the locale that exists.
+     * @return {boolean} true if the current locale has all valid components, and
+     * false otherwise.
+     */
+    isValid: function() {
+        if (!this.language &amp;&amp; !this.script &amp;&amp; !this.region) return false;
+
+        return !!((!this.language || (Locale._isLanguageCode(this.language) &amp;&amp; Locale.a1toa3langmap[this.language])) &amp;&amp;
+            (!this.script || (Locale._isScriptCode(this.script) &amp;&amp; Locale.iso15924.indexOf(this.script) > -1)) &amp;&amp;
+            (!this.region || (Locale._isRegionCode(this.region) &amp;&amp; Locale.a2toa3regmap[this.region])));
+    }
+};
+
+// static functions
+/**
+ * @private
+ */
+Locale.locales = [];
+// !macro localelist
+
+/**
+ * Return the list of available locales that this iLib file supports.
+ * If this copy of ilib is pre-assembled with locale data, then the
+ * list locales may be much smaller
+ * than the list of all available locales in the iLib repository. The
+ * assembly tool will automatically fill in the list for an assembled
+ * copy of iLib. If this copy is being used with dynamically loaded
+ * data, then you
+ * can load any locale that iLib supports. You can form a locale with any
+ * combination of a language and region tags that exist in the locale
+ * data directory. Language tags are in the root of the locale data dir,
+ * and region tags can be found underneath the "und" directory. (The
+ * region tags are separated into a different dir because the region names
+ * conflict with language names on file systems that are case-insensitive.)
+ * If you have culled the locale data directory to limit the size of
+ * your app, then this function should return only those files that actually exist
+ * according to the ilibmanifest.json file in the root of that locale
+ * data dir. Make sure your ilibmanifest.json file is up-to-date with
+ * respect to the list of files that exist in the locale data dir.
+ *
+ * @param {boolean} sync if false, load the list of available files from disk
+ * asynchronously, otherwise load them synchronously. (Default: true/synchronously)
+ * @param {Function} onLoad a callback function to call if asynchronous
+ * load was requested and the list of files have been loaded.
+ * @return {Array.&lt;string>} this is an array of locale specs for which
+ * this iLib file has locale data for
+ */
+Locale.getAvailableLocales = function (sync, onLoad) {
+    var locales = [];
+    if (Locale.locales.length || typeof(ilib._load.listAvailableFiles) !== 'function') {
+        locales = Locale.locales;
+        if (onLoad &amp;&amp; typeof(onLoad) === 'function') {
+            onLoad(locales);
+        }
+    } else {
+        if (typeof(sync) === 'undefined') {
+            sync = true;
+        }
+        ilib._load.listAvailableFiles(sync, function(manifest) {
+            if (manifest) {
+                for (var dir in manifest) {
+                    var filelist = manifest[dir];
+                    for (var i = 0; i &lt; filelist.length; i++) {
+                        if (filelist[i].length > 15 &amp;&amp; filelist[i].substr(-15) === "localeinfo.json") {
+                            locales.push(filelist[i].substring(0,filelist[i].length-16).replace(/\//g, "-"));
+                        }
+                    }
+                }
+            }
+            if (onLoad &amp;&amp; typeof(onLoad) === 'function') {
+                onLoad(locales);
+            }
+        });
+    }
+    return locales;
+};
+
+module.exports = Locale;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a> on Tue Jan 10 2023 10:16:48 GMT+0900 (Korean Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

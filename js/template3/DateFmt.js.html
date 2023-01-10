@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>DateFmt.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Address.html">Address</a><ul class='methods'><li data-type='method'><a href="Address.html#_findCountry">_findCountry</a></li></ul></li><li><a href="AddressFmt.html">AddressFmt</a><ul class='methods'><li data-type='method'><a href="AddressFmt.html#format">format</a></li><li data-type='method'><a href="AddressFmt.html#getFormatInfo">getFormatInfo</a></li></ul></li><li><a href="AlphabeticIndex.html">AlphabeticIndex</a><ul class='methods'><li data-type='method'><a href="AlphabeticIndex.html#addElement">addElement</a></li><li data-type='method'><a href="AlphabeticIndex.html#addLabels">addLabels</a></li><li data-type='method'><a href="AlphabeticIndex.html#clear">clear</a></li><li data-type='method'><a href="AlphabeticIndex.html#getAllBucketLabels">getAllBucketLabels</a></li><li data-type='method'><a href="AlphabeticIndex.html#getAllBuckets">getAllBuckets</a></li><li data-type='method'><a href="AlphabeticIndex.html#getBucket">getBucket</a></li><li data-type='method'><a href="AlphabeticIndex.html#getBucketCount">getBucketCount</a></li><li data-type='method'><a href="AlphabeticIndex.html#getBucketLabels">getBucketLabels</a></li><li data-type='method'><a href="AlphabeticIndex.html#getCollator">getCollator</a></li><li data-type='method'><a href="AlphabeticIndex.html#getElementCount">getElementCount</a></li><li data-type='method'><a href="AlphabeticIndex.html#getIndexStyle">getIndexStyle</a></li><li data-type='method'><a href="AlphabeticIndex.html#getLocale">getLocale</a></li><li data-type='method'><a href="AlphabeticIndex.html#getOverflowLabel">getOverflowLabel</a></li><li data-type='method'><a href="AlphabeticIndex.html#getUnderflowLabel">getUnderflowLabel</a></li><li data-type='method'><a href="AlphabeticIndex.html#setOverflowLabel">setOverflowLabel</a></li><li data-type='method'><a href="AlphabeticIndex.html#setUnderflowLabel">setUnderflowLabel</a></li></ul></li><li><a href="AreaUnit.html">AreaUnit</a><ul class='methods'><li data-type='method'><a href="AreaUnit.html#convert">convert</a></li><li data-type='method'><a href="AreaUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="AreaUnit.html#expand">expand</a></li><li data-type='method'><a href="AreaUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="AreaUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="AreaUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="AreaUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="AreaUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="AreaUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="AreaUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="AreaUnit.html#list">list</a></li><li data-type='method'><a href="AreaUnit.html#localize">localize</a></li><li data-type='method'><a href="AreaUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="AreaUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="AreaUnit.html#scale">scale</a></li><li data-type='method'><a href="AreaUnit.html#.convert">convert</a></li></ul></li><li><a href="CaseMapper.html">CaseMapper</a><ul class='methods'><li data-type='method'><a href="CaseMapper.html#getLocale">getLocale</a></li><li data-type='method'><a href="CaseMapper.html#map">map</a></li></ul></li><li><a href="Charmap.html">Charmap</a><ul class='methods'><li data-type='method'><a href="Charmap.html#getName">getName</a></li><li data-type='method'><a href="Charmap.html#mapToNative">mapToNative</a></li><li data-type='method'><a href="Charmap.html#mapToUnicode">mapToUnicode</a></li></ul></li><li><a href="CharmapTable.html">CharmapTable</a><ul class='methods'><li data-type='method'><a href="CharmapTable.html#getName">getName</a></li><li data-type='method'><a href="CharmapTable.html#mapToNative">mapToNative</a></li><li data-type='method'><a href="CharmapTable.html#mapToUnicode">mapToUnicode</a></li></ul></li><li><a href="Charset.html">Charset</a><ul class='methods'><li data-type='method'><a href="Charset.html#getDescription">getDescription</a></li><li data-type='method'><a href="Charset.html#getMaxCharWidth">getMaxCharWidth</a></li><li data-type='method'><a href="Charset.html#getMinCharWidth">getMinCharWidth</a></li><li data-type='method'><a href="Charset.html#getName">getName</a></li><li data-type='method'><a href="Charset.html#getOriginalName">getOriginalName</a></li><li data-type='method'><a href="Charset.html#getScripts">getScripts</a></li><li data-type='method'><a href="Charset.html#isBigEndian">isBigEndian</a></li><li data-type='method'><a href="Charset.html#isMultibyte">isMultibyte</a></li></ul></li><li><a href="Collator.html">Collator</a><ul class='methods'><li data-type='method'><a href="Collator.html#compare">compare</a></li><li data-type='method'><a href="Collator.html#getComparator">getComparator</a></li><li data-type='method'><a href="Collator.html#getDefaultCollatorStyle">getDefaultCollatorStyle</a></li><li data-type='method'><a href="Collator.html#sortKey">sortKey</a></li><li data-type='method'><a href="Collator.html#.getAvailableScripts">getAvailableScripts</a></li><li data-type='method'><a href="Collator.html#.getAvailableStyles">getAvailableStyles</a></li></ul></li><li><a href="CopticCal.html">CopticCal</a><ul class='methods'><li data-type='method'><a href="CopticCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="CopticCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="CopticCal.html#getType">getType</a></li><li data-type='method'><a href="CopticCal.html#isLeapYear">isLeapYear</a></li></ul></li><li><a href="CopticDate.html">CopticDate</a><ul class='methods'><li data-type='method'><a href="CopticDate.html#_calcDateComponents">_calcDateComponents</a></li><li data-type='method'><a href="CopticDate.html#_calcYear">_calcYear</a></li><li data-type='method'><a href="CopticDate.html#after">after</a></li><li data-type='method'><a href="CopticDate.html#before">before</a></li><li data-type='method'><a href="CopticDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="CopticDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="CopticDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="CopticDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="CopticDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="CopticDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="CopticDate.html#getTime">getTime</a></li><li data-type='method'><a href="CopticDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="CopticDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="CopticDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="CopticDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="CopticDate.html#newRd">newRd</a></li><li data-type='method'><a href="CopticDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="CopticDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="CopticDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="CopticDate.html#setRd">setRd</a></li><li data-type='method'><a href="CopticDate.html#setTime">setTime</a></li><li data-type='method'><a href="CopticDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="Country.html">Country</a><ul class='methods'><li data-type='method'><a href="Country.html#getCode">getCode</a></li><li data-type='method'><a href="Country.html#getLocale">getLocale</a></li><li data-type='method'><a href="Country.html#getName">getName</a></li><li data-type='method'><a href="Country.html#.getAvailableCode">getAvailableCode</a></li><li data-type='method'><a href="Country.html#.getAvailableCountry">getAvailableCountry</a></li></ul></li><li><a href="Currency.html">Currency</a><ul class='methods'><li data-type='method'><a href="Currency.html#getCode">getCode</a></li><li data-type='method'><a href="Currency.html#getFractionDigits">getFractionDigits</a></li><li data-type='method'><a href="Currency.html#getLocale">getLocale</a></li><li data-type='method'><a href="Currency.html#getName">getName</a></li><li data-type='method'><a href="Currency.html#getSign">getSign</a></li><li data-type='method'><a href="Currency.html#.getAvailableCurrencies">getAvailableCurrencies</a></li></ul></li><li><a href="DateFmt.html">DateFmt</a><ul class='methods'><li data-type='method'><a href="DateFmt.html#_getFormat">_getFormat</a></li><li data-type='method'><a href="DateFmt.html#_getFormatInternal">_getFormatInternal</a></li><li data-type='method'><a href="DateFmt.html#_getLengthFormat">_getLengthFormat</a></li><li data-type='method'><a href="DateFmt.html#_initTemplate">_initTemplate</a></li><li data-type='method'><a href="DateFmt.html#_massageTemplate">_massageTemplate</a></li><li data-type='method'><a href="DateFmt.html#_tokenize">_tokenize</a></li><li data-type='method'><a href="DateFmt.html#format">format</a></li><li data-type='method'><a href="DateFmt.html#formatRelative">formatRelative</a></li><li data-type='method'><a href="DateFmt.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="DateFmt.html#getClock">getClock</a></li><li data-type='method'><a href="DateFmt.html#getDateComponentOrder">getDateComponentOrder</a></li><li data-type='method'><a href="DateFmt.html#getDateComponents">getDateComponents</a></li><li data-type='method'><a href="DateFmt.html#getDaysOfWeek">getDaysOfWeek</a></li><li data-type='method'><a href="DateFmt.html#getLength">getLength</a></li><li data-type='method'><a href="DateFmt.html#getLocale">getLocale</a></li><li data-type='method'><a href="DateFmt.html#getMeridiemsRange">getMeridiemsRange</a></li><li data-type='method'><a href="DateFmt.html#getMonthsOfYear">getMonthsOfYear</a></li><li data-type='method'><a href="DateFmt.html#getTemplate">getTemplate</a></li><li data-type='method'><a href="DateFmt.html#getTimeComponents">getTimeComponents</a></li><li data-type='method'><a href="DateFmt.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="DateFmt.html#getType">getType</a></li><li data-type='method'><a href="DateFmt.html#toString">toString</a></li><li data-type='method'><a href="DateFmt.html#.getMeridiemsRange">getMeridiemsRange</a></li><li data-type='method'><a href="DateFmt.html#.isIntlDateTimeAvailable">isIntlDateTimeAvailable</a></li></ul></li><li><a href="DateRngFmt.html">DateRngFmt</a><ul class='methods'><li data-type='method'><a href="DateRngFmt.html#format">format</a></li><li data-type='method'><a href="DateRngFmt.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="DateRngFmt.html#getClock">getClock</a></li><li data-type='method'><a href="DateRngFmt.html#getLength">getLength</a></li><li data-type='method'><a href="DateRngFmt.html#getLocale">getLocale</a></li><li data-type='method'><a href="DateRngFmt.html#getTimeZone">getTimeZone</a></li></ul></li><li><a href="DigitalSpeedUnit.html">DigitalSpeedUnit</a><ul class='methods'><li data-type='method'><a href="DigitalSpeedUnit.html#convert">convert</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#expand">expand</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#list">list</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#localize">localize</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#scale">scale</a></li><li data-type='method'><a href="DigitalSpeedUnit.html#.convert">convert</a></li></ul></li><li><a href="DigitalStorageUnit.html">DigitalStorageUnit</a><ul class='methods'><li data-type='method'><a href="DigitalStorageUnit.html#convert">convert</a></li><li data-type='method'><a href="DigitalStorageUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="DigitalStorageUnit.html#expand">expand</a></li><li data-type='method'><a href="DigitalStorageUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="DigitalStorageUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="DigitalStorageUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="DigitalStorageUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="DigitalStorageUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="DigitalStorageUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="DigitalStorageUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="DigitalStorageUnit.html#list">list</a></li><li data-type='method'><a href="DigitalStorageUnit.html#localize">localize</a></li><li data-type='method'><a href="DigitalStorageUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="DigitalStorageUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="DigitalStorageUnit.html#scale">scale</a></li><li data-type='method'><a href="DigitalStorageUnit.html#.convert">convert</a></li></ul></li><li><a href="DurationFmt.html">DurationFmt</a><ul class='methods'><li data-type='method'><a href="DurationFmt.html#format">format</a></li><li data-type='method'><a href="DurationFmt.html#getLength">getLength</a></li><li data-type='method'><a href="DurationFmt.html#getLocale">getLocale</a></li><li data-type='method'><a href="DurationFmt.html#getStyle">getStyle</a></li></ul></li><li><a href="EnergyUnit.html">EnergyUnit</a><ul class='methods'><li data-type='method'><a href="EnergyUnit.html#convert">convert</a></li><li data-type='method'><a href="EnergyUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="EnergyUnit.html#expand">expand</a></li><li data-type='method'><a href="EnergyUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="EnergyUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="EnergyUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="EnergyUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="EnergyUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="EnergyUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="EnergyUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="EnergyUnit.html#list">list</a></li><li data-type='method'><a href="EnergyUnit.html#localize">localize</a></li><li data-type='method'><a href="EnergyUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="EnergyUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="EnergyUnit.html#scale">scale</a></li><li data-type='method'><a href="EnergyUnit.html#.convert">convert</a></li></ul></li><li><a href="EthiopicCal.html">EthiopicCal</a><ul class='methods'><li data-type='method'><a href="EthiopicCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="EthiopicCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="EthiopicCal.html#getType">getType</a></li><li data-type='method'><a href="EthiopicCal.html#isLeapYear">isLeapYear</a></li></ul></li><li><a href="EthiopicDate.html">EthiopicDate</a><ul class='methods'><li data-type='method'><a href="EthiopicDate.html#_calcDateComponents">_calcDateComponents</a></li><li data-type='method'><a href="EthiopicDate.html#_calcYear">_calcYear</a></li><li data-type='method'><a href="EthiopicDate.html#after">after</a></li><li data-type='method'><a href="EthiopicDate.html#before">before</a></li><li data-type='method'><a href="EthiopicDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="EthiopicDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="EthiopicDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="EthiopicDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="EthiopicDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="EthiopicDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="EthiopicDate.html#getTime">getTime</a></li><li data-type='method'><a href="EthiopicDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="EthiopicDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="EthiopicDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="EthiopicDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="EthiopicDate.html#newRd">newRd</a></li><li data-type='method'><a href="EthiopicDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="EthiopicDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="EthiopicDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="EthiopicDate.html#setRd">setRd</a></li><li data-type='method'><a href="EthiopicDate.html#setTime">setTime</a></li><li data-type='method'><a href="EthiopicDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="ForceUnit.html">ForceUnit</a><ul class='methods'><li data-type='method'><a href="ForceUnit.html#convert">convert</a></li><li data-type='method'><a href="ForceUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="ForceUnit.html#expand">expand</a></li><li data-type='method'><a href="ForceUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="ForceUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="ForceUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="ForceUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="ForceUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="ForceUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="ForceUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="ForceUnit.html#list">list</a></li><li data-type='method'><a href="ForceUnit.html#localize">localize</a></li><li data-type='method'><a href="ForceUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="ForceUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="ForceUnit.html#scale">scale</a></li><li data-type='method'><a href="ForceUnit.html#.convert">convert</a></li></ul></li><li><a href="FuelConsumptionUnit.html">FuelConsumptionUnit</a><ul class='methods'><li data-type='method'><a href="FuelConsumptionUnit.html#convert">convert</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#expand">expand</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#list">list</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#localize">localize</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#scale">scale</a></li><li data-type='method'><a href="FuelConsumptionUnit.html#.convert">convert</a></li></ul></li><li><a href="GlyphString.html">GlyphString</a><ul class='methods'><li data-type='method'><a href="GlyphString.html#_toCodePoint">_toCodePoint</a></li><li data-type='method'><a href="GlyphString.html#charAt">charAt</a></li><li data-type='method'><a href="GlyphString.html#charCodeAt">charCodeAt</a></li><li data-type='method'><a href="GlyphString.html#charIterator">charIterator</a></li><li data-type='method'><a href="GlyphString.html#codePointAt">codePointAt</a></li><li data-type='method'><a href="GlyphString.html#codePointLength">codePointLength</a></li><li data-type='method'><a href="GlyphString.html#concat">concat</a></li><li data-type='method'><a href="GlyphString.html#ellipsize">ellipsize</a></li><li data-type='method'><a href="GlyphString.html#endsWith">endsWith</a></li><li data-type='method'><a href="GlyphString.html#forEach">forEach</a></li><li data-type='method'><a href="GlyphString.html#forEachCodePoint">forEachCodePoint</a></li><li data-type='method'><a href="GlyphString.html#format">format</a></li><li data-type='method'><a href="GlyphString.html#formatChoice">formatChoice</a></li><li data-type='method'><a href="GlyphString.html#getLocale">getLocale</a></li><li data-type='method'><a href="GlyphString.html#includes">includes</a></li><li data-type='method'><a href="GlyphString.html#indexOf">indexOf</a></li><li data-type='method'><a href="GlyphString.html#iterator">iterator</a></li><li data-type='method'><a href="GlyphString.html#lastIndexOf">lastIndexOf</a></li><li data-type='method'><a href="GlyphString.html#match">match</a></li><li data-type='method'><a href="GlyphString.html#matchAll">matchAll</a></li><li data-type='method'><a href="GlyphString.html#normalize">normalize</a></li><li data-type='method'><a href="GlyphString.html#padEnd">padEnd</a></li><li data-type='method'><a href="GlyphString.html#padStart">padStart</a></li><li data-type='method'><a href="GlyphString.html#repeat">repeat</a></li><li data-type='method'><a href="GlyphString.html#replace">replace</a></li><li data-type='method'><a href="GlyphString.html#search">search</a></li><li data-type='method'><a href="GlyphString.html#setLocale">setLocale</a></li><li data-type='method'><a href="GlyphString.html#slice">slice</a></li><li data-type='method'><a href="GlyphString.html#split">split</a></li><li data-type='method'><a href="GlyphString.html#startsWith">startsWith</a></li><li data-type='method'><a href="GlyphString.html#substr">substr</a></li><li data-type='method'><a href="GlyphString.html#substring">substring</a></li><li data-type='method'><a href="GlyphString.html#toLocaleLowerCase">toLocaleLowerCase</a></li><li data-type='method'><a href="GlyphString.html#toLocaleUpperCase">toLocaleUpperCase</a></li><li data-type='method'><a href="GlyphString.html#toLowerCase">toLowerCase</a></li><li data-type='method'><a href="GlyphString.html#toString">toString</a></li><li data-type='method'><a href="GlyphString.html#toUpperCase">toUpperCase</a></li><li data-type='method'><a href="GlyphString.html#trim">trim</a></li><li data-type='method'><a href="GlyphString.html#trimEnd">trimEnd</a></li><li data-type='method'><a href="GlyphString.html#trimLeft">trimLeft</a></li><li data-type='method'><a href="GlyphString.html#trimRight">trimRight</a></li><li data-type='method'><a href="GlyphString.html#trimStart">trimStart</a></li><li data-type='method'><a href="GlyphString.html#truncate">truncate</a></li><li data-type='method'><a href="GlyphString.html#valueOf">valueOf</a></li></ul></li><li><a href="GlyphString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="GregorianCal.html">GregorianCal</a><ul class='methods'><li data-type='method'><a href="GregorianCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="GregorianCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="GregorianCal.html#getType">getType</a></li><li data-type='method'><a href="GregorianCal.html#isLeapYear">isLeapYear</a></li></ul></li><li><a href="GregorianDate.html">GregorianDate</a><ul class='methods'><li data-type='method'><a href="GregorianDate.html#after">after</a></li><li data-type='method'><a href="GregorianDate.html#before">before</a></li><li data-type='method'><a href="GregorianDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="GregorianDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="GregorianDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="GregorianDate.html#getDayOfYear">getDayOfYear</a></li><li data-type='method'><a href="GregorianDate.html#getEra">getEra</a></li><li data-type='method'><a href="GregorianDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="GregorianDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="GregorianDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="GregorianDate.html#getTime">getTime</a></li><li data-type='method'><a href="GregorianDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="GregorianDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="GregorianDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="GregorianDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="GregorianDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="GregorianDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="GregorianDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="GregorianDate.html#setRd">setRd</a></li><li data-type='method'><a href="GregorianDate.html#setTime">setTime</a></li><li data-type='method'><a href="GregorianDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="HanCal.html">HanCal</a><ul class='methods'><li data-type='method'><a href="HanCal.html#equivalentCycleYear">equivalentCycleYear</a></li><li data-type='method'><a href="HanCal.html#getLeapMonth">getLeapMonth</a></li><li data-type='method'><a href="HanCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="HanCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="HanCal.html#getType">getType</a></li><li data-type='method'><a href="HanCal.html#isLeapYear">isLeapYear</a></li><li data-type='method'><a href="HanCal.html#newYears">newYears</a></li><li data-type='method'><a href="HanCal.html#._chineseTZ">_chineseTZ</a></li><li data-type='method'><a href="HanCal.html#._currentMajorST">_currentMajorST</a></li><li data-type='method'><a href="HanCal.html#._getElapsedYear">_getElapsedYear</a></li><li data-type='method'><a href="HanCal.html#._hanNextSolarLongitude">_hanNextSolarLongitude</a></li><li data-type='method'><a href="HanCal.html#._leapYearCalc">_leapYearCalc</a></li><li data-type='method'><a href="HanCal.html#._majorSTOnOrAfter">_majorSTOnOrAfter</a></li><li data-type='method'><a href="HanCal.html#._newMoonBefore">_newMoonBefore</a></li><li data-type='method'><a href="HanCal.html#._newMoonOnOrAfter">_newMoonOnOrAfter</a></li><li data-type='method'><a href="HanCal.html#._noMajorST">_noMajorST</a></li><li data-type='method'><a href="HanCal.html#._solsticeBefore">_solsticeBefore</a></li></ul></li><li><a href="HanDate.html">HanDate</a><ul class='methods'><li data-type='method'><a href="HanDate.html#_calcYear">_calcYear</a></li><li data-type='method'><a href="HanDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="HanDate.html#getCycleYears">getCycleYears</a></li><li data-type='method'><a href="HanDate.html#getCycles">getCycles</a></li><li data-type='method'><a href="HanDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="HanDate.html#getDayOfYear">getDayOfYear</a></li><li data-type='method'><a href="HanDate.html#getEra">getEra</a></li><li data-type='method'><a href="HanDate.html#isLeapMonth">isLeapMonth</a></li><li data-type='method'><a href="HanDate.html#isLeapYear">isLeapYear</a></li><li data-type='method'><a href="HanDate.html#newRd">newRd</a></li></ul></li><li><a href="HebrewCal.html">HebrewCal</a><ul class='methods'><li data-type='method'><a href="HebrewCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="HebrewCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="HebrewCal.html#getType">getType</a></li><li data-type='method'><a href="HebrewCal.html#isLeapYear">isLeapYear</a></li><li data-type='method'><a href="HebrewCal.html#lastDayOfMonth">lastDayOfMonth</a></li><li data-type='method'><a href="HebrewCal.html#.daysInYear">daysInYear</a></li></ul></li><li><a href="HebrewDate.html">HebrewDate</a><ul class='methods'><li data-type='method'><a href="HebrewDate.html#_calcDateComponents">_calcDateComponents</a></li><li data-type='method'><a href="HebrewDate.html#_calcYear">_calcYear</a></li><li data-type='method'><a href="HebrewDate.html#after">after</a></li><li data-type='method'><a href="HebrewDate.html#before">before</a></li><li data-type='method'><a href="HebrewDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="HebrewDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="HebrewDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="HebrewDate.html#getDayOfYear">getDayOfYear</a></li><li data-type='method'><a href="HebrewDate.html#getEra">getEra</a></li><li data-type='method'><a href="HebrewDate.html#getHalaqim">getHalaqim</a></li><li data-type='method'><a href="HebrewDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="HebrewDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="HebrewDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="HebrewDate.html#getTime">getTime</a></li><li data-type='method'><a href="HebrewDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="HebrewDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="HebrewDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="HebrewDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="HebrewDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="HebrewDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="HebrewDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="HebrewDate.html#setRd">setRd</a></li><li data-type='method'><a href="HebrewDate.html#setTime">setTime</a></li><li data-type='method'><a href="HebrewDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="INumber.html">INumber</a><ul class='methods'><li data-type='method'><a href="INumber.html#getCurrency">getCurrency</a></li><li data-type='method'><a href="INumber.html#getLocale">getLocale</a></li><li data-type='method'><a href="INumber.html#toString">toString</a></li><li data-type='method'><a href="INumber.html#valueOf">valueOf</a></li></ul></li><li><a href="ISO2022.html">ISO2022</a></li><li><a href="ISet.html">ISet</a><ul class='methods'><li data-type='method'><a href="ISet.html#add">add</a></li><li data-type='method'><a href="ISet.html#asArray">asArray</a></li><li data-type='method'><a href="ISet.html#clear">clear</a></li><li data-type='method'><a href="ISet.html#contains">contains</a></li><li data-type='method'><a href="ISet.html#fromJS">fromJS</a></li><li data-type='method'><a href="ISet.html#isEmpty">isEmpty</a></li><li data-type='method'><a href="ISet.html#remove">remove</a></li><li data-type='method'><a href="ISet.html#toJS">toJS</a></li><li data-type='method'><a href="ISet.html#toJson">toJson</a></li></ul></li><li><a href="IString.html">IString</a><ul class='methods'><li data-type='method'><a href="IString.html#_toCodePoint">_toCodePoint</a></li><li data-type='method'><a href="IString.html#charAt">charAt</a></li><li data-type='method'><a href="IString.html#charCodeAt">charCodeAt</a></li><li data-type='method'><a href="IString.html#charIterator">charIterator</a></li><li data-type='method'><a href="IString.html#codePointAt">codePointAt</a></li><li data-type='method'><a href="IString.html#codePointLength">codePointLength</a></li><li data-type='method'><a href="IString.html#concat">concat</a></li><li data-type='method'><a href="IString.html#endsWith">endsWith</a></li><li data-type='method'><a href="IString.html#forEach">forEach</a></li><li data-type='method'><a href="IString.html#forEachCodePoint">forEachCodePoint</a></li><li data-type='method'><a href="IString.html#format">format</a></li><li data-type='method'><a href="IString.html#formatChoice">formatChoice</a></li><li data-type='method'><a href="IString.html#getLocale">getLocale</a></li><li data-type='method'><a href="IString.html#includes">includes</a></li><li data-type='method'><a href="IString.html#indexOf">indexOf</a></li><li data-type='method'><a href="IString.html#iterator">iterator</a></li><li data-type='method'><a href="IString.html#lastIndexOf">lastIndexOf</a></li><li data-type='method'><a href="IString.html#match">match</a></li><li data-type='method'><a href="IString.html#matchAll">matchAll</a></li><li data-type='method'><a href="IString.html#normalize">normalize</a></li><li data-type='method'><a href="IString.html#padEnd">padEnd</a></li><li data-type='method'><a href="IString.html#padStart">padStart</a></li><li data-type='method'><a href="IString.html#repeat">repeat</a></li><li data-type='method'><a href="IString.html#replace">replace</a></li><li data-type='method'><a href="IString.html#search">search</a></li><li data-type='method'><a href="IString.html#setLocale">setLocale</a></li><li data-type='method'><a href="IString.html#slice">slice</a></li><li data-type='method'><a href="IString.html#split">split</a></li><li data-type='method'><a href="IString.html#startsWith">startsWith</a></li><li data-type='method'><a href="IString.html#substr">substr</a></li><li data-type='method'><a href="IString.html#substring">substring</a></li><li data-type='method'><a href="IString.html#toLocaleLowerCase">toLocaleLowerCase</a></li><li data-type='method'><a href="IString.html#toLocaleUpperCase">toLocaleUpperCase</a></li><li data-type='method'><a href="IString.html#toLowerCase">toLowerCase</a></li><li data-type='method'><a href="IString.html#toString">toString</a></li><li data-type='method'><a href="IString.html#toUpperCase">toUpperCase</a></li><li data-type='method'><a href="IString.html#trim">trim</a></li><li data-type='method'><a href="IString.html#trimEnd">trimEnd</a></li><li data-type='method'><a href="IString.html#trimLeft">trimLeft</a></li><li data-type='method'><a href="IString.html#trimRight">trimRight</a></li><li data-type='method'><a href="IString.html#trimStart">trimStart</a></li><li data-type='method'><a href="IString.html#valueOf">valueOf</a></li><li data-type='method'><a href="IString.html#.fromCodePoint">fromCodePoint</a></li><li data-type='method'><a href="IString.html#.loadPlurals">loadPlurals</a></li><li data-type='method'><a href="IString.html#.toCodePoint">toCodePoint</a></li></ul></li><li><a href="IString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="IString_iterator-_iterator.html">_iterator</a></li><li><a href="IslamicCal.html">IslamicCal</a><ul class='methods'><li data-type='method'><a href="IslamicCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="IslamicCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="IslamicCal.html#getType">getType</a></li><li data-type='method'><a href="IslamicCal.html#isLeapYear">isLeapYear</a></li></ul></li><li><a href="IslamicDate.html">IslamicDate</a><ul class='methods'><li data-type='method'><a href="IslamicDate.html#_calcDateComponents">_calcDateComponents</a></li><li data-type='method'><a href="IslamicDate.html#_calcYear">_calcYear</a></li><li data-type='method'><a href="IslamicDate.html#after">after</a></li><li data-type='method'><a href="IslamicDate.html#before">before</a></li><li data-type='method'><a href="IslamicDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="IslamicDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="IslamicDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="IslamicDate.html#getDayOfYear">getDayOfYear</a></li><li data-type='method'><a href="IslamicDate.html#getEra">getEra</a></li><li data-type='method'><a href="IslamicDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="IslamicDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="IslamicDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="IslamicDate.html#getTime">getTime</a></li><li data-type='method'><a href="IslamicDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="IslamicDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="IslamicDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="IslamicDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="IslamicDate.html#newRd">newRd</a></li><li data-type='method'><a href="IslamicDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="IslamicDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="IslamicDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="IslamicDate.html#setRd">setRd</a></li><li data-type='method'><a href="IslamicDate.html#setTime">setTime</a></li><li data-type='method'><a href="IslamicDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="JulianCal.html">JulianCal</a><ul class='methods'><li data-type='method'><a href="JulianCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="JulianCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="JulianCal.html#getType">getType</a></li><li data-type='method'><a href="JulianCal.html#isLeapYear">isLeapYear</a></li></ul></li><li><a href="JulianDate.html">JulianDate</a><ul class='methods'><li data-type='method'><a href="JulianDate.html#_calcDateComponents">_calcDateComponents</a></li><li data-type='method'><a href="JulianDate.html#_calcYear">_calcYear</a></li><li data-type='method'><a href="JulianDate.html#after">after</a></li><li data-type='method'><a href="JulianDate.html#before">before</a></li><li data-type='method'><a href="JulianDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="JulianDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="JulianDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="JulianDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="JulianDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="JulianDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="JulianDate.html#getTime">getTime</a></li><li data-type='method'><a href="JulianDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="JulianDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="JulianDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="JulianDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="JulianDate.html#newRd">newRd</a></li><li data-type='method'><a href="JulianDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="JulianDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="JulianDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="JulianDate.html#setRd">setRd</a></li><li data-type='method'><a href="JulianDate.html#setTime">setTime</a></li><li data-type='method'><a href="JulianDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="JulianDay.html">JulianDay</a><ul class='methods'><li data-type='method'><a href="JulianDay.html#addDate">addDate</a></li><li data-type='method'><a href="JulianDay.html#getDate">getDate</a></li><li data-type='method'><a href="JulianDay.html#getDayFraction">getDayFraction</a></li><li data-type='method'><a href="JulianDay.html#getDays">getDays</a></li><li data-type='method'><a href="JulianDay.html#setDate">setDate</a></li><li data-type='method'><a href="JulianDay.html#setDayFraction">setDayFraction</a></li><li data-type='method'><a href="JulianDay.html#setDays">setDays</a></li></ul></li><li><a href="LengthUnit.html">LengthUnit</a><ul class='methods'><li data-type='method'><a href="LengthUnit.html#convert">convert</a></li><li data-type='method'><a href="LengthUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="LengthUnit.html#expand">expand</a></li><li data-type='method'><a href="LengthUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="LengthUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="LengthUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="LengthUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="LengthUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="LengthUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="LengthUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="LengthUnit.html#list">list</a></li><li data-type='method'><a href="LengthUnit.html#localize">localize</a></li><li data-type='method'><a href="LengthUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="LengthUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="LengthUnit.html#scale">scale</a></li><li data-type='method'><a href="LengthUnit.html#.convert">convert</a></li></ul></li><li><a href="ListFmt.html">ListFmt</a><ul class='methods'><li data-type='method'><a href="ListFmt.html#format">format</a></li><li data-type='method'><a href="ListFmt.html#getLocale">getLocale</a></li><li data-type='method'><a href="ListFmt.html#getStyle">getStyle</a></li></ul></li><li><a href="Locale.html">Locale</a><ul class='methods'><li data-type='method'><a href="Locale.html#equals">equals</a></li><li data-type='method'><a href="Locale.html#getLangSpec">getLangSpec</a></li><li data-type='method'><a href="Locale.html#getLanguage">getLanguage</a></li><li data-type='method'><a href="Locale.html#getLanguageAlpha3">getLanguageAlpha3</a></li><li data-type='method'><a href="Locale.html#getRegion">getRegion</a></li><li data-type='method'><a href="Locale.html#getRegionAlpha3">getRegionAlpha3</a></li><li data-type='method'><a href="Locale.html#getScript">getScript</a></li><li data-type='method'><a href="Locale.html#getSpec">getSpec</a></li><li data-type='method'><a href="Locale.html#getVariant">getVariant</a></li><li data-type='method'><a href="Locale.html#isPseudo">isPseudo</a></li><li data-type='method'><a href="Locale.html#isValid">isValid</a></li><li data-type='method'><a href="Locale.html#toString">toString</a></li><li data-type='method'><a href="Locale.html#.getAvailableLocales">getAvailableLocales</a></li><li data-type='method'><a href="Locale.html#.languageAlpha1ToAlpha3">languageAlpha1ToAlpha3</a></li><li data-type='method'><a href="Locale.html#.regionAlpha2ToAlpha3">regionAlpha2ToAlpha3</a></li></ul></li><li><a href="LocaleInfo.html">LocaleInfo</a><ul class='methods'><li data-type='method'><a href="LocaleInfo.html#getAllScripts">getAllScripts</a></li><li data-type='method'><a href="LocaleInfo.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="LocaleInfo.html#getClock">getClock</a></li><li data-type='method'><a href="LocaleInfo.html#getCurrency">getCurrency</a></li><li data-type='method'><a href="LocaleInfo.html#getCurrencyFormats">getCurrencyFormats</a></li><li data-type='method'><a href="LocaleInfo.html#getDecimalSeparator">getDecimalSeparator</a></li><li data-type='method'><a href="LocaleInfo.html#getDefaultScript">getDefaultScript</a></li><li data-type='method'><a href="LocaleInfo.html#getDelimiterQuotationEnd">getDelimiterQuotationEnd</a></li><li data-type='method'><a href="LocaleInfo.html#getDelimiterQuotationStart">getDelimiterQuotationStart</a></li><li data-type='method'><a href="LocaleInfo.html#getDigits">getDigits</a></li><li data-type='method'><a href="LocaleInfo.html#getDigitsStyle">getDigitsStyle</a></li><li data-type='method'><a href="LocaleInfo.html#getExponential">getExponential</a></li><li data-type='method'><a href="LocaleInfo.html#getFirstDayOfWeek">getFirstDayOfWeek</a></li><li data-type='method'><a href="LocaleInfo.html#getGroupingSeparator">getGroupingSeparator</a></li><li data-type='method'><a href="LocaleInfo.html#getLanguageName">getLanguageName</a></li><li data-type='method'><a href="LocaleInfo.html#getLocale">getLocale</a></li><li data-type='method'><a href="LocaleInfo.html#getMeridiemsStyle">getMeridiemsStyle</a></li><li data-type='method'><a href="LocaleInfo.html#getNativeDecimalSeparator">getNativeDecimalSeparator</a></li><li data-type='method'><a href="LocaleInfo.html#getNativeDigits">getNativeDigits</a></li><li data-type='method'><a href="LocaleInfo.html#getNativeExponential">getNativeExponential</a></li><li data-type='method'><a href="LocaleInfo.html#getNativeGroupingSeparator">getNativeGroupingSeparator</a></li><li data-type='method'><a href="LocaleInfo.html#getNativePercentageSymbol">getNativePercentageSymbol</a></li><li data-type='method'><a href="LocaleInfo.html#getNegativeNumberFormat">getNegativeNumberFormat</a></li><li data-type='method'><a href="LocaleInfo.html#getNegativePercentageFormat">getNegativePercentageFormat</a></li><li data-type='method'><a href="LocaleInfo.html#getPaperSize">getPaperSize</a></li><li data-type='method'><a href="LocaleInfo.html#getPercentageFormat">getPercentageFormat</a></li><li data-type='method'><a href="LocaleInfo.html#getPercentageSymbol">getPercentageSymbol</a></li><li data-type='method'><a href="LocaleInfo.html#getPrimaryGroupingDigits">getPrimaryGroupingDigits</a></li><li data-type='method'><a href="LocaleInfo.html#getRegionName">getRegionName</a></li><li data-type='method'><a href="LocaleInfo.html#getRoundingMode">getRoundingMode</a></li><li data-type='method'><a href="LocaleInfo.html#getScript">getScript</a></li><li data-type='method'><a href="LocaleInfo.html#getSecondaryGroupingDigits">getSecondaryGroupingDigits</a></li><li data-type='method'><a href="LocaleInfo.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="LocaleInfo.html#getUnits">getUnits</a></li><li data-type='method'><a href="LocaleInfo.html#getWeekEndEnd">getWeekEndEnd</a></li><li data-type='method'><a href="LocaleInfo.html#getWeekEndStart">getWeekEndStart</a></li></ul></li><li><a href="LocaleMatcher.html">LocaleMatcher</a><ul class='methods'><li data-type='method'><a href="LocaleMatcher.html#getLikelyLocale">getLikelyLocale</a></li><li data-type='method'><a href="LocaleMatcher.html#getLikelyLocaleMinimal">getLikelyLocaleMinimal</a></li><li data-type='method'><a href="LocaleMatcher.html#getLocale">getLocale</a></li><li data-type='method'><a href="LocaleMatcher.html#getMacroLanguage">getMacroLanguage</a></li><li data-type='method'><a href="LocaleMatcher.html#getRegionContainment">getRegionContainment</a></li><li data-type='method'><a href="LocaleMatcher.html#match">match</a></li><li data-type='method'><a href="LocaleMatcher.html#smallestCommonRegion">smallestCommonRegion</a></li></ul></li><li><a href="MassUnit.html">MassUnit</a><ul class='methods'><li data-type='method'><a href="MassUnit.html#convert">convert</a></li><li data-type='method'><a href="MassUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="MassUnit.html#expand">expand</a></li><li data-type='method'><a href="MassUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="MassUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="MassUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="MassUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="MassUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="MassUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="MassUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="MassUnit.html#list">list</a></li><li data-type='method'><a href="MassUnit.html#localize">localize</a></li><li data-type='method'><a href="MassUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="MassUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="MassUnit.html#scale">scale</a></li><li data-type='method'><a href="MassUnit.html#.convert">convert</a></li></ul></li><li><a href="Name.html">Name</a><ul class='methods'><li data-type='method'><a href="Name.html#_extractPrefixes">_extractPrefixes</a></li><li data-type='method'><a href="Name.html#_extractSuffixes">_extractSuffixes</a></li><li data-type='method'><a href="Name.html#_findFamilyName">_findFamilyName</a></li><li data-type='method'><a href="Name.html#_findLastConjunction">_findLastConjunction</a></li><li data-type='method'><a href="Name.html#_findPatronymicName">_findPatronymicName</a></li><li data-type='method'><a href="Name.html#_findPrefix">_findPrefix</a></li><li data-type='method'><a href="Name.html#_findSuffix">_findSuffix</a></li><li data-type='method'><a href="Name.html#_init">_init</a></li><li data-type='method'><a href="Name.html#_isConjunction">_isConjunction</a></li><li data-type='method'><a href="Name.html#_isPatronymicName">_isPatronymicName</a></li><li data-type='method'><a href="Name.html#_joinArrayOrString">_joinArrayOrString</a></li><li data-type='method'><a href="Name.html#_joinAuxillaries">_joinAuxillaries</a></li><li data-type='method'><a href="Name.html#_joinNameArrays">_joinNameArrays</a></li><li data-type='method'><a href="Name.html#_parseAsianName">_parseAsianName</a></li><li data-type='method'><a href="Name.html#_parseGenericWesternName">_parseGenericWesternName</a></li><li data-type='method'><a href="Name.html#_parseIndonesianName">_parseIndonesianName</a></li><li data-type='method'><a href="Name.html#_parseJapaneseName">_parseJapaneseName</a></li><li data-type='method'><a href="Name.html#_parseKoreanName">_parseKoreanName</a></li><li data-type='method'><a href="Name.html#_parseRussianName">_parseRussianName</a></li><li data-type='method'><a href="Name.html#_parseSpanishName">_parseSpanishName</a></li><li data-type='method'><a href="Name.html#_parseWesternName">_parseWesternName</a></li><li data-type='method'><a href="Name.html#clone">clone</a></li><li data-type='method'><a href="Name.html#getSortFamilyName">getSortFamilyName</a></li><li data-type='method'><a href="Name.html#._isAsianChar">_isAsianChar</a></li><li data-type='method'><a href="Name.html#._isAsianName">_isAsianName</a></li><li data-type='method'><a href="Name.html#._isEuroName">_isEuroName</a></li></ul></li><li><a href="NameFmt.html">NameFmt</a><ul class='methods'><li data-type='method'><a href="NameFmt.html#_adjoinAuxillaries">_adjoinAuxillaries</a></li><li data-type='method'><a href="NameFmt.html#_init">_init</a></li><li data-type='method'><a href="NameFmt.html#format">format</a></li><li data-type='method'><a href="NameFmt.html#getComponents">getComponents</a></li><li data-type='method'><a href="NameFmt.html#getLocale">getLocale</a></li><li data-type='method'><a href="NameFmt.html#getStyle">getStyle</a></li></ul></li><li><a href="NormString.html">NormString</a><ul class='methods'><li data-type='method'><a href="NormString.html#_toCodePoint">_toCodePoint</a></li><li data-type='method'><a href="NormString.html#charAt">charAt</a></li><li data-type='method'><a href="NormString.html#charCodeAt">charCodeAt</a></li><li data-type='method'><a href="NormString.html#codePointAt">codePointAt</a></li><li data-type='method'><a href="NormString.html#codePointLength">codePointLength</a></li><li data-type='method'><a href="NormString.html#concat">concat</a></li><li data-type='method'><a href="NormString.html#ellipsize">ellipsize</a></li><li data-type='method'><a href="NormString.html#endsWith">endsWith</a></li><li data-type='method'><a href="NormString.html#forEach">forEach</a></li><li data-type='method'><a href="NormString.html#forEachCodePoint">forEachCodePoint</a></li><li data-type='method'><a href="NormString.html#format">format</a></li><li data-type='method'><a href="NormString.html#formatChoice">formatChoice</a></li><li data-type='method'><a href="NormString.html#getLocale">getLocale</a></li><li data-type='method'><a href="NormString.html#includes">includes</a></li><li data-type='method'><a href="NormString.html#indexOf">indexOf</a></li><li data-type='method'><a href="NormString.html#iterator">iterator</a></li><li data-type='method'><a href="NormString.html#lastIndexOf">lastIndexOf</a></li><li data-type='method'><a href="NormString.html#match">match</a></li><li data-type='method'><a href="NormString.html#matchAll">matchAll</a></li><li data-type='method'><a href="NormString.html#normalize">normalize</a></li><li data-type='method'><a href="NormString.html#padEnd">padEnd</a></li><li data-type='method'><a href="NormString.html#padStart">padStart</a></li><li data-type='method'><a href="NormString.html#repeat">repeat</a></li><li data-type='method'><a href="NormString.html#replace">replace</a></li><li data-type='method'><a href="NormString.html#search">search</a></li><li data-type='method'><a href="NormString.html#setLocale">setLocale</a></li><li data-type='method'><a href="NormString.html#slice">slice</a></li><li data-type='method'><a href="NormString.html#split">split</a></li><li data-type='method'><a href="NormString.html#startsWith">startsWith</a></li><li data-type='method'><a href="NormString.html#substr">substr</a></li><li data-type='method'><a href="NormString.html#substring">substring</a></li><li data-type='method'><a href="NormString.html#toLocaleLowerCase">toLocaleLowerCase</a></li><li data-type='method'><a href="NormString.html#toLocaleUpperCase">toLocaleUpperCase</a></li><li data-type='method'><a href="NormString.html#toLowerCase">toLowerCase</a></li><li data-type='method'><a href="NormString.html#toString">toString</a></li><li data-type='method'><a href="NormString.html#toUpperCase">toUpperCase</a></li><li data-type='method'><a href="NormString.html#trim">trim</a></li><li data-type='method'><a href="NormString.html#trimEnd">trimEnd</a></li><li data-type='method'><a href="NormString.html#trimLeft">trimLeft</a></li><li data-type='method'><a href="NormString.html#trimRight">trimRight</a></li><li data-type='method'><a href="NormString.html#trimStart">trimStart</a></li><li data-type='method'><a href="NormString.html#truncate">truncate</a></li><li data-type='method'><a href="NormString.html#valueOf">valueOf</a></li><li data-type='method'><a href="NormString.html#.init">init</a></li></ul></li><li><a href="NormString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="NumFmt.html">NumFmt</a><ul class='methods'><li data-type='method'><a href="NumFmt.html#constrain">constrain</a></li><li data-type='method'><a href="NumFmt.html#format">format</a></li><li data-type='method'><a href="NumFmt.html#getCurrency">getCurrency</a></li><li data-type='method'><a href="NumFmt.html#getLocale">getLocale</a></li><li data-type='method'><a href="NumFmt.html#getMaxFractionDigits">getMaxFractionDigits</a></li><li data-type='method'><a href="NumFmt.html#getMinFractionDigits">getMinFractionDigits</a></li><li data-type='method'><a href="NumFmt.html#getRoundingMode">getRoundingMode</a></li><li data-type='method'><a href="NumFmt.html#getSignificantDigits">getSignificantDigits</a></li><li data-type='method'><a href="NumFmt.html#getStyle">getStyle</a></li><li data-type='method'><a href="NumFmt.html#getType">getType</a></li><li data-type='method'><a href="NumFmt.html#getUseNative">getUseNative</a></li><li data-type='method'><a href="NumFmt.html#isGroupingUsed">isGroupingUsed</a></li><li data-type='method'><a href="NumFmt.html#.getAvailableLocales">getAvailableLocales</a></li></ul></li><li><a href="PersianAlgoCal.html">PersianAlgoCal</a><ul class='methods'><li data-type='method'><a href="PersianAlgoCal.html#equivalentCycleYear">equivalentCycleYear</a></li><li data-type='method'><a href="PersianAlgoCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="PersianAlgoCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="PersianAlgoCal.html#getType">getType</a></li><li data-type='method'><a href="PersianAlgoCal.html#isLeapYear">isLeapYear</a></li></ul></li><li><a href="PersianAlgoDate.html">PersianAlgoDate</a><ul class='methods'><li data-type='method'><a href="PersianAlgoDate.html#_calcYear">_calcYear</a></li><li data-type='method'><a href="PersianAlgoDate.html#after">after</a></li><li data-type='method'><a href="PersianAlgoDate.html#before">before</a></li><li data-type='method'><a href="PersianAlgoDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="PersianAlgoDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="PersianAlgoDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="PersianAlgoDate.html#getDayOfYear">getDayOfYear</a></li><li data-type='method'><a href="PersianAlgoDate.html#getEra">getEra</a></li><li data-type='method'><a href="PersianAlgoDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="PersianAlgoDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="PersianAlgoDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="PersianAlgoDate.html#getTime">getTime</a></li><li data-type='method'><a href="PersianAlgoDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="PersianAlgoDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="PersianAlgoDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="PersianAlgoDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="PersianAlgoDate.html#newRd">newRd</a></li><li data-type='method'><a href="PersianAlgoDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="PersianAlgoDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="PersianAlgoDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="PersianAlgoDate.html#setRd">setRd</a></li><li data-type='method'><a href="PersianAlgoDate.html#setTime">setTime</a></li><li data-type='method'><a href="PersianAlgoDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="PersianCal.html">PersianCal</a><ul class='methods'><li data-type='method'><a href="PersianCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="PersianCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="PersianCal.html#getType">getType</a></li><li data-type='method'><a href="PersianCal.html#isLeapYear">isLeapYear</a></li></ul></li><li><a href="PersianDate.html">PersianDate</a><ul class='methods'><li data-type='method'><a href="PersianDate.html#_calcYear">_calcYear</a></li><li data-type='method'><a href="PersianDate.html#after">after</a></li><li data-type='method'><a href="PersianDate.html#before">before</a></li><li data-type='method'><a href="PersianDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="PersianDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="PersianDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="PersianDate.html#getDayOfYear">getDayOfYear</a></li><li data-type='method'><a href="PersianDate.html#getEra">getEra</a></li><li data-type='method'><a href="PersianDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="PersianDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="PersianDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="PersianDate.html#getTime">getTime</a></li><li data-type='method'><a href="PersianDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="PersianDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="PersianDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="PersianDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="PersianDate.html#newRd">newRd</a></li><li data-type='method'><a href="PersianDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="PersianDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="PersianDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="PersianDate.html#setRd">setRd</a></li><li data-type='method'><a href="PersianDate.html#setTime">setTime</a></li><li data-type='method'><a href="PersianDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="PhoneFmt.html">PhoneFmt</a><ul class='methods'><li data-type='method'><a href="PhoneFmt.html#_doFormat">_doFormat</a></li><li data-type='method'><a href="PhoneFmt.html#_getStyle">_getStyle</a></li><li data-type='method'><a href="PhoneFmt.html#_substituteDigits">_substituteDigits</a></li><li data-type='method'><a href="PhoneFmt.html#format">format</a></li><li data-type='method'><a href="PhoneFmt.html#getAvailableStyles">getAvailableStyles</a></li><li data-type='method'><a href="PhoneFmt.html#getStyleExample">getStyleExample</a></li></ul></li><li><a href="PhoneGeoLocator.html">PhoneGeoLocator</a><ul class='methods'><li data-type='method'><a href="PhoneGeoLocator.html#country">country</a></li><li data-type='method'><a href="PhoneGeoLocator.html#locate">locate</a></li></ul></li><li><a href="PhoneNumber.html">PhoneNumber</a><ul class='methods'><li data-type='method'><a href="PhoneNumber.html#_getPrefix">_getPrefix</a></li><li data-type='method'><a href="PhoneNumber.html#_hasPrefix">_hasPrefix</a></li><li data-type='method'><a href="PhoneNumber.html#_join">_join</a></li><li data-type='method'><a href="PhoneNumber.html#_parseNumber">_parseNumber</a></li><li data-type='method'><a href="PhoneNumber.html#_parseOtherCountry">_parseOtherCountry</a></li><li data-type='method'><a href="PhoneNumber.html#_xor">_xor</a></li><li data-type='method'><a href="PhoneNumber.html#compare">compare</a></li><li data-type='method'><a href="PhoneNumber.html#equals">equals</a></li><li data-type='method'><a href="PhoneNumber.html#normalize">normalize</a></li><li data-type='method'><a href="PhoneNumber.html#._getCharacterCode">_getCharacterCode</a></li><li data-type='method'><a href="PhoneNumber.html#._parseImsi">_parseImsi</a></li><li data-type='method'><a href="PhoneNumber.html#.parseImsi">parseImsi</a></li></ul></li><li><a href="PowerUnit.html">PowerUnit</a><ul class='methods'><li data-type='method'><a href="PowerUnit.html#convert">convert</a></li><li data-type='method'><a href="PowerUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="PowerUnit.html#expand">expand</a></li><li data-type='method'><a href="PowerUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="PowerUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="PowerUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="PowerUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="PowerUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="PowerUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="PowerUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="PowerUnit.html#list">list</a></li><li data-type='method'><a href="PowerUnit.html#localize">localize</a></li><li data-type='method'><a href="PowerUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="PowerUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="PowerUnit.html#scale">scale</a></li><li data-type='method'><a href="PowerUnit.html#.convert">convert</a></li></ul></li><li><a href="PressureUnit.html">PressureUnit</a><ul class='methods'><li data-type='method'><a href="PressureUnit.html#convert">convert</a></li><li data-type='method'><a href="PressureUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="PressureUnit.html#expand">expand</a></li><li data-type='method'><a href="PressureUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="PressureUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="PressureUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="PressureUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="PressureUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="PressureUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="PressureUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="PressureUnit.html#list">list</a></li><li data-type='method'><a href="PressureUnit.html#localize">localize</a></li><li data-type='method'><a href="PressureUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="PressureUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="PressureUnit.html#scale">scale</a></li><li data-type='method'><a href="PressureUnit.html#.convert">convert</a></li></ul></li><li><a href="ResBundle.html">ResBundle</a><ul class='methods'><li data-type='method'><a href="ResBundle.html#_loadPseudo">_loadPseudo</a></li><li data-type='method'><a href="ResBundle.html#containsKey">containsKey</a></li><li data-type='method'><a href="ResBundle.html#getLocale">getLocale</a></li><li data-type='method'><a href="ResBundle.html#getName">getName</a></li><li data-type='method'><a href="ResBundle.html#getResObj">getResObj</a></li><li data-type='method'><a href="ResBundle.html#getString">getString</a></li><li data-type='method'><a href="ResBundle.html#getStringJS">getStringJS</a></li><li data-type='method'><a href="ResBundle.html#getType">getType</a></li></ul></li><li><a href="ScriptInfo.html">ScriptInfo</a><ul class='methods'><li data-type='method'><a href="ScriptInfo.html#getCasing">getCasing</a></li><li data-type='method'><a href="ScriptInfo.html#getCode">getCode</a></li><li data-type='method'><a href="ScriptInfo.html#getCodeNumber">getCodeNumber</a></li><li data-type='method'><a href="ScriptInfo.html#getLongCode">getLongCode</a></li><li data-type='method'><a href="ScriptInfo.html#getName">getName</a></li><li data-type='method'><a href="ScriptInfo.html#getNeedsIME">getNeedsIME</a></li><li data-type='method'><a href="ScriptInfo.html#getScriptDirection">getScriptDirection</a></li><li data-type='method'><a href="ScriptInfo.html#.getAllScripts">getAllScripts</a></li></ul></li><li><a href="StringMapper.html">StringMapper</a><ul class='methods'><li data-type='method'><a href="StringMapper.html#getLocale">getLocale</a></li><li data-type='method'><a href="StringMapper.html#map">map</a></li></ul></li><li><a href="TemperatureUnit.html">TemperatureUnit</a><ul class='methods'><li data-type='method'><a href="TemperatureUnit.html#convert">convert</a></li><li data-type='method'><a href="TemperatureUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="TemperatureUnit.html#expand">expand</a></li><li data-type='method'><a href="TemperatureUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="TemperatureUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="TemperatureUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="TemperatureUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="TemperatureUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="TemperatureUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="TemperatureUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="TemperatureUnit.html#list">list</a></li><li data-type='method'><a href="TemperatureUnit.html#localize">localize</a></li><li data-type='method'><a href="TemperatureUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="TemperatureUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="TemperatureUnit.html#scale">scale</a></li><li data-type='method'><a href="TemperatureUnit.html#.convert">convert</a></li></ul></li><li><a href="ThaiSolarCal.html">ThaiSolarCal</a><ul class='methods'><li data-type='method'><a href="ThaiSolarCal.html#getMonLength">getMonLength</a></li><li data-type='method'><a href="ThaiSolarCal.html#getNumMonths">getNumMonths</a></li><li data-type='method'><a href="ThaiSolarCal.html#getType">getType</a></li><li data-type='method'><a href="ThaiSolarCal.html#isLeapYear">isLeapYear</a></li></ul></li><li><a href="ThaiSolarDate.html">ThaiSolarDate</a><ul class='methods'><li data-type='method'><a href="ThaiSolarDate.html#_calcDateComponents">_calcDateComponents</a></li><li data-type='method'><a href="ThaiSolarDate.html#after">after</a></li><li data-type='method'><a href="ThaiSolarDate.html#before">before</a></li><li data-type='method'><a href="ThaiSolarDate.html#firstSunday">firstSunday</a></li><li data-type='method'><a href="ThaiSolarDate.html#getCalendar">getCalendar</a></li><li data-type='method'><a href="ThaiSolarDate.html#getDayOfWeek">getDayOfWeek</a></li><li data-type='method'><a href="ThaiSolarDate.html#getDayOfYear">getDayOfYear</a></li><li data-type='method'><a href="ThaiSolarDate.html#getEra">getEra</a></li><li data-type='method'><a href="ThaiSolarDate.html#getJSDate">getJSDate</a></li><li data-type='method'><a href="ThaiSolarDate.html#getJulianDay">getJulianDay</a></li><li data-type='method'><a href="ThaiSolarDate.html#getRataDie">getRataDie</a></li><li data-type='method'><a href="ThaiSolarDate.html#getTime">getTime</a></li><li data-type='method'><a href="ThaiSolarDate.html#getTimeExtended">getTimeExtended</a></li><li data-type='method'><a href="ThaiSolarDate.html#getTimeZone">getTimeZone</a></li><li data-type='method'><a href="ThaiSolarDate.html#getWeekOfMonth">getWeekOfMonth</a></li><li data-type='method'><a href="ThaiSolarDate.html#getWeekOfYear">getWeekOfYear</a></li><li data-type='method'><a href="ThaiSolarDate.html#onOrAfter">onOrAfter</a></li><li data-type='method'><a href="ThaiSolarDate.html#onOrBefore">onOrBefore</a></li><li data-type='method'><a href="ThaiSolarDate.html#setJulianDay">setJulianDay</a></li><li data-type='method'><a href="ThaiSolarDate.html#setRd">setRd</a></li><li data-type='method'><a href="ThaiSolarDate.html#setTime">setTime</a></li><li data-type='method'><a href="ThaiSolarDate.html#setTimeZone">setTimeZone</a></li></ul></li><li><a href="TimeUnit.html">TimeUnit</a><ul class='methods'><li data-type='method'><a href="TimeUnit.html#convert">convert</a></li><li data-type='method'><a href="TimeUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="TimeUnit.html#expand">expand</a></li><li data-type='method'><a href="TimeUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="TimeUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="TimeUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="TimeUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="TimeUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="TimeUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="TimeUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="TimeUnit.html#list">list</a></li><li data-type='method'><a href="TimeUnit.html#localize">localize</a></li><li data-type='method'><a href="TimeUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="TimeUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="TimeUnit.html#scale">scale</a></li><li data-type='method'><a href="TimeUnit.html#.convert">convert</a></li></ul></li><li><a href="TimeZone.html">TimeZone</a><ul class='methods'><li data-type='method'><a href="TimeZone.html#_calcRuleStart">_calcRuleStart</a></li><li data-type='method'><a href="TimeZone.html#_getOffsetMillisWallTime">_getOffsetMillisWallTime</a></li><li data-type='method'><a href="TimeZone.html#getCountry">getCountry</a></li><li data-type='method'><a href="TimeZone.html#getDSTSavings">getDSTSavings</a></li><li data-type='method'><a href="TimeZone.html#getDSTSavingsStr">getDSTSavingsStr</a></li><li data-type='method'><a href="TimeZone.html#getDisplayName">getDisplayName</a></li><li data-type='method'><a href="TimeZone.html#getId">getId</a></li><li data-type='method'><a href="TimeZone.html#getOffset">getOffset</a></li><li data-type='method'><a href="TimeZone.html#getOffsetMillis">getOffsetMillis</a></li><li data-type='method'><a href="TimeZone.html#getOffsetStr">getOffsetStr</a></li><li data-type='method'><a href="TimeZone.html#getRawOffset">getRawOffset</a></li><li data-type='method'><a href="TimeZone.html#getRawOffsetMillis">getRawOffsetMillis</a></li><li data-type='method'><a href="TimeZone.html#getRawOffsetStr">getRawOffsetStr</a></li><li data-type='method'><a href="TimeZone.html#inDaylightTime">inDaylightTime</a></li><li data-type='method'><a href="TimeZone.html#useDaylightTime">useDaylightTime</a></li><li data-type='method'><a href="TimeZone.html#.getAvailableIds">getAvailableIds</a></li></ul></li><li><a href="UTF16BE.html">UTF16BE</a><ul class='methods'><li data-type='method'><a href="UTF16BE.html#getName">getName</a></li><li data-type='method'><a href="UTF16BE.html#mapToNative">mapToNative</a></li><li data-type='method'><a href="UTF16BE.html#mapToUnicode">mapToUnicode</a></li></ul></li><li><a href="UTF16LE.html">UTF16LE</a><ul class='methods'><li data-type='method'><a href="UTF16LE.html#getName">getName</a></li><li data-type='method'><a href="UTF16LE.html#mapToNative">mapToNative</a></li><li data-type='method'><a href="UTF16LE.html#mapToUnicode">mapToUnicode</a></li></ul></li><li><a href="UTF8.html">UTF8</a><ul class='methods'><li data-type='method'><a href="UTF8.html#getName">getName</a></li><li data-type='method'><a href="UTF8.html#mapToNative">mapToNative</a></li><li data-type='method'><a href="UTF8.html#mapToUnicode">mapToUnicode</a></li></ul></li><li><a href="UnitFmt.html">UnitFmt</a><ul class='methods'><li data-type='method'><a href="UnitFmt.html#format">format</a></li><li data-type='method'><a href="UnitFmt.html#getLocale">getLocale</a></li><li data-type='method'><a href="UnitFmt.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="UnitFmt.html#getScale">getScale</a></li><li data-type='method'><a href="UnitFmt.html#getTemplate">getTemplate</a></li><li data-type='method'><a href="UnitFmt.html#toString">toString</a></li></ul></li><li><a href="UnknownUnit.html">UnknownUnit</a><ul class='methods'><li data-type='method'><a href="UnknownUnit.html#convert">convert</a></li><li data-type='method'><a href="UnknownUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="UnknownUnit.html#expand">expand</a></li><li data-type='method'><a href="UnknownUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="UnknownUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="UnknownUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="UnknownUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="UnknownUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="UnknownUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="UnknownUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="UnknownUnit.html#list">list</a></li><li data-type='method'><a href="UnknownUnit.html#localize">localize</a></li><li data-type='method'><a href="UnknownUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="UnknownUnit.html#scale">scale</a></li><li data-type='method'><a href="UnknownUnit.html#.convert">convert</a></li></ul></li><li><a href="VelocityUnit.html">VelocityUnit</a><ul class='methods'><li data-type='method'><a href="VelocityUnit.html#convert">convert</a></li><li data-type='method'><a href="VelocityUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="VelocityUnit.html#expand">expand</a></li><li data-type='method'><a href="VelocityUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="VelocityUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="VelocityUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="VelocityUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="VelocityUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="VelocityUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="VelocityUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="VelocityUnit.html#list">list</a></li><li data-type='method'><a href="VelocityUnit.html#localize">localize</a></li><li data-type='method'><a href="VelocityUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="VelocityUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="VelocityUnit.html#scale">scale</a></li><li data-type='method'><a href="VelocityUnit.html#.convert">convert</a></li></ul></li><li><a href="VolumeUnit.html">VolumeUnit</a><ul class='methods'><li data-type='method'><a href="VolumeUnit.html#convert">convert</a></li><li data-type='method'><a href="VolumeUnit.html#convertSystem">convertSystem</a></li><li data-type='method'><a href="VolumeUnit.html#expand">expand</a></li><li data-type='method'><a href="VolumeUnit.html#getAmount">getAmount</a></li><li data-type='method'><a href="VolumeUnit.html#getMeasure">getMeasure</a></li><li data-type='method'><a href="VolumeUnit.html#getMeasurementSystem">getMeasurementSystem</a></li><li data-type='method'><a href="VolumeUnit.html#getMeasures">getMeasures</a></li><li data-type='method'><a href="VolumeUnit.html#getOriginalUnit">getOriginalUnit</a></li><li data-type='method'><a href="VolumeUnit.html#getUnit">getUnit</a></li><li data-type='method'><a href="VolumeUnit.html#getUnitIdCaseInsensitive">getUnitIdCaseInsensitive</a></li><li data-type='method'><a href="VolumeUnit.html#list">list</a></li><li data-type='method'><a href="VolumeUnit.html#localize">localize</a></li><li data-type='method'><a href="VolumeUnit.html#newUnit">newUnit</a></li><li data-type='method'><a href="VolumeUnit.html#normalizeUnits">normalizeUnits</a></li><li data-type='method'><a href="VolumeUnit.html#scale">scale</a></li><li data-type='method'><a href="VolumeUnit.html#.convert">convert</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="CType.html">CType</a><ul class='methods'><li data-type='method'><a href="CType.html#._inRange">_inRange</a></li><li data-type='method'><a href="CType.html#._init">_init</a></li><li data-type='method'><a href="CType.html#._load">_load</a></li><li data-type='method'><a href="CType.html#.withinRange">withinRange</a></li></ul></li><li><a href="ilib.html">ilib</a><ul class='methods'><li data-type='method'><a href="ilib.html#.bind">bind</a></li><li data-type='method'><a href="ilib.html#.clearCache">clearCache</a></li><li data-type='method'><a href="ilib.html#.clearPseudoLocales">clearPseudoLocales</a></li><li data-type='method'><a href="ilib.html#.extend">extend</a></li><li data-type='method'><a href="ilib.html#.getLoader">getLoader</a></li><li data-type='method'><a href="ilib.html#.getLocale">getLocale</a></li><li data-type='method'><a href="ilib.html#.getTimeZone">getTimeZone</a></li><li data-type='method'><a href="ilib.html#.getVersion">getVersion</a></li><li data-type='method'><a href="ilib.html#.isArray">isArray</a></li><li data-type='method'><a href="ilib.html#.isDynCode">isDynCode</a></li><li data-type='method'><a href="ilib.html#.isDynData">isDynData</a></li><li data-type='method'><a href="ilib.html#.setAsPseudoLocale">setAsPseudoLocale</a></li><li data-type='method'><a href="ilib.html#.setLoaderCallback">setLoaderCallback</a></li><li data-type='method'><a href="ilib.html#.setLocale">setLocale</a></li><li data-type='method'><a href="ilib.html#.setTimeZone">setTimeZone</a></li></ul></li></ul><h3>Interfaces</h3><ul><li><a href="ilib.Loader.html">Loader</a><ul class='methods'><li data-type='method'><a href="ilib.Loader.html#isAvailable">isAvailable</a></li><li data-type='method'><a href="ilib.Loader.html#listAvailableFiles">listAvailableFiles</a></li><li data-type='method'><a href="ilib.Loader.html#loadFiles">loadFiles</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#CalendarFactory">CalendarFactory</a></li><li><a href="global.html#CharmapFactory">CharmapFactory</a></li><li><a href="global.html#DateFactory">DateFactory</a></li><li><a href="global.html#MeasurementFactory">MeasurementFactory</a></li><li><a href="global.html#isAlnum">isAlnum</a></li><li><a href="global.html#isAlpha">isAlpha</a></li><li><a href="global.html#isAscii">isAscii</a></li><li><a href="global.html#isBlank">isBlank</a></li><li><a href="global.html#isCntrl">isCntrl</a></li><li><a href="global.html#isDigit">isDigit</a></li><li><a href="global.html#isGraph">isGraph</a></li><li><a href="global.html#isIdeo">isIdeo</a></li><li><a href="global.html#isLower">isLower</a></li><li><a href="global.html#isPrint">isPrint</a></li><li><a href="global.html#isPunct">isPunct</a></li><li><a href="global.html#isScript">isScript</a></li><li><a href="global.html#isSpace">isSpace</a></li><li><a href="global.html#isUpper">isUpper</a></li><li><a href="global.html#isXdigit">isXdigit</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">DateFmt.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * DateFmt.js - Date formatter definition
+ *
+ * Copyright © 2012-2015, 2018, 2020 JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !data dateformats sysres
+
+var ilib = require("../index.js");
+var Utils = require("./Utils.js");
+var JSUtils = require("./JSUtils.js");
+
+var Locale = require("./Locale.js");
+var LocaleInfo = require("./LocaleInfo.js");
+
+var IDate = require("./IDate.js");
+var DateFactory = require("./DateFactory.js");
+var CalendarFactory = require("./CalendarFactory.js");
+
+var ResBundle = require("./ResBundle.js");
+var TimeZone = require("./TimeZone.js");
+var GregorianCal = require("./GregorianCal.js");
+
+var ISet = require("./ISet.js");
+
+/**
+ * @class
+ * Create a new date formatter instance. The date formatter is immutable once
+ * it is created, but can format as many different dates as needed with the same
+ * options. Create different date formatter instances for different purposes
+ * and then keep them cached for use later if you have more than one date to
+ * format.&lt;p>
+ *
+ * The options may contain any of the following properties:
+ *
+ * &lt;ul>
+ * &lt;li>&lt;i>locale&lt;/i> - locale to use when formatting the date/time. If the locale is
+ * not specified, then the default locale of the app or web page will be used.
+ *
+ * &lt;li>&lt;i>calendar&lt;/i> - the type of calendar to use for this format. The value should
+ * be a sting containing the name of the calendar. Currently, the supported
+ * types are "gregorian", "julian", "arabic", "hebrew", or "chinese". If the
+ * calendar is not specified, then the default calendar for the locale is used. When the
+ * calendar type is specified, then the format method must be called with an instance of
+ * the appropriate date type. (eg. Gregorian calendar means that the format method must
+ * be called with a GregDate instance.)
+ *
+ * &lt;li>&lt;i>timezone&lt;/i> - time zone to use when formatting times. This may be a time zone
+ * instance or a time zone specifier from the IANA list of time zone database names
+ * (eg. "America/Los_Angeles"),
+ * the string "local", or a string specifying the offset in RFC 822 format. The IANA
+ * list of time zone names can be viewed at
+ * &lt;a href="http://en.wikipedia.org/wiki/List_of_tz_database_time_zones">this page&lt;/a>.
+ * If the time zone is given as "local", the offset from UTC as given by
+ * the Javascript system is used. If the offset is given as an RFC 822 style offset
+ * specifier, it will parse that string and use the resulting offset. If the time zone
+ * is not specified, the
+ * default time zone for the locale is used. If both the date object and this formatter
+ * instance contain time zones and those time zones are different from each other, the
+ * formatter will calculate the offset between the time zones and subtract it from the
+ * date before formatting the result for the current time zone. The theory is that a date
+ * object that contains a time zone specifies a specific instant in time that is valid
+ * around the world, whereas a date object without one is a local time and can only be
+ * used for doing things in the local time zone of the user.
+ *
+ * &lt;li>&lt;i>type&lt;/i> - Specify whether this formatter should format times only, dates only, or
+ * both times and dates together. Valid values are "time", "date", and "datetime". Note that
+ * in some locales, the standard format uses the order "time followed by date" and in others,
+ * the order is exactly opposite, so it is better to create a single "datetime" formatter
+ * than it is to create a time formatter and a date formatter separately and concatenate the
+ * results. A "datetime" formatter will get the order correct for the locale.&lt;p>
+ *
+ * The default type if none is specified in with the type option is "date".
+ *
+ * &lt;li>&lt;i>length&lt;/i> - Specify the length of the format to use. The length is the approximate size of the
+ * formatted string.
+ *
+ * &lt;ul>
+ * &lt;li>&lt;i>short&lt;/i> - use a short representation of the time. This is the most compact format possible for the locale.
+ * &lt;li>&lt;i>medium&lt;/i> - use a medium length representation of the time. This is a slightly longer format.
+ * &lt;li>&lt;i>long&lt;/i> - use a long representation of the time. This is a fully specified format, but some of the textual
+ * components may still be abbreviated
+ * &lt;li>&lt;i>full&lt;/i> - use a full representation of the time. This is a fully specified format where all the textual
+ * components are spelled out completely
+ * &lt;/ul>
+ *
+ * eg. The "short" format for an en_US date may be "MM/dd/yy", whereas the long format might be "d MMM, yyyy". In the long
+ * format, the month name is textual instead of numeric and is longer, the year is 4 digits instead of 2, and the format
+ * contains slightly more spaces and formatting characters.&lt;p>
+ *
+ * Note that the length parameter does not specify which components are to be formatted. Use the "date" and the "time"
+ * properties to specify the components. Also, very few of the components of a time format differ according to the length,
+ * so this property has little to no affect on time formatting.
+ *
+ * &lt;li>&lt;i>date&lt;/i> - This property tells
+ * which components of a date format to use. For example,
+ * sometimes you may wish to format a date that only contains the month and date
+ * without the year, such as when displaying a person's yearly birthday. The value
+ * of this property allows you to specify only those components you want to see in the
+ * final output, ordered correctly for the locale. &lt;p>
+ *
+ * Valid values are:
+ *
+ * &lt;ul>
+ * &lt;li>&lt;i>dmwy&lt;/i> - format all components, weekday, date, month, and year
+ * &lt;li>&lt;i>dmy&lt;/i> - format only date, month, and year
+ * &lt;li>&lt;i>dmw&lt;/i> - format only weekday, date, and month
+ * &lt;li>&lt;i>dm&lt;/i> - format only date and month
+ * &lt;li>&lt;i>my&lt;/i> - format only month and year
+ * &lt;li>&lt;i>dw&lt;/i> - format only the weekday and date
+ * &lt;li>&lt;i>d&lt;/i> - format only the date
+ * &lt;li>&lt;i>m&lt;/i> - format only the month, in numbers for shorter lengths, and letters for
+ * longer lengths
+ * &lt;li>&lt;i>n&lt;/i> - format only the month, in letters only for all lengths
+ * &lt;li>&lt;i>y&lt;/i> - format only the year
+ * &lt;/ul>
+ * Default components, if this property is not specified, is "dmy". This property may be specified
+ * but has no affect if the current formatter is for times only.&lt;p>
+ *
+ * As of ilib 12.0, you can now pass ICU style skeletons in this option similar to the ones you
+ * get from &lt;a href="http://icu-project.org/apiref/icu4c432/classDateTimePatternGenerator.html#aa30c251609c1eea5ad60c95fc497251e">DateTimePatternGenerator.getSkeleton()&lt;/a>.
+ * It will not extract the length from the skeleton so you still need to pass the length property,
+ * but it will extract the date components.
+ *
+ * &lt;li>&lt;i>time&lt;/i> - This property gives which components of a time format to use. The time will be formatted
+ * correctly for the locale with only the time components requested. For example, a clock might only display
+ * the hour and minute and not need the seconds or the am/pm component. In this case, the time property should be set
+ * to "hm". &lt;p>
+ *
+ * Valid values for this property are:
+ *
+ * &lt;ul>
+ * &lt;li>&lt;i>ahmsz&lt;/i> - format the hours, minutes, seconds, am/pm (if using a 12 hour clock), and the time zone
+ * &lt;li>&lt;i>ahms&lt;/i> - format the hours, minutes, seconds, and am/pm (if using a 12 hour clock)
+ * &lt;li>&lt;i>hmsz&lt;/i> - format the hours, minutes, seconds, and the time zone
+ * &lt;li>&lt;i>hms&lt;/i> - format the hours, minutes, and seconds
+ * &lt;li>&lt;i>ahmz&lt;/i> - format the hours, minutes, am/pm (if using a 12 hour clock), and the time zone
+ * &lt;li>&lt;i>ahm&lt;/i> - format the hours, minutes, and am/pm (if using a 12 hour clock)
+ * &lt;li>&lt;i>hmz&lt;/i> - format the hours, minutes, and the time zone
+ * &lt;li>&lt;i>ah&lt;/i> - format only the hours and am/pm if using a 12 hour clock
+ * &lt;li>&lt;i>hm&lt;/i> - format only the hours and minutes
+ * &lt;li>&lt;i>ms&lt;/i> - format only the minutes and seconds
+ * &lt;li>&lt;i>h&lt;/i> - format only the hours
+ * &lt;li>&lt;i>m&lt;/i> - format only the minutes
+ * &lt;li>&lt;i>s&lt;/i> - format only the seconds
+ * &lt;/ul>
+ *
+ * If you want to format a length of time instead of a particular instant
+ * in time, use the duration formatter object (DurationFmt) instead because this
+ * formatter is geared towards instants. A date formatter will make sure that each component of the
+ * time is within the normal range
+ * for that component. That is, the minutes will always be between 0 and 59, no matter
+ * what is specified in the date to format. A duration format will allow the number
+ * of minutes to exceed 59 if, for example, you were displaying the length of
+ * a movie of 198 minutes.&lt;p>
+ *
+ * Default value if this property is not specified is "hma".&lt;p>
+ *
+ * As of ilib 12.0, you can now pass ICU style skeletons in this option similar to the ones you
+ * get from &lt;a href="http://icu-project.org/apiref/icu4c432/classDateTimePatternGenerator.html#aa30c251609c1eea5ad60c95fc497251e">DateTimePatternGenerator.getSkeleton()&lt;/a>.
+ * It will not extract the length from the skeleton so you still need to pass the length property,
+ * but it will extract the time components.
+ *
+ * &lt;li>&lt;i>clock&lt;/i> - specify that the time formatter should use a 12 or 24 hour clock.
+ * Valid values are "12" and "24".&lt;p>
+ *
+ * In some locales, both clocks are used. For example, in en_US, the general populace uses
+ * a 12 hour clock with am/pm, but in the US military or in nautical or aeronautical or
+ * scientific writing, it is more common to use a 24 hour clock. This property allows you to
+ * construct a formatter that overrides the default for the locale.&lt;p>
+ *
+ * If this property is not specified, the default is to use the most widely used convention
+ * for the locale.
+ *
+ * &lt;li>&lt;i>template&lt;/i> - use the given template string as a fixed format when formatting
+ * the date/time. Valid codes to use in a template string are as follows:
+ *
+ * &lt;ul>
+ * &lt;li>&lt;i>a&lt;/i> - am/pm marker
+ * &lt;li>&lt;i>B&lt;/i> - the current day period
+ * &lt;li>&lt;i>d&lt;/i> - 1 or 2 digit date of month, not padded
+ * &lt;li>&lt;i>dd&lt;/i> - 1 or 2 digit date of month, 0 padded to 2 digits
+ * &lt;li>&lt;i>O&lt;/i> - ordinal representation of the date of month (eg. "1st", "2nd", etc.)
+ * &lt;li>&lt;i>D&lt;/i> - 1 to 3 digit day of year
+ * &lt;li>&lt;i>DD&lt;/i> - 1 to 3 digit day of year, 0 padded to 2 digits
+ * &lt;li>&lt;i>DDD&lt;/i> - 1 to 3 digit day of year, 0 padded to 3 digits
+ * &lt;li>&lt;i>M&lt;/i> - 1 or 2 digit month number, not padded
+ * &lt;li>&lt;i>MM&lt;/i> - 1 or 2 digit month number, 0 padded to 2 digits
+ * &lt;li>&lt;i>N&lt;/i> - 1 character month name abbreviation
+ * &lt;li>&lt;i>NN&lt;/i> - 2 character month name abbreviation
+ * &lt;li>&lt;i>MMM&lt;/i> - 3 character month name abbreviation
+ * &lt;li>&lt;i>MMMM&lt;/i> - fully spelled out month name
+ * &lt;li>&lt;i>L&lt;/i> - 1 character stand-alone month name abbreviation
+ * &lt;li>&lt;i>LL&lt;/i> - 2 character stand-alone month name abbreviation
+ * &lt;li>&lt;i>LLL&lt;/i> - 3 character stand-alone month name abbreviation
+ * &lt;li>&lt;i>LLLL&lt;/i> - fully spelled out stand-alone month name
+ * &lt;li>&lt;i>yy&lt;/i> - 2 digit year
+ * &lt;li>&lt;i>yyyy&lt;/i> - 4 digit year
+ * &lt;li>&lt;i>E&lt;/i> - day-of-week name, abbreviated to a single character
+ * &lt;li>&lt;i>EE&lt;/i> - day-of-week name, abbreviated to a max of 2 characters
+ * &lt;li>&lt;i>EEE&lt;/i> - day-of-week name, abbreviated to a max of 3 characters
+ * &lt;li>&lt;i>EEEE&lt;/i> - day-of-week name fully spelled out
+ * &lt;li>&lt;i>c&lt;/i> - stand-alone day-of-week name, abbreviated to a single character
+ * &lt;li>&lt;i>cc&lt;/i> - stand-alone day-of-week name, abbreviated to a max of 2 characters
+ * &lt;li>&lt;i>ccc&lt;/i> - stand-alone day-of-week name, abbreviated to a max of 3 characters
+ * &lt;li>&lt;i>cccc&lt;/i> - stand-alone day-of-week name fully spelled out
+ * &lt;li>&lt;i>G&lt;/i> - era designator
+ * &lt;li>&lt;i>w&lt;/i> - week number in year
+ * &lt;li>&lt;i>ww&lt;/i> - week number in year, 0 padded to 2 digits
+ * &lt;li>&lt;i>W&lt;/i> - week in month
+ * &lt;li>&lt;i>h&lt;/i> - hour (12 followed by 1 to 11)
+ * &lt;li>&lt;i>hh&lt;/i> - hour (12, followed by 1 to 11), 0 padded to 2 digits
+ * &lt;li>&lt;i>k&lt;/i> - hour (1 to 24)
+ * &lt;li>&lt;i>kk&lt;/i> - hour (1 to 24), 0 padded to 2 digits
+ * &lt;li>&lt;i>H&lt;/i> - hour (0 to 23)
+ * &lt;li>&lt;i>HH&lt;/i> - hour (0 to 23), 0 padded to 2 digits
+ * &lt;li>&lt;i>K&lt;/i> - hour (0 to 11)
+ * &lt;li>&lt;i>KK&lt;/i> - hour (0 to 11), 0 padded to 2 digits
+ * &lt;li>&lt;i>m&lt;/i> - minute in hour
+ * &lt;li>&lt;i>mm&lt;/i> - minute in hour, 0 padded to 2 digits
+ * &lt;li>&lt;i>s&lt;/i> - second in minute
+ * &lt;li>&lt;i>ss&lt;/i> - second in minute, 0 padded to 2 digits
+ * &lt;li>&lt;i>S&lt;/i> - millisecond (1 to 3 digits)
+ * &lt;li>&lt;i>SSS&lt;/i> - millisecond, 0 padded to 3 digits
+ * &lt;li>&lt;i>z&lt;/i> - general time zone
+ * &lt;li>&lt;i>Z&lt;/i> - RFC 822 time zone
+ * &lt;/ul>
+ *
+ * &lt;li>&lt;i>useNative&lt;/i> - the flag used to determine whether to use the native script settings
+ * for formatting the numbers.
+ *
+ * &lt;li>&lt;i>meridiems&lt;/i> - string that specifies what style of meridiems to use with this
+ * format. The choices are "default", "gregorian", "ethiopic", and "chinese". The "default"
+ * style is often the simple Gregorian AM/PM, but the actual style is chosen by the locale.
+ * (For almost all locales, the Gregorian AM/PM style is most frequently used.)
+ * The "ethiopic" style uses 5 different meridiems for "morning", "noon", "afternoon",
+ * "evening", and "night". The "chinese" style uses 7 different meridiems corresponding
+ * to the various parts of the day. N.B. Even for the Chinese locales, the default is "gregorian"
+ * when formatting dates in the Gregorian calendar.
+ *
+ * &lt;li>&lt;i>useIntl&lt;/i> - choose whether Intl.DateTimeFormat object for formatting.
+ * When it is set to true, the Intl object is available, it supports the requested locale, and
+ * the parameters can be converted to equivalent parameters for the Intl.DateTimeFormat object,
+ * then it will format the date relatively quickly using Intl.
+ * When they cannot be converted, the Intl object is not available, or the Intl object does not support
+ * the requested locale, it will perform the relatively slow formatting using regular ilib code written in Javascript.
+ * The code will often return different results depending on the platform and version of the Javascript engine
+ * and which version of CLDR it supports. If you need consistency across versions and platforms,
+ * do not use the useIntl flag. Just stick with the regular ilib formatting code.
+ *
+ * &lt;li>&lt;i>onLoad&lt;/i> - a callback function to call when the date format object is fully
+ * loaded. When the onLoad option is given, the DateFmt object will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ *
+ * &lt;li>&lt;i>sync&lt;/i> - tell whether to load any missing locale data synchronously or
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while.
+ *
+ * &lt;li>&lt;i>loadParams&lt;/i> - an object containing parameters to pass to the
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
+ * &lt;/ul>
+ *
+ * Any substring containing letters within single or double quotes will be used
+ * as-is in the final output and will not be interpretted for codes as above.&lt;p>
+ *
+ * Example: a date format in Spanish might be given as: "'El' d. 'de' MMMM", where
+ * the 'El' and the 'de' are left as-is in the output because they are quoted. Typical
+ * output for this example template might be, "El 5. de Mayo".
+ *
+ * The following options will be used when formatting a date/time with an explicit
+ * template:
+ *
+ * &lt;ul>
+ * &lt;li>locale - the locale is only used for
+ * translations of things like month names or day-of-week names.
+ * &lt;li>calendar - used to translate a date instance into date/time component values
+ * that can be formatted into the template
+ * &lt;li>timezone - used to figure out the offset to add or subtract from the time to
+ * get the final time component values
+ * &lt;li>clock - used to figure out whether to format times with a 12 or 24 hour clock.
+ * If this option is specified, it will override the hours portion of a time format.
+ * That is, "hh" is switched with "HH" and "kk" is switched with "KK" as appropriate.
+ * If this option is not specified, the 12/24 code in the template will dictate whether
+ * to use the 12 or 24 clock, and the 12/24 default in the locale will be ignored.
+ * &lt;/ul>
+ *
+ * All other options will be ignored and their corresponding getter methods will
+ * return the empty string.&lt;p>
+ *
+ *
+ * @constructor
+ * @param {Object} options options governing the way this date formatter instance works
+ */
+var DateFmt = function(options) {
+    var arr, i, bad, c, comps,
+        sync = true,
+        loadParams = undefined;
+
+    this.locale = new Locale();
+    this.type = "date";
+    this.length = "s";
+    this.dateComponents = "dmy";
+    this.timeComponents = "ahm";
+    this.meridiems = "default";
+    this.useIntl = false;
+
+    options = options || {sync: true};
+    if (options.locale) {
+        this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
+    }
+
+    if (options.type) {
+        if (options.type === 'date' || options.type === 'time' || options.type === 'datetime') {
+            this.type = options.type;
+        }
+    }
+
+    if (options.calendar) {
+        this.calName = options.calendar;
+    }
+
+    if (options.length) {
+        if (options.length === 'short' ||
+            options.length === 'medium' ||
+            options.length === 'long' ||
+            options.length === 'full') {
+            // only use the first char to save space in the json files
+            this.length = options.length.charAt(0);
+        }
+    }
+
+    if (options.date) {
+        arr = options.date.split("");
+        var dateComps = new ISet();
+        bad = false;
+        for (i = 0; i &lt; arr.length; i++) {
+            c = arr[i].toLowerCase();
+            if (c === "e") c = "w"; // map ICU -> ilib
+            if (c !== 'd' &amp;&amp; c !== 'm' &amp;&amp; c !== 'y' &amp;&amp; c !== 'w' &amp;&amp; c !== 'n') {
+                // ignore time components and the era
+                if (c !== 'h' &amp;&amp; c !== 'm'  &amp;&amp; c !== 's' &amp;&amp; c !== 'a' &amp;&amp; c !== 'z' &amp;&amp; c !== 'g') {
+                    bad = true;
+                    break;
+                }
+            } else {
+                dateComps.add(c);
+            }
+        }
+        if (!bad) {
+            comps = dateComps.asArray().sort(function (left, right) {
+                return (left &lt; right) ? -1 : ((right &lt; left) ? 1 : 0);
+            });
+            this.dateComponents = comps.join("");
+        }
+    }
+
+    if (options.time) {
+        arr = options.time.split("");
+        var timeComps = new ISet();
+        this.badTime = false;
+        for (i = 0; i &lt; arr.length; i++) {
+            c = arr[i].toLowerCase();
+            if (c !== 'h' &amp;&amp; c !== 'm' &amp;&amp; c !== 's' &amp;&amp; c !== 'a' &amp;&amp; c !== 'z') {
+                // ignore the date components
+                if (c !== 'd' &amp;&amp; c !== 'm' &amp;&amp; c !== 'y' &amp;&amp; c !== 'w' &amp;&amp; c !== 'e' &amp;&amp; c !== 'n' &amp;&amp; c !== 'g') {
+                    this.badTime = true;
+                    break;
+                }
+            } else {
+                timeComps.add(c);
+            }
+        }
+        if (!this.badTime) {
+            comps = timeComps.asArray().sort(function (left, right) {
+                return (left &lt; right) ? -1 : ((right &lt; left) ? 1 : 0);
+            });
+            this.timeComponents = comps.join("");
+        }
+    }
+
+    if (options.clock &amp;&amp; (options.clock === '12' || options.clock === '24')) {
+        this.clock = options.clock;
+    }
+
+    if (options.template) {
+        // many options are not useful when specifying the template directly, so zero
+        // them out.
+        this.type = "";
+        this.length = "";
+        this.dateComponents = "";
+        this.timeComponents = "";
+
+        this.template = options.template;
+    }
+
+    if (options.timezone) {
+        if (options.timezone instanceof TimeZone) {
+            this.tz = options.timezone;
+            this.timezone = this.tz.getId();
+        } else {
+            this.timezone = options.timezone;
+        }
+    }
+
+    if (typeof(options.useNative) === 'boolean') {
+        this.useNative = options.useNative;
+    }
+
+    if (typeof(options.meridiems) !== 'undefined' &amp;&amp;
+        (options.meridiems === "chinese" ||
+            options.meridiems === "gregorian" ||
+            options.meridiems === "ethiopic")) {
+        this.meridiems = options.meridiems;
+    }
+
+    if (typeof(options.sync) !== 'undefined') {
+        sync = (options.sync === true);
+    }
+
+    if (typeof(options.useIntl) !== 'undefined') {
+        this.useIntl = options.useIntl;
+    }
+
+    loadParams = options.loadParams;
+
+    new LocaleInfo(this.locale, {
+        sync: sync,
+        loadParams: loadParams,
+        onLoad: ilib.bind(this, function (li) {
+            this.locinfo = li;
+
+            // get the default calendar name from the locale, and if the locale doesn't define
+            // one, use the hard-coded gregorian as the last resort
+            this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
+
+            if(this.useIntl &amp;&amp; typeof(Intl) !== 'undefined' &amp;&amp; Intl.DateTimeFormat.supportedLocalesOf(this.locale.getSpec()).length > 0 &amp;&amp;
+            (this.locinfo.getDigitsStyle() === "western" &amp;&amp; (!options.template) &amp;&amp; this.calName === "gregorian")){
+                var len = DateFmt.lenmap[this.length];
+                if(this.type === "date" &amp;&amp;
+                    ((this.dateComponents === "dmy" &amp;&amp; len !== "full") || (this.dateComponents === "dmwy" &amp;&amp; len === "full"))){
+                    this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
+                        dateStyle: len
+                    });
+                } else if (this.type === "time" &amp;&amp;
+                    this.timeComponents === "ahm" || this.timeComponents === "ahms"){
+                    var timeMap = {
+                        "ahm": "short",
+                        "ahms": "medium"
+                    }
+                    this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
+                        timeStyle: timeMap[this.timeComponents]
+                    });
+                } else if (this.type === "date" &amp;&amp; this.dateComponents === "m" &amp;&amp; len === "full") {
+                    this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
+                        month: "long"
+                    });
+
+                } else if (this.type === "date" &amp;&amp; this.dateComponents === "w" &amp;&amp; len === "full") {
+                    this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
+                       weekday: "long"
+                    });
+                } else {
+                    this.useIntl = false;
+                }
+            }
+            if(!this.useIntl){
+                if (!this.IntlDateTimeObj &amp;&amp; ilib.isDynCode()) {
+                    // If we are running in the dynamic code loading assembly of ilib, the following
+                    // will attempt to dynamically load the calendar date class for this calendar. If
+                    // it doesn't work, this just goes on and it will use Gregorian instead.
+                    DateFactory._init(this.calName);
+                }
+
+                CalendarFactory({
+                    type: this.calName,
+                    sync: sync,
+                    loadParams: loadParams,
+                    onLoad: ilib.bind(this, function(cal) {
+                        this.cal = cal;
+
+                        if (!this.cal) {
+                            // can be synchronous
+                            this.cal = new GregorianCal();
+                        }
+                        if (this.meridiems === "default") {
+                            this.meridiems = li.getMeridiemsStyle();
+                        }
+
+                        // load the strings used to translate the components
+                        new ResBundle({
+                            locale: this.locale,
+                            name: "sysres",
+                            sync: sync,
+                            loadParams: loadParams,
+                            onLoad: ilib.bind(this, function (rb) {
+                                this.sysres = rb;
+
+                                if (!this.tz) {
+                                    var timezone = options.timezone;
+                                    if (!timezone &amp;&amp; !options.locale) {
+                                        timezone = "local";
+                                    }
+
+                                    new TimeZone({
+                                        locale: this.locale,
+                                        id: timezone,
+                                        sync: sync,
+                                        loadParams: loadParams,
+                                        onLoad: ilib.bind(this, function(tz) {
+                                            this.tz = tz;
+                                            this._init(options);
+                                        })
+                                    });
+                                } else {
+                                    this._init(options);
+                                }
+                            })
+                        });
+                    })
+                });
+            }
+            else {
+                if (typeof(options.onLoad) === 'function') {
+                    options.onLoad(this);
+                }
+            }
+        })
+    });
+};
+
+// used in getLength
+DateFmt.lenmap = {
+    "s": "short",
+    "m": "medium",
+    "l": "long",
+    "f": "full"
+};
+
+DateFmt.defaultFmt = {
+    "gregorian": {
+        "order": "{date} {time}",
+        "date": {
+            "dmwy": "EEE d/MM/yyyy",
+            "dmy": "d/MM/yyyy",
+            "dmw": "EEE d/MM",
+            "dm": "d/MM",
+            "my": "MM/yyyy",
+            "dw": "EEE d",
+            "d": "dd",
+            "m": "MM",
+            "y": "yyyy",
+            "n": "NN",
+            "w": "EEE"
+        },
+        "time": {
+            "12": "h:mm:ssa",
+            "24": "H:mm:ss"
+        },
+        "range": {
+            "c00": "{st} - {et}, {sd}/{sm}/{sy}",
+            "c01": "{sd}/{sm} {st} - {ed}/{em} {et}, {sy}",
+            "c02": "{sd}/{sm} {st} - {ed}/{em} {et}, {sy}",
+            "c03": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
+            "c10": "{sd}-{ed}/{sm}/{sy}",
+            "c11": "{sd}/{sm} - {ed}/{em} {sy}",
+            "c12": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+            "c20": "{sm}/{sy} - {em}/{ey}",
+            "c30": "{sy} - {ey}"
+        }
+    },
+    "islamic": "gregorian",
+    "hebrew": "gregorian",
+    "julian": "gregorian",
+    "buddhist": "gregorian",
+    "persian": "gregorian",
+    "persian-algo": "gregorian",
+    "han": "gregorian"
+};
+
+/**
+* @static
+* @private
+*/
+DateFmt.monthNameLenMap = {
+    "short" : "N",
+    "medium": "NN",
+    "long":   "MMM",
+    "full":   "MMMM"
+};
+
+/**
+* @static
+* @private
+*/
+DateFmt.weekDayLenMap = {
+    "short" : "E",
+    "medium": "EE",
+    "long":   "EEE",
+    "full":   "EEEE"
+};
+
+/**
+ * Return the range of possible meridiems (times of day like "AM" or
+ * "PM") in this date formatter.&lt;p>
+ *
+ * The options may contain any of the following properties:
+ *
+ * &lt;ul>
+ * &lt;li>&lt;i>locale&lt;/i> - locale to use when formatting the date/time. If the locale is
+ * not specified, then the default locale of the app or web page will be used.
+ *
+ * &lt;li>&lt;i>meridiems&lt;/i> - string that specifies what style of meridiems to use with this
+ * format. The choices are "default", "gregorian", "ethiopic", and "chinese". The "default"
+ * style is often the simple Gregorian AM/PM, but the actual style is chosen by the locale.
+ * (For almost all locales, the Gregorian AM/PM style is most frequently used.)
+ * The "ethiopic" style uses 5 different meridiems for "morning", "noon", "afternoon",
+ * "evening", and "night". The "chinese" style uses 7 different meridiems corresponding
+ * to the various parts of the day. N.B. Even for the Chinese locales, the default is "gregorian"
+ * when formatting dates in the Gregorian calendar.
+ * &lt;/ul>
+ *
+ * @static
+ * @public
+ * @param {Object} options options governing the way this date formatter instance works for getting meridiems range
+ * @return {Array.&lt;{name:string,start:string,end:string}>}
+ */
+DateFmt.getMeridiemsRange = function (options) {
+    options = options || {sync: true};
+    var args = JSUtils.merge({}, options);
+    args.onLoad = function(fmt) {
+        if (typeof(options.onLoad) === "function") {
+            options.onLoad(fmt.getMeridiemsRange());
+        }
+    };
+    var fmt = new DateFmt(args);
+
+    return fmt.getMeridiemsRange();
+};
+
+/**
+ * return true if the locale is supported in date and time formatting for Intl.DateTimeFormat Object
+ * &lt;ul>
+ * &lt;li>&lt;i>locale&lt;/i> - locale to check if it is available or not.
+ * If the locale is not specified, then it returns false.
+ *
+ * &lt;/ul>
+ *
+ * @static
+ * @public
+ * @param {string} locale locale to check if it is available or not.
+ * @return {Boolean} true if it is available to use, false otherwise
+ */
+
+DateFmt.isIntlDateTimeAvailable = function (locale) {
+    if(!locale || !ilib._global("Intl")) return false;
+    return (Intl.DateTimeFormat.supportedLocalesOf(locale).length > 0) ? true : false;
+};
+
+DateFmt.prototype = {
+    /**
+     * @private
+     * Finish initializing the formatter object
+     */
+    _init: function(options) {
+        if (typeof (options.sync) === 'undefined') {
+            options.sync = true;
+        }
+        Utils.loadData({
+            object: "DateFmt",
+            locale: this.locale,
+            name: "dateformats.json",
+            sync: options.sync,
+            loadParams: options.loadParams,
+            callback: ilib.bind(this, function (formats) {
+                if (!formats) {
+                    formats = ilib.data.dateformats || DateFmt.defaultFmt;
+                }
+
+                this.info = formats;
+                var ret = this;
+
+                if (this.template) {
+                    this._massageTemplate();
+                } else {
+                    if (typeof(this.clock) === 'undefined') {
+                        // default to the locale instead
+                        this.clock = this.locinfo.getClock();
+                    }
+
+                    if (typeof(options.sync) === "boolean" &amp;&amp; !options.sync) {
+                        // in async mode, capture the exception and call the callback with "undefined"
+                        try {
+                            this._initTemplate(formats);
+                            this._massageTemplate();
+                        } catch (e) {
+                            ret = undefined;
+                        }
+                    } else {
+                        // in sync mode, allow the exception to percolate upwards
+                        this._initTemplate(formats);
+                        this._massageTemplate();
+                    }
+                }
+
+                if (typeof(options.onLoad) === 'function') {
+                    options.onLoad(ret);
+                }
+           })
+        });
+    },
+    /**
+     * @protected
+     * @param {string|{
+     *         order:(string|{
+     *             s:string,
+     *             m:string,
+     *             l:string,
+     *             f:string
+     *         }),
+     *         date:Object.&lt;string, (string|{
+     *             s:string,
+     *             m:string,
+     *             l:string,
+     *             f:string
+     *         })>,
+     *         time:Object.&lt;string,Object.&lt;string,(string|{
+     *             s:string,
+     *             m:string,
+     *             l:string,
+     *             f:string
+     *         })>>,
+     *         range:Object.&lt;string, (string|{
+     *             s:string,
+     *             m:string,
+     *             l:string,
+     *             f:string
+     *         })>
+     *     }} formats
+     */
+    _initTemplate: function (formats) {
+        if (formats[this.calName]) {
+            var name = formats[this.calName];
+            // may be an alias to another calendar type
+            this.formats = (typeof(name) === "string") ? formats[name] : name;
+
+            this.template = "";
+
+            switch (this.type) {
+                case "datetime":
+                    this.template = (this.formats &amp;&amp; this._getLengthFormat(this.formats.order, this.length)) || "{date} {time}";
+                    this.template = this.template.replace("{date}", this._getFormat(this.formats.date, this.dateComponents, this.length) || "");
+                    this.template = this.template.replace("{time}", this._getFormat(this.formats.time[this.clock], this.timeComponents, this.length) || "");
+                    break;
+                case "date":
+                    this.template = this._getFormat(this.formats.date, this.dateComponents, this.length);
+                    break;
+                case "time":
+                    this.template = this._getFormat(this.formats.time[this.clock], this.timeComponents, this.length);
+                    break;
+            }
+
+            // calculate what order the components appear in for this locale
+            this.componentOrder = this._getFormat(this.formats.date, "dmy", "l").
+                replace(/[^dMy]/g, "").
+                replace(/y+/, "y").
+                replace(/d+/, "d").
+                replace(/M+/, "m");
+        } else {
+            throw "No formats available for calendar " + this.calName + " in locale " + this.locale.toString();
+        }
+    },
+
+    /**
+     * @protected
+     */
+    _massageTemplate: function () {
+        var i;
+
+        if (this.clock &amp;&amp; this.template) {
+            // explicitly set the hours to the requested type
+            var temp = "";
+            switch (this.clock) {
+                case "24":
+                    for (i = 0; i &lt; this.template.length; i++) {
+                        if (this.template.charAt(i) == "'") {
+                            temp += this.template.charAt(i++);
+                            while (i &lt; this.template.length &amp;&amp; this.template.charAt(i) !== "'") {
+                                temp += this.template.charAt(i++);
+                            }
+                            if (i &lt; this.template.length) {
+                                temp += this.template.charAt(i);
+                            }
+                        } else if (this.template.charAt(i) == 'K') {
+                            temp += 'k';
+                        } else if (this.template.charAt(i) == 'h') {
+                            temp += 'H';
+                        } else {
+                            temp += this.template.charAt(i);
+                        }
+                    }
+                    this.template = temp;
+                    break;
+                case "12":
+                    for (i = 0; i &lt; this.template.length; i++) {
+                        if (this.template.charAt(i) == "'") {
+                            temp += this.template.charAt(i++);
+                            while (i &lt; this.template.length &amp;&amp; this.template.charAt(i) !== "'") {
+                                temp += this.template.charAt(i++);
+                            }
+                            if (i &lt; this.template.length) {
+                                temp += this.template.charAt(i);
+                            }
+                        } else if (this.template.charAt(i) == 'k') {
+                            temp += 'K';
+                        } else if (this.template.charAt(i) == 'H') {
+                            temp += 'h';
+                        } else {
+                            temp += this.template.charAt(i);
+                        }
+                    }
+                    this.template = temp;
+                    break;
+            }
+        }
+
+        // tokenize it now for easy formatting
+        this.templateArr = this._tokenize(this.template);
+
+        var digits;
+        // set up the mapping to native or alternate digits if necessary
+        if (typeof(this.useNative) === "boolean") {
+            if (this.useNative) {
+                digits = this.locinfo.getNativeDigits();
+                if (digits) {
+                    this.digits = digits;
+                }
+            }
+        } else if (this.locinfo.getDigitsStyle() === "native") {
+            digits = this.locinfo.getNativeDigits();
+            if (digits) {
+                this.useNative = true;
+                this.digits = digits;
+            }
+        }
+    },
+
+    /**
+     * Convert the template into an array of date components separated by formatting chars.
+     * @protected
+     * @param {string} template Format template to tokenize into components
+     * @return {Array.&lt;string>} a tokenized array of date format components
+     */
+    _tokenize: function (template) {
+        var i = 0, start, ch, letter, arr = [];
+
+        // console.log("_tokenize: tokenizing template " + template);
+        if (template) {
+            while (i &lt; template.length) {
+                ch = template.charAt(i);
+                start = i;
+                if (ch === "'") {
+                    // console.log("found quoted string");
+                    i++;
+                    // escaped string - push as-is, then dequote later
+                    while (i &lt; template.length &amp;&amp; template.charAt(i) !== "'") {
+                        i++;
+                    }
+                    if (i &lt; template.length) {
+                        i++;    // grab the other quote too
+                    }
+                } else if ((ch >= 'a' &amp;&amp; ch &lt;= 'z') || (ch >= 'A' &amp;&amp; ch &lt;= 'Z')) {
+                    letter = template.charAt(i);
+                    // console.log("found letters " + letter);
+                    while (i &lt; template.length &amp;&amp; ch === letter) {
+                        ch = template.charAt(++i);
+                    }
+                } else {
+                    // console.log("found other");
+                    while (i &lt; template.length &amp;&amp; ch !== "'" &amp;&amp; (ch &lt; 'a' || ch > 'z') &amp;&amp; (ch &lt; 'A' || ch > 'Z')) {
+                        ch = template.charAt(++i);
+                    }
+                }
+                arr.push(template.substring(start,i));
+                // console.log("start is " + start + " i is " + i + " and substr is " + template.substring(start,i));
+            }
+        }
+        return arr;
+    },
+
+    /**
+     * @protected
+     * @param {Object.&lt;string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
+     * @param {string} components Format components to search
+     * @param {string} length Length of the requested format
+     * @return {string|undefined} the requested format
+     */
+    _getFormatInternal: function getFormatInternal(obj, components, length) {
+        if (typeof(components) !== 'undefined' &amp;&amp; obj &amp;&amp; obj[components]) {
+            return this._getLengthFormat(obj[components], length);
+        }
+        return undefined;
+    },
+
+    // stand-alone of m (month) is l
+    // stand-alone of my (month year) is mys
+    // stand-alone of d (day) is a
+    // stand-alone of w (weekday) is e
+    // stand-alone of y (year) is r
+    _standAlones: {
+        "m": "l",
+        "my": "mys",
+        "d": "a",
+        "w": "e",
+        "y": "r"
+    },
+
+    /**
+     * @protected
+     * @param {Object.&lt;string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
+     * @param {string} components Format components to search
+     * @param {string} length Length of the requested format
+     * @return {string|undefined} the requested format
+     */
+    _getFormat: function getFormat(obj, components, length) {
+        // handle some special cases for stand-alone formats
+        if (components &amp;&amp; this._standAlones[components]) {
+            var tmp = this._getFormatInternal(obj, this._standAlones[components], length);
+            if (tmp) {
+                return tmp;
+            }
+        }
+
+        // if no stand-alone format is available, fall back to the regular format
+        return this._getFormatInternal(obj, components, length);
+    },
+
+    /**
+     * @protected
+     * @param {(string|{s:string,m:string,l:string,f:string})} obj Object to search
+     * @param {string} length Length of the requested format
+     * @return {(string|undefined)} the requested format
+     */
+    _getLengthFormat: function getLengthFormat(obj, length) {
+        if (typeof(obj) === 'string') {
+            return obj;
+        } else if (obj[length]) {
+            return obj[length];
+        }
+        return undefined;
+    },
+
+    /**
+     * Return the locale used with this formatter instance.
+     * @return {Locale} the Locale instance for this formatter
+     */
+    getLocale: function() {
+        return this.locale;
+    },
+
+    /**
+     * Return the template string that is used to format date/times for this
+     * formatter instance. This will work, even when the template property is not explicitly
+     * given in the options to the constructor. Without the template option, the constructor
+     * will build the appropriate template according to the options and use that template
+     * in the format method.
+     *
+     * @return {string} the format template for this formatter
+     */
+    getTemplate: function() {
+        return this.template;
+    },
+
+    /**
+     * Return the order of the year, month, and date components for the current locale.&lt;p>
+     *
+     * When implementing a date input widget in a UI, it would be useful to know what
+     * order to put the year, month, and date input fields so that it conforms to the
+     * user expectations for the locale. This method gives that order by returning a
+     * string that has a single "y", "m", and "d" character in it in the correct
+     * order.&lt;p>
+     *
+     * For example, the return value "ymd" means that this locale formats the year first,
+     * the month second, and the date third, and "mdy" means that the month is first,
+     * the date is second, and the year is third. Four of the 6 possible permutations
+     * of the three letters have at least one locale that uses that ordering, though some
+     * combinations are far more likely than others. The ones that are not used by any
+     * locales are "dym" and "myd", though new locales are still being added to
+     * CLDR frequently, and possible orderings cannot be predicted. Your code should
+     * support all 6 possibilities, just in case.
+     *
+     * @return {string} a string giving the date component order
+     */
+    getDateComponentOrder: function() {
+        return this.componentOrder;
+    },
+
+    /**
+     * Return the type of this formatter. The type is a string that has one of the following
+     * values: "time", "date", "datetime".
+     * @return {string} the type of the formatter
+     */
+    getType: function() {
+        return this.type;
+    },
+
+    /**
+     * Return the name of the calendar used to format date/times for this
+     * formatter instance.
+     * @return {string} the name of the calendar used by this formatter
+     */
+    getCalendar: function () {
+        return this.cal.getType() || 'gregorian';
+    },
+
+    /**
+     * Return the length used to format date/times in this formatter. This is either the
+     * value of the length option to the constructor, or the default value.
+     *
+     * @return {string} the length of formats this formatter returns
+     */
+    getLength: function () {
+        return DateFmt.lenmap[this.length] || "";
+    },
+
+    /**
+     * Return the date components that this formatter formats. This is either the
+     * value of the date option to the constructor, or the default value. If this
+     * formatter is a time-only formatter, this method will return the empty
+     * string. The date component letters may be specified in any order in the
+     * constructor, but this method will reorder the given components to a standard
+     * order.
+     *
+     * @return {string} the date components that this formatter formats
+     */
+    getDateComponents: function () {
+        return this.dateComponents || "";
+    },
+
+    /**
+     * Return the time components that this formatter formats. This is either the
+     * value of the time option to the constructor, or the default value. If this
+     * formatter is a date-only formatter, this method will return the empty
+     * string. The time component letters may be specified in any order in the
+     * constructor, but this method will reorder the given components to a standard
+     * order.
+     *
+     * @return {string} the time components that this formatter formats
+     */
+    getTimeComponents: function () {
+        return this.timeComponents || "";
+    },
+
+    /**
+     * Return the time zone used to format date/times for this formatter
+     * instance.
+     * @return {TimeZone} a time zone object that this formatter is formatting for
+     */
+    getTimeZone: function () {
+        return this.tz;
+    },
+
+    /**
+     * Return the clock option set in the constructor. If the clock option was
+     * not given, the default from the locale is returned instead.
+     * @return {string} "12" or "24" depending on whether this formatter uses
+     * the 12-hour or 24-hour clock
+     */
+    getClock: function () {
+        return this.clock || this.locinfo.getClock();
+    },
+
+    /**
+     * Return the meridiems range in current locale.
+     * @return {Array.&lt;{name:string,start:string,end:string}>} the range of available meridiems
+     */
+    getMeridiemsRange: function () {
+        var result;
+        var _getSysString = function (key) {
+            return (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key)).toString();
+        };
+
+        switch (this.meridiems) {
+        case "chinese":
+            result = [
+                {
+                    name: _getSysString.call(this, "azh0"),
+                    start: "00:00",
+                    end: "05:59"
+                },
+                {
+                    name: _getSysString.call(this, "azh1"),
+                    start: "06:00",
+                    end: "08:59"
+                },
+                {
+                    name: _getSysString.call(this, "azh2"),
+                    start: "09:00",
+                    end: "11:59"
+                },
+                {
+                    name: _getSysString.call(this, "azh3"),
+                    start: "12:00",
+                    end: "12:59"
+                },
+                {
+                    name: _getSysString.call(this, "azh4"),
+                    start: "13:00",
+                    end: "17:59"
+                },
+                {
+                    name: _getSysString.call(this, "azh5"),
+                    start: "18:00",
+                    end: "20:59"
+                },
+                {
+                    name: _getSysString.call(this, "azh6"),
+                    start: "21:00",
+                    end: "23:59"
+                }
+            ];
+            break;
+        case "ethiopic":
+            result = [
+                {
+                    name: _getSysString.call(this, "a0-ethiopic"),
+                    start: "00:00",
+                    end: "05:59"
+                },
+                {
+                    name: _getSysString.call(this, "a1-ethiopic"),
+                    start: "06:00",
+                    end: "06:00"
+                },
+                {
+                    name: _getSysString.call(this, "a2-ethiopic"),
+                    start: "06:01",
+                    end: "11:59"
+                },
+                {
+                    name: _getSysString.call(this, "a3-ethiopic"),
+                    start: "12:00",
+                    end: "17:59"
+                },
+                {
+                    name: _getSysString.call(this, "a4-ethiopic"),
+                    start: "18:00",
+                    end: "23:59"
+                }
+            ];
+            break;
+        default:
+            result = [
+                {
+                    name: _getSysString.call(this, "a0"),
+                    start: "00:00",
+                    end: "11:59"
+                },
+                {
+                    name: _getSysString.call(this, "a1"),
+                    start: "12:00",
+                    end: "23:59"
+                }
+            ];
+            break;
+        }
+
+        return result;
+    },
+
+    _findMeridiem: function(hours, minutes) {
+        var range = this.info.dayPeriods;
+        if (!range) {
+            return "";
+        }
+        // find all day periods that apply, and then choose the shortest one
+        var minuteOfDay = hours * 60 + minutes;
+        var shortest = {
+            name: "",
+            length: 2000
+        };
+        for (var i = 0; i &lt; range.length; i++) {
+            var period = range[i];
+            if (minuteOfDay === period.at || (minuteOfDay >= period.from &amp;&amp; minuteOfDay &lt; period.to)) {
+                var periodCode = "B" + i;
+                var length = typeof(period.at) !== "undefined" ? 0 : (period.to - period.from);
+
+                if (length &lt; shortest.length) {
+                    shortest = {
+                        name: this.sysres.getString(undefined, periodCode + "-" + this.calName) ||
+                            this.sysres.getString(undefined, periodCode),
+                        length: length
+                    };
+                }
+            }
+        }
+
+        return shortest.name;
+    },
+
+    /**
+     * @private
+     */
+    _getTemplate: function (prefix, calendar) {
+        if (calendar !== "gregorian") {
+            return prefix + "-" + calendar;
+        }
+        return prefix;
+    },
+
+    /**
+     * Returns an array of the months of the year, formatted to the optional length specified.
+     * i.e. ...getMonthsOfYear() OR ...getMonthsOfYear({length: "short"})
+     * &lt;p>
+     * The options parameter may contain any of the following properties:
+     *
+     * &lt;ul>
+     * &lt;li>&lt;i>length&lt;/i> - length of the names of the months being sought. This may be one of
+     * "short", "medium", "long", or "full"
+     * &lt;li>&lt;i>date&lt;/i> - retrieve the names of the months in the date of the given date
+     * &lt;li>&lt;i>year&lt;/i> - retrieve the names of the months in the given year. In some calendars,
+     * the months have different names depending if that year is a leap year or not.
+     * &lt;/ul>
+     *
+     * @param  {Object=} options an object-literal that contains any of the above properties
+     * @return {Array} an array of the names of all of the months of the year in the current calendar
+     */
+    getMonthsOfYear: function(options) {
+        var length = (options &amp;&amp; options.length) || this.getLength(),
+            template = DateFmt.monthNameLenMap[length],
+            months = [undefined],
+            date,
+            monthCount;
+
+        if (options) {
+            if (options.date) {
+                date = DateFactory._dateToIlib(options.date);
+            }
+
+            if (options.year) {
+                date = DateFactory({year: options.year, month: 1, day: 1, type: this.cal.getType()});
+            }
+        }
+
+        if (!date) {
+            date = DateFactory({
+                calendar: this.cal.getType()
+            });
+        }
+
+        monthCount = this.cal.getNumMonths(date.getYears());
+        for (var i = 1; i &lt;= monthCount; i++) {
+            months[i] = this.sysres.getString(this._getTemplate(template + i, this.cal.getType())).toString();
+        }
+        return months;
+    },
+
+    /**
+     * Returns an array of the days of the week, formatted to the optional length specified.
+     * i.e. ...getDaysOfWeek() OR ...getDaysOfWeek({length: "short"})
+     * &lt;p>
+     * The options parameter may contain any of the following properties:
+     *
+     * &lt;ul>
+     * &lt;li>&lt;i>length&lt;/i> - length of the names of the months being sought. This may be one of
+     * "short", "medium", "long", or "full"
+     * &lt;/ul>
+     * @param  {Object=} options an object-literal that contains one key
+     *                   "length" with the standard length strings
+     * @return {Array} an array of all of the names of the days of the week
+     */
+    getDaysOfWeek: function(options) {
+        var length = (options &amp;&amp; options.length) || this.getLength(),
+            template = DateFmt.weekDayLenMap[length],
+            days = [];
+        for (var i = 0; i &lt; 7; i++) {
+            days[i] = this.sysres.getString(this._getTemplate(template + i, this.cal.getType())).toString();
+        }
+        return days;
+    },
+
+
+    /**
+     * Convert this formatter to a string representation by returning the
+     * format template. This method delegates to getTemplate.
+     *
+     * @return {string} the format template
+     */
+    toString: function() {
+        return this.getTemplate();
+    },
+
+    /**
+     * @private
+     * Format a date according to a sequence of components.
+     * @param {IDate} date a date/time object to format
+     * @param {Array.&lt;string>} templateArr an array of components to format
+     * @return {string} the formatted date
+     */
+    _formatTemplate: function (date, templateArr) {
+        var i, key, temp, tz, str = "";
+        for (i = 0; i &lt; templateArr.length; i++) {
+            switch (templateArr[i]) {
+                case 'd':
+                    str += (date.day || 1);
+                    break;
+                case 'dd':
+                    str += JSUtils.pad(date.day || "1", 2);
+                    break;
+                case 'yy':
+                    temp = "" + ((date.year || 0) % 100);
+                    str += JSUtils.pad(temp, 2);
+                    break;
+                case 'yyyy':
+                    str += JSUtils.pad(date.year || "0", 4);
+                    break;
+                case 'M':
+                    str += (date.month || 1);
+                    break;
+                case 'MM':
+                    str += JSUtils.pad(date.month || "1", 2);
+                    break;
+                case 'h':
+                    temp = (date.hour || 0) % 12;
+                    if (temp == 0) {
+                        temp = "12";
+                    }
+                    str += temp;
+                    break;
+                case 'hh':
+                    temp = (date.hour || 0) % 12;
+                    if (temp == 0) {
+                        temp = "12";
+                    }
+                    str += JSUtils.pad(temp, 2);
+                    break;
+                /*
+                case 'j':
+                    temp = (date.hour || 0) % 12 + 1;
+                    str += temp;
+                    break;
+                case 'jj':
+                    temp = (date.hour || 0) % 12 + 1;
+                    str += JSUtils.pad(temp, 2);
+                    break;
+                */
+                case 'K':
+                    temp = (date.hour || 0) % 12;
+                    str += temp;
+                    break;
+                case 'KK':
+                    temp = (date.hour || 0) % 12;
+                    str += JSUtils.pad(temp, 2);
+                    break;
+
+                case 'H':
+                    str += (date.hour || "0");
+                    break;
+                case 'HH':
+                    str += JSUtils.pad(date.hour || "0", 2);
+                    break;
+                case 'k':
+                    str += (date.hour == 0 ? "24" : date.hour);
+                    break;
+                case 'kk':
+                    temp = (date.hour == 0 ? "24" : date.hour);
+                    str += JSUtils.pad(temp, 2);
+                    break;
+
+                case 'm':
+                    str += (date.minute || "0");
+                    break;
+                case 'mm':
+                    str += JSUtils.pad(date.minute || "0", 2);
+                    break;
+                case 's':
+                    str += (date.second || "0");
+                    break;
+                case 'ss':
+                    str += JSUtils.pad(date.second || "0", 2);
+                    break;
+                case 'S':
+                    str += (date.millisecond || "0");
+                    break;
+                case 'SSS':
+                    str += JSUtils.pad(date.millisecond || "0", 3);
+                    break;
+
+                case 'N':
+                case 'NN':
+                case 'MMM':
+                case 'MMMM':
+                case 'L':
+                case 'LL':
+                case 'LLL':
+                case 'LLLL':
+                    key = templateArr[i] + (date.month || 1);
+                    str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key) ||
+                           this.sysres.getString(undefined, key.replace(/L/g,"M") + "-" + this.calName) || this.sysres.getString(undefined, key.replace(/L/g,"M")));
+                    break;
+
+                case 'E':
+                case 'EE':
+                case 'EEE':
+                case 'EEEE':
+                case 'c':
+                case 'cc':
+                case 'ccc':
+                case 'cccc':
+                    key = templateArr[i] + date.getDayOfWeek();
+                    //console.log("finding " + key + " in the resources");
+                    str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                    break;
+
+                case 'a':
+                    switch (this.meridiems) {
+                    case "chinese":
+                        if (date.hour &lt; 6) {
+                            key = "azh0";    // before dawn
+                        } else if (date.hour &lt; 9) {
+                            key = "azh1";    // morning
+                        } else if (date.hour &lt; 12) {
+                            key = "azh2";    // late morning/day before noon
+                        } else if (date.hour &lt; 13) {
+                            key = "azh3";    // noon hour/midday
+                        } else if (date.hour &lt; 18) {
+                            key = "azh4";    // afternoon
+                        } else if (date.hour &lt; 21) {
+                            key = "azh5";    // evening time/dusk
+                        } else {
+                            key = "azh6";    // night time
+                        }
+                        break;
+                    case "ethiopic":
+                        if (date.hour &lt; 6) {
+                            key = "a0-ethiopic";    // morning
+                        } else if (date.hour === 6 &amp;&amp; date.minute === 0) {
+                            key = "a1-ethiopic";    // noon
+                        } else if (date.hour >= 6 &amp;&amp; date.hour &lt; 12) {
+                            key = "a2-ethiopic";    // afternoon
+                        } else if (date.hour >= 12 &amp;&amp; date.hour &lt; 18) {
+                            key = "a3-ethiopic";    // evening
+                        } else if (date.hour >= 18) {
+                            key = "a4-ethiopic";    // night
+                        }
+                        break;
+                    default:
+                        key = date.hour &lt; 12 ? "a0" : "a1";
+                        break;
+                    }
+                    //console.log("finding " + key + " in the resources");
+                    str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                    break;
+
+                case 'B':
+                    str += this._findMeridiem(date.hour, date.minute);
+                    break;
+
+                case 'w':
+                    str += date.getWeekOfYear();
+                    break;
+                case 'ww':
+                    str += JSUtils.pad(date.getWeekOfYear(), 2);
+                    break;
+
+                case 'D':
+                    str += date.getDayOfYear();
+                    break;
+                case 'DD':
+                    str += JSUtils.pad(date.getDayOfYear(), 2);
+                    break;
+                case 'DDD':
+                    str += JSUtils.pad(date.getDayOfYear(), 3);
+                    break;
+                case 'W':
+                    str += date.getWeekOfMonth(this.locale);
+                    break;
+
+                case 'G':
+                    key = "G" + date.getEra();
+                    str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                    break;
+
+                case 'O':
+                    temp = this.sysres.getString("1#1st|2#2nd|3#3rd|21#21st|22#22nd|23#23rd|31#31st|#{num}th", "ordinalChoice");
+                    str += temp.formatChoice(date.day, {num: date.day}, false);
+                    break;
+
+                case 'z': // general time zone
+                    tz = this.getTimeZone(); // lazy-load the tz
+                    str += tz.getDisplayName(date, "standard");
+                    break;
+                case 'Z': // RFC 822 time zone
+                    tz = this.getTimeZone(); // lazy-load the tz
+                    str += tz.getDisplayName(date, "rfc822");
+                    break;
+
+                default:
+                    str += templateArr[i].replace(/'/g, "");
+                    break;
+            }
+        }
+
+        if (this.digits) {
+            str = JSUtils.mapString(str, this.digits);
+        }
+        return str;
+    },
+
+    /**
+     * Format a particular date instance according to the settings of this
+     * formatter object. The type of the date instance being formatted must
+     * correspond exactly to the calendar type with which this formatter was
+     * constructed. If the types are not compatible, this formatter will
+     * produce bogus results.
+     *
+     * @param {IDate|number|string|Date|JulianDay|null|undefined} dateLike a date-like object to format
+     * @return {string} the formatted version of the given date instance
+     */
+    format: function (dateLike) {
+        var thisZoneName = this.tz &amp;&amp; this.tz.getId() || "local";
+
+        var date = DateFactory._dateToIlib(dateLike, thisZoneName, this.locale);
+
+        if (!date.getCalendar || !(date instanceof IDate)) {
+            throw "Wrong date type passed to DateFmt.format()";
+        }
+
+        if(this.useIntl &amp;&amp; this.IntlDateTimeObj){
+            var jsDate = DateFactory._ilibToDate(date, thisZoneName, this.locale);
+            return this.IntlDateTimeObj.format(jsDate);
+        }
+
+        var dateZoneName = date.timezone || "local";
+
+        // convert to the time zone of this formatter before formatting
+        if (dateZoneName !== thisZoneName || date.getCalendar() !== this.calName) {
+            // console.log("Differing time zones date: " + dateZoneName + " and fmt: " + thisZoneName + ". Converting...");
+            // this will recalculate the date components based on the new time zone
+            // and/or convert a date in another calendar to the current calendar before formatting it
+            var newDate = DateFactory({
+                type: this.calName,
+                timezone: thisZoneName,
+                julianday: date.getJulianDay()
+            });
+
+            date = newDate;
+        }
+        return this._formatTemplate(date, this.templateArr);
+    },
+
+    /**
+     * Return a string that describes a date relative to the given
+     * reference date. The string returned is text that for the locale that
+     * was specified when the formatter instance was constructed.&lt;p>
+     *
+     * The date can be in the future relative to the reference date or in
+     * the past, and the formatter will generate the appropriate string.&lt;p>
+     *
+     * The text used to describe the relative reference depends on the length
+     * of time between the date and the reference. If the time was in the
+     * past, it will use the "ago" phrase, and in the future, it will use
+     * the "in" phrase. Examples:&lt;p>
+     *
+     * &lt;ul>
+     * &lt;li>within a minute: either "X seconds ago" or "in X seconds"
+     * &lt;li>within an hour: either "X minutes ago" or "in X minutes"
+     * &lt;li>within a day: either "X hours ago" or "in X hours"
+     * &lt;li>within 2 weeks: either "X days ago" or "in X days"
+     * &lt;li>within 12 weeks (~3 months): either "X weeks ago" or "in X weeks"
+     * &lt;li>within two years: either "X months ago" or "in X months"
+     * &lt;li>longer than 2 years: "X years ago" or "in X years"
+     * &lt;/ul>
+     *
+     * @param {IDate|number|string|Date|JulianDay|null|undefined} reference a date that the date parameter should be relative to
+     * @param {IDate|number|string|Date|JulianDay|null|undefined} date a date being formatted
+     * @throws "Wrong calendar type" when the start or end dates are not the same
+     * calendar type as the formatter itself
+     * @return {string} the formatted relative date
+     */
+    formatRelative: function(reference, date) {
+        reference = DateFactory._dateToIlib(reference);
+        date = DateFactory._dateToIlib(date);
+
+        var referenceRd, dateRd, fmt, diff, absDiff, num;
+
+        if (typeof(reference) !== 'object' || !reference.getCalendar || reference.getCalendar() !== this.calName ||
+            typeof(date) !== 'object' || !date.getCalendar || date.getCalendar() !== this.calName) {
+            throw "Wrong calendar type";
+        }
+
+        referenceRd = reference.getRataDie();
+        dateRd = date.getRataDie();
+
+        diff = referenceRd - dateRd;
+        absDiff = Math.abs(diff);
+
+        if (absDiff &lt; 0.000694444) {
+            num = Math.round(absDiff * 86400);
+            switch (this.length) {
+                case 's':
+                    fmt = diff > 0 ? this.sysres.getString("#{num}s ago") : this.sysres.getString("#in {num}s");
+                    break;
+                case 'm':
+                    fmt = diff > 0 ? this.sysres.getString("1#1 sec ago|#{num} sec ago") : this.sysres.getString("1#in 1 sec|#in {num} sec");
+                    break;
+                default:
+                case 'f':
+                case 'l':
+                    fmt = diff > 0 ? this.sysres.getString("1#1 second ago|#{num} seconds ago") : this.sysres.getString("1#in 1 second|#in {num} seconds");
+                    break;
+            }
+        } else if (absDiff &lt; 0.041666667) {
+            num = Math.round(absDiff * 1440);
+            switch (this.length) {
+                case 's':
+                    fmt = diff > 0 ? this.sysres.getString("#{num}mi ago") : this.sysres.getString("#in {num}mi");
+                    break;
+                case 'm':
+                    fmt = diff > 0 ? this.sysres.getString("1#1 min ago|#{num} min ago") :  this.sysres.getString("1#in 1 min|#in {num} min");
+                    break;
+                default:
+                case 'f':
+                case 'l':
+                    fmt = diff > 0 ? this.sysres.getString("1#1 minute ago|#{num} minutes ago") : this.sysres.getString("1#in 1 minute|#in {num} minutes");
+                    break;
+            }
+        } else if (absDiff &lt; 1) {
+            num = Math.round(absDiff * 24);
+            switch (this.length) {
+                case 's':
+                    fmt = diff > 0 ? this.sysres.getString("#{num}h ago") : this.sysres.getString("#in {num}h");
+                    break;
+                case 'm':
+                    fmt = diff > 0 ? this.sysres.getString("1#1 hr ago|#{num} hrs ago") : this.sysres.getString("1#in 1 hr|#in {num} hrs");
+                    break;
+                default:
+                case 'f':
+                case 'l':
+                    fmt = diff > 0 ? this.sysres.getString("1#1 hour ago|#{num} hours ago") : this.sysres.getString("1#in 1 hour|#in {num} hours");
+                    break;
+            }
+        } else if (absDiff &lt; 14) {
+            num = Math.round(absDiff);
+            switch (this.length) {
+                case 's':
+                    fmt = diff > 0 ? this.sysres.getString("#{num}d ago") : this.sysres.getString("#in {num}d");
+                    break;
+                case 'm':
+                    fmt = diff > 0 ? this.sysres.getString("1#1 dy ago|#{num} dys ago") : this.sysres.getString("1#in 1 dy|#in {num} dys");
+                    break;
+                default:
+                case 'f':
+                case 'l':
+                    fmt = diff > 0 ? this.sysres.getString("1#1 day ago|#{num} days ago") : this.sysres.getString("1#in 1 day|#in {num} days");
+                    break;
+            }
+        } else if (absDiff &lt; 84) {
+            num = Math.round(absDiff/7);
+            switch (this.length) {
+                case 's':
+                    fmt = diff > 0 ? this.sysres.getString("#{num}w ago") : this.sysres.getString("#in {num}w");
+                    break;
+                case 'm':
+                    fmt = diff > 0 ? this.sysres.getString("1#1 wk ago|#{num} wks ago") : this.sysres.getString("1#in 1 wk|#in {num} wks");
+                    break;
+                default:
+                case 'f':
+                case 'l':
+                    fmt = diff > 0 ? this.sysres.getString("1#1 week ago|#{num} weeks ago") : this.sysres.getString("1#in 1 week|#in {num} weeks");
+                    break;
+            }
+        } else if (absDiff &lt; 730) {
+            num = Math.round(absDiff/30.4);
+            switch (this.length) {
+                case 's':
+                    fmt = diff > 0 ? this.sysres.getString("#{num}mo ago") : this.sysres.getString("#in {num}mo");
+                    break;
+                case 'm':
+                    fmt = diff > 0 ? this.sysres.getString("1#1 mon ago|#{num} mons ago") : this.sysres.getString("1#in 1 mon|#in {num} mons");
+                    break;
+                default:
+                case 'f':
+                case 'l':
+                    fmt = diff > 0 ? this.sysres.getString("1#1 month ago|#{num} months ago") : this.sysres.getString("1#in 1 month|#in {num} months");
+                    break;
+            }
+        } else {
+            num = Math.round(absDiff/365);
+            switch (this.length) {
+                case 's':
+                    fmt = diff > 0 ? this.sysres.getString("#{num}y ago") : this.sysres.getString("#in {num}y");
+                    break;
+                case 'm':
+                    fmt = diff > 0 ? this.sysres.getString("1#1 yr ago|#{num} yrs ago") : this.sysres.getString("1#in 1 yr|#in {num} yrs");
+                    break;
+                default:
+                case 'f':
+                case 'l':
+                    fmt = diff > 0 ? this.sysres.getString("1#1 year ago|#{num} years ago") : this.sysres.getString("1#in 1 year|#in {num} years");
+                    break;
+            }
+        }
+        return fmt.formatChoice(num, {num: num});
+    }
+};
+
+module.exports = DateFmt;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a> on Tue Jan 10 2023 10:16:48 GMT+0900 (Korean Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

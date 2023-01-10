@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> JSUtils.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="CType.html">CType</a></li><li><a href="ilib.html">ilib</a></li></ul><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="AddressFmt.html">AddressFmt</a></li><li><a href="AlphabeticIndex.html">AlphabeticIndex</a></li><li><a href="AreaUnit.html">AreaUnit</a></li><li><a href="CaseMapper.html">CaseMapper</a></li><li><a href="Charmap.html">Charmap</a></li><li><a href="CharmapTable.html">CharmapTable</a></li><li><a href="Charset.html">Charset</a></li><li><a href="Collator.html">Collator</a></li><li><a href="CopticCal.html">CopticCal</a></li><li><a href="CopticDate.html">CopticDate</a></li><li><a href="Country.html">Country</a></li><li><a href="Currency.html">Currency</a></li><li><a href="DateFmt.html">DateFmt</a></li><li><a href="DateRngFmt.html">DateRngFmt</a></li><li><a href="DigitalSpeedUnit.html">DigitalSpeedUnit</a></li><li><a href="DigitalStorageUnit.html">DigitalStorageUnit</a></li><li><a href="DurationFmt.html">DurationFmt</a></li><li><a href="EnergyUnit.html">EnergyUnit</a></li><li><a href="EthiopicCal.html">EthiopicCal</a></li><li><a href="EthiopicDate.html">EthiopicDate</a></li><li><a href="ForceUnit.html">ForceUnit</a></li><li><a href="FuelConsumptionUnit.html">FuelConsumptionUnit</a></li><li><a href="GlyphString.html">GlyphString</a></li><li><a href="GlyphString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="GregorianCal.html">GregorianCal</a></li><li><a href="GregorianDate.html">GregorianDate</a></li><li><a href="HanCal.html">HanCal</a></li><li><a href="HanDate.html">HanDate</a></li><li><a href="HebrewCal.html">HebrewCal</a></li><li><a href="HebrewDate.html">HebrewDate</a></li><li><a href="INumber.html">INumber</a></li><li><a href="ISO2022.html">ISO2022</a></li><li><a href="ISet.html">ISet</a></li><li><a href="IString.html">IString</a></li><li><a href="IString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="IString_iterator-_iterator.html">_iterator</a></li><li><a href="IslamicCal.html">IslamicCal</a></li><li><a href="IslamicDate.html">IslamicDate</a></li><li><a href="JulianCal.html">JulianCal</a></li><li><a href="JulianDate.html">JulianDate</a></li><li><a href="JulianDay.html">JulianDay</a></li><li><a href="LengthUnit.html">LengthUnit</a></li><li><a href="ListFmt.html">ListFmt</a></li><li><a href="Locale.html">Locale</a></li><li><a href="LocaleInfo.html">LocaleInfo</a></li><li><a href="LocaleMatcher.html">LocaleMatcher</a></li><li><a href="MassUnit.html">MassUnit</a></li><li><a href="Name.html">Name</a></li><li><a href="NameFmt.html">NameFmt</a></li><li><a href="NormString.html">NormString</a></li><li><a href="NormString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="NumFmt.html">NumFmt</a></li><li><a href="PersianAlgoCal.html">PersianAlgoCal</a></li><li><a href="PersianAlgoDate.html">PersianAlgoDate</a></li><li><a href="PersianCal.html">PersianCal</a></li><li><a href="PersianDate.html">PersianDate</a></li><li><a href="PhoneFmt.html">PhoneFmt</a></li><li><a href="PhoneGeoLocator.html">PhoneGeoLocator</a></li><li><a href="PhoneNumber.html">PhoneNumber</a></li><li><a href="PowerUnit.html">PowerUnit</a></li><li><a href="PressureUnit.html">PressureUnit</a></li><li><a href="ResBundle.html">ResBundle</a></li><li><a href="ScriptInfo.html">ScriptInfo</a></li><li><a href="StringMapper.html">StringMapper</a></li><li><a href="TemperatureUnit.html">TemperatureUnit</a></li><li><a href="ThaiSolarCal.html">ThaiSolarCal</a></li><li><a href="ThaiSolarDate.html">ThaiSolarDate</a></li><li><a href="TimeUnit.html">TimeUnit</a></li><li><a href="TimeZone.html">TimeZone</a></li><li><a href="UTF16BE.html">UTF16BE</a></li><li><a href="UTF16LE.html">UTF16LE</a></li><li><a href="UTF8.html">UTF8</a></li><li><a href="UnitFmt.html">UnitFmt</a></li><li><a href="UnknownUnit.html">UnknownUnit</a></li><li><a href="VelocityUnit.html">VelocityUnit</a></li><li><a href="VolumeUnit.html">VolumeUnit</a></li></ul><h3>Interfaces</h3><ul><li><a href="ilib.Loader.html">Loader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CalendarFactory">CalendarFactory</a></li><li><a href="global.html#CharmapFactory">CharmapFactory</a></li><li><a href="global.html#DateFactory">DateFactory</a></li><li><a href="global.html#MeasurementFactory">MeasurementFactory</a></li><li><a href="global.html#isAlnum">isAlnum</a></li><li><a href="global.html#isAlpha">isAlpha</a></li><li><a href="global.html#isAscii">isAscii</a></li><li><a href="global.html#isBlank">isBlank</a></li><li><a href="global.html#isCntrl">isCntrl</a></li><li><a href="global.html#isDigit">isDigit</a></li><li><a href="global.html#isGraph">isGraph</a></li><li><a href="global.html#isIdeo">isIdeo</a></li><li><a href="global.html#isLower">isLower</a></li><li><a href="global.html#isPrint">isPrint</a></li><li><a href="global.html#isPunct">isPunct</a></li><li><a href="global.html#isScript">isScript</a></li><li><a href="global.html#isSpace">isSpace</a></li><li><a href="global.html#isUpper">isUpper</a></li><li><a href="global.html#isXdigit">isXdigit</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>JSUtils.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * JSUtils.js - Misc utilities to work around Javascript engine differences
+ *
+ * Copyright © 2013-2015, 2018, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+var ilib = require("./ilib.js");
+
+var JSUtils = {};
+
+/**
+ * Perform a shallow copy of the source object to the target object. This only
+ * copies the assignments of the source properties to the target properties,
+ * but not recursively from there.&lt;p>
+ *
+ *
+ * @static
+ * @param {Object} source the source object to copy properties from
+ * @param {Object} target the target object to copy properties into
+ */
+JSUtils.shallowCopy = function (source, target) {
+    var prop = undefined;
+    if (source &amp;&amp; target) {
+        // using Object.assign is about 1/3 faster on nodejs
+        if (typeof(Object.assign) === "function") {
+            return Object.assign(target, source);
+        }
+        // polyfill
+        for (prop in source) {
+            if (prop !== undefined &amp;&amp; typeof(source[prop]) !== 'undefined') {
+                target[prop] = source[prop];
+            }
+        }
+    }
+};
+
+/**
+ * Perform a recursive deep copy from the "from" object to the "deep" object.
+ *
+ * @static
+ * @param {Object} from the object to copy from
+ * @param {Object} to the object to copy to
+ * @return {Object} a reference to the the "to" object
+ */
+JSUtils.deepCopy = function(from, to) {
+    var prop;
+
+    for (prop in from) {
+        if (prop) {
+            if (typeof(from[prop]) === 'object') {
+                to[prop] = {};
+                JSUtils.deepCopy(from[prop], to[prop]);
+            } else {
+                to[prop] = from[prop];
+            }
+        }
+    }
+    return to;
+};
+
+/**
+ * Map a string to the given set of alternate characters. If the target set
+ * does not contain a particular character in the input string, then that
+ * character will be copied to the output unmapped.
+ *
+ * @static
+ * @param {string} str a string to map to an alternate set of characters
+ * @param {Array.&lt;string>|Object} map a mapping to alternate characters
+ * @return {string} the source string where each character is mapped to alternate characters
+ */
+JSUtils.mapString = function (str, map) {
+    var mapped = "";
+    if (map &amp;&amp; str) {
+        for (var i = 0; i &lt; str.length; i++) {
+            var c = str.charAt(i); // TODO use a char iterator?
+            mapped += map[c] || c;
+        }
+    } else {
+        mapped = str;
+    }
+    return mapped;
+};
+
+/**
+ * Check if an object is a member of the given array. If this javascript engine
+ * support indexOf, it is used directly. Otherwise, this function implements it
+ * itself. The idea is to make sure that you can use the quick indexOf if it is
+ * available, but use a slower implementation in older engines as well.
+ *
+ * @static
+ * @param {Array.&lt;Object|string|number>} array array to search
+ * @param {Object|string|number} obj object being sought. This should be of the same type as the
+ * members of the array being searched. If not, this function will not return
+ * any results.
+ * @return {number} index of the object in the array, or -1 if it is not in the array.
+ */
+JSUtils.indexOf = function(array, obj) {
+    if (!array || !obj) {
+        return -1;
+    }
+    if (typeof(array.indexOf) === 'function') {
+        return array.indexOf(obj);
+    } else {
+        // polyfill
+        for (var i = 0; i &lt; array.length; i++) {
+            if (array[i] === obj) {
+                return i;
+            }
+        }
+        return -1;
+    }
+};
+
+/**
+ * Pad the str with zeros to the given length of digits.
+ *
+ * @static
+ * @param {string|number} str the string or number to pad
+ * @param {number} length the desired total length of the output string, padded
+ * @param {boolean=} right if true, pad on the right side of the number rather than the left.
+ * Default is false.
+ */
+JSUtils.pad = function (str, length, right) {
+    if (typeof(str) !== 'string') {
+        str = "" + str;
+    }
+    var start = 0;
+    // take care of negative numbers
+    if (str.charAt(0) === '-') {
+        start++;
+    }
+    return (str.length >= length+start) ? str :
+        (right ? str + JSUtils.pad.zeros.substring(0,length-str.length+start) :
+            str.substring(0, start) + JSUtils.pad.zeros.substring(0,length-str.length+start) + str.substring(start));
+};
+
+/** @private */
+JSUtils.pad.zeros = "00000000000000000000000000000000";
+
+/**
+ * Convert a string into the hexadecimal representation
+ * of the Unicode characters in that string.
+ *
+ * @static
+ * @param {string} string The string to convert
+ * @param {number=} limit the number of digits to use to represent the character (1 to 8)
+ * @return {string} a hexadecimal representation of the
+ * Unicode characters in the input string
+ */
+JSUtils.toHexString = function(string, limit) {
+    var i,
+        result = "",
+        lim = (limit &amp;&amp; limit &lt; 9) ? limit : 4;
+
+    if (!string) {
+        return "";
+    }
+    for (i = 0; i &lt; string.length; i++) {
+        var ch = string.charCodeAt(i).toString(16);
+        result += JSUtils.pad(ch, lim);
+    }
+    return result.toUpperCase();
+};
+
+/**
+ * Test whether an object in a Javascript Date.
+ *
+ * @static
+ * @param {Object|null|undefined} object The object to test
+ * @return {boolean} return true if the object is a Date
+ * and false otherwise
+ */
+JSUtils.isDate = function(object) {
+    if (typeof(object) === 'object') {
+        return Object.prototype.toString.call(object) === '[object Date]';
+    }
+    return false;
+};
+
+/**
+ * Merge the properties of object2 into object1 in a deep manner and return a merged
+ * object. If the property exists in both objects, the value in object2 will overwrite
+ * the value in object1. If a property exists in object1, but not in object2, its value
+ * will not be touched. If a property exists in object2, but not in object1, it will be
+ * added to the merged result.&lt;p>
+ *
+ * Name1 and name2 are for creating debug output only. They are not necessary.&lt;p>
+ *
+ *
+ * @static
+ * @param {*} object1 the object to merge into
+ * @param {*} object2 the object to merge
+ * @param {boolean=} replace if true, replace the array elements in object1 with those in object2.
+ * If false, concatenate array elements in object1 with items in object2.
+ * @param {string=} name1 name of the object being merged into
+ * @param {string=} name2 name of the object being merged in
+ * @return {Object} the merged object
+ */
+JSUtils.merge = function (object1, object2, replace, name1, name2) {
+    if (!object1 &amp;&amp; object2) {
+        return object2;
+    }
+    if (object1 &amp;&amp; !object2) {
+        return object1;
+    }
+    var prop = undefined,
+        newObj = {};
+    for (prop in object1) {
+        if (prop &amp;&amp; typeof(object1[prop]) !== 'undefined') {
+            newObj[prop] = object1[prop];
+        }
+    }
+    for (prop in object2) {
+        if (prop &amp;&amp; typeof(object2[prop]) !== 'undefined') {
+            if (ilib.isArray(object1[prop]) &amp;&amp; ilib.isArray(object2[prop])) {
+                if (typeof(replace) !== 'boolean' || !replace) {
+                    newObj[prop] = [].concat(object1[prop]);
+                    newObj[prop] = newObj[prop].concat(object2[prop]);
+                } else {
+                    newObj[prop] = object2[prop];
+                }
+            } else if (typeof(object1[prop]) === 'object' &amp;&amp; typeof(object2[prop]) === 'object') {
+                newObj[prop] = JSUtils.merge(object1[prop], object2[prop], replace);
+            } else {
+                // for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
+                if (name1 &amp;&amp; name2 &amp;&amp; newObj[prop] === object2[prop]) {
+                    console.log("Property " + prop + " in " + name1 + " is being overridden by the same value in " + name2);
+                }
+                newObj[prop] = object2[prop];
+            }
+        }
+    }
+    return newObj;
+};
+
+/**
+ * Return true if the given object has no properties.&lt;p>
+ *
+ *
+ * @static
+ * @param {Object} obj the object to check
+ * @return {boolean} true if the given object has no properties, false otherwise
+ */
+JSUtils.isEmpty = function (obj) {
+    var prop = undefined;
+
+    if (!obj) {
+        return true;
+    }
+
+    for (prop in obj) {
+        if (prop &amp;&amp; typeof(obj[prop]) !== 'undefined') {
+            return false;
+        }
+    }
+    return true;
+};
+
+/**
+ * @static
+ */
+JSUtils.hashCode = function(obj) {
+    var hash = 0;
+
+    function addHash(hash, newValue) {
+        // co-prime numbers creates a nicely distributed hash
+        hash *= 65543;
+        hash += newValue;
+        hash %= 2147483647;
+        return hash;
+    }
+
+    function stringHash(str) {
+        var hash = 0;
+        for (var i = 0; i &lt; str.length; i++) {
+            hash = addHash(hash, str.charCodeAt(i));
+        }
+        return hash;
+    }
+
+    switch (typeof(obj)) {
+        case 'undefined':
+            hash = 0;
+            break;
+        case 'string':
+            hash = stringHash(obj);
+            break;
+        case 'function':
+        case 'number':
+        case 'xml':
+            hash = stringHash(String(obj));
+            break;
+        case 'boolean':
+            hash = obj ? 1 : 0;
+            break;
+        case 'object':
+            var props = [];
+            for (var p in obj) {
+                if (obj.hasOwnProperty(p)) {
+                    props.push(p);
+                }
+            }
+            // make sure the order of the properties doesn't matter
+            props.sort();
+            for (var i = 0; i &lt; props.length; i++) {
+                hash = addHash(hash, stringHash(props[i]));
+                hash = addHash(hash, JSUtils.hashCode(obj[props[i]]));
+            }
+            break;
+    }
+
+    return hash;
+};
+
+/**
+ * Calls the given action function on each element in the given
+ * array arr in order and finally call the given callback when they are
+ * all done. The action function should take the array to
+ * process as its parameter, and a callback function. It should
+ * process the first element in the array and then call its callback
+ * function with the result of processing that element (if any).
+ *
+ * @param {Array.&lt;Object>} arr the array to process
+ * @param {Function(Array.&lt;Object>, Function(*))} action the action
+ * to perform on each element of the array
+ * @param {Function(*)} callback the callback function to call
+ * with the results of processing each element of the array.
+ */
+JSUtils.callAll = function(arr, action, callback, results) {
+    results = results || [];
+    if (arr &amp;&amp; arr.length) {
+        action(arr, function(result) {
+            results.push(result);
+            JSUtils.callAll(arr.slice(1), action, callback, results);
+        });
+    } else {
+        callback(results);
+    }
+};
+
+module.exports = JSUtils;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

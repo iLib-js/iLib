@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> PhoneLocale.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="CType.html">CType</a></li><li><a href="ilib.html">ilib</a></li></ul><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="AddressFmt.html">AddressFmt</a></li><li><a href="AlphabeticIndex.html">AlphabeticIndex</a></li><li><a href="AreaUnit.html">AreaUnit</a></li><li><a href="CaseMapper.html">CaseMapper</a></li><li><a href="Charmap.html">Charmap</a></li><li><a href="CharmapTable.html">CharmapTable</a></li><li><a href="Charset.html">Charset</a></li><li><a href="Collator.html">Collator</a></li><li><a href="CopticCal.html">CopticCal</a></li><li><a href="CopticDate.html">CopticDate</a></li><li><a href="Country.html">Country</a></li><li><a href="Currency.html">Currency</a></li><li><a href="DateFmt.html">DateFmt</a></li><li><a href="DateRngFmt.html">DateRngFmt</a></li><li><a href="DigitalSpeedUnit.html">DigitalSpeedUnit</a></li><li><a href="DigitalStorageUnit.html">DigitalStorageUnit</a></li><li><a href="DurationFmt.html">DurationFmt</a></li><li><a href="EnergyUnit.html">EnergyUnit</a></li><li><a href="EthiopicCal.html">EthiopicCal</a></li><li><a href="EthiopicDate.html">EthiopicDate</a></li><li><a href="ForceUnit.html">ForceUnit</a></li><li><a href="FuelConsumptionUnit.html">FuelConsumptionUnit</a></li><li><a href="GlyphString.html">GlyphString</a></li><li><a href="GlyphString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="GregorianCal.html">GregorianCal</a></li><li><a href="GregorianDate.html">GregorianDate</a></li><li><a href="HanCal.html">HanCal</a></li><li><a href="HanDate.html">HanDate</a></li><li><a href="HebrewCal.html">HebrewCal</a></li><li><a href="HebrewDate.html">HebrewDate</a></li><li><a href="INumber.html">INumber</a></li><li><a href="ISO2022.html">ISO2022</a></li><li><a href="ISet.html">ISet</a></li><li><a href="IString.html">IString</a></li><li><a href="IString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="IString_iterator-_iterator.html">_iterator</a></li><li><a href="IslamicCal.html">IslamicCal</a></li><li><a href="IslamicDate.html">IslamicDate</a></li><li><a href="JulianCal.html">JulianCal</a></li><li><a href="JulianDate.html">JulianDate</a></li><li><a href="JulianDay.html">JulianDay</a></li><li><a href="LengthUnit.html">LengthUnit</a></li><li><a href="ListFmt.html">ListFmt</a></li><li><a href="Locale.html">Locale</a></li><li><a href="LocaleInfo.html">LocaleInfo</a></li><li><a href="LocaleMatcher.html">LocaleMatcher</a></li><li><a href="MassUnit.html">MassUnit</a></li><li><a href="Name.html">Name</a></li><li><a href="NameFmt.html">NameFmt</a></li><li><a href="NormString.html">NormString</a></li><li><a href="NormString_charIterator-_chiterator.html">_chiterator</a></li><li><a href="NumFmt.html">NumFmt</a></li><li><a href="PersianAlgoCal.html">PersianAlgoCal</a></li><li><a href="PersianAlgoDate.html">PersianAlgoDate</a></li><li><a href="PersianCal.html">PersianCal</a></li><li><a href="PersianDate.html">PersianDate</a></li><li><a href="PhoneFmt.html">PhoneFmt</a></li><li><a href="PhoneGeoLocator.html">PhoneGeoLocator</a></li><li><a href="PhoneNumber.html">PhoneNumber</a></li><li><a href="PowerUnit.html">PowerUnit</a></li><li><a href="PressureUnit.html">PressureUnit</a></li><li><a href="ResBundle.html">ResBundle</a></li><li><a href="ScriptInfo.html">ScriptInfo</a></li><li><a href="StringMapper.html">StringMapper</a></li><li><a href="TemperatureUnit.html">TemperatureUnit</a></li><li><a href="ThaiSolarCal.html">ThaiSolarCal</a></li><li><a href="ThaiSolarDate.html">ThaiSolarDate</a></li><li><a href="TimeUnit.html">TimeUnit</a></li><li><a href="TimeZone.html">TimeZone</a></li><li><a href="UTF16BE.html">UTF16BE</a></li><li><a href="UTF16LE.html">UTF16LE</a></li><li><a href="UTF8.html">UTF8</a></li><li><a href="UnitFmt.html">UnitFmt</a></li><li><a href="UnknownUnit.html">UnknownUnit</a></li><li><a href="VelocityUnit.html">VelocityUnit</a></li><li><a href="VolumeUnit.html">VolumeUnit</a></li></ul><h3>Interfaces</h3><ul><li><a href="ilib.Loader.html">Loader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CalendarFactory">CalendarFactory</a></li><li><a href="global.html#CharmapFactory">CharmapFactory</a></li><li><a href="global.html#DateFactory">DateFactory</a></li><li><a href="global.html#MeasurementFactory">MeasurementFactory</a></li><li><a href="global.html#isAlnum">isAlnum</a></li><li><a href="global.html#isAlpha">isAlpha</a></li><li><a href="global.html#isAscii">isAscii</a></li><li><a href="global.html#isBlank">isBlank</a></li><li><a href="global.html#isCntrl">isCntrl</a></li><li><a href="global.html#isDigit">isDigit</a></li><li><a href="global.html#isGraph">isGraph</a></li><li><a href="global.html#isIdeo">isIdeo</a></li><li><a href="global.html#isLower">isLower</a></li><li><a href="global.html#isPrint">isPrint</a></li><li><a href="global.html#isPunct">isPunct</a></li><li><a href="global.html#isScript">isScript</a></li><li><a href="global.html#isSpace">isSpace</a></li><li><a href="global.html#isUpper">isUpper</a></li><li><a href="global.html#isXdigit">isXdigit</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>PhoneLocale.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * phoneloc.js - Represent a phone locale object.
+ *
+ * Copyright © 2014-2015, 2018, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !data phoneloc
+
+var ilib = require("../index.js");
+var Utils = require("./Utils.js");
+var Locale = require("./Locale.js");
+
+/**
+ * @class
+ * Extension of the locale class that has extra methods to map various numbers
+ * related to phone number parsing.
+ *
+ * @param {Object} options Options that govern how this phone locale works
+ *
+ * @private
+ * @constructor
+ * @extends Locale
+ */
+var PhoneLocale = function(options) {
+    var region,
+        mcc,
+        cc,
+        sync = true,
+        loadParams = {},
+        locale;
+
+    locale = (options &amp;&amp; options.locale) || ilib.getLocale();
+
+    this.parent.call(this, locale);
+
+    region = this.region;
+
+    if (options) {
+        if (typeof(options.mcc) !== 'undefined') {
+            mcc = options.mcc;
+        }
+
+        if (typeof(options.countryCode) !== 'undefined') {
+            cc = options.countryCode;
+        }
+
+        if (typeof(options.sync) !== 'undefined') {
+            sync = !!options.sync;
+        }
+
+        if (options.loadParams) {
+            loadParams = options.loadParams;
+        }
+    }
+
+    Utils.loadData({
+        name: "phoneloc.json",
+        object: "PhoneLocale",
+        nonlocale: true,
+        sync: sync,
+        loadParams: loadParams,
+        callback: ilib.bind(this, function (data) {
+            /** @type {{mcc2reg:Object.&lt;string,string>,cc2reg:Object.&lt;string,string>,reg2cc:Object.&lt;string,string>,area2reg:Object.&lt;string,string>}} */
+            this.mappings = data;
+
+            if (typeof(mcc) !== 'undefined') {
+                region = this.mappings.mcc2reg[mcc];
+            }
+
+            if (typeof(cc) !== 'undefined') {
+                region = this.mappings.cc2reg[cc];
+            }
+
+            if (!region) {
+                region = "XX";
+            }
+
+            this.region = this._normPhoneReg(region);
+            this._genSpec();
+
+            if (options &amp;&amp; typeof(options.onLoad) === 'function') {
+                options.onLoad(this);
+            }
+        })
+    });
+};
+
+PhoneLocale.prototype = new Locale();
+PhoneLocale.prototype.parent = Locale;
+PhoneLocale.prototype.constructor = PhoneLocale;
+
+/**
+ * Map a mobile carrier code to a region code.
+ *
+ * @static
+ * @package
+ * @param {string|undefined} mcc the MCC to map
+ * @return {string|undefined} the region code
+ */
+
+PhoneLocale.prototype._mapMCCtoRegion = function(mcc) {
+    if (!mcc) {
+        return undefined;
+    }
+    return this.mappings.mcc2reg &amp;&amp; this.mappings.mcc2reg[mcc] || "XX";
+};
+
+/**
+ * Map a country code to a region code.
+ *
+ * @static
+ * @package
+ * @param {string|undefined} cc the country code to map
+ * @return {string|undefined} the region code
+ */
+PhoneLocale.prototype._mapCCtoRegion = function(cc) {
+    if (!cc) {
+        return undefined;
+    }
+    return this.mappings.cc2reg &amp;&amp; this.mappings.cc2reg[cc] || "XX";
+};
+
+/**
+ * Map a region code to a country code.
+ *
+ * @static
+ * @package
+ * @param {string|undefined} region the region code to map
+ * @return {string|undefined} the country code
+ */
+PhoneLocale.prototype._mapRegiontoCC = function(region) {
+    if (!region) {
+        return undefined;
+    }
+    return this.mappings.reg2cc &amp;&amp; this.mappings.reg2cc[region] || "0";
+};
+
+/**
+ * Map a country code to a region code.
+ *
+ * @static
+ * @package
+ * @param {string|undefined} cc the country code to map
+ * @param {string|undefined} area the area code within the country code's numbering plan
+ * @return {string|undefined} the region code
+ */
+PhoneLocale.prototype._mapAreatoRegion = function(cc, area) {
+    if (!cc) {
+        return undefined;
+    }
+    if (cc in this.mappings.area2reg) {
+        return this.mappings.area2reg[cc][area] || this.mappings.area2reg[cc]["default"];
+    } else {
+        return this.mappings.cc2reg[cc];
+    }
+};
+
+/**
+ * Return the region that controls the dialing plan in the given
+ * region. (ie. the "normalized phone region".)
+ *
+ * @static
+ * @package
+ * @param {string} region the region code to normalize
+ * @return {string} the normalized region code
+ */
+PhoneLocale.prototype._normPhoneReg = function(region) {
+    var norm;
+
+    /*
+    * Country list has been updated from metadata.json fro, libphonenumber-js library  v1.7.20
+    * and Modified some countries based on Wikipedia
+    */
+
+    // Map all NANP regions to the right region, so that they get parsed using the
+    // correct state table
+    switch (region) {
+        case "US": // usa
+        case "AG": // antigua and barbuda
+        case "AI": // anguilla
+        case "AS": // American Samoa
+        case "BB": // barbados
+        case "BM": // bermuda
+        case "BS": // bahamas
+        case "CA": // canada
+        case "DM": // dominica
+        case "DO": // dominican republic
+        case "GD": // grenada
+        case "GU": // Guam
+        case "JM": // jamaica
+        case "KN": // st. kitts and nevis
+        case "KY": // cayman islands
+        case "LC": // st. lucia
+        case "MP": // Northern Mariana Islands
+        case "MS": // montserrat
+        case "PR": // Puerto Rico
+        case "SX": // Sint Maarten
+        case "TC": // turks and caicos
+        case "TT": // trinidad and tobago
+        case "VC": // st. vincent and the grenadines
+        case "VG": // british virgin islands
+        case "VI": // Virgin Islands, U.S.
+            norm = "US";
+            break;
+
+        /* all the French dependencies are on the French dialling plan
+        *  Update manually following Wikipedia information
+        * https://en.wikipedia.org/wiki/Telephone_numbers_in_France#Others
+        */
+        case "FR": // france
+        case "GF": // french guiana
+        case "MQ": // martinique
+        case "GP": // guadeloupe,
+        case "BL": // saint barthélemy
+        case "MF": // saint martin
+        case "RE": // réunion
+        case "YT": // mayotte
+            norm = "FR";
+            break;
+
+        // these all use the Italian dialling plan
+        case "IT": // italy
+        case "SM": // san marino
+        case "VA": // vatican city  // Update manually following Wikipedia information
+            norm = "IT";
+            break;
+
+        // all the UK dependencies are on the UK dialling plan
+        case "GB": // United Kingdom
+        case "GG": // Guernsey
+        case "IM": // Isle of Man
+        case "JE": // Jersey
+            norm = "GB";
+            break;
+        case "RU": // Russia
+        case "KZ": // Kazakhstan
+            norm = "RU";
+            break;
+        case "NO": // Norway
+        case "SJ": // Svalbard and Jan Mayen
+            norm = "NO";
+            break;
+        case "AU": // Australia
+        case "CC": // Cocos (Keeling) Islands
+        case "CX": // Christmas Island
+            norm = "AU";
+            break;
+        case "MA": // Morocco
+        case "EH": // Western Sahara
+            norm = "MA";
+            break;
+        case "SH": // Saint Helena
+        case "TA": // ?
+            norm = "SH";
+            break;
+        case "FI": // Finland
+        case "AX": // Aland Islands
+            norm = "FI";
+            break;
+        case "GP": // Guadeloupe
+        case "BL": // Saint-Barthélemy
+        case "MF": // Saint Martin (French part)
+            norm = "GP";
+            break;
+        case "CW": // Curaçao
+        case "BQ": // Caribbean Netherlands
+            norm = "CW";
+            break;
+        default:
+            norm = region;
+            break;
+    }
+    return norm;
+};
+
+module.exports = PhoneLocale;</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>
