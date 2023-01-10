@@ -528,7 +528,6 @@ NormString.prototype.normalize = function (form) {
 };
 
 /**
- * @override
  * Return an iterator that will step through all of the characters
  * in the string one at a time, taking care to step through decomposed
  * characters and through surrogate pairs in UTF-16 encoding
@@ -551,7 +550,7 @@ NormString.prototype.normalize = function (form) {
  * The iterator instance returned has two methods, hasNext() which
  * returns true if the iterator has more characters to iterate through,
  * and next() which returns the next character.<p>
- *
+ * @override
  * @return {Object} an iterator
  * that iterates through all the characters in the string
  */

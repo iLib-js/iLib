@@ -678,8 +678,8 @@ DateFmt.isIntlDateTimeAvailable = function (locale) {
 
 DateFmt.prototype = {
     /**
-     * @private
      * Finish initializing the formatter object
+     * @private
      */
     _init: function(options) {
         if (typeof (options.sync) === 'undefined') {
@@ -1310,8 +1310,8 @@ DateFmt.prototype = {
     },
 
     /**
-     * @private
      * Format a date according to a sequence of components.
+     * @private
      * @param {IDate} date a date/time object to format
      * @param {Array.<string>} templateArr an array of components to format
      * @return {string} the formatted date

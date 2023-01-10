@@ -255,8 +255,9 @@ TimeZone.prototype._initZone = function(zoneName) {
     if (typeof(this.offset) === 'undefined' && this.zone.o) {
         var offsetParts = this._offsetStringToObj(this.zone.o);
         /**
+         * raw offset from UTC without DST, in minutes
          * @private
-         * @type {number} raw offset from UTC without DST, in minutes
+         * @type {number}
          */
         this.offset = (Math.abs(offsetParts.h || 0) * 60 + (offsetParts.m || 0)) * MathUtils.signum(offsetParts.h || 0);
     }
@@ -748,8 +749,9 @@ TimeZone.prototype._calcDSTSavings = function () {
     var saveParts = this.getDSTSavings();
 
     /**
+     * savings in minutes when DST is in effect
      * @private
-     * @type {number} savings in minutes when DST is in effect
+     * @type {number}
      */
     this.dstSavings = (Math.abs(saveParts.h || 0) * 60 + (saveParts.m || 0)) * MathUtils.signum(saveParts.h || 0);
 };

@@ -161,7 +161,8 @@ GregRataDie.prototype._setDateComponents = function(date) {
     */
 
     /**
-     * @type {number|undefined} the RD number of this Gregorian date
+     * the RD number of this Gregorian date
+     * @type {number|undefined}
      */
     this.rd = years + dayInYear + rdtime;
 };

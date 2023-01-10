@@ -465,8 +465,8 @@ Address.prototype = {
     },
 
     /**
-     * @protected
      * Find the named country either at the end or the beginning of the address.
+     * @protected
      */
     _findCountry: function(name) {
         var start = -1, match, line = 0;

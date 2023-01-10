@@ -132,8 +132,8 @@ PersianDate.prototype.parent = IDate;
 PersianDate.prototype.constructor = PersianDate;
 
 /**
- * @private
  * Initialize this date object
+ * @private
  */
 PersianDate.prototype._init = function (params) {
     Astro.initAstro(
@@ -229,8 +229,8 @@ PersianDate.prototype._init = function (params) {
 };
 
 /**
- * @private
  * Finish initializing this date object
+ * @private
  */
 PersianDate.prototype._init2 = function (params) {
     if (!this.rd) {
@@ -252,10 +252,10 @@ PersianDate.prototype._init2 = function (params) {
 };
 
 /**
+ * the cumulative lengths of each month, for a non-leap year
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month, for a non-leap year
  */
 PersianDate.cumMonthLengths = [
     0,    // Farvardin
@@ -295,8 +295,8 @@ PersianDate.prototype._calcYear = function(rd) {
 };
 
 /**
- * @private
  * Calculate date components for the given RD date.
+ * @private
  */
 PersianDate.prototype._calcDateComponents = function () {
     var remainder,

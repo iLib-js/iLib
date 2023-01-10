@@ -167,8 +167,8 @@ GregorianDate.prototype.parent = IDate;
 GregorianDate.prototype.constructor = GregorianDate;
 
 /**
- * @private
  * Initialize this date object
+ * @private
  */
 GregorianDate.prototype._init = function (params) {
     if (params.year || params.month || params.day || params.hour ||
@@ -230,8 +230,8 @@ GregorianDate.prototype._init = function (params) {
 };
 
 /**
- * @private
  * Finish initializing this date object
+ * @private
  */
 GregorianDate.prototype._init2 = function (params) {
     if (!this.rd) {

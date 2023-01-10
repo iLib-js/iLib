@@ -605,8 +605,8 @@ Name.prototype = {
     },
 
     /**
-     * @protected
      * Tell whether or not the given word is a conjunction in this language.
+     * @protected
      * @param {string} word the word to test
      * @return {boolean} true if the word is a conjunction
      */
@@ -1295,8 +1295,8 @@ Name.prototype = {
     getHeadFamilyName: function () {},
 
     /**
-     * @protected
      * Return a shallow copy of the current instance.
+     * @protected
      */
     clone: function () {
         return new Name(this);
