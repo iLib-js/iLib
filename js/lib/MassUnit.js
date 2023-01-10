@@ -30,8 +30,9 @@ var Measurement = require("./Measurement.js");
  *
  * @constructor
  * @extends Measurement
- * @param options {{unit:string,amount:number|string|undefined}} Options controlling
- * the construction of this instance
+ * @param {Object} options Options controlling the construction of this instance
+ * @param {string} options.unit
+ * @param {number|string|undefined} options.amount
  */
 var MassUnit = function (options) {
     this.unit = "gram";

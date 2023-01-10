@@ -117,7 +117,7 @@ var StringMapper = function (options) {
 StringMapper.prototype = {
     /**
      * Return the locale that this mapper was constructed.
-     * @returns
+     * @return {Locale} the locale instance
      */
     getLocale: function () {
         return this.locale;

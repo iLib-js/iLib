@@ -1112,7 +1112,6 @@ Name.prototype = {
      *
      * @protected
      * @param {Array.<string>} parts the current array of name parts
-     * @return
      */
     _parseRussianName: function(parts) {
         var conjunctionIndex, familyIndex = -1;
