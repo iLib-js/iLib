@@ -12,13 +12,13 @@
         "encoding": "utf8",
         "destination": "docs",
         "recurse": true,
-		"readme":"README.md"
+    "readme": "../README.md"
     },
     "source": {
         "include": ["lib"],
-    	"exclude": ["lib/metafiles", "lib/ilib-webpack.js"]
+        "exclude": ["lib/metafiles", "lib/ilib-webpack.js"]
     },
     "plugins": [
-	"plugins/markdown"
+    "plugins/markdown"
     ]
 }
