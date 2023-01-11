@@ -8,7 +8,7 @@
     "sort": true,
     "search": true,
     "opts": {
-        "template": "node_modules/ink-docstrap/template",
+        "template": "node_modules/better-docs",
         "encoding": "utf8",
         "destination": "docs",
         "recurse": true,
