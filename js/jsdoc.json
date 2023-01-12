@@ -19,6 +19,6 @@
         "exclude": ["lib/metafiles", "lib/ilib-webpack.js"]
     },
     "plugins": [
-    "plugins/markdown"
+        "plugins/markdown"
     ]
 }
