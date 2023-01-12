@@ -558,7 +558,7 @@ NormString.prototype.charIterator = function() {
     var it = IString.prototype.charIterator.call(this);
 
     /**
-     * @constructor
+     * @constructor NormString
      */
     function _chiterator (istring) {
         /**

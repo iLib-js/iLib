@@ -1379,7 +1379,7 @@ IString.prototype = {
      */
     iterator: function() {
         /**
-         * @constructor
+         * @constructor IString
          */
         function _iterator (istring) {
             this.index = 0;
@@ -1422,7 +1422,7 @@ IString.prototype = {
      */
     charIterator: function() {
         /**
-         * @constructor
+         * @constructor IString
          */
         function _chiterator (istring) {
             this.index = 0;
