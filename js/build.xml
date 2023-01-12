@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 build.xml - build the javascript parts
-Copyright © 2012-2022, JEDLSoft
+Copyright © 2012-2023, JEDLSoft
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -841,34 +841,19 @@ limitations under the License.
             </exec>
         </sequential>
     </macrodef -->
-
-	<target name="testjsdoc" description="test whether or not the jsdocs need to be rebuilt">
-		<uptodate
-                property="core.jsdoc.not.needed"
-                targetfile="${build.jsdoc}/index.html">
-			<srcfiles dir="${build.lib}" includes="*.js"/>
-		</uptodate>
-	</target>
-	<target name="doc"
-            depends="testjsdoc"
-            description="creates jsdoc for all local js files in this project"
-            unless="core.jsdoc.not.needed">
-		<delete dir="${build.jsdoc}"/>
-		<mkdir dir="${build.jsdoc}"/>
-		<echo>Executing jsdoc ... </echo>
-		<sequential>
-            <exec osfamily="unix" executable="bash" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+	<target name="doc">
+		<exec osfamily="unix" executable="bash" dir="${build.base}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <arg value="-c"/>
-                <arg value="jsdoc2 --template=${JSDOCDIR}/templates/jsdoc --directory=${build.jsdoc} --recurse=100 --encoding=utf-8 lib/*.js"/>
-            </exec>
-            <exec osfamily="windows" executable="cmd.exe" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+                <arg value="jsdoc -c jsdoc.json"/>
+        </exec>
+		<exec osfamily="windows" executable="cmd.exe" dir="${build.base}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <arg value="/c"/>
-                <arg value="jsdoc2 --template=${JSDOCDIR}/templates/jsdoc --directory=${build.jsdoc} --recurse=100 --encoding=utf-8 lib/*.js"/>
-            </exec>
-        </sequential>
+                <arg value="jsdoc -c jsdoc.json"/>
+        </exec>
 	</target>
+	
     <target name="apidocs"
             depends="doc"
             description="Updates the API docs">

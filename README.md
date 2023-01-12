@@ -7,7 +7,7 @@ iLib is an internationalization library written in pure ES5 Javascript. It does 
 and can run equally well in various older and newer browsers, on various OS's (including mobile), nodejs, webOS, Qt/QML, 
 RingoJS, React/Enact, or rhino/nashorn.
 
-More elaborate documentation can be found [here](docs/index.md)
+More elaborate documentation can be found [here](https://ilib-js.github.io/iLib/docs/)
 
 What Can iLib Do?
 ------
@@ -196,7 +196,7 @@ section about webpack for links.
 Copyright and License
 -------
 
-Copyright (c) 2011-2022, JEDLSoft
+Copyright (c) 2011-2023, JEDLSoft
 
 Ilib is licensed under the Apache License, Version 2.0 (the "License");
 you may not use this library except in compliance with the License.

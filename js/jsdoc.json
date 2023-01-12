@@ -10,7 +10,7 @@
     "opts": {
         "template": "node_modules/better-docs",
         "encoding": "utf8",
-        "destination": "docs",
+        "destination": "output/jsdoc",
         "recurse": true,
     "readme": "../README.md"
     },
