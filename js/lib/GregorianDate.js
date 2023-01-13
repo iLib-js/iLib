@@ -37,7 +37,6 @@ var GregRataDie = require("./GregRataDie.js");
  * <ul>
  * <li><i>unixtime<i> - sets the time of this instance according to the given
  * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970.
- *
  * <li><i>julianday</i> - sets the time of this instance according to the given
  * Julian Day instance or the Julian Day given as a float
  *
@@ -61,14 +60,13 @@ var GregRataDie = require("./GregRataDie.js");
  * time when transitioning from DST to standard time, and the time components are
  * ambiguous. Otherwise at all other times of the year, this flag is ignored.
  * If you specify the date using unix time (UTC) or a julian day, then the time is
- * already unambiguous and this flag does not need to be specified.
- * <p>
+ * already unambiguous and this flag does not need to be specified.<br><br>
  * For example, in the US, the transition out of daylight savings time
  * in 2014 happens at Nov 2, 2014 2:00am Daylight Time, when the time falls
  * back to Nov 2, 2014 1:00am Standard Time. If you give a date/time components as
  * "Nov 2, 2014 1:30am", then there are two 1:30am times in that day, and you would
  * have to give the standard flag to indicate which of those two you mean.
- * (dst=true means daylight time, dst=false means standard time).
+ * (dst=true means daylight time, dst=false means standard time).<br><br>
  *
  * <li><i>timezone</i> - the TimeZone instance or time zone name as a string
  * of this gregorian date. The date/time is kept in the local time. The time zone
