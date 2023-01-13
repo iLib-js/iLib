@@ -214,14 +214,14 @@ limitations under the License.
 More Documentation
 ------
 
-More elaborate documentation can be found [here](docs/index.md).
+More elaborate documentation can be found [here](https://ilib-js.github.io/iLib/docs/).
 
 Other Information
 ------
 
 Please point your browser to the following places to get more documentation:
 
-- JSDocs: http://www.translationcircle.com/ilib/doc/jsdoc/
+- JSDocs: https://ilib-js.github.io/iLib/docs/
 - Github: git clone git@github.com:iLib-js/iLib.git
 - Builds: https://github.com/iLib-js/iLib/releases
 - Wiki: https://github.com/iLib-js/iLib/wiki

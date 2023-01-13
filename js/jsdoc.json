@@ -3,12 +3,12 @@
         "allowUnknownTags": true,
         "dictionaries": ["jsdoc", "closure"]
     },
-    "copyright": "Copyright (c) 2022 JEDLSoft",
+    "copyright": "Copyright (c) 2023 JEDLSoft",
     "linenums": true,
     "sort": true,
     "search": true,
     "opts": {
-        "template": "node_modules/better-docs",
+        "template": "../node_modules/better-docs",
         "encoding": "utf8",
         "destination": "output/jsdoc",
         "recurse": true,
