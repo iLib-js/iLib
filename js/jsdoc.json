@@ -12,7 +12,7 @@
         "encoding": "utf8",
         "destination": "output/jsdoc",
         "recurse": true,
-    "readme": "../README.md"
+        "readme": "../README.md"
     },
     "source": {
         "include": ["lib"],
