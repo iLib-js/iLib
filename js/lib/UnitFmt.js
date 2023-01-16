@@ -85,19 +85,16 @@ var lenMap = {
  * a formatter may be for a "person height", which implies that certain customary units
  * should be used, even though other measures in the same system may be more efficient.
  * In US Customary measures, a person's height is traditionally given in feet and inches,
- * even though yards, feet and inches would be more efficient and logical.<p>
- *
+ * even though yards, feet and inches would be more efficient and logical.<br><br>
  * Specifying a usage implies that the
  * autoScale is turned on so that the measure can be scaled to the level required for
  * the customary measures for the usage. Setting the usage can also implicitly set
  * the style, the max- and minFractionDigits, roundingMode, length, etc. if those
  * options are not explicitly given in this options object. If they are given, the
- * explicit settings override the defaults of the usage.<p>
- *
+ * explicit settings override the defaults of the usage.<br><br>
  * Usages imply that the formatter should be used with a specific type of measurement.
  * If the format method is called on a measurement that is of the wrong type for the
- * usage, it will be formatted as a regular measurement with default options.<p>
- *
+ * usage, it will be formatted as a regular measurement with default options.<br><br>
  * List of usages currently supported:
  *   <ul>
  *   <li><i>general</i> no specific usage with no preselected measures. (Default which does not
@@ -140,11 +137,9 @@ var lenMap = {
  *   <li><i>list</i> - display the measure with a list of successively smaller-sized
  *   units. Example: "5 lbs 4 oz"
  *   </ul>
- *
  * The style is most useful for units which are not powers of 10 greater than the
  * smaller units as in the metric system, though it can be useful for metric measures
- * as well. Example: "2kg 381g".<p>
- *
+ * as well. Example: "2kg 381g".<br><br>
  * The style may be set implicitly when you set the usage. For example, if the usage is
  * "personWeight", the style will be "numeric" and the maxFractionDigits will be 0. That
  * is, weight of adults and children are most often given in whole pounds. (eg. "172 lbs").
@@ -201,9 +196,6 @@ var lenMap = {
  * may contain any property/value pairs as long as the calling code is in
  * agreement with the loader callback function as to what those parameters mean.
  * </ul>
- *
- * Here is an example of how you might use the unit formatter to format a string with
- * the correct units.<p>
  *
  *
  * @constructor

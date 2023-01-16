@@ -342,8 +342,8 @@ HanDate.prototype._calcYear = function(rd) {
 };
 
 /**
- * @private
  * Calculate the leap year and months from the RD.
+ * @private
  */
 HanDate.prototype._calcLeap = function() {
     var jd = this.rd.getRataDie() + RataDie.gregorianEpoch;
@@ -362,8 +362,8 @@ HanDate.prototype._calcLeap = function() {
 };
 
 /**
- * @private
  * Calculate date components for the given RD date.
+ * @private
  */
 HanDate.prototype._calcDateComponents = function () {
     var remainder,

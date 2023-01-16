@@ -198,8 +198,8 @@ IslamicDate.prototype._init = function (params) {
 };
 
 /**
- * @private
  * Finish initializing this date object
+ * @private
  */
 IslamicDate.prototype._init2 = function (params) {
     if (!this.rd) {

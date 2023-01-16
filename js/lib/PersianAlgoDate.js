@@ -223,9 +223,9 @@ PersianAlgoDate.prototype._init = function (params) {
 };
 
 /**
- * @private
- * Finish initializing this date object
- */
+* Finish initializing this date object.
+* @private
+*/
 PersianAlgoDate.prototype._init2 = function (params) {
     if (!this.rd) {
         this.rd = this.newRd(params);
@@ -263,8 +263,8 @@ PersianAlgoDate.prototype._calcYear = function(rd) {
 };
 
 /**
- * @private
  * Calculate date components for the given RD date.
+ * @private
  */
 PersianAlgoDate.prototype._calcDateComponents = function () {
     var remainder,

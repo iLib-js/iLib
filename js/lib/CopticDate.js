@@ -53,10 +53,9 @@ var CopticRataDie = require("./CopticRataDie.js");
  * given, it can be inferred from this locale. For locales that span multiple
  * time zones, the one with the largest population is chosen as the one that
  * represents the locale.
- *
  * <li><i>date</i> - use the given intrinsic Javascript date to initialize this one.
  * </ul>
- *
+ * 
  * If called with another Coptic date argument, the date components of the given
  * date are copied into the current one.<p>
  *

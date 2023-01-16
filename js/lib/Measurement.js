@@ -417,11 +417,10 @@ Measurement.prototype = {
     },
 
     /**
-     * @private
-     *
      * Return the normalized units identifier for the given unit. This looks up the units
      * in the aliases list and returns the normalized unit id.
      *
+     * @private
      * @param {string} unit the unit to find
      * @returns {string|undefined} the normalized identifier for the given unit, or
      * undefined if there is no such unit in this type of measurement

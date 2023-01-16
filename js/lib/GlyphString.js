@@ -322,7 +322,7 @@ GlyphString.prototype.charIterator = function() {
     var it = IString.prototype.charIterator.call(this);
 
     /**
-     * @constructor
+     * @constructor GlyphString
      */
     function _chiterator (istring) {
         this.index = 0;

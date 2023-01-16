@@ -549,10 +549,10 @@ Astro._aberration = function(c) {
 };
 
 /**
+ * ilib.data.astro._nutCoeffA = [124.90, -1934.134, 0.002063];
+ * ilib.data.astro._nutCoeffB q= [201.11, 72001.5377, 0.00057];
  * @private
  *
-ilib.data.astro._nutCoeffA = [124.90, -1934.134, 0.002063];
-ilib.data.astro._nutCoeffB q= [201.11, 72001.5377, 0.00057];
 */
 
 /**

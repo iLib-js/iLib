@@ -18,13 +18,15 @@
  */
 
 /**
- * @namespace The global namespace that contains general ilib functions useful
+ * The global namespace that contains general ilib functions useful
  * to all of ilib
- *
- * @version // !macro ilibVersion
+ * @namespace
  */
 var ilib = ilib || {};
 
+/**
+ * @version // !macro ilibVersion
+ */
 /** @private */
 ilib._ver = function() {
     return // !macro ilibVersion

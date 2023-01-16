@@ -177,11 +177,9 @@ var PhoneGeoLocator = function(options) {
 
 PhoneGeoLocator.prototype = {
     /**
-     * @private
-     *
      * Used for locales where the area code is very general, and you need to add in
      * the initial digits of the subscriber number in order to get the area
-     *
+     * @private
      * @param {string} number
      * @param {Object} stateTable
      */
@@ -264,7 +262,6 @@ PhoneGeoLocator.prototype = {
      * @private
      * @param prefix
      * @param table
-     * @returns
      */
     _matchPrefix: function(prefix, table)  {
         var i, matchedDot, matchesWithDots = [];

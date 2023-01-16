@@ -66,11 +66,9 @@ var isPunct = require("./isPunct.js");
  *     <li><i>s</i> - suffixes
  *     <li><i>h</i> - honorifics (selects the prefix or suffix as required by the locale)
  *   </ul>
- * <p>
- *
+ * <br>
  * For example, the string "pf" would mean to only format any prefixes and family names
- * together and leave out all the other parts of the name.<p>
- *
+ * together and leave out all the other parts of the name.<br><br>
  * The components can be listed in any order in the string. The <i>components</i> option
  * overrides the <i>style</i> option if both are specified.
  *

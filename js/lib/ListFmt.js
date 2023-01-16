@@ -57,11 +57,11 @@ var styleMap = {
  * to use the default "conjunction" style. Valid values are:
  *
  * <ul>
- *   <ul><i>standard</i> create a standard list.
- *   <ul><i>conjunction</i> this list should be concatenated with a conjunction "and".
+ *   <li><i>standard</i> create a standard list.
+ *   <li><i>conjunction</i> this list should be concatenated with a conjunction "and".
  *   This is the default style for "standard".
- *   <ul><i>disjunction</i> this list should be concatenated with a disjunction "or".
- *   <ul><i>unit</i> this is a list of measures like "5 minutes, 4 seconds". In
+ *   <li><i>disjunction</i> this list should be concatenated with a disjunction "or".
+ *   <li><i>unit</i> this is a list of measures like "5 minutes, 4 seconds". In
  *   some languages, these type of lists are concatenated without a conjunction.
  * </ul>
  *

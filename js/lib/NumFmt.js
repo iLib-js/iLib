@@ -107,8 +107,7 @@ var IString = require("./IString.js");
  * symbol. eg. "$57.35" for fifty-seven dollars and thirty five cents. The iso style is
  * the international style where the currency unit is represented using the ISO 4217 code.
  * eg. "USD 57.35" for the same amount. The default is "common" style if the style is
- * not specified.<p>
- *
+ * not specified.<br><br>
  * When the type of this formatter is "number", the style can be one of the following:
  * <ul>
  *   <li><i>standard - format a fully specified floating point number properly for the locale

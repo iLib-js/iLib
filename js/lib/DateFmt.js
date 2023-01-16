@@ -81,9 +81,8 @@ var ISet = require("./ISet.js");
  * in some locales, the standard format uses the order "time followed by date" and in others,
  * the order is exactly opposite, so it is better to create a single "datetime" formatter
  * than it is to create a time formatter and a date formatter separately and concatenate the
- * results. A "datetime" formatter will get the order correct for the locale.<p>
- *
- * The default type if none is specified in with the type option is "date".
+ * results. A "datetime" formatter will get the order correct for the locale.<br><br>
+ * The default type if none is specified in with the type option is "date". <br><br>
  *
  * <li><i>length</i> - Specify the length of the format to use. The length is the approximate size of the
  * formatted string.
@@ -96,22 +95,19 @@ var ISet = require("./ISet.js");
  * <li><i>full</i> - use a full representation of the time. This is a fully specified format where all the textual
  * components are spelled out completely
  * </ul>
- *
  * eg. The "short" format for an en_US date may be "MM/dd/yy", whereas the long format might be "d MMM, yyyy". In the long
  * format, the month name is textual instead of numeric and is longer, the year is 4 digits instead of 2, and the format
- * contains slightly more spaces and formatting characters.<p>
- *
+ * contains slightly more spaces and formatting characters.<br><br>
  * Note that the length parameter does not specify which components are to be formatted. Use the "date" and the "time"
  * properties to specify the components. Also, very few of the components of a time format differ according to the length,
- * so this property has little to no affect on time formatting.
+ * so this property has little to no affect on time formatting. <br><br>
  *
  * <li><i>date</i> - This property tells
  * which components of a date format to use. For example,
  * sometimes you may wish to format a date that only contains the month and date
  * without the year, such as when displaying a person's yearly birthday. The value
  * of this property allows you to specify only those components you want to see in the
- * final output, ordered correctly for the locale. <p>
- *
+ * final output, ordered correctly for the locale. <br><br>
  * Valid values are:
  *
  * <ul>
@@ -128,18 +124,16 @@ var ISet = require("./ISet.js");
  * <li><i>y</i> - format only the year
  * </ul>
  * Default components, if this property is not specified, is "dmy". This property may be specified
- * but has no affect if the current formatter is for times only.<p>
- *
+ * but has no affect if the current formatter is for times only.<br><br>
  * As of ilib 12.0, you can now pass ICU style skeletons in this option similar to the ones you
  * get from <a href="http://icu-project.org/apiref/icu4c432/classDateTimePatternGenerator.html#aa30c251609c1eea5ad60c95fc497251e">DateTimePatternGenerator.getSkeleton()</a>.
  * It will not extract the length from the skeleton so you still need to pass the length property,
- * but it will extract the date components.
+ * but it will extract the date components. <br><br>
  *
  * <li><i>time</i> - This property gives which components of a time format to use. The time will be formatted
  * correctly for the locale with only the time components requested. For example, a clock might only display
  * the hour and minute and not need the seconds or the am/pm component. In this case, the time property should be set
- * to "hm". <p>
- *
+ * to "hm". <br><br>
  * Valid values for this property are:
  *
  * <ul>
@@ -157,7 +151,6 @@ var ISet = require("./ISet.js");
  * <li><i>m</i> - format only the minutes
  * <li><i>s</i> - format only the seconds
  * </ul>
- *
  * If you want to format a length of time instead of a particular instant
  * in time, use the duration formatter object (DurationFmt) instead because this
  * formatter is geared towards instants. A date formatter will make sure that each component of the
@@ -165,23 +158,19 @@ var ISet = require("./ISet.js");
  * for that component. That is, the minutes will always be between 0 and 59, no matter
  * what is specified in the date to format. A duration format will allow the number
  * of minutes to exceed 59 if, for example, you were displaying the length of
- * a movie of 198 minutes.<p>
- *
- * Default value if this property is not specified is "hma".<p>
- *
+ * a movie of 198 minutes.<br><br>
+ * Default value if this property is not specified is "hma".<br><br>
  * As of ilib 12.0, you can now pass ICU style skeletons in this option similar to the ones you
  * get from <a href="http://icu-project.org/apiref/icu4c432/classDateTimePatternGenerator.html#aa30c251609c1eea5ad60c95fc497251e">DateTimePatternGenerator.getSkeleton()</a>.
  * It will not extract the length from the skeleton so you still need to pass the length property,
  * but it will extract the time components.
  *
  * <li><i>clock</i> - specify that the time formatter should use a 12 or 24 hour clock.
- * Valid values are "12" and "24".<p>
- *
+ * Valid values are "12" and "24".<br><br>
  * In some locales, both clocks are used. For example, in en_US, the general populace uses
  * a 12 hour clock with am/pm, but in the US military or in nautical or aeronautical or
  * scientific writing, it is more common to use a 24 hour clock. This property allows you to
- * construct a formatter that overrides the default for the locale.<p>
- *
+ * construct a formatter that overrides the default for the locale.<br><br>
  * If this property is not specified, the default is to use the most widely used convention
  * for the locale.
  *
@@ -678,8 +667,8 @@ DateFmt.isIntlDateTimeAvailable = function (locale) {
 
 DateFmt.prototype = {
     /**
-     * @private
      * Finish initializing the formatter object
+     * @private
      */
     _init: function(options) {
         if (typeof (options.sync) === 'undefined') {
@@ -1310,8 +1299,8 @@ DateFmt.prototype = {
     },
 
     /**
-     * @private
      * Format a date according to a sequence of components.
+     * @private
      * @param {IDate} date a date/time object to format
      * @param {Array.<string>} templateArr an array of components to format
      * @return {string} the formatted date

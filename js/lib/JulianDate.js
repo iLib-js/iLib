@@ -126,8 +126,8 @@ JulianDate.prototype.parent = IDate;
 JulianDate.prototype.constructor = JulianDate;
 
 /**
- * @private
  * Initialize the date
+ * @private
  */
 JulianDate.prototype._init = function (params) {
     if (params.year || params.month || params.day || params.hour ||
@@ -206,8 +206,8 @@ JulianDate.prototype._init = function (params) {
 };
 
 /**
- * @private
  * Finish initializing the date
+ * @private
  */
 JulianDate.prototype._init2 = function (params) {
     if (!this.rd) {

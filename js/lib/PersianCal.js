@@ -43,10 +43,10 @@ var PersianCal = function(options) {
 };
 
 /**
+ * the lengths of each month
  * @private
  * @const
  * @type Array.<number>
- * the lengths of each month
  */
 PersianCal.monthLengths = [
     31,  // Farvardin
