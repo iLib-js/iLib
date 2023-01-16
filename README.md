@@ -221,7 +221,7 @@ Other Information
 
 Please point your browser to the following places to get more documentation:
 
-- JSDocs: https://ilib-js.github.io/iLib/docs/
+- JSDocs: https://ilib-js.github.io/iLib/docs/api/jsdoc/index.html
 - Github: git clone git@github.com:iLib-js/iLib.git
 - Builds: https://github.com/iLib-js/iLib/releases
 - Wiki: https://github.com/iLib-js/iLib/wiki
