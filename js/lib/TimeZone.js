@@ -496,7 +496,7 @@ TimeZone.prototype.getOffset = function (date) {
     var ret = {
         h: hours
     };
-    if (minutes != 0) {
+    if (minutes !== 0) {
         ret.m = minutes;
     }
     return ret;
@@ -677,7 +677,7 @@ TimeZone.prototype._calcRuleStart = function (rule, year) {
             julianday: rule.j
         });
     } else {
-        if (rule.r.charAt(0) == 'l' || rule.r.charAt(0) == 'f') {
+        if (rule.r.charAt(0) === 'l' || rule.r.charAt(0) === 'f') {
             cal = CalendarFactory({type: "gregorian"}); // can be synchronous
             type = rule.r.charAt(0);
             weekday = parseInt(rule.r.substring(1), 10);
@@ -687,11 +687,11 @@ TimeZone.prototype._calcRuleStart = function (rule, year) {
             //        " of month " + rule.m);
         } else {
             i = rule.r.indexOf('<');
-            if (i == -1) {
+            if (i === -1) {
                 i = rule.r.indexOf('>');
             }
 
-            if (i != -1) {
+            if (i !== -1) {
                 type = rule.r.charAt(i);
                 weekday = parseInt(rule.r.substring(0, i), 10);
                 day = parseInt(rule.r.substring(i+1), 10);

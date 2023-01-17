@@ -1,7 +1,6 @@
 {
+    "generated": true,
     "scripts": [
-        "Laoo",
-        "Hmnp"
-    ],
-    "generated": true
+        "Laoo"
+    ]
 }

@@ -1,130 +1,4 @@
 {
-    "gregorian": {
-        "order": "{time} {date}",
-        "date": {
-            "dmwy": {
-                "s": "E, M/d/yy",
-                "m": "EE, MMM d 'lia', yyyy",
-                "l": "EEE, MMMM d 'lia' yyyy",
-                "f": "EEEE, MMMM d 'lia' yyyy"
-            },
-            "dmy": {
-                "s": "M/d/yy",
-                "m": "MMM d 'lia', yyyy",
-                "l": "MMMM d 'lia' yyyy",
-                "f": "MMMM d 'lia' yyyy"
-            },
-            "dmw": {
-                "s": "E, M/d",
-                "m": "EE, MMM d",
-                "l": "EEE, MMMM d",
-                "f": "EEEE, MMMM d"
-            },
-            "dm": {
-                "s": "M/d",
-                "m": "MMM d",
-                "l": "MMMM d",
-                "f": "MMMM d"
-            },
-            "my": {
-                "m": "MMM 'lia', yyyy",
-                "l": "MMMM 'lia' yyyy",
-                "f": "MMMM 'lia' yyyy"
-            },
-            "dw": {
-                "s": "E, d",
-                "m": "EE, d",
-                "l": "EEE, d",
-                "f": "EEEE, d"
-            },
-            "d": {
-                "f": "d",
-                "l": "d",
-                "m": "d",
-                "s": "d"
-            },
-            "m": {
-                "m": "MMM",
-                "l": "MMMM"
-            }
-        },
-        "time": {
-            "12": {
-                "ahmsz": "a 'ga' h:mm:ss z",
-                "ahms": "a 'ga' h:mm:ss",
-                "ahmz": "a 'ga' h:mm z",
-                "ahm": "a 'ga' h:mm",
-                "ah": "a 'ga' h"
-            },
-            "24": {
-                "ahmsz": "HH:mm:ss z",
-                "ahms": "HH:mm:ss",
-                "hmsz": "HH:mm:ss z",
-                "hms": "HH:mm:ss",
-                "ahmz": "HH:mm z",
-                "ahm": "HH:mm",
-                "hmz": "HH:mm z",
-                "ah": "HH",
-                "hm": "HH:mm",
-                "h": "HH"
-            }
-        },
-        "range": {
-            "c00": {
-                "s": "{st} – {et} {sm}/{sd}/{sy}",
-                "m": "{st} – {et} {sm} {sd} lia, {sy}",
-                "l": "{st} – {et} {sm} {sd} lia {sy}",
-                "f": "{st} – {et} {sm} {sd} lia {sy}"
-            },
-            "c01": {
-                "s": "{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}",
-                "m": "{st} {sm} {sd} lia, {sy} – {et} {em} {ed} lia, {ey}",
-                "l": "{st} {sm} {sd} lia {sy} – {et} {em} {ed} lia {ey}",
-                "f": "{st} {sm} {sd} lia {sy} – {et} {em} {ed} lia {ey}"
-            },
-            "c02": {
-                "s": "{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}",
-                "m": "{st} {sm} {sd} lia, {sy} – {et} {em} {ed} lia, {ey}",
-                "l": "{st} {sm} {sd} lia {sy} – {et} {em} {ed} lia {ey}",
-                "f": "{st} {sm} {sd} lia {sy} – {et} {em} {ed} lia {ey}"
-            },
-            "c03": {
-                "s": "{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}",
-                "m": "{st} {sm} {sd} lia, {sy} – {et} {em} {ed} lia, {ey}",
-                "l": "{st} {sm} {sd} lia {sy} – {et} {em} {ed} lia {ey}",
-                "f": "{st} {sm} {sd} lia {sy} – {et} {em} {ed} lia {ey}"
-            },
-            "c10": {
-                "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}",
-                "m": "{sm} {sd} – {ed} lia, {ey}",
-                "l": "{sm} {sd} – {ed} lia {ey}",
-                "f": "{sm} {sd} – {ed} lia {ey}"
-            },
-            "c11": {
-                "s": "{sm}/{sd} – {em}/{ed}/{ey}",
-                "m": "{sm} {sd} – {em} {ed} lia, {ey}",
-                "l": "{sm} {sd} – {em} {ed} lia {ey}",
-                "f": "{sm} {sd} – {em} {ed} lia {ey}"
-            },
-            "c12": {
-                "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}",
-                "m": "{sm} {sd} lia, {sy} – {em} {ed} lia, {ey}",
-                "l": "{sm} {sd} lia {sy} – {em} {ed} lia {ey}",
-                "f": "{sm} {sd} lia {sy} – {em} {ed} lia {ey}"
-            },
-            "c20": {
-                "m": "{sm} lia, {sy} – {em} lia, {ey}",
-                "l": "{sm} lia {sy} – {em} lia {ey}",
-                "f": "{sm} lia {sy} – {em} lia {ey}"
-            },
-            "c30": {
-                "f": "{sy} – {ey}",
-                "l": "{sy} – {ey}",
-                "m": "{sy} – {ey}",
-                "s": "{sy} – {ey}"
-            }
-        }
-    },
     "dayPeriods": [
         {
             "from": 0,
@@ -158,5 +32,131 @@
             "from": 1260,
             "to": 240
         }
-    ]
+    ],
+    "gregorian": {
+        "date": {
+            "d": {
+                "f": "d",
+                "l": "d",
+                "m": "d",
+                "s": "d"
+            },
+            "dm": {
+                "f": "MMMM d",
+                "l": "MMMM d",
+                "m": "MMM d",
+                "s": "M/d"
+            },
+            "dmw": {
+                "f": "EEEE, MMMM d",
+                "l": "EEE, MMMM d",
+                "m": "EE, MMM d",
+                "s": "E, M/d"
+            },
+            "dmwy": {
+                "f": "EEEE, MMMM d 'lia' yyyy",
+                "l": "EEE, MMMM d 'lia' yyyy",
+                "m": "EE, MMM d 'lia', yyyy",
+                "s": "E, M/d/yy"
+            },
+            "dmy": {
+                "f": "MMMM d 'lia' yyyy",
+                "l": "MMMM d 'lia' yyyy",
+                "m": "MMM d 'lia', yyyy",
+                "s": "M/d/yy"
+            },
+            "dw": {
+                "f": "EEEE, d",
+                "l": "EEE, d",
+                "m": "EE, d",
+                "s": "E, d"
+            },
+            "m": {
+                "l": "MMMM",
+                "m": "MMM"
+            },
+            "my": {
+                "f": "MMMM 'lia' yyyy",
+                "l": "MMMM 'lia' yyyy",
+                "m": "MMM 'lia', yyyy"
+            }
+        },
+        "order": "{time} {date}",
+        "range": {
+            "c00": {
+                "f": "{st} – {et} {sm} {sd} lia {sy}",
+                "l": "{st} – {et} {sm} {sd} lia {sy}",
+                "m": "{st} – {et} {sm} {sd} lia, {sy}",
+                "s": "{st} – {et} {sm}/{sd}/{sy}"
+            },
+            "c01": {
+                "f": "{st} {sm} {sd} lia {sy} – {et} {em} {ed} lia {ey}",
+                "l": "{st} {sm} {sd} lia {sy} – {et} {em} {ed} lia {ey}",
+                "m": "{st} {sm} {sd} lia, {sy} – {et} {em} {ed} lia, {ey}",
+                "s": "{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}"
+            },
+            "c02": {
+                "f": "{st} {sm} {sd} lia {sy} – {et} {em} {ed} lia {ey}",
+                "l": "{st} {sm} {sd} lia {sy} – {et} {em} {ed} lia {ey}",
+                "m": "{st} {sm} {sd} lia, {sy} – {et} {em} {ed} lia, {ey}",
+                "s": "{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}"
+            },
+            "c03": {
+                "f": "{st} {sm} {sd} lia {sy} – {et} {em} {ed} lia {ey}",
+                "l": "{st} {sm} {sd} lia {sy} – {et} {em} {ed} lia {ey}",
+                "m": "{st} {sm} {sd} lia, {sy} – {et} {em} {ed} lia, {ey}",
+                "s": "{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}"
+            },
+            "c10": {
+                "f": "{sm} {sd} – {ed} lia {ey}",
+                "l": "{sm} {sd} – {ed} lia {ey}",
+                "m": "{sm} {sd} – {ed} lia, {ey}",
+                "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
+            },
+            "c11": {
+                "f": "{sm} {sd} – {em} {ed} lia {ey}",
+                "l": "{sm} {sd} – {em} {ed} lia {ey}",
+                "m": "{sm} {sd} – {em} {ed} lia, {ey}",
+                "s": "{sm}/{sd} – {em}/{ed}/{ey}"
+            },
+            "c12": {
+                "f": "{sm} {sd} lia {sy} – {em} {ed} lia {ey}",
+                "l": "{sm} {sd} lia {sy} – {em} {ed} lia {ey}",
+                "m": "{sm} {sd} lia, {sy} – {em} {ed} lia, {ey}",
+                "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
+            },
+            "c20": {
+                "f": "{sm} lia {sy} – {em} lia {ey}",
+                "l": "{sm} lia {sy} – {em} lia {ey}",
+                "m": "{sm} lia, {sy} – {em} lia, {ey}"
+            },
+            "c30": {
+                "f": "{sy} – {ey}",
+                "l": "{sy} – {ey}",
+                "m": "{sy} – {ey}",
+                "s": "{sy} – {ey}"
+            }
+        },
+        "time": {
+            "12": {
+                "ah": "a 'ga' h",
+                "ahm": "a 'ga' h:mm",
+                "ahms": "a 'ga' h:mm:ss",
+                "ahmsz": "a 'ga' h:mm:ss z",
+                "ahmz": "a 'ga' h:mm z"
+            },
+            "24": {
+                "ah": "HH",
+                "ahm": "HH:mm",
+                "ahms": "HH:mm:ss",
+                "ahmsz": "HH:mm:ss z",
+                "ahmz": "HH:mm z",
+                "h": "HH",
+                "hm": "HH:mm",
+                "hms": "HH:mm:ss",
+                "hmsz": "HH:mm:ss z",
+                "hmz": "HH:mm z"
+            }
+        }
+    }
 }

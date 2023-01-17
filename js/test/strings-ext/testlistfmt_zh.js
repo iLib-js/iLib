@@ -1,7 +1,7 @@
 /*
  * testlistfmt_zh.js - test the list formatter object
  *
- * Copyright © 2017, 2020 JEDLSoft
+ * Copyright © 2017, 2020, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -632,7 +632,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二"]), "一及二");
+        test.equal(fmt.format(["一", "二"]), "一和二");
         test.done();
     },
     
@@ -643,7 +643,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二", "三"]), "一、二及三");
+        test.equal(fmt.format(["一", "二", "三"]), "一、二和三");
         test.done();
     },
     
@@ -654,7 +654,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二", "三", "四"]), "一、二、三及四");
+        test.equal(fmt.format(["一", "二", "三", "四"]), "一、二、三和四");
         test.done();
     },
     
@@ -678,7 +678,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二"]), "一及二");
+        test.equal(fmt.format(["一", "二"]), "一和二");
         test.done();
     },
     
@@ -690,7 +690,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二", "三"]), "一、二及三");
+        test.equal(fmt.format(["一", "二", "三"]), "一、二和三");
         test.done();
     },
     
@@ -702,7 +702,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二", "三", "四"]), "一、二、三及四");
+        test.equal(fmt.format(["一", "二", "三", "四"]), "一、二、三和四");
         test.done();
     },
     
@@ -726,7 +726,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二"]), "一及二");
+        test.equal(fmt.format(["一", "二"]), "一和二");
         test.done();
     },
     
@@ -738,7 +738,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二", "三"]), "一、二及三");
+        test.equal(fmt.format(["一", "二", "三"]), "一、二和三");
         test.done();
     },
     
@@ -750,7 +750,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二", "三", "四"]), "一、二、三及四");
+        test.equal(fmt.format(["一", "二", "三", "四"]), "一、二、三和四");
         test.done();
     },
     
@@ -774,7 +774,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二"]), "一及二");
+        test.equal(fmt.format(["一", "二"]), "一和二");
         test.done();
     },
     
@@ -786,7 +786,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二", "三"]), "一、二及三");
+        test.equal(fmt.format(["一", "二", "三"]), "一、二和三");
         test.done();
     },
     
@@ -798,7 +798,7 @@ module.exports.testlistfmt_zh = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["一", "二", "三", "四"]), "一、二、三及四");
+        test.equal(fmt.format(["一", "二", "三", "四"]), "一、二、三和四");
         test.done();
     },
     

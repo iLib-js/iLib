@@ -1,7 +1,7 @@
 /*
  * testdatefmt.js - test the date formatter object
  *
- * Copyright © 2012-2015, 2017, 2020-2021 JEDLSoft
+ * Copyright © 2012-2015, 2017, 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2504,6 +2504,34 @@ module.exports.testdatefmt = {
         test.done();
     },
 
+    testDateFmtFormatRelativeWithinFortnightBeforeMedium: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({length: "medium"});
+        test.ok(fmt !== null);
+
+        var reference = new GregorianDate({
+            year: 2011,
+            month: 11,
+            day: 20,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        var date = new GregorianDate({
+            year: 2011,
+            month: 11,
+            day: 16,
+            hour: 9,
+            minute: 35,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.formatRelative(reference, date), "4 days ago");
+        test.done();
+    },
+    
+
     testDateFmtFormatRelativeWithinQuarterAfter: function(test) {
         test.expect(2);
         var fmt = new DateFmt({length: "full"});
@@ -3952,6 +3980,38 @@ module.exports.testdatefmt = {
         test.ok(fmt !== null);
 
         test.equal(fmt.getDateComponentOrder(), "mdy");
+        test.done();
+    },
+    testDateFmtisIntlDateTimeAvaiable: function(test) {
+        test.expect(1);
+
+        var result = DateFmt.isIntlDateTimeAvailable();
+        test.equal(result, false);
+        test.done();
+    },
+    testDateFmtisIntlDateTimeAvaiable_ko_KR: function(test) {
+        if (!(ilib._getPlatform() === "nodejs" || ilib._getPlatform() === "browser")) {
+            test.done();
+            return;
+        }
+        test.expect(1);
+        var result = DateFmt.isIntlDateTimeAvailable("ko-KR");
+
+        if(ilib._getPlatform() === "nodejs") {
+            var cldrVersion = Number(process.versions["cldr"]);
+            var nodeMajorVersion = process.versions["node"].split(".")[0];
+            if (cldrVersion < 38) {
+                if (nodeMajorVersion === "14") {
+                    test.equal(result, true);
+                } else {
+                    test.equal(result, false);
+                }
+            } else {
+                test.equal(result, true);
+            }
+        } else {
+            test.equal(result, true);
+        }
         test.done();
     }
 };

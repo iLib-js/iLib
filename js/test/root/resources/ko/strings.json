@@ -2,5 +2,6 @@
     "hello" : "안녕하세요!",
     "Hello, {name}": "{name}, 안녕하세요",
     "thanks" : "감사합니다",
-    "Settings": "설정"
+    "Settings": "설정",
+    "one#({N}) file selected|#({N}) files selected": "one#({N})개 파일 선택됨(one)|#({N})개 파일 선택됨(other)"
 }

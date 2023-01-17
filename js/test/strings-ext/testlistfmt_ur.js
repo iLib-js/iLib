@@ -1,7 +1,7 @@
 /*
  * testlistfmt_ur.js - test the list formatter object
  *
- * Copyright © 2017, 2020 JEDLSoft
+ * Copyright © 2017, 2020, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -242,7 +242,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);                    
-        test.equal(fmt.format(["ایک کو", "دو"]), "دو، ایک کو");
+        test.equal(fmt.format(["ایک کو", "دو"]), 'ایک کو اور دو');
         test.done();
     },
     
@@ -254,7 +254,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ایک کو", "دو", "تین"]), "ایک کو، تین، دو");
+        test.equal(fmt.format(["ایک کو", "دو", "تین"]),  'ایک کو، دو، اور تین');
         test.done();
     },
     
@@ -266,7 +266,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ایک کو", "دو", "تین", "چار"]), "ایک کو، دو، چار، تین");
+        test.equal(fmt.format(["ایک کو", "دو", "تین", "چار"]),  'ایک کو، دو، تین، اور چار');
         test.done();
     },
     testListFmtUnitStyleurArabINNumberFormatOneFull: function(test) {
@@ -291,7 +291,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);                    
-        test.equal(fmt.format(["ایک کو", "دو"]), "دو، ایک کو");
+        test.equal(fmt.format(["ایک کو", "دو"]), 'ایک کو، دو');
         test.done();
     },
     
@@ -304,7 +304,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ایک کو", "دو", "تین"]), "ایک کو, تین، دو");
+        test.equal(fmt.format(["ایک کو", "دو", "تین"]), 'ایک کو, دو، اور تین');
         test.done();
     },
     
@@ -317,7 +317,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ایک کو", "دو", "تین", "چار"]), "ایک کو, دو, چار، تین");
+        test.equal(fmt.format(["ایک کو", "دو", "تین", "چار"]),  'ایک کو, دو, تین، اور چار');
         test.done();
     }
 };

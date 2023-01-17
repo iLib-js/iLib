@@ -2,7 +2,7 @@
  * gencountrynames.js - ilib tool to generate the ctrynames.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2021 JEDLSoft
+ * Copyright © 2013-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
  *
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -28,10 +29,8 @@ var xml2json = require("xml2json");
 var common = require('./common');
 var merge = common.merge;
 var Locale = common.Locale;
-var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
 
-var ilib = require("../../js/index.js");
 var Collator = require("../../js/lib/Collator.js");
 
 function usage() {
@@ -106,7 +105,7 @@ function getCountryNames(localeData, pathname, locale) {
             script = locale.getScript(),
             country = locale.getRegion();
 
-        var data = require(path.join("cldr-localnames-full/main", locale.getSpec(), "territories.json"));
+        var data = require(path.join("cldr-localenames-full/main", locale.getSpec(), "territories.json"));
 
         var destfile = calcLocalePath(language, script, country, "ctrynames.json");
         var destdata = loadFile(destfile);
@@ -491,7 +490,7 @@ function mergeCountries(localeData) {
 var localeDirs, localeData = {}, regionData = {};
 
 try {
-    localeDirs = require("cldr-core/availableLocales.json").availableLocales;
+    localeDirs = require("cldr-core/availableLocales.json").availableLocales.full;
 } catch (e) {
     console.log("Error: Could not load file cldr-core/availableLocales.json");
     process.exit(2);

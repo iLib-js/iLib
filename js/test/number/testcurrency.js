@@ -80,6 +80,21 @@ module.exports.testcurrency = {
         test.equal(locale.toString(), "en-US");
         test.done();
     },
+    testCurrencyGetByCode3: function(test) {
+        test.expect(6);
+        var cur = new Currency({
+            locale: "en-PH"
+        });
+        test.ok(cur !== null);
+    
+        test.equal(cur.getCode(), "PHP");
+        test.equal(cur.getFractionDigits(), 2);
+        test.equal(cur.getSign(), '₱');
+        test.equal(cur.getName(), "Philippine Peso");
+        var locale = cur.getLocale();
+        test.equal(locale.toString(), "en-PH");
+        test.done();
+    },
     
     testCurrencyGetByCodeUnknown: function(test) {
         try {

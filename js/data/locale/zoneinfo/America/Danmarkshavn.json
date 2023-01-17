@@ -1,6 +1,6 @@
 {
-    "f": "GMT",
-    "o": "0:0",
     "c": "GL",
-    "n": "Greenwich {c} Time"
+    "f": "GMT",
+    "n": "Greenwich {c} Time",
+    "o": "0:0"
 }

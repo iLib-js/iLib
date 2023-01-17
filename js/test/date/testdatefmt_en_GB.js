@@ -1,7 +1,7 @@
 /*
  * testdatefmt_en_GB.js - test the date formatter object in British English
  * 
- * Copyright © 2012-2015,2017,2021 JEDLSoft
+ * Copyright © 2012-2015,2017,2021-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,6 +30,10 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
+if (typeof(DateFactory) === "undefined") {
+    var DateFactory = require("../../lib/DateFactory.js");
+}
+
 module.exports.testdatefmt_en_GB = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -43,7 +47,6 @@ module.exports.testdatefmt_en_GB = {
         test.ok(fmt !== null);
         test.done();
     },
-    
     
     testDateFmtGBSimpleShort: function(test) {
         test.expect(2);
@@ -121,6 +124,200 @@ module.exports.testdatefmt_en_GB = {
         test.done();
     },
     
+    testDateFmtSimpleShort_en_GB_useIntl: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        var fmt = new DateFmt({locale: "en-GB", length: "short", useIntl: true});
+        test.ok(fmt !== null);
+        
+        var date = DateFactory({
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+
+        if(ilib._getPlatform() === "nodejs"){
+            var cldrVersion = Number(process.versions["cldr"]);
+            var nodeMajorVersion = process.versions["node"].split(".")[0];
+            if (cldrVersion < 36) {
+                test.equal(fmt.format(date), "9/29/2011");
+            } else if (cldrVersion < 38) {
+                /*
+                * Both node v12.16.1 and v14.16.1 say the cldr version is 37.0.
+                * But it returns a different result.
+                */
+                if (nodeMajorVersion === "14") {
+                    test.equal(fmt.format(date), "29/09/2011");
+                } else {
+                    test.equal(fmt.format(date), "9/29/11");
+                }
+            } else {
+                test.equal(fmt.format(date), "29/09/2011");
+            }
+        } else {
+            test.equal(fmt.format(date), "29/09/2011");
+        }
+        test.done();
+    },
+    
+    testDateFmtSimpleMedium_en_GB_useIntl: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        var fmt = new DateFmt({locale: "en-GB", length: "medium", useIntl: true});
+        test.ok(fmt !== null);
+        
+        var date = DateFactory({
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+
+        if(ilib._getPlatform() === "nodejs"){
+            var cldrVersion = Number(process.versions["cldr"]);
+            var nodeMajorVersion = process.versions["node"].split(".")[0];
+            //console.log("version: " + version + " majorVersion: " + majorVersion);
+            if (cldrVersion < 36) {
+                test.equal(fmt.format(date), "9/29/2011");
+            } else if(cldrVersion < 38) {
+                if (nodeMajorVersion === "14") {
+                    test.equal(fmt.format(date), "29 Sep 2011");
+                } else {
+                    test.equal(fmt.format(date), "Sep 29, 2011");
+                }
+            } else if(cldrVersion < 39){
+                test.equal(fmt.format(date), "29 Sept 2011");
+            } else if(cldrVersion < 41){
+                test.equal(fmt.format(date), "29 Sept 2011");
+            } else {
+                test.equal(fmt.format(date), "29 Sep 2011");
+            }
+        } else {
+            test.equal(fmt.format(date), "29 Sept 2011");
+        }
+        test.done();
+    },
+    testDateFmtSimpleLong_en_GB_useIntl: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        var fmt = new DateFmt({locale: "en-GB", length: "long", useIntl: true});
+        test.ok(fmt !== null);
+        
+        var date = DateFactory({
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+
+        if(ilib._getPlatform() === "nodejs"){
+            var cldrVersion = Number(process.versions["cldr"]);
+            var nodeMajorVersion = process.versions["node"].split(".")[0];
+            if (cldrVersion < 36) {
+                test.equal(fmt.format(date), "9/29/2011");
+            } else if (cldrVersion < 38) {
+                if (nodeMajorVersion === "14") {
+                    test.equal(fmt.format(date), "29 September 2011");
+                } else {
+                    test.equal(fmt.format(date), "September 29, 2011");
+                }
+                
+            } else {
+                test.equal(fmt.format(date), "29 September 2011");
+            }
+        } else {
+            test.equal(fmt.format(date), "29 September 2011");
+        }
+        
+        test.done();
+    },
+    testDateFmtSimpleFull_en_GB_useIntl: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        var fmt = new DateFmt({locale: "en-GB", length: "full", useIntl: true});
+        test.ok(fmt !== null);
+        
+        var date = DateFactory({
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        
+        test.equal(fmt.format(date), "29 September 2011");
+        test.done();
+    },
+
+    testDateFmtSimpleLong_en_GB_useIntl_dmwy: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        var fmt = new DateFmt({locale: "en-GB", length: "full", date:"dmwy", useIntl: true});
+        test.ok(fmt !== null);
+        
+        var date = DateFactory({
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+
+
+        if(ilib._getPlatform() === "nodejs"){
+            var cldrVersion = Number(process.versions["cldr"]);
+            var nodeMajorVersion = process.versions["node"].split(".")[0];
+            if (cldrVersion < 36) {
+                test.equal(fmt.format(date), "9/29/2011");
+            } else if (cldrVersion < 38) {
+                if (nodeMajorVersion === "14") {
+                    test.equal(fmt.format(date), "Thursday, 29 September 2011");
+                } else {
+                    test.equal(fmt.format(date), "Thursday, September 29, 2011");
+                }
+            } else {
+                test.equal(fmt.format(date), "Thursday, 29 September 2011");
+            }
+        } else {
+            test.equal(fmt.format(date), "Thursday, 29 September 2011");
+        }
+
+        test.done();
+    },
     testDateFmtGBSimpleTimeShort: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "en-GB", length: "short", type: "time"});
@@ -1096,6 +1293,84 @@ module.exports.testdatefmt_en_GB = {
         test.done();
     },
     
+    testDateFmtSimpleTime_en_GB_Intl_ahm: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        var fmt = new DateFmt({locale: "en-GB", type: "time", useIntl: true});
+        test.ok(fmt !== null);
+        
+        var date = DateFactory({
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 10,
+            millisecond: 0
+        });
+
+        if(ilib._getPlatform() === "nodejs") {
+            var cldrVersion = Number(process.versions["cldr"]);
+            var nodeMajorVersion = process.versions["node"].split(".")[0];
+            if (cldrVersion < 36) {
+                test.equal(fmt.format(date), "9/29/2011");
+            } else if (cldrVersion < 38) {
+                if (nodeMajorVersion === "14") {
+                    test.equal(fmt.format(date), "13:45");
+                } else {
+                    test.equal(fmt.format(date), "1:45 PM");
+                }
+            } else {
+                test.equal(fmt.format(date), "13:45");
+            }
+        } else {
+            test.equal(fmt.format(date), "13:45");
+        }
+        test.done();
+    },
+    testDateFmtSimpleTime_en_GB_Intl_ahms: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        var fmt = new DateFmt({locale: "en-GB", type: "time", time: "ahms", useIntl: true});
+        test.ok(fmt !== null);
+        
+        var date = DateFactory({
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 10,
+            millisecond: 0
+        });
+
+        if(ilib._getPlatform() === "nodejs"){
+            var cldrVersion = Number(process.versions["cldr"]);
+            var nodeMajorVersion = process.versions["node"].split(".")[0];
+            if (cldrVersion < 36) {
+                test.equal(fmt.format(date), "9/29/2011");
+            } else if (cldrVersion < 38) {
+                if (nodeMajorVersion === "14") {
+                    test.equal(fmt.format(date), "13:45:10");
+                } else {
+                    test.equal(fmt.format(date), "1:45:10 PM");
+                }
+            } else {
+                test.equal(fmt.format(date), "13:45:10");
+            }
+        } else {
+            test.equal(fmt.format(date), "13:45:10");
+        }
+        test.done();
+    },
     
     testDateFmtGBFullTimeComponentsS: function(test) {
         test.expect(2);
@@ -1373,6 +1648,4 @@ module.exports.testdatefmt_en_GB = {
         test.equal(fmt.format(date), "13:45:37 GMT/BST");
         test.done();
     }
-    
-    
 };

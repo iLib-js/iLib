@@ -1,10 +1,10 @@
 {
+    "generated": true,
     "scripts": [
         "Olck",
         "Beng",
         "Deva",
         "Latn",
         "Orya"
-    ],
-    "generated": true
+    ]
 }

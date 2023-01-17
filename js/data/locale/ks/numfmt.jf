@@ -1,19 +1,19 @@
 {
     "generated": true,
     "numfmt": {
-        "script": "arabext",
-        "decimalChar": "٫",
-        "groupChar": "٬",
-        "pctChar": "٪",
-        "exponential": "×۱۰^",
-        "secgroupSize": 2,
         "currencyFormats": {
-            "commonNegative": "‎-‎{s} {n}"
+            "common": "{s}{n}",
+            "commonNegative": "‎-‎{s}{n}"
         },
-        "negativenumFmt": "‎-‎{n}",
-        "pctFmt": "{n}٪",
-        "negativepctFmt": "‎-‎{n}٪",
+        "decimalChar": "٫",
         "digits": "۰۱۲۳۴۵۶۷۸۹",
+        "exponential": "×۱۰^",
+        "groupChar": "٬",
+        "negativenumFmt": "‎-‎{n}",
+        "negativepctFmt": "‎-‎{n}٪",
+        "pctChar": "٪",
+        "pctFmt": "{n}٪",
+        "script": "arabext",
         "useNative": true
     }
 }

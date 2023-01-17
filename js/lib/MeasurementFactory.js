@@ -120,9 +120,9 @@ var MeasurementFactory = function(options) {
     }
 
     var measurement, measure = undefined;
-
+    var c;
     // first try in the existing case
-    for (var c in Measurement._constructors) {
+    for (c in Measurement._constructors) {
         measurement = Measurement._constructors[c];
         if (Measurement.getUnitId(measurement, options.unit)) {
             measure = c;
@@ -133,7 +133,7 @@ var MeasurementFactory = function(options) {
     if (!measure) {
         // if it wasn't found before, try again in lower case -- this may recognize incorrectly because some
         // units can differ only in their case like "mm" and "Mm"
-        for (var c in Measurement._constructors) {
+        for (c in Measurement._constructors) {
             measurement = Measurement._constructors[c];
             if (typeof(Measurement.getUnitIdCaseInsensitive(measurement, options.unit)) !== 'undefined') {
                 measure = c;

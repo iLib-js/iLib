@@ -2921,6 +2921,28 @@ module.exports.testWeekdayTranslation = {
 
         test.done();
     },
+    testWeekdayTranslation_es_ES_Intl: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("es-ES")){
+            test.done();
+            return;
+        }
+        test.expect(7);
+        var fmt, value = [], i;
+
+        fmt = new DateFmt({locale:"es-ES", date:"w", length: "full", useNative:false, useIntl:true, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "domingo");
+        test.equal(value[1], "lunes");
+        test.equal(value[2], "martes");
+        test.equal(value[3], "miércoles");
+        test.equal(value[4], "jueves");
+        test.equal(value[5], "viernes");
+        test.equal(value[6], "sábado");
+
+        test.done();
+    },
     testWeekdayTranslation_es_GT: function(test) {
         test.expect(28);
         var fmt, value = [], i;
@@ -5054,6 +5076,28 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[5], "금");
         test.equal(value[6], "토");
 
+        test.done();
+    },
+    testWeekdayTranslation_ko_KR_Intl: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            test.done();
+            return;
+        }
+        test.expect(7);
+        var fmt, value = [], i;
+        
+        fmt = new DateFmt({locale:"ko-KR", date:"w", length: "full", useNative:false, useIntl: true, timezone:"local"})
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "일요일");
+        test.equal(value[1], "월요일");
+        test.equal(value[2], "화요일");
+        test.equal(value[3], "수요일");
+        test.equal(value[4], "목요일");
+        test.equal(value[5], "금요일");
+        test.equal(value[6], "토요일");
+      
         test.done();
     },
     testWeekdayTranslation_ku_Arab_IQ: function(test) {

@@ -365,12 +365,12 @@ Name._isAsianName = function (name, language) {
             var c = name.charAt(i);
 
             if (Name._isAsianChar(c)) {
-                if (language =="ko" || language =="ja" || language =="zh") {
+                if (language === "ko" || language === "ja" || language ==="zh") {
                     return true;
                 }
                 asian++;
             } else if (isAlpha(c)) {
-                if (!language =="ko" || !language =="ja" || !language =="zh") {
+                if (!(language === "ko") || !(language === "ja") || !(language === "zh")) {
                     return false;
                 }
                 latin++;
@@ -399,7 +399,7 @@ Name._isEuroName = function (name, language) {
 
         if (!Name._isAsianChar(c) && !isPunct(c) && !isSpace(c)) {
             return true;
-        } else if (Name._isAsianChar(c) && (language =="ko" || language =="ja" || language =="zh")) {
+        } else if (Name._isAsianChar(c) && (language === "ko" || language === "ja" || language === "zh")) {
             return false;
         }
     }
@@ -976,10 +976,10 @@ Name.prototype = {
             }
         } else if (parts.length === 2) {
             // we do G F
-            if (this.info.order == 'fgm') {
+            if (this.info.order === 'fgm') {
                 this.givenName = parts[1];
                 this.familyName = parts[0];
-            } else if (this.info.order == "gmf" || typeof (this.info.order) == 'undefined') {
+            } else if (this.info.order === "gmf" || typeof (this.info.order) === 'undefined') {
                 this.givenName = parts[0];
                 this.familyName = parts[1];
             }
@@ -1005,7 +1005,7 @@ Name.prototype = {
                     if (conjunctionIndex + 2 < parts.length - 1) {
                         this.middleName = parts.slice(conjunctionIndex + 2, parts.length - conjunctionIndex - 3);
                     }
-                } else if (this.info.order == "fgm") {
+                } else if (this.info.order === "fgm") {
                     this.familyName = parts.slice(0, conjunctionIndex + 2);
                     if (conjunctionIndex + 1 < parts.length - 1) {
                         this.middleName = parts.splice(parts.length - 1, 1);
@@ -1180,7 +1180,7 @@ Name.prototype = {
                         this.middleName = parts.slice(conjunctionIndex + 2,
                             parts.length - conjunctionIndex - 3);
                     }
-                } else if (this.order == "fgm") {
+                } else if (this.order === "fgm") {
                     this.familyName = parts.slice(0, conjunctionIndex + 2);
                     if (conjunctionIndex + 1 < parts.length - 1) {
                         this.middleName = parts.splice(parts.length - 1, 1);

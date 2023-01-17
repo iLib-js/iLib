@@ -798,12 +798,6 @@
         "Europe/Volgograd",
         "W-SU"
     ],
-    "UA": [
-        "Europe/Kiev",
-        "Europe/Simferopol",
-        "Europe/Uzhgorod",
-        "Europe/Zaporozhye"
-    ],
     "RW": [
         "Africa/Kigali"
     ],
@@ -922,6 +916,13 @@
     ],
     "TZ": [
         "Africa/Dar_es_Salaam"
+    ],
+    "UA": [
+        "Europe/Kiev",
+        "Europe/Kyiv",
+        "Europe/Simferopol",
+        "Europe/Uzhgorod",
+        "Europe/Zaporozhye"
     ],
     "UG": [
         "Africa/Kampala"

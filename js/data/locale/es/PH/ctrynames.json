@@ -110,7 +110,7 @@
     "Guam": "GU",
     "Guatemala": "GT",
     "Guayana Francesa": "GF",
-    "Guernsey": "GG",
+    "Guernesey": "GG",
     "Guinea": "GN",
     "Guinea Ecuatorial": "GQ",
     "Guinea-Bisáu": "GW",
@@ -130,7 +130,7 @@
     "Isla de Navidad": "CX",
     "Isla Norfolk": "NF",
     "Islandia": "IS",
-    "Islas Åland": "AX",
+    "Islas Aland": "AX",
     "Islas Caimán": "KY",
     "Islas Cocos": "CC",
     "Islas Cook": "CK",
@@ -292,5 +292,5 @@
     "Yibuti": "DJ",
     "Zambia": "ZM",
     "Zimbabue": "ZW",
-    "zona euro": "EZ"
+    "zona del euro": "EZ"
 }

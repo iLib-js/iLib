@@ -98,7 +98,6 @@ EthiopicCal.prototype.isLeapYear = function(year) {
         case "function":
         case "undefined":
             return false;
-            break;
     }
     return MathUtils.mod(y, 4) === 3;
 };

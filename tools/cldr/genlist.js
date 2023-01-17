@@ -132,20 +132,20 @@ var hardCodeData = {
     "ig":{
         "or": {
             "short": {
-                "2": "{0} mba {1}",
-                "end": "{0}, mba {1}"
+                "2": "{0} ma ọ bụ {1}",
+                "end": "{0}, ma ọ bụ {1}"
             },
             "medium": {
-                "2": "{0} mba {1}",
-                "end": "{0}, mba {1}"
+                "2": "{0} ma ọ bụ {1}",
+                "end": "{0}, ma ọ bụ {1}"
             },
             "long": {
-                "2": "{0} mba {1}",
-                "end": "{0}, mba {1}"
+                "2": "{0} ma ọ bụ {1}",
+                "end": "{0}, ma ọ bụ {1}"
             },
             "full": {
-                "2": "{0} mba {1}",
-                "end": "{0}, mba {1}"
+                "2": "{0} ma ọ bụ {1}",
+                "end": "{0}, ma ọ bụ {1}"
             }
         }
     },
@@ -320,14 +320,6 @@ locales.forEach(function(locale) {
 console.log("\n\nMerging formats forward ...");
 
 aux.mergeFormats(localePatterns, localePatterns, []);
-
-console.log("\n\nPromoting sublocales ...");
-
-for (var language in localePatterns) {
-    if (language !== "und" && language !== "data") {
-        aux.promoteFormats(localePatterns[language], language, "list.json");
-    }
-}
 
 console.log("\n\nPruning duplicated formats ...");
 

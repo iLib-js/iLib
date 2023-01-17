@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ko_KR.js - test the date formatter object in Korean
  * 
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017,2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,6 +30,10 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
+if (typeof(DateFactory) === "undefined") {
+    var DateFactory = require("../../lib/DateFactory.js");
+}
+
 module.exports.testdatefmt_ko_KR = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -43,7 +47,6 @@ module.exports.testdatefmt_ko_KR = {
         test.ok(fmt !== null);
         test.done();
     },
-    
     
     testDateFmtSimpleShort_ko_KR: function(test) {
         test.expect(2);
@@ -63,6 +66,32 @@ module.exports.testdatefmt_ko_KR = {
         test.equal(fmt.format(date), "11. 9. 29.");
         test.done();
     },
+
+    testDateFmtSimpleShort_ko_KR_useIntl: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ko-KR", length: "short", timezone: "local", useIntl: true});
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "ko-KR",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0,
+            timezone: "local"
+        });
+        var expected = (ilib._getPlatform() === "browser" && ilib._getBrowser() === "safari") ? "2011. 9. 29." : "11. 9. 29.";
+        test.equal(fmt.format(date), expected);
+        test.done();
+    },
     
     testDateFmtSimpleMedium_ko_KR: function(test) {
         test.expect(2);
@@ -80,6 +109,104 @@ module.exports.testdatefmt_ko_KR = {
             millisecond: 0
         });
         test.equal(fmt.format(date), "2011. 9. 29.");
+        test.done();
+    },
+
+    testDateFmtSimpleMedium_ko_KR_useIntl: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ko-KR", length: "medium", timezone: "local", useIntl: true});
+        test.ok(fmt !== null);
+        
+        var date = new GregorianDate({
+            locale: "ko-KR",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0,
+            timezone: "local"
+        });
+        test.equal(fmt.format(date), "2011. 9. 29.");
+        test.done();
+    },
+
+    testDateFmtSimpleLong_ko_KR_useIntl: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ko-KR", length: "long", timezone: "local", useIntl: true});
+        test.ok(fmt !== null);
+        
+        var date = DateFactory({
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0,
+            timezone: "local"
+        });
+        test.equal(fmt.format(date), "2011년 9월 29일");
+        test.done();
+    },
+
+    testDateFmtSimpleFull_ko_KR_useIntl: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ko-KR", length: "full", timezone: "local", useIntl: true});
+        // Not supported case in iLib. follow normal iLib logic.
+        test.ok(fmt !== null);
+        
+        var date = DateFactory({
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0,
+            timezone: "local"
+        });
+        test.equal(fmt.format(date), "2011년 9월 29일");
+        test.done();
+    },
+    testDateFmtSimpleFull_ko_KR_useIntl_dmwy: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ko-KR", date:"dmwy", timezone: "local", length: "full", useIntl: true});
+        // Not supported case in iLib. follow normal iLib logic.
+        test.ok(fmt !== null);
+        
+        var date = DateFactory({
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0,
+            timezone: "local"
+        });
+        test.equal(fmt.format(date), "2011년 9월 29일 목요일");
         test.done();
     },
     
@@ -139,7 +266,51 @@ module.exports.testdatefmt_ko_KR = {
         test.equal(fmt.format(date), "오후 1:45");
         test.done();
     },
-    
+
+    testDateFmtSimpleTime_ko_KR_Intl_ahm: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ko-KR", type: "time", useIntl: true});
+        test.ok(fmt !== null);
+        
+        var date = DateFactory({
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 10,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "오후 1:45");
+        test.done();
+    },
+    testDateFmtSimpleTime_ko_KR_Intl_ahms: function(test) {
+        if(!DateFmt.isIntlDateTimeAvailable("ko-KR")){
+            // The result is different depending on the node version.
+            test.done();
+            return;
+        }
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ko-KR", type: "time", time: "ahms", useIntl: true});
+        test.ok(fmt !== null);
+        
+        var date = DateFactory({
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 10,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "오후 1:45:10");
+        test.done();
+    },
     testDateFmtSimpleTimeMedium_ko_KR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ko-KR", length: "medium", type: "time"});
@@ -1594,6 +1765,35 @@ module.exports.testdatefmt_ko_KR = {
     testDateFmtFormatRelativeWithinFortnightBefore_ko_KR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ko-KR", length: "full"});
+        test.ok(fmt !== null);
+        
+        var reference = new GregorianDate({
+            locale: "ko-KR",
+            year: 2011,
+            month: 11,
+            day: 20,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        var date = new GregorianDate({
+            locale: "ko-KR",
+            year: 2011,
+            month: 11,
+            day: 16,
+            hour: 9,
+            minute: 35,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.formatRelative(reference, date), "4일 전");
+        test.done();
+    },
+
+    testDateFmtFormatRelativeWithinFortnightBeforeMedium_ko_KR: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ko-KR", length: "medium"});
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({

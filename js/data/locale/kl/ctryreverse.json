@@ -10,7 +10,6 @@
     "419": "Latin America",
     "AF": "Afghanistan",
     "002": "Africa",
-    "AX": "Åland Islands",
     "AL": "Albania",
     "DZ": "Algeria",
     "AS": "American Samoa",
@@ -289,8 +288,9 @@
     "WF": "Wallis & Futuna",
     "011": "Western Africa",
     "EH": "Western Sahara",
-    "001": "World",
+    "001": "world",
     "YE": "Yemen",
     "ZM": "Zambia",
-    "ZW": "Zimbabwe"
+    "ZW": "Zimbabwe",
+    "AX": "Åland Islands"
 }
