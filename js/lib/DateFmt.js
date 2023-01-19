@@ -718,7 +718,7 @@ DateFmt.prototype = {
         });
     },
     /**
-     * @protected
+     * @private
      * @param {string|{
      *         order:(string|{
      *             s:string,
@@ -780,7 +780,7 @@ DateFmt.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      */
     _massageTemplate: function () {
         var i;
@@ -855,7 +855,7 @@ DateFmt.prototype = {
 
     /**
      * Convert the template into an array of date components separated by formatting chars.
-     * @protected
+     * @private
      * @param {string} template Format template to tokenize into components
      * @return {Array.<string>} a tokenized array of date format components
      */
@@ -897,7 +897,7 @@ DateFmt.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
      * @param {string} components Format components to search
      * @param {string} length Length of the requested format
@@ -924,7 +924,7 @@ DateFmt.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
      * @param {string} components Format components to search
      * @param {string} length Length of the requested format
@@ -944,7 +944,7 @@ DateFmt.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      * @param {(string|{s:string,m:string,l:string,f:string})} obj Object to search
      * @param {string} length Length of the requested format
      * @return {(string|undefined)} the requested format

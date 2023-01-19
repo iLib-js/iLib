@@ -49,7 +49,7 @@ var HanCal = function(params) {
 };
 
 /**
- * @protected
+ * @private
  * @static
  * @param {number} year
  * @param {number=} cycle
@@ -64,7 +64,7 @@ HanCal._getElapsedYear = function(year, cycle) {
 };
 
 /**
- * @protected
+ * @private
  * @static
  * @param {number} jd julian day to calculate from
  * @param {number} longitude longitude to seek
@@ -79,7 +79,7 @@ HanCal._hanNextSolarLongitude = function(jd, longitude) {
 };
 
 /**
- * @protected
+ * @private
  * @static
  * @param {number} jd julian day to calculate from
  * @returns {number} the major solar term for the julian day
@@ -92,7 +92,7 @@ HanCal._majorSTOnOrAfter = function(jd) {
 };
 
 /**
- * @protected
+ * @private
  * @static
  * @param {number} year the year for which the leap year information is being sought
  * @param {number=} cycle if the given year < 60, this can specify the cycle. If the
@@ -115,7 +115,7 @@ HanCal._solsticeBefore = function (year, cycle) {
 };
 
 /**
- * @protected
+ * @private
  * @static
  * @param {number} jd julian day to calculate from
  * @returns {number} the current major solar term
@@ -126,7 +126,7 @@ HanCal._chineseTZ = function(jd) {
 };
 
 /**
- * @protected
+ * @private
  * @static
  * @param {number} jd julian day to calculate from
  * @returns {number} the julian day of next new moon on or after the given julian day date
@@ -140,7 +140,7 @@ HanCal._newMoonOnOrAfter = function(jd) {
 };
 
 /**
- * @protected
+ * @private
  * @static
  * @param {number} jd julian day to calculate from
  * @returns {number} the julian day of previous new moon before the given julian day date
@@ -155,7 +155,7 @@ HanCal._newMoonBefore = function(jd) {
 
 /**
  * @static
- * @protected
+ * @private
  * @param {number} year the year for which the leap year information is being sought
  * @param {number=} cycle if the given year < 60, this can specify the cycle. If the
  * cycle is not given, then the year should be given as elapsed years since the beginning
@@ -175,7 +175,7 @@ HanCal._leapYearCalc = function(year, cycle) {
 };
 
 /**
- * @protected
+ * @private
  * @static
  * @param {number} jd julian day to calculate from
  * @returns {number} the current major solar term
@@ -186,7 +186,7 @@ HanCal._currentMajorST = function(jd) {
 };
 
 /**
- * @protected
+ * @private
  * @static
  * @param {number} jd julian day to calculate from
  * @returns {boolean} true if there is no major solar term in the same year

@@ -211,7 +211,7 @@ var NameFmt = function(options) {
 
 NameFmt.prototype = {
     /**
-     * @protected
+     * @private
      */
     _init: function() {
         var arr;
@@ -248,7 +248,7 @@ NameFmt.prototype = {
 
     /**
      * adjoin auxillary words to their head words
-     * @protected
+     * @private
      */
     _adjoinAuxillaries: function (parts, namePrefix) {
         var start, i, prefixArray, prefix, prefixLower;

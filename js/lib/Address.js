@@ -466,7 +466,7 @@ Address.prototype = {
 
     /**
      * Find the named country either at the end or the beginning of the address.
-     * @protected
+     * @private
      */
     _findCountry: function(name) {
         var start = -1, match, line = 0;
@@ -583,7 +583,7 @@ Address.prototype = {
         return undefined;
     },
 
-    matchPattern: function(address, line, pattern, matchGroup) {
+    matchPattern: function(address, line, pattern) {
         var start,
             j,
             ret = {};

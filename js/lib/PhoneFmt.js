@@ -127,7 +127,7 @@ var PhoneFmt = function(options) {
 PhoneFmt.prototype = {
     /**
      *
-     * @protected
+     * @private
      * @param {string} part
      * @param {Object} formats
      * @param {boolean} mustUseAll
@@ -178,7 +178,7 @@ PhoneFmt.prototype = {
     /**
      * Returns the style with the given name, or the default style if there
      * is no style with that name.
-     * @protected
+     * @private
      * @return {{example:string,whole:Object.<string,string>,partial:Object.<string,string>}|Object.<string,string>}
      */
     _getStyle: function (name, fmtdata) {
@@ -188,7 +188,7 @@ PhoneFmt.prototype = {
     /**
      * Do the actual work of formatting the phone number starting at the given
      * field in the regular field order.
-     *
+     * @private
      * @param {!PhoneNumber} number
      * @param {{
      *   partial:boolean,

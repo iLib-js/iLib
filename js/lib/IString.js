@@ -1287,7 +1287,7 @@ IString.prototype = {
     /**
      * Convert the character or the surrogate pair at the given
      * index into the string to a Unicode UCS-4 code point.
-     * @protected
+     * @private
      * @param {number} index index into the string
      * @return {number} code point of the character at the
      * given index into the string
@@ -1379,7 +1379,6 @@ IString.prototype = {
      */
     iterator: function() {
         /**
-         * @constructor IString
          */
         function _iterator (istring) {
             this.index = 0;
@@ -1422,7 +1421,6 @@ IString.prototype = {
      */
     charIterator: function() {
         /**
-         * @constructor IString
          */
         function _chiterator (istring) {
             this.index = 0;

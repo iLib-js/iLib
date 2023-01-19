@@ -17,7 +17,6 @@
  * limitations under the License.
  */
 
-var Utils = require("./Utils.js");
 var Calendar = require("./Calendar.js");
 var EthiopicCal = require("./EthiopicCal.js");
 

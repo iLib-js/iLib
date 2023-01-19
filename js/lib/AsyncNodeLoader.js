@@ -1,5 +1,5 @@
 /*
- * AsyncAsyncNodeLoader.js - Loader implementation for nodejs with asynchronous calls.
+ * AsyncNodeLoader.js - Loader implementation for nodejs with asynchronous calls.
  * Mostly this is used for testing the async calls
  *
  * Copyright © 2018, 2020 JEDLSoft

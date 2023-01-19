@@ -19,8 +19,6 @@
 
 var ilib = require("../index.js");
 var MathUtils = require("./MathUtils.js");
-
-var Locale = require("./Locale.js");
 var IDate = require("./IDate.js");
 
 var EthiopicDate = require("./EthiopicDate.js");

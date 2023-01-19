@@ -249,7 +249,7 @@ PersianAlgoDate.prototype.newRd = function (params) {
 
 /**
  * Return the year for the given RD
- * @protected
+ * @private
  * @param {number} rd RD to calculate from
  * @returns {number} the year for the RD
  */
