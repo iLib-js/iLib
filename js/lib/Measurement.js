@@ -38,7 +38,7 @@ function round(number, precision) {
  * correct subclass based on the given parameters.<p>
  *
  * @param {Object=} options options controlling the construction of this instance
- * @private
+ * @protected
  * @constructor
  */
 var Measurement = function(options) {

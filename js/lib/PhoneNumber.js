@@ -451,7 +451,7 @@ PhoneNumber.parseImsi = function(imsi, options) {
 
 /**
  * @static
- * @protected
+ * @private
  */
 PhoneNumber._parseImsi = function(data, imsi) {
     var ch,
@@ -573,7 +573,7 @@ PhoneNumber._stripFormatting = function(str) {
 
 /**
  * @static
- * @protected
+ * @private
  */
 PhoneNumber._getCharacterCode = function(ch) {
     if (ch >= '0' && ch <= '9') {
@@ -685,7 +685,7 @@ PhoneNumber._defaultStates = {
 
 PhoneNumber.prototype = {
     /**
-     * @protected
+     * @private
      * @param {string} number
      * @param {Object} regionData
      * @param {Object} options
@@ -760,7 +760,7 @@ PhoneNumber.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      * @param {string} number
      * @param {Object} regionData
      * @param {Object} options
@@ -909,14 +909,14 @@ PhoneNumber.prototype = {
         }
     },
     /**
-     * @protected
+     * @private
      */
     _getPrefix: function() {
         return this.areaCode || this.serviceCode || this.mobilePrefix || "";
     },
 
     /**
-     * @protected
+     * @private
      */
     _hasPrefix: function() {
         return (this._getPrefix() !== "");
@@ -924,7 +924,7 @@ PhoneNumber.prototype = {
 
     /**
      * Exclusive or -- return true, if one is defined and the other isn't
-     * @protected
+     * @private
      */
     _xor : function(left, right) {
         if ((left === undefined && right === undefined ) || (left !== undefined && right !== undefined)) {
@@ -936,7 +936,7 @@ PhoneNumber.prototype = {
 
     /**
      * return a version of the phone number that contains only the dialable digits in the correct order
-     * @protected
+     * @private
      */
     _join: function () {
         var fieldName, formatted = "";

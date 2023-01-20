@@ -329,7 +329,7 @@ ResBundle.defaultPseudo = ilib.data.pseudomap || {
 
 ResBundle.prototype = {
     /**
-     * @protected
+     * @private
      */
     _loadPseudo: function (pseudoLocale, onLoad) {
         Utils.loadData({

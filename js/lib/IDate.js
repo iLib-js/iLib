@@ -29,7 +29,7 @@ var LocaleInfo = require("./LocaleInfo.js");
  * date" so that it does not conflict with the built-in Javascript Date
  * class.
  *
- * @private
+ * @protected
  * @constructor
  * @param {Object=} options The date components to initialize this date with
  */

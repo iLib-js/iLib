@@ -29,7 +29,7 @@ var Locale = require("./Locale.js");
  * Create a new ilib string instance. This string inherits from and
  * extends the Javascript String class. It can be
  * used almost anywhere that a normal Javascript string is used, though in
- * some instances you will need to call the {@link #toString} method when
+ * some instances you will need to call the [toString]{@link IString#toString} method when
  * a built-in Javascript string is needed. The formatting methods are
  * methods that are not in the intrinsic String class and are most useful
  * when localizing strings in an app or web site in combination with

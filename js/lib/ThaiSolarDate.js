@@ -136,7 +136,7 @@ ThaiSolarDate.epoch = 1523097.5;
 
 /**
  * Calculate the date components for the current time zone
- * @protected
+ * @private
  */
 ThaiSolarDate.prototype._calcDateComponents = function () {
     // there is 198327 days difference between the Thai solar and

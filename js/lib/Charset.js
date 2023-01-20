@@ -64,7 +64,7 @@ var Utils = require("./Utils.js");
  * missing data synchronously.
  *
  * @constructor
- * @see {ilib.setLoaderCallback} for information about registering a loader callback instance
+ * @see {@link ilib#setLoaderCallback} for information about registering a loader callback instance
  * @param {Object=} options options which govern the construction of this instance
  */
 var Charset = function(options) {
