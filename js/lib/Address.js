@@ -583,7 +583,7 @@ Address.prototype = {
         return undefined;
     },
 
-    matchPattern: function(address, line, pattern) {
+    matchPattern: function(address, line, pattern, matchGroup) {
         var start,
             j,
             ret = {};
