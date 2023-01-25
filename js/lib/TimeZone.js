@@ -1,7 +1,7 @@
 /*
  * TimeZone.js - Definition of a time zone class
  *
- * Copyright © 2012-2015, 2018, JEDLSoft
+ * Copyright © 2012-2015, 2018, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -255,8 +255,9 @@ TimeZone.prototype._initZone = function(zoneName) {
     if (typeof(this.offset) === 'undefined' && this.zone.o) {
         var offsetParts = this._offsetStringToObj(this.zone.o);
         /**
+         * raw offset from UTC without DST, in minutes
          * @private
-         * @type {number} raw offset from UTC without DST, in minutes
+         * @type {number}
          */
         this.offset = (Math.abs(offsetParts.h || 0) * 60 + (offsetParts.m || 0)) * MathUtils.signum(offsetParts.h || 0);
     }
@@ -535,7 +536,7 @@ TimeZone.prototype.getOffsetMillis = function (date) {
 /**
  * Return the offset in milliseconds when the date has an RD number in wall
  * time rather than in UTC time.
- * @protected
+ * @private
  * @param {IDate|Object|JulianDay|Date|string|number} date the date to check in wall time
  * @returns {number} the number of milliseconds of offset from UTC that the given date is
  */
@@ -655,7 +656,7 @@ TimeZone.prototype.getDSTSavingsStr = function () {
 
 /**
  * return the rd of the start of DST transition for the given year
- * @protected
+ * @private
  * @param {Object} rule set of rules
  * @param {number} year year to check
  * @return {number} the rd of the start of DST for the year
@@ -748,8 +749,9 @@ TimeZone.prototype._calcDSTSavings = function () {
     var saveParts = this.getDSTSavings();
 
     /**
+     * savings in minutes when DST is in effect
      * @private
-     * @type {number} savings in minutes when DST is in effect
+     * @type {number}
      */
     this.dstSavings = (Math.abs(saveParts.h || 0) * 60 + (saveParts.m || 0)) * MathUtils.signum(saveParts.h || 0);
 };

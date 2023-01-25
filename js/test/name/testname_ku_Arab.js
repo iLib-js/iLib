@@ -1,6 +1,6 @@
 /*
  * testname_ku_Arab.js - test the name object in Kurdish
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,74 +37,74 @@ module.exports.testname_ku_Arab = {
         test.expect(2);
         var parsed = new Name("جەلال تاڵەبانی", {locale: 'ku-Arab-IQ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             givenName: "جەلال",
             familyName: "تاڵەبانی"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
-    
-    
+
+
+
+
+
     testParseSingleNameWithPrefixAndAdjunct_ku_Arab: function(test) {
         test.expect(2);
         var parsed = new Name("بەڕێز و خاتوو تاڵەبانی", {locale: 'ku-Arab-IQ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =  {
             prefix: "بەڕێز و خاتوو",
             familyName: "تاڵەبانی"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseTitle_ku_Arab: function(test) {
         test.expect(2);
         var parsed = new Name("جەلال تاڵەبانی کوڕ", {locale: 'ku-Arab-IQ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =    {
             suffix: "کوڕ",
             givenName: "جەلال",
             familyName: "تاڵەبانی"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
-    
-    
+
+
+
+
+
     testParseEverything_ku_Arab: function(test) {
         test.expect(2);
         var parsed = new Name("بەڕێز جەلال تاڵەبانی", {locale: 'ku-Arab-IQ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =    {
             prefix: "بەڕێز",
             givenName: "جەلال",
             familyName: "تاڵەبانی"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_ku_Arab: function(test) {
         test.expect(2);
         var name = new Name({
@@ -112,18 +112,18 @@ module.exports.testname_ku_Arab = {
             familyName: "تاڵەبانی"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'ku-Arab-IQ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "جەلال تاڵەبانی";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_ku_Arab: function(test) {
         test.expect(2);
         var name = new Name({
@@ -131,44 +131,44 @@ module.exports.testname_ku_Arab = {
             familyName: "تاڵەبانی"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'ku-Arab-IQ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "جەلال تاڵەبانی";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_ku_Arab: function(test) {
         test.expect(2);
         var name = new Name({
             givenName: "جەلال",
-            
+
             familyName: "تاڵەبانی",
             suffix: "کوڕ"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'ku-Arab-IQ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "جەلال تاڵەبانی کوڕ";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
 };

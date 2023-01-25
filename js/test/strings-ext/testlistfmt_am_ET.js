@@ -32,45 +32,45 @@ module.exports.testlistfmt_am_ET = {
     },
 
     // am-ET
-    
+
     testListFmtamETNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "am-ET"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["አንድ"]), "አንድ");
         test.done();
     },
-    
+
     testListFmtamETNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "am-ET"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["አንድ", "ሁለት"]), "አንድ እና ሁለት");
         test.done();
     },
-    
+
     testListFmtamETNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "am-ET"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት"]), "አንድ፣ ሁለት, እና ሶስት");
         test.done();
     },
-    
+
     testListFmtamETNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "am-ET"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት", "አራት"]), "አንድ፣ ሁለት፣ ሶስት, እና አራት");
@@ -81,43 +81,43 @@ module.exports.testlistfmt_am_ET = {
             locale: "am-ET",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["አንድ"]), "አንድ");
         test.done();
     },
-    
+
     testListFmtUnitStyleamETNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "am-ET",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["አንድ", "ሁለት"]), "አንድ፣ ሁለት");
         test.done();
     },
-    
+
     testListFmtUnitStyleamETNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "am-ET",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት"]), "አንድ፣ ሁለት፣ ሶስት");
         test.done();
     },
-    
+
     testListFmtUnitStyleamETNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "am-ET",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት", "አራት"]), "አንድ፣ ሁለት፣ ሶስት፣ አራት");

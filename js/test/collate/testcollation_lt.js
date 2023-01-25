@@ -1,6 +1,6 @@
 /*
  * testcollation_lt.js - test the Collator object in Lithuanian
- * 
+ *
  * Copyright © 2014-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,9 +38,9 @@ module.exports.testcollation_lt = {
             useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // C Č D E Ę Ė F .. I Į Y J .. S Š T U Ų Ū V Z Ž
         // c č d e ę ė f .. i į y j .. s š t u ų ū v z ž
         test.ok("C < Č",  col.compare("C", "Č") < 0);
@@ -49,7 +49,7 @@ module.exports.testcollation_lt = {
         test.ok("č < d",  col.compare("č", "d") < 0);
         test.done();
     },
-    
+
     testJSCollatorQuatEF_lt: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -57,9 +57,9 @@ module.exports.testcollation_lt = {
             useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // C Č D E Ę Ė F .. I Į Y J .. S Š T U Ų Ū V Z Ž
         // c č d e ę ė f .. i į y j .. s š t u ų ū v z ž
         test.ok("E < Ę",  col.compare("E", "Ę") < 0);
@@ -70,7 +70,7 @@ module.exports.testcollation_lt = {
         test.ok("ė < f",  col.compare("ė", "f") < 0);
         test.done();
     },
-    
+
     testJSCollatorQuatIJ_lt: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -78,9 +78,9 @@ module.exports.testcollation_lt = {
             useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // C Č D E Ę Ė F .. I Į Y J .. S Š T U Ų Ū V Z Ž
         // c č d e ę ė f .. i į y j .. s š t u ų ū v z ž
         test.ok("I < Į",  col.compare("I", "Į") < 0);
@@ -91,7 +91,7 @@ module.exports.testcollation_lt = {
         test.ok("y < j",  col.compare("y", "j") < 0);
         test.done();
     },
-    
+
     testJSCollatorQuatST_lt: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -99,9 +99,9 @@ module.exports.testcollation_lt = {
             useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // C Č D E Ę Ė F .. I Į Y J .. S Š T U Ų Ū V Z Ž
         // c č d e ę ė f .. i į y j .. s š t u ų ū v z ž
         test.ok("S < Š",  col.compare("S", "Š") < 0);
@@ -110,7 +110,7 @@ module.exports.testcollation_lt = {
         test.ok("š < t",  col.compare("š", "t") < 0);
         test.done();
     },
-    
+
     testJSCollatorQuatUV_lt: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -118,9 +118,9 @@ module.exports.testcollation_lt = {
             useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // C Č D E Ę Ė F .. I Į Y J .. S Š T U Ų Ū V Z Ž
         // c č d e ę ė f .. i į y j .. s š t u ų ū v z ž
         test.ok("U < Ų",  col.compare("U", "Ų") < 0);
@@ -131,7 +131,7 @@ module.exports.testcollation_lt = {
         test.ok("ū < v",  col.compare("ū", "v") < 0);
         test.done();
     },
-    
+
     testJSCollatorQuatZ_lt: function(test) {
         test.expect(3);
         var col = new Collator({
@@ -139,18 +139,18 @@ module.exports.testcollation_lt = {
             useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // C Č D E Ę Ė F .. I Į Y J .. S Š T U Ų Ū V Z Ž
         // c č d e ę ė f .. i į y j .. s š t u ų ū v z ž
         test.ok("Z < Ž",  col.compare("Z", "Ž") < 0);
         test.ok("z < ž",  col.compare("z", "ž") < 0);
         test.done();
     },
-    
+
     // differences in accented characters should be primary differences
-    
+
     testJSCollatorPrimaryCD_lt: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -159,9 +159,9 @@ module.exports.testcollation_lt = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // C Č D E Ę Ė F .. I Į Y J .. S Š T U Ų Ū V Z Ž
         // c č d e ę ė f .. i į y j .. s š t u ų ū v z ž
         test.ok("C < Č",  col.compare("C", "Č") < 0);
@@ -170,7 +170,7 @@ module.exports.testcollation_lt = {
         test.ok("č < d",  col.compare("č", "d") < 0);
         test.done();
     },
-    
+
     testJSCollatorPrimaryEF_lt: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -179,9 +179,9 @@ module.exports.testcollation_lt = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // C Č D E Ę Ė F .. I Į Y J .. S Š T U Ų Ū V Z Ž
         // c č d e ę ė f .. i į y j .. s š t u ų ū v z ž
         test.ok("E < Ę",  col.compare("E", "Ę") < 0);
@@ -192,7 +192,7 @@ module.exports.testcollation_lt = {
         test.ok("ė < f",  col.compare("ė", "f") < 0);
         test.done();
     },
-    
+
     testJSCollatorPrimaryIJ_lt: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -201,9 +201,9 @@ module.exports.testcollation_lt = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // C Č D E Ę Ė F .. I Į Y J .. S Š T U Ų Ū V Z Ž
         // c č d e ę ė f .. i į y j .. s š t u ų ū v z ž
         test.ok("I < Į",  col.compare("I", "Į") < 0);
@@ -214,7 +214,7 @@ module.exports.testcollation_lt = {
         test.ok("y < j",  col.compare("y", "j") < 0);
         test.done();
     },
-    
+
     testJSCollatorPrimaryST_lt: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -223,9 +223,9 @@ module.exports.testcollation_lt = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // C Č D E Ę Ė F .. I Į Y J .. S Š T U Ų Ū V Z Ž
         // c č d e ę ė f .. i į y j .. s š t u ų ū v z ž
         test.ok("S < Š",  col.compare("S", "Š") < 0);
@@ -234,7 +234,7 @@ module.exports.testcollation_lt = {
         test.ok("š < t",  col.compare("š", "t") < 0);
         test.done();
     },
-    
+
     testJSCollatorPrimaryUV_lt: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -243,9 +243,9 @@ module.exports.testcollation_lt = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // C Č D E Ę Ė F .. I Į Y J .. S Š T U Ų Ū V Z Ž
         // c č d e ę ė f .. i į y j .. s š t u ų ū v z ž
         test.ok("U < Ų",  col.compare("U", "Ų") < 0);
@@ -256,7 +256,7 @@ module.exports.testcollation_lt = {
         test.ok("ū < v",  col.compare("ū", "v") < 0);
         test.done();
     },
-    
+
     testJSCollatorPrimaryZ_lt: function(test) {
         test.expect(3);
         var col = new Collator({
@@ -265,16 +265,16 @@ module.exports.testcollation_lt = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // C Č D E Ę Ė F .. I Į Y J .. S Š T U Ų Ū V Z Ž
         // c č d e ę ė f .. i į y j .. s š t u ų ū v z ž
         test.ok("Z < Ž",  col.compare("Z", "Ž") < 0);
         test.ok("z < ž",  col.compare("z", "ž") < 0);
         test.done();
     },
-    
+
     testCollatorNativeCase_lt: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -284,7 +284,7 @@ module.exports.testcollation_lt = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
                "eĖ",
             "ua",
@@ -327,12 +327,12 @@ module.exports.testcollation_lt = {
             "eė",
             "Io"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         // C Č D E Ę Ė F .. I Į Y J .. S Š T U Ų Ū V Z Ž
         // c č d e ę ė f .. i į y j .. s š t u ų ū v z ž
-    
+
         var expected = [
             "Ca",
             "ca",
@@ -375,11 +375,11 @@ module.exports.testcollation_lt = {
             "Ža",
             "ža"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorNativeVariant_lt: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -390,7 +390,7 @@ module.exports.testcollation_lt = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
             "eĖ",
             "ua",
@@ -442,9 +442,9 @@ module.exports.testcollation_lt = {
             "eė",
             "Io"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "Ca",
             "ca",
@@ -496,7 +496,7 @@ module.exports.testcollation_lt = {
             "ža",
             "ža"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     }

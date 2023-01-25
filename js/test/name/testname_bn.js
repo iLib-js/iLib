@@ -1,6 +1,6 @@
 /*
  * testname_bn_IN.js - test the name object in Hindi
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,83 +37,83 @@ module.exports.testname_bn = {
         test.expect(2);
         var parsed = new Name("শশী ব্যানার্জী", {locale: 'bn-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "শশী",
             familyName: "ব্যানার্জী"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitle_bn_IN: function(test) {
         test.expect(2);
         var parsed = new Name("শশী ব্যানার্জী কনিষ্ঠ", {locale: 'bn-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             suffix: "কনিষ্ঠ",
             givenName: "শশী",
             familyName: "ব্যানার্জী"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitleWithFamilyOnly_bn_IN: function(test) {
         test.expect(2);
         var parsed = new Name("এমএস ব্যানার্জী", {locale: 'bn-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "এমএস",
             familyName: "ব্যানার্জী"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseEverything_bn_IN: function(test) {
         test.expect(2);
         var parsed = new Name("মিঃ এবং মিসেস ব্যানার্জী", {locale: 'bn-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "মিঃ এবং মিসেস",
             familyName: "ব্যানার্জী"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseprefix_bn_IN: function(test) {
         test.expect(2);
         var parsed = new Name("মিঃ শশী ব্যানার্জী", {locale: 'bn-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "মিঃ",
             givenName: "শশী",
             familyName: "ব্যানার্জী"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_bn_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -121,101 +121,101 @@ module.exports.testname_bn = {
             familyName: "ব্যানার্জী"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'bn-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "শশী ব্যানার্জী";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_bn_IN: function(test) {
         test.expect(2);
         var name = new Name({
             givenName: "শশী",
-            
+
             familyName: "ব্যানার্জী"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'bn-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "শশী ব্যানার্জী";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_bn_IN: function(test) {
         test.expect(2);
         var name = new Name({
             givenName: "শশী",
-            
+
             familyName: "ব্যানার্জী",
             suffix: "asdf"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'bn-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "শশী ব্যানার্জী";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSurname_bn_IN: function(test) {
         test.expect(2);
         var name = new Name({
             prefix: "মিঃ এবং মিসেস",
-            
+
             familyName: "ব্যানার্জী"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'bn-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "মিঃ এবং মিসেস ব্যানার্জী";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_bn_IN: function(test) {
         test.expect(2);
         var name = new Name({
             prefix: "ডাক্তার",
             givenName: "শশী",
-            
+
             familyName: "ব্যানার্জী",
             suffix: " वरिष्ठ"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'bn-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "ডাক্তার শশী ব্যানার্জী वरिष्ठ";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_bn_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -224,18 +224,18 @@ module.exports.testname_bn = {
             familyName: "ব্যানার্জী"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'bn-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "শশী ব্যানার্জী";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_bn_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -244,18 +244,18 @@ module.exports.testname_bn = {
             familyName: "ব্যানার্জী"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'bn-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "শশী ব্যানার্জী";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_bn_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -269,13 +269,13 @@ module.exports.testname_bn = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "ডাক্তার শশী ব্যানার্জী";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
+
+
+
 };

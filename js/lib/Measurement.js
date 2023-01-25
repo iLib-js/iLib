@@ -1,7 +1,7 @@
 /*
  * Measurement.js - Measurement unit superclass
  *
- * Copyright © 2014-2015, 2018, 2021 JEDLSoft
+ * Copyright © 2014-2015, 2018, 2021, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ function round(number, precision) {
  * correct subclass based on the given parameters.<p>
  *
  * @param {Object=} options options controlling the construction of this instance
- * @private
+ * @protected
  * @constructor
  */
 var Measurement = function(options) {
@@ -417,11 +417,10 @@ Measurement.prototype = {
     },
 
     /**
-     * @private
-     *
      * Return the normalized units identifier for the given unit. This looks up the units
      * in the aliases list and returns the normalized unit id.
      *
+     * @private
      * @param {string} unit the unit to find
      * @returns {string|undefined} the normalized identifier for the given unit, or
      * undefined if there is no such unit in this type of measurement

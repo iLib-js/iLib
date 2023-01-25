@@ -1,6 +1,6 @@
 /*
  * testaddress.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,7 +38,7 @@ module.exports.testaddress_CF = {
     testParseAddressCFNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko, BP 729, BANGUI, CENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Evangelical Church Elim Bangui – M'Poko, BP 729");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -48,11 +48,11 @@ module.exports.testaddress_CF = {
         test.equal(parsedAddress.countryCode, "CF");
         test.done();
     },
-    
+
     testParseAddressCFNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko, BP 729, BANGUI, CENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Evangelical Church Elim Bangui – M'Poko, BP 729");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -62,11 +62,11 @@ module.exports.testaddress_CF = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressCFManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko\nBP 729, BANGUI\nCENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Evangelical Church Elim Bangui – M'Poko, BP 729");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -76,11 +76,11 @@ module.exports.testaddress_CF = {
         test.equal(parsedAddress.countryCode, "CF");
         test.done();
     },
-    
+
     testParseAddressCFOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko, BP 729, BANGUI, CENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Evangelical Church Elim Bangui – M'Poko, BP 729");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -90,11 +90,11 @@ module.exports.testaddress_CF = {
         test.equal(parsedAddress.countryCode, "CF");
         test.done();
     },
-    
+
     testParseAddressCFSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko  \n\t\n BP 729\nBANGUI\t\n\n CENTRAL AFRICAN REPUBLIC  \n  \t\t\t", {locale: 'fr-CF'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Evangelical Church Elim Bangui – M'Poko, BP 729");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -104,11 +104,11 @@ module.exports.testaddress_CF = {
         test.equal(parsedAddress.countryCode, "CF");
         test.done();
     },
-    
+
     testParseAddressCFNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko BP 729 BANGUI CENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Evangelical Church Elim Bangui – M'Poko BP 729");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -118,11 +118,11 @@ module.exports.testaddress_CF = {
         test.equal(parsedAddress.countryCode, "CF");
         test.done();
     },
-    
+
     testParseAddressCFSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Avenue des Martyrs Boîte postale 344, BANGUI, République centrafricaine", {locale: 'fr-CF'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Avenue des Martyrs Boîte postale 344");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -132,13 +132,13 @@ module.exports.testaddress_CF = {
         test.equal(parsedAddress.countryCode, "CF");
         test.done();
     },
-    
+
     testParseAddressCFFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko, BP 729, BANGUI, CENTRAL AFRICAN REPUBLIC", {locale: 'en-US'});
-        
+
         // the country name is in English because this address is for a contact in a US database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Evangelical Church Elim Bangui – M'Poko, BP 729");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -148,7 +148,7 @@ module.exports.testaddress_CF = {
         test.equal(parsedAddress.countryCode, "CF");
         test.done();
     },
-    
+
     testFormatAddressCF: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -157,13 +157,13 @@ module.exports.testaddress_CF = {
             country: "CENTRAL AFRICAN REPUBLIC",
             countryCode: "AM"
         }, {locale: 'fr-CF'});
-        
+
         var expected = "Evangelical Church Elim Bangui – M'Poko\nBP 729\nBANGUI\nCENTRAL AFRICAN REPUBLIC";
         var formatter = new AddressFmt({locale: 'fr-CF'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressCFFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -172,11 +172,11 @@ module.exports.testaddress_CF = {
             locality: "BANGUI",
             countryCode: "AM"
         }, {locale: 'en-US'});
-        
+
         var expected = "Evangelical Church Elim Bangui – M'Poko\nBP 729\nBANGUI\nCENTRAL AFRICAN REPUBLIC";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

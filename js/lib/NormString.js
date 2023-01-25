@@ -1,7 +1,7 @@
 /*
  * NormString.js - ilib normalized string subclass definition
  *
- * Copyright © 2013-2015, 2018-2019, JEDLSoft
+ * Copyright © 2013-2015, 2018-2019, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -528,7 +528,6 @@ NormString.prototype.normalize = function (form) {
 };
 
 /**
- * @override
  * Return an iterator that will step through all of the characters
  * in the string one at a time, taking care to step through decomposed
  * characters and through surrogate pairs in UTF-16 encoding
@@ -551,7 +550,7 @@ NormString.prototype.normalize = function (form) {
  * The iterator instance returned has two methods, hasNext() which
  * returns true if the iterator has more characters to iterate through,
  * and next() which returns the next character.<p>
- *
+ * @override
  * @return {Object} an iterator
  * that iterates through all the characters in the string
  */
@@ -559,7 +558,7 @@ NormString.prototype.charIterator = function() {
     var it = IString.prototype.charIterator.call(this);
 
     /**
-     * @constructor
+     * @private
      */
     function _chiterator (istring) {
         /**

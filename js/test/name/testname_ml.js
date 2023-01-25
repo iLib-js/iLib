@@ -1,6 +1,6 @@
 /*
  * testname_ml_IN.js - test the name object in Malalyam
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,83 +37,83 @@ module.exports.testname_ml = {
         test.expect(2);
         var parsed = new Name("മോഹന ലള", {locale: 'ml-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "മോഹന",
             familyName: "ലള"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitle_ml_IN: function(test) {
         test.expect(2);
         var parsed = new Name("മോഹന ലള ജൂനിയര്‍", {locale: 'ml-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             suffix: "ജൂനിയര്‍",
             givenName: "മോഹന",
             familyName: "ലള"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitleWithFamilyOnly_ml_IN: function(test) {
         test.expect(2);
         var parsed = new Name("മിസ്റ്റര്‍ ലള", {locale: 'ml-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "മിസ്റ്റര്‍",
             familyName: "ലള"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseEverything_ml_IN: function(test) {
         test.expect(2);
         var parsed = new Name("മിസ്റ്റര്‍ ആന്‍ഡ് മാഡം ലള", {locale: 'ml-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "മിസ്റ്റര്‍ ആന്‍ഡ് മാഡം",
             familyName: "ലള"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseprefix_ml_IN: function(test) {
         test.expect(2);
         var parsed = new Name("മിസ്റ്റര്‍ മോഹന ലള", {locale: 'ml-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "മിസ്റ്റര്‍",
             givenName: "മോഹന",
             familyName: "ലള"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_ml_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -121,18 +121,18 @@ module.exports.testname_ml = {
             familyName: "ലള"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'ml-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "മോഹന ലള";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_ml_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -140,18 +140,18 @@ module.exports.testname_ml = {
             familyName: "ലള"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'ml-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "മോഹന ലള";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_ml_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -159,18 +159,18 @@ module.exports.testname_ml = {
             familyName: "ലള"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'ml-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "മോഹന ലള";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSurname_ml_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -178,18 +178,18 @@ module.exports.testname_ml = {
             familyName: "ലള"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'ml-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "മിസ്റ്റര്‍ ആന്‍ഡ് മാഡം ലള";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_ml_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -199,18 +199,18 @@ module.exports.testname_ml = {
             suffix: "ജൂനിയര്‍"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'ml-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "ഡോക്ടര്‍ മോഹന ലള ജൂനിയര്‍";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_ml_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -219,18 +219,18 @@ module.exports.testname_ml = {
             familyName: "ലള"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'ml-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "മോഹന ലള";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_ml_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -239,18 +239,18 @@ module.exports.testname_ml = {
             familyName: "ലള"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'ml-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "മോഹന ലള";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_ml_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -264,13 +264,13 @@ module.exports.testname_ml = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "ഡോക്ടര്‍ മോഹന ലള";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
+
+
+
 };

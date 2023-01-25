@@ -98,7 +98,7 @@ module.exports.testunitfmt_ca = {
         });
 
         var uf = new UnitFmt({
-            locale: "ca-AD", 
+            locale: "ca-AD",
             autoConvert:true,
             length:"short"
         });
@@ -115,7 +115,7 @@ module.exports.testunitfmt_ca = {
         });
 
         var uf = new UnitFmt({
-            locale: "ca-AD", 
+            locale: "ca-AD",
             autoConvert: true,
             length: "long"
         });
@@ -132,7 +132,7 @@ module.exports.testunitfmt_ca = {
         });
 
         var uf = new UnitFmt({
-            locale: "ca-AD", 
+            locale: "ca-AD",
             autoConvert: true,
             length: "short"
         });
@@ -149,7 +149,7 @@ module.exports.testunitfmt_ca = {
         });
 
         var uf = new UnitFmt({
-            locale: "ca-AD", 
+            locale: "ca-AD",
             autoConvert: true,
             length: "long"
         });
@@ -391,7 +391,7 @@ module.exports.testunitfmt_ca = {
         });
 
         var uf = new UnitFmt({
-            locale: "ca-ES", 
+            locale: "ca-ES",
             autoConvert:true,
             length:"short"
         });
@@ -408,7 +408,7 @@ module.exports.testunitfmt_ca = {
         });
 
         var uf = new UnitFmt({
-            locale: "ca-ES", 
+            locale: "ca-ES",
             autoConvert: true,
             length: "long"
         });
@@ -425,7 +425,7 @@ module.exports.testunitfmt_ca = {
         });
 
         var uf = new UnitFmt({
-            locale: "ca-ES", 
+            locale: "ca-ES",
             autoConvert: true,
             length: "short"
         });
@@ -442,7 +442,7 @@ module.exports.testunitfmt_ca = {
         });
 
         var uf = new UnitFmt({
-            locale: "ca-ES", 
+            locale: "ca-ES",
             autoConvert: true,
             length: "long"
         });

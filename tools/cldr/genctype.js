@@ -75,7 +75,7 @@ function convertRangeToNumbers(range) {
 }
 
 /*
- *	For creating ctype_*.json
+ *    For creating ctype_*.json
  */
 var map = {};
 var rangeLetter;
@@ -104,12 +104,12 @@ for (var letter in map) {
 }
 
 /*
- *	For creating ctype.json
+ *    For creating ctype.json
  */
 
 /*
- *	List for updating blockName for ctype.json.
- *	Some names don't need to be re-named.
+ *    List for updating blockName for ctype.json.
+ *    Some names don't need to be re-named.
  */
 var blockNameMapping = {
     "basic latin": "latin",
@@ -305,8 +305,8 @@ var blockNameMapping = {
 }
 
 /*
- *	List for manually handled
- *	as Reference: http://www.cplusplus.com/reference/cctype/
+ *    List for manually handled
+ *    as Reference: http://www.cplusplus.com/reference/cctype/
  */
 var manuallyHandleRange = {
     "ascii": [

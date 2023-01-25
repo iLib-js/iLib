@@ -1,7 +1,7 @@
 /*
- * gencoll.js - ilib tool to generate the json UCA data from the Unicode 
+ * gencoll.js - ilib tool to generate the json UCA data from the Unicode
  * data files
- * 
+ *
  * Copyright © 2014, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@
  */
 
 /*
- * This code is intended to be run under node.js 
+ * This code is intended to be run under node.js
  */
 
 var fs = require('fs');
@@ -140,7 +140,7 @@ rangeToScript = ranges;
 
 /**
  * Create a new weight vector instance.
- * 
+ *
  * @param {Array.<number>|string|number?} primary
  * @param {string|number?} secondary
  * @param {string|number?} tertiary

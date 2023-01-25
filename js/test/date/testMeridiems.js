@@ -2151,7 +2151,7 @@ module.exports.testmeridiems = {
         }
         var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./custom"));
         var ilibLoader = ilib.getLoader();
-        
+
         ilibLoader.addPath(multiPath);
 
         test.expect(3);

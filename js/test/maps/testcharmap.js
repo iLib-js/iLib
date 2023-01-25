@@ -1,6 +1,6 @@
 /*
  * testcharmap.js - Test the charset mapping routines
- * 
+ *
  * Copyright © 2014-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ module.exports.testcharmap = {
         test.ok(typeof(cm) !== "undefined");
         test.done();
     },
-    
+
     testCharmapLoadMap: function(test) {
         test.expect(3);
         var cm = CharmapFactory({
@@ -48,7 +48,7 @@ module.exports.testcharmap = {
         test.equal(cm.getName(), "ISO-8859-15");
         test.done();
     },
-    
+
     testCharmapAlias: function(test) {
         test.expect(3);
         var cm = CharmapFactory({
@@ -59,7 +59,7 @@ module.exports.testcharmap = {
         test.equal(cm.getName(), "ISO-8859-15");
         test.done();
     },
-    
+
     testCharmapLoadAlgorithmic: function(test) {
         test.expect(3);
         var cm = CharmapFactory({
@@ -70,5 +70,5 @@ module.exports.testcharmap = {
         test.equal(cm.getName(), "UTF-8");
         test.done();
     }
-    
+
 };

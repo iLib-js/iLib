@@ -1,6 +1,6 @@
 /*
  * testdatefmtrange_tk_TM.js - test the date range formatter object Turkmen-Turkmenistan
- * 
+ *
  * Copyright © 2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

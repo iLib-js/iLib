@@ -1,6 +1,6 @@
 /*
  * phonenum_TW.js - Test parsing phone numbers in TW
- * 
+ *
  * Copyright © 2014-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,189 +34,189 @@ module.exports.phonenum_TW = {
         test.expect(2);
         var parsed = new PhoneNumber("(03)606-5378", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             trunkAccess: "0",
             areaCode: "3",
             subscriberNumber: "6065378"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWLocalNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("345-6789", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             subscriberNumber: "3456789"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWFullLongAreaCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0836-24-789", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             trunkAccess: "0",
             areaCode: "836",
             subscriberNumber: "24789"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWIgnoreFormatting: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("03-1234-56789", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             trunkAccess: "0",
             areaCode: "3",
             subscriberNumber: "123456789"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWIgnoreCrap: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("$03@1234&5678-", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             trunkAccess: "0",
             areaCode: "3",
             subscriberNumber: "12345678"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWNoAreaCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("82345678", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             subscriberNumber: "82345678"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWInvalidLocalNumber: function(test) {
         test.expect(2);
         // local number is too long
         var parsed = new PhoneNumber("23456788889123", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             subscriberNumber: "23456788889123",
             invalid: true
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWServiceCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0800-011-765", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             trunkAccess: "0",
             serviceCode: "800",
             subscriberNumber: "011765"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWMobileNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0988-123-456", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             trunkAccess: "0",
             mobilePrefix: "9",
             subscriberNumber: "88123456"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWPlusIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+12028675309", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "1",
             areaCode: "202",
             subscriberNumber: "8675309"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWZerosIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("00212028675309", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             iddPrefix: "002",
             countryCode: "1",
             areaCode: "202",
             subscriberNumber: "8675309"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWLongAreaCodeNoTrunk: function(test) {
         test.expect(2);
         // this number uses an area code to start it, but without the trunk, we should
         // not recognize it as an area code
         var parsed = new PhoneNumber("3912345678", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             subscriberNumber: "3912345678"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWEmergencyNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("110", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             emergency: "110"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
@@ -224,39 +224,39 @@ module.exports.phonenum_TW = {
         test.expect(2);
         var parsed = new PhoneNumber("117171", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             emergency: "117",
             subscriberNumber: "171"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWPartial1: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             trunkAccess: "0"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWPartial2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("03", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             trunkAccess: "0",
             areaCode: "3"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
@@ -264,13 +264,13 @@ module.exports.phonenum_TW = {
         test.expect(2);
         var parsed = new PhoneNumber("039", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             trunkAccess: "0",
             areaCode: "3",
             subscriberNumber: "9"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
@@ -278,13 +278,13 @@ module.exports.phonenum_TW = {
         test.expect(2);
         var parsed = new PhoneNumber("0391", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             trunkAccess: "0",
             areaCode: "3",
             subscriberNumber: "91"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
@@ -292,13 +292,13 @@ module.exports.phonenum_TW = {
         test.expect(2);
         var parsed = new PhoneNumber("03912", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
                 trunkAccess: "0",
                 areaCode: "3",
                 subscriberNumber: "912"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
@@ -306,13 +306,13 @@ module.exports.phonenum_TW = {
         test.expect(2);
         var parsed = new PhoneNumber("039123", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             trunkAccess: "0",
             areaCode: "3",
             subscriberNumber: "9123"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
@@ -320,13 +320,13 @@ module.exports.phonenum_TW = {
         test.expect(2);
         var parsed = new PhoneNumber("0391234", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             trunkAccess: "0",
             areaCode: "3",
             subscriberNumber: "91234"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
@@ -334,13 +334,13 @@ module.exports.phonenum_TW = {
         test.expect(2);
         var parsed = new PhoneNumber("03912345", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             trunkAccess: "0",
             areaCode: "3",
             subscriberNumber: "912345"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
@@ -348,13 +348,13 @@ module.exports.phonenum_TW = {
         test.expect(2);
         var parsed = new PhoneNumber("039123456", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
                 trunkAccess: "0",
                 areaCode: "3",
                 subscriberNumber: "9123456"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
@@ -362,137 +362,137 @@ module.exports.phonenum_TW = {
         test.expect(2);
         var parsed = new PhoneNumber("0391234567", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
                 trunkAccess: "0",
                 areaCode: "3",
                 subscriberNumber: "91234567"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWPartial11: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("03912345678", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
                 trunkAccess: "0",
                 areaCode: "3",
                 subscriberNumber: "912345678"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWPartial12: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("039123456789", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
                 trunkAccess: "0",
                 areaCode: "3",
                 subscriberNumber: "9123456789"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWWithUSMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "316"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             areaCode: "615",
             subscriberNumber: "3222313"
         }, {locale: "zh-US"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWWithFRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "208"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             subscriberNumber: "6153222313"
         }, {locale: "zh-FR"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWWithMXMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "334"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             areaCode: "615",
             subscriberNumber: "3222313"
         }, {locale: "zh-MX"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWWithDEMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "262"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             subscriberNumber: "6153222313"
         }, {locale: "zh-DE"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWWithKRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "450"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             subscriberNumber: "6153222313",
             invalid: true
         }, {locale: "zh-KR"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWWithJPMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "440"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             subscriberNumber: "6153222313"
         }, {locale: "zh-JP"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     },
-    
+
     testParseTWWithTWMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "466"});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = new PhoneNumber({
             subscriberNumber: "6153222313"
         }, {locale: "zh-TW"});
-        
+
         test.ok(parsed.equals(expected));
         test.done();
     }

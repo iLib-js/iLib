@@ -1,6 +1,6 @@
 /*
  * testdatefmt_ig_NG.js - test the date formatter object in Igbo-Nigeria
- * 
+ *
  * Copyright © 2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,7 +38,7 @@ module.exports.testdatefmt_ig_NG = {
     testDateFmtConstructorEmpty_ig_NG: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "ig-NG"});
-        
+
         test.ok(fmt !== null);
         test.done();
     },
@@ -46,7 +46,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "short"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -64,7 +64,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -82,7 +82,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "long"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -100,7 +100,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -118,7 +118,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "short", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -136,7 +136,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "medium", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -154,7 +154,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", timelength: "long", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -172,7 +172,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -190,7 +190,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "short", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -208,7 +208,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "medium", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -226,7 +226,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "long", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -244,7 +244,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -262,7 +262,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", calendar: "julian", template: "yyyy-MM-dd"});
         test.ok(fmt !== null);
-        
+
         var date = new JulianDate({
             locale: "ig-NG",
             year: 2021,
@@ -280,7 +280,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -299,7 +299,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", clock: "12", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -317,7 +317,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", clock: "12", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -335,7 +335,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", clock: "24", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -353,7 +353,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", clock: "24", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -371,7 +371,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -389,7 +389,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -407,7 +407,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -425,7 +425,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -443,7 +443,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "date"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -461,7 +461,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -479,7 +479,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -497,7 +497,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -515,7 +515,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -533,7 +533,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -551,7 +551,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -569,7 +569,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -587,7 +587,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -605,7 +605,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -623,7 +623,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -641,7 +641,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", date: "wdm", length: "long"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -659,7 +659,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -677,7 +677,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -695,7 +695,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -713,7 +713,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -731,7 +731,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -749,7 +749,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -767,7 +767,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -785,7 +785,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -803,7 +803,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -821,7 +821,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -839,7 +839,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -857,7 +857,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time", time: "ms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -875,7 +875,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -893,7 +893,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -911,7 +911,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -934,7 +934,7 @@ module.exports.testdatefmt_ig_NG = {
             timezone: "Africa/Lagos"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -957,7 +957,7 @@ module.exports.testdatefmt_ig_NG = {
             timezone: "Africa/Lagos"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -975,7 +975,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -998,7 +998,7 @@ module.exports.testdatefmt_ig_NG = {
             timezone: "Africa/Lagos"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -1021,7 +1021,7 @@ module.exports.testdatefmt_ig_NG = {
             timezone: "Africa/Lagos"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -1039,7 +1039,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time", length: "full", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -1057,7 +1057,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time", length: "full", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -1075,7 +1075,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time", length: "full", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -1093,7 +1093,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time", length: "full", time: "ms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -1111,7 +1111,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time", length: "full", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -1129,7 +1129,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time", length: "full", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -1147,7 +1147,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time", length: "full", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -1164,14 +1164,14 @@ module.exports.testdatefmt_ig_NG = {
     testDateFmtFullTimeComponentsHMZ_ig_NG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ig-NG", 
-            type: "time", 
-            length: "full", 
-            time: "hmz", 
+            locale: "ig-NG",
+            type: "time",
+            length: "full",
+            time: "hmz",
             timezone: "Africa/Lagos"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -1195,7 +1195,7 @@ module.exports.testdatefmt_ig_NG = {
             timezone: "Africa/Lagos"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -1213,7 +1213,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", type: "time", length: "full", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -1237,7 +1237,7 @@ module.exports.testdatefmt_ig_NG = {
             timezone: "Africa/Lagos"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -1261,7 +1261,7 @@ module.exports.testdatefmt_ig_NG = {
             timezone: "Africa/Lagos"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -1285,7 +1285,7 @@ module.exports.testdatefmt_ig_NG = {
             timezone: "Africa/Lagos"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ig-NG",
             year: 2021,
@@ -1303,7 +1303,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ig-NG",
             year: 2011,
@@ -1331,7 +1331,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ig-NG",
             year: 2011,
@@ -1359,7 +1359,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ig-NG",
             year: 2011,
@@ -1387,7 +1387,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ig-NG",
             year: 2011,
@@ -1415,7 +1415,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ig-NG",
             year: 2011,
@@ -1443,7 +1443,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ig-NG",
             year: 2011,
@@ -1471,7 +1471,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ig-NG",
             year: 2011,
@@ -1499,7 +1499,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ig-NG",
             year: 2011,
@@ -1527,7 +1527,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ig-NG",
             year: 2011,
@@ -1555,7 +1555,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ig-NG",
             year: 2011,
@@ -1583,7 +1583,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ig-NG",
             year: 2011,
@@ -1611,7 +1611,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ig-NG",
             year: 2011,
@@ -1639,7 +1639,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ig-NG",
             year: 2011,
@@ -1667,7 +1667,7 @@ module.exports.testdatefmt_ig_NG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ig-NG", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ig-NG",
             year: 2011,

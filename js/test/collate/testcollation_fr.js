@@ -1,6 +1,6 @@
 /*
  * testcollation_fr.js - test the Collator object in French
- * 
+ *
  * Copyright © 2013-2014, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -42,7 +42,7 @@ module.exports.testcollation_fr = {
         });
         test.expect(2);
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
             "déjà",
             "Meme",
@@ -61,9 +61,9 @@ module.exports.testcollation_fr = {
             "pêche",
             "pêché"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "bnef",
             "Boef",
@@ -82,18 +82,18 @@ module.exports.testcollation_fr = {
             "pêche",
             "pêché"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorNativefrFRVariant: function(test) {
         // only test on platforms that support the new Intl class natively
         if (typeof(Intl) === 'undefined') {
             test.done();
             return;
         }
-        
+
         var col = new Collator({
             locale: "fr-FR",
             sensitivity: "variant",
@@ -101,7 +101,7 @@ module.exports.testcollation_fr = {
         });
         test.expect(2);
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
             "déjà",
             "Meme",
@@ -121,9 +121,9 @@ module.exports.testcollation_fr = {
             "bnef",
             "pêché"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         // does not deal with french accents properly yet
         var expected = [
             "bnef",
@@ -144,11 +144,11 @@ module.exports.testcollation_fr = {
             "pêché",
             "pêchê"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorNativefrCACase: function(test) {
         // only test on platforms that support the new Intl class natively
         if (typeof(Intl) === 'undefined') {
@@ -161,7 +161,7 @@ module.exports.testcollation_fr = {
         });
         test.expect(2);
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
             "déjà",
             "Meme",
@@ -180,9 +180,9 @@ module.exports.testcollation_fr = {
             "pêche",
             "pêché"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "bnef",
             "Boef",
@@ -201,11 +201,11 @@ module.exports.testcollation_fr = {
             "pêche",
             "pêché"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorNativefrCAVariant: function(test) {
         // only test on platforms that support the new Intl class natively and the French sorting rules
         if (typeof(Intl) === 'undefined' || Intl.Collator.supportedLocalesOf(["fr"]).indexOf("fr") === -1) {
@@ -218,7 +218,7 @@ module.exports.testcollation_fr = {
         });
         test.expect(2);
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [
             "déjà",
             "Meme",
@@ -238,9 +238,9 @@ module.exports.testcollation_fr = {
             "pêche",
             "pêché"
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "bnef",
             "Boef",
@@ -260,10 +260,10 @@ module.exports.testcollation_fr = {
             "pêché",
             "pêché"
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     }
-    
-    
+
+
 };

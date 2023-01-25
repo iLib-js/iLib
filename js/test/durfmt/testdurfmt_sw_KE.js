@@ -199,5 +199,5 @@ module.exports.testdurfmt_sw_KE = {
             }
         });
     }
-    
+
 };

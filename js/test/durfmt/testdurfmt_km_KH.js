@@ -37,7 +37,7 @@ module.exports.testdurfmt_km_KH = {
             length: "short"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -50,7 +50,7 @@ module.exports.testdurfmt_km_KH = {
         test.equal(duration.toString(), "1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ 1 ម៉ោង 1 នាទី 1 វិនាទី");
         test.done();
     },
-    
+
     testDurFmtKHFormatShortText: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -59,7 +59,7 @@ module.exports.testdurfmt_km_KH = {
             style: "text"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -72,7 +72,7 @@ module.exports.testdurfmt_km_KH = {
         test.equal(duration.toString(), "1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ 1 ម៉ោង 1 នាទី 1 វិនាទី");
         test.done();
     },
-    
+
     testDurFmtKHFormatShortClock: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -81,7 +81,7 @@ module.exports.testdurfmt_km_KH = {
             style: "clock"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -94,7 +94,7 @@ module.exports.testdurfmt_km_KH = {
         test.equal(duration.toString(), "1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ 1:01:01");
         test.done();
     },
-    
+
     testDurFmtKHFormatMedium: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -102,7 +102,7 @@ module.exports.testdurfmt_km_KH = {
             length: "medium"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -115,7 +115,7 @@ module.exports.testdurfmt_km_KH = {
         test.equal(duration.toString(), "1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ 1 ម៉ោង 1 នាទី 1 វិនាទី");
         test.done();
     },
-    
+
     testDurFmtKHFormatLong: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -123,7 +123,7 @@ module.exports.testdurfmt_km_KH = {
             length: "long"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -136,7 +136,7 @@ module.exports.testdurfmt_km_KH = {
         test.equal(duration.toString(), "1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ 1 ម៉ោង 1 នាទី 1 វិនាទី");
         test.done();
     },
-    
+
     testDurFmtKHFormatFull: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -144,7 +144,7 @@ module.exports.testdurfmt_km_KH = {
             length: "full"
         });
         test.ok(fmt !== null);
-    
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -157,8 +157,8 @@ module.exports.testdurfmt_km_KH = {
         test.equal(duration.toString(), "1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ 1 ម៉ោង 1 នាទី 1 វិនាទី");
         test.done();
     },
-    
-    
+
+
     testDurFmtKHAsyncWithLocale: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -167,7 +167,7 @@ module.exports.testdurfmt_km_KH = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-    
+
                 var duration = fmt.format({
                     year: 2,
                     month: 2,
@@ -182,7 +182,7 @@ module.exports.testdurfmt_km_KH = {
             }
         });
     },
-    
+
     testDurFmtKHFormatShortClockAsync: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -192,7 +192,7 @@ module.exports.testdurfmt_km_KH = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-    
+
                 var duration = fmt.format({
                     year: 1,
                     month: 1,
@@ -207,5 +207,5 @@ module.exports.testdurfmt_km_KH = {
             }
         });
     }
-    
+
 };

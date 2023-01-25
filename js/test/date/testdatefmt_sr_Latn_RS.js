@@ -1,6 +1,6 @@
 /*
  * testdatefmt_sr_Latn_RS.js - test the date formatter object in č,aiLand
- * 
+ *
  * Copyright © 2012-2015,2017,2020-2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,17 +39,17 @@ module.exports.testdatefmt_sr_Latn_RS = {
     testDateFmtConstructorEmpty_sr_Latn_RS: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "sr-Latn-RS"});
-        
+
         test.ok(fmt !== null);
         test.done();
     },
-    
-    
+
+
     testDateFmtSimpleShort_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "short"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -63,12 +63,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "29.9.11.");
         test.done();
     },
-    
+
     testDateFmtSimpleMedium_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -82,12 +82,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "29. 9. 2011.");
         test.done();
     },
-    
+
     testDateFmtSimpleLong_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "long"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -101,12 +101,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "29. septembar 2011.");
         test.done();
     },
-    
+
     testDateFmtSimpleFull_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -120,12 +120,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "29. septembar 2011.");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeShort_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "short", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -139,12 +139,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeMedium_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "medium", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -158,12 +158,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeLong_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", timelength: "long", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -177,12 +177,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeFull_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -196,12 +196,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleShort_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "short", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -215,12 +215,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "29.9.11. 13:45");
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleMedium_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "medium", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -234,12 +234,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "29. 9. 2011. 13:45");
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleLong_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "long", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -253,12 +253,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "29. septembar 2011. 13:45");
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleFull_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -272,13 +272,13 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "29. septembar 2011. 13:45");
         test.done();
     },
-    
-    
+
+
     testDateFmtTemplateCalendar_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", calendar: "julian", template: "yyyy-MM-dd"});
         test.ok(fmt !== null);
-        
+
         var date = new JulianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -292,14 +292,14 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-    
-    
-    
+
+
+
     testDateFmtTemplateClock12SwitchHH_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", clock: "12", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -313,12 +313,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateClock12Switchkk_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", clock: "12", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -332,12 +332,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateClock24Switchhh_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", clock: "24", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -351,12 +351,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTemplateClock24SwitchKK_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", clock: "24", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -370,12 +370,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockNotFollowLocaleDefault12hh_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -389,12 +389,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockNotFollowLocaleDefault12KK_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -408,12 +408,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockNotFollowLocaleDefault24HH_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -427,12 +427,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockNotFollowLocaleDefault24kk_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -446,13 +446,13 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
-    
+
+
     testDateFmtTypeDate_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "date"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -466,12 +466,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "29.9.11.");
         test.done();
     },
-    
+
     testDateFmtTypeTime_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -485,12 +485,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTypeDateTime_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -504,13 +504,13 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "29.9.11. 13:45");
         test.done();
     },
-    
-    
+
+
     testDateFmtShortDateComponentsY_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -524,12 +524,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "11");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsM_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -543,12 +543,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "s");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsN_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", date: "n"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -562,12 +562,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "s");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsD_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -581,12 +581,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsDM_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -600,12 +600,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "29.9");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsMY_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -619,12 +619,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "9.11.");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsDMY_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -638,12 +638,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "29.9.11.");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsWDM_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -657,12 +657,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "č, 29.9");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsWDMY_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -676,13 +676,13 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "č, 29.9.11.");
         test.done();
     },
-    
-    
+
+
     testDateFmtFullDateComponentsY_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -696,12 +696,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsM_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -715,12 +715,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "septembar");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsD_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -734,12 +734,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsDM_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -753,12 +753,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "29. septembar");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsMY_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -772,12 +772,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "septembar 2011.");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsDMY_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -791,12 +791,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "29. septembar 2011.");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsWDM_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -810,12 +810,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "četvrtak, 29. septembar");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsWDMY_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -829,13 +829,13 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "četvrtak, 29. septembar 2011.");
         test.done();
     },
-    
-    
+
+
     testDateFmtShortTimeComponentsS_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -849,12 +849,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsM_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -868,12 +868,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsH_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -887,12 +887,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsMS_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time", time: "ms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -906,12 +906,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHM_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -925,12 +925,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMS_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -944,12 +944,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMA_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -963,16 +963,16 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMZ_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "sr-Latn-RS", calendar: "gregorian", 
-            type: "time", 
+            locale: "sr-Latn-RS", calendar: "gregorian",
+            type: "time",
             time: "hmz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -986,14 +986,14 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45 CEST");
         test.done();
     },
-    
-    
-    
+
+
+
     testDateFmtShortTimeComponentsHMSA_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1007,16 +1007,16 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMSZ_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "sr-Latn-RS", calendar: "gregorian", 
-            type: "time", 
+            locale: "sr-Latn-RS", calendar: "gregorian",
+            type: "time",
             time: "ahmsz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1030,16 +1030,16 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45:37 CEST");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMSAZ_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "sr-Latn-RS", calendar: "gregorian", 
-            type: "time", 
+            locale: "sr-Latn-RS", calendar: "gregorian",
+            type: "time",
             time: "hmsaz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1053,13 +1053,13 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45:37 CEST");
         test.done();
     },
-    
-    
+
+
     testDateFmtFullTimeComponentsS_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time", length: "full", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1073,12 +1073,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsM_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time", length: "full", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1092,12 +1092,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsH_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time", length: "full", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1111,12 +1111,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsMS_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time", length: "full", time: "ms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1130,12 +1130,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHM_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time", length: "full", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1149,12 +1149,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMS_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time", length: "full", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1168,12 +1168,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMA_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time", length: "full", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1187,17 +1187,17 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMZ_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "sr-Latn-RS", calendar: "gregorian", 
-            type: "time", 
-            length: "full", 
+            locale: "sr-Latn-RS", calendar: "gregorian",
+            type: "time",
+            length: "full",
             time: "ahmz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1211,17 +1211,17 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45 CEST");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMAZ_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "sr-Latn-RS", calendar: "gregorian", 
-            type: "time", 
-            length: "full", 
+            locale: "sr-Latn-RS", calendar: "gregorian",
+            type: "time",
+            length: "full",
             time: "hmaz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1235,12 +1235,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45 CEST");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMSA_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", type: "time", length: "full", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1254,19 +1254,19 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-    
-    
-    
+
+
+
     testDateFmtFullTimeComponentsHMSAZ_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "sr-Latn-RS", calendar: "gregorian", 
-            type: "time", 
-            length: "full", 
+            locale: "sr-Latn-RS", calendar: "gregorian",
+            type: "time",
+            length: "full",
             time: "hmsaz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1280,18 +1280,18 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45:37 CEST");
         test.done();
     },
-    
+
     testDateFmtWithTimeZoneAndNoDST_sr_Latn_RS: function(test) {
         test.expect(4);
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "sr-Latn-RS", calendar: "gregorian", 
-            type: "time", 
-            length: "full", 
+            locale: "sr-Latn-RS", calendar: "gregorian",
+            type: "time",
+            length: "full",
             time: "hmsz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1305,11 +1305,11 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.format(date), "13:45:37 CET");
         test.done();
     },
-    
+
     /*function testDateFmtFormatRelativeWithinMinuteAfter_sr_Latn_RS() {
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1337,7 +1337,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1365,7 +1365,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1393,7 +1393,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1421,7 +1421,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1449,7 +1449,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1473,12 +1473,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.formatRelative(reference, date), "пре 4 sati");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinFortnightAfter_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1506,7 +1506,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1530,12 +1530,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.formatRelative(reference, date), "пре 4 dana");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinQuarterAfter_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1563,7 +1563,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1587,12 +1587,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.formatRelative(reference, date), "пре 9 nedelja");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinTwoYearsAfter_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1620,7 +1620,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1644,12 +1644,12 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.equal(fmt.formatRelative(reference, date), "пре 14 meseci");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeYearsAfter_sr_Latn_RS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1677,7 +1677,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.expect(2);
         var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "sr-Latn-RS",
             year: 2011,
@@ -1702,5 +1702,5 @@ module.exports.testdatefmt_sr_Latn_RS = {
         test.done();
     }
     */
-    
+
 };

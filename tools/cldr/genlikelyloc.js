@@ -1,7 +1,7 @@
 /*
- * genlikelyloc.js - ilib tool to generate the localematch.json files from 
+ * genlikelyloc.js - ilib tool to generate the localematch.json files from
  * the CLDR data files
- * 
+ *
  * Copyright © 2013-2020, J2022 EDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@
  */
 
 /*
- * This code is intended to be run under node.js 
+ * This code is intended to be run under node.js
  */
 
 var fs = require('fs');
@@ -188,7 +188,7 @@ for (var territory in data) {
         } else {
             containment[territory] = data[territory]["_contains"];
         }
-        
+
         containment[territory].forEach(function(region) {
             if (!parentsHash[region]) parentsHash[region] = [];
             parentsHash[region].push(territory);
@@ -210,16 +210,16 @@ function toArray(set) {
     set.forEach(function(element) {
         elements.push(element);
     });
-    
+
     return elements;
 }
 
 function getAncestors(region) {
     // already calculated previously
     if (containmentReverse[region]) return containmentReverse[region];
-    
+
     if (!parentsHash[region]) return []; // only the whole world has no parents
-    
+
     // get all the ancestors of the current region...
     var parentsArray = parentsHash[region].map(function(parent) {
         return getAncestors(parent).concat([parent]);
@@ -230,7 +230,7 @@ function getAncestors(region) {
     parentsArray.sort(function(left, right) {
         return left.length - right.length;
     });
-    
+
     // take care of duplicates using a set
     var set = new Set();
     // do a breadth-first insert into the set so that the largest territories
@@ -245,7 +245,7 @@ function getAncestors(region) {
             }
         });
     }
-    
+
     containmentReverse[region] = toArray(set);
     return containmentReverse[region];
 }

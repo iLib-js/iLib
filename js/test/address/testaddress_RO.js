@@ -1,6 +1,6 @@
 /*
  * testaddress_RO.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports.testaddress_RO = {
     testParseAddressRONormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Călina Enescu Stradă Măguricea 1, ap. 1\n014231 BUCUREŞTI\nRomania", {locale: 'ro-RO'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Călina Enescu Stradă Măguricea 1, ap. 1");
         test.equal(parsedAddress.locality, "BUCUREŞTI");
@@ -46,11 +46,11 @@ module.exports.testaddress_RO = {
         test.equal(parsedAddress.countryCode, "RO");
         test.done();
     },
-    
+
     testParseAddressRONoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Călina Enescu Stradă Măguricea 1, ap. 1\nBUCUREŞTI\nRomania", {locale: 'ro-RO'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Călina Enescu Stradă Măguricea 1, ap. 1");
         test.equal(parsedAddress.locality, "BUCUREŞTI");
@@ -60,11 +60,11 @@ module.exports.testaddress_RO = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressRONoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Călina Enescu Stradă Măguricea 1, ap. 1\n014231 BUCUREŞTI", {locale: 'ro-RO'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Călina Enescu Stradă Măguricea 1, ap. 1");
         test.equal(parsedAddress.locality, "BUCUREŞTI");
@@ -74,7 +74,7 @@ module.exports.testaddress_RO = {
         test.equal(parsedAddress.countryCode, "RO");
         test.done();
     },
-    
+
     testParseAddressROManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Călina Enescu Stradă\nMăguricea 1\nap. 1\n\n014231\nBUCUREŞTI\n\nRomania\n\n\n", {locale: 'ro-RO'});
@@ -87,11 +87,11 @@ module.exports.testaddress_RO = {
         test.equal(parsedAddress.countryCode, "RO");
         test.done();
     },
-    
+
     testParseAddressROOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Călina Enescu Stradă , Măguricea 1 , ap. 1 , 014231 , BUCUREŞTI , Romania", {locale: 'ro-RO'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Călina Enescu Stradă, Măguricea 1, ap. 1");
         test.equal(parsedAddress.locality, "BUCUREŞTI");
@@ -101,11 +101,11 @@ module.exports.testaddress_RO = {
         test.equal(parsedAddress.countryCode, "RO");
         test.done();
     },
-    
+
     testParseAddressROSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tCălina Enescu Stradă\t\t\rMăguricea 1\t\t\rap. 1\n\n014231\t\n\nBUCUREŞTI\n\t\nRomania\n\n\n", {locale: 'ro-RO'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Călina Enescu Stradă Măguricea 1 ap. 1");
         test.equal(parsedAddress.locality, "BUCUREŞTI");
@@ -115,11 +115,11 @@ module.exports.testaddress_RO = {
         test.equal(parsedAddress.countryCode, "RO");
         test.done();
     },
-    
+
     testParseAddressRONoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Călina Enescu Stradă Măguricea 1, ap. 1 014231 BUCUREŞTI Romania", {locale: 'ro-RO'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Călina Enescu Stradă Măguricea 1, ap. 1");
         test.equal(parsedAddress.locality, "BUCUREŞTI");
@@ -129,13 +129,13 @@ module.exports.testaddress_RO = {
         test.equal(parsedAddress.countryCode, "RO");
         test.done();
     },
-    
+
     testParseAddressROFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Călina Enescu Stradă Măguricea 1, ap. 1\n014231 BUCUREŞTI\nRomania", {locale: 'en-US'});
-        
+
         // the country name is in German because this address is for a contact in a German database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Călina Enescu Stradă Măguricea 1, ap. 1");
         test.equal(parsedAddress.locality, "BUCUREŞTI");
@@ -145,7 +145,7 @@ module.exports.testaddress_RO = {
         test.equal(parsedAddress.countryCode, "RO");
         test.done();
     },
-    
+
     testFormatAddressRO: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -155,13 +155,13 @@ module.exports.testaddress_RO = {
             country: "Romania",
             countryCode: "RO"
         }, {locale: 'ro-RO'});
-        
+
         var expected = "Călina Enescu Stradă Măguricea 1, ap. 1\n014231 BUCUREŞTI\nRomania";
         var formatter = new AddressFmt({locale: 'ro-RO'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressROFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -171,11 +171,11 @@ module.exports.testaddress_RO = {
             country: "Romania",
             countryCode: "RO"
         }, {locale: 'en-US'});
-        
+
         var expected = "Călina Enescu Stradă Măguricea 1, ap. 1\n014231 BUCUREŞTI\nRomania";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

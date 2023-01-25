@@ -6120,7 +6120,7 @@ module.exports.testdaterangefmt = {
         var data = setVariables();
         var length = data["fullLength"];
         var abbrLength = data["abbrLength"];
-        
+
         var templatec20 = [];
         var templatec30 = [];
 
@@ -13989,7 +13989,7 @@ module.exports.testdaterangefmt = {
         var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
         var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
         var templatec30 = [];
- 
+
         for (var i=0; i < 4; i++) {
             fmt = new DateRngFmt({locale:"lo-LA", length: length[i]})
             templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
@@ -14256,7 +14256,7 @@ module.exports.testdaterangefmt = {
         test.equal(templatec20[1], '{sm} de {sy} – {em} de {ey}');
         test.equal(templatec20[2], '{sm} {sy} – {em} {ey}');
         test.equal(templatec20[3], '{sm}/{sy} – {em}/{ey}');
-        
+
         test.equal(templatec30[0], "{sy} – {ey}");
         test.equal(templatec30[1], "{sy} – {ey}");
         test.equal(templatec30[2], "{sy} – {ey}");
@@ -14327,7 +14327,7 @@ module.exports.testdaterangefmt = {
         test.equal(templatec20[1], '{sm}, {sy} թ. – {em}, {ey} թ.');
         test.equal(templatec20[2], '{sm}, {sy} թ. – {em}, {ey} թ.');
         test.equal(templatec20[3], '{sm}.{sy} – {em}.{ey}');
-        
+
         test.equal(templatec30[0], "{sy} – {ey}");
         test.equal(templatec30[1], "{sy} – {ey}");
         test.equal(templatec30[2], "{sy} – {ey}");
@@ -14490,7 +14490,7 @@ module.exports.testdaterangefmt = {
         // full, medium: ymd
         // long: ydm
         // short: dmy
-        
+
         for (var i=0; i < 4; i++) {
             fmt = new DateRngFmt({locale:"my-MM", length: length[i]})
             templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
@@ -14719,12 +14719,12 @@ module.exports.testdaterangefmt = {
         test.equal(templatec00[1], '{sd} {sm} {sy} {st} – {et}');
         test.equal(templatec00[2], '{sd} {sm} {sy} {st} – {et}');
         test.equal(templatec00[3], '{sd}.{sm}.{sy} {st} – {et}');
-        
+
         test.equal(templatec01[0], '{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}');
         test.equal(templatec01[1], '{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}');
         test.equal(templatec01[2], '{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}');
         test.equal(templatec01[3], '{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}');
-       
+
         test.equal(templatec02[1], '{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}');
         test.equal(templatec02[0], '{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}');
         test.equal(templatec02[2], '{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}');
@@ -14986,7 +14986,7 @@ module.exports.testdaterangefmt = {
         var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
         var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
         var templatec30 = [];
-      
+
         //dMy
         for (var i=0; i < 4; i++) {
             fmt = new DateRngFmt({locale:"lb-LU", length: length[i]})
@@ -15000,7 +15000,7 @@ module.exports.testdaterangefmt = {
             templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
             templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
-      
+
         test.equal(templatec00[0], '{sd}. {sm} {sy} {st} – {et}');
         test.equal(templatec00[1], '{sd}. {sm} {sy} {st} – {et}');
         test.equal(templatec00[2], '{sd}. {sm} {sy} {st} – {et}');
@@ -15035,7 +15035,7 @@ module.exports.testdaterangefmt = {
         test.equal(templatec12[1], '{sd}. {sm} {sy} – {ed}. {em} {ey}');
         test.equal(templatec12[2], '{sd}. {sm} {sy} – {ed}. {em} {ey}');
         test.equal(templatec12[3], '{sd}.{sm}.{sy} – {ed}.{em}.{ey}');
-        
+
         test.equal(templatec20[0], '{sm} {sy} – {em} {ey}');
         test.equal(templatec20[1], '{sm} {sy} – {em} {ey}');
         test.equal(templatec20[2], '{sm} {sy} – {em} {ey}');

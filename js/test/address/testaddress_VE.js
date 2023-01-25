@@ -1,6 +1,6 @@
 /*
  * testaddress_VE.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports.testaddress_VE = {
     testParseAddressVENormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20\nCARACAS 1010, D.F.\nVenezuela", {locale: 'es-VE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "SEÑOR JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20");
         test.equal(parsedAddress.locality, "CARACAS");
@@ -46,11 +46,11 @@ module.exports.testaddress_VE = {
         test.equal(parsedAddress.countryCode, "VE");
         test.done();
     },
-    
+
     testParseAddressVENoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20\nCARACAS D.F.\nVenezuela", {locale: 'es-VE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "SEÑOR JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20");
         test.equal(parsedAddress.locality, "CARACAS");
@@ -60,25 +60,25 @@ module.exports.testaddress_VE = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressVENoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20\nCARACAS 1010, D.F.", {locale: 'es-VE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "SEÑOR JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20");
         test.equal(parsedAddress.locality, "CARACAS");
         test.equal(parsedAddress.region, "D.F.");
-        test.equal(parsedAddress.postalCode, "1010");    
+        test.equal(parsedAddress.postalCode, "1010");
         test.ok(typeof(parsedAddress.country) === "undefined");
         test.equal(parsedAddress.countryCode, "VE");
         test.done();
     },
-    
+
     testParseAddressVEManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR JOSE PEREZ AV.\nFUERZAS ARMADAS TORRE\nSAN JOSE\nENTRADA B PISO 5\nAPARTAMENTO 20\nCARACAS 1010, D.F.\nVenezuela", {locale: 'es-VE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "SEÑOR JOSE PEREZ AV., FUERZAS ARMADAS TORRE, SAN JOSE, ENTRADA B PISO 5, APARTAMENTO 20");
         test.equal(parsedAddress.locality, "CARACAS");
@@ -88,11 +88,11 @@ module.exports.testaddress_VE = {
         test.equal(parsedAddress.countryCode, "VE");
         test.done();
     },
-    
+
     testParseAddressVEOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR JOSE PEREZ AV. , FUERZAS ARMADAS TORRE , SAN JOSE , ENTRADA B PISO 5 , APARTAMENTO 20 , CARACAS , 1010 , D.F. , Venezuela", {locale: 'es-VE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "SEÑOR JOSE PEREZ AV., FUERZAS ARMADAS TORRE, SAN JOSE, ENTRADA B PISO 5, APARTAMENTO 20");
         test.equal(parsedAddress.locality, "CARACAS");
@@ -102,11 +102,11 @@ module.exports.testaddress_VE = {
         test.equal(parsedAddress.countryCode, "VE");
         test.done();
     },
-    
+
     testParseAddressVESuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR JOSE PEREZ AV.\n\n\t\rFUERZAS ARMADAS TORRE\t\t\rSAN JOSE\r\r\rENTRADA B PISO 5\t\t\rAPARTAMENTO 20\n\n\nCARACAS\t\t\r1010\r\r\rD.F.\t\t\rVenezuela", {locale: 'es-VE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "SEÑOR JOSE PEREZ AV., FUERZAS ARMADAS TORRE SAN JOSE ENTRADA B PISO 5 APARTAMENTO 20");
         test.equal(parsedAddress.locality, "CARACAS");
@@ -116,11 +116,11 @@ module.exports.testaddress_VE = {
         test.equal(parsedAddress.countryCode, "VE");
         test.done();
     },
-    
+
     testParseAddressVENoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20 CARACAS 1010 D.F., Venezuela", {locale: 'es-VE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "SEÑOR JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20");
         test.equal(parsedAddress.locality, "CARACAS");
@@ -130,11 +130,11 @@ module.exports.testaddress_VE = {
         test.equal(parsedAddress.countryCode, "VE");
         test.done();
     },
-    
+
     testParseAddressVEFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20\nCARACAS 1010, D.F.\nVenezuela", {locale: 'es-VE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20");
         test.equal(parsedAddress.locality, "CARACAS");
@@ -144,7 +144,7 @@ module.exports.testaddress_VE = {
         test.equal(parsedAddress.countryCode, "VE");
         test.done();
     },
-    
+
     testFormatAddressVE: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -155,13 +155,13 @@ module.exports.testaddress_VE = {
             country: "Venezuela",
             countryCode: "VE"
         }, {locale: 'es-VE'});
-        
+
         var expected = "SEÑOR JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20\nCARACAS 1010, D.F.\nVenezuela";
         var formatter = new AddressFmt({locale: 'es-VE'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressVEFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -172,11 +172,11 @@ module.exports.testaddress_VE = {
             country: "Venezuela",
             countryCode: "VE"
         }, {locale: 'en-US'});
-        
+
         var expected = "Mr. JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20\nCARACAS 1010, D.F.\nVenezuela";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

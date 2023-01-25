@@ -1,6 +1,6 @@
 /*
  * testaddress.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,7 +38,7 @@ module.exports.testaddress_BO = {
     testParseAddressBONormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -48,11 +48,11 @@ module.exports.testaddress_BO = {
         test.equal(parsedAddress.countryCode, "BO");
         test.done();
     },
-    
+
     testParseAddressBONoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -62,11 +62,11 @@ module.exports.testaddress_BO = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressBOManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR\nFEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580\nCOCHABAMBA\nBOLIVIA", {locale: 'es-BO'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -76,11 +76,11 @@ module.exports.testaddress_BO = {
         test.equal(parsedAddress.countryCode, "BO");
         test.done();
     },
-    
+
     testParseAddressBOOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -90,11 +90,11 @@ module.exports.testaddress_BO = {
         test.equal(parsedAddress.countryCode, "BO");
         test.done();
     },
-    
+
     testParseAddressBOSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580  \n\t\n COCHABAMBA\t\n\n BOLIVIA  \n  \t\t\t", {locale: 'es-BO'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -104,11 +104,11 @@ module.exports.testaddress_BO = {
         test.equal(parsedAddress.countryCode, "BO");
         test.done();
     },
-    
+
     testParseAddressBONoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR FEDERICO TERRAZAS ARIAS CALLE ADELA ZAMUDIO 1716 PO BOX 580 COCHABAMBA BOLIVIA", {locale: 'es-BO'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "SEÑOR FEDERICO TERRAZAS ARIAS CALLE ADELA ZAMUDIO 1716 PO BOX 580");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -118,11 +118,11 @@ module.exports.testaddress_BO = {
         test.equal(parsedAddress.countryCode, "BO");
         test.done();
     },
-    
+
     testParseAddressBOSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -132,13 +132,13 @@ module.exports.testaddress_BO = {
         test.equal(parsedAddress.countryCode, "BO");
         test.done();
     },
-    
+
     testParseAddressBOFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'en-US'});
-        
+
         // the country name is in English because this address is for a contact in a US database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -148,7 +148,7 @@ module.exports.testaddress_BO = {
         test.equal(parsedAddress.countryCode, "BO");
         test.done();
     },
-    
+
     testFormatAddressBO: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -157,13 +157,13 @@ module.exports.testaddress_BO = {
             country: "BOLIVIA",
             countryCode: "BO"
         }, {locale: 'es-BO'});
-        
+
         var expected = "SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580\nCOCHABAMBA\nBOLIVIA";
         var formatter = new AddressFmt({locale: 'es-BO'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressBOFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -172,13 +172,13 @@ module.exports.testaddress_BO = {
             locality: "COCHABAMBA",
             countryCode: "BO"
         }, {locale: 'en-US'});
-        
+
         var expected = "SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580\nCOCHABAMBA\nBOLIVIA";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressBOHotel: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -187,17 +187,17 @@ module.exports.testaddress_BO = {
             locality: "San Pedro",
             countryCode: "BO"
         }, {locale: 'en-US'});
-        
+
         var expected = "Calle Arturo Costa De La Torre 1359 A 1/2 Cuadra De La Plaza\nSan Pedro\nBOLIVIA";
         var formatter = new AddressFmt({locale: 'es-BO'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressBOUNICEF: function(test) {
         test.expect(7);
         var parsedAddress = new Address("UNICEF, United Nations Children's Fund, P.O. Box 3-12435,La Paz, Bolivia", {locale: 'es-BO'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "UNICEF, United Nations Children's Fund, P.O. Box 3-12435");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -207,5 +207,5 @@ module.exports.testaddress_BO = {
         test.equal(parsedAddress.countryCode, "BO");
         test.done();
     }
-    
+
 };

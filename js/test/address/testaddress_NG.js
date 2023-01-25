@@ -1,6 +1,6 @@
 /*
  * testaddress_NG.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports.testaddress_NG = {
     testParseAddressNGNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283\nPLATEAU\nNIGERIA", {locale: 'en-NG'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ben Tal 1234 Bauchu Road, Yelwa");
         test.equal(parsedAddress.locality, "JOS");
@@ -46,11 +46,11 @@ module.exports.testaddress_NG = {
         test.equal(parsedAddress.countryCode, "NG");
         test.done();
     },
-    
+
     testParseAddressNGNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS PLATEAU\nNIGERIA", {locale: 'en-NG'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ben Tal 1234 Bauchu Road, Yelwa");
         test.equal(parsedAddress.locality, "JOS");
@@ -60,25 +60,25 @@ module.exports.testaddress_NG = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressNGNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283\nPLATEAU", {locale: 'en-NG'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ben Tal 1234 Bauchu Road, Yelwa");
         test.equal(parsedAddress.locality, "JOS");
         test.equal(parsedAddress.region, "PLATEAU");
-        test.equal(parsedAddress.postalCode, "930283");    
+        test.equal(parsedAddress.postalCode, "930283");
         test.ok(typeof(parsedAddress.country) === "undefined");
         test.equal(parsedAddress.countryCode, "NG");
         test.done();
     },
-    
+
     testParseAddressNGManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Ben Tal\n1234 Bauchu Road\nYelwa\nJOS 930283\nPLATEAU\nNIGERIA", {locale: 'en-NG'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. Ben Tal, 1234 Bauchu Road, Yelwa");
         test.equal(parsedAddress.locality, "JOS");
@@ -88,11 +88,11 @@ module.exports.testaddress_NG = {
         test.equal(parsedAddress.countryCode, "NG");
         test.done();
     },
-    
+
     testParseAddressNGOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Ben Tal , 1234 Bauchu Road , Yelwa , JOS , 930283 , PLATEAU , NIGERIA", {locale: 'en-NG'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. Ben Tal, 1234 Bauchu Road, Yelwa");
         test.equal(parsedAddress.locality, "JOS");
@@ -102,11 +102,11 @@ module.exports.testaddress_NG = {
         test.equal(parsedAddress.countryCode, "NG");
         test.done();
     },
-    
+
     testParseAddressNGSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Ben Tal\n\n\t1234 Bauchu RoadS\n\n\nYelwa\n\t\nJOS\t\t\r930283\r\r\n\rPLATEAU\t\t\rNIGERIA", {locale: 'en-NG'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. Ben Tal, 1234 Bauchu RoadS, Yelwa");
         test.equal(parsedAddress.locality, "JOS");
@@ -116,11 +116,11 @@ module.exports.testaddress_NG = {
         test.equal(parsedAddress.countryCode, "NG");
         test.done();
     },
-    
+
     testParseAddressNGNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa JOS 930283\nPLATEAU NIGERIA", {locale: 'en-NG'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ben Tal 1234 Bauchu Road, Yelwa");
         test.equal(parsedAddress.locality, "JOS");
@@ -130,11 +130,11 @@ module.exports.testaddress_NG = {
         test.equal(parsedAddress.countryCode, "NG");
         test.done();
     },
-    
+
     testParseAddressNGFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283\nPLATEAU\nNIGERIA", {locale: 'en-NG'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ben Tal 1234 Bauchu Road, Yelwa");
         test.equal(parsedAddress.locality, "JOS");
@@ -144,7 +144,7 @@ module.exports.testaddress_NG = {
         test.equal(parsedAddress.countryCode, "NG");
         test.done();
     },
-    
+
     testFormatAddressNG: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -155,13 +155,13 @@ module.exports.testaddress_NG = {
             country: "NIGERIA",
             countryCode: "NG"
         }, {locale: 'en-NG'});
-        
+
         var expected = "Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283\nPLATEAU\nNIGERIA";
         var formatter = new AddressFmt({locale: 'en-NG'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressNGFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -172,11 +172,11 @@ module.exports.testaddress_NG = {
             country: "NIGERIA",
             countryCode: "NG"
         }, {locale: 'en-US'});
-        
+
         var expected = "Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283\nPLATEAU\nNIGERIA";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

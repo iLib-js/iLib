@@ -1,6 +1,6 @@
 /*
  * testaddress_IQ.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports.testaddress_IQ = {
     testParseAddressIQNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد احمد طارق, ١٠ قهوة الشريعة\nالاصمعي , البصرة\n٦١٠٠٢\nالعراق", {locale: 'ar-IQ'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد احمد طارق, ١٠ قهوة الشريعة");
         test.equal(parsedAddress.locality, "الاصمعي");
@@ -46,13 +46,13 @@ module.exports.testaddress_IQ = {
         test.equal(parsedAddress.countryCode, "IQ");
         test.done();
     },
-    
-    
-    
+
+
+
     testParseAddressIQNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد احمد طارق, ١٠ قهوة الشريعة\nالاصمعي , البصرة\nالعراق", {locale: 'ar-IQ'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد احمد طارق, ١٠ قهوة الشريعة");
         test.equal(parsedAddress.locality, "الاصمعي");
@@ -62,12 +62,12 @@ module.exports.testaddress_IQ = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
-    
+
+
     testParseAddressIQNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد احمد طارق, ١٠ قهوة الشريعة\nالاصمعي , البصرة\n ٦١٠٠٢", {locale: 'ar-IQ'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد احمد طارق, ١٠ قهوة الشريعة");
         test.equal(parsedAddress.locality, "الاصمعي");
@@ -76,14 +76,14 @@ module.exports.testaddress_IQ = {
         test.equal(parsedAddress.postalCode, "٦١٠٠٢");
         test.ok(typeof(parsedAddress.country) === "undefined");
         test.done();
-        
+
     },
-    
-    
+
+
     testParseAddressIQManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد احمد طارق\n١٠ قهوة الشريعة\nالاصمعي\nالبصرة\n٦١٠٠٢\nالعراق\n\n", {locale: 'ar-IQ'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد احمد طارق, ١٠ قهوة الشريعة");
         test.equal(parsedAddress.locality, "الاصمعي");
@@ -93,11 +93,11 @@ module.exports.testaddress_IQ = {
         test.equal(parsedAddress.country, "العراق");
         test.done();
     },
-    
+
     testParseAddressIQOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد احمد طارق , ١٠ قهوة الشريعة , الاصمعي , البصرة , ٦١٠٠٢ , العراق", {locale: 'ar-IQ'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد احمد طارق, ١٠ قهوة الشريعة");
         test.equal(parsedAddress.locality, "الاصمعي");
@@ -107,12 +107,12 @@ module.exports.testaddress_IQ = {
         test.equal(parsedAddress.country, "العراق");
         test.done();
     },
-    
-    
+
+
     testParseAddressIQNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد احمد طارق, ١٠ قهوة الشريعة الاصمعي  البصرة  ٦١٠٠٢ العراق", {locale: 'ar-IQ'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد احمد طارق, ١٠ قهوة الشريعة");
         test.equal(parsedAddress.locality, "الاصمعي");
@@ -122,11 +122,11 @@ module.exports.testaddress_IQ = {
         test.equal(parsedAddress.country, "العراق");
         test.done();
     },
-    
+
     testParseAddressIQFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد احمد طارق, ١٠ قهوة الشريعة\nالاصمعي , البصرة\n ٦١٠٠٢\nIraq", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد احمد طارق, ١٠ قهوة الشريعة");
         test.equal(parsedAddress.locality, "الاصمعي");
@@ -136,8 +136,8 @@ module.exports.testaddress_IQ = {
         test.equal(parsedAddress.country, "Iraq");
         test.done();
     },
-    
-    
+
+
     testFormatAddressIQ: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -148,14 +148,14 @@ module.exports.testaddress_IQ = {
             country: "العراق",
             countryCode: "IQ"
         }, {locale: 'ar-IQ'});
-        
+
         var expected = "السيد احمد طارق, ١٠ قهوة الشريعة\nالاصمعي, البصرة\n٦١٠٠٢\nالعراق";
         var formatter = new AddressFmt({locale: 'ar-IQ'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
-    
+
+
     testFormatAddressIQFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -166,11 +166,11 @@ module.exports.testaddress_IQ = {
             country: "Iraq",
             countryCode: "IQ"
         }, {locale: 'en-US'});
-        
+
         var expected = "السيد احمد طارق, ١٠ قهوة الشريعة\nالاصمعي, البصرة\n٦١٠٠٢\nIraq";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

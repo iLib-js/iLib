@@ -1,7 +1,7 @@
 /*
  * JulianDate.js - Represent a date in the Julian calendar
  *
- * Copyright © 2012-2015, 2018, JEDLSoft
+ * Copyright © 2012-2015, 2018, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -126,8 +126,8 @@ JulianDate.prototype.parent = IDate;
 JulianDate.prototype.constructor = JulianDate;
 
 /**
- * @private
  * Initialize the date
+ * @private
  */
 JulianDate.prototype._init = function (params) {
     if (params.year || params.month || params.day || params.hour ||
@@ -206,8 +206,8 @@ JulianDate.prototype._init = function (params) {
 };
 
 /**
- * @private
  * Finish initializing the date
+ * @private
  */
 JulianDate.prototype._init2 = function (params) {
     if (!this.rd) {
@@ -232,7 +232,7 @@ JulianDate.prototype.newRd = function (params) {
 
 /**
  * Return the year for the given RD
- * @protected
+ * @private
  * @param {number} rd RD to calculate from
  * @returns {number} the year for the RD
  */
@@ -244,7 +244,7 @@ JulianDate.prototype._calcYear = function(rd) {
 
 /**
  * Calculate date components for the given RD date.
- * @protected
+ * @private
  */
 JulianDate.prototype._calcDateComponents = function () {
     var remainder,

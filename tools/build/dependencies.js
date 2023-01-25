@@ -1,5 +1,5 @@
-/* 
- * dependencies.js - automatically find modules and update code that 
+/*
+ * dependencies.js - automatically find modules and update code that
  * uses those modules to have the right require() statements at the
  * top of them
  *
@@ -19,7 +19,7 @@
  * limitations under the License.
  */
 
-/* 
+/*
  * This code is intended to be run under node.js
  */
 var fs = require('fs');

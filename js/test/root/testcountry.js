@@ -34,29 +34,29 @@ module.exports.testcountry = {
     testCountryConstructorEmpty: function(test) {
         test.expect(1);
         var ctry = new Country();
-    
+
         test.ok(ctry !== null);
         test.done();
     },
-    
+
     testCountryDefaultLocale: function(test) {
         test.expect(3);
         var ctry = new Country();
         test.ok(ctry !== null);
-    
+
         var locale = ctry.getLocale();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.toString(), "en-US");
         test.done();
     },
-    
+
     testCountryWrongLocale: function(test) {
         test.expect(5);
         var ctry = new Country({
             locale: "abc-YZ"
         });
         test.ok(ctry !== null);
-    
+
         test.equal(ctry.getName("CD"), "Congo - Kinshasa");
         test.equal(ctry.getCode("Congo - Kinshasa"), "CD");
         var locale = ctry.getLocale();
@@ -64,56 +64,56 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "abc-YZ");
         test.done();
     },
-    
+
     testCountryLocale1: function(test) {
         test.expect(4);
         var ctry = new Country({
             locale: "ko-KR"
         });
         test.ok(ctry !== null);
-    
+
         test.equal(ctry.getName("CD"), "콩고-킨샤사");
         test.equal(ctry.getCode("콩고-킨샤사"), "CD");
         var locale = ctry.getLocale();
         test.equal(locale.toString(), "ko-KR");
         test.done();
     },
-    
+
     testCountryLocale2: function(test) {
         test.expect(4);
         var ctry = new Country({
             locale: "en-US"
         });
         test.ok(ctry !== null);
-    
+
         test.equal(ctry.getName("CD"), "Congo - Kinshasa");
         test.equal(ctry.getCode("Congo - Kinshasa"), "CD");
         var locale = ctry.getLocale();
         test.equal(locale.toString(), "en-US");
         test.done();
     },
-    
+
     testCountryLocale3: function(test) {
         test.expect(4);
         var ctry = new Country({
             locale: "zh-Hans-CN"
         });
         test.ok(ctry !== null);
-    
+
         test.equal(ctry.getName("CD"), "刚果（金）");
         test.equal(ctry.getCode("刚果（金）"), "CD");
         var locale = ctry.getLocale();
         test.equal(locale.toString(), "zh-Hans-CN");
         test.done();
     },
-    
+
     testCountryLocale4: function(test) {
         test.expect(4);
         var ctry = new Country({
             locale: "ja-JP"
         });
         test.ok(ctry !== null);
-    
+
         test.equal(ctry.getName("CD"), "コンゴ民主共和国(キンシャサ)");
         test.equal(ctry.getCode("コンゴ民主共和国(キンシャサ)"), "CD");
         var locale = ctry.getLocale();
@@ -236,7 +236,7 @@ module.exports.testcountry = {
         var locale = ctry.getLocale();
         test.equal(locale.toString(), "tg-TJ");
         test.done();
-    },  
+    },
     testCountryLocale_ky_KG: function(test) {
         test.expect(4);
         var ctry = new Country({
@@ -545,7 +545,7 @@ module.exports.testcountry = {
         }
         test.done();
     },
-    
+
     testCountryGetByNameUnknown: function(test) {
         try {
             var ctry = new Country();
@@ -555,7 +555,7 @@ module.exports.testcountry = {
         }
         test.done();
     },
-    
+
     testCountryAsync: function(test) {
         test.expect(4);
         new Country({
@@ -563,7 +563,7 @@ module.exports.testcountry = {
             sync: false,
             onLoad: function (ctry) {
                 test.ok(ctry !== null);
-    
+
                 test.equal(ctry.getName("JP"), "日本");
                 test.equal(ctry.getCode("日本"), "JP");
                 var locale = ctry.getLocale();

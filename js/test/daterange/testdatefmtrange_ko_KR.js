@@ -1,6 +1,6 @@
 /*
  * testdatefmtrange_ko_KR.js - test the date range formatter object in Korean/Korea
- * 
+ *
  * Copyright © 2012-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -63,7 +63,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -89,7 +89,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -115,7 +115,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -137,12 +137,12 @@ module.exports.testdatefmtrange_ko_KR = {
         test.equal(fmt.format(start, end), "2011년 12월 31일 오후 1:45 – 오후 2:30");
         test.done();
     },
-    
+
     testDateRngFmtKRRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -168,7 +168,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -194,7 +194,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -220,7 +220,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -242,12 +242,12 @@ module.exports.testdatefmtrange_ko_KR = {
         test.equal(fmt.format(start, end), "2011년 12월 30일 오후 1:45 – 2011년 12월 31일 오후 2:30");
         test.done();
     },
-    
+
     testDateRngFmtKRRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -273,7 +273,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -299,7 +299,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -325,7 +325,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -347,12 +347,12 @@ module.exports.testdatefmtrange_ko_KR = {
         test.equal(fmt.format(start, end), "2011년 12월 20일 – 31일");
         test.done();
     },
-    
+
     testDateRngFmtKRRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -378,7 +378,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -404,7 +404,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -430,7 +430,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -452,12 +452,12 @@ module.exports.testdatefmtrange_ko_KR = {
         test.equal(fmt.format(start, end), "2011년 11월 20일 – 12월 31일");
         test.done();
     },
-    
+
     testDateRngFmtKRRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -483,7 +483,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -509,7 +509,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -535,7 +535,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -557,12 +557,12 @@ module.exports.testdatefmtrange_ko_KR = {
         test.equal(fmt.format(start, end), "2011년 11월 20일 – 2012년 1월 31일");
         test.done();
     },
-    
+
     testDateRngFmtKRRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -588,7 +588,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -614,7 +614,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -640,7 +640,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -666,7 +666,7 @@ module.exports.testdatefmtrange_ko_KR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -688,5 +688,5 @@ module.exports.testdatefmtrange_ko_KR = {
         test.equal(fmt.format(start, end), "2011년 – 2064년");
         test.done();
     }
-    
+
 };

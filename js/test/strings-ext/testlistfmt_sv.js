@@ -31,45 +31,45 @@ module.exports.testlistfmt_sv = {
         callback();
     },
 
-    // sv-FI  
+    // sv-FI
     testListFmtsvFINumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "sv-FI"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett"]), "ett");
         test.done();
     },
-    
+
     testListFmtsvFINumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "sv-FI"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två"]), "ett och två");
         test.done();
     },
-    
+
     testListFmtsvFINumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "sv-FI"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två", "tre"]), "ett, två och tre");
         test.done();
     },
-    
+
     testListFmtsvFINumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "sv-FI"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två", "tre", "fyra"]), "ett, två, tre och fyra");
@@ -81,43 +81,43 @@ module.exports.testlistfmt_sv = {
             locale: "sv-FI",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett"]), "ett");
         test.done();
     },
-    
+
     testListFmtUnitStylesvFINumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "sv-FI",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två"]), "ett, två");
         test.done();
     },
-    
+
     testListFmtUnitStylesvFINumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "sv-FI",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två", "tre"]), "ett, två, tre");
         test.done();
     },
-    
+
     testListFmtUnitStylesvFINumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "sv-FI",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två", "tre", "fyra"]), "ett, två, tre, fyra");
@@ -129,46 +129,46 @@ module.exports.testlistfmt_sv = {
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett"]), "ett");
         test.done();
     },
-    
+
     testListFmtUnitStylesvFINumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "sv-FI",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två"]), "ett, två");
         test.done();
     },
-    
+
     testListFmtUnitStylesvFINumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "sv-FI",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två", "tre"]), "ett, två, tre");
         test.done();
     },
-    
+
     testListFmtUnitStylesvFINumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "sv-FI",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två", "tre", "fyra"]), "ett, två, tre, fyra");
@@ -181,40 +181,40 @@ module.exports.testlistfmt_sv = {
         var fmt = new ListFmt({
             locale: "sv-SE"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett"]), "ett");
         test.done();
     },
-    
+
     testListFmtsvSENumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "sv-SE"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två"]), "ett och två");
         test.done();
     },
-    
+
     testListFmtsvSENumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "sv-SE"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två", "tre"]), "ett, två och tre");
         test.done();
     },
-    
+
     testListFmtsvSENumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "sv-SE"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två", "tre", "fyra"]), "ett, två, tre och fyra");
@@ -226,43 +226,43 @@ module.exports.testlistfmt_sv = {
             locale: "sv-SE",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett"]), "ett");
         test.done();
     },
-    
+
     testListFmtUnitStylesvSENumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "sv-SE",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två"]), "ett, två");
         test.done();
     },
-    
+
     testListFmtUnitStylesvSENumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "sv-SE",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två", "tre"]), "ett, två, tre");
         test.done();
     },
-    
+
     testListFmtUnitStylesvSENumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "sv-SE",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två", "tre", "fyra"]), "ett, två, tre, fyra");
@@ -274,46 +274,46 @@ module.exports.testlistfmt_sv = {
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett"]), "ett");
         test.done();
     },
-    
+
     testListFmtUnitStylesvSENumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "sv-SE",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två"]), "ett, två");
         test.done();
     },
-    
+
     testListFmtUnitStylesvSENumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "sv-SE",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två", "tre"]), "ett, två, tre");
         test.done();
     },
-    
+
     testListFmtUnitStylesvSENumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "sv-SE",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["ett", "två", "tre", "fyra"]), "ett, två, tre, fyra");

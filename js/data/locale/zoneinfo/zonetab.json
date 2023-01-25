@@ -284,7 +284,8 @@
     ],
     "CY": [
         "Asia/Famagusta",
-        "Asia/Nicosia"
+        "Asia/Nicosia",
+        "Europe/Nicosia"
     ],
     "CZ": [
         "Europe/Prague"
@@ -641,6 +642,7 @@
         "America/Bahia_Banderas",
         "America/Cancun",
         "America/Chihuahua",
+        "America/Ciudad_Juarez",
         "America/Ensenada",
         "America/Hermosillo",
         "America/Matamoros",
@@ -900,6 +902,7 @@
         "Pacific/Tongatapu"
     ],
     "TR": [
+        "Asia/Istanbul",
         "Europe/Istanbul",
         "Turkey"
     ],

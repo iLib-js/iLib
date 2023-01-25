@@ -1428,7 +1428,7 @@ function getDateFormats(language, script, region, data) {
         time_24["ahmsz"] = time_24["ahmsz"].replace(/h/g, "H");
         time_24["ahms"] = available_formats["Hms"];
         //}
-	time_24["hmsz"] = time_24["ahmsz"];
+    time_24["hmsz"] = time_24["ahmsz"];
         time_24["hms"] = available_formats["Hms"];
         //time_24["ms"] = available_formats["Hms"].substring(available_formats["Hms"].indexOf("m"), 1 + available_formats["Hms"].lastIndexOf("s"));
         time_24["ms"] = available_formats["Hms"].substring(available_formats["Hms"].indexOf("m"), available_formats["Hms"].length);
@@ -1737,7 +1737,7 @@ function getDateFormats(language, script, region, data) {
         index_of_sy = array_interval_my[i].indexOf("{sy}");
         //if ( array_interval_dmy[i].indexOf("{sd}") != array_interval_dmy[i].lastIndexOf("{sd}") ) {
         //last_index_of_sd = array_interval_dmy[i].lastIndexOf("{sd}");
-        //	}
+        //    }
         if (array_interval_my[i].indexOf("{sm}") != array_interval_my[i].lastIndexOf("{sm}")) {
             last_index_of_sm = array_interval_my[i].lastIndexOf("{sm}");
         }
@@ -1871,8 +1871,8 @@ function getDateFormats(language, script, region, data) {
     c30 = "{sy}" + intervalFormats["Hm"]["H"] + "{ey}";
     //var array_intervalcodes=[c00,c01,c02,c10,c11,c12,c20];
     /*for(var i=0;i<array_intervalcodes.length;i++){
-	range["\""+array_intervalcodes[i]+"\""]=array_intervalcodes[i];
-	}*/
+    range["\""+array_intervalcodes[i]+"\""]=array_intervalcodes[i];
+    }*/
     range["c00"] = c00;
     range["c01"] = c01;
     range["c02"] = c02;
@@ -1886,16 +1886,16 @@ function getDateFormats(language, script, region, data) {
     //var start_time=JSON.stringify(intervalFormats["Hm"]["H"]).replace(start_time_fmt,"st");
     //r end_time=intervalFormats["Hm"]["H"].substring(1+intervalFormats["Hm"]["H"].lastIndexOf("–"),intervalFormats["Hm"]["H"].length).replace("et");
     /*console.log("s_sd :"+s_sd+"++++++++++++++++++++++++++++++++++++++++++++");
-	console.log("s_sm:"+s_sm+"++++++++++++++++++++++++++++++++++++++++++++");
-	console.log("s_sy:"+s_sy+"++++++++++++++++++++++++++++++++++++++++++++");
-	console.log("START TIME:"+start_time+"++++++++++++++++++++++++++++++++++++++++++++");
-	console.log("END TIME:"+end_time+"++++++++++++++++++++++++++++++++++++++++++++");
-	console.log("START DATE:"+start_date+"++++++++++++++++++++++++++++++++++++++++++++");
-	console.log("END DATE:"+end_date+"++++++++++++++++++++++++++++++++++++++++++++");
-	console.log("START MONTH:"+start_month+"++++++++++++++++++++++++++++++++++++++++++++");
-	console.log("END MONTH:"+end_month+"++++++++++++++++++++++++++++++++++++++++++++");
-	console.log("START YEAR:"+start_year+"++++++++++++++++++++++++++++++++++++++++++++");
-	console.log("END YEAR:"+end_year+"++++++++++++++++++++++++++++++++++++++++++++");*/
+    console.log("s_sm:"+s_sm+"++++++++++++++++++++++++++++++++++++++++++++");
+    console.log("s_sy:"+s_sy+"++++++++++++++++++++++++++++++++++++++++++++");
+    console.log("START TIME:"+start_time+"++++++++++++++++++++++++++++++++++++++++++++");
+    console.log("END TIME:"+end_time+"++++++++++++++++++++++++++++++++++++++++++++");
+    console.log("START DATE:"+start_date+"++++++++++++++++++++++++++++++++++++++++++++");
+    console.log("END DATE:"+end_date+"++++++++++++++++++++++++++++++++++++++++++++");
+    console.log("START MONTH:"+start_month+"++++++++++++++++++++++++++++++++++++++++++++");
+    console.log("END MONTH:"+end_month+"++++++++++++++++++++++++++++++++++++++++++++");
+    console.log("START YEAR:"+start_year+"++++++++++++++++++++++++++++++++++++++++++++");
+    console.log("END YEAR:"+end_year+"++++++++++++++++++++++++++++++++++++++++++++");*/
     //console.log("END TIME :"+end_time+"++++++++++++++++++++++++++++++++++++++++++++");
     //console.log("c00:"+JSON.stringify(c00)+"++++++++++++++++++++++++++++++++++++++++++++");
     //console.log("interval codes are "+JSON.stringify(range)+"++++++++++++++++++++++++++++++++++++++++++++");

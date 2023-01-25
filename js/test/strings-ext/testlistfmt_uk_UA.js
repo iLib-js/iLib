@@ -32,45 +32,45 @@ module.exports.testlistfmt_uk_UA = {
     },
 
     // uk-UA
-    
+
     testListFmtukUANumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "uk-UA"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["Один"]), "Один");
         test.done();
     },
-    
+
     testListFmtukUANumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "uk-UA"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["Один", "Два"]), "Один і Два");
         test.done();
     },
-    
+
     testListFmtukUANumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "uk-UA"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["Один", "Два", "Три"]), "Один, Два і Три");
         test.done();
     },
-    
+
     testListFmtukUANumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "uk-UA"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["Один", "Два", "Три", "Чотири"]), "Один, Два, Три і Чотири");
@@ -81,43 +81,43 @@ module.exports.testlistfmt_uk_UA = {
             locale: "uk-UA",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["Один"]), "Один");
         test.done();
     },
-    
+
     testListFmtUnitStyleukUANumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "uk-UA",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["Один", "Два"]), "Один і Два");
         test.done();
     },
-    
+
     testListFmtUnitStyleukUANumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "uk-UA",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["Один", "Два", "Три"]), "Один, Два і Три");
         test.done();
     },
-    
+
     testListFmtUnitStyleukUANumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "uk-UA",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["Один", "Два", "Три", "Чотири"]), "Один, Два, Три і Чотири");
@@ -129,46 +129,46 @@ module.exports.testlistfmt_uk_UA = {
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["Один"]), "Один");
         test.done();
     },
-    
+
     testListFmtUnitStyleukUANumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "uk-UA",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["Один", "Два"]), "Один і Два");
         test.done();
     },
-    
+
     testListFmtUnitStyleukUANumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "uk-UA",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["Один", "Два", "Три"]), "Один, Два і Три");
         test.done();
     },
-    
+
     testListFmtUnitStyleukUANumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "uk-UA",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["Один", "Два", "Три", "Чотири"]), "Один, Два, Три і Чотири");

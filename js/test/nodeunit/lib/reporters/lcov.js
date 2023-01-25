@@ -23,7 +23,7 @@ exports.run = function (files, options, callback) {
     var paths = files.map(function (p) {
         return path.resolve(p);
     });
-    
+
     nodeunit.runFiles(paths, {
         done: function (assertions) {
             var cov = (global || window)._$jscoverage || {};
@@ -32,7 +32,7 @@ exports.run = function (files, options, callback) {
                 var data = cov[filename];
                 reportFile(filename, data);
             });
-            
+
             if (callback) callback(assertions.failures() ? new Error('We have got test failures.') : undefined);
         }
     });

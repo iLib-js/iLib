@@ -52,8 +52,8 @@ UTF16LE.prototype.parent = Charmap;
 UTF16LE.prototype.constructor = UTF16LE;
 
 /**
- * @private
  * Initialize the charmap instance
+ * @private
  */
 UTF16LE.prototype._init = function(options) {
     this._calcExpansionFactor();

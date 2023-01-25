@@ -74,8 +74,8 @@ exports.run = function (files, options, callback) {
             var names = tracker.names();
             for (var i = 0; i < names.length; i += 1) {
                 console.log(createErrorMessage(
-                    'Error', names[i], 
-                    '', '', '', 
+                    'Error', names[i],
+                    '', '', '',
                     'Undone tests - To fix this, make sure all tests call test.done()'
                 ));
             }

@@ -1,6 +1,6 @@
 /*
  * testislamicdate.js - test the islamic date object
- * 
+ *
  * Copyright © 2012-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -71,16 +71,16 @@ module.exports.testislamicdate = {
     testIslamicDateConstructor: function(test) {
         test.expect(1);
         var id = new IslamicDate();
-        
+
         test.ok(id !== null);
         test.done();
     },
-    
+
     /* julian date id rd 355 + epoch */
     testIslamicDateConstructorFromJD: function(test) {
         test.expect(9);
         var id = new IslamicDate({julianday: 1948793.5, timezone: "Etc/UTC"});
-        
+
         test.equal(typeof(id), 'object');
         test.equal(id.getRataDie(), 354);
         test.equal(id.getYears(), 2);
@@ -92,11 +92,11 @@ module.exports.testislamicdate = {
         test.equal(id.getMilliseconds(), 0);
         test.done();
     },
-    
+
     testIslamicDateAfterLeapYear: function(test) {
         test.expect(9);
         var id = new IslamicDate({julianday: 1949148.9, timezone: "Etc/UTC"});  // Muh 1, 0003 AH, 9:36am
-        
+
         test.equal(typeof(id), 'object');
         test.equal(id.getRataDie(), 709.4);
         test.equal(id.getYears(), 3);
@@ -108,15 +108,15 @@ module.exports.testislamicdate = {
         test.equal(id.getMilliseconds(), 0);
         test.done();
     },
-    
+
     testIslamicDateConvert: function(test) {
         var id;
-        
+
         for (var i = 0; i < testDatesIslamic.length; i++) {
             id = new IslamicDate({julianday: testDatesIslamic[i][0], timezone: "Etc/UTC"});
-        
+
             // console.log("testing jd=" + testDatesIslamic[i][0]);
-            
+
             test.equal(typeof(id), 'object');
             test.equal((testDatesIslamic[i][0] - 1948439.5), id.getRataDie(), "testing rd for " + testDatesIslamic[i][0]);
             test.equal(testDatesIslamic[i][1], id.getYears(), "testing year for " + testDatesIslamic[i][0]);
@@ -130,7 +130,7 @@ module.exports.testislamicdate = {
         }
         test.done();
     },
-    
+
     testIslamicDateConstructorFull: function(test) {
         test.expect(8);
         var id = new IslamicDate({
@@ -143,9 +143,9 @@ module.exports.testislamicdate = {
             millisecond: 123,
             timezone: "Etc/UTC"
         });
-        
+
         test.ok(id !== null);
-        
+
         test.equal(id.getYears(), 2011);
         test.equal(id.getMonths(), 9);
         test.equal(id.getDays(), 23);
@@ -155,21 +155,21 @@ module.exports.testislamicdate = {
         test.equal(id.getMilliseconds(), 123);
         test.done();
     },
-    
+
     testIslamicDateConstructorFullWithStrings: function(test) {
         test.expect(8);
         var id = new IslamicDate({
-            year: "2011", 
+            year: "2011",
             month: "9",
-            day: "23", 
-            hour: "16", 
-            minute: "7", 
-            second: "12", 
+            day: "23",
+            hour: "16",
+            minute: "7",
+            second: "12",
             millisecond: "123"
         });
-        
+
         test.ok(id !== null);
-        
+
         test.equal(id.getYears(), 2011);
         test.equal(id.getMonths(), 9);
         test.equal(id.getDays(), 23);
@@ -179,22 +179,22 @@ module.exports.testislamicdate = {
         test.equal(id.getMilliseconds(), 123);
         test.done();
     },
-    
+
     testIslamicDateConstructorCopy: function(test) {
         test.expect(8);
         var id = new IslamicDate({
-            year: 2011, 
-            month: 9, 
-            day: 23, 
-            hour: 16, 
-            minute: 7, 
-            second: 12, 
+            year: 2011,
+            month: 9,
+            day: 23,
+            hour: 16,
+            minute: 7,
+            second: 12,
             millisecond: 123,
             timezone: "Etc/UTC"
         });
-        
+
         test.ok(id !== null);
-        
+
         test.equal(id.getYears(), 2011);
         test.equal(id.getMonths(), 9);
         test.equal(id.getDays(), 23);
@@ -204,14 +204,14 @@ module.exports.testislamicdate = {
         test.equal(id.getMilliseconds(), 123);
         test.done();
     },
-    
+
     testIslamicDateGetJulianDay: function(test) {
         var id;
-        
+
         for (var i = 0; i < testDatesIslamic.length; i++) {
             id = new IslamicDate({
-                year: testDatesIslamic[i][1], 
-                month: testDatesIslamic[i][2], 
+                year: testDatesIslamic[i][1],
+                month: testDatesIslamic[i][2],
                 day: testDatesIslamic[i][3],
                 hour: testDatesIslamic[i][4],
                 minute: testDatesIslamic[i][5],
@@ -219,100 +219,100 @@ module.exports.testislamicdate = {
                 millisecond: testDatesIslamic[i][7],
                 timezone: "Etc/UTC"
             });
-        
+
             // console.log("testing jd=" + testDatesIslamic[i][0]);
-            
+
             test.equal(typeof(id), 'object');
             test.equal(testDatesIslamic[i][0], id.getJulianDay(), "testing row " + testDatesIslamic[i][0]);
             test.equal(id.getDayOfWeek(), testDatesIslamic[i][8]);
         }
         test.done();
     },
-    
+
     testIslamicDateSetYears: function(test) {
         test.expect(2);
         var id = new IslamicDate();
-        
+
         test.ok(id !== null);
-        
+
         id.setYears(123);
-        
+
         test.equal(id.getYears(), 123);
         test.done();
     },
-    
+
     testIslamicDateSetMonths: function(test) {
         test.expect(2);
         var id = new IslamicDate();
-        
+
         test.ok(id !== null);
-        
+
         id.setMonths(7);
-        
+
         test.equal(id.getMonths(), 7);
         test.done();
     },
-    
+
     testIslamicDateSetDays: function(test) {
         test.expect(2);
         var id = new IslamicDate();
-        
+
         test.ok(id !== null);
-        
+
         id.setDays(12);
-        
+
         test.equal(id.getDays(), 12);
         test.done();
     },
-    
+
     testIslamicDateSetHours: function(test) {
         test.expect(2);
         var id = new IslamicDate();
-        
+
         test.ok(id !== null);
-        
+
         id.setHours(12);
-        
+
         test.equal(id.getHours(), 12);
         test.done();
     },
-    
+
     testIslamicDateSetMinutes: function(test) {
         test.expect(2);
         var id = new IslamicDate();
-        
+
         test.ok(id !== null);
-        
+
         id.setMinutes(13);
-        
+
         test.equal(id.getMinutes(), 13);
         test.done();
     },
-    
+
     testIslamicDateSetSeconds: function(test) {
         test.expect(2);
         var id = new IslamicDate();
-        
+
         test.ok(id !== null);
-        
+
         id.setSeconds(23);
-        
+
         test.equal(id.getSeconds(), 23);
         test.done();
     },
-    
+
     testIslamicDateSetMilliseconds: function(test) {
         test.expect(2);
         var id = new IslamicDate();
-        
+
         test.ok(id !== null);
-        
+
         id.setMilliseconds(123);
-        
+
         test.equal(id.getMilliseconds(), 123);
         test.done();
     },
-    
+
     testGetDayOfWeek1: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -321,13 +321,13 @@ module.exports.testislamicdate = {
             day: 2,
             timezone: "Etc/UTC"
         });
-        
+
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5);
         test.done();
     },
-    
+
     testGetDayOfWeekWithTime: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -339,13 +339,13 @@ module.exports.testislamicdate = {
             second: 34,
             timezone: "Etc/UTC"
         });
-        
+
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5);
         test.done();
     },
-    
+
     testIslamicDateTestGetTimeZero: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -355,20 +355,20 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getTime(), 0);
         test.done();
     },
-    
+
     testIslamicDateTestGetTimeZeroJD: function(test) {
         test.expect(2);
         var id = new IslamicDate({julianday: 2440587.5});
         test.ok(id !== null);
-        
+
         test.equal(id.getTime(), 0);
         test.done();
     },
-    
+
     testIslamicDateTestGetTime: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -380,11 +380,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getTime(), 203400000);
         test.done();
     },
-    
+
     testIslamicDateTestGetTimeTooEarly: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -394,11 +394,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getTime(), -1);
         test.done();
     },
-    
+
     testIslamicDateTestGetTimeTooLate: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -408,11 +408,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getTime(), -1);
         test.done();
     },
-    
+
     // test some of the helper functions to make sure they are producing the right thing
     testIslamicDateOnOrBeforeSun: function(test) {
         test.expect(3);
@@ -423,15 +423,15 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
-        // Sunday on or before id 5 days before 
+
+        // Sunday on or before id 5 days before
         test.equal(id.onOrBefore(0).getRataDie(), rd-5);
         test.done();
     },
-    
+
     testIslamicDateOnOrBeforeMon: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -441,14 +441,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.onOrBefore(1).getRataDie(), rd-4);
         test.done();
     },
-    
+
     testIslamicDateOnOrBeforeTue: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -458,14 +458,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.onOrBefore(2).getRataDie(), rd-3);
         test.done();
     },
-    
+
     testIslamicDateOnOrBeforeWed: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -475,14 +475,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.onOrBefore(3).getRataDie(), rd-2);
         test.done();
     },
-    
+
     testIslamicDateOnOrBeforeThu: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -492,14 +492,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.onOrBefore(4).getRataDie(), rd-1);
         test.done();
     },
-    
+
     testIslamicDateOnOrBeforeFri: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -509,14 +509,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.onOrBefore(5).getRataDie(), rd);
         test.done();
     },
-    
+
     testIslamicDateOnOrBeforeSat: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -526,14 +526,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.onOrBefore(6).getRataDie(), rd-6);
         test.done();
     },
-    
+
     testIslamicDateOnOrAfterSun: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -543,15 +543,15 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
-        // Sunday on or before id 5 days before 
+
+        // Sunday on or before id 5 days before
         test.equal(id.onOrAfter(0).getRataDie(), rd+2);
         test.done();
     },
-    
+
     testIslamicDateOnOrAfterMon: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -561,14 +561,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.onOrAfter(1).getRataDie(), rd+3);
         test.done();
     },
-    
+
     testIslamicDateOnOrAfterTue: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -578,14 +578,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.onOrAfter(2).getRataDie(), rd+4);
         test.done();
     },
-    
+
     testIslamicDateOnOrAfterWed: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -595,14 +595,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.onOrAfter(3).getRataDie(), rd+5);
         test.done();
     },
-    
+
     testIslamicDateOnOrAfterThu: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -612,14 +612,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.onOrAfter(4).getRataDie(), rd+6);
         test.done();
     },
-    
+
     testIslamicDateOnOrAfterFri: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -629,14 +629,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.onOrAfter(5).getRataDie(), rd);
         test.done();
     },
-    
+
     testIslamicDateOnOrAfterSat: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -646,14 +646,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.onOrAfter(6).getRataDie(), rd+1);
         test.done();
     },
-    
+
     testIslamicDateBeforeSun: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -663,15 +663,15 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
-        // Sunday before id 5 days before 
+
+        // Sunday before id 5 days before
         test.equal(id.before(0).getRataDie(), rd-5);
         test.done();
     },
-    
+
     testIslamicDateBeforeMon: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -681,14 +681,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.before(1).getRataDie(), rd-4);
         test.done();
     },
-    
+
     testIslamicDateBeforeTue: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -698,14 +698,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.before(2).getRataDie(), rd-3);
         test.done();
     },
-    
+
     testIslamicDateBeforeWed: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -715,14 +715,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.before(3).getRataDie(), rd-2);
         test.done();
     },
-    
+
     testIslamicDateBeforeThu: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -732,14 +732,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.before(4).getRataDie(), rd-1);
         test.done();
     },
-    
+
     testIslamicDateBeforeFri: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -749,14 +749,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.before(5).getRataDie(), rd-7);
         test.done();
     },
-    
+
     testIslamicDateBeforeSat: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -766,14 +766,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.before(6).getRataDie(), rd-6);
         test.done();
     },
-    
+
     testIslamicDateAfterSun: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -783,15 +783,15 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
-        // Sunday on or before id 5 days before 
+
+        // Sunday on or before id 5 days before
         test.equal(id.after(0).getRataDie(), rd+2);
         test.done();
     },
-    
+
     testIslamicDateAfterMon: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -801,14 +801,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.after(1).getRataDie(), rd+3);
         test.done();
     },
-    
+
     testIslamicDateAfterTue: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -818,14 +818,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.after(2).getRataDie(), rd+4);
         test.done();
     },
-    
+
     testIslamicDateAfterWed: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -835,14 +835,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.after(3).getRataDie(), rd+5);
         test.done();
     },
-    
+
     testIslamicDateAfterThu: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -852,14 +852,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.after(4).getRataDie(), rd+6);
         test.done();
     },
-    
+
     testIslamicDateAfterFri: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -869,14 +869,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.after(5).getRataDie(), rd+7);
         test.done();
     },
-    
+
     testIslamicDateAfterSat: function(test) {
         test.expect(3);
         var id = new IslamicDate({
@@ -886,14 +886,14 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfWeek(), 5); // Friday
         var rd = id.getRataDie();
-        
+
         test.equal(id.after(6).getRataDie(), rd+1);
         test.done();
     },
-    
+
     testIslamicDateTestGetWeekOfYearThisYear: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -903,11 +903,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfYear(), 5);
         test.done();
     },
-    
+
     testIslamicDateTestGetWeekOfYearThisYear2: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -917,11 +917,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfYear(), 11);
         test.done();
     },
-    
+
     testIslamicDateTestGetWeekOfYearThisYear3: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -931,11 +931,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfYear(), 1);
         test.done();
     },
-    
+
     testIslamicDateTestGetWeekOfYearThisYearWithTime: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -949,11 +949,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfYear(), 1);
         test.done();
     },
-    
+
     testIslamicDateTestGetWeekOfYearPreviousYear: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -963,11 +963,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfYear(), 51);
         test.done();
     },
-    
+
     testIslamicDateTestGetWeekOfYearLastWeekLeap: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -977,11 +977,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfYear(), 1);
         test.done();
     },
-    
+
     testIslamicDateTestGetWeekOfYearLastWeekRegular1: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -991,11 +991,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfYear(), 1);
         test.done();
     },
-    
+
     testIslamicDateTestGetWeekOfYearLastWeekRegular2: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1005,11 +1005,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfYear(), 51);
         test.done();
     },
-    
+
     testIslamicDateTestGetWeekOfYearLastWeekRegular3: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1019,11 +1019,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfYear(), 1);
         test.done();
     },
-    
+
     testIslamicDateTestGetWeekOfYearLastWeekRegular4: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1033,11 +1033,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfYear(), 1);
         test.done();
     },
-    
+
     testIslamicDateTestGetWeekOfYearLastWeekRegular5: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1047,11 +1047,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfYear(), 51);
         test.done();
     },
-    
+
     testIslamicDateTestGetWeekOfYearLastWeekRegular6: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1061,11 +1061,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfYear(), 1);
         test.done();
     },
-    
+
     testIslamicDateGetDayOfYearFirstDay: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1075,11 +1075,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfYear(), 1);
         test.done();
     },
-    
+
     testIslamicDateGetDayOfYearMidYear: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1089,11 +1089,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfYear(), 76);
         test.done();
     },
-    
+
     testIslamicDateGetDayOfYearLastDay: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1103,11 +1103,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfYear(), 354);
         test.done();
     },
-    
+
     testIslamicDateGetDayOfYearLastDayLeapYear: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1117,11 +1117,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getDayOfYear(), 355);
         test.done();
     },
-    
+
     testIslamicDateGetWeekOfMonth0: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1131,11 +1131,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfMonth("en-US"), 0);
         test.done();
     },
-    
+
     testIslamicDateGetWeekOfMonth1: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1145,11 +1145,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfMonth("en-US"), 1);
         test.done();
     },
-    
+
     testIslamicDateGetWeekOfMonth2: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1159,11 +1159,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfMonth("en-US"), 2);
         test.done();
     },
-    
+
     testIslamicDateGetWeekOfMonth3: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1173,11 +1173,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfMonth("en-US"), 3);
         test.done();
     },
-    
+
     testIslamicDateGetWeekOfMonth4: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1187,11 +1187,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfMonth("en-US"), 4);
         test.done();
     },
-    
+
     testIslamicDateGetWeekOfMonth5: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1201,11 +1201,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfMonth("en-US"), 5);
         test.done();
     },
-    
+
     testIslamicDateGetWeekOfMonth6: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1215,11 +1215,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfMonth("en-US"), 1);
         test.done();
     },
-    
+
     testIslamicDateGetWeekOfMonth7: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1229,11 +1229,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfMonth("en-US"), 1);
         test.done();
     },
-    
+
     testIslamicDateGetWeekOfMonth8: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1243,11 +1243,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfMonth("en-US"), 0);
         test.done();
     },
-    
+
     testIslamicDateGetWeekOfMonth9: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1257,11 +1257,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfMonth("en-US"), 0);
         test.done();
     },
-    
+
     testIslamicDateGetWeekOfMonthUS: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1271,11 +1271,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getWeekOfMonth("en-US"), 1);
         test.done();
     },
-    
+
     testIslamicDateGetWeekOfMonthDE: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1285,13 +1285,13 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
-        // weeks in Germany start on Monday, and 8/1 is a Sunday, so it is at the 
+
+        // weeks in Germany start on Monday, and 8/1 is a Sunday, so it is at the
         // end of the preceding week.
         test.equal(id.getWeekOfMonth("de-DE"), 0);
         test.done();
     },
-    
+
     testIslamicDateGetEraAH: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1301,11 +1301,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getEra(), 1);
         test.done();
     },
-    
+
     testIslamicDateGetEraBAH: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1318,11 +1318,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getEra(), -1);
         test.done();
     },
-    
+
     testIslamicDateGetEraAHYear1: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1332,11 +1332,11 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getEra(), 1);
         test.done();
     },
-    
+
     testIslamicDateGetEraBAHYear0: function(test) {
         test.expect(2);
         var id = new IslamicDate({
@@ -1346,118 +1346,118 @@ module.exports.testislamicdate = {
             timezone: "Etc/UTC"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getEra(), -1);
         test.done();
     },
-    
+
     testIslamicDateSetTimeZone: function(test) {
         test.expect(3);
         var id = new IslamicDate({
-            year: 1433, 
-            month: 3, 
+            year: 1433,
+            month: 3,
             day: 8,
             timezone: "America/Los_Angeles"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getTimeZone(), "America/Los_Angeles");
-        
+
         id.setTimeZone("Asia/Tokyo");
-        
+
         test.equal(id.getTimeZone(), "Asia/Tokyo");
         test.done();
     },
-    
+
     testIslamicDateSetTimeZoneNotString: function(test) {
         test.expect(3);
         var id = new IslamicDate({
-            year: 1433, 
-            month: 3, 
+            year: 1433,
+            month: 3,
             day: 8,
             timezone: "America/Los_Angeles"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getTimeZone(), "America/Los_Angeles");
-        
+
         id.setTimeZone(345);
-        
+
         test.equal(id.getTimeZone(), "America/Los_Angeles");
         test.done();
     },
-    
+
     testIslamicDateSetTimeZoneUndefined: function(test) {
         test.expect(3);
         var id = new IslamicDate({
-            year: 1433, 
-            month: 3, 
+            year: 1433,
+            month: 3,
             day: 8,
             timezone: "America/Los_Angeles"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getTimeZone(), "America/Los_Angeles");
-    
+
         // clears it out
         id.setTimeZone(undefined);
-        
+
         test.equal(id.getTimeZone(), "local");
         test.done();
     },
-    
+
     testIslamicDateSetTimeZoneEmpty: function(test) {
         test.expect(3);
         var id = new IslamicDate({
-            year: 1433, 
-            month: 3, 
+            year: 1433,
+            month: 3,
             day: 8,
             timezone: "America/Los_Angeles"
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getTimeZone(), "America/Los_Angeles");
-        
+
         // clears it out
         id.setTimeZone("");
-        
+
         test.equal(id.getTimeZone(), "local");
         test.done();
     },
-    
+
     testIslamicDateInitWithUnixTimeRightTimeZone: function(test) {
         test.expect(2);
         var id = new IslamicDate({
             unixtime: 0
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getTimeZone(), "local");
         test.done();
     },
-    
+
     testIslamicDateInitWithJDRightTimeZone: function(test) {
         test.expect(2);
         var id = new IslamicDate({
             julianday: 0
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getTimeZone(), "local");
         test.done();
     },
-    
+
     testIslamicDateInitWithRDRightTimeZone: function(test) {
         test.expect(2);
         var id = new IslamicDate({
             rd: 0
         });
         test.ok(id !== null);
-        
+
         test.equal(id.getTimeZone(), "local");
         test.done();
     },
-    
+
     testIslamicDateRoundTripConstruction: function(test) {
         test.expect(8);
         var id = new IslamicDate({
@@ -1468,7 +1468,7 @@ module.exports.testislamicdate = {
         });
         test.ok(id !== null);
         // console.log("id is " + JSON.stringify(id, undefined, 4));
-        
+
         var u = id.getTime();
         // console.log("unixtime is " + u);
         var id2 = new IslamicDate({
@@ -1485,7 +1485,7 @@ module.exports.testislamicdate = {
         test.equal(id2.getSeconds(), id.getSeconds());
         test.done();
     },
-    
+
     testIslamicDateRoundTripConstruction2: function(test) {
         test.expect(8);
         var id = new IslamicDate({
@@ -1496,7 +1496,7 @@ module.exports.testislamicdate = {
         });
         test.ok(id !== null);
         // console.log("id is " + JSON.stringify(id, undefined, 4));
-        
+
         var u = id.getTime();
         // console.log("unixtime is " + u);
         var id2 = new IslamicDate({
@@ -1513,5 +1513,5 @@ module.exports.testislamicdate = {
         test.equal(id2.getSeconds(), id.getSeconds());
         test.done();
     }
-    
+
 };

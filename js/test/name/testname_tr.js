@@ -1,6 +1,6 @@
 /*
  * testname_tr_TR.js - test the name object in Turkish
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,95 +37,95 @@ module.exports.testname_tr = {
         test.expect(2);
         var parsed = new Name("Kemal Sunal", {locale: 'tr-TR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Kemal",
             familyName: "Sunal"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseTitle_tr_TR: function(test) {
         test.expect(2);
         var parsed = new Name("Kemal Sunal kıdemli", {locale: 'tr-TR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             suffix: "kıdemli",
             givenName: "Kemal",
             familyName: "Sunal"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseTitleWithFamilyOnly_tr_TR: function(test) {
         test.expect(2);
         var parsed = new Name("Bay Sunal", {locale: 'tr-TR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Bay",
             familyName: "Sunal"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseEverything_tr_TR: function(test) {
         test.expect(2);
         var parsed = new Name("Bay ve Bayan Sunal", {locale: 'tr-TR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Bay ve Bayan",
             familyName: "Sunal"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseprefix_tr_TR: function(test) {
         test.expect(2);
         var parsed = new Name("Bay Kemal Sunal", {locale: 'tr-TR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Bay",
             givenName: "Kemal",
             familyName: "Sunal"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseprefixAndSuffix_tr_TR: function(test) {
         test.expect(2);
         var parsed = new Name("belediye başkanı Kemal Sunal kıdemli", {locale: 'tr-TR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "belediye başkanı",
             givenName: "Kemal",
             familyName: "Sunal",
             suffix:"kıdemli"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_tr_TR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -133,18 +133,18 @@ module.exports.testname_tr = {
             familyName: "Sunal"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'tr-TR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Kemal Sunal";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_tr_TR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -152,18 +152,18 @@ module.exports.testname_tr = {
             familyName: "Sunal"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'tr-TR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Kemal Sunal";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_tr_TR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -172,18 +172,18 @@ module.exports.testname_tr = {
             suffix: "asdf"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'tr-TR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Kemal Sunal";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSurname_tr_TR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -191,18 +191,18 @@ module.exports.testname_tr = {
             familyName: "Sunal"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'tr-TR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Bay ve Bayan Sunal";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_tr_TR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -212,18 +212,18 @@ module.exports.testname_tr = {
             suffix: "kıdemli"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'tr-TR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Bakan Kemal Sunal kıdemli";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_tr_TR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -232,18 +232,18 @@ module.exports.testname_tr = {
             familyName: "Sunal"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'tr-TR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Kemal Sunal";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_tr_TR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -252,18 +252,18 @@ module.exports.testname_tr = {
             familyName: "Sunal"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'tr-TR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Kemal Sunal";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_tr_TR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -277,13 +277,13 @@ module.exports.testname_tr = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Bakan Kemal Sunal";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
+
+
+
 };

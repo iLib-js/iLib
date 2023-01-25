@@ -1,7 +1,7 @@
 /*
- * testcm_KR.js - Test the charset mapping routines for the various Korean 
+ * testcm_KR.js - Test the charset mapping routines for the various Korean
  * character sets
- * 
+ *
  * Copyright © 2014-2015,2017-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -71,10 +71,10 @@ var testDataKR = {
             0x68, // h
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x61, // a
             0x20, //
             0x74, // t
@@ -101,7 +101,7 @@ var testDataKR = {
             0xab, 0xab, // カ
             0xab, 0xca, // ナ
             0xaa, 0xc7, // で
-            0xaa, 0xb9  // す   
+            0xaa, 0xb9  // す
         ],
         "Ελλασ": [
             0xa5, 0xc5, // Ε
@@ -134,10 +134,10 @@ var testDataKR = {
             0x68, // h
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x61, // a
             0x20, //
             0x74, // t
@@ -230,10 +230,10 @@ var testDataKR = {
             0x68, // h
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x61, // a
             0x20, //
             0x74, // t
@@ -344,7 +344,7 @@ module.exports.testcm_KR = {
         }
         test.done();
     },
-    
+
     testCharmapKRMapToUnicode: function(test) {
         for (var charset in testDataKR) {
             var cm = CharmapFactory({
@@ -359,7 +359,7 @@ module.exports.testcm_KR = {
         }
         test.done();
     },
-    
+
     testCharmapKRMapToNative: function(test) {
         for (var charset in testDataKR) {
             var cm = CharmapFactory({
@@ -370,7 +370,7 @@ module.exports.testcm_KR = {
             for (var element in data) {
                 var array = cm.mapToNative(element);
                 // console.log("cm.mapToNative returned " + JSON.stringify(cm.mapToUnicode(array)));
-                
+
                 for (var i = 0; i < data[element].length; i++) {
                     // console.log("testing " + charset + " element " + element + " array index " + i);
                     test.equal(data[element][i], array[i], "testing " + charset + " element " + element + " array index " + i + "\n");
@@ -379,6 +379,6 @@ module.exports.testcm_KR = {
         }
         test.done();
     }
-    
-    
+
+
 };

@@ -1,6 +1,6 @@
-/* 
+/*
  * jsondiff.js - ilib tool to diff a set of json files and only
- * output the unique strings 
+ * output the unique strings
  *
  * Copyright © 2014, JEDLSoft
  *
@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/* 
+/*
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
@@ -38,7 +38,7 @@ function usage() {
     process.exit(1);
 }
 
-var sourcePath = "", 
+var sourcePath = "",
     targetPath = "",
     parents;
 

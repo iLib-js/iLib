@@ -74,7 +74,7 @@ var NormString = require("./NormString.js");
  * <li><i>locale</i> - locale or localeSpec to use to parse the address. If not
  * specified, this function will use the current ilib locale
  *
- * <i><i>style</i> - the style of collation to use for this index.
+ * <li><i>style</i> - the style of collation to use for this index.
  * For some locales, there are different styles of collating strings depending
  * on what kind of strings are being collated or what the preference of the user
  * is. For example, in German, there is a phonebook order and a dictionary ordering

@@ -38,7 +38,7 @@ if (process.argv.length > 2) {
 }
 
 function usage() {
-	console.log("Usage: gengeoinfo.js [-h] [ output_dir ]\n" +
+    console.log("Usage: gengeoinfo.js [-h] [ output_dir ]\n" +
             "-h or --help\n" + "  this help");
     process.exit(1);
 }
@@ -84,7 +84,7 @@ function walk(root, dir) {
         var sourcePath = path.join(root, sourcePathRelative);
 
         var stat = fs.statSync(sourcePath);
-        
+
         if (stat && stat.isDirectory()) {
             walk(root, sourcePathRelative);
         } else {

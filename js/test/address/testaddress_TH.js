@@ -1,6 +1,6 @@
 /*
  * testaddress_TH.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports.testaddress_TH = {
     testParseAddressTHNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี\nเขตปทุมวัน กรุงเทพฯ 10330\nประเทศไทย", {locale: 'th-Th'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี");
         test.equal(parsedAddress.locality, "เขตปทุมวัน");
@@ -46,13 +46,13 @@ module.exports.testaddress_TH = {
         test.equal(parsedAddress.countryCode, "TH");
         test.done();
     },
-    
-    
-    
+
+
+
     testParseAddressTHNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี\nเขตปทุมวัน กรุงเทพฯ\nประเทศไทย", {locale: 'th-Th'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี");
         test.equal(parsedAddress.locality, "เขตปทุมวัน");
@@ -62,12 +62,12 @@ module.exports.testaddress_TH = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
-    
+
+
     testParseAddressTHNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า\nอำเภอเมือง นนทบุรี 11000", {locale: 'th-TH'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า");
         test.equal(parsedAddress.locality, "อำเภอเมือง");
@@ -77,11 +77,11 @@ module.exports.testaddress_TH = {
         test.equal(parsedAddress.countryCode, "TH");
         test.done();
     },
-    
+
     testParseAddressTHManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("112/119\nมณียา สมบูรณ์ ผลงานชิ้นเอก\nไทรม้า\nเขตปทุมวัน\nกรุงเทพฯ\n11000\nประเทศไทย", {locale: 'th-TH'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "112/119, มณียา สมบูรณ์ ผลงานชิ้นเอก, ไทรม้า");
         test.equal(parsedAddress.locality, "เขตปทุมวัน");
@@ -91,12 +91,12 @@ module.exports.testaddress_TH = {
         test.equal(parsedAddress.countryCode, "TH");
         test.done();
     },
-    
-    
+
+
     testParseAddressTHOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("112/119,มณียา สมบูรณ์ ผลงานชิ้นเอก,ไทรม้า\nเขตปทุมวัน,กรุงเทพฯ,11000,ประเทศไทย", {locale: 'th-TH'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "112/119, มณียา สมบูรณ์ ผลงานชิ้นเอก, ไทรม้า");
         test.equal(parsedAddress.locality, "เขตปทุมวัน");
@@ -106,12 +106,12 @@ module.exports.testaddress_TH = {
         test.equal(parsedAddress.countryCode, "TH");
         test.done();
     },
-    
-    
+
+
     testParseAddressTHOther: function(test) {
         test.expect(7);
         var parsedAddress = new Address("112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า\nอำเภอเมือง นนทบุรี 11000\nประเทศไทย", {locale: 'th-TH'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า");
         test.equal(parsedAddress.locality, "อำเภอเมือง");
@@ -121,8 +121,8 @@ module.exports.testaddress_TH = {
         test.equal(parsedAddress.countryCode, "TH");
         test.done();
     },
-    
-    
+
+
     testFormatAddressTH: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -133,13 +133,13 @@ module.exports.testaddress_TH = {
             country: "ประเทศไทย",
             countryCode: "TH"
         }, {locale: 'th-TH'});
-        
+
         var expected = "49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี\nเขตปทุมวัน กรุงเทพฯ 10330\nประเทศไทย";
         var formatter = new AddressFmt({locale: 'tH-TH'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressTHFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -155,6 +155,6 @@ module.exports.testaddress_TH = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
-    
+
+
 };

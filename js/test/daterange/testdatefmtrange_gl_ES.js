@@ -1,6 +1,6 @@
 /*
  * testdatefmtrange_gl_ES.js - test the date range formatter object Galician-Spain
- * 
+ *
  * Copyright © 2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -138,7 +138,7 @@ module.exports.testdatefmtrange_gl_ES = {
         test.equal(fmt.format(start, end), "13:45 – 14:30 do 31 de decembro de 2011");
         test.done();
     },
-    
+
     testDateRngFmtglESRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "gl-ES", length: "short"});
@@ -243,7 +243,7 @@ module.exports.testdatefmtrange_gl_ES = {
         test.equal(fmt.format(start, end), "13:45 do 30 de decembro de 2011 – 14:30 do 31 de decembro de 2011");
         test.done();
     },
-    
+
     testDateRngFmtglESRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "gl-ES", length: "short"});
@@ -348,7 +348,7 @@ module.exports.testdatefmtrange_gl_ES = {
         test.equal(fmt.format(start, end), "20 – 31 de decembro de 2011");
         test.done();
     },
-    
+
     testDateRngFmtglESRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "gl-ES", length: "short"});
@@ -453,7 +453,7 @@ module.exports.testdatefmtrange_gl_ES = {
         test.equal(fmt.format(start, end), "20 de novembro – 31 de decembro de 2011");
         test.done();
     },
-    
+
     testDateRngFmtglESRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "gl-ES", length: "short"});
@@ -558,7 +558,7 @@ module.exports.testdatefmtrange_gl_ES = {
         test.equal(fmt.format(start, end), "20 de novembro de 2011 – 31 de xaneiro de 2012");
         test.done();
     },
-    
+
     testDateRngFmtglESRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "gl-ES", length: "short"});

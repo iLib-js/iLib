@@ -171,7 +171,7 @@ exports.run = function (files, opts, callback) {
                             ' assertions (' + assertions.duration + 'ms)'
                         );
                     }
-                    
+
                     if (callback) callback(assertions.failures() ? new Error('We have got test failures.') : undefined);
                 });
             });

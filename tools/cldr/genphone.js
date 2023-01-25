@@ -115,7 +115,7 @@ function getCharacterCode(ch) {
         return 13;
     case '.':
         return 14;
-    case 'p':		// pause chars
+    case 'p':        // pause chars
     case 'P':
     case 't':
     case 'T':
@@ -123,7 +123,7 @@ function getCharacterCode(ch) {
     case 'W':
         return -1;
     case 'x':
-    case 'X':		// extension char
+    case 'X':        // extension char
         return -1;
     }
     return -2;
@@ -204,7 +204,7 @@ function processFile(file) {
                     }
                 }
                 // if (!current) {
-                // 	console.log("current is undefined. trie is\n" + JSON.stringify(trie, undefined, 4));
+                //     console.log("current is undefined. trie is\n" + JSON.stringify(trie, undefined, 4));
                 // }
                 // now we have reached the final state
                 ch = getCharacterCode(digits.charAt(digits.length - 1));

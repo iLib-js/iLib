@@ -1,6 +1,6 @@
 /*
  * gentzinfo.js - ilib tool to generate the tzinfo about time zones in a locale
- * 
+ *
  * Copyright © 2013-2015, 2018, 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@
  */
 
 /*
- * This code is intended to be run under node.js 
+ * This code is intended to be run under node.js
  */
 
 var fs = require('fs');
