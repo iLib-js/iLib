@@ -1,0 +1,734 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> NormString.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="CType.html">CType</a></li><li><a href="ilib.html">ilib</a></li></ul><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="AddressFmt.html">AddressFmt</a></li><li><a href="AlphabeticIndex.html">AlphabeticIndex</a></li><li><a href="AreaUnit.html">AreaUnit</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CaseMapper.html">CaseMapper</a></li><li><a href="Charmap.html">Charmap</a></li><li><a href="CharmapTable.html">CharmapTable</a></li><li><a href="Charset.html">Charset</a></li><li><a href="Collator.html">Collator</a></li><li><a href="CopticCal.html">CopticCal</a></li><li><a href="CopticDate.html">CopticDate</a></li><li><a href="Country.html">Country</a></li><li><a href="Currency.html">Currency</a></li><li><a href="DateFmt.html">DateFmt</a></li><li><a href="DateRngFmt.html">DateRngFmt</a></li><li><a href="DigitalSpeedUnit.html">DigitalSpeedUnit</a></li><li><a href="DigitalStorageUnit.html">DigitalStorageUnit</a></li><li><a href="DurationFmt.html">DurationFmt</a></li><li><a href="EnergyUnit.html">EnergyUnit</a></li><li><a href="EthiopicCal.html">EthiopicCal</a></li><li><a href="EthiopicDate.html">EthiopicDate</a></li><li><a href="ForceUnit.html">ForceUnit</a></li><li><a href="FuelConsumptionUnit.html">FuelConsumptionUnit</a></li><li><a href="GlyphString.html">GlyphString</a></li><li><a href="GregorianCal.html">GregorianCal</a></li><li><a href="GregorianDate.html">GregorianDate</a></li><li><a href="HanCal.html">HanCal</a></li><li><a href="HanDate.html">HanDate</a></li><li><a href="HebrewCal.html">HebrewCal</a></li><li><a href="HebrewDate.html">HebrewDate</a></li><li><a href="IDate.html">IDate</a></li><li><a href="INumber.html">INumber</a></li><li><a href="ISO2022.html">ISO2022</a></li><li><a href="ISet.html">ISet</a></li><li><a href="IString.html">IString</a></li><li><a href="IslamicCal.html">IslamicCal</a></li><li><a href="IslamicDate.html">IslamicDate</a></li><li><a href="JulianCal.html">JulianCal</a></li><li><a href="JulianDate.html">JulianDate</a></li><li><a href="JulianDay.html">JulianDay</a></li><li><a href="LengthUnit.html">LengthUnit</a></li><li><a href="ListFmt.html">ListFmt</a></li><li><a href="Locale.html">Locale</a></li><li><a href="LocaleInfo.html">LocaleInfo</a></li><li><a href="LocaleMatcher.html">LocaleMatcher</a></li><li><a href="MassUnit.html">MassUnit</a></li><li><a href="Measurement.html">Measurement</a></li><li><a href="Name.html">Name</a></li><li><a href="NameFmt.html">NameFmt</a></li><li><a href="NormString.html">NormString</a></li><li><a href="NumFmt.html">NumFmt</a></li><li><a href="PersianAlgoCal.html">PersianAlgoCal</a></li><li><a href="PersianAlgoDate.html">PersianAlgoDate</a></li><li><a href="PersianCal.html">PersianCal</a></li><li><a href="PersianDate.html">PersianDate</a></li><li><a href="PhoneFmt.html">PhoneFmt</a></li><li><a href="PhoneGeoLocator.html">PhoneGeoLocator</a></li><li><a href="PhoneNumber.html">PhoneNumber</a></li><li><a href="PowerUnit.html">PowerUnit</a></li><li><a href="PressureUnit.html">PressureUnit</a></li><li><a href="ResBundle.html">ResBundle</a></li><li><a href="ScriptInfo.html">ScriptInfo</a></li><li><a href="StringMapper.html">StringMapper</a></li><li><a href="TemperatureUnit.html">TemperatureUnit</a></li><li><a href="ThaiSolarCal.html">ThaiSolarCal</a></li><li><a href="ThaiSolarDate.html">ThaiSolarDate</a></li><li><a href="TimeUnit.html">TimeUnit</a></li><li><a href="TimeZone.html">TimeZone</a></li><li><a href="UTF16BE.html">UTF16BE</a></li><li><a href="UTF16LE.html">UTF16LE</a></li><li><a href="UTF8.html">UTF8</a></li><li><a href="UnitFmt.html">UnitFmt</a></li><li><a href="UnknownUnit.html">UnknownUnit</a></li><li><a href="VelocityUnit.html">VelocityUnit</a></li><li><a href="VolumeUnit.html">VolumeUnit</a></li></ul><h3>Interfaces</h3><ul><li><a href="ilib.Loader.html">Loader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CalendarFactory">CalendarFactory</a></li><li><a href="global.html#CharmapFactory">CharmapFactory</a></li><li><a href="global.html#DateFactory">DateFactory</a></li><li><a href="global.html#MeasurementFactory">MeasurementFactory</a></li><li><a href="global.html#isAlnum">isAlnum</a></li><li><a href="global.html#isAlpha">isAlpha</a></li><li><a href="global.html#isAscii">isAscii</a></li><li><a href="global.html#isBlank">isBlank</a></li><li><a href="global.html#isCntrl">isCntrl</a></li><li><a href="global.html#isDigit">isDigit</a></li><li><a href="global.html#isGraph">isGraph</a></li><li><a href="global.html#isIdeo">isIdeo</a></li><li><a href="global.html#isLower">isLower</a></li><li><a href="global.html#isPrint">isPrint</a></li><li><a href="global.html#isPunct">isPunct</a></li><li><a href="global.html#isScript">isScript</a></li><li><a href="global.html#isSpace">isSpace</a></li><li><a href="global.html#isUpper">isUpper</a></li><li><a href="global.html#isXdigit">isXdigit</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>NormString.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * NormString.js - ilib normalized string subclass definition
+ *
+ * Copyright © 2013-2015, 2018-2019, 2023 JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !data ccc nfd nfc nfkd nfkc
+
+var ilib = require("../index.js");
+var Utils = require("./Utils.js");
+var JSUtils = require("./JSUtils.js");
+
+var IString = require("./IString.js");
+var GlyphString = require("./GlyphString.js");
+
+/**
+ * @class
+ * Create a new normalized string instance. This string inherits from
+ * the GlyphString class, and adds the normalize method. It can be
+ * used anywhere that a normal Javascript string is used. &lt;p>
+ *
+ * The options parameter is optional, and may contain any combination
+ * of the following properties:&lt;p>
+ *
+ * &lt;ul>
+ * &lt;li>&lt;i>onLoad&lt;/i> - a callback function to call when the locale data are
+ * fully loaded. When the onLoad option is given, this object will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ *
+ * &lt;li>&lt;i>sync&lt;/i> - tell whether to load any missing locale data synchronously or
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while.
+ *
+ * &lt;li>&lt;i>loadParams&lt;/i> - an object containing parameters to pass to the
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
+ * &lt;/ul>
+ *
+ * @constructor
+ * @extends GlyphString
+ * @param {string|IString=} str initialize this instance with this string
+ * @param {Object=} options options governing the way this instance works
+ */
+var NormString = function (str, options) {
+    GlyphString.call(this, str, options);
+};
+
+NormString.prototype = new GlyphString("", {noinstance:true});
+NormString.prototype.parent = GlyphString;
+NormString.prototype.constructor = NormString;
+
+/**
+ * Initialize the normalized string routines statically. This
+ * is intended to be called in a dynamic-load version of ilib
+ * to load the data needed to normalize strings before any instances
+ * of NormString are created.&lt;p>
+ *
+ * The options parameter may contain any of the following properties:
+ *
+ * &lt;ul>
+ * &lt;li>&lt;i>form&lt;/i> - {string} the normalization form to load
+ * &lt;li>&lt;i>script&lt;/i> - {string} load the normalization for this script. If the
+ * script is given as "all" then the normalization data for all scripts
+ * is loaded at the same time
+ * &lt;li>&lt;i>sync&lt;/i> - {boolean} whether to load the files synchronously or not
+ * &lt;li>&lt;i>loadParams&lt;/i> - {Object} parameters to the loader function
+ * &lt;li>&lt;i>onLoad&lt;/i> - {function()} a function to call when the
+ * files are done being loaded
+ * &lt;/ul>
+ *
+ * @param {Object} options an object containing properties that govern
+ * how to initialize the data
+ */
+
+NormString.init = function(options) {
+    var form = "nfkc";
+    var script = "all";
+    var sync = true;
+    var loadParams = undefined;
+
+    if (options) {
+        if (options.form) {
+            form = options.form;
+        }
+        if (options.script) {
+            script = options.script;
+        }
+        if (options.loadParams) {
+            loadParams = options.loadParams;
+        }
+        if (typeof(options.sync) === 'boolean') {
+            sync = options.sync;
+        }
+    }
+
+    var formDependencies = {
+        "nfd": ["nfd"],
+        "nfc": ["nfc", "nfd"],
+        "nfkd": ["nfkd", "nfd"],
+        "nfkc": ["nfc", "nfkd", "nfd"]
+    };
+    var files = [];
+    var forms = formDependencies[form];
+    var toLoad = [];
+    forms.forEach(function(f) {
+        if (!ilib.data.norm[f] || JSUtils.isEmpty(ilib.data.norm[f])) {
+            files.push(f + "/" + script + ".json");
+            toLoad.push(f);
+        }
+    });
+
+    if (files.length || !ilib.data.ccc || JSUtils.isEmpty(ilib.data.ccc)) {
+        Utils.loadData({
+            object: "NormString",
+            name: "ccc.json",
+            locale: "-",
+            nonlocale: true,
+            sync: sync,
+            loadParams: loadParams,
+            callback: ilib.bind(this, function(normdata){
+                ilib.data.ccc = normdata;
+
+                if (files.length) {
+                    //console.log("loading files " + JSON.stringify(files));
+                    Utils._callLoadData(files, sync, loadParams, undefined, function(arr) {
+                        for (var i = 0; i &lt; arr.length; i++) {
+                            if (typeof(arr[i]) !== 'undefined') {
+                                ilib.extend(ilib.data.norm[toLoad[i]], arr[i]);
+                            }
+                        }
+                        if (options &amp;&amp; typeof(options.onLoad) === 'function') {
+                           options.onLoad(this);
+                        }
+                    });
+                } else {
+                    if (options &amp;&amp; typeof(options.onLoad) === 'function') {
+                        options.onLoad(this);
+                    }
+                }
+            })
+        })
+    } else {
+        if (options &amp;&amp; typeof(options.onLoad) === 'function') {
+            options.onLoad(this);
+        }
+    }
+}
+
+/**
+ * Algorithmically decompose a precomposed Korean syllabic Hangul
+ * character into its individual combining Jamo characters. The given
+ * character must be in the range of Hangul characters U+AC00 to U+D7A3.
+ *
+ * @private
+ * @static
+ * @param {number} cp code point of a Korean Hangul character to decompose
+ * @return {string} the decomposed string of Jamo characters
+ */
+NormString._decomposeHangul = function (cp) {
+    var sindex = cp - 0xAC00;
+    var result = String.fromCharCode(0x1100 + sindex / 588) +
+            String.fromCharCode(0x1161 + (sindex % 588) / 28);
+    var t = sindex % 28;
+    if (t !== 0) {
+        result += String.fromCharCode(0x11A7 + t);
+    }
+    return result;
+};
+
+/**
+ * Expand one character according to the given canonical and
+ * compatibility mappings.
+ *
+ * @private
+ * @static
+ * @param {string} ch character to map
+ * @param {Object} canon the canonical mappings to apply
+ * @param {Object=} compat the compatibility mappings to apply, or undefined
+ * if only the canonical mappings are needed
+ * @return {string} the mapped character
+ */
+NormString._expand = function (ch, canon, compat) {
+    var i,
+        expansion = "",
+        n = ch.charCodeAt(0);
+    if (GlyphString._isHangul(n)) {
+        expansion = NormString._decomposeHangul(n);
+    } else {
+        var result = canon[ch];
+        if (!result &amp;&amp; compat) {
+            result = compat[ch];
+        }
+        if (result &amp;&amp; result !== ch) {
+            for (i = 0; i &lt; result.length; i++) {
+                expansion += NormString._expand(result[i], canon, compat);
+            }
+        } else {
+            expansion = ch;
+        }
+    }
+    return expansion;
+};
+
+/**
+ * Perform the Unicode Normalization Algorithm upon the string and return
+ * the resulting new string. The current string is not modified.
+ *
+ * &lt;h2>Forms&lt;/h2>
+ *
+ * The forms of possible normalizations are defined by the &lt;a
+ * href="http://www.unicode.org/reports/tr15/">Unicode Standard
+ * Annex (UAX) 15&lt;/a>. The form parameter is a string that may have one
+ * of the following values:
+ *
+ * &lt;ul>
+ * &lt;li>nfd - Canonical decomposition. This decomposes characters into
+ * their exactly equivalent forms. For example, "&amp;uuml;" would decompose
+ * into a "u" followed by the combining diaeresis character.
+ * &lt;li>nfc - Canonical decomposition followed by canonical composition.
+ * This decomposes and then recomposes character into their shortest
+ * exactly equivalent forms by recomposing as many combining characters
+ * as possible. For example, "&amp;uuml;" followed by a combining
+ * macron character would decompose into a "u" followed by the combining
+ * macron characters the combining diaeresis character, and then be recomposed into
+ * the u with macron and diaeresis "&amp;#x1E7B;" character. The reason that
+ * the "nfc" form decomposes and then recomposes is that combining characters
+ * have a specific order under the Unicode Normalization Algorithm, and
+ * partly composed characters such as the "&amp;uuml;" followed by combining
+ * marks may change the order of the combining marks when decomposed and
+ * recomposed.
+ * &lt;li>nfkd - Compatibility decomposition. This decomposes characters
+ * into compatible forms that may not be exactly equivalent semantically,
+ * as well as performing canonical decomposition as well.
+ * For example, the "&amp;oelig;" ligature character decomposes to the two
+ * characters "oe" because they are compatible even though they are not
+ * exactly the same semantically.
+ * &lt;li>nfkc - Compatibility decomposition followed by canonical composition.
+ * This decomposes characters into compatible forms, then recomposes
+ * characters using the canonical composition. That is, it breaks down
+ * characters into the compatible forms, and then recombines all combining
+ * marks it can with their base characters. For example, the character
+ * "&amp;#x01FD;" would be normalized to "a&amp;eacute;" by first decomposing
+ * the character into "a" followed by "e" followed by the combining acute accent
+ * combining mark, and then recomposed to an "a" followed by the "e"
+ * with acute accent.
+ * &lt;/ul>
+ *
+ * &lt;h2>Operation&lt;/h2>
+ *
+ * Two strings a and b can be said to be canonically equivalent if
+ * normalize(a) = normalize(b)
+ * under the nfc normalization form. Two strings can be said to be compatible if
+ * normalize(a) = normalize(b) under the nfkc normalization form.&lt;p>
+ *
+ * The canonical normalization is often used to see if strings are
+ * equivalent to each other, and thus is useful when implementing parsing
+ * algorithms or exact matching algorithms. It can also be used to ensure
+ * that any string output produces a predictable sequence of characters.&lt;p>
+ *
+ * Compatibility normalization
+ * does not always preserve the semantic meaning of all the characters,
+ * although this is sometimes the behaviour that you are after. It is useful,
+ * for example, when doing searches of user-input against text in documents
+ * where the matches are supposed to "fuzzy". In this case, both the query
+ * string and the document string would be mapped to their compatibility
+ * normalized forms, and then compared.&lt;p>
+ *
+ * Compatibility normalization also does not guarantee round-trip conversion
+ * to and from legacy character sets as the normalization is "lossy". It is
+ * akin to doing a lower- or upper-case conversion on text -- after casing,
+ * you cannot tell what case each character is in the original string. It is
+ * good for matching and searching, but it rarely good for output because some
+ * distinctions or meanings in the original text have been lost.&lt;p>
+ *
+ * Note that W3C normalization for HTML also escapes and unescapes
+ * HTML character entities such as "&amp;amp;uuml;" for u with diaeresis. This
+ * method does not do such escaping or unescaping. If normalization is required
+ * for HTML strings with entities, unescaping should be performed on the string
+ * prior to calling this method.&lt;p>
+ *
+ * &lt;h2>Data&lt;/h2>
+ *
+ * Normalization requires a fair amount of mapping data, much of which you may
+ * not need for the characters expected in your texts. It is possible to assemble
+ * a copy of ilib that saves space by only including normalization data for
+ * those scripts that you expect to encounter in your data.&lt;p>
+ *
+ * The normalization data is organized by normalization form and within there
+ * by script. To include the normalization data for a particular script with
+ * a particular normalization form, use the following require:
+ *
+ * &lt;pre>&lt;code>
+ * NormString.init({
+ *   form: "&amp;lt;form&amp;gt;",
+ *   script: "&amp;lt;script&amp;gt;"
+ * });
+ * &lt;/code>&lt;/pre>
+ *
+ * Where &amp;lt;form&amp;gt is the normalization form ("nfd", "nfc", "nfkd", or "nfkc"), and
+ * &amp;lt;script&amp;gt; is the ISO 15924 code for the script you would like to
+ * support. Example: to load in the NFC data for Cyrillic, you would use:
+ *
+ * &lt;pre>&lt;code>
+ * NormString.init({
+ *   form: "nfc",
+ *   script: "Cyrl"
+ * });
+ * &lt;/code>&lt;/pre>
+ *
+ * Note that because certain normalization forms include others in their algorithm,
+ * their data also depends on the data for the other forms. For example, if you
+ * include the "nfc" data for a script, you will automatically get the "nfd" data
+ * for that same script as well because the NFC algorithm does NFD normalization
+ * first. Here are the dependencies:&lt;p>
+ *
+ * &lt;ul>
+ * &lt;li>NFD -> no dependencies
+ * &lt;li>NFC -> NFD
+ * &lt;li>NFKD -> NFD
+ * &lt;li>NFKC -> NFKD, NFD, NFC
+ * &lt;/ul>
+ *
+ * A special value for the script dependency is "all" which will cause the data for
+ * all scripts
+ * to be loaded for that normalization form. This would be useful if you know that
+ * you are going to normalize a lot of multilingual text or cannot predict which scripts
+ * will appear in the input. Because the NFKC form depends on all others, you can
+ * get all of the data for all forms automatically by depending on "nfkc/all.js".
+ * Note that the normalization data for practically all script automatically depend
+ * on data for the Common script (code "Zyyy") which contains all of the characters
+ * that are commonly used in many different scripts. Examples of characters in the
+ * Common script are the ASCII punctuation characters, or the ASCII Arabic
+ * numerals "0" through "9".&lt;p>
+ *
+ * By default, none of the data for normalization is automatically
+ * included in the preassembled ilib files. (For size "full".)
+ * If you would like to normalize strings, you must assemble
+ * your own copy of ilib and explicitly include the normalization data
+ * for those scripts. This normalization method will
+ * produce output, even without the normalization data. However, the output will be
+ * simply the same thing as its input for all scripts
+ * except Korean Hangul and Jamo, which are decomposed and recomposed
+ * algorithmically and therefore do not rely on data.&lt;p>
+ *
+ * If characters are encountered for which there are no normalization data, they
+ * will be passed through to the output string unmodified.
+ *
+ * @param {string} form The normalization form requested
+ * @return {IString} a new instance of an IString that has been normalized
+ * according to the requested form. The current instance is not modified.
+ */
+NormString.prototype.normalize = function (form) {
+    var i;
+
+    if (typeof(form) !== 'string' || this.str.length === 0) {
+        return new IString(this.str);
+    }
+
+    var nfc = false,
+        nfkd = false;
+
+    switch (form) {
+    default:
+        break;
+
+    case "nfc":
+        nfc = true;
+        break;
+
+    case "nfkd":
+        nfkd = true;
+        break;
+
+    case "nfkc":
+        nfkd = true;
+        nfc = true;
+        break;
+    }
+
+    // decompose
+    var ch, it, decomp = "";
+
+    if (nfkd) {
+        it = IString.prototype.charIterator.call(this);
+        while (it.hasNext()) {
+            ch = it.next();
+            decomp += NormString._expand(ch, ilib.data.norm.nfd, ilib.data.norm.nfkd);
+        }
+    } else {
+        it = IString.prototype.charIterator.call(this);
+        while (it.hasNext()) {
+            ch = it.next();
+            decomp += NormString._expand(ch, ilib.data.norm.nfd);
+        }
+    }
+
+    // now put the combining marks in a fixed order by
+    // sorting on the combining class
+    function compareByCCC(left, right) {
+        return ilib.data.ccc[left] - ilib.data.ccc[right];
+    }
+
+    function ccc(c) {
+        return ilib.data.ccc[c] || 0;
+    }
+
+    function sortChars(arr, comp) {
+        // qt/qml's Javascript engine re-arranges entries that are equal to
+        // each other. Technically, that is a correct behaviour, but it is
+        // not desirable. All the other engines leave equivalent entries
+        // where they are. This bubblesort emulates what the other engines
+        // do. Fortunately, the arrays we are sorting are a max of 5 or 6
+        // entries, so performance is not a big deal here.
+        if (ilib._getPlatform() === "qt") {
+            var tmp;
+            for (var i = arr.length-1; i > 0; i--) {
+                for (var j = 0; j &lt; i; j++) {
+                    if (comp(arr[j], arr[j+1]) > 0) {
+                        tmp = arr[j];
+                        arr[j] = arr[j+1];
+                        arr[j+1] = tmp;
+                    }
+                }
+            }
+            return arr;
+        } else {
+            return arr.sort(comp);
+        }
+    }
+
+    var dstr = new IString(decomp);
+    it = dstr.charIterator();
+    var end, testChar, cpArray = [];
+
+    // easier to deal with as an array of chars
+    while (it.hasNext()) {
+        cpArray.push(it.next());
+    }
+
+    i = 0;
+    while (i &lt; cpArray.length) {
+        if (typeof(ilib.data.ccc[cpArray[i]]) !== 'undefined' &amp;&amp; ccc(cpArray[i]) !== 0) {
+            // found a non-starter... rearrange all the non-starters until the next starter
+            end = i+1;
+            while (end &lt; cpArray.length &amp;&amp;
+                    typeof(ilib.data.ccc[cpArray[end]]) !== 'undefined' &amp;&amp;
+                    ccc(cpArray[end]) !== 0) {
+                end++;
+            }
+
+            // simple sort of the non-starter chars
+            if (end - i > 1) {
+                cpArray = cpArray.slice(0,i).concat(sortChars(cpArray.slice(i, end), compareByCCC), cpArray.slice(end));
+            }
+        }
+        i++;
+    }
+
+    if (nfc) {
+        i = 0;
+        while (i &lt; cpArray.length) {
+            if (typeof(ilib.data.ccc[cpArray[i]]) === 'undefined' || ilib.data.ccc[cpArray[i]] === 0) {
+                // found a starter... find all the non-starters until the next starter. Must include
+                // the next starter because under some odd circumstances, two starters sometimes recompose
+                // together to form another character
+                end = i+1;
+                var notdone = true;
+                while (end &lt; cpArray.length &amp;&amp; notdone) {
+                    if (typeof(ilib.data.ccc[cpArray[end]]) !== 'undefined' &amp;&amp;
+                        ilib.data.ccc[cpArray[end]] !== 0) {
+                        if (ccc(cpArray[end-1]) &lt; ccc(cpArray[end])) {
+                            // not blocked
+                            testChar = GlyphString._compose(cpArray[i], cpArray[end]);
+                            if (typeof(testChar) !== 'undefined') {
+                                cpArray[i] = testChar;
+
+                                // delete the combining char
+                                cpArray.splice(end,1);
+
+                                // restart the iteration, just in case there is more to recompose with the new char
+                                end = i;
+                            }
+                        }
+                        end++;
+                    } else {
+                        // found the next starter. See if this can be composed with the previous starter
+                        testChar = GlyphString._compose(cpArray[i], cpArray[end]);
+                        if (ccc(cpArray[end-1]) === 0 &amp;&amp; typeof(testChar) !== 'undefined') {
+                            // not blocked and there is a mapping
+                            cpArray[i] = testChar;
+
+                            // delete the combining char
+                            cpArray.splice(end,1);
+
+                            // restart the iteration, just in case there is more to recompose with the new char
+                            end = i+1;
+                        } else {
+                            // finished iterating
+                            notdone = false;
+                        }
+                    }
+                }
+            }
+            i++;
+        }
+    }
+
+    return new IString(cpArray.length > 0 ? cpArray.join("") : "");
+};
+
+/**
+ * Return an iterator that will step through all of the characters
+ * in the string one at a time, taking care to step through decomposed
+ * characters and through surrogate pairs in UTF-16 encoding
+ * properly. &lt;p>
+ *
+ * The NormString class will return decomposed Unicode characters
+ * as a single unit that a user might see on the screen. If the
+ * next character in the iteration is a base character and it is
+ * followed by combining characters, the base and all its following
+ * combining characters are returned as a single unit.&lt;p>
+ *
+ * The standard Javascript String's charAt() method only
+ * returns information about a particular 16-bit character in the
+ * UTF-16 encoding scheme.
+ * If the index is pointing to a low- or high-surrogate character,
+ * it will return that surrogate character rather
+ * than the surrogate pair which represents a character
+ * in the supplementary planes.&lt;p>
+ *
+ * The iterator instance returned has two methods, hasNext() which
+ * returns true if the iterator has more characters to iterate through,
+ * and next() which returns the next character.&lt;p>
+ * @override
+ * @return {Object} an iterator
+ * that iterates through all the characters in the string
+ */
+NormString.prototype.charIterator = function() {
+    var it = IString.prototype.charIterator.call(this);
+
+    /**
+     * @private
+     */
+    function _chiterator (istring) {
+        /**
+         * @private
+         */
+        var ccc = function(c) {
+            return ilib.data.ccc[c] || 0;
+        };
+
+        this.index = 0;
+        this.hasNext = function () {
+            return !!this.nextChar || it.hasNext();
+        };
+        this.next = function () {
+            var ch = this.nextChar || it.next(),
+                prevCcc = ccc(ch),
+                nextCcc,
+                composed = ch;
+
+            this.nextChar = undefined;
+
+            if (ilib.data.ccc &amp;&amp;
+                    (typeof(ilib.data.ccc[ch]) === 'undefined' || ccc(ch) === 0)) {
+                // found a starter... find all the non-starters until the next starter. Must include
+                // the next starter because under some odd circumstances, two starters sometimes recompose
+                // together to form another character
+                var notdone = true;
+                while (it.hasNext() &amp;&amp; notdone) {
+                    this.nextChar = it.next();
+                    nextCcc = ccc(this.nextChar);
+                    if (typeof(ilib.data.ccc[this.nextChar]) !== 'undefined' &amp;&amp; nextCcc !== 0) {
+                        ch += this.nextChar;
+                        this.nextChar = undefined;
+                    } else {
+                        // found the next starter. See if this can be composed with the previous starter
+                        var testChar = GlyphString._compose(composed, this.nextChar);
+                        if (prevCcc === 0 &amp;&amp; typeof(testChar) !== 'undefined') {
+                            // not blocked and there is a mapping
+                            composed = testChar;
+                            ch += this.nextChar;
+                            this.nextChar = undefined;
+                        } else {
+                            // finished iterating, leave this.nextChar for the next next() call
+                            notdone = false;
+                        }
+                    }
+                    prevCcc = nextCcc;
+                }
+            }
+            return ch;
+        };
+    };
+    return new _chiterator(this);
+};
+
+module.exports = NormString;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

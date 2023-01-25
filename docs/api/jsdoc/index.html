@@ -1,832 +1,308 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		
-		<title>JsDoc Reference - Index</title>
-		<meta name="generator" content="JsDoc Toolkit" />
-		
-		<style type="text/css">
-		/* default.css */
-body
-{
-	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
-	width: 800px;
-}
+<!DOCTYPE html>
+<html lang="en">
 
-.header
-{
-	clear: both;
-	background-color: #ccc;
-	padding: 8px;
-}
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Home</title>
 
-h1
-{
-	font-size: 150%;
-	font-weight: bold;
-	padding: 0;
-	margin: 1em 0 0 .3em;
-}
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-hr
-{
-	border: none 0;
-	border-top: 1px solid #7F8FB1;
-	height: 1px;
-}
+  
+</head>
 
-pre.code
-{
-	display: block;
-	padding: 8px;
-	border: 1px dashed #ccc;
-}
 
-#index
-{
-	margin-top: 24px;
-	float: left;
-	width: 160px;
-	position: absolute;
-	left: 8px;
-	background-color: #F3F3F3;
-	padding: 8px;
-}
 
-#content
-{
-	margin-left: 190px;
-	width: 600px;
-}
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
 
-.classList
-{
-	list-style-type: none;
-	padding: 0;
-	margin: 0 0 0 8px;
-	font-family: arial, sans-serif;
-	font-size: 1em;
-	overflow: auto;
-}
-
-.classList li
-{
-	padding: 0;
-	margin: 0 0 8px 0;
-}
-
-.summaryTable { width: 100%; }
-
-h1.classTitle
-{
-	font-size:170%;
-	line-height:130%;
-}
-
-h2 { font-size: 110%; }
-caption, div.sectionTitle
-{
-	background-color: #7F8FB1;
-	color: #fff;
-	font-size:130%;
-	text-align: left;
-	padding: 2px 6px 2px 6px;
-	border: 1px #7F8FB1 solid;
-}
-
-div.sectionTitle { margin-bottom: 8px; }
-.summaryTable thead { display: none; }
-
-.summaryTable td
-{
-	vertical-align: top;
-	padding: 4px;
-	border-bottom: 1px #7F8FB1 solid;
-	border-right: 1px #7F8FB1 solid;
-}
-
-/*col#summaryAttributes {}*/
-.summaryTable td.attributes
-{
-	border-left: 1px #7F8FB1 solid;
-	width: 140px;
-	text-align: right;
-}
-
-td.attributes, .fixedFont
-{
-	line-height: 15px;
-	color: #002EBE;
-	font-family: "Courier New",Courier,monospace;
-	font-size: 13px;
-}
-
-.summaryTable td.nameDescription
-{
-	text-align: left;
-	font-size: 13px;
-	line-height: 15px;
-}
-
-.summaryTable td.nameDescription, .description
-{
-	line-height: 15px;
-	padding: 4px;
-	padding-left: 4px;
-}
-
-.summaryTable { margin-bottom: 8px; }
-
-ul.inheritsList
-{
-	list-style: square;
-	margin-left: 20px;
-	padding-left: 0;
-}
-
-.detailList {
-	margin-left: 20px; 
-	line-height: 15px;
-}
-.detailList dt { margin-left: 20px; }
-
-.detailList .heading
-{
-	font-weight: bold;
-	padding-bottom: 6px;
-	margin-left: 0;
-}
-
-.light, td.attributes, .light a:link, .light a:visited
-{
-	color: #777;
-	font-style: italic;
-}
-
-.fineprint
-{
-	text-align: right;
-	font-size: 10px;
-}
-		</style>
-	</head>
-	
-	<body>
-		<div id="header">
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
 </div>
-		
-		<div id="index">
-			<div align="center"><a href="index.html">Class Index</a>
-| <a href="files.html">File Index</a></div>
-<hr />
-<h2>Classes</h2>
-<ul class="classList">
-	
-	<li><i><a href="symbols/_global_.html">_global_</a></i></li>
-	
-	<li><a href="symbols/Address.html">Address</a></li>
-	
-	<li><a href="symbols/AddressFmt.html">AddressFmt</a></li>
-	
-	<li><a href="symbols/AlphabeticIndex.html">AlphabeticIndex</a></li>
-	
-	<li><a href="symbols/AreaUnit.html">AreaUnit</a></li>
-	
-	<li><a href="symbols/CaseMapper.html">CaseMapper</a></li>
-	
-	<li><a href="symbols/Charmap.html">Charmap</a></li>
-	
-	<li><a href="symbols/CharmapTable.html">CharmapTable</a></li>
-	
-	<li><a href="symbols/Charset.html">Charset</a></li>
-	
-	<li><a href="symbols/Collator.html">Collator</a></li>
-	
-	<li><a href="symbols/CopticCal.html">CopticCal</a></li>
-	
-	<li><a href="symbols/CopticDate.html">CopticDate</a></li>
-	
-	<li><a href="symbols/Country.html">Country</a></li>
-	
-	<li><a href="symbols/CType.html">CType</a></li>
-	
-	<li><a href="symbols/Currency.html">Currency</a></li>
-	
-	<li><a href="symbols/Date.html">Date</a></li>
-	
-	<li><a href="symbols/DateFmt.html">DateFmt</a></li>
-	
-	<li><a href="symbols/DateRngFmt.html">DateRngFmt</a></li>
-	
-	<li><a href="symbols/DigitalSpeedUnit.html">DigitalSpeedUnit</a></li>
-	
-	<li><a href="symbols/DigitalStorageUnit.html">DigitalStorageUnit</a></li>
-	
-	<li><a href="symbols/DurationFmt.html">DurationFmt</a></li>
-	
-	<li><a href="symbols/EnergyUnit.html">EnergyUnit</a></li>
-	
-	<li><a href="symbols/EthiopicCal.html">EthiopicCal</a></li>
-	
-	<li><a href="symbols/EthiopicDate.html">EthiopicDate</a></li>
-	
-	<li><a href="symbols/ForceUnit.html">ForceUnit</a></li>
-	
-	<li><a href="symbols/FuelConsumptionUnit.html">FuelConsumptionUnit</a></li>
-	
-	<li><a href="symbols/GlyphString.html">GlyphString</a></li>
-	
-	<li><a href="symbols/GregorianCal.html">GregorianCal</a></li>
-	
-	<li><a href="symbols/GregorianDate.html">GregorianDate</a></li>
-	
-	<li><a href="symbols/HanCal.html">HanCal</a></li>
-	
-	<li><a href="symbols/HanDate.html">HanDate</a></li>
-	
-	<li><a href="symbols/HebrewCal.html">HebrewCal</a></li>
-	
-	<li><a href="symbols/HebrewDate.html">HebrewDate</a></li>
-	
-	<li><a href="symbols/ilib.html">ilib</a></li>
-	
-	<li><a href="symbols/ilib.Loader.html">ilib.Loader</a></li>
-	
-	<li><a href="symbols/INumber.html">INumber</a></li>
-	
-	<li><a href="symbols/ISet.html">ISet</a></li>
-	
-	<li><a href="symbols/IslamicCal.html">IslamicCal</a></li>
-	
-	<li><a href="symbols/IslamicDate.html">IslamicDate</a></li>
-	
-	<li><a href="symbols/ISO2022.html">ISO2022</a></li>
-	
-	<li><a href="symbols/IString.html">IString</a></li>
-	
-	<li><a href="symbols/JulianCal.html">JulianCal</a></li>
-	
-	<li><a href="symbols/JulianDate.html">JulianDate</a></li>
-	
-	<li><a href="symbols/JulianDay.html">JulianDay</a></li>
-	
-	<li><a href="symbols/LengthUnit.html">LengthUnit</a></li>
-	
-	<li><a href="symbols/ListFmt.html">ListFmt</a></li>
-	
-	<li><a href="symbols/Locale.html">Locale</a></li>
-	
-	<li><a href="symbols/LocaleInfo.html">LocaleInfo</a></li>
-	
-	<li><a href="symbols/LocaleMatcher.html">LocaleMatcher</a></li>
-	
-	<li><a href="symbols/MassUnit.html">MassUnit</a></li>
-	
-	<li><a href="symbols/Name.html">Name</a></li>
-	
-	<li><a href="symbols/NameFmt.html">NameFmt</a></li>
-	
-	<li><a href="symbols/NormString.html">NormString</a></li>
-	
-	<li><a href="symbols/NumFmt.html">NumFmt</a></li>
-	
-	<li><a href="symbols/PersianAlgoCal.html">PersianAlgoCal</a></li>
-	
-	<li><a href="symbols/PersianAlgoDate.html">PersianAlgoDate</a></li>
-	
-	<li><a href="symbols/PersianCal.html">PersianCal</a></li>
-	
-	<li><a href="symbols/PersianDate.html">PersianDate</a></li>
-	
-	<li><a href="symbols/PhoneFmt.html">PhoneFmt</a></li>
-	
-	<li><a href="symbols/PhoneGeoLocator.html">PhoneGeoLocator</a></li>
-	
-	<li><a href="symbols/PhoneNumber.html">PhoneNumber</a></li>
-	
-	<li><a href="symbols/PowerUnit.html">PowerUnit</a></li>
-	
-	<li><a href="symbols/PressureUnit.html">PressureUnit</a></li>
-	
-	<li><a href="symbols/ResBundle.html">ResBundle</a></li>
-	
-	<li><a href="symbols/ScriptInfo.html">ScriptInfo</a></li>
-	
-	<li><a href="symbols/StringMapper.html">StringMapper</a></li>
-	
-	<li><a href="symbols/TemperatureUnit.html">TemperatureUnit</a></li>
-	
-	<li><a href="symbols/ThaiSolarCal.html">ThaiSolarCal</a></li>
-	
-	<li><a href="symbols/ThaiSolarDate.html">ThaiSolarDate</a></li>
-	
-	<li><a href="symbols/TimeUnit.html">TimeUnit</a></li>
-	
-	<li><a href="symbols/TimeZone.html">TimeZone</a></li>
-	
-	<li><a href="symbols/UnitFmt.html">UnitFmt</a></li>
-	
-	<li><a href="symbols/UnknownUnit.html">UnknownUnit</a></li>
-	
-	<li><a href="symbols/UTF16BE.html">UTF16BE</a></li>
-	
-	<li><a href="symbols/UTF16LE.html">UTF16LE</a></li>
-	
-	<li><a href="symbols/UTF8.html">UTF8</a></li>
-	
-	<li><a href="symbols/VelocityUnit.html">VelocityUnit</a></li>
-	
-	<li><a href="symbols/VolumeUnit.html">VolumeUnit</a></li>
-	
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="CType.html">CType</a></li><li><a href="ilib.html">ilib</a></li></ul><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="AddressFmt.html">AddressFmt</a></li><li><a href="AlphabeticIndex.html">AlphabeticIndex</a></li><li><a href="AreaUnit.html">AreaUnit</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CaseMapper.html">CaseMapper</a></li><li><a href="Charmap.html">Charmap</a></li><li><a href="CharmapTable.html">CharmapTable</a></li><li><a href="Charset.html">Charset</a></li><li><a href="Collator.html">Collator</a></li><li><a href="CopticCal.html">CopticCal</a></li><li><a href="CopticDate.html">CopticDate</a></li><li><a href="Country.html">Country</a></li><li><a href="Currency.html">Currency</a></li><li><a href="DateFmt.html">DateFmt</a></li><li><a href="DateRngFmt.html">DateRngFmt</a></li><li><a href="DigitalSpeedUnit.html">DigitalSpeedUnit</a></li><li><a href="DigitalStorageUnit.html">DigitalStorageUnit</a></li><li><a href="DurationFmt.html">DurationFmt</a></li><li><a href="EnergyUnit.html">EnergyUnit</a></li><li><a href="EthiopicCal.html">EthiopicCal</a></li><li><a href="EthiopicDate.html">EthiopicDate</a></li><li><a href="ForceUnit.html">ForceUnit</a></li><li><a href="FuelConsumptionUnit.html">FuelConsumptionUnit</a></li><li><a href="GlyphString.html">GlyphString</a></li><li><a href="GregorianCal.html">GregorianCal</a></li><li><a href="GregorianDate.html">GregorianDate</a></li><li><a href="HanCal.html">HanCal</a></li><li><a href="HanDate.html">HanDate</a></li><li><a href="HebrewCal.html">HebrewCal</a></li><li><a href="HebrewDate.html">HebrewDate</a></li><li><a href="IDate.html">IDate</a></li><li><a href="INumber.html">INumber</a></li><li><a href="ISO2022.html">ISO2022</a></li><li><a href="ISet.html">ISet</a></li><li><a href="IString.html">IString</a></li><li><a href="IslamicCal.html">IslamicCal</a></li><li><a href="IslamicDate.html">IslamicDate</a></li><li><a href="JulianCal.html">JulianCal</a></li><li><a href="JulianDate.html">JulianDate</a></li><li><a href="JulianDay.html">JulianDay</a></li><li><a href="LengthUnit.html">LengthUnit</a></li><li><a href="ListFmt.html">ListFmt</a></li><li><a href="Locale.html">Locale</a></li><li><a href="LocaleInfo.html">LocaleInfo</a></li><li><a href="LocaleMatcher.html">LocaleMatcher</a></li><li><a href="MassUnit.html">MassUnit</a></li><li><a href="Measurement.html">Measurement</a></li><li><a href="Name.html">Name</a></li><li><a href="NameFmt.html">NameFmt</a></li><li><a href="NormString.html">NormString</a></li><li><a href="NumFmt.html">NumFmt</a></li><li><a href="PersianAlgoCal.html">PersianAlgoCal</a></li><li><a href="PersianAlgoDate.html">PersianAlgoDate</a></li><li><a href="PersianCal.html">PersianCal</a></li><li><a href="PersianDate.html">PersianDate</a></li><li><a href="PhoneFmt.html">PhoneFmt</a></li><li><a href="PhoneGeoLocator.html">PhoneGeoLocator</a></li><li><a href="PhoneNumber.html">PhoneNumber</a></li><li><a href="PowerUnit.html">PowerUnit</a></li><li><a href="PressureUnit.html">PressureUnit</a></li><li><a href="ResBundle.html">ResBundle</a></li><li><a href="ScriptInfo.html">ScriptInfo</a></li><li><a href="StringMapper.html">StringMapper</a></li><li><a href="TemperatureUnit.html">TemperatureUnit</a></li><li><a href="ThaiSolarCal.html">ThaiSolarCal</a></li><li><a href="ThaiSolarDate.html">ThaiSolarDate</a></li><li><a href="TimeUnit.html">TimeUnit</a></li><li><a href="TimeZone.html">TimeZone</a></li><li><a href="UTF16BE.html">UTF16BE</a></li><li><a href="UTF16LE.html">UTF16LE</a></li><li><a href="UTF8.html">UTF8</a></li><li><a href="UnitFmt.html">UnitFmt</a></li><li><a href="UnknownUnit.html">UnknownUnit</a></li><li><a href="VelocityUnit.html">VelocityUnit</a></li><li><a href="VolumeUnit.html">VolumeUnit</a></li></ul><h3>Interfaces</h3><ul><li><a href="ilib.Loader.html">Loader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CalendarFactory">CalendarFactory</a></li><li><a href="global.html#CharmapFactory">CharmapFactory</a></li><li><a href="global.html#DateFactory">DateFactory</a></li><li><a href="global.html#MeasurementFactory">MeasurementFactory</a></li><li><a href="global.html#isAlnum">isAlnum</a></li><li><a href="global.html#isAlpha">isAlpha</a></li><li><a href="global.html#isAscii">isAscii</a></li><li><a href="global.html#isBlank">isBlank</a></li><li><a href="global.html#isCntrl">isCntrl</a></li><li><a href="global.html#isDigit">isDigit</a></li><li><a href="global.html#isGraph">isGraph</a></li><li><a href="global.html#isIdeo">isIdeo</a></li><li><a href="global.html#isLower">isLower</a></li><li><a href="global.html#isPrint">isPrint</a></li><li><a href="global.html#isPunct">isPunct</a></li><li><a href="global.html#isScript">isScript</a></li><li><a href="global.html#isSpace">isSpace</a></li><li><a href="global.html#isUpper">isUpper</a></li><li><a href="global.html#isXdigit">isXdigit</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p></p>
+                    <h1>Home</h1>
+                </header>
+                
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><meta charset="UTF-8">
+<h1>iLib</h1>
+<p>iLib is an internationalization library written in pure ES5 Javascript. It does not require any other libraries to function,
+and can run equally well in various older and newer browsers, on various OS's (including mobile), nodejs, webOS, Qt/QML,
+RingoJS, React/Enact, or rhino/nashorn.</p>
+<p>More elaborate documentation can be found <a href="https://ilib-js.github.io/iLib/docs/">here</a></p>
+<h2>What Can iLib Do?</h2>
+<p>iLib contains many classes that cover a large number of i18n topics, a lot more than almost all other JS i18n libraries.</p>
+<ul>
+<li>String translation (ResBundle)</li>
+<li>String formatting, including plurals/choice formats (IString)</li>
+<li>Character type functions (like the C/C++ ctype functions) (CType)</li>
+<li>Calendars (CalendarFactory)
+<ul>
+<li>Gregorian, Julian, ThaiSolar, Persian algorithmic, Persian astronomical, Hebrew, Arabic civil, Ethiopic, Coptic, Chinese Han</li>
 </ul>
-<hr />
-		</div>
-		
-		<div id="content">
-			<h1 class="classTitle">Class Index</h1>
-			
-			
-			<div>
-				<h2><a href="symbols/_global_.html">_global_</a></h2>
-				
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/Address.html">Address</a></h2>
-				Create a new Address instance and parse a physical address.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/AddressFmt.html">AddressFmt</a></h2>
-				Create a new formatter object to format physical addresses in a particular way.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/AlphabeticIndex.html">AlphabeticIndex</a></h2>
-				Create a new alphabetic index instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/AreaUnit.html">AreaUnit</a></h2>
-				Create a new area measurement instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/CaseMapper.html">CaseMapper</a></h2>
-				Create a new string mapper instance that maps strings to upper or
-lower case.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/Charmap.html">Charmap</a></h2>
-				Create a new default character set mapping instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/CharmapTable.html">CharmapTable</a></h2>
-				Create a new character set mapping instance using based on a trie table.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/Charset.html">Charset</a></h2>
-				Create a new character set info instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/Collator.html">Collator</a></h2>
-				A class that implements a locale-sensitive comparator function
-for use with sorting function.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/CopticCal.html">CopticCal</a></h2>
-				Construct a new Coptic calendar object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/CopticDate.html">CopticDate</a></h2>
-				Construct a new date object for the Coptic Calendar.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/Country.html">Country</a></h2>
-				Create a new country information instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/CType.html">CType</a></h2>
-				
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/Currency.html">Currency</a></h2>
-				Create a new currency information instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/Date.html">Date</a></h2>
-				
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/DateFmt.html">DateFmt</a></h2>
-				Create a new date formatter instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/DateRngFmt.html">DateRngFmt</a></h2>
-				Create a new date range formatter instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/DigitalSpeedUnit.html">DigitalSpeedUnit</a></h2>
-				Create a new DigitalSpeed measurement instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/DigitalStorageUnit.html">DigitalStorageUnit</a></h2>
-				Create a new DigitalStorage measurement instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/DurationFmt.html">DurationFmt</a></h2>
-				Create a new duration formatter instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/EnergyUnit.html">EnergyUnit</a></h2>
-				Create a new energy measurement instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/EthiopicCal.html">EthiopicCal</a></h2>
-				Construct a new Ethiopic calendar object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/EthiopicDate.html">EthiopicDate</a></h2>
-				Construct a new date object for the Ethiopic Calendar.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/ForceUnit.html">ForceUnit</a></h2>
-				Create a new force measurement instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/FuelConsumptionUnit.html">FuelConsumptionUnit</a></h2>
-				Create a new fuelconsumption measurement instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/GlyphString.html">GlyphString</a></h2>
-				Create a new glyph string instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/GregorianCal.html">GregorianCal</a></h2>
-				Construct a new Gregorian calendar object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/GregorianDate.html">GregorianDate</a></h2>
-				Construct a new Gregorian date object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/HanCal.html">HanCal</a></h2>
-				Construct a new Han algorithmic calendar object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/HanDate.html">HanDate</a></h2>
-				Construct a new Han date object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/HebrewCal.html">HebrewCal</a></h2>
-				Construct a new Hebrew calendar object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/HebrewDate.html">HebrewDate</a></h2>
-				Construct a new civil Hebrew date object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/ilib.html">ilib</a></h2>
-				The global namespace that contains general ilib functions useful
-to all of ilib
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/ilib.Loader.html">ilib.Loader</a></h2>
-				Defines the interface for the loader class for ilib.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/INumber.html">INumber</a></h2>
-				Parse a string as a number, ignoring all locale-specific formatting.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/ISet.html">ISet</a></h2>
-				
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/IslamicCal.html">IslamicCal</a></h2>
-				Construct a new Islamic calendar object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/IslamicDate.html">IslamicDate</a></h2>
-				Construct a new civil Islamic date object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/ISO2022.html">ISO2022</a></h2>
-				Create a new ISO-2022 mapping instance
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/IString.html">IString</a></h2>
-				Create a new ilib string instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/JulianCal.html">JulianCal</a></h2>
-				Construct a new Julian calendar object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/JulianDate.html">JulianDate</a></h2>
-				Construct a new date object for the Julian Calendar.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/JulianDay.html">JulianDay</a></h2>
-				A Julian Day class.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/LengthUnit.html">LengthUnit</a></h2>
-				Create a new length measurement instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/ListFmt.html">ListFmt</a></h2>
-				Create a new list formatter object that formats lists of items according to
-the options.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/Locale.html">Locale</a></h2>
-				Create a new locale instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/LocaleInfo.html">LocaleInfo</a></h2>
-				Create a new locale info instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/LocaleMatcher.html">LocaleMatcher</a></h2>
-				Create a new locale matcher instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/MassUnit.html">MassUnit</a></h2>
-				Create a new mass measurement instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/Name.html">Name</a></h2>
-				A class to parse names of people.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/NameFmt.html">NameFmt</a></h2>
-				Creates a formatter that can format person name instances (Name) for display to
-a user.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/NormString.html">NormString</a></h2>
-				Create a new normalized string instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/NumFmt.html">NumFmt</a></h2>
-				Create a new number formatter instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/PersianAlgoCal.html">PersianAlgoCal</a></h2>
-				Construct a new Persian algorithmic calendar object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/PersianAlgoDate.html">PersianAlgoDate</a></h2>
-				Construct a new Persian date object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/PersianCal.html">PersianCal</a></h2>
-				Construct a new Persian astronomical (Hijjri) calendar object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/PersianDate.html">PersianDate</a></h2>
-				Construct a new Persian astronomical date object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/PhoneFmt.html">PhoneFmt</a></h2>
-				Create a new phone number formatter object that formats numbers according to the parameters.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/PhoneGeoLocator.html">PhoneGeoLocator</a></h2>
-				Create an instance that can geographically locate a phone number.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/PhoneNumber.html">PhoneNumber</a></h2>
-				Create a new phone number instance that parses the phone number parameter for its
-constituent parts, and store them as separate fields in the returned object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/PowerUnit.html">PowerUnit</a></h2>
-				Create a new power measurement instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/PressureUnit.html">PressureUnit</a></h2>
-				Create a new pressure measurement instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/ResBundle.html">ResBundle</a></h2>
-				Create a new resource bundle instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/ScriptInfo.html">ScriptInfo</a></h2>
-				Create a new script info instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/StringMapper.html">StringMapper</a></h2>
-				Create a new string mapper instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/TemperatureUnit.html">TemperatureUnit</a></h2>
-				Create a new Temperature measurement instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/ThaiSolarCal.html">ThaiSolarCal</a></h2>
-				Construct a new Thai solar calendar object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/ThaiSolarDate.html">ThaiSolarDate</a></h2>
-				Construct a new Thai solar date object.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/TimeUnit.html">TimeUnit</a></h2>
-				Create a new time measurement instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/TimeZone.html">TimeZone</a></h2>
-				Create a time zone instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/UnitFmt.html">UnitFmt</a></h2>
-				Create a new unit formatter instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/UnknownUnit.html">UnknownUnit</a></h2>
-				Create a new unknown measurement instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/UTF16BE.html">UTF16BE</a></h2>
-				Create a new UTF-16BE mapping instance
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/UTF16LE.html">UTF16LE</a></h2>
-				Create a new UTF-16LE mapping instance
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/UTF8.html">UTF8</a></h2>
-				Create a new UTF-8 mapping instance
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/VelocityUnit.html">VelocityUnit</a></h2>
-				Create a new speed measurement instance.
-			</div>
-			<hr />
-			
-			<div>
-				<h2><a href="symbols/VolumeUnit.html">VolumeUnit</a></h2>
-				Create a new Volume measurement instance.
-			</div>
-			<hr />
-			
-			
-		</div>
-		<div class="fineprint" style="clear:both">
-			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blankt">JsDoc Toolkit</a> 2.4.0 on Tue Jan 17 2023 15:56:28 GMT-0800 (Pacific Standard Time)
-		</div>
-	</body>
+</li>
+<li>Date and time representation and conversion to other calendars (DateFactory)</li>
+<li>Date and time formatting in all calendars, including full time zone support (DateFmt)</li>
+<li>Time zone information from IANA TZ database (TimeZone)</li>
+<li>Duration formatting for lengths of events, videos, music, etc. (DurationFmt)</li>
+<li>Date range formatting with specific start and end times (DateRngFmt)</li>
+<li>Unicode character normalization using the Unicode Normalization Algorithm (NormString)
+<ul>
+<li>Also supports full character iteration (as opposed to Unicode character iteration)</li>
+</ul>
+</li>
+<li>Unicode glyph string iteration (GlyphString)</li>
+<li>Number parsing (INumber) and numeric formatting, including percentages and currencies (NumFmt)</li>
+<li>Units conversion, scaling, and formatting (lengths, volumes, temperature, velocity, etc.) (Measurement and UnitFmt)</li>
+<li>Phone number parsing and normalization (PhoneNumber), geo-location (PhoneGeoLocator), and formatting (PhoneFmt)</li>
+<li>Personal name parsing (Name) and formatting (NameFmt)</li>
+<li>Mailing address parsing (Address) and formatting (AddressFmt)</li>
+<li>Collation/sorting and sortkey generation (Collator)</li>
+<li>Locale-sensitive upper- and lower-casing (CaseMapper)</li>
+<li>Information about writing systems/scripts (ScriptInfo)</li>
+<li>Information about currencies (Currency)</li>
+<li>Information about locale settings such as default time zone, default calendar, use of 12 or 24-hour clock,</li>
+<li>List formatting such as &quot;Joe, Tom, and Steve&quot; (ListFormatter)</li>
+<li>Alphabetic index keeping. For example, it can be used to put names on a contact list into their corresponding
+letter buckets (AlphabeticIndex)</li>
+</ul>
+<p>plus a lot more.</p>
+<p>Only need some of that? That's okay, there's a way to make smaller versions of ilib that only include the classes you need
+and only the locales you need using webpack.</p>
+<h2>What Locales Does it Support?</h2>
+<p>In short: almost any that you can think of.</p>
+<p>For most classes, it supports all locales that are in the Unicode CLDR (see http://cldr.unicode.org), which means hundreds.
+Since language settings are separate from region settings, the arbitrary combinations of those can reach well
+into the thousands. For those classes of information where CLDR does not have info yet (such as phone formats), there is a
+much smaller set of locales that are supported, but for all classes, the top most used locales on the Internet are represented.</p>
+<h2>Where Does it Run?</h2>
+<p>ILib has been tested in the following environments:</p>
+<ul>
+<li>nodejs 0.10+</li>
+<li>Browsers:
+<ul>
+<li>Chrome 28+</li>
+<li>Firefox 35+</li>
+<li>Opera 12.16+</li>
+<li>Safari 6+</li>
+<li>Internet Explorer 8+</li>
+</ul>
+</li>
+<li>Rhino on JDK 1.7+ and 1.8 with Trireme (0.8.5)</li>
+<li>RingoJS 0.11+</li>
+<li>Qt 5.4+</li>
+</ul>
+<p>Those environments have been tested on the following platforms where possible:</p>
+<ul>
+<li>Ubuntu 12.04+</li>
+<li>Windows 7 &amp; 8</li>
+<li>Mac OSX 10.04+</li>
+<li>Android</li>
+<li>iOS</li>
+</ul>
+<h2>Example of Using iLib Under NodeJS or RingoJS</h2>
+<p>iLib is a regular node module and can therefore be loaded using the built-in nodejs require() function.
+Here is an example of using iLib to format the current date/time for Berlin, Germany. This same example
+works equally well with ringojs running on rhino in a Java-based app server.</p>
+<pre class="prettyprint source"><code>var DateFactory = require(&quot;ilib/lib/DateFactory.js&quot;);
+var DateFmt = require(&quot;ilib/lib/DateFmt.js&quot;);
+
+var d = DateFactory();
+var f = new DateFmt({
+	locale: &quot;de-DE&quot;,
+    type: &quot;datetime&quot;,
+    length: &quot;long&quot;,
+    timezone: &quot;Europe/Berlin&quot;
+});
+
+f.format(d);
+</code></pre>
+<p>Result would be:</p>
+<pre class="prettyprint source"><code>'07:45 06. Nov. 2014'
+</code></pre>
+<h2>Other iLib Support</h2>
+<h3>Prepackaged iLib</h3>
+<p>If you would like to run ilib in your webapp, you can use the pre-webpacked versions of
+ilib in the <a href="https://github.com/iLib-js/iLib/releases">releases</a> page on github.</p>
+<h3>Webpack</h3>
+<p>If you already use webpack for your own project, you can use the ilib webpack
+<a href="https://github.com/iLib-js/ilib-webpack-loader">loader</a> and
+<a href="https://github.com/iLib-js/ilib-webpack-plugin">plugin</a> to include ilib code and locale
+data into your own webpacked project. The advantage is that
+it will only include those ilib classes you are actually using and only the locale data
+for the locales you specify. That helps to minimize the file size of your webpack chunks.
+See the README documentation in the
+<a href="https://github.com/iLib-js/ilib-webpack-loader">ilib webpack loader</a>
+for more details.</p>
+<h3>No Webpack</h3>
+<p>If you do not use webpack for your own project, and yet you still want a minimal version
+of ilib, you can use the <a href="https://github.com/iLib-js/ilib-scanner">ilib scanner</a> to scan
+your webapp code and create a webpack config that will build this minimal version for
+you. You can just include the resulting js files in your webapp. See the README for
+that project for details.</p>
+<h3>React</h3>
+<p>If you are using React in your project and would like to include ilib classes, you can
+use the webpack loader and plugin mentioned above to do so.</p>
+<p>Additionally, there is a new library of React components called <a href="https://github.com/iLib-js/react-ilib">react-ilib</a>
+that will eventually allow you to use all the ilib formatters as React components, such as an
+address formatting component that will output an address in the correct format per locale.
+It says &quot;eventually&quot; in the previous sentence because the project is new and there is
+a lot left to code.</p>
+<p>React-ilib will also include a number of new components
+that allow you to do localized input form elements. For example, a localized address
+form component will present all of the fields necessary for an address in a number of
+different locales, along with the localized field labels and placeholder texts. The
+result of a user filling out the form would be an ilib Address instance, ready to use!</p>
+<h3>ES6</h3>
+<p>If you want to use ilib classes directly from ES6 instead of using React components, you
+can do that with the <a href="https://github.com/iLib-js/ilib-es6">ilib-es6</a> project. With this
+library, you can use ilib asynchronously with promises instead of node-style callbacks,
+and you can import the classes in regular ES6 style. This library also works nicely in
+React if you want to call the ilib classes directly instead of using react-ilib
+components.</p>
+<h3>Localizing Your Strings</h3>
+<p>If you use ilib in your javascript project, you can use the <a href="https://github.com/iLib-js/loctool">loctool</a>
+to extract the strings into XLIFF files that your translation vendor can translate
+directly. When you received the localized XLIFF files back again, you can then run
+the loctool again to generate localized assets, such as resource files that ilib's
+ResBundle class can use, or copies of HTML files with localized text in them. See the
+loctool documentation for more information.</p>
+<h2>Where to Get it</h2>
+<p>For node, you can simply install it using npm or yarn:</p>
+<pre class="prettyprint source"><code>npm install ilib
+yarn add ilib
+</code></pre>
+<p>For ringojs, you can install it with the ringo package manager:</p>
+<pre class="prettyprint source"><code>rp install ilib
+</code></pre>
+<p>ILib is also available on github at https://github.com/iLib-js/iLib
+or official iLib builds in tar balls at https://github.com/iLib-js/iLib/releases</p>
+<p>You can also build your own version from the sources using webpack. See the previous
+section about webpack for links.</p>
+<h2>Copyright and License</h2>
+<p>Copyright (c) 2011-2023, JEDLSoft</p>
+<p>Ilib is licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this library except in compliance with the License.
+You may obtain a copy of the License at</p>
+<p>http://www.apache.org/licenses/LICENSE-2.0</p>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</p>
+<p>See the License for the specific language governing permissions and
+limitations under the License.</p>
+<h2>More Documentation</h2>
+<p>More elaborate documentation can be found <a href="https://ilib-js.github.io/iLib/docs/">here</a>.</p>
+<h2>Other Information</h2>
+<p>Please point your browser to the following places to get more documentation:</p>
+<ul>
+<li>JSDocs: https://ilib-js.github.io/iLib/docs/api/jsdoc/index.html</li>
+<li>Github: git clone git@github.com:iLib-js/iLib.git</li>
+<li>Builds: https://github.com/iLib-js/iLib/releases</li>
+<li>Wiki: https://github.com/iLib-js/iLib/wiki</li>
+</ul></article>
+    </section>
+
+
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
 </html>

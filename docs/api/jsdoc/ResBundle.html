@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> ResBundle</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="CType.html">CType</a></li><li><a href="ilib.html">ilib</a></li></ul><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="AddressFmt.html">AddressFmt</a></li><li><a href="AlphabeticIndex.html">AlphabeticIndex</a></li><li><a href="AreaUnit.html">AreaUnit</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CaseMapper.html">CaseMapper</a></li><li><a href="Charmap.html">Charmap</a></li><li><a href="CharmapTable.html">CharmapTable</a></li><li><a href="Charset.html">Charset</a></li><li><a href="Collator.html">Collator</a></li><li><a href="CopticCal.html">CopticCal</a></li><li><a href="CopticDate.html">CopticDate</a></li><li><a href="Country.html">Country</a></li><li><a href="Currency.html">Currency</a></li><li><a href="DateFmt.html">DateFmt</a></li><li><a href="DateRngFmt.html">DateRngFmt</a></li><li><a href="DigitalSpeedUnit.html">DigitalSpeedUnit</a></li><li><a href="DigitalStorageUnit.html">DigitalStorageUnit</a></li><li><a href="DurationFmt.html">DurationFmt</a></li><li><a href="EnergyUnit.html">EnergyUnit</a></li><li><a href="EthiopicCal.html">EthiopicCal</a></li><li><a href="EthiopicDate.html">EthiopicDate</a></li><li><a href="ForceUnit.html">ForceUnit</a></li><li><a href="FuelConsumptionUnit.html">FuelConsumptionUnit</a></li><li><a href="GlyphString.html">GlyphString</a></li><li><a href="GregorianCal.html">GregorianCal</a></li><li><a href="GregorianDate.html">GregorianDate</a></li><li><a href="HanCal.html">HanCal</a></li><li><a href="HanDate.html">HanDate</a></li><li><a href="HebrewCal.html">HebrewCal</a></li><li><a href="HebrewDate.html">HebrewDate</a></li><li><a href="IDate.html">IDate</a></li><li><a href="INumber.html">INumber</a></li><li><a href="ISO2022.html">ISO2022</a></li><li><a href="ISet.html">ISet</a></li><li><a href="IString.html">IString</a></li><li><a href="IslamicCal.html">IslamicCal</a></li><li><a href="IslamicDate.html">IslamicDate</a></li><li><a href="JulianCal.html">JulianCal</a></li><li><a href="JulianDate.html">JulianDate</a></li><li><a href="JulianDay.html">JulianDay</a></li><li><a href="LengthUnit.html">LengthUnit</a></li><li><a href="ListFmt.html">ListFmt</a></li><li><a href="Locale.html">Locale</a></li><li><a href="LocaleInfo.html">LocaleInfo</a></li><li><a href="LocaleMatcher.html">LocaleMatcher</a></li><li><a href="MassUnit.html">MassUnit</a></li><li><a href="Measurement.html">Measurement</a></li><li><a href="Name.html">Name</a></li><li><a href="NameFmt.html">NameFmt</a></li><li><a href="NormString.html">NormString</a></li><li><a href="NumFmt.html">NumFmt</a></li><li><a href="PersianAlgoCal.html">PersianAlgoCal</a></li><li><a href="PersianAlgoDate.html">PersianAlgoDate</a></li><li><a href="PersianCal.html">PersianCal</a></li><li><a href="PersianDate.html">PersianDate</a></li><li><a href="PhoneFmt.html">PhoneFmt</a></li><li><a href="PhoneGeoLocator.html">PhoneGeoLocator</a></li><li><a href="PhoneNumber.html">PhoneNumber</a></li><li><a href="PowerUnit.html">PowerUnit</a></li><li><a href="PressureUnit.html">PressureUnit</a></li><li><a href="ResBundle.html">ResBundle</a></li><li><a href="ScriptInfo.html">ScriptInfo</a></li><li><a href="StringMapper.html">StringMapper</a></li><li><a href="TemperatureUnit.html">TemperatureUnit</a></li><li><a href="ThaiSolarCal.html">ThaiSolarCal</a></li><li><a href="ThaiSolarDate.html">ThaiSolarDate</a></li><li><a href="TimeUnit.html">TimeUnit</a></li><li><a href="TimeZone.html">TimeZone</a></li><li><a href="UTF16BE.html">UTF16BE</a></li><li><a href="UTF16LE.html">UTF16LE</a></li><li><a href="UTF8.html">UTF8</a></li><li><a href="UnitFmt.html">UnitFmt</a></li><li><a href="UnknownUnit.html">UnknownUnit</a></li><li><a href="VelocityUnit.html">VelocityUnit</a></li><li><a href="VolumeUnit.html">VolumeUnit</a></li></ul><h3>Interfaces</h3><ul><li><a href="ilib.Loader.html">Loader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CalendarFactory">CalendarFactory</a></li><li><a href="global.html#CharmapFactory">CharmapFactory</a></li><li><a href="global.html#DateFactory">DateFactory</a></li><li><a href="global.html#MeasurementFactory">MeasurementFactory</a></li><li><a href="global.html#isAlnum">isAlnum</a></li><li><a href="global.html#isAlpha">isAlpha</a></li><li><a href="global.html#isAscii">isAscii</a></li><li><a href="global.html#isBlank">isBlank</a></li><li><a href="global.html#isCntrl">isCntrl</a></li><li><a href="global.html#isDigit">isDigit</a></li><li><a href="global.html#isGraph">isGraph</a></li><li><a href="global.html#isIdeo">isIdeo</a></li><li><a href="global.html#isLower">isLower</a></li><li><a href="global.html#isPrint">isPrint</a></li><li><a href="global.html#isPunct">isPunct</a></li><li><a href="global.html#isScript">isScript</a></li><li><a href="global.html#isSpace">isSpace</a></li><li><a href="global.html#isUpper">isUpper</a></li><li><a href="global.html#isXdigit">isXdigit</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>ResBundle</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>ResBundle<span class="signature">(options<span class="signature-attributes">nullable</span>)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description"><p>Create a new resource bundle instance. The resource bundle loads strings
+appropriate for a particular locale and provides them via the getString
+method.<p></p>
+<p>The options object may contain any (or none) of the following properties:</p>
+<ul>
+<li><i>locale</i> - The locale of the strings to load. If not specified, the default
+locale is the the default for the web page or app in which the bundle is
+being loaded.
+<li><i>name</i> - Base name of the resource bundle to load. If not specified the default
+base name is "resources".
+<li><i>type</i> - Name the type of strings this bundle contains. Valid values are
+"xml", "html", "text", "c", "raw", "ruby", or "template". The default is "text".
+If the type is "xml" or "html",
+then XML/HTML entities and tags are not pseudo-translated. During a real translation,
+HTML character entities are translated to their corresponding characters in a source
+string before looking that string up in the translations. Also, the characters "<", ">",
+and "&" are converted to entities again in the output, but characters are left as they
+are. If the type is "xml", "html", "ruby", or "text" types, then the replacement parameter names
+are not pseudo-translated as well so that the output can be used for formatting with
+the IString class. If the type is "c" then all C language style printf replacement
+parameters (eg. "%s" and "%d") are skipped automatically. This includes iOS/Objective-C/Swift
+substitution parameters like "%@" or "%1$@". If the type is raw, all characters
+are pseudo-translated, including replacement parameters as well as XML/HTML tags and entities.
+<li><i>lengthen</i> - when pseudo-translating the string, tell whether or not to
+automatically lengthen the string to simulate "long" languages such as German
+or French. This is a boolean value. Default is false.
+<li><i>missing</i> - what to do when a resource is missing. The choices are:
+<ul>
+  <li><i>source</i> - return the source string unchanged
+  <li><i>pseudo</i> - return the pseudo-translated source string, translated to the
+  script of the locale if the mapping is available, or just the default Latin
+  pseudo-translation if not
+  <li><i>empty</i> - return the empty string
+</ul>
+The default behaviour is the same as before, which is to return the source string
+unchanged.
+<li><i>basePath</i> - look in the given path for the resource bundle files. This can be
+an absolute path or a relative path that is relative to the application's root.
+Default if this is not specified is to look in the standard path (ie. in the root
+of the app).
+<li><i>onLoad</i> - a callback function to call when the resources are fully
+loaded. When the onLoad option is given, this class will attempt to
+load any missing locale data using the ilib loader callback.
+When the constructor is done (even if the data is already preassembled), the
+onLoad function is called with the current instance as a parameter, so this
+callback can be used with preassembled or dynamic loading or a mix of the two.
+<li>sync - tell whether to load any missing locale data synchronously or
+asynchronously. If this option is given as "false", then the "onLoad"
+callback must be given, as the instance returned from this constructor will
+not be usable for a while.
+<li><i>loadParams</i> - an object containing parameters to pass to the
+loader callback function when locale data is missing. The parameters are not
+interpretted or modified in any way. They are simply passed along. The object
+may contain any property/value pairs as long as the calling code is in
+agreement with the loader callback function as to what those parameters mean.
+</ul>
+<p>The locale option may be given as a locale spec string or as an
+Locale object. If the locale option is not specified, then strings for
+the default locale will be loaded.<p></p>
+<p>The name option can be used to put groups of strings together in a
+single bundle. The strings will then appear together in a JS object in
+a JS file that can be included before the ilib.<p></p>
+<p>A resource bundle with a particular name is actually a set of bundles
+that are each specific to a language, a language plus a region, etc.
+All bundles with the same base name should
+contain the same set of source strings, but with different translations for
+the given locale. The user of the bundle does not need to be aware of
+the locale of the bundle, as long as it contains values for the strings
+it needs.<p></p>
+<p>Strings in bundles for a particular locale are inherited from parent bundles
+that are more generic. In general, the hierarchy is as follows (from
+least locale-specific to most locale-specific):</p>
+<ol>
+<li> language
+<li> region
+<li> language_script
+<li> language_region
+<li> region_variant
+<li> language_script_region
+<li> language_region_variant
+<li> language_script_region_variant
+</ol>
+<p>That is, if the translation for a string does not exist in the current
+locale, the more-generic parent locale is searched for the string. In the
+worst case scenario, the string is not found in the base locale's strings.
+In this case, the missing option guides this class on what to do. If
+the missing option is &quot;source&quot;, then the original source is returned as
+the translation. If it is &quot;empty&quot;, the empty string is returned. If it
+is &quot;pseudo&quot;, then the pseudo-translated string that is appropriate for
+the default script of the locale is returned.<p></p>
+<p>This allows developers to create code with new or changed strings in it and check in that
+code without waiting for the translations to be done first. The translated
+version of the app or web site will still function properly, but will show
+a spurious untranslated string here and there until the translations are
+done and also checked in.<p></p>
+<p>The base is whatever language your developers use to code in. For
+a German web site, strings in the source code may be written in German
+for example. Often this base is English, as many web sites are coded in
+English, but that is not required.<p></p>
+<p>The strings can be extracted with the ilib localization tool (which will be
+shipped at some future time.) Once the strings
+have been translated, the set of translated files can be generated with the
+same tool. The output from the tool can be used as input to the ResBundle
+object. It is up to the web page or app to make sure the JS file that defines
+the bundle is included before creating the ResBundle instance.<p></p>
+<p>A special locale &quot;zxx-XX&quot; is used as the pseudo-translation locale because
+zxx means &quot;no linguistic information&quot; in the ISO 639 standard, and the region
+code XX is defined to be user-defined in the ISO 3166 standard.
+Pseudo-translation is a locale where the translations are generated on
+the fly based on the contents of the source string. Characters in the source
+string are replaced with other characters and returned.</p>
+<p>Example. If the source string is:</p>
+<pre>
+"This is a string"
+</pre>
+<p>then the pseudo-translated version might look something like this:</p>
+<pre>
+"Ţħïş ïş á şţřïñĝ"
+</pre>
+<p>
+<p>Pseudo-translation can be used to test that your app or web site is translatable
+before an actual translation has happened. These bugs can then be fixed
+before the translation starts, avoiding an explosion of bugs later when
+each language's tester registers the same bug complaining that the same
+string is not translated. When pseudo-localizing with
+the Latin script, this allows the strings to be readable in the UI in the
+source language (if somewhat funky-looking),
+so that a tester can easily verify that the string is properly externalized
+and loaded from a resource bundle without the need to be able to read a
+foreign language.<p></p>
+<p>If one of a list of script tags is given in the pseudo-locale specifier, then the
+pseudo-localization can map characters to very rough transliterations of
+characters in the given script. For example, zxx-Hebr-XX maps strings to
+Hebrew characters, which can be used to test your UI in a right-to-left
+language to catch bidi bugs before a translation is done. Currently, the
+list of target scripts includes Hebrew (Hebr), Chinese Simplified Han (Hans),
+and Cyrillic (Cyrl) with more to be added later. If no script is explicitly
+specified in the locale spec, or if the script is not supported,
+then the default mapping maps Latin base characters to accented versions of
+those Latin characters as in the example above.</p>
+<p>When the &quot;lengthen&quot; property is set to true in the options, the
+pseudotranslation code will add digits to the end of the string to simulate
+the lengthening that occurs when translating to other languages. The above
+example will come out like this:</p>
+<pre>
+"Ţħïş ïş á şţřïñĝ76543210"
+</pre>
+<p>The string is lengthened according to the length of the source string. If
+the source string is less than 20 characters long, the string is lengthened
+by 50%. If the source string is 20-40
+characters long, the string is lengthened by 33%. If te string is greater
+than 40 characters long, the string is lengthened by 20%.<p></p>
+<p>The pseudotranslation always ends a string with the digit &quot;0&quot;. If you do
+not see the digit &quot;0&quot; in the UI for your app, you know that truncation
+has occurred, and the number you see at the end of the string tells you
+how many characters were truncated.<p></p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="ResBundle">
+        <a class="href-link" href="#ResBundle">#</a>
+        
+        <span class="code-name">
+            
+                new ResBundle<span class="signature">(options<span class="signature-attributes">nullable</span>)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>options</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+          &lt;nullable><br>
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>Options controlling how the bundle is created</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="ResBundle.js.html" class="button">View Source</a>
+            <span>
+                <a href="ResBundle.js.html">ResBundle.js</a>, <a href="ResBundle.js.html#line224">line 224</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="containsKey">
+        <a class="href-link" href="#containsKey">#</a>
+        
+        <span class="code-name">
+            
+                containsKey<span class="signature">(source<span class="signature-attributes">opt, nullable</span>, key<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return true if the current bundle contains a translation for the given key and
+source. The
+getString method will always return a string for any given key and source
+combination, so it cannot be used to tell if a translation exists. Either one
+or both of the source and key must be specified. If both are not specified,
+this method will return false.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>source</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+          &lt;nullable><br>
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>source string to look up</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>key</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+          &lt;nullable><br>
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>key to look up</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="ResBundle.js.html" class="button">View Source</a>
+            <span>
+                <a href="ResBundle.js.html">ResBundle.js</a>, <a href="ResBundle.js.html#line662">line 662</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>true if this bundle contains a translation for the key, and
+false otherwise</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getLocale">
+        <a class="href-link" href="#getLocale">#</a>
+        
+        <span class="code-name">
+            
+                getLocale<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Locale.html">Locale</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the locale of this resource bundle.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="ResBundle.js.html" class="button">View Source</a>
+            <span>
+                <a href="ResBundle.js.html">ResBundle.js</a>, <a href="ResBundle.js.html#line354">line 354</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the locale of this resource bundle object</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="Locale.html">Locale</a></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getName">
+        <a class="href-link" href="#getName">#</a>
+        
+        <span class="code-name">
+            
+                getName<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the name of this resource bundle. This corresponds to the name option
+given to the constructor.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="ResBundle.js.html" class="button">View Source</a>
+            <span>
+                <a href="ResBundle.js.html">ResBundle.js</a>, <a href="ResBundle.js.html#line363">line 363</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>name of the the current instance</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getResObj">
+        <a class="href-link" href="#getResObj">#</a>
+        
+        <span class="code-name">
+            
+                getResObj<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the merged resources as an entire object. When loading resources for a
+locale that are not just a set of translated strings, but instead an entire
+structured javascript object, you can gain access to that object via this call. This method
+will ensure that all the of the parts of the object are correct for the locale.<p></p>
+<p>For pre-assembled data, it starts by loading <i>ilib.data[name]</i>, where
+<i>name</i> is the base name for this set of resources. Then, it successively
+merges objects in the base data using progressively more locale-specific data.
+It loads it in this order from <i>ilib.data</i>:</p>
+<ol>
+<li> language
+<li> region
+<li> language_script
+<li> language_region
+<li> region_variant
+<li> language_script_region
+<li> language_region_variant
+<li> language_script_region_variant
+</ol>
+<p>For dynamically loaded data, the code attempts to load the same sequence as
+above, but with slash path separators instead of underscores.<p></p>
+<p>Loading the resources this way allows the program to share resources between all
+locales that share a common language, region, or script. As a
+general rule-of-thumb, resources should be as generic as possible in order to
+cover as many locales as possible.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="ResBundle.js.html" class="button">View Source</a>
+            <span>
+                <a href="ResBundle.js.html">ResBundle.js</a>, <a href="ResBundle.js.html#line703">line 703</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>returns the object that is the basis for this resources instance</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Object</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getString">
+        <a class="href-link" href="#getString">#</a>
+        
+        <span class="code-name">
+            
+                getString<span class="signature">(source, key, escapeMode<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"> &rarr; {<a href="IString.html">IString</a>|Array.&lt;<a href="IString.html">IString</a>>|undefined}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return a localized string, array, or object. This method can localize individual
+strings or arrays of strings.<p></p>
+<p>If the source parameter is a string, the translation of that string is looked
+up and returned. If the source parameter is an array of strings, then the translation
+of each of the elements of that array is looked up, and an array of translated strings
+is returned. <p></p>
+<p>If any string is not found in the loaded set of
+resources, the original source string is returned. If the key is not given,
+then the source string itself is used as the key. In the case where the
+source string is used as the key, the whitespace is compressed down to 1 space
+each, and the whitespace at the beginning and end of the string is trimmed.<p></p>
+<p>The escape mode specifies what type of output you are escaping the returned
+string for. Modes are similar to the types:</p>
+<ul>
+<li>"html" -- prevents HTML injection by escaping the characters &lt &gt; and &amp;
+<li>"xml" -- currently same as "html" mode
+<li>"js" -- prevents breaking Javascript syntax by backslash escaping all quote and
+double-quote characters
+<li>"attribute" -- meant for HTML attribute values. Currently this is the same as
+"js" escape mode.
+<li>"default" -- use the type parameter from the constructor as the escape mode as well
+<li>"none" or undefined -- no escaping at all.
+</ul>
+<p>The type parameter of the constructor specifies what type of strings this bundle
+is operating upon. This allows pseudo-translation and automatic key generation
+to happen properly by telling this class how to parse the string. The escape mode
+for this method is different in that it specifies how this string will be used in
+the calling code and therefore how to escape it properly.<p></p>
+<p>For example, a section of Javascript code may be constructing an HTML snippet in a
+string to add to the web page. In this case, the type parameter in the constructor should
+be &quot;html&quot; so that the source string can be parsed properly, but the escape mode should
+be &quot;js&quot; so that the output string can be used in Javascript without causing syntax
+errors.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>source</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+|
+
+<code class="param-type">Array.&lt;string>=</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>the source string or strings to translate</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>key</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+|
+
+<code class="param-type">Array.&lt;string>=</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>optional name of the key, if any</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>escapeMode</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+          &lt;nullable><br>
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>escape mode, if any</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="ResBundle.js.html" class="button">View Source</a>
+            <span>
+                <a href="ResBundle.js.html">ResBundle.js</a>, <a href="ResBundle.js.html#line603">line 603</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the translation of the given source/key or undefined
+if the translation is not found and the source is undefined</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="IString.html">IString</a></code>
+|
+
+<code class="param-type">Array.&lt;<a href="IString.html">IString</a>></code>
+|
+
+<code class="param-type">undefined</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getStringJS">
+        <a class="href-link" href="#getStringJS">#</a>
+        
+        <span class="code-name">
+            
+                getStringJS<span class="signature">(source, key, escapeMode<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"> &rarr; {string|Array.&lt;string>|undefined}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return a localized string as an intrinsic Javascript String object. This does the same thing as
+the getString() method, but it returns a regular Javascript string instead of
+and IString instance. This means it cannot be formatted with the format()
+method without being wrapped in an IString instance first.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>source</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+|
+
+<code class="param-type">Array.&lt;string>=</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>the source string to translate</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>key</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+|
+
+<code class="param-type">Array.&lt;string>=</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>optional name of the key, if any</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>escapeMode</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+          &lt;nullable><br>
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>escape mode, if any</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="ResBundle.js.html" class="button">View Source</a>
+            <span>
+                <a href="ResBundle.js.html">ResBundle.js</a>, <a href="ResBundle.js.html#line631">line 631</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>the translation of the given source/key or undefined
+if the translation is not found and the source is undefined</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+|
+
+<code class="param-type">Array.&lt;string></code>
+|
+
+<code class="param-type">undefined</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getType">
+        <a class="href-link" href="#getType">#</a>
+        
+        <span class="code-name">
+            
+                getType<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Return the type of this resource bundle. This corresponds to the type option
+given to the constructor.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="ResBundle.js.html" class="button">View Source</a>
+            <span>
+                <a href="ResBundle.js.html">ResBundle.js</a>, <a href="ResBundle.js.html#line372">line 372</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>type of the the current instance</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.0</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>
