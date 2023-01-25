@@ -1,7 +1,7 @@
 /*
  * Measurement.js - Measurement unit superclass
  *
- * Copyright © 2014-2015, 2018, 2021 JEDLSoft
+ * Copyright © 2014-2015, 2018, 2021, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ function round(number, precision) {
  * correct subclass based on the given parameters.<p>
  *
  * @param {Object=} options options controlling the construction of this instance
- * @private
+ * @protected
  * @constructor
  */
 var Measurement = function(options) {

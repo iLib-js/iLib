@@ -1,7 +1,7 @@
 /*
  * ThaiSolarDate.js - Represent a date in the ThaiSolar calendar
  *
- * Copyright © 2013-2015, 2018, JEDLSoft
+ * Copyright © 2013-2015, 2018, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -136,7 +136,7 @@ ThaiSolarDate.epoch = 1523097.5;
 
 /**
  * Calculate the date components for the current time zone
- * @protected
+ * @private
  */
 ThaiSolarDate.prototype._calcDateComponents = function () {
     // there is 198327 days difference between the Thai solar and

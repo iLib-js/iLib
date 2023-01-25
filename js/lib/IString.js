@@ -1,7 +1,7 @@
 /*
  * IString.js - ilib string subclass definition
  *
- * Copyright © 2012-2015, 2018, 2021-2022 JEDLSoft
+ * Copyright © 2012-2015, 2018, 2021-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ var Locale = require("./Locale.js");
  * Create a new ilib string instance. This string inherits from and
  * extends the Javascript String class. It can be
  * used almost anywhere that a normal Javascript string is used, though in
- * some instances you will need to call the {@link #toString} method when
+ * some instances you will need to call the [toString]{@link IString#toString} method when
  * a built-in Javascript string is needed. The formatting methods are
  * methods that are not in the intrinsic String class and are most useful
  * when localizing strings in an app or web site in combination with
@@ -1287,7 +1287,7 @@ IString.prototype = {
     /**
      * Convert the character or the surrogate pair at the given
      * index into the string to a Unicode UCS-4 code point.
-     * @protected
+     * @private
      * @param {number} index index into the string
      * @return {number} code point of the character at the
      * given index into the string
@@ -1379,7 +1379,6 @@ IString.prototype = {
      */
     iterator: function() {
         /**
-         * @constructor IString
          */
         function _iterator (istring) {
             this.index = 0;
@@ -1422,7 +1421,6 @@ IString.prototype = {
      */
     charIterator: function() {
         /**
-         * @constructor IString
          */
         function _chiterator (istring) {
             this.index = 0;

@@ -1,7 +1,7 @@
 /*
  * DateFmt.js - Date formatter definition
  *
- * Copyright © 2012-2015, 2018, 2020 JEDLSoft
+ * Copyright © 2012-2015, 2018, 2020, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -126,7 +126,7 @@ var ISet = require("./ISet.js");
  * Default components, if this property is not specified, is "dmy". This property may be specified
  * but has no affect if the current formatter is for times only.<br><br>
  * As of ilib 12.0, you can now pass ICU style skeletons in this option similar to the ones you
- * get from <a href="http://icu-project.org/apiref/icu4c432/classDateTimePatternGenerator.html#aa30c251609c1eea5ad60c95fc497251e">DateTimePatternGenerator.getSkeleton()</a>.
+ * get from <a href="https://unicode-org.github.io/icu-docs/apidoc/dev/icu4c/classicu_1_1DateTimePatternGenerator.html#af59552a2922795b494f82ec230208e2e">DateTimePatternGenerator.getSkeleton()</a>.
  * It will not extract the length from the skeleton so you still need to pass the length property,
  * but it will extract the date components. <br><br>
  *
@@ -161,7 +161,7 @@ var ISet = require("./ISet.js");
  * a movie of 198 minutes.<br><br>
  * Default value if this property is not specified is "hma".<br><br>
  * As of ilib 12.0, you can now pass ICU style skeletons in this option similar to the ones you
- * get from <a href="http://icu-project.org/apiref/icu4c432/classDateTimePatternGenerator.html#aa30c251609c1eea5ad60c95fc497251e">DateTimePatternGenerator.getSkeleton()</a>.
+ * get from <a href="https://unicode-org.github.io/icu-docs/apidoc/dev/icu4c/classicu_1_1DateTimePatternGenerator.html#af59552a2922795b494f82ec230208e2e">DateTimePatternGenerator.getSkeleton()</a>.
  * It will not extract the length from the skeleton so you still need to pass the length property,
  * but it will extract the time components.
  *
@@ -718,7 +718,7 @@ DateFmt.prototype = {
         });
     },
     /**
-     * @protected
+     * @private
      * @param {string|{
      *         order:(string|{
      *             s:string,
@@ -780,7 +780,7 @@ DateFmt.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      */
     _massageTemplate: function () {
         var i;
@@ -855,7 +855,7 @@ DateFmt.prototype = {
 
     /**
      * Convert the template into an array of date components separated by formatting chars.
-     * @protected
+     * @private
      * @param {string} template Format template to tokenize into components
      * @return {Array.<string>} a tokenized array of date format components
      */
@@ -897,7 +897,7 @@ DateFmt.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
      * @param {string} components Format components to search
      * @param {string} length Length of the requested format
@@ -924,7 +924,7 @@ DateFmt.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
      * @param {string} components Format components to search
      * @param {string} length Length of the requested format
@@ -944,7 +944,7 @@ DateFmt.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      * @param {(string|{s:string,m:string,l:string,f:string})} obj Object to search
      * @param {string} length Length of the requested format
      * @return {(string|undefined)} the requested format

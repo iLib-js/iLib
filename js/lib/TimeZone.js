@@ -1,7 +1,7 @@
 /*
  * TimeZone.js - Definition of a time zone class
  *
- * Copyright © 2012-2015, 2018, JEDLSoft
+ * Copyright © 2012-2015, 2018, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -536,7 +536,7 @@ TimeZone.prototype.getOffsetMillis = function (date) {
 /**
  * Return the offset in milliseconds when the date has an RD number in wall
  * time rather than in UTC time.
- * @protected
+ * @private
  * @param {IDate|Object|JulianDay|Date|string|number} date the date to check in wall time
  * @returns {number} the number of milliseconds of offset from UTC that the given date is
  */
@@ -656,7 +656,7 @@ TimeZone.prototype.getDSTSavingsStr = function () {
 
 /**
  * return the rd of the start of DST transition for the given year
- * @protected
+ * @private
  * @param {Object} rule set of rules
  * @param {number} year year to check
  * @return {number} the rd of the start of DST for the year
