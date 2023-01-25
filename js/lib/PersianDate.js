@@ -1,7 +1,7 @@
 /*
  * PersianDate.js - Represent a date in the Persian astronomical (Hijjri) calendar
  *
- * Copyright © 2014-2015, 2018, JEDLSoft
+ * Copyright © 2014-2015, 2018, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
