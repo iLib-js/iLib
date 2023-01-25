@@ -1,6 +1,6 @@
 /*
  * testaddress_PR.js - test the address parsing and formatting routines for Puerto Rico
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports.testaddress_PR = {
     testParseAddressPRNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150\nCALLE A\nSAN JUAN, PR 00926-3232\nPuerto Rico", {locale: 'en-PR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A");
         test.equal(parsedAddress.locality, "SAN JUAN");
@@ -46,11 +46,11 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-    
+
     testParseAddressPRNormalLanguageIndepedent: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150\nCALLE A\nSAN JUAN, PR 00926-3232\nPuerto Rico", {locale: 'es-PR'});
-            
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A");
         test.equal(parsedAddress.locality, "SAN JUAN");
@@ -60,11 +60,11 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-    
+
     testParseAddressPRNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR\nPuerto Rico", {locale: 'en-PR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A");
         test.equal(parsedAddress.locality, "SAN JUAN");
@@ -74,11 +74,11 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-    
+
     testParseAddressPRShortZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR 00926\nPuerto Rico", {locale: 'en-PR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A");
         test.equal(parsedAddress.locality, "SAN JUAN");
@@ -88,11 +88,11 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-    
+
     testParseAddressPRNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR 00926-3232", {locale: 'en-PR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A");
         test.equal(parsedAddress.locality, "SAN JUAN");
@@ -102,11 +102,11 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-    
+
     testParseAddressPRManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ\nURB LAS GLADIOLAS\n150\nCALLE A\nSAN JUAN, PR 00926-3232\nPuerto Rico", {locale: 'en-PR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MRS MARÍA SUÁREZ, URB LAS GLADIOLAS, 150, CALLE A");
         test.equal(parsedAddress.locality, "SAN JUAN");
@@ -116,11 +116,11 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-    
+
     testParseAddressPROneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150 CALLE A, SAN JUAN, PR 00926-3232, Puerto Rico", {locale: 'en-PR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150 CALLE A");
         test.equal(parsedAddress.locality, "SAN JUAN");
@@ -130,12 +130,12 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-    
-    
+
+
     testParseAddressPRNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150 CALLE A SAN JUAN PR 00926-3232 Puerto Rico", {locale: 'en-PR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150 CALLE A");
         test.equal(parsedAddress.locality, "SAN JUAN");
@@ -145,14 +145,14 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-    
-    
+
+
     testParseAddressPRFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR 00926-3232", {locale: 'en-US'});
-        
+
         // the country name is in English because this address is for a contact in a US database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A");
         test.equal(parsedAddress.locality, "SAN JUAN");
@@ -162,13 +162,13 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-    
+
     testParseAddressPRFromUSWithCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR 00926-3232\nPuerto Rico", {locale: 'en-US'});
-        
+
         // the country name is in English because this address is for a contact in a US database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A");
         test.equal(parsedAddress.locality, "SAN JUAN");
@@ -178,7 +178,7 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-    
+
     testFormatAddressPR: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -189,13 +189,13 @@ module.exports.testaddress_PR = {
             country: "Puerto Rico",
             countryCode: "PR"
         }, {locale: 'en-PR'});
-        
+
         var expected = "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR 00926-3232\nPuerto Rico";
         var formatter = new AddressFmt({locale: 'en-PR'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressPRFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -206,11 +206,11 @@ module.exports.testaddress_PR = {
             country: "Puerto Rico",
             countryCode: "PR"
         }, {locale: 'en-US'});
-        
+
         var expected = "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR 00926-3232\nPuerto Rico";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

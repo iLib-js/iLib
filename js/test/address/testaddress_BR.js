@@ -1,6 +1,6 @@
 /*
  * testaddress.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,7 +38,7 @@ module.exports.testaddress_BR = {
     testParseAddressBRNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Carlos Rossi,Avenida João Jorge, 112, ap. 31 Vila Industrial,Campinas - SP,13035-680,BRAZIL", {locale: 'pt-BR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Carlos Rossi, Avenida João Jorge, 112, ap. 31 Vila Industrial");
         test.equal(parsedAddress.locality, "Campinas");
@@ -48,11 +48,11 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-    
+
     testParseAddressBRNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Avenida João Jorge, 112, ap. 31 Vila Industrial,Campinas - SP, BRAZIL", {locale: 'pt-BR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Avenida João Jorge, 112, ap. 31 Vila Industrial");
         test.equal(parsedAddress.locality, "Campinas");
@@ -62,11 +62,11 @@ module.exports.testaddress_BR = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressBRManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Carlos Rossi\nAvenida João Jorge, 112, ap. 31\nVila Industrial\nCampinas - SP\n13035-680\nBRAZIL", {locale: 'pt-BR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Carlos Rossi, Avenida João Jorge, 112, ap. 31, Vila Industrial");
         test.equal(parsedAddress.locality, "Campinas");
@@ -76,11 +76,11 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-    
+
     testParseAddressBROneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Rua Visconde de Porto Seguro 1238, Sao Paulo - SP,BRAZIL", {locale: 'pt-BR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rua Visconde de Porto Seguro 1238");
         test.equal(parsedAddress.locality, "Sao Paulo");
@@ -90,11 +90,11 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-    
+
     testParseAddressBRSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Rua Visconde de Porto Seguro 1238   \n\t\n Sao Paulo - SP\n\n\n BRAZIL  \n  \t\n 04642-000 \t\t\t", {locale: 'pt-BR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rua Visconde de Porto Seguro 1238");
         test.equal(parsedAddress.locality, "Sao Paulo");
@@ -104,11 +104,11 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-    
+
     testParseAddressBRNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Rua Visconde de Porto Seguro Sao Paulo - SP BRAZIL  04642-000 ", {locale: 'pt-BR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rua Visconde de Porto Seguro");
         test.equal(parsedAddress.locality, "Sao Paulo");
@@ -118,11 +118,11 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-    
+
     testParseAddressBRSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SOCIEDADE BRASILEIRA DE FÍSICA,Caixa Postal 66328,São Paulo - SP,BRAZIL,05315-970", {locale: 'pt-BR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "SOCIEDADE BRASILEIRA DE FÍSICA, Caixa Postal 66328");
         test.equal(parsedAddress.locality, "São Paulo");
@@ -132,13 +132,13 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-    
+
     testParseAddressBRFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Rua Visconde de Porto Seguro, Sao Paulo - SP, Brasil, 04642-000", {locale: 'pt-BR'});
-        
+
         // the country name is in English because this address is for a contact in a US database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rua Visconde de Porto Seguro");
         test.equal(parsedAddress.locality, "Sao Paulo");
@@ -148,7 +148,7 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-    
+
     testFormatAddressBR: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -159,13 +159,13 @@ module.exports.testaddress_BR = {
             country: "BRAZIL",
             countryCode: "BR"
         }, {locale: 'pt-BR'});
-        
+
         var expected = "Rua Visconde de Porto Seguro\nSao Paulo-SP\nBRAZIL\n04642-000";
         var formatter = new AddressFmt({locale: 'pt-BR'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressBRFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -176,19 +176,19 @@ module.exports.testaddress_BR = {
             country: "BRAZIL",
             countryCode: "BR"
         }, {locale: 'en-US'});
-        
+
         var expected = "Rua Visconde de Porto Seguro\nSao Paulo-SP\nBRAZIL\n04642-000";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testParseAddressBR1: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Lívia Amaral, Av. Paulista, 1098, 1º andar, apto. 101, Bela Vista, São Paulo - SP, Brasil, 01310-000", {locale: 'pt-BR'});
-        
+
         // the country name is in English because this address is for a contact in a US database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Lívia Amaral, Av. Paulista, 1098, 1º andar, apto. 101, Bela Vista");
         test.equal(parsedAddress.locality, "São Paulo");
@@ -198,29 +198,29 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-    
+
     testParseAddressBR2: function(test) {
         test.expect(6);
         var parsedAddress = new Address("Rua Afonso Canargo, 805, Santana, Guarapuava - PR, 85070-200", {locale: 'pt-BR'});
-        
+
         // the country name is in English because this address is for a contact in a US database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rua Afonso Canargo, 805, Santana");
         test.equal(parsedAddress.locality, "Guarapuava");
         test.equal(parsedAddress.region, "PR");
         test.equal(parsedAddress.postalCode, "85070-200");
-    
+
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-    
+
     testParseAddressBR3: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Boulevard das Flores 255,    SALVADOR - BA, BRAZIL, 40301-110", {locale: 'pt-BR'});
-        
+
         // the country name is in English because this address is for a contact in a US database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Boulevard das Flores 255");
         test.equal(parsedAddress.locality, "SALVADOR");
@@ -230,5 +230,5 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     }
-    
+
 };

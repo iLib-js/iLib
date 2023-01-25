@@ -1,6 +1,6 @@
 /*
  * testastro.js - test the astronomical calculation routines
- * 
+ *
  * Copyright © 2014-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -118,10 +118,10 @@ module.exports.testastro = {
             // console.log("testing jd=" + testDatesAstro1[i][0]);
             l = Astro._ephemerisCorrection(testDatesAstro1[i][0]);
             test.roughlyEqual(l, testDatesAstro1[i][1], 1e-14, "testing ephemeris correction for " + testDatesAstro1[i][0]);
-        } 
+        }
         test.done();
     },
-    
+
     testJulianCenturies: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
@@ -129,10 +129,10 @@ module.exports.testastro = {
             // console.log("testing jd=" + testDatesAstro1[i][0]);
             l = Astro._julianCenturies(testDatesAstro1[i][0]);
             test.roughlyEqual(l, testDatesAstro1[i][2], 1e-14, "testing julian centuries for " + testDatesAstro1[i][0]);
-        } 
+        }
         test.done();
     },
-    
+
     testNutation: function(test) {
         var c, l;
         Astro.initAstro(true, undefined, undefined);
@@ -141,10 +141,10 @@ module.exports.testastro = {
             c = Astro._julianCenturies(testDatesAstro1[i][0]);
             l = Astro._nutation2(c);
             test.roughlyEqual(l, testDatesAstro1[i][3], 1e-14, "testing nutation for " + testDatesAstro1[i][0]);
-        } 
+        }
         test.done();
     },
-    
+
     testAberration: function(test) {
         var c, l;
         Astro.initAstro(true, undefined, undefined);
@@ -153,15 +153,15 @@ module.exports.testastro = {
             c = Astro._julianCenturies(testDatesAstro1[i][0]);
             l = Astro._aberration(c);
             test.roughlyEqual(l, testDatesAstro1[i][4], 1e-14, "testing abberation for " + testDatesAstro1[i][0]);
-        } 
+        }
         test.done();
     },
-    
+
     testSolarLongitude: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesAstro1.length; i++) {
-        
+
             // console.log("testing jd=" + testDatesAstro1[i][0]);
             //try {
             l = Astro._solarLongitude(testDatesAstro1[i][0]);
@@ -169,16 +169,16 @@ module.exports.testastro = {
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][5]));
             //}
-    
-        } 
+
+        }
         test.done();
     },
-    
+
     testNextSolarLongitude: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesAstro1.length; i++) {
-        
+
             // console.log("testing jd=" + testDatesAstro1[i][0]);
             //try {
             l = Astro._nextSolarLongitude(testDatesAstro1[i][0], 90.0) - RataDie.gregorianEpoch;
@@ -186,16 +186,16 @@ module.exports.testastro = {
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][6]));
             //}
-    
-        } 
+
+        }
         test.done();
     },
-    
+
     testLunarLongitude: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesAstro2.length; i++) {
-        
+
             // console.log("testing jd=" + testDatesAstro2[i][0]);
             //try {
             var jd = testDatesAstro2[i][0]
@@ -205,15 +205,15 @@ module.exports.testastro = {
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}
-        } 
+        }
         test.done();
     },
-    
+
     testNewMoonTime: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesAstro2.length; i++) {
-        
+
             // console.log("testing jd=" + testDatesAstro2[i][0]);
             //try {
             l = Astro._newMoonTime(i) - RataDie.gregorianEpoch;
@@ -221,15 +221,15 @@ module.exports.testastro = {
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}
-        } 
+        }
         test.done();
     },
-    
+
     testNewMoonBefore: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesAstro2.length; i++) {
-        
+
             // console.log("testing jd=" + testDatesAstro2[i][0]);
             //try {
             var jd = testDatesAstro2[i][0]
@@ -239,15 +239,15 @@ module.exports.testastro = {
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}
-        } 
+        }
         test.done();
     },
-    
+
     testNewMoonAtOrAfter: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesAstro2.length; i++) {
-        
+
             // console.log("testing jd=" + testDatesAstro2[i][0]);
             //try {
             var jd = testDatesAstro2[i][0]
@@ -257,8 +257,8 @@ module.exports.testastro = {
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}
-        } 
+        }
         test.done();
     }
-    
+
 };

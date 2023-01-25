@@ -1,6 +1,6 @@
 /*
  * testname_mn_Cyrl.js - test the name object in Arabic
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,80 +37,80 @@ module.exports.testname_mn_Cyrl = {
         test.expect(2);
         var parsed = new Name("Цахиагийн Элбэгдорж", {locale: 'mn-Cyrl-MN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             givenName: "Цахиагийн",
             familyName: "Элбэгдорж"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseAdjunctNames_mn_Cyrl: function(test) {
         test.expect(2);
         var parsed = new Name("Ноён ба Хатагтай Элбэгдорж", {locale: 'mn-Cyrl-MN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =  {
             prefix: "Ноён ба Хатагтай",
             familyName: "Элбэгдорж"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseSingleNameWithPrefixAndAdjunct_mn_Cyrl: function(test) {
         test.expect(2);
         var parsed = new Name("хатагтай Элбэгдорж", {locale: 'mn-Cyrl-MN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             prefix: "хатагтай",
             familyName: "Элбэгдорж"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseTitle_mn_Cyrl: function(test) {
         test.expect(2);
         var parsed = new Name("Цахиагийн Элбэгдорж 9-р", {locale: 'mn-Cyrl-MN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =    {
             suffix: "9-р",
             givenName: "Цахиагийн",
             familyName: "Элбэгдорж"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseEverything_mn_Cyrl: function(test) {
         test.expect(2);
         var parsed = new Name("ц.э Цахиагийн Элбэгдорж ерөнхийлөгч", {locale: 'mn-Cyrl-MN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "ц.э",
             suffix: "ерөнхийлөгч",
             givenName: "Цахиагийн",
             familyName: "Элбэгдорж"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameFull_mn_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({
@@ -120,18 +120,18 @@ module.exports.testname_mn_Cyrl = {
             suffix: "9-р"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'mn-Cyrl-MN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "mонгол Улсын Ерөнхийлөгч Цахиагийн Элбэгдорж 9-р";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_mn_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({
@@ -140,18 +140,18 @@ module.exports.testname_mn_Cyrl = {
             familyName: "Элбэгдорж"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'mn-Cyrl-MN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Цахиагийн Элбэгдорж";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_mn_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({
@@ -160,18 +160,18 @@ module.exports.testname_mn_Cyrl = {
             familyName: "Элбэгдорж"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'mn-Cyrl-MN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Цахиагийн Элбэгдорж";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_mn_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({
@@ -185,13 +185,13 @@ module.exports.testname_mn_Cyrl = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "mонгол Улсын Ерөнхийлөгч Цахиагийн Элбэгдорж";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameShort_mn_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({
@@ -200,18 +200,18 @@ module.exports.testname_mn_Cyrl = {
             familyName: "地"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'mn-Cyrl-MN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameMedium_mn_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({
@@ -220,18 +220,18 @@ module.exports.testname_mn_Cyrl = {
             familyName: "地"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'mn-Cyrl-MN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameLong_mn_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({
@@ -240,21 +240,21 @@ module.exports.testname_mn_Cyrl = {
             familyName: "地"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'mn-Cyrl-MN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "小地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 };

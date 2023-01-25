@@ -69,23 +69,19 @@ var DateFactory = require("./DateFactory.js");
  * <li><i>full</i> - use a full representation of the time. This is a fully specified format where all the textual
  * components are spelled out completely.
  * </ul>
- *
  * eg. The "short" format for an en_US range may be "MM/yy - MM/yy", whereas the long format might be
  * "MMM, yyyy - MMM, yyyy". In the long format, the month name is textual instead of numeric
  * and is longer, the year is 4 digits instead of 2, and the format contains slightly more
- * spaces and formatting characters.<p>
- *
+ * spaces and formatting characters.<br><br>
  * Note that the length parameter does not specify which components are to be formatted. The
  * components that are formatted depend on the length of time in the range.
  *
  * <li><i>clock</i> - specify that formatted times should use a 12 or 24 hour clock if the
- * format happens to include times. Valid values are "12" and "24".<p>
- *
+ * format happens to include times. Valid values are "12" and "24".<br><br>
  * In some locales, both clocks are used. For example, in en_US, the general populace uses
  * a 12 hour clock with am/pm, but in the US military or in nautical or aeronautical or
  * scientific writing, it is more common to use a 24 hour clock. This property allows you to
- * construct a formatter that overrides the default for the locale.<p>
- *
+ * construct a formatter that overrides the default for the locale.<br><br>
  * If this property is not specified, the default is to use the most widely used convention
  * for the locale.
  * <li>onLoad - a callback function to call when the date range format object is fully

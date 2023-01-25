@@ -282,8 +282,8 @@ var hardCodeData = {
             }
         }
     },
-    
-}   
+
+}
 
 function usage() {
     console.log("Usage: genunits [-h] [ locale_data_dir ]\n" +
@@ -924,9 +924,9 @@ cldrCore.forEach(function(locale) {
         var data = require(pathName);
         var localeData = {};
         var l = new Locale(locale);
-    
+
         localeData = frameUnits(data, locale, localeData);
-    
+
         // now special case for the root
         if (locale === "und") {
             writeUnits(localeData);

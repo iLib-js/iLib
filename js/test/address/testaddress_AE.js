@@ -1,6 +1,6 @@
 /*
  * testaddress_AE.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ module.exports.testaddress_AE = {
     testParseAEAddressNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١\nدبي\nالإمارات العربية المتحدة", {locale: 'ar-AE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١");
         test.equal(parsedAddress.locality, "دبي");
@@ -47,11 +47,11 @@ module.exports.testaddress_AE = {
         test.equal(parsedAddress.countryCode, "AE");
         test.done();
     },
-    
+
     testParseAEAddressManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("تاج قصر الفندق\nصندوق البريد بالبوسطة\n٤٢٢١١\nدبي\nالإمارات العربية المتحدة\n\n", {locale: 'ar-AE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "تاج قصر الفندق, صندوق البريد بالبوسطة, ٤٢٢١١");
         test.equal(parsedAddress.locality, "دبي");
@@ -61,11 +61,11 @@ module.exports.testaddress_AE = {
         test.equal(parsedAddress.countryCode, "AE");
         test.done();
     },
-    
+
     testParseAEAddressOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١ دبي الإمارات العربية المتحدة", {locale: 'ar-AE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١");
         test.equal(parsedAddress.locality, "دبي");
@@ -75,12 +75,12 @@ module.exports.testaddress_AE = {
         test.equal(parsedAddress.countryCode, "AE");
         test.done();
     },
-    
-    
+
+
     testParseAEAddressNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١ دبي الإمارات العربية المتحدة", {locale: 'ar-AE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١");
         test.equal(parsedAddress.locality, "دبي");
@@ -90,15 +90,15 @@ module.exports.testaddress_AE = {
         test.equal(parsedAddress.countryCode, "AE");
         test.done();
     },
-    
-    
+
+
     testParseAEAddressFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١\nدبي\nUnited Arab Emirates", {locale: 'en-US'});
-        
+
         // the country name is in English because this address is for a contact in a US database
-        
-        
+
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١");
         test.equal(parsedAddress.locality, "دبي");
@@ -108,9 +108,9 @@ module.exports.testaddress_AE = {
         test.equal(parsedAddress.countryCode, "AE");
         test.done();
     },
-    
-    
-    
+
+
+
     testFormatAddressAESANative: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -121,13 +121,13 @@ module.exports.testaddress_AE = {
             country: "الإمارات العربية المتحدة",
             countryCode: "AE"
         }, {locale: 'ar-AE'});
-        
+
         var expected = "فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١\nدبي\nالإمارات العربية المتحدة";
         var formatter = new AddressFmt({locale: 'ar-AE'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressAEFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -138,11 +138,11 @@ module.exports.testaddress_AE = {
             country: "United Arab Emirates",
             countryCode: "AE"
         }, {locale: 'en-US'});
-        
+
         var expected = "تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١\nدبي\nUnited Arab Emirates";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

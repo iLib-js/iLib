@@ -1,6 +1,6 @@
 /*
  * phonefmt_LU.js - Test the phonefmt_LU Style.
- * 
+ *
  * Copyright © 2014-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 if (typeof(PhoneNumber) === "undefined") {
     var PhoneNumber = require("../../lib/PhoneNumber.js");
 }
@@ -40,16 +40,16 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "223456"
             }),
             expected = "22 34 56";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "default"});
         formatted = fmt.format(parsed);
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
-    
+
     testFormatNLLUStyle1: function(test) {
         test.expect(1);
         var formatted,
@@ -57,14 +57,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "223456"
             }),
             expected = "223456";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
         formatted = fmt.format(parsed);
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle2: function(test) {
         test.expect(1);
@@ -73,16 +73,16 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "223456"
             }),
             expected = "223-456";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
         formatted = fmt.format(parsed);
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
-    
+
     testFormatNLLUInternational: function(test) {
         test.expect(1);
         var formatted,
@@ -92,16 +92,16 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "123456"
             }),
             expected = "+352 123 456";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "default"});
         formatted = fmt.format(parsed);
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
-    
+
     testFormatNLLUInternationalAccessCode: function(test) {
         test.expect(1);
         var formatted,
@@ -111,16 +111,16 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "123456"
             }),
             expected = "00 352 123 456";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "default"});
         formatted = fmt.format(parsed);
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
-    
+
     testFormatNLLUMobile: function(test) {
         test.expect(1);
         var formatted,
@@ -129,16 +129,16 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "234567"
             }),
             expected = "661 234 567";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "default"});
         formatted = fmt.format(parsed);
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
-    
+
     testFormatNLLUMobileInternational: function(test) {
         test.expect(1);
         var formatted,
@@ -149,17 +149,17 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "234567"
             }),
             expected = "+352 661 234 567";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "default"});
         formatted = fmt.format(parsed);
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
-    
-    
+
+
     testFormatNLLUWithParamsSMSPartial: function(test) {
         test.expect(1);
         var formatted,
@@ -167,16 +167,16 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "8765"
             }),
             expected = "87 65";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
-    
+
     testFormatNLLUWithParamsSMSWhole: function(test) {
         test.expect(1);
         var formatted,
@@ -184,16 +184,16 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "8765"
             }),
             expected = "8765";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU"});
         formatted = fmt.format(parsed);
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
-    
+
     testFormatNLLUPremium: function(test) {
         test.expect(1);
         var formatted,
@@ -202,14 +202,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "12345"
             }),
             expected = "901 123 45";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "default"});
         formatted = fmt.format(parsed);
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUBlock: function(test) {
         test.expect(1);
@@ -219,18 +219,18 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "116"
             }),
             expected = "116 116";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "default"});
         formatted = fmt.format(parsed);
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
-    
-    
-    
+
+
+
     testFormatNLLUStyle0Partial1: function(test) {
         test.expect(1);
         var formatted,
@@ -238,14 +238,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "5"
             }),
             expected = "5";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle0Partial2: function(test) {
         test.expect(1);
@@ -254,14 +254,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "50"
             }),
             expected = "50";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle0Partial3: function(test) {
         test.expect(1);
@@ -270,14 +270,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "501"
             }),
             expected = "501";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle0Partial4: function(test) {
         test.expect(1);
@@ -286,14 +286,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "5012"
             }),
             expected = "50 12";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle0Partial5: function(test) {
         test.expect(1);
@@ -302,14 +302,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "50123"
             }),
             expected = "501 23";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle0Partial6: function(test) {
         test.expect(1);
@@ -318,14 +318,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "501234"
             }),
             expected = "50 12 34";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle0Partial7: function(test) {
         test.expect(1);
@@ -334,17 +334,17 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "5012345" // too long
             }),
             expected = "5012345";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
-    
-    
+
+
     testFormatNLLUStyle1Partial1: function(test) {
         test.expect(1);
         var formatted,
@@ -352,14 +352,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "5"
             }),
             expected = "5";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle1Partial2: function(test) {
         test.expect(1);
@@ -368,14 +368,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "50"
             }),
             expected = "50";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle1Partial3: function(test) {
         test.expect(1);
@@ -384,14 +384,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "501"
             }),
             expected = "501";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle1Partial4: function(test) {
         test.expect(1);
@@ -400,14 +400,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "5012"
             }),
             expected = "5012";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle1Partial5: function(test) {
         test.expect(1);
@@ -416,14 +416,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "50123"
             }),
             expected = "50123";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle1Partial6: function(test) {
         test.expect(1);
@@ -432,14 +432,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "501234"
             }),
             expected = "501234";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle1Partial7: function(test) {
         test.expect(1);
@@ -448,17 +448,17 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "5012345"
             }),
             expected = "5012345"; // too long
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
-    
-    
+
+
     testFormatNLLUStyle2Partial1: function(test) {
         test.expect(1);
         var formatted,
@@ -466,14 +466,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "5"
             }),
             expected = "5";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle2Partial2: function(test) {
         test.expect(1);
@@ -482,14 +482,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "50"
             }),
             expected = "50";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle2Partial3: function(test) {
         test.expect(1);
@@ -498,14 +498,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "501"
             }),
             expected = "501";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle2Partial4: function(test) {
         test.expect(1);
@@ -514,14 +514,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "5012"
             }),
             expected = "501-2";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle2Partial5: function(test) {
         test.expect(1);
@@ -530,14 +530,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "50123"
             }),
             expected = "501-23";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle2Partial6: function(test) {
         test.expect(1);
@@ -546,14 +546,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "501234"
             }),
             expected = "501-234";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     },
     testFormatNLLUStyle2Partial7: function(test) {
         test.expect(1);
@@ -562,14 +562,14 @@ module.exports.phonefmt_LU = {
                 subscriberNumber: "5012345" // too long
             }),
             expected = "5012345";
-        
+
         var fmt = new PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
         formatted = fmt.format(parsed, {partial: true});
-        
+
         test.equal(formatted, expected);
         test.done();
-        
-        
+
+
     }
-    
+
 };

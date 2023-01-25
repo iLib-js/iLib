@@ -1,7 +1,7 @@
 /*
- * testcm_CN.js - Test the charset mapping routines for the various Chinese 
+ * testcm_CN.js - Test the charset mapping routines for the various Chinese
  * character sets
- * 
+ *
  * Copyright © 2014-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -67,10 +67,10 @@ var testDataCN = {
             0x68, // h
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x61, // a
             0x20, //
             0x74, // t
@@ -81,11 +81,11 @@ var testDataCN = {
         // bopomofo
         "ㄌㄞㄓㄡㄕㄣ": [
             0xa3, 0x7b, // ㄌ
-            0xa3, 0xaf, // ㄞ 
-            0xa3, 0xa4, // ㄓ 
-            0xa3, 0xb2, // ㄡ 
-            0xa3, 0xa6, // ㄕ 
-            0xa3, 0xb4  // ㄣ 
+            0xa3, 0xaf, // ㄞ
+            0xa3, 0xa4, // ㄓ
+            0xa3, 0xb2, // ㄡ
+            0xa3, 0xa6, // ㄕ
+            0xa3, 0xb4  // ㄣ
         ],
         // han
         "仃人埋朋娛": [
@@ -93,7 +93,7 @@ var testDataCN = {
             0xa4, 0x48, // 人
             0xae, 0x49, // 埋
             0xaa, 0x42, // 朋
-            0xae, 0x54  // 娛 
+            0xae, 0x54  // 娛
         ],
         // greek
         "Ελλασ": [
@@ -111,10 +111,10 @@ var testDataCN = {
             0x68, // h
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x61, // a
             0x20, //
             0x74, // t
@@ -125,23 +125,23 @@ var testDataCN = {
         // bopomofo
         "ㄌㄞㄓㄡㄕㄣ": [
                0xa8, 0xcc,  // ㄌ
-               0xa8, 0xde,  // ㄞ 
-               0xa8, 0xd3,  // ㄓ 
-               0xa8, 0xe1,  // ㄡ 
-               0xa8, 0xd5, // ㄕ 
-               0xa8, 0xe3  // ㄣ 
+               0xa8, 0xde,  // ㄞ
+               0xa8, 0xd3,  // ㄓ
+               0xa8, 0xe1,  // ㄡ
+               0xa8, 0xd5, // ㄕ
+               0xa8, 0xe3  // ㄣ
         ],
         // han
         "仃人埋朋娛": [
-            0xd8, 0xea, // 仃 
+            0xd8, 0xea, // 仃
             0xc8, 0xcb, // 人
             0xc2, 0xf1, // 埋
-            0xc5, 0xf3, // 朋 
+            0xc5, 0xf3, // 朋
             0x8a, 0xca  // 娛
         ],
         // greek
         "Ελλασ": [
-            0xa6, 0xa5, // Ε 
+            0xa6, 0xa5, // Ε
             0xa6, 0xcb, // λ
             0xa6, 0xcb, // λ
             0xa6, 0xc1, // α
@@ -155,10 +155,10 @@ var testDataCN = {
             0x68, // h
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x61, // a
             0x20, //
             0x74, // t
@@ -169,11 +169,11 @@ var testDataCN = {
         // bopomofo
         "ㄌㄞㄓㄡㄕㄣ": [
             0xa8, 0xcc, // ㄌ
-            0xa8, 0xde, // ㄞ 
-            0xa8, 0xd3, // ㄓ 
-            0xa8, 0xe1, // ㄡ 
-            0xa8, 0xd5, // ㄕ 
-            0xa8, 0xe3  // ㄣ 
+            0xa8, 0xde, // ㄞ
+            0xa8, 0xd3, // ㄓ
+            0xa8, 0xe1, // ㄡ
+            0xa8, 0xd5, // ㄕ
+            0xa8, 0xe3  // ㄣ
         ],
         // han
         "仃人埋朋": [
@@ -190,10 +190,10 @@ var testDataCN = {
             0x68, // h
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x69, // i
             0x73, // s
-            0x20, // 
+            0x20, //
             0x61, // a
             0x20, //
             0x74, // t
@@ -216,7 +216,7 @@ var testDataCN = {
             0xc8, 0xcb, // 人
             0xc2, 0xf1, // 埋
             0xc5, 0xf3, // 朋
-            0x8a, 0xca  // 娛 
+            0x8a, 0xca  // 娛
         ],
         // greek
         "Ελλασ": [
@@ -251,7 +251,7 @@ module.exports.testcm_CN = {
         }
         test.done();
     },
-    
+
     testCharmapCNMapToUnicode: function(test) {
         for (var charset in testDataCN) {
             var cm = CharmapFactory({
@@ -266,7 +266,7 @@ module.exports.testcm_CN = {
         }
         test.done();
     },
-    
+
     testCharmapCNMapToNative: function(test) {
         // console.log("testCharmapCNMapToNative: called");
         for (var charset in testDataCN) {
@@ -277,13 +277,13 @@ module.exports.testcm_CN = {
             test.ok(typeof(cm) !== "undefined");
             // console.log("testCharmapCNMapToNative: charmap created successfully. Mapping is: ");
             // console.dir(cm.map.from["ㄌ"]);
-            
+
             var data = testDataCN[charset];
             for (var element in data) {
                 // console.log("testCharmapCNMapToNative: now testing element " + element);
                 var array = cm.mapToNative(element);
                 // console.log("testCharmapCNMapToNative: cm.mapToNative returned " + JSON.stringify(array));
-                
+
                 for (var i = 0; i < data[element].length; i++) {
                     // console.log("testCharmapCNMapToNative: testing " + charset + " element " + element + " array index " + i);
                     test.equal(data[element][i], array[i], "testing " + charset + " element " + element + " array index " + i + "\n");
@@ -292,6 +292,6 @@ module.exports.testcm_CN = {
         }
         test.done();
     }
-    
-    
+
+
 };

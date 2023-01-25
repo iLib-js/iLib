@@ -1,6 +1,6 @@
 /*
  * testhan.js - test the Han Chinese lunar calendar
- * 
+ *
  * Copyright © 2014-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -186,7 +186,7 @@ module.exports.testhan = {
         var l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro1.length; i++) {
-        
+
             // console.log("testing jd=" + testDatesChineseAstro1[i][0]);
             //try {
             var jd = testDatesChineseAstro1[i][0];
@@ -195,15 +195,15 @@ module.exports.testhan = {
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}
-        } 
+        }
         test.done();
     },
-    
+
     testCurrentMajorSolarTerm: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro1.length; i++) {
-        
+
             // console.log("testing jd=" + testDatesChineseAstro1[i][0]);
             //try {
             var jd = testDatesChineseAstro1[i][0];
@@ -212,15 +212,15 @@ module.exports.testhan = {
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}
-        } 
+        }
         test.done();
     },
-    
+
     testHanNextSolarLongitude: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro1.length; i++) {
-        
+
             // console.log("testing jd=" + testDatesChineseAstro1[i][0]);
             //try {
             var jd = testDatesChineseAstro1[i][0];
@@ -229,15 +229,15 @@ module.exports.testhan = {
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}
-        } 
+        }
         test.done();
     },
-    
+
     testNewMoonBefore: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro2.length; i++) {
-        
+
             // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
             //try {
             var jd = testDatesChineseAstro2[i][0];
@@ -246,15 +246,15 @@ module.exports.testhan = {
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}
-        } 
+        }
         test.done();
     },
-    
+
     testNewMoonOnOrAfter: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro2.length; i++) {
-        
+
             // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
             //try {
             var jd = testDatesChineseAstro2[i][0];
@@ -263,15 +263,15 @@ module.exports.testhan = {
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}
-        } 
+        }
         test.done();
     },
-    
+
     testNoMajorST: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro2.length; i++) {
-        
+
             // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
             //try {
             var jd = testDatesChineseAstro2[i][0];
@@ -280,15 +280,15 @@ module.exports.testhan = {
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}
-        } 
+        }
         test.done();
     },
-    
+
     testMajorSTOnOrAfter: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro2.length; i++) {
-        
+
             // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
             //try {
             var jd = testDatesChineseAstro2[i][0];
@@ -297,155 +297,155 @@ module.exports.testhan = {
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}
-        } 
+        }
         test.done();
     },
-    
+
     testHanGetNumMonths4687: function(test) {
         test.expect(1);
         var cal = new HanCal();
-        
+
         test.equal(cal.getNumMonths(4687), 13);
         test.done();
     },
-    
+
     testHanGetMonLength1: function(test) {
         test.expect(1);
         var cal = new HanCal();
-        
+
         test.equal(cal.getMonLength(1, 4687), 29);
         test.done();
     },
-    
+
     testHanGetMonLength2: function(test) {
         test.expect(1);
         var cal = new HanCal();
-        
+
         test.equal(cal.getMonLength(2, 4687), 30);
         test.done();
     },
-    
+
     testHanGetMonLength3: function(test) {
         test.expect(1);
         var cal = new HanCal();
-        
+
         test.equal(cal.getMonLength(3, 4687), 29);
         test.done();
     },
-    
+
     testHanGetMonLength4: function(test) {
         test.expect(1);
         var cal = new HanCal();
-        
+
         test.equal(cal.getMonLength(4, 4687), 29);
         test.done();
     },
-    
+
     testHanGetMonLength5: function(test) {
         test.expect(1);
         var cal = new HanCal();
-        
+
         test.equal(cal.getMonLength(5, 4687), 30);
         test.done();
     },
-    
+
     testHanGetMonLength6: function(test) {
         test.expect(1);
         var cal = new HanCal();
-        
+
         test.equal(cal.getMonLength(6, 4687), 29);
         test.done();
     },
-    
+
     testHanGetMonLength7: function(test) {
         test.expect(1);
         var cal = new HanCal();
-        
+
         test.equal(cal.getMonLength(7, 4687), 29);
         test.done();
     },
-    
+
     testHanGetMonLength8: function(test) {
         test.expect(1);
         var cal = new HanCal();
-        
+
         test.equal(cal.getMonLength(8, 4687), 30);
         test.done();
     },
-    
+
     testHanGetMonLength9: function(test) {
         test.expect(1);
         var cal = new HanCal();
-        
+
         test.equal(cal.getMonLength(9, 4687), 29);
         test.done();
     },
-    
+
     testHanGetMonLength10: function(test) {
         test.expect(1);
         var cal = new HanCal();
-        
+
         test.equal(cal.getMonLength(10, 4687), 30);
         test.done();
     },
-    
+
     testHanGetMonLength11: function(test) {
         test.expect(1);
         var cal = new HanCal();
-        
+
         test.equal(cal.getMonLength(11, 4687), 30);
         test.done();
     },
-    
+
     testHanGetMonLength12: function(test) {
         test.expect(1);
         var cal = new HanCal();
-        
+
         test.equal(cal.getMonLength(12, 4687), 30);
         test.done();
     },
-    
+
     testHanGetMonLength13: function(test) {
         test.expect(1);
         var cal = new HanCal();
-        
+
         test.equal(cal.getMonLength(13, 4687), 30);
         test.done();
     },
-    
+
     testHanIsLeapYear: function(test) {
         var cal = new HanCal();
-        
+
         for (var i = 0; i < hanLeapYears.length; i++) {
             var n = hanLeapYears[i][0];
             test.equal(cal.isLeapYear(n), hanLeapYears[i][3]);
         }
         test.done();
     },
-    
+
     testHanGetNumMonths: function(test) {
         var cal = new HanCal();
-        
+
         for (var i = 0; i < hanLeapYears.length; i++) {
             var n = hanLeapYears[i][0];
             test.equal(cal.getNumMonths(n), hanLeapYears[i][3] ? 13 : 12);
         }
         test.done();
     },
-    
+
     testHanGetLeapMonth: function(test) {
         var cal = new HanCal();
-        
+
         for (var i = 0; i < hanLeapYears.length; i++) {
             var n = hanLeapYears[i][0];
             test.equal(cal.getLeapMonth(n), hanLeapYears[i][4]);
         }
         test.done();
     },
-    
+
     testHanNewYears: function(test) {
         var cal = new HanCal();
-        
+
         for (var i = 0; i < hanLeapYears.length; i++) {
             var n = hanLeapYears[i][0];
             test.equal(cal.newYears(n), hanLeapYears[i][1]);

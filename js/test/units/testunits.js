@@ -1,6 +1,6 @@
 /*
  * testunits.js - test the String object
- * 
+ *
  * Copyright © 2012-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,96 +37,96 @@ module.exports.testunits = {
             amount: 5,
             unit: "kilometers"
         });
-    
+
         test.ok(measurement !== null);
         test.equal(measurement.getMeasure(), "length");
         test.done();
     },
-    
+
     testMeasurementLength2: function(test) {
         test.expect(2);
         var measurement = MeasurementFactory({
             amount: 5,
             unit: "miles"
         });
-    
+
         test.ok(measurement !== null);
         test.equal(measurement.getMeasure(), "length");
         test.done();
     },
-    
+
     testMeasurementSpeed1: function(test) {
         test.expect(2);
         var measurement = MeasurementFactory({
             amount: 5,
             unit: "miles/hour"
         });
-    
+
         test.ok(measurement !== null);
         test.equal(measurement.getMeasure(), "velocity");
         test.done();
     },
-    
+
     testMeasurementSpeed2: function(test) {
         test.expect(2);
         var measurement = MeasurementFactory({
             amount: 5,
             unit: "meters/s"
         });
-    
+
         test.ok(measurement !== null);
         test.equal(measurement.getMeasure(), "velocity");
         test.done();
     },
-    
+
     testMeasurementTemperature1: function(test) {
         test.expect(2);
         var measurement = MeasurementFactory({
             amount: 5,
             unit: "C"
         });
-    
+
         test.ok(measurement !== null);
         test.equal(measurement.getMeasure(), "temperature");
         test.done();
     },
-    
+
     testMeasurementTemperature2: function(test) {
         test.expect(2);
         var measurement = MeasurementFactory({
             amount: 5,
             unit: "F"
         });
-    
+
         test.ok(measurement !== null);
         test.equal(measurement.getMeasure(), "temperature");
         test.done();
     },
-    
+
     testMeasurementDigitalStorage1: function(test) {
         test.expect(2);
         var measurement = MeasurementFactory({
             amount: 100,
             unit: "mb"
         });
-    
+
         test.ok(measurement !== null);
         test.equal(measurement.getMeasure(), "digitalStorage");
         test.done();
     },
-    
+
     testMeasurementDigitalStorage2: function(test) {
         test.expect(2);
         var measurement = MeasurementFactory({
             amount: 1204,
             unit: "tB"
         });
-    
+
         test.ok(measurement !== null);
         test.equal(measurement.getMeasure(), "digitalStorage");
         test.done();
     },
-    
+
     testMeasurementConstructorLengths: function(test) {
         var measures = [
             "micrometer",
@@ -145,13 +145,13 @@ module.exports.testunits = {
             "foot",
             "inch"
         ];
-    
+
         for (var measure in measures) {
             var measurement = MeasurementFactory({
                 amount: 100,
                 unit: measures[measure]
             });
-        
+
             test.ok(typeof(measurement) !== "undefined");
             test.equal(measurement.getMeasure(), "length");
             test.equal(measurement.getAmount(), 100);
@@ -159,22 +159,22 @@ module.exports.testunits = {
         }
         test.done();
     },
-    
+
     testMeasurementConstructorSpeeds: function(test) {
         var measures = [
             "foot-per-second",
             "meter-per-second",
             "kilometer-per-hour",
             "mile-per-hour",
-            "knot"        
+            "knot"
         ];
-    
+
         for (var measure in measures) {
             var measurement = MeasurementFactory({
                 amount: 100,
                 unit: measures[measure]
             });
-        
+
             test.ok(typeof(measurement) !== "undefined");
             test.equal(measurement.getMeasure(), "velocity");
             test.equal(measurement.getAmount(), 100);
@@ -182,20 +182,20 @@ module.exports.testunits = {
         }
         test.done();
     },
-    
+
     testMeasurementConstructorTemperature: function(test) {
         var measures = [
             "celsius",
             "kelvin",
             "fahrenheit"
         ];
-    
+
         for (var measure in measures) {
             var measurement = MeasurementFactory({
                 amount: 100,
                 unit: measures[measure]
             });
-        
+
             test.ok(typeof(measurement) !== "undefined");
             test.equal(measurement.getMeasure(), "temperature");
             test.equal(measurement.getAmount(), 100);
@@ -203,7 +203,7 @@ module.exports.testunits = {
         }
         test.done();
     },
-    
+
     testMeasurementConstructorDigitalStorage: function(test) {
         var measures = [
             "bit",
@@ -219,13 +219,13 @@ module.exports.testunits = {
             "petabit",
             "petabyte"
         ];
-    
+
         for (var measure in measures) {
             var measurement = MeasurementFactory({
                 amount: 100,
                 unit: measures[measure]
             });
-        
+
             test.ok(typeof(measurement) !== "undefined");
             test.equal(measurement.getMeasure(), "digitalStorage");
             test.equal(measurement.getAmount(), 100);
@@ -233,7 +233,7 @@ module.exports.testunits = {
         }
         test.done();
     },
-    
+
     testMeasurementConstructorDigitalStorageCaseInsensitive: function(test) {
         var measures = [
             "bit",
@@ -249,13 +249,13 @@ module.exports.testunits = {
             "petabit",
             "petabyte"
         ];
-    
+
         for (var measure in measures) {
             var measurement = MeasurementFactory({
                 amount: 100,
                 unit: measures[measure]
             });
-        
+
             test.ok(typeof(measurement) !== "undefined");
             test.equal(measurement.getMeasure(), "digitalStorage");
             test.equal(measurement.getAmount(), 100);
@@ -263,5 +263,5 @@ module.exports.testunits = {
         }
         test.done();
     }
-    
+
 };

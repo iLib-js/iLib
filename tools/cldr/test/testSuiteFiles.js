@@ -1,6 +1,6 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
- * 
+ *
  * Copyright © 2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

@@ -96,7 +96,7 @@ module.exports.testunitfmt_zu_ZA = {
         });
 
         var uf = new UnitFmt({
-            locale: "zu-ZA", 
+            locale: "zu-ZA",
             autoConvert:true,
             length:"short"
         });
@@ -113,7 +113,7 @@ module.exports.testunitfmt_zu_ZA = {
         });
 
         var uf = new UnitFmt({
-            locale: "zu-ZA", 
+            locale: "zu-ZA",
             autoConvert: true,
             length: "long"
         });
@@ -130,7 +130,7 @@ module.exports.testunitfmt_zu_ZA = {
         });
 
         var uf = new UnitFmt({
-            locale: "zu-ZA", 
+            locale: "zu-ZA",
             autoConvert: true,
             length: "short"
         });
@@ -147,7 +147,7 @@ module.exports.testunitfmt_zu_ZA = {
         });
 
         var uf = new UnitFmt({
-            locale: "zu-ZA", 
+            locale: "zu-ZA",
             autoConvert: true,
             length: "long"
         });

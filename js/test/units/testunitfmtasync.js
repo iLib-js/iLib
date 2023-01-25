@@ -1,6 +1,6 @@
 /*
  * testunitsasync.js - test the units formatter object
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,11 +39,11 @@ module.exports.testunitfmtasync = {
             autoConvert: false,
             sync: false,
             onLoad: function(fmt) {
-                var str = fmt.format(m);    
+                var str = fmt.format(m);
                 test.equal(str, "3 kilometers");
                 test.done();
             }
-        });  
+        });
     },
 
     testUnitFormatWithoutScale5: function(test) {
@@ -54,15 +54,15 @@ module.exports.testunitfmtasync = {
         });
 
         new UnitFmt({
-            autoScale: false, 
+            autoScale: false,
             autoConvert:false,
             sync: false,
             onLoad: function(fmt) {
-                var str = fmt.format(m1);    
+                var str = fmt.format(m1);
                 test.equal(str, "1,233,453 kilowatt-hours");
                 test.done();
             }
-        }); 
+        });
     },
 
     testUnitFormatWithScale11: function(test) {
@@ -80,7 +80,7 @@ module.exports.testunitfmtasync = {
                 test.equal(str, "2 krunghoonfoop");
                 test.done();
             }
-        }); 
+        });
     },
 
     testUnitFormatArea2: function(test) {

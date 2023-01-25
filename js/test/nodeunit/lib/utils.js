@@ -16,7 +16,7 @@ var async = require('../deps/async'),
 
 
 /**
- * Detect if coffee-script, iced-coffeescript, or streamline are available and 
+ * Detect if coffee-script, iced-coffeescript, or streamline are available and
  * the respective file extensions to the search filter in modulePaths if it is.
  */
 

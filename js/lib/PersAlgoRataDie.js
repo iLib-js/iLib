@@ -87,10 +87,10 @@ PersAlgoRataDie.prototype.constructor = PersAlgoRataDie;
 PersAlgoRataDie.prototype.epoch = 1948319.5;
 
 /**
+ * the cumulative lengths of each month, for a non-leap year
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month, for a non-leap year
  */
 PersAlgoRataDie.cumMonthLengths = [
     0,    // Farvardin

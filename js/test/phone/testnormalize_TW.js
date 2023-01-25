@@ -1,6 +1,6 @@
 /*
  * normalize.js - test phonenumber normalize function()
- * 
+ *
  * Copyright © 2014-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,47 +35,47 @@ module.exports.normalize_TW = {
         test.expect(1);
         var parsed = new PhoneNumber("002 31 456 3453434", {locale: 'zh-TW'});
         var expected = "+314563453434";
-        
+
         test.equal(parsed.normalize({locale: 'zh-TW'}), expected); // 'zh-TW'
         test.done();
     },
-    
+
     testTWIDDPrefixAlreadyPlus: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("+31 456 3453434", {locale: 'zh-TW'});
         var expected = "+314563453434";
-        
+
         test.equal(parsed.normalize({locale: 'zh-TW'}), expected); // 'zh-TW'
         test.done();
     },
-    
+
     testTWWithNoLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("00231 456 3453434", {locale: 'zh-TW'});
         var expected = "+314563453434";
-        
+
         test.equal(parsed.normalize({}), expected);
         test.done();
     },
-    
+
     testTWNoHints: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("00231 456 3453434", {locale: 'zh-TW'});
         var expected = "+314563453434";
-        
+
         test.equal(parsed.normalize(), expected); // 'zh-TW'
         test.done();
     },
-    
+
     testTWWithNoHintsNoLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("00231 456 3453434", {locale: 'zh-TW'});
         var expected = "+314563453434";
-        
+
         test.equal(parsed.normalize(), expected);
         test.done();
     },
-    
+
     testTWLDNumberUsingTWMCC: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("02-24766830", {locale: 'zh-TW'});
@@ -83,11 +83,11 @@ module.exports.normalize_TW = {
             mcc: "466"
         };
         var expected = "+886224766830";
-        
+
         test.equal(parsed.normalize(hints), expected); // 'zh-TW'
         test.done();
     },
-    
+
     testTWLDNumberUsingTWMCCOtherLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("02-24766830", {locale: 'zh-TW'});
@@ -96,11 +96,11 @@ module.exports.normalize_TW = {
             locale: 'de-DE'
         };
         var expected = "+886224766830";
-        
+
         test.equal(parsed.normalize(hints), expected); // 'zh-TW'
         test.done();
     },
-    
+
     testTWLDNumberUsingTWMCC: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
@@ -108,11 +108,11 @@ module.exports.normalize_TW = {
             mcc: "466" //zh-TW
         };
         var expected = "+492302654321";
-        
+
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-    
+
     testTWAreaCodeFromHintTW: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("2435674", {locale: 'zh-TW'});
@@ -120,11 +120,11 @@ module.exports.normalize_TW = {
             defaultAreaCode: "49"
         };
         var expected = "+886492435674";
-        
+
         test.equal(parsed.normalize(hints), expected); // 'zh-TW'
         test.done();
     },
-    
+
     testTWAreaCodeIgnoreHintTW: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("05-531-5123", {locale: 'zh-TW'});
@@ -132,20 +132,20 @@ module.exports.normalize_TW = {
             defaultAreaCode: "650"
         };
         var expected = "+88655315123";
-        
+
         test.equal(parsed.normalize(hints), expected); // 'zh-TW'
         test.done();
     },
-    
+
     testTWNoAreaCodeAndNoCountry: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("531-5123", {locale: 'zh-TW'});
         var expected = "5315123";
-        
+
         test.equal(parsed.normalize(), expected);
         test.done();
     },
-    
+
     testTWAssistedDialingLocalToLocalUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("5315123", {locale: 'zh-TW'});
@@ -156,11 +156,11 @@ module.exports.normalize_TW = {
             assistedDialing: true
         };
         var expectedString = "5315123";
-    
-        test.equal(phone.normalize(hints), expectedString); // 'zh-TW'    
+
+        test.equal(phone.normalize(hints), expectedString); // 'zh-TW'
         test.done();
     },
-    
+
     testTWAssistedDialingLocalToLocalUMTSAddTrunkOpen: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+88655315123", {locale: 'zh-TW'});
@@ -170,10 +170,10 @@ module.exports.normalize_TW = {
             assistedDialing: true
         };
         var expectedString = "055315123";
-        test.equal(phone.normalize(hints), expectedString); // 'zh-TW'    
+        test.equal(phone.normalize(hints), expectedString); // 'zh-TW'
         test.done();
     },
-    
+
     testTWAssistedDialingLocalToLocalCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("5315123", {locale: 'zh-TW'});
@@ -184,11 +184,11 @@ module.exports.normalize_TW = {
             assistedDialing: true
         };
         var expectedString = "5315123";
-    
-        test.equal(phone.normalize(hints), expectedString); 
+
+        test.equal(phone.normalize(hints), expectedString);
         test.done();
     },
-    
+
     testTWAssistedDialingLocalToLocalCDMAAddTrunkOpen: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+886492315123", {locale: 'zh-TW'});
@@ -199,11 +199,11 @@ module.exports.normalize_TW = {
             assistedDialing: true
         };
         var expectedString = "0492315123";
-    
-        test.equal(phone.normalize(hints), expectedString); 
+
+        test.equal(phone.normalize(hints), expectedString);
         test.done();
     },
-    
+
     testTWAssistedDialingIntlToLocalUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("2315123", {locale: 'zh-TW'});
@@ -214,11 +214,11 @@ module.exports.normalize_TW = {
             assistedDialing: true
         };
         var expectedString = "+886492315123";
-    
-        test.equal(phone.normalize(hints), expectedString); 
+
+        test.equal(phone.normalize(hints), expectedString);
         test.done();
     },
-    
+
     testTWAssistedDialingIntlToLDUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("0492315123", {locale: 'zh-TW'});
@@ -229,11 +229,11 @@ module.exports.normalize_TW = {
             assistedDialing: true
         };
         var expectedString = "+886492315123";
-    
-        test.equal(phone.normalize(hints), expectedString); // 'zh-TW'    
+
+        test.equal(phone.normalize(hints), expectedString); // 'zh-TW'
         test.done();
     },
-    
+
     testTWAssistedDialingIntlToLocalCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("2315123", {locale: 'zh-TW'});
@@ -244,11 +244,11 @@ module.exports.normalize_TW = {
             assistedDialing: true
         };
         var expectedString = "0011886492315123";
-    
-        test.equal(phone.normalize(hints), expectedString); // 'zh-TW'    
+
+        test.equal(phone.normalize(hints), expectedString); // 'zh-TW'
         test.done();
     },
-    
+
     testTWAssistedDialingIntlToLDCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("0492315123", {locale: 'zh-TW'});
@@ -259,10 +259,10 @@ module.exports.normalize_TW = {
             assistedDialing: true
         };
         var expectedString = "00886492315123";
-    
-        test.equal(phone.normalize(hints), expectedString); // 'zh-TW'    
+
+        test.equal(phone.normalize(hints), expectedString); // 'zh-TW'
         test.done();
     }
-    
-    
+
+
 };

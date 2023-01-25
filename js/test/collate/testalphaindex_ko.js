@@ -347,7 +347,7 @@ module.exports.testalphaindex_ko = {
             "딸기",
             "고구마",
             "도라지",
-	        "고구마",
+            "고구마",
             "컵",
             "자석",
             "고무",
@@ -516,7 +516,7 @@ module.exports.testalphaindex_ko = {
 
          var items = [
           "Apple",
-          "Banana",  
+          "Banana",
             "김철수",
             "김영희",
             "송현경",
@@ -542,7 +542,7 @@ module.exports.testalphaindex_ko = {
         items.forEach(function(item) {
             ai.addElement(item);
         });
-       
+
         var expected = [
             {
                 label: "ㄱ",
@@ -791,7 +791,7 @@ module.exports.testalphaindex_ko = {
 
         test.equal("#", ai.getOverflowLabel());
         test.equal("*", ai.getUnderflowLabel());
-        
+
         test.done();
     },
 
@@ -822,7 +822,7 @@ module.exports.testalphaindex_ko = {
 
         test.ok(ai);
         test.ok(ai.getCollator());
-        
+
         test.done();
     },
 
@@ -860,7 +860,7 @@ module.exports.testalphaindex_ko = {
             "@@",
             "$$$"
         ];
-        
+
         ai.addLabels(["@@","$$$"]);
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
@@ -879,7 +879,7 @@ module.exports.testalphaindex_ko = {
             "ㄱ",
             "ㄲ",
             "@@",
-            "$$$", 
+            "$$$",
             "ㄴ",
             "ㄷ",
             "ㄸ",
@@ -899,7 +899,7 @@ module.exports.testalphaindex_ko = {
             "ㅎ",
             "#"
         ];
-        
+
         ai.addLabels(["@@","$$$"], 3);
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
@@ -916,7 +916,7 @@ module.exports.testalphaindex_ko = {
 
         var items = [
             "Apple",
-            "Banana",  
+            "Banana",
             "김철수",
             "김영희",
             "송현경",
@@ -985,7 +985,7 @@ module.exports.testalphaindex_ko = {
                 elements: ["Banana"]
             }
         ]
-        
+
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
@@ -1150,7 +1150,7 @@ module.exports.testalphaindex_ko = {
             }
 
         ];
-        
+
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },

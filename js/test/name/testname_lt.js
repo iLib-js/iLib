@@ -1,6 +1,6 @@
 /*
  * testname_lt_LT.js - test the name object in Lithunaian
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,83 +37,83 @@ module.exports.testname_lt = {
         test.expect(2);
         var parsed = new Name("Gediminas Baravykas", {locale: 'lt-LT'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Gediminas",
             familyName: "Baravykas"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitle_lt_LT: function(test) {
         test.expect(2);
         var parsed = new Name("Gediminas Baravykas jaunesnysis", {locale: 'lt-LT'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             suffix: "jaunesnysis",
             givenName: "Gediminas",
             familyName: "Baravykas"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitleWithFamilyOnly_lt_LT: function(test) {
         test.expect(2);
         var parsed = new Name("inspektorius Baravykas", {locale: 'lt-LT'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "inspektorius",
             familyName: "Baravykas"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseEverything_lt_LT: function(test) {
         test.expect(2);
         var parsed = new Name("ponas ir ponia Baravykas", {locale: 'lt-LT'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "ponas ir ponia",
             familyName: "Baravykas"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseprefix_lt_LT: function(test) {
         test.expect(2);
         var parsed = new Name("ponas Gediminas Baravykas", {locale: 'lt-LT'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "ponas",
             givenName: "Gediminas",
             familyName: "Baravykas"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_lt_LT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -121,18 +121,18 @@ module.exports.testname_lt = {
             familyName: "Baravykas"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'lt-LT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Gediminas Baravykas";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_lt_LT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -140,18 +140,18 @@ module.exports.testname_lt = {
             familyName: "Baravykas"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'lt-LT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Gediminas Baravykas";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_lt_LT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -160,18 +160,18 @@ module.exports.testname_lt = {
             suffix: "asdf"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'lt-LT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Gediminas Baravykas";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSurname_lt_LT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -179,18 +179,18 @@ module.exports.testname_lt = {
             familyName: "Baravykas"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'lt-LT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "ponas ir ponia Baravykas";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_lt_LT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -200,18 +200,18 @@ module.exports.testname_lt = {
             suffix: "daktaro"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'lt-LT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "profesorius Gediminas Baravykas daktaro";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_lt_LT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -220,18 +220,18 @@ module.exports.testname_lt = {
             familyName: "Baravykas"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'lt-LT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Gediminas Baravykas";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_lt_LT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -240,18 +240,18 @@ module.exports.testname_lt = {
             familyName: "Baravykas"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'lt-LT'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Gediminas Baravykas";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_lt_LT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -265,13 +265,13 @@ module.exports.testname_lt = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "profesorius Gediminas Baravykas";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
+
+
+
 };

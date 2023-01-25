@@ -1,6 +1,6 @@
 /*
  * testname_ms_MY.js - test the name object in Malaysian
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,84 +37,84 @@ module.exports.testname_ms = {
         test.expect(2);
         var parsed = new Name("Carmen Soo", {locale: 'ms-MY'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Carmen",
             familyName: "Soo"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
-    
+
+
+
+
     testParseTitle_ms_MY: function(test) {
         test.expect(2);
         var parsed = new Name("Carmen Soo bersara", {locale: 'ms-MY'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             suffix: "bersara",
             givenName: "Carmen",
             familyName: "Soo"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitleWithFamilyOnly_ms_MY: function(test) {
         test.expect(2);
         var parsed = new Name("cik Soo", {locale: 'ms-MY'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "cik",
             familyName: "Soo"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseEverything_ms_MY: function(test) {
         test.expect(2);
         var parsed = new Name("encik dan cik Soo", {locale: 'ms-MY'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "encik dan cik",
             familyName: "Soo"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseprefix_ms_MY: function(test) {
         test.expect(2);
         var parsed = new Name("cik Carmen Soo", {locale: 'ms-MY'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "cik",
             givenName: "Carmen",
             familyName: "Soo"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_ms_MY: function(test) {
         test.expect(2);
         var name = new Name({
@@ -122,18 +122,18 @@ module.exports.testname_ms = {
             familyName: "Soo"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'ms-MY'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Carmen Soo";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_ms_MY: function(test) {
         test.expect(2);
         var name = new Name({
@@ -141,18 +141,18 @@ module.exports.testname_ms = {
             familyName: "Soo"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'ms-MY'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Carmen Soo";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_ms_MY: function(test) {
         test.expect(2);
         var name = new Name({
@@ -161,20 +161,20 @@ module.exports.testname_ms = {
             suffix: "asdf"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'ms-MY'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Carmen Soo";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testFormatSurname_ms_MY: function(test) {
         test.expect(2);
         var name = new Name({
@@ -182,18 +182,18 @@ module.exports.testname_ms = {
             familyName: "Soo"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'ms-MY'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "encik dan cik Soo";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_ms_MY: function(test) {
         test.expect(2);
         var name = new Name({
@@ -203,18 +203,18 @@ module.exports.testname_ms = {
             suffix: "bersara"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'ms-MY'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "pesuruhjaya Carmen Soo bersara";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_ms_MY: function(test) {
         test.expect(2);
         var name = new Name({
@@ -223,18 +223,18 @@ module.exports.testname_ms = {
             familyName: "Soo"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'ms-MY'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Carmen Soo";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_ms_MY: function(test) {
         test.expect(2);
         var name = new Name({
@@ -243,18 +243,18 @@ module.exports.testname_ms = {
             familyName: "Soo"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'ms-MY'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Carmen Soo";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_ms_MY: function(test) {
         test.expect(2);
         var name = new Name({
@@ -268,13 +268,13 @@ module.exports.testname_ms = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "pesuruhjaya Carmen Soo";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
+
+
+
 };

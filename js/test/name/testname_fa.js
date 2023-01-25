@@ -1,6 +1,6 @@
 /*
  * testname_fa.js - test the name object in Farsi
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,101 +37,101 @@ module.exports.testname_fa = {
         test.expect(2);
         var parsed = new Name("لیلا میلانی", {locale: 'fa-IR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             givenName: "لیلا",
             familyName: "میلانی"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseAdjunctNames_fa: function(test) {
         test.expect(2);
         var parsed = new Name("لیلا میلانی", {locale: 'fa-IR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =  {
             givenName: "لیلا",
             familyName: "میلانی"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseSingleNameWithPrefixAndAdjunct_fa: function(test) {
         test.expect(2);
         var parsed = new Name("آقای ﻭ خانم میلانی", {locale: 'fa-IR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             prefix: "آقای ﻭ خانم",
             familyName: "میلانی"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseTitle_fa: function(test) {
         test.expect(2);
         var parsed = new Name("لیلا میلانی ﺙﺎﻠﺛﺍ", {locale: 'fa-IR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =    {
             suffix: "ﺙﺎﻠﺛﺍ",
             givenName: "لیلا",
             familyName: "میلانی"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitleWithFamilyOnly_fa: function(test) {
         test.expect(2);
         var parsed = new Name("خانم میلانی", {locale: 'fa-IR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             prefix: "خانم",
             familyName: "میلانی"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseEverything_fa: function(test) {
         test.expect(2);
         var parsed = new Name("خانم لیلا میلانی", {locale: 'fa-IR'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =    {
             prefix: "خانم",
             givenName: "لیلا",
             familyName: "میلانی"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -139,18 +139,18 @@ module.exports.testname_fa = {
             familyName: "میلانی"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'fa-IR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "لیلا میلانی";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -158,18 +158,18 @@ module.exports.testname_fa = {
             familyName: "میلانی"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'fa-IR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "لیلا میلانی";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -178,18 +178,18 @@ module.exports.testname_fa = {
             suffix: "ﺙﺎﻠﺛﺍ"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'fa-IR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "لیلا میلانی";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -199,18 +199,18 @@ module.exports.testname_fa = {
             suffix: "ﺙﺎﻠﺛﺍ"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'fa-IR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "خانم لیلا میلانی ﺙﺎﻠﺛﺍ";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -219,18 +219,18 @@ module.exports.testname_fa = {
             familyName: "میلانی"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'fa-IR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "لیلا میلانی";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -239,18 +239,18 @@ module.exports.testname_fa = {
             familyName: "میلانی"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'fa-IR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "لیلا میلانی";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -264,13 +264,13 @@ module.exports.testname_fa = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "خانم لیلا میلانی";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameShort_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -279,18 +279,18 @@ module.exports.testname_fa = {
             familyName: "地"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'fa-IR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameMedium_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -299,18 +299,18 @@ module.exports.testname_fa = {
             familyName: "地"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'fa-IR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameLong_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -319,21 +319,21 @@ module.exports.testname_fa = {
             familyName: "地"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'fa-IR'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "小地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 };

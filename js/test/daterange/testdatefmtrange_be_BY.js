@@ -1,6 +1,6 @@
 /*
  * testdatefmtrange_be_BY.js - test the date range formatter object Belarussian/Belarus
- * 
+ *
  * Copyright © 2020-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -138,7 +138,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "31 снежня 2011 г. у 13:45 – 14:30");
         test.done();
     },
-    
+
     testDateRngFmtbeBYRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "short"});
@@ -243,7 +243,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "30 снежня 2011 г. у 13:45 – 31 снежня 2011 г. у 14:30");
         test.done();
     },
-    
+
     testDateRngFmtbeBYRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "short"});
@@ -348,7 +348,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "20 – 31 снежня 2011 г.");
         test.done();
     },
-    
+
     testDateRngFmtbeBYRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "short"});
@@ -453,7 +453,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "20 лістапада – 31 снежня 2011 г.");
         test.done();
     },
-    
+
     testDateRngFmtbeBYRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "short"});
@@ -558,7 +558,7 @@ module.exports.testdatefmtrange_be_BY = {
         test.equal(fmt.format(start, end), "20 лістапада 2011 г. – 31 студзеня 2012 г.");
         test.done();
     },
-    
+
     testDateRngFmtbeBYRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "be-BY", length: "short"});

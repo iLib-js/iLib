@@ -32,45 +32,45 @@ module.exports.testlistfmt_th_TH = {
     },
 
     // th-TH
-    
+
     testListFmtthTHNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "th-TH"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["หนึ่ง"]), "หนึ่ง");
         test.done();
     },
-    
+
     testListFmtthTHNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "th-TH"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["หนึ่ง", "สอง"]), "หนึ่งและสอง");
         test.done();
     },
-    
+
     testListFmtthTHNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "th-TH"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["หนึ่ง", "สอง", "สาม"]), "หนึ่ง สอง และสาม");
         test.done();
     },
-    
+
     testListFmtthTHNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "th-TH"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["หนึ่ง", "สอง", "สาม", "สี่"]), "หนึ่ง สอง สาม และสี่");
@@ -81,43 +81,43 @@ module.exports.testlistfmt_th_TH = {
             locale: "th-TH",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["หนึ่ง"]), "หนึ่ง");
         test.done();
     },
-    
+
     testListFmtUnitStylethTHNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "th-TH",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["หนึ่ง", "สอง"]), "หนึ่ง สอง");
         test.done();
     },
-    
+
     testListFmtUnitStylethTHNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "th-TH",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["หนึ่ง", "สอง", "สาม"]), "หนึ่ง สอง และ สาม");
         test.done();
     },
-    
+
     testListFmtUnitStylethTHNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "th-TH",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["หนึ่ง", "สอง", "สาม", "สี่"]), "หนึ่ง สอง สาม และ สี่");
@@ -129,39 +129,39 @@ module.exports.testlistfmt_th_TH = {
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["หนึ่ง"]), "หนึ่ง");
         test.done();
     },
-    
+
     testListFmtUnitStylethTHNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "th-TH",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["หนึ่ง", "สอง"]), "หนึ่ง สอง");
         test.done();
     },
-    
+
     testListFmtUnitStylethTHNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "th-TH",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["หนึ่ง", "สอง", "สาม"]), "หนึ่ง สอง และ สาม");
         test.done();
     },
-    
+
     testListFmtUnitStylethTHNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "th-TH",

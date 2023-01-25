@@ -1,6 +1,6 @@
 /*
  * phonegeo_RU.js - Test the GeoLocator Object.
- * 
+ *
  * Copyright © 2014-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -41,19 +41,19 @@ module.exports.phonegeo_RU = {
                 sn: "Russia",
                 ln: "Russia or Kazakhstan",
                 code: "RU"
-            }        
+            }
         };
-    
+
         var locator = new PhoneGeoLocator({locale: "ru-RU"});
         var geoInfo = locator.locate(parsed);
-        
+
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-    
+
     testRULocalNumber2: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("212-3456",{locale: "ru-RU"});
@@ -62,19 +62,19 @@ module.exports.phonegeo_RU = {
                 sn: "Russia",
                 ln: "Russia or Kazakhstan",
                 code: "RU"
-            }        
+            }
         };
-    
+
         var locator = new PhoneGeoLocator({locale: "ru-RU"});
         var geoInfo = locator.locate(parsed);
-        
+
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-    
+
     testRUNumberWithAreaCode1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("8 (812) 456-7890",{locale: "ru-RU"});
@@ -89,10 +89,10 @@ module.exports.phonegeo_RU = {
                 ln: "Saint Petersburg"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'ru-RU'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -100,7 +100,7 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testRUNumberWithAreaCode2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("8 (8352) 051-212-3456",{locale: "ru-RU"});
@@ -115,10 +115,10 @@ module.exports.phonegeo_RU = {
                 ln: "Cheboksary"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'ru-RU'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -126,7 +126,7 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testRUNumberWithAreaCodeAndCountry1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+7-812-312-3456");
@@ -141,10 +141,10 @@ module.exports.phonegeo_RU = {
                 ln: "Saint Petersburg"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'ru-RU'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -152,7 +152,7 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testRUNumberWithAreaCodeAndCountry2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+7-8552-32-456-1");
@@ -167,10 +167,10 @@ module.exports.phonegeo_RU = {
                 ln: "Naberezhnye Chelny",
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -178,7 +178,7 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testRUNumberWithAreaCodeAndCountry3: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+7-3452-212-3456");
@@ -193,10 +193,10 @@ module.exports.phonegeo_RU = {
                 ln: "Tyumen Oblast"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -204,7 +204,7 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testRUNumberCallFromUS: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("011 7-812-212-3456");
@@ -219,10 +219,10 @@ module.exports.phonegeo_RU = {
                 ln: "Saint Petersburg"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -230,7 +230,7 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testRUNumberWithAreaCodeAndCountry4: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+7-812-212-3456");
@@ -245,10 +245,10 @@ module.exports.phonegeo_RU = {
                 ln: "Saint Petersburg"
             }
         };
-        
+
         var locator = new PhoneGeoLocator({locale: 'fr-FR'});
         var geoInfo = locator.locate(parsed);
-        
+
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -256,7 +256,7 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testRUPolice: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("112",{locale: "ru-RU"});
@@ -273,7 +273,7 @@ module.exports.phonegeo_RU = {
         };
         var locator = new PhoneGeoLocator({locale: "ru-RU"});
         var geoInfo = locator.locate(parsed);
-    
+
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
@@ -282,7 +282,7 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-    
+
     testRUFireAndAmbulance: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("101",{locale: "ru-RU"});
@@ -299,7 +299,7 @@ module.exports.phonegeo_RU = {
         };
         var locator = new PhoneGeoLocator({locale: "ru-RU"});
         var geoInfo = locator.locate(parsed);
-    
+
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
@@ -308,6 +308,6 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     }
-    
-    
+
+
 };

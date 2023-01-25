@@ -1,6 +1,6 @@
 /*
  * charmapfile.js - read and parse a Linux charmap file
- * 
+ *
  * Copyright © 2014-2015, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,14 +31,14 @@ var util = require("util");
  * It is up to the caller to interpret the fields in a content line
  * as it sees fit. Content lines do not necessarily all contain the
  * same number of fields.<p>
- * 
+ *
  * The options must contain only one of the following properties:
- * 
+ *
  * <ul>
  * <li>path - Path to the file to read on disk
  * <li>string - The actual in-memory text of the file to parse
  * </ul>
- * 
+ *
  * @class
  * @constructor
  * @param {Object.<path:string,string:string>} options options governing the construction of this file

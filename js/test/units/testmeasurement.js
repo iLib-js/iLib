@@ -1,6 +1,6 @@
 /*
  * testmeasurement.js - test the measurement and measurement factory objects
- * 
+ *
  * Copyright © 2014-2015,2017-2018 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

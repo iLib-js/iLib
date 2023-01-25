@@ -86,7 +86,7 @@ for (var territories in paperSizeData) {
         }
         papersize["paperSizes"] = paperSizes;
         papersize.generated = true;
-        
+
         fs.writeFileSync(filename, stringify(papersize, {space: 4}));
         console.log(filename);
     } else {

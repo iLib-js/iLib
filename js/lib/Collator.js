@@ -446,11 +446,11 @@ Collator.prototype = {
     },
 
     /**
-     * @private
-     * Bit pack an array of values into a single number
-     * @param {number|null|Array.<number>} arr array of values to bit pack
-     * @param {number} offset offset for the start of this map
-     */
+    * Bit pack an array of values into a single number 
+    * @private
+    * @param {number|null|Array.<number>} arr array of values to bit pack
+    * @param {number} offset offset for the start of this map
+    */
     _pack: function (arr, offset) {
         var value = 0;
         if (arr) {
@@ -477,8 +477,8 @@ Collator.prototype = {
     },
 
     /**
-     * @private
      * Return the rule packed into an array of collation elements.
+     * @private
      * @param {Array.<number|null|Array.<number>>} rule
      * @param {number} offset
      * @return {Array.<number>} a bit-packed array of numbers

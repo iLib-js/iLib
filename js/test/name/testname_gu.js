@@ -1,6 +1,6 @@
 /*
  * testname_gu_IN.js - test the name object in Hindi
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,67 +37,67 @@ module.exports.testname_gu = {
         test.expect(2);
         var parsed = new Name("જેઠાલાલ મોદી", {locale: 'gu-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "જેઠાલાલ",
             familyName: "મોદી"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitle_gu_IN: function(test) {
         test.expect(2);
         var parsed = new Name("જેઠાલાલ મોદી વરિષ્ઠ", {locale: 'gu-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             suffix: "વરિષ્ઠ",
             givenName: "જેઠાલાલ",
             familyName: "મોદી"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseEverything_gu_IN: function(test) {
         test.expect(2);
         var parsed = new Name("મિસ્ટર અને શ્રીમતી મોદી", {locale: 'gu-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "મિસ્ટર અને શ્રીમતી",
             familyName: "મોદી"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseprefix_gu_IN: function(test) {
         test.expect(2);
         var parsed = new Name("મિસ્ટર જેઠાલાલ મોદી", {locale: 'gu-IN'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "મિસ્ટર",
             givenName: "જેઠાલાલ",
             familyName: "મોદી"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_gu_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -105,101 +105,101 @@ module.exports.testname_gu = {
             familyName: "મોદી"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'gu-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "જેઠાલાલ મોદી";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_gu_IN: function(test) {
         test.expect(2);
         var name = new Name({
             givenName: "જેઠાલાલ",
-            
+
             familyName: "મોદી"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'gu-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "જેઠાલાલ મોદી";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_gu_IN: function(test) {
         test.expect(2);
         var name = new Name({
             givenName: "જેઠાલાલ",
-            
+
             familyName: "મોદી",
             suffix: "asdf"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'gu-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "જેઠાલાલ મોદી";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSurname_gu_IN: function(test) {
         test.expect(2);
         var name = new Name({
             prefix: "મિસ્ટર અને શ્રીમતી",
-            
+
             familyName: "મોદી"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'gu-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "મિસ્ટર અને શ્રીમતી મોદી";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_gu_IN: function(test) {
         test.expect(2);
         var name = new Name({
             prefix: "ગુમાવે છે",
             givenName: "જેઠાલાલ",
-            
+
             familyName: "મોદી",
             suffix: "વરિષ્ઠ"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'gu-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "ગુમાવે છે જેઠાલાલ મોદી વરિષ્ઠ";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_gu_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -208,18 +208,18 @@ module.exports.testname_gu = {
             familyName: "મોદી"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'gu-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "જેઠાલાલ મોદી";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_gu_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -228,18 +228,18 @@ module.exports.testname_gu = {
             familyName: "મોદી"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'gu-IN'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "જેઠાલાલ મોદી";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_gu_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -253,13 +253,13 @@ module.exports.testname_gu = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "ગુમાવે છે જેઠાલાલ મોદી";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
+
+
+
 };

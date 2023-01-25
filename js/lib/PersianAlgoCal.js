@@ -38,10 +38,10 @@ var PersianAlgoCal = function(options) {
 };
 
 /**
+ * the lengths of each month
  * @private
  * @const
  * @type Array.<number>
- * the lengths of each month
  */
 PersianAlgoCal.monthLengths = [
     31,  // Farvardin

@@ -1,6 +1,6 @@
 /*
  * testname_cs_CZ.js - test the name object in CZECH Republic
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,188 +38,188 @@ module.exports.testname_cs = {
         test.expect(2);
         var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Yana",
             familyName: "Synkova"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseTripleName_cs_CZ: function(test) {
         test.expect(2);
         var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Yana",
             familyName: "Synkova"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseSingleNameWithPrefixAndAdjunct_cs_CZ: function(test) {
         test.expect(2);
         var parsed = new Name("prezident Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "prezident",
             givenName: "Yana",
             familyName: "Synkova"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseHypenatedName_cs_CZ: function(test) {
         test.expect(2);
         var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             givenName: "Yana",
             familyName: "Synkova"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitle_cs_CZ: function(test) {
         test.expect(2);
         var parsed = new Name("prezident Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "prezident",
             givenName: "Yana",
             familyName: "Synkova"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseTitle_cs_CZ1: function(test) {
         test.expect(2);
         var parsed = new Name("předsedkyně Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "předsedkyně",
             givenName: "Yana",
             familyName: "Synkova"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitleWithFamilyOnlyAndAdjunct_cs_CZ: function(test) {
         test.expect(2);
         var parsed = new Name("viceprezident Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "viceprezident",
             givenName: "Yana",
             familyName: "Synkova"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseEverything_cs_CZ: function(test) {
         test.expect(2);
         var parsed = new Name("dáma Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "dáma",
             givenName: "Yana",
             familyName: "Synkova"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseCompoundHonorific_cs_CZ: function(test) {
         test.expect(2);
         var parsed = new Name("šéfkuchař Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "šéfkuchař",
             familyName: "Synkova"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseCompoundHonorific_cs_CZ1: function(test) {
         test.expect(2);
         var parsed = new Name("Dr. Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Dr.",
             familyName: "Synkova"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParsewithFamilyCompoundHonorific_cs_CZ1: function(test) {
         test.expect(2);
         var parsed = new Name("Pan a Paní Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Pan a Paní",
             familyName: "Synkova"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
+
     testParseCompoundHonorific_cs_CZZ: function(test) {
         test.expect(2);
         var parsed = new Name("Paní Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected = {
             prefix: "Paní",
             givenName: "Yana",
             familyName: "Synkova"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -227,18 +227,18 @@ module.exports.testname_cs = {
             familyName: "Synkova"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Yana Synkova";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -246,18 +246,18 @@ module.exports.testname_cs = {
             familyName: "Synkova"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Yana Synkova";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -266,18 +266,18 @@ module.exports.testname_cs = {
             suffix: "asdf"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Yana Synkova";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull1_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -287,18 +287,18 @@ module.exports.testname_cs = {
             suffix: "v důchodu"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Pan Yana Synkova v důchodu";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFullu_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -308,19 +308,19 @@ module.exports.testname_cs = {
             suffix: "v důchodu"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Paní Yana Synkova v důchodu";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
-    
+
+
     testFormatSimpleNameFull_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -330,18 +330,18 @@ module.exports.testname_cs = {
             suffix: "v důchodu"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "prezidentí ministerský předseda Yana Synkova v důchodu";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -350,18 +350,18 @@ module.exports.testname_cs = {
             familyName: "von Synkova"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Yana von Synkova";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -370,18 +370,18 @@ module.exports.testname_cs = {
             familyName: "von Synkova"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "Yana von Synkova";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -395,13 +395,13 @@ module.exports.testname_cs = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "prezidentí ministerský Yana von Synkova";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameShort_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -411,18 +411,18 @@ module.exports.testname_cs = {
             suffix: "太太"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameMedium_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -432,18 +432,18 @@ module.exports.testname_cs = {
             suffix: "太太"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameLong_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -453,16 +453,16 @@ module.exports.testname_cs = {
             suffix: "太太"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "小地獸太太";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
+
 };

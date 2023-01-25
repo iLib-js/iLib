@@ -33,7 +33,7 @@ module.exports.testnumfmt2 = {
     setUp: function(callback) {
         ilib.clearCache();
         callback();
-    }, 
+    },
     testNumFmt_ar_EG: function(test) {
         test.expect(9);
         var li = new LocaleInfo("ar-EG");
@@ -73,7 +73,7 @@ module.exports.testnumfmt2 = {
         test.done();
     },
     testNumFmt_ar_MA: function(test) {
-        
+
         test.expect(9);
         var li = new LocaleInfo("ar-MA");
         var fmt = new NumFmt({locale:"ar-MA", type:"standard", useNative:false});
@@ -681,7 +681,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "₦57.05"); //NGN
-        
+
         test.done();
     },
     testNumFmt_en_NZ: function(test) {
@@ -701,7 +701,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "$57.05"); //NZD
-        
+
         test.done();
     },
     testNumFmt_en_PH: function(test) {
@@ -721,7 +721,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "₱57.05"); //PHP
-        
+
         test.done();
     },
     testNumFmt_en_PR: function(test) {
@@ -741,7 +741,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "$57.05"); //USD
-        
+
         test.done();
     },
     testNumFmt_en_SG: function(test) {
@@ -761,7 +761,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "$57.05"); //SGD
-        
+
         test.done();
     },
     testNumFmt_en_US: function(test) {
@@ -781,7 +781,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "$57.05"); //USD
-        
+
         test.done();
     },
     testNumFmt_en_UG: function(test) {
@@ -801,7 +801,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "Sh57"); //UGX decimals:0
-        
+
         test.done();
     },
     testNumFmt_en_ZA: function(test) {
@@ -821,7 +821,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "R57,05"); //ZAR
-        
+
         test.done();
     },
     testNumFmt_en_ZM: function(test) {
@@ -841,7 +841,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "ZK57.05"); //ZMW
-        
+
         test.done();
     },
     testNumFmt_es_AR: function(test) {
@@ -861,7 +861,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s} {n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}");
         test.equal(curfmt.format(57.05), "$ 57,05"); //ARS
-        
+
         test.done();
     },
     testNumFmt_es_BO: function(test) {
@@ -881,7 +881,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "Bs57,05"); //BOB
-        
+
         test.done();
     },
     testNumFmt_es_CL: function(test) {
@@ -901,7 +901,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "{s}-{n}");
         test.equal(curfmt.format(57.05), "$57"); //CLP
-        
+
         test.done();
     },
     testNumFmt_es_CO: function(test) {
@@ -921,7 +921,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s} {n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}");
         test.equal(curfmt.format(57.05), "$ 57,05"); //COP
-        
+
         test.done();
     },
     testNumFmt_es_DO: function(test) {
@@ -941,7 +941,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "$57.05"); //DOP
-        
+
         test.done();
     },
     testNumFmt_es_EC: function(test) {
@@ -961,7 +961,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "{s}-{n}");
         test.equal(curfmt.format(57.05), "$57,05"); //USD
-        
+
         test.done();
     },
     testNumFmt_es_ES: function(test) {
@@ -981,7 +981,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.equal(curfmt.format(57.05), "57,05 €");//EUR
-        
+
         test.done();
     },
     testNumFmt_es_GT: function(test) {
@@ -1001,7 +1001,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "Q57.05"); //GTQ
-        
+
         test.done();
     },
     testNumFmt_es_HN: function(test) {
@@ -1021,7 +1021,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "L57.05"); //HNL
-        
+
         test.done();
     },
     testNumFmt_es_MX: function(test) {
@@ -1041,7 +1041,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "$57.05"); //MXN
-        
+
         test.done();
     },
     testNumFmt_es_NI: function(test) {
@@ -1061,7 +1061,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "C$57.05"); //NIO
-        
+
         test.done();
     },
     testNumFmt_es_PA: function(test) {
@@ -1081,7 +1081,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "$57.05"); //USD
-        
+
         test.done();
     },
     testNumFmt_es_PE: function(test) {
@@ -1101,7 +1101,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s} {n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}");
         test.equal(curfmt.format(57.05), "S/. 57.05"); //PEN
-        
+
         test.done();
     },
     testNumFmt_es_PR: function(test) {
@@ -1121,7 +1121,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "$57.05"); //USD
-        
+
         test.done();
     },
     testNumFmt_es_PY: function(test) {
@@ -1141,7 +1141,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s} {n}");
         test.equal(li.getCurrencyFormats().commonNegative, "{s} -{n}");
         test.equal(curfmt.format(57.05), "₲ 57"); //PYG
-        
+
         test.done();
     },
     testNumFmt_es_SV: function(test) {
@@ -1161,7 +1161,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "$57.05"); //USD
-        
+
         test.done();
     },
     testNumFmt_es_US: function(test) {
@@ -1180,7 +1180,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "es-US", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
-        test.equal(curfmt.format(57.05), "$57.05"); 
+        test.equal(curfmt.format(57.05), "$57.05");
         test.done();
     },
     testNumFmt_es_UY: function(test) {
@@ -1200,7 +1200,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s} {n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}");
         test.equal(curfmt.format(57.05), "$ 57,05"); //UYU
-        
+
         test.done();
     },
     testNumFmt_es_VE: function(test) {
@@ -1220,7 +1220,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "{s}-{n}");
         test.equal(curfmt.format(57.05), "VES57,05"); //VES
-        
+
         test.done();
     },
     testNumFmt_et_EE: function(test) {
@@ -1240,7 +1240,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "−{n} {s}");
         test.equal(curfmt.format(57.05), "57,05 €"); //EUR
-        
+
         test.done();
     },
     testNumFmt_fa_AF: function(test) {
@@ -1260,7 +1260,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, '{s} {n}');
         test.equal(li.getCurrencyFormats().commonNegative, '‎−{s} {n}');
         test.equal(curfmt.format(57.05), '؋ 57'); //AFN
-        
+
         test.done();
     },
     testNumFmt_fa_IR: function(test) {
@@ -1280,7 +1280,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, '‎{s}{n}');
         test.equal(li.getCurrencyFormats().commonNegative, '‎−‎{s}{n}');
         test.equal(curfmt.format(57.05), '‎﷼57');  //IRR
-        
+
         test.done();
     },
     testNumFmt_fi_FI: function(test) {
@@ -1300,9 +1300,9 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "−{n} {s}");
         test.equal(curfmt.format(57.05), "57,05 €"); //EUR
-        
+
         test.done();
-    }, 
+    },
     testNumFmt_fr_BE: function(test) {
         test.expect(9);
         var li = new LocaleInfo("fr-BE");
@@ -1320,7 +1320,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.equal(curfmt.format(57.05), "57,05 €"); //EUR
-        
+
         test.done();
     },
     testNumFmt_fr_CA: function(test) {
@@ -1340,7 +1340,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.equal(curfmt.format(57.05), "57,05 $"); //CAD
-        
+
         test.done();
     },
     testNumFmt_fr_CH: function(test) {
@@ -1360,7 +1360,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.equal(curfmt.format(57.05), "57,05 Fr"); //CHF
-        
+
         test.done();
     },
     testNumFmt_fr_FR: function(test) {
@@ -1380,7 +1380,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.equal(curfmt.format(57.05), "57,05 €"); //EUR
-        
+
         test.done();
     },
     testNumFmt_fr_LU: function(test) {
@@ -1400,7 +1400,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.equal(curfmt.format(57.05), "57,05 €"); //EUR
-        
+
         test.done();
     },
     testNumFmt_ga_IE: function(test) {
@@ -1420,7 +1420,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "€57.05"); //EUR
-        
+
         test.done();
     },
     testNumFmt_gu_IN: function(test) {
@@ -1440,7 +1440,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "₹57.05"); //INR
-        
+
         test.done();
     },
     testNumFmt_he_IL: function(test) {
@@ -1460,7 +1460,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "‏{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "‏-{n} {s}");
         test.equal(curfmt.format(57.05), "‏57.05 ₪"); //ILS
-        
+
         test.done();
     },
     testNumFmt_hi_IN: function(test) {
@@ -1480,7 +1480,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "₹57.05"); //INR
-        
+
         test.done();
     },
     testNumFmt_hr_HR: function(test) {
@@ -1500,7 +1500,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common,  "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "−{n} {s}");
         test.equal(curfmt.format(57.05), "57,05 kn"); //HRK
-        
+
         test.done();
     },
     testNumFmt_hr_ME: function(test) {
@@ -1520,7 +1520,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common,  "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "−{n} {s}");
         test.equal(curfmt.format(57.05), "57,05 €");//EUR
-        
+
         test.done();
     },
     testNumFmt_hr_HU: function(test) {
@@ -1540,7 +1540,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common,  "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "−{n} {s}");
         test.equal(curfmt.format(57.05), "57,05 Ft");//HUF
-        
+
         test.done();
     },
     testNumFmt_id_ID: function(test) {
@@ -1560,7 +1560,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "Rp57,05"); //IDR
-        
+
         test.done();
     },
     testNumFmt_is_IS: function(test) {
@@ -1580,7 +1580,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.equal(curfmt.format(57.05), "57 kr"); //ISK
-        
+
         test.done();
     },
     testNumFmt_it_CH: function(test) {
@@ -1600,7 +1600,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s} {n}");
         test.equal(li.getCurrencyFormats().commonNegative, "{s}-{n}");
         test.equal(curfmt.format(57.05), "Fr 57.05"); //CHF
-        
+
         test.done();
     },
     testNumFmt_it_IT: function(test) {
@@ -1620,7 +1620,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.equal(curfmt.format(57.05), "57,05 €"); //EUR
-        
+
         test.done();
     },
     testNumFmt_ja_JP: function(test) {
@@ -1640,7 +1640,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "¥57"); //JPY
-        
+
         test.done();
     },
     testNumFmt_kk_KZ: function(test) {
@@ -1660,7 +1660,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.equal(curfmt.format(57.05), "57,05 ₸"); //KZT
-        
+
         test.done();
     },
     testNumFmt_kn_IN: function(test) {
@@ -1680,7 +1680,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "₹57.05"); //INR
-        
+
         test.done();
     },
     testNumFmt_ko_KR: function(test) {
@@ -1700,7 +1700,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.equal(curfmt.format(57.05), "₩57"); //KRW
-        
+
         test.done();
     },
     testNumFmt_ku_IQ: function(test) {
@@ -1719,7 +1719,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, '{n} {s}');
         test.equal(li.getCurrencyFormats().commonNegative, '‏-{n} {s}');
         test.equal(curfmt.format(57.05), '57 ﺩ.ﻉ.'); //IQD
-        
+
         test.done();
     },
     testNumFmt_lt_LT: function(test) {
@@ -4030,7 +4030,7 @@ module.exports.testnumfmt2 = {
         test.equal(li.getPercentageFormat(), "{n}%");
         test.equal(li.getNegativePercentageFormat(), "-{n}%");
         test.equal(pctfmt.format(34), "34%");
-        
+
         var curfmt = new NumFmt({locale: "mt-MT", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");

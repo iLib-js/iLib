@@ -1,9 +1,27 @@
 Release Notes for Version 14
 ============================
 
+Build 025
+-------
+Published as version 14.16.0
+
+New Features:
+* Update to Unicode Character Database (UCD) version 15.0.0
+    * updated character properties
+    * added scripts support
+    * updated normalization data, especially for Cyrillic characters
+
+Bug Fixes:
+* Updated to IANA time zone data version 2022g
+* Updated package dependencies
+* Fixed the locale info for zh-TW, zh-MO, and zh-HK
+    * It was returning different info than zh-Hant-TW, etc., but it
+	  should have been the same
+
 Build 024
 -------
 Published as version 14.15.1
+
 New Features:
 
 Bug Fixes:

@@ -1,6 +1,6 @@
 /*
  * testcollation_fo.js - test the Collator object in Faroese
- * 
+ *
  * Copyright © 2014, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,28 +33,28 @@ module.exports.testcollation_fo = {
     testCollatorConstructorNative_fo: function(test) {
         test.expect(1);
         var col = new Collator({useNative: false, locale: "fo-FO"});
-    
+
         test.ok(typeof(col) !== "undefined");
         test.done();
     },
-    
+
     testCollatorDefaultLowerPrimary_fo: function(test) {
         test.expect(21);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
-            useNative: false, 
+            useNative: false,
             sensitivity: "primary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // The Faroese alphabet also has some of the Danish, Norwegian, and Swedish 
-        // extra letters, namely Æ and Ø. Furthermore, the Faroese alphabet uses the Icelandic 
-        // eth, which follows the D. Five of the six vowels A, I, O, U and Y can get accents 
+
+        // The Faroese alphabet also has some of the Danish, Norwegian, and Swedish
+        // extra letters, namely Æ and Ø. Furthermore, the Faroese alphabet uses the Icelandic
+        // eth, which follows the D. Five of the six vowels A, I, O, U and Y can get accents
         // and are after that considered separate letters. The consonants C, Q, X, W and Z are
         // not found, but are in the search order anyways to take care of loanwords from other
-        // languages. 
+        // languages.
         // a á b [c] d ð e f g h i í j k l m n o ó p [q] r s t u ú v [w] [x] y ý [z] æ ø
         test.ok("a < á", col.compare("a", "á") < 0);
         test.ok("á < b", col.compare("á", "b") < 0);
@@ -78,24 +78,24 @@ module.exports.testcollation_fo = {
         test.ok("æ < ø", col.compare("æ", "ø") < 0);
         test.done();
     },
-    
+
     testCollatorDefaultUpperPrimary_fo: function(test) {
         test.expect(21);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
-            useNative: false, 
+            useNative: false,
             sensitivity: "primary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
-        // The Faroese alphabet also has some of the Danish, Norwegian, and Swedish 
-        // extra letters, namely Æ and Ø. Furthermore, the Faroese alphabet uses the Icelandic 
-        // eth, which follows the D. Five of the six vowels A, I, O, U and Y can get accents 
+
+        // The Faroese alphabet also has some of the Danish, Norwegian, and Swedish
+        // extra letters, namely Æ and Ø. Furthermore, the Faroese alphabet uses the Icelandic
+        // eth, which follows the D. Five of the six vowels A, I, O, U and Y can get accents
         // and are after that considered separate letters. The consonants C, Q, X, W and Z are
         // not found, but are in the search order anyways to take care of loanwords from other
-        // languages. 
+        // languages.
         // A Á B [C] D Ð E F G H I Í J K L M N O Ó P [Q] R S T U Ú V [W] [X] Y Ý [Z] Æ Ø
         test.ok("A < Á", col.compare("A", "Á") < 0);
         test.ok("Á < B", col.compare("Á", "B") < 0);
@@ -119,18 +119,18 @@ module.exports.testcollation_fo = {
         test.ok("Æ < Ø", col.compare("Æ", "Ø") < 0);
         test.done();
     },
-    
+
     testCollatorDefaultLowerSecondary_fo: function(test) {
         test.expect(21);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
-            useNative: false, 
+            useNative: false,
             sensitivity: "secondary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // the accents are primary differences, so this is the same order as
         // the primary alphabet
         // a á b [c] d ð e f g h i í j k l m n o ó p [q] r s t u ú v [w] [x] y ý [z] æ ø
@@ -156,22 +156,22 @@ module.exports.testcollation_fo = {
         test.ok("æ < ø", col.compare("æ", "ø") < 0);
         test.done();
     },
-    
+
     testCollatorDefaultCaseSecondary_fo: function(test) {
         test.expect(10);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
-            useNative: false, 
+            useNative: false,
             sensitivity: "secondary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // the accents are primary differences, so this is the same order as
         // the primary alphabet
         // a á b [c] d ð e f g h i í j k l m n o ó p [q] r s t u ú v [w] [x] y ý [z] æ ø
-        
+
         // case is a tertiary difference, so no difference here
         test.ok("a = A", col.compare("a", "A") === 0);
         test.ok("á = Á", col.compare("á", "Á") === 0);
@@ -184,22 +184,22 @@ module.exports.testcollation_fo = {
         test.ok("ø = Ø", col.compare("ø", "Ø") === 0);
         test.done();
     },
-    
+
     testCollatorDefaultVariantsSecondary_fo: function(test) {
         test.expect(11);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
-            useNative: false, 
+            useNative: false,
             sensitivity: "secondary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // the accents are primary differences, so this is the same order as
         // the primary alphabet
         // a á b [c] d ð e f g h i í j k l m n o ó p [q] r s t u ú v [w] [x] y ý [z] æ ø
-        
+
         // variants are a quaternary difference, so no difference here
         test.ok("á = á", col.compare("á", "á") === 0);
         test.ok("í = í", col.compare("í", "í") === 0);
@@ -213,18 +213,18 @@ module.exports.testcollation_fo = {
         test.ok("Ý = Ý", col.compare("Ý", "Ý") === 0);
         test.done();
     },
-    
+
     testCollatorDefaultUpperSecondary_fo: function(test) {
         test.expect(21);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
-            useNative: false, 
+            useNative: false,
             sensitivity: "secondary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // the accents are primary differences, so this is the same order as
         // the primary alphabet
         // A Á B [C] D Ð E F G H I Í J K L M N O Ó P [Q] R S T U Ú V [W] [X] Y Ý [Z] Æ Ø
@@ -250,18 +250,18 @@ module.exports.testcollation_fo = {
         test.ok("Æ < Ø", col.compare("Æ", "Ø") < 0);
         test.done();
     },
-    
+
     testCollatorDefaultLowerTertiary_fo: function(test) {
         test.expect(25);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
-            useNative: false, 
+            useNative: false,
             sensitivity: "tertiary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // a á b [c] d ð e f g h i í j k l m n o ó p [q] r s t u ú v [w] [x] y ý [z] æ ø
         // case is a tertiary difference, so now sort based on case
         test.ok("A < a", col.compare("A", "a") < 0);
@@ -290,22 +290,22 @@ module.exports.testcollation_fo = {
         test.ok("Ø < ø", col.compare("Ø", "ø") < 0);
         test.done();
     },
-    
+
     testCollatorDefaultVariantsTertiary_fo: function(test) {
         test.expect(11);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
-            useNative: false, 
+            useNative: false,
             sensitivity: "tertiary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // the accents are primary differences, so this is the same order as
         // the primary alphabet
         // a á b [c] d ð e f g h i í j k l m n o ó p [q] r s t u ú v [w] [x] y ý [z] æ ø
-        
+
         // variants are a quaternary difference, so no difference here
         test.ok("á = á", col.compare("á", "á") === 0);
         test.ok("í = í", col.compare("í", "í") === 0);
@@ -319,18 +319,18 @@ module.exports.testcollation_fo = {
         test.ok("Ý = Ý", col.compare("Ý", "Ý") === 0);
         test.done();
     },
-    
+
     testCollatorDefaultUpperTertiary_fo: function(test) {
         test.expect(21);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
-            useNative: false, 
+            useNative: false,
             sensitivity: "tertiary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // the accents are primary differences, so this is the same order as
         // the primary alphabet
         // A Á B [C] D Ð E F G H I Í J K L M N O Ó P [Q] R S T U Ú V [W] [X] Y Ý [Z] Æ Ø
@@ -356,18 +356,18 @@ module.exports.testcollation_fo = {
         test.ok("Æ < Ø", col.compare("Æ", "Ø") < 0);
         test.done();
     },
-    
+
     testCollatorDefaultLowerQuaternary_fo: function(test) {
         test.expect(25);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
-            useNative: false, 
+            useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // a á b [c] d ð e f g h i í j k l m n o ó p [q] r s t u ú v [w] [x] y ý [z] æ ø
         // case is a tertiary difference, so now sort based on case
         test.ok("A < a", col.compare("A", "a") < 0);
@@ -396,22 +396,22 @@ module.exports.testcollation_fo = {
         test.ok("Ø < ø", col.compare("Ø", "ø") < 0);
         test.done();
     },
-    
+
     testCollatorDefaultVariantsQuaternary_fo: function(test) {
         test.expect(11);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
-            useNative: false, 
+            useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // the accents are primary differences, so this is the same order as
         // the primary alphabet
         // a á b [c] d ð e f g h i í j k l m n o ó p [q] r s t u ú v [w] [x] y ý [z] æ ø
-        
+
         // variants are a quaternary difference, so now sort these variants properly
         test.ok("á < á", col.compare("á", "á") < 0);
         test.ok("í < í", col.compare("í", "í") < 0);
@@ -425,18 +425,18 @@ module.exports.testcollation_fo = {
         test.ok("Ý < Ý", col.compare("Ý", "Ý") < 0);
         test.done();
     },
-    
+
     testCollatorDefaultUpperQuaternary_fo: function(test) {
         test.expect(21);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
-            useNative: false, 
+            useNative: false,
             sensitivity: "quaternary"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // the accents are primary differences, so this is the same order as
         // the primary alphabet
         // A Á B [C] D Ð E F G H I Í J K L M N O Ó P [Q] R S T U Ú V [W] [X] Y Ý [Z] Æ Ø
@@ -462,16 +462,16 @@ module.exports.testcollation_fo = {
         test.ok("Æ < Ø", col.compare("Æ", "Ø") < 0);
         test.done();
     },
-    
+
     testCollatorGetSortKeySimpleUpper_fo: function(test) {
         test.expect(2);
         var col = new Collator({
             locale: "fo-FO",
             useNative: false
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         test.equal(col.sortKey("AÁBCDÐE"), "0000200400600800a00c0");
         test.done();
     },
@@ -481,14 +481,14 @@ module.exports.testcollation_fo = {
             locale: "fo-FO",
             useNative: false
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         test.equal(col.sortKey("aábcdðe"), "0020220420620820a20c2");
         test.done();
     },
-    
-    
+
+
     testCollatorWithSort_fo: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -497,36 +497,36 @@ module.exports.testcollation_fo = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-    
+
         var input = [ "æ", "p", "b", "w", "d", "ý", "h", "ú", "x", "ø", "í", "j",
                 "v", "z", "ð", "m", "á", "o", "ó", "q", "g", "a", "r", "f", "s",
                 "e", "c", "t", "k", "u", "y", "i", "n", "l" ];
-    
+
         input.sort(col.getComparator());
-    
-        var expected = ["a", "á", "b", "c", "d", "ð", "e", "f", "g", 
-                        "h", "i", "í", "j", "k", "l", "m", "n", "o", 
-                        "ó", "p", "q", "r", "s", "t", "u", "ú", "v", 
+
+        var expected = ["a", "á", "b", "c", "d", "ð", "e", "f", "g",
+                        "h", "i", "í", "j", "k", "l", "m", "n", "o",
+                        "ó", "p", "q", "r", "s", "t", "u", "ú", "v",
                         "w", "x", "y", "ý", "z", "æ", "ø"];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
-    
+
+
     testCollatorGetAvailableScripts_fo: function(test) {
         test.expect(1);
         test.deepEqual(Collator.getAvailableScripts(), ["Latn"]);
         test.done();
     },
-    
+
     testCollatorGetAvailableStyles_fo: function(test) {
         test.expect(1);
         test.deepEqual(Collator.getAvailableStyles(), ["standard"]);
         test.done();
     },
-    
-    
+
+
     testJSCollatorNumeric_fo: function(test) {
         test.expect(4);
         var col = new Collator({
@@ -535,14 +535,14 @@ module.exports.testcollation_fo = {
             sensitivity: "case",
             numeric: true
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-    
+
         // period is the thousands separator and comma is the decimal separator
         test.equal(col.compare("0.012.123,4", "12.123,4"), 0);
         test.ok(col.compare("00123,4", "123") > 0);
         test.ok(col.compare("00123,4", "124") < 0);
         test.done();
     }
-    
+
 };

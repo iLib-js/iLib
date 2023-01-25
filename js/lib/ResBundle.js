@@ -1,7 +1,7 @@
 /*
  * ResBundle.js - Resource bundle definition
  *
- * Copyright © 2012-2016, 2018-2019, 2022 JEDLSoft
+ * Copyright © 2012-2016, 2018-2019, 2022-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -329,7 +329,7 @@ ResBundle.defaultPseudo = ilib.data.pseudomap || {
 
 ResBundle.prototype = {
     /**
-     * @protected
+     * @private
      */
     _loadPseudo: function (pseudoLocale, onLoad) {
         Utils.loadData({
@@ -376,8 +376,8 @@ ResBundle.prototype = {
     percentRE: new RegExp("%(\\d+\\$)?([\\-#\\+ 0,\\(])*(\\d+)?(\\.\\d+)?(h|hh|l|ll|j|z|t|L|q)?[diouxXfFeEgGaAcspnCS%@]"),
 
     /**
-     * @private
      * Pseudo-translate a string
+     * @private
      */
     _pseudo: function (str) {
         if (!str) {
@@ -475,8 +475,8 @@ ResBundle.prototype = {
     },
 
     /**
-     * @private
      * Escape html characters in the output.
+     * @private
      */
     _escapeXml: function (str) {
         str = str.replace(/&/g, '&amp;');
@@ -497,12 +497,12 @@ ResBundle.prototype = {
     },
 
     /**
-     * @private
      * Create a key name out of a source string. All this does so far is
      * compress sequences of white space into a single space on the assumption
      * that this doesn't really change the meaning of the string, and therefore
      * all such strings that compress to the same thing should share the same
      * translation.
+     * @private
      * @param {null|string=} source the source string to make a key out of
      */
     _makeKey: function (source) {

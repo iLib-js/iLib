@@ -1,6 +1,6 @@
 /*
  * testaddress.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ module.exports.testaddress_MR = {
     testParseAddressMRNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد حامد ولد أحمد, الغزالي ١٢,نواكشوط, موريتانيا", {locale: 'ar-MR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد حامد ولد أحمد, الغزالي ١٢");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -47,11 +47,11 @@ module.exports.testaddress_MR = {
         test.equal(parsedAddress.countryCode, "MR");
         test.done();
     },
-    
+
     testParseAddressMRNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد حامد ولد أحمد, الغزالي ١٢,نواكشوط, موريتانيا", {locale: 'ar-MR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد حامد ولد أحمد, الغزالي ١٢");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -61,11 +61,11 @@ module.exports.testaddress_MR = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressMRManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد حامد ولد أحمد, الغزالي ١٢\nطرابلس\n موريتانيا", {locale: 'ar-MR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد حامد ولد أحمد, الغزالي ١٢");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -75,11 +75,11 @@ module.exports.testaddress_MR = {
         test.equal(parsedAddress.countryCode, "MR");
         test.done();
     },
-    
+
     testParseAddressMROneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد حامد ولد أحمد, الغزالي ١٢,طرابلس, موريتانيا", {locale: 'ar-MR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد حامد ولد أحمد, الغزالي ١٢");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -89,11 +89,11 @@ module.exports.testaddress_MR = {
         test.equal(parsedAddress.countryCode, "MR");
         test.done();
     },
-    
+
     testParseAddressMRSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد حامد ولد أحمد, الغزالي ١٢   \n\t\nطرابلس\t\n\n  موريتانيا  \n  \t\t\t", {locale: 'ar-MR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد حامد ولد أحمد, الغزالي ١٢");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -103,11 +103,11 @@ module.exports.testaddress_MR = {
         test.equal(parsedAddress.countryCode, "MR");
         test.done();
     },
-    
+
     testParseAddressMRNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد حامد ولد أحمد الغزالي ١٢ نواكشوط موريتانيا", {locale: 'ar-MR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد حامد ولد أحمد الغزالي ١٢");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -117,11 +117,11 @@ module.exports.testaddress_MR = {
         test.equal(parsedAddress.countryCode, "MR");
         test.done();
     },
-    
+
     testParseAddressMRSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد حامد ولد أحمد, الغزالي ١٢,طرابلس, موريتانيا", {locale: 'ar-MR'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد حامد ولد أحمد, الغزالي ١٢");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -131,13 +131,13 @@ module.exports.testaddress_MR = {
         test.equal(parsedAddress.countryCode, "MR");
         test.done();
     },
-    
+
     testParseAddressMRFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد حامد ولد أحمد, الغزالي ١٢,طرابلس, Mauritania ", {locale: 'en-US'});
-        
+
         // the country name is in English because this address is for a contact in a US database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد حامد ولد أحمد, الغزالي ١٢");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -147,7 +147,7 @@ module.exports.testaddress_MR = {
         test.equal(parsedAddress.countryCode, "MR");
         test.done();
     },
-    
+
     testFormatAddressMR: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -156,13 +156,13 @@ module.exports.testaddress_MR = {
             country: "موريتانيا",
             countryCode: "MR"
         }, {locale: 'ar-MR'});
-        
+
         var expected = "السيد حامد ولد أحمد, الغزالي ١٢\nطرابلس\nموريتانيا";
         var formatter = new AddressFmt({locale: 'ar-MR'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressMRARFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -171,11 +171,11 @@ module.exports.testaddress_MR = {
             country: "Mauritania",
             countryCode: "MR"
         }, {locale: 'en-US'});
-        
+
         var expected = "السيد حامد ولد أحمد, الغزالي ١٢\nطرابلس\nMauritania";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

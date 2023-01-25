@@ -31,45 +31,45 @@ module.exports.testlistfmt_mr_IN = {
         callback();
     },
     // mr-IN
-    
+
     testListFmtmrINNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "mr-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक"]), "एक");
         test.done();
     },
-    
+
     testListFmtmrINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "mr-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दोन"]), "एक आणि दोन");
         test.done();
     },
-    
+
     testListFmtmrINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "mr-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दोन", "तीन"]), "एक, दोन आणि तीन");
         test.done();
     },
-    
+
     testListFmtmrINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "mr-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दोन", "तीन", "चार"]), "एक, दोन, तीन आणि चार");
@@ -80,43 +80,43 @@ module.exports.testlistfmt_mr_IN = {
             locale: "mr-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक"]), "एक");
         test.done();
     },
-    
+
     testListFmtUnitStylemrINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "mr-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दोन"]), "एक, दोन");
         test.done();
     },
-    
+
     testListFmtUnitStylemrINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "mr-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दोन", "तीन"]), "एक, दोन, तीन");
         test.done();
     },
-    
+
     testListFmtUnitStylemrINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "mr-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दोन", "तीन", "चार"]), "एक, दोन, तीन, चार");
@@ -128,46 +128,46 @@ module.exports.testlistfmt_mr_IN = {
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक"]), "एक");
         test.done();
     },
-    
+
     testListFmtUnitStylemrINNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "mr-IN",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दोन"]), "एक, दोन");
         test.done();
     },
-    
+
     testListFmtUnitStylemrINNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "mr-IN",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दोन", "तीन"]), "एक, दोन, तीन");
         test.done();
     },
-    
+
     testListFmtUnitStylemrINNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "mr-IN",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दोन", "तीन", "चार"]), "एक, दोन, तीन, चार");

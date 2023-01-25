@@ -334,12 +334,12 @@ locales.forEach(function (file) {
             // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
             group = aux.getFormatGroup(dateFormats, localeComponents);
             group.data = merge(group.data || {}, newFormats);
-    
+
             newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language, script);
             // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
             group = aux.getFormatGroup(systemResources, localeComponents);
             group.data = merge(group.data || {}, newFormats);
-    
+
         } else if (language === "am") {
             // add the settings for the ethiopic calendar as well
             filename = path.join("cldr-cal-ethiopic-full/main", file, "ca-ethiopic.json");
@@ -348,7 +348,7 @@ locales.forEach(function (file) {
             // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
             group = aux.getFormatGroup(dateFormats, localeComponents);
             group.data = merge(group.data || {}, newFormats);
-    
+
             newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language, script);
             // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
             var group = aux.getFormatGroup(systemResources, localeComponents);
@@ -360,16 +360,16 @@ locales.forEach(function (file) {
             cals.thaisolar = cals.gregorian;
             // console.log("cals is " + JSON.stringify(cals, undefined, 4) );
             newFormats = aux.createDateFormats(language, script, region, cals);
-    
+
             group = aux.getFormatGroup(dateFormats, localeComponents);
             group.data = merge(group.data || {}, newFormats);
-    
+
             newFormats = aux.createSystemResources(cals, language, script);
             // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
             group = aux.getFormatGroup(systemResources, localeComponents);
             group.data = merge(group.data || {}, newFormats);
         }
-    
+
         // do regular gregorian for all locales
         filename = path.join(sourceDir, "ca-gregorian.json");
         cal = require(filename);
@@ -377,12 +377,12 @@ locales.forEach(function (file) {
         //console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(dateFormats, localeComponents);
         group.data = merge(group.data || {}, newFormats);
-    
+
         newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language, script);
         //console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(systemResources, localeComponents);
         group.data = merge(group.data || {}, newFormats);
-    
+
         // date/time duration.
         filename = path.join("cldr-units-full/main", locale.toString(), "units.json")
         units = require(filename);
@@ -390,7 +390,7 @@ locales.forEach(function (file) {
         //console.log("Duration data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(systemResources, localeComponents);
         group.data = merge(group.data || {}, newFormats);
-    
+
         // relative time format
         filename = path.join(sourceDir, "dateFields.json");
         dateFields = require(filename);
@@ -398,7 +398,7 @@ locales.forEach(function (file) {
         //console.log("Relative format data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(systemResources, localeComponents);
         group.data = merge(group.data || {}, newFormats);
-    
+
         // separator
         filename = path.join("cldr-misc-full/main", locale.toString(), "listPatterns.json");
         seperator = require(filename);
@@ -406,11 +406,11 @@ locales.forEach(function (file) {
         //console.log("listPattern data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(systemResources, localeComponents);
         group.data = merge(group.data || {}, newFormats);
-    
+
         if (hardCodeData.hasOwnProperty(language)) {
             group.data = merge(group.data || {}, hardCodeData[language]);
         }
-    
+
         // day periods
         var periods = dayPeriods.supplemental.dayPeriodRuleSet;
         newFormats = aux.createDayPeriods(periods, cal.main[file].dates.calendars, language);

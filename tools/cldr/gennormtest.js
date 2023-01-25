@@ -1,7 +1,7 @@
 /*
- * gennormtest.js - ilib tool to generate the UNA normalization test data from the Unicode 
+ * gennormtest.js - ilib tool to generate the UNA normalization test data from the Unicode
  * data files
- * 
+ *
  * Copyright © 2012-2015, 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@
  */
 
 /*
- * This code is intended to be run under node.js 
+ * This code is intended to be run under node.js
  */
 
 var fs = require('fs');

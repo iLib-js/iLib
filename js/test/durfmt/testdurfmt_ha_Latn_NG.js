@@ -1,6 +1,6 @@
 /*
  * testdurfmt_or_IN.js - test the duration formatter object
- * 
+ *
  * Copyright © 2015,2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -50,7 +50,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
         test.equal(duration.toString(), "shkr 1, w1, m1, r1, s1, minti1, d 1");
         test.done();
     },
-    
+
     testDurFmtHAFormatShortText: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -59,7 +59,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
             style: "text"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -72,7 +72,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
         test.equal(duration.toString(), "shkr 1, w1, m1, r1, s1, minti1, d 1");
         test.done();
     },
-    
+
     testDurFmtHAFormatShortClock: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -81,7 +81,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
             style: "clock"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -94,7 +94,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
         test.equal(duration.toString(), "shkr 1, w1, m1, r1, 01:01:01");
         test.done();
     },
-    
+
     testDurFmtHAFormatMedium: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -102,7 +102,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -115,7 +115,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
         test.equal(duration.toString(), "shkr 1, w1, m1, r1, s1, minti1, d 1");
         test.done();
     },
-    
+
     testDurFmtHAFormatLong: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -123,7 +123,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -136,7 +136,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
         test.equal(duration.toString(), "shkr 1, wat 1, mk 1, rana 1, s 1, mnt 1, d 1");
         test.done();
     },
-    
+
     testDurFmtHAFormatFull: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -144,7 +144,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -157,8 +157,8 @@ module.exports.testdurfmt_ha_Latn_NG = {
         test.equal(duration.toString(), "shekara 1, wata 1, mako 1, rana 1, sa'a 1, minti 1, daƙiƙa 1");
         test.done();
     },
-    
-    
+
+
     testDurFmtHAAsyncWithLocale: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -167,7 +167,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 2,
                     month: 2,
@@ -182,7 +182,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
             }
         });
     },
-    
+
     testDurFmtHAFormatShortClockAsync: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -192,7 +192,7 @@ module.exports.testdurfmt_ha_Latn_NG = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 1,
                     month: 1,
@@ -207,5 +207,5 @@ module.exports.testdurfmt_ha_Latn_NG = {
             }
         });
     }
-    
+
 };

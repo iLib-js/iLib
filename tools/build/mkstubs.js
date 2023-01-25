@@ -1,5 +1,5 @@
-/* 
- * mkstubs.js - ilib tool to extract stubs for 
+/*
+ * mkstubs.js - ilib tool to extract stubs for
  *
  * Copyright © 2015, 2020 JEDLSoft
  *
@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-/* 
+/*
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
@@ -192,7 +192,7 @@ var parentMap = {
     "ilib.Cal" : "Calendar",
     "ilib.Measurement" : "MeasurementFactory"
 };
-var nonClasses = [ 
+var nonClasses = [
     "JSUtils",
     "MathUtils",
     "SearchUtils",

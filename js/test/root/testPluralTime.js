@@ -35,7 +35,7 @@ module.exports.teststrings = {
         ilib.clearCache();
         callback();
     },
-    
+
     testStringFormatChoice_ru_RU_iLib: function(test) {
         test.expect(2);
         console.log("\n");
@@ -98,7 +98,7 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(30), "The items are many");
         test.done();
     },
- 
+
     testStringFormatChoice_be_BY_iLib: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
@@ -133,7 +133,7 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one.|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("ko-KR");
-        
+
         test.ok(str !== null);
         console.time("iLib-Time-ko-KR");
         for(var i=0;i<=10000;i++){

@@ -1,6 +1,6 @@
 /*
  * testdatefmt_ps_PK.js - test the date formatter object in Pashto-Pakistan
- * 
+ *
  * Copyright © 2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,7 +38,7 @@ module.exports.testdatefmt_ps_PK = {
     testDateFmtConstructorEmpty_ps_PK: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "ps-PK"});
-        
+
         test.ok(fmt !== null);
         test.done();
     },
@@ -46,7 +46,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "short", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -64,7 +64,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "medium", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -82,7 +82,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "long", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -100,7 +100,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -118,7 +118,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "short", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -136,7 +136,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "medium", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -154,7 +154,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", timelength: "long", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -172,7 +172,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -190,7 +190,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "short", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -208,7 +208,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "medium", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -226,7 +226,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "long", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -244,7 +244,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -262,7 +262,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", calendar: "julian", template: "yyyy-MM-dd", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new JulianDate({
             locale: "ps-PK",
             year: 2021,
@@ -280,7 +280,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", calendar: "julian", template: "yyyy-MM-dd HH:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -299,7 +299,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", clock: "12", template: "HH:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -317,7 +317,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", clock: "12", template: "kk:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -335,7 +335,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", clock: "24", template: "hh:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -353,7 +353,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", clock: "24", template: "KK:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -371,7 +371,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", template: "hh:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -389,7 +389,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", template: "KK:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -407,7 +407,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", template: "HH:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -425,7 +425,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", template: "kk:mm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -443,7 +443,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "date", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -461,7 +461,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -479,7 +479,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "datetime", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -497,7 +497,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", date: "y", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -515,7 +515,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", date: "m", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -533,7 +533,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", date: "d", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -551,7 +551,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", date: "dm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -569,7 +569,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", date: "my", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -587,7 +587,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", date: "dmy", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -605,7 +605,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", date: "wdm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -623,7 +623,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", date: "wdmy", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -641,7 +641,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", date: "wdm", length: "long", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -659,7 +659,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full", date: "y", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -677,7 +677,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full", date: "m", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -695,7 +695,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full", date: "d", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -713,7 +713,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full", date: "dm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -731,7 +731,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full", date: "my", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -749,7 +749,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full", date: "dmy", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -767,7 +767,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full", date: "wdm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -785,7 +785,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full", date: "wdmy", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -803,7 +803,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", time: "s", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -821,7 +821,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", time: "m", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -839,7 +839,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", time: "h", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -857,7 +857,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", time: "ms", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -875,7 +875,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", time: "hm", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -893,7 +893,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", time: "hms", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -911,7 +911,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", time: "hma", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -935,7 +935,7 @@ module.exports.testdatefmt_ps_PK = {
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -959,7 +959,7 @@ module.exports.testdatefmt_ps_PK = {
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -977,7 +977,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", time: "hmsa", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -1001,7 +1001,7 @@ module.exports.testdatefmt_ps_PK = {
             useNative:false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -1025,7 +1025,7 @@ module.exports.testdatefmt_ps_PK = {
             useNative:false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -1043,7 +1043,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", length: "full", time: "s", useNative:false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -1061,7 +1061,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", length: "full", time: "m", useNative:false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -1079,7 +1079,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", length: "full", time: "h", useNative:false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -1097,7 +1097,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", length: "full", time: "ms", useNative:false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -1115,7 +1115,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", length: "full", time: "hm", useNative:false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -1133,7 +1133,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", length: "full", time: "hms", useNative:false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -1151,7 +1151,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", length: "full", time: "hma", useNative:false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -1168,15 +1168,15 @@ module.exports.testdatefmt_ps_PK = {
     testDateFmtFullTimeComponentsHMZ_ps_PK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ps-PK", 
-            type: "time", 
-            length: "full", 
-            time: "hmz", 
+            locale: "ps-PK",
+            type: "time",
+            length: "full",
+            time: "hmz",
             timezone: "Asia/Karachi",
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -1201,7 +1201,7 @@ module.exports.testdatefmt_ps_PK = {
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -1219,7 +1219,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", type: "time", length: "full", time: "hmsa", useNative: false});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -1244,7 +1244,7 @@ module.exports.testdatefmt_ps_PK = {
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -1269,7 +1269,7 @@ module.exports.testdatefmt_ps_PK = {
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -1294,7 +1294,7 @@ module.exports.testdatefmt_ps_PK = {
             useNative: false
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ps-PK",
             year: 2021,
@@ -1312,7 +1312,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ps-PK",
             year: 2011,
@@ -1340,7 +1340,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ps-PK",
             year: 2011,
@@ -1368,7 +1368,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ps-PK",
             year: 2011,
@@ -1396,7 +1396,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ps-PK",
             year: 2011,
@@ -1424,7 +1424,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ps-PK",
             year: 2011,
@@ -1452,7 +1452,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ps-PK",
             year: 2011,
@@ -1480,7 +1480,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ps-PK",
             year: 2011,
@@ -1508,7 +1508,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ps-PK",
             year: 2011,
@@ -1536,7 +1536,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ps-PK",
             year: 2011,
@@ -1564,7 +1564,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ps-PK",
             year: 2011,
@@ -1592,7 +1592,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ps-PK",
             year: 2011,
@@ -1620,7 +1620,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ps-PK",
             year: 2011,
@@ -1648,7 +1648,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ps-PK",
             year: 2011,
@@ -1676,7 +1676,7 @@ module.exports.testdatefmt_ps_PK = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ps-PK", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ps-PK",
             year: 2011,

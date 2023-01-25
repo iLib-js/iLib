@@ -1,6 +1,6 @@
 /*
  * testUnknown.js - test the unknown object
- * 
+ *
  * Copyright © 2014-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,36 +34,36 @@ module.exports.testUnknown = {
     testMeasurementUnknownEmpty: function(test) {
         test.expect(1);
         var m = new UnknownUnit();
-    
+
         test.ok(m !== null);
         test.done();
     },
-    
+
     testMeasurementUnknownUnitPreserved: function(test) {
         test.expect(3);
         var m = new UnknownUnit({
             unit: "krunghoonfoop",
             amount: 2
         });
-    
+
         test.ok(m !== null);
-    
+
         test.equal(m.getUnit(), "krunghoonfoop");
         test.equal(m.getAmount(), 2);
         test.done();
     },
-    
+
     testMeasurementUnknownUnitUnknownMeasureType: function(test) {
         test.expect(2);
         var m = new UnknownUnit({
             unit: "krunghoonfoop",
             amount: 2
         });
-    
+
         test.ok(m !== null);
-    
+
         test.equal(m.getMeasure(), "unknown");
         test.done();
     }
-    
+
 };

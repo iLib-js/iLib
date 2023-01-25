@@ -124,7 +124,7 @@ for (number in callingCode) {
     countryData[number] = {};
     arrayCountry = [];
     countryCode = callingCode[number];
-    
+
     countryData[number]["sn"] = countries[countryCode[0]];
     countryData[number]["ln"] = countries[countryCode[0]];
     numCountry = countryCode.length;
@@ -139,7 +139,7 @@ for (number in callingCode) {
         countryData[number]["ln"] = countries[countryCode[0]];
     } else {
         console.log("A number used by more than one country ......: ", number);
-        countryData[number]["ln"] = listfmt.format(arrayCountry);    
+        countryData[number]["ln"] = listfmt.format(arrayCountry);
     }
 }
 var mergedData = {...countryData, ...reservedNumber}

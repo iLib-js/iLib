@@ -1,7 +1,7 @@
 /*
  * CType.js - Character type definitions
  *
- * Copyright © 2012-2015, 2018, JEDLSoft
+ * Copyright © 2012-2015, 2018, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -72,7 +72,7 @@ var CType = {};
  * <li>Pf - Final_Punctuation
  * </ul>
  *
- * @protected
+ * @private
  * @param {number} num code point of the character to examine
  * @param {string} rangeName the name of the range to check
  * @param {Object} obj object containing the character range data
@@ -294,7 +294,7 @@ CType.withinRange = function(ch, rangeName) {
 };
 
 /**
- * @protected
+ * @private
  * @param {boolean} sync
  * @param {Object|undefined} loadParams
  * @param {function(*)|undefined} onLoad
@@ -304,7 +304,7 @@ CType._init = function(sync, loadParams, onLoad) {
 };
 
 /**
- * @protected
+ * @private
  * @param {string} name
  * @param {boolean} sync
  * @param {Object|undefined} loadParams

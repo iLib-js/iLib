@@ -33,8 +33,9 @@ var JSUtils = require("./JSUtils.js");
  *
  * @constructor
  * @extends Measurement
- * @param options {{unit:string,amount:number|string|undefined}} Options controlling
- * the construction of this instance
+ * @param {Object} options Options controlling the construction of this instance
+ * @param {string} options.unit
+ * @param {number|string|undefined} options.amount
  */
 var DigitalSpeedUnit = function (options) {
     this.unit = "byte";

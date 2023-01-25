@@ -99,7 +99,7 @@ module.exports.testunitfmt_my_MM = {
         });
 
         var uf = new UnitFmt({
-            locale: "my-MM", 
+            locale: "my-MM",
             autoConvert:true,
             length:"short",
             useNative: false
@@ -117,7 +117,7 @@ module.exports.testunitfmt_my_MM = {
         });
 
         var uf = new UnitFmt({
-            locale: "my-MM", 
+            locale: "my-MM",
             autoConvert: true,
             length: "long",
             useNative: false
@@ -135,7 +135,7 @@ module.exports.testunitfmt_my_MM = {
         });
 
         var uf = new UnitFmt({
-            locale: "my-MM", 
+            locale: "my-MM",
             autoConvert: true,
             length: "short",
             useNative: false
@@ -153,7 +153,7 @@ module.exports.testunitfmt_my_MM = {
         });
 
         var uf = new UnitFmt({
-            locale: "my-MM", 
+            locale: "my-MM",
             autoConvert: true,
             length: "long",
             useNative: false
