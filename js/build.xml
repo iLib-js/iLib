@@ -860,7 +860,7 @@ limitations under the License.
         <mkdir dir="${build.apidocs}"/>
         <copy todir="${build.apidocs}">
             <fileset dir="${build.jsdoc}">
-                <include name="**/*.html"/>
+                <include name="**/*.*"/>
             </fileset>
         </copy>
     </target>
