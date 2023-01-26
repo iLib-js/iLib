@@ -6,7 +6,7 @@ Build 026
 Published as version 14.16.1
 
 Bug Fixes:
-* Fixed to publish js apidoc with apply style properly.
+* Fixed to publish js apidoc with applying style properly.
 
 Build 025
 -------
