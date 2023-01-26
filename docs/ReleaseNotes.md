@@ -1,6 +1,13 @@
 Release Notes for Version 14
 ============================
 
+Build 026
+-------
+Published as version 14.16.1
+
+Bug Fixes:
+* Fixed to generate js apidoc with apply style properly.
+
 Build 025
 -------
 Published as version 14.16.0
