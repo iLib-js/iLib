@@ -1,7 +1,7 @@
 /*
  * testlocaleinfo.js - test the locale info object
  *
- * Copyright © 2012-2017, 2020-2022 JEDLSoft
+ * Copyright © 2012-2017, 2020-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12947,8 +12947,8 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ar-AE");
         test.ok(info !== null);
 
-        test.equal(info.getWeekEndStart(), 5);
-        test.equal(info.getWeekEndEnd(), 6);
+        test.equal(info.getWeekEndStart(), 6);
+        test.equal(info.getWeekEndEnd(), 0);
         test.done();
     },
 
