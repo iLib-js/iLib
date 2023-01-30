@@ -314,11 +314,6 @@
         "decimals": 2,
         "sign": "L"
     },
-    "HRK": {
-        "name": "Croatian Kuna",
-        "decimals": 2,
-        "sign": "kn"
-    },
     "HTG": {
         "name": "Haitian Gourde",
         "decimals": 2,
@@ -575,7 +570,7 @@
         "sign": "₲"
     },
     "QAR": {
-        "name": "Qatari Rial",
+        "name": "Qatari Riyal",
         "decimals": 2,
         "sign": "ر.ق"
     },
@@ -619,10 +614,10 @@
         "decimals": 2,
         "sign": "£"
     },
-    "SLL": {
+    "SLE": {
         "name": "Sierra Leonean Leone",
-        "decimals": 0,
-        "sign": "Le"
+        "decimals": 2,
+        "sign": "SLE"
     },
     "SOS": {
         "name": "Somali Shilling",

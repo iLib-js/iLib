@@ -1,7 +1,7 @@
 /*
  * testcurrency.js - test the currency routines
  *
- * Copyright © 2012-2017, 2020-2022 JEDLSoft
+ * Copyright © 2012-2017, 2020-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -93,6 +93,21 @@ module.exports.testcurrency = {
         test.equal(cur.getName(), "Philippine Peso");
         var locale = cur.getLocale();
         test.equal(locale.toString(), "en-PH");
+        test.done();
+    },
+    testCurrencyGetByCode4: function(test) {
+        test.expect(6);
+        var cur = new Currency({
+            locale: "ar-QA"
+        });
+        test.ok(cur !== null);
+
+        test.equal(cur.getCode(), "QAR");
+        test.equal(cur.getFractionDigits(), 2);
+        test.equal(cur.getSign(), 'ر.ق');
+        test.equal(cur.getName(), "Qatari Riyal");
+        var locale = cur.getLocale();
+        test.equal(locale.toString(), "ar-QA");
         test.done();
     },
 
@@ -844,7 +859,7 @@ module.exports.testcurrency = {
         var info = new LocaleInfo("hr-HR");
         test.ok(info !== null);
 
-        test.equal(info.getCurrency(), "HRK");
+        test.equal(info.getCurrency(), "EUR");
 
         test.done();
     },
@@ -1645,7 +1660,7 @@ module.exports.testcurrency = {
         var info = new LocaleInfo("en-SL");
         test.ok(info !== null);
 
-        test.equal(info.getCurrency(), "SLL");
+        test.equal(info.getCurrency(), "SLE");
 
         test.done();
     },
