@@ -2418,7 +2418,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ar-AE");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().common, '{s} {n}');
+        test.equal(info.getCurrencyFormats().common, '‏{n} {s}');
         test.done();
     },
 
@@ -2445,7 +2445,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ar-AE");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, '‎-{s} {n}');
+        test.equal(info.getCurrencyFormats().commonNegative, '‏-{n} {s}');
         test.done();
     },
 
@@ -2509,7 +2509,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ar-DZ");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().common, "{s} {n}");
+        test.equal(info.getCurrencyFormats().common, '‏{n} {s}');
         test.done();
     },
 
@@ -2536,7 +2536,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ar-DZ");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, "‎-{s} {n}");
+        test.equal(info.getCurrencyFormats().commonNegative, '‏-{n} {s}');
         test.done();
     },
 
@@ -2600,7 +2600,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ar-TN");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().common, "{s} {n}");
+        test.equal(info.getCurrencyFormats().common, '‏{n} {s}');
         test.done();
     },
 
@@ -2627,7 +2627,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ar-TN");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, "‎-{s} {n}");
+        test.equal(info.getCurrencyFormats().commonNegative, '‏-{n} {s}');
         test.done();
     },
 
@@ -3223,7 +3223,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("bn-IN");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().common, "{n}{s}");
+        test.equal(info.getCurrencyFormats().common, '{s}{n}');
         test.done();
     },
 
@@ -3250,7 +3250,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("bn-IN");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, "-{n}{s}");
+        test.equal(info.getCurrencyFormats().commonNegative, '-{s}{n}');
         test.done();
     },
 
@@ -3656,7 +3656,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ca-FR");
         test.ok(info !== null);
 
-        test.equal(info.getPercentageFormat(), "{n}%");
+        test.equal(info.getPercentageFormat(), '{n} %');
         test.done();
     },
 
@@ -3683,7 +3683,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ca-FR");
         test.ok(info !== null);
 
-        test.equal(info.getNegativePercentageFormat(), "-{n}%");
+        test.equal(info.getNegativePercentageFormat(), '-{n} %');
         test.done();
     },
 
@@ -5308,7 +5308,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("he-IL");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().common, "‏{n} {s}");
+        test.equal(info.getCurrencyFormats().common, '‏{n} ‏{s}');
         test.done();
     },
 
@@ -5335,7 +5335,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("he-IL");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, "‏-{n} {s}");
+        test.equal(info.getCurrencyFormats().commonNegative, '‏-{n} ‏{s}');
         test.done();
     },
 
@@ -10606,7 +10606,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ta-LK");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().common, "{s} {n}");
+        test.equal(info.getCurrencyFormats().common, "{s}{n}");
         test.done();
     },
 
@@ -10633,7 +10633,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ta-LK");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
+        test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.done();
     },
 
@@ -11063,7 +11063,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ur");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().common, "{s} {n}");
+        test.equal(info.getCurrencyFormats().common, "{s}{n}");
         test.done();
     },
 
@@ -11090,7 +11090,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ur");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, "‎-{s} {n}");
+        test.equal(info.getCurrencyFormats().commonNegative, "‎-{s}{n}");
         test.done();
     },
 
@@ -11245,7 +11245,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ur-PK");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().common, "{s} {n}");
+        test.equal(info.getCurrencyFormats().common, "{s}{n}");
         test.done();
     },
 
@@ -11272,7 +11272,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ur-PK");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, "‎-{s} {n}");
+        test.equal(info.getCurrencyFormats().commonNegative, "‎-{s}{n}");
         test.done();
     },
 

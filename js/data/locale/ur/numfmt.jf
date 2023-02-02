@@ -20,7 +20,8 @@
     },
     "numfmt": {
         "currencyFormats": {
-            "commonNegative": "‎-{s} {n}"
+            "common": "{s}{n}",
+            "commonNegative": "‎-{s}{n}"
         },
         "negativenumFmt": "‎-{n}",
         "negativepctFmt": "‎-{n}%"

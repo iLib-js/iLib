@@ -2,8 +2,7 @@
     "generated": true,
     "numfmt": {
         "currencyFormats": {
-            "common": "{n} {s}",
-            "commonNegative": "‎-‎{n} {s}"
+            "commonNegative": "‎-‎{s} {n}"
         },
         "decimalChar": "٫",
         "digits": "۰۱۲۳۴۵۶۷۸۹",

@@ -2,8 +2,8 @@
     "generated": true,
     "native_numfmt": {
         "currencyFormats": {
-            "common": "{s} {n}",
-            "commonNegative": "-{s} {n}"
+            "common": "{s}{n}",
+            "commonNegative": "-{s}{n}"
         },
         "decimalChar": ".",
         "digits": "௦௧௨௩௪௫௬௭௮௯",
@@ -20,6 +20,10 @@
         "useNative": true
     },
     "numfmt": {
+        "currencyFormats": {
+            "common": "{s}{n}",
+            "commonNegative": "-{s}{n}"
+        },
         "secgroupSize": 2
     }
 }
