@@ -3456,7 +3456,9 @@ module.exports.teststrings = {
         var platform = ilib._getPlatform();
         if (platform === "nodejs") {
             var cldrVersion = Number(process.versions["cldr"]);
-            if (Number(cldrVersion) < 42) { // The `two` category has been added since CLDR 42.
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
+                test.equal(str.formatChoice(2), "The items are two");
+            } else if (Number(cldrVersion) < 42) { // The `two` category has been added since CLDR 42.
                 test.equal(str.formatChoice(2), "The items are few");
             } else {
                 test.equal(str.formatChoice(2), "The items are two");
@@ -3607,7 +3609,9 @@ module.exports.teststrings = {
         var platform = ilib._getPlatform();
         if (platform === "nodejs") {
             var cldrVersion = Number(process.versions["cldr"]);
-            if (Number(cldrVersion) < 42) { // The `many` category has been removed since CLDR 42.
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
+                test.equal(str.formatChoice(30), "Default items");
+            } if (Number(cldrVersion) < 42) { // The `many` category has been removed since CLDR 42.
                 test.equal(str.formatChoice(30), "The items are many");
             } else {
                 test.equal(str.formatChoice(30), "Default items");
