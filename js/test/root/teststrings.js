@@ -38,14 +38,12 @@ module.exports.teststrings = {
     testStringConstructor: function(test) {
         test.expect(1);
         var str = new IString();
-
         test.ok(str !== null);
         test.done();
     },
     testStringConstructorEmpty: function(test) {
         test.expect(3);
         var str = new IString();
-
         test.ok(str !== null);
 
         test.equal(str.length, 0);
@@ -55,7 +53,6 @@ module.exports.teststrings = {
     testStringConstructorFull: function(test) {
         test.expect(3);
         var str = new IString("test test test");
-
         test.ok(str !== null);
 
         test.equal(str.length, 14);
@@ -65,7 +62,6 @@ module.exports.teststrings = {
     testStringConstructorWithStringObj: function(test) {
         test.expect(3);
         var str = new IString(new String("test test test"));
-
         test.ok(str !== null);
 
         test.equal(str.length, 14);
@@ -75,7 +71,6 @@ module.exports.teststrings = {
     testStringConstructorWithIlibStringObj: function(test) {
         test.expect(3);
         var str = new IString(new IString("test test test"));
-
         test.ok(str !== null);
 
         test.equal(str.length, 14);
@@ -85,7 +80,6 @@ module.exports.teststrings = {
     testStringConstructorWithIlibNormStringObj: function(test) {
         test.expect(3);
         var str = new IString(new NormString("test test test"));
-
         test.ok(str !== null);
 
         test.equal(str.length, 14);
@@ -95,7 +89,6 @@ module.exports.teststrings = {
     testStringFormatNoArgs: function(test) {
         test.expect(2);
         var str = new IString("Format this string.");
-
         test.ok(str !== null);
 
         test.equal(str.format(), "Format this string.");
@@ -104,7 +97,6 @@ module.exports.teststrings = {
     testStringFormatEmpty: function(test) {
         test.expect(2);
         var str = new IString();
-
         test.ok(str !== null);
 
         test.equal(str.format(), "");
@@ -113,7 +105,6 @@ module.exports.teststrings = {
     testStringFormatEmptyWithArgs: function(test) {
         test.expect(2);
         var str = new IString();
-
         test.ok(str !== null);
 
         test.equal(str.format({test: "Foo"}), "");
@@ -122,7 +113,6 @@ module.exports.teststrings = {
     testStringFormatWithArg: function(test) {
         test.expect(2);
         var str = new IString("Format {size} string.");
-
         test.ok(str !== null);
 
         test.equal(str.format({size: "medium"}), "Format medium string.");
@@ -131,7 +121,6 @@ module.exports.teststrings = {
     testStringFormatWithMultipleArgs: function(test) {
         test.expect(2);
         var str = new IString("Format {size} {object}.");
-
         test.ok(str !== null);
 
         test.equal(str.format({ size: "medium", object: "string" }), "Format medium string.");
@@ -140,7 +129,6 @@ module.exports.teststrings = {
     testStringFormatWithSameArgMultipleTimes: function(test) {
         test.expect(2);
         var str = new IString("Format {size} when {size} is at least {size} big.");
-
         test.ok(str !== null);
 
         test.equal(str.format({ size: "medium" }), "Format medium when medium is at least medium big.");
@@ -149,7 +137,6 @@ module.exports.teststrings = {
     testStringFormatWithMissingArgs: function(test) {
         test.expect(2);
         var str = new IString("Format {size} {object}.");
-
         test.ok(str !== null);
 
         test.equal(str.format({ object: "string" }), "Format {size} string.");
@@ -158,7 +145,6 @@ module.exports.teststrings = {
     testStringFormatWithEmptyArg: function(test) {
         test.expect(2);
         var str = new IString("Format {size} string.");
-
         test.ok(str !== null);
 
         test.equal(str.format({size: ""}), "Format  string.");
@@ -167,7 +153,6 @@ module.exports.teststrings = {
     testStringFormatHandleNonAsciiParam: function(test) {
         test.expect(2);
         var str = new IString("Format {size} string.");
-
         test.ok(str !== null);
 
         test.equal(str.format({size: "médïûm"}), "Format médïûm string.");
@@ -176,7 +161,6 @@ module.exports.teststrings = {
     testStringFormatHandleNonAsciiReplacement: function(test) {
         test.expect(2);
         var str = new IString("Format {sïzé} string.");
-
         test.ok(str !== null);
 
         test.equal(str.format({"sïzé": "medium"}), "Format medium string.");
@@ -185,7 +169,6 @@ module.exports.teststrings = {
     testStringFormatMultipleReplacements: function(test) {
         test.expect(2);
         var str = new IString("User {user} has {num} objects in their {container}.");
-
         test.ok(str !== null);
 
         test.equal(str.format({ user: "edwin", num: 2, container: "locker" }), "User edwin has 2 objects in their locker.");
@@ -194,7 +177,6 @@ module.exports.teststrings = {
     testStringFormatChoiceSimple1: function(test) {
         test.expect(2);
         var str = new IString("1#first string|2#second string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "first string");
@@ -203,7 +185,6 @@ module.exports.teststrings = {
     testStringFormatChoiceSimple2: function(test) {
         test.expect(2);
         var str = new IString("1#first string|2#second string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(2), "second string");
@@ -212,7 +193,6 @@ module.exports.teststrings = {
     testStringFormatChoiceOnlyOneChoicePositive: function(test) {
         test.expect(2);
         var str = new IString("1#first string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "first string");
@@ -221,7 +201,6 @@ module.exports.teststrings = {
     testStringFormatChoiceOnlyOneChoiceNegative: function(test) {
         test.expect(2);
         var str = new IString("1#first string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(2), "");
@@ -230,7 +209,6 @@ module.exports.teststrings = {
     testStringFormatChoiceNoString: function(test) {
         test.expect(2);
         var str = new IString("");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(2), "");
@@ -239,7 +217,6 @@ module.exports.teststrings = {
     testStringFormatChoiceSimpleNoMatch: function(test) {
         test.expect(2);
         var str = new IString("1#first string|2#second string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(3), "");
@@ -248,7 +225,6 @@ module.exports.teststrings = {
     testStringFormatChoiceSimpleDefault: function(test) {
         test.expect(2);
         var str = new IString("1#first string|2#second string|#other string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(3), "other string");
@@ -257,7 +233,6 @@ module.exports.teststrings = {
     testStringFormatChoiceLessThanOrEqualPositive: function(test) {
         test.expect(2);
         var str = new IString("<=2#first string|3#second string|#other string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "first string");
@@ -266,7 +241,6 @@ module.exports.teststrings = {
     testStringFormatChoiceLessThanOrEqualEqual: function(test) {
         test.expect(2);
         var str = new IString("<=2#first string|3#second string|#other string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(2), "first string");
@@ -275,7 +249,6 @@ module.exports.teststrings = {
     testStringFormatChoiceLessThanOrEqualNotLessThan: function(test) {
         test.expect(2);
         var str = new IString("<=2#first string|3#second string|#other string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(3), "second string");
@@ -284,7 +257,6 @@ module.exports.teststrings = {
     testStringFormatChoiceGreaterThanOrEqualPositive: function(test) {
         test.expect(2);
         var str = new IString(">=2#first string|1#second string|#other string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(4), "first string");
@@ -293,7 +265,6 @@ module.exports.teststrings = {
     testStringFormatChoiceGreaterThanOrEqualEqual: function(test) {
         test.expect(2);
         var str = new IString(">=2#first string|1#second string|#other string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(2), "first string");
@@ -302,7 +273,6 @@ module.exports.teststrings = {
     testStringFormatChoiceGreaterThanOrEqualNotLessThan: function(test) {
         test.expect(2);
         var str = new IString(">=2#first string|1#second string|#other string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "second string");
@@ -311,7 +281,6 @@ module.exports.teststrings = {
     testStringFormatChoiceLessThanPositive: function(test) {
         test.expect(2);
         var str = new IString("<2#first string|3#second string|#other string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "first string");
@@ -320,7 +289,6 @@ module.exports.teststrings = {
     testStringFormatChoiceLessThanEqual: function(test) {
         test.expect(2);
         var str = new IString("<2#first string|3#second string|#other string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(2), "other string");
@@ -329,7 +297,6 @@ module.exports.teststrings = {
     testStringFormatChoiceLessThanNotLessThan: function(test) {
         test.expect(2);
         var str = new IString("<2#first string|3#second string|#other string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(3), "second string");
@@ -338,7 +305,6 @@ module.exports.teststrings = {
     testStringFormatChoiceGreaterThanPositive: function(test) {
         test.expect(2);
         var str = new IString(">2#first string|1#second string|#other string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(4), "first string");
@@ -347,7 +313,6 @@ module.exports.teststrings = {
     testStringFormatChoiceGreaterThanEqual: function(test) {
         test.expect(2);
         var str = new IString(">2#first string|1#second string|#other string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(2), "other string");
@@ -356,7 +321,6 @@ module.exports.teststrings = {
     testStringFormatChoiceGreaterThanNotLessThan: function(test) {
         test.expect(2);
         var str = new IString(">2#first string|1#second string|#other string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "second string");
@@ -365,7 +329,6 @@ module.exports.teststrings = {
     testStringFormatRange1: function(test) {
         test.expect(2);
         var str = new IString("0-2#first string {num}|3-5#second string {num}|#other string {num}");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1, {num: 1}), "first string 1");
@@ -374,7 +337,6 @@ module.exports.teststrings = {
     testStringFormatRange4: function(test) {
         test.expect(2);
         var str = new IString("0-2#first string {num}|3-5#second string {num}|#other string {num}");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(4, {num: 4}), "second string 4");
@@ -383,7 +345,6 @@ module.exports.teststrings = {
     testStringFormatRange7: function(test) {
         test.expect(2);
         var str = new IString("0-2#first string {num}|3-5#second string {num}|#other string {num}");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(7, {num: 7}), "other string 7");
@@ -392,7 +353,6 @@ module.exports.teststrings = {
     testStringFormatChoiceBooleanTrue: function(test) {
         test.expect(2);
         var str = new IString("true#first string|false#second string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(true), "first string");
@@ -401,7 +361,6 @@ module.exports.teststrings = {
     testStringFormatChoiceBooleanFalse: function(test) {
         test.expect(2);
         var str = new IString("true#first string|false#second string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(false), "second string");
@@ -410,7 +369,6 @@ module.exports.teststrings = {
     testStringFormatChoiceBooleanMissing: function(test) {
         test.expect(2);
         var str = new IString("true#first string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(false), "");
@@ -419,7 +377,6 @@ module.exports.teststrings = {
     testStringFormatChoiceStringStaticA: function(test) {
         test.expect(2);
         var str = new IString("a#first string|b#second string|c#third string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice("a"), "first string");
@@ -428,7 +385,6 @@ module.exports.teststrings = {
     testStringFormatChoiceStringStaticB: function(test) {
         test.expect(2);
         var str = new IString("a#first string|b#second string|c#third string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice("b"), "second string");
@@ -437,7 +393,6 @@ module.exports.teststrings = {
     testStringFormatChoiceStringStaticC: function(test) {
         test.expect(2);
         var str = new IString("a#first string|b#second string|c#third string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice("c"), "third string");
@@ -446,7 +401,6 @@ module.exports.teststrings = {
     testStringFormatChoiceStringIgnoreCase: function(test) {
         test.expect(2);
         var str = new IString("a#first string|b#second string|c#third string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice("B"), "second string");
@@ -455,7 +409,6 @@ module.exports.teststrings = {
     testStringFormatChoiceRegExpA: function(test) {
         test.expect(2);
         var str = new IString("a.*b#first string|b.*c#second string|c+d#third string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice("acccb"), "first string");
@@ -464,7 +417,6 @@ module.exports.teststrings = {
     testStringFormatChoiceRegExpB: function(test) {
         test.expect(2);
         var str = new IString("a.*b#first string|b.*c#second string|c+d#third string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice("bbccc"), "second string");
@@ -473,7 +425,6 @@ module.exports.teststrings = {
     testStringFormatChoiceRegExpC: function(test) {
         test.expect(2);
         var str = new IString("a.*b#first string|b.*c#second string|c+d#third string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice("ccccd"), "third string");
@@ -482,7 +433,6 @@ module.exports.teststrings = {
     testStringFormatChoiceRegExpDefault: function(test) {
         test.expect(2);
         var str = new IString("a.*b#first string|b.*c#second string|#third string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice("ccccd"), "third string");
@@ -491,7 +441,6 @@ module.exports.teststrings = {
     testStringFormatChoiceRegExpMissing: function(test) {
         test.expect(2);
         var str = new IString("a.*b#first string|b.*c#second string|c+d#third string");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice("efff"), "");
@@ -500,7 +449,6 @@ module.exports.teststrings = {
     testStringFormatChoiceWithReplacement0: function(test) {
         test.expect(2);
         var str = new IString("0#There are no strings.|1#There is one string.|#There are {num} strings.");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(0, {num: 0}), "There are no strings.");
@@ -509,7 +457,6 @@ module.exports.teststrings = {
     testStringFormatChoiceWithReplacement1: function(test) {
         test.expect(2);
         var str = new IString("0#There are no strings.|1#There is one string.|#There are {num} strings.");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1, {num: 1}), "There is one string.");
@@ -518,7 +465,6 @@ module.exports.teststrings = {
     testStringFormatChoiceWithReplacement2: function(test) {
         test.expect(2);
         var str = new IString("0#There are no strings.|1#There is one string.|#There are {num} strings.");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(2, {num: 2}), "There are 2 strings.");
@@ -527,7 +473,6 @@ module.exports.teststrings = {
     testStringFormatChoiceWithMultipleReplacement0: function(test) {
         test.expect(2);
         var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(0, { name: "johndoe", num: 0 }), "User johndoe has no items.");
@@ -536,7 +481,6 @@ module.exports.teststrings = {
     testStringFormatChoiceWithMultipleReplacement1: function(test) {
         test.expect(2);
         var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1, { name: "johndoe", num: 1 }), "User johndoe has 1 item.");
@@ -545,7 +489,6 @@ module.exports.teststrings = {
     testStringFormatChoiceWithMultipleReplacement2: function(test) {
         test.expect(2);
         var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(2, { name: "johndoe", num: 2 }), "User johndoe has 2 items.");
@@ -554,7 +497,6 @@ module.exports.teststrings = {
     testStringFormatChoiceWithMultipleIndexes0: function(test) {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|1,1#{num} item on {pages} page.|other,1#{num} items on {pages} page.|#{num} items on {pages} pages.");
-
         test.ok(str !== null);
 
         var params = {
@@ -568,7 +510,6 @@ module.exports.teststrings = {
     testStringFormatChoiceWithMultipleIndexes1: function(test) {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|1,1#{num} item on {pages} page.|other,1#{num} items on {pages} page.|#{num} items on {pages} pages.");
-
         test.ok(str !== null);
 
         var params = {
@@ -582,7 +523,6 @@ module.exports.teststrings = {
     testStringFormatChoiceWithMultipleIndexes2: function(test) {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|1,1#{num} item on {pages} page.|other,1#{num} items on {pages} page.|#{num} items on {pages} pages.");
-
         test.ok(str !== null);
 
         var params = {
@@ -596,7 +536,6 @@ module.exports.teststrings = {
     testStringFormatChoiceWithMultipleIndexes3: function(test) {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|1,1#{num} item on {pages} page.|other,1#{num} items on {pages} page.|#{num} items on {pages} pages.");
-
         test.ok(str !== null);
 
         var params = {
@@ -610,7 +549,6 @@ module.exports.teststrings = {
     testStringFormatChoiceWithMultipleIndexesWithEmptyLimitsInsteadOfOther: function(test) {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|1,1#{num} item on {pages} page.|,1#{num} items on {pages} page.|#{num} items on {pages} pages.");
-
         test.ok(str !== null);
 
         var params = {
@@ -625,7 +563,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
         str.setLocale("ru-RU");
-
         test.ok(str !== null);
 
         var params = {
@@ -652,7 +589,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
         str.setLocale("ru-RU");
-
         test.ok(str !== null);
 
         var params = {
@@ -667,7 +603,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
         str.setLocale("ru-RU");
-
         test.ok(str !== null);
 
         var params = {
@@ -682,7 +617,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
         str.setLocale("ru-RU");
-
         test.ok(str !== null);
 
         var params = {
@@ -697,7 +631,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
         str.setLocale("ru-RU");
-
         test.ok(str !== null);
 
         var params = {
@@ -712,7 +645,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
         str.setLocale("ru-RU");
-
         test.ok(str !== null);
 
         var params = {
@@ -727,7 +659,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
         str.setLocale("ru-RU");
-
         test.ok(str !== null);
 
         var params = {
@@ -742,7 +673,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
         str.setLocale("ru-RU");
-
         test.ok(str !== null);
 
         var params = {
@@ -757,7 +687,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
         str.setLocale("ru-RU");
-
         test.ok(str !== null);
 
         var params = {
@@ -772,7 +701,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
         str.setLocale("ru-RU");
-
         test.ok(str !== null);
 
         var params = {
@@ -787,7 +715,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|one,many#{num} item on {pages} pages (many).|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).|other,other#{num} items (other) on {pages} pages (other).");
         str.setLocale("pt-PT");
-
         test.ok(str !== null);
 
         var params = {
@@ -801,7 +728,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("one,one#{num} item on {pages} page.|one,other#{num} item on {pages} pages (other).|other,one#{num} items (other) on {pages} page.(one)|other,other#{num} items (other) on {pages} pages (other).");
         str.setLocale("pt-PT");
-
         test.ok(str !== null);
 
         var params = {
@@ -871,7 +797,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
         str.setLocale("ru-RU");
-
         test.ok(str !== null);
 
         var params = {
@@ -886,7 +811,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
         str.setLocale("ru-RU");
-
         test.ok(str !== null);
 
         var params = {
@@ -901,7 +825,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#{num} items on {pages} pages.|one#{num} item on {pages} page.|few#{num} items (few) on {pages} pages.|many#{num} items (many) on {pages} pages.");
         str.setLocale("ru-RU");
-
         test.ok(str !== null);
 
         var params = {
@@ -915,7 +838,6 @@ module.exports.teststrings = {
     testStringDelegateCharAt: function(test) {
         test.expect(2);
         var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
-
         test.ok(str !== null);
 
         test.equal(str.charAt(7).toString(), "{");
@@ -924,7 +846,6 @@ module.exports.teststrings = {
     testStringDelegateCharCodeAt: function(test) {
         test.expect(2);
         var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
-
         test.ok(str !== null);
 
         test.equal(str.charCodeAt(7), 123);
@@ -933,7 +854,6 @@ module.exports.teststrings = {
     testStringDelegateConcat: function(test) {
         test.expect(2);
         var str = new IString("abc");
-
         test.ok(str !== null);
 
         test.equal(str.concat("def").toString(), "abcdef");
@@ -942,7 +862,6 @@ module.exports.teststrings = {
     testStringDelegateIndexOf: function(test) {
         test.expect(2);
         var str = new IString("abcdefghijklmnopqrstuvwxyz");
-
         test.ok(str !== null);
 
         test.equal(str.indexOf("lmno"), 11);
@@ -951,7 +870,6 @@ module.exports.teststrings = {
     testStringDelegateIndexOf: function(test) {
         test.expect(2);
         var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
-
         test.ok(str !== null);
 
         test.equal(str.lastIndexOf("lmno"), 26);
@@ -960,7 +878,6 @@ module.exports.teststrings = {
     testStringDelegateMatch: function(test) {
         test.expect(4);
         var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
-
         test.ok(str !== null);
 
         var m = str.match(/lmno/g);
@@ -972,7 +889,6 @@ module.exports.teststrings = {
     testStringDelegateReplace: function(test) {
         test.expect(2);
         var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
-
         test.ok(str !== null);
 
         test.equal(str.replace(/lmno/, "xxx").toString(), "abcdefghijkxxxpqrstuvwxyzlmnopqrstuv");
@@ -981,7 +897,6 @@ module.exports.teststrings = {
     testStringDelegateSearch: function(test) {
         test.expect(2);
         var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
-
         test.ok(str !== null);
 
         test.equal(str.search(/lmno/), 11);
@@ -990,7 +905,6 @@ module.exports.teststrings = {
     testStringDelegateSplit: function(test) {
         test.expect(8);
         var str = new IString("abcdefghijklmnopqrstuvwxyz");
-
         test.ok(str !== null);
 
         var consonants = str.split(/[aeiou]/);
@@ -1006,7 +920,6 @@ module.exports.teststrings = {
     testStringDelegateSubstr: function(test) {
         test.expect(2);
         var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
-
         test.ok(str !== null);
 
         test.equal(str.substr(26).toString(), "lmnopqrstuv");
@@ -1015,7 +928,6 @@ module.exports.teststrings = {
     testStringDelegateSubstring: function(test) {
         test.expect(2);
         var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
-
         test.ok(str !== null);
 
         test.equal(str.substring(1,5), "bcde");
@@ -1024,7 +936,6 @@ module.exports.teststrings = {
     testStringDelegateToLowerCase: function(test) {
         test.expect(2);
         var str = new IString("ABCDEF");
-
         test.ok(str !== null);
 
         test.equal(str.toLowerCase(), "abcdef");
@@ -1033,7 +944,6 @@ module.exports.teststrings = {
     testStringDelegateToUpperCase: function(test) {
         test.expect(2);
         var str = new IString("abcdef");
-
         test.ok(str !== null);
 
         test.equal(str.toUpperCase(), "ABCDEF");
@@ -1042,7 +952,6 @@ module.exports.teststrings = {
     testStringDelegateLength: function(test) {
         test.expect(2);
         var str = new IString("abcdef");
-
         test.ok(str !== null);
 
         test.equal(str.length, 6);
@@ -1052,11 +961,9 @@ module.exports.teststrings = {
         if (typeof("".matchAll) === 'function') {
             test.expect(13);
             var str = new IString("abc bd bc ab ef bc");
-
             test.ok(str !== null);
 
             var it = str.matchAll(/bc/g);
-
             test.ok(it);
 
             var match = it.next();
@@ -1086,7 +993,6 @@ module.exports.teststrings = {
         if (typeof("".toLocaleLowerCase) === 'function') {
             test.expect(2);
             var str = new IString("ABCDEF");
-
             test.ok(str !== null);
 
             test.equal(str.toLocaleLowerCase(), "abcdef");
@@ -1097,10 +1003,8 @@ module.exports.teststrings = {
     },
     testStringDelegateToLocaleUpperCase: function(test) {
         if (typeof("".toLocaleUpperCase) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.equal(str.toLocaleUpperCase(), "ABCDEF");
@@ -1111,10 +1015,8 @@ module.exports.teststrings = {
     },
     testStringDelegateEndsWithTrue: function(test) {
         if (typeof("".endsWith) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.ok(str.endsWith("def"));
@@ -1125,10 +1027,8 @@ module.exports.teststrings = {
     },
     testStringDelegateEndsWithTrueWithLength1: function(test) {
         if (typeof("".endsWith) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.ok(str.endsWith("def", str.length));
@@ -1139,10 +1039,8 @@ module.exports.teststrings = {
     },
     testStringDelegateEndsWithTrueWithLength2: function(test) {
         if (typeof("".endsWith) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.ok(str.endsWith("def", undefined));
@@ -1153,10 +1051,8 @@ module.exports.teststrings = {
     },
     testStringDelegateEndsWithFalse: function(test) {
         if (typeof("".endsWith) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.ok(!str.endsWith("de"));
@@ -1167,10 +1063,8 @@ module.exports.teststrings = {
     },
     testStringDelegateEndsWithFalse2: function(test) {
         if (typeof("".endsWith) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.ok(!str.endsWith("def", 3));
@@ -1181,10 +1075,8 @@ module.exports.teststrings = {
     },
     testStringDelegateStartsWithTrue: function(test) {
         if (typeof("".startsWith) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.ok(str.startsWith("abc"));
@@ -1195,10 +1087,8 @@ module.exports.teststrings = {
     },
     testStringDelegateStartsWithLength1: function(test) {
         if (typeof("".startsWith) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.ok(str.startsWith("abc", 0));
@@ -1209,10 +1099,8 @@ module.exports.teststrings = {
     },
     testStringDelegateStartsWithLength2: function(test) {
         if (typeof("".startsWith) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.ok(str.startsWith("abc", undefined));
@@ -1223,10 +1111,8 @@ module.exports.teststrings = {
     },
     testStringDelegateStartsWithFalse: function(test) {
         if (typeof("".startsWith) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.ok(!str.startsWith("bc"));
@@ -1237,10 +1123,8 @@ module.exports.teststrings = {
     },
     testStringDelegateStartsWithFalse2: function(test) {
         if (typeof("".startsWith) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.ok(!str.startsWith("ab", 4));
@@ -1251,10 +1135,8 @@ module.exports.teststrings = {
     },
     testStringDelegateIncludesTrue: function(test) {
         if (typeof("".includes) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.ok(str.includes("bcd"));
@@ -1265,10 +1147,8 @@ module.exports.teststrings = {
     },
     testStringDelegateIncludesFalse: function(test) {
         if (typeof("".includes) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.ok(!str.includes("bcf"));
@@ -1279,10 +1159,8 @@ module.exports.teststrings = {
     },
     testStringDelegateNormalize: function(test) {
         if (typeof("".normalize) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.equal(str.normalize("NFKC"), "abcdef");
@@ -1293,10 +1171,8 @@ module.exports.teststrings = {
     },
     testStringDelegatePadEnd: function(test) {
         if (typeof("".padEnd) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.equal(str.padEnd(12, "x"), "abcdefxxxxxx");
@@ -1307,10 +1183,8 @@ module.exports.teststrings = {
     },
     testStringDelegatePadStart: function(test) {
         if (typeof("".padStart) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.equal(str.padStart(11, "x"), "xxxxxabcdef");
@@ -1321,10 +1195,8 @@ module.exports.teststrings = {
     },
     testStringDelegateRepeat: function(test) {
         if (typeof("".repeat) === 'function') {
-
             test.expect(2);
             var str = new IString("abcdef");
-
             test.ok(str !== null);
 
             test.equal(str.repeat(3), "abcdefabcdefabcdef");
@@ -1335,10 +1207,8 @@ module.exports.teststrings = {
     },
     testStringDelegateTrim: function(test) {
         if (typeof("".trim) === 'function') {
-
             test.expect(2);
             var str = new IString("  \r  \n abcdef    \t \t");
-
             test.ok(str !== null);
 
             test.equal(str.trim(), "abcdef");
@@ -1349,10 +1219,8 @@ module.exports.teststrings = {
     },
     testStringDelegateTrimEnd: function(test) {
         if (typeof("".trimEnd) === 'function') {
-
             test.expect(2);
             var str = new IString("  \r  \n abcdef    \t \t");
-
             test.ok(str !== null);
 
             test.equal(str.trimEnd(), "  \r  \n abcdef");
@@ -1363,10 +1231,8 @@ module.exports.teststrings = {
     },
     testStringDelegateTrimRight: function(test) {
         if (typeof("".trimRight) === 'function') {
-
             test.expect(2);
             var str = new IString("  \r  \n abcdef    \t \t");
-
             test.ok(str !== null);
 
             test.equal(str.trimRight(), "  \r  \n abcdef");
@@ -1377,10 +1243,8 @@ module.exports.teststrings = {
     },
     testStringDelegateTrimStart: function(test) {
         if (typeof("".trimStart) === 'function') {
-
             test.expect(2);
             var str = new IString("  \r  \n abcdef    \t \t");
-
             test.ok(str !== null);
 
             test.equal(str.trimStart(), "abcdef    \t \t");
@@ -1391,10 +1255,8 @@ module.exports.teststrings = {
     },
     testStringDelegateTrimLeft: function(test) {
         if (typeof("".trimLeft) === 'function') {
-
             test.expect(2);
             var str = new IString("  \r  \n abcdef    \t \t");
-
             test.ok(str !== null);
 
             test.equal(str.trimLeft(), "abcdef    \t \t");
@@ -2751,7 +2613,6 @@ module.exports.teststrings = {
     testStringGetLocaleDefault: function(test) {
         test.expect(2);
         var str = new IString("foo");
-
         test.ok(str !== null);
 
         test.equal(str.getLocale(), "en-US");
@@ -2761,7 +2622,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("foo");
         str.setLocale(new Locale("ja-JP"));
-
         test.ok(str !== null);
 
         test.equal(str.getLocale(), "ja-JP");
@@ -2771,7 +2631,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("foo");
         str.setLocale("ja-JP");
-
         test.ok(str !== null);
 
         test.equal(str.getLocale(), "ja-JP");
@@ -2781,7 +2640,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("foo");
         str.setLocale(undefined);
-
         test.ok(str !== null);
 
         test.equal(str.getLocale(), "en-US");
@@ -2791,7 +2649,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one.|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
-
         test.ok(str !== null);
 
         var platform = ilib._getPlatform();
@@ -2813,7 +2670,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "The items end in one");
@@ -2823,7 +2679,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(11), "Default items");
@@ -2833,7 +2688,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(101), "The items end in one");
@@ -2843,7 +2697,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(2), "The items end in two");
@@ -2853,7 +2706,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(102), "The items end in two");
@@ -2863,7 +2715,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(12), "Default items");
@@ -2873,7 +2724,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(3), "The items is few");
@@ -2883,7 +2733,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(103), "The items is few");
@@ -2893,7 +2742,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(4), "The items is few");
@@ -2903,7 +2751,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(104), "The items is few");
@@ -2913,7 +2760,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(5), "Default items");
@@ -2923,7 +2769,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ar-SA");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(30), "The items are many");
@@ -2933,7 +2778,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("az-Latn-AZ");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(30), "Default items");
@@ -2943,7 +2787,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("az-Latn-AZ");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "The item is one");
@@ -2953,7 +2796,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ka-GE");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(0), "Default items");
@@ -2963,7 +2805,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ka-GE");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(10), "Default items");
@@ -2973,7 +2814,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ka-GE");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "The item is one");
@@ -2983,7 +2823,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ka-GE");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(15), "Default items");
@@ -2993,7 +2832,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pt-BR");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "The item is one");
@@ -3003,7 +2841,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pt-BR");
-
         test.ok(str !== null);
 
         var platform = ilib._getPlatform();
@@ -3025,7 +2862,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pt-BR");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(13), "Default items");
@@ -3035,7 +2871,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pt-BR");
-
         test.ok(str !== null);
 
         if (ilib._getPlatform() === "nodejs") {
@@ -3060,7 +2895,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pt-PT");
-
         test.ok(str !== null);
 
         var platform = ilib._getPlatform();
@@ -3082,7 +2916,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pt-PT");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "The item is one");
@@ -3092,7 +2925,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("be-BY");
-
         test.ok(str !== null);
         var platform = ilib._getPlatform();
         if (platform === "nodejs") {
@@ -3123,7 +2955,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("eu-ES");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "The item is one");
@@ -3133,7 +2964,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("be-BY");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(3), "The items are few");
@@ -3143,7 +2973,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("be-BY");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(100), "The items are many");
@@ -3153,7 +2982,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("be-BY");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(8), "The items are many");
@@ -3164,7 +2992,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("eu-ES");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "The item is one");
@@ -3174,7 +3001,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("eu-ES");
-
         test.ok(str !== null);
         test.equal(str.formatChoice(11), "Default items");
         test.done();
@@ -3183,7 +3009,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("eu-ES");
-
         test.ok(str !== null);
         test.equal(str.formatChoice(16), "Default items");
         test.done();
@@ -3192,7 +3017,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("my-MM");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "Default items");
@@ -3202,7 +3026,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("my-MM");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(5), "Default items");
@@ -3212,7 +3035,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("zu-ZA");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "The item is one");
@@ -3222,7 +3044,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("zu-ZA");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(5), "Default items");
@@ -3232,7 +3053,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("zu-ZA");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(15), "Default items");
@@ -3242,7 +3062,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ig-NG");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "Default items");
@@ -3252,7 +3071,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ig-NG");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(5), "Default items");
@@ -3262,7 +3080,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ps-PK");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "There items are one");
@@ -3281,7 +3098,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("yo-NG");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "Default items");
@@ -3345,7 +3161,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "The item is one");
@@ -3355,7 +3170,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(2), "The items are few");
@@ -3365,7 +3179,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(12), "The items are many");
@@ -3375,7 +3188,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(22), "The items are few");
@@ -3385,7 +3197,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(102), "The items are few");
@@ -3395,7 +3206,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(112), "The items are many");
@@ -3405,7 +3215,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(122), "The items are few");
@@ -3415,7 +3224,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(5), "The items are many");
@@ -3425,7 +3233,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(112), "The items are many");
@@ -3435,7 +3242,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(10), "The items are many");
@@ -3445,7 +3251,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("az-Latn-AZ");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(10), "Default items");
@@ -3455,7 +3260,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ka-GE");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(10), "Default items");
@@ -3465,7 +3269,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ka-GE");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "The item is one");
@@ -3475,7 +3278,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ne-NP");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "The item is one");
@@ -3485,7 +3287,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ne-NP");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(11), "Default items");
@@ -3495,7 +3296,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|few#The items are few|many#The items are many|#Default items");
         str.setLocale("wo-SN");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1), "Default items");
@@ -3505,7 +3305,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("wo-SN");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(8), "Default items");
@@ -3524,7 +3323,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("lo-LA");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(13), "Default items");
@@ -3543,7 +3341,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("tk-TM");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(13), "Default items");
@@ -3826,7 +3623,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ar-EG");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(8.0), "The items are few");
@@ -3836,7 +3632,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("hy-AM");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(3.5), "Default items");
@@ -3846,7 +3641,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("hr-HR");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(2.3), "The items are few");
@@ -3856,7 +3650,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("hr-HR");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(10.1), "The item is one");
@@ -3866,7 +3659,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("hr-HR");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(2.5), "Default items");
@@ -3876,7 +3668,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("he-IL");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(10.0), "Default items");
@@ -3886,7 +3677,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ga-IE");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.6), "Default items");
@@ -3896,7 +3686,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ga-IE");
-
         test.ok(str !== null);
 
         var platform = ilib._getPlatform();
@@ -3918,7 +3707,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("lv-LV");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.9), "Default items");
@@ -3928,7 +3716,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("lv-LV");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.1), "The item is one");
@@ -3938,7 +3725,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("lt-LT");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.7), "The items are many");
@@ -3948,7 +3734,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("fa-IR");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(2.6), "Default items");
@@ -3958,7 +3743,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("fa-IR");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(0.04), "The item is one");
@@ -3968,7 +3752,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("sk-KS");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.5), "The items are many");
@@ -3978,7 +3761,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("az-Latn-AZ");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.5), "Default items");
@@ -3988,7 +3770,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pt-BR");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.0), "The item is one");
@@ -4006,9 +3787,7 @@ module.exports.teststrings = {
     testStringFormatChoiceDecimal18: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
-
         str.setLocale("ka-GE");
-
         test.ok(str !== null);
 
         var platform = ilib._getPlatform();
@@ -4030,7 +3809,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pt-BR");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.0), "The item is one");
@@ -4040,7 +3818,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pt-PT");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.0), "The item is one");
@@ -4050,7 +3827,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pt-PT");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.5), "Default items");
@@ -4060,7 +3836,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pt-BR");
-
         test.ok(str !== null);
         var platform = ilib._getPlatform();
         if (platform === "nodejs") {
@@ -4082,7 +3857,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("mk-MK");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.1), "The item is one");
@@ -4092,7 +3866,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("mk-MK");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(7.1), "The item is one");
@@ -4102,7 +3875,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("mk-MK");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.7), "Default items");
@@ -4112,7 +3884,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("be-BY");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(21.0), "The item is one");
@@ -4122,7 +3893,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("be-BY");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(33.0), "The items are few");
@@ -4132,7 +3902,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("be-BY");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(100.1), "Default items");
@@ -4151,7 +3920,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ca-AD");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.7), "Default items");
@@ -4161,7 +3929,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ca-AD");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(10.0), "Default items");
@@ -4171,7 +3938,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ca-ES");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(2.7), "Default items");
@@ -4181,7 +3947,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ca-ES");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(14.4), "Default items");
@@ -4209,7 +3974,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("hy-AM");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(3.5), "Default items");
@@ -4219,7 +3983,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("eu-ES");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.7), "Default items");
@@ -4229,7 +3992,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("my-MM");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.0), "Default items");
@@ -4239,7 +4001,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("my-MM");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(3.7), "Default items");
@@ -4249,7 +4010,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ne-NP");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.0), "The item is one");
@@ -4259,7 +4019,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ne-NP");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(4.7), "Default items");
@@ -4269,7 +4028,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("wo-SN");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(4.0), "Default items");
@@ -4279,7 +4037,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("wo-SN");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(23.0), "Default items");
@@ -4289,7 +4046,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|few#The items are few|many#The items are many|#Default items");
         str.setLocale("tg-TJ");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.0), "Default items");
@@ -4299,7 +4055,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|few#The items are few|many#The items are many|#Default items");
         str.setLocale("tg-TJ");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(5.3), "Default items");
@@ -4309,7 +4064,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("mt-MT");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.0), "The item is one");
@@ -4319,7 +4073,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("mt-MT");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(3.0), "The items are few");
@@ -4329,7 +4082,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("mt-MT");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(17.0), "The items are many");
@@ -4339,7 +4091,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("mt-MT");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(100.0), "Default items");
@@ -4349,7 +4100,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("zu-ZA");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.0), "The item is one");
@@ -4359,7 +4109,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("zu-ZA");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(17.3), "Default items");
@@ -4369,7 +4118,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("es-ES");
-
         test.ok(str !== null);
         var platform = ilib._getPlatform();
         if (platform === "nodejs") {
@@ -4390,7 +4138,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("es-ES");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(3.1e3), "Default items");
@@ -4400,7 +4147,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("fr-FR");
-
         test.ok(str !== null);
         var platform = ilib._getPlatform();
         if (platform === "nodejs") {
@@ -4422,7 +4168,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("fr-FR");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(4.1e2), "Default items");
@@ -4432,7 +4177,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("lb-LU");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.1), "Default items");
@@ -4442,7 +4186,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("lb-LU");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(10.0), "Default items");
@@ -4452,7 +4195,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ig-NG");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.0), "Default items");
@@ -4462,7 +4204,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ig-NG");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(6.1), "Default items");
@@ -4472,7 +4213,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ps-AF");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.0), "There items are one");
@@ -4482,7 +4222,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ps-PK");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(26.1), "Default items");
@@ -4492,7 +4231,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("yo-NG");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(1.0), "Default items");
@@ -4502,7 +4240,6 @@ module.exports.teststrings = {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("yo-BJ");
-
         test.ok(str !== null);
 
         test.equal(str.formatChoice(23.1), "Default items");
