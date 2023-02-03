@@ -93,6 +93,7 @@
     "SZ": "Eswatini",
     "ET": "Etiopía",
     "039": "Europa meridional",
+    "EZ": "Eurozona",
     "PH": "Filipinas",
     "FI": "Finlandia",
     "FJ": "Fiyi",
@@ -191,6 +192,7 @@
     "MZ": "Mozambique",
     "001": "Mundo",
     "MM": "Myanmar (Birmania)",
+    "UN": "Naciones Unidas",
     "NA": "Namibia",
     "NR": "Nauru",
     "NP": "Nepal",
@@ -204,7 +206,6 @@
     "NZ": "Nueva Zelanda",
     "009": "Oceanía",
     "OM": "Omán",
-    "UN": "ONU",
     "NL": "Países Bajos",
     "PK": "Pakistán",
     "PW": "Palaos",
@@ -291,6 +292,5 @@
     "YE": "Yemen",
     "DJ": "Yibuti",
     "ZM": "Zambia",
-    "ZW": "Zimbabue",
-    "EZ": "zona euro"
+    "ZW": "Zimbabue"
 }

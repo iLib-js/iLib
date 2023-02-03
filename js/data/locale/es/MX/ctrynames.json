@@ -92,6 +92,7 @@
     "Europa Occidental": "155",
     "Europa Oriental": "151",
     "Europa septentrional": "154",
+    "Eurozona": "EZ",
     "Filipinas": "PH",
     "Finlandia": "FI",
     "Fiyi": "FJ",
@@ -191,6 +192,7 @@
     "Mozambique": "MZ",
     "Mundo": "001",
     "Myanmar (Birmania)": "MM",
+    "Naciones Unidas": "UN",
     "Namibia": "NA",
     "Nauru": "NR",
     "Nepal": "NP",
@@ -204,7 +206,6 @@
     "Nueva Zelanda": "NZ",
     "Oceanía": "009",
     "Omán": "OM",
-    "ONU": "UN",
     "Países Bajos": "NL",
     "Pakistán": "PK",
     "Palaos": "PW",
@@ -291,6 +292,5 @@
     "Yemen": "YE",
     "Yibuti": "DJ",
     "Zambia": "ZM",
-    "Zimbabue": "ZW",
-    "zona euro": "EZ"
+    "Zimbabue": "ZW"
 }
