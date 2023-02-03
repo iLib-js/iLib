@@ -1,7 +1,7 @@
 /*
  * testunitfmt_mt_MT.js - test the unitfmt for mt-MT
  *
- * Copyright © 2021 JEDLSoft
+ * Copyright © 2021,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -117,9 +117,22 @@ module.exports.testunitfmt_mt_MT = {
             autoConvert: true,
             length: "long"
         });
-
         var str = uf.format(m1);
-        test.equal(str, "2 ċentimetri kwadri");
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = Number(process.versions["cldr"]);
+            if (cldrVersion < 36) {
+                test.equal(str, "2 ċentimetru kwadru");
+            } else if (Number(cldrVersion) < 42) { // The `two` category has been added since CLDR 42.
+                test.equal(str, "2 ċentimetri kwadri");
+            } else {
+                test.equal(str, "2 ċentimetru kwadru");
+            }
+        } else if (platform === "browser") {
+            test.equal(str, "2 ċentimetri kwadri");
+        } else {
+            test.equal(str, "2 ċentimetru kwadru");
+        }
         test.done();
     },
     testUnitFormatArea3_mt_MT: function(test) {
@@ -185,7 +198,21 @@ module.exports.testunitfmt_mt_MT = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 kilometri kull litru");
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = Number(process.versions["cldr"]);
+            if (cldrVersion < 36) {
+                test.equal(str, "2 kilometru kull litru");
+            } else if (Number(cldrVersion) < 42) { // The `two` category has been added since CLDR 42.
+                test.equal(str, "2 kilometri kull litru");
+            } else {
+                test.equal(str, "2 kilometru kull litru");
+            }
+        } else if (platform === "browser") {
+            test.equal(str, "2 kilometri kull litru");
+        } else {
+            test.equal(str, "2 kilometru kull litru");
+        }
         test.done();
     },
     testUnitFormatLength1_mt_MT: function(test) {
