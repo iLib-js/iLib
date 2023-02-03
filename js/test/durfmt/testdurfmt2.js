@@ -1,7 +1,7 @@
 /*
  * testdurfmt2.js - test the duration formatter object
  *
- * Copyright © 2019-2022, JEDLSoft
+ * Copyright © 2019-2023, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3197,8 +3197,6 @@ module.exports.testdurfmt2 = {
             clockformatted_19.push(textfmt.format({hour: 19,minute: 19,second: 19}).toString());
         }
 
-        // CLDR 34 change (short: year, week)
-
         test.equal(textformatted_1[0], '‏שנה, חודש, שבוע ויום 1');
         test.equal(textformatted_1[1], '‏שנה 1, חודש, שבוע 1, יום');
         test.equal(textformatted_1[2], '‏ש′ 1 ח׳ 1 ש′ 1 י׳');
@@ -3208,11 +3206,6 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_2[1], '‏2 שנים, חודשיים, שבועיים, יומיים');
         test.equal(textformatted_2[2], '‏2 ש′ 2 ח׳ 2 ש′ 2 י׳');
         test.equal(textformatted_2[3], '‏2 ש′ 2 ח׳ 2 ש′ 2 י׳');
-
-        test.equal(textformatted_20[0], '‏20 שנים, 20 חודשים, 20 שבועות ו20 יום');
-        test.equal(textformatted_20[1], '‏20 שנים, 20 ח׳, 20 שבועות, 20 ימ׳');
-        test.equal(textformatted_20[2], '‏20 ש′ 20 ח׳ 20 ש′ 20 י׳');
-        test.equal(textformatted_20[3], '‏20 ש′ 20 ח׳ 20 ש′ 20 י׳');
 
         test.equal(textformatted_19[0], '‏19 שנים, 19 חודשים, 19 שבועות ו19 ימים');
         test.equal(textformatted_19[1], '‏19 שנים, 19 ח׳, 19 שבועות, 19 ימ׳');
@@ -3229,16 +3222,68 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_2[2], '‏2 שע׳ שתי דק׳ שתי שנ׳');
         test.equal(clockformatted_2[3], '‏2 שע׳ שתי דק׳ שתי שנ׳');
 
-        test.equal(clockformatted_20[0], '‏20 שעות, 20 דקות ו‏20 שניות');
-        test.equal(clockformatted_20[1], '‏20 שע׳, 20 דק׳, 20 שנ׳');
-        test.equal(clockformatted_20[2], '‏20 שע׳ 20 דק׳ 20 שנ׳');
-        test.equal(clockformatted_20[3], '‏20 שע׳ 20 דק׳ 20 שנ׳');
-
         test.equal(clockformatted_19[0], '‏19 שעות, 19 דקות ו19 שניות');
         test.equal(clockformatted_19[1], '‏19 שע׳, 19 דק׳, 19 שנ׳');
         test.equal(clockformatted_19[2], '‏19 שע׳ 19 דק׳ 19 שנ׳');
         test.equal(clockformatted_19[3], '‏19 שע׳ 19 דק׳ 19 שנ׳');
 
+        // The `many` category has been removed since CLDR 42.
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = Number(process.versions["cldr"]);
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
+                test.equal(textformatted_20[0], '‏20 שנים, 20 חודשים, 20 שבועות ו20 ימים');
+                test.equal(textformatted_20[1], '‏20 שנים, 20 ח׳, 20 שבועות, 20 ימ׳');
+                test.equal(textformatted_20[2], '‏20 ש′ 20 ח׳ 20 ש′ 20 י׳');
+                test.equal(textformatted_20[3], '‏20 ש′ 20 ח׳ 20 ש′ 20 י׳');
+
+                test.equal(clockformatted_20[0], '‏20 שעות, 20 דקות ו20 שניות');
+                test.equal(clockformatted_20[1], '‏20 שע׳, 20 דק׳, 20 שנ׳');
+                test.equal(clockformatted_20[2], '‏20 שע׳ 20 דק׳ 20 שנ׳');
+                test.equal(clockformatted_20[3], '‏20 שע׳ 20 דק׳ 20 שנ׳');
+            } else if (Number(cldrVersion) < 42) { // The `many` category has been removed since CLDR 42.
+                test.equal(textformatted_20[0], '‏20 שנים, 20 חודשים, 20 שבועות ו20 יום');
+                test.equal(textformatted_20[1], '‏20 שנים, 20 ח׳, 20 שבועות, 20 ימ׳');
+                test.equal(textformatted_20[2], '‏20 ש′ 20 ח׳ 20 ש′ 20 י׳');
+                test.equal(textformatted_20[3], '‏20 ש′ 20 ח׳ 20 ש′ 20 י׳');
+
+                test.equal(clockformatted_20[0], '‏20 שעות, 20 דקות ו‏20 שניות');
+                test.equal(clockformatted_20[1], '‏20 שע׳, 20 דק׳, 20 שנ׳');
+                test.equal(clockformatted_20[2], '‏20 שע׳ 20 דק׳ 20 שנ׳');
+                test.equal(clockformatted_20[3], '‏20 שע׳ 20 דק׳ 20 שנ׳');
+            } else {
+                test.equal(textformatted_20[0], '‏20 שנים, 20 חודשים, 20 שבועות ו20 ימים');
+                test.equal(textformatted_20[1], '‏20 שנים, 20 ח׳, 20 שבועות, 20 ימ׳');
+                test.equal(textformatted_20[2], '‏20 ש′ 20 ח׳ 20 ש′ 20 י׳');
+                test.equal(textformatted_20[3], '‏20 ש′ 20 ח׳ 20 ש′ 20 י׳');
+
+                test.equal(clockformatted_20[0], '‏20 שעות, 20 דקות ו20 שניות');
+                test.equal(clockformatted_20[1], '‏20 שע׳, 20 דק׳, 20 שנ׳');
+                test.equal(clockformatted_20[2], '‏20 שע׳ 20 דק׳ 20 שנ׳');
+                test.equal(clockformatted_20[3], '‏20 שע׳ 20 דק׳ 20 שנ׳');
+            }
+
+        } else if (platform === "browser") {
+            test.equal(textformatted_20[0], '‏20 שנים, 20 חודשים, 20 שבועות ו20 יום');
+            test.equal(textformatted_20[2], '‏20 ש′ 20 ח׳ 20 ש′ 20 י׳');
+            test.equal(textformatted_20[1], '‏20 שנים, 20 ח׳, 20 שבועות, 20 ימ׳');
+            test.equal(textformatted_20[3], '‏20 ש′ 20 ח׳ 20 ש′ 20 י׳');
+
+            test.equal(clockformatted_20[1], '‏20 שע׳, 20 דק׳, 20 שנ׳');
+            test.equal(clockformatted_20[0], '‏20 שעות, 20 דקות ו‏20 שניות');
+            test.equal(clockformatted_20[3], '‏20 שע׳ 20 דק׳ 20 שנ׳');
+            test.equal(clockformatted_20[2], '‏20 שע׳ 20 דק׳ 20 שנ׳');
+        } else {
+            test.equal(textformatted_20[0], '‏20 שנים, 20 חודשים, 20 שבועות ו20 ימים');
+            test.equal(textformatted_20[1], '‏20 שנים, 20 ח׳, 20 שבועות, 20 ימ׳');
+            test.equal(textformatted_20[2], '‏20 ש′ 20 ח׳ 20 ש′ 20 י׳');
+            test.equal(textformatted_20[3], '‏20 ש′ 20 ח׳ 20 ש′ 20 י׳');
+
+            test.equal(clockformatted_20[0], '‏20 שעות, 20 דקות ו20 שניות');
+            test.equal(clockformatted_20[1], '‏20 שע׳, 20 דק׳, 20 שנ׳');
+            test.equal(clockformatted_20[2], '‏20 שע׳ 20 דק׳ 20 שנ׳');
+            test.equal(clockformatted_20[3], '‏20 שע׳ 20 דק׳ 20 שנ׳');
+        }
         test.done();
     },
     testDurFmt_hi_IN: function(test) {
