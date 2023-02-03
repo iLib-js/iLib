@@ -2,19 +2,23 @@
     "or": {
         "full": {
             "2": "{0} tabi {1}",
-            "end": "{0}, tabi {1}"
+            "end": "{0}, tabi {1}",
+            "start": "{0} pẹ̀lú {1}"
         },
         "long": {
             "2": "{0} tabi {1}",
-            "end": "{0}, tabi {1}"
+            "end": "{0}, tabi {1}",
+            "start": "{0} pẹ̀lú {1}"
         },
         "medium": {
             "2": "{0} tabi {1}",
-            "end": "{0}, tabi {1}"
+            "end": "{0}, tabi {1}",
+            "start": "{0} pẹ̀lú {1}"
         },
         "short": {
             "2": "{0} tabi {1}",
-            "end": "{0}, tabi {1}"
+            "end": "{0}, tabi {1}",
+            "start": "{0} pẹ̀lú {1}"
         }
     }
 }
