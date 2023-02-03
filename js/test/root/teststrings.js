@@ -3355,15 +3355,6 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(1), "The item is one");
         test.done();
     },
-    testStringFormatChoiceCharClassesComplex_hy_AM: function(test) {
-        test.expect(2);
-        var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
-        str.setLocale("hy-AM");
-        test.ok(str !== null);
-
-        test.equal(str.formatChoice(1), "The item is one");
-        test.done();
-    },
     testStringFormatChoiceCharClassesComplex_ca_AD2: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
@@ -3371,6 +3362,38 @@ module.exports.teststrings = {
         test.ok(str !== null);
 
         test.equal(str.formatChoice(15), "Default items");
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_ca_AD3: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("ca-AD");
+        test.ok(str !== null);
+
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = Number(process.versions["cldr"]);
+            if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
+                test.equal(str.formatChoice(1000000), "The items are many");
+            } else if (Number(cldrVersion) < 42) { // The `many` category has been added since CLDR 42.
+                test.equal(str.formatChoice(1000000), "Default items");
+            } else {
+                test.equal(str.formatChoice(1000000), "The items are many");
+            }
+        } else if (platform === "browser") {
+            test.equal(str.formatChoice(1000000), "Default items");
+        } else {
+            test.equal(str.formatChoice(1000000), "The items are many");
+        }
+        test.done();
+    },
+    testStringFormatChoiceCharClassesComplex_hy_AM: function(test) {
+        test.expect(2);
+        var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
+        str.setLocale("hy-AM");
+        test.ok(str !== null);
+
+        test.equal(str.formatChoice(1), "The item is one");
         test.done();
     },
     testStringFormatChoiceCharClassesComplex_hy_AM2: function(test) {
@@ -3455,7 +3478,6 @@ module.exports.teststrings = {
         test.ok(str !== null);
         var platform = ilib._getPlatform();
         if (platform === "nodejs") {
-            console.log("version: " , process.versions.node + "\n");
             var cldrVersion = Number(process.versions["cldr"]);
             if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(2), "The items are two");
@@ -3609,7 +3631,6 @@ module.exports.teststrings = {
 
         var platform = ilib._getPlatform();
         if (platform === "nodejs") {
-            console.log("version: " , process.versions.node + "\n");
             var cldrVersion = Number(process.versions["cldr"]);
             if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(30), "Default items");
