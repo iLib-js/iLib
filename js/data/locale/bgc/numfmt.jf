@@ -1,8 +1,9 @@
 {
     "generated": true,
-    "numfmt": {
+    "native_numfmt": {
         "currencyFormats": {
-            "commonNegative": "-{s}{n}"
+            "common": "{s} {n}",
+            "commonNegative": "-{s} {n}"
         },
         "decimalChar": ".",
         "exponential": "E",
@@ -11,7 +12,14 @@
         "negativepctFmt": "-{n}%",
         "pctChar": "%",
         "pctFmt": "{n}%",
+        "prigroupSize": 3,
+        "roundingMode": "halfdown",
         "script": "Latn",
         "useNative": false
+    },
+    "numfmt": {
+        "digits": "०१२३४५६७८९",
+        "script": "Deva",
+        "useNative": true
     }
 }

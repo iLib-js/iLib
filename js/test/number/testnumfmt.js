@@ -1790,7 +1790,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "১,০০,১১০.৫৭₹");
+        test.equal(fmt.format(100110.57), '₹১,০০,১১০.৫৭');
         test.done();
     },
 
@@ -1803,7 +1803,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "১,০০,১১০.৫৭₹");
+        test.equal(fmt.format(100110.57), '₹১,০০,১১০.৫৭');
         test.done();
     },
 
@@ -2159,7 +2159,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "₹ ௧,௦௦,௧௧௦.௫௭");
+        test.equal(fmt.format(100110.57), "₹௧,௦௦,௧௧௦.௫௭");
         test.done();
     },
 
@@ -2173,7 +2173,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-100110.57), "-₹ ௧,௦௦,௧௧௦.௫௭");
+        test.equal(fmt.format(-100110.57), "-₹௧,௦௦,௧௧௦.௫௭");
         test.done();
     },
 
@@ -2186,7 +2186,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "₹ 1,00,110.57");
+        test.equal(fmt.format(100110.57), "₹1,00,110.57");
         test.done();
     },
     testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_ta_IN: function(test) {
@@ -2198,7 +2198,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-100110.57), "-₹ 1,00,110.57");
+        test.equal(fmt.format(-100110.57), "-₹1,00,110.57");
         test.done();
     },
 
@@ -2707,7 +2707,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "₹ ੧,੦੦,੧੧੦.੫੭");
+        test.equal(fmt.format(100110.57), "₹੧,੦੦,੧੧੦.੫੭");
         test.done();
     },
 
@@ -2721,7 +2721,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-100110.57), "-₹ ੧,੦੦,੧੧੦.੫੭");
+        test.equal(fmt.format(-100110.57), "-₹੧,੦੦,੧੧੦.੫੭");
         test.done();
     },
 
@@ -2735,7 +2735,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "₹ 1,00,110.57");
+        test.equal(fmt.format(100110.57), "₹1,00,110.57");
         test.done();
     },
     testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_pa_IN: function(test) {
@@ -2747,7 +2747,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-100110.57), "-₹ 1,00,110.57");
+        test.equal(fmt.format(-100110.57), "-₹1,00,110.57");
         test.done();
     },
 
@@ -3958,7 +3958,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-123456.785), "؜-١٢٣٬٤٥٦٫٧٨");
+        test.equal(fmt.format(-123456.785), '؜-١٢٣٬٤٥٦٫٧٨');
         test.done();
     },
 
@@ -3971,7 +3971,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "١٠٠٬١١٠٫٥٧ ر.س");
+        test.equal(fmt.format(100110.57), '‏١٠٠٬١١٠٫٥٧ ر.س');
         test.done();
     },
     testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_ar_SA: function(test) {
@@ -3983,7 +3983,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-100110.57), "؜-١٠٠٬١١٠٫٥٧ ر.س");
+        test.equal(fmt.format(-100110.57), '؜-‏١٠٠٬١١٠٫٥٧ ر.س');
         test.done();
     },
     testNumFmtPercentageFormatRegular_ar_SA: function(test) {
@@ -4318,7 +4318,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "‏100,110.57 ₪");
+        test.equal(fmt.format(100110.57), '‏100,110.57 ‏₪');
         test.done();
     },
     testNumFmtPercentageFormatRegular_he_IL: function(test) {
@@ -5887,7 +5887,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(57.8), "57.8 %");
+        test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
 

@@ -2,8 +2,8 @@
     "generated": true,
     "native_numfmt": {
         "currencyFormats": {
-            "common": "{n} {s}",
-            "commonNegative": "؜-{n} {s}"
+            "common": "‏{n} {s}",
+            "commonNegative": "؜-‏{n} {s}"
         },
         "decimalChar": "٫",
         "digits": "٠١٢٣٤٥٦٧٨٩",
@@ -20,8 +20,7 @@
     },
     "numfmt": {
         "currencyFormats": {
-            "common": "{s} {n}",
-            "commonNegative": "‎-{s} {n}"
+            "commonNegative": "‏-{n} {s}"
         },
         "decimalChar": ",",
         "exponential": "E",
