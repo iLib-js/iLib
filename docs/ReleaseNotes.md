@@ -3,8 +3,10 @@ Release Notes for Version 14
 
 Build 026
 -------
-Published as version 14.16.1
+Published as version 14.17.0
 
+New Features:
+* Update to CLDR v42 data
 Bug Fixes:
 * Fixed to publish js apidoc with applying style properly.
 
