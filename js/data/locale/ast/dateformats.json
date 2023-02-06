@@ -57,30 +57,30 @@
             }
         },
         "order": {
-            "f": "{date} 'a' 'les' {time}",
-            "l": "{date} 'a' 'les' {time}",
+            "f": "{date}, {time}",
+            "l": "{date}, {time}",
             "m": "{date}, {time}",
             "s": "{date} {time}"
         },
         "range": {
             "c00": {
-                "f": "{sd} {sm} de {sy} a les {st} – {et}",
-                "l": "{sd} {sm} de {sy} a les {st} – {et}",
+                "f": "{sd} {sm} de {sy}, {st} – {et}",
+                "l": "{sd} {sm} de {sy}, {st} – {et}",
                 "m": "{sd} {sm} {sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm} de {sy} a les {st} – {ed} {em} de {ey} a les {et}",
-                "l": "{sd} {sm} de {sy} a les {st} – {ed} {em} de {ey} a les {et}",
+                "f": "{sd} {sm} de {sy}, {st} – {ed} {em} de {ey}, {et}",
+                "l": "{sd} {sm} de {sy}, {st} – {ed} {em} de {ey}, {et}",
                 "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}"
             },
             "c02": {
-                "f": "{sd} {sm} de {sy} a les {st} – {ed} {em} de {ey} a les {et}",
-                "l": "{sd} {sm} de {sy} a les {st} – {ed} {em} de {ey} a les {et}",
+                "f": "{sd} {sm} de {sy}, {st} – {ed} {em} de {ey}, {et}",
+                "l": "{sd} {sm} de {sy}, {st} – {ed} {em} de {ey}, {et}",
                 "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}"
             },
             "c03": {
-                "f": "{sd} {sm} de {sy} a les {st} – {ed} {em} de {ey} a les {et}",
-                "l": "{sd} {sm} de {sy} a les {st} – {ed} {em} de {ey} a les {et}",
+                "f": "{sd} {sm} de {sy}, {st} – {ed} {em} de {ey}, {et}",
+                "l": "{sd} {sm} de {sy}, {st} – {ed} {em} de {ey}, {et}",
                 "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}"
             },
             "c10": {
@@ -114,11 +114,7 @@
         },
         "time": {
             "12": {
-                "ah": "h a",
-                "ahm": "h:mm a",
-                "ahms": "h:mm:ss a",
-                "ahmsz": "h:mm:ss a z",
-                "ahmz": "h:mm a z"
+                "ah": "h a"
             },
             "24": {
                 "ah": "HH",

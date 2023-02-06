@@ -7,6 +7,14 @@
                 "m": "LLL",
                 "s": "LL"
             }
+        },
+        "time": {
+            "12": {
+                "ahm": "h:mma",
+                "ahms": "h:mm:ssa",
+                "ahmsz": "h:mm:ssa z",
+                "ahmz": "h:mma z"
+            }
         }
     }
 }

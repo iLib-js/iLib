@@ -19,15 +19,15 @@
                 "s": "dd.MM, E"
             },
             "dmwy": {
-                "f": "d MMMM, yyyy 'ел', EEEE",
-                "l": "d MMMM, yyyy 'ел', EEE",
-                "m": "d MMM, yyyy 'ел', EE",
+                "f": "d MMMM, yyyy 'ел', EEEE",
+                "l": "d MMMM, yyyy 'ел', EEE",
+                "m": "d MMM, yyyy 'ел', EE",
                 "s": "dd.MM.yyyy, E"
             },
             "dmy": {
-                "f": "d MMMM, yyyy 'ел'",
-                "l": "d MMMM, yyyy 'ел'",
-                "m": "d MMM, yyyy 'ел'",
+                "f": "d MMMM, yyyy 'ел'",
+                "l": "d MMMM, yyyy 'ел'",
+                "m": "d MMM, yyyy 'ел'",
                 "s": "dd.MM.yyyy"
             },
             "dw": {
@@ -42,9 +42,9 @@
                 "s": "MM"
             },
             "my": {
-                "f": "MMMM, yyyy 'ел'",
-                "l": "MMMM, yyyy 'ел'",
-                "m": "MMM, yyyy 'ел'",
+                "f": "MMMM, yyyy 'ел'",
+                "l": "MMMM, yyyy 'ел'",
+                "m": "MMM, yyyy 'ел'",
                 "s": "MM.yyyy"
             },
             "y": {
@@ -54,51 +54,51 @@
         "order": "{date}, {time}",
         "range": {
             "c00": {
-                "f": "{sd} {sm}, {sy} ел, {st} – {et}",
-                "l": "{sd} {sm}, {sy} ел, {st} – {et}",
-                "m": "{sd} {sm}, {sy} ел, {st} – {et}",
+                "f": "{sd} {sm}, {sy} ел, {st} – {et}",
+                "l": "{sd} {sm}, {sy} ел, {st} – {et}",
+                "m": "{sd} {sm}, {sy} ел, {st} – {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
-                "l": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
-                "m": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
+                "f": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
+                "l": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
+                "m": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },
             "c02": {
-                "f": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
-                "l": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
-                "m": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
+                "f": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
+                "l": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
+                "m": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },
             "c03": {
-                "f": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
-                "l": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
-                "m": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
+                "f": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
+                "l": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
+                "m": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },
             "c10": {
-                "f": "{sd} – {ed} {em}, {ey} ел",
-                "l": "{sd} – {ed} {em}, {ey} ел",
-                "m": "{sd} – {ed} {em}, {ey} ел",
+                "f": "{sd} – {ed} {em}, {ey} ел",
+                "l": "{sd} – {ed} {em}, {ey} ел",
+                "m": "{sd} – {ed} {em}, {ey} ел",
                 "s": "{sd} – {ed}.{em}.{ey}"
             },
             "c11": {
-                "f": "{sd} {sm} – {ed} {em}, {ey} ел",
-                "l": "{sd} {sm} – {ed} {em}, {ey} ел",
-                "m": "{sd} {sm} – {ed} {em}, {ey} ел",
+                "f": "{sd} {sm} – {ed} {em}, {ey} ел",
+                "l": "{sd} {sm} – {ed} {em}, {ey} ел",
+                "m": "{sd} {sm} – {ed} {em}, {ey} ел",
                 "s": "{sd}.{sm} – {ed}.{em}.{ey}"
             },
             "c12": {
-                "f": "{sd} {sm}, {sy} ел – {ed} {em}, {ey} ел",
-                "l": "{sd} {sm}, {sy} ел – {ed} {em}, {ey} ел",
-                "m": "{sd} {sm}, {sy} ел – {ed} {em}, {ey} ел",
+                "f": "{sd} {sm}, {sy} ел – {ed} {em}, {ey} ел",
+                "l": "{sd} {sm}, {sy} ел – {ed} {em}, {ey} ел",
+                "m": "{sd} {sm}, {sy} ел – {ed} {em}, {ey} ел",
                 "s": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}"
             },
             "c20": {
-                "f": "{sm}, {sy} ел – {em}, {ey} ел",
-                "l": "{sm}, {sy} ел – {em}, {ey} ел",
-                "m": "{sm}, {sy} ел – {em}, {ey} ел",
+                "f": "{sm}, {sy} ел – {em}, {ey} ел",
+                "l": "{sm}, {sy} ел – {em}, {ey} ел",
+                "m": "{sm}, {sy} ел – {em}, {ey} ел",
                 "s": "{sm}.{sy} – {em}.{ey}"
             },
             "c30": {
@@ -110,11 +110,7 @@
         },
         "time": {
             "12": {
-                "ah": "h a",
-                "ahm": "h:mm a",
-                "ahms": "h:mm:ss a",
-                "ahmsz": "h:mm:ss a z",
-                "ahmz": "h:mm a z"
+                "ah": "h a"
             }
         }
     }

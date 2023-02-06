@@ -20,13 +20,13 @@
                 "s": "M/d 'күнэ', E"
             },
             "dmwy": {
-                "f": "yyyy 'сыл' MMMM d 'күнэ', EEEE",
+                "f": "yyyy 'сыл' MMMM d 'күнэ', EEEE",
                 "l": "yyyy, MMMM d 'күнэ', EEE",
                 "m": "yyyy, MMM d 'күнэ', EE",
                 "s": "yy/M/d 'күнэ', E"
             },
             "dmy": {
-                "f": "yyyy 'сыл' MMMM d",
+                "f": "yyyy 'сыл' MMMM d",
                 "l": "yyyy, MMMM d",
                 "m": "yyyy, MMM d",
                 "s": "yy/M/d"
@@ -48,7 +48,7 @@
                 "m": "MMM"
             },
             "my": {
-                "f": "yyyy 'сыл' MMMM",
+                "f": "yyyy 'сыл' MMMM",
                 "l": "yyyy, MMMM",
                 "m": "yyyy, MMM",
                 "s": "yy/M"
@@ -56,49 +56,49 @@
         },
         "range": {
             "c00": {
-                "f": "{sy} сыл {sm} {sd} {st} – {et}",
+                "f": "{sy} сыл {sm} {sd} {st} – {et}",
                 "l": "{sy}, {sm} {sd} {st} – {et}",
                 "m": "{sy}, {sm} {sd} {st} – {et}",
                 "s": "{sy}/{sm}/{sd} {st} – {et}"
             },
             "c01": {
-                "f": "{sy} сыл {sm} {sd} {st} – {ey} сыл {em} {ed} {et}",
+                "f": "{sy} сыл {sm} {sd} {st} – {ey} сыл {em} {ed} {et}",
                 "l": "{sy}, {sm} {sd} {st} – {ey}, {em} {ed} {et}",
                 "m": "{sy}, {sm} {sd} {st} – {ey}, {em} {ed} {et}",
                 "s": "{sy}/{sm}/{sd} {st} – {ey}/{em}/{ed} {et}"
             },
             "c02": {
-                "f": "{sy} сыл {sm} {sd} {st} – {ey} сыл {em} {ed} {et}",
+                "f": "{sy} сыл {sm} {sd} {st} – {ey} сыл {em} {ed} {et}",
                 "l": "{sy}, {sm} {sd} {st} – {ey}, {em} {ed} {et}",
                 "m": "{sy}, {sm} {sd} {st} – {ey}, {em} {ed} {et}",
                 "s": "{sy}/{sm}/{sd} {st} – {ey}/{em}/{ed} {et}"
             },
             "c03": {
-                "f": "{sy} сыл {sm} {sd} {st} – {ey} сыл {em} {ed} {et}",
+                "f": "{sy} сыл {sm} {sd} {st} – {ey} сыл {em} {ed} {et}",
                 "l": "{sy}, {sm} {sd} {st} – {ey}, {em} {ed} {et}",
                 "m": "{sy}, {sm} {sd} {st} – {ey}, {em} {ed} {et}",
                 "s": "{sy}/{sm}/{sd} {st} – {ey}/{em}/{ed} {et}"
             },
             "c10": {
-                "f": "{sy} сыл {sm} {sd} – {ed}",
+                "f": "{sy} сыл {sm} {sd} – {ed}",
                 "l": "{sy}, {sm} {sd} – {ed}",
                 "m": "{sy}, {sm} {sd} – {ed}",
                 "s": "{sy}/{sm}/{sd} – {ed}"
             },
             "c11": {
-                "f": "{sy} сыл {sm} {sd} – {em} {ed}",
+                "f": "{sy} сыл {sm} {sd} – {em} {ed}",
                 "l": "{sy}, {sm} {sd} – {em} {ed}",
                 "m": "{sy}, {sm} {sd} – {ey}, {em} {ed}",
                 "s": "{sy}/{sm}/{sd} – {ey}/{em}/{ed}"
             },
             "c12": {
-                "f": "{sy} сыл {sm} {sd} – {ey} сыл {em} {ed}",
+                "f": "{sy} сыл {sm} {sd} – {ey} сыл {em} {ed}",
                 "l": "{sy}, {sm} {sd} – {ey}, {em} {ed}",
                 "m": "{sy}, {sm} {sd} – {ey}, {em} {ed}",
                 "s": "{sy}/{sm}/{sd} – {ey}/{em}/{ed}"
             },
             "c20": {
-                "f": "{sy} сыл {sm} – {ey} сыл {em}",
+                "f": "{sy} сыл {sm} – {ey} сыл {em}",
                 "l": "{sy}, {sm} – {ey}, {em}",
                 "m": "{sy}, {sm} – {ey}, {em}",
                 "s": "{sy}/{sm} – {ey}/{em}"
@@ -112,11 +112,7 @@
         },
         "time": {
             "12": {
-                "ah": "h a",
-                "ahm": "h:mm a",
-                "ahms": "h:mm:ss a",
-                "ahmsz": "h:mm:ss a z",
-                "ahmz": "h:mm a z"
+                "ah": "h a"
             },
             "24": {
                 "ah": "HH",

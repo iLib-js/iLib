@@ -96,34 +96,29 @@
                 "s": "MM.yy"
             }
         },
-        "order": {
-            "f": "{date} 'um' {time}",
-            "l": "{date} 'um' {time}",
-            "m": "{date}, {time}",
-            "s": "{date}, {time}"
-        },
+        "order": "{date}, {time}",
         "range": {
             "c00": {
-                "f": "{sd}. {sm} {sy} um {st} – {et}",
-                "l": "{sd}. {sm} {sy} um {st} – {et}",
+                "f": "{sd}. {sm} {sy}, {st} – {et}",
+                "l": "{sd}. {sm} {sy}, {st} – {et}",
                 "m": "{sd}.{sm}.{sy}, {st} – {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sd}. {sm} {sy} um {st} – {ed}. {em} {ey} um {et}",
-                "l": "{sd}. {sm} {sy} um {st} – {ed}. {em} {ey} um {et}",
+                "f": "{sd}. {sm} {sy}, {st} – {ed}. {em} {ey}, {et}",
+                "l": "{sd}. {sm} {sy}, {st} – {ed}. {em} {ey}, {et}",
                 "m": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },
             "c02": {
-                "f": "{sd}. {sm} {sy} um {st} – {ed}. {em} {ey} um {et}",
-                "l": "{sd}. {sm} {sy} um {st} – {ed}. {em} {ey} um {et}",
+                "f": "{sd}. {sm} {sy}, {st} – {ed}. {em} {ey}, {et}",
+                "l": "{sd}. {sm} {sy}, {st} – {ed}. {em} {ey}, {et}",
                 "m": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },
             "c03": {
-                "f": "{sd}. {sm} {sy} um {st} – {ed}. {em} {ey} um {et}",
-                "l": "{sd}. {sm} {sy} um {st} – {ed}. {em} {ey} um {et}",
+                "f": "{sd}. {sm} {sy}, {st} – {ed}. {em} {ey}, {et}",
+                "l": "{sd}. {sm} {sy}, {st} – {ed}. {em} {ey}, {et}",
                 "m": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },

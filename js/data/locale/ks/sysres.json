@@ -143,6 +143,8 @@
     "NN7": "جو",
     "NN8": "اگ",
     "NN9": "ست",
+    "a0": "اے ایم",
+    "a1": "پی ایم",
     "durationLongDays": "#{num} d",
     "durationMediumHours": "#{num} h",
     "durationMediumMillis": "#{num} ms",

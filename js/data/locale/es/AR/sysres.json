@@ -21,6 +21,8 @@
     "B4": "tarde",
     "B6": "noche",
     "E3": "M",
+    "G-1": "a.e.c.",
+    "G1": "e.c.",
     "durationLongDays": "one#{num} d.|#{num} dd.",
     "durationMediumWeeks": "one#{num}sem.|#{num}sems.",
     "durationMediumYears": "one#{num}a.|#{num}a.",

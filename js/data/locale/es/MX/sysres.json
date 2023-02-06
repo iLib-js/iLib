@@ -12,6 +12,8 @@
     "1#in 1 month|#in {num} months": "one#en {num} mes|#en {num} meses",
     "1#in 1 mon|#in {num} mons": "one#en {num} mes|#en {num} meses",
     "E3": "M",
+    "G-1": "a.e.c.",
+    "G1": "e.c.",
     "durationLongDays": "one#{num} día|#{num} días",
     "durationShortMinutes": "one#{num}m|#{num}m"
 }

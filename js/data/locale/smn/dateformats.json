@@ -63,35 +63,29 @@
                 "s": "yyyy"
             }
         },
-        "order": {
-            "f": "{date} 'tme' {time}",
-            "l": "{date} 'tme' {time}",
-            "m": "{date} 'tme' {time}",
-            "s": "{date} {time}"
-        },
         "range": {
             "c00": {
-                "f": "{sm} {sd}. {sy} tme {st} – {et}",
-                "l": "{sm} {sd}. {sy} tme {st} – {et}",
-                "m": "{sm} {sd}. {sy} tme {st} – {et}",
+                "f": "{sm} {sd}. {sy} {st} – {et}",
+                "l": "{sm} {sd}. {sy} {st} – {et}",
+                "m": "{sm} {sd}. {sy} {st} – {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {et}"
             },
             "c01": {
-                "f": "{sm} {sd}. {sy} tme {st} – {em} {ed}. {ey} tme {et}",
-                "l": "{sm} {sd}. {sy} tme {st} – {em} {ed}. {ey} tme {et}",
-                "m": "{sm} {sd}. {sy} tme {st} – {em} {ed}. {ey} tme {et}",
+                "f": "{sm} {sd}. {sy} {st} – {em} {ed}. {ey} {et}",
+                "l": "{sm} {sd}. {sy} {st} – {em} {ed}. {ey} {et}",
+                "m": "{sm} {sd}. {sy} {st} – {em} {ed}. {ey} {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
             },
             "c02": {
-                "f": "{sm} {sd}. {sy} tme {st} – {em} {ed}. {ey} tme {et}",
-                "l": "{sm} {sd}. {sy} tme {st} – {em} {ed}. {ey} tme {et}",
-                "m": "{sm} {sd}. {sy} tme {st} – {em} {ed}. {ey} tme {et}",
+                "f": "{sm} {sd}. {sy} {st} – {em} {ed}. {ey} {et}",
+                "l": "{sm} {sd}. {sy} {st} – {em} {ed}. {ey} {et}",
+                "m": "{sm} {sd}. {sy} {st} – {em} {ed}. {ey} {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
             },
             "c03": {
-                "f": "{sm} {sd}. {sy} tme {st} – {em} {ed}. {ey} tme {et}",
-                "l": "{sm} {sd}. {sy} tme {st} – {em} {ed}. {ey} tme {et}",
-                "m": "{sm} {sd}. {sy} tme {st} – {em} {ed}. {ey} tme {et}",
+                "f": "{sm} {sd}. {sy} {st} – {em} {ed}. {ey} {et}",
+                "l": "{sm} {sd}. {sy} {st} – {em} {ed}. {ey} {et}",
+                "m": "{sm} {sd}. {sy} {st} – {em} {ed}. {ey} {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
             },
             "c10": {
@@ -127,11 +121,11 @@
         },
         "time": {
             "12": {
-                "ah": "h a",
-                "ahm": "h.mm a",
-                "ahms": "h.mm.ss a",
-                "ahmsz": "h.mm.ss a z",
-                "ahmz": "h.mm a z",
+                "ah": "h a",
+                "ahm": "h.mma",
+                "ahms": "h.mm.ssa",
+                "ahmsz": "h.mm.ssa z",
+                "ahmz": "h.mma z",
                 "hm": "h.mm",
                 "hms": "h.mm.ss",
                 "hmsz": "h.mm.ss z",

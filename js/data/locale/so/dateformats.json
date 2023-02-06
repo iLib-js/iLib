@@ -61,32 +61,26 @@
                 "s": "MM/yy"
             }
         },
-        "order": {
-            "f": "{date} 'ee' {time}",
-            "l": "{date} 'ee' {time}",
-            "m": "{date} 'ee' {time}",
-            "s": "{date} {time}"
-        },
         "range": {
             "c00": {
-                "f": "{sm} {sd}, {sy} ee {st} – {et}",
-                "l": "{sm} {sd}, {sy} ee {st} – {et}",
-                "m": "{sd}-{sm}-{sy} ee {st} – {et}"
+                "f": "{sm} {sd}, {sy} {st} – {et}",
+                "l": "{sm} {sd}, {sy} {st} – {et}",
+                "m": "{sd}-{sm}-{sy} {st} – {et}"
             },
             "c01": {
-                "f": "{sm} {sd}, {sy} ee {st} – {em} {ed}, {ey} ee {et}",
-                "l": "{sm} {sd}, {sy} ee {st} – {em} {ed}, {ey} ee {et}",
-                "m": "{sd}-{sm}-{sy} ee {st} – {ed}-{em}-{ey} ee {et}"
+                "f": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
+                "l": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
+                "m": "{sd}-{sm}-{sy} {st} – {ed}-{em}-{ey} {et}"
             },
             "c02": {
-                "f": "{sm} {sd}, {sy} ee {st} – {em} {ed}, {ey} ee {et}",
-                "l": "{sm} {sd}, {sy} ee {st} – {em} {ed}, {ey} ee {et}",
-                "m": "{sd}-{sm}-{sy} ee {st} – {ed}-{em}-{ey} ee {et}"
+                "f": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
+                "l": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
+                "m": "{sd}-{sm}-{sy} {st} – {ed}-{em}-{ey} {et}"
             },
             "c03": {
-                "f": "{sm} {sd}, {sy} ee {st} – {em} {ed}, {ey} ee {et}",
-                "l": "{sm} {sd}, {sy} ee {st} – {em} {ed}, {ey} ee {et}",
-                "m": "{sd}-{sm}-{sy} ee {st} – {ed}-{em}-{ey} ee {et}"
+                "f": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
+                "l": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
+                "m": "{sd}-{sm}-{sy} {st} – {ed}-{em}-{ey} {et}"
             },
             "c10": {
                 "f": "{sm} {sd} – {ed}, {ey}",
@@ -120,10 +114,10 @@
         "time": {
             "12": {
                 "ah": "h a",
-                "ahm": "h:mm a",
-                "ahms": "h:mm:ss a",
-                "ahmsz": "h:mm:ss a z",
-                "ahmz": "h:mm a z"
+                "ahm": "h:mm a",
+                "ahms": "h:mm:ss a",
+                "ahmsz": "h:mm:ss a z",
+                "ahmz": "h:mm a z"
             },
             "24": {
                 "ah": "HH",

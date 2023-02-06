@@ -160,7 +160,7 @@
     "durationShortMillis": "one#{num} ms|two#{num} ms|many#{num} ms|#{num} ms",
     "durationShortMinutes": "one#דקה|two#שתי דק׳|many#{num} דק׳|#{num} דק׳",
     "durationShortMonths": "one#ח׳ {num}|two#{num} ח׳|many#{num} ח׳|#{num} ח׳",
-    "finalSeparatorFull": " ו",
+    "finalSeparatorFull": " ו-",
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",

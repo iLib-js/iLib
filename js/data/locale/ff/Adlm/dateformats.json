@@ -38,34 +38,28 @@
                 "s": "M-yyyy"
             }
         },
-        "order": {
-            "f": "{date} 𞤉 {time}",
-            "l": "{date} 𞤉 {time}",
-            "m": "{date} {time}",
-            "s": "{date} {time}"
-        },
         "range": {
             "c00": {
-                "f": "{sd} {sm}⹁ {sy} 𞤉 {st} – {et}",
-                "l": "{sd} {sm}⹁ {sy} 𞤉 {st} – {et}",
+                "f": "{sd} {sm}⹁ {sy} {st} – {et}",
+                "l": "{sd} {sm}⹁ {sy} {st} – {et}",
                 "m": "{sd} {sm}⹁ {sy} {st} – {et}",
                 "s": "{sd}-{sm}-{sy} {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm}⹁ {sy} 𞤉 {st} – {ed} {em}⹁ {ey} 𞤉 {et}",
-                "l": "{sd} {sm}⹁ {sy} 𞤉 {st} – {ed} {em}⹁ {ey} 𞤉 {et}",
+                "f": "{sd} {sm}⹁ {sy} {st} – {ed} {em}⹁ {ey} {et}",
+                "l": "{sd} {sm}⹁ {sy} {st} – {ed} {em}⹁ {ey} {et}",
                 "m": "{sd} {sm}⹁ {sy} {st} – {ed} {em}⹁ {ey} {et}",
                 "s": "{sd}-{sm}-{sy} {st} – {ed}-{em}-{ey} {et}"
             },
             "c02": {
-                "f": "{sd} {sm}⹁ {sy} 𞤉 {st} – {ed} {em}⹁ {ey} 𞤉 {et}",
-                "l": "{sd} {sm}⹁ {sy} 𞤉 {st} – {ed} {em}⹁ {ey} 𞤉 {et}",
+                "f": "{sd} {sm}⹁ {sy} {st} – {ed} {em}⹁ {ey} {et}",
+                "l": "{sd} {sm}⹁ {sy} {st} – {ed} {em}⹁ {ey} {et}",
                 "m": "{sd} {sm}⹁ {sy} {st} – {ed} {em}⹁ {ey} {et}",
                 "s": "{sd}-{sm}-{sy} {st} – {ed}-{em}-{ey} {et}"
             },
             "c03": {
-                "f": "{sd} {sm}⹁ {sy} 𞤉 {st} – {ed} {em}⹁ {ey} 𞤉 {et}",
-                "l": "{sd} {sm}⹁ {sy} 𞤉 {st} – {ed} {em}⹁ {ey} 𞤉 {et}",
+                "f": "{sd} {sm}⹁ {sy} {st} – {ed} {em}⹁ {ey} {et}",
+                "l": "{sd} {sm}⹁ {sy} {st} – {ed} {em}⹁ {ey} {et}",
                 "m": "{sd} {sm}⹁ {sy} {st} – {ed} {em}⹁ {ey} {et}",
                 "s": "{sd}-{sm}-{sy} {st} – {ed}-{em}-{ey} {et}"
             },

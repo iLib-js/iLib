@@ -49,26 +49,26 @@
         },
         "range": {
             "c00": {
-                "f": "{sd} {sm} {sy} at {st} – {et}",
-                "l": "{sd} {sm} {sy} at {st} – {et}",
+                "f": "{sd} {sm} {sy}, {st} – {et}",
+                "l": "{sd} {sm} {sy}, {st} – {et}",
                 "m": "{sd}-{sm}-{sy}, {st} – {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm} {sy} at {st} – {ed} {em} {ey} at {et}",
-                "l": "{sd} {sm} {sy} at {st} – {ed} {em} {ey} at {et}",
+                "f": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "l": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
                 "m": "{sd}-{sm}-{sy}, {st} – {ed}-{em}-{ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c02": {
-                "f": "{sd} {sm} {sy} at {st} – {ed} {em} {ey} at {et}",
-                "l": "{sd} {sm} {sy} at {st} – {ed} {em} {ey} at {et}",
+                "f": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "l": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
                 "m": "{sd}-{sm}-{sy}, {st} – {ed}-{em}-{ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c03": {
-                "f": "{sd} {sm} {sy} at {st} – {ed} {em} {ey} at {et}",
-                "l": "{sd} {sm} {sy} at {st} – {ed} {em} {ey} at {et}",
+                "f": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "l": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
                 "m": "{sd}-{sm}-{sy}, {st} – {ed}-{em}-{ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
@@ -94,6 +94,14 @@
                 "f": "{sm} {sy} – {em} {ey}",
                 "l": "{sm} {sy} – {em} {ey}",
                 "m": "{sm}-{sy} – {em}-{ey}"
+            }
+        },
+        "time": {
+            "12": {
+                "ahm": "h:mma",
+                "ahms": "h:mm:ssa",
+                "ahmsz": "h:mm:ssa z",
+                "ahmz": "h:mma z"
             }
         }
     }

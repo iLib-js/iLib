@@ -115,11 +115,9 @@
         },
         "time": {
             "12": {
-                "ah": "h a",
-                "ahm": "h:mm 'hodź'. a",
-                "ahms": "h:mm:ss a",
-                "ahmsz": "h:mm:ss a z",
-                "ahmz": "h:mm 'hodź'. a z",
+                "ah": "h a",
+                "ahm": "h:mm 'hodź'.a",
+                "ahmz": "h:mm 'hodź'.a z",
                 "hm": "h:mm 'hodź'.",
                 "hmz": "h:mm 'hodź'. z"
             },

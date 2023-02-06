@@ -77,34 +77,28 @@
                 "s": "MM-yy"
             }
         },
-        "order": {
-            "f": "{date} {time}కి",
-            "l": "{date} {time}కి",
-            "m": "{date} {time}",
-            "s": "{date} {time}"
-        },
         "range": {
             "c00": {
-                "f": "{sd}, {sm} {sy} {st}కి – {et}",
-                "l": "{sd} {sm}, {sy} {st}కి – {et}",
+                "f": "{sd}, {sm} {sy} {st} – {et}",
+                "l": "{sd} {sm}, {sy} {st} – {et}",
                 "m": "{sd} {sm}, {sy} {st} – {et}",
                 "s": "{sd}-{sm}-{sy} {st} – {et}"
             },
             "c01": {
-                "f": "{sd}, {sm} {sy} {st}కి – {ed}, {em} {ey} {et}కి",
-                "l": "{sd} {sm}, {sy} {st}కి – {ed} {em}, {ey} {et}కి",
+                "f": "{sd}, {sm} {sy} {st} – {ed}, {em} {ey} {et}",
+                "l": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
                 "m": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
                 "s": "{sd}-{sm}-{sy} {st} – {ed}-{em}-{ey} {et}"
             },
             "c02": {
-                "f": "{sd}, {sm} {sy} {st}కి – {ed}, {em} {ey} {et}కి",
-                "l": "{sd} {sm}, {sy} {st}కి – {ed} {em}, {ey} {et}కి",
+                "f": "{sd}, {sm} {sy} {st} – {ed}, {em} {ey} {et}",
+                "l": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
                 "m": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
                 "s": "{sd}-{sm}-{sy} {st} – {ed}-{em}-{ey} {et}"
             },
             "c03": {
-                "f": "{sd}, {sm} {sy} {st}కి – {ed}, {em} {ey} {et}కి",
-                "l": "{sd} {sm}, {sy} {st}కి – {ed} {em}, {ey} {et}కి",
+                "f": "{sd}, {sm} {sy} {st} – {ed}, {em} {ey} {et}",
+                "l": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
                 "m": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
                 "s": "{sd}-{sm}-{sy} {st} – {ed}-{em}-{ey} {et}"
             },

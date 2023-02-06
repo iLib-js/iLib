@@ -102,11 +102,11 @@
         },
         "time": {
             "12": {
-                "ah": "h a",
-                "ahm": "h:m a",
-                "ahms": "h:m:s a",
-                "ahmsz": "h:m:s a z",
-                "ahmz": "h:m a z",
+                "ah": "h a",
+                "ahm": "h:ma",
+                "ahms": "h:m:sa",
+                "ahmsz": "h:m:sa z",
+                "ahmz": "h:ma z",
                 "hm": "h:m",
                 "hms": "h:m:s",
                 "hmsz": "h:m:s z",
