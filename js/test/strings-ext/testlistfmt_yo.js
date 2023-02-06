@@ -1,7 +1,7 @@
 /*
  * testlistfmt_yo.js - test the list formatter object
  *
- * Copyright © 2022 - 2023, JEDLSoft
+ * Copyright © 2022-2023, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -215,7 +215,7 @@ module.exports.testlistfmt_yo = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ọkan", "meji"]), "ọkan tabi meji");
+        test.equal(fmt.format(["ọkan", "meji"]), "ọkan tàbí meji");
         test.done();
     },
     testListFmtORStyleNumberFormatThree_yo_NG: function(test) {
@@ -448,7 +448,7 @@ module.exports.testlistfmt_yo = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ọkan", "meji"]), "ọkan tabi meji");
+        test.equal(fmt.format(["ọkan", "meji"]), "ọkan tàbí meji");
         test.done();
     },
     testListFmtORStyleNumberFormatThree_yo_BJ: function(test) {
