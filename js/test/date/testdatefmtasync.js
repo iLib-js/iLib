@@ -1,7 +1,7 @@
 /*
  * testdatefmtasync.js - test the date formatter object asynchronously
  *
- * Copyright © 2018, 2022 JEDLSoft
+ * Copyright © 2018, 2022-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -161,7 +161,7 @@ module.exports.testdatefmtasync = {
                 // test formatting a javascript date. It should be converted to
                 // an ilib date object automatically and then formatted
                 var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700");
-                test.equal(fmt.format(datMyBday), "1:37 PM");
+                test.equal(fmt.format(datMyBday), "1:37 PM");
                 test.done();
             }
         });
@@ -297,7 +297,7 @@ module.exports.testdatefmtasync = {
                     locale: "en-US",
                     sync: false,
                     onLoad: function(date) {
-                        test.equal(fmt.format(date), "21/9/11, 6:45 am AEST");
+                        test.equal(fmt.format(date), "21/9/11, 6:45 am AEST");
                         test.done();
                     }
                 });

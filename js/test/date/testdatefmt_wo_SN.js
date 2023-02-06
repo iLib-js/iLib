@@ -1,7 +1,7 @@
 /*
  * testdatefmt_wo_SN.js - test the date formatter object in Wolof-Senegal
  *
- * Copyright © 2021, JEDLSoft
+ * Copyright © 2021,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -237,7 +237,7 @@ module.exports.testdatefmt_wo_SN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 Sàttumbar, 2021 ci 13:45');
+        test.equal(fmt.format(date), '29 Sàttumbar, 2021 - 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_wo_SN: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_wo_SN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 Sàt, 2021 ci 13:45');
+        test.equal(fmt.format(date), '29 Sàt, 2021 - 13:45');
         test.done();
     },
     testDateFmtTemplateCalendar_wo_SN: function(test) {

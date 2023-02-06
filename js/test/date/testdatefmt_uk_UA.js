@@ -1,7 +1,7 @@
 /*
  * testdatefmt_uk_UK.js - test the date formatter object in Ukranian
  *
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,6 @@ module.exports.testdatefmt_uk_UA = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtConstructorEmpty_uk_UA: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "uk-UA"});
@@ -44,8 +43,6 @@ module.exports.testdatefmt_uk_UA = {
         test.ok(fmt !== null);
         test.done();
     },
-
-
     testDateFmtSimpleShort_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "short"});
@@ -64,7 +61,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "29.09.11");
         test.done();
     },
-
     testDateFmtSimpleMedium_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "medium"});
@@ -80,10 +76,9 @@ module.exports.testdatefmt_uk_UA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 вер. 2011 р.");
+        test.equal(fmt.format(date), "29 вер. 2011 р.");
         test.done();
     },
-
     testDateFmtSimpleLong_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "long"});
@@ -99,10 +94,9 @@ module.exports.testdatefmt_uk_UA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 вересня 2011 р.");
+        test.equal(fmt.format(date), "29 вересня 2011 р.");
         test.done();
     },
-
     testDateFmtSimpleFull_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "full"});
@@ -118,10 +112,9 @@ module.exports.testdatefmt_uk_UA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 вересня 2011 р.");
+        test.equal(fmt.format(date), "29 вересня 2011 р.");
         test.done();
     },
-
     testDateFmtSimpleTimeShort_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "short", type: "time"});
@@ -140,7 +133,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeMedium_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "medium", type: "time"});
@@ -159,7 +151,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeLong_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", timelength: "long", type: "time"});
@@ -178,7 +169,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeFull_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "full", type: "time"});
@@ -197,7 +187,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleShort_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "short", type: "datetime"});
@@ -216,7 +205,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "29.09.11, 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleMedium_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "medium", type: "datetime"});
@@ -232,10 +220,9 @@ module.exports.testdatefmt_uk_UA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 вер. 2011 р., 13:45");
+        test.equal(fmt.format(date), "29 вер. 2011 р., 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleLong_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "long", type: "datetime"});
@@ -251,10 +238,9 @@ module.exports.testdatefmt_uk_UA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 вересня 2011 р. о 13:45");
+        test.equal(fmt.format(date), "29 вересня 2011 р., 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleFull_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "full", type: "datetime"});
@@ -270,11 +256,9 @@ module.exports.testdatefmt_uk_UA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 вересня 2011 р. о 13:45");
+        test.equal(fmt.format(date), "29 вересня 2011 р., 13:45");
         test.done();
     },
-
-
     testDateFmtTemplateCalendar_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", calendar: "julian", template: "yyyy-MM-dd"});
@@ -293,8 +277,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
-
     testDateFmtTemplateClock12SwitchHH_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", clock: "12", template: "HH:mm"});
@@ -313,7 +295,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock12Switchkk_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", clock: "12", template: "kk:mm"});
@@ -332,7 +313,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock24Switchhh_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", clock: "24", template: "hh:mm"});
@@ -351,7 +331,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateClock24SwitchKK_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", clock: "24", template: "KK:mm"});
@@ -370,7 +349,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", template: "hh:mm"});
@@ -389,7 +367,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", template: "KK:mm"});
@@ -408,7 +385,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", template: "HH:mm"});
@@ -427,7 +403,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", template: "kk:mm"});
@@ -446,8 +421,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
-
     testDateFmtTypeDate_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "date"});
@@ -466,7 +439,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "29.09.11");
         test.done();
     },
-
     testDateFmtTypeTime_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time"});
@@ -485,7 +457,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTypeDateTime_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "datetime"});
@@ -504,8 +475,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "29.09.11, 13:45");
         test.done();
     },
-
-
     testDateFmtShortDateComponentsY_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", date: "y"});
@@ -524,7 +493,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "11");
         test.done();
     },
-
     testDateFmtShortDateComponentsM_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", date: "m"});
@@ -543,7 +511,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "ве");
         test.done();
     },
-
     testDateFmtShortDateComponentsN_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", date: "n"});
@@ -562,7 +529,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "в");
         test.done();
     },
-
     testDateFmtShortDateComponentsD_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", date: "d"});
@@ -581,7 +547,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtShortDateComponentsDM_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", date: "dm"});
@@ -600,7 +565,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "29.09");
         test.done();
     },
-
     testDateFmtShortDateComponentsMY_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", date: "my"});
@@ -619,7 +583,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "09.11");
         test.done();
     },
-
     testDateFmtShortDateComponentsDMY_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", date: "dmy"});
@@ -638,7 +601,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "29.09.11");
         test.done();
     },
-
     testDateFmtShortDateComponentsWDM_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", date: "wdm"});
@@ -657,7 +619,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "Ч, 29.09");
         test.done();
     },
-
     testDateFmtShortDateComponentsWDMY_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", date: "wdmy"});
@@ -676,8 +637,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "Ч, 29.09.11");
         test.done();
     },
-
-
     testDateFmtFullDateComponentsY_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "full", date: "y"});
@@ -696,7 +655,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsM_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "full", date: "m"});
@@ -715,7 +673,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "вересень");
         test.done();
     },
-
     testDateFmtFullDateComponentsD_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "full", date: "d"});
@@ -734,7 +691,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtFullDateComponentsDM_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "full", date: "dm"});
@@ -753,7 +709,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "29 вересня");
         test.done();
     },
-
     testDateFmtFullDateComponentsMY_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "full", date: "my"});
@@ -769,10 +724,9 @@ module.exports.testdatefmt_uk_UA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "вересень 2011 р.");
+        test.equal(fmt.format(date), "вересень 2011 р.");
         test.done();
     },
-
     testDateFmtFullDateComponentsDMY_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "full", date: "dmy"});
@@ -788,10 +742,9 @@ module.exports.testdatefmt_uk_UA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 вересня 2011 р.");
+        test.equal(fmt.format(date), "29 вересня 2011 р.");
         test.done();
     },
-
     testDateFmtFullDateComponentsWDM_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "full", date: "wdm"});
@@ -810,7 +763,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "четвер, 29 вересня");
         test.done();
     },
-
     testDateFmtFullDateComponentsWDMY_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", length: "full", date: "wdmy"});
@@ -826,11 +778,9 @@ module.exports.testdatefmt_uk_UA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "четвер, 29 вересня 2011 р.");
+        test.equal(fmt.format(date), "четвер, 29 вересня 2011 р.");
         test.done();
     },
-
-
     testDateFmtShortTimeComponentsS_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time", time: "s"});
@@ -849,7 +799,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsM_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time", time: "m"});
@@ -868,7 +817,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsH_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time", time: "h"});
@@ -887,7 +835,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtShortTimeComponentsMS_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time", time: "ms"});
@@ -906,7 +853,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHM_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time", time: "hm"});
@@ -925,7 +871,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMS_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time", time: "hms"});
@@ -944,7 +889,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMA_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time", time: "hma"});
@@ -963,7 +907,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMZ_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -986,7 +929,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45 EEST");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMAZ_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1009,7 +951,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45 EEST");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSA_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time", time: "hmsa"});
@@ -1028,7 +969,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSZ_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1051,7 +991,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45:37 EEST");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSAZ_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1074,8 +1013,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45:37 EEST");
         test.done();
     },
-
-
     testDateFmtFullTimeComponentsS_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time", length: "full", time: "s"});
@@ -1094,7 +1031,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsM_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time", length: "full", time: "m"});
@@ -1113,7 +1049,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsH_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time", length: "full", time: "h"});
@@ -1132,7 +1067,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtFullTimeComponentsMS_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time", length: "full", time: "ms"});
@@ -1151,7 +1085,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHM_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time", length: "full", time: "hm"});
@@ -1170,7 +1103,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMS_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time", length: "full", time: "hms"});
@@ -1189,7 +1121,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMA_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time", length: "full", time: "hma"});
@@ -1208,7 +1139,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMZ_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1232,7 +1162,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45 EEST");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMAZ_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1256,7 +1185,6 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45 EEST");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSA_uk_UA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "uk-UA", type: "time", length: "full", time: "hmsa"});
@@ -1275,8 +1203,4 @@ module.exports.testdatefmt_uk_UA = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     }
-
-
-
-
 };
