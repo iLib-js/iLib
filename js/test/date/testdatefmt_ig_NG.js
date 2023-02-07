@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ig_NG.js - test the date formatter object in Igbo-Nigeria
  *
- * Copyright © 2022, JEDLSoft
+ * Copyright © 2022-2023, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -237,7 +237,7 @@ module.exports.testdatefmt_ig_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 Septemba 2021 na 13:45');
+        test.equal(fmt.format(date), '29 Septemba 2021, 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_ig_NG: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_ig_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 Septemba 2021 na 13:45');
+        test.equal(fmt.format(date), '29 Septemba 2021, 13:45');
         test.done();
     },
     testDateFmtTemplateCalendar_ig_NG: function(test) {

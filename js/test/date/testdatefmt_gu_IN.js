@@ -1,7 +1,7 @@
 /*
  * testdatefmt_gu_IN.js - test the date formatter object in gujrati for India
  *
- * Copyright © 2013-2015,2017, JEDLSoft
+ * Copyright © 2013-2015,2017,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,6 @@ module.exports.testdatefmt_gu_IN = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtINConstructorEmpty_gu_IN: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "gu-IN"});
@@ -43,8 +42,6 @@ module.exports.testdatefmt_gu_IN = {
         test.ok(typeof(fmt) !== "undefined");
         test.done();
     },
-
-
     testDateFmtINSimpleShort_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "short"});
@@ -62,7 +59,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
-
     testDateFmtINSimpleMedium_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "medium"});
@@ -81,7 +77,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "29 સપ્ટે, 2011");
         test.done();
     },
-
     testDateFmtINSimpleLong_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "long"});
@@ -100,7 +95,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "29 સપ્ટેમ્બર, 2011");
         test.done();
     },
-
     testDateFmtINSimpleFull_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "full"});
@@ -119,7 +113,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "29 સપ્ટેમ્બર, 2011");
         test.done();
     },
-
     testDateFmtINSimpleTimeShort_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "short", type: "time"});
@@ -138,7 +131,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
-
     testDateFmtINSimpleTimeShort_gu_IN1: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "short", type: "time"});
@@ -157,7 +149,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
-
     testDateFmtINSimpleTimeMedium_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "medium", type: "time"});
@@ -176,7 +167,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
-
     testDateFmtINSimpleTimeLong_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", timelength: "long", type: "time"});
@@ -195,7 +185,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
-
     testDateFmtINSimpleTimeFull_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "full", type: "time"});
@@ -214,7 +203,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
-
     testDateFmtINDateTimeSimpleShort_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "short", type: "datetime"});
@@ -233,7 +221,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "29/9/11 01:45 PM");
         test.done();
     },
-
     testDateFmtINDateTimeSimpleMedium_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "medium", type: "datetime"});
@@ -252,7 +239,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "29 સપ્ટે, 2011 01:45 PM");
         test.done();
     },
-
     testDateFmtINDateTimeSimpleLong_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "long", type: "datetime"});
@@ -268,10 +254,9 @@ module.exports.testdatefmt_gu_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 સપ્ટેમ્બર, 2011 એ 01:45 PM વાગ્યે");
+        test.equal(fmt.format(date), "29 સપ્ટેમ્બર, 2011 01:45 PM");
         test.done();
     },
-
     testDateFmtINDateTimeSimpleFull_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "full", type: "datetime"});
@@ -287,11 +272,9 @@ module.exports.testdatefmt_gu_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 સપ્ટેમ્બર, 2011 એ 01:45 PM વાગ્યે");
+        test.equal(fmt.format(date), "29 સપ્ટેમ્બર, 2011 01:45 PM");
         test.done();
     },
-
-
     testDateFmtINTemplateCalendar_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", calendar: "julian", template: "yyyy-MM-dd"});
@@ -310,7 +293,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
     testDateFmtINTemplateClock12SwitchHH_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", clock: "12", template: "HH:mm"});
@@ -329,7 +311,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtINTemplateClock12Switchkk_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", clock: "12", template: "kk:mm"});
@@ -348,7 +329,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtINTemplateClock24Switchhh_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", clock: "24", template: "hh:mm"});
@@ -367,7 +347,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtINTemplateClock24SwitchKK_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", clock: "24", template: "KK:mm"});
@@ -386,7 +365,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12hh_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", template: "hh:mm"});
@@ -405,7 +383,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12KK_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", template: "KK:mm"});
@@ -424,7 +401,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24HH_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", template: "HH:mm"});
@@ -443,7 +419,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24kk_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", template: "kk:mm"});
@@ -462,8 +437,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
-
     testDateFmtINTypeDate_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "date"});
@@ -482,7 +455,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
-
     testDateFmtINTypeTime_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "time"});
@@ -501,7 +473,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
-
     testDateFmtINTypeDateTime_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "datetime"});
@@ -520,8 +491,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "29/9/11 01:45 PM");
         test.done();
     },
-
-
     testDateFmtINShortDateComponentsY_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", date: "y"});
@@ -540,7 +509,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "11");
         test.done();
     },
-
     testDateFmtINShortDateComponentsM_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", date: "m"});
@@ -559,7 +527,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "9");
         test.done();
     },
-
     testDateFmtINShortDateComponentsN_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", date: "n"});
@@ -578,7 +545,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "સ");
         test.done();
     },
-
     testDateFmtINShortDateComponentsD_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", date: "d"});
@@ -597,7 +563,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtINShortDateComponentsDM_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", date: "dm"});
@@ -616,7 +581,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "29/9");
         test.done();
     },
-
     testDateFmtINShortDateComponentsMY_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", date: "my"});
@@ -635,7 +599,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "9/11");
         test.done();
     },
-
     testDateFmtINShortDateComponentsDMY_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", date: "dmy"});
@@ -654,7 +617,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
-
     testDateFmtINShortDateComponentsWDM_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", date: "wdm"});
@@ -673,7 +635,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "ગુ, 29/9");
         test.done();
     },
-
     testDateFmtINShortDateComponentsWDMY_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", date: "wdmy"});
@@ -692,8 +653,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "ગુ, 29/9/11");
         test.done();
     },
-
-
     testDateFmtINFullDateComponentsY_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "full", date: "y"});
@@ -712,7 +671,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtINFullDateComponentsM_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "full", date: "m"});
@@ -731,7 +689,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "સપ્ટેમ્બર");
         test.done();
     },
-
     testDateFmtINFullDateComponentsD_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "full", date: "d"});
@@ -750,7 +707,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtINFullDateComponentsDM_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "full", date: "dm"});
@@ -769,7 +725,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "29 સપ્ટેમ્બર");
         test.done();
     },
-
     testDateFmtINFullDateComponentsMY_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "full", date: "my"});
@@ -788,7 +743,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "સપ્ટેમ્બર, 2011");
         test.done();
     },
-
     testDateFmtINFullDateComponentsDMY_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "full", date: "dmy"});
@@ -807,7 +761,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "29 સપ્ટેમ્બર, 2011");
         test.done();
     },
-
     testDateFmtINFullDateComponentsWDM_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "full", date: "wdm"});
@@ -826,7 +779,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "ગુરુવાર, 29 સપ્ટેમ્બર");
         test.done();
     },
-
     testDateFmtINFullDateComponentsWDMY_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "full", date: "wdmy"});
@@ -845,8 +797,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "ગુરુવાર, 29 સપ્ટેમ્બર, 2011");
         test.done();
     },
-
-
     testDateFmtINShortTimeComponentsS_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "time", time: "s"});
@@ -865,7 +815,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsM_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "time", time: "m"});
@@ -884,7 +833,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsH_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "time", time: "h"});
@@ -903,8 +851,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01");
         test.done();
     },
-
-
     testDateFmtINShortTimeComponentsHM_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "time", time: "hm"});
@@ -923,7 +869,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMS_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "time", time: "hms"});
@@ -942,7 +887,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45:37");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMA_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "time", time: "hma"});
@@ -961,7 +905,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMZ_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -984,7 +927,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45:37 PM IST");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMAZ_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1008,7 +950,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45:37 PM IST");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMSA_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "time", time: "hmsa"});
@@ -1027,7 +968,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45:37 PM");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMSZ_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1051,7 +991,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45:37 PM IST");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMSAZ_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1075,8 +1014,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45:37 PM IST");
         test.done();
     },
-
-
     testDateFmtINFullTimeComponentsS_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "time", length: "full", time: "s"});
@@ -1095,7 +1032,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsM_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "time", length: "full", time: "m"});
@@ -1114,7 +1050,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsH_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "time", length: "full", time: "h"});
@@ -1133,9 +1068,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01");
         test.done();
     },
-
-
-
     testDateFmtINFullTimeComponentsHM_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "time", length: "full", time: "hma"});
@@ -1154,7 +1086,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsHMS_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "time", length: "full", time: "hmsa"});
@@ -1173,7 +1104,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45:37 PM");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsHMA_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "time", length: "full", time: "hma"});
@@ -1192,9 +1122,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
-
-
-
     testDateFmtINFullTimeComponentsHMAZ_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1219,7 +1146,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45:37 PM IST");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsHMSA_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", type: "time", length: "full", time: "hmsa"});
@@ -1238,7 +1164,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45:37 PM");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsHMSZ_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1263,7 +1188,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45:37 PM IST");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsHMSAZ_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1288,7 +1212,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45:37 PM IST");
         test.done();
     },
-
     testDateFmtINWithTimeZoneAndNoDST_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1313,7 +1236,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.format(date), "01:45:37 PM IST");
         test.done();
     },
-
     testDateFmtFormatRelativeWitgunMinuteAfter_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "full"});
@@ -1482,7 +1404,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.formatRelative(reference, date), "4 કલાક પહેલાં");
         test.done();
     },
-
     testDateFmtFormatRelativeWitgunFortnightAfter_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "full"});
@@ -1539,7 +1460,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.formatRelative(reference, date), "4 દિવસ પહેલાં");
         test.done();
     },
-
     testDateFmtFormatRelativeWitgunQuarterAfter_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "full"});
@@ -1596,7 +1516,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.formatRelative(reference, date), "9 અઠવાડિયા પહેલાં");
         test.done();
     },
-
     testDateFmtFormatRelativeWitgunTwoYearsAfter_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "full"});
@@ -1653,7 +1572,6 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.formatRelative(reference, date), "14 મહિના પહેલાં");
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_gu_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "gu-IN", length: "full"});
@@ -1710,7 +1628,4 @@ module.exports.testdatefmt_gu_IN = {
         test.equal(fmt.formatRelative(reference, date), "21 વર્ષ પહેલાં");
         test.done();
     }
-
-
-
 };

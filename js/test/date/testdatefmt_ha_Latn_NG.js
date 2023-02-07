@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ha_Latn_NG.js - test the date formatter object in Hausa.
  *
- * Copyright © 2015,2017-2018,2021 JEDLSoft
+ * Copyright © 2015,2017-2018,2021,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtConstructorEmpty_ha_Latn: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "ha-Latn-NG"});
@@ -43,7 +42,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.ok(fmt !== null);
         test.done();
     },
-
     testDateFmtSimpleShort_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "short"});
@@ -62,7 +60,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
-
     testDateFmtSimpleMedium_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "medium"});
@@ -81,7 +78,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29 Sat, 2011");
         test.done();
     },
-
     testDateFmtSimpleLong_ha_Latn_Jan: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
@@ -100,7 +96,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29 Janairu, 2011");
         test.done();
     },
-
     testDateFmtSimpleLong_ha_Latn_Feb: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
@@ -119,7 +114,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29 Faburairu, 2011");
         test.done();
     },
-
     testDateFmtSimpleLong_ha_Latn_Mar: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
@@ -156,7 +150,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29 Afirilu, 2011");
         test.done();
     },
-
     testDateFmtSimpleLong_ha_Latn_May: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
@@ -175,7 +168,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29 Mayu, 2011");
         test.done();
     },
-
     testDateFmtSimpleLong_ha_Latn_Jun: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
@@ -194,7 +186,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29 Yuni, 2011");
         test.done();
     },
-
     testDateFmtSimpleLong_ha_Latn_Jul: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
@@ -231,7 +222,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29 Agusta, 2011");
         test.done();
     },
-
     testDateFmtSimpleLong_ha_Latn_Sep: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
@@ -250,7 +240,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29 Satumba, 2011");
         test.done();
     },
-
     testDateFmtSimpleLong_ha_Latn_Oct: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
@@ -269,7 +258,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29 Oktoba, 2011");
         test.done();
     },
-
     testDateFmtSimpleLong_ha_Latn_Nov: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
@@ -324,7 +312,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29 Satumba, 2011");
         test.done();
     },
-
     testDateFmtSimpleFull_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
@@ -343,7 +330,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29 Satumba, 2011");
         test.done();
     },
-
     testDateFmtSimpleTimeShort_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "short", type: "time"});
@@ -362,7 +348,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtSimpleTimeMedium_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "medium", type: "time"});
@@ -381,7 +366,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeLong_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", timelength: "long", type: "time"});
@@ -400,7 +384,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeFull_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", type: "time"});
@@ -419,7 +402,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleShort_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "short", type: "datetime"});
@@ -438,7 +420,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29/9/11, 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleMedium_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "medium", type: "datetime"});
@@ -457,7 +438,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29 Sat, 2011, 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleLong_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "long", type: "datetime"});
@@ -473,10 +453,9 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Satumba, 2011 da 13:45");
+        test.equal(fmt.format(date), "29 Satumba, 2011, 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleFull_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", type: "datetime"});
@@ -495,8 +474,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29 Satumba, 2011 13:45");
         test.done();
     },
-
-
     testDateFmtTemplateCalendar_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", calendar: "julian", template: "yyyy-MM-dd"});
@@ -536,7 +513,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock12Switchkk_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", clock: "12", template: "kk:mm"});
@@ -555,7 +531,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock24Switchhh_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", clock: "24", template: "hh:mm"});
@@ -574,7 +549,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateClock24SwitchKK_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", clock: "24", template: "KK:mm"});
@@ -593,7 +567,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockNotFollowLocaleDefault12hh_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", template: "hh:mm"});
@@ -612,7 +585,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockNotFollowLocaleDefault12KK_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", template: "KK:mm"});
@@ -631,7 +603,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockNotFollowLocaleDefault24HH_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", template: "HH:mm"});
@@ -650,7 +621,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockNotFollowLocaleDefault24kk_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", template: "kk:mm"});
@@ -669,8 +639,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
-
     testDateFmtTypeDate_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "date"});
@@ -689,7 +657,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
-
     testDateFmtTypeTime_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time"});
@@ -708,7 +675,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTypeDateTime_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "datetime"});
@@ -727,8 +693,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29/9/11, 13:45");
         test.done();
     },
-
-
     testDateFmtShortDateComponentsY_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "y"});
@@ -747,7 +711,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "11");
         test.done();
     },
-
     testDateFmtShortDateComponentsM_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "m"});
@@ -766,7 +729,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "9");
         test.done();
     },
-
     testDateFmtShortDateComponentsN_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "n"});
@@ -785,7 +747,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "S");
         test.done();
     },
-
     testDateFmtShortDateComponentsN_ha_Latn_Mar: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "n"});
@@ -822,7 +783,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtShortDateComponentsDM_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "dm"});
@@ -841,7 +801,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29/9");
         test.done();
     },
-
     testDateFmtShortDateComponentsMY_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "my"});
@@ -860,7 +819,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "9/11");
         test.done();
     },
-
     testDateFmtShortDateComponentsDMY_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "dmy"});
@@ -879,7 +837,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
-
     testDateFmtShortDateComponentsDMW_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "dmw"});
@@ -898,7 +855,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), 'L 29/9');
         test.done();
     },
-
     testDateFmtShortDateComponentsDMWY_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "dmwy"});
@@ -917,8 +873,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), 'L 29/9/54');
         test.done();
     },
-
-
     testDateFmtFullDateComponentsY_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", date: "y"});
@@ -937,7 +891,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsM_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", date: "m"});
@@ -956,7 +909,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "Satumba");
         test.done();
     },
-
     testDateFmtFullDateComponentsD_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", date: "d"});
@@ -975,7 +927,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtFullDateComponentsDM_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", date: "dm"});
@@ -994,7 +945,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29 Satumba");
         test.done();
     },
-
     testDateFmtFullDateComponentsMY_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", date: "my"});
@@ -1013,7 +963,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "Satumba, 2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsDMY_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", date: "dmy"});
@@ -1032,7 +981,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "29 Satumba, 2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsDMW_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", date: "dmw"});
@@ -1051,7 +999,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), 'Alhamis 19 Faburairu');
         test.done();
     },
-
     testDateFmtFullDateComponentsDMWY_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", date: "dmwy"});
@@ -1070,8 +1017,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), 'Alhamis 19 Faburairu, 2015');
         test.done();
     },
-
-
     testDateFmtShortTimeComponentsS_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", time: "s"});
@@ -1090,7 +1035,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsM_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", time: "m"});
@@ -1109,7 +1053,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsH_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", time: "h"});
@@ -1128,7 +1071,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtShortTimeComponentsMS_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", time: "ms"});
@@ -1147,7 +1089,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHM_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", clock:"12", type: "time", time: "hm"});
@@ -1166,7 +1107,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "1:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMS_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", clock:"12", type: "time", time: "hms"});
@@ -1185,7 +1125,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "1:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMA_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", clock:"12", type: "time", time: "ahm"});
@@ -1204,7 +1143,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), '1:45 Yamma');
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMZ_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1227,7 +1165,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45 WAT");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMAZ_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1250,7 +1187,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45 WAT");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSA_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", clock:"12", type: "time", time: "ahms"});
@@ -1269,7 +1205,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), '1:45:37 Yamma');
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSZ_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1292,7 +1227,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45:37 WAT");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSAZ_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1315,8 +1249,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45:37 WAT");
         test.done();
     },
-
-
     testDateFmtFullTimeComponentsS_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", length: "full", time: "s"});
@@ -1335,7 +1267,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsM_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", length: "full", time: "m"});
@@ -1354,7 +1285,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsH_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", clock:"12", length: "full", time: "h"});
@@ -1373,7 +1303,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "1");
         test.done();
     },
-
     testDateFmtFullTimeComponentsMS_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", length: "full", time: "ms"});
@@ -1392,7 +1321,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHM_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", length: "full", time: "hm"});
@@ -1411,7 +1339,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMS_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", length: "full", time: "hms"});
@@ -1430,7 +1357,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMA_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", clock:"12", length: "full", time: "hma"});
@@ -1449,7 +1375,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), '1:45 Yamma');
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMZ_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1473,7 +1398,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45 WAT");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMAZ_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1497,7 +1421,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45 WAT");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSA_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", clock:"12", length: "full", time: "hmsa"});
@@ -1516,7 +1439,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), '1:45:37 Yamma');
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSZ_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1540,7 +1462,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45:37 WAT");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSAZ_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1564,7 +1485,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45:37 WAT");
         test.done();
     },
-
     testDateFmtWithTimeZoneAndNoDST_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1588,7 +1508,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.format(date), "13:45:37 WAT");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinMinuteAfter_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
@@ -1757,7 +1676,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.formatRelative(reference, date), '4 awa da ya gabata');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
@@ -1814,7 +1732,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.formatRelative(reference, date), "kwanaki da suka gabata 4");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
@@ -1871,7 +1788,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.formatRelative(reference, date), "makonni da suka gabata 9");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
@@ -1928,7 +1844,6 @@ module.exports.testdatefmt_ha_Latn_NG = {
         test.equal(fmt.formatRelative(reference, date), "watanni da suka gabata 14");
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_ha_Latn: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
