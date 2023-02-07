@@ -1,7 +1,7 @@
 /*
  * testlistfmt_he_IL.js - test the list formatter object
  *
- * Copyright © 2017, 2020 JEDLSoft
+ * Copyright © 2017, 2020, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -209,7 +209,7 @@ module.exports.testlistfmt_he_IL = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה"]), "אחד, שתיים ושְׁלוֹשָׁה");
+        test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה"]), 'אחד, שתיים ו-שְׁלוֹשָׁה');
         test.done();
     },
 
@@ -222,7 +222,7 @@ module.exports.testlistfmt_he_IL = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה", "ארבעה"]), "אחד, שתיים, שְׁלוֹשָׁה וארבעה");
+        test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה", "ארבעה"]), 'אחד, שתיים, שְׁלוֹשָׁה ו-ארבעה');
         test.done();
     }
 

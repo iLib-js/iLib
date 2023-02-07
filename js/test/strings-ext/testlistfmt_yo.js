@@ -1,7 +1,7 @@
 /*
  * testlistfmt_yo.js - test the list formatter object
  *
- * Copyright © 2022, JEDLSoft
+ * Copyright © 2022-2023, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -215,7 +215,7 @@ module.exports.testlistfmt_yo = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ọkan", "meji"]), "ọkan tabi meji");
+        test.equal(fmt.format(["ọkan", "meji"]), "ọkan tàbí meji");
         test.done();
     },
     testListFmtORStyleNumberFormatThree_yo_NG: function(test) {
@@ -226,7 +226,7 @@ module.exports.testlistfmt_yo = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ọkan", "meji", "mẹta"]), "ọkan, meji, tabi mẹta");
+        test.equal(fmt.format(["ọkan", "meji", "mẹta"]), "ọkan pẹ̀lú meji, tabi mẹta");
         test.done();
     },
     testListFmtORStyleNumberFormatFour_yo_NG: function(test) {
@@ -237,7 +237,7 @@ module.exports.testlistfmt_yo = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin"]), "ọkan, meji, mẹta, tabi mẹrin");
+        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin"]), "ọkan pẹ̀lú meji, mẹta, tabi mẹrin");
         test.done();
     },
     testListFmtORStyleNumberFormatFiveFull_yo_NG: function(test) {
@@ -248,7 +248,7 @@ module.exports.testlistfmt_yo = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin", "mẹrin"]), "ọkan, meji, mẹta, mẹrin, tabi mẹrin");
+        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin", "mẹrin"]), "ọkan pẹ̀lú meji, mẹta, mẹrin, tabi mẹrin");
         test.done();
     },
     testListFmtORStyleNumberFormatShortFiveFull_yo_NG: function(test) {
@@ -259,7 +259,7 @@ module.exports.testlistfmt_yo = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin", "mẹrin"]), "ọkan, meji, mẹta, mẹrin, tabi mẹrin");
+        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin", "mẹrin"]), "ọkan pẹ̀lú meji, mẹta, mẹrin, tabi mẹrin");
         test.done();
     },
 
@@ -448,7 +448,7 @@ module.exports.testlistfmt_yo = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ọkan", "meji"]), "ọkan tabi meji");
+        test.equal(fmt.format(["ọkan", "meji"]), "ọkan tàbí meji");
         test.done();
     },
     testListFmtORStyleNumberFormatThree_yo_BJ: function(test) {
@@ -459,7 +459,7 @@ module.exports.testlistfmt_yo = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ọkan", "meji", "mẹta"]), "ọkan, meji, tabi mẹta");
+        test.equal(fmt.format(["ọkan", "meji", "mẹta"]), "ọkan pɛ̀lú meji, tabi mẹta");
         test.done();
     },
     testListFmtORStyleNumberFormatFour_yo_BJ: function(test) {
@@ -470,7 +470,7 @@ module.exports.testlistfmt_yo = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin"]), "ọkan, meji, mẹta, tabi mẹrin");
+        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin"]), "ọkan pɛ̀lú meji, mẹta, tabi mẹrin");
         test.done();
     },
     testListFmtORStyleNumberFormatFiveFull_yo_BJ: function(test) {
@@ -481,7 +481,7 @@ module.exports.testlistfmt_yo = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin", "mẹrin"]), "ọkan, meji, mẹta, mẹrin, tabi mẹrin");
+        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin", "mẹrin"]), "ọkan pɛ̀lú meji, mẹta, mẹrin, tabi mẹrin");
         test.done();
     },
     testListFmtORStyleNumberFormatShortFiveFull_yo_BJ: function(test) {
@@ -492,7 +492,7 @@ module.exports.testlistfmt_yo = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin", "mẹrin"]), "ọkan, meji, mẹta, mẹrin, tabi mẹrin");
+        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin", "mẹrin"]), "ọkan pɛ̀lú meji, mẹta, mẹrin, tabi mẹrin");
         test.done();
     }
 };

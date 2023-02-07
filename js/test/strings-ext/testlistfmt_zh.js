@@ -1,7 +1,7 @@
 /*
  * testlistfmt_zh.js - test the list formatter object
  *
- * Copyright © 2017, 2020, 2022 JEDLSoft
+ * Copyright © 2017, 2020, 2022-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -84,6 +84,53 @@ module.exports.testlistfmt_zh = {
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["一", "二", "三", "四", "五"]), "一、二、三、四和五");
+        test.done();
+    },
+    testListFmtzhHansCNNumberFormatTwo_Short: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-CN",
+            length: "short"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二"]), "一、二");
+        test.done();
+    },
+
+    testListFmtzhHansCNNumberFormatThree_Short: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-CN",
+            length: "short"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三"]), "一、二、三");
+        test.done();
+    },
+
+    testListFmtzhHansCNNumberFormatFour_Short: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-CN",
+            length: "short"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三", "四"]), "一、二、三、四");
+        test.done();
+    },
+
+    testListFmtzhHansCNNumberFormatFive_Short: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-CN",
+            length: "short"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三", "四", "五"]), "一、二、三、四、五");
         test.done();
     },
 
