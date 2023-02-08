@@ -1,6 +1,8 @@
 {
     "gregorian": {
-        "order": "{date}, {time}",
+        "order": {
+            "s": "{date}, {time}"
+        },
         "range": {
             "c00": {
                 "s": "{sd}/{sm}/{sy}, {st} – {et}"

@@ -87,29 +87,34 @@
                 "s": "yyyy"
             }
         },
-        "order": "{date}, {time}",
+        "order": {
+            "f": "{date} בשעה {time}",
+            "l": "{date} בשעה {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
+        },
         "range": {
             "c00": {
-                "f": "‏{sd} ב{sm} {sy}, {st} – {et}",
-                "l": "‏{sd} ב{sm} {sy}, {st} – {et}",
+                "f": "‏{sd} ב{sm} {sy} בשעה {st} – {et}",
+                "l": "‏{sd} ב{sm} {sy} בשעה {st} – {et}",
                 "m": "‏{sd} ב{sm} {sy}, {st} – {et}",
                 "s": "‏{sd}.{sm}.{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "‏{sd} ב{sm} {sy}, {st} – ‏{ed} ב{em} {ey}, {et}",
-                "l": "‏{sd} ב{sm} {sy}, {st} – ‏{ed} ב{em} {ey}, {et}",
+                "f": "‏{sd} ב{sm} {sy} בשעה {st} – ‏{ed} ב{em} {ey} בשעה {et}",
+                "l": "‏{sd} ב{sm} {sy} בשעה {st} – ‏{ed} ב{em} {ey} בשעה {et}",
                 "m": "‏{sd} ב{sm} {sy}, {st} – ‏{ed} ב{em} {ey}, {et}",
                 "s": "‏{sd}.{sm}.{sy}, {st} – ‏{ed}.{em}.{ey}, {et}"
             },
             "c02": {
-                "f": "‏{sd} ב{sm} {sy}, {st} – ‏{ed} ב{em} {ey}, {et}",
-                "l": "‏{sd} ב{sm} {sy}, {st} – ‏{ed} ב{em} {ey}, {et}",
+                "f": "‏{sd} ב{sm} {sy} בשעה {st} – ‏{ed} ב{em} {ey} בשעה {et}",
+                "l": "‏{sd} ב{sm} {sy} בשעה {st} – ‏{ed} ב{em} {ey} בשעה {et}",
                 "m": "‏{sd} ב{sm} {sy}, {st} – ‏{ed} ב{em} {ey}, {et}",
                 "s": "‏{sd}.{sm}.{sy}, {st} – ‏{ed}.{em}.{ey}, {et}"
             },
             "c03": {
-                "f": "‏{sd} ב{sm} {sy}, {st} – ‏{ed} ב{em} {ey}, {et}",
-                "l": "‏{sd} ב{sm} {sy}, {st} – ‏{ed} ב{em} {ey}, {et}",
+                "f": "‏{sd} ב{sm} {sy} בשעה {st} – ‏{ed} ב{em} {ey} בשעה {et}",
+                "l": "‏{sd} ב{sm} {sy} בשעה {st} – ‏{ed} ב{em} {ey} בשעה {et}",
                 "m": "‏{sd} ב{sm} {sy}, {st} – ‏{ed} ב{em} {ey}, {et}",
                 "s": "‏{sd}.{sm}.{sy}, {st} – ‏{ed}.{em}.{ey}, {et}"
             },

@@ -59,28 +59,34 @@
                 "s": "M.yy"
             }
         },
+        "order": {
+            "f": "{date} 'zeger' {time}",
+            "l": "{date} 'zeger' {time}",
+            "m": "{date} {time}",
+            "s": "{date} {time}"
+        },
         "range": {
             "c00": {
-                "f": "{sd}. {sm} {sy} {st} – {et}",
-                "l": "{sd}. {sm} {sy} {st} – {et}",
+                "f": "{sd}. {sm} {sy} zeger {st} – {et}",
+                "l": "{sd}. {sm} {sy} zeger {st} – {et}",
                 "m": "{sd}.{sm}.{sy} {st} – {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {et}"
             },
             "c01": {
-                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
+                "f": "{sd}. {sm} {sy} zeger {st} – {ed}. {em} {ey} zeger {et}",
+                "l": "{sd}. {sm} {sy} zeger {st} – {ed}. {em} {ey} zeger {et}",
                 "m": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
             },
             "c02": {
-                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
+                "f": "{sd}. {sm} {sy} zeger {st} – {ed}. {em} {ey} zeger {et}",
+                "l": "{sd}. {sm} {sy} zeger {st} – {ed}. {em} {ey} zeger {et}",
                 "m": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
             },
             "c03": {
-                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
+                "f": "{sd}. {sm} {sy} zeger {st} – {ed}. {em} {ey} zeger {et}",
+                "l": "{sd}. {sm} {sy} zeger {st} – {ed}. {em} {ey} zeger {et}",
                 "m": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
             },

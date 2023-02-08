@@ -92,26 +92,36 @@
                 "s": "MM.yy"
             }
         },
+        "order": {
+            "f": "{date}/{time}",
+            "l": "{date} 'at' {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
+        },
         "range": {
             "c00": {
-                "m": "{sd} {sm} {sy} {st} – {et}",
-                "s": "{sd}.{sm}.{sy} {st} – {et}"
+                "f": "{sd} {sm} {sy}/{st} – {et}",
+                "l": "{sd} {sm} {sy} at {st} – {et}",
+                "m": "{sd} {sm} {sy}, {st} – {et}",
+                "s": "{sd}.{sm}.{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
-                "l": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
-                "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
-                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
+                "f": "{sd} {sm} {sy}/{st} – {ed} {em} {ey}/{et}",
+                "l": "{sd} {sm} {sy} at {st} – {ed} {em} {ey} at {et}",
+                "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },
             "c02": {
-                "f": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
-                "l": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
-                "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
-                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
+                "f": "{sd} {sm} {sy}/{st} – {ed} {em} {ey}/{et}",
+                "l": "{sd} {sm} {sy} at {st} – {ed} {em} {ey} at {et}",
+                "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },
             "c03": {
-                "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
-                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
+                "f": "{sd} {sm} {sy}/{st} – {ed} {em} {ey}/{et}",
+                "l": "{sd} {sm} {sy} at {st} – {ed} {em} {ey} at {et}",
+                "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },
             "c10": {
                 "f": "{sd} – {ed} {em} {ey}",

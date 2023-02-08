@@ -70,33 +70,33 @@
             }
         },
         "order": {
-            "f": "{date} - {time}",
-            "l": "{date} - {time}",
+            "f": "{date} στις {time}",
+            "l": "{date} στις {time}",
             "m": "{date}, {time}",
             "s": "{date}, {time}"
         },
         "range": {
             "c00": {
-                "f": "{sd} {sm} {sy} - {st} – {et}",
-                "l": "{sd} {sm} {sy} - {st} – {et}",
+                "f": "{sd} {sm} {sy} στις {st} – {et}",
+                "l": "{sd} {sm} {sy} στις {st} – {et}",
                 "m": "{sd} {sm} {sy}, {st} – {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm} {sy} - {st} – {ed} {em} {ey} - {et}",
-                "l": "{sd} {sm} {sy} - {st} – {ed} {em} {ey} - {et}",
+                "f": "{sd} {sm} {sy} στις {st} – {ed} {em} {ey} στις {et}",
+                "l": "{sd} {sm} {sy} στις {st} – {ed} {em} {ey} στις {et}",
                 "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c02": {
-                "f": "{sd} {sm} {sy} - {st} – {ed} {em} {ey} - {et}",
-                "l": "{sd} {sm} {sy} - {st} – {ed} {em} {ey} - {et}",
+                "f": "{sd} {sm} {sy} στις {st} – {ed} {em} {ey} στις {et}",
+                "l": "{sd} {sm} {sy} στις {st} – {ed} {em} {ey} στις {et}",
                 "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c03": {
-                "f": "{sd} {sm} {sy} - {st} – {ed} {em} {ey} - {et}",
-                "l": "{sd} {sm} {sy} - {st} – {ed} {em} {ey} - {et}",
+                "f": "{sd} {sm} {sy} στις {st} – {ed} {em} {ey} στις {et}",
+                "l": "{sd} {sm} {sy} στις {st} – {ed} {em} {ey} στις {et}",
                 "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },

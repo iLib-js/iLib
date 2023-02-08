@@ -46,21 +46,31 @@
                 "s": "MM/yy"
             }
         },
+        "order": {
+            "f": "{date} ሰዓት {time}",
+            "l": "{date} ሰዓት {time}",
+            "m": "{date} {time}",
+            "s": "{date} {time}"
+        },
         "range": {
             "c00": {
+                "f": "{sd} {sm} {sy} ሰዓት {st} – {et}",
+                "l": "{sd} {sm} {sy} ሰዓት {st} – {et}",
                 "m": "{sd} {sm} {sy} {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
-                "l": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
+                "f": "{sd} {sm} {sy} ሰዓት {st} – {ed} {em} {ey} ሰዓት {et}",
+                "l": "{sd} {sm} {sy} ሰዓት {st} – {ed} {em} {ey} ሰዓት {et}",
                 "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}"
             },
             "c02": {
-                "f": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
-                "l": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
+                "f": "{sd} {sm} {sy} ሰዓት {st} – {ed} {em} {ey} ሰዓት {et}",
+                "l": "{sd} {sm} {sy} ሰዓት {st} – {ed} {em} {ey} ሰዓት {et}",
                 "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}"
             },
             "c03": {
+                "f": "{sd} {sm} {sy} ሰዓት {st} – {ed} {em} {ey} ሰዓት {et}",
+                "l": "{sd} {sm} {sy} ሰዓት {st} – {ed} {em} {ey} ሰዓት {et}",
                 "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}"
             },
             "c10": {

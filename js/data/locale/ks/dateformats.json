@@ -48,29 +48,34 @@
                 "s": "‏M/yy"
             }
         },
-        "order": "{date}, {time}",
+        "order": {
+            "f": "{time} پٮ۪ٹھۍ {date}",
+            "l": "{time} پٮ۪ٹھۍ {date}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
+        },
         "range": {
             "c00": {
-                "f": "{sm} {sd}, {sy}, {st} – {et}",
-                "l": "{sm} {sd}, {sy}, {st} – {et}",
+                "f": "{st} – {et} پٮ۪ٹھۍ {sm} {sd}, {sy}",
+                "l": "{st} – {et} پٮ۪ٹھۍ {sm} {sd}, {sy}",
                 "m": "{sm} {sd}, {sy}, {st} – {et}",
                 "s": "‏{sm}/{sd}/{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
-                "l": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
+                "f": "{st} پٮ۪ٹھۍ {sm} {sd}, {sy} – {et} پٮ۪ٹھۍ {em} {ed}, {ey}",
+                "l": "{st} پٮ۪ٹھۍ {sm} {sd}, {sy} – {et} پٮ۪ٹھۍ {em} {ed}, {ey}",
                 "m": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
                 "s": "‏{sm}/{sd}/{sy}, {st} – ‏{em}/{ed}/{ey}, {et}"
             },
             "c02": {
-                "f": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
-                "l": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
+                "f": "{st} پٮ۪ٹھۍ {sm} {sd}, {sy} – {et} پٮ۪ٹھۍ {em} {ed}, {ey}",
+                "l": "{st} پٮ۪ٹھۍ {sm} {sd}, {sy} – {et} پٮ۪ٹھۍ {em} {ed}, {ey}",
                 "m": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
                 "s": "‏{sm}/{sd}/{sy}, {st} – ‏{em}/{ed}/{ey}, {et}"
             },
             "c03": {
-                "f": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
-                "l": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
+                "f": "{st} پٮ۪ٹھۍ {sm} {sd}, {sy} – {et} پٮ۪ٹھۍ {em} {ed}, {ey}",
+                "l": "{st} پٮ۪ٹھۍ {sm} {sd}, {sy} – {et} پٮ۪ٹھۍ {em} {ed}, {ey}",
                 "m": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
                 "s": "‏{sm}/{sd}/{sy}, {st} – ‏{em}/{ed}/{ey}, {et}"
             },

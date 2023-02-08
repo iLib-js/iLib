@@ -79,29 +79,34 @@
                 "m": "MMM, yyyy"
             }
         },
-        "order": "{date}, {time}",
+        "order": {
+            "f": "{date} 'at' {time}",
+            "l": "{date} 'at' {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
+        },
         "range": {
             "c00": {
-                "f": "{sm} {sd}, {sy}, {st} – {et}",
-                "l": "{sm} {sd}, {sy}, {st} – {et}",
+                "f": "{sm} {sd}, {sy} at {st} – {et}",
+                "l": "{sm} {sd}, {sy} at {st} – {et}",
                 "m": "{sm} {sd}, {sy}, {st} – {et}",
                 "s": "{sm}/{sd}/{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
-                "l": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
+                "f": "{sm} {sd}, {sy} at {st} – {em} {ed}, {ey} at {et}",
+                "l": "{sm} {sd}, {sy} at {st} – {em} {ed}, {ey} at {et}",
                 "m": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
                 "s": "{sm}/{sd}/{sy}, {st} – {em}/{ed}/{ey}, {et}"
             },
             "c02": {
-                "f": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
-                "l": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
+                "f": "{sm} {sd}, {sy} at {st} – {em} {ed}, {ey} at {et}",
+                "l": "{sm} {sd}, {sy} at {st} – {em} {ed}, {ey} at {et}",
                 "m": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
                 "s": "{sm}/{sd}/{sy}, {st} – {em}/{ed}/{ey}, {et}"
             },
             "c03": {
-                "f": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
-                "l": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
+                "f": "{sm} {sd}, {sy} at {st} – {em} {ed}, {ey} at {et}",
+                "l": "{sm} {sd}, {sy} at {st} – {em} {ed}, {ey} at {et}",
                 "m": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
                 "s": "{sm}/{sd}/{sy}, {st} – {em}/{ed}/{ey}, {et}"
             },

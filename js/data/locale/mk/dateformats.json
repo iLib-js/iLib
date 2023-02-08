@@ -81,31 +81,31 @@
                 "s": "M.yy"
             }
         },
-        "order": "{date}, {time}",
+        "order": "{date}, 'во' {time}",
         "range": {
             "c00": {
-                "f": "{sd} {sm} {sy}, {st} – {et}",
-                "l": "{sd} {sm} {sy}, {st} – {et}",
-                "m": "{sd}.{sm}.{sy}, {st} – {et}",
-                "s": "{sd}.{sm}.{sy}, {st} – {et}"
+                "f": "{sd} {sm} {sy}, во {st} – {et}",
+                "l": "{sd} {sm} {sy}, во {st} – {et}",
+                "m": "{sd}.{sm}.{sy}, во {st} – {et}",
+                "s": "{sd}.{sm}.{sy}, во {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
-                "l": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
-                "m": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}",
-                "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
+                "f": "{sd} {sm} {sy}, во {st} – {ed} {em} {ey}, во {et}",
+                "l": "{sd} {sm} {sy}, во {st} – {ed} {em} {ey}, во {et}",
+                "m": "{sd}.{sm}.{sy}, во {st} – {ed}.{em}.{ey}, во {et}",
+                "s": "{sd}.{sm}.{sy}, во {st} – {ed}.{em}.{ey}, во {et}"
             },
             "c02": {
-                "f": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
-                "l": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
-                "m": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}",
-                "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
+                "f": "{sd} {sm} {sy}, во {st} – {ed} {em} {ey}, во {et}",
+                "l": "{sd} {sm} {sy}, во {st} – {ed} {em} {ey}, во {et}",
+                "m": "{sd}.{sm}.{sy}, во {st} – {ed}.{em}.{ey}, во {et}",
+                "s": "{sd}.{sm}.{sy}, во {st} – {ed}.{em}.{ey}, во {et}"
             },
             "c03": {
-                "f": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
-                "l": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
-                "m": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}",
-                "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
+                "f": "{sd} {sm} {sy}, во {st} – {ed} {em} {ey}, во {et}",
+                "l": "{sd} {sm} {sy}, во {st} – {ed} {em} {ey}, во {et}",
+                "m": "{sd}.{sm}.{sy}, во {st} – {ed}.{em}.{ey}, во {et}",
+                "s": "{sd}.{sm}.{sy}, во {st} – {ed}.{em}.{ey}, во {et}"
             },
             "c10": {
                 "f": "{sd} – {ed} {em} {ey}",

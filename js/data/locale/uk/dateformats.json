@@ -92,29 +92,34 @@
                 "s": "MM.yy"
             }
         },
-        "order": "{date}, {time}",
+        "order": {
+            "f": "{date} 'о' {time}",
+            "l": "{date} 'о' {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
+        },
         "range": {
             "c00": {
-                "f": "{sd} {sm} {sy} р., {st} – {et}",
-                "l": "{sd} {sm} {sy} р., {st} – {et}",
+                "f": "{sd} {sm} {sy} р. о {st} – {et}",
+                "l": "{sd} {sm} {sy} р. о {st} – {et}",
                 "m": "{sd} {sm} {sy} р., {st} – {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm} {sy} р., {st} – {ed} {em} {ey} р., {et}",
-                "l": "{sd} {sm} {sy} р., {st} – {ed} {em} {ey} р., {et}",
+                "f": "{sd} {sm} {sy} р. о {st} – {ed} {em} {ey} р. о {et}",
+                "l": "{sd} {sm} {sy} р. о {st} – {ed} {em} {ey} р. о {et}",
                 "m": "{sd} {sm} {sy} р., {st} – {ed} {em} {ey} р., {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },
             "c02": {
-                "f": "{sd} {sm} {sy} р., {st} – {ed} {em} {ey} р., {et}",
-                "l": "{sd} {sm} {sy} р., {st} – {ed} {em} {ey} р., {et}",
+                "f": "{sd} {sm} {sy} р. о {st} – {ed} {em} {ey} р. о {et}",
+                "l": "{sd} {sm} {sy} р. о {st} – {ed} {em} {ey} р. о {et}",
                 "m": "{sd} {sm} {sy} р., {st} – {ed} {em} {ey} р., {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },
             "c03": {
-                "f": "{sd} {sm} {sy} р., {st} – {ed} {em} {ey} р., {et}",
-                "l": "{sd} {sm} {sy} р., {st} – {ed} {em} {ey} р., {et}",
+                "f": "{sd} {sm} {sy} р. о {st} – {ed} {em} {ey} р. о {et}",
+                "l": "{sd} {sm} {sy} р. о {st} – {ed} {em} {ey} р. о {et}",
                 "m": "{sd} {sm} {sy} р., {st} – {ed} {em} {ey} р., {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },

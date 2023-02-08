@@ -98,30 +98,36 @@
                 "s": "yyyy"
             }
         },
+        "order": {
+            "f": "{date} දින {time}",
+            "l": "{date} දින {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
+        },
         "range": {
             "c00": {
-                "f": "{sy} {sm} {sd} {st} – {et}",
-                "l": "{sy} {sm} {sd} {st} – {et}",
-                "m": "{sy} {sm} {sd} {st} – {et}",
-                "s": "{sy}-{sm}-{sd} {st} – {et}"
+                "f": "{sy} {sm} {sd} දින {st} – {et}",
+                "l": "{sy} {sm} {sd} දින {st} – {et}",
+                "m": "{sy} {sm} {sd}, {st} – {et}",
+                "s": "{sy}-{sm}-{sd}, {st} – {et}"
             },
             "c01": {
-                "f": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "l": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "m": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
+                "f": "{sy} {sm} {sd} දින {st} – {ey} {em} {ed} දින {et}",
+                "l": "{sy} {sm} {sd} දින {st} – {ey} {em} {ed} දින {et}",
+                "m": "{sy} {sm} {sd}, {st} – {ey} {em} {ed}, {et}",
+                "s": "{sy}-{sm}-{sd}, {st} – {ey}-{em}-{ed}, {et}"
             },
             "c02": {
-                "f": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "l": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "m": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
+                "f": "{sy} {sm} {sd} දින {st} – {ey} {em} {ed} දින {et}",
+                "l": "{sy} {sm} {sd} දින {st} – {ey} {em} {ed} දින {et}",
+                "m": "{sy} {sm} {sd}, {st} – {ey} {em} {ed}, {et}",
+                "s": "{sy}-{sm}-{sd}, {st} – {ey}-{em}-{ed}, {et}"
             },
             "c03": {
-                "f": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "l": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "m": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
+                "f": "{sy} {sm} {sd} දින {st} – {ey} {em} {ed} දින {et}",
+                "l": "{sy} {sm} {sd} දින {st} – {ey} {em} {ed} දින {et}",
+                "m": "{sy} {sm} {sd}, {st} – {ey} {em} {ed}, {et}",
+                "s": "{sy}-{sm}-{sd}, {st} – {ey}-{em}-{ed}, {et}"
             },
             "c10": {
                 "f": "{sy} {sm} {sd} – {ed}",

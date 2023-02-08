@@ -48,29 +48,34 @@
                 "m": "MMM yyyy"
             }
         },
-        "order": "{date}, {time}",
+        "order": {
+            "f": "{date} तदा {time}",
+            "l": "{date} तदा {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
+        },
         "range": {
             "c00": {
-                "f": "{sd} {sm} {sy}, {st} – {et}",
-                "l": "{sd} {sm} {sy}, {st} – {et}",
+                "f": "{sd} {sm} {sy} तदा {st} – {et}",
+                "l": "{sd} {sm} {sy} तदा {st} – {et}",
                 "m": "{sd} {sm} {sy}, {st} – {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
-                "l": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "f": "{sd} {sm} {sy} तदा {st} – {ed} {em} {ey} तदा {et}",
+                "l": "{sd} {sm} {sy} तदा {st} – {ed} {em} {ey} तदा {et}",
                 "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c02": {
-                "f": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
-                "l": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "f": "{sd} {sm} {sy} तदा {st} – {ed} {em} {ey} तदा {et}",
+                "l": "{sd} {sm} {sy} तदा {st} – {ed} {em} {ey} तदा {et}",
                 "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c03": {
-                "f": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
-                "l": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "f": "{sd} {sm} {sy} तदा {st} – {ed} {em} {ey} तदा {et}",
+                "l": "{sd} {sm} {sy} तदा {st} – {ed} {em} {ey} तदा {et}",
                 "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },

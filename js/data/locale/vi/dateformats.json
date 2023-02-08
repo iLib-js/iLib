@@ -90,35 +90,35 @@
             }
         },
         "order": {
-            "f": "{time} {date}",
-            "l": "{time} {date}",
-            "m": "{time}, {date}",
-            "s": "{time}, {date}"
+            "f": "'lúc' {time} {date}",
+            "l": "'lúc' {time} {date}",
+            "m": "{time} {date}",
+            "s": "{time} {date}"
         },
         "range": {
             "c00": {
-                "f": "{st} – {et} {sd} {sm}, {sy}",
-                "l": "{st} – {et} {sd} {sm}, {sy}",
-                "m": "{st} – {et}, {sd} {sm}, {sy}",
-                "s": "{st} – {et}, {sd}/{sm}/{sy}"
+                "f": "{st} – lúc {et} {sd} {sm}, {sy}",
+                "l": "{st} – lúc {et} {sd} {sm}, {sy}",
+                "m": "{st} – {et} {sd} {sm}, {sy}",
+                "s": "{st} – {et} {sd}/{sm}/{sy}"
             },
             "c01": {
-                "f": "{st} {sd} {sm}, {sy} – {et} {ed} {em}, {ey}",
-                "l": "{st} {sd} {sm}, {sy} – {et} {ed} {em}, {ey}",
-                "m": "{st}, {sd} {sm}, {sy} – {et}, {ed} {em}, {ey}",
-                "s": "{st}, {sd}/{sm}/{sy} – {et}, {ed}/{em}/{ey}"
+                "f": "lúc {st} {sd} {sm}, {sy} – lúc {et} {ed} {em}, {ey}",
+                "l": "lúc {st} {sd} {sm}, {sy} – lúc {et} {ed} {em}, {ey}",
+                "m": "{st} {sd} {sm}, {sy} – {et} {ed} {em}, {ey}",
+                "s": "{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"
             },
             "c02": {
-                "f": "{st} {sd} {sm}, {sy} – {et} {ed} {em}, {ey}",
-                "l": "{st} {sd} {sm}, {sy} – {et} {ed} {em}, {ey}",
-                "m": "{st}, {sd} {sm}, {sy} – {et}, {ed} {em}, {ey}",
-                "s": "{st}, {sd}/{sm}/{sy} – {et}, {ed}/{em}/{ey}"
+                "f": "lúc {st} {sd} {sm}, {sy} – lúc {et} {ed} {em}, {ey}",
+                "l": "lúc {st} {sd} {sm}, {sy} – lúc {et} {ed} {em}, {ey}",
+                "m": "{st} {sd} {sm}, {sy} – {et} {ed} {em}, {ey}",
+                "s": "{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"
             },
             "c03": {
-                "f": "{st} {sd} {sm}, {sy} – {et} {ed} {em}, {ey}",
-                "l": "{st} {sd} {sm}, {sy} – {et} {ed} {em}, {ey}",
-                "m": "{st}, {sd} {sm}, {sy} – {et}, {ed} {em}, {ey}",
-                "s": "{st}, {sd}/{sm}/{sy} – {et}, {ed}/{em}/{ey}"
+                "f": "lúc {st} {sd} {sm}, {sy} – lúc {et} {ed} {em}, {ey}",
+                "l": "lúc {st} {sd} {sm}, {sy} – lúc {et} {ed} {em}, {ey}",
+                "m": "{st} {sd} {sm}, {sy} – {et} {ed} {em}, {ey}",
+                "s": "{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"
             },
             "c10": {
                 "f": "{sd} – {ed} {em}, {ey}",

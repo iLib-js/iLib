@@ -44,28 +44,32 @@
                 "s": "M/yy"
             }
         },
+        "order": {
+            "f": "{time} पेठ {date}",
+            "l": "{time} पेठ {date}"
+        },
         "range": {
             "c00": {
-                "f": "{sd} {sm} {sy}, {st} – {et}",
-                "l": "{sd} {sm} {sy}, {st} – {et}",
+                "f": "{st} – {et} पेठ {sd} {sm} {sy}",
+                "l": "{st} – {et} पेठ {sd} {sm} {sy}",
                 "m": "{sd} {sm} {sy}, {st} – {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
-                "l": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "f": "{st} पेठ {sd} {sm} {sy} – {et} पेठ {ed} {em} {ey}",
+                "l": "{st} पेठ {sd} {sm} {sy} – {et} पेठ {ed} {em} {ey}",
                 "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c02": {
-                "f": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
-                "l": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "f": "{st} पेठ {sd} {sm} {sy} – {et} पेठ {ed} {em} {ey}",
+                "l": "{st} पेठ {sd} {sm} {sy} – {et} पेठ {ed} {em} {ey}",
                 "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c03": {
-                "f": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
-                "l": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "f": "{st} पेठ {sd} {sm} {sy} – {et} पेठ {ed} {em} {ey}",
+                "l": "{st} पेठ {sd} {sm} {sy} – {et} पेठ {ed} {em} {ey}",
                 "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },

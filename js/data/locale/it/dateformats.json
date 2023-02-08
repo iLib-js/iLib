@@ -74,29 +74,33 @@
             }
         },
         "order": {
-            "f": "{date} {time}",
-            "l": "{date} {time}",
+            "f": "{date} 'alle' 'ore' {time}",
+            "l": "{date} 'alle' 'ore' {time}",
             "m": "{date}, {time}",
             "s": "{date}, {time}"
         },
         "range": {
             "c00": {
+                "f": "{sd} {sm} {sy} alle ore {st} – {et}",
+                "l": "{sd} {sm} {sy} alle ore {st} – {et}",
                 "m": "{sd} {sm} {sy}, {st} – {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
-                "l": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
+                "f": "{sd} {sm} {sy} alle ore {st} – {ed} {em} {ey} alle ore {et}",
+                "l": "{sd} {sm} {sy} alle ore {st} – {ed} {em} {ey} alle ore {et}",
                 "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c02": {
-                "f": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
-                "l": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
+                "f": "{sd} {sm} {sy} alle ore {st} – {ed} {em} {ey} alle ore {et}",
+                "l": "{sd} {sm} {sy} alle ore {st} – {ed} {em} {ey} alle ore {et}",
                 "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c03": {
+                "f": "{sd} {sm} {sy} alle ore {st} – {ed} {em} {ey} alle ore {et}",
+                "l": "{sd} {sm} {sy} alle ore {st} – {ed} {em} {ey} alle ore {et}",
                 "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
