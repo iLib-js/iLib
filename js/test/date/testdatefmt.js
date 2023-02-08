@@ -2688,7 +2688,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "Tuesday, 20 September 2011, 13:45");
+        test.equal(fmt.format(date), "Tuesday, 20 September 2011 at 13:45");
         test.done();
     },
     testDateFmtenPH: function(test) {
@@ -2713,7 +2713,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "Tuesday, September 20, 2011, 1:45 pm");
+        test.equal(fmt.format(date), "Tuesday, September 20, 2011 at 1:45 pm");
         test.done();
     },
     testDateFmtenPK: function(test) {
@@ -2738,7 +2738,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "Tuesday, 20 September 2011, 1:45 pm");
+        test.equal(fmt.format(date), "Tuesday, 20 September 2011 at 1:45 pm");
         test.done();
     },
     testDateFmtenAU: function(test) {
@@ -2763,7 +2763,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "Tuesday, 20 September 2011, 1:45 pm");
+        test.equal(fmt.format(date), "Tuesday, 20 September 2011 at 1:45 pm");
         test.done();
     },
     testDateFmtenZA: function(test) {
@@ -2788,7 +2788,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "Tuesday, 20 September 2011, 13:45");
+        test.equal(fmt.format(date), "Tuesday, 20 September 2011 at 13:45");
         test.done();
     },
     testDateFmtesES: function(test) {
@@ -2913,7 +2913,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "torsdag 20 oktober 2011 13:45");
+        test.equal(fmt.format(date), "torsdag 20 oktober 2011 kl. 13:45");
         test.done();
     },
     testDateFmttrNO: function(test) {
@@ -2938,7 +2938,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "torsdag 20. oktober 2011, 13:45");
+        test.equal(fmt.format(date), "torsdag 20. oktober 2011 kl. 13:45");
         test.done();
     },
     testDateFmttrDA: function(test) {
@@ -2963,7 +2963,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "torsdag den 20. oktober 2011 13.45");
+        test.equal(fmt.format(date), "torsdag den 20. oktober 2011 kl. 13.45");
         test.done();
     },
     testDateFmtGetDefault: function(test) {
@@ -3204,7 +3204,7 @@ module.exports.testdatefmt = {
             unixtime: 1404445524043
         });
 
-        test.equal(fmt.format(date), "Karakadakhom 3, 2557, 8:45 PM");
+        test.equal(fmt.format(date), "Karakadakhom 3, 2557 at 8:45 PM");
         test.done();
     },
     testDateFmtAltCalHebrewInEnglish: function(test) {
@@ -3223,7 +3223,7 @@ module.exports.testdatefmt = {
             unixtime: 1404445524043
         });
 
-        test.equal(fmt.format(date), "Tammuz 6, 5774, 8:45 PM");
+        test.equal(fmt.format(date), "Tammuz 6, 5774 at 8:45 PM");
         test.done();
     },
     testDateFmtAltCalIslamicInEnglish: function(test) {
@@ -3242,7 +3242,7 @@ module.exports.testdatefmt = {
             unixtime: 1404445524043
         });
 
-        test.equal(fmt.format(date), "Ramaḍān 5, 1435, 8:45 PM");
+        test.equal(fmt.format(date), "Ramaḍān 5, 1435 at 8:45 PM");
         test.done();
     },
     testDateFmtAltCalPersianInEnglish: function(test) {
@@ -3261,7 +3261,7 @@ module.exports.testdatefmt = {
             unixtime: 1404445524043
         });
 
-        test.equal(fmt.format(date), "Tir 12, 1393, 8:45 PM");
+        test.equal(fmt.format(date), "Tir 12, 1393 at 8:45 PM");
         test.done();
     },
     testDateFmtGetMeridiemsRangeLength_with_am_ET_locale: function(test) {
