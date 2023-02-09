@@ -42,7 +42,9 @@ var hardCodeData = {
         "azh4": "下午",
         "azh5": "傍晚",
         "azh6": "晚上",
-        "ordinalChoice": "#{num}天"
+        "ordinalChoice": "#{num}天",
+        "durationMediumMillis": "#{num}毫秒",
+        "durationShortMillis": "#{num}毫秒"
     },
     "am": {
         "a0-ethiopic": "ጥዋት",
