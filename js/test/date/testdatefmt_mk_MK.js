@@ -201,7 +201,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.11, 13:45");
+        test.equal(fmt.format(date), "29.9.11, во 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_mk_MK: function(test) {
@@ -219,7 +219,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.2011, 13:45");
+        test.equal(fmt.format(date), "29.9.2011, во 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleLong_mk_MK: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 септември 2011, 13:45");
+        test.equal(fmt.format(date), "29 септември 2011, во 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleFull_mk_MK: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 септември 2011, 13:45");
+        test.equal(fmt.format(date), "29 септември 2011, во 13:45");
         test.done();
     },
     testDateFmtTemplateCalendar_mk_MK: function(test) {

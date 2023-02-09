@@ -237,7 +237,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 септември 2011 г., 13:45 ч.');
+        test.equal(fmt.format(date), '29 септември 2011 г. в 13:45 ч.');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_bg_BG: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 септември 2011 г., 13:45 ч.');
+        test.equal(fmt.format(date), '29 септември 2011 г. в 13:45 ч.');
         test.done();
     },
     testDateFmtTemplateCalendar_bg_BG: function(test) {

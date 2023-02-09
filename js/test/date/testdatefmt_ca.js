@@ -238,7 +238,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 de setembre de 2011, 13:45');
+        test.equal(fmt.format(date), '29 de setembre de 2011, a les 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_ca_AD: function(test) {
@@ -256,7 +256,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 de setembre de 2011, 13:45');
+        test.equal(fmt.format(date), '29 de setembre de 2011, a les 13:45');
         test.done();
     },
     testDateFmtTemplateCalendar_ca_AD: function(test) {
@@ -1913,7 +1913,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 de setembre de 2011, 13:45');
+        test.equal(fmt.format(date), '29 de setembre de 2011, a les 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_ca_ES: function(test) {
@@ -1931,7 +1931,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 de setembre de 2011, 13:45');
+        test.equal(fmt.format(date), '29 de setembre de 2011, a les 13:45');
         test.done();
     },
     testDateFmtTemplateCalendar_ca_ES: function(test) {

@@ -237,7 +237,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 septembre 2011, 13 h 45");
+        test.equal(fmt.format(date), "29 septembre 2011 à 13 h 45");
         test.done();
     },
     testDateFmtfrCADateTimeSimpleFull: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 septembre 2011, 13 h 45");
+        test.equal(fmt.format(date), "29 septembre 2011 à 13 h 45");
         test.done();
     },
     testDateFmtfrCATemplateCalendar: function(test) {

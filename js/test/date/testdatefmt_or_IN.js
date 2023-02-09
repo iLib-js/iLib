@@ -254,7 +254,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ସେପ୍ଟେମ୍ବର 29, 2011, 1:45 PM");
+        test.equal(fmt.format(date), "1:45 PM ଠାରେ ସେପ୍ଟେମ୍ବର 29, 2011");
         test.done();
     },
     testDateFmtINDateTimeSimpleFull_or_IN: function(test) {
@@ -272,7 +272,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ସେପ୍ଟେମ୍ବର 29, 2011, 1:45 PM");
+        test.equal(fmt.format(date), "1:45 PM ଠାରେ ସେପ୍ଟେମ୍ବର 29, 2011");
         test.done();
     },
     testDateFmtINTemplateCalendar_or_IN: function(test) {

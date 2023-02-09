@@ -240,7 +240,7 @@ module.exports.testdatefmt_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۰۱۱/۹/۲۹،‏ ‏۱۳:۴۵");
+        test.equal(fmt.format(date), '‏۲۰۱۱/۹/۲۹, ‏۱۳:۴۵');
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_fa_IR: function(test) {
@@ -263,7 +263,7 @@ module.exports.testdatefmt_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۹ سپتامبر ۲۰۱۱،‏ ‏۱۳:۴۵");
+        test.equal(fmt.format(date), '‏۲۹ سپتامبر ۲۰۱۱، ‏۱۳:۴۵');
         test.done();
     },
     testDateFmtDateTimeSimpleLong_fa_IR: function(test) {
@@ -286,7 +286,7 @@ module.exports.testdatefmt_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۹ سپتامبر ۲۰۱۱، ساعت ‏۱۳:۴۵");
+        test.equal(fmt.format(date), '‏۲۹ سپتامبر ۲۰۱۱ ساعت ‏۱۳:۴۵');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_fa_IR: function(test) {
@@ -309,7 +309,7 @@ module.exports.testdatefmt_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۹ سپتامبر ۲۰۱۱، ساعت ‏۱۳:۴۵");
+        test.equal(fmt.format(date), '‏۲۹ سپتامبر ۲۰۱۱ ساعت ‏۱۳:۴۵');
         test.done();
     },
     testDateFmtTemplateCalendar_fa_IR: function(test) {
@@ -577,7 +577,7 @@ module.exports.testdatefmt_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۰۱۱/۹/۲۹،‏ ‏۱۳:۴۵");
+        test.equal(fmt.format(date), '‏۲۰۱۱/۹/۲۹, ‏۱۳:۴۵');
         test.done();
     },
     testDateFmtShortDateComponentsY_fa_IR: function(test) {

@@ -237,7 +237,7 @@ module.exports.testdatefmt_hr_HR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. rujna 2011. 13:45");
+        test.equal(fmt.format(date), "29. rujna 2011. u 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleFull_hr_HR: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_hr_HR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. rujna 2011. 13:45");
+        test.equal(fmt.format(date), "29. rujna 2011. u 13:45");
         test.done();
     },
     testDateFmtTemplateCalendar_hr_HR: function(test) {

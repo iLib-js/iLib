@@ -433,7 +433,7 @@ module.exports.testdatefmt_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 September 2011, 13:45");
+        test.equal(fmt.format(date), "29 September 2011 at 13:45");
         test.done();
     },
     testDateFmtGBDateTimeSimpleFull: function(test) {
@@ -451,7 +451,7 @@ module.exports.testdatefmt_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 September 2011, 13:45");
+        test.equal(fmt.format(date), "29 September 2011 at 13:45");
         test.done();
     },
     testDateFmtGBTemplateCalendar: function(test) {

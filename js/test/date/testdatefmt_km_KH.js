@@ -239,7 +239,7 @@ module.exports.testdatefmt_km_KH = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "29 កញ្ញា 2011, 1:45 PM");
+        test.equal(fmt.format(date), "29 កញ្ញា 2011 នៅ​ម៉ោង 1:45 PM");
         test.done();
     },
     testDateFmtDateTimeSimpleFull_km_KH: function(test) {
@@ -257,7 +257,7 @@ module.exports.testdatefmt_km_KH = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 កញ្ញា 2011, 1:45 PM");
+        test.equal(fmt.format(date), "29 កញ្ញា 2011 នៅ​ម៉ោង 1:45 PM");
         test.done();
     },
     testDateFmtTemplateCalendar_km_KH: function(test) {

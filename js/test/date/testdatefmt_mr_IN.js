@@ -254,7 +254,7 @@ module.exports.testdatefmt_mr_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 सप्टेंबर, 2011, 1:45 PM');
+        test.equal(fmt.format(date), '29 सप्टेंबर, 2011 रोजी 1:45 PM');
         test.done();
     },
     testDateFmtINDateTimeSimpleFull_mr_IN: function(test) {
@@ -272,7 +272,7 @@ module.exports.testdatefmt_mr_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '२९ सप्टेंबर, २०११, १:४५ PM');
+        test.equal(fmt.format(date), '२९ सप्टेंबर, २०११ रोजी १:४५ PM');
         test.done();
     },
     testDateFmtINTemplateCalendar_mr_IN: function(test) {

@@ -201,7 +201,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '11/9/29 13:45');
+        test.equal(fmt.format(date), '11/9/29, 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_eu_ES: function(test) {
@@ -219,7 +219,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011(e)ko ira. 29(a) 13:45');
+        test.equal(fmt.format(date), '2011(e)ko ira. 29(a), 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleLong_eu_ES: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011(e)ko irailaren 29(a) 13:45');
+        test.equal(fmt.format(date), '2011(e)ko irailaren 29(a) (13:45)');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_eu_ES: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011(e)ko irailaren 29(a) 13:45');
+        test.equal(fmt.format(date), '2011(e)ko irailaren 29(a) (13:45)');
         test.done();
     },
     testDateFmtTemplateCalendar_eu_ES: function(test) {
@@ -490,7 +490,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '11/9/29 13:45');
+        test.equal(fmt.format(date), '11/9/29, 13:45');
         test.done();
     },
     testDateFmtShortDateComponentsY_eu_ES: function(test) {

@@ -230,7 +230,7 @@ module.exports.testdatefmt_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date),'‏29 בספטמבר 2011, ‏13:45');
+        test.equal(fmt.format(date),'‏29 בספטמבר 2011 בשעה ‏13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_he_IL: function(test) {
@@ -248,7 +248,7 @@ module.exports.testdatefmt_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date),'‏29 בספטמבר 2011, ‏13:45');
+        test.equal(fmt.format(date), '‏29 בספטמבר 2011 בשעה ‏13:45');
         test.done();
     },
     testDateFmtTemplateCalendar_he_IL: function(test) {

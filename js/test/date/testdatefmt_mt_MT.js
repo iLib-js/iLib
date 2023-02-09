@@ -1324,7 +1324,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "sa 30 sekondi oħra");
+        test.equal(fmt.formatRelative(reference, date), "sa 30 sekonda oħra");
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteBefore_mt_MT: function(test) {
@@ -1352,7 +1352,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "30 sekondi ilu");
+        test.equal(fmt.formatRelative(reference, date), "30 sekonda ilu");
         test.done();
     },
     testDateFmtFormatRelativeWithinHourAfter_mt_MT: function(test) {
@@ -1492,7 +1492,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), 'fi żmien 4 ġurnata oħra');
+        test.equal(fmt.formatRelative(reference, date), 'fi żmien 4 ġranet oħra');
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightBefore_mt_MT: function(test) {
@@ -1604,7 +1604,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), 'fi 16 xhur oħra');
+        test.equal(fmt.formatRelative(reference, date), 'fi 16-xahar oħra');
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsBefore_mt_MT: function(test) {
@@ -1632,7 +1632,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '14 xhur ilu');
+        test.equal(fmt.formatRelative(reference, date), '14-il xahar ilu');
         test.done();
     },
     testDateFmtFormatRelativeYearsAfter_mt_MT: function(test) {
@@ -1660,7 +1660,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), 'fi żmien 14 snin oħra');
+        test.equal(fmt.formatRelative(reference, date), 'fi żmien 14-il sena oħra');
         test.done();
     },
     testDateFmtFormatRelativeYearsBefore_mt_MT: function(test) {
@@ -1688,7 +1688,7 @@ module.exports.testdatefmt_mt_MT = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '21 snin ilu');
+        test.equal(fmt.formatRelative(reference, date), '21 sena ilu');
         test.done();
     }
 };

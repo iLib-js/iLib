@@ -237,7 +237,7 @@ module.exports.testdatefmt_be_BY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 верасня 2011 г., 13:45');
+        test.equal(fmt.format(date), '29 верасня 2011 г. у 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_be_BY: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_be_BY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 верасня 2011 г., 13:45');
+        test.equal(fmt.format(date), '29 верасня 2011 г. у 13:45');
         test.done();
     },
     testDateFmtTemplateCalendar_be_BY: function(test) {

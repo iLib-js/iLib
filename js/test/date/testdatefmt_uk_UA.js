@@ -238,7 +238,7 @@ module.exports.testdatefmt_uk_UA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 вересня 2011 р., 13:45");
+        test.equal(fmt.format(date), "29 вересня 2011 р. о 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleFull_uk_UA: function(test) {
@@ -256,7 +256,7 @@ module.exports.testdatefmt_uk_UA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 вересня 2011 р., 13:45");
+        test.equal(fmt.format(date), "29 вересня 2011 р. о 13:45");
         test.done();
     },
     testDateFmtTemplateCalendar_uk_UA: function(test) {

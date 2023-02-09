@@ -232,7 +232,7 @@ module.exports.testdatefmt_en_US = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "September 29, 2011, 1:45 PM");
+        test.equal(fmt.format(date), "September 29, 2011 at 1:45 PM");
         test.done();
     },
     testDateFmtUSDateTimeSimpleFull: function(test) {
@@ -249,7 +249,7 @@ module.exports.testdatefmt_en_US = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "September 29, 2011, 1:45 PM");
+        test.equal(fmt.format(date), "September 29, 2011 at 1:45 PM");
         test.done();
     },
     testDateFmtUSTemplateCalendar: function(test) {

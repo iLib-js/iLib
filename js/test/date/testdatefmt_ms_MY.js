@@ -230,7 +230,7 @@ module.exports.testdatefmt_ms_MY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 September 2011 1:45 PTG");
+        test.equal(fmt.format(date), "29 September 2011 pada 1:45 PTG");
         test.done();
     },
     testDateFmtDateTimeSimpleFull_ms_MY: function(test) {
@@ -248,7 +248,7 @@ module.exports.testdatefmt_ms_MY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 September 2011 1:45 PTG");
+        test.equal(fmt.format(date), "29 September 2011 pada 1:45 PTG");
         test.done();
     },
     testDateFmtTemplateCalendar_ms_MY: function(test) {

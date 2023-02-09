@@ -218,7 +218,7 @@ module.exports.testdatefmt_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২৯/৯/১১ ১:৪৫ PM");
+        test.equal(fmt.format(date), "২৯/৯/১১, ১:৪৫ PM");
         test.done();
     },
     testDateFmtINDateTimeSimpleMedium_bn_IN: function(test) {
@@ -236,7 +236,7 @@ module.exports.testdatefmt_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '২৯ সেপ্টেঃ, ২০১১ ১:৪৫ PM');
+        test.equal(fmt.format(date), '২৯ সেপ্টেঃ, ২০১১, ১:৪৫ PM');
         test.done();
     },
     testDateFmtINDateTimeSimpleLong_bn_IN: function(test) {
@@ -254,7 +254,7 @@ module.exports.testdatefmt_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২৯ সেপ্টেম্বর, ২০১১ ১:৪৫ PM");
+        test.equal(fmt.format(date), '২৯ সেপ্টেম্বর, ২০১১ এ ১:৪৫ PM');
         test.done();
     },
     testDateFmtINDateTimeSimpleFull_bn_IN: function(test) {
@@ -272,7 +272,7 @@ module.exports.testdatefmt_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২৯ সেপ্টেম্বর, ২০১১ ১:৪৫ PM");
+        test.equal(fmt.format(date), '২৯ সেপ্টেম্বর, ২০১১ এ ১:৪৫ PM');
         test.done();
     },
     testDateFmtINTemplateCalendar_bn_IN: function(test) {
@@ -293,9 +293,6 @@ module.exports.testdatefmt_bn_IN = {
         test.equal(fmt.format(date), "২০১১-০৯-২৯");
         test.done();
     },
-
-
-
     testDateFmtINTemplateClock12SwitchHH_bn_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bn-IN", clock: "12", template: "HH:mm"});
@@ -491,7 +488,7 @@ module.exports.testdatefmt_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২৯/৯/১১ ১:৪৫ PM");
+        test.equal(fmt.format(date), '২৯/৯/১১, ১:৪৫ PM');
         test.done();
     },
     testDateFmtINShortDateComponentsY_bn_IN: function(test) {

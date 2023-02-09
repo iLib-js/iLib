@@ -254,7 +254,7 @@ module.exports.testdatefmt_hi_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 सितंबर 2011, 1:45 pm");
+        test.equal(fmt.format(date), "29 सितंबर 2011 को 1:45 pm बजे");
         test.done();
     },
     testDateFmtINDateTimeSimpleFull_hi_IN: function(test) {
@@ -272,7 +272,7 @@ module.exports.testdatefmt_hi_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 सितंबर 2011, 1:45 pm");
+        test.equal(fmt.format(date), "29 सितंबर 2011 को 1:45 pm बजे");
         test.done();
     },
     testDateFmtINTemplateCalendar_hi_IN: function(test) {

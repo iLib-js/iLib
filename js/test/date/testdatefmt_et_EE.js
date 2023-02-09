@@ -201,7 +201,7 @@ module.exports.testdatefmt_et_EE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.09.11 13:45");
+        test.equal(fmt.format(date), "29.09.11, 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_et_EE: function(test) {
@@ -219,7 +219,7 @@ module.exports.testdatefmt_et_EE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. sept 2011 13:45");
+        test.equal(fmt.format(date), "29. sept 2011, 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleLong_et_EE: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmt_et_EE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. september 2011 13:45");
+        test.equal(fmt.format(date), "29. september 2011, kell 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleFull_et_EE: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_et_EE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. september 2011 13:45");
+        test.equal(fmt.format(date), "29. september 2011, kell 13:45");
         test.done();
     },
     testDateFmtTemplateCalendar_et_EE: function(test) {

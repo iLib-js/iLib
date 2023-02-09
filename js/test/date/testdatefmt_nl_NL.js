@@ -237,7 +237,7 @@ module.exports.testdatefmt_nl_NL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 september 2011 13:45");
+        test.equal(fmt.format(date), "29 september 2011 om 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleFull_nl_NL: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_nl_NL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 september 2011 13:45");
+        test.equal(fmt.format(date), "29 september 2011 om 13:45");
         test.done();
     },
     testDateFmtTemplateCalendar_nl_NL: function(test) {

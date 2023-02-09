@@ -239,7 +239,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "29. septembar 2011., 13:45");
+        test.equal(fmt.format(date), "29. septembar 2011. u 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleFull_bs_Latn_BA: function(test) {
@@ -257,7 +257,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. septembar 2011., 13:45");
+        test.equal(fmt.format(date), "29. septembar 2011. u 13:45");
         test.done();
     },
     testDateFmtTemplateCalendar_bs_Latn_BA: function(test) {

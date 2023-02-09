@@ -201,7 +201,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29/9/2021 13:45');
+        test.equal(fmt.format(date), '29/9/2021, 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_yo_NG: function(test) {
@@ -219,7 +219,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 09 2021 13:45');
+        test.equal(fmt.format(date), '29 09 2021, 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleLong_yo_NG: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 Owe 2021 13:45');
+        test.equal(fmt.format(date), '29 Owe 2021 níti 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_yo_NG: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 Owe 2021 13:45');
+        test.equal(fmt.format(date), '29 Owe 2021 ní 13:45');
         test.done();
     },
     testDateFmtTemplateCalendar_yo_NG: function(test) {
@@ -490,7 +490,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29/9/2021 13:45');
+        test.equal(fmt.format(date), '29/9/2021, 13:45');
         test.done();
     },
     testDateFmtShortDateComponentsY_yo_NG: function(test) {

@@ -254,7 +254,7 @@ module.exports.testdatefmt_gu_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 સપ્ટેમ્બર, 2011 01:45 PM");
+        test.equal(fmt.format(date), "29 સપ્ટેમ્બર, 2011 એ 01:45 PM વાગ્યે");
         test.done();
     },
     testDateFmtINDateTimeSimpleFull_gu_IN: function(test) {
@@ -272,7 +272,7 @@ module.exports.testdatefmt_gu_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 સપ્ટેમ્બર, 2011 01:45 PM");
+        test.equal(fmt.format(date), "29 સપ્ટેમ્બર, 2011 એ 01:45 PM વાગ્યે");
         test.done();
     },
     testDateFmtINTemplateCalendar_gu_IN: function(test) {

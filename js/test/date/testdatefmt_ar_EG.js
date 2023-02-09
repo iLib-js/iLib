@@ -201,7 +201,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏٢٩/٩/٢٠١١, ‏١:٤٥ م');
+        test.equal(fmt.format(date), '‏٢٩/٩/٢٠١١، ‏١:٤٥ م');
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_ar_EG: function(test) {
@@ -219,7 +219,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏٢٩/٠٩/٢٠١١, ‏١:٤٥ م');
+        test.equal(fmt.format(date), '‏٢٩/٠٩/٢٠١١، ‏١:٤٥ م');
         test.done();
     },
     testDateFmtDateTimeSimpleLong_ar_EG: function(test) {
@@ -471,7 +471,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏٢٩/٩/٢٠١١, ‏١:٤٥ م');
+        test.equal(fmt.format(date), '‏٢٩/٩/٢٠١١، ‏١:٤٥ م');
         test.done();
     },
     testDateFmtShortDateComponentsY_ar_EG: function(test) {
@@ -1992,7 +1992,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏29/9/2011, ‏1:45 م');
+        test.equal(fmt.format(date), '‏29/9/2011، ‏1:45 م');
         test.done();
     },
     testDateFmtNativeDateTimeSimpleMedium_ar_EG: function(test) {
@@ -2010,7 +2010,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏29/09/2011, ‏1:45 م');
+        test.equal(fmt.format(date), '‏29/09/2011، ‏1:45 م');
         test.done();
     },
     testDateFmtNativeDateTimeSimpleLong_ar_EG: function(test) {
@@ -2082,7 +2082,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏8 مايو 2018، ‏1:45 م');
+        test.equal(fmt.format(date), '‏8 مايو 2018 في ‏1:45 م');
         test.done();
     },
     testDateFmtNativeDateTimeSimpleMediumIslamic_ar_EG: function(test) {
@@ -2119,7 +2119,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date),'‏8/5/2018, ‏1:45 م');
+        test.equal(fmt.format(date), '‏8/5/2018، ‏1:45 م');
         test.done();
     }
 };

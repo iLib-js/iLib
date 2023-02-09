@@ -254,7 +254,7 @@ module.exports.testdatefmt_sq_AL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 shtator 2011, 1:45 e pasdites");
+        test.equal(fmt.format(date), "29 shtator 2011 në 1:45 e pasdites");
         test.done();
     },
     testDateFmtINDateTimeSimpleFull_sq_AL: function(test) {
@@ -272,7 +272,7 @@ module.exports.testdatefmt_sq_AL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 shtator 2011, 1:45 e pasdites");
+        test.equal(fmt.format(date), "29 shtator 2011 në 1:45 e pasdites");
         test.done();
     },
     testDateFmtINTemplateCalendar_sq_AL: function(test) {

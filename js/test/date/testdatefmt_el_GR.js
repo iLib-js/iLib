@@ -237,7 +237,7 @@ module.exports.testdatefmt_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Σεπτεμβρίου 2011 - 1:45 μ.μ.");
+        test.equal(fmt.format(date), "29 Σεπτεμβρίου 2011 στις 1:45 μ.μ.");
         test.done();
     },
     testDateFmtDateTimeSimpleFull_el_GR: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Σεπτεμβρίου 2011 - 1:45 μ.μ.");
+        test.equal(fmt.format(date), "29 Σεπτεμβρίου 2011 στις 1:45 μ.μ.");
         test.done();
     },
     testDateFmtTemplateCalendar_el_GR: function(test) {

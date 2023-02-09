@@ -453,7 +453,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Satumba, 2011, 13:45");
+        test.equal(fmt.format(date), "29 Satumba, 2011 da 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleFull_ha_Latn: function(test) {
@@ -471,7 +471,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Satumba, 2011 13:45");
+        test.equal(fmt.format(date), "29 Satumba, 2011 da 13:45");
         test.done();
     },
     testDateFmtTemplateCalendar_ha_Latn: function(test) {

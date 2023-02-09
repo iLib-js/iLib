@@ -219,7 +219,7 @@ module.exports.testdatefmt_fi_FI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.2011 13.45");
+        test.equal(fmt.format(date), "29.9.2011 klo 13.45");
         test.done();
     },
     testDateFmtDateTimeSimpleLong_fi_FI: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmt_fi_FI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. syyskuuta 2011 13.45");
+        test.equal(fmt.format(date), "29. syyskuuta 2011 klo 13.45");
         test.done();
     },
     testDateFmtDateTimeSimpleFull_fi_FI: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_fi_FI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. syyskuuta 2011 13.45");
+        test.equal(fmt.format(date), "29. syyskuuta 2011 klo 13.45");
         test.done();
     },
     testDateFmtTemplateCalendar_fi_FI: function(test) {
