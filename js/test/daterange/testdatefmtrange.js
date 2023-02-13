@@ -306,7 +306,7 @@ module.exports.testdatefmtrange = {
         });
 
         ilib.setLoaderCallback(oldLoader);
-        test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
+        test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
         test.done();
     },
     testDateRngFmtDynamicLoadSyncCached: function(test) {
@@ -346,7 +346,7 @@ module.exports.testdatefmtrange = {
         });
 
         ilib.setLoaderCallback(oldLoader);
-        test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
+        test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
         test.done();
     },
     testDateRngFmtDynamicLoadAsync: function(test) {
@@ -387,7 +387,7 @@ module.exports.testdatefmtrange = {
                 ilib.setLoaderCallback(oldLoader);
         test.expect(2);
                 test.ok(fmt !== null);
-                test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
+                test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
                 test.done();
             }
         });
@@ -429,7 +429,7 @@ module.exports.testdatefmtrange = {
                 ilib.setLoaderCallback(oldLoader);
         test.expect(2);
                 test.ok(fmt !== null);
-                test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
+                test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
                 test.done();
             }
         });
