@@ -671,7 +671,7 @@ module.exports.testdatefmtrange = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011-06-20, 1:45 p.m. – 4:30 p.m.');
+        test.equal(fmt.format(start, end), '6/20/11, 1:45 p.m. – 4:30 p.m.');
         test.done();
     },
     testDateRngFmtenCAMultitDayShort: function(test) {
@@ -697,7 +697,7 @@ module.exports.testdatefmtrange = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-06-20 – 26");
+        test.equal(fmt.format(start, end), "6/20/11 – 6/26/11");
         test.done();
     },
     testDateRngFmtenCANextMonthShort: function(test) {
@@ -723,7 +723,7 @@ module.exports.testdatefmtrange = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-06-20 – 2011-09-26");
+        test.equal(fmt.format(start, end), "6/20 – 9/26/11");
         test.done();
     },
     testDateRngFmtenCANextYearShort: function(test) {
@@ -749,7 +749,7 @@ module.exports.testdatefmtrange = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-06-20 – 2012-05-26");
+        test.equal(fmt.format(start, end), "6/20/11 – 5/26/12");
         test.done();
     },
     testDateRngFmtAcceptJSIntrisicDates: function(test) {

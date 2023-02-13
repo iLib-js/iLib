@@ -1660,7 +1660,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_1[3], '1h 1m 1s');
 
         test.equal(clockformatted_2[0], '2 hours, 2 minutes, 2 seconds');
-        test.equal(clockformatted_2[1], '2 hrs, 2 mins, 2 secs');
+        test.equal(clockformatted_2[1], '2 hr, 2 min, 2 sec');
         test.equal(clockformatted_2[2], '2h, 2m, 2s');
         test.equal(clockformatted_2[3], '2h 2m 2s');
 
