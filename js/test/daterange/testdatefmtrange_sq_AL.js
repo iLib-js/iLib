@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_sq_AL.js - test the date range formatter object Albanian/Albania
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,6 @@ module.exports.testdatefmtrange_sq_AL = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtALRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sq-AL", length: "short"});
@@ -57,7 +56,7 @@ module.exports.testdatefmtrange_sq_AL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31.12.11, 1:45 e pasdites – 2:30 e pasdites");
+        test.equal(fmt.format(start, end), "31.12.11, 1:45 e pasdites – 2:30 e pasdites");
         test.done();
     },
     testDateRngFmtALRangeInDayMedium: function(test) {
@@ -83,7 +82,7 @@ module.exports.testdatefmtrange_sq_AL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 dhj 2011, 1:45 e pasdites – 2:30 e pasdites");
+        test.equal(fmt.format(start, end), "31 dhj 2011, 1:45 e pasdites – 2:30 e pasdites");
         test.done();
     },
     testDateRngFmtALRangeInDayLong: function(test) {
@@ -109,7 +108,7 @@ module.exports.testdatefmtrange_sq_AL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 dhjetor 2011 në 1:45 e pasdites – 2:30 e pasdites");
+        test.equal(fmt.format(start, end), "31 dhjetor 2011 në 1:45 e pasdites – 2:30 e pasdites");
         test.done();
     },
     testDateRngFmtALRangeInDayFull: function(test) {
@@ -135,10 +134,9 @@ module.exports.testdatefmtrange_sq_AL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 dhjetor 2011 në 1:45 e pasdites – 2:30 e pasdites");
+        test.equal(fmt.format(start, end), "31 dhjetor 2011 në 1:45 e pasdites – 2:30 e pasdites");
         test.done();
     },
-
     testDateRngFmtALRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sq-AL", length: "short"});
@@ -162,7 +160,7 @@ module.exports.testdatefmtrange_sq_AL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30.12.11, 1:45 e pasdites – 31.12.11, 2:30 e pasdites");
+        test.equal(fmt.format(start, end), "30.12.11, 1:45 e pasdites – 31.12.11, 2:30 e pasdites");
         test.done();
     },
     testDateRngFmtALRangeNextDayMedium: function(test) {
@@ -188,7 +186,7 @@ module.exports.testdatefmtrange_sq_AL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 dhj 2011, 1:45 e pasdites – 31 dhj 2011, 2:30 e pasdites");
+        test.equal(fmt.format(start, end), "30 dhj 2011, 1:45 e pasdites – 31 dhj 2011, 2:30 e pasdites");
         test.done();
     },
     testDateRngFmtALRangeNextDayLong: function(test) {
@@ -214,7 +212,7 @@ module.exports.testdatefmtrange_sq_AL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 dhjetor 2011 në 1:45 e pasdites – 31 dhjetor 2011 në 2:30 e pasdites");
+        test.equal(fmt.format(start, end), "30 dhjetor 2011 në 1:45 e pasdites – 31 dhjetor 2011 në 2:30 e pasdites");
         test.done();
     },
     testDateRngFmtALRangeNextDayFull: function(test) {
@@ -240,10 +238,9 @@ module.exports.testdatefmtrange_sq_AL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 dhjetor 2011 në 1:45 e pasdites – 31 dhjetor 2011 në 2:30 e pasdites");
+        test.equal(fmt.format(start, end), "30 dhjetor 2011 në 1:45 e pasdites – 31 dhjetor 2011 në 2:30 e pasdites");
         test.done();
     },
-
     testDateRngFmtALRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sq-AL", length: "short"});
@@ -348,7 +345,6 @@ module.exports.testdatefmtrange_sq_AL = {
         test.equal(fmt.format(start, end), "20 – 31 dhjetor 2011");
         test.done();
     },
-
     testDateRngFmtALRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sq-AL", length: "short"});
@@ -453,7 +449,6 @@ module.exports.testdatefmtrange_sq_AL = {
         test.equal(fmt.format(start, end), "20 nëntor – 31 dhjetor 2011");
         test.done();
     },
-
     testDateRngFmtALRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sq-AL", length: "short"});
@@ -558,7 +553,6 @@ module.exports.testdatefmtrange_sq_AL = {
         test.equal(fmt.format(start, end), "20 nëntor 2011 – 31 janar 2012");
         test.done();
     },
-
     testDateRngFmtALRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sq-AL", length: "short"});
@@ -689,5 +683,4 @@ module.exports.testdatefmtrange_sq_AL = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

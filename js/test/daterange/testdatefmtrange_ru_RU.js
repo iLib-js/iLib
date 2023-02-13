@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_ru_RU.js - test the date range formatter object Russian/Russia
  *
- * Copyright © 2012-2017, 2020 JEDLSoft
+ * Copyright © 2012-2017, 2020,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_ru_RU = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtRURangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ru-RU", length: "short"});
@@ -82,7 +81,7 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 дек. 2011 г., 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 дек. 2011 г., 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtRURangeInDayLong: function(test) {
@@ -108,7 +107,7 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 декабря 2011 г., 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 декабря 2011 г. в 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtRURangeInDayFull: function(test) {
@@ -134,10 +133,9 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 декабря 2011 г., 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 декабря 2011 г. в 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtRURangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ru-RU", length: "short"});
@@ -187,7 +185,7 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 дек. 2011 г., 13:45 – 31 дек. 2011 г., 14:30");
+        test.equal(fmt.format(start, end), "30 дек. 2011 г., 13:45 – 31 дек. 2011 г., 14:30");
         test.done();
     },
     testDateRngFmtRURangeNextDayLong: function(test) {
@@ -213,7 +211,7 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 декабря 2011 г., 13:45 – 31 декабря 2011 г., 14:30");
+        test.equal(fmt.format(start, end), "30 декабря 2011 г. в 13:45 – 31 декабря 2011 г. в 14:30");
         test.done();
     },
     testDateRngFmtRURangeNextDayFull: function(test) {
@@ -239,10 +237,9 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 декабря 2011 г., 13:45 – 31 декабря 2011 г., 14:30");
+        test.equal(fmt.format(start, end), "30 декабря 2011 г. в 13:45 – 31 декабря 2011 г. в 14:30");
         test.done();
     },
-
     testDateRngFmtRURangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ru-RU", length: "short"});
@@ -292,7 +289,7 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31 дек. 2011 г.");
+        test.equal(fmt.format(start, end), "20 – 31 дек. 2011 г.");
         test.done();
     },
     testDateRngFmtRURangeMultiDayLong: function(test) {
@@ -318,7 +315,7 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31 декабря 2011 г.");
+        test.equal(fmt.format(start, end), "20 – 31 декабря 2011 г.");
         test.done();
     },
     testDateRngFmtRURangeMultiDayFull: function(test) {
@@ -344,10 +341,9 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31 декабря 2011 г.");
+        test.equal(fmt.format(start, end), "20 – 31 декабря 2011 г.");
         test.done();
     },
-
     testDateRngFmtRURangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ru-RU", length: "short"});
@@ -397,7 +393,7 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 нояб. – 31 дек. 2011 г.");
+        test.equal(fmt.format(start, end), "20 нояб. – 31 дек. 2011 г.");
         test.done();
     },
     testDateRngFmtRURangeNextMonthLong: function(test) {
@@ -423,7 +419,7 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 ноября – 31 декабря 2011 г.");
+        test.equal(fmt.format(start, end), "20 ноября – 31 декабря 2011 г.");
         test.done();
     },
     testDateRngFmtRURangeNextMonthFull: function(test) {
@@ -449,10 +445,9 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 ноября – 31 декабря 2011 г.");
+        test.equal(fmt.format(start, end), "20 ноября – 31 декабря 2011 г.");
         test.done();
     },
-
     testDateRngFmtRURangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ru-RU", length: "short"});
@@ -502,7 +497,7 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 нояб. 2011 г. – 31 янв. 2012 г.");
+        test.equal(fmt.format(start, end), "20 нояб. 2011 г. – 31 янв. 2012 г.");
         test.done();
     },
     testDateRngFmtRURangeNextYearLong: function(test) {
@@ -528,7 +523,7 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 ноября 2011 г. – 31 января 2012 г.");
+        test.equal(fmt.format(start, end), "20 ноября 2011 г. – 31 января 2012 г.");
         test.done();
     },
     testDateRngFmtRURangeNextYearFull: function(test) {
@@ -554,10 +549,9 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 ноября 2011 г. – 31 января 2012 г.");
+        test.equal(fmt.format(start, end), "20 ноября 2011 г. – 31 января 2012 г.");
         test.done();
     },
-
     testDateRngFmtRURangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ru-RU", length: "short"});
@@ -607,7 +601,7 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "нояб. 2011 г. – янв. 2014 г.");
+        test.equal(fmt.format(start, end), "нояб. 2011 г. – янв. 2014 г.");
         test.done();
     },
     testDateRngFmtRURangeMultiYearLong: function(test) {
@@ -633,7 +627,7 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "ноябрь 2011 г. – январь 2014 г.");
+        test.equal(fmt.format(start, end), "ноябрь 2011 г. – январь 2014 г.");
         test.done();
     },
     testDateRngFmtRURangeMultiYearFull: function(test) {
@@ -659,7 +653,7 @@ module.exports.testdatefmtrange_ru_RU = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "ноябрь 2011 г. – январь 2014 г.");
+        test.equal(fmt.format(start, end), "ноябрь 2011 г. – январь 2014 г.");
         test.done();
     },
     testDateRngFmtRUManyYearsFull: function(test) {

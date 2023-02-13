@@ -2424,16 +2424,16 @@ module.exports.testdurfmt = {
         if (platform === "nodejs") {
             var cldrVersion = Number(process.versions["cldr"]);
             if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
-                test.equal(duration.toString(), '‏20 שנים, 20 חודשים, 20 שבועות, 20 ימים, 20 שעות, 20 דקות ו20 שניות');
+                test.equal(duration.toString(), '‏20 שנים, 20 חודשים, 20 שבועות, 20 ימים, 20 שעות, 20 דקות ו-20 שניות');
             } else if (Number(cldrVersion) < 42) { // The `many` category has been removed since CLDR 42.
                 test.equal(duration.toString(), '‏20 שנים, 20 חודשים, 20 שבועות, 20 יום, 20 שעות, 20 דקות ו-‏20 שניות');
             } else {
-                test.equal(duration.toString(), '‏20 שנים, 20 חודשים, 20 שבועות, 20 ימים, 20 שעות, 20 דקות ו20 שניות');
+                test.equal(duration.toString(), '‏20 שנים, 20 חודשים, 20 שבועות, 20 ימים, 20 שעות, 20 דקות ו-20 שניות');
             }
         } else if (platform === "browser") {
             test.equal(duration.toString(), '‏20 שנים, 20 חודשים, 20 שבועות, 20 יום, 20 שעות, 20 דקות ו-‏20 שניות');
         } else {
-            test.equal(duration.toString(), '‏20 שנים, 20 חודשים, 20 שבועות, 20 ימים, 20 שעות, 20 דקות ו20 שניות');
+            test.equal(duration.toString(), '‏20 שנים, 20 חודשים, 20 שבועות, 20 ימים, 20 שעות, 20 דקות ו-20 שניות');
         }
         test.done();
     },

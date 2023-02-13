@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_id_ID.js - test the date range formatter object indonesian/Indonesia
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_id_ID = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtIDRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "id-ID", length: "short"});
@@ -56,7 +55,7 @@ module.exports.testdatefmtrange_id_ID = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/11 13.45 – 14.30");
+        test.equal(fmt.format(start, end), "31/12/11, 13.45 – 14.30");
         test.done();
     },
     testDateRngFmtIDRangeInDayMedium: function(test) {
@@ -82,7 +81,7 @@ module.exports.testdatefmtrange_id_ID = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Des 2011 13.45 – 14.30");
+        test.equal(fmt.format(start, end), "31 Des 2011, 13.45 – 14.30");
         test.done();
     },
     testDateRngFmtIDRangeInDayLong: function(test) {
@@ -108,7 +107,7 @@ module.exports.testdatefmtrange_id_ID = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Desember 2011 13.45 – 14.30");
+        test.equal(fmt.format(start, end), "31 Desember 2011 pukul 13.45 – 14.30");
         test.done();
     },
     testDateRngFmtIDRangeInDayFull: function(test) {
@@ -134,10 +133,9 @@ module.exports.testdatefmtrange_id_ID = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Desember 2011 13.45 – 14.30");
+        test.equal(fmt.format(start, end), "31 Desember 2011 pukul 13.45 – 14.30");
         test.done();
     },
-
     testDateRngFmtIDRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "id-ID", length: "short"});
@@ -161,7 +159,7 @@ module.exports.testdatefmtrange_id_ID = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/11 13.45 – 31/12/11 14.30");
+        test.equal(fmt.format(start, end), "30/12/11, 13.45 – 31/12/11, 14.30");
         test.done();
     },
     testDateRngFmtIDRangeNextDayMedium: function(test) {
@@ -187,7 +185,7 @@ module.exports.testdatefmtrange_id_ID = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Des 2011 13.45 – 31 Des 2011 14.30");
+        test.equal(fmt.format(start, end), "30 Des 2011, 13.45 – 31 Des 2011, 14.30");
         test.done();
     },
     testDateRngFmtIDRangeNextDayLong: function(test) {
@@ -213,7 +211,7 @@ module.exports.testdatefmtrange_id_ID = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Desember 2011 13.45 – 31 Desember 2011 14.30");
+        test.equal(fmt.format(start, end), "30 Desember 2011 pukul 13.45 – 31 Desember 2011 pukul 14.30");
         test.done();
     },
     testDateRngFmtIDRangeNextDayFull: function(test) {
@@ -239,10 +237,9 @@ module.exports.testdatefmtrange_id_ID = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Desember 2011 13.45 – 31 Desember 2011 14.30");
+        test.equal(fmt.format(start, end), "30 Desember 2011 pukul 13.45 – 31 Desember 2011 pukul 14.30");
         test.done();
     },
-
     testDateRngFmtIDRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "id-ID", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_id_ID = {
         test.equal(fmt.format(start, end), "20 – 31 Desember 2011");
         test.done();
     },
-
     testDateRngFmtIDRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "id-ID", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_id_ID = {
         test.equal(fmt.format(start, end), "20 November – 31 Desember 2011");
         test.done();
     },
-
     testDateRngFmtIDRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "id-ID", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_id_ID = {
         test.equal(fmt.format(start, end), "20 November 2011 – 31 Januari 2012");
         test.done();
     },
-
     testDateRngFmtIDRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "id-ID", length: "short"});

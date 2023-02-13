@@ -1,7 +1,7 @@
 /*
- * testdatefmtGR_GR_GR.js - test the date GR formatter object GR GRench/GRance
+ * testdatefmtrange_el_GR.js - test the date GR formatter object Greek/Greece
  *
- * Copyright © 2012-2017, 2020 JEDLSoft
+ * Copyright © 2012-2017, 2020,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_el_GR = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtGRInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "el-GR", length: "short"});
@@ -56,7 +55,7 @@ module.exports.testdatefmtrange_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/11, 1:45 μ.μ. – 2:30 μ.μ.");
+        test.equal(fmt.format(start, end), "31/12/11, 1:45 μ.μ. – 2:30 μ.μ.");
         test.done();
     },
     testDateRngFmtGRInDayMedium: function(test) {
@@ -82,7 +81,7 @@ module.exports.testdatefmtrange_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Δεκ 2011, 1:45 μ.μ. – 2:30 μ.μ.");
+        test.equal(fmt.format(start, end), "31 Δεκ 2011, 1:45 μ.μ. – 2:30 μ.μ.");
         test.done();
     },
     testDateRngFmtGRInDayLong: function(test) {
@@ -108,7 +107,7 @@ module.exports.testdatefmtrange_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Δεκεμβρίου 2011 - 1:45 μ.μ. – 2:30 μ.μ.");
+        test.equal(fmt.format(start, end), "31 Δεκεμβρίου 2011 στις 1:45 μ.μ. – 2:30 μ.μ.");
         test.done();
     },
     testDateRngFmtGRInDayFull: function(test) {
@@ -134,10 +133,9 @@ module.exports.testdatefmtrange_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Δεκεμβρίου 2011 - 1:45 μ.μ. – 2:30 μ.μ.");
+        test.equal(fmt.format(start, end), "31 Δεκεμβρίου 2011 στις 1:45 μ.μ. – 2:30 μ.μ.");
         test.done();
     },
-
     testDateRngFmtGRNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "el-GR", length: "short"});
@@ -161,7 +159,7 @@ module.exports.testdatefmtrange_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/11, 1:45 μ.μ. – 31/12/11, 2:30 μ.μ.");
+        test.equal(fmt.format(start, end), "30/12/11, 1:45 μ.μ. – 31/12/11, 2:30 μ.μ.");
         test.done();
     },
     testDateRngFmtGRNextDayMedium: function(test) {
@@ -187,7 +185,7 @@ module.exports.testdatefmtrange_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Δεκ 2011, 1:45 μ.μ. – 31 Δεκ 2011, 2:30 μ.μ.");
+        test.equal(fmt.format(start, end), "30 Δεκ 2011, 1:45 μ.μ. – 31 Δεκ 2011, 2:30 μ.μ.");
         test.done();
     },
     testDateRngFmtGRNextDayLong: function(test) {
@@ -213,7 +211,7 @@ module.exports.testdatefmtrange_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Δεκεμβρίου 2011 - 1:45 μ.μ. – 31 Δεκεμβρίου 2011 - 2:30 μ.μ.");
+        test.equal(fmt.format(start, end), "30 Δεκεμβρίου 2011 στις 1:45 μ.μ. – 31 Δεκεμβρίου 2011 στις 2:30 μ.μ.");
         test.done();
     },
     testDateRngFmtGRNextDayFull: function(test) {
@@ -239,10 +237,9 @@ module.exports.testdatefmtrange_el_GR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Δεκεμβρίου 2011 - 1:45 μ.μ. – 31 Δεκεμβρίου 2011 - 2:30 μ.μ.");
+        test.equal(fmt.format(start, end), "30 Δεκεμβρίου 2011 στις 1:45 μ.μ. – 31 Δεκεμβρίου 2011 στις 2:30 μ.μ.");
         test.done();
     },
-
     testDateRngFmtGRMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "el-GR", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_el_GR = {
         test.equal(fmt.format(start, end), "20 – 31 Δεκεμβρίου 2011");
         test.done();
     },
-
     testDateRngFmtGRNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "el-GR", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_el_GR = {
         test.equal(fmt.format(start, end), "20 Νοεμβρίου – 31 Δεκεμβρίου 2011");
         test.done();
     },
-
     testDateRngFmtGRNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "el-GR", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_el_GR = {
         test.equal(fmt.format(start, end), "20 Νοεμβρίου 2011 – 31 Ιανουαρίου 2012");
         test.done();
     },
-
     testDateRngFmtGRMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "el-GR", length: "short"});

@@ -1,7 +1,7 @@
 /*
- * testdatefmtrange_af_ZA.js - test the date range formatter object in Afrikaans
+ * testdatefmtrange_af_ZA.js - test the date range formatter object in Afrikaans/South Africa
  *
- * Copyright © 2015-2017, JEDLSoft
+ * Copyright © 2015-2017,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_af_ZA = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtAFRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "af-ZA", length: "short"});
@@ -108,7 +107,7 @@ module.exports.testdatefmtrange_af_ZA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Desember 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 Desember 2011 om 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtAFRangeInDayFull: function(test) {
@@ -134,10 +133,9 @@ module.exports.testdatefmtrange_af_ZA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Desember 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 Desember 2011 om 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtAFRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "af-ZA", length: "short"});
@@ -213,7 +211,7 @@ module.exports.testdatefmtrange_af_ZA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Desember 2011 13:45 – 31 Desember 2011 14:30");
+        test.equal(fmt.format(start, end), "30 Desember 2011 om 13:45 – 31 Desember 2011 om 14:30");
         test.done();
     },
     testDateRngFmtAFRangeNextDayFull: function(test) {
@@ -239,10 +237,9 @@ module.exports.testdatefmtrange_af_ZA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Desember 2011 13:45 – 31 Desember 2011 14:30");
+        test.equal(fmt.format(start, end), "30 Desember 2011 om 13:45 – 31 Desember 2011 om 14:30");
         test.done();
     },
-
     testDateRngFmtAFRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "af-ZA", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_af_ZA = {
         test.equal(fmt.format(start, end), "20 – 31 Desember 2011");
         test.done();
     },
-
     testDateRngFmtAFRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "af-ZA", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_af_ZA = {
         test.equal(fmt.format(start, end), "20 November – 31 Desember 2011");
         test.done();
     },
-
     testDateRngFmtAFRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "af-ZA", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_af_ZA = {
         test.equal(fmt.format(start, end), "20 November 2011 – 31 Januarie 2012");
         test.done();
     },
-
     testDateRngFmtAFRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "af-ZA", length: "short"});
@@ -688,5 +682,4 @@ module.exports.testdatefmtrange_af_ZA = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };
