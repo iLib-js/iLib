@@ -2713,7 +2713,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "Tuesday, September 20, 2011 at 1:45 pm");
+        test.equal(fmt.format(date), "Tuesday, September 20, 2011 at 1:45 PM");
         test.done();
     },
     testDateFmtenPK: function(test) {

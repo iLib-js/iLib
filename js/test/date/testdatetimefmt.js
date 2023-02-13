@@ -535,13 +535,13 @@ module.exports.testdatetimeformat = {
         test.equal(result1, "EEEE, MMMM d, yyyy");
         test.equal(result2, "EEE, MMMM d, yyyy");
         test.equal(result3, "EE, MMM d, yyyy");
-        test.equal(result4, "E, yyyy-MM-dd");
+        test.equal(result4, "E, M/d/yy");
 
         result1 = new DateFmt({locale:"en-CA", type:"datetime", date:"dmwy", length: "full", useNative:false, timezone:"local"}).template;
         result2 = new DateFmt({locale:"en-CA", type:"datetime", date:"dmwy", length: "short", useNative:false, timezone:"local"}).template;
 
         test.equal(result1, "EEEE, MMMM d, yyyy 'at' h:mm a");
-        test.equal(result2, "E, yyyy-MM-dd, h:mm a");
+        test.equal(result2, "E, M/d/yy, h:mm a");
 
         result1 = new DateFmt({locale:"en-CA", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
         test.equal(result1, "h:mm:ss a z");

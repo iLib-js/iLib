@@ -384,8 +384,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"en-PH"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "am");
-        test.equal(fmt[1].name, "pm");
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
 
         test.done();
     },
