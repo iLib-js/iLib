@@ -1,5 +1,5 @@
 {
-    "#in {num}d": "one#‏{num} روز بعد|#‏{num} روز بعد",
+    "#in {num}d": "one#‏{num} روز دیگر|#‏{num} روز دیگر",
     "#in {num}h": "one#‏{num} ساعت بعد|#‏{num} ساعت بعد",
     "#in {num}mi": "one#‏{num} دقیقه بعد|#‏{num} دقیقه بعد",
     "#in {num}mo": "one#‏{num} ماه بعد|#‏{num} ماه بعد",
@@ -51,8 +51,8 @@
     "1#1 year|#{num} years": "one#{num} سال|#{num} سال",
     "1#1 yr ago|#{num} yrs ago": "one#‏{num} سال پیش|#‏{num} سال پیش",
     "1#1 yr|#{num} yrs": "one#{num} سال|#{num} سال",
-    "1#in 1 day|#in {num} days": "one#‏{num} روز بعد|#‏{num} روز بعد",
-    "1#in 1 dy|#in {num} dys": "one#‏{num} روز بعد|#‏{num} روز بعد",
+    "1#in 1 day|#in {num} days": "one#‏{num} روز دیگر|#‏{num} روز دیگر",
+    "1#in 1 dy|#in {num} dys": "one#‏{num} روز دیگر|#‏{num} روز دیگر",
     "1#in 1 hour|#in {num} hours": "one#‏{num} ساعت بعد|#‏{num} ساعت بعد",
     "1#in 1 hr|#in {num} hrs": "one#‏{num} ساعت بعد|#‏{num} ساعت بعد",
     "1#in 1 minute|#in {num} minutes": "one#‏{num} دقیقه بعد|#‏{num} دقیقه بعد",

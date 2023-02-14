@@ -14,6 +14,8 @@
     "1#1 wk|#{num} wks": "one#{num} sem.|#{num} sems.",
     "1#1 yr|#{num} yrs": "one#{num} a.|#{num} a.",
     "E3": "M",
+    "G-1": "a.e.c.",
+    "G1": "e.c.",
     "L1": "E",
     "L10": "O",
     "L11": "N",

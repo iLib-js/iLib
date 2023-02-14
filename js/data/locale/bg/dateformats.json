@@ -52,16 +52,16 @@
                 "s": "E, d.MM"
             },
             "dmwy": {
-                "f": "EEEE, d MMMM yyyy 'г'.",
-                "l": "EEE, d MMMM yyyy 'г'.",
-                "m": "EE, d.MM.yyyy 'г'.",
-                "s": "E, d.MM.yy 'г'."
+                "f": "EEEE, d MMMM yyyy 'г'.",
+                "l": "EEE, d MMMM yyyy 'г'.",
+                "m": "EE, d.MM.yyyy 'г'.",
+                "s": "E, d.MM.yy 'г'."
             },
             "dmy": {
-                "f": "d MMMM yyyy 'г'.",
-                "l": "d MMMM yyyy 'г'.",
-                "m": "d.MM.yyyy 'г'.",
-                "s": "d.MM.yy 'г'."
+                "f": "d MMMM yyyy 'г'.",
+                "l": "d MMMM yyyy 'г'.",
+                "m": "d.MM.yyyy 'г'.",
+                "s": "d.MM.yy 'г'."
             },
             "dw": {
                 "f": "EEEE, d",
@@ -74,61 +74,66 @@
                 "s": "MM"
             },
             "my": {
-                "f": "MMMM yyyy 'г'.",
-                "l": "MMMM yyyy 'г'.",
-                "m": "MM.yyyy 'г'.",
-                "s": "MM.yy 'г'."
+                "f": "MMMM yyyy 'г'.",
+                "l": "MMMM yyyy 'г'.",
+                "m": "MM.yyyy 'г'.",
+                "s": "MM.yy 'г'."
             }
         },
-        "order": "{date}, {time}",
+        "order": {
+            "f": "{date} 'в' {time}",
+            "l": "{date} 'в' {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
+        },
         "range": {
             "c00": {
-                "f": "{sd} {sm} {sy} г., {st} – {et}",
-                "l": "{sd} {sm} {sy} г., {st} – {et}",
-                "m": "{sd}.{sm}.{sy} г., {st} – {et}",
-                "s": "{sd}.{sm}.{sy} г., {st} – {et}"
+                "f": "{sd} {sm} {sy} г. в {st} – {et}",
+                "l": "{sd} {sm} {sy} г. в {st} – {et}",
+                "m": "{sd}.{sm}.{sy} г., {st} – {et}",
+                "s": "{sd}.{sm}.{sy} г., {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm} {sy} г., {st} – {ed} {em} {ey} г., {et}",
-                "l": "{sd} {sm} {sy} г., {st} – {ed} {em} {ey} г., {et}",
-                "m": "{sd}.{sm}.{sy} г., {st} – {ed}.{em}.{ey} г., {et}",
-                "s": "{sd}.{sm}.{sy} г., {st} – {ed}.{em}.{ey} г., {et}"
+                "f": "{sd} {sm} {sy} г. в {st} – {ed} {em} {ey} г. в {et}",
+                "l": "{sd} {sm} {sy} г. в {st} – {ed} {em} {ey} г. в {et}",
+                "m": "{sd}.{sm}.{sy} г., {st} – {ed}.{em}.{ey} г., {et}",
+                "s": "{sd}.{sm}.{sy} г., {st} – {ed}.{em}.{ey} г., {et}"
             },
             "c02": {
-                "f": "{sd} {sm} {sy} г., {st} – {ed} {em} {ey} г., {et}",
-                "l": "{sd} {sm} {sy} г., {st} – {ed} {em} {ey} г., {et}",
-                "m": "{sd}.{sm}.{sy} г., {st} – {ed}.{em}.{ey} г., {et}",
-                "s": "{sd}.{sm}.{sy} г., {st} – {ed}.{em}.{ey} г., {et}"
+                "f": "{sd} {sm} {sy} г. в {st} – {ed} {em} {ey} г. в {et}",
+                "l": "{sd} {sm} {sy} г. в {st} – {ed} {em} {ey} г. в {et}",
+                "m": "{sd}.{sm}.{sy} г., {st} – {ed}.{em}.{ey} г., {et}",
+                "s": "{sd}.{sm}.{sy} г., {st} – {ed}.{em}.{ey} г., {et}"
             },
             "c03": {
-                "f": "{sd} {sm} {sy} г., {st} – {ed} {em} {ey} г., {et}",
-                "l": "{sd} {sm} {sy} г., {st} – {ed} {em} {ey} г., {et}",
-                "m": "{sd}.{sm}.{sy} г., {st} – {ed}.{em}.{ey} г., {et}",
-                "s": "{sd}.{sm}.{sy} г., {st} – {ed}.{em}.{ey} г., {et}"
+                "f": "{sd} {sm} {sy} г. в {st} – {ed} {em} {ey} г. в {et}",
+                "l": "{sd} {sm} {sy} г. в {st} – {ed} {em} {ey} г. в {et}",
+                "m": "{sd}.{sm}.{sy} г., {st} – {ed}.{em}.{ey} г., {et}",
+                "s": "{sd}.{sm}.{sy} г., {st} – {ed}.{em}.{ey} г., {et}"
             },
             "c10": {
-                "f": "{sd} – {ed} {em} {ey} г.",
-                "l": "{sd} – {ed} {em} {ey} г.",
-                "m": "{sd} – {ed}.{em}.{ey} г.",
-                "s": "{sd} – {ed}.{em}.{ey} г."
+                "f": "{sd} – {ed} {em} {ey} г.",
+                "l": "{sd} – {ed} {em} {ey} г.",
+                "m": "{sd} – {ed}.{em}.{ey} г.",
+                "s": "{sd} – {ed}.{em}.{ey} г."
             },
             "c11": {
-                "f": "{sd} {sm} – {ed} {em} {ey} г.",
-                "l": "{sd} {sm} – {ed} {em} {ey} г.",
-                "m": "{sd}.{sm} – {ed}.{em}.{ey} г.",
-                "s": "{sd}.{sm} – {ed}.{em}.{ey} г."
+                "f": "{sd} {sm} – {ed} {em} {ey} г.",
+                "l": "{sd} {sm} – {ed} {em} {ey} г.",
+                "m": "{sd}.{sm} – {ed}.{em}.{ey} г.",
+                "s": "{sd}.{sm} – {ed}.{em}.{ey} г."
             },
             "c12": {
-                "f": "{sd} {sm} {sy} г. – {ed} {em} {ey} г.",
-                "l": "{sd} {sm} {sy} г. – {ed} {em} {ey} г.",
-                "m": "{sd}.{sm}.{sy} г. – {ed}.{em}.{ey} г.",
-                "s": "{sd}.{sm}.{sy} г. – {ed}.{em}.{ey} г."
+                "f": "{sd} {sm} {sy} г. – {ed} {em} {ey} г.",
+                "l": "{sd} {sm} {sy} г. – {ed} {em} {ey} г.",
+                "m": "{sd}.{sm}.{sy} г. – {ed}.{em}.{ey} г.",
+                "s": "{sd}.{sm}.{sy} г. – {ed}.{em}.{ey} г."
             },
             "c20": {
-                "f": "{sm} {sy} г. – {em} {ey} г.",
-                "l": "{sm} {sy} г. – {em} {ey} г.",
-                "m": "{sm}.{sy} г. – {em}.{ey} г.",
-                "s": "{sm}.{sy} г. – {em}.{ey} г."
+                "f": "{sm} {sy} г. – {em} {ey} г.",
+                "l": "{sm} {sy} г. – {em} {ey} г.",
+                "m": "{sm}.{sy} г. – {em}.{ey} г.",
+                "s": "{sm}.{sy} г. – {em}.{ey} г."
             },
             "c30": {
                 "f": "{sy} – {ey}",

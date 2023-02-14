@@ -1,7 +1,7 @@
 /*
  * testdatefmt_my_MM.js - test the date formatter object in Burmese-Myanmar
  *
- * Copyright © 2020-2021 JEDLSoft
+ * Copyright © 2020-2021,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,6 @@ module.exports.testdatefmt_my_MM = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtConstructorEmpty_my_MM: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "my-MM"});
@@ -43,7 +42,6 @@ module.exports.testdatefmt_my_MM = {
         test.ok(fmt !== null);
         test.done();
     },
-
     testDateFmtSimpleShort_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "short", useNative: false});
@@ -59,10 +57,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11');
+        test.equal(fmt.format(date), '29/9/11');
         test.done();
     },
-
     testDateFmtSimpleMedium_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "medium", useNative: false});
@@ -78,10 +75,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011- စက် 29');
+        test.equal(fmt.format(date), '2011၊ စက် 29');
         test.done();
     },
-
     testDateFmtSimpleLong_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "long", useNative: false});
@@ -97,10 +93,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date),'2011- စက်တင်ဘာ 29');
+        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29');
         test.done();
     },
-
     testDateFmtSimpleFull_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", useNative: false});
@@ -116,10 +111,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011- စက်တင်ဘာ 29');
+        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29');
         test.done();
     },
-
     testDateFmtSimpleTimeShort_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "short", type: "time", useNative: false});
@@ -138,7 +132,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtSimpleTimeMedium_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "medium", type: "time", useNative: false});
@@ -157,7 +150,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtSimpleTimeLong_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", timelength: "long", type: "time", useNative: false});
@@ -176,7 +168,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtSimpleTimeFull_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", type: "time", useNative: false});
@@ -195,7 +186,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), '1:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleShort_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "short", type: "datetime", useNative: false});
@@ -211,10 +201,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11 13:45');
+        test.equal(fmt.format(date), '29/9/11 13:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleMedium_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "medium", type: "datetime", useNative: false});
@@ -230,10 +219,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011- စက် 29 13:45');
+        test.equal(fmt.format(date), '2011၊ စက် 29 13:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleLong_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "long", type: "datetime", useNative: false});
@@ -249,10 +237,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011- စက်တင်ဘာ 29 13:45');
+        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29 13:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleFull_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", type: "datetime", useNative: false});
@@ -268,10 +255,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011- စက်တင်ဘာ 29 13:45');
+        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29 13:45');
         test.done();
     },
-
     testDateFmtTemplateCalendar_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", calendar: "julian", template: "yyyy-MM-dd", useNative: false});
@@ -290,7 +276,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
     testDateFmtTemplateCalendarIncompatibleDateType_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", calendar: "julian", template: "yyyy-MM-dd B HH:mm", useNative: false});
@@ -310,7 +295,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "2011-09-16 နေ့လယ် 13:45");
         test.done();
     },
-
     testDateFmtTemplateClock12SwitchHH_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", clock: "12", template: "HH:mm", useNative: false});
@@ -329,7 +313,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock12Switchkk_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", clock: "12", template: "kk:mm", useNative: false});
@@ -348,7 +331,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock24Switchhh_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", clock: "24", template: "hh:mm", useNative: false});
@@ -367,7 +349,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateClock24SwitchKK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", clock: "24", template: "KK:mm", useNative: false});
@@ -386,7 +367,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", template: "hh:mm", useNative: false});
@@ -405,7 +385,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", template: "KK:mm", useNative: false});
@@ -424,7 +403,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", template: "HH:mm", useNative: false});
@@ -443,7 +421,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", template: "kk:mm", useNative: false});
@@ -462,8 +439,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
-
     testDateFmtTypeDate_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "date", useNative: false});
@@ -479,10 +454,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11');
+        test.equal(fmt.format(date), '29/9/11');
         test.done();
     },
-
     testDateFmtTypeTime_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", useNative: false});
@@ -501,7 +475,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtTypeDateTime_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "datetime", useNative: false});
@@ -517,10 +490,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11 13:45');
+        test.equal(fmt.format(date), '29/9/11 13:45');
         test.done();
     },
-
     testDateFmtShortDateComponentsY_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "y", useNative: false});
@@ -539,7 +511,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "11");
         test.done();
     },
-
     testDateFmtShortDateComponentsM_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "m", useNative: false});
@@ -555,10 +526,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '09');
+        test.equal(fmt.format(date), '9');
         test.done();
     },
-
     testDateFmtShortDateComponentsN_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "n", useNative: false});
@@ -577,7 +547,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), 'စ');
         test.done();
     },
-
     testDateFmtShortDateComponentsD_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "d", useNative: false});
@@ -596,7 +565,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtShortDateComponentsDM_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "dm", useNative: false});
@@ -612,10 +580,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09');
+        test.equal(fmt.format(date), '29/9');
         test.done();
     },
-
     testDateFmtShortDateComponentsMY_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "my", useNative: false});
@@ -631,10 +598,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '09-11');
+        test.equal(fmt.format(date), '9/11');
         test.done();
     },
-
     testDateFmtShortDateComponentsDMY_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "dmy", useNative: false});
@@ -650,10 +616,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11');
+        test.equal(fmt.format(date), '29/9/11');
         test.done();
     },
-
     testDateFmtShortDateComponentsWDM_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "wdm", useNative: false});
@@ -669,10 +634,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09- က');
+        test.equal(fmt.format(date), '29/9၊ က');
         test.done();
     },
-
     testDateFmtShortDateComponentsWDMY_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "wdmy", useNative: false});
@@ -688,10 +652,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29-09-11- က');
+        test.equal(fmt.format(date), '29/9/11၊ က');
         test.done();
     },
-
     testDateFmtLongDateComponentsWDM_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", date: "wdm", length: "long", useNative: false});
@@ -707,10 +670,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'စက်တင်ဘာ 29- ကြာသပတေး');
+        test.equal(fmt.format(date), 'စက်တင်ဘာ 29၊ ကြာသပတေး');
         test.done();
     },
-
     testDateFmtFullDateComponentsY_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", date: "y", useNative: false});
@@ -729,7 +691,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsM_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", date: "m", useNative: false});
@@ -748,7 +709,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), 'စက်တင်ဘာ');
         test.done();
     },
-
     testDateFmtFullDateComponentsD_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", date: "d", useNative: false});
@@ -767,7 +727,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtFullDateComponentsDM_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", date: "dm", useNative: false});
@@ -786,7 +745,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), 'စက်တင်ဘာ 29');
         test.done();
     },
-
     testDateFmtFullDateComponentsMY_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", date: "my", useNative: false});
@@ -802,10 +760,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011- စက်တင်ဘာ');
+        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ');
         test.done();
     },
-
     testDateFmtFullDateComponentsDMY_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", date: "dmy", useNative: false});
@@ -821,10 +778,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011- စက်တင်ဘာ 29');
+        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29');
         test.done();
     },
-
     testDateFmtFullDateComponentsWDM_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", date: "wdm", useNative: false});
@@ -840,10 +796,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'စက်တင်ဘာ 29- ကြာသပတေး');
+        test.equal(fmt.format(date), 'စက်တင်ဘာ 29၊ ကြာသပတေး');
         test.done();
     },
-
     testDateFmtFullDateComponentsWDMY_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full", date: "wdmy", useNative: false});
@@ -859,10 +814,9 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011- စက်တင်ဘာ 29- ကြာသပတေး');
+        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29၊ ကြာသပတေး');
         test.done();
     },
-
     testDateFmtShortTimeComponentsS_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", time: "s", useNative: false});
@@ -881,7 +835,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsM_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", time: "m", useNative: false});
@@ -900,7 +853,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsH_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", time: "h", useNative: false});
@@ -919,7 +871,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtShortTimeComponentsMS_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", time: "ms", useNative: false});
@@ -938,7 +889,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHM_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", time: "hm",useNative:false});
@@ -957,7 +907,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMS_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", time: "hms", useNative:false});
@@ -976,7 +925,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMA_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", time: "hma", useNative:false});
@@ -995,7 +943,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMZ_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1020,7 +967,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "+0630 13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMAZ_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1045,7 +991,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "+0630 13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSA_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", time: "hmsa", useNative:false});
@@ -1064,7 +1009,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSZ_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1089,7 +1033,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "+0630 13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSAZ_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1114,7 +1057,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "+0630 13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsS_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", length: "full", time: "s", useNative: false});
@@ -1133,7 +1075,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsM_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", length: "full", time: "m", useNative: false});
@@ -1152,7 +1093,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsH_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", length: "full", time: "h", useNative: false});
@@ -1171,7 +1111,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtFullTimeComponentsMS_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", length: "full", time: "ms",useNative: false});
@@ -1190,7 +1129,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHM_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", length: "full", time: "hm", useNative: false});
@@ -1209,7 +1147,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMS_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", length: "full", time: "hms", useNative:false});
@@ -1228,7 +1165,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMA_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1253,7 +1189,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMZ_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1279,7 +1214,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "+0630 13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMAZ_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1305,7 +1239,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "+0630 13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSA_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", type: "time", length: "full", time: "hmsa", useNative: false});
@@ -1324,7 +1257,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSZ_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1350,7 +1282,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "+0630 13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSAZ_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1376,7 +1307,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "+0630 13:45:37");
         test.done();
     },
-
     testDateFmtWithTimeZoneAndNoDST_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1402,7 +1332,6 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.format(date), "+0630 13:45:37");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinMinuteAfter_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
@@ -1431,7 +1360,7 @@ module.exports.testdatefmt_my_MM = {
         test.equal(fmt.formatRelative(reference, date), '30 စက္ကန့်အတွင်း');
         test.done();
     },
-testDateFmtFormatRelativeWithinMinuteBefore_my_MM: function(test) {
+    testDateFmtFormatRelativeWithinMinuteBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
@@ -1459,7 +1388,7 @@ testDateFmtFormatRelativeWithinMinuteBefore_my_MM: function(test) {
         test.equal(fmt.formatRelative(reference, date), 'ပြီးခဲ့သည့် 30 စက္ကန့်');
         test.done();
     },
-testDateFmtFormatRelativeWithinHourAfter_my_MM: function(test) {
+    testDateFmtFormatRelativeWithinHourAfter_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
@@ -1487,7 +1416,7 @@ testDateFmtFormatRelativeWithinHourAfter_my_MM: function(test) {
         test.equal(fmt.formatRelative(reference, date), '10 မိနစ်အတွင်း');
         test.done();
     },
-testDateFmtFormatRelativeWithinHourBefore_my_MM: function(test) {
+    testDateFmtFormatRelativeWithinHourBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
@@ -1515,7 +1444,7 @@ testDateFmtFormatRelativeWithinHourBefore_my_MM: function(test) {
         test.equal(fmt.formatRelative(reference, date), 'ပြီးခဲ့သည့် 10 မိနစ်');
         test.done();
     },
-testDateFmtFormatRelativeWithinDayAfter_my_MM: function(test) {
+    testDateFmtFormatRelativeWithinDayAfter_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
@@ -1543,7 +1472,7 @@ testDateFmtFormatRelativeWithinDayAfter_my_MM: function(test) {
         test.equal(fmt.formatRelative(reference, date), '4 နာရီအတွင်း');
         test.done();
     },
-testDateFmtFormatRelativeWithinDayBefore_my_MM: function(test) {
+    testDateFmtFormatRelativeWithinDayBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
@@ -1571,7 +1500,6 @@ testDateFmtFormatRelativeWithinDayBefore_my_MM: function(test) {
         test.equal(fmt.formatRelative(reference, date), 'ပြီးခဲ့သည့် 4 နာရီ');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
@@ -1600,7 +1528,7 @@ testDateFmtFormatRelativeWithinDayBefore_my_MM: function(test) {
         test.equal(fmt.formatRelative(reference, date), '4 ရက်အတွင်း');
         test.done();
     },
-testDateFmtFormatRelativeWithinFortnightBefore_my_MM: function(test) {
+    testDateFmtFormatRelativeWithinFortnightBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
@@ -1628,7 +1556,6 @@ testDateFmtFormatRelativeWithinFortnightBefore_my_MM: function(test) {
         test.equal(fmt.formatRelative(reference, date),  'ပြီးခဲ့သည့် 4 ရက်');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
@@ -1657,7 +1584,7 @@ testDateFmtFormatRelativeWithinFortnightBefore_my_MM: function(test) {
         test.equal(fmt.formatRelative(reference, date), '9 ပတ်အတွင်း');
         test.done();
     },
-testDateFmtFormatRelativeWithinQuarterBefore_my_MM: function(test) {
+    testDateFmtFormatRelativeWithinQuarterBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
@@ -1685,7 +1612,6 @@ testDateFmtFormatRelativeWithinQuarterBefore_my_MM: function(test) {
         test.equal(fmt.formatRelative(reference, date), 'ပြီးခဲ့သည့် 9 ပတ်');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
@@ -1714,7 +1640,7 @@ testDateFmtFormatRelativeWithinQuarterBefore_my_MM: function(test) {
         test.equal(fmt.formatRelative(reference, date), '16 လအတွင်း');
         test.done();
     },
-testDateFmtFormatRelativeWithinTwoYearsBefore_my_MM: function(test) {
+    testDateFmtFormatRelativeWithinTwoYearsBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);
@@ -1742,7 +1668,6 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_my_MM: function(test) {
         test.equal(fmt.formatRelative(reference, date), 'ပြီးခဲ့သည့် 14 လ');
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
@@ -1771,7 +1696,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_my_MM: function(test) {
         test.equal(fmt.formatRelative(reference, date), '14 နှစ်အတွင်း');
         test.done();
     },
-testDateFmtFormatRelativeYearsBefore_my_MM: function(test) {
+    testDateFmtFormatRelativeYearsBefore_my_MM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "my-MM", length: "full"});
         test.ok(fmt !== null);

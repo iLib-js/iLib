@@ -1,7 +1,7 @@
 /*
  * testdatefmt_az_Latn_AZ.js - test the date formatter object in Latin Azerbaijani
  *
- * Copyright © 2016-2017,2020-2022 JEDLSoft
+ * Copyright © 2016-2017,2020-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtConstructorEmpty_az_Latn_AZ: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "az-Latn-AZ"});
@@ -44,7 +43,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.ok(fmt !== null);
         test.done();
     },
-
     testDateFmtSimpleShort_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "short"});
@@ -63,7 +61,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "29.09.11");
         test.done();
     },
-
     testDateFmtSimpleMedium_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "medium"});
@@ -82,7 +79,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "29 sen 2011");
         test.done();
     },
-
     testDateFmtSimpleMedium_az_Latn_AZ_useIntl: function(test) {
         if(!DateFmt.isIntlDateTimeAvailable("az-Latn-AZ")){
             // The result is different depending on the node version.
@@ -128,7 +124,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), expected);
         test.done();
     },
-
     testDateFmtSimpleLong_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "long"});
@@ -147,7 +142,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "29 sentyabr 2011");
         test.done();
     },
-
     testDateFmtSimpleFull_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full"});
@@ -166,7 +160,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "29 sentyabr 2011");
         test.done();
     },
-
     testDateFmtSimpleTimeShort_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "short", type: "time"});
@@ -185,7 +178,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeMedium_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "medium", type: "time"});
@@ -204,7 +196,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeLong_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", timelength: "long", type: "time"});
@@ -223,7 +214,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeFull_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full", type: "time"});
@@ -242,7 +232,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleShort_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "short", type: "datetime"});
@@ -258,10 +247,9 @@ module.exports.testdatefmt_az_Latn_AZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.09.11 13:45");
+        test.equal(fmt.format(date), "29.09.11, 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleMedium_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "medium", type: "datetime"});
@@ -277,10 +265,9 @@ module.exports.testdatefmt_az_Latn_AZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 sen 2011 13:45");
+        test.equal(fmt.format(date), "29 sen 2011, 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleLong_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "long", type: "datetime"});
@@ -297,10 +284,9 @@ module.exports.testdatefmt_az_Latn_AZ = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "29 sentyabr 2011 13:45");
+        test.equal(fmt.format(date), "29 sentyabr 2011 at 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleFull_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full", type: "datetime"});
@@ -316,11 +302,9 @@ module.exports.testdatefmt_az_Latn_AZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 sentyabr 2011 13:45");
+        test.equal(fmt.format(date), "29 sentyabr 2011/13:45");
         test.done();
     },
-
-
     testDateFmtTemplateCalendar_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", calendar: "julian", template: "yyyy-MM-dd"});
@@ -360,7 +344,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock12Switchkk_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", clock: "12", template: "kk:mm"});
@@ -379,7 +362,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock24Switchhh_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", clock: "24", template: "hh:mm"});
@@ -398,7 +380,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateClock24SwitchKK_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", clock: "24", template: "KK:mm"});
@@ -417,7 +398,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockNotFollowLocaleDefault12hh_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", template: "hh:mm"});
@@ -436,7 +416,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockNotFollowLocaleDefault12KK_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", template: "KK:mm"});
@@ -455,7 +434,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockNotFollowLocaleDefault24HH_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", template: "HH:mm"});
@@ -474,7 +452,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockNotFollowLocaleDefault24kk_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", template: "kk:mm"});
@@ -493,8 +470,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
-
     testDateFmtTypeDate_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "date"});
@@ -513,7 +488,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "29.09.11");
         test.done();
     },
-
     testDateFmtTypeTime_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time"});
@@ -532,7 +506,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTypeDateTime_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "datetime"});
@@ -548,11 +521,9 @@ module.exports.testdatefmt_az_Latn_AZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.09.11 13:45");
+        test.equal(fmt.format(date), "29.09.11, 13:45");
         test.done();
     },
-
-
     testDateFmtShortDateComponentsY_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", date: "y"});
@@ -571,7 +542,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "11");
         test.done();
     },
-
     testDateFmtShortDateComponentsM_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", date: "m"});
@@ -590,7 +560,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "se");
         test.done();
     },
-
     testDateFmtShortDateComponentsN_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", date: "n"});
@@ -609,7 +578,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "s");
         test.done();
     },
-
     testDateFmtShortDateComponentsD_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", date: "d"});
@@ -628,7 +596,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtShortDateComponentsDM_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", date: "dm"});
@@ -647,7 +614,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "29.09");
         test.done();
     },
-
     testDateFmtShortDateComponentsMY_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", date: "my"});
@@ -666,7 +632,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "09.11");
         test.done();
     },
-
     testDateFmtShortDateComponentsDMY_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", date: "dmy"});
@@ -685,7 +650,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "29.09.11");
         test.done();
     },
-
     testDateFmtShortDateComponentsDMW_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", date: "dmw"});
@@ -704,7 +668,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "29.09, 4");
         test.done();
     },
-
     testDateFmtShortDateComponentsDMWY_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", date: "dmwy"});
@@ -723,8 +686,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "29.09.11, 4");
         test.done();
     },
-
-
     testDateFmtFullDateComponentsY_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full", date: "y"});
@@ -743,7 +704,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsM_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full", date: "m"});
@@ -762,7 +722,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "sentyabr");
         test.done();
     },
-
     testDateFmtFullDateComponentsD_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full", date: "d"});
@@ -781,7 +740,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtFullDateComponentsDM_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full", date: "dm"});
@@ -800,7 +758,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "29 sentyabr");
         test.done();
     },
-
     testDateFmtFullDateComponentsMY_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full", date: "my"});
@@ -819,7 +776,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "sentyabr 2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsDMY_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full", date: "dmy"});
@@ -838,7 +794,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "29 sentyabr 2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsDMW_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full", date: "dmw"});
@@ -857,7 +812,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "29 sentyabr, cümə axşamı");
         test.done();
     },
-
     testDateFmtFullDateComponentsDMWY_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full", date: "dmwy"});
@@ -876,8 +830,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "29 sentyabr 2011, cümə axşamı");
         test.done();
     },
-
-
     testDateFmtShortTimeComponentsS_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time", time: "s"});
@@ -896,7 +848,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsM_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time", time: "m"});
@@ -915,7 +866,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsH_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time", time: "h"});
@@ -934,7 +884,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtShortTimeComponentsMS_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time", time: "ms"});
@@ -953,7 +902,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHM_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time", time: "hm"});
@@ -972,7 +920,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMS_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time", time: "hms"});
@@ -991,7 +938,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMA_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time", time: "hma"});
@@ -1010,7 +956,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMZ_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1033,7 +978,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45 +04/+05");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMAZ_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1056,7 +1000,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45 +04/+05");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSA_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time", time: "hmsa"});
@@ -1075,7 +1018,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSZ_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1098,7 +1040,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45:37 +04/+05");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSAZ_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1121,8 +1062,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45:37 +04/+05");
         test.done();
     },
-
-
     testDateFmtFullTimeComponentsS_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time", length: "full", time: "s"});
@@ -1141,7 +1080,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsM_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time", length: "full", time: "m"});
@@ -1160,7 +1098,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsH_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time", length: "full", time: "h"});
@@ -1179,7 +1116,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtFullTimeComponentsMS_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time", length: "full", time: "ms"});
@@ -1198,7 +1134,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHM_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time", length: "full", time: "hm"});
@@ -1217,7 +1152,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMS_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time", length: "full", time: "hms"});
@@ -1236,7 +1170,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMA_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time", length: "full", time: "hma"});
@@ -1255,7 +1188,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMZ_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1279,7 +1211,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45 +04/+05");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMAZ_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1303,7 +1234,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45 +04/+05");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSA_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", type: "time", length: "full", time: "hmsa"});
@@ -1322,7 +1252,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSZ_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1346,7 +1275,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45:37 +04/+05");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSAZ_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1370,7 +1298,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45:37 +04/+05");
         test.done();
     },
-
     testDateFmtWithTimeZoneAndNoDST_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1394,7 +1321,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "13:45:37 +04/+05");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinMinuteAfter_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full"});
@@ -1563,7 +1489,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.formatRelative(reference, date), "4 saat öncə");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full"});
@@ -1620,7 +1545,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.formatRelative(reference, date), "4 gün öncə");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full"});
@@ -1677,7 +1601,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.formatRelative(reference, date), "9 həftə öncə");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full"});
@@ -1734,7 +1657,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.formatRelative(reference, date), "14 ay öncə");
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full"});
@@ -1791,6 +1713,4 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.formatRelative(reference, date), "21 il öncə");
         test.done();
     }
-
-
 };

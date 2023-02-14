@@ -1,7 +1,7 @@
 /*
- * testdatefmtrange_si_LK.js - test the date range formatter object in Sri Lanka
+ * testdatefmtrange_si_LK.js - test the date range formatter object in Sinhala/Sri Lanka
  *
- * Copyright © 2017 JEDLSoft
+ * Copyright © 2017,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_si_LK = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtLKRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "si-LK", length: "short"});
@@ -56,7 +55,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-12-31 13.45 – 14.30");
+        test.equal(fmt.format(start, end), '2011-12-31, 13.45 – 14.30');
         test.done();
     },
     testDateRngFmtLKRangeInDayMedium: function(test) {
@@ -82,7 +81,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 දෙසැ 31 13.45 – 14.30");
+        test.equal(fmt.format(start, end), '2011 දෙසැ 31, 13.45 – 14.30');
         test.done();
     },
     testDateRngFmtLKRangeInDayLong: function(test) {
@@ -108,7 +107,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 දෙසැම්බර් 31 13.45 – 14.30");
+        test.equal(fmt.format(start, end), '2011 දෙසැම්බර් 31 දින 13.45 – 14.30');
         test.done();
     },
     testDateRngFmtLKRangeInDayFull: function(test) {
@@ -134,7 +133,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 දෙසැම්බර් 31 13.45 – 14.30");
+        test.equal(fmt.format(start, end), '2011 දෙසැම්බර් 31 දින 13.45 – 14.30');
         test.done();
     },
     testDateRngFmtLKRangeNextDayShort: function(test) {
@@ -160,7 +159,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-12-30 13.45 – 2011-12-31 14.30");
+        test.equal(fmt.format(start, end), '2011-12-30, 13.45 – 2011-12-31, 14.30');
         test.done();
     },
     testDateRngFmtLKRangeNextDayMedium: function(test) {
@@ -186,7 +185,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 දෙසැ 30 13.45 – 2011 දෙසැ 31 14.30");
+        test.equal(fmt.format(start, end), '2011 දෙසැ 30, 13.45 – 2011 දෙසැ 31, 14.30');
         test.done();
     },
     testDateRngFmtLKRangeNextDayLong: function(test) {
@@ -212,7 +211,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 දෙසැම්බර් 30 13.45 – 2011 දෙසැම්බර් 31 14.30");
+        test.equal(fmt.format(start, end), '2011 දෙසැම්බර් 30 දින 13.45 – 2011 දෙසැම්බර් 31 දින 14.30');
         test.done();
     },
     testDateRngFmtLKRangeNextDayFull: function(test) {
@@ -238,7 +237,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 දෙසැම්බර් 30 13.45 – 2011 දෙසැම්බර් 31 14.30");
+        test.equal(fmt.format(start, end), '2011 දෙසැම්බර් 30 දින 13.45 – 2011 දෙසැම්බර් 31 දින 14.30');
         test.done();
     },
     testDateRngFmtLKRangeMultiDayShort: function(test) {

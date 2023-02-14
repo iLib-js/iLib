@@ -91,33 +91,33 @@
             }
         },
         "order": {
-            "f": "{date} {time}",
-            "l": "{date} {time}",
+            "f": "{date}: {time}",
+            "l": "{date}: {time}",
             "m": "{date}, {time}",
             "s": "{date}, {time}"
         },
         "range": {
             "c00": {
-                "f": "{sy} {sm} {sd} {st} – {et}",
-                "l": "{sy} {sm} {sd} {st} – {et}",
+                "f": "{sy} {sm} {sd}: {st} – {et}",
+                "l": "{sy} {sm} {sd}: {st} – {et}",
                 "m": "{sy} {sm} {sd}, {st} – {et}",
                 "s": "{sy}/{sm}/{sd}, {st} – {et}"
             },
             "c01": {
-                "f": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "l": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
+                "f": "{sy} {sm} {sd}: {st} – {ey} {em} {ed}: {et}",
+                "l": "{sy} {sm} {sd}: {st} – {ey} {em} {ed}: {et}",
                 "m": "{sy} {sm} {sd}, {st} – {ey} {em} {ed}, {et}",
                 "s": "{sy}/{sm}/{sd}, {st} – {ey}/{em}/{ed}, {et}"
             },
             "c02": {
-                "f": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "l": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
+                "f": "{sy} {sm} {sd}: {st} – {ey} {em} {ed}: {et}",
+                "l": "{sy} {sm} {sd}: {st} – {ey} {em} {ed}: {et}",
                 "m": "{sy} {sm} {sd}, {st} – {ey} {em} {ed}, {et}",
                 "s": "{sy}/{sm}/{sd}, {st} – {ey}/{em}/{ed}, {et}"
             },
             "c03": {
-                "f": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "l": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
+                "f": "{sy} {sm} {sd}: {st} – {ey} {em} {ed}: {et}",
+                "l": "{sy} {sm} {sd}: {st} – {ey} {em} {ed}: {et}",
                 "m": "{sy} {sm} {sd}, {st} – {ey} {em} {ed}, {et}",
                 "s": "{sy}/{sm}/{sd}, {st} – {ey}/{em}/{ed}, {et}"
             },

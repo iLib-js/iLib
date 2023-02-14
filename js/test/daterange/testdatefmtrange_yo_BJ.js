@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_yo_BJ.js - test the date range formatter object Yoruba-Benin
  *
- * Copyright © 2022, JEDLSoft
+ * Copyright © 2022-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31/12/2011, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtRangeInDayMedium_yo_BJ: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 12 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 12 2011, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtRangeInDayLong_yo_BJ: function(test) {
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Ɔ̀pɛ 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 Ɔ̀pɛ 2011 níti 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtRangeInDayFull_yo_BJ: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Ɔ̀pɛ 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 Ɔ̀pɛ 2011 ní 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtRangeNextDayShort_yo_BJ: function(test) {
@@ -160,7 +160,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/2011 13:45 – 31/12/2011 14:30");
+        test.equal(fmt.format(start, end), "30/12/2011, 13:45 – 31/12/2011, 14:30");
         test.done();
     },
     testDateRngFmtRangeNextDayMedium_yo_BJ: function(test) {
@@ -186,7 +186,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 12 2011 13:45 – 31 12 2011 14:30");
+        test.equal(fmt.format(start, end), "30 12 2011, 13:45 – 31 12 2011, 14:30");
         test.done();
     },
     testDateRngFmtRangeNextDayLong_yo_BJ: function(test) {
@@ -212,7 +212,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Ɔ̀pɛ 2011 13:45 – 31 Ɔ̀pɛ 2011 14:30");
+        test.equal(fmt.format(start, end), "30 Ɔ̀pɛ 2011 níti 13:45 – 31 Ɔ̀pɛ 2011 níti 14:30");
         test.done();
     },
     testDateRngFmtRangeNextDayFull_yo_BJ: function(test) {
@@ -238,7 +238,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Ɔ̀pɛ 2011 13:45 – 31 Ɔ̀pɛ 2011 14:30");
+        test.equal(fmt.format(start, end), "30 Ɔ̀pɛ 2011 ní 13:45 – 31 Ɔ̀pɛ 2011 ní 14:30");
         test.done();
     },
     testDateRngFmtRangeMultiDayShort_yo_BJ: function(test) {

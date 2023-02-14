@@ -1,7 +1,7 @@
 /*
  * testdatefmt_te_IN.js - test the date formatter object in telugu for India
  *
- * Copyright © 2013-2015,2017-2018, JEDLSoft
+ * Copyright © 2013-2015,2017-2018, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,6 @@ module.exports.testdatefmt_te_IN = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtINConstructorEmpty_te_IN: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "te-IN"});
@@ -43,8 +42,6 @@ module.exports.testdatefmt_te_IN = {
         test.ok(typeof(fmt) !== "undefined");
         test.done();
     },
-
-
     testDateFmtINSimpleShort_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "short"});
@@ -62,7 +59,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29-09-11");
         test.done();
     },
-
     testDateFmtINSimpleMedium_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "medium"});
@@ -81,7 +77,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29 సెప్టెం, 2011");
         test.done();
     },
-
     testDateFmtINSimpleLong_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "long"});
@@ -100,7 +95,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29 సెప్టెంబర్, 2011");
         test.done();
     },
-
     testDateFmtINSimpleFull_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "full"});
@@ -119,7 +113,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29, సెప్టెంబర్ 2011");
         test.done();
     },
-
     testDateFmtINSimpleTimeShort_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "short", type: "time"});
@@ -138,7 +131,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
-
     testDateFmtINSimpleTimeShort_te_IN1: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "short", type: "time"});
@@ -157,7 +149,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
-
     testDateFmtINSimpleTimeMedium_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "medium", type: "time"});
@@ -176,7 +167,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
-
     testDateFmtINSimpleTimeLong_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", timelength: "long", type: "time"});
@@ -195,7 +185,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
-
     testDateFmtINSimpleTimeFull_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "full", type: "time"});
@@ -214,7 +203,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
-
     testDateFmtINDateTimeSimpleShort_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "short", type: "datetime"});
@@ -233,7 +221,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29-09-11 1:45 PM");
         test.done();
     },
-
     testDateFmtINDateTimeSimpleMedium_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "medium", type: "datetime"});
@@ -252,7 +239,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29 సెప్టెం, 2011 1:45 PM");
         test.done();
     },
-
     testDateFmtINDateTimeSimpleLong_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "long", type: "datetime"});
@@ -271,7 +257,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), '29 సెప్టెంబర్, 2011 1:45 PMకి');
         test.done();
     },
-
     testDateFmtINDateTimeSimpleFull_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "full", type: "datetime"});
@@ -290,8 +275,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), '29, సెప్టెంబర్ 2011 1:45 PMకి');
         test.done();
     },
-
-
     testDateFmtINTemplateCalendar_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", calendar: "julian", template: "yyyy-MM-dd"});
@@ -328,7 +311,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtINTemplateClock12Switchkk_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", clock: "12", template: "kk:mm"});
@@ -347,7 +329,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtINTemplateClock24Switchhh_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", clock: "24", template: "hh:mm"});
@@ -366,7 +347,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtINTemplateClock24SwitchKK_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", clock: "24", template: "KK:mm"});
@@ -385,7 +365,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12hh_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", template: "hh:mm"});
@@ -404,7 +383,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12KK_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", template: "KK:mm"});
@@ -423,7 +401,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24HH_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", template: "HH:mm"});
@@ -442,7 +419,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24kk_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", template: "kk:mm"});
@@ -461,8 +437,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
-
     testDateFmtINTypeDate_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "date"});
@@ -481,7 +455,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29-09-11");
         test.done();
     },
-
     testDateFmtINTypeTime_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "time"});
@@ -500,7 +473,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
-
     testDateFmtINTypeDateTime_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "datetime"});
@@ -519,8 +491,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29-09-11 1:45 PM");
         test.done();
     },
-
-
     testDateFmtINShortDateComponentsY_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", date: "y"});
@@ -539,7 +509,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "11");
         test.done();
     },
-
     testDateFmtINShortDateComponentsM_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", date: "m"});
@@ -558,7 +527,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "09");
         test.done();
     },
-
     testDateFmtINShortDateComponentsN_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", date: "n"});
@@ -577,7 +545,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "స");
         test.done();
     },
-
     testDateFmtINShortDateComponentsD_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", date: "d"});
@@ -596,7 +563,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtINShortDateComponentsDM_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", date: "dm"});
@@ -615,7 +581,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29-09");
         test.done();
     },
-
     testDateFmtINShortDateComponentsMY_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", date: "my"});
@@ -634,7 +599,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "09-11");
         test.done();
     },
-
     testDateFmtINShortDateComponentsDMY_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", date: "dmy"});
@@ -653,7 +617,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29-09-11");
         test.done();
     },
-
     testDateFmtINShortDateComponentsWDM_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", date: "wdm"});
@@ -672,7 +635,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29-09, గు");
         test.done();
     },
-
     testDateFmtINShortDateComponentsWDMY_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", date: "wdmy"});
@@ -691,8 +653,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29-09-11, గు");
         test.done();
     },
-
-
     testDateFmtINFullDateComponentsY_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "full", date: "y"});
@@ -711,7 +671,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtINFullDateComponentsM_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "full", date: "m"});
@@ -730,7 +689,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "సెప్టెంబర్");
         test.done();
     },
-
     testDateFmtINFullDateComponentsD_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "full", date: "d"});
@@ -749,7 +707,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtINFullDateComponentsDM_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "full", date: "dm"});
@@ -768,7 +725,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29, సెప్టెంబర్");
         test.done();
     },
-
     testDateFmtINFullDateComponentsMY_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "full", date: "my"});
@@ -787,7 +743,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "సెప్టెంబర్ 2011");
         test.done();
     },
-
     testDateFmtINFullDateComponentsDMY_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "full", date: "dmy"});
@@ -806,7 +761,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29, సెప్టెంబర్ 2011");
         test.done();
     },
-
     testDateFmtINFullDateComponentsWDM_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "full", date: "wdm"});
@@ -825,7 +779,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29, సెప్టెంబర్, గురువారం");
         test.done();
     },
-
     testDateFmtINFullDateComponentsWDMY_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "full", date: "wdmy"});
@@ -844,8 +797,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "29, సెప్టెంబర్ 2011, గురువారం");
         test.done();
     },
-
-
     testDateFmtINShortTimeComponentsS_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "time", time: "s"});
@@ -864,7 +815,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsM_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "time", time: "m"});
@@ -883,7 +833,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsH_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "time", time: "h"});
@@ -902,8 +851,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1");
         test.done();
     },
-
-
     testDateFmtINShortTimeComponentsHM_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "time", time: "hm"});
@@ -922,7 +869,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMS_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "time", time: "hms"});
@@ -941,7 +887,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45:37");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMA_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "time", time: "hma"});
@@ -960,7 +905,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMZ_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -983,7 +927,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMAZ_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1007,7 +950,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMSA_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "time", time: "hmsa"});
@@ -1026,7 +968,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45:37 PM");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMSZ_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1050,7 +991,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMSAZ_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1074,8 +1014,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
-
-
     testDateFmtINFullTimeComponentsS_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "time", length: "full", time: "s"});
@@ -1094,7 +1032,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsM_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "time", length: "full", time: "m"});
@@ -1113,7 +1050,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsH_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "time", length: "full", time: "h"});
@@ -1132,9 +1068,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1");
         test.done();
     },
-
-
-
     testDateFmtINFullTimeComponentsHM_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "time", length: "full", time: "hma"});
@@ -1153,7 +1086,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsHMS_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "time", length: "full", time: "hmsa"});
@@ -1172,7 +1104,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45:37 PM");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsHMA_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "time", length: "full", time: "hma"});
@@ -1191,9 +1122,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
-
-
-
     testDateFmtINFullTimeComponentsHMAZ_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1218,7 +1146,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsHMSA_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", type: "time", length: "full", time: "hmsa"});
@@ -1237,7 +1164,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45:37 PM");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsHMSZ_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1262,7 +1188,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsHMSAZ_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1287,7 +1212,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
-
     testDateFmtINWithTimeZoneAndNoDST_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1312,7 +1236,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinMinuteAfter_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "full"});
@@ -1481,7 +1404,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.formatRelative(reference, date), "4 గంటల క్రితం");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "full"});
@@ -1538,7 +1460,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.formatRelative(reference, date), "4 రోజుల క్రితం");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "full"});
@@ -1595,7 +1516,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.formatRelative(reference, date), "9 వారాల క్రితం");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "full"});
@@ -1652,7 +1572,6 @@ module.exports.testdatefmt_te_IN = {
         test.equal(fmt.formatRelative(reference, date), "14 నెలల క్రితం");
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "te-IN", length: "full"});

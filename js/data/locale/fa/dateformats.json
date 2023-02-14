@@ -87,35 +87,35 @@
             }
         },
         "order": {
-            "f": "{date}، ساعت {time}",
-            "l": "{date}، ساعت {time}",
-            "m": "{date}،‏ {time}",
-            "s": "{date}،‏ {time}"
+            "f": "{date} ساعت {time}",
+            "l": "{date} ساعت {time}",
+            "m": "{date}، {time}",
+            "s": "{date}, {time}"
         },
         "range": {
             "c00": {
-                "f": "‏{sd} {sm} {sy}، ساعت {st} – {et}",
-                "l": "‏{sd} {sm} {sy}، ساعت {st} – {et}",
-                "m": "‏{sd} {sm} {sy}،‏ {st} – {et}",
-                "s": "‏{sy}/{sm}/{sd}،‏ {st} – {et}"
+                "f": "‏{sd} {sm} {sy} ساعت {st} – {et}",
+                "l": "‏{sd} {sm} {sy} ساعت {st} – {et}",
+                "m": "‏{sd} {sm} {sy}، {st} – {et}",
+                "s": "‏{sy}/{sm}/{sd}, {st} – {et}"
             },
             "c01": {
-                "f": "‏{sd} {sm} {sy}، ساعت {st} – ‏{ed} {em} {ey}، ساعت {et}",
-                "l": "‏{sd} {sm} {sy}، ساعت {st} – ‏{ed} {em} {ey}، ساعت {et}",
-                "m": "‏{sd} {sm} {sy}،‏ {st} – ‏{ed} {em} {ey}،‏ {et}",
-                "s": "‏{sy}/{sm}/{sd}،‏ {st} – ‏{ey}/{em}/{ed}،‏ {et}"
+                "f": "‏{sd} {sm} {sy} ساعت {st} – ‏{ed} {em} {ey} ساعت {et}",
+                "l": "‏{sd} {sm} {sy} ساعت {st} – ‏{ed} {em} {ey} ساعت {et}",
+                "m": "‏{sd} {sm} {sy}، {st} – ‏{ed} {em} {ey}، {et}",
+                "s": "‏{sy}/{sm}/{sd}, {st} – ‏{ey}/{em}/{ed}, {et}"
             },
             "c02": {
-                "f": "‏{sd} {sm} {sy}، ساعت {st} – ‏{ed} {em} {ey}، ساعت {et}",
-                "l": "‏{sd} {sm} {sy}، ساعت {st} – ‏{ed} {em} {ey}، ساعت {et}",
-                "m": "‏{sd} {sm} {sy}،‏ {st} – ‏{ed} {em} {ey}،‏ {et}",
-                "s": "‏{sy}/{sm}/{sd}،‏ {st} – ‏{ey}/{em}/{ed}،‏ {et}"
+                "f": "‏{sd} {sm} {sy} ساعت {st} – ‏{ed} {em} {ey} ساعت {et}",
+                "l": "‏{sd} {sm} {sy} ساعت {st} – ‏{ed} {em} {ey} ساعت {et}",
+                "m": "‏{sd} {sm} {sy}، {st} – ‏{ed} {em} {ey}، {et}",
+                "s": "‏{sy}/{sm}/{sd}, {st} – ‏{ey}/{em}/{ed}, {et}"
             },
             "c03": {
-                "f": "‏{sd} {sm} {sy}، ساعت {st} – ‏{ed} {em} {ey}، ساعت {et}",
-                "l": "‏{sd} {sm} {sy}، ساعت {st} – ‏{ed} {em} {ey}، ساعت {et}",
-                "m": "‏{sd} {sm} {sy}،‏ {st} – ‏{ed} {em} {ey}،‏ {et}",
-                "s": "‏{sy}/{sm}/{sd}،‏ {st} – ‏{ey}/{em}/{ed}،‏ {et}"
+                "f": "‏{sd} {sm} {sy} ساعت {st} – ‏{ed} {em} {ey} ساعت {et}",
+                "l": "‏{sd} {sm} {sy} ساعت {st} – ‏{ed} {em} {ey} ساعت {et}",
+                "m": "‏{sd} {sm} {sy}، {st} – ‏{ed} {em} {ey}، {et}",
+                "s": "‏{sy}/{sm}/{sd}, {st} – ‏{ey}/{em}/{ed}, {et}"
             },
             "c10": {
                 "f": "‏{sd} – ‏{ed} {em} {ey}",

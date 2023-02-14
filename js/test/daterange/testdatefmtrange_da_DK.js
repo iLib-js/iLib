@@ -1,5 +1,5 @@
 /*
- * testdatefmtrange_da_DK.js - test the date range formatter object in German/Germany
+ * testdatefmtrange_da_DK.js - test the date range formatter object in Danish/Denmark
  *
  * Copyright © 2012-2017, JEDLSoft
  *

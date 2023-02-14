@@ -1,7 +1,7 @@
 /*
- * testdurfmt_or_IN.js - test the duration formatter object
+ * testdurfmt_ha_Latn_NG.js - test the duration formatter object
  *
- * Copyright © 2015,2017,2021 JEDLSoft
+ * Copyright © 2015,2017,2021,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ module.exports.testdurfmt_ha_Latn_NG = {
         ilib.clearCache();
         callback();
     },
-
     testDurFmtHAFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -50,7 +49,6 @@ module.exports.testdurfmt_ha_Latn_NG = {
         test.equal(duration.toString(), "shkr 1, w1, m1, r1, s1, minti1, d 1");
         test.done();
     },
-
     testDurFmtHAFormatShortText: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -72,7 +70,6 @@ module.exports.testdurfmt_ha_Latn_NG = {
         test.equal(duration.toString(), "shkr 1, w1, m1, r1, s1, minti1, d 1");
         test.done();
     },
-
     testDurFmtHAFormatShortClock: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -94,7 +91,6 @@ module.exports.testdurfmt_ha_Latn_NG = {
         test.equal(duration.toString(), "shkr 1, w1, m1, r1, 01:01:01");
         test.done();
     },
-
     testDurFmtHAFormatMedium: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -115,7 +111,6 @@ module.exports.testdurfmt_ha_Latn_NG = {
         test.equal(duration.toString(), "shkr 1, w1, m1, r1, s1, minti1, d 1");
         test.done();
     },
-
     testDurFmtHAFormatLong: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -136,7 +131,6 @@ module.exports.testdurfmt_ha_Latn_NG = {
         test.equal(duration.toString(), "shkr 1, wat 1, mk 1, rana 1, s 1, mnt 1, d 1");
         test.done();
     },
-
     testDurFmtHAFormatFull: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -154,11 +148,9 @@ module.exports.testdurfmt_ha_Latn_NG = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "shekara 1, wata 1, mako 1, rana 1, sa'a 1, minti 1, daƙiƙa 1");
+        test.equal(duration.toString(), "shekara 1, wata 1, mako 1, rana 1, sa′a 1, minti 1, daƙiƙa 1");
         test.done();
     },
-
-
     testDurFmtHAAsyncWithLocale: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -177,12 +169,11 @@ module.exports.testdurfmt_ha_Latn_NG = {
                     minute: 2,
                     second: 2
                 });
-                test.equal(duration.toString(), "shekaru 2, watanni 2, makonni 2, ranaku 2, sa'o'i 2, mintoci 2, daƙiƙoƙi 2");
+                test.equal(duration.toString(), "shekaru 2, watanni 2, makonni 2, ranaku 2, sa′o′i 2, mintoci 2, daƙiƙoƙi 2");
                 test.done();
             }
         });
     },
-
     testDurFmtHAFormatShortClockAsync: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -207,5 +198,4 @@ module.exports.testdurfmt_ha_Latn_NG = {
             }
         });
     }
-
 };

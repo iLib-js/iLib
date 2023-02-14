@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_bn_IN.js - test the date range formatter object in Bengali/india
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_bn_IN = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtRangeinDayShort_bn_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "bn-IN", length: "short"});
@@ -56,7 +55,7 @@ module.exports.testdatefmtrange_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "৩১/১২/১১ ১:৪৫ PM – ২:৩০ PM");
+        test.equal(fmt.format(start, end), "৩১/১২/১১, ১:৪৫ PM – ২:৩০ PM");
         test.done();
     },
     testDateRngFmtRangeinDayMedium_bn_IN: function(test) {
@@ -82,7 +81,7 @@ module.exports.testdatefmtrange_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "৩১ ডিসেম্বর, ২০১১ ১:৪৫ PM – ২:৩০ PM");
+        test.equal(fmt.format(start, end), "৩১ ডিসেঃ, ২০১১, ১:৪৫ PM – ২:৩০ PM");
         test.done();
     },
     testDateRngFmtRangeinDayLong_bn_IN: function(test) {
@@ -108,7 +107,7 @@ module.exports.testdatefmtrange_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "৩১ ডিসেম্বর, ২০১১ ১:৪৫ PM – ২:৩০ PM");
+        test.equal(fmt.format(start, end), "৩১ ডিসেম্বর, ২০১১ এ ১:৪৫ PM – ২:৩০ PM");
         test.done();
     },
     testDateRngFmtRangeinDayFull_bn_IN: function(test) {
@@ -134,10 +133,9 @@ module.exports.testdatefmtrange_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "৩১ ডিসেম্বর, ২০১১ ১:৪৫ PM – ২:৩০ PM");
+        test.equal(fmt.format(start, end), "৩১ ডিসেম্বর, ২০১১ এ ১:৪৫ PM – ২:৩০ PM");
         test.done();
     },
-
     testDateRngFmtRangeNextDayShort_bn_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "bn-IN", length: "short"});
@@ -161,7 +159,7 @@ module.exports.testdatefmtrange_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "৩০/১২/১১ ১:৪৫ PM – ৩১/১২/১১ ২:৩০ PM");
+        test.equal(fmt.format(start, end), "৩০/১২/১১, ১:৪৫ PM – ৩১/১২/১১, ২:৩০ PM");
         test.done();
     },
     testDateRngFmtRangeNextDayMedium_bn_IN: function(test) {
@@ -187,7 +185,7 @@ module.exports.testdatefmtrange_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "৩০ ডিসেম্বর, ২০১১ ১:৪৫ PM – ৩১ ডিসেম্বর, ২০১১ ২:৩০ PM");
+        test.equal(fmt.format(start, end), "৩০ ডিসেঃ, ২০১১, ১:৪৫ PM – ৩১ ডিসেঃ, ২০১১, ২:৩০ PM");
         test.done();
     },
     testDateRngFmtRangeNextDayLong_bn_IN: function(test) {
@@ -213,7 +211,7 @@ module.exports.testdatefmtrange_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "৩০ ডিসেম্বর, ২০১১ ১:৪৫ PM – ৩১ ডিসেম্বর, ২০১১ ২:৩০ PM");
+        test.equal(fmt.format(start, end), "৩০ ডিসেম্বর, ২০১১ এ ১:৪৫ PM – ৩১ ডিসেম্বর, ২০১১ এ ২:৩০ PM");
         test.done();
     },
     testDateRngFmtRangeNextDayFull_bn_IN: function(test) {
@@ -239,10 +237,9 @@ module.exports.testdatefmtrange_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "৩০ ডিসেম্বর, ২০১১ ১:৪৫ PM – ৩১ ডিসেম্বর, ২০১১ ২:৩০ PM");
+        test.equal(fmt.format(start, end), "৩০ ডিসেম্বর, ২০১১ এ ১:৪৫ PM – ৩১ ডিসেম্বর, ২০১১ এ ২:৩০ PM");
         test.done();
     },
-
     testDateRngFmtRangeMultiDayShort_bn_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "bn-IN", length: "short"});
@@ -292,7 +289,7 @@ module.exports.testdatefmtrange_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০ – ৩১ ডিসেম্বর, ২০১১");
+        test.equal(fmt.format(start, end), "২০ – ৩১ ডিসেঃ, ২০১১");
         test.done();
     },
     testDateRngFmtRangeMultiDayLong_bn_IN: function(test) {
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_bn_IN = {
         test.equal(fmt.format(start, end), "২০ – ৩১ ডিসেম্বর, ২০১১");
         test.done();
     },
-
     testDateRngFmtRangeNextMonthShort_bn_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "bn-IN", length: "short"});
@@ -397,7 +393,7 @@ module.exports.testdatefmtrange_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০ নভেম্বর – ৩১ ডিসেম্বর, ২০১১");
+        test.equal(fmt.format(start, end), "২০ নভেঃ – ৩১ ডিসেঃ, ২০১১");
         test.done();
     },
     testDateRngFmtRangeNextMonthLong_bn_IN: function(test) {
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_bn_IN = {
         test.equal(fmt.format(start, end), "২০ নভেম্বর – ৩১ ডিসেম্বর, ২০১১");
         test.done();
     },
-
     testDateRngFmtRangeNextYearShort_bn_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "bn-IN", length: "short"});
@@ -502,7 +497,7 @@ module.exports.testdatefmtrange_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০ নভেম্বর, ২০১১ – ৩১ জানু, ২০১২");
+        test.equal(fmt.format(start, end), "২০ নভেঃ, ২০১১ – ৩১ জানু, ২০১২");
         test.done();
     },
     testDateRngFmtRangeNextYearLong_bn_IN: function(test) {
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_bn_IN = {
         test.equal(fmt.format(start, end), "২০ নভেম্বর, ২০১১ – ৩১ জানুয়ারী, ২০১২");
         test.done();
     },
-
     testDateRngFmtRangeMultiYearShort_bn_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "bn-IN", length: "short"});
@@ -607,7 +601,7 @@ module.exports.testdatefmtrange_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "নভেম্বর, ২০১১ – জানু, ২০১৪");
+        test.equal(fmt.format(start, end), "নভেঃ, ২০১১ – জানু, ২০১৪");
         test.done();
     },
     testDateRngFmtRangeMultiYearLong_bn_IN: function(test) {

@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_ro_RO.js - test the date range formatter object Romanian/Romania
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_ro_RO = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtRORangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ro-RO", length: "short"});
@@ -108,7 +107,7 @@ module.exports.testdatefmtrange_ro_RO = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 decembrie 2011, 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 decembrie 2011 la 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtRORangeInDayFull: function(test) {
@@ -134,10 +133,9 @@ module.exports.testdatefmtrange_ro_RO = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 decembrie 2011, 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 decembrie 2011 la 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtRORangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ro-RO", length: "short"});
@@ -213,7 +211,7 @@ module.exports.testdatefmtrange_ro_RO = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 decembrie 2011, 13:45 – 31 decembrie 2011, 14:30");
+        test.equal(fmt.format(start, end), "30 decembrie 2011 la 13:45 – 31 decembrie 2011 la 14:30");
         test.done();
     },
     testDateRngFmtRORangeNextDayFull: function(test) {
@@ -239,10 +237,9 @@ module.exports.testdatefmtrange_ro_RO = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 decembrie 2011, 13:45 – 31 decembrie 2011, 14:30");
+        test.equal(fmt.format(start, end), "30 decembrie 2011 la 13:45 – 31 decembrie 2011 la 14:30");
         test.done();
     },
-
     testDateRngFmtRORangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ro-RO", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_ro_RO = {
         test.equal(fmt.format(start, end), "20 – 31 decembrie 2011");
         test.done();
     },
-
     testDateRngFmtRORangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ro-RO", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_ro_RO = {
         test.equal(fmt.format(start, end), "20 noiembrie – 31 decembrie 2011");
         test.done();
     },
-
     testDateRngFmtRORangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ro-RO", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_ro_RO = {
         test.equal(fmt.format(start, end), "20 noiembrie 2011 – 31 ianuarie 2012");
         test.done();
     },
-
     testDateRngFmtRORangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ro-RO", length: "short"});

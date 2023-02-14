@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ne_NP.js - test the date formatter object in Nepali-Nepal
  *
- * Copyright © 2020, JEDLSoft
+ * Copyright © 2020,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,6 @@ module.exports.testdatefmt_ne_NP = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtConstructorEmpty_ne_NP: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "ne-NP"});
@@ -43,7 +42,6 @@ module.exports.testdatefmt_ne_NP = {
         test.ok(fmt !== null);
         test.done();
     },
-
     testDateFmtSimpleShort_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "short", useNative: false});
@@ -62,7 +60,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "11/9/29");
         test.done();
     },
-
     testDateFmtSimpleMedium_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "medium", useNative: false});
@@ -81,7 +78,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '2011 सेप्टेम्बर 29');
         test.done();
     },
-
     testDateFmtSimpleLong_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "long", useNative: false});
@@ -100,7 +96,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '2011 सेप्टेम्बर 29');
         test.done();
     },
-
     testDateFmtSimpleFull_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", useNative: false});
@@ -119,7 +114,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '2011 सेप्टेम्बर 29');
         test.done();
     },
-
     testDateFmtSimpleTimeShort_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "short", type: "time", useNative: false});
@@ -138,7 +132,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtSimpleTimeMedium_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "medium", type: "time", useNative: false});
@@ -157,7 +150,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtSimpleTimeLong_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", timelength: "long", type: "time", useNative: false});
@@ -176,7 +168,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtSimpleTimeFull_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", type: "time", useNative: false});
@@ -195,7 +186,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '01:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleShort_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "short", type: "datetime", useNative: false});
@@ -214,7 +204,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '11/9/29, 13:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleMedium_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "medium", type: "datetime", useNative: false});
@@ -233,7 +222,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '2011 सेप्टेम्बर 29, 13:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleLong_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "long", type: "datetime", useNative: false});
@@ -249,10 +237,9 @@ module.exports.testdatefmt_ne_NP = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011 सेप्टेम्बर 29 13:45');
+        test.equal(fmt.format(date), '2011 सेप्टेम्बर 29: 13:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleFull_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", type: "datetime", useNative: false});
@@ -268,10 +255,9 @@ module.exports.testdatefmt_ne_NP = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011 सेप्टेम्बर 29 13:45');
+        test.equal(fmt.format(date), '2011 सेप्टेम्बर 29: 13:45');
         test.done();
     },
-
     testDateFmtTemplateCalendar_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", calendar: "julian", template: "yyyy-MM-dd", useNative: false});
@@ -290,7 +276,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
     testDateFmtTemplateCalendarIncompatibleDateType_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", calendar: "julian", template: "yyyy-MM-dd HH:mm", useNative: false});
@@ -310,7 +295,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "2011-09-16 13:45");
         test.done();
     },
-
     testDateFmtTemplateClock12SwitchHH_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", clock: "12", template: "HH:mm", useNative: false});
@@ -329,7 +313,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock12Switchkk_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", clock: "12", template: "kk:mm", useNative: false});
@@ -348,7 +331,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock24Switchhh_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", clock: "24", template: "hh:mm", useNative: false});
@@ -367,7 +349,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateClock24SwitchKK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", clock: "24", template: "KK:mm", useNative: false});
@@ -386,7 +367,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", template: "hh:mm", useNative: false});
@@ -405,7 +385,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", template: "KK:mm", useNative: false});
@@ -424,7 +403,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", template: "HH:mm", useNative: false});
@@ -443,7 +421,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", template: "kk:mm", useNative: false});
@@ -462,8 +439,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
-
     testDateFmtTypeDate_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "date", useNative: false});
@@ -482,7 +457,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '11/9/29');
         test.done();
     },
-
     testDateFmtTypeTime_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", useNative: false});
@@ -501,7 +475,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtTypeDateTime_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "datetime", useNative: false});
@@ -520,7 +493,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '11/9/29, 13:45');
         test.done();
     },
-
     testDateFmtShortDateComponentsY_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "y", useNative: false});
@@ -539,7 +511,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "11");
         test.done();
     },
-
     testDateFmtShortDateComponentsM_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "m", useNative: false});
@@ -558,7 +529,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "सेप");
         test.done();
     },
-
     testDateFmtShortDateComponentsN_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "n", useNative: false});
@@ -577,7 +547,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), 'स');
         test.done();
     },
-
     testDateFmtShortDateComponentsD_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "d", useNative: false});
@@ -596,7 +565,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtShortDateComponentsDM_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "dm", useNative: false});
@@ -615,7 +583,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '9/29');
         test.done();
     },
-
     testDateFmtShortDateComponentsMY_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "my", useNative: false});
@@ -634,7 +601,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '11/9');
         test.done();
     },
-
     testDateFmtShortDateComponentsDMY_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "dmy", useNative: false});
@@ -653,7 +619,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '11/9/29');
         test.done();
     },
-
     testDateFmtShortDateComponentsWDM_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "wdm", useNative: false});
@@ -672,7 +637,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '9/29, बि');
         test.done();
     },
-
     testDateFmtShortDateComponentsWDMY_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "wdmy", useNative: false});
@@ -691,7 +655,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '11/9/29, बि');
         test.done();
     },
-
     testDateFmtLongDateComponentsWDM_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", date: "wdm", length: "long", useNative: false});
@@ -710,7 +673,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), 'सेप्टेम्बर 29, बिहि');
         test.done();
     },
-
     testDateFmtFullDateComponentsY_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", date: "y", useNative: false});
@@ -729,7 +691,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsM_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", date: "m", useNative: false});
@@ -748,7 +709,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "सेप्टेम्बर");
         test.done();
     },
-
     testDateFmtFullDateComponentsD_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", date: "d", useNative: false});
@@ -767,7 +727,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtFullDateComponentsDM_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", date: "dm", useNative: false});
@@ -786,7 +745,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), 'सेप्टेम्बर 29');
         test.done();
     },
-
     testDateFmtFullDateComponentsMY_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", date: "my", useNative: false});
@@ -805,7 +763,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '2011 सेप्टेम्बर');
         test.done();
     },
-
     testDateFmtFullDateComponentsDMY_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", date: "dmy", useNative: false});
@@ -824,7 +781,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '2011 सेप्टेम्बर 29');
         test.done();
     },
-
     testDateFmtFullDateComponentsWDM_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", date: "wdm", useNative: false});
@@ -843,7 +799,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), 'सेप्टेम्बर 29, बिहिबार');
         test.done();
     },
-
     testDateFmtFullDateComponentsWDMY_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full", date: "wdmy", useNative: false});
@@ -862,7 +817,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), '2011 सेप्टेम्बर 29, बिहिबार');
         test.done();
     },
-
     testDateFmtShortTimeComponentsS_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", time: "s", useNative: false});
@@ -881,7 +835,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsM_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", time: "m", useNative: false});
@@ -900,7 +853,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsH_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", time: "h", useNative: false});
@@ -919,7 +871,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtShortTimeComponentsMS_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", time: "ms", useNative: false});
@@ -938,7 +889,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHM_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", time: "hm", useNative: false});
@@ -957,7 +907,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMS_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", time: "hms", useNative: false});
@@ -976,7 +925,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMA_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", time: "hma", useNative: false});
@@ -995,7 +943,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMZ_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1020,7 +967,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45 +0545");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMAZ_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1045,7 +991,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45 +0545");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSA_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", time: "hmsa", useNative: false});
@@ -1064,7 +1009,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSZ_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1089,7 +1033,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45:37 +0545");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSAZ_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1114,7 +1057,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45:37 +0545");
         test.done();
     },
-
     testDateFmtFullTimeComponentsS_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", length: "full", time: "s", useNative: false});
@@ -1133,7 +1075,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsM_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", length: "full", time: "m", useNative: false});
@@ -1152,7 +1093,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsH_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", length: "full", time: "h", useNative: false});
@@ -1171,7 +1111,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtFullTimeComponentsMS_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", length: "full", time: "ms", useNative: false});
@@ -1190,7 +1129,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHM_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", length: "full", time: "hm", useNative: false});
@@ -1209,7 +1147,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMS_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", length: "full", time: "hms", useNative: false});
@@ -1228,7 +1165,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMA_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", length: "full", time: "hma", useNative: false});
@@ -1247,7 +1183,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMZ_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1273,7 +1208,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45 +0545");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMAZ_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1299,7 +1233,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45 +0545");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSA_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", type: "time", length: "full", time: "hmsa", useNative: false});
@@ -1318,7 +1251,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSZ_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1344,7 +1276,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45:37 +0545");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSAZ_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1370,7 +1301,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45:37 +0545");
         test.done();
     },
-
     testDateFmtWithTimeZoneAndNoDST_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1396,7 +1326,6 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.format(date), "13:45:37 +0545");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinMinuteAfter_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
@@ -1425,7 +1354,7 @@ module.exports.testdatefmt_ne_NP = {
         test.equal(fmt.formatRelative(reference, date), '30 सेकेन्डमा');
         test.done();
     },
-testDateFmtFormatRelativeWithinMinuteBefore_ne_NP: function(test) {
+    testDateFmtFormatRelativeWithinMinuteBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
@@ -1453,7 +1382,7 @@ testDateFmtFormatRelativeWithinMinuteBefore_ne_NP: function(test) {
         test.equal(fmt.formatRelative(reference, date), '30 सेकेन्ड पहिले');
         test.done();
     },
-testDateFmtFormatRelativeWithinHourAfter_ne_NP: function(test) {
+    testDateFmtFormatRelativeWithinHourAfter_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
@@ -1481,7 +1410,7 @@ testDateFmtFormatRelativeWithinHourAfter_ne_NP: function(test) {
         test.equal(fmt.formatRelative(reference, date), '10 मिनेटमा');
         test.done();
     },
-testDateFmtFormatRelativeWithinHourBefore_ne_NP: function(test) {
+    testDateFmtFormatRelativeWithinHourBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
@@ -1509,7 +1438,7 @@ testDateFmtFormatRelativeWithinHourBefore_ne_NP: function(test) {
         test.equal(fmt.formatRelative(reference, date), '10 मिनेट पहिले');
         test.done();
     },
-testDateFmtFormatRelativeWithinDayAfter_ne_NP: function(test) {
+    testDateFmtFormatRelativeWithinDayAfter_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
@@ -1537,7 +1466,7 @@ testDateFmtFormatRelativeWithinDayAfter_ne_NP: function(test) {
         test.equal(fmt.formatRelative(reference, date), '4 घण्टामा');
         test.done();
     },
-testDateFmtFormatRelativeWithinDayBefore_ne_NP: function(test) {
+    testDateFmtFormatRelativeWithinDayBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
@@ -1565,7 +1494,6 @@ testDateFmtFormatRelativeWithinDayBefore_ne_NP: function(test) {
         test.equal(fmt.formatRelative(reference, date), '4 घण्टा पहिले');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
@@ -1594,7 +1522,7 @@ testDateFmtFormatRelativeWithinDayBefore_ne_NP: function(test) {
         test.equal(fmt.formatRelative(reference, date), '4 दिनमा');
         test.done();
     },
-testDateFmtFormatRelativeWithinFortnightBefore_ne_NP: function(test) {
+    testDateFmtFormatRelativeWithinFortnightBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
@@ -1622,7 +1550,6 @@ testDateFmtFormatRelativeWithinFortnightBefore_ne_NP: function(test) {
         test.equal(fmt.formatRelative(reference, date), '4 दिन पहिले');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
@@ -1651,7 +1578,7 @@ testDateFmtFormatRelativeWithinFortnightBefore_ne_NP: function(test) {
         test.equal(fmt.formatRelative(reference, date), '9 हप्तामा');
         test.done();
     },
-testDateFmtFormatRelativeWithinQuarterBefore_ne_NP: function(test) {
+    testDateFmtFormatRelativeWithinQuarterBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
@@ -1679,7 +1606,6 @@ testDateFmtFormatRelativeWithinQuarterBefore_ne_NP: function(test) {
         test.equal(fmt.formatRelative(reference, date), '9 हप्ता पहिले');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
@@ -1708,7 +1634,7 @@ testDateFmtFormatRelativeWithinQuarterBefore_ne_NP: function(test) {
         test.equal(fmt.formatRelative(reference, date), '16 महिनामा');
         test.done();
     },
-testDateFmtFormatRelativeWithinTwoYearsBefore_ne_NP: function(test) {
+    testDateFmtFormatRelativeWithinTwoYearsBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);
@@ -1736,7 +1662,6 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ne_NP: function(test) {
         test.equal(fmt.formatRelative(reference, date), '14 महिना पहिले');
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
@@ -1765,7 +1690,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ne_NP: function(test) {
         test.equal(fmt.formatRelative(reference, date), '14 वर्षमा');
         test.done();
     },
-testDateFmtFormatRelativeYearsBefore_ne_NP: function(test) {
+    testDateFmtFormatRelativeYearsBefore_ne_NP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ne-NP", length: "full"});
         test.ok(fmt !== null);

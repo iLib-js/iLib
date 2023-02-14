@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_kk-Cyrl_KZ.js - test the date range formatter object in Kazakh/Kazakhstan
  *
- * Copyright © 2012-2017, 2020 JEDLSoft
+ * Copyright © 2012-2017, 2020,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtKZRangeinDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "short"});
@@ -82,7 +81,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. 31 жел., 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "2011 ж. 31 жел., 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtKZRangeinDayLong: function(test) {
@@ -108,7 +107,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. 31 желтоқсан, 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "2011 ж. 31 желтоқсан, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtKZRangeinDayFull: function(test) {
@@ -134,10 +133,9 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. 31 желтоқсан, 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "2011 ж. 31 желтоқсан, 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtKZRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "short"});
@@ -187,7 +185,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. 30 жел., 13:45 – 2011 ж. 31 жел., 14:30");
+        test.equal(fmt.format(start, end), "2011 ж. 30 жел., 13:45 – 2011 ж. 31 жел., 14:30");
         test.done();
     },
     testDateRngFmtKZRangeNextDayLong: function(test) {
@@ -213,7 +211,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. 30 желтоқсан, 13:45 – 2011 ж. 31 желтоқсан, 14:30");
+        test.equal(fmt.format(start, end), "2011 ж. 30 желтоқсан, 13:45 – 2011 ж. 31 желтоқсан, 14:30");
         test.done();
     },
     testDateRngFmtKZRangeNextDayFull: function(test) {
@@ -239,10 +237,9 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. 30 желтоқсан, 13:45 – 2011 ж. 31 желтоқсан, 14:30");
+        test.equal(fmt.format(start, end), "2011 ж. 30 желтоқсан, 13:45 – 2011 ж. 31 желтоқсан, 14:30");
         test.done();
     },
-
     testDateRngFmtKZRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "short"});
@@ -292,7 +289,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. 20 жел. – 31 жел.");
+        test.equal(fmt.format(start, end), "2011 ж. 20 жел. – 31 жел.");
         test.done();
     },
     testDateRngFmtKZRangeMultiDayLong: function(test) {
@@ -318,7 +315,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. 20 желтоқсан – 31 желтоқсан");
+        test.equal(fmt.format(start, end), "2011 ж. 20 желтоқсан – 31 желтоқсан");
         test.done();
     },
     testDateRngFmtKZRangeMultiDayFull: function(test) {
@@ -344,10 +341,9 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. 20 желтоқсан – 31 желтоқсан");
+        test.equal(fmt.format(start, end), "2011 ж. 20 желтоқсан – 31 желтоқсан");
         test.done();
     },
-
     testDateRngFmtKZRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "short"});
@@ -397,7 +393,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. 20 қар. – 2011 ж. 31 жел.");
+        test.equal(fmt.format(start, end), "2011 ж. 20 қар. – 2011 ж. 31 жел.");
         test.done();
     },
     testDateRngFmtKZRangeNextMonthLong: function(test) {
@@ -423,7 +419,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. 20 қараша – 2011 ж. 31 желтоқсан");
+        test.equal(fmt.format(start, end), "2011 ж. 20 қараша – 2011 ж. 31 желтоқсан");
         test.done();
     },
     testDateRngFmtKZRangeNextMonthFull: function(test) {
@@ -449,10 +445,9 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. 20 қараша – 2011 ж. 31 желтоқсан");
+        test.equal(fmt.format(start, end), "2011 ж. 20 қараша – 2011 ж. 31 желтоқсан");
         test.done();
     },
-
     testDateRngFmtKZRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "short"});
@@ -502,7 +497,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. 20 қар. – 2012 ж. 31 қаң.");
+        test.equal(fmt.format(start, end), "2011 ж. 20 қар. – 2012 ж. 31 қаң.");
         test.done();
     },
     testDateRngFmtKZRangeNextYearLong: function(test) {
@@ -528,7 +523,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. 20 қараша – 2012 ж. 31 қаңтар");
+        test.equal(fmt.format(start, end), "2011 ж. 20 қараша – 2012 ж. 31 қаңтар");
         test.done();
     },
     testDateRngFmtKZRangeNextYearFull: function(test) {
@@ -554,10 +549,9 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. 20 қараша – 2012 ж. 31 қаңтар");
+        test.equal(fmt.format(start, end), "2011 ж. 20 қараша – 2012 ж. 31 қаңтар");
         test.done();
     },
-
     testDateRngFmtKZRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "short"});
@@ -607,7 +601,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. қар. – 2014 ж. қаң.");
+        test.equal(fmt.format(start, end), "2011 ж. қар. – 2014 ж. қаң.");
         test.done();
     },
     testDateRngFmtKZRangeMultiYearLong: function(test) {
@@ -633,7 +627,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. қараша – 2014 ж. қаңтар");
+        test.equal(fmt.format(start, end), "2011 ж. қараша – 2014 ж. қаңтар");
         test.done();
     },
     testDateRngFmtKZRangeMultiYearFull: function(test) {
@@ -659,7 +653,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. қараша – 2014 ж. қаңтар");
+        test.equal(fmt.format(start, end), "2011 ж. қараша – 2014 ж. қаңтар");
         test.done();
     },
     testDateRngFmtKZRangeMultiYearFull2: function(test) {
@@ -685,7 +679,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. қараша – 2014 ж. қаңтар");
+        test.equal(fmt.format(start, end), "2011 ж. қараша – 2014 ж. қаңтар");
         test.done();
     },
     testDateRngFmtKZRangeMultiYearFull3: function(test) {
@@ -711,7 +705,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. маусым – 2016 ж. сәуір");
+        test.equal(fmt.format(start, end), "2011 ж. маусым – 2016 ж. сәуір");
         test.done();
     },
     testDateRngFmtKZRangeMultiYearLong2: function(test) {
@@ -737,7 +731,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. маусым – 2016 ж. сәуір");
+        test.equal(fmt.format(start, end), "2011 ж. маусым – 2016 ж. сәуір");
         test.done();
     },
     testDateRngFmtKZRangeMultiYearMedium2: function(test) {
@@ -763,7 +757,7 @@ module.exports.testdatefmtrange_kk_Cyrl_KZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 ж. мау. – 2016 ж. сәу.");
+        test.equal(fmt.format(start, end), "2011 ж. мау. – 2016 ж. сәу.");
         test.done();
     },
     testDateRngFmtKZManyYearsFull: function(test) {

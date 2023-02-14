@@ -52,15 +52,15 @@
                 "s": "MM.dd, E 'гараг'"
             },
             "dmwy": {
-                "f": "yyyy 'оны' MMMM'ын' d, EEEE 'гараг'",
-                "l": "yyyy 'оны' MMMM'ын' d, EEE 'гараг'",
-                "m": "yyyy 'оны' MMM'ын' d, EE 'гараг'",
+                "f": "yyyy 'оны' MMMM'ын' d, EEEE 'гараг'",
+                "l": "yyyy 'оны' MMMM'ын' d, EEE 'гараг'",
+                "m": "yyyy 'оны' MMM'ын' d, EE 'гараг'",
                 "s": "yyyy.MM.dd, E 'гараг'"
             },
             "dmy": {
-                "f": "yyyy 'оны' MMMM'ын' d",
-                "l": "yyyy 'оны' MMMM'ын' d",
-                "m": "yyyy 'оны' MMM'ын' d",
+                "f": "yyyy 'оны' MMMM'ын' d",
+                "l": "yyyy 'оны' MMMM'ын' d",
+                "m": "yyyy 'оны' MMM'ын' d",
                 "s": "yyyy.MM.dd"
             },
             "dw": {
@@ -87,9 +87,9 @@
                 "s": "MM"
             },
             "my": {
-                "f": "yyyy 'оны' MMMM",
-                "l": "yyyy 'оны' MMMM",
-                "m": "yyyy 'оны' MMM",
+                "f": "yyyy 'оны' MMMM",
+                "l": "yyyy 'оны' MMMM",
+                "m": "yyyy 'оны' MMM",
                 "s": "yyyy.MM"
             },
             "y": {
@@ -98,51 +98,51 @@
         },
         "range": {
             "c00": {
-                "f": "{sy} оны {sm}ын {sd} {st} – {et}",
-                "l": "{sy} оны {sm}ын {sd} {st} – {et}",
-                "m": "{sy} оны {sm}ын {sd} {st} – {et}",
+                "f": "{sy} оны {sm}ын {sd} {st} – {et}",
+                "l": "{sy} оны {sm}ын {sd} {st} – {et}",
+                "m": "{sy} оны {sm}ын {sd} {st} – {et}",
                 "s": "{sy}.{sm}.{sd} {st} – {et}"
             },
             "c01": {
-                "f": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
-                "l": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
-                "m": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
+                "f": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
+                "l": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
+                "m": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
                 "s": "{sy}.{sm}.{sd} {st} – {ey}.{em}.{ed} {et}"
             },
             "c02": {
-                "f": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
-                "l": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
-                "m": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
+                "f": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
+                "l": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
+                "m": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
                 "s": "{sy}.{sm}.{sd} {st} – {ey}.{em}.{ed} {et}"
             },
             "c03": {
-                "f": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
-                "l": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
-                "m": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
+                "f": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
+                "l": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
+                "m": "{sy} оны {sm}ын {sd} {st} – {ey} оны {em}ын {ed} {et}",
                 "s": "{sy}.{sm}.{sd} {st} – {ey}.{em}.{ed} {et}"
             },
             "c10": {
-                "f": "{sy} оны {sm}ын {sd} – {ed}",
-                "l": "{sy} оны {sm}ын {sd} – {ed}",
-                "m": "{sy} оны {sm}ын {sd} – {ed}",
+                "f": "{sy} оны {sm}ын {sd} – {ed}",
+                "l": "{sy} оны {sm}ын {sd} – {ed}",
+                "m": "{sy} оны {sm}ын {sd} – {ed}",
                 "s": "{sy}.{sm}.{sd} – {ed}"
             },
             "c11": {
-                "f": "{sy} оны {sm}ын {sd} – {em}ын {ed}",
-                "l": "{sy} оны {sm}ын {sd} – {em}ын {ed}",
-                "m": "{sy} оны {sm}ын {sd} – {ey} оны {em}ын {ed}",
+                "f": "{sy} оны {sm}ын {sd} – {em}ын {ed}",
+                "l": "{sy} оны {sm}ын {sd} – {em}ын {ed}",
+                "m": "{sy} оны {sm}ын {sd} – {ey} оны {em}ын {ed}",
                 "s": "{sy}.{sm}.{sd} – {ey}.{em}.{ed}"
             },
             "c12": {
-                "f": "{sy} оны {sm}ын {sd} – {ey} оны {em}ын {ed}",
-                "l": "{sy} оны {sm}ын {sd} – {ey} оны {em}ын {ed}",
-                "m": "{sy} оны {sm}ын {sd} – {ey} оны {em}ын {ed}",
+                "f": "{sy} оны {sm}ын {sd} – {ey} оны {em}ын {ed}",
+                "l": "{sy} оны {sm}ын {sd} – {ey} оны {em}ын {ed}",
+                "m": "{sy} оны {sm}ын {sd} – {ey} оны {em}ын {ed}",
                 "s": "{sy}.{sm}.{sd} – {ey}.{em}.{ed}"
             },
             "c20": {
-                "f": "{sy} оны {sm} – {ey} оны {em}",
-                "l": "{sy} оны {sm} – {ey} оны {em}",
-                "m": "{sy} оны {sm} – {ey} оны {em}",
+                "f": "{sy} оны {sm} – {ey} оны {em}",
+                "l": "{sy} оны {sm} – {ey} оны {em}",
+                "m": "{sy} оны {sm} – {ey} оны {em}",
                 "s": "{sy}.{sm} – {ey}.{em}"
             },
             "c30": {

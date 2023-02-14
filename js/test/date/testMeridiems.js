@@ -1,7 +1,7 @@
  /*
  * testMeridiems.js - test the meridiems data
  *
- * Copyright © 2019-2022, JEDLSoft
+ * Copyright © 2019-2023, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -384,8 +384,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"en-PH"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "am");
-        test.equal(fmt[1].name, "pm");
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
 
         test.done();
     },
@@ -912,8 +912,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"mk-MK"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "претпладне");
-        test.equal(fmt[1].name, "попладне");
+        test.equal(fmt[0].name, "претпл.");
+        test.equal(fmt[1].name, "попл.");
 
         test.done();
     },

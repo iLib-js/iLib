@@ -59,28 +59,34 @@
                 "s": "M.yy"
             }
         },
+        "order": {
+            "f": "{date} 'w' {time}",
+            "l": "{date} 'w' {time}",
+            "m": "{date} {time}",
+            "s": "{date} {time}"
+        },
         "range": {
             "c00": {
-                "f": "{sd}. {sm} {sy} {st} – {et}",
-                "l": "{sd}. {sm} {sy} {st} – {et}",
+                "f": "{sd}. {sm} {sy} w {st} – {et}",
+                "l": "{sd}. {sm} {sy} w {st} – {et}",
                 "m": "{sd}.{sm}.{sy} {st} – {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {et}"
             },
             "c01": {
-                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
+                "f": "{sd}. {sm} {sy} w {st} – {ed}. {em} {ey} w {et}",
+                "l": "{sd}. {sm} {sy} w {st} – {ed}. {em} {ey} w {et}",
                 "m": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
             },
             "c02": {
-                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
+                "f": "{sd}. {sm} {sy} w {st} – {ed}. {em} {ey} w {et}",
+                "l": "{sd}. {sm} {sy} w {st} – {ed}. {em} {ey} w {et}",
                 "m": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
             },
             "c03": {
-                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
+                "f": "{sd}. {sm} {sy} w {st} – {ed}. {em} {ey} w {et}",
+                "l": "{sd}. {sm} {sy} w {st} – {ed}. {em} {ey} w {et}",
                 "m": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
             },
@@ -115,11 +121,9 @@
         },
         "time": {
             "12": {
-                "ah": "h a",
-                "ahm": "h:mm 'hodź'. a",
-                "ahms": "h:mm:ss a",
-                "ahmsz": "h:mm:ss a z",
-                "ahmz": "h:mm 'hodź'. a z",
+                "ah": "h a",
+                "ahm": "h:mm 'hodź'.a",
+                "ahmz": "h:mm 'hodź'.a z",
                 "hm": "h:mm 'hodź'.",
                 "hmz": "h:mm 'hodź'. z"
             },

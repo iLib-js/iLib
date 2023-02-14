@@ -41,7 +41,7 @@
     "1#1 sec ago|#{num} sec ago": "one#há {num} segundo|#há {num} segundos",
     "1#1 second ago|#{num} seconds ago": "one#há {num} segundo|#há {num} segundos",
     "1#1 second|#{num} seconds": "one#{num} segundo|#{num} segundos",
-    "1#1 sec|#{num} sec": "one#{num} seg|#{num} seg",
+    "1#1 sec|#{num} sec": "one#{num} s|#{num} s",
     "1#1 se|#{num} sec": "one#{num} s|#{num} s",
     "1#1 week ago|#{num} weeks ago": "one#há {num} semana|#há {num} semanas",
     "1#1 week|#{num} weeks": "one#{num} semana|#{num} semanas",

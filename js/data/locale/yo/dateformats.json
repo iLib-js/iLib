@@ -58,22 +58,36 @@
                 "s": "yyyy"
             }
         },
+        "order": {
+            "f": "{date} 'ní' {time}",
+            "l": "{date} 'níti' {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
+        },
         "range": {
             "c00": {
-                "m": "{sd} {sm} {sy} {st} – {et}"
+                "f": "{sd} {sm} {sy} ní {st} – {et}",
+                "l": "{sd} {sm} {sy} níti {st} – {et}",
+                "m": "{sd} {sm} {sy}, {st} – {et}",
+                "s": "{sd}/{sm}/{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
-                "l": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
-                "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}"
+                "f": "{sd} {sm} {sy} ní {st} – {ed} {em} {ey} ní {et}",
+                "l": "{sd} {sm} {sy} níti {st} – {ed} {em} {ey} níti {et}",
+                "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c02": {
-                "f": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
-                "l": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
-                "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}"
+                "f": "{sd} {sm} {sy} ní {st} – {ed} {em} {ey} ní {et}",
+                "l": "{sd} {sm} {sy} níti {st} – {ed} {em} {ey} níti {et}",
+                "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c03": {
-                "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}"
+                "f": "{sd} {sm} {sy} ní {st} – {ed} {em} {ey} ní {et}",
+                "l": "{sd} {sm} {sy} níti {st} – {ed} {em} {ey} níti {et}",
+                "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c10": {
                 "f": "{sd} – {ed} {em} {ey}",
@@ -102,11 +116,11 @@
         },
         "time": {
             "12": {
-                "ah": "h a",
-                "ahm": "h:m a",
-                "ahms": "h:m:s a",
-                "ahmsz": "h:m:s a z",
-                "ahmz": "h:m a z",
+                "ah": "h a",
+                "ahm": "h:ma",
+                "ahms": "h:m:sa",
+                "ahmsz": "h:m:sa z",
+                "ahmz": "h:ma z",
                 "hm": "h:m",
                 "hms": "h:m:s",
                 "hmsz": "h:m:s z",

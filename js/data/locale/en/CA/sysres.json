@@ -19,7 +19,6 @@
     "1#1 sec|#{num} sec": "one#{num} sec|#{num} secs",
     "B1": "a.m.",
     "B5": "p.m.",
-    "MMM9": "Sept",
     "a0": "a.m.",
     "a1": "p.m.",
     "durationShortMinutes": "one#{num}min|#{num}min"
