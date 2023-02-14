@@ -1,7 +1,7 @@
 /*
  * genunits.js - ilib tool to generate the json data about unit formats
  *
- * Copyright © 2013, 2018, 2020-2022 JEDLSoft
+ * Copyright © 2013, 2018, 2020-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,8 +79,6 @@ var hardCodeData = {
                 "hectare": "one#{n} ettaru|few#{n} ettari|many#{n}-il ettaru|#{n} ettaru",
                 "square-meter": "one#{n} metru kwadru|few#{n} metri kwadri|many#{n}-il metru kwadru|#{n} metru kwadru",
                 "square-centimeter": "one#{n} ċentimetru kwadru|few#{n} ċentimetri kwadri|many#{n}-il ċentimetru kwadru|#{n} ċentimetru kwadru",
-                "liter-per-kilometer": "one#{n} litru kull kilometru|few#{n} litri kull kilometru|many#{n} litru kull kilometru|#{n} litru kull kilometru",
-                "millisecond": "one#{n} millisekonda|few#{n} millisekondi|many#{n}-il millisekonda|#{n} millisekonda",
                 "microsecond": "one#{n} mikrosekonda|few#{n} mikrosekondi|many#{n}-il mikrosekonda|#{n} mikrosekonda",
                 "nanosecond": "one#{n} nanosekonda|few#{n} nanosekondi|many#{n}-il nanosekonda|#{n} nanosekonda",
                 "kilowatt-hour": "#{n} kilowatt-siegħa",
@@ -771,7 +769,7 @@ function frameUnits(data, locale, localeData) {
                 "description": "weight/mass of a vehicle (including a boat)",
                 "type": "mass",
                 "units": {
-                    "metric": ["kilogram", "metric-ton"],
+                    "metric": ["kilogram", "tonne"],
                     "uscustomary": ["pound", "short-ton"],
                     "imperial": ["pound", "ton"]
                 },
