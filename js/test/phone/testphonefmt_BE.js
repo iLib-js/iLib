@@ -23,23 +23,6 @@ if (typeof(PhoneNumber) === "undefined") {
 if (typeof(PhoneFmt) === "undefined") {
     var PhoneFmt = require("../../lib/PhoneFmt.js");
 }
- function testFormatBEStyle0() {
-    var formatted,
-        parsed = new PhoneNumber({
-            trunkAccess: "0",
-            areaCode: "59",
-            subscriberNumber: "123456"
-        }),
-        expected = "059 12 34 56";
-
-    var fmt = new PhoneFmt({locale: "nl-BE", style: "default"});
-    formatted = fmt.format(parsed);
-
-    assertEquals(expected, formatted);
-
-
-};
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
