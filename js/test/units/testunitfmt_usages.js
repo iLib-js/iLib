@@ -1,7 +1,7 @@
 /*
  * testunits_usages.js - test the units formatter object with various usages
  *
- * Copyright © 2018, 2021-2022 JEDLSoft
+ * Copyright © 2018, 2021-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1034,7 +1034,7 @@ module.exports.testunitfmt_usages = {
     testUnitFormatWithUsageVehicleWeightConvert: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "metric ton",
+            unit: "tonne",
             amount: 1.5
         });
 
@@ -1116,7 +1116,7 @@ module.exports.testunitfmt_usages = {
     testUnitFormatWithUsageVehicleWeightBR: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "metric ton",
+            unit: "tonne",
             amount: 3.2
         });
 
@@ -1133,7 +1133,7 @@ module.exports.testunitfmt_usages = {
     testUnitFormatWithUsageVehicleWeightTH: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "metric ton",
+            unit: "tonne",
             amount: 3.45
         });
 

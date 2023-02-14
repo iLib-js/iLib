@@ -1,7 +1,7 @@
 /*
  * testunits.js - test the units formatter object
  *
- * Copyright © 2014-2015, 2017-2018, 2021-2022 JEDLSoft
+ * Copyright © 2014-2015, 2017-2018, 2021-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1608,7 +1608,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short"});
         var str = uf.format(m1);
-        test.equal(str, "3,83308 décennies");
+        test.equal(str, "3,83308 déc.");
         test.done();
     },
 
@@ -2959,7 +2959,7 @@ module.exports.testunitfmt = {
         test.equal(str, "1 dec.");
 
         var str = uf.format(m2);
-        test.equal(str, "5 decennia");
+        test.equal(str, "5 dec.");
         test.done();
     },
     testUnitFmt_Time_nl_NL_long: function(test) {
