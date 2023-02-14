@@ -35,7 +35,6 @@ module.exports.testdatefmt_ky_KG = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtConstructorEmpty_ky_KG: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "ky-KG"});
@@ -43,7 +42,6 @@ module.exports.testdatefmt_ky_KG = {
         test.ok(fmt !== null);
         test.done();
     },
-
     testDateFmtSimpleShort_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "short"});
@@ -62,7 +60,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
-
     testDateFmtSimpleMedium_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "medium"});
@@ -81,7 +78,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "2011-ж., 29-сен.");
         test.done();
     },
-
     testDateFmtSimpleLong_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "long"});
@@ -100,7 +96,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "2011-ж., 29-сентябрь");
         test.done();
     },
-
     testDateFmtSimpleFull_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full"});
@@ -119,7 +114,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '2011-ж., 29-сентябрь');
         test.done();
     },
-
     testDateFmtSimpleTimeShort_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "short", type: "time"});
@@ -138,7 +132,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtSimpleTimeMedium_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "medium", type: "time"});
@@ -157,7 +150,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtSimpleTimeLong_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", timelength: "long", type: "time"});
@@ -176,7 +168,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtSimpleTimeFull_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full", type: "time"});
@@ -195,7 +186,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '01:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleShort_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "short", type: "datetime"});
@@ -214,7 +204,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '29/9/11 13:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleMedium_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "medium", type: "datetime"});
@@ -233,7 +222,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '2011-ж., 29-сен. 13:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleLong_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "long", type: "datetime"});
@@ -252,7 +240,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '2011-ж., 29-сентябрь 13:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleFull_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full", type: "datetime"});
@@ -271,8 +258,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '2011-ж., 29-сентябрь 13:45');
         test.done();
     },
-
-
     testDateFmtTemplateCalendar_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", calendar: "julian", template: "yyyy-MM-dd"});
@@ -291,7 +276,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
     testDateFmtTemplateCalendarIncompatibleDateType_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
@@ -311,7 +295,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "2011-09-16 13:45");
         test.done();
     },
-
     testDateFmtTemplateClock12SwitchHH_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", clock: "12", template: "HH:mm"});
@@ -330,7 +313,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock12Switchkk_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", clock: "12", template: "kk:mm"});
@@ -349,7 +331,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock24Switchhh_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", clock: "24", template: "hh:mm"});
@@ -368,7 +349,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateClock24SwitchKK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", clock: "24", template: "KK:mm"});
@@ -387,7 +367,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", template: "hh:mm"});
@@ -406,7 +385,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", template: "KK:mm"});
@@ -425,7 +403,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", template: "HH:mm"});
@@ -444,7 +421,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", template: "kk:mm"});
@@ -463,8 +439,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
-
     testDateFmtTypeDate_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "date"});
@@ -483,7 +457,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '29/9/11');
         test.done();
     },
-
     testDateFmtTypeTime_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time"});
@@ -502,7 +475,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtTypeDateTime_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "datetime"});
@@ -521,7 +493,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '29/9/11 13:45');
         test.done();
     },
-
     testDateFmtShortDateComponentsY_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", date: "y"});
@@ -540,7 +511,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "11");
         test.done();
     },
-
     testDateFmtShortDateComponentsM_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", date: "m"});
@@ -559,7 +529,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "С");
         test.done();
     },
-
     testDateFmtShortDateComponentsN_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", date: "n"});
@@ -578,7 +547,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), 'с');
         test.done();
     },
-
     testDateFmtShortDateComponentsD_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", date: "d"});
@@ -597,7 +565,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtShortDateComponentsDM_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", date: "dm"});
@@ -616,7 +583,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '29/9');
         test.done();
     },
-
     testDateFmtShortDateComponentsMY_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", date: "my"});
@@ -635,7 +601,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '9/11');
         test.done();
     },
-
     testDateFmtShortDateComponentsDMY_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", date: "dmy"});
@@ -654,7 +619,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '29/9/11');
         test.done();
     },
-
     testDateFmtShortDateComponentsWDM_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", date: "wdm"});
@@ -673,7 +637,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '29/9, Б');
         test.done();
     },
-
     testDateFmtShortDateComponentsWDMY_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", date: "wdmy"});
@@ -692,7 +655,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '29/9/11, Б');
         test.done();
     },
-
     testDateFmtLongDateComponentsWDM_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", date: "wdm", length: "long"});
@@ -711,7 +673,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '29-сентябрь, бейш.');
         test.done();
     },
-
     testDateFmtFullDateComponentsY_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full", date: "y"});
@@ -730,7 +691,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsM_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full", date: "m"});
@@ -749,7 +709,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "Сентябрь");
         test.done();
     },
-
     testDateFmtFullDateComponentsD_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full", date: "d"});
@@ -768,7 +727,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtFullDateComponentsDM_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full", date: "dm"});
@@ -787,7 +745,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '29-сентябрь');
         test.done();
     },
-
     testDateFmtFullDateComponentsMY_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full", date: "my"});
@@ -806,7 +763,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '2011-ж., сентябрь');
         test.done();
     },
-
     testDateFmtFullDateComponentsDMY_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full", date: "dmy"});
@@ -825,7 +781,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '2011-ж., 29-сентябрь');
         test.done();
     },
-
     testDateFmtFullDateComponentsWDM_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full", date: "wdm"});
@@ -844,7 +799,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '29-сентябрь, бейшемби');
         test.done();
     },
-
     testDateFmtFullDateComponentsWDMY_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full", date: "wdmy"});
@@ -863,7 +817,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), '2011-ж., 29-сентябрь, бейшемби');
         test.done();
     },
-
     testDateFmtShortTimeComponentsS_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time", time: "s"});
@@ -882,7 +835,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsM_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time", time: "m"});
@@ -901,7 +853,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsH_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time", time: "h"});
@@ -920,7 +871,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtShortTimeComponentsMS_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time", time: "ms"});
@@ -939,7 +889,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHM_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time", time: "hm"});
@@ -958,7 +907,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMS_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time", time: "hms"});
@@ -977,7 +925,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMA_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time", time: "hma"});
@@ -996,7 +943,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMZ_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1020,7 +966,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45 +06");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMAZ_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1044,7 +989,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45 +06");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSA_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time", time: "hmsa"});
@@ -1063,7 +1007,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSZ_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1087,7 +1030,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45:37 +06");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSAZ_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1111,7 +1053,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45:37 +06");
         test.done();
     },
-
     testDateFmtFullTimeComponentsS_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time", length: "full", time: "s"});
@@ -1130,7 +1071,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsM_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time", length: "full", time: "m"});
@@ -1149,7 +1089,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsH_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time", length: "full", time: "h"});
@@ -1168,7 +1107,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtFullTimeComponentsMS_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time", length: "full", time: "ms"});
@@ -1187,7 +1125,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHM_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time", length: "full", time: "hm"});
@@ -1206,7 +1143,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMS_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time", length: "full", time: "hms"});
@@ -1225,7 +1161,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMA_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time", length: "full", time: "hma"});
@@ -1244,7 +1179,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMZ_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1269,7 +1203,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45 +06");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMAZ_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1294,7 +1227,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45 +06");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSA_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", type: "time", length: "full", time: "hmsa"});
@@ -1313,7 +1245,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSZ_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1338,7 +1269,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45:37 +06");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSAZ_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1363,7 +1293,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45:37 +06");
         test.done();
     },
-
     testDateFmtWithTimeZoneAndNoDST_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1388,7 +1317,6 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.format(date), "13:45:37 +06");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinMinuteAfter_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full"});
@@ -1417,7 +1345,7 @@ module.exports.testdatefmt_ky_KG = {
         test.equal(fmt.formatRelative(reference, date), "30 секунддан кийин");
         test.done();
     },
-testDateFmtFormatRelativeWithinMinuteBefore_ky_KG: function(test) {
+    testDateFmtFormatRelativeWithinMinuteBefore_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full"});
         test.ok(fmt !== null);
@@ -1445,7 +1373,7 @@ testDateFmtFormatRelativeWithinMinuteBefore_ky_KG: function(test) {
         test.equal(fmt.formatRelative(reference, date), "30 секунд мурун");
         test.done();
     },
-testDateFmtFormatRelativeWithinHourAfter_ky_KG: function(test) {
+    testDateFmtFormatRelativeWithinHourAfter_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full"});
         test.ok(fmt !== null);
@@ -1473,7 +1401,7 @@ testDateFmtFormatRelativeWithinHourAfter_ky_KG: function(test) {
         test.equal(fmt.formatRelative(reference, date), "10 мүнөттөн кийин");
         test.done();
     },
-testDateFmtFormatRelativeWithinHourBefore_ky_KG: function(test) {
+    testDateFmtFormatRelativeWithinHourBefore_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full"});
         test.ok(fmt !== null);
@@ -1501,7 +1429,7 @@ testDateFmtFormatRelativeWithinHourBefore_ky_KG: function(test) {
         test.equal(fmt.formatRelative(reference, date), '10 мүнөт мурун');
         test.done();
     },
-testDateFmtFormatRelativeWithinDayAfter_ky_KG: function(test) {
+    testDateFmtFormatRelativeWithinDayAfter_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full"});
         test.ok(fmt !== null);
@@ -1529,7 +1457,7 @@ testDateFmtFormatRelativeWithinDayAfter_ky_KG: function(test) {
         test.equal(fmt.formatRelative(reference, date), '4 сааттан кийин');
         test.done();
     },
-testDateFmtFormatRelativeWithinDayBefore_ky_KG: function(test) {
+    testDateFmtFormatRelativeWithinDayBefore_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full"});
         test.ok(fmt !== null);
@@ -1557,7 +1485,6 @@ testDateFmtFormatRelativeWithinDayBefore_ky_KG: function(test) {
         test.equal(fmt.formatRelative(reference, date), '4 саат мурун');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full"});
@@ -1586,7 +1513,7 @@ testDateFmtFormatRelativeWithinDayBefore_ky_KG: function(test) {
         test.equal(fmt.formatRelative(reference, date), '4 күндөн кийин');
         test.done();
     },
-testDateFmtFormatRelativeWithinFortnightBefore_ky_KG: function(test) {
+    testDateFmtFormatRelativeWithinFortnightBefore_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full"});
         test.ok(fmt !== null);
@@ -1614,7 +1541,6 @@ testDateFmtFormatRelativeWithinFortnightBefore_ky_KG: function(test) {
         test.equal(fmt.formatRelative(reference, date),  '4 күн мурун');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full"});
@@ -1643,7 +1569,7 @@ testDateFmtFormatRelativeWithinFortnightBefore_ky_KG: function(test) {
         test.equal(fmt.formatRelative(reference, date), '9 аптадан кийин');
         test.done();
     },
-testDateFmtFormatRelativeWithinQuarterBefore_ky_KG: function(test) {
+    testDateFmtFormatRelativeWithinQuarterBefore_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full"});
         test.ok(fmt !== null);
@@ -1671,7 +1597,6 @@ testDateFmtFormatRelativeWithinQuarterBefore_ky_KG: function(test) {
         test.equal(fmt.formatRelative(reference, date), '9 апта мурун');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full"});
@@ -1700,7 +1625,7 @@ testDateFmtFormatRelativeWithinQuarterBefore_ky_KG: function(test) {
         test.equal(fmt.formatRelative(reference, date), '16 айдан кийин');
         test.done();
     },
-testDateFmtFormatRelativeWithinTwoYearsBefore_ky_KG: function(test) {
+    testDateFmtFormatRelativeWithinTwoYearsBefore_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full"});
         test.ok(fmt !== null);
@@ -1728,7 +1653,6 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ky_KG: function(test) {
         test.equal(fmt.formatRelative(reference, date), '14 ай мурун');
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full"});
@@ -1757,7 +1681,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ky_KG: function(test) {
         test.equal(fmt.formatRelative(reference, date), '14 жылдан кийин');
         test.done();
     },
-testDateFmtFormatRelativeYearsBefore_ky_KG: function(test) {
+    testDateFmtFormatRelativeYearsBefore_ky_KG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ky-KG", length: "full"});
         test.ok(fmt !== null);
