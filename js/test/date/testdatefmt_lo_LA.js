@@ -35,7 +35,6 @@ module.exports.testdatefmt_lo_LA = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtConstructorEmpty_lo_LA: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "lo-LA"});
@@ -43,7 +42,6 @@ module.exports.testdatefmt_lo_LA = {
         test.ok(fmt !== null);
         test.done();
     },
-
     testDateFmtSimpleShort_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "short"});
@@ -62,7 +60,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "29/9/2011");
         test.done();
     },
-
     testDateFmtSimpleMedium_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "medium"});
@@ -81,7 +78,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "29 ກ.ຍ. 2011");
         test.done();
     },
-
     testDateFmtSimpleLong_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "long"});
@@ -100,7 +96,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "29 ກັນຍາ 2011");
         test.done();
     },
-
     testDateFmtSimpleFull_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full"});
@@ -119,7 +114,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '29 ກັນຍາ 2011');
         test.done();
     },
-
     testDateFmtSimpleTimeShort_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "short", type: "time"});
@@ -138,7 +132,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtSimpleTimeMedium_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "medium", type: "time"});
@@ -157,7 +150,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtSimpleTimeLong_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", timelength: "long", type: "time"});
@@ -176,7 +168,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtSimpleTimeFull_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full", type: "time"});
@@ -195,7 +186,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '1:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleShort_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "short", type: "datetime"});
@@ -214,7 +204,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '29/9/2011, 13:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleMedium_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "medium", type: "datetime"});
@@ -233,7 +222,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '29 ກ.ຍ. 2011, 13:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleLong_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "long", type: "datetime"});
@@ -252,7 +240,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '29 ກັນຍາ 2011, 13:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleFull_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full", type: "datetime"});
@@ -271,7 +258,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '29 ກັນຍາ 2011, 13:45');
         test.done();
     },
-
     testDateFmtTemplateCalendar_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", calendar: "julian", template: "yyyy-MM-dd"});
@@ -290,7 +276,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
     testDateFmtTemplateCalendarIncompatibleDateType_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
@@ -310,7 +295,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "2011-09-16 13:45");
         test.done();
     },
-
     testDateFmtTemplateClock12SwitchHH_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", clock: "12", template: "HH:mm"});
@@ -329,7 +313,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock12Switchkk_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", clock: "12", template: "kk:mm"});
@@ -348,7 +331,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock24Switchhh_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", clock: "24", template: "hh:mm"});
@@ -367,7 +349,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateClock24SwitchKK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", clock: "24", template: "KK:mm"});
@@ -386,7 +367,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", template: "hh:mm"});
@@ -405,7 +385,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", template: "KK:mm"});
@@ -424,7 +403,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", template: "HH:mm"});
@@ -443,7 +421,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", template: "kk:mm"});
@@ -462,8 +439,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
-
     testDateFmtTypeDate_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "date"});
@@ -482,7 +457,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '29/9/2011');
         test.done();
     },
-
     testDateFmtTypeTime_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time"});
@@ -501,7 +475,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtTypeDateTime_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "datetime"});
@@ -520,7 +493,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '29/9/2011, 13:45');
         test.done();
     },
-
     testDateFmtShortDateComponentsY_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", date: "y"});
@@ -539,7 +511,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtShortDateComponentsM_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", date: "m"});
@@ -558,7 +529,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "9");
         test.done();
     },
-
     testDateFmtShortDateComponentsN_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", date: "n"});
@@ -577,7 +547,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), 'ກ');
         test.done();
     },
-
     testDateFmtShortDateComponentsD_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", date: "d"});
@@ -596,7 +565,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtShortDateComponentsDM_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", date: "dm"});
@@ -615,7 +583,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '29/9');
         test.done();
     },
-
     testDateFmtShortDateComponentsMY_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", date: "my"});
@@ -634,7 +601,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '9/2011');
         test.done();
     },
-
     testDateFmtShortDateComponentsDMY_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", date: "dmy"});
@@ -653,7 +619,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '29/9/2011');
         test.done();
     },
-
     testDateFmtShortDateComponentsWDM_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", date: "wdm"});
@@ -672,7 +637,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), 'ພຫ ທີ 29/9');
         test.done();
     },
-
     testDateFmtShortDateComponentsWDMY_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", date: "wdmy"});
@@ -691,7 +655,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), 'ພຫ ທີ 29/9/2011');
         test.done();
     },
-
     testDateFmtLongDateComponentsWDM_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", date: "wdm", length: "long"});
@@ -710,7 +673,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), 'ພະຫັດ ທີ 29 ກັນຍາ');
         test.done();
     },
-
     testDateFmtFullDateComponentsY_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full", date: "y"});
@@ -729,7 +691,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsM_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full", date: "m"});
@@ -748,7 +709,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "ກັນຍາ");
         test.done();
     },
-
     testDateFmtFullDateComponentsD_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full", date: "d"});
@@ -767,7 +727,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtFullDateComponentsDM_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full", date: "dm"});
@@ -786,7 +745,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '29 ກັນຍາ');
         test.done();
     },
-
     testDateFmtFullDateComponentsMY_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full", date: "my"});
@@ -805,7 +763,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), 'ກັນຍາ 2011');
         test.done();
     },
-
     testDateFmtFullDateComponentsDMY_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full", date: "dmy"});
@@ -824,7 +781,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), '29 ກັນຍາ 2011');
         test.done();
     },
-
     testDateFmtFullDateComponentsWDM_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full", date: "wdm"});
@@ -843,7 +799,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), 'ວັນພະຫັດ ທີ 29 ກັນຍາ');
         test.done();
     },
-
     testDateFmtFullDateComponentsWDMY_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full", date: "wdmy"});
@@ -862,7 +817,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), 'ວັນພະຫັດ ທີ 29 ກັນຍາ 2011');
         test.done();
     },
-
     testDateFmtShortTimeComponentsS_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time", time: "s"});
@@ -881,7 +835,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsM_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time", time: "m"});
@@ -900,7 +853,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsH_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time", time: "h"});
@@ -919,7 +871,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtShortTimeComponentsMS_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time", time: "ms"});
@@ -938,7 +889,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHM_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time", time: "hm"});
@@ -957,7 +907,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMS_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time", time: "hms"});
@@ -976,7 +925,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMA_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time", time: "hma"});
@@ -995,7 +943,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMZ_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1019,7 +966,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45 +07");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMAZ_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1043,7 +989,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45 +07");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSA_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time", time: "hmsa"});
@@ -1062,7 +1007,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSZ_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1086,7 +1030,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45:37 +07");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSAZ_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1110,7 +1053,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45:37 +07");
         test.done();
     },
-
     testDateFmtFullTimeComponentsS_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time", length: "full", time: "s"});
@@ -1129,7 +1071,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsM_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time", length: "full", time: "m"});
@@ -1148,7 +1089,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsH_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time", length: "full", time: "h"});
@@ -1167,7 +1107,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtFullTimeComponentsMS_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time", length: "full", time: "ms"});
@@ -1186,7 +1125,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHM_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time", length: "full", time: "hm"});
@@ -1205,7 +1143,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMS_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time", length: "full", time: "hms"});
@@ -1224,7 +1161,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMA_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time", length: "full", time: "hma"});
@@ -1243,7 +1179,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMZ_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1268,7 +1203,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45 +07");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMAZ_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1293,7 +1227,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45 +07");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSA_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", type: "time", length: "full", time: "hmsa"});
@@ -1312,7 +1245,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSZ_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1337,7 +1269,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45:37 +07");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSAZ_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1362,7 +1293,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45:37 +07");
         test.done();
     },
-
     testDateFmtWithTimeZoneAndNoDST_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1387,7 +1317,6 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.format(date), "13:45:37 +07");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinMinuteAfter_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full"});
@@ -1416,7 +1345,7 @@ module.exports.testdatefmt_lo_LA = {
         test.equal(fmt.formatRelative(reference, date), "ໃນອີກ 30 ວິນາທີ");
         test.done();
     },
-testDateFmtFormatRelativeWithinMinuteBefore_lo_LA: function(test) {
+    testDateFmtFormatRelativeWithinMinuteBefore_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full"});
         test.ok(fmt !== null);
@@ -1444,7 +1373,7 @@ testDateFmtFormatRelativeWithinMinuteBefore_lo_LA: function(test) {
         test.equal(fmt.formatRelative(reference, date), "30 ວິນາທີກ່ອນ");
         test.done();
     },
-testDateFmtFormatRelativeWithinHourAfter_lo_LA: function(test) {
+    testDateFmtFormatRelativeWithinHourAfter_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full"});
         test.ok(fmt !== null);
@@ -1472,7 +1401,7 @@ testDateFmtFormatRelativeWithinHourAfter_lo_LA: function(test) {
         test.equal(fmt.formatRelative(reference, date), "ໃນອີກ 10 ນາທີ");
         test.done();
     },
-testDateFmtFormatRelativeWithinHourBefore_lo_LA: function(test) {
+    testDateFmtFormatRelativeWithinHourBefore_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full"});
         test.ok(fmt !== null);
@@ -1500,7 +1429,7 @@ testDateFmtFormatRelativeWithinHourBefore_lo_LA: function(test) {
         test.equal(fmt.formatRelative(reference, date), '10 ນາທີກ່ອນ');
         test.done();
     },
-testDateFmtFormatRelativeWithinDayAfter_lo_LA: function(test) {
+    testDateFmtFormatRelativeWithinDayAfter_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full"});
         test.ok(fmt !== null);
@@ -1528,7 +1457,7 @@ testDateFmtFormatRelativeWithinDayAfter_lo_LA: function(test) {
         test.equal(fmt.formatRelative(reference, date), 'ໃນອີກ 4 ຊົ່ວໂມງ');
         test.done();
     },
-testDateFmtFormatRelativeWithinDayBefore_lo_LA: function(test) {
+    testDateFmtFormatRelativeWithinDayBefore_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full"});
         test.ok(fmt !== null);
@@ -1556,7 +1485,6 @@ testDateFmtFormatRelativeWithinDayBefore_lo_LA: function(test) {
         test.equal(fmt.formatRelative(reference, date), '4 ຊົ່ວໂມງກ່ອນ');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full"});
@@ -1585,7 +1513,7 @@ testDateFmtFormatRelativeWithinDayBefore_lo_LA: function(test) {
         test.equal(fmt.formatRelative(reference, date), 'ໃນອີກ 4 ມື້');
         test.done();
     },
-testDateFmtFormatRelativeWithinFortnightBefore_lo_LA: function(test) {
+    testDateFmtFormatRelativeWithinFortnightBefore_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full"});
         test.ok(fmt !== null);
@@ -1613,7 +1541,6 @@ testDateFmtFormatRelativeWithinFortnightBefore_lo_LA: function(test) {
         test.equal(fmt.formatRelative(reference, date), '4 ມື້ກ່ອນ');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full"});
@@ -1642,7 +1569,7 @@ testDateFmtFormatRelativeWithinFortnightBefore_lo_LA: function(test) {
         test.equal(fmt.formatRelative(reference, date), 'ໃນອີກ 9 ອາທິດ');
         test.done();
     },
-testDateFmtFormatRelativeWithinQuarterBefore_lo_LA: function(test) {
+    testDateFmtFormatRelativeWithinQuarterBefore_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full"});
         test.ok(fmt !== null);
@@ -1670,7 +1597,6 @@ testDateFmtFormatRelativeWithinQuarterBefore_lo_LA: function(test) {
         test.equal(fmt.formatRelative(reference, date), '9 ອາທິດກ່ອນ');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full"});
@@ -1699,7 +1625,7 @@ testDateFmtFormatRelativeWithinQuarterBefore_lo_LA: function(test) {
         test.equal(fmt.formatRelative(reference, date), 'ໃນອີກ 16 ເດືອນ');
         test.done();
     },
-testDateFmtFormatRelativeWithinTwoYearsBefore_lo_LA: function(test) {
+    testDateFmtFormatRelativeWithinTwoYearsBefore_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full"});
         test.ok(fmt !== null);
@@ -1727,7 +1653,6 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_lo_LA: function(test) {
         test.equal(fmt.formatRelative(reference, date), '14 ເດືອນກ່ອນ');
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full"});
@@ -1756,7 +1681,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_lo_LA: function(test) {
         test.equal(fmt.formatRelative(reference, date), 'ໃນອີກ 14 ປີ');
         test.done();
     },
-testDateFmtFormatRelativeYearsBefore_lo_LA: function(test) {
+    testDateFmtFormatRelativeYearsBefore_lo_LA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "lo-LA", length: "full"});
         test.ok(fmt !== null);

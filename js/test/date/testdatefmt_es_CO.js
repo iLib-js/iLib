@@ -1,7 +1,7 @@
 /*
- * testdatefmt_es_CO.js - tCOST the date formatter object in spainish Columbia
+ * testdatefmt_es_CO.js - test the date formatter object in spainish Columbia
  *
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,1191 +26,6 @@ if (typeof(GregorianDate) === "undefined") {
 if (typeof(DateFmt) === "undefined") {
     var DateFmt = require("../../lib/DateFmt.js");
 }
-function tCOSTDateFmtConstructorEmpty_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO"});
-
-    assertNotNull(fmt);
-}
-
-
-function tCOSTDateFmtSimpleShort_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "short"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("29/09/11", fmt.format(date));
-}
-
-function tCOSTDateFmtSimpleMedium_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "medium"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("29/09/2011", fmt.format(date));
-}
-
-function tCOSTDateFmtSimpleLong_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "long"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("29 de sep 2011", fmt.format(date));
-}
-
-function tCOSTDateFmtSimpleFull_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "full"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("29 de septiembre 2011", fmt.format(date));
-}
-
-function tCOSTDateFmtSimpleTimeShort_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "short", type: "time"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("13:45", fmt.format(date));
-}
-
-function tCOSTDateFmtSimpleTimeMedium_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "medium", type: "time"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("13:45", fmt.format(date));
-}
-
-function tCOSTDateFmtSimpleTimeLong_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", timelength: "long", type: "time"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("13:45", fmt.format(date));
-}
-
-function tCOSTDateFmtSimpleTimeFull_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "full", type: "time"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("13:45", fmt.format(date));
-}
-
-function tCOSTDateFmtDateTimeSimpleShort_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "short", type: "datetime"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("29/09/11 13:45", fmt.format(date));
-}
-
-function tCOSTDateFmtDateTimeSimpleMedium_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "medium", type: "datetime"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 9,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("09/09/2011 13:45", fmt.format(date));
-}
-
-function tCOSTDateFmtDateTimeSimpleLong_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "long", type: "datetime"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("29 de sep 2011 13:45", fmt.format(date));
-}
-
-function tCOSTDateFmtDateTimeSimpleFull_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "full", type: "datetime"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("29 de septiembre 2011 13:45", fmt.format(date));
-}
-
-
-function tCOSTDateFmtTemplatelendar_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", lendar: "julian", template: "yyyy-MM-dd"});
-    assertNotNull(fmt);
-
-    var date = new JulianDate({
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("2011-09-29", fmt.format(date));
-}
-
-
-function tCOSTDateFmtTemplateClock12SwitchHH_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", clock: "12", template: "HH:mm"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("01:45", fmt.format(date));
-}
-
-function tCOSTDateFmtTemplateClock12Switchkk_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", clock: "12", template: "kk:mm"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("01:45", fmt.format(date));
-}
-
-function tCOSTDateFmtTemplateClock24Switchhh_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", clock: "24", template: "hh:mm"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("13:45", fmt.format(date));
-}
-
-function tCOSTDateFmtTemplateClock24SwitchKK_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", clock: "24", template: "KK:mm"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("13:45", fmt.format(date));
-}
-
-function tCOSTDateFmtTemplateNoClockDoNotFollowLoleDefault12hh_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", template: "hh:mm"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("01:45", fmt.format(date));
-}
-
-function tCOSTDateFmtTemplateNoClockDoNotFollowLoleDefault12KK_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", template: "KK:mm"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("01:45", fmt.format(date));
-}
-
-function tCOSTDateFmtTemplateNoClockDoNotFollowLoleDefault24HH_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", template: "HH:mm"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("13:45", fmt.format(date));
-}
-
-function tCOSTDateFmtTemplateNoClockDoNotFollowLoleDefault24kk_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", template: "kk:mm"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("13:45", fmt.format(date));
-}
-
-
-function tCOSTDateFmtTypeDate_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "date"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("29/09/11", fmt.format(date));
-}
-
-function tCOSTDateFmtTypeTime_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("13:45", fmt.format(date));
-}
-
-function tCOSTDateFmtTypeDateTime_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "datetime"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("29/09/11 13:45", fmt.format(date));
-}
-
-
-function tCOSTDateFmtShortDateComponentsY_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", date: "y"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("11", fmt.format(date));
-}
-
-function tCOSTDateFmtShortDateComponentsM_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", date: "m"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("9", fmt.format(date));
-}
-
-function tCOSTDateFmtShortDateComponentsN_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", date: "n"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("S", fmt.format(date));
-}
-
-function tCOSTDateFmtShortDateComponentsD_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", date: "d"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("29", fmt.format(date));
-}
-
-function tCOSTDateFmtShortDateComponentsDM_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", date: "dm"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("29/09", fmt.format(date));
-}
-
-function tCOSTDateFmtShortDateComponentsMY_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", date: "my"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("09/11", fmt.format(date));
-}
-
-function tCOSTDateFmtShortDateComponentsDMY_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", date: "dmy"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("29/09/11", fmt.format(date));
-}
-
-function tCOSTDateFmtShortDateComponentsWDM_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", date: "wdm"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("ju 29/09", fmt.format(date));
-}
-
-function tCOSTDateFmtShortDateComponentsWDMY_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", date: "wdmy"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("ju 29/09/11", fmt.format(date));
-}
-
-
-function tCOSTDateFmtFullDateComponentsY_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "full", date: "y"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("2011", fmt.format(date));
-}
-
-function tCOSTDateFmtFullDateComponentsM_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "full", date: "m"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("septiembre", fmt.format(date));
-}
-
-function tCOSTDateFmtFullDateComponentsD_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "full", date: "d"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("29", fmt.format(date));
-}
-
-function tCOSTDateFmtFullDateComponentsDM_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "full", date: "dm"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("29 de septiembre", fmt.format(date));
-}
-
-function tCOSTDateFmtFullDateComponentsMY_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "full", date: "my"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("septiembre 2011", fmt.format(date));
-}
-
-function tCOSTDateFmtFullDateComponentsDMY_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "full", date: "dmy"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("29 de septiembre 2011", fmt.format(date));
-}
-
-function tCOSTDateFmtFullDateComponentsWDM_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "full", date: "wdm"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("jueves 29 de septiembre", fmt.format(date));
-}
-
-function tCOSTDateFmtFullDateComponentsWDMY_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", length: "full", date: "wdmy"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("jueves 29 de septiembre 2011", fmt.format(date));
-}
-
-
-function tCOSTDateFmtShortTimeComponentsS_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time", time: "s"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("37", fmt.format(date));
-}
-
-function tCOSTDateFmtShortTimeComponentsM_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time", time: "m"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("45", fmt.format(date));
-}
-
-function tCOSTDateFmtShortTimeComponentsH_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time", time: "h"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13", fmt.format(date));
-}
-
-function tCOSTDateFmtShortTimeComponentsMS_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time", time: "ms"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("45:37", fmt.format(date));
-}
-
-function tCOSTDateFmtShortTimeComponentsHM_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time", time: "hm"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45", fmt.format(date));
-}
-
-function tCOSTDateFmtShortTimeComponentsHMS_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time", time: "hms"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45:37", fmt.format(date));
-}
-
-function tCOSTDateFmtShortTimeComponentsHMA_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time", time: "hma"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45", fmt.format(date));
-}
-
-function tCOSTDateFmtShortTimeComponentsHMZ_es_CO() {
-    var fmt = new DateFmt({
-        lole: "es-CO",
-        type: "time",
-        time: "hmz",
-
-    });
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45 COST", fmt.format(date));
-}
-
-function tCOSTDateFmtShortTimeComponentsHMAZ_es_CO() {
-    var fmt = new DateFmt({
-        lole: "es-CO",
-        type: "time",
-        time: "hmaz"
-
-    });
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45 COST", fmt.format(date));
-}
-
-function tCOSTDateFmtShortTimeComponentsHMSA_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time", time: "hmsa"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45:37", fmt.format(date));
-}
-
-function tCOSTDateFmtShortTimeComponentsHMSZ_es_CO() {
-    var fmt = new DateFmt({
-        lole: "es-CO",
-        type: "time",
-        time: "hmsz"
-
-    });
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45:37 COST", fmt.format(date));
-}
-
-function tCOSTDateFmtShortTimeComponentsHMSAZ_es_CO() {
-    var fmt = new DateFmt({
-        lole: "es-CO",
-        type: "time",
-        time: "hmsaz"
-
-    });
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45:37 COST", fmt.format(date));
-}
-
-
-function tCOSTDateFmtFullTimeComponentsS_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time", length: "full", time: "s"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("37", fmt.format(date));
-}
-
-function tCOSTDateFmtFullTimeComponentsM_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time", length: "full", time: "m"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("45", fmt.format(date));
-}
-
-function tCOSTDateFmtFullTimeComponentsH_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time", length: "full", time: "h"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13", fmt.format(date));
-}
-
-function tCOSTDateFmtFullTimeComponentsMS_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time", length: "full", time: "ms"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("45:37", fmt.format(date));
-}
-
-function tCOSTDateFmtFullTimeComponentsHM_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time", length: "full", time: "hm"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45", fmt.format(date));
-}
-
-function tCOSTDateFmtFullTimeComponentsHMS_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time", length: "full", time: "hms"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45:37", fmt.format(date));
-}
-
-function tCOSTDateFmtFullTimeComponentsHMA_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time", length: "full", time: "hma"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45", fmt.format(date));
-}
-
-function tCOSTDateFmtFullTimeComponentsHMZ_es_CO() {
-    var fmt = new DateFmt({
-        lole: "es-CO",
-        type: "time",
-        length: "full",
-        time: "hmz",
-
-    });
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45 COST", fmt.format(date));
-}
-
-function tCOSTDateFmtFullTimeComponentsHMAZ_es_CO() {
-    var fmt = new DateFmt({
-        lole: "es-CO",
-        type: "time",
-        length: "full",
-        time: "hmaz"
-
-    });
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45 COST", fmt.format(date));
-}
-
-function tCOSTDateFmtFullTimeComponentsHMSA_es_CO() {
-    var fmt = new DateFmt({lole: "es-CO", type: "time", length: "full", time: "hmsa"});
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45:37", fmt.format(date));
-}
-
-function tCOSTDateFmtFullTimeComponentsHMSZ_es_CO() {
-    var fmt = new DateFmt({
-        lole: "es-CO",
-        type: "time",
-        length: "full",
-        time: "hmsz",
-
-    });
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45:37 COST", fmt.format(date));
-}
-
-function tCOSTDateFmtFullTimeComponentsHMSAZ_es_CO() {
-    var fmt = new DateFmt({
-        lole: "es-CO",
-        type: "time",
-        length: "full",
-        time: "hmsaz",
-
-    });
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 9,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45:37 COST", fmt.format(date));
-}
-
-function tCOSTDateFmtWithTimeZoneAndNoDST_es_CO() {
-    var fmt = new DateFmt({
-        lole: "es-CO",
-        type: "time",
-        length: "full",
-        time: "hmsz",
-
-    });
-    assertNotNull(fmt);
-
-    var date = new GregorianDate({
-        locale: "es-CO",
-        year: 2011,
-        month: 12,
-        day: 29,
-        hour: 13,
-        minute: 45,
-        second: 37,
-        millisecond: 0
-    });
-    assertEquals("13:45:37 COST", fmt.format(date));
-}
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -1220,7 +35,1248 @@ module.exports.testdatefmt_es_CO = {
         ilib.clearCache();
         callback();
     },
-
+    testDateFmtConstructorEmpty_es_CO: function(test) {
+        test.expect(1);
+        var fmt = new DateFmt({locale: "es-CO"});
+    
+        test.ok(fmt !== null);
+        test.done();
+    },
+    testDateFmtSimpleShort_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "short"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29/09/11");
+        test.done();
+    },
+    testDateFmtSimpleMedium_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "medium"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29/09/2011");
+        test.done();
+    },
+    testDateFmtSimpleLong_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "long"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29 de septiembre de 2011");
+        test.done();
+    },
+    testDateFmtSimpleFull_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "full"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29 de septiembre de 2011");
+        test.done();
+    },
+    testDateFmtSimpleTimeShort_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "short", type: "time"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 p. m.");
+        test.done();
+    },
+    testDateFmtSimpleTimeMedium_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "medium", type: "time"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 p. m.");
+        test.done();
+    },
+    testDateFmtSimpleTimeLong_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", timelength: "long", type: "time"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 p. m.");
+        test.done();
+    },
+    testDateFmtSimpleTimeFull_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "full", type: "time"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 p. m.");
+        test.done();
+    },
+    testDateFmtDateTimeSimpleShort_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "short", type: "datetime"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29/09/11, 1:45 p. m.");
+        test.done();
+    },
+    testDateFmtDateTimeSimpleMedium_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "medium", type: "datetime"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 9,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "9/09/2011, 1:45 p. m.");
+        test.done();
+    },
+    testDateFmtDateTimeSimpleLong_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "long", type: "datetime"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29 de septiembre de 2011, 1:45 p. m.");
+        test.done();
+    },
+    testDateFmtDateTimeSimpleFull_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "full", type: "datetime"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29 de septiembre de 2011, 1:45 p. m.");
+        test.done();
+    },
+    testDateFmtTemplatelendar_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", lendar: "julian", template: "yyyy-MM-dd"});
+        test.ok(fmt !== null);
+    
+        var date = new JulianDate({
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "2011-10-12");
+        test.done();
+    },
+    testDateFmtTemplateClock12SwitchHH_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", clock: "12", template: "HH:mm"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "01:45");
+        test.done();
+    },
+    testDateFmtTemplateClock12Switchkk_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", clock: "12", template: "kk:mm"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "01:45");
+        test.done();
+    },
+    testDateFmtTemplateClock24Switchhh_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", clock: "24", template: "hh:mm"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "13:45");
+        test.done();
+    },
+    testDateFmtTemplateClock24SwitchKK_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", clock: "24", template: "KK:mm"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "13:45");
+        test.done();
+    },
+    testDateFmtTemplateNoClockDoNotFollowLoleDefault12hh_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", template: "hh:mm"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "01:45");
+        test.done();
+    },
+    testDateFmtTemplateNoClockDoNotFollowLoleDefault12KK_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", template: "KK:mm"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "01:45");
+        test.done();
+    },
+    testDateFmtTemplateNoClockDoNotFollowLoleDefault24HH_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", template: "HH:mm"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "13:45");
+        test.done();
+    },
+    testDateFmtTemplateNoClockDoNotFollowLoleDefault24kk_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", template: "kk:mm"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "13:45");
+        test.done();
+    },
+    testDateFmtTypeDate_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "date"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29/09/11");
+        test.done();
+    },
+    testDateFmtTypeTime_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 p. m.");
+        test.done();
+    },
+    testDateFmtTypeDateTime_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "datetime"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29/09/11, 1:45 p. m.");
+        test.done();
+    },
+    testDateFmtShortDateComponentsY_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", date: "y"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "11");
+        test.done();
+    },
+    testDateFmtShortDateComponentsM_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", date: "m"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "se");
+        test.done();
+    },
+    testDateFmtShortDateComponentsN_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", date: "n"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "s");
+        test.done();
+    },
+    testDateFmtShortDateComponentsD_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", date: "d"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29");
+        test.done();
+    },
+    testDateFmtShortDateComponentsDM_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", date: "dm"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29/09");
+        test.done();
+    },
+    testDateFmtShortDateComponentsMY_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", date: "my"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "09/11");
+        test.done();
+    },
+    testDateFmtShortDateComponentsDMY_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", date: "dmy"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29/09/11");
+        test.done();
+    },
+    testDateFmtShortDateComponentsWDM_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", date: "wdm"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "J, 29/09");
+        test.done();
+    },
+    testDateFmtShortDateComponentsWDMY_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", date: "wdmy"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "J, 29/09/11");
+        test.done();
+    },
+    testDateFmtFullDateComponentsY_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "full", date: "y"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "2011");
+        test.done();
+    },
+    testDateFmtFullDateComponentsM_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "full", date: "m"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "septiembre");
+        test.done();
+    },
+    testDateFmtFullDateComponentsD_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "full", date: "d"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29");
+        test.done();
+    },
+    testDateFmtFullDateComponentsDM_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "full", date: "dm"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29 de septiembre");
+        test.done();
+    },
+    testDateFmtFullDateComponentsMY_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "full", date: "my"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "septiembre de 2011");
+        test.done();
+    },
+    testDateFmtFullDateComponentsDMY_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "full", date: "dmy"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29 de septiembre de 2011");
+        test.done();
+    },
+    testDateFmtFullDateComponentsWDM_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "full", date: "wdm"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "jueves, 29 de septiembre");
+        test.done();
+    },
+    testDateFmtFullDateComponentsWDMY_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", length: "full", date: "wdmy"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "jueves, 29 de septiembre de 2011");
+        test.done();
+    },
+    testDateFmtShortTimeComponentsS_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time", time: "s"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "37");
+        test.done();
+    },
+    testDateFmtShortTimeComponentsM_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time", time: "m"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "45");
+        test.done();
+    },
+    testDateFmtShortTimeComponentsH_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time", time: "h"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1");
+        test.done();
+    },
+    testDateFmtShortTimeComponentsMS_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time", time: "ms"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "45:37");
+        test.done();
+    },
+    testDateFmtShortTimeComponentsHM_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time", time: "hm"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45");
+        test.done();
+    },
+    testDateFmtShortTimeComponentsHMS_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time", time: "hms"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37");
+        test.done();
+    },
+    testDateFmtShortTimeComponentsHMA_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time", time: "hma"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 p. m.");
+        test.done();
+    },
+    testDateFmtShortTimeComponentsHMZ_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({
+            locale: "es-CO",
+            type: "time",
+            time: "hmz",
+    
+        });
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 -05/-04");
+        test.done();
+    },
+    testDateFmtShortTimeComponentsHMAZ_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({
+            locale: "es-CO",
+            type: "time",
+            time: "hmaz"
+    
+        });
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 p. m. -05/-04");
+        test.done();
+    },
+    testDateFmtShortTimeComponentsHMSA_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time", time: "hmsa"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 p. m.");
+        test.done();
+    },
+    testDateFmtShortTimeComponentsHMSZ_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({
+            locale: "es-CO",
+            type: "time",
+            time: "hmsz"
+        });
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 -05/-04");
+        test.done();
+    },
+    testDateFmtShortTimeComponentsHMSAZ_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({
+            locale: "es-CO",
+            type: "time",
+            time: "hmsaz"
+    
+        });
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 p. m. -05/-04");
+        test.done();
+    },
+    testDateFmtFullTimeComponentsS_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time", length: "full", time: "s"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "37");
+        test.done();
+    },
+    testDateFmtFullTimeComponentsM_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time", length: "full", time: "m"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "45");
+        test.done();
+    },
+    testDateFmtFullTimeComponentsH_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time", length: "full", time: "h"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1");
+        test.done();
+    },
+    testDateFmtFullTimeComponentsMS_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time", length: "full", time: "ms"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "45:37");
+        test.done();
+    },
+    testDateFmtFullTimeComponentsHM_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time", length: "full", time: "hm"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45");
+        test.done();
+    },
+    testDateFmtFullTimeComponentsHMS_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time", length: "full", time: "hms"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37");
+        test.done();
+    },
+    testDateFmtFullTimeComponentsHMA_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time", length: "full", time: "hma"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 p. m.");
+        test.done();
+    },
+    testDateFmtFullTimeComponentsHMZ_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({
+            locale: "es-CO",
+            type: "time",
+            length: "full",
+            time: "hmz",
+    
+        });
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 -05/-04");
+        test.done();
+    },
+    testDateFmtFullTimeComponentsHMAZ_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({
+            locale: "es-CO",
+            type: "time",
+            length: "full",
+            time: "hmaz"
+        });
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 p. m. -05/-04");
+        test.done();
+    },
+    testDateFmtFullTimeComponentsHMSA_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "es-CO", type: "time", length: "full", time: "hmsa"});
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 p. m.");
+        test.done();
+    },
+    testDateFmtFullTimeComponentsHMSZ_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({
+            locale: "es-CO",
+            type: "time",
+            length: "full",
+            time: "hmsz",
+    
+        });
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 -05/-04");
+        test.done();
+    },
+    testDateFmtFullTimeComponentsHMSAZ_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({
+            locale: "es-CO",
+            type: "time",
+            length: "full",
+            time: "hmsaz",
+    
+        });
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 p. m. -05/-04");
+        test.done();
+    },
+    testDateFmtWithTimeZoneAndNoDST_es_CO: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({
+            locale: "es-CO",
+            type: "time",
+            length: "full",
+            time: "hmsz",
+    
+        });
+        test.ok(fmt !== null);
+    
+        var date = new GregorianDate({
+            locale: "es-CO",
+            year: 2011,
+            month: 12,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 -05/-04");
+        test.done();
+    },
     testDateFmtFormatRelativeWithinMinuteAfter_es_CO: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
@@ -1361,8 +1417,6 @@ module.exports.testdatefmt_es_CO = {
         test.equal(fmt.formatRelative(reference, date), "dentro de 4 horas");
         test.done();
     },
-
-
     testDateFmtFormatRelativeWithinDayBefore_es_CO: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
@@ -1391,7 +1445,6 @@ module.exports.testdatefmt_es_CO = {
         test.equal(fmt.formatRelative(reference, date), "hace 4 horas");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_es_CO: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
@@ -1448,7 +1501,6 @@ module.exports.testdatefmt_es_CO = {
         test.equal(fmt.formatRelative(reference, date), "hace 4 días");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_es_CO: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
@@ -1505,7 +1557,6 @@ module.exports.testdatefmt_es_CO = {
         test.equal(fmt.formatRelative(reference, date), "hace 9 semanas");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_es_CO: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
@@ -1562,7 +1613,6 @@ module.exports.testdatefmt_es_CO = {
         test.equal(fmt.formatRelative(reference, date), "hace 14 meses");
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_es_CO: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
@@ -1619,7 +1669,4 @@ module.exports.testdatefmt_es_CO = {
         test.equal(fmt.formatRelative(reference, date), "hace 21 años");
         test.done();
     }
-
-
-
 };
