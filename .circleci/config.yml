@@ -68,3 +68,5 @@ workflows:
           docker_image: circleci/node:14-browsers
       - test:
           docker_image: circleci/node:16-browsers
+      - test:
+          docker_image: circleci/node:18-browsers
