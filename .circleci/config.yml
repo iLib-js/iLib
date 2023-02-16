@@ -47,7 +47,7 @@ jobs:
             echo "qmake version: " $(qmake --version)
             echo "TZ is $TZ"
             echo "NODE_OPTIONS is $NODE_OPTIONS"
-            find /usr/lib/jvm -name javadoc
+            find /usr/lib -name javadoc
             which javadoc
 
       - run:
