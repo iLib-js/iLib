@@ -47,7 +47,7 @@ jobs:
             echo "qmake version: " $(qmake --version)
             echo "TZ is $TZ"
             echo "NODE_OPTIONS is $NODE_OPTIONS"
-            ls -la /etc/alternatives
+            ls -la /usr/lib/jvm/java-11-openjdk-amd64/bin/
             which javadoc
 
       - run:
