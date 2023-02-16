@@ -16,6 +16,14 @@ jobs:
       - checkout
 
       - run:
+          name: Set up OpenJDK
+          command: |
+            sudo apt-get install openjdk-11-jdk
+            sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+            sudo update-alternatives --set javac /usr/lib/jvm/java-11-openjdk-amd64/bin/javac
+            sudo update-alternatives --set javadoc /usr/lib/jvm/java-11-openjdk-amd64/bin/javadoc
+
+      - run:
           name: Set up ant
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -38,25 +46,17 @@ jobs:
             npm install
 
       - run:
-          name: Set up OpenJDK
-          command: |
-            sudo apt-get install openjdk-11-jdk
-            sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
-            sudo update-alternatives --set javac /usr/lib/jvm/java-11-openjdk-amd64/bin/javac
-            sudo update-alternatives --set javadoc /usr/lib/jvm/java-11-openjdk-amd64/bin/javadoc
-
-      - run:
           name: Check environment
           command: |
             echo "node version: " $(node -v)
             echo "npm version: " $(npm -v)
             echo "java version: " $(java -version)
+            echo "javac version: " $(javac -version)
+            echo "javadoc version: " $(javadoc --version)
             echo "ant version: " $(ant -version)
             echo "qmake version: " $(qmake --version)
             echo "TZ is $TZ"
             echo "NODE_OPTIONS is $NODE_OPTIONS"
-            ls -la /usr/bin/java
-            which javadoc
 
       - run:
           name: Running all unit tests
