@@ -135,7 +135,7 @@ limitations under the License.
         <sequential>
             <echo>executing webpack</echo>
             <exec osfamily="unix" executable="webpack-cli" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3300"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=3300 --openssl-legacy-provider"/>
                 <arg value="--env.assembly=@{assembly}"/>
                 <arg value="--env.size=@{size}"/>
                 <arg value="--env.compilation=@{compilation}"/>
@@ -146,7 +146,7 @@ limitations under the License.
                 <arg value="--mode=@{mode}"/>
             </exec>
             <exec osfamily="windows" executable="webpack-cli.bat" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3300"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=3300 --openssl-legacy-provider"/>
                 <arg value="--env.assembly=@{assembly}"/>
                 <arg value="--env.size=@{size}"/>
                 <arg value="--env.compilation=@{compilation}"/>
@@ -527,11 +527,11 @@ limitations under the License.
             <echo>Executing webpack</echo>
             <exec osfamily="unix" executable="webpack-cli" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3300"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=3300 --openssl-legacy-provider"/>
             </exec>
             <exec osfamily="windows" executable="webpack-cli.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3300"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=3300 --openssl-legacy-provider"/>
             </exec>
         </sequential>
     </target>
@@ -540,11 +540,11 @@ limitations under the License.
             <echo>Executing webpack</echo>
             <exec osfamily="unix" executable="webpack-cli" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3300"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=3300 --openssl-legacy-provider"/>
             </exec>
             <exec osfamily="windows" executable="webpack-cli.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3300"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=3300 --openssl-legacy-provider"/>
             </exec>
         </sequential>
     </target>
