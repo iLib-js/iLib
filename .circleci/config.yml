@@ -47,6 +47,8 @@ jobs:
             echo "qmake version: " $(qmake --version)
             echo "TZ is $TZ"
             echo "NODE_OPTIONS is $NODE_OPTIONS"
+            which java
+            which javadoc
 
       - run:
           name: Running all unit tests
