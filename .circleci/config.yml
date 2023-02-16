@@ -47,7 +47,7 @@ jobs:
             echo "qmake version: " $(qmake --version)
             echo "TZ is $TZ"
             echo "NODE_OPTIONS is $NODE_OPTIONS"
-            ls -la /usr/bin/java
+            ls -la /etc/alternatives
             which javadoc
 
       - run:
