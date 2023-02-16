@@ -18,6 +18,7 @@ jobs:
       - run:
           name: Set up OpenJDK
           command: |
+            sudo apt update
             sudo apt-get install openjdk-11-jdk
             sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
             sudo update-alternatives --set javac /usr/lib/jvm/java-11-openjdk-amd64/bin/javac
@@ -27,7 +28,6 @@ jobs:
           name: Set up ant
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            sudo apt update
             sudo apt install -y ant
 
       - run:
