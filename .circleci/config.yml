@@ -38,6 +38,14 @@ jobs:
             npm install
 
       - run:
+          name: Set up OpenJDK
+          command: |
+            sudo apt-get install openjdk-11-jdk
+            sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+            sudo update-alternatives --set javac /usr/lib/jvm/java-11-openjdk-amd64/bin/javac
+            sudo update-alternatives --set javadoc /usr/lib/jvm/java-11-openjdk-amd64/bin/javadoc
+
+      - run:
           name: Check environment
           command: |
             echo "node version: " $(node -v)
@@ -47,7 +55,7 @@ jobs:
             echo "qmake version: " $(qmake --version)
             echo "TZ is $TZ"
             echo "NODE_OPTIONS is $NODE_OPTIONS"
-            find /usr/lib -name javadoc
+            ls -la /usr/bin/java
             which javadoc
 
       - run:
