@@ -3252,17 +3252,16 @@ module.exports.testdurfmt2 = {
                 test.equal(clockformatted_20[2], '‏20 שע׳ 20 דק׳ 20 שנ׳');
                 test.equal(clockformatted_20[3], '‏20 שע׳ 20 דק׳ 20 שנ׳');
             } else {
-                test.equal(textformatted_20[0], '‏20 שנים, 20 חודשים, 20 שבועות ו20 ימים');
+                test.equal(textformatted_20[0], '‏20 שנים, 20 חודשים, 20 שבועות ו-20 ימים');
                 test.equal(textformatted_20[1], '‏20 שנים, 20 ח׳, 20 שבועות, 20 ימ׳');
                 test.equal(textformatted_20[2], '‏20 ש′ 20 ח׳ 20 ש′ 20 י׳');
                 test.equal(textformatted_20[3], '‏20 ש′ 20 ח׳ 20 ש′ 20 י׳');
 
-                test.equal(clockformatted_20[0], '‏20 שעות, 20 דקות ו20 שניות');
+                test.equal(clockformatted_20[0], '‏20 שעות, 20 דקות ו-20 שניות');
                 test.equal(clockformatted_20[1], '‏20 שע׳, 20 דק׳, 20 שנ׳');
                 test.equal(clockformatted_20[2], '‏20 שע׳ 20 דק׳ 20 שנ׳');
                 test.equal(clockformatted_20[3], '‏20 שע׳ 20 דק׳ 20 שנ׳');
             }
-
         } else if (platform === "browser") {
             test.equal(textformatted_20[0], '‏20 שנים, 20 חודשים, 20 שבועות ו-20 יום');
             test.equal(textformatted_20[1], '‏20 שנים, 20 ח׳, 20 שבועות, 20 ימ׳');

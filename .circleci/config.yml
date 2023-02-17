@@ -27,7 +27,15 @@ jobs:
           command: |
             #sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
             #sudo apt update
-            sudo apt install -y build-essential libfontconfig1 mesa-common-dev qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
+            sudo apt install -y build-essential libfontconfig1 mesa-common-dev qtbase5-dev qmlscene qtdeclarative5-dev 
+
+      - run:
+          name: Set up OpenJDK
+          command: |
+            sudo apt-get install openjdk-11-jdk
+            sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+            sudo update-alternatives --set javac /usr/lib/jvm/java-11-openjdk-amd64/bin/javac
+            sudo update-alternatives --set javadoc /usr/lib/jvm/java-11-openjdk-amd64/bin/javadoc
 
       - run:
           name: Set up node packages
@@ -43,6 +51,8 @@ jobs:
             echo "node version: " $(node -v)
             echo "npm version: " $(npm -v)
             echo "java version: " $(java -version)
+            echo "javac version: " $(javac -version)
+            echo "javadoc version: " $(javadoc --version)
             echo "ant version: " $(ant -version)
             echo "qmake version: " $(qmake --version)
             echo "TZ is $TZ"
@@ -65,6 +75,10 @@ workflows:
       - test:
           docker_image: circleci/node:12-browsers
       - test:
-          docker_image: circleci/node:14-browsers
+          docker_image: cimg/node:14.21.2-browsers
       - test:
-          docker_image: circleci/node:16-browsers
+          docker_image: cimg/node:16.19.0-browsers
+      - test:
+          docker_image: cimg/node:18.14.0-browsers
+      - test
+

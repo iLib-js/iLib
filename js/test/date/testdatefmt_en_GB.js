@@ -181,24 +181,20 @@ module.exports.testdatefmt_en_GB = {
             millisecond: 0
         });
 
-        if(ilib._getPlatform() === "nodejs"){
+        if (ilib._getPlatform() === "nodejs") {
             var cldrVersion = Number(process.versions["cldr"]);
             var nodeMajorVersion = process.versions["node"].split(".")[0];
             //console.log("version: " + version + " majorVersion: " + majorVersion);
             if (cldrVersion < 36) {
                 test.equal(fmt.format(date), "9/29/2011");
-            } else if(cldrVersion < 38) {
+            } else if (cldrVersion < 38) {
                 if (nodeMajorVersion === "14") {
                     test.equal(fmt.format(date), "29 Sep 2011");
                 } else {
                     test.equal(fmt.format(date), "Sep 29, 2011");
                 }
-            } else if(cldrVersion < 39){
-                test.equal(fmt.format(date), "29 Sept 2011");
-            } else if(cldrVersion < 41){
-                test.equal(fmt.format(date), "29 Sept 2011");
             } else {
-                test.equal(fmt.format(date), "29 Sep 2011");
+                test.equal(fmt.format(date), "29 Sept 2011");
             }
         } else {
             test.equal(fmt.format(date), "29 Sept 2011");

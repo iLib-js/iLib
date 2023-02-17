@@ -120,8 +120,20 @@ limitations under the License.
         <mkdir dir="${build.output.js}"/>
         <mkdir dir="${build.output.dyncode}"/>
         <mkdir dir="${build.output.test}"/>
-        
+        <exec executable="node" outputproperty="node.version">
+            <arg value="--version"/>
+        </exec>
+        <condition property="node16orLower">
+            <matches string="${node.version}" pattern="^v([0-9]\.|1[0-6]\.)" />
+        </condition>
+        <condition property="node17orHigher">
+            <matches string="${node.version}" pattern="^v(1[7-9]\.|[2-9][0-9]\.)" />
+        </condition>
+        <condition property="node.options" value="--max-old-space-size=3300 --openssl-legacy-provider" else="--max-old-space-size=3300">
+            <isset property="node17orHigher"/>
+        </condition>
     </target>
+
     <!-- =================================================================== -->
     <!-- Create the core jar file                                            -->
     <!-- =================================================================== -->
@@ -135,7 +147,7 @@ limitations under the License.
         <sequential>
             <echo>executing webpack</echo>
             <exec osfamily="unix" executable="webpack-cli" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3300"/>
+                <env key="NODE_OPTIONS" value="${node.options}"/>
                 <arg value="--env.assembly=@{assembly}"/>
                 <arg value="--env.size=@{size}"/>
                 <arg value="--env.compilation=@{compilation}"/>
@@ -146,7 +158,7 @@ limitations under the License.
                 <arg value="--mode=@{mode}"/>
             </exec>
             <exec osfamily="windows" executable="webpack-cli.bat" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3300"/>
+                <env key="NODE_OPTIONS" value="${node.options}"/>
                 <arg value="--env.assembly=@{assembly}"/>
                 <arg value="--env.size=@{size}"/>
                 <arg value="--env.compilation=@{compilation}"/>
@@ -527,11 +539,11 @@ limitations under the License.
             <echo>Executing webpack</echo>
             <exec osfamily="unix" executable="webpack-cli" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3300"/>
+                <env key="NODE_OPTIONS" value="${node.options}"/>
             </exec>
             <exec osfamily="windows" executable="webpack-cli.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3300"/>
+                <env key="NODE_OPTIONS" value="${node.options}"/>
             </exec>
         </sequential>
     </target>
@@ -540,11 +552,11 @@ limitations under the License.
             <echo>Executing webpack</echo>
             <exec osfamily="unix" executable="webpack-cli" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3300"/>
+                <env key="NODE_OPTIONS" value="${node.options}"/>
             </exec>
             <exec osfamily="windows" executable="webpack-cli.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3300"/>
+                <env key="NODE_OPTIONS" value="${node.options}"/>
             </exec>
         </sequential>
     </target>
@@ -1000,7 +1012,7 @@ limitations under the License.
         <attribute name="suite"/>
         <attribute name="failquit"/>
         <sequential>
-            <java	dir="${build.test}"
+            <java    dir="${build.test}"
                     classname="io.apigee.trireme.shell.Main"
                     fork="true"
                     maxmemory="4096m"
