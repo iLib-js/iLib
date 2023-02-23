@@ -9,6 +9,7 @@ New Features:
 * Update to CLDR v42 data
 Bug Fixes:
 * Fixed to publish js apidoc with applying style properly.
+* Fixed the case of setting the root path incorrectly in `ilib-web.js`.
 
 Build 025
 -------
