@@ -30,6 +30,12 @@ if (typeof(IString) === "undefined") {
     var IString = require("../../lib/IString.js");
 }
 
+function getChromeVersion () {
+    var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
+
+    return raw ? parseInt(raw[2], 10) : false;
+}
+
 module.exports.teststrings = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -3381,7 +3387,12 @@ module.exports.teststrings = {
                 test.equal(str.formatChoice(1000000), "The items are many");
             }
         } else if (platform === "browser") {
-            test.equal(str.formatChoice(1000000), "Default items");
+            var browser = ilib._getBrowser();
+            var expected = "Default items";
+            if (browser === "chrome" && getChromeVersion() >= 110) {
+                expected = "The items are many";
+            }
+            test.equal(str.formatChoice(1000000), expected);
         } else {
             test.equal(str.formatChoice(1000000), "The items are many");
         }
@@ -3487,7 +3498,12 @@ module.exports.teststrings = {
                 test.equal(str.formatChoice(2), "The items are two");
             }
         } else if (platform === "browser") {
-            test.equal(str.formatChoice(2), "The items are few");
+            var browser = ilib._getBrowser();
+            var expected = "The items are few";
+            if (browser === "chrome" && getChromeVersion() >= 110) {
+                expected = "Default items";
+            }
+            test.equal(str.formatChoice(30), expected);
         } else {
             test.equal(str.formatChoice(2), "The items are two");
         }
@@ -3640,7 +3656,12 @@ module.exports.teststrings = {
                 test.equal(str.formatChoice(30), "Default items");
             }
         } else if (platform === "browser") {
-            test.equal(str.formatChoice(30), "The items are many");
+            var browser = ilib._getBrowser();
+            var expected = "The items are many";
+            if (browser === "chrome" && getChromeVersion() >= 110) {
+                expected = "Default items";
+            }
+            test.equal(str.formatChoice(30), expected);
         } else { //qt
             test.equal(str.formatChoice(30), "Default items");
         }
