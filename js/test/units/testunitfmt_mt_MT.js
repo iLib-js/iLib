@@ -32,6 +32,11 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
+function getChromeVersion () {
+    var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
+    return raw ? parseInt(raw[2], 10) : false;
+}
+
 module.exports.testunitfmt_mt_MT = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -129,7 +134,12 @@ module.exports.testunitfmt_mt_MT = {
                 test.equal(str, "2 ċentimetru kwadru");
             }
         } else if (platform === "browser") {
-            test.equal(str, "2 ċentimetri kwadri");
+            var browser = ilib._getBrowser();
+            var expected = "2 ċentimetri kwadri";
+            if (browser === "chrome" && getChromeVersion() >= 110) {
+                expected = "2 ċentimetru kwadru";
+            }
+            test.equal(str, expected);
         } else {
             test.equal(str, "2 ċentimetru kwadru");
         }
@@ -209,7 +219,12 @@ module.exports.testunitfmt_mt_MT = {
                 test.equal(str, "2 kilometru kull litru");
             }
         } else if (platform === "browser") {
-            test.equal(str, "2 kilometri kull litru");
+            var browser = ilib._getBrowser();
+            var expected = "2 kilometri kull litru";
+            if (browser === "chrome" && getChromeVersion() >= 110) {
+                expected = "2 kilometru kull litru";
+            }
+            test.equal(str, expected);
         } else {
             test.equal(str, "2 kilometru kull litru");
         }

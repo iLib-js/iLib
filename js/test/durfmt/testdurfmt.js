@@ -25,6 +25,11 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
+function getChromeVersion () {
+    var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
+    return raw ? parseInt(raw[2], 10) : false;
+}
+
 module.exports.testdurfmt = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -2431,7 +2436,12 @@ module.exports.testdurfmt = {
                 test.equal(duration.toString(), '‏20 שנים, 20 חודשים, 20 שבועות, 20 ימים, 20 שעות, 20 דקות ו-20 שניות');
             }
         } else if (platform === "browser") {
-            test.equal(duration.toString(), '‏20 שנים, 20 חודשים, 20 שבועות, 20 יום, 20 שעות, 20 דקות ו-‏20 שניות');
+            var browser = ilib._getBrowser();
+            var expected = '‏20 שנים, 20 חודשים, 20 שבועות, 20 יום, 20 שעות, 20 דקות ו-‏20 שניות';
+            if (browser === "chrome" && getChromeVersion() >= 110) {
+                expected = '‏20 שנים, 20 חודשים, 20 שבועות, 20 ימים, 20 שעות, 20 דקות ו-20 שניות';
+            }
+            test.equal(duration.toString(), expected);
         } else {
             test.equal(duration.toString(), '‏20 שנים, 20 חודשים, 20 שבועות, 20 ימים, 20 שעות, 20 דקות ו-20 שניות');
         }
