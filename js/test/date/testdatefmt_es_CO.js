@@ -260,7 +260,7 @@ module.exports.testdatefmt_es_CO = {
     },
     testDateFmtTemplatelendar_es_CO: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "es-CO", lendar: "julian", template: "yyyy-MM-dd"});
+        var fmt = new DateFmt({locale: "es-CO", calendar: "julian", template: "yyyy-MM-dd", timezone: "local"});
         test.ok(fmt !== null);
     
         var date = new JulianDate({
@@ -272,7 +272,7 @@ module.exports.testdatefmt_es_CO = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011-10-12");
+        test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
     testDateFmtTemplateClock12SwitchHH_es_CO: function(test) {

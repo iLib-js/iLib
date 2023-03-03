@@ -3500,7 +3500,7 @@ module.exports.teststrings = {
         } else if (platform === "browser") {
             var browser = ilib._getBrowser();
             var expected = "The items are few";
-            if (browser === "chrome" && getChromeVersion() >= 109) {
+            if (browser === "chrome" && getChromeVersion() >= 102) {
                 expected = "Default items";
             }
             test.equal(str.formatChoice(30), expected);
