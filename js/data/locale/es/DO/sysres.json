@@ -12,6 +12,8 @@
     "1#1 wk|#{num} wks": "one#{num} sem.|#{num} sems.",
     "1#1 yr|#{num} yrs": "one#{num} a.|#{num} aa.",
     "E3": "M",
+    "G-1": "a.e.c.",
+    "G1": "e.c.",
     "durationLongDays": "one#{num} d.|#{num} dd.",
     "durationMediumWeeks": "one#{num}sem.|#{num}sems.",
     "durationMediumYears": "one#{num}a.|#{num}aa.",

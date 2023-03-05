@@ -1,7 +1,7 @@
 /*
  * testunitfmt_my_MM.js - test the unitfmt for my-MM
  *
- * Copyright © 2020-2022 JEDLSoft
+ * Copyright © 2020-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -246,7 +246,7 @@ module.exports.testunitfmt_my_MM = {
             useNative: false
         });
         var str = uf.format(m1);
-        test.equal(str, '6.21 မိုင်');
+        test.equal(str, '6.21 mi');
         test.done();
     },
     testUnitFormatWithUsageVehicleDistance2_my_MM: function(test) {

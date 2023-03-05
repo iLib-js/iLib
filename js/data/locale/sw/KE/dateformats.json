@@ -1,0 +1,28 @@
+{
+    "gregorian": {
+        "order": {
+            "f": "{date} 'saa' {time}",
+            "l": "{date} 'saa' {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
+        },
+        "range": {
+            "c00": {
+                "f": "{sd} {sm} {sy} saa {st} – {et}",
+                "l": "{sd} {sm} {sy} saa {st} – {et}"
+            },
+            "c01": {
+                "f": "{sd} {sm} {sy} saa {st} – {ed} {em} {ey} saa {et}",
+                "l": "{sd} {sm} {sy} saa {st} – {ed} {em} {ey} saa {et}"
+            },
+            "c02": {
+                "f": "{sd} {sm} {sy} saa {st} – {ed} {em} {ey} saa {et}",
+                "l": "{sd} {sm} {sy} saa {st} – {ed} {em} {ey} saa {et}"
+            },
+            "c03": {
+                "f": "{sd} {sm} {sy} saa {st} – {ed} {em} {ey} saa {et}",
+                "l": "{sd} {sm} {sy} saa {st} – {ed} {em} {ey} saa {et}"
+            }
+        }
+    }
+}

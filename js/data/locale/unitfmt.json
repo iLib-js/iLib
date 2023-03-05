@@ -129,7 +129,6 @@
             "meter": "#{n} m",
             "meter-per-second": "#{n} m/s",
             "meter-per-square-second": "#{n} m/s²",
-            "metric-ton": "#{n} t",
             "microgram": "#{n} μg",
             "micrometer": "#{n} μm",
             "microsecond": "#{n} μs",
@@ -188,6 +187,7 @@
             "pound-force-per-square-inch": "#{n} psi",
             "quart": "#{n} qt",
             "quart-imperial": "one#{n} imperial quart|#{n} imperial quarts",
+            "quarter": "#{n} q",
             "radian": "#{n} rad",
             "revolution": "#{n} rev",
             "second": "#{n} s",
@@ -214,6 +214,7 @@
             "terabyte-per-second": "#{n} TB/s",
             "therm-us": "#{n} US therm",
             "ton": "#{n} tn",
+            "tonne": "#{n} t",
             "volt": "#{n} V",
             "watt": "#{n} W",
             "watt-hour": "one#{n} watt hour|#{n} watt hours",
@@ -350,7 +351,6 @@
             "meter": "#{n} m",
             "meter-per-second": "#{n} m/s",
             "meter-per-square-second": "#{n} m/s²",
-            "metric-ton": "#{n} t",
             "microgram": "#{n} μg",
             "micrometer": "#{n} μm",
             "microsecond": "#{n} μs",
@@ -409,6 +409,7 @@
             "pound-force-per-square-inch": "#{n} psi",
             "quart": "#{n} qt",
             "quart-imperial": "one#{n} qt(i)|#{n} qt(i)",
+            "quarter": "#{n} q",
             "radian": "#{n} rad",
             "revolution": "#{n} rev",
             "second": "#{n} s",
@@ -435,6 +436,7 @@
             "terabyte-per-second": "#{n} TB/s",
             "therm-us": "#{n} US therm",
             "ton": "#{n} tn",
+            "tonne": "#{n} t",
             "volt": "#{n} V",
             "watt": "#{n} W",
             "watt-hour": "one#{n} Wh|#{n} Wh",
@@ -980,7 +982,7 @@
                 ],
                 "metric": [
                     "kilogram",
-                    "metric-ton"
+                    "tonne"
                 ],
                 "uscustomary": [
                     "pound",

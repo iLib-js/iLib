@@ -1,7 +1,7 @@
 /*
  * MassUnit.js - Unit conversions for weight/mass measurements
  *
- * Copyright © 2014-2015, 2018 JEDLSoft
+ * Copyright © 2014-2015, 2018,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,7 +60,7 @@ MassUnit.ratios = {
     "kilogram":    [ 6,   1e+9,       1e+6,      1000,      35.274,     2.20462,     1,          0.157473,     0.00110231,  0.001,        0.000984207  ],
     "stone":       [ 7,   6.35e+9,    6.35e+6,   6350.29,   224,        14,          6.35029,    1,            0.007,       0.00635029,   0.00625      ],
     "short-ton":   [ 8,   9.072e+11,  9.072e+8,  907185,    32000,      2000,        907.185,    142.857,      1,           0.907185,     0.892857     ],
-    "metric-ton":  [ 9,   1e+12,      1e+9,      1e+6,      35274,      2204.62,     1000,       157.473,      1.10231,     1,            0.984207     ],
+    "tonne":  [ 9,   1e+12,      1e+9,      1e+6,      35274,      2204.62,     1000,       157.473,      1.10231,     1,            0.984207     ],
     "long-ton":    [ 10,  1.016e+12,  1.016e+9,  1.016e+6,  35840,      2240,        1016.05,    160,          1.12,        1.01605,      1            ]
 };
 
@@ -80,7 +80,7 @@ MassUnit.systems = {
         "milligram",
         "gram",
         "kilogram",
-        "metric-ton"
+        "tonne"
     ],
     "imperial": [
         "ounce",
@@ -100,14 +100,14 @@ MassUnit.systems = {
                 "milligram": "ounce",
                 "gram": "ounce",
                 "kilogram": "pound",
-                "metric-ton": "short-ton"
+                "tonne": "short-ton"
             },
             "imperial": {
                 "microgram": "ounce",
                 "milligram": "ounce",
                 "gram": "ounce",
                 "kilogram": "pound",
-                "metric-ton": "long-ton"
+                "tonne": "long-ton"
             }
         },
         "uscustomary": {
@@ -119,7 +119,7 @@ MassUnit.systems = {
             "metric": {
                 "ounce": "gram",
                 "pound": "kilogram",
-                "short-ton": "metric-ton"
+                "short-ton": "tonne"
             }
         },
         "imperial": {
@@ -133,7 +133,7 @@ MassUnit.systems = {
                 "ounce": "gram",
                 "pound": "kilogram",
                 "stone": "kilogram",
-                "long-ton": "metric-ton"
+                "long-ton": "tonne"
             }
         }
     }
@@ -202,14 +202,14 @@ MassUnit.aliases = {
     "st":"stone",
     "stones":"stone",
     "Stone":"stone",
-    "metric ton":"metric-ton",
-    "metricton":"metric-ton",
-    "t":"metric-ton",
-    "tonne":"metric-ton",
-    "tonnes":"metric-ton",
-    "Tonne":"metric-ton",
-    "Metric Ton":"metric-ton",
-    "MetricTon":"metric-ton",
+    "metric ton":"tonne",
+    "metricton":"tonne",
+    "t":"tonne",
+    "tonne":"tonne",
+    "tonnes":"tonne",
+    "Tonne":"tonne",
+    "Metric Ton":"tonne",
+    "MetricTon":"tonne",
     "long ton":"long-ton",
     "longton":"long-ton",
     "Longton":"long-ton",

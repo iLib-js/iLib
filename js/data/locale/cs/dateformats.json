@@ -93,28 +93,34 @@
                 "s": "MM.yy"
             }
         },
+        "order": {
+            "f": "{date} 'v' {time}",
+            "l": "{date} 'v' {time}",
+            "m": "{date} {time}",
+            "s": "{date} {time}"
+        },
         "range": {
             "c00": {
-                "f": "{sd}. {sm} {sy} {st} – {et}",
-                "l": "{sd}. {sm} {sy} {st} – {et}",
+                "f": "{sd}. {sm} {sy} v {st} – {et}",
+                "l": "{sd}. {sm} {sy} v {st} – {et}",
                 "m": "{sd}. {sm}. {sy} {st} – {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {et}"
             },
             "c01": {
-                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
+                "f": "{sd}. {sm} {sy} v {st} – {ed}. {em} {ey} v {et}",
+                "l": "{sd}. {sm} {sy} v {st} – {ed}. {em} {ey} v {et}",
                 "m": "{sd}. {sm}. {sy} {st} – {ed}. {em}. {ey} {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
             },
             "c02": {
-                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
+                "f": "{sd}. {sm} {sy} v {st} – {ed}. {em} {ey} v {et}",
+                "l": "{sd}. {sm} {sy} v {st} – {ed}. {em} {ey} v {et}",
                 "m": "{sd}. {sm}. {sy} {st} – {ed}. {em}. {ey} {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
             },
             "c03": {
-                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
+                "f": "{sd}. {sm} {sy} v {st} – {ed}. {em} {ey} v {et}",
+                "l": "{sd}. {sm} {sy} v {st} – {ed}. {em} {ey} v {et}",
                 "m": "{sd}. {sm}. {sy} {st} – {ed}. {em}. {ey} {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
             },
@@ -149,11 +155,7 @@
         },
         "time": {
             "12": {
-                "ah": "h a",
-                "ahm": "h:mm a",
-                "ahms": "h:mm:ss a",
-                "ahmsz": "h:mm:ss a z",
-                "ahmz": "h:mm a z"
+                "ah": "h a"
             }
         }
     }

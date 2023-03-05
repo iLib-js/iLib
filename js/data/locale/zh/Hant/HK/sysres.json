@@ -26,10 +26,8 @@
     "B3": "早上",
     "durationLongDays": "#{num} 日",
     "durationMediumHours": "#{num}小時",
-    "durationMediumMillis": "#{num}毫秒",
     "durationMediumWeeks": "#{num}週",
     "durationMediumYears": "#{num}年",
-    "durationShortMillis": "#{num}毫秒",
     "durationShortMinutes": "#{num}分",
     "durationShortMonths": "#{num}個月"
 }

@@ -150,11 +150,11 @@
         },
         "time": {
             "12": {
-                "ah": "a h",
-                "ahm": "h:mma h",
-                "ahms": "h:mm:ssa h",
-                "ahmsz": "h:mm:ssa h z",
-                "ahmz": "h:mma h z"
+                "ah": "a h",
+                "ahm": "h:mma h",
+                "ahms": "h:mm:ssa h",
+                "ahmsz": "h:mm:ssa h z",
+                "ahmz": "h:mma h z"
             }
         }
     }

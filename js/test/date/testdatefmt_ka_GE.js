@@ -35,7 +35,6 @@ module.exports.testdatefmt_ka_GE = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtConstructorEmpty_ka_GE: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "ka-GE"});
@@ -43,7 +42,6 @@ module.exports.testdatefmt_ka_GE = {
         test.ok(fmt !== null);
         test.done();
     },
-
     testDateFmtSimpleShort_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "short"});
@@ -62,7 +60,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "29.09.11");
         test.done();
     },
-
     testDateFmtSimpleMedium_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "medium"});
@@ -81,7 +78,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "29 სექ. 2011");
         test.done();
     },
-
     testDateFmtSimpleLong_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "long"});
@@ -100,7 +96,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "29 სექტემბერი, 2011");
         test.done();
     },
-
     testDateFmtSimpleFull_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
@@ -119,7 +114,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '29 სექტემბერი, 2011');
         test.done();
     },
-
     testDateFmtSimpleTimeShort_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "short", type: "time"});
@@ -138,7 +132,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtSimpleTimeMedium_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "medium", type: "time"});
@@ -157,7 +150,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtSimpleTimeLong_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", timelength: "long", type: "time"});
@@ -176,7 +168,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtSimpleTimeFull_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", type: "time"});
@@ -195,7 +186,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '01:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleShort_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "short", type: "datetime"});
@@ -214,7 +204,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '29.09.11, 13:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleMedium_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "medium", type: "datetime"});
@@ -233,7 +222,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '29 სექ. 2011, 13:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleLong_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "long", type: "datetime"});
@@ -252,7 +240,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '29 სექტემბერი, 2011, 13:45');
         test.done();
     },
-
     testDateFmtDateTimeSimpleFull_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", type: "datetime"});
@@ -271,8 +258,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '29 სექტემბერი, 2011, 13:45');
         test.done();
     },
-
-
     testDateFmtTemplateCalendar_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", calendar: "julian", template: "yyyy-MM-dd"});
@@ -291,7 +276,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
     testDateFmtTemplateCalendarIncompatibleDateType_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
@@ -311,7 +295,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "2011-09-16 13:45");
         test.done();
     },
-
     testDateFmtTemplateClock12SwitchHH_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", clock: "12", template: "HH:mm"});
@@ -330,7 +313,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock12Switchkk_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", clock: "12", template: "kk:mm"});
@@ -349,7 +331,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock24Switchhh_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", clock: "24", template: "hh:mm"});
@@ -368,7 +349,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateClock24SwitchKK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", clock: "24", template: "KK:mm"});
@@ -387,7 +367,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", template: "hh:mm"});
@@ -406,7 +385,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", template: "KK:mm"});
@@ -425,7 +403,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", template: "HH:mm"});
@@ -444,7 +421,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", template: "kk:mm"});
@@ -463,8 +439,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
-
     testDateFmtTypeDate_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "date"});
@@ -483,7 +457,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '29.09.11');
         test.done();
     },
-
     testDateFmtTypeTime_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time"});
@@ -502,7 +475,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '13:45');
         test.done();
     },
-
     testDateFmtTypeDateTime_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "datetime"});
@@ -521,7 +493,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '29.09.11, 13:45');
         test.done();
     },
-
     testDateFmtShortDateComponentsY_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "y"});
@@ -540,7 +511,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "11");
         test.done();
     },
-
     testDateFmtShortDateComponentsM_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "m"});
@@ -559,7 +529,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "09");
         test.done();
     },
-
     testDateFmtShortDateComponentsN_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "n"});
@@ -578,7 +547,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), 'ს');
         test.done();
     },
-
     testDateFmtShortDateComponentsD_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "d"});
@@ -597,7 +565,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtShortDateComponentsDM_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "dm"});
@@ -616,7 +583,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '29.09');
         test.done();
     },
-
     testDateFmtShortDateComponentsMY_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "my"});
@@ -635,7 +601,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '09.11');
         test.done();
     },
-
     testDateFmtShortDateComponentsDMY_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "dmy"});
@@ -654,7 +619,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '29.09.11');
         test.done();
     },
-
     testDateFmtShortDateComponentsWDM_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "wdm"});
@@ -673,7 +637,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), 'ხ, 29.09');
         test.done();
     },
-
     testDateFmtShortDateComponentsWDMY_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "wdmy"});
@@ -692,7 +655,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), 'ხ, 29.09.11' );
         test.done();
     },
-
     testDateFmtLongDateComponentsWDM_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", date: "wdm", length: "long"});
@@ -711,7 +673,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), 'ხუთ, 29 სექტემბერი');
         test.done();
     },
-
     testDateFmtFullDateComponentsY_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "y"});
@@ -730,7 +691,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsM_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "m"});
@@ -749,7 +709,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "სექტემბერი");
         test.done();
     },
-
     testDateFmtFullDateComponentsD_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "d"});
@@ -768,7 +727,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtFullDateComponentsDM_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "dm"});
@@ -787,7 +745,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '29 სექტემბერი');
         test.done();
     },
-
     testDateFmtFullDateComponentsMY_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "my"});
@@ -806,7 +763,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), 'სექტემბერი, 2011');
         test.done();
     },
-
     testDateFmtFullDateComponentsDMY_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "dmy"});
@@ -825,7 +781,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), '29 სექტემბერი, 2011');
         test.done();
     },
-
     testDateFmtFullDateComponentsWDM_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "wdm"});
@@ -844,7 +799,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), 'ხუთშაბათი, 29 სექტემბერი');
         test.done();
     },
-
     testDateFmtFullDateComponentsWDMY_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full", date: "wdmy"});
@@ -863,7 +817,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), 'ხუთშაბათი, 29 სექტემბერი, 2011');
         test.done();
     },
-
     testDateFmtShortTimeComponentsS_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "s"});
@@ -882,7 +835,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsM_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "m"});
@@ -901,7 +853,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsH_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "h"});
@@ -920,7 +871,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtShortTimeComponentsMS_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "ms"});
@@ -939,7 +889,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHM_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "hm"});
@@ -958,7 +907,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMS_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "hms"});
@@ -977,7 +925,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMA_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "hma"});
@@ -996,7 +943,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1020,7 +966,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45 +04");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMAZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1044,7 +989,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45 +04");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSA_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", time: "hmsa"});
@@ -1063,7 +1007,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1087,7 +1030,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSAZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1111,7 +1053,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
-
     testDateFmtFullTimeComponentsS_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "s"});
@@ -1130,7 +1071,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsM_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "m"});
@@ -1149,7 +1089,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsH_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "h"});
@@ -1168,7 +1107,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtFullTimeComponentsMS_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "ms"});
@@ -1187,7 +1125,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHM_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "hm"});
@@ -1206,7 +1143,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMS_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "hms"});
@@ -1225,7 +1161,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMA_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "hma"});
@@ -1244,7 +1179,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1269,7 +1203,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45 +04");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMAZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1294,7 +1227,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45 +04");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSA_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", type: "time", length: "full", time: "hmsa"});
@@ -1313,7 +1245,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1338,7 +1269,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSAZ_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1363,7 +1293,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
-
     testDateFmtWithTimeZoneAndNoDST_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1388,7 +1317,6 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinMinuteAfter_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
@@ -1417,7 +1345,7 @@ module.exports.testdatefmt_ka_GE = {
         test.equal(fmt.formatRelative(reference, date), "30 წამში");
         test.done();
     },
-testDateFmtFormatRelativeWithinMinuteBefore_ka_GE: function(test) {
+    testDateFmtFormatRelativeWithinMinuteBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
@@ -1445,7 +1373,7 @@ testDateFmtFormatRelativeWithinMinuteBefore_ka_GE: function(test) {
         test.equal(fmt.formatRelative(reference, date), "30 წამის წინ");
         test.done();
     },
-testDateFmtFormatRelativeWithinHourAfter_ka_GE: function(test) {
+    testDateFmtFormatRelativeWithinHourAfter_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
@@ -1473,7 +1401,7 @@ testDateFmtFormatRelativeWithinHourAfter_ka_GE: function(test) {
         test.equal(fmt.formatRelative(reference, date), "10 წუთში");
         test.done();
     },
-testDateFmtFormatRelativeWithinHourBefore_ka_GE: function(test) {
+    testDateFmtFormatRelativeWithinHourBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
@@ -1501,7 +1429,7 @@ testDateFmtFormatRelativeWithinHourBefore_ka_GE: function(test) {
         test.equal(fmt.formatRelative(reference, date), '10 წუთის წინ');
         test.done();
     },
-testDateFmtFormatRelativeWithinDayAfter_ka_GE: function(test) {
+    testDateFmtFormatRelativeWithinDayAfter_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
@@ -1529,7 +1457,7 @@ testDateFmtFormatRelativeWithinDayAfter_ka_GE: function(test) {
         test.equal(fmt.formatRelative(reference, date), '4 საათში');
         test.done();
     },
-testDateFmtFormatRelativeWithinDayBefore_ka_GE: function(test) {
+    testDateFmtFormatRelativeWithinDayBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
@@ -1557,7 +1485,6 @@ testDateFmtFormatRelativeWithinDayBefore_ka_GE: function(test) {
         test.equal(fmt.formatRelative(reference, date), '4 საათის წინ');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
@@ -1586,7 +1513,7 @@ testDateFmtFormatRelativeWithinDayBefore_ka_GE: function(test) {
         test.equal(fmt.formatRelative(reference, date), '4 დღეში');
         test.done();
     },
-testDateFmtFormatRelativeWithinFortnightBefore_ka_GE: function(test) {
+    testDateFmtFormatRelativeWithinFortnightBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
@@ -1614,7 +1541,6 @@ testDateFmtFormatRelativeWithinFortnightBefore_ka_GE: function(test) {
         test.equal(fmt.formatRelative(reference, date),  '4 დღის წინ');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
@@ -1643,7 +1569,7 @@ testDateFmtFormatRelativeWithinFortnightBefore_ka_GE: function(test) {
         test.equal(fmt.formatRelative(reference, date), '9 კვირაში');
         test.done();
     },
-testDateFmtFormatRelativeWithinQuarterBefore_ka_GE: function(test) {
+    testDateFmtFormatRelativeWithinQuarterBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
@@ -1671,7 +1597,6 @@ testDateFmtFormatRelativeWithinQuarterBefore_ka_GE: function(test) {
         test.equal(fmt.formatRelative(reference, date), '9 კვირის წინ');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
@@ -1700,7 +1625,7 @@ testDateFmtFormatRelativeWithinQuarterBefore_ka_GE: function(test) {
         test.equal(fmt.formatRelative(reference, date), '16 თვეში');
         test.done();
     },
-testDateFmtFormatRelativeWithinTwoYearsBefore_ka_GE: function(test) {
+    testDateFmtFormatRelativeWithinTwoYearsBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);
@@ -1728,7 +1653,6 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ka_GE: function(test) {
         test.equal(fmt.formatRelative(reference, date), '14 თვის წინ');
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
@@ -1757,7 +1681,7 @@ testDateFmtFormatRelativeWithinTwoYearsBefore_ka_GE: function(test) {
         test.equal(fmt.formatRelative(reference, date), '14 წელიწადში');
         test.done();
     },
-testDateFmtFormatRelativeYearsBefore_ka_GE: function(test) {
+    testDateFmtFormatRelativeYearsBefore_ka_GE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ka-GE", length: "full"});
         test.ok(fmt !== null);

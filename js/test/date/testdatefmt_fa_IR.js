@@ -1,7 +1,7 @@
 /*
  * testdatefmt_fa_IR.js - test the date formatter in saudi Arabia
  *
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,6 @@ module.exports.testdatefmt_fa_IR = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtSimpleShort_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -63,7 +62,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۲۰۱۱/۹/۲۹");
         test.done();
     },
-
     testDateFmtSimpleMedium_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -86,7 +84,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۲۹ سپتامبر ۲۰۱۱");
         test.done();
     },
-
     testDateFmtSimpleLong_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -109,7 +106,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۲۹ سپتامبر ۲۰۱۱");
         test.done();
     },
-
     testDateFmtSimpleFull_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -132,7 +128,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۲۹ سپتامبر ۲۰۱۱");
         test.done();
     },
-
     testDateFmtSimpleTimeShort_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -156,7 +151,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵");
         test.done();
     },
-
     testDateFmtSimpleTimeMedium_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -180,7 +174,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵");
         test.done();
     },
-
     testDateFmtSimpleTimeLong_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -204,7 +197,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵");
         test.done();
     },
-
     testDateFmtSimpleTimeFull_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -228,7 +220,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵");
         test.done();
     },
-
     testDateFmtDateTimeSimpleShort_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -249,10 +240,9 @@ module.exports.testdatefmt_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۰۱۱/۹/۲۹،‏ ‏۱۳:۴۵");
+        test.equal(fmt.format(date), '‏۲۰۱۱/۹/۲۹, ‏۱۳:۴۵');
         test.done();
     },
-
     testDateFmtDateTimeSimpleMedium_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -273,10 +263,9 @@ module.exports.testdatefmt_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۹ سپتامبر ۲۰۱۱،‏ ‏۱۳:۴۵");
+        test.equal(fmt.format(date), '‏۲۹ سپتامبر ۲۰۱۱، ‏۱۳:۴۵');
         test.done();
     },
-
     testDateFmtDateTimeSimpleLong_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -297,10 +286,9 @@ module.exports.testdatefmt_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۹ سپتامبر ۲۰۱۱، ساعت ‏۱۳:۴۵");
+        test.equal(fmt.format(date), '‏۲۹ سپتامبر ۲۰۱۱ ساعت ‏۱۳:۴۵');
         test.done();
     },
-
     testDateFmtDateTimeSimpleFull_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -321,11 +309,9 @@ module.exports.testdatefmt_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۹ سپتامبر ۲۰۱۱، ساعت ‏۱۳:۴۵");
+        test.equal(fmt.format(date), '‏۲۹ سپتامبر ۲۰۱۱ ساعت ‏۱۳:۴۵');
         test.done();
     },
-
-
     testDateFmtTemplateCalendar_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -348,8 +334,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۲۰۱۱-۰۹-۲۹");
         test.done();
     },
-
-
     testDateFmtTemplateClock12SwitchHH_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -373,7 +357,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۰۱:۴۵");
         test.done();
     },
-
     testDateFmtTemplateClock12Switchkk_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -397,7 +380,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۰۱:۴۵");
         test.done();
     },
-
     testDateFmtTemplateClock24Switchhh_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -421,7 +403,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۱۳:۴۵");
         test.done();
     },
-
     testDateFmtTemplateClock24SwitchKK_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -445,7 +426,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۱۳:۴۵");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -468,7 +448,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۰۱:۴۵");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -491,7 +470,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۰۱:۴۵");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -514,7 +492,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۱۳:۴۵");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -537,8 +514,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۱۳:۴۵");
         test.done();
     },
-
-
     testDateFmtTypeDate_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -561,7 +536,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۲۰۱۱/۹/۲۹");
         test.done();
     },
-
     testDateFmtTypeTime_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -584,7 +558,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵");
         test.done();
     },
-
     testDateFmtTypeDateTime_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -604,11 +577,9 @@ module.exports.testdatefmt_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۰۱۱/۹/۲۹،‏ ‏۱۳:۴۵");
+        test.equal(fmt.format(date), '‏۲۰۱۱/۹/۲۹, ‏۱۳:۴۵');
         test.done();
     },
-
-
     testDateFmtShortDateComponentsY_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -631,7 +602,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۲۰۱۱");
         test.done();
     },
-
     testDateFmtShortDateComponentsM_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -654,8 +624,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "س");
         test.done();
     },
-
-
     testDateFmtShortDateComponentsD_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -678,7 +646,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۲۹");
         test.done();
     },
-
     testDateFmtShortDateComponentsDM_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -701,7 +668,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۹/۲۹");
         test.done();
     },
-
     testDateFmtShortDateComponentsMY_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -724,7 +690,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۲۰۱۱/۹");
         test.done();
     },
-
     testDateFmtShortDateComponentsDMY_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -747,7 +712,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۲۰۱۱/۹/۲۹");
         test.done();
     },
-
     testDateFmtShortDateComponentsWDM_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -770,7 +734,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "پ ‏۹/۲۹");
         test.done();
     },
-
     testDateFmtShortDateComponentsWDMY_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -793,8 +756,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "پ ۲۰۱۱/۹/۲۹");
         test.done();
     },
-
-
     testDateFmtFullDateComponentsY_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -818,7 +779,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۲۰۱۱");
         test.done();
     },
-
     testDateFmtFullDateComponentsM_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -842,7 +802,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "سپتامبر");
         test.done();
     },
-
     testDateFmtFullDateComponentsD_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -866,7 +825,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۲۹");
         test.done();
     },
-
     testDateFmtFullDateComponentsDM_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -890,7 +848,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۲۹ سپتامبر");
         test.done();
     },
-
     testDateFmtFullDateComponentsMY_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -914,7 +871,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "سپتامبر ۲۰۱۱");
         test.done();
     },
-
     testDateFmtFullDateComponentsDMY_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -938,7 +894,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۲۹ سپتامبر ۲۰۱۱");
         test.done();
     },
-
     testDateFmtFullDateComponentsWDM_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -962,8 +917,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "پنجشنبه ‏۲۹ سپتامبر");
         test.done();
     },
-
-
     testDateFmtFullDateComponentsWDMY_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -987,8 +940,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "پنجشنبه ۲۹ سپتامبر ۲۰۱۱");
         test.done();
     },
-
-
     testDateFmtShortTimeComponentsS_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1012,7 +963,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۳۷");
         test.done();
     },
-
     testDateFmtShortTimeComponentsM_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1036,7 +986,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۴۵");
         test.done();
     },
-
     testDateFmtShortTimeComponentsH_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1060,7 +1009,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۱۳");
         test.done();
     },
-
     testDateFmtShortTimeComponentsMS_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1084,7 +1032,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۴۵:۳۷");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHM_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1108,7 +1055,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMS_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1132,7 +1078,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMA_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1156,7 +1101,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMZ_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1180,7 +1124,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵ (+۰۳۳۰/+۰۴۳۰)");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMAZ_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1204,7 +1147,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵ (+۰۳۳۰/+۰۴۳۰)");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSA_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1228,7 +1170,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSZ_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1252,7 +1193,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷ (+۰۳۳۰/+۰۴۳۰)");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSAZ_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1276,8 +1216,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷ (+۰۳۳۰/+۰۴۳۰)");
         test.done();
     },
-
-
     testDateFmtFullTimeComponentsS_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1302,7 +1240,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۳۷");
         test.done();
     },
-
     testDateFmtFullTimeComponentsM_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1327,7 +1264,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۴۵");
         test.done();
     },
-
     testDateFmtFullTimeComponentsH_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1352,7 +1288,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۱۳");
         test.done();
     },
-
     testDateFmtFullTimeComponentsMS_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1377,7 +1312,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "۴۵:۳۷");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHM_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1402,7 +1336,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMS_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1427,7 +1360,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMA_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1452,7 +1384,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMZ_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1477,7 +1408,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵ (+۰۳۳۰/+۰۴۳۰)");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMAZ_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1502,7 +1432,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵ (+۰۳۳۰/+۰۴۳۰)");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSA_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1527,7 +1456,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSZ_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1552,7 +1480,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷ (+۰۳۳۰/+۰۴۳۰)");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSAZ_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1577,7 +1504,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷ (+۰۳۳۰/+۰۴۳۰)");
         test.done();
     },
-
     testDateFmtWithTimeZoneAndNoDST_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1602,7 +1528,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷ (+۰۳۳۰/+۰۴۳۰)");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinMinuteAfter_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1763,8 +1688,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.formatRelative(reference, date), "‏4 ساعت بعد");
         test.done();
     },
-
-
     testDateFmtFormatRelativeWithinDayBefore_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1797,7 +1720,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.formatRelative(reference, date), "‏4 ساعت پیش");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1827,7 +1749,7 @@ module.exports.testdatefmt_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "‏4 روز بعد");
+        test.equal(fmt.formatRelative(reference, date), '‏4 روز دیگر');
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightBefore_fa_IR: function(test) {
@@ -1862,7 +1784,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.formatRelative(reference, date), "‏4 روز پیش");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1927,7 +1848,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.formatRelative(reference, date), "‏9 هفته پیش");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1992,7 +1912,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.formatRelative(reference, date), "‏14 ماه پیش");
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -2057,8 +1976,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.formatRelative(reference, date), "‏21 سال پیش");
         test.done();
     },
-
-
     /* Now Persian calendar tests */
 
     testDateFmtPersSimpleShort_fa_IR: function(test) {
@@ -2083,7 +2000,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), '‏۱۳۹۲/۹/۲۱');
         test.done();
     },
-
     testDateFmtPersSimpleMedium_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -2106,7 +2022,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۲۱ آذر ۱۳۹۲");
         test.done();
     },
-
     testDateFmtPersSimpleLong_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -2129,7 +2044,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۲۱ آذر ۱۳۹۲");
         test.done();
     },
-
     testDateFmtPersSimpleFull_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -2152,7 +2066,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳۹۲ آذر ۲۱");
         test.done();
     },
-
     testDateFmtPersSimpleTimeShort_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -2176,7 +2089,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵");
         test.done();
     },
-
     testDateFmtPersSimpleTimeMedium_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -2200,7 +2112,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵");
         test.done();
     },
-
     testDateFmtPersSimpleTimeLong_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -2224,7 +2135,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵");
         test.done();
     },
-
     testDateFmtPersSimpleTimeFull_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -2248,7 +2158,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳:۴۵");
         test.done();
     },
-
     testDateFmtPersDateTimeSimpleShort_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -2272,7 +2181,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), '‏۱۳۹۲/۹/۲۱،‏ ‏۱۳:۴۵');
         test.done();
     },
-
     testDateFmtPersDateTimeSimpleMedium_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -2296,7 +2204,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۲۱ آذر ۱۳۹۲،‏ ‏۱۳:۴۵");
         test.done();
     },
-
     testDateFmtPersDateTimeSimpleLong_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -2320,7 +2227,6 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۲۱ آذر ۱۳۹۲، ساعت ‏۱۳:۴۵");
         test.done();
     },
-
     testDateFmtPersDateTimeSimpleFull_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -2344,5 +2250,4 @@ module.exports.testdatefmt_fa_IR = {
         test.equal(fmt.format(date), "‏۱۳۹۲ آذر ۲۱، ساعت ‏۱۳:۴۵");
         test.done();
     }
-
 };

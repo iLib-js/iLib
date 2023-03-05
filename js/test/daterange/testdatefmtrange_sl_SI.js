@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_sl_SI.js - test the date range formatter object in Slovenian/Slovenia
  *
- * Copyright © 2012-2017,2021 JEDLSoft
+ * Copyright © 2012-2017,2021,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_sl_SI = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtSIRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sl-SI", length: "short"});
@@ -108,7 +107,7 @@ module.exports.testdatefmtrange_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31. december 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31. december 2011 ob 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtSIRangeInDayFull: function(test) {
@@ -134,10 +133,9 @@ module.exports.testdatefmtrange_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31. december 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31. december 2011 ob 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtSIRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sl-SI", length: "short"});
@@ -213,7 +211,7 @@ module.exports.testdatefmtrange_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30. december 2011 13:45 – 31. december 2011 14:30");
+        test.equal(fmt.format(start, end), "30. december 2011 ob 13:45 – 31. december 2011 ob 14:30");
         test.done();
     },
     testDateRngFmtSIRangeNextDayFull: function(test) {
@@ -239,10 +237,9 @@ module.exports.testdatefmtrange_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30. december 2011 13:45 – 31. december 2011 14:30");
+        test.equal(fmt.format(start, end), "30. december 2011 ob 13:45 – 31. december 2011 ob 14:30");
         test.done();
     },
-
     testDateRngFmtSIRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sl-SI", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_sl_SI = {
         test.equal(fmt.format(start, end), "20 – 31. december 2011");
         test.done();
     },
-
     testDateRngFmtSIRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sl-SI", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_sl_SI = {
         test.equal(fmt.format(start, end), "20. november – 31. december 2011");
         test.done();
     },
-
     testDateRngFmtSIRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sl-SI", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_sl_SI = {
         test.equal(fmt.format(start, end), "20. november 2011 – 31. januar 2012");
         test.done();
     },
-
     testDateRngFmtSIRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sl-SI", length: "short"});
@@ -688,5 +682,4 @@ module.exports.testdatefmtrange_sl_SI = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

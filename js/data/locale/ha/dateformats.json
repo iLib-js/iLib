@@ -41,32 +41,32 @@
             }
         },
         "order": {
-            "f": "{date} {time}",
+            "f": "{date} 'da' {time}",
             "l": "{date} 'da' {time}",
             "m": "{date}, {time}",
             "s": "{date}, {time}"
         },
         "range": {
             "c00": {
-                "f": "{sd} {sm}, {sy} {st} – {et}",
+                "f": "{sd} {sm}, {sy} da {st} – {et}",
                 "l": "{sd} {sm}, {sy} da {st} – {et}",
                 "m": "{sd} {sm}, {sy}, {st} – {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
+                "f": "{sd} {sm}, {sy} da {st} – {ed} {em}, {ey} da {et}",
                 "l": "{sd} {sm}, {sy} da {st} – {ed} {em}, {ey} da {et}",
                 "m": "{sd} {sm}, {sy}, {st} – {ed} {em}, {ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c02": {
-                "f": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
+                "f": "{sd} {sm}, {sy} da {st} – {ed} {em}, {ey} da {et}",
                 "l": "{sd} {sm}, {sy} da {st} – {ed} {em}, {ey} da {et}",
                 "m": "{sd} {sm}, {sy}, {st} – {ed} {em}, {ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
             },
             "c03": {
-                "f": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
+                "f": "{sd} {sm}, {sy} da {st} – {ed} {em}, {ey} da {et}",
                 "l": "{sd} {sm}, {sy} da {st} – {ed} {em}, {ey} da {et}",
                 "m": "{sd} {sm}, {sy}, {st} – {ed} {em}, {ey}, {et}",
                 "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"

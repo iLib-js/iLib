@@ -1,7 +1,7 @@
 /*
  * testlocalematch.js - test the locale matcher object
  *
- * Copyright © 2012-2015,2017,2019-2022 JEDLSoft
+ * Copyright © 2012-2015,2017,2019-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -128,6 +128,28 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "tk-Latn-TM");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLanguage_snb: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "snb"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "snb-Latn-MY");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLanguage_smd: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "smd"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "smd-Latn-AO");
         test.done();
     },
     testLocaleMatcherGetLikelyLocaleByLanguage8: function(test) {

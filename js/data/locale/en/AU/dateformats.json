@@ -25,6 +25,12 @@
                 "m": "d MMM yyyy",
                 "s": "d/M/yy"
             },
+            "e": {
+                "f": "cccc",
+                "l": "ccc",
+                "m": "cc",
+                "s": "c"
+            },
             "l": {
                 "f": "LLLL",
                 "l": "LLLL",

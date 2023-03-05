@@ -164,9 +164,9 @@
     "durationShortMillis": "one#{num} மி.வி.|#{num} மி.வி.",
     "durationShortMinutes": "one#{num} நிமி.|#{num} நிமி.",
     "durationShortMonths": "one#{num} மா|#{num} மா",
-    "finalSeparatorFull": " மற்றும் ",
-    "finalSeparatorLong": " மற்றும் ",
-    "finalSeparatorMedium": " மற்றும் ",
+    "finalSeparatorFull": ", ",
+    "finalSeparatorLong": ", ",
+    "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
     "separatorMedium": ", "
 }

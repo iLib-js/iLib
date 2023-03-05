@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_cs_CZ.js - test the date range formatter object in Czech/Czech-Republic
  *
- * Copyright © 2012-2017, 2020 JEDLSoft
+ * Copyright © 2012-2017, 2020,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_cs_CZ = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtCZRangeinDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "cs-CZ", length: "short"});
@@ -108,7 +107,7 @@ module.exports.testdatefmtrange_cs_CZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31. prosince 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31. prosince 2011 v 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtCZRangeinDayFull: function(test) {
@@ -134,10 +133,9 @@ module.exports.testdatefmtrange_cs_CZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31. prosince 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31. prosince 2011 v 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtCZRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "cs-CZ", length: "short"});
@@ -213,7 +211,7 @@ module.exports.testdatefmtrange_cs_CZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30. prosince 2011 13:45 – 31. prosince 2011 14:30");
+        test.equal(fmt.format(start, end), "30. prosince 2011 v 13:45 – 31. prosince 2011 v 14:30");
         test.done();
     },
     testDateRngFmtCZRangeNextDayFull: function(test) {
@@ -239,10 +237,9 @@ module.exports.testdatefmtrange_cs_CZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30. prosince 2011 13:45 – 31. prosince 2011 14:30");
+        test.equal(fmt.format(start, end), "30. prosince 2011 v 13:45 – 31. prosince 2011 v 14:30");
         test.done();
     },
-
     testDateRngFmtCZRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "cs-CZ", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_cs_CZ = {
         test.equal(fmt.format(start, end), "20 – 31. prosince 2011");
         test.done();
     },
-
     testDateRngFmtCZRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "cs-CZ", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_cs_CZ = {
         test.equal(fmt.format(start, end), "20. listopadu – 31. prosince 2011");
         test.done();
     },
-
     testDateRngFmtCZRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "cs-CZ", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_cs_CZ = {
         test.equal(fmt.format(start, end), "20. listopadu 2011 – 31. ledna 2012");
         test.done();
     },
-
     testDateRngFmtCZRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "cs-CZ", length: "short"});
@@ -688,5 +682,4 @@ module.exports.testdatefmtrange_cs_CZ = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

@@ -40,27 +40,21 @@
                 "s": "MM/yy"
             }
         },
-        "order": {
-            "f": "{date}, {time}",
-            "l": "{date}, {time}",
-            "m": "{date} {time}",
-            "s": "{date}, {time}"
-        },
         "range": {
             "c00": {
-                "m": "{sm}/{sd}/{sy} {st} – {et}",
+                "m": "{sm}/{sd}/{sy}, {st} – {et}",
                 "s": "{sm}/{sd}/{sy}, {st} – {et}"
             },
             "c01": {
-                "m": "{sm}/{sd}/{sy} {st} – {em}/{ed}/{ey} {et}",
+                "m": "{sm}/{sd}/{sy}, {st} – {em}/{ed}/{ey}, {et}",
                 "s": "{sm}/{sd}/{sy}, {st} – {em}/{ed}/{ey}, {et}"
             },
             "c02": {
-                "m": "{sm}/{sd}/{sy} {st} – {em}/{ed}/{ey} {et}",
+                "m": "{sm}/{sd}/{sy}, {st} – {em}/{ed}/{ey}, {et}",
                 "s": "{sm}/{sd}/{sy}, {st} – {em}/{ed}/{ey}, {et}"
             },
             "c03": {
-                "m": "{sm}/{sd}/{sy} {st} – {em}/{ed}/{ey} {et}",
+                "m": "{sm}/{sd}/{sy}, {st} – {em}/{ed}/{ey}, {et}",
                 "s": "{sm}/{sd}/{sy}, {st} – {em}/{ed}/{ey}, {et}"
             },
             "c10": {
@@ -80,6 +74,12 @@
             }
         },
         "time": {
+            "12": {
+                "ahm": "h:mm a",
+                "ahms": "h:mm:ss a",
+                "ahmsz": "h:mm:ss a z",
+                "ahmz": "h:mm a z"
+            },
             "24": {
                 "ah": "HH",
                 "ahm": "HH:mm",

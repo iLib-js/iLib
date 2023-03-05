@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_pt_BR.js - test the date range formatter object in portuguese/Brazil
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_pt_BR = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtBRRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "pt-BR", length: "short"});
@@ -56,7 +55,7 @@ module.exports.testdatefmtrange_pt_BR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31/12/2011, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtBRRangeInDayMedium: function(test) {
@@ -82,7 +81,7 @@ module.exports.testdatefmtrange_pt_BR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 de dez. de 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 de dez. de 2011, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtBRRangeInDayLong: function(test) {
@@ -108,7 +107,7 @@ module.exports.testdatefmtrange_pt_BR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 de dezembro de 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 de dezembro de 2011 às 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtBRRangeInDayFull: function(test) {
@@ -134,10 +133,9 @@ module.exports.testdatefmtrange_pt_BR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 de dezembro de 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 de dezembro de 2011 às 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtBRRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "pt-BR", length: "short"});
@@ -161,7 +159,7 @@ module.exports.testdatefmtrange_pt_BR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/2011 13:45 – 31/12/2011 14:30");
+        test.equal(fmt.format(start, end), "30/12/2011, 13:45 – 31/12/2011, 14:30");
         test.done();
     },
     testDateRngFmtBRRangeNextDayMedium: function(test) {
@@ -187,7 +185,7 @@ module.exports.testdatefmtrange_pt_BR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 de dez. de 2011 13:45 – 31 de dez. de 2011 14:30");
+        test.equal(fmt.format(start, end), "30 de dez. de 2011, 13:45 – 31 de dez. de 2011, 14:30");
         test.done();
     },
     testDateRngFmtBRRangeNextDayLong: function(test) {
@@ -213,7 +211,7 @@ module.exports.testdatefmtrange_pt_BR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 de dezembro de 2011 13:45 – 31 de dezembro de 2011 14:30");
+        test.equal(fmt.format(start, end), "30 de dezembro de 2011 às 13:45 – 31 de dezembro de 2011 às 14:30");
         test.done();
     },
     testDateRngFmtBRRangeNextDayFull: function(test) {
@@ -239,10 +237,9 @@ module.exports.testdatefmtrange_pt_BR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 de dezembro de 2011 13:45 – 31 de dezembro de 2011 14:30");
+        test.equal(fmt.format(start, end), "30 de dezembro de 2011 às 13:45 – 31 de dezembro de 2011 às 14:30");
         test.done();
     },
-
     testDateRngFmtBRRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "pt-BR", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_pt_BR = {
         test.equal(fmt.format(start, end), "20 – 31 de dezembro de 2011");
         test.done();
     },
-
     testDateRngFmtBRRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "pt-BR", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_pt_BR = {
         test.equal(fmt.format(start, end), "20 de novembro – 31 de dezembro de 2011");
         test.done();
     },
-
     testDateRngFmtBRRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "pt-BR", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_pt_BR = {
         test.equal(fmt.format(start, end), "20 de novembro de 2011 – 31 de janeiro de 2012");
         test.done();
     },
-
     testDateRngFmtBRRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "pt-BR", length: "short"});

@@ -1,7 +1,7 @@
 /*
  * datefmts.js - auxillary tools used to generate the dateformats.json files
  *
- * Copyright © 2015-2022, JEDLSoft
+ * Copyright © 2015-2023, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -526,17 +526,17 @@ module.exports = {
 
             var lengths = ["full", "long", "medium", "short"];
 
-            var order = cldrCalendar.dateTimeFormats["full"];
-            if (order === cldrCalendar.dateTimeFormats["long"] &&
-                order === cldrCalendar.dateTimeFormats["medium"] &&
-                order === cldrCalendar.dateTimeFormats["short"]) {
+            var order = cldrCalendar['dateTimeFormats-atTime']["standard"]["full"];
+            if (order === cldrCalendar["dateTimeFormats-atTime"]["standard"]["long"] &&
+                order === cldrCalendar["dateTimeFormats-atTime"]["standard"]["medium"] &&
+                order === cldrCalendar["dateTimeFormats-atTime"]["standard"]["short"]) {
                 calendar.order = convertOrderFormat(order);
             } else {
                 calendar.order = {
                     "f": convertOrderFormat(order),
-                    "l": convertOrderFormat(cldrCalendar.dateTimeFormats["long"]),
-                    "m": convertOrderFormat(cldrCalendar.dateTimeFormats["medium"]),
-                    "s": convertOrderFormat(cldrCalendar.dateTimeFormats["short"])
+                    "l": convertOrderFormat(cldrCalendar["dateTimeFormats-atTime"]["standard"]["long"]),
+                    "m": convertOrderFormat(cldrCalendar["dateTimeFormats-atTime"]["standard"]["medium"]),
+                    "s": convertOrderFormat(cldrCalendar["dateTimeFormats-atTime"]["standard"]["short"])
                 };
             }
 

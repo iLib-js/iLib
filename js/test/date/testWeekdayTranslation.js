@@ -1,7 +1,7 @@
 /*
  * testWeekdayTranslation.js - test the weekday's translation
  *
- * Copyright © 2019-2022, JEDLSoft
+ * Copyright © 2019-2023, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -90,7 +90,6 @@ module.exports.testWeekdayTranslation = {
 
         test.done();
     },
-
     testWeekdayTranslation_ar_IQ: function(test) {
         test.expect(28);
         var fmt, value = [], i;
@@ -379,7 +378,6 @@ module.exports.testWeekdayTranslation = {
 
         test.done();
     },
-
     testWeekdayTranslation_bs_Latn_BA: function(test) {
         test.expect(28);
         var fmt, value = [], i;
@@ -1062,11 +1060,11 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "Su"); //standAlone format
+        test.equal(value[0], "Sun"); //standAlone format
         test.equal(value[1], "Mon"); //standAlone format
         test.equal(value[2], "Tu"); //standAlone format
         test.equal(value[3], "Wed"); //standAlone format
-        test.equal(value[4], "Th"); //standAlone format
+        test.equal(value[4], "Thu"); //standAlone format
         test.equal(value[5], "Fri"); //standAlone format
         test.equal(value[6], "Sat"); //standAlone format
 
@@ -2321,7 +2319,6 @@ module.exports.testWeekdayTranslation = {
 
         test.done();
     },
-
     testWeekdayTranslation_en_UG: function(test) {
         test.expect(28);
 
@@ -2562,7 +2559,6 @@ module.exports.testWeekdayTranslation = {
 
         test.done();
     },
-
     testWeekdayTranslation_es_BO: function(test) {
         test.expect(28);
         var fmt, value = [], i;
@@ -2801,7 +2797,6 @@ module.exports.testWeekdayTranslation = {
 
         test.done();
     },
-
     testWeekdayTranslation_es_EC: function(test) {
         test.expect(28);
         var fmt, value = [], i;
@@ -3661,7 +3656,6 @@ module.exports.testWeekdayTranslation = {
 
         test.done();
     },
-
     testWeekdayTranslation_et_EE: function(test) {
         test.expect(28);
         var fmt, value = [], i;
@@ -3673,13 +3667,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "Pühapäev");
-        test.equal(value[1], "Esmaspäev");
-        test.equal(value[2], "Teisipäev");
-        test.equal(value[3], "Kolmapäev");
-        test.equal(value[4], "Neljapäev");
-        test.equal(value[5], "Reede");
-        test.equal(value[6], "Laupäev");
+        test.equal(value[0], "pühapäev");
+        test.equal(value[1], "esmaspäev");
+        test.equal(value[2], "teisipäev");
+        test.equal(value[3], "kolmapäev");
+        test.equal(value[4], "neljapäev");
+        test.equal(value[5], "reede");
+        test.equal(value[6], "laupäev");
 
         fmt = new DateFmt({locale:"et-EE", date:"w", length: "long", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
@@ -3790,7 +3784,6 @@ module.exports.testWeekdayTranslation = {
 
         test.done();
     },
-
     testWeekdayTranslation_fa_IR: function(test) {
         test.expect(35);
         var fmt, value = [], i;
@@ -11944,13 +11937,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "တနင်္ဂနွေ");
-        test.equal(value[1], "တနင်္လာ");
-        test.equal(value[2], "အင်္ဂါ");
-        test.equal(value[3], "ဗုဒ္ဓဟူး");
-        test.equal(value[4], "ကြာသပတေး");
-        test.equal(value[5], "သောကြာ");
-        test.equal(value[6], "စနေ");
+        test.equal(value[0], 'နွေ');
+        test.equal(value[1], 'လာ');
+        test.equal(value[2], 'ဂါ');
+        test.equal(value[3], 'ဟူး');
+        test.equal(value[4], 'တေး');
+        test.equal(value[5], 'ကြာ');
+        test.equal(value[6], 'နေ');
 
         test.done();
     },

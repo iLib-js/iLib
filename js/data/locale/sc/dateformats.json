@@ -14,16 +14,16 @@
                 "s": "dd/MM"
             },
             "dmw": {
-                "f": "d 'de' MMMM, 'de' EEEE",
-                "l": "d 'de' MMMM, 'de' EEE",
-                "m": "d 'de' MMM, 'de' EE",
-                "s": "dd/MM, 'de' E"
+                "f": "EEEE d 'de' MMMM",
+                "l": "EEE d 'de' MMMM",
+                "m": "EE d 'de' MMM",
+                "s": "E dd/MM"
             },
             "dmwy": {
-                "f": "d 'de' MMMM 'de' 'su' yyyy, 'de' EEEE",
-                "l": "d 'de' MMMM 'de' 'su' yyyy, 'de' EEE",
-                "m": "d 'de' MMM yyyy, 'de' EE",
-                "s": "dd/MM/yyyy, 'de' E"
+                "f": "EEEE d 'de' MMMM 'de' 'su' yyyy",
+                "l": "EEE d 'de' MMMM 'de' 'su' yyyy",
+                "m": "EE d 'de' MMM yyyy",
+                "s": "E dd/MM/yyyy"
             },
             "dmy": {
                 "f": "d 'de' MMMM 'de' 'su' yyyy",
@@ -32,10 +32,7 @@
                 "s": "dd/MM/yyyy"
             },
             "dw": {
-                "f": "d 'de' EEEE",
-                "l": "d 'de' EEE",
-                "m": "d 'de' EE",
-                "s": "dd/E"
+                "s": "E dd"
             },
             "m": {
                 "l": "MMMM",

@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_hi_IN.js - test the date range formatter object in Hindi/India
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_hi_IN = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtRangeinDayShort_hi_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hi-IN", length: "short"});
@@ -108,7 +107,7 @@ module.exports.testdatefmtrange_hi_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 दिसंबर 2011 को 1:45 pm – 2:30 pm");
+        test.equal(fmt.format(start, end), "31 दिसंबर 2011 को 1:45 pm बजे – 2:30 pm");
         test.done();
     },
     testDateRngFmtRangeinDayFull_hi_IN: function(test) {
@@ -134,10 +133,9 @@ module.exports.testdatefmtrange_hi_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 दिसंबर 2011 को 1:45 pm – 2:30 pm");
+        test.equal(fmt.format(start, end), "31 दिसंबर 2011 को 1:45 pm बजे – 2:30 pm");
         test.done();
     },
-
     testDateRngFmtRangeNextDayShort_hi_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hi-IN", length: "short"});
@@ -213,7 +211,7 @@ module.exports.testdatefmtrange_hi_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 दिसंबर 2011 को 1:45 pm – 31 दिसंबर 2011 को 2:30 pm");
+        test.equal(fmt.format(start, end), "30 दिसंबर 2011 को 1:45 pm बजे – 31 दिसंबर 2011 को 2:30 pm बजे");
         test.done();
     },
     testDateRngFmtRangeNextDayFull_hi_IN: function(test) {
@@ -239,10 +237,9 @@ module.exports.testdatefmtrange_hi_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 दिसंबर 2011 को 1:45 pm – 31 दिसंबर 2011 को 2:30 pm");
+        test.equal(fmt.format(start, end), "30 दिसंबर 2011 को 1:45 pm बजे – 31 दिसंबर 2011 को 2:30 pm बजे");
         test.done();
     },
-
     testDateRngFmtRangeMultiDayShort_hi_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hi-IN", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_hi_IN = {
         test.equal(fmt.format(start, end), "20 – 31 दिसंबर 2011");
         test.done();
     },
-
     testDateRngFmtRangeNextMonthShort_hi_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hi-IN", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_hi_IN = {
         test.equal(fmt.format(start, end), "20 नवंबर – 31 दिसंबर 2011");
         test.done();
     },
-
     testDateRngFmtRangeNextYearShort_hi_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hi-IN", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_hi_IN = {
         test.equal(fmt.format(start, end), "20 नवंबर 2011 – 31 जनवरी 2012");
         test.done();
     },
-
     testDateRngFmtRangeMultiYearShort_hi_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hi-IN", length: "short"});
@@ -688,5 +682,4 @@ module.exports.testdatefmtrange_hi_IN = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

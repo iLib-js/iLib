@@ -1,7 +1,7 @@
 /*
  * testnumfmt.js - test the number formatter object
  *
- * Copyright © 2012-2018, 2020-2022 JEDLSoft
+ * Copyright © 2012-2018, 2020-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,6 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt();
 
         test.ok(fmt);
-
         test.equal(fmt.getType(), "number");
         test.equal(fmt.getMaxFractionDigits(), -1);
         test.equal(fmt.getMinFractionDigits(), -1);
@@ -59,7 +58,6 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt();
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.745), "1.745");
         test.done();
     },
@@ -69,7 +67,6 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt();
 
         test.ok(fmt);
-
         test.equal(fmt.format(), "");
         test.done();
     },
@@ -79,7 +76,6 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt();
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1.745), "-1.745");
         test.done();
     },
@@ -89,7 +85,6 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt();
 
         test.ok(fmt);
-
         // no limit imposed by the function -- JavaScript has a limit for itself though
         // of about 16 significant digits, which stems from the implementation of
         // floating point arithmetic that it uses
@@ -102,7 +97,6 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt();
 
         test.ok(fmt);
-
         // no limit imposed by the function -- JavaScript has a limit for itself though
         // of about 16 significant digits, which stems from the implementation of
         // floating point arithmetic that it uses
@@ -117,7 +111,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.7453), "1.75");
         test.done();
     },
@@ -129,7 +122,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.75), "1.7500");
         test.done();
     },
@@ -141,7 +133,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // lower bound is 0
         test.equal(fmt.format(1.75), "1.75");
         test.done();
@@ -154,7 +145,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // lower bound is 0
         test.equal(fmt.format(17500), "17,500");
         test.done();
@@ -167,7 +157,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // limit to 20, but the precision is only to 16 so it is rounded and zero-padded at the end
         test.equal(fmt.format(1.012345678901234567890123456789), "1.01234567890123460000");
         test.done();
@@ -181,7 +170,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.7), "1.700");
         test.done();
     },
@@ -194,7 +182,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.76543298765), "1.765433");
         test.done();
     },
@@ -207,7 +194,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.76543), "1.76543");
         test.done();
     },
@@ -219,7 +205,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.getMaxFractionDigits(), 2);
         test.done();
     },
@@ -231,7 +216,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.getMinFractionDigits(), 4);
         test.done();
     },
@@ -243,7 +227,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(2345678901234567.0), "2,345,678,901,234,567");
         test.done();
     },
@@ -255,7 +238,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123456789.4), "123,456,789.4");
         test.done();
     },
@@ -267,7 +249,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456789.4), "-123,456,789.4");
         test.done();
     },
@@ -279,7 +260,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(12345678901234567890123456789.0), "1.2345678901234568E+28");
         test.done();
     },
@@ -291,7 +271,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(0.000001234567890123456), "1.234567890123456E-6");
         test.done();
     },
@@ -304,7 +283,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(12345678901234567890123456789.0), "1.23457E+28");
         test.done();
     },
@@ -317,7 +295,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(0.0000012345678901234567890123456789), "1.23457E-6");
         test.done();
     },
@@ -330,7 +307,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(12340000000000000000000000000.0), "1.23400E+28");
         test.done();
     },
@@ -343,7 +319,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // min of 1 means we can have more digits than one!
         test.equal(fmt.format(12345678900000000000000000000.0), "1.23456789E+28");
         test.done();
@@ -357,7 +332,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123400000000000000000.0), "1.234E+20");
         test.done();
     },
@@ -370,7 +344,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(10000000000000000000000000000.0), "1E+28");
         test.done();
     },
@@ -383,7 +356,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // max is 20
         test.equal(fmt.format(12340000000000000000000000000.0), "1.23400000000000000000E+28");
         test.done();
@@ -398,7 +370,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(12345678901234567890123456789.0), "1.23457E+28");
         test.done();
     },
@@ -412,7 +383,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(12345678901234567890123456789.0), "1.23456E+28");
         test.done();
     },
@@ -426,7 +396,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(12345000000000000000000000000.0), "1.234E+28");
         test.done();
     },
@@ -440,7 +409,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(0.0000012345), "1.234E-6");
         test.done();
     },
@@ -454,7 +422,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(12345000000000000000000000000.0), "1.235E+28");
         test.done();
     },
@@ -468,7 +435,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(0.0000012), "1.200E-6");
         test.done();
     },
@@ -482,7 +448,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(0.00000123456789), "1.23457E-6");
         test.done();
     },
@@ -496,7 +461,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(0.0000012345), "1.2345E-6");
         test.done();
     },
@@ -508,7 +472,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123456789), "123456789");
         test.done();
     },
@@ -520,7 +483,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123456789.345345), "123456789.345345");
         test.done();
     },
@@ -534,7 +496,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(2014), "2014");
         test.done();
     },
@@ -548,7 +509,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1393), "۱۳۹۳");
         test.done();
     },
@@ -561,7 +521,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123456789.345945345), "123456789.346");
         test.done();
     },
@@ -574,7 +533,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.74475), "1.75");
         test.done();
     },
@@ -587,7 +545,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1.74475), "-1.74");
         test.done();
     },
@@ -600,7 +557,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.74475), "1.74");
         test.done();
     },
@@ -613,7 +569,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1.74475), "-1.74");
         test.done();
     },
@@ -626,7 +581,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.74475), "1.74");
         test.done();
     },
@@ -639,7 +593,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1.74475), "-1.75");
         test.done();
     },
@@ -652,7 +605,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.74475), "1.75");
         test.done();
     },
@@ -665,7 +617,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1.74475), "-1.75");
         test.done();
     },
@@ -678,7 +629,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.746), "1.75");
         test.done();
     },
@@ -691,7 +641,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.745), "1.74");
         test.done();
     },
@@ -704,7 +653,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1.746), "-1.75");
         test.done();
     },
@@ -717,7 +665,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1.745), "-1.74");
         test.done();
     },
@@ -730,7 +677,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.743), "1.74");
         test.done();
     },
@@ -743,7 +689,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.745), "1.74");
         test.done();
     },
@@ -756,7 +701,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // still round to the even neighbour
         test.equal(fmt.format(1.747), "1.75");
         test.done();
@@ -770,7 +714,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // no rounding
         test.equal(fmt.format(1.75), "1.75");
         test.done();
@@ -784,7 +727,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.753), "1.75");
         test.done();
     },
@@ -797,7 +739,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.755), "1.75");
         test.done();
     },
@@ -810,7 +751,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // still round to the even neighbour
         test.equal(fmt.format(1.757), "1.76");
         test.done();
@@ -824,7 +764,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.743), "1.74");
         test.done();
     },
@@ -837,7 +776,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.745), "1.75");
         test.done();
     },
@@ -850,7 +788,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // still round to the odd neighbour
         test.equal(fmt.format(1.747), "1.75");
         test.done();
@@ -864,7 +801,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // no rounding
         test.equal(fmt.format(1.75), "1.75");
         test.done();
@@ -878,7 +814,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.753), "1.75");
         test.done();
     },
@@ -891,7 +826,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.755), "1.75");
         test.done();
     },
@@ -904,7 +838,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // still round to the odd neighbour
         test.equal(fmt.format(1.757), "1.76");
         test.done();
@@ -918,7 +851,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.746), "1.75");
         test.done();
     },
@@ -931,7 +863,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.745), "1.75");
         test.done();
     },
@@ -944,7 +875,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1.746), "-1.75");
         test.done();
     },
@@ -957,7 +887,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1.745), "-1.75");
         test.done();
     },
@@ -969,7 +898,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // should work with string arguments
         test.equal(fmt.format("2345678901234567.0"), "2,345,678,901,234,567");
         test.done();
@@ -982,7 +910,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // should work with a number object
         test.equal(fmt.format(new Number(2345678901234567.0)), "2,345,678,901,234,567");
         test.done();
@@ -995,7 +922,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // should work with a number object
         test.equal(fmt.format(new Number(2345678901234567.0)), "2,345,678,901,234,567");
         test.done();
@@ -1008,7 +934,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.ok(!fmt.getUseNative());
         test.done();
     },
@@ -1020,7 +945,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.ok(fmt.getUseNative());
         test.done();
     },
@@ -1032,7 +956,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // Tamil does have native digits, but they are not frequently used
         test.ok(!fmt.getUseNative());
         test.done();
@@ -1045,7 +968,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // Oriya does have native digits, but they are not frequently used
         test.ok(!fmt.getUseNative());
         test.done();
@@ -1059,7 +981,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.ok(fmt.getUseNative());
         test.done();
     },
@@ -1072,7 +993,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.ok(fmt.getUseNative());
         test.done();
     },
@@ -1085,7 +1005,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.ok(!fmt.getUseNative());
         test.done();
     },
@@ -1098,7 +1017,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.ok(!fmt.getUseNative());
         test.done();
     },
@@ -1110,7 +1028,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123.456), "123.456");
         test.done();
     },
@@ -1123,7 +1040,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123.456), "123.456");
         test.done();
     },
@@ -1135,7 +1051,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123.456), "১২৩.৪৫৬");
         test.done();
     },
@@ -1147,7 +1062,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // oriya has native digits, but they are not used by default
         test.equal(fmt.format(123.456), "123.456");
         test.done();
@@ -1160,7 +1074,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         // Tamil has native digits, but they are not used by default
         test.equal(fmt.format(123.456), "123.456");
         test.done();
@@ -1175,7 +1088,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123.456), "১২৩.৪৫৬");
         test.done();
     },
@@ -1188,7 +1100,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123.456), "123.456");
         test.done();
     },
@@ -1201,7 +1112,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123.456), "௧௨௩.௪௫௬");
         test.done();
     },
@@ -1214,7 +1124,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123.456), "୧୨୩.୪୫୬");
         test.done();
     },
@@ -1227,7 +1136,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123.456), "123.456");
         test.done();
     },
@@ -1240,7 +1148,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123.456), "123.456");
         test.done();
     },
@@ -1252,7 +1159,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.745), "1,745");
         test.done();
     },
@@ -1264,7 +1170,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.ok(fmt.isGroupingUsed());
         test.done();
     },
@@ -1276,7 +1181,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1234567.745), "1.234.567,745");
         test.done();
     },
@@ -1288,7 +1192,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123456789.4), "123.456.789,4");
         test.done();
     },
@@ -1300,7 +1203,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456789.4), "-123.456.789,4");
         test.done();
     },
@@ -1312,7 +1214,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.745), "1,745");
         test.done();
     },
@@ -1324,7 +1225,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1234567.745), "1 234 567,745");
         test.done();
     },
@@ -1336,7 +1236,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1.745), "1,745");
         test.done();
     },
@@ -1348,7 +1247,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -1360,7 +1258,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.getType(), "percentage");
         test.done();
     },
@@ -1372,7 +1269,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -1385,7 +1281,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.789), "57.8%");
         test.done();
     },
@@ -1398,7 +1293,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57 %");
         test.done();
     },
@@ -1411,7 +1305,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57,8 %");
         test.done();
     },
@@ -1425,7 +1318,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.789), "57,8 %");
         test.done();
     },
@@ -1438,7 +1330,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.05), "$57.05");
         test.done();
     },
@@ -1451,7 +1342,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57), "$57.00");
         test.done();
     },
@@ -1464,7 +1354,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.getType(), "currency");
         test.done();
     },
@@ -1477,7 +1366,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.getStyle(), "common");
         test.done();
     },
@@ -1490,7 +1378,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.3467), "$57.35");
         test.done();
     },
@@ -1504,7 +1391,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.346), "$57.34600");
         test.done();
     },
@@ -1518,7 +1404,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.3467), "$57");
         test.done();
     },
@@ -1533,7 +1418,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.3467), "$57.347");
         test.done();
     },
@@ -1548,7 +1432,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.3467), "$57.347");
         test.done();
     },
@@ -1562,7 +1445,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.35), "USD57.35");
         test.done();
     },
@@ -1575,7 +1457,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.35), "€57.35");
         test.done();
     },
@@ -1589,7 +1470,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.35), "EUR57.35");
         test.done();
     },
@@ -1602,7 +1482,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.getMaxFractionDigits(), 2);
         test.equal(fmt.getMinFractionDigits(), 2);
         test.done();
@@ -1616,7 +1495,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.getMaxFractionDigits(), 0);
         test.equal(fmt.getMinFractionDigits(), 0);
         test.done();
@@ -1630,7 +1508,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(345.3), "¥345");
         test.done();
     },
@@ -1661,7 +1538,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.getMaxFractionDigits(), 0);
         test.equal(fmt.getMinFractionDigits(), 0);
         test.done();
@@ -1676,7 +1552,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(345.3), "¥345");
         test.done();
     },
@@ -1690,7 +1565,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100000.00), "100 000,00 $");
         test.done();
     },
@@ -1704,7 +1578,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100 110,57 $");
         test.done();
     },
@@ -1718,7 +1591,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.getRoundingMode(), "halfdown");
         test.done();
     },
@@ -1730,7 +1602,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.ok(fmt.isGroupingUsed());
         test.done();
     },
@@ -1742,7 +1613,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123456789.4), "123,456,789.4");
         test.done();
     },
@@ -1754,7 +1624,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456789.4), "-123,456,789.4");
         test.done();
     },
@@ -1766,7 +1635,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123456789.4), "123,456,789.4");
         test.done();
     },
@@ -1778,7 +1646,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456789.4), "-123,456,789.4");
         test.done();
     },
@@ -1790,7 +1657,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(0.7), "0.7");
         test.done();
     },
@@ -1802,7 +1668,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-0.7), "-0.7");
         test.done();
     },
@@ -1816,7 +1681,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123,456.78");
         test.done();
     },
@@ -1829,7 +1693,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-1,23,456.78");
         test.done();
     },
@@ -1844,7 +1707,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-১,২৩,৪৫৬.৭৮");
         test.done();
     },
@@ -1860,7 +1722,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-112345613232.785), "-1,12,34,56,13,232.78");
         test.done();
     },
@@ -1870,11 +1731,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "hi-IN",
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹1,00,110.57");
         test.done();
     },
@@ -1889,7 +1749,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹१,००,११०.५७");
         test.done();
     },
@@ -1904,7 +1763,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹१,००,११०.५७");
         test.done();
     },
@@ -1919,7 +1777,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-112345613232.785), "-১,১২,৩৪,৫৬,১৩,২৩২.৭৮");
         test.done();
     },
@@ -1933,8 +1790,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(100110.57), "১,০০,১১০.৫৭₹");
+        test.equal(fmt.format(100110.57), '₹১,০০,১১০.৫৭');
         test.done();
     },
 
@@ -1947,8 +1803,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(100110.57), "১,০০,১১০.৫৭₹");
+        test.equal(fmt.format(100110.57), '₹১,০০,১১০.৫৭');
         test.done();
     },
 
@@ -1961,7 +1816,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "৫৭.৮%");
         test.done();
     },
@@ -1977,7 +1831,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-12,34,568.78");
         test.done();
     },
@@ -1990,7 +1843,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-१२,३४,५६८.७८");
         test.done();
     },
@@ -2005,7 +1857,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹१,००,११०.५७");
         test.done();
     },
@@ -2017,11 +1868,10 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "mr-IN",
             useNative: false,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹1,00,110.57");
         test.done();
     },
@@ -2031,11 +1881,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "mr-IN",
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹१,००,११०.५७");
         test.done();
     },
@@ -2050,7 +1899,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹१,००,११०.५७");
         test.done();
     },
@@ -2064,7 +1912,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "५७.८%");
         test.done();
     },
@@ -2078,7 +1925,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -2094,7 +1940,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-1,234,568.78");
         test.done();
     },
@@ -2108,7 +1953,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-೧,೨೩೪,೫೬೮.೭೮");
         test.done();
     },
@@ -2119,11 +1963,10 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "kn-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹೧೦೦,೧೧೦.೫೭");
         test.done();
     },
@@ -2134,11 +1977,10 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "kn-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-₹೧೦೦,೧೧೦.೫೭");
         test.done();
     },
@@ -2152,7 +1994,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹100,110.57");
         test.done();
     },
@@ -2166,7 +2007,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "೫೭.೮%");
         test.done();
     },
@@ -2180,7 +2020,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -2195,7 +2034,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-12,34,568.78");
         test.done();
     },
@@ -2210,7 +2048,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-૧૨,૩૪,૫૬૮.૭૮");
         test.done();
     },
@@ -2221,11 +2058,10 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "gu-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹૧,૦૦,૧૧૦.૫૭");
         test.done();
     },
@@ -2236,11 +2072,10 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "gu-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-₹૧,૦૦,૧૧૦.૫૭");
         test.done();
     },
@@ -2255,7 +2090,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹1,00,110.57");
         test.done();
     },
@@ -2270,7 +2104,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "૫૭.૮%");
         test.done();
     },
@@ -2284,7 +2117,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -2299,7 +2131,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-12,34,568.78");
         test.done();
     },
@@ -2314,7 +2145,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-௧௨,௩௪,௫௬௮.௭௮");
         test.done();
     },
@@ -2325,12 +2155,11 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "ta-IN",
             useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(100110.57), "₹ ௧,௦௦,௧௧௦.௫௭");
+        test.equal(fmt.format(100110.57), "₹௧,௦௦,௧௧௦.௫௭");
         test.done();
     },
 
@@ -2340,12 +2169,11 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "ta-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(-100110.57), "-₹ ௧,௦௦,௧௧௦.௫௭");
+        test.equal(fmt.format(-100110.57), "-₹௧,௦௦,௧௧௦.௫௭");
         test.done();
     },
 
@@ -2354,12 +2182,11 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "ta-IN",
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(100110.57), "₹ 1,00,110.57");
+        test.equal(fmt.format(100110.57), "₹1,00,110.57");
         test.done();
     },
     testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_ta_IN: function(test) {
@@ -2367,12 +2194,11 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "ta-IN",
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(-100110.57), "-₹ 1,00,110.57");
+        test.equal(fmt.format(-100110.57), "-₹1,00,110.57");
         test.done();
     },
 
@@ -2386,7 +2212,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "௫௭.௮%");
         test.done();
     },
@@ -2399,7 +2224,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "-௫௭.௮%");
         test.done();
     },
@@ -2412,7 +2236,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -2424,7 +2247,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "-57.8%");
         test.done();
     },
@@ -2439,7 +2261,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-12,34,568.78");
         test.done();
     },
@@ -2454,7 +2275,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-୧୨,୩୪,୫୬୮.୭୮");
         test.done();
     },
@@ -2465,11 +2285,10 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "or-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹୧,୦୦,୧୧୦.୫୭");
         test.done();
     },
@@ -2480,11 +2299,10 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "or-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-₹୧,୦୦,୧୧୦.୫୭");
         test.done();
     },
@@ -2495,11 +2313,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "or-IN",
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹1,00,110.57");
         test.done();
     },
@@ -2514,7 +2331,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "୫୭.୮%");
         test.done();
     },
@@ -2527,7 +2343,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "-୫୭.୮%");
         test.done();
     },
@@ -2540,7 +2355,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -2552,7 +2366,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "-57.8%");
         test.done();
     },
@@ -2566,7 +2379,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-1,234,568.78");
         test.done();
     },
@@ -2576,11 +2388,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "ha-Latn-NG",
-        currency: "NGN"
+            currency: "NGN"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₦ 100,110.57");
         test.done();
     },
@@ -2590,11 +2401,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "ha-Latn-NG",
-        currency: "NGN"
+            currency: "NGN"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-₦ 100,110.57");
         test.done();
     },
@@ -2605,11 +2415,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "ha-Latn-NG",
-        currency: "NGN"
+            currency: "NGN"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₦ 100,110.57");
         test.done();
     },
@@ -2622,7 +2431,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -2636,7 +2444,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-12,34,568.78");
         test.done();
     },
@@ -2651,7 +2458,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-൧൨,൩൪,൫൬൮.൭൮");
         test.done();
     },
@@ -2662,11 +2468,10 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "ml-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹൧,൦൦,൧൧൦.൫൭");
         test.done();
     },
@@ -2677,11 +2482,10 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "ml-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-₹൧,൦൦,൧൧൦.൫൭");
         test.done();
     },
@@ -2691,11 +2495,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "ml-IN",
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹1,00,110.57");
         test.done();
     },
@@ -2709,7 +2512,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "൫൭.൮%");
         test.done();
     },
@@ -2722,7 +2524,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "-൫൭.൮%");
         test.done();
     },
@@ -2736,7 +2537,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -2751,7 +2551,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-12,34,568.78");
         test.done();
     },
@@ -2766,7 +2565,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-౧౨,౩౪,౫౬౮.౭౮");
         test.done();
     },
@@ -2777,11 +2575,10 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "te-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹౧,౦౦,౧౧౦.౫౭");
         test.done();
     },
@@ -2792,11 +2589,10 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "te-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-₹౧,౦౦,౧౧౦.౫౭");
         test.done();
     },
@@ -2806,11 +2602,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "te-IN",
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹1,00,110.57");
         test.done();
     },
@@ -2819,11 +2614,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "te-IN",
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-₹1,00,110.57");
         test.done();
     },
@@ -2837,7 +2631,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "౫౭.౮%");
         test.done();
     },
@@ -2850,7 +2643,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "-౫౭.౮%");
         test.done();
     },
@@ -2863,7 +2655,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -2875,7 +2666,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "-57.8%");
         test.done();
     },
@@ -2889,7 +2679,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-12,34,568.78");
         test.done();
     },
@@ -2904,7 +2693,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-੧੨,੩੪,੫੬੮.੭੮");
         test.done();
     },
@@ -2915,12 +2703,11 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "pa-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(100110.57), "₹ ੧,੦੦,੧੧੦.੫੭");
+        test.equal(fmt.format(100110.57), "₹੧,੦੦,੧੧੦.੫੭");
         test.done();
     },
 
@@ -2930,12 +2717,11 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "pa-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(-100110.57), "-₹ ੧,੦੦,੧੧੦.੫੭");
+        test.equal(fmt.format(-100110.57), "-₹੧,੦੦,੧੧੦.੫੭");
         test.done();
     },
 
@@ -2945,12 +2731,11 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "pa-IN",
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(100110.57), "₹ 1,00,110.57");
+        test.equal(fmt.format(100110.57), "₹1,00,110.57");
         test.done();
     },
     testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_pa_IN: function(test) {
@@ -2958,12 +2743,11 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "pa-IN",
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(-100110.57), "-₹ 1,00,110.57");
+        test.equal(fmt.format(-100110.57), "-₹1,00,110.57");
         test.done();
     },
 
@@ -2976,7 +2760,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "੫੭.੮%");
         test.done();
     },
@@ -2989,7 +2772,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "-੫੭.੮%");
         test.done();
     },
@@ -3002,7 +2784,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -3014,7 +2795,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "-57.8%");
         test.done();
     },
@@ -3029,7 +2809,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "‎-‎۱٬۲۳۴٬۵۶۸٫۷۸");
         test.done();
     },
@@ -3044,7 +2823,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "‎-‎۱٬۲۳۴٬۵۶۸٫۷۸");
         test.done();
     },
@@ -3055,11 +2833,10 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "ur-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹ ۱۰۰٬۱۱۰٫۵۷");
         test.done();
     },
@@ -3070,11 +2847,10 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "ur-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "‎-‎₹ ۱۰۰٬۱۱۰٫۵۷");
         test.done();
     },
@@ -3085,11 +2861,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "ur-IN",
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹ ۱۰۰٬۱۱۰٫۵۷");
         test.done();
     },
@@ -3104,7 +2879,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "۵۷٫۸%");
         test.done();
     },
@@ -3118,7 +2892,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "‎-‎۵۷٫۸%");
         test.done();
     },
@@ -3131,7 +2904,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "۵۷٫۸%");
         test.done();
     },
@@ -3146,7 +2918,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-১২,৩৪,৫৬৮.৭৮");
         test.done();
     },
@@ -3161,7 +2932,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-1234568.78), "-১২,৩৪,৫৬৮.৭৮");
         test.done();
     },
@@ -3172,11 +2942,10 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "as-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹ ১,০০,১১০.৫৭");
         test.done();
     },
@@ -3187,11 +2956,10 @@ module.exports.testnumfmt = {
             type: "currency",
             locale: "as-IN",
         useNative: true,
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-₹ ১,০০,১১০.৫৭");
         test.done();
     },
@@ -3205,7 +2973,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "৫৭.৮%");
         test.done();
     },
@@ -3219,7 +2986,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "৫৭.৮%");
         test.done();
     },
@@ -3234,7 +3000,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -3244,11 +3009,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-US",
-        currency: "USD"
+            currency: "USD"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "$100,110.57");
         test.done();
     },
@@ -3260,7 +3024,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -3276,7 +3039,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123,456.78");
         test.done();
     },
@@ -3290,7 +3052,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "$100,110.57");
         test.done();
     },
@@ -3302,7 +3063,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -3318,7 +3078,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123,456.78");
         test.done();
     },
@@ -3333,7 +3092,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₩100,110.57");
         test.done();
     },
@@ -3345,7 +3103,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -3359,7 +3116,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123,456.78");
         test.done();
     },
@@ -3373,7 +3129,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "¥100,110.57");
         test.done();
     },
@@ -3386,7 +3141,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-¥100,110.57");
         test.done();
     },
@@ -3398,7 +3152,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -3410,7 +3163,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.0), "-57%");
         test.done();
     },
@@ -3425,7 +3177,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123,456.78");
         test.done();
     },
@@ -3440,7 +3191,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "HKD100,110.57");
         test.done();
     },
@@ -3452,7 +3202,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -3466,7 +3215,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123,456.78");
         test.done();
     },
@@ -3481,7 +3229,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "TWD100,110.57");
         test.done();
     },
@@ -3493,7 +3240,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -3507,7 +3253,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), '-123 456,78');
         test.done();
     },
@@ -3520,7 +3265,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111 123 456,78");
         test.done();
     },
@@ -3534,7 +3278,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100 110,57 $");
         test.done();
     },
@@ -3548,7 +3291,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100 110,57 €");
         test.done();
     },
@@ -3561,7 +3303,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57 %");
         test.done();
     },
@@ -3575,7 +3316,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
@@ -3589,7 +3329,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.21), "57,21%");
         test.done();
     },
@@ -3602,7 +3341,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "R$ 100.110,57");
         test.done();
     },
@@ -3615,7 +3353,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123 456,78");
         test.done();
     },
@@ -3625,11 +3362,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "pt-PT",
-        currency: "EUR"
+            currency: "EUR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100 110,57 €");
         test.done();
     },
@@ -3641,7 +3377,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -3655,7 +3390,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
@@ -3665,11 +3399,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "es-ES",
-        currency: "EUR"
+            currency: "EUR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100.110,57 €");
         test.done();
     },
@@ -3681,7 +3414,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57 %");
         test.done();
     },
@@ -3694,7 +3426,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
@@ -3704,11 +3435,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "es-CO",
-        currency: "COP"
+            currency: "COP"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "$ 100.110,57");
         test.done();
     },
@@ -3720,7 +3450,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57 %");
         test.done();
     },
@@ -3733,7 +3462,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123,456.78");
         test.done();
     },
@@ -3743,11 +3471,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "ja-JP",
-        currency: "JPY"
+            currency: "JPY"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "¥100,111");
         test.done();
     },
@@ -3759,7 +3486,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -3773,7 +3499,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
@@ -3783,11 +3508,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "it-IT",
-        currency: "EUR"
+            currency: "EUR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100.110,57 €");
         test.done();
     },
@@ -3800,7 +3524,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -3813,7 +3536,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "−123 456,78");
         test.done();
     },
@@ -3823,11 +3545,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "sv-SE",
-        currency: "SEK"
+            currency: "SEK"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100 110,57 kr");
         test.done();
     },
@@ -3836,11 +3557,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "sv-SE",
-        currency: "SEK"
+            currency: "SEK"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "−100 110,57 kr");
         test.done();
     },
@@ -3852,7 +3572,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57 %");
         test.done();
     },
@@ -3864,7 +3583,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.0), "−57 %");
         test.done();
     },
@@ -3877,7 +3595,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "−123 456,78");
         test.done();
     },
@@ -3891,7 +3608,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100 110,57 €");
         test.done();
     },
@@ -3904,7 +3620,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "−100 110,57 €");
         test.done();
     },
@@ -3916,7 +3631,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57 %");
         test.done();
     },
@@ -3928,7 +3642,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.0), "−57 %");
         test.done();
     },
@@ -3941,7 +3654,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123 456,78");
         test.done();
     },
@@ -3951,11 +3663,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "cs-CZ",
-        currency: "CZK"
+            currency: "CZK"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100 110,57 Kč");
         test.done();
     },
@@ -3967,7 +3678,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57 %");
         test.done();
     },
@@ -3980,7 +3690,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
@@ -3990,11 +3699,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "el-GR",
-        currency: "EUR"
+            currency: "EUR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100.110,57 €");
         test.done();
     },
@@ -4006,7 +3714,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -4019,7 +3726,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123 456,78");
         test.done();
     },
@@ -4029,11 +3735,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "hu-HU",
-        currency: "HUF"
+            currency: "HUF"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100 110,57 Ft");
         test.done();
     },
@@ -4045,7 +3750,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -4058,7 +3762,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
@@ -4068,11 +3771,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "nl-NL",
-        currency: "ANG"
+            currency: "ANG"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "ƒ 100.110,57");
         test.done();
     },
@@ -4084,7 +3786,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -4097,7 +3798,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123 456,78");
         test.done();
     },
@@ -4107,11 +3807,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "pl-PL",
-        currency: "PLN"
+            currency: "PLN"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100 110,57 zł");
         test.done();
     },
@@ -4123,7 +3822,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -4136,7 +3834,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
@@ -4146,11 +3843,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "da-DK",
-        currency: "DKK"
+            currency: "DKK"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100.110,57 kr");
         test.done();
     },
@@ -4162,7 +3858,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57 %");
         test.done();
     },
@@ -4175,7 +3870,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
@@ -4185,11 +3879,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "ro-RO",
-        currency: "RON"
+            currency: "RON"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100.110,57 lei");
         test.done();
     },
@@ -4198,11 +3891,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "ro-RO",
-        currency: "RON"
+            currency: "RON"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-100.110,57 lei");
         test.done();
     },
@@ -4214,7 +3906,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57 %");
         test.done();
     },
@@ -4226,7 +3917,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.0), "-57 %");
         test.done();
     },
@@ -4238,11 +3928,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-IN",
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹1,00,110.57");
         test.done();
     },
@@ -4252,11 +3941,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "as-IN",
-        currency: "INR"
+            currency: "INR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₹ ১,০০,১১০.৫৭");
         test.done();
     },
@@ -4270,8 +3958,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(-123456.785), "؜-١٢٣٬٤٥٦٫٧٨");
+        test.equal(fmt.format(-123456.785), '؜-١٢٣٬٤٥٦٫٧٨');
         test.done();
     },
 
@@ -4284,8 +3971,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(100110.57), "١٠٠٬١١٠٫٥٧ ر.س");
+        test.equal(fmt.format(100110.57), '‏١٠٠٬١١٠٫٥٧ ر.س');
         test.done();
     },
     testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_ar_SA: function(test) {
@@ -4293,12 +3979,11 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "ar-SA",
-        currency: "SAR"
+            currency: "SAR"
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(-100110.57), "؜-١٠٠٬١١٠٫٥٧ ر.س");
+        test.equal(fmt.format(-100110.57), '؜-‏١٠٠٬١١٠٫٥٧ ر.س');
         test.done();
     },
     testNumFmtPercentageFormatRegular_ar_SA: function(test) {
@@ -4309,7 +3994,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "٥٧٫٨٪؜");
         test.done();
     },
@@ -4321,7 +4005,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "؜-٥٧٫٨٪؜" );
         test.done();
     },
@@ -4335,7 +4018,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123 456,78");
         test.done();
     },
@@ -4349,7 +4031,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100 110,57 лв");
         test.done();
     },
@@ -4361,7 +4042,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57,8%");
         test.done();
     },
@@ -4374,7 +4054,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
@@ -4384,11 +4063,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "bs-Latn-BA",
-        currency: "BAM"
+            currency: "BAM"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100.110,57 KM");
         test.done();
     },
@@ -4400,7 +4078,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57,8 %");
         test.done();
     },
@@ -4412,7 +4089,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "-57,8 %");
         test.done();
     },
@@ -4425,7 +4101,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
@@ -4435,11 +4110,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "de-DE",
-        currency: "EUR"
+            currency: "EUR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100.110,57 €");
         test.done();
     },
@@ -4451,7 +4125,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57,8 %");
         test.done();
     },
@@ -4463,7 +4136,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "-57,8 %");
         test.done();
     },
@@ -4477,7 +4149,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "−111 123 456,78");
         test.done();
     },
@@ -4487,11 +4158,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "et-EE",
-        currency: "EUR"
+            currency: "EUR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100 110,57 €");
         test.done();
     },
@@ -4506,7 +4176,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-100 110,57 Kč");
         test.done();
     },
@@ -4518,7 +4187,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57,8%");
         test.done();
     },
@@ -4530,7 +4198,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "−57,8%");
         test.done();
     },
@@ -4543,7 +4210,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "‎−۱۱۱٬۱۲۳٬۴۵۶٫۷۸");
         test.done();
     },
@@ -4556,7 +4222,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "‎﷼۱۰۰٬۱۱۱");
         test.done();
     },
@@ -4569,7 +4234,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "‎−‎﷼۱۰۰٬۱۱۱");
         test.done();
     },
@@ -4581,7 +4245,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "۵۷٫۸٪");
         test.done();
     },
@@ -4593,7 +4256,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "‎−۵۷٫۸٪");
         test.done();
     },
@@ -4607,7 +4269,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -4621,7 +4282,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "€100,110.57");
         test.done();
     },
@@ -4633,7 +4293,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -4646,7 +4305,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "‎-111,123,456.78");
         test.done();
     },
@@ -4656,12 +4314,11 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "he-IL",
-        currency: "ILS"
+            currency: "ILS"
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(100110.57), "‏100,110.57 ₪");
+        test.equal(fmt.format(100110.57), '‏100,110.57 ‏₪');
         test.done();
     },
     testNumFmtPercentageFormatRegular_he_IL: function(test) {
@@ -4672,7 +4329,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -4685,7 +4341,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "−111.123.456,78");
         test.done();
     },
@@ -4695,23 +4350,21 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "hr-HR",
-        currency: "HRK"
+            currency: "EUR"
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(100110.57), "100.110,57 kn");
+        test.equal(fmt.format(100110.57), "100.110,57 €");
         test.done();
     },
     testNumFmtPercentageFormatRegular_hr_HR: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
-        locale: "hr-HR",
+            locale: "hr-HR",
             type: "percentage"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57,8 %");
         test.done();
     },
@@ -4725,7 +4378,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111.123.456,78");
         test.done();
     },
@@ -4735,11 +4387,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "id-ID",
-        currency: "IDR"
+            currency: "IDR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "Rp100.110,57");
         test.done();
     },
@@ -4751,7 +4402,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57,8%");
         test.done();
     },
@@ -4765,7 +4415,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111 123 456,78");
         test.done();
     },
@@ -4775,11 +4424,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "kk-Cyrl-KZ",
-        currency: "KZT"
+            currency: "KZT"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100 110,57 ₸");
         test.done();
     },
@@ -4791,7 +4439,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57,8%");
         test.done();
     },
@@ -4804,7 +4451,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "−111 123 456,78");
         test.done();
     },
@@ -4818,7 +4464,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100 110,57 €");
         test.done();
     },
@@ -4831,7 +4476,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "−100 110,57 €");
         test.done();
     },
@@ -4868,7 +4512,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111 123 456,78");
         test.done();
     },
@@ -4878,11 +4521,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "lv-LV",
-        currency: "EUR"
+            currency: "EUR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100 110,57 €");
         test.done();
     },
@@ -4894,7 +4536,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57,8%");
         test.done();
     },
@@ -4907,7 +4548,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111.123.456,78");
         test.done();
     },
@@ -4917,11 +4557,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "mk-MK",
-        currency: "MKD"
+            currency: "MKD"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100.110,57 ден");
         test.done();
     },
@@ -4933,7 +4572,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57,8 %");
         test.done();
     },
@@ -4946,7 +4584,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -4956,11 +4593,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "ms-MY",
-        currency: "MNT"
+            currency: "MNT"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₮100,110.57");
         test.done();
     },
@@ -4972,7 +4608,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -4985,7 +4620,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "−111 123 456,78");
         test.done();
     },
@@ -4995,11 +4629,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "nb-NO",
-        currency: "NOK"
+            currency: "NOK"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "kr 100 110,57");
         test.done();
     },
@@ -5012,7 +4645,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "kr -100 110,57");
         test.done();
     },
@@ -5024,7 +4656,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57,8 %");
         test.done();
     },
@@ -5036,7 +4667,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "−57,8 %");
         test.done();
     },
@@ -5049,7 +4679,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123 456,78");
         test.done();
     },
@@ -5062,7 +4691,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100 110,57 ₽");
         test.done();
     },
@@ -5075,7 +4703,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-100 110,57 ₽");
         test.done();
     },
@@ -5087,7 +4714,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57,8 %");
         test.done();
     },
@@ -5099,7 +4725,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-57.8), "-57,8 %");
         test.done();
     },
@@ -5114,7 +4739,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "ƒ -100.110,57");
         test.done();
     },
@@ -5128,7 +4752,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-100 110,57 zł");
         test.done();
     },
@@ -5142,7 +4765,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
          test.equal(fmt.format(-100110.57), "-$100,110.57");
          test.done();
     },
@@ -5156,7 +4778,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "−100 110,57 €");
         test.done();
     },
@@ -5171,7 +4792,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-₩100,110.57");
         test.done();
     },
@@ -5185,7 +4805,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-₮100,110.57");
         test.done();
     },
@@ -5199,7 +4818,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-R$ 100.110,57");
         test.done();
     },
@@ -5213,7 +4831,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "$-100.110,57");
         test.done();
     },
@@ -5228,7 +4845,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -5238,23 +4854,21 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-SL",
-        currency: "SLL"
+            currency: "SLE"
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(100110.57), "Le100,111");
+        test.equal(fmt.format(100110.57), "SLE100,110.57");
         test.done();
     },
     testNumFmtPercentageFormatRegular_en_SL: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
-        locale: "en-SL",
+            locale: "en-SL",
             type: "percentage"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -5264,12 +4878,11 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-SL",
-        currency: "SLL"
+            currency: "SLE"
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(-100110.57), "-Le100,111");
+        test.equal(fmt.format(-100110.57), "-SLE100,110.57");
         test.done();
     },
 
@@ -5284,7 +4897,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -5294,23 +4906,21 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-SG",
-        currency: "SGD"
+            currency: "SGD"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "$100,110.57");
         test.done();
     },
     testNumFmtPercentageFormatRegular_en_SG: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
-        locale: "en-SG",
+            locale: "en-SG",
             type: "percentage"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -5320,11 +4930,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-SG",
-        currency: "SGD"
+            currency: "SGD"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-$100,110.57");
         test.done();
     },
@@ -5338,7 +4947,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111 123 456,78");
         test.done();
     },
@@ -5348,23 +4956,21 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-ZA",
-        currency: "ZAR"
+            currency: "ZAR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "R100 110,57");
         test.done();
     },
     testNumFmtPercentageFormatRegular_en_ZA: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
-        locale: "en-ZA",
+            locale: "en-ZA",
             type: "percentage"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57,8%");
         test.done();
     },
@@ -5374,11 +4980,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-ZA",
-        currency: "ZAR"
+            currency: "ZAR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-R100 110,57");
         test.done();
     },
@@ -5393,7 +4998,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -5403,23 +5007,21 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-MY",
-        currency: "MYR"
+            currency: "MYR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "RM100,110.57");
         test.done();
     },
     testNumFmtPercentageFormatRegular_en_MY: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
-        locale: "en-MY",
+            locale: "en-MY",
             type: "percentage"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -5429,11 +5031,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-MY",
-        currency: "MYR"
+            currency: "MYR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-RM100,110.57");
         test.done();
     },
@@ -5448,7 +5049,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -5458,11 +5058,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-MM",
-        currency: "MMK"
+            currency: "MMK"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "K100,111");
         test.done();
     },
@@ -5474,7 +5073,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -5484,11 +5082,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-MM",
-        currency: "MMK"
+            currency: "MMK"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-K100,111");
         test.done();
     },
@@ -5503,7 +5100,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -5513,11 +5109,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-NZ",
-        currency: "NZD"
+            currency: "NZD"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "$100,110.57");
         test.done();
     },
@@ -5529,7 +5124,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -5539,11 +5133,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-NZ",
-        currency: "NZD"
+            currency: "NZD"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-$100,110.57");
         test.done();
     },
@@ -5557,7 +5150,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -5567,11 +5159,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-NG",
-        currency: "NGN"
+            currency: "NGN"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₦100,110.57");
         test.done();
     },
@@ -5583,7 +5174,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -5593,11 +5183,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-NG",
-        currency: "NGN"
+            currency: "NGN"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-₦100,110.57");
         test.done();
     },
@@ -5612,7 +5201,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -5622,11 +5210,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-PK",
-        currency: "PKR"
+            currency: "PKR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "Rs100,110.57");
         test.done();
     },
@@ -5639,7 +5226,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -5649,11 +5235,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-PK",
-        currency: "PKR"
+            currency: "PKR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-Rs100,110.57");
         test.done();
     },
@@ -5668,7 +5253,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -5678,11 +5262,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-PH",
-        currency: "PHP"
+            currency: "PHP"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₱100,110.57");
         test.done();
     },
@@ -5694,7 +5277,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -5704,11 +5286,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-PH",
-        currency: "PHP"
+            currency: "PHP"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-₱100,110.57");
         test.done();
     },
@@ -5722,7 +5303,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -5732,11 +5312,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-PR",
-        currency: "USD"
+            currency: "USD"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "$100,110.57");
         test.done();
     },
@@ -5748,7 +5327,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -5758,11 +5336,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-PR",
-        currency: "USD"
+            currency: "USD"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-$100,110.57");
         test.done();
     },
@@ -5776,7 +5353,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -5786,11 +5362,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-RW",
-        currency: "RWF"
+            currency: "RWF"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "RF100,111");
         test.done();
     },
@@ -5802,7 +5377,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -5812,11 +5386,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-RW",
-        currency: "RWF"
+            currency: "RWF"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-RF100,111");
         test.done();
     },
@@ -5831,7 +5404,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -5841,11 +5413,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-LK",
-        currency: "LKR"
+            currency: "LKR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "Rs100,110.57");
         test.done();
     },
@@ -5857,7 +5428,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -5867,11 +5437,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-LK",
-        currency: "LKR"
+            currency: "LKR"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-Rs100,110.57");
         test.done();
     },
@@ -5886,7 +5455,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -5896,11 +5464,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-SD",
-        currency: "SDG"
+            currency: "SDG"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "£100,110.57");
         test.done();
     },
@@ -5912,7 +5479,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -5922,11 +5488,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-SD",
-        currency: "SDG"
+            currency: "SDG"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-£100,110.57");
         test.done();
     },
@@ -5941,7 +5506,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -5951,11 +5515,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-TZ",
-        currency: "TZS"
+            currency: "TZS"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "Sh100,110.57");
         test.done();
     },
@@ -5967,7 +5530,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
@@ -5977,11 +5539,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "en-TZ",
-        currency: "TZS"
+            currency: "TZS"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-Sh100,110.57");
         test.done();
     },
@@ -5996,7 +5557,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111 123 456,78");
         test.done();
     },
@@ -6006,11 +5566,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "es-CR",
-        currency: "CRC"
+            currency: "CRC"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "₡100 110,57");
         test.done();
     },
@@ -6022,7 +5581,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57,8 %");
         test.done();
     },
@@ -6032,11 +5590,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "es-CR",
-        currency: "CRC"
+            currency: "CRC"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-₡100 110,57");
         test.done();
     },
@@ -6051,7 +5608,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -6061,11 +5617,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "es-DO",
-        currency: "DOP"
+            currency: "DOP"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "$100,110.57");
         test.done();
     },
@@ -6077,7 +5632,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8 %");
         test.done();
     },
@@ -6087,11 +5641,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "es-DO",
-        currency: "DOP"
+            currency: "DOP"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-$100,110.57");
         test.done();
     },
@@ -6107,7 +5660,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -6117,11 +5669,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "es-SV",
-        currency: "USD"
+            currency: "USD"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "$100,110.57");
         test.done();
     },
@@ -6133,7 +5684,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8 %");
         test.done();
     },
@@ -6143,11 +5693,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "es-SV",
-        currency: "USD"
+            currency: "USD"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-$100,110.57");
         test.done();
     },
@@ -6162,7 +5711,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111.123.456,78");
         test.done();
     },
@@ -6172,11 +5720,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "es-GQ",
-        currency: "XAF"
+            currency: "XAF"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "Fr100.111");
         test.done();
     },
@@ -6188,7 +5735,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57,8 %");
         test.done();
     },
@@ -6198,11 +5744,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "es-GQ",
-        currency: "XAF"
+            currency: "XAF"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-Fr100.111");
         test.done();
     },
@@ -6216,7 +5761,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -6226,11 +5770,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "es-GT",
-        currency: "GTQ"
+            currency: "GTQ"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "Q100,110.57");
         test.done();
     },
@@ -6242,7 +5785,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8 %");
         test.done();
     },
@@ -6252,11 +5794,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "es-GT",
-        currency: "GTQ"
+            currency: "GTQ"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-Q100,110.57");
         test.done();
     },
@@ -6271,7 +5812,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -6281,11 +5821,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "es-HN",
-        currency: "HNL"
+            currency: "HNL"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "L100,110.57");
         test.done();
     },
@@ -6297,7 +5836,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.8), "57.8 %");
         test.done();
     },
@@ -6307,11 +5845,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "es-HN",
-        currency: "HNL"
+            currency: "HNL"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-L100,110.57");
         test.done();
     },
@@ -6326,7 +5863,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-111123456.785), "-111,123,456.78");
         test.done();
     },
@@ -6336,11 +5872,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "es-MX",
-        currency: "MXN"
+            currency: "MXN"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "$100,110.57");
         test.done();
     },
@@ -6352,8 +5887,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
-        test.equal(fmt.format(57.8), "57.8 %");
+        test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
 
@@ -6362,11 +5896,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "es-MX",
-        currency: "MXN"
+            currency: "MXN"
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-$100,110.57");
         test.done();
     },
@@ -6380,7 +5913,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
@@ -6395,7 +5927,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), '100.110,57 ₼');
         test.done();
     },
@@ -6407,7 +5938,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -6421,7 +5951,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), '-100.110,57 ₼');
         test.done();
     },
@@ -6435,7 +5964,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
@@ -6450,7 +5978,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "100.110,57៛");
         test.done();
     },
@@ -6462,7 +5989,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -6476,7 +6002,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-100.110,57៛");
         test.done();
     },
@@ -6490,7 +6015,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123,456.78");
         test.done();
     },
@@ -6505,7 +6029,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "Rs100,110.57");
         test.done();
     },
@@ -6517,7 +6040,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -6531,7 +6053,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-Rs100,110.57");
         test.done();
     },
@@ -6545,7 +6066,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123,456.78");
         test.done();
     },
@@ -6560,7 +6080,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(100110.57), "Sh 100,110.57");
         test.done();
     },
@@ -6572,7 +6091,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
@@ -6586,7 +6104,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-100110.57), "-Sh 100,110.57");
         test.done();
     },
@@ -6600,7 +6117,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123,456.78");
         test.done();
     },
@@ -6613,7 +6129,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123,456.78");
         test.done();
     },
@@ -6626,7 +6141,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123,456.78");
         test.done();
     },
@@ -6639,7 +6153,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
@@ -6652,7 +6165,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
@@ -6666,7 +6178,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
@@ -6681,7 +6192,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123 456,78");
         test.done();
     },
@@ -6694,7 +6204,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
@@ -6706,7 +6215,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.getSignificantDigits(), 3);
         test.done();
     },
@@ -6718,7 +6226,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.getSignificantDigits(), 3);
         test.done();
     },
@@ -6730,7 +6237,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123456.785), "123,000");
         test.done();
     },
@@ -6742,7 +6248,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123,000");
         test.done();
     },
@@ -6754,7 +6259,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(0.012345), "0.0123");
         test.done();
     },
@@ -6766,7 +6270,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(12.341262), "12.34");
         test.done();
     },
@@ -6778,7 +6281,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(123456.785), "123,500");
         test.done();
     },
@@ -6791,7 +6293,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(156.785384), "156.785");
         test.done();
     },
@@ -6804,7 +6305,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(156.785384), "156.79");
         test.done();
     },
@@ -6817,7 +6317,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123.000");
         test.done();
     },
@@ -6830,7 +6329,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(-123456.785), "-123 456,8");
         test.done();
     },
@@ -6842,7 +6340,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(0), "0");
         test.done();
     },
@@ -6854,7 +6351,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(1200), "1,200");
         test.done();
     },
@@ -6867,7 +6363,6 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-
         test.equal(fmt.format(12345678900), "1.23E+10");
         test.done();
     },

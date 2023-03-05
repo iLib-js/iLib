@@ -1,7 +1,7 @@
 /*
  * testdatefmt_si_LK.js - test the date formatter object in Sri Lanka
  *
- * Copyright © 2017-2018, JEDLSoft
+ * Copyright © 2017-2018,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,6 @@ module.exports.testdatefmt_si_LK = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtConstructorEmpty_si_LK: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "si-LK"});
@@ -44,8 +43,6 @@ module.exports.testdatefmt_si_LK = {
         test.ok(fmt !== null);
         test.done();
     },
-
-
     testDateFmtSimpleShort_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "short"});
@@ -64,7 +61,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
     testDateFmtSimpleMedium_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "medium"});
@@ -83,7 +79,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "2011 සැප් 29");
         test.done();
     },
-
     testDateFmtSimpleLong_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "long"});
@@ -102,7 +97,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "2011 සැප්තැම්බර් 29");
         test.done();
     },
-
     testDateFmtSimpleFull_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "full"});
@@ -121,7 +115,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "2011 සැප්තැම්බර් 29");
         test.done();
     },
-
     testDateFmtSimpleTimeShort_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "short", type: "time"});
@@ -140,7 +133,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45");
         test.done();
     },
-
     testDateFmtSimpleTimeMedium_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "medium", type: "time"});
@@ -159,7 +151,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45");
         test.done();
     },
-
     testDateFmtSimpleTimeLong_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", timelength: "long", type: "time"});
@@ -178,7 +169,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45");
         test.done();
     },
-
     testDateFmtSimpleTimeFull_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "full", type: "time"});
@@ -197,7 +187,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleShort_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "short", type: "datetime"});
@@ -213,10 +202,9 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011-09-29 13.45");
+        test.equal(fmt.format(date), "2011-09-29, 13.45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleMedium_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "medium", type: "datetime"});
@@ -232,10 +220,9 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 සැප් 29 13.45");
+        test.equal(fmt.format(date), "2011 සැප් 29, 13.45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleLong_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "long", type: "datetime"});
@@ -252,10 +239,9 @@ module.exports.testdatefmt_si_LK = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "2011 සැප්තැම්බර් 29 13.45");
+        test.equal(fmt.format(date), "2011 සැප්තැම්බර් 29 දින 13.45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleFull_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "full", type: "datetime"});
@@ -271,11 +257,9 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 සැප්තැම්බර් 29 13.45");
+        test.equal(fmt.format(date), "2011 සැප්තැම්බර් 29 දින 13.45");
         test.done();
     },
-
-
     testDateFmtTemplateCalendar_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", calendar: "julian", template: "yyyy-MM-dd"});
@@ -294,9 +278,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
-
-
     testDateFmtTemplateClock12SwitchHH_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", clock: "12", template: "HH:mm"});
@@ -315,7 +296,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock12Switchkk_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", clock: "12", template: "kk:mm"});
@@ -334,7 +314,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock24Switchhh_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", clock: "24", template: "hh:mm"});
@@ -353,7 +332,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateClock24SwitchKK_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", clock: "24", template: "KK:mm"});
@@ -372,7 +350,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockNotFollowLocaleDefault12hh_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", template: "hh:mm"});
@@ -391,7 +368,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockNotFollowLocaleDefault12KK_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", template: "KK:mm"});
@@ -410,7 +386,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockNotFollowLocaleDefault24HH_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", template: "HH:mm"});
@@ -429,7 +404,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockNotFollowLocaleDefault24kk_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", template: "kk:mm"});
@@ -448,8 +422,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
-
     testDateFmtTypeDate_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "date"});
@@ -468,7 +440,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
     testDateFmtTypeTime_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time"});
@@ -487,7 +458,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45");
         test.done();
     },
-
     testDateFmtTypeDateTime_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "datetime"});
@@ -503,11 +473,9 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011-09-29 13.45");
+        test.equal(fmt.format(date), "2011-09-29, 13.45");
         test.done();
     },
-
-
     testDateFmtShortDateComponentsY_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", date: "y"});
@@ -526,7 +494,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtShortDateComponentsM_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", date: "m"});
@@ -545,7 +512,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "සැ");
         test.done();
     },
-
     // resources(N formats) of si-LK locale are changed manually
     // because of combination of glyph, substring function can't
     // extract N formats properly in toolcode for datefomat.
@@ -567,7 +533,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "ස");
         test.done();
     },
-
     testDateFmtShortDateComponentsD_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", date: "d"});
@@ -586,7 +551,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtShortDateComponentsDM_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", date: "dm"});
@@ -605,7 +569,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "09-29");
         test.done();
     },
-
     testDateFmtShortDateComponentsMY_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", date: "my"});
@@ -624,7 +587,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "2011-09");
         test.done();
     },
-
     testDateFmtShortDateComponentsDMY_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", date: "dmy"});
@@ -643,7 +605,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
     testDateFmtShortDateComponentsDMW_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", date: "dmw"});
@@ -662,7 +623,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "09-29, බ්‍ර");
         test.done();
     },
-
     testDateFmtShortDateComponentsDMWY_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", date: "dmwy"});
@@ -681,8 +641,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "2011-09-29, බ්‍ර");
         test.done();
     },
-
-
     testDateFmtFullDateComponentsY_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "full", date: "y"});
@@ -701,7 +659,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsM_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "full", date: "m"});
@@ -720,7 +677,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "සැප්තැම්බර්");
         test.done();
     },
-
     testDateFmtFullDateComponentsD_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "full", date: "d"});
@@ -739,7 +695,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtFullDateComponentsDM_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "full", date: "dm"});
@@ -758,7 +713,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "සැප්තැම්බර් 29");
         test.done();
     },
-
     testDateFmtFullDateComponentsMY_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "full", date: "my"});
@@ -777,7 +731,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "2011 සැප්තැම්බර්");
         test.done();
     },
-
     testDateFmtFullDateComponentsDMY_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "full", date: "dmy"});
@@ -796,7 +749,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "2011 සැප්තැම්බර් 29");
         test.done();
     },
-
     testDateFmtFullDateComponentsDMW_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "full", date: "dmw"});
@@ -815,7 +767,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "සැප්තැම්බර් 29, බ්‍රහස්පතින්දා");
         test.done();
     },
-
     testDateFmtFullDateComponentsDMWY_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "full", date: "dmwy"});
@@ -834,8 +785,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "2011 සැප්තැම්බර් 29, බ්‍රහස්පතින්දා");
         test.done();
     },
-
-
     testDateFmtShortTimeComponentsS_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time", time: "s"});
@@ -854,7 +803,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsM_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time", time: "m"});
@@ -873,7 +821,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsH_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time", time: "h"});
@@ -892,7 +839,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtShortTimeComponentsMS_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time", time: "ms"});
@@ -911,7 +857,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "45.37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHM_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time", time: "hm"});
@@ -930,7 +875,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMS_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time", time: "hms"});
@@ -949,7 +893,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45.37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMA_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time", time: "hma"});
@@ -968,7 +911,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMZ_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -991,7 +933,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45 +0530");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMAZ_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1014,7 +955,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45 +0530");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSA_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time", time: "hmsa"});
@@ -1033,7 +973,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45.37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSZ_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1056,7 +995,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45.37 +0530");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSAZ_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1079,8 +1017,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45.37 +0530");
         test.done();
     },
-
-
     testDateFmtFullTimeComponentsS_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time", length: "full", time: "s"});
@@ -1099,7 +1035,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsM_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time", length: "full", time: "m"});
@@ -1118,7 +1053,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsH_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time", length: "full", time: "h"});
@@ -1137,7 +1071,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtFullTimeComponentsMS_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time", length: "full", time: "ms"});
@@ -1156,7 +1089,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "45.37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHM_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time", length: "full", time: "hm"});
@@ -1175,7 +1107,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMS_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time", length: "full", time: "hms"});
@@ -1194,7 +1125,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45.37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMA_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time", length: "full", time: "hma"});
@@ -1213,7 +1143,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMZ_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1237,7 +1166,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45 +0530");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMAZ_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1261,7 +1189,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45 +0530");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSA_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", type: "time", length: "full", time: "hmsa"});
@@ -1280,7 +1207,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45.37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSZ_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1304,7 +1230,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45.37 +0530");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSAZ_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1328,7 +1253,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45.37 +0530");
         test.done();
     },
-
     testDateFmtWithTimeZoneAndNoDST_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1352,7 +1276,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.format(date), "13.45.37 +0530");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinMinuteAfter_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "full"});
@@ -1521,7 +1444,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.formatRelative(reference, date), "පැය 4කට පෙර");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "full"});
@@ -1578,7 +1500,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.formatRelative(reference, date), "දින 4කට පෙර");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "full"});
@@ -1635,7 +1556,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.formatRelative(reference, date), "සති 9කට පෙර");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "full"});
@@ -1692,7 +1612,6 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.formatRelative(reference, date), "මාස 14කට පෙර");
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_si_LK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "si-LK", length: "full"});

@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_sk_SK.js - test the date range formatter object Slovak/Slovakia
  *
- * Copyright © 2012-2017, 2020 JEDLSoft
+ * Copyright © 2012-2017, 2020,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,6 @@ module.exports.testdatefmtrange_sk_SK = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtSKRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sk-SK", length: "short"});
@@ -109,7 +108,7 @@ module.exports.testdatefmtrange_sk_SK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31. decembra 2011, 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31. decembra 2011 o 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtSKRangeInDayFull: function(test) {
@@ -135,10 +134,9 @@ module.exports.testdatefmtrange_sk_SK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31. decembra 2011, 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31. decembra 2011 o 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtSKRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sk-SK", length: "short"});
@@ -214,7 +212,7 @@ module.exports.testdatefmtrange_sk_SK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30. decembra 2011, 13:45 – 31. decembra 2011, 14:30");
+        test.equal(fmt.format(start, end), "30. decembra 2011 o 13:45 – 31. decembra 2011 o 14:30");
         test.done();
     },
     testDateRngFmtSKRangeNextDayFull: function(test) {
@@ -240,10 +238,9 @@ module.exports.testdatefmtrange_sk_SK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30. decembra 2011, 13:45 – 31. decembra 2011, 14:30");
+        test.equal(fmt.format(start, end), "30. decembra 2011 o 13:45 – 31. decembra 2011 o 14:30");
         test.done();
     },
-
     testDateRngFmtSKRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sk-SK", length: "short"});
@@ -348,7 +345,6 @@ module.exports.testdatefmtrange_sk_SK = {
         test.equal(fmt.format(start, end), "20 – 31. decembra 2011");
         test.done();
     },
-
     testDateRngFmtSKRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sk-SK", length: "short"});
@@ -453,7 +449,6 @@ module.exports.testdatefmtrange_sk_SK = {
         test.equal(fmt.format(start, end), "20. novembra – 31. decembra 2011");
         test.done();
     },
-
     testDateRngFmtSKRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sk-SK", length: "short"});
@@ -558,7 +553,6 @@ module.exports.testdatefmtrange_sk_SK = {
         test.equal(fmt.format(start, end), "20. novembra 2011 – 31. januára 2012");
         test.done();
     },
-
     testDateRngFmtSKRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sk-SK", length: "short"});

@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ga_IE.js - test the date formatter object in Irish Gaelic
  *
- * Copyright © 2012-2015,2017-2018,2021 JEDLSoft
+ * Copyright © 2012-2015,2017-2018,2021,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,6 @@ module.exports.testdatefmt_ga_IE = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtConstructorEmpty_ga_IE: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "ga-IE"});
@@ -43,8 +42,6 @@ module.exports.testdatefmt_ga_IE = {
         test.ok(fmt !== null);
         test.done();
     },
-
-
     testDateFmtSimpleShort_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "short"});
@@ -63,7 +60,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29/09/2011");
         test.done();
     },
-
     testDateFmtSimpleMedium_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "medium"});
@@ -82,7 +78,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29 MFómh 2011");
         test.done();
     },
-
     testDateFmtSimpleLong_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "long"});
@@ -101,7 +96,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29 Meán Fómhair 2011");
         test.done();
     },
-
     testDateFmtSimpleFull_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
@@ -120,7 +114,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29 Meán Fómhair 2011");
         test.done();
     },
-
     testDateFmtSimpleTimeShort_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "short", type: "time"});
@@ -139,7 +132,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeMedium_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "medium", type: "time"});
@@ -158,7 +150,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeLong_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", timelength: "long", type: "time"});
@@ -177,7 +168,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeFull_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", type: "time"});
@@ -196,7 +186,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleShort_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "short", type: "datetime"});
@@ -212,10 +201,9 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011 13:45");
+        test.equal(fmt.format(date), "29/09/2011, 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleMedium_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "medium", type: "datetime"});
@@ -231,10 +219,9 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 MFómh 2011 13:45");
+        test.equal(fmt.format(date), "29 MFómh 2011, 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleLong_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "long", type: "datetime"});
@@ -250,10 +237,9 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Meán Fómhair 2011 13:45");
+        test.equal(fmt.format(date), "29 Meán Fómhair 2011 ag 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleFull_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", type: "datetime"});
@@ -269,10 +255,9 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Meán Fómhair 2011 13:45");
+        test.equal(fmt.format(date), "29 Meán Fómhair 2011 ag 13:45");
         test.done();
     },
-
     testDateFmtDateTimeFullwithUseNativeFalse_ga_IE: function(test) {
         test.expect(2);
         var fmt= new DateFmt({locale:"ga-IE",length: "full", type:"datetime", date: "dmwy", time:"hma", useNative:false});
@@ -289,10 +274,9 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Dé Céadaoin 8 Aibreán 2015 13:45");
+        test.equal(fmt.format(date), "Dé Céadaoin 8 Aibreán 2015 ag 13:45");
         test.done();
     },
-
     testDateFmtTemplateCalendar_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", calendar: "julian", template: "yyyy-MM-dd"});
@@ -311,8 +295,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
-
     testDateFmtTemplateClock12SwitchHH_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", clock: "12", template: "HH:mm"});
@@ -331,7 +313,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock12Switchkk_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", clock: "12", template: "kk:mm"});
@@ -350,7 +331,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock24Switchhh_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", clock: "24", template: "hh:mm"});
@@ -369,7 +349,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateClock24SwitchKK_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", clock: "24", template: "KK:mm"});
@@ -388,7 +367,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", template: "hh:mm"});
@@ -407,7 +385,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", template: "KK:mm"});
@@ -426,7 +403,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", template: "HH:mm"});
@@ -445,7 +421,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", template: "kk:mm"});
@@ -464,11 +439,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
-
-
-
-
     testDateFmtShortDateComponentsY_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "y"});
@@ -487,7 +457,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtShortDateComponentsM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "m"});
@@ -506,7 +475,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "09");
         test.done();
     },
-
     testDateFmtShortDateComponentsN_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "n"});
@@ -525,7 +493,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "M");
         test.done();
     },
-
     testDateFmtShortDateComponentsD_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "d"});
@@ -544,7 +511,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtShortDateComponentsDM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "dm"});
@@ -563,7 +529,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29/09");
         test.done();
     },
-
     testDateFmtShortDateComponentsMY_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "my"});
@@ -582,7 +547,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "09/2011");
         test.done();
     },
-
     testDateFmtShortDateComponentsDMY_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "dmy"});
@@ -601,7 +565,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29/09/2011");
         test.done();
     },
-
     testDateFmtShortDateComponentsWDM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "wdm"});
@@ -620,7 +583,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "D 29/09");
         test.done();
     },
-
     testDateFmtShortDateComponentsWDMY_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "wdmy"});
@@ -639,8 +601,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "D 29/09/2011");
         test.done();
     },
-
-
     testDateFmtFullDateComponentsY_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", date: "y"});
@@ -659,7 +619,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", date: "m"});
@@ -678,7 +637,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "Meán Fómhair");
         test.done();
     },
-
     testDateFmtFullDateComponentsD_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", date: "d"});
@@ -697,7 +655,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtFullDateComponentsDM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", date: "dm"});
@@ -716,7 +673,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29 Meán Fómhair");
         test.done();
     },
-
     testDateFmtFullDateComponentsMY_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", date: "my"});
@@ -735,7 +691,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "Meán Fómhair 2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsDMY_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", date: "dmy"});
@@ -754,7 +709,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29 Meán Fómhair 2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsWDM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", date: "wdm"});
@@ -773,7 +727,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "Déardaoin 29 Meán Fómhair");
         test.done();
     },
-
     testDateFmtFullDateComponentsWDMY_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", date: "wdmy"});
@@ -792,8 +745,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "Déardaoin 29 Meán Fómhair 2011");
         test.done();
     },
-
-
     testDateFmtShortTimeComponentsS_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", time: "s"});
@@ -812,7 +763,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", time: "m"});
@@ -831,7 +781,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsH_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", time: "h"});
@@ -850,8 +799,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
-
     testDateFmtShortTimeComponentsHM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", time: "hm"});
@@ -870,7 +817,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMS_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", time: "hms"});
@@ -889,7 +835,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMA_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", time: "hma"});
@@ -908,7 +853,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMZ_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -931,7 +875,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45 IST/GMT");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMAZ_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -954,7 +897,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37 IST/GMT");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSA_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", time: "hmsa"});
@@ -973,7 +915,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSZ_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -996,7 +937,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37 IST/GMT");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSAZ_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1019,8 +959,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37 IST/GMT");
         test.done();
     },
-
-
     testDateFmtFullTimeComponentsS_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", length: "full", time: "s"});
@@ -1039,7 +977,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", length: "full", time: "m"});
@@ -1058,7 +995,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsH_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", length: "full", time: "h"});
@@ -1077,8 +1013,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
-
     testDateFmtFullTimeComponentsHM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", length: "full", time: "hm"});
@@ -1097,7 +1031,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMS_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", length: "full", time: "hms"});
@@ -1116,7 +1049,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMA_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", length: "full", time: "hma"});
@@ -1135,7 +1067,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMZ_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1159,8 +1090,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45 IST/GMT");
         test.done();
     },
-
-
     testDateFmtFullTimeComponentsHMSA_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", length: "full", time: "hmsa"});
@@ -1179,7 +1108,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSZ_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1203,7 +1131,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37 IST/GMT");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSAZ_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1227,7 +1154,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37 IST/GMT");
         test.done();
     },
-
     testDateFmtWithTimeZoneAndNoDST_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1251,7 +1177,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37 IST/GMT");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinMinuteAfter_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
@@ -1420,7 +1345,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.formatRelative(reference, date), "4 uair an chloig ó shin");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
@@ -1477,7 +1401,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.formatRelative(reference, date), "4 lá ó shin");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
@@ -1534,7 +1457,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.formatRelative(reference, date), "9 seachtaine ó shin");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
@@ -1591,7 +1513,6 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.formatRelative(reference, date), "14 mí ó shin");
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});

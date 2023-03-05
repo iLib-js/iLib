@@ -17,24 +17,18 @@
                 "m": "MMM 'de' yyyy"
             }
         },
-        "order": {
-            "f": "{date}, {time}",
-            "l": "{date}, {time}",
-            "m": "{date} {time}",
-            "s": "{date}, {time}"
-        },
         "range": {
             "c00": {
-                "m": "{sd} {sm} de {sy} {st} – {et}"
+                "m": "{sd} {sm} de {sy}, {st} – {et}"
             },
             "c01": {
-                "m": "{sd} {sm} de {sy} {st} – {ed} {em} de {ey} {et}"
+                "m": "{sd} {sm} de {sy}, {st} – {ed} {em} de {ey}, {et}"
             },
             "c02": {
-                "m": "{sd} {sm} de {sy} {st} – {ed} {em} de {ey} {et}"
+                "m": "{sd} {sm} de {sy}, {st} – {ed} {em} de {ey}, {et}"
             },
             "c03": {
-                "m": "{sd} {sm} de {sy} {st} – {ed} {em} de {ey} {et}"
+                "m": "{sd} {sm} de {sy}, {st} – {ed} {em} de {ey}, {et}"
             },
             "c10": {
                 "m": "{sd} – {ed} {em} de {ey}"
