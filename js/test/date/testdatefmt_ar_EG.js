@@ -1394,7 +1394,7 @@ module.exports.testdatefmt_ar_EG = {
             second:37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏١:٤٥:٣٧ EEST");
+        test.equal(fmt.format(date), "‏١:٤٥:٣٧ EET");
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteAfter_ar_EG: function(test) {
