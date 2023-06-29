@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Set up OpenJDK
           command: |
-            sudo apt-get install openjdk-11-jdk
+            sudo apt-get install -y openjdk-11-jdk
             sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
             sudo update-alternatives --set javac /usr/lib/jvm/java-11-openjdk-amd64/bin/javac
             sudo update-alternatives --set javadoc /usr/lib/jvm/java-11-openjdk-amd64/bin/javadoc
@@ -69,11 +69,11 @@ workflows:
   test-all-node-versions:
     jobs:
       - test:
-          docker_image: circleci/node:8-browsers
+          docker_image: cimg/node:8.17.0
       - test:
-          docker_image: circleci/node:10-browsers
+          docker_image: cimg/node:10.24.1-browsers
       - test:
-          docker_image: circleci/node:12-browsers
+          docker_image: cimg/node:12.22.12-browsers
       - test:
           docker_image: cimg/node:14.21.2-browsers
       - test:
