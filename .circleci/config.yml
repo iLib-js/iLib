@@ -4,7 +4,7 @@ jobs:
     parameters:
         docker_image:
           type: string
-          default: cimg/openjdk:11.0.13-node
+          default: cimg/openjdk:11.0.19-node
 
     docker:
       - image: << parameters.docker_image >>
