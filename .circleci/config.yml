@@ -69,7 +69,7 @@ workflows:
   test-all-node-versions:
     jobs:
       - test:
-          docker_image: circleci/node:8.10.0
+          docker_image: circleci/node:8.17.0
       - test:
           docker_image: cimg/node:10.24.0-browsers
       - test:
