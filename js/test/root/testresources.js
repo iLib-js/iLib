@@ -1,7 +1,7 @@
 /*
  * testresources.js - test the Resources object
  *
- * Copyright © 2012-2015, 2017-2019, 2021-2022 JEDLSoft
+ * Copyright © 2012-2015, 2017-2019, 2021-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -609,6 +609,82 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from {country}").toString(), "Ħëľľõ fŕõm {country}");
         test.equal(rb.getString("Hello from {city}").toString(), "Ħëľľõ fŕõm {city}");
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Ĝŕëëţíñğš fŕõm {city} íñ {country}");
+        test.done();
+    },
+
+    testResBundleGetStringOtherBundlePseudoBengali: function(test) {
+        test.expect(4);
+        ilib.setAsPseudoLocale("as-XX");
+        var rb = new ResBundle({
+            name: "tester",
+            locale: "as-XX"
+        });
+
+        test.ok(rb !== null);
+
+        // should be equivalent to "text" and not pseudo-ize the replacement parameter names
+        test.equal(rb.getString("Hello from {country}").toString(), 'ঠ্ড়িহএললও fরওম {country}');
+        test.equal(rb.getString("Hello from {city}").toString(), 'ঠ্ড়িহএললও fরওম {city}');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), 'ঠ্ড়িগরএএতইনগশ fরওম {city} ইন {country}');
+
+        ilib.clearPseudoLocales();
+        test.done();
+    },
+
+    testResBundleGetStringOtherBundlePseudoGujarati: function(test) {
+        test.expect(4);
+        ilib.setAsPseudoLocale("gu-XX");
+        var rb = new ResBundle({
+            name: "tester",
+            locale: "gu-XX"
+        });
+
+        test.ok(rb !== null);
+
+        // should be equivalent to "text" and not pseudo-ize the replacement parameter names
+        test.equal(rb.getString("Hello from {country}").toString(), 'ઈૄહએલલઓ fૃઓં {country}');
+        test.equal(rb.getString("Hello from {city}").toString(), 'ઈૄહએલલઓ fૃઓં {city}');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), 'ઈૄગૃએએતઇઙગષ fૃઓં {city} ઇઙ {country}');
+
+        ilib.clearPseudoLocales();
+        test.done();
+    },
+
+    testResBundleGetStringOtherBundlePseudoOriya: function(test) {
+        test.expect(4);
+        ilib.setAsPseudoLocale("or-XX");
+        var rb = new ResBundle({
+            name: "tester",
+            locale: "or-XX"
+        });
+
+        test.ok(rb !== null);
+
+        // should be equivalent to "text" and not pseudo-ize the replacement parameter names
+        test.equal(rb.getString("Hello from {country}").toString(), 'ବିୣଁହଁଏଲଲଓ ଫଁରଓମ {country}');
+        test.equal(rb.getString("Hello from {city}").toString(), 'ବିୣଁହଁଏଲଲଓ ଫଁରଓମ {city}');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), 'ବିୣଁଗରଏଏତଇନଗସଁ ଫଁରଓମ {city} ଇନ {country}');
+
+        ilib.clearPseudoLocales();
+        test.done();
+    },
+
+    testResBundleGetStringOtherBundlePseudoPunjabi: function(test) {
+        test.expect(4);
+        ilib.setAsPseudoLocale("pa-XX");
+        var rb = new ResBundle({
+            name: "tester",
+            locale: "pa-XX"
+        });
+
+        test.ok(rb !== null);
+
+        // should be equivalent to "text" and not pseudo-ize the replacement parameter names
+        test.equal(rb.getString("Hello from {country}").toString(), 'ਊਂਹ੍ਹਐਲਲਔ ਫ਼ਰਔਮ {country}');
+        test.equal(rb.getString("Hello from {city}").toString(), 'ਊਂਹ੍ਹਐਲਲਔ ਫ਼ਰਔਮ {city}');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), 'ਊਂਹ੍ਗਰਐਐਤਇਨਗਸ ਫ਼ਰਔਮ {city} ਇਨ {country}');
+
+        ilib.clearPseudoLocales();
         test.done();
     },
 

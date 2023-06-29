@@ -3,7 +3,11 @@ Release Notes for Version 14
 
 Build 027
 -------
-Published as version 14.17.1
+Published as version 14.18.0
+New Features:
+* Added more pseudomap data to test by adding pseudoLocale.
+    * Added tall properly in some pseudo map data which is the tallest glyphs in the script
+      and it is going to be included first in a pseudo string.
 
 Bug Fixes:
 * Updated to IANA time zone data version 2023b
