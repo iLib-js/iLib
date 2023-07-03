@@ -668,6 +668,24 @@ module.exports.testresources = {
         ilib.clearPseudoLocales();
         test.done();
     },
+    testResBundleGetStringOtherBundlePseudoEthi: function(test) {
+        test.expect(4);
+        ilib.setAsPseudoLocale("am-XX");
+        var rb = new ResBundle({
+            name: "tester",
+            locale: "am-XX"
+        });
+
+        test.ok(rb !== null);
+
+        // should be equivalent to "text" and not pseudo-ize the replacement parameter names
+        test.equal(rb.getString("Hello from {country}").toString(), 'ሿ፝ሁኤለለኦ ፈረኦመ {country}');
+        test.equal(rb.getString("Hello from {city}").toString(), 'ሿ፝ሁኤለለኦ ፈረኦመ {city}');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(),'ሿ፝ጉረኤኤተኢነገሰ ፈረኦመ {city} ኢነ {country}');
+
+        ilib.clearPseudoLocales();
+        test.done();
+    },
 
     testResBundleGetStringOtherBundlePseudoPunjabi: function(test) {
         test.expect(4);
