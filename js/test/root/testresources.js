@@ -623,9 +623,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should be equivalent to "text" and not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), 'ঠ্ড়িহএললও fরওম {country}');
-        test.equal(rb.getString("Hello from {city}").toString(), 'ঠ্ড়িহএললও fরওম {city}');
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), 'ঠ্ড়িগরএএতইনগশ fরওম {city} ইন {country}');
+        test.equal(rb.getString("Hello from {country}").toString(), '[ঠ্ড়িহএললও fরওম {country}]');
+        test.equal(rb.getString("Hello from {city}").toString(), '[ঠ্ড়িহএললও fরওম {city}]');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), '[ঠ্ড়িগরএএতইনগশ fরওম {city} ইন {country}]');
 
         ilib.clearPseudoLocales();
         test.done();
@@ -642,9 +642,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should be equivalent to "text" and not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), 'ઈૄહએલલઓ fૃઓં {country}');
-        test.equal(rb.getString("Hello from {city}").toString(), 'ઈૄહએલલઓ fૃઓં {city}');
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), 'ઈૄગૃએએતઇઙગષ fૃઓં {city} ઇઙ {country}');
+        test.equal(rb.getString("Hello from {country}").toString(), '[ઈૄહએલલઓ fૃઓં {country}]');
+        test.equal(rb.getString("Hello from {city}").toString(), '[ઈૄહએલલઓ fૃઓં {city}]');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), '[ઈૄગૃએએતઇઙગષ fૃઓં {city} ઇઙ {country}]');
 
         ilib.clearPseudoLocales();
         test.done();
@@ -661,9 +661,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should be equivalent to "text" and not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), 'ବିୣଁହଁଏଲଲଓ ଫଁରଓମ {country}');
-        test.equal(rb.getString("Hello from {city}").toString(), 'ବିୣଁହଁଏଲଲଓ ଫଁରଓମ {city}');
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), 'ବିୣଁଗରଏଏତଇନଗସଁ ଫଁରଓମ {city} ଇନ {country}');
+        test.equal(rb.getString("Hello from {country}").toString(), '[ବିୣଁହଁଏଲଲଓ ଫଁରଓମ {country}]');
+        test.equal(rb.getString("Hello from {city}").toString(), '[ବିୣଁହଁଏଲଲଓ ଫଁରଓମ {city}]');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), '[ବିୣଁଗରଏଏତଇନଗସଁ ଫଁରଓମ {city} ଇନ {country}]');
 
         ilib.clearPseudoLocales();
         test.done();
@@ -679,9 +679,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should be equivalent to "text" and not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), 'ሿ፝ሁኤለለኦ ፈረኦመ {country}');
-        test.equal(rb.getString("Hello from {city}").toString(), 'ሿ፝ሁኤለለኦ ፈረኦመ {city}');
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(),'ሿ፝ጉረኤኤተኢነገሰ ፈረኦመ {city} ኢነ {country}');
+        test.equal(rb.getString("Hello from {country}").toString(), '[ሿ፝ሁኤለለኦ ፈረኦመ {country}]');
+        test.equal(rb.getString("Hello from {city}").toString(), '[ሿ፝ሁኤለለኦ ፈረኦመ {city}]');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(),'[ሿ፝ጉረኤኤተኢነገሰ ፈረኦመ {city} ኢነ {country}]');
 
         ilib.clearPseudoLocales();
         test.done();
@@ -698,9 +698,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should be equivalent to "text" and not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), 'ਊਂਹ੍ਹਐਲਲਔ ਫ਼ਰਔਮ {country}');
-        test.equal(rb.getString("Hello from {city}").toString(), 'ਊਂਹ੍ਹਐਲਲਔ ਫ਼ਰਔਮ {city}');
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), 'ਊਂਹ੍ਗਰਐਐਤਇਨਗਸ ਫ਼ਰਔਮ {city} ਇਨ {country}');
+        test.equal(rb.getString("Hello from {country}").toString(), '[ਊਂਹ੍ਹਐਲਲਔ ਫ਼ਰਔਮ {country}]');
+        test.equal(rb.getString("Hello from {city}").toString(), '[ਊਂਹ੍ਹਐਲਲਔ ਫ਼ਰਔਮ {city}]');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), '[ਊਂਹ੍ਗਰਐਐਤਇਨਗਸ ਫ਼ਰਔਮ {city} ਇਨ {country}]');
 
         ilib.clearPseudoLocales();
         test.done();
