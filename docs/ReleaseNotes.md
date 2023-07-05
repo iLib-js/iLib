@@ -8,7 +8,7 @@ Published as version 14.18.0
 New Features:
 * Updated pseudo strings to be encapsulated with square brackets so that you can tell when the resource string starts and ends.
 * Added more pseudomap data to test by adding pseudoLocale.
-    * Added tall properly in some pseudo map data which is the tallest glyphs in the script
+    * Added tall properly in some `pseudomap.json` files which is the tallest glyphs in the script
       and it is going to be included first in a pseudo string.
 
 Bug Fixes:
