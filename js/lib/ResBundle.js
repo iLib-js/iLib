@@ -475,6 +475,10 @@ ResBundle.prototype = {
         if (this.pseudomap["tall"] !== undefined) {
             ret = this.pseudomap["tall"] + ret;
         }
+
+        // All strings are encapsulated in [].
+        ret = "[" + ret + "]";
+
         return ret;
     },
 
