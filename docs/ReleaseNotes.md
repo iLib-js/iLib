@@ -3,7 +3,10 @@ Release Notes for Version 14
 
 Build 027
 -------
-Published as version 14.17.1
+Published as version 14.18.0
+
+New Features:
+* Updated pseudo strings to be encapsulated with square brackets so that you can tell when the resource string starts and ends.
 
 Bug Fixes:
 * Updated to IANA time zone data version 2023b
