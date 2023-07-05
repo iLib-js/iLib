@@ -3,8 +3,9 @@ Release Notes for Version 14
 
 Build 027
 -------
-Published as version 14.17.1
-
+Published as version 14.18.0
+New Features:
+* Updated pseudo string to be encapsulated.
 Bug Fixes:
 * Updated to IANA time zone data version 2023b
 
