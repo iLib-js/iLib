@@ -9,7 +9,7 @@ New Features:
 * Updated pseudo strings to be encapsulated with square brackets so that you can tell when the resource string starts and ends.
 
 Bug Fixes:
-* Updated to IANA time zone data version 2023b
+* Updated to IANA time zone data version 2023b and then 2023c
 
 Build 026
 -------
