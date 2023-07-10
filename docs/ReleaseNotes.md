@@ -13,7 +13,7 @@ New Features:
       if there is enough room for the height of text in each UI element.
 
 Bug Fixes:
-* Updated to IANA time zone data version 2023b
+* Updated to IANA time zone data version 2023b and then 2023c
 
 Build 026
 -------
