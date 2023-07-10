@@ -471,6 +471,11 @@ ResBundle.prototype = {
             // simulate Asian languages by getting rid of all the spaces
             ret = ret.replace(/ /g, "");
         }
+
+        if (this.pseudomap["tall"] !== undefined) {
+            ret = this.pseudomap["tall"] + ret;
+        }
+
         // All strings are encapsulated in [].
         ret = "[" + ret + "]";
 
