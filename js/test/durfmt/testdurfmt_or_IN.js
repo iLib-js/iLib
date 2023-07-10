@@ -1,6 +1,6 @@
 /*
  * testdurfmt_or_IN.js - test the duration formatter object
- * 
+ *
  * Copyright © 2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ module.exports.testdurfmt_or_IN = {
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -50,7 +50,7 @@ module.exports.testdurfmt_or_IN = {
         test.equal(duration.toString(), '1ବର୍ଷ 1ମାସ 1ସପ୍ 1ଦିନ 1ଘଣ୍ଟା 1ମିନିଟ୍‌ 1ସେକ୍');
         test.done();
     },
-    
+
     testDurFmtORFormatShortText: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -59,7 +59,7 @@ module.exports.testdurfmt_or_IN = {
             style: "text"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -72,7 +72,7 @@ module.exports.testdurfmt_or_IN = {
         test.equal(duration.toString(), '1ବର୍ଷ 1ମାସ 1ସପ୍ 1ଦିନ 1ଘଣ୍ଟା 1ମିନିଟ୍‌ 1ସେକ୍');
         test.done();
     },
-    
+
     testDurFmtORFormatShortClock: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -81,7 +81,7 @@ module.exports.testdurfmt_or_IN = {
             style: "clock"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -94,7 +94,7 @@ module.exports.testdurfmt_or_IN = {
         test.equal(duration.toString(), '1ବର୍ଷ 1ମାସ 1ସପ୍ 1ଦିନ 1:01:01');
         test.done();
     },
-    
+
     testDurFmtORFormatMedium: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -102,7 +102,7 @@ module.exports.testdurfmt_or_IN = {
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -115,7 +115,7 @@ module.exports.testdurfmt_or_IN = {
         test.equal(duration.toString(), '1ବର୍ଷ 1ମାସ 1ସପ୍ 1ଦିନ 1ଘଣ୍ଟା 1ମିନିଟ୍‌ 1ସେକ୍' );
         test.done();
     },
-    
+
     testDurFmtORFormatLong: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -123,7 +123,7 @@ module.exports.testdurfmt_or_IN = {
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -136,7 +136,7 @@ module.exports.testdurfmt_or_IN = {
         test.equal(duration.toString(), '1 ବର୍ଷ, 1 ମାସ, 1 ସପ୍ତାହ, 1 ଦିନ, 1 ଘଣ୍ଟା, 1 ମିନିଟ୍‌, 1 ସେକେଣ୍ଡ');
         test.done();
     },
-    
+
     testDurFmtORFormatFull: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -144,7 +144,7 @@ module.exports.testdurfmt_or_IN = {
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -157,8 +157,8 @@ module.exports.testdurfmt_or_IN = {
         test.equal(duration.toString(), '1 ବର୍ଷ, 1 ମାସ, 1 ସପ୍ତାହ, 1 ଦିନ, 1 ଘଣ୍ଟା, 1 ମିନିଟ୍‌, 1 ସେକେଣ୍ଡ');
         test.done();
     },
-    
-    
+
+
     testDurFmtORAsyncWithLocale: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -167,7 +167,7 @@ module.exports.testdurfmt_or_IN = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 2,
                     month: 2,
@@ -182,7 +182,7 @@ module.exports.testdurfmt_or_IN = {
             }
         });
     },
-    
+
     testDurFmtORFormatShortClockAsync: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -192,7 +192,7 @@ module.exports.testdurfmt_or_IN = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 1,
                     month: 1,
@@ -207,5 +207,5 @@ module.exports.testdurfmt_or_IN = {
             }
         });
     }
-    
+
 };

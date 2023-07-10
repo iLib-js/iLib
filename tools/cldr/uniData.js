@@ -1,6 +1,6 @@
 /*
  * uniData.js - models a unicode character database file
- * 
+ *
  * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ var hexToChar = common.hexToChar;
 /**
  * @class
  * Represents information about a particular character.
- * 
+ *
  * @constructor
  * @param {string} row a row from the UnicodeData.txt file to parse
  */
@@ -172,7 +172,7 @@ exports.CharacterInfo.prototype = {
  * </ul>
  *
  * @constructor
- * @param {Object.<{path:string,string:string}>} options Options controlling the construction of the instance 
+ * @param {Object.<{path:string,string:string}>} options Options controlling the construction of the instance
  */
 exports.UnicodeData = function (options) {
     this.uf = new UnicodeFile(options);

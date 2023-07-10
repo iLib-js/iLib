@@ -285,16 +285,16 @@
             "code": "04"
         },
         {
-            "name": "Ģirokastras apgabals",
-            "code": "05"
-        },
-        {
             "name": "Gjirokastër",
             "code": "GJ"
         },
         {
             "name": "Gramsh",
             "code": "GR"
+        },
+        {
+            "name": "Ģirokastras apgabals",
+            "code": "05"
         },
         {
             "name": "Has",
@@ -309,12 +309,12 @@
             "code": "ER"
         },
         {
-            "name": "Korčas apgabals",
-            "code": "06"
-        },
-        {
             "name": "Korçë",
             "code": "KO"
+        },
+        {
+            "name": "Korčas apgabals",
+            "code": "06"
         },
         {
             "name": "Krujë",
@@ -417,12 +417,12 @@
             "code": "TP"
         },
         {
-            "name": "Vļoras apgabals",
-            "code": "12"
-        },
-        {
             "name": "Vlorë",
             "code": "VL"
+        },
+        {
+            "name": "Vļoras apgabals",
+            "code": "12"
         }
     ],
     "AM": [
@@ -455,12 +455,12 @@
             "code": "LO"
         },
         {
-            "name": "Širakas reģions",
-            "code": "SH"
-        },
-        {
             "name": "Sjunikas reģions",
             "code": "SU"
+        },
+        {
+            "name": "Širakas reģions",
+            "code": "SH"
         },
         {
             "name": "Tavušas reģions",
@@ -835,12 +835,12 @@
             "code": "QOB"
         },
         {
-            "name": "Goranbojas rajons",
-            "code": "GOR"
-        },
-        {
             "name": "Goygol",
             "code": "GYG"
+        },
+        {
+            "name": "Goranbojas rajons",
+            "code": "GOR"
         },
         {
             "name": "Gubadli rajons",
@@ -865,6 +865,10 @@
         {
             "name": "Hodžalinas rajons",
             "code": "XCI"
+        },
+        {
+            "name": "Yevlakh",
+            "code": "YE"
         },
         {
             "name": "Imišli rajons",
@@ -959,14 +963,6 @@
             "code": "SAB"
         },
         {
-            "name": "Šabranas rajons",
-            "code": "SBN"
-        },
-        {
-            "name": "Šahbuzas rajons",
-            "code": "SAH"
-        },
-        {
             "name": "Saljanas rajons",
             "code": "SAL"
         },
@@ -977,18 +973,6 @@
         {
             "name": "Sederekas rajons",
             "code": "SAD"
-        },
-        {
-            "name": "Šeki",
-            "code": "SA"
-        },
-        {
-            "name": "Šeki rajons",
-            "code": "SAK"
-        },
-        {
-            "name": "Šemkiras rajons",
-            "code": "SKR"
         },
         {
             "name": "Shamakhi",
@@ -1003,16 +987,36 @@
             "code": "SIY"
         },
         {
-            "name": "Širvana",
-            "code": "SR"
-        },
-        {
             "name": "Stepanakerta",
             "code": "XA"
         },
         {
             "name": "Sumgajita",
             "code": "SM"
+        },
+        {
+            "name": "Šabranas rajons",
+            "code": "SBN"
+        },
+        {
+            "name": "Šahbuzas rajons",
+            "code": "SAH"
+        },
+        {
+            "name": "Šeki",
+            "code": "SA"
+        },
+        {
+            "name": "Šeki rajons",
+            "code": "SAK"
+        },
+        {
+            "name": "Šemkiras rajons",
+            "code": "SKR"
+        },
+        {
+            "name": "Širvana",
+            "code": "SR"
         },
         {
             "name": "Šušas rajons",
@@ -1029,10 +1033,6 @@
         {
             "name": "Udžaras rajons",
             "code": "UCA"
-        },
-        {
-            "name": "Yevlakh",
-            "code": "YE"
         },
         {
             "name": "Zagatalas rajons",
@@ -1313,10 +1313,6 @@
             "code": "39"
         },
         {
-            "name": "Munshiganj",
-            "code": "35"
-        },
-        {
             "name": "Mymensingh",
             "code": "34"
         },
@@ -1325,16 +1321,20 @@
             "code": "H"
         },
         {
+            "name": "Munshiganj",
+            "code": "35"
+        },
+        {
             "name": "Naogaon",
             "code": "48"
         },
         {
-            "name": "Narail",
-            "code": "43"
-        },
-        {
             "name": "Narayanganj",
             "code": "40"
+        },
+        {
+            "name": "Narail",
+            "code": "43"
         },
         {
             "name": "Narsingdi",
@@ -1417,16 +1417,16 @@
             "code": "60"
         },
         {
+            "name": "Sylhet Division",
+            "code": "G"
+        },
+        {
             "name": "Sirajganj",
             "code": "59"
         },
         {
             "name": "Sunamganj",
             "code": "61"
-        },
-        {
-            "name": "Sylhet Division",
-            "code": "G"
         },
         {
             "name": "Tangail",
@@ -1887,20 +1887,20 @@
             "code": "KY"
         },
         {
-            "name": "Ķankuzo province",
-            "code": "CA"
-        },
-        {
             "name": "Karuzi province",
             "code": "KR"
         },
         {
-            "name": "Ķibotokes province",
-            "code": "CI"
-        },
-        {
             "name": "Kirundo province",
             "code": "KI"
+        },
+        {
+            "name": "Ķankuzo province",
+            "code": "CA"
+        },
+        {
+            "name": "Ķibotokes province",
+            "code": "CI"
         },
         {
             "name": "Makambas province",
@@ -2253,12 +2253,12 @@
             "code": "LI"
         },
         {
-            "name": "Mangrovkeja",
-            "code": "MC"
-        },
-        {
             "name": "Mayaguana",
             "code": "MG"
+        },
+        {
+            "name": "Mangrovkeja",
+            "code": "MC"
         },
         {
             "name": "Mūra sala",
@@ -2531,16 +2531,16 @@
             "code": "MB"
         },
         {
+            "name": "Nunavuta",
+            "code": "NU"
+        },
+        {
             "name": "Ņūbransvika",
             "code": "NB"
         },
         {
             "name": "Ņūfaundlenda un Labradora",
             "code": "NL"
-        },
-        {
-            "name": "Nunavuta",
-            "code": "NU"
         },
         {
             "name": "Ontārio",
@@ -2867,12 +2867,12 @@
             "code": "OW"
         },
         {
-            "name": "Šafhauzenes kantons",
-            "code": "SH"
-        },
-        {
             "name": "Sanktgallenes kantons",
             "code": "SG"
+        },
+        {
+            "name": "Šafhauzenes kantons",
+            "code": "SH"
         },
         {
             "name": "Švīces kantons",
@@ -2899,12 +2899,12 @@
             "code": "VD"
         },
         {
-            "name": "Ženēvas kantons",
-            "code": "GE"
-        },
-        {
             "name": "Zoloturnas kantons",
             "code": "SO"
+        },
+        {
+            "name": "Ženēvas kantons",
+            "code": "GE"
         }
     ],
     "CI": [
@@ -2985,16 +2985,16 @@
             "code": "12"
         },
         {
-            "name": "Montagnes",
-            "code": "MG"
-        },
-        {
             "name": "Moyen-Cavally",
             "code": "19"
         },
         {
             "name": "Moyen-Comoé",
             "code": "05"
+        },
+        {
+            "name": "Montagnes",
+            "code": "MG"
         },
         {
             "name": "N’zi-Comoé",
@@ -3163,10 +3163,6 @@
             "code": "CQ"
         },
         {
-            "name": "Džedzjana",
-            "code": "ZJ"
-        },
-        {
             "name": "Dzjansji",
             "code": "JX"
         },
@@ -3177,6 +3173,10 @@
         {
             "name": "Dzjiliņa",
             "code": "JL"
+        },
+        {
+            "name": "Džedzjana",
+            "code": "ZJ"
         },
         {
             "name": "Fudzjaņa",
@@ -3259,28 +3259,28 @@
             "code": "BJ"
         },
         {
-            "name": "Šaaņsji",
-            "code": "SN"
-        },
-        {
-            "name": "Šaņduna",
-            "code": "SD"
-        },
-        {
-            "name": "Šanhaja",
-            "code": "SH"
-        },
-        {
-            "name": "Šaņsji",
-            "code": "SX"
-        },
-        {
             "name": "Sičuaņa",
             "code": "SC"
         },
         {
             "name": "Siņdzjana",
             "code": "XJ"
+        },
+        {
+            "name": "Šaaņsji",
+            "code": "SN"
+        },
+        {
+            "name": "Šanhaja",
+            "code": "SH"
+        },
+        {
+            "name": "Šaņduna",
+            "code": "SD"
+        },
+        {
+            "name": "Šaņsji",
+            "code": "SX"
         },
         {
             "name": "Taiwan",
@@ -3699,6 +3699,14 @@
             "code": "20"
         },
         {
+            "name": "Cheb",
+            "code": "411"
+        },
+        {
+            "name": "Chomutov",
+            "code": "422"
+        },
+        {
             "name": "Česká Lípa",
             "code": "511"
         },
@@ -3709,14 +3717,6 @@
         {
             "name": "Český Krumlov",
             "code": "312"
-        },
-        {
-            "name": "Cheb",
-            "code": "411"
-        },
-        {
-            "name": "Chomutov",
-            "code": "422"
         },
         {
             "name": "Děčín",
@@ -3779,12 +3779,12 @@
             "code": "313"
         },
         {
-            "name": "Karlovi Varu reģions",
-            "code": "41"
-        },
-        {
             "name": "Karlovy Vary",
             "code": "412"
+        },
+        {
+            "name": "Karlovi Varu reģions",
+            "code": "41"
         },
         {
             "name": "Karvinas apriņķis",
@@ -4023,12 +4023,12 @@
             "code": "20C"
         },
         {
-            "name": "Rokycany",
-            "code": "326"
-        },
-        {
             "name": "Rychnov nad Kněžnou",
             "code": "524"
+        },
+        {
+            "name": "Rokycany",
+            "code": "326"
         },
         {
             "name": "Semily",
@@ -4043,12 +4043,12 @@
             "code": "316"
         },
         {
-            "name": "Šumperkas apriņķis",
-            "code": "715"
-        },
-        {
             "name": "Svitavu apriņķis",
             "code": "533"
+        },
+        {
+            "name": "Šumperkas apriņķis",
+            "code": "715"
         },
         {
             "name": "Tábor",
@@ -4087,20 +4087,16 @@
             "code": "534"
         },
         {
-            "name": "Viškovas apriņķis",
-            "code": "646"
-        },
-        {
             "name": "Visočinas apgabals",
             "code": "63"
         },
         {
-            "name": "Vsetīnas apriņķis",
-            "code": "723"
+            "name": "Viškovas apriņķis",
+            "code": "646"
         },
         {
-            "name": "Ždjāras pie Sāzavas apriņķis",
-            "code": "635"
+            "name": "Vsetīnas apriņķis",
+            "code": "723"
         },
         {
             "name": "Zlīnas apgabals",
@@ -4113,6 +4109,10 @@
         {
             "name": "Znojmo apriņķis",
             "code": "647"
+        },
+        {
+            "name": "Ždjāras pie Sāzavas apriņķis",
+            "code": "635"
         }
     ],
     "DE": [
@@ -4747,12 +4747,28 @@
             "code": "44"
         },
         {
+            "name": "Ida-Virumaa",
+            "code": "45"
+        },
+        {
             "name": "Jegevas apriņķis",
             "code": "49"
         },
         {
+            "name": "Jõgevamaa",
+            "code": "50"
+        },
+        {
             "name": "Jervas apriņķis",
             "code": "51"
+        },
+        {
+            "name": "Järvamaa",
+            "code": "52"
+        },
+        {
+            "name": "Läänemaa",
+            "code": "56"
         },
         {
             "name": "Lēnes apriņķis",
@@ -4763,6 +4779,14 @@
             "code": "59"
         },
         {
+            "name": "Lääne-Virumaa",
+            "code": "60"
+        },
+        {
+            "name": "Põlvamaa",
+            "code": "64"
+        },
+        {
             "name": "Pelvas apriņķis",
             "code": "65"
         },
@@ -4771,8 +4795,16 @@
             "code": "67"
         },
         {
+            "name": "Pärnumaa",
+            "code": "68"
+        },
+        {
             "name": "Raplas apriņķis",
             "code": "70"
+        },
+        {
+            "name": "Raplamaa",
+            "code": "71"
         },
         {
             "name": "Sāremā apriņķis",
@@ -4781,6 +4813,14 @@
         {
             "name": "Tartu apriņķis",
             "code": "78"
+        },
+        {
+            "name": "Tartumaa",
+            "code": "79"
+        },
+        {
+            "name": "Valgamaa",
+            "code": "81"
         },
         {
             "name": "Valgas apriņķis",
@@ -4793,6 +4833,326 @@
         {
             "name": "Veru apriņķis",
             "code": "86"
+        },
+        {
+            "name": "Võrumaa",
+            "code": "87"
+        },
+        {
+            "name": "Alutaguse",
+            "code": "130"
+        },
+        {
+            "name": "Anija",
+            "code": "141"
+        },
+        {
+            "name": "Antsla",
+            "code": "142"
+        },
+        {
+            "name": "Elva",
+            "code": "171"
+        },
+        {
+            "name": "Haapsalu",
+            "code": "184"
+        },
+        {
+            "name": "Haljala",
+            "code": "191"
+        },
+        {
+            "name": "Harku",
+            "code": "198"
+        },
+        {
+            "name": "Hiiumaa",
+            "code": "205"
+        },
+        {
+            "name": "Häädemeeste",
+            "code": "214"
+        },
+        {
+            "name": "Jõelähtme",
+            "code": "245"
+        },
+        {
+            "name": "Jõgeva",
+            "code": "247"
+        },
+        {
+            "name": "Jõhvi",
+            "code": "251"
+        },
+        {
+            "name": "Järva",
+            "code": "255"
+        },
+        {
+            "name": "Kadrina",
+            "code": "272"
+        },
+        {
+            "name": "Kambja",
+            "code": "283"
+        },
+        {
+            "name": "Kanepi",
+            "code": "284"
+        },
+        {
+            "name": "Kastre",
+            "code": "291"
+        },
+        {
+            "name": "Kehtna",
+            "code": "293"
+        },
+        {
+            "name": "Keila",
+            "code": "296"
+        },
+        {
+            "name": "Kihnu",
+            "code": "303"
+        },
+        {
+            "name": "Kiili",
+            "code": "305"
+        },
+        {
+            "name": "Kohila",
+            "code": "317"
+        },
+        {
+            "name": "Kohtla-Järve",
+            "code": "321"
+        },
+        {
+            "name": "Kose",
+            "code": "338"
+        },
+        {
+            "name": "Kuusalu",
+            "code": "353"
+        },
+        {
+            "name": "Loksa",
+            "code": "424"
+        },
+        {
+            "name": "Lääneranna",
+            "code": "430"
+        },
+        {
+            "name": "Lääne-Harju",
+            "code": "431"
+        },
+        {
+            "name": "Luunja",
+            "code": "432"
+        },
+        {
+            "name": "Lääne-Nigula",
+            "code": "441"
+        },
+        {
+            "name": "Lüganuse",
+            "code": "442"
+        },
+        {
+            "name": "Maardu",
+            "code": "446"
+        },
+        {
+            "name": "Muhu",
+            "code": "478"
+        },
+        {
+            "name": "Mulgi",
+            "code": "480"
+        },
+        {
+            "name": "Mustvee",
+            "code": "486"
+        },
+        {
+            "name": "Märjamaa",
+            "code": "503"
+        },
+        {
+            "name": "Narva",
+            "code": "511"
+        },
+        {
+            "name": "Narva-Jõesuu",
+            "code": "514"
+        },
+        {
+            "name": "Nõo",
+            "code": "528"
+        },
+        {
+            "name": "Otepää",
+            "code": "557"
+        },
+        {
+            "name": "Paide",
+            "code": "567"
+        },
+        {
+            "name": "Peipsiääre",
+            "code": "586"
+        },
+        {
+            "name": "Põhja-Sakala",
+            "code": "615"
+        },
+        {
+            "name": "Põltsamaa",
+            "code": "618"
+        },
+        {
+            "name": "Põlva",
+            "code": "622"
+        },
+        {
+            "name": "Pärnu",
+            "code": "624"
+        },
+        {
+            "name": "Põhja-Pärnumaa",
+            "code": "638"
+        },
+        {
+            "name": "Raasiku",
+            "code": "651"
+        },
+        {
+            "name": "Rae",
+            "code": "653"
+        },
+        {
+            "name": "Rakvere",
+            "code": "661"
+        },
+        {
+            "name": "Rakvere",
+            "code": "663"
+        },
+        {
+            "name": "Rapla",
+            "code": "668"
+        },
+        {
+            "name": "Ruhnu",
+            "code": "689"
+        },
+        {
+            "name": "Rõuge",
+            "code": "698"
+        },
+        {
+            "name": "Räpina",
+            "code": "708"
+        },
+        {
+            "name": "Saarde",
+            "code": "712"
+        },
+        {
+            "name": "Saaremaa",
+            "code": "714"
+        },
+        {
+            "name": "Saku",
+            "code": "719"
+        },
+        {
+            "name": "Saue",
+            "code": "726"
+        },
+        {
+            "name": "Setomaa",
+            "code": "732"
+        },
+        {
+            "name": "Sillamäe",
+            "code": "735"
+        },
+        {
+            "name": "Tallinn",
+            "code": "784"
+        },
+        {
+            "name": "Tapa",
+            "code": "792"
+        },
+        {
+            "name": "Tartu",
+            "code": "793"
+        },
+        {
+            "name": "Tartu",
+            "code": "796"
+        },
+        {
+            "name": "Toila",
+            "code": "803"
+        },
+        {
+            "name": "Tori",
+            "code": "809"
+        },
+        {
+            "name": "Tõrva",
+            "code": "824"
+        },
+        {
+            "name": "Türi",
+            "code": "834"
+        },
+        {
+            "name": "Valga",
+            "code": "855"
+        },
+        {
+            "name": "Viimsi",
+            "code": "890"
+        },
+        {
+            "name": "Viljandi",
+            "code": "897"
+        },
+        {
+            "name": "Viljandi",
+            "code": "899"
+        },
+        {
+            "name": "Vinni",
+            "code": "901"
+        },
+        {
+            "name": "Viru-Nigula",
+            "code": "903"
+        },
+        {
+            "name": "Vormsi",
+            "code": "907"
+        },
+        {
+            "name": "Võru",
+            "code": "917"
+        },
+        {
+            "name": "Võru",
+            "code": "919"
+        },
+        {
+            "name": "Väike-Maarja",
+            "code": "928"
         }
     ],
     "EG": [
@@ -4889,12 +5249,12 @@
             "code": "SHG"
         },
         {
-            "name": "Šerkījas muhāfaza",
-            "code": "SHR"
-        },
-        {
             "name": "Suecas muhāfaza",
             "code": "SUZ"
+        },
+        {
+            "name": "Šerkījas muhāfaza",
+            "code": "SHR"
         },
         {
             "name": "Vādīelgedīdas muhāfaza",
@@ -5081,16 +5441,16 @@
             "code": "GC"
         },
         {
-            "name": "Ļeidas province",
-            "code": "L"
-        },
-        {
             "name": "Leonas province",
             "code": "LE"
         },
         {
             "name": "Lugo province",
             "code": "LU"
+        },
+        {
+            "name": "Ļeidas province",
+            "code": "L"
         },
         {
             "name": "Madrid Province",
@@ -5245,6 +5605,10 @@
         {
             "name": "Oromijas kiliks",
             "code": "OR"
+        },
+        {
+            "name": "Sidama",
+            "code": "SI"
         },
         {
             "name": "Somāli kiliks",
@@ -5417,22 +5781,26 @@
             "code": "TRK"
         },
         {
+            "name": "Yap",
+            "code": "YAP"
+        },
+        {
             "name": "Kosrae",
             "code": "KSA"
         },
         {
             "name": "Ponpejas štats",
             "code": "PNI"
-        },
-        {
-            "name": "Yap",
-            "code": "YAP"
         }
     ],
     "FR": [
         {
             "name": "Aljē",
             "code": "03"
+        },
+        {
+            "name": "Alsace",
+            "code": "6AE"
         },
         {
             "name": "Ardēni",
@@ -5531,6 +5899,10 @@
             "code": "CP"
         },
         {
+            "name": "Corse",
+            "code": "20R"
+        },
+        {
             "name": "Desevra",
             "code": "79"
         },
@@ -5608,11 +5980,19 @@
         },
         {
             "name": "Guadeloupe",
-            "code": "GUA"
+            "code": "971"
         },
         {
             "name": "Guadeloupe",
             "code": "GP"
+        },
+        {
+            "name": "Guadeloupe",
+            "code": "GUA"
+        },
+        {
+            "name": "Guyane (française)",
+            "code": "973"
         },
         {
             "name": "Hauts-de-France",
@@ -5676,6 +6056,10 @@
         },
         {
             "name": "La Réunion",
+            "code": "974"
+        },
+        {
+            "name": "La Réunion",
             "code": "LRE"
         },
         {
@@ -5715,6 +6099,18 @@
             "code": "45"
         },
         {
+            "name": "Mayotte",
+            "code": "976"
+        },
+        {
+            "name": "Mayotte",
+            "code": "MAY"
+        },
+        {
+            "name": "Mayotte",
+            "code": "YT"
+        },
+        {
             "name": "Majenna",
             "code": "53"
         },
@@ -5728,15 +6124,11 @@
         },
         {
             "name": "Martinique",
+            "code": "972"
+        },
+        {
+            "name": "Martinique",
             "code": "MQ"
-        },
-        {
-            "name": "Mayotte",
-            "code": "YT"
-        },
-        {
-            "name": "Mayotte",
-            "code": "MAY"
         },
         {
             "name": "Mēna un Luāra",
@@ -5745,6 +6137,10 @@
         {
             "name": "Merta un Mozele",
             "code": "54"
+        },
+        {
+            "name": "Métropole de Lyon",
+            "code": "69M"
         },
         {
             "name": "Mēza",
@@ -5803,6 +6199,10 @@
             "code": "62"
         },
         {
+            "name": "Paris",
+            "code": "75C"
+        },
+        {
             "name": "Parīze",
             "code": "75"
         },
@@ -5811,12 +6211,12 @@
             "code": "06"
         },
         {
-            "name": "Piejūras Šaranta",
-            "code": "17"
-        },
-        {
             "name": "Piejūras Sēna",
             "code": "76"
+        },
+        {
+            "name": "Piejūras Šaranta",
+            "code": "17"
         },
         {
             "name": "Pijdedoma",
@@ -5835,10 +6235,6 @@
             "code": "69"
         },
         {
-            "name": "Šaranta",
-            "code": "16"
-        },
-        {
             "name": "Sarta",
             "code": "72"
         },
@@ -5853,10 +6249,6 @@
         {
             "name": "Sēna-Sendenī",
             "code": "93"
-        },
-        {
-            "name": "Šēra",
-            "code": "18"
         },
         {
             "name": "Somma",
@@ -5877,6 +6269,14 @@
         {
             "name": "St. Pierre & Miquelon",
             "code": "PM"
+        },
+        {
+            "name": "Šaranta",
+            "code": "16"
+        },
+        {
+            "name": "Šēra",
+            "code": "18"
         },
         {
             "name": "Tarna",
@@ -6089,6 +6489,10 @@
         {
             "name": "Bournemouth",
             "code": "BMH"
+        },
+        {
+            "name": "Bournemouth, Christchurch and Poole",
+            "code": "BCP"
         },
         {
             "name": "Bracknell Forest",
@@ -6547,16 +6951,16 @@
             "code": "MIK"
         },
         {
+            "name": "Moyle",
+            "code": "MYL"
+        },
+        {
             "name": "Monmouthshire",
             "code": "MON"
         },
         {
             "name": "Moray",
             "code": "MRY"
-        },
-        {
-            "name": "Moyle",
-            "code": "MYL"
         },
         {
             "name": "Neath Port Talbot",
@@ -6755,16 +7159,8 @@
             "code": "SCB"
         },
         {
-            "name": "Šefīlda",
-            "code": "SHF"
-        },
-        {
             "name": "Sefton",
             "code": "SFT"
-        },
-        {
-            "name": "Šetlendas salas",
-            "code": "ZET"
         },
         {
             "name": "Skotija",
@@ -6801,10 +7197,6 @@
         {
             "name": "Southend-on-Sea",
             "code": "SOS"
-        },
-        {
-            "name": "Šropšīra",
-            "code": "SHR"
         },
         {
             "name": "Stefordšīra",
@@ -6845,6 +7237,18 @@
         {
             "name": "Swindon",
             "code": "SWD"
+        },
+        {
+            "name": "Šefīlda",
+            "code": "SHF"
+        },
+        {
+            "name": "Šetlendas salas",
+            "code": "ZET"
+        },
+        {
+            "name": "Šropšīra",
+            "code": "SHR"
         },
         {
             "name": "Tameside",
@@ -7055,6 +7459,10 @@
     ],
     "GH": [
         {
+            "name": "Ahafo",
+            "code": "AF"
+        },
+        {
             "name": "Ašanti reģions",
             "code": "AH"
         },
@@ -7065,6 +7473,14 @@
         {
             "name": "Austrumu reģions",
             "code": "EP"
+        },
+        {
+            "name": "Bono",
+            "code": "BO"
+        },
+        {
+            "name": "Bono East",
+            "code": "BE"
         },
         {
             "name": "Brongahafo reģions",
@@ -7079,6 +7495,14 @@
             "code": "AA"
         },
         {
+            "name": "North East",
+            "code": "NE"
+        },
+        {
+            "name": "Oti",
+            "code": "OT"
+        },
+        {
             "name": "Rietumaugšējais reģions",
             "code": "UW"
         },
@@ -7087,8 +7511,16 @@
             "code": "WP"
         },
         {
+            "name": "Savannah",
+            "code": "SV"
+        },
+        {
             "name": "Voltas reģions",
             "code": "TV"
+        },
+        {
+            "name": "Western North",
+            "code": "WN"
         },
         {
             "name": "Ziemeļu reģions",
@@ -7333,6 +7765,10 @@
             "code": "BS"
         },
         {
+            "name": "Djibloho",
+            "code": "DJ"
+        },
+        {
             "name": "Insular",
             "code": "I"
         },
@@ -7419,6 +7855,10 @@
             "code": "85"
         },
         {
+            "name": "Cyclades",
+            "code": "82"
+        },
+        {
             "name": "Corfu",
             "code": "22"
         },
@@ -7429,10 +7869,6 @@
         {
             "name": "Crete",
             "code": "M"
-        },
-        {
-            "name": "Cyclades",
-            "code": "82"
         },
         {
             "name": "Dienvidegeja",
@@ -7621,12 +8057,28 @@
     ],
     "GT": [
         {
+            "name": "Alta Verapaz",
+            "code": "16"
+        },
+        {
             "name": "Altaverapasas departaments",
             "code": "AV"
         },
         {
             "name": "Bahaverapasas departaments",
             "code": "BV"
+        },
+        {
+            "name": "Baja Verapaz",
+            "code": "15"
+        },
+        {
+            "name": "Chimaltenango",
+            "code": "04"
+        },
+        {
+            "name": "Chiquimula",
+            "code": "20"
         },
         {
             "name": "Čikimulas departaments",
@@ -7637,12 +8089,24 @@
             "code": "CM"
         },
         {
+            "name": "El Progreso",
+            "code": "02"
+        },
+        {
             "name": "Elprogreso departaments",
             "code": "PR"
         },
         {
+            "name": "Escuintla",
+            "code": "05"
+        },
+        {
             "name": "Eskuintlas departaments",
             "code": "ES"
+        },
+        {
+            "name": "Guatemala",
+            "code": "01"
         },
         {
             "name": "Gvatemalas departements",
@@ -7653,12 +8117,28 @@
             "code": "JA"
         },
         {
+            "name": "Huehuetenango",
+            "code": "13"
+        },
+        {
             "name": "Hutjapas departaments",
             "code": "JU"
         },
         {
             "name": "Isabalas departaments",
             "code": "IZ"
+        },
+        {
+            "name": "Izabal",
+            "code": "18"
+        },
+        {
+            "name": "Jalapa",
+            "code": "21"
+        },
+        {
+            "name": "Jutiapa",
+            "code": "22"
         },
         {
             "name": "Kesaltenango departaments",
@@ -7669,12 +8149,32 @@
             "code": "QC"
         },
         {
+            "name": "Petén",
+            "code": "17"
+        },
+        {
             "name": "Petenas departaments",
             "code": "PE"
         },
         {
+            "name": "Quetzaltenango",
+            "code": "09"
+        },
+        {
+            "name": "Quiché",
+            "code": "14"
+        },
+        {
+            "name": "Retalhuleu",
+            "code": "11"
+        },
+        {
             "name": "Retaluleu departaments",
             "code": "RE"
+        },
+        {
+            "name": "Sacatepéquez",
+            "code": "03"
         },
         {
             "name": "Sakapas departaments",
@@ -7685,20 +8185,40 @@
             "code": "SA"
         },
         {
+            "name": "San Marcos",
+            "code": "12"
+        },
+        {
             "name": "Sanmarkosas departaments",
             "code": "SM"
+        },
+        {
+            "name": "Santa Rosa",
+            "code": "06"
         },
         {
             "name": "Santarosas departaments",
             "code": "SR"
         },
         {
+            "name": "Sololá",
+            "code": "07"
+        },
+        {
             "name": "Solosas departaments",
             "code": "SO"
         },
         {
+            "name": "Suchitepéquez",
+            "code": "10"
+        },
+        {
             "name": "Sučitepekesas departaments",
             "code": "SU"
+        },
+        {
+            "name": "Totonicapán",
+            "code": "08"
         },
         {
             "name": "Totonipakana departaments",
@@ -7707,6 +8227,10 @@
         {
             "name": "Venetenango departaments",
             "code": "HU"
+        },
+        {
+            "name": "Zacapa",
+            "code": "19"
         }
     ],
     "GU": [
@@ -7823,12 +8347,12 @@
             "code": "IB"
         },
         {
-            "name": "Čolutekas departaments",
-            "code": "CH"
-        },
-        {
             "name": "Comayagua",
             "code": "CM"
+        },
+        {
+            "name": "Čolutekas departaments",
+            "code": "CH"
         },
         {
             "name": "Elparaiso departaments",
@@ -8109,12 +8633,12 @@
             "code": "NK"
         },
         {
-            "name": "Ņīreģhāza",
-            "code": "NY"
-        },
-        {
             "name": "Nogrādas meģe",
             "code": "NO"
+        },
+        {
+            "name": "Ņīreģhāza",
+            "code": "NY"
         },
         {
             "name": "Pēča",
@@ -8127,10 +8651,6 @@
         {
             "name": "Sabolčas-Satmāras-Beregas meģe",
             "code": "SZ"
-        },
-        {
-            "name": "Šalgotarjana",
-            "code": "ST"
         },
         {
             "name": "Segeda",
@@ -8151,6 +8671,10 @@
         {
             "name": "Sombatheja",
             "code": "SH"
+        },
+        {
+            "name": "Šalgotarjana",
+            "code": "ST"
         },
         {
             "name": "Šomoģas meģe",
@@ -8539,6 +9063,10 @@
             "code": "CT"
         },
         {
+            "name": "Dādra and Nagar Haveli and Damān and Diu",
+            "code": "DH"
+        },
+        {
             "name": "Dādra un Nagarhaveli",
             "code": "DN"
         },
@@ -8581,6 +9109,10 @@
         {
             "name": "Kerala",
             "code": "KL"
+        },
+        {
+            "name": "Ladakh",
+            "code": "LA"
         },
         {
             "name": "Lakšadvīpa",
@@ -8705,6 +9237,10 @@
             "code": "KI"
         },
         {
+            "name": "Kurdistan",
+            "code": "KR"
+        },
+        {
             "name": "Meisānas muhāfaza",
             "code": "MA"
         },
@@ -8730,6 +9266,10 @@
         }
     ],
     "IR": [
+        {
+            "name": "Markazī",
+            "code": "00"
+        },
         {
             "name": "Austrumazerbaidžāna",
             "code": "01"
@@ -8761,6 +9301,10 @@
         {
             "name": "Čahārmahāla un Bahtijārī",
             "code": "08"
+        },
+        {
+            "name": "Khorāsān-e Raẕavī",
+            "code": "09"
         },
         {
             "name": "Hūzestāna",
@@ -8857,40 +9401,332 @@
     ],
     "IS": [
         {
-            "name": "Reykjavík",
-            "code": "0"
+            "name": "Akrahreppur",
+            "code": "AKH"
         },
         {
-            "name": "Galvaspilsētas reģions",
-            "code": "1"
+            "name": "Akraneskaupstaður",
+            "code": "AKN"
         },
         {
-            "name": "Dienvidu pussala",
-            "code": "2"
+            "name": "Akureyrarbær",
+            "code": "AKU"
         },
         {
-            "name": "Rietumu reģions",
-            "code": "3"
+            "name": "Árneshreppur",
+            "code": "ARN"
         },
         {
-            "name": "Rietumfjordi",
-            "code": "4"
-        },
-        {
-            "name": "Ziemeļrietumu reģions",
-            "code": "5"
-        },
-        {
-            "name": "Ziemeļaustrumu reģions",
-            "code": "6"
+            "name": "Ásahreppur",
+            "code": "ASA"
         },
         {
             "name": "Austrumu reģions",
             "code": "7"
         },
         {
+            "name": "Bláskógabyggð",
+            "code": "BLA"
+        },
+        {
+            "name": "Blönduósbær",
+            "code": "BLO"
+        },
+        {
+            "name": "Bolungarvíkurkaupstaður",
+            "code": "BOL"
+        },
+        {
+            "name": "Borgarbyggð",
+            "code": "BOG"
+        },
+        {
+            "name": "Borgarfjarðarhreppur",
+            "code": "BFJ"
+        },
+        {
+            "name": "Dalabyggð",
+            "code": "DAB"
+        },
+        {
+            "name": "Dalvíkurbyggð",
+            "code": "DAV"
+        },
+        {
+            "name": "Dienvidu pussala",
+            "code": "2"
+        },
+        {
             "name": "Dienvidu reģions",
             "code": "8"
+        },
+        {
+            "name": "Djúpavogshreppur",
+            "code": "DJU"
+        },
+        {
+            "name": "Eyja- og Miklaholtshreppur",
+            "code": "EOM"
+        },
+        {
+            "name": "Eyjafjarðarsveit",
+            "code": "EYF"
+        },
+        {
+            "name": "Fjallabyggð",
+            "code": "FJL"
+        },
+        {
+            "name": "Fjarðabyggð",
+            "code": "FJD"
+        },
+        {
+            "name": "Fljótsdalshérað",
+            "code": "FLD"
+        },
+        {
+            "name": "Fljótsdalshreppur",
+            "code": "FLR"
+        },
+        {
+            "name": "Flóahreppur",
+            "code": "FLA"
+        },
+        {
+            "name": "Galvaspilsētas reģions",
+            "code": "1"
+        },
+        {
+            "name": "Garðabær",
+            "code": "GAR"
+        },
+        {
+            "name": "Grímsnes- og Grafningshreppur",
+            "code": "GOG"
+        },
+        {
+            "name": "Grindavíkurbær",
+            "code": "GRN"
+        },
+        {
+            "name": "Grýtubakkahreppur",
+            "code": "GRY"
+        },
+        {
+            "name": "Grundarfjarðarbær",
+            "code": "GRU"
+        },
+        {
+            "name": "Hafnarfjarðarkaupstaður",
+            "code": "HAF"
+        },
+        {
+            "name": "Helgafellssveit",
+            "code": "HEL"
+        },
+        {
+            "name": "Hörgársveit",
+            "code": "HRG"
+        },
+        {
+            "name": "Hrunamannahreppur",
+            "code": "HRU"
+        },
+        {
+            "name": "Húnavatnshreppur",
+            "code": "HUT"
+        },
+        {
+            "name": "Húnaþing vestra",
+            "code": "HUV"
+        },
+        {
+            "name": "Hvalfjarðarsveit",
+            "code": "HVA"
+        },
+        {
+            "name": "Hveragerðisbær",
+            "code": "HVE"
+        },
+        {
+            "name": "Ísafjarðarbær",
+            "code": "ISA"
+        },
+        {
+            "name": "Kaldrananeshreppur",
+            "code": "KAL"
+        },
+        {
+            "name": "Kjósarhreppur",
+            "code": "KJO"
+        },
+        {
+            "name": "Kópavogsbær",
+            "code": "KOP"
+        },
+        {
+            "name": "Langanesbyggð",
+            "code": "LAN"
+        },
+        {
+            "name": "Mýrdalshreppur",
+            "code": "MYR"
+        },
+        {
+            "name": "Mosfellsbær",
+            "code": "MOS"
+        },
+        {
+            "name": "Múlaþing",
+            "code": "MUL"
+        },
+        {
+            "name": "Norðurþing",
+            "code": "NOR"
+        },
+        {
+            "name": "Rangárþing eystra",
+            "code": "RGE"
+        },
+        {
+            "name": "Rangárþing ytra",
+            "code": "RGY"
+        },
+        {
+            "name": "Reykhólahreppur",
+            "code": "RHH"
+        },
+        {
+            "name": "Reykjanesbær",
+            "code": "RKN"
+        },
+        {
+            "name": "Reykjavík",
+            "code": "0"
+        },
+        {
+            "name": "Reykjavíkurborg",
+            "code": "RKV"
+        },
+        {
+            "name": "Rietumfjordi",
+            "code": "4"
+        },
+        {
+            "name": "Rietumu reģions",
+            "code": "3"
+        },
+        {
+            "name": "Seyðisfjarðarkaupstaður",
+            "code": "SEY"
+        },
+        {
+            "name": "Seltjarnarnesbær",
+            "code": "SEL"
+        },
+        {
+            "name": "Skaftárhreppur",
+            "code": "SKF"
+        },
+        {
+            "name": "Skagabyggð",
+            "code": "SKG"
+        },
+        {
+            "name": "Skeiða- og Gnúpverjahreppur",
+            "code": "SOG"
+        },
+        {
+            "name": "Skorradalshreppur",
+            "code": "SKO"
+        },
+        {
+            "name": "Skútustaðahreppur",
+            "code": "SKU"
+        },
+        {
+            "name": "Snæfellsbær",
+            "code": "SNF"
+        },
+        {
+            "name": "Stykkishólmsbær",
+            "code": "STY"
+        },
+        {
+            "name": "Strandabyggð",
+            "code": "STR"
+        },
+        {
+            "name": "Súðavíkurhreppur",
+            "code": "SDV"
+        },
+        {
+            "name": "Suðurnesjabær",
+            "code": "SDN"
+        },
+        {
+            "name": "Svalbarðshreppur",
+            "code": "SBH"
+        },
+        {
+            "name": "Svalbarðsstrandarhreppur",
+            "code": "SBT"
+        },
+        {
+            "name": "Sveitarfélagið Árborg",
+            "code": "SFA"
+        },
+        {
+            "name": "Sveitarfélagið Hornafjörður",
+            "code": "SHF"
+        },
+        {
+            "name": "Sveitarfélagið Ölfus",
+            "code": "SOL"
+        },
+        {
+            "name": "Sveitarfélagið Skagafjörður",
+            "code": "SSF"
+        },
+        {
+            "name": "Sveitarfélagið Skagaströnd",
+            "code": "SSS"
+        },
+        {
+            "name": "Sveitarfélagið Vogar",
+            "code": "SVG"
+        },
+        {
+            "name": "Tálknafjarðarhreppur",
+            "code": "TAL"
+        },
+        {
+            "name": "Tjörneshreppur",
+            "code": "TJO"
+        },
+        {
+            "name": "Vestmannaeyjabær",
+            "code": "VEM"
+        },
+        {
+            "name": "Vesturbyggð",
+            "code": "VER"
+        },
+        {
+            "name": "Vopnafjarðarhreppur",
+            "code": "VOP"
+        },
+        {
+            "name": "Ziemeļaustrumu reģions",
+            "code": "6"
+        },
+        {
+            "name": "Ziemeļrietumu reģions",
+            "code": "5"
+        },
+        {
+            "name": "Þingeyjarsveit",
+            "code": "THG"
         }
     ],
     "IT": [
@@ -9329,6 +10165,10 @@
         {
             "name": "Sud Sardegna",
             "code": "SD"
+        },
+        {
+            "name": "Sud Sardegna",
+            "code": "SU"
         },
         {
             "name": "Taranto province",
@@ -10353,12 +11193,12 @@
             "code": "SHY"
         },
         {
-            "name": "Žambilas apgabals",
-            "code": "ZHA"
-        },
-        {
             "name": "Ziemeļkazahstānas apgabals",
             "code": "SEV"
+        },
+        {
+            "name": "Žambilas apgabals",
+            "code": "ZHA"
         }
     ],
     "LA": [
@@ -10861,6 +11701,10 @@
             "code": "14"
         },
         {
+            "name": "Kauno Municipality",
+            "code": "15"
+        },
+        {
             "name": "Kauņas apriņķis",
             "code": "KU"
         },
@@ -10869,20 +11713,8 @@
             "code": "16"
         },
         {
-            "name": "Kauno Municipality",
-            "code": "15"
-        },
-        {
             "name": "Kazlu Rūdas pašvaldība",
             "code": "17"
-        },
-        {
-            "name": "Ķēdaiņu rajona pašvaldība",
-            "code": "18"
-        },
-        {
-            "name": "Ķelmes rajona pašvaldība",
-            "code": "19"
         },
         {
             "name": "Klaipēdas apriņķis",
@@ -10903,6 +11735,14 @@
         {
             "name": "Kupišķu rajona pašvaldība",
             "code": "23"
+        },
+        {
+            "name": "Ķēdaiņu rajona pašvaldība",
+            "code": "18"
+        },
+        {
+            "name": "Ķelmes rajona pašvaldība",
+            "code": "19"
         },
         {
             "name": "Lazdiju rajona pašvaldība",
@@ -10981,6 +11821,10 @@
             "code": "40"
         },
         {
+            "name": "Skodas rajona pašvaldība",
+            "code": "48"
+        },
+        {
             "name": "Šaķu rajona pašvaldība",
             "code": "41"
         },
@@ -11011,10 +11855,6 @@
         {
             "name": "Širvintu rajona pašvaldība",
             "code": "47"
-        },
-        {
-            "name": "Skodas rajona pašvaldība",
-            "code": "48"
         },
         {
             "name": "Švenčoņu rajona pašvaldība",
@@ -11177,6 +12017,10 @@
             "code": "010"
         },
         {
+            "name": "Augšdaugavas novads",
+            "code": "111"
+        },
+        {
             "name": "Babītes novads",
             "code": "012"
         },
@@ -11235,6 +12079,10 @@
         {
             "name": "Daugavpils novads",
             "code": "025"
+        },
+        {
+            "name": "Dienvidkurzemes Novads",
+            "code": "112"
         },
         {
             "name": "Dobeles novads",
@@ -11325,14 +12173,6 @@
             "code": "044"
         },
         {
-            "name": "Ķeguma novads",
-            "code": "051"
-        },
-        {
-            "name": "Ķekavas novads",
-            "code": "052"
-        },
-        {
             "name": "Kocēnu novads",
             "code": "045"
         },
@@ -11355,6 +12195,14 @@
         {
             "name": "Kuldīgas novads",
             "code": "050"
+        },
+        {
+            "name": "Ķeguma novads",
+            "code": "051"
+        },
+        {
+            "name": "Ķekavas novads",
+            "code": "052"
         },
         {
             "name": "Lielvārdes novads",
@@ -11567,6 +12415,10 @@
         {
             "name": "Valmiera",
             "code": "VMR"
+        },
+        {
+            "name": "Valmieras Novads",
+            "code": "113"
         },
         {
             "name": "Varakļānu novads",
@@ -11841,6 +12693,10 @@
             "code": "INE"
         },
         {
+            "name": "Youssoufia",
+            "code": "YUS"
+        },
+        {
             "name": "Jerada",
             "code": "JRA"
         },
@@ -11973,10 +12829,6 @@
             "code": "SAL"
         },
         {
-            "name": "Šaoija Uardigna",
-            "code": "09"
-        },
-        {
             "name": "Sefrou",
             "code": "SEF"
         },
@@ -12003,6 +12855,10 @@
         {
             "name": "Souss-Massa-Drâa",
             "code": "13"
+        },
+        {
+            "name": "Šaoija Uardigna",
+            "code": "09"
         },
         {
             "name": "Tadla-Azilalas reģions",
@@ -12067,10 +12923,6 @@
         {
             "name": "Udždza",
             "code": "OUJ"
-        },
-        {
-            "name": "Youssoufia",
-            "code": "YUS"
         },
         {
             "name": "Zagora",
@@ -12265,20 +13117,20 @@
             "code": "SI"
         },
         {
-            "name": "Šoldeneštu rajons",
-            "code": "SD"
-        },
-        {
             "name": "Sorokas rajons",
             "code": "SO"
         },
         {
-            "name": "Štefanvodes rajons",
-            "code": "SV"
-        },
-        {
             "name": "Strešenu rajons",
             "code": "ST"
+        },
+        {
+            "name": "Šoldeneštu rajons",
+            "code": "SD"
+        },
+        {
+            "name": "Štefanvodes rajons",
+            "code": "SV"
         },
         {
             "name": "Taraklijas rajons",
@@ -12389,6 +13241,10 @@
         {
             "name": "Petnjica",
             "code": "23"
+        },
+        {
+            "name": "Tuzi",
+            "code": "24"
         }
     ],
     "MF": [
@@ -12869,6 +13725,326 @@
         {
             "name": "Skopje",
             "code": "85"
+        },
+        {
+            "name": "Veles",
+            "code": "101"
+        },
+        {
+            "name": "Gradsko",
+            "code": "102"
+        },
+        {
+            "name": "Demir Kapija",
+            "code": "103"
+        },
+        {
+            "name": "Kavadarci",
+            "code": "104"
+        },
+        {
+            "name": "Lozovo",
+            "code": "105"
+        },
+        {
+            "name": "Negotino",
+            "code": "106"
+        },
+        {
+            "name": "Rosoman",
+            "code": "107"
+        },
+        {
+            "name": "Sveti Nikole",
+            "code": "108"
+        },
+        {
+            "name": "Čaška",
+            "code": "109"
+        },
+        {
+            "name": "Berovo",
+            "code": "201"
+        },
+        {
+            "name": "Vinica",
+            "code": "202"
+        },
+        {
+            "name": "Delčevo",
+            "code": "203"
+        },
+        {
+            "name": "Zrnovci",
+            "code": "204"
+        },
+        {
+            "name": "Karbinci",
+            "code": "205"
+        },
+        {
+            "name": "Kočani",
+            "code": "206"
+        },
+        {
+            "name": "Makedonska Kamenica",
+            "code": "207"
+        },
+        {
+            "name": "Pehčevo",
+            "code": "208"
+        },
+        {
+            "name": "Probištip",
+            "code": "209"
+        },
+        {
+            "name": "Češinovo-Obleševo",
+            "code": "210"
+        },
+        {
+            "name": "Štip",
+            "code": "211"
+        },
+        {
+            "name": "Vevčani",
+            "code": "301"
+        },
+        {
+            "name": "Debar",
+            "code": "303"
+        },
+        {
+            "name": "Debrca",
+            "code": "304"
+        },
+        {
+            "name": "Kičevo",
+            "code": "307"
+        },
+        {
+            "name": "Makedonski Brod",
+            "code": "308"
+        },
+        {
+            "name": "Ohrid",
+            "code": "310"
+        },
+        {
+            "name": "Plasnica",
+            "code": "311"
+        },
+        {
+            "name": "Struga",
+            "code": "312"
+        },
+        {
+            "name": "Centar Župa",
+            "code": "313"
+        },
+        {
+            "name": "Bogdanci",
+            "code": "401"
+        },
+        {
+            "name": "Bosilovo",
+            "code": "402"
+        },
+        {
+            "name": "Valandovo",
+            "code": "403"
+        },
+        {
+            "name": "Vasilevo",
+            "code": "404"
+        },
+        {
+            "name": "Gevgelija",
+            "code": "405"
+        },
+        {
+            "name": "Dojran",
+            "code": "406"
+        },
+        {
+            "name": "Konče",
+            "code": "407"
+        },
+        {
+            "name": "Novo Selo",
+            "code": "408"
+        },
+        {
+            "name": "Radoviš",
+            "code": "409"
+        },
+        {
+            "name": "Strumica",
+            "code": "410"
+        },
+        {
+            "name": "Bitola",
+            "code": "501"
+        },
+        {
+            "name": "Demir Hisar",
+            "code": "502"
+        },
+        {
+            "name": "Dolneni",
+            "code": "503"
+        },
+        {
+            "name": "Krivogaštani",
+            "code": "504"
+        },
+        {
+            "name": "Kruševo",
+            "code": "505"
+        },
+        {
+            "name": "Mogila",
+            "code": "506"
+        },
+        {
+            "name": "Novaci",
+            "code": "507"
+        },
+        {
+            "name": "Prilep",
+            "code": "508"
+        },
+        {
+            "name": "Resen",
+            "code": "509"
+        },
+        {
+            "name": "Bogovinje",
+            "code": "601"
+        },
+        {
+            "name": "Brvenica",
+            "code": "602"
+        },
+        {
+            "name": "Vrapčište",
+            "code": "603"
+        },
+        {
+            "name": "Gostivar",
+            "code": "604"
+        },
+        {
+            "name": "Želino",
+            "code": "605"
+        },
+        {
+            "name": "Jegunovce",
+            "code": "606"
+        },
+        {
+            "name": "Mavrovo i Rostuše",
+            "code": "607"
+        },
+        {
+            "name": "Tearce",
+            "code": "608"
+        },
+        {
+            "name": "Tetovo",
+            "code": "609"
+        },
+        {
+            "name": "Kratovo",
+            "code": "701"
+        },
+        {
+            "name": "Kriva Palanka",
+            "code": "702"
+        },
+        {
+            "name": "Kumanovo",
+            "code": "703"
+        },
+        {
+            "name": "Lipkovo",
+            "code": "704"
+        },
+        {
+            "name": "Rankovce",
+            "code": "705"
+        },
+        {
+            "name": "Staro Nagoričane",
+            "code": "706"
+        },
+        {
+            "name": "Aerodrom †",
+            "code": "801"
+        },
+        {
+            "name": "Aračinovo",
+            "code": "802"
+        },
+        {
+            "name": "Butel †",
+            "code": "803"
+        },
+        {
+            "name": "Gazi Baba †",
+            "code": "804"
+        },
+        {
+            "name": "Gjorče Petrov †",
+            "code": "805"
+        },
+        {
+            "name": "Zelenikovo",
+            "code": "806"
+        },
+        {
+            "name": "Ilinden",
+            "code": "807"
+        },
+        {
+            "name": "Karpoš †",
+            "code": "808"
+        },
+        {
+            "name": "Kisela Voda †",
+            "code": "809"
+        },
+        {
+            "name": "Petrovec",
+            "code": "810"
+        },
+        {
+            "name": "Saraj †",
+            "code": "811"
+        },
+        {
+            "name": "Sopište",
+            "code": "812"
+        },
+        {
+            "name": "Studeničani",
+            "code": "813"
+        },
+        {
+            "name": "Centar †",
+            "code": "814"
+        },
+        {
+            "name": "Čair †",
+            "code": "815"
+        },
+        {
+            "name": "Čučer-Sandevo",
+            "code": "816"
+        },
+        {
+            "name": "Šuto Orizari †",
+            "code": "817"
         }
     ],
     "ML": [
@@ -13579,16 +14755,16 @@
             "code": "13"
         },
         {
-            "name": "Šavijani atols",
-            "code": "24"
-        },
-        {
             "name": "South Central Province",
             "code": "SC"
         },
         {
             "name": "South Province",
             "code": "SU"
+        },
+        {
+            "name": "Šavijani atols",
+            "code": "24"
         },
         {
             "name": "Thaa",
@@ -14195,16 +15371,16 @@
             "code": "OG"
         },
         {
+            "name": "Oyo",
+            "code": "OY"
+        },
+        {
             "name": "Ondo",
             "code": "ON"
         },
         {
             "name": "Osunas štats",
             "code": "OS"
-        },
-        {
-            "name": "Oyo",
-            "code": "OY"
         },
         {
             "name": "Plato štats",
@@ -14461,8 +15637,32 @@
             "code": "23"
         },
         {
+            "name": "Viken",
+            "code": "30"
+        },
+        {
+            "name": "Innlandet",
+            "code": "34"
+        },
+        {
+            "name": "Vestfold og Telemark",
+            "code": "38"
+        },
+        {
+            "name": "Agder",
+            "code": "42"
+        },
+        {
+            "name": "Vestland",
+            "code": "46"
+        },
+        {
             "name": "Trøndelag",
             "code": "50"
+        },
+        {
+            "name": "Tromssan ja Finmarkun",
+            "code": "54"
         }
     ],
     "NP": [
@@ -14781,6 +15981,10 @@
         {
             "name": "Lossantosa",
             "code": "7"
+        },
+        {
+            "name": "Naso Tjër Di",
+            "code": "NT"
         },
         {
             "name": "Ngobe-Bugle",
@@ -16241,16 +17445,16 @@
             "code": "KB"
         },
         {
-            "name": "Kaļiņingradas apgabals",
-            "code": "KGD"
-        },
-        {
             "name": "Kalmikija",
             "code": "KL"
         },
         {
             "name": "Kalugas apgabals",
             "code": "KLU"
+        },
+        {
+            "name": "Kaļiņingradas apgabals",
+            "code": "KGD"
         },
         {
             "name": "Kamčatkas novads",
@@ -16329,20 +17533,20 @@
             "code": "MUR"
         },
         {
-            "name": "Ņencu autonomais apvidus",
-            "code": "NEN"
-        },
-        {
-            "name": "Ņižņijnovgorodas apgabals",
-            "code": "NIZ"
-        },
-        {
             "name": "Novgorodas apgabals",
             "code": "NGR"
         },
         {
             "name": "Novosibirskas apgabals",
             "code": "NVS"
+        },
+        {
+            "name": "Ņencu autonomais apvidus",
+            "code": "NEN"
+        },
+        {
+            "name": "Ņižņijnovgorodas apgabals",
+            "code": "NIZ"
         },
         {
             "name": "Omskas apgabals",
@@ -16687,6 +17891,14 @@
         {
             "name": "Roškaimana",
             "code": "25"
+        },
+        {
+            "name": "Ile Perseverance I",
+            "code": "26"
+        },
+        {
+            "name": "Ile Perseverance II",
+            "code": "27"
         }
     ],
     "SD": [
@@ -18047,6 +19259,30 @@
     ],
     "ST": [
         {
+            "code": "01",
+            "name": "Água Grande"
+        },
+        {
+            "code": "02",
+            "name": "Cantagalo"
+        },
+        {
+            "code": "03",
+            "name": "Caué"
+        },
+        {
+            "code": "04",
+            "name": "Lembá"
+        },
+        {
+            "code": "05",
+            "name": "Lobata"
+        },
+        {
+            "code": "06",
+            "name": "Mé-Zóchi"
+        },
+        {
             "code": "P",
             "name": "Príncipe"
         },
@@ -18267,12 +19503,12 @@
             "code": "SA"
         },
         {
-            "name": "Šari-Bagirmi reģions",
-            "code": "CB"
-        },
-        {
             "name": "Silas reģions",
             "code": "SI"
+        },
+        {
+            "name": "Šari-Bagirmi reģions",
+            "code": "CB"
         },
         {
             "name": "Tandžiles reģions",
@@ -19287,16 +20523,16 @@
             "code": "CYI"
         },
         {
-            "name": "Džanhua apriņķis",
-            "code": "CHA"
-        },
-        {
             "name": "Dzjaji",
             "code": "CYQ"
         },
         {
             "name": "Dzjiņmeņa",
             "code": "KIN"
+        },
+        {
+            "name": "Džanhua apriņķis",
+            "code": "CHA"
         },
         {
             "name": "Gaosjunas speciālā municipalitāte",
@@ -19709,12 +20945,12 @@
             "code": "430"
         },
         {
-            "name": "Bušeņi distrikts",
-            "code": "402"
-        },
-        {
             "name": "Busijas distrikts",
             "code": "202"
+        },
+        {
+            "name": "Bušeņi distrikts",
+            "code": "402"
         },
         {
             "name": "Butaledžas distrikts",
@@ -19805,6 +21041,10 @@
             "code": "428"
         },
         {
+            "name": "Kalaki",
+            "code": "237"
+        },
+        {
             "name": "Kalangalas distrikts",
             "code": "101"
         },
@@ -19841,6 +21081,10 @@
             "code": "236"
         },
         {
+            "name": "Karenga",
+            "code": "335"
+        },
+        {
             "name": "Kasanda",
             "code": "126"
         },
@@ -19853,8 +21097,8 @@
             "code": "207"
         },
         {
-            "name": "Ķegegvas distrikts",
-            "code": "422"
+            "name": "Kazo",
+            "code": "433"
         },
         {
             "name": "Kibaales distrikts",
@@ -19873,6 +21117,10 @@
             "code": "432"
         },
         {
+            "name": "Kyotera",
+            "code": "125"
+        },
+        {
             "name": "Kirjandongo province",
             "code": "421"
         },
@@ -19883,6 +21131,10 @@
         {
             "name": "Kisoro",
             "code": "408"
+        },
+        {
+            "name": "Kitagwenda",
+            "code": "434"
         },
         {
             "name": "Kitgumas distrikts",
@@ -19921,16 +21173,12 @@
             "code": "333"
         },
         {
-            "name": "Kyotera",
-            "code": "125"
+            "name": "Ķegegvas distrikts",
+            "code": "422"
         },
         {
             "name": "Lamvo distrikts",
             "code": "326"
-        },
-        {
-            "name": "Ļantondes distrikts",
-            "code": "114"
         },
         {
             "name": "Liras distrikts",
@@ -19947,6 +21195,14 @@
         {
             "name": "Lvengo distrikts",
             "code": "124"
+        },
+        {
+            "name": "Ļantondes distrikts",
+            "code": "114"
+        },
+        {
+            "name": "Madi-Okollo",
+            "code": "336"
         },
         {
             "name": "Majuges distrikts",
@@ -20061,6 +21317,10 @@
             "code": "328"
         },
         {
+            "name": "Obongi",
+            "code": "337"
+        },
+        {
             "name": "Ojamas distrikts",
             "code": "321"
         },
@@ -20101,8 +21361,8 @@
             "code": "412"
         },
         {
-            "name": "Šemas distrikts",
-            "code": "426"
+            "name": "Rwampara",
+            "code": "435"
         },
         {
             "name": "Sembabules distrikts",
@@ -20119,6 +21379,10 @@
         {
             "name": "Soroti distrikts",
             "code": "211"
+        },
+        {
+            "name": "Šemas distrikts",
+            "code": "426"
         },
         {
             "name": "Tororo distrikts",
@@ -20777,12 +22041,12 @@
             "code": "63"
         },
         {
-            "name": "Haņhoa",
-            "code": "34"
-        },
-        {
             "name": "Hanoja",
             "code": "HN"
+        },
+        {
+            "name": "Haņhoa",
+            "code": "34"
         },
         {
             "name": "Hatiņas province",
@@ -20889,12 +22153,12 @@
             "code": "36"
         },
         {
-            "name": "Šokčana",
-            "code": "52"
-        },
-        {
             "name": "Sonla",
             "code": "05"
+        },
+        {
+            "name": "Šokčana",
+            "code": "52"
         },
         {
             "name": "Thajbiņas province",
@@ -21133,12 +22397,20 @@
             "code": "FS"
         },
         {
+            "name": "Gauteng",
+            "code": "GP"
+        },
+        {
             "name": "Hautena",
             "code": "GT"
         },
         {
             "name": "Kvazulu-Natāla",
             "code": "NL"
+        },
+        {
+            "name": "KwaZulu-Natal",
+            "code": "KZN"
         },
         {
             "name": "Limpopo",

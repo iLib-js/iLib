@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_fa_IR.js - test date range formatter object in Farsi/Iran
  *
- * Copyright © 2012-2017, 2020 JEDLSoft
+ * Copyright © 2012-2017, 2020-2021,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,6 @@ module.exports.testdatefmtrange_fa_IR = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtIRRangeinDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
@@ -66,7 +65,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۲۰۱۱/۱۲/۳۱،‏ ‏۱۳:۴۵ – ‏۱۴:۳۰");
+        test.equal(fmt.format(start, end), '‏۲۰۱۱/۱۲/۳۱, ‏۱۳:۴۵ – ‏۱۴:۳۰');
         test.done();
     },
     testDateRngFmtIRRangeinDayMedium: function(test) {
@@ -96,7 +95,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۳۱ دسامبر ۲۰۱۱،‏ ‏۱۳:۴۵ – ‏۱۴:۳۰");
+        test.equal(fmt.format(start, end), '‏۳۱ دسامبر ۲۰۱۱، ‏۱۳:۴۵ – ‏۱۴:۳۰');
         test.done();
     },
     testDateRngFmtIRRangeinDayLong: function(test) {
@@ -126,7 +125,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۳۱ دسامبر ۲۰۱۱، ساعت ‏۱۳:۴۵ – ‏۱۴:۳۰");
+        test.equal(fmt.format(start, end), '‏۳۱ دسامبر ۲۰۱۱ ساعت ‏۱۳:۴۵ – ‏۱۴:۳۰');
         test.done();
     },
     testDateRngFmtIRRangeinDayFull: function(test) {
@@ -156,10 +155,9 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۳۱ دسامبر ۲۰۱۱، ساعت ‏۱۳:۴۵ – ‏۱۴:۳۰");
+        test.equal(fmt.format(start, end), '‏۳۱ دسامبر ۲۰۱۱ ساعت ‏۱۳:۴۵ – ‏۱۴:۳۰');
         test.done();
     },
-
     testDateRngFmtIRRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
@@ -187,7 +185,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۲۰۱۱/۱۲/۳۰،‏ ‏۱۳:۴۵ – ‏۲۰۱۱/۱۲/۳۱،‏ ‏۱۴:۳۰");
+        test.equal(fmt.format(start, end), '‏۲۰۱۱/۱۲/۳۰, ‏۱۳:۴۵ – ‏۲۰۱۱/۱۲/۳۱, ‏۱۴:۳۰');
         test.done();
 
     },
@@ -218,7 +216,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۳۰ دسامبر ۲۰۱۱،‏ ‏۱۳:۴۵ – ‏۳۱ دسامبر ۲۰۱۱،‏ ‏۱۴:۳۰");
+        test.equal(fmt.format(start, end), '‏۳۰ دسامبر ۲۰۱۱، ‏۱۳:۴۵ – ‏۳۱ دسامبر ۲۰۱۱، ‏۱۴:۳۰');
         test.done();
     },
     testDateRngFmtIRRangeNextDayLong: function(test) {
@@ -248,7 +246,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۳۰ دسامبر ۲۰۱۱، ساعت ‏۱۳:۴۵ – ‏۳۱ دسامبر ۲۰۱۱، ساعت ‏۱۴:۳۰");
+        test.equal(fmt.format(start, end), '‏۳۰ دسامبر ۲۰۱۱ ساعت ‏۱۳:۴۵ – ‏۳۱ دسامبر ۲۰۱۱ ساعت ‏۱۴:۳۰');
         test.done();
     },
     testDateRngFmtIRRangeNextDayFull: function(test) {
@@ -278,10 +276,9 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۳۰ دسامبر ۲۰۱۱، ساعت ‏۱۳:۴۵ – ‏۳۱ دسامبر ۲۰۱۱، ساعت ‏۱۴:۳۰");
+        test.equal(fmt.format(start, end), '‏۳۰ دسامبر ۲۰۱۱ ساعت ‏۱۳:۴۵ – ‏۳۱ دسامبر ۲۰۱۱ ساعت ‏۱۴:۳۰');
         test.done();
     },
-
     testDateRngFmtIRRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
@@ -402,7 +399,6 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), "‏۲۰ – ‏۳۱ دسامبر ۲۰۱۱");
         test.done();
     },
-
     testDateRngFmtIRRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
@@ -523,7 +519,6 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), "‏۲۰ نوامبر – ‏۳۱ دسامبر ۲۰۱۱");
         test.done();
     },
-
     testDateRngFmtIRRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
@@ -581,7 +576,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۲۰ نوامبر ۲۰۱۱ – ‏۳۱ ژانویهٔ ۲۰۱۲");
+        test.equal(fmt.format(start, end), '‏۲۰ نوامبر ۲۰۱۱ – ‏۳۱ ژانویه ۲۰۱۲');
         test.done();
     },
     testDateRngFmtIRRangeNextYearLong: function(test) {
@@ -644,7 +639,6 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), "‏۲۰ نوامبر ۲۰۱۱ – ‏۳۱ ژانویهٔ ۲۰۱۲");
         test.done();
     },
-
     testDateRngFmtIRRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
@@ -702,7 +696,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'نوامبر ۲۰۱۱ – ژانویهٔ ۲۰۱۴');
+        test.equal(fmt.format(start, end), 'نوامبر ۲۰۱۱ – ژانویه ۲۰۱۴');
         test.done();
     },
     testDateRngFmtIRRangeMultiYearLong: function(test) {
@@ -796,7 +790,6 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), "‏۲۰۱۱ – ۲۰۶۴");
         test.done();
     },
-
     /* Now the persian calendar tests. */
 
     testDateRngFmtPersRangeinDdfayShort_fa_IR: function(test) {
@@ -919,7 +912,6 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), "‏۱۳۹۳ اسفند ۳۱، ساعت ‏۱۳:۴۵ – ‏۱۴:۳۰");
         test.done();
     },
-
     testDateRngFmtPersRangeNextDayShort_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
@@ -1040,7 +1032,6 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), '‏۱۳۹۳ اسفند ۳۰، ساعت ‏۱۳:۴۵ – ‏۱۳۹۳ اسفند ۳۱، ساعت ‏۱۴:۳۰');
         test.done();
     },
-
     testDateRngFmtPersRangeMultiDayShort_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
@@ -1161,7 +1152,6 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), "‏۱۳۹۳ اسفند ۲۰ – ۳۱");
         test.done();
     },
-
     testDateRngFmtPersRangeNextMonthShort_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
@@ -1282,7 +1272,6 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), '‏۱۳۹۳ بهمن ۲۰ – ‏اسفند ۳۱');
         test.done();
     },
-
     testDateRngFmtPersRangeNextYearShort_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
@@ -1403,7 +1392,6 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), '‏۱۳۹۳ بهمن ۲۰ – ‏۱۳۹۴ فروردین ۳۱');
         test.done();
     },
-
     testDateRngFmtPersRangeMultiYearShort_fa_IR: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({

@@ -1,7 +1,67 @@
 {
+    "dayPeriods": [
+        {
+            "at": 0
+        },
+        {
+            "from": 0,
+            "to": 300
+        },
+        {
+            "from": 0,
+            "to": 720
+        },
+        {
+            "from": 300,
+            "to": 480
+        },
+        {
+            "from": 480,
+            "to": 720
+        },
+        {
+            "from": 720,
+            "to": 780
+        },
+        {
+            "from": 720,
+            "to": 1440
+        },
+        {
+            "from": 780,
+            "to": 1140
+        },
+        {
+            "from": 1140,
+            "to": 1440
+        }
+    ],
     "gregorian": {
-        "order": "{date} {time}",
         "date": {
+            "a": {
+                "f": "d日",
+                "l": "d日",
+                "m": "d日",
+                "s": "d日"
+            },
+            "d": {
+                "f": "d",
+                "l": "d",
+                "m": "d",
+                "s": "d"
+            },
+            "dm": {
+                "f": "M月d日",
+                "l": "M月d日",
+                "m": "M月d日",
+                "s": "M/d"
+            },
+            "dmw": {
+                "f": "M月d日EEEE",
+                "l": "M月d日EEE",
+                "m": "M月d日EE",
+                "s": "M/dE"
+            },
             "dmwy": {
                 "f": "yyyy年M月d日EEEE",
                 "l": "yyyy年M月d日EEE",
@@ -14,53 +74,11 @@
                 "m": "yyyy年M月d日",
                 "s": "yyyy/M/d"
             },
-            "dmw": {
-                "f": "M月d日EEEE",
-                "l": "M月d日EEE",
-                "m": "M月d日EE",
-                "s": "M/dE"
-            },
-            "dm": {
-                "f": "M月d日",
-                "l": "M月d日",
-                "m": "M月d日",
-                "s": "M/d"
-            },
-            "my": {
-                "f": "yyyy年M月",
-                "l": "yyyy年M月",
-                "m": "yyyy年M月",
-                "s": "yyyy/M"
-            },
             "dw": {
                 "f": "d日EEEE",
                 "l": "d日EEE",
                 "m": "d日EE",
                 "s": "dE"
-            },
-            "w": {
-                "f": "EEEE",
-                "l": "EEE",
-                "m": "EE",
-                "s": "E"
-            },
-            "d": {
-                "f": "d",
-                "l": "d",
-                "m": "d",
-                "s": "d"
-            },
-            "m": {
-                "f": "M",
-                "l": "M",
-                "m": "M",
-                "s": "M"
-            },
-            "y": {
-                "f": "yyyy",
-                "l": "yyyy",
-                "m": "yyyy",
-                "s": "yyyy"
             },
             "l": {
                 "f": "M月",
@@ -68,49 +86,25 @@
                 "m": "M月",
                 "s": "M月"
             },
+            "m": {
+                "f": "M",
+                "l": "M",
+                "m": "M"
+            },
+            "my": {
+                "f": "yyyy年M月",
+                "l": "yyyy年M月",
+                "m": "yyyy年M月",
+                "s": "yyyy/M"
+            },
             "r": {
                 "f": "yyyy年",
                 "l": "yyyy年",
                 "m": "yyyy年",
                 "s": "yyyy年"
             },
-            "a": {
-                "f": "d日",
-                "l": "d日",
-                "m": "d日",
-                "s": "d日"
-            }
-        },
-        "time": {
-            "12": {
-                "h": "h",
-                "m": "mm",
-                "s": "ss",
-                "ah": "ah时",
-                "hm": "h:mm",
-                "ms": "mm:ss",
-                "ahm": "ah:mm",
-                "hms": "h:mm:ss",
-                "hmz": "z h:mm",
-                "ahmz": "z ah:mm",
-                "ahms": "ah:mm:ss",
-                "hmsz": "z h:mm:ss",
-                "ahmsz": "z ah:mm:ss"
-            },
-            "24": {
-                "h": "H时",
-                "m": "mm",
-                "s": "ss",
-                "ah": "H时",
-                "hm": "H:mm",
-                "ms": "mm:ss",
-                "ahm": "H:mm",
-                "hms": "H:mm:ss",
-                "hmz": "z H:mm",
-                "ahmz": "z H:mm",
-                "ahms": "H:mm:ss",
-                "hmsz": "z H:mm:ss",
-                "ahmsz": "z H:mm:ss"
+            "y": {
+                "s": "yyyy"
             }
         },
         "range": {
@@ -168,43 +162,29 @@
                 "m": "{sy} – {ey}",
                 "s": "{sy} – {ey}"
             }
+        },
+        "time": {
+            "12": {
+                "ah": "ah时",
+                "ahm": "ah:mm",
+                "ahms": "ah:mm:ss",
+                "ahmsz": "z ah:mm:ss",
+                "ahmz": "z ah:mm",
+                "hmsz": "z h:mm:ss",
+                "hmz": "z h:mm"
+            },
+            "24": {
+                "ah": "HH",
+                "ahm": "HH:mm",
+                "ahms": "HH:mm:ss",
+                "ahmsz": "z HH:mm:ss",
+                "ahmz": "z HH:mm",
+                "h": "HH",
+                "hm": "HH:mm",
+                "hms": "HH:mm:ss",
+                "hmsz": "z HH:mm:ss",
+                "hmz": "z HH:mm"
+            }
         }
-    },
-    "dayPeriods": [
-        {
-            "at": 0
-        },
-        {
-            "from": 0,
-            "to": 300
-        },
-        {
-            "from": 0,
-            "to": 720
-        },
-        {
-            "from": 300,
-            "to": 480
-        },
-        {
-            "from": 480,
-            "to": 720
-        },
-        {
-            "from": 720,
-            "to": 780
-        },
-        {
-            "from": 720,
-            "to": 1440
-        },
-        {
-            "from": 780,
-            "to": 1140
-        },
-        {
-            "from": 1140,
-            "to": 1440
-        }
-    ]
+    }
 }

@@ -1,7 +1,7 @@
 /*
  * testdatefmt_pt_BR.js - test the date formatter object in Brazilian Portuguese
  *
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,6 @@ module.exports.testdatefmt_pt_BR = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtBRConstructorEmpty: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "pt-BR"});
@@ -43,8 +42,6 @@ module.exports.testdatefmt_pt_BR = {
         test.ok(fmt !== null);
         test.done();
     },
-
-
     testDateFmtBRSimpleShort: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "short"});
@@ -63,7 +60,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "29/09/2011");
         test.done();
     },
-
     testDateFmtBRSimpleMedium: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "medium"});
@@ -82,7 +78,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), '29 de set. de 2011');
         test.done();
     },
-
     testDateFmtBRSimpleLong: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "long"});
@@ -101,7 +96,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "29 de setembro de 2011");
         test.done();
     },
-
     testDateFmtBRSimpleFull: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "full"});
@@ -120,7 +114,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "29 de setembro de 2011");
         test.done();
     },
-
     testDateFmtBRSimpleTimeShort: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "short", type: "time"});
@@ -139,7 +132,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtBRSimpleTimeMedium: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "medium", type: "time"});
@@ -158,7 +150,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtBRSimpleTimeLong: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", timelength: "long", type: "time"});
@@ -177,7 +168,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtBRSimpleTimeFull: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "full", type: "time"});
@@ -196,7 +186,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtBRDateTimeSimpleShort: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "short", type: "datetime"});
@@ -212,10 +201,9 @@ module.exports.testdatefmt_pt_BR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011 13:45");
+        test.equal(fmt.format(date), "29/09/2011, 13:45");
         test.done();
     },
-
     testDateFmtBRDateTimeSimpleMedium: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "medium", type: "datetime"});
@@ -231,10 +219,9 @@ module.exports.testdatefmt_pt_BR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 de set. de 2011 13:45');
+        test.equal(fmt.format(date), '29 de set. de 2011, 13:45');
         test.done();
     },
-
     testDateFmtBRDateTimeSimpleLong: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "long", type: "datetime"});
@@ -250,10 +237,9 @@ module.exports.testdatefmt_pt_BR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 de setembro de 2011 13:45");
+        test.equal(fmt.format(date), "29 de setembro de 2011 às 13:45");
         test.done();
     },
-
     testDateFmtBRDateTimeSimpleFull: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "full", type: "datetime"});
@@ -269,11 +255,9 @@ module.exports.testdatefmt_pt_BR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 de setembro de 2011 13:45");
+        test.equal(fmt.format(date), "29 de setembro de 2011 às 13:45");
         test.done();
     },
-
-
     testDateFmtBRTemplateCalendar: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", calendar: "julian", template: "yyyy-MM-dd"});
@@ -291,7 +275,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
     testDateFmtBRTemplateCalendarIncompatibleDateType: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
@@ -311,7 +294,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "2011-09-16 13:45");
         test.done();
     },
-
     testDateFmtBRTemplateClock12SwitchHH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", clock: "12", template: "HH:mm"});
@@ -330,7 +312,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtBRTemplateClock12Switchkk: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", clock: "12", template: "kk:mm"});
@@ -349,7 +330,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtBRTemplateClock24Switchhh: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", clock: "24", template: "hh:mm"});
@@ -368,7 +348,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtBRTemplateClock24SwitchKK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", clock: "24", template: "KK:mm"});
@@ -387,7 +366,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtBRTemplateNoClockDoNotFollowLocaleDefault12hh: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", template: "hh:mm"});
@@ -406,7 +384,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtBRTemplateNoClockDoNotFollowLocaleDefault12KK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", template: "KK:mm"});
@@ -425,7 +402,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtBRTemplateNoClockDoNotFollowLocaleDefault24HH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", template: "HH:mm"});
@@ -444,7 +420,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtBRTemplateNoClockDoNotFollowLocaleDefault24kk: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", template: "kk:mm"});
@@ -463,8 +438,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
-
     testDateFmtBRTypeDate: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "date"});
@@ -483,7 +456,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "29/09/2011");
         test.done();
     },
-
     testDateFmtBRTypeTime: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time"});
@@ -502,7 +474,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtBRTypeDateTime: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "datetime"});
@@ -518,11 +489,9 @@ module.exports.testdatefmt_pt_BR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011 13:45");
+        test.equal(fmt.format(date), "29/09/2011, 13:45");
         test.done();
     },
-
-
     testDateFmtBRShortDateComponentsY: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", date: "y"});
@@ -541,7 +510,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtBRShortDateComponentsM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", date: "m"});
@@ -560,7 +528,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "09");
         test.done();
     },
-
     testDateFmtBRShortDateComponentsN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", date: "n"});
@@ -579,7 +546,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "s");
         test.done();
     },
-
     testDateFmtBRShortDateComponentsD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", date: "d"});
@@ -598,7 +564,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtBRShortDateComponentsDM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", date: "dm"});
@@ -617,7 +582,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "29/09");
         test.done();
     },
-
     testDateFmtBRShortDateComponentsMY: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", date: "my"});
@@ -636,7 +600,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "09/2011");
         test.done();
     },
-
     testDateFmtBRShortDateComponentsDMY: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", date: "dmy"});
@@ -655,7 +618,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "29/09/2011");
         test.done();
     },
-
     testDateFmtBRShortDateComponentsWDM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", date: "wdm"});
@@ -674,7 +636,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "Q, 29/09");
         test.done();
     },
-
     testDateFmtBRShortDateComponentsWDMY: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", date: "wdmy"});
@@ -693,8 +654,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "Q, 29/09/2011");
         test.done();
     },
-
-
     testDateFmtBRFullDateComponentsY: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "full", date: "y"});
@@ -713,7 +672,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtBRFullDateComponentsM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "full", date: "m"});
@@ -732,7 +690,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "setembro");
         test.done();
     },
-
     testDateFmtBRFullDateComponentsD: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "full", date: "d"});
@@ -751,7 +708,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtBRFullDateComponentsDM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "full", date: "dm"});
@@ -770,7 +726,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "29 de setembro");
         test.done();
     },
-
     testDateFmtBRFullDateComponentsMY: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "full", date: "my"});
@@ -789,7 +744,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "setembro de 2011");
         test.done();
     },
-
     testDateFmtBRFullDateComponentsDMY: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "full", date: "dmy"});
@@ -808,7 +762,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "29 de setembro de 2011");
         test.done();
     },
-
     testDateFmtBRFullDateComponentsWDM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "full", date: "wdm"});
@@ -827,7 +780,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "quinta-feira, 29 de setembro");
         test.done();
     },
-
     testDateFmtBRFullDateComponentsWDMY: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", length: "full", date: "wdmy"});
@@ -846,8 +798,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "quinta-feira, 29 de setembro de 2011");
         test.done();
     },
-
-
     testDateFmtBRShortTimeComponentsS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time", time: "s"});
@@ -866,7 +816,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtBRShortTimeComponentsM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time", time: "m"});
@@ -885,7 +834,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtBRShortTimeComponentsH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time", time: "h"});
@@ -904,7 +852,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtBRShortTimeComponentsMS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time", time: "ms"});
@@ -923,7 +870,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtBRShortTimeComponentsHM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time", time: "hm"});
@@ -942,7 +888,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtBRShortTimeComponentsHMS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time", time: "hms"});
@@ -961,7 +906,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtBRShortTimeComponentsHMA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time", time: "hma"});
@@ -980,7 +924,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtBRShortTimeComponentsHMZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1004,7 +947,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45 -03/-02");
         test.done();
     },
-
     testDateFmtBRShortTimeComponentsHMAZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1028,7 +970,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45 -03/-02");
         test.done();
     },
-
     testDateFmtBRShortTimeComponentsHMSA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time", time: "hmsa"});
@@ -1047,7 +988,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtBRShortTimeComponentsHMSZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1071,7 +1011,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45:37 -03/-02");
         test.done();
     },
-
     testDateFmtBRShortTimeComponentsHMSAZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1095,8 +1034,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45:37 -03/-02");
         test.done();
     },
-
-
     testDateFmtBRFullTimeComponentsS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time", length: "full", time: "s"});
@@ -1115,7 +1052,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtBRFullTimeComponentsM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time", length: "full", time: "m"});
@@ -1134,7 +1070,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtBRFullTimeComponentsH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time", length: "full", time: "h"});
@@ -1153,7 +1088,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtBRFullTimeComponentsMS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time", length: "full", time: "ms"});
@@ -1172,7 +1106,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtBRFullTimeComponentsHM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time", length: "full", time: "hm"});
@@ -1191,7 +1124,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtBRFullTimeComponentsHMS: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time", length: "full", time: "hms"});
@@ -1210,7 +1142,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtBRFullTimeComponentsHMA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time", length: "full", time: "hma"});
@@ -1229,7 +1160,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtBRFullTimeComponentsHMZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1254,7 +1184,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45 -03/-02");
         test.done();
     },
-
     testDateFmtBRFullTimeComponentsHMAZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1279,7 +1208,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45 -03/-02");
         test.done();
     },
-
     testDateFmtBRFullTimeComponentsHMSA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pt-BR", type: "time", length: "full", time: "hmsa"});
@@ -1298,7 +1226,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtBRFullTimeComponentsHMSZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1323,7 +1250,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45:37 -03/-02");
         test.done();
     },
-
     testDateFmtBRFullTimeComponentsHMSAZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1348,7 +1274,6 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45:37 -03/-02");
         test.done();
     },
-
     testDateFmtBRWithTimeZoneAndNoDST: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1373,6 +1298,4 @@ module.exports.testdatefmt_pt_BR = {
         test.equal(fmt.format(date), "13:45:37 -03/-02");
         test.done();
     }
-
-
 };

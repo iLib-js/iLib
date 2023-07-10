@@ -1,154 +1,139 @@
 {
     "gregorian": {
-        "order": "{date} {time}",
         "date": {
-            "dmwy": {
-                "f": "EEEE, MMMM d, yyyy",
-                "l": "EEE, MMMM d, yyyy",
-                "m": "EE, MMM d, yyyy",
-                "s": "E, M/d/yy"
-            },
-            "dmy": {
-                "f": "MMMM d, yyyy",
-                "l": "MMMM d, yyyy",
-                "m": "MMM d, yyyy",
-                "s": "M/d/yy"
-            },
-            "dmw": {
-                "f": "EEEE, MMMM d",
-                "l": "EEE, MMMM d",
-                "m": "EE, MMM d",
-                "s": "E, M/d"
-            },
-            "dm": {
-                "f": "MMMM d",
-                "l": "MMMM d",
-                "m": "MMM d",
-                "s": "M/d"
-            },
-            "my": {
-                "f": "MMMM, yyyy",
-                "l": "MMMM, yyyy",
-                "m": "MMM, yyyy",
-                "s": "M/yy"
-            },
-            "dw": {
-                "f": "EEEE, d",
-                "l": "EEE, d",
-                "m": "EE, d",
-                "s": "E, d"
-            },
-            "w": {
-                "f": "EEEE",
-                "l": "EEE",
-                "m": "EE",
-                "s": "E"
-            },
             "d": {
                 "f": "d",
                 "l": "d",
                 "m": "d",
-                "s": "d"
+                "s": "dd"
+            },
+            "dm": {
+                "l": "d MMMM",
+                "m": "d MMM",
+                "s": "dd-MM"
+            },
+            "dmw": {
+                "f": "d MMMM, EEEE",
+                "l": "d MMMM, EEE",
+                "m": "d MMM, EE",
+                "s": "dd-MM, E"
+            },
+            "dmwy": {
+                "f": "d MMMM yyyy, EEEE",
+                "l": "d MMMM, yyyy, EEE",
+                "m": "d MMM, yyyy, EE",
+                "s": "dd-MM-yyyy, E"
+            },
+            "dmy": {
+                "l": "d MMMM, yyyy",
+                "m": "d MMM, yyyy",
+                "s": "dd-MM-yyyy"
+            },
+            "dw": {
+                "f": "d EEEE",
+                "l": "d EEE",
+                "m": "d EE",
+                "s": "dd-E"
+            },
+            "e": {
+                "f": "cccc",
+                "l": "ccc",
+                "m": "cc",
+                "s": "c"
             },
             "m": {
-                "f": "MMMM",
                 "l": "MMMM",
                 "m": "MMM",
-                "s": "M"
+                "s": "MM"
+            },
+            "my": {
+                "l": "MMMM, yyyy",
+                "m": "MMM, yyyy",
+                "s": "MM-yyyy"
             },
             "y": {
-                "f": "yyyy",
-                "l": "yyyy",
-                "m": "yyyy",
-                "s": "yy"
+                "s": "yyyy"
             }
         },
-        "time": {
-            "12": {
-                "h": "h",
-                "m": "mm",
-                "s": "ss",
-                "ah": "h a",
-                "hm": "h:mm",
-                "ms": "mm:ss",
-                "ahm": "h:mm a",
-                "hms": "h:mm:ss",
-                "hmz": "h:mm z",
-                "ahmz": "h:mm a z",
-                "ahms": "h:mm:ss a",
-                "hmsz": "h:mm:ss z",
-                "ahmsz": "h:mm:ss a z"
-            },
-            "24": {
-                "h": "HH",
-                "m": "mm",
-                "s": "ss",
-                "ah": "HH",
-                "hm": "HH:mm",
-                "ms": "mm:ss",
-                "ahm": "HH:mm",
-                "hms": "HH:mm:ss",
-                "hmz": "HH:mm z",
-                "ahmz": "HH:mm z",
-                "ahms": "HH:mm:ss",
-                "hmsz": "HH:mm:ss z",
-                "ahmsz": "HH:mm:ss z"
-            }
+        "order": {
+            "f": "{date} नि {time} याव",
+            "l": "{date} नि {time} याव",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
         },
         "range": {
             "c00": {
-                "f": "{sm} {sd}, {sy} {st} – {et}",
-                "l": "{sm} {sd}, {sy} {st} – {et}",
-                "m": "{sm} {sd}, {sy} {st} – {et}",
-                "s": "{sm}/{sd}/{sy} {st} – {et}"
+                "f": "{sd} {sm} {sy} नि {st} याव – {et}",
+                "l": "{sd} {sm}, {sy} नि {st} याव – {et}",
+                "m": "{sd} {sm}, {sy}, {st} – {et}",
+                "s": "{sd}-{sm}-{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "l": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "m": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "s": "{sm}/{sd}/{sy} {st} – {em}/{ed}/{ey} {et}"
+                "f": "{sd} {sm} {sy} नि {st} याव – {ed} {em} {ey} नि {et} याव",
+                "l": "{sd} {sm}, {sy} नि {st} याव – {ed} {em}, {ey} नि {et} याव",
+                "m": "{sd} {sm}, {sy}, {st} – {ed} {em}, {ey}, {et}",
+                "s": "{sd}-{sm}-{sy}, {st} – {ed}-{em}-{ey}, {et}"
             },
             "c02": {
-                "f": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "l": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "m": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "s": "{sm}/{sd}/{sy} {st} – {em}/{ed}/{ey} {et}"
+                "f": "{sd} {sm} {sy} नि {st} याव – {ed} {em} {ey} नि {et} याव",
+                "l": "{sd} {sm}, {sy} नि {st} याव – {ed} {em}, {ey} नि {et} याव",
+                "m": "{sd} {sm}, {sy}, {st} – {ed} {em}, {ey}, {et}",
+                "s": "{sd}-{sm}-{sy}, {st} – {ed}-{em}-{ey}, {et}"
             },
             "c03": {
-                "f": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "l": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "m": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "s": "{sm}/{sd}/{sy} {st} – {em}/{ed}/{ey} {et}"
+                "f": "{sd} {sm} {sy} नि {st} याव – {ed} {em} {ey} नि {et} याव",
+                "l": "{sd} {sm}, {sy} नि {st} याव – {ed} {em}, {ey} नि {et} याव",
+                "m": "{sd} {sm}, {sy}, {st} – {ed} {em}, {ey}, {et}",
+                "s": "{sd}-{sm}-{sy}, {st} – {ed}-{em}-{ey}, {et}"
             },
             "c10": {
-                "f": "{sm} {sd} – {ed}, {ey}",
-                "l": "{sm} {sd} – {ed}, {ey}",
-                "m": "{sm} {sd} – {ed}, {ey}",
-                "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
+                "f": "{sd} – {ed} {em} {ey}",
+                "l": "{sd} – {ed} {em}, {ey}",
+                "m": "{sd} – {ed} {em}, {ey}",
+                "s": "{sd} – {ed}-{em}-{ey}"
             },
             "c11": {
-                "f": "{sm} {sd} – {em} {ed}, {ey}",
-                "l": "{sm} {sd} – {em} {ed}, {ey}",
-                "m": "{sm} {sd} – {em} {ed}, {ey}",
-                "s": "{sm}/{sd} – {em}/{ed}/{ey}"
+                "f": "{sd} {sm} – {ed} {em} {ey}",
+                "l": "{sd} {sm} – {ed} {em}, {ey}",
+                "m": "{sd} {sm} – {ed} {em}, {ey}",
+                "s": "{sd}-{sm} – {ed}-{em}-{ey}"
             },
             "c12": {
-                "f": "{sm} {sd}, {sy} – {em} {ed}, {ey}",
-                "l": "{sm} {sd}, {sy} – {em} {ed}, {ey}",
-                "m": "{sm} {sd}, {sy} – {em} {ed}, {ey}",
-                "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
+                "l": "{sd} {sm}, {sy} – {ed} {em}, {ey}",
+                "m": "{sd} {sm}, {sy} – {ed} {em}, {ey}",
+                "s": "{sd}-{sm}-{sy} – {ed}-{em}-{ey}"
             },
             "c20": {
-                "f": "{sm}, {sy} – {em}, {ey}",
                 "l": "{sm}, {sy} – {em}, {ey}",
                 "m": "{sm}, {sy} – {em}, {ey}",
-                "s": "{sm}/{sy} – {em}/{ey}"
+                "s": "{sm}-{sy} – {em}-{ey}"
             },
             "c30": {
                 "f": "{sy} – {ey}",
                 "l": "{sy} – {ey}",
                 "m": "{sy} – {ey}",
                 "s": "{sy} – {ey}"
+            }
+        },
+        "time": {
+            "12": {
+                "ah": "a नि h",
+                "ahm": "a नि h:mm",
+                "ahms": "a h:mm:ss",
+                "ahmsz": "a h:mm:ss z",
+                "ahmz": "a नि h:mm z"
+            },
+            "24": {
+                "ah": "HH",
+                "ahm": "HH:mm",
+                "ahms": "HH:mm:ss",
+                "ahmsz": "HH:mm:ss z",
+                "ahmz": "HH:mm z",
+                "h": "HH",
+                "hm": "HH:mm",
+                "hms": "HH:mm:ss",
+                "hmsz": "HH:mm:ss z",
+                "hmz": "HH:mm z"
             }
         }
     }

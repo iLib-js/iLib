@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
- * 
- * Copyright © 2017, 2020-2021 JEDLSoft
+ *
+ * Copyright © 2017, 2020-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,6 +58,7 @@ module.exports.files = [
     "testdatefmtrange_hu_HU.js",
     "testdatefmtrange_hy_AM.js",
     "testdatefmtrange_id_ID.js",
+    "testdatefmtrange_ig_NG.js",
     "testdatefmtrange_it_IT.js",
     "testdatefmtrange_ja_JP.js",
     "testdatefmtrange_ka_GE.js",
@@ -67,6 +68,7 @@ module.exports.files = [
     "testdatefmtrange_ko_KR.js",
     "testdatefmtrange_ku_Arab_IQ.js",
     "testdatefmtrange_ky_KG.js",
+    "testdatefmtrange_lb_LU.js",
     "testdatefmtrange_lo_LA.js",
     "testdatefmtrange_lt_LT.js",
     "testdatefmtrange_lv_LV.js",
@@ -83,6 +85,8 @@ module.exports.files = [
     "testdatefmtrange_or_IN.js",
     "testdatefmtrange_pa_IN.js",
     "testdatefmtrange_pl_PL.js",
+    "testdatefmtrange_ps_AF.js",
+    "testdatefmtrange_ps_PK.js",
     "testdatefmtrange_pt_BR.js",
     "testdatefmtrange_pt_PT.js",
     "testdatefmtrange_ro_RO.js",
@@ -106,6 +110,8 @@ module.exports.files = [
     "testdatefmtrange_uz_Latn_UZ.js",
     "testdatefmtrange_vi_VN.js",
     "testdatefmtrange_wo_SN.js",
+    "testdatefmtrange_yo_BJ.js",
+    "testdatefmtrange_yo_NG.js",
     "testdatefmtrange_zh_Hans_CN.js",
     "testdatefmtrange_zh_Hant_HK.js",
     "testdatefmtrange_zh_Hant_TW.js",

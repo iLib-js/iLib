@@ -2,7 +2,7 @@
  * gencurrencies.js - ilib tool to generate the json data about currency
  * the CLDR data files
  *
- * Copyright © 2016, 2018-2020, JEDLSoft
+ * Copyright © 2016, 2018-2020, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,20 +23,21 @@
  */
 var fs = require('fs');
 var util = require('util');
+var stringify = require('json-stable-stringify');
 var common = require('./common.js');
 var coelesce = common.coelesce;
 var mkdirs = common.makeDirs;
 var path = require("path");
 
 function usage() {
-    console.log("Usage: gencurrency [-h] [iLib locale Dir] [toDir]\n" +
+    console.log("Usage: gencurrency [-h] [iLib locale Dir [toDir]]\n" +
         "Generate the currency.jf files for each country.\n\n" +
         "-h or --help\n" +
         "  this help\n" +
         "iLibDataDir\n" +
-    "  Current ilib locale directory in order to refer the current currency info.\n" +
+        "  Current ilib locale directory in order to refer the current currency info.\n" +
         "toDir\n" +
-    "  directory to output the currency.jf json files. Default: current dir.");
+        "  directory to output the currency.jf json files. Default: current dir.");
     process.exit(1);
 }
 
@@ -95,7 +96,7 @@ function getNameAndSign(currency, cldrData, ilibData) {
     return undefined;
 }
 
-var currencyDataFileName;
+var currencyDataFileName, ilibDir;
 var toDir = "./tmp";
 
 process.argv.forEach(function (val, index, array) {
@@ -140,13 +141,13 @@ var currencyInfoObj = {}; // currency information object for currency.json
 var filename, nameAndSign = [], cur = [];
 
 var rootCurrency = {"currency": "USD"}
-fs.writeFileSync(path.join(toDir, "currency.jf"), JSON.stringify(rootCurrency, true, 4), "utf-8");
+fs.writeFileSync(path.join(toDir, "currency.jf"), stringify(rootCurrency, {space: 4}), "utf-8");
 
 var zxxPath = path.join(toDir, "zxx");
 if (!fs.existsSync(zxxPath)) {
     mkdirs(zxxPath);
 }
-fs.writeFileSync(path.join(zxxPath, "currency.jf"), JSON.stringify(rootCurrency, true, 4), "utf-8");
+fs.writeFileSync(path.join(zxxPath, "currency.jf"), stringify(rootCurrency, {space: 4}), "utf-8");
 
 for (var region in currencyData.region) {
     if (region && currencyData.region[region]) {
@@ -170,7 +171,7 @@ for (var region in currencyData.region) {
             currencyInfoObj[cur[i]].decimals = getDecimals(cur[i], currencyData.fractions);
             currencyInfoObj[cur[i]].sign = nameAndSign['sign'];
             fn = path.join(filename, "currency.jf");
-            fs.writeFileSync(fn, JSON.stringify(currencyObj, true, 4), "utf-8");
+            fs.writeFileSync(fn, stringify(currencyObj, {space: 4}), "utf-8");
         }
     }
 }
@@ -231,4 +232,6 @@ for(var i = 0; i < keys.length; i++) {
     sortedInfoObj[key].decimals = currencyInfoObj[key].decimals
     sortedInfoObj[key].sign = currencyInfoObj[key].sign
 }
+// cannot use "stringify" because the order of the entries is important
+// and they cannot be resorted
 fs.writeFileSync(fnJson, JSON.stringify(sortedInfoObj, true, 4), "utf-8");

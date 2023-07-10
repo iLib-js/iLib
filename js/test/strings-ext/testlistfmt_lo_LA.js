@@ -1,7 +1,7 @@
 /*
  * testlistfmt_lo_LA.js - test the list formatter object
  *
- * Copyright © 2020, JEDLSoft
+ * Copyright © 2020-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ module.exports.testlistfmt_lo_LA = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ຫນຶ່ງ", "ສອງ", "ສາມ"]), "ຫນຶ່ງ, ສອງ, ສາມ");
+        test.equal(fmt.format(["ຫນຶ່ງ", "ສອງ", "ສາມ"]), "ຫນຶ່ງ, ສອງ ແລະ ສາມ");
         test.done();
     },
     testListFmtloLANumberFormatFour: function(test) {
@@ -67,7 +67,7 @@ module.exports.testlistfmt_lo_LA = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ຫນຶ່ງ", "ສອງ", "ສາມ", "ສີ່"]), "ຫນຶ່ງ, ສອງ, ສາມ, ສີ່");
+        test.equal(fmt.format(["ຫນຶ່ງ", "ສອງ", "ສາມ", "ສີ່"]), "ຫນຶ່ງ, ສອງ, ສາມ ແລະ ສີ່");
         test.done();
     },
     testListFmtloLANumberFormatFive: function(test) {
@@ -77,7 +77,7 @@ module.exports.testlistfmt_lo_LA = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ຫນຶ່ງ", "ສອງ", "ສາມ", "ສີ່", "ຫ້າ"]), "ຫນຶ່ງ, ສອງ, ສາມ, ສີ່, ຫ້າ");
+        test.equal(fmt.format(["ຫນຶ່ງ", "ສອງ", "ສາມ", "ສີ່", "ຫ້າ"]), "ຫນຶ່ງ, ສອງ, ສາມ, ສີ່ ແລະ ຫ້າ");
         test.done();
     },
     testListFmtUnitStyleloLANumberFormatOneShort: function(test) {

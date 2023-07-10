@@ -1,7 +1,7 @@
 /*
  * genunits.js - ilib tool to generate the json data about unit formats
  *
- * Copyright © 2013, 2018, 2020 JEDLSoft
+ * Copyright © 2013, 2018, 2020-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@
 var fs = require('fs');
 var path = require('path');
 var util = require('util');
+var stringify = require('json-stable-stringify');
 var common = require('./common');
 var merge = common.merge;
 var Locale = common.Locale;
@@ -29,6 +30,258 @@ var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
 
 var cldrCore = require("cldr-core/availableLocales.json").availableLocales.full;
+
+var hardCodeData = {
+    "ig": {
+        "unitfmt": {
+            "long": {
+                "revolution": "#{n} mgbanwe",
+                "radian": "#{n} radian",
+                "square-kilometer": "#{n} square-kilomita",
+                "square-meter": "#{n} square mita",
+                "square-centimeter": "#{n} square sentimita",
+                "kilowatt-hour": "#{n} kilowatt awa",
+                "kilometer": "#{n} kilomita",
+                "meter": "#{n} mita",
+                "decimeter": "#{n} decimita",
+                "centimeter": "#{n} centimita",
+                "kilogram": "#{n} kilogram",
+                "gram": "#{n} gram",
+                "liter": "#{n} lita",
+                "deciliter": "#{n} deciliter",
+                "centiliter": "#{n} centimita",
+                "milliliter": "#{n} milliliter",
+                "kilometer-per-second": "#{n} kilomita kwa nkeji",
+                "mile-per-second": "#{n} mile kwa nkeji",
+                "kilometer-per-liter": "#{n} kilomita kwa lita",
+                "bit-per-second": "#{n} bit-kwa-sekọnd",
+                "kilobit-per-second": "#{n} kilobit kwa nkeji",
+                "megabit-per-second": "#{n} megabit kwa nkeji",
+                "gigabit-per-second": "#{n} gigabit kwa nkeji",
+                "terabit-per-second": "#{n} erabit kwa nkeji",
+                "byte-per-second": "#{n} byte kwa nkeji",
+                "kilobyte-per-second": "#{n} kilobyte kwa nkeji",
+                "megabyte-per-second": "#{n} megabyte kwa nkeji",
+                "gigabyte-per-second": "#{n} gigabyte kwa nkeji",
+                "terabyte-per-second": "#{n} terabyte kwa nkeji",
+                "byte-per-hour": "#{n} byte kwa elekere",
+                "kilobyte-per-hour": "#{n} kilobyte kwa elekere",
+                "megabyte-per-hour": "#{n} megabyte kwa elekere",
+                "gigabyte-per-hour": "#{n} gigabyte kwa elekere",
+                "terabyte-per-hour": "#{n} terabyte kwa elekere"
+            }
+        }
+    },
+    "mt": {
+        "unitfmt": {
+            "long": {
+                "square-kilometer": "one#Kilometru kwadru|few#{n} kilometri kwadri|many#{n}-il kilometru kwadru|#{n} kilometru kwadru",
+                "hectare": "one#{n} ettaru|few#{n} ettari|many#{n}-il ettaru|#{n} ettaru",
+                "square-meter": "one#{n} metru kwadru|few#{n} metri kwadri|many#{n}-il metru kwadru|#{n} metru kwadru",
+                "square-centimeter": "one#{n} ċentimetru kwadru|few#{n} ċentimetri kwadri|many#{n}-il ċentimetru kwadru|#{n} ċentimetru kwadru",
+                "microsecond": "one#{n} mikrosekonda|few#{n} mikrosekondi|many#{n}-il mikrosekonda|#{n} mikrosekonda",
+                "nanosecond": "one#{n} nanosekonda|few#{n} nanosekondi|many#{n}-il nanosekonda|#{n} nanosekonda",
+                "kilowatt-hour": "#{n} kilowatt-siegħa",
+                "kilometer": "one#Kilometru|few#{n} kilometri|many#{n}-il kilometru|#{n} kilometru",
+                "meter": "one#Metru|few#{n} metri|many#{n}-il metru|#{n} metru",
+                "decimeter": "one#{n} deċimetru|few#{n} deċimetri|many#{n}-il deċimetru|#{n} deċimetru",
+                "centimeter": "one#{n} ċentimetru|few#{n} ċentimetri|many#{n}-il ċentimetru|#{n} ċentimetru",
+                "millimeter": "one#{n} millimetru|few#{n} millimetri|many#{n}-il millimetru|#{n} millimetru",
+                "micrometer": "one#{n} mikrometru|few#{n} mikrometri|many#{n}-il mikrometru|#{n} mikrometru",
+                "nanometer": "one#{n} nanometru|few#{n} nanometri|many#{n}-il nanometru|#{n} nanometru",
+                "picometer": "one#{n} picometer|few#{n} pikometri|many#{n}-il pikometru|#{n} pikometru",
+                "mile": "one#{n} mil|few#{n} mili|many#{n}-il mil|#{n} mil",
+                "yard": "one#{n} tarzna|few#{n} tarzni|many#{n}-il tarzna|#{n} tarzna",
+                "foot": "one#Sieq waħda|few#{n} saqajn|many#{n}-il pied|#{n} pied",
+                "inch": "one#{n} pulzier|few#{n} pulzieri|many#{n}-il pulzier|#{n} pulzier",
+                "kilogram": "one#{n} kilogramma|few#{n} kilogrammi|many#{n} kilogramma|#{n} kilogramma",
+                "gram": "one#{n} gramma|few#{n} grammi|many#{n}-il gramma|#{n} gramma",
+                "milligram": "one#{n} milligramma|few#{n} milligrammi|many#{n} milligrammi|#{n} milligramma",
+                "microgram": "one#{n} mikrogramma|few#{n} mikrogrammi|many#{n}-il mikrogramma|#{n} mikrogramma",
+                "celsius": "one#{n} grad Celsius|few#{n} gradi Celsius|many#{n}-il grad Celsius|#{n} grad Celsius",
+                "liter": "#{n} litru",
+                "foot-per-second": "#{n} sieq kull sekonda",
+                "kilometer-per-second": "one#Kilometru kull sekonda|few#{n} kilometri kull sekonda|many#{n}-il kilometru fis-sekonda|#{n} kilometru fis-sekonda",
+                "mile-per-second": "one#{n} mil fis-sekonda|few#{n} mili kull sekonda|many#{n}-il mil fis-sekonda|#{n} mil fis-sekonda",
+                "kilometer-per-liter": "one#{n} kilometru kull litru|few#{n} kilometri kull litru|many#{n}-il kilometru għal kull litru|#{n} kilometru kull litru",
+            }
+        }
+    },
+    "tg": {
+        "unitfmt": {
+            "long": {
+                "revolution": "#{n} инқилоб",
+                "radian": "#{n} радиан",
+                "degree": "#{n} дараҷа",
+                "square-kilometer": "#{n} километри мураббаъ",
+                "hectare": "#{n} гектар",
+                "square-meter": "#{n} метри мураббаъ",
+                "square-centimeter": "#{n} сантиметр мураббаъ",
+                "square-mile": "#{n} мураббаъ-мил",
+                "acre": "#{n} хектор",
+                "square-yard": "#{n} метри мураббаъ",
+                "square-foot": "#{n} метри мураббаъ",
+                "square-inch": "#{n} дюйм мураббаъ",
+                "dunam": "#{n} дунам",
+                "karat": "#{n} карат",
+                "percent": "#{n} фоиз",
+                "permille": "#{n} пермила",
+                "permyriad": "#{n} permyriad",
+                "mole": "#{n} мол",
+                "petabyte": "#{n} петабайт",
+                "terabyte": "#{n} терабайт",
+                "terabit": "#{n} терабит",
+                "gigabyte": "#{n} гигабайт",
+                "gigabit": "#{n} гигабит",
+                "megabyte": "#{n} мегабайт",
+                "megabit": "#{n} мегабит",
+                "kilobyte": "#{n} килобайт",
+                "kilobit": "#{n} килобит",
+                "byte": "#{n} байт",
+                "bit": "#{n} каме",
+                "century": "#{n} аср",
+                "decade": "#{n} даҳсолаҳо",
+                "year": "#{n} сол",
+                "month": "#{n} сол",
+                "week": "#{n} ҳафта",
+                "day": "#{n} рӯз",
+                "hour": "#{n} соат",
+                "minute": "#{n} дақиқа",
+                "second": "#{n} сония",
+                "millisecond": "#{n} миллисекунд",
+                "microsecond": "#{n} микросекунд",
+                "nanosecond": "#{n} наносекундӣ",
+                "ampere": "#{n} ампер",
+                "milliampere": "#{n} миллиампер",
+                "kilocalorie": "#{n} килокалория",
+                "calorie": "#{n} калория",
+                "foodcalorie": "#{n} калорияҳои хӯрокворӣ",
+                "kilojoule": "#{n} киложоул",
+                "joule": "#{n} ҷоул",
+                "kilowatt-hour": "#{n} киловатт-соат",
+                "british-thermal-unit": "#{n} воҳиди англисӣ-термикӣ",
+                "therm-us": "#{n} ҳарорат-мо",
+                "british-thermal-unit": "#{n} воҳиди англисӣ-термикӣ",
+                "therm-us": "#{n} ҳарорат-мо",
+                "british-thermal-unit": "#{n} воҳиди англисӣ-термикӣ",
+                "therm-us": "#{n} ҳарорат-мо",
+                "newton": "#{n} Нютон",
+                "gigahertz": "#{n} гигагерт",
+                "megahertz": "#{n} мегагерт",
+                "kilohertz": "#{n} килогерц",
+                "hertz": "#{n} герц",
+                "pixel": "#{n} пиксел",
+                "megapixel": "#{n} мегапикселӣ",
+                "pixel-per-centimeter": "#{n} пиксел барои як сантиметр",
+                "pixel-per-inch": "#{n} пиксел дар як дюйм",
+                "dot-per-centimeter": "#{n} нуқта барои як сантиметр",
+                "dot-per-inch": "#{n} нуқта барои як дюйм",
+                "megameter": "#{n} мегаметри",
+                "kilometer": "#{n} километр",
+                "meter": "#{n} метр",
+                "decimeter": "#{n} дециметр",
+                "centimeter": "#{n} сантиметр",
+                "millimeter": "#{n} миллиметр",
+                "micrometer": "#{n} микрометр",
+                "nanometer": "#{n} нанометр",
+                "picometer": "#{n} пикометр",
+                "mile": "#{n} мил",
+                "yard": "#{n} ҳавлӣ",
+                "foot": "#{n} фут",
+                "inch": "#{n} дюйм",
+                "parsec": "#{n} парсек",
+                "kilogram": "#{n} кило",
+                "gram": "#{n} грамм",
+                "milligram": "#{n} миллиграмм",
+                "microgram": "#{n} микрограмм",
+                "ton": "#{n} тонна",
+                "short-ton": "#{n} оҳанги кӯтоҳ",
+                "carat": "#{n} карат",
+                "dalton": "#{n} далтон",
+                "gigawatt": "#{n} гигаватт",
+                "megawatt": "#{n} мегаватт",
+                "kilowatt": "#{n} киловатт",
+                "watt": "#{n} ватт",
+                "pascal": "#{n} паскал",
+                "hectopascal": "#{n} гектопаскал",
+                "kilopascal": "#{n} килопаскал",
+                "megapascal": "#{n} мегапаскал",
+                "celsius": "#{n} Сельсий",
+                "fahrenheit": "#{n} фаренгейт",
+                "kelvin": "#{n} Келвин",
+                "megaliter": "#{n} мегалиттер",
+                "hectoliter": "#{n} гектолит",
+                "liter": "#{n} литр",
+                "deciliter": "#{n} декалитр",
+                "centiliter": "#{n} сантиметр",
+                "milliliter": "#{n} миллилитр",
+                "gallon": "#{n} галлон",
+                "gallon-imperial": "#{n} галлон-империалистӣ",
+                "fluid-ounce": "#{n} унси моеъ",
+                "fluid-ounce-imperial": "#{n} моеъ-унсия-империалистӣ",
+                "foot-per-second": "#{n} пой дар як сония",
+                "kilometer-per-second": "#{n} километр дар як сония",
+                "mile-per-second": "#{n} мил дар як сония",
+                "kilometer-per-liter": "#{n} километри як литр",
+                "bit-per-second": "#{n} бит дар як сония",
+                "kilobit-per-second": "#{n} килобит-дар як сония",
+                "megabit-per-second": "#{n} мегабит дар як сония",
+                "gigabit-per-second": "#{n} гигабит дар як сония",
+                "terabit-per-second": "#{n} терабит дар як сония",
+                "byte-per-second": "#{n} байт дар як сония",
+                "kilobyte-per-second": "#{n} килобайт дар як сония",
+                "megabyte-per-second": "#{n} мегабайт дар як сония",
+                "gigabyte-per-second": "#{n} гигабайт дар як сония",
+                "terabyte-per-second": "#{n} терабайт-дар як сония",
+                "byte-per-hour": "#{n} байт дар як соат",
+                "kilobyte-per-hour": "#{n} килобайт-дар як соат",
+                "megabyte-per-hour": "#{n} мегабайт дар як соат",
+                "gigabyte-per-hour": "#{n} гигабайт дар як соат",
+                "terabyte-per-hour": "#{n} терабайт-дар як соат"
+            }
+        }
+    },
+    "yo": {
+        "unitfmt": {
+            "long": {
+                "hectare": "#{n} saare",
+                "square-meter": "#{n} square-mita",
+                "square-mile": "#{n} square-mile",
+                "kilowatt-hour": "#{n} kilowatt-wakati",
+                "kilometer": "#{n} kilometer",
+                "meter": "#{n} mita",
+                "decimeter": "#{n} desimeter",
+                "centimeter": "#{n} sẹntimita",
+                "millimeter": "#{n} millimeter",
+                "micrometer": "#{n} micrometer",
+                "nanometer": "#{n} nanometer",
+                "picometer": "#{n} picometer",
+                "megaliter": "#{n} megaliter",
+                "hectoliter": "#{n} saare",
+                "liter": "#{n} lita",
+                "deciliter": "#{n} deciliter",
+                "centiliter": "#{n} centiliter",
+                "milliliter": "#{n} milimita",
+                "kilometer-per-liter": "#{n} kilometer-fun-lita",
+            }
+        }
+    },
+    "zu": {
+        "unitfmt": {
+            "long": {
+                "square-kilometer": "one#{n} isikwele-khilomitha|#amakhilomitha-skwele ayi-{n}",
+                "square-meter": "one#imitha-skwele eli-{n}|#{n} imitha-skwele",
+                "square-centimeter": "one#isentimitha eli-{n}|#amasentimitha ayi-{n} ayisikwele",
+                "kilowatt-hour":  "one#{n} kilowatt-hour|#{n} kilowatt-amahora",
+                "kilometer": "one#ikhilomitha eli-{n}|#amakhilomitha ayi-{n}",
+                "meter": "one#imitha eli-{n}|#{n} amamitha",
+                "liter": "one#{n} litre|#{n} amalitha",
+                "kilometer-per-liter": "one#amakhilomitha ayi-{n} ngelitha|#amakhilomitha ayi-{n} ngamalitha",
+            }
+        }
+    },
+
+}
 
 function usage() {
     console.log("Usage: genunits [-h] [ locale_data_dir ]\n" +
@@ -51,7 +304,7 @@ process.argv.forEach(function (val, index, array) {
 localeDirName = process.argv[2] || "tmp";
 
 console.log("genunits - tool to generate the json data about unit formats from the CLDR data.\n" +
-        "Copyright © 2013, 2018, 2020 JEDLSoft");
+        "Copyright © 2013, 2018, 2020-2022 JEDLSoft");
 
 console.log("locale dir: " + localeDirName );
 
@@ -77,7 +330,13 @@ function writeUnits(data, language, script, region) {
     var path = calcLocalePath(language, script, region);
     console.log("Writing " + path + "unitfmt.json");
     makeDirs(path);
-    fs.writeFileSync(path + "unitfmt.json", JSON.stringify(data, true, 4), "utf-8");
+
+    for(var lo in hardCodeData){
+        if (lo == language){
+            data = merge(data, hardCodeData[language]);
+        }
+    }
+    fs.writeFileSync(path + "unitfmt.json", stringify(data, {space: 4}), "utf-8");
 }
 
 function frameUnitsString(data) {
@@ -143,7 +402,15 @@ var filter = {
     "per": true,
     "power2": true,
     "power3": true,
-    "times": true
+    "times": true,
+    "1024p1": true,
+    "1024p2": true,
+    "1024p3": true,
+    "1024p4": true,
+    "1024p5": true,
+    "1024p6": true,
+    "1024p7": true,
+    "1024p8": true
 };
 
 function frameUnits(data, locale, localeData) {
@@ -191,7 +458,7 @@ function frameUnits(data, locale, localeData) {
     };
 
     var l = new Locale(locale);
-    if (locale !== "root") {
+    if (locale !== "und") {
         // English can inherit from root, so just ignore it
         //if (l.getLanguage() !== "en") {
             ["long", "short"].forEach(function(size) {
@@ -502,7 +769,7 @@ function frameUnits(data, locale, localeData) {
                 "description": "weight/mass of a vehicle (including a boat)",
                 "type": "mass",
                 "units": {
-                    "metric": ["kilogram", "metric-ton"],
+                    "metric": ["kilogram", "tonne"],
                     "uscustomary": ["pound", "short-ton"],
                     "imperial": ["pound", "ton"]
                 },
@@ -603,7 +870,7 @@ function frameUnits(data, locale, localeData) {
                 "style": "numeric"
             },
             "gasVolume": {
-                "description": "volume of a gas such as natural gas used in a home a home might use",
+                "description": "volume of a gas such as natural gas used in a home",
                 "type": "volume",
                 "units": {
                     "metric": ["cubic-meter"],
@@ -611,6 +878,36 @@ function frameUnits(data, locale, localeData) {
                     "imperial": ["cubic-foot"]
                 },
                 "maxFractionDigits": 3
+            },
+            "gasPressure": {
+                "description": "pressure of a gas",
+                "type": "pressure",
+                "units": {
+                    "metric": ["pascal"],
+                    "uscustomary": ["pound-force-per-square-inch"],
+                    "imperial": ["pound-force-per-square-inch"]
+                },
+                "maxFractionDigits": 3
+            },
+            "atmosphericPressure": {
+                "description": "pressure of the atmosphere used in weather reports",
+                "type": "pressure",
+                "units": {
+                    "metric": ["millibar", "hectopascal"],
+                    "uscustomary": ["atmosphere"],
+                    "imperial": ["atmosphere"]
+                },
+                "maxFractionDigits": 2
+            },
+            "vehiclePower": {
+                "description": "power of a vehicle's engine",
+                "type": "power",
+                "units": {
+                    "metric": ["kilowatt"],
+                    "uscustomary": ["horsepower"],
+                    "imperial": ["horsepower"]
+                },
+                "maxFractionDigits": 2
             }
         };
     }
@@ -625,11 +922,11 @@ cldrCore.forEach(function(locale) {
         var data = require(pathName);
         var localeData = {};
         var l = new Locale(locale);
-    
+
         localeData = frameUnits(data, locale, localeData);
-    
+
         // now special case for the root
-        if (locale === "root") {
+        if (locale === "und") {
             writeUnits(localeData);
         } else {
             var l = new Locale(locale);

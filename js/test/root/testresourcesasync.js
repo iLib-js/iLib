@@ -1,7 +1,7 @@
 /*
  * testresourcesasync.js - test the Resources object
  *
- * Copyright © 2018-2019, JEDLSoft
+ * Copyright © 2018-2019, 2022-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,11 @@ if (typeof(ilib) === "undefined") {
 if (typeof(ResBundle) === "undefined") {
     var ResBundle = require("../../lib/ResBundle.js");
 }
+
+if (typeof(IString) === "undefined") {
+    var IString = require("../../lib/IString.js");
+}
+
 if (typeof(Locale) === "undefined") {
     var Locale = require("../../lib/Locale.js");
 }
@@ -57,6 +62,60 @@ module.exports.testresourcesasync = {
                 var loc = rb.getLocale();
 
                 test.equal(loc.toString(), "de-DE");
+                test.done();
+            }
+        });
+    },
+
+    testResBundleAsyncLocaleformatChoice_de_DE: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+
+        test.expect(2);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        new ResBundle({
+            locale: "de-DE",
+            sync: false,
+            basePath: base,
+            onLoad: function(rb) {
+                var loc = rb.getLocale();
+                test.equal(loc.toString(), "de-DE");
+
+                var str = new IString("one#({N}) file selected|#({N}) files selected");
+                var temp = rb.getString(str);
+                test.equal(temp.formatChoice(2, {N:2}), "(2) Dateien ausgewählt");
+
+                test.done();
+            }
+        });
+    },
+
+    testResBundleAsyncLocaleformatChoice_ko_KR: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+
+        test.expect(2);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        new ResBundle({
+            locale: "ko-KR",
+            sync: false,
+            basePath: base,
+            onLoad: function(rb) {
+                var loc = rb.getLocale();
+                test.equal(loc.toString(), "ko-KR");
+
+                var str = new IString("one#({N}) file selected|#({N}) files selected");
+                var temp = rb.getString(str);
+                test.equal(temp.formatChoice(1, {N:1}), "(1)개 파일 선택됨(other)");
+
                 test.done();
             }
         });
@@ -138,9 +197,9 @@ module.exports.testresourcesasync = {
                 test.ok(rb !== null);
 
                 // should not pseudo-ize the replacement parameter names
-                test.equal(rb.getString("Hello from {country}").toString(), "Ħëľľõ fŕõm {çõüñţŕÿ}");
-                test.equal(rb.getString("Hello from {city}").toString(), "Ħëľľõ fŕõm {çíţÿ}");
-                test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Ĝŕëëţíñğš fŕõm {çíţÿ} íñ {çõüñţŕÿ}");
+                test.equal(rb.getString("Hello from {country}").toString(), "[Ħëľľõ fŕõm {çõüñţŕÿ}]");
+                test.equal(rb.getString("Hello from {city}").toString(), "[Ħëľľõ fŕõm {çíţÿ}]");
+                test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {çíţÿ} íñ {çõüñţŕÿ}]");
                 test.done();
             }
         });
@@ -188,9 +247,9 @@ module.exports.testresourcesasync = {
                 test.ok(rb !== null);
 
                 // should pseudo-ize the replacement parameter names
-                test.equal(rb.getString("Hello from {country}").toString(), "Хэлло фром {чоунтря}");
-                test.equal(rb.getString("Hello from {city}").toString(), "Хэлло фром {читя}");
-                test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Грээтингс фром {читя} ин {чоунтря}");
+                test.equal(rb.getString("Hello from {country}").toString(),'[Хэлло фром {чоунтря}]');
+                test.equal(rb.getString("Hello from {city}").toString(), '[Хэлло фром {читя}]');
+                test.equal(rb.getString("Greetings from {city} in {country}").toString(), '[Грээтингс фром {читя} ин {чоунтря}]');
                 test.done();
             }
         });
@@ -209,9 +268,9 @@ module.exports.testresourcesasync = {
 
                 // should not pseudo-ize the replacement parameter names
                 // for Chinese scripts, remove the spaces to the simulate Chinese writing style
-                test.equal(rb.getString("Hello from {country}").toString(), "和俄了了夥凡熱夥们{country}");
-                test.equal(rb.getString("Hello from {city}").toString(), "和俄了了夥凡熱夥们{city}");
-                test.equal(rb.getString("Greetings from {city} in {country}").toString(), "个熱俄俄推意尼个思凡熱夥们{city}意尼{country}");
+                test.equal(rb.getString("Hello from {country}").toString(), "[和俄了了夥凡熱夥们{country}]");
+                test.equal(rb.getString("Hello from {city}").toString(), "[和俄了了夥凡熱夥们{city}]");
+                test.equal(rb.getString("Greetings from {city} in {country}").toString(), '[个熱俄俄推意尼个思凡熱夥们{city}意尼{country}]');
                 test.done();
             }
         });
@@ -229,9 +288,9 @@ module.exports.testresourcesasync = {
                 test.ok(rb !== null);
 
                 // should not pseudo-ize the replacement parameter names
-                test.equal(rb.getString("Hello from {country}").toString(), "הֶללֹ פרֹמ {country}");
-                test.equal(rb.getString("Hello from {city}").toString(), "הֶללֹ פרֹמ {city}");
-                test.equal(rb.getString("Greetings from {city} in {country}").toString(), "גרֶֶטִנגס פרֹמ {city} ִנ {country}");
+                test.equal(rb.getString("Hello from {country}").toString(),'[הֶללֹ פרֹמ {country}]');
+                test.equal(rb.getString("Hello from {city}").toString(), '[הֶללֹ פרֹמ {city}]');
+                test.equal(rb.getString("Greetings from {city} in {country}").toString(), '[גרֶֶטִנגס פרֹמ {city} ִנ {country}]');
                 test.done();
             }
         });
@@ -246,7 +305,7 @@ module.exports.testresourcesasync = {
             locale:'eu-ES',
             sync: false,
             onLoad: function(rb) {
-                test.equal(rb.getString("This is psuedo string test").toString(), "Ťĥíš íš þšüëðõ šţŕíñğ ţëšţ");
+                test.equal(rb.getString("This is psuedo string test").toString(), '[Ťĥíš íš þšüëðõ šţŕíñğ ţëšţ]');
                 test.done();
                 ilib.clearPseudoLocales();
             }
@@ -261,7 +320,7 @@ module.exports.testresourcesasync = {
             locale:'ps-AF',
             sync: false,
             onLoad: function(rb) {
-                test.equal(rb.getString("This is psuedo string test").toString(), "טהִס ִס פסֶֻדֹ סטרִנג טֶסט");
+                test.equal(rb.getString("This is psuedo string test").toString(), '[טהִס ִס פסֶֻדֹ סטרִנג טֶסט]');
                 test.done();
                 ilib.clearPseudoLocales();
             }

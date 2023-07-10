@@ -1,6 +1,6 @@
 /*
  * testaddress.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports.testaddress_ZA = {
     testParseAddressZANormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Customer Services 497 Jacob Mare Street\nPretoria 0001\nSouth Africa", {locale: 'en-ZA'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Customer Services 497 Jacob Mare Street");
         test.equal(parsedAddress.locality, "Pretoria");
@@ -46,11 +46,11 @@ module.exports.testaddress_ZA = {
         test.equal(parsedAddress.countryCode, "ZA");
         test.done();
     },
-    
+
     testParseAddressZANoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. J. Public 1234 Church Street Colloyn\nPRETORIA\nSOUTH AFRICA", {locale: 'en-ZA'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. J. Public 1234 Church Street Colloyn");
         test.equal(parsedAddress.locality, "PRETORIA");
@@ -60,11 +60,11 @@ module.exports.testaddress_ZA = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressZANoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Customer Services 497 Jacob Mare Street\nPretoria 0001", {locale: 'en-ZA'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Customer Services 497 Jacob Mare Street");
         test.equal(parsedAddress.locality, "Pretoria");
@@ -74,11 +74,11 @@ module.exports.testaddress_ZA = {
         test.equal(parsedAddress.countryCode, "ZA");
         test.done();
     },
-    
+
     testParseAddressZAManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Customer Services 497\nJacob Mare Street\nPretoria 0001\nSOUTH AFRICA\n\n\n", {locale: 'en-ZA'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Customer Services 497, Jacob Mare Street");
         test.equal(parsedAddress.locality, "Pretoria");
@@ -88,11 +88,11 @@ module.exports.testaddress_ZA = {
         test.equal(parsedAddress.countryCode, "ZA");
         test.done();
     },
-    
+
     testParseAddressZAOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Customer Services 497 ,Jacob Mare Street , Pretoria 0001 , SOUTH AFRICA", {locale: 'en-ZA'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Customer Services 497, Jacob Mare Street");
         test.equal(parsedAddress.locality, "Pretoria");
@@ -102,12 +102,12 @@ module.exports.testaddress_ZA = {
         test.equal(parsedAddress.countryCode, "ZA");
         test.done();
     },
-    
-    
+
+
     testParseAddressZANoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Customer Services 497 Jacob Mare Street Pretoria 0001 SOUTH AFRICA", {locale: 'en-ZA'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Customer Services 497 Jacob Mare Street");
         test.equal(parsedAddress.locality, "Pretoria");
@@ -117,7 +117,7 @@ module.exports.testaddress_ZA = {
         test.equal(parsedAddress.countryCode, "ZA");
         test.done();
     },
-    
+
     testFormatAddressZAZA: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -128,12 +128,12 @@ module.exports.testaddress_ZA = {
             country: "SOUTH AFRICA",
             countryCode: "ZA"
         }, {locale: 'en-ZA'});
-        
+
         var expected = "Customer Services 497 Jacob Mare Street\nPretoria 0001\nSOUTH AFRICA";
         var formatter = new AddressFmt({locale: 'en-ZA'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
-    
+
+
 };

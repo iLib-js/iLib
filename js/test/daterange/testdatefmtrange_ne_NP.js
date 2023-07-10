@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_ne_NP.js - test the date range formatter object Nepali-Nepal
- * 
- * Copyright © 2020, JEDLSoft
+ *
+ * Copyright © 2020,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,6 @@ module.exports.testdatefmtrange_ne_NP = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtneNPRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ne-NP", length: "short", useNative: false});
@@ -109,7 +108,7 @@ module.exports.testdatefmtrange_ne_NP = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 डिसेम्बर 31 13:45 – 14:30');
+        test.equal(fmt.format(start, end), '2011 डिसेम्बर 31: 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtneNPRangeInDayFull: function(test) {
@@ -135,10 +134,9 @@ module.exports.testdatefmtrange_ne_NP = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 डिसेम्बर 31 13:45 – 14:30');
+        test.equal(fmt.format(start, end), '2011 डिसेम्बर 31: 13:45 – 14:30');
         test.done();
     },
-    
     testDateRngFmtneNPRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ne-NP", length: "short", useNative: false});
@@ -214,7 +212,7 @@ module.exports.testdatefmtrange_ne_NP = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 डिसेम्बर 30 13:45 – 2011 डिसेम्बर 31 14:30');
+        test.equal(fmt.format(start, end), '2011 डिसेम्बर 30: 13:45 – 2011 डिसेम्बर 31: 14:30');
         test.done();
     },
     testDateRngFmtneNPRangeNextDayFull: function(test) {
@@ -240,10 +238,9 @@ module.exports.testdatefmtrange_ne_NP = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 डिसेम्बर 30 13:45 – 2011 डिसेम्बर 31 14:30');
+        test.equal(fmt.format(start, end), '2011 डिसेम्बर 30: 13:45 – 2011 डिसेम्बर 31: 14:30');
         test.done();
     },
-    
     testDateRngFmtneNPRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ne-NP", length: "short", useNative: false});
@@ -348,7 +345,6 @@ module.exports.testdatefmtrange_ne_NP = {
         test.equal(fmt.format(start, end), '2011 डिसेम्बर 20 – 31');
         test.done();
     },
-    
     testDateRngFmtneNPRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ne-NP", length: "short", useNative: false});
@@ -453,7 +449,6 @@ module.exports.testdatefmtrange_ne_NP = {
         test.equal(fmt.format(start, end), '2011 नोभेम्बर 20 – डिसेम्बर 31');
         test.done();
     },
-    
     testDateRngFmtneNPRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ne-NP", length: "short", useNative: false});
@@ -558,7 +553,6 @@ module.exports.testdatefmtrange_ne_NP = {
         test.equal(fmt.format(start, end), '2011 नोभेम्बर 20 – 2012 जनवरी 31');
         test.done();
     },
-    
     testDateRngFmtneNPRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ne-NP", length: "short", useNative: false});

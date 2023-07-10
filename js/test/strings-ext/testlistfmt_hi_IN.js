@@ -31,45 +31,45 @@ module.exports.testlistfmt_hi_IN = {
         callback();
     },
     // hi-IN
-    
+
     testListFmthiINNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "hi-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक"]), "एक");
         test.done();
     },
-    
+
     testListFmthiINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "hi-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दो"]), "एक और दो");
         test.done();
     },
-    
+
     testListFmthiINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "hi-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दो", "तीन"]), "एक, दो और तीन");
         test.done();
     },
-    
+
     testListFmthiINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "hi-IN"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दो", "तीन", "चार"]), "एक, दो, तीन और चार");
@@ -80,43 +80,43 @@ module.exports.testlistfmt_hi_IN = {
             locale: "hi-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक"]), "एक");
         test.done();
     },
-    
+
     testListFmtUnitStylehiINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "hi-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दो"]), "एक, दो");
         test.done();
     },
-    
+
     testListFmtUnitStylehiINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "hi-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दो", "तीन"]), "एक, दो, तीन");
         test.done();
     },
-    
+
     testListFmtUnitStylehiINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "hi-IN",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दो", "तीन", "चार"]), "एक, दो, तीन, चार");
@@ -128,46 +128,46 @@ module.exports.testlistfmt_hi_IN = {
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक"]), "एक");
         test.done();
     },
-    
+
     testListFmtUnitStylehiINNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "hi-IN",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दो"]), "एक, दो");
         test.done();
     },
-    
+
     testListFmtUnitStylehiINNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "hi-IN",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दो", "तीन"]), "एक, दो, तीन");
         test.done();
     },
-    
+
     testListFmtUnitStylehiINNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "hi-IN",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दो", "तीन", "चार"]), "एक, दो, तीन, चार");
@@ -179,49 +179,49 @@ module.exports.testlistfmt_hi_IN = {
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक"]), "एक");
         test.done();
     },
-    
+
     testListFmtUnitStylehiINNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "hi-IN",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दो"]), "एक और दो");
         test.done();
     },
-    
+
     testListFmtUnitStylehiINNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "hi-IN",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दो", "तीन"]), "एक, दो, और तीन");
         test.done();
     },
-    
+
     testListFmtUnitStylehiINNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "hi-IN",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["एक", "दो", "तीन", "चार"]), "एक, दो, तीन, और चार");
         test.done();
-    }   
+    }
 };

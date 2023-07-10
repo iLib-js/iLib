@@ -1,7 +1,6 @@
 {
     "Afghanistan": "AF",
     "Africa": "002",
-    "Åland Islands": "AX",
     "Albania": "AL",
     "Algeria": "DZ",
     "American Samoa": "AS",
@@ -289,8 +288,9 @@
     "Western Asia": "145",
     "Western Europe": "155",
     "Western Sahara": "EH",
-    "World": "001",
+    "world": "001",
     "Yemen": "YE",
     "Zambia": "ZM",
-    "Zimbabwe": "ZW"
+    "Zimbabwe": "ZW",
+    "Åland Islands": "AX"
 }

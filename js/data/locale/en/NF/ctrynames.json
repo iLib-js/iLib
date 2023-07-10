@@ -246,7 +246,7 @@
     "St Lucia": "LC",
     "St Martin": "MF",
     "St Pierre & Miquelon": "PM",
-    "St Vincent & Grenadines": "VC",
+    "St Vincent & the Grenadines": "VC",
     "Sub-Saharan Africa": "202",
     "Sudan": "SD",
     "Suriname": "SR",
@@ -289,7 +289,7 @@
     "Western Asia": "145",
     "Western Europe": "155",
     "Western Sahara": "EH",
-    "World": "001",
+    "world": "001",
     "Yemen": "YE",
     "Zambia": "ZM",
     "Zimbabwe": "ZW"

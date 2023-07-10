@@ -1,7 +1,7 @@
 /*
  * Loader.js - shared loader implementation
  *
- * Copyright © 2015, 2018-2019, JEDLSoft
+ * Copyright © 2015, 2018-2019, 2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@
 
 var Path = require("./Path.js");
 var ilib = require("./ilib.js");
+var JSUtils = require("./JSUtils.js");
 
 /**
  * @class
@@ -32,6 +33,9 @@ var Loader = function() {
 
     this.protocol = "file://";
     this.includePath = [];
+    this.addPaths = [];
+
+    this.jsutils =JSUtils;
 };
 
 Loader.prototype = new ilib.Loader();
@@ -63,15 +67,25 @@ Loader.prototype._exists = function(dir, file) {
 };
 
 Loader.prototype._loadFileAlongIncludePath = function(includePath, pathname) {
+    var textMerge={};
     for (var i = 0; i < includePath.length; i++) {
         var manifest = this.manifest[includePath[i]];
         if (!manifest || Loader.indexOf(manifest, pathname) > -1) {
             var filepath = Path.join(includePath[i], pathname);
             //console.log("Loader._loadFileAlongIncludePath: attempting sync load " + filepath);
             var text = this._loadFile(filepath, true);
+
             if (text) {
-                //console.log("Loader._loadFileAlongIncludePath: succeeded");
-                return text;
+
+                if (typeof (this.isMultiPaths) !== "undefined" && this.isMultiPaths === true){
+                    if (typeof(text) === "string") {
+                        text = JSON.parse(text);
+                    }
+                    textMerge = this.jsutils.merge(text, textMerge);
+                } else {
+                    //console.log("Loader._loadFileAlongIncludePath: succeeded" + filepath);
+                    return text;
+                }
             }
             //else {
                 //console.log("Loader._loadFileAlongIncludePath: failed");
@@ -82,13 +96,24 @@ Loader.prototype._loadFileAlongIncludePath = function(includePath, pathname) {
         //}
     }
 
+    if (Object.keys(textMerge).length > 0) {
+        //console.log("Loader._loadFileAlongIncludePath: succeeded");
+        return textMerge;
+    }
+
     //console.log("Loader._loadFileAlongIncludePath: file not found anywhere along the path.");
     return undefined;
 };
 
 Loader.prototype.loadFiles = function(paths, sync, params, callback, root) {
     root = root || (params && params.base);
-    var includePath = root ? [root].concat(this.includePath) : this.includePath;
+    var includePath = [];
+
+    if(this.addPaths && this.addPaths.length > 0){
+        includePath= includePath.concat(this.addPaths);
+    }
+    if (root) includePath.push(root);
+    includePath = includePath.concat(this.includePath);
 
     //console.log("Loader loadFiles called");
     // make sure we know what we can load
@@ -221,6 +246,26 @@ Loader.prototype.listAvailableFiles = function(sync, cb) {
         }
     }));
     return this.manifest;
+};
+
+Loader.prototype.addPath = function (paths) {
+    if (!paths) return;
+
+    var newpaths = ilib.isArray(paths) ? paths : [paths];
+    this.addPaths = this.addPaths.concat(newpaths);
+    this.isMultiPaths = true;
+};
+
+Loader.prototype.removePath = function (paths) {
+    if (!paths) return;
+    paths = ilib.isArray(paths) ? paths : [paths];
+
+    paths.forEach(ilib.bind(this, function(item){
+        var index = this.addPaths.indexOf(item);
+        if (index !== -1) {
+            this.addPaths.splice(index, 1);
+        }
+    }));
 };
 
 Loader.indexOf = function(array, obj) {

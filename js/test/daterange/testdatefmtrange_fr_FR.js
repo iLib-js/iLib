@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_fr_FR.js – test the date range formatter object in French/France
- * 
- * Copyright © 2012-2017, JEDLSoft
+ *
+ * Copyright © 2012-2017,2021 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -63,7 +63,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -82,14 +82,14 @@ module.exports.testdatefmtrange_fr_FR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 déc. 2011 à 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 déc. 2011, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtFRRangeInDayLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -115,7 +115,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -137,12 +137,12 @@ module.exports.testdatefmtrange_fr_FR = {
         test.equal(fmt.format(start, end), "31 décembre 2011 à 13:45 – 14:30");
         test.done();
     },
-    
+
     testDateRngFmtFRRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -168,7 +168,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -187,14 +187,14 @@ module.exports.testdatefmtrange_fr_FR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 déc. 2011 à 13:45 – 31 déc. 2011 à 14:30");
+        test.equal(fmt.format(start, end), "30 déc. 2011, 13:45 – 31 déc. 2011, 14:30");
         test.done();
     },
     testDateRngFmtFRRangeNextDayLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -220,7 +220,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -242,12 +242,12 @@ module.exports.testdatefmtrange_fr_FR = {
         test.equal(fmt.format(start, end), "30 décembre 2011 à 13:45 – 31 décembre 2011 à 14:30");
         test.done();
     },
-    
+
     testDateRngFmtFRRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -273,7 +273,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -299,7 +299,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -325,7 +325,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -347,12 +347,12 @@ module.exports.testdatefmtrange_fr_FR = {
         test.equal(fmt.format(start, end), "20 – 31 décembre 2011");
         test.done();
     },
-    
+
     testDateRngFmtFRRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -378,7 +378,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -404,7 +404,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -430,7 +430,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -452,12 +452,12 @@ module.exports.testdatefmtrange_fr_FR = {
         test.equal(fmt.format(start, end), "20 novembre – 31 décembre 2011");
         test.done();
     },
-    
+
     testDateRngFmtFRRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -483,7 +483,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -509,7 +509,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -535,7 +535,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -557,12 +557,12 @@ module.exports.testdatefmtrange_fr_FR = {
         test.equal(fmt.format(start, end), "20 novembre 2011 – 31 janvier 2012");
         test.done();
     },
-    
+
     testDateRngFmtFRRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -588,7 +588,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -614,7 +614,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -640,7 +640,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -666,7 +666,7 @@ module.exports.testdatefmtrange_fr_FR = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -688,5 +688,5 @@ module.exports.testdatefmtrange_fr_FR = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-    
+
 };

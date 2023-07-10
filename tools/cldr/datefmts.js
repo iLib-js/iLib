@@ -1,7 +1,7 @@
 /*
  * datefmts.js - auxillary tools used to generate the dateformats.json files
  *
- * Copyright © 2015-2018, JEDLSoft
+ * Copyright © 2015-2023, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@
 var fs = require('fs');
 var util = require('util');
 var path = require('path');
+var stringify = require('json-stable-stringify');
 
 var common = require('./common.js');
 var merge = common.merge;
@@ -202,11 +203,11 @@ function timeOrder(fmt) {
     var stripped = fmt.replace(/'[^']*'/g, "");
     if (stripped.match(/H.*z/) || stripped.match(/h.*a.*z/)) {
         return "haz";
-    } else if (stripped.match(/z.*H/) || stripped.match(/z.*a.*h/)) {
+    } else if (stripped.match(/z.*H/) || stripped.match(/z.*[aB].*[hK]/)) {
         return "zah";
-    } else if (stripped.match(/a.*h/)) {
+    } else if (stripped.match(/[Ba].*[hK]/)) {
         return "ahz";
-    } else if (stripped.match(/h.*a/)) {
+    } else if (stripped.match(/[hK].*[aB]/)) {
         return "haz";
     } else {
         console.log("WARNING: unknown time order: " + fmt + "\n");
@@ -219,7 +220,7 @@ function getDateFormat(calendar, length) {
         ret = typeof(calendar.dateFormats[length]) === "string" ? calendar.dateFormats[length] : calendar.dateFormats[length]._value;
         ret = ret ? ret.replace(/ *G+/, "") : ret;
     }
-    return ret;
+    return ret.trim();
 }
 
 function getTimeFormat(calendar, length) {
@@ -439,17 +440,17 @@ module.exports = {
 
             var lengths = ["full", "long", "medium", "short"];
 
-            var order = cldrCalendar.dateTimeFormats["full"];
-            if (order === cldrCalendar.dateTimeFormats["long"] &&
-                order === cldrCalendar.dateTimeFormats["medium"] &&
-                order === cldrCalendar.dateTimeFormats["short"]) {
+            var order = cldrCalendar['dateTimeFormats-atTime']["standard"]["full"];
+            if (order === cldrCalendar["dateTimeFormats-atTime"]["standard"]["long"] &&
+                order === cldrCalendar["dateTimeFormats-atTime"]["standard"]["medium"] &&
+                order === cldrCalendar["dateTimeFormats-atTime"]["standard"]["short"]) {
                 calendar.order = convertOrderFormat(order);
             } else {
                 calendar.order = {
                     "f": convertOrderFormat(order),
-                    "l": convertOrderFormat(cldrCalendar.dateTimeFormats["long"]),
-                    "m": convertOrderFormat(cldrCalendar.dateTimeFormats["medium"]),
-                    "s": convertOrderFormat(cldrCalendar.dateTimeFormats["short"])
+                    "l": convertOrderFormat(cldrCalendar["dateTimeFormats-atTime"]["standard"]["long"]),
+                    "m": convertOrderFormat(cldrCalendar["dateTimeFormats-atTime"]["standard"]["medium"]),
+                    "s": convertOrderFormat(cldrCalendar["dateTimeFormats-atTime"]["standard"]["short"])
                 };
             }
 
@@ -751,7 +752,7 @@ module.exports = {
 
                     switch (order) {
                         case 'haz':
-                            end = scanForChars(available["h"], "a");
+                            end = scanForChars(available["h"], "aB");
                             i = end;
                             while (available["h"].charAt(i) !== ' ' && i > 0) {
                                 i--;
@@ -763,7 +764,7 @@ module.exports = {
                         case 'ahz':
                         case 'zah':
                             begin = scanForChars(available["h"], "hK");
-                            aTemplate = available["h"].substring(begin) + "{time}";
+                            aTemplate = available["h"].substring(0, begin) + "{time}";
                             break;
                     }
                     h = available["h"].replace(/[^h]/g, "");
@@ -1904,6 +1905,11 @@ module.exports = {
                         temp = "\u200F" + temp;
                     }
 
+                    // work around a bug in cldr
+                    if (language === "ha" && temp.endsWith("}}")) {
+                        temp = temp.replace(/\}\}$/, "}");
+                    }
+
                     if (plural === "other") {
                         fullStr += "#" + temp;
                     } else {
@@ -1915,6 +1921,89 @@ module.exports = {
         }
         return relativeSysres;
     },
+
+    createDayPeriods: function (dayPeriods, cldrData, language, region) {
+        var calendarNameSuffix, periodArray = [];
+
+        var formats = {
+            periods: {
+                dayPeriods: [],
+            },
+            sysres: {}
+        };
+
+        function parsePeriod(period) {
+            var parts = period.split(":");
+            var hour = parseInt(parts[0]);
+            var minute = parseInt(parts[1]);
+            return hour * 60 + minute;
+        }
+
+        function pushPeriod(period, name) {
+            periodArray.push(typeof(period._at) !== 'undefined' ?
+                {
+                    name: name,
+                    at: parsePeriod(period._at)
+                } :
+                {
+                    name: name,
+                    from: parsePeriod(period._from),
+                    to: parsePeriod(period._before)
+                }
+            );
+        }
+
+        function findPeriods(dayPeriods, locale) {
+            if (!dayPeriods[locale]) return;
+            for (var name in dayPeriods[locale]) {
+                var period = dayPeriods[locale][name];
+                pushPeriod(period, name);
+            }
+        }
+
+        if (dayPeriods[language] && Object.keys(dayPeriods[language]).length > 1) {
+            findPeriods(dayPeriods, "und");
+            findPeriods(dayPeriods, language);
+            findPeriods(dayPeriods, language + "-" + region);
+
+            // sort by start time of the period
+            periodArray.sort(function(left, right) {
+                var value = (typeof(left.at) !== 'undefined' ? left.at : left.from) -
+                    (typeof(right.at) !== 'undefined' ? right.at : right.from);
+                if (!value) {
+                    value = (typeof(left.at) !== 'undefined' ? left.at : left.to) -
+                    (typeof(right.at) !== 'undefined' ? right.at : right.to)
+                }
+                return value;
+            });
+
+            formats.periods.dayPeriods = periodArray.map(function(period) {
+                if (typeof(period.at) !== 'undefined') {
+                    return { at: period.at };
+                } else {
+                    return {
+                        from: period.from,
+                        to: period.to
+                    };
+                }
+            });
+
+            var sysres = formats.sysres;
+            for (var calendarName in cldrData) {
+                calendarNameSuffix = (calendarName !== "gregorian") ? "-" + calendarName : "";
+                var periods = cldrData[calendarName].dayPeriods.format.wide;
+
+                periodArray.forEach(function(period, index) {
+                    sysres['B' + index + calendarNameSuffix] = periods[period.name];
+                });
+            }
+
+            return formats;
+        }
+
+        return undefined;
+    },
+
     /**
      * Find the distance between two objects in terms of number of properties that
      * are missing or have different values.
@@ -2016,14 +2105,14 @@ module.exports = {
         if (group.data) {
             // finally do the root as well, as it might be minimum already. If there is no root
             // data, promote the most likely child, no matter how many there are
-            if (!distances["root"]) distances["root"] = {};
+            if (!distances["und"]) distances["und"] = {};
             for (right in group) {
-                if (right && right !== "data" && "root" !== right && group[right]) {
-                    if (typeof(distances["root"][right]) === "undefined") {
-                        distances["root"][right] = module.exports.distance(group.data || {}, group[right].data);
+                if (right && right !== "data" && "und" !== right && group[right]) {
+                    if (typeof(distances["und"][right]) === "undefined") {
+                        distances["und"][right] = module.exports.distance(group.data || {}, group[right].data);
                         if (!distances[right]) distances[right] = {};
                         // distance is reflexive
-                        distances[right]["root"] = distances["root"][right];
+                        distances[right]["und"] = distances["und"][right];
                     }
                 }
             }
@@ -2047,7 +2136,7 @@ module.exports = {
         });
 
         // now totals[0] has the child with the minimum total distance, which may be the root too
-        if (totals[0].name === "root") {
+        if (totals[0].name === "und") {
             // already the minimum, so we don't need to do anything
             return;
         }
@@ -2104,18 +2193,17 @@ module.exports = {
     writeFormats: function(outputDir, outfile, group, localeComponents) {
         var dir = path.join.apply(undefined, [outputDir].concat(localeComponents));
         var filename = path.join(dir, outfile);
-        var contents = JSON.stringify(group.data, undefined, 4);
-
+        var contents = JSON.stringify(group.data, undefined, 4); // to filter out `{\n}` case
         // don't write out empty files!
-        if (contents !== "{}") {
+        if (group.data && contents !== "{}") {
             console.log(localeComponents.join("-") + " ");
 
             makeDirs(dir);
-            fs.writeFileSync(filename, JSON.stringify(group.data, undefined, 4), 'utf8');
+            fs.writeFileSync(filename, stringify(group.data, {space: 4}), 'utf8');
         }
 
         for (var comp in group) {
-            if (comp && comp !== "data") {
+            if (comp && comp !== "data" && comp !== "merged") {
                 module.exports.writeFormats(outputDir, outfile, group[comp], localeComponents.concat([comp]));
             }
         }

@@ -1,14 +1,14 @@
 {
     "generated": true,
     "numfmt": {
-        "decimalChar": ",",
-        "groupChar": " ",
-        "exponential": "e",
         "currencyFormats": {
             "common": "{n} {s}",
             "commonNegative": "-{n} {s}"
         },
-        "pctFmt": "{n} %",
-        "negativepctFmt": "-{n} %"
+        "decimalChar": ",",
+        "exponential": "e",
+        "groupChar": " ",
+        "negativepctFmt": "-{n} %",
+        "pctFmt": "{n} %"
     }
 }

@@ -284,7 +284,8 @@
     ],
     "CY": [
         "Asia/Famagusta",
-        "Asia/Nicosia"
+        "Asia/Nicosia",
+        "Europe/Nicosia"
     ],
     "CZ": [
         "Europe/Prague"
@@ -641,6 +642,7 @@
         "America/Bahia_Banderas",
         "America/Cancun",
         "America/Chihuahua",
+        "America/Ciudad_Juarez",
         "America/Ensenada",
         "America/Hermosillo",
         "America/Matamoros",
@@ -798,12 +800,6 @@
         "Europe/Volgograd",
         "W-SU"
     ],
-    "UA": [
-        "Europe/Kiev",
-        "Europe/Simferopol",
-        "Europe/Uzhgorod",
-        "Europe/Zaporozhye"
-    ],
     "RW": [
         "Africa/Kigali"
     ],
@@ -906,6 +902,7 @@
         "Pacific/Tongatapu"
     ],
     "TR": [
+        "Asia/Istanbul",
         "Europe/Istanbul",
         "Turkey"
     ],
@@ -922,6 +919,13 @@
     ],
     "TZ": [
         "Africa/Dar_es_Salaam"
+    ],
+    "UA": [
+        "Europe/Kiev",
+        "Europe/Kyiv",
+        "Europe/Simferopol",
+        "Europe/Uzhgorod",
+        "Europe/Zaporozhye"
     ],
     "UG": [
         "Africa/Kampala"

@@ -1,6 +1,6 @@
 /*
  * testdatefmtrange_lo_LA.js - test the date range formatter object Lao/Laos
- * 
+ *
  * Copyright © 2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -138,7 +138,7 @@ module.exports.testdatefmtrange_lo_LA = {
         test.equal(fmt.format(start, end), "31 ທັນວາ 2011, 13:45 – 14:30");
         test.done();
     },
-    
+
     testDateRngFmtloLARangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "lo-LA", length: "short"});
@@ -243,7 +243,7 @@ module.exports.testdatefmtrange_lo_LA = {
         test.equal(fmt.format(start, end), "30 ທັນວາ 2011, 13:45 – 31 ທັນວາ 2011, 14:30");
         test.done();
     },
-    
+
     testDateRngFmtloLARangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "lo-LA", length: "short"});
@@ -348,7 +348,7 @@ module.exports.testdatefmtrange_lo_LA = {
         test.equal(fmt.format(start, end), "20 – 31 ທັນວາ 2011");
         test.done();
     },
-    
+
     testDateRngFmtloLARangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "lo-LA", length: "short"});
@@ -453,7 +453,7 @@ module.exports.testdatefmtrange_lo_LA = {
         test.equal(fmt.format(start, end), "20 ພະຈິກ – 31 ທັນວາ 2011");
         test.done();
     },
-    
+
     testDateRngFmtloLARangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "lo-LA", length: "short"});
@@ -558,7 +558,7 @@ module.exports.testdatefmtrange_lo_LA = {
         test.equal(fmt.format(start, end), "20 ພະຈິກ 2011 – 31 ມັງກອນ 2012");
         test.done();
     },
-    
+
     testDateRngFmtloLARangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "lo-LA", length: "short"});

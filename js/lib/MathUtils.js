@@ -129,7 +129,7 @@ MathUtils.halfodd = function (num) {
  * @return the remainder of dividing the dividend by the modulus.
  */
 MathUtils.mod = function (dividend, modulus) {
-    if (modulus == 0) {
+    if (modulus === 0) {
         return 0;
     }
     var x = dividend % modulus;
@@ -151,7 +151,7 @@ MathUtils.mod = function (dividend, modulus) {
  * @return the remainder of dividing the dividend by the modulus.
  */
 MathUtils.amod = function (dividend, modulus) {
-    if (modulus == 0) {
+    if (modulus === 0) {
         return 0;
     }
     var x = dividend % modulus;

@@ -1,28 +1,29 @@
-/* 
- * gendelimiters.js - ilib tool to generate delimiters json fragments from  
- * the CLDR data files 
- *  
- * Copyright © 2013-2018, 2020 LGE 
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
- * You may obtain a copy of the License at 
- * 
- *     http://www.apache.org/licenses/LICENSE-2.0 
- * 
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an "AS IS" BASIS, 
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
- * 
- * See the License for the specific language governing permissions and 
- * limitations under the License. 
+/*
+ * gendelimiters.js - ilib tool to generate delimiters json fragments from
+ * the CLDR data files
+ *
+ * Copyright © 2013-2022 LGE
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-/* 
- * This code is intended to be run under node.js  
+/*
+ * This code is intended to be run under node.js
  */
 var fs = require('fs');
 var path = require('path');
 var util = require('util');
+var stringify = require('json-stable-stringify');
 var localeDirs = require('cldr-core/availableLocales.json').availableLocales.full;
 
 var common = require('./common');
@@ -52,7 +53,7 @@ process.argv.forEach(function (val, index, array) {
 localeDirName = process.argv[2] || "tmp";
 
 console.log("gendelimiters - generate delimiters information files.\n" +
-"Copyright (c) 2013 - 2018 LGE\n");
+"Copyright (c) 2013-2022 LGE\n");
 
 console.log("locale dir: " + localeDirName);
 
@@ -68,8 +69,8 @@ console.log("Reading locale data into memory...");
 
 for (var i = 0; i < localeDirs.length; i++) {
     var dirname = localeDirs[i];
-    if (dirname === "root") {
-        // special case because "root" is not a valid locale specifier 
+    if (dirname === "und") {
+        // special case for "root"
         getLocaleData(dirname, undefined);
     } else {
         var locale = new Locale(dirname);
@@ -109,7 +110,7 @@ function loadFileNonGenerated(language, script, region) {
     var path = calcLocalePath(language, script, region, "delimiters.jf");
     var obj = loadFile_jf(path);
     if (typeof (obj) !== 'undefined' && (typeof (obj.generated) === 'undefined' || obj.generated === false)) {
-        // only return non-generated files 
+        // only return non-generated files
         return obj;
     }
     return undefined;
@@ -123,13 +124,13 @@ function getLocaleData(dirname, locale) {
         region = undefined,
         spec = undefined;
 
-        if (locale !== undefined)	 {
+        if (locale !== undefined)     {
             language = locale.getLanguage(),
             script = locale.getScript(),
             region = locale.getRegion();
-            spec = locale.getSpec();	
+            spec = locale.getSpec();
         } else {
-            spec = "root";
+            spec = "und";
         }
 
         var filename = path.join("cldr-misc-full/main", dirname, "delimiters.json");
@@ -148,6 +149,11 @@ function getLocaleData(dirname, locale) {
                     localeData[language][script][region] = {};
                 }
                 localeData[language][script][region].data = numData;
+            } else {
+                if (!localeData[language][script]) {
+                    localeData[language][script] = {};
+                }
+                localeData[language][script].data = numData;
             }
         } else if (region) {
             if (!localeData[language]) {
@@ -163,7 +169,7 @@ function getLocaleData(dirname, locale) {
             }
             localeData[language].data = numData;
         } else {
-            // root locale 
+            // root locale
             localeData.data = numData;
         }
     } catch (e) {
@@ -195,11 +201,11 @@ function writeQuotationChars(language, script, region, data) {
             console.log("Writing " + path);
             //var delimiters={};
             //makeDirs(path);
-            if ((Object.keys(data["delimiter"]).length !== 0))	{
+            if ((Object.keys(data["delimiter"]).length !== 0))    {
                 data.generated=true;
                 makeDirs(path);
                 //if(data=undefined){
-                fs.writeFileSync(path + "/delimiters.jf", JSON.stringify(data, true, 4) , "utf-8");
+                fs.writeFileSync(path + "/delimiters.jf", stringify(data, {space: 4}) , "utf-8");
             }
             //}
         } else {
@@ -211,7 +217,7 @@ function writeQuotationChars(language, script, region, data) {
 }
 
 function getQuotationChars(language, script, region, data) {
-    // if it is already there and non-generated, return it 
+    // if it is already there and non-generated, return it
     var delimiters = loadFileNonGenerated(language, script, region);
 
     if (delimiters) {
@@ -221,15 +227,15 @@ function getQuotationChars(language, script, region, data) {
         return delimiters;
     }
     var delimiter_symbol={};
-    // else generate a new one 
+    // else generate a new one
     delimiters = {
         generated: true
     };
-    var delimiter_chars=data;
-    delimiter_symbol["quotationStart"]=delimiter_chars["quotationStart"];
-    delimiter_symbol["quotationEnd"]=delimiter_chars["quotationEnd"];
-    delimiter_symbol["alternateQuotationStart"]=delimiter_chars["alternateQuotationStart"];
-    delimiter_symbol["alternateQuotationEnd"]=delimiter_chars["alternateQuotationEnd"];
+    var delimiter_chars = data;
+    delimiter_symbol["quotationStart"] = delimiter_chars["quotationStart"];
+    delimiter_symbol["quotationEnd"] = delimiter_chars["quotationEnd"];
+    delimiter_symbol["alternateQuotationStart"] = delimiter_chars["alternateQuotationStart"];
+    delimiter_symbol["alternateQuotationEnd"] = delimiter_chars["alternateQuotationEnd"];
 
     //console.log("the delimiters are :"+JSON.stringify(delimiter_symbol));
     delimiters["delimiter"]=delimiter_symbol;
@@ -246,7 +252,7 @@ resources.data = getQuotationChars(undefined, undefined, undefined, localeData.d
 for (language in localeData) {
     if (language && localeData[language] && language !== 'data' && language !== 'merged') {
         resources[language] = resources[language] || {};
-        console.log(language + " "); 
+        console.log(language + " ");
         for (var subpart in localeData[language]) {
             if (subpart && localeData[language][subpart] && subpart !== 'data' && subpart !== 'merged') {
                 resources[language][subpart] = resources[language][subpart] || {};
@@ -266,10 +272,18 @@ for (language in localeData) {
     }
 }
 
-//resources.data = getQuotationChars(undefined, undefined, undefined, localeData.data); 
-console.log("Merging and pruning r...");
+// special case for Chinese traditional locales
+resources.zh.TW = {
+    data: Object.assign({}, resources.zh.Hant.data)
+};
+resources.zh.HK = {
+    data: Object.assign({}, resources.zh.Hant.HK.data)
+};
+
+//resources.data = getQuotationChars(undefined, undefined, undefined, localeData.data);
+console.log("Merging and pruning...");
 //console.log("\nLoaded existing resources " + JSON.stringify(resources));
-//writeQuotationChars(undefined, undefined, undefined, resources.data); 
+//writeQuotationChars(undefined, undefined, undefined, resources.data);
 //console.log("\ndata before merge and pruning\n"+JSON.stringify(resources));
 mergeAndPrune(resources);
 //console.log("\ndata after merge and pruning\n"+JSON.stringify(resources));
@@ -296,5 +310,5 @@ for (language in resources) {
     }
 }
 
-writeQuotationChars(undefined, undefined, undefined, resources.data); 
+writeQuotationChars(undefined, undefined, undefined, resources.data);
 process.exit(0);

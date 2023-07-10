@@ -1,8 +1,8 @@
 /*
- * genlikelyloc.js - ilib tool to generate the localematch.json files from 
+ * genlikelyloc.js - ilib tool to generate the localematch.json files from
  * the CLDR data files
- * 
- * Copyright © 2013-2020, JEDLSoft
+ *
+ * Copyright © 2013-2020, J2022 EDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,10 +19,12 @@
  */
 
 /*
- * This code is intended to be run under node.js 
+ * This code is intended to be run under node.js
  */
 
 var fs = require('fs');
+var stringify = require('json-stable-stringify');
+
 var common = require('./common');
 var Locale = common.Locale;
 
@@ -50,7 +52,7 @@ process.argv.forEach(function (val, index, array) {
 localeDirName = process.argv[2] || "tmp";
 
 console.log("genlikelyloc - generate the localematch.json file.\n" +
-        "Copyright (c) 2013-2019 JEDLSoft");
+        "Copyright (c) 2013-2019, 2022 JEDLSoft");
 
 console.log("locale dir: " + localeDirName);
 
@@ -63,15 +65,29 @@ var likelySubtags, likelySubtagsData, filename, json;
 
 var localematch = {};
 
+// cldr is missing these
+var hardCodedSubtags = {
+    "bn-IN": "bn-Beng-IN",
+    "en-KR": "en-Latn-KR",
+    "hr-HU": "hr-Latn-HU",
+    "ka-IR": "ka-Geor-IR",
+    "ko-US": "ko-Kore-US",
+    "ku-IQ": "ku-Arab-IQ",
+    "ps-PK": "ps-Arab-PK",
+    "pt-MO": "pt-Latn-MO",
+    "yo-BJ": "yo-Latn-BJ"
+};
+
 // Likely Locales
 
 var likelylocales = {};
 likelySubtagsData = likelySubtags.supplemental;
+var likelySubtags = Object.assign({}, likelySubtagsData.likelySubtags, hardCodedSubtags);
 
-for (var partial in likelySubtagsData.likelySubtags) {
-    if (partial && likelySubtagsData.likelySubtags[partial]) {
+for (var partial in likelySubtags) {
+    if (partial && likelySubtags[partial]) {
         var partialLoc = new Locale(partial);
-        var full = new Locale(likelySubtagsData.likelySubtags[partial]);
+        var full = new Locale(likelySubtags[partial]);
         if (partialLoc.language === "und") {
             var cleanloc = new Locale(undefined, partialLoc.script, partialLoc.region);
 
@@ -172,7 +188,7 @@ for (var territory in data) {
         } else {
             containment[territory] = data[territory]["_contains"];
         }
-        
+
         containment[territory].forEach(function(region) {
             if (!parentsHash[region]) parentsHash[region] = [];
             parentsHash[region].push(territory);
@@ -194,16 +210,16 @@ function toArray(set) {
     set.forEach(function(element) {
         elements.push(element);
     });
-    
+
     return elements;
 }
 
 function getAncestors(region) {
     // already calculated previously
     if (containmentReverse[region]) return containmentReverse[region];
-    
+
     if (!parentsHash[region]) return []; // only the whole world has no parents
-    
+
     // get all the ancestors of the current region...
     var parentsArray = parentsHash[region].map(function(parent) {
         return getAncestors(parent).concat([parent]);
@@ -214,7 +230,7 @@ function getAncestors(region) {
     parentsArray.sort(function(left, right) {
         return left.length - right.length;
     });
-    
+
     // take care of duplicates using a set
     var set = new Set();
     // do a breadth-first insert into the set so that the largest territories
@@ -229,7 +245,7 @@ function getAncestors(region) {
             }
         });
     }
-    
+
     containmentReverse[region] = toArray(set);
     return containmentReverse[region];
 }
@@ -267,7 +283,7 @@ console.log("Writing localematch.json...");
 // now write out the system resources
 
 var filename = localeDirName + "/localematch.json";
-fs.writeFile(filename, JSON.stringify(localematch, true, 4), function (err) {
+fs.writeFile(filename, stringify(localematch, {space: 4}), function (err) {
     if (err) {
         console.log(err);
         throw err;

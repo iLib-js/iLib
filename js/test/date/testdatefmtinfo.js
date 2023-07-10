@@ -1,8 +1,8 @@
 /*
- * testgetformatinfo.js - test the date formatter object's
+ * testdatefmtinfo.js - test the date formatter object's
  * getFormatInfo call
  *
- * Copyright © 2019-2021 JEDLSoft
+ * Copyright © 2019-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -371,7 +371,7 @@ module.exports.testdategetformatinfo = {
                 test.equal(info[12].validation, "\\d{2}");
 
                 test.ok(!info[13].component);
-                test.equal(info[13].label, " ");
+                test.equal(info[13].label, " ");
 
                 test.equal(info[14].component, "meridiem");
                 test.equal(info[14].label, "AM/PM");
@@ -383,7 +383,7 @@ module.exports.testdategetformatinfo = {
                 test.equal(info[16].component, "timezone");
                 test.equal(info[16].label, "Time zone");
                 test.equal(typeof(info[16].constraint), "object");
-                test.equal(info[16].constraint.length, 532);
+                test.equal(info[16].constraint.length, 538);
             }
         });
 
@@ -494,7 +494,7 @@ module.exports.testdategetformatinfo = {
                 test.equal(info[12].validation, "\\d{2}");
 
                 test.ok(!info[13].component);
-                test.equal(info[13].label, " ");
+                test.equal(info[13].label, " ");
 
                 test.equal(info[14].component, "meridiem");
                 test.equal(info[14].label, "AM/PM");
@@ -506,7 +506,7 @@ module.exports.testdategetformatinfo = {
                 test.equal(info[16].component, "timezone");
                 test.equal(info[16].label, "Time zone");
                 test.equal(typeof(info[16].constraint), "object");
-                test.equal(info[16].constraint.length, 532);
+                test.equal(info[16].constraint.length, 538);
             }
         });
 
@@ -643,7 +643,7 @@ module.exports.testdategetformatinfo = {
                     {label: "Kislev", value: 9},
                     {label: "Teveth", value: 10},
                     {label: "Shevat", value: 11},
-                    {label: "Adar I", value: 12},
+                    {label: "Adar", value: 12},
                     {label: "Adar II", value: 13},
                 ]);
 

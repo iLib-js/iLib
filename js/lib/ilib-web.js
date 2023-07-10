@@ -1,8 +1,8 @@
 /*
  * ilib-web.js - glue code for web apps to load local ilib code and data
  * using XHR
- * 
- * Copyright © 2015, JEDLSoft
+ *
+ * Copyright © 2015,2022-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,8 +60,11 @@ var requireClass = function() {
         var source = scripts[i].src;
         if (source && (pos = source.search(/ilib-web\.js$/)) !== -1) {
             var colon = source.indexOf('://');
-            this.protocol = source.substring(0,colon+3);
+            this.protocol = source.substring(0, colon+3);
             this.root = source.substring(colon+3, pos-1);
+            if (this.root.indexOf("/") !== 0) {
+                this.root = "/" + this.root;
+            }
             break;
         }
     }
@@ -69,7 +72,7 @@ var requireClass = function() {
 
 requireClass.prototype.loadFile = function(pathname) {
     // special case for IE because it has a @#$%ed up XMLHttpRequest implementation
-    var req = (navigator.userAgent.indexOf(" .NET") > -1) ? 
+    var req = (navigator.userAgent.indexOf(" .NET") > -1) ?
         new ActiveXObject("MSXML2.XMLHTTP") :
         new XMLHttpRequest();
 
@@ -80,9 +83,9 @@ requireClass.prototype.loadFile = function(pathname) {
 };
 
 requireClass.prototype.require = function(pathname) {
-    
+
     //console.log("this.root is " + this.root + " and pathname before was " + pathname);
-    
+
     if (pathname.charAt(0) !== '/') {
         // make the current path be relative to the parent's path, otherwise use the root
         pathname = path.join((module && module.filename) ? path.dirname(module.filename) : this.root, pathname);
@@ -107,13 +110,13 @@ requireClass.prototype.require = function(pathname) {
     var text = this.loadFile(pathname);
     var dirname = path.dirname(pathname);
     var match, replacement;
-    
+
     if (text) {
         var tmp = module.filename;
         module.filename = pathname;
         module.exports = null;
         module.require = requireClass.prototype.require.bind(r);
-        
+
         while ((match = this.updateRequire.exec(text)) !== null) {
             replacement = path.normalize(path.join(dirname, match[1]));
             text = text.replace(new RegExp('"' + match[1] + '"', "g"), '"' + replacement + '"');

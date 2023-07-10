@@ -1,7 +1,7 @@
  /*
  * testMeridiems.js
  *
- * Copyright © 2019, JEDLSoft
+ * Copyright © 2019-2023, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+if (typeof(ilib) === "undefined") {
+    var ilib = require("../../lib/ilib.js");
+}
+
+if (ilib._getPlatform() === "nodejs" && ilib._dyndata && ilib._dyncode) {
+    var path = require("path");
+}
 
 if (typeof(DateFmtInfo) === "undefined") {
     var DateFmtInfo = require("../../lib/DateFmtInfo.js");
@@ -413,8 +421,8 @@ module.exports.testmeridiems = {
         var range = fmtinfo.getMeridiemsRange();
         test.ok(range !== null);
 
-        test.equal(range[0].name, "am");
-        test.equal(range[1].name, "pm");
+        test.equal(range[0].name, "AM");
+        test.equal(range[1].name, "PM");
 
         test.done();
     },
@@ -994,8 +1002,8 @@ module.exports.testmeridiems = {
         var range = fmtinfo.getMeridiemsRange();
         test.ok(range !== null);
 
-        test.equal(range[0].name, "претпладне");
-        test.equal(range[1].name, "попладне");
+        test.equal(range[0].name, "претпл.");
+        test.equal(range[1].name, "попл.");
 
         test.done();
     },
@@ -1016,8 +1024,8 @@ module.exports.testmeridiems = {
         var range = fmtinfo.getMeridiemsRange();
         test.ok(range !== null);
 
-        test.equal(range[0].name, "म.पू.");
-        test.equal(range[1].name, "म.उ.");
+        test.equal(range[0].name, "AM");
+        test.equal(range[1].name, "PM");
 
         test.done();
     },
@@ -1126,8 +1134,8 @@ module.exports.testmeridiems = {
         var range = fmtinfo.getMeridiemsRange();
         test.ok(range !== null);
 
-        test.equal(range[0].name, "пре подне");
-        test.equal(range[1].name, "по подне");
+        test.equal(range[0].name, "AM");
+        test.equal(range[1].name, "PM");
 
         test.done();
     },
@@ -1137,8 +1145,8 @@ module.exports.testmeridiems = {
         var range = fmtinfo.getMeridiemsRange();
         test.ok(range !== null);
 
-        test.equal(range[0].name, "pre podne");
-        test.equal(range[1].name, "po podne");
+        test.equal(range[0].name, "AM");
+        test.equal(range[1].name, "PM");
 
         test.done();
     },
@@ -2329,6 +2337,97 @@ module.exports.testmeridiems = {
         test.equal(range[1].name, 'PM');
         test.done();
     },
+    testMeridiem_lb_LU: function(test) {
+        test.expect(3);
+        var fmtinfo = new DateFmtInfo({locale:"lb-LU"});
+        var range = fmtinfo.getMeridiemsRange();
+        test.ok(range);
+
+        test.equal(range[0].name, 'moies');
+        test.equal(range[1].name, 'nomëttes');
+        test.done();
+    },
+    testMeridiem_pa_IN: function(test) {
+        test.expect(3);
+        var fmtinfo = new DateFmtInfo({locale:"pa-IN"});
+        var range = fmtinfo.getMeridiemsRange();
+        test.ok(range);
+
+        test.equal(range[0].name, 'ਪੂ.ਦੁ.');
+        test.equal(range[1].name, 'ਬਾ.ਦੁ.');
+        test.done();
+    },
+    testMeridiem_pa_IN_Custom: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./custom"));
+        var ilibLoader = ilib.getLoader();
+
+        ilibLoader.addPath(multiPath);
+
+        test.expect(3);
+        var fmtinfo = new DateFmtInfo({locale:"pa-IN"});
+        var range = fmtinfo.getMeridiemsRange();
+        test.ok(range);
+
+        test.equal(range[0].name, 'AM');
+        test.equal(range[1].name, 'PM');
+
+        ilibLoader.removePath(multiPath);
+        test.done();
+    },
+    testMeridiem_ig_NG: function(test) {
+        test.expect(3);
+        var fmtinfo = new DateFmtInfo({locale:"ig-NG"});
+        var range = fmtinfo.getMeridiemsRange();
+        test.ok(range);
+
+        test.equal(range[0].name, 'N’ụtụtụ');
+        test.equal(range[1].name, 'N’abali');
+        test.done();
+    },
+    testMeridiem_ps_AF: function(test) {
+        test.expect(3);
+        var fmtinfo = new DateFmtInfo({locale:"ps-AF"});
+        var range = fmtinfo.getMeridiemsRange();
+        test.ok(range);
+
+        test.equal(range[0].name, 'غ.م.');
+        test.equal(range[1].name, 'غ.و.');
+        test.done();
+    },
+    testMeridiem_ps_PK: function(test) {
+        test.expect(3);
+        var fmtinfo = new DateFmtInfo({locale:"ps-PK"});
+        var range = fmtinfo.getMeridiemsRange();
+        test.ok(range);
+
+        test.equal(range[0].name, 'غ.م.');
+        test.equal(range[1].name, 'غ.و.');
+      test.done();
+    },
+    testMeridiem_yo_NG: function(test) {
+        test.expect(3);
+        var fmtinfo = new DateFmtInfo({locale:"yo-NG"});
+        var range = fmtinfo.getMeridiemsRange();
+        test.ok(range);
+
+        test.equal(range[0].name, 'Àárọ̀');
+        test.equal(range[1].name, 'Ọ̀sán');
+        test.done();
+    },
+    testMeridiem_yo_BJ: function(test) {
+        test.expect(3);
+        var fmtinfo = new DateFmtInfo({locale:"yo-BJ"});
+        var range = fmtinfo.getMeridiemsRange();
+        test.ok(range);
+
+        test.equal(range[0].name, 'Àárɔ̀');
+        test.equal(range[1].name, 'Ɔ̀sán');
+        test.done();
+    },
 
     testGetMeridiemsRangeLength_with_am_ET_locale: function(test) {
         test.expect(2);
@@ -2657,8 +2756,8 @@ module.exports.testmeridiems = {
         var range = fmtinfo.getMeridiemsRange();
         test.ok(range !== null);
 
-        test.equal(range[0].name, "म.पू.");
-        test.equal(range[1].name, "म.उ.");
+        test.equal(range[0].name, "AM");
+        test.equal(range[1].name, "PM");
         test.done();
     },
     testGetMeridiemsRangeName_with_or_IN_locale: function(test) {

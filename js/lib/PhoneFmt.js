@@ -1,7 +1,7 @@
 /*
  * PhoneFmt.js - Represent a phone number formatter.
  *
- * Copyright © 2014-2015, 2018-2019, JEDLSoft
+ * Copyright © 2014-2015, 2018-2019, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,7 +73,7 @@ var PhoneLocale = require("./PhoneLocale.js");
  */
 var PhoneFmt = function(options) {
     this.sync = true;
-    this.styleName = 'default',
+    this.styleName = 'default';
     this.loadParams = {};
 
     var locale = new Locale();
@@ -127,7 +127,7 @@ var PhoneFmt = function(options) {
 PhoneFmt.prototype = {
     /**
      *
-     * @protected
+     * @private
      * @param {string} part
      * @param {Object} formats
      * @param {boolean} mustUseAll
@@ -178,7 +178,7 @@ PhoneFmt.prototype = {
     /**
      * Returns the style with the given name, or the default style if there
      * is no style with that name.
-     * @protected
+     * @private
      * @return {{example:string,whole:Object.<string,string>,partial:Object.<string,string>}|Object.<string,string>}
      */
     _getStyle: function (name, fmtdata) {
@@ -188,7 +188,7 @@ PhoneFmt.prototype = {
     /**
      * Do the actual work of formatting the phone number starting at the given
      * field in the regular field order.
-     *
+     * @private
      * @param {!PhoneNumber} number
      * @param {{
      *   partial:boolean,

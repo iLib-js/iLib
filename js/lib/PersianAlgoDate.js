@@ -1,7 +1,7 @@
 /*
  * PersianAlgoDate.js - Represent a date in the Persian algorithmic calendar
  *
- * Copyright © 2014-2015, 2018, JEDLSoft
+ * Copyright © 2014-2015, 2018, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -223,9 +223,9 @@ PersianAlgoDate.prototype._init = function (params) {
 };
 
 /**
- * @private
- * Finish initializing this date object
- */
+* Finish initializing this date object.
+* @private
+*/
 PersianAlgoDate.prototype._init2 = function (params) {
     if (!this.rd) {
         this.rd = this.newRd(params);
@@ -249,7 +249,7 @@ PersianAlgoDate.prototype.newRd = function (params) {
 
 /**
  * Return the year for the given RD
- * @protected
+ * @private
  * @param {number} rd RD to calculate from
  * @returns {number} the year for the RD
  */
@@ -263,8 +263,8 @@ PersianAlgoDate.prototype._calcYear = function(rd) {
 };
 
 /**
- * @private
  * Calculate date components for the given RD date.
+ * @private
  */
 PersianAlgoDate.prototype._calcDateComponents = function () {
     var remainder,

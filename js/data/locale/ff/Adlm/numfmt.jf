@@ -1,0 +1,15 @@
+{
+    "generated": true,
+    "numfmt": {
+        "currencyFormats": {
+            "common": "{s} {n}",
+            "commonNegative": "-{s} {n}"
+        },
+        "decimalChar": ".",
+        "digits": "𞥐𞥑𞥒𞥓𞥔𞥕𞥖𞥗𞥘𞥙",
+        "exponential": "𞤉",
+        "groupChar": "⹁",
+        "script": "Adlm",
+        "useNative": true
+    }
+}

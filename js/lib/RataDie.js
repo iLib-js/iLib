@@ -99,7 +99,8 @@ var RataDie = function(params) {
             this._setDateComponents(params);
         } else if (typeof(params.rd) !== 'undefined') {
             /**
-             * @type {number} the Rata Die number of this date for this calendar type
+             * the Rata Die number of this date for this calendar type
+             * @type {number}
              */
             this.rd = (typeof(params.rd) === 'object' && params.rd instanceof RataDie) ? params.rd.rd : params.rd;
         }
@@ -120,9 +121,9 @@ RataDie.gregorianEpoch = 1721424.5;
 
 RataDie.prototype = {
     /**
+     * the difference between a zero Julian day and the zero Gregorian date.
      * @protected
      * @type {number}
-     * the difference between a zero Julian day and the zero Gregorian date.
      */
     epoch: RataDie.gregorianEpoch,
 

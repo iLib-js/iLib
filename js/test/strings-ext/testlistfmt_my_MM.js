@@ -1,7 +1,7 @@
 /*
  * testlistfmt_my_MM.js - test the list formatter object
  *
- * Copyright © 2020, JEDLSoft
+ * Copyright © 2020-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ module.exports.testlistfmt_my_MM = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး"]), 'တစ္ ႎႀစ္နှင့် သံုး');
+        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး"]), 'တစ္ - ႎႀစ္နှင့် သံုး');
         test.done();
     },
     testListFmtNumberFormatFour_my_MM: function(test) {
@@ -67,7 +67,7 @@ module.exports.testlistfmt_my_MM = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး"]), 'တစ္ ႎႀစ္ သံုးနှင့် ေလး');
+        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး"]), 'တစ္ - ႎႀစ္ - သံုးနှင့် ေလး');
         test.done();
     },
     testListFmtNumberFormatFive_my_MM: function(test) {
@@ -77,7 +77,7 @@ module.exports.testlistfmt_my_MM = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး", "ငၝး"]), 'တစ္ ႎႀစ္ သံုး ေလးနှင့် ငၝး');
+        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး", "ငၝး"]), 'တစ္ - ႎႀစ္ - သံုး - ေလးနှင့် ငၝး');
         test.done();
     },
     testListFmtUnitStyleNumberFormatOneShort_my_MM: function(test) {
@@ -110,7 +110,7 @@ module.exports.testlistfmt_my_MM = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး"]), 'တစ္ ႎႀစ္နှင့် သံုး');
+        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး"]), 'တစ္- ႎႀစ္နှင့် သံုး');
         test.done();
     },
     testListFmtUnitStyleNumberFormatFourShort_my_MM: function(test) {
@@ -121,7 +121,7 @@ module.exports.testlistfmt_my_MM = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး"]), 'တစ္ ႎႀစ္ သံုးနှင့် ေလး');
+        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး"]), 'တစ္- ႎႀစ္- သံုးနှင့် ေလး');
         test.done();
     },
     testListFmtUnitStyleNumberFormatFiveShort_my_MM: function(test) {
@@ -132,7 +132,7 @@ module.exports.testlistfmt_my_MM = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး", "ငၝး"]), 'တစ္ ႎႀစ္ သံုး ေလးနှင့် ငၝး');
+        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး", "ငၝး"]), 'တစ္- ႎႀစ္- သံုး- ေလးနှင့် ငၝး');
         test.done();
     },
     testListFmtUnitStyleNumberFormatOneFull_my_MM: function(test) {
@@ -168,7 +168,7 @@ module.exports.testlistfmt_my_MM = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး"]), 'တစ္ ႎႀစ္နှင့် သံုး');
+        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး"]), 'တစ္- ႎႀစ္နှင့် သံုး');
         test.done();
     },
     testListFmtUnitStyleNumberFormatFourFull_my_MM: function(test) {
@@ -180,7 +180,7 @@ module.exports.testlistfmt_my_MM = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး"]), 'တစ္ ႎႀစ္ သံုးနှင့် ေလး');
+        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး"]), 'တစ္- ႎႀစ္- သံုးနှင့် ေလး');
         test.done();
     },
     testListFmtUnitStyleNumberFormatFiveFull_my_MM: function(test) {
@@ -192,7 +192,7 @@ module.exports.testlistfmt_my_MM = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး", "ငၝး"]), 'တစ္ ႎႀစ္ သံုး ေလးနှင့် ငၝး');
+        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး", "ငၝး"]), 'တစ္- ႎႀစ္- သံုး- ေလးနှင့် ငၝး');
         test.done();
     },
     testListFmtORStyleNumberFormatOne_my_MM: function(test) {
@@ -225,7 +225,7 @@ module.exports.testlistfmt_my_MM = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး"]), 'တစ္ ၊ ႎႀစ္ သို့မဟုတ် သံုး');
+        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး"]), 'တစ္ - ႎႀစ္ သို့မဟုတ် သံုး');
         test.done();
     },
     testListFmtORStyleNumberFormatFour_my_MM: function(test) {
@@ -236,7 +236,7 @@ module.exports.testlistfmt_my_MM = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး"]), 'တစ္ ၊ ႎႀစ္ သံုး သို့မဟုတ် ေလး');
+        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး"]), 'တစ္ - ႎႀစ္ - သံုး သို့မဟုတ် ေလး');
         test.done();
     },
     testListFmtORStyleNumberFormatFiveFull_my_MM: function(test) {
@@ -247,7 +247,7 @@ module.exports.testlistfmt_my_MM = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး", "ငၝး"]), 'တစ္ ၊ ႎႀစ္ သံုး ေလး သို့မဟုတ် ငၝး');
+        test.equal(fmt.format(["တစ္", "ႎႀစ္", "သံုး", "ေလး", "ငၝး"]), 'တစ္ - ႎႀစ္ - သံုး - ေလး သို့မဟုတ် ငၝး');
         test.done();
     }
 };

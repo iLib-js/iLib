@@ -1,4 +1,4 @@
-/* 
+/*
  * mkli.js - ilib tool to remove the non-json fragments
  *
  * Copyright © 2013, LGE
@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/* 
+/*
  * This code is intended to be run under node.js
  */
 var fs = require('fs');

@@ -1,7 +1,7 @@
 /*
  * IString.js - ilib string subclass definition
  *
- * Copyright © 2012-2015, 2018, JEDLSoft
+ * Copyright © 2012-2015, 2018, 2021-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ var Locale = require("./Locale.js");
  * Create a new ilib string instance. This string inherits from and
  * extends the Javascript String class. It can be
  * used almost anywhere that a normal Javascript string is used, though in
- * some instances you will need to call the {@link #toString} method when
+ * some instances you will need to call the [toString]{@link IString#toString} method when
  * a built-in Javascript string is needed. The formatting methods are
  * methods that are not in the intrinsic String class and are most useful
  * when localizing strings in an app or web site in combination with
@@ -286,6 +286,16 @@ IString._fncs = {
         var numberDigits =  {};
         var operandSymbol =  {};
 
+        var exponentialNum = number.toExponential();
+        var exponentialIndex = exponentialNum.indexOf("e");
+        if (exponentialIndex !== -1) {
+            operandSymbol.c = parseInt(exponentialNum[exponentialIndex+2]);
+            operandSymbol.e = parseInt(exponentialNum[exponentialIndex+2]);
+        } else {
+            operandSymbol.c = 0;
+            operandSymbol.e = 0;
+        }
+
         if (numberToString.indexOf('.') !== -1) { //decimal
             parts = numberToString.split('.', 2);
             numberDigits.integerPart = parseInt(parts[0], 10);
@@ -334,7 +344,7 @@ IString._fncs = {
     is: function(rule, n) {
         var left = IString._fncs.getValue(rule[0], n);
         var right = IString._fncs.getValue(rule[1], n);
-        return left == right;
+        return left === right;
     },
 
     /**
@@ -344,7 +354,7 @@ IString._fncs = {
      * @return {boolean}
      */
     isnot: function(rule, n) {
-        return IString._fncs.getValue(rule[0], n) != IString._fncs.getValue(rule[1], n);
+        return IString._fncs.getValue(rule[0], n) !== IString._fncs.getValue(rule[1], n);
     },
 
     /**
@@ -469,7 +479,7 @@ IString._fncs = {
         if(typeof(valueRight) === 'boolean') {
             return (valueRight ? true : false);
         } else {
-            return (valueLeft == valueRight ? true :false);
+            return (valueLeft === valueRight ? true :false);
         }
     },
     /**
@@ -612,7 +622,6 @@ IString.prototype = {
 
     /** @private */
     _testChoice: function(index, limit) {
-        var numberDigits = {};
         var operandValue = {};
 
         switch (typeof(index)) {
@@ -640,7 +649,7 @@ IString.prototype = {
                         case "few":
                         case "many":
                             // CLDR locale-dependent number classes
-                            var ruleset = ilib.data["plurals_" + this.locale.getLanguage()]|| IString.plurals_default;
+                            var ruleset = ilib.data["plurals_" + this.locale.getLanguage()+ "_" + this.locale.getRegion()] || ilib.data["plurals_" + this.locale.getLanguage()]|| IString.plurals_default;
                             if (ruleset) {
                                 var rule = ruleset[limit];
                                 return IString._fncs.getValue(rule, operandValue);
@@ -674,6 +683,29 @@ IString.prototype = {
                 throw "syntax error: formatChoice parameter for the argument index cannot be an object";
         }
 
+        return false;
+    },
+    /** @private */
+    _isIntlPluralAvailable: function(locale) {
+        if (typeof (locale.getVariant()) !== 'undefined'){
+            return false;
+        }
+
+        if (typeof(Intl) !== 'undefined') {
+            if (ilib._getPlatform() === 'nodejs') {
+                var version = process.versions["node"];
+                if (!version) return false;
+                var majorVersion = version.split(".")[0];
+                if (Number(majorVersion) >= 10 && (Intl.PluralRules.supportedLocalesOf(locale.getSpec()).length > 0)) {
+                    return true;
+                }
+                return false;
+            } else if (Intl.PluralRules.supportedLocalesOf(locale.getSpec()).length > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         return false;
     },
 
@@ -810,19 +842,22 @@ IString.prototype = {
      * or an array of indices
      * @param {Object} params The hash of parameter values that replace the replacement
      * variables in the string
+     * * @param {boolean} useIntlPlural [optional] true if you are willing to use Intl.PluralRules object
+     * If it is omitted, the default value is true
      * @throws "syntax error in choice format pattern: " if there is a syntax error
      * @return {string} the formatted string
      */
-    formatChoice: function(argIndex, params) {
+    formatChoice: function(argIndex, params, useIntlPlural) {
         var choices = this.str.split("|");
         var limits = [];
         var strings = [];
+        var limitsArr = [];
         var i;
         var parts;
-        var limit;
         var result = undefined;
         var defaultCase = "";
-
+        var checkArgsType;
+        var useIntl = typeof(useIntlPlural) !== 'undefined' ? useIntlPlural : true;
         if (this.str.length === 0) {
             // nothing to do
             return "";
@@ -846,26 +881,74 @@ IString.prototype = {
 
         var args = (ilib.isArray(argIndex)) ? argIndex : [argIndex];
 
-        // then apply the argument index (or indices)
-        for (i = 0; i < limits.length; i++) {
-            if (limits[i].length === 0) {
-                // this is default case
-                defaultCase = new IString(strings[i]);
-            } else {
-                var limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
+        checkArgsType = args.filter(ilib.bind(this, function(item){
+            if (typeof(item) !== "number") {
+                return false;
+            }
+            return true;
+        }));
 
-                var applicable = true;
-                for (var j = 0; applicable && j < args.length && j < limitsArr.length; j++) {
-                    applicable = this._testChoice(args[j], limitsArr[j]);
+        if (useIntl && this.intlPlural && (args.length === checkArgsType.length)){
+            this.cateArr = [];
+            for(i = 0; i < args.length;i++) {
+                var r = this.intlPlural.select(args[i]);
+                this.cateArr.push(r);
+            }
+            if (args.length === 1) {
+                var idx = limits.indexOf(this.cateArr[0]);
+                if (idx == -1) {
+                    idx = limits.indexOf("");
                 }
+                result = new IString(strings[idx]);
+            } else {
+                if (limits.length === 0) {
+                    defaultCase = new IString(strings[i]);
+                } else {
+                    this.findOne = false;
 
-                if (applicable) {
-                    result = new IString(strings[i]);
-                    i = limits.length;
+                    for(i = 0; !this.findOne && i < limits.length; i++){
+                        limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
+
+                        if (limitsArr.length > 1 && (limitsArr.length < this.cateArr.length)){
+                            this.cateArr = this.cateArr.slice(0,limitsArr.length);
+                        }
+                        limitsArr = limitsArr.map(function(item){
+                            return item.trim();
+                        })
+                        limitsArr.filter(ilib.bind(this, function(element, idx, arr){
+                            if (JSON.stringify(arr) === JSON.stringify(this.cateArr)){
+                                this.number = i;
+                                this.fineOne = true;
+                            }
+                        }));
+                    }
+                    if (this.number === -1){
+                        this.number = limits.indexOf("");
+                    }
+                    result = new IString(strings[this.number]);
+                }
+            }
+        } else {
+            // then apply the argument index (or indices)
+            for (i = 0; i < limits.length; i++) {
+                if (limits[i].length === 0) {
+                    // this is default case
+                    defaultCase = new IString(strings[i]);
+                } else {
+                    limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
+
+                    var applicable = true;
+                    for (var j = 0; applicable && j < args.length && j < limitsArr.length; j++) {
+                        applicable = this._testChoice(args[j], limitsArr[j]);
+                    }
+
+                    if (applicable) {
+                        result = new IString(strings[i]);
+                        i = limits.length;
+                    }
                 }
             }
         }
-
         if (!result) {
             result = defaultCase || new IString("");
         }
@@ -1204,7 +1287,7 @@ IString.prototype = {
     /**
      * Convert the character or the surrogate pair at the given
      * index into the string to a Unicode UCS-4 code point.
-     * @protected
+     * @private
      * @param {number} index index into the string
      * @return {number} code point of the character at the
      * given index into the string
@@ -1296,7 +1379,6 @@ IString.prototype = {
      */
     iterator: function() {
         /**
-         * @constructor
          */
         function _iterator (istring) {
             this.index = 0;
@@ -1339,7 +1421,6 @@ IString.prototype = {
      */
     charIterator: function() {
         /**
-         * @constructor
          */
         function _chiterator (istring) {
             this.index = 0;
@@ -1404,6 +1485,10 @@ IString.prototype = {
         } else {
             this.localeSpec = locale;
             this.locale = new Locale(locale);
+        }
+
+        if (this._isIntlPluralAvailable(this.locale)){
+            this.intlPlural = new Intl.PluralRules(this.locale.getSpec());
         }
 
         IString.loadPlurals(typeof(sync) !== 'undefined' ? sync : true, this.locale, loadParams, onLoad);

@@ -1,7 +1,7 @@
 /*
  * CopticDate.js - Represent a date in the Coptic calendar
  *
- * Copyright © 2015, 2018, JEDLSoft
+ * Copyright © 2015, 2018, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,6 @@
 
 var ilib = require("../index.js");
 var MathUtils = require("./MathUtils.js");
-
-var Locale = require("./Locale.js");
 var IDate = require("./IDate.js");
 
 var EthiopicDate = require("./EthiopicDate.js");
@@ -53,10 +51,9 @@ var CopticRataDie = require("./CopticRataDie.js");
  * given, it can be inferred from this locale. For locales that span multiple
  * time zones, the one with the largest population is chosen as the one that
  * represents the locale.
- *
  * <li><i>date</i> - use the given intrinsic Javascript date to initialize this one.
  * </ul>
- *
+ * 
  * If called with another Coptic date argument, the date components of the given
  * date are copied into the current one.<p>
  *

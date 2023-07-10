@@ -1,6 +1,6 @@
 /*
  * testdatefmtrange_am_ET.js - test the date range formatter object Amharic/Ethiopia
- * 
+ *
  * Copyright © 2015-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 12,
@@ -63,7 +63,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 12,
@@ -89,7 +89,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 12,
@@ -115,7 +115,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 12,
@@ -137,12 +137,12 @@ module.exports.testdatefmtrange_am_ET = {
         test.equal(fmt.format(start, end), "30 ነሐሴ 2011 1:45 ከምሽቱ – 2:30 ከምሽቱ");
         test.done();
     },
-    
+
     testDateRngFmtAMRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 12,
@@ -168,7 +168,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 12,
@@ -194,7 +194,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 12,
@@ -220,7 +220,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 12,
@@ -238,16 +238,16 @@ module.exports.testdatefmtrange_am_ET = {
             minute: 30,
             second: 0,
             millisecond: 0
-        });           
+        });
         test.equal(fmt.format(start, end), "29 ነሐሴ 2011 1:45 ከምሽቱ – 30 ነሐሴ 2011 2:30 ከምሽቱ");
         test.done();
     },
-    
+
     testDateRngFmtAMRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 12,
@@ -273,7 +273,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 12,
@@ -299,7 +299,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 12,
@@ -325,7 +325,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 12,
@@ -343,16 +343,16 @@ module.exports.testdatefmtrange_am_ET = {
             minute: 30,
             second: 0,
             millisecond: 0
-        });           
+        });
         test.equal(fmt.format(start, end), "20 – 30 ነሐሴ 2011");
         test.done();
     },
-    
+
     testDateRngFmtAMRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 11,
@@ -378,7 +378,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 11,
@@ -404,7 +404,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 11,
@@ -430,7 +430,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 11,
@@ -448,16 +448,16 @@ module.exports.testdatefmtrange_am_ET = {
             minute: 30,
             second: 0,
             millisecond: 0
-        });           
+        });
         test.equal(fmt.format(start, end), "20 ሐምሌ – 30 ነሐሴ 2011");
         test.done();
     },
-    
+
     testDateRngFmtAMRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 11,
@@ -483,7 +483,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 11,
@@ -509,7 +509,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 11,
@@ -535,7 +535,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 11,
@@ -557,12 +557,12 @@ module.exports.testdatefmtrange_am_ET = {
         test.equal(fmt.format(start, end), "20 ሐምሌ 2011 – 30 መስከረም 2012");
         test.done();
     },
-    
+
     testDateRngFmtAMRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 11,
@@ -588,7 +588,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 11,
@@ -614,7 +614,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 11,
@@ -640,7 +640,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 11,
@@ -666,7 +666,7 @@ module.exports.testdatefmtrange_am_ET = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 11,
@@ -688,14 +688,14 @@ module.exports.testdatefmtrange_am_ET = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     },
-    
+
     //// Testcase for en-ET //////////////////
-    
+
     testDateRngFmtenETinDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "en-ET", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 6,
@@ -717,12 +717,12 @@ module.exports.testdatefmtrange_am_ET = {
         test.equal(fmt.format(start, end), '06/20/2011, 1:45 PM – 4:30 PM');
         test.done();
     },
-    
+
     testDateRngFmtenETinDayMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "en-ET", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 6,
@@ -744,12 +744,12 @@ module.exports.testdatefmtrange_am_ET = {
         test.equal(fmt.format(start, end), 'Yekatit 20, 2011, 1:45 PM – 4:30 PM');
         test.done();
     },
-    
+
     testDateRngFmtenETinDayLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "en-ET", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 6,
@@ -771,12 +771,12 @@ module.exports.testdatefmtrange_am_ET = {
         test.equal(fmt.format(start, end), 'Yekatit 20, 2011 at 1:45 PM – 4:30 PM');
         test.done();
     },
-    
+
     testDateRngFmtenETinDayFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "en-ET", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new EthiopicDate({
             year: 2011,
             month: 6,
@@ -798,6 +798,6 @@ module.exports.testdatefmtrange_am_ET = {
         test.equal(fmt.format(start, end), 'Yekatit 20, 2011 at 1:45 PM – 4:30 PM');
         test.done();
     }
-    
-    
+
+
 };

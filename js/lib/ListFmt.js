@@ -57,11 +57,11 @@ var styleMap = {
  * to use the default "conjunction" style. Valid values are:
  *
  * <ul>
- *   <ul><i>standard</i> create a standard list.
- *   <ul><i>conjunction</i> this list should be concatenated with a conjunction "and".
+ *   <li><i>standard</i> create a standard list.
+ *   <li><i>conjunction</i> this list should be concatenated with a conjunction "and".
  *   This is the default style for "standard".
- *   <ul><i>disjunction</i> this list should be concatenated with a disjunction "or".
- *   <ul><i>unit</i> this is a list of measures like "5 minutes, 4 seconds". In
+ *   <li><i>disjunction</i> this list should be concatenated with a disjunction "or".
+ *   <li><i>unit</i> this is a list of measures like "5 minutes, 4 seconds". In
  *   some languages, these type of lists are concatenated without a conjunction.
  * </ul>
  *
@@ -180,10 +180,10 @@ ListFmt.prototype.format = function(items) {
 
     } else {
         for(i = itemCount; i >= 0 ; i--){
-            if (i == itemCount) {
+            if (i === itemCount) {
                 formattedList = endFmt.replace("{0}", items[itemCount-2]).replace("{1}", items[itemCount-1]);
                 i = i-2;
-            } else if (i == 0) {
+            } else if (i === 0) {
                 formattedList = startFmt.replace("{0}",items[i]).replace("{1}", formattedList);
             }
              else {

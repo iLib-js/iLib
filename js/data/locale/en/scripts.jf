@@ -1,8 +1,8 @@
 {
+    "generated": true,
     "scripts": [
         "Latn",
         "Dsrt",
         "Shaw"
-    ],
-    "generated": true
+    ]
 }

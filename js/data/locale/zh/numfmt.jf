@@ -1,21 +1,21 @@
 {
     "generated": true,
     "native_numfmt": {
-        "script": "hanidec",
-        "decimalChar": ".",
-        "groupChar": ",",
-        "pctChar": "%",
-        "exponential": "E",
-        "prigroupSize": 3,
         "currencyFormats": {
             "common": "{s}{n}",
             "commonNegative": "-{s}{n}"
         },
-        "negativenumFmt": "-{n}",
-        "pctFmt": "{n}%",
-        "negativepctFmt": "-{n}%",
-        "roundingMode": "halfdown",
+        "decimalChar": ".",
         "digits": "〇一二三四五六七八九",
+        "exponential": "E",
+        "groupChar": ",",
+        "negativenumFmt": "-{n}",
+        "negativepctFmt": "-{n}%",
+        "pctChar": "%",
+        "pctFmt": "{n}%",
+        "prigroupSize": 3,
+        "roundingMode": "halfdown",
+        "script": "hanidec",
         "useNative": true
     },
     "numfmt": {

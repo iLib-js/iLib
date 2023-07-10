@@ -1,8 +1,8 @@
 {
+    "generated": true,
     "scripts": [
         "Latn",
         "Cyrl",
         "Arab"
-    ],
-    "generated": true
+    ]
 }

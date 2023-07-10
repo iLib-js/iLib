@@ -1,7 +1,7 @@
 /*
  * testdatefmt_tk_TM.js - test the date formatter object in Turkmen-Turkmenistan
- * 
- * Copyright © 2021, JEDLSoft
+ *
+ * Copyright © 2021,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ module.exports.testdatefmt_tk_TM = {
     testDateFmtConstructorEmpty_tk_TM: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "tk-TM"});
-        
+
         test.ok(fmt !== null);
         test.done();
     },
@@ -46,7 +46,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "short"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -64,7 +64,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -82,7 +82,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "long"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -100,7 +100,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -118,7 +118,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "short", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -136,7 +136,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "medium", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -154,7 +154,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", timelength: "long", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -172,7 +172,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -190,7 +190,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "short", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -201,14 +201,14 @@ module.exports.testdatefmt_tk_TM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29.09.2011 13:45');
+        test.equal(fmt.format(date), '29.09.2011, 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_tk_TM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "medium", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -219,14 +219,14 @@ module.exports.testdatefmt_tk_TM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 sen 2011 13:45');
+        test.equal(fmt.format(date), '29 sen 2011, 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleLong_tk_TM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "long", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -237,14 +237,14 @@ module.exports.testdatefmt_tk_TM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 sentýabr 2011 13:45');
+        test.equal(fmt.format(date), '29 sentýabr 2011 sagat 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_tk_TM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -255,14 +255,14 @@ module.exports.testdatefmt_tk_TM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 sentýabr 2011 13:45');
+        test.equal(fmt.format(date), '29 sentýabr 2011 sagat 13:45');
         test.done();
     },
     testDateFmtTemplateCalendar_tk_TM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", calendar: "julian", template: "yyyy-MM-dd"});
         test.ok(fmt !== null);
-        
+
         var date = new JulianDate({
             locale: "tk-TM",
             year: 2011,
@@ -280,7 +280,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -299,7 +299,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", clock: "12", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -317,7 +317,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", clock: "12", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -335,7 +335,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", clock: "24", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -353,7 +353,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", clock: "24", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -371,7 +371,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -389,7 +389,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -407,7 +407,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -425,7 +425,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -443,7 +443,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "date"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -461,7 +461,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -479,7 +479,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -490,14 +490,14 @@ module.exports.testdatefmt_tk_TM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29.09.2011 13:45');
+        test.equal(fmt.format(date), '29.09.2011, 13:45');
         test.done();
     },
     testDateFmtShortDateComponentsY_tk_TM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -515,7 +515,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -533,7 +533,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -551,7 +551,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -569,7 +569,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -587,7 +587,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -605,7 +605,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -623,7 +623,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -641,7 +641,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", date: "wdm", length: "long"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -659,7 +659,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -677,7 +677,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -695,7 +695,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -713,7 +713,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -731,7 +731,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -749,7 +749,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -767,7 +767,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -785,7 +785,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -803,7 +803,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -821,7 +821,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -839,7 +839,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -857,7 +857,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time", time: "ms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -875,7 +875,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -893,7 +893,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -911,7 +911,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -934,7 +934,7 @@ module.exports.testdatefmt_tk_TM = {
             timezone: "Asia/Ashgabat"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -957,7 +957,7 @@ module.exports.testdatefmt_tk_TM = {
             timezone: "Asia/Ashgabat"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -975,7 +975,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -998,7 +998,7 @@ module.exports.testdatefmt_tk_TM = {
             timezone: "Asia/Ashgabat"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1021,7 +1021,7 @@ module.exports.testdatefmt_tk_TM = {
             timezone: "Asia/Ashgabat"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1039,7 +1039,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time", length: "full", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1057,7 +1057,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time", length: "full", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1075,7 +1075,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time", length: "full", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1093,7 +1093,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time", length: "full", time: "ms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1111,7 +1111,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time", length: "full", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1129,7 +1129,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time", length: "full", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1147,7 +1147,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time", length: "full", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1164,14 +1164,14 @@ module.exports.testdatefmt_tk_TM = {
     testDateFmtFullTimeComponentsHMZ_tk_TM: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "tk-TM", 
-            type: "time", 
-            length: "full", 
-            time: "hmz", 
+            locale: "tk-TM",
+            type: "time",
+            length: "full",
+            time: "hmz",
             timezone: "Asia/Ashgabat"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1195,7 +1195,7 @@ module.exports.testdatefmt_tk_TM = {
             timezone: "Asia/Ashgabat"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1213,7 +1213,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", type: "time", length: "full", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1237,7 +1237,7 @@ module.exports.testdatefmt_tk_TM = {
             timezone: "Asia/Ashgabat"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1261,7 +1261,7 @@ module.exports.testdatefmt_tk_TM = {
             timezone: "Asia/Ashgabat"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1285,7 +1285,7 @@ module.exports.testdatefmt_tk_TM = {
             timezone: "Asia/Ashgabat"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1303,7 +1303,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1331,7 +1331,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1359,7 +1359,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1387,7 +1387,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1415,7 +1415,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1443,7 +1443,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1471,7 +1471,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1499,7 +1499,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1527,7 +1527,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1555,7 +1555,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1583,7 +1583,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1611,7 +1611,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1639,7 +1639,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "tk-TM",
             year: 2011,
@@ -1667,7 +1667,7 @@ module.exports.testdatefmt_tk_TM = {
         test.expect(2);
         var fmt = new DateFmt({locale: "tk-TM", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "tk-TM",
             year: 2011,

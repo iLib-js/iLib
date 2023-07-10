@@ -1,7 +1,7 @@
 /*
  * testunitfmt_my_MM.js - test the unitfmt for my-MM
  *
- * Copyright © 2020 JEDLSoft
+ * Copyright © 2020-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -99,7 +99,7 @@ module.exports.testunitfmt_my_MM = {
         });
 
         var uf = new UnitFmt({
-            locale: "my-MM", 
+            locale: "my-MM",
             autoConvert:true,
             length:"short",
             useNative: false
@@ -117,7 +117,7 @@ module.exports.testunitfmt_my_MM = {
         });
 
         var uf = new UnitFmt({
-            locale: "my-MM", 
+            locale: "my-MM",
             autoConvert: true,
             length: "long",
             useNative: false
@@ -135,7 +135,7 @@ module.exports.testunitfmt_my_MM = {
         });
 
         var uf = new UnitFmt({
-            locale: "my-MM", 
+            locale: "my-MM",
             autoConvert: true,
             length: "short",
             useNative: false
@@ -153,7 +153,7 @@ module.exports.testunitfmt_my_MM = {
         });
 
         var uf = new UnitFmt({
-            locale: "my-MM", 
+            locale: "my-MM",
             autoConvert: true,
             length: "long",
             useNative: false
@@ -177,7 +177,7 @@ module.exports.testunitfmt_my_MM = {
             useNative: false
         });
         var str = uf.format(m1);
-        test.equal(str, '1.665348 ယူကဂေါလံ');
+        test.equal(str, '1.665348 ယူကေ ဂါလံ');
         test.done();
     },
     testUnitFormatFuelConsumption2_my_MM: function(test) {
@@ -246,7 +246,7 @@ module.exports.testunitfmt_my_MM = {
             useNative: false
         });
         var str = uf.format(m1);
-        test.equal(str, '6.21 မိုင်');
+        test.equal(str, '6.21 mi');
         test.done();
     },
     testUnitFormatWithUsageVehicleDistance2_my_MM: function(test) {
@@ -283,13 +283,13 @@ module.exports.testunitfmt_my_MM = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, '2 ယူကဂေါလံ');
+        test.equal(str, '2 ယူကေ ဂါလံ');
         test.done();
     },
     testUnitFormatWithUsageFuelVolume2_my_MM: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "megawatt",
+            unit: "gallon",
             amount: 2
         });
 
@@ -301,8 +301,30 @@ module.exports.testunitfmt_my_MM = {
             useNative: false
         });
 
+        // converts uscustomary to imperial gallons
         var str = uf.format(m1);
-        test.equal(str, '2 မီဂါဝပ်');
+        test.equal(str, '1.67 ယူကေ ဂါလံ');
+        test.done();
+    },
+    testUnitFormatWithUsageFuelVolume3_my_MM: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 106
+        });
+
+        var uf = new UnitFmt({
+            locale: "my-MM",
+            usage: "fuelVolume",
+            length: "long",
+            significantDigits: "4",
+            autoConvert: true,
+            useNative: false
+        });
+
+        // converts metric to imperial gallons
+        var str = uf.format(m1);
+        test.equal(str, '23.32 ယူကေ ဂါလံ');
         test.done();
     },
     testUnitFormatWithUsageOverrideSignificantDigits1_my_MM: function(test) {
@@ -322,7 +344,7 @@ module.exports.testunitfmt_my_MM = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, '22.5113 ယူကဂေါလံ');
+        test.equal(str, '22.5113 ယူကေ ဂါလံ');
         test.done();
     },
     testUnitFormatWithUsageOverrideSignificantDigits2_my_MM: function(test) {

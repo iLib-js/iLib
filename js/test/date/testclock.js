@@ -1,7 +1,7 @@
 /*
  * testclock.js - test the 12/24 hour support amongst various locales
  *
- * Copyright © 2019-2021, JEDLSoft
+ * Copyright © 2019-2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,14 @@
  * limitations under the License.
  */
 
+if (typeof(ilib) === "undefined") {
+    var ilib = require("../../lib/ilib.js");
+}
+
+if (ilib._getPlatform() === "nodejs" && ilib._dyndata && ilib._dyncode) {
+    var path = require("path");
+}
+
 if (typeof(LocaleInfo) === "undefined") {
     var LocaleInfo = require("../../lib/LocaleInfo.js");
 }
@@ -25,7 +33,7 @@ module.exports.testclock = {
     testLocaleInfoConstructor: function(test) {
         test.expect(1);
         var info = new LocaleInfo();
-    
+
         test.ok(info !== null);
         test.done();
     },
@@ -35,7 +43,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_IQ: function(test) {
@@ -44,7 +52,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_MA: function(test) {
@@ -53,7 +61,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_as_IN: function(test) {
@@ -62,7 +70,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_bg_BG: function(test) {
@@ -71,7 +79,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_bn_IN: function(test) {
@@ -80,7 +88,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_bs_Latn_BA: function(test) {
@@ -89,7 +97,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_bs_Latn_ME: function(test) {
@@ -98,7 +106,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_cs_CZ: function(test) {
@@ -107,7 +115,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_da_DK: function(test) {
@@ -116,7 +124,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_de_AT: function(test) {
@@ -125,7 +133,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_de_CH: function(test) {
@@ -134,7 +142,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_de_DE: function(test) {
@@ -143,7 +151,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_de_LU: function(test) {
@@ -152,7 +160,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_el_CY: function(test) {
@@ -161,7 +169,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_el_GR: function(test) {
@@ -170,7 +178,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_AM: function(test) {
@@ -178,8 +186,8 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-AM");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
-        
+        test.equal(info.getClock(), 24);
+
         test.done();
     },
     testClock_en_AU: function(test) {
@@ -188,7 +196,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_AZ: function(test) {
@@ -196,8 +204,8 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-AZ");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
-        
+        test.equal(info.getClock(), 24);
+
         test.done();
     },
     testClock_en_CA: function(test) {
@@ -206,7 +214,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_GB: function(test) {
@@ -215,7 +223,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_en_GH: function(test) {
@@ -224,7 +232,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_HK: function(test) {
@@ -233,7 +241,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_IE: function(test) {
@@ -242,7 +250,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_en_IN: function(test) {
@@ -251,7 +259,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_IS: function(test) {
@@ -259,8 +267,8 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-IS");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
-        
+        test.equal(info.getClock(), 24);
+
         test.done();
     },
     testClock_en_JP: function(test) {
@@ -268,8 +276,8 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-JP");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
-        
+        test.equal(info.getClock(), 24);
+
         test.done();
     },
     testClock_en_KE: function(test) {
@@ -278,7 +286,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_en_KR: function(test) {
@@ -287,7 +295,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_LK: function(test) {
@@ -295,8 +303,8 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-LK");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
-        
+        test.equal(info.getClock(), 24);
+
         test.done();
     },
     testClock_en_MM: function(test) {
@@ -304,8 +312,8 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-MM");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
-        
+        test.equal(info.getClock(), 24);
+
         test.done();
     },
     testClock_en_MW: function(test) {
@@ -314,7 +322,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_MY: function(test) {
@@ -323,7 +331,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_NG: function(test) {
@@ -341,7 +349,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_PH: function(test) {
@@ -350,7 +358,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_PR: function(test) {
@@ -359,7 +367,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_SG: function(test) {
@@ -368,7 +376,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_US: function(test) {
@@ -377,7 +385,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_UG: function(test) {
@@ -386,7 +394,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_en_ZA: function(test) {
@@ -395,7 +403,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_en_ZM: function(test) {
@@ -404,7 +412,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_es_AR: function(test) {
@@ -413,7 +421,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_BO: function(test) {
@@ -422,7 +430,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_CL: function(test) {
@@ -431,7 +439,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_CO: function(test) {
@@ -440,7 +448,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_es_DO: function(test) {
@@ -449,7 +457,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_es_EC: function(test) {
@@ -458,7 +466,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_ES: function(test) {
@@ -467,7 +475,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_GT: function(test) {
@@ -476,7 +484,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_HN: function(test) {
@@ -485,7 +493,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_MX: function(test) {
@@ -494,7 +502,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_NI: function(test) {
@@ -503,7 +511,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_PA: function(test) {
@@ -512,7 +520,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_es_PE: function(test) {
@@ -521,7 +529,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_PR: function(test) {
@@ -530,7 +538,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_es_PY: function(test) {
@@ -539,7 +547,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_SV: function(test) {
@@ -548,7 +556,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_US: function(test) {
@@ -557,7 +565,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_es_UY: function(test) {
@@ -566,7 +574,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_VE: function(test) {
@@ -575,7 +583,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_et_EE: function(test) {
@@ -584,7 +592,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fa_AF: function(test) {
@@ -593,7 +601,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fa_IR: function(test) {
@@ -602,7 +610,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fi_FI: function(test) {
@@ -611,7 +619,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_BE: function(test) {
@@ -620,7 +628,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_CA: function(test) {
@@ -629,7 +637,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_CH: function(test) {
@@ -638,7 +646,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_FR: function(test) {
@@ -647,7 +655,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_LU: function(test) {
@@ -656,7 +664,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_ga_IE: function(test) {
@@ -665,7 +673,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_gu_IN: function(test) {
@@ -674,7 +682,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_he_IL: function(test) {
@@ -683,7 +691,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_hi_IN: function(test) {
@@ -692,7 +700,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_hr_HR: function(test) {
@@ -701,7 +709,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_hr_ME: function(test) {
@@ -710,7 +718,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_hr_HU: function(test) {
@@ -719,7 +727,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_id_ID: function(test) {
@@ -728,7 +736,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_is_IS: function(test) {
@@ -737,7 +745,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_it_CH: function(test) {
@@ -746,7 +754,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_it_IT: function(test) {
@@ -755,7 +763,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_ja_JP: function(test) {
@@ -764,7 +772,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_kk_KZ: function(test) {
@@ -773,7 +781,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_kn_IN: function(test) {
@@ -782,7 +790,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ko_KR: function(test) {
@@ -791,7 +799,25 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
+        test.done();
+    },
+    testClock_ko_KR_Custom: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./custom"));
+        var ilibLoader = ilib.getLoader();
+        ilibLoader.addPath(multiPath);
+
+        test.expect(3);
+        var info = new LocaleInfo("ko-KR");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.equal(info.getScript(), "Kore"); //Check if data that is not overridden comes out well
+        ilibLoader.removePath(multiPath);
         test.done();
     },
     testClock_ku_IQ: function(test) {
@@ -800,7 +826,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_lt_LT: function(test) {
@@ -809,7 +835,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_lv_LV: function(test) {
@@ -818,7 +844,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_mk_MK: function(test) {
@@ -827,7 +853,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_ml_IN: function(test) {
@@ -836,7 +862,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_mr_IN: function(test) {
@@ -845,7 +871,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ms_MY: function(test) {
@@ -854,7 +880,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_nb_NO: function(test) {
@@ -863,7 +889,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_nl_BE: function(test) {
@@ -872,7 +898,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_nl_NL: function(test) {
@@ -881,7 +907,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_pa_Guru_IN: function(test) {
@@ -890,7 +916,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_pl_PL: function(test) {
@@ -899,7 +925,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_pt_BR: function(test) {
@@ -908,7 +934,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_pt_PT: function(test) {
@@ -917,7 +943,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_ro_RO: function(test) {
@@ -926,7 +952,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_sr_Cyrl_RS: function(test) {
@@ -935,7 +961,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_sr_Latn_RS: function(test) {
@@ -944,7 +970,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_ru_BY: function(test) {
@@ -953,7 +979,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_ru_KG: function(test) {
@@ -962,7 +988,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_ru_KZ: function(test) {
@@ -971,7 +997,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_ru_GE: function(test) {
@@ -980,7 +1006,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_ru_RU: function(test) {
@@ -989,7 +1015,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_ru_UA: function(test) {
@@ -998,7 +1024,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_sk_SK: function(test) {
@@ -1007,7 +1033,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_sl_SI: function(test) {
@@ -1016,7 +1042,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_sq_AL: function(test) {
@@ -1025,7 +1051,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_sq_ME: function(test) {
@@ -1033,8 +1059,8 @@ module.exports.testclock = {
         var info = new LocaleInfo("sq-ME");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
-        
+        test.equal(info.getClock(), 24);
+
         test.done();
     },
     testClock_sv_FI: function(test) {
@@ -1043,7 +1069,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_sv_SE: function(test) {
@@ -1052,7 +1078,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_ta_IN: function(test) {
@@ -1061,7 +1087,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_te_IN: function(test) {
@@ -1070,7 +1096,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_th_TH: function(test) {
@@ -1079,7 +1105,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_tr_AM: function(test) {
@@ -1088,7 +1114,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_tr_AZ: function(test) {
@@ -1097,7 +1123,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_tr_CY: function(test) {
@@ -1106,7 +1132,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_tr_TR: function(test) {
@@ -1115,7 +1141,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_uk_UA: function(test) {
@@ -1124,7 +1150,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_ur_IN: function(test) {
@@ -1133,7 +1159,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_uz_Latn_UZ: function(test) {
@@ -1142,7 +1168,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_vi_VN: function(test) {
@@ -1151,7 +1177,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_zh_Hans_CN: function(test) {
@@ -1159,8 +1185,8 @@ module.exports.testclock = {
         var info = new LocaleInfo("zh-Hans-CN");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
-        
+        test.equal(info.getClock(), 24);
+
         test.done();
     },
     testClock_zh_Hant_HK: function(test) {
@@ -1169,7 +1195,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_zh_Hant_TW: function(test) {
@@ -1178,7 +1204,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_GE: function(test) {
@@ -1186,8 +1212,8 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-GE");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
-        
+        test.equal(info.getClock(), 24);
+
         test.done();
     },
     testClock_en_CN: function(test) {
@@ -1195,8 +1221,8 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-CN");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
-        
+        test.equal(info.getClock(), 24);
+
         test.done();
     },
     testClock_en_MX: function(test) {
@@ -1204,8 +1230,8 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-MX");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 12);
-        
+        test.equal(info.getClock(), 24);
+
         test.done();
     },
     testClock_en_TW: function(test) {
@@ -1214,7 +1240,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_mn_MN: function(test) {
@@ -1223,7 +1249,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_CA: function(test) {
@@ -1231,8 +1257,8 @@ module.exports.testclock = {
         var info = new LocaleInfo("es-CA");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
-        
+        test.equal(info.getClock(), 12);
+
         test.done();
     },
     testClock_af_ZA: function(test) {
@@ -1241,7 +1267,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_am_ET: function(test) {
@@ -1250,7 +1276,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ha_Latn_NG: function(test) {
@@ -1259,7 +1285,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_or_IN: function(test) {
@@ -1268,7 +1294,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_az_Latn_AZ: function(test) {
@@ -1277,7 +1303,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_km_KH: function(test) {
@@ -1286,7 +1312,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_si_LK: function(test) {
@@ -1295,7 +1321,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_ar_AE: function(test) {
@@ -1304,7 +1330,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_BH: function(test) {
@@ -1313,7 +1339,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_DJ: function(test) {
@@ -1322,7 +1348,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_DZ: function(test) {
@@ -1331,7 +1357,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_JO: function(test) {
@@ -1340,7 +1366,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_KW: function(test) {
@@ -1349,7 +1375,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_LB: function(test) {
@@ -1358,7 +1384,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_LY: function(test) {
@@ -1367,7 +1393,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_MR: function(test) {
@@ -1376,7 +1402,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_OM: function(test) {
@@ -1385,7 +1411,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_QA: function(test) {
@@ -1394,7 +1420,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_SA: function(test) {
@@ -1403,7 +1429,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_SD: function(test) {
@@ -1412,7 +1438,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_SY: function(test) {
@@ -1421,7 +1447,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_TN: function(test) {
@@ -1430,7 +1456,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ar_YE: function(test) {
@@ -1439,7 +1465,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_ET: function(test) {
@@ -1448,7 +1474,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_GM: function(test) {
@@ -1457,7 +1483,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_LR: function(test) {
@@ -1466,7 +1492,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_PK: function(test) {
@@ -1475,7 +1501,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_RW: function(test) {
@@ -1484,7 +1510,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_en_SD: function(test) {
@@ -1493,7 +1519,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_SL: function(test) {
@@ -1502,7 +1528,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_en_TZ: function(test) {
@@ -1511,7 +1537,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_CR: function(test) {
@@ -1520,7 +1546,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_GQ: function(test) {
@@ -1529,7 +1555,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_es_PH: function(test) {
@@ -1538,7 +1564,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_fr_BF: function(test) {
@@ -1547,7 +1573,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_BJ: function(test) {
@@ -1556,7 +1582,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_CD: function(test) {
@@ -1565,7 +1591,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_CF: function(test) {
@@ -1574,7 +1600,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_CG: function(test) {
@@ -1583,7 +1609,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_CI: function(test) {
@@ -1592,7 +1618,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_CM: function(test) {
@@ -1601,7 +1627,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_GQ: function(test) {
@@ -1610,7 +1636,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_DJ: function(test) {
@@ -1619,7 +1645,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_fr_DZ: function(test) {
@@ -1628,7 +1654,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_fr_GA: function(test) {
@@ -1637,7 +1663,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_GN: function(test) {
@@ -1646,7 +1672,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_LB: function(test) {
@@ -1654,8 +1680,8 @@ module.exports.testclock = {
         var info = new LocaleInfo("fr-LB");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
-        
+        test.equal(info.getClock(), 12);
+
         test.done();
     },
     testClock_fr_ML: function(test) {
@@ -1664,7 +1690,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_RW: function(test) {
@@ -1673,7 +1699,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_SN: function(test) {
@@ -1682,7 +1708,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_fr_TG: function(test) {
@@ -1691,7 +1717,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_ms_SG: function(test) {
@@ -1700,7 +1726,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_pa_PK: function(test) {
@@ -1709,7 +1735,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_pt_AO: function(test) {
@@ -1718,7 +1744,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_pt_GQ: function(test) {
@@ -1727,7 +1753,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_pt_CV: function(test) {
@@ -1736,7 +1762,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 24);
-        
+
         test.done();
     },
     testClock_ur_PK: function(test) {
@@ -1745,7 +1771,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_zh_Hans_SG: function(test) {
@@ -1754,7 +1780,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_zh_Hans_MY: function(test) {
@@ -1763,7 +1789,7 @@ module.exports.testclock = {
         test.ok(info !== null);
 
         test.equal(info.getClock(), 12);
-        
+
         test.done();
     },
     testClock_ka_GE: function(test) {
@@ -1898,6 +1924,38 @@ module.exports.testclock = {
 
         test.equal(info.getClock(), 24);
 
+        test.done();
+    },
+    testClock_lb_LU: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("lb-LU");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_ig_NG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ig-NG");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_yo_NG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("yo-NG");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
+        test.done();
+    },
+    testClock_yo_BJ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("yo_BJ");
+        test.ok(info !== null);
+
+        test.equal(info.getClock(), 24);
         test.done();
     }
 }

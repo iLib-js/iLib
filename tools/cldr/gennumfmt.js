@@ -2,7 +2,7 @@
  * gennumfmt.js - ilib tool to generate the  number json fragments from
  * the CLDR data files
  *
- * Copyright © 2013-2018, 2020 JEDLSoft
+ * Copyright © 2013-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@
  */
 var fs = require('fs');
 var path = require('path');
+var stringify = require('json-stable-stringify');
 var numberingSystemsData = require("cldr-core/supplemental/numberingSystems.json");
 
 var common = require('./common');
@@ -56,7 +57,7 @@ if (process.argv.length <= 2) {
 }
 
 console.log("gennumfmts - generate number formats information files.\n" +
-    "Copyright (c) 2013-2018, 2020 JEDLSoft");
+    "Copyright (c) 2013-2022 JEDLSoft");
 
 console.log("Output dir: " + toDir );
 
@@ -174,7 +175,7 @@ function writeNumberFormats(language, script, region, data) {
             if (!isEmpty(data)) {
                 data.generated = true;
                 makeDirs(path);
-                fs.writeFileSync(path + "/numfmt.jf", JSON.stringify(data, true, 4), "utf-8");
+                fs.writeFileSync(path + "/numfmt.jf", stringify(data, {space: 4}), "utf-8");
             }
             /*if(typeof(numfmt["native"])!='undefined') {
                 if ((!isEmpty(numfmt["native"]))) {
@@ -406,9 +407,9 @@ list.forEach(function(loc) {
     var spec = (loc === "ku") ? "ckb" : loc;
     var sourceDir = path.join("cldr-numbers-full/main", spec);
 
-    if (loc === "root" || typeof (locale.getVariant()) === 'undefined') {
+    if (loc === "und" || typeof (locale.getVariant()) === 'undefined') {
         // special case because "root" is not a valid locale specifier
-        getLocaleData(sourceDir, (loc === "root") ? undefined : locale, spec);
+        getLocaleData(sourceDir, (loc === "und") ? undefined : locale, spec);
     }
 });
 
@@ -471,5 +472,5 @@ for (language in resources) {
     }
 }
 
-writeNumberFormats(undefined, undefined, undefined, resources.data);
+// writeNumberFormats(undefined, undefined, undefined, resources.data);
 process.exit(0);

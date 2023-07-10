@@ -1,7 +1,7 @@
 /*
  * Calendar.js - Represent a calendar object.
  *
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2015, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,11 +20,12 @@
 /**
  * @class
  * Superclass for all calendar subclasses that contains shared
- * functionality. This class is never instantiated on its own. Instead,
+ * functionality.  
+ * This class is never instantiated on its own. Instead,
  * you should use the {@link CalendarFactory} function to manufacture a new
  * instance of a subclass of Calendar.
  *
- * @private
+ * @protected
  * @constructor
  */
 var Calendar = function() {

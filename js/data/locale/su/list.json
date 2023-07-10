@@ -1,0 +1,38 @@
+{
+    "standard": {
+        "full": {
+            "2": "{0} sareng {1}",
+            "end": "{0}, sareng {1}"
+        },
+        "long": {
+            "2": "{0} sareng {1}",
+            "end": "{0}, sareng {1}"
+        },
+        "medium": {
+            "2": "{0} sareng {1}",
+            "end": "{0}, sareng {1}"
+        },
+        "short": {
+            "2": "{0} sareng {1}",
+            "end": "{0}, sareng {1}"
+        }
+    },
+    "unit": {
+        "full": {
+            "2": "{0} sareng {1}",
+            "end": "{0}, sareng {1}"
+        },
+        "long": {
+            "2": "{0} sareng {1}",
+            "end": "{0}, sareng {1}"
+        },
+        "medium": {
+            "2": "{0} sareng {1}",
+            "end": "{0}, sareng {1}"
+        },
+        "short": {
+            "2": "{0} sareng {1}",
+            "end": "{0}, sareng {1}"
+        }
+    }
+}

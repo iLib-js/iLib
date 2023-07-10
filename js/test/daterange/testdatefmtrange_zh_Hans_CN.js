@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_zh_Hans_CN.js - test the date range formatter object in Chinese/China
- * 
- * Copyright © 2012-2017, JEDLSoft
+ *
+ * Copyright © 2012-2017, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -56,14 +56,14 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011/12/31 下午1:45 – 下午2:30");
+        test.equal(fmt.format(start, end), "2011/12/31 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtCNRangeInDayMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -82,14 +82,14 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011年12月31日 下午1:45 – 下午2:30");
+        test.equal(fmt.format(start, end), "2011年12月31日 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtCNRangeInDayLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -108,14 +108,14 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011年12月31日 下午1:45 – 下午2:30");
+        test.equal(fmt.format(start, end), "2011年12月31日 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtCNRangeInDayFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -134,15 +134,15 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011年12月31日 下午1:45 – 下午2:30");
+        test.equal(fmt.format(start, end), "2011年12月31日 13:45 – 14:30");
         test.done();
     },
-    
+
     testDateRngFmtCNRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -161,14 +161,14 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011/12/30 下午1:45 – 2011/12/31 下午2:30");
+        test.equal(fmt.format(start, end), "2011/12/30 13:45 – 2011/12/31 14:30");
         test.done();
     },
     testDateRngFmtCNRangeNextDayMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -187,14 +187,14 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011年12月30日 下午1:45 – 2011年12月31日 下午2:30");
+        test.equal(fmt.format(start, end), "2011年12月30日 13:45 – 2011年12月31日 14:30");
         test.done();
     },
     testDateRngFmtCNRangeNextDayLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -213,14 +213,14 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011年12月30日 下午1:45 – 2011年12月31日 下午2:30");
+        test.equal(fmt.format(start, end), "2011年12月30日 13:45 – 2011年12月31日 14:30");
         test.done();
     },
     testDateRngFmtCNRangeNextDayFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -239,15 +239,15 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011年12月30日 下午1:45 – 2011年12月31日 下午2:30");
+        test.equal(fmt.format(start, end), "2011年12月30日 13:45 – 2011年12月31日 14:30");
         test.done();
     },
-    
+
     testDateRngFmtCNRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -273,7 +273,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -299,7 +299,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -325,7 +325,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -347,12 +347,12 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.equal(fmt.format(start, end), "2011年12月20日 – 31日");
         test.done();
     },
-    
+
     testDateRngFmtCNRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -378,7 +378,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -404,7 +404,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -430,7 +430,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -452,12 +452,12 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.equal(fmt.format(start, end), "2011年11月20日 – 12月31日");
         test.done();
     },
-    
+
     testDateRngFmtCNRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -483,7 +483,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -509,7 +509,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -535,7 +535,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -557,12 +557,12 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.equal(fmt.format(start, end), "2011年11月20日 – 2012年1月31日");
         test.done();
     },
-    
+
     testDateRngFmtCNRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -588,7 +588,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -614,7 +614,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -640,7 +640,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -666,7 +666,7 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hans-CN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -688,5 +688,5 @@ module.exports.testdatefmtrange_zh_Hans_CN = {
         test.equal(fmt.format(start, end), "2011年 – 2064年");
         test.done();
     }
-    
+
 };

@@ -1,7 +1,7 @@
 /*
  * Address.js - Represent a mailing address
  *
- * Copyright © 2013-2015, 2018, JEDLSoft
+ * Copyright © 2013-2015, 2018, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -465,8 +465,8 @@ Address.prototype = {
     },
 
     /**
-     * @protected
      * Find the named country either at the end or the beginning of the address.
+     * @private
      */
     _findCountry: function(name) {
         var start = -1, match, line = 0;

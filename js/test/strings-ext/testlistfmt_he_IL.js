@@ -1,7 +1,7 @@
 /*
  * testlistfmt_he_IL.js - test the list formatter object
  *
- * Copyright © 2017, 2020 JEDLSoft
+ * Copyright © 2017, 2020, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,45 +32,45 @@ module.exports.testlistfmt_he_IL = {
     },
 
     // he-IL
-    
+
     testListFmtheILNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["אחד"]), "אחד");
         test.done();
     },
-    
+
     testListFmtheILNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["אחד", "שתיים"]), "אחד ושתיים");
         test.done();
     },
-    
+
     testListFmtheILNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה"]), "אחד, שתיים ושְׁלוֹשָׁה");
         test.done();
     },
-    
+
     testListFmtheILNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה", "ארבעה"]), "אחד, שתיים, שְׁלוֹשָׁה וארבעה");
@@ -81,43 +81,43 @@ module.exports.testlistfmt_he_IL = {
             locale: "he-IL",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["אחד"]), "אחד");
         test.done();
     },
-    
+
     testListFmtUnitStyleheILNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["אחד", "שתיים"]), "אחד, שתיים");
         test.done();
     },
-    
+
     testListFmtUnitStyleheILNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה"]), "אחד, שתיים, שְׁלוֹשָׁה");
         test.done();
     },
-    
+
     testListFmtUnitStyleheILNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה", "ארבעה"]), "אחד, שתיים, שְׁלוֹשָׁה, ארבעה");
@@ -129,46 +129,46 @@ module.exports.testlistfmt_he_IL = {
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["אחד"]), "אחד");
         test.done();
     },
-    
+
     testListFmtUnitStyleheILNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["אחד", "שתיים"]), "אחד, שתיים");
         test.done();
     },
-    
+
     testListFmtUnitStyleheILNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה"]), "אחד, שתיים, שְׁלוֹשָׁה");
         test.done();
     },
-    
+
     testListFmtUnitStyleheILNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה", "ארבעה"]), "אחד, שתיים, שְׁלוֹשָׁה, ארבעה");
@@ -180,49 +180,49 @@ module.exports.testlistfmt_he_IL = {
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["אחד"]), "אחד");
         test.done();
     },
-    
+
     testListFmtUnitStyleheILNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["אחד", "שתיים"]), "אחד, שתיים");
         test.done();
     },
-    
+
     testListFmtUnitStyleheILNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה"]), "אחד, שתיים ושְׁלוֹשָׁה");
+        test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה"]), 'אחד, שתיים ו-שְׁלוֹשָׁה');
         test.done();
     },
-    
+
     testListFmtUnitStyleheILNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
             style: "unit",
             length: "full"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה", "ארבעה"]), "אחד, שתיים, שְׁלוֹשָׁה וארבעה");
+        test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה", "ארבעה"]), 'אחד, שתיים, שְׁלוֹשָׁה ו-ארבעה');
         test.done();
     }
 

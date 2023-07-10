@@ -1,7 +1,7 @@
 /*
  * genlang2charset.js - ilib tool to generate the mapping between languages
  * and charsets that support that language
- * 
+ *
  * Copyright © 2018, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@
  */
 
 /*
- * This code is intended to be run under node.js 
+ * This code is intended to be run under node.js
  */
 
 var fs = require('fs');
@@ -87,7 +87,7 @@ files.filter(function(file) {
     if (data && data.locales) {
         data.locales.forEach(function(locale) {
             var lang;
-            
+
             // star means "all locales"
             if (locale !== "*") {
                 var l = new Locale(locale);
@@ -98,7 +98,7 @@ files.filter(function(file) {
                     lang += "-" + l.getScript();
                 }
             }
-            
+
             if (lang) {
                 if (!map[lang]) {
                     map[lang] = new Set();
@@ -123,6 +123,7 @@ output["*"] = [
     "UTF-16LE"
 ];
 
+console.log("Writing lang2charset.json");
 fs.writeFileSync(path.join(localeDir, "lang2charset.json"), JSON.stringify(output, undefined, 4), "utf-8");
 
 console.log("Done.");

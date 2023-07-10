@@ -1,7 +1,7 @@
 /*
  * DateFmt.js - Date formatter definition
  *
- * Copyright © 2012-2015, 2018-2020, JEDLSoft
+ * Copyright © 2012-2015, 2018-2020, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -81,9 +81,8 @@ var ISet = require("./ISet.js");
  * in some locales, the standard format uses the order "time followed by date" and in others,
  * the order is exactly opposite, so it is better to create a single "datetime" formatter
  * than it is to create a time formatter and a date formatter separately and concatenate the
- * results. A "datetime" formatter will get the order correct for the locale.<p>
- *
- * The default type if none is specified in with the type option is "date".
+ * results. A "datetime" formatter will get the order correct for the locale.<br><br>
+ * The default type if none is specified in with the type option is "date". <br><br>
  *
  * <li><i>length</i> - Specify the length of the format to use. The length is the approximate size of the
  * formatted string.
@@ -96,22 +95,19 @@ var ISet = require("./ISet.js");
  * <li><i>full</i> - use a full representation of the time. This is a fully specified format where all the textual
  * components are spelled out completely
  * </ul>
- *
  * eg. The "short" format for an en_US date may be "MM/dd/yy", whereas the long format might be "d MMM, yyyy". In the long
  * format, the month name is textual instead of numeric and is longer, the year is 4 digits instead of 2, and the format
- * contains slightly more spaces and formatting characters.<p>
- *
+ * contains slightly more spaces and formatting characters.<br><br>
  * Note that the length parameter does not specify which components are to be formatted. Use the "date" and the "time"
  * properties to specify the components. Also, very few of the components of a time format differ according to the length,
- * so this property has little to no affect on time formatting.
+ * so this property has little to no affect on time formatting. <br><br>
  *
  * <li><i>date</i> - This property tells
  * which components of a date format to use. For example,
  * sometimes you may wish to format a date that only contains the month and date
  * without the year, such as when displaying a person's yearly birthday. The value
  * of this property allows you to specify only those components you want to see in the
- * final output, ordered correctly for the locale. <p>
- *
+ * final output, ordered correctly for the locale. <br><br>
  * Valid values are:
  *
  * <ul>
@@ -128,18 +124,16 @@ var ISet = require("./ISet.js");
  * <li><i>y</i> - format only the year
  * </ul>
  * Default components, if this property is not specified, is "dmy". This property may be specified
- * but has no affect if the current formatter is for times only.<p>
- *
+ * but has no affect if the current formatter is for times only.<br><br>
  * As of ilib 12.0, you can now pass ICU style skeletons in this option similar to the ones you
- * get from <a href="http://icu-project.org/apiref/icu4c432/classDateTimePatternGenerator.html#aa30c251609c1eea5ad60c95fc497251e">DateTimePatternGenerator.getSkeleton()</a>.
+ * get from <a href="https://unicode-org.github.io/icu-docs/apidoc/dev/icu4c/classicu_1_1DateTimePatternGenerator.html#af59552a2922795b494f82ec230208e2e">DateTimePatternGenerator.getSkeleton()</a>.
  * It will not extract the length from the skeleton so you still need to pass the length property,
- * but it will extract the date components.
+ * but it will extract the date components. <br><br>
  *
  * <li><i>time</i> - This property gives which components of a time format to use. The time will be formatted
  * correctly for the locale with only the time components requested. For example, a clock might only display
  * the hour and minute and not need the seconds or the am/pm component. In this case, the time property should be set
- * to "hm". <p>
- *
+ * to "hm". <br><br>
  * Valid values for this property are:
  *
  * <ul>
@@ -157,7 +151,6 @@ var ISet = require("./ISet.js");
  * <li><i>m</i> - format only the minutes
  * <li><i>s</i> - format only the seconds
  * </ul>
- *
  * If you want to format a length of time instead of a particular instant
  * in time, use the duration formatter object (DurationFmt) instead because this
  * formatter is geared towards instants. A date formatter will make sure that each component of the
@@ -165,23 +158,19 @@ var ISet = require("./ISet.js");
  * for that component. That is, the minutes will always be between 0 and 59, no matter
  * what is specified in the date to format. A duration format will allow the number
  * of minutes to exceed 59 if, for example, you were displaying the length of
- * a movie of 198 minutes.<p>
- *
- * Default value if this property is not specified is "hma".<p>
- *
+ * a movie of 198 minutes.<br><br>
+ * Default value if this property is not specified is "hma".<br><br>
  * As of ilib 12.0, you can now pass ICU style skeletons in this option similar to the ones you
- * get from <a href="http://icu-project.org/apiref/icu4c432/classDateTimePatternGenerator.html#aa30c251609c1eea5ad60c95fc497251e">DateTimePatternGenerator.getSkeleton()</a>.
+ * get from <a href="https://unicode-org.github.io/icu-docs/apidoc/dev/icu4c/classicu_1_1DateTimePatternGenerator.html#af59552a2922795b494f82ec230208e2e">DateTimePatternGenerator.getSkeleton()</a>.
  * It will not extract the length from the skeleton so you still need to pass the length property,
  * but it will extract the time components.
  *
  * <li><i>clock</i> - specify that the time formatter should use a 12 or 24 hour clock.
- * Valid values are "12" and "24".<p>
- *
+ * Valid values are "12" and "24".<br><br>
  * In some locales, both clocks are used. For example, in en_US, the general populace uses
  * a 12 hour clock with am/pm, but in the US military or in nautical or aeronautical or
  * scientific writing, it is more common to use a 24 hour clock. This property allows you to
- * construct a formatter that overrides the default for the locale.<p>
- *
+ * construct a formatter that overrides the default for the locale.<br><br>
  * If this property is not specified, the default is to use the most widely used convention
  * for the locale.
  *
@@ -251,6 +240,16 @@ var ISet = require("./ISet.js");
  * to the various parts of the day. N.B. Even for the Chinese locales, the default is "gregorian"
  * when formatting dates in the Gregorian calendar.
  *
+ * <li><i>useIntl</i> - choose whether Intl.DateTimeFormat object for formatting.
+ * When it is set to true, the Intl object is available, it supports the requested locale, and
+ * the parameters can be converted to equivalent parameters for the Intl.DateTimeFormat object,
+ * then it will format the date relatively quickly using Intl.
+ * When they cannot be converted, the Intl object is not available, or the Intl object does not support
+ * the requested locale, it will perform the relatively slow formatting using regular ilib code written in Javascript.
+ * The code will often return different results depending on the platform and version of the Javascript engine
+ * and which version of CLDR it supports. If you need consistency across versions and platforms,
+ * do not use the useIntl flag. Just stick with the regular ilib formatting code.
+ *
  * <li><i>onLoad</i> - a callback function to call when the date format object is fully
  * loaded. When the onLoad option is given, the DateFmt object will attempt to
  * load any missing locale data using the ilib loader callback.
@@ -312,6 +311,7 @@ var DateFmt = function(options) {
     this.dateComponents = "dmy";
     this.timeComponents = "ahm";
     this.meridiems = "default";
+    this.useIntl = false;
 
     options = options || {sync: true};
     if (options.locale) {
@@ -426,6 +426,10 @@ var DateFmt = function(options) {
         sync = (options.sync === true);
     }
 
+    if (typeof(options.useIntl) !== 'undefined') {
+        this.useIntl = options.useIntl;
+    }
+
     loadParams = options.loadParams;
 
     new LocaleInfo(this.locale, {
@@ -437,60 +441,98 @@ var DateFmt = function(options) {
             // get the default calendar name from the locale, and if the locale doesn't define
             // one, use the hard-coded gregorian as the last resort
             this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
-            if (ilib.isDynCode()) {
-                // If we are running in the dynamic code loading assembly of ilib, the following
-                // will attempt to dynamically load the calendar date class for this calendar. If
-                // it doesn't work, this just goes on and it will use Gregorian instead.
-                DateFactory._init(this.calName);
-            }
 
-            CalendarFactory({
-                type: this.calName,
-                sync: sync,
-                loadParams: loadParams,
-                onLoad: ilib.bind(this, function(cal) {
-                    this.cal = cal;
-
-                    if (!this.cal) {
-                        // can be synchronous
-                        this.cal = new GregorianCal();
-                    }
-                    if (this.meridiems === "default") {
-                        this.meridiems = li.getMeridiemsStyle();
-                    }
-
-                    // load the strings used to translate the components
-                    new ResBundle({
-                        locale: this.locale,
-                        name: "sysres",
-                        sync: sync,
-                        loadParams: loadParams,
-                        onLoad: ilib.bind(this, function (rb) {
-                            this.sysres = rb;
-
-                            if (!this.tz) {
-                                var timezone = options.timezone;
-                                if (!timezone && !options.locale) {
-                                    timezone = "local";
-                                }
-
-                                new TimeZone({
-                                    locale: this.locale,
-                                    id: timezone,
-                                    sync: sync,
-                                    loadParams: loadParams,
-                                    onLoad: ilib.bind(this, function(tz) {
-                                        this.tz = tz;
-                                        this._init(options);
-                                    })
-                                });
-                            } else {
-                                this._init(options);
-                            }
-                        })
+            if(this.useIntl && typeof(Intl) !== 'undefined' && Intl.DateTimeFormat.supportedLocalesOf(this.locale.getSpec()).length > 0 &&
+            (this.locinfo.getDigitsStyle() === "western" && (!options.template) && this.calName === "gregorian")){
+                var len = DateFmt.lenmap[this.length];
+                if(this.type === "date" &&
+                    ((this.dateComponents === "dmy" && len !== "full") || (this.dateComponents === "dmwy" && len === "full"))){
+                    this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
+                        dateStyle: len
                     });
-                })
-            });
+                } else if (this.type === "time" &&
+                    this.timeComponents === "ahm" || this.timeComponents === "ahms"){
+                    var timeMap = {
+                        "ahm": "short",
+                        "ahms": "medium"
+                    }
+                    this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
+                        timeStyle: timeMap[this.timeComponents]
+                    });
+                } else if (this.type === "date" && this.dateComponents === "m" && len === "full") {
+                    this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
+                        month: "long"
+                    });
+
+                } else if (this.type === "date" && this.dateComponents === "w" && len === "full") {
+                    this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
+                       weekday: "long"
+                    });
+                } else {
+                    this.useIntl = false;
+                }
+            }
+            if(!this.useIntl){
+                if (!this.IntlDateTimeObj && ilib.isDynCode()) {
+                    // If we are running in the dynamic code loading assembly of ilib, the following
+                    // will attempt to dynamically load the calendar date class for this calendar. If
+                    // it doesn't work, this just goes on and it will use Gregorian instead.
+                    DateFactory._init(this.calName);
+                }
+
+                CalendarFactory({
+                    type: this.calName,
+                    sync: sync,
+                    loadParams: loadParams,
+                    onLoad: ilib.bind(this, function(cal) {
+                        this.cal = cal;
+
+                        if (!this.cal) {
+                            // can be synchronous
+                            this.cal = new GregorianCal();
+                        }
+                        if (this.meridiems === "default") {
+                            this.meridiems = li.getMeridiemsStyle();
+                        }
+
+                        // load the strings used to translate the components
+                        new ResBundle({
+                            locale: this.locale,
+                            name: "sysres",
+                            sync: sync,
+                            loadParams: loadParams,
+                            onLoad: ilib.bind(this, function (rb) {
+                                this.sysres = rb;
+
+                                if (!this.tz) {
+                                    var timezone = options.timezone;
+                                    if (!timezone && !options.locale) {
+                                        timezone = "local";
+                                    }
+
+                                    new TimeZone({
+                                        locale: this.locale,
+                                        id: timezone,
+                                        sync: sync,
+                                        loadParams: loadParams,
+                                        onLoad: ilib.bind(this, function(tz) {
+                                            this.tz = tz;
+                                            this._init(options);
+                                        })
+                                    });
+                                } else {
+                                    this._init(options);
+                                }
+                            })
+                        });
+                    })
+                });
+            }
+            else {
+                if (typeof(options.onLoad) === 'function') {
+                    options.onLoad(this);
+                }
+            }
         })
     });
 };
@@ -605,10 +647,29 @@ DateFmt.getMeridiemsRange = function (options) {
     return fmt.getMeridiemsRange();
 };
 
+/**
+ * return true if the locale is supported in date and time formatting for Intl.DateTimeFormat Object
+ * <ul>
+ * <li><i>locale</i> - locale to check if it is available or not.
+ * If the locale is not specified, then it returns false.
+ *
+ * </ul>
+ *
+ * @static
+ * @public
+ * @param {string} locale locale to check if it is available or not.
+ * @return {Boolean} true if it is available to use, false otherwise
+ */
+
+DateFmt.isIntlDateTimeAvailable = function (locale) {
+    if(!locale || !ilib._global("Intl")) return false;
+    return (Intl.DateTimeFormat.supportedLocalesOf(locale).length > 0) ? true : false;
+};
+
 DateFmt.prototype = {
     /**
-     * @private
      * Finish initializing the formatter object
+     * @private
      */
     _init: function(options) {
         if (typeof (options.sync) === 'undefined') {
@@ -657,9 +718,8 @@ DateFmt.prototype = {
            })
         });
     },
-
     /**
-     * @protected
+     * @private
      * @param {string|{
      *         order:(string|{
      *             s:string,
@@ -721,7 +781,7 @@ DateFmt.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      */
     _massageTemplate: function () {
         var i;
@@ -796,7 +856,7 @@ DateFmt.prototype = {
 
     /**
      * Convert the template into an array of date components separated by formatting chars.
-     * @protected
+     * @private
      * @param {string} template Format template to tokenize into components
      * @return {Array.<string>} a tokenized array of date format components
      */
@@ -836,7 +896,7 @@ DateFmt.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
      * @param {string} components Format components to search
      * @param {string} length Length of the requested format
@@ -863,7 +923,7 @@ DateFmt.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
      * @param {string} components Format components to search
      * @param {string} length Length of the requested format
@@ -883,7 +943,7 @@ DateFmt.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      * @param {(string|{s:string,m:string,l:string,f:string})} obj Object to search
      * @param {string} length Length of the requested format
      * @return {(string|undefined)} the requested format
@@ -958,7 +1018,7 @@ DateFmt.prototype = {
      * @return {string} the name of the calendar used by this formatter
      */
     getCalendar: function () {
-        return this.cal.getType();
+        return this.cal.getType() || 'gregorian';
     },
 
     /**
@@ -1243,8 +1303,8 @@ DateFmt.prototype = {
     },
 
     /**
-     * @private
      * Format a date according to a sequence of components.
+     * @private
      * @param {IDate} date a date/time object to format
      * @param {Array.<string>} templateArr an array of components to format
      * @return {string} the formatted date
@@ -1440,7 +1500,7 @@ DateFmt.prototype = {
 
                 case 'O':
                     temp = this.sysres.getString("1#1st|2#2nd|3#3rd|21#21st|22#22nd|23#23rd|31#31st|#{num}th", "ordinalChoice");
-                    str += temp.formatChoice(date.day, {num: date.day});
+                    str += temp.formatChoice(date.day, {num: date.day}, false);
                     break;
 
                 case 'z': // general time zone
@@ -1481,6 +1541,11 @@ DateFmt.prototype = {
 
         if (!date.getCalendar || !(date instanceof IDate)) {
             throw "Wrong date type passed to DateFmt.format()";
+        }
+
+        if(this.useIntl && this.IntlDateTimeObj){
+            var jsDate = DateFactory._ilibToDate(date, thisZoneName, this.locale);
+            return this.IntlDateTimeObj.format(jsDate);
         }
 
         var dateZoneName = date.timezone || "local";
@@ -1599,7 +1664,7 @@ DateFmt.prototype = {
                     fmt = diff > 0 ? this.sysres.getString("#{num}d ago") : this.sysres.getString("#in {num}d");
                     break;
                 case 'm':
-                    fmt = diff > 0 ? this.sysres.getString("1#1 dy ago|#{nudurationm} dys ago") : this.sysres.getString("1#in 1 dy|#in {num} dys");
+                    fmt = diff > 0 ? this.sysres.getString("1#1 dy ago|#{num} dys ago") : this.sysres.getString("1#in 1 dy|#in {num} dys");
                     break;
                 default:
                 case 'f':

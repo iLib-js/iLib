@@ -1,9 +1,13 @@
 version: 2.1
 jobs:
   test:
-    docker:
-      - image: cimg/openjdk:8.0-node
+    parameters:
+        docker_image:
+          type: string
+          default: cimg/openjdk:11.0.13-node
 
+    docker:
+      - image: << parameters.docker_image >>
     environment:
       NODE_OPTIONS: "--max-old-space-size=3072"
       TZ: "America/Los_Angeles"
@@ -14,6 +18,7 @@ jobs:
       - run:
           name: Set up ant
           command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo apt update
             sudo apt install -y ant
 
@@ -22,12 +27,22 @@ jobs:
           command: |
             #sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
             #sudo apt update
-            sudo apt install -y build-essential libfontconfig1 mesa-common-dev qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
+            sudo apt install -y build-essential libfontconfig1 mesa-common-dev qtbase5-dev qmlscene qtdeclarative5-dev 
+
+      - run:
+          name: Set up OpenJDK
+          command: |
+            sudo apt-get install -y openjdk-11-jdk
+            sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+            sudo update-alternatives --set javac /usr/lib/jvm/java-11-openjdk-amd64/bin/javac
+            sudo update-alternatives --set javadoc /usr/lib/jvm/java-11-openjdk-amd64/bin/javadoc
 
       - run:
           name: Set up node packages
           command: |
             rm -rf node_modules package-lock.json
+            echo "node version: " $(node -v)
+            echo "npm version: " $(npm -v)
             npm install
 
       - run:
@@ -36,6 +51,8 @@ jobs:
             echo "node version: " $(node -v)
             echo "npm version: " $(npm -v)
             echo "java version: " $(java -version)
+            echo "javac version: " $(javac -version)
+            echo "javadoc version: " $(javadoc --version)
             echo "ant version: " $(ant -version)
             echo "qmake version: " $(qmake --version)
             echo "TZ is $TZ"
@@ -51,4 +68,17 @@ workflows:
   version: 2
   test-all-node-versions:
     jobs:
+      - test:
+          docker_image: cimg/node:8.17.0
+      - test:
+          docker_image: cimg/node:10.24.1-browsers
+      - test:
+          docker_image: cimg/node:12.22.12-browsers
+      - test:
+          docker_image: cimg/node:14.21.2-browsers
+      - test:
+          docker_image: cimg/node:16.19.0-browsers
+      - test:
+          docker_image: cimg/node:18.14.0-browsers
       - test
+

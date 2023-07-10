@@ -1,7 +1,7 @@
 /*
  * testunits_usages.js - test the units formatter object with various usages
  *
- * Copyright © 2018, 2021 JEDLSoft
+ * Copyright © 2018, 2021-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1034,7 +1034,7 @@ module.exports.testunitfmt_usages = {
     testUnitFormatWithUsageVehicleWeightConvert: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "metric ton",
+            unit: "tonne",
             amount: 1.5
         });
 
@@ -1116,7 +1116,7 @@ module.exports.testunitfmt_usages = {
     testUnitFormatWithUsageVehicleWeightBR: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "metric ton",
+            unit: "tonne",
             amount: 3.2
         });
 
@@ -1133,7 +1133,7 @@ module.exports.testunitfmt_usages = {
     testUnitFormatWithUsageVehicleWeightTH: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "metric ton",
+            unit: "tonne",
             amount: 3.45
         });
 
@@ -1258,7 +1258,7 @@ module.exports.testunitfmt_usages = {
             locale: "ha-NG"
         });
         var str = uf.format(m1);
-        test.equal(str, "800 mg");
+        test.equal(str, "milligiramgiram 800");
         test.done();
     },
 
@@ -2112,7 +2112,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.5 imperial quarts");
+        test.equal(str, "1.5 quarts");
         test.done();
     },
 
@@ -2148,7 +2148,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 qt(i)");
+        test.equal(str, "1 qt");
         test.done();
     },
 
@@ -2165,7 +2165,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.25 imperial quarts");
+        test.equal(str, "1.25 quarts");
         test.done();
     },
 
@@ -2182,7 +2182,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.25 qt(i)");
+        test.equal(str, "1.25 qt");
         test.done();
     },
 
@@ -2789,7 +2789,19 @@ module.exports.testunitfmt_usages = {
             locale: "be-BY"
         });
         var str = uf.format(m1);
-        test.equal(str, "3,2 кубічныя метры");
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = Number(process.versions["cldr"]);
+            if (cldrVersion < 36) {
+                test.equal(str, "3,2 кубічныя метры");
+            } else {
+                test.equal(str, "3,2 кубічнага метра");
+            }
+        } else if (platform === "browser") {
+            test.equal(str, "3,2 кубічнага метра");
+        } else {
+            test.equal(str, "3,2 кубічныя метры");
+        }
         test.done();
     },
 
@@ -2920,7 +2932,20 @@ module.exports.testunitfmt_usages = {
             locale: "be-BY"
         });
         var str = uf.format(m1);
-        test.equal(str, "3,2 кубічныя метры");
+        var platform = ilib._getPlatform();
+
+        if (platform === "nodejs") {
+            var cldrVersion = Number(process.versions["cldr"]);
+            if (cldrVersion < 36) {
+                test.equal(str, "3,2 кубічныя метры");
+            } else {
+                test.equal(str, "3,2 кубічнага метра");
+            }
+        } else if (platform === "browser") {
+            test.equal(str, "3,2 кубічнага метра");
+        } else {
+            test.equal(str, "3,2 кубічныя метры");
+        }
         test.done();
     },
 
@@ -3024,4 +3049,119 @@ module.exports.testunitfmt_usages = {
         test.done();
     },
 
+    testUnitFormatWithUsageCarPower: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "hp",
+            amount: 107.677
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehiclePower",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "107.68 horsepower");
+        test.done();
+    },
+
+    testUnitFormatWithUsageCarPowerConvert: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kW",
+            amount: 80
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehiclePower",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "107.28 horsepower");
+        test.done();
+    },
+
+    testUnitFormatWithUsageCarPowerShort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "hp",
+            amount: 107
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehiclePower",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "107 hp");
+        test.done();
+    },
+
+    testUnitFormatWithUsageCarPowerScale: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "W",
+            amount: 80000
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehiclePower",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "107.28 hp");
+        test.done();
+    },
+
+    testUnitFormatWithUsageCarPowerScaleMetric: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "W",
+            amount: 80000
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehiclePower",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "80 kW");
+        test.done();
+    },
+
+    testUnitFormatWithUsageCarPowerfrCA: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "W",
+            amount: 80000
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehiclePower",
+            length: "long",
+            locale: "fr-CA",
+            measurementSystem: "uscustomary"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "107,28 chevaux-vapeur");
+        test.done();
+    },
+
+    testUnitFormatWithUsageCarPowerBY: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "W",
+            amount: 80562
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehiclePower",
+            length: "long",
+            locale: "be-BY"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "80,56 кілаватаў");
+        test.done();
+    }
 };

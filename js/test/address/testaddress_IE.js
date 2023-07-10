@@ -1,6 +1,6 @@
 /*
  * testaddress.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports.testaddress_IE = {
     testParseAddressIENormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Gordon House\nBarrow Street\nDublin 4\nIreland", {locale: 'en-IE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Gordon House, Barrow Street");
         test.equal(parsedAddress.locality, "Dublin");
@@ -46,11 +46,11 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-    
+
     testParseAddressIENoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Metro Park\nCloughfern Avenue\nNewtownabbey\nCo. Antrim\nIreland", {locale: 'en-IE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Metro Park, Cloughfern Avenue");
         test.equal(parsedAddress.locality, "Newtownabbey");
@@ -60,11 +60,11 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-    
+
     testParseAddressIENoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Liffey Park Technology Campus\nBarnhall Road\nLeixlip\nCo Kildare", {locale: 'en-IE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Liffey Park Technology Campus, Barnhall Road");
         test.equal(parsedAddress.locality, "Leixlip");
@@ -74,11 +74,11 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-    
+
     testParseAddressIEDublinPostalCode: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Gordon House\nBarrow Street\nDublin D6W\nIreland", {locale: 'en-IE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Gordon House, Barrow Street");
         test.equal(parsedAddress.locality, "Dublin");
@@ -88,11 +88,11 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-    
+
     testParseAddressIEManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Belfield Office Park\nBeaver Row\nClonskeagh\nDublin 4\nIreland\n\n", {locale: 'en-IE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Belfield Office Park, Beaver Row, Clonskeagh");
         test.equal(parsedAddress.locality, "Dublin");
@@ -102,11 +102,11 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-    
+
     testParseAddressIEOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Swords Business Campus, Balheary Road, Swords, County: Dublin, Ireland", {locale: 'en-IE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Swords Business Campus, Balheary Road");
         test.equal(parsedAddress.locality, "Swords");
@@ -116,11 +116,11 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-    
+
     testParseAddressIESuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tSwords Business Campus\n\t\r Balheary Road\n\t\n\tSwords\   \t \t \t   County:    Dublin   \n\n\t Ireland  \n\n\n", {locale: 'en-IE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Swords Business Campus, Balheary Road");
         test.equal(parsedAddress.locality, "Swords");
@@ -130,11 +130,11 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-    
+
     testParseAddressIENoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Swords Business Campus Balheary Road Swords County: Dublin Ireland", {locale: 'en-IE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Swords Business Campus Balheary Road");
         test.equal(parsedAddress.locality, "Swords");
@@ -144,11 +144,11 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-    
+
     testParseAddressIESpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Teach Ceilteach, Sráid Doire, Cill Iníon Léinín, Tamhlacht, Contae Átha Cliath, Éire", {locale: 'en-IE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Teach Ceilteach, Sráid Doire, Cill Iníon Léinín");
         test.equal(parsedAddress.locality, "Tamhlacht");
@@ -158,11 +158,11 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-    
+
     testParseAddressIEFromDE: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Metro Park\nCloughfern Avenue\nNewtownabbey\nCo. Antrim\nIrland", {locale: 'de-DE'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Metro Park, Cloughfern Avenue");
         test.equal(parsedAddress.locality, "Newtownabbey");
@@ -172,7 +172,7 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-    
+
     testFormatAddressIE: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -182,13 +182,13 @@ module.exports.testaddress_IE = {
             country: "Ireland",
             countryCode: "IE"
         }, {locale: 'en-IE'});
-        
+
         var expected = "Gordon House, Barrow Street\nDublin 4\nIreland";
         var formatter = new AddressFmt({locale: 'en-IE'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressIEWithCounty: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -198,13 +198,13 @@ module.exports.testaddress_IE = {
             country: "Ireland",
             countryCode: "IE"
         }, {locale: 'en-IE'});
-        
+
         var expected = "Gordon House, Barrow Street\nGalway\nCounty Galway\nIreland";
         var formatter = new AddressFmt({locale: 'en-IE'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressIEFromFR: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -214,11 +214,11 @@ module.exports.testaddress_IE = {
             country: "Irlande",
             countryCode: "IE"
         }, {locale: 'fr-FR'});
-        
+
         var expected = "Gordon House, Barrow Street\nDublin 4\nIrlande";
         var formatter = new AddressFmt({locale: 'fr-FR'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

@@ -37,95 +37,95 @@ module.exports.testcalendar = {
         test.ok(typeof(cal) !== "undefined");
         test.done();
     },
-    
+
     testCalendarFactoryDefaultRightType: function(test) {
         test.expect(2);
         var cal = CalendarFactory();
         test.ok(typeof(cal) !== "undefined");
-    
+
         test.equal(cal.getType(), "gregorian");
         test.done();
     },
-    
+
     testCalendarFactorySpecific: function(test) {
         test.expect(2);
         var cal = CalendarFactory({type: "julian"});
         test.ok(typeof(cal) !== "undefined");
-    
+
         test.equal(cal.getType(), "julian");
         test.done();
     },
-    
+
     testCalendarFactoryUnknown: function(test) {
         test.expect(1);
         var cal = CalendarFactory({type: "asdf"});
         test.ok(typeof(cal) === "undefined");
         test.done();
     },
-    
+
     testCalendarFactoryDefaultForLocale: function(test) {
         test.expect(2);
         var cal = CalendarFactory({locale: "ar-AE"});
         test.ok(typeof(cal) !== "undefined");
-    
+
         test.equal(cal.getType(), "gregorian");
         test.done();
     },
-    
+
     testCalendarFactoryDefaultForLocale_KH: function(test) {
         test.expect(2);
         var cal = CalendarFactory({locale: "km-KH"});
         test.ok(typeof(cal) !== "undefined");
-    
+
         test.equal(cal.getType(), "gregorian");
         test.done();
     },
-    
+
     testCalendarFactoryDefaultForLocale_AZ: function(test) {
         test.expect(2);
         var cal = CalendarFactory({locale: "az-Latn-AZ"});
         test.ok(typeof(cal) !== "undefined");
-    
+
         test.equal(cal.getType(), "gregorian");
         test.done();
     },
-    
+
     testCalendarFactoryDefaultForLocale_LK: function(test) {
         test.expect(2);
         var cal = CalendarFactory({locale: "si-LK"});
         test.ok(typeof(cal) !== "undefined");
-    
+
         test.equal(cal.getType(), "gregorian");
         test.done();
     },
-    
+
     testCalendarFactoryDefaultForLocale_KE: function(test) {
         test.expect(2);
         var cal = CalendarFactory({locale: "sw-Latn-KE"});
         test.ok(typeof(cal) !== "undefined");
-    
+
         test.equal(cal.getType(), "gregorian");
         test.done();
     },
-    
+
     testCalendarFactoryDefaultForLocaleOther: function(test) {
         test.expect(2);
         var cal = CalendarFactory({locale: "th-TH"});
         test.ok(typeof(cal) !== "undefined");
-    
+
         test.equal(cal.getType(), "thaisolar");
         test.done();
     },
-    
+
     testCalendarFactoryOverrideLocale: function(test) {
         test.expect(2);
         var cal = CalendarFactory({locale: "ar-AE", type: "gregorian"});
         test.ok(typeof(cal) !== "undefined");
-    
+
         test.equal(cal.getType(), "gregorian");
         test.done();
     },
-    
+
     testGetCalendars: function(test) {
         test.expect(1);
         var expected = [
@@ -140,9 +140,9 @@ module.exports.testcalendar = {
             "ethiopic",
             "coptic"
         ];
-    
+
         test.equalIgnoringOrder(CalendarFactory.getCalendars(), expected);
         test.done();
     }
-    
+
 };

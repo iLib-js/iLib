@@ -1,6 +1,6 @@
 /*
  * testdatefmts.js - test auxillary tools used to generate the dateformats.json files
- * 
+ *
  * Copyright © 2012, 2020 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

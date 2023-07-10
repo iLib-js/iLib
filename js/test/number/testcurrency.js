@@ -1,7 +1,7 @@
 /*
  * testcurrency.js - test the currency routines
  *
- * Copyright © 2012-2017, 2020-2021 JEDLSoft
+ * Copyright © 2012-2017, 2020-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,16 +29,16 @@ module.exports.testcurrency = {
     testCurrencyConstructorEmpty: function(test) {
         test.expect(1);
         var cur = new Currency();
-    
+
         test.ok(cur !== null);
         test.done();
     },
-    
+
     testCurrencyDefaults: function(test) {
         test.expect(7);
         var cur = new Currency();
         test.ok(cur !== null);
-    
+
         test.equal(cur.getCode(), "USD");
         test.equal(cur.getFractionDigits(), 2);
         test.equal(cur.getSign(), "$");
@@ -48,14 +48,14 @@ module.exports.testcurrency = {
         test.equal(locale.toString(), "en-US");
         test.done();
     },
-    
+
     testCurrencyGetByCode1: function(test) {
         test.expect(6);
         var cur = new Currency({
             code: "EUR"
         });
         test.ok(cur !== null);
-    
+
         test.equal(cur.getCode(), "EUR");
         test.equal(cur.getFractionDigits(), 2);
         test.equal(cur.getSign(), "€");
@@ -64,14 +64,14 @@ module.exports.testcurrency = {
         test.equal(locale.toString(), "en-US");
         test.done();
     },
-    
+
     testCurrencyGetByCode2: function(test) {
         test.expect(6);
         var cur = new Currency({
             code: "JPY"
         });
         test.ok(cur !== null);
-    
+
         test.equal(cur.getCode(), "JPY");
         test.equal(cur.getFractionDigits(), 0);
         test.equal(cur.getSign(), "¥");
@@ -80,7 +80,37 @@ module.exports.testcurrency = {
         test.equal(locale.toString(), "en-US");
         test.done();
     },
-    
+    testCurrencyGetByCode3: function(test) {
+        test.expect(6);
+        var cur = new Currency({
+            locale: "en-PH"
+        });
+        test.ok(cur !== null);
+
+        test.equal(cur.getCode(), "PHP");
+        test.equal(cur.getFractionDigits(), 2);
+        test.equal(cur.getSign(), '₱');
+        test.equal(cur.getName(), "Philippine Peso");
+        var locale = cur.getLocale();
+        test.equal(locale.toString(), "en-PH");
+        test.done();
+    },
+    testCurrencyGetByCode4: function(test) {
+        test.expect(6);
+        var cur = new Currency({
+            locale: "ar-QA"
+        });
+        test.ok(cur !== null);
+
+        test.equal(cur.getCode(), "QAR");
+        test.equal(cur.getFractionDigits(), 2);
+        test.equal(cur.getSign(), 'ر.ق');
+        test.equal(cur.getName(), "Qatari Riyal");
+        var locale = cur.getLocale();
+        test.equal(locale.toString(), "ar-QA");
+        test.done();
+    },
+
     testCurrencyGetByCodeUnknown: function(test) {
         try {
             var cur = new Currency({
@@ -92,14 +122,14 @@ module.exports.testcurrency = {
         }
         test.done();
     },
-    
+
     testCurrencyGetBySignUnambiguous: function(test) {
         test.expect(6);
         var cur = new Currency({
             sign: "€"
         });
         test.ok(cur !== null);
-    
+
         test.equal(cur.getCode(), "EUR");
         test.equal(cur.getFractionDigits(), 2);
         test.equal(cur.getSign(), "€");
@@ -108,7 +138,7 @@ module.exports.testcurrency = {
         test.equal(locale.toString(), "en-US");
         test.done();
     },
-    
+
     testCurrencyGetBySignAmbiguousCurrentLocale: function(test) {
         test.expect(6);
         var cur = new Currency({
@@ -116,7 +146,7 @@ module.exports.testcurrency = {
             sign: "$"
         });
         test.ok(cur !== null);
-    
+
         test.equal(cur.getCode(), "CAD");
         test.equal(cur.getFractionDigits(), 2);
         test.equal(cur.getSign(), "$");
@@ -125,7 +155,7 @@ module.exports.testcurrency = {
         test.equal(locale.toString(), "en-CA");
         test.done();
     },
-    
+
     testCurrencyGetBySignAmbiguousNotCurrentLocale: function(test) {
         test.expect(6);
         var cur = new Currency({
@@ -133,7 +163,7 @@ module.exports.testcurrency = {
             sign: "$"
         });
         test.ok(cur !== null);
-    
+
         test.equal(cur.getCode(), "USD");
         test.equal(cur.getFractionDigits(), 2);
         test.equal(cur.getSign(), "$");
@@ -164,7 +194,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EGP");
-        
+
         test.done();
     },
     testCurrency_ar_IQ: function(test) {
@@ -173,7 +203,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "IQD");
-        
+
         test.done();
     },
     testCurrency_ar_MA: function(test) {
@@ -182,7 +212,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "MAD");
-        
+
         test.done();
     },
     testCurrency_as_IN: function(test) {
@@ -191,7 +221,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "INR");
-        
+
         test.done();
     },
     testCurrency_bg_BG: function(test) {
@@ -200,7 +230,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "BGN");
-        
+
         test.done();
     },
     testCurrency_bn_IN: function(test) {
@@ -209,7 +239,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "INR");
-        
+
         test.done();
     },
     testCurrency_bs_Latn_BA: function(test) {
@@ -218,7 +248,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "BAM");
-        
+
         test.done();
     },
     testCurrency_bs_Latn_ME: function(test) {
@@ -227,7 +257,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_cs_CZ: function(test) {
@@ -236,7 +266,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "CZK");
-        
+
         test.done();
     },
     testCurrency_da_DK: function(test) {
@@ -245,7 +275,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "DKK");
-        
+
         test.done();
     },
     testCurrency_de_AT: function(test) {
@@ -254,7 +284,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_de_CH: function(test) {
@@ -263,7 +293,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "CHF");
-        
+
         test.done();
     },
     testCurrency_de_DE: function(test) {
@@ -272,7 +302,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_de_LU: function(test) {
@@ -281,7 +311,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_el_CY: function(test) {
@@ -290,7 +320,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_el_GR: function(test) {
@@ -299,7 +329,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_en_AM: function(test) {
@@ -308,7 +338,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "AMD");
-        
+
         test.done();
     },
     testCurrency_en_AU: function(test) {
@@ -317,7 +347,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "AUD");
-        
+
         test.done();
     },
     testCurrency_en_AZ: function(test) {
@@ -326,7 +356,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "AZN");
-        
+
         test.done();
     },
     testCurrency_en_CA: function(test) {
@@ -335,7 +365,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "CAD");
-        
+
         test.done();
     },
     testCurrency_en_GB: function(test) {
@@ -344,7 +374,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "GBP");
-        
+
         test.done();
     },
     testCurrency_en_GH: function(test) {
@@ -353,7 +383,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "GHS");
-        
+
         test.done();
     },
     testCurrency_en_HK: function(test) {
@@ -362,7 +392,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "HKD");
-        
+
         test.done();
     },
     testCurrency_en_IE: function(test) {
@@ -371,7 +401,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_en_IN: function(test) {
@@ -380,7 +410,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "INR");
-        
+
         test.done();
     },
     testCurrency_en_IS: function(test) {
@@ -389,7 +419,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "ISK");
-        
+
         test.done();
     },
     testCurrency_en_JP: function(test) {
@@ -398,7 +428,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "JPY");
-        
+
         test.done();
     },
     testCurrency_en_KE: function(test) {
@@ -407,7 +437,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "KES");
-        
+
         test.done();
     },
     testCurrency_en_KR: function(test) {
@@ -416,7 +446,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "KRW");
-        
+
         test.done();
     },
     testCurrency_en_LK: function(test) {
@@ -425,7 +455,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "LKR");
-        
+
         test.done();
     },
     testCurrency_en_MM: function(test) {
@@ -434,7 +464,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "MMK");
-        
+
         test.done();
     },
     testCurrency_en_MW: function(test) {
@@ -443,7 +473,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "MWK");
-        
+
         test.done();
     },
     testCurrency_en_MY: function(test) {
@@ -452,7 +482,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "MYR");
-        
+
         test.done();
     },
     testCurrency_en_NG: function(test) {
@@ -461,7 +491,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "NGN");
-        
+
         test.done();
     },
     testCurrency_en_NZ: function(test) {
@@ -470,7 +500,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "NZD");
-        
+
         test.done();
     },
     testCurrency_en_PH: function(test) {
@@ -479,7 +509,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "PHP");
-        
+
         test.done();
     },
     testCurrency_en_PR: function(test) {
@@ -488,7 +518,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "USD");
-        
+
         test.done();
     },
     testCurrency_en_SG: function(test) {
@@ -497,7 +527,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "SGD");
-        
+
         test.done();
     },
     testCurrency_en_US: function(test) {
@@ -506,7 +536,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "USD");
-        
+
         test.done();
     },
     testCurrency_en_UG: function(test) {
@@ -515,7 +545,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "UGX");
-        
+
         test.done();
     },
     testCurrency_en_ZA: function(test) {
@@ -524,7 +554,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "ZAR");
-        
+
         test.done();
     },
     testCurrency_en_ZM: function(test) {
@@ -533,7 +563,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "ZMW");
-        
+
         test.done();
     },
     testCurrency_es_AR: function(test) {
@@ -542,7 +572,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "ARS");
-        
+
         test.done();
     },
     testCurrency_es_BO: function(test) {
@@ -551,7 +581,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "BOB");
-        
+
         test.done();
     },
     testCurrency_es_CL: function(test) {
@@ -560,7 +590,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "CLP");
-        
+
         test.done();
     },
     testCurrency_es_CO: function(test) {
@@ -569,7 +599,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "COP");
-        
+
         test.done();
     },
     testCurrency_es_DO: function(test) {
@@ -578,7 +608,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "DOP");
-        
+
         test.done();
     },
     testCurrency_es_EC: function(test) {
@@ -587,7 +617,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "USD");
-        
+
         test.done();
     },
     testCurrency_es_ES: function(test) {
@@ -596,7 +626,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_es_GT: function(test) {
@@ -605,7 +635,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "GTQ");
-        
+
         test.done();
     },
     testCurrency_es_HN: function(test) {
@@ -614,7 +644,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "HNL");
-        
+
         test.done();
     },
     testCurrency_es_MX: function(test) {
@@ -623,7 +653,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "MXN");
-        
+
         test.done();
     },
     testCurrency_es_NI: function(test) {
@@ -632,7 +662,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "NIO");
-        
+
         test.done();
     },
     testCurrency_es_PA: function(test) {
@@ -641,7 +671,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "USD");
-        
+
         test.done();
     },
     testCurrency_es_PE: function(test) {
@@ -650,7 +680,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "PEN");
-        
+
         test.done();
     },
     testCurrency_es_PR: function(test) {
@@ -659,7 +689,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "USD");
-        
+
         test.done();
     },
     testCurrency_es_PY: function(test) {
@@ -668,7 +698,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "PYG");
-        
+
         test.done();
     },
     testCurrency_es_SV: function(test) {
@@ -677,7 +707,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "USD");
-        
+
         test.done();
     },
     testCurrency_es_US: function(test) {
@@ -686,7 +716,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "USD");
-        
+
         test.done();
     },
     testCurrency_es_UY: function(test) {
@@ -695,7 +725,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "UYU");
-        
+
         test.done();
     },
     testCurrency_es_VE: function(test) {
@@ -704,7 +734,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "VES");
-        
+
         test.done();
     },
     testCurrency_et_EE: function(test) {
@@ -713,7 +743,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_fa_AF: function(test) {
@@ -722,7 +752,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "AFN");
-        
+
         test.done();
     },
     testCurrency_fa_IR: function(test) {
@@ -731,7 +761,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "IRR");
-        
+
         test.done();
     },
     testCurrency_fi_FI: function(test) {
@@ -740,7 +770,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_fr_BE: function(test) {
@@ -749,7 +779,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_fr_CA: function(test) {
@@ -758,7 +788,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "CAD");
-        
+
         test.done();
     },
     testCurrency_fr_CH: function(test) {
@@ -767,7 +797,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "CHF");
-        
+
         test.done();
     },
     testCurrency_fr_FR: function(test) {
@@ -776,7 +806,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_fr_LU: function(test) {
@@ -785,7 +815,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_ga_IE: function(test) {
@@ -794,7 +824,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_gu_IN: function(test) {
@@ -803,7 +833,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "INR");
-        
+
         test.done();
     },
     testCurrency_he_IL: function(test) {
@@ -812,7 +842,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "ILS");
-        
+
         test.done();
     },
     testCurrency_hi_IN: function(test) {
@@ -821,7 +851,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "INR");
-        
+
         test.done();
     },
     testCurrency_hr_HR: function(test) {
@@ -829,8 +859,8 @@ module.exports.testcurrency = {
         var info = new LocaleInfo("hr-HR");
         test.ok(info !== null);
 
-        test.equal(info.getCurrency(), "HRK");
-        
+        test.equal(info.getCurrency(), "EUR");
+
         test.done();
     },
     testCurrency_hr_ME: function(test) {
@@ -839,7 +869,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_hr_HU: function(test) {
@@ -848,7 +878,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "HUF");
-        
+
         test.done();
     },
     testCurrency_id_ID: function(test) {
@@ -857,7 +887,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "IDR");
-        
+
         test.done();
     },
     testCurrency_is_IS: function(test) {
@@ -866,7 +896,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "ISK");
-        
+
         test.done();
     },
     testCurrency_it_CH: function(test) {
@@ -875,7 +905,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "CHF");
-        
+
         test.done();
     },
     testCurrency_it_IT: function(test) {
@@ -884,7 +914,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_ja_JP: function(test) {
@@ -893,7 +923,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "JPY");
-        
+
         test.done();
     },
     testCurrency_kk_KZ: function(test) {
@@ -902,7 +932,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "KZT");
-        
+
         test.done();
     },
     testCurrency_kn_IN: function(test) {
@@ -911,7 +941,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "INR");
-        
+
         test.done();
     },
     testCurrency_ko_KR: function(test) {
@@ -920,7 +950,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "KRW");
-        
+
         test.done();
     },
     testCurrency_ku_IQ: function(test) {
@@ -929,7 +959,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "IQD");
-        
+
         test.done();
     },
     testCurrency_lt_LT: function(test) {
@@ -938,7 +968,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_lv_LV: function(test) {
@@ -947,7 +977,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_mk_MK: function(test) {
@@ -956,7 +986,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "MKD");
-        
+
         test.done();
     },
     testCurrency_ml_IN: function(test) {
@@ -965,7 +995,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "INR");
-        
+
         test.done();
     },
     testCurrency_mr_IN: function(test) {
@@ -974,7 +1004,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "INR");
-        
+
         test.done();
     },
     testCurrency_ms_MY: function(test) {
@@ -983,7 +1013,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "MYR");
-        
+
         test.done();
     },
     testCurrency_nb_NO: function(test) {
@@ -992,7 +1022,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "NOK");
-        
+
         test.done();
     },
     testCurrency_nl_BE: function(test) {
@@ -1001,7 +1031,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_nl_NL: function(test) {
@@ -1010,7 +1040,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_pa_Guru_IN: function(test) {
@@ -1019,7 +1049,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "INR");
-        
+
         test.done();
     },
     testCurrency_pl_PL: function(test) {
@@ -1028,7 +1058,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "PLN");
-        
+
         test.done();
     },
     testCurrency_pt_BR: function(test) {
@@ -1037,7 +1067,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "BRL");
-        
+
         test.done();
     },
     testCurrency_pt_PT: function(test) {
@@ -1046,7 +1076,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_ro_RO: function(test) {
@@ -1055,7 +1085,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "RON");
-        
+
         test.done();
     },
     testCurrency_sr_Cyrl_RS: function(test) {
@@ -1064,7 +1094,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "RSD");
-        
+
         test.done();
     },
     testCurrency_sr_Latn_RS: function(test) {
@@ -1073,7 +1103,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "RSD");
-        
+
         test.done();
     },
     testCurrency_ru_BY: function(test) {
@@ -1082,7 +1112,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "BYN");
-        
+
         test.done();
     },
     testCurrency_ru_KG: function(test) {
@@ -1091,7 +1121,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "KGS");
-        
+
         test.done();
     },
     testCurrency_ru_KZ: function(test) {
@@ -1100,7 +1130,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "KZT");
-        
+
         test.done();
     },
     testCurrency_ru_GE: function(test) {
@@ -1109,7 +1139,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "GEL");
-        
+
         test.done();
     },
     testCurrency_ru_RU: function(test) {
@@ -1118,7 +1148,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "RUB");
-        
+
         test.done();
     },
     testCurrency_ru_UA: function(test) {
@@ -1127,7 +1157,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "UAH");
-        
+
         test.done();
     },
     testCurrency_sk_SK: function(test) {
@@ -1136,7 +1166,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_sl_SI: function(test) {
@@ -1145,7 +1175,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_sq_AL: function(test) {
@@ -1154,7 +1184,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "ALL");
-        
+
         test.done();
     },
     testCurrency_sq_ME: function(test) {
@@ -1163,7 +1193,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_sv_FI: function(test) {
@@ -1172,7 +1202,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_sv_SE: function(test) {
@@ -1181,7 +1211,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "SEK");
-        
+
         test.done();
     },
     testCurrency_ta_IN: function(test) {
@@ -1190,7 +1220,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "INR");
-        
+
         test.done();
     },
     testCurrency_te_IN: function(test) {
@@ -1199,7 +1229,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "INR");
-        
+
         test.done();
     },
     testCurrency_th_TH: function(test) {
@@ -1208,7 +1238,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "THB");
-        
+
         test.done();
     },
     testCurrency_tr_AM: function(test) {
@@ -1217,7 +1247,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "AMD");
-        
+
         test.done();
     },
     testCurrency_tr_AZ: function(test) {
@@ -1226,7 +1256,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "AZN");
-        
+
         test.done();
     },
     testCurrency_tr_CY: function(test) {
@@ -1235,7 +1265,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "EUR");
-        
+
         test.done();
     },
     testCurrency_tr_TR: function(test) {
@@ -1244,7 +1274,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "TRY");
-        
+
         test.done();
     },
     testCurrency_uk_UA: function(test) {
@@ -1253,7 +1283,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "UAH");
-        
+
         test.done();
     },
     testCurrency_ur_IN: function(test) {
@@ -1262,7 +1292,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "INR");
-        
+
         test.done();
     },
     testCurrency_uz_Latn_UZ: function(test) {
@@ -1271,7 +1301,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "UZS");
-        
+
         test.done();
     },
     testCurrency_vi_VN: function(test) {
@@ -1280,7 +1310,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "VND");
-        
+
         test.done();
     },
     testCurrency_zh_Hans_CN: function(test) {
@@ -1289,7 +1319,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "CNY");
-        
+
         test.done();
     },
     testCurrency_zh_Hant_HK: function(test) {
@@ -1298,7 +1328,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "HKD");
-        
+
         test.done();
     },
     testCurrency_zh_Hant_TW: function(test) {
@@ -1307,7 +1337,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "TWD");
-        
+
         test.done();
     },
     testCurrency_en_GE: function(test) {
@@ -1316,7 +1346,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "GEL");
-        
+
         test.done();
     },
     testCurrency_en_CN: function(test) {
@@ -1325,7 +1355,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "CNY");
-        
+
         test.done();
     },
     testCurrency_en_MX: function(test) {
@@ -1334,7 +1364,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "MXN");
-        
+
         test.done();
     },
     testCurrency_en_TW: function(test) {
@@ -1343,7 +1373,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "TWD");
-        
+
         test.done();
     },
     testCurrency_mn_MN: function(test) {
@@ -1352,7 +1382,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "MNT");
-        
+
         test.done();
     },
     testCurrency_es_CA: function(test) {
@@ -1361,7 +1391,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "CAD");
-        
+
         test.done();
     },
     testCurrency_af_ZA: function(test) {
@@ -1370,7 +1400,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "ZAR");
-        
+
         test.done();
     },
     testCurrency_am_ET: function(test) {
@@ -1379,7 +1409,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "ETB");
-        
+
         test.done();
     },
     testCurrency_ha_Latn_NG: function(test) {
@@ -1388,7 +1418,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "NGN");
-        
+
         test.done();
     },
     testCurrency_or_IN: function(test) {
@@ -1397,7 +1427,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "INR");
-        
+
         test.done();
     },
     testCurrency_az_Latn_AZ: function(test) {
@@ -1406,7 +1436,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "AZN");
-        
+
         test.done();
     },
     testCurrency_km_KH: function(test) {
@@ -1415,7 +1445,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "KHR");
-        
+
         test.done();
     },
     testCurrency_si_LK: function(test) {
@@ -1424,7 +1454,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "LKR");
-        
+
         test.done();
     },
     testCurrency_ar_AE: function(test) {
@@ -1433,7 +1463,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "AED");
-        
+
         test.done();
     },
     testCurrency_ar_BH: function(test) {
@@ -1442,7 +1472,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "BHD");
-        
+
         test.done();
     },
     testCurrency_ar_DJ: function(test) {
@@ -1451,7 +1481,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "DJF");
-        
+
         test.done();
     },
     testCurrency_ar_DZ: function(test) {
@@ -1460,7 +1490,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "DZD");
-        
+
         test.done();
     },
     testCurrency_ar_JO: function(test) {
@@ -1469,7 +1499,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "JOD");
-        
+
         test.done();
     },
     testCurrency_ar_KW: function(test) {
@@ -1478,7 +1508,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "KWD");
-        
+
         test.done();
     },
     testCurrency_ar_LB: function(test) {
@@ -1487,7 +1517,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "LBP");
-        
+
         test.done();
     },
     testCurrency_ar_LY: function(test) {
@@ -1496,7 +1526,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "LYD");
-        
+
         test.done();
     },
     testCurrency_ar_MR: function(test) {
@@ -1505,7 +1535,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "MRU");
-        
+
         test.done();
     },
     testCurrency_ar_OM: function(test) {
@@ -1514,7 +1544,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "OMR");
-        
+
         test.done();
     },
     testCurrency_ar_QA: function(test) {
@@ -1523,7 +1553,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "QAR");
-        
+
         test.done();
     },
     testCurrency_ar_SA: function(test) {
@@ -1532,7 +1562,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "SAR");
-        
+
         test.done();
     },
     testCurrency_ar_SD: function(test) {
@@ -1541,7 +1571,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "SDG");
-        
+
         test.done();
     },
     testCurrency_ar_SY: function(test) {
@@ -1550,7 +1580,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "SYP");
-        
+
         test.done();
     },
     testCurrency_ar_TN: function(test) {
@@ -1559,7 +1589,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "TND");
-        
+
         test.done();
     },
     testCurrency_ar_YE: function(test) {
@@ -1568,7 +1598,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "YER");
-        
+
         test.done();
     },
     testCurrency_en_ET: function(test) {
@@ -1577,7 +1607,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "ETB");
-        
+
         test.done();
     },
     testCurrency_en_GM: function(test) {
@@ -1586,7 +1616,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "GMD");
-        
+
         test.done();
     },
     testCurrency_en_LR: function(test) {
@@ -1595,7 +1625,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "LRD");
-        
+
         test.done();
     },
     testCurrency_en_PK: function(test) {
@@ -1604,7 +1634,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "PKR");
-        
+
         test.done();
     },
     testCurrency_en_RW: function(test) {
@@ -1613,7 +1643,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "RWF");
-        
+
         test.done();
     },
     testCurrency_en_SD: function(test) {
@@ -1622,7 +1652,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "SDG");
-        
+
         test.done();
     },
     testCurrency_en_SL: function(test) {
@@ -1630,8 +1660,8 @@ module.exports.testcurrency = {
         var info = new LocaleInfo("en-SL");
         test.ok(info !== null);
 
-        test.equal(info.getCurrency(), "SLL");
-        
+        test.equal(info.getCurrency(), "SLE");
+
         test.done();
     },
     testCurrency_en_TZ: function(test) {
@@ -1640,7 +1670,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "TZS");
-        
+
         test.done();
     },
     testCurrency_es_CR: function(test) {
@@ -1649,7 +1679,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "CRC");
-        
+
         test.done();
     },
     testCurrency_es_GQ: function(test) {
@@ -1658,7 +1688,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "XAF");
-        
+
         test.done();
     },
     testCurrency_es_PH: function(test) {
@@ -1667,7 +1697,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "PHP");
-        
+
         test.done();
     },
     testCurrency_fr_BF: function(test) {
@@ -1676,7 +1706,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "XOF");
-        
+
         test.done();
     },
     testCurrency_fr_BJ: function(test) {
@@ -1685,7 +1715,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "XOF");
-        
+
         test.done();
     },
     testCurrency_fr_CD: function(test) {
@@ -1694,7 +1724,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "CDF");
-        
+
         test.done();
     },
     testCurrency_fr_CF: function(test) {
@@ -1703,7 +1733,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "XAF");
-        
+
         test.done();
     },
     testCurrency_fr_CG: function(test) {
@@ -1712,7 +1742,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "XAF");
-        
+
         test.done();
     },
     testCurrency_fr_CI: function(test) {
@@ -1721,7 +1751,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "XOF");
-        
+
         test.done();
     },
     testCurrency_fr_CM: function(test) {
@@ -1730,7 +1760,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "XAF");
-        
+
         test.done();
     },
     testCurrency_fr_GQ: function(test) {
@@ -1739,7 +1769,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "XAF");
-        
+
         test.done();
     },
     testCurrency_fr_DJ: function(test) {
@@ -1748,7 +1778,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "DJF");
-        
+
         test.done();
     },
     testCurrency_fr_DZ: function(test) {
@@ -1757,7 +1787,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "DZD");
-        
+
         test.done();
     },
     testCurrency_fr_GA: function(test) {
@@ -1766,7 +1796,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "XAF");
-        
+
         test.done();
     },
     testCurrency_fr_GN: function(test) {
@@ -1775,7 +1805,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "GNF");
-        
+
         test.done();
     },
     testCurrency_fr_LB: function(test) {
@@ -1784,7 +1814,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "LBP");
-        
+
         test.done();
     },
     testCurrency_fr_ML: function(test) {
@@ -1793,7 +1823,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "XOF");
-        
+
         test.done();
     },
     testCurrency_fr_RW: function(test) {
@@ -1802,7 +1832,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "RWF");
-        
+
         test.done();
     },
     testCurrency_fr_SN: function(test) {
@@ -1811,7 +1841,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "XOF");
-        
+
         test.done();
     },
     testCurrency_fr_TG: function(test) {
@@ -1820,7 +1850,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "XOF");
-        
+
         test.done();
     },
     testCurrency_ms_SG: function(test) {
@@ -1829,7 +1859,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "SGD");
-        
+
         test.done();
     },
     testCurrency_pa_PK: function(test) {
@@ -1838,7 +1868,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "PKR");
-        
+
         test.done();
     },
     testCurrency_pt_AO: function(test) {
@@ -1847,7 +1877,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "AOA");
-        
+
         test.done();
     },
     testCurrency_pt_GQ: function(test) {
@@ -1856,7 +1886,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "XAF");
-        
+
         test.done();
     },
     testCurrency_pt_CV: function(test) {
@@ -1865,7 +1895,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "CVE");
-        
+
         test.done();
     },
     testCurrency_ur_PK: function(test) {
@@ -1874,7 +1904,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "PKR");
-        
+
         test.done();
     },
     testCurrency_zh_Hans_SG: function(test) {
@@ -1883,7 +1913,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "SGD");
-        
+
         test.done();
     },
     testCurrency_zh_Hans_MY: function(test) {
@@ -1892,7 +1922,7 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "MYR");
-        
+
         test.done();
     },
     testCurrency_ka_GE: function(test) {
@@ -2015,6 +2045,54 @@ module.exports.testcurrency = {
         test.ok(info !== null);
 
         test.equal(info.getCurrency(), "ZAR");
+        test.done();
+    },
+    testCurrency_lb_LU: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("lb-LU");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "EUR");
+      test.done();
+    },
+    testCurrency_ig_NG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ig-NG");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "NGN");
+        test.done();
+    },
+    testCurrency_ps_PK: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ps-PK");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "PKR");
+      test.done();
+    },
+    testCurrency_ps_AF: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ps-AF");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "AFN");
+      test.done();
+    },
+    testCurrency_yo_NG: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("yo-NG");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "NGN");
+        test.done();
+    },
+    testCurrency_yo_BJ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("yo-BJ");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrency(), "XOF");
         test.done();
     }
 };

@@ -1,6 +1,6 @@
 {
-    "f": "+03",
-    "o": "3:0",
     "c": "RU",
-    "n": "Volgograd {c} Time"
+    "f": "MSK",
+    "n": "Volgograd {c} Time",
+    "o": "3:0"
 }

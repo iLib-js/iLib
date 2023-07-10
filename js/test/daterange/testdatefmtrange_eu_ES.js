@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_eu_ES.js - test the date range formatter object Basque-Spain
- * 
- * Copyright © 2020, JEDLSoft
+ *
+ * Copyright © 2020-2021,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,6 @@ module.exports.testdatefmtrange_eu_ES = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmteuESRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "eu-ES", length: "short"});
@@ -57,7 +56,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11/12/31 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "11/12/31, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmteuESRangeInDayMedium: function(test) {
@@ -83,7 +82,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abe. 31(a) 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "2011(e)ko abe. 31(a), 13:45 – 14:30");
         test.done();
     },
     testDateRngFmteuESRangeInDayLong: function(test) {
@@ -109,7 +108,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 31(a) 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 31(a) (13:45) – (14:30)");
         test.done();
     },
     testDateRngFmteuESRangeInDayFull: function(test) {
@@ -135,10 +134,9 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 31(a) 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 31(a) (13:45) – (14:30)");
         test.done();
     },
-    
     testDateRngFmteuESRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "eu-ES", length: "short"});
@@ -162,7 +160,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11/12/30 13:45 – 11/12/31 14:30");
+        test.equal(fmt.format(start, end), "11/12/30, 13:45 – 11/12/31, 14:30");
         test.done();
     },
     testDateRngFmteuESRangeNextDayMedium: function(test) {
@@ -188,7 +186,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abe. 30(a) 13:45 – 2011(e)ko abe. 31(a) 14:30");
+        test.equal(fmt.format(start, end), "2011(e)ko abe. 30(a), 13:45 – 2011(e)ko abe. 31(a), 14:30");
         test.done();
     },
     testDateRngFmteuESRangeNextDayLong: function(test) {
@@ -214,7 +212,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 30(a) 13:45 – 2011(e)ko abenduaren 31(a) 14:30");
+        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 30(a) (13:45) – 2011(e)ko abenduaren 31(a) (14:30)");
         test.done();
     },
     testDateRngFmteuESRangeNextDayFull: function(test) {
@@ -240,10 +238,9 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 30(a) 13:45 – 2011(e)ko abenduaren 31(a) 14:30");
+        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 30(a) (13:45) – 2011(e)ko abenduaren 31(a) (14:30)");
         test.done();
     },
-    
     testDateRngFmteuESRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "eu-ES", length: "short"});
@@ -348,7 +345,6 @@ module.exports.testdatefmtrange_eu_ES = {
         test.equal(fmt.format(start, end), "2011(e)ko abenduaren 20(a) – 31");
         test.done();
     },
-    
     testDateRngFmteuESRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "eu-ES", length: "short"});
@@ -453,7 +449,6 @@ module.exports.testdatefmtrange_eu_ES = {
         test.equal(fmt.format(start, end), "2011(e)ko azaroaren 20(a) – abenduaren 31(a)");
         test.done();
     },
-    
     testDateRngFmteuESRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "eu-ES", length: "short"});
@@ -558,7 +553,6 @@ module.exports.testdatefmtrange_eu_ES = {
         test.equal(fmt.format(start, end), "2011(e)ko azaroaren 20(a) – 2012(e)ko urtarrilaren 31(a)");
         test.done();
     },
-    
     testDateRngFmteuESRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "eu-ES", length: "short"});

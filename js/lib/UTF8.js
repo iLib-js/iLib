@@ -52,8 +52,8 @@ UTF8.prototype.parent = Charmap;
 UTF8.prototype.constructor = UTF8;
 
 /**
- * @private
  * Initialize the charmap instance
+ * @private
  */
 UTF8.prototype._init = function(options) {
     this._calcExpansionFactor();

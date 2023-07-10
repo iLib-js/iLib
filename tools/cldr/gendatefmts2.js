@@ -2,7 +2,7 @@
  * gendatefmts2.js - ilib tool to generate the dateformats.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2020, JEDLSoft
+ * Copyright © 2013-2022, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,12 +24,14 @@ var fs = require('fs');
 var path = require('path');
 var locales = require('cldr-core/availableLocales.json').availableLocales.full;
 var dayPeriods = require('cldr-core/supplemental/dayPeriods.json');
+var stringify = require('json-stable-stringify');
 
 var common = require('./common');
 var merge = common.merge;
 var Locale = common.Locale;
 var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
+var sortTree = common.sortTree;
 
 var hardCodeData = {
     "zh": {
@@ -40,17 +42,152 @@ var hardCodeData = {
         "azh4": "下午",
         "azh5": "傍晚",
         "azh6": "晚上",
-        "ordinalChoice": "#{num}天"
+        "ordinalChoice": "#{num}天",
+        "durationMediumMillis": "#{num}毫秒",
+        "durationShortMillis": "#{num}毫秒"
     },
     "am": {
-      "a0-ethiopic": "ጥዋት",
-      "a1-ethiopic": "ቀትር",
-      "a2-ethiopic": "ከሰዓት",
-      "a3-ethiopic": "ከምሽቱ",
-      "a4-ethiopic": "ከሌሊቱ",
+        "a0-ethiopic": "ጥዋት",
+        "a1-ethiopic": "ቀትር",
+        "a2-ethiopic": "ከሰዓት",
+        "a3-ethiopic": "ከምሽቱ",
+        "a4-ethiopic": "ከሌሊቱ",
     },
     "de": {
         "ordinalChoice": "#{num}."
+    },
+    "my": {
+        "1#1 sec|#{num} sec": "#{num} စက္ကန့်"
+    },
+    "ig":{
+        "1#1 millisecond|#{num} milliseconds": "#{num} millisekọnd",
+        "1#1 second|#{num} seconds": "#{num} sekọnd",
+        "1#1 minute|#{num} minutes": "#{num} Nkeji",
+        "1#1 hour|#{num} hours": "one#{num} elekere|#awa {num}",
+        "1#1 day|#{num} days": "one#{num} ụbọchị|#Ụbọchị {num}",
+        "1#1 week|#{num} weeks": "one#{num} izu|#Izu {num}",
+        "1#1 month|#{num} months": "one#{num} ọnwa|#Ọnwa {num}",
+        "1#1 year|#{num} years": "one#{num} afọ|#Afọ {num}"
+    },
+    "tg": {
+        "1#1 millisecond|#{num} milliseconds": "#{num} миллисекундҳо",
+        "1#1 second|#{num} seconds": "#{num} сония",
+        "1#1 minute|#{num} minutes": "#{num} дақиқа",
+        "1#1 hour|#{num} hours": "#{num} соат",
+        "1#1 day|#{num} days": "#{num} рӯз",
+        "1#1 week|#{num} weeks": "#{num} ҳафта",
+        "1#1 month|#{num} months": "#{num} моҳ",
+        "1#1 year|#{num} years": "#{num} сол",
+        "#{num} ms": "#{num} мил",
+        "1#1 sec|#{num} sec": "#{num} сон",
+        "1#1 min|#{num} min": "#{num} дақ",
+        "1#1 hr|#{num} hrs": "#{num} соа",
+        "durationLongDays": "#{num} рӯз",
+        "1#1 wk|#{num} wks": "#{num} ҳаф",
+        "1#1 mon|#{num} mons": "#{num} моҳ",
+        "1#1 yr|#{num} yrs": "#{num} сол",
+        "durationMediumMillis": "#{num} ми",
+        "1#1 se|#{num} sec": "#{num} со",
+        "1#1 mi|#{num} min": "#{num} да",
+        "durationMediumHours": "#{num} со",
+        "1#1 dy|#{num} dys": "#{num} рӯ",
+        "durationMediumWeeks": "#{num} ҳа",
+        "1#1 mo|#{num} mos": "#{num} мо",
+        "durationMediumYears": "#{num} со",
+        "durationShortMillis": "#{num} м",
+        "#{num}s": "#{num} с",
+        "durationShortMinutes": "#{num} д",
+        "#{num}h": "#{num} с",
+        "#{num}d": "#{num} р",
+        "#{num}w": "#{num} ҳ",
+        "durationShortMonths": "#{num} м",
+        "#{num}y": "#{num} с"
+    },
+    "mt": {
+        "1#1 second|#{num} seconds": "one#{num} sekonda|few#{num} sekondi|many#{num}-il sekonda|#{num} sekonda",
+        "1#1 minute|#{num} minutes": "one#{num} minuta|few#{num} minuti|many#{num}-il minuta|#{num} minuta",
+        "1#1 hour|#{num} hours": "one#{num} siegħa|few#{num} sigħat|many#{num}-il siegħa|#{num} siegħa",
+        "1#1 day|#{num} days": "one#{num} jum|few#{num} ijiem|many#{num}-il jum|#{num} jum",
+        "1#1 week|#{num} weeks": "one#Ġimgħa|few#{num} ġimgħat|many#{num}-il ġimgħa|#{num} ġimgħa",
+        "1#1 month|#{num} months": "one#Xahar|few#{num} xhur|many#{num}-il xahar|#{num} xahar",
+        "1#1 year|#{num} years": "one#Sena|few#{num} snin|many#{num}-il sena|#{num} sena",
+        "1#1 sec|#{num} sec": "one#{num} sek.|few#{num} sek.|many#{num}-il sek.|#{num} sek.",
+        "1#1 min|#{num} min": "one#{num} min.|few#{num} min.|many#{num}-il min.|#{num} min.",
+        "1#1 hr|#{num} hrs": "one#{num} sie.|few#{num} sig.|many#{num}-il sie.|#{num} sie.",
+        "durationLongDays": "one#{num} jum|few#{num} iji.|many#{num}-il jum|#{num} jum",
+        "1#1 wk|#{num} wks": "one#Ġim.|few#{num} ġim.|many#{num}-il ġim.|#{num} ġim.",
+        "1#1 mon|#{num} mons": "one#Xah.|few#{num} xhu.|many#{num}-il xah.|#{num} xah.",
+        "1#1 yr|#{num} yrs": "one#Sen.|few#{num} sni.|many#{num}-il sen.|#{num} sen.",
+        "1#1 se|#{num} sec": "one#{num} se.|few#{num} se.|many#{num}-il se.|#{num} se.",
+        "1#1 mi|#{num} min": "one#{num} mi.|few#{num} mi.|many#{num}-il mi.|#{num} mi.",
+        "durationMediumHours": "one#{num} si.|few#{num} si.|many#{num}-il si.|#{num} si.",
+        "1#1 dy|#{num} dys": "one#{num} ju.|few#{num} ij.|many#{num}-il ju.|#{num} ju.",
+        "durationMediumWeeks": "one#Ġi.|few#{num} ġi.|many#{num}-il ġi.|#{num} ġi.",
+        "1#1 mo|#{num} mos": "one#Xa.|few#{num} xh.|many#{num}-il xa.|#{num} xa.",
+        "durationMediumYears": "one#Se.|few#{num} sn.|many#{num}-il se.|#{num} se.",
+        "1#1 se|#{num} sec": "one#{num} se.|few#{num} se.|many#{num}-il se.|#{num} se.",
+        "1#1 mi|#{num} min": "one#{num} mi.|few#{num} mi.|many#{num}-il mi.|#{num} mi.",
+        "durationMediumHours": "one#{num} si.|few#{num} si.|many#{num}-il si.|#{num} si.",
+        "1#1 dy|#{num} dys": "one#{num} ju.|few#{num} ij.|many#{num}-il ju.|#{num} ju.",
+        "durationMediumWeeks": "one#Ġi.|few#{num} ġi.|many#{num}-il ġi.|#{num} ġi.",
+        "1#1 mo|#{num} mos": "one#Xa.|few#{num} xh.|many#{num}-il xa.|#{num} xa.",
+        "durationMediumYears": "one#Se.|few#{num} sn.|many#{num}-il se.|#{num} se.",
+        "durationShortMinutes": "#{num} m",
+        "#{num}h": "#{num} s",
+        "#{num}d": "#{num} j",
+        "#{num}w": "#{num} g",
+        "durationShortMonths": "#{num} x",
+        "#{num}y": "#{num} s"
+    },
+    "fa": {
+        "1#1 se|#{num} sec": "one#{num} ث|#{num} ث",
+        "1#1 mi|#{num} min": "one#{num} دقیقه|#{num} دقیقه",
+        "durationMediumHours": "one#{num} ساعت|#{num} ساعت",
+        "#{num}s": "one#{num} ث|#{num} ث",
+        "durationShortMinutes": "one#{num} دقیقه|#{num} دقیقه",
+        "#{num}h": "one#{num} ساعت|#{num} ساعت"
+    },
+    "wo": {
+        "1#1 second|#{num} seconds": "#{num} saa",
+        "1#1 minute|#{num} minutes": "#{num} simili",
+        "1#1 hour|#{num} hours": "#{num} waxtu",
+        "1#1 day|#{num} days": "#{num} bés",
+        "1#1 week|#{num} weeks": "#{num} ayubés",
+        "1#1 month|#{num} months": "#{num} weer",
+        "1#1 year|#{num} years": "#{num} at",
+        "1#1 sec|#{num} sec": "#{num} saa",
+        "1#1 min|#{num} min": "#{num} sim",
+        "1#1 hr|#{num} hrs": "#{num} wax",
+        "durationLongDays": "#{num} bés",
+        "1#1 wk|#{num} wks": "#{num} ayu",
+        "1#1 mon|#{num} mons": "#{num} wee",
+        "1#1 yr|#{num} yrs": "#{num} at",
+        "1#1 se|#{num} sec": "#{num} sa",
+        "1#1 mi|#{num} min": "#{num} si",
+        "durationMediumHours": "#{num} wa",
+        "1#1 dy|#{num} dys": "#{num} bé",
+        "durationMediumWeeks": "#{num} ay",
+        "1#1 mo|#{num} mos": "#{num} we",
+        "durationMediumYears": "#{num} at",
+        "#{num}s": "#{num} sa",
+        "durationShortMinutes": "#{num} si",
+        "#{num}h": "#{num} wa",
+        "#{num}d": "#{num} b",
+        "#{num}w": "#{num} ay",
+        "durationShortMonths": "#{num} we",
+        "#{num}y": "#{num} at"
+    },
+    "zu": {
+        "1#1 year|#{num} years": "one#{num} unyaka|#{num} iminyaka",
+        "1#1 yr|#{num} yrs": "one#{num} nyk|#{num} nyk",
+        "1#1 dy|#{num} dys": "one#{num} suku|#{num} suku",
+        "durationMediumWeeks": "one#{num} v|#{num} v",
+        "1#1 mo|#{num} mos": "one#{num} ng|#{num} ng",
+        "durationMediumYears": "one#{num} nk|#{num} nk",
+        "#{num}d": "one#{num} suku|#{num} suku",
+        "#{num}w": "one#{num} v|#{num} v",
+        "durationShortMonths": "one#{num} ng|#{num} ng",
+        "#{num}y": "one#{num} nk|#{num} nk"
     }
 }
 
@@ -98,9 +235,9 @@ function writeResources(language, script, region, filename, data) {
     var locpath = calcLocalePath(language, script, region, "");
     // if (data && data.generated) {
     if (anyProperties(data)) {
-        console.log("Writing " + locpath + "\n");
+        console.log("Writing " + locpath);
         makeDirs(locpath);
-        fs.writeFileSync(path.join(locpath, filename), JSON.stringify(data, true, 4), "utf-8");
+        fs.writeFileSync(path.join(locpath, filename), stringify(data, {space: 4}), "utf-8");
     } else {
         console.log("Skipping empty " + locpath + "\n");
     }
@@ -125,7 +262,7 @@ localeDirName = process.argv[2];
 
 
 console.log("gendatefmts2 - generate date and time formats information files.\n" +
-"Copyright (c) 2013-2020 JEDLSoft\n");
+"Copyright (c) 2013-2022 JEDLSoft\n");
 
 console.log("locale dir: " + localeDirName);
 
@@ -198,7 +335,7 @@ locales.forEach(function (file) {
     var sourceDir = path.join("cldr-dates-full/main", file);
     var filename = path.join(sourceDir, "ca-gregorian.json");
     try {
-        if (language === "fa") {
+        if (language === "fa" || (language === "ps" && region !== "PK")) {
             // add the settings for the persian calendar as well
             filename = path.join("cldr-cal-persian-full/main", file, "ca-persian.json");
             cal = require(filename);
@@ -206,12 +343,12 @@ locales.forEach(function (file) {
             // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
             group = aux.getFormatGroup(dateFormats, localeComponents);
             group.data = merge(group.data || {}, newFormats);
-    
+
             newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language, script);
             // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
             group = aux.getFormatGroup(systemResources, localeComponents);
             group.data = merge(group.data || {}, newFormats);
-    
+
         } else if (language === "am") {
             // add the settings for the ethiopic calendar as well
             filename = path.join("cldr-cal-ethiopic-full/main", file, "ca-ethiopic.json");
@@ -220,7 +357,7 @@ locales.forEach(function (file) {
             // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
             group = aux.getFormatGroup(dateFormats, localeComponents);
             group.data = merge(group.data || {}, newFormats);
-    
+
             newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language, script);
             // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
             var group = aux.getFormatGroup(systemResources, localeComponents);
@@ -232,16 +369,16 @@ locales.forEach(function (file) {
             cals.thaisolar = cals.gregorian;
             // console.log("cals is " + JSON.stringify(cals, undefined, 4) );
             newFormats = aux.createDateFormats(language, script, region, cals);
-    
+
             group = aux.getFormatGroup(dateFormats, localeComponents);
             group.data = merge(group.data || {}, newFormats);
-    
+
             newFormats = aux.createSystemResources(cals, language, script);
             // console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
             group = aux.getFormatGroup(systemResources, localeComponents);
             group.data = merge(group.data || {}, newFormats);
         }
-    
+
         // do regular gregorian for all locales
         filename = path.join(sourceDir, "ca-gregorian.json");
         cal = require(filename);
@@ -249,12 +386,12 @@ locales.forEach(function (file) {
         //console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(dateFormats, localeComponents);
         group.data = merge(group.data || {}, newFormats);
-    
+
         newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language, script);
         //console.log("data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(systemResources, localeComponents);
         group.data = merge(group.data || {}, newFormats);
-    
+
         // date/time duration.
         filename = path.join("cldr-units-full/main", locale.toString(), "units.json")
         units = require(filename);
@@ -262,7 +399,7 @@ locales.forEach(function (file) {
         //console.log("Duration data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(systemResources, localeComponents);
         group.data = merge(group.data || {}, newFormats);
-    
+
         // relative time format
         filename = path.join(sourceDir, "dateFields.json");
         dateFields = require(filename);
@@ -270,7 +407,7 @@ locales.forEach(function (file) {
         //console.log("Relative format data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(systemResources, localeComponents);
         group.data = merge(group.data || {}, newFormats);
-    
+
         // separator
         filename = path.join("cldr-misc-full/main", locale.toString(), "listPatterns.json");
         seperator = require(filename);
@@ -278,17 +415,17 @@ locales.forEach(function (file) {
         //console.log("listPattern data is " + JSON.stringify(newFormats, undefined, 4) );
         group = aux.getFormatGroup(systemResources, localeComponents);
         group.data = merge(group.data || {}, newFormats);
-    
+
         if (hardCodeData.hasOwnProperty(language)) {
             group.data = merge(group.data || {}, hardCodeData[language]);
         }
-    
+
         // day periods
         var periods = dayPeriods.supplemental.dayPeriodRuleSet;
         newFormats = aux.createDayPeriods(periods, cal.main[file].dates.calendars, language);
         if (newFormats) {
             group = aux.getFormatGroup(dateFormats, localeComponents);
-            group.data = merge(group.data || {}, newFormats.periods);
+            group.data.dayPeriods = newFormats.periods.dayPeriods;
             group = aux.getFormatGroup(systemResources, localeComponents);
             group.data = merge(group.data || {}, newFormats.sysres);
         }
@@ -363,14 +500,14 @@ console.log("\nMerging formats forward ...");
 console.log("\nPromoting sublocales ...");
 
 /*for (var language in dateFormats) {
-	if (language !== "und" && language !== "data") {
-		aux.promoteFormats(dateFormats[language], language, "dateformats.json");
-	}
+    if (language !== "und" && language !== "data") {
+        aux.promoteFormats(dateFormats[language], language, "dateformats.json");
+    }
 }
 for (var language in systemResources) {
-	if (language !== "und" && language !== "data") {
-		aux.promoteFormats(systemResources[language], language, "sysres.json");
-	}
+    if (language !== "und" && language !== "data") {
+        aux.promoteFormats(systemResources[language], language, "sysres.json");
+    }
 }*/
 
 console.log("\nPruning duplicated formats ...");
@@ -385,14 +522,17 @@ console.log("\nPruning duplicated formats ...");
 ///aux.pruneFormats(systemResources);
 //console.log("System resources after:\n" + JSON.stringify(systemResources, undefined, 4) );
 //fs.writeFileSync("post.sysres.json", JSON.stringify(systemResources, undefined, 4), "utf-8");
+mergeAndPrune(dateFormats);
 
 console.log("\nWriting out final files ...");
 
 console.log("dateformats.json: ");
+// sortTree(dateFormats);
 aux.writeFormats(localeDirName, "dateformats.json", dateFormats, []);
 console.log("");
 console.log("sysres.json: ");
 mergeAndPrune(systemResources);
+// sortTree(systemResources);
 for (language in systemResources) {
     if (language && systemResources[language] && language !== 'data' && language !== 'merged') {
         for (var subpart in systemResources[language]) {

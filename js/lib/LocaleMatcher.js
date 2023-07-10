@@ -135,8 +135,8 @@ LocaleMatcher.prototype = {
     },
 
     /**
-     * @private
      * Do the work
+     * @private
      */
     _getLikelyLocale: function(locale) {
         // already full specified
@@ -385,8 +385,8 @@ LocaleMatcher.prototype = {
     },
 
     /**
-     * @private
      * Return the containment array for the given region code.
+     * @private
      */
     _getRegionContainment: function(region) {
         return this.info.territoryContainmentReverse[region] || []

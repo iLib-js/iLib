@@ -2,7 +2,7 @@
  * gencountrynames.js - ilib tool to generate the ctrynames.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2018, 2020 JEDLSoft
+ * Copyright © 2013-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
  *
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -28,10 +29,8 @@ var xml2json = require("xml2json");
 var common = require('./common');
 var merge = common.merge;
 var Locale = common.Locale;
-var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
 
-var ilib = require("../../js/index.js");
 var Collator = require("../../js/lib/Collator.js");
 
 function usage() {
@@ -64,7 +63,7 @@ cldrDirName = process.argv[2];
 localeDirName = process.argv[3] || "tmp";
 
 console.log("gencountrynames - generate localized country names from the CLDR data.\n" +
-        "Copyright (c) 2013-2018 JEDLSoft");
+        "Copyright (c) 2013-2021 JEDLSoft");
 console.log("CLDR dir: " + cldrDirName);
 console.log("locale dir: " + localeDirName);
 
@@ -106,7 +105,7 @@ function getCountryNames(localeData, pathname, locale) {
             script = locale.getScript(),
             country = locale.getRegion();
 
-        var data = require(path.join("cldr-localnames-full/main", locale.getSpec(), "territories.json"));
+        var data = require(path.join("cldr-localenames-full/main", locale.getSpec(), "territories.json"));
 
         var destfile = calcLocalePath(language, script, country, "ctrynames.json");
         var destdata = loadFile(destfile);
@@ -434,7 +433,7 @@ function mergeAndSortRegions(localeData) {
 function sortCountries(localeData, locale) {
     if (localeData) {
         if (localeData.data) {
-            var loc = (locale === "root") ? "en-US" : locale;
+            var loc = (locale === "und") ? "en-US" : locale;
             var collator = new Collator({
                 locale: loc,
                 sensitivity: "case"
@@ -463,7 +462,7 @@ function sortCountries(localeData, locale) {
             // console.log("merging " + prop);
             if (prop && typeof(localeData[prop]) !== 'undefined' && prop !== 'data' && prop !== 'merged') {
                 // console.log(prop + " ");
-                sortCountries(localeData[prop], (locale !== "root") ? locale + '-' + prop : prop);
+                sortCountries(localeData[prop], (locale !== "und") ? locale + '-' + prop : prop);
             }
         }
     }
@@ -491,7 +490,7 @@ function mergeCountries(localeData) {
 var localeDirs, localeData = {}, regionData = {};
 
 try {
-    localeDirs = require("cldr-core/availableLocales.json").availableLocales;
+    localeDirs = require("cldr-core/availableLocales.json").availableLocales.full;
 } catch (e) {
     console.log("Error: Could not load file cldr-core/availableLocales.json");
     process.exit(2);
@@ -505,7 +504,7 @@ for (var i = 0; i < localeDirs.length; i++) {
     var localeSpec = localeDirs[i];
     var locale = new Locale(localeSpec);
 
-    if (localeSpec !== "root") {
+    if (localeSpec !== "und") {
         getCountryNames(localeData, localeSpec, locale);
         getRegionNames(regionData, localeSpec, locale);
     }
@@ -516,7 +515,7 @@ console.log("Merging and pruning locale data...");
 localeData.data = localeData.en.data;
 
 mergeCountries(localeData);
-sortCountries(localeData, "root");
+sortCountries(localeData, "und");
 
 // use English as the root language for regions
 regionData.data = regionData.en.data;

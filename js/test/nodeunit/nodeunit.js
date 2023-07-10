@@ -1482,11 +1482,11 @@ assert.ifError = function (err) { if (err) {throw err;}};
 
 
 /**
- * Return true if every element in the expected array also exists in the the actual 
+ * Return true if every element in the expected array also exists in the the actual
  * array. The actual array may contain more elements that are not in the expected
- * array. This implementation is very simple and not very efficient (Order(n^2)) so 
+ * array. This implementation is very simple and not very efficient (Order(n^2)) so
  * do not call this to compare large arrays.
- * 
+ *
  * @param {Array.<Object>} actual The actual array to test
  * @param {Array.<Object>} expected The array to test against
  * @returns True if every element of the expected array exists in the actual array.
@@ -1574,7 +1574,7 @@ assert.roughlyEqual = function(actual, expected, tolerance, message) {
  * giving the value. If the expected object is an array, each item in the expected
  * array should exist in the actual array. If expected is an object, then the actual
  * object must have all properties that the expected object has and with the same
- * value. The actual object may have more properties that do not exist in 
+ * value. The actual object may have more properties that do not exist in
  * expected, but this function
  * is used to test for only the properties that the unit test cares about.
  *
@@ -1592,7 +1592,7 @@ assert.contains = function(actual, expected, message) {
         if (typeof(expected) === "undefined") {
             fail("Invalid expected argument to contains.");
         }
-        
+
         if (typeof(expected) === "object") {
             fail(actual, expected, message + " Expected is object and actual is array.", "contains", assert.contains);
         } else if (isArray(expected)) {
@@ -2219,7 +2219,7 @@ exports.run = function (modules, options, callback) {
     	">=": "<",
     	"in": "not in"
     };
-    
+
     nodeunit.runModules(modules, {
         moduleStart: function (name) {
             /*var mheading = document.createElement('h2');
@@ -2250,7 +2250,7 @@ exports.run = function (modules, options, callback) {
                 var a = assertions[i];
                 if (a.failed()) {
                     li.innerHTML = (a.message || a.method || 'no message') + " " +
-                    	a.error.actual + " (actual) " + (notMap[a.error.operator] || a.error.operator) + 
+                    	a.error.actual + " (actual) " + (notMap[a.error.operator] || a.error.operator) +
                     	" " + a.error.expected + " (expected)" +
                     	//JSON.stringify(a) + " " +
                         '<pre>' + (a.error.stack || a.error) + '</pre>';

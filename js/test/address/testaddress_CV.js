@@ -1,6 +1,6 @@
 /*
  * testaddress.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,7 +38,7 @@ module.exports.testaddress_CV = {
     testParseAddressCVNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38, 7600 PRAIA, SANTIAGO, CAPE VERDE", {locale: 'pt-CV'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38");
         test.equal(parsedAddress.region, "SANTIAGO");
@@ -48,11 +48,11 @@ module.exports.testaddress_CV = {
         test.equal(parsedAddress.countryCode, "CV");
         test.done();
     },
-    
+
     testParseAddressCVNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38,PRAIA, SANTIAGO, CAPE VERDE", {locale: 'pt-CV'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38");
         test.equal(parsedAddress.region, "SANTIAGO");
@@ -62,11 +62,11 @@ module.exports.testaddress_CV = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressCVManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Felipe Ramos\nRua 5 de Julho 138/Platô, C.P. 38\n7600 PRAIA\nSANTIAGO\nCAPE VERDE", {locale: 'pt-CV'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38");
         test.equal(parsedAddress.region, "SANTIAGO");
@@ -76,11 +76,11 @@ module.exports.testaddress_CV = {
         test.equal(parsedAddress.countryCode, "CV");
         test.done();
     },
-    
+
     testParseAddressCVOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38, 7600 PRAIA, SANTIAGO, CAPE VERDE", {locale: 'pt-CV'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38");
         test.equal(parsedAddress.region, "SANTIAGO");
@@ -90,11 +90,11 @@ module.exports.testaddress_CV = {
         test.equal(parsedAddress.countryCode, "CV");
         test.done();
     },
-    
+
     testParseAddressCVSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38  \n\t\n 7600 PRAIA, SANTIAGO\t\n\n CAPE VERDE  \n  \t\t\t", {locale: 'pt-CV'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38");
         test.equal(parsedAddress.region, "SANTIAGO");
@@ -104,11 +104,11 @@ module.exports.testaddress_CV = {
         test.equal(parsedAddress.countryCode, "CV");
         test.done();
     },
-    
+
     testParseAddressCVNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Felipe Ramos Rua 5 de Julho 138/Platô C.P. 38 7600 PRAIA SANTIAGO CAPE VERDE", {locale: 'pt-CV'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Luis Felipe Ramos Rua 5 de Julho 138/Platô C.P. 38");
         test.equal(parsedAddress.region, "SANTIAGO");
@@ -118,11 +118,11 @@ module.exports.testaddress_CV = {
         test.equal(parsedAddress.countryCode, "CV");
         test.done();
     },
-    
+
     testParseAddressCVSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38, 7600 PRAIA, SANTIAGO, CAPE VERDE", {locale: 'pt-CV'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38");
         test.equal(parsedAddress.region, "SANTIAGO");
@@ -132,13 +132,13 @@ module.exports.testaddress_CV = {
         test.equal(parsedAddress.countryCode, "CV");
         test.done();
     },
-    
+
     testParseAddressCVFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38, 7600 PRAIA, SANTIAGO, CAPE VERDE", {locale: 'en-US'});
-        
+
         // the country name is in English because this address is for a contact in a US database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38");
         test.equal(parsedAddress.region, "SANTIAGO");
@@ -148,7 +148,7 @@ module.exports.testaddress_CV = {
         test.equal(parsedAddress.countryCode, "CV");
         test.done();
     },
-    
+
     testFormatAddressCV: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -159,13 +159,13 @@ module.exports.testaddress_CV = {
             country: "CAPE VERDE",
             countryCode: "CV"
         }, {locale: 'pt-CV'});
-        
+
         var expected = "Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38\n7600 PRAIA\nSANTIAGO\nCAPE VERDE";
         var formatter = new AddressFmt({locale: 'pt-CV'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressCVFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -176,11 +176,11 @@ module.exports.testaddress_CV = {
             locality: "PRAIA",
             countryCode: "CV"
         }, {locale: 'en-US'});
-        
+
         var expected = "Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38\n7600 PRAIA\nSANTIAGO\nCAPE VERDE";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

@@ -1,7 +1,7 @@
 /*
  * genpapersizes.js - ilib tool to generate the json data about paper sizes
  *
- * Copyright © 2013-2018, 2020 JEDLSoft
+ * Copyright © 2013-2018, 2020, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@
  */
 var fs = require('fs');
 var path = require('path');
+var stringify = require('json-stable-stringify');
 var suppData = require("cldr-core/supplemental/measurementData.json");
 
 var common = require('./common.js');
@@ -55,7 +56,7 @@ if (process.argv.length > 2) {
 }
 
 console.log("genpapersizes - generate the localeinfo papersize.jf files.\n" +
-    "Copyright (c) 2013-2018 JEDLSoft");
+    "Copyright (c) 2013-2018, 2020, 2022 JEDLSoft");
 
 console.log("output dir: " + toDir);
 
@@ -85,8 +86,8 @@ for (var territories in paperSizeData) {
         }
         papersize["paperSizes"] = paperSizes;
         papersize.generated = true;
-        
-        fs.writeFileSync(filename, JSON.stringify(papersize, true, 4));
+
+        fs.writeFileSync(filename, stringify(papersize, {space: 4}));
         console.log(filename);
     } else {
         // deal with "001": "A4". - code 001 indicates World.
@@ -98,7 +99,7 @@ for (var territories in paperSizeData) {
         paperSizes["regular"] = "A4";
         papersize["paperSizes"] = paperSizes;
         papersize.generated = true;
-        fs.writeFileSync(filename, JSON.stringify(papersize, true, 4));
+        fs.writeFileSync(filename, stringify(papersize, {space: 4}));
         console.log(filename);
     }
 }

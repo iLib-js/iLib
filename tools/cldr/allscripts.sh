@@ -2,7 +2,7 @@
 #
 # allscripts.sh - run all of the scripts
 #
-# Copyright © 2018-2020, JEDLSoft
+# Copyright © 2018-2022, JEDLSoft
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,14 +18,14 @@
 # limitations under the License.
 #
 
-CLDR_VERSION=37.0.0
-UCD_VERSION=13.0.0
-ISO_VERSION=2.4.0
+CLDR_VERSION=42.0.0
+UCD_VERSION=15.0.0
+ISO_VERSION=3.0.1
 
 # get the latest full data
-pushd ../..
-npm install cldr-core@${CLDR_VERSION} cldr-dates-full@${CLDR_VERSION} cldr-cal-ethiopic-full@${CLDR_VERSION} cldr-cal-persian-full@${CLDR_VERSION} cldr-localenames-full@${CLDR_VERSION} cldr-misc-full@${CLDR_VERSION} cldr-numbers-full@${CLDR_VERSION} cldr-units-full@${CLDR_VERSION} ucd-full@${UCD_VERSION} iso-15924@${ISO_VERSION}
-popd
+# pushd ../..
+# npm install cldr-core@${CLDR_VERSION} cldr-dates-full@${CLDR_VERSION} cldr-cal-ethiopic-full@${CLDR_VERSION} cldr-cal-persian-full@${CLDR_VERSION} cldr-localenames-full@${CLDR_VERSION} cldr-misc-full@${CLDR_VERSION} cldr-numbers-full@${CLDR_VERSION} cldr-units-full@${CLDR_VERSION} ucd-full@${UCD_VERSION} iso-15924@${ISO_VERSION}
+# popd
 
 TARGET=../../js/data/locale
 TESTTARGET=../../js/test/strings-ext
@@ -100,7 +100,7 @@ node genlist.js $TARGET
 node genmeasurementsystem.js $TARGET
 node gennumfmt.js $TARGET
 node genpapersizes.js $TARGET
-# node genplurals.js $TARGET   plurals need a rework before this can be uncommented
+node genplurals.js $TARGET
 node genunits.js $TARGET
 node genweekdata.js $TARGET
 node gennorm.js $TARGET

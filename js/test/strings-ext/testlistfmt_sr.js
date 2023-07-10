@@ -32,45 +32,45 @@ module.exports.testlistfmt_sr = {
     },
 
     // sr-Cyrl-RS
-    
+
     testListFmtsrCyrlRSNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Cyrl-RS"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један"]), "један");
         test.done();
     },
-    
+
     testListFmtsrCyrlRSNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Cyrl-RS"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два"]), "један и два");
         test.done();
     },
-    
+
     testListFmtsrCyrlRSNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Cyrl-RS"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два", "три"]), "један, два и три");
         test.done();
     },
-    
+
     testListFmtsrCyrlRSNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Cyrl-RS"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два", "три", "четири"]), "један, два, три и четири");
@@ -81,43 +81,43 @@ module.exports.testlistfmt_sr = {
             locale: "sr-Cyrl-RS",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један"]), "један");
         test.done();
     },
-    
+
     testListFmtUnitStylesrCyrlRSNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Cyrl-RS",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два"]), "један и два");
         test.done();
     },
-    
+
     testListFmtUnitStylesrCyrlRSNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Cyrl-RS",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два", "три"]), "један, два и три");
         test.done();
     },
-    
+
     testListFmtUnitStylesrCyrlRSNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Cyrl-RS",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два", "три", "четири"]), "један, два, три и четири");
@@ -129,46 +129,46 @@ module.exports.testlistfmt_sr = {
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један"]), "један");
         test.done();
     },
-    
+
     testListFmtUnitStylesrCyrlRSNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Cyrl-RS",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два"]), "један и два");
         test.done();
     },
-    
+
     testListFmtUnitStylesrCyrlRSNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Cyrl-RS",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два", "три"]), "један, два и три");
         test.done();
     },
-    
+
     testListFmtUnitStylesrCyrlRSNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Cyrl-RS",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два", "три", "четири"]), "један, два, три и четири");
@@ -176,45 +176,45 @@ module.exports.testlistfmt_sr = {
     },
 
     // sr-Latn-RS
-    
+
     testListFmtsrLatnRSNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Latn-RS"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један"]), "један");
         test.done();
     },
-    
+
     testListFmtsrLatnRSNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Latn-RS"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два"]), "један i два");
         test.done();
     },
-    
+
     testListFmtsrLatnRSNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Latn-RS"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два", "три"]), "један, два i три");
         test.done();
     },
-    
+
     testListFmtsrLatnRSNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Latn-RS"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два", "три", "четири"]), "један, два, три i четири");
@@ -225,43 +225,43 @@ module.exports.testlistfmt_sr = {
             locale: "sr-Latn-RS",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један"]), "један");
         test.done();
     },
-    
+
     testListFmtUnitStylesrLatnRSNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Latn-RS",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два"]), "један i два");
         test.done();
     },
-    
+
     testListFmtUnitStylesrLatnRSNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Latn-RS",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два", "три"]), "један, два i три");
         test.done();
     },
-    
+
     testListFmtUnitStylesrLatnRSNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Latn-RS",
             style: "unit"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два", "три", "четири"]), "један, два, три i четири");
@@ -273,46 +273,46 @@ module.exports.testlistfmt_sr = {
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један"]), "један");
         test.done();
     },
-    
+
     testListFmtUnitStylesrLatnRSNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Latn-RS",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два"]), "један i два");
         test.done();
     },
-    
+
     testListFmtUnitStylesrLatnRSNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Latn-RS",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два", "три"]), "један, два i три");
         test.done();
     },
-    
+
     testListFmtUnitStylesrLatnRSNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "sr-Latn-RS",
             style: "unit",
             length: "medium"
         });
-    
+
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["један", "два", "три", "четири"]), "један, два, три i четири");

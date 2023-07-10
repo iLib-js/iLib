@@ -1,7 +1,7 @@
 /*
  * testscriptinfo.js - test the script info object
- * 
- * Copyright © 2013-2017, 2019-2021 JEDLSoft
+ *
+ * Copyright © 2013-2017, 2019-2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,12 +32,12 @@ module.exports.testscriptinfo = {
         test.ok(si !== null);
         test.done();
     },
-    
+
     testScriptGet1: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Latn");
         test.ok(si !== null);
-        
+
         test.equal(si.getCode(), "Latn");
         test.equal(si.getCodeNumber(), 215);
         test.equal(si.getName(), "Latin");
@@ -47,12 +47,12 @@ module.exports.testscriptinfo = {
         test.ok(si.getCasing());
         test.done();
     },
-    
+
     testScriptGet2: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Phag");
         test.ok(si !== null);
-        
+
         test.equal(si.getCode(), "Phag");
         test.equal(si.getCodeNumber(), 331);
         test.equal(si.getName(), "Phags-pa");
@@ -62,12 +62,12 @@ module.exports.testscriptinfo = {
         test.ok(!si.getCasing());
         test.done();
     },
-    
+
     testScriptGet3: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Hebr");
         test.ok(si !== null);
-        
+
         test.equal(si.getCode(), "Hebr");
         test.equal(si.getCodeNumber(), 125);
         test.equal(si.getName(), "Hebrew");
@@ -77,12 +77,12 @@ module.exports.testscriptinfo = {
         test.ok(!si.getCasing());
         test.done();
     },
-    
+
     testScriptGet4: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Hans");
         test.ok(si !== null);
-        
+
         test.equal(si.getCode(), "Hans");
         test.equal(si.getCodeNumber(), 501);
         test.equal(si.getName(), "Han (Simplified variant)");
@@ -92,24 +92,24 @@ module.exports.testscriptinfo = {
         test.ok(!si.getCasing());
         test.done();
     },
-    
+
     testScriptGetDefaultLongCode: function(test) {
         test.expect(5);
         var si = new ScriptInfo("Sara");
         test.ok(si !== null);
-        
+
         test.equal(si.getCode(), "Sara");
         test.equal(si.getCodeNumber(), 292);
         test.equal(si.getName(), "Sarati");
         test.equal(si.getLongCode(), "Sarati");
         test.done();
     },
-    
+
     testScriptGetDefaultLongCodeOrya: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Orya");
         test.ok(si !== null);
-        
+
         test.equal(si.getCode(), "Orya");
         test.equal(si.getCodeNumber(), 327);
         test.equal(si.getName(), "Oriya (Odia)");
@@ -119,12 +119,12 @@ module.exports.testscriptinfo = {
         test.ok(!si.getCasing());
         test.done();
     },
-    
+
     testScriptGetDefaultLongCodeAmharic: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Ethi");
         test.ok(si !== null);
-        
+
         test.equal(si.getCode(), "Ethi");
         test.equal(si.getCodeNumber(), 430);
         test.equal(si.getName(), "Ethiopic (Geʻez)");
@@ -138,7 +138,7 @@ module.exports.testscriptinfo = {
         test.expect(8);
         var si = new ScriptInfo("Kore");
         test.ok(si !== null);
-        
+
         test.equal(si.getCode(), "Kore");
         test.equal(si.getCodeNumber(), 287);
         test.equal(si.getName(), "Korean (alias for Hangul + Han)");
@@ -148,12 +148,12 @@ module.exports.testscriptinfo = {
         test.ok(!si.getCasing());
         test.done();
     },
-    
+
     testScriptGetDefaultLongCodeArab: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Arab");
         test.ok(si !== null);
-        
+
         test.equal(si.getCode(), "Arab");
         test.equal(si.getCodeNumber(), 160);
         test.equal(si.getName(), "Arabic");
@@ -167,21 +167,21 @@ module.exports.testscriptinfo = {
         test.expect(5);
         var si = new ScriptInfo("Fooo");
         test.ok(si !== null);
-        
+
         test.equal(si.getCode(), undefined);
         test.equal(si.getCodeNumber(), 0);
         test.equal(si.getName(), undefined);
         test.equal(si.getLongCode(), undefined);
         test.done();
     },
-    
+
     testScriptGetAllScripts: function(test) {
         test.expect(7);
         var scripts = ScriptInfo.getAllScripts();
         test.ok(scripts !== null);
-        
-        test.equal(scripts.length, 203);
-    
+
+        test.equal(scripts.length, 213);
+
         test.equal(scripts[0], "Adlm");
         test.equal(scripts[1], "Afak");
         test.equal(scripts[2], "Aghb");
@@ -189,12 +189,12 @@ module.exports.testscriptinfo = {
         test.equal(scripts[scripts.length-1], "Zzzz");
         test.done();
     },
-    
+
     testScriptGetDefaultLongCodeKits: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Kits");
         test.ok(si !== null);
-        
+
         test.equal(si.getCode(), "Kits");
         test.equal(si.getCodeNumber(), 288);
         test.equal(si.getName(), "Khitan small script");
@@ -204,12 +204,12 @@ module.exports.testscriptinfo = {
         test.ok(!si.getCasing());
         test.done();
     },
-    
+
     testScriptGetDefaultLongCodePauc: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Pauc");
         test.ok(si !== null);
-        
+
         test.equal(si.getCode(), "Pauc");
         test.equal(si.getCodeNumber(), 263);
         test.equal(si.getName(), "Pau Cin Hau");
@@ -219,12 +219,12 @@ module.exports.testscriptinfo = {
         test.ok(!si.getCasing());
         test.done();
     },
-    
+
     testScriptGetDefaultLongCodeMend: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Mend");
         test.ok(si !== null);
-        
+
         test.equal(si.getCode(), "Mend");
         test.equal(si.getCodeNumber(), 438);
         test.equal(si.getName(), "Mende Kikakui");
@@ -1656,7 +1656,7 @@ module.exports.testscriptinfo = {
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
     },
-    
+
     testScriptInfo_ha_NG: function(test) {
         test.expect(4);
         var li = new LocaleInfo("ha-NG");
@@ -2420,6 +2420,76 @@ module.exports.testscriptinfo = {
     testScriptInfo_ha: function(test) {
         test.expect(4);
         var li = new LocaleInfo("ha");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_lb: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("lb-LU");
+      var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_ig: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ig");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_ig_NG: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ig-NG");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_ps_AF: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ps-AF");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Arab");
+        test.equal(scinfo.getScriptDirection(), "rtl");
+        test.done();
+    },
+    testScriptInfo_ps_PK: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ps-PK");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Arab");
+        test.equal(scinfo.getScriptDirection(), "rtl");
+        test.done();
+    },
+    testScriptInfo_yo_BJ: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("yo-BJ");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Latn");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
+    testScriptInfo_yo_NG: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("yo-NG");
         var scinfo = new ScriptInfo(li.getScript());
         test.ok(li !== null);
         test.ok(scinfo !== null);

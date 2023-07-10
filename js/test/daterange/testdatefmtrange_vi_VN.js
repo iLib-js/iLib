@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_vi_VN.js - test the date range formatter object Vietnamese/Vietnam
- * 
- * Copyright © 2012-2017, 2020 JEDLSoft
+ *
+ * Copyright © 2012-2017, 2020,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,12 +33,11 @@ module.exports.testdatefmtrange_vi_VN = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtVNRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -57,14 +56,14 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "13:45 – 14:30, 31/12/2011");
+        test.equal(fmt.format(start, end), "13:45 – 14:30 31/12/2011");
         test.done();
     },
     testDateRngFmtVNRangeInDayMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -83,14 +82,14 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "13:45 – 14:30, 31 thg 12, 2011");
+        test.equal(fmt.format(start, end), "13:45 – 14:30 31 thg 12, 2011");
         test.done();
     },
     testDateRngFmtVNRangeInDayLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -109,14 +108,14 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "13:45 – 14:30 31 tháng 12, 2011");
+        test.equal(fmt.format(start, end), "13:45 – lúc 14:30 31 tháng 12, 2011");
         test.done();
     },
     testDateRngFmtVNRangeInDayFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -135,15 +134,14 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "13:45 – 14:30 31 tháng 12, 2011");
+        test.equal(fmt.format(start, end), "13:45 – lúc 14:30 31 tháng 12, 2011");
         test.done();
     },
-    
     testDateRngFmtVNRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -162,14 +160,14 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "13:45, 30/12/2011 – 14:30, 31/12/2011");
+        test.equal(fmt.format(start, end), "13:45 30/12/2011 – 14:30 31/12/2011");
         test.done();
     },
     testDateRngFmtVNRangeNextDayMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -188,14 +186,14 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "13:45, 30 thg 12, 2011 – 14:30, 31 thg 12, 2011");
+        test.equal(fmt.format(start, end), "13:45 30 thg 12, 2011 – 14:30 31 thg 12, 2011");
         test.done();
     },
     testDateRngFmtVNRangeNextDayLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -214,14 +212,14 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "13:45 30 tháng 12, 2011 – 14:30 31 tháng 12, 2011");
+        test.equal(fmt.format(start, end), "lúc 13:45 30 tháng 12, 2011 – lúc 14:30 31 tháng 12, 2011");
         test.done();
     },
     testDateRngFmtVNRangeNextDayFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -240,15 +238,14 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "13:45 30 tháng 12, 2011 – 14:30 31 tháng 12, 2011");
+        test.equal(fmt.format(start, end), "lúc 13:45 30 tháng 12, 2011 – lúc 14:30 31 tháng 12, 2011");
         test.done();
     },
-    
     testDateRngFmtVNRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -274,7 +271,7 @@ module.exports.testdatefmtrange_vi_VN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -300,7 +297,7 @@ module.exports.testdatefmtrange_vi_VN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -326,7 +323,7 @@ module.exports.testdatefmtrange_vi_VN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 12,
@@ -348,12 +345,11 @@ module.exports.testdatefmtrange_vi_VN = {
         test.equal(fmt.format(start, end), "20 – 31 tháng 12, 2011");
         test.done();
     },
-    
     testDateRngFmtVNRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -379,7 +375,7 @@ module.exports.testdatefmtrange_vi_VN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -405,7 +401,7 @@ module.exports.testdatefmtrange_vi_VN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -431,7 +427,7 @@ module.exports.testdatefmtrange_vi_VN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -453,12 +449,11 @@ module.exports.testdatefmtrange_vi_VN = {
         test.equal(fmt.format(start, end), "20 tháng 11 – 31 tháng 12, 2011");
         test.done();
     },
-    
     testDateRngFmtVNRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -484,7 +479,7 @@ module.exports.testdatefmtrange_vi_VN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -510,7 +505,7 @@ module.exports.testdatefmtrange_vi_VN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -536,7 +531,7 @@ module.exports.testdatefmtrange_vi_VN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -558,12 +553,11 @@ module.exports.testdatefmtrange_vi_VN = {
         test.equal(fmt.format(start, end), "20 tháng 11, 2011 – 31 tháng 1, 2012");
         test.done();
     },
-    
     testDateRngFmtVNRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "short"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -589,7 +583,7 @@ module.exports.testdatefmtrange_vi_VN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -615,7 +609,7 @@ module.exports.testdatefmtrange_vi_VN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "long"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -641,7 +635,7 @@ module.exports.testdatefmtrange_vi_VN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -667,7 +661,7 @@ module.exports.testdatefmtrange_vi_VN = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "vi-VN", length: "full"});
         test.ok(fmt !== null);
-        
+
         var start = new GregorianDate({
             year: 2011,
             month: 11,
@@ -689,5 +683,4 @@ module.exports.testdatefmtrange_vi_VN = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-    
 };

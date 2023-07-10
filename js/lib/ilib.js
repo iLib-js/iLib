@@ -1,7 +1,7 @@
 /*
  * ilib.js - define the ilib name space
  *
- * Copyright © 2012-2020, JEDLSoft
+ * Copyright © 2012-2021, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,15 @@
  */
 
 /**
- * @namespace The global namespace that contains general ilib functions useful
+ * The global namespace that contains general ilib functions useful
  * to all of ilib
- *
- * @version // !macro ilibVersion
+ * @namespace
  */
 var ilib = ilib || {};
 
+/**
+ * @version // !macro ilibVersion
+ */
 /** @private */
 ilib._ver = function() {
     return // !macro ilibVersion
@@ -138,7 +140,9 @@ ilib._getPlatform = function () {
             }
         } catch (e) {}
 
-        if (typeof(global) !== 'undefined' && global.process && global.process.versions && global.process.versions.node && typeof(module) !== 'undefined') {
+        if (typeof(global) !== 'undefined' && global.process &&
+                ((global.process.versions && global.process.versions.node && typeof(module) !== 'undefined') ||
+                (typeof(global.process.iotjs) !== "undefined"))) {
             ilib._platform = "nodejs";
         } else if (typeof(Qt) !== 'undefined') {
             ilib._platform = "qt";
@@ -167,33 +171,33 @@ ilib._getBrowser = function () {
     if (ilib._getPlatform() === "browser") {
         if (navigator && navigator.userAgent) {
             if (navigator.userAgent.indexOf("Firefox") > -1) {
-                browser = "firefox";
+                return "firefox";
             }
             if (navigator.userAgent.search(/Opera|OPR/) > -1 ) {
-                browser = "opera";
+                return "opera";
             }
             if (navigator.userAgent.indexOf("Chrome") > -1) {
-                browser = "chrome";
+                return "chrome";
             }
             if (navigator.userAgent.indexOf(" .NET") > -1) {
-                browser = "ie";
+                return "ie";
             }
             if (navigator.userAgent.indexOf("Safari") > -1) {
                 // chrome also has the string Safari in its userAgent, but the chrome case is
                 // already taken care of above
-                browser = "safari";
+                return "safari";
             }
             if (navigator.userAgent.indexOf("Edge") > -1) {
-                browser = "Edge";
+                return "Edge";
             }
             if (navigator.userAgent.search(/iPad|iPhone|iPod/) > -1) {
                 // Due to constraints of the iOS platform,
                 // all browser must be built on top of the WebKit rendering engine
-                browser = "iOS";
+                return "iOS";
             }
         }
     }
-    return browser;
+    return "unknown";
 };
 
 /**

@@ -1,6 +1,6 @@
 /*
  * testaddress.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,7 +38,7 @@ module.exports.testaddress_DK = {
     testParseAddressDKNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Hr. Niels Henriksen, Kastanievej 15, DK-8660 SKANDERBORG, DENMARK", {locale: 'da-DK'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Hr. Niels Henriksen, Kastanievej 15");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -48,11 +48,11 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-    
+
     testParseAddressDKNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Hr. Niels Henriksen, Kastanievej 15, SKANDERBORG, DENMARK", {locale: 'da-DK'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Hr. Niels Henriksen, Kastanievej 15");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -62,11 +62,11 @@ module.exports.testaddress_DK = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressDKShortZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Hr. Niels Henriksen, Kastanievej 15, 8660 SKANDERBORG, DENMARK", {locale: 'da-DK'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Hr. Niels Henriksen, Kastanievej 15");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -76,11 +76,11 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-    
+
     testParseAddressDKManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Hr. Niels Henriksen\nKastanievej 15\nDK-8660 SKANDERBORG\nDENMARK", {locale: 'da-DK'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Hr. Niels Henriksen, Kastanievej 15");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -90,11 +90,11 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-    
+
     testParseAddressDKOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Hr. Niels Henriksen, Kastanievej 15, DK-8660 SKANDERBORG DENMARK", {locale: 'da-DK'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Hr. Niels Henriksen, Kastanievej 15");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -104,11 +104,11 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-    
+
     testParseAddressDKSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Hr. Niels Henriksen,          Kastanievej 15   \n\t\n DK-8660      \t SKANDERBORG\t\n\n DENMARK  \n  \t\t\t", {locale: 'da-DK'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Hr. Niels Henriksen, Kastanievej 15");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -118,11 +118,11 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-    
+
     testParseAddressDKNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Hr. Niels Henriksen Kastanievej 15 DK-8660 SKANDERBORG DENMARK", {locale: 'da-DK'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Hr. Niels Henriksen Kastanievej 15");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -132,11 +132,11 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-    
+
     testParseAddressDKSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Botanisk Centralbibliotek, Sølvgade 83, opg. S, DK-1307 København, DENMARK", {locale: 'da-DK'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.ok(typeof(parsedAddress.region) === "undefined");
         test.equal(parsedAddress.locality, "København");
@@ -146,11 +146,11 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-    
+
     testParseAddressDKPostOffice: function(test) {
         test.expect(8);
         var parsedAddress = new Address("Botanisk Centralbibliotek, Sølvgade 83, opg. S, DK-1307 København K, DENMARK", {locale: 'da-DK'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.ok(typeof(parsedAddress.region) === "undefined");
         test.equal(parsedAddress.locality, "København");
@@ -161,11 +161,11 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-    
+
     testParseAddressDKPostOfficeDot: function(test) {
         test.expect(8);
         var parsedAddress = new Address("Botanisk Centralbibliotek, Sølvgade 83, opg. S, DK-1307 København K., DENMARK", {locale: 'da-DK'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.ok(typeof(parsedAddress.region) === "undefined");
         test.equal(parsedAddress.locality, "København");
@@ -176,13 +176,13 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-    
+
     testParseAddressDKFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Hr. Niels Henriksen, Kastanievej 15, DK-8660 SKANDERBORG, DENMARK", {locale: 'en-US'});
-        
+
         // the country name is in English because this address is for a contact in a US database
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Hr. Niels Henriksen, Kastanievej 15");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -192,7 +192,7 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-    
+
     testFormatAddressDK: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -202,13 +202,13 @@ module.exports.testaddress_DK = {
             country: "DENMARK",
             countryCode: "DK"
         }, {locale: 'da-DK'});
-        
+
         var expected = "Hr. Niels Henriksen,Kastanievej 15\nDK-8660 SKANDERBORG\nDENMARK";
         var formatter = new AddressFmt({locale: 'da-DK'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressDKPostOffice: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -219,13 +219,13 @@ module.exports.testaddress_DK = {
             country: "DENMARK",
             countryCode: "DK"
         }, {locale: 'da-DK'});
-        
+
         var expected = "Hr. Niels Henriksen, Kastanievej 15\nDK-8660 SKANDERBORG K.\nDENMARK";
         var formatter = new AddressFmt({locale: 'da-DK'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressDKFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -235,11 +235,11 @@ module.exports.testaddress_DK = {
             country: "DENMARK",
             countryCode: "DK"
         }, {locale: 'en-US'});
-        
+
         var expected = "Hr. Niels Henriksen,Kastanievej 15\nDK-8660 SKANDERBORG\nDENMARK";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

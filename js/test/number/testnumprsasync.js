@@ -62,7 +62,7 @@ module.exports.testnumprsasync = {
             sync: false,
             onLoad: function(num) {
                 test.ok(num !== null);
-                
+
                 test.equal(num.getLocale().getSpec(), "de-DE");
                 test.equal(num.valueOf(), 3.4);
                 test.done();
@@ -91,7 +91,7 @@ module.exports.testnumprsasync = {
             sync: false,
             onLoad: function(num) {
                 test.ok(num !== null);
-                
+
                 test.equal(num.valueOf(), 5.80);
                 test.done();
             }
@@ -105,7 +105,7 @@ module.exports.testnumprsasync = {
             sync: false,
             onLoad: function(num) {
                 test.ok(num !== null);
-                
+
                 var cur = num.getCurrency();
                 test.ok(typeof(cur) !== "undefined");
                 test.equal(cur.getCode(), "GBP");
@@ -116,7 +116,7 @@ module.exports.testnumprsasync = {
 
     testNumberAsyncParseNonLatinDigits: function(test) {
         test.expect(2);
-        
+
         // tests that the CType isDigit data is loaded
         new INumber("১২৩.৪৫৬", {
             locale: "bn-IN",
@@ -131,7 +131,7 @@ module.exports.testnumprsasync = {
 
     testNumberAsyncParseWithSpaces: function(test) {
         test.expect(2);
-        
+
         // tests that CType isSpace data is loaded
         new INumber("1 234 567,745", {
             locale: "fr-FR",

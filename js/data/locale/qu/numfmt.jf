@@ -1,7 +1,7 @@
 {
     "generated": true,
     "numfmt": {
-        "pctFmt": "{n} %",
-        "negativepctFmt": "-{n} %"
+        "negativepctFmt": "-{n} %",
+        "pctFmt": "{n} %"
     }
 }

@@ -1,7 +1,7 @@
 /*
  * genlist.js - ilib tool to generate the ilib format list data from cldr
  *
- * Copyright © 2017-2021, JEDLSoft
+ * Copyright © 2017-2023, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -108,6 +108,66 @@ var hardCodeData = {
                 "end": "{0}, mba {1}"
             }
         }
+    },
+    "lb": {
+        "or": {
+            "short": {
+                "2": "{0} oder {1}",
+                "end": "{0}, oder {1}"
+            },
+            "medium": {
+                "2": "{0} oder {1}",
+                "end": "{0}, oder {1}"
+            },
+            "long": {
+                "2": "{0} oder {1}",
+                "end": "{0}, oder {1}"
+            },
+            "full": {
+                "2": "{0} oder {1}",
+                "end": "{0}, oder {1}"
+               }
+        }
+    },
+    "ig":{
+        "or": {
+            "short": {
+                "2": "{0} ma ọ bụ {1}",
+                "end": "{0}, ma ọ bụ {1}"
+            },
+            "medium": {
+                "2": "{0} ma ọ bụ {1}",
+                "end": "{0}, ma ọ bụ {1}"
+            },
+            "long": {
+                "2": "{0} ma ọ bụ {1}",
+                "end": "{0}, ma ọ bụ {1}"
+            },
+            "full": {
+                "2": "{0} ma ọ bụ {1}",
+                "end": "{0}, ma ọ bụ {1}"
+            }
+        }
+    },
+    "ps":{
+        "or": {
+            "short": {
+                "2": "{0} یا {1}",
+                "end": "{0}, یا {1}"
+            },
+            "medium": {
+                "2": "{0} یا {1}",
+                "end": "{0}, یا {1}"
+            },
+            "long": {
+                "2": "{0} یا {1}",
+                "end": "{0}, یا {1}"
+            },
+            "full": {
+                "2": "{0} یا {1}",
+                "end": "{0}, یا {1}"
+              }
+        }
     }
 }
 
@@ -133,7 +193,7 @@ process.argv.forEach(function (val, index, array) {
 toDir = process.argv[2] || "tmp";
 
 console.log("genlist - generate list formatter data.\n" +
-    "Copyright (c) 2017-2020 JEDLSoft");
+    "Copyright (c) 2017-2023 JEDLSoft");
 
 console.log("output dir: " + toDir);
 
@@ -219,14 +279,17 @@ locales.forEach(function(locale) {
         var l = new Locale(locale);
         var position = localePatterns;
 
-        [l.getLanguage(), l.getScript(), l.getRegion()].forEach(function(prop) {
-            if (prop) {
-                if (!position[prop]) {
-                    position[prop] = {};
+        // und is the root, so leave it at the top
+        if (locale !== "und") {
+            [l.getLanguage(), l.getScript(), l.getRegion()].forEach(function(prop) {
+                if (prop) {
+                    if (!position[prop]) {
+                        position[prop] = {};
+                    }
+                    position = position[prop];
                 }
-                position = position[prop];
-            }
-        });
+            });
+        }
 
         position.data = patterns;
     } catch (e) {
@@ -237,14 +300,6 @@ locales.forEach(function(locale) {
 console.log("\n\nMerging formats forward ...");
 
 aux.mergeFormats(localePatterns, localePatterns, []);
-
-console.log("\n\nPromoting sublocales ...");
-
-for (var language in localePatterns) {
-    if (language !== "und" && language !== "data") {
-        aux.promoteFormats(localePatterns[language], language, "list.json");
-    }
-}
 
 console.log("\n\nPruning duplicated formats ...");
 

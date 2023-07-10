@@ -549,10 +549,10 @@ Astro._aberration = function(c) {
 };
 
 /**
+ * ilib.data.astro._nutCoeffA = [124.90, -1934.134, 0.002063];
+ * ilib.data.astro._nutCoeffB q= [201.11, 72001.5377, 0.00057];
  * @private
  *
-ilib.data.astro._nutCoeffA = [124.90, -1934.134, 0.002063];
-ilib.data.astro._nutCoeffB q= [201.11, 72001.5377, 0.00057];
 */
 
 /**
@@ -711,14 +711,15 @@ Astro._newMoonTime = function(n) {
     var moonArgument = Astro._poly(c, ilib.data.astro._nmMoonArgumentCoeff);
     var capOmega = Astro._poly(c, ilib.data.astro._nmCapOmegaCoeff);
     var correction = -0.00017 * Astro._dsin(capOmega);
-    for (var i = 0; i < ilib.data.astro._nmSineCoeff.length; i++) {
+    var i;
+    for (i = 0; i < ilib.data.astro._nmSineCoeff.length; i++) {
         correction = correction + ilib.data.astro._nmSineCoeff[i] * Math.pow(capE, ilib.data.astro._nmEFactor[i]) *
         Astro._dsin(ilib.data.astro._nmSolarCoeff[i] * solarAnomaly +
                 ilib.data.astro._nmLunarCoeff[i] * lunarAnomaly +
                 ilib.data.astro._nmMoonCoeff[i] * moonArgument);
     }
     var additional = 0;
-    for (var i = 0; i < ilib.data.astro._nmAddConst.length; i++) {
+    for (i = 0; i < ilib.data.astro._nmAddConst.length; i++) {
         additional = additional + ilib.data.astro._nmAddFactor[i] *
         Astro._dsin(ilib.data.astro._nmAddConst[i] + ilib.data.astro._nmAddCoeff[i] * k);
     }

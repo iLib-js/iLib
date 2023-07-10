@@ -1,7 +1,7 @@
 /*
  * NameFmt.js - Format person names for display
  *
- * Copyright © 2013-2015, 2018-2019, JEDLSoft
+ * Copyright © 2013-2015, 2018-2019, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,11 +66,9 @@ var isPunct = require("./isPunct.js");
  *     <li><i>s</i> - suffixes
  *     <li><i>h</i> - honorifics (selects the prefix or suffix as required by the locale)
  *   </ul>
- * <p>
- *
+ * <br>
  * For example, the string "pf" would mean to only format any prefixes and family names
- * together and leave out all the other parts of the name.<p>
- *
+ * together and leave out all the other parts of the name.<br><br>
  * The components can be listed in any order in the string. The <i>components</i> option
  * overrides the <i>style</i> option if both are specified.
  *
@@ -213,7 +211,7 @@ var NameFmt = function(options) {
 
 NameFmt.prototype = {
     /**
-     * @protected
+     * @private
      */
     _init: function() {
         var arr;
@@ -250,7 +248,7 @@ NameFmt.prototype = {
 
     /**
      * adjoin auxillary words to their head words
-     * @protected
+     * @private
      */
     _adjoinAuxillaries: function (parts, namePrefix) {
         var start, i, prefixArray, prefix, prefixLower;

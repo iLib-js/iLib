@@ -1,27 +1,28 @@
-/* 
- * genplurals.js - ilib tool to generate plurals json fragments from  
- * the CLDR data files 
- *  
- * Copyright © 2015-2017, 2020-2021 JEDLSoft
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
- * You may obtain a copy of the License at 
- * 
- *     http://www.apache.org/licenses/LICENSE-2.0 
- * 
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an "AS IS" BASIS, 
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
- * 
- * See the License for the specific language governing permissions and 
- * limitations under the License. 
+/*
+ * genplurals.js - ilib tool to generate plurals json fragments from
+ * the CLDR data files
+ *
+ * Copyright © 2015-2017, 2020-2022 JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-/* 
- * This code is intended to be run under node.js  
+/*
+ * This code is intended to be run under node.js
  */
 var fs = require('fs');
 var path = require('path');
+var stringify = require('json-stable-stringify');
 var common = require('./common');
 var Locale = common.Locale;
 var makeDirs = common.makeDirs;
@@ -51,7 +52,7 @@ if (process.argv.length  > 2) {
 }
 
 console.log("genplurals - generate plurals information files.\n" +
-    "Copyright (c) 2015-2017, 2020-2021  JEDLSoft");
+    "Copyright (c) 2015-2017, 2020-2022  JEDLSoft");
 console.log("toDir: " + toDir);
 
 if (!fs.existsSync(toDir)) {
@@ -283,7 +284,12 @@ function writePluralsData(locale, data) {
     if (data) {
         console.log("Writing " + fullpath);
         makeDirs(fullpath);
-        fs.writeFileSync(path.join(fullpath, "plurals.json"), JSON.stringify(data, true, 4), "utf-8");
+        if (Object.keys(data).length ==0 ){
+            fs.writeFileSync(path.join(fullpath, "plurals.json"), stringify({"other": ""}, {space: 4}), "utf-8");
+        } else {
+            fs.writeFileSync(path.join(fullpath, "plurals.json"), stringify(data, {space: 4}), "utf-8");
+        }
+
     } else {
         console.log("Skipping empty  " + fullpath);
     }
@@ -295,7 +301,7 @@ for (var language in pluralsObject) {
     if (language && pluralsObject[language]) {
         pluralsData = create_rule(pluralsObject[language]);
 
-        if (anyProperties(pluralsData)) {
+        if (language !== "und") {
             var locale = new Locale(language);
             writePluralsData(locale, pluralsData);
         }

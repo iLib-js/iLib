@@ -288,7 +288,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45, 29/09/2011");
+        test.equal(fmt.format(date), "13:45 29/09/2011");
         test.done();
     },
 
@@ -307,7 +307,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45, 29 thg 9, 2011");
+        test.equal(fmt.format(date), "13:45 29 thg 9, 2011");
         test.done();
     },
 
@@ -326,7 +326,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 29 tháng 9, 2011");
+        test.equal(fmt.format(date), "lúc 13:45 29 tháng 9, 2011");
         test.done();
     },
 
@@ -345,7 +345,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 29 tháng 9, 2011");
+        test.equal(fmt.format(date), "lúc 13:45 29 tháng 9, 2011");
         test.done();
     },
 
@@ -574,7 +574,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45, 29/09/2011");
+        test.equal(fmt.format(date), "13:45 29/09/2011");
         test.done();
     },
 

@@ -1,7 +1,56 @@
 {
+    "dayPeriods": [
+        {
+            "at": 0
+        },
+        {
+            "from": 0,
+            "to": 360
+        },
+        {
+            "from": 0,
+            "to": 720
+        },
+        {
+            "from": 360,
+            "to": 720
+        },
+        {
+            "at": 720
+        },
+        {
+            "from": 720,
+            "to": 1080
+        },
+        {
+            "from": 720,
+            "to": 1440
+        },
+        {
+            "from": 1080,
+            "to": 1440
+        }
+    ],
     "gregorian": {
-        "order": "{date}, {time}",
         "date": {
+            "d": {
+                "f": "d",
+                "l": "dd",
+                "m": "dd",
+                "s": "dd"
+            },
+            "dm": {
+                "f": "MMMM d",
+                "l": "dd MMMM",
+                "m": "dd MMM",
+                "s": "dd.MM"
+            },
+            "dmw": {
+                "f": "MMMM d, EEEE",
+                "l": "dd MMMM, EEE",
+                "m": "dd MMM, EE",
+                "s": "dd.MM, E"
+            },
             "dmwy": {
                 "f": "yyyy թ. MMMM d, EEEE",
                 "l": "dd MMMM, yyyy թ., EEE",
@@ -14,17 +63,22 @@
                 "m": "dd MMM, yyyy թ.",
                 "s": "dd.MM.yy"
             },
-            "dmw": {
-                "f": "MMMM d, EEEE",
-                "l": "dd MMMM, EEE",
-                "m": "dd MMM, EE",
-                "s": "dd.MM, E"
+            "dw": {
+                "f": "d, EEEE",
+                "l": "dd EEE",
+                "m": "dd EE",
+                "s": "dd.E"
             },
-            "dm": {
-                "f": "MMMM d",
-                "l": "dd MMMM",
-                "m": "dd MMM",
-                "s": "dd.MM"
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "LL"
+            },
+            "m": {
+                "l": "MMMM",
+                "m": "MMM",
+                "s": "MM"
             },
             "my": {
                 "f": "yyyy թ. MMMM",
@@ -32,81 +86,14 @@
                 "m": "MMM, yyyy թ.",
                 "s": "MM.yy"
             },
-            "dw": {
-                "f": "d, EEEE",
-                "l": "dd EEE",
-                "m": "dd EE",
-                "s": "dd.E"
-            },
-            "w": {
-                "f": "EEEE",
-                "l": "EEE",
-                "m": "EE",
-                "s": "E"
-            },
-            "d": {
-                "f": "d",
-                "l": "dd",
-                "m": "dd",
-                "s": "dd"
-            },
-            "m": {
-                "f": "MMMM",
-                "l": "MMMM",
-                "m": "MMM",
-                "s": "MM"
-            },
-            "y": {
-                "f": "yyyy",
-                "l": "yyyy",
-                "m": "yyyy",
-                "s": "yy"
-            },
             "mys": {
                 "f": "yyyy թ. LLLL",
                 "l": "LLLL, yyyy թ.",
                 "m": "LLL, yyyy թ.",
                 "s": "MM.yy"
-            },
-            "l": {
-                "f": "LLLL",
-                "l": "LLLL",
-                "m": "LLL",
-                "s": "LL"
             }
         },
-        "time": {
-            "12": {
-                "h": "h",
-                "m": "mm",
-                "s": "ss",
-                "ah": "h a",
-                "hm": "h:mm",
-                "ms": "mm:ss",
-                "ahm": "h:mm a",
-                "hms": "h:mm:ss",
-                "hmz": "h:mm z",
-                "ahmz": "h:mm a z",
-                "ahms": "h:mm:ss a",
-                "hmsz": "h:mm:ss z",
-                "ahmsz": "h:mm:ss a z"
-            },
-            "24": {
-                "h": "HH",
-                "m": "mm",
-                "s": "ss",
-                "ah": "HH",
-                "hm": "HH:mm",
-                "ms": "mm:ss",
-                "ahm": "HH:mm",
-                "hms": "HH:mm:ss",
-                "hmz": "HH:mm z",
-                "ahmz": "HH:mm z",
-                "ahms": "HH:mm:ss",
-                "hmsz": "HH:mm:ss z",
-                "ahmsz": "HH:mm:ss z"
-            }
-        },
+        "order": "{date}, {time}",
         "range": {
             "c00": {
                 "f": "{sy} թ. {sm} {sd}, {st} – {et}",
@@ -162,38 +149,27 @@
                 "m": "{sy} – {ey}",
                 "s": "{sy} – {ey}"
             }
+        },
+        "time": {
+            "12": {
+                "ah": "h a",
+                "ahm": "h:mm a",
+                "ahms": "h:mm:ss a",
+                "ahmsz": "h:mm:ss a z",
+                "ahmz": "h:mm a z"
+            },
+            "24": {
+                "ah": "HH",
+                "ahm": "HH:mm",
+                "ahms": "HH:mm:ss",
+                "ahmsz": "HH:mm:ss z",
+                "ahmz": "HH:mm z",
+                "h": "HH",
+                "hm": "HH:mm",
+                "hms": "HH:mm:ss",
+                "hmsz": "HH:mm:ss z",
+                "hmz": "HH:mm z"
+            }
         }
-    },
-    "dayPeriods": [
-        {
-            "at": 0
-        },
-        {
-            "from": 0,
-            "to": 360
-        },
-        {
-            "from": 0,
-            "to": 720
-        },
-        {
-            "from": 360,
-            "to": 720
-        },
-        {
-            "at": 720
-        },
-        {
-            "from": 720,
-            "to": 1080
-        },
-        {
-            "from": 720,
-            "to": 1440
-        },
-        {
-            "from": 1080,
-            "to": 1440
-        }
-    ]
+    }
 }

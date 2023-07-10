@@ -1,7 +1,7 @@
 /*
- * testdatefmtrange_tk_TM.js - test the date range formatter object Turkmen-Turkmenistan
- * 
- * Copyright © 2021, JEDLSoft
+ * testdatefmtrange_tk_TM.js - test the date range formatter object Turkmen/Turkmenistan
+ *
+ * Copyright © 2021,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_tk_TM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31.12.2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31.12.2011, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtRangeInDayMedium_tk_TM: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_tk_TM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 dek 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 dek 2011, 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtRangeInDayLong_tk_TM: function(test) {
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_tk_TM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 dekabr 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 dekabr 2011 sagat 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtRangeInDayFull_tk_TM: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_tk_TM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 dekabr 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 dekabr 2011 sagat 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtRangeNextDayShort_tk_TM: function(test) {
@@ -160,7 +160,7 @@ module.exports.testdatefmtrange_tk_TM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30.12.2011 13:45 – 31.12.2011 14:30");
+        test.equal(fmt.format(start, end), "30.12.2011, 13:45 – 31.12.2011, 14:30");
         test.done();
     },
     testDateRngFmtRangeNextDayMedium_tk_TM: function(test) {
@@ -186,7 +186,7 @@ module.exports.testdatefmtrange_tk_TM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 dek 2011 13:45 – 31 dek 2011 14:30");
+        test.equal(fmt.format(start, end), "30 dek 2011, 13:45 – 31 dek 2011, 14:30");
         test.done();
     },
     testDateRngFmtRangeNextDayLong_tk_TM: function(test) {
@@ -212,7 +212,7 @@ module.exports.testdatefmtrange_tk_TM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 dekabr 2011 13:45 – 31 dekabr 2011 14:30");
+        test.equal(fmt.format(start, end), "30 dekabr 2011 sagat 13:45 – 31 dekabr 2011 sagat 14:30");
         test.done();
     },
     testDateRngFmtRangeNextDayFull_tk_TM: function(test) {
@@ -238,7 +238,7 @@ module.exports.testdatefmtrange_tk_TM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 dekabr 2011 13:45 – 31 dekabr 2011 14:30");
+        test.equal(fmt.format(start, end), "30 dekabr 2011 sagat 13:45 – 31 dekabr 2011 sagat 14:30");
         test.done();
     },
     testDateRngFmtRangeMultiDayShort_tk_TM: function(test) {

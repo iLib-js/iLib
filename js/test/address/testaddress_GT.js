@@ -1,6 +1,6 @@
 /*
  * testaddress_GT.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports.testaddress_GT = {
     testParseAddressGTNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12\n01012-GUATEMALA\nGUATEMALA", {locale: 'es-GT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12");
         test.equal(parsedAddress.locality, "GUATEMALA");
@@ -46,11 +46,11 @@ module.exports.testaddress_GT = {
         test.equal(parsedAddress.countryCode, "GT");
         test.done();
     },
-    
+
     testParseAddressGTNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12\nGUATEMALA\nGUATEMALA", {locale: 'es-GT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12");
         test.equal(parsedAddress.locality, "GUATEMALA");
@@ -60,11 +60,11 @@ module.exports.testaddress_GT = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    
+
     testParseAddressGTNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12\n01012-GUATEMALA", {locale: 'es-GT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12");
         test.equal(parsedAddress.locality, "GUATEMALA");
@@ -74,7 +74,7 @@ module.exports.testaddress_GT = {
         test.equal(parsedAddress.countryCode, "GT");
         test.done();
     },
-    
+
     testParseAddressGTManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MIGUEL ÁNGEL MENCHÚ \nAVENIDA PETAPA 37\n\nZ. 12\n01012\nGUATEMALA\n\n\nGUATEMALA\n\n\n", {locale: 'es-GT'});
@@ -87,11 +87,11 @@ module.exports.testaddress_GT = {
         test.equal(parsedAddress.countryCode, "GT");
         test.done();
     },
-    
+
     testParseAddressGTOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MIGUEL ÁNGEL MENCHÚ , AVENIDA PETAPA 37 , Z. 12 ,01012 GUATEMALA , GUATEMALA", {locale: 'es-GT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MIGUEL ÁNGEL MENCHÚ, AVENIDA PETAPA 37, Z. 12");
         test.equal(parsedAddress.locality, "GUATEMALA");
@@ -101,11 +101,11 @@ module.exports.testaddress_GT = {
         test.equal(parsedAddress.countryCode, "GT");
         test.done();
     },
-    
+
     testParseAddressGTSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tMIGUEL ÁNGEL MENCHÚ \n\t\tAVENIDA PETAPA 37\n\nZ. 12\n\n01012\n\t\nGUATEMALA\n GUATEMALA\n\n\n", {locale: 'es-GT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MIGUEL ÁNGEL MENCHÚ, AVENIDA PETAPA 37, Z. 12");
         test.equal(parsedAddress.locality, "GUATEMALA");
@@ -115,11 +115,11 @@ module.exports.testaddress_GT = {
         test.equal(parsedAddress.countryCode, "GT");
         test.done();
     },
-    
+
     testParseAddressGTNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12 01012-GUATEMALA GUATEMALA", {locale: 'es-GT'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12");
         test.equal(parsedAddress.locality, "GUATEMALA");
@@ -129,11 +129,11 @@ module.exports.testaddress_GT = {
         test.equal(parsedAddress.countryCode, "GT");
         test.done();
     },
-    
+
     testParseAddressGTFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MIGUEL ANGEL MENCHÚ AVENIDA PETAPA 37 Z. 12\n01012-GUATEMALA\nGUATEMALA", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MIGUEL ANGEL MENCHÚ AVENIDA PETAPA 37 Z. 12");
         test.equal(parsedAddress.locality, "GUATEMALA");
@@ -143,7 +143,7 @@ module.exports.testaddress_GT = {
         test.equal(parsedAddress.countryCode, "GT");
         test.done();
     },
-    
+
     testFormatAddressGT: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -153,13 +153,13 @@ module.exports.testaddress_GT = {
             country: "GUATEMALA",
             countryCode: "GT"
         }, {locale: 'es-GT'});
-        
+
         var expected = "MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12\n01012-GUATEMALA\nGUATEMALA";
         var formatter = new AddressFmt({locale: 'es-GT'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressGTFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -169,11 +169,11 @@ module.exports.testaddress_GT = {
             country: "GUATEMALA",
             countryCode: "GT"
         }, {locale: 'en-US'});
-        
+
         var expected = "MIGUEL ANGEL MENCHÚ AVENIDA PETAPA 37 Z. 12\n01012-GUATEMALA\nGUATEMALA";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-    
+
 };

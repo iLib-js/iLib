@@ -1,7 +1,7 @@
 /*
  * testunitfmt_mt_MT.js - test the unitfmt for mt-MT
  *
- * Copyright © 2021 JEDLSoft
+ * Copyright © 2021,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,6 +30,11 @@ if (typeof(MeasurementFactory) === "undefined") {
 
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
+}
+
+function getChromeVersion () {
+    var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
+    return raw ? parseInt(raw[2], 10) : false;
 }
 
 module.exports.testunitfmt_mt_MT = {
@@ -96,7 +101,7 @@ module.exports.testunitfmt_mt_MT = {
         });
 
         var uf = new UnitFmt({
-            locale: "mt-MT", 
+            locale: "mt-MT",
             autoConvert:true,
             length:"short"
         });
@@ -113,13 +118,31 @@ module.exports.testunitfmt_mt_MT = {
         });
 
         var uf = new UnitFmt({
-            locale: "mt-MT", 
+            locale: "mt-MT",
             autoConvert: true,
             length: "long"
         });
-
         var str = uf.format(m1);
-        test.equal(str, "2 ċentimetri kwadri");
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = Number(process.versions["cldr"]);
+            if (cldrVersion < 36) {
+                test.equal(str, "2 ċentimetru kwadru");
+            } else if (Number(cldrVersion) < 42) { // The `two` category has been added since CLDR 42.
+                test.equal(str, "2 ċentimetri kwadri");
+            } else {
+                test.equal(str, "2 ċentimetru kwadru");
+            }
+        } else if (platform === "browser") {
+            var browser = ilib._getBrowser();
+            var expected = "2 ċentimetri kwadri";
+            if (browser === "chrome" && getChromeVersion() >= 110) {
+                expected = "2 ċentimetru kwadru";
+            }
+            test.equal(str, expected);
+        } else {
+            test.equal(str, "2 ċentimetru kwadru");
+        }
         test.done();
     },
     testUnitFormatArea3_mt_MT: function(test) {
@@ -130,7 +153,7 @@ module.exports.testunitfmt_mt_MT = {
         });
 
         var uf = new UnitFmt({
-            locale: "mt-MT", 
+            locale: "mt-MT",
             autoConvert: true,
             length: "short"
         });
@@ -147,7 +170,7 @@ module.exports.testunitfmt_mt_MT = {
         });
 
         var uf = new UnitFmt({
-            locale: "mt-MT", 
+            locale: "mt-MT",
             autoConvert: true,
             length: "long"
         });
@@ -185,7 +208,26 @@ module.exports.testunitfmt_mt_MT = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 kilometri kull litru");
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = Number(process.versions["cldr"]);
+            if (cldrVersion < 36) {
+                test.equal(str, "2 kilometru kull litru");
+            } else if (Number(cldrVersion) < 42) { // The `two` category has been added since CLDR 42.
+                test.equal(str, "2 kilometri kull litru");
+            } else {
+                test.equal(str, "2 kilometru kull litru");
+            }
+        } else if (platform === "browser") {
+            var browser = ilib._getBrowser();
+            var expected = "2 kilometri kull litru";
+            if (browser === "chrome" && getChromeVersion() >= 110) {
+                expected = "2 kilometru kull litru";
+            }
+            test.equal(str, expected);
+        } else {
+            test.equal(str, "2 kilometru kull litru");
+        }
         test.done();
     },
     testUnitFormatLength1_mt_MT: function(test) {

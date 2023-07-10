@@ -2,7 +2,7 @@
  * MeasurementFactory.js - Function to instantiate the appropriate subclasses of
  * the Measurement class.
  *
- * Copyright © 2015, 2018, JEDLSoft
+ * Copyright © 2015, 2018, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,9 @@ var AreaUnit = require("./AreaUnit.js");
 var DigitalStorageUnit = require("./DigitalStorageUnit.js");
 var DigitalSpeedUnit = require("./DigitalSpeedUnit.js");
 var EnergyUnit = require("./EnergyUnit.js");
+var ForceUnit = require("./ForceUnit.js");
+var PowerUnit = require("./PowerUnit.js");
+var PressureUnit = require("./PressureUnit.js");
 var FuelConsumptionUnit = require("./FuelConsumptionUnit.js");
 var LengthUnit = require("./LengthUnit.js");
 var MassUnit = require("./MassUnit.js");
@@ -117,9 +120,9 @@ var MeasurementFactory = function(options) {
     }
 
     var measurement, measure = undefined;
-
+    var c;
     // first try in the existing case
-    for (var c in Measurement._constructors) {
+    for (c in Measurement._constructors) {
         measurement = Measurement._constructors[c];
         if (Measurement.getUnitId(measurement, options.unit)) {
             measure = c;
@@ -130,7 +133,7 @@ var MeasurementFactory = function(options) {
     if (!measure) {
         // if it wasn't found before, try again in lower case -- this may recognize incorrectly because some
         // units can differ only in their case like "mm" and "Mm"
-        for (var c in Measurement._constructors) {
+        for (c in Measurement._constructors) {
             measurement = Measurement._constructors[c];
             if (typeof(Measurement.getUnitIdCaseInsensitive(measurement, options.unit)) !== 'undefined') {
                 measure = c;

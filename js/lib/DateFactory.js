@@ -259,4 +259,12 @@ DateFactory._dateToIlib = function(inDate, timezone, locale) {
     });
 };
 
+DateFactory._ilibToDate = function(ilibDate, timezone, locale) {
+    if (typeof(ilibDate) !== 'object' || !(ilibDate instanceof IDate)) {
+        return ilibDate;
+    }
+
+    return new Date(ilibDate.getTimeExtended());
+};
+
 module.exports = DateFactory;

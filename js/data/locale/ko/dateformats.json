@@ -1,7 +1,66 @@
 {
+    "dayPeriods": [
+        {
+            "at": 0
+        },
+        {
+            "from": 0,
+            "to": 720
+        },
+        {
+            "from": 180,
+            "to": 360
+        },
+        {
+            "from": 360,
+            "to": 720
+        },
+        {
+            "at": 720
+        },
+        {
+            "from": 720,
+            "to": 1080
+        },
+        {
+            "from": 720,
+            "to": 1440
+        },
+        {
+            "from": 1080,
+            "to": 1260
+        },
+        {
+            "from": 1260,
+            "to": 180
+        }
+    ],
     "gregorian": {
-        "order": "{date} {time}",
         "date": {
+            "a": {
+                "f": "d일",
+                "l": "d일",
+                "m": "d일",
+                "s": "d일"
+            },
+            "d": {
+                "f": "d",
+                "l": "d",
+                "m": "d",
+                "s": "d"
+            },
+            "dm": {
+                "f": "M월 d일",
+                "l": "M월 d일",
+                "m": "M. d.",
+                "s": "M. d."
+            },
+            "dmw": {
+                "f": "M월 d일 EEEE",
+                "l": "M월 d일 EEE",
+                "m": "M. d. EE",
+                "s": "M. d. E"
+            },
             "dmwy": {
                 "f": "yyyy년 M월 d일 EEEE",
                 "l": "yyyy년 M월 d일 EEE",
@@ -14,53 +73,11 @@
                 "m": "yyyy. M. d.",
                 "s": "yy. M. d."
             },
-            "dmw": {
-                "f": "M월 d일 EEEE",
-                "l": "M월 d일 EEE",
-                "m": "M. d. EE",
-                "s": "M. d. E"
-            },
-            "dm": {
-                "f": "M월 d일",
-                "l": "M월 d일",
-                "m": "M. d.",
-                "s": "M. d."
-            },
-            "my": {
-                "f": "yyyy년 M월",
-                "l": "yyyy년 M월",
-                "m": "yyyy. M.",
-                "s": "yy. M."
-            },
             "dw": {
                 "f": "d일 EEEE",
                 "l": "d일 EEE",
                 "m": "d. EE",
                 "s": "d. E"
-            },
-            "w": {
-                "f": "EEEE",
-                "l": "EEE",
-                "m": "EE",
-                "s": "E"
-            },
-            "d": {
-                "f": "d",
-                "l": "d",
-                "m": "d",
-                "s": "d"
-            },
-            "m": {
-                "f": "M",
-                "l": "M",
-                "m": "M",
-                "s": "M"
-            },
-            "y": {
-                "f": "yyyy",
-                "l": "yyyy",
-                "m": "yyyy",
-                "s": "yy"
             },
             "l": {
                 "f": "M월",
@@ -68,49 +85,22 @@
                 "m": "M월",
                 "s": "M월"
             },
+            "m": {
+                "f": "M",
+                "l": "M",
+                "m": "M"
+            },
+            "my": {
+                "f": "yyyy년 M월",
+                "l": "yyyy년 M월",
+                "m": "yyyy. M.",
+                "s": "yy. M."
+            },
             "r": {
                 "f": "yyyy년",
                 "l": "yyyy년",
                 "m": "yyyy년",
                 "s": "yy년"
-            },
-            "a": {
-                "f": "d일",
-                "l": "d일",
-                "m": "d일",
-                "s": "d일"
-            }
-        },
-        "time": {
-            "12": {
-                "h": "h",
-                "m": "m",
-                "s": "s",
-                "ah": "a h시",
-                "hm": "h:mm",
-                "ms": "mm:ss",
-                "ahm": "a h:mm",
-                "hms": "h:mm:ss",
-                "hmz": "h:mm z",
-                "ahmz": "a h:mm z",
-                "ahms": "a h:mm:ss",
-                "hmsz": "h:mm:ss z",
-                "ahmsz": "a h:mm:ss z"
-            },
-            "24": {
-                "h": "H시",
-                "m": "m",
-                "s": "s",
-                "ah": "H시",
-                "hm": "H:mm",
-                "ms": "mm:ss",
-                "ahm": "H:mm",
-                "hms": "H:mm:ss",
-                "hmz": "H:mm z",
-                "ahmz": "H:mm z",
-                "ahms": "H:mm:ss",
-                "hmsz": "H:mm:ss z",
-                "ahmsz": "H:mm:ss z"
             }
         },
         "range": {
@@ -168,42 +158,23 @@
                 "m": "{sy} – {ey}",
                 "s": "{sy} – {ey}"
             }
+        },
+        "time": {
+            "12": {
+                "ah": "a h시",
+                "ahm": "a h:mm",
+                "ahms": "a h:mm:ss",
+                "ahmsz": "a h:mm:ss z",
+                "ahmz": "a h:mm z",
+                "m": "m",
+                "s": "s"
+            },
+            "24": {
+                "ah": "H시",
+                "h": "H시",
+                "m": "m",
+                "s": "s"
+            }
         }
-    },
-    "dayPeriods": [
-        {
-            "at": 0
-        },
-        {
-            "from": 0,
-            "to": 720
-        },
-        {
-            "from": 180,
-            "to": 360
-        },
-        {
-            "from": 360,
-            "to": 720
-        },
-        {
-            "at": 720
-        },
-        {
-            "from": 720,
-            "to": 1080
-        },
-        {
-            "from": 720,
-            "to": 1440
-        },
-        {
-            "from": 1080,
-            "to": 1260
-        },
-        {
-            "from": 1260,
-            "to": 180
-        }
-    ]
+    }
 }

@@ -2,7 +2,7 @@
  * genctype.js - ilib tool to generate the json ctype information from the Unicode
  * data files
  *
- * Copyright © 2013-2015, 2018, 2020 JEDLSoft
+ * Copyright © 2013-2015, 2018, 2020, 2022 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@
 var fs = require('fs');
 var util = require('util');
 var path = require('path');
+var stringify = require('json-stable-stringify');
 
 var common = require('./common.js');
 var charIterator = common.charIterator;
@@ -61,7 +62,7 @@ if (process.argv.length > 2) {
 }
 
 console.log("genctype - generate ctype data.\n" +
-    "Copyright (c) 2012 - 2015, 2018, 2020 JEDLSoft");
+    "Copyright (c) 2012 - 2015, 2018, 2020, 2022 JEDLSoft");
 
 if (!fs.existsSync(toDir)) {
     common.makeDirs(toDir);
@@ -74,7 +75,7 @@ function convertRangeToNumbers(range) {
 }
 
 /*
- *	For creating ctype_*.json
+ *    For creating ctype_*.json
  */
 var map = {};
 var rangeLetter;
@@ -98,17 +99,17 @@ for (var letter in map) {
     if (letter && map[letter]) {
         fileName = path.join(toDir, "/ctype_" + letter + ".json");
         console.log(fileName);
-        fs.writeFileSync(fileName, JSON.stringify(map[letter], true, 4), "utf-8");
+        fs.writeFileSync(fileName, stringify(map[letter], {space: 4}), "utf-8");
     }
 }
 
 /*
- *	For creating ctype.json
+ *    For creating ctype.json
  */
 
 /*
- *	List for updating blockName for ctype.json.
- *	Some names don't need to be re-named.
+ *    List for updating blockName for ctype.json.
+ *    Some names don't need to be re-named.
  */
 var blockNameMapping = {
     "basic latin": "latin",
@@ -304,8 +305,8 @@ var blockNameMapping = {
 }
 
 /*
- *	List for manually handled
- *	as Reference: http://www.cplusplus.com/reference/cctype/
+ *    List for manually handled
+ *    as Reference: http://www.cplusplus.com/reference/cctype/
  */
 var manuallyHandleRange = {
     "ascii": [
@@ -409,6 +410,6 @@ var sortedCtype = sortKeys(ctypeMap)
 var merged = common.merge(manuallyHandleRange, sortedCtype);
 fileName = path.join(toDir, "ctype.json");
 console.log(fileName);
-fs.writeFileSync(fileName, JSON.stringify(merged, true, 4))
+fs.writeFileSync(fileName, stringify(merged, {space: 4}))
 
 console.log("Done.");

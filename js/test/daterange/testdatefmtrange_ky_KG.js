@@ -1,6 +1,6 @@
 /*
  * testdatefmtrange_ky_KG.js - test the date range formatter object Kyrgyz/Kyrgyzstan
- * 
+ *
  * Copyright © 2020, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@
 
 if (typeof(GregorianDate) === "undefined") {
     var GregorianDate = require("../../lib/GregorianDate.js");
-}   
+}
 if (typeof(DateRngFmt) === "undefined") {
     var DateRngFmt = require("../../lib/DateRngFmt.js");
 }
@@ -138,7 +138,7 @@ module.exports.testdatefmtrange_ky_KG = {
         test.equal(fmt.format(start, end), "2011-ж., 31-декабрь 13:45 – 14:30");
         test.done();
     },
-    
+
     testDateRngFmtkyKGRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ky-KG", length: "short"});
@@ -243,7 +243,7 @@ module.exports.testdatefmtrange_ky_KG = {
         test.equal(fmt.format(start, end), "2011-ж., 30-декабрь 13:45 – 2011-ж., 31-декабрь 14:30");
         test.done();
     },
-    
+
     testDateRngFmtkyKGRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ky-KG", length: "short"});
@@ -348,7 +348,7 @@ module.exports.testdatefmtrange_ky_KG = {
         test.equal(fmt.format(start, end), "2011-ж., 20-декабрь – 31-декабрь");
         test.done();
     },
-    
+
     testDateRngFmtkyKGRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ky-KG", length: "short"});
@@ -453,7 +453,7 @@ module.exports.testdatefmtrange_ky_KG = {
         test.equal(fmt.format(start, end), "2011-ж., 20-ноябрь – 2011-ж., 31-декабрь");
         test.done();
     },
-    
+
     testDateRngFmtkyKGRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ky-KG", length: "short"});
@@ -558,7 +558,7 @@ module.exports.testdatefmtrange_ky_KG = {
         test.equal(fmt.format(start, end), "2011-ж., 20-ноябрь – 2012-ж., 31-январь");
         test.done();
     },
-    
+
     testDateRngFmtkyKGRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ky-KG", length: "short"});

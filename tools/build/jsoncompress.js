@@ -1,4 +1,4 @@
-/* 
+/*
  * jsoncompress.js - ilib tool to remove the whitespace from json files
  *
  * Copyright © 2013, 2020 JEDLSoft
@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/* 
+/*
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
@@ -37,7 +37,7 @@ function usage() {
 }
 
 
-var sourcedir = ".", 
+var sourcedir = ".",
     targetdir = "compressed";
 
 if (process.argv.length > 2) {

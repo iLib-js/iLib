@@ -1,7 +1,7 @@
-/* 
+/*
  * mkli.js - ilib tool to remove the non-json fragments
  *
- * Copyright © 2013, 2020 LGE
+ * Copyright © 2013, 2020, 2022 LGE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/* 
+/*
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
 var util = require('util');
+var stringify = require('json-stable-stringify');
 var common = require('../cldr/common');
 
 function usage() {
@@ -74,7 +75,7 @@ function walk(dir, locale) {
             delete merged.generated;
         }
         merged.locale = locale;
-        fs.writeFileSync(path + "/localeinfo.json", JSON.stringify(merged, true, 4), 'utf8');
+        fs.writeFileSync(path + "/localeinfo.json", stringify(merged, {space: 4}), 'utf8');
         console.log(path + ": merged *.jf into localeinfo.json");
     } else {
         console.log(path + ": nothing to write");

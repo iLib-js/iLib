@@ -1,0 +1,127 @@
+{
+    "gregorian": {
+        "date": {
+            "d": {
+                "f": "d",
+                "l": "d",
+                "m": "d",
+                "s": "d"
+            },
+            "dm": {
+                "l": "d MMMM",
+                "m": "d MMM"
+            },
+            "dmw": {
+                "f": "EEEE, d MMMM",
+                "l": "EEE, d MMMM",
+                "m": "EE, d MMM",
+                "s": "E, d/M"
+            },
+            "dmwy": {
+                "f": "EEEE, d MMMM yyyy",
+                "l": "EEE, d MMMM yyyy",
+                "m": "EE, d MMM yyyy",
+                "s": "E, d/M/yy"
+            },
+            "dmy": {
+                "l": "d MMMM yyyy",
+                "m": "d MMM yyyy"
+            },
+            "dw": {
+                "f": "EEEE, d",
+                "l": "EEE, d",
+                "m": "EE, d",
+                "s": "E, d"
+            },
+            "m": {
+                "l": "MMMM",
+                "m": "MMM"
+            },
+            "my": {
+                "l": "MMMM yyyy",
+                "m": "MMM yyyy"
+            }
+        },
+        "order": {
+            "f": "{date} 'jam' {time}",
+            "l": "{date} 'jam' {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
+        },
+        "range": {
+            "c00": {
+                "f": "{sd} {sm} {sy} jam {st} – {et}",
+                "l": "{sd} {sm} {sy} jam {st} – {et}",
+                "m": "{sd} {sm} {sy}, {st} – {et}",
+                "s": "{sd}/{sm}/{sy}, {st} – {et}"
+            },
+            "c01": {
+                "f": "{sd} {sm} {sy} jam {st} – {ed} {em} {ey} jam {et}",
+                "l": "{sd} {sm} {sy} jam {st} – {ed} {em} {ey} jam {et}",
+                "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
+            },
+            "c02": {
+                "f": "{sd} {sm} {sy} jam {st} – {ed} {em} {ey} jam {et}",
+                "l": "{sd} {sm} {sy} jam {st} – {ed} {em} {ey} jam {et}",
+                "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
+            },
+            "c03": {
+                "f": "{sd} {sm} {sy} jam {st} – {ed} {em} {ey} jam {et}",
+                "l": "{sd} {sm} {sy} jam {st} – {ed} {em} {ey} jam {et}",
+                "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
+            },
+            "c10": {
+                "f": "{sd} – {ed} {em} {ey}",
+                "l": "{sd} – {ed} {em} {ey}",
+                "m": "{sd} – {ed} {em} {ey}",
+                "s": "{sd} – {ed}/{em}/{ey}"
+            },
+            "c11": {
+                "f": "{sd} {sm} – {ed} {em} {ey}",
+                "l": "{sd} {sm} – {ed} {em} {ey}",
+                "m": "{sd} {sm} – {ed} {em} {ey}",
+                "s": "{sd}/{sm} – {ed}/{em}/{ey}"
+            },
+            "c12": {
+                "m": "{sd} {sm} {sy} – {ed} {em} {ey}"
+            },
+            "c20": {
+                "m": "{sm} {sy} – {em} {ey}"
+            },
+            "c30": {
+                "f": "{sy} – {ey}",
+                "l": "{sy} – {ey}",
+                "m": "{sy} – {ey}",
+                "s": "{sy} – {ey}"
+            }
+        },
+        "time": {
+            "12": {
+                "ah": "h a",
+                "ahm": "h.mma",
+                "ahms": "h.mm.ssa",
+                "ahmsz": "h.mm.ssa z",
+                "ahmz": "h.mma z",
+                "hm": "h.mm",
+                "hms": "h.mm.ss",
+                "hmsz": "h.mm.ss z",
+                "hmz": "h.mm z",
+                "ms": "mm.ss"
+            },
+            "24": {
+                "ahm": "H.mm",
+                "ahms": "H.mm.ss",
+                "ahmsz": "H.mm.ss z",
+                "ahmz": "H.mm z",
+                "hm": "H.mm",
+                "hms": "H.mm.ss",
+                "hmsz": "H.mm.ss z",
+                "hmz": "H.mm z",
+                "ms": "mm.ss"
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 {
-    "f": "HKST",
-    "o": "8:0",
     "c": "HK",
-    "n": "China {c} Time"
+    "f": "HKST",
+    "n": "China {c} Time",
+    "o": "8:0"
 }

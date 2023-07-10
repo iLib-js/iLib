@@ -1,8 +1,6 @@
 {
+    "#{num}y": "zero#{num} سنة|one#سنة|two#سنتان|few#{num} سنوات|many#{num} سنة|#{num} سنة",
     "1#1 second|#{num} seconds": "zero#{num} ثانية|one#ثانية|two#ثانيتان|few#{num} ثوانٍ|many#{num} ثانية|#{num} ثانية",
     "1#1 yr|#{num} yrs": "zero#{num} سنة|one#سنة|two#سنتان|few#{num} سنوات|many#{num} سنة|#{num} سنة",
-    "1#1 mo|#{num} mos": "zero#{num} شهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهرًا|#{num} شهر",
-    "durationMediumYears": "zero#{num} سنة|one#سنة|two#سنتان|few#{num} سنوات|many#{num} سنة|#{num} سنة",
-    "durationShortMonths": "zero#{num} شهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهرًا|#{num} شهر",
-    "#{num}y": "zero#{num} سنة|one#سنة|two#سنتان|few#{num} سنوات|many#{num} سنة|#{num} سنة"
+    "durationMediumYears": "zero#{num} سنة|one#سنة|two#سنتان|few#{num} سنوات|many#{num} سنة|#{num} سنة"
 }

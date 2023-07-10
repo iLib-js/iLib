@@ -1,7 +1,7 @@
 /*
  * Name.js - Person name parser
  *
- * Copyright © 2013-2015, 2018, JEDLSoft
+ * Copyright © 2013-2015, 2018, 2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -338,7 +338,7 @@ Name.defaultInfo = {
  * Return true if the given character is in the range of the Han, Hangul, or kana
  * scripts.
  * @static
- * @protected
+ * @private
  */
 Name._isAsianChar = function(c) {
     return isIdeo(c) ||
@@ -350,7 +350,7 @@ Name._isAsianChar = function(c) {
 
 /**
  * @static
- * @protected
+ * @private
  */
 Name._isAsianName = function (name, language) {
     // the idea is to count the number of asian chars and the number
@@ -365,12 +365,12 @@ Name._isAsianName = function (name, language) {
             var c = name.charAt(i);
 
             if (Name._isAsianChar(c)) {
-                if (language =="ko" || language =="ja" || language =="zh") {
+                if (language === "ko" || language === "ja" || language ==="zh") {
                     return true;
                 }
                 asian++;
             } else if (isAlpha(c)) {
-                if (!language =="ko" || !language =="ja" || !language =="zh") {
+                if (!(language === "ko") || !(language === "ja") || !(language === "zh")) {
                     return false;
                 }
                 latin++;
@@ -387,7 +387,7 @@ Name._isAsianName = function (name, language) {
  * Return true if any Latin letters are found in the string. Return
  * false if all the characters are non-Latin.
  * @static
- * @protected
+ * @private
  */
 Name._isEuroName = function (name, language) {
     var c,
@@ -399,7 +399,7 @@ Name._isEuroName = function (name, language) {
 
         if (!Name._isAsianChar(c) && !isPunct(c) && !isSpace(c)) {
             return true;
-        } else if (Name._isAsianChar(c) && (language =="ko" || language =="ja" || language =="zh")) {
+        } else if (Name._isAsianChar(c) && (language === "ko" || language === "ja" || language === "zh")) {
             return false;
         }
     }
@@ -408,7 +408,7 @@ Name._isEuroName = function (name, language) {
 
 Name.prototype = {
     /**
-     * @protected
+     * @private
      */
     _init: function (name) {
         var parts, prefixArray, prefix, prefixLower,
@@ -549,7 +549,7 @@ Name.prototype = {
     */
 
     /**
-     * @protected
+     * @private
      * @param {Array} parts
      * @param {Array} names
      * @param {boolean} isAsian
@@ -581,7 +581,7 @@ Name.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      */
     _findSuffix: function (parts, names, isAsian) {
         var i, j, seq = "";
@@ -605,8 +605,8 @@ Name.prototype = {
     },
 
     /**
-     * @protected
      * Tell whether or not the given word is a conjunction in this language.
+     * @private
      * @param {string} word the word to test
      * @return {boolean} true if the word is a conjunction
      */
@@ -621,7 +621,7 @@ Name.prototype = {
 
     /**
      * Find the last instance of 'and' in the name
-     * @protected
+     * @private
      * @param {Array.<string>} parts
      * @return {number}
      */
@@ -646,7 +646,7 @@ Name.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      * @param {Array.<string>} parts the current array of name parts
      * @param {boolean} isAsian true if the name is being parsed as an Asian name
      * @return {Array.<string>} the remaining parts after the prefixes have been removed
@@ -662,7 +662,7 @@ Name.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      * @param {Array.<string>} parts the current array of name parts
      * @param {boolean} isAsian true if the name is being parsed as an Asian name
      * @return {Array.<string>} the remaining parts after the suffices have been removed
@@ -679,7 +679,7 @@ Name.prototype = {
 
     /**
      * Adjoin auxillary words to their head words.
-     * @protected
+     * @private
      * @param {Array.<string>} parts the current array of name parts
      * @param {boolean} isAsian true if the name is being parsed as an Asian name
      * @return {Array.<string>} the parts after the auxillary words have been plucked onto their head word
@@ -708,7 +708,7 @@ Name.prototype = {
 
     /**
      * Recursively join an array or string into a long string.
-     * @protected
+     * @private
      */
     _joinArrayOrString: function _joinArrayOrString(part) {
         var i;
@@ -731,7 +731,7 @@ Name.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      */
     _joinNameArrays: function _joinNameArrays() {
         var prop;
@@ -745,7 +745,7 @@ Name.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      */
     _parseAsianName: function (parts, language) {
         var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true, typeof(this.singleFamilyName) !== 'undefined' ? this.singleFamilyName : this.info.noCompoundFamilyNames);
@@ -769,7 +769,7 @@ Name.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      */
     _parseKoreanName: function (name) {
         var tempName = name;
@@ -791,7 +791,7 @@ Name.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      */
     _parseJapaneseName: function (parts) {
         if (this.suffix && this.suffix.length > 1 && this.info.honorifics.indexOf(this.suffix)>-1) {
@@ -836,7 +836,7 @@ Name.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      */
     _parseSpanishName: function (parts) {
         var conjunctionIndex;
@@ -899,7 +899,7 @@ Name.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      */
     _parseIndonesianName: function (parts) {
         var conjunctionIndex;
@@ -951,7 +951,7 @@ Name.prototype = {
     },
 
     /**
-     * @protected
+     * @private
      */
     _parseGenericWesternName: function (parts) {
         /* Western names are parsed as follows, and rules are applied in this
@@ -976,10 +976,10 @@ Name.prototype = {
             }
         } else if (parts.length === 2) {
             // we do G F
-            if (this.info.order == 'fgm') {
+            if (this.info.order === 'fgm') {
                 this.givenName = parts[1];
                 this.familyName = parts[0];
-            } else if (this.info.order == "gmf" || typeof (this.info.order) == 'undefined') {
+            } else if (this.info.order === "gmf" || typeof (this.info.order) === 'undefined') {
                 this.givenName = parts[0];
                 this.familyName = parts[1];
             }
@@ -1005,7 +1005,7 @@ Name.prototype = {
                     if (conjunctionIndex + 2 < parts.length - 1) {
                         this.middleName = parts.slice(conjunctionIndex + 2, parts.length - conjunctionIndex - 3);
                     }
-                } else if (this.info.order == "fgm") {
+                } else if (this.info.order === "fgm") {
                     this.familyName = parts.slice(0, conjunctionIndex + 2);
                     if (conjunctionIndex + 1 < parts.length - 1) {
                         this.middleName = parts.splice(parts.length - 1, 1);
@@ -1028,7 +1028,7 @@ Name.prototype = {
 
      /**
      * parse patrinomic name from the russian names
-     * @protected
+     * @private
      * @param {Array.<string>} parts the current array of name parts
      * @return number  index of the part which contains patronymic name
      */
@@ -1052,7 +1052,7 @@ Name.prototype = {
     /**
      * find if the given part is patronymic name
      *
-     * @protected
+     * @private
      * @param {string} part string from name parts @
      * @return number index of the part which contains familyName
      */
@@ -1073,7 +1073,7 @@ Name.prototype = {
     /**
      * find family name from the russian name
      *
-     * @protected
+     * @private
      * @param {Array.<string>} parts the current array of name parts
      * @return boolean true if patronymic, false otherwise
      */
@@ -1110,9 +1110,8 @@ Name.prototype = {
     /**
      * parse russian name
      *
-     * @protected
+     * @private
      * @param {Array.<string>} parts the current array of name parts
-     * @return
      */
     _parseRussianName: function(parts) {
         var conjunctionIndex, familyIndex = -1;
@@ -1180,7 +1179,7 @@ Name.prototype = {
                         this.middleName = parts.slice(conjunctionIndex + 2,
                             parts.length - conjunctionIndex - 3);
                     }
-                } else if (this.order == "fgm") {
+                } else if (this.order === "fgm") {
                     this.familyName = parts.slice(0, conjunctionIndex + 2);
                     if (conjunctionIndex + 1 < parts.length - 1) {
                         this.middleName = parts.splice(parts.length - 1, 1);
@@ -1213,7 +1212,7 @@ Name.prototype = {
 
 
     /**
-     * @protected
+     * @private
      */
     _parseWesternName: function (parts) {
 
@@ -1296,8 +1295,8 @@ Name.prototype = {
     getHeadFamilyName: function () {},
 
     /**
-     * @protected
      * Return a shallow copy of the current instance.
+     * @protected
      */
     clone: function () {
         return new Name(this);

@@ -1,13 +1,13 @@
 // !dependencies: false
 
 Grzwfd = function(spec) {
-	//console.log("Grzwfd: spec is " + spec);
+    //console.log("Grzwfd: spec is " + spec);
 
-	this.spec = spec;
+    this.spec = spec;
 };
 
 Grzwfd.prototype.getSpec = function() {
-	return this.spec;
+    return this.spec;
 };
 
 module.exports = Grzwfd;

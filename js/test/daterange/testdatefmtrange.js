@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange.js - test the date range formatter object
  *
- * Copyright © 2012-2018, JEDLSoft
+ * Copyright © 2012-2018,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,12 +65,10 @@ module.exports.testdatefmtrange = {
         ilib.clearCache();
         callback();
     },
-
     tearDown: function(callback) {
         ilib._load = oldLoader;
         callback();
     },
-
     testDateRngFmtConstructorEmpty: function(test) {
         test.expect(1);
         var fmt = new DateRngFmt();
@@ -78,7 +76,6 @@ module.exports.testdatefmtrange = {
         test.ok(fmt !== null);
         test.done();
     },
-
     testDateRngFmtConstructorDefaultLocale: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt();
@@ -88,7 +85,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.getLocale().toString(), "en-US");
         test.done();
     },
-
     testDateRngFmtGetCalendarDefault: function(test) {
         test.expect(3);
         var fmt = new DateRngFmt();
@@ -100,7 +96,6 @@ module.exports.testdatefmtrange = {
         test.equal(cal, "gregorian");
         test.done();
     },
-
     testDateRngFmtGetCalendarExplicit: function(test) {
         test.expect(3);
         var fmt = new DateRngFmt({calendar: "julian"});
@@ -112,7 +107,6 @@ module.exports.testdatefmtrange = {
         test.equal(cal, "julian");
         test.done();
     },
-
     testDateRngFmtGetCalendarExplicitDefault: function(test) {
         test.expect(3);
         var fmt = new DateRngFmt({calendar: "gregorian"});
@@ -124,7 +118,6 @@ module.exports.testdatefmtrange = {
         test.equal(cal, "gregorian");
         test.done();
     },
-
     testDateRngFmtGetCalendarNotInThisLocale: function(test) {
         try {
             var fmt = new DateRngFmt({calendar: "arabic", locale: 'en-US'});
@@ -135,7 +128,6 @@ module.exports.testdatefmtrange = {
         }
         test.done();
     },
-
     testDateRngFmtGetLength: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({length: "full"});
@@ -144,7 +136,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.getLength(), "full");
         test.done();
     },
-
     testDateRngFmtGetLengthDefault: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt();
@@ -153,7 +144,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.getLength(), "short");
         test.done();
     },
-
     testDateRngFmtGetLengthBogus: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({length: "asdf"});
@@ -162,7 +152,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.getLength(), "short");
         test.done();
     },
-
     testDateRngFmtGetLocale: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "de-DE"});
@@ -171,7 +160,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.getLocale().toString(), "de-DE");
         test.done();
     },
-
     testDateRngFmtGetLocaleDefault: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt();
@@ -180,7 +168,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.getLocale().toString(), "en-US");
         test.done();
     },
-
     testDateRngFmtGetLocaleBogus: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zyy-XX"});
@@ -189,7 +176,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.getLocale().toString(), "zyy-XX");
         test.done();
     },
-
     testDateRngFmtGetClockDefaultUS: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "en-US"});
@@ -199,7 +185,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.getClock(), "12");
         test.done();
     },
-
     testDateRngFmtGetClockDefaultDE: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "de-DE"});
@@ -209,7 +194,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.getClock(), "24");
         test.done();
     },
-
     testDateRngFmtGetClock: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "en-US", clock: "24"});
@@ -219,7 +203,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.getClock(), "24");
         test.done();
     },
-
     testDateRngFmtGetClockBogus: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "en-US", clock: "asdf"});
@@ -229,7 +212,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.getClock(), "12");
         test.done();
     },
-
     testDateRngFmtGetTimeZoneDefault: function(test) {
         test.expect(2);
         ilib.tz = undefined;    // just in case
@@ -244,7 +226,6 @@ module.exports.testdatefmtrange = {
         test.equal(tz.getId(), "local");
         test.done();
     },
-
     testDateRngFmtGetTimeZone: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({timezone: "Europe/Paris"});
@@ -254,7 +235,6 @@ module.exports.testdatefmtrange = {
         test.equal(tz.getId(), "Europe/Paris");
         test.done();
     },
-
     testDateRngFmtGetDefaultLocale: function(test) {
         test.expect(2);
 
@@ -264,7 +244,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.getLocale().toString(), "yy-YY");
         test.done();
     },
-
     testDateRngFmtGetDefaultFormat: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "yy-YY"});
@@ -290,7 +269,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.format(start, end), "20/2/13 12:20 – 16:35");
         test.done();
     },
-
     testDateRngFmtDynamicLoadSync: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -328,10 +306,9 @@ module.exports.testdatefmtrange = {
         });
 
         ilib.setLoaderCallback(oldLoader);
-        test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
+        test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
         test.done();
     },
-
     testDateRngFmtDynamicLoadSyncCached: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -369,10 +346,9 @@ module.exports.testdatefmtrange = {
         });
 
         ilib.setLoaderCallback(oldLoader);
-        test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
+        test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
         test.done();
     },
-
     testDateRngFmtDynamicLoadAsync: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -411,12 +387,11 @@ module.exports.testdatefmtrange = {
                 ilib.setLoaderCallback(oldLoader);
         test.expect(2);
                 test.ok(fmt !== null);
-                test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
+                test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
                 test.done();
             }
         });
     },
-
     testDateRngFmtDynamicLoadAsyncCached: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -454,7 +429,7 @@ module.exports.testdatefmtrange = {
                 ilib.setLoaderCallback(oldLoader);
         test.expect(2);
                 test.ok(fmt !== null);
-                test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
+                test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
                 test.done();
             }
         });
@@ -489,7 +464,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.format(start, end), "06/20 – 28/2011");
         test.done();
     },
-
     testDateRngFmtesPANextMonthMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "es-PA", length: "medium"});
@@ -516,7 +490,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.format(start, end), '06/20 – 11/28/2011');
         test.done();
     },
-
     testDateRngFmtesPRMultiDayMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "es-PR", length: "medium"});
@@ -543,7 +516,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.format(start, end), "06/20 – 28/2011");
         test.done();
     },
-
     testDateRngFmtesPRNextMonthMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "es-PR", length: "medium"});
@@ -570,7 +542,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.format(start, end), '06/20 – 11/28/2011');
         test.done();
     },
-
     testDateRngFmtptGQNextDayFull: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "pt-GQ", length: "medium"});
@@ -597,7 +568,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.format(start, end), "20/06/2011, 13:45 – 22/06/2011, 15:30");
         test.done();
     },
-
     testDateRngFmtptGQNextDayLong: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "pt-GQ", length: "long"});
@@ -624,7 +594,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.format(start, end), "20 de junho de 2011 às 13:45 – 22 de junho de 2011 às 15:30");
         test.done();
     },
-
     testDateRngFmtptGQNextDayMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "pt-GQ", length: "medium"});
@@ -651,7 +620,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.format(start, end), "20/06/2011, 13:45 – 22/06/2011, 15:30");
         test.done();
     },
-
     testDateRngFmtptGQNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "pt-GQ", length: "short"});
@@ -703,10 +671,9 @@ module.exports.testdatefmtrange = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011-06-20, 1:45 p.m. – 4:30 p.m.');
+        test.equal(fmt.format(start, end), '6/20/11, 1:45 p.m. – 4:30 p.m.');
         test.done();
     },
-
     testDateRngFmtenCAMultitDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "en-CA", length: "short"});
@@ -730,10 +697,9 @@ module.exports.testdatefmtrange = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-06-20 – 26");
+        test.equal(fmt.format(start, end), "6/20/11 – 6/26/11");
         test.done();
     },
-
     testDateRngFmtenCANextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "en-CA", length: "short"});
@@ -757,10 +723,9 @@ module.exports.testdatefmtrange = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-06-20 – 2011-09-26");
+        test.equal(fmt.format(start, end), "6/20 – 9/26/11");
         test.done();
     },
-
     testDateRngFmtenCANextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "en-CA", length: "short"});
@@ -784,10 +749,9 @@ module.exports.testdatefmtrange = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-06-20 – 2012-05-26");
+        test.equal(fmt.format(start, end), "6/20/11 – 5/26/12");
         test.done();
     },
-
     testDateRngFmtAcceptJSIntrisicDates: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "en-US", length: "short"});
@@ -798,7 +762,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.format(start, end), "6/20/11 – 5/26/12");
         test.done();
     },
-
     testDateRngFmtAcceptUnixTimes: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "en-US", length: "short"});
@@ -809,7 +772,6 @@ module.exports.testdatefmtrange = {
         test.equal(fmt.format(start, end), "6/20/11 – 5/26/12");
         test.done();
     },
-
     testDateRngFmtTestTimeZone: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({

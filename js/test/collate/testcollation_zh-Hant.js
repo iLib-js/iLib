@@ -1,6 +1,6 @@
 /*
  * testcollation_zh-Hant.js - test the Collator object in traditional Chinese
- * 
+ *
  * Copyright © 2015, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,11 +38,11 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("乁 < 丄", col.compare("乁", "丄") < 0);
         test.ok("丄 < 下", col.compare("丄", "下") < 0);
         test.ok("下 < 々", col.compare("下", "々") < 0);
@@ -92,7 +92,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("䨻 < 𠔻", col.compare("䨻", "𠔻") < 0);
         test.done();
     },
-    
+
     testJSCollatorTerHanzi_zh_Hant_stroke: function(test) {
         test.expect(48);
         var col = new Collator({
@@ -101,9 +101,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
         test.ok("乁 < 丄", col.compare("乁", "丄") < 0);
         test.ok("丄 < 下", col.compare("丄", "下") < 0);
@@ -154,7 +154,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("䨻 < 𠔻", col.compare("䨻", "𠔻") < 0);
         test.done();
     },
-    
+
     testJSCollatorSecHanzi_zh_Hant_stroke: function(test) {
         test.expect(48);
         var col = new Collator({
@@ -163,9 +163,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
         test.ok("乁 < 丄", col.compare("乁", "丄") < 0);
         test.ok("丄 < 下", col.compare("丄", "下") < 0);
@@ -216,7 +216,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("䨻 < 𠔻", col.compare("䨻", "𠔻") < 0);
         test.done();
     },
-    
+
     testJSCollatorPriHanzi_zh_Hant_stroke: function(test) {
         test.expect(48);
         var col = new Collator({
@@ -225,9 +225,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
         test.ok("乁 < 丄", col.compare("乁", "丄") < 0);
         test.ok("丄 < 下", col.compare("丄", "下") < 0);
@@ -278,7 +278,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("䨻 < 𠔻", col.compare("䨻", "𠔻") < 0);
         test.done();
     },
-    
+
     testJSCollatorQuatHanziVariants_zh_Hant_stroke: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -287,9 +287,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         // extra variants at the tertiary level
         test.ok("幼 < ㉅", col.compare("幼", "㉅") < 0);
         test.ok("平成 < ㍻", col.compare("平成", "㍻") < 0);
@@ -302,7 +302,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("龠 < ⿕", col.compare("龠", "⿕") < 0);
         test.done();
     },
-    
+
     testJSCollatorTerHanziVariants_zh_Hant_stroke: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -311,9 +311,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         // extra variants at the tertiary level
         test.ok("幼 < ㉅", col.compare("幼", "㉅") < 0);
         test.ok("平成 < ㍻", col.compare("平成", "㍻") < 0);
@@ -326,7 +326,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("龠 < ⿕", col.compare("龠", "⿕") < 0);
         test.done();
     },
-    
+
     testJSCollatorSecHanziVariants_zh_Hant_stroke: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -335,9 +335,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         // extra variants at the tertiary level
         test.ok("幼 = ㉅", col.compare("幼", "㉅") === 0);
         test.ok("平成 = ㍻", col.compare("平成", "㍻") === 0);
@@ -350,7 +350,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("龠 = ⿕", col.compare("龠", "⿕") === 0);
         test.done();
     },
-    
+
     testJSCollatorPriHanziVariants_zh_Hant_stroke: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -359,9 +359,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         // extra variants at the tertiary level
         test.ok("幼 = ㉅", col.compare("幼", "㉅") === 0);
         test.ok("平成 = ㍻", col.compare("平成", "㍻") === 0);
@@ -374,7 +374,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("龠 = ⿕", col.compare("龠", "⿕") === 0);
         test.done();
     },
-    
+
     testJSCollatorPinyinQuat_zh_Hant_stroke: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -383,11 +383,11 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("bā < bá", col.compare("bā", "bá") < 0);
         test.ok("bá < bǎ", col.compare("bá", "bǎ") < 0);
         test.ok("bǎ < bà", col.compare("bǎ", "bà") < 0);
@@ -399,7 +399,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("chēn < ché", col.compare("chēn", "ché") < 0);
         test.ok("ché < chě", col.compare("ché", "chě") < 0);
         test.ok("chě < chè", col.compare("chě", "chè") < 0);
-        
+
         test.ok("Ā < Ā", col.compare("Ā", "Ā") < 0);
         test.ok("Ā < ā", col.compare("Ā", "ā") < 0);
         test.ok("ā < ā", col.compare("ā", "ā") < 0);
@@ -609,7 +609,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("Z < z", col.compare("Z", "z") < 0);
         test.done();
     },
-    
+
     testJSCollatorPinyinTer_zh_Hant_stroke: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -618,11 +618,11 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("bā < bá", col.compare("bā", "bá") < 0);
         test.ok("bá < bǎ", col.compare("bá", "bǎ") < 0);
         test.ok("bǎ < bà", col.compare("bǎ", "bà") < 0);
@@ -634,7 +634,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("chēn < ché", col.compare("chēn", "ché") < 0);
         test.ok("ché < chě", col.compare("ché", "chě") < 0);
         test.ok("chě < chè", col.compare("chě", "chè") < 0);
-    
+
         test.ok("Ā = Ā", col.compare("Ā", "Ā") === 0);
         test.ok("Ā < ā", col.compare("Ā", "ā") < 0);
         test.ok("ā = ā", col.compare("ā", "ā") === 0);
@@ -844,7 +844,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("Z < z", col.compare("Z", "z") < 0);
         test.done();
     },
-    
+
     testJSCollatorPinyinSec_zh_Hant_stroke: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -853,11 +853,11 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("bā < bá", col.compare("bā", "bá") < 0);
         test.ok("bá < bǎ", col.compare("bá", "bǎ") < 0);
         test.ok("bǎ < bà", col.compare("bǎ", "bà") < 0);
@@ -869,7 +869,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("chēn < ché", col.compare("chēn", "ché") < 0);
         test.ok("ché < chě", col.compare("ché", "chě") < 0);
         test.ok("chě < chè", col.compare("chě", "chè") < 0);
-    
+
         test.ok("Ā = Ā", col.compare("Ā", "Ā") === 0);
         test.ok("Ā = ā", col.compare("Ā", "ā") === 0);
         test.ok("ā = ā", col.compare("ā", "ā") === 0);
@@ -1079,7 +1079,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("Z = z", col.compare("Z", "z") === 0);
         test.done();
     },
-    
+
     testJSCollatorPinyinPri_zh_Hant_stroke: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -1088,11 +1088,11 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("bā = bá", col.compare("bā", "bá") === 0);
         test.ok("bá = bǎ", col.compare("bá", "bǎ") === 0);
         test.ok("bǎ = bà", col.compare("bǎ", "bà") === 0);
@@ -1104,7 +1104,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("chēn > ché", col.compare("chēn", "ché") > 0);
         test.ok("ché = chě", col.compare("ché", "chě") === 0);
         test.ok("chě = chè", col.compare("chě", "chè") === 0);
-    
+
         test.ok("Ā = Ā", col.compare("Ā", "Ā") === 0);
         test.ok("Ā = ā", col.compare("Ā", "ā") === 0);
         test.ok("ā = ā", col.compare("ā", "ā") === 0);
@@ -1314,7 +1314,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("Z = z", col.compare("Z", "z") === 0);
         test.done();
     },
-    
+
     testJSCollatorBopomofoQuat_zh_Hant_stroke: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -1323,9 +1323,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
         test.ok("ㄆ < ㄇ", col.compare("ㄆ", "ㄇ") < 0);
         test.ok("ㄇ < ㄈ", col.compare("ㄇ", "ㄈ") < 0);
@@ -1365,7 +1365,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
         test.done();
     },
-    
+
     testJSCollatorBopomofoTer_zh_Hant_stroke: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -1374,9 +1374,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
         test.ok("ㄆ < ㄇ", col.compare("ㄆ", "ㄇ") < 0);
         test.ok("ㄇ < ㄈ", col.compare("ㄇ", "ㄈ") < 0);
@@ -1416,7 +1416,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
         test.done();
     },
-    
+
     testJSCollatorBopomofoSec_zh_Hant_stroke: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -1425,9 +1425,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
         test.ok("ㄆ < ㄇ", col.compare("ㄆ", "ㄇ") < 0);
         test.ok("ㄇ < ㄈ", col.compare("ㄇ", "ㄈ") < 0);
@@ -1467,7 +1467,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
         test.done();
     },
-    
+
     testJSCollatorBopomofoPri_zh_Hant_stroke: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -1476,9 +1476,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
         test.ok("ㄆ < ㄇ", col.compare("ㄆ", "ㄇ") < 0);
         test.ok("ㄇ < ㄈ", col.compare("ㄇ", "ㄈ") < 0);
@@ -1518,7 +1518,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
         test.done();
     },
-    
+
     testCollatorCase_zh_Hant_stroke: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1528,7 +1528,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-        
+
         var input = [
             "唐", // 10
             "㸌", // 20
@@ -1536,7 +1536,7 @@ module.exports.testcollation_zh_Hant = {
             "儓", // 16
             "㩥", // 18
             "㐮", // 13
-            "咗", // 8 
+            "咗", // 8
             "不", // 4
             "丿", // 1
             "㒆", // 14
@@ -1550,9 +1550,9 @@ module.exports.testcollation_zh_Hant = {
             "乻", // 9
             "个"  // 3
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "丿", // 1
             "乃", // 2
@@ -1561,7 +1561,7 @@ module.exports.testcollation_zh_Hant = {
             "世", // 5
             "乒", // 6
             "串", // 7
-            "咗", // 8 
+            "咗", // 8
             "乻", // 9
             "員", // 10
             "唐", // 10
@@ -1574,11 +1574,11 @@ module.exports.testcollation_zh_Hant = {
             "㩥", // 18
             "㸌"  // 20
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorPri_zh_Hant_stroke: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1588,7 +1588,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-        
+
         var input = [
             "唐", // 10
             "㸌", // 20
@@ -1596,7 +1596,7 @@ module.exports.testcollation_zh_Hant = {
             "儓", // 16
             "㩥", // 18
             "㐮", // 13
-            "咗", // 8 
+            "咗", // 8
             "不", // 4
             "丿", // 1
             "㒆", // 14
@@ -1610,9 +1610,9 @@ module.exports.testcollation_zh_Hant = {
             "乻", // 9
             "个"  // 3
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "丿", // 1
             "乃", // 2
@@ -1621,7 +1621,7 @@ module.exports.testcollation_zh_Hant = {
             "世", // 5
             "乒", // 6
             "串", // 7
-            "咗", // 8 
+            "咗", // 8
             "乻", // 9
             "員", // 10
             "唐", // 10
@@ -1634,11 +1634,11 @@ module.exports.testcollation_zh_Hant = {
             "㩥", // 18
             "㸌"  // 20
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorCaseMixed_zh_Hant_stroke: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1648,7 +1648,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-        
+
         var input = [
             "唐", // 10
             "oRange",
@@ -1658,7 +1658,7 @@ module.exports.testcollation_zh_Hant = {
             "RASPBERRY",
             "㩥", // 18
             "㐮", // 13
-            "咗", // 8 
+            "咗", // 8
             "banana",
             "不", // 4
             "apple",
@@ -1678,9 +1678,9 @@ module.exports.testcollation_zh_Hant = {
             "乻", // 9
             "个"  // 3
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "Apple",
             "apple",
@@ -1697,7 +1697,7 @@ module.exports.testcollation_zh_Hant = {
             "世", // 5
             "乒", // 6
             "串", // 7
-            "咗", // 8 
+            "咗", // 8
             "乻", // 9
             "員", // 10
             "唐", // 10
@@ -1710,11 +1710,11 @@ module.exports.testcollation_zh_Hant = {
             "㩥", // 18
             "㸌"  // 20
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorCaseMixedWithIndexMarkers_zh_Hant_stroke: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1724,7 +1724,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-        
+
         var input = [
             "唐", // 10
             "\uFDD0.13",
@@ -1735,7 +1735,7 @@ module.exports.testcollation_zh_Hant = {
             "\uFDD0.6",
             "㩥", // 18
             "㐮", // 13
-            "咗", // 8 
+            "咗", // 8
             "\uFDD0.10",
             "不", // 4
             "\uFDD0.3",
@@ -1752,17 +1752,17 @@ module.exports.testcollation_zh_Hant = {
             "乻", // 9
             "个"  // 3
         ];
-    
+
         input.sort(col.getComparator());
         var browser = ilib._getBrowser();
         if (browser === "ie") {
             var expected = [
                 "\uFDD0.10",
-                "\uFDD0.11", 
-                "\uFDD0.13", 
-                "\uFDD0.20", 
-                "\uFDD0.3", 
-                "\uFDD0.6", 
+                "\uFDD0.11",
+                "\uFDD0.13",
+                "\uFDD0.20",
+                "\uFDD0.3",
+                "\uFDD0.6",
                 "丿",
                 "乃",
                 "个",
@@ -1794,7 +1794,7 @@ module.exports.testcollation_zh_Hant = {
             "\uFDD0.6",
             "乒", // 6
             "串", // 7
-            "咗", // 8 
+            "咗", // 8
             "乻", // 9
             "\uFDD0.10",
             "員", // 10
@@ -1810,15 +1810,15 @@ module.exports.testcollation_zh_Hant = {
             "㩥", // 18
             "\uFDD0.20",
             "㸌"  // 20
-        ];    
+        ];
         }
-    
-        
-    
+
+
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testJSCollatorQuatHanzi_zh_Hant_zhuyin: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -1828,11 +1828,11 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("八 < 豝", col.compare("八", "豝") < 0);
         test.ok("豝 < 闁", col.compare("豝", "闁") < 0);
         test.ok("闁 < 朋", col.compare("闁", "朋") < 0);
@@ -1872,7 +1872,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("臾 < 砽", col.compare("臾", "砽") < 0);
         test.done();
     },
-    
+
     testJSCollatorTerHanzi_zh_Hant_zhuyin: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -1882,9 +1882,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
         test.ok("八 < 豝", col.compare("八", "豝") < 0);
         test.ok("豝 < 闁", col.compare("豝", "闁") < 0);
@@ -1925,7 +1925,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("臾 < 砽", col.compare("臾", "砽") < 0);
         test.done();
     },
-    
+
     testJSCollatorSecHanzi_zh_Hant_zhuyin: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -1935,9 +1935,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
         test.ok("八 < 豝", col.compare("八", "豝") < 0);
         test.ok("豝 < 闁", col.compare("豝", "闁") < 0);
@@ -1978,7 +1978,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("臾 < 砽", col.compare("臾", "砽") < 0);
         test.done();
     },
-    
+
     testJSCollatorPriHanzi_zh_Hant_zhuyin: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -1988,9 +1988,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
         test.ok("八 < 豝", col.compare("八", "豝") < 0);
         test.ok("豝 < 闁", col.compare("豝", "闁") < 0);
@@ -2031,7 +2031,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("臾 < 砽", col.compare("臾", "砽") < 0);
         test.done();
     },
-    
+
     testJSCollatorQuatHanziVariants_zh_Hant_zhuyin: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -2041,21 +2041,21 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         // extra variants at the tertiary level
         test.ok("⼀ < ㆒", col.compare("⼀", "㆒") < 0);
         test.ok("㆒ < ㊀", col.compare("㆒", "㊀") < 0);
-        
+
         test.ok("㆘ < ㊦", col.compare("㆘", "㊦") < 0);
-        
+
         test.ok("⼆ < ㆓", col.compare("⼆", "㆓") < 0);
         test.ok("㆓ < ㊁", col.compare("㆓", "㊁") < 0);
         test.ok("㊁ < 🈔", col.compare("㊁", "🈔") < 0);
         test.done();
     },
-    
+
     testJSCollatorTerHanziVariants_zh_Hant_zhuyin: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -2065,21 +2065,21 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         // extra variants at the tertiary level
         test.ok("⼀ < ㆒", col.compare("⼀", "㆒") < 0);
         test.ok("㆒ < ㊀", col.compare("㆒", "㊀") < 0);
-        
+
         test.ok("㆘ < ㊦", col.compare("㆘", "㊦") < 0);
-        
+
         test.ok("⼆ < ㆓", col.compare("⼆", "㆓") < 0);
         test.ok("㆓ < ㊁", col.compare("㆓", "㊁") < 0);
         test.ok("㊁ < 🈔", col.compare("㊁", "🈔") < 0);
         test.done();
     },
-    
+
     testJSCollatorSecHanziVariants_zh_Hant_zhuyin: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -2089,21 +2089,21 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         // extra variants at the tertiary level
         test.ok("⼀ = ㆒", col.compare("⼀", "㆒") === 0);
         test.ok("㆒ = ㊀", col.compare("㆒", "㊀") === 0);
-        
+
         test.ok("㆘ = ㊦", col.compare("㆘", "㊦") === 0);
-        
+
         test.ok("⼆ = ㆓", col.compare("⼆", "㆓") === 0);
         test.ok("㆓ = ㊁", col.compare("㆓", "㊁") === 0);
         test.ok("㊁ = 🈔", col.compare("㊁", "🈔") === 0);
         test.done();
     },
-    
+
     testJSCollatorPriHanziVariants_zh_Hant_zhuyin: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -2113,21 +2113,21 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         // extra variants at the tertiary level
         test.ok("⼀ = ㆒", col.compare("⼀", "㆒") === 0);
         test.ok("㆒ = ㊀", col.compare("㆒", "㊀") === 0);
-        
+
         test.ok("㆘ = ㊦", col.compare("㆘", "㊦") === 0);
-        
+
         test.ok("⼆ = ㆓", col.compare("⼆", "㆓") === 0);
         test.ok("㆓ = ㊁", col.compare("㆓", "㊁") === 0);
         test.ok("㊁ = 🈔", col.compare("㊁", "🈔") === 0);
         test.done();
     },
-    
+
     testJSCollatorPinyinQuat_zh_Hant_zhuyin: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -2137,11 +2137,11 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("bā < bá", col.compare("bā", "bá") < 0);
         test.ok("bá < bǎ", col.compare("bá", "bǎ") < 0);
         test.ok("bǎ < bà", col.compare("bǎ", "bà") < 0);
@@ -2153,7 +2153,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("chēn < ché", col.compare("chēn", "ché") < 0);
         test.ok("ché < chě", col.compare("ché", "chě") < 0);
         test.ok("chě < chè", col.compare("chě", "chè") < 0);
-        
+
         test.ok("Ā < Ā", col.compare("Ā", "Ā") < 0);
         test.ok("Ā < ā", col.compare("Ā", "ā") < 0);
         test.ok("ā < ā", col.compare("ā", "ā") < 0);
@@ -2363,7 +2363,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("Z < z", col.compare("Z", "z") < 0);
         test.done();
     },
-    
+
     testJSCollatorPinyinTer_zh_Hant_zhuyin: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -2373,11 +2373,11 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("bā < bá", col.compare("bā", "bá") < 0);
         test.ok("bá < bǎ", col.compare("bá", "bǎ") < 0);
         test.ok("bǎ < bà", col.compare("bǎ", "bà") < 0);
@@ -2389,7 +2389,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("chēn < ché", col.compare("chēn", "ché") < 0);
         test.ok("ché < chě", col.compare("ché", "chě") < 0);
         test.ok("chě < chè", col.compare("chě", "chè") < 0);
-    
+
         test.ok("Ā = Ā", col.compare("Ā", "Ā") === 0);
         test.ok("Ā < ā", col.compare("Ā", "ā") < 0);
         test.ok("ā = ā", col.compare("ā", "ā") === 0);
@@ -2599,7 +2599,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("Z < z", col.compare("Z", "z") < 0);
         test.done();
     },
-    
+
     testJSCollatorPinyinSec_zh_Hant_zhuyin: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -2609,11 +2609,11 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("bā < bá", col.compare("bā", "bá") < 0);
         test.ok("bá < bǎ", col.compare("bá", "bǎ") < 0);
         test.ok("bǎ < bà", col.compare("bǎ", "bà") < 0);
@@ -2625,7 +2625,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("chēn < ché", col.compare("chēn", "ché") < 0);
         test.ok("ché < chě", col.compare("ché", "chě") < 0);
         test.ok("chě < chè", col.compare("chě", "chè") < 0);
-    
+
         test.ok("Ā = Ā", col.compare("Ā", "Ā") === 0);
         test.ok("Ā = ā", col.compare("Ā", "ā") === 0);
         test.ok("ā = ā", col.compare("ā", "ā") === 0);
@@ -2835,7 +2835,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("Z = z", col.compare("Z", "z") === 0);
         test.done();
     },
-    
+
     testJSCollatorPinyinPri_zh_Hant_zhuyin: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -2845,11 +2845,11 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         // Hanzi are all primary differences from each other
-        
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("bā = bá", col.compare("bā", "bá") === 0);
         test.ok("bá = bǎ", col.compare("bá", "bǎ") === 0);
         test.ok("bǎ = bà", col.compare("bǎ", "bà") === 0);
@@ -2861,7 +2861,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("chēn > ché", col.compare("chēn", "ché") > 0);
         test.ok("ché = chě", col.compare("ché", "chě") === 0);
         test.ok("chě = chè", col.compare("chě", "chè") === 0);
-    
+
         test.ok("Ā = Ā", col.compare("Ā", "Ā") === 0);
         test.ok("Ā = ā", col.compare("Ā", "ā") === 0);
         test.ok("ā = ā", col.compare("ā", "ā") === 0);
@@ -3071,7 +3071,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("Z = z", col.compare("Z", "z") === 0);
         test.done();
     },
-    
+
     testJSCollatorBopomofoQuat_zh_Hant_zhuyin: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -3081,9 +3081,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "quaternary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
         test.ok("ㄆ < ㄇ", col.compare("ㄆ", "ㄇ") < 0);
         test.ok("ㄇ < ㄈ", col.compare("ㄇ", "ㄈ") < 0);
@@ -3123,7 +3123,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
         test.done();
     },
-    
+
     testJSCollatorBopomofoTer_zh_Hant_zhuyin: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -3133,9 +3133,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "tertiary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
         test.ok("ㄆ < ㄇ", col.compare("ㄆ", "ㄇ") < 0);
         test.ok("ㄇ < ㄈ", col.compare("ㄇ", "ㄈ") < 0);
@@ -3175,7 +3175,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
         test.done();
     },
-    
+
     testJSCollatorBopomofoSec_zh_Hant_zhuyin: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -3185,9 +3185,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "secondary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
         test.ok("ㄆ < ㄇ", col.compare("ㄆ", "ㄇ") < 0);
         test.ok("ㄇ < ㄈ", col.compare("ㄇ", "ㄈ") < 0);
@@ -3227,7 +3227,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
         test.done();
     },
-    
+
     testJSCollatorBopomofoPri_zh_Hant_zhuyin: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -3237,9 +3237,9 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "primary",
             usage: "search"
         });
-    
+
         test.ok(typeof(col) !== "undefined");
-        
+
         test.ok("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
         test.ok("ㄆ < ㄇ", col.compare("ㄆ", "ㄇ") < 0);
         test.ok("ㄇ < ㄈ", col.compare("ㄇ", "ㄈ") < 0);
@@ -3279,7 +3279,7 @@ module.exports.testcollation_zh_Hant = {
         test.ok("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
         test.done();
     },
-    
+
     testCollatorCase_zh_Hant_zhuyin: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -3290,9 +3290,9 @@ module.exports.testcollation_zh_Hant = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-        
+
         var input = [
-            "仡", // 8 
+            "仡", // 8
             "㸩", // 27
             "苛", // 9
             "禾", // 10
@@ -3325,9 +3325,9 @@ module.exports.testcollation_zh_Hant = {
             "啊", // 20
             "訬" // 14
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "褒", // 0
             "泊", // 1
@@ -3337,7 +3337,7 @@ module.exports.testcollation_zh_Hant = {
             "溚", // 5
             "那", // 6
             "腊", // 7
-            "仡", // 8 
+            "仡", // 8
             "苛", // 9
             "禾", // 10
             "乩", // 10
@@ -3362,11 +3362,11 @@ module.exports.testcollation_zh_Hant = {
             "卬", // 29
             "儿", // 30
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorPri_zh_Hant_zhuyin: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -3377,9 +3377,9 @@ module.exports.testcollation_zh_Hant = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-        
+
         var input = [
-             "仡", // 8 
+             "仡", // 8
              "㸩", // 27
              "苛", // 9
              "禾", // 10
@@ -3412,9 +3412,9 @@ module.exports.testcollation_zh_Hant = {
              "啊", // 20
              "訬" // 14
          ];
-    
+
          input.sort(col.getComparator());
-    
+
          var expected = [
              "褒", // 0
              "泊", // 1
@@ -3424,7 +3424,7 @@ module.exports.testcollation_zh_Hant = {
              "溚", // 5
              "那", // 6
              "腊", // 7
-             "仡", // 8 
+             "仡", // 8
              "苛", // 9
              "禾", // 10
              "乩", // 10
@@ -3449,11 +3449,11 @@ module.exports.testcollation_zh_Hant = {
              "卬", // 29
              "儿", // 30
          ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorCaseMixed_zh_Hant_zhuyin: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -3464,7 +3464,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-        
+
         var input = [
             "法", // 3
             "ㄉ",
@@ -3487,7 +3487,7 @@ module.exports.testcollation_zh_Hant = {
             "𧇍", // 13
             "栥", // 17
             "ㄘ",
-            "仡", // 8 
+            "仡", // 8
             "ㄚ",
             "𠳳", // 23
             "ㄍ",
@@ -3531,9 +3531,9 @@ module.exports.testcollation_zh_Hant = {
             "ㄕ",
             "词"  // 18
         ];
-    
+
         input.sort(col.getComparator());
-    
+
         var expected = [
             "ㄅ",
             "ㄆ",
@@ -3575,7 +3575,7 @@ module.exports.testcollation_zh_Hant = {
             "溚", // 5
             "那", // 6
             "腊", // 7
-            "仡", // 8 
+            "仡", // 8
             "苛", // 9
             "禾", // 10
             "乩", // 10
@@ -3600,11 +3600,11 @@ module.exports.testcollation_zh_Hant = {
             "卬", // 29
             "儿", // 30
         ];
-    
+
         test.deepEqual(input, expected);
         test.done();
     },
-    
+
     testCollatorCaseMixedWithIndexMarkers_zh_Hant_zhuyin: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -3615,7 +3615,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "sort"
         });
         test.ok(typeof(col) !== "undefined");
-        
+
         var input = [
              "法", // 3
              "\uFDD0ㄉ",
@@ -3638,7 +3638,7 @@ module.exports.testcollation_zh_Hant = {
              "𧇍", // 13
              "栥", // 17
              "\uFDD0ㄘ",
-             "仡", // 8 
+             "仡", // 8
              "\uFDD0ㄚ",
              "𠳳", // 23
              "\uFDD0ㄍ",
@@ -3682,7 +3682,7 @@ module.exports.testcollation_zh_Hant = {
              "\uFDD0ㄕ",
              "词"  // 18
          ];
-    
+
         input.sort(col.getComparator());
         var browser = ilib._getBrowser();
         if (browser === "ie") {
@@ -3712,7 +3712,7 @@ module.exports.testcollation_zh_Hant = {
              "\uFDD0ㄌ",
              "腊", // 7
              "\uFDD0ㄍ",
-             "仡", // 8 
+             "仡", // 8
              "\uFDD0ㄎ",
              "苛", // 9
              "\uFDD0ㄏ",
@@ -3764,5 +3764,5 @@ module.exports.testcollation_zh_Hant = {
         test.deepEqual(input, expected);
         test.done();
     }
-    
+
 };

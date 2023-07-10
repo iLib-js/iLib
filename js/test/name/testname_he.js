@@ -1,6 +1,6 @@
 /*
  * testname_he.js - test the name object in Hebrew
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,101 +37,101 @@ module.exports.testname_he = {
         test.expect(2);
         var parsed = new Name("נטלי פורטמן", {locale: 'he-IL'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             givenName: "נטלי",
             familyName: "פורטמן"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseAdjunctNames_he: function(test) {
         test.expect(2);
         var parsed = new Name("נטלי פורטמן", {locale: 'he-IL'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =  {
             givenName: "נטלי",
             familyName: "פורטמן"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseSingleNameWithPrefixAndAdjunct_he: function(test) {
         test.expect(2);
         var parsed = new Name("מר ו - גברת פורטמן", {locale: 'he-IL'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             prefix: "מר ו - גברת",
             familyName: "פורטמן"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     testParseTitle_he: function(test) {
         test.expect(2);
         var parsed = new Name("נטלי פורטמן דוקטור", {locale: 'he-IL'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =    {
             suffix: "דוקטור",
             givenName: "נטלי",
             familyName: "פורטמן"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseTitleWithFamilyOnly_he: function(test) {
         test.expect(2);
         var parsed = new Name("גברת פורטמן", {locale: 'he-IL'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =   {
             prefix: "גברת",
             familyName: "פורטמן"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
-    
+
+
+
     testParseEverything_he: function(test) {
         test.expect(2);
         var parsed = new Name("גברת נטלי פורטמן", {locale: 'he-IL'});
         test.ok(typeof(parsed) !== "undefined");
-        
+
         var expected =    {
             prefix: "גברת",
             givenName: "נטלי",
             familyName: "פורטמן"
         };
-        
+
         test.contains(parsed, expected);
         test.done();
     },
-    
-    
+
+
     /*
      * Format Tests
      */
-    
+
     testFormatSimpleNameShort_he: function(test) {
         test.expect(2);
         var name = new Name({
@@ -139,18 +139,18 @@ module.exports.testname_he = {
             familyName: "פורטמן"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "נטלי פורטמן";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameMedium_he: function(test) {
         test.expect(2);
         var name = new Name({
@@ -158,18 +158,18 @@ module.exports.testname_he = {
             familyName: "פורטמן"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "נטלי פורטמן";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameLong_he: function(test) {
         test.expect(2);
         var name = new Name({
@@ -178,88 +178,88 @@ module.exports.testname_he = {
             suffix: "דוקטור"
         });
         var fmt = new NameFmt({
-            style: "long", 
+            style: "long",
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "נטלי פורטמן";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatSimpleNameFull_he: function(test) {
         test.expect(2);
         var name = new Name({
             prefix: "ראש הממשלה",
             givenName: "נטלי",
-            
+
             familyName: "פורטמן",
             suffix: "לשעבר"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "ראש הממשלה נטלי פורטמן לשעבר";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameShort_he: function(test) {
         test.expect(2);
         var name = new Name({
             prefix: "ראש הממשלה",
             givenName: "נטלי",
-            
+
             familyName: "פורטמן",
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "נטלי פורטמן";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameMedium_he: function(test) {
         test.expect(2);
         var name = new Name({
             prefix: "ראש הממשלה",
             givenName: "נטלי",
-            
+
             familyName: "פורטמן",
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "נטלי פורטמן";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatComplexNameLong_he: function(test) {
         test.expect(2);
         var name = new Name({
             prefix: "ראש הממשלה",
             givenName: "נטלי",
-            
+
             familyName: "פורטמן",
         });
         var fmt = new NameFmt({
@@ -268,13 +268,13 @@ module.exports.testname_he = {
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "ראש הממשלה נטלי פורטמן";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameShort_he: function(test) {
         test.expect(2);
         var name = new Name({
@@ -283,18 +283,18 @@ module.exports.testname_he = {
             familyName: "地"
         });
         var fmt = new NameFmt({
-            style: "short", 
+            style: "short",
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameMedium_he: function(test) {
         test.expect(2);
         var name = new Name({
@@ -303,18 +303,18 @@ module.exports.testname_he = {
             familyName: "地"
         });
         var fmt = new NameFmt({
-            style: "medium", 
+            style: "medium",
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     },
-    
+
     testFormatAsianNameLong_he: function(test) {
         test.expect(2);
         var name = new Name({
@@ -323,21 +323,21 @@ module.exports.testname_he = {
             familyName: "地"
         });
         var fmt = new NameFmt({
-            style: "full", 
+            style: "full",
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
-        
+
         var expected = "小地獸";
-        
+
         test.equal(formatted, expected);
         test.done();
     }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 };

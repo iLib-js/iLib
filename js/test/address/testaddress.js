@@ -1,6 +1,6 @@
 /*
  * testaddress.js - test the address parsing and formatting routines
- * 
+ *
  * Copyright © 2013-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -42,7 +42,7 @@ module.exports.testaddress = {
     testParseAddressSimple: function(test) {
         test.expect(7);
         var parsedAddress = new Address("950 W Maude Ave.\nSunnyvale, CA 94085\nUSA", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "950 W Maude Ave.");
         test.equal(parsedAddress.locality, "Sunnyvale");
@@ -52,12 +52,12 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-    
+
     // to verify NOV-111026
     testParseAddressSimple2: function(test) {
         test.expect(7);
         var parsedAddress = new Address("20 Main St.\nMyTown, NY 11530\nUSA", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "20 Main St.");
         test.equal(parsedAddress.locality, "MyTown");
@@ -67,11 +67,11 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-    
+
     testParseAddressSimple3: function(test) {
         test.expect(7);
         var parsedAddress = new Address("5-2-1 Ginza, Chuo-ku\nTokyo 170-3293\nJapan", {locale: 'en-JP'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "5-2-1 Ginza");
         test.equal(parsedAddress.locality, "Chuo-ku");
@@ -81,11 +81,11 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "JP");
         test.done();
     },
-    
+
     testParseAddressMoreComplex: function(test) {
         test.expect(7);
         var parsedAddress = new Address("950 W 21st Ave, Apt 45\nNY, NY 10234", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "950 W 21st Ave, Apt 45");
         test.equal(parsedAddress.locality, "NY");
@@ -95,11 +95,11 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-    
+
     testParseAddressSpelledOutState: function(test) {
         test.expect(7);
         var parsedAddress = new Address("20 Main St.\nMyTown, Arizona 11530\nUSA", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "20 Main St.");
         test.equal(parsedAddress.locality, "MyTown");
@@ -109,11 +109,11 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-    
+
     testParseAddressSpelledOutStateWithSpaces: function(test) {
         test.expect(7);
         var parsedAddress = new Address("20 Main St.\nMyTown, New York 11530\nUSA", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "20 Main St.");
         test.equal(parsedAddress.locality, "MyTown");
@@ -123,11 +123,11 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-    
+
     testParseAddressSpelledOutStateWithPrefix: function(test) {
         test.expect(7);
         var parsedAddress = new Address("20 Main St.\nMyTown, Arkansas 11530\nUSA", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "20 Main St.");
         test.equal(parsedAddress.locality, "MyTown");
@@ -137,11 +137,11 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-    
+
     testParseAddressNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("20 Main St.\nMyTown, NY\nUSA", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "20 Main St.");
         test.equal(parsedAddress.locality, "MyTown");
@@ -151,11 +151,11 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-    
+
     testParseAddressManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("950 W 21st Ave\nApt 45\nNY\nNY\n10234", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "950 W 21st Ave, Apt 45");
         test.equal(parsedAddress.locality, "NY");
@@ -165,11 +165,11 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-    
+
     testParseAddressOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("950 W Maude Ave., Sunnyvale, CA 94085 USA", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "950 W Maude Ave.");
         test.equal(parsedAddress.locality, "Sunnyvale");
@@ -179,11 +179,11 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-    
+
     testParseAddressSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("950 W 21st Ave\n\n   Apt 45      \n NY,    NY   10234\n\n   \n\n", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "950 W 21st Ave, Apt 45");
         test.equal(parsedAddress.locality, "NY");
@@ -193,11 +193,11 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-    
+
     testParseAddressFewDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("950 W Maude Ave., Sunnyvale CA 94085 USA", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "950 W Maude Ave.");
         test.equal(parsedAddress.locality, "Sunnyvale");
@@ -207,11 +207,11 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-    
+
     testParseAddressWithStreetNumberThatLooksLikeAZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("15672 W 156st St #45\nSeattle, WA 98765", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "15672 W 156st St #45");
         test.equal(parsedAddress.locality, "Seattle");
@@ -221,11 +221,11 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-    
+
     testParseAddressPOBox: function(test) {
         test.expect(7);
         var parsedAddress = new Address("P.O. Box 350\nMinneapolis MN 45678-2234", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "P.O. Box 350");
         test.equal(parsedAddress.locality, "Minneapolis");
@@ -235,11 +235,11 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-    
+
     testParseAddressHawaii: function(test) {
         test.expect(7);
         var parsedAddress = new Address("20 Hawai'i Oe Lane\nKa'anapali, HI 99232", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "20 Hawai'i Oe Lane");
         test.equal(parsedAddress.locality, "Ka'anapali");
@@ -249,12 +249,12 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-    
+
     testParseAddressUnknown: function(test) {
         test.expect(7);
-    
+
         var parsedAddress = new Address("123 Main Street, Pretoria 5678, South Africa", {locale: 'en-US'});
-    
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "123 Main Street");
         test.equal(parsedAddress.locality, "Pretoria");
@@ -264,11 +264,11 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "ZA");
         test.done();
     },
-    
+
     testParseAddressNonUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Achterberglaan 23, 2345 GD Uithoorn, Netherlands", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Achterberglaan 23");
         test.equal(parsedAddress.locality, "Uithoorn");
@@ -278,12 +278,12 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "NL");
         test.done();
     },
-        
+
     // for NOV-118061
     testParseAddressNonStandard: function(test) {
         test.expect(7);
         var parsedAddress = new Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-US'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "123 mcdonald ave, apt 234");
         test.equal(parsedAddress.locality, "sunnyvale");
@@ -304,7 +304,7 @@ module.exports.testaddress = {
             country: "United States of America",
             countryCode: "US"
         }, {locale: 'en-US'});
-        
+
         // should give US format by default
         var expected = "1234 Any Street\nAnytown CA 94085\nUnited States of America";
         var formatter = new AddressFmt();
@@ -322,13 +322,13 @@ module.exports.testaddress = {
             country: "United States of America",
             countryCode: "US"
         }, {locale: 'en-US'});
-        
+
         var expected = "1234 Any Street\nAnytown CA 94085\nUnited States of America";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressDomestic: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -339,7 +339,7 @@ module.exports.testaddress = {
             country: "United States of America",
             countryCode: "US"
         }, {locale: 'en-US'});
-        
+
         var expected = "1234 Any Street\nAnytown CA 94085";
         var formatter = new AddressFmt({locale: 'en-US', style: 'nocountry'});
         test.equal(formatter.format(parsedAddress), expected);
@@ -367,7 +367,7 @@ module.exports.testaddress = {
     testParseAddressUnknownLocale: function(test) {
         test.expect(7);
         var parsedAddress = new Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'zxx-XX'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "123 mcdonald ave, apt 234, sunnyvale");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -377,12 +377,12 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "XX");
         test.done();
     },
-    
+
     //for DFISH-23879
     testParseAddressUnknownLocaleQQ: function(test) {
         test.expect(7);
         var parsedAddress = new Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-QQ'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "123 mcdonald ave, apt 234, sunnyvale");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -392,27 +392,27 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "QQ");
         test.done();
     },
-    
+
     testFormatAddressUnknownLocaleQQ: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
-            streetAddress: "123 mcdonald ave, apt 234", 
+            streetAddress: "123 mcdonald ave, apt 234",
             locality: "Sunnyvale",
             region: "CA",
-            postalCode: "94086", 
+            postalCode: "94086",
             locale: 'en-QQ'
         });
-        
+
         var expected = "123 mcdonald ave, apt 234\nSunnyvale CA 94086";
         var formatter = new AddressFmt({locale: 'en-QQ', style: 'nocountry'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testParseAddressUnknownLocaleHK: function(test) {
         test.expect(7);
         var parsedAddress = new Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-HK'});
-        
+
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "123 mcdonald ave, apt 234, sunnyvale, CA 34567");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -422,17 +422,17 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "HK");
         test.done();
     },
-    
+
     testFormatAddressUnknownLocaleHK: function(test) {
         test.expect(1);
         var parsedAddress = new Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-HK'});
-        
+
         var expected = "123 mcdonald ave, apt 234, sunnyvale, CA 34567";
         var formatter = new AddressFmt({locale: 'en-HK', style: 'nocountry'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
     testFormatAddressDefaultEverythingButForeignAddress: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -441,7 +441,7 @@ module.exports.testaddress = {
             locality: "North Point",
             streetAddress: "5F, 633 King's Road"
         });
-        
+
         var expected = "5F, 633 King's Road\nNorth Point\nHong Kong";
         var formatter = new AddressFmt();
         test.equal(formatter.format(parsedAddress), expected);
@@ -772,7 +772,7 @@ module.exports.testaddress = {
         test.equal(info[3][0].label, "Country");
         test.done();
     },
-    
+
     testAddressFmtGetFormatInfoUSRightSortOrder: function(test) {
         test.expect(61);
         var formatter = new AddressFmt({locale: 'en-US'});
@@ -1266,8 +1266,8 @@ module.exports.testaddress = {
             "Comoras",
             "Corea del Norte",
             "Corea del Sur",
+            "Costa de Marfil",
             "Costa Rica",
-            "Côte d’Ivoire",
             "Croacia",
             "Cuba",
             "Curazao",
@@ -1416,7 +1416,7 @@ module.exports.testaddress = {
             "Ruanda",
             "Rumanía",
             "Rusia",
-            "Sáhara Occidental",
+            "Sahara Occidental",
             "Samoa",
             "Samoa Americana",
             "San Bartolomé",
@@ -1486,7 +1486,7 @@ module.exports.testaddress = {
 
         test.done();
     },
-    
+
     testAddressFmtGetFormatInfoGBWithTranslationsToRussian: function(test) {
         test.expect(15);
         var formatter = new AddressFmt({locale: 'en-GB'});
@@ -1511,7 +1511,7 @@ module.exports.testaddress = {
         test.equal(info[3][0].label, "Страна");
         test.done();
     },
-    
+
     testAddressFmtGetFormatInfoGBWithTranslationsToKorean: function(test) {
         test.expect(15);
         var formatter = new AddressFmt({locale: 'en-GB'});

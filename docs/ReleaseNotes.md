@@ -1,14 +1,139 @@
 Release Notes for Version 14
 ============================
 
-Build 018
+Build 027
 -------
-Published as version 14.10.1
+Published as version 14.18.0
+
+New Features:
+* Updated pseudo strings to be encapsulated with square brackets so that you can tell when the resource string starts and ends.
+
+Bug Fixes:
+* Updated to IANA time zone data version 2023b
+
+Build 026
+-------
+Published as version 14.17.0
+
+New Features:
+* Update to CLDR v42 data
+Bug Fixes:
+* Fixed to publish js apidoc with applying style properly.
+* Fixed the case of setting the root path incorrectly in `ilib-web.js`.
+
+Build 025
+-------
+Published as version 14.16.0
+
+New Features:
+* Update to Unicode Character Database (UCD) version 15.0.0
+    * updated character properties
+    * added scripts support
+    * updated normalization data, especially for Cyrillic characters
+
+Bug Fixes:
+* Updated to IANA time zone data version 2022g
+* Updated package dependencies
+* Fixed the locale info for zh-TW, zh-MO, and zh-HK
+    * It was returning different info than zh-Hant-TW, etc., but it
+	  should have been the same
+
+Build 024
+-------
+Published as version 14.15.1
 
 New Features:
 
 Bug Fixes:
+* Fixed isomorphic test failures by adding a value check
+
+Build 023
+-------
+Published as version 14.15.0
+
+New Features:
+* Update to CLDR v41 data
+* Update to the latest ISO-14924 data (writing script information)
+* Added `useIntl` option in DateFmt to choose whether to use Intl.DateTimeFormat
+    * When it is set to true, the Intl object is available, it supports the requested locale, and the parameters can be converted to equivalent parameters for the Intl.DateTimeFormat object, then it will format the date relatively quickly using Intl.
+    * When they cannot be converted, the Intl object is not available, or the Intl object does not support the requested locale, it will perform the relatively slow formatting using regular ilib code written in Javascript.
+    *  The code will often return different results depending on the platform and version of the Javascript engine and which version of CLDR it supports. If you need consistency across versions and platforms, do not use the useIntl flag. Just stick with the regular ilib formatting code.
+*  Added the ability to use Intl.PluralRules in IString get the plural category with the number.
+
+Bug Fixes:
+* Fixed a bug where the DateFmt.formatRelative() does not represent correct result in certain case.
+* Updated locale data to have a consistently sorted order by rerunning cldr tool code.
+* Fixed a bug which a default script for `uz` should be `Latin` instead of `Arabic`.
+* Updated hardcoded locales for LocaleMatcher. (bn-IN, en-KR, hr-HU, ka-IR, ko-US, ku-IQ, ps-PK, pt-MO)
+* Fixed to generate `plurals.json` files even when the rule only has `other`.
+* Updated to load `plurals.json` in ResBundle Constructor, then you could call synchronously all the time because we can be sure if is already loaded.
+* Fixed a bug where the Currency didn't work asynchronously.
+* Update to time zone data 2022c
+* Fixed to handle both absolute and relative paths correctly in `ilib-web.js`.
+
+Build 022
+-------
+Published as version 14.14.0
+
+New Features:
+* Added support for ig-NG, lb-LU, yo-BJ, yo-NG, ps-AF, and ps-PK locales
+    * validated locale data and added many test cases
+* Updated cldr tool codes to have a consistently sorted locale data order.
+
+Bug Fixes:
+* Fixed the long name of the pounds per square inch (psi) of pressure measure to match the long name used
+  in CLDR so that measures of psi can be formatted with the format templates from CLDR
+* Fixed the ilib demo build failure issue that is related ilib-scanner.
+* Update to time zone data 2022a
+* Fixed correct currency symbol (AMD, AZN, GHS)
+
+
+Build 021
+-------
+Published as version 14.13.0
+
+New Features:
+* Updated clock.jf files by referencing cldr-core/supplemental/timeDate.json and modified related cldr script code.
+* Added new unit types for power, pressure, and force
+    * includes unit conversion and formatting
+
+Bug Fixes:
+
+
+Build 020
+-------
+Published as version 14.12.0
+
+New Features:
+* Updated support:
+    * Unicode Character Database (UCD) v14.0.0
+    * CLDR 40.0.0
+    * ISO 15924
+
+Bug Fixes:
+* Updated to route the code flow via NodeLoader when a platform is IoTjs
+
+
+Build 019
+-------
+Published as version 14.11.1
+
+Bug Fixes:
+* The distribution 14.11.0 was broken due to changes in the dependencies used to
+  package the code. This versino is the same code as 14.11.0 but with those packaging
+  problems resolved.
+
+Build 018
+-------
+Published as version 14.11.0
+
+New Features:
+* Added the ability to set additional path to Loader. Additional paths can be set through newly add Loader's `addPath()`, and iLib reads resources with higher priority. The added path can be removed by `removePath()` to Loader's path list.
+
+Bug Fixes:
 * Updated to IANA time zone data 2021c
+* Updated to IANA time zone data 2021d
+* Updated to IANA time zone data 2021e
 
 Build 017
 -------

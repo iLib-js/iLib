@@ -91,7 +91,7 @@ var StringMapper = function (options) {
         }
 
         if (typeof(options.sync) !== 'undefined') {
-            sync = (options.sync == true);
+            sync = (options.sync === true);
         }
 
         if (typeof(options.loadParams) !== 'undefined') {
@@ -117,7 +117,7 @@ var StringMapper = function (options) {
 StringMapper.prototype = {
     /**
      * Return the locale that this mapper was constructed.
-     * @returns
+     * @return {Locale} the locale instance
      */
     getLocale: function () {
         return this.locale;

@@ -1,7 +1,7 @@
 /*
  * testdate.js - test the date object
  *
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017,2021-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -412,13 +412,14 @@ module.exports.testdate = {
     },
     testDstStartBoundary_Santiago: function(test) {
         test.expect(2);
-        var boundaryiLib = DateFactory({year: 2020,month: 9,day: 6,hour: 0,minute: 0,second: 0,timezone: "America/Santiago"});
+        var boundaryiLib = DateFactory({year: 2023, month: 9, day: 3, hour: 0, minute: 0, second: 0, timezone: "America/Santiago"});
         // we can't set time zone to Date object, so compare with constant value
-        // 1599364800000: new Date(2020, 8, 6, 0, 0, 0).getTime() with Santiago local time
-        test.equal(boundaryiLib.getTimeExtended(), 1599364800000);
-        var ildMyBday = DateFactory({unixtime: 1599364800000});
+        // was 1694318400000: new Date(2023, 9, 11, 0, 0, 0).getTime() with Santiago local time
+        // now 1693713600000: new Date(2023, 9, 3, 0, 0, 0).getTime() with Santiago local time
+        test.equal(boundaryiLib.getTimeExtended(), 1693713600000);
+        var ildMyBday = DateFactory({unixtime: 1693713600000});
         var fmt = new DateFmt({length: "short", type:"datetime",locale:"es-CL", timezone:"America/Santiago"});
-        test.equal("06-09-20 01:00", fmt.format(ildMyBday));
+        test.equal(fmt.format(ildMyBday), "03-09-23, 01:00");
 
         test.done();
     },
@@ -431,7 +432,7 @@ module.exports.testdate = {
         test.equal(boundaryiLib.getTimeExtended(), 1586059200000);
         var ildMyBday = DateFactory({unixtime: 1586059200000});
         var fmt = new DateFmt({length: "short", type:"datetime",locale:"es-CL", timezone:"America/Santiago"});
-        test.equal("05-04-20 00:00", fmt.format(ildMyBday));
+        test.equal(fmt.format(ildMyBday), "05-04-20, 00:00");
 
         test.done();
     },
@@ -446,8 +447,8 @@ module.exports.testdate = {
         test.equal(boundaryiLib.getTimeExtended(), 1586052000000);
 
         var ildMyBday = DateFactory({unixtime: 1586052000000});
-        var fmt = new DateFmt({length: "short", type:"datetime",locale:"es-CL", timezone:"America/Santiago"});
-        test.equal("04-04-20 23:00", fmt.format(ildMyBday));
+        var fmt = new DateFmt({length: "short", type:"datetime", locale:"es-CL", timezone:"America/Santiago"});
+        test.equal(fmt.format(ildMyBday), "04-04-20, 23:00");
 
         test.done();
     }

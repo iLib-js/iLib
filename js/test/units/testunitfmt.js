@@ -1,7 +1,7 @@
 /*
  * testunits.js - test the units formatter object
  *
- * Copyright © 2014-2015, 2017-2018 JEDLSoft
+ * Copyright © 2014-2015, 2017-2018, 2021-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -631,7 +631,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"de-DE",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1.000 Kilobytes");
+        test.equal(str, "1.000 Kilobyte");
         test.done();
     },
 
@@ -801,7 +801,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 калорий");
+        test.equal(str, "1 000 килокалорий");
         test.done();
     },
 
@@ -854,7 +854,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"ru-RU",autoConvert:false});
         var str = uf.format(m1);
-        test.equal(str, "2 мили на галлон");
+        test.equal(str, "2 мили на амер. галлон");
         test.done();
     },
 
@@ -1608,7 +1608,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short"});
         var str = uf.format(m1);
-        test.equal(str, "3,83308 décennies");
+        test.equal(str, "3,83308 déc.");
         test.done();
     },
 
@@ -1634,7 +1634,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
         var str = uf.format(m1);
-        test.equal(str, "1 000 мин.");
+        test.equal(str, "1 000 мин");
         test.done();
     },
 
@@ -1751,7 +1751,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"long"});
         var str = uf.format(m1);
-        test.equal(str, "1 галлон");
+        test.equal(str, "1 амер. галлон");
         test.done();
     },
 
@@ -1764,7 +1764,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
         var str = uf.format(m1);
-        test.equal(str, "1 000 гал.");
+        test.equal(str, "1 000 ам. гал.");
         test.done();
     },
 
@@ -2324,7 +2324,6 @@ module.exports.testunitfmt = {
         test.equal(str, "1,000 厘米");
         test.done();
     },
-
 
     testUnitFormatzhHantMY: function(test) {
         test.expect(1);
@@ -2890,4 +2889,197 @@ module.exports.testunitfmt = {
         test.equal(str, "188.9759938 ሴንቲሜትር");
         test.done();
     },
+
+    /** pressure **/
+
+    testUnitFormatPressure: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "psi",
+            amount: 1000
+        });
+
+        var uf = new UnitFmt({
+            locale: "de-DE",
+            autoConvert: false,
+            autoScale: false,
+            sync: false,
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.000 Pfund pro Quadratzoll");
+        test.done();
+    },
+
+    /** time **/
+
+    testUnitFmt_Time_am_ET: function(test) {
+        test.expect(2);
+        var m1 = MeasurementFactory({
+            unit: "decade",
+            amount: 1
+        });
+
+        var m2 = MeasurementFactory({
+            unit: "decade",
+            amount: 5
+        });
+
+        var uf = new UnitFmt({
+            locale: "am-ET",
+            autoConvert: false,
+            autoScale: false,
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 ዓሠርተ-ዓመት");
+
+        var str = uf.format(m2);
+        test.equal(str, "5 ዓሠርተ-ዓመታት");
+        test.done();
+    },
+    testUnitFmt_Time_nl_NL_short: function(test) {
+        test.expect(2);
+        var m1 = MeasurementFactory({
+            unit: "decade",
+            amount: 1
+        });
+
+        var m2 = MeasurementFactory({
+            unit: "decade",
+            amount: 5
+        });
+
+        var uf = new UnitFmt({
+            locale: "nl-NL",
+            autoConvert: false,
+            autoScale: false,
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 dec.");
+
+        var str = uf.format(m2);
+        test.equal(str, "5 dec.");
+        test.done();
+    },
+    testUnitFmt_Time_nl_NL_long: function(test) {
+        test.expect(2);
+        var m1 = MeasurementFactory({
+            unit: "decade",
+            amount: 1
+        });
+
+        var m2 = MeasurementFactory({
+            unit: "decade",
+            amount: 5
+        });
+
+        var uf = new UnitFmt({
+            locale: "nl-NL",
+            autoConvert: false,
+            autoScale: false,
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 decennium");
+
+        var str = uf.format(m2);
+        test.equal(str, "5 decennia");
+        test.done();
+    },
+
+    /** digital-speed **/
+    testUnitFmt_DigitalSpeed_ar_EG: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "bit-per-second",
+            amount: 1
+        });
+
+        var uf = new UnitFmt({
+            locale: "ar-EG",
+            autoConvert: false,
+            autoScale: false,
+            useNative: false
+        });
+        var str = uf.format(m1);
+        test.equal(str, '1 بت في الثانية');
+        test.done();
+    },
+    testUnitFmt_DigitalSpeed_pt_PT: function(test) {
+        test.expect(2);
+        var m1 = MeasurementFactory({
+            unit: "byte",
+            amount: 1
+        });
+        var m2 = MeasurementFactory({
+            unit: "byte",
+            amount: 30
+        });
+
+        var uf = new UnitFmt({
+            locale: "pt-PT",
+            autoConvert: false,
+            autoScale: false
+        });
+        var str = uf.format(m1);
+        test.equal(str, '1 byte');
+        var str = uf.format(m2);
+        test.equal(str, '30 bytes');
+        test.done();
+    },
+
+    /** energy **/
+    testUnitFmt_Energy_fr_FR: function(test) {
+        test.expect(2);
+        var m1 = MeasurementFactory({
+            unit: "kilowatt-hour",
+            amount: 1
+        });
+        var m2 = MeasurementFactory({
+            unit: "kilowatt-hour",
+            amount: 10
+        });
+
+        var uf = new UnitFmt({
+            locale: "fr-FR",
+            autoConvert: false,
+            autoScale: false,
+        });
+        var str = uf.format(m1);
+        test.equal(str, '1 kilowatt-heure');
+        var str = uf.format(m2);
+        test.equal(str, '10 kilowatt-heures');
+        test.done();
+
+    },
+    /** length **/
+    testUnitFmt_Energy_sr_Latn_BA: function(test) {
+        test.expect(3);
+        var m1 = MeasurementFactory({
+            unit: "centimeter",
+            amount: 1
+        });
+        var m2 = MeasurementFactory({
+            unit: "centimeter",
+            amount: 3
+        });
+        var m3 = MeasurementFactory({
+            unit: "centimeter",
+            amount: 5
+        });
+
+        var uf = new UnitFmt({
+            locale: "sr-Latn-BA",
+            autoConvert: false,
+            autoScale: false,
+        });
+        var str = uf.format(m1);
+        test.equal(str, '1 centimetar');
+        var str = uf.format(m2);
+        test.equal(str, '3 centimetra');
+        var str = uf.format(m3);
+        test.equal(str, '5 centimetara');
+        test.done();
+    }
 };
