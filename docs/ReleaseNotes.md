@@ -7,9 +7,13 @@ Published as version 14.18.0
 
 New Features:
 * Updated pseudo strings to be encapsulated with square brackets so that you can tell when the resource string starts and ends.
+* Added more pseudomap data for use in testing different fonts using pseudo locales.
+    * Added a "tall" property in some pseudomap.json files which gives the tallest glyph in the script.
+      This tallest glyph is included at the beginning of a pseudo localized string in order to test
+      if there is enough room for the height of text in each UI element.
 
 Bug Fixes:
-* Updated to IANA time zone data version 2023b
+* Updated to IANA time zone data version 2023b and then 2023c
 
 Build 026
 -------
