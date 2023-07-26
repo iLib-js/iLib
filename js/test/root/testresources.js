@@ -1,7 +1,7 @@
 /*
  * testresources.js - test the Resources object
  *
- * Copyright © 2012-2015, 2017-2019, 2021-2022 JEDLSoft
+ * Copyright © 2012-2015, 2017-2019, 2021-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -413,9 +413,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), "Ħëľľõ fŕõm {çõüñţŕÿ}");
-        test.equal(rb.getString("Hello from {city}").toString(), "Ħëľľõ fŕõm {çíţÿ}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Ĝŕëëţíñğš fŕõm {çíţÿ} íñ {çõüñţŕÿ}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[Ħëľľõ fŕõm {çõüñţŕÿ}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[Ħëľľõ fŕõm {çíţÿ}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {çíţÿ} íñ {çõüñţŕÿ}]");
         test.done();
     },
 
@@ -430,9 +430,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), "Ħëľľõ fŕõm {country}");
-        test.equal(rb.getString("Hello from {city}").toString(), "Ħëľľõ fŕõm {city}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Ĝŕëëţíñğš fŕõm {city} íñ {country}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[Ħëľľõ fŕõm {country}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[Ħëľľõ fŕõm {city}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {city} íñ {country}]");
         test.done();
     },
 
@@ -447,9 +447,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), "Ħëľľõ fŕõm {country}");
-        test.equal(rb.getString("Hello from {city}").toString(), "Ħëľľõ fŕõm {city}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Ĝŕëëţíñğš fŕõm {city} íñ {country}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[Ħëľľõ fŕõm {country}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[Ħëľľõ fŕõm {city}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {city} íñ {country}]");
         test.done();
     },
 
@@ -464,9 +464,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from <span class=\"foo\">{country}</span>").toString(), "Ħëľľõ fŕõm <span class=\"foo\">{country}</span>");
-        test.equal(rb.getString("Hello from <span class=\"foo\">{city}</span>").toString(), "Ħëľľõ fŕõm <span class=\"foo\">{city}</span>");
-        test.equal(rb.getString("Greetings from <span class=\"foo\">{city}</span> in <span class=\"foo\">{country}</span>").toString(), "Ĝŕëëţíñğš fŕõm <span class=\"foo\">{city}</span> íñ <span class=\"foo\">{country}</span>");
+        test.equal(rb.getString("Hello from <span class=\"foo\">{country}</span>").toString(), "[Ħëľľõ fŕõm <span class=\"foo\">{country}</span>]");
+        test.equal(rb.getString("Hello from <span class=\"foo\">{city}</span>").toString(), "[Ħëľľõ fŕõm <span class=\"foo\">{city}</span>]");
+        test.equal(rb.getString("Greetings from <span class=\"foo\">{city}</span> in <span class=\"foo\">{country}</span>").toString(), "[Ĝŕëëţíñğš fŕõm <span class=\"foo\">{city}</span> íñ <span class=\"foo\">{country}</span>]");
         test.done();
     },
 
@@ -481,9 +481,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from <div><span class=\"foo\">{country}</span></div>").toString(), "Ħëľľõ fŕõm <div><span class=\"foo\">{country}</span></div>");
-        test.equal(rb.getString("Hello from <div><span class=\"foo\">{city}</span></div>").toString(), "Ħëľľõ fŕõm <div><span class=\"foo\">{city}</span></div>");
-        test.equal(rb.getString("Greetings from <div><span class=\"foo\">{city}</span></div> in <div><span class=\"foo\">{country}</span></div>").toString(), "Ĝŕëëţíñğš fŕõm <div><span class=\"foo\">{city}</span></div> íñ <div><span class=\"foo\">{country}</span></div>");
+        test.equal(rb.getString("Hello from <div><span class=\"foo\">{country}</span></div>").toString(), "[Ħëľľõ fŕõm <div><span class=\"foo\">{country}</span></div>]");
+        test.equal(rb.getString("Hello from <div><span class=\"foo\">{city}</span></div>").toString(), "[Ħëľľõ fŕõm <div><span class=\"foo\">{city}</span></div>]");
+        test.equal(rb.getString("Greetings from <div><span class=\"foo\">{city}</span></div> in <div><span class=\"foo\">{country}</span></div>").toString(), "[Ĝŕëëţíñğš fŕõm <div><span class=\"foo\">{city}</span></div> íñ <div><span class=\"foo\">{country}</span></div>]");
         test.done();
     },
 
@@ -498,9 +498,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from &amp;<span class=\"foo\">{country}</span>&mdash;").toString(), "Ħëľľõ fŕõm &amp;<span class=\"foo\">{country}</span>&mdash;");
-        test.equal(rb.getString("Hello from &amp;<span class=\"foo\">{city}</span>&mdash;").toString(), "Ħëľľõ fŕõm &amp;<span class=\"foo\">{city}</span>&mdash;");
-        test.equal(rb.getString("Greetings from &amp;<span class=\"foo\">{city}</span>&mdash; in &amp;<span class=\"foo\">{country}</span>&mdash;").toString(), "Ĝŕëëţíñğš fŕõm &amp;<span class=\"foo\">{city}</span>&mdash; íñ &amp;<span class=\"foo\">{country}</span>&mdash;");
+        test.equal(rb.getString("Hello from &amp;<span class=\"foo\">{country}</span>&mdash;").toString(), "[Ħëľľõ fŕõm &amp;<span class=\"foo\">{country}</span>&mdash;]");
+        test.equal(rb.getString("Hello from &amp;<span class=\"foo\">{city}</span>&mdash;").toString(), "[Ħëľľõ fŕõm &amp;<span class=\"foo\">{city}</span>&mdash;]");
+        test.equal(rb.getString("Greetings from &amp;<span class=\"foo\">{city}</span>&mdash; in &amp;<span class=\"foo\">{country}</span>&mdash;").toString(), "[Ĝŕëëţíñğš fŕõm &amp;<span class=\"foo\">{city}</span>&mdash; íñ &amp;<span class=\"foo\">{country}</span>&mdash;]");
         test.done();
     },
 
@@ -515,9 +515,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), "Ħëľľõ fŕõm {country}");
-        test.equal(rb.getString("Hello from {city}").toString(), "Ħëľľõ fŕõm {city}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Ĝŕëëţíñğš fŕõm {city} íñ {country}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[Ħëľľõ fŕõm {country}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[Ħëľľõ fŕõm {city}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {city} íñ {country}]");
         test.done();
     },
 
@@ -535,63 +535,63 @@ module.exports.testresources = {
         // should not pseudo-ize the C style replacement parameters
         // now follows the IEEE printf specification:
         // https://pubs.opengroup.org/onlinepubs/009695399/functions/printf.html
-        test.equal(rb.getStringJS("actual %s "), "àçţüàľ %s 43210");
-        test.equal(rb.getStringJS("actual %b "), "àçţüàľ %b 43210");
-        test.equal(rb.getStringJS("actual %c "), "àçţüàľ %c 43210");
-        test.equal(rb.getStringJS("actual %d "), "àçţüàľ %d 43210");
-        test.equal(rb.getStringJS("actual %o "), "àçţüàľ %o 43210");
-        test.equal(rb.getStringJS("actual %x "), "àçţüàľ %x 43210");
-        test.equal(rb.getStringJS("actual %e "), "àçţüàľ %e 43210");
-        test.equal(rb.getStringJS("actual %f "), "àçţüàľ %f 43210");
-        test.equal(rb.getStringJS("actual %g "), "àçţüàľ %g 43210");
-        test.equal(rb.getStringJS("actual %a "), "àçţüàľ %a 43210");
-        test.equal(rb.getStringJS("actual %% "), "àçţüàľ %% 43210");
-        test.equal(rb.getStringJS("actual %n "), "àçţüàľ %n 43210");
-        test.equal(rb.getStringJS("actual %p "), "àçţüàľ %p 43210");
+        test.equal(rb.getStringJS("actual %s "), "[àçţüàľ %s 43210]");
+        test.equal(rb.getStringJS("actual %b "), "[àçţüàľ %b 43210]");
+        test.equal(rb.getStringJS("actual %c "), "[àçţüàľ %c 43210]");
+        test.equal(rb.getStringJS("actual %d "), "[àçţüàľ %d 43210]");
+        test.equal(rb.getStringJS("actual %o "), "[àçţüàľ %o 43210]");
+        test.equal(rb.getStringJS("actual %x "), "[àçţüàľ %x 43210]");
+        test.equal(rb.getStringJS("actual %e "), "[àçţüàľ %e 43210]");
+        test.equal(rb.getStringJS("actual %f "), "[àçţüàľ %f 43210]");
+        test.equal(rb.getStringJS("actual %g "), "[àçţüàľ %g 43210]");
+        test.equal(rb.getStringJS("actual %a "), "[àçţüàľ %a 43210]");
+        test.equal(rb.getStringJS("actual %% "), "[àçţüàľ %% 43210]");
+        test.equal(rb.getStringJS("actual %n "), "[àçţüàľ %n 43210]");
+        test.equal(rb.getStringJS("actual %p "), "[àçţüàľ %p 43210]");
 
-        test.equal(rb.getStringJS("actual %S "), "àçţüàľ %S 43210");
-        test.equal(rb.getStringJS("actual %C "), "àçţüàľ %C 43210");
-        test.equal(rb.getStringJS("actual %X "), "àçţüàľ %X 43210");
-        test.equal(rb.getStringJS("actual %E "), "àçţüàľ %E 43210");
-        test.equal(rb.getStringJS("actual %G "), "àçţüàľ %G 43210");
-        test.equal(rb.getStringJS("actual %A "), "àçţüàľ %A 43210");
-        test.equal(rb.getStringJS("actual %% "), "àçţüàľ %% 43210");
+        test.equal(rb.getStringJS("actual %S "), "[àçţüàľ %S 43210]");
+        test.equal(rb.getStringJS("actual %C "), "[àçţüàľ %C 43210]");
+        test.equal(rb.getStringJS("actual %X "), "[àçţüàľ %X 43210]");
+        test.equal(rb.getStringJS("actual %E "), "[àçţüàľ %E 43210]");
+        test.equal(rb.getStringJS("actual %G "), "[àçţüàľ %G 43210]");
+        test.equal(rb.getStringJS("actual %A "), "[àçţüàľ %A 43210]");
+        test.equal(rb.getStringJS("actual %% "), "[àçţüàľ %% 43210]");
 
-        test.equal(rb.getStringJS("actual %2$s "), "àçţüàľ %2$s 543210");
-        test.equal(rb.getStringJS("actual %-d "), "àçţüàľ %-d 543210");
-        test.equal(rb.getStringJS("actual %#d "), "àçţüàľ %#d 543210");
-        test.equal(rb.getStringJS("actual %+d "), "àçţüàľ %+d 543210");
-        test.equal(rb.getStringJS("actual % d "), "àçţüàľ % d 543210");
-        test.equal(rb.getStringJS("actual %02d "), "àçţüàľ %02d 543210");
-        test.equal(rb.getStringJS("actual %.2d "), "àçţüàľ %.2d 543210");
-        test.equal(rb.getStringJS("actual %(2d "), "àçţüàľ %(2d 543210");
-        test.equal(rb.getStringJS("actual %4$-2.2d "), "àçţüàľ %4$-2.2d 76543210");
+        test.equal(rb.getStringJS("actual %2$s "), "[àçţüàľ %2$s 543210]");
+        test.equal(rb.getStringJS("actual %-d "), "[àçţüàľ %-d 543210]");
+        test.equal(rb.getStringJS("actual %#d "), "[àçţüàľ %#d 543210]");
+        test.equal(rb.getStringJS("actual %+d "), "[àçţüàľ %+d 543210]");
+        test.equal(rb.getStringJS("actual % d "), "[àçţüàľ % d 543210]");
+        test.equal(rb.getStringJS("actual %02d "), "[àçţüàľ %02d 543210]");
+        test.equal(rb.getStringJS("actual %.2d "), "[àçţüàľ %.2d 543210]");
+        test.equal(rb.getStringJS("actual %(2d "), "[àçţüàľ %(2d 543210]");
+        test.equal(rb.getStringJS("actual %4$-2.2d "), "[àçţüàľ %4$-2.2d 76543210]");
 
-        test.equal(rb.getStringJS("actual %N "), "àçţüàľ %Ň 43210");
-        test.equal(rb.getStringJS("actual %F "), "àçţüàľ %F 43210");
-        test.equal(rb.getStringJS("actual %D "), "àçţüàľ %Ð 43210");
-        test.equal(rb.getStringJS("actual %O "), "àçţüàľ %Ø 43210");
+        test.equal(rb.getStringJS("actual %N "), "[àçţüàľ %Ň 43210]");
+        test.equal(rb.getStringJS("actual %F "), "[àçţüàľ %F 43210]");
+        test.equal(rb.getStringJS("actual %D "), "[àçţüàľ %Ð 43210]");
+        test.equal(rb.getStringJS("actual %O "), "[àçţüàľ %Ø 43210]");
 
-        test.equal(rb.getStringJS("actual %hd "), "àçţüàľ %hd 543210");
-        test.equal(rb.getStringJS("actual %hhd "), "àçţüàľ %hhd 543210");
-        test.equal(rb.getStringJS("actual %ld "), "àçţüàľ %ld 543210");
-        test.equal(rb.getStringJS("actual %lld "), "àçţüàľ %lld 543210");
-        test.equal(rb.getStringJS("actual %Af "), "àçţüàľ %Af 543210");
-        test.equal(rb.getStringJS("actual %zd "), "àçţüàľ %zd 543210");
-        test.equal(rb.getStringJS("actual %td "), "àçţüàľ %td 543210");
-        test.equal(rb.getStringJS("actual %jd "), "àçţüàľ %jd 543210");
-        test.equal(rb.getStringJS("actual %% "), "àçţüàľ %% 43210");
+        test.equal(rb.getStringJS("actual %hd "), "[àçţüàľ %hd 543210]");
+        test.equal(rb.getStringJS("actual %hhd "), "[àçţüàľ %hhd 543210]");
+        test.equal(rb.getStringJS("actual %ld "), "[àçţüàľ %ld 543210]");
+        test.equal(rb.getStringJS("actual %lld "), "[àçţüàľ %lld 543210]");
+        test.equal(rb.getStringJS("actual %Af "), "[àçţüàľ %Af 543210]");
+        test.equal(rb.getStringJS("actual %zd "), "[àçţüàľ %zd 543210]");
+        test.equal(rb.getStringJS("actual %td "), "[àçţüàľ %td 543210]");
+        test.equal(rb.getStringJS("actual %jd "), "[àçţüàľ %jd 543210]");
+        test.equal(rb.getStringJS("actual %% "), "[àçţüàľ %% 43210]");
 
         // now everything at once!
-        test.equal(rb.getStringJS("actual %2$+0.4lld "), "àçţüàľ %2$+0.4lld 876543210");
+        test.equal(rb.getStringJS("actual %2$+0.4lld "), "[àçţüàľ %2$+0.4lld 876543210]");
 
         // now some extended format specifiers to support Swift/Objective-C
         // from https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html#//apple_ref/doc/uid/TP40004265-SW1
         // %@ means format an objective-C or swift object
-        test.equal(rb.getStringJS("actual %@ "), "àçţüàľ %@ 43210");
-        test.equal(rb.getStringJS("actual %2$@ "), "àçţüàľ %2$@ 543210");
-        test.equal(rb.getStringJS("actual %2$0ll@ "), "àçţüàľ %2$0ll@ 76543210");
-        test.equal(rb.getStringJS("actual %qd "), "àçţüàľ %qd 543210");
+        test.equal(rb.getStringJS("actual %@ "), "[àçţüàľ %@ 43210]");
+        test.equal(rb.getStringJS("actual %2$@ "), "[àçţüàľ %2$@ 543210]");
+        test.equal(rb.getStringJS("actual %2$0ll@ "), "[àçţüàľ %2$0ll@ 76543210]");
+        test.equal(rb.getStringJS("actual %qd "), "[àçţüàľ %qd 543210]");
 
         test.done();
     },
@@ -606,9 +606,103 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should be equivalent to "text" and not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), "Ħëľľõ fŕõm {country}");
-        test.equal(rb.getString("Hello from {city}").toString(), "Ħëľľõ fŕõm {city}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Ĝŕëëţíñğš fŕõm {city} íñ {country}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[Ħëľľõ fŕõm {country}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[Ħëľľõ fŕõm {city}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {city} íñ {country}]");
+        test.done();
+    },
+
+    testResBundleGetStringOtherBundlePseudoBengali: function(test) {
+        test.expect(4);
+        ilib.setAsPseudoLocale("as-XX");
+        var rb = new ResBundle({
+            name: "tester",
+            locale: "as-XX"
+        });
+
+        test.ok(rb !== null);
+
+        // should be equivalent to "text" and not pseudo-ize the replacement parameter names
+        test.equal(rb.getString("Hello from {country}").toString(), '[ঠ্ড়িহএললও fরওম {country}]');
+        test.equal(rb.getString("Hello from {city}").toString(), '[ঠ্ড়িহএললও fরওম {city}]');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), '[ঠ্ড়িগরএএতইনগশ fরওম {city} ইন {country}]');
+
+        ilib.clearPseudoLocales();
+        test.done();
+    },
+
+    testResBundleGetStringOtherBundlePseudoGujarati: function(test) {
+        test.expect(4);
+        ilib.setAsPseudoLocale("gu-XX");
+        var rb = new ResBundle({
+            name: "tester",
+            locale: "gu-XX"
+        });
+
+        test.ok(rb !== null);
+
+        // should be equivalent to "text" and not pseudo-ize the replacement parameter names
+        test.equal(rb.getString("Hello from {country}").toString(), '[ઈૄહએલલઓ fૃઓં {country}]');
+        test.equal(rb.getString("Hello from {city}").toString(), '[ઈૄહએલલઓ fૃઓં {city}]');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), '[ઈૄગૃએએતઇઙગષ fૃઓં {city} ઇઙ {country}]');
+
+        ilib.clearPseudoLocales();
+        test.done();
+    },
+
+    testResBundleGetStringOtherBundlePseudoOriya: function(test) {
+        test.expect(4);
+        ilib.setAsPseudoLocale("or-XX");
+        var rb = new ResBundle({
+            name: "tester",
+            locale: "or-XX"
+        });
+
+        test.ok(rb !== null);
+
+        // should be equivalent to "text" and not pseudo-ize the replacement parameter names
+        test.equal(rb.getString("Hello from {country}").toString(), '[ବିୣଁହଁଏଲଲଓ ଫଁରଓମ {country}]');
+        test.equal(rb.getString("Hello from {city}").toString(), '[ବିୣଁହଁଏଲଲଓ ଫଁରଓମ {city}]');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), '[ବିୣଁଗରଏଏତଇନଗସଁ ଫଁରଓମ {city} ଇନ {country}]');
+
+        ilib.clearPseudoLocales();
+        test.done();
+    },
+    testResBundleGetStringOtherBundlePseudoEthi: function(test) {
+        test.expect(4);
+        ilib.setAsPseudoLocale("am-XX");
+        var rb = new ResBundle({
+            name: "tester",
+            locale: "am-XX"
+        });
+
+        test.ok(rb !== null);
+
+        // should be equivalent to "text" and not pseudo-ize the replacement parameter names
+        test.equal(rb.getString("Hello from {country}").toString(), '[ሿ፝ሁኤለለኦ ፈረኦመ {country}]');
+        test.equal(rb.getString("Hello from {city}").toString(), '[ሿ፝ሁኤለለኦ ፈረኦመ {city}]');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(),'[ሿ፝ጉረኤኤተኢነገሰ ፈረኦመ {city} ኢነ {country}]');
+
+        ilib.clearPseudoLocales();
+        test.done();
+    },
+
+    testResBundleGetStringOtherBundlePseudoPunjabi: function(test) {
+        test.expect(4);
+        ilib.setAsPseudoLocale("pa-XX");
+        var rb = new ResBundle({
+            name: "tester",
+            locale: "pa-XX"
+        });
+
+        test.ok(rb !== null);
+
+        // should be equivalent to "text" and not pseudo-ize the replacement parameter names
+        test.equal(rb.getString("Hello from {country}").toString(), '[ਊਂਹ੍ਹਐਲਲਔ ਫ਼ਰਔਮ {country}]');
+        test.equal(rb.getString("Hello from {city}").toString(), '[ਊਂਹ੍ਹਐਲਲਔ ਫ਼ਰਔਮ {city}]');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), '[ਊਂਹ੍ਗਰਐਐਤਇਨਗਸ ਫ਼ਰਔਮ {city} ਇਨ {country}]');
+
+        ilib.clearPseudoLocales();
         test.done();
     },
 
@@ -623,9 +717,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should still pseudo-translate, despite having no translations
-        test.equal(rb.getString("Hello from {country}").toString(), "Ħëľľõ fŕõm {country}");
-        test.equal(rb.getString("Hello from {city}").toString(), "Ħëľľõ fŕõm {city}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Ĝŕëëţíñğš fŕõm {city} íñ {country}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[Ħëľľõ fŕõm {country}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[Ħëľľõ fŕõm {city}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {city} íñ {country}]");
         test.done();
     },
 
@@ -641,7 +735,7 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // short: increase by 50%
-        test.equal(rb.getString("Hello from Paris").toString(), "Ħëľľõ fŕõm Pàŕíš76543210");
+        test.equal(rb.getString("Hello from Paris").toString(), "[Ħëľľõ fŕõm Pàŕíš76543210]");
         test.done();
     },
 
@@ -657,7 +751,7 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // short: increase by 33%
-        test.equal(rb.getString("Hello from Paris, city of lights").toString(), "Ħëľľõ fŕõm Pàŕíš, çíţÿ õf ľíğĥţš09876543210");
+        test.equal(rb.getString("Hello from Paris, city of lights").toString(), "[Ħëľľõ fŕõm Pàŕíš, çíţÿ õf ľíğĥţš09876543210]");
         test.done();
     },
 
@@ -673,7 +767,7 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // short: increase by 20%
-        test.equal(rb.getString("Hello from Paris, city of culture, lights, and superb cuisine.").toString(), "Ħëľľõ fŕõm Pàŕíš, çíţÿ õf çüľţüŕë, ľíğĥţš, àñð šüþëŕb çüíšíñë.109876543210");
+        test.equal(rb.getString("Hello from Paris, city of culture, lights, and superb cuisine.").toString(), "[Ħëľľõ fŕõm Pàŕíš, çíţÿ õf çüľţüŕë, ľíğĥţš, àñð šüþëŕb çüíšíñë.109876543210]");
         test.done();
     },
 
@@ -687,7 +781,7 @@ module.exports.testresources = {
 
         test.ok(rb !== null);
 
-        test.equal(rb.getString("Hello from <a href='url'>{city}</a>").toString(), "Ħëľľõ fŕõm <a href='url'>{city}</a>");
+        test.equal(rb.getString("Hello from <a href='url'>{city}</a>").toString(), "[Ħëľľõ fŕõm <a href='url'>{city}</a>]");
         test.done();
     },
 
@@ -701,7 +795,7 @@ module.exports.testresources = {
 
         test.ok(rb !== null);
 
-        test.equal(rb.getString('<span class="n_letter">n</span>Cluster: <strong>{clusterName}</strong>').toString(), '<span class="n_letter">ñ</span>Çľüšţëŕ: <strong>{clusterName}</strong>');
+        test.equal(rb.getString('<span class="n_letter">n</span>Cluster: <strong>{clusterName}</strong>').toString(), '[<span class="n_letter">ñ</span>Çľüšţëŕ: <strong>{clusterName}</strong>]');
         test.done();
     },
 
@@ -715,7 +809,7 @@ module.exports.testresources = {
 
         test.ok(rb !== null);
 
-        test.equal(rb.getString("Hello from <a href='url'>{city}</a>").toString(), "Ħëľľõ fŕõm <à ĥŕëf='üŕľ'>{çíţÿ}</à>");
+        test.equal(rb.getString("Hello from <a href='url'>{city}</a>").toString(), "[Ħëľľõ fŕõm <à ĥŕëf='üŕľ'>{çíţÿ}</à>]");
         test.done();
     },
 
@@ -729,7 +823,7 @@ module.exports.testresources = {
 
         test.ok(rb !== null);
 
-        test.equal(rb.getString("Hello from <a href='url'>{city}</a>").toString(), "Ħëľľõ fŕõm <à ĥŕëf='üŕľ'>{city}</à>");
+        test.equal(rb.getString("Hello from <a href='url'>{city}</a>").toString(), "[Ħëľľõ fŕõm <à ĥŕëf='üŕľ'>{city}</à>]");
         test.done();
     },
 
@@ -743,7 +837,7 @@ module.exports.testresources = {
 
         test.ok(rb !== null);
 
-        test.equal(rb.getString("Hello from {city} &amp; {country}").toString(), "Ħëľľõ fŕõm {city} &amp; {country}");
+        test.equal(rb.getString("Hello from {city} &amp; {country}").toString(), "[Ħëľľõ fŕõm {city} &amp; {country}]");
         test.done();
     },
 
@@ -757,7 +851,7 @@ module.exports.testresources = {
 
         test.ok(rb !== null);
 
-        test.equal(rb.getString("Hello from {city} &amp; {country}").toString(), "Ħëľľõ fŕõm {çíţÿ} &àmþ; {çõüñţŕÿ}");
+        test.equal(rb.getString("Hello from {city} &amp; {country}").toString(), "[Ħëľľõ fŕõm {çíţÿ} &àmþ; {çõüñţŕÿ}]");
         test.done();
     },
 
@@ -771,7 +865,7 @@ module.exports.testresources = {
 
         test.ok(rb !== null);
 
-        test.equal(rb.getString("Hello from {city} &amp; {country}").toString(), "Ħëľľõ fŕõm {city} &àmþ; {country}");
+        test.equal(rb.getString("Hello from {city} &amp; {country}").toString(), "[Ħëľľõ fŕõm {city} &àmþ; {country}]");
         test.done();
     },
 
@@ -786,9 +880,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should still pseudo-translate, despite having no translations
-        test.equal(rb.getString("Hello from {country}").toString(), "Ħëľľõ fŕõm {country}");
-        test.equal(rb.getString("Hello from {city}").toString(), "Ħëľľõ fŕõm {city}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Ĝŕëëţíñğš fŕõm {city} íñ {country}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[Ħëľľõ fŕõm {country}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[Ħëľľõ fŕõm {city}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {city} íñ {country}]");
         test.done();
     },
 
@@ -804,7 +898,7 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // short: increase by 50%
-        test.equal(rb.getString("Hello from Paris").toString(), "Ħëľľõ fŕõm Pàŕíš76543210");
+        test.equal(rb.getString("Hello from Paris").toString(), "[Ħëľľõ fŕõm Pàŕíš76543210]");
         test.done();
     },
 
@@ -820,7 +914,7 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // short: increase by 33%
-        test.equal(rb.getString("Hello from Paris, city of lights").toString(), "Ħëľľõ fŕõm Pàŕíš, çíţÿ õf ľíğĥţš09876543210");
+        test.equal(rb.getString("Hello from Paris, city of lights").toString(), "[Ħëľľõ fŕõm Pàŕíš, çíţÿ õf ľíğĥţš09876543210]");
         test.done();
     },
 
@@ -836,7 +930,7 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // short: increase by 20%
-        test.equal(rb.getString("Hello from Paris, city of culture, lights, and superb cuisine.").toString(), "Ħëľľõ fŕõm Pàŕíš, çíţÿ õf çüľţüŕë, ľíğĥţš, àñð šüþëŕb çüíšíñë.109876543210");
+        test.equal(rb.getString("Hello from Paris, city of culture, lights, and superb cuisine.").toString(), "[Ħëľľõ fŕõm Pàŕíš, çíţÿ õf çüľţüŕë, ľíğĥţš, àñð šüþëŕb çüíšíñë.109876543210]");
         test.done();
     },
 
@@ -850,7 +944,7 @@ module.exports.testresources = {
 
         test.ok(rb !== null);
 
-        test.equal(rb.getString("Hello from <city type='large'>{city}</city>").toString(), "Ħëľľõ fŕõm <city type='large'>{city}</city>");
+        test.equal(rb.getString("Hello from <city type='large'>{city}</city>").toString(), "[Ħëľľõ fŕõm <city type='large'>{city}</city>]");
         test.done();
     },
 
@@ -864,7 +958,7 @@ module.exports.testresources = {
 
         test.ok(rb !== null);
 
-        test.equal(rb.getString("Hello from {city} &amp; {country}").toString(), "Ħëľľõ fŕõm {city} &amp; {country}");
+        test.equal(rb.getString("Hello from {city} &amp; {country}").toString(), "[Ħëľľõ fŕõm {city} &amp; {country}]");
         test.done();
     },
 
@@ -1188,7 +1282,7 @@ module.exports.testresources = {
 
        test.ok(rb !== null);
 
-       test.equal(rb.getString("Hello from <a href=\"asdf\">Paris</a>, city of lights.").toString(), "Ħëľľõ fŕõm <a href=\"asdf\">Pàŕíš</a>, çíţÿ õf ľíğĥţš.");
+       test.equal(rb.getString("Hello from <a href=\"asdf\">Paris</a>, city of lights.").toString(), "[Ħëľľõ fŕõm <a href=\"asdf\">Pàŕíš</a>, çíţÿ õf ľíğĥţš.]");
        test.done();
     },
 
@@ -1202,7 +1296,7 @@ module.exports.testresources = {
 
        test.ok(rb !== null);
 
-       test.equal(rb.getString("Hello from <a href=\"asdf\">Paris</a>, city of lights.", undefined, "html").toString(), "Ħëľľõ fŕõm &lt;a href=\"asdf\"&gt;Pàŕíš&lt;/a&gt;, çíţÿ õf ľíğĥţš.");
+       test.equal(rb.getString("Hello from <a href=\"asdf\">Paris</a>, city of lights.", undefined, "html").toString(), "[Ħëľľõ fŕõm &lt;a href=\"asdf\"&gt;Pàŕíš&lt;/a&gt;, çíţÿ õf ľíğĥţš.]");
        test.done();
     },
 
@@ -1217,7 +1311,7 @@ module.exports.testresources = {
        test.ok(rb !== null);
 
        test.equal(rb.getStringJS("Hello from <%= (i > 4) ? RB.getStringJS(\"Las Vegas\") : RB.getStringJS(\"Paris\") %>, city of lights.", undefined, "none"),
-           "Ħëľľõ fŕõm <%= (i > 4) ? RB.getStringJS(\"Las Vegas\") : RB.getStringJS(\"Paris\") %>, çíţÿ õf ľíğĥţš.");
+           "[Ħëľľõ fŕõm <%= (i > 4) ? RB.getStringJS(\"Las Vegas\") : RB.getStringJS(\"Paris\") %>, çíţÿ õf ľíğĥţš.]");
        test.done();
     },
 
@@ -1231,7 +1325,7 @@ module.exports.testresources = {
 
        test.ok(rb !== null);
 
-       test.equal(rb.getStringJS("Hello from %PARIS%, city of lights.", undefined, "html"), "Ħëľľõ fŕõm %PARIS%, çíţÿ õf ľíğĥţš.");
+       test.equal(rb.getStringJS("Hello from %PARIS%, city of lights.", undefined, "html"), "[Ħëľľõ fŕõm %PARIS%, çíţÿ õf ľíğĥţš.]");
        test.done();
     },
 
@@ -1245,7 +1339,7 @@ module.exports.testresources = {
 
        test.ok(rb !== null);
 
-       test.equal(rb.getStringJS("Hello from %{city}, city of #{description}."), "Ħëľľõ fŕõm %{city}, çíţÿ õf #{description}.");
+       test.equal(rb.getStringJS("Hello from %{city}, city of #{description}."), "[Ħëľľõ fŕõm %{city}, çíţÿ õf #{description}.]");
        test.done();
     },
 
@@ -1259,7 +1353,7 @@ module.exports.testresources = {
 
        test.ok(rb !== null);
 
-       test.equal(rb.getString("Hello from <a href=\"asdf\">Paris</a>, city of lights.", undefined, "js").toString(), "Ħëľľõ fŕõm <a href=\\\"asdf\\\">Pàŕíš</a>, çíţÿ õf ľíğĥţš.");
+       test.equal(rb.getString("Hello from <a href=\"asdf\">Paris</a>, city of lights.", undefined, "js").toString(), "[Ħëľľõ fŕõm <a href=\\\"asdf\\\">Pàŕíš</a>, çíţÿ õf ľíğĥţš.]");
        test.done();
     },
 
@@ -1552,9 +1646,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), "Хэлло фром {чоунтря}");
-        test.equal(rb.getString("Hello from {city}").toString(), "Хэлло фром {читя}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Грээтингс фром {читя} ин {чоунтря}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[Хэлло фром {чоунтря}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[Хэлло фром {читя}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Грээтингс фром {читя} ин {чоунтря}]");
         test.done();
     },
     testResBundleGetStringko_KR: function(test) {
@@ -1678,9 +1772,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), "Хэлло фром {country}");
-        test.equal(rb.getString("Hello from {city}").toString(), "Хэлло фром {city}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Грээтингс фром {city} ин {country}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[Хэлло фром {country}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[Хэлло фром {city}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Грээтингс фром {city} ин {country}]");
         test.done();
     },
 
@@ -1695,9 +1789,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), "Хэлло фром {country}");
-        test.equal(rb.getString("Hello from {city}").toString(), "Хэлло фром {city}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Грээтингс фром {city} ин {country}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[Хэлло фром {country}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[Хэлло фром {city}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Грээтингс фром {city} ин {country}]");
         test.done();
     },
 
@@ -1712,9 +1806,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), "Хэлло фром {country}");
-        test.equal(rb.getString("Hello from {city}").toString(), "Хэлло фром {city}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Грээтингс фром {city} ин {country}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[Хэлло фром {country}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[Хэлло фром {city}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Грээтингс фром {city} ин {country}]");
         test.done();
     },
 
@@ -1728,9 +1822,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should be equivalent to "text" and not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), "Хэлло фром {country}");
-        test.equal(rb.getString("Hello from {city}").toString(), "Хэлло фром {city}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Грээтингс фром {city} ин {country}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[Хэлло фром {country}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[Хэлло фром {city}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Грээтингс фром {city} ин {country}]");
         test.done();
     },
 
@@ -1746,9 +1840,9 @@ module.exports.testresources = {
 
         // should not pseudo-ize the replacement parameter names
         // for Chinese scripts, remove the spaces to the simulate Chinese writing style
-        test.equal(rb.getString("Hello from {country}").toString(), "和俄了了夥凡熱夥们{country}");
-        test.equal(rb.getString("Hello from {city}").toString(), "和俄了了夥凡熱夥们{city}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "个熱俄俄推意尼个思凡熱夥们{city}意尼{country}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[和俄了了夥凡熱夥们{country}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[和俄了了夥凡熱夥们{city}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[个熱俄俄推意尼个思凡熱夥们{city}意尼{country}]");
         test.done();
     },
 
@@ -1763,9 +1857,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), "הֶללֹ פרֹמ {country}");
-        test.equal(rb.getString("Hello from {city}").toString(), "הֶללֹ פרֹמ {city}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "גרֶֶטִנגס פרֹמ {city} ִנ {country}");
+        test.equal(rb.getString("Hello from {country}").toString(), '[הֶללֹ פרֹמ {country}]');
+        test.equal(rb.getString("Hello from {city}").toString(), '[הֶללֹ פרֹמ {city}]');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), '[גרֶֶטִנגס פרֹמ {city} ִנ {country}]');
         test.done();
     },
 
@@ -1854,9 +1948,9 @@ module.exports.testresources = {
 
         test.ok(rb !== null);
 
-        test.equal(rb.getString("Hello from {country}").toString(), "Хэлло фром {чоунтря}");
-        test.equal(rb.getString("Hello from {city}").toString(), "Хэлло фром {читя}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Грээтингс фром {читя} ин {чоунтря}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[Хэлло фром {чоунтря}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[Хэлло фром {читя}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Грээтингс фром {читя} ин {чоунтря}]");
         test.done();
     },
 
@@ -1888,9 +1982,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), "Ħëľľõ fŕõm {country}");
-        test.equal(rb.getString("Hello from {city}").toString(), "Ħëľľõ fŕõm {city}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Ĝŕëëţíñğš fŕõm {city} íñ {country}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[Ħëľľõ fŕõm {country}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[Ħëľľõ fŕõm {city}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {city} íñ {country}]");
         test.done();
     },
 
@@ -1905,9 +1999,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), "Хэлло фром {country}");
-        test.equal(rb.getString("Hello from {city}").toString(), "Хэлло фром {city}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Грээтингс фром {city} ин {country}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[Хэлло фром {country}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[Хэлло фром {city}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Грээтингс фром {city} ин {country}]");
         test.done();
     },
 
@@ -1922,9 +2016,9 @@ module.exports.testresources = {
         test.ok(rb !== null);
 
         // should not pseudo-ize the replacement parameter names
-        test.equal(rb.getString("Hello from {country}").toString(), "הֶללֹ פרֹמ {country}");
-        test.equal(rb.getString("Hello from {city}").toString(), "הֶללֹ פרֹמ {city}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "גרֶֶטִנגס פרֹמ {city} ִנ {country}");
+        test.equal(rb.getString("Hello from {country}").toString(),  '[הֶללֹ פרֹמ {country}]');
+        test.equal(rb.getString("Hello from {city}").toString(), '[הֶללֹ פרֹמ {city}]');
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), '[גרֶֶטִנגס פרֹמ {city} ִנ {country}]');
         test.done();
     },
 
@@ -1940,9 +2034,9 @@ module.exports.testresources = {
 
         // should not pseudo-ize the replacement parameter names
         // for Chinese scripts, remove the spaces to the simulate Chinese writing style
-        test.equal(rb.getString("Hello from {country}").toString(), "和俄了了夥凡熱夥们{country}");
-        test.equal(rb.getString("Hello from {city}").toString(), "和俄了了夥凡熱夥们{city}");
-        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "个熱俄俄推意尼个思凡熱夥们{city}意尼{country}");
+        test.equal(rb.getString("Hello from {country}").toString(), "[和俄了了夥凡熱夥们{country}]");
+        test.equal(rb.getString("Hello from {city}").toString(), "[和俄了了夥凡熱夥们{city}]");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[个熱俄俄推意尼个思凡熱夥们{city}意尼{country}]");
         test.done();
     },
 
@@ -2013,7 +2107,7 @@ module.exports.testresources = {
         var rb = new ResBundle({
             locale:'eu-ES'
         });
-        test.equal(rb.getStringJS("This is pseudo string test"), "Ťĥíš íš þšëüðõ šţŕíñğ ţëšţ");
+        test.equal(rb.getStringJS("This is pseudo string test"), "[Ťĥíš íš þšëüðõ šţŕíñğ ţëšţ]");
         test.done();
         ilib.clearPseudoLocales();
     },
@@ -2025,7 +2119,7 @@ module.exports.testresources = {
         var rb = new ResBundle({
             locale:'ps-AF'
         });
-        test.equal(rb.getStringJS("This is pseudo string test"), 'טהִס ִס פסֶֻדֹ סטרִנג טֶסט');
+        test.equal(rb.getStringJS("This is pseudo string test"), '[טהִס ִס פסֶֻדֹ סטרִנג טֶסט]');
 
         test.done();
         ilib.clearPseudoLocales();
@@ -2038,7 +2132,7 @@ module.exports.testresources = {
         var rb = new ResBundle({
             locale:'de-DE'
         });
-        test.equal(rb.getStringJS("This is pseudo string test"), "Ťĥíš íš þšëüðõ šţŕíñğ ţëšţ");
+        test.equal(rb.getStringJS("This is pseudo string test"), "[Ťĥíš íš þšëüðõ šţŕíñğ ţëšţ]");
         test.done();
         ilib.clearPseudoLocales();
     },
@@ -2135,7 +2229,7 @@ module.exports.testresources = {
         // this used to throw an exception:
         var rb = new ResBundle();
 
-        test.equal(rb.getStringJS("translation"), "ţŕàñšľàţíõñ");
+        test.equal(rb.getStringJS("translation"), "[ţŕàñšľàţíõñ]");
         test.done();
 
         ilib.setLocale(tmp);
