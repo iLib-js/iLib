@@ -1,6 +1,14 @@
 Release Notes for Version 14
 ============================
 
+Build 028
+-------
+Published as version 14.18.1
+New Features:
+
+Bug Fixes:
+* Removed docs/localeSpecDoc/ directory which is not maintained.
+
 Build 027
 -------
 Published as version 14.18.0
