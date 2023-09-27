@@ -445,6 +445,7 @@ var DateFmt = function(options) {
             if (this.useIntl &&
                     typeof(Intl) !== 'undefined' &&
                     typeof(Intl.DateTimeFormat) !== 'undefined' &&
+                    typeof(Intl.DateTimeFormat.supportedLocalesOf) !== 'undefined' &&
                     Intl.DateTimeFormat.supportedLocalesOf(this.locale.getSpec()).length > 0 &&
                     (this.locinfo.getDigitsStyle() === "western" && (!options.template) && this.calName === "gregorian")) {
                 var len = DateFmt.lenmap[this.length];
