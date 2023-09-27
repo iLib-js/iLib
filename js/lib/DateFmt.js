@@ -442,11 +442,14 @@ var DateFmt = function(options) {
             // one, use the hard-coded gregorian as the last resort
             this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
 
-            if(this.useIntl && typeof(Intl) !== 'undefined' && Intl.DateTimeFormat.supportedLocalesOf(this.locale.getSpec()).length > 0 &&
-            (this.locinfo.getDigitsStyle() === "western" && (!options.template) && this.calName === "gregorian")){
+            if (this.useIntl &&
+                    typeof(Intl) !== 'undefined' &&
+                    typeof(Intl.DateTimeFormat) !== 'undefined' &&
+                    Intl.DateTimeFormat.supportedLocalesOf(this.locale.getSpec()).length > 0 &&
+                    (this.locinfo.getDigitsStyle() === "western" && (!options.template) && this.calName === "gregorian")) {
                 var len = DateFmt.lenmap[this.length];
-                if(this.type === "date" &&
-                    ((this.dateComponents === "dmy" && len !== "full") || (this.dateComponents === "dmwy" && len === "full"))){
+                if (this.type === "date" &&
+                    ((this.dateComponents === "dmy" && len !== "full") || (this.dateComponents === "dmwy" && len === "full"))) {
                     this.IntlDateTimeObj = new Intl.DateTimeFormat(this.locale.getSpec(), {
                         dateStyle: len
                     });
@@ -661,7 +664,12 @@ DateFmt.getMeridiemsRange = function (options) {
  */
 
 DateFmt.isIntlDateTimeAvailable = function (locale) {
-    if(!locale || !ilib._global("Intl")) return false;
+    if (!locale ||
+            !ilib._global("Intl") ||
+            typeof(Intl.DateTimeFormat) === 'undefined' ||
+            typeof(Intl.DateTimeFormat.supportedLocalesOf) === 'undefined') {
+        return false;
+    }
     return (Intl.DateTimeFormat.supportedLocalesOf(locale).length > 0) ? true : false;
 };
 
