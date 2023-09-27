@@ -178,5 +178,7 @@
     "finalSeparatorMedium": " และ ",
     "finalSeparatorShort": " ",
     "separatorFull": " ",
-    "separatorLong": " "
+    "separatorLong": " ",
+    "separatorMedium": " ",
+    "separatorShort": " "
 }

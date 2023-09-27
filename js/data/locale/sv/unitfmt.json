@@ -249,7 +249,7 @@
             "degree": "#{n}°",
             "dessert-spoon": "#{n} dsk",
             "dessert-spoon-imperial": "one#br. dsk|#{n} br. dsk",
-            "dot": "",
+            "dot": "#{n} px",
             "dot-per-centimeter": "#{n} d/cm",
             "dot-per-inch": "#{n} d/tum",
             "dram": "#{n} fl. dram",

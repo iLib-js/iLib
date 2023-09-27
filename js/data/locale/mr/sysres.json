@@ -74,7 +74,6 @@
     "B6": "PM",
     "B7": "संध्याकाळ",
     "B8": "रात्र",
-    "B9": "रात्र",
     "E0": "र",
     "E1": "सो",
     "E2": "मं",
@@ -153,6 +152,8 @@
     "NN7": "जु",
     "NN8": "ऑग",
     "NN9": "सप",
+    "a0": "AM",
+    "a1": "PM",
     "durationLongDays": "one#{num} दिवस|#{num} दिवस",
     "durationMediumHours": "one#{num}ता|#{num}ता",
     "durationMediumMillis": "one#{num} मिलिसे|#{num} मिलिसे",
@@ -165,5 +166,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

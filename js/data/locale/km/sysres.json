@@ -101,6 +101,8 @@
     "EEEE4": "ព្រហស្បតិ៍",
     "EEEE5": "សុក្រ",
     "EEEE6": "សៅរ៍",
+    "G-1": "BCE",
+    "G1": "CE",
     "MMM1": "មករា",
     "MMM10": "តុលា",
     "MMM11": "វិច្ឆិកា",
@@ -149,6 +151,8 @@
     "NN7": "កក",
     "NN8": "សី",
     "NN9": "កញ",
+    "a0": "AM",
+    "a1": "PM",
     "c0": "អ",
     "c1": "ច",
     "c2": "អ",
@@ -190,5 +194,7 @@
     "finalSeparatorMedium": " ",
     "finalSeparatorShort": " ",
     "separatorFull": " ",
-    "separatorLong": " "
+    "separatorLong": " ",
+    "separatorMedium": " ",
+    "separatorShort": " "
 }

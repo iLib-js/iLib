@@ -1,12 +1,6 @@
 {
     "gregorian": {
         "date": {
-            "e": {
-                "f": "cccc",
-                "l": "ccc",
-                "m": "cc",
-                "s": "c"
-            },
             "l": {
                 "f": "LLLL",
                 "l": "LLLL",

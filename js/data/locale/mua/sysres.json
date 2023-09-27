@@ -126,6 +126,7 @@
     "N2": "C",
     "N3": "C",
     "N4": "F",
+    "N5": "M",
     "N6": "M",
     "N7": "M",
     "N8": "M",
@@ -156,6 +157,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

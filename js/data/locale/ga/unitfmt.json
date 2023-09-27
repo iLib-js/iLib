@@ -249,6 +249,8 @@
             "dessert-spoon": "#{n} spmhil",
             "dessert-spoon-imperial": "#{n} spmhil imp",
             "dot": "one#{n} phonc|two#{n} phonc|few#{n} phonc|many#{n} bponc|#{n} ponc",
+            "dot-per-centimeter": "#{n} ppcm",
+            "dot-per-inch": "#{n} ppi",
             "dram": "#{n} dr l.",
             "drop": "one#{n} bhraon|two#{n} bhraon|few#{n} bhraon|many#{n} mbraon|#{n} braon",
             "dunam": "two#{n} dhunam|few#{n} dhunam|many#{n} ndunam|#{n} dunam",

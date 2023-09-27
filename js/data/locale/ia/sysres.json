@@ -6,7 +6,7 @@
     "#in {num}s": "one#in {num} sec.|#in {num} sec.",
     "#in {num}w": "one#in {num} sept.|#in {num} sept.",
     "#in {num}y": "one#in {num} an.|#in {num} an.",
-    "#{num} ms": "#{num} ms",
+    "#{num} ms": "one#{num} ms|#{num} ms",
     "#{num}d": "one#{num}d|#{num}d",
     "#{num}d ago": "one#{num} die retro|#{num} dies retro",
     "#{num}h": "one#{num}h|#{num}h",
@@ -191,6 +191,8 @@
     "NN7": "ju",
     "NN8": "au",
     "NN9": "se",
+    "a0": "AM",
+    "a1": "PM",
     "durationLongDays": "one#{num} die|#{num} dies",
     "durationMediumHours": "one#{num}h|#{num}h",
     "durationMediumMillis": "one#{num}ms|#{num}ms",
@@ -203,5 +205,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

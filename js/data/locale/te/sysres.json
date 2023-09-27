@@ -100,6 +100,8 @@
     "EEEE4": "గురువారం",
     "EEEE5": "శుక్రవారం",
     "EEEE6": "శనివారం",
+    "G-1": "BCE",
+    "G1": "CE",
     "MMM1": "జన",
     "MMM10": "అక్టో",
     "MMM11": "నవం",
@@ -148,6 +150,8 @@
     "NN7": "జు",
     "NN8": "ఆగ",
     "NN9": "సె",
+    "a0": "AM",
+    "a1": "PM",
     "durationLongDays": "one#{num} రోజు|#{num} రోజులు",
     "durationMediumHours": "one#{num}గం|#{num}గం",
     "durationMediumMillis": "one#{num}మి.సె|#{num}మి.సె",
@@ -160,6 +164,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

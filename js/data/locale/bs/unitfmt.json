@@ -248,6 +248,7 @@
             "degree": "#{n}°",
             "dessert-spoon": "#{n} kš. des.",
             "dessert-spoon-imperial": "#{n} imp. kš. des.",
+            "dot": "#{n} px",
             "dot-per-centimeter": "one#{n} ppcm|few#{n} ppcm|#{n} dpcm",
             "dot-per-inch": "one#{n} ppi|few#{n} ppi|#{n} dpi",
             "dram": "one#{n} teč. dram|#{n} teč. drama",

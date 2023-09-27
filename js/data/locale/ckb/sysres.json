@@ -93,6 +93,8 @@
     "EEEE4": "پێنجشەممە",
     "EEEE5": "ھەینی",
     "EEEE6": "شەممە",
+    "G-1": "BCE",
+    "G1": "CE",
     "MMM1": "کانوونی دووەم",
     "MMM10": "تشرینی یەکەم",
     "MMM11": "تشرینی دووەم",
@@ -155,6 +157,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

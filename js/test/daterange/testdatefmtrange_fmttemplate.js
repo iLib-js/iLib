@@ -1,5 +1,5 @@
  /*
- * testWeekdayTranslation.js
+ * testdatefmtrange_fmttemplate.js
  *
  * Copyright © 2019-2023, JEDLSoft
  *
@@ -1460,7 +1460,7 @@ module.exports.testdaterangefmt = {
         test.equal(templatec20[0], '{sm}, {sy} – {em}, {ey}');
         test.equal(templatec20[1], '{sm}, {sy} – {em}, {ey}');
         test.equal(templatec20[2], '{sm}, {sy} – {em}, {ey}');
-        test.equal(templatec20[3], '{sm}/{sy} – {em}/{ey}');
+        test.equal(templatec20[3], '{sm}-{sy} – {em}-{ey}');
 
         test.equal(templatec30[0], "{sy} – {ey}");
         test.equal(templatec30[1], "{sy} – {ey}");
@@ -14429,8 +14429,8 @@ module.exports.testdaterangefmt = {
             templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
-        test.equal(templatec00[0], '{sy}(e)ko {sm}ren {sd}(a) ({st}) – ({et})');
-        test.equal(templatec00[1], '{sy}(e)ko {sm}ren {sd}(a) ({st}) – ({et})');
+        test.equal(templatec00[0], '{sy}(e)ko {sm}ren {sd}(a) ({st}) – {et}');
+        test.equal(templatec00[1], '{sy}(e)ko {sm}ren {sd}(a) ({st}) – {et}');
         test.equal(templatec00[2], '{sy}(e)ko {sm} {sd}(a), {st} – {et}');
         test.equal(templatec00[3], '{sy}/{sm}/{sd}, {st} – {et}');
 

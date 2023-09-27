@@ -73,7 +73,12 @@
     "B5": "på eftermiddagen",
     "B6": "em",
     "B7": "på kvällen",
+    "E0": "S",
+    "E1": "M",
+    "E2": "T",
     "E3": "O",
+    "E4": "T",
+    "E5": "F",
     "E6": "L",
     "EE0": "sö",
     "EE1": "må",
@@ -160,5 +165,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

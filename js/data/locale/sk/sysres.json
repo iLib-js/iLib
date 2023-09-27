@@ -200,6 +200,8 @@
     "NN7": "jú",
     "NN8": "au",
     "NN9": "se",
+    "a0": "AM",
+    "a1": "PM",
     "durationLongDays": "one#{num} deň|few#{num} dni|many#{num} dňa|#{num} dní",
     "durationMediumHours": "one#{num} h|few#{num} h|many#{num} h|#{num} h",
     "durationMediumMillis": "one#{num} ms|few#{num} ms|many#{num} ms|#{num} ms",
@@ -212,6 +214,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

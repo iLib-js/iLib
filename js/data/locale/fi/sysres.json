@@ -74,7 +74,11 @@
     "B6": "ip.",
     "B7": "illalla",
     "B8": "yöllä",
+    "E0": "S",
+    "E1": "M",
+    "E2": "T",
     "E3": "K",
+    "E4": "T",
     "E5": "P",
     "E6": "L",
     "EE0": "su",
@@ -238,5 +242,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

@@ -93,6 +93,8 @@
     "EEEE4": "बिरेस्तार",
     "EEEE5": "शुक्रार",
     "EEEE6": "शेनवार",
+    "G-1": "BCE",
+    "G1": "CE",
     "L1": "1",
     "L10": "10",
     "L11": "11",
@@ -231,5 +233,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

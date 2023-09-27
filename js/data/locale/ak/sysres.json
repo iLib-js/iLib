@@ -68,7 +68,9 @@
     "E0": "K",
     "E1": "D",
     "E2": "B",
+    "E3": "W",
     "E4": "Y",
+    "E5": "F",
     "E6": "M",
     "EE0": "Kwe",
     "EE1": "Dwo",
@@ -155,6 +157,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

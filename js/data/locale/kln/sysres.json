@@ -126,6 +126,7 @@
     "N2": "N",
     "N3": "T",
     "N4": "I",
+    "N5": "M",
     "N6": "P",
     "N7": "N",
     "N8": "R",
@@ -137,6 +138,7 @@
     "NN2": "Ng",
     "NN3": "Ta",
     "NN4": "Iw",
+    "NN5": "Ma",
     "NN6": "Pa",
     "NN7": "Ng",
     "NN8": "Ro",
@@ -155,6 +157,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

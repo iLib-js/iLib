@@ -89,7 +89,8 @@
             "m": {
                 "f": "M",
                 "l": "M",
-                "m": "M"
+                "m": "M",
+                "s": "M"
             },
             "my": {
                 "f": "yyyy年M月",
@@ -103,10 +104,20 @@
                 "m": "yyyy年",
                 "s": "yyyy年"
             },
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
+            },
             "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
                 "s": "yyyy"
             }
         },
+        "order": "{date} {time}",
         "range": {
             "c00": {
                 "f": "{sy}年{sm}月{sd}日 {st} – {et}",
@@ -170,8 +181,14 @@
                 "ahms": "ah:mm:ss",
                 "ahmsz": "z ah:mm:ss",
                 "ahmz": "z ah:mm",
+                "h": "h",
+                "hm": "h:mm",
+                "hms": "h:mm:ss",
                 "hmsz": "z h:mm:ss",
-                "hmz": "z h:mm"
+                "hmz": "z h:mm",
+                "m": "mm",
+                "ms": "mm:ss",
+                "s": "ss"
             },
             "24": {
                 "ah": "HH",
@@ -183,7 +200,10 @@
                 "hm": "HH:mm",
                 "hms": "HH:mm:ss",
                 "hmsz": "z HH:mm:ss",
-                "hmz": "z HH:mm"
+                "hmz": "z HH:mm",
+                "m": "mm",
+                "ms": "mm:ss",
+                "s": "ss"
             }
         }
     }

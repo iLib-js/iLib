@@ -143,6 +143,8 @@
     "NN7": "ию",
     "NN8": "ав",
     "NN9": "се",
+    "a0": "AM",
+    "a1": "PM",
     "c0": "кӀ",
     "c1": "о",
     "c2": "ш",
@@ -183,6 +185,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

@@ -93,6 +93,8 @@
     "EEEE4": "خميس",
     "EEEE5": "جمعو",
     "EEEE6": "ڇنڇر",
+    "G-1": "BCE",
+    "G1": "CE",
     "MMM1": "جنوري",
     "MMM10": "آڪٽوبر",
     "MMM11": "نومبر",
@@ -155,6 +157,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

@@ -10211,7 +10211,7 @@ module.exports.testlocaleinfo = {
         test.expect(2);
         var info = new LocaleInfo("ss-ZA");
         test.ok(info !== null);
-        test.equal(info.getDecimalSeparator(), ".");
+        test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
 
@@ -10220,7 +10220,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ss-ZA");
         test.ok(info !== null);
 
-        test.equal(info.getGroupingSeparator(), ',');
+        test.equal(info.getGroupingSeparator(), ' ');
         test.done();
     },
 
@@ -10238,7 +10238,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ss-ZA");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().common, "{s} {n}");
+        test.equal(info.getCurrencyFormats().common, "{s}{n}");
         test.done();
     },
 
@@ -10265,7 +10265,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ss-ZA");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
+        test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.done();
     },
 
@@ -10303,7 +10303,7 @@ module.exports.testlocaleinfo = {
         test.expect(2);
         var info = new LocaleInfo("st-LS");
         test.ok(info !== null);
-        test.equal(info.getDecimalSeparator(), ".");
+        test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
 
@@ -10312,7 +10312,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("st-LS");
         test.ok(info !== null);
 
-        test.equal(info.getGroupingSeparator(), ",");
+        test.equal(info.getGroupingSeparator(), " ");
         test.done();
     },
 
@@ -10330,7 +10330,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("st-LS");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().common, "{s} {n}");
+        test.equal(info.getCurrencyFormats().common, "{s}{n}");
         test.done();
     },
 
@@ -10357,7 +10357,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("st-LS");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
+        test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.done();
     },
 

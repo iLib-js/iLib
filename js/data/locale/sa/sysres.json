@@ -205,6 +205,8 @@
     "finalSeparatorLong": ", तथा ",
     "finalSeparatorMedium": ", तथा ",
     "finalSeparatorShort": ", तथा ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

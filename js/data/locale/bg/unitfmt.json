@@ -249,6 +249,8 @@
             "dessert-spoon": "one#{n} дес. лъжица|#{n} дес. лъжици",
             "dessert-spoon-imperial": "one#{n} брит. дес. лъжица|#{n} брит. дес. лъжици",
             "dot": "one#{n} точка|#{n} точки",
+            "dot-per-centimeter": "#{n} ppcm",
+            "dot-per-inch": "#{n} ppi",
             "dram": "one#{n} теч. драм|#{n} теч. драма",
             "drop": "one#{n} капка|#{n} капки",
             "dunam": "one#{n} дюнюм|#{n} дюнюма",

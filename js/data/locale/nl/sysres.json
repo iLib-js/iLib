@@ -73,7 +73,9 @@
     "B5": "p.m.",
     "B6": "’s avonds",
     "E0": "Z",
+    "E1": "M",
     "E2": "D",
+    "E3": "W",
     "E4": "D",
     "E5": "V",
     "E6": "Z",
@@ -162,6 +164,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

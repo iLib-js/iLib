@@ -72,13 +72,28 @@
                 "s": "E, d"
             },
             "m": {
+                "f": "MMMM",
                 "l": "MMMM",
-                "m": "MMM"
+                "m": "MMM",
+                "s": "M"
             },
             "my": {
                 "f": "MMMM 'lia' yyyy",
                 "l": "MMMM 'lia' yyyy",
-                "m": "MMM 'lia', yyyy"
+                "m": "MMM 'lia', yyyy",
+                "s": "M/yy"
+            },
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
+            },
+            "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
+                "s": "yy"
             }
         },
         "order": "{time} {date}",
@@ -128,7 +143,8 @@
             "c20": {
                 "f": "{sm} lia {sy} – {em} lia {ey}",
                 "l": "{sm} lia {sy} – {em} lia {ey}",
-                "m": "{sm} lia, {sy} – {em} lia, {ey}"
+                "m": "{sm} lia, {sy} – {em} lia, {ey}",
+                "s": "{sm}/{sy} – {em}/{ey}"
             },
             "c30": {
                 "f": "{sy} – {ey}",
@@ -143,7 +159,15 @@
                 "ahm": "a 'ga' h:mm",
                 "ahms": "a 'ga' h:mm:ss",
                 "ahmsz": "a 'ga' h:mm:ss z",
-                "ahmz": "a 'ga' h:mm z"
+                "ahmz": "a 'ga' h:mm z",
+                "h": "h",
+                "hm": "h:mm",
+                "hms": "h:mm:ss",
+                "hmsz": "h:mm:ss z",
+                "hmz": "h:mm z",
+                "m": "mm",
+                "ms": "mm:ss",
+                "s": "ss"
             },
             "24": {
                 "ah": "HH",
@@ -155,7 +179,10 @@
                 "hm": "HH:mm",
                 "hms": "HH:mm:ss",
                 "hmsz": "HH:mm:ss z",
-                "hmz": "HH:mm z"
+                "hmz": "HH:mm z",
+                "m": "mm",
+                "ms": "mm:ss",
+                "s": "ss"
             }
         }
     }

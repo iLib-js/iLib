@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 31(a) (13:45) – (14:30)");
+        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 31(a) (13:45) – 14:30");
         test.done();
     },
     testDateRngFmteuESRangeInDayFull: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 31(a) (13:45) – (14:30)");
+        test.equal(fmt.format(start, end), "2011(e)ko abenduaren 31(a) (13:45) – 14:30");
         test.done();
     },
     testDateRngFmteuESRangeNextDayShort: function(test) {

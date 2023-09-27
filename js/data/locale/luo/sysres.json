@@ -67,7 +67,9 @@
     "1#in 1 yr|#in {num} yrs": "#+{num} y",
     "E0": "J",
     "E1": "W",
+    "E2": "T",
     "E3": "T",
+    "E4": "T",
     "E5": "T",
     "E6": "N",
     "EE0": "JMP",
@@ -120,6 +122,7 @@
     "N1": "D",
     "N10": "D",
     "N11": "D",
+    "N12": "D",
     "N2": "D",
     "N3": "D",
     "N4": "D",
@@ -154,6 +157,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

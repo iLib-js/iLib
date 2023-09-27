@@ -93,6 +93,8 @@
     "EEEE4": "чэппиэр",
     "EEEE5": "Бээтиҥсэ",
     "EEEE6": "субуота",
+    "G-1": "BCE",
+    "G1": "CE",
     "L1": "Т",
     "L10": "А",
     "L11": "С",
@@ -203,6 +205,8 @@
     "finalSeparatorLong": " уонна ",
     "finalSeparatorMedium": " уонна ",
     "finalSeparatorShort": " уонна ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

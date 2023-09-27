@@ -150,6 +150,8 @@
     "NN7": "જુ",
     "NN8": "ઑગ",
     "NN9": "સપ",
+    "a0": "AM",
+    "a1": "PM",
     "durationLongDays": "one#{num} દિવસ|#{num} દિવસ",
     "durationMediumHours": "one#{num} ક|#{num} ક",
     "durationMediumMillis": "one#{num} મિસે|#{num} મિસે",
@@ -162,6 +164,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

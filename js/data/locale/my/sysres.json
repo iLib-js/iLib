@@ -195,5 +195,6 @@
     "finalSeparatorShort": "နှင့် ",
     "separatorFull": "- ",
     "separatorLong": "- ",
-    "separatorMedium": "- "
+    "separatorMedium": "- ",
+    "separatorShort": " "
 }

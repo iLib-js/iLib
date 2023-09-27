@@ -31,7 +31,7 @@
     "1#1 min ago|#{num} min ago": "zero#pirms {num} minūtēm|one#pirms {num} minūtes|#pirms {num} minūtēm",
     "1#1 minute ago|#{num} minutes ago": "zero#pirms {num} minūtēm|one#pirms {num} minūtes|#pirms {num} minūtēm",
     "1#1 minute|#{num} minutes": "zero#{num} minūšu|one#{num} minūte|#{num} minūtes",
-    "1#1 min|#{num} min": "#{num} min",
+    "1#1 min|#{num} min": "zero#{num} min|one#{num} min|#{num} min",
     "1#1 mi|#{num} min": "zero#{num} min|one#{num} min|#{num} min",
     "1#1 mon ago|#{num} mons ago": "zero#pirms {num} mēnešiem|one#pirms {num} mēneša|#pirms {num} mēnešiem",
     "1#1 month ago|#{num} months ago": "zero#pirms {num} mēnešiem|one#pirms {num} mēneša|#pirms {num} mēnešiem",
@@ -73,11 +73,13 @@
     "B5": "pēcpusdienā",
     "B6": "vakarā",
     "B7": "naktī",
+    "E0": "S",
     "E1": "P",
     "E2": "O",
     "E3": "T",
     "E4": "C",
     "E5": "P",
+    "E6": "S",
     "EE0": "Sv",
     "EE1": "Pr",
     "EE2": "Ot",
@@ -191,5 +193,8 @@
     "finalSeparatorLong": " un ",
     "finalSeparatorMedium": " un ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

@@ -249,6 +249,8 @@
             "dessert-spoon": "#{n} tat. kaşığı",
             "dessert-spoon-imperial": "#{n} İng. tat. kaşığı",
             "dot": "#{n} nokta",
+            "dot-per-centimeter": "#{n} ppcm",
+            "dot-per-inch": "#{n} ppi",
             "dram": "#{n} sıvı dram",
             "drop": "#{n} damla",
             "dunam": "#{n} dunam",

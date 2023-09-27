@@ -102,6 +102,8 @@
     "EEEE4": "목요일",
     "EEEE5": "금요일",
     "EEEE6": "토요일",
+    "G-1": "BCE",
+    "G1": "CE",
     "MMM1": "1",
     "MMM10": "10",
     "MMM11": "11",
@@ -165,5 +167,7 @@
     "finalSeparatorMedium": " ",
     "finalSeparatorShort": " ",
     "separatorFull": " ",
-    "separatorLong": " "
+    "separatorLong": " ",
+    "separatorMedium": " ",
+    "separatorShort": " "
 }

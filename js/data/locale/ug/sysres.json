@@ -93,6 +93,7 @@
     "EEEE4": "پەيشەنبە",
     "EEEE5": "جۈمە",
     "EEEE6": "شەنبە",
+    "G-1": "BCE",
     "G1": "مىلادىيە",
     "MMM1": "يانۋار",
     "MMM10": "ئۆكتەبىر",
@@ -152,9 +153,12 @@
     "durationShortMillis": "one#{num}ms|#{num}ms",
     "durationShortMinutes": "one#{num}m|#{num}m",
     "durationShortMonths": "one#{num} ئاي|#{num} ئاي",
+    "finalSeparatorFull": ", and ",
     "finalSeparatorLong": ", and ",
     "finalSeparatorMedium": ", and ",
     "finalSeparatorShort": ", and ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

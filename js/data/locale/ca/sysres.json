@@ -214,6 +214,8 @@
     "finalSeparatorLong": " i ",
     "finalSeparatorMedium": " i ",
     "finalSeparatorShort": " i ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

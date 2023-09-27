@@ -79,6 +79,7 @@
     "E3": "S",
     "E4": "Č",
     "E5": "P",
+    "E6": "S",
     "EE0": "ned",
     "EE1": "pon",
     "EE2": "uto",
@@ -198,6 +199,8 @@
     "NN7": "sr",
     "NN8": "ko",
     "NN9": "ru",
+    "a0": "AM",
+    "a1": "PM",
     "c0": "n",
     "c1": "p",
     "c2": "u",
@@ -238,5 +241,8 @@
     "finalSeparatorLong": " i ",
     "finalSeparatorMedium": " i ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

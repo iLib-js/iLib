@@ -119,8 +119,10 @@
     "MMMM7": "Mwere wa mũgwanja",
     "MMMM8": "Mwere wa kanana",
     "MMMM9": "Mwere wa kenda",
+    "N1": "J",
     "N10": "W",
     "N11": "W",
+    "N12": "D",
     "N2": "W",
     "N3": "W",
     "N4": "W",
@@ -155,6 +157,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

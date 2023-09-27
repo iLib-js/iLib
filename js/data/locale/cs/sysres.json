@@ -80,6 +80,7 @@
     "E3": "S",
     "E4": "Č",
     "E5": "P",
+    "E6": "S",
     "EE0": "ne",
     "EE1": "po",
     "EE2": "út",
@@ -213,5 +214,8 @@
     "finalSeparatorLong": " a ",
     "finalSeparatorMedium": " a ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

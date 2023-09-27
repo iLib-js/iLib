@@ -199,6 +199,8 @@
     "NN7": "জু",
     "NN8": "আগ",
     "NN9": "সে",
+    "a0": "AM",
+    "a1": "PM",
     "durationLongDays": "one#{num} দিন|#{num} দিন",
     "durationMediumHours": "one#{num} ঘঃ|#{num} ঘঃ",
     "durationMediumMillis": "one#{num} ms|#{num} ms",
@@ -211,6 +213,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

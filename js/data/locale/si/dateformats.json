@@ -84,6 +84,7 @@
                 "s": "LL"
             },
             "m": {
+                "f": "MMMM",
                 "l": "MMMM",
                 "m": "MMM",
                 "s": "MM"
@@ -94,7 +95,16 @@
                 "m": "yyyy MMM",
                 "s": "yyyy-MM"
             },
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
+            },
             "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
                 "s": "yyyy"
             }
         },
@@ -167,11 +177,14 @@
                 "ahms": "h.mm.ssa h",
                 "ahmsz": "h.mm.ssa h z",
                 "ahmz": "h.mma h z",
+                "h": "h",
                 "hm": "h.mm",
                 "hms": "h.mm.ss",
                 "hmsz": "h.mm.ss z",
                 "hmz": "h.mm z",
-                "ms": "mm.ss"
+                "m": "mm",
+                "ms": "mm.ss",
+                "s": "ss"
             },
             "24": {
                 "ah": "HH",
@@ -184,7 +197,9 @@
                 "hms": "HH.mm.ss",
                 "hmsz": "HH.mm.ss z",
                 "hmz": "HH.mm z",
-                "ms": "mm.ss"
+                "m": "mm",
+                "ms": "mm.ss",
+                "s": "ss"
             }
         }
     }
