@@ -691,7 +691,9 @@ IString.prototype = {
             return false;
         }
 
-        if (typeof(Intl) !== 'undefined') {
+        if (typeof(Intl) !== 'undefined' &&
+                typeof(Intl.PluralRules) !== 'undefined' &&
+                typeof(Intl.PluralRules.supportedLocalesOf) !== 'undefined') {
             if (ilib._getPlatform() === 'nodejs') {
                 var version = process.versions["node"];
                 if (!version) return false;
