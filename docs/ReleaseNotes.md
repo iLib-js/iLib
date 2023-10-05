@@ -11,6 +11,7 @@ Bug Fixes:
 * Added safety code to avoid Uncaught TypeError problems when accessing the
   Intl object on a js engine that is modern enough to have an Intl object,
   but not modern enough to have everything we need on that Intl object
+* Updated dependencies
 
 Build 027
 -------
