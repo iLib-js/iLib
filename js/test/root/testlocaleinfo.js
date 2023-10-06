@@ -412,9 +412,7 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //*************************************************Added By Birendra 23/05**********************************************************
-
     //test cases for en-GB number format
-
     testLocaleInfoGetDecimalSeparatorfor_en_GB: function(test) {
         test.expect(2);
         var info = new LocaleInfo("en-GB");
@@ -471,7 +469,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for ko-KR number format
-
     testLocaleInfoGetDecimalSeparatorfor_ko_KR: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ko-KR");
@@ -528,7 +525,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for zh-CN-Hans number format
-
     testLocaleInfoGetDecimalSeparatorfor_zh_CN_Hans: function(test) {
         test.expect(2);
         var info = new LocaleInfo("zh-CN-Hans");
@@ -585,7 +581,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for zh-HK-Hans
-
     testLocaleInfoGetDecimalSeparatorfor_zh_HK_Hans: function(test) {
         test.expect(2);
         var info = new LocaleInfo("zh-HK-Hans");
@@ -642,7 +637,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases fot zh-TW-Hant
-
     testLocaleInfoGetDecimalSeparatorfor_zh_TW_Hant: function(test) {
         test.expect(2);
         var info = new LocaleInfo("zh-TW-Hant");
@@ -717,7 +711,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for fr-FR number format
-
     testLocaleInfoGetDecimalSeparatorfor_fr_FR: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fr-FR");
@@ -773,8 +766,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.done();
     },
-    //test cases for fr-CA unmber format
-
+    //test cases for fr-CA nunmber format
     testLocaleInfoGetDecimalSeparatorfor_fr_CA: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fr-CA");
@@ -830,8 +822,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.done();
     },
-    //test cases for pt_BR numberformat
-
+    //test cases for pt-BR number format
     testLocaleInfoGetDecimalSeparatorfor_pt_BR: function(test) {
         test.expect(2);
         var info = new LocaleInfo("pt-BR");
@@ -888,7 +879,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for pt_PT
-
     testLocaleInfoGetDecimalSeparatorfor_pt_PT: function(test) {
         test.expect(2);
         var info = new LocaleInfo("pt-PT");
@@ -945,7 +935,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for es_ES number format
-
     testLocaleInfoGetDecimalSeparatorfor_es_ES: function(test) {
         test.expect(2);
         var info = new LocaleInfo("es-ES");
@@ -1002,7 +991,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test case for es_Co
-
     testLocaleInfoGetDecimalSeparatorfor_es_CO: function(test) {
         test.expect(2);
         var info = new LocaleInfo("es-CO");
@@ -1059,7 +1047,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for ja-JP
-
     testLocaleInfoGetDecimalSeparatorfor_ja_JP: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ja-JP");
@@ -1116,7 +1103,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for de-DE
-
     testLocaleInfoGetDecimalSeparatorfor_de_DE: function(test) {
         test.expect(2);
         var info = new LocaleInfo("de-DE");
@@ -1173,7 +1159,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for it-IT
-
     testLocaleInfoGetDecimalSeparatorfor_it_IT: function(test) {
         test.expect(2);
         var info = new LocaleInfo("it-IT");
@@ -1230,7 +1215,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for sv-SE
-
     testLocaleInfoGetDecimalSeparatorfor_sv_SE: function(test) {
         test.expect(2);
         var info = new LocaleInfo("sv-SE");
@@ -1287,7 +1271,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for fi-FI
-
     testLocaleInfoGetDecimalSeparatorfor_fi_FI: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fi-FI");
@@ -1344,7 +1327,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for cs_CZ
-
     testLocaleInfoGetDecimalSeparatorfor_cs_CZ: function(test) {
         test.expect(2);
         var info = new LocaleInfo("cs-CZ");
@@ -1401,7 +1383,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for el_GR
-
     testLocaleInfoGetDecimalSeparatorfor_el_GR: function(test) {
         test.expect(2);
         var info = new LocaleInfo("el-GR");
@@ -1458,7 +1439,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for hu-HU
-
     testLocaleInfoGetDecimalSeparatorfor_hu_HU: function(test) {
         test.expect(2);
         var info = new LocaleInfo("hu-HU");
@@ -1515,7 +1495,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for nl_NL
-
     testLocaleInfoGetDecimalSeparatorfor_nl_NL: function(test) {
         test.expect(2);
         var info = new LocaleInfo("nl-NL");
@@ -1572,7 +1551,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for pl_PL
-
     testLocaleInfoGetDecimalSeparatorfor_pl_PL: function(test) {
         test.expect(2);
         var info = new LocaleInfo("pl-PL");
@@ -1629,7 +1607,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for da-DK
-
     testLocaleInfoGetDecimalSeparatorfor_da_Dk: function(test) {
         test.expect(2);
         var info = new LocaleInfo("da-DK");
@@ -1686,7 +1663,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for roRO
-
     testLocaleInfoGetDecimalSeparatorfor_ro_RO: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ro-RO");
@@ -1743,7 +1719,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for aa-DJ
-
     testLocaleInfoGetDecimalSeparatorfor_aa_DJ: function(test) {
         test.expect(2);
         var info = new LocaleInfo("aa-DJ");
@@ -1824,7 +1799,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for af-NA
-
     testLocaleInfoGetDecimalSeparatorfor_af_NA: function(test) {
         test.expect(2);
         var info = new LocaleInfo("af-NA");
@@ -1905,7 +1879,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for agq-CM
-
     testLocaleInfoGetDecimalSeparatorfor_agq_CM: function(test) {
         test.expect(2);
         var info = new LocaleInfo("agq-CM");
@@ -1986,7 +1959,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for ak-GH
-
     testLocaleInfoGetDecimalSeparatorfor_ak_GH: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ak-GH");
@@ -2067,7 +2039,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for am-ET
-
     testLocaleInfoGetDecimalSeparatorfor_am_ET: function(test) {
         test.expect(2);
         var info = new LocaleInfo("am-ET");
@@ -2148,7 +2119,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test casess for ar-AE
-
     testLocaleInfoGetDecimalSeparatorfor_ar_AE: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ar-AE");
@@ -2229,7 +2199,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for ar-DZ
-
     testLocaleInfoGetDecimalSeparatorfor_ar_DZ: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ar-DZ");
@@ -2310,7 +2279,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for ar-TN
-
     testLocaleInfoGetDecimalSeparatorfor_ar_TN: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ar-TN");
@@ -2391,7 +2359,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for as-IN
-
     testLocaleInfoGetDecimalSeparatorfor_as_IN: function(test) {
         test.expect(2);
         var info = new LocaleInfo("as-IN");
@@ -2472,7 +2439,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for asa_TZ
-
     testLocaleInfoGetDecimalSeparatorfor_asa_TZ: function(test) {
         test.expect(2);
         var info = new LocaleInfo("asa-TZ");
@@ -2553,7 +2519,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for az-AZ
-
     testLocaleInfoGetDecimalSeparatorfor_az_AZ: function(test) {
         test.expect(2);
         var info = new LocaleInfo("az-AZ");
@@ -2634,7 +2599,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for be-BY
-
     testLocaleInfoGetDecimalSeparatorfor_be_BY: function(test) {
         test.expect(2);
         var info = new LocaleInfo("be-BY");
@@ -2714,8 +2678,6 @@ module.exports.testlocaleinfo = {
         test.equal(info.getRoundingMode(), "halfdown");
         test.done();
     },
-
-
     testLocaleInfoGetDecimalSeparatorfor_bg_BG: function(test) {
         test.expect(2);
         var info = new LocaleInfo("bg-BG");
@@ -2787,9 +2749,6 @@ module.exports.testlocaleinfo = {
         test.equal(info.getSecondaryGroupingDigits(), 0);
         test.done();
     },
-
-
-
     testLocaleInfoGetDecimalSeparatorfor_bm_ML: function(test) {
         test.expect(2);
         var info = new LocaleInfo("bm-ML");
@@ -2949,7 +2908,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for br-FR
-
     testLocaleInfoGetDecimalSeparatorfor_br_FR: function(test) {
         test.expect(2);
         var info = new LocaleInfo("br-FR");
@@ -3029,10 +2987,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getRoundingMode(), "halfdown");
         test.done();
     },
-
-
     //test cases for bs-BA-Cyrl
-
     testLocaleInfoGetDecimalSeparatorfor_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var info = new LocaleInfo("bs-BA-Cyrl");
@@ -3184,7 +3139,6 @@ module.exports.testlocaleinfo = {
 
     },
     //test cases for bs-ME
-
     testLocaleInfoGetDecimalSeparatorfor_bs_ME: function(test) {
         test.expect(2);
         var info = new LocaleInfo("bs-ME");
@@ -3265,7 +3219,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for ca-FR
-
     testLocaleInfoGetDecimalSeparatorfor_ca_FR: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ca-FR");
@@ -3346,7 +3299,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for de-AT
-
     testLocaleInfoGetDecimalSeparatorfor_de_AT: function(test) {
         test.expect(2);
         var info = new LocaleInfo("de-AT");
@@ -3426,10 +3378,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getRoundingMode(), "halfdown");
         test.done();
     },
-
-
     //test cases for fa
-
     testLocaleInfoGetDecimalSeparatorfor_fa: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fa-IR");
@@ -3510,7 +3459,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for fa-AF
-
     testLocaleInfoGetDecimalSeparatorfor_fa_AF: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fa-AF");
@@ -3590,11 +3538,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getRoundingMode(), "halfdown");
         test.done();
     },
-
-
-
     //test cases for ff-SN
-
     testLocaleInfoGetDecimalSeparatorfor_ff_SN: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ff-SN");
@@ -3650,8 +3594,6 @@ module.exports.testlocaleinfo = {
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.done();
     },
-
-
     testLocaleInfoGetPrimaryGroupingDigits_ff_SN: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ff-SN");
@@ -3676,10 +3618,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getRoundingMode(), "halfdown");
         test.done();
     },
-
-
     //test cases for fj-FJ
-
     testLocaleInfoGetDecimalSeparatorfor_fj_FJ: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fj-FJ");
@@ -3760,7 +3699,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for fo
-
     testLocaleInfoGetDecimalSeparatorfor_fo: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fo");
@@ -3840,10 +3778,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getRoundingMode(), "halfdown");
         test.done();
     },
-
-
     //test cases for fr-AD
-
     testLocaleInfoGetDecimalSeparatorfor_fr_AD: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fr-AD");
@@ -3924,7 +3859,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for fr-BE
-
     testLocaleInfoGetDecimalSeparatorfor_fr_BE: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fr-BE");
@@ -3980,8 +3914,6 @@ module.exports.testlocaleinfo = {
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.done();
     },
-
-
     testLocaleInfoGetPrimaryGroupingDigits_fr_BE: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fr-BE");
@@ -4007,7 +3939,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for fr-CH
-
     testLocaleInfoGetDecimalSeparatorfor_fr_CH: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fr-CH");
@@ -4088,7 +4019,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for fr-DZ
-
     testLocaleInfoGetDecimalSeparatorfor_fr_DZ: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fr-DZ");
@@ -4169,7 +4099,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for fr-LU
-
     testLocaleInfoGetDecimalSeparatorfor_fr_LU: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fr-LU");
@@ -4250,7 +4179,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for fr-MG
-
     testLocaleInfoGetDecimalSeparatorfor_fr_MG: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fr-MG");
@@ -4331,7 +4259,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for fr-SN
-
     testLocaleInfoGetDecimalSeparatorfor_fr_SN: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fr-SN");
@@ -4412,7 +4339,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for fr-YT
-
     testLocaleInfoGetDecimalSeparatorfor_fr_YT: function(test) {
         test.expect(2);
         var info = new LocaleInfo("fr-YT");
@@ -4492,11 +4418,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getRoundingMode(), "halfdown");
         test.done();
     },
-
-
-
     //test cases for ga-IE
-
     testLocaleInfoGetDecimalSeparatorfor_ga_IE: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ga-IE");
@@ -4576,11 +4498,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getRoundingMode(), "halfdown");
         test.done();
     },
-
-
-
     //test cases for gl-ES
-
     testLocaleInfoGetDecimalSeparatorfor_gl_ES: function(test) {
         test.expect(2);
         var info = new LocaleInfo("gl-ES");
@@ -4661,7 +4579,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for ha-NG-Latn
-
     testLocaleInfoGetDecimalSeparatorfor_ha_NG_Latn: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ha-NG-Latn");
@@ -4742,7 +4659,6 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for he-IL
-
     testLocaleInfoGetDecimalSeparatorfor_he: function(test) {
         test.expect(2);
         var info = new LocaleInfo("he-IL");
