@@ -692,7 +692,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
         test.done();
     },
-    testLocaleInfoGetNegativeCurrencyFormat_zh_TW_Hant: function(test) {
+    testLocaleInfoGetDelimiter_zh_TW_Hant: function(test) {
         test.expect(3);
         var info = new LocaleInfo("zh-Hant-TW");
         test.ok(info !== null);
@@ -701,7 +701,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getDelimiterQuotationEnd(), "」");
         test.done();
     },
-    testLocaleInfoGetNegativeCurrencyFormat_zh_TW: function(test) {
+    testLocaleInfoGetDelimiter_zh_TW: function(test) {
         test.expect(3);
         var info = new LocaleInfo("zh-TW");
         test.ok(info !== null);
@@ -2826,6 +2826,16 @@ module.exports.testlocaleinfo = {
         test.ok(info !== null);
 
         test.equal(info.getRoundingMode(), "halfdown");
+        test.done();
+    },
+    testLocaleInfoQuotation_bm_ML: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("bm-ML");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "«");
+        test.equal(info.getDelimiterQuotationEnd(), "»");
+        test.equal(info.getPaperSize(), "A4");
         test.done();
     },
     testLocaleInfoGetDecimalSeparatorfor_bn_IN: function(test) {
@@ -12029,16 +12039,6 @@ module.exports.testlocaleinfo = {
     testLocaleInfoQuotation_ps_AF: function(test) {
         test.expect(4);
         var info = new LocaleInfo("ps-AF");
-        test.ok(info !== null);
-
-        test.equal(info.getDelimiterQuotationStart(), "“");
-        test.equal(info.getDelimiterQuotationEnd(), "”");
-        test.equal(info.getPaperSize(), "A4");
-        test.done();
-    },
-    testLocaleInfoQuotation_ps_AF: function(test) {
-        test.expect(4);
-        var info = new LocaleInfo("ps-PK");
         test.ok(info !== null);
 
         test.equal(info.getDelimiterQuotationStart(), "“");
