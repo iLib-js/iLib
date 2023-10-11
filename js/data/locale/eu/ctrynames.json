@@ -3,7 +3,6 @@
     "Afrika": "002",
     "Afrika Erdiko Errepublika": "CF",
     "Aingira": "AI",
-    "Åland": "AX",
     "Albania": "AL",
     "Alemania": "DE",
     "Aljeria": "DZ",
@@ -292,5 +291,6 @@
     "Zambia": "ZM",
     "Zeelanda Berria": "NZ",
     "Zimbabwe": "ZW",
-    "Zipre": "CY"
+    "Zipre": "CY",
+    "Åland": "AX"
 }

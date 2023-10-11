@@ -3,7 +3,6 @@
     "Africa": "002",
     "Afuganisitani": "AF",
     "Ajentina": "AR",
-    "Åland Islands": "AX",
     "Alijeliya": "DZ",
     "Alimeniya": "AM",
     "Aluba": "AW",
@@ -281,7 +280,6 @@
     "Western Asia": "145",
     "Western Europe": "155",
     "Western Sahara": "EH",
-    "world": "001",
     "Wufalansa": "FR",
     "Wufini": "FI",
     "Wugiliki": "GR",
@@ -292,5 +290,7 @@
     "Wutwa wa shiyalabu": "AE",
     "Yemeni": "YE",
     "Yolodani": "JO",
-    "Yukileini": "UA"
+    "Yukileini": "UA",
+    "world": "001",
+    "Åland Islands": "AX"
 }

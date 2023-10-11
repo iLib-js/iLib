@@ -61,8 +61,8 @@
     "Ceuta dan Melilla": "EA",
     "Chad": "TD",
     "Cile": "CL",
-    "Côte d’Ivoire": "CI",
     "Curaçao": "CW",
+    "Côte d’Ivoire": "CI",
     "Denmark": "DK",
     "Diego Garcia": "DG",
     "Dominika": "DM",
@@ -76,7 +76,6 @@
     "Eropa Bagian Timur": "151",
     "Eropa Bagian Utara": "154",
     "Estonia": "EE",
-    "eSwatini": "SZ",
     "Etiopia": "ET",
     "Fiji": "FJ",
     "Filipina": "PH",
@@ -221,10 +220,10 @@
     "Qatar": "QA",
     "Republik Afrika Tengah": "CF",
     "Republik Dominika": "DO",
-    "Réunion": "RE",
     "Rumania": "RO",
     "Rusia": "RU",
     "Rwanda": "RW",
+    "Réunion": "RE",
     "Sahara Barat": "EH",
     "Saint Barthélemy": "BL",
     "Saint Helena": "SH",
@@ -292,5 +291,6 @@
     "Yunani": "GR",
     "Zambia": "ZM",
     "Zimbabwe": "ZW",
-    "Zona Euro": "EZ"
+    "Zona Euro": "EZ",
+    "eSwatini": "SZ"
 }

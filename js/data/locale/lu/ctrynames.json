@@ -4,7 +4,6 @@
     "Afuganisita": "AF",
     "Ajelbayidja": "AZ",
     "Alabu Nsawudi": "SA",
-    "Åland Islands": "AX",
     "Alemanu": "DE",
     "Alijantine": "AR",
     "Alijeri": "DZ",
@@ -221,10 +220,10 @@
     "Rwanda": "RW",
     "Samoa": "WS",
     "Samoa wa Ameriki": "AS",
+    "Santu Marine": "SM",
     "Santu eleni": "SH",
     "Santu krístofe ne Neves": "KN",
     "Santu lisi": "LC",
-    "Santu Marine": "SM",
     "Santu pététo ne Mikelu": "PM",
     "Santu vesa ne Ngelenadine": "VC",
     "Sao Tome ne Presipɛ": "ST",
@@ -288,9 +287,10 @@
     "Western Asia": "145",
     "Western Europe": "155",
     "Western Sahara": "EH",
-    "world": "001",
     "Yemenu": "YE",
     "Zambi": "ZM",
     "Zelanda wa mumu": "NZ",
-    "Zimbabwe": "ZW"
+    "Zimbabwe": "ZW",
+    "world": "001",
+    "Åland Islands": "AX"
 }

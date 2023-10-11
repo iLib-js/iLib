@@ -1,6 +1,5 @@
 {
     "Africa": "002",
-    "Åland Islands": "AX",
     "Americas": "019",
     "Antarctica": "AQ",
     "Ascension Island": "AC",
@@ -292,5 +291,6 @@
     "Western Asia": "145",
     "Western Europe": "155",
     "Western Sahara": "EH",
-    "world": "001"
+    "world": "001",
+    "Åland Islands": "AX"
 }
