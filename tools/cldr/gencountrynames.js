@@ -319,7 +319,7 @@ function writeResources(language, script, country, data, filePrefix, writeRevers
                 }
             }
 
-            fs.writeFileSync(path.join(pathname, filePrefix + "reverse.json"), stringify(data, {space: 4}), "utf-8");
+            fs.writeFileSync(path.join(pathname, filePrefix + "reverse.json"), stringify(reverse, {space: 4}), "utf-8");
         }
     } else {
         console.log("Skipping empty " + pathname);
