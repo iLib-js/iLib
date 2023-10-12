@@ -249,6 +249,7 @@
             "dessert-spoon": "#{n} bs",
             "dessert-spoon-imperial": "#{n} imp. bs",
             "dot": "#{n} pkt",
+            "dot-per-centimeter": "#{n} ppcm",
             "dot-per-inch": "#{n} dpi",
             "dram": "#{n} dram fl",
             "drop": "#{n} dråpe",

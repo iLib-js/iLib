@@ -251,6 +251,7 @@
             "dessert-spoon-imperial": "#{n} bir. desszertkanál",
             "dot": "#{n} képpont",
             "dot-per-centimeter": "one#{n} dpcm|#{n} ppcm",
+            "dot-per-inch": "#{n} ppi",
             "dram": "#{n} fl dram",
             "drop": "#{n} csepp",
             "dunam": "#{n} dunam",

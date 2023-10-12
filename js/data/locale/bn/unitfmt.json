@@ -249,6 +249,7 @@
             "degree": "#{n}ডিগ্রী",
             "dessert-spoon": "#{n} dstspn",
             "dessert-spoon-imperial": "#{n} dstspn Imp",
+            "dot": "#{n} px",
             "dot-per-centimeter": "#{n} dpcm",
             "dot-per-inch": "#{n} dpi",
             "dram": "#{n} dram fl",

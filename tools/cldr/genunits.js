@@ -304,7 +304,7 @@ process.argv.forEach(function (val, index, array) {
 localeDirName = process.argv[2] || "tmp";
 
 console.log("genunits - tool to generate the json data about unit formats from the CLDR data.\n" +
-        "Copyright © 2013, 2018, 2020-2022 JEDLSoft");
+        "Copyright © 2013, 2018, 2020-2023 JEDLSoft");
 
 console.log("locale dir: " + localeDirName );
 
@@ -915,6 +915,31 @@ function frameUnits(data, locale, localeData) {
 }
 
 console.log("Loading locale data...");
+var langUnitData = {};
+
+function isObjEqual(obj1, obj2) {
+    var props1 = Object.getOwnPropertyNames(obj1);
+    var props2 = Object.getOwnPropertyNames(obj2);
+
+    if (props1.length != props2.length) {
+        return false;
+    }
+
+    for(var i=0; i < props1.length; i++) {
+        var val1 = obj1[props1[i]];
+        var val2 = obj2[props2[i]];
+        var isObjects = isObject(val1) && isObject(val2);
+
+        if (isObjects && !isObjEqual(val1, val2) || !isObjects && val1 !== val2) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function isObject(object) {
+    return object != null && typeof object === "object";
+}
 
 cldrCore.forEach(function(locale) {
     var pathName = path.join("cldr-units-full/main", locale, "units.json");
@@ -922,15 +947,21 @@ cldrCore.forEach(function(locale) {
         var data = require(pathName);
         var localeData = {};
         var l = new Locale(locale);
-
         localeData = frameUnits(data, locale, localeData);
+        var objEqual = false;
+        if ((!l.getScript()) && (!l.getRegion())) {
+            langUnitData[l.getLanguage()] = localeData;
+        } else {
+            objEqual = isObjEqual(localeData, langUnitData[l.getLanguage()]);
+        }
 
         // now special case for the root
         if (locale === "und") {
             writeUnits(localeData);
         } else {
-            var l = new Locale(locale);
-            writeUnits(localeData, l.getLanguage(), l.getScript(), l.getRegion());
+            if (!((l.getScript() || l.getRegion()) && objEqual)){
+                writeUnits(localeData, l.getLanguage(), l.getScript(), l.getRegion());
+            }
         }
     } catch (e) {
         console.log("Could not find " + pathName + " ... skipping.");

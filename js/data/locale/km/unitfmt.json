@@ -249,6 +249,8 @@
             "dessert-spoon": "#{n} dstspn",
             "dessert-spoon-imperial": "#{n} dstspn Imp",
             "dot": "#{n} ចំណុច",
+            "dot-per-centimeter": "#{n} ppcm",
+            "dot-per-inch": "#{n} ppi",
             "dram": "#{n} ត្រាមរាវ",
             "drop": "#{n} តំណក់",
             "dunam": "#{n} ឌូណាម",
