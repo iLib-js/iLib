@@ -2660,4 +2660,25 @@ module.exports.testresources = {
 
         test.done();
     },
+    testResBundleMultiPaths_en_GB_RES2: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+        test.expect(3);
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+        var multiPath2 = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
+        var ilibLoader = ilib.getLoader();
+        ilibLoader.addPath([multiPath2]);
+        var rb = new ResBundle({
+            locale: "en-GB",
+            basePath: base
+        });
+        test.ok(rb !== null);
+        test.equal(rb.getString("hello").toString(), "Hello World!_res2_en");
+        ilibLoader.removePath(multiPath2);
+        test.done();
+    },
 };
