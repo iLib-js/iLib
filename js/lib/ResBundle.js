@@ -272,6 +272,10 @@ var ResBundle = function (options) {
     this.map = {};
 
     lookupLocale = this.locale.isPseudo() ? new Locale("en-US") : this.locale;
+    
+    this.resPathArray = ilib.getMultiResPath();
+    this.isMultiPathExist = (this.resPathArray && this.resPathArray.length > 0) ? true: false;
+    this.map2 = [];
 
     // ensure that the plural rules are loaded before we proceed
     IString.loadPlurals(this.sync, lookupLocale, this.loadParams, ilib.bind(this, function() {
@@ -306,6 +310,43 @@ var ResBundle = function (options) {
         })
     }));
 
+    if (this.isMultiPathExist) {
+        this.resPathArray.forEach(ilib.bind(this, function(element){
+            Utils.loadData({
+                locale: lookupLocale,
+                name: this.baseName + ".json",
+                sync: this.sync,
+                loadParams: this.loadParams,
+                root: element,
+                callback: ilib.bind(this, function (mapData) {
+                    if (!mapData) {
+                        mapData = ilib.data[this.baseName] || {};
+                    }
+                    this.map2.push(mapData);
+                    if (this.locale.isPseudo()) {
+                        this._loadPseudo(this.locale, options.onLoad);
+                    } else if (this.missing === "pseudo") {
+                        new LocaleInfo(this.locale, {
+                            sync: this.sync,
+                            loadParams: this.loadParams,
+                            onLoad: ilib.bind(this, function (li) {
+                                var pseudoLocale = new Locale("zxx", "XX", undefined, li.getDefaultScript());
+                                this._loadPseudo(pseudoLocale, options.onLoad);
+                            })
+                        });
+                    } else {
+                        if (typeof(options.onLoad) === 'function') {
+                            options.onLoad(this);
+                        }
+                    }
+                })
+            });
+        }));
+    }
+    if (this.isMultiPathExist){
+        var mergedObj = this._mergeMultiResData(this.map2);
+        this.map = JSUtils.merge(this.map, mergedObj);
+    }
     // console.log("Merged resources " + this.locale.toString() + " are: " + JSON.stringify(this.map));
     //if (!this.locale.isPseudo() && JSUtils.isEmpty(this.map)) {
     //    console.log("Resources for bundle " + this.baseName + " locale " + this.locale.toString() + " are not available.");
@@ -345,6 +386,13 @@ ResBundle.prototype = {
                 }
             })
         });
+    },
+    _mergeMultiResData: function(){
+        var newObj = {};
+        this.map2.reverse().forEach(ilib.bind(this, function(item){
+            newObj = Object.assign(newObj,item);
+        }));
+        return newObj;
     },
 
     /**

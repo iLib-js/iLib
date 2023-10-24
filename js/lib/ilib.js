@@ -259,6 +259,21 @@ ilib._isGlobal = function(name) {
     return typeof(ilib._global(name)) !== 'undefined';
 };
 
+ilib.setMultiResPath = function(paths){
+    ilib.resPath = [];
+    if (!paths) return;
+    paths = ilib.isArray(paths) ? paths : [paths];
+    ilib.resPaths = paths;
+}
+
+ilib.getMultiResPath = function(){
+    return ilib.resPaths;
+}
+
+ilib.clearResPath = function(){
+    ilib.resPaths = undefined;
+}
+
 /**
  * Clear the file load cache. This is mainly used by the unit tests,
  * but could be used by regular callers if you want to free up memory

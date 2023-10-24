@@ -2665,20 +2665,21 @@ module.exports.testresources = {
             test.done();
             return;
         }
-        test.expect(3);
+        test.expect(2);
         // clear this to be sure it is actually loading something
         ilib.clearCache();
         var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
         var multiPath2 = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
-        var ilibLoader = ilib.getLoader();
-        ilibLoader.addPath([multiPath2]);
+
+        ilib.setMultiResPath([multiPath2]);
         var rb = new ResBundle({
             locale: "en-GB",
             basePath: base
         });
         test.ok(rb !== null);
         test.equal(rb.getString("hello").toString(), "Hello World!_res2_en");
-        ilibLoader.removePath(multiPath2);
+
+        ilib.clearResPath();
         test.done();
     },
 };
