@@ -5,7 +5,7 @@ Build 028
 -------
 Published as version 14.19.0
 New Features:
-* Added new `getCLDRVersion()` API to know the cldr versioin that  the currently adoped on.
+* Added new `getCLDRVersion()` API to know the cldr version that the currently adoped on.
 
 Bug Fixes:
 * Removed docs/localeSpecDoc/ directory which is not maintained.
