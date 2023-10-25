@@ -4,6 +4,7 @@
     "Afuganistani": "AF",
     "Aislandi": "IS",
     "Ajentina": "AR",
+    "Åland Islands": "AX",
     "Albania": "AL",
     "Aljeria": "DZ",
     "Americas": "019",
@@ -288,9 +289,8 @@
     "Western Asia": "145",
     "Western Europe": "155",
     "Western Sahara": "EH",
+    "world": "001",
     "Yemeni": "YE",
     "Zambia": "ZM",
-    "Zimbabwe": "ZW",
-    "world": "001",
-    "Åland Islands": "AX"
+    "Zimbabwe": "ZW"
 }

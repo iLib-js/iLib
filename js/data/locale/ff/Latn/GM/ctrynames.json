@@ -3,6 +3,7 @@
     "Africa": "002",
     "Afrik bŋ Worgo": "ZA",
     "Ajerbayjaan": "AZ",
+    "Åland Islands": "AX",
     "Alaseri": "DZ",
     "Albanii": "AL",
     "Almaañ": "DE",
@@ -59,6 +60,7 @@
     "Duuɗe Kap Weer": "CV",
     "Duuɗe Kaymaa": "KY",
     "Duuɗe Kecce Amerik": "VI",
+    "duuɗe kecce britanii": "VG",
     "Duuɗe Kuuk": "CK",
     "Duuɗe Mariyaana Rewo": "MP",
     "Duuɗe Marsaal": "MH",
@@ -289,8 +291,6 @@
     "Western Europe": "155",
     "Western Sahara": "EH",
     "Wiyetnaam": "VN",
-    "Yemen": "YE",
-    "duuɗe kecce britanii": "VG",
     "world": "001",
-    "Åland Islands": "AX"
+    "Yemen": "YE"
 }

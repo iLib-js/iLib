@@ -1,6 +1,7 @@
 {
     "Africa": "002",
     "Afrika du Sulu": "ZA",
+    "Åland Islands": "AX",
     "Alujeria": "DZ",
     "Americas": "019",
     "Angola": "AO",
@@ -291,6 +292,5 @@
     "Western Europe": "155",
     "Western Sahara": "EH",
     "Wiraki": "IQ",
-    "world": "001",
-    "Åland Islands": "AX"
+    "world": "001"
 }

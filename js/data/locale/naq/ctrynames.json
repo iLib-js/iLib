@@ -1,6 +1,7 @@
 {
     "Afghanistanni": "AF",
     "Africa": "002",
+    "Åland Islands": "AX",
     "Albaniab": "AL",
     "Algeriab": "DZ",
     "Americab Samoab": "AS",
@@ -212,9 +213,9 @@
     "Puerto Rico": "PR",
     "Qatar": "QA",
     "Rasiab": "RU",
+    "Réunion": "RE",
     "Romania": "RO",
     "Rwandab": "RW",
-    "Réunion": "RE",
     "Saint Helena": "SH",
     "Saint Kitts and Nevis": "KN",
     "Saint Lucia": "LC",
@@ -222,6 +223,7 @@
     "Saint Vincent and the Grenadines": "VC",
     "Samoa": "WS",
     "San Marino": "SM",
+    "São Tomé and Príncipe": "ST",
     "Saudi Arabiab": "SA",
     "Senegali": "SN",
     "Serbia": "RS",
@@ -253,7 +255,6 @@
     "Swedeb": "SE",
     "Switzerlandi": "CH",
     "Syriab": "SY",
-    "São Tomé and Príncipe": "ST",
     "Taiwan": "TW",
     "Tajikistan": "TJ",
     "Tanzaniab": "TZ",
@@ -287,10 +288,9 @@
     "Western Asia": "145",
     "Western Europe": "155",
     "Western Sahara": "EH",
+    "world": "001",
     "Xrikelandi": "GR",
     "Yemen": "YE",
     "Zambiab": "ZM",
-    "Zimbabweb": "ZW",
-    "world": "001",
-    "Åland Islands": "AX"
+    "Zimbabweb": "ZW"
 }

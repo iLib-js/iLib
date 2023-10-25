@@ -4,6 +4,7 @@
     "Africa": "002",
     "Afuganistani": "AF",
     "Aislandi": "IS",
+    "Åland Islands": "AX",
     "Albania": "AL",
     "Aljelia": "DZ",
     "Almenia": "AM",
@@ -49,8 +50,6 @@
     "Chadi": "TD",
     "Chile": "CL",
     "China": "CN",
-    "Chisiwa Chivihi cha Malekani": "VI",
-    "Chisiwa Chivihi cha Wingalesa": "VG",
     "Chisiwa cha Cook": "CK",
     "Chisiwa cha Falkland": "FK",
     "Chisiwa cha Kemen": "KY",
@@ -59,6 +58,8 @@
     "Chisiwa cha Nolufok": "NF",
     "Chisiwa cha Solomon": "SB",
     "Chisiwa cha Tuluchi na Kaiko": "TC",
+    "Chisiwa Chivihi cha Malekani": "VI",
+    "Chisiwa Chivihi cha Wingalesa": "VG",
     "Christmas Island": "CX",
     "Clipperton Island": "CP",
     "Cocos (Keeling) Islands": "CC",
@@ -287,10 +288,9 @@
     "Western Asia": "145",
     "Western Europe": "155",
     "Western Sahara": "EH",
+    "world": "001",
     "Yemeni": "YE",
     "Yordani": "JO",
     "Zambia": "ZM",
-    "Zimbabwe": "ZW",
-    "world": "001",
-    "Åland Islands": "AX"
+    "Zimbabwe": "ZW"
 }

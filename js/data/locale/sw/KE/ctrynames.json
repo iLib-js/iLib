@@ -58,10 +58,11 @@
     "Denmaki": "DK",
     "Diego Garcia": "DG",
     "Dominika": "DM",
+    "dunia": "001",
     "Ekwado": "EC",
     "Elsalvado": "SV",
-    "Eneo Lisilojulikana": "ZZ",
     "Eneo la Oceania": "QO",
+    "Eneo Lisilojulikana": "ZZ",
     "Eritrea": "ER",
     "Estonia": "EE",
     "Eswatini": "SZ",
@@ -291,6 +292,5 @@
     "Yemeni": "YE",
     "Yordani": "JO",
     "Zambia": "ZM",
-    "Zimbabwe": "ZW",
-    "dunia": "001"
+    "Zimbabwe": "ZW"
 }

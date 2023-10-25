@@ -310,7 +310,11 @@ function writeResources(language, script, country, data, filePrefix, writeRevers
     if (anyProperties(data)) {
         console.log("Writing " + pathname);
         if (pathname && pathname !== ".") makeDirs(pathname);
-        fs.writeFileSync(path.join(pathname, filePrefix + "names.json"), stringify(data, {space: 4}), "utf-8");
+        fs.writeFileSync(path.join(pathname, filePrefix + "names.json"), stringify(data, {space: 4,
+            cmp: function(a, b) {
+                 return data[a] < data[b] ? -1 : data[a] > data[b] ? 1 : 0;
+             }
+        }), "utf-8");
 
         if (writeReverse) {
             for (var ctry in data) {
