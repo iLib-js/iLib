@@ -4,7 +4,9 @@ Release Notes for Version 14
 Build 028
 -------
 Published as version 14.19.0
+
 New Features:
+* Update to CLDR v43.1 data
 * Added new `getCLDRVersion()` API to know the cldr version that the currently adoped on.
 
 Bug Fixes:
