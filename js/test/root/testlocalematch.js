@@ -1172,6 +1172,28 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "be-Cyrl-BY");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode66: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "zgn-CN"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "zgn-Hani-CN");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode67: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "rif-MA"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "rif-Latn-MA");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleByLocaleCode_lo: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
