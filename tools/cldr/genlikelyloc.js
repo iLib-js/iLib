@@ -2,7 +2,7 @@
  * genlikelyloc.js - ilib tool to generate the localematch.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2020, J2022 EDLSoft
+ * Copyright © 2013-2020, 2022-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -75,7 +75,22 @@ var hardCodedSubtags = {
     "ku-IQ": "ku-Arab-IQ",
     "ps-PK": "ps-Arab-PK",
     "pt-MO": "pt-Latn-MO",
-    "yo-BJ": "yo-Latn-BJ"
+    "yo-BJ": "yo-Latn-BJ",
+    "am-XX": "am-Ethi-XX",
+    "as-XX": "as-Beng-XX",
+    "bn-XX": "bn-Beng-XX",
+    "gu-XX": "gu-Gujr-XX",
+    "hi-XX": "hi-Deva-XX",
+    "ka-XX": "ka-Geor-XX",
+    "km-XX": "km-Khmr-XX",
+    "kn-XX": "kn-Knda-XX",
+    "ml-XX": "ml-Mlym-XX",
+    "mr-XX": "mr-Deva-XX",
+    "or-XX": "or-Orya-XX",
+    "pa-XX": "pa-Guru-XX",
+    "si-XX": "si-Sinh-XX",
+    "ta-XX": "ta-Taml-XX",
+    "te-XX": "te-Telu-XX"
 };
 
 // Likely Locales

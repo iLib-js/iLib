@@ -6,7 +6,7 @@
     "#in {num}s": "one#in {num} sec.|#in {num} sec.",
     "#in {num}w": "one#in {num} sept.|#in {num} sept.",
     "#in {num}y": "one#in {num} an.|#in {num} an.",
-    "#{num} ms": "#{num} ms",
+    "#{num} ms": "one#{num} ms|#{num} ms",
     "#{num}d": "one#{num}d|#{num}d",
     "#{num}d ago": "one#{num} die retro|#{num} dies retro",
     "#{num}h": "one#{num}h|#{num}h",

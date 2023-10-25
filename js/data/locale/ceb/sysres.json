@@ -6,7 +6,7 @@
     "#in {num}s": "#+{num} s",
     "#in {num}w": "#+{num} w",
     "#in {num}y": "#+{num} y",
-    "#{num} ms": "#{num} ms",
+    "#{num} ms": "one#{num} ms|#{num} ms",
     "#{num}d": "one#{num} adlaw|#{num} adlaw",
     "#{num}d ago": "#-{num} d",
     "#{num}h": "one#{num} ka oras|#{num} ka oras",
