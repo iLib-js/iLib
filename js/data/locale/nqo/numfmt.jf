@@ -1,0 +1,9 @@
+{
+    "generated": true,
+    "numfmt": {
+        "digits": "߀߁߂߃߄߅߆߇߈߉",
+        "groupChar": "،",
+        "script": "Nkoo",
+        "useNative": true
+    }
+}

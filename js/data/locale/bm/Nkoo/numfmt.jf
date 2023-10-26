@@ -1,0 +1,27 @@
+{
+    "generated": true,
+    "native_numfmt": {
+        "currencyFormats": {
+            "common": "{s} {n}",
+            "commonNegative": "-{s} {n}"
+        },
+        "decimalChar": ".",
+        "digits": "߀߁߂߃߄߅߆߇߈߉",
+        "exponential": "E",
+        "groupChar": ",",
+        "negativenumFmt": "-{n}",
+        "negativepctFmt": "-{n}%",
+        "pctChar": "%",
+        "pctFmt": "{n}%",
+        "prigroupSize": 3,
+        "roundingMode": "halfdown",
+        "script": "Nkoo",
+        "useNative": true
+    },
+    "numfmt": {
+        "currencyFormats": {
+            "common": "{s} {n}",
+            "commonNegative": "-{s} {n}"
+        }
+    }
+}

@@ -2,7 +2,7 @@
  * gencurrencies.js - ilib tool to generate the json data about currency
  * the CLDR data files
  *
- * Copyright © 2016, 2018-2020, 2022 JEDLSoft
+ * Copyright © 2016, 2018-2020, 2022-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,15 +22,13 @@
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
-var util = require('util');
 var stringify = require('json-stable-stringify');
 var common = require('./common.js');
-var coelesce = common.coelesce;
 var mkdirs = common.makeDirs;
 var path = require("path");
 
 function usage() {
-    console.log("Usage: gencurrency [-h] [iLib locale Dir [toDir]]\n" +
+    console.log("Usage: gencurrency [-h] [iLib locale Dir] [toDir]]\n" +
         "Generate the currency.jf files for each country.\n\n" +
         "-h or --help\n" +
         "  this help\n" +
@@ -118,7 +116,7 @@ if (process.argv.length > 3) {
     toDir = process.argv[3];
 }
 
-console.log("gencurrency - generate currency information files.\n" + "Copyright © 2016, 2018-2020, JEDLSoft");
+console.log("gencurrency - generate currency information files.\n" + "Copyright © 2016, 2018-2020, 2022-2023 JEDLSoft");
 console.log("output dir: " + toDir);
 
 var ilibDataFileName = path.join(ilibDir, "currency.json");
