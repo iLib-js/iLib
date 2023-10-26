@@ -250,6 +250,8 @@
             "dessert-spoon": "#{n} csb",
             "dessert-spoon-imperial": "#{n} csb imp",
             "dot": "one#{n} p|#{n} pts",
+            "dot-per-centimeter": "#{n} ppcm",
+            "dot-per-inch": "#{n} ppi",
             "dram": "#{n} dram fl",
             "drop": "one#{n} gota|#{n} gotas",
             "dunam": "one#{n} dunam|#{n} dunans",

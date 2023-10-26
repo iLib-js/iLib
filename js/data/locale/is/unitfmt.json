@@ -249,6 +249,7 @@
             "degree": "#{n}°",
             "dessert-spoon": "#{n} ábætissk.",
             "dessert-spoon-imperial": "#{n} bresk ábætissk.",
+            "dot": "#{n} px",
             "dot-per-centimeter": "#{n} dpcm",
             "dot-per-inch": "#{n} dpi",
             "dram": "one#{n} dramm|#{n} drömm",

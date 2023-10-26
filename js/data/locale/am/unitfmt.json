@@ -36,6 +36,7 @@
             "cup-metric": "#{n} mc",
             "dalton": "#{n} ዳተንስ",
             "day": "#{n} ቀናት",
+            "day-person": "#{n} ቀናት",
             "decade": "one#{n} ዓሠርተ-ዓመት|#{n} ዓሠርተ-ዓመታት",
             "deciliter": "#{n} ዴሲ ሊትር",
             "decimeter": "#{n} ዴሲ ሜትር",

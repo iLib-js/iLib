@@ -250,6 +250,8 @@
             "dessert-spoon": "#{n} dsk.",
             "dessert-spoon-imperial": "#{n} brit. dsk.",
             "dot": "#{n} p",
+            "dot-per-centimeter": "#{n} ppcm",
+            "dot-per-inch": "#{n} ppi",
             "dram": "#{n} br. fl. dr.",
             "drop": "one#{n} dråbe|#{n} dråber",
             "dunam": "#{n} dunam",

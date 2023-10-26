@@ -249,6 +249,8 @@
             "dessert-spoon": "#{n} dstspn",
             "dessert-spoon-imperial": "#{n} dstspn Imp",
             "dot": "two#{n} ddot|#{n} px",
+            "dot-per-centimeter": "#{n} ppcm",
+            "dot-per-inch": "#{n} ppi",
             "dram": "two#{n} ddracmon hy|#{n} dracmon hy",
             "drop": "two#{n} ddiferyn|#{n} diferyn",
             "dunam": "two#{n} ddunam|#{n} dunam",

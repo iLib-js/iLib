@@ -36,7 +36,7 @@
             "cup-metric": "#{n} میٹرک کپ",
             "dalton": "one#{n} ڈالٹن|#{n} ڈالٹنز",
             "day": "#{n} دن",
-            "day-person": "",
+            "day-person": "#{n} دن",
             "decade": "one#{n} دہائی|#{n} دہائیاں",
             "deciliter": "#{n} ڈیسی لیٹر",
             "decimeter": "#{n} ڈیسی میٹر",
