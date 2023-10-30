@@ -2063,112 +2063,112 @@
     ],
     "BR": [
         {
-            "name": "Acre",
-            "code": "AC"
+            "code": "AC",
+            "name": "Acre"
         },
         {
-            "name": "Alagoas",
-            "code": "AL"
+            "code": "AL",
+            "name": "Alagoas"
         },
         {
-            "name": "Amapá",
-            "code": "AP"
+            "code": "AP",
+            "name": "Amapá"
         },
         {
-            "name": "Amazonas",
-            "code": "AM"
+            "code": "AM",
+            "name": "Amazonas"
         },
         {
-            "name": "Bahia",
-            "code": "BA"
+            "code": "BA",
+            "name": "Bahia"
         },
         {
-            "name": "BR-RS",
-            "code": "RS"
+            "code": "RS",
+            "name": "BR-RS"
         },
         {
-            "name": "Ceará",
-            "code": "CE"
+            "code": "CE",
+            "name": "Ceará"
         },
         {
-            "name": "Espírito Santo",
-            "code": "ES"
+            "code": "ES",
+            "name": "Espírito Santo"
         },
         {
-            "name": "Federal District",
-            "code": "DF"
+            "code": "DF",
+            "name": "Federal District"
         },
         {
-            "name": "Goiás",
-            "code": "GO"
+            "code": "GO",
+            "name": "Goiás"
         },
         {
-            "name": "Maranhão",
-            "code": "MA"
+            "code": "MA",
+            "name": "Maranhão"
         },
         {
-            "name": "Mato Grosso",
-            "code": "MT"
+            "code": "MT",
+            "name": "Mato Grosso"
         },
         {
-            "name": "Mato Grosso do Sul",
-            "code": "MS"
+            "code": "MS",
+            "name": "Mato Grosso do Sul"
         },
         {
-            "name": "Minas Gerais",
-            "code": "MG"
+            "code": "MG",
+            "name": "Minas Gerais"
         },
         {
-            "name": "Pará",
-            "code": "PA"
+            "code": "PA",
+            "name": "Pará"
         },
         {
-            "name": "Paraíba",
-            "code": "PB"
+            "code": "PB",
+            "name": "Paraíba"
         },
         {
-            "name": "Paraná",
-            "code": "PR"
+            "code": "PR",
+            "name": "Paraná"
         },
         {
-            "name": "Pernambuco",
-            "code": "PE"
+            "code": "PE",
+            "name": "Pernambuco"
         },
         {
-            "name": "Piauí",
-            "code": "PI"
+            "code": "PI",
+            "name": "Piauí"
         },
         {
-            "name": "Rio de Janeiro",
-            "code": "RJ"
+            "code": "RJ",
+            "name": "Rio de Janeiro"
         },
         {
-            "name": "Rio Grande do Norte",
-            "code": "RN"
+            "code": "RN",
+            "name": "Rio Grande do Norte"
         },
         {
-            "name": "Rondônia",
-            "code": "RO"
+            "code": "RO",
+            "name": "Rondônia"
         },
         {
-            "name": "Roraima",
-            "code": "RR"
+            "code": "RR",
+            "name": "Roraima"
         },
         {
-            "name": "Santa Catarina",
-            "code": "SC"
+            "code": "SC",
+            "name": "Santa Catarina"
         },
         {
-            "name": "São Paulo",
-            "code": "SP"
+            "code": "SP",
+            "name": "São Paulo"
         },
         {
-            "name": "Sergipe",
-            "code": "SE"
+            "code": "SE",
+            "name": "Sergipe"
         },
         {
-            "name": "Tocantins",
-            "code": "TO"
+            "code": "TO",
+            "name": "Tocantins"
         }
     ],
     "BS": [
@@ -3151,152 +3151,140 @@
     ],
     "CN": [
         {
-            "name": "Anhui",
-            "code": "AH"
+            "code": "AH",
+            "name": "Anhui"
         },
         {
-            "name": "Beijing",
-            "code": "BJ"
+            "code": "BJ",
+            "name": "Beijing"
         },
         {
-            "name": "Chongqing",
-            "code": "CQ"
+            "code": "CQ",
+            "name": "Chongqing"
         },
         {
-            "name": "Fujian",
-            "code": "FJ"
+            "code": "FJ",
+            "name": "Fujian"
         },
         {
-            "name": "Gansu",
-            "code": "GS"
+            "code": "GS",
+            "name": "Gansu"
         },
         {
-            "name": "Guangdong",
-            "code": "GD"
+            "code": "GD",
+            "name": "Guangdong"
         },
         {
-            "name": "Guangxi",
-            "code": "GX"
+            "code": "GX",
+            "name": "Guangxi"
         },
         {
-            "name": "Guizhou",
-            "code": "GZ"
+            "code": "GZ",
+            "name": "Guizhou"
         },
         {
-            "name": "Hainan",
-            "code": "HI"
+            "code": "HI",
+            "name": "Hainan"
         },
         {
-            "name": "Hebei",
-            "code": "HE"
+            "code": "HE",
+            "name": "Hebei"
         },
         {
-            "name": "Heilongjiang",
-            "code": "HL"
+            "code": "HL",
+            "name": "Heilongjiang"
         },
         {
-            "name": "Henan",
-            "code": "HA"
+            "code": "HA",
+            "name": "Henan"
         },
         {
-            "name": "Hong Kong",
-            "code": "HK"
+            "code": "HK",
+            "name": "Hong Kong"
         },
         {
-            "name": "Hong Kong SAR China",
-            "code": "91"
+            "code": "HB",
+            "name": "Hubei"
         },
         {
-            "name": "Hubei",
-            "code": "HB"
+            "code": "HN",
+            "name": "Hunan"
         },
         {
-            "name": "Hunan",
-            "code": "HN"
+            "code": "NM",
+            "name": "Inner Mongolia"
         },
         {
-            "name": "Inner Mongolia",
-            "code": "NM"
+            "code": "JS",
+            "name": "Jiangsu"
         },
         {
-            "name": "Jiangsu",
-            "code": "JS"
+            "code": "JX",
+            "name": "Jiangxi"
         },
         {
-            "name": "Jiangxi",
-            "code": "JX"
+            "code": "JL",
+            "name": "Jilin"
         },
         {
-            "name": "Jilin",
-            "code": "JL"
+            "code": "LN",
+            "name": "Liaoning"
         },
         {
-            "name": "Liaoning",
-            "code": "LN"
+            "code": "MO",
+            "name": "Macau"
         },
         {
-            "name": "Macao SAR China",
-            "code": "92"
+            "code": "NX",
+            "name": "Ningxia"
         },
         {
-            "name": "Macau",
-            "code": "MO"
+            "code": "QH",
+            "name": "Qinghai"
         },
         {
-            "name": "Ningxia",
-            "code": "NX"
+            "code": "SC",
+            "name": "Sichuan"
         },
         {
-            "name": "Qinghai",
-            "code": "QH"
+            "code": "SN",
+            "name": "Shaanxi"
         },
         {
-            "name": "Sichuan",
-            "code": "SC"
+            "code": "SD",
+            "name": "Shandong"
         },
         {
-            "name": "Shaanxi",
-            "code": "SN"
+            "code": "SH",
+            "name": "Shanghai"
         },
         {
-            "name": "Shandong",
-            "code": "SD"
+            "code": "SX",
+            "name": "Shanxi"
         },
         {
-            "name": "Shanghai",
-            "code": "SH"
+            "code": "TW",
+            "name": "Taiwan"
         },
         {
-            "name": "Shanxi",
-            "code": "SX"
+            "code": "TJ",
+            "name": "Tianjin"
         },
         {
-            "name": "Taiwan",
-            "code": "71"
+            "code": "XZ",
+            "name": "Tibet"
         },
         {
-            "name": "Taiwan",
-            "code": "TW"
+            "code": "XJ",
+            "name": "Xinjiang"
         },
         {
-            "name": "Tianjin",
-            "code": "TJ"
+            "code": "YN",
+            "name": "Yunnan"
         },
         {
-            "name": "Tibet",
-            "code": "XZ"
-        },
-        {
-            "name": "Xinjiang",
-            "code": "XJ"
-        },
-        {
-            "name": "Yunnan",
-            "code": "YN"
-        },
-        {
-            "name": "Zhejiang",
-            "code": "ZJ"
+            "code": "ZJ",
+            "name": "Zhejiang"
         }
     ],
     "CO": [
@@ -3317,6 +3305,10 @@
             "name": "Atlántico"
         },
         {
+            "code": "DC",
+            "name": "Bogotá"
+        },
+        {
             "code": "BOL",
             "name": "Bolívar"
         },
@@ -3331,10 +3323,6 @@
         {
             "code": "CAL",
             "name": "Caldas"
-        },
-        {
-            "code": "DC",
-            "name": "Capital District"
         },
         {
             "code": "CAQ",
@@ -4751,16 +4739,8 @@
             "name": "Ida-Virumaa"
         },
         {
-            "code": "49",
-            "name": "Jõgeva"
-        },
-        {
             "code": "50",
             "name": "Jõgevamaa"
-        },
-        {
-            "code": "51",
-            "name": "Järva"
         },
         {
             "code": "52",
@@ -4787,20 +4767,8 @@
             "name": "Põlvamaa"
         },
         {
-            "code": "65",
-            "name": "Põlva"
-        },
-        {
-            "code": "67",
-            "name": "Pärnu"
-        },
-        {
             "code": "68",
             "name": "Pärnumaa"
-        },
-        {
-            "code": "70",
-            "name": "Rapla"
         },
         {
             "code": "71",
@@ -4811,10 +4779,6 @@
             "name": "Saare"
         },
         {
-            "code": "78",
-            "name": "Tartu"
-        },
-        {
             "code": "79",
             "name": "Tartumaa"
         },
@@ -4823,16 +4787,8 @@
             "name": "Valgamaa"
         },
         {
-            "code": "82",
-            "name": "Valga"
-        },
-        {
             "code": "84",
             "name": "Viljandi"
-        },
-        {
-            "code": "86",
-            "name": "Võru"
         },
         {
             "code": "87",
@@ -5040,7 +4996,7 @@
         },
         {
             "code": "663",
-            "name": "Rakvere"
+            "name": "Rakvere²"
         },
         {
             "code": "668",
@@ -5096,7 +5052,7 @@
         },
         {
             "code": "796",
-            "name": "Tartu"
+            "name": "Tartu²"
         },
         {
             "code": "803",
@@ -5124,11 +5080,11 @@
         },
         {
             "code": "897",
-            "name": "Viljandi"
+            "name": "Viljandi²"
         },
         {
             "code": "899",
-            "name": "Viljandi"
+            "name": "Viljandi³"
         },
         {
             "code": "901",
@@ -5144,7 +5100,7 @@
         },
         {
             "code": "917",
-            "name": "Võru"
+            "name": "Võru²"
         },
         {
             "code": "919",
@@ -5293,337 +5249,333 @@
     ],
     "ES": [
         {
-            "name": "A Coruña",
-            "code": "C"
+            "code": "C",
+            "name": "A Coruña"
         },
         {
-            "name": "Álava",
-            "code": "VI"
+            "code": "VI",
+            "name": "Álava"
         },
         {
-            "name": "Albacete",
-            "code": "AB"
+            "code": "AB",
+            "name": "Albacete"
         },
         {
-            "name": "Alicante",
-            "code": "A"
+            "code": "A",
+            "name": "Alicante"
         },
         {
-            "name": "Almería",
-            "code": "AL"
+            "code": "AL",
+            "name": "Almería"
         },
         {
-            "name": "Andalusia",
-            "code": "AN"
+            "code": "AN",
+            "name": "Andalusia"
         },
         {
-            "name": "Aragon",
-            "code": "AR"
+            "code": "AR",
+            "name": "Aragon"
         },
         {
-            "name": "Asturias",
-            "code": "AS"
+            "code": "AS",
+            "name": "Asturias"
         },
         {
-            "name": "Asturias Province",
-            "code": "O"
+            "code": "O",
+            "name": "Asturias Province"
         },
         {
-            "name": "Ávila",
-            "code": "AV"
+            "code": "AV",
+            "name": "Ávila"
         },
         {
-            "name": "Badajoz",
-            "code": "BA"
+            "code": "BA",
+            "name": "Badajoz"
         },
         {
-            "name": "Balearic Islands",
-            "code": "IB"
+            "code": "IB",
+            "name": "Balearic Islands"
         },
         {
-            "name": "Balears Province",
-            "code": "PM"
+            "code": "PM",
+            "name": "Balears Province"
         },
         {
-            "name": "Barcelona",
-            "code": "B"
+            "code": "B",
+            "name": "Barcelona"
         },
         {
-            "name": "Basque Country",
-            "code": "PV"
+            "code": "PV",
+            "name": "Basque Country"
         },
         {
-            "name": "Biscay",
-            "code": "BI"
+            "code": "BI",
+            "name": "Biscay"
         },
         {
-            "name": "Burgos",
-            "code": "BU"
+            "code": "BU",
+            "name": "Burgos"
         },
         {
-            "name": "Cáceres",
-            "code": "CC"
+            "code": "CC",
+            "name": "Cáceres"
         },
         {
-            "name": "Cádiz",
-            "code": "CA"
+            "code": "CA",
+            "name": "Cádiz"
         },
         {
-            "name": "Canary Islands",
-            "code": "CN"
+            "code": "CN",
+            "name": "Canary Islands"
         },
         {
-            "name": "Cantabria",
-            "code": "CB"
+            "code": "CB",
+            "name": "Cantabria"
         },
         {
-            "name": "Cantabria Province",
-            "code": "S"
+            "code": "S",
+            "name": "Cantabria Province"
         },
         {
-            "name": "Castellón",
-            "code": "CS"
+            "code": "CS",
+            "name": "Castellón"
         },
         {
-            "name": "Castile and León",
-            "code": "CL"
+            "code": "CL",
+            "name": "Castile and León"
         },
         {
-            "name": "Castile-La Mancha",
-            "code": "CM"
+            "code": "CM",
+            "name": "Castile-La Mancha"
         },
         {
-            "name": "Catalonia",
-            "code": "CT"
+            "code": "CT",
+            "name": "Catalonia"
         },
         {
-            "name": "Ceuta",
-            "code": "CE"
+            "code": "CE",
+            "name": "Ceuta"
         },
         {
-            "name": "Ciudad Real",
-            "code": "CR"
+            "code": "CR",
+            "name": "Ciudad Real"
         },
         {
-            "name": "Córdoba",
-            "code": "CO"
+            "code": "CO",
+            "name": "Córdoba"
         },
         {
-            "name": "Cuenca",
-            "code": "CU"
+            "code": "CU",
+            "name": "Cuenca"
         },
         {
-            "name": "Extremadura",
-            "code": "EX"
+            "code": "EX",
+            "name": "Extremadura"
         },
         {
-            "name": "Galisa",
-            "code": "GA"
+            "code": "GA",
+            "name": "Galisa"
         },
         {
-            "name": "Gipuzkoa",
-            "code": "SS"
+            "code": "SS",
+            "name": "Gipuzkoa"
         },
         {
-            "name": "Girona",
-            "code": "GI"
+            "code": "GI",
+            "name": "Girona"
         },
         {
-            "name": "Granada",
-            "code": "GR"
+            "code": "GR",
+            "name": "Granada"
         },
         {
-            "name": "Guadalajara",
-            "code": "GU"
+            "code": "GU",
+            "name": "Guadalajara"
         },
         {
-            "name": "Huelva",
-            "code": "H"
+            "code": "H",
+            "name": "Huelva"
         },
         {
-            "name": "Huesca",
-            "code": "HU"
+            "code": "HU",
+            "name": "Huesca"
         },
         {
-            "name": "Jaén",
-            "code": "J"
+            "code": "J",
+            "name": "Jaén"
         },
         {
-            "name": "La Rioja",
-            "code": "RI"
+            "code": "RI",
+            "name": "La Rioja"
         },
         {
-            "name": "La Rioja Province",
-            "code": "LO"
+            "code": "LO",
+            "name": "La Rioja Province"
         },
         {
-            "name": "Las Palmas",
-            "code": "GC"
+            "code": "GC",
+            "name": "Las Palmas"
         },
         {
-            "name": "León",
-            "code": "LE"
+            "code": "LE",
+            "name": "León"
         },
         {
-            "name": "Lleida",
-            "code": "L"
+            "code": "L",
+            "name": "Lleida"
         },
         {
-            "name": "Lugo",
-            "code": "LU"
+            "code": "LU",
+            "name": "Lugo"
         },
         {
-            "name": "Madrid Autonomous Community",
-            "code": "MD"
+            "code": "MD",
+            "name": "Madrid Autonomous Community"
         },
         {
-            "name": "Madrid Province",
-            "code": "M"
+            "code": "M",
+            "name": "Madrid Province"
         },
         {
-            "name": "Málaga",
-            "code": "MA"
+            "code": "MA",
+            "name": "Málaga"
         },
         {
-            "name": "Melilla",
-            "code": "ML"
+            "code": "ML",
+            "name": "Melilla"
         },
         {
-            "name": "Murcia",
-            "code": "MU"
+            "code": "MU",
+            "name": "Murcia"
         },
         {
-            "name": "Murcia Region",
-            "code": "MC"
+            "code": "MC",
+            "name": "Murcia Region"
         },
         {
-            "name": "Navarra",
-            "code": "NA"
+            "code": "NA",
+            "name": "Navarra"
         },
         {
-            "name": "Navarra Chartered Community",
-            "code": "NC"
+            "code": "NC",
+            "name": "Navarra Chartered Community"
         },
         {
-            "name": "Ourense",
-            "code": "OR"
+            "code": "OR",
+            "name": "Ourense"
         },
         {
-            "name": "Palencia",
-            "code": "P"
+            "code": "P",
+            "name": "Palencia"
         },
         {
-            "name": "Pontevedra",
-            "code": "PO"
+            "code": "PO",
+            "name": "Pontevedra"
         },
         {
-            "name": "Salamanca",
-            "code": "SA"
+            "code": "SA",
+            "name": "Salamanca"
         },
         {
-            "name": "Santa Cruz de Tenerife",
-            "code": "TF"
+            "code": "TF",
+            "name": "Santa Cruz de Tenerife"
         },
         {
-            "name": "Segovia",
-            "code": "SG"
+            "code": "SG",
+            "name": "Segovia"
         },
         {
-            "name": "Seville",
-            "code": "SE"
+            "code": "SE",
+            "name": "Seville"
         },
         {
-            "name": "Soria",
-            "code": "SO"
+            "code": "SO",
+            "name": "Soria"
         },
         {
-            "name": "Tarragona",
-            "code": "T"
+            "code": "T",
+            "name": "Tarragona"
         },
         {
-            "name": "Teruel",
-            "code": "TE"
+            "code": "TE",
+            "name": "Teruel"
         },
         {
-            "name": "Toledo",
-            "code": "TO"
+            "code": "TO",
+            "name": "Toledo"
         },
         {
-            "name": "Valencia",
-            "code": "V"
+            "code": "V",
+            "name": "Valencia"
         },
         {
-            "name": "Valencian Community",
-            "code": "VC"
+            "code": "VC",
+            "name": "Valencian Community"
         },
         {
-            "name": "Valladolid",
-            "code": "VA"
+            "code": "VA",
+            "name": "Valladolid"
         },
         {
-            "name": "Zamora",
-            "code": "ZA"
+            "code": "ZA",
+            "name": "Zamora"
         },
         {
-            "name": "Zaragoza",
-            "code": "Z"
+            "code": "Z",
+            "name": "Zaragoza"
         }
     ],
     "ET": [
         {
-            "name": "Addis Ababa",
-            "code": "AA"
+            "code": "AA",
+            "name": "Addis Ababa"
         },
         {
-            "name": "Afar",
-            "code": "AF"
+            "code": "AF",
+            "name": "Afar"
         },
         {
-            "name": "Amhara",
-            "code": "AM"
+            "code": "AM",
+            "name": "Amhara"
         },
         {
-            "name": "Benishangul-Gumuz",
-            "code": "BE"
+            "code": "BE",
+            "name": "Benishangul-Gumuz"
         },
         {
-            "name": "Dire Dawa",
-            "code": "DD"
+            "code": "DD",
+            "name": "Dire Dawa"
         },
         {
-            "name": "Gambela",
-            "code": "GA"
+            "code": "GA",
+            "name": "Gambela"
         },
         {
-            "name": "Harari",
-            "code": "HA"
+            "code": "HA",
+            "name": "Harari"
         },
         {
-            "name": "Oromia",
-            "code": "OR"
+            "code": "OR",
+            "name": "Oromia"
         },
         {
-            "name": "Sidama",
-            "code": "SI"
+            "code": "SI",
+            "name": "Sidama"
         },
         {
-            "name": "Somali",
-            "code": "SO"
+            "code": "SO",
+            "name": "Somali"
         },
         {
-            "name": "Southern Nations, Nationalities, and Peoples",
-            "code": "SN"
+            "code": "SN",
+            "name": "Southern Nations, Nationalities, and Peoples"
         },
         {
-            "name": "Tigray",
-            "code": "TI"
+            "code": "TI",
+            "name": "Tigray"
         }
     ],
     "FI": [
-        {
-            "code": "01",
-            "name": "Åland Islands"
-        },
         {
             "code": "02",
             "name": "South Karelia"
@@ -5887,10 +5839,6 @@
             "name": "Centre-Val de Loire"
         },
         {
-            "code": "CP",
-            "name": "Clipperton Island"
-        },
-        {
             "code": "19",
             "name": "Corrèze"
         },
@@ -5951,18 +5899,6 @@
             "name": "Finistère"
         },
         {
-            "code": "GF",
-            "name": "French Guiana"
-        },
-        {
-            "code": "PF",
-            "name": "French Polynesia"
-        },
-        {
-            "code": "TF",
-            "name": "French Southern Territories"
-        },
-        {
             "code": "30",
             "name": "Gard"
         },
@@ -5980,14 +5916,6 @@
         },
         {
             "code": "971",
-            "name": "Guadeloupe"
-        },
-        {
-            "code": "GP",
-            "name": "Guadeloupe"
-        },
-        {
-            "code": "GUA",
             "name": "Guadeloupe"
         },
         {
@@ -6075,10 +6003,6 @@
             "name": "La Réunion"
         },
         {
-            "code": "LRE",
-            "name": "La Réunion"
-        },
-        {
             "code": "40",
             "name": "Landes"
         },
@@ -6127,23 +6051,11 @@
             "name": "Martinique"
         },
         {
-            "code": "MQ",
-            "name": "Martinique"
-        },
-        {
             "code": "53",
             "name": "Mayenne"
         },
         {
             "code": "976",
-            "name": "Mayotte"
-        },
-        {
-            "code": "MAY",
-            "name": "Mayotte"
-        },
-        {
-            "code": "YT",
             "name": "Mayotte"
         },
         {
@@ -6165,10 +6077,6 @@
         {
             "code": "57",
             "name": "Moselle"
-        },
-        {
-            "code": "NC",
-            "name": "New Caledonia"
         },
         {
             "code": "58",
@@ -6199,10 +6107,6 @@
             "name": "Orne"
         },
         {
-            "code": "75",
-            "name": "Paris"
-        },
-        {
             "code": "75C",
             "name": "Paris"
         },
@@ -6229,10 +6133,6 @@
         {
             "code": "66",
             "name": "Pyrénées-Orientales"
-        },
-        {
-            "code": "RE",
-            "name": "Réunion"
         },
         {
             "code": "69",
@@ -6265,18 +6165,6 @@
         {
             "code": "80",
             "name": "Somme"
-        },
-        {
-            "code": "BL",
-            "name": "St. Barthélemy"
-        },
-        {
-            "code": "MF",
-            "name": "St. Martin"
-        },
-        {
-            "code": "PM",
-            "name": "St. Pierre & Miquelon"
         },
         {
             "code": "81",
@@ -6317,10 +6205,6 @@
         {
             "code": "88",
             "name": "Vosges"
-        },
-        {
-            "code": "WF",
-            "name": "Wallis & Futuna"
         },
         {
             "code": "89",
@@ -6371,1004 +6255,1004 @@
     ],
     "GB": [
         {
-            "name": "Aberdeen",
-            "code": "ABE"
+            "code": "ABE",
+            "name": "Aberdeen"
         },
         {
-            "name": "Aberdeenshire",
-            "code": "ABD"
+            "code": "ABD",
+            "name": "Aberdeenshire"
         },
         {
-            "name": "Anglesey",
-            "code": "AGY"
+            "code": "AGY",
+            "name": "Anglesey"
         },
         {
-            "name": "Angus",
-            "code": "ANS"
+            "code": "ANS",
+            "name": "Angus"
         },
         {
-            "name": "Antrim",
-            "code": "ANT"
+            "code": "ANT",
+            "name": "Antrim"
         },
         {
-            "name": "Antrim and Newtownabbey",
-            "code": "ANN"
+            "code": "ANN",
+            "name": "Antrim and Newtownabbey"
         },
         {
-            "name": "Ards",
-            "code": "ARD"
+            "code": "ARD",
+            "name": "Ards"
         },
         {
-            "name": "Ards and North Down",
-            "code": "AND"
+            "code": "AND",
+            "name": "Ards and North Down"
         },
         {
-            "name": "Argyll and Bute",
-            "code": "AGB"
+            "code": "AGB",
+            "name": "Argyll and Bute"
         },
         {
-            "name": "Armagh",
-            "code": "ARM"
+            "code": "ARM",
+            "name": "Armagh"
         },
         {
-            "name": "Armagh, Banbridge and Craigavon",
-            "code": "ABC"
+            "code": "ABC",
+            "name": "Armagh, Banbridge and Craigavon"
         },
         {
-            "name": "Ballymena",
-            "code": "BLA"
+            "code": "BLA",
+            "name": "Ballymena"
         },
         {
-            "name": "Ballymoney",
-            "code": "BLY"
+            "code": "BLY",
+            "name": "Ballymoney"
         },
         {
-            "name": "Banbridge",
-            "code": "BNB"
+            "code": "BNB",
+            "name": "Banbridge"
         },
         {
-            "name": "Barking and Dagenham",
-            "code": "BDG"
+            "code": "BDG",
+            "name": "Barking and Dagenham"
         },
         {
-            "name": "Barnet",
-            "code": "BNE"
+            "code": "BNE",
+            "name": "Barnet"
         },
         {
-            "name": "Barnsley",
-            "code": "BNS"
+            "code": "BNS",
+            "name": "Barnsley"
         },
         {
-            "name": "Bath and North East Somerset",
-            "code": "BAS"
+            "code": "BAS",
+            "name": "Bath and North East Somerset"
         },
         {
-            "name": "Bedford",
-            "code": "BDF"
+            "code": "BDF",
+            "name": "Bedford"
         },
         {
-            "name": "Belfast",
-            "code": "BFS"
+            "code": "BFS",
+            "name": "Belfast"
         },
         {
-            "name": "Bexley",
-            "code": "BEX"
+            "code": "BEX",
+            "name": "Bexley"
         },
         {
-            "name": "Birmingham",
-            "code": "BIR"
+            "code": "BIR",
+            "name": "Birmingham"
         },
         {
-            "name": "Blackburn with Darwen",
-            "code": "BBD"
+            "code": "BBD",
+            "name": "Blackburn with Darwen"
         },
         {
-            "name": "Blackpool",
-            "code": "BPL"
+            "code": "BPL",
+            "name": "Blackpool"
         },
         {
-            "name": "Blaenau Gwent",
-            "code": "BGW"
+            "code": "BGW",
+            "name": "Blaenau Gwent"
         },
         {
-            "name": "Bolton",
-            "code": "BOL"
+            "code": "BOL",
+            "name": "Bolton"
         },
         {
-            "name": "Bournemouth",
-            "code": "BMH"
+            "code": "BMH",
+            "name": "Bournemouth"
         },
         {
-            "name": "Bournemouth, Christchurch and Poole",
-            "code": "BCP"
+            "code": "BCP",
+            "name": "Bournemouth, Christchurch and Poole"
         },
         {
-            "name": "Bracknell Forest",
-            "code": "BRC"
+            "code": "BRC",
+            "name": "Bracknell Forest"
         },
         {
-            "name": "Bradford",
-            "code": "BRD"
+            "code": "BRD",
+            "name": "Bradford"
         },
         {
-            "name": "Brent",
-            "code": "BEN"
+            "code": "BEN",
+            "name": "Brent"
         },
         {
-            "name": "Bridgend",
-            "code": "BGE"
+            "code": "BGE",
+            "name": "Bridgend"
         },
         {
-            "name": "Brighton and Hove",
-            "code": "BNH"
+            "code": "BNH",
+            "name": "Brighton and Hove"
         },
         {
-            "name": "Bristol",
-            "code": "BST"
+            "code": "BST",
+            "name": "Bristol"
         },
         {
-            "name": "Bromley",
-            "code": "BRY"
+            "code": "BRY",
+            "name": "Bromley"
         },
         {
-            "name": "Buckinghamshire",
-            "code": "BKM"
+            "code": "BKM",
+            "name": "Buckinghamshire"
         },
         {
-            "name": "Bury",
-            "code": "BUR"
+            "code": "BUR",
+            "name": "Bury"
         },
         {
-            "name": "Cheshire East",
-            "code": "CHE"
+            "code": "CHE",
+            "name": "Cheshire East"
         },
         {
-            "name": "Cheshire West and Chester",
-            "code": "CHW"
+            "code": "CHW",
+            "name": "Cheshire West and Chester"
         },
         {
-            "name": "Caerphilly",
-            "code": "CAY"
+            "code": "CAY",
+            "name": "Caerphilly"
         },
         {
-            "name": "Calderdale",
-            "code": "CLD"
+            "code": "CLD",
+            "name": "Calderdale"
         },
         {
-            "name": "Cambridgeshire",
-            "code": "CAM"
+            "code": "CAM",
+            "name": "Cambridgeshire"
         },
         {
-            "name": "Camden",
-            "code": "CMD"
+            "code": "CMD",
+            "name": "Camden"
         },
         {
-            "name": "Cardiff",
-            "code": "CRF"
+            "code": "CRF",
+            "name": "Cardiff"
         },
         {
-            "name": "Carmarthenshire",
-            "code": "CMN"
+            "code": "CMN",
+            "name": "Carmarthenshire"
         },
         {
-            "name": "Carrickfergus",
-            "code": "CKF"
+            "code": "CKF",
+            "name": "Carrickfergus"
         },
         {
-            "name": "Castlereagh",
-            "code": "CSR"
+            "code": "CSR",
+            "name": "Castlereagh"
         },
         {
-            "name": "Causeway Coast and Glens",
-            "code": "CCG"
+            "code": "CCG",
+            "name": "Causeway Coast and Glens"
         },
         {
-            "name": "Central Bedfordshire",
-            "code": "CBF"
+            "code": "CBF",
+            "name": "Central Bedfordshire"
         },
         {
-            "name": "Ceredigion",
-            "code": "CGN"
+            "code": "CGN",
+            "name": "Ceredigion"
         },
         {
-            "name": "Clackmannanshire",
-            "code": "CLK"
+            "code": "CLK",
+            "name": "Clackmannanshire"
         },
         {
-            "name": "Coleraine",
-            "code": "CLR"
+            "code": "CLR",
+            "name": "Coleraine"
         },
         {
-            "name": "Conwy",
-            "code": "CWY"
+            "code": "CWY",
+            "name": "Conwy"
         },
         {
-            "name": "Cookstown",
-            "code": "CKT"
+            "code": "CKT",
+            "name": "Cookstown"
         },
         {
-            "name": "Cornwall",
-            "code": "CON"
+            "code": "CON",
+            "name": "Cornwall"
         },
         {
-            "name": "Coventry",
-            "code": "COV"
+            "code": "COV",
+            "name": "Coventry"
         },
         {
-            "name": "Craigavon",
-            "code": "CGV"
+            "code": "CGV",
+            "name": "Craigavon"
         },
         {
-            "name": "Croydon",
-            "code": "CRY"
+            "code": "CRY",
+            "name": "Croydon"
         },
         {
-            "name": "Cumbria",
-            "code": "CMA"
+            "code": "CMA",
+            "name": "Cumbria"
         },
         {
-            "name": "Darlington",
-            "code": "DAL"
+            "code": "DAL",
+            "name": "Darlington"
         },
         {
-            "name": "Denbighshire",
-            "code": "DEN"
+            "code": "DEN",
+            "name": "Denbighshire"
         },
         {
-            "name": "Derby",
-            "code": "DER"
+            "code": "DER",
+            "name": "Derby"
         },
         {
-            "name": "Derbyshire",
-            "code": "DBY"
+            "code": "DBY",
+            "name": "Derbyshire"
         },
         {
-            "name": "Derry",
-            "code": "DRY"
+            "code": "DRY",
+            "name": "Derry"
         },
         {
-            "name": "Derry and Strabane",
-            "code": "DRS"
+            "code": "DRS",
+            "name": "Derry and Strabane"
         },
         {
-            "name": "Devon",
-            "code": "DEV"
+            "code": "DEV",
+            "name": "Devon"
         },
         {
-            "name": "Doncaster",
-            "code": "DNC"
+            "code": "DNC",
+            "name": "Doncaster"
         },
         {
-            "name": "Dorset",
-            "code": "DOR"
+            "code": "DOR",
+            "name": "Dorset"
         },
         {
-            "name": "Down",
-            "code": "DOW"
+            "code": "DOW",
+            "name": "Down"
         },
         {
-            "name": "Dudley",
-            "code": "DUD"
+            "code": "DUD",
+            "name": "Dudley"
         },
         {
-            "name": "Dumfries and Galloway",
-            "code": "DGY"
+            "code": "DGY",
+            "name": "Dumfries and Galloway"
         },
         {
-            "name": "Dundee",
-            "code": "DND"
+            "code": "DND",
+            "name": "Dundee"
         },
         {
-            "name": "Dungannon and South Tyrone",
-            "code": "DGN"
+            "code": "DGN",
+            "name": "Dungannon and South Tyrone"
         },
         {
-            "name": "Durham",
-            "code": "DUR"
+            "code": "DUR",
+            "name": "Durham"
         },
         {
-            "name": "Ealing",
-            "code": "EAL"
+            "code": "EAL",
+            "name": "Ealing"
         },
         {
-            "name": "East Ayrshire",
-            "code": "EAY"
+            "code": "EAY",
+            "name": "East Ayrshire"
         },
         {
-            "name": "East Dunbartonshire",
-            "code": "EDU"
+            "code": "EDU",
+            "name": "East Dunbartonshire"
         },
         {
-            "name": "East Lothian",
-            "code": "ELN"
+            "code": "ELN",
+            "name": "East Lothian"
         },
         {
-            "name": "East Renfrewshire",
-            "code": "ERW"
+            "code": "ERW",
+            "name": "East Renfrewshire"
         },
         {
-            "name": "East Riding of Yorkshire",
-            "code": "ERY"
+            "code": "ERY",
+            "name": "East Riding of Yorkshire"
         },
         {
-            "name": "East Sussex",
-            "code": "ESX"
+            "code": "ESX",
+            "name": "East Sussex"
         },
         {
-            "name": "Edinburgh",
-            "code": "EDH"
+            "code": "EDH",
+            "name": "Edinburgh"
         },
         {
-            "name": "Enfield",
-            "code": "ENF"
+            "code": "ENF",
+            "name": "Enfield"
         },
         {
-            "name": "England",
-            "code": "ENG"
+            "code": "ENG",
+            "name": "England"
         },
         {
-            "name": "England and Wales",
-            "code": "EAW"
+            "code": "EAW",
+            "name": "England and Wales"
         },
         {
-            "name": "Essex",
-            "code": "ESS"
+            "code": "ESS",
+            "name": "Essex"
         },
         {
-            "name": "Falkirk",
-            "code": "FAL"
+            "code": "FAL",
+            "name": "Falkirk"
         },
         {
-            "name": "Fermanagh",
-            "code": "FER"
+            "code": "FER",
+            "name": "Fermanagh"
         },
         {
-            "name": "Fermanagh and Omagh",
-            "code": "FMO"
+            "code": "FMO",
+            "name": "Fermanagh and Omagh"
         },
         {
-            "name": "Fife",
-            "code": "FIF"
+            "code": "FIF",
+            "name": "Fife"
         },
         {
-            "name": "Flintshire",
-            "code": "FLN"
+            "code": "FLN",
+            "name": "Flintshire"
         },
         {
-            "name": "Gateshead",
-            "code": "GAT"
+            "code": "GAT",
+            "name": "Gateshead"
         },
         {
-            "name": "Glasgow",
-            "code": "GLG"
+            "code": "GLG",
+            "name": "Glasgow"
         },
         {
-            "name": "Gloucestershire",
-            "code": "GLS"
+            "code": "GLS",
+            "name": "Gloucestershire"
         },
         {
-            "name": "Great Britain",
-            "code": "GBN"
+            "code": "GBN",
+            "name": "Great Britain"
         },
         {
-            "name": "Greenwich",
-            "code": "GRE"
+            "code": "GRE",
+            "name": "Greenwich"
         },
         {
-            "name": "Gwynedd",
-            "code": "GWN"
+            "code": "GWN",
+            "name": "Gwynedd"
         },
         {
-            "name": "Hackney",
-            "code": "HCK"
+            "code": "HCK",
+            "name": "Hackney"
         },
         {
-            "name": "Halton",
-            "code": "HAL"
+            "code": "HAL",
+            "name": "Halton"
         },
         {
-            "name": "Hammersmith and Fulham",
-            "code": "HMF"
+            "code": "HMF",
+            "name": "Hammersmith and Fulham"
         },
         {
-            "name": "Hampshire",
-            "code": "HAM"
+            "code": "HAM",
+            "name": "Hampshire"
         },
         {
-            "name": "Haringey",
-            "code": "HRY"
+            "code": "HRY",
+            "name": "Haringey"
         },
         {
-            "name": "Harrow",
-            "code": "HRW"
+            "code": "HRW",
+            "name": "Harrow"
         },
         {
-            "name": "Hartlepool",
-            "code": "HPL"
+            "code": "HPL",
+            "name": "Hartlepool"
         },
         {
-            "name": "Havering",
-            "code": "HAV"
+            "code": "HAV",
+            "name": "Havering"
         },
         {
-            "name": "Herefordshire",
-            "code": "HEF"
+            "code": "HEF",
+            "name": "Herefordshire"
         },
         {
-            "name": "Hertfordshire",
-            "code": "HRT"
+            "code": "HRT",
+            "name": "Hertfordshire"
         },
         {
-            "name": "Highland",
-            "code": "HLD"
+            "code": "HLD",
+            "name": "Highland"
         },
         {
-            "name": "Hillingdon",
-            "code": "HIL"
+            "code": "HIL",
+            "name": "Hillingdon"
         },
         {
-            "name": "Hounslow",
-            "code": "HNS"
+            "code": "HNS",
+            "name": "Hounslow"
         },
         {
-            "name": "Inverclyde",
-            "code": "IVC"
+            "code": "IVC",
+            "name": "Inverclyde"
         },
         {
-            "name": "Isle of Wight",
-            "code": "IOW"
+            "code": "IOW",
+            "name": "Isle of Wight"
         },
         {
-            "name": "Isles of Scilly",
-            "code": "IOS"
+            "code": "IOS",
+            "name": "Isles of Scilly"
         },
         {
-            "name": "Islington",
-            "code": "ISL"
+            "code": "ISL",
+            "name": "Islington"
         },
         {
-            "name": "Kensington and Chelsea",
-            "code": "KEC"
+            "code": "KEC",
+            "name": "Kensington and Chelsea"
         },
         {
-            "name": "Kent",
-            "code": "KEN"
+            "code": "KEN",
+            "name": "Kent"
         },
         {
-            "name": "Kingston upon Hull",
-            "code": "KHL"
+            "code": "KHL",
+            "name": "Kingston upon Hull"
         },
         {
-            "name": "Kingston upon Thames",
-            "code": "KTT"
+            "code": "KTT",
+            "name": "Kingston upon Thames"
         },
         {
-            "name": "Kirklees",
-            "code": "KIR"
+            "code": "KIR",
+            "name": "Kirklees"
         },
         {
-            "name": "Knowsley",
-            "code": "KWL"
+            "code": "KWL",
+            "name": "Knowsley"
         },
         {
-            "name": "Lambeth",
-            "code": "LBH"
+            "code": "LBH",
+            "name": "Lambeth"
         },
         {
-            "name": "Lancashire",
-            "code": "LAN"
+            "code": "LAN",
+            "name": "Lancashire"
         },
         {
-            "name": "Larne",
-            "code": "LRN"
+            "code": "LRN",
+            "name": "Larne"
         },
         {
-            "name": "Leeds",
-            "code": "LDS"
+            "code": "LDS",
+            "name": "Leeds"
         },
         {
-            "name": "Leicester",
-            "code": "LCE"
+            "code": "LCE",
+            "name": "Leicester"
         },
         {
-            "name": "Leicestershire",
-            "code": "LEC"
+            "code": "LEC",
+            "name": "Leicestershire"
         },
         {
-            "name": "Lewisham",
-            "code": "LEW"
+            "code": "LEW",
+            "name": "Lewisham"
         },
         {
-            "name": "Limavady",
-            "code": "LMV"
+            "code": "LMV",
+            "name": "Limavady"
         },
         {
-            "name": "Lincolnshire",
-            "code": "LIN"
+            "code": "LIN",
+            "name": "Lincolnshire"
         },
         {
-            "name": "Lisburn",
-            "code": "LSB"
+            "code": "LSB",
+            "name": "Lisburn"
         },
         {
-            "name": "Lisburn and Castlereagh",
-            "code": "LBC"
+            "code": "LBC",
+            "name": "Lisburn and Castlereagh"
         },
         {
-            "name": "Liverpool",
-            "code": "LIV"
+            "code": "LIV",
+            "name": "Liverpool"
         },
         {
-            "name": "London",
-            "code": "LND"
+            "code": "LND",
+            "name": "London"
         },
         {
-            "name": "Luton",
-            "code": "LUT"
+            "code": "LUT",
+            "name": "Luton"
         },
         {
-            "name": "Magherafelt",
-            "code": "MFT"
+            "code": "MFT",
+            "name": "Magherafelt"
         },
         {
-            "name": "Manchester",
-            "code": "MAN"
+            "code": "MAN",
+            "name": "Manchester"
         },
         {
-            "name": "Medway",
-            "code": "MDW"
+            "code": "MDW",
+            "name": "Medway"
         },
         {
-            "name": "Merthyr Tydfil",
-            "code": "MTY"
+            "code": "MTY",
+            "name": "Merthyr Tydfil"
         },
         {
-            "name": "Merton",
-            "code": "MRT"
+            "code": "MRT",
+            "name": "Merton"
         },
         {
-            "name": "Mid and East Antrim",
-            "code": "MEA"
+            "code": "MEA",
+            "name": "Mid and East Antrim"
         },
         {
-            "name": "Mid Ulster",
-            "code": "MUL"
+            "code": "MUL",
+            "name": "Mid Ulster"
         },
         {
-            "name": "Middlesbrough",
-            "code": "MDB"
+            "code": "MDB",
+            "name": "Middlesbrough"
         },
         {
-            "name": "Midlothian",
-            "code": "MLN"
+            "code": "MLN",
+            "name": "Midlothian"
         },
         {
-            "name": "Milton Keynes",
-            "code": "MIK"
+            "code": "MIK",
+            "name": "Milton Keynes"
         },
         {
-            "name": "Monmouthshire",
-            "code": "MON"
+            "code": "MON",
+            "name": "Monmouthshire"
         },
         {
-            "name": "Moray",
-            "code": "MRY"
+            "code": "MRY",
+            "name": "Moray"
         },
         {
-            "name": "Moyle",
-            "code": "MYL"
+            "code": "MYL",
+            "name": "Moyle"
         },
         {
-            "name": "Neath Port Talbot",
-            "code": "NTL"
+            "code": "NTL",
+            "name": "Neath Port Talbot"
         },
         {
-            "name": "Newcastle upon Tyne",
-            "code": "NET"
+            "code": "NET",
+            "name": "Newcastle upon Tyne"
         },
         {
-            "name": "Newham",
-            "code": "NWM"
+            "code": "NWM",
+            "name": "Newham"
         },
         {
-            "name": "Newport",
-            "code": "NWP"
+            "code": "NWP",
+            "name": "Newport"
         },
         {
-            "name": "Newry and Mourne",
-            "code": "NYM"
+            "code": "NYM",
+            "name": "Newry and Mourne"
         },
         {
-            "name": "Newry, Mourne and Down",
-            "code": "NMD"
+            "code": "NMD",
+            "name": "Newry, Mourne and Down"
         },
         {
-            "name": "Newtownabbey",
-            "code": "NTA"
+            "code": "NTA",
+            "name": "Newtownabbey"
         },
         {
-            "name": "Norfolk",
-            "code": "NFK"
+            "code": "NFK",
+            "name": "Norfolk"
         },
         {
-            "name": "North Ayrshire",
-            "code": "NAY"
+            "code": "NAY",
+            "name": "North Ayrshire"
         },
         {
-            "name": "North Down",
-            "code": "NDN"
+            "code": "NDN",
+            "name": "North Down"
         },
         {
-            "name": "North East Lincolnshire",
-            "code": "NEL"
+            "code": "NEL",
+            "name": "North East Lincolnshire"
         },
         {
-            "name": "North Lanarkshire",
-            "code": "NLK"
+            "code": "NLK",
+            "name": "North Lanarkshire"
         },
         {
-            "name": "North Lincolnshire",
-            "code": "NLN"
+            "code": "NLN",
+            "name": "North Lincolnshire"
         },
         {
-            "name": "North Somerset",
-            "code": "NSM"
+            "code": "NSM",
+            "name": "North Somerset"
         },
         {
-            "name": "North Tyneside",
-            "code": "NTY"
+            "code": "NTY",
+            "name": "North Tyneside"
         },
         {
-            "name": "North Yorkshire",
-            "code": "NYK"
+            "code": "NYK",
+            "name": "North Yorkshire"
         },
         {
-            "name": "Northamptonshire",
-            "code": "NTH"
+            "code": "NTH",
+            "name": "Northamptonshire"
         },
         {
-            "name": "Northern Ireland",
-            "code": "NIR"
+            "code": "NIR",
+            "name": "Northern Ireland"
         },
         {
-            "name": "Northumberland",
-            "code": "NBL"
+            "code": "NBL",
+            "name": "Northumberland"
         },
         {
-            "name": "Nottingham",
-            "code": "NGM"
+            "code": "NGM",
+            "name": "Nottingham"
         },
         {
-            "name": "Nottinghamshire",
-            "code": "NTT"
+            "code": "NTT",
+            "name": "Nottinghamshire"
         },
         {
-            "name": "Obodoézè Nà Ofú",
-            "code": "UKM"
+            "code": "UKM",
+            "name": "Obodoézè Nà Ofú"
         },
         {
-            "name": "Oldham",
-            "code": "OLD"
+            "code": "OLD",
+            "name": "Oldham"
         },
         {
-            "name": "Omagh",
-            "code": "OMH"
+            "code": "OMH",
+            "name": "Omagh"
         },
         {
-            "name": "Orkney Islands",
-            "code": "ORK"
+            "code": "ORK",
+            "name": "Orkney Islands"
         },
         {
-            "name": "Outer Hebrides",
-            "code": "ELS"
+            "code": "ELS",
+            "name": "Outer Hebrides"
         },
         {
-            "name": "Oxfordshire",
-            "code": "OXF"
+            "code": "OXF",
+            "name": "Oxfordshire"
         },
         {
-            "name": "Pembrokeshire",
-            "code": "PEM"
+            "code": "PEM",
+            "name": "Pembrokeshire"
         },
         {
-            "name": "Perth and Kinross",
-            "code": "PKN"
+            "code": "PKN",
+            "name": "Perth and Kinross"
         },
         {
-            "name": "Peter",
-            "code": "PTE"
+            "code": "PTE",
+            "name": "Peter"
         },
         {
-            "name": "Plymouth",
-            "code": "PLY"
+            "code": "PLY",
+            "name": "Plymouth"
         },
         {
-            "name": "Poole",
-            "code": "POL"
+            "code": "POL",
+            "name": "Poole"
         },
         {
-            "name": "Portsmouth",
-            "code": "POR"
+            "code": "POR",
+            "name": "Portsmouth"
         },
         {
-            "name": "Powys",
-            "code": "POW"
+            "code": "POW",
+            "name": "Powys"
         },
         {
-            "name": "Reading",
-            "code": "RDG"
+            "code": "RDG",
+            "name": "Reading"
         },
         {
-            "name": "Redbridge",
-            "code": "RDB"
+            "code": "RDB",
+            "name": "Redbridge"
         },
         {
-            "name": "Redcar and Cleveland",
-            "code": "RCC"
+            "code": "RCC",
+            "name": "Redcar and Cleveland"
         },
         {
-            "name": "Renfrewshire",
-            "code": "RFW"
+            "code": "RFW",
+            "name": "Renfrewshire"
         },
         {
-            "name": "Rhondda Cynon Taf",
-            "code": "RCT"
+            "code": "RCT",
+            "name": "Rhondda Cynon Taf"
         },
         {
-            "name": "Richmond upon Thames",
-            "code": "RIC"
+            "code": "RIC",
+            "name": "Richmond upon Thames"
         },
         {
-            "name": "Rochdale",
-            "code": "RCH"
+            "code": "RCH",
+            "name": "Rochdale"
         },
         {
-            "name": "Rotherham",
-            "code": "ROT"
+            "code": "ROT",
+            "name": "Rotherham"
         },
         {
-            "name": "Rutland",
-            "code": "RUT"
+            "code": "RUT",
+            "name": "Rutland"
         },
         {
-            "name": "Saint Helens",
-            "code": "SHN"
+            "code": "SHN",
+            "name": "Saint Helens"
         },
         {
-            "name": "Salford",
-            "code": "SLF"
+            "code": "SLF",
+            "name": "Salford"
         },
         {
-            "name": "Sandwell",
-            "code": "SAW"
+            "code": "SAW",
+            "name": "Sandwell"
         },
         {
-            "name": "Scotland",
-            "code": "SCT"
+            "code": "SCT",
+            "name": "Scotland"
         },
         {
-            "name": "Scottish Borders",
-            "code": "SCB"
+            "code": "SCB",
+            "name": "Scottish Borders"
         },
         {
-            "name": "Sefton",
-            "code": "SFT"
+            "code": "SFT",
+            "name": "Sefton"
         },
         {
-            "name": "Slough",
-            "code": "SLG"
+            "code": "SLG",
+            "name": "Slough"
         },
         {
-            "name": "Solihull",
-            "code": "SOL"
+            "code": "SOL",
+            "name": "Solihull"
         },
         {
-            "name": "Somerset",
-            "code": "SOM"
+            "code": "SOM",
+            "name": "Somerset"
         },
         {
-            "name": "South Ayrshire",
-            "code": "SAY"
+            "code": "SAY",
+            "name": "South Ayrshire"
         },
         {
-            "name": "South Gloucestershire",
-            "code": "SGC"
+            "code": "SGC",
+            "name": "South Gloucestershire"
         },
         {
-            "name": "South Lanarkshire",
-            "code": "SLK"
+            "code": "SLK",
+            "name": "South Lanarkshire"
         },
         {
-            "name": "South Tyneside",
-            "code": "STY"
+            "code": "STY",
+            "name": "South Tyneside"
         },
         {
-            "name": "Southampton",
-            "code": "STH"
+            "code": "STH",
+            "name": "Southampton"
         },
         {
-            "name": "Southend-on-Sea",
-            "code": "SOS"
+            "code": "SOS",
+            "name": "Southend-on-Sea"
         },
         {
-            "name": "Southwark",
-            "code": "SWK"
+            "code": "SWK",
+            "name": "Southwark"
         },
         {
-            "name": "Staffordshire",
-            "code": "STS"
+            "code": "STS",
+            "name": "Staffordshire"
         },
         {
-            "name": "Stirling",
-            "code": "STG"
+            "code": "STG",
+            "name": "Stirling"
         },
         {
-            "name": "Stockton-on-Tees",
-            "code": "STT"
+            "code": "STT",
+            "name": "Stockton-on-Tees"
         },
         {
-            "name": "Stockport",
-            "code": "SKP"
+            "code": "SKP",
+            "name": "Stockport"
         },
         {
-            "name": "Stoke-on-Trent",
-            "code": "STE"
+            "code": "STE",
+            "name": "Stoke-on-Trent"
         },
         {
-            "name": "Strabane",
-            "code": "STB"
+            "code": "STB",
+            "name": "Strabane"
         },
         {
-            "name": "Suffolk",
-            "code": "SFK"
+            "code": "SFK",
+            "name": "Suffolk"
         },
         {
-            "name": "Sunderland",
-            "code": "SND"
+            "code": "SND",
+            "name": "Sunderland"
         },
         {
-            "name": "Surrey",
-            "code": "SRY"
+            "code": "SRY",
+            "name": "Surrey"
         },
         {
-            "name": "Sutton",
-            "code": "STN"
+            "code": "STN",
+            "name": "Sutton"
         },
         {
-            "name": "Swansea",
-            "code": "SWA"
+            "code": "SWA",
+            "name": "Swansea"
         },
         {
-            "name": "Swindon",
-            "code": "SWD"
+            "code": "SWD",
+            "name": "Swindon"
         },
         {
-            "name": "Sheffield",
-            "code": "SHF"
+            "code": "SHF",
+            "name": "Sheffield"
         },
         {
-            "name": "Shetland",
-            "code": "ZET"
+            "code": "ZET",
+            "name": "Shetland"
         },
         {
-            "name": "Shropshire",
-            "code": "SHR"
+            "code": "SHR",
+            "name": "Shropshire"
         },
         {
-            "name": "Tameside",
-            "code": "TAM"
+            "code": "TAM",
+            "name": "Tameside"
         },
         {
-            "name": "Telford and Wrekin",
-            "code": "TFW"
+            "code": "TFW",
+            "name": "Telford and Wrekin"
         },
         {
-            "name": "Thurrock",
-            "code": "THR"
+            "code": "THR",
+            "name": "Thurrock"
         },
         {
-            "name": "Torbay",
-            "code": "TOB"
+            "code": "TOB",
+            "name": "Torbay"
         },
         {
-            "name": "Torfaen",
-            "code": "TOF"
+            "code": "TOF",
+            "name": "Torfaen"
         },
         {
-            "name": "Tower Hamlets",
-            "code": "TWH"
+            "code": "TWH",
+            "name": "Tower Hamlets"
         },
         {
-            "name": "Trafford",
-            "code": "TRF"
+            "code": "TRF",
+            "name": "Trafford"
         },
         {
-            "name": "Vale of Glamorgan",
-            "code": "VGL"
+            "code": "VGL",
+            "name": "Vale of Glamorgan"
         },
         {
-            "name": "Wakefield",
-            "code": "WKF"
+            "code": "WKF",
+            "name": "Wakefield"
         },
         {
-            "name": "Wales",
-            "code": "WLS"
+            "code": "WLS",
+            "name": "Wales"
         },
         {
-            "name": "Walsall",
-            "code": "WLL"
+            "code": "WLL",
+            "name": "Walsall"
         },
         {
-            "name": "Waltham Forest",
-            "code": "WFT"
+            "code": "WFT",
+            "name": "Waltham Forest"
         },
         {
-            "name": "Wandsworth",
-            "code": "WND"
+            "code": "WND",
+            "name": "Wandsworth"
         },
         {
-            "name": "Warrington",
-            "code": "WRT"
+            "code": "WRT",
+            "name": "Warrington"
         },
         {
-            "name": "Warwickshire",
-            "code": "WAR"
+            "code": "WAR",
+            "name": "Warwickshire"
         },
         {
-            "name": "West Berkshire",
-            "code": "WBK"
+            "code": "WBK",
+            "name": "West Berkshire"
         },
         {
-            "name": "West Dunbartonshire",
-            "code": "WDU"
+            "code": "WDU",
+            "name": "West Dunbartonshire"
         },
         {
-            "name": "West Lothian",
-            "code": "WLN"
+            "code": "WLN",
+            "name": "West Lothian"
         },
         {
-            "name": "West Sussex",
-            "code": "WSX"
+            "code": "WSX",
+            "name": "West Sussex"
         },
         {
-            "name": "Westminster",
-            "code": "WSM"
+            "code": "WSM",
+            "name": "Westminster"
         },
         {
-            "name": "Wigan",
-            "code": "WGN"
+            "code": "WGN",
+            "name": "Wigan"
         },
         {
-            "name": "Wiltshire",
-            "code": "WIL"
+            "code": "WIL",
+            "name": "Wiltshire"
         },
         {
-            "name": "Windsor and Maidenhead",
-            "code": "WNM"
+            "code": "WNM",
+            "name": "Windsor and Maidenhead"
         },
         {
-            "name": "Wirral",
-            "code": "WRL"
+            "code": "WRL",
+            "name": "Wirral"
         },
         {
-            "name": "Wokingham",
-            "code": "WOK"
+            "code": "WOK",
+            "name": "Wokingham"
         },
         {
-            "name": "Wolverhampton",
-            "code": "WLV"
+            "code": "WLV",
+            "name": "Wolverhampton"
         },
         {
-            "name": "Worcestershire",
-            "code": "WOR"
+            "code": "WOR",
+            "name": "Worcestershire"
         },
         {
-            "name": "Wrexham",
-            "code": "WRX"
+            "code": "WRX",
+            "name": "Wrexham"
         },
         {
-            "name": "York",
-            "code": "YOR"
+            "code": "YOR",
+            "name": "York"
         }
     ],
     "GD": [
@@ -8057,147 +7941,27 @@
     ],
     "GT": [
         {
-            "code": "16",
-            "name": "Alta Verapaz"
-        },
-        {
-            "code": "AV",
-            "name": "Alta Verapaz"
-        },
-        {
-            "code": "15",
-            "name": "Baja Verapaz"
-        },
-        {
-            "code": "BV",
-            "name": "Baja Verapaz"
-        },
-        {
-            "code": "04",
-            "name": "Chimaltenango"
-        },
-        {
-            "code": "CM",
-            "name": "Chimaltenango"
-        },
-        {
-            "code": "20",
-            "name": "Chiquimula"
-        },
-        {
-            "code": "CQ",
-            "name": "Chiquimula"
+            "code": "01",
+            "name": "Guatemala"
         },
         {
             "code": "02",
             "name": "El Progreso"
         },
         {
-            "code": "PR",
-            "name": "El Progreso"
+            "code": "03",
+            "name": "Sacatepéquez"
+        },
+        {
+            "code": "04",
+            "name": "Chimaltenango"
         },
         {
             "code": "05",
             "name": "Escuintla"
         },
         {
-            "code": "ES",
-            "name": "Escuintla"
-        },
-        {
-            "code": "01",
-            "name": "Guatemala"
-        },
-        {
-            "code": "GU",
-            "name": "Guatemala"
-        },
-        {
-            "code": "13",
-            "name": "Huehuetenango"
-        },
-        {
-            "code": "HU",
-            "name": "Huehuetenango"
-        },
-        {
-            "code": "18",
-            "name": "Izabal"
-        },
-        {
-            "code": "IZ",
-            "name": "Izabal"
-        },
-        {
-            "code": "21",
-            "name": "Jalapa"
-        },
-        {
-            "code": "JA",
-            "name": "Jalapa"
-        },
-        {
-            "code": "22",
-            "name": "Jutiapa"
-        },
-        {
-            "code": "JU",
-            "name": "Jutiapa"
-        },
-        {
-            "code": "17",
-            "name": "Petén"
-        },
-        {
-            "code": "PE",
-            "name": "Petén"
-        },
-        {
-            "code": "09",
-            "name": "Quetzaltenango"
-        },
-        {
-            "code": "QZ",
-            "name": "Quetzaltenango"
-        },
-        {
-            "code": "14",
-            "name": "Quiché"
-        },
-        {
-            "code": "QC",
-            "name": "Quiché"
-        },
-        {
-            "code": "11",
-            "name": "Retalhuleu"
-        },
-        {
-            "code": "RE",
-            "name": "Retalhuleu"
-        },
-        {
-            "code": "03",
-            "name": "Sacatepéquez"
-        },
-        {
-            "code": "SA",
-            "name": "Sacatepéquez"
-        },
-        {
-            "code": "12",
-            "name": "San Marcos"
-        },
-        {
-            "code": "SM",
-            "name": "San Marcos"
-        },
-        {
             "code": "06",
-            "name": "Santa Rosa"
-        },
-        {
-            "code": "SR",
             "name": "Santa Rosa"
         },
         {
@@ -8205,32 +7969,64 @@
             "name": "Sololá"
         },
         {
-            "code": "SO",
-            "name": "Sololá"
+            "code": "08",
+            "name": "Totonicapán"
+        },
+        {
+            "code": "09",
+            "name": "Quetzaltenango"
         },
         {
             "code": "10",
             "name": "Suchitepéquez"
         },
         {
-            "code": "SU",
-            "name": "Suchitepéquez"
+            "code": "11",
+            "name": "Retalhuleu"
         },
         {
-            "code": "08",
-            "name": "Totonicapán"
+            "code": "12",
+            "name": "San Marcos"
         },
         {
-            "code": "TO",
-            "name": "Totonicapán"
+            "code": "13",
+            "name": "Huehuetenango"
+        },
+        {
+            "code": "14",
+            "name": "Quiché"
+        },
+        {
+            "code": "15",
+            "name": "Baja Verapaz"
+        },
+        {
+            "code": "16",
+            "name": "Alta Verapaz"
+        },
+        {
+            "code": "17",
+            "name": "Petén"
+        },
+        {
+            "code": "18",
+            "name": "Izabal"
         },
         {
             "code": "19",
             "name": "Zacapa"
         },
         {
-            "code": "ZA",
-            "name": "Zacapa"
+            "code": "20",
+            "name": "Chiquimula"
+        },
+        {
+            "code": "21",
+            "name": "Jalapa"
+        },
+        {
+            "code": "22",
+            "name": "Jutiapa"
         }
     ],
     "GU": [
@@ -10161,10 +9957,6 @@
         {
             "code": "BZ",
             "name": "South Tyrol"
-        },
-        {
-            "code": "SD",
-            "name": "Sud Sardegna"
         },
         {
             "code": "SU",
@@ -13001,152 +12793,152 @@
     ],
     "MD": [
         {
-            "name": "Anenii Noi",
-            "code": "AN"
+            "code": "AN",
+            "name": "Anenii Noi"
         },
         {
-            "name": "Bălţi",
-            "code": "BA"
+            "code": "BA",
+            "name": "Bălţi"
         },
         {
-            "name": "Basarabeasca",
-            "code": "BS"
+            "code": "BS",
+            "name": "Basarabeasca"
         },
         {
-            "name": "Bender",
-            "code": "BD"
+            "code": "BD",
+            "name": "Bender"
         },
         {
-            "name": "Briceni",
-            "code": "BR"
+            "code": "BR",
+            "name": "Briceni"
         },
         {
-            "name": "Chișinău",
-            "code": "CU"
+            "code": "CU",
+            "name": "Chișinău"
         },
         {
-            "name": "Cahul",
-            "code": "CA"
+            "code": "CA",
+            "name": "Cahul"
         },
         {
-            "name": "Călărași",
-            "code": "CL"
+            "code": "CL",
+            "name": "Călărași"
         },
         {
-            "name": "Cantemir",
-            "code": "CT"
+            "code": "CT",
+            "name": "Cantemir"
         },
         {
-            "name": "Căușeni",
-            "code": "CS"
+            "code": "CS",
+            "name": "Căușeni"
         },
         {
-            "name": "Cimișlia",
-            "code": "CM"
+            "code": "CM",
+            "name": "Cimișlia"
         },
         {
-            "name": "Criuleni",
-            "code": "CR"
+            "code": "CR",
+            "name": "Criuleni"
         },
         {
-            "name": "Dondușeni",
-            "code": "DO"
+            "code": "DO",
+            "name": "Dondușeni"
         },
         {
-            "name": "Drochia",
-            "code": "DR"
+            "code": "DR",
+            "name": "Drochia"
         },
         {
-            "name": "Dubăsari",
-            "code": "DU"
+            "code": "DU",
+            "name": "Dubăsari"
         },
         {
-            "name": "Edineț",
-            "code": "ED"
+            "code": "ED",
+            "name": "Edineț"
         },
         {
-            "name": "Fălești",
-            "code": "FA"
+            "code": "FA",
+            "name": "Fălești"
         },
         {
-            "name": "Florești",
-            "code": "FL"
+            "code": "FL",
+            "name": "Florești"
         },
         {
-            "name": "Gagauzia",
-            "code": "GA"
+            "code": "GA",
+            "name": "Gagauzia"
         },
         {
-            "name": "Glodeni",
-            "code": "GL"
+            "code": "GL",
+            "name": "Glodeni"
         },
         {
-            "name": "Hîncești",
-            "code": "HI"
+            "code": "HI",
+            "name": "Hîncești"
         },
         {
-            "name": "Ialoveni",
-            "code": "IA"
+            "code": "IA",
+            "name": "Ialoveni"
         },
         {
-            "name": "Leova",
-            "code": "LE"
+            "code": "LE",
+            "name": "Leova"
         },
         {
-            "name": "Nisporeni",
-            "code": "NI"
+            "code": "NI",
+            "name": "Nisporeni"
         },
         {
-            "name": "Ocniţa",
-            "code": "OC"
+            "code": "OC",
+            "name": "Ocniţa"
         },
         {
-            "name": "Orhei",
-            "code": "OR"
+            "code": "OR",
+            "name": "Orhei"
         },
         {
-            "name": "Rezina",
-            "code": "RE"
+            "code": "RE",
+            "name": "Rezina"
         },
         {
-            "name": "Rîșcani",
-            "code": "RI"
+            "code": "RI",
+            "name": "Rîșcani"
         },
         {
-            "name": "Sîngerei",
-            "code": "SI"
+            "code": "SI",
+            "name": "Sîngerei"
         },
         {
-            "name": "Șoldănești",
-            "code": "SD"
+            "code": "SD",
+            "name": "Șoldănești"
         },
         {
-            "name": "Soroca",
-            "code": "SO"
+            "code": "SO",
+            "name": "Soroca"
         },
         {
-            "name": "Ştefan Vodă",
-            "code": "SV"
+            "code": "SV",
+            "name": "Ştefan Vodă"
         },
         {
-            "name": "Strășeni",
-            "code": "ST"
+            "code": "ST",
+            "name": "Strășeni"
         },
         {
-            "name": "Taraclia",
-            "code": "TA"
+            "code": "TA",
+            "name": "Taraclia"
         },
         {
-            "name": "Telenești",
-            "code": "TE"
+            "code": "TE",
+            "name": "Telenești"
         },
         {
-            "name": "Transnistria",
-            "code": "SN"
+            "code": "SN",
+            "name": "Transnistria"
         },
         {
-            "name": "Ungheni",
-            "code": "UN"
+            "code": "UN",
+            "name": "Ungheni"
         }
     ],
     "ME": [
@@ -13391,108 +13183,20 @@
             "name": "Aerodrom"
         },
         {
-            "code": "02",
-            "name": "Aračinovo"
-        },
-        {
-            "code": "03",
-            "name": "Berovo"
-        },
-        {
-            "code": "04",
-            "name": "Bitola"
-        },
-        {
-            "code": "05",
-            "name": "Bogdanci"
-        },
-        {
-            "code": "06",
-            "name": "Bogovinje"
-        },
-        {
-            "code": "07",
-            "name": "Bosilovo"
-        },
-        {
-            "code": "08",
-            "name": "Brvenica"
-        },
-        {
             "code": "09",
             "name": "Butel"
-        },
-        {
-            "code": "10",
-            "name": "Valandovo"
-        },
-        {
-            "code": "11",
-            "name": "Vasilevo"
-        },
-        {
-            "code": "12",
-            "name": "Vevčani"
-        },
-        {
-            "code": "13",
-            "name": "Veles"
-        },
-        {
-            "code": "14",
-            "name": "Vinica"
         },
         {
             "code": "15",
             "name": "Vraneštica"
         },
         {
-            "code": "16",
-            "name": "Vrapčište"
-        },
-        {
             "code": "17",
             "name": "Gazi Baba"
         },
         {
-            "code": "18",
-            "name": "Gevgelija"
-        },
-        {
-            "code": "19",
-            "name": "Gostivar"
-        },
-        {
-            "code": "20",
-            "name": "Gradsko"
-        },
-        {
-            "code": "21",
-            "name": "Debar"
-        },
-        {
             "code": "22",
             "name": "Debarca"
-        },
-        {
-            "code": "23",
-            "name": "Delčevo"
-        },
-        {
-            "code": "24",
-            "name": "Demir Kapija"
-        },
-        {
-            "code": "25",
-            "name": "Demir Hisar"
-        },
-        {
-            "code": "26",
-            "name": "Dojran"
-        },
-        {
-            "code": "27",
-            "name": "Dolneni"
         },
         {
             "code": "28",
@@ -13503,36 +13207,8 @@
             "name": "Gjorče Petrov"
         },
         {
-            "code": "30",
-            "name": "Želino"
-        },
-        {
             "code": "31",
             "name": "Zajas"
-        },
-        {
-            "code": "32",
-            "name": "Zelenikovo"
-        },
-        {
-            "code": "33",
-            "name": "Zrnovci"
-        },
-        {
-            "code": "34",
-            "name": "Ilinden"
-        },
-        {
-            "code": "35",
-            "name": "Jegunovce"
-        },
-        {
-            "code": "36",
-            "name": "Kavadarci"
-        },
-        {
-            "code": "37",
-            "name": "Karbinci"
         },
         {
             "code": "38",
@@ -13543,180 +13219,24 @@
             "name": "Kisela Voda"
         },
         {
-            "code": "40",
-            "name": "Kičevo"
-        },
-        {
-            "code": "41",
-            "name": "Konče"
-        },
-        {
-            "code": "42",
-            "name": "Kočani"
-        },
-        {
-            "code": "43",
-            "name": "Kratovo"
-        },
-        {
-            "code": "44",
-            "name": "Kriva Palanka"
-        },
-        {
-            "code": "45",
-            "name": "Krivogaštani"
-        },
-        {
-            "code": "46",
-            "name": "Kruševo"
-        },
-        {
-            "code": "47",
-            "name": "Kumanovo"
-        },
-        {
-            "code": "48",
-            "name": "Lipkovo"
-        },
-        {
-            "code": "49",
-            "name": "Lozovo"
-        },
-        {
             "code": "50",
             "name": "Mavrovo and Rostuša"
-        },
-        {
-            "code": "51",
-            "name": "Makedonska Kamenica"
-        },
-        {
-            "code": "52",
-            "name": "Makedonski Brod"
-        },
-        {
-            "code": "53",
-            "name": "Mogila"
-        },
-        {
-            "code": "54",
-            "name": "Negotino"
-        },
-        {
-            "code": "55",
-            "name": "Novaci"
-        },
-        {
-            "code": "56",
-            "name": "Novo Selo"
         },
         {
             "code": "57",
             "name": "Oslomej"
         },
         {
-            "code": "58",
-            "name": "Ohrid"
-        },
-        {
-            "code": "59",
-            "name": "Petrovec"
-        },
-        {
-            "code": "60",
-            "name": "Pehčevo"
-        },
-        {
-            "code": "61",
-            "name": "Plasnica"
-        },
-        {
-            "code": "62",
-            "name": "Prilep"
-        },
-        {
-            "code": "63",
-            "name": "Probištip"
-        },
-        {
-            "code": "64",
-            "name": "Radoviš"
-        },
-        {
-            "code": "65",
-            "name": "Rankovce"
-        },
-        {
-            "code": "66",
-            "name": "Resen"
-        },
-        {
-            "code": "67",
-            "name": "Rosoman"
-        },
-        {
             "code": "68",
             "name": "Saraj"
-        },
-        {
-            "code": "69",
-            "name": "Sveti Nikole"
-        },
-        {
-            "code": "70",
-            "name": "Sopište"
-        },
-        {
-            "code": "71",
-            "name": "Staro Nagoričane"
-        },
-        {
-            "code": "72",
-            "name": "Struga"
-        },
-        {
-            "code": "73",
-            "name": "Strumica"
-        },
-        {
-            "code": "74",
-            "name": "Studeničani"
-        },
-        {
-            "code": "75",
-            "name": "Tearce"
-        },
-        {
-            "code": "76",
-            "name": "Tetovo"
         },
         {
             "code": "77",
             "name": "Centar"
         },
         {
-            "code": "78",
-            "name": "Centar Župa"
-        },
-        {
             "code": "79",
             "name": "Čair"
-        },
-        {
-            "code": "80",
-            "name": "Čaška"
-        },
-        {
-            "code": "81",
-            "name": "Češinovo-Obleševo"
-        },
-        {
-            "code": "82",
-            "name": "Čučer-Sandevo"
-        },
-        {
-            "code": "83",
-            "name": "Štip"
         },
         {
             "code": "84",
@@ -14935,10 +14455,6 @@
             "name": "Campeche"
         },
         {
-            "code": "CMX",
-            "name": "Ciudad de Mexico"
-        },
-        {
             "code": "COA",
             "name": "Coahuila"
         },
@@ -14973,6 +14489,10 @@
         {
             "code": "MEX",
             "name": "Mexico State"
+        },
+        {
+            "code": "CMX",
+            "name": "Mézíkọ city"
         },
         {
             "code": "MIC",
@@ -15255,152 +14775,152 @@
     ],
     "NG": [
         {
-            "name": "Federal Capital Territory",
-            "code": "FC"
+            "code": "FC",
+            "name": "Federal Capital Territory (Nigeria)"
         },
         {
-            "name": "Nkeji Ochíchííwu Kano",
-            "code": "KN"
+            "code": "KN",
+            "name": "Nkeji Ochíchííwu Kano"
         },
         {
-            "name": "Ȯra Abia",
-            "code": "AB"
+            "code": "AB",
+            "name": "Ȯra Abia"
         },
         {
-            "name": "Ȯra Adamawa",
-            "code": "AD"
+            "code": "AD",
+            "name": "Ȯra Adamawa"
         },
         {
-            "name": "Ȯra Akwa Ibom",
-            "code": "AK"
+            "code": "AK",
+            "name": "Ȯra Akwa Ibom"
         },
         {
-            "name": "Ȯra Anambra",
-            "code": "AN"
+            "code": "AN",
+            "name": "Ȯra Anambra"
         },
         {
-            "name": "Ȯra Bauchi",
-            "code": "BA"
+            "code": "BA",
+            "name": "Ȯra Bauchi"
         },
         {
-            "name": "Ȯra Bayelsa",
-            "code": "BY"
+            "code": "BY",
+            "name": "Ȯra Bayelsa"
         },
         {
-            "name": "Ȯra Benue",
-            "code": "BE"
+            "code": "BE",
+            "name": "Ȯra Benue"
         },
         {
-            "name": "Ȯra Borno",
-            "code": "BO"
+            "code": "BO",
+            "name": "Ȯra Borno"
         },
         {
-            "name": "Ȯra Cross River",
-            "code": "CR"
+            "code": "CR",
+            "name": "Ȯra Cross River"
         },
         {
-            "name": "Ȯra Delta",
-            "code": "DE"
+            "code": "DE",
+            "name": "Ȯra Delta"
         },
         {
-            "name": "Ȯra Ebonyi",
-            "code": "EB"
+            "code": "EB",
+            "name": "Ȯra Ebonyi"
         },
         {
-            "name": "Ȯra Edo",
-            "code": "ED"
+            "code": "ED",
+            "name": "Ȯra Edo"
         },
         {
-            "name": "Ȯra Ekiti",
-            "code": "EK"
+            "code": "EK",
+            "name": "Ȯra Ekiti"
         },
         {
-            "name": "Ȯra Enugu",
-            "code": "EN"
+            "code": "EN",
+            "name": "Ȯra Enugu"
         },
         {
-            "name": "Ȯra Gombe",
-            "code": "GO"
+            "code": "GO",
+            "name": "Ȯra Gombe"
         },
         {
-            "name": "Ȯra Imo",
-            "code": "IM"
+            "code": "IM",
+            "name": "Ȯra Imo"
         },
         {
-            "name": "Ȯra Jigawa",
-            "code": "JI"
+            "code": "JI",
+            "name": "Ȯra Jigawa"
         },
         {
-            "name": "Ȯra Kaduna",
-            "code": "KD"
+            "code": "KD",
+            "name": "Ȯra Kaduna"
         },
         {
-            "name": "Ȯra Katsina",
-            "code": "KT"
+            "code": "KT",
+            "name": "Ȯra Katsina"
         },
         {
-            "name": "Ȯra Kebbi",
-            "code": "KE"
+            "code": "KE",
+            "name": "Ȯra Kebbi"
         },
         {
-            "name": "Ȯra Kogi",
-            "code": "KO"
+            "code": "KO",
+            "name": "Ȯra Kogi"
         },
         {
-            "name": "Ȯra Kwara",
-            "code": "KW"
+            "code": "KW",
+            "name": "Ȯra Kwara"
         },
         {
-            "name": "Ȯra Lagos",
-            "code": "LA"
+            "code": "LA",
+            "name": "Ȯra Lagos"
         },
         {
-            "name": "Ȯra Nasarawa",
-            "code": "NA"
+            "code": "NA",
+            "name": "Ȯra Nasarawa"
         },
         {
-            "name": "Ȯra Niger",
-            "code": "NI"
+            "code": "NI",
+            "name": "Ȯra Niger"
         },
         {
-            "name": "Ȯra Ogun",
-            "code": "OG"
+            "code": "OG",
+            "name": "Ȯra Ogun"
         },
         {
-            "name": "Ȯra Ondo",
-            "code": "ON"
+            "code": "ON",
+            "name": "Ȯra Ondo"
         },
         {
-            "name": "Ȯra Osun",
-            "code": "OS"
+            "code": "OS",
+            "name": "Ȯra Osun"
         },
         {
-            "name": "Ȯra Ọyọ",
-            "code": "OY"
+            "code": "OY",
+            "name": "Ȯra Ọyọ"
         },
         {
-            "name": "Ȯra Plateau",
-            "code": "PL"
+            "code": "PL",
+            "name": "Ȯra Plateau"
         },
         {
-            "name": "Ȯra Rivers",
-            "code": "RI"
+            "code": "RI",
+            "name": "Ȯra Rivers"
         },
         {
-            "name": "Ȯra Sokoto",
-            "code": "SO"
+            "code": "SO",
+            "name": "Ȯra Sokoto"
         },
         {
-            "name": "Ȯra Taraba",
-            "code": "TA"
+            "code": "TA",
+            "name": "Ȯra Taraba"
         },
         {
-            "name": "Ȯra Yobe",
-            "code": "YO"
+            "code": "YO",
+            "name": "Ȯra Yobe"
         },
         {
-            "name": "Ȯra Zamfara",
-            "code": "ZA"
+            "code": "ZA",
+            "name": "Ȯra Zamfara"
         }
     ],
     "NI": [
@@ -15475,16 +14995,8 @@
     ],
     "NL": [
         {
-            "code": "AW",
-            "name": "Aruba"
-        },
-        {
             "code": "BQ1",
             "name": "Bonaire"
-        },
-        {
-            "code": "CW",
-            "name": "Curaçao"
         },
         {
             "code": "DR",
@@ -15529,10 +15041,6 @@
         {
             "code": "BQ3",
             "name": "Sint Eustatius"
-        },
-        {
-            "code": "SX",
-            "name": "Sint Maarten"
         },
         {
             "code": "ZH",
@@ -15631,10 +15139,6 @@
         {
             "code": "22",
             "name": "Jan Mayen"
-        },
-        {
-            "code": "23",
-            "name": "Trøndelag"
         },
         {
             "code": "30",
@@ -18085,16 +17589,12 @@
     ],
     "SH": [
         {
-            "name": "Ascension Island",
-            "code": "AC"
+            "code": "AC",
+            "name": "Ascension Island"
         },
         {
-            "name": "Saint Helena",
-            "code": "HL"
-        },
-        {
-            "name": "Tristan da Cunha",
-            "code": "TA"
+            "code": "HL",
+            "name": "Saint Helena"
         }
     ],
     "SI": [
@@ -20674,7 +20174,7 @@
         },
         {
             "code": "16",
-            "name": "Morogoro"
+            "name": "Morogoro Region"
         },
         {
             "code": "17",
@@ -21449,232 +20949,208 @@
     ],
     "US": [
         {
-            "name": "Àlá mmírí Rhode",
-            "code": "RI"
+            "code": "RI",
+            "name": "Àlá mmírí Rhode"
         },
         {
-            "name": "Alabama",
-            "code": "AL"
+            "code": "AL",
+            "name": "Alabama"
         },
         {
-            "name": "Àláskà",
-            "code": "AK"
+            "code": "AK",
+            "name": "Àláskà"
         },
         {
-            "name": "American Samoa",
-            "code": "AS"
+            "code": "AZ",
+            "name": "Arizona"
         },
         {
-            "name": "Arizona",
-            "code": "AZ"
+            "code": "AR",
+            "name": "Arkinsọ"
         },
         {
-            "name": "Arkinsọ",
-            "code": "AR"
+            "code": "IA",
+            "name": "Áyowạ"
         },
         {
-            "name": "Áyowạ",
-            "code": "IA"
+            "code": "CA",
+            "name": "California"
         },
         {
-            "name": "California",
-            "code": "CA"
+            "code": "CO",
+            "name": "Colorado"
         },
         {
-            "name": "Colorado",
-            "code": "CO"
+            "code": "DE",
+            "name": "Déláwè"
         },
         {
-            "name": "Déláwè",
-            "code": "DE"
+            "code": "FL",
+            "name": "Flórídạ"
         },
         {
-            "name": "Flórídạ",
-            "code": "FL"
+            "code": "NH",
+            "name": "Hampshire Ohúrú"
         },
         {
-            "name": "Guam",
-            "code": "GU"
+            "code": "HI",
+            "name": "Hawaii"
         },
         {
-            "name": "Hampshire Ohúrú",
-            "code": "NH"
+            "code": "ID",
+            "name": "Idaho"
         },
         {
-            "name": "Hawaii",
-            "code": "HI"
+            "code": "IL",
+            "name": "Ilinoi"
         },
         {
-            "name": "Idaho",
-            "code": "ID"
+            "code": "GA",
+            "name": "Jorjiạ"
         },
         {
-            "name": "Ilinoi",
-            "code": "IL"
+            "code": "KS",
+            "name": "Kánzạs"
         },
         {
-            "name": "Jorjiạ",
-            "code": "GA"
+            "code": "KY",
+            "name": "Kentórkị"
         },
         {
-            "name": "Kánzạs",
-            "code": "KS"
+            "code": "CT",
+            "name": "Kónétíkùt"
         },
         {
-            "name": "Kentórkị",
-            "code": "KY"
+            "code": "LA",
+            "name": "Luwisiánà"
         },
         {
-            "name": "Kónétíkùt",
-            "code": "CT"
+            "code": "MA",
+            "name": "Másáchusẹts"
         },
         {
-            "name": "Luwisiánà",
-            "code": "LA"
+            "code": "ME",
+            "name": "Mën"
         },
         {
-            "name": "Másáchusẹts",
-            "code": "MA"
+            "code": "MD",
+            "name": "Mérílạnd"
         },
         {
-            "name": "Mën",
-            "code": "ME"
+            "code": "MI",
+            "name": "Michigan"
         },
         {
-            "name": "Mérílạnd",
-            "code": "MD"
+            "code": "MN",
+            "name": "Minésótạ"
         },
         {
-            "name": "Michigan",
-            "code": "MI"
+            "code": "MS",
+            "name": "Mississippi"
         },
         {
-            "name": "Minésótạ",
-            "code": "MN"
+            "code": "MO",
+            "name": "Mizurị"
         },
         {
-            "name": "Mississippi",
-            "code": "MS"
+            "code": "MT",
+            "name": "Montana"
         },
         {
-            "name": "Mizurị",
-            "code": "MO"
+            "code": "NV",
+            "name": "Náevadạ"
         },
         {
-            "name": "Montana",
-            "code": "MT"
+            "code": "IN",
+            "name": "Ndiánà"
         },
         {
-            "name": "Náevadạ",
-            "code": "NV"
+            "code": "NE",
+            "name": "Nebraska"
         },
         {
-            "name": "Ndiánà",
-            "code": "IN"
+            "code": "SC",
+            "name": "Nleda anyanwu Kàròlina"
         },
         {
-            "name": "Nebraska",
-            "code": "NE"
+            "code": "NC",
+            "name": "Nort Kárólínạ"
         },
         {
-            "name": "Nleda anyanwu Kàròlina",
-            "code": "SC"
+            "code": "ND",
+            "name": "North Dakota"
         },
         {
-            "name": "Nort Kárólínạ",
-            "code": "NC"
+            "code": "NJ",
+            "name": "Nú Jezị"
         },
         {
-            "name": "North Dakota",
-            "code": "ND"
+            "code": "NM",
+            "name": "Nú Mézíkọ"
         },
         {
-            "name": "Northern Mariana Islands",
-            "code": "MP"
+            "code": "NY",
+            "name": "Nú Yọk"
         },
         {
-            "name": "Nú Jezị",
-            "code": "NJ"
+            "code": "OH",
+            "name": "Ohaïyo"
         },
         {
-            "name": "Nú Mézíkọ",
-            "code": "NM"
+            "code": "OK",
+            "name": "Oklahoma"
         },
         {
-            "name": "Nú Yọk",
-            "code": "NY"
+            "code": "OR",
+            "name": "Oregon"
         },
         {
-            "name": "Ohaïyo",
-            "code": "OH"
+            "code": "PA",
+            "name": "Pensílvéníyạ"
         },
         {
-            "name": "Oklahoma",
-            "code": "OK"
+            "code": "SD",
+            "name": "Sawt Dakótạ"
         },
         {
-            "name": "Oregon",
-            "code": "OR"
+            "code": "TN",
+            "name": "Tennessee"
         },
         {
-            "name": "Pensílvéníyạ",
-            "code": "PA"
+            "code": "TX",
+            "name": "Texas"
         },
         {
-            "name": "Puerto Rico",
-            "code": "PR"
+            "code": "VA",
+            "name": "Végíníyà"
         },
         {
-            "name": "Sawt Dakótạ",
-            "code": "SD"
+            "code": "VT",
+            "name": "Vermont"
         },
         {
-            "name": "Tennessee",
-            "code": "TN"
+            "code": "WY",
+            "name": "Waịómịn"
         },
         {
-            "name": "Texas",
-            "code": "TX"
+            "code": "WA",
+            "name": "Washington"
         },
         {
-            "name": "U.S. Outlying Islands",
-            "code": "UM"
+            "code": "DC",
+            "name": "Washington DC"
         },
         {
-            "name": "U.S. Virgin Islands",
-            "code": "VI"
+            "code": "WV",
+            "name": "West Virginia"
         },
         {
-            "name": "Végíníyà",
-            "code": "VA"
+            "code": "WI",
+            "name": "Wiskonsin"
         },
         {
-            "name": "Vermont",
-            "code": "VT"
-        },
-        {
-            "name": "Waịómịn",
-            "code": "WY"
-        },
-        {
-            "name": "Washington",
-            "code": "WA"
-        },
-        {
-            "name": "Washington DC",
-            "code": "DC"
-        },
-        {
-            "name": "West Virginia",
-            "code": "WV"
-        },
-        {
-            "name": "Wiskonsin",
-            "code": "WI"
-        },
-        {
-            "name": "Yútạh",
-            "code": "UT"
+            "code": "UT",
+            "name": "Yútạh"
         }
     ],
     "UY": [
@@ -21949,256 +21425,256 @@
     ],
     "VN": [
         {
-            "name": "An Giang",
-            "code": "44"
+            "code": "44",
+            "name": "An Giang"
         },
         {
-            "name": "Bà Rịa–Vũng Tàu",
-            "code": "43"
+            "code": "43",
+            "name": "Bà Rịa–Vũng Tàu"
         },
         {
-            "name": "Bắc Giang",
-            "code": "54"
+            "code": "54",
+            "name": "Bắc Giang"
         },
         {
-            "name": "Bắc Kạn",
-            "code": "53"
+            "code": "53",
+            "name": "Bắc Kạn"
         },
         {
-            "name": "Bạc Liêu",
-            "code": "55"
+            "code": "55",
+            "name": "Bạc Liêu"
         },
         {
-            "name": "Bắc Ninh",
-            "code": "56"
+            "code": "56",
+            "name": "Bắc Ninh"
         },
         {
-            "name": "Bến Tre",
-            "code": "50"
+            "code": "50",
+            "name": "Bến Tre"
         },
         {
-            "name": "Bình Định",
-            "code": "31"
+            "code": "31",
+            "name": "Bình Định"
         },
         {
-            "name": "Bình Dương",
-            "code": "57"
+            "code": "57",
+            "name": "Bình Dương"
         },
         {
-            "name": "Bình Phước",
-            "code": "58"
+            "code": "58",
+            "name": "Bình Phước"
         },
         {
-            "name": "Bình Thuận",
-            "code": "40"
+            "code": "40",
+            "name": "Bình Thuận"
         },
         {
-            "name": "Cà Mau",
-            "code": "59"
+            "code": "59",
+            "name": "Cà Mau"
         },
         {
-            "name": "Can Tho",
-            "code": "CT"
+            "code": "CT",
+            "name": "Can Tho"
         },
         {
-            "name": "Cao Bằng",
-            "code": "04"
+            "code": "04",
+            "name": "Cao Bằng"
         },
         {
-            "name": "Da Nang",
-            "code": "DN"
+            "code": "DN",
+            "name": "Da Nang"
         },
         {
-            "name": "Đắk Lắk",
-            "code": "33"
+            "code": "33",
+            "name": "Đắk Lắk"
         },
         {
-            "name": "Đắk Nông",
-            "code": "72"
+            "code": "72",
+            "name": "Đắk Nông"
         },
         {
-            "name": "Điện Biên",
-            "code": "71"
+            "code": "71",
+            "name": "Điện Biên"
         },
         {
-            "name": "Đồng Nai",
-            "code": "39"
+            "code": "39",
+            "name": "Đồng Nai"
         },
         {
-            "name": "Đồng Tháp",
-            "code": "45"
+            "code": "45",
+            "name": "Đồng Tháp"
         },
         {
-            "name": "Gia Lai",
-            "code": "30"
+            "code": "30",
+            "name": "Gia Lai"
         },
         {
-            "name": "Hà Giang",
-            "code": "03"
+            "code": "03",
+            "name": "Hà Giang"
         },
         {
-            "name": "Hà Nam",
-            "code": "63"
+            "code": "63",
+            "name": "Hà Nam"
         },
         {
-            "name": "Hà Tĩnh",
-            "code": "23"
+            "code": "23",
+            "name": "Hà Tĩnh"
         },
         {
-            "name": "Hải Dương",
-            "code": "61"
+            "code": "61",
+            "name": "Hải Dương"
         },
         {
-            "name": "Haiphong",
-            "code": "HP"
+            "code": "HP",
+            "name": "Haiphong"
         },
         {
-            "name": "Hanoi",
-            "code": "HN"
+            "code": "HN",
+            "name": "Hanoi"
         },
         {
-            "name": "Hậu Giang",
-            "code": "73"
+            "code": "73",
+            "name": "Hậu Giang"
         },
         {
-            "name": "Ho Chi Minh City",
-            "code": "SG"
+            "code": "SG",
+            "name": "Ho Chi Minh City"
         },
         {
-            "name": "Hòa Bình",
-            "code": "14"
+            "code": "14",
+            "name": "Hòa Bình"
         },
         {
-            "name": "Hưng Yên",
-            "code": "66"
+            "code": "66",
+            "name": "Hưng Yên"
         },
         {
-            "name": "Khánh Hòa",
-            "code": "34"
+            "code": "34",
+            "name": "Khánh Hòa"
         },
         {
-            "name": "Kiên Giang",
-            "code": "47"
+            "code": "47",
+            "name": "Kiên Giang"
         },
         {
-            "name": "Kon Tum",
-            "code": "28"
+            "code": "28",
+            "name": "Kon Tum"
         },
         {
-            "name": "Lai Châu",
-            "code": "01"
+            "code": "01",
+            "name": "Lai Châu"
         },
         {
-            "name": "Lâm Đồng",
-            "code": "35"
+            "code": "35",
+            "name": "Lâm Đồng"
         },
         {
-            "name": "Lạng Sơn",
-            "code": "09"
+            "code": "09",
+            "name": "Lạng Sơn"
         },
         {
-            "name": "Lào Cai",
-            "code": "02"
+            "code": "02",
+            "name": "Lào Cai"
         },
         {
-            "name": "Long An",
-            "code": "41"
+            "code": "41",
+            "name": "Long An"
         },
         {
-            "name": "Nam Định",
-            "code": "67"
+            "code": "67",
+            "name": "Nam Định"
         },
         {
-            "name": "Nghệ An",
-            "code": "22"
+            "code": "22",
+            "name": "Nghệ An"
         },
         {
-            "name": "Ninh Bình",
-            "code": "18"
+            "code": "18",
+            "name": "Ninh Bình"
         },
         {
-            "name": "Ninh Thuận",
-            "code": "36"
+            "code": "36",
+            "name": "Ninh Thuận"
         },
         {
-            "name": "Phú Thọ",
-            "code": "68"
+            "code": "68",
+            "name": "Phú Thọ"
         },
         {
-            "name": "Phú Yên",
-            "code": "32"
+            "code": "32",
+            "name": "Phú Yên"
         },
         {
-            "name": "Quảng Bình",
-            "code": "24"
+            "code": "24",
+            "name": "Quảng Bình"
         },
         {
-            "name": "Quảng Nam",
-            "code": "27"
+            "code": "27",
+            "name": "Quảng Nam"
         },
         {
-            "name": "Quảng Ngãi",
-            "code": "29"
+            "code": "29",
+            "name": "Quảng Ngãi"
         },
         {
-            "name": "Quảng Ninh",
-            "code": "13"
+            "code": "13",
+            "name": "Quảng Ninh"
         },
         {
-            "name": "Quảng Trị",
-            "code": "25"
+            "code": "25",
+            "name": "Quảng Trị"
         },
         {
-            "name": "Sóc Trăng",
-            "code": "52"
+            "code": "52",
+            "name": "Sóc Trăng"
         },
         {
-            "name": "Sơn La",
-            "code": "05"
+            "code": "05",
+            "name": "Sơn La"
         },
         {
-            "name": "Tây Ninh",
-            "code": "37"
+            "code": "37",
+            "name": "Tây Ninh"
         },
         {
-            "name": "Thái Bình",
-            "code": "20"
+            "code": "20",
+            "name": "Thái Bình"
         },
         {
-            "name": "Thái Nguyên",
-            "code": "69"
+            "code": "69",
+            "name": "Thái Nguyên"
         },
         {
-            "name": "Thanh Hóa",
-            "code": "21"
+            "code": "21",
+            "name": "Thanh Hóa"
         },
         {
-            "name": "Thừa Thiên–Huế",
-            "code": "26"
+            "code": "26",
+            "name": "Thừa Thiên–Huế"
         },
         {
-            "name": "Tiền Giang",
-            "code": "46"
+            "code": "46",
+            "name": "Tiền Giang"
         },
         {
-            "name": "Trà Vinh",
-            "code": "51"
+            "code": "51",
+            "name": "Trà Vinh"
         },
         {
-            "name": "Tuyên Quang",
-            "code": "07"
+            "code": "07",
+            "name": "Tuyên Quang"
         },
         {
-            "name": "Vĩnh Long",
-            "code": "49"
+            "code": "49",
+            "name": "Vĩnh Long"
         },
         {
-            "name": "Vĩnh Phúc",
-            "code": "70"
+            "code": "70",
+            "name": "Vĩnh Phúc"
         },
         {
-            "name": "Yên Bái",
-            "code": "06"
+            "code": "06",
+            "name": "Yên Bái"
         }
     ],
     "VU": [
@@ -22401,15 +21877,7 @@
             "name": "Gauteng"
         },
         {
-            "code": "GT",
-            "name": "Gauteng"
-        },
-        {
             "code": "KZN",
-            "name": "KwaZulu-Natal"
-        },
-        {
-            "code": "NL",
             "name": "KwaZulu-Natal"
         },
         {

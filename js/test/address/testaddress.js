@@ -1,7 +1,7 @@
 /*
  * testaddress.js - test the address parsing and formatting routines
  *
- * Copyright © 2013-2015,2017, JEDLSoft
+ * Copyright © 2013-2015,2017,2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,6 @@ module.exports.testaddress = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressSimple: function(test) {
         test.expect(7);
         var parsedAddress = new Address("950 W Maude Ave.\nSunnyvale, CA 94085\nUSA", {locale: 'en-US'});
@@ -52,7 +51,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-
     // to verify NOV-111026
     testParseAddressSimple2: function(test) {
         test.expect(7);
@@ -67,7 +65,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-
     testParseAddressSimple3: function(test) {
         test.expect(7);
         var parsedAddress = new Address("5-2-1 Ginza, Chuo-ku\nTokyo 170-3293\nJapan", {locale: 'en-JP'});
@@ -81,7 +78,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "JP");
         test.done();
     },
-
     testParseAddressMoreComplex: function(test) {
         test.expect(7);
         var parsedAddress = new Address("950 W 21st Ave, Apt 45\nNY, NY 10234", {locale: 'en-US'});
@@ -95,7 +91,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-
     testParseAddressSpelledOutState: function(test) {
         test.expect(7);
         var parsedAddress = new Address("20 Main St.\nMyTown, Arizona 11530\nUSA", {locale: 'en-US'});
@@ -109,7 +104,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-
     testParseAddressSpelledOutStateWithSpaces: function(test) {
         test.expect(7);
         var parsedAddress = new Address("20 Main St.\nMyTown, New York 11530\nUSA", {locale: 'en-US'});
@@ -123,7 +117,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-
     testParseAddressSpelledOutStateWithPrefix: function(test) {
         test.expect(7);
         var parsedAddress = new Address("20 Main St.\nMyTown, Arkansas 11530\nUSA", {locale: 'en-US'});
@@ -137,7 +130,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-
     testParseAddressNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("20 Main St.\nMyTown, NY\nUSA", {locale: 'en-US'});
@@ -151,7 +143,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-
     testParseAddressManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("950 W 21st Ave\nApt 45\nNY\nNY\n10234", {locale: 'en-US'});
@@ -165,7 +156,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-
     testParseAddressOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("950 W Maude Ave., Sunnyvale, CA 94085 USA", {locale: 'en-US'});
@@ -179,7 +169,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-
     testParseAddressSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("950 W 21st Ave\n\n   Apt 45      \n NY,    NY   10234\n\n   \n\n", {locale: 'en-US'});
@@ -193,7 +182,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-
     testParseAddressFewDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("950 W Maude Ave., Sunnyvale CA 94085 USA", {locale: 'en-US'});
@@ -207,7 +195,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-
     testParseAddressWithStreetNumberThatLooksLikeAZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("15672 W 156st St #45\nSeattle, WA 98765", {locale: 'en-US'});
@@ -221,7 +208,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-
     testParseAddressPOBox: function(test) {
         test.expect(7);
         var parsedAddress = new Address("P.O. Box 350\nMinneapolis MN 45678-2234", {locale: 'en-US'});
@@ -235,7 +221,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-
     testParseAddressHawaii: function(test) {
         test.expect(7);
         var parsedAddress = new Address("20 Hawai'i Oe Lane\nKa'anapali, HI 99232", {locale: 'en-US'});
@@ -249,7 +234,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-
     testParseAddressUnknown: function(test) {
         test.expect(7);
 
@@ -264,7 +248,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "ZA");
         test.done();
     },
-
     testParseAddressNonUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Achterberglaan 23, 2345 GD Uithoorn, Netherlands", {locale: 'en-US'});
@@ -278,7 +261,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "NL");
         test.done();
     },
-
     // for NOV-118061
     testParseAddressNonStandard: function(test) {
         test.expect(7);
@@ -293,7 +275,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-
     testFormatAddressDefault: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -311,7 +292,6 @@ module.exports.testaddress = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -328,7 +308,6 @@ module.exports.testaddress = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressDomestic: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -345,7 +324,6 @@ module.exports.testaddress = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressUnknownCountry: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -362,7 +340,6 @@ module.exports.testaddress = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     // for DFISH-9927
     testParseAddressUnknownLocale: function(test) {
         test.expect(7);
@@ -377,7 +354,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "XX");
         test.done();
     },
-
     //for DFISH-23879
     testParseAddressUnknownLocaleQQ: function(test) {
         test.expect(7);
@@ -392,7 +368,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "QQ");
         test.done();
     },
-
     testFormatAddressUnknownLocaleQQ: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -408,7 +383,6 @@ module.exports.testaddress = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testParseAddressUnknownLocaleHK: function(test) {
         test.expect(7);
         var parsedAddress = new Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-HK'});
@@ -422,7 +396,6 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "HK");
         test.done();
     },
-
     testFormatAddressUnknownLocaleHK: function(test) {
         test.expect(1);
         var parsedAddress = new Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-HK'});
@@ -432,7 +405,6 @@ module.exports.testaddress = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressDefaultEverythingButForeignAddress: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -447,7 +419,6 @@ module.exports.testaddress = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testAddressFmtGetFormatInfoUSRightComponents: function(test) {
         test.expect(15);
         var formatter = new AddressFmt({locale: 'en-US'});
@@ -472,7 +443,6 @@ module.exports.testaddress = {
         test.equal(info[2][0].label, "Country");
         test.done();
     },
-
     testAddressFmtGetFormatInfoUSRightConstraints: function(test) {
         test.expect(19);
         var formatter = new AddressFmt({locale: 'en-US'});
@@ -510,7 +480,6 @@ module.exports.testaddress = {
 
         test.done();
     },
-
     testAddressFmtGetFormatInfoUSButGermanLabels: function(test) {
         test.expect(15);
         var formatter = new AddressFmt({locale: 'en-US'});
@@ -535,7 +504,6 @@ module.exports.testaddress = {
         test.equal(info[2][0].label, "Land");
         test.done();
     },
-
     testAddressFmtGetFormatInfoDE: function(test) {
         test.expect(21);
         var formatter = new AddressFmt({locale: 'de-DE'});
@@ -569,7 +537,6 @@ module.exports.testaddress = {
         test.equal(r.name, "Südafrika");
         test.done();
     },
-
     testAddressFmtGetFormatInfoCN: function(test) {
         test.expect(24);
         var formatter = new AddressFmt({locale: 'zh-Hans-CN'});
@@ -606,7 +573,6 @@ module.exports.testaddress = {
         test.equal(info[3][0].label, "地址");
         test.done();
     },
-
     testAddressFmtGetFormatInfoSG: function(test) {
         test.expect(20);
         var formatter = new AddressFmt({locale: 'zh-Hans-SG'});
@@ -639,7 +605,6 @@ module.exports.testaddress = {
         test.equal(info[1][2].label, "地址");
         test.done();
     },
-
     testAddressFmtGetFormatInfoENSG: function(test) {
         test.expect(21);
         var formatter = new AddressFmt({locale: 'en-SG'});
@@ -675,7 +640,6 @@ module.exports.testaddress = {
 
         test.done();
     },
-
     testAddressFmtGetFormatInfoCARightComponents: function(test) {
         test.expect(23);
         var formatter = new AddressFmt({locale: 'en-CA'});
@@ -711,7 +675,6 @@ module.exports.testaddress = {
         test.equal(info[2][0].label, "Country");
         test.done();
     },
-
     testAddressFmtGetFormatInfoCAInGerman: function(test) {
         test.expect(23);
         var formatter = new AddressFmt({locale: 'en-CA'});
@@ -747,7 +710,6 @@ module.exports.testaddress = {
         test.equal(info[2][0].label, "Land");
         test.done();
     },
-
     testAddressFmtGetFormatInfoGBRightComponents: function(test) {
         test.expect(15);
         var formatter = new AddressFmt({locale: 'en-GB'});
@@ -772,9 +734,8 @@ module.exports.testaddress = {
         test.equal(info[3][0].label, "Country");
         test.done();
     },
-
     testAddressFmtGetFormatInfoUSRightSortOrder: function(test) {
-        test.expect(61);
+        test.expect(55);
         var formatter = new AddressFmt({locale: 'en-US'});
 
         var info = formatter.getFormatInfo();
@@ -783,7 +744,6 @@ module.exports.testaddress = {
         var expectedOrder = [
             "Alabama",
             "Alaska",
-            "American Samoa",
             "Arizona",
             "Arkansas",
             "California",
@@ -792,7 +752,6 @@ module.exports.testaddress = {
             "Delaware",
             "Florida",
             "Georgia",
-            "Guam",
             "Hawaii",
             "Idaho",
             "Illinois",
@@ -817,19 +776,15 @@ module.exports.testaddress = {
             "New York",
             "North Carolina",
             "North Dakota",
-            "Northern Mariana Islands",
             "Ohio",
             "Oklahoma",
             "Oregon",
             "Pennsylvania",
-            "Puerto Rico",
             "Rhode Island",
             "South Carolina",
             "South Dakota",
             "Tennessee",
             "Texas",
-            "U.S. Outlying Islands",
-            "U.S. Virgin Islands",
             "Utah",
             "Vermont",
             "Virginia",
@@ -850,9 +805,8 @@ module.exports.testaddress = {
 
         test.done();
     },
-
     testAddressFmtGetFormatInfoUSRightSortOrderInSpanish: function(test) {
-        test.expect(61);
+        test.expect(55);
         var formatter = new AddressFmt({locale: 'en-US'});
 
         var info = formatter.getFormatInfo("es");
@@ -861,7 +815,6 @@ module.exports.testaddress = {
         var expectedOrder = [
             "Alabama",
             "Alaska",
-            "American Samoa",
             "Arizona",
             "Arkansas",
             "California",
@@ -874,7 +827,6 @@ module.exports.testaddress = {
             "Delaware",
             "Florida",
             "Georgia",
-            "Guam",
             "Hawái",
             "Idaho",
             "Illinois",
@@ -893,7 +845,6 @@ module.exports.testaddress = {
             "Montana",
             "Nebraska",
             "Nevada",
-            "Northern Mariana Islands",
             "Nueva Jersey",
             "Nueva York",
             "Nuevo Hampshire",
@@ -902,12 +853,9 @@ module.exports.testaddress = {
             "Oklahoma",
             "Oregón",
             "Pensilvania",
-            "Puerto Rico",
             "Rhode Island",
             "Tennessee",
             "Texas",
-            "U.S. Outlying Islands",
-            "U.S. Virgin Islands",
             "Utah",
             "Vermont",
             "Virginia",
@@ -928,9 +876,8 @@ module.exports.testaddress = {
 
         test.done();
     },
-
     testAddressFmtGetFormatInfoENCountriesRightSortOrder: function(test) {
-        test.expect(262);
+        test.expect(263);
         var formatter = new AddressFmt({locale: 'en-US'});
 
         var info = formatter.getFormatInfo();
@@ -1132,6 +1079,7 @@ module.exports.testaddress = {
             "Samoa",
             "San Marino",
             "São Tomé & Príncipe",
+            "Sark",
             "Saudi Arabia",
             "Senegal",
             "Serbia",
@@ -1173,7 +1121,7 @@ module.exports.testaddress = {
             "Trinidad & Tobago",
             "Tristan da Cunha",
             "Tunisia",
-            "Turkey",
+            "Türkiye",
             "Turkmenistan",
             "Turks & Caicos Islands",
             "Tuvalu",
@@ -1207,9 +1155,8 @@ module.exports.testaddress = {
 
         test.done();
     },
-
     testAddressFmtGetFormatInfoESCountriesRightSortOrder: function(test) {
-        test.expect(262);
+        test.expect(263);
         var formatter = new AddressFmt({locale: 'en-US'});
 
         var info = formatter.getFormatInfo("es");
@@ -1428,6 +1375,7 @@ module.exports.testaddress = {
             "Santa Elena",
             "Santa Lucía",
             "Santo Tomé y Príncipe",
+            "Sark",
             "Senegal",
             "Serbia",
             "Seychelles",
@@ -1486,7 +1434,6 @@ module.exports.testaddress = {
 
         test.done();
     },
-
     testAddressFmtGetFormatInfoGBWithTranslationsToRussian: function(test) {
         test.expect(15);
         var formatter = new AddressFmt({locale: 'en-GB'});
@@ -1511,7 +1458,6 @@ module.exports.testaddress = {
         test.equal(info[3][0].label, "Страна");
         test.done();
     },
-
     testAddressFmtGetFormatInfoGBWithTranslationsToKorean: function(test) {
         test.expect(15);
         var formatter = new AddressFmt({locale: 'en-GB'});
@@ -1536,7 +1482,6 @@ module.exports.testaddress = {
         test.equal(info[3][0].label, "국가");
         test.done();
     },
-
     testAddressFmtGetFormatInfoUnknownCountry: function(test) {
         test.expect(10);
         var formatter = new AddressFmt({locale: 'en-XY'});
@@ -1560,7 +1505,6 @@ module.exports.testaddress = {
 
         test.done();
     },
-
     testAddressFmtGetFormatInfoRightRegionNameJA: function(test) {
         test.expect(2);
         var formatter = new AddressFmt({locale: 'ja-JP'});
@@ -1579,7 +1523,6 @@ module.exports.testaddress = {
 
         test.done();
     },
-
     testAddressFmtGetFormatInfoRightRegionNameJA: function(test) {
         test.expect(2);
         var formatter = new AddressFmt({locale: 'ja-JP'});
@@ -1598,7 +1541,6 @@ module.exports.testaddress = {
 
         test.done();
     },
-
     testAddressFmtGetFormatInfoRightRegionNameJA: function(test) {
         test.expect(2);
         var formatter = new AddressFmt({locale: 'ja-JP'});
@@ -1617,7 +1559,6 @@ module.exports.testaddress = {
 
         test.done();
     },
-
     testAddressFmtGetFormatInfoRightRegionNameJATranslated: function(test) {
         test.expect(2);
         var formatter = new AddressFmt({locale: 'ja-JP'});
@@ -1636,7 +1577,6 @@ module.exports.testaddress = {
 
         test.done();
     },
-
     testAddressFmtGetFormatInfoRightRegionNameRU: function(test) {
         test.expect(2);
         var formatter = new AddressFmt({locale: 'ru-RU'});
@@ -1655,7 +1595,6 @@ module.exports.testaddress = {
 
         test.done();
     },
-
     testAddressFmtGetFormatInfoRightRegionNameRUTranslated: function(test) {
         test.expect(2);
         var formatter = new AddressFmt({locale: 'ru-RU'});

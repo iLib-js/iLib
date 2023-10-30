@@ -2,7 +2,7 @@
  * gencountrynames.js - ilib tool to generate the ctrynames.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2022 JEDLSoft
+ * Copyright © 2013-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ var common = require('./common');
 var merge = common.merge;
 var Locale = common.Locale;
 var makeDirs = common.makeDirs;
-
+var stringify = require('json-stable-stringify');
 var Collator = require("../../js/lib/Collator.js");
 
 function usage() {
@@ -310,8 +310,16 @@ function writeResources(language, script, country, data, filePrefix, writeRevers
     if (anyProperties(data)) {
         console.log("Writing " + pathname);
         if (pathname && pathname !== ".") makeDirs(pathname);
-        //data = sortObject(data);
-        fs.writeFileSync(path.join(pathname, filePrefix + "names.json"), JSON.stringify(data, true, 4), "utf-8");
+
+        if (filePrefix === "ctry") {
+            fs.writeFileSync(path.join(pathname, filePrefix + "names.json"), stringify(data, {space: 4,
+                cmp: function(a, b) {
+                     return data[a] < data[b] ? -1 : data[a] > data[b] ? 1 : 0;
+                 }
+            }), "utf-8");
+        } else {
+            fs.writeFileSync(path.join(pathname, filePrefix + "names.json"), stringify(data, {space: 4}), "utf-8");
+        }
 
         if (writeReverse) {
             for (var ctry in data) {
@@ -320,7 +328,7 @@ function writeResources(language, script, country, data, filePrefix, writeRevers
                 }
             }
 
-            fs.writeFileSync(path.join(pathname, filePrefix + "reverse.json"), JSON.stringify(reverse, true, 4), "utf-8");
+            fs.writeFileSync(path.join(pathname, filePrefix + "reverse.json"), stringify(reverse, {space: 4}), "utf-8");
         }
     } else {
         console.log("Skipping empty " + pathname);
@@ -333,21 +341,6 @@ function writeCountryNameResources(language, script, country, data) {
 
 function writeRegionNameResources(language, script, country, data) {
     writeResources(language, script, country, data, "region", false);
-}
-
-function sortObject(obj) {
-    // sort data with value
-    var keys = Object.keys(obj);
-    var sortedInfoObj = {};
-    var key;
-
-    keys.sort(function(a, b){return obj[a] < obj[b] ? -1 : obj[a] > obj[b] ? 1 : 0;});
-
-    for(var i = 0; i < keys.length; i++) {
-        key = keys[i];
-        sortedInfoObj[key] = obj[key];
-    }
-    return sortedInfoObj;
 }
 
 function mergeArrays(array1, array2) {
