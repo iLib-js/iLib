@@ -1,0 +1,19 @@
+{
+    "Day": "Lunaku",
+    "Era": "Mulembe",
+    "Hour": "Saawa",
+    "Minute": "Dakiika",
+    "Month": "Mwezi",
+    "Second": "Kasikonda",
+    "Time Zone": "Ssaawa za:",
+    "Week": "Sabbiiti",
+    "Year": "Mwaka",
+    "D": "L",
+    "DD": "LL",
+    "YY": "MM",
+    "YYYY": "MMMM",
+    "H": "S",
+    "HH": "SS",
+    "mm": "dd",
+    "ss": "kk"
+}

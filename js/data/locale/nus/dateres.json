@@ -1,0 +1,21 @@
+{
+    "AM/PM": "Dayperiod",
+    "Day": "Cäŋ",
+    "Era": "Gua̱a̱th Ruëc",
+    "Hour": "Thaak",
+    "Minute": "Minit",
+    "Month": "Pay",
+    "Second": "Thɛkɛni",
+    "Time Zone": "Zone",
+    "Week": "Jiɔk",
+    "Year": "Ruɔ̱n",
+    "D": "C",
+    "DD": "CC",
+    "YY": "RR",
+    "YYYY": "RRRR",
+    "M": "P",
+    "MM": "PP",
+    "H": "T",
+    "HH": "TT",
+    "ss": "tt"
+}

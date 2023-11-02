@@ -1,0 +1,21 @@
+{
+    "Day": "Hari",
+    "Day of Year": "Hari dalam Setahun",
+    "Hour": "Jam",
+    "Minute": "Menit",
+    "Month": "Bulan",
+    "Second": "Detik",
+    "Time Zone": "Zona waktu",
+    "Week": "Minggu",
+    "Week of Month": "Minggu",
+    "Year": "Tahun",
+    "D": "H",
+    "DD": "HH",
+    "YY": "TT",
+    "YYYY": "TTTT",
+    "M": "B",
+    "MM": "BB",
+    "H": "J",
+    "HH": "JJ",
+    "ss": "dd"
+}

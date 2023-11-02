@@ -1,0 +1,19 @@
+{
+    "AM/PM": "Mfiri o siku",
+    "Day": "Mfiri",
+    "Era": "Kacha",
+    "Hour": "Saa",
+    "Minute": "Dakyika",
+    "Month": "Mori",
+    "Second": "Sekunde",
+    "Time Zone": "Mfiri o saa",
+    "Week": "Wiikyi",
+    "Year": "Maka",
+    "D": "M",
+    "DD": "MM",
+    "YY": "MM",
+    "YYYY": "MMMM",
+    "H": "S",
+    "HH": "SS",
+    "mm": "dd"
+}

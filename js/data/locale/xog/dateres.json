@@ -1,0 +1,22 @@
+{
+    "AM/PM": "munkyo/Eigulo",
+    "Day": "Olunaku",
+    "Era": "Emulembe",
+    "Hour": "Essawa",
+    "Minute": "Edakiika",
+    "Month": "Omwezi",
+    "Second": "Obutikitiki",
+    "Time Zone": "Essawa edha",
+    "Week": "Esabiiti",
+    "Year": "Omwaka",
+    "D": "O",
+    "DD": "OO",
+    "YY": "OO",
+    "YYYY": "OOOO",
+    "M": "O",
+    "MM": "OO",
+    "H": "E",
+    "HH": "EE",
+    "mm": "ee",
+    "ss": "oo"
+}

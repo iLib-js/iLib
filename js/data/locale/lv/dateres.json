@@ -1,0 +1,18 @@
+{
+    "AM/PM": "priekšpusdienā/pēcpusdienā",
+    "Day": "diena",
+    "Day of Year": "gada diena",
+    "Era": "ēra",
+    "Hour": "stundas",
+    "Minute": "minūtes",
+    "Month": "mēnesis",
+    "Second": "sekundes",
+    "Time Zone": "laika josla",
+    "Week": "nedēļa",
+    "Week of Month": "mēneša nedēļa",
+    "Year": "gads",
+    "YY": "GG",
+    "YYYY": "GGGG",
+    "H": "S",
+    "HH": "SS"
+}

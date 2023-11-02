@@ -1,0 +1,18 @@
+{
+    "AM/PM": "Dayperiod",
+    "Day": "Zuva",
+    "Era": "Mukore",
+    "Hour": "Awa",
+    "Minute": "Mineti",
+    "Month": "Mwedzi",
+    "Second": "Sekondi",
+    "Time Zone": "Nguva",
+    "Week": "Vhiki",
+    "Year": "Gore",
+    "D": "Z",
+    "DD": "ZZ",
+    "YY": "GG",
+    "YYYY": "GGGG",
+    "H": "A",
+    "HH": "AA"
+}

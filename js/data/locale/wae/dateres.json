@@ -1,0 +1,17 @@
+{
+    "Day": "Tag",
+    "Era": "Epoča",
+    "Hour": "Schtund",
+    "Minute": "Mínütta",
+    "Month": "Mánet",
+    "Second": "Sekunda",
+    "Time Zone": "Zitzóna",
+    "Week": "Wuča",
+    "Year": "Jár",
+    "D": "T",
+    "DD": "TT",
+    "YY": "JJ",
+    "YYYY": "JÁR",
+    "H": "S",
+    "HH": "SS"
+}

@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
  *
- * Copyright © 2017-2018, 2020-2022 JEDLSoft
+ * Copyright © 2017-2018, 2020-2023 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
  */
 
 module.exports.files = [
+    "testdatefmtinfo.js",
     "testclock.js",
     "testcalendar.js",
     "testdate.js",

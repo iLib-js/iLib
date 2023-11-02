@@ -1,0 +1,19 @@
+{
+    "AM/PM": "isuk/wengi",
+    "Day": "dino",
+    "Era": "era",
+    "Hour": "jam",
+    "Minute": "menit",
+    "Month": "sasi",
+    "Second": "detik",
+    "Time Zone": "zona wektu",
+    "Week": "pekan",
+    "Year": "taun",
+    "YY": "TT",
+    "YYYY": "TTTT",
+    "M": "S",
+    "MM": "SS",
+    "H": "J",
+    "HH": "JJ",
+    "ss": "dd"
+}

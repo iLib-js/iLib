@@ -1,0 +1,18 @@
+{
+    "AM/PM": "iki pietų / po pietų",
+    "Day": "diena",
+    "Day of Year": "metų diena",
+    "Era": "era",
+    "Hour": "valanda",
+    "Minute": "minutė",
+    "Month": "mėnuo",
+    "Second": "sekundė",
+    "Time Zone": "laiko juosta",
+    "Week": "savaitė",
+    "Week of Month": "mėnesio savaitė",
+    "Year": "metai",
+    "YY": "MM",
+    "YYYY": "MMMM",
+    "H": "V",
+    "HH": "VV"
+}

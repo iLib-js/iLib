@@ -1,0 +1,20 @@
+{
+    "AM/PM": "BE/KE",
+    "Day": "Betut",
+    "Era": "Ibinta",
+    "Hour": "Sait",
+    "Minute": "Minitit",
+    "Month": "Arawet",
+    "Second": "Sekondit",
+    "Time Zone": "Saitab sonit",
+    "Week": "Wikit",
+    "Year": "Kenyit",
+    "D": "B",
+    "DD": "BB",
+    "YY": "KK",
+    "YYYY": "KKKK",
+    "M": "A",
+    "MM": "AA",
+    "H": "S",
+    "HH": "SS"
+}

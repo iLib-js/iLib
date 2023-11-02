@@ -1,0 +1,21 @@
+{
+    "AM/PM": "m/f",
+    "Day": "latha",
+    "Day of Year": "là dhen bhliadhna",
+    "Era": "linn",
+    "Hour": "uair a thìde",
+    "Minute": "mionaid",
+    "Month": "mìos",
+    "Second": "diog",
+    "Time Zone": "roinn-tìde",
+    "Week": "seachdain",
+    "Week of Month": "seachdain dhen mhìos",
+    "Year": "bliadhna",
+    "D": "L",
+    "DD": "LL",
+    "YY": "BB",
+    "YYYY": "BBBB",
+    "H": "U",
+    "HH": "UU",
+    "ss": "dd"
+}

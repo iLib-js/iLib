@@ -1,0 +1,22 @@
+{
+    "AM/PM": "Kírí / Ngəgógəle",
+    "Day": "Amǒs",
+    "Era": "Abǒg",
+    "Hour": "Awola",
+    "Minute": "Enútɛn",
+    "Month": "Ngɔn",
+    "Second": "Akábəga",
+    "Time Zone": "Nkɔŋ Awola",
+    "Week": "Sɔ́ndɔ",
+    "Year": "M̀bú",
+    "D": "A",
+    "DD": "AA",
+    "YY": "MM",
+    "YYYY": "MMMM",
+    "M": "N",
+    "MM": "NN",
+    "H": "A",
+    "HH": "AA",
+    "mm": "ee",
+    "ss": "aa"
+}

@@ -1,0 +1,22 @@
+{
+    "AM/PM": "ÖÖ/ÖS",
+    "Day": "gün",
+    "Day of Year": "yılın günü",
+    "Era": "çağ",
+    "Hour": "saat",
+    "Minute": "dakika",
+    "Month": "ay",
+    "Second": "saniye",
+    "Time Zone": "saat dilimi",
+    "Week": "hafta",
+    "Week of Month": "ayın haftası",
+    "Year": "yıl",
+    "D": "G",
+    "DD": "GG",
+    "YYYY": "YIL",
+    "M": "AY",
+    "MM": "AY",
+    "H": "S",
+    "HH": "SS",
+    "mm": "dd"
+}

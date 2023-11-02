@@ -1,0 +1,19 @@
+{
+    "Day": "giorno",
+    "Day of Year": "giorno dell’anno",
+    "Era": "era",
+    "Hour": "ora",
+    "Minute": "minuto",
+    "Month": "mese",
+    "Second": "secondo",
+    "Time Zone": "fuso orario",
+    "Week": "settimana",
+    "Week of Month": "settimana del mese",
+    "Year": "anno",
+    "D": "G",
+    "DD": "GG",
+    "YY": "AA",
+    "YYYY": "AAAA",
+    "H": "O",
+    "HH": "OO"
+}

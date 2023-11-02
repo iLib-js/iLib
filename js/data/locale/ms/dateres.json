@@ -1,0 +1,19 @@
+{
+    "AM/PM": "PG/PTG",
+    "Day": "Hari",
+    "Hour": "Jam",
+    "Minute": "Minit",
+    "Month": "Bulan",
+    "Second": "Saat",
+    "Time Zone": "Zon waktu",
+    "Week": "Minggu",
+    "Year": "Tahun",
+    "D": "H",
+    "DD": "HH",
+    "YY": "TT",
+    "YYYY": "TTTT",
+    "M": "B",
+    "MM": "BB",
+    "H": "J",
+    "HH": "JJ"
+}
