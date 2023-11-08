@@ -7055,6 +7055,10 @@
             "name": "Scillyøyene"
         },
         {
+            "code": "SCT",
+            "name": "Scotland"
+        },
+        {
             "code": "SCB",
             "name": "Scottish Borders"
         },
@@ -7073,10 +7077,6 @@
         {
             "code": "SHR",
             "name": "Shropshire"
-        },
-        {
-            "code": "SCT",
-            "name": "Skottland"
         },
         {
             "code": "SLG",

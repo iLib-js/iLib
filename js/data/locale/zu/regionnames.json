@@ -6691,24 +6691,20 @@
             "name": "Hounslow"
         },
         {
-            "code": "ENG",
-            "name": "I-England"
-        },
-        {
-            "code": "SCT",
-            "name": "I-Scotland"
-        },
-        {
-            "code": "WLS",
-            "name": "i-Wales"
-        },
-        {
             "code": "LND",
             "name": "Idolobha weLondon"
         },
         {
+            "code": "ENG",
+            "name": "INgilandi"
+        },
+        {
             "code": "IVC",
             "name": "Inverclyde"
+        },
+        {
+            "code": "SCT",
+            "name": "IsiKotilandi"
         },
         {
             "code": "IOW",
@@ -6721,6 +6717,10 @@
         {
             "code": "ISL",
             "name": "Islington"
+        },
+        {
+            "code": "WLS",
+            "name": "IWelisi"
         },
         {
             "code": "KEC",

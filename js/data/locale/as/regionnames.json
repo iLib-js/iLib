@@ -6263,16 +6263,8 @@
             "name": "যুক্তৰাজ্য"
         },
         {
-            "code": "WLS",
-            "name": "ৱেলছ্"
-        },
-        {
             "code": "SHF",
             "name": "শ্বেফিল্ড"
-        },
-        {
-            "code": "SCT",
-            "name": "স্কটলেণ্ড"
         },
         {
             "code": "ABE",
@@ -7039,6 +7031,10 @@
             "name": "Sandwell"
         },
         {
+            "code": "SCT",
+            "name": "Scotland"
+        },
+        {
             "code": "SCB",
             "name": "Scottish Borders"
         },
@@ -7177,6 +7173,10 @@
         {
             "code": "WKF",
             "name": "Wakefield"
+        },
+        {
+            "code": "WLS",
+            "name": "Wales"
         },
         {
             "code": "WLL",

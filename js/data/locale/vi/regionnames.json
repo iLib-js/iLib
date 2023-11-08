@@ -6304,7 +6304,7 @@
         },
         {
             "code": "ENG",
-            "name": "Anh Quốc"
+            "name": "Anh"
         },
         {
             "code": "ANT",
@@ -7215,6 +7215,10 @@
             "name": "Wakefield"
         },
         {
+            "code": "WLS",
+            "name": "Wales"
+        },
+        {
             "code": "WLL",
             "name": "Walsall"
         },
@@ -7277,10 +7281,6 @@
         {
             "code": "WRX",
             "name": "Wrexham"
-        },
-        {
-            "code": "WLS",
-            "name": "Xứ Wales"
         },
         {
             "code": "YOR",

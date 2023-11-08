@@ -877,7 +877,7 @@ module.exports.testaddress = {
         test.done();
     },
     testAddressFmtGetFormatInfoENCountriesRightSortOrder: function(test) {
-        test.expect(262);
+        test.expect(263);
         var formatter = new AddressFmt({locale: 'en-US'});
 
         var info = formatter.getFormatInfo();
@@ -1079,6 +1079,7 @@ module.exports.testaddress = {
             "Samoa",
             "San Marino",
             "São Tomé & Príncipe",
+            "Sark",
             "Saudi Arabia",
             "Senegal",
             "Serbia",
@@ -1120,7 +1121,7 @@ module.exports.testaddress = {
             "Trinidad & Tobago",
             "Tristan da Cunha",
             "Tunisia",
-            "Turkey",
+            "Türkiye",
             "Turkmenistan",
             "Turks & Caicos Islands",
             "Tuvalu",
@@ -1155,7 +1156,7 @@ module.exports.testaddress = {
         test.done();
     },
     testAddressFmtGetFormatInfoESCountriesRightSortOrder: function(test) {
-        test.expect(262);
+        test.expect(263);
         var formatter = new AddressFmt({locale: 'en-US'});
 
         var info = formatter.getFormatInfo("es");
@@ -1374,6 +1375,7 @@ module.exports.testaddress = {
             "Santa Elena",
             "Santa Lucía",
             "Santo Tomé y Príncipe",
+            "Sark",
             "Senegal",
             "Serbia",
             "Seychelles",

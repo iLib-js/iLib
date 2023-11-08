@@ -30,7 +30,6 @@ module.exports.testcountry = {
         ilib.clearCache();
         callback();
     },
-
     testCountryConstructorEmpty: function(test) {
         test.expect(1);
         var ctry = new Country();
@@ -38,7 +37,6 @@ module.exports.testcountry = {
         test.ok(ctry !== null);
         test.done();
     },
-
     testCountryDefaultLocale: function(test) {
         test.expect(3);
         var ctry = new Country();
@@ -49,7 +47,6 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "en-US");
         test.done();
     },
-
     testCountryWrongLocale: function(test) {
         test.expect(5);
         var ctry = new Country({
@@ -64,7 +61,6 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "abc-YZ");
         test.done();
     },
-
     testCountryLocale1: function(test) {
         test.expect(4);
         var ctry = new Country({
@@ -78,7 +74,6 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "ko-KR");
         test.done();
     },
-
     testCountryLocale2: function(test) {
         test.expect(4);
         var ctry = new Country({
@@ -92,7 +87,6 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "en-US");
         test.done();
     },
-
     testCountryLocale3: function(test) {
         test.expect(4);
         var ctry = new Country({
@@ -106,7 +100,6 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "zh-Hans-CN");
         test.done();
     },
-
     testCountryLocale4: function(test) {
         test.expect(4);
         var ctry = new Country({
@@ -326,6 +319,58 @@ module.exports.testcountry = {
         test.equal(ctry.getCode("Macau Txinako AEB"), "MO");
         var locale = ctry.getLocale();
         test.equal(locale.toString(), "eu-ES");
+        test.done();
+    },
+    testCountryLocale11: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ko-KR"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("TR"),"튀르키예");
+        test.equal(ctry.getCode("튀르키예"), "TR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ko-KR");
+        test.done();
+    },
+    testCountryLocale12: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "en-GB"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("CQ"),"Sark");
+        test.equal(ctry.getCode("Sark"), "CQ");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "en-GB");
+        test.done();
+    },
+    testCountryLocale13: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "en-US"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("TR"),"Türkiye");
+        test.equal(ctry.getCode("Türkiye"), "TR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "en-US");
+        test.done();
+    },
+    testCountryLocale14: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "es-ES"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("TR"),"Turquía");
+        test.equal(ctry.getCode("Turquía"), "TR");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "es-ES");
         test.done();
     },
     testCountryLocale_zu_ZA: function(test) {
@@ -584,7 +629,6 @@ module.exports.testcountry = {
         }
         test.done();
     },
-
     testCountryGetByNameUnknown: function(test) {
         try {
             var ctry = new Country();
@@ -594,7 +638,6 @@ module.exports.testcountry = {
         }
         test.done();
     },
-
     testCountryAsync: function(test) {
         test.expect(4);
         new Country({

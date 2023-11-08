@@ -6267,14 +6267,6 @@
             "name": "ଲଣ୍ଡନ"
         },
         {
-            "code": "WLS",
-            "name": "ୱେଲ୍ସ"
-        },
-        {
-            "code": "SCT",
-            "name": "ସ୍କଟଲ୍ୟାଣ୍ଡ"
-        },
-        {
             "code": "ABE",
             "name": "Aberdeen"
         },
@@ -7035,6 +7027,10 @@
             "name": "Sandwell"
         },
         {
+            "code": "SCT",
+            "name": "Scotland"
+        },
+        {
             "code": "SCB",
             "name": "Scottish Borders"
         },
@@ -7177,6 +7173,10 @@
         {
             "code": "WKF",
             "name": "Wakefield"
+        },
+        {
+            "code": "WLS",
+            "name": "Wales"
         },
         {
             "code": "WLL",
