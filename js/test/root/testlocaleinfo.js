@@ -11312,6 +11312,13 @@ module.exports.testlocaleinfo = {
         test.equal(li.getRegionName(), "Pseudo-Bidi");
         test.done();
     },
+    testLocaleInfoGetRegionName10: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("TR");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getRegionName(), "Türkiye");
+        test.done();
+    },
     testGetDigitsWestern: function(test) {
         test.expect(2);
         var li = new LocaleInfo("en-US");
