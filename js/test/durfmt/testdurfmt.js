@@ -8074,5 +8074,4 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1 ano, 1 mês, 1 semana, 1 dia, 1 hora, 1 minuto e 1 segundo");
         test.done();
     }
-
 };

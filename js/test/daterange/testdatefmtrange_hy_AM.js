@@ -33,7 +33,6 @@ module.exports.testdatefmtrange_hy_AM = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmthyAMRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hy-AM", length: "short"});
@@ -138,7 +137,6 @@ module.exports.testdatefmtrange_hy_AM = {
         test.equal(fmt.format(start, end), "2011 թ. դեկտեմբերի 31, 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmthyAMRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hy-AM", length: "short"});
@@ -243,7 +241,6 @@ module.exports.testdatefmtrange_hy_AM = {
         test.equal(fmt.format(start, end), "2011 թ. դեկտեմբերի 30, 13:45 – 2011 թ. դեկտեմբերի 31, 14:30");
         test.done();
     },
-
     testDateRngFmthyAMRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hy-AM", length: "short"});
@@ -348,7 +345,6 @@ module.exports.testdatefmtrange_hy_AM = {
         test.equal(fmt.format(start, end), "2011 թ. դեկտեմբերի 20 – 31");
         test.done();
     },
-
     testDateRngFmthyAMRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hy-AM", length: "short"});
@@ -453,7 +449,6 @@ module.exports.testdatefmtrange_hy_AM = {
         test.equal(fmt.format(start, end), "2011 թ. նոյեմբերի 20 – դեկտեմբերի 31");
         test.done();
     },
-
     testDateRngFmthyAMRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hy-AM", length: "short"});
@@ -558,7 +553,6 @@ module.exports.testdatefmtrange_hy_AM = {
         test.equal(fmt.format(start, end), "2011 թ. նոյեմբերի 20 – 2012 թ. հունվարի 31");
         test.done();
     },
-
     testDateRngFmthyAMRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hy-AM", length: "short"});

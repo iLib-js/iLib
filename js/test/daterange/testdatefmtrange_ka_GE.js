@@ -33,7 +33,6 @@ module.exports.testdatefmtrange_ka_GE = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtkaGERangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ka-GE", length: "short"});
@@ -138,7 +137,6 @@ module.exports.testdatefmtrange_ka_GE = {
         test.equal(fmt.format(start, end), "31 დეკემბერი, 2011, 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtkaGERangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ka-GE", length: "short"});
@@ -243,7 +241,6 @@ module.exports.testdatefmtrange_ka_GE = {
         test.equal(fmt.format(start, end), "30 დეკემბერი, 2011, 13:45 – 31 დეკემბერი, 2011, 14:30");
         test.done();
     },
-
     testDateRngFmtkaGERangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ka-GE", length: "short"});
@@ -348,7 +345,6 @@ module.exports.testdatefmtrange_ka_GE = {
         test.equal(fmt.format(start, end), "20 – 31 დეკემბერი, 2011");
         test.done();
     },
-
     testDateRngFmtkaGERangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ka-GE", length: "short"});
@@ -453,7 +449,6 @@ module.exports.testdatefmtrange_ka_GE = {
         test.equal(fmt.format(start, end), "20 ნოემბერი – 31 დეკემბერი, 2011");
         test.done();
     },
-
     testDateRngFmtkaGERangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ka-GE", length: "short"});
@@ -558,7 +553,6 @@ module.exports.testdatefmtrange_ka_GE = {
         test.equal(fmt.format(start, end), "20 ნოემბერი, 2011 – 31 იანვარი, 2012");
         test.done();
     },
-
     testDateRngFmtkaGERangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ka-GE", length: "short"});

@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_de_DE = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtDERangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "de-DE", length: "short"});
@@ -137,7 +136,6 @@ module.exports.testdatefmtrange_de_DE = {
         test.equal(fmt.format(start, end), "31. Dezember 2011 um 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtDERangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "de-DE", length: "short"});
@@ -242,7 +240,6 @@ module.exports.testdatefmtrange_de_DE = {
         test.equal(fmt.format(start, end), "30. Dezember 2011 um 13:45 – 31. Dezember 2011 um 14:30");
         test.done();
     },
-
     testDateRngFmtDERangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "de-DE", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_de_DE = {
         test.equal(fmt.format(start, end), "20 – 31. Dezember 2011");
         test.done();
     },
-
     testDateRngFmtDERangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "de-DE", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_de_DE = {
         test.equal(fmt.format(start, end), "20. November – 31. Dezember 2011");
         test.done();
     },
-
     testDateRngFmtDERangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "de-DE", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_de_DE = {
         test.equal(fmt.format(start, end), "20. November 2011 – 31. Januar 2012");
         test.done();
     },
-
     testDateRngFmtDERangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "de-DE", length: "short"});
@@ -688,5 +682,4 @@ module.exports.testdatefmtrange_de_DE = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

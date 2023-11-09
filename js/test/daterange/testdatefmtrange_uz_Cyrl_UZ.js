@@ -33,7 +33,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtCyrl_UZRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "uz-Cyrl-UZ", length: "short"});
@@ -138,7 +137,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.equal(fmt.format(start, end), "31 декабр, 2011 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtCyrl_UZRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "uz-Cyrl-UZ", length: "short"});
@@ -243,7 +241,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.equal(fmt.format(start, end), "30 декабр, 2011 13:45 – 31 декабр, 2011 14:30");
         test.done();
     },
-
     testDateRngFmtCyrl_UZRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "uz-Cyrl-UZ", length: "short"});
@@ -348,7 +345,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.equal(fmt.format(start, end), "20 – 31 декабр, 2011");
         test.done();
     },
-
     testDateRngFmtCyrl_UZRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "uz-Cyrl-UZ", length: "short"});
@@ -453,7 +449,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.equal(fmt.format(start, end), "20 ноябр – 31 декабр, 2011");
         test.done();
     },
-
     testDateRngFmtCyrl_UZRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "uz-Cyrl-UZ", length: "short"});
@@ -558,7 +553,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.equal(fmt.format(start, end), "20 ноябр, 2011 – 31 январ, 2012");
         test.done();
     },
-
     testDateRngFmtCyrl_UZRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "uz-Cyrl-UZ", length: "short"});
@@ -689,5 +683,4 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

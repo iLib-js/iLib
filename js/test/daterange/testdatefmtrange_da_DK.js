@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_da_DK = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtDKRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "da-DK", length: "short"});
@@ -137,7 +136,6 @@ module.exports.testdatefmtrange_da_DK = {
         test.equal(fmt.format(start, end), "31. december 2011 kl. 13.45 – 14.30");
         test.done();
     },
-
     testDateRngFmtDKRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "da-DK", length: "short"});
@@ -242,7 +240,6 @@ module.exports.testdatefmtrange_da_DK = {
         test.equal(fmt.format(start, end), "30. december 2011 kl. 13.45 – 31. december 2011 kl. 14.30");
         test.done();
     },
-
     testDateRngFmtDKRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "da-DK", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_da_DK = {
         test.equal(fmt.format(start, end), "20 – 31. december 2011");
         test.done();
     },
-
     testDateRngFmtDKRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "da-DK", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_da_DK = {
         test.equal(fmt.format(start, end), "20. november – 31. december 2011");
         test.done();
     },
-
     testDateRngFmtDKRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "da-DK", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_da_DK = {
         test.equal(fmt.format(start, end), "20. november 2011 – 31. januar 2012");
         test.done();
     },
-
     testDateRngFmtDKRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "da-DK", length: "short"});
@@ -688,5 +682,4 @@ module.exports.testdatefmtrange_da_DK = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

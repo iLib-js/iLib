@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_tr_TR = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtTRRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "tr-TR", length: "short"});
@@ -137,7 +136,6 @@ module.exports.testdatefmtrange_tr_TR = {
         test.equal(fmt.format(start, end), "31 Aralık 2011 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtTRRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "tr-TR", length: "short"});
@@ -242,7 +240,6 @@ module.exports.testdatefmtrange_tr_TR = {
         test.equal(fmt.format(start, end), "30 Aralık 2011 13:45 – 31 Aralık 2011 14:30");
         test.done();
     },
-
     testDateRngFmtTRRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "tr-TR", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_tr_TR = {
         test.equal(fmt.format(start, end), "20 – 31 Aralık 2011");
         test.done();
     },
-
     testDateRngFmtTRRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "tr-TR", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_tr_TR = {
         test.equal(fmt.format(start, end), "20 Kasım – 31 Aralık 2011");
         test.done();
     },
-
     testDateRngFmtTRRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "tr-TR", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_tr_TR = {
         test.equal(fmt.format(start, end), "20 Kasım 2011 – 31 Ocak 2012");
         test.done();
     },
-
     testDateRngFmtTRRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "tr-TR", length: "short"});
@@ -688,5 +682,4 @@ module.exports.testdatefmtrange_tr_TR = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

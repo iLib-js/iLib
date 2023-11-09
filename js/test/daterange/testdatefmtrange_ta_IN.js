@@ -33,7 +33,6 @@ module.exports.testdatefmtrange_ta_IN = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtRangeinDayShort_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ta-IN", length: "short"});
@@ -138,7 +137,6 @@ module.exports.testdatefmtrange_ta_IN = {
         test.equal(fmt.format(start, end), '31 டிசம்பர், 2011 அன்று பிற்பகல் 1:45 – பிற்பகல் 2:30');
         test.done();
     },
-
     testDateRngFmtRangeNextDayShort_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ta-IN", length: "short"});
@@ -243,7 +241,6 @@ module.exports.testdatefmtrange_ta_IN = {
         test.equal(fmt.format(start, end), '30 டிசம்பர், 2011 அன்று பிற்பகல் 1:45 – 31 டிசம்பர், 2011 அன்று பிற்பகல் 2:30');
         test.done();
     },
-
     testDateRngFmtRangeMultiDayShort_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ta-IN", length: "short"});
@@ -348,7 +345,6 @@ module.exports.testdatefmtrange_ta_IN = {
         test.equal(fmt.format(start, end), "20 – 31 டிசம்பர், 2011");
         test.done();
     },
-
     testDateRngFmtRangeNextMonthShort_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ta-IN", length: "short"});
@@ -453,7 +449,6 @@ module.exports.testdatefmtrange_ta_IN = {
         test.equal(fmt.format(start, end), "20 நவம்பர் – 31 டிசம்பர், 2011");
         test.done();
     },
-
     testDateRngFmtRangeNextYearShort_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ta-IN", length: "short"});
@@ -558,7 +553,6 @@ module.exports.testdatefmtrange_ta_IN = {
         test.equal(fmt.format(start, end), "20 நவம்பர், 2011 – 31 ஜனவரி, 2012");
         test.done();
     },
-
     testDateRngFmtRangeMultiYearShort_ta_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ta-IN", length: "short"});
@@ -689,5 +683,4 @@ module.exports.testdatefmtrange_ta_IN = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_pl_PL = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtPLRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "pl-PL", length: "short"});
@@ -137,7 +136,6 @@ module.exports.testdatefmtrange_pl_PL = {
         test.equal(fmt.format(start, end), "31 grudnia 2011 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtPLRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "pl-PL", length: "short"});
@@ -242,7 +240,6 @@ module.exports.testdatefmtrange_pl_PL = {
         test.equal(fmt.format(start, end), "30 grudnia 2011 13:45 – 31 grudnia 2011 14:30");
         test.done();
     },
-
     testDateRngFmtPLRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "pl-PL", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_pl_PL = {
         test.equal(fmt.format(start, end), "20 – 31 grudnia 2011");
         test.done();
     },
-
     testDateRngFmtPLRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "pl-PL", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_pl_PL = {
         test.equal(fmt.format(start, end), "20 listopada – 31 grudnia 2011");
         test.done();
     },
-
     testDateRngFmtPLRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "pl-PL", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_pl_PL = {
         test.equal(fmt.format(start, end), "20 listopada 2011 – 31 stycznia 2012");
         test.done();
     },
-
     testDateRngFmtPLRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "pl-PL", length: "short"});
@@ -688,5 +682,4 @@ module.exports.testdatefmtrange_pl_PL = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

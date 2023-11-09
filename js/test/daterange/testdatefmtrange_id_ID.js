@@ -682,5 +682,4 @@ module.exports.testdatefmtrange_id_ID = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

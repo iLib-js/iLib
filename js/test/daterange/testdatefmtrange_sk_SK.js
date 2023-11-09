@@ -683,5 +683,4 @@ module.exports.testdatefmtrange_sk_SK = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

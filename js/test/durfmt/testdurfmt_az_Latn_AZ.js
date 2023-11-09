@@ -29,7 +29,6 @@ module.exports.testdurfmt_az_Latn_AZ = {
         ilib.clearCache();
         callback();
     },
-
     testDurFmtAZFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -50,7 +49,6 @@ module.exports.testdurfmt_az_Latn_AZ = {
         test.equal(duration.toString(), "1 il, 1 ay, 1 hft, 1 gün, 1 saat, 1 dəq, 1 san");
         test.done();
     },
-
     testDurFmtAZFormatShortText: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -72,7 +70,6 @@ module.exports.testdurfmt_az_Latn_AZ = {
         test.equal(duration.toString(), "1 il, 1 ay, 1 hft, 1 gün, 1 saat, 1 dəq, 1 san");
         test.done();
     },
-
     testDurFmtAZFormatShortClock: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -94,7 +91,6 @@ module.exports.testdurfmt_az_Latn_AZ = {
         test.equal(duration.toString(), "1 il, 1 ay, 1 hft, 1 gün, 01:01:01");
         test.done();
     },
-
     testDurFmtAZFormatMedium: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -115,7 +111,6 @@ module.exports.testdurfmt_az_Latn_AZ = {
         test.equal(duration.toString(), "1 il, 1 ay, 1 hft, 1 gün, 1 saat, 1 dəq, 1 san");
         test.done();
     },
-
     testDurFmtAZFormatLong: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -136,7 +131,6 @@ module.exports.testdurfmt_az_Latn_AZ = {
         test.equal(duration.toString(), "1 il, 1 ay, 1 hft, 1 gün, 1 saat, 1 dəq, 1 san");
         test.done();
     },
-
     testDurFmtAZFormatFull: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -157,8 +151,6 @@ module.exports.testdurfmt_az_Latn_AZ = {
         test.equal(duration.toString(), "1 il, 1 ay, 1 həftə, 1 gün, 1 saat, 1 dəqiqə, 1 saniyə");
         test.done();
     },
-
-
     testDurFmtAZAsyncWithLocale: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -182,7 +174,6 @@ module.exports.testdurfmt_az_Latn_AZ = {
             }
         });
     },
-
     testDurFmtAZFormatShortClockAsync: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -207,5 +198,4 @@ module.exports.testdurfmt_az_Latn_AZ = {
             }
         });
     }
-
 };

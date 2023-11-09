@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_km_KH = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtKHRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "km-KH", length: "short"});
@@ -137,7 +136,6 @@ module.exports.testdatefmtrange_km_KH = {
         test.equal(fmt.format(start, end), "31 ធ្នូ 2011 នៅ​ម៉ោង 1:45 PM – 2:30 PM");
         test.done();
     },
-
     testDateRngFmtKHRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "km-KH", length: "short"});
@@ -242,7 +240,6 @@ module.exports.testdatefmtrange_km_KH = {
         test.equal(fmt.format(start, end), "30 ធ្នូ 2011 នៅ​ម៉ោង 1:45 PM – 31 ធ្នូ 2011 នៅ​ម៉ោង 2:30 PM");
         test.done();
     },
-
     testDateRngFmtKHRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "km-KH", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_km_KH = {
         test.equal(fmt.format(start, end), "20 – 31 ធ្នូ 2011");
         test.done();
     },
-
     testDateRngFmtKHRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "km-KH", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_km_KH = {
         test.equal(fmt.format(start, end), "20 វិច្ឆិកា – 31 ធ្នូ 2011");
         test.done();
     },
-
     testDateRngFmtKHRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "km-KH", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_km_KH = {
         test.equal(fmt.format(start, end), "20 វិច្ឆិកា 2011 – 31 មករា 2012");
         test.done();
     },
-
     testDateRngFmtKHRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "km-KH", length: "short"});

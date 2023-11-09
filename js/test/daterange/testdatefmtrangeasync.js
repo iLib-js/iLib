@@ -45,7 +45,6 @@ module.exports.testdatefmtrangeasync = {
         });
 
     },
-
     testDateRngFmtGetCalendarExplicit: function(test) {
         test.expect(3);
         new DateRngFmt({
@@ -61,7 +60,6 @@ module.exports.testdatefmtrangeasync = {
             }
         });
     },
-
     testDateRngFmtGetCalendarNotInThisLocale: function(test) {
         new DateRngFmt({
             calendar: "arabic",
@@ -74,7 +72,6 @@ module.exports.testdatefmtrangeasync = {
             }
         });
     },
-
     testDateRngFmtGetLocale: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
@@ -88,7 +85,6 @@ module.exports.testdatefmtrangeasync = {
             }
         });
     },
-
     testDateRngFmtGetTimeZone: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
@@ -103,7 +99,6 @@ module.exports.testdatefmtrangeasync = {
             }
         });
     },
-
     testDateRngFmtGetDefaultLocale: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
@@ -117,9 +112,7 @@ module.exports.testdatefmtrangeasync = {
             }
         });
     },
-
     //Miscellaneous UnitTest
-
     testDateRngFmtesPAMultiDayMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
@@ -158,7 +151,6 @@ module.exports.testdatefmtrangeasync = {
             }
         });
     },
-
     testDateRngFmtesPRNextMonthMedium: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
@@ -197,7 +189,6 @@ module.exports.testdatefmtrangeasync = {
             }
         });
     },
-
     testDateRngFmtAcceptJSIntrisicDates: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({
@@ -214,7 +205,6 @@ module.exports.testdatefmtrangeasync = {
             }
         });
     },
-
     testDateRngFmtAcceptUnixTimes: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({

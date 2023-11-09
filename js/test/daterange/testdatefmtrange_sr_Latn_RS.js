@@ -33,7 +33,6 @@ module.exports.testdatefmtrange_sr_Latn_RS = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtRSRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "short"});
@@ -138,7 +137,6 @@ module.exports.testdatefmtrange_sr_Latn_RS = {
         test.equal(fmt.format(start, end), "31. decembar 2011. 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtRSRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "short"});
@@ -244,7 +242,6 @@ module.exports.testdatefmtrange_sr_Latn_RS = {
         test.equal(fmt.format(start, end), "30. decembar 2011. 13:45 – 31. decembar 2011. 14:30");
         test.done();
     },
-
     testDateRngFmtRSRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "short"});
@@ -349,7 +346,6 @@ module.exports.testdatefmtrange_sr_Latn_RS = {
         test.equal(fmt.format(start, end), "20 – 31. decembar 2011.");
         test.done();
     },
-
     testDateRngFmtRSRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "short"});
@@ -454,7 +450,6 @@ module.exports.testdatefmtrange_sr_Latn_RS = {
         test.equal(fmt.format(start, end), "20. novembar – 31. decembar 2011.");
         test.done();
     },
-
     testDateRngFmtRSRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "short"});
@@ -559,7 +554,6 @@ module.exports.testdatefmtrange_sr_Latn_RS = {
         test.equal(fmt.format(start, end), "20. novembar 2011. – 31. januar 2012.");
         test.done();
     },
-
     testDateRngFmtRSRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "short"});
@@ -690,5 +684,4 @@ module.exports.testdatefmtrange_sr_Latn_RS = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };
