@@ -299,8 +299,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Mr. John Smith");
         test.done();
     },
-
-
     testNameFmtDEShort: function(test) {
         test.expect(1);
         var name = new Name({

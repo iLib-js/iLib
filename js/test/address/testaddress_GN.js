@@ -40,7 +40,7 @@ module.exports.testaddress_GN = {
         test.equal(parsedAddress.streetAddress, "Office de la poste guinéenne Direction générale 001 BP 2984");
         test.equal(parsedAddress.region, "CONAKRY");
         test.ok(typeof(parsedAddress.locality) === "undefined");
-            test.ok(typeof(parsedAddress.postalCode) === "undefined");
+        test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.equal(parsedAddress.country, "guinée");
         test.equal(parsedAddress.countryCode, "GN");
         test.done();

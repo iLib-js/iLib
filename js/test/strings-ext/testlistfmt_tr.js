@@ -235,7 +235,6 @@ module.exports.testlistfmt_tr = {
         test.done();
     },
     // tr-AZ
-
     testListFmttrAMNumberFormatOneMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AZ",
@@ -341,7 +340,6 @@ module.exports.testlistfmt_tr = {
         test.done();
     },
     // tr-CY
-
     testListFmttrCYNumberFormatOneMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-CY",

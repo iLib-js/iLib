@@ -198,7 +198,6 @@ module.exports.testlistfmt_it = {
         test.done();
     },
     // it-CH
-
     testListFmtitCHNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "it-CH"

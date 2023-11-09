@@ -81,7 +81,6 @@ module.exports.testlistfmt_ja_JP = {
         test.done();
     },
     //ja-JP : disjunction style
-
     testListFmtUnitStylejaJPDisjunctionFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -127,7 +126,6 @@ module.exports.testlistfmt_ja_JP = {
         test.done();
     },
     //ja-JP : unit style
-
     testListFmtUnitStylejaJPNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",

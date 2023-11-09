@@ -127,7 +127,6 @@ module.exports.testlistfmt_hr = {
         test.done();
     },
     // hr-ME
-
     testListFmthrMENumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "hr-ME"
