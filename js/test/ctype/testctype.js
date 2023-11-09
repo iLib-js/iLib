@@ -116,7 +116,6 @@ module.exports.testctype = {
         test.ok(!isAlnum(' '));
         test.ok(!isAlnum('$'));
         test.done();
-
     },
     testIsAlnumOnlyFirstChar: function(test) {
         test.expect(1);

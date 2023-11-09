@@ -30,7 +30,6 @@ module.exports.testdigitalspeed = {
         ilib.clearCache();
         callback();
     },
-
     testDSDSConstructor: function(test) {
         test.expect(1);
 
@@ -42,7 +41,6 @@ module.exports.testdigitalspeed = {
         test.ok(m !== null);
         test.done();
     },
-
     testDSDSConvertKbToMb: function(test) {
         test.expect(3);
         var m1 = new DigitalSpeedUnit({
@@ -60,7 +58,6 @@ module.exports.testdigitalspeed = {
         test.roughlyEqual(m2.getAmount(), 100, 1e-7);
         test.done();
     },
-
     testDSStaticConvert1: function(test) {
         test.expect(1);
         var m = DigitalSpeedUnit.convert("bit/s", "kilobits/s", 12024);
@@ -68,7 +65,6 @@ module.exports.testdigitalspeed = {
         test.roughlyEqual(m, 12312576, 0.01);
         test.done();
     },
-
     testDSStaticConvertWithString: function(test) {
         test.expect(1);
         var m = DigitalSpeedUnit.convert("gigabyte/s", "petabyte/s", "1");
@@ -76,7 +72,6 @@ module.exports.testdigitalspeed = {
         test.roughlyEqual(m, 1048576, 0.001);
         test.done();
     },
-
     testDSStaticConvert2: function(test) {
         test.expect(1);
         var m = DigitalSpeedUnit.convert("tBps", "gBps", 10240);
@@ -84,7 +79,6 @@ module.exports.testdigitalspeed = {
         test.roughlyEqual(m, 10, 1e-8);
         test.done();
     },
-
     testDSStaticConvert3: function(test) {
         test.expect(1);
         var m = DigitalSpeedUnit.convert("mbps", "byte/s", 1048576);
@@ -92,7 +86,6 @@ module.exports.testdigitalspeed = {
         test.roughlyEqual(m, 8, 1e-9);
         test.done();
     },
-
     testDSStaticConvert4: function(test) {
         test.expect(1);
         var m = DigitalSpeedUnit.convert("Pbps", "tbps", 1024);
@@ -100,7 +93,6 @@ module.exports.testdigitalspeed = {
         test.roughlyEqual(m, 1, 1e-9);
         test.done();
     },
-
     testDSStaticConvert5: function(test) {
         test.expect(1);
         var m = DigitalSpeedUnit.convert("megabyte/s", "byte/s", 10);
@@ -108,7 +100,6 @@ module.exports.testdigitalspeed = {
         test.roughlyEqual(m, 9.536743164e-6, 1e-15);
         test.done();
     },
-
     testDSStaticConvert6: function(test) {
         test.expect(1);
         var m = DigitalSpeedUnit.convert("megabyte/s", "megabyte/h", 10);
@@ -116,7 +107,6 @@ module.exports.testdigitalspeed = {
         test.roughlyEqual(m, 36000, 1e-15);
         test.done();
     },
-
     testDSStaticConvert7: function(test) {
         test.expect(1);
         var m = DigitalSpeedUnit.convert( "megabyte/h", "gigabit/s", 10);
@@ -124,7 +114,6 @@ module.exports.testdigitalspeed = {
         test.roughlyEqual(m, 4500000, 1e-15);
         test.done();
     },
-
     testDSStaticConvert8: function(test) {
         test.expect(1);
         var m = DigitalSpeedUnit.convert("byte/h", "gigabyte/h", 1);
@@ -132,7 +121,6 @@ module.exports.testdigitalspeed = {
         test.roughlyEqual(m, 1073741824, 1e-15);
         test.done();
     },
-
     testDSStaticConvert9: function(test) {
         test.expect(1);
         var m = DigitalSpeedUnit.convert("gigabyte/h", "kilobyte/h", 1);
@@ -140,7 +128,6 @@ module.exports.testdigitalspeed = {
         test.roughlyEqual(m, 9.536743164e-7, 1e-15);
         test.done();
     },
-
     testDSScale1: function(test) {
         test.expect(2);
         var m = new DigitalSpeedUnit({
@@ -154,7 +141,6 @@ module.exports.testdigitalspeed = {
         test.equal(m.unit, "kilobit-per-second");
         test.done();
     },
-
     testDSScale2: function(test) {
         test.expect(2);
         var m = new DigitalSpeedUnit({
@@ -169,7 +155,6 @@ module.exports.testdigitalspeed = {
         test.equal(m.unit, "bit-per-second");
         test.done();
     },
-
     testDSScale3: function(test) {
         test.expect(2);
         var m = new DigitalSpeedUnit({
@@ -184,7 +169,6 @@ module.exports.testdigitalspeed = {
         test.equal(m.unit, "megabit-per-second");
         test.done();
     },
-
     testDSScale4: function(test) {
         test.expect(2);
         var m = new DigitalSpeedUnit({
@@ -198,7 +182,6 @@ module.exports.testdigitalspeed = {
         test.equal(m.unit, "gigabit-per-second");
         test.done();
     },
-
     testDSScale5: function(test) {
         test.expect(2);
         var m = new DigitalSpeedUnit({
@@ -212,7 +195,6 @@ module.exports.testdigitalspeed = {
         test.equal(m.unit, "megabyte-per-second");
         test.done();
     },
-
     testDSScale6: function(test) {
         test.expect(2);
         var m = new DigitalSpeedUnit({
@@ -226,7 +208,6 @@ module.exports.testdigitalspeed = {
         test.equal(m.unit, "megabyte-per-second");
         test.done();
     },
-
     testDSScale7: function(test) {
         test.expect(2);
         // This test case is the most likely scenario. That is, the OS will
@@ -243,7 +224,6 @@ module.exports.testdigitalspeed = {
         test.equal(m.unit, "kilobyte-per-second");
         test.done();
     },
-
     testDSScale8: function(test) {
         test.expect(2);
         // This test case is the most likely scenario. That is, the OS will
@@ -260,7 +240,6 @@ module.exports.testdigitalspeed = {
         test.equal(m.unit, "megabyte-per-second");
         test.done();
     },
-
     testDSScaleScaleDown: function(test) {
         test.expect(2);
         var m = new DigitalSpeedUnit({
@@ -274,7 +253,6 @@ module.exports.testdigitalspeed = {
         test.equal(m.unit, "kilobyte-per-second");
         test.done();
     },
-
     testDSScaleNoScale: function(test) {
         test.expect(2);
         var m = new DigitalSpeedUnit({
@@ -288,7 +266,6 @@ module.exports.testdigitalspeed = {
         test.equal(m.unit, "byte-per-second");
         test.done();
     },
-
     testDSaLocalize1: function(test) {
         test.expect(2);
         var m = new DigitalSpeedUnit({
@@ -302,7 +279,6 @@ module.exports.testdigitalspeed = {
         test.equal(m.unit, "petabyte-per-second");
         test.done();
     },
-
     testDSLocalize2: function(test) {
         test.expect(2);
         var m = new DigitalSpeedUnit({
@@ -316,7 +292,6 @@ module.exports.testdigitalspeed = {
         test.equal(m.unit, "kilobit-per-second");
         test.done();
     },
-
     testDSLocalize3: function(test) {
         test.expect(2);
         var m = new DigitalSpeedUnit({

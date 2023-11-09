@@ -32,7 +32,6 @@ module.exports.testmeasurement = {
         ilib.clearCache();
         callback();
     },
-
     testMeasurementConstructor: function(test) {
         test.expect(1);
         var m = MeasurementFactory();
@@ -40,7 +39,6 @@ module.exports.testmeasurement = {
         test.ok(m !== null);
         test.done();
     },
-
     testMeasurementNoAmount: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -53,7 +51,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 0);
         test.done();
     },
-
     testMeasurementRightMeasureType: function(test) {
         test.expect(2);
         var m = MeasurementFactory({
@@ -66,7 +63,6 @@ module.exports.testmeasurement = {
         test.equal(m.getMeasure(), "length");
         test.done();
     },
-
     testMeasurementUnknownUnitPreserved: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -80,7 +76,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementUnknownUnitUnknownMeasureType: function(test) {
         test.expect(2);
         var m = MeasurementFactory({
@@ -93,7 +88,6 @@ module.exports.testmeasurement = {
         test.equal(m.getMeasure(), "unknown");
         test.done();
     },
-
     testMeasurementMetricScaleMicro: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -107,7 +101,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleMilli: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -121,7 +114,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleCenti: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -135,7 +127,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleDeca: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -149,7 +140,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleHecto: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -163,7 +153,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleKilo: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -177,7 +166,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleMega: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -191,7 +179,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleGiga: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -205,7 +192,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleSymbolMicro: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -219,7 +205,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleSymbolMilli: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -233,7 +218,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleSymbolCenti: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -247,7 +231,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleSymbolNone: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -261,7 +244,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleSymbolDeca: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -275,7 +257,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleSymbolHecto: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -289,7 +270,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleSymbolKilo: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -303,7 +283,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleSymbolMega: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -317,7 +296,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleSymbolGiga: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -331,7 +309,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementMetricScaleOriginalUnit: function(test) {
         test.expect(2);
         var m = MeasurementFactory({
@@ -344,7 +321,6 @@ module.exports.testmeasurement = {
         test.equal(m.getOriginalUnit(), "kilometer");
         test.done();
     },
-
     testMeasurementAliases1: function(test) {
         test.expect(3);
         var m = MeasurementFactory({
@@ -358,7 +334,6 @@ module.exports.testmeasurement = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementAliases1OriginalUnit: function(test) {
         test.expect(2);
         var m = MeasurementFactory({
@@ -371,7 +346,6 @@ module.exports.testmeasurement = {
         test.equal(m.getOriginalUnit(), "meters");
         test.done();
     },
-
     testMeasurementAliasesMetric: function(test) {
         var expected = [
             "meters",
@@ -394,7 +368,6 @@ module.exports.testmeasurement = {
         }
         test.done();
     },
-
     testMeasurementAliasesUS: function(test) {
         var expected = [
             {alias: "miles", normalized: "mile"},
@@ -415,7 +388,6 @@ module.exports.testmeasurement = {
         }
         test.done();
     },
-
     testMeasurementConvert: function(test) {
         test.expect(4);
         var m1 = MeasurementFactory({
@@ -434,7 +406,6 @@ module.exports.testmeasurement = {
         test.equal(m2.getAmount(), 3218.68);
         test.done();
     },
-
     testMeasurementConvertToMetricScale: function(test) {
         test.expect(4);
         var m1 = MeasurementFactory({
@@ -453,7 +424,6 @@ module.exports.testmeasurement = {
         test.equal(m2.getAmount(), 3.21868);
         test.done();
     },
-
     testMeasurementConvertToMetricScaleWithAlias: function(test) {
         test.expect(4);
         var m1 = MeasurementFactory({
@@ -472,7 +442,6 @@ module.exports.testmeasurement = {
         test.equal(m2.getAmount(), 3.21868);
         test.done();
     },
-
     testMeasurementConvertFromMetric: function(test) {
         test.expect(4);
         var m1 = MeasurementFactory({
@@ -491,7 +460,6 @@ module.exports.testmeasurement = {
         test.equal(m2.getAmount(), 1.2427424);
         test.done();
     },
-
     testMeasurementConvertFromMetricWithScale: function(test) {
         test.expect(4);
         var m1 = MeasurementFactory({
@@ -510,7 +478,6 @@ module.exports.testmeasurement = {
         test.equal(m2.getAmount(), 1.242746);
         test.done();
     },
-
     testMeasurementConvertFromMetricWithScaleAndAlias: function(test) {
         test.expect(4);
         var m1 = MeasurementFactory({
@@ -529,7 +496,6 @@ module.exports.testmeasurement = {
         test.equal(m2.getAmount(), 1.242746);
         test.done();
     },
-
     testMeasurementCannotConvertBetweenMeasureTypes: function(test) {
         try {
             var m1 = MeasurementFactory({
@@ -546,48 +512,41 @@ module.exports.testmeasurement = {
         }
         test.done();
     },
-
     testMeasurementGetMeasurementSystemDefault: function(test) {
         test.expect(1);
         test.equal(Measurement.getMeasurementSystemForLocale(), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemUS: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("en-US"), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemUSWithFlavor: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("en-US-ASDF"), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemUSNonEnglish1: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("es-US"), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemUSNonEnglish1WithLocaleObj: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale(new Locale("es-US")), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemUSNonEnglish2: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("zh-Hant-US"), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemLR: function(test) {
         test.expect(1);
 
@@ -595,77 +554,66 @@ module.exports.testmeasurement = {
         test.equal(Measurement.getMeasurementSystemForLocale("en-LR"), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemPW: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("pau-PW"), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemMH: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("mh-MH"), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemFM: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("en-FM"), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemWS: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("sm-WS"), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemAS: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("en-AS"), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemPR: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("es-PR"), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemENPR: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("en-PR"), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemGU: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("en-GU"), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemMP: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("en-MP"), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemVI: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("en-VI"), "uscustomary");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemMM: function(test) {
         test.expect(1);
 
@@ -673,42 +621,36 @@ module.exports.testmeasurement = {
         test.equal(Measurement.getMeasurementSystemForLocale("my-MM"), "imperial");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemGB: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("en-GB"), "metric");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemGBWithLocaleObj: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale(new Locale("en-GB")), "metric");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemGBWithFlavor: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("en-GB-ASDF"), "metric");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemOther1: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("ja-JP"), "metric");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemOther2: function(test) {
         test.expect(1);
 
         test.equal(Measurement.getMeasurementSystemForLocale("da-DK"), "metric");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemOther3: function(test) {
         test.expect(1);
 
@@ -721,7 +663,6 @@ module.exports.testmeasurement = {
         test.equal(Measurement.getMeasurementSystemForLocale("be-BY"), "metric");
         test.done();
     },
-
     testMeasurementGetMeasurementSystemOtherWithLocaleObj: function(test) {
         test.expect(1);
 

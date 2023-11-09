@@ -91,7 +91,6 @@ module.exports.testunitfmt_ps_AF = {
         test.equal(str, '‎-‎16٫666666666666668 درجې سيلسيس');
         test.done();
     },
-
     testUnitFormatArea1_ps_AF: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({

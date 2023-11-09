@@ -87,7 +87,6 @@ module.exports.testunitfmt_tk_TM = {
         test.equal(str, "-16,666666666666668 Selsiý gradusy");
         test.done();
     },
-
     testUnitFormatArea1_tk_TM: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
