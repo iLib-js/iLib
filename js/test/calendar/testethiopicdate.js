@@ -82,7 +82,6 @@ module.exports.testethiopicdate = {
         ilib.clearCache();
         callback();
     },
-
     testEthiopicRataDieConstructor: function(test) {
         test.expect(1);
         var erd = new EthiopicRataDie();
@@ -90,7 +89,6 @@ module.exports.testethiopicdate = {
         test.ok(erd !== null);
         test.done();
     },
-
     testEthiopicRataDieConstructorComponents: function(test) {
         test.expect(2);
         var erd = new EthiopicRataDie({
@@ -109,7 +107,6 @@ module.exports.testethiopicdate = {
         test.equal(erd.getRataDie(), 1);
         test.done();
     },
-
     testEthiopicRataDieConstructorComponentsBig: function(test) {
         test.expect(2);
         var erd = new EthiopicRataDie({
@@ -128,7 +125,6 @@ module.exports.testethiopicdate = {
         test.equal(erd.getRataDie(), 732740.5209722222);
         test.done();
     },
-
     testEthiopicRataDieConstructorRD: function(test) {
         test.expect(2);
         var erd = new EthiopicRataDie({
@@ -140,7 +136,6 @@ module.exports.testethiopicdate = {
         test.equal(erd.getRataDie(), 732323.2342345);
         test.done();
     },
-
     testEthiopicRataDieConstructorUnixtime: function(test) {
         test.expect(2);
         var erd = new EthiopicRataDie({
@@ -152,7 +147,6 @@ module.exports.testethiopicdate = {
         test.equal(erd.getRataDie(), 716367.75);
         test.done();
     },
-
     testEthiopicRataDieConstructorJulianDay: function(test) {
         test.expect(2);
         var erd = new EthiopicRataDie({
@@ -164,7 +158,6 @@ module.exports.testethiopicdate = {
         test.equal(erd.getRataDie(), 734564);
         test.done();
     },
-
     testEthiopicRataDieGetJulianDay1: function(test) {
         test.expect(2);
         var erd = new EthiopicRataDie({
@@ -176,7 +169,6 @@ module.exports.testethiopicdate = {
         test.equal(erd.getJulianDay(), 1724219.75 + 734564);
         test.done();
     },
-
     testEthiopicRataDieGetJulianDay2: function(test) {
         test.expect(2);
         var erd = new EthiopicRataDie({
@@ -188,7 +180,6 @@ module.exports.testethiopicdate = {
         test.equal(erd.getJulianDay(), 2440587.5);
         test.done();
     },
-
     testEthiopicRataDieGetJulianDay3: function(test) {
         test.expect(2);
         var erd = new EthiopicRataDie({
@@ -200,7 +191,6 @@ module.exports.testethiopicdate = {
         test.equal(erd.getJulianDay(), 1724219.75);
         test.done();
     },
-
     testEthiopicRataDieGetTime1: function(test) {
         test.expect(2);
         var erd = new EthiopicRataDie({
@@ -212,7 +202,6 @@ module.exports.testethiopicdate = {
         test.equal(erd.getTime(), 0);
         test.done();
     },
-
     testEthiopicRataDieGetTime2: function(test) {
         test.expect(2);
         var erd = new EthiopicRataDie({
@@ -224,7 +213,6 @@ module.exports.testethiopicdate = {
         test.equal(erd.getTime(), 0);
         test.done();
     },
-
     testEthiopicRataDieGetTimeTooSmall: function(test) {
         test.expect(2);
         var erd = new EthiopicRataDie({
@@ -236,7 +224,6 @@ module.exports.testethiopicdate = {
         test.equal(erd.getTime(), -1);
         test.done();
     },
-
     testEthiopicRataDieGetTimeTooBig: function(test) {
         test.expect(2);
         var erd = new EthiopicRataDie({
@@ -248,7 +235,6 @@ module.exports.testethiopicdate = {
         test.equal(erd.getTime(), -1);
         test.done();
     },
-
     testEthiopicRataDieGetTimeExtended1: function(test) {
         test.expect(2);
         var erd = new EthiopicRataDie({
@@ -260,7 +246,6 @@ module.exports.testethiopicdate = {
         test.equal(erd.getTimeExtended(), 0);
         test.done();
     },
-
     testEthiopicRataDieGetTimeExtended2: function(test) {
         test.expect(2);
         var erd = new EthiopicRataDie({
@@ -272,7 +257,6 @@ module.exports.testethiopicdate = {
         test.equal(erd.getTimeExtended(), 0);
         test.done();
     },
-
     testEthiopicRataDieGetTimeExtendedTooSmallForRegularGetTime: function(test) {
         test.expect(2);
         var erd = new EthiopicRataDie({
@@ -284,7 +268,6 @@ module.exports.testethiopicdate = {
         test.equal(erd.getTimeExtended(), -86400000);
         test.done();
     },
-
     testEthiopicRataDieGetTimeExtendedTooBigForRegularGetTime: function(test) {
         test.expect(2);
         var erd = new EthiopicRataDie({
@@ -305,7 +288,6 @@ module.exports.testethiopicdate = {
         test.ok(ed !== null);
         test.done();
     },
-
     /* ethiopic date is rd 366 + epoch */
     testEthiopicDateConstructorFromJD: function(test) {
         test.expect(8);
@@ -324,7 +306,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 0);
         test.done();
     },
-
     testEthiopicDateConstructorUnixTime: function(test) {
         test.expect(8);
         var ed = new EthiopicDate({
@@ -342,7 +323,6 @@ module.exports.testethiopicdate = {
         test.equal(0, ed.getMilliseconds(), "millisecond");
         test.done();
     },
-
     testEthiopicDateAfterLeapYear: function(test) {
         test.expect(8);
         // year 3 of every 4 year cycle is a leap year in the ethiopic calendar
@@ -361,7 +341,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 0);
         test.done();
     },
-
     // next two test the transition between months at 6am
     testEthiopicDateFirstMonthEndRightBeforeDateChange: function(test) {
         test.expect(8);
@@ -377,7 +356,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 0);
         test.done();
     },
-
     testEthiopicDateSecondMonthStartNoonAfterDateChange: function(test) {
         test.expect(8);
         var ed = new EthiopicDate({rd: 733088.041666667, timezone: "Etc/UTC"});
@@ -392,7 +370,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 0);
         test.done();
     },
-
     // next two test the year transition from a leap year to a regular year
     testEthiopicDateLastMonthLeapYear: function(test) {
         test.expect(8);
@@ -408,7 +385,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 0);
         test.done();
     },
-
     testEthiopicDateFirstMonthAfterLeapYear: function(test) {
         test.expect(8);
         var ed = new EthiopicDate({rd: 733058, timezone: "Etc/UTC"});
@@ -423,7 +399,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 0);
         test.done();
     },
-
     // next two test a regular month transition
     testEthiopicDateThirdMonthEnd: function(test) {
         test.expect(8);
@@ -439,7 +414,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 0);
         test.done();
     },
-
     testEthiopicDateFourthMonthStart: function(test) {
         test.expect(8);
         var ed = new EthiopicDate({rd: 733148, timezone: "Etc/UTC"});
@@ -454,7 +428,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 0);
         test.done();
     },
-
     // next two test a transition from a non-leap year to a non-leap year
     testEthiopicDateLastMonthEndNonLeapYear: function(test) {
         test.expect(8);
@@ -470,7 +443,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 0);
         test.done();
     },
-
     testEthiopicDateFirstMonthStartNonLeapYear: function(test) {
         test.expect(8);
         var ed = new EthiopicDate({rd: 733423, timezone: "Etc/UTC"});
@@ -485,7 +457,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 0);
         test.done();
     },
-
     testEthiopicDateEndOfYearZeroRd: function(test) {
         test.expect(8);
         var ed = new EthiopicDate({rd: 0, timezone: "Etc/UTC"});
@@ -500,7 +471,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 0);
         test.done();
     },
-
     testEthiopicDateBeginningOfYearOneRd: function(test) {
         test.expect(8);
         var ed = new EthiopicDate({rd: 1, timezone: "Etc/UTC"});
@@ -515,7 +485,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 0);
         test.done();
     },
-
     testEthiopicDateAlmostEndOfYearOneRd: function(test) {
         test.expect(8);
         var ed = new EthiopicDate({rd: 364, timezone: "Etc/UTC"});
@@ -530,7 +499,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 0);
         test.done();
     },
-
     testEthiopicDateEndOfYearOneRd: function(test) {
         test.expect(8);
         var ed = new EthiopicDate({rd: 365, timezone: "Etc/UTC"});
@@ -545,7 +513,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 0);
         test.done();
     },
-
     testEthiopicDateBeginningOfYear2Rd: function(test) {
         test.expect(8);
         var ed = new EthiopicDate({rd: 366, timezone: "Etc/UTC"});
@@ -560,7 +527,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 0);
         test.done();
     },
-
     testEthiopicDateConvertYears: function(test) {
         var ed;
 
@@ -577,7 +543,6 @@ module.exports.testethiopicdate = {
         }
         test.done();
     },
-
     testEthiopicDateConvertMonths: function(test) {
         var ed;
 
@@ -594,7 +559,6 @@ module.exports.testethiopicdate = {
         }
         test.done();
     },
-
     testEthiopicDateConvertDays: function(test) {
         var ed;
 
@@ -610,7 +574,6 @@ module.exports.testethiopicdate = {
         }
         test.done();
     },
-
     testEthiopicDateConvertHours: function(test) {
         var ed;
 
@@ -627,7 +590,6 @@ module.exports.testethiopicdate = {
         }
         test.done();
     },
-
     testEthiopicDateConvertDayOfWeek: function(test) {
         var ed;
 
@@ -644,7 +606,6 @@ module.exports.testethiopicdate = {
         }
         test.done();
     },
-
     testEthiopicDateConvertOther: function(test) {
         var ed;
 
@@ -663,7 +624,6 @@ module.exports.testethiopicdate = {
         }
         test.done();
     },
-
     testEthiopicDateConstructorFull: function(test) {
         test.expect(8);
         var ed = new EthiopicDate({
@@ -688,7 +648,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 123);
         test.done();
     },
-
     testEthiopicDateConstructorFullWithStrings: function(test) {
         test.expect(8);
         var ed = new EthiopicDate({
@@ -713,7 +672,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 123);
         test.done();
     },
-
     testEthiopicDateConstructorCopy: function(test) {
         test.expect(8);
         var ed = new EthiopicDate({
@@ -738,7 +696,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 123);
         test.done();
     },
-
     testEthiopicDateGetJulianDay: function(test) {
         var ed;
 
@@ -763,7 +720,6 @@ module.exports.testethiopicdate = {
         }
         test.done();
     },
-
     testEthiopicDateSetYears: function(test) {
         test.expect(2);
         var ed = new EthiopicDate();
@@ -775,7 +731,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getYears(), 123);
         test.done();
     },
-
     testEthiopicDateSetMonths: function(test) {
         test.expect(2);
         var ed = new EthiopicDate();
@@ -787,7 +742,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMonths(), 7);
         test.done();
     },
-
     testEthiopicDateSetDays: function(test) {
         test.expect(2);
         var ed = new EthiopicDate();
@@ -799,7 +753,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getDays(), 12);
         test.done();
     },
-
     testEthiopicDateSetHours: function(test) {
         test.expect(2);
         var ed = new EthiopicDate();
@@ -811,7 +764,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getHours(), 12);
         test.done();
     },
-
     testEthiopicDateSetMinutes: function(test) {
         test.expect(2);
         var ed = new EthiopicDate();
@@ -823,7 +775,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMinutes(), 13);
         test.done();
     },
-
     testEthiopicDateSetSeconds: function(test) {
         test.expect(2);
         var ed = new EthiopicDate();
@@ -835,7 +786,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getSeconds(), 23);
         test.done();
     },
-
     testEthiopicDateSetMilliseconds: function(test) {
         test.expect(2);
         var ed = new EthiopicDate();
@@ -847,7 +797,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getMilliseconds(), 123);
         test.done();
     },
-
     testEthiopicDateTestGetTimeZero: function(test) {
         test.expect(2);
         var ed = new EthiopicDate({
@@ -862,7 +811,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTime(), 0);
         test.done();
     },
-
     testEthiopicDateTestGetTime: function(test) {
         test.expect(2);
         var ed = new EthiopicDate({
@@ -878,7 +826,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTime(), 12600000);
         test.done();
     },
-
     testEthiopicDateTestGetTimeTooEarly: function(test) {
         test.expect(2);
         var ed = new EthiopicDate({
@@ -893,7 +840,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTime(), -1);
         test.done();
     },
-
     testEthiopicDateTestGetTimeTooLate: function(test) {
         test.expect(2);
         // 1 second too late for regular unix time. This is Jan 19, 2038 Gregorian at 3:14:08am UTC
@@ -911,7 +857,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTime(), -1);
         test.done();
     },
-
     testEthiopicDateTestGetTimeExtendedNotTooLate: function(test) {
         test.expect(2);
         // 1 second too late for regular unix time, but not for extended time. This is Jan 19, 2038 Gregorian at 3:14:08am UTC
@@ -929,7 +874,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTimeExtended(), 2147483648000);
         test.done();
     },
-
     testEthiopicDateTestSetTime1: function(test) {
         test.expect(8);
         var ed = new EthiopicDate({
@@ -952,7 +896,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getSeconds(), 3);
         test.done();
     },
-
     testEthiopicDateTestSetTimeZero: function(test) {
         test.expect(7);
         var ed = new EthiopicDate({
@@ -977,7 +920,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getSeconds(), 0);
         test.done();
     },
-
     testEthiopicDateGetTimeZone: function(test) {
         test.expect(2);
         var ed = new EthiopicDate({
@@ -991,7 +933,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTimeZone(), "America/Los_Angeles");
         test.done();
     },
-
     testEthiopicDateGetTimeZoneDefault: function(test) {
         test.expect(2);
         var ed = new EthiopicDate({
@@ -1004,7 +945,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTimeZone(), "local");
         test.done();
     },
-
     testEthiopicDateGetTimeZoneByLocaleDE: function(test) {
         test.expect(2);
         var ed = new EthiopicDate({
@@ -1018,7 +958,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTimeZone(), "Europe/Berlin");
         test.done();
     },
-
     testEthiopicDateGetTimeZoneByLocaleJP: function(test) {
         test.expect(2);
         var ed = new EthiopicDate({
@@ -1032,7 +971,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTimeZone(), "Asia/Tokyo");
         test.done();
     },
-
     testEthiopicDateGetTimeZoneByLocaleBogus: function(test) {
         test.expect(2);
         var ed = new EthiopicDate({
@@ -1046,7 +984,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTimeZone(), "Etc/UTC");
         test.done();
     },
-
     testEthiopicDateCurrentTimeWithTimeZone: function(test) {
         test.expect(2);
         var ed = new EthiopicDate({
@@ -1058,7 +995,6 @@ module.exports.testethiopicdate = {
         test.roughlyEqual(ed.getTime(), d.getTime(), 50);
         test.done();
     },
-
     testEthiopicDateSetTimeZone: function(test) {
         test.expect(3);
         var ed = new EthiopicDate({
@@ -1076,7 +1012,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTimeZone(), "Asia/Tokyo");
         test.done();
     },
-
     testEthiopicDateSetTimeZoneNotString: function(test) {
         test.expect(3);
         var ed = new EthiopicDate({
@@ -1094,7 +1029,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTimeZone(), "America/Los_Angeles");
         test.done();
     },
-
     testEthiopicDateSetTimeZoneUndefined: function(test) {
         test.expect(3);
         var ed = new EthiopicDate({
@@ -1113,7 +1047,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTimeZone(), "local");
         test.done();
     },
-
     testEthiopicDateSetTimeZoneEmpty: function(test) {
         test.expect(3);
         var ed = new EthiopicDate({
@@ -1132,7 +1065,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTimeZone(), "local");
         test.done();
     },
-
     testEthiopicDateInitWithUnixTimeRightTimeZone: function(test) {
         test.expect(2);
         var ed = new EthiopicDate({
@@ -1143,7 +1075,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTimeZone(), "local");
         test.done();
     },
-
     testEthiopicDateInitWithJDRightTimeZone: function(test) {
         test.expect(2);
         var ed = new EthiopicDate({
@@ -1154,7 +1085,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTimeZone(), "local");
         test.done();
     },
-
     testEthiopicDateInitWithRDRightTimeZone: function(test) {
         test.expect(2);
         var ed = new EthiopicDate({
@@ -1165,7 +1095,6 @@ module.exports.testethiopicdate = {
         test.equal(ed.getTimeZone(), "local");
         test.done();
     },
-
     testEthiopicDateRoundTripConstruction: function(test) {
         test.expect(8);
         var jd = new EthiopicDate({
@@ -1193,7 +1122,6 @@ module.exports.testethiopicdate = {
         test.equal(jd2.getSeconds(), jd.getSeconds());
         test.done();
     },
-
     testEthiopicDateRoundTripConstruction2: function(test) {
         test.expect(8);
         var jd = new EthiopicDate({

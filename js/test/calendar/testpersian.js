@@ -30,7 +30,6 @@ module.exports.testpersian = {
         ilib.clearCache();
         callback();
     },
-
     testPersianAlgoGetNumMonths: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -38,7 +37,6 @@ module.exports.testpersian = {
         test.equal(cal.getNumMonths(1392), 12);
         test.done();
     },
-
     testPersianAlgoGetMonLength1: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -46,7 +44,6 @@ module.exports.testpersian = {
         test.equal(cal.getMonLength(1, 1392), 31);
         test.done();
     },
-
     testPersianAlgoGetMonLength2: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -54,7 +51,6 @@ module.exports.testpersian = {
         test.equal(cal.getMonLength(2, 1392), 31);
         test.done();
     },
-
     testPersianAlgoGetMonLength3: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -62,7 +58,6 @@ module.exports.testpersian = {
         test.equal(cal.getMonLength(3, 1392), 31);
         test.done();
     },
-
     testPersianAlgoGetMonLength4: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -70,7 +65,6 @@ module.exports.testpersian = {
         test.equal(cal.getMonLength(4, 1392), 31);
         test.done();
     },
-
     testPersianAlgoGetMonLength5: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -78,7 +72,6 @@ module.exports.testpersian = {
         test.equal(cal.getMonLength(5, 1392), 31);
         test.done();
     },
-
     testPersianAlgoGetMonLength6: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -86,7 +79,6 @@ module.exports.testpersian = {
         test.equal(cal.getMonLength(6, 1392), 31);
         test.done();
     },
-
     testPersianAlgoGetMonLength7: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -94,7 +86,6 @@ module.exports.testpersian = {
         test.equal(cal.getMonLength(7, 1392), 30);
         test.done();
     },
-
     testPersianAlgoGetMonLength8: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -102,7 +93,6 @@ module.exports.testpersian = {
         test.equal(cal.getMonLength(8, 1392), 30);
         test.done();
     },
-
     testPersianAlgoGetMonLength9: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -110,7 +100,6 @@ module.exports.testpersian = {
         test.equal(cal.getMonLength(9, 1392), 30);
         test.done();
     },
-
     testPersianAlgoGetMonLength10: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -118,7 +107,6 @@ module.exports.testpersian = {
         test.equal(cal.getMonLength(10, 1392), 30);
         test.done();
     },
-
     testPersianAlgoGetMonLength11: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -126,7 +114,6 @@ module.exports.testpersian = {
         test.equal(cal.getMonLength(11, 1392), 30);
         test.done();
     },
-
     testPersianAlgoGetMonLength12: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -134,7 +121,6 @@ module.exports.testpersian = {
         test.equal(cal.getMonLength(12, 1392), 29);
         test.done();
     },
-
     testPersianAlgoGetMonLength12LeapYear: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -151,7 +137,6 @@ module.exports.testpersian = {
         test.ok(cal.isLeapYear(1391));
         test.done();
     },
-
     testPersianAlgoIsLeapYearNot: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -159,7 +144,6 @@ module.exports.testpersian = {
         test.ok(!cal.isLeapYear(1392));
         test.done();
     },
-
     testPersianAlgoIsLeapYear1: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -167,7 +151,6 @@ module.exports.testpersian = {
         test.ok(!cal.isLeapYear(1393));
         test.done();
     },
-
     testPersianAlgoIsLeapYear2: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();
@@ -175,7 +158,6 @@ module.exports.testpersian = {
         test.ok(!cal.isLeapYear(1394));
         test.done();
     },
-
     testPersianAlgoIsLeapYear3: function(test) {
         test.expect(1);
         var cal = new PersianAlgoCal();

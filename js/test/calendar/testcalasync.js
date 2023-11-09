@@ -76,7 +76,6 @@ module.exports.testcalasync = {
             }
         });
     },
-
     testCalendarFactoryAsyncSpecific: function(test) {
         test.expect(2);
         var cal = CalendarFactory({
@@ -90,7 +89,6 @@ module.exports.testcalasync = {
             }
         });
     },
-
     testCalendarFactoryAsyncUnknown: function(test) {
         test.expect(1);
         CalendarFactory({
@@ -102,7 +100,6 @@ module.exports.testcalasync = {
             }
         });
     },
-
     testCalendarFactoryAsyncDefaultForLocale: function(test) {
         test.expect(2);
         CalendarFactory({
@@ -116,7 +113,6 @@ module.exports.testcalasync = {
             }
         });
     },
-
     testCalendarFactoryAsyncDefaultForLocaleOther: function(test) {
         test.expect(2);
         var cal = CalendarFactory({
@@ -130,7 +126,6 @@ module.exports.testcalasync = {
             }
         });
     },
-
     testCalendarFactoryAsyncOverrideLocale: function(test) {
         test.expect(2);
         var cal = CalendarFactory({
@@ -145,7 +140,6 @@ module.exports.testcalasync = {
             }
         });
     },
-
     testCopticDateAsyncConstructorFull: function(test) {
         test.expect(8);
         new CopticDate({
@@ -172,7 +166,6 @@ module.exports.testcalasync = {
             }
         });
     },
-
     testEthiopicDateAsyncConstructorFull: function(test) {
         test.expect(8);
         new EthiopicDate({
@@ -199,7 +192,6 @@ module.exports.testcalasync = {
             }
         });
     },
-
     testGregDateAsyncConstructorFull: function(test) {
         test.expect(8);
         new GregorianDate({
@@ -226,7 +218,6 @@ module.exports.testcalasync = {
         });
 
     },
-
     testHanDateAsyncConstructorFull: function(test) {
         test.expect(10);
         new HanDate({
@@ -256,7 +247,6 @@ module.exports.testcalasync = {
         });
 
     },
-
     testHebrewDateAsyncConstructorFull: function(test) {
         test.expect(8);
         new HebrewDate({
@@ -284,7 +274,6 @@ module.exports.testcalasync = {
         });
 
     },
-
     testIslamicDateAsyncConstructorFull: function(test) {
         test.expect(8);
         new IslamicDate({
@@ -312,7 +301,6 @@ module.exports.testcalasync = {
         });
 
     },
-
     testJulDateAsyncConstructorFull: function(test) {
         test.expect(8);
         new JulianDate({
@@ -340,7 +328,6 @@ module.exports.testcalasync = {
         });
 
     },
-
     testPersAlgoDateAsyncConstructorFull: function(test) {
         test.expect(8);
         new PersianAlgoDate({
@@ -368,7 +355,6 @@ module.exports.testcalasync = {
         });
 
     },
-
     testPersDateAstroAsyncConstructorFull: function(test) {
         test.expect(8);
         new PersianDate({
@@ -396,7 +382,6 @@ module.exports.testcalasync = {
         });
 
     },
-
     testThaiSolarDateAsyncConstructorFull: function(test) {
         test.expect(8);
         new ThaiSolarDate({

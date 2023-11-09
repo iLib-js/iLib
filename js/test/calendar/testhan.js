@@ -181,7 +181,6 @@ module.exports.testhan = {
         ilib.clearCache();
         callback();
     },
-
     testDegreesInBeijing: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
@@ -198,7 +197,6 @@ module.exports.testhan = {
         }
         test.done();
     },
-
     testCurrentMajorSolarTerm: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
@@ -215,7 +213,6 @@ module.exports.testhan = {
         }
         test.done();
     },
-
     testHanNextSolarLongitude: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
@@ -232,7 +229,6 @@ module.exports.testhan = {
         }
         test.done();
     },
-
     testNewMoonBefore: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
@@ -249,7 +245,6 @@ module.exports.testhan = {
         }
         test.done();
     },
-
     testNewMoonOnOrAfter: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
@@ -266,7 +261,6 @@ module.exports.testhan = {
         }
         test.done();
     },
-
     testNoMajorST: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
@@ -283,7 +277,6 @@ module.exports.testhan = {
         }
         test.done();
     },
-
     testMajorSTOnOrAfter: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
@@ -300,7 +293,6 @@ module.exports.testhan = {
         }
         test.done();
     },
-
     testHanGetNumMonths4687: function(test) {
         test.expect(1);
         var cal = new HanCal();
@@ -308,7 +300,6 @@ module.exports.testhan = {
         test.equal(cal.getNumMonths(4687), 13);
         test.done();
     },
-
     testHanGetMonLength1: function(test) {
         test.expect(1);
         var cal = new HanCal();
@@ -316,7 +307,6 @@ module.exports.testhan = {
         test.equal(cal.getMonLength(1, 4687), 29);
         test.done();
     },
-
     testHanGetMonLength2: function(test) {
         test.expect(1);
         var cal = new HanCal();
@@ -324,7 +314,6 @@ module.exports.testhan = {
         test.equal(cal.getMonLength(2, 4687), 30);
         test.done();
     },
-
     testHanGetMonLength3: function(test) {
         test.expect(1);
         var cal = new HanCal();
@@ -332,7 +321,6 @@ module.exports.testhan = {
         test.equal(cal.getMonLength(3, 4687), 29);
         test.done();
     },
-
     testHanGetMonLength4: function(test) {
         test.expect(1);
         var cal = new HanCal();
@@ -340,7 +328,6 @@ module.exports.testhan = {
         test.equal(cal.getMonLength(4, 4687), 29);
         test.done();
     },
-
     testHanGetMonLength5: function(test) {
         test.expect(1);
         var cal = new HanCal();
@@ -348,7 +335,6 @@ module.exports.testhan = {
         test.equal(cal.getMonLength(5, 4687), 30);
         test.done();
     },
-
     testHanGetMonLength6: function(test) {
         test.expect(1);
         var cal = new HanCal();
@@ -356,7 +342,6 @@ module.exports.testhan = {
         test.equal(cal.getMonLength(6, 4687), 29);
         test.done();
     },
-
     testHanGetMonLength7: function(test) {
         test.expect(1);
         var cal = new HanCal();
@@ -364,7 +349,6 @@ module.exports.testhan = {
         test.equal(cal.getMonLength(7, 4687), 29);
         test.done();
     },
-
     testHanGetMonLength8: function(test) {
         test.expect(1);
         var cal = new HanCal();
@@ -372,7 +356,6 @@ module.exports.testhan = {
         test.equal(cal.getMonLength(8, 4687), 30);
         test.done();
     },
-
     testHanGetMonLength9: function(test) {
         test.expect(1);
         var cal = new HanCal();
@@ -380,7 +363,6 @@ module.exports.testhan = {
         test.equal(cal.getMonLength(9, 4687), 29);
         test.done();
     },
-
     testHanGetMonLength10: function(test) {
         test.expect(1);
         var cal = new HanCal();
@@ -388,7 +370,6 @@ module.exports.testhan = {
         test.equal(cal.getMonLength(10, 4687), 30);
         test.done();
     },
-
     testHanGetMonLength11: function(test) {
         test.expect(1);
         var cal = new HanCal();
@@ -396,7 +377,6 @@ module.exports.testhan = {
         test.equal(cal.getMonLength(11, 4687), 30);
         test.done();
     },
-
     testHanGetMonLength12: function(test) {
         test.expect(1);
         var cal = new HanCal();
@@ -404,7 +384,6 @@ module.exports.testhan = {
         test.equal(cal.getMonLength(12, 4687), 30);
         test.done();
     },
-
     testHanGetMonLength13: function(test) {
         test.expect(1);
         var cal = new HanCal();
@@ -412,7 +391,6 @@ module.exports.testhan = {
         test.equal(cal.getMonLength(13, 4687), 30);
         test.done();
     },
-
     testHanIsLeapYear: function(test) {
         var cal = new HanCal();
 
@@ -422,7 +400,6 @@ module.exports.testhan = {
         }
         test.done();
     },
-
     testHanGetNumMonths: function(test) {
         var cal = new HanCal();
 
@@ -432,7 +409,6 @@ module.exports.testhan = {
         }
         test.done();
     },
-
     testHanGetLeapMonth: function(test) {
         var cal = new HanCal();
 
@@ -442,7 +418,6 @@ module.exports.testhan = {
         }
         test.done();
     },
-
     testHanNewYears: function(test) {
         var cal = new HanCal();
 

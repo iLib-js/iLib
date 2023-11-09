@@ -30,7 +30,6 @@ module.exports.testislamic = {
         ilib.clearCache();
         callback();
     },
-
     testIslamicGetNumMonths: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -38,7 +37,6 @@ module.exports.testislamic = {
         test.equal(cal.getNumMonths(1), 12);
         test.done();
     },
-
     testIslamicgetMonLength1: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -46,7 +44,6 @@ module.exports.testislamic = {
         test.equal(cal.getMonLength(1, 1), 30);
         test.done();
     },
-
     testIslamicgetMonLength2: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -54,7 +51,6 @@ module.exports.testislamic = {
         test.equal(cal.getMonLength(2, 1), 29);
         test.done();
     },
-
     testIslamicgetMonLength3: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -62,7 +58,6 @@ module.exports.testislamic = {
         test.equal(cal.getMonLength(3, 1), 30);
         test.done();
     },
-
     testIslamicgetMonLength4: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -70,7 +65,6 @@ module.exports.testislamic = {
         test.equal(cal.getMonLength(4, 1), 29);
         test.done();
     },
-
     testIslamicgetMonLength5: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -78,7 +72,6 @@ module.exports.testislamic = {
         test.equal(cal.getMonLength(5, 1), 30);
         test.done();
     },
-
     testIslamicgetMonLength6: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -86,7 +79,6 @@ module.exports.testislamic = {
         test.equal(cal.getMonLength(6, 1), 29);
         test.done();
     },
-
     testIslamicgetMonLength7: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -94,7 +86,6 @@ module.exports.testislamic = {
         test.equal(cal.getMonLength(7, 1), 30);
         test.done();
     },
-
     testIslamicgetMonLength8: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -102,7 +93,6 @@ module.exports.testislamic = {
         test.equal(cal.getMonLength(8, 1), 29);
         test.done();
     },
-
     testIslamicgetMonLength9: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -110,7 +100,6 @@ module.exports.testislamic = {
         test.equal(cal.getMonLength(9, 1), 30);
         test.done();
     },
-
     testIslamicgetMonLength10: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -118,7 +107,6 @@ module.exports.testislamic = {
         test.equal(cal.getMonLength(10, 1), 29);
         test.done();
     },
-
     testIslamicgetMonLength11: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -126,7 +114,6 @@ module.exports.testislamic = {
         test.equal(cal.getMonLength(11, 1), 30);
         test.done();
     },
-
     testIslamicgetMonLength12: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -134,7 +121,6 @@ module.exports.testislamic = {
         test.equal(cal.getMonLength(12, 1), 29);
         test.done();
     },
-
     testIslamicgetMonLength12LeapYear: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -142,7 +128,6 @@ module.exports.testislamic = {
         test.equal(cal.getMonLength(12, 2), 30);
         test.done();
     },
-
     testIslamicIsLeapYear1: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -150,7 +135,6 @@ module.exports.testislamic = {
         test.ok(!cal.isLeapYear(1));
         test.done();
     },
-
     testIslamicIsLeapYear2: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -158,7 +142,6 @@ module.exports.testislamic = {
         test.ok(cal.isLeapYear(2));
         test.done();
     },
-
     testIslamicIsLeapYear3: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -166,7 +149,6 @@ module.exports.testislamic = {
         test.ok(!cal.isLeapYear(3));
         test.done();
     },
-
     testIslamicIsLeapYear4: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -174,7 +156,6 @@ module.exports.testislamic = {
         test.ok(!cal.isLeapYear(4));
         test.done();
     },
-
     testIslamicIsLeapYear5: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -182,7 +163,6 @@ module.exports.testislamic = {
         test.ok(cal.isLeapYear(5));
         test.done();
     },
-
     testIslamicIsLeapYear6: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -190,7 +170,6 @@ module.exports.testislamic = {
         test.ok(!cal.isLeapYear(6));
         test.done();
     },
-
     testIslamicIsLeapYear7: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -198,7 +177,6 @@ module.exports.testislamic = {
         test.ok(cal.isLeapYear(7));
         test.done();
     },
-
     testIslamicIsLeapYear8: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -206,7 +184,6 @@ module.exports.testislamic = {
         test.ok(!cal.isLeapYear(8));
         test.done();
     },
-
     testIslamicIsLeapYear9: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -214,7 +191,6 @@ module.exports.testislamic = {
         test.ok(!cal.isLeapYear(9));
         test.done();
     },
-
     testIslamicIsLeapYear10: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -222,7 +198,6 @@ module.exports.testislamic = {
         test.ok(cal.isLeapYear(10));
         test.done();
     },
-
     testIslamicIsLeapYear11: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -230,7 +205,6 @@ module.exports.testislamic = {
         test.ok(!cal.isLeapYear(11));
         test.done();
     },
-
     testIslamicIsLeapYear12: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
@@ -238,7 +212,6 @@ module.exports.testislamic = {
         test.ok(!cal.isLeapYear(12));
         test.done();
     },
-
     testIslamicIsLeapYear13: function(test) {
         test.expect(1);
         var cal = new IslamicCal();
