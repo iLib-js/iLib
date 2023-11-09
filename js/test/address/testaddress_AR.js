@@ -84,7 +84,6 @@ module.exports.testaddress_AR = {
         test.equal(parsedAddress.country, "ARGENTINA");
         test.equal(parsedAddress.countryCode, "AR");
         test.done();
-
     },
     testParseARAddressOneLine: function(test) {
         test.expect(7);
@@ -98,7 +97,6 @@ module.exports.testaddress_AR = {
         test.equal(parsedAddress.country, "ARGENTINA");
         test.equal(parsedAddress.countryCode, "AR");
         test.done();
-
     },
     testParseARAddressSuperfluousWhitespace: function(test) {
         test.expect(7);
@@ -112,7 +110,6 @@ module.exports.testaddress_AR = {
         test.equal(parsedAddress.country, "ARGENTINA");
         test.equal(parsedAddress.countryCode, "AR");
         test.done();
-
     },
     testParseARAddressNoDelimiters: function(test) {
         test.expect(7);
@@ -126,7 +123,6 @@ module.exports.testaddress_AR = {
         test.equal(parsedAddress.country, "ARGENTINA");
         test.equal(parsedAddress.countryCode, "AR");
         test.done();
-
     },
     testParseARAddressSpecialChars: function(test) {
         test.expect(7);
@@ -140,7 +136,6 @@ module.exports.testaddress_AR = {
         test.equal(parsedAddress.country, "ARGENTINA");
         test.equal(parsedAddress.countryCode, "AR");
         test.done();
-
     },
     testParseARAddressFromUS: function(test) {
         test.expect(7);
@@ -156,7 +151,6 @@ module.exports.testaddress_AR = {
         test.equal(parsedAddress.country, "Argentina");
         test.equal(parsedAddress.countryCode, "AR");
         test.done();
-
     },
     testFormatAddressAR: function(test) {
         test.expect(1);
@@ -172,7 +166,6 @@ module.exports.testaddress_AR = {
         var formatter = new AddressFmt({locale: 'es-AR'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
-
     },
     testFormatAddressARFromUS: function(test) {
         test.expect(1);
@@ -188,6 +181,5 @@ module.exports.testaddress_AR = {
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
-
     }
 };

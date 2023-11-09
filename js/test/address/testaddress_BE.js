@@ -60,7 +60,6 @@ module.exports.testaddress_BE = {
         test.equal(parsedAddress.country, "Belgium");
         test.equal(parsedAddress.countryCode, "BE");
         test.done();
-
     },
     testParseAddressBENoZip: function(test) {
         test.expect(7);

@@ -91,7 +91,6 @@ module.exports.testaddress_AE = {
 
         // the country name is in English because this address is for a contact in a US database
 
-
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١");
         test.equal(parsedAddress.locality, "دبي");
