@@ -20,7 +20,6 @@
 if (typeof(CharmapFactory) === "undefined") {
     var CharmapFactory = require("../../lib/CharmapFactory.js");
 }
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }

@@ -23,7 +23,6 @@ if (typeof(NameFmt) === "undefined") {
 if (typeof(Name) === "undefined") {
     var Name = require("../../lib/Name.js");
 }
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }

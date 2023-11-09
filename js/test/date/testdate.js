@@ -26,7 +26,6 @@ if (typeof(DateFmt) === "undefined") {
 if (typeof(DateFactory) === "undefined") {
     var DateFactory = require("../../lib/DateFactory.js");
 }
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
