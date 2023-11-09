@@ -87,7 +87,6 @@ module.exports.testctypeasync = {
             test.done();
         });
     },
-
     testIsLowerTrue: function(test) {
         test.expect(11);
         isLower._init(false, undefined, function() {
@@ -105,7 +104,6 @@ module.exports.testctypeasync = {
             test.done();
         });
     },
-
     testIsUpperTrue: function(test) {
         test.expect(11);
         isUpper._init(false, undefined, function() {
@@ -123,7 +121,6 @@ module.exports.testctypeasync = {
             test.done();
         });
     },
-
     testIsPrintTrue: function(test) {
         test.expect(7);
         isPrint._init(false, undefined, function() {
@@ -137,7 +134,6 @@ module.exports.testctypeasync = {
             test.done();
         });
     },
-
     testIsAsciiTrue: function(test) {
         test.expect(13);
         isAscii._init(false, undefined, function() {
@@ -157,7 +153,6 @@ module.exports.testctypeasync = {
             test.done();
         });
     },
-
     testIsBlankTrue: function(test) {
         test.expect(13);
         isBlank._init(false, undefined, function() {
@@ -177,7 +172,6 @@ module.exports.testctypeasync = {
             test.done();
         });
     },
-
     testIsSpaceTrue: function(test) {
         test.expect(11);
         isSpace._init(false, undefined, function() {
@@ -195,7 +189,6 @@ module.exports.testctypeasync = {
             test.done();
         });
     },
-
     testIsPunctTrue: function(test) {
         test.expect(17);
         isPunct._init(false, undefined, function() {
@@ -219,7 +212,6 @@ module.exports.testctypeasync = {
             test.done();
         });
     },
-
     testIsIdeoTrue: function(test) {
         test.expect(10);
         isIdeo._init(false, undefined, function() {
@@ -236,7 +228,6 @@ module.exports.testctypeasync = {
             test.done();
         });
     },
-
     testIsCntrlTrue: function(test) {
         test.expect(10);
         isCntrl._init(false, undefined, function() {
@@ -253,7 +244,6 @@ module.exports.testctypeasync = {
             test.done();
         });
     },
-
     testIsDigitTrue: function(test) {
         test.expect(20);
         isDigit._init(false, undefined, function() {
@@ -280,7 +270,6 @@ module.exports.testctypeasync = {
             test.done();
         });
     },
-
     testIsXdigitTrue: function(test) {
         test.expect(32);
         isXdigit._init(false, undefined, function() {
@@ -319,7 +308,6 @@ module.exports.testctypeasync = {
             test.done();
         });
     },
-
     testWithinRangeTrue: function(test) {
         test.expect(5);
         CType._init(false, undefined, function() {
@@ -331,7 +319,6 @@ module.exports.testctypeasync = {
             test.done();
         });
     },
-
     testIsScriptTrue: function(test) {
         test.expect(16);
         isScript._init(false, undefined, function() {
@@ -354,7 +341,6 @@ module.exports.testctypeasync = {
             test.done();
         });
     },
-
     testIsAlnum: function(test) {
         test.expect(11);
         isAlnum._init(false, undefined, function() {
@@ -372,7 +358,6 @@ module.exports.testctypeasync = {
             test.done();
         });
     },
-
     testIsGraphTrue: function(test) {
         test.expect(5);
         isGraph._init(false, undefined, function() {

@@ -323,9 +323,6 @@ module.exports.testdatefmt_az_Latn_AZ = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
-
-
     testDateFmtTemplateClock12SwitchHH_az_Latn_AZ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "az-Latn-AZ", clock: "12", template: "HH:mm"});

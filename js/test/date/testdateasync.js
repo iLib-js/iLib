@@ -42,7 +42,6 @@ module.exports.testdateasync = {
             }
         });
     },
-
     testDateConstructorFull: function(test) {
         test.expect(8);
         DateFactory({
@@ -68,7 +67,6 @@ module.exports.testdateasync = {
             }
         });
     },
-
     testDateFactoryRightType: function(test) {
         test.expect(2);
         DateFactory({
@@ -81,7 +79,6 @@ module.exports.testdateasync = {
             }
         });
     },
-
     testDateFactoryNonGregorian: function(test) {
         test.expect(2);
         DateFactory({
@@ -94,7 +91,6 @@ module.exports.testdateasync = {
             }
         });
     },
-
     testDateFactoryNonGregorianWithCalendar: function(test) {
         test.expect(2);
         DateFactory({
@@ -107,7 +103,6 @@ module.exports.testdateasync = {
             }
         });
     },
-
     testDateFactoryBogus: function(test) {
         test.expect(1);
         DateFactory({
@@ -119,7 +114,6 @@ module.exports.testdateasync = {
             }
         });
     },
-
     testDateToIlibDate: function(test) {
         test.expect(1);
         var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700");
@@ -144,7 +138,6 @@ module.exports.testdateasync = {
             }
         });
     },
-
     testDstStartBoundary_Azores: function(test) {
         test.expect(1);
         DateFactory({
@@ -164,7 +157,6 @@ module.exports.testdateasync = {
             }
         });
     },
-
     testDstEndBoundary_Azores: function(test) {
         test.expect(1);
         var boundaryiLib = DateFactory({

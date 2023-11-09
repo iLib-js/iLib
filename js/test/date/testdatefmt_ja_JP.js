@@ -35,7 +35,6 @@ module.exports.testdatefmt_ja_JP = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtConstructorEmpty_ja_JP: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "ja-JP"});
@@ -43,8 +42,6 @@ module.exports.testdatefmt_ja_JP = {
         test.ok(fmt !== null);
         test.done();
     },
-
-
     testDateFmtSimpleShort_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "short"});
@@ -63,7 +60,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011/09/29");
         test.done();
     },
-
     testDateFmtSimpleMedium_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "medium"});
@@ -82,7 +78,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011/09/29");
         test.done();
     },
-
     testDateFmtSimpleLong_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "long"});
@@ -101,7 +96,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011年9月29日");
         test.done();
     },
-
     testDateFmtSimpleFull_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "full"});
@@ -120,7 +114,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011年9月29日");
         test.done();
     },
-
     testDateFmtSimpleTimeShort_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "short", type: "time"});
@@ -139,7 +132,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeMedium_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "medium", type: "time"});
@@ -158,7 +150,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeLong_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", timelength: "long", type: "time"});
@@ -177,7 +168,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeFull_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "full", type: "time"});
@@ -196,7 +186,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleShort_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "short", type: "datetime"});
@@ -215,7 +204,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011/09/29 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleMedium_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "medium", type: "datetime"});
@@ -234,7 +222,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011/09/29 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleLong_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "long", type: "datetime"});
@@ -253,7 +240,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011年9月29日 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleFull_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "full", type: "datetime"});
@@ -272,8 +258,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011年9月29日 13:45");
         test.done();
     },
-
-
     testDateFmtTemplateCalendar_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", calendar: "julian", template: "yyyy-MM-dd"});
@@ -292,7 +276,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
     testDateFmtTemplateCalendarIncompatibleDateType_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
@@ -312,7 +295,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011-09-16 13:45");
         test.done();
     },
-
     testDateFmtTemplateClock12SwitchHH_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", clock: "12", template: "HH:mm"});
@@ -331,7 +313,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock12Switchkk_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", clock: "12", template: "kk:mm"});
@@ -350,7 +331,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock24Switchhh_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", clock: "24", template: "hh:mm"});
@@ -369,7 +349,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateClock24SwitchKK_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", clock: "24", template: "KK:mm"});
@@ -388,7 +367,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", template: "hh:mm"});
@@ -407,7 +385,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", template: "KK:mm"});
@@ -426,7 +403,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", template: "HH:mm"});
@@ -445,7 +421,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", template: "kk:mm"});
@@ -464,8 +439,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
-
     testDateFmtTypeDate_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "date"});
@@ -484,7 +457,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011/09/29");
         test.done();
     },
-
     testDateFmtTypeTime_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time"});
@@ -503,7 +475,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTypeDateTime_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "datetime"});
@@ -522,8 +493,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011/09/29 13:45");
         test.done();
     },
-
-
     testDateFmtShortDateComponentsY_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", date: "y"});
@@ -542,7 +511,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011年");
         test.done();
     },
-
     testDateFmtShortDateComponentsM_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", date: "m"});
@@ -561,7 +529,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "09月");
         test.done();
     },
-
     testDateFmtShortDateComponentsN_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", date: "n"});
@@ -580,7 +547,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "9");
         test.done();
     },
-
     testDateFmtShortDateComponentsD_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", date: "d"});
@@ -599,7 +565,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "29日");
         test.done();
     },
-
     testDateFmtShortDateComponentsDM_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", date: "dm"});
@@ -618,7 +583,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "09/29");
         test.done();
     },
-
     testDateFmtShortDateComponentsMY_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", date: "my"});
@@ -637,7 +601,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011/09");
         test.done();
     },
-
     testDateFmtShortDateComponentsDMY_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", date: "dmy"});
@@ -656,7 +619,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011/09/29");
         test.done();
     },
-
     testDateFmtShortDateComponentsWDM_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", date: "wdm"});
@@ -675,7 +637,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "09/29木");
         test.done();
     },
-
     testDateFmtShortDateComponentsWDMY_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", date: "wdmy"});
@@ -694,8 +655,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011/09/29木");
         test.done();
     },
-
-
     testDateFmtFullDateComponentsY_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "full", date: "y"});
@@ -714,7 +673,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011年");
         test.done();
     },
-
     testDateFmtFullDateComponentsM_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "full", date: "m"});
@@ -733,7 +691,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "9月");
         test.done();
     },
-
     testDateFmtFullDateComponentsD_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "full", date: "d"});
@@ -752,7 +709,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "29日");
         test.done();
     },
-
     testDateFmtFullDateComponentsDM_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "full", date: "dm"});
@@ -771,7 +727,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "9月29日");
         test.done();
     },
-
     testDateFmtFullDateComponentsMY_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "full", date: "my"});
@@ -790,7 +745,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011年9月");
         test.done();
     },
-
     testDateFmtFullDateComponentsDMY_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "full", date: "dmy"});
@@ -809,7 +763,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011年9月29日");
         test.done();
     },
-
     testDateFmtFullDateComponentsWDM_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "full", date: "wdm"});
@@ -828,7 +781,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "9月29日木曜日");
         test.done();
     },
-
     testDateFmtFullDateComponentsWDMY_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "full", date: "wdmy"});
@@ -847,8 +799,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "2011年9月29日木曜日");
         test.done();
     },
-
-
     testDateFmtShortTimeComponentsS_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time", time: "s"});
@@ -867,7 +817,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsM_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time", time: "m"});
@@ -886,7 +835,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsH_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time", time: "h"});
@@ -905,7 +853,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtShortTimeComponentsMS_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time", time: "ms"});
@@ -924,7 +871,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHM_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time", time: "hm"});
@@ -943,7 +889,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMS_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time", time: "hms"});
@@ -962,7 +907,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMA_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time", time: "hma"});
@@ -981,7 +925,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMZ_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1005,7 +948,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45 JST");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMAZ_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1029,7 +971,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45 JST");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSA_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time", time: "hmsa"});
@@ -1048,7 +989,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSZ_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1072,7 +1012,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45:37 JST");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSAZ_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1096,8 +1035,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45:37 JST");
         test.done();
     },
-
-
     testDateFmtFullTimeComponentsS_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time", length: "full", time: "s"});
@@ -1116,7 +1053,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsM_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time", length: "full", time: "m"});
@@ -1135,7 +1071,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsH_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time", length: "full", time: "h"});
@@ -1154,7 +1089,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtFullTimeComponentsMS_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time", length: "full", time: "ms"});
@@ -1173,7 +1107,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHM_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time", length: "full", time: "hm"});
@@ -1192,7 +1125,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMS_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time", length: "full", time: "hms"});
@@ -1211,7 +1143,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMA_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time", length: "full", time: "hma"});
@@ -1230,7 +1161,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMZ_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1255,7 +1185,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45 JST");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMAZ_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1280,7 +1209,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45 JST");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSA_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", type: "time", length: "full", time: "hmsa"});
@@ -1299,7 +1227,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSZ_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1324,7 +1251,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45:37 JST");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSAZ_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1349,7 +1275,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45:37 JST");
         test.done();
     },
-
     testDateFmtWithTimeZoneAndNoDST_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1374,7 +1299,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.format(date), "13:45:37 JST");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinMinuteAfter_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "full"});
@@ -1543,7 +1467,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.formatRelative(reference, date), "4 時間前");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "full"});
@@ -1600,7 +1523,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.formatRelative(reference, date), "4 日前");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "full"});
@@ -1657,7 +1579,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.formatRelative(reference, date), "9 週間前");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "full"});
@@ -1714,7 +1635,6 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.formatRelative(reference, date), "14 か月前");
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_ja_JP: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ja-JP", length: "full"});
@@ -1771,6 +1691,4 @@ module.exports.testdatefmt_ja_JP = {
         test.equal(fmt.formatRelative(reference, date), "21 年前");
         test.done();
     }
-
-
 };
