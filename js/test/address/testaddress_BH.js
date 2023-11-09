@@ -34,7 +34,6 @@ module.exports.testaddress_BH = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressBHNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد عبد الله احمد, عمارة ٢٢٢, المنامة ٣١٦, البحرين", {locale: 'ar-BH'});
@@ -48,7 +47,6 @@ module.exports.testaddress_BH = {
         test.equal(parsedAddress.countryCode, "BH");
         test.done();
     },
-
     testParseAddressBHNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد عبد الله احمد, عمارة ٢٢٢, المنامة, البحرين", {locale: 'ar-BH'});
@@ -62,7 +60,6 @@ module.exports.testaddress_BH = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressBHManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد عبد الله احمد\nعمارة ٢٢٢\nالمنامة ٣١٦\n البحرين", {locale: 'ar-BH'});
@@ -76,7 +73,6 @@ module.exports.testaddress_BH = {
         test.equal(parsedAddress.countryCode, "BH");
         test.done();
     },
-
     testParseAddressBHOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد عبد الله احمد, عمارة ٢٢٢,المنامة ٣١٦, البحرين", {locale: 'ar-BH'});
@@ -90,7 +86,6 @@ module.exports.testaddress_BH = {
         test.equal(parsedAddress.countryCode, "BH");
         test.done();
     },
-
     testParseAddressBHSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد عبد الله احمد, عمارة ٢٢٢  \n\t\n المنامة ٣١٦\t\n\n البحرين \n \t\t\t", {locale: 'ar-BH'});
@@ -104,7 +99,6 @@ module.exports.testaddress_BH = {
         test.equal(parsedAddress.countryCode, "BH");
         test.done();
     },
-
     testParseAddressBHNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد عبد الله احمد عمارة ٢٢٢ المنامة ٣١٦  البحرين", {locale: 'ar-BH'});
@@ -118,7 +112,6 @@ module.exports.testaddress_BH = {
         test.equal(parsedAddress.countryCode, "BH");
         test.done();
     },
-
     testParseAddressBHSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد عبد الله احمد, عمارة ٢٢٢,المنامة ٣١٦,  البحرين", {locale: 'ar-BH'});
@@ -132,7 +125,6 @@ module.exports.testaddress_BH = {
         test.equal(parsedAddress.countryCode, "BH");
         test.done();
     },
-
     testParseAddressBHFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد عبد الله احمد, عمارة ٢٢٢,المنامة ٣١٦, Bahrain", {locale: 'en-US'});
@@ -148,7 +140,6 @@ module.exports.testaddress_BH = {
         test.equal(parsedAddress.countryCode, "BH");
         test.done();
     },
-
     testFormatAddressBH: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -164,7 +155,6 @@ module.exports.testaddress_BH = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressBHFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -180,5 +170,4 @@ module.exports.testaddress_BH = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

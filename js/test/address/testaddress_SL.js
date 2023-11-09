@@ -32,7 +32,6 @@ module.exports.testaddress_SL = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressSLNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone", {locale: 'en-SL'});
@@ -46,7 +45,6 @@ module.exports.testaddress_SL = {
         test.equal(parsedAddress.countryCode, "SL");
         test.done();
     },
-
     testParseAddressSLNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone", {locale: 'en-SL'});
@@ -60,7 +58,6 @@ module.exports.testaddress_SL = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressSLNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara 7A Ross Road Cline\nFreetown", {locale: 'en-SL'});
@@ -74,7 +71,6 @@ module.exports.testaddress_SL = {
         test.equal(parsedAddress.countryCode, "SL");
         test.done();
     },
-
     testParseAddressSLManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara\n7A Ross Road Cline\nFreetown\nSierra Leone\n\n\n", {locale: 'en-SL'});
@@ -87,7 +83,6 @@ module.exports.testaddress_SL = {
         test.equal(parsedAddress.countryCode, "SL");
         test.done();
     },
-
     testParseAddressSLOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara , 7A Ross Road Cline , Freetown , Sierra Leone", {locale: 'en-SL'});
@@ -101,7 +96,6 @@ module.exports.testaddress_SL = {
         test.equal(parsedAddress.countryCode, "SL");
         test.done();
     },
-
     testParseAddressSLSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\t\tMr. John Kamara\t\t\t7A Ross Road Cline\t\nFreetown\n\t Sierra Leone\n\n\n", {locale: 'en-SL'});
@@ -115,7 +109,6 @@ module.exports.testaddress_SL = {
         test.equal(parsedAddress.countryCode, "SL");
         test.done();
     },
-
     testParseAddressSLNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara 7A Ross Road Cline, Freetown Sierra Leone", {locale: 'en-SL'});
@@ -129,7 +122,6 @@ module.exports.testaddress_SL = {
         test.equal(parsedAddress.countryCode, "SL");
         test.done();
     },
-
     testParseAddressSLFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone", {locale: 'en-US'});
@@ -143,7 +135,6 @@ module.exports.testaddress_SL = {
         test.equal(parsedAddress.countryCode, "SL");
         test.done();
     },
-
     testFormatAddressSL: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -158,7 +149,6 @@ module.exports.testaddress_SL = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressSLFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -173,7 +163,6 @@ module.exports.testaddress_SL = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressSL1: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -188,7 +177,6 @@ module.exports.testaddress_SL = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressSL2: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -203,7 +191,6 @@ module.exports.testaddress_SL = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testParseAddressSL3: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Simon Hunter 87 Florence's, Peninsula Road\nFreetown\nSierra Leone", {locale: 'en-SL'});
@@ -217,6 +204,4 @@ module.exports.testaddress_SL = {
         test.equal(parsedAddress.countryCode, "SL");
         test.done();
     }
-
-
 };

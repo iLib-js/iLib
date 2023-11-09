@@ -34,7 +34,6 @@ module.exports.testaddress_SV = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressSVNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señora Rina Isabel Peña Borja, Colonia Universitaria Norte #2, Calle Alcaine #29, CP 1120 - MEJICANOS, SAN SALVADOR, EL SALVADOR", {locale: 'es-SV'});
@@ -48,7 +47,6 @@ module.exports.testaddress_SV = {
         test.equal(parsedAddress.countryCode, "SV");
         test.done();
     },
-
     testParseAddressSVNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señora Rina Isabel Peña Borja, Colonia Universitaria Norte #2, Calle Alcaine #29, MEJICANOS, SAN SALVADOR, EL SALVADOR", {locale: 'es-SV'});
@@ -62,7 +60,6 @@ module.exports.testaddress_SV = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressSVManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señora Rina Isabel Peña Borja\nColonia Universitaria Norte #2\nCalle Alcaine #29\nCP 1120 - MEJICANOS\nSAN SALVADOR\nEL SALVADOR", {locale: 'es-SV'});
@@ -76,7 +73,6 @@ module.exports.testaddress_SV = {
         test.equal(parsedAddress.countryCode, "SV");
         test.done();
     },
-
     testParseAddressSVOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señora Rina Isabel Peña Borja, Colonia Universitaria Norte #2, Calle Alcaine #29, CP 1120 - MEJICANOS, SAN SALVADOR, EL SALVADOR", {locale: 'es-SV'});
@@ -90,7 +86,6 @@ module.exports.testaddress_SV = {
         test.equal(parsedAddress.countryCode, "SV");
         test.done();
     },
-
     testParseAddressSVSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señora Rina Isabel Peña Borja, Colonia Universitaria Norte #2, Calle Alcaine #29  \n\t\n CP 1120 - MEJICANOS, SAN SALVADOR\t\n\n EL SALVADOR  \n  \t\t\t", {locale: 'es-SV'});
@@ -104,7 +99,6 @@ module.exports.testaddress_SV = {
         test.equal(parsedAddress.countryCode, "SV");
         test.done();
     },
-
     testParseAddressSVNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señora Rina Isabel Peña Borja Colonia Universitaria Norte #2 Calle Alcaine #29 CP 1120 - MEJICANOS SAN SALVADOR EL SALVADOR", {locale: 'es-SV'});
@@ -118,7 +112,6 @@ module.exports.testaddress_SV = {
         test.equal(parsedAddress.countryCode, "SV");
         test.done();
     },
-
     testParseAddressSVSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señora Rina Isabel Peña Borja, Colonia Universitaria Norte #2, Calle Alcaine #29, CP 1120 - MEJICANOS, SAN SALVADOR, EL SALVADOR", {locale: 'es-SV'});
@@ -132,7 +125,6 @@ module.exports.testaddress_SV = {
         test.equal(parsedAddress.countryCode, "SV");
         test.done();
     },
-
     testParseAddressSVFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señora Rina Isabel Peña Borja, Colonia Universitaria Norte #2, Calle Alcaine #29, CP 1120 - MEJICANOS, SAN SALVADOR, EL SALVADOR", {locale: 'en-US'});
@@ -148,7 +140,6 @@ module.exports.testaddress_SV = {
         test.equal(parsedAddress.countryCode, "SV");
         test.done();
     },
-
     testFormatAddressSV: function(test) {
         test.expect(1);
             var parsedAddress = new Address({
@@ -165,7 +156,6 @@ module.exports.testaddress_SV = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressSVFromUS: function(test) {
         test.expect(1);
             var parsedAddress = new Address({
@@ -182,5 +172,4 @@ module.exports.testaddress_SV = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

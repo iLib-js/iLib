@@ -34,7 +34,6 @@ module.exports.testaddress_CL = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressCLNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Av. Bellavista N° 185, Dep. 609, 8420000, Recoleta, Chile", {locale: 'es-CL'});
@@ -48,7 +47,6 @@ module.exports.testaddress_CL = {
         test.equal(parsedAddress.countryCode, "CL");
         test.done();
     },
-
     testParseAddressCLNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Av. Bellavista N° 185, Dep. 609, 8420000, Recoleta, Chile", {locale: 'es-CL'});
@@ -62,7 +60,6 @@ module.exports.testaddress_CL = {
         test.equal(parsedAddress.postalCode, "8420000");
         test.done();
     },
-
     testParseAddressCLManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Av. Bellavista N° 185\nDep. 609\n8420000\nRecoleta\nChile", {locale: 'es-CL'});
@@ -76,7 +73,6 @@ module.exports.testaddress_CL = {
         test.equal(parsedAddress.countryCode, "CL");
         test.done();
     },
-
     testParseAddressCLOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Av. Bellavista N° 185, Dep. 609, 8420000, Recoleta, Chile", {locale: 'es-CL'});
@@ -90,7 +86,6 @@ module.exports.testaddress_CL = {
         test.equal(parsedAddress.countryCode, "CL");
         test.done();
     },
-
     testParseAddressCLSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Av. Bellavista N° 185, Dep. 609 \n\t\n 8420000\nRecoleta\t\n\n Chile  \n  \t\t\t", {locale: 'es-CL'});
@@ -104,7 +99,6 @@ module.exports.testaddress_CL = {
         test.equal(parsedAddress.countryCode, "CL");
         test.done();
     },
-
     testParseAddressCLNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Av. Bellavista N° 185 Dep. 609 8420000 Recoleta Chile", {locale: 'es-CL'});
@@ -118,7 +112,6 @@ module.exports.testaddress_CL = {
         test.equal(parsedAddress.countryCode, "CL");
         test.done();
     },
-
     testParseAddressCLSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Av. Bellavista N° 185, Dep. 609, 8420000, Recoleta, Chile", {locale: 'es-CL'});
@@ -132,7 +125,6 @@ module.exports.testaddress_CL = {
         test.equal(parsedAddress.countryCode, "CL");
         test.done();
     },
-
     testParseAddressCLFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Av. Bellavista N° 185, Dep. 609, 8420000, Recoleta, Chile", {locale: 'en-US'});
@@ -148,7 +140,6 @@ module.exports.testaddress_CL = {
         test.equal(parsedAddress.countryCode, "CL");
         test.done();
     },
-
     testFormatAddressCL: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -164,7 +155,6 @@ module.exports.testaddress_CL = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressCLFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -180,7 +170,6 @@ module.exports.testaddress_CL = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressCL1: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señorita Patricia Vivas, Moneda 1155, 8340457, SANTIAGO, CHILE", {locale: 'es-CL'});
@@ -211,6 +200,4 @@ module.exports.testaddress_CL = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
-
 };

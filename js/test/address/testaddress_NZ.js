@@ -32,7 +32,6 @@ module.exports.testaddress_NZ = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressNZNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("PO Box 10362\nWellington 6143\nNew Zealand", {locale: 'en-NZ'});
@@ -46,7 +45,6 @@ module.exports.testaddress_NZ = {
         test.equal(parsedAddress.countryCode, "NZ");
         test.done();
     },
-
     testParseAddressNZNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("23 Kate Sheppard Place,\nThorndon\nWellington\nNew Zealand", {locale: 'en-NZ'});
@@ -60,7 +58,6 @@ module.exports.testaddress_NZ = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressNZNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("45a Clevedon-Takanini Rd\nArdmore\nAuckland 2582", {locale: 'en-NZ'});
@@ -74,7 +71,6 @@ module.exports.testaddress_NZ = {
         test.equal(parsedAddress.countryCode, "NZ");
         test.done();
     },
-
     testParseAddressNZManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Level 6\nTower Centre\n45 Queen Street\nAuckland\n1010\nNew Zealand\n\n\n", {locale: 'en-NZ'});
@@ -88,7 +84,6 @@ module.exports.testaddress_NZ = {
         test.equal(parsedAddress.countryCode, "NZ");
         test.done();
     },
-
     testParseAddressNZOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("70 Falsgrave St, Waltham, Christchurch 8011, New Zealand", {locale: 'en-NZ'});
@@ -102,7 +97,6 @@ module.exports.testaddress_NZ = {
         test.equal(parsedAddress.countryCode, "NZ");
         test.done();
     },
-
     testParseAddressNZSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\t29b Bolt Rd\n\n\r\r\t\n   Tahuna\n\t\r\rNelson\r5678\r\r\n\r\n\tNew\tZealand\n\n\n", {locale: 'en-NZ'});
@@ -116,7 +110,6 @@ module.exports.testaddress_NZ = {
         test.equal(parsedAddress.countryCode, "NZ");
         test.done();
     },
-
     testParseAddressNZNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("70 Falsgrave St Waltham Christchurch 8011 New Zealand", {locale: 'en-NZ'});
@@ -130,7 +123,6 @@ module.exports.testaddress_NZ = {
         test.equal(parsedAddress.countryCode, "NZ");
         test.done();
     },
-
     testParseAddressNZFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("70 Falsgrave St\nWaltham\nChristchurch 8011\nNew Zealand", {locale: 'en-US'});
@@ -146,7 +138,6 @@ module.exports.testaddress_NZ = {
         test.equal(parsedAddress.countryCode, "NZ");
         test.done();
     },
-
     testFormatAddressNZ: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -162,7 +153,6 @@ module.exports.testaddress_NZ = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressNZFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -178,5 +168,4 @@ module.exports.testaddress_NZ = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

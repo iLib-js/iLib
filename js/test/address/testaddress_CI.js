@@ -32,7 +32,6 @@ module.exports.testaddress_CI = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressCINormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37 ABIDJAN 06\ncôte d’ivoire", {locale: 'fr-CI'});
@@ -46,7 +45,6 @@ module.exports.testaddress_CI = {
         test.equal(parsedAddress.countryCode, "CI");
         test.done();
     },
-
     testParseAddressCINoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37 ABIDJAN 06\ncôte d’ivoire", {locale: 'fr-CI'});
@@ -60,7 +58,6 @@ module.exports.testaddress_CI = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressCINoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37\nABIDJAN 06", {locale: 'fr-CI'});
@@ -74,7 +71,6 @@ module.exports.testaddress_CI = {
         test.equal(parsedAddress.countryCode, "CI");
         test.done();
     },
-
     testParseAddressCIManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Madame KOUAME AKISSI\nCOMMERCANTE 06 B.P. 37\nABIDJAN 06\ncôte d’ivoire", {locale: 'fr-CI'});
@@ -88,7 +84,6 @@ module.exports.testaddress_CI = {
         test.equal(parsedAddress.countryCode, "CI");
         test.done();
     },
-
     testParseAddressCIOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Madame KOUAME AKISSI , COMMERCANTE 06 B.P. 37 , ABIDJAN 06 , côte d’ivoire", {locale: 'fr-CI'});
@@ -102,7 +97,6 @@ module.exports.testaddress_CI = {
         test.equal(parsedAddress.countryCode, "CI");
         test.done();
     },
-
     testParseAddressCISuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Madame KOUAME AKISSI\n\n\t\r\t\t\rCOMMERCANTE 06 B.P. 37\r\r\n\nABIDJAN 06\t\r\n\t\rcôte d’ivoire", {locale: 'fr-CI'});
@@ -116,7 +110,6 @@ module.exports.testaddress_CI = {
         test.equal(parsedAddress.countryCode, "CI");
         test.done();
     },
-
     testParseAddressCINoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37 ABIDJAN 06 côte d’ivoire", {locale: 'fr-CI'});
@@ -130,7 +123,6 @@ module.exports.testaddress_CI = {
         test.equal(parsedAddress.countryCode, "CI");
         test.done();
     },
-
     testParseAddressCIFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37\nABIDJAN 06\ncôte d’ivoire", {locale: 'fr-CI'});
@@ -144,7 +136,6 @@ module.exports.testaddress_CI = {
         test.equal(parsedAddress.countryCode, "CI");
         test.done();
     },
-
     testFormatAddressCI: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -160,7 +151,6 @@ module.exports.testaddress_CI = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressCIFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -176,5 +166,4 @@ module.exports.testaddress_CI = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

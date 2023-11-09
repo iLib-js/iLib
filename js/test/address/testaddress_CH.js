@@ -33,7 +33,6 @@ module.exports.testaddress_CH = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressCHNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich\nSWITZERLAND", {locale: 'de-CH'});
@@ -47,7 +46,6 @@ module.exports.testaddress_CH = {
         test.equal(parsedAddress.countryCode, "CH");
         test.done();
     },
-
     testParseAddressCHNormalWithAccents: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zürich\nSWITZERLAND", {locale: 'de-CH'});
@@ -61,7 +59,6 @@ module.exports.testaddress_CH = {
         test.equal(parsedAddress.countryCode, "CH");
         test.done();
     },
-
     testParseAddressCHNormalforItaly: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Hans gatto Tastentanz Via 5/16\n1234 Zurich\nSVIZZERA", {locale: 'it-CH'});
@@ -75,8 +72,6 @@ module.exports.testaddress_CH = {
         test.equal(parsedAddress.countryCode, "CH");
         test.done();
     },
-
-
     testParseAddressCHNormalforFrance: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Hans chat Tastentanz rue 5/16\n1234 Zurich\nSUISSE", {locale: 'fr-CH'});
@@ -90,8 +85,6 @@ module.exports.testaddress_CH = {
         test.equal(parsedAddress.countryCode, "CH");
         test.done();
     },
-
-
     testParseAddressCHNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Herr Hans Katze Tastentanzenstrasse 5/16\nZuerich\nSWITZERLAND", {locale: 'de-CH'});
@@ -105,7 +98,6 @@ module.exports.testaddress_CH = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressCHNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich", {locale: 'de-CH'});
@@ -119,7 +111,6 @@ module.exports.testaddress_CH = {
         test.equal(parsedAddress.countryCode, "CH");
         test.done();
     },
-
     testParseAddressCHManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Herr Hans Katze\nTastentanzenstrasse\n5/16\n1234\nZuerich\nSWITZERLAND\n\n", {locale: 'de-CH'});
@@ -133,7 +124,6 @@ module.exports.testaddress_CH = {
         test.equal(parsedAddress.countryCode, "CH");
         test.done();
     },
-
     testParseAddressCHOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Herr Hans Katze , Tastentanzenstrasse , 5/16 , 1234 , Zuerich , SWITZERLAND", {locale: 'de-CH'});
@@ -146,7 +136,6 @@ module.exports.testaddress_CH = {
         test.equal(parsedAddress.countryCode, "CH");
         test.done();
     },
-
     testParseAddressCHSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\t\Herr Hans Katze\nTastentanzenstrasse\n5/16\n\t1234\n\t\tZuerich\n\t\tSWITZERLAND\t\t", {locale: 'de-CH'});
@@ -160,7 +149,6 @@ module.exports.testaddress_CH = {
         test.equal(parsedAddress.countryCode, "CH");
         test.done();
     },
-
     testParseAddressCHNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Herr Hans Katze Tastentanzenstrasse 5/16 1234 Zuerich SWITZERLAND", {locale: 'de-CH'});
@@ -174,7 +162,6 @@ module.exports.testaddress_CH = {
         test.equal(parsedAddress.countryCode, "CH");
         test.done();
     },
-
     testParseAddressCHFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich\nSWITZERLAND", {locale: 'en-US'});
@@ -190,7 +177,6 @@ module.exports.testaddress_CH = {
         test.equal(parsedAddress.countryCode, "CH");
         test.done();
     },
-
     testFormatAddressCH: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -206,7 +192,6 @@ module.exports.testaddress_CH = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressCHFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -222,5 +207,4 @@ module.exports.testaddress_CH = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

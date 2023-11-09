@@ -32,7 +32,6 @@ module.exports.testaddress_ML = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressMLNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou\nBAMAKO\nMALI", {locale: 'fr-ML'});
@@ -46,7 +45,6 @@ module.exports.testaddress_ML = {
         test.equal(parsedAddress.countryCode, "ML");
         test.done();
     },
-
     testParseAddressMLNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou\nBAMAKO\nMALI", {locale: 'fr-ML'});
@@ -60,7 +58,6 @@ module.exports.testaddress_ML = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressMLNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou\nBAMAKO", {locale: 'fr-ML'});
@@ -74,7 +71,6 @@ module.exports.testaddress_ML = {
         test.equal(parsedAddress.countryCode, "ML");
         test.done();
     },
-
     testParseAddressMLManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Kalilou Sissoko Rue\n406 - Porte 39\nMagnabougou\n\n\nBAMAKO\n\n\nMALI\n\n\n", {locale: 'fr-ML'});
@@ -87,7 +83,6 @@ module.exports.testaddress_ML = {
         test.equal(parsedAddress.countryCode, "ML");
         test.done();
     },
-
     testParseAddressMLOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Kalilou Sissoko Rue , 406 - Porte 39 , Magnabougou , BAMAKO , MALI", {locale: 'fr-ML'});
@@ -101,7 +96,6 @@ module.exports.testaddress_ML = {
         test.equal(parsedAddress.countryCode, "ML");
         test.done();
     },
-
     testParseAddressMLSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tM. Kalilou Sissoko Rue\t\t\r406 - Porte 39\t\t\rMagnabougou\n\n\n\nBAMAKO\n\t MALI\n\n\n", {locale: 'fr-ML'});
@@ -115,7 +109,6 @@ module.exports.testaddress_ML = {
         test.equal(parsedAddress.countryCode, "ML");
         test.done();
     },
-
     testParseAddressMLNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou BAMAKO MALI", {locale: 'fr-ML'});
@@ -129,7 +122,6 @@ module.exports.testaddress_ML = {
         test.equal(parsedAddress.countryCode, "ML");
         test.done();
     },
-
     testParseAddressMLFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou\nBAMAKO\nMALI", {locale: 'en-US'});
@@ -145,7 +137,6 @@ module.exports.testaddress_ML = {
         test.equal(parsedAddress.countryCode, "ML");
         test.done();
     },
-
     testFormatAddressML: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -160,7 +151,6 @@ module.exports.testaddress_ML = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressMLFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -175,5 +165,4 @@ module.exports.testaddress_ML = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

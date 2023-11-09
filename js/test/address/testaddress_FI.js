@@ -32,7 +32,6 @@ module.exports.testaddress_FI = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressFIFIfinnishNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Eduskunta\nMatti Mallikainen\nMannerheimintie 30 as 5\nFI-00102 Eduskunta\nFinland", {locale: 'fi-FI'});
@@ -46,7 +45,6 @@ module.exports.testaddress_FI = {
         test.equal(parsedAddress.countryCode, "FI");
         test.done();
     },
-
     testParseAddressFIFIfinnishNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Eduskunta, Matti Mallikainen\nMannerheimintie 30 as 5\nFI-00102 Eduskunta", {locale: 'fi-FI'});
@@ -60,8 +58,6 @@ module.exports.testaddress_FI = {
         test.equal(parsedAddress.countryCode, "FI");
         test.done();
     },
-
-
     testParseAddressFIFIswedishNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Kalevankatu 12, 1st floor, FI-60100 Seinäjoki,Finland", {locale: 'sv-FI'});
@@ -75,7 +71,6 @@ module.exports.testaddress_FI = {
         test.equal(parsedAddress.countryCode, "FI");
         test.done();
     },
-
     testParseAddressFIFIswedishNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Kalevankatu 12, 1st floor, FI-60100 Seinäjoki", {locale: 'sv-FI'});
@@ -105,7 +100,6 @@ module.exports.testaddress_FI = {
         test.equal(parsedAddress.countryCode, "FI");
         test.done();
     },
-
     testParseAddressFIFISuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tMs. Aulikki Laasko\n\t\nVesakkotic 1399\n \r\n\r\rFI-00630    HELSINKI\r\r\n    Finland\t\n\n\n", {locale: 'fi-FI'});
@@ -119,7 +113,6 @@ module.exports.testaddress_FI = {
         test.equal(parsedAddress.countryCode, "FI");
         test.done();
     },
-
     testParseAddressFIFINoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Ms. Aulikki Laasko Vesakkotic 1399 HELSINKI Finland", {locale: 'fi-FI'});
@@ -133,7 +126,6 @@ module.exports.testaddress_FI = {
         test.equal(parsedAddress.countryCode, "FI");
         test.done();
     },
-
     testParseAddressFIFISpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Työpajankatu 13,FI-00580 Helsinki, Finland", {locale: 'fi-FI'});
@@ -147,7 +139,6 @@ module.exports.testaddress_FI = {
         test.equal(parsedAddress.countryCode, "FI");
         test.done();
     },
-
     testParseAddressFIFIFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Saga Matkat OY\nSaga Tours Ltd\nAlbertinkatu 36 B\nHELSINKI, Finland", {locale: 'en-US'});
@@ -161,7 +152,6 @@ module.exports.testaddress_FI = {
         test.equal(parsedAddress.countryCode, "FI");
         test.done();
     },
-
     testFormatAddressFIFIfinnish: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -176,7 +166,6 @@ module.exports.testaddress_FI = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressFIFIswedish: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -191,7 +180,6 @@ module.exports.testaddress_FI = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressFIFIFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -206,5 +194,4 @@ module.exports.testaddress_FI = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

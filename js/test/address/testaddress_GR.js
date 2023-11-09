@@ -34,7 +34,6 @@ module.exports.testaddress_GR = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressGRNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("18, Heracleous St., Kifissia, 145 64 Athens,GREECE", {locale: 'el-GR'});
@@ -48,7 +47,6 @@ module.exports.testaddress_GR = {
         test.equal(parsedAddress.countryCode, "GR");
         test.done();
     },
-
     testParseAddressGRNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("18, Heracleous St., Kifissia, Athens,GREECE", {locale: 'el-GR'});
@@ -62,7 +60,6 @@ module.exports.testaddress_GR = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressGRManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("18, Heracleous St., Kifissia, 145 64 Athens,GREECE", {locale: 'el-GR'});
@@ -76,7 +73,6 @@ module.exports.testaddress_GR = {
         test.equal(parsedAddress.countryCode, "GR");
         test.done();
     },
-
     testParseAddressGROneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("18, Heracleous St., Kifissia, 145 64 Athens,GREECE", {locale: 'el-GR'});
@@ -90,7 +86,6 @@ module.exports.testaddress_GR = {
         test.equal(parsedAddress.countryCode, "GR");
         test.done();
     },
-
     testParseAddressGRSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("18, Heracleous St., Kifissia, 145 64 Athens,GREECE", {locale: 'el-GR'});
@@ -104,7 +99,6 @@ module.exports.testaddress_GR = {
         test.equal(parsedAddress.countryCode, "GR");
         test.done();
     },
-
     testParseAddressGRNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("18, Heracleous St., Kifissia, 145 64 Athens,GREECE", {locale: 'el-GR'});
@@ -118,7 +112,6 @@ module.exports.testaddress_GR = {
         test.equal(parsedAddress.countryCode, "GR");
         test.done();
     },
-
     /*
     testParseAddressGRSpecialChars: function(test) {
         test.expect(7);
@@ -150,7 +143,6 @@ module.exports.testaddress_GR = {
         test.equal(parsedAddress.countryCode, "GR");
         test.done();
     },
-
     testFormatAddressGR: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -166,7 +158,6 @@ module.exports.testaddress_GR = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressGRFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -182,5 +173,4 @@ module.exports.testaddress_GR = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

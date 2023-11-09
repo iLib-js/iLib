@@ -34,7 +34,6 @@ module.exports.testaddress_CM = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressCMNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Pierre Marie, BP 6000, YAOUNDE, CAMEROON", {locale: 'fr-CM'});
@@ -48,7 +47,6 @@ module.exports.testaddress_CM = {
         test.equal(parsedAddress.countryCode, "CM");
         test.done();
     },
-
     testParseAddressCMNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Pierre Marie, BP 6000, YAOUNDE, CAMEROON", {locale: 'fr-CM'});
@@ -62,7 +60,6 @@ module.exports.testaddress_CM = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressCMManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Pierre Marie\nBP 6000, YAOUNDE\nCAMEROON", {locale: 'fr-CM'});
@@ -76,7 +73,6 @@ module.exports.testaddress_CM = {
         test.equal(parsedAddress.countryCode, "CM");
         test.done();
     },
-
     testParseAddressCMOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Pierre Marie, BP 6000, YAOUNDE, CAMEROON", {locale: 'fr-CM'});
@@ -90,7 +86,6 @@ module.exports.testaddress_CM = {
         test.equal(parsedAddress.countryCode, "CM");
         test.done();
     },
-
     testParseAddressCMSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Pierre Marie  \n\t\n BP 6000, YAOUNDE\t\n\n CAMEROON  \n  \t\t\t", {locale: 'fr-CM'});
@@ -104,7 +99,6 @@ module.exports.testaddress_CM = {
         test.equal(parsedAddress.countryCode, "CM");
         test.done();
     },
-
     testParseAddressCMNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Pierre Marie BP 6000 YAOUNDE CAMEROON", {locale: 'fr-CM'});
@@ -118,7 +112,6 @@ module.exports.testaddress_CM = {
         test.equal(parsedAddress.countryCode, "CM");
         test.done();
     },
-
     testParseAddressCMSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Direction des postes ,Régulation des réseaux et services postaux, YAOUNDE, CAMEROON", {locale: 'fr-CM'});
@@ -132,7 +125,6 @@ module.exports.testaddress_CM = {
         test.equal(parsedAddress.countryCode, "CM");
         test.done();
     },
-
     testParseAddressCMFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Pierre Marie, BP 6000, YAOUNDE, CAMEROON", {locale: 'en-US'});
@@ -148,7 +140,6 @@ module.exports.testaddress_CM = {
         test.equal(parsedAddress.countryCode, "CM");
         test.done();
     },
-
     testFormatAddressCM: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -163,7 +154,6 @@ module.exports.testaddress_CM = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressCMFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -178,5 +168,4 @@ module.exports.testaddress_CM = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

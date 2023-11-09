@@ -34,7 +34,6 @@ module.exports.testaddress_CD = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressCDNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Mashala Kashama Kashele, B.P. 7948, KINSHASA 1, république démocratique du congo", {locale: 'fr-CD'});
@@ -48,7 +47,6 @@ module.exports.testaddress_CD = {
         test.equal(parsedAddress.countryCode, "CD");
         test.done();
     },
-
     testParseAddressCDNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Mashala Kashama Kashele, B.P. 7948, KINSHASA 1, république démocratique du congo", {locale: 'fr-CD'});
@@ -62,7 +60,6 @@ module.exports.testaddress_CD = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressCDManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Mashala Kashama Kashele, B.P. 7948\nKINSHASA 1\nrépublique démocratique du congo", {locale: 'fr-CD'});
@@ -76,7 +73,6 @@ module.exports.testaddress_CD = {
         test.equal(parsedAddress.countryCode, "CD");
         test.done();
     },
-
     testParseAddressCDOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Mashala Kashama Kashele, B.P. 7948, KINSHASA 1, république démocratique du congo", {locale: 'fr-CD'});
@@ -90,7 +86,6 @@ module.exports.testaddress_CD = {
         test.equal(parsedAddress.countryCode, "CD");
         test.done();
     },
-
     testParseAddressCDSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Mashala Kashama Kashele, B.P. 7948  \n\t\n KINSHASA 1\t\n\n république démocratique du congo  \n  \t\t\t", {locale: 'fr-CD'});
@@ -104,7 +99,6 @@ module.exports.testaddress_CD = {
         test.equal(parsedAddress.countryCode, "CD");
         test.done();
     },
-
     testParseAddressCDNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Mashala Kashama Kashele B.P. 7948 KINSHASA 1 république démocratique du congo", {locale: 'fr-CD'});
@@ -118,7 +112,6 @@ module.exports.testaddress_CD = {
         test.equal(parsedAddress.countryCode, "CD");
         test.done();
     },
-
     testParseAddressCDSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Office congolais des postes, et télécommunications,B.P. 7948, KINSHASA 1, république démocratique du congo", {locale: 'fr-CD'});
@@ -132,7 +125,6 @@ module.exports.testaddress_CD = {
         test.equal(parsedAddress.countryCode, "CD");
         test.done();
     },
-
     testParseAddressCDFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Mashala Kashama Kashele, B.P. 7948, KINSHASA 1, république démocratique du congo", {locale: 'en-US'});
@@ -148,7 +140,6 @@ module.exports.testaddress_CD = {
         test.equal(parsedAddress.countryCode, "CD");
         test.done();
     },
-
     testFormatAddressCD: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -163,7 +154,6 @@ module.exports.testaddress_CD = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressCDFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -178,5 +168,4 @@ module.exports.testaddress_CD = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

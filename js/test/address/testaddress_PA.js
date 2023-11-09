@@ -32,7 +32,6 @@ module.exports.testaddress_PA = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressPANormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Calle 52 y Ricardo Arias.\nArea Bancaria\nPanama City\nPanama", {locale: 'es-PA'});
@@ -46,7 +45,6 @@ module.exports.testaddress_PA = {
         test.equal(parsedAddress.countryCode, "PA");
         test.done();
     },
-
     testParseAddressPANoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Calle 52 y Ricardo Arias.\nArea Bancaria\nPanama City\nPanama", {locale: 'es-PA'});
@@ -60,7 +58,6 @@ module.exports.testaddress_PA = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressPANoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Calle 52 y Ricardo Arias.\nArea Bancaria\nPanama City", {locale: 'es-PA'});
@@ -74,7 +71,6 @@ module.exports.testaddress_PA = {
         test.equal(parsedAddress.countryCode, "PA");
         test.done();
     },
-
     testParseAddressPAManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Calle 52 y\nRicardo Arias.\nArea Bancaria\nPanama City\nPanama", {locale: 'es-PA'});
@@ -88,7 +84,6 @@ module.exports.testaddress_PA = {
         test.equal(parsedAddress.countryCode, "PA");
         test.done();
     },
-
     testParseAddressPAOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Calle 52 y , Ricardo Arias. , Area Bancaria , Panama City , Panama", {locale: 'es-PA'});
@@ -102,7 +97,6 @@ module.exports.testaddress_PA = {
         test.equal(parsedAddress.countryCode, "PA");
         test.done();
     },
-
     testParseAddressPASuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Calle 52 y\n\n\t\r\t\t\rRicardo Arias.\r\r\r\t\t\r\n\n\nArea Bancaria\t\r\r\rPanama City\t\t\rPanama", {locale: 'es-PA'});
@@ -116,7 +110,6 @@ module.exports.testaddress_PA = {
         test.equal(parsedAddress.countryCode, "PA");
         test.done();
     },
-
     testParseAddressPAFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Calle 52 y Ricardo Arias.\nArea Bancaria\nPanama City\nPanama", {locale: 'es-PA'});
@@ -130,7 +123,6 @@ module.exports.testaddress_PA = {
         test.equal(parsedAddress.countryCode, "PA");
         test.done();
     },
-
     testFormatAddressPA: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -147,7 +139,6 @@ module.exports.testaddress_PA = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressPAFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -164,7 +155,6 @@ module.exports.testaddress_PA = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testParseAddressPANormal1: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MARTÍN GUTIERREZ,Via Israel 3,0424,VOLCÁN,Chiriquí,PANAMA", {locale: 'es-PA'});
@@ -178,7 +168,6 @@ module.exports.testaddress_PA = {
         test.equal(parsedAddress.countryCode, "PA");
         test.done();
     },
-
     testParseAddressPANormal2: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Parque Industrial Milla 8,Ciudad de Panamá,Panamá,PANAMA", {locale: 'es-PA'});
@@ -192,7 +181,6 @@ module.exports.testaddress_PA = {
         test.equal(parsedAddress.countryCode, "PA");
         test.done();
     },
-
     testParseAddressPANormal3: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Edificio Plaza Fidanque, Piso 2,P.O Box 0816-01349,Ciudad de Panamá,Panamá,PANAMA", {locale: 'es-PA'});
@@ -206,5 +194,4 @@ module.exports.testaddress_PA = {
         test.equal(parsedAddress.countryCode, "PA");
         test.done();
     }
-
 };

@@ -32,7 +32,6 @@ module.exports.testaddress_SN = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressSNNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("La Poste Direction de la production postale 6 RUE ABDOULAYE SECK MARIE PÉRSINE\n10000 DAKAR\nSenegal", {locale: 'fr-SN'});
@@ -46,7 +45,6 @@ module.exports.testaddress_SN = {
         test.equal(parsedAddress.countryCode, "SN");
         test.done();
     },
-
     testParseAddressSNNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("La Poste Direction de la production postale 6 RUE ABDOULAYE SECK MARIE PÉRSINE\nDAKAR\nSenegal", {locale: 'fr-SN'});
@@ -60,7 +58,6 @@ module.exports.testaddress_SN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressSNNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("La Poste Direction de la production postale 6 RUE ABDOULAYE SECK MARIE PÉRSINE\n10000 DAKAR", {locale: 'fr-SN'});
@@ -74,7 +71,6 @@ module.exports.testaddress_SN = {
         test.equal(parsedAddress.countryCode, "SN");
         test.done();
     },
-
     testParseAddressSNManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("La Poste\nDirection de la production\npostale 6 RUE ABDOULAYE SECK MARIE PÉRSINE\n10000\nDAKAR\nSenegal\n\n\n", {locale: 'fr-SN'});
@@ -87,7 +83,6 @@ module.exports.testaddress_SN = {
         test.equal(parsedAddress.countryCode, "SN");
         test.done();
     },
-
     testParseAddressSNOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("La Poste , Direction de la production , postale 6 RUE ABDOULAYE SECK MARIE PÉRSINE , 10000, DAKAR , Senegal", {locale: 'fr-SN'});
@@ -101,7 +96,6 @@ module.exports.testaddress_SN = {
         test.equal(parsedAddress.countryCode, "SN");
         test.done();
     },
-
     testParseAddressSNSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\t\tLa Poste\t\t\tDirection de la production postale\t\t\r6 RUE ABDOULAYE SECK MARIE PÉRSINE\t\n10000\n\tDAKAR\n\t Senegal\n\n\n", {locale: 'fr-SN'});
@@ -115,7 +109,6 @@ module.exports.testaddress_SN = {
         test.equal(parsedAddress.countryCode, "SN");
         test.done();
     },
-
     testParseAddressSNNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("La Poste Direction de la production postale 6 RUE ABDOULAYE SECK MARIE PÉRSINE 12500 DAKAR Senegal", {locale: 'fr-SN'});
@@ -129,7 +122,6 @@ module.exports.testaddress_SN = {
         test.equal(parsedAddress.countryCode, "SN");
         test.done();
     },
-
     testParseAddressSNFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("La Poste Direction de la production postale 6 RUE ABDOULAYE SECK MARIE PÉRSINE\n10000 DAKAR\nSenegal", {locale: 'en-US'});
@@ -143,7 +135,6 @@ module.exports.testaddress_SN = {
         test.equal(parsedAddress.countryCode, "SN");
         test.done();
     },
-
     testFormatAddressSN: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -158,7 +149,6 @@ module.exports.testaddress_SN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressSNFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -173,7 +163,6 @@ module.exports.testaddress_SN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testParseAddressSN1: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Monsieur Amadou Diop, Résidence Fallou Ndiaye, Appartement 12, 12 Avenue Cheikh Anta Diop, 12500 Dakar, SENEGAL");
@@ -186,7 +175,6 @@ module.exports.testaddress_SN = {
         test.equal(parsedAddress.countryCode, "SN");
         test.done();
     },
-
     testParseAddressSN2: function(test) {
         test.expect(6);
         var parsedAddress = new Address("American Embassy Dakar, Route des Almadies, Dakar, Senegal");
@@ -213,5 +201,4 @@ module.exports.testaddress_SN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

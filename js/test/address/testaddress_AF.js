@@ -33,7 +33,6 @@ module.exports.testaddress_AF = {
         ilib.clearCache();
         callback();
     },
-
     testParseAFAddressNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("آقای احمد توحید, خیابان، خانه شماره ۰۴۲, کابل, ۱۰۰۱, افغانستان", {locale: 'fa-AF'});
@@ -47,7 +46,6 @@ module.exports.testaddress_AF = {
         test.equal(parsedAddress.countryCode, "AF");
         test.done();
     },
-
     testParseAFAddressNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("آقای احمد توحید,خیابان، خانه شماره ۰۴۲, کابل, افغانستان", {locale: 'fa-AF'});
@@ -61,7 +59,6 @@ module.exports.testaddress_AF = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAFAddressManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("آقای احمد توحید\nخیابان، خانه شماره ۰۴۲\nکابل ۱۰۰۱\nافغانستان", {locale: 'fa-AF'});
@@ -75,7 +72,6 @@ module.exports.testaddress_AF = {
         test.equal(parsedAddress.countryCode, "AF");
         test.done();
     },
-
     testParseAFAddressOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("آقای احمد توحید,خیابان، خانه شماره ۰۴۲,کابل ۱۰۰۱ افغانستان", {locale: 'fa-AF'});
@@ -89,7 +85,6 @@ module.exports.testaddress_AF = {
         test.equal(parsedAddress.countryCode, "AF");
         test.done();
     },
-
     testParseAFAddressSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("آقای احمد توحید,خیابان، خانه شماره ۰۴۲   \n\t\n کابل ۱۰۰۱\t\n\n افغانستان  \n  \t\t\t", {locale: 'fa-AF'});
@@ -103,7 +98,6 @@ module.exports.testaddress_AF = {
         test.equal(parsedAddress.countryCode, "AF");
         test.done();
     },
-
     testParseAFAddressNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("آقای احمد توحید خیابان، خانه شماره ۰۴۲ کابل ۱۰۰۱ افغانستان", {locale: 'fa-AF'});
@@ -117,9 +111,6 @@ module.exports.testaddress_AF = {
         test.equal(parsedAddress.countryCode, "AF");
         test.done();
     },
-
-
-
     testParseAFAddressFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("آقای احمد توحید,خیابان، خانه شماره ۰۴۲,کابل ۱۰۰۱,Afghanistan", {locale: 'en-US'});
@@ -135,7 +126,6 @@ module.exports.testaddress_AF = {
         test.equal(parsedAddress.countryCode, "AF");
         test.done();
     },
-
     testFormatAddressAF: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -151,7 +141,6 @@ module.exports.testaddress_AF = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressAFFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -166,5 +155,4 @@ module.exports.testaddress_AF = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

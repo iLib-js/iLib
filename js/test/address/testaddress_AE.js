@@ -33,7 +33,6 @@ module.exports.testaddress_AE = {
         ilib.clearCache();
         callback();
     },
-
     testParseAEAddressNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١\nدبي\nالإمارات العربية المتحدة", {locale: 'ar-AE'});
@@ -47,7 +46,6 @@ module.exports.testaddress_AE = {
         test.equal(parsedAddress.countryCode, "AE");
         test.done();
     },
-
     testParseAEAddressManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("تاج قصر الفندق\nصندوق البريد بالبوسطة\n٤٢٢١١\nدبي\nالإمارات العربية المتحدة\n\n", {locale: 'ar-AE'});
@@ -61,7 +59,6 @@ module.exports.testaddress_AE = {
         test.equal(parsedAddress.countryCode, "AE");
         test.done();
     },
-
     testParseAEAddressOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١ دبي الإمارات العربية المتحدة", {locale: 'ar-AE'});
@@ -75,8 +72,6 @@ module.exports.testaddress_AE = {
         test.equal(parsedAddress.countryCode, "AE");
         test.done();
     },
-
-
     testParseAEAddressNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١ دبي الإمارات العربية المتحدة", {locale: 'ar-AE'});
@@ -90,8 +85,6 @@ module.exports.testaddress_AE = {
         test.equal(parsedAddress.countryCode, "AE");
         test.done();
     },
-
-
     testParseAEAddressFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١\nدبي\nUnited Arab Emirates", {locale: 'en-US'});
@@ -108,9 +101,6 @@ module.exports.testaddress_AE = {
         test.equal(parsedAddress.countryCode, "AE");
         test.done();
     },
-
-
-
     testFormatAddressAESANative: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -127,7 +117,6 @@ module.exports.testaddress_AE = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressAEFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({

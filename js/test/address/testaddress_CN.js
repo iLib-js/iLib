@@ -32,7 +32,6 @@ module.exports.testaddress_CN = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressCNLatinNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("L30, Unit 3007, Teemtower, Teemmall,\n208 Tianhe Road, Tianhe District,\nGuangzhou, Guangdong 510620\nChina", {locale: 'en-CN'});
@@ -46,7 +45,6 @@ module.exports.testaddress_CN = {
         test.equal(parsedAddress.countryCode, "CN");
         test.done();
     },
-
     testParseAddressCNLatinNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("No. 1 Zhongguancun East Road\nHaidian District\nBeijing, China", {locale: 'en-CN'});
@@ -60,7 +58,6 @@ module.exports.testaddress_CN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressCNLatinNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("No.268 Xizang Zhong Road, Huangpu District\nShanghai, 200001", {locale: 'en-CN'});
@@ -74,7 +71,6 @@ module.exports.testaddress_CN = {
         test.equal(parsedAddress.countryCode, "CN");
         test.done();
     },
-
     testParseAddressCNAsianNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("中国北京市朝阳区建国路112号 中国惠普大厦100022", {locale: 'zh-CN'});
@@ -88,7 +84,6 @@ module.exports.testaddress_CN = {
         test.equal(parsedAddress.countryCode, "CN");
         test.done();
     },
-
     testParseAddressCNAsianNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("中国武汉市汉口建设大道568号新世界国贸大厦I座9楼910室", {locale: 'zh-CN'});
@@ -102,7 +97,6 @@ module.exports.testaddress_CN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressCNAsianNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("北京市朝阳区北四环中路 27号盘古大观 A 座 23层200001", {locale: 'zh-CN'});
@@ -116,7 +110,6 @@ module.exports.testaddress_CN = {
         test.equal(parsedAddress.countryCode, "CN");
         test.done();
     },
-
     testParseAddressCNAsianNOExplicitCityDistrict: function(test) {
         test.expect(7);
         var parsedAddress = new Address("中国四川成都领事馆路4号,邮编 610041", {locale: 'zh-CN'});
@@ -130,7 +123,6 @@ module.exports.testaddress_CN = {
         test.equal(parsedAddress.countryCode, "CN");
         test.done();
     },
-
     testParseAddressCNAsianWithRegion: function(test) {
         test.expect(7);
         var parsedAddress = new Address("中国湖北省武汉市汉口建设大道568号新世界国贸大厦I座9楼910室430000", {locale: 'zh-CN'});
@@ -144,7 +136,6 @@ module.exports.testaddress_CN = {
         test.equal(parsedAddress.postalCode, "430000");
         test.done();
     },
-
     testParseAddressCNManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Tsinghua Science Park Bldg 6\nNo. 1 Zhongguancun East Road\nHaidian District\nBeijing 100084\nPRC\n\n", {locale: 'en-CN'});
@@ -158,7 +149,6 @@ module.exports.testaddress_CN = {
         test.equal(parsedAddress.countryCode, "CN");
         test.done();
     },
-
     testParseAddressCNOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("No. 27, Central North Fourth Ring Road, Chaoyang District, Beijing 100101, PRC", {locale: 'en-CN'});
@@ -172,7 +162,6 @@ module.exports.testaddress_CN = {
         test.equal(parsedAddress.countryCode, "CN");
         test.done();
     },
-
     testParseAddressCNSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tNo. 27, Central North Fourth \r\t   \tRing Road\t\t\n\t, Chaoyang \r\tDistrict\n\t\rBeijing\t\r\n100101\n\t\t\r\rPRC\t\n\n\n", {locale: 'en-CN'});
@@ -186,7 +175,6 @@ module.exports.testaddress_CN = {
         test.equal(parsedAddress.countryCode, "CN");
         test.done();
     },
-
     testParseAddressCNNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("No. 27 Central North Fourth Ring Road Chaoyang District Beijing 100101 PRC", {locale: 'en-CN'});
@@ -200,7 +188,6 @@ module.exports.testaddress_CN = {
         test.equal(parsedAddress.countryCode, "CN");
         test.done();
     },
-
     testParseAddressCNSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("208 Tianhe Road, Tianhe District,\nGuǎngzhōu, Guǎngdōng 510620\nChina", {locale: 'en-CN'});
@@ -214,7 +201,6 @@ module.exports.testaddress_CN = {
         test.equal(parsedAddress.countryCode, "CN");
         test.done();
     },
-
     testParseAddressCNFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("208 Tianhe Road, Tianhe District,\nGuǎngzhōu, Guǎngdōng 510620\nChina", {locale: 'en-US'});
@@ -230,7 +216,6 @@ module.exports.testaddress_CN = {
         test.equal(parsedAddress.countryCode, "CN");
         test.done();
     },
-
     testFormatAddressCNLatin: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -248,7 +233,6 @@ module.exports.testaddress_CN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressCNFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -266,5 +250,4 @@ module.exports.testaddress_CN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

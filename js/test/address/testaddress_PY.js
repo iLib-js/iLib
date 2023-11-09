@@ -32,7 +32,6 @@ module.exports.testaddress_PY = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressPYNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN\nPARAGUAY", {locale: 'es-PY'});
@@ -46,7 +45,6 @@ module.exports.testaddress_PY = {
         test.equal(parsedAddress.countryCode, "PY");
         test.done();
     },
-
     testParseAddressPYNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\nASUNCIÓN\nPARAGUAY", {locale: 'es-PY'});
@@ -60,7 +58,6 @@ module.exports.testaddress_PY = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressPYNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN", {locale: 'es-PY'});
@@ -74,7 +71,6 @@ module.exports.testaddress_PY = {
         test.equal(parsedAddress.countryCode, "PY");
         test.done();
     },
-
     testParseAddressPYManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811\n PISO 9\n\n1321\nASUNCIÓN\nPARAGUAY\n\n\n", {locale: 'es-PY'});
@@ -87,7 +83,6 @@ module.exports.testaddress_PY = {
         test.equal(parsedAddress.countryCode, "PY");
         test.done();
     },
-
     testParseAddressPYOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811 , PISO 9 , 1321 , ASUNCIÓN , PARAGUAY", {locale: 'es-PY'});
@@ -101,7 +96,6 @@ module.exports.testaddress_PY = {
         test.equal(parsedAddress.countryCode, "PY");
         test.done();
     },
-
     testParseAddressPYSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tJOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811\n\t\t\t PISO 9\n\t\n1321\t\nASUNCIÓN\n\t PARAGUAY\n\n\n", {locale: 'es-PY'});
@@ -115,7 +109,6 @@ module.exports.testaddress_PY = {
         test.equal(parsedAddress.countryCode, "PY");
         test.done();
     },
-
     testParseAddressPYNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9 1321 ASUNCIÓN PARAGUAY", {locale: 'es-PY'});
@@ -129,7 +122,6 @@ module.exports.testaddress_PY = {
         test.equal(parsedAddress.countryCode, "PY");
         test.done();
     },
-
     testParseAddressPYFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN\nPARAGUAY", {locale: 'en-US'});
@@ -145,7 +137,6 @@ module.exports.testaddress_PY = {
         test.equal(parsedAddress.countryCode, "PY");
         test.done();
     },
-
     testFormatAddressPY: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -161,7 +152,6 @@ module.exports.testaddress_PY = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressPYFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -177,5 +167,4 @@ module.exports.testaddress_PY = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

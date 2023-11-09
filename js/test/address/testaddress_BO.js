@@ -34,7 +34,6 @@ module.exports.testaddress_BO = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressBONormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
@@ -48,7 +47,6 @@ module.exports.testaddress_BO = {
         test.equal(parsedAddress.countryCode, "BO");
         test.done();
     },
-
     testParseAddressBONoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
@@ -62,7 +60,6 @@ module.exports.testaddress_BO = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressBOManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR\nFEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580\nCOCHABAMBA\nBOLIVIA", {locale: 'es-BO'});
@@ -76,7 +73,6 @@ module.exports.testaddress_BO = {
         test.equal(parsedAddress.countryCode, "BO");
         test.done();
     },
-
     testParseAddressBOOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
@@ -90,7 +86,6 @@ module.exports.testaddress_BO = {
         test.equal(parsedAddress.countryCode, "BO");
         test.done();
     },
-
     testParseAddressBOSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580  \n\t\n COCHABAMBA\t\n\n BOLIVIA  \n  \t\t\t", {locale: 'es-BO'});
@@ -104,7 +99,6 @@ module.exports.testaddress_BO = {
         test.equal(parsedAddress.countryCode, "BO");
         test.done();
     },
-
     testParseAddressBONoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR FEDERICO TERRAZAS ARIAS CALLE ADELA ZAMUDIO 1716 PO BOX 580 COCHABAMBA BOLIVIA", {locale: 'es-BO'});
@@ -118,7 +112,6 @@ module.exports.testaddress_BO = {
         test.equal(parsedAddress.countryCode, "BO");
         test.done();
     },
-
     testParseAddressBOSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
@@ -132,7 +125,6 @@ module.exports.testaddress_BO = {
         test.equal(parsedAddress.countryCode, "BO");
         test.done();
     },
-
     testParseAddressBOFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'en-US'});
@@ -148,7 +140,6 @@ module.exports.testaddress_BO = {
         test.equal(parsedAddress.countryCode, "BO");
         test.done();
     },
-
     testFormatAddressBO: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -163,7 +154,6 @@ module.exports.testaddress_BO = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressBOFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -178,7 +168,6 @@ module.exports.testaddress_BO = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressBOHotel: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -193,7 +182,6 @@ module.exports.testaddress_BO = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressBOUNICEF: function(test) {
         test.expect(7);
         var parsedAddress = new Address("UNICEF, United Nations Children's Fund, P.O. Box 3-12435,La Paz, Bolivia", {locale: 'es-BO'});
@@ -207,5 +195,4 @@ module.exports.testaddress_BO = {
         test.equal(parsedAddress.countryCode, "BO");
         test.done();
     }
-
 };

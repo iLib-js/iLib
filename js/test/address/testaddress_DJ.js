@@ -35,7 +35,6 @@ module.exports.testaddress_DJ = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressDJFRNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Farah Ismaël, BP 32, DJIBOUTI, DJIBOUTI", {locale: 'fr-DJ'});
@@ -49,7 +48,6 @@ module.exports.testaddress_DJ = {
         test.equal(parsedAddress.countryCode, "DJ");
         test.done();
     },
-
     testParseAddressDJFRNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Farah Ismaël, BP 32, DJIBOUTI, DJIBOUTI", {locale: 'fr-DJ'});
@@ -63,7 +61,6 @@ module.exports.testaddress_DJ = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressDJFRManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Farah Ismaël\nBP 32\nDJIBOUTI\n DJIBOUTI", {locale: 'fr-DJ'});
@@ -77,7 +74,6 @@ module.exports.testaddress_DJ = {
         test.equal(parsedAddress.countryCode, "DJ");
         test.done();
     },
-
     testParseAddressDJFROneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Farah Ismaël, BP 32,DJIBOUTI, DJIBOUTI", {locale: 'fr-DJ'});
@@ -91,7 +87,6 @@ module.exports.testaddress_DJ = {
         test.equal(parsedAddress.countryCode, "DJ");
         test.done();
     },
-
     testParseAddressDJFRSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Farah Ismaël \n BP 32   \n\t\n DJIBOUTI\t\n\n  DJIBOUTI  \n  \t\t\t", {locale: 'fr-DJ'});
@@ -105,7 +100,6 @@ module.exports.testaddress_DJ = {
         test.equal(parsedAddress.countryCode, "DJ");
         test.done();
     },
-
     testParseAddressDJFRNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Farah Ismaël 2  BP 32 DJIBOUTI  DJIBOUTI", {locale: 'fr-DJ'});
@@ -119,7 +113,6 @@ module.exports.testaddress_DJ = {
         test.equal(parsedAddress.countryCode, "DJ");
         test.done();
     },
-
     testParseAddressDJFRSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Farah Ismaël,BP 32,DJIBOUTI, DJIBOUTI", {locale: 'fr-DJ'});
@@ -133,7 +126,6 @@ module.exports.testaddress_DJ = {
         test.equal(parsedAddress.countryCode, "DJ");
         test.done();
     },
-
     testParseAddressDJFRFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Farah Ismaël,BP 32,DJIBOUTI, DJIBOUTI", {locale: 'en-US'});
@@ -149,7 +141,6 @@ module.exports.testaddress_DJ = {
         test.equal(parsedAddress.countryCode, "DJ");
         test.done();
     },
-
     testFormatAddressDJFR: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -164,7 +155,6 @@ module.exports.testaddress_DJ = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressDJFRFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -179,8 +169,6 @@ module.exports.testaddress_DJ = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
-
     testParseAddressDJARNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد فرح إسماعيل, جيبوتي, جيبوتي", {locale: 'ar-DJ'});
@@ -194,7 +182,6 @@ module.exports.testaddress_DJ = {
         test.equal(parsedAddress.countryCode, "DJ");
         test.done();
     },
-
     testParseAddressDJARNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد فرح إسماعيل, جيبوتي, جيبوتي", {locale: 'ar-DJ'});
@@ -208,7 +195,6 @@ module.exports.testaddress_DJ = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressDJARManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد فرح إسماعيل\nجيبوتي\n جيبوتي", {locale: 'ar-DJ'});
@@ -222,7 +208,6 @@ module.exports.testaddress_DJ = {
         test.equal(parsedAddress.countryCode, "DJ");
         test.done();
     },
-
     testParseAddressDJAROneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد فرح إسماعيل,جيبوتي, جيبوتي", {locale: 'ar-DJ'});
@@ -236,7 +221,6 @@ module.exports.testaddress_DJ = {
         test.equal(parsedAddress.countryCode, "DJ");
         test.done();
     },
-
     testParseAddressDJARSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد فرح إسماعيل   \n\t\n جيبوتي\t\n\n  جيبوتي  \n  \t\t\t", {locale: 'ar-DJ'});
@@ -250,7 +234,6 @@ module.exports.testaddress_DJ = {
         test.equal(parsedAddress.countryCode, "DJ");
         test.done();
     },
-
     testParseAddressDJARNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد فرح إسماعيل  ٢ شارع الاستقلال جيبوتي  جيبوتي", {locale: 'ar-DJ'});
@@ -264,7 +247,6 @@ module.exports.testaddress_DJ = {
         test.equal(parsedAddress.countryCode, "DJ");
         test.done();
     },
-
     testParseAddressDJARSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد فرح إسماعيل,جيبوتي, جيبوتي", {locale: 'ar-DJ'});
@@ -278,7 +260,6 @@ module.exports.testaddress_DJ = {
         test.equal(parsedAddress.countryCode, "DJ");
         test.done();
     },
-
     testParseAddressDJARFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد فرح إسماعيل,جيبوتي, DJIBOUTI", {locale: 'en-US'});
@@ -294,7 +275,6 @@ module.exports.testaddress_DJ = {
         test.equal(parsedAddress.countryCode, "DJ");
         test.done();
     },
-
     testFormatARAddress: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -309,7 +289,6 @@ module.exports.testaddress_DJ = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressDJARFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -324,5 +303,4 @@ module.exports.testaddress_DJ = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

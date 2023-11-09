@@ -34,7 +34,6 @@ module.exports.testaddress_AZ = {
         ilib.clearCache();
         callback();
     },
-
     testParseAZAddressNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
@@ -47,7 +46,6 @@ module.exports.testaddress_AZ = {
         test.equal(parsedAddress.countryCode, "AZ");
         test.done();
     },
-
     testParseAZAddressNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str.,GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
@@ -61,7 +59,6 @@ module.exports.testaddress_AZ = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAZAddressManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ILHAZ SHAHRIAR\n45 Hatai Str.\n2012 GÄNCÄ\nAZERBAIJAN", {locale: 'en-AZ'});
@@ -75,7 +72,6 @@ module.exports.testaddress_AZ = {
         test.equal(parsedAddress.countryCode, "AZ");
         test.done();
     },
-
     testParseAZAddressOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
@@ -89,7 +85,6 @@ module.exports.testaddress_AZ = {
         test.equal(parsedAddress.countryCode, "AZ");
         test.done();
     },
-
     testParseAZAddressSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str.  \n\t\n 2012 GÄNCÄ\t\n\n AZERBAIJAN  \n  \t\t\t", {locale: 'en-AZ'});
@@ -103,7 +98,6 @@ module.exports.testaddress_AZ = {
         test.equal(parsedAddress.countryCode, "AZ");
         test.done();
     },
-
     testParseAZAddressNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ILHAZ SHAHRIAR 45 Hatai Str. 2012 GÄNCÄ AZERBAIJAN", {locale: 'en-AZ'});
@@ -117,7 +111,6 @@ module.exports.testaddress_AZ = {
         test.equal(parsedAddress.countryCode, "AZ");
         test.done();
     },
-
     testParseAZAddressSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
@@ -131,7 +124,6 @@ module.exports.testaddress_AZ = {
         test.equal(parsedAddress.countryCode, "AZ");
         test.done();
     },
-
     testParseAZAddressFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-US'});
@@ -147,7 +139,6 @@ module.exports.testaddress_AZ = {
         test.equal(parsedAddress.countryCode, "AZ");
         test.done();
     },
-
     testFormatAddressAZ: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -163,7 +154,6 @@ module.exports.testaddress_AZ = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressAZFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -179,5 +169,4 @@ module.exports.testaddress_AZ = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

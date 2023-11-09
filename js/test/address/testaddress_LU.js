@@ -34,7 +34,6 @@ module.exports.testaddress_LU = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressLUNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Andrée TROMMER BP 501\nL-1050 Luxembourg\nLUXEMBOURG", {locale: 'fr-LU'});
@@ -48,8 +47,6 @@ module.exports.testaddress_LU = {
         test.equal(parsedAddress.countryCode, "LU");
         test.done();
     },
-
-
     testParseAddressLUotherNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Jacques Muller 71, route de Longwy\nL-4750 PETANGE\nLUXEMBOURG", {locale: 'fr-LU'});
@@ -63,8 +60,6 @@ module.exports.testaddress_LU = {
         test.equal(parsedAddress.countryCode, "LU");
         test.done();
     },
-
-
     testParseAddressLUNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Andrée TROMMER BP 5019\nLuxembourg\nLUXEMBOURG", {locale: 'fr-LU'});
@@ -78,7 +73,6 @@ module.exports.testaddress_LU = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressLUManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Jacques Muller 71\nroute\nde\nLongwy\nL-4750\nPETANGE\nLUXEMBOURG\n\n\n", {locale: 'fr-LU'});
@@ -92,7 +86,6 @@ module.exports.testaddress_LU = {
         test.equal(parsedAddress.countryCode, "LU");
         test.done();
     },
-
     testParseAddressLUOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Jacques Muller 71, route, de, Longwy, L-4750, PETANGE, LUXEMBOURG", {locale: 'fr-LU'});
@@ -106,7 +99,6 @@ module.exports.testaddress_LU = {
         test.equal(parsedAddress.countryCode, "LU");
         test.done();
     },
-
     testParseAddressLUSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Jacques Muller 71\n\troute\n\tde\tLongwy\t\nL-4750\n\tPETANGE\n\tLUXEMBOURG\n\t", {locale: 'fr-LU'});
@@ -120,7 +112,6 @@ module.exports.testaddress_LU = {
         test.equal(parsedAddress.countryCode, "LU");
         test.done();
     },
-
     testParseAddressLUNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Andrée TROMMER BP 5019 L-1050 Luxembourg LUXEMBOURG", {locale: 'fr-LU'});
@@ -134,8 +125,6 @@ module.exports.testaddress_LU = {
         test.equal(parsedAddress.countryCode, "LU");
         test.done();
     },
-
-
     testParseAddressLUFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Andrée TROMMER BP 501\nL-1050 Luxembourg\nLUXEMBOURG", {locale: 'en-US'});
@@ -151,7 +140,6 @@ module.exports.testaddress_LU = {
         test.equal(parsedAddress.countryCode, "LU");
         test.done();
     },
-
     testFormatAddressLU: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -167,7 +155,6 @@ module.exports.testaddress_LU = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressLUFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -183,5 +170,4 @@ module.exports.testaddress_LU = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

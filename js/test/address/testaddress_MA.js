@@ -33,7 +33,6 @@ module.exports.testaddress_MA = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressMANormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد. محمد إبراهيم, بلدية خريبكة,٢٥٠٠٥ خريبكة , المغرب", {locale: 'ar-MA'});
@@ -47,7 +46,6 @@ module.exports.testaddress_MA = {
         test.equal(parsedAddress.countryCode, "MA");
         test.done();
     },
-
     testParseAddressMANoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد. محمد إبراهيم, بلدية خريبكة,خريبكة , المغرب", {locale: 'ar-MA'});
@@ -61,7 +59,6 @@ module.exports.testaddress_MA = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressMAManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد. محمد إبراهيم, بلدية خريبكة\n٢٥٠٠٥ خريبكة \n المغرب", {locale: 'ar-MA'});
@@ -75,7 +72,6 @@ module.exports.testaddress_MA = {
         test.equal(parsedAddress.countryCode, "MA");
         test.done();
     },
-
     testParseAddressMAOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد. محمد إبراهيم, بلدية خريبكة,٢٥٠٠٥ خريبكة , المغرب", {locale: 'ar-MA'});
@@ -89,7 +85,6 @@ module.exports.testaddress_MA = {
         test.equal(parsedAddress.countryCode, "MA");
         test.done();
     },
-
     testParseAddressMASuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد. محمد إبراهيم, بلدية خريبكة   \n\t\n٢٥٠٠٥ خريبكة \t\n\n  المغرب  \n  \t\t\t", {locale: 'ar-MA'});
@@ -103,7 +98,6 @@ module.exports.testaddress_MA = {
         test.equal(parsedAddress.countryCode, "MA");
         test.done();
     },
-
     testParseAddressMANoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد. محمد إبراهيم بلدية خريبكة  ٢ شارع الاستقلال٢٥٠٠٥  خريبكة   المغرب", {locale: 'ar-MA'});
@@ -117,7 +111,6 @@ module.exports.testaddress_MA = {
         test.equal(parsedAddress.countryCode, "MA");
         test.done();
     },
-
     testParseAddressMASpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد. محمد إبراهيم, بلدية خريبكة,٢٥٠٠٥ خريبكة , المغرب", {locale: 'ar-MA'});
@@ -131,7 +124,6 @@ module.exports.testaddress_MA = {
         test.equal(parsedAddress.countryCode, "MA");
         test.done();
     },
-
     testParseAddressMAFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد. محمد إبراهيم, بلدية خريبكة,٢٥٠٠٥ خريبكة , Morocco", {locale: 'en-US'});
@@ -147,7 +139,6 @@ module.exports.testaddress_MA = {
         test.equal(parsedAddress.countryCode, "MA");
         test.done();
     },
-
     testFormatAddressMA: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -162,7 +153,6 @@ module.exports.testaddress_MA = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressMAARFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -177,5 +167,4 @@ module.exports.testaddress_MA = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

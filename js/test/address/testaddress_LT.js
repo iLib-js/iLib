@@ -32,7 +32,6 @@ module.exports.testaddress_LT = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressLTNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Adelei Mickienei Plento g. 17-2 Ariogala\n60249 Raseiniu r.sav\nLITHUANIA", {locale: 'lt-LT'});
@@ -46,7 +45,6 @@ module.exports.testaddress_LT = {
         test.equal(parsedAddress.countryCode, "LT");
         test.done();
     },
-
     testParseAddressLTNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Adelei Mickienei Plento g. 17-2 Ariogala\nRaseiniu r.sav\nLITHUANIA", {locale: 'lt-LT'});
@@ -60,7 +58,6 @@ module.exports.testaddress_LT = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressLTNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Adelei Mickienei Plento g. 17-2 Ariogala\n60249 Raseiniu r.sav", {locale: 'lt-LT'});
@@ -74,7 +71,6 @@ module.exports.testaddress_LT = {
         test.equal(parsedAddress.countryCode, "LT");
         test.done();
     },
-
     testParseAddressLTManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Adelei Mickienei\nPlento g.\n17-2 Ariogala\n\n60249\n\nRaseiniu r.sav\n\n\nLITHUANIA\n\n\n", {locale: 'lt-LT'});
@@ -87,7 +83,6 @@ module.exports.testaddress_LT = {
         test.equal(parsedAddress.countryCode, "LT");
         test.done();
     },
-
     testParseAddressLTOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Adelei Mickienei , Plento g. , 17-2 Ariogala , 60249 , Raseiniu r.sav , LITHUANIA", {locale: 'lt-LT'});
@@ -101,7 +96,6 @@ module.exports.testaddress_LT = {
         test.equal(parsedAddress.countryCode, "LT");
         test.done();
     },
-
     testParseAddressLTSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tAdelei Mickienei\t\t\rPlento g.\t\t\r17-2 Ariogala\n\n60249\n\nRaseiniu r.sav\n\t LITHUANIA\n\n\n", {locale: 'lt-LT'});
@@ -115,7 +109,6 @@ module.exports.testaddress_LT = {
         test.equal(parsedAddress.countryCode, "LT");
         test.done();
     },
-
     testParseAddressLTNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Adelei Mickienei Plento g. 17-2 Ariogala 60249 Raseiniu r.sav LITHUANIA", {locale: 'lt-LT'});
@@ -129,7 +122,6 @@ module.exports.testaddress_LT = {
         test.equal(parsedAddress.countryCode, "LT");
         test.done();
     },
-
     testParseAddressLTFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Adelei Mickienei Plento g. 17-2 Ariogala\n60249 Raseiniu r.sav\nLITHUANIA", {locale: 'en-US'});
@@ -145,7 +137,6 @@ module.exports.testaddress_LT = {
         test.equal(parsedAddress.countryCode, "LT");
         test.done();
     },
-
     testFormatAddressLT: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -161,7 +152,6 @@ module.exports.testaddress_LT = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressLTFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -177,5 +167,4 @@ module.exports.testaddress_LT = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

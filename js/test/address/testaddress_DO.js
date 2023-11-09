@@ -34,7 +34,6 @@ module.exports.testaddress_DO = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressDONormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas, 11903 SANTO DOMINGO, República Dominicana", {locale: 'es-DO'});
@@ -48,7 +47,6 @@ module.exports.testaddress_DO = {
         test.equal(parsedAddress.countryCode, "DO");
         test.done();
     },
-
     testParseAddressDONoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas, 11903 SANTO DOMINGO, República Dominicana", {locale: 'es-DO'});
@@ -62,7 +60,6 @@ module.exports.testaddress_DO = {
         test.equal(parsedAddress.postalCode, "11903");
         test.done();
     },
-
     testParseAddressDOManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Dominica L. Hernandez\nC/45 # 33\nKatanga, Los Minas\n11903 SANTO DOMINGO\nRepública Dominicana", {locale: 'es-DO'});
@@ -76,7 +73,6 @@ module.exports.testaddress_DO = {
         test.equal(parsedAddress.countryCode, "DO");
         test.done();
     },
-
     testParseAddressDOOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas, 11903 SANTO DOMINGO, República Dominicana", {locale: 'es-DO'});
@@ -90,7 +86,6 @@ module.exports.testaddress_DO = {
         test.equal(parsedAddress.countryCode, "DO");
         test.done();
     },
-
     testParseAddressDOSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas  \n\t\n 11903 SANTO DOMINGO\t\n\n República Dominicana  \n  \t\t\t", {locale: 'es-DO'});
@@ -104,7 +99,6 @@ module.exports.testaddress_DO = {
         test.equal(parsedAddress.countryCode, "DO");
         test.done();
     },
-
     testParseAddressDONoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Dominica L. Hernandez C/45 # 33 Katanga, Los Minas 11903 SANTO DOMINGO República Dominicana", {locale: 'es-DO'});
@@ -118,7 +112,6 @@ module.exports.testaddress_DO = {
         test.equal(parsedAddress.countryCode, "DO");
         test.done();
     },
-
     testParseAddressDOSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Instituto Postal Dominicano, C/Héroes de Luperón esq. Rafael Damirón, Centro de los Héroes, 10101 SANTO DOMINGO, República Dominicana", {locale: 'es-DO'});
@@ -132,7 +125,6 @@ module.exports.testaddress_DO = {
         test.equal(parsedAddress.countryCode, "DO");
         test.done();
     },
-
     testParseAddressDOFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas, 11903 SANTO DOMINGO, Dominican Republic", {locale: 'en-US'});
@@ -148,7 +140,6 @@ module.exports.testaddress_DO = {
         test.equal(parsedAddress.countryCode, "DO");
         test.done();
     },
-
     testFormatAddressDO: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -165,7 +156,6 @@ module.exports.testaddress_DO = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressDOFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -182,5 +172,4 @@ module.exports.testaddress_DO = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

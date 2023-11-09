@@ -33,7 +33,6 @@ module.exports.testaddress_AR = {
         ilib.clearCache();
         callback();
     },
-
     testParseARAddressNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Escala Piedras 623\nPiso 2, depto 4\nC1070AAM Capital Federa\nARGENTINA", {locale: 'es-AR'});
@@ -47,8 +46,6 @@ module.exports.testaddress_AR = {
         test.equal(parsedAddress.countryCode, "AR");
         test.done();
     },
-
-
     testParseARAddressNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Escala Piedras 623\nPiso 2, depto 4\nCapital Federa\nARGENTINA", {locale: 'es-AR'});
@@ -62,7 +59,6 @@ module.exports.testaddress_AR = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseARAddressNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Juana Aguirre, Piedras No 623, Piso2 Dto.4\nC1070AAM Capital Federal", {locale: 'es-AR'});
@@ -76,7 +72,6 @@ module.exports.testaddress_AR = {
         test.equal(parsedAddress.countryCode, "AR");
         test.done();
     },
-
     testParseARAddressManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Juana Aguirre\nEscuela Rural 45 \nPiedras No 623\nPiso2 Dto.4\nC1070AAM Capital Federal\nARGENTINA\n\n\n", {locale: 'es-AR'});
@@ -91,7 +86,6 @@ module.exports.testaddress_AR = {
         test.done();
 
     },
-
     testParseARAddressOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Juana Aguirre, Piedras No 623, Piso2 Dto.4, C1070AAM Capital Federal, ARGENTINA", {locale: 'es-AR'});
@@ -106,7 +100,6 @@ module.exports.testaddress_AR = {
         test.done();
 
     },
-
     testParseARAddressSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tLuis Escala Piedras 623\n\n\nPiso 2, depto 4\n   \t\nC1070AAM Capital Federa\n   \r\t\t \t \t ARGENTINA\n\n\n", {locale: 'es-AR'});
@@ -121,7 +114,6 @@ module.exports.testaddress_AR = {
         test.done();
 
     },
-
     testParseARAddressNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Escala Piedras 623 Piso 2, depto 4 C1070AAM  Capital Federa ARGENTINA", {locale: 'es-AR'});
@@ -136,7 +128,6 @@ module.exports.testaddress_AR = {
         test.done();
 
     },
-
     testParseARAddressSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("At. Sr. Hiro Gordo-Globo\nSumo Informática S.A.\nCalle 39 No 1540\nB1000TBU San Sebastian\nARGENTINA", {locale: 'es-AR'});
@@ -151,8 +142,6 @@ module.exports.testaddress_AR = {
         test.done();
 
     },
-
-
     testParseARAddressFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540\nB1000TBU San Sebastian\nArgentina", {locale: 'en-US'});
@@ -169,7 +158,6 @@ module.exports.testaddress_AR = {
         test.done();
 
     },
-
     testFormatAddressAR: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -186,7 +174,6 @@ module.exports.testaddress_AR = {
         test.done();
 
     },
-
     testFormatAddressARFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -203,5 +190,4 @@ module.exports.testaddress_AR = {
         test.done();
 
     }
-
 };
