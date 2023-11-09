@@ -29,7 +29,6 @@ module.exports.testcollation_fr = {
         ilib.clearCache();
         callback();
     },
-
     testCollatorNativefrFRCase: function(test) {
         // only test on platforms that support the new Intl class natively
         if (typeof(Intl) === 'undefined') {
@@ -86,7 +85,6 @@ module.exports.testcollation_fr = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorNativefrFRVariant: function(test) {
         // only test on platforms that support the new Intl class natively
         if (typeof(Intl) === 'undefined') {
@@ -148,7 +146,6 @@ module.exports.testcollation_fr = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorNativefrCACase: function(test) {
         // only test on platforms that support the new Intl class natively
         if (typeof(Intl) === 'undefined') {
@@ -205,7 +202,6 @@ module.exports.testcollation_fr = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorNativefrCAVariant: function(test) {
         // only test on platforms that support the new Intl class natively and the French sorting rules
         if (typeof(Intl) === 'undefined' || Intl.Collator.supportedLocalesOf(["fr"]).indexOf("fr") === -1) {
@@ -264,6 +260,4 @@ module.exports.testcollation_fr = {
         test.deepEqual(input, expected);
         test.done();
     }
-
-
 };

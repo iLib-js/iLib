@@ -29,7 +29,6 @@ module.exports.testcollation_he = {
         ilib.clearCache();
         callback();
     },
-
     testJSCollatorQuat_he: function(test) {
         test.expect(74);
         var col = new Collator({
@@ -118,7 +117,6 @@ module.exports.testcollation_he = {
         test.ok("ﬨ < תּ", col.compare("ﬨ", "תּ") < 0);
         test.done();
     },
-
     testJSCollatorTer_he: function(test) {
         test.expect(74);
         var col = new Collator({
@@ -207,7 +205,6 @@ module.exports.testcollation_he = {
         test.ok("ﬨ < תּ", col.compare("ﬨ", "תּ") < 0);
         test.done();
     },
-
     testJSCollatorSec_he: function(test) {
         test.expect(74);
         var col = new Collator({
@@ -296,7 +293,6 @@ module.exports.testcollation_he = {
         test.ok("ﬨ < תּ", col.compare("ﬨ", "תּ") < 0);
         test.done();
     },
-
     testJSCollatorPri_he: function(test) {
         test.expect(74);
         var col = new Collator({
@@ -385,7 +381,6 @@ module.exports.testcollation_he = {
         test.ok("ﬨ = תּ", col.compare("ﬨ", "תּ") === 0);
         test.done();
     },
-
     testJSCollatorQuatSort_he: function(test) {
         test.expect(74);
         var col = new Collator({
@@ -474,7 +469,6 @@ module.exports.testcollation_he = {
         test.ok("ﬨ < תּ", col.compare("ﬨ", "תּ") < 0);
         test.done();
     },
-
     testJSCollatorTerSort_he: function(test) {
         test.expect(74);
         var col = new Collator({
@@ -563,7 +557,6 @@ module.exports.testcollation_he = {
         test.ok("ﬨ < תּ", col.compare("ﬨ", "תּ") < 0);
         test.done();
     },
-
     testJSCollatorSecSort_he: function(test) {
         test.expect(74);
         var col = new Collator({
@@ -652,7 +645,6 @@ module.exports.testcollation_he = {
         test.ok("ﬨ < תּ", col.compare("ﬨ", "תּ") < 0);
         test.done();
     },
-
     testJSCollatorPriSort_he: function(test) {
         test.expect(74);
         var col = new Collator({
@@ -741,7 +733,6 @@ module.exports.testcollation_he = {
         test.ok("ﬨ < תּ", col.compare("ﬨ", "תּ") < 0);
         test.done();
     },
-
     testCollatorVariant_he: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -763,7 +754,6 @@ module.exports.testcollation_he = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorPrimary_he: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -809,7 +799,6 @@ module.exports.testcollation_he = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testJSCollatorQuatLatin_he: function(test) {
         test.expect(18);
         var col = new Collator({
@@ -841,7 +830,6 @@ module.exports.testcollation_he = {
         test.ok("I < i", col.compare("I", "i") < 0);
         test.done();
     },
-
     testCollatorPrimaryMixed_he: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -885,5 +873,4 @@ module.exports.testcollation_he = {
         test.deepEqual(input, expected);
         test.done();
     }
-
 };
