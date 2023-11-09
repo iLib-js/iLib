@@ -30,7 +30,6 @@ module.exports.testlistfmt_bs = {
         ilib.clearCache();
         callback();
     },
-
     // bs-BA
     testListFmtbsBANumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -42,7 +41,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni"]), "oni");
         test.done();
     },
-
     testListFmtbsBANumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "bs-BA"
@@ -53,7 +51,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni", "dva"]), "oni i dva");
         test.done();
     },
-
     testListFmtbsBANumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "bs-BA"
@@ -64,7 +61,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni", "dva", "tri"]), "oni, dva i tri");
         test.done();
     },
-
     testListFmtbsBANumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "bs-BA"
@@ -75,7 +71,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni", "dva", "tri", "četiri"]), "oni, dva, tri i četiri");
         test.done();
     },
-
     testListFmtUnitStylebsBANumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "bs-BA",
@@ -87,7 +82,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni"]), "oni");
         test.done();
     },
-
     testListFmtUnitStylebsBANumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "bs-BA",
@@ -99,7 +93,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni", "dva"]), "oni i dva");
         test.done();
     },
-
     testListFmtUnitStylebsBANumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "bs-BA",
@@ -111,7 +104,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni", "dva", "tri"]), "oni, dva i tri");
         test.done();
     },
-
     testListFmtUnitStylebsBANumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "bs-BA",
@@ -135,7 +127,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni"]), "oni");
         test.done();
     },
-
     testListFmtUnitStylebsBANumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "bs-BA",
@@ -148,7 +139,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni", "dva"]), "oni i dva");
         test.done();
     },
-
     testListFmtUnitStylebsBANumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "bs-BA",
@@ -161,7 +151,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni", "dva", "tri"]), "oni, dva i tri");
         test.done();
     },
-
     testListFmtUnitStylebsBANumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "bs-BA",
@@ -174,7 +163,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni", "dva", "tri", "četiri"]), "oni, dva, tri i četiri");
         test.done();
     },
-
     // bs-ME
     testListFmtbsMENumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -186,7 +174,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni"]), "oni");
         test.done();
     },
-
     testListFmtbsMENumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "bs-ME"
@@ -197,7 +184,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni", "dva"]), "oni i dva");
         test.done();
     },
-
     testListFmtbsMENumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "bs-ME"
@@ -208,7 +194,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni", "dva", "tri"]), "oni, dva i tri");
         test.done();
     },
-
     testListFmtbsMENumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "bs-ME"
@@ -219,7 +204,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni", "dva", "tri", "četiri"]), "oni, dva, tri i četiri");
         test.done();
     },
-
     testListFmtUnitStylebsMENumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "bs-ME",
@@ -231,7 +215,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni"]), "oni");
         test.done();
     },
-
     testListFmtUnitStylebsMENumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "bs-ME",
@@ -243,7 +226,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni", "dva"]), "oni i dva");
         test.done();
     },
-
     testListFmtUnitStylebsMENumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "bs-ME",
@@ -255,7 +237,6 @@ module.exports.testlistfmt_bs = {
         test.equal(fmt.format(["oni", "dva", "tri"]), "oni, dva i tri");
         test.done();
     },
-
     testListFmtUnitStylebsMENumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "bs-ME",

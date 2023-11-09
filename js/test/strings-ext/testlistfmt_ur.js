@@ -30,9 +30,7 @@ module.exports.testlistfmt_ur = {
         ilib.clearCache();
         callback();
     },
-
     // ur-Arab-PK
-
     testListFmturArabPKNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-PK"
@@ -43,7 +41,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو"]), "ایک کو");
         test.done();
     },
-
     testListFmturArabPKNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-PK"
@@ -54,7 +51,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو", "دو"]), "ایک کو اور دو");
         test.done();
     },
-
     testListFmturArabPKNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-PK"
@@ -65,7 +61,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو", "دو", "تین"]), "ایک کو، دو، اور تین");
         test.done();
     },
-
     testListFmturArabPKNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-PK"
@@ -87,7 +82,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو"]), "ایک کو");
         test.done();
     },
-
     testListFmtUnitStyleurArabPKNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-PK",
@@ -99,7 +93,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو", "دو"]), "ایک کو اور دو");
         test.done();
     },
-
     testListFmtUnitStyleurArabPKNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-PK",
@@ -111,7 +104,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو", "دو", "تین"]), "ایک کو، دو، اور تین");
         test.done();
     },
-
     testListFmtUnitStyleurArabPKNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-PK",
@@ -135,7 +127,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو"]), "ایک کو");
         test.done();
     },
-
     testListFmtUnitStyleurArabPKNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-PK",
@@ -148,7 +139,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو", "دو"]), "ایک کو اور دو");
         test.done();
     },
-
     testListFmtUnitStyleurArabPKNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-PK",
@@ -161,7 +151,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو", "دو", "تین"]), "ایک کو، دو، اور تین");
         test.done();
     },
-
     testListFmtUnitStyleurArabPKNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-PK",
@@ -174,11 +163,7 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو", "دو", "تین", "چار"]), "ایک کو، دو، تین، اور چار");
         test.done();
     },
-
-
-
     // ur-Arab-IN
-
     testListFmturArabINNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-IN"
@@ -189,7 +174,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو"]), "ایک کو");
         test.done();
     },
-
     testListFmturArabINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-IN"
@@ -200,7 +184,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو", "دو"]), "ایک کو اور دو");
         test.done();
     },
-
     testListFmturArabINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-IN"
@@ -211,7 +194,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو", "دو", "تین"]), "ایک کو، دو، اور تین");
         test.done();
     },
-
     testListFmturArabINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-IN"
@@ -233,7 +215,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو"]), "ایک کو");
         test.done();
     },
-
     testListFmtUnitStyleurArabINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-IN",
@@ -245,7 +226,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو", "دو"]), 'ایک کو اور دو');
         test.done();
     },
-
     testListFmtUnitStyleurArabINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-IN",
@@ -257,7 +237,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو", "دو", "تین"]),  'ایک کو، دو، اور تین');
         test.done();
     },
-
     testListFmtUnitStyleurArabINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-IN",
@@ -281,7 +260,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو"]), "ایک کو");
         test.done();
     },
-
     testListFmtUnitStyleurArabINNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-IN",
@@ -294,7 +272,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو", "دو"]), 'ایک کو، دو');
         test.done();
     },
-
     testListFmtUnitStyleurArabINNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-IN",
@@ -307,7 +284,6 @@ module.exports.testlistfmt_ur = {
         test.equal(fmt.format(["ایک کو", "دو", "تین"]), 'ایک کو, دو، اور تین');
         test.done();
     },
-
     testListFmtUnitStyleurArabINNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-IN",

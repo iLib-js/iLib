@@ -56,7 +56,6 @@ module.exports.testnorm = {
         ilib.clearCache();
         callback();
     },
-
     testNFD: function(test) {
         normtests.forEach(function (val, index, array) {
             var source = new NormString(val[0]);
@@ -67,7 +66,6 @@ module.exports.testnorm = {
         });
         test.done();
     },
-
     testNFKD: function(test) {
         normtests.forEach(function (val, index, array) {
             var source = new NormString(val[0]);
@@ -77,7 +75,6 @@ module.exports.testnorm = {
         });
         test.done();
     },
-
     testNFC: function(test) {
         normtests.forEach(function (val, index, array) {
             var source = new NormString(val[0]);
@@ -87,7 +84,6 @@ module.exports.testnorm = {
         });
         test.done();
     },
-
     testNFKC: function(test) {
         normtests.forEach(function (val, index, array) {
             var source = new NormString(val[0]);
@@ -97,7 +93,6 @@ module.exports.testnorm = {
         });
         test.done();
     },
-
     testCharIteratorNormal: function(test) {
         test.expect(8);
         var s = new NormString("aba");
@@ -113,7 +108,6 @@ module.exports.testnorm = {
         test.equal(it.next(), undefined);
         test.done();
     },
-
     testCharIteratorDecomposed: function(test) {
         test.expect(8);
         var s = new NormString("aÄa"); // the A umlaut is a decomposed char
@@ -129,7 +123,6 @@ module.exports.testnorm = {
         test.equal(it.next(), undefined);
         test.done();
     },
-
     testCharIteratorEmpty: function(test) {
         test.expect(2);
         var s = new NormString(""); // the A umlaut is a decomposed char
@@ -139,7 +132,6 @@ module.exports.testnorm = {
         test.equal(it.next(), undefined);
         test.done();
     },
-
     testCharIteratorWithSurrogates: function(test) {
         test.expect(10);
         var str = new NormString("a\uD800\uDF02b\uD800\uDC00");
@@ -157,7 +149,6 @@ module.exports.testnorm = {
         test.equal(it.next(), undefined);
         test.done();
     },
-
     testCharIteratorWithSurrogatesAndDecomposedChars: function(test) {
         test.expect(12);
         var str = new NormString("a\uD800\uDF02bï\uD800\uDC00"); // the ï is a decomposed i + umlaut
@@ -177,7 +168,6 @@ module.exports.testnorm = {
         test.equal(it.next(), undefined);
         test.done();
     },
-
     testCharIteratorMultipleDecomposed: function(test) {
         test.expect(8);
         var s = new NormString("aẬa"); // the accented A is a decomposed char with 2 accents
@@ -193,7 +183,6 @@ module.exports.testnorm = {
         test.equal(it.next(), undefined);
         test.done();
     },
-
     testCharIteratorAgrave: function(test) {
         test.expect(4);
         var s = new NormString("À"); // the accented A is a decomposed char
@@ -205,5 +194,4 @@ module.exports.testnorm = {
         test.equal(it.next(), undefined);
         test.done();
     }
-
 };

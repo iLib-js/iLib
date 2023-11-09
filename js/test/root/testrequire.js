@@ -49,7 +49,6 @@ module.exports.testrequire = {
         ilib.clearCache();
         callback();
     },
-
     testRequireSingleFile: function(test) {
         if (!ilib.isDynCode() || ilib._getPlatform() === "qt") {
             // can't test the require function unless you're
@@ -64,7 +63,6 @@ module.exports.testrequire = {
         test.equal(typeof(mod), "function");
         test.done();
     },
-
     testRequireDoNotReloadSameFile: function(test) {
         if (!ilib.isDynCode() || ilib._getPlatform() === "qt") {
             // can't test the require function unless you're
@@ -89,7 +87,6 @@ module.exports.testrequire = {
         test.equal(Qwerty.testproperty, "foo");
         test.done();
     },
-
     testRequireRunCode1: function(test) {
         if (!ilib.isDynCode() || ilib._getPlatform() === "qt") {
             // can't test the require function unless you're
@@ -108,7 +105,6 @@ module.exports.testrequire = {
         test.equal(locale.getRegion(), "DE");
         test.done();
     },
-
     testRequireRunCode2: function(test) {
         if (!ilib.isDynCode() || ilib._getPlatform() === "qt" ) {
             // can't test the require function unless you're
@@ -134,5 +130,4 @@ module.exports.testrequire = {
         test.equal(df.format(d), "3/25/2015");
         test.done();
     }
-
 };

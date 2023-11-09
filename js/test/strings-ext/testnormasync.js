@@ -40,7 +40,6 @@ function toHexString(string) {
     return result.toUpperCase();
 }
 
-
 module.exports.testnormasync = {
     testNormStringAsyncNormalizeNFD: function(test) {
         test.expect(1);
@@ -53,7 +52,6 @@ module.exports.testnormasync = {
             }
         });
     },
-
     testNormStringAsyncNormalizeNFKD: function(test) {
         test.expect(1);
         new NormString("ᄀ각ᆨ", {
@@ -64,7 +62,6 @@ module.exports.testnormasync = {
             }
         });
     },
-
     testNormStringAsyncNormalizeNFC: function(test) {
         test.expect(1);
         new NormString("ᄀ각ᆨ", {
@@ -75,7 +72,6 @@ module.exports.testnormasync = {
             }
         });
     },
-
     testNormStringAsyncNormalizeNFKC: function(test) {
         test.expect(1);
         new NormString("ᄀ각ᆨ", {
@@ -86,7 +82,6 @@ module.exports.testnormasync = {
             }
         });
     },
-
     testNormStringAsyncCharIteratorDecomposed: function(test) {
         test.expect(8);
         var s = new NormString("aÄa", { // the A umlaut is a decomposed char

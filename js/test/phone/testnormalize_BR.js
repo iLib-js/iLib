@@ -30,7 +30,6 @@ module.exports.normalize_BR = {
         ilib.clearCache();
         callback();
     },
-
     testBRIDDPrefix: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("00 14 31 55 345 343", {locale: 'pt-BR'});
@@ -39,7 +38,6 @@ module.exports.normalize_BR = {
         test.equal(parsed.normalize({locale: 'pt-BR'}), expected);
         test.done();
     },
-
     testBRIDDPrefixAlreadyPlus: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("+31 55 345 343", {locale: 'pt-BR'});
@@ -48,7 +46,6 @@ module.exports.normalize_BR = {
         test.equal(parsed.normalize({locale: 'pt-BR'}), expected);
         test.done();
     },
-
     testBRWithNoLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("00 14 31 55 345 343", {locale: 'pt-BR'});
@@ -57,7 +54,6 @@ module.exports.normalize_BR = {
         test.equal(parsed.normalize({}), expected);
         test.done();
     },
-
     testBRNoHints: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("00 14 31 55 345 343", {locale: 'pt-BR'});
@@ -66,8 +62,6 @@ module.exports.normalize_BR = {
         test.equal(parsed.normalize(), expected);
         test.done();
     },
-
-
     testBRLDNumberUsingBRRMCC: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("62-312-3456", {locale: 'pt-BR'});
@@ -79,7 +73,6 @@ module.exports.normalize_BR = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testBRLDNumberUsingBRMCCOtherLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("98-912-3456", {locale: 'pt-BR'});
@@ -92,7 +85,6 @@ module.exports.normalize_BR = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testBRLDNumberUsingBRMCC: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
@@ -104,7 +96,6 @@ module.exports.normalize_BR = {
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testBRAreaCodeFromHint: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("212-3456", {locale: 'pt-BR'});
@@ -116,7 +107,6 @@ module.exports.normalize_BR = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testBRAreaCodeIgnoreHint: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("98-212-3456", {locale: 'pt-BR'});
@@ -128,7 +118,6 @@ module.exports.normalize_BR = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testBRNoAreaCodeAndNoCountry: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("212-3456", {locale: 'pt-BR'});
@@ -137,7 +126,6 @@ module.exports.normalize_BR = {
         test.equal(parsed.normalize(), expected);
         test.done();
     },
-
     testBRAssistedDialingLocalToLocalUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("2123456", {locale: 'pt-BR'});
@@ -152,7 +140,6 @@ module.exports.normalize_BR = {
         test.equal(phone.normalize(hints), expectedString);
         test.done();
     },
-
     testBRAssistedDialingLocalToLocalUMTSAddTrunkClosed: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+55 21 2123456", {locale: 'pt-BR'});
@@ -166,7 +153,6 @@ module.exports.normalize_BR = {
         test.equal(phone.normalize(hints), expectedString);
         test.done();
     },
-
     testBRAssistedDialingLocalToLocalCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("2123456", {locale: 'pt-BR'});
@@ -181,7 +167,6 @@ module.exports.normalize_BR = {
         test.equal(phone.normalize(hints), expectedString);
         test.done();
     },
-
     testBRAssistedDialingLocalToLocalCDMAAddTrunkClosed: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+55 62 2123456", {locale: 'pt-BR'});
@@ -196,7 +181,6 @@ module.exports.normalize_BR = {
         test.equal(phone.normalize(hints), expectedString);
         test.done();
     },
-
     testBRAssistedDialingIntlToLocalUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("32012325", {locale: 'pt-BR'});
@@ -211,7 +195,6 @@ module.exports.normalize_BR = {
         test.equal(phone.normalize(hints), expectedString);
         test.done();
     },
-
     testBRAssistedDialingIntlToLDUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("079 32012325", {locale: 'pt-BR'});
@@ -226,7 +209,6 @@ module.exports.normalize_BR = {
         test.equal(phone.normalize(hints), expectedString);
         test.done();
     },
-
     testBRAssistedDialingIntlToLocalCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("32012325", {locale: 'pt-BR'});
@@ -241,7 +223,6 @@ module.exports.normalize_BR = {
         test.equal(phone.normalize(hints), expectedString);
         test.done();
     },
-
     testBRAssistedDialingIntlToLDCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("099 2123456", {locale: 'pt-BR'});
@@ -256,6 +237,4 @@ module.exports.normalize_BR = {
         test.equal(phone.normalize(hints), expectedString);
         test.done();
     }
-
-
 };

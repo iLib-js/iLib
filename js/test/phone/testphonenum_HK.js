@@ -29,7 +29,6 @@ module.exports.phonenum_HK = {
         ilib.clearCache();
         callback();
     },
-
     testHKLocalNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("23897077", {locale: "en-HK"});
@@ -41,7 +40,6 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testHKFromIntl: function(test) {
         test.expect(2);
@@ -56,7 +54,6 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testHKMobile: function(test) {
         test.expect(2);
@@ -70,7 +67,6 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testHKFromIntlToMobile: function(test) {
         test.expect(2);
@@ -86,9 +82,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testHKLocalNumberWithMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("23897077", {locale: "en-US", mcc: "454"});
@@ -100,9 +94,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseHKLocalNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("2123 4567", {locale: "en-HK"});
@@ -114,9 +106,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseHKIgnoreFormatting: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("22-34-56-78", {locale: "en-HK"});
@@ -128,9 +118,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseHKIgnoreCrap: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("2!1@2$3-^4&5(6)7", {locale: "en-HK"});
@@ -142,9 +130,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseHKServiceCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("18501", {locale: "en-HK"});
@@ -157,9 +143,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseHKMobileNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("51234567", {locale: "en-HK"});
@@ -172,9 +156,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseHKPlusIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+12028675309", {locale: "en-HK"});
@@ -189,9 +171,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseHKZerosIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("00112028675309", {locale: "en-HK"});
@@ -206,9 +186,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseHKEmergencyNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("999", {locale: "en-HK"});
@@ -220,9 +198,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseHKEmergencyNumberGSM: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("112", {locale: "en-HK"});
@@ -234,9 +210,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseHKPartial1: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("2", {locale: "en-HK"});
@@ -248,9 +222,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseHKPartial2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("21", {locale: "en-HK"});
@@ -262,7 +234,6 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseHKPartial3: function(test) {
         test.expect(2);
@@ -275,7 +246,6 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseHKPartial4: function(test) {
         test.expect(2);
@@ -288,7 +258,6 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseHKPartial5: function(test) {
         test.expect(2);
@@ -301,7 +270,6 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseHKPartial6: function(test) {
         test.expect(2);
@@ -314,7 +282,6 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseHKPartial7: function(test) {
         test.expect(2);
@@ -327,7 +294,6 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseHKPartial8: function(test) {
         test.expect(2);
@@ -340,7 +306,6 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseHKPartial9: function(test) {
         test.expect(2);
@@ -354,9 +319,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseHKWithUSMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "en-HK", mcc: "316"});
@@ -369,9 +332,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseHKWithFRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "en-HK", mcc: "208"});
@@ -383,9 +344,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseHKWithMXMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "en-HK", mcc: "334"});
@@ -398,9 +357,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseHKWithDEMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "en-HK", mcc: "262"});
@@ -412,9 +369,7 @@ module.exports.phonenum_HK = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseHKWithGBMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "en-HK", mcc: "235"});
@@ -429,5 +384,4 @@ module.exports.phonenum_HK = {
         test.done();
 
     }
-
 };

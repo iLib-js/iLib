@@ -31,7 +31,6 @@ module.exports.testlistfmt_ru = {
         callback();
     },
     // ru-RU
-
     testListFmtruRUNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ru-RU"
@@ -42,7 +41,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один"]), "один");
         test.done();
     },
-
     testListFmtruRUNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ru-RU"
@@ -53,7 +51,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два"]), "один и два");
         test.done();
     },
-
     testListFmtruRUNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ru-RU"
@@ -64,7 +61,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три"]), "один, два и три");
         test.done();
     },
-
     testListFmtruRUNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ru-RU"
@@ -75,7 +71,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три", "четыре"]), "один, два, три и четыре");
         test.done();
     },
-
     testListFmtUnitStyleruRUNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ru-RU",
@@ -87,7 +82,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один"]), "один");
         test.done();
     },
-
     testListFmtUnitStyleruRUNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ru-RU",
@@ -99,7 +93,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два"]), "один два");
         test.done();
     },
-
     testListFmtUnitStyleruRUNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ru-RU",
@@ -111,7 +104,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три"]), "один два три");
         test.done();
     },
-
     testListFmtUnitStyleruRUNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ru-RU",
@@ -123,7 +115,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три", "четыре"]), "один два три четыре");
         test.done();
     },
-
     testListFmtUnitStyleruRUNumberFormatFive: function(test) {
         var fmt = new ListFmt({
             locale: "ru-RU",
@@ -135,7 +126,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три", "четыре", "пять"]), "один два три четыре пять");
         test.done();
     },
-
     testListFmtUnitStyleruRUNumberFormatOneFull: function(test) {
         var fmt = new ListFmt({
             locale: "ru-RU",
@@ -148,7 +138,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один"]), "один");
         test.done();
     },
-
     testListFmtUnitStyleruRUNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "ru-RU",
@@ -161,7 +150,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два"]), "один два");
         test.done();
     },
-
     testListFmtUnitStyleruRUNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "ru-RU",
@@ -174,7 +162,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три"]), "один два три");
         test.done();
     },
-
     testListFmtUnitStyleruRUNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "ru-RU",
@@ -187,7 +174,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три", "четыре"]), "один два три четыре");
         test.done();
     },
-
     testListFmtUnitStyleruRUNumberFormatFiveFull: function(test) {
         var fmt = new ListFmt({
             locale: "ru-RU",
@@ -200,7 +186,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три", "четыре", "пять"]), "один два три четыре пять");
         test.done();
     },
-
     // ru-KG
     testListFmtruKGNumberFormatOneMedium: function(test) {
         var fmt = new ListFmt({
@@ -213,7 +198,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один"]), "один");
         test.done();
     },
-
     testListFmtruKGNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ru-KG",
@@ -225,7 +209,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два"]), "один и два");
         test.done();
     },
-
     testListFmtruKGNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ru-KG",
@@ -237,7 +220,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три"]), "один, два и три");
         test.done();
     },
-
     testListFmtruKGNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ru-KG",
@@ -249,7 +231,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три", "четыре"]), "один, два, три и четыре");
         test.done();
     },
-
     // ru-KZ
     testListFmtUnitStyleruKZNumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -262,7 +243,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один"]), "один");
         test.done();
     },
-
     testListFmtUnitStyleruKZNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ru-KZ",
@@ -274,7 +254,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два"]), "один два");
         test.done();
     },
-
     testListFmtUnitStyleruKZNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ru-KZ",
@@ -286,7 +265,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три"]), "один два три");
         test.done();
     },
-
     testListFmtUnitStyleruKZNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ru-KZ",
@@ -298,7 +276,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три", "четыре"]), "один два три четыре");
         test.done();
     },
-
     testListFmtUnitStyleruKZNumberFormatFive: function(test) {
         var fmt = new ListFmt({
             locale: "ru-KZ",
@@ -310,7 +287,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три", "четыре", "пять"]), "один два три четыре пять");
         test.done();
     },
-
     testListFmtUnitStyleruKZNumberFormatOneLong: function(test) {
         var fmt = new ListFmt({
             locale: "ru-KZ",
@@ -323,7 +299,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один"]), "один");
         test.done();
     },
-
     testListFmtUnitStyleruKZNumberFormatTwoLong: function(test) {
         var fmt = new ListFmt({
             locale: "ru-KZ",
@@ -336,7 +311,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два"]), "один два");
         test.done();
     },
-
     testListFmtUnitStyleruKZNumberFormatThreeLong: function(test) {
         var fmt = new ListFmt({
             locale: "ru-KZ",
@@ -349,7 +323,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три"]), "один два три");
         test.done();
     },
-
     testListFmtUnitStyleruKZNumberFormatFourLong: function(test) {
         var fmt = new ListFmt({
             locale: "ru-KZ",
@@ -362,7 +335,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три", "четыре"]), "один два три четыре");
         test.done();
     },
-
     testListFmtUnitStyleruKZNumberFormatFiveLong: function(test) {
         var fmt = new ListFmt({
             locale: "ru-KZ",
@@ -387,7 +359,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один"]), "один");
         test.done();
     },
-
     testListFmtruGENumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ru-GE",
@@ -399,7 +370,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два"]), "один и два");
         test.done();
     },
-
     testListFmtruGENumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ru-GE",
@@ -411,7 +381,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три"]), "один, два и три");
         test.done();
     },
-
     testListFmtruGENumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ru-GE",
@@ -434,7 +403,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один"]), "один");
         test.done();
     },
-
     testListFmtruGENumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "ru-GE",
@@ -446,7 +414,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два"]), "один и два");
         test.done();
     },
-
     testListFmtruGENumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "ru-GE",
@@ -458,7 +425,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три"]), "один, два и три");
         test.done();
     },
-
     testListFmtruGENumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "ru-GE",
@@ -481,7 +447,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один"]), "один");
         test.done();
     },
-
     testListFmtruUANumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ru-UA"
@@ -492,7 +457,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два"]), "один и два");
         test.done();
     },
-
     testListFmtruUANumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ru-UA"
@@ -503,7 +467,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три"]), "один, два и три");
         test.done();
     },
-
     testListFmtruUANumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ru-UA"
@@ -525,7 +488,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один"]), "один");
         test.done();
     },
-
     testListFmtUnitStyleruUANumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ru-UA",
@@ -537,7 +499,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два"]), "один два");
         test.done();
     },
-
     testListFmtUnitStyleruUANumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ru-UA",
@@ -549,7 +510,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три"]), "один два три");
         test.done();
     },
-
     testListFmtUnitStyleruUANumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ru-UA",
@@ -561,7 +521,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три", "четыре"]), "один два три четыре");
         test.done();
     },
-
     testListFmtUnitStyleruUANumberFormatFive: function(test) {
         var fmt = new ListFmt({
             locale: "ru-UA",
@@ -573,7 +532,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три", "четыре", "пять"]), "один два три четыре пять");
         test.done();
     },
-
     testListFmtUnitStyleruUANumberFormatOneFull: function(test) {
         var fmt = new ListFmt({
             locale: "ru-UA",
@@ -586,7 +544,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один"]), "один");
         test.done();
     },
-
     testListFmtUnitStyleruUANumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "ru-UA",
@@ -599,7 +556,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два"]), "один два");
         test.done();
     },
-
     testListFmtUnitStyleruUANumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "ru-UA",
@@ -612,7 +568,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три"]), "один два три");
         test.done();
     },
-
     testListFmtUnitStyleruUANumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "ru-UA",
@@ -625,7 +580,6 @@ module.exports.testlistfmt_ru = {
         test.equal(fmt.format(["один", "два", "три", "четыре"]), "один два три четыре");
         test.done();
     },
-
     testListFmtUnitStyleruUANumberFormatFiveFull: function(test) {
         var fmt = new ListFmt({
             locale: "ru-UA",

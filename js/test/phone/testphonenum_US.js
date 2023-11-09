@@ -29,7 +29,6 @@ module.exports.phonenum_US = {
         ilib.clearCache();
         callback();
     },
-
     testParseUSFull: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("(456) 345-3434", {locale: "en-US"});
@@ -42,9 +41,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSFullNoLocale: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("(456) 345-3434");
@@ -57,9 +54,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSFull2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("4154154155", {locale: "en-US"});
@@ -72,9 +67,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSIgnoreFormatting: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("456-345-3434", {locale: "en-US"});
@@ -87,9 +80,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSIgnoreCrap: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("@456@345@$%^3434", {locale: "en-US"});
@@ -102,9 +93,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSLocalNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("345-3434", {locale: "en-US"});
@@ -116,9 +105,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSWithTrunk: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("1 (456) 345-3434", {locale: "en-US"});
@@ -132,9 +119,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSWithTrunkAltFormatting: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("1-456-345-3434", {locale: "en-US"});
@@ -148,9 +133,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSWithDialAround: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("10-10-321-456-345-3434", {locale: "en-US"});
@@ -164,9 +147,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSWithVSC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("*67 (456) 345-3434", {locale: "en-US"});
@@ -178,9 +159,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSWithVSCandTrunk: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("*67 1 (456) 345-3434", {locale: "en-US"});
@@ -192,9 +171,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSWithAlternateVSC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("112 (456) 345-3434", {locale: "en-US"});
@@ -206,9 +183,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSWithAlternateVSCBogusCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("111111111", {locale: "en-US"});
@@ -220,9 +195,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSEmergencyNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("911", {locale: "en-US"});
@@ -234,9 +207,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSEmergencyNumberExtended: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("911 123", {locale: "en-US"});
@@ -249,9 +220,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSLocalWithPauseChars: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6175568w1234", {locale: "en-US"});
@@ -264,9 +233,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSLDWithPauseChars: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("4156175568w1234", {locale: "en-US"});
@@ -280,9 +247,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSLDWithPauseCharsAndTrunk: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("1-415-617-5568 w 1234", {locale: "en-US"});
@@ -297,9 +262,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSLocalWithExtension: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("617-5568x1234", {locale: "en-US"});
@@ -312,9 +275,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSLDWithExtension: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("415-617-5568 x1234", {locale: "en-US"});
@@ -328,9 +289,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSPlusIDDToGB: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+442012345678", {locale: "en-US"});
@@ -345,9 +304,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSZerosIDDToGB: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("011442012345678", {locale: "en-US"});
@@ -362,9 +319,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSPlusIDDToGBLongArea: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+441997123456", {locale: "en-US"});
@@ -379,9 +334,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSPlusIDDToGBPartial1: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+", {locale: "en-US"});
@@ -393,7 +346,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPlusIDDToGBPartial2: function(test) {
         test.expect(2);
@@ -407,7 +359,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPlusIDDToGBPartial3: function(test) {
         test.expect(2);
@@ -421,7 +372,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPlusIDDToGBPartial4: function(test) {
         test.expect(2);
@@ -436,7 +386,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPlusIDDToGBPartial5: function(test) {
         test.expect(2);
@@ -451,7 +400,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPlusIDDToGBPartial6: function(test) {
         test.expect(2);
@@ -467,7 +415,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPlusIDDToGBPartial7: function(test) {
         test.expect(2);
@@ -483,7 +430,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPlusIDDToGBPartial8: function(test) {
         test.expect(2);
@@ -499,7 +445,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPlusIDDToGBPartial9: function(test) {
         test.expect(2);
@@ -515,7 +460,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPlusIDDToGBPartial10: function(test) {
         test.expect(2);
@@ -531,7 +475,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPlusIDDToGBPartial11: function(test) {
         test.expect(2);
@@ -547,7 +490,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPlusIDDToGBPartial12: function(test) {
         test.expect(2);
@@ -563,7 +505,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPlusIDDToGBPartial13: function(test) {
         test.expect(2);
@@ -579,10 +520,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
-
     testParseUSPlusIDDToUnknown: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+5062012345678", {locale: "en-US"});
@@ -596,9 +534,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSZerosIDDToUnknown: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0115062012345678", {locale: "en-US"});
@@ -612,7 +548,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartial1: function(test) {
         test.expect(2);
@@ -625,9 +560,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSPartial2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("45", {locale: "en-US"});
@@ -639,7 +572,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartial3: function(test) {
         test.expect(2);
@@ -652,7 +584,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartial4: function(test) {
         test.expect(2);
@@ -665,7 +596,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartial5: function(test) {
         test.expect(2);
@@ -678,7 +608,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartial6: function(test) {
         test.expect(2);
@@ -691,7 +620,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartial7: function(test) {
         test.expect(2);
@@ -704,7 +632,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartial8: function(test) {
         test.expect(2);
@@ -718,7 +645,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartial9: function(test) {
         test.expect(2);
@@ -732,7 +658,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartial10: function(test) {
         test.expect(2);
@@ -746,7 +671,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartial11: function(test) {
         test.expect(2);
@@ -761,9 +685,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSPartialTrunk0: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("1", {locale: "en-US"});
@@ -775,9 +697,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSPartialTrunk1: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("14", {locale: "en-US"});
@@ -790,9 +710,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSPartialTrunk2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("145", {locale: "en-US"});
@@ -805,7 +723,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialTrunk3: function(test) {
         test.expect(2);
@@ -819,7 +736,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialTrunk4: function(test) {
         test.expect(2);
@@ -834,7 +750,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialTrunk5: function(test) {
         test.expect(2);
@@ -849,7 +764,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialTrunk6: function(test) {
         test.expect(2);
@@ -864,7 +778,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialTrunk7: function(test) {
         test.expect(2);
@@ -879,7 +792,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialTrunk8: function(test) {
         test.expect(2);
@@ -894,7 +806,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialTrunk9: function(test) {
         test.expect(2);
@@ -909,7 +820,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialTrunk10: function(test) {
         test.expect(2);
@@ -924,7 +834,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialTrunk11: function(test) {
         test.expect(2);
@@ -940,7 +849,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDD1: function(test) {
         test.expect(2);
@@ -953,7 +861,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDD2: function(test) {
         test.expect(2);
@@ -967,7 +874,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDD3: function(test) {
         test.expect(2);
@@ -981,7 +887,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDD4: function(test) {
         test.expect(2);
@@ -995,7 +900,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDD5: function(test) {
         test.expect(2);
@@ -1010,7 +914,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDD6: function(test) {
         test.expect(2);
@@ -1026,7 +929,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDD7: function(test) {
         test.expect(2);
@@ -1042,7 +944,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDD8: function(test) {
         test.expect(2);
@@ -1058,7 +959,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDD9: function(test) {
         test.expect(2);
@@ -1074,7 +974,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDD10: function(test) {
         test.expect(2);
@@ -1090,7 +989,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDD11: function(test) {
         test.expect(2);
@@ -1106,7 +1004,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDD12: function(test) {
         test.expect(2);
@@ -1122,7 +1019,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDD13: function(test) {
         test.expect(2);
@@ -1138,9 +1034,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSPartialIDDtoPreserveZeroCountry0: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+", {locale: "en-US"});
@@ -1152,7 +1046,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDDtoPreserveZeroCountry1: function(test) {
         test.expect(2);
@@ -1166,7 +1059,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDDtoPreserveZeroCountry2: function(test) {
         test.expect(2);
@@ -1180,7 +1072,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDDtoPreserveZeroCountry3: function(test) {
         test.expect(2);
@@ -1195,7 +1086,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDDtoPreserveZeroCountry4: function(test) {
         test.expect(2);
@@ -1211,7 +1101,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDDtoPreserveZeroCountry5: function(test) {
         test.expect(2);
@@ -1227,7 +1116,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDDtoPreserveZeroCountry6: function(test) {
         test.expect(2);
@@ -1244,7 +1132,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseUSPartialIDDtoPreserveZeroCountry7: function(test) {
         test.expect(2);
@@ -1261,9 +1148,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSWithUSMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "en-US", mcc: "316"});
@@ -1276,9 +1161,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSWithFRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "en-US", mcc: "208"});
@@ -1290,9 +1173,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSWithMXMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "en-US", mcc: "334"});
@@ -1305,9 +1186,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSWithDEMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "en-US", mcc: "262"});
@@ -1319,10 +1198,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
-
     testParseUSWithUSMCCNoLocale: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {mcc: "316"});
@@ -1335,9 +1211,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSWithFRMCCNoLocale: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {mcc: "208"});
@@ -1349,9 +1223,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSWithMXMCCNoLocale: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {mcc: "334"});
@@ -1364,9 +1236,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSWithDEMCCNoLocale: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {mcc: "262"});
@@ -1378,10 +1248,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
-
     // for NOV-108200
     testParseUSBogusSpecialChars: function(test) {
         test.expect(2);
@@ -1397,9 +1264,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUS555Number: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("(408) 555-1234", {locale: "en-US"});
@@ -1412,9 +1277,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSHtmlGarbage: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("<button>t1</button>", {locale: "en-US"});
@@ -1426,9 +1289,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSIntermediateSizedNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("56765432", {locale: "en-US"});
@@ -1441,9 +1302,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseUSEmergencyLikeServiceNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("411", {locale: "en-US"});
@@ -1455,9 +1314,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testUSBogusInternationalNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+33112345678", {locale: "en-US"});
@@ -1472,10 +1329,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
-
     testUSFictitousNumberLocale: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("5555555", {locale: "en-US"});
@@ -1487,9 +1341,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testUSFictitousNumberLD: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("5555555555", {locale: "en-US"});
@@ -1502,9 +1354,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     // for NOV-113367
     testUSCrazyIntlCall: function(test) {
         test.expect(2);
@@ -1520,7 +1370,6 @@ module.exports.phonenum_US = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     //for NOV-109333
     testUSWierdVSC: function(test) {
         test.expect(2);
@@ -1533,9 +1382,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testUSSSCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("*646#", {locale: "en-US"});
@@ -1547,9 +1394,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     // for CFISH-5088
     testUSVSCUMTS1: function(test) {
         test.expect(2);
@@ -1562,7 +1407,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testUSVSCUMTS2: function(test) {
         test.expect(2);
@@ -1575,7 +1419,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testUSVSCUMTS3: function(test) {
         test.expect(2);
@@ -1588,7 +1431,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testUSVSCUMTS4: function(test) {
         test.expect(2);
@@ -1601,7 +1443,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testUSVSCUMTS5: function(test) {
         test.expect(2);
@@ -1614,7 +1455,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testUSVSCUMTS6: function(test) {
         test.expect(2);
@@ -1627,9 +1467,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     // for CFISH-6022
     testUSVSCVerizon: function(test) {
         test.expect(2);
@@ -1642,7 +1480,6 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testUSVSCVerizon2: function(test) {
         test.expect(2);
@@ -1655,9 +1492,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     // for CFISH-6362
     testUSVSCCDMALong: function(test) {
         test.expect(2);
@@ -1670,9 +1505,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     //for CFISH-6444
     testParseUSWithForeignIDD: function(test) {
         test.expect(2);
@@ -1688,9 +1521,7 @@ module.exports.phonenum_US = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     // for CFISH-6845
     testParseUSWithChinaIDD: function(test) {
         test.expect(2);
@@ -1708,5 +1539,4 @@ module.exports.phonenum_US = {
         test.done();
 
     }
-
 };

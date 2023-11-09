@@ -30,7 +30,6 @@ module.exports.testlistfmt = {
         ilib.clearCache();
         callback();
     },
-
     testListFmtConstructorEmpty: function(test) {
         var fmt = new ListFmt();
 
@@ -38,7 +37,6 @@ module.exports.testlistfmt = {
         test.ok(fmt !== null);
         test.done();
     },
-
     testListFmtDefaults: function(test) {
         var fmt = new ListFmt();
 
@@ -47,7 +45,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.getLocale(), "en-US");
         test.done();
     },
-
     testListFmtDefaultStyle: function(test) {
         var fmt = new ListFmt();
 
@@ -56,7 +53,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.getStyle(), "standard");
         test.done();
     },
-
     testListFmtTestProperty1: function(test) {
         var fmt = new ListFmt();
 
@@ -65,7 +61,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format([""]), "");
         test.done();
     },
-
     testListFmtTestProperty2: function(test) {
         var fmt = new ListFmt();
 
@@ -74,7 +69,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(), "");
         test.done();
     },
-
     testListFmtTestProperty3: function(test) {
         var fmt = new ListFmt();
 
@@ -83,7 +77,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(undefined), "");
         test.done();
     },
-
     testListFmtTestProperty4: function(test) {
         var fmt = new ListFmt();
 
@@ -92,7 +85,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format("one"), "");
         test.done();
     },
-
     testListFmtTestProperty5: function(test) {
         var fmt = new ListFmt();
 
@@ -101,7 +93,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format("one", "two"), "");
         test.done();
     },
-
     testListFmtTestProperty6: function(test) {
         var fmt = new ListFmt();
 
@@ -110,7 +101,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(100), "");
         test.done();
     },
-
     testListFmtTestProperty7: function(test) {
         var fmt = new ListFmt();
 
@@ -119,7 +109,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(false), "");
         test.done();
     },
-
     testListFmtTestProperty8: function(test) {
         var fmt = new ListFmt();
 
@@ -128,7 +117,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["true", "false"]), "true & false");
         test.done();
     },
-
     testListFmtNumberFormatOne: function(test) {
         var fmt = new ListFmt();
 
@@ -137,7 +125,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one"]), "one");
         test.done();
     },
-
     testListFmtNumberFormatTwo: function(test) {
         var fmt = new ListFmt();
 
@@ -146,7 +133,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one", "two"]), "one & two");
         test.done();
     },
-
     testListFmtNumberFormatThree: function(test) {
         var fmt = new ListFmt();
 
@@ -155,7 +141,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one", "two", "three"]), "one, two, & three");
         test.done();
     },
-
     testListFmtNumberFormatFour: function(test) {
         var fmt = new ListFmt();
 
@@ -164,7 +149,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, & four");
         test.done();
     },
-
     testListFmtStyleConjunctionOne: function(test) {
         var fmt = new ListFmt({
             style: "conjunction"
@@ -175,7 +159,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one"]), "one");
         test.done();
     },
-
     testListFmtStyleConjunctionTwo: function(test) {
         var fmt = new ListFmt({
             style: "conjunction"
@@ -186,7 +169,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one", "two"]), "one & two");
         test.done();
     },
-
     testListFmtStyleConjunctionThree: function(test) {
         var fmt = new ListFmt({
             style: "conjunction"
@@ -197,7 +179,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one", "two", "three"]), "one, two, & three");
         test.done();
     },
-
     testListFmtStyleConjunctionFour: function(test) {
         var fmt = new ListFmt({
             style: "conjunction"
@@ -208,7 +189,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, & four");
         test.done();
     },
-
     testListFmtStyleDisjunctionOne: function(test) {
         var fmt = new ListFmt({
             style: "disjunction"
@@ -229,7 +209,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one", "two"]), "one or two");
         test.done();
     },
-
     testListFmtStyleDisjunctionThree: function(test) {
         var fmt = new ListFmt({
             style: "disjunction"
@@ -240,7 +219,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one", "two", "three"]), "one, two, or three");
         test.done();
     },
-
     testListFmtStyleDisjunctionFour: function(test) {
         var fmt = new ListFmt({
             style: "disjunction"
@@ -251,7 +229,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, or four");
         test.done();
     },
-
     testListFmtStyleUnitOne: function(test) {
         var fmt = new ListFmt({
             style: "unit"
@@ -272,7 +249,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one", "two"]), "one, two");
         test.done();
     },
-
     testListFmtStyleUnitThree: function(test) {
         var fmt = new ListFmt({
             style: "unit"
@@ -283,7 +259,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one", "two", "three"]), "one, two, three");
         test.done();
     },
-
     testListFmtStyleUnitFour: function(test) {
         var fmt = new ListFmt({
             style: "unit"
@@ -294,7 +269,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, four");
         test.done();
     },
-
     testListFmtStyleUnitLongtOne: function(test) {
         var fmt = new ListFmt({
             style: "unit",
@@ -317,7 +291,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one", "two"]), "one, two");
         test.done();
     },
-
     testListFmtStyleUnitLongThree: function(test) {
         var fmt = new ListFmt({
             style: "unit",
@@ -329,7 +302,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one", "two", "three"]), "one, two, three");
         test.done();
     },
-
     testListFmtStyleUnitLongFour: function(test) {
         var fmt = new ListFmt({
             style: "unit",
@@ -341,7 +313,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, four");
         test.done();
     },
-
     // af-ZA
 
     testListFmtafZAMonthOne: function(test) {
@@ -384,7 +355,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["een", "twee", "drie", "vier"]), "een, twee, drie en vier");
         test.done();
     },
-
     // as-IN
     testListFmtasINMonthOne: function(test) {
         var fmt = new ListFmt({
@@ -571,7 +541,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format([""]), "");
         test.done();
     },
-
     // bg-BG
     testListFmtbgBGNumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -753,7 +722,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["един", "два", "три", "четири"]), "един, два, три и четири");
         test.done();
     },
-
     // bn-IN
     testListFmtbnINNumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -795,7 +763,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["এক", "দুই", "তিন", "চার"]), "এক, দুই, তিন এবং চার");
         test.done();
     },
-
     // cs-CZ
     testListFmtcsCZNumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -848,7 +815,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["jeden", "dva", "tři", "čtyři"]), 'jeden, dva, tři a čtyři');
         test.done();
     },
-
     testListFmtUnitStylecsCZNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "cs-CZ",
@@ -893,7 +859,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["jeden", "dva", "tři", "čtyři"]), 'jeden, dva, tři a čtyři');
         test.done();
     },
-
     testListFmtUnitStylecsCZNumberFormatOneFull: function(test) {
         var fmt = new ListFmt({
             locale: "cs-CZ",
@@ -1006,7 +971,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["en", "to", "tre", "fire"]), "en, to, tre eller fire");
         test.done();
     },
-
     testListFmtUnitStyledaDKNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "da-DK",
@@ -1051,7 +1015,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["en", "to", "tre", "fire"]), "en, to, tre og fire");
         test.done();
     },
-
     // et-EE
     testListFmtetEENumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -1093,7 +1056,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Üks", "Kaks", "kolm", "Neli"]), "Üks, Kaks, kolm ja Neli");
         test.done();
     },
-
     testListFmtUnitStyleetEENumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "et-EE",
@@ -1186,7 +1148,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Üks", "Kaks", "kolm", "Neli"]), "Üks, Kaks, kolm, Neli");
         test.done();
     },
-
     // fi-FI
     testListFmtfiFINumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -1228,7 +1189,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["yksi", "kaksi", "kolmikko", "neljä"]), "yksi, kaksi, kolmikko ja neljä");
         test.done();
     },
-
     testListFmtUnitStylefiFINumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "fi-FI",
@@ -1273,7 +1233,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["yksi", "kaksi", "kolmikko", "neljä"]), "yksi, kaksi, kolmikko, neljä");
         test.done();
     },
-
     // ga-IE
     testListFmtgaIENumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -1315,7 +1274,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["ceann", "dhá", "trí", "ceithre"]), "ceann, dhá, trí, agus ceithre");
         test.done();
     },
-
     // ga-IE
     testListFmtgaIENumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -1361,7 +1319,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["ceann", "dhá", "trí", "ceithre"]), "ceann, dhá, trí, ceithre");
         test.done();
     },
-
     testListFmtUnitStylegaIENumberFormatOneFull: function(test) {
         var fmt = new ListFmt({
             locale: "ga-IE",
@@ -1410,7 +1367,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["ceann", "dhá", "trí", "ceithre"]), "ceann, dhá, trí agus ceithre");
         test.done();
     },
-
     // hu-HU
     testListFmthuHUNumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -1452,7 +1408,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["egy", "kettő", "három", "négy"]), "egy, kettő, három és négy");
         test.done();
     },
-
     testListFmthuHUNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "hu-HU",
@@ -1497,7 +1452,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["egy", "kettő", "három", "négy"]), "egy, kettő, három és négy");
         test.done();
     },
-
     // lv-LV
     testListFmtlvLVNumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -1539,7 +1493,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Vienu", "Divi", "Trīs", "Četri"]), "Vienu, Divi, Trīs un Četri");
         test.done();
     },
-
     testListFmtUnitStylelvLVNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "lv-LV",
@@ -1675,7 +1628,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Vienas", "Du", "Trys", "Keturi"]), "Vienas, Du, Trys ir Keturi");
         test.done();
     },
-
     // lt-LT
     testListFmtUnitStyleltLTNumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -1721,7 +1673,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Vienas", "Du", "Trys", "Keturi"]), "Vienas Du Trys Keturi");
         test.done();
     },
-
     // mk-MK
     testListFmtmkMKNumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -1774,7 +1725,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["бір"]), "бір");
         test.done();
     },
-
     testListFmtkkKZNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "kk-KZ"
@@ -1785,7 +1735,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["бір", "Екі"]), "бір Төртеуі Екі");
         test.done();
     },
-
     testListFmtkkKZNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "kk-KZ"
@@ -1796,7 +1745,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["бір", "Екі", "Үшеуі"]), "бір, Екі Төртеуі Үшеуі");
         test.done();
     },
-
     testListFmtkkKZNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "kk-KZ"
@@ -1807,7 +1755,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["бір", "Екі", "Үшеуі", "Төртеуі"]), "бір, Екі, Үшеуі Төртеуі Төртеуі");
         test.done();
     },
-
     testListFmtkkKZNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "kk-KZ",
@@ -1819,7 +1766,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["бір"]), "бір");
         test.done();
     },
-
     testListFmtkkKZNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "kk-KZ",
@@ -1831,7 +1777,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["бір", "Екі"]), "бір Екі");
         test.done();
     },
-
     testListFmtkkKZNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "kk-KZ",
@@ -1843,7 +1788,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["бір", "Екі", "Үшеуі"]), "бір Екі Үшеуі");
         test.done();
     },
-
     testListFmtkkKZNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "kk-KZ",
@@ -1866,7 +1810,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["មួយ"]), "មួយ");
         test.done();
     },
-
     testListFmtkmKHNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "km-KH"
@@ -1877,7 +1820,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["មួយ", "ពីរ"]), "មួយ និង ពីរ");
         test.done();
     },
-
     testListFmtkmKHNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "km-KH"
@@ -1888,7 +1830,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["មួយ", "ពីរ", "បី"]), "មួយ, ពីរ និង បី");
         test.done();
     },
-
     testListFmtkmKHNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "km-KH"
@@ -1910,7 +1851,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["មួយ"]), "មួយ");
         test.done();
     },
-
     testListFmtUnitStylekmKHNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "km-KH",
@@ -1922,7 +1862,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["មួយ", "ពីរ"]), "មួយ ពីរ");
         test.done();
     },
-
     testListFmtUnitStylekmKHNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "km-KH",
@@ -1934,7 +1873,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["មួយ", "ពីរ", "បី"]), "មួយ ពីរ បី");
         test.done();
     },
-
     testListFmtUnitStylekmKHNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "km-KH",
@@ -1960,7 +1898,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["하나"]), "하나");
         test.done();
     },
-
     testListFmtkoKRNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ko-KR"
@@ -1971,7 +1908,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["하나", "둘"]), "하나 및 둘");
         test.done();
     },
-
     testListFmtkoKRNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ko-KR"
@@ -1982,7 +1918,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["하나", "둘", "셋"]), "하나, 둘 및 셋");
         test.done();
     },
-
     testListFmtkoKRNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ko-KR"
@@ -1993,7 +1928,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["하나", "둘", "셋", "넷"]), "하나, 둘, 셋 및 넷");
         test.done();
     },
-
     testListFmtUnitStyleNamekoKR: function(test) {
         var fmt = new ListFmt({
             locale: "ko-KR",
@@ -2005,7 +1939,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.getStyle(), "unit");
         test.done();
     },
-
     testListFmtUnitStylekoKRNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ko-KR",
@@ -2017,7 +1950,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["1월"]), "1월");
         test.done();
     },
-
     testListFmtUnitStylekoKRNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ko-KR",
@@ -2029,7 +1961,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["1월","2월"]), "1월 2월");
         test.done();
     },
-
     testListFmtUnitStylekoKRNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ko-KR",
@@ -2041,7 +1972,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["1월","2월","3월"]), "1월 2월 3월");
         test.done();
     },
-
     testListFmtUnitStylekoKRNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ko-KR",
@@ -2053,7 +1983,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["1월","2월","3월","4월"]), "1월 2월 3월 4월");
         test.done();
     },
-
     testListFmtUnitStylekoKRNumberFormatFive: function(test) {
         var fmt = new ListFmt({
             locale: "ko-KR",
@@ -2065,7 +1994,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["1월","2월","3월","4월","5월"]), "1월 2월 3월 4월 5월");
         test.done();
     },
-
     // id-ID
 
     testListFmtidIDStyleName: function(test) {
@@ -2078,7 +2006,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.getStyle(), "standard");
         test.done();
     },
-
     testListFmtidIDNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "id-ID"
@@ -2089,7 +2016,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["satu"]), "satu");
         test.done();
     },
-
     testListFmtitIDNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "id-ID"
@@ -2100,7 +2026,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["satu", "dua"]), "satu dan dua");
         test.done();
     },
-
     testListFmtidIDNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "id-ID"
@@ -2111,7 +2036,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["satu", "dua", "tiga"]), "satu, dua, dan tiga");
         test.done();
     },
-
     testListFmtidIDNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "id-ID"
@@ -2122,7 +2046,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["satu", "dua", "tiga", "empat"]), "satu, dua, tiga, dan empat");
         test.done();
     },
-
     testListFmtidIDUnitStyleName: function(test) {
         var fmt = new ListFmt({
             locale: "id-ID",
@@ -2134,7 +2057,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.getStyle(), "unit");
         test.done();
     },
-
     testListFmtUnitStyleidIDNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "id-ID",
@@ -2146,7 +2068,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["satu"]), "satu");
         test.done();
     },
-
     testListFmtUnitStyleidIDNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "id-ID",
@@ -2158,7 +2079,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["satu", "dua"]), "satu, dua");
         test.done();
     },
-
     testListFmtUnitStyleidIDNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "id-ID",
@@ -2170,7 +2090,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["satu", "dua", "tiga"]), "satu, dua, tiga");
         test.done();
     },
-
     testListFmtUnitStyleidIDNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "id-ID",
@@ -2182,7 +2101,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["satu", "dua", "tiga", "empat"]), "satu, dua, tiga, empat");
         test.done();
     },
-
     testListFmtUnitStyleidIDNumberFormatFive: function(test) {
         var fmt = new ListFmt({
             locale: "id-ID",
@@ -2205,7 +2123,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["jeden"]), "jeden");
         test.done();
     },
-
     testListFmtplPLNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "pl-PL"
@@ -2216,7 +2133,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["jeden", "dwa"]), "jeden i dwa");
         test.done();
     },
-
     testListFmtplPLNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "pl-PL"
@@ -2227,7 +2143,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["jeden", "dwa", "trzy"]), "jeden, dwa i trzy");
         test.done();
     },
-
     testListFmtplPLNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "pl-PL"
@@ -2238,7 +2153,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["jeden", "dwa", "trzy", "cztery"]), "jeden, dwa, trzy i cztery");
         test.done();
     },
-
     testListFmtUnitStyleplPLNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "pl-PL",
@@ -2250,7 +2164,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["jeden"]), "jeden");
         test.done();
     },
-
     testListFmtUnitStyleplPLNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "pl-PL",
@@ -2262,7 +2175,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["jeden", "dwa"]), "jeden i dwa");
         test.done();
     },
-
     testListFmtUnitStyleplPLNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "pl-PL",
@@ -2274,7 +2186,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["jeden", "dwa", "trzy"]), "jeden, dwa i trzy");
         test.done();
     },
-
     testListFmtUnitStyleplPLNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "pl-PL",
@@ -2299,7 +2210,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["unu"]), "unu");
         test.done();
     },
-
     testListFmtroRONumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ro-RO"
@@ -2310,7 +2220,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["unu", "Două"]), "unu și Două");
         test.done();
     },
-
     testListFmtroRONumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ro-RO"
@@ -2321,7 +2230,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["unu", "Două", "Trei"]), "unu, Două și Trei");
         test.done();
     },
-
     testListFmtroRONumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ro-RO"
@@ -2332,7 +2240,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["unu", "Două", "Trei", "patru"]), "unu, Două, Trei și patru");
         test.done();
     },
-
     testListFmtUnitStyleroRONumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ro-RO",
@@ -2344,7 +2251,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["unu"]), "unu");
         test.done();
     },
-
     testListFmtUnitStyleroRONumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ro-RO",
@@ -2356,7 +2262,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["unu", "Două"]), "unu, Două");
         test.done();
     },
-
     testListFmtUnitStyleroRONumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ro-RO",
@@ -2368,7 +2273,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["unu", "Două", "Trei"]), "unu, Două, Trei");
         test.done();
     },
-
     testListFmtUnitStyleroRONumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ro-RO",
@@ -2380,7 +2284,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["unu", "Două", "Trei", "patru"]), "unu, Două, Trei, patru");
         test.done();
     },
-
     testListFmtUnitStyleroRONumberFormatOneFull: function(test) {
         var fmt = new ListFmt({
             locale: "ro-RO",
@@ -2393,7 +2296,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["unu"]), "unu");
         test.done();
     },
-
     testListFmtUnitStyleroRONumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "ro-RO",
@@ -2406,7 +2308,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["unu", "Două"]), "unu și Două");
         test.done();
     },
-
     testListFmtUnitStyleroRONumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "ro-RO",
@@ -2419,7 +2320,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["unu", "Două", "Trei"]), "unu, Două, Trei");
         test.done();
     },
-
     testListFmtUnitStyleroRONumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "ro-RO",
@@ -2432,7 +2332,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["unu", "Două", "Trei", "patru"]), "unu, Două, Trei, patru");
         test.done();
     },
-
     // sk-SK
     testListFmtskSKNumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -2444,7 +2343,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["jeden"]), "jeden");
         test.done();
     },
-
     testListFmtskSKNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "sk-SK"
@@ -2455,7 +2353,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["jeden", "dva"]), "jeden a dva");
         test.done();
     },
-
     testListFmtskSKNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "sk-SK"
@@ -2466,7 +2363,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["jeden", "dva", "tri"]), "jeden, dva a tri");
         test.done();
     },
-
     testListFmtskSKNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "sk-SK"
@@ -2477,7 +2373,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["jeden", "dva", "tri", "štyri"]), "jeden, dva, tri a štyri");
         test.done();
     },
-
     // sl-SI
     testListFmtslSINumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -2489,7 +2384,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Eno"]), "Eno");
         test.done();
     },
-
     testListFmtslSINumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "sl-SI"
@@ -2500,7 +2394,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Eno", "Dva"]), "Eno in Dva");
         test.done();
     },
-
     testListFmtslSINumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "sl-SI"
@@ -2511,7 +2404,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Eno", "Dva", "Tri"]), "Eno, Dva in Tri");
         test.done();
     },
-
     testListFmtslSINumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "sl-SI"
@@ -2522,7 +2414,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Eno", "Dva", "Tri", "Štiri"]), "Eno, Dva, Tri in Štiri");
         test.done();
     },
-
     testListFmtUnitStyleslSINumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "sl-SI",
@@ -2534,7 +2425,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Eno"]), "Eno");
         test.done();
     },
-
     testListFmtUnitStyleslSINumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "sl-SI",
@@ -2546,7 +2436,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Eno", "Dva"]), "Eno in Dva");
         test.done();
     },
-
     testListFmtUnitStyleslSINumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "sl-SI",
@@ -2558,7 +2447,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Eno", "Dva", "Tri"]), "Eno, Dva in Tri");
         test.done();
     },
-
     testListFmtUnitStyleslSINumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "sl-SI",
@@ -2570,7 +2458,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Eno", "Dva", "Tri", "Štiri"]), "Eno, Dva, Tri in Štiri");
         test.done();
     },
-
     // sw-Latn-KE
     testListFmtswLatnKENumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -2582,7 +2469,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Moja"]), "Moja");
         test.done();
     },
-
     testListFmtswLatnKENumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "sw-Latn-KE"
@@ -2593,7 +2479,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Moja", "Mbili"]), "Moja na Mbili");
         test.done();
     },
-
     testListFmtswLatnKENumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "sw-Latn-KE"
@@ -2604,7 +2489,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Moja", "Mbili", "Tatu"]), "Moja, Mbili na Tatu");
         test.done();
     },
-
     testListFmtswLatnKENumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "sw-Latn-KE"
@@ -2615,7 +2499,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Moja", "Mbili", "Tatu", "Fou"]), "Moja, Mbili, Tatu na Fou");
         test.done();
     },
-
     testListFmtUnitStyleswLatnKEumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "sw-Latn-KE",
@@ -2627,7 +2510,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Moja"]), "Moja");
         test.done();
     },
-
     testListFmtUnitStyleswLatnKENumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "sw-Latn-KE",
@@ -2639,7 +2521,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Moja", "Mbili"]), "Moja na Mbili");
         test.done();
     },
-
     testListFmtUnitStyleswLatnKENumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "sw-Latn-KE",
@@ -2651,7 +2532,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Moja", "Mbili", "Tatu"]), "Moja, Mbili na Tatu");
         test.done();
     },
-
     testListFmtUnitStyleswLatnKENumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "sw-Latn-KE",
@@ -2663,7 +2543,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Moja", "Mbili", "Tatu", "Fou"]), "Moja, Mbili, Tatu na Fou");
         test.done();
     },
-
     //uz-Latn-UZ
 
     testListFmtuzLatnUZNumberFormatOne: function(test) {
@@ -2676,7 +2555,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Biri"]), "Biri");
         test.done();
     },
-
     testListFmtuzLatnUZNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "uz-Latn-UZ"
@@ -2687,7 +2565,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Biri", "Ikkita"]), "Biri va Ikkita");
         test.done();
     },
-
     testListFmtuzLatnUZNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "uz-Latn-UZ"
@@ -2698,7 +2575,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Biri", "Ikkita", "Uchta"]), "Biri, Ikkita va Uchta");
         test.done();
     },
-
     testListFmtuzLatnUZNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "uz-Latn-UZ"
@@ -2709,7 +2585,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Biri", "Ikkita", "Uchta", "To'rtta"]), "Biri, Ikkita, Uchta va To\'rtta");
         test.done();
     },
-
     testListFmtUnitStyleuzLatnUZNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "uz-Latn-UZ",
@@ -2721,7 +2596,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Biri"]), "Biri");
         test.done();
     },
-
     testListFmtUnitStyleuzLatnUZNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "uz-Latn-UZ",
@@ -2733,7 +2607,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Biri", "Ikkita"]), "Biri Ikkita");
         test.done();
     },
-
     testListFmtUnitStyleuzLatnUZNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "uz-Latn-UZ",
@@ -2745,7 +2618,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Biri", "Ikkita", "Uchta"]), "Biri Ikkita Uchta");
         test.done();
     },
-
     testListFmtUnitStyleuzLatnUZNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "uz-Latn-UZ",
@@ -2757,7 +2629,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["Biri", "Ikkita", "Uchta", "To'rtta"]), "Biri Ikkita Uchta To'rtta");
         test.done();
     },
-
     // vi-VN
     testListFmtviVNNumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -2769,7 +2640,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["một"]), "một");
         test.done();
     },
-
     testListFmtviVNNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "vi-VN"
@@ -2780,7 +2650,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["một", "hai"]), "một và hai");
         test.done();
     },
-
     testListFmtviVNNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "vi-VN"
@@ -2791,7 +2660,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["một", "hai", "số ba"]), "một, hai và số ba");
         test.done();
     },
-
     testListFmtviVNNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "vi-VN"
@@ -2802,7 +2670,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["một", "hai", "số ba", "bốn"]), "một, hai, số ba và bốn");
         test.done();
     },
-
     testListFmtUnitStyleviVNNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "vi-VN",
@@ -2814,7 +2681,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["một"]), "một");
         test.done();
     },
-
     testListFmtUnitStyleviVNNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "vi-VN",
@@ -2826,7 +2692,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["một", "hai"]), "một, hai");
         test.done();
     },
-
     testListFmtUnitStyleviVNNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "vi-VN",
@@ -2838,7 +2703,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["một", "hai", "số ba"]), "một, hai, số ba");
         test.done();
     },
-
     testListFmtUnitStyleviVNNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "vi-VN",
@@ -2850,7 +2714,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["một", "hai", "số ba", "bốn"]), "một, hai, số ba, bốn");
         test.done();
     },
-
     testListFmtUnitStyleviVNNumberFormatFive: function(test) {
         var fmt = new ListFmt({
             locale: "vi-VN",
@@ -2862,7 +2725,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["một", "hai", "số ba", "bốn", "số năm"]), "một, hai, số ba, bốn, số năm");
         test.done();
     },
-
     testListFmtUnitStyleviVNNumberFormatOneFull: function(test) {
         var fmt = new ListFmt({
             locale: "vi-VN",
@@ -2875,7 +2737,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["một"]), "một");
         test.done();
     },
-
     testListFmtUnitStyleviVNNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "vi-VN",
@@ -2888,7 +2749,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["một", "hai"]), "một, hai");
         test.done();
     },
-
     testListFmtUnitStyleviVNNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "vi-VN",
@@ -2901,7 +2761,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["một", "hai", "số ba"]), "một, hai, số ba");
         test.done();
     },
-
     testListFmtUnitStyleviVNNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "vi-VN",
@@ -2914,7 +2773,6 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["một", "hai", "số ba", "bốn"]), "một, hai, số ba, bốn");
         test.done();
     },
-
     testListFmtUnitStyleviVNNumberFormatFiveFull: function(test) {
         var fmt = new ListFmt({
             locale: "vi-VN",

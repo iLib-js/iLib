@@ -44,7 +44,6 @@ module.exports.testcurrencyasync = {
             }
         });
     },
-
     testCurrencyAsyncGetByCode1: function(test) {
         test.expect(6);
         new Currency({
@@ -63,7 +62,6 @@ module.exports.testcurrencyasync = {
             }
         });
     },
-
     testCurrencyAsyncGetByCodeUnknown: function(test) {
         new Currency({
             code: "xxx",
@@ -74,7 +72,6 @@ module.exports.testcurrencyasync = {
             }
         });
     },
-
     testCurrencyAsyncGetBySignUnambiguous: function(test) {
         test.expect(6);
         new Currency({
@@ -93,7 +90,6 @@ module.exports.testcurrencyasync = {
             }
         });
     },
-
     testCurrencyAsync: function(test) {
         test.expect(6);
         new Currency({

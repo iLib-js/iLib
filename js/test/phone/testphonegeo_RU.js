@@ -32,7 +32,6 @@ module.exports.phonegeo_RU = {
         ilib.clearCache();
         callback();
     },
-
     testRULocalNumber1: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("3456123",{locale: "ru-RU"});
@@ -53,7 +52,6 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-
     testRULocalNumber2: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("212-3456",{locale: "ru-RU"});
@@ -74,7 +72,6 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-
     testRUNumberWithAreaCode1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("8 (812) 456-7890",{locale: "ru-RU"});
@@ -100,7 +97,6 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testRUNumberWithAreaCode2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("8 (8352) 051-212-3456",{locale: "ru-RU"});
@@ -126,7 +122,6 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testRUNumberWithAreaCodeAndCountry1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+7-812-312-3456");
@@ -152,7 +147,6 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testRUNumberWithAreaCodeAndCountry2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+7-8552-32-456-1");
@@ -178,7 +172,6 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testRUNumberWithAreaCodeAndCountry3: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+7-3452-212-3456");
@@ -204,7 +197,6 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testRUNumberCallFromUS: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("011 7-812-212-3456");
@@ -230,7 +222,6 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testRUNumberWithAreaCodeAndCountry4: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+7-812-212-3456");
@@ -256,7 +247,6 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testRUPolice: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("112",{locale: "ru-RU"});
@@ -282,7 +272,6 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testRUFireAndAmbulance: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("101",{locale: "ru-RU"});
@@ -308,6 +297,4 @@ module.exports.phonegeo_RU = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     }
-
-
 };

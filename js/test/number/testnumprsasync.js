@@ -37,7 +37,6 @@ module.exports.testnumprsasync = {
             }
         });
     },
-
     testNumberAsyncConstructorWithIlibNumber: function(test) {
         test.expect(2);
         new INumber("3.4", {
@@ -54,7 +53,6 @@ module.exports.testnumprsasync = {
             }
         })
     },
-
     testNumberAsyncGetLocaleOther: function(test) {
         test.expect(3);
         var num = new INumber("3,4", {
@@ -69,7 +67,6 @@ module.exports.testnumprsasync = {
             }
         });
     },
-
     testNumberAsyncPercentage: function(test) {
         test.expect(2);
         var num = new INumber("58.3%", {
@@ -83,7 +80,6 @@ module.exports.testnumprsasync = {
             }
         });
     },
-
     testNumberAsyncCurrencyValue: function(test) {
         test.expect(2);
         var num = new INumber("$5.80", {
@@ -97,7 +93,6 @@ module.exports.testnumprsasync = {
             }
         });
     },
-
     testNumberAsyncCurrencyForLocale: function(test) {
         test.expect(3);
         var num = new INumber("£5.80", {
@@ -113,7 +108,6 @@ module.exports.testnumprsasync = {
             }
         });
     },
-
     testNumberAsyncParseNonLatinDigits: function(test) {
         test.expect(2);
 
@@ -128,7 +122,6 @@ module.exports.testnumprsasync = {
             }
         });
     },
-
     testNumberAsyncParseWithSpaces: function(test) {
         test.expect(2);
 

@@ -33,7 +33,6 @@ module.exports.phonefmt_KR = {
         ilib.clearCache();
         callback();
     },
-
     testFormatKRStyle0: function(test) {
         test.expect(1);
         var formatted;
@@ -50,7 +49,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle1: function(test) {
         test.expect(1);
         var formatted;
@@ -67,7 +65,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRInternational: function(test) {
         test.expect(1);
         var formatted;
@@ -85,8 +82,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
     testFormatKRInternational2: function(test) {
         test.expect(1);
         var formatted;
@@ -99,7 +94,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRInternationalAccessCode: function(test) {
         test.expect(1);
         var formatted;
@@ -117,7 +111,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRLongAreaCode: function(test) {
         test.expect(1);
         var formatted;
@@ -134,8 +127,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
     testFormatKRMobile: function(test) {
         test.expect(1);
         var formatted;
@@ -152,7 +143,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRMobileInternational: function(test) {
         test.expect(1);
         var formatted;
@@ -170,7 +160,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRService: function(test) {
         test.expect(1);
         var formatted;
@@ -187,7 +176,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRIEIDD: function(test) {
         test.expect(1);
         var formatted;
@@ -206,7 +194,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle0Partial0: function(test) {
         test.expect(1);
         var formatted;
@@ -236,7 +223,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle0Partial2: function(test) {
         test.expect(1);
         var formatted;
@@ -252,7 +238,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle0Partial3: function(test) {
         test.expect(1);
         var formatted;
@@ -381,7 +366,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle0Partial10: function(test) {
         test.expect(1);
         var formatted;
@@ -399,8 +383,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
     testFormatKRStyle0Whole0: function(test) {
         test.expect(1);
         var formatted;
@@ -589,7 +571,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle1Partial0: function(test) {
         test.expect(1);
         var formatted;
@@ -762,7 +743,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle0PartialLocal1: function(test) {
         test.expect(1);
         var formatted;
@@ -889,7 +869,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle1PartialLocal1: function(test) {
         test.expect(1);
         var formatted;
@@ -1016,7 +995,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKREmergency1: function(test) {
         test.expect(1);
         var formatted;
@@ -1029,7 +1007,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKREmergency2: function(test) {
         test.expect(1);
         var formatted;
@@ -1042,7 +1019,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRWithTrunkAccessNumber: function(test) {
         test.expect(1);
         var formatted;
@@ -1055,7 +1031,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle0WithMobilePrefix: function(test) {
         test.expect(1);
         var formatted;
@@ -1070,7 +1045,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle0WithMobilePrefix2: function(test) {
         test.expect(1);
         var formatted;
@@ -1085,8 +1059,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
     testFormatKRStyle1WithAreaNumber: function(test) {
         test.expect(1);
         var formatted;
@@ -1099,7 +1071,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle1WithAreaNumber2: function(test) {
         test.expect(1);
         var formatted;
@@ -1112,7 +1083,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle1WithServiceNumber: function(test) {
         test.expect(1);
         var formatted;
@@ -1125,7 +1095,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle1WithServiceNumber2: function(test) {
         test.expect(1);
         var formatted;
@@ -1138,7 +1107,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle1WithServiceNumber3: function(test) {
         test.expect(1);
         var formatted;
@@ -1151,7 +1119,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     /*Add this phonenumber formatting template temporarily */
     testFormatKRStyle1WithlongSubscribeNumber0: function(test) {
         test.expect(1);
@@ -1165,7 +1132,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle1WithlongSubscribeNumber1: function(test) {
         test.expect(1);
         var formatted;
@@ -1178,7 +1144,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle1WithlongSubscribeNumber2: function(test) {
         test.expect(1);
         var formatted;
@@ -1191,7 +1156,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle1WithlongSubscribeNumber3: function(test) {
         test.expect(1);
         var formatted;
@@ -1204,7 +1168,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle0WithExtensionCharacter: function(test) {
         test.expect(1);
         var formatted;
@@ -1217,7 +1180,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle1WithExtensionCharacter: function(test) {
         test.expect(1);
         var formatted;
@@ -1230,7 +1192,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle2WithExtensionCharacter: function(test) {
         test.expect(1);
         var formatted;
@@ -1243,7 +1204,6 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatKRStyle1WithExtensionCharacter2: function(test) {
         test.expect(1);
         var formatted;

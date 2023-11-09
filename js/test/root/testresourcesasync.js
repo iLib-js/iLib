@@ -50,7 +50,6 @@ module.exports.testresourcesasync = {
             }
         });
     },
-
     testResBundleAsyncConstructorOtherLocale: function(test) {
         test.expect(2);
         new ResBundle({
@@ -66,7 +65,6 @@ module.exports.testresourcesasync = {
             }
         });
     },
-
     testResBundleAsyncLocaleformatChoice_de_DE: function(test) {
         if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
             test.done();
@@ -93,7 +91,6 @@ module.exports.testresourcesasync = {
             }
         });
     },
-
     testResBundleAsyncLocaleformatChoice_ko_KR: function(test) {
         if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
             test.done();
@@ -120,7 +117,6 @@ module.exports.testresourcesasync = {
             }
         });
     },
-
     testResBundleAsyncGetStringOtherBundleesMX: function(test) {
         if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
             test.done();
@@ -153,7 +149,6 @@ module.exports.testresourcesasync = {
             }
         });
     },
-
     testResBundleAsyncGetStringWithPathesMX: function(test) {
         if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
             test.done();
@@ -185,7 +180,6 @@ module.exports.testresourcesasync = {
             }
         });
     },
-
     testResBundleAsyncGetStringOtherBundlePsuedoRaw: function(test) {
         test.expect(4);
         new ResBundle({
@@ -204,7 +198,6 @@ module.exports.testresourcesasync = {
             }
         });
     },
-
     testResBundleAsyncGetStringNonExistantTranslations: function(test) {
         test.expect(2);
         new ResBundle({
@@ -220,7 +213,6 @@ module.exports.testresourcesasync = {
             }
         });
     },
-
     testResBundleAsyncGetStringNoResourcesReturnSource: function(test) {
         test.expect(2);
         new ResBundle({
@@ -235,7 +227,6 @@ module.exports.testresourcesasync = {
             }
         });
     },
-
     testResBundleAsyncGetStringCyrlPsuedoRaw: function(test) {
         test.expect(4);
         new ResBundle({
@@ -255,7 +246,6 @@ module.exports.testresourcesasync = {
         });
 
     },
-
     testResBundleAsyncGetStringHansPsuedoText: function(test) {
         test.expect(4);
         new ResBundle({
@@ -276,7 +266,6 @@ module.exports.testresourcesasync = {
         });
 
     },
-
     testResBundleAsyncGetStringHebrPsuedoText: function(test) {
         test.expect(4);
         new ResBundle({
@@ -296,7 +285,6 @@ module.exports.testresourcesasync = {
         });
 
     },
-
     testResBundleAsyncPseudo_euES: function(test) {
         test.expect(1);
         ilib.clearPseudoLocales();
@@ -311,7 +299,6 @@ module.exports.testresourcesasync = {
             }
         });
     },
-
     testResBundleAsyncPseudo_psAF: function(test) {
         test.expect(1);
         ilib.clearPseudoLocales();

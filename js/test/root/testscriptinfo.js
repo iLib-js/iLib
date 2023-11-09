@@ -32,7 +32,6 @@ module.exports.testscriptinfo = {
         test.ok(si !== null);
         test.done();
     },
-
     testScriptGet1: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Latn");
@@ -47,7 +46,6 @@ module.exports.testscriptinfo = {
         test.ok(si.getCasing());
         test.done();
     },
-
     testScriptGet2: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Phag");
@@ -62,7 +60,6 @@ module.exports.testscriptinfo = {
         test.ok(!si.getCasing());
         test.done();
     },
-
     testScriptGet3: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Hebr");
@@ -77,7 +74,6 @@ module.exports.testscriptinfo = {
         test.ok(!si.getCasing());
         test.done();
     },
-
     testScriptGet4: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Hans");
@@ -92,7 +88,6 @@ module.exports.testscriptinfo = {
         test.ok(!si.getCasing());
         test.done();
     },
-
     testScriptGetDefaultLongCode: function(test) {
         test.expect(5);
         var si = new ScriptInfo("Sara");
@@ -104,7 +99,6 @@ module.exports.testscriptinfo = {
         test.equal(si.getLongCode(), "Sarati");
         test.done();
     },
-
     testScriptGetDefaultLongCodeOrya: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Orya");
@@ -119,7 +113,6 @@ module.exports.testscriptinfo = {
         test.ok(!si.getCasing());
         test.done();
     },
-
     testScriptGetDefaultLongCodeAmharic: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Ethi");
@@ -148,7 +141,6 @@ module.exports.testscriptinfo = {
         test.ok(!si.getCasing());
         test.done();
     },
-
     testScriptGetDefaultLongCodeArab: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Arab");
@@ -174,7 +166,6 @@ module.exports.testscriptinfo = {
         test.equal(si.getLongCode(), undefined);
         test.done();
     },
-
     testScriptGetAllScripts: function(test) {
         test.expect(7);
         var scripts = ScriptInfo.getAllScripts();
@@ -189,7 +180,6 @@ module.exports.testscriptinfo = {
         test.equal(scripts[scripts.length-1], "Zzzz");
         test.done();
     },
-
     testScriptGetDefaultLongCodeKits: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Kits");
@@ -204,7 +194,6 @@ module.exports.testscriptinfo = {
         test.ok(!si.getCasing());
         test.done();
     },
-
     testScriptGetDefaultLongCodePauc: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Pauc");
@@ -219,7 +208,6 @@ module.exports.testscriptinfo = {
         test.ok(!si.getCasing());
         test.done();
     },
-
     testScriptGetDefaultLongCodeMend: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Mend");
@@ -234,7 +222,6 @@ module.exports.testscriptinfo = {
         test.ok(!si.getCasing());
         test.done();
     },
-
     testScriptInfo_ar_EG: function(test) {
         test.expect(4);
         var li = new LocaleInfo("ar-EG");
@@ -1656,7 +1643,6 @@ module.exports.testscriptinfo = {
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
     },
-
     testScriptInfo_ha_NG: function(test) {
         test.expect(4);
         var li = new LocaleInfo("ha-NG");

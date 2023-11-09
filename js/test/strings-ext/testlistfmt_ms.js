@@ -30,9 +30,7 @@ module.exports.testlistfmt_ms = {
         ilib.clearCache();
         callback();
     },
-
     // ms-Latn-MY
-
     testListFmtmsLatnMYNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-MY"
@@ -43,7 +41,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu"]), "satu");
         test.done();
     },
-
     testListFmtmsLatnMYNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-MY"
@@ -54,7 +51,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu", "dua"]), "satu dan dua");
         test.done();
     },
-
     testListFmtmsLatnMYNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-MY"
@@ -65,7 +61,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu", "dua", "bertiga"]), "satu, dua dan bertiga");
         test.done();
     },
-
     testListFmtmsLatnMYNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-MY"
@@ -87,7 +82,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu"]), "satu");
         test.done();
     },
-
     testListFmtUnitStylemsLatnMYNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-MY",
@@ -99,7 +93,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu", "dua"]), "satu dan dua");
         test.done();
     },
-
     testListFmtUnitStylemsLatnMYNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-MY",
@@ -111,7 +104,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu", "dua", "bertiga"]), "satu, dua dan bertiga");
         test.done();
     },
-
     testListFmtUnitStylemsLatnMYNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-MY",
@@ -135,7 +127,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu"]), "satu");
         test.done();
     },
-
     testListFmtUnitStylemsLatnMYNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-MY",
@@ -148,7 +139,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu", "dua"]), "satu dan dua");
         test.done();
     },
-
     testListFmtUnitStylemsLatnMYNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-MY",
@@ -161,7 +151,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu", "dua", "bertiga"]), "satu, dua dan bertiga");
         test.done();
     },
-
     testListFmtUnitStylemsLatnMYNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-MY",
@@ -175,7 +164,6 @@ module.exports.testlistfmt_ms = {
         test.done();
     },
     // ms-Latn-SG
-
     testListFmtmsLatnSGNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-SG"
@@ -186,7 +174,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu"]), "satu");
         test.done();
     },
-
     testListFmtmsLatnSGNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-SG"
@@ -197,7 +184,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu", "dua"]), "satu dan dua");
         test.done();
     },
-
     testListFmtmsLatnSGNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-SG"
@@ -208,7 +194,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu", "dua", "bertiga"]), "satu, dua dan bertiga");
         test.done();
     },
-
     testListFmtmsLatnSGNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-SG"
@@ -230,7 +215,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu"]), "satu");
         test.done();
     },
-
     testListFmtUnitStylemsLatnSGNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-SG",
@@ -242,7 +226,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu", "dua"]), "satu dan dua");
         test.done();
     },
-
     testListFmtUnitStylemsLatnSGNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-SG",
@@ -254,7 +237,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu", "dua", "bertiga"]), "satu, dua dan bertiga");
         test.done();
     },
-
     testListFmtUnitStylemsLatnSGNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-SG",
@@ -278,7 +260,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu"]), "satu");
         test.done();
     },
-
     testListFmtUnitStylemsLatnSGNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-SG",
@@ -291,7 +272,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu", "dua"]), "satu, dua");
         test.done();
     },
-
     testListFmtUnitStylemsLatnSGNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-SG",
@@ -304,7 +284,6 @@ module.exports.testlistfmt_ms = {
         test.equal(fmt.format(["satu", "dua", "bertiga"]), "satu, dua, bertiga");
         test.done();
     },
-
     testListFmtUnitStylemsLatnSGNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "ms-Latn-SG",

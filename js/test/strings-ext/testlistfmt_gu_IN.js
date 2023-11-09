@@ -30,9 +30,6 @@ module.exports.testlistfmt_gu_IN = {
         ilib.clearCache();
         callback();
     },
-
-    // gu-IN
-
     testListFmtguINNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "gu-IN"
@@ -43,7 +40,6 @@ module.exports.testlistfmt_gu_IN = {
         test.equal(fmt.format(["એક"]), "એક");
         test.done();
     },
-
     testListFmtguINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "gu-IN"
@@ -54,7 +50,6 @@ module.exports.testlistfmt_gu_IN = {
         test.equal(fmt.format(["એક", "બે"]), "એક અને બે");
         test.done();
     },
-
     testListFmtguINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "gu-IN"
@@ -65,7 +60,6 @@ module.exports.testlistfmt_gu_IN = {
         test.equal(fmt.format(["એક", "બે", "ત્રણ"]), "એક, બે અને ત્રણ");
         test.done();
     },
-
     testListFmtguINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "gu-IN"
@@ -87,7 +81,6 @@ module.exports.testlistfmt_gu_IN = {
         test.equal(fmt.format(["એક"]), "એક");
         test.done();
     },
-
     testListFmtUnitStyleguINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "gu-IN",
@@ -99,7 +92,6 @@ module.exports.testlistfmt_gu_IN = {
         test.equal(fmt.format(["એક", "બે"]), "એક, બે");
         test.done();
     },
-
     testListFmtUnitStyleguINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "gu-IN",
@@ -111,7 +103,6 @@ module.exports.testlistfmt_gu_IN = {
         test.equal(fmt.format(["એક", "બે", "ત્રણ"]), "એક, બે, ત્રણ");
         test.done();
     },
-
     testListFmtUnitStyleguINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "gu-IN",
@@ -135,7 +126,6 @@ module.exports.testlistfmt_gu_IN = {
         test.equal(fmt.format(["એક"]), "એક");
         test.done();
     },
-
     testListFmtUnitStyleguINNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "gu-IN",
@@ -148,7 +138,6 @@ module.exports.testlistfmt_gu_IN = {
         test.equal(fmt.format(["એક", "બે"]), "એક, બે");
         test.done();
     },
-
     testListFmtUnitStyleguINNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "gu-IN",
@@ -161,7 +150,6 @@ module.exports.testlistfmt_gu_IN = {
         test.equal(fmt.format(["એક", "બે", "ત્રણ"]), "એક, બે, ત્રણ");
         test.done();
     },
-
     testListFmtUnitStyleguINNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "gu-IN",

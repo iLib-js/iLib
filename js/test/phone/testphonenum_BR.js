@@ -29,7 +29,6 @@ module.exports.phonenum_BR = {
         ilib.clearCache();
         callback();
     },
-
     testParseBRFull: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("021 11 5841 2047", {locale: "pt-BR"});
@@ -44,7 +43,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRLocalNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("5841-2047", {locale: "pt-BR"});
@@ -57,7 +55,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRFullLongAreaCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("012-11-2345-6789", {locale: "pt-BR"});
@@ -72,7 +69,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRIgnoreFormatting: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("(021) 11 1234-5678", {locale: "pt-BR"});
@@ -87,7 +83,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRIgnoreCrap: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("$012@115841&2047-", {locale: "pt-BR"});
@@ -102,7 +97,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRNoAreaCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("58412047", {locale: "pt-BR"});
@@ -115,7 +109,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRInvalidLocalNumber: function(test) {
         test.expect(2);
         // local number is too long
@@ -130,7 +123,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRServiceCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0300-2345678", {locale: "pt-BR"});
@@ -144,7 +136,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRMobileNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("92345-6789", {locale: "pt-BR"});
@@ -158,7 +149,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRPlusIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+12028675309", {locale: "pt-BR"});
@@ -174,7 +164,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRZerosIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("002112028675309", {locale: "pt-BR"});
@@ -190,7 +179,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRLongAreaCodeNoTrunk: function(test) {
         test.expect(2);
         // this number uses an area code to start it, but without the trunk, we should
@@ -206,7 +194,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBREmergencyNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("192", {locale: "pt-BR"});
@@ -232,7 +219,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRPartial1: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0", {locale: "pt-BR"});
@@ -245,7 +231,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRPartial2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("06", {locale: "pt-BR"});
@@ -370,7 +355,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRPartial11: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("06133212504", {locale: "pt-BR"});
@@ -385,7 +369,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRWithUSMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "pt-BR", mcc: "316"});
@@ -399,7 +382,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRWithFRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "pt-BR", mcc: "208"});
@@ -412,7 +394,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRWithMXMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "pt-BR", mcc: "334"});
@@ -426,7 +407,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRWithDEMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "pt-BR", mcc: "262"});
@@ -439,7 +419,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRWithKRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "pt-BR", mcc: "450"});
@@ -453,7 +432,6 @@ module.exports.phonenum_BR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseBRWithBRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("23456789", {locale: "pt-BR", mcc: "724"});

@@ -33,7 +33,6 @@ module.exports.testcurrency = {
         test.ok(cur !== null);
         test.done();
     },
-
     testCurrencyDefaults: function(test) {
         test.expect(7);
         var cur = new Currency();
@@ -48,7 +47,6 @@ module.exports.testcurrency = {
         test.equal(locale.toString(), "en-US");
         test.done();
     },
-
     testCurrencyGetByCode1: function(test) {
         test.expect(6);
         var cur = new Currency({
@@ -64,7 +62,6 @@ module.exports.testcurrency = {
         test.equal(locale.toString(), "en-US");
         test.done();
     },
-
     testCurrencyGetByCode2: function(test) {
         test.expect(6);
         var cur = new Currency({
@@ -110,7 +107,6 @@ module.exports.testcurrency = {
         test.equal(locale.toString(), "ar-QA");
         test.done();
     },
-
     testCurrencyGetByCodeUnknown: function(test) {
         try {
             var cur = new Currency({
@@ -122,7 +118,6 @@ module.exports.testcurrency = {
         }
         test.done();
     },
-
     testCurrencyGetBySignUnambiguous: function(test) {
         test.expect(6);
         var cur = new Currency({
@@ -138,7 +133,6 @@ module.exports.testcurrency = {
         test.equal(locale.toString(), "en-US");
         test.done();
     },
-
     testCurrencyGetBySignAmbiguousCurrentLocale: function(test) {
         test.expect(6);
         var cur = new Currency({
@@ -155,7 +149,6 @@ module.exports.testcurrency = {
         test.equal(locale.toString(), "en-CA");
         test.done();
     },
-
     testCurrencyGetBySignAmbiguousNotCurrentLocale: function(test) {
         test.expect(6);
         var cur = new Currency({
@@ -187,7 +180,6 @@ module.exports.testcurrency = {
         test.equal(locale.toString(), "ar-IQ");
         test.done();
     },
-
     testCurrency_ar_EG: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ar-EG");

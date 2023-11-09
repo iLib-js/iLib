@@ -30,9 +30,6 @@ module.exports.testlistfmt_am_ET = {
         ilib.clearCache();
         callback();
     },
-
-    // am-ET
-
     testListFmtamETNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "am-ET"
@@ -43,7 +40,6 @@ module.exports.testlistfmt_am_ET = {
         test.equal(fmt.format(["አንድ"]), "አንድ");
         test.done();
     },
-
     testListFmtamETNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "am-ET"
@@ -54,7 +50,6 @@ module.exports.testlistfmt_am_ET = {
         test.equal(fmt.format(["አንድ", "ሁለት"]), "አንድ እና ሁለት");
         test.done();
     },
-
     testListFmtamETNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "am-ET"
@@ -65,7 +60,6 @@ module.exports.testlistfmt_am_ET = {
         test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት"]), "አንድ፣ ሁለት, እና ሶስት");
         test.done();
     },
-
     testListFmtamETNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "am-ET"
@@ -87,7 +81,6 @@ module.exports.testlistfmt_am_ET = {
         test.equal(fmt.format(["አንድ"]), "አንድ");
         test.done();
     },
-
     testListFmtUnitStyleamETNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "am-ET",
@@ -99,7 +92,6 @@ module.exports.testlistfmt_am_ET = {
         test.equal(fmt.format(["አንድ", "ሁለት"]), "አንድ፣ ሁለት");
         test.done();
     },
-
     testListFmtUnitStyleamETNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "am-ET",
@@ -111,7 +103,6 @@ module.exports.testlistfmt_am_ET = {
         test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት"]), "አንድ፣ ሁለት፣ ሶስት");
         test.done();
     },
-
     testListFmtUnitStyleamETNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "am-ET",

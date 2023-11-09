@@ -30,9 +30,7 @@ module.exports.testlistfmt_el = {
         ilib.clearCache();
         callback();
     },
-
     // el-CY
-
     testListFmtelCYNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "el-CY"
@@ -43,7 +41,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας"]), "ένας");
         test.done();
     },
-
     testListFmtelCYNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "el-CY"
@@ -54,7 +51,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας", "δυο"]), "ένας και δυο");
         test.done();
     },
-
     testListFmtelCYNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "el-CY"
@@ -65,7 +61,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας", "δυο", "τρία"]), "ένας, δυο και τρία");
         test.done();
     },
-
     testListFmtelCYNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "el-CY"
@@ -87,7 +82,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας"]), "ένας");
         test.done();
     },
-
     testListFmtUnitStyleelCYNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "el-CY",
@@ -99,7 +93,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας", "δυο"]), "ένας, δυο");
         test.done();
     },
-
     testListFmtUnitStyleelCYNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "el-CY",
@@ -111,7 +104,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας", "δυο", "τρία"]), "ένας, δυο, τρία");
         test.done();
     },
-
     testListFmtUnitStyleelCYNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "el-CY",
@@ -135,7 +127,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας"]), "ένας");
         test.done();
     },
-
     testListFmtUnitStyleelCYNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "el-CY",
@@ -148,7 +139,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας", "δυο"]), "ένας, δυο");
         test.done();
     },
-
     testListFmtUnitStyleelCYNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "el-CY",
@@ -161,7 +151,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας", "δυο", "τρία"]), "ένας, δυο, τρία");
         test.done();
     },
-
     testListFmtUnitStyleelCYNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "el-CY",
@@ -174,7 +163,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας", "δυο", "τρία", "τέσσερα"]), "ένας, δυο, τρία, τέσσερα");
         test.done();
     },
-
     // el-GR
 
     testListFmtelGRNumberFormatOne: function(test) {
@@ -187,7 +175,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας"]), "ένας");
         test.done();
     },
-
     testListFmtelGRNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "el-GR"
@@ -198,7 +185,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας", "δυο"]), "ένας και δυο");
         test.done();
     },
-
     testListFmtelGRNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "el-GR"
@@ -209,7 +195,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας", "δυο", "τρία"]), "ένας, δυο και τρία");
         test.done();
     },
-
     testListFmtelGRNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "el-GR"
@@ -232,7 +217,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας"]), "ένας");
         test.done();
     },
-
     testListFmtUnitStyleelGRNumberFormatTwoLong: function(test) {
         var fmt = new ListFmt({
             locale: "el-GR",
@@ -245,7 +229,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας", "δυο"]), "ένας, δυο");
         test.done();
     },
-
     testListFmtUnitStyleelGRNumberFormatThreeLong: function(test) {
         var fmt = new ListFmt({
             locale: "el-GR",
@@ -258,7 +241,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας", "δυο", "τρία"]), "ένας, δυο, τρία");
         test.done();
     },
-
     testListFmtUnitStyleelGRNumberFormatFourLong: function(test) {
         var fmt = new ListFmt({
             locale: "el-GR",
@@ -283,7 +265,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας"]), "ένας");
         test.done();
     },
-
     testListFmtUnitStyleelGRNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "el-GR",
@@ -296,7 +277,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας", "δυο"]), "ένας, δυο");
         test.done();
     },
-
     testListFmtUnitStyleelGRNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "el-GR",
@@ -309,7 +289,6 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας", "δυο", "τρία"]), "ένας, δυο, τρία");
         test.done();
     },
-
     testListFmtUnitStyleelGRNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "el-GR",
@@ -322,5 +301,4 @@ module.exports.testlistfmt_el = {
         test.equal(fmt.format(["ένας", "δυο", "τρία", "τέσσερα"]), "ένας, δυο, τρία, τέσσερα");
         test.done();
     }
-
 };

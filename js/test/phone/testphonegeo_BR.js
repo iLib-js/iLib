@@ -32,7 +32,6 @@ module.exports.phonegeo_BR = {
         ilib.clearCache();
         callback();
     },
-
     testBRLocalNumber1: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("3111-1111",{locale: "pt-BR"});
@@ -53,7 +52,6 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-
     testBRNumberWithAreaCode1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("0 31 85 2222 2222",{locale: "pt-BR"});
@@ -79,7 +77,6 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testBRNumberWithAreaCode2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("0-31-31-2222-2222",{locale: "pt-BR"});
@@ -105,7 +102,6 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testBRNumberWithAreaCodeAndCountry1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+55-31-2122-3456");
@@ -131,7 +127,6 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testBRNumberWithAreaCodeAndCountry2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+55-87-2122-3456");
@@ -157,7 +152,6 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testBRNumberWithAreaCodeAndCountry3: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+55-71-2123-3456");
@@ -183,7 +177,6 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testBRNumberCallFromUS: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("011 55-71-2123-3456");
@@ -209,7 +202,6 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testBRPolice: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("197",{locale: "pt-BR"});
@@ -235,7 +227,6 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testBRAmbulance: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("192",{locale: "pt-BR"});
@@ -261,6 +252,4 @@ module.exports.phonegeo_BR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     }
-
-
 };

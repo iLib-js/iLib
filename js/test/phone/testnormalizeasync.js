@@ -50,7 +50,6 @@ module.exports.normalizeasync = {
             }
         });
     },
-
     testNormalizeAsyncLDNumberUsingDEMCC: function(test) {
         test.expect(1);
         new PhoneNumber("02302 654321", {
@@ -71,7 +70,6 @@ module.exports.normalizeasync = {
             }
         });
     },
-
     testNormalizeAsyncLDNumberUsingUSSpanishLocale: function(test) {
         test.expect(1);
         new PhoneNumber("650 7654321", {

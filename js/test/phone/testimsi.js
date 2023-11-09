@@ -43,12 +43,10 @@ module.exports.imsi = {
         ilib.clearCache();
         callback();
     },
-
     tearDown: function(callback) {
         ilib._load = oldLoader;
         callback();
     },
-
     testRegularImsi3DigitMNC: function(test) {
         test.expect(1);
         var imsi = "31003014084567890"
@@ -61,7 +59,6 @@ module.exports.imsi = {
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
-
     testRegularImsi2DigitMNC: function(test) {
         test.expect(1);
         var imsi = "26207201234567"
@@ -74,7 +71,6 @@ module.exports.imsi = {
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
-
     testSpecialImsi1: function(test) {
         test.expect(1);
         var imsi = "31000201234567"
@@ -87,7 +83,6 @@ module.exports.imsi = {
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
-
     testSpecialImsi2: function(test) {
         test.expect(1);
         var imsi = "310004201234567"
@@ -100,7 +95,6 @@ module.exports.imsi = {
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
-
     testBrokenMCC: function(test) {
         test.expect(1);
         var imsi = "32000414084567890"
@@ -114,7 +108,6 @@ module.exports.imsi = {
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
-
     testBrokenMNC: function(test) {
         test.expect(1);
         var imsi = "31014114084567890"
@@ -128,20 +121,17 @@ module.exports.imsi = {
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
-
     testTooShort: function(test) {
         test.expect(1);
         var imsi = "31"
         test.deepEqual(PhoneNumber.parseImsi(imsi), undefined);
         test.done();
     },
-
     testUndefined: function(test) {
         test.expect(1);
         test.ok(typeof(PhoneNumber.parseImsi(undefined)) === "undefined");
         test.done();
     },
-
     testIMSILoadLocaleDataSynch: function(test) {
         if (!ilib.isDynData()) {
             // can't test loading if this is not dynamic data

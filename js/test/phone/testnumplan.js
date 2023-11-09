@@ -43,12 +43,10 @@ module.exports.numplan = {
         ilib.clearCache();
         callback();
     },
-
     tearDown: function(callback) {
         ilib._load = oldLoader;
         callback();
     },
-
     testGet1: function(test) {
         test.expect(2);
         var plan = new NumberingPlan({locale: "en-US"});
@@ -56,7 +54,6 @@ module.exports.numplan = {
         test.equal(plan.getName(), "US");
         test.done();
     },
-
     testGet2: function(test) {
         test.expect(2);
         var plan = new NumberingPlan({locale: "de-DE"});
@@ -64,7 +61,6 @@ module.exports.numplan = {
         test.equal(plan.getName(), "DE");
         test.done();
     },
-
     testGetUnknown: function(test) {
         test.expect(2);
         var plan = new NumberingPlan({locale: "unknown-unknown"});
@@ -72,7 +68,6 @@ module.exports.numplan = {
         test.equal(plan.getName(), "XX");
         test.done();
     },
-
     testGetUnrecognized: function(test) {
         test.expect(2);
         var plan = new NumberingPlan({locale: "zu-ZZ"});
@@ -80,7 +75,6 @@ module.exports.numplan = {
         test.equal(plan.getName(), "XX");
         test.done();
     },
-
     testGetDefault: function(test) {
         test.expect(2);
         var plan = new NumberingPlan({});
@@ -88,7 +82,6 @@ module.exports.numplan = {
         test.equal(plan.getName(), "US");
         test.done();
     },
-
     testGetContextFreeContent: function(test) {
         test.expect(2);
         var plan = new NumberingPlan({locale: "en-GB"});
@@ -96,7 +89,6 @@ module.exports.numplan = {
         test.equal(plan.getContextFree(), false);
         test.done();
     },
-
     testGetContextFreeContent: function(test) {
         test.expect(2);
         var plan = new NumberingPlan({locale: "en-US"});
@@ -104,7 +96,6 @@ module.exports.numplan = {
         test.equal(plan.getContextFree(), undefined);
         test.done();
     },
-
     testRightContents: function(test) {
         test.expect(13);
         var plan = new NumberingPlan({locale: "en-US"});
@@ -123,7 +114,6 @@ module.exports.numplan = {
         test.equal(plan.getCommonFormatChars(), " ()-.");
         test.done();
     },
-
     testNumPlanLoadLocaleDataSynch: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -185,5 +175,4 @@ module.exports.numplan = {
         test.equal(plan.getCommonFormatChars(), "- ");
         test.done();
     },
-
 };

@@ -21,7 +21,6 @@ if (typeof(ListFmt) === "undefined") {
     var ListFmt = require("../../lib/ListFmt.js");
 }
 
-//en-US
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -41,7 +40,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins"]), "eins");
         test.done();
     },
-
     testListFmtdeDENumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "de-DE"
@@ -52,7 +50,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei"]), "eins und zwei");
         test.done();
     },
-
     testListFmtdeDENumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "de-DE"
@@ -63,7 +60,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei"]), "eins, zwei und drei");
         test.done();
     },
-
     testListFmtledeDENumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "de-DE"
@@ -74,7 +70,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei", "vier"]), "eins, zwei, drei und vier");
         test.done();
     },
-
     testListFmtdeDEDisjunctionFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "de-DE",
@@ -86,7 +81,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins"]), "eins");
         test.done();
     },
-
     testListFmtdeDEDisjunctionFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "de-DE",
@@ -98,7 +92,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei"]), "eins oder zwei");
         test.done();
     },
-
     testListFmtdeDEDisjunctionFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "de-DE",
@@ -110,7 +103,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei"]), "eins, zwei oder drei");
         test.done();
     },
-
     testListFmtledeDEDisjunctionFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "de-DE",
@@ -122,7 +114,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei", "vier"]), "eins, zwei, drei oder vier");
         test.done();
     },
-
     // de-AT
     testListFmtUnitStyledeATNumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -135,7 +126,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins"]), "eins");
         test.done();
     },
-
     testListFmtUnitStyledeATNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "de-AT",
@@ -147,7 +137,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei"]), "eins, zwei");
         test.done();
     },
-
     testListFmtUnitStyledeATNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "de-AT",
@@ -159,7 +148,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei"]), "eins, zwei und drei");
         test.done();
     },
-
     testListFmtUnitStyledeATNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "de-AT",
@@ -183,7 +171,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins"]), "eins");
         test.done();
     },
-
     testListFmtUnitStyledeATNumberFormatTwoLong: function(test) {
         var fmt = new ListFmt({
             locale: "de-AT",
@@ -196,7 +183,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei"]), "eins, zwei");
         test.done();
     },
-
     testListFmtUnitStyledeATNumberFormatThreeLong: function(test) {
         var fmt = new ListFmt({
             locale: "de-AT",
@@ -209,7 +195,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei"]), "eins, zwei und drei");
         test.done();
     },
-
     testListFmtUnitStyledeATNumberFormatFourLong: function(test) {
         var fmt = new ListFmt({
             locale: "de-AT",
@@ -222,7 +207,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei", "vier"]), "eins, zwei, drei und vier");
         test.done();
     },
-
     // de-CH
 
     testListFmtdeCHNumberFormatOneLong: function(test) {
@@ -236,7 +220,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins"]), "eins");
         test.done();
     },
-
     testListFmtdeCHNumberFormatTwoLong: function(test) {
         var fmt = new ListFmt({
             locale: "de-CH",
@@ -248,7 +231,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei"]), "eins und zwei");
         test.done();
     },
-
     testListFmtdeCHNumberFormatThreeLong: function(test) {
         var fmt = new ListFmt({
             locale: "de-CH",
@@ -260,7 +242,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei"]), "eins, zwei und drei");
         test.done();
     },
-
     testListFmtledeCHNumberFormatFourLong: function(test) {
         var fmt = new ListFmt({
             locale: "de-CH",
@@ -272,7 +253,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei", "vier"]), "eins, zwei, drei und vier");
         test.done();
     },
-
     testListFmtUnitStyledeCHNumberFormatOneMedium: function(test) {
         var fmt = new ListFmt({
             locale: "de-AT",
@@ -285,7 +265,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins"]), "eins");
         test.done();
     },
-
     testListFmtUnitStyledeCHNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "de-CH",
@@ -298,7 +277,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei"]), "eins, zwei");
         test.done();
     },
-
     testListFmtUnitStyledeCHNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "de-CH",
@@ -311,7 +289,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei"]), "eins, zwei und drei");
         test.done();
     },
-
     testListFmtUnitStyledeCHNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "de-CH",
@@ -336,7 +313,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins"]), "eins");
         test.done();
     },
-
     testListFmtUnitStyledeCHNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "de-CH",
@@ -349,7 +325,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei"]), "eins, zwei");
         test.done();
     },
-
     testListFmtUnitStyledeCHNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "de-CH",
@@ -362,7 +337,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei"]), "eins, zwei und drei");
         test.done();
     },
-
     testListFmtUnitStyledeCHNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "de-CH",
@@ -375,7 +349,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei", "vier"]), "eins, zwei, drei und vier");
         test.done();
     },
-
     // de-LU
 
     testListFmtdeCHNumberFormatOne: function(test) {
@@ -388,7 +361,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins"]), "eins");
         test.done();
     },
-
     testListFmtdeLUNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "de-LU"
@@ -399,7 +371,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei"]), "eins und zwei");
         test.done();
     },
-
     testListFmtdeLUNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "de-LU"
@@ -410,7 +381,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei"]), "eins, zwei und drei");
         test.done();
     },
-
     testListFmtledeLUNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "de-LU"
@@ -421,7 +391,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei", "vier"]), "eins, zwei, drei und vier");
         test.done();
     },
-
     testListFmtUnitStyledeLUNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "de-AT",
@@ -433,7 +402,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins"]), "eins");
         test.done();
     },
-
     testListFmtUnitStyledeLUNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "de-LU",
@@ -445,7 +413,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei"]), "eins, zwei");
         test.done();
     },
-
     testListFmtUnitStyledeLUNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "de-LU",
@@ -457,7 +424,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei"]), "eins, zwei und drei");
         test.done();
     },
-
     testListFmtUnitStyledeLUNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "de-LU",
@@ -481,7 +447,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins"]), "eins");
         test.done();
     },
-
     testListFmtUnitStyledeLUNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "de-LU",
@@ -494,7 +459,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei"]), "eins, zwei");
         test.done();
     },
-
     testListFmtUnitStyledeLUNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "de-LU",
@@ -507,7 +471,6 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei"]), "eins, zwei und drei");
         test.done();
     },
-
     testListFmtUnitStyledeLUNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "de-LU",
@@ -520,5 +483,4 @@ module.exports.testlistfmt_de = {
         test.equal(fmt.format(["eins", "zwei", "drei", "vier"]), "eins, zwei, drei und vier");
         test.done();
     }
-
 };

@@ -29,7 +29,6 @@ module.exports.testcharset = {
         ilib.clearCache();
         callback();
     },
-
     testCharsetConstructor: function(test) {
         test.expect(1);
         var cs = new Charset();
@@ -37,7 +36,6 @@ module.exports.testcharset = {
         test.ok(cs !== null);
         test.done();
     },
-
     testCharsetConstructorCurrentLocale: function(test) {
         test.expect(2);
         var cs = new Charset();
@@ -48,33 +46,28 @@ module.exports.testcharset = {
         test.equal(cs.getName(), "UTF-8");
         test.done();
     },
-
     testCharsetGetStandardNameIdentity: function(test) {
         test.expect(2);
         test.equal(new Charset({name: "UTF-8"}).getName(), "UTF-8");
         test.equal(new Charset({name: "KOI8-R"}).getName(), "KOI8-R");
         test.done();
     },
-
     testCharsetGetStandardNameUndefined: function(test) {
         test.expect(1);
         test.ok(typeof(new Charset({})) !== "undefined");
         test.done();
     },
-
     testCharsetGetStandardNameIdentityUnknown: function(test) {
         test.expect(1);
         test.equal(new Charset({name: "foobarfoo"}).getName(), "foobarfoo");
         test.done();
     },
-
     testCharsetGetStandardNameUTF8: function(test) {
         test.expect(2);
         test.equal(new Charset({name: "UTF8"}).getName(), "UTF-8");
         test.equal(new Charset({name: "UTF"}).getName(), "UTF-8");
         test.done();
     },
-
     testCharsetGetStandardNameUTF8IgnoreCase: function(test) {
         test.expect(3);
         test.equal(new Charset({name: "utf-8"}).getName(), "UTF-8");
@@ -82,7 +75,6 @@ module.exports.testcharset = {
         test.equal(new Charset({name: "utf"}).getName(), "UTF-8");
         test.done();
     },
-
     testCharsetGetStandardNameISOLatin1: function(test) {
         test.expect(8);
         test.equal(new Charset({name: "Latin1"}).getName(), "ISO-8859-1");
@@ -95,7 +87,6 @@ module.exports.testcharset = {
         test.equal(new Charset({name: "iso-8859-1"}).getName(), "ISO-8859-1");
         test.done();
     },
-
     testCharsetGetStandardNameISOLatin1Defaults: function(test) {
         test.expect(6);
         test.equal(new Charset({name: "8859"}).getName(), "ISO-8859-1");
@@ -106,7 +97,6 @@ module.exports.testcharset = {
         test.equal(new Charset({name: "Latin"}).getName(), "ISO-8859-1");
         test.done();
     },
-
     testCharsetGetStandardNameISOLatin1IgnoreCase: function(test) {
         test.expect(5);
         test.equal(new Charset({name: "latin1"}).getName(), "ISO-8859-1");
@@ -116,7 +106,6 @@ module.exports.testcharset = {
         test.equal(new Charset({name: "iso-8859-1"}).getName(), "ISO-8859-1");
         test.done();
     },
-
     testCharsetGetStandardNameISOLatin15: function(test) {
         test.expect(9);
         test.equal(new Charset({name: "latin9"}).getName(), "ISO-8859-15");
@@ -130,103 +119,88 @@ module.exports.testcharset = {
         test.equal(new Charset({name: "isolatin9"}).getName(), "ISO-8859-15");
         test.done();
     },
-
     testCharsetGetStandardNameShiftJIS: function(test) {
         test.expect(2);
         test.equal(new Charset({name: "csShiftJIS"}).getName(), "Shift_JIS");
         test.equal(new Charset({name: "mskanji"}).getName(), "Shift_JIS");
         test.done();
     },
-
     testCharsetGetStandardNameEUCKR: function(test) {
         test.expect(2);
         test.equal(new Charset({name: "cseuckr"}).getName(), "EUC-KR");
         test.equal(new Charset({name: "euckr"}).getName(), "EUC-KR");
         test.done();
     },
-
     testCharsetGetOriginalName: function(test) {
         test.expect(1);
         test.equal(new Charset({name: "cseuckr"}).getOriginalName(), "cseuckr");
         test.done();
     },
-
     testCharsetGetOriginalNameUnknown: function(test) {
         test.expect(1);
         test.equal(new Charset({name: "foobarfoo"}).getOriginalName(), "foobarfoo");
         test.done();
     },
-
     testCharsetMinCharWidth1: function(test) {
         test.expect(1);
         var cs = new Charset({name: "Latin1"});
         test.equal(cs.getMinCharWidth(), 1);
         test.done();
     },
-
     testCharsetMinCharWidth2: function(test) {
         test.expect(1);
         var cs = new Charset({name: "UCS-2"});
         test.equal(cs.getMinCharWidth(), 2);
         test.done();
     },
-
     testCharsetMinCharWidthUTF16: function(test) {
         test.expect(1);
         var cs = new Charset({name: "UTF-16"});
         test.equal(cs.getMinCharWidth(), 2);
         test.done();
     },
-
     testCharsetMinCharWidthMultibyte: function(test) {
         test.expect(1);
         var cs = new Charset({name: "EUC-JP"});
         test.equal(cs.getMinCharWidth(), 1);
         test.done();
     },
-
     testCharsetMaxCharWidth1: function(test) {
         test.expect(1);
         var cs = new Charset({name: "Latin1"});
         test.equal(cs.getMaxCharWidth(), 1);
         test.done();
     },
-
     testCharsetMaxCharWidth2: function(test) {
         test.expect(1);
         var cs = new Charset({name: "UCS-2"});
         test.equal(cs.getMaxCharWidth(), 2);
         test.done();
     },
-
     testCharsetMaxCharWidthUTF16: function(test) {
         test.expect(1);
         var cs = new Charset({name: "UTF-16"});
         test.equal(cs.getMaxCharWidth(), 2);
         test.done();
     },
-
     testCharsetMaxCharWidthMultibyte: function(test) {
         test.expect(1);
         var cs = new Charset({name: "EUC-JP"});
         test.equal(cs.getMaxCharWidth(), 3);
         test.done();
     },
-
     testCharsetIsMultibyteTrue: function(test) {
         test.expect(1);
         var cs = new Charset({name: "Shift_JIS"});
         test.ok(cs.isMultibyte());
         test.done();
     },
-
     testCharsetIsMultibyteFalse: function(test) {
         test.expect(1);
         var cs = new Charset({name: "Latin1"});
         test.ok(!cs.isMultibyte());
         test.done();
     },
-
     testCharsetGetScriptsJP: function(test) {
         test.expect(1);
         var cs = new Charset({name: "Shift_JIS"});
@@ -241,7 +215,6 @@ module.exports.testcharset = {
         test.equalIgnoringOrder(cs.getScripts(), expected);
         test.done();
     },
-
     testCharsetGetScriptsEN: function(test) {
         test.expect(1);
         var cs = new Charset({name: "ISO-Latin-15"});
@@ -251,19 +224,16 @@ module.exports.testcharset = {
         test.equalIgnoringOrder(cs.getScripts(), expected);
         test.done();
     },
-
     testCharsetIsBigEndianUTF16: function(test) {
         test.expect(1);
         var cs = new Charset({name: "UTF-16"});
         test.ok(cs.isBigEndian());
         test.done();
     },
-
     testCharsetIsBigEndianUTF16LE: function(test) {
         test.expect(1);
         var cs = new Charset({name: "UTF-16LE"});
         test.ok(!cs.isBigEndian());
         test.done();
     }
-
 };
