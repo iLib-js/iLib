@@ -32,7 +32,6 @@ module.exports.testname_hr = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_hr_HR: function(test) {
         test.expect(2);
         var parsed = new Name("Antonio Pavlović", {locale: 'hr-HR'});
@@ -46,9 +45,6 @@ module.exports.testname_hr = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseSimpleName_hr_HR: function(test) {
         test.expect(2);
         var parsed = new Name("G. Kertu Pavlović", {locale: 'hr-HR'});
@@ -64,8 +60,6 @@ module.exports.testname_hr = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseSimpleName_hr_HR: function(test) {
         test.expect(2);
         var parsed = new Name("Gospođa. Kertu Pavlović", {locale: 'hr-HR'});
@@ -81,9 +75,6 @@ module.exports.testname_hr = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseSingleNameWithPrefixAndAdjunct_hr_HR: function(test) {
         test.expect(2);
         var parsed = new Name("Antonio Vesna Pavlović mlađi", {locale: 'hr-HR'});
@@ -99,8 +90,6 @@ module.exports.testname_hr = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_hr_HR1: function(test) {
         test.expect(2);
         var parsed = new Name("predsjednik Antonio Vesna Pavlović", {locale: 'hr-HR'});
@@ -116,8 +105,6 @@ module.exports.testname_hr = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_hr_HR_second: function(test) {
         test.expect(2);
         var parsed = new Name("G. i Gospođa. Pavlović", {locale: 'hr-HR'});
@@ -130,8 +117,6 @@ module.exports.testname_hr = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitleWithFamilyOnlyAndAdjunct_hr_HR: function(test) {
         test.expect(2);
 
@@ -155,9 +140,6 @@ module.exports.testname_hr = {
         test.done();
 
     },
-
-
-
     testParseCompoundHonorific_hr_HR: function(test) {
         test.expect(2);
         var parsed = new Name("predsjednik Pavlović", {locale: 'hr-HR'});
@@ -171,11 +153,6 @@ module.exports.testname_hr = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_hr_HR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -195,7 +172,6 @@ module.exports.testname_hr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_hr_HR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -215,7 +191,6 @@ module.exports.testname_hr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_hr_HR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -237,7 +212,6 @@ module.exports.testname_hr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_hr_HR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -258,8 +232,6 @@ module.exports.testname_hr = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
     testFormatAsianNameMedium_hr_HR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -280,7 +252,6 @@ module.exports.testname_hr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameLong_hr_HR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -301,8 +272,4 @@ module.exports.testname_hr = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
-
 };

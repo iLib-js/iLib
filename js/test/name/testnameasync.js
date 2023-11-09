@@ -36,7 +36,6 @@ module.exports.testnameasync = {
             }
         });
     },
-
     testNameAsyncCopyConstructor: function(test) {
         test.expect(2);
         new Name({
@@ -56,7 +55,6 @@ module.exports.testnameasync = {
             }
         });
     },
-
     testNameAsyncDEWithMultiplePrefixes: function(test) {
         test.expect(2);
         new Name("Herr Dr. Josef Hans Jürgen Herzheim", {
@@ -70,7 +68,6 @@ module.exports.testnameasync = {
             }
         });
     },
-
     testNameAsyncESFull: function(test) {
         test.expect(2);
         new Name("Juan Carlos Maria León Arroyo", {
@@ -84,7 +81,6 @@ module.exports.testnameasync = {
             }
         });
     },
-
     testNameAsyncZHHonorific: function(test) {
         test.expect(2);
         new Name("堂哥胡锦涛", {

@@ -133,5 +133,4 @@ module.exports.testaddress_AE = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

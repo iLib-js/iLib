@@ -32,7 +32,6 @@ module.exports.testname_lv = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_lv_LV: function(test) {
         test.expect(2);
         var parsed = new Name("Mikhail Baryshnikov", {locale: 'lv-LV'});
@@ -46,7 +45,6 @@ module.exports.testname_lv = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseSimpleWithMiddleName_lv_LV: function(test) {
         test.expect(2);
         var parsed = new Name("Sergei M. Eisenstein", {locale: 'lv-LV'});
@@ -61,9 +59,6 @@ module.exports.testname_lv = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitle_lv_LV: function(test) {
         test.expect(2);
         var parsed = new Name("Mikhail Baryshnikov vecākais", {locale: 'lv-LV'});
@@ -78,9 +73,6 @@ module.exports.testname_lv = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitleWithFamilyOnly_lv_LV: function(test) {
         test.expect(2);
         var parsed = new Name("priekšsēdētāja Baryshnikov", {locale: 'lv-LV'});
@@ -94,9 +86,6 @@ module.exports.testname_lv = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseEverything_lv_LV: function(test) {
         test.expect(2);
         var parsed = new Name("kungs un kundze Baryshnikov", {locale: 'lv-LV'});
@@ -110,7 +99,6 @@ module.exports.testname_lv = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefix_lv_LV: function(test) {
         test.expect(2);
         var parsed = new Name("kungs Mikhail Baryshnikov", {locale: 'lv-LV'});
@@ -125,10 +113,6 @@ module.exports.testname_lv = {
         test.contains(parsed, expected);
         test.done();
     },
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -147,7 +131,6 @@ module.exports.testname_lv = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -166,7 +149,6 @@ module.exports.testname_lv = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -186,7 +168,6 @@ module.exports.testname_lv = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameWithMiddleNameFull_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -207,7 +188,6 @@ module.exports.testname_lv = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSurname_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -226,7 +206,6 @@ module.exports.testname_lv = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -247,7 +226,6 @@ module.exports.testname_lv = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -267,7 +245,6 @@ module.exports.testname_lv = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -287,7 +264,6 @@ module.exports.testname_lv = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_lv_LV: function(test) {
         test.expect(2);
         var name = new Name({
@@ -307,7 +283,4 @@ module.exports.testname_lv = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

@@ -32,7 +32,6 @@ module.exports.testname_el = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_el_GR: function(test) {
         test.expect(2);
         var parsed = new Name("Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
@@ -46,9 +45,6 @@ module.exports.testname_el = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseSimpleName_el_GR: function(test) {
         test.expect(2);
         var parsed = new Name("Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
@@ -63,9 +59,6 @@ module.exports.testname_el = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseSingleNameWithPrefixAndAdjunct_el_GR: function(test) {
         test.expect(2);
         var parsed = new Name("Νικόλαος Αλεξόπουλος κατώτερος", {locale: 'el-GR'});
@@ -80,8 +73,6 @@ module.exports.testname_el = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_el_GR1: function(test) {
         test.expect(2);
         var parsed = new Name("Ο κ. Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
@@ -96,8 +87,6 @@ module.exports.testname_el = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_el_GR_second: function(test) {
         test.expect(2);
         var parsed = new Name("Κυρία. Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
@@ -112,8 +101,6 @@ module.exports.testname_el = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitleWithFamilyOnlyAndAdjunct_el_GR: function(test) {
         test.expect(2);
 
@@ -136,8 +123,6 @@ module.exports.testname_el = {
         test.done();
 
     },
-
-
     testParseTitleWithFamilyOnlyAndAdjunctex_el_GR: function(test) {
         test.expect(2);
         var parsed = new Name("αντιπρόεδρος Νικόλαος Αλεξόπουλος μουσκεύω", {locale: 'el-GR'});
@@ -153,8 +138,6 @@ module.exports.testname_el = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseCompoundHonorific_el_GR: function(test) {
         test.expect(2);
         var parsed = new Name("Ο κ. Αλεξόπουλος", {locale: 'el-GR'});
@@ -168,11 +151,6 @@ module.exports.testname_el = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_el_GR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -191,7 +169,6 @@ module.exports.testname_el = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_el_GR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -210,7 +187,6 @@ module.exports.testname_el = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_el_GR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -231,7 +207,6 @@ module.exports.testname_el = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_el_GR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -251,8 +226,6 @@ module.exports.testname_el = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
     testFormatAsianNameMedium_el_GR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -273,7 +246,6 @@ module.exports.testname_el = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameLong_el_GR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -294,8 +266,4 @@ module.exports.testname_el = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
-
 };

@@ -32,7 +32,6 @@ module.exports.testname_vi = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_vi: function(test) {
         test.expect(2);
         var parsed = new Name("Chau-Giang Thi Nguyen", {locale: 'vi-VN'});
@@ -63,9 +62,6 @@ module.exports.testname_vi = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseSingleNameWithPrefixAndAdjunct_vi: function(test) {
         test.expect(2);
         var parsed = new Name("Ông và Bà Nguyen", {locale: 'vi-VN'});
@@ -95,9 +91,6 @@ module.exports.testname_vi = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitleWithFamilyOnly_vi: function(test) {
         test.expect(2);
         var parsed = new Name("Thị trưởng Nguyen", {locale: 'vi-VN'});
@@ -111,9 +104,6 @@ module.exports.testname_vi = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseEverything_vi: function(test) {
         test.expect(2);
         var parsed = new Name("Ông Chau-Giang Thi Nguyen", {locale: 'vi-VN'});
@@ -154,7 +144,6 @@ module.exports.testname_vi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_vi: function(test) {
         test.expect(2);
         var name = new Name({
@@ -174,7 +163,6 @@ module.exports.testname_vi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_vi: function(test) {
         test.expect(2);
         var name = new Name({
@@ -195,7 +183,6 @@ module.exports.testname_vi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_vi: function(test) {
         test.expect(2);
         var name = new Name({
@@ -217,7 +204,6 @@ module.exports.testname_vi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_vi: function(test) {
         test.expect(2);
         var name = new Name({
@@ -238,7 +224,6 @@ module.exports.testname_vi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_vi: function(test) {
         test.expect(2);
         var name = new Name({
@@ -259,7 +244,6 @@ module.exports.testname_vi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_vi: function(test) {
         test.expect(2);
         var name = new Name({
@@ -280,7 +264,6 @@ module.exports.testname_vi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameShort_vi: function(test) {
         test.expect(2);
         var name = new Name({
@@ -300,7 +283,6 @@ module.exports.testname_vi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameMedium_vi: function(test) {
         test.expect(2);
         var name = new Name({
@@ -320,7 +302,6 @@ module.exports.testname_vi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameLong_vi: function(test) {
         test.expect(2);
         var name = new Name({

@@ -32,7 +32,6 @@ module.exports.testname_zh_Hant = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("仇潔雲", {locale: 'zh-Hant-TW'});
@@ -46,7 +45,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseOnePlusTwo_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("Jay Chóu", {locale: 'zh-Hant-TW'});
@@ -60,7 +58,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTwoPlusOne_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("褚師迪", {locale: 'zh-Hant-TW'});
@@ -74,7 +71,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTwoPlusTwo_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("申屠凱瑩", {locale: 'zh-Hant-TW'});
@@ -88,7 +84,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseMaidenPlusMarriedName_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("錢林慧君", {locale: 'zh-Hant-TW', compoundFamilyName: true});
@@ -102,7 +97,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitle_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("老錢慧君", {locale: 'zh-Hant-TW'});
@@ -117,7 +111,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseMultipleTitles_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("錢首席執行官", {locale: 'zh-Hant-TW'});
@@ -131,7 +124,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseEuroName_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("Jackie Chan", {locale: 'zh-Hant-TW'});
@@ -145,7 +137,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseSuffix_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("王媽媽", {locale: 'zh-Hant-TW'});
@@ -159,7 +150,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitleSuffix_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("李老師", {locale: 'zh-Hant-TW'});
@@ -173,7 +163,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseEverything_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("老錢林慧君外公", {locale: 'zh-Hant-TW', compoundFamilyName: true});
@@ -189,11 +178,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format Tests
-     */
-
     testFormatNameShort_zh_Hant: function(test) {
         test.expect(2);
         var name = new Name({
@@ -211,7 +195,6 @@ module.exports.testname_zh_Hant = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatNameMedium_zh_Hant: function(test) {
         test.expect(2);
         var name = new Name({
@@ -229,7 +212,6 @@ module.exports.testname_zh_Hant = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatNameLong_zh_Hant: function(test) {
         test.expect(2);
         var name = new Name({
@@ -247,7 +229,6 @@ module.exports.testname_zh_Hant = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatNameFull_zh_Hant: function(test) {
         test.expect(2);
         var name = new Name({
@@ -265,7 +246,6 @@ module.exports.testname_zh_Hant = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatEuroNameShort_zh_Hant: function(test) {
         test.expect(2);
         var name = new Name({
@@ -284,9 +264,6 @@ module.exports.testname_zh_Hant = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
-
     testFormatEuroNameMedium_zh_Hant: function(test) {
         test.expect(2);
         var name = new Name({
@@ -305,8 +282,6 @@ module.exports.testname_zh_Hant = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
     testFormatEuroNameLong_zh_Hant: function(test) {
         test.expect(2);
         var name = new Name({
@@ -325,7 +300,6 @@ module.exports.testname_zh_Hant = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatEuroNameFull_zh_Hant: function(test) {
         test.expect(2);
         var name = new Name({
@@ -344,7 +318,6 @@ module.exports.testname_zh_Hant = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatEuroNameWithStringLong_zh_Hant: function(test) {
         test.expect(2);
         var name = new Name("Dr. John Robert Goffin", {locale: 'zh-Hant-TW'});
@@ -357,7 +330,6 @@ module.exports.testname_zh_Hant = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatEuroNameWithStringFull_zh_Hant: function(test) {
         test.expect(2);
         var name = new Name("Dr. John Robert Goffin Jr.", {locale: 'zh-Hant-TW'});
@@ -370,7 +342,6 @@ module.exports.testname_zh_Hant = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testParseParenSuffixName_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("王永慶(Division A)", {locale: 'zh-Hant-TW'});
@@ -399,7 +370,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseParenSuffixNameWithOtherSuffix_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("王永慶外公(Division A)", {locale: 'zh-Hant-TW'});
@@ -466,7 +436,6 @@ module.exports.testname_zh_Hant = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatParenSuffixNameFull_zh_Hant: function(test) {
         test.expect(2);
         var name = new Name({
@@ -486,7 +455,6 @@ module.exports.testname_zh_Hant = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatParenSuffixNameLong2_zh_Hant: function(test) {
         test.expect(2);
         var name = new Name({
@@ -506,7 +474,6 @@ module.exports.testname_zh_Hant = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatParenSuffixNameFull2_zh_Hant: function(test) {
         test.expect(2);
         var name = new Name({
@@ -526,7 +493,6 @@ module.exports.testname_zh_Hant = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatParenSuffixNameShortMultiple_zh_Hant: function(test) {
         test.expect(2);
         var name = new Name({
@@ -565,7 +531,6 @@ module.exports.testname_zh_Hant = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testParseParenSuffixNameWithSpace_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("徐小凤 (Division A)", {locale: 'zh-Hant-TW'});
@@ -580,7 +545,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseCompoundFamilyName3_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("司马小凤", {locale: 'zh-Hant-TW'});
@@ -607,8 +571,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseAmbiguousLengthFamilyName1_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("鍾小凤", {locale: 'zh-Hant-TW'});
@@ -622,7 +584,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseAmbiguousLengthFamilyName2_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("鐘離小凤", {locale: 'zh-Hant-TW'});
@@ -636,7 +597,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseMissingNames1_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("曲小凤", {locale: 'zh-Hant-TW'});
@@ -676,7 +636,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseDentistName_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("关小凤牙科醫生", {locale: 'zh-Hant-HK'});
@@ -691,7 +650,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseDentalHygienistName_zh_Hant: function(test) {
         test.expect(2);
         var parsed = new Name("关小凤牙齒衛生員", {locale: 'zh-Hant-HK'});
@@ -706,7 +664,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseHongKongName_zh_Hant_HK1: function(test) {
         test.expect(2);
         var parsed = new Name("温小凤", {locale: 'zh-Hant-HK'});
@@ -722,7 +679,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseHongKongName_zh_Hant_HK2: function(test) {
         test.expect(2);
         var parsed = new Name("區小凤", {locale: 'zh-Hant-HK'});
@@ -736,7 +692,6 @@ module.exports.testname_zh_Hant = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseHongKongName_zh_Hant_HK3: function(test) {
         test.expect(2);
         var parsed = new Name("趙文權", {locale: 'zh-Hant-HK'});

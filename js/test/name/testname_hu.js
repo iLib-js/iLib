@@ -32,7 +32,6 @@ module.exports.testname_hu = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_hu_HU: function(test) {
         test.expect(2);
         var parsed = new Name("Halász Dorottya", {locale: 'hu-HU'});
@@ -46,9 +45,6 @@ module.exports.testname_hu = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseSimpleName_hu_HU1: function(test) {
         test.expect(2);
         var parsed = new Name("úr. Halász Dorottya", {locale: 'hu-HU'});
@@ -64,8 +60,6 @@ module.exports.testname_hu = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseSimpleNameWom_hu_HU: function(test) {
         test.expect(2);
         var parsed = new Name("Kisasszony. Kovács Lajos", {locale: 'hu-HU'});
@@ -81,9 +75,6 @@ module.exports.testname_hu = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseSingleNameWithPrefixAndAdjunct_hu_HU: function(test) {
         test.expect(2);
         var parsed = new Name("Halász Dorottya jr.", {locale: 'hu-HU'});
@@ -98,8 +89,6 @@ module.exports.testname_hu = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_hu_HU1: function(test) {
         test.expect(2);
         var parsed = new Name("alelnöke Halász Dorottya", {locale: 'hu-HU'});
@@ -114,8 +103,6 @@ module.exports.testname_hu = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_hu_HU_second: function(test) {
         test.expect(2);
         var parsed = new Name("Úr. és Kisasszony. Halász", {locale: 'hu-HU'});
@@ -129,8 +116,6 @@ module.exports.testname_hu = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitleWithFamilyOnlyAndAdjunct_hu_HU: function(test) {
         test.expect(2);
 
@@ -154,9 +139,6 @@ module.exports.testname_hu = {
         test.done();
 
     },
-
-
-
     testParseCompoundHonorific_hu_HU: function(test) {
         test.expect(2);
         var parsed = new Name("alelnöke Halász", {locale: 'hu-HU'});
@@ -170,11 +152,6 @@ module.exports.testname_hu = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_hu_HU: function(test) {
         test.expect(2);
         var name = new Name({
@@ -193,7 +170,6 @@ module.exports.testname_hu = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_hu_HU: function(test) {
         test.expect(2);
         var name = new Name({
@@ -212,7 +188,6 @@ module.exports.testname_hu = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_hu_HU: function(test) {
         test.expect(2);
         var name = new Name({
@@ -232,7 +207,6 @@ module.exports.testname_hu = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_hu_HU: function(test) {
         test.expect(2);
         var name = new Name({
@@ -252,8 +226,6 @@ module.exports.testname_hu = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
     testFormatAsianNameMedium_hu_HU: function(test) {
         test.expect(2);
         var name = new Name({
@@ -274,7 +246,6 @@ module.exports.testname_hu = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameLong_hu_HU: function(test) {
         test.expect(2);
         var name = new Name({
@@ -295,8 +266,4 @@ module.exports.testname_hu = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
-
 };

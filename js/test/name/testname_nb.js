@@ -32,7 +32,6 @@ module.exports.testname_nb = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_nb_NO: function(test) {
         test.expect(2);
         var parsed = new Name("Maria Bonnevie", {locale: 'nb-NO'});
@@ -62,9 +61,6 @@ module.exports.testname_nb = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitleWithFamilyOnly_nb_NO: function(test) {
         test.expect(2);
         var parsed = new Name("Mrs. Bonnevie", {locale: 'nb-NO'});
@@ -78,9 +74,6 @@ module.exports.testname_nb = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseEverything_nb_NO: function(test) {
         test.expect(2);
         var parsed = new Name("Mr. og Mrs. Bonnevie", {locale: 'nb-NO'});
@@ -94,7 +87,6 @@ module.exports.testname_nb = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefix_nb_NO: function(test) {
         test.expect(2);
         var parsed = new Name("Mrs. Maria Bonnevie", {locale: 'nb-NO'});
@@ -131,7 +123,6 @@ module.exports.testname_nb = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_nb_NO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -150,7 +141,6 @@ module.exports.testname_nb = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_nb_NO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -170,9 +160,6 @@ module.exports.testname_nb = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
-
     testFormatSurname_nb_NO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -191,7 +178,6 @@ module.exports.testname_nb = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_nb_NO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -212,7 +198,6 @@ module.exports.testname_nb = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_nb_NO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -232,7 +217,6 @@ module.exports.testname_nb = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_nb_NO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -252,7 +236,6 @@ module.exports.testname_nb = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_nb_NO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -272,7 +255,4 @@ module.exports.testname_nb = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

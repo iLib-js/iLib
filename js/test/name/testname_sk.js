@@ -32,7 +32,6 @@ module.exports.testname_sk = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_sk_SK: function(test) {
         test.expect(2);
         var parsed = new Name("Iveta Stan", {locale: 'sk-SK'});
@@ -46,7 +45,6 @@ module.exports.testname_sk = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitle_sk_SK: function(test) {
         test.expect(2);
         var parsed = new Name("Iveta Stan dôchodku", {locale: 'sk-SK'});
@@ -61,8 +59,6 @@ module.exports.testname_sk = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitleWithFamilyOnly_sk_SK: function(test) {
         test.expect(2);
         var parsed = new Name("Pán. Stan", {locale: 'sk-SK'});
@@ -76,7 +72,6 @@ module.exports.testname_sk = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseEverything_sk_SK: function(test) {
         test.expect(2);
         var parsed = new Name("Pán. a pani. Stan", {locale: 'sk-SK'});
@@ -90,7 +85,6 @@ module.exports.testname_sk = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefix_sk_SK: function(test) {
         test.expect(2);
         var parsed = new Name("Pán. Iveta Stan", {locale: 'sk-SK'});
@@ -105,7 +99,6 @@ module.exports.testname_sk = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefixAndSuffix_sk_SK: function(test) {
         test.expect(2);
         var parsed = new Name("Viceprezident Iveta Stan dôchodku", {locale: 'sk-SK'});
@@ -121,10 +114,6 @@ module.exports.testname_sk = {
         test.contains(parsed, expected);
         test.done();
     },
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_sk_SK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -143,7 +132,6 @@ module.exports.testname_sk = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_sk_SK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -162,7 +150,6 @@ module.exports.testname_sk = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_sk_SK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -182,9 +169,6 @@ module.exports.testname_sk = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
-
     testFormatSurname_sk_SK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -203,7 +187,6 @@ module.exports.testname_sk = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_sk_SK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -224,7 +207,6 @@ module.exports.testname_sk = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_sk_SK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -244,7 +226,6 @@ module.exports.testname_sk = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_sk_SK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -264,7 +245,6 @@ module.exports.testname_sk = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_sk_SK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -284,7 +264,4 @@ module.exports.testname_sk = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

@@ -40,7 +40,6 @@ module.exports.testnamefmtasync = {
         });
 
     },
-
     testNameFmtAsyncGetBogus: function(test) {
         test.expect(1);
         new NameFmt({
@@ -53,7 +52,6 @@ module.exports.testnamefmtasync = {
         });
 
     },
-
     testNameFmtAsyncENFull: function(test) {
         test.expect(1);
         new Name({
@@ -77,7 +75,6 @@ module.exports.testnamefmtasync = {
             }
         });
     },
-
     testNameFmtAsyncDEFull: function(test) {
         test.expect(1);
         new Name({
@@ -102,7 +99,6 @@ module.exports.testnamefmtasync = {
             }
         });
     },
-
     testNameFmtAsyncZHFormalLong: function(test) {
         test.expect(1);
         new Name({
@@ -126,7 +122,6 @@ module.exports.testnamefmtasync = {
             }
         });
     },
-
     testNameFmtAsyncZHFormalLong: function(test) {
         test.expect(1);
         new Name({

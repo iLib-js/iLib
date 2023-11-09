@@ -33,7 +33,6 @@ module.exports.testnamefmt = {
         ilib.clearCache();
         callback();
     },
-
     testNameFmtConstructor: function(test) {
         test.expect(1);
         var fmt = new NameFmt();
@@ -41,7 +40,6 @@ module.exports.testnamefmt = {
         test.ok(typeof(fmt) !== "undefined");
         test.done();
     },
-
     testNameFmtGetLocaleDefault: function(test) {
         test.expect(1);
         var fmt = new NameFmt();
@@ -49,7 +47,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.getLocale().getSpec(), "en-US");
         test.done();
     },
-
     testNameFmtGetLocale: function(test) {
         test.expect(1);
         var fmt = new NameFmt({
@@ -59,7 +56,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.getLocale().getSpec(), "nl-NL");
         test.done();
     },
-
     testNameFmtGetBogus: function(test) {
         test.expect(1);
         var fmt = new NameFmt({
@@ -69,7 +65,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.getLocale().getSpec(), "ii-II");
         test.done();
     },
-
     testNameFmtGetStyle: function(test) {
         test.expect(1);
         var fmt = new NameFmt({
@@ -79,7 +74,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.getStyle(), "medium");
         test.done();
     },
-
     testNameFmtGetStyleDefault: function(test) {
         test.expect(1);
         var fmt = new NameFmt();
@@ -87,7 +81,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.getStyle(), "short");
         test.done();
     },
-
     testNameFmtGetStyleBogus: function(test) {
         test.expect(1);
         var fmt = new NameFmt({
@@ -97,7 +90,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.getStyle(), "short");
         test.done();
     },
-
     testNameFmtENShort: function(test) {
         test.expect(1);
         var name = new Name({
@@ -114,7 +106,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "John Smith");
         test.done();
     },
-
     testNameFmtENMedium: function(test) {
         test.expect(1);
         var name = new Name({
@@ -131,7 +122,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "John Kevin Smith");
         test.done();
     },
-
     testNameFmtENLong: function(test) {
         test.expect(1);
         var name = new Name({
@@ -148,7 +138,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Mr. John Kevin Smith");
         test.done();
     },
-
     testNameFmtENFull: function(test) {
         test.expect(1);
         var name = new Name({
@@ -165,7 +154,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Mr. John Kevin Smith Phd.");
         test.done();
     },
-
     testNameFmtENFamiliar: function(test) {
         test.expect(1);
         var name = new Name({
@@ -182,7 +170,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "John");
         test.done();
     },
-
     testNameFmtENWithCommaInSuffix: function(test) {
         test.expect(1);
         var name = new Name({
@@ -199,7 +186,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Mr. John Kevin Smith, Phd.");
         test.done();
     },
-
     testNameFmtENComponentsP: function(test) {
         test.expect(1);
         var name = new Name({
@@ -216,7 +202,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Mr.");
         test.done();
     },
-
     testNameFmtENComponentsPG: function(test) {
         test.expect(1);
         var name = new Name({
@@ -233,7 +218,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Mr. John");
         test.done();
     },
-
     testNameFmtENComponentsPF: function(test) {
         test.expect(1);
         var name = new Name({
@@ -250,7 +234,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Mr. Smith");
         test.done();
     },
-
     testNameFmtENComponentsPGF: function(test) {
         test.expect(1);
         var name = new Name({
@@ -267,7 +250,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Mr. John Smith");
         test.done();
     },
-
     testNameFmtENComponentsPFS: function(test) {
         test.expect(1);
         var name = new Name({
@@ -284,7 +266,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Mr. Smith Phd.");
         test.done();
     },
-
     testNameFmtENComponentsPGFScrambled: function(test) {
         test.expect(1);
         var name = new Name({
@@ -301,7 +282,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Mr. John Smith");
         test.done();
     },
-
     testNameFmtENComponentsOverrideStyle: function(test) {
         test.expect(1);
         var name = new Name({
@@ -340,7 +320,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Andreas Schmidt");
         test.done();
     },
-
     testNameFmtDEMedium: function(test) {
         test.expect(1);
         var name = new Name({
@@ -360,7 +339,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Andreas Helmut Schmidt");
         test.done();
     },
-
     testNameFmtDELong: function(test) {
         test.expect(1);
         var name = new Name({
@@ -380,7 +358,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Hr. Andreas Helmut Schmidt");
         test.done();
     },
-
     testNameFmtDEFull: function(test) {
         test.expect(1);
         var name = new Name({
@@ -400,7 +377,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Hr. Andreas Helmut Schmidt MdB");
         test.done();
     },
-
     testNameFmtDEFamiliar: function(test) {
         test.expect(1);
         var name = new Name({
@@ -420,7 +396,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Hr. Schmidt");
         test.done();
     },
-
     testNameFmtDEWithCommaInSuffix: function(test) {
         test.expect(1);
         var name = new Name({
@@ -440,7 +415,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Hr. Andreas Helmut Schmidt, MdB");
         test.done();
     },
-
     testNameFmtDEComponentsP: function(test) {
         test.expect(1);
         var name = new Name({
@@ -460,7 +434,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Hr.");
         test.done();
     },
-
     testNameFmtDEComponentsPG: function(test) {
         test.expect(1);
         var name = new Name({
@@ -480,7 +453,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Hr. Andreas");
         test.done();
     },
-
     testNameFmtDEComponentsPF: function(test) {
         test.expect(1);
         var name = new Name({
@@ -500,7 +472,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Hr. Schmidt");
         test.done();
     },
-
     testNameFmtDEComponentsPGF: function(test) {
         test.expect(1);
         var name = new Name({
@@ -520,7 +491,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Hr. Andreas Schmidt");
         test.done();
     },
-
     testNameFmtDEComponentsPFS: function(test) {
         test.expect(1);
         var name = new Name({
@@ -540,7 +510,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Hr. Schmidt MdB");
         test.done();
     },
-
     testNameFmtDEComponentsPGFScrambled: function(test) {
         test.expect(1);
         var name = new Name({
@@ -560,7 +529,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Hr. Andreas Schmidt");
         test.done();
     },
-
     testNameFmtDEComponentsOverrideStyle: function(test) {
         test.expect(1);
         var name = new Name({
@@ -581,7 +549,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Hr. Andreas Schmidt");
         test.done();
     },
-
     testNameFmtENWithHonorific: function(test) {
         test.expect(1);
         var name = new Name({
@@ -600,7 +567,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Dr. Andreas Helmut Schmidt");
         test.done();
     },
-
     testNameFmtZHWithHonorific: function(test) {
         test.expect(1);
         var name = new Name({
@@ -618,7 +584,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "李芳医生");
         test.done();
     },
-
     testNameFmtENFormalShort: function(test) {
         test.expect(1);
         var name = new Name({
@@ -637,7 +602,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Dr. Schmidt");
         test.done();
     },
-
     testNameFmtENFormalLong: function(test) {
         test.expect(1);
         var name = new Name({
@@ -656,7 +620,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Dr. Andreas Schmidt");
         test.done();
     },
-
     testNameFmtZHFormalShort: function(test) {
         test.expect(1);
         var name = new Name({
@@ -674,7 +637,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "李医生");
         test.done();
     },
-
     testNameFmtZHFormalLong: function(test) {
         test.expect(1);
         var name = new Name({
@@ -692,7 +654,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "李芳医生");
         test.done();
     },
-
     testNameFmtKOFormalShort: function(test) {
         test.expect(1);
         var name = new Name({
@@ -732,7 +693,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "박은성 님");
         test.done();
     },
-
     testNameFmtKOShort: function(test) {
         test.expect(1);
         var name = new Name({
@@ -750,7 +710,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "박은성");
         test.done();
     },
-
     testNameFmtKOMedium: function(test) {
         test.expect(1);
         var name = new Name({
@@ -769,7 +728,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "박은성");
         test.done();
     },
-
     testNameFmtKOLong: function(test) {
         test.expect(1);
         var name = new Name({
@@ -788,7 +746,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "박은성 님");
         test.done();
     },
-
     testNameFmtKOFull: function(test) {
         test.expect(1);
         var name = new Name({
@@ -807,7 +764,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "닥터 박은성 님");
         test.done();
     },
-
     testNameFmtKOFamiliar: function(test) {
         test.expect(1);
         var name = new Name({
@@ -825,7 +781,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "닥터 박은성");
         test.done();
     },
-
     testNameFmtZHFormalLong2: function(test) {
         test.expect(1);
         var name = new Name({
@@ -844,7 +799,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "닥터 박은성 님");
         test.done();
     },
-
     testNameFmtKOFormalLong: function(test) {
         test.expect(1);
         var name = new Name({
@@ -897,7 +851,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Pan Novák");
         test.done();
     },
-
     testNameFmtSKFamiliar: function(test) {
         test.expect(1);
         var name = new Name({
@@ -915,7 +868,6 @@ module.exports.testnamefmt = {
         test.equal(fmt.format(name), "Pani Obecny");
         test.done();
     },
-
     testNameFmtENWithImplicitConversionOfArgToName: function(test) {
         test.expect(1);
         var fmt = new NameFmt({
@@ -931,7 +883,6 @@ module.exports.testnamefmt = {
         }), "Dr. Andreas Helmut Schmidt");
         test.done();
     },
-
     testNameFmtENImplicitConversionTakesOnLocaleOfFormatter: function(test) {
         test.expect(1);
         var fmt = new NameFmt({

@@ -408,5 +408,4 @@ module.exports.testaddress_IN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

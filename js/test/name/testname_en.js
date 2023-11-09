@@ -32,7 +32,6 @@ module.exports.testname_en = {
         ilib.clearCache();
         callback();
     },
-
     testENUSParseSimpleName: function(test) {
         test.expect(2);
         var parsed = new Name("John Smith", {locale: 'en-US'});
@@ -46,7 +45,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENUSParseTripleName: function(test) {
         test.expect(2);
         var parsed = new Name("John Michael Smith", {locale: 'en-US'});
@@ -61,7 +59,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENUSParseHypenatedName: function(test) {
         test.expect(2);
         var parsed = new Name("John Michael Taylor-Smith", {locale: 'en-US'});
@@ -76,7 +73,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENUSParseQuadrupleName: function(test) {
         test.expect(2);
         var parsed = new Name("John Michael Kevin Smith", {locale: 'en-US'});
@@ -91,7 +87,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENUSParseTitle: function(test) {
         test.expect(2);
         var parsed = new Name("Dr. John Smith", {locale: 'en-US'});
@@ -106,7 +101,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENUSParseHonorific: function(test) {
         test.expect(2);
         var parsed = new Name("Mr. John Smith", {locale: 'en-US'});
@@ -121,7 +115,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENUSParseSuffix: function(test) {
         test.expect(2);
         var parsed = new Name("John Smith Jr. Esq.", {locale: 'en-US'});
@@ -136,7 +129,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     // for DFISH-25146
     testENUSParseSuffixWithComma: function(test) {
         test.expect(2);
@@ -152,7 +144,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENUSParseEuroMultiName: function(test) {
         test.expect(2);
         var parsed = new Name("Pieter van der Meulen", {locale: 'en-US'});
@@ -166,7 +157,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENBenStrong: function(test) {
         test.expect(2);
         var parsed = new Name("Ben Strong", {locale: 'en-US'});
@@ -180,7 +170,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENUSParseEverything: function(test) {
         test.expect(2);
         var parsed = new Name("The Right Honorable Governor General Dr. John Michael Kevin Smith III, DDM", {locale: 'en-US'});
@@ -197,7 +186,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENSingleName: function(test) {
         test.expect(2);
         var parsed = new Name("Sting", {locale: 'en-US'});
@@ -210,7 +198,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENLastNames: function(test) {
         test.expect(2);
         var parsed = new Name("Dr. Roberts", {locale: 'en-US'});
@@ -224,7 +211,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENCompoundNames: function(test) {
         test.expect(2);
         var parsed = new Name("Mr. and Mrs. Smith", {locale: 'en-US'});
@@ -238,7 +224,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENCompoundFamily: function(test) {
         test.expect(2);
         var parsed = new Name("John and Mary Smith", {locale: 'en-US'});
@@ -252,7 +237,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENByFamily: function(test) {
         test.expect(2);
         var parsed = new Name("The Robertsons", {locale: 'en-US'});
@@ -266,7 +250,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENAuxDE: function(test) {
         test.expect(2);
         var parsed = new Name("Herbert von Karajan", {locale: 'en-US'});
@@ -280,7 +263,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENAuxNL: function(test) {
         test.expect(2);
         var parsed = new Name("Jan van der Heiden", {locale: 'en-US'});
@@ -294,7 +276,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENAuxFR: function(test) {
         test.expect(2);
         var parsed = new Name("Serges du Maurier", {locale: 'en-US'});
@@ -308,7 +289,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENAuxIT: function(test) {
         test.expect(2);
         var parsed = new Name("Leonardo di Caprio", {locale: 'en-US'});
@@ -322,7 +302,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENAuxES: function(test) {
         test.expect(2);
         var parsed = new Name("Jorge de las Cruces", {locale: 'en-US'});
@@ -336,7 +315,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENGibberish: function(test) {
         test.expect(2);
         var parsed = new Name("Géê ëī a d øö", {locale: 'en-US'});
@@ -351,7 +329,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENHKNormal: function(test) {
         test.expect(2);
         var parsed = new Name("Chan Ho Yun", {locale: 'en-HK'});
@@ -367,7 +344,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testENHKWithPrefix: function(test) {
         test.expect(2);
         var parsed = new Name("Dr Chan Ho Yun", {locale: 'en-HK'});
@@ -384,11 +360,6 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format tests
-     */
-
     testENFormatSimpleNameShort: function(test) {
         test.expect(2);
         var name = new Name({
@@ -407,7 +378,6 @@ module.exports.testname_en = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testENFormatSimpleNameMedium: function(test) {
         test.expect(2);
         var name = new Name({
@@ -426,7 +396,6 @@ module.exports.testname_en = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testENFormatSimpleNameLong: function(test) {
         test.expect(2);
         var name = new Name({
@@ -448,7 +417,6 @@ module.exports.testname_en = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testENFormatSimpleNameFull: function(test) {
         test.expect(2);
         var name = new Name({
@@ -470,7 +438,6 @@ module.exports.testname_en = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testENFormatComplexNameShort: function(test) {
         test.expect(2);
         var name = new Name({
@@ -489,7 +456,6 @@ module.exports.testname_en = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testENFormatComplexNameMedium: function(test) {
         test.expect(2);
         var name = new Name({
@@ -508,7 +474,6 @@ module.exports.testname_en = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testENFormatComplexNameLong: function(test) {
         test.expect(2);
         var name = new Name({
@@ -527,7 +492,6 @@ module.exports.testname_en = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testENFormatComplexNameFull: function(test) {
         test.expect(2);
         var name = new Name({
@@ -546,7 +510,6 @@ module.exports.testname_en = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testENFormatCommasInSuffix: function(test) {
         test.expect(2);
         var name = new Name({
@@ -565,7 +528,6 @@ module.exports.testname_en = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testENFormatAsianNameShort: function(test) {
         test.expect(2);
         var name = new Name({
@@ -583,7 +545,6 @@ module.exports.testname_en = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testENFormatAsianNameMedium: function(test) {
         test.expect(2);
         var name = new Name({
@@ -601,7 +562,6 @@ module.exports.testname_en = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testENFormatAsianNameLong: function(test) {
         test.expect(2);
         var name = new Name({
@@ -619,7 +579,6 @@ module.exports.testname_en = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testENFormatAsianNameFull: function(test) {
         test.expect(2);
         var name = new Name({
@@ -637,7 +596,6 @@ module.exports.testname_en = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testENFormatWithNulls: function(test) {
         test.expect(2);
         var name = new Name({
@@ -657,7 +615,6 @@ module.exports.testname_en = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testENHKRegular: function(test) {
         test.expect(2);
         var name = new Name({
@@ -678,7 +635,6 @@ module.exports.testname_en = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testENHKFormatFormalShort: function(test) {
         test.expect(2);
         var name = new Name({
@@ -698,7 +654,6 @@ module.exports.testname_en = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testENHKFormatFormalLong: function(test) {
         test.expect(2);
         var name = new Name({

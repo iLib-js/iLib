@@ -32,7 +32,6 @@ module.exports.testname_fa = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_fa: function(test) {
         test.expect(2);
         var parsed = new Name("لیلا میلانی", {locale: 'fa-IR'});
@@ -46,8 +45,6 @@ module.exports.testname_fa = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseAdjunctNames_fa: function(test) {
         test.expect(2);
         var parsed = new Name("لیلا میلانی", {locale: 'fa-IR'});
@@ -61,9 +58,6 @@ module.exports.testname_fa = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseSingleNameWithPrefixAndAdjunct_fa: function(test) {
         test.expect(2);
         var parsed = new Name("آقای ﻭ خانم میلانی", {locale: 'fa-IR'});
@@ -77,8 +71,6 @@ module.exports.testname_fa = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_fa: function(test) {
         test.expect(2);
         var parsed = new Name("لیلا میلانی ﺙﺎﻠﺛﺍ", {locale: 'fa-IR'});
@@ -93,9 +85,6 @@ module.exports.testname_fa = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitleWithFamilyOnly_fa: function(test) {
         test.expect(2);
         var parsed = new Name("خانم میلانی", {locale: 'fa-IR'});
@@ -109,9 +98,6 @@ module.exports.testname_fa = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseEverything_fa: function(test) {
         test.expect(2);
         var parsed = new Name("خانم لیلا میلانی", {locale: 'fa-IR'});
@@ -126,12 +112,6 @@ module.exports.testname_fa = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -150,7 +130,6 @@ module.exports.testname_fa = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -169,7 +148,6 @@ module.exports.testname_fa = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -189,7 +167,6 @@ module.exports.testname_fa = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -210,7 +187,6 @@ module.exports.testname_fa = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -230,7 +206,6 @@ module.exports.testname_fa = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -250,7 +225,6 @@ module.exports.testname_fa = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -270,7 +244,6 @@ module.exports.testname_fa = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameShort_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -290,7 +263,6 @@ module.exports.testname_fa = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameMedium_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -310,7 +282,6 @@ module.exports.testname_fa = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameLong_fa: function(test) {
         test.expect(2);
         var name = new Name({
@@ -330,10 +301,4 @@ module.exports.testname_fa = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
-
-
-
 };

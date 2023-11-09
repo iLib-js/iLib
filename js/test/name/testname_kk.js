@@ -32,7 +32,6 @@ module.exports.testname_kk = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_kk: function(test) {
         test.expect(2);
         var parsed = new Name("Джордж Буш", {locale: 'kk-KZ'});
@@ -46,8 +45,6 @@ module.exports.testname_kk = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseSingleNameWithPrefixAndAdjunct_kk: function(test) {
         test.expect(2);
         var parsed = new Name("үлкен Буш", {locale: 'kk-KZ'});
@@ -61,8 +58,6 @@ module.exports.testname_kk = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_kk: function(test) {
         test.expect(2);
         var parsed = new Name("Джордж Буш 2-ші", {locale: 'kk-KZ'});
@@ -77,7 +72,6 @@ module.exports.testname_kk = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseEverything_kk: function(test) {
         test.expect(2);
         var parsed = new Name("үлкен Джордж Буш 2-ші", {locale: 'kk-KZ'});
@@ -93,12 +87,6 @@ module.exports.testname_kk = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_kk: function(test) {
         test.expect(2);
         var name = new Name({
@@ -117,7 +105,6 @@ module.exports.testname_kk = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_kk: function(test) {
         test.expect(2);
         var name = new Name({
@@ -136,7 +123,6 @@ module.exports.testname_kk = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_kk: function(test) {
         test.expect(2);
         var name = new Name({
@@ -156,7 +142,6 @@ module.exports.testname_kk = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_kk: function(test) {
         test.expect(2);
         var name = new Name({
@@ -177,7 +162,4 @@ module.exports.testname_kk = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

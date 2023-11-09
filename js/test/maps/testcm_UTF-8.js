@@ -30,7 +30,6 @@ module.exports.testcm_UTF_8 = {
         ilib.clearCache();
         callback();
     },
-
     testCharmapUTF8LoadMap: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -40,7 +39,6 @@ module.exports.testcm_UTF_8 = {
         test.equal(cm.getName(), "UTF-8");
         test.done();
     },
-
     testCharmapUTF8MapToUnicodeUint8Array: function(test) {
         var cm = CharmapFactory({
             name: "UTF-8"
@@ -55,7 +53,6 @@ module.exports.testcm_UTF_8 = {
         test.equal(cm.mapToUnicode(input), "This is a test");
         test.done();
     },
-
     testCharmapUTF8MapToUnicodeUint8ArrayExtended2: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -75,7 +72,6 @@ module.exports.testcm_UTF_8 = {
         test.equal(cm.mapToUnicode(input), "ÀÁâãИЯД");
         test.done();
     },
-
     testCharmapUTF8MapToUnicodeUint8ArrayExtended3: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -94,7 +90,6 @@ module.exports.testcm_UTF_8 = {
         test.equal(cm.mapToUnicode(input), "一丁丂圁圂圃");
         test.done();
     },
-
     testCharmapUTF8MapToUnicodeUint8ArrayExtended4: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -111,7 +106,6 @@ module.exports.testcm_UTF_8 = {
         test.equal(cm.mapToUnicode(input), "𠔉𠘨𠝏𠠺");
         test.done();
     },
-
     testCharmapUTF8MapToUnicodeNumberArray: function(test) {
         var cm = CharmapFactory({
             name: "UTF-8"
@@ -126,7 +120,6 @@ module.exports.testcm_UTF_8 = {
         test.equal(cm.mapToUnicode(input), "This is a test");
         test.done();
     },
-
     testCharmapUTF8MapToUnicodeNumberArrayExtended2: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -146,7 +139,6 @@ module.exports.testcm_UTF_8 = {
         test.equal(cm.mapToUnicode(input), "ÀÁâãИЯД");
         test.done();
     },
-
     testCharmapUTF8MapToUnicodeNumberArrayExtended3: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -165,7 +157,6 @@ module.exports.testcm_UTF_8 = {
         test.equal(cm.mapToUnicode(input), "一丁丂圁圂圃");
         test.done();
     },
-
     testCharmapUTF8MapToUnicodeNumberArrayExtended4: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -182,7 +173,6 @@ module.exports.testcm_UTF_8 = {
         test.equal(cm.mapToUnicode(input), "𠔉𠘨𠝏𠠺");
         test.done();
     },
-
     testCharmapUTF8MapToNative: function(test) {
         var cm = CharmapFactory({
             name: "utf-8"
@@ -199,7 +189,6 @@ module.exports.testcm_UTF_8 = {
         }
         test.done();
     },
-
     testCharmapUTF8MapToNativeExtended2: function(test) {
         var cm = CharmapFactory({
             name: "utf-8"
@@ -222,7 +211,6 @@ module.exports.testcm_UTF_8 = {
         }
         test.done();
     },
-
     testCharmapUTF8MapToNativeExtended3: function(test) {
         var cm = CharmapFactory({
             name: "utf-8"
@@ -244,7 +232,6 @@ module.exports.testcm_UTF_8 = {
         }
         test.done();
     },
-
     testCharmapUTF8MapToNativeExtended4: function(test) {
         var cm = CharmapFactory({
             name: "utf-8"
@@ -264,5 +251,4 @@ module.exports.testcm_UTF_8 = {
         }
         test.done();
     }
-
 };

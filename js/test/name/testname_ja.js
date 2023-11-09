@@ -32,7 +32,6 @@ module.exports.testname_ja = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleNameEuro_ja_JP: function(test) {
         test.expect(2);
         var parsed = new Name("Takuya Kimura", {locale: 'ja-JP'});
@@ -46,7 +45,6 @@ module.exports.testname_ja = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseSimpleNameAsian_ja_JP: function(test) {
         test.expect(2);
         var parsed = new Name("高橋弘樹", {locale: 'ja-JP'});
@@ -60,7 +58,6 @@ module.exports.testname_ja = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseSingleNameWithPrefixAndAdjunct_ja_JP: function(test) {
         test.expect(2);
         var parsed = new Name("高橋弘樹さん", {locale: 'ja-JP'});
@@ -75,7 +72,6 @@ module.exports.testname_ja = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitle_ja_JP1: function(test) {
         test.expect(2);
         var parsed = new Name("高橋弘樹知事", {locale: 'ja-JP'});
@@ -90,7 +86,6 @@ module.exports.testname_ja = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitleWithFamilyOnlyAndAdjunct_ja_JP: function(test) {
         test.expect(2);
         var parsed = new Name("高橋弘樹教授", {locale: 'ja-JP'});
@@ -105,7 +100,6 @@ module.exports.testname_ja = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseCompoundHonorific_ja_JP: function(test) {
         test.expect(2);
         var parsed = new Name("高橋教授", {locale: 'ja-JP'});
@@ -119,7 +113,6 @@ module.exports.testname_ja = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseCompoundHonorific_ja_JP1: function(test) {
         test.expect(2);
         var parsed = new Name("高橋総裁", {locale: 'ja-JP'});
@@ -133,7 +126,6 @@ module.exports.testname_ja = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseFamilyName_ja_JP1: function(test) {
         test.expect(2);
         var parsed = new Name("佐々木主浩", {locale: 'ja-JP'});
@@ -147,8 +139,6 @@ module.exports.testname_ja = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseWithLongMixedName_ja_JP: function(test) {
         test.expect(2);
         var parsed = new Name("佐々木主浩/Software Engineer", {locale: "ja-JP"});
@@ -161,11 +151,6 @@ module.exports.testname_ja = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_ja_JP: function(test) {
         test.expect(2);
         var name = new Name({
@@ -184,7 +169,6 @@ module.exports.testname_ja = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_ja_JP: function(test) {
         test.expect(2);
         var name = new Name({
@@ -203,7 +187,6 @@ module.exports.testname_ja = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_ja_JP: function(test) {
         test.expect(2);
         var name = new Name({
@@ -223,7 +206,6 @@ module.exports.testname_ja = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_ja_JP: function(test) {
         test.expect(2);
         var name = new Name({
@@ -243,8 +225,6 @@ module.exports.testname_ja = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
     testFormatAsianNameMedium_ja_JP: function(test) {
         test.expect(2);
         var name = new Name({
@@ -265,7 +245,6 @@ module.exports.testname_ja = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameLong_ja_JP: function(test) {
         test.expect(2);
         var name = new Name({
@@ -286,5 +265,4 @@ module.exports.testname_ja = {
         test.equal(formatted, expected);
         test.done();
     }
-
 };

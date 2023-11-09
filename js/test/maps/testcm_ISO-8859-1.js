@@ -30,7 +30,6 @@ module.exports.testcm_ISO_8859_1 = {
         ilib.clearCache();
         callback();
     },
-
     testCharmap88591LoadMap: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -40,7 +39,6 @@ module.exports.testcm_ISO_8859_1 = {
         test.equal(cm.getName(), "ISO-8859-1");
         test.done();
     },
-
     testCharmap88591UseAliases1: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -50,7 +48,6 @@ module.exports.testcm_ISO_8859_1 = {
         test.equal(cm.getName(), "ISO-8859-1");
         test.done();
     },
-
     testCharmap88591UseAliases2: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -60,7 +57,6 @@ module.exports.testcm_ISO_8859_1 = {
         test.equal(cm.getName(), "ISO-8859-1");
         test.done();
     },
-
     testCharmap88591MapToUnicodeUint8Array: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1"
@@ -75,7 +71,6 @@ module.exports.testcm_ISO_8859_1 = {
         test.equal(cm.mapToUnicode(input), "This is a test");
         test.done();
     },
-
     testCharmap88591MapToUnicodeUint8ArrayExtended: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1"
@@ -90,7 +85,6 @@ module.exports.testcm_ISO_8859_1 = {
         test.equal(cm.mapToUnicode(input), "ÀÁâã");
         test.done();
     },
-
     testCharmap88591MapToUnicodeNumberArray: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1"
@@ -105,7 +99,6 @@ module.exports.testcm_ISO_8859_1 = {
         test.equal(cm.mapToUnicode(input), "This is a test");
         test.done();
     },
-
     testCharmap88591MapToUnicodeNumberArrayExtended: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1"
@@ -120,7 +113,6 @@ module.exports.testcm_ISO_8859_1 = {
         test.equal(cm.mapToUnicode(input), "ÀÁâã");
         test.done();
     },
-
     testCharmap88591MapToNative: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1"
@@ -137,7 +129,6 @@ module.exports.testcm_ISO_8859_1 = {
         }
         test.done();
     },
-
     testCharmap88591MapToNativeExtended: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1"
@@ -152,7 +143,6 @@ module.exports.testcm_ISO_8859_1 = {
         }
         test.done();
     },
-
     testCharmap88591MapToNativeMissingSkip: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1",
@@ -168,7 +158,6 @@ module.exports.testcm_ISO_8859_1 = {
         }
         test.done();
     },
-
     testCharmap88591MapToNativeMissingPlaceholderDefault: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1",
@@ -191,7 +180,6 @@ module.exports.testcm_ISO_8859_1 = {
         }
         test.done();
     },
-
     testCharmap88591MapToNativeMissingPlaceholderWithChars: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1",
@@ -215,7 +203,6 @@ module.exports.testcm_ISO_8859_1 = {
         }
         test.done();
     },
-
     testCharmap88591MapToNativeMissingEscapeDefault: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1",
@@ -239,7 +226,6 @@ module.exports.testcm_ISO_8859_1 = {
         }
         test.done();
     },
-
     testCharmap88591MapToNativeMissingEscapeJS: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1",
@@ -264,7 +250,6 @@ module.exports.testcm_ISO_8859_1 = {
         }
         test.done();
     },
-
     testCharmap88591MapToNativeMissingEscapeC: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1",
@@ -289,7 +274,6 @@ module.exports.testcm_ISO_8859_1 = {
         }
         test.done();
     },
-
     testCharmap88591MapToNativeMissingEscapeCPP: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1",
@@ -314,7 +298,6 @@ module.exports.testcm_ISO_8859_1 = {
         }
         test.done();
     },
-
     testCharmap88591MapToNativeMissingEscapeJava: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1",
@@ -339,7 +322,6 @@ module.exports.testcm_ISO_8859_1 = {
         }
         test.done();
     },
-
     testCharmap88591MapToNativeMissingEscapeRuby: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1",
@@ -364,7 +346,6 @@ module.exports.testcm_ISO_8859_1 = {
         }
         test.done();
     },
-
     testCharmap88591MapToNativeMissingEscapeHtml: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1",
@@ -389,7 +370,6 @@ module.exports.testcm_ISO_8859_1 = {
         }
         test.done();
     },
-
     testCharmap88591MapToNativeMissingEscapePerl: function(test) {
         var cm = CharmapFactory({
             name: "ISO-8859-1",
@@ -414,5 +394,4 @@ module.exports.testcm_ISO_8859_1 = {
         }
         test.done();
     }
-
 };
